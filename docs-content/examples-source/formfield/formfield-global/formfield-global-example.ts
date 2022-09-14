@@ -1,11 +1,11 @@
 import { AfterContentInit, Component, ViewChild } from '@angular/core';
 import {
-    ErrorDefaultOptions,
     ERROR_DEFAULT_OPTIONS,
+    ErrorDefaultOptions,
 } from '@aposin/ng-aquila/base';
 import {
-    FormfieldDefaultOptions,
     FORMFIELD_DEFAULT_OPTIONS,
+    FormfieldDefaultOptions,
 } from '@aposin/ng-aquila/formfield';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
 
@@ -31,11 +31,12 @@ const myErrorOptions: ErrorDefaultOptions = {
     ],
 })
 export class FormfieldGlobalExampleComponent implements AfterContentInit {
-    public modelValue!: string;
+    modelValue!: string;
+
     @ViewChild('errorNgModel', { static: true })
     errorNgModel!: NxInputDirective;
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this.errorNgModel.ngControl?.control?.markAsTouched();
     }
 }

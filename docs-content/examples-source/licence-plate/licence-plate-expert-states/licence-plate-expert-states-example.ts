@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
     styleUrls: ['licence-plate-expert-states-example.css'],
 })
 export class LicencePlateExpertStatesExample {
-    disabled: boolean = false;
-    readonly: boolean = false;
+    disabled = false;
+    readonly = false;
     value = '';
 }

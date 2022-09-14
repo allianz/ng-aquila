@@ -5,12 +5,13 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
 import { NxTreeModule } from '@aposin/ng-aquila/tree';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { SidebarExampleComponent } from './sidebar/sidebar-example';
 import { SidebarFooterExampleComponent } from './sidebar-footer/sidebar-footer-example';
 import { SidebarMethodsExampleComponent } from './sidebar-methods/sidebar-methods-example';
 import { SidebarOutputsExampleComponent } from './sidebar-outputs/sidebar-outputs-example';
 import { SidebarResizeableExampleComponent } from './sidebar-resizeable/sidebar-resizeable-example';
-import { SidebarExampleComponent } from './sidebar/sidebar-example';
 
 const EXAMPLES = [
     SidebarExampleComponent,

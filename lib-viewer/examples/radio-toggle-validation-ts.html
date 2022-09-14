@@ -10,19 +10,15 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./radio-toggle-validation-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RadioToggleValidationExampleComponent</span> </span>{
-    data = [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>];
-    testForm!: FormGroup;
-    isSubmitted: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">readonly</span> data = [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>];
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
-        <span class="hljs-built_in">this</span>.createForm();
-    }
+    <span class="hljs-keyword">readonly</span> testForm = <span class="hljs-built_in">this</span>.fb.group({
+        <span class="hljs-attr">testToggle</span>: [<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-built_in">this</span>.customValidation],
+    });
 
-    <span class="hljs-function"><span class="hljs-title">createForm</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">this</span>.testForm = <span class="hljs-built_in">this</span>.fb.group({
-            <span class="hljs-attr">testToggle</span>: [<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-built_in">this</span>.customValidation],
-        });
-    }
+    isSubmitted = <span class="hljs-literal">false</span>;
+
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>)</span> {}
 
     <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-title">customValidation</span>(<span class="hljs-params">formGroup: FormGroup</span>)</span> {
         <span class="hljs-keyword">return</span> formGroup.value !== <span class="hljs-string">&#x27;B&#x27;</span> ? { <span class="hljs-attr">valid</span>: <span class="hljs-literal">false</span> } : <span class="hljs-literal">null</span>;

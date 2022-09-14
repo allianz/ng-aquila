@@ -2,21 +2,23 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let step of multiSteps&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;step.name&quot;</span> [<span class="hljs-attr">completed</span>]=<span class="hljs-string">&quot;step.completed&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> This is the content for step &quot;{{step.name}}&quot; <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is the content for step &quot;{{step.name}}&quot;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
+                    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
                     <span class="hljs-attr">nxStepperPrevious</span>
                     <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs nx-margin-bottom-s&quot;</span>
                     <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    &gt;</span>Previous&lt;/button
-                &gt;
+                &gt;</span>
+                    Previous
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
                     <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
                     <span class="hljs-attr">nxStepperNext</span>
                     <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
                     <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    &gt;</span>Next&lt;/button
-                &gt;
+                &gt;</span>
+                    Next
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
@@ -27,21 +29,21 @@
     <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs nx-margin-bottom-xs&quot;</span>
     <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
 &gt;</span>
-    Complete first step&lt;/button
-&gt;
+    Complete first step
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
     <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
     (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;completeStep(1)&quot;</span>
     <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs nx-margin-bottom-xs&quot;</span>
     <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
 &gt;</span>
-    Complete second step&lt;/button
-&gt;
+    Complete second step
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
     <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
     (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;completeStep(2)&quot;</span>
     <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
     <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>
 &gt;</span>
-    Complete third step&lt;/button
-&gt;
+    Complete third step
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./rtl-basic-example.css'],
 })
 export class RtlBasicExampleComponent {
-    sliderDemoValue: number = 10;
+    sliderDemoValue = 10;
 }

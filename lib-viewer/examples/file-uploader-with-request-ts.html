@@ -24,11 +24,12 @@
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileUploaderWithRequestExampleComponent</span> </span>{
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;documentUpload&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">false</span> })
     documentUpload!: NxFileUploaderComponent;
-    <span class="hljs-keyword">public</span> showUploadError: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+
+    showUploadError = <span class="hljs-literal">false</span>;
 
     <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">private</span> messageToastService: NxMessageToastService,
-        <span class="hljs-keyword">private</span> http: HttpClient,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> messageToastService: NxMessageToastService,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> http: HttpClient,
     </span>)</span> {}
 
     <span class="hljs-function"><span class="hljs-title">upload</span>(<span class="hljs-params">url: <span class="hljs-built_in">string</span></span>)</span> {

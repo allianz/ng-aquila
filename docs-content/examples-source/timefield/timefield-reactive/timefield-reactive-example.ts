@@ -10,15 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./timefield-reactive-example.css'],
 })
 export class TimefieldReactiveExampleComponent {
-    public testForm!: FormGroup;
+    readonly testForm: FormGroup = this.fb.group({
+        timefieldReactive: ['22:54', Validators.required],
+    });
 
-    constructor(private fb: FormBuilder) {
-        this.createForm();
-    }
-
-    createForm() {
-        this.testForm = this.fb.group({
-            timefieldReactive: ['22:54', Validators.required],
-        });
-    }
+    constructor(private readonly fb: FormBuilder) {}
 }

@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
     styleUrls: ['licence-plate-euro-example.css'],
 })
 export class LicencePlateEuroExampleComponent {
-    country: string = 'A';
+    country = 'A';
     countriesList: { country: string; countryName: string }[] = [
         { country: 'A', countryName: 'Austria' },
         { country: 'B', countryName: 'Belgium' },
@@ -41,5 +41,4 @@ export class LicencePlateEuroExampleComponent {
         { country: 'UA', countryName: 'Ukraine' },
     ];
     value = '';
-    constructor() {}
 }

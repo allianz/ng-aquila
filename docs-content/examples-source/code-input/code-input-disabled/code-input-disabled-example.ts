@@ -10,10 +10,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['code-input-disabled-example.css'],
 })
 export class CodeInputDisabledExampleComponent implements OnInit {
-    inputValue: string = '';
+    inputValue = '';
     codeForm!: FormGroup;
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.codeForm = new FormGroup({
             keyCode: new FormControl(
                 { value: this.inputValue, disabled: true },

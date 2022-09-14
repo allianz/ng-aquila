@@ -1,14 +1,14 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
-<span class="hljs-keyword">type</span> MenuChild = {
+<span class="hljs-keyword">interface</span> MenuChild {
     <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
-};
+}
 
-<span class="hljs-keyword">type</span> MenuItem = {
+<span class="hljs-keyword">interface</span> MenuItem {
     <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
     expanded?: <span class="hljs-built_in">boolean</span>;
     children?: MenuChild[];
-};
+}
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>Menu item

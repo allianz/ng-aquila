@@ -4,6 +4,7 @@ import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxDynamicTableModule } from '@aposin/ng-aquila/dynamic-table';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
+
 import { PopoverClickOutsideExampleComponent } from './popover-click-outside/popover-click-outside-example';
 import { PopoverCustomExampleComponent } from './popover-custom/popover-custom-example';
 import { PopoverHoverExampleComponent } from './popover-hover/popover-hover-example';
@@ -12,10 +13,10 @@ import { PopoverLazyloadExampleComponent } from './popover-lazyload/popover-lazy
 import { PopoverModalExampleComponent } from './popover-modal/popover-modal-example';
 import { PopoverPositioningExampleComponent } from './popover-positioning/popover-positioning-example';
 import { PopoverScrollExampleComponent } from './popover-scroll/popover-scroll-example';
+import { PopoverScrollStrategyProviderExampleComponent } from './popover-scroll-strategy-provider/popover-scroll-strategy-provider-example';
 import { PopoverScrollableExampleComponent } from './popover-scrollable/popover-scrollable-example';
 import { PopoverTableExampleComponent } from './popover-table/popover-table-example';
 import { PopoverTriggerExampleComponent } from './popover-trigger/popover-trigger-example';
-import { PopoverScrollStrategyProviderExampleComponent } from './popover-scroll-strategy-provider/popover-scroll-strategy-provider-example';
 
 const EXAMPLES = [
     PopoverClickOutsideExampleComponent,

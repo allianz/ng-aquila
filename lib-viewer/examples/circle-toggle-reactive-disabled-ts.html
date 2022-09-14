@@ -10,11 +10,11 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./circle-toggle-reactive-disabled-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CircleToggleReactiveDisabledExampleComponent</span> </span>{
-    testForm = <span class="hljs-built_in">this</span>.formBuilder.group({
+    <span class="hljs-keyword">readonly</span> testForm = <span class="hljs-built_in">this</span>.fb.group({
         <span class="hljs-attr">reactiveToggle</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required],
     });
 
-    sampleValues = [
+    <span class="hljs-keyword">readonly</span> sampleValues = [
         {
             <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;A&#x27;</span>,
             <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-heart&#x27;</span>,
@@ -38,7 +38,7 @@
         },
     ];
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> formBuilder: FormBuilder</span>)</span> {
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>)</span> {
         <span class="hljs-built_in">this</span>.testForm.disable();
     }
 

@@ -8,45 +8,11 @@
             <span class="docs-api-module-import__from-span">from</span>
             <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/dropdown'</span>;
         </code>
-    </p><h3 id="directives" class="docs-header-link docs-api-h3">
-        <span header-link="directives"></span>
-        Directives
+    </p><h3 id="components" class="docs-header-link docs-api-h3">
+        <span header-link="components"></span>
+        Components
     </h3>
      
-
-<h4 id="NxDropdownClosedLabelDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
-    <span header-link="NxDropdownClosedLabelDirective"></span>
-    <code>NxDropdownClosedLabelDirective</code></h4><p class="docs-api-directive-selectors">
-    <span class="docs-api-class-selector-label">Selector:</span>
-    <div class="docs-api__selector-container">
-        
-        <span class="docs-api-class-selector-name">[nxClosedLabel]</span>
-        
-    </div>
-</p><h5 class="docs-api-method-header">Properties</h5>
-<table class="docs-api-properties-table">
-    <tr class="docs-api-properties-header-row">
-        <th class="docs-api-properties-th">Name</th>
-        <th class="docs-api-properties-th">Description</th>
-    </tr>
-     
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">templateRef</span>:
-                <span class="docs-api-property__type">TemplateRef<any></span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-  
-</table> 
-
- 
-   
 
 <h4 id="NxDropdownComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxDropdownComponent"></span>
@@ -70,7 +36,7 @@
             <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">compareWith</span>:
-                <span class="docs-api-property__type">(o1: any, o2: any) => boolean</span>
+                <span class="docs-api-property__type">NxDropdownCompareWithFn</span>
             </code>
         </p>
     </td>
@@ -78,6 +44,7 @@
         <p>Function to compare the option values with the selected values. The first argument
 is a value from an option. The second is a value from the selection. A boolean
 should be returned.</p>
+<p>Defaults to object equality.</p>
 </td>
 </tr>
    
@@ -101,15 +68,15 @@ should be returned.</p>
             <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">filterFn</span>:
-                <span class="docs-api-property__type">(search: string, itemValue: string) => boolean</span>
+                <span class="docs-api-property__type">NxDropdownFilterFn</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
         <p>Function to be used when the user types into the search filter. The first argument is the user input,
-the second argument is the dropdown item value. The dropdown items will use this function to set their
-visibility state.
-A boolean should be returned.</p>
+the second argument is the dropdown item value as displayed. The dropdown items will use this function
+to set their visibility state. A boolean should be returned.</p>
+<p>Defaults to lower case inclusion.</p>
 </td>
 </tr>
    
@@ -263,14 +230,14 @@ Please only disable truncation if it&#39;s impossible to use short descriptions.
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxValueFormatter'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">valueFormatter</span>:
-                <span class="docs-api-property__type">(value: any) => (value == null ? '' : value.toString())</span>
+                <span class="docs-api-property__type">NxDropdownValueFormatterFn</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
         <p>Function that transforms the value into a string.
-This function is used for displaying and filtering the content
-( Default: (value) =&gt; value ? value.toString() : null; ).</p>
+This function is used for displaying and filtering the content.</p>
+<p>Defaults to <code>(value: any) =&gt; value == null ? &#39;&#39; : value.toString()</code></p>
 </td>
 </tr>
    
@@ -279,7 +246,7 @@ This function is used for displaying and filtering the content
     <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'filterInput'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">filterChanges</span>:
-                <span class="docs-api-property__type">Subject<any></span>
+                <span class="docs-api-property__type">EventEmitter<any></span>
             </code>
         </p>
     </td>
@@ -695,6 +662,24 @@ as they are sentinel values signalling empty data.</p>
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
             <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
+                <span class="docs-api-property__name">filterFn</span>:
+                <span class="docs-api-property__type">NxMultiSelectFilterFn</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Function to be used when the user types into the search filter. The first argument is the user input,
+the second argument is the dropdown item value as displayed. The dropdown items will use this function
+to set their visibility state. A boolean should be returned.</p>
+<p>Defaults to lower case inclusion.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
                 <span class="docs-api-property__name">filterPlaceholder</span>:
                 <span class="docs-api-property__type">'Type to filter'</span>
             </code>
@@ -769,7 +754,7 @@ as they are sentinel values signalling empty data.</p>
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
             <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">selectDisabled</span>:
+                <span class="docs-api-property__name">selectDisabled</span>?:
                 <span class="docs-api-property__type">string | ((option: S) => boolean)</span>
             </code>
         </p>
@@ -816,15 +801,17 @@ When empty the whole option is treated as the value.</p>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">#disableSelectAll</span>:
-                <span class="docs-api-property__type">false</span>
+                <span class="docs-api-property__name">selectionChange</span>:
+                <span class="docs-api-property__type">EventEmitter<T[]></span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <p>Event emitted when the selected value has been changed.</p>
+</td>
 </tr>
    
 
@@ -940,11 +927,75 @@ When empty the whole option is treated as the value.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
+            <span class="docs-api-method-name">open($event: <span class="docs-api-property__type">Event</span>,origin: <span class="docs-api-property__type">FocusOrigin</span>)</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                $event:
+                <span class="docs-api-method-parameter-type">Event</span>
+            </code>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                origin:
+                <span class="docs-api-method-parameter-type">FocusOrigin</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
             <span class="docs-api-method-name">updateErrorState()</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div></div>
    
+  <h3 id="directives" class="docs-header-link docs-api-h3">
+        <span header-link="directives"></span>
+        Directives
+    </h3>
+     
+
+<h4 id="NxDropdownClosedLabelDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxDropdownClosedLabelDirective"></span>
+    <code>NxDropdownClosedLabelDirective</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+        
+        <span class="docs-api-class-selector-name">[nxClosedLabel]</span>
+        
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">templateRef</span>:
+                <span class="docs-api-property__type">TemplateRef<any></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table> 
+
+ 
   <h3 id="additional_classes" class="docs-header-link docs-api-h3">
         <span header-link="additional_classes"></span>
         Additional classes
@@ -1219,7 +1270,7 @@ If no label is specified, the value will be displayed instead.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">label</span>:
+                <span class="docs-api-property__name">label</span>?:
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -1254,5 +1305,41 @@ If no label is specified, the value will be displayed instead.</p>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
     <code class="docs-api-type-alias-value">'text' | 'number' | 'tel' | 'search' | 'date' | 'datetime' | 'month' | 'email'</code>
+</p>
+   
+
+<h4 id="NxDropdownFilterFn" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxDropdownFilterFn"></span>
+    <code>NxDropdownFilterFn</code>
+</h4><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">(query: string, label: string) => boolean</code>
+</p>
+   
+
+<h4 id="NxDropdownCompareWithFn" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxDropdownCompareWithFn"></span>
+    <code>NxDropdownCompareWithFn</code>
+</h4><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">(o1: any, o2: any) => boolean</code>
+</p>
+   
+
+<h4 id="NxDropdownValueFormatterFn" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxDropdownValueFormatterFn"></span>
+    <code>NxDropdownValueFormatterFn</code>
+</h4><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">(value: any) => any</code>
+</p>
+   
+
+<h4 id="NxMultiSelectFilterFn" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxMultiSelectFilterFn"></span>
+    <code>NxMultiSelectFilterFn</code>
+</h4><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">(query: string, label: string) => boolean</code>
 </p>
   </div>

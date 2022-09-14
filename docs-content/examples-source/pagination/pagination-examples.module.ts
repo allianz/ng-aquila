@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { NxPaginationModule } from '@aposin/ng-aquila/pagination';
+
 import { PaginationAdvancedExampleComponent } from './pagination-advanced/pagination-advanced-example';
-import { PaginationLocalizeAdvancedExampleComponent } from './pagination-localize-advanced/pagination-localize-advanced-example';
 import { PaginationLocalizeExampleComponent } from './pagination-localize/pagination-localize-example';
+import { PaginationLocalizeAdvancedExampleComponent } from './pagination-localize-advanced/pagination-localize-advanced-example';
 import { PaginationSimpleExampleComponent } from './pagination-simple/pagination-simple-example';
 
 const EXAMPLES = [

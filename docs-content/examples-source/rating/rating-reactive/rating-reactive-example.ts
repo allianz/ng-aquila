@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 /**
  * @title Rating Reactive Example
@@ -10,15 +10,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     styleUrls: ['./rating-reactive-example.css'],
 })
 export class RatingReactiveExampleComponent {
-    testForm!: FormGroup;
+    readonly testForm = this.fb.group({
+        rating: [1],
+    });
 
-    constructor(private fb: FormBuilder) {
-        this.createForm();
-    }
-
-    createForm() {
-        this.testForm = this.fb.group({
-            rating: [1],
-        });
-    }
+    constructor(private readonly fb: FormBuilder) {}
 }

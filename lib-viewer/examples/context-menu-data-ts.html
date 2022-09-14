@@ -1,12 +1,12 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { NxBadgeType } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/badge&#x27;</span>;
 
-<span class="hljs-keyword">type</span> Contract = {
+<span class="hljs-keyword">interface</span> Contract {
     <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
     user: <span class="hljs-built_in">string</span>;
     status: NxBadgeType;
     documents: <span class="hljs-built_in">string</span>[];
-};
+}
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>Data Context Menu Example

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { NxBadgeType } from '@aposin/ng-aquila/badge';
 
-type Contract = {
+interface Contract {
     id: string;
     user: string;
     status: NxBadgeType;
     documents: string[];
-};
+}
 
 /**
  * @title Data Context Menu Example

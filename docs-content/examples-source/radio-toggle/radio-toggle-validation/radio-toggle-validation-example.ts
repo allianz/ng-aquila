@@ -10,19 +10,15 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     styleUrls: ['./radio-toggle-validation-example.css'],
 })
 export class RadioToggleValidationExampleComponent {
-    data = ['A', 'B', 'C'];
-    testForm!: FormGroup;
-    isSubmitted: boolean = false;
+    readonly data = ['A', 'B', 'C'];
 
-    constructor(private fb: FormBuilder) {
-        this.createForm();
-    }
+    readonly testForm = this.fb.group({
+        testToggle: ['', this.customValidation],
+    });
 
-    createForm() {
-        this.testForm = this.fb.group({
-            testToggle: ['', this.customValidation],
-        });
-    }
+    isSubmitted = false;
+
+    constructor(private readonly fb: FormBuilder) {}
 
     private customValidation(formGroup: FormGroup) {
         return formGroup.value !== 'B' ? { valid: false } : null;

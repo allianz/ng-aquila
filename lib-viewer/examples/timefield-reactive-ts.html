@@ -10,15 +10,9 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./timefield-reactive-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TimefieldReactiveExampleComponent</span> </span>{
-    <span class="hljs-keyword">public</span> testForm!: FormGroup;
+    <span class="hljs-keyword">readonly</span> testForm: FormGroup = <span class="hljs-built_in">this</span>.fb.group({
+        <span class="hljs-attr">timefieldReactive</span>: [<span class="hljs-string">&#x27;22:54&#x27;</span>, Validators.required],
+    });
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
-        <span class="hljs-built_in">this</span>.createForm();
-    }
-
-    <span class="hljs-function"><span class="hljs-title">createForm</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">this</span>.testForm = <span class="hljs-built_in">this</span>.fb.group({
-            <span class="hljs-attr">timefieldReactive</span>: [<span class="hljs-string">&#x27;22:54&#x27;</span>, Validators.required],
-        });
-    }
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>)</span> {}
 }

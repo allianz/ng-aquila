@@ -12,7 +12,7 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;code-input-model-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CodeInputModelExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span>, <span class="hljs-title">OnDestroy</span> </span>{
-    <span class="hljs-attr">inputValue</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>;
+    inputValue = <span class="hljs-string">&#x27;&#x27;</span>;
 
     codeForm = <span class="hljs-keyword">new</span> FormGroup({
         <span class="hljs-attr">keyCode</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-built_in">this</span>.inputValue, {
@@ -27,7 +27,7 @@
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> Subject&lt;<span class="hljs-built_in">void</span>&gt;();
 
-    <span class="hljs-function"><span class="hljs-title">ngOnInit</span>(<span class="hljs-params"></span>)</span> {
+    ngOnInit(): <span class="hljs-built_in">void</span> {
         <span class="hljs-built_in">this</span>.keyCode?.valueChanges
             .pipe(takeUntil(<span class="hljs-built_in">this</span>._destroyed))
             .subscribe(<span class="hljs-function">() =&gt;</span> {

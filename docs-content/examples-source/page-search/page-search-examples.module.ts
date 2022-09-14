@@ -4,6 +4,7 @@ import { NxAutocompleteModule } from '@aposin/ng-aquila/autocomplete';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxPageSearchModule } from '@aposin/ng-aquila/page-search';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { PageSearchAutocompleteExampleComponent } from './page-search-autocomplete/page-search-autocomplete-example';
 import { PageSearchClickExampleComponent } from './page-search-click/page-search-click-example';

@@ -1,11 +1,11 @@
 <span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
-<span class="hljs-keyword">type</span> Action = {
+<span class="hljs-keyword">interface</span> Action {
     <span class="hljs-attr">icon</span>: <span class="hljs-built_in">string</span>;
     label: <span class="hljs-built_in">string</span>;
     notification?: <span class="hljs-built_in">boolean</span>;
     notificationCount?: <span class="hljs-built_in">number</span>;
-};
+}
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>Action Example
@@ -41,9 +41,7 @@
 
     selectedAction!: Action;
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {}
-
-    <span class="hljs-function"><span class="hljs-title">ngOnInit</span>(<span class="hljs-params"></span>)</span> {
+    ngOnInit(): <span class="hljs-built_in">void</span> {
         <span class="hljs-built_in">this</span>.selectedAction = <span class="hljs-built_in">this</span>.actions[<span class="hljs-number">1</span>];
     }
 

@@ -973,6 +973,7 @@
   --slider-handle-value-font-weight: var(--paragraph-05-font-weight);
   --slider-handle-value-letter-spacing: var(--paragraph-05-letter-spacing);
   --slider-negative-background-color: var(--negative-dimmed);
+  --slider-tick-color: var(--text-01);
   --small-stage-min-height: 208px;
   --small-stage-image-min-height: 64px;
   --small-stage-image-max-height: 144px;
@@ -996,7 +997,7 @@
   --small-stage-expert-image-min-height: 100px;
   --small-stage-expert-image-mobile-height: 15vw;
   --small-stage-expert-mobile-header-padding: 8px 0;
-  --rating-icon-color: var(--text-01);
+  --rating-icon-color: #007ab3;
   --rating-icon-size: 40px;
   --rating-label-color: var(--text-01);
   --rating-disabled-icon-color: var(--disabled-01);
@@ -1079,7 +1080,7 @@
   --selectable-table-row-hover-background-color: var(--ui-02);
   --selectable-table-row-active-background-color: var(--ui-02);
   --selectable-table-row-selected-hover-background-color: var(--ui-02);
-  --selectable-table-row-selected-border-color: var(--active-primary);
+  --selectable-table-row-selected-border-color: var(--interactive-primary);
   --expandable-table-arrow-icon-color: var(--text-01);
   --zebra-table-even-row-background-color: var(--ui-02);
   --zebra-table-odd-row-background-color: transparent;
@@ -1142,7 +1143,7 @@
   --file-uploader-file-row-uploading-file-name-color: #9a9a9a;
   --file-uploader-file-name-font-size: var(--paragraph-03-font-size);
   --file-uploader-file-name-line-height: 16px;
-  --file-uploader-file-name-font-weight: 600;
+  --file-uploader-file-name-font-weight: 400;
   --file-uploader-file-name-letter-spacing: 0;
   --file-uploader-hint-font-size: var(--paragraph-04-font-size);
   --file-uploader-hint-line-height: var(--paragraph-05-line-height);

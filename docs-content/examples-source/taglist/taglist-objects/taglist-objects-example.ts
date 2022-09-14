@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./taglist-objects-example.css'],
 })
 export class TaglistObjectsExampleComponent {
-    public tags: any[] = [
+    tags: any[] = [
         { nxTaglistLabel: 'Apples' },
         { nxTaglistLabel: 'Oranges' },
         { nxTaglistLabel: 'asd' },

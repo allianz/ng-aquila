@@ -14,11 +14,7 @@
         control: FormControl | <span class="hljs-literal">null</span>,
         <span class="hljs-attr">form</span>: FormGroupDirective | NgForm | <span class="hljs-literal">null</span>,
     ): <span class="hljs-built_in">boolean</span> {
-        <span class="hljs-keyword">return</span> !!(
-            control &amp;&amp;
-            control.invalid &amp;&amp;
-            (control.dirty || (form &amp;&amp; form.submitted))
-        );
+        <span class="hljs-keyword">return</span> !!(control?.invalid &amp;&amp; (control.dirty || form?.submitted));
     }
 }
 

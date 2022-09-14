@@ -1,0 +1,64 @@
+<div nxRow nxRowJustify="center">
+    <div nxCol="12,12,10,10,8,6">
+        <div class="breakdown-table nx-margin-bottom-s">
+            <div class="breakdown-table__content">
+                <p nxCopytext="small" class="nx-margin-bottom-s">
+                    Based on your annual premium and additional selected
+                    coverages
+                </p>
+
+                <div
+                    nxHeadline="subsection-small"
+                    class="nx-font-weight-semibold"
+                >
+                    Total coverage
+                </div>
+
+                <div class="nx-margin-bottom-s">
+                    <span
+                        nxHeadline="subsection-small"
+                        class="nx-font-weight-semibold"
+                        >$</span
+                    >
+                    <span nxHeadline="section" class="nx-font-weight-bold">
+                        705
+                    </span>
+                    <span nxCopytext="small">/year</span>
+                </div>
+            </div>
+
+            <nx-expansion-panel nxStyle="light">
+                <nx-expansion-panel-header>
+                    <nx-expansion-panel-title>
+                        Premium breakdown
+                    </nx-expansion-panel-title>
+                </nx-expansion-panel-header>
+
+                <nx-data-display
+                    label="Annual base premium"
+                    orientation="horizontal"
+                >
+                    {{421 | currency}}
+                </nx-data-display>
+                <nx-data-display
+                    label="Windscreen cover"
+                    orientation="horizontal"
+                >
+                    {{120 | currency}}
+                </nx-data-display>
+                <nx-data-display
+                    label="Emergency and/or fire service levies"
+                    orientation="horizontal"
+                >
+                    {{8 | currency}}
+                </nx-data-display>
+                <nx-data-display
+                    label="Goods & services tax (GST)"
+                    orientation="horizontal"
+                >
+                    {{78 | currency}}
+                </nx-data-display>
+            </nx-expansion-panel>
+        </div>
+    </div>
+</div>

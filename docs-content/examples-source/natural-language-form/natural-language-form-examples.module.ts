@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxNaturalLanguageFormModule } from '@aposin/ng-aquila/natural-language-form';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { NaturalLanguageFormBasicExampleComponent } from './natural-language-form-basic/natural-language-form-basic-example';
 import { NaturalLanguageFormExtendedExampleComponent } from './natural-language-form-extended/natural-language-form-extended-example';

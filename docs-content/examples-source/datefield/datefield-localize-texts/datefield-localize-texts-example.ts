@@ -4,14 +4,14 @@ import { Moment } from 'moment';
 
 @Injectable()
 export class MyIntl extends NxDatepickerIntl {
-    calendarLabel = 'My Calendar'; /** used by screen readers */
-    openCalendarLabel = 'Open my calendar'; /** used by screen readers */
-    prevMonthLabel = 'My previous month'; /** used by screen readers */
-    nextMonthLabel = 'My next month'; /** used by screen readers */
-    prevYearLabel = 'My previous year'; /** used by screen readers */
-    nextYearLabel = 'My next year'; /** used by screen readers */
-    prevMultiYearLabel = 'My previous 20 years'; /** used by screen readers */
-    nextMultiYearLabel = 'My next 20 years'; /** used by screen readers */
+    calendarLabel = 'My Calendar';
+    openCalendarLabel = 'Open my calendar';
+    prevMonthLabel = 'My previous month';
+    nextMonthLabel = 'My next month';
+    prevYearLabel = 'My previous year';
+    nextYearLabel = 'My next year';
+    prevMultiYearLabel = 'My previous 20 years';
+    nextMultiYearLabel = 'My next 20 years';
     switchToMonthViewLabel = 'Choose a special date';
     switchToMultiYearViewLabel = 'Choose button';
 }

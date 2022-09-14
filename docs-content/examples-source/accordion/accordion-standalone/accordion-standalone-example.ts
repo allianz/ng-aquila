@@ -8,6 +8,4 @@ import { Component } from '@angular/core';
     templateUrl: './accordion-standalone-example.html',
     styleUrls: ['./accordion-standalone-example.css'],
 })
-export class AccordionStandaloneExampleComponent {
-    constructor() {}
-}
+export class AccordionStandaloneExampleComponent {}

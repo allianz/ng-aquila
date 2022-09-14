@@ -20,7 +20,10 @@ const playSvg =
     ],
 })
 export class IconEssentialOverrideExampleComponent {
-    constructor(public iconRegistry: NxIconRegistry, sanitizer: DomSanitizer) {
+    constructor(
+        readonly iconRegistry: NxIconRegistry,
+        sanitizer: DomSanitizer,
+    ) {
         // override it with another SVG
         this.iconRegistry.addSvgIconLiteral(
             'play',

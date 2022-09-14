@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./slider-default-example.css'],
 })
 export class SliderDefaultExampleComponent {
-    sliderDemoValue: number = 42;
-    step: number = 0.1;
+    sliderDemoValue = 42;
+    step = 0.1;
 }

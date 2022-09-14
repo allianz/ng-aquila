@@ -1,0 +1,45 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    DATA_DISPLAY_DEFAULT_OPTIONS,
+    DataDisplayDefaultOptions,
+    NxDataDisplayOrientation,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/data-display&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxBreakpoints, NxViewportService } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/utils&#x27;</span>;
+<span class="hljs-keyword">import</span> { Observable } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
+<span class="hljs-keyword">import</span> { map } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
+
+<span class="hljs-keyword">const</span> options: DataDisplayDefaultOptions = {
+    <span class="hljs-attr">size</span>: <span class="hljs-string">&#x27;medium&#x27;</span>, <span class="hljs-comment">// expert mode default size</span>
+};
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title </span>Responsive data display example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;data-display-responsive-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./data-display-responsive-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./data-display-responsive-example.css&#x27;</span>],
+    <span class="hljs-attr">providers</span>: [
+        {
+            <span class="hljs-attr">provide</span>: DATA_DISPLAY_DEFAULT_OPTIONS,
+            <span class="hljs-attr">useValue</span>: options,
+        },
+    ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DataDisplayResponsiveExampleComponent</span> </span>{
+    <span class="hljs-keyword">readonly</span> mobileViewport$ = <span class="hljs-built_in">this</span>.viewportService.max(
+        NxBreakpoints.BREAKPOINT_MEDIUM,
+        <span class="hljs-number">100</span>,
+    );
+
+    <span class="hljs-keyword">readonly</span> orientation$: Observable&lt;NxDataDisplayOrientation&gt; =
+        <span class="hljs-built_in">this</span>.mobileViewport$.pipe(
+            map(<span class="hljs-function"><span class="hljs-params">mobile</span> =&gt;</span> (mobile ? <span class="hljs-string">&#x27;horizontal-columns&#x27;</span> : <span class="hljs-string">&#x27;vertical&#x27;</span>)),
+        );
+
+    <span class="hljs-keyword">readonly</span> marginClass$: Observable&lt;<span class="hljs-built_in">string</span>&gt; = <span class="hljs-built_in">this</span>.mobileViewport$.pipe(
+        map(<span class="hljs-function"><span class="hljs-params">mobile</span> =&gt;</span> (mobile ? <span class="hljs-string">&#x27;&#x27;</span> : <span class="hljs-string">&#x27;nx-margin-bottom-s&#x27;</span>)),
+    );
+
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> viewportService: NxViewportService</span>)</span> {}
+}

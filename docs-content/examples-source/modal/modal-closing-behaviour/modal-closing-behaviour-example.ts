@@ -12,7 +12,7 @@ import { NxDialogService } from '@aposin/ng-aquila/modal';
 export class ModalClosingBehaviourExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;
 
-    constructor(public dialogService: NxDialogService) {}
+    constructor(private readonly dialogService: NxDialogService) {}
 
     openFromTemplate(): void {
         this.dialogService.open(this.templateRef, {

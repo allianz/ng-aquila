@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./slider-decimal-example.css'],
 })
 export class SliderDecimalExampleComponent {
-    step: number = 0.1;
-    floatSliderDemoValue: number = 1;
+    step = 0.1;
+    floatSliderDemoValue = 1;
 }

@@ -12,14 +12,14 @@ import { takeUntil } from 'rxjs/operators';
     styleUrls: ['sidepanel-floating-example.css'],
 })
 export class SidepanelFloatingExampleComponent implements OnDestroy {
-    opened: boolean = true;
-    isGreaterThanSmall: boolean = true;
+    opened = true;
+    isGreaterThanSmall = true;
 
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        public viewportService: NxViewportService,
-        private _cdr: ChangeDetectorRef,
+        readonly viewportService: NxViewportService,
+        private readonly _cdr: ChangeDetectorRef,
     ) {
         this.viewportService
             .min(NxBreakpoints.BREAKPOINT_SMALL)

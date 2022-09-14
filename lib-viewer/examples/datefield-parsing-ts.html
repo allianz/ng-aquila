@@ -1,5 +1,5 @@
 <span class="hljs-keyword">import</span> { Component, Inject, OnDestroy, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { NxDateAdapter, NX_DATE_LOCALE } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
+<span class="hljs-keyword">import</span> { NX_DATE_LOCALE, NxDateAdapter } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
 <span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
 <span class="hljs-keyword">import</span> { Moment } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
 <span class="hljs-keyword">import</span> { Subject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
@@ -14,18 +14,18 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./datefield-parsing-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DatefieldParsingExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span>, <span class="hljs-title">OnDestroy</span> </span>{
-    <span class="hljs-keyword">public</span> strictDate = moment();
-    <span class="hljs-keyword">public</span> nonStrictDate = moment();
-    <span class="hljs-keyword">public</span> openedStrict = <span class="hljs-literal">false</span>;
-    <span class="hljs-keyword">public</span> openedNonStrict = <span class="hljs-literal">false</span>;
-    <span class="hljs-keyword">public</span> currentLocale = <span class="hljs-built_in">this</span>.nxDateLocale;
-    <span class="hljs-keyword">public</span> parseFormat = <span class="hljs-string">&#x27;MM/DD/YYYY&#x27;</span>;
+    strictDate = moment();
+    nonStrictDate = moment();
+    openedStrict = <span class="hljs-literal">false</span>;
+    openedNonStrict = <span class="hljs-literal">false</span>;
+    currentLocale = <span class="hljs-built_in">this</span>.nxDateLocale;
+    parseFormat = <span class="hljs-string">&#x27;MM/DD/YYYY&#x27;</span>;
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> Subject&lt;<span class="hljs-built_in">void</span>&gt;();
 
     <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">public</span> nxDateAdapter: NxDateAdapter&lt;Moment&gt;,
-        <span class="hljs-meta">@Inject</span>(NX_DATE_LOCALE) <span class="hljs-keyword">public</span> nxDateLocale: <span class="hljs-built_in">string</span>,
+        <span class="hljs-keyword">readonly</span> nxDateAdapter: NxDateAdapter&lt;Moment&gt;,
+        <span class="hljs-meta">@Inject</span>(NX_DATE_LOCALE) <span class="hljs-keyword">readonly</span> nxDateLocale: <span class="hljs-built_in">string</span>,
     </span>)</span> {}
 
     ngOnInit(): <span class="hljs-built_in">void</span> {

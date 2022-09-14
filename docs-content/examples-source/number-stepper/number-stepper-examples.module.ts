@@ -4,6 +4,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxMessageModule } from '@aposin/ng-aquila/message';
 import { NxNumberStepperModule } from '@aposin/ng-aquila/number-stepper';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { NumberStepperAccessibilityExampleComponent } from './number-stepper-a11y/number-stepper-a11y-example';
 import { NumberStepperAdditionsExampleComponent } from './number-stepper-additions/number-stepper-additions-example';

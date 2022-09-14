@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./dropdown-group-example.css'],
 })
 export class DropdownGroupExampleComponent {
-    testBind: string = 'Catfish';
+    testBind = 'Catfish';
 }

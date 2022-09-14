@@ -8,16 +8,23 @@
             <span class="docs-api-module-import__from-span">from</span>
             <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/datefield'</span>;
         </code>
-    </p><h3 id="services" class="docs-header-link docs-api-h3">
-        <span header-link="services"></span>
-        Services
+    </p><h3 id="components" class="docs-header-link docs-api-h3">
+        <span header-link="components"></span>
+        Components
     </h3>
      
 
-<h4 id="NxDatepickerIntl" class="docs-header-link docs-api-h4 docs-api-class-name">
-    <span header-link="NxDatepickerIntl"></span>
-    <code>NxDatepickerIntl</code></h4><p class="docs-api-class-description"><p>Datepicker data that requires internationalization.</p>
-</p><h5 class="docs-api-method-header">Properties</h5>
+<h4 id="NxDatepickerToggleComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxDatepickerToggleComponent"></span>
+    <code>NxDatepickerToggleComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+        
+        <span class="docs-api-class-selector-name">nx-datepicker-toggle</span>
+        
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxDatepickerToggle</span><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -26,156 +33,45 @@
      
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'for'</span>) </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">calendarLabel</span>:
-                <span class="docs-api-property__type">'Calendar'</span>
+                <span class="docs-api-property__name">datepicker</span>:
+                <span class="docs-api-property__type">NxDatepickerComponent<D></span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>A label for the calendar popup (used by screen readers).</p>
+        <p>Datepicker instance that the button will toggle.</p>
 </td>
 </tr>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">changes</span>:
-                <span class="docs-api-property__type">Subject<void></span>
+                <span class="docs-api-property__name">disabled</span>:
+                <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Stream that emits whenever the labels here are changed. Use this to notify
-components if the labels have changed after initialization.</p>
+        <p>Whether the toggle button is disabled.</p>
 </td>
 </tr>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">nextMonthLabel</span>:
-                <span class="docs-api-property__type">'Next month'</span>
+                <span class="docs-api-property__name">tabindex</span>:
+                <span class="docs-api-property__type">number</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>A label for the next month button (used by screen readers).</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">nextMultiYearLabel</span>:
-                <span class="docs-api-property__type">'Next 20 years'</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>A label for the next multi-year button (used by screen readers).</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">nextYearLabel</span>:
-                <span class="docs-api-property__type">'Next year'</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>A label for the next year button (used by screen readers).</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">openCalendarLabel</span>:
-                <span class="docs-api-property__type">'Open calendar'</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>A label for the button used to open the calendar popup (used by screen readers).</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">prevMonthLabel</span>:
-                <span class="docs-api-property__type">'Previous month'</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>A label for the previous month button (used by screen readers).</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">prevMultiYearLabel</span>:
-                <span class="docs-api-property__type">'Previous 20 years'</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>A label for the previous multi-year button (used by screen readers).</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">prevYearLabel</span>:
-                <span class="docs-api-property__type">'Previous year'</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>A label for the previous year button (used by screen readers).</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">switchToMonthViewLabel</span>:
-                <span class="docs-api-property__type">'Choose date'</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>A label for the &#39;switch to month view&#39; button (used by screen readers).</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">switchToMultiYearViewLabel</span>:
-                <span class="docs-api-property__type">'Choose month and year'</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>A label for the &#39;switch to year view&#39; button (used by screen readers).</p>
+        <p>Sets the tabindex for the toggle button. Default: 0.</p>
 </td>
 </tr>
   
@@ -184,9 +80,18 @@ components if the labels have changed after initialization.</p>
  
    
 
-<h4 id="DatepickerDefaultOptions" class="docs-header-link docs-api-h4 docs-api-class-name">
-    <span header-link="DatepickerDefaultOptions"></span>
-    <code>DatepickerDefaultOptions</code></h4><h5 class="docs-api-method-header">Properties</h5>
+<h4 id="NxDatepickerComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxDatepickerComponent"></span>
+    <code>NxDatepickerComponent</code></h4><p class="docs-api-class-description"><p>Component responsible for managing the datepicker popup/dialog.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+        
+        <span class="docs-api-class-selector-name">nx-datepicker</span>
+        
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxDatepicker</span><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -195,30 +100,137 @@ components if the labels have changed after initialization.</p>
      
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">changes</span>:
-                <span class="docs-api-property__type">Subject<void></span>
+                <span class="docs-api-property__name">disabled</span>:
+                <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Stream that emits whenever the default options are changed. Use this to notify
-components if the default options have changed after initialization.</p>
+        <p>Whether the datepicker pop-up should be disabled.
+The datepicker is also disabled if the belonging input is readonly.</p>
 </td>
 </tr>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">toggleIconTabindex</span>:
-                <span class="docs-api-property__type">number</span>
+                <span class="docs-api-property__name">opened</span>:
+                <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the focus on toggle behavior. (optional)</p>
+        <p>Whether the calendar is open.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">panelClass</span>:
+                <span class="docs-api-property__type">string | string[]</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Classes to be passed to the date picker panel. Supports the same syntax as <code>ngClass</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">startAt</span>:
+                <span class="docs-api-property__type">D | null</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The date to open the calendar initially.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">startView</span>:
+                <span class="docs-api-property__type">'month' | 'year' | 'multi-year'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The view that the calendar should start in.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'closed'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">closedStream</span>:
+                <span class="docs-api-property__type">EventEmitter<void></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Emits when the datepicker has been closed.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">monthSelected</span>:
+                <span class="docs-api-property__type">EventEmitter<D></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Emits selected month in year view.
+This doesn&#39;t imply a change on the selected date.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'opened'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">openedStream</span>:
+                <span class="docs-api-property__type">EventEmitter<void></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Emits when the datepicker has been opened.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">yearSelected</span>:
+                <span class="docs-api-property__type">EventEmitter<D></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Emits selected year in multiyear view.
+This doesn&#39;t imply a change on the selected date.</p>
 </td>
 </tr>
   
@@ -451,231 +463,6 @@ components if the default options have changed after initialization.</p>
         
     </div>
 </p> 
-
- 
-   
-
-<h4 id="NxDatepickerToggleComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
-    <span header-link="NxDatepickerToggleComponent"></span>
-    <code>NxDatepickerToggleComponent</code></h4><p class="docs-api-directive-selectors">
-    <span class="docs-api-class-selector-label">Selector:</span>
-    <div class="docs-api__selector-container">
-        
-        <span class="docs-api-class-selector-name">nx-datepicker-toggle</span>
-        
-    </div>
-</p><span class="docs-api-class-export-label">Exported as:</span>
-<span class="docs-api-class-export-name">nxDatepickerToggle</span><h5 class="docs-api-method-header">Properties</h5>
-<table class="docs-api-properties-table">
-    <tr class="docs-api-properties-header-row">
-        <th class="docs-api-properties-th">Name</th>
-        <th class="docs-api-properties-th">Description</th>
-    </tr>
-     
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'for'</span>) </div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">datepicker</span>:
-                <span class="docs-api-property__type">NxDatepickerComponent<D></span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Datepicker instance that the button will toggle.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">disabled</span>:
-                <span class="docs-api-property__type">boolean</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Whether the toggle button is disabled.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">tabindex</span>:
-                <span class="docs-api-property__type">number</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Sets the tabindex for the toggle button. Default: 0.</p>
-</td>
-</tr>
-  
-</table> 
-
- 
-   
-
-<h4 id="NxDatepickerComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
-    <span header-link="NxDatepickerComponent"></span>
-    <code>NxDatepickerComponent</code></h4><p class="docs-api-class-description"><p>Component responsible for managing the datepicker popup/dialog.</p>
-</p><p class="docs-api-directive-selectors">
-    <span class="docs-api-class-selector-label">Selector:</span>
-    <div class="docs-api__selector-container">
-        
-        <span class="docs-api-class-selector-name">nx-datepicker</span>
-        
-    </div>
-</p><span class="docs-api-class-export-label">Exported as:</span>
-<span class="docs-api-class-export-name">nxDatepicker</span><h5 class="docs-api-method-header">Properties</h5>
-<table class="docs-api-properties-table">
-    <tr class="docs-api-properties-header-row">
-        <th class="docs-api-properties-th">Name</th>
-        <th class="docs-api-properties-th">Description</th>
-    </tr>
-     
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">disabled</span>:
-                <span class="docs-api-property__type">boolean</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Whether the datepicker pop-up should be disabled.
-The datepicker is also disabled if the belonging input is readonly.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">opened</span>:
-                <span class="docs-api-property__type">boolean</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Whether the calendar is open.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">panelClass</span>:
-                <span class="docs-api-property__type">string | string[]</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Classes to be passed to the date picker panel. Supports the same syntax as <code>ngClass</code>.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">startAt</span>:
-                <span class="docs-api-property__type">D | null</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>The date to open the calendar initially.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">startView</span>:
-                <span class="docs-api-property__type">'month' | 'year' | 'multi-year'</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>The view that the calendar should start in.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'closed'</span>) </div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">closedStream</span>:
-                <span class="docs-api-property__type">EventEmitter<void></span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Emits when the datepicker has been closed.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
-            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">monthSelected</span>:
-                <span class="docs-api-property__type">EventEmitter<D></span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Emits selected month in year view.
-This doesn&#39;t imply a change on the selected date.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'opened'</span>) </div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">openedStream</span>:
-                <span class="docs-api-property__type">EventEmitter<void></span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Emits when the datepicker has been opened.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
-            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">yearSelected</span>:
-                <span class="docs-api-property__type">EventEmitter<D></span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Emits selected year in multiyear view.
-This doesn&#39;t imply a change on the selected date.</p>
-</td>
-</tr>
-  
-</table> 
 
  
   <h3 id="additional_classes" class="docs-header-link docs-api-h3">
@@ -1543,6 +1330,219 @@ calendar popup. For consistency, we always use NxDatepickerInputEvent instead.</
     </td>
     <td class="docs-api-property-description">
         <p>The new value for the target datepicker input.</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
+   
+
+<h4 id="NxDatepickerIntl" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxDatepickerIntl"></span>
+    <code>NxDatepickerIntl</code></h4><p class="docs-api-class-description"><p>Datepicker data that requires internationalization.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">calendarLabel</span>:
+                <span class="docs-api-property__type">'Calendar'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the calendar popup (used by screen readers).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">changes</span>:
+                <span class="docs-api-property__type">Subject<void></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Stream that emits whenever the labels here are changed. Use this to notify
+components if the labels have changed after initialization.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">nextMonthLabel</span>:
+                <span class="docs-api-property__type">'Next month'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the next month button (used by screen readers).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">nextMultiYearLabel</span>:
+                <span class="docs-api-property__type">'Next 20 years'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the next multi-year button (used by screen readers).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">nextYearLabel</span>:
+                <span class="docs-api-property__type">'Next year'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the next year button (used by screen readers).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">openCalendarLabel</span>:
+                <span class="docs-api-property__type">'Open calendar'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the button used to open the calendar popup (used by screen readers).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">prevMonthLabel</span>:
+                <span class="docs-api-property__type">'Previous month'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the previous month button (used by screen readers).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">prevMultiYearLabel</span>:
+                <span class="docs-api-property__type">'Previous 20 years'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the previous multi-year button (used by screen readers).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">prevYearLabel</span>:
+                <span class="docs-api-property__type">'Previous year'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the previous year button (used by screen readers).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">switchToMonthViewLabel</span>:
+                <span class="docs-api-property__type">'Choose date'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the &#39;switch to month view&#39; button (used by screen readers).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">switchToMultiYearViewLabel</span>:
+                <span class="docs-api-property__type">'Choose month and year'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the &#39;switch to year view&#39; button (used by screen readers).</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
+   
+
+<h4 id="DatepickerDefaultOptions" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="DatepickerDefaultOptions"></span>
+    <code>DatepickerDefaultOptions</code></h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">changes</span>?:
+                <span class="docs-api-property__type">Subject<void></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Stream that emits whenever the default options are changed. Use this to notify
+components if the default options have changed after initialization.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">toggleIconTabindex</span>?:
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the focus on toggle behavior. (optional)</p>
 </td>
 </tr>
   

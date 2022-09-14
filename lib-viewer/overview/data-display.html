@@ -3,9 +3,14 @@
 <div nx-docs-example="data-display-standard" config="{}">exampleID: data-display-standard</div>
 <div class="docs-expert-container">
 <h3 id="expert%3A-size-variations" tabindex="-1" class="docs-markdown--h3">Expert: Size variations</h3>
-<p class="docs-markdown--p">By default, expert data display is downsized to <code>size=&quot;medium&quot;</code> via <code>DATA_DISPLAY_DEFAULT_OPTIONS</code>. A more condensed version is available using <code>size=&quot;small&quot;</code>.</p>
+<p class="docs-markdown--p">By default, expert data display is downsized to <code>size=&quot;medium&quot;</code> via <code>DATA_DISPLAY_DEFAULT_OPTIONS</code>.</p>
+<p class="docs-markdown--p">A more condensed version is available using <code>size=&quot;small&quot;</code>.</p>
 <div nx-docs-example="data-display-condensed" config="{}">exampleID: data-display-condensed</div>
 <h3 id="expert%3A-horizontal-orientation" tabindex="-1" class="docs-markdown--h3">Expert: Horizontal orientation</h3>
-<p class="docs-markdown--p">The orientation of the data display can be changed to horizontal using <code>orientation=&quot;horizontal&quot;</code> input.</p>
+<p class="docs-markdown--p">The orientation of the data display can be changed to horizontal using <code>orientation=&quot;horizontal&quot;</code> or <code>orientation=&quot;horizontal-columns&quot;</code> input.</p>
+<p class="docs-markdown--p">Make sure to treat the <code>&lt;nx-data-display-label&gt;</code> element as inline to prevent a space char before the colon.</p>
 <div nx-docs-example="data-display-horizontal" config="{}">exampleID: data-display-horizontal</div>
+<p class="docs-markdown--p">Application developers can implement responsive layout based on individual needs using the <code>NxViewportService</code>.</p>
+<p class="docs-markdown--p">Use the <code>labelColumns</code> input for finer control of the label:value horizontal size ratio when in <code>orientation=&quot;horizontal-columns&quot;</code> mode.</p>
+<div nx-docs-example="data-display-responsive" config="{}">exampleID: data-display-responsive</div>
 </div>

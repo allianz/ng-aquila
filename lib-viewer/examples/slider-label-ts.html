@@ -9,7 +9,7 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./slider-label-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SliderLabelExampleComponent</span> </span>{
-    <span class="hljs-attr">euroSliderDemoValue</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>;
+    euroSliderDemoValue = <span class="hljs-number">0</span>;
     euroValueFormatter = <span class="hljs-function">(<span class="hljs-params">value: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span></span>) =&gt;</span>
         <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">Number</span>(value).toFixed(<span class="hljs-number">2</span>)}</span> €`</span>;
     minEuroFormatter = <span class="hljs-function">(<span class="hljs-params">value: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-string">`min. <span class="hljs-subst">${value}</span> €`</span>;

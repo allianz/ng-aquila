@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /** @title Switcher Disabled Reactive Form */
 @Component({
@@ -8,19 +8,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./switcher-disabled-example.css'],
 })
 export class SwitcherDisabledExampleComponent {
-    checked: boolean = true;
-    templateModel: boolean = false;
-    testForm!: FormGroup;
+    checked = true;
+    templateModel = false;
 
-    constructor(private fb: FormBuilder) {
-        this.createForm();
+    readonly testForm = this.fb.group({
+        switcherDisabledReactive: [false, Validators.requiredTrue],
+    });
+
+    constructor(private readonly fb: FormBuilder) {
         this.testForm.disable();
-    }
-
-    createForm() {
-        this.testForm = this.fb.group({
-            switcherDisabledReactive: [false, Validators.requiredTrue],
-        });
     }
 
     switchStatusClick() {

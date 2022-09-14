@@ -2,18 +2,18 @@
     <nx-label>My Title</nx-label>
     <ng-container *ngFor="let step of testStepsData">
         <nx-step [label]="step">
-            <div class="nx-margin-y-s"> content for {{step}} </div>
+            <div class="nx-margin-y-s">content for {{step}}</div>
             <button
-                nxButton="primary small"
+                nxButton="secondary small"
                 nxStepperPrevious
                 class="nx-margin-right-2xs"
                 type="button"
             >
                 Previous
             </button>
-            <button nxButton="primary small" nxStepperNext type="button"
-                >Next</button
-            >
+            <button nxButton="primary small" nxStepperNext type="button">
+                Next
+            </button>
         </nx-step>
     </ng-container>
 </nx-single-stepper>

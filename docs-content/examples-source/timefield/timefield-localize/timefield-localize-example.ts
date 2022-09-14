@@ -20,7 +20,7 @@ export class MyIntl extends NxTimefieldIntl {
 export class TimefieldLocalizeExampleComponent implements OnInit {
     testForm!: FormGroup;
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.testForm = new FormGroup({
             today: new FormControl('', {
                 validators: [Validators.required],

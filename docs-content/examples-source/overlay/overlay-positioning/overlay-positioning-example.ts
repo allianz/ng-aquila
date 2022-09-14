@@ -18,7 +18,7 @@ export class OverlayPositioningExampleComponent {
 
     @ViewChild(TemplateRef) template!: TemplateRef<any>;
 
-    constructor(public nxOverlay: NxOverlayService) {}
+    constructor(readonly nxOverlay: NxOverlayService) {}
 
     open(element: ElementRef, direction: NxOverlayDirection) {
         if (this.currentOverlay) {

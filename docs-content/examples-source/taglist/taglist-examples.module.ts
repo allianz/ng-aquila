@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxTaglistModule } from '@aposin/ng-aquila/taglist';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { TaglistExampleComponent } from './taglist/taglist-example';
 import { TaglistA11yExampleComponent } from './taglist-a11y/taglist-a11y-example';
 import { TaglistBasicExampleComponent } from './taglist-basic/taglist-basic-example';
 import { TaglistDeleteExampleComponent } from './taglist-delete/taglist-delete-example';
@@ -11,7 +13,6 @@ import { TaglistObjectsExampleComponent } from './taglist-objects/taglist-object
 import { TaglistOutputExampleComponent } from './taglist-output/taglist-output-example';
 import { TaglistReactiveExampleComponent } from './taglist-reactive/taglist-reactive-example';
 import { TaglistTemplatedrivenExampleComponent } from './taglist-templatedriven/taglist-templatedriven-example';
-import { TaglistExampleComponent } from './taglist/taglist-example';
 
 const EXAMPLES = [
     TaglistExampleComponent,

@@ -10,15 +10,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./code-input-type-example.css'],
 })
 export class CodeInputTypeExampleComponent implements OnInit {
-    inputValue: string = '';
+    inputValue = '';
     codeForm!: FormGroup;
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.codeForm = new FormGroup({
             keyCode: new FormControl(this.inputValue, {
                 validators: [
                     Validators.required,
-                    Validators.pattern(RegExp('^[0-9]*$')),
+                    Validators.pattern(/^\d*$/),
                     Validators.minLength(4),
                 ],
                 updateOn: 'submit',

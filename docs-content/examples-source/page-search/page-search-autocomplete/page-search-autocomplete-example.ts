@@ -7,19 +7,19 @@ import { map } from 'rxjs/operators';
     providedIn: 'root',
 })
 export class WikipediaService {
-    private WIKIPEDIA_URL = 'https://en.wikipedia.org/w/api.php';
+    private readonly WIKIPEDIA_URL = 'https://en.wikipedia.org/w/api.php';
 
-    constructor(private client: HttpClient) {}
+    constructor(private readonly client: HttpClient) {}
 
     search(term: string): Observable<any[]> {
         const url = searchUrl(term, this.WIKIPEDIA_URL);
-        return this.client.jsonp(url, 'callback').pipe(
-            map((response: any) =>
-                response[1].map((item: any) => {
-                    return { value: item };
-                }),
-            ),
-        );
+        return this.client
+            .jsonp(url, 'callback')
+            .pipe(
+                map((response: any) =>
+                    response[1].map((item: any) => ({ value: item })),
+                ),
+            );
 
         function searchUrl(searchTeam: string, base: string) {
             const params = new HttpParams()
@@ -42,10 +42,11 @@ export class WikipediaService {
 })
 export class PageSearchAutocompleteExampleComponent {
     searchFunction: (term: string) => Observable<string[]>;
+
     searchTerm1 = '';
     searchTerm2 = '';
 
-    constructor(public wikipediaService: WikipediaService) {
+    constructor(readonly wikipediaService: WikipediaService) {
         this.searchFunction = (term: string) =>
             wikipediaService
                 .search(term)

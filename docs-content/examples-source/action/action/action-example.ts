@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-type Action = {
+interface Action {
     icon: string;
     label: string;
     notification?: boolean;
     notificationCount?: number;
-};
+}
 
 /**
  * @title Action Example
@@ -41,9 +41,7 @@ export class ActionExampleComponent implements OnInit {
 
     selectedAction!: Action;
 
-    constructor() {}
-
-    ngOnInit() {
+    ngOnInit(): void {
         this.selectedAction = this.actions[1];
     }
 

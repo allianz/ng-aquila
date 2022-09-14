@@ -1,11 +1,11 @@
 <span class="hljs-keyword">import</span> { AfterContentInit, Component, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    ErrorDefaultOptions,
     ERROR_DEFAULT_OPTIONS,
+    ErrorDefaultOptions,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    FormfieldDefaultOptions,
     FORMFIELD_DEFAULT_OPTIONS,
+    FormfieldDefaultOptions,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
 <span class="hljs-keyword">import</span> { NxInputDirective } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
 
@@ -31,11 +31,12 @@
     ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FormfieldGlobalExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">AfterContentInit</span> </span>{
-    <span class="hljs-keyword">public</span> modelValue!: <span class="hljs-built_in">string</span>;
+    modelValue!: <span class="hljs-built_in">string</span>;
+
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;errorNgModel&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> })
     errorNgModel!: NxInputDirective;
 
-    <span class="hljs-function"><span class="hljs-title">ngAfterContentInit</span>(<span class="hljs-params"></span>)</span> {
+    ngAfterContentInit(): <span class="hljs-built_in">void</span> {
         <span class="hljs-built_in">this</span>.errorNgModel.ngControl?.control?.markAsTouched();
     }
 }

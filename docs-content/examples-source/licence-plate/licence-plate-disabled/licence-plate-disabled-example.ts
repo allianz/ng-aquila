@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
     styleUrls: ['licence-plate-disabled-example.css'],
 })
 export class LicencePlateDisabledExample {
-    disabled: boolean = true;
+    disabled = true;
     value = '';
 }

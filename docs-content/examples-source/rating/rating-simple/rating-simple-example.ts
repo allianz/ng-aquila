@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./rating-simple-example.css'],
 })
 export class RatingSimpleExampleComponent {
-    simpleBinding: number = 1;
+    simpleBinding = 1;
 }

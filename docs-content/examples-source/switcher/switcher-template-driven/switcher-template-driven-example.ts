@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./switcher-template-driven-example.css'],
 })
 export class SwitcherTemplateDrivenExampleComponent {
-    templateModel: boolean = true;
+    templateModel = true;
 }

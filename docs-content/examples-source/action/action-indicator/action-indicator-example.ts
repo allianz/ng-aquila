@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
-type Action = {
+interface Action {
     icon: string;
     label: string;
     notification?: boolean;
     notificationCount?: number;
-};
+}
 
 /**
  * @title Indicator Example

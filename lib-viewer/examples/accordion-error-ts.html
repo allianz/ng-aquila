@@ -1,5 +1,5 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { FormBuilder, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>Accordion Error Example
@@ -10,23 +10,18 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./accordion-error-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AccordionErrorExampleComponent</span> </span>{
-    <span class="hljs-keyword">public</span> showErrorPayment: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
-    <span class="hljs-keyword">public</span> showErrorInfo: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">readonly</span> formGroupInfo = <span class="hljs-built_in">this</span>.fb.group({
+        <span class="hljs-attr">surname</span>: [<span class="hljs-string">&#x27;Mustermann&#x27;</span>, Validators.required],
+    });
 
-    formGroupInfo!: FormGroup;
-    formGroupPayment!: FormGroup;
+    <span class="hljs-keyword">readonly</span> formGroupPayment = <span class="hljs-built_in">this</span>.fb.group({
+        <span class="hljs-attr">input</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required],
+    });
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
-        <span class="hljs-built_in">this</span>.createForm();
-    }
+    showErrorPayment = <span class="hljs-literal">true</span>;
+    showErrorInfo = <span class="hljs-literal">false</span>;
 
-    <span class="hljs-function"><span class="hljs-title">createForm</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">this</span>.formGroupInfo = <span class="hljs-built_in">this</span>.fb.group({
-            <span class="hljs-attr">surname</span>: [<span class="hljs-string">&#x27;Mustermann&#x27;</span>, Validators.required],
-        });
-        <span class="hljs-built_in">this</span>.formGroupPayment = <span class="hljs-built_in">this</span>.fb.group({
-            <span class="hljs-attr">input</span>: [, Validators.required],
-        });
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>)</span> {
         <span class="hljs-built_in">this</span>.formGroupPayment.markAllAsTouched();
     }
 

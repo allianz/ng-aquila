@@ -27,7 +27,7 @@ export class OverlayLimitingFallbacksExampleComponent {
 
     @ViewChild(TemplateRef) template!: TemplateRef<any>;
 
-    constructor(public nxOverlay: NxOverlayService) {}
+    constructor(readonly nxOverlay: NxOverlayService) {}
 
     open(element: ElementRef) {
         if (this.currentOverlay) {

@@ -1,0 +1,43 @@
+<div nxRow>
+    <div nxCol="12,12,6,6,3" [ngClass]="(marginClass$ | async) ?? ''">
+        <nx-data-display
+            label="Label"
+            [orientation]="orientation$ | async"
+            labelColumns="4"
+        >
+            Lorem ipsum
+        </nx-data-display>
+    </div>
+
+    <div nxCol="12,12,6,6,3" [ngClass]="(marginClass$ | async) ?? ''">
+        <nx-data-display [orientation]="orientation$ | async" labelColumns="4">
+            <nx-data-display-label class="text-lightgreen"
+                >Custom Label</nx-data-display-label
+            >
+            Lorem ipsum
+        </nx-data-display>
+    </div>
+
+    <div nxCol="12,12,6,6,3" [ngClass]="(marginClass$ | async) ?? ''">
+        <nx-data-display
+            label="Label"
+            [orientation]="orientation$ | async"
+            labelColumns="4"
+        >
+            <nx-link nxStyle="text"><a href="#">Textlink</a></nx-link>
+        </nx-data-display>
+    </div>
+
+    <div nxCol="12,12,6,6,3" [ngClass]="(marginClass$ | async) ?? ''">
+        <nx-data-display
+            label="Label"
+            [orientation]="orientation$ | async"
+            labelColumns="4"
+        >
+            <ul nxList="small">
+                <li class="nx-margin-bottom-0">List item</li>
+                <li class="nx-margin-bottom-0">List item</li>
+            </ul>
+        </nx-data-display>
+    </div>
+</div>

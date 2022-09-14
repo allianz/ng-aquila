@@ -10,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./datefield-reactive-example.css'],
 })
 export class DatefieldReactiveExampleComponent {
-    public testForm: FormGroup = new FormGroup({
+    testForm: FormGroup = new FormGroup({
         date: new FormControl('', {
             validators: Validators.required,
         }),

@@ -1,4 +1,5 @@
-<span class="hljs-keyword">import</span> { Component, Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { formatDate } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
+<span class="hljs-keyword">import</span> { Component, Inject, Injectable, LOCALE_ID } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     NxSortHeaderIntl,
     SortDirection,
@@ -35,7 +36,7 @@
         {
             <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
             <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1234</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
             <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
             <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/3/2020&#x27;</span>),
             <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
@@ -44,7 +45,7 @@
         {
             <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;AA&#x27;</span>,
             <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">334</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
             <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.allianz.com&#x27;</span>,
             <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/3/2019&#x27;</span>),
             <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
@@ -53,7 +54,7 @@
         {
             <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;BB&#x27;</span>,
             <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">6643</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
             <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
             <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/3/2020&#x27;</span>),
             <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
@@ -62,7 +63,7 @@
         {
             <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;DD&#x27;</span>,
             <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1288</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
             <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
             <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/12/2018&#x27;</span>),
             <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
@@ -71,7 +72,7 @@
         {
             <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;DDE&#x27;</span>,
             <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1456</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
             <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
             <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/11/2020&#x27;</span>),
             <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
@@ -80,7 +81,7 @@
         {
             <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;GG&#x27;</span>,
             <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">122</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
             <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.org&#x27;</span>,
             <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;12/6/2020&#x27;</span>),
             <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
@@ -89,7 +90,7 @@
         {
             <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;JK&#x27;</span>,
             <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1422</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
             <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.allianz.com&#x27;</span>,
             <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/3/2020&#x27;</span>),
             <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
@@ -98,7 +99,7 @@
         {
             <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;M&#x27;</span>,
             <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1225</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
             <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.org&#x27;</span>,
             <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;4/5/2020&#x27;</span>),
             <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
@@ -107,7 +108,7 @@
         {
             <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;L&#x27;</span>,
             <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1313</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
             <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.allianz.com&#x27;</span>,
             <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/4/2020&#x27;</span>),
             <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
@@ -116,7 +117,7 @@
         {
             <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Legal&#x27;</span>,
             <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">2423</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is another contract&#x27;</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is another contract&#x27;</span>,
             <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.allianz.com&#x27;</span>,
             <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;4/2/2020&#x27;</span>),
             <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;active&#x27;</span>,
@@ -125,7 +126,7 @@
         {
             <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;CC&#x27;</span>,
             <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">4356</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
             <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
             <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/9/2020&#x27;</span>),
             <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
@@ -143,7 +144,7 @@
         {
             <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
             <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">22344</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a description of a contract&#x27;</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a description of a contract&#x27;</span>,
             <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
             <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/20/2027&#x27;</span>),
             <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;critical&#x27;</span>,
@@ -154,9 +155,9 @@
     currentlyShownPageElements!: Contract[];
     currentlyAvailableElements: Contract[];
 
-    page: <span class="hljs-built_in">number</span> = <span class="hljs-number">1</span>;
-    filterValue: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>;
-    elementsPerPage: <span class="hljs-built_in">number</span> = <span class="hljs-number">5</span>;
+    page = <span class="hljs-number">1</span>;
+    filterValue = <span class="hljs-string">&#x27;&#x27;</span>;
+    elementsPerPage = <span class="hljs-number">5</span>;
 
     <span class="hljs-comment">/**
      * Sorts the table data by a certain category.
@@ -186,7 +187,7 @@
         <span class="hljs-keyword">return</span> (a &lt; b ? -<span class="hljs-number">1</span> : <span class="hljs-number">1</span>) * (direction === <span class="hljs-string">&#x27;asc&#x27;</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>);
     }
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-meta">@Inject</span>(LOCALE_ID) <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> localeId: <span class="hljs-built_in">string</span></span>)</span> {
         <span class="hljs-built_in">this</span>.currentlyAvailableElements = <span class="hljs-built_in">this</span>.tableElements;
         <span class="hljs-comment">// init first page on page load</span>
         <span class="hljs-built_in">this</span>.updatePage();
@@ -197,12 +198,22 @@
     }
 
     <span class="hljs-function"><span class="hljs-title">filterData</span>(<span class="hljs-params">filterValue: <span class="hljs-built_in">string</span></span>)</span> {
+        <span class="hljs-keyword">const</span> filterRegexp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(filterValue, <span class="hljs-string">&#x27;i&#x27;</span>);
+        <span class="hljs-keyword">const</span> dateFormat = <span class="hljs-string">&#x27;dd/MM/yyyy&#x27;</span>;
+
         <span class="hljs-built_in">this</span>.currentlyAvailableElements = <span class="hljs-built_in">this</span>.tableElements.filter(
-            <span class="hljs-function"><span class="hljs-params">tableRowObject</span> =&gt;</span> {
-                <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.values(tableRowObject).some(<span class="hljs-function"><span class="hljs-params">propertyValue</span> =&gt;</span>
-                    <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(filterValue, <span class="hljs-string">&#x27;i&#x27;</span>).test(<span class="hljs-built_in">String</span>(propertyValue)),
-                );
-            },
+            <span class="hljs-function"><span class="hljs-params">tableRowObject</span> =&gt;</span>
+                <span class="hljs-built_in">Object</span>.values(tableRowObject).some(<span class="hljs-function"><span class="hljs-params">propertyValue</span> =&gt;</span>
+                    filterRegexp.test(
+                        propertyValue <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Date</span>
+                            ? formatDate(
+                                  propertyValue,
+                                  dateFormat,
+                                  <span class="hljs-built_in">this</span>.localeId,
+                              )
+                            : <span class="hljs-built_in">String</span>(propertyValue),
+                    ),
+                ),
         );
 
         <span class="hljs-built_in">this</span>.updatePage();

@@ -1,16 +1,10 @@
 <span class="hljs-keyword">import</span> { HttpClient, HttpParams } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
 <span class="hljs-keyword">import</span> { Component, OnDestroy, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    FormBuilder,
-    FormControl,
-    FormGroup,
-    Validators,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormControl, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     FileItem,
     NxFileUploadConfig,
     NxFileUploader,
-    NxFileUploadResult,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/file-uploader&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     NxMessageToastConfig,
@@ -34,7 +28,7 @@
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileUploaderValidationExampleComponent</span>
     <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span>, <span class="hljs-title">OnDestroy</span>
 </span>{
-    <span class="hljs-attr">uploadConfig</span>: NxFileUploadConfig = {
+    <span class="hljs-keyword">readonly</span> uploadConfig: NxFileUploadConfig = {
         <span class="hljs-attr">requestUrl</span>: <span class="hljs-string">&#x27;file-upload&#x27;</span>,
         <span class="hljs-attr">options</span>: {
             <span class="hljs-attr">params</span>: <span class="hljs-keyword">new</span> HttpParams(),
@@ -42,20 +36,20 @@
         },
     };
 
-    uploader = <span class="hljs-keyword">new</span> NxFileUploader(<span class="hljs-built_in">this</span>.uploadConfig, <span class="hljs-built_in">this</span>.http);
+    <span class="hljs-keyword">readonly</span> uploader = <span class="hljs-keyword">new</span> NxFileUploader(<span class="hljs-built_in">this</span>.uploadConfig, <span class="hljs-built_in">this</span>.http);
 
-    testForm = <span class="hljs-keyword">new</span> FormGroup({
+    <span class="hljs-keyword">readonly</span> testForm = <span class="hljs-keyword">new</span> FormGroup({
         <span class="hljs-attr">documents</span>: <span class="hljs-keyword">new</span> FormControl([], Validators.required),
     });
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> Subject&lt;<span class="hljs-built_in">void</span>&gt;();
 
     <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">private</span> messageToastService: NxMessageToastService,
-        <span class="hljs-keyword">private</span> http: HttpClient,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> messageToastService: NxMessageToastService,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> http: HttpClient,
     </span>)</span> {}
 
-    <span class="hljs-function"><span class="hljs-title">ngOnInit</span>(<span class="hljs-params"></span>)</span> {
+    ngOnInit(): <span class="hljs-built_in">void</span> {
         <span class="hljs-built_in">this</span>.uploader.response
             .pipe(takeUntil(<span class="hljs-built_in">this</span>._destroyed))
             .subscribe(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> {
@@ -66,7 +60,7 @@
                     );
                 } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (result.error) {
                     <span class="hljs-comment">// error handling</span>
-                    <span class="hljs-built_in">this</span>.testForm.controls[<span class="hljs-string">&#x27;documents&#x27;</span>].setErrors({
+                    <span class="hljs-built_in">this</span>.testForm.controls.documents.setErrors({
                         <span class="hljs-attr">serverError</span>: <span class="hljs-literal">true</span>,
                     });
                 }

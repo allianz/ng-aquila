@@ -7,14 +7,15 @@
                 </nx-formfield>
                 <button
                     type="button"
-                    nxButton="primary small"
+                    nxButton="secondary small"
                     nxStepperPrevious
                     class="nx-margin-right-2xs"
-                    >Previous</button
                 >
-                <button type="button" nxButton="primary small" nxStepperNext
-                    >Next</button
-                >
+                    Previous
+                </button>
+                <button type="button" nxButton="primary small" nxStepperNext>
+                    Next
+                </button>
             </form>
         </div>
     </nx-step>
@@ -24,8 +25,9 @@
                 nxButton="primary small"
                 (click)="completeLastStep()"
                 type="button"
-                >Complete last step</button
             >
+                Complete last step
+            </button>
         </div>
     </nx-step>
 </nx-multi-stepper>

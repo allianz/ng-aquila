@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
 })
 export class RtlDynamicExampleComponent {
     direction: Direction = 'ltr';
-    sliderDemoValue: number = 10;
+    sliderDemoValue = 10;
 
     toggleDirection(): void {
         this.direction = this.direction === 'ltr' ? 'rtl' : 'ltr';

@@ -8,9 +8,9 @@
             <span class="docs-api-module-import__from-span">from</span>
             <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/data-display'</span>;
         </code>
-    </p><h3 id="directives" class="docs-header-link docs-api-h3">
-        <span header-link="directives"></span>
-        Directives
+    </p><h3 id="components" class="docs-header-link docs-api-h3">
+        <span header-link="components"></span>
+        Components
     </h3>
      
 
@@ -51,13 +51,30 @@
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
             <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">label</span>:
+                <span class="docs-api-property__name">label</span>?:
                 <span class="docs-api-property__type">string | null</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the label which will describe the data.</p>
+        <p>Label describing the data.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">labelColumns</span>:
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Column span of the label text based on a 12 column system, when in <code>orientation=&quot;horizontal-columns&quot;</code> layout.</p>
+<p>Accepted values: 3, 4, 6, 8, 9</p>
+<p>Defaults to 6.</p>
 </td>
 </tr>
    
@@ -76,7 +93,9 @@
 <ul>
 <li>&#39;vertical&#39;: label and value are vertically stacked.</li>
 <li>&#39;horizontal&#39;: label and value are on the same line.</li>
+<li>&#39;horizontal-columns&#39;: label and value are on the same line in a fixed position.</li>
 </ul>
+<p>Defaults to &#39;vertical&#39;.</p>
 </td>
 </tr>
    
@@ -92,6 +111,7 @@
     </td>
     <td class="docs-api-property-description">
         <p>Size of the data display.</p>
+<p>Defaults to &#39;large&#39;.</p>
 </td>
 </tr>
   
@@ -119,13 +139,15 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">size</span>:
+                <span class="docs-api-property__name">size</span>?:
                 <span class="docs-api-property__type">NxDataDisplaySize</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <p>Size of the data display.</p>
+<p>Defaults to &#39;large&#39;.</p>
+</td>
 </tr>
   
 </table>   
@@ -138,12 +160,15 @@
 <h4 id="NxDataDisplayOrientation" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
     <span header-link="NxDataDisplayOrientation"></span>
     <code>NxDataDisplayOrientation</code>
-</h4><p class="docs-api-type-alias-description"><p>Layout orientation of the NxDataDisplayComponent.
-&#39;vertical&#39;: label and value are vertically stacked.
-&#39;horizontal&#39;: label and value are on the same line.</p>
+</h4><p class="docs-api-type-alias-description"><p>Layout orientation of the NxDataDisplayComponent.</p>
+<ul>
+<li>&#39;vertical&#39;: label and value are vertically stacked.</li>
+<li>&#39;horizontal&#39;: label and value are on the same line.</li>
+<li>&#39;horizontal-columns&#39;: label and value are on the same line in a fixed position.</li>
+</ul>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'vertical' | 'horizontal'</code>
+    <code class="docs-api-type-alias-value">'vertical' | 'horizontal' | 'horizontal-columns'</code>
 </p>
    
 

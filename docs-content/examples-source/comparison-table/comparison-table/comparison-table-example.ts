@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    OnInit,
 } from '@angular/core';
 
 /** @title Basic example */
@@ -11,12 +12,12 @@ import {
     styleUrls: ['./comparison-table-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ComparisonTableExampleComponent {
+export class ComparisonTableExampleComponent implements OnInit {
     loading = true;
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.reload();
     }
 

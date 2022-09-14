@@ -15,25 +15,24 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./progress-stepper-reactivesingle-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProgressStepperReactivesingleExampleComponent</span> </span>{
-    <span class="hljs-attr">testForm</span>: FormGroup;
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _formBuilder: FormBuilder</span>)</span> {
-        <span class="hljs-built_in">this</span>.testForm = <span class="hljs-built_in">this</span>._formBuilder.group({
-            <span class="hljs-attr">personalDetails</span>: <span class="hljs-keyword">new</span> FormGroup({
-                <span class="hljs-attr">name</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
-                    <span class="hljs-attr">validators</span>: Validators.required,
-                }),
-                <span class="hljs-attr">age</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
-                    <span class="hljs-attr">validators</span>: Validators.required,
-                }),
+    <span class="hljs-keyword">readonly</span> testForm = <span class="hljs-built_in">this</span>.fb.group({
+        <span class="hljs-attr">personalDetails</span>: <span class="hljs-keyword">new</span> FormGroup({
+            <span class="hljs-attr">name</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
+                <span class="hljs-attr">validators</span>: Validators.required,
             }),
-            <span class="hljs-attr">address</span>: <span class="hljs-keyword">new</span> FormGroup({
-                <span class="hljs-attr">street</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
-                    <span class="hljs-attr">validators</span>: Validators.required,
-                }),
-                <span class="hljs-attr">postalCode</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
-                    <span class="hljs-attr">validators</span>: Validators.required,
-                }),
+            <span class="hljs-attr">age</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
+                <span class="hljs-attr">validators</span>: Validators.required,
             }),
-        });
-    }
+        }),
+        <span class="hljs-attr">address</span>: <span class="hljs-keyword">new</span> FormGroup({
+            <span class="hljs-attr">street</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
+                <span class="hljs-attr">validators</span>: Validators.required,
+            }),
+            <span class="hljs-attr">postalCode</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
+                <span class="hljs-attr">validators</span>: Validators.required,
+            }),
+        }),
+    });
+
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>)</span> {}
 }

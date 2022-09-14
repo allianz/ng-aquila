@@ -1,5 +1,12 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Component,
+    TemplateRef,
+    ViewChild,
+} from '@angular/core';
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
+
+type MyDialogResult = 'agree' | 'disagree';
 
 /**
  * @title Modal with content and actions example
@@ -11,11 +18,15 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 })
 export class ModalContentActionsExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;
-    actionResult!: string;
 
-    dialogRef!: NxModalRef<any, any>;
+    dialogRef?: NxModalRef<any, MyDialogResult | undefined>; // cancel and backdrop click return undefined
 
-    constructor(public dialogService: NxDialogService) {}
+    actionResult?: MyDialogResult;
+
+    constructor(
+        private readonly dialogService: NxDialogService,
+        private readonly _cdr: ChangeDetectorRef,
+    ) {}
 
     openFromTemplate(): void {
         this.dialogRef = this.dialogService.open(this.templateRef, {
@@ -25,10 +36,7 @@ export class ModalContentActionsExampleComponent {
 
         this.dialogRef.afterClosed().subscribe(result => {
             this.actionResult = result;
+            this._cdr.markForCheck();
         });
-    }
-
-    closeDialog(result: string) {
-        this.dialogRef.close(result);
     }
 }

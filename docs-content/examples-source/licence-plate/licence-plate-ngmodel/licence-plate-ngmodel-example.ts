@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['licence-plate-ngmodel-example.css'],
 })
 export class LicencePlateNgmodelExample {
-    model: string = '';
+    model = '';
 }

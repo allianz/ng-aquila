@@ -10,10 +10,10 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;code-input-disabled-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CodeInputDisabledExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>{
-    <span class="hljs-attr">inputValue</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>;
+    inputValue = <span class="hljs-string">&#x27;&#x27;</span>;
     codeForm!: FormGroup;
 
-    <span class="hljs-function"><span class="hljs-title">ngOnInit</span>(<span class="hljs-params"></span>)</span> {
+    ngOnInit(): <span class="hljs-built_in">void</span> {
         <span class="hljs-built_in">this</span>.codeForm = <span class="hljs-keyword">new</span> FormGroup({
             <span class="hljs-attr">keyCode</span>: <span class="hljs-keyword">new</span> FormControl(
                 { <span class="hljs-attr">value</span>: <span class="hljs-built_in">this</span>.inputValue, <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span> },

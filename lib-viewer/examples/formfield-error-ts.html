@@ -14,10 +14,11 @@
     exampleErrorNgModel!: NxInputDirective;
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;exampleErrorNgModelHint&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> })
     exampleErrorNgModelHint!: NxInputDirective;
-    <span class="hljs-keyword">public</span> valueSupplementError!: <span class="hljs-built_in">string</span>;
-    <span class="hljs-keyword">public</span> valueSupplementErrorHint!: <span class="hljs-built_in">string</span>;
 
-    <span class="hljs-function"><span class="hljs-title">ngAfterContentInit</span>(<span class="hljs-params"></span>)</span> {
+    valueSupplementError!: <span class="hljs-built_in">string</span>;
+    valueSupplementErrorHint!: <span class="hljs-built_in">string</span>;
+
+    ngAfterContentInit(): <span class="hljs-built_in">void</span> {
         <span class="hljs-built_in">this</span>.exampleErrorNgModel.ngControl?.control?.markAsTouched();
         <span class="hljs-built_in">this</span>.exampleErrorNgModelHint.ngControl?.control?.markAsTouched();
     }

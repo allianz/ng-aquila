@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Reactive Form Example
@@ -10,23 +10,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./radio-toggle-reactive-example.css'],
 })
 export class RadioToggleReactiveExampleComponent {
-    data = ['A', 'B', 'C'];
-    testForm!: FormGroup;
-    disabledToggleForm: FormGroup;
-    isToggleDisabled: boolean = false;
+    readonly data = ['A', 'B', 'C'];
 
-    constructor(private fb: FormBuilder) {
-        this.createForm();
-        this.disabledToggleForm = this.fb.group({
-            disabledToggle: [{ value: 'B', disabled: true }],
-        });
-    }
+    readonly testForm = this.fb.group({
+        testToggle: ['B', Validators.required],
+    });
 
-    createForm() {
-        this.testForm = this.fb.group({
-            testToggle: ['B', Validators.required],
-        });
-    }
+    readonly disabledToggleForm = this.fb.group({
+        disabledToggle: [{ value: 'B', disabled: true }],
+    });
+
+    isToggleDisabled = false;
+
+    constructor(private readonly fb: FormBuilder) {}
 
     toggleDisabled() {
         this.isToggleDisabled = !this.isToggleDisabled;

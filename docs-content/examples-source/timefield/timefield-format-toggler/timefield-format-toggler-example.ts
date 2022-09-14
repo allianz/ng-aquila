@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./timefield-format-toggler-example.css'],
 })
 export class TimefieldFormatTogglerExampleComponent {
-    templateModel: string = '12:01';
+    templateModel = '12:01';
 }

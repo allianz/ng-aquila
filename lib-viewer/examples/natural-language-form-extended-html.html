@@ -21,12 +21,15 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>and see<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span> <span class="hljs-attr">nxSize</span>=<span class="hljs-string">&quot;regular&quot;</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Always a label&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;spots&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxError</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;naturalForm.controls.spots.hasError(&#x27;required&#x27;)&quot;</span>
-                &gt;</span>This field is required.&lt;/div
-            &gt;
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxError</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;naturalForm.controls.spots.hasError(&#x27;pattern&#x27;)&quot;</span>
-                &gt;</span>Only numbers are allowed.&lt;/div
-            &gt;
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+                <span class="hljs-attr">nxError</span>
+                *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;naturalForm.controls.spots.hasError(&#x27;required&#x27;)&quot;</span>
+            &gt;</span>
+                This field is required.
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxError</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;naturalForm.controls.spots.hasError(&#x27;pattern&#x27;)&quot;</span>&gt;</span>
+                Only numbers are allowed.
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> nice spots.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-natural-language-form</span>&gt;</span>

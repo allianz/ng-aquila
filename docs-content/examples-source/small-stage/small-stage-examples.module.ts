@@ -3,6 +3,7 @@ import { NxBreadcrumbModule } from '@aposin/ng-aquila/breadcrumb';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { SmallStageContentVariationExampleComponent } from './small-stage-content-variation/small-stage-content-variation-example';
 import { SmallStageDefaultExampleComponent } from './small-stage-default/small-stage-default-example';

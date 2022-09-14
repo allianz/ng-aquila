@@ -2,6 +2,7 @@
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    OnInit,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/** <span class="hljs-doctag">@title </span>Basic example */</span>
@@ -11,12 +12,12 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./comparison-table-example.css&#x27;</span>],
     <span class="hljs-attr">changeDetection</span>: ChangeDetectionStrategy.OnPush,
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ComparisonTableExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ComparisonTableExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>{
     loading = <span class="hljs-literal">true</span>;
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _cdr: ChangeDetectorRef</span>)</span> {}
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _cdr: ChangeDetectorRef</span>)</span> {}
 
-    <span class="hljs-function"><span class="hljs-title">ngOnInit</span>(<span class="hljs-params"></span>)</span> {
+    ngOnInit(): <span class="hljs-built_in">void</span> {
         <span class="hljs-built_in">this</span>.reload();
     }
 

@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['sidepanel-static-example.css'],
 })
 export class SidepanelStaticExampleComponent {
-    opened: boolean = true;
+    opened = true;
 }

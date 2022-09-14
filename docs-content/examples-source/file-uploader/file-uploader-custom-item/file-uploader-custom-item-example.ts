@@ -11,7 +11,7 @@ import {
 } from '@aposin/ng-aquila/message';
 
 export class CustomFileItem extends FileItem {
-    public formData!: FormData;
+    formData!: FormData;
 }
 
 export const myCustomConfig: NxMessageToastConfig = {
@@ -30,13 +30,14 @@ export class FileUploaderCustomItemExampleComponent {
     myFiles: CustomFileItem[] = [];
 
     @ViewChild('documentUpload') documentUpload!: NxFileUploaderComponent;
-    public showUploadError: boolean = false;
 
     @ViewChild('ngModel') ngModel!: NgModel;
 
+    showUploadError = false;
+
     constructor(
-        private messageToastService: NxMessageToastService,
-        private http: HttpClient,
+        private readonly messageToastService: NxMessageToastService,
+        private readonly http: HttpClient,
     ) {}
 
     onChange() {

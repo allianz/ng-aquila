@@ -11,7 +11,7 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RtlDynamicExampleComponent</span> </span>{
     <span class="hljs-attr">direction</span>: Direction = <span class="hljs-string">&#x27;ltr&#x27;</span>;
-    sliderDemoValue: <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>;
+    sliderDemoValue = <span class="hljs-number">10</span>;
 
     toggleDirection(): <span class="hljs-built_in">void</span> {
         <span class="hljs-built_in">this</span>.direction = <span class="hljs-built_in">this</span>.direction === <span class="hljs-string">&#x27;ltr&#x27;</span> ? <span class="hljs-string">&#x27;rtl&#x27;</span> : <span class="hljs-string">&#x27;ltr&#x27;</span>;

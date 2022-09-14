@@ -12,8 +12,8 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IconRegistryExampleComponent</span> </span>{
     <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">private</span> nxIconRegistry: NxIconRegistry,
-        <span class="hljs-keyword">private</span> domSanitizer: DomSanitizer,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> nxIconRegistry: NxIconRegistry,
+        domSanitizer: DomSanitizer,
     </span>)</span> {
         <span class="hljs-built_in">this</span>.nxIconRegistry.addSvgIconLiteral(
             <span class="hljs-string">&#x27;search&#x27;</span>,

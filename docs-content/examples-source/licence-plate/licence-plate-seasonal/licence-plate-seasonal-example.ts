@@ -26,5 +26,4 @@ export class LicencePlateSeasonalExampleComponent {
         { month: 12, monthName: 'December' },
     ];
     value = '';
-    constructor() {}
 }

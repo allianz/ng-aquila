@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./timefield-template-driven-example.css'],
 })
 export class TimefieldTemplateDrivenExampleComponent {
-    templateModel: string = '14:54';
+    templateModel = '14:54';
 }

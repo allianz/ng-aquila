@@ -10,10 +10,11 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./message-toast-opening-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MessageToastOpeningExampleComponent</span> </span>{
-    <span class="hljs-attr">toastText</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;A success message toast with a custom text.&#x27;</span>;
+    <span class="hljs-keyword">readonly</span> toastText = <span class="hljs-string">&#x27;A success message toast with a custom text.&#x27;</span>;
+
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template&#x27;</span>) templateRef!: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> messageToastService: NxMessageToastService</span>)</span> {}
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> messageToastService: NxMessageToastService</span>)</span> {}
 
     <span class="hljs-function"><span class="hljs-title">openFromText</span>(<span class="hljs-params"></span>)</span> {
         <span class="hljs-built_in">this</span>.messageToastService.open(<span class="hljs-built_in">this</span>.toastText, {

@@ -1,0 +1,8 @@
+{
+    "extends": "../../../../projects/opensource-documentation/tsconfig.app.json",
+    "compilerOptions": {
+        "outDir": "../../../../out-tsc/examples",
+        "experimentalDecorators": true,
+        "types": []
+    }
+}

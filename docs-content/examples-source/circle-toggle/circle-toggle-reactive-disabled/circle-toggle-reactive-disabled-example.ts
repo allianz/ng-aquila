@@ -10,11 +10,11 @@ import { FormBuilder, Validators } from '@angular/forms';
     styleUrls: ['./circle-toggle-reactive-disabled-example.css'],
 })
 export class CircleToggleReactiveDisabledExampleComponent {
-    testForm = this.formBuilder.group({
+    readonly testForm = this.fb.group({
         reactiveToggle: ['', Validators.required],
     });
 
-    sampleValues = [
+    readonly sampleValues = [
         {
             value: 'A',
             icon: 'product-heart',
@@ -38,7 +38,7 @@ export class CircleToggleReactiveDisabledExampleComponent {
         },
     ];
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         this.testForm.disable();
     }
 

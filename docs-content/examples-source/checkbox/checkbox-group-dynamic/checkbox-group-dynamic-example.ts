@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Checkbox group dynamic checkboxes example
@@ -10,22 +10,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./checkbox-group-dynamic-example.css'],
 })
 export class CheckboxGroupDynamicExampleComponent {
-    public myFormGroup: FormGroup;
-    data = ['one', 'two', 'three'];
+    readonly myFormGroup = this.fb.group({
+        terms: [[], Validators.required],
+    });
+
+    readonly data = ['one', 'two', 'three'];
+
     i = 1;
 
-    constructor(private fb: FormBuilder) {
-        this.myFormGroup = this.fb.group({
-            terms: [[], Validators.required],
-        });
-    }
+    constructor(private readonly fb: FormBuilder) {}
 
-    public addNewCb() {
+    addNewCb() {
         this.data.push('Checkbox ' + this.i);
         this.i++;
     }
 
-    public removeCB() {
+    removeCB() {
         this.data.shift();
     }
 }

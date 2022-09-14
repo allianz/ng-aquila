@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 
-type MenuChild = {
+interface MenuChild {
     label: string;
-};
+}
 
-type MenuItem = {
+interface MenuItem {
     label: string;
     expanded?: boolean;
     children?: MenuChild[];
-};
+}
 
 /**
  * @title Menu item

@@ -19,10 +19,10 @@ interface Contract {
     styleUrls: ['./table-selecting-example.css'],
 })
 export class TableSelectingExampleComponent {
-    showSelected: boolean = false;
+    showSelected = false;
 
-    activateSelected: boolean = true;
-    activeRow: Contract | undefined;
+    activateSelected = true;
+    activeRow?: Contract;
 
     tableElements: Contract[] = [
         {

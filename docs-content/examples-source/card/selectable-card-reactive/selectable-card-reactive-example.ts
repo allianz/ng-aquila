@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Selectable cards reactive example
@@ -10,15 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./selectable-card-reactive-example.css'],
 })
 export class SelectableCardReactiveExampleComponent {
-    public testForm!: FormGroup;
+    readonly testForm = this.fb.group({
+        selectableCardTestReactive: [false, Validators.requiredTrue],
+    });
 
-    constructor(private fb: FormBuilder) {
-        this.createForm();
-    }
-
-    createForm() {
-        this.testForm = this.fb.group({
-            selectableCardTestReactive: [false, Validators.requiredTrue],
-        });
-    }
+    constructor(private readonly fb: FormBuilder) {}
 }

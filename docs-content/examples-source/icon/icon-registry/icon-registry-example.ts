@@ -12,8 +12,8 @@ import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 })
 export class IconRegistryExampleComponent {
     constructor(
-        private nxIconRegistry: NxIconRegistry,
-        private domSanitizer: DomSanitizer,
+        private readonly nxIconRegistry: NxIconRegistry,
+        domSanitizer: DomSanitizer,
     ) {
         this.nxIconRegistry.addSvgIconLiteral(
             'search',

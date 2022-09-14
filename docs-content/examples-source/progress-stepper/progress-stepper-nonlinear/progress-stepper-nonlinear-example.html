@@ -2,21 +2,23 @@
     <ng-container *ngFor="let step of multiSteps">
         <nx-step [label]="step.name" [completed]="step.completed">
             <div class="nx-margin-top-s">
-                <p> This is the content for step "{{step.name}}" </p>
+                <p>This is the content for step "{{step.name}}"</p>
                 <button
-                    nxButton="primary small"
+                    nxButton="secondary small"
                     nxStepperPrevious
                     class="nx-margin-right-2xs nx-margin-bottom-s"
                     type="button"
-                    >Previous</button
                 >
+                    Previous
+                </button>
                 <button
                     nxButton="primary small"
                     nxStepperNext
                     class="nx-margin-bottom-s"
                     type="button"
-                    >Next</button
                 >
+                    Next
+                </button>
             </div>
         </nx-step>
     </ng-container>
@@ -27,21 +29,21 @@
     class="nx-margin-right-2xs nx-margin-bottom-xs"
     type="button"
 >
-    Complete first step</button
->
+    Complete first step
+</button>
 <button
     nxButton="primary small"
     (click)="completeStep(1)"
     class="nx-margin-right-2xs nx-margin-bottom-xs"
     type="button"
 >
-    Complete second step</button
->
+    Complete second step
+</button>
 <button
     nxButton="primary small"
     (click)="completeStep(2)"
     type="button"
     class="nx-margin-bottom-xs"
 >
-    Complete third step</button
->
+    Complete third step
+</button>

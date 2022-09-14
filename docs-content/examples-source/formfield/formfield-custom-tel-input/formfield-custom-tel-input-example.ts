@@ -11,7 +11,6 @@ import {
 import {
     ControlValueAccessor,
     FormBuilder,
-    FormGroup,
     NgControl,
     Validators,
 } from '@angular/forms';
@@ -26,9 +25,9 @@ import { takeUntil } from 'rxjs/operators';
 /** Data structure for holding telephone number. */
 export class MyTel {
     constructor(
-        public area: string,
-        public exchange: string,
-        public subscriber: string,
+        readonly area: string,
+        readonly exchange: string,
+        readonly subscriber: string,
     ) {}
 }
 
@@ -53,19 +52,41 @@ export class FormfieldCustomTelInputExampleComponent
     implements ControlValueAccessor, NxFormfieldControl<MyTel>, OnDestroy
 {
     static nextId = 0;
-    private _placeholder: string = '';
-    private _required = false;
-    private _disabled = false;
+
+    readonly parts = this.fb.group({
+        area: [
+            null,
+            [
+                Validators.required,
+                Validators.minLength(3),
+                Validators.maxLength(3),
+            ],
+        ],
+        exchange: [
+            null,
+            [
+                Validators.required,
+                Validators.minLength(3),
+                Validators.maxLength(3),
+            ],
+        ],
+        subscriber: [
+            null,
+            [
+                Validators.required,
+                Validators.minLength(4),
+                Validators.maxLength(4),
+            ],
+        ],
+    });
+
     readonly!: boolean;
-    parts: FormGroup;
-    stateChanges = new Subject<void>();
+    readonly stateChanges = new Subject<void>();
     focused = false;
     errorState = false;
     controlType = 'example-tel-input';
     id = `example-tel-input-${FormfieldCustomTelInputExampleComponent.nextId++}`;
     describedBy = '';
-    onChange = (_: any) => {};
-    onTouched = () => {};
 
     get empty() {
         const {
@@ -78,35 +99,39 @@ export class FormfieldCustomTelInputExampleComponent
         return this.focused || !this.empty;
     }
 
-    @Input()
-    get placeholder(): string {
-        return this._placeholder;
-    }
-    set placeholder(value: string) {
+    @Input() set placeholder(value: string) {
         this._placeholder = value;
         this.stateChanges.next();
     }
-
-    @Input()
-    get required(): boolean {
-        return this._required;
+    get placeholder(): string {
+        return this._placeholder;
     }
-    set required(value: BooleanInput) {
+    private _placeholder = '';
+
+    @Input() set required(value: BooleanInput) {
         this._required = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
-
-    @Input()
-    get disabled(): boolean {
-        return this._disabled;
+    get required(): boolean {
+        return this._required;
     }
-    set disabled(value: BooleanInput) {
+    private _required = false;
+
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._disabled ? this.parts.disable() : this.parts.enable();
         this.stateChanges.next();
     }
+    get disabled(): boolean {
+        return this._disabled;
+    }
+    private _disabled = false;
 
-    @Input()
+    @Input() set value(tel: MyTel | null) {
+        const { area, exchange, subscriber } = tel || new MyTel('', '', '');
+        this.parts.setValue({ area, exchange, subscriber });
+        this.stateChanges.next();
+    }
     get value(): MyTel | null {
         if (this.parts.valid) {
             const {
@@ -116,47 +141,18 @@ export class FormfieldCustomTelInputExampleComponent
         }
         return null;
     }
-    set value(tel: MyTel | null) {
-        const { area, exchange, subscriber } = tel || new MyTel('', '', '');
-        this.parts.setValue({ area, exchange, subscriber });
-        this.stateChanges.next();
-    }
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(
-        formBuilder: FormBuilder,
-        private _focusMonitor: FocusMonitor,
-        private _elementRef: ElementRef<HTMLElement>,
-        @Optional() @Self() public ngControl: NgControl | null,
-    ) {
-        this.parts = formBuilder.group({
-            area: [
-                null,
-                [
-                    Validators.required,
-                    Validators.minLength(3),
-                    Validators.maxLength(3),
-                ],
-            ],
-            exchange: [
-                null,
-                [
-                    Validators.required,
-                    Validators.minLength(3),
-                    Validators.maxLength(3),
-                ],
-            ],
-            subscriber: [
-                null,
-                [
-                    Validators.required,
-                    Validators.minLength(4),
-                    Validators.maxLength(4),
-                ],
-            ],
-        });
+    onChange = (_: any) => {};
+    onTouched = () => {};
 
+    constructor(
+        private readonly fb: FormBuilder,
+        private readonly _focusMonitor: FocusMonitor,
+        private readonly _elementRef: ElementRef<HTMLElement>,
+        @Optional() @Self() readonly ngControl: NgControl | null,
+    ) {
         _focusMonitor
             .monitor(_elementRef, true)
             .pipe(takeUntil(this._destroyed))
@@ -176,11 +172,12 @@ export class FormfieldCustomTelInputExampleComponent
     setAriaLabel?(value: string): void {
         throw new Error('Method not implemented.');
     }
-    get elementRef(): ElementRef<any> {
+
+    get elementRef(): ElementRef {
         throw new Error('Method not implemented.');
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this.stateChanges.complete();

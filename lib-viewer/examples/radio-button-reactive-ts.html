@@ -1,5 +1,5 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { FormBuilder, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>Reactive Example
@@ -10,15 +10,9 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./radio-button-reactive-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RadioButtonReactiveExampleComponent</span> </span>{
-    testForm!: FormGroup;
+    <span class="hljs-keyword">readonly</span> testForm = <span class="hljs-built_in">this</span>.fb.group({
+        <span class="hljs-attr">radioTestReactive</span>: [<span class="hljs-string">&#x27;oranges&#x27;</span>, Validators.required],
+    });
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> formBuilder: FormBuilder</span>)</span> {
-        <span class="hljs-built_in">this</span>.createForm();
-    }
-
-    <span class="hljs-function"><span class="hljs-title">createForm</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">this</span>.testForm = <span class="hljs-built_in">this</span>.formBuilder.group({
-            <span class="hljs-attr">radioTestReactive</span>: [<span class="hljs-string">&#x27;oranges&#x27;</span>, Validators.required],
-        });
-    }
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>)</span> {}
 }

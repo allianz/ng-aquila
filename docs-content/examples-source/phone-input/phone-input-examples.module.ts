@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
 import { NxPhoneInputModule } from '@aposin/ng-aquila/phone-input';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { PhoneInputCountryCodeExampleComponent } from './phone-input-country-code/phone-input-country-code-example';
 import { PhoneInputDisabledExampleComponent } from './phone-input-disabled/phone-input-disabled-example';

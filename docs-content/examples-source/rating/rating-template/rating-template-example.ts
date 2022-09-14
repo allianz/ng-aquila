@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./rating-template-example.css'],
 })
 export class RatingTemplateExampleComponent {
-    ngModelBinding: number = 1;
+    ngModelBinding = 1;
 }

@@ -48,14 +48,15 @@
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell type="header">
                     <div class="header-container">
-                        <p class="product-title"
-                            >Product 2 with a very long name</p
-                        >
+                        <p class="product-title">
+                            Product 2 with a very long name
+                        </p>
                         <p
                             class="product-price-dynamic"
                             *ngIf="!loading; else spinner"
-                            >110,99 €</p
                         >
+                            110,99 €
+                        </p>
                         <button
                             nxComparisonTableSelectButton
                             unselectedLabel="Select"
@@ -71,8 +72,8 @@
                             class="product-price-dynamic"
                             *ngIf="!loading; else spinner"
                         >
-                            115,99 €</p
-                        >
+                            115,99 €
+                        </p>
                         <button
                             nxComparisonTableSelectButton
                             unselectedLabel="Select"
@@ -199,5 +200,6 @@
     [disabled]="loading"
     nxButton="secondary small"
     class="nx-margin-top-2m"
-    >Reload prices</button
 >
+    Reload prices
+</button>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { CheckboxGroupBasicExampleComponent } from './checkbox-group-basic/checkbox-group-basic-example';
 import { CheckboxGroupDynamicExampleComponent } from './checkbox-group-dynamic/checkbox-group-dynamic-example';

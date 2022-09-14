@@ -1,0 +1,25 @@
+.breakdown-table {
+    padding-top: 24px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 32px;
+    background-color: var(--ui-01);
+    border: solid 1px var(--ui-06);
+}
+
+.breakdown-table__divider {
+    border-bottom: solid 1px var(--ui-06);
+    margin-bottom: 15px;
+}
+
+.breakdown-table nx-data-display:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+.breakdown-table ::ng-deep .nx-data-display__label {
+    font-weight: normal;
+}
+
+.breakdown-table ::ng-deep .nx-data-display__value {
+    text-align: end;
+}

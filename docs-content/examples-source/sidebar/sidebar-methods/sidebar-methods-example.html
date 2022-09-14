@@ -17,26 +17,29 @@
         (click)="sidebar.toggle()"
         class="nx-margin-bottom-s"
         type="button"
-        >toggle</button
     >
+        toggle
+    </button>
     <button
         nxButton="small"
         (click)="sidebar.expand()"
         [attr.disabled]="sidebar.open || null"
         class="nx-margin-bottom-s"
         type="button"
-        >expand</button
     >
+        expand
+    </button>
     <button
         nxButton="small"
         (click)="sidebar.close()"
         [attr.disabled]="!sidebar.open || null"
         type="button"
-        >close</button
     >
-    <p class="nx-font-weight-bold nx-margin-bottom-2xs"
-        >Advanced: Expanded width</p
-    >
+        close
+    </button>
+    <p class="nx-font-weight-bold nx-margin-bottom-2xs">
+        Advanced: Expanded width
+    </p>
     <div class="resize-container">
         <nx-formfield nxLabel="Width in px" class="nx-margin-right-xs">
             <input nxInput [(ngModel)]="expandedWidth" />
@@ -45,7 +48,8 @@
             nxButton="small"
             (click)="sidebar.width = expandedWidth"
             class="nx-margin-bottom-m"
-            >resize</button
         >
+            resize
+        </button>
     </div>
 </main>

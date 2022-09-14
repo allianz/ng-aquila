@@ -1,16 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-    FormBuilder,
-    FormControl,
-    FormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
     FileItem,
     NxFileUploadConfig,
     NxFileUploader,
-    NxFileUploadResult,
 } from '@aposin/ng-aquila/file-uploader';
 import {
     NxMessageToastConfig,
@@ -34,7 +28,7 @@ const myCustomConfig: NxMessageToastConfig = {
 export class FileUploaderValidationExampleComponent
     implements OnInit, OnDestroy
 {
-    uploadConfig: NxFileUploadConfig = {
+    readonly uploadConfig: NxFileUploadConfig = {
         requestUrl: 'file-upload',
         options: {
             params: new HttpParams(),
@@ -42,20 +36,20 @@ export class FileUploaderValidationExampleComponent
         },
     };
 
-    uploader = new NxFileUploader(this.uploadConfig, this.http);
+    readonly uploader = new NxFileUploader(this.uploadConfig, this.http);
 
-    testForm = new FormGroup({
+    readonly testForm = new FormGroup({
         documents: new FormControl([], Validators.required),
     });
 
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private messageToastService: NxMessageToastService,
-        private http: HttpClient,
+        private readonly messageToastService: NxMessageToastService,
+        private readonly http: HttpClient,
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.uploader.response
             .pipe(takeUntil(this._destroyed))
             .subscribe(result => {
@@ -66,7 +60,7 @@ export class FileUploaderValidationExampleComponent
                     );
                 } else if (result.error) {
                     // error handling
-                    this.testForm.controls['documents'].setErrors({
+                    this.testForm.controls.documents.setErrors({
                         serverError: true,
                     });
                 }

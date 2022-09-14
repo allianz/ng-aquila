@@ -15,25 +15,24 @@ import {
     styleUrls: ['./progress-stepper-reactivesingle-example.css'],
 })
 export class ProgressStepperReactivesingleExampleComponent {
-    testForm: FormGroup;
-    constructor(private _formBuilder: FormBuilder) {
-        this.testForm = this._formBuilder.group({
-            personalDetails: new FormGroup({
-                name: new FormControl('', {
-                    validators: Validators.required,
-                }),
-                age: new FormControl('', {
-                    validators: Validators.required,
-                }),
+    readonly testForm = this.fb.group({
+        personalDetails: new FormGroup({
+            name: new FormControl('', {
+                validators: Validators.required,
             }),
-            address: new FormGroup({
-                street: new FormControl('', {
-                    validators: Validators.required,
-                }),
-                postalCode: new FormControl('', {
-                    validators: Validators.required,
-                }),
+            age: new FormControl('', {
+                validators: Validators.required,
             }),
-        });
-    }
+        }),
+        address: new FormGroup({
+            street: new FormControl('', {
+                validators: Validators.required,
+            }),
+            postalCode: new FormControl('', {
+                validators: Validators.required,
+            }),
+        }),
+    });
+
+    constructor(private readonly fb: FormBuilder) {}
 }

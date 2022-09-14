@@ -44,6 +44,28 @@
 </code></pre>
 <p class="docs-markdown--p">For more information on which colors to use in the high contrast mode, please visit <a href="https://docs.microsoft.com/en-us/windows/uwp/design/accessibility/high-contrast-themes#high-contrast-colors">this explanation</a>.</p>
 <div nx-docs-example="accessibility-high-contrast-svg" config="{}">exampleID: accessibility-high-contrast-svg</div>
+<h4 id="standards-and-testing" tabindex="-1" class="docs-markdown--h4">Standards and testing</h4>
+<p class="docs-markdown--p">Our library enables accessibility with the AA (W3C) standard. To keep your application compatible with the standard please check with (<a href="http://w3c.github.io/aria-practices/">WAI-ARIA</a>). In addition, we recommend to include automated tests checking a11y properties for every component using <a href="https://www.deque.com/axe">Axe - automatic a11y compliance checker</a>.</p>
+<p class="docs-markdown--p">The main a11y tasks are to ensure that:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">the focus state is displayed properly</li>
+<li class="docs-markdown--li">keyboard navigation within the component is working and documented</li>
+<li class="docs-markdown--li">aria-label attributes are properly set and documented (use one of the <a href="https://www.w3.org/WAI/ER/tools/">recommended online tools or browser plugins</a>)</li>
+<li class="docs-markdown--li">components are working in <a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/master/Accessibility/HighContrast/explainer.md">high-contrast mode</a></li>
+<li class="docs-markdown--li">color contrast is sufficient (use <a href="https://webaim.org/resources/contrastchecker/">Color contrast checker</a> or install a browser plugin)</li>
+</ul>
+<p class="docs-markdown--p">You could easily include basic A11Y testing with <a href="https://www.deque.com/axe">Axe</a> in your automated tests like so:</p>
+<pre><code class="language-typescript">axe.run(actual, {}, <span class="hljs-function">(<span class="hljs-params">error: <span class="hljs-built_in">Error</span>, results: axe.AxeResults</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span> (results.violations.length) {
+        <span class="hljs-comment">// report violations</span>
+    }
+});
+</code></pre>
+<p class="docs-markdown--p">You can also refer to our <a href="https://github.com/allianz/ng-aquila/blob/main/projects/ng-aquila/test.ts">Jasmine custom Axe matcher</a></p>
+<p class="docs-markdown--p">Please also check:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><a href="https://www.w3.org/WAI/test-evaluate/preliminary/">Easy Checks – A First Review of Web Accessibility</a></li>
+</ul>
 <h3 id="helpful-tools-and-links-for-aria-guidelines-and-verification" tabindex="-1" class="docs-markdown--h3">Helpful tools and links for ARIA guidelines and verification</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><a href="https://webaim.org/resources/contrastchecker/">Color contrast checker</a></li>

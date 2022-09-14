@@ -6,11 +6,12 @@ import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxLicencePlateModule } from '@aposin/ng-aquila/licence-plate';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { LicencePlateDisabledExample } from './licence-plate-disabled/licence-plate-disabled-example';
 import { LicencePlateEuroExampleComponent } from './licence-plate-euro/licence-plate-euro-example';
-import { LicencePlateExpertStatesExample } from './licence-plate-expert-states/licence-plate-expert-states-example';
 import { LicencePlateExpertExample } from './licence-plate-expert/licence-plate-expert-example';
+import { LicencePlateExpertStatesExample } from './licence-plate-expert-states/licence-plate-expert-states-example';
 import { LicencePlateNgmodelExample } from './licence-plate-ngmodel/licence-plate-ngmodel-example';
 import { LicencePlateOtherExampleComponent } from './licence-plate-other/licence-plate-other-example';
 import { LicencePlateReactiveExample } from './licence-plate-reactive/licence-plate-reactive-example';

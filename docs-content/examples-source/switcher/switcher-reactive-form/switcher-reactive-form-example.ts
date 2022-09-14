@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /** @title Switcher Reactive Form */
 @Component({
@@ -8,18 +8,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./switcher-reactive-form-example.css'],
 })
 export class SwitcherReactiveFormExampleComponent {
-    testForm!: FormGroup;
-    isSubmitted: boolean = false;
+    readonly testForm = this.fb.group({
+        switcherTestReactive: [false, Validators.requiredTrue],
+    });
 
-    constructor(private fb: FormBuilder) {
-        this.createForm();
-    }
+    isSubmitted = false;
 
-    createForm() {
-        this.testForm = this.fb.group({
-            switcherTestReactive: [false, Validators.requiredTrue],
-        });
-    }
+    constructor(private readonly fb: FormBuilder) {}
 
     onSubmit() {
         this.isSubmitted = true;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Reactive Example
@@ -10,15 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./radio-button-reactive-example.css'],
 })
 export class RadioButtonReactiveExampleComponent {
-    testForm!: FormGroup;
+    readonly testForm = this.fb.group({
+        radioTestReactive: ['oranges', Validators.required],
+    });
 
-    constructor(private formBuilder: FormBuilder) {
-        this.createForm();
-    }
-
-    createForm() {
-        this.testForm = this.formBuilder.group({
-            radioTestReactive: ['oranges', Validators.required],
-        });
-    }
+    constructor(private readonly fb: FormBuilder) {}
 }

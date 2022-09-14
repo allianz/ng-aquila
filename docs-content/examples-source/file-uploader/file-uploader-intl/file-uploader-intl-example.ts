@@ -33,7 +33,7 @@ export const myCustomConfig: NxMessageToastConfig = {
     providers: [{ provide: NxFileUploaderIntl, useClass: FileUploaderIntl }],
 })
 export class FileUploaderIntlExampleComponent implements OnInit, OnDestroy {
-    uploadConfig: NxFileUploadConfig = {
+    readonly uploadConfig: NxFileUploadConfig = {
         requestUrl: 'file-upload',
         options: {
             params: new HttpParams(),
@@ -41,16 +41,16 @@ export class FileUploaderIntlExampleComponent implements OnInit, OnDestroy {
         },
     };
 
-    uploader = new NxFileUploader(this.uploadConfig, this.http);
+    readonly uploader = new NxFileUploader(this.uploadConfig, this.http);
 
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private messageToastService: NxMessageToastService,
-        private http: HttpClient,
+        private readonly messageToastService: NxMessageToastService,
+        private readonly http: HttpClient,
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.uploader.response
             .pipe(takeUntil(this._destroyed))
             .subscribe(result => {

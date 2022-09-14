@@ -19,10 +19,10 @@
 
 <nx-error *ngIf="showUploadError"> An error occured while uploading. </nx-error>
 
-<p
-    >Set url for testing the upload: {{ uploadConfig['requestUrl'] ===
-    'file-upload' ? 'Valid url' : 'Invalid url' }}</p
->
+<p>
+    Set url for testing the upload: {{ uploadConfig['requestUrl'] ===
+    'file-upload' ? 'Valid url' : 'Invalid url' }}
+</p>
 
 <nx-radio-toggle nxStyle="small" [(ngModel)]="uploadConfig['requestUrl']">
     <nx-radio-toggle-button nxValue="file-upload"

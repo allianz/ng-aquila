@@ -1,8 +1,9 @@
-<span class="hljs-keyword">import</span> { Component, Injectable, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { Component, Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { NxPhoneInputIntl } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/phone-input&#x27;</span>;
 <span class="hljs-keyword">import</span> countries <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;i18n-iso-countries&#x27;</span>;
 <span class="hljs-keyword">import</span> de <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;i18n-iso-countries/langs/de.json&#x27;</span>;
 <span class="hljs-keyword">import</span> fr <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;i18n-iso-countries/langs/fr.json&#x27;</span>;
+
 countries.registerLocale(de);
 
 countries.registerLocale(fr);
@@ -25,11 +26,10 @@ countries.registerLocale(fr);
         },
     ],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PhoneInputI18nExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PhoneInputI18nExampleComponent</span> </span>{
     value = <span class="hljs-string">&#x27;&#x27;</span>;
-    frenchCountries = countries.getNames(<span class="hljs-string">&#x27;fr&#x27;</span>, { <span class="hljs-attr">select</span>: <span class="hljs-string">&#x27;official&#x27;</span> });
-    overlayLabel = <span class="hljs-string">&#x27;my overlay label&#x27;</span>;
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {}
 
-    <span class="hljs-function"><span class="hljs-title">ngOnInit</span>(<span class="hljs-params"></span>)</span> {}
+    frenchCountries = countries.getNames(<span class="hljs-string">&#x27;fr&#x27;</span>, { <span class="hljs-attr">select</span>: <span class="hljs-string">&#x27;official&#x27;</span> });
+
+    overlayLabel = <span class="hljs-string">&#x27;my overlay label&#x27;</span>;
 }

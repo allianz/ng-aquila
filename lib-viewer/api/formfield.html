@@ -8,7 +8,107 @@
             <span class="docs-api-module-import__from-span">from</span>
             <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/formfield'</span>;
         </code>
-    </p><h3 id="directives" class="docs-header-link docs-api-h3">
+    </p><h3 id="components" class="docs-header-link docs-api-h3">
+        <span header-link="components"></span>
+        Components
+    </h3>
+     
+
+<h4 id="NxFormfieldComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxFormfieldComponent"></span>
+    <code>NxFormfieldComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+        
+        <span class="docs-api-class-selector-name">nx-formfield</span>
+        
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">appearance</span>:
+                <span class="docs-api-property__type">AppearanceType</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p><strong>Expert option</strong></p>
+<p>Sets the appearance of the formfield.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxFloatLabel'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">floatLabel</span>:
+                <span class="docs-api-property__type">FloatLabelType</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the label should float once the input is focused or filled (auto, default)
+or force it to always float with a value of always to simulate a more static form.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxLabel'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">label</span>?:
+                <span class="docs-api-property__type">string | null</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the label which will act as a floating label.
+In addition, the component uses input and label to properly support accessibility.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxStyle'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">styles</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the styling of the formfield.
+If &#39;negative&#39;, a negative set of stylings is used.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">labelId</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Html id of the formfield label</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
+  <h3 id="directives" class="docs-header-link docs-api-h3">
         <span header-link="directives"></span>
         Directives
     </h3>
@@ -88,102 +188,6 @@
  
    
 
-<h4 id="NxFormfieldComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
-    <span header-link="NxFormfieldComponent"></span>
-    <code>NxFormfieldComponent</code></h4><p class="docs-api-directive-selectors">
-    <span class="docs-api-class-selector-label">Selector:</span>
-    <div class="docs-api__selector-container">
-        
-        <span class="docs-api-class-selector-name">nx-formfield</span>
-        
-    </div>
-</p><h5 class="docs-api-method-header">Properties</h5>
-<table class="docs-api-properties-table">
-    <tr class="docs-api-properties-header-row">
-        <th class="docs-api-properties-th">Name</th>
-        <th class="docs-api-properties-th">Description</th>
-    </tr>
-     
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">appearance</span>:
-                <span class="docs-api-property__type">AppearanceType</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p><strong>Expert option</strong></p>
-<p>Sets the appearance of the formfield.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxFloatLabel'</span>) </div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">floatLabel</span>:
-                <span class="docs-api-property__type">FloatLabelType</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Whether the label should float once the input is focused or filled (auto, default)
-or force it to always float with a value of always to simulate a more static form.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxLabel'</span>) </div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">label</span>:
-                <span class="docs-api-property__type">string | null</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Sets the label which will act as a floating label.
-In addition, the component uses input and label to properly support accessibility.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxStyle'</span>) </div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">styles</span>:
-                <span class="docs-api-property__type">string</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Sets the styling of the formfield.
-If &#39;negative&#39;, a negative set of stylings is used.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">labelId</span>:
-                <span class="docs-api-property__type">string</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Html id of the formfield label</p>
-</td>
-</tr>
-  
-</table> 
-
- 
-   
-
 <h4 id="NxFormfieldHintDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxFormfieldHintDirective"></span>
     <code>NxFormfieldHintDirective</code></h4><p class="docs-api-directive-selectors">
@@ -230,7 +234,27 @@ If &#39;negative&#39;, a negative set of stylings is used.</p>
         <span class="docs-api-class-selector-name">nx-formfield-label</span>
         
     </div>
-</p> 
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">el</span>:
+                <span class="docs-api-property__type">ElementRef</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table> 
 
  
    
@@ -319,7 +343,7 @@ using the <code>FORMFIELD_DEFAULT_OPTIONS</code> injection token.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">appearance</span>:
+                <span class="docs-api-property__name">appearance</span>?:
                 <span class="docs-api-property__type">AppearanceType</span>
             </code>
         </p>
@@ -333,7 +357,7 @@ using the <code>FORMFIELD_DEFAULT_OPTIONS</code> injection token.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">nxFloatLabel</span>:
+                <span class="docs-api-property__name">nxFloatLabel</span>?:
                 <span class="docs-api-property__type">FloatLabelType</span>
             </code>
         </p>

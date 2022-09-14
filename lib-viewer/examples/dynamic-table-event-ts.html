@@ -67,10 +67,10 @@
         { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Lorem Ipsum&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;lorem&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
     ];
 
-    modalOpen: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
-    basicModalBody: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>;
+    modalOpen = <span class="hljs-literal">false</span>;
+    basicModalBody = <span class="hljs-string">&#x27;&#x27;</span>;
 
-    handleRowClick(row: <span class="hljs-built_in">Object</span>): <span class="hljs-built_in">void</span> {
+    handleRowClick(row: unknown): <span class="hljs-built_in">void</span> {
         <span class="hljs-built_in">this</span>.basicModalBody = <span class="hljs-built_in">JSON</span>.stringify(row);
         <span class="hljs-built_in">this</span>.toggleModal();
     }

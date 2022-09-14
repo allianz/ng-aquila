@@ -8,58 +8,9 @@
             <span class="docs-api-module-import__from-span">from</span>
             <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/base'</span>;
         </code>
-    </p><h3 id="services" class="docs-header-link docs-api-h3">
-        <span header-link="services"></span>
-        Services
-    </h3>
-     
-
-<h4 id="ErrorDefaultOptions" class="docs-header-link docs-api-h4 docs-api-class-name">
-    <span header-link="ErrorDefaultOptions"></span>
-    <code>ErrorDefaultOptions</code></h4><p class="docs-api-class-description"><p>Represents the default options for the error notification that can be configured
-using the <code>ERROR_DEFAULT_OPTIONS</code> injection token.</p>
-</p><h5 class="docs-api-method-header">Properties</h5>
-<table class="docs-api-properties-table">
-    <tr class="docs-api-properties-header-row">
-        <th class="docs-api-properties-th">Name</th>
-        <th class="docs-api-properties-th">Description</th>
-    </tr>
-     
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">appearance</span>:
-                <span class="docs-api-property__type">ErrorStyleType</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Defines the style type of the error notification.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">changes</span>:
-                <span class="docs-api-property__type">Subject<void></span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Stream that emits whenever the default options are changed. Use this to notify
-components if the default options have changed after initialization.</p>
-</td>
-</tr>
-  
-</table> 
-
- 
-  <h3 id="directives" class="docs-header-link docs-api-h3">
-        <span header-link="directives"></span>
-        Directives
+    </p><h3 id="components" class="docs-header-link docs-api-h3">
+        <span header-link="components"></span>
+        Components
     </h3>
      
 
@@ -226,6 +177,55 @@ Sets the appearance of the label</p>
 </table> 
 
  
+  <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+        <span header-link="additional_classes"></span>
+        Additional classes
+    </h3>
+     
+
+<h4 id="ErrorDefaultOptions" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="ErrorDefaultOptions"></span>
+    <code>ErrorDefaultOptions</code></h4><p class="docs-api-class-description"><p>Represents the default options for the error notification that can be configured
+using the <code>ERROR_DEFAULT_OPTIONS</code> injection token.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">appearance</span>?:
+                <span class="docs-api-property__type">ErrorStyleType</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Defines the style type of the error notification.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">changes</span>?:
+                <span class="docs-api-property__type">Subject<void></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Stream that emits whenever the default options are changed. Use this to notify
+components if the default options have changed after initialization.</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
   <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
         <span header-link="additional_interfaces"></span>
         Additional interfaces
@@ -246,7 +246,7 @@ Sets the appearance of the label</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">size</span>:
+                <span class="docs-api-property__name">size</span>?:
                 <span class="docs-api-property__type">LABEL_SIZE_TYPE</span>
             </code>
         </p>

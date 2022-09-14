@@ -33,11 +33,11 @@ export class ProgressStepperMultiVerticalExampleComponent implements OnDestroy {
 
     direction: NxMultiStepperDirection = 'vertical';
 
-    value: Animal | undefined;
+    value?: Animal;
 
-    animalTypes = ['cat', 'dog'];
+    readonly animalTypes = ['cat', 'dog'];
 
-    dogBreeds = [
+    readonly dogBreeds = [
         'German Shepherd',
         'Bulldog',
         'Labrador Retriever',
@@ -45,7 +45,7 @@ export class ProgressStepperMultiVerticalExampleComponent implements OnDestroy {
         'Golden Retriever',
     ];
 
-    catBreeds = [
+    readonly catBreeds = [
         'Maine Coon',
         'Persian Cat',
         'Siamese Cat',
@@ -53,35 +53,35 @@ export class ProgressStepperMultiVerticalExampleComponent implements OnDestroy {
         'British Shorthair',
     ];
 
-    animalTypeForm = {
+    readonly animalTypeForm = {
         label: 'Species',
-        form: this._formBuilder.group({
+        form: this.fb.group({
             animalType: ['', Validators.required],
         }),
     };
 
-    breedForm = {
+    readonly breedForm = {
         label: 'Breed',
-        form: this._formBuilder.group({}),
+        form: this.fb.group({}),
     };
 
-    ageForm = {
+    readonly ageForm = {
         label: 'Age',
-        form: this._formBuilder.group({
+        form: this.fb.group({
             age: ['', Validators.required],
         }),
     };
 
-    nameForm = {
+    readonly nameForm = {
         label: 'Name',
-        form: this._formBuilder.group({
+        form: this.fb.group({
             name: ['', Validators.required],
         }),
     };
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private _formBuilder: FormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         this.animalTypeForm.form
             .get('animalType')
             ?.valueChanges.pipe(takeUntil(this._destroyed))

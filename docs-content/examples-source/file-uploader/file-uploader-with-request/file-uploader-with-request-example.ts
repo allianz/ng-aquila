@@ -24,11 +24,12 @@ const myCustomConfig: NxMessageToastConfig = {
 export class FileUploaderWithRequestExampleComponent {
     @ViewChild('documentUpload', { static: false })
     documentUpload!: NxFileUploaderComponent;
-    public showUploadError: boolean = false;
+
+    showUploadError = false;
 
     constructor(
-        private messageToastService: NxMessageToastService,
-        private http: HttpClient,
+        private readonly messageToastService: NxMessageToastService,
+        private readonly http: HttpClient,
     ) {}
 
     upload(url: string) {

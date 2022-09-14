@@ -38,7 +38,7 @@
             <span class="docs-api-method-name">open(text: <span class="docs-api-property__type">string</span>,config: <span class="docs-api-property__type">NxMessageToastConfig</span>): <span class="docs-api-method-returns-type">NxMessageToastRef</span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Creates and dispatches a message toastwith a custom text.</p>
+    <div class="docs-api-method-description"><p>Creates and dispatches a message toast with a custom text.</p>
 </div><div class="docs-api-method-params">
         <p class="docs-api-method-param-title">Parameters:</p>
         
@@ -67,7 +67,7 @@
             <span class="docs-api-method-name">openFromTemplate(template: <span class="docs-api-property__type">TemplateRef<any></span>,config: <span class="docs-api-property__type">NxMessageToastConfig</span>): <span class="docs-api-method-returns-type">NxMessageToastRef</span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Creates and dispatches a message toastwith a custom template for the content.</p>
+    <div class="docs-api-method-description"><p>Creates and dispatches a message toast with a custom template for the content.</p>
 </div><div class="docs-api-method-params">
         <p class="docs-api-method-param-title">Parameters:</p>
         
@@ -89,9 +89,9 @@
         
     </div></div>
    
-  <h3 id="directives" class="docs-header-link docs-api-h3">
-        <span header-link="directives"></span>
-        Directives
+  <h3 id="components" class="docs-header-link docs-api-h3">
+        <span header-link="components"></span>
+        Components
     </h3>
      
 
@@ -278,7 +278,7 @@ The message box will color accordingly. Default: &#39;info&#39;</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">announcementMessage</span>:
+                <span class="docs-api-property__name">announcementMessage</span>?:
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -294,7 +294,7 @@ component or template, the announcement message will default to the specified me
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">context</span>:
+                <span class="docs-api-property__name">context</span>?:
                 <span class="docs-api-property__type">NxMessageToastContext</span>
             </code>
         </p>
@@ -309,7 +309,7 @@ component or template, the announcement message will default to the specified me
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">duration</span>:
+                <span class="docs-api-property__name">duration</span>?:
                 <span class="docs-api-property__type">number</span>
             </code>
         </p>
@@ -324,7 +324,7 @@ component or template, the announcement message will default to the specified me
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">politeness</span>:
+                <span class="docs-api-property__name">politeness</span>?:
                 <span class="docs-api-property__type">AriaLivePoliteness</span>
             </code>
         </p>
@@ -353,7 +353,7 @@ component or template, the announcement message will default to the specified me
             <span class="docs-api-method-name">afterDismissed(): <span class="docs-api-method-returns-type">Observable<any></span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Gets an observable that is notified when the message toastis finished closing.</p>
+    <div class="docs-api-method-description"><p>Gets an observable that is notified when the message toast is finished closing.</p>
 </div></div>
    
 
@@ -363,7 +363,7 @@ component or template, the announcement message will default to the specified me
             <span class="docs-api-method-name">afterOpened(): <span class="docs-api-method-returns-type">Observable<void></span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Gets an observable that is notified when the message toasthas opened and appeared.</p>
+    <div class="docs-api-method-description"><p>Gets an observable that is notified when the message toast has opened and appeared.</p>
 </div></div>
    
 

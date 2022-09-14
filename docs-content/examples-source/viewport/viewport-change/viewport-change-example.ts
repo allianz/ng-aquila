@@ -14,7 +14,8 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class ViewportChangeExampleComponent implements OnDestroy {
     @ViewChild('sidebar') sidebar!: NxSidebarComponent;
-    actions = [
+
+    readonly actions = [
         {
             icon: 'file-text',
             label: 'All Files',
@@ -44,7 +45,7 @@ export class ViewportChangeExampleComponent implements OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private viewportService: NxViewportService) {
+    constructor(private readonly viewportService: NxViewportService) {
         this.viewportService
             .min(NxBreakpoints.BREAKPOINT_MEDIUM)
             .pipe(takeUntil(this._destroyed))

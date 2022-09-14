@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./checkbox-simple-binding-example.css'],
 })
 export class CheckboxSimpleBindingExampleComponent {
-    checkedRaw: boolean = false;
+    checkedRaw = false;
 }

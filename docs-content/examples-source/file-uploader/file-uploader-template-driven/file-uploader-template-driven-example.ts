@@ -4,7 +4,6 @@ import {
     FileItem,
     NxFileUploadConfig,
     NxFileUploader,
-    NxFileUploadResult,
 } from '@aposin/ng-aquila/file-uploader';
 import {
     NxMessageToastConfig,
@@ -28,7 +27,7 @@ export const myCustomConfig: NxMessageToastConfig = {
 export class FileUploaderTemplateDrivenExampleComponent
     implements OnInit, OnDestroy
 {
-    uploadConfig: NxFileUploadConfig = {
+    readonly uploadConfig: NxFileUploadConfig = {
         requestUrl: 'file-upload',
         options: {
             params: new HttpParams(),
@@ -36,18 +35,18 @@ export class FileUploaderTemplateDrivenExampleComponent
         },
     };
 
-    uploader = new NxFileUploader(this.uploadConfig, this.http);
+    readonly uploader = new NxFileUploader(this.uploadConfig, this.http);
 
     myFiles: FileItem[] = [];
 
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private messageToastService: NxMessageToastService,
-        private http: HttpClient,
+        private readonly messageToastService: NxMessageToastService,
+        private readonly http: HttpClient,
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.uploader.response
             .pipe(takeUntil(this._destroyed))
             .subscribe(result => {

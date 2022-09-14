@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['sidepanel-with-tabs-example.css'],
 })
 export class SidepanelWithTabsExampleComponent {
-    opened: boolean = true;
+    opened = true;
 }

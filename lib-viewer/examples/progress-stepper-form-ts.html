@@ -11,11 +11,12 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProgressStepperFormExampleComponent</span> </span>{
     lastStepCompleted = <span class="hljs-literal">false</span>;
-    manualCompletionForm = <span class="hljs-built_in">this</span>._formBuilder.group({
+
+    <span class="hljs-keyword">readonly</span> manualCompletionForm = <span class="hljs-built_in">this</span>.fb.group({
         <span class="hljs-attr">name</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required],
     });
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _formBuilder: FormBuilder</span>)</span> {}
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>)</span> {}
 
     <span class="hljs-function"><span class="hljs-title">completeLastStep</span>(<span class="hljs-params"></span>)</span> {
         <span class="hljs-built_in">this</span>.lastStepCompleted = <span class="hljs-literal">true</span>;

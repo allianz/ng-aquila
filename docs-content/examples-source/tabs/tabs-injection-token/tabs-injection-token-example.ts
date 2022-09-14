@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
-    TabGroupDefaultOptions,
     TAB_GROUP_DEFAULT_OPTIONS,
+    TabGroupDefaultOptions,
 } from '@aposin/ng-aquila/tabs';
 
 const myDefaultOptions: TabGroupDefaultOptions = {
@@ -20,5 +20,5 @@ const myDefaultOptions: TabGroupDefaultOptions = {
     ],
 })
 export class TabsInjectionTokenExampleComponent {
-    currentIndex: number = 0;
+    currentIndex = 0;
 }

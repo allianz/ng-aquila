@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 
-type MenuChild = {
+interface MenuChild {
     label: string;
-};
+}
 
-type MenuItem = {
+interface MenuItem {
     label: string;
     expanded?: boolean;
     icon: string;
     children?: MenuChild[];
-};
+}
 
 /**
  * @title Menu item with large indentation and button icons

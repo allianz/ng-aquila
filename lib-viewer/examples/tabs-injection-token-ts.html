@@ -1,7 +1,7 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    TabGroupDefaultOptions,
     TAB_GROUP_DEFAULT_OPTIONS,
+    TabGroupDefaultOptions,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tabs&#x27;</span>;
 
 <span class="hljs-keyword">const</span> myDefaultOptions: TabGroupDefaultOptions = {
@@ -20,5 +20,5 @@
     ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TabsInjectionTokenExampleComponent</span> </span>{
-    <span class="hljs-attr">currentIndex</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>;
+    currentIndex = <span class="hljs-number">0</span>;
 }

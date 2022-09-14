@@ -26,7 +26,7 @@ export const myCustomConfig: NxMessageToastConfig = {
     styleUrls: ['./file-uploader-auto-example.css'],
 })
 export class FileUploaderAutoExampleComponent implements OnInit, OnDestroy {
-    uploadConfig: NxFileUploadConfig = {
+    readonly uploadConfig: NxFileUploadConfig = {
         requestUrl: 'file-upload',
         options: {
             params: new HttpParams(),
@@ -38,7 +38,8 @@ export class FileUploaderAutoExampleComponent implements OnInit, OnDestroy {
     };
 
     myFiles: FileItem[] = [];
-    uploader = new NxFileUploader(this.uploadConfig, this.http);
+
+    readonly uploader = new NxFileUploader(this.uploadConfig, this.http);
 
     @ViewChild('documentUpload', { static: false })
     documentUpload!: NxFileUploaderComponent;
@@ -46,8 +47,8 @@ export class FileUploaderAutoExampleComponent implements OnInit, OnDestroy {
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private messageToastService: NxMessageToastService,
-        private http: HttpClient,
+        private readonly messageToastService: NxMessageToastService,
+        private readonly http: HttpClient,
     ) {}
 
     ngOnInit(): void {

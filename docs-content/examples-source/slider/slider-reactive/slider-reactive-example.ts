@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Slider Reactive Form Example
@@ -10,15 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./slider-reactive-example.css'],
 })
 export class SliderReactiveExampleComponent {
-    testForm!: FormGroup;
+    readonly testForm = this.fb.group({
+        sliderTestReactive: [10, Validators.required],
+    });
 
-    constructor(private fb: FormBuilder) {
-        this.createForm();
-    }
-
-    createForm() {
-        this.testForm = this.fb.group({
-            sliderTestReactive: [10, Validators.required],
-        });
-    }
+    constructor(private readonly fb: FormBuilder) {}
 }

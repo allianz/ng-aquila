@@ -10,21 +10,18 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./checkbox-group-validation-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CheckboxGroupValidationExampleComponent</span> </span>{
-    <span class="hljs-keyword">public</span> myFormGroup: FormGroup;
+    <span class="hljs-keyword">readonly</span> myFormGroup = <span class="hljs-built_in">this</span>.fb.group({
+        <span class="hljs-attr">terms</span>: [[], [Validators.required, <span class="hljs-built_in">this</span>.validateCheckboxes]],
+    });
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
-        <span class="hljs-built_in">this</span>.myFormGroup = <span class="hljs-built_in">this</span>.fb.group({
-            <span class="hljs-attr">terms</span>: [[], [Validators.required, <span class="hljs-built_in">this</span>.validateCheckboxes]],
-        });
-    }
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>)</span> {}
 
     <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-title">validateCheckboxes</span>(<span class="hljs-params">formGroup: FormGroup</span>)</span> {
         <span class="hljs-keyword">if</span> (formGroup.value.length &lt;= <span class="hljs-number">2</span>) {
             <span class="hljs-keyword">return</span> {
                 <span class="hljs-attr">min</span>: <span class="hljs-literal">false</span>,
             };
-        } <span class="hljs-keyword">else</span> {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
         }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
 }

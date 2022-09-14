@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./taglist-keyword-example.css'],
 })
 export class TaglistKeywordExampleComponent {
-    public tags: string[] = [
+    tags: string[] = [
         'Apples',
         'Oranges',
         'Bananas',

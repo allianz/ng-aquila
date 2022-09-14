@@ -8,9 +8,9 @@
             <span class="docs-api-module-import__from-span">from</span>
             <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/slider'</span>;
         </code>
-    </p><h3 id="directives" class="docs-header-link docs-api-h3">
-        <span header-link="directives"></span>
-        Directives
+    </p><h3 id="components" class="docs-header-link docs-api-h3">
+        <span header-link="components"></span>
+        Components
     </h3>
      
 
@@ -131,6 +131,20 @@
    
 
 <tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'longTicks'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">longTicks</span>:
+                <span class="docs-api-property__type">number[]</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the array of value which will render as long tick (Default: Middle value if present).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxMax'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">max</span>:
@@ -217,6 +231,21 @@
    
 
 <tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'tickInterval'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">tickInterval</span>:
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>How often to show ticks. Relative to the step so that a tick always appears on a step.
+Ex: Tick interval of 4 with a step of 3 will draw a tick every 4 steps (every 12 values).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxValue'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">value</span>:
@@ -255,6 +284,19 @@
     <td class="docs-api-property-description">
         <p>An event is dispatched on each value change.</p>
 </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">ticks</span>:
+                <span class="docs-api-property__type">TickItem[]</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
 </tr>
   
 </table> 

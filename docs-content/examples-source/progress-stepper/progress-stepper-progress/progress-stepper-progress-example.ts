@@ -15,25 +15,24 @@ import {
     styleUrls: ['./progress-stepper-progress-example.css'],
 })
 export class ProgressStepperProgressExampleComponent {
-    formLinear: FormGroup;
-    constructor(private _formBuilder: FormBuilder) {
-        this.formLinear = this._formBuilder.group({
-            personalDetails: new FormGroup({
-                name: new FormControl('', {
-                    validators: Validators.required,
-                }),
-                age: new FormControl('', {
-                    validators: Validators.required,
-                }),
+    readonly formLinear = this.fb.group({
+        personalDetails: new FormGroup({
+            name: new FormControl('', {
+                validators: Validators.required,
             }),
-            address: new FormGroup({
-                street: new FormControl('', {
-                    validators: Validators.required,
-                }),
-                postalCode: new FormControl('', {
-                    validators: Validators.required,
-                }),
+            age: new FormControl('', {
+                validators: Validators.required,
             }),
-        });
-    }
+        }),
+        address: new FormGroup({
+            street: new FormControl('', {
+                validators: Validators.required,
+            }),
+            postalCode: new FormControl('', {
+                validators: Validators.required,
+            }),
+        }),
+    });
+
+    constructor(private readonly fb: FormBuilder) {}
 }

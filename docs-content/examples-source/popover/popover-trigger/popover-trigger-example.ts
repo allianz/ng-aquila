@@ -21,18 +21,20 @@ export class PopoverTriggerExampleComponent
 {
     popoverManualOpenFlag = false;
 
-    @ViewChild('clickTriggerIcon') _clickTriggerIcon!: ElementRef<HTMLElement>;
+    @ViewChild('clickTriggerIcon')
+    _clickTriggerIcon!: ElementRef<HTMLElement>;
+
     @ViewChild('manualTriggerIcon')
     _manualTriggerIcon!: ElementRef<HTMLElement>;
 
-    constructor(private _focusMonitor: FocusMonitor) {}
+    constructor(private readonly _focusMonitor: FocusMonitor) {}
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._clickTriggerIcon);
         this._focusMonitor.monitor(this._manualTriggerIcon);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._clickTriggerIcon);
         this._focusMonitor.stopMonitoring(this._manualTriggerIcon);
     }
@@ -44,7 +46,6 @@ export class PopoverTriggerExampleComponent
                 this.popoverManualOpenFlag = !this.popoverManualOpenFlag;
                 break;
             default:
-                return;
         }
     }
 }

@@ -18,10 +18,10 @@ export class MyIntl extends NxCodeInputIntl {
     providers: [{ provide: NxCodeInputIntl, useClass: MyIntl }],
 })
 export class CodeInputLocalizeExampleComponent implements OnInit {
-    inputValue: string = '';
+    inputValue = '';
     codeForm!: FormGroup;
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.codeForm = new FormGroup({
             keyCode: new FormControl(this.inputValue, {
                 validators: [

@@ -14,10 +14,11 @@ export class FormfieldExpertErrorExampleComponent implements AfterContentInit {
     exampleErrorNgModel!: NxInputDirective;
     @ViewChild('exampleErrorWithHintNgModel', { static: true })
     exampleErrorWithHintNgModel!: NxInputDirective;
-    public valueError!: string;
-    public valueErrorWithHint!: string;
 
-    ngAfterContentInit() {
+    valueError!: string;
+    valueErrorWithHint!: string;
+
+    ngAfterContentInit(): void {
         this.exampleErrorNgModel.ngControl?.control?.markAsTouched();
         this.exampleErrorWithHintNgModel.ngControl?.control?.markAsTouched();
     }

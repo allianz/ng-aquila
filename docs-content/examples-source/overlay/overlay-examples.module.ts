@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NxOverlayModule } from '@aposin/ng-aquila/overlay';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { OverlayLimitingFallbacksExampleComponent } from './overlay-limiting-fallbacks/overlay-limiting-fallbacks-example';
 import { OverlayPositioningExampleComponent } from './overlay-positioning/overlay-positioning-example';

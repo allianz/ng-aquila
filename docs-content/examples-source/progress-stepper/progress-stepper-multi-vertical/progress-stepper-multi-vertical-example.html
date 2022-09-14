@@ -40,8 +40,9 @@
                     nxButton="primary small"
                     (click)="stepper.next()"
                     type="button"
-                    >Next</button
                 >
+                    Next
+                </button>
             </form>
 
             <form *ngSwitchCase="1" [formGroup]="nameForm.form">
@@ -59,14 +60,16 @@
                     nxButton="secondary small"
                     (click)="stepper.previous()"
                     type="button"
-                    >Previous</button
                 >
+                    Previous
+                </button>
                 <button
                     nxButton="primary small"
                     (click)="stepper.next()"
                     type="button"
-                    >Next</button
                 >
+                    Next
+                </button>
             </form>
 
             <form *ngSwitchCase="2" [formGroup]="breedForm.form">
@@ -108,14 +111,16 @@
                     nxButton="secondary small"
                     (click)="stepper.previous()"
                     type="button"
-                    >Previous</button
                 >
+                    Previous
+                </button>
                 <button
                     nxButton="primary small"
                     (click)="stepper.next()"
                     type="button"
-                    >Next</button
                 >
+                    Next
+                </button>
             </form>
 
             <form
@@ -137,14 +142,16 @@
                     nxButton="secondary small"
                     (click)="stepper.previous()"
                     type="button"
-                    >Previous</button
                 >
+                    Previous
+                </button>
                 <button
                     nxButton="primary small"
                     type="submit"
                     [disabled]="ageForm.form.invalid"
-                    >Submit</button
                 >
+                    Submit
+                </button>
             </form>
         </div>
     </div>
@@ -157,9 +164,9 @@
 
     <div nxRow class="nx-margin-top-l">
         <div nxCol="12" class="action-container">
-            <button nxButton="secondary small" (click)="reset()" type="button"
-                >Reset</button
-            >
+            <button nxButton="secondary small" (click)="reset()" type="button">
+                Reset
+            </button>
 
             <nx-radio-toggle [(ngModel)]="direction" nxStyle="small">
                 <nx-radio-toggle-button nxValue="vertical"

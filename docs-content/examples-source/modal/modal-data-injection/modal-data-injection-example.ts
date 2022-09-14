@@ -1,6 +1,10 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
+interface MyDialogData {
+    name: string;
+}
+
 /**
  * @title Data injection example
  */
@@ -11,27 +15,18 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 })
 export class ModalDataInjectionExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;
-    actionResult!: string;
 
-    dialogRef!: NxModalRef<any, any>;
+    dialogRef?: NxModalRef<any>;
 
-    constructor(public dialogService: NxDialogService) {}
+    constructor(private readonly dialogService: NxDialogService) {}
 
     openFromTemplate(): void {
+        const myDialogData: MyDialogData = { name: 'Max Mustermann' };
+
         this.dialogRef = this.dialogService.open(this.templateRef, {
             showCloseIcon: true,
             ariaLabel: 'A modal with injected data',
-            data: {
-                name: 'Max Mustermann',
-            },
+            data: myDialogData,
         });
-
-        this.dialogRef.afterClosed().subscribe(result => {
-            this.actionResult = result;
-        });
-    }
-
-    closeDialog() {
-        this.dialogRef.close();
     }
 }

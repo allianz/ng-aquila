@@ -2,10 +2,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
 import { NxBadgeModule } from '@aposin/ng-aquila/badge';
 import { NxCardModule } from '@aposin/ng-aquila/card';
+import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
 import { NxTableModule } from '@aposin/ng-aquila/table';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { ContextMenuBasicExampleComponent } from './context-menu-basic/context-menu-basic-example';
 import { ContextMenuCursorModeExampleComponent } from './context-menu-cursor-mode/context-menu-cursor-mode-example';
@@ -16,11 +18,10 @@ import { ContextMenuIndicatorExampleComponent } from './context-menu-indicator/c
 import { ContextMenuLazyExampleComponent } from './context-menu-lazy/context-menu-lazy-example';
 import { ContextMenuNestedExampleComponent } from './context-menu-nested/context-menu-nested-example';
 import { ContextMenuProgrammaticExampleComponent } from './context-menu-programmatic/context-menu-programmatic-example';
-import { ContextMenuScrollStrategyProviderExampleComponent } from './context-menu-scroll-strategy-provider/context-menu-scroll-strategy-provider-example';
 import { ContextMenuScrollStrategyExampleComponent } from './context-menu-scroll-strategy/context-menu-scroll-strategy-example';
+import { ContextMenuScrollStrategyProviderExampleComponent } from './context-menu-scroll-strategy-provider/context-menu-scroll-strategy-provider-example';
 import { ContextMenuSelectMultipleExampleComponent } from './context-menu-select-multiple/context-menu-select-multiple-example';
 import { ContextMenuSelectionExampleComponent } from './context-menu-selection/context-menu-selection-example';
-import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 
 const EXAMPLES = [
     ContextMenuBasicExampleComponent,

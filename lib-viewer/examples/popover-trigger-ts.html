@@ -21,18 +21,20 @@
 </span>{
     popoverManualOpenFlag = <span class="hljs-literal">false</span>;
 
-    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;clickTriggerIcon&#x27;</span>) _clickTriggerIcon!: ElementRef&lt;HTMLElement&gt;;
+    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;clickTriggerIcon&#x27;</span>)
+    _clickTriggerIcon!: ElementRef&lt;HTMLElement&gt;;
+
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;manualTriggerIcon&#x27;</span>)
     _manualTriggerIcon!: ElementRef&lt;HTMLElement&gt;;
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _focusMonitor: FocusMonitor</span>)</span> {}
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _focusMonitor: FocusMonitor</span>)</span> {}
 
-    <span class="hljs-function"><span class="hljs-title">ngAfterViewInit</span>(<span class="hljs-params"></span>)</span> {
+    ngAfterViewInit(): <span class="hljs-built_in">void</span> {
         <span class="hljs-built_in">this</span>._focusMonitor.monitor(<span class="hljs-built_in">this</span>._clickTriggerIcon);
         <span class="hljs-built_in">this</span>._focusMonitor.monitor(<span class="hljs-built_in">this</span>._manualTriggerIcon);
     }
 
-    <span class="hljs-function"><span class="hljs-title">ngOnDestroy</span>(<span class="hljs-params"></span>)</span> {
+    ngOnDestroy(): <span class="hljs-built_in">void</span> {
         <span class="hljs-built_in">this</span>._focusMonitor.stopMonitoring(<span class="hljs-built_in">this</span>._clickTriggerIcon);
         <span class="hljs-built_in">this</span>._focusMonitor.stopMonitoring(<span class="hljs-built_in">this</span>._manualTriggerIcon);
     }
@@ -44,7 +46,6 @@
                 <span class="hljs-built_in">this</span>.popoverManualOpenFlag = !<span class="hljs-built_in">this</span>.popoverManualOpenFlag;
                 <span class="hljs-keyword">break</span>;
             <span class="hljs-keyword">default</span>:
-                <span class="hljs-keyword">return</span>;
         }
     }
 }

@@ -21,9 +21,10 @@ export const myCustomConfig: NxMessageToastConfig = {
 })
 export class MessageToastCustomSettingsExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;
+
     toastRef!: NxMessageToastRef;
 
-    constructor(private messageToastService: NxMessageToastService) {}
+    constructor(private readonly messageToastService: NxMessageToastService) {}
 
     open() {
         this.toastRef = this.messageToastService.openFromTemplate(

@@ -33,11 +33,11 @@
 
     direction: NxMultiStepperDirection = <span class="hljs-string">&#x27;vertical&#x27;</span>;
 
-    value: Animal | <span class="hljs-literal">undefined</span>;
+    value?: Animal;
 
-    animalTypes = [<span class="hljs-string">&#x27;cat&#x27;</span>, <span class="hljs-string">&#x27;dog&#x27;</span>];
+    <span class="hljs-keyword">readonly</span> animalTypes = [<span class="hljs-string">&#x27;cat&#x27;</span>, <span class="hljs-string">&#x27;dog&#x27;</span>];
 
-    dogBreeds = [
+    <span class="hljs-keyword">readonly</span> dogBreeds = [
         <span class="hljs-string">&#x27;German Shepherd&#x27;</span>,
         <span class="hljs-string">&#x27;Bulldog&#x27;</span>,
         <span class="hljs-string">&#x27;Labrador Retriever&#x27;</span>,
@@ -45,7 +45,7 @@
         <span class="hljs-string">&#x27;Golden Retriever&#x27;</span>,
     ];
 
-    catBreeds = [
+    <span class="hljs-keyword">readonly</span> catBreeds = [
         <span class="hljs-string">&#x27;Maine Coon&#x27;</span>,
         <span class="hljs-string">&#x27;Persian Cat&#x27;</span>,
         <span class="hljs-string">&#x27;Siamese Cat&#x27;</span>,
@@ -53,35 +53,35 @@
         <span class="hljs-string">&#x27;British Shorthair&#x27;</span>,
     ];
 
-    animalTypeForm = {
+    <span class="hljs-keyword">readonly</span> animalTypeForm = {
         <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Species&#x27;</span>,
-        <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>._formBuilder.group({
+        <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>.fb.group({
             <span class="hljs-attr">animalType</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required],
         }),
     };
 
-    breedForm = {
+    <span class="hljs-keyword">readonly</span> breedForm = {
         <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Breed&#x27;</span>,
-        <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>._formBuilder.group({}),
+        <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>.fb.group({}),
     };
 
-    ageForm = {
+    <span class="hljs-keyword">readonly</span> ageForm = {
         <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Age&#x27;</span>,
-        <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>._formBuilder.group({
+        <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>.fb.group({
             <span class="hljs-attr">age</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required],
         }),
     };
 
-    nameForm = {
+    <span class="hljs-keyword">readonly</span> nameForm = {
         <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Name&#x27;</span>,
-        <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>._formBuilder.group({
+        <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>.fb.group({
             <span class="hljs-attr">name</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required],
         }),
     };
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> Subject&lt;<span class="hljs-built_in">void</span>&gt;();
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _formBuilder: FormBuilder</span>)</span> {
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>)</span> {
         <span class="hljs-built_in">this</span>.animalTypeForm.form
             .get(<span class="hljs-string">&#x27;animalType&#x27;</span>)
             ?.valueChanges.pipe(takeUntil(<span class="hljs-built_in">this</span>._destroyed))

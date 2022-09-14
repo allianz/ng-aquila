@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./radio-toggle-form-example.css'],
 })
 export class RadioToggleFormExampleComponent {
-    testSelect: string = 'B';
+    testSelect = 'B';
 }

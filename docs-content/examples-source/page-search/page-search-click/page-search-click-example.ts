@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
     styleUrls: ['./page-search-click-example.css'],
 })
 export class PageSearchClickExampleComponent {
-    valuesByClick: Array<string> = [];
-    searchTerm: string = '';
+    valuesByClick: string[] = [];
+    searchTerm = '';
 
     onButtonClick(value: string) {
         this.valuesByClick.push(value);

@@ -1,5 +1,5 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { NxDateAdapter, NX_DATE_LOCALE } from '@aposin/ng-aquila/datefield';
+import { NX_DATE_LOCALE, NxDateAdapter } from '@aposin/ng-aquila/datefield';
 import * as moment from 'moment';
 import { Moment } from 'moment';
 import { Subject } from 'rxjs';
@@ -14,18 +14,18 @@ import { takeUntil } from 'rxjs/operators';
     styleUrls: ['./datefield-parsing-example.css'],
 })
 export class DatefieldParsingExampleComponent implements OnInit, OnDestroy {
-    public strictDate = moment();
-    public nonStrictDate = moment();
-    public openedStrict = false;
-    public openedNonStrict = false;
-    public currentLocale = this.nxDateLocale;
-    public parseFormat = 'MM/DD/YYYY';
+    strictDate = moment();
+    nonStrictDate = moment();
+    openedStrict = false;
+    openedNonStrict = false;
+    currentLocale = this.nxDateLocale;
+    parseFormat = 'MM/DD/YYYY';
 
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        public nxDateAdapter: NxDateAdapter<Moment>,
-        @Inject(NX_DATE_LOCALE) public nxDateLocale: string,
+        readonly nxDateAdapter: NxDateAdapter<Moment>,
+        @Inject(NX_DATE_LOCALE) readonly nxDateLocale: string,
     ) {}
 
     ngOnInit(): void {

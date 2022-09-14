@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Accordion Error Example
@@ -10,23 +10,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./accordion-error-example.css'],
 })
 export class AccordionErrorExampleComponent {
-    public showErrorPayment: boolean = true;
-    public showErrorInfo: boolean = false;
+    readonly formGroupInfo = this.fb.group({
+        surname: ['Mustermann', Validators.required],
+    });
 
-    formGroupInfo!: FormGroup;
-    formGroupPayment!: FormGroup;
+    readonly formGroupPayment = this.fb.group({
+        input: ['', Validators.required],
+    });
 
-    constructor(private fb: FormBuilder) {
-        this.createForm();
-    }
+    showErrorPayment = true;
+    showErrorInfo = false;
 
-    createForm() {
-        this.formGroupInfo = this.fb.group({
-            surname: ['Mustermann', Validators.required],
-        });
-        this.formGroupPayment = this.fb.group({
-            input: [, Validators.required],
-        });
+    constructor(private readonly fb: FormBuilder) {
         this.formGroupPayment.markAllAsTouched();
     }
 

@@ -12,7 +12,7 @@ import { takeUntil } from 'rxjs/operators';
     styleUrls: ['code-input-model-example.css'],
 })
 export class CodeInputModelExampleComponent implements OnInit, OnDestroy {
-    inputValue: string = '';
+    inputValue = '';
 
     codeForm = new FormGroup({
         keyCode: new FormControl(this.inputValue, {
@@ -27,7 +27,7 @@ export class CodeInputModelExampleComponent implements OnInit, OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.keyCode?.valueChanges
             .pipe(takeUntil(this._destroyed))
             .subscribe(() => {

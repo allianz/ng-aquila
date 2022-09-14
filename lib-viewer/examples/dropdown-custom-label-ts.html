@@ -14,9 +14,9 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-custom-label-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DropdownCustomLabelExampleComponent</span> </span>{
-    <span class="hljs-attr">customLabelDropdownValue</span>: TelephonePrefixData | <span class="hljs-literal">undefined</span>;
+    customLabelDropdownValue?: TelephonePrefixData;
 
-    telPrefixDemoData: <span class="hljs-built_in">Array</span>&lt;TelephonePrefixData&gt; = [
+    telPrefixDemoData: TelephonePrefixData[] = [
         {
             <span class="hljs-attr">prefix</span>: <span class="hljs-string">&#x27;+1&#x27;</span>,
             <span class="hljs-attr">countryId</span>: <span class="hljs-string">&#x27;United States of America&#x27;</span>,

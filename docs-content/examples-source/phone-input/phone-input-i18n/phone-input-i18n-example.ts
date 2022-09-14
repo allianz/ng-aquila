@@ -1,8 +1,9 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { NxPhoneInputIntl } from '@aposin/ng-aquila/phone-input';
 import countries from 'i18n-iso-countries';
 import de from 'i18n-iso-countries/langs/de.json';
 import fr from 'i18n-iso-countries/langs/fr.json';
+
 countries.registerLocale(de);
 
 countries.registerLocale(fr);
@@ -25,11 +26,10 @@ export class MyPhoneInputIntl extends NxPhoneInputIntl {
         },
     ],
 })
-export class PhoneInputI18nExampleComponent implements OnInit {
+export class PhoneInputI18nExampleComponent {
     value = '';
-    frenchCountries = countries.getNames('fr', { select: 'official' });
-    overlayLabel = 'my overlay label';
-    constructor() {}
 
-    ngOnInit() {}
+    frenchCountries = countries.getNames('fr', { select: 'official' });
+
+    overlayLabel = 'my overlay label';
 }

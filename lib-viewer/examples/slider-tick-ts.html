@@ -1,0 +1,32 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title </span>Slider Tick Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;slider-tick-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./slider-tick-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./slider-tick-example.css&#x27;</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SliderTickExampleComponent</span> </span>{
+    sliderDemoValue = <span class="hljs-number">40</span>;
+    step = <span class="hljs-number">8</span>;
+    interval = <span class="hljs-number">1</span>;
+    min = <span class="hljs-number">0</span>;
+    max = <span class="hljs-number">100</span>;
+    longTicksString = <span class="hljs-string">&#x27;16,32,48,64,80,96&#x27;</span>;
+    longTicks: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">16</span>, <span class="hljs-number">32</span>, <span class="hljs-number">48</span>, <span class="hljs-number">64</span>, <span class="hljs-number">80</span>, <span class="hljs-number">96</span>];
+
+    <span class="hljs-function"><span class="hljs-title">toArray</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.longTicks = <span class="hljs-built_in">this</span>.longTicksString
+            .split(<span class="hljs-string">&#x27;,&#x27;</span>)
+            .reduce(<span class="hljs-function">(<span class="hljs-params">acc: <span class="hljs-built_in">number</span>[], v</span>) =&gt;</span> {
+                <span class="hljs-keyword">const</span> val = <span class="hljs-built_in">parseInt</span>(v, <span class="hljs-number">10</span>);
+                <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">isNaN</span>(val)) {
+                    acc.push(val);
+                }
+
+                <span class="hljs-keyword">return</span> acc;
+            }, []);
+    }
+}
