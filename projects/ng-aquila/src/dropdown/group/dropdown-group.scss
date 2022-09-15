@@ -4,8 +4,19 @@
     display: block;
 }
 
-:host:first-child .nx-dropdown-results__group {
-    background: v(dropdown-group-section-background-color);
+:host:not(:last-child) .nx-dropdown-results__group {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: calc(100% - nx-spacer(xl));
+        height: 1px;
+        margin: 0 nx-spacer(2m);
+        background-color: v(dropdown-group-divider);
+        bottom: 0;
+        left: 0;
+    }
 }
 
 :host:first-child .nx-dropdown-results__group-label {
