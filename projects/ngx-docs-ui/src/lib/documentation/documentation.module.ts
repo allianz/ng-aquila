@@ -11,7 +11,7 @@ import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { ExampleFullScreenModule } from '../example-full-screen/example-full-screen.module';
 import { ComponentService } from '../service/component.service';
 import { ManifestService } from '../service/manifest.service';
-import { NXV_FOOTER, NXV_TOP_INFO } from './../core/tokens';
+import { NXV_FOOTER } from './../core/tokens';
 import { NxvDocumentationConfig } from './../core/types';
 import { ComponentPageModule } from './component-documentation/component-page/component-page.module';
 import { NxvDocumentationPageModule } from './component-documentation/documentation-page.module';
@@ -65,7 +65,6 @@ export class NxvDocumentationModule {
                 ComponentService,
                 { provide: ROUTES, useValue: createViewerRoutes(args), multi: true },
                 { provide: NXV_FOOTER, useValue: args.footerComponent },
-                { provide: NXV_TOP_INFO, useValue: args.topInfoComponent },
             ],
         };
     }

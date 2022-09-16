@@ -8,7 +8,6 @@ import { NxTabsModule } from '@aposin/ng-aquila/tabs';
 
 import { DocViewerModule } from '../../../doc-viewer/doc-viewer.module';
 import { ExampleLoaderModule } from '../../../example-loader/example-loader.module';
-import { NxvFeedbackModule } from '../../feedback/feedback.module';
 import { NxvTableOfContentsModule } from '../../table-of-contents/table-of-contents.module';
 import { ComponentApi } from './component-api';
 import { ComponentExamples } from './component-examples';
@@ -26,7 +25,6 @@ import { NxvComponentPage } from './component-page';
         ScrollingModule,
         NxBadgeModule,
         NxTabsModule,
-        NxvFeedbackModule,
     ],
     declarations: [NxvComponentPage, ComponentOverview, ComponentApi, ComponentExamples],
 })

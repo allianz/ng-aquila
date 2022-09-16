@@ -6,11 +6,10 @@ import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
 
 import { NxvFooterModule } from '../component-documentation/footer/footer.module';
-import { NxvTopInfoModule } from '../component-documentation/top-info/top-info.module';
 import { NxvGuidesComponent } from './guides.component';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, NxGridModule, NxvFooterModule, NxSidebarModule, NxActionModule, NxvTopInfoModule],
+    imports: [CommonModule, RouterModule, NxGridModule, NxvFooterModule, NxSidebarModule, NxActionModule],
     exports: [],
     declarations: [NxvGuidesComponent],
     providers: [],

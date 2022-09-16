@@ -26,7 +26,6 @@ import MANIFEST from 'projects/ng-aquila/documentation/generated/manifest.json';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
-import { TopInfoComponent } from './top-info/top-info.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 const ROUTES = [
@@ -70,7 +69,6 @@ const GITHUB_REPO_LINK: GithubLinkConfig = {
         NxvDocumentationModule.forRoot({
             welcomeComponent: WelcomeComponent,
             footerComponent: FooterComponent,
-            topInfoComponent: TopInfoComponent,
         }),
         BrowserAnimationsModule,
         ColorPickerModule,

@@ -21,5 +21,4 @@ export class GithubLinkConfig {
 export interface NxvDocumentationConfig {
     welcomeComponent: any;
     footerComponent: any;
-    topInfoComponent: any;
 }

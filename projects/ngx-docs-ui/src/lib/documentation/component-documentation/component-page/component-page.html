@@ -8,5 +8,3 @@
     <a nxTabLink *ngFor="let tab of activeTabs" [routerLink]="tab.path" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive"> {{tab.label}} </a>
 </nx-tab-nav-bar>
 <router-outlet></router-outlet>
-
-<nxv-feedback *ngIf="feedbackLinks" [page]="(componentService.current | async)?.category === 'general' ? 'generalExplanation' : 'component'"> </nxv-feedback>
