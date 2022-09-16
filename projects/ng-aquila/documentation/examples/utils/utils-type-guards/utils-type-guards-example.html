@@ -1,0 +1,82 @@
+<div class="scroll-container">
+    <table nxTable condensed>
+        <thead>
+            <tr nxTableRow>
+                <th nxHeaderCell>type guard</th>
+                <th nxHeaderCell>filter result</th>
+                <th nxHeaderCell>result type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr nxTableRow>
+                <td nxTableCell>notNull()</td>
+                <td nxTableCell>[{{ toText(notNull) }}]</td>
+                <td nxTableCell>primitive | undefined</td>
+            </tr>
+            <tr nxTableRow>
+                <td nxTableCell>notNullable()</td>
+                <td nxTableCell>[{{ toText(notNullable) }}]</td>
+                <td nxTableCell>primitive</td>
+            </tr>
+            <tr nxTableRow>
+                <td nxTableCell>notUndefined()</td>
+                <td nxTableCell>[{{ toText(notUndefined) }}]</td>
+                <td nxTableCell>primitive | null</td>
+            </tr>
+            <tr nxTableRow>
+                <td nxTableCell>isTruthy()</td>
+                <td nxTableCell>[{{ toText(isTruthy) }}]</td>
+                <td nxTableCell>primitive</td>
+            </tr>
+            <tr nxTableRow>
+                <td nxTableCell>isString()</td>
+                <td nxTableCell>[{{ toText(isString) }}]</td>
+                <td nxTableCell>string</td>
+            </tr>
+            <tr nxTableRow>
+                <td nxTableCell>isNumber()</td>
+                <td nxTableCell>[{{ toText(isNumber) }}]</td>
+                <td nxTableCell>number</td>
+            </tr>
+            <tr nxTableRow>
+                <td nxTableCell>isBoolean()</td>
+                <td nxTableCell>[{{ toText(isBoolean) }}]</td>
+                <td nxTableCell>boolean</td>
+            </tr>
+            <tr nxTableRow>
+                <td nxTableCell>isTrue()</td>
+                <td nxTableCell>[{{ toText(isTrue) }}]</td>
+                <td nxTableCell>true</td>
+            </tr>
+            <tr nxTableRow>
+                <td nxTableCell>isFalse()</td>
+                <td nxTableCell>[{{ toText(isFalse) }}]</td>
+                <td nxTableCell>false</td>
+            </tr>
+            <tr nxTableRow>
+                <td nxTableCell>isNull()</td>
+                <td nxTableCell>[{{ toText(isNull) }}]</td>
+                <td nxTableCell>null</td>
+            </tr>
+            <tr nxTableRow>
+                <td nxTableCell>isNullable()</td>
+                <td nxTableCell>[{{ toText(isNullable) }}]</td>
+                <td nxTableCell>null | undefined</td>
+            </tr>
+            <tr nxTableRow>
+                <td nxTableCell>isUndefined()</td>
+                <td nxTableCell>[{{ toText(isUndefined) }}]</td>
+                <td nxTableCell>undefined</td>
+            </tr>
+            <tr nxTableRow>
+                <td nxTableCell>notEmpty()</td>
+                <td nxTableCell>[{{ toText(notEmpty) }}]</td>
+                <td nxTableCell>ArrayLike&lt;string&gt;</td>
+            </tr>
+        </tbody>
+        <caption>
+            Reference array:
+            <code>[{{ toText(mixedArray) }}]</code>
+        </caption>
+    </table>
+</div>

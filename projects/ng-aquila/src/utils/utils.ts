@@ -1,15 +1,8 @@
 import { ElementRef, Renderer2 } from '@angular/core';
 
-/**
- * Assert that a value is a string using `typeof` check and redefine its type.
- */
-export function isString(value: any): value is string {
-    return typeof value === 'string';
-}
-
 // TODO comment function purpose
 export function pad(str: string, length = 2, padCharacter = '0'): string {
-    if (!isString(str) || str.length >= length) {
+    if (typeof str !== 'string' || str.length >= length) {
         return str;
     }
     while (str.length < length) {
