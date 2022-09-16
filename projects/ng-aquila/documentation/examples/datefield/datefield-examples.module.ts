@@ -1,9 +1,9 @@
+import { NxDatefieldModule } from '@allianz/ng-aquila/datefield';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxMessageModule } from '@allianz/ng-aquila/message';
+import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
+import { NxSwitcherModule } from '@allianz/ng-aquila/switcher';
 import { NgModule } from '@angular/core';
-import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxMessageModule } from '@aposin/ng-aquila/message';
-import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
-import { NxSwitcherModule } from '@aposin/ng-aquila/switcher';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { DatefieldBasicExampleComponent } from './datefield-basic/datefield-basic-example';

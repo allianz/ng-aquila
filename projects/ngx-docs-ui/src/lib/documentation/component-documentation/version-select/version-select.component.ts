@@ -1,5 +1,5 @@
+import { NxContextMenuTriggerDirective } from '@allianz/ng-aquila/context-menu';
 import { Component, Inject, Input, Optional, ViewChild } from '@angular/core';
-import { NxContextMenuTriggerDirective } from '@aposin/ng-aquila/context-menu';
 
 import { NX_DOC_VERSIONS } from '../../../core/tokens';
 import { DocVersions } from './../../../core/types';

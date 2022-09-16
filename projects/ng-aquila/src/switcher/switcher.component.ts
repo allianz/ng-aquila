@@ -1,3 +1,4 @@
+import { ErrorStateMatcher, randomString } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
@@ -16,7 +17,6 @@ import {
     ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { ErrorStateMatcher, randomString } from '@aposin/ng-aquila/utils';
 
 let nextId = 0;
 /** Options for placement of the label */

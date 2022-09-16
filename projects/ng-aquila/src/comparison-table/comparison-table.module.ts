@@ -1,6 +1,6 @@
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableComponent } from './comparison-table.component';

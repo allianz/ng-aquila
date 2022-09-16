@@ -1,14 +1,14 @@
+import { NX_AUTOCOMPLETE_SCROLL_STRATEGY } from '@allianz/ng-aquila/autocomplete';
+import { NX_CONTEXT_MENU_SCROLL_STRATEGY } from '@allianz/ng-aquila/context-menu';
+import { NX_DATEPICKER_SCROLL_STRATEGY } from '@allianz/ng-aquila/datefield';
+import { NX_DROPDOWN_SCROLL_STRATEGY } from '@allianz/ng-aquila/dropdown';
+import { NX_MODAL_SCROLL_STRATEGY } from '@allianz/ng-aquila/modal';
+import { NX_NOTIFICATION_PANEL_SCROLL_STRATEGY } from '@allianz/ng-aquila/notification-panel';
+import { NX_OVERLAY_SCROLL_STRATEGY } from '@allianz/ng-aquila/overlay';
+import { NX_POPOVER_SCROLL_STRATEGY } from '@allianz/ng-aquila/popover';
+import { NX_TOOLTIP_SCROLL_STRATEGY } from '@allianz/ng-aquila/tooltip';
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import { FactoryProvider, InjectionToken } from '@angular/core';
-import { NX_AUTOCOMPLETE_SCROLL_STRATEGY } from '@aposin/ng-aquila/autocomplete';
-import { NX_CONTEXT_MENU_SCROLL_STRATEGY } from '@aposin/ng-aquila/context-menu';
-import { NX_DATEPICKER_SCROLL_STRATEGY } from '@aposin/ng-aquila/datefield';
-import { NX_DROPDOWN_SCROLL_STRATEGY } from '@aposin/ng-aquila/dropdown';
-import { NX_MODAL_SCROLL_STRATEGY } from '@aposin/ng-aquila/modal';
-import { NX_NOTIFICATION_PANEL_SCROLL_STRATEGY } from '@aposin/ng-aquila/notification-panel';
-import { NX_OVERLAY_SCROLL_STRATEGY } from '@aposin/ng-aquila/overlay';
-import { NX_POPOVER_SCROLL_STRATEGY } from '@aposin/ng-aquila/popover';
-import { NX_TOOLTIP_SCROLL_STRATEGY } from '@aposin/ng-aquila/tooltip';
 
 import { NxScrollStrategy, NxScrollStrategyDefaultConfig, NxScrollStrategyFactoryConfig, NxScrollStrategyOptions } from './nx-scroll-strategy.models';
 

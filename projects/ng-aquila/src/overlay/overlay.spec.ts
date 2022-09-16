@@ -1,9 +1,9 @@
+import { NxButtonComponent, NxButtonModule } from '@allianz/ng-aquila/button';
 import { ESCAPE } from '@angular/cdk/keycodes';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, ElementRef, NgModule, TemplateRef, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NxButtonComponent, NxButtonModule } from '@aposin/ng-aquila/button';
 
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxOverlayModule } from './overlay.module';

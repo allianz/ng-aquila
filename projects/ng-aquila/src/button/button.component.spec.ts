@@ -1,6 +1,6 @@
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxButtonComponent } from './button.component';
 import { NxButtonModule } from './button.module';

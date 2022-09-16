@@ -1,7 +1,7 @@
+import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, ElementRef, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 
 import { dispatchMouseEvent } from '../cdk-test-utils';
 import { NxTableModule } from './table.module';

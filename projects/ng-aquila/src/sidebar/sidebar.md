@@ -11,7 +11,7 @@ The `<nx-sidebar>` provides a collapsible container for side content (often navi
 Please note that all the following examples use the [NxActionComponent](./documentation/action) for the side navigation items. The `NxActionModule` **is not automatically imported** when you import the `NxSidebarModule`. Therefore you have to import the `NxActionModule` yourself, if you want the same sidebar look:
 
 ```ts
-import { NxActionModule } from '@aposin/ng-aquila/action';
+import { NxActionModule } from '@allianz/ng-aquila/action';
 ```
 
 ### Static Sidebar with Actions

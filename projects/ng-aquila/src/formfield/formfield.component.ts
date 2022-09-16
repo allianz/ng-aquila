@@ -1,3 +1,4 @@
+import { getClassNameList } from '@allianz/ng-aquila/utils';
 import {
     AfterContentChecked,
     AfterContentInit,
@@ -17,7 +18,6 @@ import {
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
-import { getClassNameList } from '@aposin/ng-aquila/utils';
 import { merge, Subject } from 'rxjs';
 import { startWith, takeUntil } from 'rxjs/operators';
 

@@ -1,16 +1,16 @@
+import { NxErrorComponent, NxErrorModule, NxLabelComponent, NxLabelModule } from '@allianz/ng-aquila/base';
+import { NxCardModule, NxSelectableCardComponent } from '@allianz/ng-aquila/card';
+import { NxCircleToggleGroupComponent, NxCircleToggleModule } from '@allianz/ng-aquila/circle-toggle';
+import { NxComparisonTableModule, NxComparisonTableRowGroupDirective } from '@allianz/ng-aquila/comparison-table';
+import { NxDataDisplayComponent, NxDataDisplayModule } from '@allianz/ng-aquila/data-display';
+import { NxDatefieldModule, NxDatepickerToggleComponent } from '@allianz/ng-aquila/datefield';
+import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
+import { NxSmallStageComponent, NxSmallStageModule } from '@allianz/ng-aquila/small-stage';
+import { NxTabGroupComponent, NxTabNavBarComponent, NxTabsModule } from '@allianz/ng-aquila/tabs';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxErrorComponent, NxErrorModule, NxLabelComponent, NxLabelModule } from '@aposin/ng-aquila/base';
-import { NxCardModule, NxSelectableCardComponent } from '@aposin/ng-aquila/card';
-import { NxCircleToggleGroupComponent, NxCircleToggleModule } from '@aposin/ng-aquila/circle-toggle';
-import { NxComparisonTableModule, NxComparisonTableRowGroupDirective } from '@aposin/ng-aquila/comparison-table';
-import { NxDataDisplayComponent, NxDataDisplayModule } from '@aposin/ng-aquila/data-display';
-import { NxDatefieldModule, NxDatepickerToggleComponent } from '@aposin/ng-aquila/datefield';
-import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
-import { NxSmallStageComponent, NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
-import { NxTabGroupComponent, NxTabNavBarComponent, NxTabsModule } from '@aposin/ng-aquila/tabs';
 
 import { NxExpertModule } from './nx-expert.module';
 

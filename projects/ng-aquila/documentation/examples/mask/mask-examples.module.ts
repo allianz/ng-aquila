@@ -1,7 +1,7 @@
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxMaskModule } from '@allianz/ng-aquila/mask';
+import { NxRadioModule } from '@allianz/ng-aquila/radio-button';
 import { NgModule } from '@angular/core';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxMaskModule } from '@aposin/ng-aquila/mask';
-import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { IbanMaskExampleComponent } from './iban-mask/iban-mask-example';

@@ -1,3 +1,4 @@
+import { NxSidepanelComponent } from '@allianz/ng-aquila/sidepanel';
 import {
     AfterViewInit,
     Component,
@@ -5,7 +6,6 @@ import {
     OnDestroy,
     ViewChild,
 } from '@angular/core';
-import { NxSidepanelComponent } from '@aposin/ng-aquila/sidepanel';
 import { Subject } from 'rxjs';
 import { skip, takeUntil } from 'rxjs/operators';
 

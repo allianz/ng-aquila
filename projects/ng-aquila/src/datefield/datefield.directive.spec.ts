@@ -1,8 +1,8 @@
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
 import * as moment from 'moment';
 import { Moment } from 'moment';
 

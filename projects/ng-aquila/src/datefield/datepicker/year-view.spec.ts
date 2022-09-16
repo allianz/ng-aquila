@@ -1,9 +1,9 @@
+import { NxDateAdapter, NxNativeDateAdapter, NxNativeDateModule } from '@allianz/ng-aquila/datefield';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { DOWN_ARROW, END, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NxDateAdapter, NxNativeDateAdapter, NxNativeDateModule } from '@aposin/ng-aquila/datefield';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent } from '../../cdk-test-utils';
 import { NxCalendarBodyComponent } from './calendar-body';

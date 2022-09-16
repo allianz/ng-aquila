@@ -25,7 +25,7 @@ function addExpertModule(options: Schema) {
     return async (host: Tree) => {
         const workspace = await getWorkspace(host);
         const project = getProjectFromWorkspace(workspace, options.project);
-        addModuleImportToRootModule(host, 'NxExpertModule', '@aposin/ng-aquila/config', project);
+        addModuleImportToRootModule(host, 'NxExpertModule', '@allianz/ng-aquila/config', project);
     };
 }
 
@@ -94,7 +94,7 @@ function addAposinTheme(options: Schema) {
 
         const workspace = await getWorkspace(host);
         const project = getProjectFromWorkspace(workspace, options.project);
-        const newFilePath = 'node_modules/@aposin/ng-aquila/css/normalize.css';
+        const newFilePath = 'node_modules/@allianz/ng-aquila/css/normalize.css';
 
         const buildOptions = getProjectTargetOptions(project, 'build');
         let styles = buildOptions.styles as JsonArray;
@@ -105,7 +105,7 @@ function addAposinTheme(options: Schema) {
         }
 
         const themeToAdd = options.type === 'b2b' ? 'expert.css' : 'aposin.css';
-        styles.push(`node_modules/@aposin/ng-aquila/themes/${themeToAdd}`);
+        styles.push(`node_modules/@allianz/ng-aquila/themes/${themeToAdd}`);
 
         return updateWorkspace(workspace);
     };

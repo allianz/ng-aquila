@@ -22,7 +22,7 @@ You should have Node.js and the Angular CLI installed.
 2. **Add ng-aquila:**
 
     ```console
-    ng add @aposin/ng-aquila
+    ng add @allianz/ng-aquila
     ```
 
     Add the background color of the default theme to your styles file:
@@ -52,7 +52,7 @@ You can also install ng-aquila manually.
 
     ```
     cd my-allianz-project
-    npm install @aposin/ng-aquila
+    npm install @allianz/ng-aquila
     npm install @angular/cdk
     ```
 
@@ -76,8 +76,8 @@ You can also install ng-aquila manually.
           // ...
           "styles": [
             // ...
-            "node_modules/@aposin/ng-aquila/css/normalize.css",
-            "node_modules/@aposin/ng-aquila/themes/aposin.css"
+            "node_modules/@allianz/ng-aquila/css/normalize.css",
+            "node_modules/@allianz/ng-aquila/themes/aposin.css"
           ]
         }
       }
@@ -98,7 +98,7 @@ You can also install ng-aquila manually.
 
     ```ts
     // ...
-    import { NxExpertModule } from '@aposin/ng-aquila/config';
+    import { NxExpertModule } from '@allianz/ng-aquila/config';
 
     @NgModule({
         imports: [

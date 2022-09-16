@@ -1,5 +1,5 @@
+import { NxOverlayModule } from '@allianz/ng-aquila/overlay';
 import { NgModule } from '@angular/core';
-import { NxOverlayModule } from '@aposin/ng-aquila/overlay';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { OverlayLimitingFallbacksExampleComponent } from './overlay-limiting-fallbacks/overlay-limiting-fallbacks-example';

@@ -1,8 +1,8 @@
+import { NxAccordionDirective } from '@allianz/ng-aquila/accordion';
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, OnDestroy, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NxAccordionDirective } from '@aposin/ng-aquila/accordion';
 import { Subscription } from 'rxjs';
 
 import { NxTabGroupComponent } from './tab-group';

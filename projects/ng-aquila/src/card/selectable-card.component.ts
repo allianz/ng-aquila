@@ -1,3 +1,5 @@
+import { NxErrorComponent } from '@allianz/ng-aquila/base';
+import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
@@ -22,8 +24,6 @@ import {
     ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { NxErrorComponent } from '@aposin/ng-aquila/base';
-import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

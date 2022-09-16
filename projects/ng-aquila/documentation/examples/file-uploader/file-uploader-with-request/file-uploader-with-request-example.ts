@@ -1,13 +1,13 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, ViewChild } from '@angular/core';
 import {
     FileItem,
     NxFileUploaderComponent,
-} from '@aposin/ng-aquila/file-uploader';
+} from '@allianz/ng-aquila/file-uploader';
 import {
     NxMessageToastConfig,
     NxMessageToastService,
-} from '@aposin/ng-aquila/message';
+} from '@allianz/ng-aquila/message';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Component, ViewChild } from '@angular/core';
 
 const myCustomConfig: NxMessageToastConfig = {
     duration: 3000,

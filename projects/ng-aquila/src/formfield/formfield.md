@@ -9,13 +9,13 @@ stable: done
 In most cases it is sufficient to only import the nxInputModule - this **already includes the NxFormfieldModule module**.
 
 ```ts
-import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxInputModule } from '@allianz/ng-aquila/input';
 ```
 
 Alternatively you could import NxFormfieldModule, but in this case you are required to also add an [nxInput](./documentation/input/overview) control to the html template, like in the Basic Example below.
 
 ```ts
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 ```
 
 The formfield component is only usable in combination with a compatible input like nxInput. You will get floating labels, hints and a space to properly render additional information and errors below the input.

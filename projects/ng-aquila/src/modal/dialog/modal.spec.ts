@@ -1,3 +1,4 @@
+import { NX_MODAL_DATA, NX_MODAL_DEFAULT_OPTIONS, NxDialogService, NxModalModule, NxModalRef, NxModalState } from '@allianz/ng-aquila/modal';
 import { Directionality } from '@angular/cdk/bidi';
 import { A, ESCAPE } from '@angular/cdk/keycodes';
 import { Overlay, OverlayContainer, ScrollStrategy } from '@angular/cdk/overlay';
@@ -21,7 +22,6 @@ import {
 import { ComponentFixture, fakeAsync, flush, flushMicrotasks, inject, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NX_MODAL_DATA, NX_MODAL_DEFAULT_OPTIONS, NxDialogService, NxModalModule, NxModalRef, NxModalState } from '@aposin/ng-aquila/modal';
 import { Subject } from 'rxjs';
 
 import { createKeyboardEvent, dispatchKeyboardEvent } from '../../cdk-test-utils';

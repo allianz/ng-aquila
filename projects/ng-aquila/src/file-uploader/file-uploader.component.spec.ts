@@ -1,9 +1,9 @@
+import { NxErrorModule, NxLabelModule } from '@allianz/ng-aquila/base';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxFileUploaderComponent } from './file-uploader.component';
 import { FileItem } from './file-uploader.model';

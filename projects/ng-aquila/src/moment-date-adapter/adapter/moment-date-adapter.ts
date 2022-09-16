@@ -1,5 +1,5 @@
+import { NX_DATE_LOCALE, NxDateAdapter } from '@allianz/ng-aquila/datefield';
 import { Inject, Optional } from '@angular/core';
-import { NX_DATE_LOCALE, NxDateAdapter } from '@aposin/ng-aquila/datefield';
 // Depending on whether rollup is used, moment needs to be imported differently.
 // Since Moment.js doesn't have a default export, we normally need to import using the `* as`
 // syntax. However, rollup creates a synthetic default module and we thus need to import it using

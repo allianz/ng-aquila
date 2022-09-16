@@ -1,23 +1,23 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
+import { NxDocumentationIconModule } from '@allianz/ng-aquila/documentation-icons';
+import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
+import { NxFooterModule } from '@allianz/ng-aquila/footer';
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { NxGridModule } from '@allianz/ng-aquila/grid';
+import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxLinkModule } from '@allianz/ng-aquila/link';
+import { NxMessageModule } from '@allianz/ng-aquila/message';
+import { NxModalModule } from '@allianz/ng-aquila/modal';
+import { NxOverlayModule } from '@allianz/ng-aquila/overlay';
+import { NxPopoverModule } from '@allianz/ng-aquila/popover';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
-import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { NxFooterModule } from '@aposin/ng-aquila/footer';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { NxGridModule } from '@aposin/ng-aquila/grid';
-import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxLinkModule } from '@aposin/ng-aquila/link';
-import { NxMessageModule } from '@aposin/ng-aquila/message';
-import { NxModalModule } from '@aposin/ng-aquila/modal';
-import { NxOverlayModule } from '@aposin/ng-aquila/overlay';
-import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 import { AppComponent } from './app.component';
 

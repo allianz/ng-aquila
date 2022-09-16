@@ -1,3 +1,4 @@
+import { NxGridModule } from '@allianz/ng-aquila/grid';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 

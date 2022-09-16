@@ -1,10 +1,10 @@
+import { NxModalModule } from '@allianz/ng-aquila/modal';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { Component, Directive, ElementRef, Type, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NxModalModule } from '@aposin/ng-aquila/modal';
 import { Observable, of } from 'rxjs';
 
 import { dispatchFakeEvent } from '../cdk-test-utils';

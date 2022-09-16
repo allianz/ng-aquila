@@ -1,12 +1,12 @@
+import { ErrorDefaultOptions, LabelDefaultOptions } from '@allianz/ng-aquila/base';
+import { SelectableCardDefaultOptions } from '@allianz/ng-aquila/card';
+import { CircleToggleGroupDefaultOptions } from '@allianz/ng-aquila/circle-toggle';
+import { DataDisplayDefaultOptions } from '@allianz/ng-aquila/data-display';
+import { DatepickerDefaultOptions } from '@allianz/ng-aquila/datefield';
+import { FormfieldDefaultOptions } from '@allianz/ng-aquila/formfield';
+import { SmallStageDefaultOptions } from '@allianz/ng-aquila/small-stage';
+import { TabGroupDefaultOptions, TabNavBarDefaultOptions } from '@allianz/ng-aquila/tabs';
 import { Injectable } from '@angular/core';
-import { ErrorDefaultOptions, LabelDefaultOptions } from '@aposin/ng-aquila/base';
-import { SelectableCardDefaultOptions } from '@aposin/ng-aquila/card';
-import { CircleToggleGroupDefaultOptions } from '@aposin/ng-aquila/circle-toggle';
-import { DataDisplayDefaultOptions } from '@aposin/ng-aquila/data-display';
-import { DatepickerDefaultOptions } from '@aposin/ng-aquila/datefield';
-import { FormfieldDefaultOptions } from '@aposin/ng-aquila/formfield';
-import { SmallStageDefaultOptions } from '@aposin/ng-aquila/small-stage';
-import { TabGroupDefaultOptions, TabNavBarDefaultOptions } from '@aposin/ng-aquila/tabs';
 import { Subject } from 'rxjs';
 
 export const datepickerOptions: DatepickerDefaultOptions = { changes: new Subject<void>() };

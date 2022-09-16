@@ -1,3 +1,5 @@
+import { NxAccordionDirective, NxExpansionPanelComponent } from '@allianz/ng-aquila/accordion';
+import { NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import {
@@ -19,8 +21,6 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import { NxAccordionDirective, NxExpansionPanelComponent } from '@aposin/ng-aquila/accordion';
-import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { merge, Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

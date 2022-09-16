@@ -1,12 +1,12 @@
+import { NxDatefieldDirective } from '@allianz/ng-aquila/datefield';
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { NxInputModule } from '@allianz/ng-aquila/input';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, EventEmitter, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NxDatefieldDirective } from '@aposin/ng-aquila/datefield';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { NxInputModule } from '@aposin/ng-aquila/input';
 
 import { JAN } from '../../cdk-test-utils';
 import { NxNativeDateModule } from '../adapter/index';

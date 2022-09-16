@@ -1,8 +1,8 @@
+import { NX_INPUT_VALUE_ACCESSOR } from '@allianz/ng-aquila/input';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { BACKSPACE, DELETE } from '@angular/cdk/keycodes';
 import { Directive, ElementRef, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
-import { NX_INPUT_VALUE_ACCESSOR } from '@aposin/ng-aquila/input';
 import { Subject } from 'rxjs';
 
 type MASK_TYPE = '0' | 'A' | 'S';

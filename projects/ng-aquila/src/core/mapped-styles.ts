@@ -1,5 +1,5 @@
+import { appendClasses, mapClassNames, removeClasses } from '@allianz/ng-aquila/utils';
 import { ElementRef, Renderer2 } from '@angular/core';
-import { appendClasses, mapClassNames, removeClasses } from '@aposin/ng-aquila/utils';
 
 export interface MappingObject {
     [key: string]: string;

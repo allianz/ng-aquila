@@ -1,5 +1,5 @@
+import { NxTabChangeEvent } from '@allianz/ng-aquila/tabs';
 import { Component } from '@angular/core';
-import { NxTabChangeEvent } from '@aposin/ng-aquila/tabs';
 
 /**
  * @title Output events

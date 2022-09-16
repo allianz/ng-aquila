@@ -39,7 +39,7 @@ export function updateToV11(): Rule {
 /** Function that will be called when the migration completed. */
 function onMigrationComplete(context: SchematicContext, targetVersion: TargetVersion, hasFailures: boolean) {
     context.logger.info('');
-    context.logger.info(`  ✓  Updated @aposin/ng-aquila to ${targetVersion}`);
+    context.logger.info(`  ✓  Updated @allianz/ng-aquila to ${targetVersion}`);
     context.logger.info('');
 
     if (hasFailures) {

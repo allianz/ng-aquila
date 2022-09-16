@@ -1,5 +1,5 @@
+import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
-import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 
 /**
  * Euro country prefix for the licence plate input.

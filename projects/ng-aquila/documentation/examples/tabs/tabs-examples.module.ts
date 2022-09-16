@@ -1,8 +1,8 @@
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxIndicatorModule } from '@allianz/ng-aquila/indicator';
+import { NxTabsModule } from '@allianz/ng-aquila/tabs';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
-import { NxTabsModule } from '@aposin/ng-aquila/tabs';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { TabsAppearanceExampleComponent } from './tabs-appearance/tabs-appearance-example';

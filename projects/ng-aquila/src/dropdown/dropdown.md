@@ -14,7 +14,7 @@ stable: done
 It is recommended to use the dropdown component in combination with NxFormField. Therefore, make sure to import this module as well:
 
 ```ts
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 ```
 
 Dropdown requires Angular CDK (incl. CSS). Learn [how to enable Angular CDK styles](./documentation/overlay/overview#angular-cdk).

@@ -1,5 +1,5 @@
+import { NxInputDirective } from '@allianz/ng-aquila/input';
 import { AfterContentInit, Component, ViewChild } from '@angular/core';
-import { NxInputDirective } from '@aposin/ng-aquila/input';
 
 /**
  * @title Error example

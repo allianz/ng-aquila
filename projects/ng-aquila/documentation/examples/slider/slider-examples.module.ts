@@ -1,6 +1,6 @@
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxSliderModule } from '@allianz/ng-aquila/slider';
 import { NgModule } from '@angular/core';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxSliderModule } from '@aposin/ng-aquila/slider';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { SliderBasicExampleComponent } from './slider-basic/slider-basic-example';

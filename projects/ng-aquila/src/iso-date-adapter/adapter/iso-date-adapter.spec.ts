@@ -1,7 +1,7 @@
 import 'dayjs/locale/de';
 
+import { NxDateAdapter } from '@allianz/ng-aquila/datefield';
 import { inject, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxDateAdapter } from '@aposin/ng-aquila/datefield';
 import dayjs from 'dayjs';
 import localeData from 'dayjs/plugin/localeData';
 

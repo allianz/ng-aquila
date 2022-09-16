@@ -1,7 +1,7 @@
+import { NxInputModule } from '@allianz/ng-aquila/input';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { NxInputModule } from '@aposin/ng-aquila/input';
 
 import { NxPasswordToggleComponent } from './password-toggle.component';
 

@@ -1,4 +1,4 @@
-import { mapClassNames } from '@aposin/ng-aquila/utils';
+import { mapClassNames } from '@allianz/ng-aquila/utils';
 
 /** is udefined or empty? */
 export function isEmpty(value: any): boolean {

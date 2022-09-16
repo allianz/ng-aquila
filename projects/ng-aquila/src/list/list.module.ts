@@ -1,5 +1,5 @@
+import { NxIconComponent, NxIconModule } from '@allianz/ng-aquila/icon';
 import { NgModule } from '@angular/core';
-import { NxIconComponent, NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxListComponent } from './list.component';
 import { NxListIconComponent } from './list-icon.component';

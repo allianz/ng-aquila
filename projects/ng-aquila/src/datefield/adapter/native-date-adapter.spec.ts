@@ -1,7 +1,7 @@
+import { NxDateAdapter } from '@allianz/ng-aquila/datefield';
 import { Platform } from '@angular/cdk/platform';
 import { LOCALE_ID } from '@angular/core';
 import { inject, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxDateAdapter } from '@aposin/ng-aquila/datefield';
 
 import { DEC, FEB, JAN, MAR } from '../../cdk-test-utils';
 import { NX_DATE_LOCALE } from './date-token';

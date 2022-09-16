@@ -12,7 +12,7 @@ With v13, we are upgrading to [Angular 13](https://blog.angular.io/angular-v13-i
 
 Then it should be easy to update Aquila with the following command:
 
-`ng update @aposin/ng-aquila --force`
+`ng update @allianz/ng-aquila --force`
 
 **Important:**
 

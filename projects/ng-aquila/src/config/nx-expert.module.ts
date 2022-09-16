@@ -1,13 +1,13 @@
+import { ERROR_DEFAULT_OPTIONS, ErrorDefaultOptions, LABEL_DEFAULT_OPTIONS, LabelDefaultOptions } from '@allianz/ng-aquila/base';
+import { SELECTABLE_CARD_DEFAULT_OPTIONS, SelectableCardDefaultOptions } from '@allianz/ng-aquila/card';
+import { CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS, CircleToggleGroupDefaultOptions } from '@allianz/ng-aquila/circle-toggle';
+import { COMPARISON_TABLE_DEFAULT_OPTIONS, ComparisonTableDefaultOptions } from '@allianz/ng-aquila/comparison-table';
+import { DATA_DISPLAY_DEFAULT_OPTIONS, DataDisplayDefaultOptions } from '@allianz/ng-aquila/data-display';
+import { DATEPICKER_DEFAULT_OPTIONS, DatepickerDefaultOptions } from '@allianz/ng-aquila/datefield';
+import { FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions } from '@allianz/ng-aquila/formfield';
+import { SMALL_STAGE_DEFAULT_OPTIONS, SmallStageDefaultOptions } from '@allianz/ng-aquila/small-stage';
+import { TAB_GROUP_DEFAULT_OPTIONS, TAB_NAV_BAR_DEFAULT_OPTIONS, TabGroupDefaultOptions, TabNavBarDefaultOptions } from '@allianz/ng-aquila/tabs';
 import { NgModule } from '@angular/core';
-import { ERROR_DEFAULT_OPTIONS, ErrorDefaultOptions, LABEL_DEFAULT_OPTIONS, LabelDefaultOptions } from '@aposin/ng-aquila/base';
-import { SELECTABLE_CARD_DEFAULT_OPTIONS, SelectableCardDefaultOptions } from '@aposin/ng-aquila/card';
-import { CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS, CircleToggleGroupDefaultOptions } from '@aposin/ng-aquila/circle-toggle';
-import { COMPARISON_TABLE_DEFAULT_OPTIONS, ComparisonTableDefaultOptions } from '@aposin/ng-aquila/comparison-table';
-import { DATA_DISPLAY_DEFAULT_OPTIONS, DataDisplayDefaultOptions } from '@aposin/ng-aquila/data-display';
-import { DATEPICKER_DEFAULT_OPTIONS, DatepickerDefaultOptions } from '@aposin/ng-aquila/datefield';
-import { FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions } from '@aposin/ng-aquila/formfield';
-import { SMALL_STAGE_DEFAULT_OPTIONS, SmallStageDefaultOptions } from '@aposin/ng-aquila/small-stage';
-import { TAB_GROUP_DEFAULT_OPTIONS, TAB_NAV_BAR_DEFAULT_OPTIONS, TabGroupDefaultOptions, TabNavBarDefaultOptions } from '@aposin/ng-aquila/tabs';
 
 // expert presets
 const comparisonTableExpertOptions: ComparisonTableDefaultOptions = { useFullRowForExpandableArea: true };

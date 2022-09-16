@@ -1,9 +1,9 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, Directive, Type } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxNotificationPanelModule } from '../notification-panel.module';
 

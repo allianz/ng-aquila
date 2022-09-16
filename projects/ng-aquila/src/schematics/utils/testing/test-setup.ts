@@ -70,7 +70,7 @@ export async function addLibrary(options: any, tree: Tree) {
  *
  *   it('should do something', async () => {
  *    testSetup.writeFile('/index.ts', `
-      import {Foo} from '@aposin/ng-aquila';
+      import {Foo} from '@allianz/ng-aquila';
 
       export class TestClass {}
       `);

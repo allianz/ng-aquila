@@ -1,6 +1,6 @@
+import { clamp } from '@allianz/ng-aquila/utils';
 import { Directionality } from '@angular/cdk/bidi';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, Optional } from '@angular/core';
-import { clamp } from '@aposin/ng-aquila/utils';
 
 import { NxProgressStepperDirective } from '../progress-stepper.component';
 

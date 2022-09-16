@@ -1,5 +1,5 @@
+import { NxIconRegistry } from '@allianz/ng-aquila/icon';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 
 import { Theme } from './theme-switcher.service';
 

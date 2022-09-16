@@ -1,3 +1,4 @@
+import { NxFormfieldComponent, NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { DOWN_ARROW, ESCAPE, TAB, UP_ARROW } from '@angular/cdk/keycodes';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { ComponentHarness, HarnessLoader, LocatorFactory, parallel, TestElement } from '@angular/cdk/testing';
@@ -6,7 +7,6 @@ import { CommonModule } from '@angular/common';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NxFormfieldComponent, NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 
 import { NxDropdownModule } from '../dropdown.module';
 import { NxMultiSelectComponent } from './multi-select.component';

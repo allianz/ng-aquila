@@ -1,5 +1,5 @@
+import { NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
 import { ChangeDetectorRef, Directive, ElementRef, EventEmitter, OnDestroy } from '@angular/core';
-import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { merge, Subject } from 'rxjs';
 import { filter, mapTo, takeUntil } from 'rxjs/operators';
 

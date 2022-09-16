@@ -1,4 +1,4 @@
-import { NxDateFormats } from '@aposin/ng-aquila/datefield';
+import { NxDateFormats } from '@allianz/ng-aquila/datefield';
 
 export const NX_ISO_DATE_FORMATS: NxDateFormats = {
     parse: {

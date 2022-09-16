@@ -1,10 +1,10 @@
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { A11yModule } from '@angular/cdk/a11y';
 /* new modal implementation */
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NX_MODAL_SCROLL_STRATEGY_PROVIDER, NxDialogService } from './dialog/dialog.service';
 import { NxModalCloseDirective } from './dialog/modal-close.directive';

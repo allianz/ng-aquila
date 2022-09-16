@@ -1,7 +1,7 @@
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { NxInputModule } from '@allianz/ng-aquila/input';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { NxInputModule } from '@aposin/ng-aquila/input';
 
 import { NxLicencePlateModule } from './licence-plate.module';
 import { NxLicencePlateSeasonSuffixComponent } from './licence-plate-season-suffix.component';

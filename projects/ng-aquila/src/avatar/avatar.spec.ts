@@ -1,6 +1,6 @@
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxAvatarComponent, NxAvatarSize } from './avatar';
 import { NxAvatarModule } from './avatar.module';

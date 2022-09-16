@@ -20,7 +20,7 @@ In order to define your custom theme first create a file `<your-theme>.scss`.
 To register your theme import the theming utilities:
 
 ```scss
-@import '@aposin/ng-aquila/styles/theming';
+@import '@allianz/ng-aquila/styles/theming';
 ```
 
 Then, you should define your new theme as a `scss-map` which overwrites all default theming tokens you want to change:
@@ -43,8 +43,8 @@ By calling the `nx-register-theme(themeName)` mixin you are merging our base the
 Per default, the base theme for the new theme is aposin. You can also pass another theme as a base (third argument), but you first have to import or define it:
 
 ```scss
-@import "@aposin/ng-aquila/styles/theming";
-@import "@aposin/ng-aquila/styles/themes/your-base-theme";
+@import "@allianz/ng-aquila/styles/theming";
+@import "@allianz/ng-aquila/styles/themes/your-base-theme";
 ...
 $nx-themes: nx-register-theme($my-theme, themeName, baseThemeName);
 ```
@@ -64,7 +64,7 @@ In order to inject the newly defined custom theme tokens into the components you
 **Important:** Keep in mind the theme building should happen after you have registered your custom theme and preferably only once in the whole application. We recommend the following import in your global scss file:
 
 ```scss
-@import '@aposin/ng-aquila/styles/theming';
+@import '@allianz/ng-aquila/styles/theming';
 @import '<path-to-theme-file>/<your-theme>.scss';
 
 @include nx-build-theme(themeName);

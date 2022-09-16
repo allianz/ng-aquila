@@ -1,5 +1,5 @@
+import { TooltipPosition } from '@allianz/ng-aquila/tooltip';
 import { Component } from '@angular/core';
-import { TooltipPosition } from '@aposin/ng-aquila/tooltip';
 
 /**
  * @title Tooltip positions

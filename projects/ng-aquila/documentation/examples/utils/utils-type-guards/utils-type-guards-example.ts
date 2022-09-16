@@ -1,4 +1,3 @@
-import { Component } from '@angular/core';
 import {
     isBoolean,
     isFalse,
@@ -13,7 +12,8 @@ import {
     notNull,
     notNullable,
     notUndefined,
-} from '@aposin/ng-aquila/utils';
+} from '@allianz/ng-aquila/utils';
+import { Component } from '@angular/core';
 
 const mixedArray = ['str', '', 24, 0, true, false, null, undefined];
 

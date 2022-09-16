@@ -1,5 +1,5 @@
 {
-    "name": "@aposin/ngx-doc-cli",
+    "name": "@allianz/ngx-doc-cli",
     "version": "1.0.0-beta.0",
     "private": true,
     "bin": {

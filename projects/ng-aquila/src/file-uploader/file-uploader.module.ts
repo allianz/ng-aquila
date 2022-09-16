@@ -1,9 +1,9 @@
+import { NxErrorModule, NxLabelModule } from '@allianz/ng-aquila/base';
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxSpinnerModule } from '@allianz/ng-aquila/spinner';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
 
 import { NxFileUploaderComponent } from './file-uploader.component';
 import { NxFileUploaderButtonDirective } from './file-uploader-button.directive';

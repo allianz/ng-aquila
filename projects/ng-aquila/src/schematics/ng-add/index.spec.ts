@@ -20,12 +20,12 @@ describe('ng-aquila ng add', () => {
         });
 
         it('should add normalize.css', async () => {
-            expect(testProjectConfig.targets?.get('build')?.options?.styles).toContain('node_modules/@aposin/ng-aquila/css/normalize.css');
+            expect(testProjectConfig.targets?.get('build')?.options?.styles).toContain('node_modules/@allianz/ng-aquila/css/normalize.css');
         });
 
         it('should add aposin theme', async () => {
-            expect(testProjectConfig.targets?.get('build')?.options?.styles).toContain('node_modules/@aposin/ng-aquila/themes/aposin.css');
-            expect(testProjectConfig.targets?.get('build')?.options?.styles).not.toContain('node_modules/@aposin/ng-aquila/themes/expert.css');
+            expect(testProjectConfig.targets?.get('build')?.options?.styles).toContain('node_modules/@allianz/ng-aquila/themes/aposin.css');
+            expect(testProjectConfig.targets?.get('build')?.options?.styles).not.toContain('node_modules/@allianz/ng-aquila/themes/expert.css');
         });
 
         it('should add CDK styles', async () => {
@@ -46,8 +46,8 @@ describe('ng-aquila ng add', () => {
         });
 
         it('should add expert theme', async () => {
-            expect(testProjectConfig.targets.get('build')?.options?.styles).not.toContain('node_modules/@aposin/ng-aquila/themes/aposin.css');
-            expect(testProjectConfig.targets.get('build')?.options?.styles).toContain('node_modules/@aposin/ng-aquila/themes/expert.css');
+            expect(testProjectConfig.targets.get('build')?.options?.styles).not.toContain('node_modules/@allianz/ng-aquila/themes/aposin.css');
+            expect(testProjectConfig.targets.get('build')?.options?.styles).toContain('node_modules/@allianz/ng-aquila/themes/expert.css');
         });
 
         it('should add Expert Module', async () => {
@@ -62,7 +62,7 @@ describe('ng-aquila ng add', () => {
         });
 
         it('should not add a theme file if no-theme is set to true', () => {
-            expect(testProjectConfig.targets.get('build')?.options?.styles).not.toContain('node_modules/@aposin/ng-aquila/themes/aposin.css');
+            expect(testProjectConfig.targets.get('build')?.options?.styles).not.toContain('node_modules/@allianz/ng-aquila/themes/aposin.css');
         });
     });
 

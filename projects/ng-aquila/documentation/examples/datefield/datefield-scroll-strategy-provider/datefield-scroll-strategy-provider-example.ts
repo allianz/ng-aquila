@@ -1,6 +1,6 @@
+import { NX_DATEPICKER_SCROLL_STRATEGY } from '@allianz/ng-aquila/datefield';
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
-import { NX_DATEPICKER_SCROLL_STRATEGY } from '@aposin/ng-aquila/datefield';
 import { Moment } from 'moment';
 
 function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {

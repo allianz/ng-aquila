@@ -1,15 +1,15 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
     FileItem,
     NxFileUploadConfig,
     NxFileUploader,
-} from '@aposin/ng-aquila/file-uploader';
+} from '@allianz/ng-aquila/file-uploader';
 import {
     NxMessageToastConfig,
     NxMessageToastService,
-} from '@aposin/ng-aquila/message';
+} from '@allianz/ng-aquila/message';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

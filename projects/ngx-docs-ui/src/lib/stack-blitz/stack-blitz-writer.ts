@@ -62,7 +62,7 @@ const dependencies = {
     '@angular/platform-browser': angularVersion,
     '@angular/platform-browser-dynamic': angularVersion,
     '@angular/router': angularVersion,
-    '@aposin/ng-aquila': aquilaVersion,
+    '@allianz/ng-aquila': aquilaVersion,
     dayjs: '^1.10.0', // TODO delete with ng-aquila v14.0.0
     'i18n-iso-countries': '^6.8.0',
     iban: '^0.0.14',
@@ -82,7 +82,7 @@ const testDependencies = {
     '@angular/platform-browser': angularVersion,
     '@angular/platform-browser-dynamic': angularVersion,
     '@angular/router': angularVersion,
-    '@aposin/ng-aquila': aquilaVersion,
+    '@allianz/ng-aquila': aquilaVersion,
     dayjs: '^1.10.0', // TODO delete with ng-aquila v14.0.0
     'i18n-iso-countries': '^6.8.0',
     iban: '^0.0.14',

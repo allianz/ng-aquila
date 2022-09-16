@@ -1,7 +1,7 @@
+import { NxErrorModule, NxLabelModule } from '@allianz/ng-aquila/base';
 import { Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 
 import { NxCheckboxComponent, NxCheckboxGroupChangeEvent, NxCheckboxGroupComponent } from './checkbox.component';
 import { NxCheckboxModule } from './checkbox.module';

@@ -1,6 +1,6 @@
+import { NxOverlayModule } from '@allianz/ng-aquila/overlay';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxOverlayModule } from '@aposin/ng-aquila/overlay';
 
 import { NxNotificationPanelItemComponent } from './notification-item/notification-item.component';
 import {

@@ -1,5 +1,5 @@
+import { NxvNavigationService } from '@allianz/ngx-docs-ui';
 import { Component, OnInit } from '@angular/core';
-import { NxvNavigationService } from '@aposin/ngx-docs-ui';
 
 @Component({
     selector: 'doc-root',

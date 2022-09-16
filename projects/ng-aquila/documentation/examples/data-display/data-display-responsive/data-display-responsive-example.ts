@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
 import {
     DATA_DISPLAY_DEFAULT_OPTIONS,
     DataDisplayDefaultOptions,
     NxDataDisplayOrientation,
-} from '@aposin/ng-aquila/data-display';
-import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
+} from '@allianz/ng-aquila/data-display';
+import { NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 

@@ -1,6 +1,6 @@
+import { NxErrorModule, NxLabelModule } from '@allianz/ng-aquila/base';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 
 import { NxFormfieldAppendixDirective } from './appendix.directive';
 import { NxFormfieldErrorDirective } from './error.directive';

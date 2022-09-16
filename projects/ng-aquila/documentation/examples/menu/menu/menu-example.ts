@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
 import {
     NxFlatTreeControl,
     NxFlatTreeNode,
     NxTreeFlatDataSource,
     NxTreeNode,
-} from '@aposin/ng-aquila/tree';
+} from '@allianz/ng-aquila/tree';
+import { Component } from '@angular/core';
 
 /**
   This interface defines a single node of the trees data structure.

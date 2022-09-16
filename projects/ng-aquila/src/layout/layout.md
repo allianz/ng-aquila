@@ -17,14 +17,14 @@ Use this path to import it via your angular-cli.json file:
 
 ```ts
 "styles": [
-  "node_modules/@aposin/ng-aquila/css/utilities.css"
+  "node_modules/@allianz/ng-aquila/css/utilities.css"
 ]
 ```
 
 If you don't use the Angular CLI or just prefer another place you can use this css import instead:
 
 ```css
-@import '@aposin/ng-aquila/css/utilities.css';
+@import '@allianz/ng-aquila/css/utilities.css';
 ```
 
 #### Margin sizes
@@ -91,7 +91,7 @@ export enum NxBreakpoints {
 You can react to changes in the viewport in your components the following way:
 
 ```ts
-import { NxViewportService, NxBreakpoints } from '@aposin/ng-aquila/utils';
+import { NxViewportService, NxBreakpoints } from '@allianz/ng-aquila/utils';
 showComponentX: boolean;
 
 constructor(private viewportService: NxViewportService) {

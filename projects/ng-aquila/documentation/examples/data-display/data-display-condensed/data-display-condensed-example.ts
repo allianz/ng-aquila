@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
 import {
     DATA_DISPLAY_DEFAULT_OPTIONS,
     DataDisplayDefaultOptions,
-} from '@aposin/ng-aquila/data-display';
+} from '@allianz/ng-aquila/data-display';
+import { Component } from '@angular/core';
 
 const options: DataDisplayDefaultOptions = {
     size: 'medium', // expert mode default size

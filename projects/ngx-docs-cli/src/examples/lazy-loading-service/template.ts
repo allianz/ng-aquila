@@ -3,7 +3,7 @@ export const lazyServiceTemplate = modules => {
 
     return `
   import { Injectable, Compiler, Injector } from '@angular/core';
-  import { BaseLazyLoadingService } from '@aposin/ngx-docs-ui';
+  import { BaseLazyLoadingService } from '@allianz/ngx-docs-ui';
 
   @Injectable({providedIn: 'root'})
   export class LazyLoadingService implements BaseLazyLoadingService {
@@ -16,7 +16,7 @@ export const lazyServiceTemplate = modules => {
           const ngModuleRef = ngModuleFactory.create(this.injector);
           const componentClass = moduleClass.components()[id];
           const componentFactory = ngModuleRef.componentFactoryResolver.resolveComponentFactory(componentClass);
-          
+
           return {componentFactory, ngModuleFactory};
         })
       })

@@ -1,3 +1,4 @@
+import { NxFormfieldControl } from '@allianz/ng-aquila/formfield';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
@@ -14,7 +15,6 @@ import {
     NgControl,
     Validators,
 } from '@angular/forms';
-import { NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

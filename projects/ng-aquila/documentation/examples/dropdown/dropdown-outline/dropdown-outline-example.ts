@@ -1,5 +1,5 @@
+import { FORMFIELD_DEFAULT_OPTIONS } from '@allianz/ng-aquila/formfield';
 import { Component } from '@angular/core';
-import { FORMFIELD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/formfield';
 
 /**
  * @title Outline formfield example

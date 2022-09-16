@@ -1,5 +1,5 @@
+import { NxPopoverIntl } from '@allianz/ng-aquila/popover';
 import { Component, Injectable } from '@angular/core';
-import { NxPopoverIntl } from '@aposin/ng-aquila/popover';
 
 @Injectable()
 export class MyPopoverIntl extends NxPopoverIntl {
