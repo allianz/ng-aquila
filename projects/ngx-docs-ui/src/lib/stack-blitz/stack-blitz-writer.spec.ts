@@ -77,7 +77,7 @@ describe('StackBlitzWriter', () => {
 
             // Should have correct tags
             expect(form.elements[0].getAttribute('name')).toBe('tags[0]');
-            expect(form.elements[0].getAttribute('value')).toBe('aposin');
+            expect(form.elements[0].getAttribute('value')).toBe('allianz');
             expect(form.elements[1].getAttribute('name')).toBe('tags[1]');
             expect(form.elements[1].getAttribute('value')).toBe('aquila');
             expect(form.elements[2].getAttribute('name')).toBe('tags[2]');
