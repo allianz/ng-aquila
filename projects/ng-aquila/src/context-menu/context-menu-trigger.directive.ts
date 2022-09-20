@@ -150,6 +150,8 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
 
     private readonly _destroyed = new Subject<void>();
 
+    private _rightClicked = false;
+
     constructor(
         private readonly _overlay: Overlay,
         private readonly _element: ElementRef<HTMLElement>,
@@ -244,6 +246,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
 
     /** Closes the context menu. */
     closeContextMenu(): void {
+        this._rightClicked = false;
         this.contextMenu.closed.emit();
     }
 
@@ -503,6 +506,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
         if (this.mode !== 'cursor') {
             return;
         }
+        this._rightClicked = true;
 
         event.preventDefault();
         if (this._contextMenuOpen) {
@@ -548,10 +552,21 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
 
     /* Subscribes to document clicks to close the context menu on clicks on the background. */
     private _waitForClose() {
+        if (this._rightClicked) {
+            return this._documentClickObservable
+                .pipe(
+                    filter(event => !event.defaultPrevented),
+                    takeUntil(this.contextMenu.closed),
+                )
+                .subscribe(() => {
+                    this.closeContextMenu();
+                });
+        }
+
         return this._documentClickObservable
             .pipe(
-                filter(event => !event.defaultPrevented),
                 map(event => _getEventTarget(event)),
+                filter(target => !this._element.nativeElement.contains(target as Node | null)),
                 takeUntil(this.contextMenu.closed),
             )
             .subscribe(() => {
