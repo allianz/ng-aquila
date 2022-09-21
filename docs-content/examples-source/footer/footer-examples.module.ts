@@ -1,6 +1,6 @@
+import { NxFooterModule } from '@allianz/ng-aquila/footer';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxFooterModule } from '@aposin/ng-aquila/footer';
 
 import { FooterBasicExampleComponent } from './footer-basic/footer-basic-example';
 import { FooterDefaultCopyrightExampleComponent } from './footer-default-copyright/footer-default-copyright-example';

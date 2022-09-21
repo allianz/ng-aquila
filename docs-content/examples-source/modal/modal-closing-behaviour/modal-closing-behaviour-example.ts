@@ -1,5 +1,5 @@
+import { NxDialogService } from '@allianz/ng-aquila/modal';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { NxDialogService } from '@aposin/ng-aquila/modal';
 
 /**
  * @title Closing behaviour example

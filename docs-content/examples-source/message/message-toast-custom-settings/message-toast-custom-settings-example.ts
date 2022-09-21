@@ -1,9 +1,9 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
 import {
     NxMessageToastConfig,
     NxMessageToastRef,
     NxMessageToastService,
-} from '@aposin/ng-aquila/message';
+} from '@allianz/ng-aquila/message';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 
 export const myCustomConfig: NxMessageToastConfig = {
     duration: 0,

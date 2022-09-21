@@ -1,5 +1,5 @@
+import { NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

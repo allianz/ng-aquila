@@ -1,9 +1,9 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxDynamicTableModule } from '@allianz/ng-aquila/dynamic-table';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxPopoverModule } from '@allianz/ng-aquila/popover';
 import { CdkScrollableModule } from '@angular/cdk/scrolling';
 import { NgModule } from '@angular/core';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxDynamicTableModule } from '@aposin/ng-aquila/dynamic-table';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 import { PopoverClickOutsideExampleComponent } from './popover-click-outside/popover-click-outside-example';
 import { PopoverCustomExampleComponent } from './popover-custom/popover-custom-example';

@@ -1,6 +1,6 @@
 
   import { Injectable, Compiler, Injector } from '@angular/core';
-  import { BaseLazyLoadingService } from '@aposin/ngx-docs-ui';
+  import { BaseLazyLoadingService } from '@allianz/ngx-docs-ui';
 
   @Injectable({providedIn: 'root'})
   export class LazyLoadingService implements BaseLazyLoadingService {
@@ -13,7 +13,7 @@
           const ngModuleRef = ngModuleFactory.create(this.injector);
           const componentClass = moduleClass.components()[id];
           const componentFactory = ngModuleRef.componentFactoryResolver.resolveComponentFactory(componentClass);
-          
+
           return {componentFactory, ngModuleFactory};
         })
       })
@@ -220,6 +220,9 @@
   
 
   case 'tree': return import('../examples/tree/tree-examples.module').then(m => m.TreeExamplesModule);
+  
+
+  case 'utils': return import('../examples/utils/utils-examples.module').then(m => m.UtilsExamplesModule);
   
 
   case 'video': return import('../examples/video/video-examples.module').then(m => m.VideoExamplesModule);

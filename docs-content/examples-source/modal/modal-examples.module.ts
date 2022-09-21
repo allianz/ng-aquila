@@ -1,10 +1,10 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxCopytextModule } from '@allianz/ng-aquila/copytext';
+import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
+import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxModalModule } from '@allianz/ng-aquila/modal';
 import { NgModule } from '@angular/core';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxModalModule } from '@aposin/ng-aquila/modal';
 
 import { ModalBasicExampleComponent } from './modal-basic/modal-basic-example';
 import { ModalClosingExampleComponent } from './modal-closing/modal-closing-example';

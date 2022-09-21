@@ -1,9 +1,9 @@
+import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxProgressStepperModule } from '@allianz/ng-aquila/progress-stepper';
+import { NxRadioToggleModule } from '@allianz/ng-aquila/radio-toggle';
+import { NxSliderModule } from '@allianz/ng-aquila/slider';
 import { NgModule } from '@angular/core';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxProgressStepperModule } from '@aposin/ng-aquila/progress-stepper';
-import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
-import { NxSliderModule } from '@aposin/ng-aquila/slider';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { ProgressStepperExampleComponent } from './progress-stepper/progress-stepper-example';

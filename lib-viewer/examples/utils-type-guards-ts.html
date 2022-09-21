@@ -1,0 +1,72 @@
+<span class="hljs-keyword">import</span> {
+    isBoolean,
+    isFalse,
+    isNull,
+    isNullable,
+    isNumber,
+    isString,
+    isTrue,
+    isTruthy,
+    isUndefined,
+    notEmpty,
+    notNull,
+    notNullable,
+    notUndefined,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/utils&#x27;</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-keyword">const</span> mixedArray = [<span class="hljs-string">&#x27;str&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-number">24</span>, <span class="hljs-number">0</span>, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">undefined</span>];
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asText</span>(<span class="hljs-params">value: unknown</span>): <span class="hljs-title">string</span> </span>{
+    <span class="hljs-keyword">if</span> (value == <span class="hljs-literal">null</span>) {
+        <span class="hljs-keyword">return</span> value + <span class="hljs-string">&#x27;&#x27;</span>;
+    }
+    <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">typeof</span> value) {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;string&#x27;</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-string">`&#x27;<span class="hljs-subst">${value}</span>&#x27;`</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;object&#x27;</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;object&gt;&#x27;</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;function&#x27;</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;function&gt;&#x27;</span>;
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">return</span> value + <span class="hljs-string">&#x27;&#x27;</span>;
+    }
+}
+
+<span class="hljs-keyword">type</span> primitive = <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-built_in">boolean</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title </span>Type guard utilities
+ */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;utils-type-guards-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./utils-type-guards-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./utils-type-guards-example.css&#x27;</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UtilsTypeGuardsExampleComponent</span> </span>{
+    mixedArray = mixedArray;
+
+    notNull: (primitive | <span class="hljs-literal">undefined</span>)[] = mixedArray.filter(notNull);
+    notNullable: primitive[] = mixedArray.filter(notNullable);
+    notUndefined: (primitive | <span class="hljs-literal">null</span>)[] = mixedArray.filter(notUndefined);
+
+    isTruthy: primitive[] = mixedArray.filter(isTruthy);
+
+    isString: <span class="hljs-built_in">string</span>[] = mixedArray.filter(isString);
+    isNumber: <span class="hljs-built_in">number</span>[] = mixedArray.filter(isNumber);
+    isBoolean: <span class="hljs-built_in">boolean</span>[] = mixedArray.filter(isBoolean);
+
+    isTrue: <span class="hljs-literal">true</span>[] = mixedArray.filter(isTrue);
+    isFalse: <span class="hljs-literal">false</span>[] = mixedArray.filter(isFalse);
+
+    isNull: <span class="hljs-literal">null</span>[] = mixedArray.filter(isNull);
+    isNullable: (<span class="hljs-literal">null</span> | <span class="hljs-literal">undefined</span>)[] = mixedArray.filter(isNullable);
+    isUndefined: <span class="hljs-literal">undefined</span>[] = mixedArray.filter(isUndefined);
+
+    <span class="hljs-comment">// workaround: notEmpty() is typed to require `ArrayLike` as param</span>
+    notEmpty = (mixedArray <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span>[]).filter(notEmpty);
+
+    toText(value: unknown[]): <span class="hljs-built_in">string</span> {
+        <span class="hljs-keyword">return</span> value.map(asText).join(<span class="hljs-string">&#x27;, &#x27;</span>);
+    }
+}

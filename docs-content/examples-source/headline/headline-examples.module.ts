@@ -1,6 +1,6 @@
+import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
+import { NxLinkModule } from '@allianz/ng-aquila/link';
 import { NgModule } from '@angular/core';
-import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
-import { NxLinkModule } from '@aposin/ng-aquila/link';
 
 import { HeadlineFontWeightsExampleComponent } from './headline-font-weights/headline-font-weights-example';
 import { HeadlineLinksExampleComponent } from './headline-links/headline-links-example';

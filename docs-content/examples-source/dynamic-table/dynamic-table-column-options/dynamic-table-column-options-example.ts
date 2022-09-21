@@ -1,6 +1,6 @@
+import { NxDynamicTableColumnDefinition } from '@allianz/ng-aquila/dynamic-table';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
-import { NxDynamicTableColumnDefinition } from '@aposin/ng-aquila/dynamic-table';
 
 /**
  * @title Table Column Options Example

@@ -1,6 +1,6 @@
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxTaglistModule } from '@allianz/ng-aquila/taglist';
 import { NgModule } from '@angular/core';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxTaglistModule } from '@aposin/ng-aquila/taglist';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { TaglistExampleComponent } from './taglist/taglist-example';

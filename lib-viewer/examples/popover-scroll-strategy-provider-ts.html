@@ -1,6 +1,6 @@
+<span class="hljs-keyword">import</span> { NX_POPOVER_SCROLL_STRATEGY } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/popover&#x27;</span>;
 <span class="hljs-keyword">import</span> { Overlay, ScrollStrategy } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/overlay&#x27;</span>;
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { NX_POPOVER_SCROLL_STRATEGY } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/popover&#x27;</span>;
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scrollStrategyFactory</span>(<span class="hljs-params">overlay: Overlay</span>): (<span class="hljs-params"></span>) =&gt; <span class="hljs-title">ScrollStrategy</span> </span>{
     <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> overlay.scrollStrategies.close({ <span class="hljs-attr">threshold</span>: <span class="hljs-number">100</span> });

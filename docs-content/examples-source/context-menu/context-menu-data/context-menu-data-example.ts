@@ -1,5 +1,5 @@
+import { NxBadgeType } from '@allianz/ng-aquila/badge';
 import { Component } from '@angular/core';
-import { NxBadgeType } from '@aposin/ng-aquila/badge';
 
 interface Contract {
     id: string;

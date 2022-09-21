@@ -1,10 +1,10 @@
-import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import {
     NxMultiStepperComponent,
     NxMultiStepperDirection,
     NxProgressStepperDirective,
-} from '@aposin/ng-aquila/progress-stepper';
+} from '@allianz/ng-aquila/progress-stepper';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

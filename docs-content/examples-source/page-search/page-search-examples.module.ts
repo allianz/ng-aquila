@@ -1,9 +1,9 @@
+import { NxAutocompleteModule } from '@allianz/ng-aquila/autocomplete';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxPageSearchModule } from '@allianz/ng-aquila/page-search';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { NxAutocompleteModule } from '@aposin/ng-aquila/autocomplete';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxPageSearchModule } from '@aposin/ng-aquila/page-search';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { PageSearchAutocompleteExampleComponent } from './page-search-autocomplete/page-search-autocomplete-example';

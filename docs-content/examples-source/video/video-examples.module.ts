@@ -1,5 +1,5 @@
+import { NxVideoModule } from '@allianz/ng-aquila/video';
 import { NgModule } from '@angular/core';
-import { NxVideoModule } from '@aposin/ng-aquila/video';
 
 import { VideoExampleComponent } from './video/video-example';
 import { VideoAdvancedExampleComponent } from './video-advanced/video-advanced-example';

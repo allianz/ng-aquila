@@ -1,5 +1,5 @@
+import { NxMultiStepperComponent } from '@allianz/ng-aquila/progress-stepper';
 import { Component, ViewChild } from '@angular/core';
-import { NxMultiStepperComponent } from '@aposin/ng-aquila/progress-stepper';
 
 /**
  * @title Progress Indicator Multi Groups Example

@@ -1,11 +1,11 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxFileUploaderModule } from '@allianz/ng-aquila/file-uploader';
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxRadioModule } from '@allianz/ng-aquila/radio-button';
+import { NxRadioToggleModule } from '@allianz/ng-aquila/radio-toggle';
 import { NgModule } from '@angular/core';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxFileUploaderModule } from '@aposin/ng-aquila/file-uploader';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
-import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { FileUploaderAutoExampleComponent } from './file-uploader-auto/file-uploader-auto-example';

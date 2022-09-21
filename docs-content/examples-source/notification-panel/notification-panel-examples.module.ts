@@ -1,9 +1,9 @@
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxLinkModule } from '@allianz/ng-aquila/link';
+import { NxMessageModule } from '@allianz/ng-aquila/message';
+import { NxNotificationPanelModule } from '@allianz/ng-aquila/notification-panel';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxLinkModule } from '@aposin/ng-aquila/link';
-import { NxMessageModule } from '@aposin/ng-aquila/message';
-import { NxNotificationPanelModule } from '@aposin/ng-aquila/notification-panel';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { NotificationPanelActionsExampleComponent } from './notification-panel-actions/notification-panel-actions-example';

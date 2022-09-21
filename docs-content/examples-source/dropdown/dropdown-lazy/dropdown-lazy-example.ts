@@ -1,5 +1,5 @@
+import { NxDropdownOption } from '@allianz/ng-aquila/dropdown';
 import { Component } from '@angular/core';
-import { NxDropdownOption } from '@aposin/ng-aquila/dropdown';
 
 /**
  * @title Standard lazy example

@@ -1,5 +1,5 @@
+import { NxTooltipDirective } from '@allianz/ng-aquila/tooltip';
 import { Component, ViewChild } from '@angular/core';
-import { NxTooltipDirective } from '@aposin/ng-aquila/tooltip';
 
 /**
  * @title Tooltip programmatic toggling

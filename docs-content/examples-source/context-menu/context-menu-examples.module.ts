@@ -1,12 +1,12 @@
+import { NxBadgeModule } from '@allianz/ng-aquila/badge';
+import { NxCardModule } from '@allianz/ng-aquila/card';
+import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
+import { NxContextMenuModule } from '@allianz/ng-aquila/context-menu';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxIndicatorModule } from '@allianz/ng-aquila/indicator';
+import { NxTableModule } from '@allianz/ng-aquila/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
-import { NxBadgeModule } from '@aposin/ng-aquila/badge';
-import { NxCardModule } from '@aposin/ng-aquila/card';
-import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
-import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
-import { NxTableModule } from '@aposin/ng-aquila/table';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { ContextMenuBasicExampleComponent } from './context-menu-basic/context-menu-basic-example';

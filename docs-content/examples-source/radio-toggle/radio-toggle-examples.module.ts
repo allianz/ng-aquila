@@ -1,6 +1,6 @@
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxRadioToggleModule } from '@allianz/ng-aquila/radio-toggle';
 import { NgModule } from '@angular/core';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { RadioToggleExampleComponent } from './radio-toggle/radio-toggle-example';

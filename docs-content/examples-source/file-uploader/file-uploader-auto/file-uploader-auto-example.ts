@@ -1,15 +1,15 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {
     FileItem,
     NxFileUploadConfig,
     NxFileUploader,
     NxFileUploaderComponent,
-} from '@aposin/ng-aquila/file-uploader';
+} from '@allianz/ng-aquila/file-uploader';
 import {
     NxMessageToastConfig,
     NxMessageToastService,
-} from '@aposin/ng-aquila/message';
+} from '@allianz/ng-aquila/message';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

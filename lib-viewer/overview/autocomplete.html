@@ -4,8 +4,8 @@
 <pre><code class="language-ts"><span class="hljs-keyword">import</span> { OverlayModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/overlay&#x27;</span>;<span class="hljs-string">`
 </span></code></pre>
 <p class="docs-markdown--p">Autocomplete can be used with input only, but usually you'll wan't to use it within formfield or natural language form. For this you'll need these additional imports.</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxFormfieldModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> { NxNaturalLanguageFormModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/natural-language-form&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxFormfieldModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxNaturalLanguageFormModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/natural-language-form&#x27;</span>;
 </code></pre>
 <h3 id="examples" tabindex="-1" class="docs-markdown--h3">Examples</h3>
 <p class="docs-markdown--p">To use autocomplete, create a <code>nx-autocomplete</code> element with <code>nx-autocomplete-option</code> elements. Set the <code>[value]</code> of the <code>nx-autocomplete-option</code> to the one you wish to fill the input with. Export the Autocomplete component to the template variable. Use nxAutocompleteTrigger directive (<code>[nxAutocomplete]</code>) on the input element with it's value set to the template variable of the Autocomplete component to bind input to the autocomplete.</p>

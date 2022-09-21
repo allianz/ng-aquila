@@ -4,7 +4,7 @@
 <h3 id="customizing-the-base-theme" tabindex="-1" class="docs-markdown--h3">Customizing the base theme</h3>
 <p class="docs-markdown--p">In order to define your custom theme first create a file <code>&lt;your-theme&gt;.scss</code>.</p>
 <p class="docs-markdown--p">To register your theme import the theming utilities:</p>
-<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/styles/theming&#x27;</span>;
+<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/styles/theming&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">Then, you should define your new theme as a <code>scss-map</code> which overwrites all default theming tokens you want to change:</p>
 <pre><code class="language-scss"><span class="hljs-variable">$my-theme</span>: (
@@ -20,8 +20,8 @@
 </code></pre>
 <p class="docs-markdown--p">By calling the <code>nx-register-theme(themeName)</code> mixin you are merging our base theme with your own theme (overwritten tokens + new tokens).</p>
 <p class="docs-markdown--p">Per default, the base theme for the new theme is aposin. You can also pass another theme as a base (third argument), but you first have to import or define it:</p>
-<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@aposin/ng-aquila/styles/theming&quot;</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@aposin/ng-aquila/styles/themes/your-base-theme&quot;</span>;
+<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@allianz/ng-aquila/styles/theming&quot;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@allianz/ng-aquila/styles/themes/your-base-theme&quot;</span>;
 ...
 <span class="hljs-variable">$nx-themes</span>: nx-register-theme(<span class="hljs-variable">$my-theme</span>, themeName, baseThemeName);
 </code></pre>
@@ -33,7 +33,7 @@ Currently the following internal themes are available as a base theme: **aposin*
 <pre><code class="language-scss"><span class="hljs-keyword">@include</span> nx-build-theme(themeName);
 </code></pre>
 <p class="docs-markdown--p"><strong>Important:</strong> Keep in mind the theme building should happen after you have registered your custom theme and preferably only once in the whole application. We recommend the following import in your global scss file:</p>
-<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/styles/theming&#x27;</span>;
+<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/styles/theming&#x27;</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;&lt;path-to-theme-file&gt;/&lt;your-theme&gt;.scss&#x27;</span>;
 
 <span class="hljs-keyword">@include</span> nx-build-theme(themeName);

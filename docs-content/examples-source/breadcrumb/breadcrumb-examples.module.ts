@@ -1,7 +1,7 @@
+import { NxBreadcrumbModule } from '@allianz/ng-aquila/breadcrumb';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxBreadcrumbModule } from '@aposin/ng-aquila/breadcrumb';
 
 import { BreadcrumbExampleComponent } from './breadcrumb/breadcrumb-example';
 import { BreadcrumbLinkExampleComponent } from './breadcrumb-link/breadcrumb-link-example';

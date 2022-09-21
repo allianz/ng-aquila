@@ -1,5 +1,5 @@
+import { NxListModule } from '@allianz/ng-aquila/list';
 import { NgModule } from '@angular/core';
-import { NxListModule } from '@aposin/ng-aquila/list';
 
 import { ListCirclesExampleComponent } from './list-circles/list-circles-example';
 import { ListCopytextExampleComponent } from './list-copytext/list-copytext-example';

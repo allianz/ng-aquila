@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
 import {
     DATEPICKER_DEFAULT_OPTIONS,
     DatepickerDefaultOptions,
-} from '@aposin/ng-aquila/datefield';
+} from '@allianz/ng-aquila/datefield';
+import { Component } from '@angular/core';
 import { Moment } from 'moment';
 
 const datepickerExpertOptions: DatepickerDefaultOptions = {

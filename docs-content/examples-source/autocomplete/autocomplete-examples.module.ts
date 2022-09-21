@@ -1,8 +1,8 @@
+import { NxAutocompleteModule } from '@allianz/ng-aquila/autocomplete';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxNaturalLanguageFormModule } from '@allianz/ng-aquila/natural-language-form';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { NxAutocompleteModule } from '@aposin/ng-aquila/autocomplete';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxNaturalLanguageFormModule } from '@aposin/ng-aquila/natural-language-form';
 
 import { ExamplesSharedModule } from './../examples-shared.module';
 import { AutocompleteBasicExampleComponent } from './autocomplete-basic/autocomplete-basic-example';

@@ -1,8 +1,8 @@
+import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
+import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
+import { NxPhoneInputModule } from '@allianz/ng-aquila/phone-input';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
-import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
-import { NxPhoneInputModule } from '@aposin/ng-aquila/phone-input';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { PhoneInputCountryCodeExampleComponent } from './phone-input-country-code/phone-input-country-code-example';
