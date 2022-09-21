@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.9.1](https://github.com/allianz/ng-aquila/compare/v13.9.0...v13.9.1) (2022-09-21)
+
+
+### Bug Fixes
+
+* **context-menu:** close old overlay when new one is opened ([00cdaee](https://github.com/allianz/ng-aquila/commit/00cdaee7c90f192cbd932e4887feb2088edce725))
+* **dropdown:** group usage formatting ([3cc29c2](https://github.com/allianz/ng-aquila/commit/3cc29c2088ca466f854b340761ef201cae92a677))
+* **modal:** correct modal padding ([2e1d321](https://github.com/allianz/ng-aquila/commit/2e1d321a7978dbc267278b51d742cd154df96d42))
+
+
 # [13.9.0](https://github.com/allianz/ng-aquila/compare/v13.8.0...v13.9.0) (2022-09-13)
 
 
