@@ -33,8 +33,6 @@ Momentjs ships with every locale thus significantly increasing the bundle size. 
 
 The ISO date adapter works solely with YYYY-MM-DD strings. Under the hood it uses dayjs to support formatting, parsing and localization. With this adapter you don't have to create a proper Date, Dayjs or Moment Object first to bind it with ngModel or reactive forms.
 
-Please install the `dayjs` package to use this adapter.
-
 ```ts
 import { NxIsoDateModule } from '@allianz/ng-aquila/iso-date-adapter';
 ```

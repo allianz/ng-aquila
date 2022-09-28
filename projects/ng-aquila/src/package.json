@@ -16,7 +16,7 @@
         "moment": "^2.29.1"
     },
     "dependencies": {
-        "dayjs": "^1.10.0",
+        "dayjs": "^1.11.5",
         "decimal.js": "^10.3.1",
         "tslib": "^2.3.0"
     },
