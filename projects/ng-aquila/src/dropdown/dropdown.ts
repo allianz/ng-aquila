@@ -33,7 +33,7 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { ControlValueAccessor, FormGroupDirective, NgControl, NgForm, UntypedFormControl } from '@angular/forms';
 import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
 import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
 
@@ -545,7 +545,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     updateErrorState() {
         const oldState = this.errorState;
         const parent = this._parentFormGroup || this._parentForm;
-        const control = this.ngControl ? (this.ngControl.control as FormControl) : null;
+        const control = this.ngControl ? (this.ngControl.control as UntypedFormControl) : null;
         const newState = this._errorStateMatcher.isErrorState(control, parent);
 
         if (newState !== oldState) {

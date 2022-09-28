@@ -40,14 +40,6 @@ describe('dayjs locale utils', () => {
     });
 
     describe('getDayjsLocaleData', () => {
-        it('should return the localeData of the requested locale ("de")', async () => {
-            const deLocaleData = await getDayjsLocaleData('de');
-            // smoke testing a few of the properties of the 'de' locale
-            expect(deLocaleData.firstDayOfWeek()).toBe(1);
-            expect(deLocaleData.weekdaysMin()).toEqual(['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa']);
-            expect(deLocaleData.monthsShort()).toEqual(['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dez.']);
-        });
-
         it('should return the localeData of the requested locale ("es-us")', async () => {
             const esUsLocaleData = await getDayjsLocaleData('es-us');
             // smoke testing a few of the properties of the 'es-us' locale

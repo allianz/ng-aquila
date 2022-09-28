@@ -1,7 +1,7 @@
 import { NxErrorComponent, NxErrorModule, NxLabelModule } from '@allianz/ng-aquila/base';
 import { ChangeDetectionStrategy, Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { NxRadioComponent, NxRadioGroupComponent } from './radio-button';
 import { NxRadioModule } from './radio-button.module';
@@ -627,10 +627,10 @@ class ReactiveRadio extends RadioTest {
     constructor() {
         super();
 
-        this.fb = new FormBuilder();
+        this.fb = new UntypedFormBuilder();
 
         this.testForm = this.fb.group({
-            radioTestReactive: new FormControl('1'),
+            radioTestReactive: new UntypedFormControl('1'),
         });
     }
 }
@@ -660,11 +660,11 @@ class GroupWithNgModel extends RadioTest {}
     `,
 })
 class RadioGroupValidation extends RadioTest {
-    testForm!: FormGroup;
+    testForm!: UntypedFormGroup;
     submitted = false;
     @ViewChild(NxErrorComponent) radioGroupError!: NxErrorComponent;
 
-    constructor(private readonly formBuilder: FormBuilder) {
+    constructor(private readonly formBuilder: UntypedFormBuilder) {
         super();
 
         this.createForm();
@@ -697,10 +697,10 @@ class RadioGroupValidation extends RadioTest {
     `,
 })
 class RadioGroupValidationTouched extends RadioTest {
-    testForm!: FormGroup;
+    testForm!: UntypedFormGroup;
     submitted = false;
 
-    constructor(private readonly formBuilder: FormBuilder) {
+    constructor(private readonly formBuilder: UntypedFormBuilder) {
         super();
 
         this.createForm();

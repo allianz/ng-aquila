@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
     AbstractControl,
-    FormControl,
+    UntypedFormControl,
     ValidatorFn,
     Validators,
 } from '@angular/forms';
@@ -62,11 +62,11 @@ export function phoneNumberValidator(type?: PhoneNumberType): ValidatorFn {
     styleUrls: ['./phone-input-validation-example.css'],
 })
 export class PhoneInputValidationExampleComponent {
-    phoneControl = new FormControl('', [
+    phoneControl = new UntypedFormControl('', [
         Validators.required,
         phoneNumberValidator('landline'),
     ]);
-    mobilePhoneControl = new FormControl('', [
+    mobilePhoneControl = new UntypedFormControl('', [
         Validators.required,
         phoneNumberValidator('mobile'),
     ]);

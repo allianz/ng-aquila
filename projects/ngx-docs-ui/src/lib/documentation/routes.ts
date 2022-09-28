@@ -1,3 +1,5 @@
+import { Routes } from '@angular/router';
+
 import { ExampleFullScreenComponent } from './../example-full-screen/example-full-screen.component';
 import { ComponentApi } from './component-documentation/component-page/component-api';
 import { ComponentExamples } from './component-documentation/component-page/component-examples';
@@ -9,7 +11,7 @@ import { DocumentationFrameComponent } from './documentation-frame.component';
 import { NxvGuideViewComponent } from './guides/guide-view/guide-view.component';
 import { NxvGuidesComponent } from './guides/guides.component';
 
-export const createViewerRoutes = (args: any) => [
+export const createViewerRoutes: (args: any) => Routes = args => [
     {
         path: 'my-viewer',
         redirectTo: '',

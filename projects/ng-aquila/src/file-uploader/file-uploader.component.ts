@@ -26,7 +26,7 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm, ValidatorFn } from '@angular/forms';
+import { ControlValueAccessor, FormGroupDirective, NgControl, NgForm, UntypedFormControl, ValidatorFn } from '@angular/forms';
 import { Subject, Subscription } from 'rxjs';
 import { startWith, takeUntil } from 'rxjs/operators';
 
@@ -283,7 +283,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     updateErrorState() {
         const oldState = this.errorState;
         const parent = this._parentFormGroup || this._parentForm;
-        const control = this.ngControl ? (this.ngControl.control as FormControl) : null;
+        const control = this.ngControl ? (this.ngControl.control as UntypedFormControl) : null;
         const newState = this._errorStateMatcher.isErrorState(control, parent);
 
         if (newState !== oldState) {

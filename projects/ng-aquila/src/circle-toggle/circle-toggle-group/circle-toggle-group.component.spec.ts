@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NxCircleToggleModule } from '../circle-toggle.module';
@@ -292,10 +292,10 @@ class NgModelCircleToggleGroupComponent extends ButtonToggleGroupTest {}
     `,
 })
 class ReactiveCircleToggleGroupComponent extends ButtonToggleGroupTest {
-    fb: FormBuilder = new FormBuilder();
+    fb: UntypedFormBuilder = new UntypedFormBuilder();
 
     testGroup = this.fb.group({
-        reactiveToggle: new FormControl(
+        reactiveToggle: new UntypedFormControl(
             {
                 value: null,
             },

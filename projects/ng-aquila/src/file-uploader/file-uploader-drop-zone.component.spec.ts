@@ -3,7 +3,7 @@ import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NxFileUploaderComponent } from './file-uploader.component';
@@ -15,7 +15,7 @@ import { NxFileUploaderDropZoneComponent } from './file-uploader-drop-zone.compo
 abstract class FileUploaderTest {
     @ViewChild(NxFileUploaderComponent, { static: false }) fileUploaderInstance!: NxFileUploaderComponent;
 
-    form!: FormGroup;
+    form!: UntypedFormGroup;
     queueList!: null | FileItem[];
     required = false;
     multiple = false;
@@ -129,7 +129,7 @@ class DropZoneFileUpload extends FileUploaderTest {
     constructor() {
         super();
 
-        this.fb = new FormBuilder();
+        this.fb = new UntypedFormBuilder();
         this.form = this.fb.group({
             documents: [this.queueList, Validators.required],
         });

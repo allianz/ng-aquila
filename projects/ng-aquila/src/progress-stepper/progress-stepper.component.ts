@@ -18,7 +18,7 @@ import {
     QueryList,
     SkipSelf,
 } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { FormGroupDirective, NgForm, UntypedFormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil, takeWhile } from 'rxjs/operators';
 
@@ -53,7 +53,7 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
     readonly _destroyed = new Subject<void>();
 
     /** Custom error state matcher that checks for validity of the step form. */
-    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    isErrorState(control: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean {
         const originalErrorState = this._errorStateMatcher.isErrorState(control, form);
 
         // Checks for the validity of a step form that is not submitted or touched,
@@ -117,7 +117,7 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
     @Input() currentStepLabel!: string;
 
     constructor(private readonly _cdr: ChangeDetectorRef, @Optional() _dir: Directionality | null, _elementRef: ElementRef<HTMLElement>) {
-        super(_dir!, _cdr, _elementRef, null);
+        super(_dir!, _cdr, _elementRef);
     }
 
     ngAfterContentInit(): void {

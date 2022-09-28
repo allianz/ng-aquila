@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import {
+    UntypedFormBuilder,
+    UntypedFormControl,
+    Validators,
+} from '@angular/forms';
 
 /**
  * @title Extended example
@@ -11,15 +15,15 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 })
 export class NaturalLanguageFormExtendedExampleComponent {
     readonly naturalForm = this.fb.group({
-        who: new FormControl('', [Validators.required]),
-        city: new FormControl('', [Validators.required]),
-        spots: new FormControl('', [
+        who: new UntypedFormControl('', [Validators.required]),
+        city: new UntypedFormControl('', [Validators.required]),
+        spots: new UntypedFormControl('', [
             Validators.pattern('[0-9]*'),
             Validators.required,
         ]),
     });
 
-    constructor(private readonly fb: FormBuilder) {}
+    constructor(private readonly fb: UntypedFormBuilder) {}
 
     validate() {
         Object.keys(this.naturalForm.controls).forEach(field => {

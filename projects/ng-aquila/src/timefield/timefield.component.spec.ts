@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { NxTimefieldComponent } from './timefield.component';
 import { NxTimefieldModule } from './timefield.module';
@@ -411,9 +411,9 @@ class ConfigurableTimefield extends TimefieldTest {}
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class ReactiveTimefield extends TimefieldTest {
-    testForm!: FormGroup;
+    testForm!: UntypedFormGroup;
 
-    constructor(private readonly fb: FormBuilder) {
+    constructor(private readonly fb: UntypedFormBuilder) {
         super();
         this.createForm();
     }

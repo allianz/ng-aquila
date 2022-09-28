@@ -3,7 +3,7 @@ import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { Component, Directive, ElementRef, Type, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable, of } from 'rxjs';
 
@@ -404,8 +404,8 @@ class NgModelBindingAutocompleteComponent extends AutocompleteComponent {
     `,
 })
 class ReactiveAutocompleteComponent extends AutocompleteComponent {
-    testForm = new FormBuilder().group({
-        autocomplete: new FormControl(
+    testForm = new UntypedFormBuilder().group({
+        autocomplete: new UntypedFormControl(
             {
                 value: null,
             },

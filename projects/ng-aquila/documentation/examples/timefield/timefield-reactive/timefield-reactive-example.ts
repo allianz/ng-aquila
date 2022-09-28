@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Timefield reactive forms example
@@ -10,9 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./timefield-reactive-example.css'],
 })
 export class TimefieldReactiveExampleComponent {
-    readonly testForm: FormGroup = this.fb.group({
+    readonly testForm = this.fb.group({
         timefieldReactive: ['22:54', Validators.required],
     });
 
-    constructor(private readonly fb: FormBuilder) {}
+    constructor(private readonly fb: UntypedFormBuilder) {}
 }

@@ -31,7 +31,7 @@ myDialogRef.beforeClosed().subscribe(result => {
 myDialogRef.close('some dialog result');
 ```
 
-The example below shows how the modal dialog can be opened **with a template** and **with a component**. If you use a specific component for your modal you have to include it in the list of `entryComponents` in your `NgModule`, as it gets instantiated at run-time and won't be found otherwise.
+The example below shows how the modal dialog can be opened **with a template** and **with a component**.
 
 <!-- example(modal-opening) -->
 

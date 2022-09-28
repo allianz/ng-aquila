@@ -12,7 +12,7 @@ import {
 } from '@angular/common/http';
 import { Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -35,7 +35,7 @@ export class UploadInterceptor implements HttpInterceptor {
 @Directive()
 abstract class FileUploaderTest {
     @ViewChild(NxFileUploaderComponent, { static: false }) fileUploaderInstance!: NxFileUploaderComponent;
-    form!: FormGroup;
+    form!: UntypedFormGroup;
     files!: null | FileItem[];
 
     uploader!: NxFileUploader;
@@ -322,12 +322,12 @@ describe('NxFileUploaderComponent', () => {
     `,
 })
 class BasicFileUpload extends FileUploaderTest {
-    fb: FormBuilder;
+    fb: UntypedFormBuilder;
 
     constructor(private readonly http: HttpClient) {
         super();
 
-        this.fb = new FormBuilder();
+        this.fb = new UntypedFormBuilder();
         this.form = this.fb.group({
             documents: [this.files],
         });

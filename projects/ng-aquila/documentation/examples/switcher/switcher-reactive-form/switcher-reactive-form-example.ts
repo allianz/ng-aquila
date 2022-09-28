@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 /** @title Switcher Reactive Form */
 @Component({
@@ -14,7 +14,7 @@ export class SwitcherReactiveFormExampleComponent {
 
     isSubmitted = false;
 
-    constructor(private readonly fb: FormBuilder) {}
+    constructor(private readonly fb: UntypedFormBuilder) {}
 
     onSubmit() {
         this.isSubmitted = true;

@@ -1,7 +1,11 @@
 import { DATEPICKER_DEFAULT_OPTIONS } from '@allianz/ng-aquila/datefield';
 import { FORMFIELD_DEFAULT_OPTIONS } from '@allianz/ng-aquila/formfield';
 import { Component } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import {
+    UntypedFormArray,
+    UntypedFormControl,
+    UntypedFormGroup,
+} from '@angular/forms';
 import moment from 'moment';
 
 /**
@@ -24,40 +28,40 @@ import moment from 'moment';
     ],
 })
 export class TableFormElementsExampleComponent {
-    formArray = new FormArray([
-        new FormGroup({
-            id: new FormControl('123456789'),
-            amount: new FormControl(250.0),
-            endingAt: new FormControl(moment([2021, 4, 1])),
-            status: new FormControl('open'),
+    formArray = new UntypedFormArray([
+        new UntypedFormGroup({
+            id: new UntypedFormControl('123456789'),
+            amount: new UntypedFormControl(250.0),
+            endingAt: new UntypedFormControl(moment([2021, 4, 1])),
+            status: new UntypedFormControl('open'),
         }),
-        new FormGroup({
-            id: new FormControl('987654321'),
-            amount: new FormControl(1000.4),
-            endingAt: new FormControl(moment([2023, 2, 23])),
-            status: new FormControl('processing'),
+        new UntypedFormGroup({
+            id: new UntypedFormControl('987654321'),
+            amount: new UntypedFormControl(1000.4),
+            endingAt: new UntypedFormControl(moment([2023, 2, 23])),
+            status: new UntypedFormControl('processing'),
         }),
-        new FormGroup({
-            id: new FormControl('123456700'),
-            amount: new FormControl(40),
-            endingAt: new FormControl(moment([2019, 11, 31])),
-            status: new FormControl('accepted'),
+        new UntypedFormGroup({
+            id: new UntypedFormControl('123456700'),
+            amount: new UntypedFormControl(40),
+            endingAt: new UntypedFormControl(moment([2019, 11, 31])),
+            status: new UntypedFormControl('accepted'),
         }),
-        new FormGroup({
-            id: new FormControl('123456780'),
-            amount: new FormControl(501),
-            endingAt: new FormControl(moment([2018, 11, 31])),
-            status: new FormControl('rejected'),
+        new UntypedFormGroup({
+            id: new UntypedFormControl('123456780'),
+            amount: new UntypedFormControl(501),
+            endingAt: new UntypedFormControl(moment([2018, 11, 31])),
+            status: new UntypedFormControl('rejected'),
         }),
     ]);
 
     addRow() {
         this.formArray.push(
-            new FormGroup({
-                id: new FormControl(''),
-                amount: new FormControl(''),
-                endingAt: new FormControl(''),
-                status: new FormControl(''),
+            new UntypedFormGroup({
+                id: new UntypedFormControl(''),
+                amount: new UntypedFormControl(''),
+                endingAt: new UntypedFormControl(''),
+                status: new UntypedFormControl(''),
             }),
         );
     }
@@ -66,7 +70,7 @@ export class TableFormElementsExampleComponent {
         this.formArray.removeAt(index);
     }
 
-    getFormGroup(i: number): FormGroup {
-        return this.formArray.controls[i] as FormGroup;
+    getFormGroup(i: number): UntypedFormGroup {
+        return this.formArray.controls[i] as UntypedFormGroup;
     }
 }

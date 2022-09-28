@@ -2,7 +2,7 @@ import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { BACKSPACE, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, SPACE, UP_ARROW } from '@angular/cdk/keycodes';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, Input, Optional, Self } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { ControlValueAccessor, FormGroupDirective, NgControl, NgForm, UntypedFormControl } from '@angular/forms';
 
 import { NxCodeInputIntl } from './code-input-intl';
 
@@ -364,7 +364,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     updateErrorState() {
         const oldState = this.errorState;
         const parent = this._parentFormGroup || this._parentForm;
-        const control = this._control ? (this._control.control as FormControl) : null;
+        const control = this._control ? (this._control.control as UntypedFormControl) : null;
         const newState = this._errorStateMatcher.isErrorState(control, parent);
 
         if (newState !== oldState) {

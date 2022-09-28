@@ -1,6 +1,13 @@
-import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
-import { CloseScrollStrategyConfig } from '@angular/cdk/overlay/scroll/close-scroll-strategy';
-import { RepositionScrollStrategyConfig } from '@angular/cdk/overlay/scroll/reposition-scroll-strategy';
+import { Overlay, RepositionScrollStrategyConfig, ScrollStrategy } from '@angular/cdk/overlay';
+
+// fix: non-exported code copied from https://github.com/angular/components/blob/main/src/cdk/overlay/scroll/close-scroll-strategy.ts
+/**
+ * Config options for the CloseScrollStrategy.
+ */
+export interface CloseScrollStrategyConfig {
+    /** Amount of pixels the user has to scroll before the overlay is closed. */
+    threshold?: number;
+}
 
 /** Scroll strategy default presets for overlay-based components. */
 export type NxScrollStrategy = 'reposition' | 'block' | 'close' | 'noop';

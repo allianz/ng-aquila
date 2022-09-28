@@ -15,7 +15,7 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
+import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, UntypedFormControl, Validator } from '@angular/forms';
 import { Decimal } from 'decimal.js';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -456,7 +456,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     }
 
     /** @docs-private */
-    validate(c: FormControl) {
+    validate(c: UntypedFormControl) {
         return this._validateFn();
     }
 

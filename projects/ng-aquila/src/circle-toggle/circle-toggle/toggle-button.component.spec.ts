@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { dispatchFakeEvent, dispatchTouchEvent } from '../../cdk-test-utils';
@@ -362,10 +362,10 @@ class NgModelToggleButtonComponent extends AbstractButtonToggleComponent {}
     `,
 })
 class ReactiveToggleButtonComponent extends AbstractButtonToggleComponent {
-    fb: FormBuilder = new FormBuilder();
+    fb: UntypedFormBuilder = new UntypedFormBuilder();
 
     testGroup = this.fb.group({
-        reactiveToggle: new FormControl(
+        reactiveToggle: new UntypedFormControl(
             {
                 value: null,
             },

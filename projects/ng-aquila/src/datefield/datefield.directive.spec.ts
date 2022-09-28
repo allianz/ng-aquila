@@ -2,7 +2,7 @@ import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import { Moment } from 'moment';
 
@@ -22,7 +22,7 @@ abstract class DatefieldTest {
     min!: Moment;
     max!: Moment;
 
-    form!: FormGroup;
+    form!: UntypedFormGroup;
 
     @ViewChild(NxDatefieldDirective) textInstance!: NxDatefieldDirective<Date>;
 }
@@ -289,7 +289,7 @@ class ReactiveDatefield extends DatefieldTest {
     constructor() {
         super();
 
-        this.fb = new FormBuilder();
+        this.fb = new UntypedFormBuilder();
 
         this.form = this.fb.group({
             datefield: { disabled: false, value: moment([2018, 0, 1]) },
@@ -299,7 +299,7 @@ class ReactiveDatefield extends DatefieldTest {
 
 @Directive()
 abstract class DatefieldIsoTest {
-    form!: FormGroup;
+    form!: UntypedFormGroup;
     @ViewChild(NxDatefieldDirective) datefieldInstance!: NxDatefieldDirective<Date>;
 }
 
@@ -363,7 +363,7 @@ class ReactiveIsoDatefield extends DatefieldIsoTest {
 
     constructor() {
         super();
-        this.fb = new FormBuilder();
+        this.fb = new UntypedFormBuilder();
         this.form = this.fb.group({
             datefield: '01.01.2021',
         });

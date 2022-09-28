@@ -49,8 +49,8 @@ const TEST_TEMPLATE_FILES = [
 
 const TAGS: string[] = ['allianz', 'aquila', 'example'];
 
-const angularVersion = '^13.0.0';
-const aquilaVersion = '^13.0.0';
+const angularVersion = '^14.0.0';
+const aquilaVersion = '^14.0.0';
 
 const dependencies = {
     '@angular/animations': angularVersion,
@@ -244,10 +244,6 @@ export class StackBlitzWriter {
             // Replace `declarations: [AquilaDocsExample]`
             // will be replaced as `declarations: [ButtonExampleComponent]`
             fileContent = fileContent.replace(/declarations: \[AquilaDocsExample\]/g, `declarations: [${joinedComponentNames}]`);
-
-            // Replace `entryComponents: [AquilaDocsExample]`
-            // will be replaced as `entryComponents: [ButtonExampleComponent]`
-            fileContent = fileContent.replace(/entryComponents: \[AquilaDocsExample\]/g, `entryComponents: [${joinedComponentNames}]`);
 
             // Replace `bootstrap: [AquilaDocsExample]`
             // will be replaced as `bootstrap: [ButtonExampleComponent]`

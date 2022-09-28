@@ -1,7 +1,7 @@
 import { ErrorStateMatcher, pad } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { ControlValueAccessor, FormGroupDirective, NgControl, NgForm, UntypedFormControl } from '@angular/forms';
 
 import { NxTimefieldIntl } from './timefield-intl';
 
@@ -249,7 +249,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     updateErrorState() {
         const oldState = this.errorState;
         const parent = this._parentFormGroup || this._parentForm;
-        const control = this.ngControl ? (this.ngControl.control as FormControl) : null;
+        const control = this.ngControl ? (this.ngControl.control as UntypedFormControl) : null;
         const newState = this._errorStateMatcher.isErrorState(control, parent);
         if (newState !== oldState) {
             this.errorState = newState;

@@ -1,7 +1,7 @@
 import { NxErrorComponent, NxErrorModule } from '@allianz/ng-aquila/base';
 import { Component, DebugElement, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NxCardModule } from './card.module';
@@ -15,7 +15,7 @@ abstract class SelectableCardTest {
 
     checked = false;
     disabled = false;
-    testForm!: FormGroup;
+    testForm!: UntypedFormGroup;
     customError!: boolean;
 }
 
@@ -202,7 +202,7 @@ class ReactiveSelectableCard extends SelectableCardTest {
     constructor() {
         super();
 
-        const fb = new FormBuilder();
+        const fb = new UntypedFormBuilder();
 
         this.testForm = fb.group({
             card: [false, Validators.requiredTrue],
@@ -225,7 +225,7 @@ class DynamicErrorSelectableCard extends SelectableCardTest {
     constructor() {
         super();
 
-        const fb = new FormBuilder();
+        const fb = new UntypedFormBuilder();
 
         this.testForm = fb.group({
             card: [false, Validators.requiredTrue],

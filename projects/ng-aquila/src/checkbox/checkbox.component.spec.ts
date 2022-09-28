@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NxCheckboxChangeEvent, NxCheckboxComponent } from './checkbox.component';
@@ -12,7 +12,7 @@ abstract class CheckboxTest {
 
     checked = false;
     indeterminate = false;
-    testForm!: FormGroup;
+    testForm!: UntypedFormGroup;
     labelSize!: string;
     disabled = false;
     negative = false;
@@ -328,10 +328,10 @@ class ReactiveCheckbox extends CheckboxTest {
     constructor() {
         super();
 
-        this.fb = new FormBuilder();
+        this.fb = new UntypedFormBuilder();
 
         this.testForm = this.fb.group({
-            checkbox: new FormControl({ value: false, disabled: false }, { validators: Validators.requiredTrue }),
+            checkbox: new UntypedFormControl({ value: false, disabled: false }, { validators: Validators.requiredTrue }),
         });
     }
 }

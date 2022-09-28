@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    UntypedFormControl,
+    UntypedFormGroup,
+    Validators,
+} from '@angular/forms';
 
 /**
  * @title Disabled example
@@ -11,11 +15,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CodeInputDisabledExampleComponent implements OnInit {
     inputValue = '';
-    codeForm!: FormGroup;
+    codeForm!: UntypedFormGroup;
 
-    ngOnInit(): void {
-        this.codeForm = new FormGroup({
-            keyCode: new FormControl(
+    ngOnInit() {
+        this.codeForm = new UntypedFormGroup({
+            keyCode: new UntypedFormControl(
                 { value: this.inputValue, disabled: true },
                 {
                     validators: [

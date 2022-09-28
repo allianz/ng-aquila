@@ -9,7 +9,11 @@ import {
 } from '@allianz/ng-aquila/message';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    UntypedFormControl,
+    UntypedFormGroup,
+    Validators,
+} from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -38,8 +42,8 @@ export class FileUploaderValidationExampleComponent
 
     readonly uploader = new NxFileUploader(this.uploadConfig, this.http);
 
-    readonly testForm = new FormGroup({
-        documents: new FormControl([], Validators.required),
+    readonly testForm = new UntypedFormGroup({
+        documents: new UntypedFormControl([], Validators.required),
     });
 
     private readonly _destroyed = new Subject<void>();

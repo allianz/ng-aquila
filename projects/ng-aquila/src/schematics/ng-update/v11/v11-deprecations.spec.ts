@@ -1,6 +1,6 @@
 import { Collection, SchematicTestSetup } from '../../utils/testing/test-setup';
 
-describe('ng-aquila ng add', () => {
+describe('ng-aquila@11: ng update', () => {
     const testSetup = new SchematicTestSetup('migration-v11', Collection.MIGRATIONS);
 
     it('should replace label with labelCollapsed', async () => {

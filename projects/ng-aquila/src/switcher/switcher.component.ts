@@ -16,7 +16,7 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { ControlValueAccessor, FormGroupDirective, NgControl, NgForm, UntypedFormControl } from '@angular/forms';
 
 let nextId = 0;
 /** Options for placement of the label */
@@ -216,7 +216,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     updateErrorState() {
         const oldState = this.errorState;
         const parent = this._parentFormGroup || this._parentForm;
-        const control = this.ngControl ? (this.ngControl.control as FormControl) : null;
+        const control = this.ngControl ? (this.ngControl.control as UntypedFormControl) : null;
         const newState = this._errorStateMatcher.isErrorState(control, parent);
 
         if (newState !== oldState) {

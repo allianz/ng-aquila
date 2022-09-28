@@ -23,7 +23,7 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { ControlValueAccessor, FormGroupDirective, NgControl, NgForm, UntypedFormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -266,7 +266,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     _updateErrorState() {
         const oldState = this._errorState;
         const parent = this._parentFormGroup || this._parentForm;
-        const control = this.ngControl ? (this.ngControl.control as FormControl) : null;
+        const control = this.ngControl ? (this.ngControl.control as UntypedFormControl) : null;
         const newState = this._errorStateMatcher.isErrorState(control, parent);
 
         if (newState !== oldState) {

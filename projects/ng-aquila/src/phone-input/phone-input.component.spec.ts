@@ -3,7 +3,7 @@ import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, DebugElement, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
-import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormControl, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import countries from 'i18n-iso-countries';
 import de from 'i18n-iso-countries/langs/de.json';
@@ -366,7 +366,7 @@ class ConfigurablePhoneInput extends PhoneInputTest {
     </nx-formfield>`,
 })
 class ReactiveFormsPhoneInput extends PhoneInputTest {
-    formControl = new FormControl('+49123456', Validators.required);
+    formControl = new UntypedFormControl('+49123456', Validators.required);
 }
 
 @Injectable()
@@ -390,7 +390,7 @@ class I18nProviderTest extends PhoneInputTest {}
     </nx-formfield>`,
 })
 class CustomFormatter extends PhoneInputTest {
-    formControl = new FormControl('+49123456', Validators.required);
+    formControl = new UntypedFormControl('+49123456', Validators.required);
     formatter(value: string, countryCode: string) {
         return value.match(/.{1,2}/g)?.join(' ') || '';
     }

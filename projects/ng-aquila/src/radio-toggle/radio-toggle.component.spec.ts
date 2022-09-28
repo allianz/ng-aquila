@@ -1,6 +1,6 @@
 import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NxRadioToggleComponent, RESET_VALUES } from './radio-toggle.component';
@@ -540,10 +540,10 @@ class MultiRadioToggle extends RadioToggleTest {}
     </form>`,
 })
 class ReactiveFormToggle extends RadioToggleTest {
-    fb: FormBuilder = new FormBuilder();
+    fb: UntypedFormBuilder = new UntypedFormBuilder();
 
     testForm = this.fb.group({
-        reactiveToggle: new FormControl(
+        reactiveToggle: new UntypedFormControl(
             {
                 value: 'B',
             },
@@ -565,9 +565,9 @@ class ReactiveFormToggle extends RadioToggleTest {
 })
 class ValidationToggle extends RadioToggleTest {
     data = ['A', 'B', 'C'];
-    testForm!: FormGroup;
+    testForm!: UntypedFormGroup;
 
-    constructor(private readonly fb: FormBuilder) {
+    constructor(private readonly fb: UntypedFormBuilder) {
         super();
         this.createForm();
     }
@@ -578,7 +578,7 @@ class ValidationToggle extends RadioToggleTest {
         });
     }
 
-    private customValidation(formGroup: FormGroup) {
+    private customValidation(formGroup: UntypedFormGroup) {
         return formGroup.value !== 'B' ? { valid: false } : null;
     }
 }

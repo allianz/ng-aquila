@@ -18,7 +18,7 @@ import {
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { LazyLoadingService } from 'projects/ng-aquila/documentation/generated/lazy-loading.service';
 import MANIFEST from 'projects/ng-aquila/documentation/generated/manifest.json';
@@ -28,7 +28,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
-const ROUTES = [
+const ROUTES: Routes = [
     {
         path: '',
         pathMatch: 'full',

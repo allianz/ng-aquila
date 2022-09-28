@@ -71,7 +71,7 @@ function addStarterApp(options: Schema) {
         return async (host: Tree, context: SchematicContext) => {
             const currentYear = new Date().getFullYear();
             const copyrightTemplate = 'Copyright ALLIANZ';
-            const copyrightStamp = `Copyright ALLIANZ ${currentYear}`;
+            const copyrightStamp = `Copyright Allianz ${currentYear}`;
 
             const workspace = await getWorkspace(host);
             const project = getProjectFromWorkspace(workspace, options.project);
@@ -107,7 +107,7 @@ function addAposinTheme(options: Schema) {
         const themeToAdd = options.type === 'b2b' ? 'expert.css' : 'aposin.css';
         styles.push(`node_modules/@allianz/ng-aquila/themes/${themeToAdd}`);
 
-        return updateWorkspace(workspace);
+        return updateWorkspace(workspace as any); // casting as any fix: type error on compile
     };
 }
 

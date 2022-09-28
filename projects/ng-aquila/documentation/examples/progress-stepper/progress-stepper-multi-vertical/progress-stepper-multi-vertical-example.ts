@@ -4,7 +4,11 @@ import {
     NxProgressStepperDirective,
 } from '@allianz/ng-aquila/progress-stepper';
 import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import {
+    UntypedFormBuilder,
+    UntypedFormControl,
+    Validators,
+} from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -81,7 +85,7 @@ export class ProgressStepperMultiVerticalExampleComponent implements OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private readonly fb: FormBuilder) {
+    constructor(private readonly fb: UntypedFormBuilder) {
         this.animalTypeForm.form
             .get('animalType')
             ?.valueChanges.pipe(takeUntil(this._destroyed))
@@ -90,13 +94,13 @@ export class ProgressStepperMultiVerticalExampleComponent implements OnDestroy {
                     this.breedForm.form.removeControl('catBreed');
                     this.breedForm.form.addControl(
                         'dogBreed',
-                        new FormControl('', Validators.required),
+                        new UntypedFormControl('', Validators.required),
                     );
                 } else if (value === 'cat') {
                     this.breedForm.form.removeControl('dogBreed');
                     this.breedForm.form.addControl(
                         'catBreed',
-                        new FormControl('', Validators.required),
+                        new UntypedFormControl('', Validators.required),
                     );
                 }
 

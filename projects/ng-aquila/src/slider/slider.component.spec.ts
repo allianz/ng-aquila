@@ -1,7 +1,7 @@
 import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NxSliderComponent } from './slider.component';
@@ -727,7 +727,7 @@ class NgModelSlider extends SliderTest {
     styles: [styles],
 })
 class ReactiveFormsSlider extends SliderTest {
-    testForm = new FormBuilder().group({
-        slide: new FormControl(10),
+    testForm = new UntypedFormBuilder().group({
+        slide: new UntypedFormControl(10),
     });
 }

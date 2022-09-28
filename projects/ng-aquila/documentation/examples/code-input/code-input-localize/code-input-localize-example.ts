@@ -1,6 +1,10 @@
 import { NxCodeInputIntl } from '@allianz/ng-aquila/code-input';
 import { Component, Injectable, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    UntypedFormControl,
+    UntypedFormGroup,
+    Validators,
+} from '@angular/forms';
 
 @Injectable()
 export class MyIntl extends NxCodeInputIntl {
@@ -19,11 +23,11 @@ export class MyIntl extends NxCodeInputIntl {
 })
 export class CodeInputLocalizeExampleComponent implements OnInit {
     inputValue = '';
-    codeForm!: FormGroup;
+    codeForm!: UntypedFormGroup;
 
-    ngOnInit(): void {
-        this.codeForm = new FormGroup({
-            keyCode: new FormControl(this.inputValue, {
+    ngOnInit() {
+        this.codeForm = new UntypedFormGroup({
+            keyCode: new UntypedFormControl(this.inputValue, {
                 validators: [
                     Validators.required,
                     Validators.pattern('[A-Z]+'),

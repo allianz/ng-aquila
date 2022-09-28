@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 /**
  * @title IBAN mask example
@@ -10,7 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
     styleUrls: ['./iban-mask-example.css'],
 })
 export class IbanMaskExampleComponent {
-    validatedMaskForm: FormGroup = new FormGroup({
-        maskInput: new FormControl('', {}),
+    validatedMaskForm: UntypedFormGroup = new UntypedFormGroup({
+        maskInput: new UntypedFormControl('', {}),
     });
 }

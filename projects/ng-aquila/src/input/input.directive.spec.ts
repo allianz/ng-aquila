@@ -1,7 +1,7 @@
 import { NxInputDirective, NxInputModule } from '@allianz/ng-aquila/input';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { createFakeEvent } from '../cdk-test-utils';
@@ -342,7 +342,7 @@ class BasicTextarea extends InputTest {}
     `,
 })
 class BasicInputWithFormControl extends InputTest {
-    formControl = new FormControl();
+    formControl = new UntypedFormControl();
 }
 
 @Component({

@@ -11,8 +11,8 @@ import {
 } from '@angular/core';
 import {
     ControlValueAccessor,
-    FormBuilder,
     NgControl,
+    UntypedFormBuilder,
     Validators,
 } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -148,7 +148,7 @@ export class FormfieldCustomTelInputExampleComponent
     onTouched = () => {};
 
     constructor(
-        private readonly fb: FormBuilder,
+        private readonly fb: UntypedFormBuilder,
         private readonly _focusMonitor: FocusMonitor,
         private readonly _elementRef: ElementRef<HTMLElement>,
         @Optional() @Self() readonly ngControl: NgControl | null,

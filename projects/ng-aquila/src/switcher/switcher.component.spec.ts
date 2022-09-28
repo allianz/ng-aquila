@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NxSwitcherComponent } from './switcher.component';
@@ -280,8 +280,8 @@ class SwitcherTemplateDriven extends SwitcherTest {}
     `,
 })
 class SwitcherReactiveForm extends SwitcherTest {
-    testForm = new FormBuilder().group({
-        reactiveSwitcher: new FormControl({ value: false, disabled: false }, { validators: Validators.required }),
+    testForm = new UntypedFormBuilder().group({
+        reactiveSwitcher: new UntypedFormControl({ value: false, disabled: false }, { validators: Validators.required }),
     });
 }
 
@@ -298,9 +298,9 @@ class LabelSizeSwitcher extends SwitcherTest {}
     `,
 })
 class ValidationSwitcherForm extends SwitcherTest {
-    testForm!: FormGroup;
+    testForm!: UntypedFormGroup;
 
-    constructor(private readonly fb: FormBuilder) {
+    constructor(private readonly fb: UntypedFormBuilder) {
         super();
         this.createForm();
     }
