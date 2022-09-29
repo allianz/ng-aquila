@@ -2,7 +2,7 @@ import chalk = require('chalk');
 import path = require('path');
 import glob = require('glob');
 import fs = require('fs-extra');
-import hljs = require('highlight.js');
+import hljs from 'highlight.js';
 
 const extensionMap = {
     css: 'css',
