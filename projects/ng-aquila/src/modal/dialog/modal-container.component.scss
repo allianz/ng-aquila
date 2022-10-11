@@ -54,7 +54,7 @@ $action-bar-height: nx-spacer(2xl);
 
 ::ng-deep .nx-modal__actions {
     // Pull the actions down to avoid their padding stacking with the modal's padding.
-    margin-bottom: -#{nx-spacer(4m)};
+    margin-bottom: -#{nx-spacer(3m)};
 
     // Make the top grey border also stretch over the modal padding
     margin-left: -#{nx-spacer(3m)};
