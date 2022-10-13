@@ -15,14 +15,14 @@ export async function createTestApp(runner: SchematicTestRunner, tree?: Tree, ap
     return createApp(runner, workspaceTree, appOptions);
 }
 
-export async function createWorkspace(runner: SchematicTestRunner, tree?: Tree) {
+export async function createWorkspace(runner: SchematicTestRunner, tree?: Tree): Promise<UnitTestTree> {
     return runner
         .runExternalSchematicAsync(
             '@schematics/angular',
             'workspace',
             {
                 name: 'workspace',
-                version: '6.0.0',
+                version: '1', // angular.json schema version
                 newProjectRoot: 'projects',
             },
             tree,
@@ -30,7 +30,7 @@ export async function createWorkspace(runner: SchematicTestRunner, tree?: Tree) 
         .toPromise();
 }
 
-export async function createApp(runner: SchematicTestRunner, tree: Tree, options = {}) {
+export async function createApp(runner: SchematicTestRunner, tree: Tree, options = {}): Promise<UnitTestTree> {
     return runner.runExternalSchematicAsync('@schematics/angular', 'application', { name: 'aquila-testing', ...options }, tree).toPromise();
 }
 
@@ -47,7 +47,7 @@ export async function createTestLibrary(runner: SchematicTestRunner, tree?: Tree
  * @param options
  * @param tree
  */
-export async function addLibrary(options: any, tree: Tree) {
+export async function addLibrary(options: any, tree: Tree): Promise<UnitTestTree> {
     const aquilarunner = new SchematicTestRunner('aquila', require.resolve('../../collection.json'));
     const tempTree = await aquilarunner.runSchematicAsync('ng-add', { type: 'b2c', ...options }, tree).toPromise();
     return aquilarunner.runSchematicAsync('ng-add-setup-project', { type: 'b2c', ...options }, tempTree).toPromise();
@@ -100,10 +100,10 @@ export class SchematicTestSetup {
     appTree!: UnitTestTree;
 
     constructor(readonly schematicName: string, readonly collection = Collection.MIGRATIONS) {
-        this.setup();
+        this.init();
     }
 
-    setup() {
+    init(): void {
         beforeEach(async () => {
             const schematics = this.collection === Collection.MIGRATIONS ? require.resolve('../../migrations.json') : require.resolve('../../collection.json');
             this.runner = new SchematicTestRunner('test', schematics);
@@ -154,7 +154,7 @@ export class SchematicTestSetup {
      * @param filePath
      * @param content
      */
-    writeFile = (filePath: string, content: string) => {
+    writeFile(filePath: string, content: string): void {
         // Update the temp file system host to reflect the changes in the real file system.
         // This is still necessary since we depend on the real file system for parsing the
         // TypeScript project.
@@ -164,14 +164,14 @@ export class SchematicTestSetup {
         } else {
             this.hostTree.create(filePath, content);
         }
-    };
+    }
 
     /**
      * Deletes file on the disk and in the virtual Tree
      *
      * @param filePath
      */
-    deleteFile(filePath: string) {
+    deleteFile(filePath: string): void {
         // Update the temp file system host to reflect the changes in the real file system.
         // This is still necessary since we depend on the real file system for parsing the
         // TypeScript project.
@@ -182,14 +182,16 @@ export class SchematicTestSetup {
     /**
      * Syncs the whole virtual tree to the disk
      */
-    syncTreeToFileSystem = () => {
+    syncTreeToFileSystem(): void {
         // Since the TypeScript compiler API expects all files to be present on the real file system, we
         // map every file in the app tree to a temporary location on the file system.
         this.appTree.files.forEach(f => this.writeFile(f, this.appTree.readContent(f)));
-    };
+    }
 
     /**
      * Run your migration.
      */
-    runMigration = async (options = {}) => this.runner.runSchematicAsync(this.schematicName, options, this.appTree).toPromise();
+    async runMigration(options = {}): Promise<UnitTestTree> {
+        return this.runner.runSchematicAsync(this.schematicName, options, this.appTree).toPromise();
+    }
 }

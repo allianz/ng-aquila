@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
+import { Rule } from '@angular-devkit/schematics';
 import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
 
 import { addPackageToPackageJson } from './package-config';
@@ -14,8 +14,8 @@ import { Schema } from './schema';
 import { aquilaVersion } from './version-names';
 
 export default function (options: Schema): Rule {
-    return (host: Tree, context: SchematicContext) => {
-        addPackageToPackageJson(host, '@allianz/ng-aquila', `^${aquilaVersion}`);
+    return (tree, context) => {
+        addPackageToPackageJson(tree, '@allianz/ng-aquila', `^${aquilaVersion}`);
         // the angular cli just adds `@allianz/ng-aquila` to the package.json but it is not installed
         // yet so we run the install first before we install the peer dependencies
         const installTaskId = context.addTask(new NodePackageInstallTask());

@@ -13,13 +13,13 @@ function loadPackageVersionGracefully(packageName: string): string | null {
     }
 }
 
-export function installAllPeerDependencies(host: Tree) {
+export function installAllPeerDependencies(tree: Tree): void {
     // key/value pair: package name/version
     try {
         const peerDependencies = require(`@allianz/ng-aquila/package.json`).peerDependencies;
         for (const packageName in peerDependencies) {
             if ({}.hasOwnProperty.call(peerDependencies, packageName)) {
-                addPackageToPackageJson(host, packageName, peerDependencies[packageName]);
+                addPackageToPackageJson(tree, packageName, peerDependencies[packageName]);
             }
         }
     } catch (e) {
