@@ -52,7 +52,7 @@ export class ExampleViewerComponent {
     }
     _example!: string;
 
-    @Input() config!: ExampleConfig;
+    @Input() config?: ExampleConfig | null;
 
     constructor(readonly manifestService: ManifestService, readonly copyService: CopyService) {}
 

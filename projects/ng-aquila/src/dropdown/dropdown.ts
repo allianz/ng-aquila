@@ -165,7 +165,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     _overlayViewportMargin: number = this.dir === 'rtl' ? 0 : 16;
 
     /** The last measured value for the trigger's client bounding rect. */
-    _triggerRect!: ClientRect;
+    _triggerRect?: ClientRect;
 
     /** Holds the panelWidth after panel was attached. */
     _panelWidth?: number;
