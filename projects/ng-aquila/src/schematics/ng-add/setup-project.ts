@@ -2,7 +2,8 @@ import { addModuleImportToRootModule, getProjectFromWorkspace, getProjectStyleFi
 import { JsonArray } from '@angular-devkit/core';
 import { apply, chain, MergeStrategy, mergeWith, move, noop, Rule, SchematicContext, SchematicsException, Tree, url } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import { buildDefaultPath, getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
+import { updateWorkspace } from '@schematics/angular/utility';
+import { buildDefaultPath, getWorkspace } from '@schematics/angular/utility/workspace';
 import * as chalk from 'chalk';
 
 import { isAngularApplicationProject } from '../utils/utils';
@@ -87,12 +88,10 @@ function addStarterApp(options: Schema) {
 }
 
 function addAposinTheme(options: Schema) {
-    return async (host: Tree) => {
-        if (options.noTheme) {
-            return;
-        }
-
-        const workspace = await getWorkspace(host);
+    if (options.noTheme) {
+        return noop();
+    }
+    return updateWorkspace(workspace => {
         const project = getProjectFromWorkspace(workspace, options.project);
         const newFilePath = 'node_modules/@allianz/ng-aquila/css/normalize.css';
 
@@ -106,9 +105,7 @@ function addAposinTheme(options: Schema) {
 
         const themeToAdd = options.type === 'b2b' ? 'expert.css' : 'aposin.css';
         styles.push(`node_modules/@allianz/ng-aquila/themes/${themeToAdd}`);
-
-        return updateWorkspace(workspace as any); // casting as any fix: type error on compile
-    };
+    });
 }
 
 function addCdkStyles(options: Schema) {

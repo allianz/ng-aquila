@@ -4,8 +4,7 @@ import { getWorkspace } from '@schematics/angular/utility/workspace';
 
 import { Collection, SchematicTestSetup } from '../utils/testing/test-setup';
 
-// TODO re-enable tests: "Error: Project name is required."
-xdescribe('ng-aquila: ng add', () => {
+describe('ng-aquila: ng add', () => {
     const testSetup = new SchematicTestSetup('ng-add-setup-project', Collection.SCHEMATICS);
     let testProjectConfig: workspaces.ProjectDefinition;
 
@@ -16,7 +15,7 @@ xdescribe('ng-aquila: ng add', () => {
 
     describe('general and b2c', () => {
         beforeEach(async () => {
-            await testSetup.runMigration();
+            await testSetup.runMigration({ project: 'aquila-testing' });
             testProjectConfig = await getTestProjectConfig();
         });
 
@@ -42,7 +41,7 @@ xdescribe('ng-aquila: ng add', () => {
 
     describe('expert', () => {
         beforeEach(async () => {
-            await testSetup.runMigration({ type: 'b2b' });
+            await testSetup.runMigration({ project: 'aquila-testing', type: 'b2b' });
             testProjectConfig = await getTestProjectConfig();
         });
 
@@ -58,7 +57,7 @@ xdescribe('ng-aquila: ng add', () => {
 
     describe('no theme', () => {
         beforeEach(async () => {
-            await testSetup.runMigration({ type: 'b2c', noTheme: true });
+            await testSetup.runMigration({ project: 'aquila-testing', type: 'b2c', noTheme: true });
             testProjectConfig = await getTestProjectConfig();
         });
 
@@ -69,14 +68,14 @@ xdescribe('ng-aquila: ng add', () => {
 
     describe('starter app', () => {
         beforeEach(async () => {
-            await testSetup.runMigration({ starter: true });
+            await testSetup.runMigration({ project: 'aquila-testing', starter: true });
             testProjectConfig = await getTestProjectConfig();
         });
 
         it('should update Starter App files', () => {
             const currentYear = new Date().getFullYear();
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts')).toContain(`/**  Copyright ALLIANZ ${currentYear} */`);
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html')).toContain(`<!-- Copyright ALLIANZ ${currentYear} -->`);
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts')).toContain(`/**  Copyright Allianz ${currentYear} */`);
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html')).toContain(`<!-- Copyright Allianz ${currentYear} -->`);
         });
     });
 });

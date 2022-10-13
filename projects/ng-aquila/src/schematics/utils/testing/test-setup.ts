@@ -75,7 +75,7 @@ export async function addLibrary(options: any, tree: Tree) {
       export class TestClass {}
       `);
 
-       await testSetup.runMigration();
+       await testSetup.runMigration({ project: 'aquila-testing' });
        expect(something).toBeTruthy();
  *   });
  * });
