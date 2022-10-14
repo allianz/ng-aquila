@@ -946,16 +946,30 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
     private setNextItemActive() {
         const options = this._isLazy ? this.options : this.dropdownItems.toArray();
-        const next = Math.min(options.length - 1, options.indexOf(this._selectionModel.selected[0] as NxDropdownItemComponent) + 1);
-        this._selectionModel.select(options[next]);
-        this._propagateChanges();
+        let curIndex = options.indexOf(this._selectionModel.selected[0] as NxDropdownItemComponent);
+        for (curIndex++; curIndex < options.length; curIndex++) {
+            if (this._isSelectable(options[curIndex] as NxDropdownItemComponent, this._isLazy)) {
+                this._selectionModel.select(options[curIndex]);
+                this._propagateChanges();
+                return;
+            }
+        }
     }
 
     private setPreviousItemActive() {
         const options = this._isLazy ? this.options : this.dropdownItems.toArray();
-        const prev = Math.max(0, options.indexOf(this._selectionModel.selected[0] as NxDropdownItemComponent) - 1);
-        this._selectionModel.select(options[prev]);
-        this._propagateChanges();
+        let curIndex = options.indexOf(this._selectionModel.selected[0] as NxDropdownItemComponent);
+        for (curIndex--; curIndex >= 0; curIndex--) {
+            if (this._isSelectable(options[curIndex] as NxDropdownItemComponent, this._isLazy)) {
+                this._selectionModel.select(options[curIndex]);
+                this._propagateChanges();
+                return;
+            }
+        }
+    }
+
+    private _isSelectable(option: NxDropdownItemComponent, isLazy?: boolean) {
+        return isLazy || (option && !option?.disabled && !option.selected);
     }
 
     private _handleClosedKeydown(event: KeyboardEvent) {
