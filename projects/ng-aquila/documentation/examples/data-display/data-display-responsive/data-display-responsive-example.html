@@ -11,9 +11,7 @@
 
     <div nxCol="12,12,6,6,3" [ngClass]="(marginClass$ | async) ?? ''">
         <nx-data-display [orientation]="orientation$ | async" labelColumns="4">
-            <nx-data-display-label class="text-lightgreen"
-                >Custom Label</nx-data-display-label
-            >
+            <nx-data-display-label>Custom Label</nx-data-display-label>
             Lorem ipsum
         </nx-data-display>
     </div>
