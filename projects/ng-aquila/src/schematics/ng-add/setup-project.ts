@@ -1,9 +1,8 @@
 import { addModuleImportToRootModule, getProjectFromWorkspace, getProjectStyleFile, getProjectTargetOptions } from '@angular/cdk/schematics';
-import { JsonArray } from '@angular-devkit/core';
 import { apply, chain, MergeStrategy, mergeWith, move, noop, Rule, SchematicsException, url } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import { updateWorkspace } from '@schematics/angular/utility';
-import { buildDefaultPath, getWorkspace } from '@schematics/angular/utility/workspace';
+import { readWorkspace, updateWorkspace } from '@schematics/angular/utility';
+import { buildDefaultPath } from '@schematics/angular/utility/workspace';
 import * as chalk from 'chalk';
 
 import { isAngularApplicationProject } from '../utils/utils';
@@ -23,7 +22,7 @@ export default function (options: Schema): Rule {
 
 function addExpertModule(options: Schema): Rule {
     return async (tree, context) => {
-        const workspace = await getWorkspace(tree);
+        const workspace = await readWorkspace(tree);
         const project = getProjectFromWorkspace(workspace, options.project);
         addModuleImportToRootModule(tree, 'NxExpertModule', '@allianz/ng-aquila/config', project);
     };
@@ -31,7 +30,7 @@ function addExpertModule(options: Schema): Rule {
 
 function addStarterApp(options: Schema): Rule {
     return async (tree, context) => {
-        const workspace = await getWorkspace(tree);
+        const workspace = await readWorkspace(tree);
         const project = getProjectFromWorkspace(workspace, options.project);
         const projectRoot = project.sourceRoot || '.';
         const projectAppPath = buildDefaultPath(project);
@@ -73,7 +72,7 @@ function addStarterApp(options: Schema): Rule {
             const copyrightTemplate = 'Copyright ALLIANZ';
             const copyrightStamp = `Copyright Allianz ${currentYear}`;
 
-            const workspace = await getWorkspace(tree);
+            const workspace = await readWorkspace(tree);
             const project = getProjectFromWorkspace(workspace, options.project);
             const projectAppPath = buildDefaultPath(project);
 
@@ -92,7 +91,7 @@ function addAposinTheme(options: Schema): Rule {
         const newFilePath = 'node_modules/@allianz/ng-aquila/css/normalize.css';
 
         const buildOptions = getProjectTargetOptions(project, 'build');
-        let styles = buildOptions.styles as JsonArray;
+        let styles = buildOptions.styles as unknown[] | undefined;
         if (!styles) {
             styles = [newFilePath];
         } else if (!styles.includes(newFilePath)) {
@@ -113,7 +112,7 @@ function addCdkStyles(options: Schema): Rule {
 
 function addStyles(options: Schema, path: string, importString: string): Rule {
     return async (tree, context) => {
-        const workspace = await getWorkspace(tree);
+        const workspace = await readWorkspace(tree);
         const project = getProjectFromWorkspace(workspace, options.project);
         const styleFilePath = getProjectStyleFile(project);
 

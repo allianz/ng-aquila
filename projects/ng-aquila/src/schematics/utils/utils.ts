@@ -6,9 +6,9 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import { workspaces } from '@angular-devkit/core';
+import { ProjectDefinition } from '@schematics/angular/utility';
 
-export function isAngularApplicationProject(project: workspaces.ProjectDefinition): boolean {
+export function isAngularApplicationProject(project: ProjectDefinition): boolean {
     if (project.extensions.projectType !== 'application') {
         return false;
     }

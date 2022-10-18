@@ -1,15 +1,14 @@
 import { getProjectFromWorkspace } from '@angular/cdk/schematics';
-import { workspaces } from '@angular-devkit/core';
-import { getWorkspace } from '@schematics/angular/utility/workspace';
+import { ProjectDefinition, readWorkspace } from '@schematics/angular/utility';
 
 import { Collection, SchematicTestSetup } from '../utils/testing/test-setup';
 
 describe('ng-aquila: ng add', () => {
     const testSetup = new SchematicTestSetup('ng-add-setup-project', Collection.SCHEMATICS);
-    let testProjectConfig: workspaces.ProjectDefinition;
+    let testProjectConfig: ProjectDefinition;
 
     async function getTestProjectConfig() {
-        const workspace = await getWorkspace(testSetup.appTree);
+        const workspace = await readWorkspace(testSetup.appTree);
         return getProjectFromWorkspace(workspace, 'aquila-testing');
     }
 
@@ -20,12 +19,12 @@ describe('ng-aquila: ng add', () => {
         });
 
         it('should add normalize.css', async () => {
-            expect(testProjectConfig.targets?.get('build')?.options?.styles).toContain('node_modules/@allianz/ng-aquila/css/normalize.css');
+            expect(testProjectConfig.targets.get('build')!.options!.styles).toContain('node_modules/@allianz/ng-aquila/css/normalize.css');
         });
 
         it('should add aposin theme', async () => {
-            expect(testProjectConfig.targets?.get('build')?.options?.styles).toContain('node_modules/@allianz/ng-aquila/themes/aposin.css');
-            expect(testProjectConfig.targets?.get('build')?.options?.styles).not.toContain('node_modules/@allianz/ng-aquila/themes/expert.css');
+            expect(testProjectConfig.targets.get('build')!.options!.styles).toContain('node_modules/@allianz/ng-aquila/themes/aposin.css');
+            expect(testProjectConfig.targets.get('build')!.options!.styles).not.toContain('node_modules/@allianz/ng-aquila/themes/expert.css');
         });
 
         it('should add CDK styles', async () => {
@@ -46,8 +45,8 @@ describe('ng-aquila: ng add', () => {
         });
 
         it('should add expert theme', async () => {
-            expect(testProjectConfig.targets.get('build')?.options?.styles).not.toContain('node_modules/@allianz/ng-aquila/themes/aposin.css');
-            expect(testProjectConfig.targets.get('build')?.options?.styles).toContain('node_modules/@allianz/ng-aquila/themes/expert.css');
+            expect(testProjectConfig.targets.get('build')!.options!.styles).not.toContain('node_modules/@allianz/ng-aquila/themes/aposin.css');
+            expect(testProjectConfig.targets.get('build')!.options!.styles).toContain('node_modules/@allianz/ng-aquila/themes/expert.css');
         });
 
         it('should add Expert Module', async () => {
@@ -62,7 +61,7 @@ describe('ng-aquila: ng add', () => {
         });
 
         it('should not add a theme file if no-theme is set to true', () => {
-            expect(testProjectConfig.targets.get('build')?.options?.styles).not.toContain('node_modules/@allianz/ng-aquila/themes/aposin.css');
+            expect(testProjectConfig.targets.get('build')!.options!.styles).not.toContain('node_modules/@allianz/ng-aquila/themes/aposin.css');
         });
     });
 
