@@ -1,4 +1,3 @@
-import { NxLabelModule } from '@allianz/ng-aquila/base';
 import {
     HTTP_INTERCEPTORS,
     HttpClient,
@@ -13,6 +12,7 @@ import {
 import { Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { NxLabelModule } from '@aposin/ng-aquila/base';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 

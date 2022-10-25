@@ -1,9 +1,9 @@
-import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { NxHeaderModule } from '@allianz/ng-aquila/header';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxLinkModule } from '@allianz/ng-aquila/link';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxHeaderModule } from '@aposin/ng-aquila/header';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxLinkModule } from '@aposin/ng-aquila/link';
 
 import { HeaderExampleComponent } from './header/header-example';
 import { HeaderCobrandingExampleComponent } from './header-cobranding/header-cobranding-example';

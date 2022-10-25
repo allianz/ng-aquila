@@ -1,12 +1,12 @@
-import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxLinkModule } from '@allianz/ng-aquila/link';
-import { NxTabsModule } from '@allianz/ng-aquila/tabs';
-import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxLinkModule } from '@aposin/ng-aquila/link';
+import { NxTabsModule } from '@aposin/ng-aquila/tabs';
+import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 
 import { CopyService } from '../core/copy.service';
 import { DocViewerModule } from '../doc-viewer/public_api';

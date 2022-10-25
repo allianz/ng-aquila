@@ -1,8 +1,8 @@
-import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { NxContextMenuModule } from '@allianz/ng-aquila/context-menu';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxToolbarModule } from '@allianz/ng-aquila/toolbar';
 import { NgModule } from '@angular/core';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxToolbarModule } from '@aposin/ng-aquila/toolbar';
 
 import { ToolbarExampleComponent } from './toolbar/toolbar-example';
 import { ToolbarPositioningContentExampleComponent } from './toolbar-positioning-content/toolbar-positioning-content-example';

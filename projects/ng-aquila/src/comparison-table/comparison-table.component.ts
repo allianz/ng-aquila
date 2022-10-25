@@ -1,4 +1,3 @@
-import { NxViewportService } from '@allianz/ng-aquila/utils';
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceArray, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
@@ -19,6 +18,7 @@ import {
     QueryList,
     ViewChild,
 } from '@angular/core';
+import { NxViewportService } from '@aposin/ng-aquila/utils';
 import { delay, takeUntil } from 'rxjs/operators';
 
 import { NxComparisonTableCell } from './cell/cell.component';

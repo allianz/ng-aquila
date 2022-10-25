@@ -24,14 +24,14 @@ You can change the font-weight of any headline/copytext by using the font-weight
 
 ```ts
 "styles": [
-  "node_modules/@allianz/ng-aquila/css/utilities.css"
+  "node_modules/@aposin/ng-aquila/css/utilities.css"
 ]
 ```
 
 If you don't use the Angular CLI or just prefer another place you can use this css import instead:
 
 ```css
-@import '@allianz/ng-aquila/css/utilities.css';
+@import '@aposin/ng-aquila/css/utilities.css';
 ```
 
 <!-- example(headline-font-weights) -->

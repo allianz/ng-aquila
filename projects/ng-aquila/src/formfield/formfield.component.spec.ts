@@ -1,7 +1,7 @@
-import { NxInputDirective, NxInputModule } from '@allianz/ng-aquila/input';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
+import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
 
 import { NxFormfieldErrorDirective } from './error.directive';
 import { AppearanceType, FloatLabelType, FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions, NxFormfieldComponent } from './formfield.component';

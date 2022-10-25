@@ -1,4 +1,3 @@
-import { clamp } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
@@ -19,6 +18,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { clamp } from '@aposin/ng-aquila/utils';
 import { Decimal } from 'decimal.js';
 import { fromEvent, Subscription } from 'rxjs';
 

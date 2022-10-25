@@ -1,10 +1,10 @@
-import { NxTimefieldIntl } from '@allianz/ng-aquila/timefield';
 import { Component, Injectable, OnInit } from '@angular/core';
 import {
     UntypedFormControl,
     UntypedFormGroup,
     Validators,
 } from '@angular/forms';
+import { NxTimefieldIntl } from '@aposin/ng-aquila/timefield';
 
 @Injectable()
 export class MyIntl extends NxTimefieldIntl {

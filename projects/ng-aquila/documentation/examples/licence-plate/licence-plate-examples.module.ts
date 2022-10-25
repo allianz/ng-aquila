@@ -1,11 +1,11 @@
-import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
-import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
-import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
-import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
-import { NxInputModule } from '@allianz/ng-aquila/input';
-import { NxLicencePlateModule } from '@allianz/ng-aquila/licence-plate';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
+import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxLicencePlateModule } from '@aposin/ng-aquila/licence-plate';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { LicencePlateDisabledExample } from './licence-plate-disabled/licence-plate-disabled-example';

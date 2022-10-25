@@ -1,5 +1,3 @@
-import { NxFormfieldComponent, NxFormfieldControl } from '@allianz/ng-aquila/formfield';
-import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
 import { ActiveDescendantKeyManager, LiveAnnouncer } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -34,6 +32,8 @@ import {
     ViewChildren,
 } from '@angular/core';
 import { ControlValueAccessor, FormGroupDirective, NgControl, NgForm, UntypedFormControl } from '@angular/forms';
+import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
+import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
 import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
 

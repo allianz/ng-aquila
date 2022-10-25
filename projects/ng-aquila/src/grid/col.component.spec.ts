@@ -1,7 +1,7 @@
-import { NxGridModule } from '@allianz/ng-aquila/grid';
 import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { NxGridModule } from '@aposin/ng-aquila/grid';
 
 import { sortedClassNames } from '../cdk-test-utils';
 import { NxColComponent } from './col.component';

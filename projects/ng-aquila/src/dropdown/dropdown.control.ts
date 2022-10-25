@@ -1,4 +1,4 @@
-import { NxFormfieldControl } from '@allianz/ng-aquila/formfield';
+import { NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { Observable, Subject } from 'rxjs';
 
 export abstract class NxDropdownControl extends NxFormfieldControl<any> {

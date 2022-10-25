@@ -70,7 +70,7 @@ export async function addLibrary(options: any, tree: Tree): Promise<UnitTestTree
  *
  *   it('should do something', async () => {
  *    testSetup.writeFile('/index.ts', `
-      import {Foo} from '@allianz/ng-aquila';
+      import {Foo} from '@aposin/ng-aquila';
 
       export class TestClass {}
       `);

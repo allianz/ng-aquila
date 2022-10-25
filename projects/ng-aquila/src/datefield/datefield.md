@@ -11,8 +11,8 @@ stable: done
 Ensure that you provide a date implementation in addition to the required module:
 
 ```ts
-import { NxDatefieldModule } from '@allianz/ng-aquila/datefield';
-import { NxNativeDateModule } from '@allianz/ng-aquila/datefield';
+import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
+import { NxNativeDateModule } from '@aposin/ng-aquila/datefield';
 ```
 
 The date field requires the Angular CDK (incl. CSS). Learn [how to enable Angular CDK styles](./documentation/overlay/overview#angular-cdk).
@@ -23,9 +23,9 @@ You can choose between using the native date, an ISO string adapter that uses [d
 
 | Module | Date type | Supported locales | Dependencies | Import from |
 | --- | --- | --- | --- | --- |
-| `NxNativeDateModule` | `Date` | en-US | None | `@allianz/ng-aquila/datefield` |
-| `NxMomentDateModule` | `Moment` | [See moment project](https://github.com/moment/moment/tree/develop/src/locale) | [Moment.js](https://momentjs.com/) | `@allianz/ng-aquila/moment-date-adapter` |
-| `NxIsoDateModule` | `string` in ISO format YYYY-MM-DD | [See dayjs project](https://github.com/iamkun/dayjs/tree/dev/src/locale) | [dayjs](https://day.js.org/) | `@allianz/ng-aquila/iso-date-adapter` |
+| `NxNativeDateModule` | `Date` | en-US | None | `@aposin/ng-aquila/datefield` |
+| `NxMomentDateModule` | `Moment` | [See moment project](https://github.com/moment/moment/tree/develop/src/locale) | [Moment.js](https://momentjs.com/) | `@aposin/ng-aquila/moment-date-adapter` |
+| `NxIsoDateModule` | `string` in ISO format YYYY-MM-DD | [See dayjs project](https://github.com/iamkun/dayjs/tree/dev/src/locale) | [dayjs](https://day.js.org/) | `@aposin/ng-aquila/iso-date-adapter` |
 
 Momentjs ships with every locale thus significantly increasing the bundle size. The iso date adapter uses dayjs where you have to import the locales you want to support manually. So you are under control and have huge potential bundle size savings. With en and de locales you save around 300KB (pre gzip).
 
@@ -34,13 +34,13 @@ Momentjs ships with every locale thus significantly increasing the bundle size. 
 The ISO date adapter works solely with YYYY-MM-DD strings. Under the hood it uses dayjs to support formatting, parsing and localization. With this adapter you don't have to create a proper Date, Dayjs or Moment Object first to bind it with ngModel or reactive forms.
 
 ```ts
-import { NxIsoDateModule } from '@allianz/ng-aquila/iso-date-adapter';
+import { NxIsoDateModule } from '@aposin/ng-aquila/iso-date-adapter';
 ```
 
 #### Native Date
 
 ```ts
-import { NxNativeDateModule } from '@allianz/ng-aquila/datefield';
+import { NxNativeDateModule } from '@aposin/ng-aquila/datefield';
 ```
 
 That's an implementation on top of the native Date object in the browser. You have no dependencies but you won't be able to change the parse format. To repeat this: You won't be able to change the parsing, that's why for most use cases you should use the ISO or moment adapter.
@@ -48,7 +48,7 @@ That's an implementation on top of the native Date object in the browser. You ha
 #### Moment.js
 
 ```ts
-import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
+import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
 ```
 
 If you choose to use the moment implementation you have to fulfill the Moment.js peerDependency and import the NxMomentDateModule instead of the NativeDateAdapter.

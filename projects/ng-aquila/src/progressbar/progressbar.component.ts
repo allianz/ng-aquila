@@ -1,6 +1,6 @@
-import { clamp } from '@allianz/ng-aquila/utils';
 import { NumberInput } from '@angular/cdk/coercion';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { clamp } from '@aposin/ng-aquila/utils';
 
 let progressbarId = 0;
 

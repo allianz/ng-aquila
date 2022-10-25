@@ -1,6 +1,6 @@
-import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxMenuComponent } from './menu.component';
 import { NxMenuButtonComponent, NxMenuButtonIconDirective } from './menu-button.component';

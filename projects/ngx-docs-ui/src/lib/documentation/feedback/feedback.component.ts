@@ -1,6 +1,6 @@
-import { NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Component, ElementRef, Inject, Input, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
+import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

@@ -6,12 +6,12 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
-import { NX_INPUT_VALUE_ACCESSOR } from '@allianz/ng-aquila/input';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { DOWN_ARROW } from '@angular/cdk/keycodes';
 import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, Inject, Input, OnDestroy, Optional, Output } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import { NX_INPUT_VALUE_ACCESSOR } from '@aposin/ng-aquila/input';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

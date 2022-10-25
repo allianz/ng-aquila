@@ -1,5 +1,5 @@
-import { NxDatepickerComponent } from '@allianz/ng-aquila/datefield';
 import { Component, ViewChild } from '@angular/core';
+import { NxDatepickerComponent } from '@aposin/ng-aquila/datefield';
 import { Moment } from 'moment';
 
 /**

@@ -1,8 +1,8 @@
-import { NxBreadcrumbModule } from '@allianz/ng-aquila/breadcrumb';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxLinkModule } from '@allianz/ng-aquila/link';
-import { NxSmallStageModule } from '@allianz/ng-aquila/small-stage';
 import { NgModule } from '@angular/core';
+import { NxBreadcrumbModule } from '@aposin/ng-aquila/breadcrumb';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxLinkModule } from '@aposin/ng-aquila/link';
+import { NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { SmallStageContentVariationExampleComponent } from './small-stage-content-variation/small-stage-content-variation-example';

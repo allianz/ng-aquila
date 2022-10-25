@@ -1,6 +1,6 @@
-import { NX_CONTEXT_MENU_SCROLL_STRATEGY } from '@allianz/ng-aquila/context-menu';
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
+import { NX_CONTEXT_MENU_SCROLL_STRATEGY } from '@aposin/ng-aquila/context-menu';
 
 function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
     return () => overlay.scrollStrategies.close({ threshold: 100 });

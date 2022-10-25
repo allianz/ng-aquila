@@ -19,7 +19,6 @@
         "last 2 FirefoxAndroid versions"
     ],
     "dependencies": {
-        "@allianz/ng-aquila": "^14.0.0",
         "@angular/animations": "^14.0.0",
         "@angular/cdk": "^14.0.0",
         "@angular/common": "^14.0.0",
@@ -29,6 +28,7 @@
         "@angular/platform-browser": "^14.0.0",
         "@angular/platform-browser-dynamic": "^14.0.0",
         "@angular/router": "^14.0.0",
+        "@aposin/ng-aquila": "^14.0.0",
         "i18n-iso-countries": "^6.8.0",
         "iban": "^0.0.14",
         "moment": "^2.29.1",

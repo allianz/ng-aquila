@@ -1,7 +1,7 @@
-import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { NxSidebarModule } from '@allianz/ng-aquila/sidebar';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
 
 import { NxSidebarToggleComponent } from './sidebar-toggle';
 

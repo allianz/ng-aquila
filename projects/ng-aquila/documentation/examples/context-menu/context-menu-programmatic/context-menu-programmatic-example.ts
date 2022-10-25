@@ -1,5 +1,5 @@
-import { NxContextMenuTriggerDirective } from '@allianz/ng-aquila/context-menu';
 import { Component, ViewChild } from '@angular/core';
+import { NxContextMenuTriggerDirective } from '@aposin/ng-aquila/context-menu';
 
 /**
  * @title Programmatic Context Menu Example

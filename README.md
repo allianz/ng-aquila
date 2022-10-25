@@ -6,12 +6,10 @@ Aquila is an open-source component library provided by the Allianz Global Digita
 
 ## Getting started :medal_sports:
 
-⚠️ With version 14 `@aposin/ng-aquila` has migrated to `@allianz/ng-aquila`. Please make sure to still use `@aposin/ng-aquila` for v13.x and older. ⚠️
-
 Add the library to your project with the Angular CLI:
 
 ```
-ng add @allianz/ng-aquila
+ng add @aposin/ng-aquila
 ```
 
 ## Documentation :books:

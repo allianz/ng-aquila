@@ -1,8 +1,8 @@
-import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
-import { NxGridModule } from '@allianz/ng-aquila/grid';
-import { NxInputModule } from '@allianz/ng-aquila/input';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { NgModule } from '@angular/core';
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+import { NxGridModule } from '@aposin/ng-aquila/grid';
+import { NxInputModule } from '@aposin/ng-aquila/input';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { InputExampleComponent } from './input/input-example';

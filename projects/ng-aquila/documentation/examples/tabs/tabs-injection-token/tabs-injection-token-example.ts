@@ -1,8 +1,8 @@
+import { Component } from '@angular/core';
 import {
     TAB_GROUP_DEFAULT_OPTIONS,
     TabGroupDefaultOptions,
-} from '@allianz/ng-aquila/tabs';
-import { Component } from '@angular/core';
+} from '@aposin/ng-aquila/tabs';
 
 const myDefaultOptions: TabGroupDefaultOptions = {
     appearance: 'expert',

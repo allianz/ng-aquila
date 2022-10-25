@@ -1,5 +1,3 @@
-import { MappedStyles } from '@allianz/ng-aquila/core';
-import { mapClassNames, pad } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty, NumberInput } from '@angular/cdk/coercion';
 import {
     AfterViewInit,
@@ -16,6 +14,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, UntypedFormControl, Validator } from '@angular/forms';
+import { MappedStyles } from '@aposin/ng-aquila/core';
+import { mapClassNames, pad } from '@aposin/ng-aquila/utils';
 import { Decimal } from 'decimal.js';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

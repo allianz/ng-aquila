@@ -1,7 +1,7 @@
-import { NxInputModule } from '@allianz/ng-aquila/input';
-import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, waitForAsync } from '@angular/core/testing';
+import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
 import { Subject } from 'rxjs';
 
 import { NxDatefieldModule } from '../datefield.module';

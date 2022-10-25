@@ -1,9 +1,9 @@
-import { NxAccordionModule } from '@allianz/ng-aquila/accordion';
-import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NxAccordionModule } from '@aposin/ng-aquila/accordion';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxTabScrollIndicator } from './scroll-indicator/scroll-indicator';
 import { NxTabComponent } from './tab';

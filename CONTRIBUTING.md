@@ -21,11 +21,11 @@ In order to work together on this project, we need some basic rules which are ou
 
 There are different levels of contributing with increasing levels of complexity, time needed to develop and communication needed with the maintainers and the design teams to successfully get your contribution accepted.
 
--   **light**: small bugfixes, style updates or documentation updates  
+-   **light**: small bugfixes, style updates or documentation updates
     can usually be done without aligning with the project maintainers, just give us a ping so that we do not start to work on it as well
--   **medium**: larger bugfixes, behavior changes, new features  
+-   **medium**: larger bugfixes, behavior changes, new features
     increased communication efforts - medium changes might already need alignment with the UX and design teams
--   **heavy**: new component  
+-   **heavy**: new component
     most communication between all parties needed, development time usually is significantly larger
 
 Please let us know in advance, especially for medium and heavy tasks, what you plan to do in our [issue tracker][issue tracker] so that we can provide feedback. This is important because:
@@ -164,5 +164,5 @@ Some useful notes about this project:
 [angular commit guidelines]: https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines
 [angular style guide]: https://angular.io/guide/styleguide
 [material style guide]: https://github.com/angular/components/blob/master/CODING_STANDARDS.md
-[issue tracker]: https://github.com/allianz/ngx-aquila/issues
-[create new issue]: https://github.com/allianz/ngx-aquila/issues/new/choose
+[issue tracker]: https://github.com/allianz/ng-aquila/issues
+[create new issue]: https://github.com/allianz/ng-aquila/issues/new/choose

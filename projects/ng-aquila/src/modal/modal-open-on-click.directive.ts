@@ -1,5 +1,5 @@
-import { NxButtonBase } from '@allianz/ng-aquila/button';
 import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { NxButtonBase } from '@aposin/ng-aquila/button';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

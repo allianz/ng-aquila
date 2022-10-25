@@ -1,7 +1,3 @@
-import { NxDropdownComponent } from '@allianz/ng-aquila/dropdown';
-import { NxFormfieldControl, NxFormfieldErrorDirective } from '@allianz/ng-aquila/formfield';
-import { NxPopoverComponent } from '@allianz/ng-aquila/popover';
-import { getFontShorthand } from '@allianz/ng-aquila/utils';
 import { ConnectionPositionPair, FlexibleConnectedPositionStrategy, Overlay, OverlayConfig, OverlayPositionBuilder, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import {
@@ -22,6 +18,10 @@ import {
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
+import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldControl, NxFormfieldErrorDirective } from '@aposin/ng-aquila/formfield';
+import { NxPopoverComponent } from '@aposin/ng-aquila/popover';
+import { getFontShorthand } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { startWith, takeUntil } from 'rxjs/operators';
 

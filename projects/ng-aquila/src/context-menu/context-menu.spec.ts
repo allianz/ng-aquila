@@ -1,4 +1,3 @@
-import { NxButtonComponent, NxButtonModule } from '@allianz/ng-aquila/button';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { END, ESCAPE, HOME, LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
 import { OverlayContainer } from '@angular/cdk/overlay';
@@ -7,6 +6,7 @@ import { Component, ElementRef, EventEmitter, NgZone, QueryList, Type, ViewChild
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NxButtonComponent, NxButtonModule } from '@aposin/ng-aquila/button';
 import { Subject } from 'rxjs';
 
 import { createKeyboardEvent, createMouseEvent, dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent } from '../cdk-test-utils';

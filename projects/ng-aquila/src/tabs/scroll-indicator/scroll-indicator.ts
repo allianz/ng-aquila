@@ -1,6 +1,6 @@
-import { NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, Optional, Output } from '@angular/core';
+import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

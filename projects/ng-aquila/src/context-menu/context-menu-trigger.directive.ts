@@ -1,4 +1,3 @@
-import { NxTriggerButton } from '@allianz/ng-aquila/overlay';
 import { FocusOrigin } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
@@ -20,6 +19,7 @@ import {
     Self,
     ViewContainerRef,
 } from '@angular/core';
+import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 import { asapScheduler, fromEvent, merge, Observable, of as observableOf, Subject, Subscription } from 'rxjs';
 import { delay, filter, map, take, takeUntil } from 'rxjs/operators';
 

@@ -1,6 +1,6 @@
-import { getFontShorthand } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, HostBinding, Input, OnDestroy, Renderer2 } from '@angular/core';
+import { getFontShorthand } from '@aposin/ng-aquila/utils';
 
 /** @docs-private */
 @Directive({

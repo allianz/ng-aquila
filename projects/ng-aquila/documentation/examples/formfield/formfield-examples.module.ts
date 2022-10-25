@@ -1,14 +1,14 @@
+import { NgModule } from '@angular/core';
 import {
     NxDatefieldModule,
     NxNativeDateModule,
-} from '@allianz/ng-aquila/datefield';
-import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
-import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxInputModule } from '@allianz/ng-aquila/input';
-import { NxMessageModule } from '@allianz/ng-aquila/message';
-import { NxPopoverModule } from '@allianz/ng-aquila/popover';
-import { NgModule } from '@angular/core';
+} from '@aposin/ng-aquila/datefield';
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxMessageModule } from '@aposin/ng-aquila/message';
+import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { FormfieldAppearanceExampleComponent } from './formfield-appearance/formfield-appearance-example';

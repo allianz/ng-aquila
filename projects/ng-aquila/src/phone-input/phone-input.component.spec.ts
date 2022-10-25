@@ -1,10 +1,10 @@
-import { NxDropdownComponent } from '@allianz/ng-aquila/dropdown';
-import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, DebugElement, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, UntypedFormControl, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import countries from 'i18n-iso-countries';
 import de from 'i18n-iso-countries/langs/de.json';
 

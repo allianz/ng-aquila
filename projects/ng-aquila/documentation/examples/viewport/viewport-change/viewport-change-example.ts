@@ -1,6 +1,6 @@
-import { NxSidebarComponent } from '@allianz/ng-aquila/sidebar';
-import { NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
 import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { NxSidebarComponent } from '@aposin/ng-aquila/sidebar';
+import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

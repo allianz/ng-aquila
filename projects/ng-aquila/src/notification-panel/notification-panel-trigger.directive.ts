@@ -1,6 +1,6 @@
-import { NxOverlayConfig, NxOverlayRef, NxOverlayService, NxTriggerButton } from '@allianz/ng-aquila/overlay';
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import { Directive, ElementRef, Inject, InjectionToken, Input, Optional, Self, TemplateRef } from '@angular/core';
+import { NxOverlayConfig, NxOverlayRef, NxOverlayService, NxTriggerButton } from '@aposin/ng-aquila/overlay';
 import { take } from 'rxjs/operators';
 
 /** Injection token that determines the scroll handling while a notification-panel is open. */

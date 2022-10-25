@@ -1,15 +1,15 @@
-import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
-import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxInputModule } from '@allianz/ng-aquila/input';
-import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
 import { A11yModule } from '@angular/cdk/a11y';
 import { ObserversModule } from '@angular/cdk/observers';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 
 import { NxDropdownClosedLabelDirective } from './closed-label.directive';
 import { NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER, NxDropdownComponent, NxDropdownIntl } from './dropdown';

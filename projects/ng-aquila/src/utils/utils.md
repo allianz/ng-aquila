@@ -14,7 +14,7 @@ Typescript language features type narrowing inside code blocks if a certain cond
 However, in some cases, relying purely on typescript language features is not sufficient for appropriate type narrowing.
 
 ```ts
-import { notNullable } from '@allianz/ng-aquila/utils';
+import { notNullable } from '@aposin/ng-aquila/utils';
 
 const result1 = ['str', null].filter(s => s != null); // return type `(string | null)[]`
 

@@ -1,8 +1,8 @@
+import { Component } from '@angular/core';
 import {
     IPaginationTexts,
     NX_PAGINATION_TEXTS,
-} from '@allianz/ng-aquila/pagination';
-import { Component } from '@angular/core';
+} from '@aposin/ng-aquila/pagination';
 
 const myPaginationTexts: IPaginationTexts = {
     previous: 'myPreviousText',

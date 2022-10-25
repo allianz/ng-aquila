@@ -1,5 +1,5 @@
-import { AppearanceType } from '@allianz/ng-aquila/formfield';
 import { ConnectionPositionPair } from '@angular/cdk/overlay';
+import { AppearanceType } from '@aposin/ng-aquila/formfield';
 
 function defaultPositions(offsetY = 0): ConnectionPositionPair[] {
     return [

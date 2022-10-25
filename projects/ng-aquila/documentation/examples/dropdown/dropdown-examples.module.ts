@@ -1,6 +1,6 @@
-import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
-import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NgModule } from '@angular/core';
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { DropdownCustomLabelExampleComponent } from './dropdown-custom-label/dropdown-custom-label-example';

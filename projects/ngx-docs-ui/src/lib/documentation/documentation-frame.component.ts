@@ -1,6 +1,6 @@
-import { NxIconRegistry } from '@allianz/ng-aquila/icon';
 import { AfterViewInit, Component, Inject, InjectionToken, OnDestroy, Optional, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

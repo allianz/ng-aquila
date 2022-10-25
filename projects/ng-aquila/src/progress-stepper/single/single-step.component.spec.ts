@@ -1,7 +1,7 @@
-import { NxLabelModule } from '@allianz/ng-aquila/base';
 import { Component, Directive, ElementRef, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, ComponentFixtureAutoDetect, fakeAsync, flush, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { NxLabelModule } from '@aposin/ng-aquila/base';
 
 import { NxStepperNextDirective, NxStepperPreviousDirective } from '../buttons';
 import { NxProgressStepperDirective } from '../progress-stepper.component';

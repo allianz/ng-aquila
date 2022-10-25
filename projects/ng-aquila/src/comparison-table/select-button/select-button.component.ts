@@ -1,6 +1,6 @@
-import { NxButtonBase } from '@allianz/ng-aquila/button';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy } from '@angular/core';
+import { NxButtonBase } from '@aposin/ng-aquila/button';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

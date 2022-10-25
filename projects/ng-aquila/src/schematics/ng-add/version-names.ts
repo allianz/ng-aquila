@@ -2,7 +2,7 @@ import { Tree } from '@angular-devkit/schematics';
 
 import { addPackageToPackageJson } from './package-config';
 
-export const aquilaVersion = loadPackageVersionGracefully('@allianz/ng-aquila');
+export const aquilaVersion = loadPackageVersionGracefully('@aposin/ng-aquila');
 
 // fetch the version defined in modules
 function loadPackageVersionGracefully(packageName: string): string | null {
@@ -16,7 +16,7 @@ function loadPackageVersionGracefully(packageName: string): string | null {
 export function installAllPeerDependencies(tree: Tree): void {
     // key/value pair: package name/version
     try {
-        const peerDependencies = require(`@allianz/ng-aquila/package.json`).peerDependencies;
+        const peerDependencies = require(`@aposin/ng-aquila/package.json`).peerDependencies;
         for (const packageName in peerDependencies) {
             if ({}.hasOwnProperty.call(peerDependencies, packageName)) {
                 addPackageToPackageJson(tree, packageName, peerDependencies[packageName]);

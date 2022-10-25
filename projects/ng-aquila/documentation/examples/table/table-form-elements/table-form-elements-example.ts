@@ -1,11 +1,11 @@
-import { DATEPICKER_DEFAULT_OPTIONS } from '@allianz/ng-aquila/datefield';
-import { FORMFIELD_DEFAULT_OPTIONS } from '@allianz/ng-aquila/formfield';
 import { Component } from '@angular/core';
 import {
     UntypedFormArray,
     UntypedFormControl,
     UntypedFormGroup,
 } from '@angular/forms';
+import { DATEPICKER_DEFAULT_OPTIONS } from '@aposin/ng-aquila/datefield';
+import { FORMFIELD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/formfield';
 import moment from 'moment';
 
 /**

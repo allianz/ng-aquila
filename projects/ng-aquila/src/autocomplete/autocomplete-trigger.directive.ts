@@ -1,5 +1,3 @@
-import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
-import { NxWordComponent } from '@allianz/ng-aquila/natural-language-form';
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { DOWN_ARROW, ENTER, ESCAPE, TAB, UP_ARROW } from '@angular/cdk/keycodes';
@@ -25,6 +23,8 @@ import {
     ViewContainerRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import { NxWordComponent } from '@aposin/ng-aquila/natural-language-form';
 import { defer, fromEvent, merge, Observable, of, Subject, Subscription } from 'rxjs';
 import { debounceTime, delay, filter, first, switchMap, take, takeUntil, tap } from 'rxjs/operators';
 

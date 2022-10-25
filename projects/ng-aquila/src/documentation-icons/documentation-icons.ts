@@ -1,5 +1,5 @@
-import { NxIconModule, NxIconRegistry } from '@allianz/ng-aquila/icon';
 import { NgModule } from '@angular/core';
+import { NxIconModule, NxIconRegistry } from '@aposin/ng-aquila/icon';
 
 import { ICON_MAPPINGS } from './icon-list';
 

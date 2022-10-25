@@ -83,7 +83,7 @@ In your dialog you can access this data by injecting the `NX_MODAL_DATA` token:
 
 ```ts
 import { Component, Inject } from '@angular/core';
-import { NX_MODAL_DATA } from '@allianz/ng-aquila/modal';
+import { NX_MODAL_DATA } from '@aposin/ng-aquila/modal';
 
 @Component({
     selector: 'your-dialog',
@@ -162,7 +162,7 @@ The example below shows the previous implementation of the modal dialog, which i
 For using it you have to import the `NxModalModule` as follows:
 
 ```ts
-import { NxModalModule } from '@allianz/ng-aquila/modal';
+import { NxModalModule } from '@aposin/ng-aquila/modal';
 
 @NgModule({
   imports: [

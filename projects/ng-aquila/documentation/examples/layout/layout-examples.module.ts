@@ -1,6 +1,6 @@
-import { NxTableModule } from '@allianz/ng-aquila/table';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NxTableModule } from '@aposin/ng-aquila/table';
 
 import { HiddenClassesExampleComponent } from './hidden-classes/hidden-classes-example';
 import { MarginSizesExampleComponent } from './margin-sizes/margin-sizes-example';

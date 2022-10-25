@@ -1,5 +1,5 @@
-import { NX_DATE_LOCALE, NxDateAdapter } from '@allianz/ng-aquila/datefield';
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { NX_DATE_LOCALE, NxDateAdapter } from '@aposin/ng-aquila/datefield';
 import { Moment } from 'moment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

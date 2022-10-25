@@ -1,13 +1,13 @@
+import { AfterContentInit, Component, ViewChild } from '@angular/core';
 import {
     ERROR_DEFAULT_OPTIONS,
     ErrorDefaultOptions,
-} from '@allianz/ng-aquila/base';
+} from '@aposin/ng-aquila/base';
 import {
     FORMFIELD_DEFAULT_OPTIONS,
     FormfieldDefaultOptions,
-} from '@allianz/ng-aquila/formfield';
-import { NxInputDirective } from '@allianz/ng-aquila/input';
-import { AfterContentInit, Component, ViewChild } from '@angular/core';
+} from '@aposin/ng-aquila/formfield';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
 
 const myDefaultOptions: FormfieldDefaultOptions = {
     appearance: 'outline',

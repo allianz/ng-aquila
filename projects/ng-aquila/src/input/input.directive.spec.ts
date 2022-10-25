@@ -1,8 +1,8 @@
-import { NxInputDirective, NxInputModule } from '@allianz/ng-aquila/input';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
 
 import { createFakeEvent } from '../cdk-test-utils';
 

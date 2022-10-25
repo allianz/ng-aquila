@@ -1,10 +1,10 @@
-import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { ENTER, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import { Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { DEC, dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, FEB, JAN, NOV } from '../../cdk-test-utils';
 import { NxNativeDateModule } from '../adapter/index';

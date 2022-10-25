@@ -1,5 +1,5 @@
-import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 
 /**
  * Suffix for seasonal licence plate inputs.

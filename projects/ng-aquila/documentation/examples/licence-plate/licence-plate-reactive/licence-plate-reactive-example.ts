@@ -1,6 +1,6 @@
-import { nxLicensePlateValidator } from '@allianz/ng-aquila/licence-plate';
 import { Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { nxLicensePlateValidator } from '@aposin/ng-aquila/licence-plate';
 
 /**
  * @title Licence plate reactive form

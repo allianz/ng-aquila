@@ -1,8 +1,8 @@
-import { NxErrorComponent, NxErrorModule } from '@allianz/ng-aquila/base';
 import { Component, DebugElement, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxErrorComponent, NxErrorModule } from '@aposin/ng-aquila/base';
 
 import { NxCardModule } from './card.module';
 import { NxSelectableCardComponent } from './selectable-card.component';

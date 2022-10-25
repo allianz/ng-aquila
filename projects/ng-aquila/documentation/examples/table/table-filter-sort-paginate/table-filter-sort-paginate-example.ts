@@ -1,10 +1,10 @@
+import { formatDate } from '@angular/common';
+import { Component, Inject, Injectable, LOCALE_ID } from '@angular/core';
 import {
     NxSortHeaderIntl,
     SortDirection,
     SortEvent,
-} from '@allianz/ng-aquila/table';
-import { formatDate } from '@angular/common';
-import { Component, Inject, Injectable, LOCALE_ID } from '@angular/core';
+} from '@aposin/ng-aquila/table';
 
 interface Contract {
     product: string;

@@ -1,8 +1,8 @@
-import { NxCopytextModule } from '@allianz/ng-aquila/copytext';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxSwipebarModule } from '@allianz/ng-aquila/swipebar';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxSwipebarModule } from '@aposin/ng-aquila/swipebar';
 
 import { NxExpandableTableDirective } from './expandable/expandable-table.directive';
 import { NxExpandableTableCellComponent } from './expandable/expandable-table-cell.component';

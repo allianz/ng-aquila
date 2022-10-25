@@ -1,6 +1,6 @@
-import { NX_NOTIFICATION_PANEL_SCROLL_STRATEGY } from '@allianz/ng-aquila/notification-panel';
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
+import { NX_NOTIFICATION_PANEL_SCROLL_STRATEGY } from '@aposin/ng-aquila/notification-panel';
 
 function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
     return () => overlay.scrollStrategies.close({ threshold: 100 });

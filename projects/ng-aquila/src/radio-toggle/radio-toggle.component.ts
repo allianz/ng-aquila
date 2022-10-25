@@ -1,4 +1,3 @@
-import { ErrorStateMatcher, mapClassNames } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     AfterContentInit,
@@ -14,6 +13,7 @@ import {
     Self,
 } from '@angular/core';
 import { ControlValueAccessor, FormGroupDirective, NgControl, NgForm, UntypedFormControl } from '@angular/forms';
+import { ErrorStateMatcher, mapClassNames } from '@aposin/ng-aquila/utils';
 import { merge, Observable, Subject } from 'rxjs';
 import { startWith, switchMap, takeUntil } from 'rxjs/operators';
 

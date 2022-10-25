@@ -1,6 +1,6 @@
-import { NxDialogService, NxModalRef } from '@allianz/ng-aquila/modal';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 @Component({
     selector: 'app-root',

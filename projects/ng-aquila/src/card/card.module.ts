@@ -1,8 +1,8 @@
-import { NxErrorModule } from '@allianz/ng-aquila/base';
-import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NxErrorModule } from '@aposin/ng-aquila/base';
+import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxCardComponent } from './card.component';
 import { NxCardFooterComponent } from './card-footer.component';

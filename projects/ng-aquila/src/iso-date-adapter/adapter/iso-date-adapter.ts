@@ -1,6 +1,6 @@
-import { NX_DATE_LOCALE, NxDateAdapter } from '@allianz/ng-aquila/datefield';
-import { pad } from '@allianz/ng-aquila/utils';
 import { Inject, Optional } from '@angular/core';
+import { NX_DATE_LOCALE, NxDateAdapter } from '@aposin/ng-aquila/datefield';
+import { pad } from '@aposin/ng-aquila/utils';
 import dayjs, { Dayjs } from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import localeData from 'dayjs/plugin/localeData';

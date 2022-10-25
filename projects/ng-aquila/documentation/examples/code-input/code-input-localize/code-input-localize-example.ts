@@ -1,10 +1,10 @@
-import { NxCodeInputIntl } from '@allianz/ng-aquila/code-input';
 import { Component, Injectable, OnInit } from '@angular/core';
 import {
     UntypedFormControl,
     UntypedFormGroup,
     Validators,
 } from '@angular/forms';
+import { NxCodeInputIntl } from '@aposin/ng-aquila/code-input';
 
 @Injectable()
 export class MyIntl extends NxCodeInputIntl {

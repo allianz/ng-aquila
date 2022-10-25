@@ -1,12 +1,12 @@
-import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { NxHeaderModule } from '@allianz/ng-aquila/header';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxLinkModule } from '@allianz/ng-aquila/link';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, ROUTES } from '@angular/router';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxHeaderModule } from '@aposin/ng-aquila/header';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxLinkModule } from '@aposin/ng-aquila/link';
 
 import { ExampleFullScreenModule } from '../example-full-screen/example-full-screen.module';
 import { ComponentService } from '../service/component.service';

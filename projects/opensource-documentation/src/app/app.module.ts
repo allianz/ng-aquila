@@ -1,7 +1,11 @@
-import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { NxDocumentationIconModule } from '@allianz/ng-aquila/documentation-icons';
-import { NxFooterModule } from '@allianz/ng-aquila/footer';
-import { NxGridModule } from '@allianz/ng-aquila/grid';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
+import { NxFooterModule } from '@aposin/ng-aquila/footer';
+import { NxGridModule } from '@aposin/ng-aquila/grid';
 import {
     BaseLazyLoadingService,
     DocVersions,
@@ -14,11 +18,7 @@ import {
     NX_DOCS_SELECTABLE_THEMES,
     NXV_MANIFEST_TOKEN,
     NxvDocumentationModule,
-} from '@allianz/ngx-docs-ui';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
+} from '@aposin/ngx-docs-ui';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { LazyLoadingService } from 'projects/ng-aquila/documentation/generated/lazy-loading.service';
 import MANIFEST from 'projects/ng-aquila/documentation/generated/manifest.json';

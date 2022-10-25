@@ -1,6 +1,6 @@
-import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { IconEssentialIconsExampleComponent } from './icon-essential-icons/icon-essential-icons-example';
 import { IconEssentialOverrideExampleComponent } from './icon-essential-override/icon-essential-override-example';

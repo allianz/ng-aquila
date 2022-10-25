@@ -1,10 +1,10 @@
-import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxMenuModule } from '@allianz/ng-aquila/menu';
-import { NxTreeModule } from '@allianz/ng-aquila/tree';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxMenuModule } from '@aposin/ng-aquila/menu';
+import { NxTreeModule } from '@aposin/ng-aquila/tree';
 
 import { MenuExampleComponent } from './menu/menu-example';
 import { MenuButtonExampleComponent } from './menu-button/menu-button-example';

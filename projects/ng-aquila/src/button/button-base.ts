@@ -1,7 +1,7 @@
-import { NxTriggerButton } from '@allianz/ng-aquila/overlay';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ChangeDetectorRef, Directive, ElementRef, HostBinding, Input, OnDestroy } from '@angular/core';
+import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 
 /** Type of a button. */
 export type NxButtonType = 'primary' | 'secondary' | 'tertiary' | 'cta' | 'emphasis';

@@ -1,4 +1,3 @@
-import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import {
     AfterViewInit,
@@ -17,6 +16,7 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { Observable, Subject, Subscription } from 'rxjs';
 
 import { NxAutocompleteOptionComponent } from './autocomplete-option.component';
