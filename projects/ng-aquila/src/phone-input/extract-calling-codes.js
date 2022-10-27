@@ -18,8 +18,8 @@ if (!meta || !meta.country_calling_codes || meta.country_calling_codes.length ==
 const metadata = {};
 metadata.callingCodes = meta.country_calling_codes;
 const callingCodes = {};
-Object.keys(meta.country_calling_codes).map(countryCode => {
-    meta.country_calling_codes[countryCode].forEach(country => {
+Object.entries(meta.country_calling_codes).forEach(([countryCode, countryCodes]) => {
+    countryCodes.forEach(country => {
         callingCodes[country] = countryCode;
     });
 });

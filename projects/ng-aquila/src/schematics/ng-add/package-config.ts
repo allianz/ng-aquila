@@ -13,9 +13,9 @@ import { Tree } from '@angular-devkit/schematics';
  * @returns A new object instance with sorted keys
  */
 function sortObjectByKeys(obj: any) {
-    return Object.keys(obj)
+    return Object.entries(obj)
         .sort()
-        .reduce((result: any, key: any) => (result[key] = obj[key]) && result, {});
+        .reduce((result: any, [key, value]) => (result[key] = value) && result, {});
 }
 
 /** Adds a package to the package.json in the given host tree. */

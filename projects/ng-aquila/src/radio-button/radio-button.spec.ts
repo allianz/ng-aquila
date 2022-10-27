@@ -705,8 +705,7 @@ class RadioGroupValidationTouched extends RadioTest {
 
         this.createForm();
 
-        Object.keys(this.testForm.controls).forEach(field => {
-            const control = this.testForm.get(field);
+        Object.values(this.testForm.controls).forEach(control => {
             control!.markAsTouched({ onlySelf: true });
         });
     }

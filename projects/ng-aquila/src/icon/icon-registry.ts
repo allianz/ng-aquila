@@ -27,8 +27,8 @@ export class NxIconRegistry implements OnDestroy {
         @Inject(DOCUMENT) private readonly _document: Document,
     ) {
         // register default icons
-        Object.keys(DEFAULT_ICONS).forEach(icon => {
-            this.addSvgIconLiteral(icon, _sanitizer.bypassSecurityTrustHtml(DEFAULT_ICONS[icon]));
+        Object.entries(DEFAULT_ICONS).forEach(([icon, literal]) => {
+            this.addSvgIconLiteral(icon, _sanitizer.bypassSecurityTrustHtml(literal));
         });
     }
 

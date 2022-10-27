@@ -79,11 +79,11 @@ export class ManifestService {
         }, {});
 
         // form datastructure
-        const groupedCategories = Object.keys(componentsDict).reduce((categories: any, key: string) => {
+        const groupedCategories = Object.entries(componentsDict).reduce<Category[]>((categories, [key, components]) => {
             const categoryKey = key.toLowerCase();
             const category = {
                 label: categoryKey,
-                children: componentsDict[key].map((component: ComponentDescriptor) => ({
+                children: components.map((component: ComponentDescriptor) => ({
                     label: component.title,
                     component,
                 })),

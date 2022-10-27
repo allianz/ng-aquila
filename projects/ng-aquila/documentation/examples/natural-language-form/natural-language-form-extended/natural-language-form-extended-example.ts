@@ -26,8 +26,7 @@ export class NaturalLanguageFormExtendedExampleComponent {
     constructor(private readonly fb: UntypedFormBuilder) {}
 
     validate() {
-        Object.keys(this.naturalForm.controls).forEach(field => {
-            const control = this.naturalForm.get(field);
+        Object.values(this.naturalForm.controls).forEach(control => {
             control?.markAsTouched({ onlySelf: true });
         });
     }

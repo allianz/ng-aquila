@@ -15,6 +15,6 @@ export class NxDocumentationIconModule {
         this._iconRegistry.registerFont('fab', 'fab', 'fa-');
         this._iconRegistry.setDefaultFont('far');
 
-        Object.keys(ICON_MAPPINGS).forEach(iconName => this._iconRegistry.addFontIcon(iconName, ICON_MAPPINGS[iconName].alias, ICON_MAPPINGS[iconName].font));
+        Object.entries(ICON_MAPPINGS).forEach(([iconName, { alias, font }]) => this._iconRegistry.addFontIcon(iconName, alias, font));
     }
 }
