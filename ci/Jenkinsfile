@@ -8,7 +8,7 @@ properties([
   buildDiscarder([$class: 'EnhancedOldBuildDiscarder', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', discardOnlyOnSuccess: false, numToKeepStr: '3'])
 ])
 
-node('adp-jenkins-agent-nodejs-with-browsers-v16-lts') {
+node('adp-jenkins-agent-nodejs-with-azure-cli') {
   skipDefaultCheckout()
 
   scmVars = checkout scm
@@ -19,7 +19,7 @@ node('adp-jenkins-agent-nodejs-with-browsers-v16-lts') {
   env.GIT_COMMIT = scmVars.GIT_COMMIT
 
   branch = env.BRANCH_NAME
- 
+
 
   stage("Prepare") {
     shared.withNotification('ci/prepare', "Prepare") {
