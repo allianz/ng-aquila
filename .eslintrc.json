@@ -109,7 +109,7 @@
                 "@typescript-eslint/method-signature-style": ["warn", "method"],
                 "@typescript-eslint/no-empty-interface": "off", // recommended overide: useful with certain libraries
                 "@typescript-eslint/no-explicit-any": "off", // recommended override: used frequently
-                "@typescript-eslint/no-extraneous-class": "off", // strict override: support annotated classes
+                "@typescript-eslint/no-extraneous-class": "off", // strict override: support annotated empty classes
                 "@typescript-eslint/no-non-null-assertion": "off", // recommended override: used frequently
                 "@typescript-eslint/no-unnecessary-condition": "off", // strict override: support incorrect typings
                 "@typescript-eslint/no-useless-constructor": "off", // strict override: TODO check why a spec is failing
@@ -121,16 +121,10 @@
                 "@typescript-eslint/prefer-readonly": "warn",
 
                 // ==== @typescript-eslint: extension rules ====
-                "default-param-last": "off",
-                "@typescript-eslint/default-param-last": "warn",
-                "no-dupe-class-members": "off",
-                "@typescript-eslint/no-dupe-class-members": "error",
                 "no-empty-function": "off",
                 "@typescript-eslint/no-empty-function": "off", // recommended override: used frequently
                 "no-invalid-this": "off",
-                "@typescript-eslint/no-invalid-this": "error",
-                "no-redeclare": "off",
-                "@typescript-eslint/no-redeclare": "error",
+                "@typescript-eslint/no-invalid-this": "warn",
                 "no-shadow": "off",
                 "@typescript-eslint/no-shadow": "warn",
                 "no-unused-vars": "off",
@@ -173,7 +167,7 @@
             "rules": {
                 // ==== @angular-eslint: template ====
                 "@angular-eslint/template/accessibility-alt-text": "warn",
-                "@angular-eslint/template/accessibility-elements-content": "warn",
+                "@angular-eslint/template/accessibility-elements-content": "warn", // may conflict with the usage of some ng-aquila components: comparison-table select button
                 "@angular-eslint/template/accessibility-label-has-associated-control": "warn",
                 "@angular-eslint/template/accessibility-table-scope": "warn",
                 "@angular-eslint/template/accessibility-valid-aria": "warn",

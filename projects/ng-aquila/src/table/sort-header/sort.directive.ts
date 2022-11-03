@@ -4,16 +4,12 @@ import { Subject } from 'rxjs';
 export type SortDirection = 'asc' | 'desc';
 
 export class SortEvent {
-    /** The name of the column that is being sorted by. */
-    active: string;
-
-    /** The sort direction. */
-    direction: SortDirection;
-
-    constructor(active: string, direction: SortDirection) {
-        this.active = active;
-        this.direction = direction;
-    }
+    constructor(
+        /** The name of the column that is being sorted by. */
+        readonly active: string,
+        /** The sort direction. */
+        readonly direction: SortDirection,
+    ) {}
 }
 
 @Directive({

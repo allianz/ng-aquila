@@ -29,14 +29,8 @@ import { takeUntil } from 'rxjs/operators';
 
 /** The change event object emitted by the radio group and radio button. */
 export class NxRadioChange {
-    source: NxRadioComponent;
-    value: any;
-
     /** The NxRadioComponent that emits the change event. NxRadioChange object can be instantiated with source radio component and a value. */
-    constructor(source: NxRadioComponent, value: any) {
-        this.source = source;
-        this.value = value;
-    }
+    constructor(readonly source: NxRadioComponent, readonly value: any) {}
 }
 
 /** Label Size Types */

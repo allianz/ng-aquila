@@ -26,16 +26,12 @@ import { NxMobileToggleButtonComponent } from '../mobile-toggle-button/mobile-to
 import { ToggleButton } from './toggle-button';
 
 export class ToggleChangeEvent {
-    /** A toggle button */
-    button: ToggleButton;
-
-    /** The value of the toggle button that is sent with the event. */
-    value: string;
-
-    constructor(button: ToggleButton, value: string) {
-        this.button = button;
-        this.value = value;
-    }
+    constructor(
+        /** A toggle button */
+        readonly button: ToggleButton,
+        /** The value of the toggle button that is sent with the event. */
+        readonly value: string,
+    ) {}
 }
 
 let nextId = 0;

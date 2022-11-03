@@ -8,12 +8,6 @@ import { NxMessageToastComponent } from './message-toast.component';
 const MAX_TIMEOUT = 2 ** 31 - 1;
 
 export class NxMessageToastRef {
-    /**
-     * The instance of the component making up the content of the message toast.
-     * @docs-private
-     */
-    toastInstance: NxMessageToastComponent;
-
     /** Subject for notifying the user that the message toast has been dismissed. */
     private readonly _afterDismissed = new Subject<any>();
 
@@ -26,8 +20,14 @@ export class NxMessageToastRef {
      */
     private _durationTimeoutId: any;
 
-    constructor(toastInstance: NxMessageToastComponent, private readonly _overlayRef: OverlayRef) {
-        this.toastInstance = toastInstance;
+    constructor(
+        /**
+         * The instance of the component making up the content of the message toast.
+         * @docs-private
+         */
+        public toastInstance: NxMessageToastComponent,
+        private readonly _overlayRef: OverlayRef,
+    ) {
         toastInstance._onExit.pipe(take(1)).subscribe(() => this._finishDismiss());
     }
 

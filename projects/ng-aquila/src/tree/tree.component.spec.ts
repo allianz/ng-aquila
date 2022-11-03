@@ -319,22 +319,17 @@ describe(NxTreeComponent.name, () => {
 });
 
 class TestData {
-    pizzaTopping: string;
-    pizzaCheese: string;
-    pizzaBase: string;
     level!: number;
-    children: TestData[];
-    observableChildren: BehaviorSubject<TestData[]>;
-    isSpecial: boolean;
 
-    constructor(pizzaTopping: string, pizzaCheese: string, pizzaBase: string, children: TestData[] = [], isSpecial = false) {
-        this.pizzaTopping = pizzaTopping;
-        this.pizzaCheese = pizzaCheese;
-        this.pizzaBase = pizzaBase;
-        this.isSpecial = isSpecial;
-        this.children = children;
-        this.observableChildren = new BehaviorSubject<TestData[]>(this.children);
-    }
+    readonly observableChildren = new BehaviorSubject<TestData[]>(this.children);
+
+    constructor(
+        readonly pizzaTopping: string,
+        readonly pizzaCheese: string,
+        readonly pizzaBase: string,
+        readonly children: TestData[] = [],
+        readonly isSpecial = false,
+    ) {}
 }
 
 class FakeDataSource {
