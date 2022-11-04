@@ -19,9 +19,7 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
     return valuesArray;
 }
 
-/**
- * @docs-private
- */
+/** @docs-private */
 export class NxMomentDateAdapter extends NxDateAdapter<Moment> {
     private _localeData!: {
         firstDayOfWeek: number;

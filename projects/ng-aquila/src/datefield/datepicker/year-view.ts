@@ -27,6 +27,7 @@ import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
 
 /**
  * An internal component used to display a single year in the datepicker.
+ *
  * @docs-private
  */
 @Component({
@@ -270,8 +271,7 @@ export class NxYearViewComponent<D> implements AfterContentInit {
     }
 
     /**
-     * Tests whether the combination month/year is after this.maxDate, considering
-     * just the month and year of this.maxDate
+     * Tests whether the combination month/year is after this.maxDate, considering just the month and year of this.maxDate.
      */
     private _isYearAndMonthAfterMaxDate(year: number, month: number) {
         if (this.maxDate) {
@@ -285,8 +285,7 @@ export class NxYearViewComponent<D> implements AfterContentInit {
     }
 
     /**
-     * Tests whether the combination month/year is before this.minDate, considering
-     * just the month and year of this.minDate
+     * Tests whether the combination month/year is before this.minDate, considering just the month and year of this.minDate.
      */
     private _isYearAndMonthBeforeMinDate(year: number, month: number) {
         if (this.minDate) {

@@ -19,7 +19,7 @@ export enum NxBreakpoints {
 const DEFAULT_THROTTLE_TIME = 200;
 
 /**
- *  Service subscribing to window resize events and providing breakpoint matching functions.
+ * Service subscribing to window resize events and providing breakpoint matching functions.
  */
 @Injectable({
     providedIn: 'root',

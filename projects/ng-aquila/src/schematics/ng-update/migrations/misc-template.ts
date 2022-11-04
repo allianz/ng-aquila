@@ -5,7 +5,7 @@ import { findInputsOnElementWithTag, Migration, ResolvedResource, TargetVersion,
  * instances of outdated Angular CDK API that can't be migrated automatically.
  *
  * TODO: make it reusable across major versions, e.g. with a custom data object
- * similar to the CDK UpgradeData
+ * similar to the CDK UpgradeData.
  */
 export class MiscTemplateMigration extends Migration<UpgradeData> {
     // For the first version we need it for V11 but we might need the same

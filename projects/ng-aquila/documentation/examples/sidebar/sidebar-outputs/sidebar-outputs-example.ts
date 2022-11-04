@@ -11,8 +11,8 @@ interface Query {
 }
 
 /**
-  This interface defines a single node of the trees data structure.
-*/
+ * This interface defines a single node of the trees data structure.
+ */
 export interface MyTreeNode extends NxTreeNode {
     label: string;
     icon?: string;

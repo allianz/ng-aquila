@@ -3,7 +3,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { FileItem } from './file-uploader.model';
 
 /**
- * Verifies the file type against the accepted types
+ * Verifies the file type against the accepted types.
  */
 export function isFileTypeValid(file: File, accept: string): boolean {
     if (!accept || !file.type) {
@@ -25,6 +25,7 @@ export function isFileTypeValid(file: File, accept: string): boolean {
  * Provides a set of file uploader validators that can be used by form controls.
  *
  * Currently `maxFileSize` and `fileType` are available.
+ *
  * @dynamic
  */
 export class NxFileUploaderValidators {

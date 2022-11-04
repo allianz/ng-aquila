@@ -6,9 +6,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NxDropdownModule } from '../dropdown.module';
 import { NxMultiSelectOptionComponent } from './multi-select-option.component';
 
-/**
- * @docs-private
- */
+/** @docs-private */
 export class MultiSelectOptionHarness extends ComponentHarness {
     static hostSelector = 'nx-multi-select-option';
 

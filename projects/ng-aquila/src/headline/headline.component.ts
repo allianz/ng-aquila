@@ -22,8 +22,11 @@ const DEFAULT_TYPE = 'section';
     },
 })
 export class NxHeadlineComponent {
-    /** Changes the type of the headline which affects the visual appearance.
-     * You can combine a HeadlineType and 'negative'. */
+    /**
+     * Changes the type of the headline which affects the visual appearance.
+     *
+     * You can combine a HeadlineType and 'negative'.
+     */
     @Input('nxHeadline') set classNames(value: string) {
         if (this._classNames === value) {
             return;

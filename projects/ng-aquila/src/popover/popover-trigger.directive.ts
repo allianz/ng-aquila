@@ -66,6 +66,7 @@ export const NX_POPOVER_SCROLL_STRATEGY_PROVIDER = {
 
 /**
  * Creates an error to be thrown if the user provided an invalid popover direction.
+ *
  * @docs-private
  */
 export function getNxPopoverInvalidDirectionError(direction: string) {
@@ -667,11 +668,12 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         return positionPairs[position];
     }
 
-    /** Returns an array of fallback positions for popover, following the algoritm:
+    /**
+     * Returns an array of fallback positions for popover, following the algoritm:
      * 1) Slightly alternate preferred position if applicable. I.e. for 'top' try 'top-start' and 'top-end' positioning.
      * 2) Try the opposite position, i.e. for 'top' try 'bottom'.
-     * 3) Slightly alternate opposite position, i.e. 'bottom-start', 'bottom-end'
-     * 4) All remaining positions from positions list
+     * 3) Slightly alternate opposite position, i.e. 'bottom-start', 'bottom-end'.
+     * 4) All remaining positions from positions list.
      */
     private _getFallbackPositions(
         direction: PopoverDirection,

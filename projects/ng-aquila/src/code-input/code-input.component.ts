@@ -376,9 +376,11 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
         return `${this._intl.inputFieldAriaLabel} ${keyIndex + 1} ${this._intl.ofLabel} ${this._keyCode.length}`;
     }
 
-    /** @docs-private
+    /**
      * Workaround preventing the selection error because the `setSelectionRange` is not supported on input['type=number']
-     * */
+     *
+     * @docs-private
+     */
     selectInput(input: HTMLInputElement) {
         input.focus();
         try {

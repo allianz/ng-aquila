@@ -1,6 +1,6 @@
 import { mapClassNames } from '@aposin/ng-aquila/utils';
 
-/** is udefined or empty? */
+/** Is `undefined` or empty? */
 export function isEmpty(value: any): boolean {
     return value === undefined || value === '';
 }
@@ -9,13 +9,14 @@ export function isEmptyArray(value: any[]): boolean {
     return value === undefined || value.length === 0;
 }
 
-/** add space and return mapClassNames (css) */
+/** Add space and return mapClassNames (css). */
 export function addStyles(aux: string, map: object): string {
     return ' ' + mapClassNames(aux, [], map);
 }
 
-/** input='small,medium,large, xlarge, 2xlarge, 3xlarge'
- *  map = MAPPING
+/**
+ * @param input one of `'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge'`
+ * @param map mapping
  */
 export function addStylesFromDimensions(input: string, map: object): string {
     const aux = processSplit(input);

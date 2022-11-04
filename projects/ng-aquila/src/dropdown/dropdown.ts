@@ -156,7 +156,8 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     errorState = false;
 
     /**
-     * Name of this control that is used inside the formfield component
+     * Name of this control that is used inside the formfield component.
+     *
      * @docs-private
      */
     controlType = 'nx-dropdown';
@@ -173,8 +174,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     _positions: ConnectionPositionPair[] = getPositions('auto', 0);
 
     /**
-     * @docs-private
      * Emits when internal state changes to inform formfield about it.
+     *
+     * @docs-private
      */
     readonly stateChanges = new Subject<any>();
 
@@ -197,7 +199,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     private readonly _options = new BehaviorSubject<NxDropdownOption[]>(null);
 
     /**
-     * Type of filter input (default: text)
+     * Type of filter input (default: text).
      */
     @Input() set filterInputType(value: FilterInputType) {
         this._filterInputType = value;
@@ -243,7 +245,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      * Whether the dropdown should allow multi selection and additional checkboxes are shown.
      * Note: Please make sure the value you bind is an array.
      *
-     * @throws Error if true and the bound value is not an array
+     * @throws Error if true and the bound value is not an array.
      * @deprecated Please use the new `<nx-multi-select>` component instead.
      */
     @Input('nxIsMultiselect') isMultiSelect = false;
@@ -326,6 +328,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     /**
      * Event that emits whenever the raw value of the select changes. This is here primarily
      * to facilitate the two-way binding for the `value` input.
+     *
      * @docs-private
      */
     @Output('nxValueChange') readonly valueChange = new EventEmitter<any>();
@@ -334,8 +337,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     @Output() readonly selectionChange = new EventEmitter<NxDropdownSelectChange>();
 
     /**
-     * @docs-private
      * Panel containing the select options.
+     *
+     * @docs-private
      */
     @ViewChild('panel') panel?: ElementRef;
 
@@ -349,8 +353,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     @ViewChild('filterInput') filterInput?: ElementRef;
 
     /**
-     * @docs-private
      * Overlay pane containing the options.
+     *
+     * @docs-private
      */
     @ViewChild(CdkConnectedOverlay, { static: true }) overlayDir!: CdkConnectedOverlay;
 
@@ -406,7 +411,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      * Function that transforms the value into a string.
      * This function is used for displaying and filtering the content.
      *
-     * Defaults to `(value: any) => value == null ? '' : value.toString()`
+     * Default: `(value: any) => value == null ? '' : value.toString()`.
      */
     @Input('nxValueFormatter') set valueFormatter(value: NxDropdownValueFormatterFn | null | undefined) {
         this.#valueFormatter = value;
@@ -451,8 +456,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     #filterFn?: NxDropdownFilterFn | null;
 
     /**
-     * @docs-private
      * Whether the select is focused.
+     *
+     * @docs-private
      */
     get focused(): boolean {
         return this._focused || this.panelOpen;
@@ -843,27 +849,30 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     /**
+     * Formfield implementation.
+     *
      * @docs-private
-     * Formfield Implementation
      */
     setDescribedByIds(ids: string[]): void {
         this.ariaDescribedby = ids.join(' ');
     }
 
     /**
-     * @docs-private
-     * aria-label support removed in favor of aria-labelledby
+     * Support for aria-label removed in favor of aria-labelledby
      * The NxFormfieldControl abstract class requires implementation
      * of below method.
+     *
+     * @docs-private
      */
     setAriaLabel(value: string) {
         return value;
     }
 
     /**
-     * @docs-private
      * Returns html ids of dropdown rendered value and label (if available),
      * separated by space.
+     *
+     * @docs-private
      */
     _getAriaLabelledBy(): string {
         const valueId = this.renderedValueId;
@@ -879,8 +888,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     /**
-     * @docs-private
      * Whether the select has a value.
+     *
+     * @docs-private
      */
     get empty(): boolean {
         return !this._selectionModel || this._selectionModel.isEmpty();
@@ -902,7 +912,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      * Sets the select's value. Part of the ControlValueAccessor interface
      * required to integrate with Angular's core forms API.
      *
-     * setTimeout allows to write value after ngOnInit (happens before it right now),
+     * Function `setTimeout()` allows to write value after ngOnInit (happens before it right now),
      * so that we have the input `options` set, and it's shown properly in the dropdown
      * https://github.com/angular/angular/issues/29218#issuecomment-592015773
      * It can be removed after the Angular issue is resolved
@@ -1068,8 +1078,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     /**
-     * @docs-private
      * The value displayed in the trigger.
+     *
+     * @docs-private
      */
     get triggerValue(): string {
         if (this.empty) {
@@ -1148,7 +1159,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         this.filterChanges.next('');
     }
 
-    /** determines the `aria-activedescendant` to be set on the host. */
+    /** Determines the `aria-activedescendant` to be set on the host. */
     _getAriaActiveDescendant(): string | null {
         if (this.panelOpen && this._keyManager && this._keyManager.activeItem) {
             return this._keyManager.activeItem.id;

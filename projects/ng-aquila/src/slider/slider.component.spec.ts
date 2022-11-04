@@ -69,8 +69,9 @@ describe('NxSliderComponent', () => {
     }));
 
     /**
-     * Helper function to fake a slide event
-     * Creates all relevant mouse events and dispatches them
+     * Helper function to fake a slide event.
+     *
+     * Creates all relevant mouse events and dispatches them.
      */
     const dispatchSlideEvent = (finish: Coordinates) => {
         sliderInstance._dragStart();

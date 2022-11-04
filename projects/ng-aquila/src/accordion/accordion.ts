@@ -16,7 +16,8 @@ const DEFAULT_TYPE: AccordionStyle = 'regular';
 export class NxAccordionDirective extends CdkAccordion {
     /**
      * Value for the styling that should be chosen.
-     * Default value: 'regular'
+     *
+     * Default: `'regular'`.
      */
     @Input('nxStyle') set style(value: AccordionStyle) {
         value = value ? value : DEFAULT_TYPE;

@@ -2,8 +2,8 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { Directive, ElementRef, OnDestroy } from '@angular/core';
 
 /**
-  This is a menu link.
-  It adds styling to a link and is usually used within a [nxMenuItem].
+ * This is a menu link.
+ * It adds styling to a link and is usually used within a [nxMenuItem].
  */
 @Directive({
     selector: 'a[nxMenuLink]',

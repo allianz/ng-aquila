@@ -62,8 +62,9 @@ export class NxOverlayService implements OnDestroy {
 
     /**
      * Opens a panel containing the given component and attaches it to an element.
-     * @param componentOrTemplateRef Type of the component to load into the dialog,
-     *     or a TemplateRef to instantiate as the panel content.
+     *
+     * @param componentOrTemplateRef Type of the component to load into the dialog, or a TemplateRef to instantiate as the panel content.
+     * @param origin Reference element for positioning.
      * @param config Extra configuration options.
      * @returns Reference to the newly-opened panel.
      */
@@ -93,6 +94,7 @@ export class NxOverlayService implements OnDestroy {
 
     /**
      * Finds an open overlay by its id.
+     *
      * @param id ID to use when looking up the overlay.
      */
     getOverlayById(id: string): NxOverlayRef<any> | undefined {
@@ -109,6 +111,7 @@ export class NxOverlayService implements OnDestroy {
 
     /**
      * Creates the overlay into which the overlay will be loaded.
+     *
      * @param config The overlay configuration.
      * @returns A promise resolving to the OverlayRef for the created overlay.
      */
@@ -117,9 +120,9 @@ export class NxOverlayService implements OnDestroy {
         return this._overlay.create(overlayConfig);
     }
 
-    /*
-     **
+    /**
      * Creates a CDK overlay configuration from the overlay service config.
+     *
      * @param overlayConfig The nx overlay service configuration.
      * @returns The CDK overlay configuration.
      */
@@ -152,6 +155,7 @@ export class NxOverlayService implements OnDestroy {
 
     /**
      * Attaches an NxOverlayContainer to the already-created overlay.
+     *
      * @param cdkOverlay Reference to the dialog's underlying overlay.
      * @param config The overlay configuration.
      * @returns A promise resolving to a ComponentRef for the attached container.
@@ -171,8 +175,8 @@ export class NxOverlayService implements OnDestroy {
 
     /**
      * Attaches the user-provided component to the already-created NxOverlayContainer.
-     * @param componentOrTemplateRef The type of component being loaded into the dialog,
-     *     or a TemplateRef to instantiate as the content.
+     *
+     * @param componentOrTemplateRef The type of component being loaded into the dialog, or a TemplateRef to instantiate as the content.
      * @param overlayContainer Reference to the wrapping NxOverlayContainer.
      * @param cdkOverlayRef Reference to the overlay in which the overlay resides.
      * @param config The overlay configuration.
@@ -203,9 +207,10 @@ export class NxOverlayService implements OnDestroy {
     /**
      * Creates a custom injector to be used inside the overlay. This allows a component loaded inside
      * of a overlay to close itself and, optionally, to return a value.
+     *
      * @param config Config object that is used to construct the overlay.
      * @param overlayRef Reference to the overlay.
-     * @param container Overlay container element that wraps all of the contents.
+     * @param overlayContainer Overlay container element that wraps all of the contents.
      * @returns The custom injector that can be used inside the overlay.
      */
     private _createInjector<T>(config: NxOverlayConfig, overlayRef: NxOverlayRef<T>, overlayContainer: NxOverlayContainerComponent): Injector {
@@ -225,6 +230,7 @@ export class NxOverlayService implements OnDestroy {
 
     /**
      * Removes a overlay from the array of open overlays.
+     *
      * @param overlayRef Overlay to be removed.
      */
     private _removeOpenOverlay(overlayRef: NxOverlayRef<any>) {
@@ -251,6 +257,7 @@ export class NxOverlayService implements OnDestroy {
 
 /**
  * Applies default options to the overlay config.
+ *
  * @param config Config to be modified.
  * @param defaultOptions Default options provided.
  * @returns The new configuration object.

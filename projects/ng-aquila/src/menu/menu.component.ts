@@ -2,9 +2,10 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 
 /**
-  This components is a collapsible menu for usage on smaller devices.
-  Can contain any content, but usually [nxMenuLink], [nxMenuGroup] and [nxAction].
-*/
+ * This components is a collapsible menu for usage on smaller devices.
+ *
+ * Can contain any content, but usually [nxMenuLink], [nxMenuGroup] and [nxAction].
+ */
 @Component({
     selector: 'nx-menu',
     templateUrl: 'menu.html',

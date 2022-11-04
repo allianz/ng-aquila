@@ -259,11 +259,13 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
         return !!this._labelChild || !!this.label;
     }
 
-    /** @docs-private
+    /**
      * The placeholder is hidden when
-     *  - the control is not empty
-     *  - The label is not floated
-     * */
+     * - the control is not empty
+     * - The label is not floated
+     *
+     * @docs-private
+     */
     _hideControlPlaceholder() {
         return (!this.shouldLabelFloat && this._hasLabel()) || !this._control.empty;
     }

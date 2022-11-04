@@ -62,9 +62,10 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @ViewChild('closeButton') _closeButton!: ElementRef;
 
-    /** Sets the 'aria-label' of the modal close button needed for accessibility.
+    /**
+     * Sets the 'aria-label' of the modal close button needed for accessibility.
      *
-     * Default value is 'Close dialog'.
+     * Default: `'Close dialog'`.
      */
     @Input()
     set closeButtonLabel(value: string) {
@@ -85,26 +86,27 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
 
     /**
      * Whether the modal view should close when the user hits the escape key.
-     * Default is true.
+     * Default: `true`.
      */
     @Input('nxHideOnEsc') hideOnEsc = true;
 
     /**
      * Whether the modal view should close when the user clicks on the backdrop.
-     * Default is true.
+     * Default: `true`.
      */
     @Input('nxHideOnClickOutside') hideOnClickOutside = true;
 
     /**
      * Whether the modal view should have a close icon in the upper right corner.
-     * Default is true.
+     * Default: `true`.
      */
     @Input('nxShowCloseIcon') showCloseIcon = true;
 
     /**
      * Controls the width of the dialog.
      * On `auto` the width is controlled by the content width,
-     * on `fixed` the dialog gets a fixed width of 736px if the viewport is big enough. */
+     * on `fixed` the dialog gets a fixed width of 736px if the viewport is big enough.
+     */
     @Input('nxSize') size: 'fixed' | 'auto' = 'auto';
 
     /**

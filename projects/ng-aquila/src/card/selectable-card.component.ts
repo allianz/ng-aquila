@@ -39,7 +39,7 @@ export type NxSelectableCardAppearance = 'expert' | 'default';
  */
 export interface SelectableCardDefaultOptions {
     /**
-     * Sets the default appearance. (optional)
+     * Sets the default appearance (optional).
      */
     appearance?: NxSelectableCardAppearance;
 }
@@ -75,9 +75,9 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     @Output() readonly checkedChange = new EventEmitter<boolean>();
 
     /**
-     * ** Expert option **
+     * **Expert option**
      *
-     * Sets the appearance of the small stage. Default: 'default'
+     * Sets the appearance of the small stage. Default: 'default'.
      */
     @Input() set appearance(value: NxSelectableCardAppearance) {
         if (value !== this.appearance) {
@@ -147,6 +147,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
 
     /**
      * Whether the selectable card is negative.
+     *
      * @deprecated Obsolete as negative state is not implemented.
      * @deletion-target 12.0.0
      */

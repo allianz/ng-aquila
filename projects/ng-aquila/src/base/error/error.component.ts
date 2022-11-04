@@ -67,7 +67,7 @@ export class NxErrorComponent implements OnDestroy {
     /**
      * Whether the error should have message or text styling.
      *
-     * Default is 'message'.
+     * Default: `'message'`.
      */
     @Input() set appearance(value: ErrorStyleType) {
         if (value !== this.appearance) {

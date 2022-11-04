@@ -16,7 +16,7 @@ export class NxvNavigationService {
 
     /**
      * Listens to routing events and resets the scroll position
-     * of the main container if necessary
+     * of the main container if necessary.
      */
     resetScrollPositionWatcher() {
         this._router.events

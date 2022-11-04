@@ -93,8 +93,7 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
     /**
      * Handles keyboard inputs on the labels
      * If autoselect is enabled the tab gets changed immediately
-     * If autoselect is disabled only the focus changes but the user still has to select the item
-     * by himself
+     * If autoselect is disabled only the focus changes but the user still has to select the item by himself.
      */
     handleKeydown(event: KeyboardEvent) {
         switch (event.keyCode) {

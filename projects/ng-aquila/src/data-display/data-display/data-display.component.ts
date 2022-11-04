@@ -32,9 +32,9 @@ export class NxDataDisplayComponent {
     /**
      * Column span of the label text based on a 12 column system, when in `orientation="horizontal-columns"` layout.
      *
-     * Accepted values: 3, 4, 6, 8, 9
+     * Accepted values: `3, 4, 6, 8, 9`.
      *
-     * Defaults to 6.
+     * Default: `6`.
      */
     @Input() set labelColumns(value: NumberInput) {
         this.#labelColumns = coerceNumberProperty(value);
@@ -47,7 +47,7 @@ export class NxDataDisplayComponent {
     /**
      * Size of the data display.
      *
-     * Defaults to 'large'.
+     * Default: `'large'`.
      */
     @Input() set size(value: NxDataDisplaySize | null | undefined) {
         this.#size = value;
@@ -64,7 +64,7 @@ export class NxDataDisplayComponent {
      * - 'horizontal': label and value are on the same line.
      * - 'horizontal-columns': label and value are on the same line in a fixed position.
      *
-     * Defaults to 'vertical'.
+     * Default: `'vertical'`.
      */
     @Input() set orientation(value: NxDataDisplayOrientation | null | undefined) {
         this.#orientation = value;

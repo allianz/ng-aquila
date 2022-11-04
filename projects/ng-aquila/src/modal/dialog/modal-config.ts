@@ -105,21 +105,24 @@ export class NxModalConfig<D = any> {
     /** Alternate `ComponentFactoryResolver` to use when resolving the associated component. */
     componentFactoryResolver?: ComponentFactoryResolver;
 
-    /** Whether a close button with icon should be displayed in the top right corner of the modal.
+    /**
+     * Whether a close button with icon should be displayed in the top right corner of the modal.
      *
-     * Default value is `false`.
+     * Default: `false`.
      */
     showCloseIcon?: boolean = false;
 
-    /** Sets the 'aria-label' of the modal close button needed for accessibility.
+    /**
+     * Sets the 'aria-label' of the modal close button needed for accessibility.
      *
-     * Default value is `'Close dialog'`.
+     * Default: `'Close dialog'`.
      */
     closeIconButtonLabel?: string = 'Close dialog';
 
-    /** Sets locale direction for the modal
+    /**
+     * Sets locale direction for the modal.
      *
-     * Default value is `'ltr'`
+     * Default: `'ltr'`.
      */
     direction?: Direction = 'ltr';
 }

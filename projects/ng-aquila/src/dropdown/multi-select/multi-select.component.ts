@@ -39,6 +39,7 @@ const _defaultFilterFn: NxMultiSelectFilterFn = (query, label) => label.toLowerC
 
 /**
  * Multi Select component.
+ *
  * @typeParam S Type of the items in the options array
  * @typeParam T Type of the ngModel value
  */

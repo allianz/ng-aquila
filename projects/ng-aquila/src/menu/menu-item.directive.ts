@@ -1,7 +1,7 @@
 import { Directive, Input } from '@angular/core';
 
 /**
-  This is a menu item is used to structure content whithin a menu.
+ * This is a menu item is used to structure content whithin a menu.
  */
 @Directive({
     selector: '[nxMenuItem]',

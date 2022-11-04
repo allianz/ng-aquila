@@ -54,7 +54,8 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
 
     /**
      * Sets the context of the message.
-     * The message box will color accordingly. Default: 'regular' */
+     * The message box will color accordingly. Default: 'regular'.
+     */
     @Input('nxContext') set context(value: CONTEXT) {
         this._updateContext(value);
     }

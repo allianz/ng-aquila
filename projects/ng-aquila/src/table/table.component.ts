@@ -52,7 +52,7 @@ export class NxTableComponent {
     /**
      * Makes first or last column "sticky".
      *
-     * Values: first | last | both
+     * Values: `'first' | 'last' | 'both'`.
      */
     @Input() set sticky(value: string) {
         this._sticky = value;

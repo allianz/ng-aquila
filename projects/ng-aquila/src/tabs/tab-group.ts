@@ -328,8 +328,9 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     }
 
     /**
+     * Returns the tabindex for a tab label.
+     *
      * @docs-private
-     * Returns the tabindex for a tab label
      */
     getTabIndex(tab: NxTabComponent, idx: number): number | null {
         return this.selectedIndex === idx && !tab.disabled && !this.disabled ? 0 : -1;

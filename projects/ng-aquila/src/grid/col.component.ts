@@ -61,6 +61,7 @@ export type ColOrder = 'first' | 'last' | 'unordered';
 export class NxColComponent implements OnInit {
     /**
      * Overwrite default class property to access user provided class.
+     *
      * @docs-private
      */
     @Input() class!: string;

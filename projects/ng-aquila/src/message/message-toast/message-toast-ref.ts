@@ -23,6 +23,7 @@ export class NxMessageToastRef {
     constructor(
         /**
          * The instance of the component making up the content of the message toast.
+         *
          * @docs-private
          */
         public toastInstance: NxMessageToastComponent,

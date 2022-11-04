@@ -100,7 +100,8 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
 
     private _initialCountryCode = 'DE';
 
-    /** Sets the initial country to be selected in the dropdown. Format is the international
+    /**
+     * Sets the initial country to be selected in the dropdown. Format is the international
      * country code like DE, US.
      * If there is already a number in the input field changing this property has no effect.
      */

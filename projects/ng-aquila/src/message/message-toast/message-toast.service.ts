@@ -42,7 +42,8 @@ export class NxMessageToastService implements OnDestroy {
         @Optional() @Inject(NX_MESSAGE_TOAST_DEFAULT_CONFIG) private readonly _defaultConfig: NxMessageToastConfig | null,
     ) {}
 
-    /** Creates and dispatches a message toast with a custom text.
+    /**
+     * Creates and dispatches a message toast with a custom text.
      *
      * @param text Text to be used for the message toast.
      * @param config Extra configuration for the message toast.
@@ -61,7 +62,8 @@ export class NxMessageToastService implements OnDestroy {
         return this._oldToastMessageRef;
     }
 
-    /** Creates and dispatches a message toast with a custom template for the content.
+    /**
+     * Creates and dispatches a message toast with a custom template for the content.
      *
      * @param template Template to be used for the message toast.
      * @param config Extra configuration for the message toast.

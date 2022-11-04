@@ -25,7 +25,8 @@ export class NxComparisonTablePopularCell {
     }
     private _id = `nx-comparison-table-popular-cell-${nextId++}`;
 
-    /** Sets the id of the column above which the popular cell should be displayed.
+    /**
+     * Sets the id of the column above which the popular cell should be displayed.
      *
      * Note: counting starts from 1. If set to 1 the popular cell will appear above the first header column of the table.
      */

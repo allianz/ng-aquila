@@ -33,6 +33,7 @@ import { NxAutocompleteOptionComponent, NxAutocompleteOptionSelected } from './a
 
 /**
  * Provider that allows the autocomplete to register as a ControlValueAccessor.
+ *
  * @docs-private
  */
 export const NX_AUTOCOMPLETE_VALUE_ACCESSOR: any = {
@@ -493,7 +494,6 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
      * In "auto" mode, the label will animate down as soon as focus is lost.
      * This causes the value to jump when selecting an option with the mouse.
      * This method manually floats the label until the panel can be closed.
-     * @param shouldAnimate Whether the label should be animated when it is floated.
      */
     private _floatLabel(): void {
         if (this._nxFormField && this._nxFormField.floatLabel === 'auto') {
@@ -618,7 +618,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     }
 
     /**
-     * Clear any previous selected option and emit a selection change event for this option
+     * Clear any previous selected option and emit a selection change event for this option.
      */
     private _clearPreviousSelectedOption(skip: NxAutocompleteOptionComponent) {
         this.autocomplete.options.forEach(option => {
@@ -738,7 +738,8 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
 /**
  * Determines the position to which to scroll a panel in order for an option to be into view.
- * @param optionOffset Option offset
+ *
+ * @param optionOffset Option offset.
  * @param optionHeight Height of the options.
  * @param currentScrollPosition Current scroll position of the panel.
  * @param panelHeight Height of the panel.

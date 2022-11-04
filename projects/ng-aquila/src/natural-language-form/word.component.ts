@@ -123,13 +123,12 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     }
 
     /**
-    @docs-private
-    Calculate the width of the full text given by the input,
-    that value is bound to this component so it can grow.
-
-    The involved input is known to have a width of 100% an will fit the additional space given
-    which completes the auto growing behavior.
-  */
+     * Calculate the width of the full text given by the input, that value is bound to this component so it can grow.
+     *
+     * The involved input is known to have a width of 100% an will fit the additional space given which completes the auto growing behavior.
+     *
+     * @docs-private
+     */
     updateCurrentTextWidth() {
         // provide the canvas only lazy
         if (!this.measureCanvas) {

@@ -33,8 +33,9 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
 
     /**
      * Content for the tab label given by `<ng-template nxTabLabel>`.
+     *
      * @docs-private
-     * */
+     */
     @ContentChild(NxTabLabelDirective, { read: TemplateRef, static: true }) set templateLabel(value: TemplateRef<any>) {
         // Only update the templateLabel via query if there is actually
         // a nxTabLabel found. This works around an issue where a user may have
@@ -53,7 +54,7 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
     /** Template inside the NxTab view that contains an `<ng-content>`. */
     @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;
     /**
-     * Template provided in the tab content that will be used if present, used to enable lazy-loading
+     * Template provided in the tab content that will be used if present, used to enable lazy-loading.
      */
     @ContentChild(NxTabContentDirective, { read: TemplateRef, static: true }) _explicitContent!: TemplateRef<any>;
 

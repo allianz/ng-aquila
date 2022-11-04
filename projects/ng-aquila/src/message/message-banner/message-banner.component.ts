@@ -14,8 +14,9 @@ export type BANNER_CONTEXT = 'info' | 'error' | 'warning';
 })
 export class NxMessageBannerComponent extends NxMessageComponent {
     /**
-     * Sets the context of the message banner.
-     * The message box will color accordingly. Default: 'info'
+     * Sets the context of the message banner. The message box will color accordingly.
+     *
+     * Default: `'info'`.
      */
     @Input('context') set context(value: BANNER_CONTEXT) {
         this._updateContext(value);

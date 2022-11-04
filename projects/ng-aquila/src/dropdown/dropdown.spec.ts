@@ -28,7 +28,8 @@ describe('NxDropdownComponent', () => {
      * Configures the test module for NxDropdown with the given declarations. This is broken out so
      * that we're only compiling the necessary test components for each test in order to speed up
      * overall test time.
-     * @param declarations Components to declare for this block
+     *
+     * @param declarations Components to declare for this block.
      */
     function configureNxDropdownTestingModule(declarations: any[]) {
         TestBed.configureTestingModule({

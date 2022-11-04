@@ -121,11 +121,12 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
     }
 
     /**
-     * @docs-private
-     * getter used for the modal component as a quickfix
+     * Getter used for the modal component as a quickfix
      * since button got changed from directive to component the reference used by the ngOpenModelOnClick directive
      * for nxButtons is a reference to component instance instead of an element reference. As a workaround we need a
      * way to reach the elementRef of the component until the modal gets refactored.
+     *
+     * @docs-private
      */
     get elementRef() {
         return this._elementRef;

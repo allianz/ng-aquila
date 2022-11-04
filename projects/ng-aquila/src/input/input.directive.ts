@@ -54,13 +54,12 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
 
     /**
      * Name of this control that is used inside the formfield component
+     *
      * @docs-private
      */
     controlType = 'nx-input';
 
-    /**
-     * @docs-private
-     */
+    /** @docs-private */
     autofilled = false;
 
     /** @docs-private */
@@ -144,7 +143,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     protected _type = 'text';
 
     /**
-     * Sets the text for the input placeholder
+     * Sets the text for the input placeholder.
      */
     @Input() set placeholder(value: string) {
         this._placeholder = value;

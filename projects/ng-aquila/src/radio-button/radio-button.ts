@@ -299,7 +299,8 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     }
     private _name: string | null = null;
 
-    /** Sets the label size of the radio button.
+    /**
+     * Sets the label size of the radio button.
      * The default value is `big`.
      */
     @Input() set labelSize(value: LabelSize) {
@@ -421,8 +422,10 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
         this._focusMonitor.stopMonitoring(this._nativeInput);
     }
 
-    /** @docs-private
+    /**
      * Callback for when the content of the label has changed.
+     *
+     * @docs-private
      */
     labelContentChanged() {
         this._cdr.detectChanges();

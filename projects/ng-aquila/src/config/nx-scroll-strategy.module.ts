@@ -24,7 +24,6 @@ import { NxScrollStrategyDefaultConfig, NxScrollStrategyFactoryConfig } from './
  *   scrollStrategy: 'close',
  *   scrollStrategyOptions: { threshold: 100 },
  * })
- *
  * @example
  * NxScrollStrategyModule.withFactory({
  *   scrollStrategyFactory: overlay => () => overlay.scrollStrategies.close({ threshold: 100 }),

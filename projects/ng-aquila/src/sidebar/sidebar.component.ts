@@ -84,9 +84,11 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     }
     private _resizeHandleAriaLabel = '';
 
-    /** This reflects the current open state of the sidebar.
-      It will be `true` if the sidebar is expanded and `false` if the sidebar is closed.
-  */
+    /**
+     * This reflects the current open state of the sidebar.
+     *
+     * It will be `true` if the sidebar is expanded and `false` if the sidebar is closed.
+     */
     set open(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 

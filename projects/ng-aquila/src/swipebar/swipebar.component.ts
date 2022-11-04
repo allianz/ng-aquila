@@ -22,7 +22,9 @@ export class NxSwipebarComponent implements AfterViewInit {
     private _showBar = false;
 
     /**
-     * The label for this swipebar. Default: ''
+     * The label for this swipebar.
+     *
+     * Default: `''`.
      */
     @Input() label = '';
 

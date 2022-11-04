@@ -67,6 +67,7 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
 
     /**
      * Emits event to notify the popover trigger directive that the close button was clicked.
+     *
      * @docs-private
      */
     emitCloseButtonClick() {

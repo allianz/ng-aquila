@@ -10,7 +10,8 @@ import { Tree } from '@angular-devkit/schematics';
 
 /**
  * Sorts the keys of the given object.
- * @returns A new object instance with sorted keys
+ *
+ * @returns A new object instance with sorted keys.
  */
 function sortObjectByKeys(obj: any) {
     return Object.entries(obj)

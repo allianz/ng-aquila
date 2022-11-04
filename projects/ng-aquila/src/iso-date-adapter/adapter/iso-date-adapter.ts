@@ -26,9 +26,7 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
     return valuesArray;
 }
 
-/**
- * @docs-private
- */
+/** @docs-private */
 export class NxIsoDateAdapter extends NxDateAdapter<string> {
     private _localeData!: {
         firstDayOfWeek: number;
@@ -77,10 +75,10 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
     }
 
     /**
-     * if the given formats include a localized format we have to map
+     * If the given formats include a localized format we have to map
      * it manually to a dayjs format as dayjs recognizes locale
      * format only for formatting not for parsing
-     * see https://github.com/iamkun/dayjs/issues/694#issuecomment-543209946
+     * see https://github.com/iamkun/dayjs/issues/694#issuecomment-543209946.
      */
     normalizeFormat(format: string | string[]): string[] {
         const availableLocalFormats: { [key: string]: any } = dayjs.Ls[this._dayjsLocale]?.formats;

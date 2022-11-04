@@ -1,8 +1,9 @@
 import { Directive } from '@angular/core';
 
 /**
+ * This is a base class for `NxToggleSectionDirective` and `NxComparisonTableRowDirective`.
+ *
  * @docs-private
- * This is a base class for NxToggleSectionDirective and NxComparisonTableRowDirective.
  */
 @Directive()
 export class NxTableContentElement {}

@@ -30,7 +30,8 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
     /** @docs-private */
     _pressed = false;
 
-    /** Sets the aria-label needed for accessibility.
+    /**
+     * Sets the aria-label needed for accessibility.
      * Notice that this `aria-label` should describe the initial action according to the status of the visibility.
      * E.g if you have an `input[type=password]` at the beginning then the
      * password will be hidden and the correct aria-label would be 'Show password.'

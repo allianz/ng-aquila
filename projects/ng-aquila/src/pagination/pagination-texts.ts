@@ -11,13 +11,15 @@ export interface IPaginationTexts {
     /** Label that should replace 'next'. */
     next: string;
 
-    /** Label that should replace 'first'.
+    /**
+     * Label that should replace 'first'.
      *
      * Optional attribute needed only for the advanced pagination.
      */
     first?: string;
 
-    /** Label that should replace 'last'.
+    /**
+     * Label that should replace 'last'.
      *
      * Optional attribute needed only for the advanced pagination.
      */

@@ -170,6 +170,7 @@ export class StackBlitzWriter {
 
     /**
      * Reads the file and adds its text to the form
+     *
      * @param form the html form you are appending to
      * @param data example metadata about the example
      * @param filename file name of the example
@@ -200,13 +201,14 @@ export class StackBlitzWriter {
 
     /**
      * Adds the file text to the form.
-     * @param form the html form you are appending to
-     * @param data example metadata about the example
-     * @param content file contents
-     * @param filename file name of the example
-     * @param path path to the src
-     * @param isTest whether file is part of a test example
-     * @param prependApp whether to prepend the 'app' prefix to the path
+     *
+     * @param form The html form you are appending to.
+     * @param data Example metadata about the example.
+     * @param content File contents.
+     * @param filename File name of the example.
+     * @param path Path to the src.
+     * @param isTest Whether file is part of a test example.
+     * @param prependApp Whether to prepend the 'app' prefix to the path.
      */
     _addFileToForm(form: HTMLFormElement, data: ExampleData, content: string, filename: string, path: string, isTest: boolean, prependApp = true) {
         if (path === (isTest ? TEST_TEMPLATE_PATH : TEMPLATE_PATH)) {
@@ -223,7 +225,7 @@ export class StackBlitzWriter {
      * The StackBlitz template assets contain placeholder names for the examples:
      * "<aquila-docs-example>" and "AquilaDocsExample".
      * This will replace those placeholders with the names from the example metadata,
-     * e.g. "<button-example>" and "ButtonExample"
+     * e.g. "<button-example>" and "ButtonExample".
      */
     _replaceExamplePlaceholderNames(data: ExampleData, fileName: string, fileContent: string): string {
         if (fileName === 'src/index.html') {

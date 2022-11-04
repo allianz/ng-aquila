@@ -72,11 +72,12 @@ export class DatepickerDefaultOptions {
 export const DATEPICKER_DEFAULT_OPTIONS = new InjectionToken<DatepickerDefaultOptions>('DATEPICKER_DEFAULT_OPTIONS');
 
 /**
- * @docs-private
  * Component used as the content for the datepicker dialog and popup. We use this instead of using
  * NxCalendarComponent directly as the content so we can control the initial focus. This also gives us a
  * place to put additional features of the popup that are not part of the calendar itself in the
  * future. (e.g. confirmation buttons).
+ *
+ * @docs-private
  */
 @Component({
     selector: 'nx-datepicker-content',
@@ -185,14 +186,16 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     private _opened = false;
 
     /**
-     * @docs-private
      * The id for the datepicker calendar.
+     *
+     * @docs-private
      */
     id = `nx-datepicker-${datepickerUid++}`;
 
     /**
-     * @docs-private
      * The currently selected date.
+     *
+     * @docs-private
      */
     set selected(value: D | null) {
         this._validSelected = value;
@@ -203,16 +206,18 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     private _validSelected: D | null = null;
 
     /**
-     * @docs-private
      * The minimum selectable date.
+     *
+     * @docs-private
      */
     get minDate(): D | null {
         return this._datepickerInput?.min;
     }
 
     /**
-     * @docs-private
      * The maximum selectable date.
+     *
+     * @docs-private
      */
     get maxDate(): D | null {
         return this._datepickerInput?.max;
@@ -283,8 +288,9 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     }
 
     /**
+     * Selects the given date.
+     *
      * @docs-private
-     * Selects the given date
      */
     select(date: D): void {
         const oldValue = this.selected;
@@ -295,25 +301,28 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     }
 
     /**
+     * Emits the selected year in multiyear view.
+     *
      * @docs-private
-     * Emits the selected year in multiyear view
      */
     selectYear(normalizedYear: D): void {
         this.yearSelected.emit(normalizedYear);
     }
 
     /**
+     * Emits selected month in year view.
+     *
      * @docs-private
-     * Emits selected month in year view
      */
     selectMonth(normalizedMonth: D): void {
         this.monthSelected.emit(normalizedMonth);
     }
 
     /**
-     * @docs-private
      * Register an input with this datepicker.
+     *
      * @param input The datepicker input to register with this datepicker.
+     * @docs-private
      */
     registerInput(input: NxDatefieldDirective<D>): void {
         if (this._datepickerInput) {
@@ -324,8 +333,9 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     }
 
     /**
-     * @docs-private
      * Register an input toggle with this datepicker.
+     *
+     * @docs-private
      */
     registerToggle(toggle: NxDatepickerToggleComponent<D>) {
         if (this._toggleButton) {
@@ -335,8 +345,9 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     }
 
     /**
-     * @docs-private
      * Open the calendar.
+     *
+     * @docs-private
      */
     open(): void {
         if (this._opened || this.disabled) {
@@ -356,8 +367,9 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     }
 
     /**
-     * @docs-private
      * Close the calendar.
+     *
+     * @docs-private
      */
     close(): void {
         if (!this._opened) {

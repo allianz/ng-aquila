@@ -356,7 +356,6 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
 
     /**
      * This method builds the configuration object needed to create the overlay, the OverlayState.
-     * @returns OverlayConfig
      */
     private _getOverlayConfig(): OverlayConfig {
         return new OverlayConfig({
@@ -373,8 +372,9 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
 
     /**
      * Sets the position on a position strategy so the overlay is placed at the cursor.
+     *
      * @param positionStrategy Strategy whose position to update.
-     * @param position Position of the cursor.
+     * @param cursorPosition Position of the cursor.
      */
     private _setPositionToCursor(positionStrategy: FlexibleConnectedPositionStrategy, cursorPosition: Point) {
         positionStrategy.setOrigin(cursorPosition);
@@ -409,6 +409,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     /**
      * Sets the appropriate positions on a position strategy
      * so the overlay connects with the trigger correctly.
+     *
      * @param positionStrategy Strategy whose position to update.
      */
     private _setPosition(positionStrategy: FlexibleConnectedPositionStrategy) {
@@ -466,7 +467,8 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     }
 
     /**
-     * Returns a stream that emits whenever an action that should close the context menu occurs. */
+     * Returns a stream that emits whenever an action that should close the context menu occurs.
+     */
     private _contextMenuClosingActions() {
         let backdrop: Observable<MouseEvent>;
         let detachments: Observable<void>;

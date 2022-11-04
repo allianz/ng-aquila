@@ -27,6 +27,7 @@ export class NxContextMenuContentDirective implements OnDestroy {
 
     /**
      * Attaches the content with a particular context.
+     *
      * @docs-private
      */
     attach(context: any = {}) {
@@ -54,6 +55,7 @@ export class NxContextMenuContentDirective implements OnDestroy {
 
     /**
      * Detaches the content.
+     *
      * @docs-private
      */
     detach() {

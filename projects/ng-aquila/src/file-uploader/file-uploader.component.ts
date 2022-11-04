@@ -77,13 +77,17 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     private _filesSubscriptions: Subscription[] = [];
 
-    /** An event emitted when queue is changed.
+    /**
+     * An event emitted when queue is changed.
      *
      * Emits the changed array of FileItems.
-     * @docs-private */
+     *
+     * @docs-private
+     */
     @Output() readonly valueChange = new EventEmitter<FileItem[]>();
 
-    /** An event emitted when a file is deleted from the queue
+    /**
+     * An event emitted when a file is deleted from the queue.
      *
      * Emits the deleted FileItem.
      */
@@ -92,7 +96,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     /**
      * An event emitted when one or more files were added to the file input.
      *
-     * Emits the selected FileItem | FileItem[]
+     * Emits the selected `FileItem | FileItem[]`.
      */
     @Output() readonly filesSelected = new EventEmitter<FileItem[]>();
 
@@ -470,24 +474,27 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     }
 
     /**
-     * @docs-private
      * The label for the uploading state used in the queue.
+     *
+     * @docs-private
      */
     get uploadingLabel(): string {
         return this._intl.uploadingLabel;
     }
 
     /**
-     * @docs-private
      * The label for the uploading state used in the queue.
+     *
+     * @docs-private
      */
     get deleteLabel(): string {
         return this._intl.deleteLabel;
     }
 
     /**
-     * @docs-private
      * The label for the uploading state used in the queue.
+     *
+     * @docs-private
      */
     get uploadedLabel(): string {
         return this._intl.uploadedStateLabel;
@@ -522,7 +529,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     }
 
     /**
-     * Triggered when the input[type=file] is changed
+     * Triggered when the `input[type=file]` is changed.
      */
     _onFileChange(event: any) {
         if (this.disabled) {

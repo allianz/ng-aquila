@@ -60,7 +60,9 @@ export class NxLabelComponent {
 
     /**
      * **Expert option**
-     * Sets the appearance of the label */
+     *
+     * Sets the appearance of the label.
+     */
     @Input() set size(value: LABEL_SIZE_TYPE) {
         this._size = value;
         this._stateChanges.next();

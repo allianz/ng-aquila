@@ -40,4 +40,4 @@ export class AppComponent {
     }
 }
 
-/**  Copyright ALLIANZ */
+/** Copyright ALLIANZ */

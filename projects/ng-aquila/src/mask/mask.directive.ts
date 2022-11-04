@@ -46,16 +46,17 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
      * and then apply it later on (in _onInputChange()).
      *
      * _cursor.position is used for saving a position that is then applied without any changes.
-     * if the position is saved, selectionStart and selectionEnd will be ignored in _onInputChange().
+     *
+     * If the position is saved, selectionStart and selectionEnd will be ignored in _onInputChange().
      * _cursor.selectionStart and selectionEnd is used for saving the current cursor position,
      * and a new cursor position is then calculated with this data.
      */
     private _cursor!: CursorInfo | null;
 
-    /** helper variable for saving the current value of the input element to compare it then with a new value. */
+    /** Helper variable for saving the current value of the input element to compare it then with a new value. */
     private _inputValue!: string;
 
-    /** helper variable for saving the masked string of a pasted value and then applying it in _onInputChange(). */
+    /** Helper variable for saving the masked string of a pasted value and then applying it in _onInputChange(). */
     private _pastedData!: string | null;
 
     /**
@@ -262,7 +263,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
      * Returns the cursor position after a letter is entered at `selectionStart` position in the mask.
      * There are two cases to consider ('|' => cursor position where the character is entered, mask: 00:00:00):
      * - before the separators there is space for entering the letter: '12:3|4:5' => '12:30:|45'
-     * - the letter has to be shifted and is entered after the separators: '12:34|:5' => '12:34:0|5'
+     * - the letter has to be shifted and is entered after the separators: '12:34|:5' => '12:34:0|5'.
      */
     private _calculateCursorShift(position: number): number {
         let shift = 0;

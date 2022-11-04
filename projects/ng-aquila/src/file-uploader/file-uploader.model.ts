@@ -1,9 +1,8 @@
 import { EventEmitter } from '@angular/core';
 
 /**
- * Class used to keep track of the current states of the file
+ * Class used to keep track of the current states of the file.
  */
-
 export class FileItem {
     /** The actual file data. */
     file: File | null;
@@ -27,7 +26,7 @@ export class FileItem {
     index = 0;
 
     /**
-     * emits the FileItem on changed
+     * Emits the FileItem on changed.
      */
     readonly onChange = new EventEmitter<FileItem>();
 
@@ -50,7 +49,7 @@ export class FileItem {
     }
 
     /**
-     * sets the file to a uploaded state
+     * Sets the file to a uploaded state.
      */
     setUploadedState() {
         this.isUploaded = true;
@@ -60,7 +59,7 @@ export class FileItem {
     }
 
     /**
-     * sets the file to a 'upload-in-progress' state
+     * Sets the file to a 'upload-in-progress' state.
      */
     setUploadingState() {
         this.isUploaded = false;
@@ -70,7 +69,7 @@ export class FileItem {
     }
 
     /**
-     * sets the file to an error state
+     * Sets the file to an error state.
      */
     setErrorState() {
         this.isUploaded = false;

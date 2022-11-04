@@ -48,12 +48,14 @@ export const NX_TOOLTIP_SCROLL_STRATEGY_PROVIDER = {
 
 /**
  * CSS class that will be attached to the overlay panel.
+ *
  * @docs-private
  */
 export const NX_TOOLTIP_PANEL_CLASS = 'nx-tooltip-panel';
 
 /**
  * Creates an error to be thrown if the user provided an invalid tooltip position.
+ *
  * @docs-private
  */
 export function getNxTooltipInvalidPositionError(position: string) {
@@ -145,8 +147,10 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     }
     private _disabled = false;
 
-    /** Allows selection of text within tooltip trigger
-     *  NOTE: inputs and textareas always remain selectable, ignoring this input.
+    /**
+     * Allow selection of text within tooltip trigger.
+     *
+     * NOTE: inputs and textareas always remain selectable, ignoring this input.
      */
     @Input('nxTooltipSelectable') set selectable(value: BooleanInput) {
         const oldValue = this._selectable;
@@ -315,7 +319,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     }
 
     /**
-     * Setup styling-specific things
+     * Setup styling-specific things.
      */
     _updateSelectabilityStyles(): void {
         const element = this._elementRef.nativeElement;
@@ -510,11 +514,12 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
         return positionPairs[position];
     }
 
-    /** Returns an array of fallback positions for tooltip, following the algoritm:
+    /**
+     * Returns an array of fallback positions for tooltip, following the algoritm:
      * 1) Slightly alternate preferred position if applicable. I.e. for 'top' try 'top-start' and 'top-end' positioning.
      * 2) Try the opposite position, i.e. for 'top' try 'bottom'.
-     * 3) Slightly alternate opposite position, i.e. 'bottom-start', 'bottom-end'
-     * 4) All remaining positions from positions list
+     * 3) Slightly alternate opposite position, i.e. 'bottom-start', 'bottom-end'.
+     * 4) All remaining positions from positions list.
      */
     private _getFallbackPositions(position: TooltipPosition, possiblePositions: TooltipPosition[] = this._possibleTooltipPositions): ConnectionPositionPair[] {
         if (!position) {

@@ -43,7 +43,7 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
     private _negative = false;
 
     /**
-     * Sets the size of the NLF. Default value: large
+     * Sets the size of the NLF. Default value: large.
      */
     @Input() set size(value: NxNaturalLanguageFormSize) {
         this._size = value;

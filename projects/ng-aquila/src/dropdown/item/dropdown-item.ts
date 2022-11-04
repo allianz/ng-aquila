@@ -29,7 +29,7 @@ export class NxDropdownItemChange {
     ) {}
 }
 
-/** the unique id counter */
+/** The unique id counter */
 let nextId = 0;
 
 @Component({
@@ -104,16 +104,18 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     }
 
     /**
-     * @docs-private
      * Whether the parent dropdown is in multiselect mode.
+     *
+     * @docs-private
      */
     get multiselect(): boolean {
         return this._dropdown?.isMultiSelect;
     }
 
     /**
-     * @docs-private
      * Whether the parent dropdown allows item truncation.
+     *
+     * @docs-private
      */
     get truncateItems(): boolean {
         return !this._dropdown?.ignoreItemTrunctation;
@@ -129,8 +131,9 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     readonly _stateChanges = new Subject<void>();
 
     /**
-     * @docs-private
      * The wrapping div in the template. Used by dropdown to use the container height for scrolling.
+     *
+     * @docs-private
      */
     @ViewChild('container', { static: true }) containerElement: any;
 
@@ -183,8 +186,8 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     }
 
     /**
-     * `Selects the option while indicating the selection came from the user. Used to
-     * determine if the select's view -> model callback should be invoked.`
+     * Selects the option while indicating the selection came from the user. Used to
+     * determine if the select's view -> model callback should be invoked.
      */
     _selectViaInteraction(): void {
         if (!this.disabled) {
@@ -196,10 +199,11 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     }
 
     /**
-     * @docs-private
      * Gets the `aria-selected` value for the option. The attribute is omitted from the single-select dropdown
      * for the unselected options. Including the `aria-selected="false" attributes adds a lot of of noise to
      * screen-reader users without providing useful information.
+     *
+     * @docs-private
      */
     _getAriaSelected(): boolean | null {
         return this.multiselect ? this.selected : null;
@@ -282,7 +286,9 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
 
     /**
      * Returns the list item's text label. Implemented as a part of the ListKeyManagerOption.
-     * @docs-private */
+     *
+     * @docs-private
+     */
     getLabel(): string {
         return this.viewValue;
     }

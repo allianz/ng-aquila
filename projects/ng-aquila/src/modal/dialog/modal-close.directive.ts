@@ -18,7 +18,7 @@ export class NxModalCloseDirective implements OnInit, OnChanges {
     /** Screenreader label for the button. */
     @Input('aria-label') ariaLabel!: string;
 
-    /** Default to "button" to prevents accidental form submits. */
+    /** Defaults to `'button'` to prevents accidental form submits. */
     @Input() type: 'submit' | 'button' | 'reset' = 'button';
 
     /** Dialog close input. */
@@ -52,6 +52,7 @@ export class NxModalCloseDirective implements OnInit, OnChanges {
 
 /**
  * Finds the closest NxModalRef to an element by looking at the DOM.
+ *
  * @param element Element relative to which to look for a modal.
  * @param openDialogs References to the currently-open modals.
  */

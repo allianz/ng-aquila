@@ -7,10 +7,11 @@ import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
 
 /**
- * @docs-private
  *
  * Component that is only used internally for displaying a `nxComparisonTableRow`
  * (header, content and footer rows) in desktop and tablet view.
+ *
+ * @docs-private
  */
 @Component({
     selector: 'nx-comparison-table-flex-row',

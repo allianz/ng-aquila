@@ -26,9 +26,9 @@ export class NxListComponent {
      * xsmall | small | normal: The listed input values are expanded to the underlying BEM conform styles based
      * on modifiers. Defaults to normal.
      *
-     * negative: Display the list with a negative set of styling.
+     * Negative: Display the list with a negative set of styling.
      *
-     * ordered-circle: Display the list item numbers in a color filled circle.
+     * Ordered-circle: Display the list item numbers in a color filled circle.
      */
     @Input('nxList') set classNames(value: string) {
         if (this._classNames === value) {

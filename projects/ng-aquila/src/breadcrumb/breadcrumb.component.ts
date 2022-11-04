@@ -22,7 +22,9 @@ export type NxBreadcrumpAppearance = 'default' | 'link';
 })
 export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy {
     /**
-     * Sets the appearance of the breadcrumb. default: 'default'
+     * Sets the appearance of the breadcrumb.
+     *
+     * Default: `'default'`.
      */
     @Input() set appearance(value: NxBreadcrumpAppearance) {
         this._appeareance = value;

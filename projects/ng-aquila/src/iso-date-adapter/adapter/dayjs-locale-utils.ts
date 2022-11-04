@@ -9,8 +9,8 @@ import supportedLocales from 'dayjs/locale.json';
  * "Matching of Language Tags" (see https://www.rfc-editor.org/info/rfc4647).
  *
  * @example en-GB -> en-gb, en-US -> en, de-DE -> de, de-CH -> de-ch
- * @param localeId a "language-range" following the BCP 47 standard
- * @returns a "language-range" that is supported by dayjs
+ * @param localeId A "language-range" following the BCP 47 standard.
+ * @returns A "language-range" that is supported by dayjs.
  */
 export function convertToDayjsLocale(localeId: string): string {
     let dayjsLocale = supportedLocales.find(locale => locale.key === localeId.toLowerCase());
@@ -39,8 +39,8 @@ export function convertToDayjsLocale(localeId: string): string {
  * This function uses a dynamic import to load the dayjs data for the requested locale
  * and returns the localeData for this locale.
  *
- * @param localeId a "language-range" following the BCP 47 standard
- * @returns a Promise that resolves with the dayjs localeData for the given locale
+ * @param localeId A "language-range" following the BCP 47 standard.
+ * @returns A Promise that resolves with the dayjs localeData for the given locale.
  */
 export async function getDayjsLocaleData(localeId: string): Promise<dayjs.InstanceLocaleDataReturn> {
     return import(`dayjs/locale/${localeId}.js`)

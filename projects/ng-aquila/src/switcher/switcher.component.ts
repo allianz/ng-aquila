@@ -229,8 +229,10 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
         return !!this._switcherLabelWrapper.nativeElement.innerHTML.trim();
     }
 
-    /** @docs-private
+    /**
      * Callback for when the content of the label has changed.
+     *
+     * @docs-private
      */
     labelContentChanged() {
         this._cdr.detectChanges();

@@ -34,8 +34,6 @@ export class NxIconRegistry implements OnDestroy {
 
     /**
      * Registers an icon using an HTML string.
-     * @param iconName
-     * @param literal
      */
     addSvgIconLiteral(iconName: string, literal: SafeHtml) {
         this._icons.set(iconName, new NxSvgIconLiteral(literal, this._httpClient, this._sanitizer, this._document));
@@ -43,8 +41,6 @@ export class NxIconRegistry implements OnDestroy {
 
     /**
      * Registers an icon by URL.
-     * @param iconName Name under which the icon should be registered.
-     * @param url
      */
     addSvgIcon(iconName: string, safeUrl: SafeResourceUrl) {
         if (safeUrl == null) {
@@ -93,7 +89,8 @@ export class NxIconRegistry implements OnDestroy {
 
     /**
      * Register an icon font which can be used by the font input on the icon component.
-     * @param name
+     *
+     * @param name Custom name identifier.
      * @param hostClass The hostClass is the general class like `fa` and an optional prefix can be given.
      * @param prefix The prefix is helpful if your class name for the icon would be prefixed,
      * e.g. my-icons--heart but you still want to only use the name

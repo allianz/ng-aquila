@@ -25,6 +25,7 @@ import { take, takeUntil } from 'rxjs/operators';
 
 /**
  * An internal class that represents the data corresponding to a single calendar cell.
+ *
  * @docs-private
  */
 export class NxCalendarCell {
@@ -33,6 +34,7 @@ export class NxCalendarCell {
 
 /**
  * An internal component used to display calendar data in a table.
+ *
  * @docs-private
  */
 @Component({

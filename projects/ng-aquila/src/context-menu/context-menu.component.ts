@@ -57,8 +57,9 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     parentMenu?: NxContextMenuComponent;
 
     /**
-     * @docs-private
      * Layout direction of the menu.
+     *
+     * @docs-private
      */
     direction: Direction = 'ltr';
 
@@ -67,6 +68,7 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
 
     /**
      * Menu content that will be rendered lazily.
+     *
      * @docs-private
      */
     @ContentChild(NxContextMenuContentDirective) lazyContent!: NxContextMenuContentDirective;

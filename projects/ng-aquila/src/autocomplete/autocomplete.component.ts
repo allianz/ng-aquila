@@ -64,8 +64,9 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     @ViewChild(TemplateRef) template!: TemplateRef<any>;
 
     /**
-     * @docs-private
      * Element for the panel containing the autocomplete options.
+     *
+     * @docs-private
      */
     @ViewChild('panel') panel!: ElementRef;
 
@@ -95,8 +96,9 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     private _itemsSubscription?: Subscription;
 
     /**
+     * Is items observable set.
+     *
      * @docs-private
-     * Is items observable set
      */
     get hasItems(): boolean {
         return this._hasItems;
@@ -146,7 +148,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
      * As an autocomplete option can hold any value, a converter might be needed
      * to get a string representation of the value, which can be stored in the input.
      *
-     * Default: value ? value.toString() : null.
+     * Default: `value => value ? value.toString() : null`.
      */
     @Input('nxValueFormatter') valueFormatter: (value: any) => string = (value: any) => (value ? value.toString() : null);
 

@@ -70,7 +70,7 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
 
     /**
      * User defined tab index.
-     * When it is not null, use user defined tab index. Otherwise use _tabIndex
+     * When it is not null, use user defined tab index. Otherwise use _tabIndex.
      */
     _userTabIndex: number | null = null;
 

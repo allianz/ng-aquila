@@ -286,10 +286,10 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     }
 
     /**
-     * @docs-private
-     *
      * Gets the element that the datepicker popup should be connected to.
-     * @return The element to connect the popup to.
+     *
+     * @returns The element to connect the popup to.
+     * @docs-private
      */
     getConnectedOverlayOrigin(): ElementRef {
         // formfield not yet accessible as we don't have them in a secondary entry point to import yet.

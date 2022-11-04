@@ -147,6 +147,7 @@ export class NxContextMenuItemComponent implements OnDestroy {
 /**
  * This directive is need when [nx-context-menu-item] is not directly under [nx-context-menu].
  *
+ * @example
  * <nx-context-menu>
  *      <something else> // blocker
  *        <nx-context-menu-item-wrap> // come to rescue

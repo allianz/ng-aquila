@@ -33,8 +33,10 @@ export class NxComparisonTableCell {
     }
     private _index!: number;
 
-    /** Sets all cells below a header cell to be disabled (disabled column).
-     *  Important: this property can be set only on header cells.
+    /**
+     * Sets all cells below a header cell to be disabled (disabled column).
+     *
+     * **Important**: this property can be set only on header cells.
      */
     @Input() set disabledColumn(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);

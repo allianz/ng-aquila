@@ -9,6 +9,7 @@ type TooltipVisibility = 'initial' | 'visible' | 'hidden';
 
 /**
  * Internal component that wraps the tooltip's content.
+ *
  * @docs-private
  */
 @Component({
@@ -52,31 +53,31 @@ export class NxTooltipComponent implements OnDestroy {
 
     private _position: TooltipPosition = 'bottom';
 
-    /* @docs-private */
+    /** @docs-private */
     set position(value: TooltipPosition) {
         this._position = value;
         this._cdr.markForCheck();
     }
 
-    /* @docs-private */
+    /** @docs-private */
     get position() {
         return this._position;
     }
 
     _arrowStyle: { [key: string]: string } = {};
 
-    /* @docs-private */
+    /** @docs-private */
     set arrowStyle(value) {
         this._arrowStyle = value;
         this._cdr.markForCheck();
     }
 
-    /* @docs-private */
+    /** @docs-private */
     get arrowStyle() {
         return this._arrowStyle;
     }
 
-    /* @docs-private */
+    /** @docs-private */
     get arrowClass(): string {
         return `nx-tooltip__arrow--${this.position}`;
     }
@@ -91,6 +92,7 @@ export class NxTooltipComponent implements OnDestroy {
 
     /**
      * Shows the tooltip with an aninxion originating from the provided origin
+     *
      * @param delay Amount of milliseconds to the delay showing the tooltip.
      */
     show(delay: number): void {
@@ -114,6 +116,7 @@ export class NxTooltipComponent implements OnDestroy {
 
     /**
      * Begins the animation to hide the tooltip after the provided delay in ms.
+     *
      * @param delay Amount of milliseconds to delay showing the tooltip.
      */
     hide(delay: number): void {

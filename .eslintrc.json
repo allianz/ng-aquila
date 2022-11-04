@@ -16,6 +16,7 @@
                 "plugin:@angular-eslint/recommended--extra",
                 "plugin:@angular-eslint/template/process-inline-templates",
                 "plugin:regexp/recommended",
+                "plugin:jsdoc/recommended",
                 "prettier"
             ],
             "plugins": ["deprecation", "import", "rxjs", "simple-import-sort", "unused-imports"],
@@ -30,6 +31,27 @@
                 "simple-import-sort/imports": "warn",
                 "simple-import-sort/exports": "warn",
                 "unused-imports/no-unused-imports": "warn",
+
+                // ==== jsdoc ====
+                "jsdoc/check-examples": "off", // not supported in eslint 8 yet
+                "jsdoc/check-indentation": "warn",
+                "jsdoc/check-line-alignment": "warn",
+                "jsdoc/check-syntax": "warn",
+                "jsdoc/check-tag-names": "off", // recommended override: allow custom tags
+                "jsdoc/check-values": "off", // recommended override: TODO solve license tag issues
+                "jsdoc/match-description": "off", // TODO check default / custom regex
+                "jsdoc/no-defaults": "warn",
+                "jsdoc/no-types": "warn", // types not required with typescript
+                "jsdoc/require-asterisk-prefix": "warn",
+                "jsdoc/require-description": "off", // TODO should comments require regular text?
+                "jsdoc/require-description-complete-sentence": "off", // TODO enforcing sentense syntax viable with special texts such as code?
+                "jsdoc/require-jsdoc": "off", // recommended override: not needed for internal API
+                "jsdoc/require-param": "off", // recommended override: avoid unnecessary texts
+                "jsdoc/require-param-type": "off", // recommended override: types not required with typescript
+                "jsdoc/require-property": "off", // recommended override: avoid unnecessary texts
+                "jsdoc/require-property-type": "off", // recommended override: types not required with typescript
+                "jsdoc/require-returns": "off", // recommended override: avoid unnecessary texts
+                "jsdoc/require-returns-type": "off", // recommended override: types not required with typescript
 
                 // ==== regexp ====
                 "regexp/no-unused-capturing-group": "off", // recommended override: avoid unnecessary changes

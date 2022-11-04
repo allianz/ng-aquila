@@ -73,7 +73,7 @@ describe('ng-aquila: ng add', () => {
 
         it('should update Starter App files', () => {
             const currentYear = new Date().getFullYear();
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts')).toContain(`/**  Copyright Allianz ${currentYear} */`);
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts')).toContain(`/** Copyright Allianz ${currentYear} */`);
             expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html')).toContain(`<!-- Copyright Allianz ${currentYear} -->`);
         });
     });

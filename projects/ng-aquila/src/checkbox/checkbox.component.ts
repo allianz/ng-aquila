@@ -316,7 +316,9 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     private _disabled = false;
 
     /**
-     * Sets the label size of the checkbox. Default value: small
+     * Sets the label size of the checkbox.
+     *
+     * Default: `'small'`.
      */
     @Input() set labelSize(value: NxCheckboxLabelSize) {
         this._labelSize = value;
@@ -396,13 +398,15 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     /** An event emitted when the indeterminate value has changed */
     @Output() readonly indeterminateChange = new EventEmitter<boolean>(false);
 
-    /** An event emitted when the checked value has changed.
+    /**
+     * An event emitted when the checked value has changed.
      *
      * Emits the boolean checked value of the changed checkbox.
      */
     @Output() readonly checkedChange = new EventEmitter<boolean>(false);
 
-    /** An event emitted when the checked value has changed.
+    /**
+     * An event emitted when the checked value has changed.
      *
      * Emits a NxCheckboxChangeEvent.
      */
@@ -415,8 +419,10 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
 
     private readonly _destroyed = new Subject<void>();
 
-    /** @docs-private
+    /**
      * Callback for when the content of the label has changed.
+     *
+     * @docs-private
      */
     labelContentChanged() {
         this._cdr.detectChanges();

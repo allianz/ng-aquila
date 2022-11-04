@@ -40,12 +40,11 @@ export async function createTestLibrary(runner: SchematicTestRunner, tree?: Tree
 
 /**
  * Reuses our own ng add and ng add setup project schematics to add the library.
- * Use the options parameter to change it to expert:
+ *
+ * Use the options parameter to change it to expert.
+ *
+ * @example
  * addLibrary({type: 'b2b'});
- *
- *
- * @param options
- * @param tree
  */
 export async function addLibrary(options: any, tree: Tree): Promise<UnitTestTree> {
     const aquilarunner = new SchematicTestRunner('aquila', require.resolve('../../collection.json'));
@@ -59,26 +58,27 @@ export async function addLibrary(options: any, tree: Tree): Promise<UnitTestTree
  * registers the beforeEach and afterEach hooks for jasmine.
  *
  * It also gives you access to functions:
- * + writeFile: makes it possibble to write to the
- *              tempFileSystemHost and also updates the hostTree
+ * + writeFile: makes it possibble to write to the tempFileSystemHost and also updates the hostTree
  * + syncTreeToFileSystem: syncs the whole app tree to the disk
  * + runMigration: call to run the schematic name you specified in the constructor
  *
- * Usage:
+ * @example
+ * ```ts
  * describe('my schematic tests', () => {
- *    const testSetup = new SchematicTestSetup('01-my-schematic-name');
+ *   const testSetup = new SchematicTestSetup('01-my-schematic-name');
  *
  *   it('should do something', async () => {
- *    testSetup.writeFile('/index.ts', `
-      import {Foo} from '@aposin/ng-aquila';
-
-      export class TestClass {}
-      `);
-
-       await testSetup.runMigration({ project: 'aquila-testing' });
-       expect(something).toBeTruthy();
+ *     testSetup.writeFile('/index.ts', `
+ *       import {Foo} from '@aposin/ng-aquila';
+ *
+ *       export class TestClass {}
+ *     `);
+ *
+ *     await testSetup.runMigration({ project: 'aquila-testing' });
+ *     expect(something).toBeTruthy();
  *   });
  * });
+ *```
  *
  * You can also use destructuring to get the methods for some cleaner code:
  * const testSetup = new SchematicTestSetup('01-my-schematic-name');
@@ -86,7 +86,6 @@ export async function addLibrary(options: any, tree: Tree): Promise<UnitTestTree
  *
  * WARNING: it doesn't work on properties like runner or appTree as they are undefined
  * at that time
- *
  */
 export class SchematicTestSetup {
     runner!: SchematicTestRunner;
@@ -149,10 +148,7 @@ export class SchematicTestSetup {
     }
 
     /**
-     * Creates or overwrites a file on the disk and in the virtual Tree
-     *
-     * @param filePath
-     * @param content
+     * Creates or overwrites a file on the disk and in the virtual Tree.
      */
     writeFile(filePath: string, content: string): void {
         // Update the temp file system host to reflect the changes in the real file system.
@@ -167,9 +163,7 @@ export class SchematicTestSetup {
     }
 
     /**
-     * Deletes file on the disk and in the virtual Tree
-     *
-     * @param filePath
+     * Deletes file on the disk and in the virtual Tree.
      */
     deleteFile(filePath: string): void {
         // Update the temp file system host to reflect the changes in the real file system.
@@ -180,7 +174,7 @@ export class SchematicTestSetup {
     }
 
     /**
-     * Syncs the whole virtual tree to the disk
+     * Syncs the whole virtual tree to the disk.
      */
     syncTreeToFileSystem(): void {
         // Since the TypeScript compiler API expects all files to be present on the real file system, we

@@ -8,6 +8,7 @@ import { NxOverlayConfig } from './overlay-config';
 /**
  * Throws an exception for the case when a ComponentPortal is
  * attached to a DomPortalOutlet without an origin.
+ *
  * @docs-private
  */
 export function throwNxOverlayContentAlreadyAttachedError() {
@@ -65,6 +66,7 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
 
     /**
      * Attach a ComponentPortal as content to this overlay container.
+     *
      * @param portal Portal to be attached as the overlay content.
      */
     attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {
@@ -78,6 +80,7 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
 
     /**
      * Attach a TemplatePortal as content to this overlay container.
+     *
      * @param portal Portal to be attached as the overlay content.
      */
     attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C> {
@@ -92,6 +95,7 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
 
     /**
      * Attaches a DOM portal to the overlay container.
+     *
      * @param portal Portal to be attached.
      * @deprecated To be turned into a method when changed in the CDK.
      */

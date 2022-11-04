@@ -31,6 +31,7 @@ const TOTAL_DAYS_TO_DISPLAY = 6 * DAYS_PER_WEEK;
 
 /**
  * An internal component used to display a single month in the datepicker.
+ *
  * @docs-private
  */
 @Component({

@@ -86,9 +86,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
         this.additionalClasses = mapClassNames(value, [], MAPPING);
     }
 
-    /**
-     * @docs-private
-     */
+    /** @docs-private */
     get selection(): any {
         return this._selection;
     }

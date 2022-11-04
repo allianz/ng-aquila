@@ -21,7 +21,7 @@ export interface DataDisplayDefaultOptions {
     /**
      * Size of the data display.
      *
-     * Defaults to 'large'.
+     * Default: `'large'`.
      */
     size?: NxDataDisplaySize;
 }

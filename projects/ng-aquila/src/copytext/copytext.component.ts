@@ -25,7 +25,7 @@ export class NxCopytextComponent {
      *
      * You can combine the values of type NxCopytextType and 'negative'.
      *
-     * Default type: 'normal'
+     * Default: `'normal'`.
      */
     @Input('nxCopytext') set classNames(value: string) {
         if (this._classNames === value) {

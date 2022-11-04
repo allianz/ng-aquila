@@ -50,7 +50,7 @@ describe('NxProgressStepperDirective', () => {
 
 /**
  * The loop for adding the steps is needed to test if the steps do work properly
- * when there is a level between `nxProgressStepper` and the `nx-step` children
+ * when there is a level between `nxProgressStepper` and the `nx-step` children.
  */
 @Component({
     template: `

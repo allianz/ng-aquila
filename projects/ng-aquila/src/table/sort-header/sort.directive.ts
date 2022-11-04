@@ -46,14 +46,16 @@ export class NxSortDirective implements OnDestroy {
     private _direction: SortDirection = 'asc';
 
     /**
-     * @docs-private
      * An event emitted when the active value has changed.
+     *
+     * @docs-private
      */
     @Output() readonly activeChange = new EventEmitter<string>();
 
     /**
-     * @docs-private
      * An event emitted when the direction value has changed.
+     *
+     * @docs-private
      */
     @Output() readonly directionChange = new EventEmitter<SortDirection>();
 

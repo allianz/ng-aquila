@@ -50,8 +50,9 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
 }
 
 /**
- * @docs-private
  * Adapts the native JS Date for use with cdk-based components that work with dates.
+ *
+ * @docs-private
  */
 @Injectable()
 export class NxNativeDateAdapter extends NxDateAdapter<Date> {
@@ -269,6 +270,7 @@ export class NxNativeDateAdapter extends NxDateAdapter<Date> {
 
     /**
      * Pads a number to make it two digits.
+     *
      * @param n The number to pad.
      * @returns The padded number.
      */
@@ -280,6 +282,7 @@ export class NxNativeDateAdapter extends NxDateAdapter<Date> {
      * Strip out unicode LTR and RTL characters. Edge and IE insert these into formatted dates while
      * other browsers do not. We remove them to make output consistent and because they interfere with
      * date parsing.
+     *
      * @param str The string to strip direction characters from.
      * @returns The stripped string.
      */
@@ -293,10 +296,10 @@ export class NxNativeDateAdapter extends NxDateAdapter<Date> {
      * very frequently, and the current valid rule is not always valid in previous years though.
      * We work around this problem building a new Date object which has its internal UTC
      * representation with the local date and time.
-     * @param dtf Intl.DateTimeFormat object, containg the desired string format. It must have
-     *    timeZone set to 'utc' to work fine.
-     * @param date Date from which we want to get the string representation according to dtf
-     * @returns A Date object with its UTC representation based on the passed in date info
+     *
+     * @param dtf Intl.DateTimeFormat object, containg the desired string format. It must have timeZone set to 'utc' to work fine.
+     * @param date Date from which we want to get the string representation according to dtf.
+     * @returns A Date object with its UTC representation based on the passed in date info.
      */
     private _format(dtf: Intl.DateTimeFormat, date: Date) {
         const d = new Date(

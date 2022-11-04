@@ -18,7 +18,8 @@ export interface NxExpandable {
 
 /**
  * This toggle button can be clicked and toggles expandable elements.
- * e.g. it can toggle a expandable table row or anything else that implements the `NxExpandable` interface.
+ *
+ * E.g. it can toggle a expandable table row or anything else that implements the `NxExpandable` interface.
  */
 @Component({
     selector: 'nx-toggle-button',

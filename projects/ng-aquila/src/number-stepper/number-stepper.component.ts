@@ -46,7 +46,10 @@ let nextUniqueId = 0;
 
 /**
  * `Input('nxSize') classNames` defines the size of the number stepper.
- * Values: big | normal. Default: normal
+ *
+ * Values: `'big' | 'normal'`.
+ *
+ * Default: `'normal'`.
  */
 @Component({
     selector: 'nx-number-stepper',
@@ -192,9 +195,10 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     }
     private _negative = false;
 
-    /** Whether the number stepper value should have a leading zero.
+    /**
+     * Whether the number stepper value should have a leading zero.
      *
-     * Default value is true.
+     * Default: `true`.
      */
     @Input() set leadingZero(value: BooleanInput) {
         if (this._leadingZero !== value) {
@@ -208,9 +212,10 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     }
     private _leadingZero = true;
 
-    /** Whether the user input in the number stepper should be disabled.
+    /**
+     * Whether the user input in the number stepper should be disabled.
      *
-     * Default value is false.
+     * Default: `false`.
      */
     @Input('nxDisabled') set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);

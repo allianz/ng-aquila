@@ -67,9 +67,11 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
     private _isExpanded = false;
 
     /**
-     * **Expert Option**
+     * **Expert Option**.
      *
-     * Sets if the expandable area uses the full width of the row or leaves out the first column. Default: false.
+     * Sets if the expandable area uses the full width of the row or leaves out the first column.
+     *
+     * Default: `false`.
      */
     @Input() set useFullRowForExpandableArea(value: BooleanInput) {
         this._useFullRowForExpandableArea = coerceBooleanProperty(value);

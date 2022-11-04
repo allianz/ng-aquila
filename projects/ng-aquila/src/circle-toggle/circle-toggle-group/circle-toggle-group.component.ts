@@ -35,7 +35,7 @@ export type NxCircleToggleGroupAppearance = 'default' | 'expert';
  */
 export interface CircleToggleGroupDefaultOptions {
     /**
-     * Sets the default appearance. (optional)
+     * Sets the default appearance (optional).
      */
     appearance?: NxCircleToggleGroupAppearance;
 }
@@ -171,7 +171,9 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     /**
      * **Expert option**
      *
-     * Sets the appearance of the circle toggle group. Default: 'default'
+     * Sets the appearance of the circle toggle group.
+     *
+     * Default: `'default'`.
      */
     @Input() set appearance(value: NxCircleToggleGroupAppearance) {
         if (this._appearance !== value) {
@@ -249,8 +251,9 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     }
 
     /**
+     * Inform the selected button if the group selection is set programattically at the beginning.
+     *
      * @docs-private
-     * inform the selected button if the group selection is set programattically at the beginning
      */
     notifySelectedChild(newValue: string) {
         if (this.buttons) {

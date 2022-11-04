@@ -1,7 +1,8 @@
 import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
 
 /**
- * Animations used by the NxModalContainer.
+ * Animations used by the `NxModalContainer`.
+ *
  * @docs-private
  */
 export const NxModalAnimations: {

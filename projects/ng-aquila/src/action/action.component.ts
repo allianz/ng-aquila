@@ -39,9 +39,11 @@ export class NxActionComponent implements OnDestroy {
     }
     private _expandable = false;
 
-    /** Whether this action is expanded or not.
-    Only works in combination with the `expandable` option set to `true`.
-   */
+    /**
+     * Whether this action is expanded or not.
+     *
+     * Only works in combination with the `expandable` option set to `true`.
+     */
     @Input() set expanded(value: BooleanInput) {
         this._expanded = coerceBooleanProperty(value);
         this._cdr.markForCheck();

@@ -228,7 +228,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
 
     private _hover = false;
 
-    /** touched is set to true on touch devices. */
+    /** Touched is set to true on touch devices. */
     _touched = false;
 
     /** @docs-private */
@@ -357,10 +357,10 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     }
 
     /**
-     * @docs-private
+     * Method called by the group if the internal value of the group is changed programatically,
+     * does not trigger change emission.
      *
-     * method called by the group if the internal value of the group is changed programatically,
-     * does not trigger change emission
+     * @docs-private
      */
     setGroupSelection() {
         if (!this.toggleGroup) {

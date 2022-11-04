@@ -58,14 +58,15 @@ export type RowWrapping = 'wrap' | 'nowrap' | 'reverse';
 export class NxRowComponent {
     /**
      * Overwrite default class property to access user provided class.
+     *
      * @docs-private
      */
     @Input() class = '';
 
     /**
-     * Values: row | row-reverse
+     * Values: row | row-reverse.
      *
-     * Default value: row
+     * Default: `'row'`.
      */
     @Input() set nxRow(value: string) {
         if (value) {

@@ -11,9 +11,9 @@ import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowGroupDirective } from '../comparison-table-row-group.directive';
 
 /**
- * @docs-private
- *
  * Component that is only used internally for displaying a `nxComparisonTableRowGroup` in desktop and tablet view.
+ *
+ * @docs-private
  */
 @Component({
     selector: 'nx-comparison-table-desktop-group',

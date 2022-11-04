@@ -12,7 +12,7 @@ export type NxSmallStageAppearance = 'default' | 'expert';
  */
 export interface SmallStageDefaultOptions {
     /**
-     * Sets the default appearance. (optional)
+     * Sets the default appearance (optional).
      */
     appearance?: NxSmallStageAppearance;
 }
@@ -27,9 +27,11 @@ export const SMALL_STAGE_DEFAULT_OPTIONS = new InjectionToken<SmallStageDefaultO
 })
 export class NxSmallStageComponent {
     /**
-     * ** Expert option **
+     * **Expert option**
      *
-     * Sets the appearance of the small stage. Default: 'default'
+     * Sets the appearance of the small stage.
+     *
+     * Default: `'default'`.
      */
     @Input() set appearance(value: NxSmallStageAppearance) {
         if (this._appearance !== value) {
@@ -44,7 +46,7 @@ export class NxSmallStageComponent {
     /**
      * Reduces the width of the text to 6/12 instead of 8/12.
      *
-     * **Only works with appearance = 'expert'.**
+     * **Only works with appearance = 'expert'.**.
      */
     @Input() @HostBinding('class.is-narrow') set narrow(value: BooleanInput) {
         this._narrow = coerceBooleanProperty(value);

@@ -32,8 +32,7 @@ import { NxMultiStepItemComponent } from './multi-step-item.component';
 })
 export class NxMultiStepperComponent extends NxProgressStepperDirective implements OnDestroy, AfterContentInit, AfterViewChecked {
     /**
-     * We need to set the _stepHeader property as ViewChildren here
-     * as it is a ContentChildren query in the CDK
+     * We need to set the `_stepHeader` property as `ViewChildren` here as it is a `ContentChildren` query in the CDK.
      */
     @ViewChildren(NxMultiStepItemComponent) _stepHeader!: QueryList<NxMultiStepItemComponent>;
 

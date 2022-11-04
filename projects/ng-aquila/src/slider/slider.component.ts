@@ -297,12 +297,11 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
 
     /**
      * We have to look at two cases:
-     * - current value is a valid multitude of the step size
-     *   then we can safely add or subtract the step
-     * - the value is not a valid multitude. this could be the max value or the value bound
-     *   via nxValue
-     *   then we look for the next closest value upwards or downwards
-     *   decimal.js provides a nice utility function for this.
+     *
+     * - current value is a valid multitude of the step size - then we can safely add or subtract the step.
+     *
+     * - the value is not a valid multitude. This could be the max value or the value bound via nxValue - then
+     * we look for the next closest value upwards or downwards decimal.js provides a nice utility function for this.
      */
     _changeValue(valueDiff: number) {
         let newValue = new Decimal(this._value);
@@ -379,7 +378,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     }
 
     /**
-     * This is called on mousedown or touchstart
+     * This is called on mousedown or touchstart.
      */
     _dragStart() {
         if (this.disabled) {
