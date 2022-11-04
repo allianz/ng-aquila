@@ -7,7 +7,7 @@
         "start": "npm run build:package && npm run library:generate:docs && ng serve opensource-documentation",
         "build": "npm run build:lib && npm run build:docs",
         "build:lib": "npm run ng-high-memory -- build ng-aquila && npm run build:package",
-        "build:docs": "npm run ng-high-memory -- build opensource-documentation",
+        "build:docs": "npm run library:generate:docs && npm run ng-high-memory -- build opensource-documentation",
         "build:package": "node ./scripts/build-package.js",
         "format": "prettier . --check",
         "format:fix": "prettier . --write",
