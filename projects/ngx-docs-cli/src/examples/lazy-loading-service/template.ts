@@ -1,37 +1,38 @@
-export const lazyServiceTemplate = modules => {
+export function lazyServiceTemplate(modules: any[]): string {
     const resolvedImports = modules.map(m => buildImportForModule(m));
 
-    return `
-  import { Injectable, Compiler, Injector } from '@angular/core';
-  import { BaseLazyLoadingService } from '@aposin/ngx-docs-ui';
+    return `import { Injectable, Compiler, Injector } from '@angular/core';
+import { BaseLazyLoadingService } from '@aposin/ngx-docs-ui';
 
-  @Injectable({providedIn: 'root'})
-  export class LazyLoadingService implements BaseLazyLoadingService {
+@Injectable({ providedIn: 'root' })
+export class LazyLoadingService implements BaseLazyLoadingService {
 
-    constructor(private compiler: Compiler, private injector: Injector) {}
+    constructor(private readonly compiler: Compiler, private readonly injector: Injector) {}
 
     getComponent(id: string, moduleId: string) {
-      return this.load(moduleId).then( (moduleClass: any) => {
-        return this.compiler.compileModuleAsync(moduleClass).then(ngModuleFactory => {
-          const ngModuleRef = ngModuleFactory.create(this.injector);
-          const componentClass = moduleClass.components()[id];
-          const componentFactory = ngModuleRef.componentFactoryResolver.resolveComponentFactory(componentClass);
-          
-          return {componentFactory, ngModuleFactory};
-        })
-      })
+        return this.load(moduleId).then((moduleClass: any) => {
+            return this.compiler.compileModuleAsync(moduleClass).then(ngModuleFactory => {
+                const ngModuleRef = ngModuleFactory.create(this.injector);
+                const componentClass = moduleClass.components()[id];
+                const componentFactory = ngModuleRef.componentFactoryResolver.resolveComponentFactory(componentClass);
+
+                return { componentFactory, ngModuleFactory };
+            });
+        });
     }
 
-    load(moduleId: string): any {
-      switch (moduleId) {
-        ${resolvedImports.join('\n').trim()}
-    default: return Promise.resolve().then(() => null);
-      }
+    load(moduleId: string): Promise<any> {
+        switch (moduleId) {
+            ${resolvedImports.join('\n').trim()}
+            default: return Promise.resolve().then(() => null);
+        }
     }
-  }
-  `;
-};
+}
+`;
+}
 
-const buildImportForModule = module => `
-  case '${module.name}': return import('${module.relativeImportPath.replace('.ts', '').split('\\').join('/')}').then(m => m.${module.className});
-  `;
+function buildImportForModule(module: any): string {
+    const imports = module.relativeImportPath.replace('.ts', '').split('\\').join('/');
+
+    return `            case '${module.name}': return import('${imports}').then(m => m.${module.className});`;
+}
