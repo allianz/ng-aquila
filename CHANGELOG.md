@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [14.0.0-next.0](https://github.com/allianz/ng-aquila/compare/v13.9.1...v14.0.0-next.0) (2022-11-07)
+
+
+### Bug Fixes
+
+* **autocomplete:** disabled option styling ([#757](https://github.com/allianz/ng-aquila/issues/757)) 
+* **dropdown:** prevent selecting disabled option by keyboard ([#755](https://github.com/allianz/ng-aquila/issues/755)) 
+* **modal:** remove extra scrollbar ([#760](https://github.com/allianz/ng-aquila/issues/760)) 
+
+
+
 ## [13.9.1](https://github.com/allianz/ng-aquila/compare/v13.9.0...v13.9.1) (2022-09-21)
 
 
