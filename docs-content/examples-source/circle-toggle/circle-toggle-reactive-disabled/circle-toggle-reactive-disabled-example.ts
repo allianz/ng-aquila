@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Reactive disabled example
@@ -38,7 +38,7 @@ export class CircleToggleReactiveDisabledExampleComponent {
         },
     ];
 
-    constructor(private readonly fb: FormBuilder) {
+    constructor(private readonly fb: UntypedFormBuilder) {
         this.testForm.disable();
     }
 

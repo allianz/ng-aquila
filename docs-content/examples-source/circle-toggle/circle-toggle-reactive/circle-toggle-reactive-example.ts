@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Reactive example
@@ -10,7 +10,7 @@ import { FormBuilder, Validators } from '@angular/forms';
     styleUrls: ['./circle-toggle-reactive-example.css'],
 })
 export class CircleToggleReactiveExampleComponent {
-    formBuilder = new FormBuilder();
+    formBuilder = new UntypedFormBuilder();
 
     testForm = this.formBuilder.group({
         reactiveToggle: ['', Validators.required],

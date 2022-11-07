@@ -1,14 +1,14 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Tab group with indicators
+ * <span class="hljs-doctag">@title</span> Tab group with indicators
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tabs-with-indicator-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-with-indicator-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tabs-with-indicator-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TabsWithIndicatorExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TabsWithIndicatorExampleComponent</span> {
     tabs = [
         {
             <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;First tab&#x27;</span>,
@@ -30,18 +30,18 @@
         },
     ];
 
-    <span class="hljs-function"><span class="hljs-title">setSelectedTab</span>(<span class="hljs-params">selectedTab: <span class="hljs-built_in">number</span></span>)</span> {
-        <span class="hljs-built_in">this</span>.tabs[selectedTab]; <span class="hljs-comment">// TODO do something</span>
+    <span class="hljs-title function_">setSelectedTab</span>(<span class="hljs-params">selectedTab: <span class="hljs-built_in">number</span></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">tabs</span>[selectedTab]; <span class="hljs-comment">// TODO do something</span>
     }
 
-    <span class="hljs-function"><span class="hljs-title">getIndicatorText</span>(<span class="hljs-params">notificationCount: <span class="hljs-built_in">number</span></span>)</span> {
+    <span class="hljs-title function_">getIndicatorText</span>(<span class="hljs-params">notificationCount: <span class="hljs-built_in">number</span></span>) {
         <span class="hljs-keyword">if</span> (!notificationCount) {
             <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;
         }
         <span class="hljs-keyword">return</span> notificationCount &gt; <span class="hljs-number">99</span> ? <span class="hljs-string">&#x27;99+&#x27;</span> : notificationCount;
     }
 
-    <span class="hljs-function"><span class="hljs-title">getAriaLabel</span>(<span class="hljs-params">notificationCount: <span class="hljs-built_in">number</span></span>)</span> {
+    <span class="hljs-title function_">getAriaLabel</span>(<span class="hljs-params">notificationCount: <span class="hljs-built_in">number</span></span>) {
         <span class="hljs-keyword">if</span> (!notificationCount) {
             <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;new notifications available&#x27;</span>;
         }

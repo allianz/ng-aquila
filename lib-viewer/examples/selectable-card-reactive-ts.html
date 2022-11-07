@@ -1,18 +1,18 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">UntypedFormBuilder</span>, <span class="hljs-title class_">Validators</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Selectable cards reactive example
+ * <span class="hljs-doctag">@title</span> Selectable cards reactive example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;selectable-card-reactive-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./selectable-card-reactive-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./selectable-card-reactive-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SelectableCardReactiveExampleComponent</span> </span>{
-    <span class="hljs-keyword">readonly</span> testForm = <span class="hljs-built_in">this</span>.fb.group({
-        <span class="hljs-attr">selectableCardTestReactive</span>: [<span class="hljs-literal">false</span>, Validators.requiredTrue],
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SelectableCardReactiveExampleComponent</span> {
+    <span class="hljs-keyword">readonly</span> testForm = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
+        <span class="hljs-attr">selectableCardTestReactive</span>: [<span class="hljs-literal">false</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">requiredTrue</span>],
     });
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>)</span> {}
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: UntypedFormBuilder</span>) {}
 }

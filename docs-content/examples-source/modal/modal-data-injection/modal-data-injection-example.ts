@@ -1,5 +1,5 @@
-import { NxDialogService, NxModalRef } from '@allianz/ng-aquila/modal';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 interface MyDialogData {
     name: string;

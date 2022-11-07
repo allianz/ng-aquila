@@ -1,23 +1,23 @@
-<span class="hljs-keyword">import</span> { nxLicensePlateValidator } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/licence-plate&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { FormControl, FormGroup } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">UntypedFormControl</span>, <span class="hljs-title class_">UntypedFormGroup</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { nxLicensePlateValidator } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/licence-plate&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Licence plate reactive form
+ * <span class="hljs-doctag">@title</span> Licence plate reactive form
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;licence-plate-reactive-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;licence-plate-reactive-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;licence-plate-reactive-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LicencePlateReactiveExample</span> </span>{
-    <span class="hljs-attr">licencePlateForm</span>: FormGroup;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LicencePlateReactiveExample</span> {
+    <span class="hljs-attr">licencePlateForm</span>: <span class="hljs-title class_">UntypedFormGroup</span>;
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">this</span>.licencePlateForm = <span class="hljs-keyword">new</span> FormGroup({
-            <span class="hljs-attr">licencePlateInput</span>: <span class="hljs-keyword">new</span> FormControl(
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">licencePlateForm</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormGroup</span>({
+            <span class="hljs-attr">licencePlateInput</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(
                 <span class="hljs-string">&#x27;&#x27;</span>,
-                nxLicensePlateValidator(<span class="hljs-string">&#x27;de_standard&#x27;</span>),
+                <span class="hljs-title function_">nxLicensePlateValidator</span>(<span class="hljs-string">&#x27;de_standard&#x27;</span>),
             ),
         });
     }

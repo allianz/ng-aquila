@@ -1,15 +1,15 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    DATA_DISPLAY_DEFAULT_OPTIONS,
-    DataDisplayDefaultOptions,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/data-display&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+    <span class="hljs-variable constant_">DATA_DISPLAY_DEFAULT_OPTIONS</span>,
+    <span class="hljs-title class_">DataDisplayDefaultOptions</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/data-display&#x27;</span>;
 
-<span class="hljs-keyword">const</span> options: DataDisplayDefaultOptions = {
+<span class="hljs-keyword">const</span> <span class="hljs-attr">options</span>: <span class="hljs-title class_">DataDisplayDefaultOptions</span> = {
     <span class="hljs-attr">size</span>: <span class="hljs-string">&#x27;medium&#x27;</span>, <span class="hljs-comment">// expert mode default size</span>
 };
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Horizontal data display example
+ * <span class="hljs-doctag">@title</span> Horizontal data display example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;data-display-horizontal-example&#x27;</span>,
@@ -17,9 +17,9 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./data-display-horizontal-example.css&#x27;</span>],
     <span class="hljs-attr">providers</span>: [
         {
-            <span class="hljs-attr">provide</span>: DATA_DISPLAY_DEFAULT_OPTIONS,
+            <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">DATA_DISPLAY_DEFAULT_OPTIONS</span>,
             <span class="hljs-attr">useValue</span>: options,
         },
     ],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DataDisplayHorizontalExampleComponent</span> </span>{}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DataDisplayHorizontalExampleComponent</span> {}

@@ -6,7 +6,7 @@
     <span class="docs-api-module-import__import-span">import</span>
     { NxErrorModule }
     <span class="docs-api-module-import__from-span">from</span>
-    <span class="docs-api-module-import__path-span">'@allianz/ng-aquila/base'</span>;
+    <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/base'</span>;
   </code>
 </p>
 <p class="docs-markdown--p">The module is auto-imported when you use the <a href="./documentation/formfield">formfield</a>, <a href="./documentation/checkbox">checkbox</a> or <a href="./documentation/radio-button">radio-button</a> module.</p>
@@ -32,8 +32,8 @@
   ...
   <span class="hljs-attr">providers</span>: [
     {
-      <span class="hljs-attr">provide</span>: ErrorStateMatcher,
-      <span class="hljs-attr">useExisting</span>: CustomErrorStateMatcher
+      <span class="hljs-attr">provide</span>: <span class="hljs-title class_">ErrorStateMatcher</span>,
+      <span class="hljs-attr">useExisting</span>: <span class="hljs-title class_">CustomErrorStateMatcher</span>
     }
   ]
   ...
@@ -46,7 +46,7 @@
     <span class="docs-api-module-import__import-span">import</span>
     { ErrorStateMatcher }
     <span class="docs-api-module-import__from-span">from</span>
-    <span class="docs-api-module-import__path-span">'@allianz/ng-aquila/utils'</span>;
+    <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/utils'</span>;
   </code>
 </p>
 <p class="docs-markdown--p">The example below shows an <strong>error while the user is typing (dirty)</strong> and not until he blurrs the input field as in the default case.</p>
@@ -54,16 +54,16 @@
 <h3 id="global-custom-errorstatematcher" tabindex="-1" class="docs-markdown--h3">Global custom ErrorStateMatcher</h3>
 <p class="docs-markdown--p">You can also set a custom error matching behaviour globally by defining your custom error state matcher:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@Injectable</span>()
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ShowOnDirtyErrorStateMatcher</span> <span class="hljs-title">implements</span> <span class="hljs-title">ErrorStateMatcher</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ShowOnDirtyErrorStateMatcher</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ErrorStateMatcher</span> {
     <span class="hljs-comment">/** Custom error state matcher that checks for validity of the formfield. */</span>
-    isErrorState(control: FormControl | <span class="hljs-literal">null</span>, <span class="hljs-attr">form</span>: FormGroupDirective | NgForm | <span class="hljs-literal">null</span>): <span class="hljs-built_in">boolean</span> {
-        <span class="hljs-keyword">return</span> !!(control &amp;&amp; control.invalid &amp;&amp; (control.dirty || (form &amp;&amp; form.submitted)));
+    <span class="hljs-title function_">isErrorState</span>(<span class="hljs-attr">control</span>: <span class="hljs-title class_">FormControl</span> | <span class="hljs-literal">null</span>, <span class="hljs-attr">form</span>: <span class="hljs-title class_">FormGroupDirective</span> | <span class="hljs-title class_">NgForm</span> | <span class="hljs-literal">null</span>): <span class="hljs-built_in">boolean</span> {
+        <span class="hljs-keyword">return</span> !!(control &amp;&amp; control.<span class="hljs-property">invalid</span> &amp;&amp; (control.<span class="hljs-property">dirty</span> || (form &amp;&amp; form.<span class="hljs-property">submitted</span>)));
     }
 }
 </code></pre>
 <p class="docs-markdown--p">and then providing it globaly, for example in your <code>app.module.ts</code>:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
-    <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: ErrorStateMatcher, <span class="hljs-attr">useClass</span>: CustomErrorStateMatcher }],
+    <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: <span class="hljs-title class_">ErrorStateMatcher</span>, <span class="hljs-attr">useClass</span>: <span class="hljs-title class_">CustomErrorStateMatcher</span> }],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ApplicationModule</span> </span>{}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ApplicationModule</span> {}
 </code></pre>

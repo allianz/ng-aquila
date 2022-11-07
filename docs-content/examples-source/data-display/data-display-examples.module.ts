@@ -1,7 +1,7 @@
-import { NxDataDisplayModule } from '@allianz/ng-aquila/data-display';
-import { NxLinkModule } from '@allianz/ng-aquila/link';
-import { NxListModule } from '@allianz/ng-aquila/list';
 import { NgModule } from '@angular/core';
+import { NxDataDisplayModule } from '@aposin/ng-aquila/data-display';
+import { NxLinkModule } from '@aposin/ng-aquila/link';
+import { NxListModule } from '@aposin/ng-aquila/list';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { DataDisplayCondensedExampleComponent } from './data-display-condensed/data-display-condensed-example';

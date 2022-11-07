@@ -1,5 +1,5 @@
-import { NxLicencePlateType } from '@allianz/ng-aquila/licence-plate';
 import { Component } from '@angular/core';
+import { NxLicencePlateType } from '@aposin/ng-aquila/licence-plate';
 
 /**
  * @title Licence plate expert

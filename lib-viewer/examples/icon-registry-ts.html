@@ -1,34 +1,34 @@
-<span class="hljs-keyword">import</span> { NxIconRegistry } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { DomSanitizer } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/platform-browser&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">DomSanitizer</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/platform-browser&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconRegistry</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Register Icons Example
+ * <span class="hljs-doctag">@title</span> Register Icons Example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;icon-registry-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./icon-registry-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./icon-registry-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IconRegistryExampleComponent</span> </span>{
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">IconRegistryExampleComponent</span> {
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
         <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> nxIconRegistry: NxIconRegistry,
         domSanitizer: DomSanitizer,
-    </span>)</span> {
-        <span class="hljs-built_in">this</span>.nxIconRegistry.addSvgIconLiteral(
+    </span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">nxIconRegistry</span>.<span class="hljs-title function_">addSvgIconLiteral</span>(
             <span class="hljs-string">&#x27;search&#x27;</span>,
-            domSanitizer.bypassSecurityTrustHtml(
+            domSanitizer.<span class="hljs-title function_">bypassSecurityTrustHtml</span>(
                 <span class="hljs-string">&#x27;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;currentColor&quot; width=&quot;100%&quot; height=&quot;100%&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;g data-name=&quot;Layer 2&quot;&gt;&lt;g data-name=&quot;search&quot;&gt;&lt;rect width=&quot;24&quot; height=&quot;24&quot; opacity=&quot;0&quot;/&gt;&lt;path d=&quot;M20.71 19.29l-3.4-3.39A7.92 7.92 0 0 0 19 11a8 8 0 1 0-8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 11a6 6 0 1 1 6 6 6 6 0 0 1-6-6z&quot;/&gt;&lt;/g&gt;&lt;/g&gt;&lt;/svg&gt;&#x27;</span>,
             ),
         );
 
-        <span class="hljs-built_in">this</span>.nxIconRegistry.addSvgIcon(
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">nxIconRegistry</span>.<span class="hljs-title function_">addSvgIcon</span>(
             <span class="hljs-string">&#x27;setting&#x27;</span>,
-            domSanitizer.bypassSecurityTrustResourceUrl(
+            domSanitizer.<span class="hljs-title function_">bypassSecurityTrustResourceUrl</span>(
                 <span class="hljs-string">&#x27;assets/icons/settings.svg&#x27;</span>,
             ),
         );
 
-        <span class="hljs-built_in">this</span>.nxIconRegistry.registerFont(<span class="hljs-string">&#x27;fa&#x27;</span>, <span class="hljs-string">&#x27;fa&#x27;</span>, <span class="hljs-string">&#x27;fa-&#x27;</span>);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">nxIconRegistry</span>.<span class="hljs-title function_">registerFont</span>(<span class="hljs-string">&#x27;fa&#x27;</span>, <span class="hljs-string">&#x27;fa&#x27;</span>, <span class="hljs-string">&#x27;fa-&#x27;</span>);
     }
 }

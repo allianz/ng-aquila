@@ -9,7 +9,7 @@
         "downlevelIteration": true,
         "experimentalDecorators": true,
         "module": "es2020",
-        "target": "es2017",
+        "target": "es2020",
         "lib": ["es2020", "dom"],
         "moduleResolution": "node",
         "importHelpers": true,

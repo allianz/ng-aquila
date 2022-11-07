@@ -1,14 +1,14 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Disable responsive example
+ * <span class="hljs-doctag">@title</span> Disable responsive example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;circle-toggle-responsive-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./circle-toggle-responsive-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./circle-toggle-responsive-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CircleToggleResponsiveExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CircleToggleResponsiveExampleComponent</span> {
     sampleValues = [
         {
             <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;A&#x27;</span>,
@@ -33,7 +33,7 @@
         },
     ];
 
-    <span class="hljs-function"><span class="hljs-title">logMessage</span>(<span class="hljs-params">event: Event</span>)</span> {
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`toggle-circle changed to value: `</span> + event);
+    <span class="hljs-title function_">logMessage</span>(<span class="hljs-params">event: Event</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`toggle-circle changed to value: `</span> + event);
     }
 }

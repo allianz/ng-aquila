@@ -1,15 +1,15 @@
-<span class="hljs-keyword">import</span> { NxDynamicTableColumnDefinition } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dynamic-table&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxDynamicTableColumnDefinition</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dynamic-table&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Tooltip Fallbacks Table Example
+ * <span class="hljs-doctag">@title</span> Tooltip Fallbacks Table Example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tooltip-fallbacks-table-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tooltip-fallbacks-table-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tooltip-fallbacks-table-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TooltipFallbacksTableExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TooltipFallbacksTableExampleComponent</span> {
     data = [
         {
             <span class="hljs-attr">nxTooltipPosition</span>: <span class="hljs-string">&#x27;top&#x27;</span>,
@@ -52,7 +52,7 @@
             <span class="hljs-attr">fallback7</span>: <span class="hljs-string">&#x27;top-right&#x27;</span>,
         },
     ];
-    displayedColumns: NxDynamicTableColumnDefinition[] = [
+    <span class="hljs-attr">displayedColumns</span>: <span class="hljs-title class_">NxDynamicTableColumnDefinition</span>[] = [
         <span class="hljs-comment">// HINT: \xa0 is a non-breaking space, so the table header looks nicer</span>
         {
             <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;nxTooltipPosition&#x27;</span>,

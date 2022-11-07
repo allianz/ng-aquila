@@ -6,7 +6,7 @@
             <span class="docs-api-module-import__import-span">import</span>
             { NxAutocompleteModule }
             <span class="docs-api-module-import__from-span">from</span>
-            <span class="docs-api-module-import__path-span">'@allianz/ng-aquila/autocomplete'</span>;
+            <span class="docs-api-module-import__path-span">'@aposin/ng-aquila'</span>;
         </code>
     </p><h3 id="components" class="docs-header-link docs-api-h3">
         <span header-link="components"></span>
@@ -206,7 +206,7 @@ inside the overlay container to allow for easy styling.</p>
         <p>Value to string converter function.
 As an autocomplete option can hold any value, a converter might be needed
 to get a string representation of the value, which can be stored in the input.</p>
-<p>Default: value ? value.toString() : null.</p>
+<p>Default: <code>value =&gt; value ? value.toString() : null</code>.</p>
 </td>
 </tr>
    

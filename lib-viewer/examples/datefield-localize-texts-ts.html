@@ -1,9 +1,9 @@
-<span class="hljs-keyword">import</span> { NxDatepickerIntl } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/datefield&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component, Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { Moment } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Injectable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxDatepickerIntl</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Moment</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
 
 <span class="hljs-meta">@Injectable</span>()
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">NxDatepickerIntl</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">NxDatepickerIntl</span> {
     calendarLabel = <span class="hljs-string">&#x27;My Calendar&#x27;</span>;
     openCalendarLabel = <span class="hljs-string">&#x27;Open my calendar&#x27;</span>;
     prevMonthLabel = <span class="hljs-string">&#x27;My previous month&#x27;</span>;
@@ -17,14 +17,14 @@
 }
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Localizing labels and messages example
+ * <span class="hljs-doctag">@title</span> Localizing labels and messages example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;datefield-localize-texts-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./datefield-localize-texts-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./datefield-localize-texts-example.css&#x27;</span>],
-    <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: NxDatepickerIntl, <span class="hljs-attr">useClass</span>: MyIntl }],
+    <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: <span class="hljs-title class_">NxDatepickerIntl</span>, <span class="hljs-attr">useClass</span>: <span class="hljs-title class_">MyIntl</span> }],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DatefieldLocalizeTextsExampleComponent</span> </span>{
-    <span class="hljs-attr">currentDate</span>: Moment | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DatefieldLocalizeTextsExampleComponent</span> {
+    <span class="hljs-attr">currentDate</span>: <span class="hljs-title class_">Moment</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
 }

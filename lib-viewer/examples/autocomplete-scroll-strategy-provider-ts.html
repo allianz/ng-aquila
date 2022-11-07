@@ -1,15 +1,15 @@
-<span class="hljs-keyword">import</span> { NX_AUTOCOMPLETE_SCROLL_STRATEGY } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/autocomplete&#x27;</span>;
-<span class="hljs-keyword">import</span> { Overlay, ScrollStrategy } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/overlay&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Overlay</span>, <span class="hljs-title class_">ScrollStrategy</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/overlay&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">NX_AUTOCOMPLETE_SCROLL_STRATEGY</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/autocomplete&#x27;</span>;
 
 <span class="hljs-keyword">const</span> words = <span class="hljs-string">`Chimpanzee,Chinchilla,Chipmunk,Coati,Cicada,Clam,Clownfish,Cobra,Cockroach,Cod,Condor,Constrictor,Coral,Cougar,Cow,Coyote,Coypu,Crab,Crane,Crane fly,Crawdad,Crayfish,Cricket,Crocodile,Crow`</span>;
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scrollStrategyFactory</span>(<span class="hljs-params">overlay: Overlay</span>): (<span class="hljs-params"></span>) =&gt; <span class="hljs-title">ScrollStrategy</span> </span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> overlay.scrollStrategies.close({ <span class="hljs-attr">threshold</span>: <span class="hljs-number">100</span> });
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">scrollStrategyFactory</span>(<span class="hljs-params">overlay: Overlay</span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ScrollStrategy</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> overlay.<span class="hljs-property">scrollStrategies</span>.<span class="hljs-title function_">close</span>({ <span class="hljs-attr">threshold</span>: <span class="hljs-number">100</span> });
 }
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Scroll Strategy Provider Example
+ * <span class="hljs-doctag">@title</span> Scroll Strategy Provider Example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;autocomplete-scroll-strategy-provider-example&#x27;</span>,
@@ -17,12 +17,12 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./autocomplete-scroll-strategy-provider-example.css&#x27;</span>],
     <span class="hljs-attr">providers</span>: [
         {
-            <span class="hljs-attr">provide</span>: NX_AUTOCOMPLETE_SCROLL_STRATEGY,
+            <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">NX_AUTOCOMPLETE_SCROLL_STRATEGY</span>,
             <span class="hljs-attr">useFactory</span>: scrollStrategyFactory,
-            <span class="hljs-attr">deps</span>: [Overlay],
+            <span class="hljs-attr">deps</span>: [<span class="hljs-title class_">Overlay</span>],
         },
     ],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AutocompleteScrollStrategyProviderExampleComponent</span> </span>{
-    options = words.split(<span class="hljs-string">&#x27;,&#x27;</span>);
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AutocompleteScrollStrategyProviderExampleComponent</span> {
+    options = words.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;,&#x27;</span>);
 }

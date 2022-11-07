@@ -1,7 +1,7 @@
-import { NxErrorModule } from '@allianz/ng-aquila/base';
-import { NxCircleToggleModule } from '@allianz/ng-aquila/circle-toggle';
-import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NgModule } from '@angular/core';
+import { NxErrorModule } from '@aposin/ng-aquila/base';
+import { NxCircleToggleModule } from '@aposin/ng-aquila/circle-toggle';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { CircleToggleGroupExampleComponent } from './circle-toggle-group/circle-toggle-group-example';

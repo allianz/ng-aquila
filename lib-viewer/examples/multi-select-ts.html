@@ -1,12 +1,12 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">UntypedFormControl</span>, <span class="hljs-title class_">Validators</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
-<span class="hljs-keyword">interface</span> MyOption {
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">MyOption</span> {
     <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
-    id: <span class="hljs-built_in">number</span>;
+    <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
 }
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getOptions</span>(<span class="hljs-params"></span>): <span class="hljs-title">MyOption</span>[] </span>{
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">getOptions</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">MyOption</span>[] {
     <span class="hljs-keyword">return</span> [
         {
             <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Apple&#x27;</span>,
@@ -72,29 +72,29 @@
 }
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Basic multi select example
+ * <span class="hljs-doctag">@title</span> Basic multi select example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;multi-select-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./multi-select-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./multi-select-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MultiSelectExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MultiSelectExampleComponent</span> {
     <span class="hljs-attr">model</span>: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">3</span>];
 
-    modelWithFilter: <span class="hljs-built_in">number</span>[] = [];
+    <span class="hljs-attr">modelWithFilter</span>: <span class="hljs-built_in">number</span>[] = [];
 
-    options: MyOption[] = getOptions();
+    <span class="hljs-attr">options</span>: <span class="hljs-title class_">MyOption</span>[] = <span class="hljs-title function_">getOptions</span>();
 
-    control = <span class="hljs-keyword">new</span> FormControl(<span class="hljs-literal">undefined</span>, {
-        <span class="hljs-attr">validators</span>: Validators.minLength(<span class="hljs-number">3</span>),
+    control = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-literal">undefined</span>, {
+        <span class="hljs-attr">validators</span>: <span class="hljs-title class_">Validators</span>.<span class="hljs-title function_">minLength</span>(<span class="hljs-number">3</span>),
     });
 
-    <span class="hljs-function"><span class="hljs-title">selectLabel</span>(<span class="hljs-params">option: MyOption</span>)</span> {
-        <span class="hljs-keyword">return</span> option.label;
+    <span class="hljs-title function_">selectLabel</span>(<span class="hljs-params">option: MyOption</span>) {
+        <span class="hljs-keyword">return</span> option.<span class="hljs-property">label</span>;
     }
 
-    <span class="hljs-function"><span class="hljs-title">selectValue</span>(<span class="hljs-params">option: MyOption</span>)</span> {
-        <span class="hljs-keyword">return</span> option.id;
+    <span class="hljs-title function_">selectValue</span>(<span class="hljs-params">option: MyOption</span>) {
+        <span class="hljs-keyword">return</span> option.<span class="hljs-property">id</span>;
     }
 }

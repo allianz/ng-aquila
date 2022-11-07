@@ -1,9 +1,9 @@
+import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
 import {
     NxOverlayDirection,
     NxOverlayRef,
     NxOverlayService,
-} from '@allianz/ng-aquila/overlay';
-import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
+} from '@aposin/ng-aquila/overlay';
 
 /**
  * @title Notification Panel

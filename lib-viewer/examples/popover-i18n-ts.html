@@ -1,21 +1,21 @@
-<span class="hljs-keyword">import</span> { NxPopoverIntl } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/popover&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component, Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Injectable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPopoverIntl</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/popover&#x27;</span>;
 
 <span class="hljs-meta">@Injectable</span>()
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPopoverIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">NxPopoverIntl</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPopoverIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">NxPopoverIntl</span> {
     closeIconLabel = <span class="hljs-string">&#x27;Schließen&#x27;</span>;
 }
 
-<span class="hljs-comment">/** <span class="hljs-doctag">@title </span>Popover Internationalization */</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@title</span> Popover Internationalization */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;popover-i18n-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;popover-i18n-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;popover-i18n-example.css&#x27;</span>],
     <span class="hljs-attr">providers</span>: [
         {
-            <span class="hljs-attr">provide</span>: NxPopoverIntl,
-            <span class="hljs-attr">useClass</span>: MyPopoverIntl,
+            <span class="hljs-attr">provide</span>: <span class="hljs-title class_">NxPopoverIntl</span>,
+            <span class="hljs-attr">useClass</span>: <span class="hljs-title class_">MyPopoverIntl</span>,
         },
     ],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PopoverI18nExampleComponent</span> </span>{}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PopoverI18nExampleComponent</span> {}

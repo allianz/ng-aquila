@@ -1,6 +1,6 @@
-import { NX_DROPDOWN_SCROLL_STRATEGY } from '@allianz/ng-aquila/dropdown';
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
+import { NX_DROPDOWN_SCROLL_STRATEGY } from '@aposin/ng-aquila/dropdown';
 
 function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
     return () => overlay.scrollStrategies.close({ threshold: 100 });

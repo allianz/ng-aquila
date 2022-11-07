@@ -1,41 +1,41 @@
-<span class="hljs-keyword">import</span> { NxSidepanelComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/sidepanel&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    AfterViewInit,
-    Component,
-    ElementRef,
-    OnDestroy,
-    ViewChild,
+    <span class="hljs-title class_">AfterViewInit</span>,
+    <span class="hljs-title class_">Component</span>,
+    <span class="hljs-title class_">ElementRef</span>,
+    <span class="hljs-title class_">OnDestroy</span>,
+    <span class="hljs-title class_">ViewChild</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { Subject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSidepanelComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/sidepanel&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Subject</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 <span class="hljs-keyword">import</span> { skip, takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Focus sidepanel on open
+ * <span class="hljs-doctag">@title</span> Focus sidepanel on open
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;sidepanel-focus-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./sidepanel-focus-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;sidepanel-focus-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SidepanelFocuskExampleComponent</span>
-    <span class="hljs-title">implements</span> <span class="hljs-title">OnDestroy</span>, <span class="hljs-title">AfterViewInit</span>
-</span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SidepanelFocuskExampleComponent</span>
+    <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnDestroy</span>, <span class="hljs-title class_">AfterViewInit</span>
+{
     opened = <span class="hljs-literal">true</span>;
-    <span class="hljs-meta">@ViewChild</span>(NxSidepanelComponent) panel!: NxSidepanelComponent;
-    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;closeButton&#x27;</span>, { <span class="hljs-attr">read</span>: ElementRef }) closeButton!: ElementRef;
+    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-title class_">NxSidepanelComponent</span>) panel!: <span class="hljs-title class_">NxSidepanelComponent</span>;
+    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;closeButton&#x27;</span>, { <span class="hljs-attr">read</span>: <span class="hljs-title class_">ElementRef</span> }) closeButton!: <span class="hljs-title class_">ElementRef</span>;
 
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> Subject&lt;<span class="hljs-built_in">void</span>&gt;();
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subject</span>&lt;<span class="hljs-built_in">void</span>&gt;();
 
-    ngAfterViewInit(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-built_in">this</span>.panel.openedChange
-            .pipe(skip(<span class="hljs-number">1</span>), takeUntil(<span class="hljs-built_in">this</span>._destroyed))
-            .subscribe(
-                <span class="hljs-function"><span class="hljs-params">opened</span> =&gt;</span> opened &amp;&amp; <span class="hljs-built_in">this</span>.closeButton.nativeElement.focus(),
+    <span class="hljs-title function_">ngAfterViewInit</span>(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">panel</span>.<span class="hljs-property">openedChange</span>
+            .<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">skip</span>(<span class="hljs-number">1</span>), <span class="hljs-title function_">takeUntil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>))
+            .<span class="hljs-title function_">subscribe</span>(
+                <span class="hljs-function"><span class="hljs-params">opened</span> =&gt;</span> opened &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">closeButton</span>.<span class="hljs-property">nativeElement</span>.<span class="hljs-title function_">focus</span>(),
             );
     }
 
-    ngOnDestroy(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-built_in">this</span>._destroyed.next();
-        <span class="hljs-built_in">this</span>._destroyed.complete();
+    <span class="hljs-title function_">ngOnDestroy</span>(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">next</span>();
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">complete</span>();
     }
 }

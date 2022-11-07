@@ -1,11 +1,11 @@
 <h3 id="type-guards" tabindex="-1" class="docs-markdown--h3">Type Guards</h3>
 <p class="docs-markdown--p">Typescript language features type narrowing inside code blocks if a certain condition is met.</p>
 <p class="docs-markdown--p">However, in some cases, relying purely on typescript language features is not sufficient for appropriate type narrowing.</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { notNullable } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/utils&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { notNullable } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/utils&#x27;</span>;
 
-<span class="hljs-keyword">const</span> result1 = [<span class="hljs-string">&#x27;str&#x27;</span>, <span class="hljs-literal">null</span>].filter(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s != <span class="hljs-literal">null</span>); <span class="hljs-comment">// return type `(string | null)[]`</span>
+<span class="hljs-keyword">const</span> result1 = [<span class="hljs-string">&#x27;str&#x27;</span>, <span class="hljs-literal">null</span>].<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s != <span class="hljs-literal">null</span>); <span class="hljs-comment">// return type `(string | null)[]`</span>
 
-<span class="hljs-keyword">const</span> result2 = [<span class="hljs-string">&#x27;str&#x27;</span>, <span class="hljs-literal">null</span>].filter(notNullable); <span class="hljs-comment">// return type `string[]`</span>
+<span class="hljs-keyword">const</span> result2 = [<span class="hljs-string">&#x27;str&#x27;</span>, <span class="hljs-literal">null</span>].<span class="hljs-title function_">filter</span>(notNullable); <span class="hljs-comment">// return type `string[]`</span>
 </code></pre>
 <p class="docs-markdown--p">For this reason, we provide a set of commonly useful type guards that can be used in functions that accept such type guards, in addition to regular conditional statements.</p>
 <div nx-docs-example="utils-type-guards" config="{}">exampleID: utils-type-guards</div>

@@ -1,14 +1,14 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Tabs Navbar
+ * <span class="hljs-doctag">@title</span> Tabs Navbar
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tabs-nav-bar-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-nav-bar-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tabs-nav-bar-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TabsNavBarExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TabsNavBarExampleComponent</span> {
     links = [
         {
             <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Subpage 1&#x27;</span>,
@@ -27,11 +27,11 @@
         },
     ];
 
-    currentLink = <span class="hljs-built_in">this</span>.links[<span class="hljs-number">0</span>];
+    currentLink = <span class="hljs-variable language_">this</span>.<span class="hljs-property">links</span>[<span class="hljs-number">0</span>];
 
-    <span class="hljs-function"><span class="hljs-title">setActiveLink</span>(<span class="hljs-params">link: <span class="hljs-built_in">any</span></span>)</span> {
-        <span class="hljs-keyword">if</span> (!link.disabled) {
-            <span class="hljs-built_in">this</span>.currentLink = link;
+    <span class="hljs-title function_">setActiveLink</span>(<span class="hljs-params">link: <span class="hljs-built_in">any</span></span>) {
+        <span class="hljs-keyword">if</span> (!link.<span class="hljs-property">disabled</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentLink</span> = link;
         }
     }
 }

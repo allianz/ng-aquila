@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Progress Indicator multi manual step completion example
@@ -16,7 +16,7 @@ export class ProgressStepperFormExampleComponent {
         name: ['', Validators.required],
     });
 
-    constructor(private readonly fb: FormBuilder) {}
+    constructor(private readonly fb: UntypedFormBuilder) {}
 
     completeLastStep() {
         this.lastStepCompleted = true;

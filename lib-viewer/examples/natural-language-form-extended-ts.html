@@ -1,30 +1,33 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { FormBuilder, FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">UntypedFormBuilder</span>,
+    <span class="hljs-title class_">UntypedFormControl</span>,
+    <span class="hljs-title class_">Validators</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Extended example
+ * <span class="hljs-doctag">@title</span> Extended example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;natural-language-form-extended-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./natural-language-form-extended-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./natural-language-form-extended-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NaturalLanguageFormExtendedExampleComponent</span> </span>{
-    <span class="hljs-keyword">readonly</span> naturalForm = <span class="hljs-built_in">this</span>.fb.group({
-        <span class="hljs-attr">who</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, [Validators.required]),
-        <span class="hljs-attr">city</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, [Validators.required]),
-        <span class="hljs-attr">spots</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, [
-            Validators.pattern(<span class="hljs-string">&#x27;[0-9]*&#x27;</span>),
-            Validators.required,
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NaturalLanguageFormExtendedExampleComponent</span> {
+    <span class="hljs-keyword">readonly</span> naturalForm = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
+        <span class="hljs-attr">who</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, [<span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>]),
+        <span class="hljs-attr">city</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, [<span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>]),
+        <span class="hljs-attr">spots</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, [
+            <span class="hljs-title class_">Validators</span>.<span class="hljs-title function_">pattern</span>(<span class="hljs-string">&#x27;[0-9]*&#x27;</span>),
+            <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>,
         ]),
     });
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>)</span> {}
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: UntypedFormBuilder</span>) {}
 
-    <span class="hljs-function"><span class="hljs-title">validate</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">Object</span>.keys(<span class="hljs-built_in">this</span>.naturalForm.controls).forEach(<span class="hljs-function"><span class="hljs-params">field</span> =&gt;</span> {
-            <span class="hljs-keyword">const</span> control = <span class="hljs-built_in">this</span>.naturalForm.get(field);
-            control?.markAsTouched({ <span class="hljs-attr">onlySelf</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-title function_">validate</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">values</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">naturalForm</span>.<span class="hljs-property">controls</span>).<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">control</span> =&gt;</span> {
+            control?.<span class="hljs-title function_">markAsTouched</span>({ <span class="hljs-attr">onlySelf</span>: <span class="hljs-literal">true</span> });
         });
     }
 }

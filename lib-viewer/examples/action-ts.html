@@ -1,22 +1,22 @@
-<span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">OnInit</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
-<span class="hljs-keyword">interface</span> Action {
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Action</span> {
     <span class="hljs-attr">icon</span>: <span class="hljs-built_in">string</span>;
-    label: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
     notification?: <span class="hljs-built_in">boolean</span>;
     notificationCount?: <span class="hljs-built_in">number</span>;
 }
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Action Example
+ * <span class="hljs-doctag">@title</span> Action Example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;action-example&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./action-example.css&#x27;</span>],
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./action-example.html&#x27;</span>,
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ActionExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>{
-    <span class="hljs-attr">actions</span>: Action[] = [
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ActionExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnInit</span> {
+    <span class="hljs-attr">actions</span>: <span class="hljs-title class_">Action</span>[] = [
         {
             <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file-text&#x27;</span>,
             <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;All Files&#x27;</span>,
@@ -39,13 +39,13 @@
         },
     ];
 
-    selectedAction!: Action;
+    selectedAction!: <span class="hljs-title class_">Action</span>;
 
-    ngOnInit(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-built_in">this</span>.selectedAction = <span class="hljs-built_in">this</span>.actions[<span class="hljs-number">1</span>];
+    <span class="hljs-title function_">ngOnInit</span>(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedAction</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">actions</span>[<span class="hljs-number">1</span>];
     }
 
-    <span class="hljs-function"><span class="hljs-title">onSelect</span>(<span class="hljs-params">action: Action</span>)</span> {
-        <span class="hljs-built_in">this</span>.selectedAction = action;
+    <span class="hljs-title function_">onSelect</span>(<span class="hljs-params">action: Action</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedAction</span> = action;
     }
 }

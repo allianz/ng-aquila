@@ -1,10 +1,10 @@
-import { NxActionModule } from '@allianz/ng-aquila/action';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxInputModule } from '@allianz/ng-aquila/input';
-import { NxSidebarModule } from '@allianz/ng-aquila/sidebar';
-import { NxTreeModule } from '@allianz/ng-aquila/tree';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { NxActionModule } from '@aposin/ng-aquila/action';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
+import { NxTreeModule } from '@aposin/ng-aquila/tree';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { SidebarExampleComponent } from './sidebar/sidebar-example';

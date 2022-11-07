@@ -1,8 +1,8 @@
+import { Component } from '@angular/core';
 import {
     NX_TOOLTIP_DEFAULT_OPTIONS,
     NxTooltipDefaultOptions,
-} from '@allianz/ng-aquila/tooltip';
-import { Component } from '@angular/core';
+} from '@aposin/ng-aquila/tooltip';
 
 const myDefaultOptions: NxTooltipDefaultOptions = {
     position: 'right',

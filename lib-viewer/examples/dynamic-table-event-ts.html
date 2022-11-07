@@ -1,15 +1,15 @@
-<span class="hljs-keyword">import</span> { NxDynamicTableColumnDefinition } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dynamic-table&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxDynamicTableColumnDefinition</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dynamic-table&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Table Event Example
+ * <span class="hljs-doctag">@title</span> Table Event Example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dynamic-table-event-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dynamic-table-event-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dynamic-table-event-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DynamicTableEventExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DynamicTableEventExampleComponent</span> {
     data = [
         {
             <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AAC &#x27;</span>,
@@ -58,7 +58,7 @@
         },
     ];
 
-    displayedColumns: NxDynamicTableColumnDefinition[] = [
+    <span class="hljs-attr">displayedColumns</span>: <span class="hljs-title class_">NxDynamicTableColumnDefinition</span>[] = [
         { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Code&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;code&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
         { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Company&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;company&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
         { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Price&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;price&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
@@ -70,12 +70,12 @@
     modalOpen = <span class="hljs-literal">false</span>;
     basicModalBody = <span class="hljs-string">&#x27;&#x27;</span>;
 
-    handleRowClick(row: unknown): <span class="hljs-built_in">void</span> {
-        <span class="hljs-built_in">this</span>.basicModalBody = <span class="hljs-built_in">JSON</span>.stringify(row);
-        <span class="hljs-built_in">this</span>.toggleModal();
+    <span class="hljs-title function_">handleRowClick</span>(<span class="hljs-attr">row</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">void</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">basicModalBody</span> = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(row);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">toggleModal</span>();
     }
 
-    <span class="hljs-function"><span class="hljs-title">toggleModal</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">this</span>.modalOpen = !<span class="hljs-built_in">this</span>.modalOpen;
+    <span class="hljs-title function_">toggleModal</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">modalOpen</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">modalOpen</span>;
     }
 }

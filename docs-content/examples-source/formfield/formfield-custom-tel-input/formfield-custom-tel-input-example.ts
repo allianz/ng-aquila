@@ -1,4 +1,3 @@
-import { NxFormfieldControl } from '@allianz/ng-aquila/formfield';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
@@ -11,10 +10,11 @@ import {
 } from '@angular/core';
 import {
     ControlValueAccessor,
-    FormBuilder,
     NgControl,
+    UntypedFormBuilder,
     Validators,
 } from '@angular/forms';
+import { NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -148,7 +148,7 @@ export class FormfieldCustomTelInputExampleComponent
     onTouched = () => {};
 
     constructor(
-        private readonly fb: FormBuilder,
+        private readonly fb: UntypedFormBuilder,
         private readonly _focusMonitor: FocusMonitor,
         private readonly _elementRef: ElementRef<HTMLElement>,
         @Optional() @Self() readonly ngControl: NgControl | null,

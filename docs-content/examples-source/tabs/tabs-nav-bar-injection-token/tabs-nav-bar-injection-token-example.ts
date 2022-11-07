@@ -1,8 +1,8 @@
+import { Component } from '@angular/core';
 import {
     TAB_NAV_BAR_DEFAULT_OPTIONS,
     TabNavBarDefaultOptions,
-} from '@allianz/ng-aquila/tabs';
-import { Component } from '@angular/core';
+} from '@aposin/ng-aquila/tabs';
 
 const myDefaultOptions: TabNavBarDefaultOptions = {
     appearance: 'expert',

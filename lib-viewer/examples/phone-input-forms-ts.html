@@ -1,21 +1,25 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { FormControl, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">UntypedFormControl</span>,
+    <span class="hljs-title class_">UntypedFormGroup</span>,
+    <span class="hljs-title class_">Validators</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Phone input usage in forms
+ * <span class="hljs-doctag">@title</span> Phone input usage in forms
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;phone-input-forms-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;phone-input-forms-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./phone-input-forms-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PhoneInputFormsExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PhoneInputFormsExampleComponent</span> {
     value = <span class="hljs-string">&#x27;&#x27;</span>;
-    formGroup: FormGroup;
+    <span class="hljs-attr">formGroup</span>: <span class="hljs-title class_">UntypedFormGroup</span>;
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">this</span>.formGroup = <span class="hljs-keyword">new</span> FormGroup({
-            <span class="hljs-attr">phone</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, Validators.required),
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">formGroup</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormGroup</span>({
+            <span class="hljs-attr">phone</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>),
         });
     }
 }

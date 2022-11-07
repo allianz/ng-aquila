@@ -1,19 +1,19 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Small stage default example
+ * <span class="hljs-doctag">@title</span> Small stage default example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;small-stage-default-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./small-stage-default-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./small-stage-default-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SmallStageDefaultExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SmallStageDefaultExampleComponent</span> {
     items = [<span class="hljs-string">&#x27;Home&#x27;</span>, <span class="hljs-string">&#x27;Insurance&#x27;</span>, <span class="hljs-string">&#x27;Health Insurance&#x27;</span>];
 
-    dynamicItems = <span class="hljs-built_in">this</span>.items;
+    dynamicItems = <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>;
 
-    <span class="hljs-function"><span class="hljs-title">goToItem</span>(<span class="hljs-params">i: <span class="hljs-built_in">number</span></span>)</span> {
-        <span class="hljs-built_in">this</span>.dynamicItems = <span class="hljs-built_in">this</span>.items.slice(<span class="hljs-number">0</span>, i + <span class="hljs-number">1</span>);
+    <span class="hljs-title function_">goToItem</span>(<span class="hljs-params">i: <span class="hljs-built_in">number</span></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">dynamicItems</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, i + <span class="hljs-number">1</span>);
     }
 }

@@ -1,51 +1,51 @@
-<span class="hljs-keyword">import</span> { FocusMonitor } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/a11y&#x27;</span>;
-<span class="hljs-keyword">import</span> { ENTER, SPACE } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/keycodes&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FocusMonitor</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/a11y&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">ENTER</span>, <span class="hljs-variable constant_">SPACE</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/keycodes&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    AfterViewInit,
-    Component,
-    ElementRef,
-    OnDestroy,
-    ViewChild,
+    <span class="hljs-title class_">AfterViewInit</span>,
+    <span class="hljs-title class_">Component</span>,
+    <span class="hljs-title class_">ElementRef</span>,
+    <span class="hljs-title class_">OnDestroy</span>,
+    <span class="hljs-title class_">ViewChild</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Popover Trigger Example
+ * <span class="hljs-doctag">@title</span> Popover Trigger Example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;popover-trigger-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./popover-trigger-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./popover-trigger-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PopoverTriggerExampleComponent</span>
-    <span class="hljs-title">implements</span> <span class="hljs-title">AfterViewInit</span>, <span class="hljs-title">OnDestroy</span>
-</span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PopoverTriggerExampleComponent</span>
+    <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterViewInit</span>, <span class="hljs-title class_">OnDestroy</span>
+{
     popoverManualOpenFlag = <span class="hljs-literal">false</span>;
 
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;clickTriggerIcon&#x27;</span>)
-    _clickTriggerIcon!: ElementRef&lt;HTMLElement&gt;;
+    _clickTriggerIcon!: <span class="hljs-title class_">ElementRef</span>&lt;<span class="hljs-title class_">HTMLElement</span>&gt;;
 
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;manualTriggerIcon&#x27;</span>)
-    _manualTriggerIcon!: ElementRef&lt;HTMLElement&gt;;
+    _manualTriggerIcon!: <span class="hljs-title class_">ElementRef</span>&lt;<span class="hljs-title class_">HTMLElement</span>&gt;;
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _focusMonitor: FocusMonitor</span>)</span> {}
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _focusMonitor: FocusMonitor</span>) {}
 
-    ngAfterViewInit(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-built_in">this</span>._focusMonitor.monitor(<span class="hljs-built_in">this</span>._clickTriggerIcon);
-        <span class="hljs-built_in">this</span>._focusMonitor.monitor(<span class="hljs-built_in">this</span>._manualTriggerIcon);
+    <span class="hljs-title function_">ngAfterViewInit</span>(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_focusMonitor</span>.<span class="hljs-title function_">monitor</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_clickTriggerIcon</span>);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_focusMonitor</span>.<span class="hljs-title function_">monitor</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_manualTriggerIcon</span>);
     }
 
-    ngOnDestroy(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-built_in">this</span>._focusMonitor.stopMonitoring(<span class="hljs-built_in">this</span>._clickTriggerIcon);
-        <span class="hljs-built_in">this</span>._focusMonitor.stopMonitoring(<span class="hljs-built_in">this</span>._manualTriggerIcon);
+    <span class="hljs-title function_">ngOnDestroy</span>(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_focusMonitor</span>.<span class="hljs-title function_">stopMonitoring</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_clickTriggerIcon</span>);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_focusMonitor</span>.<span class="hljs-title function_">stopMonitoring</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_manualTriggerIcon</span>);
     }
 
-    <span class="hljs-function"><span class="hljs-title">handleKeydown</span>(<span class="hljs-params">event: KeyboardEvent</span>)</span> {
-        <span class="hljs-keyword">switch</span> (event.keyCode) {
-            <span class="hljs-keyword">case</span> SPACE:
-            <span class="hljs-keyword">case</span> ENTER:
-                <span class="hljs-built_in">this</span>.popoverManualOpenFlag = !<span class="hljs-built_in">this</span>.popoverManualOpenFlag;
+    <span class="hljs-title function_">handleKeydown</span>(<span class="hljs-params">event: KeyboardEvent</span>) {
+        <span class="hljs-keyword">switch</span> (event.<span class="hljs-property">keyCode</span>) {
+            <span class="hljs-keyword">case</span> <span class="hljs-attr">SPACE</span>:
+            <span class="hljs-keyword">case</span> <span class="hljs-attr">ENTER</span>:
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">popoverManualOpenFlag</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">popoverManualOpenFlag</span>;
                 <span class="hljs-keyword">break</span>;
-            <span class="hljs-keyword">default</span>:
+            <span class="hljs-attr">default</span>:
         }
     }
 }

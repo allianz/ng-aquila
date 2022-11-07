@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 
 /**
  * @title Reactive example
@@ -14,5 +14,5 @@ export class NumberStepperReactiveExampleComponent {
         stepperTestReactive: 3,
     });
 
-    constructor(private readonly fb: FormBuilder) {}
+    constructor(private readonly fb: UntypedFormBuilder) {}
 }

@@ -1,21 +1,21 @@
-<span class="hljs-keyword">import</span> { NxLicencePlateType } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/licence-plate&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLicencePlateType</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/licence-plate&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Licence plate expert
+ * <span class="hljs-doctag">@title</span> Licence plate expert
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;licence-plate-expert-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;licence-plate-expert-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;licence-plate-expert-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LicencePlateExpertExample</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LicencePlateExpertExample</span> {
     <span class="hljs-attr">licencePlateModel</span>: {
-        <span class="hljs-attr">type</span>: NxLicencePlateType;
-        country: <span class="hljs-built_in">string</span>;
-        value: <span class="hljs-built_in">string</span>;
-        startDate: <span class="hljs-built_in">number</span>;
-        endDate: <span class="hljs-built_in">number</span>;
+        <span class="hljs-attr">type</span>: <span class="hljs-title class_">NxLicencePlateType</span>;
+        <span class="hljs-attr">country</span>: <span class="hljs-built_in">string</span>;
+        <span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>;
+        <span class="hljs-attr">startDate</span>: <span class="hljs-built_in">number</span>;
+        <span class="hljs-attr">endDate</span>: <span class="hljs-built_in">number</span>;
     } = {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;de_standard&#x27;</span>,
         <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;D&#x27;</span>,
@@ -24,7 +24,7 @@
         <span class="hljs-attr">endDate</span>: <span class="hljs-number">2</span>,
     };
 
-    licencePlateTypes: { <span class="hljs-attr">type</span>: <span class="hljs-built_in">string</span>; typeName: <span class="hljs-built_in">string</span> }[] = [
+    <span class="hljs-attr">licencePlateTypes</span>: { <span class="hljs-attr">type</span>: <span class="hljs-built_in">string</span>; <span class="hljs-attr">typeName</span>: <span class="hljs-built_in">string</span> }[] = [
         { <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;de_standard&#x27;</span>, <span class="hljs-attr">typeName</span>: <span class="hljs-string">&#x27;Standard (Germany)&#x27;</span> },
         { <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;de_season&#x27;</span>, <span class="hljs-attr">typeName</span>: <span class="hljs-string">&#x27;Seasonal (Germany)&#x27;</span> },
         { <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;de_special&#x27;</span>, <span class="hljs-attr">typeName</span>: <span class="hljs-string">&#x27;Special (Germany)&#x27;</span> },
@@ -32,7 +32,7 @@
         { <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;other&#x27;</span>, <span class="hljs-attr">typeName</span>: <span class="hljs-string">&#x27;Other&#x27;</span> },
     ];
 
-    monthsOfYearList: { <span class="hljs-attr">month</span>: <span class="hljs-built_in">number</span>; monthName: <span class="hljs-built_in">string</span> }[] = [
+    <span class="hljs-attr">monthsOfYearList</span>: { <span class="hljs-attr">month</span>: <span class="hljs-built_in">number</span>; <span class="hljs-attr">monthName</span>: <span class="hljs-built_in">string</span> }[] = [
         { <span class="hljs-attr">month</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;January &#x27;</span> },
         { <span class="hljs-attr">month</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;February&#x27;</span> },
         { <span class="hljs-attr">month</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;March&#x27;</span> },
@@ -46,7 +46,7 @@
         { <span class="hljs-attr">month</span>: <span class="hljs-number">11</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;November&#x27;</span> },
         { <span class="hljs-attr">month</span>: <span class="hljs-number">12</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;December&#x27;</span> },
     ];
-    countriesList: { <span class="hljs-attr">country</span>: <span class="hljs-built_in">string</span>; countryName: <span class="hljs-built_in">string</span> }[] = [
+    <span class="hljs-attr">countriesList</span>: { <span class="hljs-attr">country</span>: <span class="hljs-built_in">string</span>; <span class="hljs-attr">countryName</span>: <span class="hljs-built_in">string</span> }[] = [
         { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Austria&#x27;</span> },
         { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Belgium&#x27;</span> },
         { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;BG&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Bulgaria&#x27;</span> },

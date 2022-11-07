@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 
 /**
  * @title Checkbox group reactive example
@@ -14,5 +14,5 @@ export class CheckboxGroupReactiveExampleComponent {
         terms: [],
     });
 
-    constructor(private readonly fb: FormBuilder) {}
+    constructor(private readonly fb: UntypedFormBuilder) {}
 }

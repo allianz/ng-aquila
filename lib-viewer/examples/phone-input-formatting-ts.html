@@ -1,15 +1,15 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
-<span class="hljs-comment">/** <span class="hljs-doctag">@title </span>Phone Input Formatting */</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@title</span> Phone Input Formatting */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;phone-input-formatting-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;phone-input-formatting-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./phone-input-formatting-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PhoneInputFormattingExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PhoneInputFormattingExampleComponent</span> {
     value = <span class="hljs-string">&#x27;+49891234567&#x27;</span>;
 
-    <span class="hljs-function"><span class="hljs-title">whitespaceFormatter</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span>, countryCode: <span class="hljs-built_in">string</span></span>)</span> {
-        <span class="hljs-keyword">return</span> value.match(<span class="hljs-regexp">/.{1,2}/g</span>)?.join(<span class="hljs-string">&#x27; &#x27;</span>) || <span class="hljs-string">&#x27;&#x27;</span>;
+    <span class="hljs-title function_">whitespaceFormatter</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span>, countryCode: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-keyword">return</span> value.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/.{1,2}/g</span>)?.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27; &#x27;</span>) || <span class="hljs-string">&#x27;&#x27;</span>;
     }
 }

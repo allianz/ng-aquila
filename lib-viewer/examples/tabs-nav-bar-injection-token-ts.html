@@ -1,25 +1,25 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    TAB_NAV_BAR_DEFAULT_OPTIONS,
-    TabNavBarDefaultOptions,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/tabs&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+    <span class="hljs-variable constant_">TAB_NAV_BAR_DEFAULT_OPTIONS</span>,
+    <span class="hljs-title class_">TabNavBarDefaultOptions</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tabs&#x27;</span>;
 
-<span class="hljs-keyword">const</span> myDefaultOptions: TabNavBarDefaultOptions = {
+<span class="hljs-keyword">const</span> <span class="hljs-attr">myDefaultOptions</span>: <span class="hljs-title class_">TabNavBarDefaultOptions</span> = {
     <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;expert&#x27;</span>,
 };
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Injection Token in Tabs Navbar
+ * <span class="hljs-doctag">@title</span> Injection Token in Tabs Navbar
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tabs-nav-bar-injection-token-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-nav-bar-injection-token-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tabs-nav-bar-injection-token-example.css&#x27;</span>],
     <span class="hljs-attr">providers</span>: [
-        { <span class="hljs-attr">provide</span>: TAB_NAV_BAR_DEFAULT_OPTIONS, <span class="hljs-attr">useValue</span>: myDefaultOptions },
+        { <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">TAB_NAV_BAR_DEFAULT_OPTIONS</span>, <span class="hljs-attr">useValue</span>: myDefaultOptions },
     ],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TabsNavBarInjectionTokenExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TabsNavBarInjectionTokenExampleComponent</span> {
     links = [
         {
             <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Subpage 1&#x27;</span>,
@@ -38,11 +38,11 @@
         },
     ];
 
-    currentLink = <span class="hljs-built_in">this</span>.links[<span class="hljs-number">0</span>];
+    currentLink = <span class="hljs-variable language_">this</span>.<span class="hljs-property">links</span>[<span class="hljs-number">0</span>];
 
-    <span class="hljs-function"><span class="hljs-title">setActiveLink</span>(<span class="hljs-params">link: <span class="hljs-built_in">any</span></span>)</span> {
-        <span class="hljs-keyword">if</span> (!link.disabled) {
-            <span class="hljs-built_in">this</span>.currentLink = link;
+    <span class="hljs-title function_">setActiveLink</span>(<span class="hljs-params">link: <span class="hljs-built_in">any</span></span>) {
+        <span class="hljs-keyword">if</span> (!link.<span class="hljs-property">disabled</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentLink</span> = link;
         }
     }
 }

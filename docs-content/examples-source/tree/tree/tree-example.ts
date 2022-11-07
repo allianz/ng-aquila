@@ -1,14 +1,14 @@
+import { Component } from '@angular/core';
 import {
     NxFlatTreeControl,
     NxFlatTreeNode,
     NxTreeFlatDataSource,
     NxTreeNode,
-} from '@allianz/ng-aquila/tree';
-import { Component } from '@angular/core';
+} from '@aposin/ng-aquila/tree';
 
 /**
-  This interface defines a single node of the trees data structure.
-*/
+ * This interface defines a single node of the trees data structure.
+ */
 export interface MyTreeNode extends NxTreeNode {
     children?: MyTreeNode[];
     label: string;

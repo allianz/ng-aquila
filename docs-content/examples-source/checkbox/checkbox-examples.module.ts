@@ -1,5 +1,5 @@
-import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
 import { NgModule } from '@angular/core';
+import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { CheckboxGroupBasicExampleComponent } from './checkbox-group-basic/checkbox-group-basic-example';

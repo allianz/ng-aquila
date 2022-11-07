@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Reactive Form Example
@@ -22,7 +22,7 @@ export class RadioToggleReactiveExampleComponent {
 
     isToggleDisabled = false;
 
-    constructor(private readonly fb: FormBuilder) {}
+    constructor(private readonly fb: UntypedFormBuilder) {}
 
     toggleDisabled() {
         this.isToggleDisabled = !this.isToggleDisabled;

@@ -1,5 +1,5 @@
-import { NxDatepickerIntl } from '@allianz/ng-aquila/datefield';
 import { Component, Injectable } from '@angular/core';
+import { NxDatepickerIntl } from '@aposin/ng-aquila/datefield';
 import { Moment } from 'moment';
 
 @Injectable()

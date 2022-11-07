@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Selectable cards reactive example
@@ -14,5 +14,5 @@ export class SelectableCardReactiveExampleComponent {
         selectableCardTestReactive: [false, Validators.requiredTrue],
     });
 
-    constructor(private readonly fb: FormBuilder) {}
+    constructor(private readonly fb: UntypedFormBuilder) {}
 }

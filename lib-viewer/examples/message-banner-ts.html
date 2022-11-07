@@ -1,21 +1,21 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Notification banner example
+ * <span class="hljs-doctag">@title</span> Notification banner example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;message-banner-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./message-banner-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./message-banner-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MessageBannerExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MessageBannerExampleComponent</span> {
     infoBanner = <span class="hljs-literal">true</span>;
     warningBanner = <span class="hljs-literal">true</span>;
     errorBanner = <span class="hljs-literal">true</span>;
 
-    <span class="hljs-function"><span class="hljs-title">showAllBanners</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">this</span>.infoBanner = <span class="hljs-literal">true</span>;
-        <span class="hljs-built_in">this</span>.warningBanner = <span class="hljs-literal">true</span>;
-        <span class="hljs-built_in">this</span>.errorBanner = <span class="hljs-literal">true</span>;
+    <span class="hljs-title function_">showAllBanners</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">infoBanner</span> = <span class="hljs-literal">true</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">warningBanner</span> = <span class="hljs-literal">true</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">errorBanner</span> = <span class="hljs-literal">true</span>;
     }
 }

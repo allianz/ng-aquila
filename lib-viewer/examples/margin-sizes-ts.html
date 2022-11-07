@@ -1,14 +1,14 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Margin sizes
+ * <span class="hljs-doctag">@title</span> Margin sizes
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;margin-sizes-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./margin-sizes-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./margin-sizes-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MarginSizesExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MarginSizesExampleComponent</span> {
     marginSizes = {
         <span class="hljs-string">&#x27;0&#x27;</span>: <span class="hljs-number">0</span>,
         <span class="hljs-string">&#x27;3xs&#x27;</span>: <span class="hljs-number">4</span>,
@@ -27,7 +27,7 @@
         <span class="hljs-string">&#x27;5xl&#x27;</span>: <span class="hljs-number">96</span>,
     };
 
-    <span class="hljs-function"><span class="hljs-title">returnZero</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-title function_">returnZero</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     }
 }

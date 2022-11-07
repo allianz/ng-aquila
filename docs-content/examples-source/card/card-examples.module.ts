@@ -1,9 +1,9 @@
-import { NxCardModule } from '@allianz/ng-aquila/card';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxLinkModule } from '@allianz/ng-aquila/link';
-import { NxPopoverModule } from '@allianz/ng-aquila/popover';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { NxCardModule } from '@aposin/ng-aquila/card';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxLinkModule } from '@aposin/ng-aquila/link';
+import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { CardExampleComponent } from './card/card-example';

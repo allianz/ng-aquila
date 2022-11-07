@@ -75,7 +75,7 @@ export class TableSelectingExampleComponent {
             : this.tableElements.forEach(row => this.selection.select(row));
     }
 
-    /** marks a row as active without changing this.selection */
+    /** Marks a row as active without changing this.selection */
     activateRow(row: Contract) {
         this.activeRow = row;
     }

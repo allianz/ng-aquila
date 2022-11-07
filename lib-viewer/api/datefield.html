@@ -6,7 +6,7 @@
             <span class="docs-api-module-import__import-span">import</span>
             { NxDatefieldModule }
             <span class="docs-api-module-import__from-span">from</span>
-            <span class="docs-api-module-import__path-span">'@allianz/ng-aquila/datefield'</span>;
+            <span class="docs-api-module-import__path-span">'@aposin/ng-aquila'</span>;
         </code>
     </p><h3 id="components" class="docs-header-link docs-api-h3">
         <span header-link="components"></span>
@@ -669,7 +669,7 @@ This doesn&#39;t imply a change on the selected date.</p>
                 date:
                 <span class="docs-api-method-parameter-type">D</span>
             </code>
-            <p class="docs-api-method-parameter-description"> The date to clone </p>
+            <p class="docs-api-method-parameter-description"> The date to clone. </p>
         </div>
         
     </div><div class="docs-api-method-returns">
@@ -707,8 +707,7 @@ This doesn&#39;t imply a change on the selected date.</p>
         
     </div><div class="docs-api-method-returns">
         <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">number</code></p>
-        <p class="docs-api-method-returns-description"> <p>0 if the dates are equal, a number less than 0 if the first date is earlier,
-    a number greater than 0 if the first date is later.</p>
+        <p class="docs-api-method-returns-description"> <p>0 if the dates are equal, a number less than 0 if the first date is earlier, a number greater than 0 if the first date is later.</p>
  </p>
     </div></div>
    
@@ -762,7 +761,7 @@ month and date.</p>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Attempts to deserialize a value to a valid date object. This is different from parsing in that
-deserialize should only accept non-ambiguous, locale-independent formats (e.g. a ISO 8601
+deserialize should only accept non-ambiguous, locale-independent formats (e.g. an ISO 8601
 string). The default implementation does not allow any deserialization, it simply checks that
 the given value is already a valid date object or null. The <code>&lt;nx-datefield&gt;</code> will call this
 method on all of its <code>@Input()</code> properties that accept dates. It is therefore possible to
@@ -781,8 +780,7 @@ to also deserialize the format used by your backend.</p>
         
     </div><div class="docs-api-method-returns">
         <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">D | null</code></p>
-        <p class="docs-api-method-returns-description"> <p>The deserialized date object, either a valid date, null if the value can be
-    deserialized into a null date (e.g. the empty string), or an invalid date.</p>
+        <p class="docs-api-method-returns-description"> <p>The deserialized date object, either a valid date, null if the value can be deserialized into a null date (e.g. the empty string), or an invalid date.</p>
  </p>
     </div></div>
    
@@ -1078,7 +1076,7 @@ to also deserialize the format used by your backend.</p>
         
     </div><div class="docs-api-method-returns">
         <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">D</code></p>
-        <p class="docs-api-method-returns-description"> <p>Whether the date is valid.</p>
+        <p class="docs-api-method-returns-description"> <p>True if the date is valid.</p>
  </p>
     </div></div>
    
@@ -1098,12 +1096,12 @@ to also deserialize the format used by your backend.</p>
                 obj:
                 <span class="docs-api-method-parameter-type">any</span>
             </code>
-            <p class="docs-api-method-parameter-description"> The object to check </p>
+            <p class="docs-api-method-parameter-description"> The object to check. </p>
         </div>
         
     </div><div class="docs-api-method-returns">
         <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">boolean</code></p>
-        <p class="docs-api-method-returns-description"> <p>Whether the object is a date instance.</p>
+        <p class="docs-api-method-returns-description"> <p>True if the object is a date instance.</p>
  </p>
     </div></div>
    
@@ -1128,7 +1126,7 @@ to also deserialize the format used by your backend.</p>
         
     </div><div class="docs-api-method-returns">
         <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">boolean</code></p>
-        <p class="docs-api-method-returns-description"> <p>Whether the date is valid.</p>
+        <p class="docs-api-method-returns-description"> <p>True if the date is valid.</p>
  </p>
     </div></div>
    
@@ -1202,8 +1200,7 @@ to also deserialize the format used by your backend.</p>
         
     </div><div class="docs-api-method-returns">
         <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">boolean</code></p>
-        <p class="docs-api-method-returns-description"> <p>Whether the two dates are equal.
-    Null dates are considered equal to other null dates.</p>
+        <p class="docs-api-method-returns-description"> <p>True if the two dates are equal. Null dates are considered equal to other null dates.</p>
  </p>
     </div></div>
    

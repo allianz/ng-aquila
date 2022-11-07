@@ -1,18 +1,22 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { FormControl, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">UntypedFormControl</span>,
+    <span class="hljs-title class_">UntypedFormGroup</span>,
+    <span class="hljs-title class_">Validators</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Reactive example
+ * <span class="hljs-doctag">@title</span> Reactive example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;datefield-reactive-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./datefield-reactive-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./datefield-reactive-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DatefieldReactiveExampleComponent</span> </span>{
-    <span class="hljs-attr">testForm</span>: FormGroup = <span class="hljs-keyword">new</span> FormGroup({
-        <span class="hljs-attr">date</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
-            <span class="hljs-attr">validators</span>: Validators.required,
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DatefieldReactiveExampleComponent</span> {
+    <span class="hljs-attr">testForm</span>: <span class="hljs-title class_">UntypedFormGroup</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormGroup</span>({
+        <span class="hljs-attr">date</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, {
+            <span class="hljs-attr">validators</span>: <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>,
         }),
     });
 }

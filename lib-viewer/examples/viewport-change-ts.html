@@ -1,19 +1,19 @@
-<span class="hljs-keyword">import</span> { NxSidebarComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/sidebar&#x27;</span>;
-<span class="hljs-keyword">import</span> { NxBreakpoints, NxViewportService } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/utils&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component, OnDestroy, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { Subject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">OnDestroy</span>, <span class="hljs-title class_">ViewChild</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSidebarComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/sidebar&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBreakpoints</span>, <span class="hljs-title class_">NxViewportService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/utils&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Subject</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 <span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Viewport Change example
+ * <span class="hljs-doctag">@title</span> Viewport Change example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;viewport-change-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./viewport-change-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./viewport-change-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ViewportChangeExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnDestroy</span> </span>{
-    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;sidebar&#x27;</span>) sidebar!: NxSidebarComponent;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ViewportChangeExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnDestroy</span> {
+    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;sidebar&#x27;</span>) sidebar!: <span class="hljs-title class_">NxSidebarComponent</span>;
 
     <span class="hljs-keyword">readonly</span> actions = [
         {
@@ -43,26 +43,26 @@
         },
     ];
 
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> Subject&lt;<span class="hljs-built_in">void</span>&gt;();
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subject</span>&lt;<span class="hljs-built_in">void</span>&gt;();
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> viewportService: NxViewportService</span>)</span> {
-        <span class="hljs-built_in">this</span>.viewportService
-            .min(NxBreakpoints.BREAKPOINT_MEDIUM)
-            .pipe(takeUntil(<span class="hljs-built_in">this</span>._destroyed))
-            .subscribe(<span class="hljs-function"><span class="hljs-params">isGreaterThanMedium</span> =&gt;</span> {
-                <span class="hljs-keyword">if</span> (isGreaterThanMedium &amp;&amp; !<span class="hljs-built_in">this</span>.sidebar.open) {
-                    <span class="hljs-built_in">this</span>.sidebar.expand();
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> viewportService: NxViewportService</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewportService</span>
+            .<span class="hljs-title function_">min</span>(<span class="hljs-title class_">NxBreakpoints</span>.<span class="hljs-property">BREAKPOINT_MEDIUM</span>)
+            .<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">takeUntil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>))
+            .<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">isGreaterThanMedium</span> =&gt;</span> {
+                <span class="hljs-keyword">if</span> (isGreaterThanMedium &amp;&amp; !<span class="hljs-variable language_">this</span>.<span class="hljs-property">sidebar</span>.<span class="hljs-property">open</span>) {
+                    <span class="hljs-variable language_">this</span>.<span class="hljs-property">sidebar</span>.<span class="hljs-title function_">expand</span>();
                 } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!isGreaterThanMedium) {
                     <span class="hljs-comment">// don&#x27;t trigger unneeded close() and expand()</span>
-                    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.sidebar.open) {
-                        <span class="hljs-built_in">this</span>.sidebar.close();
+                    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">sidebar</span>.<span class="hljs-property">open</span>) {
+                        <span class="hljs-variable language_">this</span>.<span class="hljs-property">sidebar</span>.<span class="hljs-title function_">close</span>();
                     }
                 }
             });
     }
 
-    ngOnDestroy(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-built_in">this</span>._destroyed.next();
-        <span class="hljs-built_in">this</span>._destroyed.complete();
+    <span class="hljs-title function_">ngOnDestroy</span>(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">next</span>();
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">complete</span>();
     }
 }

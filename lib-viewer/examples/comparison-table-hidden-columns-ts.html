@@ -1,33 +1,33 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
-<span class="hljs-comment">/** <span class="hljs-doctag">@title </span>Hidden Columns */</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@title</span> Hidden Columns */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;nx-comparison-table-hidden-columns-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./comparison-table-hidden-columns-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./comparison-table-hidden-columns-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ComparisonTableHiddenColumnsExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ComparisonTableHiddenColumnsExampleComponent</span> {
     <span class="hljs-attr">hiddenIndexes</span>: <span class="hljs-built_in">number</span>[] = [];
 
     selectedColumnIndex = <span class="hljs-number">1</span>;
 
-    isHiddenIndex = <span class="hljs-function">(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">this</span>.hiddenIndexes.includes(index);
+    isHiddenIndex = <span class="hljs-function">(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">hiddenIndexes</span>.<span class="hljs-title function_">includes</span>(index);
 
-    <span class="hljs-function"><span class="hljs-title">toggleHiddenIndexes</span>(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>)</span> {
-        <span class="hljs-keyword">if</span> (index === <span class="hljs-built_in">this</span>.selectedColumnIndex) {
+    <span class="hljs-title function_">toggleHiddenIndexes</span>(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>) {
+        <span class="hljs-keyword">if</span> (index === <span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedColumnIndex</span>) {
             <span class="hljs-keyword">return</span>;
         }
 
-        <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">this</span>.hiddenIndexes.includes(index)) {
-            <span class="hljs-built_in">this</span>.hiddenIndexes.push(index);
+        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">hiddenIndexes</span>.<span class="hljs-title function_">includes</span>(index)) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">hiddenIndexes</span>.<span class="hljs-title function_">push</span>(index);
         } <span class="hljs-keyword">else</span> {
-            <span class="hljs-built_in">this</span>.hiddenIndexes = <span class="hljs-built_in">this</span>.hiddenIndexes.filter(
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">hiddenIndexes</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">hiddenIndexes</span>.<span class="hljs-title function_">filter</span>(
                 <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> value !== index,
             );
         }
     }
 
-    <span class="hljs-function"><span class="hljs-title">selectedIndexChange</span>(<span class="hljs-params">selectedColumnIndex: <span class="hljs-built_in">number</span></span>)</span> {
-        <span class="hljs-built_in">this</span>.selectedColumnIndex = selectedColumnIndex;
+    <span class="hljs-title function_">selectedIndexChange</span>(<span class="hljs-params">selectedColumnIndex: <span class="hljs-built_in">number</span></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedColumnIndex</span> = selectedColumnIndex;
     }
 }

@@ -55,8 +55,8 @@
 <li class="docs-markdown--li">color contrast is sufficient (use <a href="https://webaim.org/resources/contrastchecker/">Color contrast checker</a> or install a browser plugin)</li>
 </ul>
 <p class="docs-markdown--p">You could easily include basic A11Y testing with <a href="https://www.deque.com/axe">Axe</a> in your automated tests like so:</p>
-<pre><code class="language-typescript">axe.run(actual, {}, <span class="hljs-function">(<span class="hljs-params">error: <span class="hljs-built_in">Error</span>, results: axe.AxeResults</span>) =&gt;</span> {
-    <span class="hljs-keyword">if</span> (results.violations.length) {
+<pre><code class="language-typescript">axe.<span class="hljs-title function_">run</span>(actual, {}, <span class="hljs-function">(<span class="hljs-params">error: <span class="hljs-built_in">Error</span>, results: axe.AxeResults</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span> (results.<span class="hljs-property">violations</span>.<span class="hljs-property">length</span>) {
         <span class="hljs-comment">// report violations</span>
     }
 });

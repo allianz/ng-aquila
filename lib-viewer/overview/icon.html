@@ -2,8 +2,8 @@
 <h3 id="general-usage-of-ndbx-icons" tabindex="-1" class="docs-markdown--h3">General usage of NDBX icons</h3>
 <p class="docs-markdown--p">The icons are comprised of two general types: <strong>functional</strong> and <strong>product icons</strong>. <strong>Functional icons</strong> are used to indicate important actions and functions like search, close or links. In most cases, functional icons will have a size of 24x24px (<strong>s</strong>). <strong>Product icons</strong> are a visual expression of aspects of our products. They are, for instance, used to select product options or in claims use cases. To make both icons distinguishable, the name of all product icons starts with <code>product-*</code>. The outline and fill options should only be used in combination with <strong>product</strong> icons.</p>
 <p class="docs-markdown--p">The general functionality of the icons is provided with the <code>NxIconModule</code> of <code>ng-aquila</code>. The Allianz Icons are provided with the additional <code>NdbxIconModule</code> of <code>@allianz/ngx-ndbx</code>. To use it, import it in the <code>app.module.ts</code> or in any other module:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxIconModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
-<span class="hljs-keyword">import</span> { NdbxIconModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ngx-ndbx/icon&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NdbxIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ngx-ndbx/icon&#x27;</span>;
 
 <span class="hljs-meta">@NgModule</span>({
     <span class="hljs-attr">declarations</span>: [
@@ -11,19 +11,19 @@
     ],
     <span class="hljs-attr">imports</span>: [
         <span class="hljs-comment">// ...</span>
-        NxIconModule,
-        NdbxIconModule,
+        <span class="hljs-title class_">NxIconModule</span>,
+        <span class="hljs-title class_">NdbxIconModule</span>,
     ],
     <span class="hljs-comment">// ...</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppModule</span> </span>{}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppModule</span> {}
 </code></pre>
 </div>
 <div class="docs-public">
 <h3 id="open-source-icons-%2F-icons-not-working%3F" tabindex="-1" class="docs-markdown--h3">Open source icons / icons not working?</h3>
 <p class="docs-markdown--p">For all open source users: internally the projects use an icon font we unfortunately couldn't open source. We are using a special module for the documentation that maps internal icon names to icons from font awesome that the code examples still work.</p>
 <p class="docs-markdown--p">So if you copy any code example that is including an icon and want to see how it looks you can use that same module, for that please install font awesome <code>npm i @fortawesome/fontawesome-free</code> use this import:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxDocumentationIconModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/documentation-icons&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxDocumentationIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/documentation-icons&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">add it to your AppModule and include the <code>node_modules/@fortawesome/fontawesome-free/css/all.css</code> to your project. Alternatively you can of course use any other icon fonts or svgs and register them with the icon registry.</p>
 </div>

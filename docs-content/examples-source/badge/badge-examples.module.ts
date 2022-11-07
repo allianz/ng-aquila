@@ -1,5 +1,5 @@
-import { NxBadgeModule } from '@allianz/ng-aquila/badge';
 import { NgModule } from '@angular/core';
+import { NxBadgeModule } from '@aposin/ng-aquila/badge';
 
 import { BadgeExampleComponent } from './badge/badge-example';
 import { BadgeVibrantExampleComponent } from './badge-vibrant/badge-vibrant-example';

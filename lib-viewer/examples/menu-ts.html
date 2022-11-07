@@ -1,38 +1,38 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    NxFlatTreeControl,
-    NxFlatTreeNode,
-    NxTreeFlatDataSource,
-    NxTreeNode,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/tree&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+    <span class="hljs-title class_">NxFlatTreeControl</span>,
+    <span class="hljs-title class_">NxFlatTreeNode</span>,
+    <span class="hljs-title class_">NxTreeFlatDataSource</span>,
+    <span class="hljs-title class_">NxTreeNode</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tree&#x27;</span>;
 
 <span class="hljs-comment">/**
-  This interface defines a single node of the trees data structure.
-*/</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> MyTreeNode <span class="hljs-keyword">extends</span> NxTreeNode {
-    children?: MyTreeNode[];
+ * This interface defines a single node of the trees data structure.
+ */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">MyTreeNode</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">NxTreeNode</span> {
+    children?: <span class="hljs-title class_">MyTreeNode</span>[];
     label?: <span class="hljs-built_in">string</span>;
     icon?: <span class="hljs-built_in">string</span>;
     query?: <span class="hljs-built_in">any</span>;
 }
 
 <span class="hljs-comment">/** Flat node with expandable and level information */</span>
-<span class="hljs-keyword">interface</span> MyFlatTreeNode <span class="hljs-keyword">extends</span> NxFlatTreeNode {
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">MyFlatTreeNode</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">NxFlatTreeNode</span> {
     label?: <span class="hljs-built_in">string</span>;
     query?: <span class="hljs-built_in">any</span>;
     icon?: <span class="hljs-built_in">string</span>;
 }
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Complete menu example
+ * <span class="hljs-doctag">@title</span> Complete menu example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;menu-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./menu-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;menu-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MenuExampleComponent</span> </span>{
-    <span class="hljs-attr">navigationData</span>: MyTreeNode[] = [
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MenuExampleComponent</span> {
+    <span class="hljs-attr">navigationData</span>: <span class="hljs-title class_">MyTreeNode</span>[] = [
         {
             <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 1&#x27;</span>,
             <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file&#x27;</span>,
@@ -167,18 +167,18 @@
         },
     ];
 
-    _dataSource: NxTreeFlatDataSource&lt;MyTreeNode, MyFlatTreeNode&gt;;
+    <span class="hljs-attr">_dataSource</span>: <span class="hljs-title class_">NxTreeFlatDataSource</span>&lt;<span class="hljs-title class_">MyTreeNode</span>, <span class="hljs-title class_">MyFlatTreeNode</span>&gt;;
 
-    _treeControl: NxFlatTreeControl&lt;MyFlatTreeNode&gt;;
+    <span class="hljs-attr">_treeControl</span>: <span class="hljs-title class_">NxFlatTreeControl</span>&lt;<span class="hljs-title class_">MyFlatTreeNode</span>&gt;;
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">this</span>._treeControl = <span class="hljs-keyword">new</span> NxFlatTreeControl();
-        <span class="hljs-built_in">this</span>._dataSource = <span class="hljs-keyword">new</span> NxTreeFlatDataSource(
-            <span class="hljs-built_in">this</span>._treeControl,
-            <span class="hljs-built_in">this</span>.navigationData,
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_treeControl</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">NxFlatTreeControl</span>();
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_dataSource</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">NxTreeFlatDataSource</span>(
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">_treeControl</span>,
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">navigationData</span>,
         );
     }
 
-    _hasChild = <span class="hljs-function">(<span class="hljs-params">_: <span class="hljs-built_in">number</span>, node: NxFlatTreeNode</span>) =&gt;</span> node.expandable;
-    _isLink = <span class="hljs-function">(<span class="hljs-params">_: <span class="hljs-built_in">number</span>, node: MyFlatTreeNode</span>) =&gt;</span> node.query;
+    _hasChild = <span class="hljs-function">(<span class="hljs-params">_: <span class="hljs-built_in">number</span>, node: NxFlatTreeNode</span>) =&gt;</span> node.<span class="hljs-property">expandable</span>;
+    _isLink = <span class="hljs-function">(<span class="hljs-params">_: <span class="hljs-built_in">number</span>, node: MyFlatTreeNode</span>) =&gt;</span> node.<span class="hljs-property">query</span>;
 }

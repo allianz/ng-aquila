@@ -14,7 +14,6 @@ import { AquilaDocsExample } from './app/aquila-docs-example';
 @NgModule({
     bootstrap: [AquilaDocsExample],
     declarations: [AquilaDocsExample],
-    entryComponents: [AquilaDocsExample],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,

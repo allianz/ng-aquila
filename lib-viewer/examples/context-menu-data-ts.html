@@ -1,23 +1,23 @@
-<span class="hljs-keyword">import</span> { NxBadgeType } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/badge&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBadgeType</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/badge&#x27;</span>;
 
-<span class="hljs-keyword">interface</span> Contract {
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Contract</span> {
     <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
-    user: <span class="hljs-built_in">string</span>;
-    status: NxBadgeType;
-    documents: <span class="hljs-built_in">string</span>[];
+    <span class="hljs-attr">user</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">status</span>: <span class="hljs-title class_">NxBadgeType</span>;
+    <span class="hljs-attr">documents</span>: <span class="hljs-built_in">string</span>[];
 }
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Data Context Menu Example
+ * <span class="hljs-doctag">@title</span> Data Context Menu Example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;context-menu-data-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./context-menu-data-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;context-menu-data-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContextMenuDataExampleComponent</span> </span>{
-    <span class="hljs-attr">contracts</span>: Contract[] = [
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ContextMenuDataExampleComponent</span> {
+    <span class="hljs-attr">contracts</span>: <span class="hljs-title class_">Contract</span>[] = [
         {
             <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;23412&#x27;</span>,
             <span class="hljs-attr">user</span>: <span class="hljs-string">&#x27;Anna Schuster&#x27;</span>,

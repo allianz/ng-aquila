@@ -1,10 +1,10 @@
-import { NxDialogService, NxModalRef } from '@allianz/ng-aquila/modal';
 import {
     ChangeDetectorRef,
     Component,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
+import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 type MyDialogResult = 'proceed' | 'cancel';
 

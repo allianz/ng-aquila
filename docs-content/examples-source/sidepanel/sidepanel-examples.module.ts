@@ -1,9 +1,9 @@
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxRadioToggleModule } from '@allianz/ng-aquila/radio-toggle';
-import { NxSidepanelModule } from '@allianz/ng-aquila/sidepanel';
-import { NxTabsModule } from '@allianz/ng-aquila/tabs';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
+import { NxSidepanelModule } from '@aposin/ng-aquila/sidepanel';
+import { NxTabsModule } from '@aposin/ng-aquila/tabs';
 
 import { SidepanelDarkExampleComponent } from './sidepanel-dark/sidepanel-dark-example';
 import { SidepanelFloatingExampleComponent } from './sidepanel-floating/sidepanel-floating-example';

@@ -1,6 +1,6 @@
-import { NxErrorModule } from '@allianz/ng-aquila/base';
-import { NxCodeInputModule } from '@allianz/ng-aquila/code-input';
 import { NgModule } from '@angular/core';
+import { NxErrorModule } from '@aposin/ng-aquila/base';
+import { NxCodeInputModule } from '@aposin/ng-aquila/code-input';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { CodeInputDisabledExampleComponent } from './code-input-disabled/code-input-disabled-example';

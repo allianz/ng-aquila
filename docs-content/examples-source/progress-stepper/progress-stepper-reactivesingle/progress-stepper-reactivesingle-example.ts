@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {
-    FormBuilder,
-    FormControl,
-    FormGroup,
+    UntypedFormBuilder,
+    UntypedFormControl,
+    UntypedFormGroup,
     Validators,
 } from '@angular/forms';
 
@@ -16,23 +16,23 @@ import {
 })
 export class ProgressStepperReactivesingleExampleComponent {
     readonly testForm = this.fb.group({
-        personalDetails: new FormGroup({
-            name: new FormControl('', {
+        personalDetails: new UntypedFormGroup({
+            name: new UntypedFormControl('', {
                 validators: Validators.required,
             }),
-            age: new FormControl('', {
+            age: new UntypedFormControl('', {
                 validators: Validators.required,
             }),
         }),
-        address: new FormGroup({
-            street: new FormControl('', {
+        address: new UntypedFormGroup({
+            street: new UntypedFormControl('', {
                 validators: Validators.required,
             }),
-            postalCode: new FormControl('', {
+            postalCode: new UntypedFormControl('', {
                 validators: Validators.required,
             }),
         }),
     });
 
-    constructor(private readonly fb: FormBuilder) {}
+    constructor(private readonly fb: UntypedFormBuilder) {}
 }

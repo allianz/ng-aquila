@@ -1,9 +1,9 @@
-import { NxBadgeModule } from '@allianz/ng-aquila/badge';
-import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { NxDynamicTableModule } from '@allianz/ng-aquila/dynamic-table';
-import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NxBadgeModule } from '@aposin/ng-aquila/badge';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxDynamicTableModule } from '@aposin/ng-aquila/dynamic-table';
+import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 
 import { TooltipBasicExampleComponent } from './tooltip-basic/tooltip-basic-example';
 import { TooltipDelayExampleComponent } from './tooltip-delay/tooltip-delay-example';

@@ -1,33 +1,33 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
-<span class="hljs-built_in">enum</span> FruitPreferenceType {
-    NEVER,
-    RARELY,
-    SOMETIMES,
-    OFTEN,
-    ALWAYS,
+<span class="hljs-keyword">enum</span> <span class="hljs-title class_">FruitPreferenceType</span> {
+    <span class="hljs-variable constant_">NEVER</span>,
+    <span class="hljs-variable constant_">RARELY</span>,
+    <span class="hljs-variable constant_">SOMETIMES</span>,
+    <span class="hljs-variable constant_">OFTEN</span>,
+    <span class="hljs-variable constant_">ALWAYS</span>,
 }
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Slider Textual Example
+ * <span class="hljs-doctag">@title</span> Slider Textual Example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;slider-textual-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./slider-textual-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./slider-textual-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SliderTextualExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SliderTextualExampleComponent</span> {
     fruitPreferenceFormatter = <span class="hljs-function">(<span class="hljs-params">value: FruitPreferenceType</span>) =&gt;</span> {
         <span class="hljs-keyword">switch</span> (value) {
-            <span class="hljs-keyword">case</span> FruitPreferenceType.NEVER:
+            <span class="hljs-keyword">case</span> <span class="hljs-title class_">FruitPreferenceType</span>.<span class="hljs-property">NEVER</span>:
                 <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;I never prefer apples&#x27;</span>;
-            <span class="hljs-keyword">case</span> FruitPreferenceType.RARELY:
+            <span class="hljs-keyword">case</span> <span class="hljs-title class_">FruitPreferenceType</span>.<span class="hljs-property">RARELY</span>:
                 <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;rarely&#x27;</span>;
-            <span class="hljs-keyword">case</span> FruitPreferenceType.SOMETIMES:
+            <span class="hljs-keyword">case</span> <span class="hljs-title class_">FruitPreferenceType</span>.<span class="hljs-property">SOMETIMES</span>:
                 <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;sometimes&#x27;</span>;
-            <span class="hljs-keyword">case</span> FruitPreferenceType.OFTEN:
+            <span class="hljs-keyword">case</span> <span class="hljs-title class_">FruitPreferenceType</span>.<span class="hljs-property">OFTEN</span>:
                 <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;often&#x27;</span>;
-            <span class="hljs-keyword">case</span> FruitPreferenceType.ALWAYS:
+            <span class="hljs-keyword">case</span> <span class="hljs-title class_">FruitPreferenceType</span>.<span class="hljs-property">ALWAYS</span>:
                 <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;I always prefer apples&#x27;</span>;
         }
     };

@@ -1,7 +1,7 @@
-import { NxAvatarModule } from '@allianz/ng-aquila/avatar';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxImageModule } from '@allianz/ng-aquila/image';
 import { NgModule } from '@angular/core';
+import { NxAvatarModule } from '@aposin/ng-aquila/avatar';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxImageModule } from '@aposin/ng-aquila/image';
 
 import { AvatarExampleComponent } from './avatar/avatar-example';
 import { AvatarButtonExampleComponent } from './avatar-button/avatar-button-example';

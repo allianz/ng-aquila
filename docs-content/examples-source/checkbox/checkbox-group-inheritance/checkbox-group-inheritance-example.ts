@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Checkbox group inheritance example
@@ -22,7 +22,7 @@ export class CheckboxGroupInheritanceExampleComponent {
         isLabelExpert: [false, null],
     });
 
-    constructor(private readonly fb: FormBuilder) {}
+    constructor(private readonly fb: UntypedFormBuilder) {}
 
     toggleDisabled() {
         const checkboxGroup = this.myFormGroup.get('terms');

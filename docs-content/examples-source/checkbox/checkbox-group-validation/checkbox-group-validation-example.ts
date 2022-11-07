@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+    AbstractControl,
+    UntypedFormBuilder,
+    Validators,
+} from '@angular/forms';
 
 /**
  * @title Checkbox group validation example
@@ -14,13 +18,11 @@ export class CheckboxGroupValidationExampleComponent {
         terms: [[], [Validators.required, this.validateCheckboxes]],
     });
 
-    constructor(private readonly fb: FormBuilder) {}
+    constructor(private readonly fb: UntypedFormBuilder) {}
 
-    private validateCheckboxes(formGroup: FormGroup) {
-        if (formGroup.value.length <= 2) {
-            return {
-                min: false,
-            };
+    private validateCheckboxes(control: AbstractControl) {
+        if (control.value.length <= 2) {
+            return { min: false };
         }
         return null;
     }

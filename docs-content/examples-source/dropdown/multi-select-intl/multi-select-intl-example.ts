@@ -1,5 +1,5 @@
-import { NxDropdownIntl } from '@allianz/ng-aquila/dropdown';
 import { Component } from '@angular/core';
+import { NxDropdownIntl } from '@aposin/ng-aquila/dropdown';
 
 class MyDropdownIntl extends NxDropdownIntl {
     selectAll = `Alle auswählen`;

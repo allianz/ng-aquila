@@ -1,14 +1,14 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Negative styling example
+ * <span class="hljs-doctag">@title</span> Negative styling example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;circle-toggle-negative-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./circle-toggle-negative-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./circle-toggle-negative-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CircleToggleNegativeExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CircleToggleNegativeExampleComponent</span> {
     negative = <span class="hljs-literal">true</span>;
 
     sampleValues = [
@@ -35,7 +35,7 @@
         },
     ];
 
-    <span class="hljs-function"><span class="hljs-title">changeStyle</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">this</span>.negative = !<span class="hljs-built_in">this</span>.negative;
+    <span class="hljs-title function_">changeStyle</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">negative</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">negative</span>;
     }
 }

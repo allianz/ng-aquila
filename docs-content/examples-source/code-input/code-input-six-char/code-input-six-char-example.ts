@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    UntypedFormControl,
+    UntypedFormGroup,
+    Validators,
+} from '@angular/forms';
 
 /**
  * @title Six character code input example
@@ -12,11 +16,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CodeInputSixCharExampleComponent implements OnInit {
     inputValue = '';
-    codeForm!: FormGroup;
+    codeForm!: UntypedFormGroup;
 
-    ngOnInit(): void {
-        this.codeForm = new FormGroup({
-            keyCode: new FormControl(this.inputValue, {
+    ngOnInit() {
+        this.codeForm = new UntypedFormGroup({
+            keyCode: new UntypedFormControl(this.inputValue, {
                 validators: [Validators.required, Validators.minLength(6)],
                 updateOn: 'blur',
             }),

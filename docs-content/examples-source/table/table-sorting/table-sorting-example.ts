@@ -1,9 +1,9 @@
+import { Component, Injectable } from '@angular/core';
 import {
     NxSortHeaderIntl,
     SortDirection,
     SortEvent,
-} from '@allianz/ng-aquila/table';
-import { Component, Injectable } from '@angular/core';
+} from '@aposin/ng-aquila/table';
 
 interface Contract {
     product: string;

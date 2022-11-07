@@ -1,17 +1,17 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Custom formfield label example
+ * <span class="hljs-doctag">@title</span> Custom formfield label example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;formfield-custom-label-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./formfield-custom-label-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./formfield-custom-label-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FormfieldCustomLabelExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FormfieldCustomLabelExampleComponent</span> {
     isOptional = <span class="hljs-string">&#x27;(optional)&#x27;</span>;
 
-    <span class="hljs-function"><span class="hljs-title">addOptionalSuffix</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">this</span>.isOptional = <span class="hljs-built_in">this</span>.isOptional === <span class="hljs-string">&#x27;&#x27;</span> ? <span class="hljs-string">&#x27;(optional)&#x27;</span> : <span class="hljs-string">&#x27;&#x27;</span>;
+    <span class="hljs-title function_">addOptionalSuffix</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOptional</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOptional</span> === <span class="hljs-string">&#x27;&#x27;</span> ? <span class="hljs-string">&#x27;(optional)&#x27;</span> : <span class="hljs-string">&#x27;&#x27;</span>;
     }
 }

@@ -1,14 +1,14 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Standard dropdown example
+ * <span class="hljs-doctag">@title</span> Standard dropdown example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-standard-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-standard-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-standard-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DropdownStandardExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DropdownStandardExampleComponent</span> {
     options = [
         <span class="hljs-string">&#x27;BMW&#x27;</span>,
         <span class="hljs-string">&#x27;Audi&#x27;</span>,
@@ -25,7 +25,7 @@
         <span class="hljs-string">&#x27;Ferrari&#x27;</span>,
     ];
 
-    toText(value: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> {
-        <span class="hljs-keyword">return</span> value ? value.toUpperCase() : <span class="hljs-literal">null</span>;
+    <span class="hljs-title function_">toText</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> {
+        <span class="hljs-keyword">return</span> value ? value.<span class="hljs-title function_">toUpperCase</span>() : <span class="hljs-literal">null</span>;
     }
 }

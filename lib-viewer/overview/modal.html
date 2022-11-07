@@ -2,22 +2,22 @@
 <p class="docs-markdown--p"><strong>Important:</strong> Please note that the module for this component depends on the Angular animations module, so in case you do not already have it, you need to explicitly import the <code>BrowserModule</code> and <code>BrowserAnimationsModule</code> in your app.module.</p>
 <h3 id="modal-opening" tabindex="-1" class="docs-markdown--h3">Modal Opening</h3>
 <p class="docs-markdown--p">A modal can be opened by using the <code>open</code> method of the service and passing an optional configuration object as a second parameter as shown below. The return object of the open function is a reference to the opened modal, which can be used for closing the modal or subscribing to its closing events.</p>
-<pre><code class="language-ts"><span class="hljs-keyword">const</span> myDialogData: MyDialogData = { <span class="hljs-comment">/* some data */</span> };
+<pre><code class="language-ts"><span class="hljs-keyword">const</span> <span class="hljs-attr">myDialogData</span>: <span class="hljs-title class_">MyDialogData</span> = { <span class="hljs-comment">/* some data */</span> };
 
-<span class="hljs-keyword">const</span> myDialogRef: NxModalRef&lt;MyDialogComponent, MyDialogResult&gt; = <span class="hljs-built_in">this</span>.dialogService.open(MyDialogComponent, {
+<span class="hljs-keyword">const</span> <span class="hljs-attr">myDialogRef</span>: <span class="hljs-title class_">NxModalRef</span>&lt;<span class="hljs-title class_">MyDialogComponent</span>, <span class="hljs-title class_">MyDialogResult</span>&gt; = <span class="hljs-variable language_">this</span>.<span class="hljs-property">dialogService</span>.<span class="hljs-title function_">open</span>(<span class="hljs-title class_">MyDialogComponent</span>, {
     <span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;600px&#x27;</span>,
     <span class="hljs-attr">data</span>: myDialogData,
 });
 
 <span class="hljs-comment">// always support undefined result type for easily closable dialogs</span>
-myDialogRef.beforeClosed().subscribe(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Dialog result: <span class="hljs-subst">${result}</span>`</span>);
+myDialogRef.<span class="hljs-title function_">beforeClosed</span>().<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Dialog result: <span class="hljs-subst">${result}</span>`</span>);
 });
 
 <span class="hljs-comment">// result parameter is optional, defaults to undefined</span>
-myDialogRef.close(<span class="hljs-string">&#x27;some dialog result&#x27;</span>);
+myDialogRef.<span class="hljs-title function_">close</span>(<span class="hljs-string">&#x27;some dialog result&#x27;</span>);
 </code></pre>
-<p class="docs-markdown--p">The example below shows how the modal dialog can be opened <strong>with a template</strong> and <strong>with a component</strong>. If you use a specific component for your modal you have to include it in the list of <code>entryComponents</code> in your <code>NgModule</code>, as it gets instantiated at run-time and won't be found otherwise.</p>
+<p class="docs-markdown--p">The example below shows how the modal dialog can be opened <strong>with a template</strong> and <strong>with a component</strong>.</p>
 <div nx-docs-example="modal-opening" config="{}">exampleID: modal-opening</div>
 <h3 id="modal-closing" tabindex="-1" class="docs-markdown--h3">Modal Closing</h3>
 <p class="docs-markdown--p">You can close a dialog in three different ways:</p>
@@ -41,20 +41,20 @@ myDialogRef.close(<span class="hljs-string">&#x27;some dialog result&#x27;</span
 <h3 id="configuration" tabindex="-1" class="docs-markdown--h3">Configuration</h3>
 <p class="docs-markdown--p">Every dialog is opened with a default configuration. By passing a second parameter (<code>NxModalConfig</code> object) when opening a modal you can overwrite this configuration. Configurable are settings such as the dialog width and height, closing on backdrop click, adding additional classses to the dialog container etc. For more details on all configurable properties check out the <code>NxModalConfig</code> documentation <a href="./documentation/modal/api#NxModalConfig">here</a>.</p>
 <p class="docs-markdown--p">You can also share data with your dialog via the configuration object:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">let</span> dialogRef = dialog.open(YourDialog, {
+<pre><code class="language-ts"><span class="hljs-keyword">let</span> dialogRef = dialog.<span class="hljs-title function_">open</span>(<span class="hljs-title class_">YourDialog</span>, {
     <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Max Mustermann&#x27;</span> },
 });
 </code></pre>
 <p class="docs-markdown--p">In your dialog you can access this data by injecting the <code>NX_MODAL_DATA</code> token:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { Component, Inject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { NX_MODAL_DATA } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/modal&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Inject</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">NX_MODAL_DATA</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/modal&#x27;</span>;
 
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;your-dialog&#x27;</span>,
     <span class="hljs-attr">template</span>: <span class="hljs-string">&#x27;passed in {{ data.name }}&#x27;</span>,
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YourDialog</span> </span>{
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-meta">@Inject</span>(NX_MODAL_DATA) <span class="hljs-keyword">readonly</span> data: <span class="hljs-built_in">any</span></span>)</span> {}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">YourDialog</span> {
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-meta">@Inject</span>(NX_MODAL_DATA) <span class="hljs-keyword">readonly</span> data: <span class="hljs-built_in">any</span></span>) {}
 }
 </code></pre>
 <p class="docs-markdown--p">If you are using a template for the content of your dialog the data object will be available implicitly in your template as shown in the example below:</p>
@@ -64,7 +64,7 @@ myDialogRef.close(<span class="hljs-string">&#x27;some dialog result&#x27;</span
 <pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
   <span class="hljs-attr">providers</span>: [
     {
-        <span class="hljs-attr">provide</span>: NX_MODAL_DEFAULT_OPTIONS,
+        <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">NX_MODAL_DEFAULT_OPTIONS</span>,
         <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">width</span>: 700px, <span class="hljs-attr">showCloseIcon</span>: <span class="hljs-literal">true</span>}
     }
   ]
@@ -76,19 +76,19 @@ myDialogRef.close(<span class="hljs-string">&#x27;some dialog result&#x27;</span
 <li class="docs-markdown--li"><strong>block:</strong> disallow background scroll, the overlay does not move.</li>
 <li class="docs-markdown--li"><strong>noop:</strong> allow background scroll, the overlay does not move.</li>
 </ul>
-<pre><code class="language-ts"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scrollStrategyFactory</span>(<span class="hljs-params">overlay: Overlay</span>): (<span class="hljs-params"></span>) =&gt; <span class="hljs-title">ScrollStrategy</span> </span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> overlay.scrollStrategies.close({ <span class="hljs-attr">threshold</span>: <span class="hljs-number">100</span> });
+<pre><code class="language-ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">scrollStrategyFactory</span>(<span class="hljs-params">overlay: Overlay</span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ScrollStrategy</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> overlay.<span class="hljs-property">scrollStrategies</span>.<span class="hljs-title function_">close</span>({ <span class="hljs-attr">threshold</span>: <span class="hljs-number">100</span> });
 }
 
 <span class="hljs-meta">@NgModule</span>({
   <span class="hljs-comment">/* ... */</span>
   <span class="hljs-attr">providers</span>: [{
-    <span class="hljs-attr">provide</span>: NX_MODAL_SCROLL_STRATEGY,
+    <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">NX_MODAL_SCROLL_STRATEGY</span>,
     <span class="hljs-attr">useFactory</span>: scrollStrategyFactory,
-    <span class="hljs-attr">deps</span>: [Overlay],
+    <span class="hljs-attr">deps</span>: [<span class="hljs-title class_">Overlay</span>],
   }],
 }
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppModule</span> </span>{}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppModule</span> {}
 </code></pre>
 <p class="docs-markdown--p">Alternatively, the <code>NX_MODAL_SCROLL_STRATEGY</code> injection token can be provided by importing <code>NxScrollStrategyModule.withConfig({ ... })</code> into your application or feature module, after your other aquila imports.</p>
 <h3 id="directionality" tabindex="-1" class="docs-markdown--h3">Directionality</h3>
@@ -103,11 +103,11 @@ myDialogRef.close(<span class="hljs-string">&#x27;some dialog result&#x27;</span
 <h3 id="deprecated-modal-component" tabindex="-1" class="docs-markdown--h3">Deprecated Modal Component</h3>
 <p class="docs-markdown--p">The example below shows the previous implementation of the modal dialog, which is already deprecated and should not be used.</p>
 <p class="docs-markdown--p">For using it you have to import the <code>NxModalModule</code> as follows:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxModalModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/modal&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxModalModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/modal&#x27;</span>;
 
 <span class="hljs-meta">@NgModule</span>({
   <span class="hljs-attr">imports</span>: [
-    NxModalModule.forRoot()
+    <span class="hljs-title class_">NxModalModule</span>.<span class="hljs-title function_">forRoot</span>()
   ]
 })
 </code></pre>

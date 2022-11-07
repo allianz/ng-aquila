@@ -1,20 +1,20 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">UntypedFormBuilder</span>, <span class="hljs-title class_">Validators</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Reactive example
+ * <span class="hljs-doctag">@title</span> Reactive example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-reactive-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-reactive-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-reactive-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DropdownReactiveExampleComponent</span> </span>{
-    form = <span class="hljs-keyword">new</span> FormBuilder().group({
-        <span class="hljs-attr">dropdown</span>: [<span class="hljs-string">&#x27;BMW&#x27;</span>, Validators.required],
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DropdownReactiveExampleComponent</span> {
+    form = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormBuilder</span>().<span class="hljs-title function_">group</span>({
+        <span class="hljs-attr">dropdown</span>: [<span class="hljs-string">&#x27;BMW&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
     });
 
-    <span class="hljs-function"><span class="hljs-title">patch</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>)</span> {
-        <span class="hljs-built_in">this</span>.form.patchValue({ <span class="hljs-attr">dropdown</span>: value });
+    <span class="hljs-title function_">patch</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">patchValue</span>({ <span class="hljs-attr">dropdown</span>: value });
     }
 }

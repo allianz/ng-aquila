@@ -1,5 +1,5 @@
-import { NxDynamicTableColumnDefinition } from '@allianz/ng-aquila/dynamic-table';
 import { Component } from '@angular/core';
+import { NxDynamicTableColumnDefinition } from '@aposin/ng-aquila/dynamic-table';
 
 /**
  * @title Table Event Example

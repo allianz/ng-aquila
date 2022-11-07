@@ -1,5 +1,5 @@
-import { NxMessageToastService } from '@allianz/ng-aquila/message';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { NxMessageToastService } from '@aposin/ng-aquila/message';
 
 /**
  * @title Opening example

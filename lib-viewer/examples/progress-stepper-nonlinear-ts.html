@@ -1,14 +1,14 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Progress Indicator non linear step completion example
+ * <span class="hljs-doctag">@title</span> Progress Indicator non linear step completion example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;progress-stepper-nonlinear-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./progress-stepper-nonlinear-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./progress-stepper-nonlinear-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProgressStepperNonlinearExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProgressStepperNonlinearExampleComponent</span> {
     multiSteps = [
         {
             <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Lorem&#x27;</span>,
@@ -24,7 +24,7 @@
         },
     ];
 
-    <span class="hljs-function"><span class="hljs-title">completeStep</span>(<span class="hljs-params">i: <span class="hljs-built_in">number</span></span>)</span> {
-        <span class="hljs-built_in">this</span>.multiSteps[i].completed = !<span class="hljs-built_in">this</span>.multiSteps[i].completed;
+    <span class="hljs-title function_">completeStep</span>(<span class="hljs-params">i: <span class="hljs-built_in">number</span></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">multiSteps</span>[i].<span class="hljs-property">completed</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">multiSteps</span>[i].<span class="hljs-property">completed</span>;
     }
 }

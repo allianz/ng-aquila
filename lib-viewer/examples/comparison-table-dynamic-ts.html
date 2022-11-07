@@ -1,26 +1,26 @@
-<span class="hljs-keyword">import</span> { NxComparisonTableRowType } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/comparison-table&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxComparisonTableRowType</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/comparison-table&#x27;</span>;
 
-<span class="hljs-keyword">interface</span> ContentCell {
-    <span class="hljs-attr">type</span>: NxComparisonTableRowType;
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">ContentCell</span> {
+    <span class="hljs-attr">type</span>: <span class="hljs-title class_">NxComparisonTableRowType</span>;
     description?: <span class="hljs-built_in">string</span>;
-    cells: <span class="hljs-built_in">string</span>[];
+    <span class="hljs-attr">cells</span>: <span class="hljs-built_in">string</span>[];
 }
-<span class="hljs-keyword">interface</span> ToggleSection {
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">ToggleSection</span> {
     <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;toggleSection&#x27;</span>;
-    header: <span class="hljs-built_in">string</span>;
-    content: ContentCell[];
+    <span class="hljs-attr">header</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">content</span>: <span class="hljs-title class_">ContentCell</span>[];
 }
-<span class="hljs-keyword">type</span> TableData = (ContentCell | ToggleSection)[];
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">TableData</span> = (<span class="hljs-title class_">ContentCell</span> | <span class="hljs-title class_">ToggleSection</span>)[];
 
-<span class="hljs-comment">/** <span class="hljs-doctag">@title </span>Dynamically filled table */</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@title</span> Dynamically filled table */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;comparison-table-dynamic-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./comparison-table-dynamic-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./comparison-table-dynamic-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ComparisonTableDynamicExampleComponent</span> </span>{
-    <span class="hljs-attr">data</span>: TableData = [
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ComparisonTableDynamicExampleComponent</span> {
+    <span class="hljs-attr">data</span>: <span class="hljs-title class_">TableData</span> = [
         {
             <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;header&#x27;</span>,
             <span class="hljs-attr">cells</span>: [<span class="hljs-string">&#x27;This is a header cell&#x27;</span>, <span class="hljs-string">&#x27;This is a header cell&#x27;</span>],

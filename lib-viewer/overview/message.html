@@ -28,23 +28,23 @@
 <h4 id="showing-a-message-toast" tabindex="-1" class="docs-markdown--h4">Showing a message toast</h4>
 <p class="docs-markdown--p">The <code>NxMessageToastService</code> offers two options for showing a message toast: by passing a text string or a template.</p>
 <pre><code class="language-ts"><span class="hljs-comment">// Simple message toast with a custom text</span>
-<span class="hljs-keyword">let</span> toastRef: NxMessageToastRef = messageToastService.open(<span class="hljs-string">&#x27;My message toast text&#x27;</span>);
+<span class="hljs-keyword">let</span> <span class="hljs-attr">toastRef</span>: <span class="hljs-title class_">NxMessageToastRef</span> = messageToastService.<span class="hljs-title function_">open</span>(<span class="hljs-string">&#x27;My message toast text&#x27;</span>);
 
 <span class="hljs-comment">// Message toast with a custom template</span>
-<span class="hljs-keyword">let</span> toastRef: NxMessageToastRef = messageToastService.openFromTemplate(myTemplateRef);
+<span class="hljs-keyword">let</span> <span class="hljs-attr">toastRef</span>: <span class="hljs-title class_">NxMessageToastRef</span> = messageToastService.<span class="hljs-title function_">openFromTemplate</span>(myTemplateRef);
 </code></pre>
 <p class="docs-markdown--p">In both cases a <code>NxMessageToastRef</code> is returned. It can be used for closing the message toast or subscribing to its closing. This behaviour is shown in the following examples.</p>
 <div nx-docs-example="message-toast-opening" config="{}">exampleID: message-toast-opening</div>
 <h4 id="configuration" tabindex="-1" class="docs-markdown--h4">Configuration</h4>
 <p class="docs-markdown--p">Every message toast is opened with a default <code>NxMessageToastConfig</code> value. You can pass your own configuration as a second optional argument when opening a message toast. By passing your custom configuration you can change the context of the message toast and set a duration. For more information on the configurable parameters check out the <a href="./documentation/notifications/api">notifcation API</a>.</p>
 <p class="docs-markdown--p">In the following example the toast message does not close automatically, but in a programmatic way. By pasing a <code>duration: 0</code> via the toast message config the toast won't close automatically,</p>
-<pre><code class="language-ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> myCustomOptions: NxMessageToastConfig = {
+<pre><code class="language-ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">myCustomOptions</span>: <span class="hljs-title class_">NxMessageToastConfig</span> = {
     <span class="hljs-attr">duration</span>: <span class="hljs-number">0</span>,
     <span class="hljs-attr">context</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
     <span class="hljs-attr">announcementMessage</span>: <span class="hljs-string">&#x27;Yay, you see a success message toast&#x27;</span>,
 };
 
-<span class="hljs-keyword">let</span> toastRef = messageToastService.open(<span class="hljs-string">&#x27;My message toast text.&#x27;</span>, myCustomOptions);
+<span class="hljs-keyword">let</span> toastRef = messageToastService.<span class="hljs-title function_">open</span>(<span class="hljs-string">&#x27;My message toast text.&#x27;</span>, myCustomOptions);
 </code></pre>
 <div nx-docs-example="message-toast-custom-settings" config="{}">exampleID: message-toast-custom-settings</div>
 <h4 id="global-configuration" tabindex="-1" class="docs-markdown--h4">Global Configuration</h4>
@@ -52,7 +52,7 @@
 <pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
   <span class="hljs-attr">providers</span>: [
     {
-      <span class="hljs-attr">provide</span>: NX_MESSAGE_TOAST_DEFAULT_CONFIG,
+      <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">NX_MESSAGE_TOAST_DEFAULT_CONFIG</span>,
       <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">duration</span>: <span class="hljs-number">7000</span>, <span class="hljs-attr">context</span>: <span class="hljs-string">&#x27;info&#x27;</span> }
     }
   ]

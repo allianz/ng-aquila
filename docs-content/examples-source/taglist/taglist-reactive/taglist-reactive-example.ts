@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Tag Reactive Example
@@ -14,5 +14,5 @@ export class TaglistReactiveExampleComponent {
         tagsTestReactive: [['Apples', 'Oranges'], Validators.required],
     });
 
-    constructor(private readonly fb: FormBuilder) {}
+    constructor(private readonly fb: UntypedFormBuilder) {}
 }

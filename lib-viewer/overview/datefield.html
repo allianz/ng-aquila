@@ -1,7 +1,7 @@
 <h3 id="module" tabindex="-1" class="docs-markdown--h3">Module</h3>
 <p class="docs-markdown--p">Ensure that you provide a date implementation in addition to the required module:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxDatefieldModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/datefield&#x27;</span>;
-<span class="hljs-keyword">import</span> { NxNativeDateModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/datefield&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxDatefieldModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxNativeDateModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">The date field requires the Angular CDK (incl. CSS). Learn <a href="./documentation/overlay/overview#angular-cdk">how to enable Angular CDK styles</a>.</p>
 <h3 id="choose-your-dateadapter" tabindex="-1" class="docs-markdown--h3">Choose your DateAdapter</h3>
@@ -22,36 +22,35 @@
 <td><code>Date</code></td>
 <td>en-US</td>
 <td>None</td>
-<td><code>@allianz/ng-aquila/datefield</code></td>
+<td><code>@aposin/ng-aquila/datefield</code></td>
 </tr>
 <tr>
 <td><code>NxMomentDateModule</code></td>
 <td><code>Moment</code></td>
 <td><a href="https://github.com/moment/moment/tree/develop/src/locale">See moment project</a></td>
 <td><a href="https://momentjs.com/">Moment.js</a></td>
-<td><code>@allianz/ng-aquila/moment-date-adapter</code></td>
+<td><code>@aposin/ng-aquila/moment-date-adapter</code></td>
 </tr>
 <tr>
 <td><code>NxIsoDateModule</code></td>
 <td><code>string</code> in ISO format YYYY-MM-DD</td>
 <td><a href="https://github.com/iamkun/dayjs/tree/dev/src/locale">See dayjs project</a></td>
 <td><a href="https://day.js.org/">dayjs</a></td>
-<td><code>@allianz/ng-aquila/iso-date-adapter</code></td>
+<td><code>@aposin/ng-aquila/iso-date-adapter</code></td>
 </tr>
 </tbody>
 </table>
 <p class="docs-markdown--p">Momentjs ships with every locale thus significantly increasing the bundle size. The iso date adapter uses dayjs where you have to import the locales you want to support manually. So you are under control and have huge potential bundle size savings. With en and de locales you save around 300KB (pre gzip).</p>
 <h4 id="iso-date-adapter" tabindex="-1" class="docs-markdown--h4">ISO Date Adapter</h4>
 <p class="docs-markdown--p">The ISO date adapter works solely with YYYY-MM-DD strings. Under the hood it uses dayjs to support formatting, parsing and localization. With this adapter you don't have to create a proper Date, Dayjs or Moment Object first to bind it with ngModel or reactive forms.</p>
-<p class="docs-markdown--p">Please install the <code>dayjs</code> package to use this adapter.</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxIsoDateModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/iso-date-adapter&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIsoDateModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/iso-date-adapter&#x27;</span>;
 </code></pre>
 <h4 id="native-date" tabindex="-1" class="docs-markdown--h4">Native Date</h4>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxNativeDateModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/datefield&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxNativeDateModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">That's an implementation on top of the native Date object in the browser. You have no dependencies but you won't be able to change the parse format. To repeat this: You won't be able to change the parsing, that's why for most use cases you should use the ISO or moment adapter.</p>
 <h4 id="moment.js" tabindex="-1" class="docs-markdown--h4">Moment.js</h4>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxMomentDateModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/moment-date-adapter&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxMomentDateModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/moment-date-adapter&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">If you choose to use the moment implementation you have to fulfill the Moment.js peerDependency and import the NxMomentDateModule instead of the NativeDateAdapter.</p>
 <h4 id="custom" tabindex="-1" class="docs-markdown--h4">Custom</h4>
@@ -106,9 +105,9 @@
 <p class="docs-markdown--p">The ability to localize the datepicker <strong>depends on the chosen date implementation</strong>. The native date adapter supports only en-US and you can't change the values. The Iso and moment adapters support a variety of locales.</p>
 <p class="docs-markdown--p">The Datepicker falls back on the Application token <code>LOCALE_ID</code> and can be overwritten through the <code>NX_DATE_LOCALE</code> if necessary:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
-    <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: NX_DATE_LOCALE, <span class="hljs-attr">useValue</span>: <span class="hljs-string">&#x27;en-GB&#x27;</span> }],
+    <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">NX_DATE_LOCALE</span>, <span class="hljs-attr">useValue</span>: <span class="hljs-string">&#x27;en-GB&#x27;</span> }],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> </span>{}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyApp</span> {}
 </code></pre>
 <p class="docs-markdown--p">If you want to <strong>change the locale during runtime</strong> you can use the <code>setLocale()</code> method of the used DateAdapter implementation. This is shown in the following example.</p>
 <p class="docs-markdown--p"><strong>Please note</strong> that the locale setting does not change all labels and texts in the datepicker, only the date related parts are translated. You need to provide your own translation for texts like the header. You can find an example in the next chapter <a href="./documentation/datefield/overview#localizing-labels-and-messages">Localizing labels and messages</a>.</p>

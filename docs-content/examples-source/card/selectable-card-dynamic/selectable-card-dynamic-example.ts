@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl } from '@angular/forms';
+import {
+    UntypedFormArray,
+    UntypedFormBuilder,
+    UntypedFormControl,
+} from '@angular/forms';
 
 /**
  * @title Selectable cards dynamic example
@@ -10,27 +14,27 @@ import { FormArray, FormBuilder, FormControl } from '@angular/forms';
     styleUrls: ['./selectable-card-dynamic-example.css'],
 })
 export class SelectableCardDynamicExampleComponent {
-    readonly cardArray = new FormArray([
-        new FormControl(false),
-        new FormControl(false),
-        new FormControl(false),
+    readonly cardArray = new UntypedFormArray([
+        new UntypedFormControl(false),
+        new UntypedFormControl(false),
+        new UntypedFormControl(false),
     ]);
 
     readonly myFormGroup = this.fb.group({
         cards: this.cardArray,
     });
 
-    constructor(private readonly fb: FormBuilder) {}
+    constructor(private readonly fb: UntypedFormBuilder) {}
 
     addNewCard() {
-        this.cardArray.push(new FormControl(false));
+        this.cardArray.push(new UntypedFormControl(false));
     }
 
     removeFirstCard() {
         this.cardArray.removeAt(0);
     }
 
-    get cards(): FormArray {
-        return this.myFormGroup.get('cards') as FormArray;
+    get cards(): UntypedFormArray {
+        return this.myFormGroup.get('cards') as UntypedFormArray;
     }
 }

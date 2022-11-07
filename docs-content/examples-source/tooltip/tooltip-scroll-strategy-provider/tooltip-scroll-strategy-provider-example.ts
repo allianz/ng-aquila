@@ -1,6 +1,6 @@
-import { NX_TOOLTIP_SCROLL_STRATEGY } from '@allianz/ng-aquila/tooltip';
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
+import { NX_TOOLTIP_SCROLL_STRATEGY } from '@aposin/ng-aquila/tooltip';
 
 function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
     return () => overlay.scrollStrategies.close({ threshold: 100 });

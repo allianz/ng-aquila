@@ -1,42 +1,42 @@
-<span class="hljs-keyword">import</span> { NxDialogService, NxModalRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/modal&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    ChangeDetectorRef,
-    Component,
-    TemplateRef,
-    ViewChild,
+    <span class="hljs-title class_">ChangeDetectorRef</span>,
+    <span class="hljs-title class_">Component</span>,
+    <span class="hljs-title class_">TemplateRef</span>,
+    <span class="hljs-title class_">ViewChild</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxDialogService</span>, <span class="hljs-title class_">NxModalRef</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/modal&#x27;</span>;
 
-<span class="hljs-keyword">type</span> MyDialogResult = <span class="hljs-string">&#x27;agree&#x27;</span> | <span class="hljs-string">&#x27;disagree&#x27;</span>;
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">MyDialogResult</span> = <span class="hljs-string">&#x27;agree&#x27;</span> | <span class="hljs-string">&#x27;disagree&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Modal with content and actions example
+ * <span class="hljs-doctag">@title</span> Modal with content and actions example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;modal-content-actions-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./modal-content-actions-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./modal-content-actions-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ModalContentActionsExampleComponent</span> </span>{
-    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template&#x27;</span>) templateRef!: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ModalContentActionsExampleComponent</span> {
+    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template&#x27;</span>) templateRef!: <span class="hljs-title class_">TemplateRef</span>&lt;<span class="hljs-built_in">any</span>&gt;;
 
-    dialogRef?: NxModalRef&lt;<span class="hljs-built_in">any</span>, MyDialogResult | <span class="hljs-literal">undefined</span>&gt;; <span class="hljs-comment">// cancel and backdrop click return undefined</span>
+    dialogRef?: <span class="hljs-title class_">NxModalRef</span>&lt;<span class="hljs-built_in">any</span>, <span class="hljs-title class_">MyDialogResult</span> | <span class="hljs-literal">undefined</span>&gt;; <span class="hljs-comment">// cancel and backdrop click return undefined</span>
 
-    actionResult?: MyDialogResult;
+    actionResult?: <span class="hljs-title class_">MyDialogResult</span>;
 
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
         <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> dialogService: NxDialogService,
         <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _cdr: ChangeDetectorRef,
-    </span>)</span> {}
+    </span>) {}
 
-    openFromTemplate(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-built_in">this</span>.dialogRef = <span class="hljs-built_in">this</span>.dialogService.open(<span class="hljs-built_in">this</span>.templateRef, {
+    <span class="hljs-title function_">openFromTemplate</span>(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">dialogRef</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">dialogService</span>.<span class="hljs-title function_">open</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">templateRef</span>, {
             <span class="hljs-attr">ariaLabel</span>: <span class="hljs-string">&#x27;A modal with content and actions sections&#x27;</span>,
             <span class="hljs-attr">showCloseIcon</span>: <span class="hljs-literal">true</span>,
         });
 
-        <span class="hljs-built_in">this</span>.dialogRef.afterClosed().subscribe(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> {
-            <span class="hljs-built_in">this</span>.actionResult = result;
-            <span class="hljs-built_in">this</span>._cdr.markForCheck();
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">dialogRef</span>.<span class="hljs-title function_">afterClosed</span>().<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">actionResult</span> = result;
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cdr</span>.<span class="hljs-title function_">markForCheck</span>();
         });
     }
 }

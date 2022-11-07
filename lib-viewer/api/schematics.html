@@ -6,7 +6,7 @@
             <span class="docs-api-module-import__import-span">import</span>
             { AppModule }
             <span class="docs-api-module-import__from-span">from</span>
-            <span class="docs-api-module-import__path-span">'@allianz/ng-aquila'</span>;
+            <span class="docs-api-module-import__path-span">'@aposin/ng-aquila'</span>;
         </code>
     </p><h3 id="components" class="docs-header-link docs-api-h3">
         <span header-link="components"></span>
@@ -74,7 +74,7 @@
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">formGroup</span>:
-                <span class="docs-api-property__type">FormGroup</span>
+                <span class="docs-api-property__type">UntypedFormGroup</span>
             </code>
         </p>
     </td>
@@ -140,7 +140,7 @@
     </span></h4><p class="docs-api-class-description"><p>Migration that walks through every template and reports if there are
 instances of outdated Angular CDK API that can&#39;t be migrated automatically.</p>
 <p>TODO: make it reusable across major versions, e.g. with a custom data object
-similar to the CDK UpgradeData</p>
+similar to the CDK UpgradeData.</p>
 </p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
@@ -193,29 +193,10 @@ It creates things like the TempScopedNodeJsSyncHost and exposes everything and
 registers the beforeEach and afterEach hooks for jasmine.</p>
 <p>It also gives you access to functions:</p>
 <ul>
-<li>writeFile: makes it possibble to write to the<pre><code>tempFileSystemHost and also updates the hostTree</code></pre>
-</li>
+<li>writeFile: makes it possibble to write to the tempFileSystemHost and also updates the hostTree</li>
 <li>syncTreeToFileSystem: syncs the whole app tree to the disk</li>
 <li>runMigration: call to run the schematic name you specified in the constructor</li>
 </ul>
-<p>Usage:
-describe(&#39;my schematic tests&#39;, () =&gt; {
-   const testSetup = new SchematicTestSetup(&#39;01-my-schematic-name&#39;);</p>
-<p>  it(&#39;should do something&#39;, async () =&gt; {
-   testSetup.writeFile(&#39;/index.ts&#39;, `
-      import {Foo} from &#39;@allianz/ng-aquila&#39;;</p>
-<pre><code>export class TestClass {}
-`);
-
- await testSetup.runMigration();
- expect(something).toBeTruthy();</code></pre>
-<p>  });
-});</p>
-<p>You can also use destructuring to get the methods for some cleaner code:
-const testSetup = new SchematicTestSetup(&#39;01-my-schematic-name&#39;);
-let { writeFile, runMigration, warnOutput } = testSetup;</p>
-<p>WARNING: it doesn&#39;t work on properties like runner or appTree as they are undefined
-at that time</p>
 </p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
@@ -305,20 +286,6 @@ at that time</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">runMigration</span>:
-                <span class="docs-api-property__type">async (options = {}) => this.runner.runSchematicAsync(this.schematicName, options, this.appTree).toPromise()</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Run your migration.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
                 <span class="docs-api-property__name">runner</span>:
                 <span class="docs-api-property__type">SchematicTestRunner</span>
             </code>
@@ -339,22 +306,6 @@ at that time</p>
     </td>
     <td class="docs-api-property-description">
         </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">syncTreeToFileSystem</span>:
-                <span class="docs-api-property__type">() => {
-    this.appTree.files.forEach(f => this.writeFile(f, this.appTree.readContent(f)));
-}</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Syncs the whole virtual tree to the disk</p>
-</td>
 </tr>
    
 
@@ -395,28 +346,6 @@ at that time</p>
     <td class="docs-api-property-description">
         </td>
 </tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">writeFile</span>:
-                <span class="docs-api-property__type">(filePath: string, content: string) => {
-    this.tempFileSystemHost.sync.write(normalize(filePath), virtualFs.stringToFileBuffer(content));
-    if (this.hostTree.exists(filePath)) {
-        this.hostTree.overwrite(filePath, content);
-    }
-    else {
-        this.hostTree.create(filePath, content);
-    }
-}</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Creates or overwrites a file on the disk and in the virtual Tree</p>
-</td>
-</tr>
   
 </table> 
 
@@ -429,7 +358,7 @@ at that time</p>
             <span class="docs-api-method-name">deleteFile(filePath: <span class="docs-api-property__type">string</span>)</span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Deletes file on the disk and in the virtual Tree</p>
+    <div class="docs-api-method-description"><p>Deletes file on the disk and in the virtual Tree.</p>
 </div><div class="docs-api-method-params">
         <p class="docs-api-method-param-title">Parameters:</p>
         
@@ -446,10 +375,67 @@ at that time</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">setup()</span>
+            <span class="docs-api-method-name">init()</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">runMigration(options: <span class="docs-api-property__type">{} = {}</span>): <span class="docs-api-method-returns-type">Promise<UnitTestTree></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Run your migration.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                options:
+                <span class="docs-api-method-parameter-type">{} = {}</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">syncTreeToFileSystem()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Syncs the whole virtual tree to the disk.</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">writeFile(filePath: <span class="docs-api-property__type">string</span>,content: <span class="docs-api-property__type">string</span>)</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Creates or overwrites a file on the disk and in the virtual Tree.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                filePath:
+                <span class="docs-api-method-parameter-type">string</span>
+            </code>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                content:
+                <span class="docs-api-method-parameter-type">string</span>
+            </code>
+        </div>
+        
+    </div></div>
    
   <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
         <span header-link="additional_interfaces"></span>
