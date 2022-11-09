@@ -138,6 +138,10 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
         return index <= this.value || index <= this._hover;
     }
 
+    isChecked(rating: number) {
+        return rating <= this.value;
+    }
+
     /** Allows to set the rating. */
     setSelection(value: number) {
         if (!this.disabled) {

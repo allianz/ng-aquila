@@ -60,6 +60,17 @@
     }
 }
 
+:host(:not(.nx-rating--negative)) {
+    .nx-rating__icon.nx-rating__icon--selected {
+        &:hover {
+            color: v(hover-primary);
+        }
+        &:active {
+            color: v(active-primary);
+        }
+    }
+}
+
 .nx-rating__icon:last-child {
     margin-right: 0;
 

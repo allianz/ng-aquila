@@ -8,6 +8,7 @@
         [attr.aria-checked]="isSelected(rating)"
         [tabindex]="disabled ? -1 : 0"
         class="nx-rating__icon"
+        [class.nx-rating__icon--selected]="isChecked(rating)"
         [name]="getIconName(rating)"
         (mouseenter)="setHover(rating)"
         (mouseleave)="setHover(0)"
