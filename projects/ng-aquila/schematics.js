@@ -1,11 +1,17 @@
 #!/usr/bin/env node
-const cpx = require('cpx');
+const fs = require('fs-extra');
 const chalk = require('chalk');
+const glob = require('glob');
 
 function copySchematics() {
     try {
         process.chdir('./src');
-        cpx.copySync('./schematics/**/*.json', '../../../dist/ng-aquila/schematics');
+        glob('./schematics/**/*.json', null, function (er, files) {
+            files.forEach(src => {
+                const file = src.replace('./schematics/', '');
+                fs.copySync('./schematics/' + file, '../../../dist/ng-aquila/schematics/' + file);
+            });
+        });
     } catch (err) {
         console.error(chalk.red.bold('Error while copy:schematics.'));
         console.error(chalk.red(err));

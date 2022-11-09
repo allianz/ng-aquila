@@ -1,8 +1,9 @@
 const { execSync } = require('child_process');
-const cpx = require('cpx');
+const fs = require('fs-extra');
 const { promisify } = require('util');
 const rimraf = promisify(require('rimraf'));
 const { opensourceThemes } = require('./themes.js');
+const glob = require('glob');
 
 /**
  * Script to build and copy all necessary files for the
@@ -19,13 +20,21 @@ function compileTheme(theme) {
     });
 }
 
+function globCopy(sourcePath, destinationPath, globPath) {
+    const files = glob.sync(sourcePath + globPath, null);
+    files.forEach(src => {
+        const file = src.replace(sourcePath, '');
+        fs.copySync(sourcePath + file, destinationPath + file);
+    });
+}
+
 function compileSchematics() {
     rimraf.sync('./dist/ng-aquila/schematics');
 
     execSync(`tsc -p ./projects/ng-aquila/tsconfig.schematics.json`, { stdio: 'inherit' });
     console.log('============================');
     console.log('  Copying schematic assets');
-    cpx.copySync('./projects/ng-aquila/src/schematics/**/*.json', './dist/ng-aquila/schematics');
+    globCopy('./projects/ng-aquila/src/schematics', './dist/ng-aquila/schematics', '/**/*.json');
 }
 
 console.log('============================');
@@ -46,13 +55,13 @@ compileSchematics();
 
 console.log('============================');
 console.log('  Copying scss sources');
-cpx.copy(`projects/ng-aquila/src/shared-styles/theming/**/*`, `dist/ng-aquila/styles`);
+fs.copy(`projects/ng-aquila/src/shared-styles/theming`, `dist/ng-aquila/styles`);
 
 console.log('============================');
 console.log('  Copying other assets');
-cpx.copy('README.md', 'dist/ng-aquila');
-cpx.copy('LICENSE', 'dist/ng-aquila');
-cpx.copy('./projects/ng-aquila/src/schematics/*/files/**', './dist/ng-aquila/schematics');
+fs.copy('README.md', 'dist/ng-aquila/README.md');
+fs.copy('LICENSE', 'dist/ng-aquila/LICENSE');
+globCopy('./projects/ng-aquila/src/schematics', './dist/ng-aquila/schematics', '/*/files/**');
 
 console.log('============================');
 console.log('');
