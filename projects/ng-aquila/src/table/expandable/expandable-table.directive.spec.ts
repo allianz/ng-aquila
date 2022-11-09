@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -63,6 +63,7 @@ describe(NxTableComponent.name, () => {
                 toggleButton = fixture.debugElement.query(By.css('[nxHeaderCell] nx-toggle-button > button'));
                 toggleButton.triggerEventHandler('click', {});
                 fixture.detectChanges();
+                flush();
             }));
 
             it('has expanded all rows', () => {
@@ -75,6 +76,7 @@ describe(NxTableComponent.name, () => {
                 beforeEach(fakeAsync(() => {
                     toggleButton.triggerEventHandler('click', {});
                     fixture.detectChanges();
+                    flush();
                 }));
 
                 it('has collapsed all rows', () => {

@@ -43,7 +43,9 @@ export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
         if (this._target) {
             this._subscription = this._target.expanded.subscribe(expanded => {
                 this._expanded = expanded;
-                this._cdr.markForCheck();
+                setTimeout(() => {
+                    this._cdr.markForCheck();
+                });
             });
         }
     }
