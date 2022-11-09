@@ -299,7 +299,9 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
         this.contextMenu.parentMenu = this.triggersSubmenu() ? this._parentMenu ?? undefined : undefined;
         this.contextMenu.direction = this.dir;
         this._setIsContextMenuOpen(true);
-        this.contextMenu.focusFirstItem(origin);
+        setTimeout(() => {
+            this.contextMenu.focusFirstItem(origin);
+        });
     }
 
     /**

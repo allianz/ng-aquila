@@ -321,6 +321,7 @@ describe('nxContextMenu', () => {
         expect(overlayContainerElement.textContent).toBe('');
 
         fixture.componentInstance.trigger.openContextMenu();
+        tick();
         fixture.detectChanges();
 
         expect(overlayContainerElement.textContent).toContain('One');
@@ -335,6 +336,7 @@ describe('nxContextMenu', () => {
 
         fixture.componentInstance.trigger.contextMenu = fixture.componentInstance.secondMenu;
         fixture.componentInstance.trigger.openContextMenu();
+        tick();
         fixture.detectChanges();
 
         expect(overlayContainerElement.textContent).not.toContain('One');
@@ -964,43 +966,49 @@ describe('nxContextMenu', () => {
             expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected no open menus').toHaveSize(0);
         }));
 
-        it('should shift focus between the sub-menus', () => {
-            compileTestComponent();
-            instance.rootTrigger.openContextMenu();
-            fixture.detectChanges();
+        it('should shift focus between the sub-menus', () =>
+            fakeAsync(() => {
+                compileTestComponent();
+                instance.rootTrigger.openContextMenu();
 
-            expect(overlay.querySelector('.nx-context-menu')!.contains(document.activeElement))
-                .withContext('Expected focus to be inside the root menu')
-                .toBeTrue();
+                tick(500);
+                fixture.detectChanges();
 
-            instance.levelOneTrigger.openContextMenu();
-            fixture.detectChanges();
+                expect(overlay.querySelector('.nx-context-menu')!.contains(document.activeElement))
+                    .withContext('Expected focus to be inside the root menu')
+                    .toBeTrue();
 
-            expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement))
-                .withContext('Expected focus to be inside the first nested menu')
-                .toBeTrue();
+                instance.levelOneTrigger.openContextMenu();
+                tick(500);
+                fixture.detectChanges();
 
-            instance.levelTwoTrigger.openContextMenu();
-            fixture.detectChanges();
+                expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement))
+                    .withContext('Expected focus to be inside the first nested menu')
+                    .toBeTrue();
 
-            expect(overlay.querySelectorAll('.nx-context-menu')[2].contains(document.activeElement))
-                .withContext('Expected focus to be inside the second nested menu')
-                .toBeTrue();
+                instance.levelTwoTrigger.openContextMenu();
+                tick(500);
+                fixture.detectChanges();
 
-            instance.levelTwoTrigger.closeContextMenu();
-            fixture.detectChanges();
+                expect(overlay.querySelectorAll('.nx-context-menu')[2].contains(document.activeElement))
+                    .withContext('Expected focus to be inside the second nested menu')
+                    .toBeTrue();
 
-            expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement))
-                .withContext('Expected focus to be back inside the first nested menu')
-                .toBeTrue();
+                instance.levelTwoTrigger.closeContextMenu();
+                tick(500);
+                fixture.detectChanges();
 
-            instance.levelOneTrigger.closeContextMenu();
-            fixture.detectChanges();
+                expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement))
+                    .withContext('Expected focus to be back inside the first nested menu')
+                    .toBeTrue();
+                instance.levelOneTrigger.closeContextMenu();
+                tick(500);
+                fixture.detectChanges();
 
-            expect(overlay.querySelector('.nx-context-menu')!.contains(document.activeElement))
-                .withContext('Expected focus to be back inside the root menu')
-                .toBeTrue();
-        });
+                expect(overlay.querySelector('.nx-context-menu')!.contains(document.activeElement))
+                    .withContext('Expected focus to be back inside the root menu')
+                    .toBeTrue();
+            }));
 
         it('should position the sub-menu to the right edge of the trigger in ltr', () => {
             compileTestComponent();
@@ -1101,12 +1109,15 @@ describe('nxContextMenu', () => {
         it('should close all of the menus when the user tabs away', fakeAsync(() => {
             compileTestComponent();
             instance.rootTriggerEl.nativeElement.click();
+            tick();
             fixture.detectChanges();
 
             instance.levelOneTrigger.openContextMenu();
+            tick();
             fixture.detectChanges();
 
             instance.levelTwoTrigger.openContextMenu();
+            tick();
             fixture.detectChanges();
 
             const menus = overlay.querySelectorAll('.nx-context-menu');
