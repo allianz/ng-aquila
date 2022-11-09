@@ -83,17 +83,49 @@ $item-size: nx-spacer(3m);
     }
 }
 
-:not(.nx-calendar-body-disabled):hover,
-.nx-calendar-body-active:not(.nx-calendar-body-disabled) {
-    & > .nx-calendar-body-cell-content:not(.nx-calendar-body-selected),
-    & > .nx-calendar-adjacent-cell-content {
-        color: v(datefield-cell-hover-color);
-        background-color: v(datefield-cell-hover-background-color);
+:not(.nx-calendar-body-disabled) {
+    &:hover {
+        & > .nx-calendar-body-cell-content,
+        & > .nx-calendar-adjacent-cell-content {
+            color: v(datefield-cell-hover-color);
+            background-color: v(datefield-cell-hover-background-color);
 
-        @media screen and (-ms-high-contrast: active) {
-            -ms-high-contrast-adjust: none;
-            background-color: highlight;
-            color: highlightText;
+            @media screen and (-ms-high-contrast: active) {
+                -ms-high-contrast-adjust: none;
+                background-color: highlight;
+                color: highlightText;
+            }
+
+            &.nx-calendar-body-selected {
+                color: v(datefield-cell-selected-color);
+                background-color: v(datefield-cell-selected-hover-background-color);
+                &.nx-calendar-body-today {
+                    &::after {
+                        background-color: v(datefield-cell-selected-color);
+                    }
+                }
+            }
+        }
+    }
+    &:active {
+        & > .nx-calendar-body-cell-content {
+            &.nx-calendar-body-today {
+                color: v(datefield-cell-active-color);
+                &::after {
+                    background-color: v(datefield-cell-active-color);
+                }
+            }
+            &:not(.nx-calendar-body-selected) {
+                background-color: v(datefield-cell-active-background-color);
+            }
+            &.nx-calendar-body-selected {
+                background-color: v(datefield-cell-selected-active-background-color);
+                &.nx-calendar-body-today {
+                    &::after {
+                        background-color: v(datefield-cell-selected-color);
+                    }
+                }
+            }
         }
     }
 }
