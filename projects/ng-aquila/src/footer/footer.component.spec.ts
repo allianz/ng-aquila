@@ -68,8 +68,7 @@ describe(NxFooterComponent.name, () => {
             createTestComponent(DefaultCopyrightFooter);
         });
 
-        // I couldn't find out why this spec wouldn't pass. It works perfectly in the browser.
-        xit('should display default copyright text with custom input', () => {
+        it('should display default copyright text with custom input', () => {
             expect(footerNativeElement.querySelectorAll('nx-footer-copyright').length).toBe(1);
             expect(footerNativeElement.querySelector('nx-footer-copyright')?.textContent).toEqual(`© Other company ${currentYear}`);
         });
