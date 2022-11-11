@@ -1,7 +1,7 @@
 <div class="label-box">
     <div class="dot">
-        <div *ngIf="!completed && selected" class="small-dot"></div>
-        <nx-icon *ngIf="completed && !disabled" name="check"></nx-icon>
+        <div *ngIf="selected" class="small-dot"></div>
+        <nx-icon *ngIf="completed && !disabled && !selected" name="check"></nx-icon>
     </div>
     <div *ngIf="direction === 'vertical'" class="label" [attr.label]="label">{{ label }}</div>
 </div>

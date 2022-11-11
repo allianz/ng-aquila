@@ -84,7 +84,7 @@ describe('NxMultiStepperComponent', () => {
 
         const firstElement = fixture.nativeElement.querySelectorAll('nx-multi-step-item')[0];
         activeDot = firstElement.querySelector('.small-dot');
-        expect(activeDot).toBeNull();
+        expect(activeDot).not.toBeNull();
     });
 
     it('updates the template on manual step completion via input binding', () => {

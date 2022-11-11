@@ -55,7 +55,7 @@ $vertical-line-height: nx-spacer(s);
         }
     }
 
-    &.is-completed:not(.is-disabled) {
+    &.is-completed:not(.is-disabled):not(.is-selected) {
         .dot {
             background-color: v(multi-stepper-dot-touched-color);
         }
