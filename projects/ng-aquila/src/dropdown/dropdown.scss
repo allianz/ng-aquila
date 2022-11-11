@@ -194,6 +194,15 @@ $dropdown-border-size: nx-border-size(xs);
     }
 }
 
+:host(.is-readonly) {
+    .nx-dropdown__icon {
+        color: v(formfield-disabled-text-color);
+    }
+    .nx-dropdown__container {
+        cursor: not-allowed;
+    }
+}
+
 @media screen and (-ms-high-contrast: active) {
     .nx-dropdown__panel {
         box-shadow: 0 0 0 nx-border-size(xs) windowText;
@@ -206,5 +215,8 @@ $dropdown-border-size: nx-border-size(xs);
 
     .nx-dropdown__filter-input {
         border-bottom-color: buttonText;
+    }
+    .nx-dropdown__icon {
+        color: GrayText !important;
     }
 }

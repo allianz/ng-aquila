@@ -121,6 +121,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         role: 'combobox',
         '[class.nx-dropdown]': 'true',
         '[class.is-filled]': 'hasValue',
+        '[class.is-readonly]': 'readonly',
         '[class.has-focus]': 'focused',
         '[class.nx-dropdown--negative]': '_negative',
         '[class.nx-dropdown--disabled]': 'disabled',
@@ -130,6 +131,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         '[attr.aria-labelledby]': '_getAriaLabelledBy()',
         'aria-haspopup': 'listbox',
         '[attr.aria-expanded]': 'panelOpen',
+        '[attr.readonly]': 'readonly || null',
         '[attr.disabled]': 'disabled || null',
         '[attr.tabindex]': 'tabIndex',
         '(keydown)': '_handleKeydown($event)',
@@ -139,8 +141,15 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
     },
 })
 export class NxDropdownComponent implements NxDropdownControl, ControlValueAccessor, OnInit, AfterViewInit, AfterContentInit, OnDestroy, DoCheck {
-    // The dropdown currently doesn't support readonly of the NxFormfieldControl so we hardcode it here
-    readonly readonly: boolean = false;
+    /** Whether the dropdown is readonly. */
+    @Input('nxReadonly') set readonly(value: BooleanInput) {
+        this._readonly = coerceBooleanProperty(value);
+        this.stateChanges.next();
+    }
+    get readonly(): boolean {
+        return this._readonly;
+    }
+    private _readonly = false;
 
     private _selectionModel!: SelectionModel<NxDropdownOption>;
 
@@ -214,7 +223,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         this._tabIndex = value != null ? value : 0;
     }
     get tabIndex(): number {
-        return this.disabled ? -1 : this._tabIndex;
+        return this.disabled || this.readonly ? -1 : this._tabIndex;
     }
     private _tabIndex = 0;
 
@@ -758,7 +767,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
     /** Opens the panel of the dropdown. */
     openPanel($event: Event) {
-        if (this.disabled || !(this.dropdownItems?.length || this.options?.length) || this._panelOpen) {
+        if (this.disabled || this.readonly || !(this.dropdownItems?.length || this.options?.length) || this._panelOpen) {
             return;
         }
 
@@ -983,7 +992,8 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     private _handleClosedKeydown(event: KeyboardEvent) {
-        if (this.disabled) {
+        if (this.disabled || this.readonly) {
+            event.preventDefault();
             return;
         }
 

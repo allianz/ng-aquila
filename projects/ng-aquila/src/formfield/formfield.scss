@@ -222,7 +222,7 @@ $outline-padding: 7px;
 }
 
 // direct needs a hover color for border-bottom line
-.nx-formfield:not(.nx-formfield--negative):not(.has-error):not(.is-disabled):not(.is-focused):not(.has-outline) {
+.nx-formfield:not(.nx-formfield--negative):not(.has-error):not(.is-disabled):not(.is-focused):not(.has-outline):not(.is-readonly) {
     .nx-formfield__row:hover .nx-formfield__input-container {
         border-bottom-color: v(formfield-hover-border-color);
     }
