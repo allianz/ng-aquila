@@ -41,12 +41,27 @@ const save = folder =>
         }),
     );
 
-export const build = ({ source, dest }) =>
+const guides = [];
+const saveForSearch = (file: MarkdownFile, searchDest: string) => {
+    if (file.yaml) {
+        const guide = {
+            id: path.basename(file.filename).replace('.md', ''),
+            yaml: file.yaml,
+            content: file.content,
+        };
+        guides.push(guide);
+        fs.writeFileSync(searchDest, JSON.stringify(guides));
+    }
+    return file;
+};
+
+export const build = ({ source, dest, searchDest }) =>
     findAllFiles(source).pipe(
         showProcessingNotice('Processing Guides'),
         concatAll(),
         readMarkdownFileStream,
         transform,
+        map(file => saveForSearch(file, searchDest)),
         save(dest),
         manifest({ key: 'guides' }),
     );

@@ -1,0 +1,18 @@
+.search-input {
+    display: inline-block;
+    position: relative;
+    margin-right: 16px;
+    width: 100%;
+    input {
+        width: 100%;
+    }
+}
+.search-input__clear {
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    cursor: pointer;
+    line-height: 16px;
+    font-size: 22px;
+    padding: 0 5px;
+}

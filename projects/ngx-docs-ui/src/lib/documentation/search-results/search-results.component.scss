@@ -1,0 +1,31 @@
+:host {
+    display: flex;
+    height: 100%;
+}
+
+main {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-results__wrapper {
+    flex: 1 0 auto;
+}
+
+.searchresults__header {
+    margin: 20px 0;
+}
+
+.searchresults__info {
+    font-size: 15px;
+    line-height: 17px;
+    margin-bottom: 30px;
+}
+.hint {
+    opacity: 0.5;
+    font-style: italic;
+    font-weight: 100;
+}

@@ -23,6 +23,7 @@
             </ul>
         </nx-header-navigation>
         <nx-header-actions>
+            <nxv-search></nxv-search>
             <nxv-theme-switch *ngIf="showThemingSwitcher" [themes]="themes" [selected]="selectedTheme" (selectedChange)="selectTheme($event)">
             </nxv-theme-switch>
             <nxv-version-select class="docs-version-select"></nxv-version-select>

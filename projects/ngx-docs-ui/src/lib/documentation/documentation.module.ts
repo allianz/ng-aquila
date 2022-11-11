@@ -23,6 +23,7 @@ import { NxvGuideViewModule } from './guides/guide-view/guide-view.module';
 import { NxvGuidesModule } from './guides/guides.module';
 import { UploadInterceptor } from './http-interceptors/upload-interceptor';
 import { createViewerRoutes } from './routes';
+import { NxvSearchInputModule } from './search-input/search-input.module';
 import { NxvTableOfContentsModule } from './table-of-contents/table-of-contents.module';
 import { NxvThemeSwitcherModule } from './theme-switcher/theme-switcher.module';
 
@@ -45,6 +46,7 @@ import { NxvThemeSwitcherModule } from './theme-switcher/theme-switcher.module';
         NxvThemeSwitcherModule,
         CssVarSidebarModule,
         ExampleFullScreenModule,
+        NxvSearchInputModule,
     ],
     exports: [RouterModule],
     declarations: [DocumentationFrameComponent],

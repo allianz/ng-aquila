@@ -1,0 +1,96 @@
+<main cdkScrollable>
+    <div nxLayout="grid maxwidth" class="search-results__wrapper nx-grid nx-grid--max-width">
+        <div nxRow>
+            <div nxCol="12">
+                <div class="searchresult__content documentation__content">
+                    <h1 class="searchresults__header" *ngIf="(initReady$ | async) === false">Initializing search ...</h1>
+
+                    <ng-container *ngIf="searchTerm">
+                        <h1 class="searchresults__header">Results found for '{{ searchTerm }}'</h1>
+
+                        <div class="searchresults__info">
+                            We're showing maximum {{ maxEntriesPerCategory }} per category. Use quotation marks to search for a specific group of words (eg.
+                            <code>"search term"</code>).
+                        </div>
+
+                        <div class="search-results">
+                            <div *ngIf="searchResults?.component?.entries?.length">
+                                <h2>
+                                    Components ({{
+                                        searchResults.component.entries.length < searchResults.component.total
+                                            ? searchResults.component.entries.length + ' of ' + searchResults.component.total
+                                            : searchResults.component.entries.length
+                                    }})
+                                </h2>
+                                <div *ngFor="let entry of searchResults.component.entries" class="search-results__entry">
+                                    <nx-link>
+                                        <a href="my-viewer/documentation/{{ entry.item.id }}">{{ entry.item.title }}</a>
+                                    </nx-link>
+                                    <nx-badge class="nx-margin-left-s">{{ entry.item.alias }} </nx-badge>
+                                    <div class="nx-margin-bottom-m">{{ entry.item.id }} {{ entry.item.category }}</div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="searchResults?.api?.entries?.length">
+                                <h2 class="nx-margin-top-3m">
+                                    API ({{
+                                        searchResults.api.entries.length < searchResults.api.total
+                                            ? searchResults.api.entries.length + ' of ' + searchResults.api.total
+                                            : searchResults.api.entries.length
+                                    }})
+                                </h2>
+                                <div *ngFor="let entry of searchResults.api.entries" class="search-results__entry">
+                                    <nx-badge class="nx-margin-right-3xs" type="{{ getApiBadge(entry.item.type) }}">{{ entry.item.type }} </nx-badge>
+                                    <span style="text-transform: capitalize"> {{ entry.item.id }} &#9656; </span>
+
+                                    <nx-link>
+                                        <a href="my-viewer/documentation/{{ entry.item.id }}/api#{{ entry.item.name }}">
+                                            {{ entry.item.name }}
+                                        </a>
+                                    </nx-link>
+                                    <span *ngIf="entry.item.directiveSelectors && entry.item.directiveSelectors?.length" class="hint">
+                                        <{{ entry.item.directiveSelectors?.join(',') }}>
+                                    </span>
+                                    <div class="nx-margin-bottom-m nx-margin-top-3xs">{{ entry.item.title }}</div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="searchResults?.guide?.entries?.length">
+                                <h2 class="nx-margin-top-3m">
+                                    Guides ({{
+                                        searchResults.guide.entries.length < searchResults.guide.total
+                                            ? searchResults.guide.entries.length + ' of ' + searchResults.guide.total
+                                            : searchResults.guide.entries.length
+                                    }})
+                                </h2>
+                                <p *ngFor="let entry of searchResults.guide.entries" class="search-results__entry">
+                                    <nx-link>
+                                        <a href="my-viewer/guides/{{ entry.item.id }}">{{ entry.item.title }}</a>
+                                    </nx-link>
+                                </p>
+                            </div>
+
+                            <div *ngIf="searchResults?.example?.entries?.length">
+                                <h2 class="nx-margin-top-3m">
+                                    Example ({{
+                                        searchResults.example.entries.length < searchResults.example.total
+                                            ? searchResults.example.entries.length + ' of ' + searchResults.example.total
+                                            : searchResults.example.entries.length
+                                    }})
+                                </h2>
+                                <p *ngFor="let entry of searchResults.example.entries" class="search-results__entry">
+                                    <span style="text-transform: capitalize"> {{ entry.item.module }} </span> &#9656;
+                                    <nx-link>
+                                        <a href="my-viewer/documentation/{{ entry.item.module }}/overview#{{ entry.item.id.split('-').pop() }}">
+                                            {{ entry.item.title }}
+                                        </a>
+                                    </nx-link>
+                                </p>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

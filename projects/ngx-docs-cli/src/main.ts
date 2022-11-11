@@ -11,6 +11,7 @@ import guides from './guides/guides';
 import { processManifestData } from './manifest/run-manifest';
 import overview from './overview/overview';
 import { RxWatchData, rxWatcher } from './rx-watcher';
+import { buildSearchIndex } from './shared/search-indexer';
 
 const fs = require('fs');
 
@@ -132,6 +133,7 @@ program
         );
 
         const manifest = path.join(destination, 'manifest.json');
+        const guidesOutputFile = path.join(destination, 'guides.json');
 
         watchObservable
             .pipe(
@@ -150,7 +152,7 @@ program
                             outputExampleSources: path.join(destination, 'examples'),
                             additionalSourcePath: cmd.privateExamples,
                         }),
-                        guides.run(guideFiles, path.join(destination, 'guides')),
+                        guides.run(guideFiles, path.join(destination, 'guides'), guidesOutputFile),
                     ).pipe(toArray(), processManifestData(manifest)),
                 ),
             )
@@ -159,6 +161,7 @@ program
                 () => {},
                 () => {
                     console.log(chalk.green('Documentation Build completed'));
+                    buildSearchIndex({ manifest, guides: guidesOutputFile });
                     watcher.close();
                 },
             );

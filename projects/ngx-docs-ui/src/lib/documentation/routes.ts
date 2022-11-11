@@ -26,6 +26,10 @@ export const createViewerRoutes: (args: any) => Routes = args => [
                 redirectTo: 'welcome',
             },
             {
+                path: 'search',
+                loadChildren: () => import('./search-results/search-results.module').then(m => m.SearchResultsModule),
+            },
+            {
                 path: 'welcome',
                 component: args.welcomeComponent,
             },
