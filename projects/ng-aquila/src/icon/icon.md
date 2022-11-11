@@ -50,6 +50,11 @@ add it to your AppModule and include the `node_modules/@fortawesome/fontawesome-
 
 </div>
 
+<div class="docs-private">
+⚠️ **NDBX/Aquila conflict**: please make sure **not** to import the opensource(aquila) **NxDocumentationIconModule** into NDBX projects, since it's only supposed to be used in opensource(aquila) projects and would lead to conflicts with **NdbxIconModule** 
+recommend to use either module and register custom font yourself if need.
+</div>
+
 ### Essential Icons
 
 The library ships with a set of necessary icons that are used in the components themselves. You can override them with a custom SVG or by specifying a certain class from an icon font.
@@ -109,6 +114,13 @@ To use the icons shown here, please make sure to import the `NdbxIconModule` (se
 ### Register icons service
 
 Custom icons can be registered via the `NxIconRegistry` injectable service. With the `NxIconRegistry` you can associate icon names with SVG, URL and HTML strings and define a CSS font class. When you are registering an icon by URL please make sure to import the `HttpClientModule` from `@angular/common/http`.
+
+💡 When registering multiple font sets, 
+you can use `font` attribute to specify font set (`<nx-icon font="FONT_SET_NAME" name="ICON_NAME">`)
+
+<div class="docs-private">
+💡 NDBX iconfont set name is **ndbx-icons**.
+</div>
 
 <!-- example(icon-registry) -->
 
