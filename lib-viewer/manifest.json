@@ -1,223 +1,3008 @@
 {
   "api": [
     {
-      "id": "accordion"
-    },
-    {
-      "id": "action"
-    },
-    {
-      "id": "autocomplete"
-    },
-    {
-      "id": "avatar"
-    },
-    {
-      "id": "badge"
-    },
-    {
-      "id": "base"
-    },
-    {
-      "id": "breadcrumb"
-    },
-    {
-      "id": "button"
-    },
-    {
-      "id": "card"
-    },
-    {
-      "id": "cdk-test-utils.ts"
-    },
-    {
-      "id": "checkbox"
-    },
-    {
-      "id": "circle-toggle"
-    },
-    {
-      "id": "code-input"
-    },
-    {
-      "id": "comparison-table"
-    },
-    {
-      "id": "config"
-    },
-    {
-      "id": "context-menu"
-    },
-    {
-      "id": "copytext"
-    },
-    {
-      "id": "core"
-    },
-    {
-      "id": "data-display"
-    },
-    {
-      "id": "datefield"
-    },
-    {
-      "id": "documentation-icons"
-    },
-    {
-      "id": "dropdown"
-    },
-    {
-      "id": "dynamic-table"
-    },
-    {
-      "id": "file-uploader"
-    },
-    {
-      "id": "footer"
-    },
-    {
-      "id": "formfield"
-    },
-    {
-      "id": "grid"
-    },
-    {
-      "id": "header"
-    },
-    {
-      "id": "headline"
-    },
-    {
-      "id": "icon"
-    },
-    {
-      "id": "image"
-    },
-    {
-      "id": "indicator"
-    },
-    {
-      "id": "input"
-    },
-    {
-      "id": "iso-date-adapter"
-    },
-    {
-      "id": "licence-plate"
-    },
-    {
-      "id": "link"
-    },
-    {
-      "id": "list"
-    },
-    {
-      "id": "mask"
-    },
-    {
-      "id": "menu"
-    },
-    {
-      "id": "message"
-    },
-    {
-      "id": "modal"
-    },
-    {
-      "id": "moment-date-adapter"
-    },
-    {
-      "id": "natural-language-form"
-    },
-    {
-      "id": "notification-panel"
-    },
-    {
-      "id": "number-stepper"
-    },
-    {
-      "id": "overlay"
-    },
-    {
-      "id": "page-search"
-    },
-    {
-      "id": "pagination"
-    },
-    {
-      "id": "phone-input"
-    },
-    {
-      "id": "popover"
-    },
-    {
-      "id": "progress-stepper"
-    },
-    {
-      "id": "progressbar"
-    },
-    {
-      "id": "public-api.ts"
-    },
-    {
-      "id": "radio-button"
-    },
-    {
-      "id": "radio-toggle"
-    },
-    {
-      "id": "rating"
-    },
-    {
-      "id": "schematics"
-    },
-    {
-      "id": "sidebar"
-    },
-    {
-      "id": "sidepanel"
-    },
-    {
-      "id": "slider"
-    },
-    {
-      "id": "small-stage"
-    },
-    {
-      "id": "spinner"
-    },
-    {
-      "id": "swipebar"
-    },
-    {
-      "id": "switcher"
-    },
-    {
-      "id": "table"
-    },
-    {
-      "id": "tabs"
-    },
-    {
-      "id": "taglist"
-    },
-    {
-      "id": "timefield"
-    },
-    {
-      "id": "toolbar"
-    },
-    {
-      "id": "tooltip"
-    },
-    {
-      "id": "tree"
-    },
-    {
-      "id": "utils"
-    },
-    {
-      "id": "video"
+      "id": "accordion",
+      "ngModule": "NxAccordionModule",
+      "directive": [
+        {
+          "name": "NxAccordionDirective",
+          "directiveSelectors": [
+            "nx-accordion"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxExpansionPanelBodyDirective",
+          "directiveSelectors": [
+            "[nxExpansionPanelBody]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxExpansionPanelDescriptionDirective",
+          "directiveSelectors": [
+            "nx-expansion-panel-description"
+          ],
+          "title": "This directive is to be used inside of the NxExpansionPanelHeader component."
+        },
+        {
+          "name": "NxExpansionPanelTitleDirective",
+          "directiveSelectors": [
+            "nx-expansion-panel-title"
+          ],
+          "title": "This directive is to be used inside of the NxExpansionPanelHeader component."
+        }
+      ],
+      "component": [
+        {
+          "name": "NxExpansionPanelHeaderComponent",
+          "directiveSelectors": [
+            "nx-expansion-panel-header"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxExpansionPanelComponent",
+          "directiveExportAs": "NxExpansionPanelComponent",
+          "directiveSelectors": [
+            "nx-expansion-panel"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "AccordionStyle",
+          "title": "The styling of the accordion."
+        }
+      ]
+    },
+    {
+      "id": "action",
+      "ngModule": "NxActionModule",
+      "directive": [
+        {
+          "name": "NxActionIconDirective",
+          "directiveSelectors": [
+            "[nxActionIcon]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxActionComponent",
+          "directiveSelectors": [
+            "[nxAction]"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "autocomplete",
+      "ngModule": "NxAutocompleteModule",
+      "directive": [
+        {
+          "name": "NxAutocompleteTriggerDirective",
+          "directiveExportAs": "nxAutocompleteTrigger",
+          "directiveSelectors": [
+            "input[nxAutocomplete]",
+            "textarea[nxAutocomplete]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxAutocompleteOptionComponent",
+          "directiveSelectors": [
+            "nx-autocomplete-option"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxAutocompleteComponent",
+          "directiveExportAs": "nxAutocomplete",
+          "directiveSelectors": [
+            "nx-autocomplete"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxAutocompleteOptionSelected",
+          "title": "Option selected event"
+        },
+        {
+          "name": "NxAutocompleteSelectedEvent",
+          "title": "Event object that is emitted when an autocomplete option is selected."
+        }
+      ],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "avatar",
+      "ngModule": "NxAvatarModule",
+      "directive": [
+        {
+          "name": "NxAvatarButtonDirective",
+          "directiveSelectors": [
+            "button[nxAvatar]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxAvatarComponent",
+          "directiveSelectors": [
+            "[nxAvatar]"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxAvatarSize",
+          "title": "Size of an avatar."
+        }
+      ]
+    },
+    {
+      "id": "badge",
+      "ngModule": "NxBadgeModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxBadgeComponent",
+          "directiveSelectors": [
+            "nx-badge"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxBadgeType",
+          "title": "Possible badge types."
+        }
+      ]
+    },
+    {
+      "id": "base",
+      "ngModule": "NxLabelModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxErrorComponent",
+          "directiveSelectors": [
+            "nx-error"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxLabelComponent",
+          "directiveSelectors": [
+            "nx-label"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "ErrorDefaultOptions",
+          "title": "Represents the default options for the error notification that can be configured\nusing the `ERROR_DEFAULT_OPTIONS` injection token."
+        }
+      ],
+      "interface": [
+        {
+          "name": "LabelDefaultOptions",
+          "title": ""
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "ErrorStyleType",
+          "title": ""
+        },
+        {
+          "name": "LABEL_SIZE_TYPE",
+          "title": "Options for sizing of the label."
+        }
+      ]
+    },
+    {
+      "id": "breadcrumb",
+      "ngModule": "NxBreadcrumbModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxBreadcrumbItemComponent",
+          "directiveSelectors": [
+            "a[nxBreadcrumbItem]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxBreadcrumbComponent",
+          "directiveSelectors": [
+            "ol[nxBreadcrumb]"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxBreadcrumpAppearance",
+          "title": "The appearance of the breadcrumb."
+        }
+      ]
+    },
+    {
+      "id": "button",
+      "ngModule": "NxButtonModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxAnchorButtonComponent",
+          "directiveSelectors": [
+            "a[nxButton]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxAnchorIconButtonComponent",
+          "directiveSelectors": [
+            "a[nxIconButton]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxAnchorPlainButtonComponent",
+          "directiveSelectors": [
+            "a[nxPlainButton]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxButtonComponent",
+          "directiveSelectors": [
+            "button[nxButton]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxIconButtonComponent",
+          "directiveSelectors": [
+            "button[nxIconButton]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxPlainButtonComponent",
+          "directiveSelectors": [
+            "button[nxPlainButton]"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxButtonType",
+          "title": "Type of a button."
+        },
+        {
+          "name": "NxButtonSize",
+          "title": "Size of a button."
+        }
+      ]
+    },
+    {
+      "id": "card",
+      "ngModule": "NxCardModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxCardFooterComponent",
+          "directiveSelectors": [
+            "nx-card-footer"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxCardHeaderComponent",
+          "directiveSelectors": [
+            "nx-card-header"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxCardComponent",
+          "directiveSelectors": [
+            "nx-card"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxSelectableCardComponent",
+          "directiveSelectors": [
+            "nx-selectable-card"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxSelectableCardChangeEvent",
+          "title": ""
+        }
+      ],
+      "interface": [
+        {
+          "name": "SelectableCardDefaultOptions",
+          "title": "Represents the default options for the selectable card.\nIt can be configured using the `NX_SELECTABLE_CARD_DEFAULT_OPTIONS` injection token."
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "NxSelectableCardAppearance",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "id": "cdk-test-utils.ts",
+      "directive": [],
+      "component": [],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "checkbox",
+      "ngModule": "NxCheckboxModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "CheckboxGroupReactive",
+          "title": ""
+        },
+        {
+          "name": "ConditionalCheckboxGroupReactive",
+          "title": ""
+        },
+        {
+          "name": "NxCheckboxGroupComponent",
+          "directiveSelectors": [
+            "nx-checkbox-group"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxCheckboxComponent",
+          "directiveSelectors": [
+            "nx-checkbox"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxCheckboxChangeEvent",
+          "title": ""
+        },
+        {
+          "name": "NxCheckboxGroupChangeEvent",
+          "title": ""
+        }
+      ],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxCheckboxLabelSize",
+          "title": "Size of the label."
+        }
+      ]
+    },
+    {
+      "id": "circle-toggle",
+      "ngModule": "NxCircleToggleModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxCircleToggleGroupComponent",
+          "directiveSelectors": [
+            "nx-circle-toggle-group"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxCircleToggleComponent",
+          "directiveSelectors": [
+            "nx-circle-toggle"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "ToggleChangeEvent",
+          "title": ""
+        }
+      ],
+      "interface": [
+        {
+          "name": "CircleToggleGroupDefaultOptions",
+          "title": "Represents the default options for the circle toggle group.\nIt can be configured using the `CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS` injection token."
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "NxCircleToggleGroupAppearance",
+          "title": "Appearance options for the circle toggle group component."
+        }
+      ]
+    },
+    {
+      "id": "code-input",
+      "ngModule": "NxCodeInputModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxCodeInputComponent",
+          "directiveSelectors": [
+            "nx-code-input"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxCodeInputIntl",
+          "title": ""
+        }
+      ],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxConversionTypes",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "id": "comparison-table",
+      "ngModule": "NxComparisonTableModule",
+      "directive": [
+        {
+          "name": "NxComparisonTableRowGroupDirective",
+          "directiveSelectors": [
+            "[nxComparisonTableRowGroup]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxComparisonTableRowDirective",
+          "directiveSelectors": [
+            "[nxComparisonTableRow]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxToggleSectionDirective",
+          "directiveSelectors": [
+            "[nxComparisonTableToggleSection]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxComparisonTableCell",
+          "directiveSelectors": [
+            "nx-comparison-table-cell"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxComparisonTableComponent",
+          "directiveSelectors": [
+            "nx-comparison-table"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxComparisonTableDescriptionCell",
+          "directiveSelectors": [
+            "nx-comparison-table-description-cell"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxComparisonTableIntersectionCell",
+          "directiveSelectors": [
+            "nx-comparison-table-intersection-cell"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxComparisonTablePopularCell",
+          "directiveSelectors": [
+            "nx-comparison-table-popular-cell"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxComparisonTableSelectButton",
+          "directiveSelectors": [
+            "button[nxComparisonTableSelectButton]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxToggleSectionHeaderComponent",
+          "directiveSelectors": [
+            "nx-comparison-table-toggle-section-header"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [
+        {
+          "name": "ComparisonTableDefaultOptions",
+          "title": ""
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "NxComparisonTableRowType",
+          "title": "The type of the row."
+        }
+      ]
+    },
+    {
+      "id": "config",
+      "ngModule": "NxScrollStrategyModule",
+      "directive": [],
+      "component": [],
+      "services": [
+        {
+          "name": "NxConfigurationService",
+          "title": "Service for switching values of the defaultOptions injection tokens at runtime.\nWARNING: This service should not be used in actual applications!\nIt is only meant to showcase different options for documentation purposes."
+        }
+      ],
+      "classes": [],
+      "interface": [
+        {
+          "name": "CloseScrollStrategyConfig",
+          "title": "Config options for the CloseScrollStrategy."
+        },
+        {
+          "name": "NxScrollStrategyDefaultConfig",
+          "title": "Scroll strategy default configuration."
+        },
+        {
+          "name": "NxScrollStrategyFactoryConfig",
+          "title": "Scroll strategy factory configuration."
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "NxScrollStrategy",
+          "title": "Scroll strategy default presets for overlay-based components."
+        },
+        {
+          "name": "NxScrollStrategyOptions",
+          "title": "Scroll strategy default preset options for overlay-based components."
+        },
+        {
+          "name": "NxScrollStrategyFactoryFn",
+          "title": "Scroll strategy factory creator function."
+        }
+      ]
+    },
+    {
+      "id": "context-menu",
+      "ngModule": "NxContextMenuModule",
+      "directive": [
+        {
+          "name": "NxContextMenuContentDirective",
+          "directiveSelectors": [
+            "ng-template[nxContextMenuContent]"
+          ],
+          "title": "Context menu content that will be rendered lazily once the menu is opened."
+        },
+        {
+          "name": "NxContextMenuTriggerDirective",
+          "directiveExportAs": "nxContextMenuTrigger",
+          "directiveSelectors": [
+            "[nxContextMenuTriggerFor]"
+          ],
+          "title": "This directive is intended to be used in conjunction with an nx-context-menu tag.\nIt is responsible for toggling the display of the provided context menu instance."
+        }
+      ],
+      "component": [
+        {
+          "name": "NxContextMenuHeaderComponent",
+          "directiveSelectors": [
+            "nx-context-menu-header"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxContextMenuItemComponent",
+          "directiveExportAs": "nxContextMenuItem",
+          "directiveSelectors": [
+            "[nxContextMenuItem]"
+          ],
+          "title": "This directive is intended to be used inside an nx-context-menu tag.\nIt exists mostly to set the role attribute, disabled state and styling."
+        },
+        {
+          "name": "NxContextMenuItemWrapComponent",
+          "directiveSelectors": [
+            "nx-context-menu-item-wrap"
+          ],
+          "title": "This directive is need when [nx-context-menu-item] is not directly under [nx-context-menu].\n"
+        },
+        {
+          "name": "NxContextMenuComponent",
+          "directiveExportAs": "nxContextMenu",
+          "directiveSelectors": [
+            "nx-context-menu"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxContextMenuScrollStrategy",
+          "title": ""
+        },
+        {
+          "name": "NxContextMenuMode",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "id": "copytext",
+      "ngModule": "NxCopytextModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxCopytextComponent",
+          "directiveSelectors": [
+            "[nxCopytext]"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxCopytextType",
+          "title": "A type that specifies the font size of a copytext."
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "directive": [],
+      "component": [],
+      "services": [],
+      "classes": [
+        {
+          "name": "MappedStyles",
+          "title": ""
+        }
+      ],
+      "interface": [
+        {
+          "name": "MappingObject",
+          "title": ""
+        }
+      ],
+      "typeAlias": []
+    },
+    {
+      "id": "data-display",
+      "ngModule": "NxDataDisplayModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxDataDisplayLabelComponent",
+          "directiveSelectors": [
+            "nx-data-display-label"
+          ],
+          "title": "Label within a `<nx-data-display>`."
+        },
+        {
+          "name": "NxDataDisplayComponent",
+          "directiveSelectors": [
+            "nx-data-display"
+          ],
+          "title": "Data display component."
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [
+        {
+          "name": "DataDisplayDefaultOptions",
+          "title": "Default options for the NxDataDisplayComponent."
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "NxDataDisplayOrientation",
+          "title": "Layout orientation of the NxDataDisplayComponent.\n\n- 'vertical': label and value are vertically stacked.\n- 'horizontal': label and value are on the same line.\n- 'horizontal-columns': label and value are on the same line in a fixed position."
+        },
+        {
+          "name": "NxDataDisplaySize",
+          "title": "Sizes of the NxDataDisplayComponent."
+        }
+      ]
+    },
+    {
+      "id": "datefield",
+      "ngModule": "NxDatefieldModule",
+      "directive": [
+        {
+          "name": "NxDatefieldDirective",
+          "directiveExportAs": "nxDatefield",
+          "directiveSelectors": [
+            "input[nxDatefield]"
+          ],
+          "title": "Directive used to provide date processing functionality to an input."
+        },
+        {
+          "name": "NxDatepickerToggleIconComponent",
+          "directiveSelectors": [
+            "[nxDatepickerToggleIcon]"
+          ],
+          "title": "Can be used to override the icon of a `nxDatepickerToggle`."
+        }
+      ],
+      "component": [
+        {
+          "name": "NxDatepickerToggleComponent",
+          "directiveExportAs": "nxDatepickerToggle",
+          "directiveSelectors": [
+            "nx-datepicker-toggle"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxDatepickerComponent",
+          "directiveExportAs": "nxDatepicker",
+          "directiveSelectors": [
+            "nx-datepicker"
+          ],
+          "title": "Component responsible for managing the datepicker popup/dialog."
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxDateAdapter",
+          "title": "Base class for all adapter implementations"
+        },
+        {
+          "name": "NxDateValidators",
+          "title": "Provides a set of date validators that can be used by form controls.\n"
+        },
+        {
+          "name": "NxDatepickerInputEvent",
+          "title": "An event used for datepicker input and change events. We don't always have access to a native\ninput or change event because the event may have been triggered by the user clicking on the\ncalendar popup. For consistency, we always use NxDatepickerInputEvent instead."
+        },
+        {
+          "name": "NxDatepickerIntl",
+          "title": "Datepicker data that requires internationalization."
+        },
+        {
+          "name": "DatepickerDefaultOptions",
+          "title": ""
+        }
+      ],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "documentation-icons",
+      "ngModule": "NxDocumentationIconModule",
+      "directive": [],
+      "component": [],
+      "services": [],
+      "classes": [],
+      "interface": [
+        {
+          "name": "FontIcon",
+          "title": ""
+        }
+      ],
+      "typeAlias": []
+    },
+    {
+      "id": "dropdown",
+      "ngModule": "NxDropdownModule",
+      "directive": [
+        {
+          "name": "NxDropdownClosedLabelDirective",
+          "directiveSelectors": [
+            "[nxClosedLabel]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxDropdownComponent",
+          "directiveSelectors": [
+            "nx-dropdown"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxDropdownGroupComponent",
+          "directiveSelectors": [
+            "nx-dropdown-group"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxDropdownItemComponent",
+          "directiveSelectors": [
+            "nx-dropdown-item"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxMultiSelectComponent",
+          "directiveSelectors": [
+            "nx-multi-select"
+          ],
+          "title": "Multi Select component.\n"
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxDropdownControl",
+          "title": ""
+        },
+        {
+          "name": "NxDropdownIntl",
+          "title": "Dropdown data that requires internationalization."
+        },
+        {
+          "name": "NxDropdownSelectChange",
+          "title": "Change event object that is emitted when the select value has changed."
+        },
+        {
+          "name": "NxDropdownItemChange",
+          "title": ""
+        }
+      ],
+      "interface": [
+        {
+          "name": "NxDropdownOption",
+          "title": "An option of the dropdown.\nContains a value and an optional label.\nIf no label is specified, the value will be displayed instead."
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "FilterInputType",
+          "title": ""
+        },
+        {
+          "name": "NxDropdownFilterFn",
+          "title": ""
+        },
+        {
+          "name": "NxDropdownCompareWithFn",
+          "title": ""
+        },
+        {
+          "name": "NxDropdownValueFormatterFn",
+          "title": ""
+        },
+        {
+          "name": "NxMultiSelectFilterFn",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "id": "dynamic-table",
+      "ngModule": "NxDynamicTableModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxDynamicTableComponent",
+          "directiveSelectors": [
+            "nx-dynamic-table"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxDynamicTableDataSource",
+          "title": ""
+        }
+      ],
+      "interface": [
+        {
+          "name": "NxDynamicTableColumnDefinition",
+          "title": "Dynamic table column definition consisting of key, title and type properties."
+        }
+      ],
+      "typeAlias": []
+    },
+    {
+      "id": "file-uploader",
+      "ngModule": "NxFileUploaderModule",
+      "directive": [
+        {
+          "name": "NxFileUploaderButtonDirective",
+          "directiveSelectors": [
+            "[nxFileUploadButton]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxFileUploaderHintDirective",
+          "directiveSelectors": [
+            "[nxFileUploadHint]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxFileUploaderTriggerDirective",
+          "directiveExportAs": "nxFileUploadTrigger",
+          "directiveSelectors": [
+            "[nxFileUploadTriggerFor]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxFileUploaderDropZoneComponent",
+          "directiveSelectors": [
+            "nx-file-uploader-drop-zone"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxFileUploaderComponent",
+          "directiveExportAs": "NxFileUploaderComponent",
+          "directiveSelectors": [
+            "nx-file-uploader"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxFileUploaderItemDelete",
+          "directiveSelectors": [
+            "nx-file-upload-delete"
+          ],
+          "title": "Shows a delete button."
+        },
+        {
+          "name": "NxFileUploaderItemName",
+          "directiveSelectors": [
+            "nx-file-upload-name"
+          ],
+          "title": "Shows the file name."
+        },
+        {
+          "name": "NxFileUploaderItemSize",
+          "directiveSelectors": [
+            "nx-file-upload-size"
+          ],
+          "title": "Shows a file size in Megabyte (MB) or an alternative label while the file is uploading."
+        },
+        {
+          "name": "NxFileUploaderItemStatus",
+          "directiveSelectors": [
+            "nx-file-upload-status"
+          ],
+          "title": "Shows the current uploading status of a file."
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxFileUploaderIntl",
+          "title": "File uploader data that requires internationalization."
+        },
+        {
+          "name": "FileItem",
+          "title": "Class used to keep track of the current states of the file."
+        },
+        {
+          "name": "UploadInterceptor",
+          "title": ""
+        },
+        {
+          "name": "NxFileUploadSuccess",
+          "title": ""
+        },
+        {
+          "name": "NxFileUploadError",
+          "title": ""
+        },
+        {
+          "name": "NxFileUploader",
+          "title": ""
+        },
+        {
+          "name": "NxFileUploaderValidators",
+          "title": "Provides a set of file uploader validators that can be used by form controls.\n\nCurrently `maxFileSize` and `fileType` are available.\n"
+        }
+      ],
+      "interface": [
+        {
+          "name": "NxFileUploadConfig",
+          "title": ""
+        },
+        {
+          "name": "NxFileUploadResult",
+          "title": ""
+        }
+      ],
+      "typeAlias": []
+    },
+    {
+      "id": "footer",
+      "ngModule": "NxFooterModule",
+      "directive": [
+        {
+          "name": "NxFooterCopyrightDirective",
+          "directiveExportAs": "NxFooterCopyright",
+          "directiveSelectors": [
+            "nx-footer-copyright"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxFooterNavigationDirective",
+          "directiveExportAs": "NxFooterNavigation",
+          "directiveSelectors": [
+            "nx-footer-navigation"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxFooterLinkDirective",
+          "directiveExportAs": "NxFooterLink",
+          "directiveSelectors": [
+            "nx-footer-link"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxFooterComponent",
+          "directiveSelectors": [
+            "nx-footer",
+            "[nx-footer]"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "formfield",
+      "ngModule": "NxFormfieldModule",
+      "directive": [
+        {
+          "name": "NxFormfieldAppendixDirective",
+          "directiveSelectors": [
+            "[nxFormfieldAppendix]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxFormfieldErrorDirective",
+          "directiveSelectors": [
+            "[nxFormfieldError]",
+            "[nxError]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxFormfieldHintDirective",
+          "directiveSelectors": [
+            "[nxFormfieldHint]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxFormfieldLabelDirective",
+          "directiveSelectors": [
+            "nx-formfield-label"
+          ],
+          "title": "A directive for passing more complex custom label content."
+        },
+        {
+          "name": "NxFormfieldNoteDirective",
+          "directiveSelectors": [
+            "[nxFormfieldNote]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxFormfieldPrefixDirective",
+          "directiveSelectors": [
+            "[nxFormfieldPrefix]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxFormfieldSuffixDirective",
+          "directiveSelectors": [
+            "[nxFormfieldSuffix]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxFormfieldComponent",
+          "directiveSelectors": [
+            "nx-formfield"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [
+        {
+          "name": "FormfieldDefaultOptions",
+          "title": "Represents the default options for the form field that can be configured\nusing the `FORMFIELD_DEFAULT_OPTIONS` injection token."
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "FloatLabelType",
+          "title": "Type for the available floatLabel values."
+        },
+        {
+          "name": "AppearanceType",
+          "title": "Type for the appearance of the formfield."
+        }
+      ]
+    },
+    {
+      "id": "grid",
+      "ngModule": "NxGridModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxColComponent",
+          "directiveSelectors": [
+            "[nxCol]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxLayoutComponent",
+          "directiveSelectors": [
+            "[nxLayout]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxRowComponent",
+          "directiveSelectors": [
+            "[nxRow]"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "ColSelfAlignment",
+          "title": "Type for the available alignment values of a column inside the flexible container."
+        },
+        {
+          "name": "ColOrder",
+          "title": "Type for the available values for setting the order of a column within a row."
+        },
+        {
+          "name": "RowJustification",
+          "title": ""
+        },
+        {
+          "name": "RowContentAlignment",
+          "title": ""
+        },
+        {
+          "name": "RowItemsAlignment",
+          "title": ""
+        },
+        {
+          "name": "RowWrapping",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "id": "header",
+      "ngModule": "NxHeaderModule",
+      "directive": [
+        {
+          "name": "NxHeaderRowDirective",
+          "directiveExportAs": "NxHeaderRow",
+          "directiveSelectors": [
+            "nx-header-row"
+          ],
+          "title": "This directive defines a header row within the `<nx-header>` component."
+        },
+        {
+          "name": "NxHeaderBrandDirective",
+          "directiveExportAs": "NxHeaderBrand",
+          "directiveSelectors": [
+            "nx-header-brand"
+          ],
+          "title": "This directive defines the header brand section within the `<nx-header>` component."
+        },
+        {
+          "name": "NxHeaderActionsDirective",
+          "directiveExportAs": "NxHeaderActions",
+          "directiveSelectors": [
+            "nx-header-actions"
+          ],
+          "title": "This directive defines the header actions section within the `<nx-header>` component."
+        },
+        {
+          "name": "NxHeaderNavigationItemDirective",
+          "directiveExportAs": "NxHeaderNavigation",
+          "directiveSelectors": [
+            "nx-header-navigation-item"
+          ],
+          "title": "This directive defines a header navigation item within the `<nx-header-navigation>`."
+        },
+        {
+          "name": "NxHeaderAppTitleDirective",
+          "directiveExportAs": "NxHeaderAppTitle",
+          "directiveSelectors": [
+            "nx-header-app-title"
+          ],
+          "title": "This directive defines the application title within the `<nx-header>` component."
+        }
+      ],
+      "component": [
+        {
+          "name": "NxHeaderComponent",
+          "directiveSelectors": [
+            "nx-header",
+            "[nx-header]"
+          ],
+          "title": "The `<nx-header>` component is the main application header."
+        },
+        {
+          "name": "NxHeaderNavigationComponent",
+          "directiveExportAs": "NxHeaderNavigation",
+          "directiveSelectors": [
+            "nx-header-navigation"
+          ],
+          "title": "This component defines the header navigation section within the `<nx-header>` component."
+        },
+        {
+          "name": "NxHeaderLinkComponent",
+          "directiveExportAs": "NxHeaderLink",
+          "directiveSelectors": [
+            "a[nxHeaderLink]"
+          ],
+          "title": "This component defines a header link within the `<nx-header>` component."
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "headline",
+      "ngModule": "NxHeadlineModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxHeadlineComponent",
+          "directiveSelectors": [
+            "[nxHeadline]"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "HeadlineType",
+          "title": "Types of headlines"
+        }
+      ]
+    },
+    {
+      "id": "icon",
+      "ngModule": "NxIconModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxIconComponent",
+          "directiveSelectors": [
+            "nx-icon"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxDefaultIcons",
+          "title": ""
+        },
+        {
+          "name": "NxIconFontDefinition",
+          "title": ""
+        },
+        {
+          "name": "NxIconRegistry",
+          "title": ""
+        },
+        {
+          "name": "NxSvgIcon",
+          "title": ""
+        },
+        {
+          "name": "NxSvgIconLiteral",
+          "title": ""
+        },
+        {
+          "name": "NxSvgIconFromUrl",
+          "title": ""
+        },
+        {
+          "name": "NxFontIcon",
+          "title": ""
+        }
+      ],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "IconSize",
+          "title": "Types of icon sizes"
+        }
+      ]
+    },
+    {
+      "id": "image",
+      "ngModule": "NxImageModule",
+      "directive": [
+        {
+          "name": "NxImageDirective",
+          "directiveSelectors": [
+            "img[nxImg]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxFigureComponent",
+          "directiveSelectors": [
+            "figure[nxFigure]"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "FigureType",
+          "title": "Types of figures."
+        }
+      ]
+    },
+    {
+      "id": "indicator",
+      "ngModule": "NxIndicatorModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxIndicatorComponent",
+          "directiveSelectors": [
+            "nx-indicator"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxIndicatorPosition",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "id": "input",
+      "ngModule": "NxInputModule",
+      "directive": [
+        {
+          "name": "NxInputDirective",
+          "directiveExportAs": "nxInput",
+          "directiveSelectors": [
+            "input[nxInput]",
+            "textarea[nxInput]",
+            "select[nxInput]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxPasswordToggleComponent",
+          "directiveSelectors": [
+            "nx-password-toggle"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "iso-date-adapter",
+      "ngModule": "NxIsoDateModule",
+      "directive": [],
+      "component": [],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "licence-plate",
+      "ngModule": "NxLicencePlateModule",
+      "directive": [
+        {
+          "name": "NxLicencePlateValidatorDirective",
+          "directiveSelectors": [
+            "[nxLicensePlate]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxLicencePlateEuroPrefixComponent",
+          "directiveSelectors": [
+            "nx-licence-plate-euro-prefix"
+          ],
+          "title": "Euro country prefix for the licence plate input."
+        },
+        {
+          "name": "NxLicencePlateSeasonSuffixComponent",
+          "directiveSelectors": [
+            "nx-licence-plate-season-suffix"
+          ],
+          "title": "Suffix for seasonal licence plate inputs."
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxLicencePlateType",
+          "title": "Type of supported license plates."
+        }
+      ]
+    },
+    {
+      "id": "link",
+      "ngModule": "NxLinkModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxLinkComponent",
+          "directiveSelectors": [
+            "nx-link"
+          ],
+          "title": "`Input('nxStyle') classNames` sets the style of the link, thereby altering the visual appearance.\nYou can use any combination of 'black', 'icon-right', 'icon-only', 'negative' or 'text'."
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxLinkSize",
+          "title": "The size of the link."
+        }
+      ]
+    },
+    {
+      "id": "list",
+      "ngModule": "NxListModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxListIconComponent",
+          "directiveSelectors": [
+            "li[nxListIcon]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxListComponent",
+          "directiveSelectors": [
+            "ul[nxList]",
+            "ol[nxList]"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxListSize",
+          "title": "Size of the list"
+        }
+      ]
+    },
+    {
+      "id": "mask",
+      "ngModule": "NxMaskModule",
+      "directive": [
+        {
+          "name": "NxIbanMaskDirective",
+          "directiveExportAs": "nxIbanMaskDirective",
+          "directiveSelectors": [
+            "input[nxIbanMask]"
+          ],
+          "title": "To use the `NxIbanMaskDirective`, you have to install the **peer dependency** `iban.js`."
+        },
+        {
+          "name": "NxMaskDirective",
+          "directiveExportAs": "nxMaskDirective",
+          "directiveSelectors": [
+            "input[nxMask]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "MaskConversionTypes",
+          "title": "Options for input case sensitivity."
+        }
+      ]
+    },
+    {
+      "id": "menu",
+      "ngModule": "NxMenuModule",
+      "directive": [
+        {
+          "name": "NxMenuButtonIconDirective",
+          "directiveSelectors": [
+            "[nxMenuButtonIcon]"
+          ],
+          "title": "Icon that can be added to a [nxButton]."
+        },
+        {
+          "name": "NxMenuItemDirective",
+          "directiveSelectors": [
+            "[nxMenuItem]"
+          ],
+          "title": "This is a menu item is used to structure content whithin a menu."
+        },
+        {
+          "name": "NxMenuLinkDirective",
+          "directiveSelectors": [
+            "a[nxMenuLink]"
+          ],
+          "title": "This is a menu link.\nIt adds styling to a link and is usually used within a [nxMenuItem]."
+        }
+      ],
+      "component": [
+        {
+          "name": "NxMenuButtonComponent",
+          "directiveSelectors": [
+            "[nxMenuButton]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxMenuComponent",
+          "directiveSelectors": [
+            "nx-menu"
+          ],
+          "title": "This components is a collapsible menu for usage on smaller devices.\n\nCan contain any content, but usually [nxMenuLink], [nxMenuGroup] and [nxAction]."
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxMenuButtonType",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "id": "message",
+      "ngModule": "NxMessageModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxMessageComponent",
+          "directiveExportAs": "nxMessage",
+          "directiveSelectors": [
+            "nx-message"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxMessageBannerComponent",
+          "directiveExportAs": "nxMessageBanner",
+          "directiveSelectors": [
+            "nx-message-banner"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [
+        {
+          "name": "NxMessageToastService",
+          "title": "A service for dispatching and displaying toast messages."
+        }
+      ],
+      "classes": [
+        {
+          "name": "NxMessageToastConfig",
+          "title": "Configuration used when opening a message toast."
+        },
+        {
+          "name": "NxMessageToastRef",
+          "title": ""
+        }
+      ],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "CONTEXT",
+          "title": "The contextual type of a message."
+        },
+        {
+          "name": "BANNER_CONTEXT",
+          "title": ""
+        },
+        {
+          "name": "NxMessageToastContext",
+          "title": "The contextual type of a message."
+        }
+      ]
+    },
+    {
+      "id": "modal",
+      "ngModule": "NxModalModule",
+      "directive": [
+        {
+          "name": "NxModalCloseDirective",
+          "directiveSelectors": [
+            "[nxModalClose]"
+          ],
+          "title": "Button that will close the current modal."
+        },
+        {
+          "name": "NxModalActionsDirective",
+          "directiveSelectors": [
+            "[nxModalActions]"
+          ],
+          "title": "Container for the action buttons in a modal. Has a fixed position at the bottom of the modal on scroll."
+        },
+        {
+          "name": "NxModalContentDirective",
+          "directiveSelectors": [
+            "[nxModalContent]"
+          ],
+          "title": "Scrollable container for the content of a modal."
+        },
+        {
+          "name": "NxOpenModalOnClickDirective",
+          "directiveSelectors": [
+            "[nxOpenModalOnClick]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxModalComponent",
+          "directiveSelectors": [
+            "nx-modal"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [
+        {
+          "name": "NxDialogService",
+          "title": "Service to open Material Design modal modals."
+        }
+      ],
+      "classes": [
+        {
+          "name": "NxModalConfig",
+          "title": "Configuration for opening a modal  with the NxDialogService."
+        },
+        {
+          "name": "NxModalRef",
+          "title": "Reference to a modal opened via the NxDialogService."
+        }
+      ],
+      "interface": [
+        {
+          "name": "NxDialogPosition",
+          "title": "Possible overrides for a modal's position."
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "NxModalRole",
+          "title": "Valid ARIA roles for a modal element."
+        }
+      ]
+    },
+    {
+      "id": "moment-date-adapter",
+      "ngModule": "NxMomentDateModule",
+      "directive": [],
+      "component": [],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "natural-language-form",
+      "ngModule": "NxNaturalLanguageFormModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxNaturalLanguageFormComponent",
+          "directiveSelectors": [
+            "nx-natural-language-form"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxWordComponent",
+          "directiveSelectors": [
+            "nx-word"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxNaturalLanguageFormSize",
+          "title": "Size of the NLF."
+        },
+        {
+          "name": "SIZES",
+          "title": "Type to determine the minimal width of a word."
+        }
+      ]
+    },
+    {
+      "id": "notification-panel",
+      "ngModule": "NxNotificationPanelModule",
+      "directive": [
+        {
+          "name": "NxNotificationItemMetadataDirective",
+          "directiveSelectors": [
+            "nx-notification-item-metadata"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxNotificationItemContentDirective",
+          "directiveSelectors": [
+            "nx-notification-item-content"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxNotificationItemActionsDirective",
+          "directiveSelectors": [
+            "nx-notification-item-actions"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxNotificationItemHeaderDirective",
+          "directiveSelectors": [
+            "nx-notification-header"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxNotificationPanelTriggerDirective",
+          "directiveSelectors": [
+            "[nxNotificationPanelTriggerFor]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxNotificationPanelItemComponent",
+          "directiveSelectors": [
+            "nx-notification-panel-item",
+            "[nxNotificationPanelItem]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxNotificationPanelComponent",
+          "directiveExportAs": "nxNotificationPanel",
+          "directiveSelectors": [
+            "nx-notification-panel"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "number-stepper",
+      "ngModule": "NxNumberStepperModule",
+      "directive": [
+        {
+          "name": "NxNumberStepperPrefixDirective",
+          "directiveSelectors": [
+            "nx-number-stepper-prefix"
+          ],
+          "title": "Directive used to pass a suffix to the number stepper."
+        },
+        {
+          "name": "NxNumberStepperSuffixDirective",
+          "directiveSelectors": [
+            "nx-number-stepper-suffix"
+          ],
+          "title": "Directive used to pass a suffix to the number stepper."
+        }
+      ],
+      "component": [
+        {
+          "name": "NxNumberStepperComponent",
+          "directiveSelectors": [
+            "nx-number-stepper"
+          ],
+          "title": "`Input('nxSize') classNames` defines the size of the number stepper.\n\nValues: `'big' | 'normal'`.\n\nDefault: `'normal'`."
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxNumberStepperIntl",
+          "title": ""
+        }
+      ],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "overlay",
+      "ngModule": "NxOverlayModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxOverlayContainerComponent",
+          "directiveSelectors": [
+            "nx-overlay-container"
+          ],
+          "title": "Internal component that wraps user-provided overlay content."
+        },
+        {
+          "name": "TestRootComponent",
+          "title": ""
+        }
+      ],
+      "services": [
+        {
+          "name": "NxOverlayService",
+          "title": ""
+        }
+      ],
+      "classes": [
+        {
+          "name": "NxOverlayConfig",
+          "title": "Configuration for opening a overlay  with the NxDialogService."
+        },
+        {
+          "name": "NxOverlayRef",
+          "title": "Reference to a overlay opened via the NxDialogService."
+        },
+        {
+          "name": "NxOverlayPositionBuilder",
+          "title": ""
+        },
+        {
+          "name": "NxTriggerButton",
+          "title": "Interface for any kind of button that should be active while\nan overlay is open."
+        }
+      ],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxOverlayRole",
+          "title": "The ARIA role of the overlay."
+        },
+        {
+          "name": "NxOverlayDirection",
+          "title": ""
+        },
+        {
+          "name": "NxOverlayVerticalDirection",
+          "title": ""
+        },
+        {
+          "name": "NxOverlayHorizontalDirection",
+          "title": ""
+        },
+        {
+          "name": "NxOverlayFallbackOrientation",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "id": "page-search",
+      "ngModule": "NxPageSearchModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxPageSearchComponent",
+          "directiveSelectors": [
+            "nx-page-search"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "pagination",
+      "ngModule": "NxPaginationModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxPaginationComponent",
+          "directiveSelectors": [
+            "nx-pagination"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [
+        {
+          "name": "IPaginationTexts",
+          "title": "Interface for providing custom labels in a simple pagination.\nWith an implementation you can localize your pagination with the NX_PAGINATION_TEXTS injection token."
+        }
+      ],
+      "typeAlias": []
+    },
+    {
+      "id": "phone-input",
+      "ngModule": "NxPhoneInputModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxPhoneInputComponent",
+          "directiveSelectors": [
+            "nx-phone-input"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxPhoneInputIntl",
+          "title": ""
+        }
+      ],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "popover",
+      "ngModule": "NxPopoverModule",
+      "directive": [
+        {
+          "name": "NxPopoverContentDirective",
+          "directiveSelectors": [
+            "ng-template[nxPopoverContent]"
+          ],
+          "title": "Popover content that will be rendered lazily\nafter the popover is opened for the first time."
+        },
+        {
+          "name": "NxPopoverTriggerDirective",
+          "directiveExportAs": "nxPopoverTrigger",
+          "directiveSelectors": [
+            "[nxPopoverTriggerFor]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxPopoverComponent",
+          "directiveExportAs": "nxPopover",
+          "directiveSelectors": [
+            "nx-popover"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxPopoverIntl",
+          "title": "Popover data that requires internationalization."
+        }
+      ],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "PopoverVerticalDirection",
+          "title": ""
+        },
+        {
+          "name": "PopoverHorizontalDirection",
+          "title": ""
+        },
+        {
+          "name": "PopoverDirection",
+          "title": ""
+        },
+        {
+          "name": "PopoverTriggerType",
+          "title": ""
+        },
+        {
+          "name": "PopoverTriggerScrollStrategy",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "id": "progress-stepper",
+      "ngModule": "NxProgressStepperModule",
+      "directive": [
+        {
+          "name": "NxStepperNextDirective",
+          "directiveSelectors": [
+            "button[nxStepperNext]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxStepperPreviousDirective",
+          "directiveSelectors": [
+            "button[nxStepperPrevious]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxMultiStepperGroupComponent",
+          "directiveSelectors": [
+            "nx-step-group"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxMultiStepperComponent",
+          "directiveSelectors": [
+            "nx-multi-stepper"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxStepComponent",
+          "directiveExportAs": "nxStep",
+          "directiveSelectors": [
+            "nx-step"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxProgressStepperComponent",
+          "directiveSelectors": [
+            "nx-progress-stepper"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxSingleStepperComponent",
+          "directiveSelectors": [
+            "nx-single-stepper"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "NxMultiStepperDirection",
+          "title": "Direction of the multi stepper"
+        }
+      ]
+    },
+    {
+      "id": "progressbar",
+      "ngModule": "NxProgressbarModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxProgressbarComponent",
+          "directiveSelectors": [
+            "nx-progressbar"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "public-api.ts",
+      "directive": [],
+      "component": [],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "radio-button",
+      "ngModule": "NxRadioModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxRadioGroupComponent",
+          "directiveSelectors": [
+            "nx-radio-group"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxRadioComponent",
+          "directiveSelectors": [
+            "nx-radio"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxRadioChange",
+          "title": "The change event object emitted by the radio group and radio button."
+        }
+      ],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "LabelSize",
+          "title": "Label Size Types"
+        }
+      ]
+    },
+    {
+      "id": "radio-toggle",
+      "ngModule": "NxRadioToggleModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxRadioToggleComponent",
+          "directiveSelectors": [
+            "nx-radio-toggle"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxRadioToggleButtonComponent",
+          "directiveSelectors": [
+            "nx-radio-toggle-button"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "rating",
+      "ngModule": "NxRatingModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxRatingComponent",
+          "directiveSelectors": [
+            "nx-rating"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "schematics",
+      "ngModule": "AppModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "AppComponent",
+          "directiveSelectors": [
+            "app-root"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "MiscTemplateMigration",
+          "title": "Migration that walks through every template and reports if there are\ninstances of outdated Angular CDK API that can't be migrated automatically.\n\nTODO: make it reusable across major versions, e.g. with a custom data object\nsimilar to the CDK UpgradeData."
+        },
+        {
+          "name": "SchematicTestSetup",
+          "title": "Helper for setting up everything needed for the schematic tests.\nIt creates things like the TempScopedNodeJsSyncHost and exposes everything and\nregisters the beforeEach and afterEach hooks for jasmine.\n\nIt also gives you access to functions:\n+ writeFile: makes it possibble to write to the tempFileSystemHost and also updates the hostTree\n+ syncTreeToFileSystem: syncs the whole app tree to the disk\n+ runMigration: call to run the schematic name you specified in the constructor\n"
+        }
+      ],
+      "interface": [
+        {
+          "name": "Schema",
+          "title": ""
+        },
+        {
+          "name": "AquilaCssSelectorData",
+          "title": ""
+        }
+      ],
+      "typeAlias": []
+    },
+    {
+      "id": "sidebar",
+      "ngModule": "NxSidebarModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxSidebarComponent",
+          "directiveSelectors": [
+            "nx-sidebar"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxSidebarFooterComponent",
+          "directiveSelectors": [
+            "nx-sidebar-footer"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxSidebarToggleComponent",
+          "directiveSelectors": [
+            "button[nxSidebarToggle]"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "sidepanel",
+      "ngModule": "NxSidepanelModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxSidepanelComponent",
+          "directiveSelectors": [
+            "nx-sidepanel"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxSidepanelOuterContainerComponent",
+          "directiveSelectors": [
+            "nx-sidepanel-outer-container"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxSidepanelCloseButtonComponent",
+          "directiveSelectors": [
+            "button[nxSidepanelCloseButton]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxSidepanelContentComponent",
+          "directiveSelectors": [
+            "nx-sidepanel-content"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxSidepanelHeaderComponent",
+          "directiveSelectors": [
+            "nx-sidepanel-header"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "PositionType",
+          "title": "Type for the available position values."
+        },
+        {
+          "name": "Appearance",
+          "title": "Type for the appearance of the sidepanel."
+        }
+      ]
+    },
+    {
+      "id": "slider",
+      "ngModule": "NxSliderModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxSliderComponent",
+          "directiveSelectors": [
+            "nx-slider"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "small-stage",
+      "ngModule": "NxSmallStageModule",
+      "directive": [
+        {
+          "name": "NxSmallStageImageBottomDirective",
+          "directiveSelectors": [
+            "[nxSmallStageImageBottom]"
+          ],
+          "title": "A directive for passing the bottom image into small stage component."
+        },
+        {
+          "name": "NxSmallStageImageEndDirective",
+          "directiveSelectors": [
+            "[nxSmallStageImageEnd]"
+          ],
+          "title": "A directive for passing the end image into small stage component."
+        },
+        {
+          "name": "NxSmallStageHeaderDirective",
+          "directiveSelectors": [
+            "[nxSmallStageHeader]"
+          ],
+          "title": "A directive for passing contents to small stage header."
+        },
+        {
+          "name": "NxSmallStageImageDirective",
+          "directiveSelectors": [
+            "nx-small-stage-image"
+          ],
+          "title": "This is an image that can be placed into the small stage component."
+        },
+        {
+          "name": "NxSmallStageImageStartDirective",
+          "directiveSelectors": [
+            "[nxSmallStageImageStart]"
+          ],
+          "title": "A directive for passing the start image into small stage component."
+        }
+      ],
+      "component": [
+        {
+          "name": "NxSmallStageComponent",
+          "directiveSelectors": [
+            "nx-small-stage"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [
+        {
+          "name": "SmallStageDefaultOptions",
+          "title": "Represents the default options for the small stage.\nIt can be configured using the `NX_SMALL_STAGE_DEFAULT_OPTIONS` injection token."
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "NxSmallStageAppearance",
+          "title": "Appearance options for the small stage component."
+        }
+      ]
+    },
+    {
+      "id": "spinner",
+      "ngModule": "NxSpinnerModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxSpinnerComponent",
+          "directiveSelectors": [
+            "nx-spinner"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "SpinnerSize",
+          "title": "Options for sizing of the spinner."
+        }
+      ]
+    },
+    {
+      "id": "swipebar",
+      "ngModule": "NxSwipebarModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxSwipebarComponent",
+          "directiveSelectors": [
+            "nx-swipebar"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "switcher",
+      "ngModule": "NxSwitcherModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxSwitcherComponent",
+          "directiveSelectors": [
+            "nx-switcher"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": [
+        {
+          "name": "POSITION",
+          "title": "Options for placement of the label"
+        },
+        {
+          "name": "LABEL_SIZE",
+          "title": "Options for sizing of the label"
+        }
+      ]
+    },
+    {
+      "id": "table",
+      "ngModule": "NxTableModule",
+      "directive": [
+        {
+          "name": "NxExpandableTableDirective",
+          "directiveExportAs": "nxExpandableTable",
+          "directiveSelectors": [
+            "table[nxExpandableTable]"
+          ],
+          "title": "The nxExpandableTable adds row expansion functionality to the nxTable.\nIt provides the logic to expand/collapse all expandable rows simultanously."
+        },
+        {
+          "name": "NxHeaderCellDirective",
+          "directiveSelectors": [
+            "[nxHeaderCell]"
+          ],
+          "title": "This is a table header cell."
+        },
+        {
+          "name": "NxSortDirective",
+          "directiveExportAs": "NxSortDirective",
+          "directiveSelectors": [
+            "table[nxSort]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxExpandableTableCellComponent",
+          "directiveSelectors": [
+            "td[nxExpandableTableCell]"
+          ],
+          "title": "This is an expandable table cell.\nOnly works in conjunction with the `[nxExpandableTableRow]` component."
+        },
+        {
+          "name": "NxExpandableTableRowComponent",
+          "directiveSelectors": [
+            "tr[nxExpandableTableRow]"
+          ],
+          "title": "This is an expandable table row.\nIt can collapse its height to hide the content.\nRequires the table cells to have the `[nxExpandableTableCell]` component."
+        },
+        {
+          "name": "NxToggleButtonComponent",
+          "directiveSelectors": [
+            "nx-toggle-button"
+          ],
+          "title": "This toggle button can be clicked and toggles expandable elements.\n\nE.g. it can toggle a expandable table row or anything else that implements the `NxExpandable` interface."
+        },
+        {
+          "name": "NxSortHeaderComponent",
+          "directiveExportAs": "nxSortHeaderComponent",
+          "directiveSelectors": [
+            "th[nxSortHeaderCell]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxTableComponent",
+          "directiveSelectors": [
+            "table[nxTable]"
+          ],
+          "title": "This is a table.\nThe table supports a `zebra` and a `condensed` mode."
+        },
+        {
+          "name": "NxTableCellComponent",
+          "directiveSelectors": [
+            "td[nxTableCell]",
+            "td[nxCell]"
+          ],
+          "title": "This is a table cell."
+        },
+        {
+          "name": "NxTableRowComponent",
+          "directiveSelectors": [
+            "tr[nxTableRow]"
+          ],
+          "title": "This is a table row."
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "SortEvent",
+          "title": ""
+        },
+        {
+          "name": "NxSortHeaderIntl",
+          "title": ""
+        }
+      ],
+      "interface": [
+        {
+          "name": "NxExpandable",
+          "title": ""
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "SortDirection",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "id": "tabs",
+      "ngModule": "NxTabsModule",
+      "directive": [
+        {
+          "name": "NxTabContentDirective",
+          "directiveSelectors": [
+            "[nxTabContent]"
+          ],
+          "title": "Decorates the `ng-template` tags and reads out the template from it."
+        },
+        {
+          "name": "NxTabLinkDirective",
+          "directiveSelectors": [
+            "[nxTabLink]"
+          ],
+          "title": ""
+        }
+      ],
+      "component": [
+        {
+          "name": "NxTabComponent",
+          "directiveExportAs": "nxTab",
+          "directiveSelectors": [
+            "nx-tab"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxTabGroupComponent",
+          "directiveSelectors": [
+            "nx-tab-group"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxTabNavBarComponent",
+          "directiveSelectors": [
+            "nx-tab-nav-bar"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxTabScrollIndicator",
+          "directiveSelectors": [
+            "nx-tab-scroll-indicator"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxTabChangeEvent",
+          "title": ""
+        }
+      ],
+      "interface": [
+        {
+          "name": "TabGroupDefaultOptions",
+          "title": ""
+        },
+        {
+          "name": "TabNavBarDefaultOptions",
+          "title": ""
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "NxTabsAppearance",
+          "title": ""
+        },
+        {
+          "name": "NxScrollDirection",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "id": "taglist",
+      "ngModule": "NxTaglistModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxTagComponent",
+          "directiveSelectors": [
+            "nx-tag"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxTaglistComponent",
+          "directiveSelectors": [
+            "nx-taglist"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "timefield",
+      "ngModule": "NxTimefieldModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxTimefieldComponent",
+          "directiveSelectors": [
+            "nx-timefield"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxTimefieldIntl",
+          "title": ""
+        }
+      ],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "toolbar",
+      "ngModule": "NxToolbarModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxToolbarComponent",
+          "directiveSelectors": [
+            "nx-toolbar"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "tooltip",
+      "ngModule": "NxTooltipModule",
+      "directive": [
+        {
+          "name": "NxTooltipDirective",
+          "directiveExportAs": "nxTooltip",
+          "directiveSelectors": [
+            "[nxTooltip]"
+          ],
+          "title": "Directive that attaches a tooltip to the host element."
+        }
+      ],
+      "component": [],
+      "services": [],
+      "classes": [],
+      "interface": [
+        {
+          "name": "NxTooltipDefaultOptions",
+          "title": "Default `nxTooltip` options that can be overridden."
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "TooltipPosition",
+          "title": "Possible positions of the tooltip."
+        },
+        {
+          "name": "TooltipHorizontalPosition",
+          "title": ""
+        },
+        {
+          "name": "TooltipVerticalPosition",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "id": "tree",
+      "ngModule": "NxTreeModule",
+      "directive": [
+        {
+          "name": "NxTreeNodeActionItem",
+          "directiveSelectors": [
+            "[nxTreeNodeActionItem]"
+          ],
+          "title": ""
+        },
+        {
+          "name": "NxTreeNodeDefDirective",
+          "directiveSelectors": [
+            "[nxTreeNodeDef]"
+          ],
+          "title": "Wrapper for the CdkTree node definition with custom design styles."
+        },
+        {
+          "name": "NxTreeNodeOutletDirective",
+          "directiveSelectors": [
+            "[nxTreeNodeOutlet]"
+          ],
+          "title": "Outlet for nested CdkNode. Put `[nxTreeNodeOutlet]` on a tag to place children dataNodes\ninside the outlet."
+        },
+        {
+          "name": "NxTreeNodePaddingDirective",
+          "directiveSelectors": [
+            "[nxTreeNodePadding]"
+          ],
+          "title": "Indent for the children tree dataNodes.\nThis directive will add left-padding to the node to show hierarchy."
+        },
+        {
+          "name": "NxTreeNodeToggleDirective",
+          "directiveSelectors": [
+            "[nxTreeNodeToggle]"
+          ],
+          "title": "Wrapper for the CdkTree's toggle with custom design styles."
+        }
+      ],
+      "component": [
+        {
+          "name": "NxTreeNodeComponent",
+          "directiveExportAs": "nxTreeNode",
+          "directiveSelectors": [
+            "nx-tree-node"
+          ],
+          "title": "Wrapper for the CdkTree node with custom design styles."
+        },
+        {
+          "name": "NxTreeComponent",
+          "directiveExportAs": "nxTree",
+          "directiveSelectors": [
+            "nx-tree"
+          ],
+          "title": "Wrapper for the CdkTree with custom design styles and keyboard nav mechanics."
+        }
+      ],
+      "services": [],
+      "classes": [
+        {
+          "name": "NxTreeFlatDataSource",
+          "title": "Data source for flat tree.\nThe data source need to handle expansion/collapsion of the tree node and change the data feed\nto `NxTree`.\nThe nested tree nodes of type `T extends NxTreeNode` are flattened through `NxTreeFlattener`, and converted\nto type `F extends NxFlatTreeNode` for `NxTree` to consume."
+        },
+        {
+          "name": "NxFlatTreeControl",
+          "title": "Flat tree control, allows to expand/collapse a subtree recursively for flattened tree."
+        }
+      ],
+      "interface": [
+        {
+          "name": "NxTreeNode",
+          "title": "This interface defines a single node of the trees data structure."
+        },
+        {
+          "name": "NxFlatTreeNode",
+          "title": "Flat node with level information."
+        }
+      ],
+      "typeAlias": []
+    },
+    {
+      "id": "utils",
+      "directive": [],
+      "component": [],
+      "services": [
+        {
+          "name": "NxViewportService",
+          "title": "Service subscribing to window resize events and providing breakpoint matching functions."
+        }
+      ],
+      "classes": [
+        {
+          "name": "ErrorStateMatcher",
+          "title": "Provider that defines when form controls have an error."
+        }
+      ],
+      "interface": [],
+      "typeAlias": []
+    },
+    {
+      "id": "video",
+      "ngModule": "NxVideoModule",
+      "directive": [],
+      "component": [
+        {
+          "name": "NxVideoComponent",
+          "directiveSelectors": [
+            "nx-video"
+          ],
+          "title": ""
+        }
+      ],
+      "services": [],
+      "classes": [],
+      "interface": [],
+      "typeAlias": []
     }
   ],
   "components": [
@@ -288,7 +3073,8 @@
       "overviewFile": "lib-viewer/overview/accordion.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "expansion panel, collapse"
     },
     {
       "id": "action",
@@ -312,7 +3098,8 @@
       "overviewFile": "lib-viewer/overview/action.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "menu"
     },
     {
       "id": "autocomplete",
@@ -396,7 +3183,8 @@
       "overviewFile": "lib-viewer/overview/badge.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "chip"
     },
     {
       "id": "base",
@@ -416,7 +3204,33 @@
       "overviewFile": "lib-viewer/overview/base.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "label, error"
+    },
+    {
+      "id": "breadcrumb",
+      "title": "Breadcrumb",
+      "examples": [
+        {
+          "name": "breadcrumb",
+          "config": {}
+        },
+        {
+          "name": "breadcrumb-link",
+          "config": {}
+        },
+        {
+          "name": "breadcrumb-negative",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/breadcrumb.html",
+      "overviewFile": "lib-viewer/overview/breadcrumb.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "location"
     },
     {
       "id": "button",
@@ -520,7 +3334,8 @@
       "overviewFile": "lib-viewer/overview/card.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "card, selectable card"
     },
     {
       "id": "checkbox",
@@ -644,7 +3459,8 @@
       "overviewFile": "lib-viewer/overview/circle-toggle.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "button, radio, toggle, checkbox"
     },
     {
       "id": "code-input",
@@ -832,7 +3648,8 @@
       "overviewFile": "lib-viewer/overview/context-menu.html",
       "b2c": false,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "menu"
     },
     {
       "id": "copytext",
@@ -850,198 +3667,6 @@
       "category": "components",
       "apiFile": "lib-viewer/api/copytext.html",
       "overviewFile": "lib-viewer/overview/copytext.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "data-display",
-      "title": "Data Display",
-      "examples": [
-        {
-          "name": "data-display-standard",
-          "config": {}
-        },
-        {
-          "name": "data-display-condensed",
-          "config": {}
-        },
-        {
-          "name": "data-display-horizontal",
-          "config": {}
-        },
-        {
-          "name": "data-display-responsive",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/data-display.html",
-      "overviewFile": "lib-viewer/overview/data-display.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "datefield",
-      "title": "Date Field",
-      "examples": [
-        {
-          "name": "datefield-iso",
-          "config": {}
-        },
-        {
-          "name": "datefield-basic",
-          "config": {}
-        },
-        {
-          "name": "datefield-disabled",
-          "config": {}
-        },
-        {
-          "name": "datefield-min-max",
-          "config": {}
-        },
-        {
-          "name": "datefield-filter",
-          "config": {}
-        },
-        {
-          "name": "datefield-range",
-          "config": {}
-        },
-        {
-          "name": "datefield-reactive",
-          "config": {}
-        },
-        {
-          "name": "datefield-format-injection",
-          "config": {}
-        },
-        {
-          "name": "datefield-parsing",
-          "config": {}
-        },
-        {
-          "name": "datefield-formatting",
-          "config": {}
-        },
-        {
-          "name": "datefield-startview",
-          "config": {}
-        },
-        {
-          "name": "datefield-manual",
-          "config": {}
-        },
-        {
-          "name": "datefield-localize-date",
-          "config": {}
-        },
-        {
-          "name": "datefield-localize-texts",
-          "config": {}
-        },
-        {
-          "name": "datefield-toggle-focus",
-          "config": {}
-        },
-        {
-          "name": "datefield-injection-token",
-          "config": {}
-        },
-        {
-          "name": "datefield-scroll-strategy-provider",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/datefield.html",
-      "overviewFile": "lib-viewer/overview/datefield.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "dropdown",
-      "title": "Dropdown",
-      "examples": [
-        {
-          "name": "dropdown-standard",
-          "config": {}
-        },
-        {
-          "name": "dropdown-placeholder",
-          "config": {}
-        },
-        {
-          "name": "dropdown-rendering-items",
-          "config": {}
-        },
-        {
-          "name": "dropdown-custom-label",
-          "config": {}
-        },
-        {
-          "name": "dropdown-negative",
-          "config": {}
-        },
-        {
-          "name": "dropdown-group",
-          "config": {}
-        },
-        {
-          "name": "dropdown-filter",
-          "config": {}
-        },
-        {
-          "name": "dropdown-filter-custom",
-          "config": {}
-        },
-        {
-          "name": "dropdown-multi-select",
-          "config": {}
-        },
-        {
-          "name": "dropdown-disabled-items",
-          "config": {}
-        },
-        {
-          "name": "dropdown-simple-binding",
-          "config": {}
-        },
-        {
-          "name": "dropdown-template-driven",
-          "config": {}
-        },
-        {
-          "name": "dropdown-reactive",
-          "config": {}
-        },
-        {
-          "name": "dropdown-lazy",
-          "config": {}
-        },
-        {
-          "name": "dropdown-outline",
-          "config": {}
-        },
-        {
-          "name": "multi-select",
-          "config": {}
-        },
-        {
-          "name": "dropdown-scroll-strategy-provider",
-          "config": {}
-        },
-        {
-          "name": "multi-select-intl",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/dropdown.html",
-      "overviewFile": "lib-viewer/overview/dropdown.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -1269,7 +3894,8 @@
       "overviewFile": "lib-viewer/overview/formfield.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "control"
     },
     {
       "id": "grid",
@@ -1325,7 +3951,8 @@
       "overviewFile": "lib-viewer/overview/grid.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "container, column, layout"
     },
     {
       "id": "header",
@@ -1353,7 +3980,8 @@
       "overviewFile": "lib-viewer/overview/header.html",
       "b2c": false,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "toolbar, navbar"
     },
     {
       "id": "headline",
@@ -1381,7 +4009,8 @@
       "overviewFile": "lib-viewer/overview/headline.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "heading, title"
     },
     {
       "id": "icon",
@@ -1481,7 +4110,8 @@
       "overviewFile": "lib-viewer/overview/indicator.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "badge"
     },
     {
       "id": "input",
@@ -1528,100 +4158,231 @@
       "stable": "done"
     },
     {
-      "id": "licence-plate",
-      "title": "Licence Plate",
+      "id": "data-display",
+      "title": "Data Display",
       "examples": [
         {
-          "name": "licence-plate-standard",
+          "name": "data-display-standard",
           "config": {}
         },
         {
-          "name": "licence-plate-seasonal",
+          "name": "data-display-condensed",
           "config": {}
         },
         {
-          "name": "licence-plate-special",
+          "name": "data-display-horizontal",
           "config": {}
         },
         {
-          "name": "licence-plate-euro",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-other",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-ngmodel",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-reactive",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-disabled",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-expert",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-expert-states",
+          "name": "data-display-responsive",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/licence-plate.html",
-      "overviewFile": "lib-viewer/overview/licence-plate.html",
+      "apiFile": "lib-viewer/api/data-display.html",
+      "overviewFile": "lib-viewer/overview/data-display.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
     },
     {
-      "id": "list",
-      "title": "List",
+      "id": "datefield",
+      "title": "Date Field",
       "examples": [
         {
-          "name": "list-unordered",
+          "name": "datefield-iso",
           "config": {}
         },
         {
-          "name": "list-ordered",
+          "name": "datefield-basic",
           "config": {}
         },
         {
-          "name": "list-circles",
+          "name": "datefield-disabled",
           "config": {}
         },
         {
-          "name": "list-icons",
+          "name": "datefield-min-max",
           "config": {}
         },
         {
-          "name": "list-copytext",
+          "name": "datefield-filter",
           "config": {}
         },
         {
-          "name": "list-negative",
+          "name": "datefield-range",
           "config": {}
         },
         {
-          "name": "list-custom-color",
+          "name": "datefield-reactive",
           "config": {}
         },
         {
-          "name": "list-nesting",
+          "name": "datefield-format-injection",
+          "config": {}
+        },
+        {
+          "name": "datefield-parsing",
+          "config": {}
+        },
+        {
+          "name": "datefield-formatting",
+          "config": {}
+        },
+        {
+          "name": "datefield-startview",
+          "config": {}
+        },
+        {
+          "name": "datefield-manual",
+          "config": {}
+        },
+        {
+          "name": "datefield-localize-date",
+          "config": {}
+        },
+        {
+          "name": "datefield-localize-texts",
+          "config": {}
+        },
+        {
+          "name": "datefield-toggle-focus",
+          "config": {}
+        },
+        {
+          "name": "datefield-injection-token",
+          "config": {}
+        },
+        {
+          "name": "datefield-scroll-strategy-provider",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/list.html",
-      "overviewFile": "lib-viewer/overview/list.html",
+      "apiFile": "lib-viewer/api/datefield.html",
+      "overviewFile": "lib-viewer/overview/datefield.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "datepicker"
+    },
+    {
+      "id": "dropdown",
+      "title": "Dropdown",
+      "examples": [
+        {
+          "name": "dropdown-standard",
+          "config": {}
+        },
+        {
+          "name": "dropdown-placeholder",
+          "config": {}
+        },
+        {
+          "name": "dropdown-rendering-items",
+          "config": {}
+        },
+        {
+          "name": "dropdown-custom-label",
+          "config": {}
+        },
+        {
+          "name": "dropdown-negative",
+          "config": {}
+        },
+        {
+          "name": "dropdown-group",
+          "config": {}
+        },
+        {
+          "name": "dropdown-filter",
+          "config": {}
+        },
+        {
+          "name": "dropdown-filter-custom",
+          "config": {}
+        },
+        {
+          "name": "dropdown-multi-select",
+          "config": {}
+        },
+        {
+          "name": "dropdown-disabled-items",
+          "config": {}
+        },
+        {
+          "name": "dropdown-simple-binding",
+          "config": {}
+        },
+        {
+          "name": "dropdown-template-driven",
+          "config": {}
+        },
+        {
+          "name": "dropdown-reactive",
+          "config": {}
+        },
+        {
+          "name": "dropdown-lazy",
+          "config": {}
+        },
+        {
+          "name": "dropdown-outline",
+          "config": {}
+        },
+        {
+          "name": "multi-select",
+          "config": {}
+        },
+        {
+          "name": "dropdown-scroll-strategy-provider",
+          "config": {}
+        },
+        {
+          "name": "multi-select-intl",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/dropdown.html",
+      "overviewFile": "lib-viewer/overview/dropdown.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "select, multi select"
+    },
+    {
+      "id": "layout",
+      "title": "Layout",
+      "examples": [
+        {
+          "name": "margin-sizes",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "margin-usage",
+          "config": {}
+        },
+        {
+          "name": "hidden-classes",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "viewport-change",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/layout.html",
+      "overviewFile": "lib-viewer/overview/layout.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true
     },
     {
       "id": "mask",
@@ -1737,7 +4498,8 @@
       "overviewFile": "lib-viewer/overview/message.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "message banner, toast, snackbar, alert, info, error, warning, success"
     },
     {
       "id": "modal",
@@ -1781,7 +4543,37 @@
       "overviewFile": "lib-viewer/overview/modal.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "dialog"
+    },
+    {
+      "id": "natural-language-form",
+      "title": "Natural Language Form",
+      "examples": [
+        {
+          "name": "natural-language-form-basic",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-extended",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-negative",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-sizes",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/natural-language-form.html",
+      "overviewFile": "lib-viewer/overview/natural-language-form.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "text form, inline field"
     },
     {
       "id": "notification-panel",
@@ -1809,104 +4601,8 @@
       "overviewFile": "lib-viewer/overview/notification-panel.html",
       "b2c": false,
       "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "link",
-      "title": "Link",
-      "examples": [
-        {
-          "name": "link-default",
-          "config": {}
-        },
-        {
-          "name": "link-size",
-          "config": {}
-        },
-        {
-          "name": "link-icons",
-          "config": {}
-        },
-        {
-          "name": "link-black",
-          "config": {}
-        },
-        {
-          "name": "link-negative",
-          "config": {}
-        },
-        {
-          "name": "link-multiple",
-          "config": {}
-        },
-        {
-          "name": "link-within-text",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/link.html",
-      "overviewFile": "lib-viewer/overview/link.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "layout",
-      "title": "Layout",
-      "examples": [
-        {
-          "name": "margin-sizes",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "margin-usage",
-          "config": {}
-        },
-        {
-          "name": "hidden-classes",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "viewport-change",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/layout.html",
-      "overviewFile": "lib-viewer/overview/layout.html",
-      "b2c": true,
-      "expert": true,
       "stable": "done",
-      "noApi": true
-    },
-    {
-      "id": "breadcrumb",
-      "title": "Breadcrumb",
-      "examples": [
-        {
-          "name": "breadcrumb",
-          "config": {}
-        },
-        {
-          "name": "breadcrumb-link",
-          "config": {}
-        },
-        {
-          "name": "breadcrumb-negative",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/breadcrumb.html",
-      "overviewFile": "lib-viewer/overview/breadcrumb.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
+      "alias": "popover"
     },
     {
       "id": "number-stepper",
@@ -1982,7 +4678,57 @@
       "overviewFile": "lib-viewer/overview/number-stepper.html",
       "b2c": true,
       "expert": true,
+      "stable": "done",
+      "alias": "number input, range"
+    },
+    {
+      "id": "overlay",
+      "title": "Overlay",
+      "examples": [
+        {
+          "name": "overlay-positioning",
+          "config": {}
+        },
+        {
+          "name": "overlay-limiting-fallbacks",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/overlay.html",
+      "overviewFile": "lib-viewer/overview/overlay.html",
+      "b2c": true,
+      "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "page-search",
+      "title": "Page Search",
+      "examples": [
+        {
+          "name": "page-search-autocomplete",
+          "config": {}
+        },
+        {
+          "name": "page-search-input",
+          "config": {}
+        },
+        {
+          "name": "page-search-click",
+          "config": {}
+        },
+        {
+          "name": "page-search-hidden",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/page-search.html",
+      "overviewFile": "lib-viewer/overview/page-search.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "search field"
     },
     {
       "id": "pagination",
@@ -2010,7 +4756,8 @@
       "overviewFile": "lib-viewer/overview/pagination.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "pager, paginator"
     },
     {
       "id": "phone-input",
@@ -2119,6 +4866,142 @@
       "stable": "done"
     },
     {
+      "id": "licence-plate",
+      "title": "Licence Plate",
+      "examples": [
+        {
+          "name": "licence-plate-standard",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-seasonal",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-special",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-euro",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-other",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-ngmodel",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-reactive",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-disabled",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-expert",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-expert-states",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/licence-plate.html",
+      "overviewFile": "lib-viewer/overview/licence-plate.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "link",
+      "title": "Link",
+      "examples": [
+        {
+          "name": "link-default",
+          "config": {}
+        },
+        {
+          "name": "link-size",
+          "config": {}
+        },
+        {
+          "name": "link-icons",
+          "config": {}
+        },
+        {
+          "name": "link-black",
+          "config": {}
+        },
+        {
+          "name": "link-negative",
+          "config": {}
+        },
+        {
+          "name": "link-multiple",
+          "config": {}
+        },
+        {
+          "name": "link-within-text",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/link.html",
+      "overviewFile": "lib-viewer/overview/link.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "list",
+      "title": "List",
+      "examples": [
+        {
+          "name": "list-unordered",
+          "config": {}
+        },
+        {
+          "name": "list-ordered",
+          "config": {}
+        },
+        {
+          "name": "list-circles",
+          "config": {}
+        },
+        {
+          "name": "list-icons",
+          "config": {}
+        },
+        {
+          "name": "list-copytext",
+          "config": {}
+        },
+        {
+          "name": "list-negative",
+          "config": {}
+        },
+        {
+          "name": "list-custom-color",
+          "config": {}
+        },
+        {
+          "name": "list-nesting",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/list.html",
+      "overviewFile": "lib-viewer/overview/list.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
       "id": "progress-stepper",
       "title": "Progress Indicator",
       "examples": [
@@ -2176,7 +5059,510 @@
       "overviewFile": "lib-viewer/overview/progress-stepper.html",
       "b2c": true,
       "expert": true,
+      "stable": "done",
+      "alias": "stepper"
+    },
+    {
+      "id": "rating",
+      "title": "Rating",
+      "examples": [
+        {
+          "name": "rating-basic",
+          "config": {}
+        },
+        {
+          "name": "rating-disabled",
+          "config": {}
+        },
+        {
+          "name": "rating-negative",
+          "config": {}
+        },
+        {
+          "name": "rating-simple",
+          "config": {}
+        },
+        {
+          "name": "rating-template",
+          "config": {}
+        },
+        {
+          "name": "rating-reactive",
+          "config": {}
+        },
+        {
+          "name": "rating-accessibility",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/rating.html",
+      "overviewFile": "lib-viewer/overview/rating.html",
+      "b2c": true,
+      "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "rtl",
+      "title": "Right-to-left support",
+      "examples": [
+        {
+          "name": "rtl-basic",
+          "config": {}
+        },
+        {
+          "name": "rtl-dynamic",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/rtl.html",
+      "overviewFile": "lib-viewer/overview/rtl.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true
+    },
+    {
+      "id": "sidebar",
+      "title": "Side Navigation",
+      "examples": [
+        {
+          "name": "sidebar",
+          "config": {}
+        },
+        {
+          "name": "sidebar-resizeable",
+          "config": {}
+        },
+        {
+          "name": "sidebar-methods",
+          "config": {}
+        },
+        {
+          "name": "sidebar-footer",
+          "config": {}
+        },
+        {
+          "name": "sidebar-outputs",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/sidebar.html",
+      "overviewFile": "lib-viewer/overview/sidebar.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "sidenav, side navigation"
+    },
+    {
+      "id": "sidepanel",
+      "title": "Sidepanel",
+      "examples": [
+        {
+          "name": "sidepanel-dark",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-light",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-floating",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-static",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-with-tabs",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-focus",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/sidepanel.html",
+      "overviewFile": "lib-viewer/overview/sidepanel.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "alias": "sidebar, drawer"
+    },
+    {
+      "id": "slider",
+      "title": "Slider",
+      "examples": [
+        {
+          "name": "slider-basic",
+          "config": {}
+        },
+        {
+          "name": "slider-default",
+          "config": {}
+        },
+        {
+          "name": "slider-decimal",
+          "config": {}
+        },
+        {
+          "name": "slider-label",
+          "config": {}
+        },
+        {
+          "name": "slider-textual",
+          "config": {}
+        },
+        {
+          "name": "slider-disabled",
+          "config": {}
+        },
+        {
+          "name": "slider-negative",
+          "config": {}
+        },
+        {
+          "name": "slider-inverted",
+          "config": {}
+        },
+        {
+          "name": "slider-template",
+          "config": {}
+        },
+        {
+          "name": "slider-reactive",
+          "config": {}
+        },
+        {
+          "name": "slider-thumb",
+          "config": {}
+        },
+        {
+          "name": "slider-labels",
+          "config": {}
+        },
+        {
+          "name": "slider-tick",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/slider.html",
+      "overviewFile": "lib-viewer/overview/slider.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "number input, range"
+    },
+    {
+      "id": "small-stage",
+      "title": "Small stage",
+      "examples": [
+        {
+          "name": "small-stage-default",
+          "config": {}
+        },
+        {
+          "name": "small-stage-content-variation",
+          "config": {}
+        },
+        {
+          "name": "small-stage-w-bg",
+          "config": {}
+        },
+        {
+          "name": "small-stage-expert-default",
+          "config": {}
+        },
+        {
+          "name": "small-stage-expert-content-narrow",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/small-stage.html",
+      "overviewFile": "lib-viewer/overview/small-stage.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "page banner"
+    },
+    {
+      "id": "spinner",
+      "title": "Spinner",
+      "examples": [
+        {
+          "name": "spinner-sizes",
+          "config": {}
+        },
+        {
+          "name": "spinner-negative",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/spinner.html",
+      "overviewFile": "lib-viewer/overview/spinner.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "progress spinner"
+    },
+    {
+      "id": "swipebar",
+      "title": "Swipebar",
+      "examples": [
+        {
+          "name": "swipebar",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/swipebar.html",
+      "overviewFile": "lib-viewer/overview/swipebar.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "scrollbar"
+    },
+    {
+      "id": "switcher",
+      "title": "Switcher",
+      "examples": [
+        {
+          "name": "switcher-default",
+          "config": {}
+        },
+        {
+          "name": "switcher-large",
+          "config": {}
+        },
+        {
+          "name": "switcher-label-small",
+          "config": {}
+        },
+        {
+          "name": "switcher-negative",
+          "config": {}
+        },
+        {
+          "name": "switcher-label-left",
+          "config": {}
+        },
+        {
+          "name": "switcher-template-driven",
+          "config": {}
+        },
+        {
+          "name": "switcher-reactive-form",
+          "config": {}
+        },
+        {
+          "name": "switcher-disabled",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/switcher.html",
+      "overviewFile": "lib-viewer/overview/switcher.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "slide toggle, checkbox"
+    },
+    {
+      "id": "table",
+      "title": "Table",
+      "examples": [
+        {
+          "name": "table",
+          "config": {}
+        },
+        {
+          "name": "table-condensed",
+          "config": {}
+        },
+        {
+          "name": "table-zebra",
+          "config": {}
+        },
+        {
+          "name": "table-sticky",
+          "config": {}
+        },
+        {
+          "name": "table-column-hiding",
+          "config": {}
+        },
+        {
+          "name": "table-sorting",
+          "config": {}
+        },
+        {
+          "name": "table-filter-sort-paginate",
+          "config": {}
+        },
+        {
+          "name": "table-single-select",
+          "config": {}
+        },
+        {
+          "name": "table-selecting",
+          "config": {}
+        },
+        {
+          "name": "table-expandable",
+          "config": {}
+        },
+        {
+          "name": "table-form-elements",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/table.html",
+      "overviewFile": "lib-viewer/overview/table.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "tabs",
+      "title": "Tabs",
+      "examples": [
+        {
+          "name": "tabs-basic",
+          "config": {}
+        },
+        {
+          "name": "tabs-styling",
+          "config": {}
+        },
+        {
+          "name": "tabs-template",
+          "config": {}
+        },
+        {
+          "name": "tabs-lazy",
+          "config": {}
+        },
+        {
+          "name": "tabs-dynamic",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar",
+          "config": {}
+        },
+        {
+          "name": "tabs-negative",
+          "config": {}
+        },
+        {
+          "name": "tabs-disabled",
+          "config": {}
+        },
+        {
+          "name": "tabs-output-events",
+          "config": {}
+        },
+        {
+          "name": "tabs-responsive",
+          "config": {}
+        },
+        {
+          "name": "tabs-appearance",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-appearance",
+          "config": {}
+        },
+        {
+          "name": "tabs-with-indicator",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-with-indicator",
+          "config": {}
+        },
+        {
+          "name": "tabs-auto-manual-select",
+          "config": {}
+        },
+        {
+          "name": "tabs-injection-token",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-injection-token",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/tabs.html",
+      "overviewFile": "lib-viewer/overview/tabs.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "navigation tabs"
+    },
+    {
+      "id": "taglist",
+      "title": "Tag",
+      "examples": [
+        {
+          "name": "taglist",
+          "config": {}
+        },
+        {
+          "name": "taglist-keyword",
+          "config": {}
+        },
+        {
+          "name": "taglist-formatter",
+          "config": {}
+        },
+        {
+          "name": "taglist-delete",
+          "config": {}
+        },
+        {
+          "name": "taglist-basic",
+          "config": {}
+        },
+        {
+          "name": "taglist-objects",
+          "config": {}
+        },
+        {
+          "name": "taglist-templatedriven",
+          "config": {}
+        },
+        {
+          "name": "taglist-reactive",
+          "config": {}
+        },
+        {
+          "name": "taglist-output",
+          "config": {}
+        },
+        {
+          "name": "taglist-a11y",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/taglist.html",
+      "overviewFile": "lib-viewer/overview/taglist.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "chip, badge"
     },
     {
       "id": "progressbar",
@@ -2292,562 +5678,20 @@
       "overviewFile": "lib-viewer/overview/radio-toggle.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "alias": "radio toggle"
     },
     {
-      "id": "rating",
-      "title": "Rating",
-      "examples": [
-        {
-          "name": "rating-basic",
-          "config": {}
-        },
-        {
-          "name": "rating-disabled",
-          "config": {}
-        },
-        {
-          "name": "rating-negative",
-          "config": {}
-        },
-        {
-          "name": "rating-simple",
-          "config": {}
-        },
-        {
-          "name": "rating-template",
-          "config": {}
-        },
-        {
-          "name": "rating-reactive",
-          "config": {}
-        },
-        {
-          "name": "rating-accessibility",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/rating.html",
-      "overviewFile": "lib-viewer/overview/rating.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "rtl",
-      "title": "Right-to-left support",
-      "examples": [
-        {
-          "name": "rtl-basic",
-          "config": {}
-        },
-        {
-          "name": "rtl-dynamic",
-          "config": {}
-        }
-      ],
+      "id": "theming",
+      "title": "Theming",
+      "examples": [],
       "category": "general",
-      "apiFile": "lib-viewer/api/rtl.html",
-      "overviewFile": "lib-viewer/overview/rtl.html",
+      "apiFile": "lib-viewer/api/theming.html",
+      "overviewFile": "lib-viewer/overview/theming.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
       "noApi": true
-    },
-    {
-      "id": "sidebar",
-      "title": "Side Navigation",
-      "examples": [
-        {
-          "name": "sidebar",
-          "config": {}
-        },
-        {
-          "name": "sidebar-resizeable",
-          "config": {}
-        },
-        {
-          "name": "sidebar-methods",
-          "config": {}
-        },
-        {
-          "name": "sidebar-footer",
-          "config": {}
-        },
-        {
-          "name": "sidebar-outputs",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/sidebar.html",
-      "overviewFile": "lib-viewer/overview/sidebar.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "sidepanel",
-      "title": "Sidepanel",
-      "examples": [
-        {
-          "name": "sidepanel-dark",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-light",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-floating",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-static",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-with-tabs",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-focus",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/sidepanel.html",
-      "overviewFile": "lib-viewer/overview/sidepanel.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "slider",
-      "title": "Slider",
-      "examples": [
-        {
-          "name": "slider-basic",
-          "config": {}
-        },
-        {
-          "name": "slider-default",
-          "config": {}
-        },
-        {
-          "name": "slider-decimal",
-          "config": {}
-        },
-        {
-          "name": "slider-label",
-          "config": {}
-        },
-        {
-          "name": "slider-textual",
-          "config": {}
-        },
-        {
-          "name": "slider-disabled",
-          "config": {}
-        },
-        {
-          "name": "slider-negative",
-          "config": {}
-        },
-        {
-          "name": "slider-inverted",
-          "config": {}
-        },
-        {
-          "name": "slider-template",
-          "config": {}
-        },
-        {
-          "name": "slider-reactive",
-          "config": {}
-        },
-        {
-          "name": "slider-thumb",
-          "config": {}
-        },
-        {
-          "name": "slider-labels",
-          "config": {}
-        },
-        {
-          "name": "slider-tick",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/slider.html",
-      "overviewFile": "lib-viewer/overview/slider.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "small-stage",
-      "title": "Small stage",
-      "examples": [
-        {
-          "name": "small-stage-default",
-          "config": {}
-        },
-        {
-          "name": "small-stage-content-variation",
-          "config": {}
-        },
-        {
-          "name": "small-stage-w-bg",
-          "config": {}
-        },
-        {
-          "name": "small-stage-expert-default",
-          "config": {}
-        },
-        {
-          "name": "small-stage-expert-content-narrow",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/small-stage.html",
-      "overviewFile": "lib-viewer/overview/small-stage.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "spinner",
-      "title": "Spinner",
-      "examples": [
-        {
-          "name": "spinner-sizes",
-          "config": {}
-        },
-        {
-          "name": "spinner-negative",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/spinner.html",
-      "overviewFile": "lib-viewer/overview/spinner.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "swipebar",
-      "title": "Swipebar",
-      "examples": [
-        {
-          "name": "swipebar",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/swipebar.html",
-      "overviewFile": "lib-viewer/overview/swipebar.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "switcher",
-      "title": "Switcher",
-      "examples": [
-        {
-          "name": "switcher-default",
-          "config": {}
-        },
-        {
-          "name": "switcher-large",
-          "config": {}
-        },
-        {
-          "name": "switcher-label-small",
-          "config": {}
-        },
-        {
-          "name": "switcher-negative",
-          "config": {}
-        },
-        {
-          "name": "switcher-label-left",
-          "config": {}
-        },
-        {
-          "name": "switcher-template-driven",
-          "config": {}
-        },
-        {
-          "name": "switcher-reactive-form",
-          "config": {}
-        },
-        {
-          "name": "switcher-disabled",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/switcher.html",
-      "overviewFile": "lib-viewer/overview/switcher.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "table",
-      "title": "Table",
-      "examples": [
-        {
-          "name": "table",
-          "config": {}
-        },
-        {
-          "name": "table-condensed",
-          "config": {}
-        },
-        {
-          "name": "table-zebra",
-          "config": {}
-        },
-        {
-          "name": "table-sticky",
-          "config": {}
-        },
-        {
-          "name": "table-column-hiding",
-          "config": {}
-        },
-        {
-          "name": "table-sorting",
-          "config": {}
-        },
-        {
-          "name": "table-filter-sort-paginate",
-          "config": {}
-        },
-        {
-          "name": "table-single-select",
-          "config": {}
-        },
-        {
-          "name": "table-selecting",
-          "config": {}
-        },
-        {
-          "name": "table-expandable",
-          "config": {}
-        },
-        {
-          "name": "table-form-elements",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/table.html",
-      "overviewFile": "lib-viewer/overview/table.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "natural-language-form",
-      "title": "Natural Language Form",
-      "examples": [
-        {
-          "name": "natural-language-form-basic",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-extended",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-negative",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-sizes",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/natural-language-form.html",
-      "overviewFile": "lib-viewer/overview/natural-language-form.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "overlay",
-      "title": "Overlay",
-      "examples": [
-        {
-          "name": "overlay-positioning",
-          "config": {}
-        },
-        {
-          "name": "overlay-limiting-fallbacks",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/overlay.html",
-      "overviewFile": "lib-viewer/overview/overlay.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "page-search",
-      "title": "Page Search",
-      "examples": [
-        {
-          "name": "page-search-autocomplete",
-          "config": {}
-        },
-        {
-          "name": "page-search-input",
-          "config": {}
-        },
-        {
-          "name": "page-search-click",
-          "config": {}
-        },
-        {
-          "name": "page-search-hidden",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/page-search.html",
-      "overviewFile": "lib-viewer/overview/page-search.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "taglist",
-      "title": "Tag",
-      "examples": [
-        {
-          "name": "taglist",
-          "config": {}
-        },
-        {
-          "name": "taglist-keyword",
-          "config": {}
-        },
-        {
-          "name": "taglist-formatter",
-          "config": {}
-        },
-        {
-          "name": "taglist-delete",
-          "config": {}
-        },
-        {
-          "name": "taglist-basic",
-          "config": {}
-        },
-        {
-          "name": "taglist-objects",
-          "config": {}
-        },
-        {
-          "name": "taglist-templatedriven",
-          "config": {}
-        },
-        {
-          "name": "taglist-reactive",
-          "config": {}
-        },
-        {
-          "name": "taglist-output",
-          "config": {}
-        },
-        {
-          "name": "taglist-a11y",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/taglist.html",
-      "overviewFile": "lib-viewer/overview/taglist.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "toolbar",
-      "title": "Toolbar",
-      "examples": [
-        {
-          "name": "toolbar",
-          "config": {}
-        },
-        {
-          "name": "toolbar-positioning-content",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/toolbar.html",
-      "overviewFile": "lib-viewer/overview/toolbar.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "tooltip",
-      "title": "Tooltip",
-      "examples": [
-        {
-          "name": "tooltip-basic",
-          "config": {}
-        },
-        {
-          "name": "tooltip-positions",
-          "config": {}
-        },
-        {
-          "name": "tooltip-fallbacks-table",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "tooltip-delay",
-          "config": {}
-        },
-        {
-          "name": "tooltip-disabled",
-          "config": {}
-        },
-        {
-          "name": "tooltip-programmatic",
-          "config": {}
-        },
-        {
-          "name": "tooltip-settings",
-          "config": {}
-        },
-        {
-          "name": "tooltip-scroll-strategy-provider",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/tooltip.html",
-      "overviewFile": "lib-viewer/overview/tooltip.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done"
     },
     {
       "id": "tree",
@@ -2924,98 +5768,6 @@
       "stable": "done"
     },
     {
-      "id": "tabs",
-      "title": "Tabs",
-      "examples": [
-        {
-          "name": "tabs-basic",
-          "config": {}
-        },
-        {
-          "name": "tabs-styling",
-          "config": {}
-        },
-        {
-          "name": "tabs-template",
-          "config": {}
-        },
-        {
-          "name": "tabs-lazy",
-          "config": {}
-        },
-        {
-          "name": "tabs-dynamic",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar",
-          "config": {}
-        },
-        {
-          "name": "tabs-negative",
-          "config": {}
-        },
-        {
-          "name": "tabs-disabled",
-          "config": {}
-        },
-        {
-          "name": "tabs-output-events",
-          "config": {}
-        },
-        {
-          "name": "tabs-responsive",
-          "config": {}
-        },
-        {
-          "name": "tabs-appearance",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-appearance",
-          "config": {}
-        },
-        {
-          "name": "tabs-with-indicator",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-with-indicator",
-          "config": {}
-        },
-        {
-          "name": "tabs-auto-manual-select",
-          "config": {}
-        },
-        {
-          "name": "tabs-injection-token",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-injection-token",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/tabs.html",
-      "overviewFile": "lib-viewer/overview/tabs.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "theming",
-      "title": "Theming",
-      "examples": [],
-      "category": "general",
-      "apiFile": "lib-viewer/api/theming.html",
-      "overviewFile": "lib-viewer/overview/theming.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true
-    },
-    {
       "id": "timefield",
       "title": "Timefield",
       "examples": [
@@ -3048,6 +5800,73 @@
       "apiFile": "lib-viewer/api/timefield.html",
       "overviewFile": "lib-viewer/overview/timefield.html",
       "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "timepicker"
+    },
+    {
+      "id": "toolbar",
+      "title": "Toolbar",
+      "examples": [
+        {
+          "name": "toolbar",
+          "config": {}
+        },
+        {
+          "name": "toolbar-positioning-content",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/toolbar.html",
+      "overviewFile": "lib-viewer/overview/toolbar.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "tooltip",
+      "title": "Tooltip",
+      "examples": [
+        {
+          "name": "tooltip-basic",
+          "config": {}
+        },
+        {
+          "name": "tooltip-positions",
+          "config": {}
+        },
+        {
+          "name": "tooltip-fallbacks-table",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "tooltip-delay",
+          "config": {}
+        },
+        {
+          "name": "tooltip-disabled",
+          "config": {}
+        },
+        {
+          "name": "tooltip-programmatic",
+          "config": {}
+        },
+        {
+          "name": "tooltip-settings",
+          "config": {}
+        },
+        {
+          "name": "tooltip-scroll-strategy-provider",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/tooltip.html",
+      "overviewFile": "lib-viewer/overview/tooltip.html",
+      "b2c": false,
       "expert": true,
       "stable": "done"
     }

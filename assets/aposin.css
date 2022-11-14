@@ -605,7 +605,11 @@
   --datefield-cell-letter-spacing: var(--paragraph-03-letter-spacing);
   --datefield-cell-color: var(--text-01);
   --datefield-cell-selected-background-color: var(--interactive-primary);
+  --datefield-cell-selected-hover-background-color: var(--hover-primary);
+  --datefield-cell-selected-active-background-color: var(--active-primary);
   --datefield-cell-selected-color: var(--text-02);
+  --datefield-cell-active-background-color: var(--ui-04);
+  --datefield-cell-active-color: var(--interactive-primary);
   --datefield-cell-hover-background-color: var(--ui-03);
   --datefield-cell-hover-color: var(--text-01);
   --datefield-cell-disabled-color: var(--disabled-01);
@@ -998,7 +1002,7 @@
   --small-stage-expert-image-min-height: 100px;
   --small-stage-expert-image-mobile-height: 15vw;
   --small-stage-expert-mobile-header-padding: 8px 0;
-  --rating-icon-color: #007ab3;
+  --rating-icon-color: var(--interactive-primary);
   --rating-icon-size: 40px;
   --rating-label-color: var(--text-01);
   --rating-disabled-icon-color: var(--disabled-01);

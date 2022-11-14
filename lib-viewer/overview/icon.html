@@ -27,6 +27,10 @@
 </code></pre>
 <p class="docs-markdown--p">add it to your AppModule and include the <code>node_modules/@fortawesome/fontawesome-free/css/all.css</code> to your project. Alternatively you can of course use any other icon fonts or svgs and register them with the icon registry.</p>
 </div>
+<div class="docs-private">
+⚠️ **NDBX/Aquila conflict**: please make sure **not** to import the opensource(aquila) **NxDocumentationIconModule** into NDBX projects, since it's only supposed to be used in opensource(aquila) projects and would lead to conflicts with **NdbxIconModule** 
+recommend to use either module and register custom font yourself if need.
+</div>
 <h3 id="essential-icons" tabindex="-1" class="docs-markdown--h3">Essential Icons</h3>
 <p class="docs-markdown--p">The library ships with a set of necessary icons that are used in the components themselves. You can override them with a custom SVG or by specifying a certain class from an icon font.</p>
 <p class="docs-markdown--p">Here you can see the list of the necessary icons:</p>
@@ -59,6 +63,11 @@
 </div>
 <h3 id="register-icons-service" tabindex="-1" class="docs-markdown--h3">Register icons service</h3>
 <p class="docs-markdown--p">Custom icons can be registered via the <code>NxIconRegistry</code> injectable service. With the <code>NxIconRegistry</code> you can associate icon names with SVG, URL and HTML strings and define a CSS font class. When you are registering an icon by URL please make sure to import the <code>HttpClientModule</code> from <code>@angular/common/http</code>.</p>
+<p class="docs-markdown--p">💡 When registering multiple font sets,
+you can use <code>font</code> attribute to specify font set (<code>&lt;nx-icon font=&quot;FONT_SET_NAME&quot; name=&quot;ICON_NAME&quot;&gt;</code>)</p>
+<div class="docs-private">
+💡 NDBX iconfont set name is **ndbx-icons**.
+</div>
 <div nx-docs-example="icon-registry" config="{}">exampleID: icon-registry</div>
 <h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">One important accessibility attribute for icons is <code>aria-label</code>, which is read by the screenreader when the user has focused the element. For standalone icons, like icon buttons or links, it is mandatory to add the <code>aria-label</code> value according to your use case. If the icon is just decorative to an already existing label it needs to be hidden from assistive technologies by adding <code>aria-hidden=&quot;true&quot;</code> instead.</p>
