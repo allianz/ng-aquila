@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: heading, title
 ---
 
 Headlines are decoupled from the actual markup. So you can pick whatever tag from h1 - h6 to fulfill the expected semantics and adjust the appearance with the following attributes.

@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: control
 ---
 
 In most cases it is sufficient to only import the nxInputModule - this **already includes the NxFormfieldModule module**.

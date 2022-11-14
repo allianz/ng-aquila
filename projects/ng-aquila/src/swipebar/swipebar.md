@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: scrollbar
 ---
 
 The swipebar component is a visual indicator for an area that has horizontal overflow. This is especially helpful to interact with large content like tables on mobile devices. See table component for more examples.

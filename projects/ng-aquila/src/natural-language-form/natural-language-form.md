@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: text form, inline field
 ---
 
 ### Module

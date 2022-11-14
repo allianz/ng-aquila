@@ -4,7 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: select,multi-select
+alias: select, multi select
 ---
 
 <div class="docs-deprecation-warning">

@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: menu
 ---
 
 An `[nxAction]` enhances `<a>` or `<button>` elements with styling to be used as a list inside a [sidebar](./documentation/sidebar/overview) or in a [nx-tree](./documentation/tree/overview).

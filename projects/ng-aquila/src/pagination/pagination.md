@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: pager, paginator
 ---
 
 If you have a web site with lots of pages, you may wish to add some sort of pagination to each page. Pagination is a mechanism which provides users with additional navigation options for browsing through single parts of a given article, table or something. User can choise between two options:

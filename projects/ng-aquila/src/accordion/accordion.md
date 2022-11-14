@@ -4,7 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: expansion
+alias: expansion panel, collapse
 ---
 
 ### Standalone Expansion Panel

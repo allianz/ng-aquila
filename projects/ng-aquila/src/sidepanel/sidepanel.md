@@ -4,6 +4,7 @@ category: components
 b2c: false
 expert: true
 stable: done
+alias: sidebar, drawer
 ---
 
 <div class="docs-deprecation-warning">

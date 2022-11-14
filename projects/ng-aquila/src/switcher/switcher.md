@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: slide toggle, checkbox
 ---
 
 The switcher component represents a boolean value, just like the native input of a checkbox.

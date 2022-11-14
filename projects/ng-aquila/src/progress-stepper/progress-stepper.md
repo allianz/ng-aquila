@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: stepper
 ---
 
 An indicator is a wizard-like workflow that divides content into logical steps. You provide the content and distribute it in different steps. The indicator will ensure to show only the current content and inform the user about the overall progress.

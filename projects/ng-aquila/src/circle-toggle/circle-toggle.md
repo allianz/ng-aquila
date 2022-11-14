@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: button, radio, toggle, checkbox
 ---
 
 The toggle circle can be used as standalone toggle circle (checkbox role) or multiple toggle circles can be grouped with the circle toggle group wrapper and fullfill a radio group role.

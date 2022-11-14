@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: card, selectable card
 ---
 
 Use this component to present a card with different options.

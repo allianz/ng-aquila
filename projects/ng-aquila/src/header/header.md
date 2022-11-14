@@ -4,6 +4,7 @@ category: components
 b2c: false
 expert: true
 stable: done
+alias: toolbar, navbar
 ---
 
 <div class="docs-deprecation-warning">

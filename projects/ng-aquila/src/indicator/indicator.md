@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: badge
 ---
 
 The indicator is a small badge that can be used to mark an element or page as unread for the user.

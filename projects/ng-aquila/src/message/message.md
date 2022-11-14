@@ -4,7 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: message
+alias: message banner, toast, snackbar, alert, info, error, warning, success
 ---
 
 

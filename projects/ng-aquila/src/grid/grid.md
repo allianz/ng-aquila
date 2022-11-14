@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: container, column, layout
 ---
 
 The application grid is based on 12 columns with tiers spread over the given set of breakpoints. That way, you can maintain different layouts corresponding to each group of devices.
