@@ -16,7 +16,7 @@ Then it should be easy to update Aquila with the following command:
 
 ### Breaking Changes
 
--   **TS prefer-readonly:** some public properties have been explicitly made read-only, leading to component API changes 
+-   added readonly keyword to public properties which are not meant to be changed.
 
 **We are not providing automatic updates for these breaking changes.**
 
