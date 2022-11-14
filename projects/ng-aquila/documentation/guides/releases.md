@@ -4,6 +4,22 @@ title: Releases und updating
 
 # Releases und updating
 
+## Updating to version 14
+
+With v14, we are upgrading to [Angular 14](https://blog.angular.io/angular-v14-is-now-available-391a6db736af). In most cases the following command should do the Angular update for you:
+
+`ng update @angular/cli @angular/core`
+
+Then it should be easy to update Aquila with the following command:
+
+`ng update @aposin/ng-aquila --force`
+
+### Breaking Changes
+
+-   **TS prefer-readonly:** some public properties have been explicitly made read-only, leading to component API changes 
+
+**We are not providing automatic updates for these breaking changes.**
+
 ## Updating to version 13
 
 With v13, we are upgrading to [Angular 13](https://blog.angular.io/angular-v13-is-now-available-cce66f7bc296). In most cases the following command should do the Angular update for you:

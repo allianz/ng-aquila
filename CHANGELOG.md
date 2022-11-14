@@ -2,15 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-# [14.0.0-next.0](https://github.com/allianz/ng-aquila/compare/v13.9.1...v14.0.0-next.0) (2022-11-07)
+# [14.0.0](https://github.com/allianz/ng-aquila/compare/v14.0.0-next.0...v14.0.0) (2022-11-14)
 
+Aquila v14.0.0 is based on Angular 14. For updating please see our update guide: https://allianz.github.io/ng-aquila/guides/releases
 
 ### Bug Fixes
 
-* **autocomplete:** disabled option styling ([#757](https://github.com/allianz/ng-aquila/issues/757)) 
-* **dropdown:** prevent selecting disabled option by keyboard ([#755](https://github.com/allianz/ng-aquila/issues/755)) 
-* **modal:** remove extra scrollbar ([#760](https://github.com/allianz/ng-aquila/issues/760)) 
+* **context-menu:** focus on opening a new panel ([10ca714](https://github.com/allianz/ng-aquila/commit/10ca714544fca745918e6978b2ed77c52be2321c))
+* **datefield:** styling of states ([1d54cb5](https://github.com/allianz/ng-aquila/commit/1d54cb54acd0d65e763c536b97b52b4b5af21ec9))
+* **progress-stepper:** always show selected step ([72d6b65](https://github.com/allianz/ng-aquila/commit/72d6b653a4ce6cacfe64946478f58298e1f37817))
+* **rating:** add selected hover and active styling ([cdcbadf](https://github.com/allianz/ng-aquila/commit/cdcbadfd09c909bde3098da3c0e7d4a2e4e28587))
+* **toggle-button:** make view align with state ([1ca164d](https://github.com/allianz/ng-aquila/commit/1ca164d17cef5de1526dfb61927d593408cec759))
+* **autocomplete:** disabled option styling ([#757](https://github.com/allianz/ng-aquila/commit/479e8f3401aad30ccc5ef5c86bb0b7d9afd0f6c4)) 
+* **dropdown:** prevent selecting disabled option by keyboard ([#755](https://github.com/allianz/ng-aquila/commit/f17389e1dbdf360c380a138c96198e71ea5542cc)) 
+* **modal:** remove extra scrollbar ([#760](https://github.com/allianz/ng-aquila/commit/e1c186375387130f4c0b12e679668dc08873ee0c)) 
 
+
+### Features
+
+* **dropdown:** add readonly state ([5bddd4d](https://github.com/allianz/ng-aquila/commit/5bddd4d0cc8a545b4f2d0778754866f0d0731136))
+
+
+
+# [14.0.0-next.0](https://github.com/allianz/ng-aquila/compare/v13.9.1...v14.0.0-next.0) (2022-11-07)
+
+This is an alpha-release of Aquila v14.0.0.
 
 
 ## [13.9.1](https://github.com/allianz/ng-aquila/compare/v13.9.0...v13.9.1) (2022-09-21)
