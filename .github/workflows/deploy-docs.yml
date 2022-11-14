@@ -1,7 +1,7 @@
 name: Deploy documentation app to github pages
 on: workflow_dispatch
 env:
-    NODE_VERSION: '12.x'
+    NODE_VERSION: '16.x'
 jobs:
     deploy:
         runs-on: ubuntu-latest
