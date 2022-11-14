@@ -149,10 +149,11 @@ Our release strategy is naturally synchronized with [Angular's](https://github.c
 
 | Date           | Angular version | ng-aquila version | LTS end      |
 | -------------- | --------------- | ----------------- | ------------ |
-| January 2021   | 11              | 11                | May 2022     |
-| September 2021 | 12              | 12                | November2022 |
+| September 2021 | 12              | 12                | November 2022|
 | December 2021  | 13              | 13                | May 2023     |
+| November 2022  | 14              | 14                | December 2023|
+| December 2022  | 15              | 15                | January 2024 |
 
-Angular NDBX versions 10 and older are no longer supported.
+Angular NDBX versions 11 and older are no longer supported.
 
 During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
