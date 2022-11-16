@@ -4,6 +4,25 @@ title: Releases und updating
 
 # Releases und updating
 
+## Release plan
+
+Our release strategy is naturally synchronized with [Angular's](https://angular.io/guide/releases). The main reason for this is to minimize the frequency of breaking changes. The Angular team releases a major version every six months, whenever we update to this version we expect breaking changes. Thus, we will release any breaking change within Angular NDBX along with the major release of Angular. Consequently, you can expect breaking changes (major update) within ng-aquila about every six months. 
+
+As the Angular team now provides release dates down to a week, we are able to prepare in advance and provide more specific release terms. We will release a major version during a 6-week period after a major Angular release. Any delays will be communicated on this page. 
+
+We trigger minor or bug fix releases if they provide a meaningful delivery (fix or feature). This is usually decided in our weekly refinement meeting.
+
+| Date           | Angular version | ng-aquila version | LTS end      |
+| -------------- | --------------- | ----------------- | ------------ |
+| September 2021 | 12              | 12                | November 2022|
+| December 2021  | 13              | 13                | May 2023     |
+| November 2022  | 14              | 14                | December 2023|
+| December 2022  | 15              | 15                | January 2024 |
+
+Angular NDBX versions 11 and older are no longer supported.
+
+During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
+
 ## Updating to version 14
 
 With v14, we are upgrading to [Angular 14](https://blog.angular.io/angular-v14-is-now-available-391a6db736af). In most cases the following command should do the Angular update for you:
@@ -159,17 +178,4 @@ ng update @aposin/ng-aquila --force
 
 You can use the Angular CLI's `--allowDirty` flag if you don't want to commit between these steps.
 
-### Release plan
 
-Our release strategy is naturally synchronized with [Angular's](https://github.com/angular/angular/blob/master/docs/RELEASE_SCHEDULE.md). The main reason for this is to minimize the frequency of breaking changes. The Angular team releases a major version every six months, whenever we update to this version we expect breaking changes. Thus, we will release any breaking change within Angular NDBX along with the major release of Angular. Consequently, you can expect breaking changes (major update) within ng-aquila about every six months. As the Angular team does no longer provide concrete release dates, we also cannot provide concrete release dates any more for major releases. We trigger minor or bug fix releases if they provide a meaningful delivery (fix or feature). This is usually decided in our weekly refinement meeting.
-
-| Date           | Angular version | ng-aquila version | LTS end      |
-| -------------- | --------------- | ----------------- | ------------ |
-| September 2021 | 12              | 12                | November 2022|
-| December 2021  | 13              | 13                | May 2023     |
-| November 2022  | 14              | 14                | December 2023|
-| December 2022  | 15              | 15                | January 2024 |
-
-Angular NDBX versions 11 and older are no longer supported.
-
-During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
