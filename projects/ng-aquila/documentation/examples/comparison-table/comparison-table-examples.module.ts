@@ -23,6 +23,7 @@ import { ComparisonTableFormElementsExampleComponent } from './comparison-table-
 import { ComparisonTableHiddenColumnsExampleComponent } from './comparison-table-hidden-columns/comparison-table-hidden-columns-example';
 import { ComparisonTableNonStickyHeaderExampleComponent } from './comparison-table-non-sticky-header/comparison-table-non-sticky-header-example';
 import { ComparisonTableRowGroupExampleComponent } from './comparison-table-row-group/comparison-table-row-group-example';
+import { ComparisonTableStaticExampleComponent } from './comparison-table-static/comparison-table-static-example';
 import { ComparisonTableWithIntersectionExampleComponent } from './comparison-table-with-intersection/comparison-table-with-intersection-example';
 import { ComparisonTableWithToggleSectionsExampleComponent } from './comparison-table-with-toggle-sections/comparison-table-with-toggle-sections-example';
 import { RecommendationTableExampleComponent } from './recommendation-table/recommendation-table-example';
@@ -30,6 +31,7 @@ import { RecommendationTableExpertExampleComponent } from './recommendation-tabl
 
 const EXAMPLES = [
     ComparisonTableExampleComponent,
+    ComparisonTableStaticExampleComponent,
     ComparisonTableDisabledColumnsExampleComponent,
     ComparisonTableDynamicExampleComponent,
     ComparisonTableFormElementsExampleComponent,
@@ -68,6 +70,7 @@ export class ComparisonExamplesModule {
     static components() {
         return {
             'comparison-table': ComparisonTableExampleComponent,
+            'comparison-table-static': ComparisonTableStaticExampleComponent,
             'comparison-table-disabled-columns':
                 ComparisonTableDisabledColumnsExampleComponent,
             'comparison-table-dynamic': ComparisonTableDynamicExampleComponent,

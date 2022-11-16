@@ -34,6 +34,12 @@ You can also set the initially selected product by using the `[selectedIndex]` i
 
 <!-- example(comparison-table) -->
 
+#### Static Layout
+
+If a specific layout is needed, the `view` input can be used to override the layout auto-set by the viewport width.
+
+<!-- example(comparison-table-static) -->
+
 #### Intersection cells
 
 You can further use intersection cells (`nx-comparison-table-intersection-cell`) which are a merge of multiple cells.

@@ -153,6 +153,32 @@ describe('NxComparisonTableComponent', () => {
     });
 
     describe('responsive', () => {
+        it('should set viewType by "view" input', fakeAsync(() => {
+            viewport.set('tablet');
+            window.dispatchEvent(new Event('resize'));
+
+            createTestComponent(BasicComponent);
+
+            tick(THROTTLE_TIME);
+            fixture.detectChanges();
+            expect(tableInstance.viewType).toBe('tablet');
+
+            tableInstance.view = 'mobile';
+            tick(THROTTLE_TIME);
+            fixture.detectChanges();
+            expect(tableInstance.viewType).toBe('mobile');
+
+            tableInstance.view = 'desktop';
+            tick(THROTTLE_TIME);
+            fixture.detectChanges();
+            expect(tableInstance.viewType).toBe('desktop');
+
+            tableInstance.view = null; // reset to responsive default
+            tick(THROTTLE_TIME);
+            fixture.detectChanges();
+            expect(tableInstance.viewType).toBe('tablet');
+        }));
+
         it('should display the correct number of rows and toggle sections (tablet)', fakeAsync(() => {
             viewport.set('tablet');
             window.dispatchEvent(new Event('resize'));

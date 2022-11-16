@@ -22,6 +22,7 @@ import { NxViewportService } from '@aposin/ng-aquila/utils';
 import { delay, takeUntil } from 'rxjs/operators';
 
 import { NxComparisonTableCell } from './cell/cell.component';
+import { NxComparisonTableViewType } from './comparison-table.models';
 import { NxComparisonTableBase } from './comparison-table-base';
 import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
 import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group.directive';
@@ -84,6 +85,15 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     }
     get hiddenIndexes(): number[] {
         return this._hiddenIndexes;
+    }
+
+    /** Sets the layout explicitely. If not specified, a layout will be set based on the viewport. */
+    @Input() set view(value: NxComparisonTableViewType | null | undefined) {
+        this._view = value;
+        this._viewChanges.next();
+    }
+    get view(): NxComparisonTableViewType | null | undefined {
+        return this._view;
     }
 
     constructor(

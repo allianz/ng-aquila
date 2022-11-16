@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Directive, ElementRef, EventEmitter, OnDestroy } from '@angular/core';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
-import { merge, Subject } from 'rxjs';
-import { filter, mapTo, takeUntil } from 'rxjs/operators';
+import { combineLatest, merge, Subject } from 'rxjs';
+import { filter, map, mapTo, startWith, takeUntil } from 'rxjs/operators';
 
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableViewType } from './comparison-table.models';
@@ -14,6 +14,8 @@ export abstract class NxComparisonTableBase implements OnDestroy {
 
     _disabledIndexes: number[] = [];
     _hiddenIndexes: number[] = [];
+    _view?: NxComparisonTableViewType | null;
+
     abstract selectedIndex: number;
 
     readonly viewTypeChange = new EventEmitter<NxComparisonTableViewType>();
@@ -51,12 +53,14 @@ export abstract class NxComparisonTableBase implements OnDestroy {
         return this._viewType;
     }
 
+    readonly _viewChanges = new Subject<void>();
+
     constructor(private readonly viewportService: NxViewportService, protected readonly _cdr: ChangeDetectorRef) {
         const mobile$ = this.viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM);
         const tablet$ = this.viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_LARGE);
         const desktop$ = this.viewportService.min(NxBreakpoints.BREAKPOINT_LARGE);
 
-        merge(
+        const viewType$ = merge(
             mobile$.pipe(
                 filter(value => value),
                 mapTo('mobile' as NxComparisonTableViewType),
@@ -69,8 +73,14 @@ export abstract class NxComparisonTableBase implements OnDestroy {
                 filter(value => value),
                 mapTo('desktop' as NxComparisonTableViewType),
             ),
-        )
-            .pipe(takeUntil(this._destroyed))
+        );
+
+        combineLatest([viewType$, this._viewChanges.pipe(startWith(null))])
+            .pipe(
+                // if set, prefer explicit layout over viewport
+                map(([value]) => this._view ?? value),
+                takeUntil(this._destroyed),
+            )
             .subscribe(value => {
                 if (this._viewType !== value) {
                     this.viewTypeChange.emit(value);
