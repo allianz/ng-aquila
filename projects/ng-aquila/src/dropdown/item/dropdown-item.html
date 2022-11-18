@@ -23,7 +23,12 @@
             <ng-content></ng-content>
         </div>
 
-        <div [nxTooltip]="truncateItems && value?.length > 35 ? value : null" [ngClass]="{ 'ellipsis': truncateItems }">
+        <div
+            #tooltip="nxTooltip"
+            [nxTooltip]="truncateItems && value?.length > 35 ? value : null"
+            [ngClass]="{ 'ellipsis': truncateItems }"
+            (click)="tooltip.hide()"
+        >
             <ng-container *ngIf="_isContentEmpty(content)"> {{_formattedValue }} </ng-container>
         </div>
     </div>
