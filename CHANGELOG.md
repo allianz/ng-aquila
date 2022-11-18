@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [14.1.0](https://github.com/allianz/ng-aquila/compare/v14.0.0...v14.1.0) (2022-11-18)
+
+
+### Bug Fixes
+
+* **dropdown:** tooltip closes on dropdown click ([d61d449](https://github.com/allianz/ng-aquila/commit/d61d4495dea4ce3d93f1bcae42d02511e7bdc5ce))
+
+
+### Features
+
+* **comparison-table:** add view input ([3f49015](https://github.com/allianz/ng-aquila/commit/3f4901580298afc8126003a8105fe7b3fbc11920))
+
+
+
 # [14.0.0](https://github.com/allianz/ng-aquila/compare/v14.0.0-next.0...v14.0.0) (2022-11-14)
 
 Aquila v14.0.0 is based on Angular 14. For updating please see our update guide: https://allianz.github.io/ng-aquila/guides/releases
