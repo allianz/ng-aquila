@@ -3515,6 +3515,10 @@
           "config": {}
         },
         {
+          "name": "comparison-table-static",
+          "config": {}
+        },
+        {
           "name": "comparison-table-with-intersection",
           "config": {}
         },
@@ -4186,87 +4190,6 @@
       "stable": "done"
     },
     {
-      "id": "datefield",
-      "title": "Date Field",
-      "examples": [
-        {
-          "name": "datefield-iso",
-          "config": {}
-        },
-        {
-          "name": "datefield-basic",
-          "config": {}
-        },
-        {
-          "name": "datefield-disabled",
-          "config": {}
-        },
-        {
-          "name": "datefield-min-max",
-          "config": {}
-        },
-        {
-          "name": "datefield-filter",
-          "config": {}
-        },
-        {
-          "name": "datefield-range",
-          "config": {}
-        },
-        {
-          "name": "datefield-reactive",
-          "config": {}
-        },
-        {
-          "name": "datefield-format-injection",
-          "config": {}
-        },
-        {
-          "name": "datefield-parsing",
-          "config": {}
-        },
-        {
-          "name": "datefield-formatting",
-          "config": {}
-        },
-        {
-          "name": "datefield-startview",
-          "config": {}
-        },
-        {
-          "name": "datefield-manual",
-          "config": {}
-        },
-        {
-          "name": "datefield-localize-date",
-          "config": {}
-        },
-        {
-          "name": "datefield-localize-texts",
-          "config": {}
-        },
-        {
-          "name": "datefield-toggle-focus",
-          "config": {}
-        },
-        {
-          "name": "datefield-injection-token",
-          "config": {}
-        },
-        {
-          "name": "datefield-scroll-strategy-provider",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/datefield.html",
-      "overviewFile": "lib-viewer/overview/datefield.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "datepicker"
-    },
-    {
       "id": "dropdown",
       "title": "Dropdown",
       "examples": [
@@ -4350,6 +4273,87 @@
       "expert": true,
       "stable": "done",
       "alias": "select, multi select"
+    },
+    {
+      "id": "datefield",
+      "title": "Date Field",
+      "examples": [
+        {
+          "name": "datefield-iso",
+          "config": {}
+        },
+        {
+          "name": "datefield-basic",
+          "config": {}
+        },
+        {
+          "name": "datefield-disabled",
+          "config": {}
+        },
+        {
+          "name": "datefield-min-max",
+          "config": {}
+        },
+        {
+          "name": "datefield-filter",
+          "config": {}
+        },
+        {
+          "name": "datefield-range",
+          "config": {}
+        },
+        {
+          "name": "datefield-reactive",
+          "config": {}
+        },
+        {
+          "name": "datefield-format-injection",
+          "config": {}
+        },
+        {
+          "name": "datefield-parsing",
+          "config": {}
+        },
+        {
+          "name": "datefield-formatting",
+          "config": {}
+        },
+        {
+          "name": "datefield-startview",
+          "config": {}
+        },
+        {
+          "name": "datefield-manual",
+          "config": {}
+        },
+        {
+          "name": "datefield-localize-date",
+          "config": {}
+        },
+        {
+          "name": "datefield-localize-texts",
+          "config": {}
+        },
+        {
+          "name": "datefield-toggle-focus",
+          "config": {}
+        },
+        {
+          "name": "datefield-injection-token",
+          "config": {}
+        },
+        {
+          "name": "datefield-scroll-strategy-provider",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/datefield.html",
+      "overviewFile": "lib-viewer/overview/datefield.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "datepicker"
     },
     {
       "id": "layout",
@@ -5103,6 +5107,26 @@
       "stable": "done"
     },
     {
+      "id": "progressbar",
+      "title": "Progress Bar",
+      "examples": [
+        {
+          "name": "progressbar",
+          "config": {}
+        },
+        {
+          "name": "progressbar-basic",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/progressbar.html",
+      "overviewFile": "lib-viewer/overview/progressbar.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
       "id": "rtl",
       "title": "Right-to-left support",
       "examples": [
@@ -5122,39 +5146,6 @@
       "expert": true,
       "stable": "done",
       "noApi": true
-    },
-    {
-      "id": "sidebar",
-      "title": "Side Navigation",
-      "examples": [
-        {
-          "name": "sidebar",
-          "config": {}
-        },
-        {
-          "name": "sidebar-resizeable",
-          "config": {}
-        },
-        {
-          "name": "sidebar-methods",
-          "config": {}
-        },
-        {
-          "name": "sidebar-footer",
-          "config": {}
-        },
-        {
-          "name": "sidebar-outputs",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/sidebar.html",
-      "overviewFile": "lib-viewer/overview/sidebar.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "sidenav, side navigation"
     },
     {
       "id": "sidepanel",
@@ -5192,6 +5183,39 @@
       "expert": true,
       "stable": "done",
       "alias": "sidebar, drawer"
+    },
+    {
+      "id": "sidebar",
+      "title": "Side Navigation",
+      "examples": [
+        {
+          "name": "sidebar",
+          "config": {}
+        },
+        {
+          "name": "sidebar-resizeable",
+          "config": {}
+        },
+        {
+          "name": "sidebar-methods",
+          "config": {}
+        },
+        {
+          "name": "sidebar-footer",
+          "config": {}
+        },
+        {
+          "name": "sidebar-outputs",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/sidebar.html",
+      "overviewFile": "lib-viewer/overview/sidebar.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "sidenav, side navigation"
     },
     {
       "id": "slider",
@@ -5292,6 +5316,23 @@
       "alias": "page banner"
     },
     {
+      "id": "swipebar",
+      "title": "Swipebar",
+      "examples": [
+        {
+          "name": "swipebar",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/swipebar.html",
+      "overviewFile": "lib-viewer/overview/swipebar.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "scrollbar"
+    },
+    {
       "id": "spinner",
       "title": "Spinner",
       "examples": [
@@ -5311,23 +5352,6 @@
       "expert": true,
       "stable": "done",
       "alias": "progress spinner"
-    },
-    {
-      "id": "swipebar",
-      "title": "Swipebar",
-      "examples": [
-        {
-          "name": "swipebar",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/swipebar.html",
-      "overviewFile": "lib-viewer/overview/swipebar.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "scrollbar"
     },
     {
       "id": "switcher",
@@ -5565,26 +5589,6 @@
       "alias": "chip, badge"
     },
     {
-      "id": "progressbar",
-      "title": "Progress Bar",
-      "examples": [
-        {
-          "name": "progressbar",
-          "config": {}
-        },
-        {
-          "name": "progressbar-basic",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/progressbar.html",
-      "overviewFile": "lib-viewer/overview/progressbar.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "radio-button",
       "title": "Radio Button",
       "examples": [
@@ -5682,16 +5686,61 @@
       "alias": "radio toggle"
     },
     {
-      "id": "theming",
-      "title": "Theming",
-      "examples": [],
-      "category": "general",
-      "apiFile": "lib-viewer/api/theming.html",
-      "overviewFile": "lib-viewer/overview/theming.html",
+      "id": "timefield",
+      "title": "Timefield",
+      "examples": [
+        {
+          "name": "timefield-reactive",
+          "config": {}
+        },
+        {
+          "name": "timefield-template-driven",
+          "config": {}
+        },
+        {
+          "name": "timefield-format-toggler",
+          "config": {}
+        },
+        {
+          "name": "timefield-disabled",
+          "config": {}
+        },
+        {
+          "name": "timefield-negative",
+          "config": {}
+        },
+        {
+          "name": "timefield-localize",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/timefield.html",
+      "overviewFile": "lib-viewer/overview/timefield.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "noApi": true
+      "alias": "timepicker"
+    },
+    {
+      "id": "toolbar",
+      "title": "Toolbar",
+      "examples": [
+        {
+          "name": "toolbar",
+          "config": {}
+        },
+        {
+          "name": "toolbar-positioning-content",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/toolbar.html",
+      "overviewFile": "lib-viewer/overview/toolbar.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done"
     },
     {
       "id": "tree",
@@ -5768,63 +5817,6 @@
       "stable": "done"
     },
     {
-      "id": "timefield",
-      "title": "Timefield",
-      "examples": [
-        {
-          "name": "timefield-reactive",
-          "config": {}
-        },
-        {
-          "name": "timefield-template-driven",
-          "config": {}
-        },
-        {
-          "name": "timefield-format-toggler",
-          "config": {}
-        },
-        {
-          "name": "timefield-disabled",
-          "config": {}
-        },
-        {
-          "name": "timefield-negative",
-          "config": {}
-        },
-        {
-          "name": "timefield-localize",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/timefield.html",
-      "overviewFile": "lib-viewer/overview/timefield.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "timepicker"
-    },
-    {
-      "id": "toolbar",
-      "title": "Toolbar",
-      "examples": [
-        {
-          "name": "toolbar",
-          "config": {}
-        },
-        {
-          "name": "toolbar-positioning-content",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/toolbar.html",
-      "overviewFile": "lib-viewer/overview/toolbar.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "tooltip",
       "title": "Tooltip",
       "examples": [
@@ -5869,6 +5861,18 @@
       "b2c": false,
       "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "theming",
+      "title": "Theming",
+      "examples": [],
+      "category": "general",
+      "apiFile": "lib-viewer/api/theming.html",
+      "overviewFile": "lib-viewer/overview/theming.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true
     }
   ],
   "examples": [
@@ -6883,6 +6887,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/comparison-table-row-group-###TYPE###.html"
+    },
+    {
+      "id": "comparison-table-static",
+      "title": "Static layout example",
+      "module": "comparison-table",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/comparison-table-static-###TYPE###.html"
     },
     {
       "id": "comparison-table-with-intersection",

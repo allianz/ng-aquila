@@ -1,0 +1,107 @@
+<span class="hljs-selector-class">.container</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">var</span>(
+        --documentation-comparison-table-example-background-color,
+        <span class="hljs-number">#0f2a3d</span>
+    );
+}
+
+<span class="hljs-selector-class">.product-title</span> {
+    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">12px</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.product-price-dynamic</span> {
+    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;
+    <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.2px</span>;
+    <span class="hljs-attribute">margin-top</span>: auto;
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">16px</span>;
+    <span class="hljs-comment">/* use fixed height to avoid CLS issues */</span>
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">32px</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">32px</span>;
+}
+
+<span class="hljs-selector-class">.product-underline</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">16px</span>;
+    <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.2px</span>;
+    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">400</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.header-container</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-direction</span>: column;
+    <span class="hljs-attribute">justify-content</span>: space-between;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.header-container</span> <span class="hljs-selector-tag">button</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+}
+
+<span class="hljs-selector-class">.has-popover</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-direction</span>: row;
+}
+
+<span class="hljs-selector-class">.info-icon</span> {
+    <span class="hljs-attribute">margin-left</span>: auto;
+}
+
+<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">703px</span>) {
+    <span class="hljs-selector-class">.has-popover</span> {
+        <span class="hljs-attribute">text-align</span>: left;
+    }
+}
+
+<span class="hljs-selector-class">.popular-cell__content-wrapper</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">justify-content</span>: space-between;
+    <span class="hljs-attribute">align-items</span>: center;
+}
+
+<span class="hljs-selector-class">.popular-cell__title</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">text-align</span>: center;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.info-icon</span>,
+<span class="hljs-selector-class">.popular-info-icon</span> {
+    <span class="hljs-attribute">align-self</span>: flex-start;
+}
+
+<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">704px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">991px</span>) {
+    <span class="hljs-selector-class">.info-icon</span> {
+        <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
+    }
+
+    <span class="hljs-selector-class">.has-popover</span> {
+        <span class="hljs-attribute">align-items</span>: center;
+    }
+}
+
+<span class="hljs-selector-class">.minus-icon</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-minus-color);
+}
+
+<span class="hljs-selector-class">.check-icon</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--success);
+}
+
+::ng-deep .is-selected .check-icon {
+    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--success-<span class="hljs-number">02</span>, --success);
+}
+
+<span class="hljs-selector-class">.spinner</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">align-items</span>: center;
+    <span class="hljs-attribute">justify-content</span>: center;
+    <span class="hljs-comment">/** needs same dimensions as the price */</span>
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">32px</span>;
+    <span class="hljs-attribute">margin-top</span>: auto;
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">16px</span>;
+}

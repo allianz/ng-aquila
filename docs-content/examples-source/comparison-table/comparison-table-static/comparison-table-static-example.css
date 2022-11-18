@@ -1,0 +1,107 @@
+.container {
+    padding: 12px;
+    background: var(
+        --documentation-comparison-table-example-background-color,
+        #0f2a3d
+    );
+}
+
+.product-title {
+    font-weight: 600;
+    margin: 0 0 12px 0;
+}
+
+.product-price-dynamic {
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 0.2px;
+    margin-top: auto;
+    margin-bottom: 16px;
+    /* use fixed height to avoid CLS issues */
+    height: 32px;
+    line-height: 32px;
+}
+
+.product-underline {
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.header-container button {
+    margin: 0 auto;
+}
+
+.has-popover {
+    display: flex;
+    flex-direction: row;
+}
+
+.info-icon {
+    margin-left: auto;
+}
+
+@media only screen and (max-width: 703px) {
+    .has-popover {
+        text-align: left;
+    }
+}
+
+.popular-cell__content-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popular-cell__title {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+.info-icon,
+.popular-info-icon {
+    align-self: flex-start;
+}
+
+@media only screen and (min-width: 704px) and (max-width: 991px) {
+    .info-icon {
+        margin-left: 8px;
+    }
+
+    .has-popover {
+        align-items: center;
+    }
+}
+
+.minus-icon {
+    color: var(--documentation-comparison-table-example-minus-color);
+}
+
+.check-icon {
+    color: var(--success);
+}
+
+::ng-deep .is-selected .check-icon {
+    color: var(--success-02, --success);
+}
+
+.spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /** needs same dimensions as the price */
+    height: 32px;
+    margin-top: auto;
+    margin-bottom: 16px;
+}
