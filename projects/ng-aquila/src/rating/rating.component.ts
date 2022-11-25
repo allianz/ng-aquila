@@ -16,7 +16,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import { IconSize, NxIconComponent } from '@aposin/ng-aquila/icon';
 
 @Component({
     selector: 'nx-rating',
@@ -37,6 +37,15 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     },
 })
 export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
+    @Input('nxSize') set size(newSize: IconSize) {
+        this._size = newSize;
+        this._cdr.markForCheck();
+    }
+    get size(): IconSize {
+        return this._size;
+    }
+    private _size: IconSize = 'l';
+
     /** Sets the selected rating 1 - 5. */
     @Input('nxValue') set value(newValue: NumberInput) {
         this._value = coerceNumberProperty(newValue);

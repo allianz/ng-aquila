@@ -45,7 +45,7 @@
 }
 
 .nx-rating__icon {
-    font-size: v(rating-icon-size);
+    font-size: v(rating-icon-size-l);
     color: var(--iconColor, v(rating-icon-color));
     width: auto;
     background: none;
@@ -53,6 +53,19 @@
     margin-right: nx-spacer(s);
     cursor: pointer;
     outline: none;
+
+    &.nx-icon--s {
+        font-size: v(rating-icon-size-s);
+        margin-right: nx-spacer(2xs);
+    }
+    &.nx-icon--m {
+        font-size: v(rating-icon-size-m);
+        margin-right: nx-spacer(xs);
+    }
+    &.nx-icon--l {
+        font-size: v(rating-icon-size-l);
+        margin-right: nx-spacer(s);
+    }
 
     :host-context([dir='rtl']) & {
         margin-right: initial;

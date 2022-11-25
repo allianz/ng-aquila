@@ -15,6 +15,7 @@ describe('NxRatingComponent', () => {
     let endLabel: HTMLSpanElement;
     let icons: HTMLElement[];
     let testComponent: NxRatingComponent;
+    let iconNativeElement: HTMLElement;
 
     function createTestComponent(component: Type<RatingTest>) {
         fixture = TestBed.createComponent(component);
@@ -23,6 +24,7 @@ describe('NxRatingComponent', () => {
         startLabel = fixture.nativeElement.querySelector('.nx-rating__label--start');
         endLabel = fixture.nativeElement.querySelector('.nx-rating__label--end');
         icons = Array.from(fixture.nativeElement.querySelectorAll('nx-icon'));
+        iconNativeElement = fixture.nativeElement.querySelector('nx-icon') as HTMLButtonElement;
         testComponent = testInstance.rating;
     }
 
@@ -30,6 +32,7 @@ describe('NxRatingComponent', () => {
         TestBed.configureTestingModule({
             imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
             declarations: [
+                SizeRatingComponent,
                 SimpleRatingComponent,
                 SimpleBindingRatingComponent,
                 NgModelBindingRatingComponent,
@@ -272,6 +275,20 @@ describe('NxRatingComponent', () => {
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
     });
+
+    describe('sizes', () => {
+        it('adds the class name for size to the icon', waitForAsync(() => {
+            createTestComponent(SizeRatingComponent);
+            expect(iconNativeElement).toHaveClass('nx-icon--m');
+        }));
+
+        it('should change icon size on binding changes', () => {
+            createTestComponent(SizeRatingComponent);
+            (testInstance as SizeRatingComponent).size = 's';
+            fixture.detectChanges();
+            expect(iconNativeElement).toHaveClass('nx-icon--s');
+        });
+    });
 });
 
 @Directive()
@@ -327,4 +344,11 @@ class RatingOnPushComponent extends RatingTest {
 })
 class TemplateDrivenOnPushComponent extends RatingTest {
     ngModelValue = 2;
+}
+
+@Component({
+    template: `<nx-rating [nxSize]="size"></nx-rating>`,
+})
+class SizeRatingComponent extends RatingTest {
+    size = 'm';
 }
