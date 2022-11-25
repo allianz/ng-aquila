@@ -1,6 +1,8 @@
 @import '../../../../ng-aquila/src/shared-styles/index.scss';
 @import '../styles/viewer-styles.scss';
 
+$sidebar-hidden-breakpoint: 991px;
+$toc-hidden-breakpoint: 1280px;
 $toc-width: 200px;
 
 :host {
@@ -10,13 +12,10 @@ $toc-width: 200px;
     line-height: 24px;
     background: v(ui-background);
     color: v(text-01);
+    padding-top: 60px;
 
-    @media (max-width: 785px) {
+    @media (max-width: $sidebar-hidden-breakpoint) {
         padding-top: 120px;
-    }
-
-    @media (min-width: 786px) {
-        padding-top: 60px;
     }
 }
 
@@ -40,7 +39,7 @@ $toc-width: 200px;
         }
 
         @media (max-width: 703px) {
-            margin-right: 0;
+            margin-right: 16px;
         }
     }
 
@@ -59,8 +58,13 @@ $toc-width: 200px;
     }
 }
 
-.nx-desktop-navigation {
-    @media (max-width: 785px) {
+// quickfix: vertically center header links
+nx-header-navigation ::ng-deep .nx-header__link {
+    line-height: 27px;
+}
+
+.hidden-with-sidebar {
+    @media (max-width: $sidebar-hidden-breakpoint) {
         display: none;
     }
 }
@@ -71,18 +75,12 @@ $toc-width: 200px;
     }
 }
 
-.nx-header__actions {
-    @media (max-width: 703px) {
-        margin-left: 0;
-    }
-}
-
 .nx-mobile-navigation {
-    @media (min-width: 786px) {
+    @media (min-width: $sidebar-hidden-breakpoint) {
         display: none;
     }
 
-    @media (max-width: 785px) {
+    @media (max-width: $sidebar-hidden-breakpoint) {
         ul,
         li {
             display: flex;
@@ -144,7 +142,7 @@ $toc-width: 200px;
     }
 
     &:not(.mobile-sidebar--visible) {
-        @media (max-width: 785px) {
+        @media (max-width: $sidebar-hidden-breakpoint) {
             display: none !important;
         }
     }
@@ -163,21 +161,13 @@ $toc-width: 200px;
         height: calc(100vh - 84px);
         overflow-y: auto;
 
-        @media (max-width: 991px) {
+        @media (max-width: $toc-hidden-breakpoint) {
             display: none;
         }
     }
 
-    @media (max-width: 991px) {
+    @media (max-width: $toc-hidden-breakpoint) {
         display: none;
-    }
-}
-
-.docs-version-select {
-    margin-right: 8px;
-
-    @media (max-width: 703px) {
-        margin-right: 0;
     }
 }
 
@@ -187,5 +177,16 @@ $toc-width: 200px;
         g {
             fill: buttonText;
         }
+    }
+}
+
+nx-header-actions > :not(:first-child) {
+    margin-left: 4px;
+}
+
+// hide search on very small screens due to space constrains, especially with a wide logo
+nxv-search {
+    @media (max-width: 592px) {
+        display: none;
     }
 }

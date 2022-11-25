@@ -6,6 +6,11 @@
     input {
         width: 100%;
     }
+    // vertically center the formfield within the header (retail appearence)
+    ::ng-deep .nx-formfield__wrapper {
+        padding-top: 4px;
+        padding-bottom: 0;
+    }
 }
 .search-input__clear {
     position: absolute;

@@ -9,24 +9,25 @@
                 </a>
             </nx-link>
         </nx-header-brand>
-        <nx-header-navigation class="nx-desktop-navigation">
-            <ul>
-                <li>
-                    <a [routerLink]="'/welcome'" routerLinkActive="is-active" nxHeaderLink>Welcome</a>
-                </li>
-                <li>
-                    <a [routerLink]="'/documentation'" routerLinkActive="is-active" nxHeaderLink>Documentation</a>
-                </li>
-                <li>
-                    <a [routerLink]="'/guides'" routerLinkActive="is-active" nxHeaderLink>Guides</a>
-                </li>
-            </ul>
-        </nx-header-navigation>
-        <nx-header-actions>
+
+        <nx-header-navigation>
+            <nx-header-navigation-item class="hidden-with-sidebar">
+                <a [routerLink]="'/welcome'" routerLinkActive="is-active" nxHeaderLink>Welcome</a>
+            </nx-header-navigation-item>
+            <nx-header-navigation-item class="hidden-with-sidebar">
+                <a [routerLink]="'/documentation'" routerLinkActive="is-active" nxHeaderLink>Documentation</a>
+            </nx-header-navigation-item>
+            <nx-header-navigation-item class="hidden-with-sidebar">
+                <a [routerLink]="'/guides'" routerLinkActive="is-active" nxHeaderLink>Guides</a>
+            </nx-header-navigation-item>
+
             <nxv-search></nxv-search>
+        </nx-header-navigation>
+
+        <nx-header-actions>
             <nxv-theme-switch *ngIf="showThemingSwitcher" [themes]="themes" [selected]="selectedTheme" (selectedChange)="selectTheme($event)">
             </nxv-theme-switch>
-            <nxv-version-select class="docs-version-select"></nxv-version-select>
+            <nxv-version-select></nxv-version-select>
             <nx-link>
                 <a [href]="githubLinkConfig.repoLink" target="_blank">
                     <svg
@@ -58,17 +59,15 @@
             <nx-icon name="bars"></nx-icon>
         </button>
         <nx-header-navigation>
-            <ul>
-                <li>
-                    <a [routerLink]="'/welcome'" routerLinkActive="is-active" nxHeaderLink>Welcome</a>
-                </li>
-                <li>
-                    <a [routerLink]="'/documentation'" routerLinkActive="is-active" nxHeaderLink>Documentation</a>
-                </li>
-                <li>
-                    <a [routerLink]="'/guides'" routerLinkActive="is-active" nxHeaderLink>Guides</a>
-                </li>
-            </ul>
+            <nx-header-navigation-item>
+                <a [routerLink]="'/welcome'" routerLinkActive="is-active" nxHeaderLink>Welcome</a>
+            </nx-header-navigation-item>
+            <nx-header-navigation-item>
+                <a [routerLink]="'/documentation'" routerLinkActive="is-active" nxHeaderLink>Documentation</a>
+            </nx-header-navigation-item>
+            <nx-header-navigation-item>
+                <a [routerLink]="'/guides'" routerLinkActive="is-active" nxHeaderLink>Guides</a>
+            </nx-header-navigation-item>
         </nx-header-navigation>
     </nx-header-row>
 </header>
