@@ -26,7 +26,7 @@ export function highlightSourceFiles(group, destination) {
                 console.error('No matching file extension found for ', filePath);
                 process.exit(1);
             }
-            const highlightedContent = hljs.highlight(extension, content).value;
+            const highlightedContent = hljs.highlight(content, { language: extension }).value;
             const newFileTitle = `${exampleName}-${fileExtension}`;
             fs.outputFileSync(path.join(destination, newFileTitle) + '.html', highlightedContent);
         });

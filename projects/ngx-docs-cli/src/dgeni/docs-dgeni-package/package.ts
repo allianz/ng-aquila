@@ -70,7 +70,15 @@ apiDocsPackage.config((log, readFilesProcessor, readTypeScriptModules, templateF
 
 // Configure custom JsDoc tags.
 apiDocsPackage.config((parseTagsProcessor: any) => {
-    parseTagsProcessor.tagDefinitions = parseTagsProcessor.tagDefinitions.concat([{ name: 'docs-private' }, { name: 'deletion-target' }]);
+    parseTagsProcessor.tagDefinitions = parseTagsProcessor.tagDefinitions.concat([
+        { name: 'docs-private' }, // prevent listing an item in the documentation app
+        { name: 'deletion-target' }, // communicate in which version the deletion is intended
+        { name: 'title' }, // display inlined text as title in the documentation app (used for example components)
+        { name: 'dynamic' }, // TODO research what this is for, do we need it? we only have 2 occurrences.
+
+        // standard jsdoc tags:
+        { name: 'throws' }, // not recognized by dgeni-packages
+    ]);
 });
 
 apiDocsPackage.config(computePathsProcessor => {
