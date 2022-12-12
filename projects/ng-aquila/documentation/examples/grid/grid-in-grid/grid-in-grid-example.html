@@ -1,0 +1,39 @@
+<p>Grid in grid</p>
+<div nxLayout="grid" class="docs-grid-colored-grid">
+    <div nxRow class="docs-grid-colored-row">
+        <div nxCol="6" class="docs-grid-colored-col">col="6"</div>
+        <div nxCol="6" class="docs-grid-colored-col">col="6"</div>
+    </div>
+    <div nxRow>
+        <div nxCol="6" class="docs-grid-colored-col">col="6"</div>
+        <div nxCol="6" class="docs-grid-colored-col">
+            <div nxLayout="grid nopadding" class="docs-grid-colored-grid">
+                <div nxRow class="docs-grid-colored-row">
+                    <div nxCol="6" class="docs-grid-colored-col nested">
+                        col="6" Nested
+                    </div>
+                    <div nxCol="6" class="docs-grid-colored-col nested">
+                        col="6" Nested
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>Nesting row</p>
+<div nxLayout="grid" class="docs-grid-colored-grid">
+    <div nxRow class="docs-grid-colored-row">
+        <div nxCol="6" class="docs-grid-colored-col">col="6"</div>
+        <div nxCol="6" class="docs-grid-colored-col">
+            <div nxRow class="docs-grid-colored-row">
+                <div nxCol="6" class="docs-grid-colored-col">
+                    col="6" Nested
+                </div>
+                <div nxCol="6" class="docs-grid-colored-col">
+                    col="6" Nested
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
