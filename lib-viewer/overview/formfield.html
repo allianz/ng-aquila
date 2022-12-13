@@ -77,6 +77,11 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 </code></pre>
 <div nx-docs-example="formfield-custom" config="{}">exampleID: formfield-custom</div>
+<h3 id="change-detection-trigger-event" tabindex="-1" class="docs-markdown--h3">Change detection trigger event</h3>
+<p class="docs-markdown--p">To enable rich responsive visual behaviour, by default <code>NxFormField</code> runs a new change detection cycle in response to every user interaction (e.g. every keypress for <code>nxInput</code>). For some applications this could create a performance problem, in which case you could switch your formfields to only running change detection after user has left the control instead. To achieve this, set the <code>updateOn</code> input of NxFormField to <code>blur</code>.</p>
+<p class="docs-markdown--p">Note that if you are using <code>nxInput</code> without wrapping it in <code>NxFormField</code>, you could also configure <code>updateOn</code> on it specifically, but this configuration would be overwritten as soon as you place <code>nxInput</code> inside of <code>NxFormField</code>.</p>
+<p class="docs-markdown--p">You could also use <a href="./documentation/formfield/overview#global-settings">default formfield settings</a> with predefined <code>updateOn</code> setting in order to configure all formfieds in your application at once, as described <a href="./documentation/formfield/overview#global-settings">here</a>.</p>
+<div nx-docs-example="formfield-changedetection" config="{}">exampleID: formfield-changedetection</div>
 <h4 id="implementing-the-methods-and-properties-of-nxformfieldcontrol" tabindex="-1" class="docs-markdown--h4">Implementing the methods and properties of NxFormFieldControl</h4>
 <p class="docs-markdown--p">The implementation is similar to Angular Material and can be checked for reference <a href="https://material.angular.io/guide/creating-a-custom-form-field-control">Angular Material - Custom Formfield Controls</a></p>
 <div nx-docs-example="formfield-custom-tel-input" config="{}">exampleID: formfield-custom-tel-input</div>

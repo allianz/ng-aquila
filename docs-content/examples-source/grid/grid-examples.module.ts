@@ -5,6 +5,7 @@ import { GridAlignContentExampleComponent } from './grid-align-content/grid-alig
 import { GridAlignItemsExampleComponent } from './grid-align-items/grid-align-items-example';
 import { GridAlignSelfExampleComponent } from './grid-align-self/grid-align-self-example';
 import { GridColOrderExampleComponent } from './grid-col-order/grid-col-order-example';
+import { GridInGridExampleComponent } from './grid-in-grid/grid-in-grid-example';
 import { GridJustifyExampleComponent } from './grid-justify/grid-justify-example';
 import { GridMaxwidthExampleComponent } from './grid-maxwidth/grid-maxwidth-example';
 import { GridMultiInputs1ExampleComponent } from './grid-multi-inputs-1/grid-multi-inputs-1-example';
@@ -25,6 +26,7 @@ const EXAMPLES = [
     GridNogutterExampleComponent,
     GridOffsetExampleComponent,
     GridOneInputExampleComponent,
+    GridInGridExampleComponent,
 ];
 
 @NgModule({
@@ -46,6 +48,7 @@ export class GridExamplesModule {
             'grid-nogutter': GridNogutterExampleComponent,
             'grid-offset': GridOffsetExampleComponent,
             'grid-one-input': GridOneInputExampleComponent,
+            'grid-in-grid': GridInGridExampleComponent,
         };
     }
 }

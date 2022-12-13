@@ -13,6 +13,7 @@ import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { FormfieldAppearanceExampleComponent } from './formfield-appearance/formfield-appearance-example';
 import { FormfieldBasicExampleComponent } from './formfield-basic/formfield-basic-example';
+import { FormfieldChangedetectionExampleComponent } from './formfield-changedetection/formfield-changedetection-example';
 import { FormfieldCharacterCountExampleComponent } from './formfield-character-count/formfield-character-count-example';
 import { FormfieldCustomExampleComponent } from './formfield-custom/formfield-custom-example';
 import { FormfieldCustomLabelExampleComponent } from './formfield-custom-label/formfield-custom-label-example';
@@ -51,6 +52,7 @@ const EXAMPLES = [
     FormfieldPlaceholderExampleComponent,
     FormfieldPrefixSuffixAppendixExampleComponent,
     FormfieldSimpleFormExampleComponent,
+    FormfieldChangedetectionExampleComponent,
 ];
 
 @NgModule({
@@ -95,6 +97,8 @@ export class FormfieldExamplesModule {
             'formfield-prefix-suffix-appendix':
                 FormfieldPrefixSuffixAppendixExampleComponent,
             'formfield-simple-form': FormfieldSimpleFormExampleComponent,
+            'formfield-changedetection':
+                FormfieldChangedetectionExampleComponent,
         };
     }
 }

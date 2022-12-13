@@ -12,6 +12,7 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
 const myDefaultOptions: FormfieldDefaultOptions = {
     appearance: 'outline',
     nxFloatLabel: 'always',
+    updateOn: 'change',
 };
 
 const myErrorOptions: ErrorDefaultOptions = {

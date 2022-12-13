@@ -9,6 +9,7 @@ import { RatingDisabledExampleComponent } from './rating-disabled/rating-disable
 import { RatingNegativeExampleComponent } from './rating-negative/rating-negative-example';
 import { RatingReactiveExampleComponent } from './rating-reactive/rating-reactive-example';
 import { RatingSimpleExampleComponent } from './rating-simple/rating-simple-example';
+import { RatingSizesExampleComponent } from './rating-sizes/rating-sizes-example';
 import { RatingTemplateExampleComponent } from './rating-template/rating-template-example';
 
 const EXAMPLES = [
@@ -19,6 +20,7 @@ const EXAMPLES = [
     RatingReactiveExampleComponent,
     RatingSimpleExampleComponent,
     RatingTemplateExampleComponent,
+    RatingSizesExampleComponent,
 ];
 
 @NgModule({
@@ -36,6 +38,7 @@ export class RatingExamplesModule {
             'rating-reactive': RatingReactiveExampleComponent,
             'rating-simple': RatingSimpleExampleComponent,
             'rating-template': RatingTemplateExampleComponent,
+            'rating-sizes': RatingSizesExampleComponent,
         };
     }
 }

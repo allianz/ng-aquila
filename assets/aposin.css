@@ -1003,7 +1003,9 @@
   --small-stage-expert-image-mobile-height: 15vw;
   --small-stage-expert-mobile-header-padding: 8px 0;
   --rating-icon-color: var(--interactive-primary);
-  --rating-icon-size: 40px;
+  --rating-icon-size-s: 24px;
+  --rating-icon-size-m: 32px;
+  --rating-icon-size-l: 40px;
   --rating-label-color: var(--text-01);
   --rating-disabled-icon-color: var(--disabled-01);
   --rating-disabled-label-color: var(--disabled-01);

@@ -93,6 +93,21 @@ If &#39;negative&#39;, a negative set of stylings is used.</p>
    
 
 <tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">updateOn</span>:
+                <span class="docs-api-property__type">NxFormfieldUpdateEventType</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the event that triggers change detection in the formfield.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">labelId</span>:
@@ -366,6 +381,20 @@ using the <code>FORMFIELD_DEFAULT_OPTIONS</code> injection token.</p>
         <p>Sets the default float label type. (optional)</p>
 </td>
 </tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">updateOn</span>?:
+                <span class="docs-api-property__type">NxFormfieldUpdateEventType</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the default change detection trigger event. (optional)</p>
+</td>
+</tr>
   
 </table>   
   <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
@@ -373,6 +402,16 @@ using the <code>FORMFIELD_DEFAULT_OPTIONS</code> injection token.</p>
         Additional type aliases
     </h3>
      
+
+<h4 id="NxFormfieldUpdateEventType" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxFormfieldUpdateEventType"></span>
+    <code>NxFormfieldUpdateEventType</code>
+</h4><p class="docs-api-type-alias-description"><p>Type of formfield event that triggers change detection.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'change' | 'blur'</code>
+</p>
+   
 
 <h4 id="FloatLabelType" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
     <span header-link="FloatLabelType"></span>
