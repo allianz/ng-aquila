@@ -2,6 +2,9 @@ import { Directive, ElementRef } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 
+/** Type of formfield event that triggers change detection. */
+export type NxFormfieldUpdateEventType = 'change' | 'blur';
+
 /** @docs-private */
 @Directive()
 export abstract class NxFormfieldControl<T> {
@@ -37,6 +40,9 @@ export abstract class NxFormfieldControl<T> {
      * `nx-formfield--type-{{controlType}}` to its root element.
      */
     readonly controlType?: string;
+
+    /** Change detection trigger event of this control. */
+    updateOn?: NxFormfieldUpdateEventType;
 
     abstract setDescribedByIds(ids: string[]): void;
 

@@ -45,6 +45,7 @@ describe('NxInputDirective', () => {
                 BasicInputWithFormControl,
                 ConfigurableInput,
                 InputWithLabelAndPlaceholder,
+                NoChangeDetectionInput,
             ],
             imports: [FormsModule, NxInputModule, ReactiveFormsModule],
         }).compileComponents();
@@ -126,6 +127,23 @@ describe('NxInputDirective', () => {
             fixture.detectChanges();
             tick();
 
+            expect(inputInstance.errorState).toBeTruthy();
+        }));
+
+        it('ngModel respects change detection trigger', fakeAsync(() => {
+            createTestComponent(NgModelInput);
+            const input = nativeElement;
+            input.focus();
+            input.value = '';
+            input.dispatchEvent(new Event('input'));
+
+            fixture.detectChanges();
+            tick();
+            expect(inputInstance.errorState).toBeFalsy();
+
+            input.blur();
+            fixture.detectChanges();
+            tick();
             expect(inputInstance.errorState).toBeTruthy();
         }));
     });
@@ -324,6 +342,11 @@ class RequiredInput extends InputTest {}
     template: `<input nxInput [(ngModel)]="currentValue" required />`,
 })
 class NgModelInput extends InputTest {}
+
+@Component({
+    template: `<input nxInput [(ngModel)]="currentValue" required [updateOn]="blur" />`,
+})
+class NoChangeDetectionInput extends InputTest {}
 
 @Component({
     template: `

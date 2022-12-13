@@ -237,8 +237,8 @@ describe('PhoneInputComponent', () => {
         flush();
         (testInstance as ReactiveFormsPhoneInput).formControl.setValue('');
         (testInstance as ReactiveFormsPhoneInput).formControl.markAsTouched();
-        fixture.detectChanges();
         flush();
+        fixture.detectChanges();
         expect(fixture.nativeElement.querySelector('nx-error')).toBeTruthy();
     }));
 

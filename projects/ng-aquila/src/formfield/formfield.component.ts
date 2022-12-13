@@ -18,12 +18,12 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import { getClassNameList } from '@aposin/ng-aquila/utils';
-import { merge, Subject } from 'rxjs';
-import { startWith, takeUntil } from 'rxjs/operators';
+import { asapScheduler, merge, Subject } from 'rxjs';
+import { observeOn, startWith, takeUntil } from 'rxjs/operators';
 
 import { NxFormfieldAppendixDirective } from './appendix.directive';
 import { NxFormfieldErrorDirective } from './error.directive';
-import { NxFormfieldControl } from './formfield-control';
+import { NxFormfieldControl, NxFormfieldUpdateEventType } from './formfield-control';
 import { NxFormfieldHintDirective } from './hint.directive';
 import { NxFormfieldLabelDirective } from './label.directive';
 import { NxFormfieldNoteDirective } from './note.directive';
@@ -46,6 +46,9 @@ export interface FormfieldDefaultOptions {
 
     /** Sets the default float label type. (optional) */
     nxFloatLabel?: FloatLabelType;
+
+    /** Sets the default change detection trigger event. (optional) */
+    updateOn?: NxFormfieldUpdateEventType;
 }
 
 export const FORMFIELD_DEFAULT_OPTIONS = new InjectionToken<FormfieldDefaultOptions>('FORMFIELD_DEFAULT_OPTIONS');
@@ -70,6 +73,7 @@ export type AppearanceType = 'outline' | 'auto';
         '[class.has-error]': 'this._control.errorState',
         '[class.has-outline]': 'this.appearance === "outline"',
         '[class.has-hint]': 'this._hintChildren?.length > 0',
+        '(focusout)': '_onBlur()',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
@@ -147,6 +151,18 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     }
     private _appearance!: AppearanceType;
 
+    /**
+     *
+     * Sets the event that triggers change detection in the formfield.
+     */
+    @Input() set updateOn(value: NxFormfieldUpdateEventType) {
+        this._updateOn = value;
+    }
+    get updateOn(): NxFormfieldUpdateEventType {
+        return this._updateOn || this._defaultOptions?.updateOn || 'change';
+    }
+    private _updateOn!: NxFormfieldUpdateEventType;
+
     get _shouldAlwaysFloat(): boolean {
         return this.floatLabel === 'always';
     }
@@ -175,35 +191,37 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
 
         if (this._control.controlType) {
             this.elementRef.nativeElement.classList.add(`nx-formfield--type-${this._control.controlType}`);
+
+            if (this._control.updateOn) {
+                this._control.updateOn = this.updateOn;
+            }
         }
 
-        // Subscribe to changes in the child control state in order to update the form field UI.
-        this._control.stateChanges.pipe(startWith(null), takeUntil(this._destroyed)).subscribe(() => {
-            Promise.resolve().then(() => {
+        if (this.updateOn === 'change') {
+            // Subscribe to changes in the child control state in order to update the form field UI.
+            this._control.stateChanges.pipe(startWith(null), observeOn(asapScheduler), takeUntil(this._destroyed)).subscribe(() => {
                 this._syncDescribedByIds();
                 this._cdr.markForCheck();
             });
-        });
 
-        merge(
-            this._hintChildren.changes,
-            this._appendixChildren.changes,
-            this._prefixChildren.changes,
-            this._suffixChildren.changes,
-            this._noteChildren.changes,
-        )
-            .pipe(startWith(null), takeUntil(this._destroyed))
-            .subscribe(() => {
-                this._cdr.markForCheck();
-            });
+            merge(
+                this._hintChildren.changes,
+                this._appendixChildren.changes,
+                this._prefixChildren.changes,
+                this._suffixChildren.changes,
+                this._noteChildren.changes,
+            )
+                .pipe(startWith(null), takeUntil(this._destroyed))
+                .subscribe(() => {
+                    this._cdr.markForCheck();
+                });
 
-        // Update the aria-described by when the number of errors changes.
-        this._errorChildren.changes.pipe(startWith(null), takeUntil(this._destroyed)).subscribe(() => {
-            Promise.resolve().then(() => {
+            // Update the aria-described by when the number of errors changes.
+            this._errorChildren.changes.pipe(startWith(null), observeOn(asapScheduler), takeUntil(this._destroyed)).subscribe(() => {
                 this._syncDescribedByIds();
                 this._cdr.markForCheck();
             });
-        });
+        }
     }
 
     ngAfterContentChecked(): void {
@@ -275,5 +293,13 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
             return this.label ?? '';
         }
         return this._labelChild.el.nativeElement?.innerText;
+    }
+
+    _onBlur() {
+        if (this.updateOn === 'blur') {
+            this._validateControlChild();
+            this._syncDescribedByIds();
+            this._cdr.markForCheck();
+        }
     }
 }

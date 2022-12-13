@@ -162,6 +162,16 @@ The HTML code below shows how we can consume our custom control.
 
 <!-- example(formfield-custom) -->
 
+### Change detection trigger event
+
+To enable rich responsive visual behaviour, by default `NxFormField` runs a new change detection cycle in response to every user interaction (e.g. every keypress for `nxInput`). For some applications this could create a performance problem, in which case you could switch your formfields to only running change detection after user has left the control instead. To achieve this, set the `updateOn` input of NxFormField to `blur`.
+
+Note that if you are using `nxInput` without wrapping it in `NxFormField`, you could also configure `updateOn` on it specifically, but this configuration would be overwritten as soon as you place `nxInput` inside of `NxFormField`.
+
+You could also use [default formfield settings](./documentation/formfield/overview#global-settings) with predefined `updateOn` setting in order to configure all formfieds in your application at once, as described [here](./documentation/formfield/overview#global-settings).
+
+<!-- example(formfield-changedetection) -->
+
 #### Implementing the methods and properties of NxFormFieldControl
 
 The implementation is similar to Angular Material and can be checked for reference [Angular Material - Custom Formfield Controls](https://material.angular.io/guide/creating-a-custom-form-field-control)

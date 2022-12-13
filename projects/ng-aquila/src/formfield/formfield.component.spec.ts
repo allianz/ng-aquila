@@ -28,6 +28,7 @@ abstract class FormfieldTest {
     floatLabel!: FloatLabelType;
     disabled = false;
     readonly = false;
+    updateOn = 'change';
 }
 
 describe('NxFormfieldComponent', () => {
@@ -81,6 +82,7 @@ describe('NxFormfieldComponent', () => {
                     OnPushFormfield,
                     NativeSelectFormfield,
                     ConditionalInputComponent,
+                    NoChangeDetectionFormfield,
                 ],
             }).compileComponents();
         }));
@@ -193,6 +195,25 @@ describe('NxFormfieldComponent', () => {
             fixture.detectChanges();
             tick();
 
+            expect(formfieldElement).toHaveClass('has-error');
+        }));
+
+        it('respects change detection trigger', fakeAsync(() => {
+            createTestComponent(NoChangeDetectionFormfield);
+            const input = inputElement as HTMLInputElement;
+            input.focus();
+            input.value = '';
+            input.dispatchEvent(new Event('input'));
+            fixture.detectChanges();
+            tick();
+            expect(inputElement).toHaveClass('ng-invalid');
+            expect(formfieldElement).toHaveClass('is-focused');
+            expect(formfieldElement).not.toHaveClass('has-error');
+
+            input.blur();
+            formfieldElement.blur();
+            fixture.detectChanges();
+            tick();
             expect(formfieldElement).toHaveClass('has-error');
         }));
 
@@ -350,6 +371,7 @@ describe('NxFormfieldComponent', () => {
         beforeEach(waitForAsync(() => {
             formfieldDefaultOptions.appearance = 'outline';
             formfieldDefaultOptions.nxFloatLabel = 'always';
+            formfieldDefaultOptions.updateOn = 'blur';
             TestBed.configureTestingModule({
                 imports: [ReactiveFormsModule, FormsModule, NxInputModule],
                 declarations: [BasicFormfield, OutlineFormfield, FloatingFormfield],
@@ -377,6 +399,15 @@ describe('NxFormfieldComponent', () => {
             },
         ));
 
+        it('should have updateOn set to "change" if empty default options are provided', inject(
+            [FORMFIELD_DEFAULT_OPTIONS],
+            (defaultOptions: FormfieldDefaultOptions) => {
+                delete defaultOptions.updateOn;
+                createTestComponent(BasicFormfield);
+                expect(testInstance.textfieldInstance.updateOn).toBe('change');
+            },
+        ));
+
         it('should have a custom default appearance if default options contain a custom appearance', () => {
             createTestComponent(BasicFormfield);
             expect(testInstance.textfieldInstance.appearance).toBe('outline');
@@ -387,6 +418,11 @@ describe('NxFormfieldComponent', () => {
             createTestComponent(BasicFormfield);
             expect(testInstance.textfieldInstance.floatLabel).toBe('always');
             expect(formfieldElement).toHaveClass('is-floating');
+        });
+
+        it('should have a custom default updateOn if default options contain a custom updateOn', () => {
+            createTestComponent(BasicFormfield);
+            expect(testInstance.textfieldInstance.updateOn).toBe('blur');
         });
 
         it('should override a custom default appearance', () => {
@@ -482,6 +518,17 @@ class DirectivesFormfield extends FormfieldTest {}
     `,
 })
 class ErrorFormfield extends FormfieldTest {}
+
+@Component({
+    template: `
+        <nx-formfield updateOn="blur">
+            <input nxInput required [(ngModel)]="currentValue" />
+            <span nxFormfieldNote>content-note</span>
+            <span nxFormfieldError>content-error</span>
+        </nx-formfield>
+    `,
+})
+class NoChangeDetectionFormfield extends FormfieldTest {}
 
 @Component({
     template: `

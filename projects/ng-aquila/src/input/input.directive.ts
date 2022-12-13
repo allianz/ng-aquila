@@ -3,7 +3,7 @@ import { getSupportedInputTypes, Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { Directive, DoCheck, ElementRef, Inject, InjectionToken, Input, OnChanges, OnDestroy, OnInit, Optional, Self } from '@angular/core';
 import { FormGroupDirective, NgControl, NgForm, UntypedFormControl } from '@angular/forms';
-import { NxFormfieldControl } from '@aposin/ng-aquila/formfield';
+import { NxFormfieldControl, NxFormfieldUpdateEventType } from '@aposin/ng-aquila/formfield';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -35,9 +35,8 @@ let nextUniqueId = 0;
         '[attr.aria-invalid]': 'errorState',
         '[attr.aria-required]': 'required.toString()',
         '[attr.placeholder]': 'placeholder || null',
-        '(blur)': '_focusChanged(false)',
+        '(focusout)': '_focusChanged(false)',
         '(focus)': '_focusChanged(true)',
-        '(input)': '_onInput()',
     },
     providers: [{ provide: NxFormfieldControl, useExisting: NxInputDirective }],
 })
@@ -153,6 +152,20 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     }
     private _placeholder!: string;
 
+    /**
+     *
+     * Sets the event that triggers change detection in the input.
+     */
+    @Input() set updateOn(value: NxFormfieldUpdateEventType) {
+        if (this._updateOn !== value) {
+            this._updateOn = value;
+        }
+    }
+    get updateOn(): NxFormfieldUpdateEventType {
+        return this._updateOn;
+    }
+    private _updateOn: NxFormfieldUpdateEventType = 'change';
+
     private readonly _destroyed = new Subject<void>();
 
     constructor(
@@ -197,15 +210,29 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
         return this._elementRef;
     }
 
-    _onInput() {
-        // force to to run change detection so we know about changes in the native form input
-    }
-
     _focusChanged(isFocused: boolean) {
         if (isFocused !== this.focused && !this.readonly) {
             this.focused = isFocused;
             this.stateChanges.next();
+
+            if (this._updateOn === 'blur') {
+                this._detectInputChanges();
+            }
         }
+    }
+
+    _detectInputChanges() {
+        if (this.ngControl) {
+            // We need to re-evaluate this on every change detection cycle, because there are some
+            // error triggers that we can't subscribe to (e.g. parent form submissions). This means
+            // that whatever logic is in here has to be super lean or we risk destroying the performance.
+            this.updateErrorState();
+        }
+
+        // We need to dirty-check the native element's value, because there are some cases where
+        // we won't be notified when it changes (e.g. the consumer isn't using forms or they're
+        // updating the value using `emitEvent: false`).
+        this._dirtyCheckNativeValue();
     }
 
     ngOnChanges(): void {
@@ -223,17 +250,9 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     }
 
     ngDoCheck(): void {
-        if (this.ngControl) {
-            // We need to re-evaluate this on every change detection cycle, because there are some
-            // error triggers that we can't subscribe to (e.g. parent form submissions). This means
-            // that whatever logic is in here has to be super lean or we risk destroying the performance.
-            this.updateErrorState();
+        if (this._updateOn === 'change') {
+            this._detectInputChanges();
         }
-
-        // We need to dirty-check the native element's value, because there are some cases where
-        // we won't be notified when it changes (e.g. the consumer isn't using forms or they're
-        // updating the value using `emitEvent: false`).
-        this._dirtyCheckNativeValue();
     }
 
     /** @docs-private */
