@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [14.2.0](https://github.com/allianz/ng-aquila/compare/v14.1.0...v14.2.0) (2022-12-13)
+
+
+### Bug Fixes
+
+* **formfield:** add change detection switch ([8e2d8cf](https://github.com/allianz/ng-aquila/commit/8e2d8cfb8785b24ced2394e0efd52dfa9b2a5a09))
+* **phone-input:** rename wrapper class to specific name ([5223b62](https://github.com/allianz/ng-aquila/commit/5223b628423c1b3af696aad41b049f5bf42ae8d6))
+
+
+### Features
+
+* **rating:** add different sizes ([b1a4362](https://github.com/allianz/ng-aquila/commit/b1a4362f23479428e9a234c83553f42515746489))
+
+
+
 # [14.1.0](https://github.com/allianz/ng-aquila/compare/v14.0.0...v14.1.0) (2022-11-18)
 
 
