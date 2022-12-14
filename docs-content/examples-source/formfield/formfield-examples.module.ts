@@ -19,6 +19,7 @@ import { FormfieldCustomExampleComponent } from './formfield-custom/formfield-cu
 import { FormfieldCustomLabelExampleComponent } from './formfield-custom-label/formfield-custom-label-example';
 import { FormfieldCustomTelInputExampleComponent } from './formfield-custom-tel-input/formfield-custom-tel-input-example';
 import { FormfieldErrorExampleComponent } from './formfield-error/formfield-error-example';
+import { FormfieldErrorTwoColumnExampleComponent } from './formfield-error-two-column/formfield-error-two-column-example';
 import { FormfieldExpertErrorExampleComponent } from './formfield-expert-error/formfield-expert-error-example';
 import { FormfieldFloatingExampleComponent } from './formfield-floating/formfield-floating-example';
 import { FormfieldGlobalExampleComponent } from './formfield-global/formfield-global-example';
@@ -40,6 +41,7 @@ const EXAMPLES = [
     FormfieldCustomLabelExampleComponent,
     FormfieldCustomTelInputExampleComponent,
     FormfieldErrorExampleComponent,
+    FormfieldErrorTwoColumnExampleComponent,
     FormfieldExpertErrorExampleComponent,
     FormfieldFloatingExampleComponent,
     FormfieldGlobalExampleComponent,
@@ -82,6 +84,8 @@ export class FormfieldExamplesModule {
             'formfield-custom-tel-input':
                 FormfieldCustomTelInputExampleComponent,
             'formfield-error': FormfieldErrorExampleComponent,
+            'formfield-error-two-column':
+                FormfieldErrorTwoColumnExampleComponent,
             'formfield-expert-error': FormfieldExpertErrorExampleComponent,
             'formfield-floating': FormfieldFloatingExampleComponent,
             'formfield-global': FormfieldGlobalExampleComponent,
