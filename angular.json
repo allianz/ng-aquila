@@ -42,6 +42,8 @@
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
                         "main": "projects/ng-aquila/test.ts",
+                        "polyfills": ["zone.js", "zone.js/testing"],
+                        "include": ["projects/ng-aquila/src/!(schematics)/**/*.spec.ts"],
                         "tsConfig": "projects/ng-aquila/tsconfig.spec.json",
                         "karmaConfig": "projects/ng-aquila/karma.conf.js"
                     }
@@ -78,7 +80,7 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/ngx-docs-ui/test.ts",
+                        "polyfills": ["zone.js", "zone.js/testing"],
                         "tsConfig": "projects/ngx-docs-ui/tsconfig.spec.json",
                         "karmaConfig": "projects/ngx-docs-ui/karma.conf.js"
                     }
@@ -104,7 +106,7 @@
                         "outputPath": "dist/opensource-documentation",
                         "index": "projects/opensource-documentation/src/index.html",
                         "main": "projects/opensource-documentation/src/main.ts",
-                        "polyfills": "projects/opensource-documentation/src/polyfills.ts",
+                        "polyfills": ["zone.js"],
                         "tsConfig": "projects/opensource-documentation/tsconfig.app.json",
                         "assets": [
                             "projects/opensource-documentation/src/favicon.png",
@@ -152,12 +154,6 @@
                                 {
                                     "type": "anyComponentStyle",
                                     "maximumWarning": "6kb"
-                                }
-                            ],
-                            "fileReplacements": [
-                                {
-                                    "replace": "projects/opensource-documentation/src/environments/environment.ts",
-                                    "with": "projects/opensource-documentation/src/environments/environment.prod.ts"
                                 }
                             ],
                             "tsConfig": "projects/opensource-documentation/tsconfig.build.json",
@@ -241,6 +237,12 @@
         },
         "@schematics/angular:interface": {
             "type": "models"
+        },
+        "@angular-eslint/schematics:application": {
+            "setParserOptionsProject": true
+        },
+        "@angular-eslint/schematics:library": {
+            "setParserOptionsProject": true
         }
     },
     "cli": {

@@ -123,7 +123,8 @@ describe('NxVideoComponent', () => {
         testInstance.fullscreen = false;
         videoInstance.select();
         fixture.detectChanges();
-        expect(iframe.getAttribute('allowfullscreen')).toBe('false');
+        const newIframe = getIframe(); // changing fullscreen should internally create a new iframe (security issue: https://angular.io/errors/NG0910)
+        expect(newIframe.getAttribute('allowfullscreen')).toBe('false');
     });
 
     describe('programmatic change', () => {

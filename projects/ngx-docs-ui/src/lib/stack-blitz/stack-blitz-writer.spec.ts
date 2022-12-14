@@ -73,7 +73,7 @@ describe('StackBlitzWriter', () => {
             }
             flushMicrotasks();
 
-            expect(form.elements).toHaveSize(14);
+            expect(form.elements).toHaveSize(13);
 
             // Should have correct tags
             expect(form.elements[0].getAttribute('name')).toBe('tags[0]');
@@ -92,12 +92,11 @@ describe('StackBlitzWriter', () => {
             // Should have files needed for example.
             expect(form.elements[6].getAttribute('name')).toBe('files[src/index.html]');
             expect(form.elements[7].getAttribute('name')).toBe('files[src/styles.scss]');
-            expect(form.elements[8].getAttribute('name')).toBe('files[src/polyfills.ts]');
-            expect(form.elements[9].getAttribute('name')).toBe('files[src/main.ts]');
-            expect(form.elements[10].getAttribute('name')).toBe('files[src/app/aquila-module.ts]');
-            expect(form.elements[11].getAttribute('name')).toBe('files[src/app/test.ts]');
-            expect(form.elements[12].getAttribute('name')).toBe('files[src/app/test.html]');
-            expect(form.elements[13].getAttribute('name')).toBe('files[src/app/src/detail.ts]');
+            expect(form.elements[8].getAttribute('name')).toBe('files[src/main.ts]');
+            expect(form.elements[9].getAttribute('name')).toBe('files[src/app/aquila-module.ts]');
+            expect(form.elements[10].getAttribute('name')).toBe('files[src/app/test.ts]');
+            expect(form.elements[11].getAttribute('name')).toBe('files[src/app/test.html]');
+            expect(form.elements[12].getAttribute('name')).toBe('files[src/app/src/detail.ts]');
         });
     }));
 
@@ -131,7 +130,6 @@ const FAKE_DOCS: { [key: string]: string } = {
 const TEST_URLS = [
     '/assets/stack-blitz/src/index.html',
     '/assets/stack-blitz/src/styles.scss',
-    '/assets/stack-blitz/src/polyfills.ts',
     '/assets/stack-blitz/src/main.ts',
     '/assets/stack-blitz/src/app/aquila-module.ts',
     `/docs-content/examples-source/cdk/my-comp/${testExampleId}/test.ts`,

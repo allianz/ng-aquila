@@ -12,7 +12,7 @@
         "moduleResolution": "node",
         "importHelpers": true,
         "resolveJsonModule": true,
-        "target": "es2020",
+        "target": "es2022",
         "module": "es2020",
         "lib": ["es2020", "dom"],
         "paths": {
@@ -21,6 +21,7 @@
             "@aposin/ngx-docs-ui": ["projects/ngx-docs-ui/src/public-api.ts"],
             "@aposin/ng-aquila/documentation/*": ["projects/ng-aquila/documentation/generated/*"]
         },
+        "useDefineForClassFields": false,
         "allowSyntheticDefaultImports": true,
         "noFallthroughCasesInSwitch": true,
         "noImplicitReturns": true,

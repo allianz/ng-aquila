@@ -23,6 +23,28 @@ Angular NDBX versions 11 and older are no longer supported.
 
 During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
 
+## Updating to version 15
+
+With v15, we are upgrading to [Angular 15](https://blog.angular.io/angular-v15-is-now-available-df7be7f2f4c8). In most cases the following command should do the Angular update for you:
+
+`ng update @angular/cli @angular/core`
+
+Then it should be easy to update Aquila with the following command:
+
+`ng update @aposin/ng-aquila --force`
+
+**Important:**
+
+- ⚠️ (nx-input-phone) wrapper class name within component has been changed to avoid interfering with global stylesheets.
+
+### Breaking Changes
+
+-   **rating:** visual layout and component API have been updated to align with the current NDBX guidelines
+
+**We are not providing automatic updates for these breaking changes.**
+
+
+
 ## Updating to version 14
 
 With v14, we are upgrading to [Angular 14](https://blog.angular.io/angular-v14-is-now-available-391a6db736af). In most cases the following command should do the Angular update for you:

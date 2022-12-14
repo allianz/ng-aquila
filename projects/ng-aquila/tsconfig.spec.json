@@ -6,5 +6,5 @@
     },
     "files": ["test.ts"],
     "include": ["**/*.spec.ts", "**/*.d.ts"],
-    "exclude": ["src/schematics", "documentation/**/*"]
+    "exclude": ["src/schematics/**/*", "documentation/**/*"]
 }

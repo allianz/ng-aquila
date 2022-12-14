@@ -15,9 +15,9 @@ module.exports = function (config) {
             outputDir: '../../reports/ngx-docs-ui/junit',
         },
         files: [
-            { pattern: '../../node_modules/@angular/cdk/a11y-prebuilt.css', watched: true, included: true, served: true },
-            { pattern: '../../node_modules/@angular/cdk/overlay-prebuilt.css', watched: true, included: true, served: true },
-            { pattern: '../../dist/ng-aquila/css/normalize.css', included: true, watched: false },
+            { pattern: '../../node_modules/@angular/cdk/a11y-prebuilt.css', watched: false },
+            { pattern: '../../node_modules/@angular/cdk/overlay-prebuilt.css', watched: false },
+            { pattern: '../../dist/ng-aquila/css/normalize.css', watched: false },
         ],
     });
 };

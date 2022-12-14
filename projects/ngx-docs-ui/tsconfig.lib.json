@@ -12,5 +12,5 @@
         "strictMetadataEmit": true,
         "enableResourceInlining": true
     },
-    "exclude": ["test.ts", "**/*.spec.ts"]
+    "exclude": ["**/*.spec.ts"]
 }

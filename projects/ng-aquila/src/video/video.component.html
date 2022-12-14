@@ -7,7 +7,10 @@
             <img [src]="imgSrc" class="nx-video__thumbnail" [alt]="altText" (click)="select()" (keydown.enter)="select()" />
         </div>
         <div *ngIf="videoId && showPlayer">
-            <iframe title="video" class="nx-video__iframe" [attr.allowfullscreen]="allowFullScreen" [src]="videoSrc"></iframe>
+            <iframe *ngIf="allowFullScreen; else disallowfullscreen" title="video" class="nx-video__iframe" allowFullscreen="true" [src]="videoSrc"></iframe>
+            <ng-template #disallowfullscreen>
+                <iframe title="video" class="nx-video__iframe" allowFullscreen="false" [src]="videoSrc"></iframe>
+            </ng-template>
         </div>
     </div>
 </div>

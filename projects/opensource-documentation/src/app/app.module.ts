@@ -22,8 +22,9 @@ import {
 import { ColorPickerModule } from 'ngx-color-picker';
 import { LazyLoadingService } from 'projects/ng-aquila/documentation/generated/lazy-loading.service';
 import MANIFEST from 'projects/ng-aquila/documentation/generated/manifest.json';
+import PACKAGE from 'projects/ng-aquila/src/package.json';
+import VERSIONS from 'versions.json';
 
-import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -41,16 +42,19 @@ const ROUTES: Routes = [
     },
 ];
 
-const channels = environment.VERSIONS.channels.map((channel: any) => ({
-    name: channel,
-    url: (environment.VERSIONS.urls as { [key: string]: string })[channel],
-}));
-
-const VERSIONS: DocVersions = {
-    currentVersion: environment.CURRENT_VERSION,
-    currentChannel: environment.CURRENT_CHANNEL,
-    channels,
+const DOC_VERSIONS: DocVersions = {
+    currentVersion: PACKAGE.version,
+    currentChannel: 'stable',
+    channels: VERSIONS.channels.map(channel => ({
+        name: channel,
+        url: (VERSIONS.urls as { [key: string]: string })[channel],
+    })),
 };
+
+const DOCS_THEMES = [
+    { name: 'docs-dark', displayName: 'Default', url: 'assets/aposin.css' },
+    { name: 'expert', displayName: 'Expert', url: 'assets/expert.css' },
+];
 
 const LOGO_PATH: LogoPath = {
     logoWithTitlePath: 'assets/logos/aposin_logo.svg',
@@ -65,7 +69,7 @@ const GITHUB_REPO_LINK: GithubLinkConfig = {
     declarations: [AppComponent, WelcomeComponent, FooterComponent],
     imports: [
         BrowserModule,
-        RouterModule.forRoot(ROUTES, { enableTracing: false, relativeLinkResolution: 'legacy' }),
+        RouterModule.forRoot(ROUTES, { enableTracing: false }),
         NxvDocumentationModule.forRoot({
             welcomeComponent: WelcomeComponent,
             footerComponent: FooterComponent,
@@ -80,14 +84,8 @@ const GITHUB_REPO_LINK: GithubLinkConfig = {
     providers: [
         { provide: NX_DOCS_LOGO_PATH, useValue: LOGO_PATH },
         { provide: NXV_MANIFEST_TOKEN, useValue: MANIFEST },
-        { provide: NX_DOC_VERSIONS, useValue: VERSIONS },
-        {
-            provide: NX_DOCS_SELECTABLE_THEMES,
-            useValue: [
-                { name: 'docs-dark', displayName: 'Default', url: 'assets/aposin.css' },
-                { name: 'expert', displayName: 'Expert', url: 'assets/expert.css' },
-            ],
-        },
+        { provide: NX_DOC_VERSIONS, useValue: DOC_VERSIONS },
+        { provide: NX_DOCS_SELECTABLE_THEMES, useValue: DOCS_THEMES },
         { provide: NX_DOCS_FEATURE_FLAGS, useValue: { themeSwitcher: true } },
         { provide: NX_DOCS_GITHUB_LINK, useValue: GITHUB_REPO_LINK },
         { provide: BaseLazyLoadingService, useExisting: LazyLoadingService },

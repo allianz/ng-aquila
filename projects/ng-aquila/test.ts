@@ -1,33 +1,12 @@
-// This file is required by karma.conf.js and loads recursively all the .spec and framework files
-
-import 'core-js/es';
-import 'zone.js';
-import 'zone.js/testing';
-
 import { getTestBed } from '@angular/core/testing';
 import { ɵDomSharedStylesHost } from '@angular/platform-browser';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import axe from 'axe-core';
 
-declare const require: {
-    context(
-        path: string,
-        deep?: boolean,
-        filter?: RegExp,
-    ): {
-        keys(): string[];
-        <T>(id: string): T;
-    };
-};
-
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting(), {
     teardown: { destroyAfterEach: false },
 });
-// Then we find all the tests.
-const context = require.context('./src/', true, /\.\/(?!schematics)[^\n\r/\u2028\u2029]*\/.*\.spec\.ts$/);
-// And load the modules.
-context.keys().map(context);
 
 /**
  * https://github.com/angular/angular/issues/31834
@@ -35,6 +14,8 @@ context.keys().map(context);
  * resulting in hundreds to thousands of style nodes in the DOM.
  * (around 4000 at the time of writing)
  * That's a quick workaround until this is fixed in the framework
+ *
+ * Benefit: significant speed increase (around 60% faster at the time of writing)
  */
 afterEach(() => {
     getTestBed().inject(ɵDomSharedStylesHost).ngOnDestroy();

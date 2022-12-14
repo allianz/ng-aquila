@@ -13,7 +13,6 @@ import {
     propertyNames,
     symbolRemoval,
 } from './data';
-import { MiscTemplateMigration } from './migrations/misc-template';
 
 /** Upgrade data that will be used for the Angular Material ng-update schematic. */
 export const upgradeData: UpgradeData = {
@@ -29,11 +28,8 @@ export const upgradeData: UpgradeData = {
     symbolRemoval,
 };
 
-const customMigrations: any = [MiscTemplateMigration];
-
-/** Entry point for the migration schematics with target of Angular CDK 11.0.0 */
-export function updateToV11(): Rule {
-    return createMigrationSchematicRule(TargetVersion.V11, customMigrations, upgradeData, v11MarginsWarning);
+export default function (): Rule {
+    return createMigrationSchematicRule(TargetVersion.V15, [], upgradeData, onMigrationComplete);
 }
 
 /** Function that will be called when the migration completed. */
@@ -47,18 +43,4 @@ function onMigrationComplete(context: SchematicContext, targetVersion: TargetVer
             '  ⚠  Some issues were detected but could not be fixed automatically. Please check the output above and fix these issues manually.',
         );
     }
-}
-
-function v11MarginsWarning(context: SchematicContext, targetVersion: TargetVersion, hasFailures: boolean) {
-    // call the generic complete function for all schematics
-    onMigrationComplete(context, targetVersion, hasFailures);
-
-    // this major we want to throw this additional warning
-    context.logger.warn(
-        `
-    ⚠ In ng-aquila v11 some components got their default outer margins removed please check your applications for visual changes.
-    You can find more details at:
-    https://allianz.github.io/ng-aquila/guides/releases
-    `,
-    );
 }
