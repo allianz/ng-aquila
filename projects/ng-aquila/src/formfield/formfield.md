@@ -81,6 +81,12 @@ Errors are shown once the textfield is touched. This textfield was programatical
 
 <!-- example(formfield-error) -->
 
+#### Two column alignment
+
+Vertical alignment of formfields, including errors and hints, with help of a two column grid.
+
+<!-- example(formfield-error-two-column) -->
+
 #### Multiple Errors
 
 You can also show different errors on one input field according to the particular error occurring in the form as shown in the example below.
