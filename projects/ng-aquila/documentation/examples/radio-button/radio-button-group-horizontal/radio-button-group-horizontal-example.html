@@ -1,9 +1,37 @@
-<nx-radio-group name="myGroup">
+<nx-radio-group name="myGroup" #group>
     <nx-label class="nx-margin-bottom-m">This is a nx-radio-group</nx-label>
-    <div class="horizontal-buttons">
-        <nx-radio nxValue="1" class="nx-margin-bottom-m">Select 1</nx-radio>
-        <nx-radio nxValue="2" class="nx-margin-left-s nx-margin-bottom-m"
-            >Select 2</nx-radio
-        >
+    <div nxRow>
+        <div nxCol="12,6,4,3">
+            <nx-radio nxValue="1" class="nx-margin-bottom-s">
+                Radio 1
+            </nx-radio>
+        </div>
+        <div nxCol="12,6,4,3">
+            <nx-radio nxValue="2" class="nx-margin-bottom-s">
+                Radio 2
+            </nx-radio>
+        </div>
+        <div nxCol="12,6,4,3">
+            <nx-radio nxValue="3" class="nx-margin-bottom-s">
+                Radio 3
+            </nx-radio>
+        </div>
+        <div nxCol="12,6,4,3">
+            <nx-radio nxValue="4" class="nx-margin-bottom-s">
+                Radio 4
+            </nx-radio>
+        </div>
+        <div nxCol="12,6,4,3">
+            <nx-radio nxValue="5" class="nx-margin-bottom-s">
+                Radio 5
+            </nx-radio>
+        </div>
+        <div nxCol="12,6,4,3">
+            <nx-radio nxValue="6" class="nx-margin-bottom-s">
+                Radio 6
+            </nx-radio>
+        </div>
     </div>
 </nx-radio-group>
+
+<pre class="nx-margin-top-s">selected value: {{ group.value }}</pre>
