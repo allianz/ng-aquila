@@ -25,7 +25,6 @@ const TEMPLATE_FILES = [
     'package.json',
     'tsconfig.json',
     'tsconfig.app.json',
-    'tsconfig.spec.json',
 ];
 
 const ASSETS_BASE_PATH = 'https://allianz.github.io/ng-aquila/';
