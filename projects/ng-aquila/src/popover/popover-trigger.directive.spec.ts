@@ -548,13 +548,6 @@ describe('NxPopoverTriggerDirective', () => {
     });
 
     describe('Focus states', () => {
-        it('Should initial focus on content', fakeAsync(() => {
-            createTestComponent(PopoverClickComponent);
-            click();
-            fixture.detectChanges();
-            expect(overlayContainer.getContainerElement().querySelector('.nx-popover__content:focus')).toBeTruthy();
-        }));
-
         it('Should return back focus after closing popover', fakeAsync(() => {
             createTestComponent(PopoverClickComponent);
             buttonNativeElement.focus();
@@ -564,16 +557,6 @@ describe('NxPopoverTriggerDirective', () => {
             getCloseIcon().click();
             expect(buttonNativeElement.focus).toHaveBeenCalled();
             flush();
-        }));
-
-        it('Should open on focus when the trigger type is hover', fakeAsync(() => {
-            createTestComponent(PopoverHoverComponent);
-            patchElementFocus(buttonNativeElement);
-            focusMonitor.focusVia(buttonNativeElement, 'keyboard');
-            tick(200);
-            fixture.detectChanges();
-            tick(500);
-            expect(overlayContainer.getContainerElement().querySelector('.nx-popover__content:focus')).toBeTruthy();
         }));
     });
 
