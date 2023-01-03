@@ -1,4 +1,5 @@
 const { execSync } = require('child_process');
+const path = require('path');
 const fs = require('fs-extra');
 const { promisify } = require('util');
 const rimraf = promisify(require('rimraf'));
@@ -48,6 +49,20 @@ console.log('  Building utility css');
 ['utilities', 'normalize', 'compatibility'].forEach(file => {
     execSync(`sass --no-source-map projects/ng-aquila/src/shared-styles/${file}.scss dist/ng-aquila/css/${file}.css`, { stdio: 'inherit' });
 });
+try {
+    fs.readdirSync(path.join(__dirname, '../projects/ng-aquila/src/shared-styles/compatibility'), {})
+        .map(file => file.replace('.scss', ''))
+        .forEach(file => {
+            execSync(`sass --no-source-map projects/ng-aquila/src/shared-styles/compatibility/${file}.scss dist/ng-aquila/css/compatibility/${file}.css`, {
+                stdio: 'inherit',
+            });
+        });
+} catch (e) {
+    // suppress error if the optional compatibility folder does not exist
+    if (e.code !== 'ENOENT') {
+        console.error(e);
+    }
+}
 
 console.log('============================');
 console.log('  Building schematics');
