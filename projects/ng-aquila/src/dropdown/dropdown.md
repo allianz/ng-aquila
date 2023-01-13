@@ -58,6 +58,8 @@ See below for an example of a dropdown with negative styling wrapped by a formfi
 
 It might be necessary for your use case to group the items inside of a dropdown. This is how it's done:
 
+⚠️ Every item should have a unique value, regardless of which group it belongs to.
+
 <!-- example(dropdown-group) -->
 
 ### Filter dropdown
