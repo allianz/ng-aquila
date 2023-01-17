@@ -73,7 +73,7 @@ $dropdown-border-size: nx-border-size(xs);
         ::ng-deep .nx-dropdown-results__group-label {
             @include type-style(formfield-outline-label);
             font-style: normal;
-            font-weight: nx-font-weight(bold);
+            font-weight: nx-font-weight(light);
         }
 
         ::ng-deep nx-dropdown-item {
