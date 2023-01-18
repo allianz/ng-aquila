@@ -30,6 +30,14 @@ Most of the native input field types are supported. You are not allowed to use n
 
 <!-- example(input) -->
 
+### Expert: Appearance
+
+With `appearance="expert"` you can change the styling of the card to expert.
+
+Please note that this is an **Expert option**. This means that it is only intended for internal applications and not for applications that are client facing.
+
+<!-- example(formfield-appearance) -->
+
 ### Input Mode
 
 Make sure to use the native `inputmode` HTML attribute to take advantage of the users' devices virtual keyboards with the right configuration.

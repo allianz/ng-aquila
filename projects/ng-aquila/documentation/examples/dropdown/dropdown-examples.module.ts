@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
+import { NxErrorModule } from '@aposin/ng-aquila/base';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { DropdownCustomLabelExampleComponent } from './dropdown-custom-label/dropdown-custom-label-example';
@@ -44,7 +46,13 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxDropdownModule, NxFormfieldModule, ExamplesSharedModule],
+    imports: [
+        NxDropdownModule,
+        NxFormfieldModule,
+        ExamplesSharedModule,
+        NxIconModule,
+        NxErrorModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
