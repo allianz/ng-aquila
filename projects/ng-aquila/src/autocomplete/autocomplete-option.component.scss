@@ -41,17 +41,18 @@
             color: v(dropdown-item-hover-color);
         }
 
-        @media screen and (-ms-high-contrast: active) {
+        @media screen and (forced-colors: active) {
             .nx-autocomplete-option__label {
                 color: highlightText;
                 background-color: highlight;
                 border-radius: nx-border-radius(s);
+                forced-color-adjust: none;
             }
         }
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host(.nx-disabled) {
         .nx-autocomplete-option__label {
             color: GrayText;

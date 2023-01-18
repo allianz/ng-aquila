@@ -36,7 +36,7 @@ $max-height: 280px;
         }
     }
 
-    @media screen and (-ms-high-contrast: active) {
-        box-shadow: 0 0 0 nx-border-size(xs) windowText;
+    @media screen and (forced-colors: active) {
+        box-shadow: 0 0 0 nx-border-size(xs) CanvasText;
     }
 }

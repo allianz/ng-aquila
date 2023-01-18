@@ -306,7 +306,7 @@ $check-icon-size: nx-spacer(2m);
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host {
         forced-color-adjust: none;
 
@@ -326,8 +326,8 @@ $check-icon-size: nx-spacer(2m);
         &.is-flipped {
             .nx-toggle-circle__icon-wrapper {
                 background: highlight !important;
-                border-color: highlight !important;
-                color: highlightText !important;
+                border-color: highlightText !important;
+                forced-color-adjust: none;
             }
         }
 
@@ -336,7 +336,7 @@ $check-icon-size: nx-spacer(2m);
 
             .nx-toggle-circle__icon-wrapper,
             .nx-toggle-circle__check-icon {
-                background: window !important;
+                background: Canvas !important;
                 border-color: GrayText !important;
                 color: GrayText !important;
             }

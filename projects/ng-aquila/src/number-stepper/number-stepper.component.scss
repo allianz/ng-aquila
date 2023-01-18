@@ -177,7 +177,7 @@ $margin-default: nx-spacer(s);
 }
 
 // high contrast fix
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     button.nx-stepper__control:disabled {
         border-color: GrayText;
         color: GrayText;
@@ -197,8 +197,8 @@ $margin-default: nx-spacer(s);
     ::ng-deep .nx-stepper__suffix,
     :host.nx-stepper--big ::ng-deep .nx-stepper__prefix,
     :host.nx-stepper--big ::ng-deep .nx-stepper__suffix {
-        -ms-high-contrast-adjust: none;
-        color: windowText;
+        forced-colors-adjust: none;
+        color: CanvasText;
     }
 
     .nx-stepper__inner-wrapper {

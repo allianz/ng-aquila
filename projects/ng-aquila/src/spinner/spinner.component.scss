@@ -99,11 +99,11 @@ $edge-margin: 4%;
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host,
     :host.nx-spinner--negative {
         .nx-spinner__spin-block {
-            border-color: window highlight highlight highlight;
+            border-color: Canvas highlight highlight highlight;
         }
     }
 }

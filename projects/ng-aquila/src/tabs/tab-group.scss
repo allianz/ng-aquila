@@ -97,7 +97,7 @@
             color: v(tab-item-active-color);
         }
 
-        @media screen and (-ms-high-contrast: active) {
+        @media screen and (forced-colors: active) {
             color: buttonText;
         }
     }
@@ -165,20 +165,13 @@
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host(.is-negative) {
         color: buttonText;
 
         .nx-tab-header__item {
             color: buttonText;
             border-bottom-color: buttonText;
-        }
-
-        .nx-tab-header__item--active {
-            background-color: highlight;
-            color: highlightText;
-            border-color: highlight;
-            -ms-high-contrast-adjust: none;
         }
     }
 

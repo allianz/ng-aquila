@@ -97,8 +97,8 @@ $dot-border-radius: 50%;
             transform: translateX(50%);
         }
 
-        @media screen and (-ms-high-contrast: active) {
-            background-color: windowText !important;
+        @media screen and (forced-colors: active) {
+            background-color: CanvasText !important;
         }
     }
 }
@@ -153,8 +153,8 @@ $dot-border-radius: 50%;
             left: auto;
         }
 
-        @media screen and (-ms-high-contrast: active) {
-            border: nx-border-size(xs) solid windowText;
+        @media screen and (forced-colors: active) {
+            border: nx-border-size(xs) solid CanvasText;
             border-radius: 50%;
         }
     }
@@ -174,8 +174,8 @@ $dot-border-radius: 50%;
             left: auto;
         }
 
-        @media screen and (-ms-high-contrast: active) {
-            color: windowText;
+        @media screen and (forced-colors: active) {
+            color: CanvasText;
         }
     }
 }

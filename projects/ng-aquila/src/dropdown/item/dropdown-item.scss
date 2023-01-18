@@ -93,7 +93,7 @@ nx-checkbox {
     .nx-dropdown-results__option .nx-dropdown-results__option-label {
         box-shadow: none;
 
-        @media screen and (-ms-high-contrast: active) {
+        @media screen and (forced-colors: active) {
             box-shadow: none;
         }
     }
@@ -132,18 +132,19 @@ nx-checkbox {
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host:hover:not(.nx-dropdown-item--disabled),
     :host(.nx-dropdown-item--active):not(.nx-multiselect) {
         .nx-dropdown-results__option-label {
             color: highlightText;
             background-color: highlight;
+            forced-color-adjust: none;
         }
     }
 
     :host(.nx-dropdown-item--active):not(.nx-multiselect) {
         .nx-dropdown-results__option-checkicon {
-            -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
             color: highlightText;
             background: highlight;
             z-index: 1;

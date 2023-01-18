@@ -12,8 +12,8 @@
         line-height: v(base-error-simple-line-height);
         margin-right: nx-spacer(2xs);
 
-        @media screen and (-ms-high-contrast: active) {
-            color: windowText;
+        @media screen and (forced-colors: active) {
+            color: CanvasText;
         }
     }
 

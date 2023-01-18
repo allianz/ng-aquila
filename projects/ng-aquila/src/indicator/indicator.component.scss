@@ -23,10 +23,10 @@
         min-width: 16px;
     }
 
-    @media screen and (-ms-high-contrast: active) {
-        border: nx-border-size(xs) solid windowText;
-        color: windowText;
-        background-color: window;
+    @media screen and (forced-colors: active) {
+        border: nx-border-size(xs) solid CanvasText;
+        color: CanvasText;
+        background-color: Canvas;
     }
 
     &.nx-indicator--over-text {

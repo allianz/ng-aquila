@@ -8,8 +8,8 @@
         outline: none;
     }
 
-    @media screen and (-ms-high-contrast: active) {
-        border: 1px solid windowText;
-        background: window;
+    @media screen and (forced-colors: active) {
+        border: 1px solid CanvasText;
+        background: Canvas;
     }
 }

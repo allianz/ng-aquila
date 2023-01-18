@@ -144,7 +144,7 @@ input[type='number'],
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     .nx-code-input__field {
         box-shadow: inset $default-box-shadow buttonText;
 

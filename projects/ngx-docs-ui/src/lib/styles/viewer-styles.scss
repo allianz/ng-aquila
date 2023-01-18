@@ -227,8 +227,8 @@ a {
     margin-bottom: 16px;
     width: 100%;
 
-    @media screen and (-ms-high-contrast: active) {
-        border: 1px solid windowText;
+    @media screen and (forced-colors: active) {
+        border: 1px solid CanvasText;
     }
 }
 
@@ -467,10 +467,10 @@ a {
         }
     }
 
-    @media screen and (-ms-high-contrast: active) {
+    @media screen and (forced-colors: active) {
         background-color: highlight;
         color: highlightText;
-        -ms-high-contrast-adjust: none;
+        forced-color-adjust: none;
     }
 }
 

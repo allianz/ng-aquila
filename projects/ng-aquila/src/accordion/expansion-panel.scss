@@ -125,9 +125,9 @@
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host {
-        border-color: windowText;
+        border-color: CanvasText;
 
         ::ng-deep .nx-expansion-panel__header-content {
             color: buttonText;
@@ -144,12 +144,12 @@
         &.nx-expansion-panel--light.nx-expansion-panel--negative,
         &.nx-expansion-panel--light:not(.nx-expansion-panel--negative) {
             ::ng-deep .nx-expansion-panel__header-content {
-                box-shadow: inset 0 1px 0 0 windowText;
+                box-shadow: inset 0 1px 0 0 CanvasText;
             }
 
             &:last-child,
             &:only-child {
-                box-shadow: 0 1px 0 0 windowText; // IE11
+                box-shadow: 0 1px 0 0 CanvasText; // IE11
                 border-bottom: 1px solid CanvasText; // Chromium Edge
             }
         }

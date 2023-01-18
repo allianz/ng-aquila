@@ -59,13 +59,13 @@ $tooltip-arrow-offset: -$tooltip-arrow-size * 0.5;
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     .nx-tooltip__arrow {
-        border: nx-border-size(xs) solid windowText;
+        border: nx-border-size(xs) solid CanvasText;
     }
 
     .nx-tooltip {
-        border: nx-border-size(xs) solid windowText;
+        border: nx-border-size(xs) solid CanvasText;
         border-radius: nx-border-radius(s);
     }
 }

@@ -180,7 +180,7 @@ $radio-border-radius: 50%;
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host {
         .nx-radio__label {
             color: buttonText !important;

@@ -84,12 +84,12 @@ $counter-circle-size: nx-spacer(m);
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     .nx-subprogress__counter {
-        -ms-high-contrast-adjust: none;
+        forced-colors-adjust: none;
         background-color: transparent;
-        color: windowText;
-        border: nx-border-size(xs) solid windowText;
+        color: CanvasText;
+        border: nx-border-size(xs) solid CanvasText;
         border-radius: 50%;
     }
 

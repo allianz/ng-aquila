@@ -133,7 +133,7 @@
     a.nx-tab-link:not(.is-disabled):not(.is-active) {
         color: v(tab-expert-color);
 
-        @media screen and (-ms-high-contrast: active) {
+        @media screen and (forced-colors: active) {
             color: buttonText;
         }
     }
@@ -156,11 +156,12 @@
         border-color: v(tab-item-disabled-negative-color);
     }
 
-    @media screen and (-ms-high-contrast: active) {
+    @media screen and (forced-colors: active) {
         ::ng-deep a.nx-tab-link.is-active {
             background-color: highlight;
             color: highlightText;
             border-color: windowFrame;
+            forced-color-adjust: none;
         }
     }
 }
@@ -202,7 +203,7 @@
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host(.is-negative) {
         color: buttonText;
 
@@ -213,7 +214,7 @@
 
         ::ng-deep a.nx-tab-link.is-active {
             background-color: highlight;
-            color: highlightText;
+            color: highlight;
             border-color: highlight;
         }
 

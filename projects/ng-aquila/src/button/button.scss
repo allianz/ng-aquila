@@ -301,7 +301,7 @@
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host {
         forced-color-adjust: none;
         background-color: buttonFace !important;
@@ -309,7 +309,7 @@
         color: buttonText !important;
 
         .nx-button__content-wrapper {
-            -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
         }
 
         &[disabled] {

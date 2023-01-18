@@ -174,7 +174,7 @@
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host::ng-deep a[disabled],
     :host::ng-deep a[aria-disabled] {
         color: GrayText !important;

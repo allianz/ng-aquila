@@ -117,9 +117,9 @@
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host {
-        border: 2px solid windowText;
+        border: 2px solid CanvasText;
     }
 
     :host.is-button {

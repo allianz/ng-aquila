@@ -30,7 +30,7 @@ $icon-outline-size-xl: 160px;
         height: 1em;
     }
 
-    @media screen and (-ms-high-contrast: active) {
+    @media screen and (forced-colors: active) {
         color: inherit !important;
     }
 }

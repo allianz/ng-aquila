@@ -23,8 +23,8 @@ $header-link-border-width: nx-border-size(xl);
     justify-content: space-between;
     background: v(header-background-color);
 
-    @media screen and (-ms-high-contrast: active) {
-        background-color: window;
+    @media screen and (forced-colors: active) {
+        background-color: Canvas;
     }
 }
 
@@ -70,7 +70,7 @@ $header-link-border-width: nx-border-size(xl);
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     ::ng-deep .nx-header__link {
         border-bottom: none;
 

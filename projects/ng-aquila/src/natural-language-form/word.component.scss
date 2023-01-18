@@ -169,7 +169,7 @@ $border-size: nx-border-size(m);
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     .nx-word__inner-wrapper,
     ::ng-deep nx-dropdown {
         border-bottom-color: buttonText !important;

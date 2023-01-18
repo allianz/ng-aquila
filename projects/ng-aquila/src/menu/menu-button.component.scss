@@ -99,12 +99,12 @@
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host,
     :host.is-expanded,
     :host.nx-menu-button--nested,
     :host.nx-menu-button--nested.is-expanded {
-        -ms-high-contrast-adjust: none;
+        forced-color-adjust: none;
         color: buttonText;
         background-color: buttonFace;
     }
@@ -113,6 +113,6 @@
     :host.nx-menu-button--nested.is-expanded:hover {
         background-color: highlight;
         color: highlightText;
-        border-bottom-color: windowText;
+        border-bottom-color: CanvasText;
     }
 }

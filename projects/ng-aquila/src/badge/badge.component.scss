@@ -7,8 +7,8 @@
     border-radius: nx-border-radius(s) * 3;
     min-width: nx-spacer(m);
 
-    @media screen and (-ms-high-contrast: active) {
-        border: nx-border-size(xs) solid windowText;
+    @media screen and (forced-colors: active) {
+        border: nx-border-size(xs) solid CanvasText;
     }
 }
 

@@ -12,7 +12,7 @@
     nx-icon {
         color: v(sidepanel-close-icon-color);
 
-        @media screen and (-ms-high-contrast: active) {
+        @media screen and (forced-colors: active) {
             color: buttonText;
         }
     }

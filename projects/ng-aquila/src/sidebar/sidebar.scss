@@ -92,8 +92,8 @@ $sidebar-width: 280px;
         font-weight: $font-weight-semibold;
         color: inherit;
 
-        @media screen and (-ms-high-contrast: active) {
-            -ms-high-contrast-adjust: none;
+        @media screen and (forced-colors: active) {
+            forced-colors-adjust: none;
             color: buttonText;
             background-color: buttonFace;
             box-shadow: 0 0 0 6px buttonFace, 0 0 0 nx-spacer(2xs) buttonText;
@@ -127,12 +127,12 @@ $sidebar-width: 280px;
     flex-direction: column;
     background: v(sidebar-background-color);
 
-    @media screen and (-ms-high-contrast: active) {
-        border-right: nx-border-size(xs) solid windowText;
+    @media screen and (forced-colors: active) {
+        border-right: nx-border-size(xs) solid CanvasText;
 
         :host-context([dir='rtl']) & {
             border-right: none;
-            border-left: nx-border-size(xs) solid windowText;
+            border-left: nx-border-size(xs) solid CanvasText;
         }
     }
 }

@@ -41,7 +41,7 @@
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host {
         // height made bigger because it's very little in high contrast
         height: nx-spacer(2xs);

@@ -148,9 +148,9 @@ $action-bar-height: nx-spacer(2xl);
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     .nx-modal__content-wrapper,
     ::ng-deep .nx-modal__actions {
-        border: nx-border-size(m) solid windowText;
+        border: nx-border-size(m) solid CanvasText;
     }
 }

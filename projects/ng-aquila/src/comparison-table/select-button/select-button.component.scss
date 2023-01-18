@@ -17,7 +17,7 @@
             margin-left: 4px;
         }
 
-        @media screen and (-ms-high-contrast: active) {
+        @media screen and (forced-colors: active) {
             background: buttonFace;
             border: 1px solid buttonText;
             border-radius: 50%;

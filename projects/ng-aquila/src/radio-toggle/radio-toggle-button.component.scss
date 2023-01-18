@@ -273,7 +273,7 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
     z-index: 1; // otherwise the right box shadown is not shown
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host {
         forced-color-adjust: none;
     }
@@ -284,7 +284,7 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
         color: buttonText !important;
 
         .nx-radio-toggle__label {
-            -ms-high-contrast-adjust: none;
+            forced-colors-adjust: none;
         }
     }
 
@@ -298,7 +298,6 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
         &:checked + .nx-radio-toggle__label-container {
             background-color: highlight !important;
             border-color: buttonText !important;
-            color: highlightText !important;
 
             .nx-radio-toggle__label {
                 color: highlightText !important;

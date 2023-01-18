@@ -106,7 +106,7 @@
                 cursor: not-allowed;
             }
 
-            @media screen and (-ms-high-contrast: active) {
+            @media screen and (forced-colors: active) {
                 color: buttonText;
 
                 &.is-disabled {
@@ -118,7 +118,7 @@
                 }
 
                 span {
-                    -ms-high-contrast-adjust: none;
+                    forced-color-adjust: none;
                     background-color: buttonFace;
                     border-radius: 4px;
                     box-shadow: 0 0 0 2px buttonFace;

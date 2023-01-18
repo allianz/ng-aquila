@@ -63,7 +63,7 @@
     transform: translate(-50%, -50%);
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colorstive) {
     .nx-video__play-button {
         background: buttonFace;
         border: nx-border-size(xs) solid buttonText;

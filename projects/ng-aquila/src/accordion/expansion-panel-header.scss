@@ -188,13 +188,13 @@ $extra-light-header-title-margin-after: 8px;
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host {
         // needed to prevent edge from using the normal text background behind text instead
         // of button text
         // important: you have to mirror all stylesheets from the normal styles that they
         // get preferred in IE11 then
-        -ms-high-contrast-adjust: none;
+        forced-colors-adjust: none;
     }
 
     :host-context(.nx-expansion-panel--regular):not(.is-disabled),

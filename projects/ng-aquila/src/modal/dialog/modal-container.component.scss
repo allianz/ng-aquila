@@ -33,8 +33,8 @@ $action-bar-height: nx-spacer(2xl);
         padding: nx-spacer(3m) nx-spacer(2m) nx-spacer(4m) nx-spacer(2m);
     }
 
-    @media screen and (-ms-high-contrast: active) {
-        border: nx-border-size(m) solid windowText;
+    @media screen and (forced-colors: active) {
+        border: nx-border-size(m) solid CanvasText;
     }
 }
 

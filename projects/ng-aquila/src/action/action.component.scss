@@ -130,13 +130,14 @@
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host(.nx-action) {
         &.is-selected,
         &:hover {
-            -ms-high-contrast-adjust: none;
+            forced-colors-adjust: none;
             background-color: highlight;
             color: highlightText;
+            forced-color-adjust: preserve-parent-color;
             font-weight: nx-font-weight(regular);
         }
     }

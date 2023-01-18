@@ -38,12 +38,12 @@
         }
     }
 
-    @media screen and (-ms-high-contrast: active) {
-        border-left: 1px solid windowText;
+    @media screen and (forced-colors: active) {
+        border-left: 1px solid CanvasText;
 
         [dir='rtl'] & {
             border-left: none;
-            border-right: 1px solid windowText;
+            border-right: 1px solid CanvasText;
         }
     }
 }

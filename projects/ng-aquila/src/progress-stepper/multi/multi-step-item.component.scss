@@ -27,7 +27,7 @@ $vertical-line-height: nx-spacer(s);
         }
     }
 
-    @media screen and (-ms-high-contrast: active) {
+    @media screen and (forced-colors: active) {
         .dot {
             border-color: buttonText;
         }
@@ -44,7 +44,7 @@ $vertical-line-height: nx-spacer(s);
             border-color: v(multi-stepper-dot-disabled-color);
         }
 
-        @media screen and (-ms-high-contrast: active) {
+        @media screen and (forced-colors: active) {
             .label {
                 color: GrayText;
             }
@@ -96,8 +96,8 @@ $vertical-line-height: nx-spacer(s);
                 display: block;
             }
 
-            @media screen and (-ms-high-contrast: active) {
-                -ms-high-contrast-adjust: none;
+            @media screen and (forced-colors: active) {
+                forced-colors-adjust: none;
                 background-color: buttonFace;
                 border-radius: 4px;
                 box-shadow: 0 0 0 2px buttonFace;
@@ -108,7 +108,7 @@ $vertical-line-height: nx-spacer(s);
         &.is-disabled .label {
             color: v(multi-stepper-step-disabled-color);
 
-            @media screen and (-ms-high-contrast: active) {
+            @media screen and (forced-colors: active) {
                 color: GrayText;
             }
         }
@@ -117,11 +117,12 @@ $vertical-line-height: nx-spacer(s);
             // still not themed because vertical and horizontal differ (horizontal does not get bold)
             font-weight: nx-font-weight(bold);
 
-            @media screen and (-ms-high-contrast: active) {
+            @media screen and (forced-colors: active) {
                 background-color: highlight;
                 border-radius: 4px;
                 box-shadow: 0 0 0 2px highlight;
                 color: highlightText;
+                forced-color-adjust: none;
             }
         }
 
@@ -158,8 +159,8 @@ $vertical-line-height: nx-spacer(s);
                 border-left: none;
             }
 
-            @media screen and (-ms-high-contrast: active) {
-                border-color: windowText;
+            @media screen and (forced-colors: active) {
+                border-color: CanvasText;
             }
         }
 
@@ -292,7 +293,7 @@ $vertical-line-height: nx-spacer(s);
         transform: translate(50%, -50%);
     }
 
-    @media screen and (-ms-high-contrast: active) {
-        background-color: windowText;
+    @media screen and (forced-colors: active) {
+        background-color: CanvasText;
     }
 }

@@ -18,10 +18,10 @@
         padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2m);
     }
 
-    @media screen and (-ms-high-contrast: active) {
-        -ms-high-contrast-adjust: none;
+    @media screen and (forced-colors: active) {
+        forced-color-adjust: none;
         background-color: buttonFace;
-        color: buttonText;
+        color: button;
     }
 
     &:not(:disabled) {
@@ -30,7 +30,8 @@
         &.is-highlighted {
             color: v(context-menu-item-active-color);
 
-            @media screen and (-ms-high-contrast: active) {
+            @media screen and (forced-colors: active) {
+                forced-color-adjust: none;
                 background-color: highlight;
                 color: highlightText;
             }
@@ -41,7 +42,7 @@
         cursor: not-allowed;
         color: v(context-menu-item-disabled-color);
 
-        @media screen and (-ms-high-contrast: active) {
+        @media screen and (forced-colors: active) {
             color: GrayText;
         }
     }

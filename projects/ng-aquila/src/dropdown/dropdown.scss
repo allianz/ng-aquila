@@ -40,6 +40,11 @@ $dropdown-border-size: nx-border-size(xs);
 
 :host(.nx-dropdown--disabled) .nx-dropdown__container {
     cursor: not-allowed;
+    @media screen and (forced-colors: active) {
+        .nx-dropdown__icon {
+            color: GrayText !important;
+        }
+    }
 }
 
 .nx-dropdown__rendered {
@@ -197,26 +202,26 @@ $dropdown-border-size: nx-border-size(xs);
 :host(.is-readonly) {
     .nx-dropdown__icon {
         color: v(formfield-disabled-text-color);
+        @media screen and (forced-colors: active) {
+            color: GrayText !important;
+        }
     }
     .nx-dropdown__container {
         cursor: not-allowed;
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     .nx-dropdown__panel {
-        box-shadow: 0 0 0 nx-border-size(xs) windowText;
+        box-shadow: 0 0 0 nx-border-size(xs) CanvasText;
         border: 1px solid CanvasText; // Chromium Edge
     }
 
     .nx-dropdown__panel-header {
-        border-bottom: nx-border-size(xs) solid windowText;
+        border-bottom: nx-border-size(xs) solid CanvasText;
     }
 
     .nx-dropdown__filter-input {
         border-bottom-color: buttonText;
-    }
-    .nx-dropdown__icon {
-        color: GrayText !important;
     }
 }

@@ -122,7 +122,7 @@
     cursor: not-allowed;
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host {
         forced-color-adjust: none;
         background-color: buttonFace !important;
@@ -136,6 +136,7 @@
     }
 
     :host.is-flipped {
+        forced-color-adjust: none;
         background-color: highlight !important;
         color: highlightText !important;
 

@@ -537,11 +537,11 @@
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     ::ng-deep .nx-comparison-table__popular-cell,
     ::ng-deep .nx-comparison-table__mobile-popular-cell {
-        border-top: 1px solid windowText;
-        border-right: 1px solid windowText;
-        border-left: 1px solid windowText;
+        border-top: 1px solid CanvasText;
+        border-right: 1px solid CanvasText;
+        border-left: 1px solid CanvasText;
     }
 }

@@ -4,8 +4,8 @@
     border-radius: nx-border-radius(s);
     background: v(context-menu-background-color);
 
-    @media screen and (-ms-high-contrast: active) {
-        border: nx-border-size(xs) solid windowText;
+    @media screen and (forced-colors: active) {
+        border: nx-border-size(xs) solid CanvasText;
     }
 
     // Give the menu a minimum height so that the user can't
@@ -27,7 +27,7 @@
     display: flex;
     flex-direction: column;
 
-    @media screen and (-ms-high-contrast: active) {
+    @media screen and (forced-colors: active) {
         background-color: buttonFace;
     }
 }

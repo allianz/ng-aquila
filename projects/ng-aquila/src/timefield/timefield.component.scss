@@ -138,7 +138,7 @@ $selected-box-shadow: 0 -2px 0 0;
 }
 
 // high contrast
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     .nx-timefield-input__fields {
         border-bottom: 1px solid buttonText;
 

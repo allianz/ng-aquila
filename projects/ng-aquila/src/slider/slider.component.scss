@@ -233,7 +233,7 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     .nx-slider__background {
         background-color: buttonFace;
         border: nx-border-size(xs) solid buttonText;

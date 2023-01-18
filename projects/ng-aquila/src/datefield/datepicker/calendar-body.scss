@@ -37,7 +37,7 @@ $item-size: nx-spacer(3m);
     // Prevents that focus-style is "splitting up" and spreading over items
     box-shadow: 0 0 0 6px transparent;
 
-    @media screen and (-ms-high-contrast: active) {
+    @media screen and (forced-colors: active) {
         color: buttonText;
     }
 
@@ -45,8 +45,8 @@ $item-size: nx-spacer(3m);
         color: v(datefield-cell-selected-color);
         background-color: v(datefield-cell-selected-background-color);
 
-        @media screen and (-ms-high-contrast: active) {
-            -ms-high-contrast-adjust: none;
+        @media screen and (forced-colors: active) {
+            forced-color-adjust: none;
             background-color: highlight;
             color: highlightText;
         }
@@ -77,7 +77,7 @@ $item-size: nx-spacer(3m);
         color: v(datefield-cell-disabled-color);
         font-weight: nx-font-weight(regular);
 
-        @media screen and (-ms-high-contrast: active) {
+        @media screen and (forced-colors: active) {
             color: GrayText;
         }
     }
@@ -90,8 +90,8 @@ $item-size: nx-spacer(3m);
             color: v(datefield-cell-hover-color);
             background-color: v(datefield-cell-hover-background-color);
 
-            @media screen and (-ms-high-contrast: active) {
-                -ms-high-contrast-adjust: none;
+            @media screen and (forced-colors: active) {
+                forced-color-adjust: none;
                 background-color: highlight;
                 color: highlightText;
             }
@@ -142,7 +142,7 @@ $item-size: nx-spacer(3m);
     .nx-calendar-body-cell-content:not(.nx-calendar-body-selected) {
         background-color: v(datefield-cell-focused-background-color);
 
-        @media screen and (-ms-high-contrast: active) {
+        @media screen and (forced-colors: active) {
             background-color: highlight;
         }
     }
@@ -166,7 +166,7 @@ $item-size: nx-spacer(3m);
     // Prevents text being off-center on Android.
     line-height: 1;
 
-    @media screen and (-ms-high-contrast: active) {
+    @media screen and (forced-colors: active) {
         color: GrayText;
     }
 }

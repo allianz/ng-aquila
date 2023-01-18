@@ -236,7 +236,7 @@ input.cdk-keyboard-focused + label {
     @include focus-style;
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     :host,
     :host(.has-error) {
         label,

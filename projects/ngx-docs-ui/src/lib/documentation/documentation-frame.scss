@@ -171,7 +171,7 @@ nx-header-navigation ::ng-deep .nx-header__link {
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     .documentation-header__main-logo,
     .documentation-header__github-logo {
         g {

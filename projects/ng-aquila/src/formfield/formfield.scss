@@ -521,7 +521,7 @@ $outline-padding: 7px;
 }
 
 // HIGH CONTRAST
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     .nx-formfield__input-container,
   .nx-formfield.nx-formfield--negative .nx-formfield__input-container,
   // overwrite hover in chromium edge:
@@ -538,8 +538,8 @@ $outline-padding: 7px;
         }
 
         .nx-formfield__appendix {
-            border-bottom-color: window;
-            border-top-color: window;
+            border-bottom-color: Canvas;
+            border-top-color: Canvas;
         }
     }
 
@@ -552,7 +552,7 @@ $outline-padding: 7px;
         }
 
         .nx-formfield__hints {
-            color: windowText;
+            color: CanvasText;
         }
 
         &.has-outline .nx-formfield__input-container {

@@ -52,9 +52,9 @@ $border-size: nx-border-size(xs);
     }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     .nx-message__icon {
-        color: windowText;
+        color: CanvasText;
     }
 }
 
