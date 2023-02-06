@@ -58,6 +58,13 @@ To get translations for the countries you can import a different locale from the
 
 <!-- example(phone-input-i18n) -->
 
+
+## Blur/focus events
+
+Use (focusOut) to access the blur event which fires when an element has lost focus. Use (focusIn) to access the focus event, which fires when the element has received focus.
+
+<!-- example(phone-input-focus-out) -->
+
 <div class="docs-expert-container">
 
 ## Expert

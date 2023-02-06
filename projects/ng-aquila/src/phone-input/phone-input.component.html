@@ -18,6 +18,7 @@
         [class.hide]="readonly && !disabled"
         type="tel"
         (blur)="_onInputBlur()"
+        (focus)="_onInputFocus()"
         [(ngModel)]="_inputValue"
         (ngModelChange)="_onInput()"
         [attr.aria-describedby]="_describedBy"

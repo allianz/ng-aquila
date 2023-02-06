@@ -7,10 +7,12 @@ import {
     Component,
     DoCheck,
     ElementRef,
+    EventEmitter,
     Input,
     OnDestroy,
     OnInit,
     Optional,
+    Output,
     Self,
     ViewChild,
 } from '@angular/core';
@@ -39,6 +41,8 @@ let next = 0;
 })
 export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldControl<any>, OnDestroy, DoCheck, OnInit, AfterViewInit {
     @ViewChild(NxDropdownComponent, { static: true }) dropdown!: NxDropdownComponent;
+    @Output() readonly focusOut = new EventEmitter<boolean>();
+    @Output() readonly focusIn = new EventEmitter<boolean>();
 
     value: any;
 
@@ -283,6 +287,16 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     _onInputBlur() {
         this._onTouched();
         this._inputValue = this.inputFormatter(this._inputValue, this._countryCallingCode);
+
+        if (!this.disabled) {
+            this.focusOut.emit(true);
+        }
+    }
+
+    _onInputFocus() {
+        if (!this.disabled) {
+            this.focusIn.emit(true);
+        }
     }
 
     _onInput() {
