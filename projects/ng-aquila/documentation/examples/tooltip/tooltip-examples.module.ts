@@ -13,8 +13,10 @@ import { TooltipPositionsExampleComponent } from './tooltip-positions/tooltip-po
 import { TooltipProgrammaticExampleComponent } from './tooltip-programmatic/tooltip-programmatic-example';
 import { TooltipScrollStrategyProviderExampleComponent } from './tooltip-scroll-strategy-provider/tooltip-scroll-strategy-provider-example';
 import { TooltipSettingsExampleComponent } from './tooltip-settings/tooltip-settings-example';
+import { TooltipTrimTextExample } from './tooltip-trim-text/tooltip-trim-text-example';
 
 const EXAMPLES = [
+    TooltipTrimTextExample,
     TooltipBasicExampleComponent,
     TooltipDelayExampleComponent,
     TooltipDisabledExampleComponent,
@@ -39,6 +41,7 @@ const EXAMPLES = [
 export class TooltipExamplesModule {
     static components() {
         return {
+            'tooltip-trim-text': TooltipTrimTextExample,
             'tooltip-basic': TooltipBasicExampleComponent,
             'tooltip-delay': TooltipDelayExampleComponent,
             'tooltip-disabled': TooltipDisabledExampleComponent,

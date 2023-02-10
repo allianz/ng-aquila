@@ -93,3 +93,7 @@ Alternatively, the `NX_TOOLTIP_SCROLL_STRATEGY` injection token can be provided 
 ### Accessibility
 
 Elements with the `nxTooltip` will add an `aria-describedby` label that provides a reference to a visually hidden element containing the tooltip's message. This provides screenreaders the information needed to read out the tooltip's contents when the end-user focuses on the element triggering the tooltip. The element referenced via `aria-describedby` is not the tooltip itself, but instead an invisible copy of the tooltip content that is always present in the DOM.
+
+ ### Truncating text
+Truncating text with CSS and displaying the full text in a tooltip on hover.
+ <!-- example(tooltip-trim-text) -->

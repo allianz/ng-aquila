@@ -1,0 +1,6 @@
+.trim-text {
+    text-overflow: ellipsis;
+    max-width: 11ch;
+    white-space: nowrap;
+    overflow: hidden;
+}
