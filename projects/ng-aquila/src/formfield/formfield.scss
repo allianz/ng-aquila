@@ -376,6 +376,9 @@ $outline-padding: 7px;
         // Remove the transition when the input is filled
         transition: none;
     }
+    .optional {
+        font-weight: nx-font-weight(light);
+    }
 
     &.has-outline {
         .nx-formfield__label {
@@ -600,4 +603,16 @@ input:-webkit-autofill {
     input:-webkit-autofill::first-line {
         @include type-style(formfield-outline-control);
     }
+    .nx-formfield__label {
+        flex-direction: row-reverse;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .optional {
+        margin-left: nx-spacer(2xs);
+        font-weight: nx-font-weight(light);
+    }
+}
+.optional {
+    font-weight: nx-font-weight(semibold);
 }

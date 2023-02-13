@@ -17,6 +17,7 @@ import {
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
+import { Validators } from '@angular/forms';
 import { getClassNameList } from '@aposin/ng-aquila/utils';
 import { asapScheduler, merge, Subject } from 'rxjs';
 import { observeOn, startWith, takeUntil } from 'rxjs/operators';
@@ -49,6 +50,8 @@ export interface FormfieldDefaultOptions {
 
     /** Sets the default change detection trigger event. (optional) */
     updateOn?: NxFormfieldUpdateEventType;
+
+    nxOptionalLabel?: string;
 }
 
 export const FORMFIELD_DEFAULT_OPTIONS = new InjectionToken<FormfieldDefaultOptions>('FORMFIELD_DEFAULT_OPTIONS');
@@ -91,6 +94,18 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
      * In addition, the component uses input and label to properly support accessibility.
      */
     @Input('nxLabel') label?: string | null;
+
+    /**
+     * Set optional text, which will addtional show in label if a field is not mandatory.
+     */
+    @Input('nxOptionalLabel') optionalLabel? = this._defaultOptions?.nxOptionalLabel;
+    get optional() {
+        if (this._isRequired() || !this.optionalLabel) {
+            return '';
+        }
+
+        return this._isOutline() ? `( ${this.optionalLabel} )` : `${this.optionalLabel} : `;
+    }
 
     @ContentChild(NxFormfieldLabelDirective) _labelChild!: NxFormfieldLabelDirective;
     @ContentChildren(NxFormfieldHintDirective) _hintChildren!: QueryList<NxFormfieldHintDirective>;
@@ -301,5 +316,13 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
             this._syncDescribedByIds();
             this._cdr.markForCheck();
         }
+    }
+
+    _isRequired() {
+        return this._control.ngControl?.control?.hasValidator(Validators.required) || false;
+    }
+
+    _isOutline() {
+        return this.appearance === 'outline';
     }
 }

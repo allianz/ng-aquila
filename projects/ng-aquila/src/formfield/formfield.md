@@ -183,3 +183,6 @@ You could also use [default formfield settings](./documentation/formfield/overvi
 The implementation is similar to Angular Material and can be checked for reference [Angular Material - Custom Formfield Controls](https://material.angular.io/guide/creating-a-custom-form-field-control)
 
 <!-- example(formfield-custom-tel-input) -->
+
+### Showing optional label
+<!-- example(formfield-optional-label) -->
