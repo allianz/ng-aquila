@@ -23,5 +23,8 @@
     "schematics": "./schematics/collection.json",
     "ng-update": {
         "migrations": "./schematics/migrations.json"
+    },
+    "exports": {
+        "./css/": "./css/"
     }
 }
