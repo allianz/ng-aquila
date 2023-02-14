@@ -316,6 +316,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     /** Event emitted when the select panel has been toggled. */
     @Output() readonly openedChange = new EventEmitter<boolean>();
 
+    /** Event emitted when the select panel has been focus out. */
+    @Output() readonly focusOut = new EventEmitter<boolean>();
+
     /** Event emitted when the dropdown items get filtered. Returns the currently visible dropdown items. */
     @Output('filterResult') readonly filterResultChange = new EventEmitter<NxDropdownItemComponent[]>();
 
@@ -1151,6 +1154,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         if (!this.disabled && !this.panelOpen) {
             this._onTouched();
             this._cdr.markForCheck();
+            this.focusOut.emit(true);
             this.stateChanges.next();
         }
     }

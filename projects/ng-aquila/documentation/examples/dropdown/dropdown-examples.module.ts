@@ -9,6 +9,7 @@ import { DropdownCustomLabelExampleComponent } from './dropdown-custom-label/dro
 import { DropdownDisabledItemsExampleComponent } from './dropdown-disabled-items/dropdown-disabled-items-example';
 import { DropdownFilterExampleComponent } from './dropdown-filter/dropdown-filter-example';
 import { DropdownFilterCustomExampleComponent } from './dropdown-filter-custom/dropdown-filter-custom-example';
+import { DropdownFocusOutExampleComponent } from './dropdown-focus-out/dropdown-focus-out-example';
 import { DropdownGroupExampleComponent } from './dropdown-group/dropdown-group-example';
 import { DropdownLazyExampleComponent } from './dropdown-lazy/dropdown-lazy-example';
 import { DropdownMultiSelectExampleComponent } from './dropdown-multi-select/dropdown-multi-select-example';
@@ -41,6 +42,7 @@ const EXAMPLES = [
     DropdownTemplateDrivenExampleComponent,
     DropdownLazyExampleComponent,
     DropdownScrollStrategyProviderExampleComponent,
+    DropdownFocusOutExampleComponent,
     MultiSelectExampleComponent,
     MultiSelectIntlExampleComponent,
 ];
@@ -74,6 +76,7 @@ export class DropdownExamplesModule {
             'dropdown-standard': DropdownStandardExampleComponent,
             'dropdown-template-driven': DropdownTemplateDrivenExampleComponent,
             'dropdown-lazy': DropdownLazyExampleComponent,
+            'dropdown-focus-out': DropdownFocusOutExampleComponent,
             'dropdown-scroll-strategy-provider':
                 DropdownScrollStrategyProviderExampleComponent,
             'multi-select': MultiSelectExampleComponent,

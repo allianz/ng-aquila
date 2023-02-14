@@ -200,6 +200,9 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     /** Event emitted when the selected value has been changed. */
     @Output() readonly selectionChange = new EventEmitter<T[]>();
 
+    /** Event emitted when the select panel has been focus out. */
+    @Output() readonly focusOut = new EventEmitter<boolean>();
+
     /** @docs-private */
     readonly controlType: string = 'nx-multi-select';
 
@@ -446,6 +449,9 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     _onTriggerBlur() {
         this._onTouched();
+        if (!this._isOpen && !this.disabled) {
+            this.focusOut.emit(true);
+        }
     }
 
     _onFocusWithinOverlay($event: Event) {
