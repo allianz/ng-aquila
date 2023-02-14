@@ -63,12 +63,18 @@ $item-size: nx-spacer(3m);
             margin-top: 24px;
             background-color: v(datefield-controls-color);
             border-radius: 50%;
+            @media screen and (forced-colors: active) {
+                background-color: CanvasText !important;
+            }
         }
 
         &.nx-calendar-body-selected {
             color: v(datefield-cell-selected-color) !important;
             &::after {
                 background-color: v(datefield-cell-selected-color);
+                @media screen and (forced-colors: active) {
+                    background-color: Background !important;
+                }
             }
         }
     }
