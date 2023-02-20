@@ -890,7 +890,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         const valueId = this.renderedValueId;
         const labelId = this.formFieldComponent?.labelId;
         if (labelId) {
-            return `${valueId} ${labelId}`;
+            return labelId;
         }
         return valueId;
     }
@@ -972,6 +972,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         for (curIndex++; curIndex < options.length; curIndex++) {
             if (this._isSelectable(options[curIndex] as NxDropdownItemComponent, this._isLazy)) {
                 this._selectionModel.select(options[curIndex]);
+                this.liveAnnouncer.announce(options[curIndex].label || '');
                 this._propagateChanges();
                 return;
             }
@@ -984,6 +985,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         for (curIndex--; curIndex >= 0; curIndex--) {
             if (this._isSelectable(options[curIndex] as NxDropdownItemComponent, this._isLazy)) {
                 this._selectionModel.select(options[curIndex]);
+                this.liveAnnouncer.announce(options[curIndex].label || '');
                 this._propagateChanges();
                 return;
             }

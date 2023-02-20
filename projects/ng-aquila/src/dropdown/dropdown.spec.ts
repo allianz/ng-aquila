@@ -1290,14 +1290,13 @@ describe('NxDropdownComponent', () => {
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
 
-        it('sets aria-labelledby to 2 ids', () => {
+        it('sets aria-labelledby to label if formfiled label is set', () => {
             createTestComponent(SimpleDropdownComponent);
 
             const localDropdownElement = fixture.nativeElement.querySelector('nx-dropdown');
             const labelledby = localDropdownElement.attributes.getNamedItem('aria-labelledby').value.split(' ');
-            expect(labelledby).toHaveSize(2);
-            expect(labelledby[0]).toContain('nx-dropdown-rendered-');
-            expect(labelledby[1]).toContain('nx-formfield-label-');
+            expect(labelledby).toHaveSize(1);
+            expect(labelledby[0]).toContain('nx-formfield-label-');
         });
 
         it('sets aria-labelledby to 1 id if formfiled label is not set', () => {
