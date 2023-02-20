@@ -3,6 +3,8 @@ export * from './expandable/expandable-table-cell.component';
 export * from './expandable/expandable-table-row.component';
 export * from './expandable/toggle-button.component';
 export * from './header-cell.directive';
+export * from './resizing/header-resize.directive';
+export * from './resizing/table-cell-clip.directive';
 export * from './sort-header/sort.directive';
 export * from './sort-header/sort-header.component';
 export * from './sort-header/sort-header-intl';

@@ -1,3 +1,4 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxBadgeModule } from '@aposin/ng-aquila/badge';
@@ -18,6 +19,8 @@ import { NxTableModule } from '@aposin/ng-aquila/table';
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { TableExampleComponent } from './table/table-example';
 import { TableCoumnHidingExampleComponent } from './table-column-hiding/table-column-hiding-example';
+import { TableColumnReorderExample } from './table-column-reorder/table-column-reorder-example';
+import { TableColumnResizeExample } from './table-column-resize/table-column-resize-example';
 import { TableCondensedExampleComponent } from './table-condensed/table-condensed-example';
 import { TableExpandableExampleComponent } from './table-expandable/table-expandable-example';
 import { TableFilterSortPaginateExampleComponent } from './table-filter-sort-paginate/table-filter-sort-paginate-example';
@@ -29,6 +32,8 @@ import { TableStickyExampleComponent } from './table-sticky/table-sticky-example
 import { TableZebraExampleComponent } from './table-zebra/table-zebra-example';
 
 const EXAMPLES = [
+    TableColumnResizeExample,
+    TableColumnReorderExample,
     TableExampleComponent,
     TableCondensedExampleComponent,
     TableExpandableExampleComponent,
@@ -60,6 +65,7 @@ const EXAMPLES = [
         NxRadioToggleModule,
         ExamplesSharedModule,
         RouterModule,
+        DragDropModule,
     ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
@@ -67,6 +73,8 @@ const EXAMPLES = [
 export class TableExamplesModule {
     static components() {
         return {
+            'table-column-resize': TableColumnResizeExample,
+            'table-column-reorder': TableColumnReorderExample,
             table: TableExampleComponent,
             'table-condensed': TableCondensedExampleComponent,
             'table-expandable': TableExpandableExampleComponent,

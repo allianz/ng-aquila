@@ -1,0 +1,25 @@
+<table nxTable>
+    <thead>
+        <tr
+            nxTableRow
+            cdkDropList
+            (cdkDropListDropped)="drop($event)"
+            cdkDropListOrientation="horizontal"
+        >
+            <th
+                *ngFor="let h of header; let i = index"
+                nxHeaderCell
+                cdkDrag
+                cdkDragLockAxis="x"
+                class="col"
+            >
+                {{h.title}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr nxTableRow *ngFor="let item of content">
+            <td nxTableCell *ngFor="let h of header">{{item[h.field]}}</td>
+        </tr>
+    </tbody>
+</table>

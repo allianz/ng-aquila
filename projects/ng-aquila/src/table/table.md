@@ -40,6 +40,16 @@ Application developers can implement custom column behavior, such as column hidi
 
 <!-- example(table-column-hiding) -->
 
+ ### Column reorder with drag & drop
+ To allow users to reorder columns by drag and drop, you can use [CDKdrag](https://material.angular.io/cdk/drag-drop) from the Angular Material CDK library. To get started, you need to import `DragDropModule` from `@angular/cdk/drag-drop` and add the cdkDrag directive. Here's a simple example:
+ <!-- example(table-column-reorder) -->
+
+ ### Column resize
+ To let users adjust the width of a column in your table, you can add a resize handler in column header by using `nxHeaderResize` directive into `nxHeaderCell` element.
+
+Additionally, if you need to truncate text when the column is resized and the content overflows, you can use the `nxTableCellClip` directive.
+ <!-- example(table-column-resize) -->
+
 ### Sorting header
 
 This example shows how you can implement a basic sorting functionality for a table with `nxSort` and `nxSortHeaderCell`. As we don't know how your data looks like, you can implement the actual sorting function by yourself and call the function every time an `(sortChange)` event is outputted.
