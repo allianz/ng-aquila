@@ -86,20 +86,27 @@ function addStarterApp(options: Schema): Rule {
 }
 
 function addAposinTheme(options: Schema): Rule {
+    const themeToAdd = options.type === 'b2b' ? 'expert.css' : 'aposin.css';
+
+    return chain([
+        addAposinStyles(options, `css/normalize.css`),
+        addAposinStyles(options, `css/utilities.css`),
+        addAposinStyles(options, `themes/${themeToAdd}`),
+    ]);
+}
+
+function addAposinStyles(options: Schema, path: string): Rule {
     return updateWorkspace(workspace => {
         const project = getProjectFromWorkspace(workspace, options.project);
-        const newFilePath = 'node_modules/@aposin/ng-aquila/css/normalize.css';
-
         const buildOptions = getProjectTargetOptions(project, 'build');
         let styles = buildOptions.styles as unknown[] | undefined;
-        if (!styles) {
-            styles = [newFilePath];
-        } else if (!styles.includes(newFilePath)) {
-            styles.push(newFilePath);
-        }
+        const imagePath = `node_modules/@aposin/ng-aquila/${path}`;
 
-        const themeToAdd = options.type === 'b2b' ? 'expert.css' : 'aposin.css';
-        styles.push(`node_modules/@aposin/ng-aquila/themes/${themeToAdd}`);
+        if (!styles) {
+            styles = [imagePath];
+        } else if (!styles.includes(imagePath)) {
+            styles.push(imagePath);
+        }
     });
 }
 
