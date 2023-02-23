@@ -70,3 +70,6 @@
 <p class="docs-markdown--p">Alternatively, the <code>NX_TOOLTIP_SCROLL_STRATEGY</code> injection token can be provided by importing <code>NxScrollStrategyModule.withConfig({ ... })</code> into your application or feature module, after your other aquila imports.</p>
 <h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">Elements with the <code>nxTooltip</code> will add an <code>aria-describedby</code> label that provides a reference to a visually hidden element containing the tooltip's message. This provides screenreaders the information needed to read out the tooltip's contents when the end-user focuses on the element triggering the tooltip. The element referenced via <code>aria-describedby</code> is not the tooltip itself, but instead an invisible copy of the tooltip content that is always present in the DOM.</p>
+<h3 id="truncating-text" tabindex="-1" class="docs-markdown--h3">Truncating text</h3>
+<p class="docs-markdown--p">Truncating text with CSS and displaying the full text in a tooltip on hover.</p>
+ <div nx-docs-example="tooltip-trim-text" config="{}">exampleID: tooltip-trim-text</div>

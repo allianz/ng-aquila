@@ -28,6 +28,7 @@ import { FormfieldMultipleErrorsExampleComponent } from './formfield-multiple-er
 import { FormfieldNegativeExampleComponent } from './formfield-negative/formfield-negative-example';
 import { FormfieldNoteExampleComponent } from './formfield-note/formfield-note-example';
 import { FormfieldNoteAndErrorExampleComponent } from './formfield-note-and-error/formfield-note-and-error-example';
+import { FormfieldOptionalLabelExampleComponent } from './formfield-optional-label/formfield-optional-label-example';
 import { FormfieldPasswordVisibilityExampleComponent } from './formfield-password-visibility/formfield-password-visibility-example';
 import { FormfieldPlaceholderExampleComponent } from './formfield-placeholder/formfield-placeholder-example';
 import { FormfieldPrefixSuffixAppendixExampleComponent } from './formfield-prefix-suffix-appendix/formfield-prefix-suffix-appendix-example';
@@ -55,6 +56,7 @@ const EXAMPLES = [
     FormfieldPrefixSuffixAppendixExampleComponent,
     FormfieldSimpleFormExampleComponent,
     FormfieldChangedetectionExampleComponent,
+    FormfieldOptionalLabelExampleComponent,
 ];
 
 @NgModule({
@@ -103,6 +105,7 @@ export class FormfieldExamplesModule {
             'formfield-simple-form': FormfieldSimpleFormExampleComponent,
             'formfield-changedetection':
                 FormfieldChangedetectionExampleComponent,
+            'formfield-optional-label': FormfieldOptionalLabelExampleComponent,
         };
     }
 }

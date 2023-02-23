@@ -1,0 +1,48 @@
+<div class="scroll-container">
+    <table nxTable nxTableCellClip>
+        <thead>
+            <tr nxTableRow>
+                <th nxHeaderCell>
+                    Product
+                    <div nxHeaderResize></div>
+                </th>
+                <th nxHeaderCell>
+                    Contract Number
+                    <div nxHeaderResize></div>
+                </th>
+                <th nxHeaderCell>
+                    Description
+                    <div nxHeaderResize></div>
+                </th>
+                <th nxHeaderCell>
+                    Website
+                    <div nxHeaderResize></div>
+                </th>
+                <th nxHeaderCell>
+                    Ending At
+                    <div nxHeaderResize></div>
+                </th>
+                <th nxHeaderCell>
+                    Status
+                    <div nxHeaderResize></div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr nxTableRow *ngFor="let item of tableElements">
+                <td nxTableCell>{{item.product}}</td>
+                <td nxTableCell>{{item.contractNumber}}</td>
+                <td nxTableCell>{{item.desc}}</td>
+                <td nxTableCell>
+                    <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
+                </td>
+                <td nxTableCell>{{item.endingAt}}</td>
+                <td nxTableCell>
+                    <nx-badge [type]="item.status"
+                        >{{item.statusText}}</nx-badge
+                    >
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

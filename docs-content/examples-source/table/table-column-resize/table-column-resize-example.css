@@ -1,0 +1,4 @@
+.scroll-container {
+    overflow-x: auto;
+    display: block;
+}

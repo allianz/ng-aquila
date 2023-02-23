@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AfterContentInit, Component, ViewChild } from '@angular/core';
+import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
 import { FORMFIELD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/formfield';
 
 /**
@@ -15,7 +16,7 @@ import { FORMFIELD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/formfield';
         },
     ],
 })
-export class DropdownOutlineExampleComponent {
+export class DropdownOutlineExampleComponent implements AfterContentInit {
     options: string[] = [
         'BMW',
         'Audi',
@@ -44,6 +45,14 @@ export class DropdownOutlineExampleComponent {
     ];
 
     model = 'Catfish';
+    modelBlank!: '';
 
     brands: string[] = [];
+
+    @ViewChild('exampleErrorNgModel', { static: true })
+    exampleErrorNgModel!: NxDropdownComponent;
+
+    ngAfterContentInit(): void {
+        this.exampleErrorNgModel.ngControl?.control?.markAsTouched();
+    }
 }

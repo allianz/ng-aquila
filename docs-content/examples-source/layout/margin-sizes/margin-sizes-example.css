@@ -2,8 +2,8 @@
     background: var(--documentation-margin-example-background-color, #1c7997);
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen and (forced-colors: active) {
     .margin-box {
-        background-color: windowText;
+        background-color: CanvasText;
     }
 }

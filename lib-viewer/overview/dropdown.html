@@ -25,6 +25,7 @@
 <div nx-docs-example="dropdown-negative" config="{}">exampleID: dropdown-negative</div>
 <h3 id="group-dropdown" tabindex="-1" class="docs-markdown--h3">Group Dropdown</h3>
 <p class="docs-markdown--p">It might be necessary for your use case to group the items inside of a dropdown. This is how it's done:</p>
+<p class="docs-markdown--p">⚠️ Every item should have a unique value, regardless of which group it belongs to.</p>
 <div nx-docs-example="dropdown-group" config="{}">exampleID: dropdown-group</div>
 <h3 id="filter-dropdown" tabindex="-1" class="docs-markdown--h3">Filter dropdown</h3>
 <p class="docs-markdown--p">The dropdown can show an additional filter input, as demonstrated in this example:</p>
@@ -70,6 +71,9 @@
 <p class="docs-markdown--p">The provider <code>NxDropdownIntl</code> contains various strings to provide labels for display and screen readers. You have to provide a proper translation for each of your locales.</p>
 <p class="docs-markdown--p">The provider includes a <code>changes</code> subject that you can use to notify dependent components about changes of the strings during runtime.</p>
 <div nx-docs-example="multi-select-intl" config="{}">exampleID: multi-select-intl</div>
+<h3 id="focus-out" tabindex="-1" class="docs-markdown--h3">Focus out</h3>
+<p class="docs-markdown--p">A focusout event is emitted when the selected dropdown has lost focus.</p>
+<div nx-docs-example="dropdown-focus-out" config="{}">exampleID: dropdown-focus-out</div>
 <h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">The dropdown can be accessed via keyboard. If the component owns the focus, the dropdown will open when you hit ENTER. Pressing ESC while the dropdown is open will close it. To select a value while the dropdown is open, use ARROW-UP and ARROW-DOWN. You can quickly navigate to the first item with the HOME key and to the last item with the END key. Pressing the ALT key plus either the ARROW_UP or ARROW_DOWN key opens or closes the dropdown.</p>
 <p class="docs-markdown--p">In order to mimic the native <code>&lt;select&gt;</code> element accessibility, the library is using <code>aria-labelledby</code> attribute to describe the dropdown. Under the hood, html ids of the element containing the rendered dropdown value and the element containing the formfield label are passed to the <code>aria-labelledby</code>. This allows assistive technology to read out currently selected value or placeholder of the dropdown together with the label displayed on the screen. If no formfield label is present, only the dropdown value is read.</p>

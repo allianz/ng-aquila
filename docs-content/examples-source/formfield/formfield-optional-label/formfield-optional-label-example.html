@@ -1,0 +1,51 @@
+<form class="form-example" [formGroup]="formGroup">
+    <div nxLayout="grid">
+        <div nxRow>
+            <div nxCol="12,6">
+                <nx-formfield
+                    nxLabel="Number of items"
+                    nxOptionalLabel="Optional"
+                >
+                    <nx-dropdown formControlName="items">
+                        <nx-dropdown-item nxValue="1">1</nx-dropdown-item>
+                        <nx-dropdown-item nxValue="2">2</nx-dropdown-item>
+                    </nx-dropdown>
+                </nx-formfield>
+            </div>
+            <div nxCol="12,6">
+                <nx-formfield nxLabel="Last Name" nxOptionalLabel="Optional">
+                    <input nxInput formControlName="lastName" />
+                </nx-formfield>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <h3 class="nx-margin-top-xs">Expert optional label</h3>
+    <div nxLayout="grid">
+        <div nxRow>
+            <div nxCol="12,6">
+                <nx-formfield
+                    nxLabel="Number of items"
+                    appearance="outline"
+                    nxFloatLabel="always"
+                    nxOptionalLabel="optional"
+                >
+                    <nx-dropdown formControlName="items">
+                        <nx-dropdown-item nxValue="1">1</nx-dropdown-item>
+                        <nx-dropdown-item nxValue="2">2</nx-dropdown-item>
+                    </nx-dropdown>
+                </nx-formfield>
+            </div>
+            <div nxCol="12,6">
+                <nx-formfield
+                    nxLabel="Last Name"
+                    appearance="outline"
+                    nxFloatLabel="always"
+                    nxOptionalLabel="optional"
+                >
+                    <input nxInput formControlName="lastName" />
+                </nx-formfield>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,24 @@
+<span class="hljs-selector-class">.cdk-drag-preview</span> {
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+    <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-number">5px</span> -<span class="hljs-number">3px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>),
+        <span class="hljs-number">0</span> <span class="hljs-number">8px</span> <span class="hljs-number">10px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>), <span class="hljs-number">0</span> <span class="hljs-number">3px</span> <span class="hljs-number">14px</span> <span class="hljs-number">2px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>);
+}
+
+<span class="hljs-selector-class">.cdk-drag-placeholder</span> {
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.cdk-drag-animating</span> {
+    <span class="hljs-attribute">transition</span>: transform <span class="hljs-number">250ms</span> <span class="hljs-built_in">cubic-bezier</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">1</span>);
+}
+
+<span class="hljs-selector-class">.cdk-drop-list-dragging</span> <span class="hljs-selector-class">.col</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.cdk-drag-placeholder</span>) {
+    <span class="hljs-attribute">transition</span>: transform <span class="hljs-number">250ms</span> <span class="hljs-built_in">cubic-bezier</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">1</span>);
+}
+<span class="hljs-selector-class">.col</span> {
+    <span class="hljs-attribute">cursor</span>: grab;
+}
+<span class="hljs-selector-class">.scroll-container</span> {
+    <span class="hljs-attribute">overflow-x</span>: auto;
+}

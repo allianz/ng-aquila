@@ -11,6 +11,15 @@
         <p nxCopytext="small" class="nx-margin-bottom-2m">
             This content is placed within the <code>nx-modal-container</code>
         </p>
-        <button nxButton (click)="closeTemplateDialog()">Close Modal</button>
+        <div class="two-button-container">
+            <button
+                nxButton="secondary"
+                (click)="closeTemplateDialog()"
+                class="nx-margin-right-s"
+            >
+                Cancel
+            </button>
+            <button nxButton (click)="closeTemplateDialog()">Proceed</button>
+        </div>
     </div>
 </ng-template>

@@ -630,8 +630,14 @@
   --dropdown-panel-header-background-color: #27abd6;
   --dropdown-panel-text-color: var(--text-01);
   --dropdown-panel-header-text-color: var(--text-01);
+  --dropdown-group-label-color: var(--ui-05);
+  --dropdown-group-label-font-size: var(--small-label-font-size);
+  --dropdown-group-label-line-height: var(--small-label-line-height);
+  --dropdown-group-label-font-weight: 300;
+  --dropdown-group-label-letter-spacing: var(--small-label-letter-spacing);
+  --dropdown-group-label-height: 16px;
   --dropdown-group-section-background-color: var(--ui-03);
-  --dropdown-item-text-color: var(--text-01);
+  --dropdown-item-text-color: var(--ui-05);
   --dropdown-item-selected-color: var(--text-01);
   --dropdown-item-hover-color: var(--hover-primary);
   --dropdown-item-checkmark-color: var(--text-01);
