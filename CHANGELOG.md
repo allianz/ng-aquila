@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [15.1.0](https://github.com/allianz/ng-aquila/compare/v15.0.0...v15.1.0) (2023-02-20)
+
+
+### Bug Fixes
+
+* **build:** export css path ([747b314](https://github.com/allianz/ng-aquila/commit/747b314e5ee1f34a1711029b2f1e9005e0b76e41))
+* **datepicker:** fix contrast style ([86f6dd1](https://github.com/allianz/ng-aquila/commit/86f6dd13bae9341201e527cd189dd29cff2b5da0))
+* **docs:** stackblitz example template ([e28454e](https://github.com/allianz/ng-aquila/commit/e28454e49bb7cfa56ca84423e912d86169af219a))
+* **dropdown:** a11y screenreader repeat value ([0b4e176](https://github.com/allianz/ng-aquila/commit/0b4e17679e4cdf9d841c6a2ccb56a27be80452fd))
+* **dropdown:** update group styling ([4039bd5](https://github.com/allianz/ng-aquila/commit/4039bd5e2cddca9914ccfab71bbf6c52abb50e34))
+* **images:** use ngoptimizedimage  ([bf36cd9](https://github.com/allianz/ng-aquila/commit/bf36cd904badb459571b8596bd98c1eac5e7820c))
+* **modal:** changed one and two button styling ([73de432](https://github.com/allianz/ng-aquila/commit/73de43278399ec91f992ee23bc8ad9553c92eb9a))
+* **phone-input:** add support for blur and focus ([cb9b9cf](https://github.com/allianz/ng-aquila/commit/cb9b9cfce5a9e5d457c443185c93eb2d14fc1b9b))
+* **popover:** popover content should not be focusable ([84e448b](https://github.com/allianz/ng-aquila/commit/84e448bdc0413d05496d0d264dc8f8a75855a179))
+
+
+### Features
+
+* **dropdown:** provide focus out event ([eccc424](https://github.com/allianz/ng-aquila/commit/eccc4248720125d05e132d65d77e06b340988700))
+* **table:** add column reorder example and resize header directive ([35382fc](https://github.com/allianz/ng-aquila/commit/35382fc409fd778bfb196f7880796bb0f022778e))
+
+
+
 # [15.0.0](https://github.com/allianz/ng-aquila/compare/v14.2.0...v15.0.0) (2022-12-14)
 
 Aquila v15.0.0 is based on Angular 15. For updating please see our update guide: https://allianz.github.io/ng-aquila/guides/releases
