@@ -14,6 +14,8 @@ The icons are comprised of two general types: **functional** and **product icons
 
 The general functionality of the icons is provided with the `NxIconModule` of `ng-aquila`. The Allianz Icons are provided with the additional `NdbxIconModule` of `@allianz/ngx-ndbx`. To use it, import it in the `app.module.ts` or in any other module:
 
+current icon version: **2.15.0** --- from [Global Allianz Icons](https://github.developer.allianz.io/oneMarketing/allianz-icons)
+
 ```ts
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NdbxIconModule } from '@allianz/ngx-ndbx/icon';
@@ -51,7 +53,7 @@ add it to your AppModule and include the `node_modules/@fortawesome/fontawesome-
 </div>
 
 <div class="docs-private">
-⚠️ **NDBX/Aquila conflict**: please make sure **not** to import the opensource(aquila) **NxDocumentationIconModule** into NDBX projects, since it's only supposed to be used in opensource(aquila) projects and would lead to conflicts with **NdbxIconModule** 
+⚠️ **NDBX/Aquila conflict**: please make sure **not** to import the opensource(aquila) **NxDocumentationIconModule** into NDBX projects, since it's only supposed to be used in opensource(aquila) projects and would lead to conflicts with **NdbxIconModule**
 recommend to use either module and register custom font yourself if need.
 </div>
 
@@ -115,7 +117,7 @@ To use the icons shown here, please make sure to import the `NdbxIconModule` (se
 
 Custom icons can be registered via the `NxIconRegistry` injectable service. With the `NxIconRegistry` you can associate icon names with SVG, URL and HTML strings and define a CSS font class. When you are registering an icon by URL please make sure to import the `HttpClientModule` from `@angular/common/http`.
 
-💡 When registering multiple font sets, 
+💡 When registering multiple font sets,
 you can use `font` attribute to specify font set (`<nx-icon font="FONT_SET_NAME" name="ICON_NAME">`)
 
 <div class="docs-private">
