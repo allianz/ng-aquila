@@ -70,9 +70,10 @@ export class ComponentGrouper implements Processor {
             const packageName = documentInfo.packageName;
             const packageDisplayName = 'Aquila';
             const packageJsonPath = path.join(doc.basePath, packageName, './package.json');
+            const ngPackageJsonPath = path.join(doc.basePath, packageName, './ng-package.json');
 
             let moduleImportPath = '@aposin/ng-aquila';
-            if (fs.existsSync(packageJsonPath)) {
+            if (fs.existsSync(packageJsonPath) || fs.existsSync(ngPackageJsonPath)) {
                 moduleImportPath = `@aposin/ng-aquila/${packageName}`;
             }
 
