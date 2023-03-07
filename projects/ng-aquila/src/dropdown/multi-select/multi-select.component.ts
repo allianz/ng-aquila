@@ -550,7 +550,10 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
                 }
             }
         }
-        this._cdr.markForCheck();
+        setTimeout(() => {
+            this._updateTooltipText();
+            this._cdr.markForCheck();
+        });
     }
 
     registerOnChange(fn: any): void {
