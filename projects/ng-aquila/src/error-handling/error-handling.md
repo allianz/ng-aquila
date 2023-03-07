@@ -98,3 +98,22 @@ and then providing it globaly, for example in your `app.module.ts`:
 })
 export class ApplicationModule {}
 ```
+
+### Reset error state
+To reset the validation state of an Angular form, use `resetForm` from the formGroup directive instead of the formGroup instance. This method checks for the form submitted state which available via the directive.
+
+```
+<form [formGroup]="myForm" (ngSubmit)="submitForm(ngForm)" #ngForm="ngForm">
+```
+
+```
+submitForm(ngForm: FormGroupDirective): void {
+
+  // won't work!
+  // this.myForm.reset();
+
+  // resets the form to the initial values and also resets the `submitted` status.
+  ngForm.resetForm();
+}
+```
+<!-- example(error-reset) -->
