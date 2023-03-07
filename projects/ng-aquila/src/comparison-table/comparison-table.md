@@ -80,7 +80,7 @@ Multiple table rows can be grouped in a toggle section (`nxComparisonTableToggle
 
 #### Disabled table columns
 
-You can disable certain columns of the comparison table via the input `disabledColumn` on a header `nx-comparison-table-cell` as shown in the example below. Keep in mind that the `disabledColumn` attribute can be set only on header cells.
+You can disable certain columns of the comparison table via the input `disabledColumn` on a header `nx-comparison-table-cell` as shown in the example below. Keep in mind that the `disabledColumn` attribute can be set only on header cells. Note that disabling a column in the comparison table using the `disabledColumn` attribute on a header cell won't automatically disable other input fields like dropdowns, text fields, and checkboxes. You'll have to manually disable those fields using the disabled attribute.
 
 <!-- example(comparison-table-disabled-columns) -->
 

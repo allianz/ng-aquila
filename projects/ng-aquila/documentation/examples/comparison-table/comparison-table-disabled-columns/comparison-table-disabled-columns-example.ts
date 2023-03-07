@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
     templateUrl: './comparison-table-disabled-columns-example.html',
     styleUrls: ['./comparison-table-disabled-columns-example.css'],
 })
-export class ComparisonTableDisabledColumnsExampleComponent {}
+export class ComparisonTableDisabledColumnsExampleComponent {
+    disableColumn = true;
+}

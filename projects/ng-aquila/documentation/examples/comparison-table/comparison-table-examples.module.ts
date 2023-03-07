@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { NxAccordionModule } from '@aposin/ng-aquila/accordion';
+import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 import { NxComparisonTableModule } from '@aposin/ng-aquila/comparison-table';
 import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
 import { NxDataDisplayModule } from '@aposin/ng-aquila/data-display';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxListModule } from '@aposin/ng-aquila/list';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
@@ -51,6 +53,8 @@ const EXAMPLES = [
     imports: [
         NxComparisonTableModule,
         NxIconModule,
+        NxInputModule,
+        NxCheckboxModule,
         NxPopoverModule,
         NxRadioToggleModule,
         NxDropdownModule,
