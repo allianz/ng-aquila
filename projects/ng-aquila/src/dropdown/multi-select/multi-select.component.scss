@@ -89,7 +89,7 @@
 }
 
 .filter-wrapper {
-    padding: 0px 32px;
+    padding: 8px 32px 0 32px;
 }
 
 .filter {
@@ -111,11 +111,10 @@
     display: flex;
     justify-content: space-between;
     white-space: nowrap;
-    padding: 8px 32px;
+    padding: 16px 32px;
 }
-
-.clear {
-    cursor: pointer;
+.select-all {
+    border-bottom: 1px solid v(dropdown-item-divider);
 }
 
 .hidden {

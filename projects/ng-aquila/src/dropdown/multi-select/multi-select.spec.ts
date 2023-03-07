@@ -311,7 +311,7 @@ describe('NxMultiSelectComponent', () => {
 
             describe('and using "clear" button', () => {
                 beforeEach(async () => {
-                    await multiSelectHarness.clickClearAll();
+                    await multiSelectInstance._clear();
                 });
 
                 it('has no selected options', async () => {
@@ -342,7 +342,7 @@ describe('NxMultiSelectComponent', () => {
                 });
 
                 it('selected only visible option when filter', async () => {
-                    await multiSelectHarness.clickClearAll();
+                    await multiSelectHarness.clickSelectAll(); // to clear
                     await multiSelectHarness.setFilter('i');
                     await multiSelectHarness.clickSelectAll();
 
