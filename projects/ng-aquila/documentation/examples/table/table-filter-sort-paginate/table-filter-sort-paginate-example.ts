@@ -194,6 +194,7 @@ export class TableFilterSortPaginateExampleComponent {
     }
 
     onFilterValueChange(value: string) {
+        this.page = 1;
         this.filterData(value);
     }
 
