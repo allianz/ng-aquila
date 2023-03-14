@@ -10,3 +10,29 @@
 .nx-comparison-table__cell.is-hidden {
     display: none;
 }
+
+.nx-comparison-table__cell-content {
+    &.is-error {
+        border-top: 1px solid var(--danger) !important;
+        border-bottom: 1px solid var(--danger) !important;
+    }
+    &.is-error-first {
+        border-left: 1px solid var(--danger) !important;
+    }
+    &.is-error-last {
+        border-right: 1px solid var(--danger) !important;
+    }
+}
+
+.nx-comparison-table__mobile-header-cell {
+    &.is-error {
+        border-left: 1px solid var(--danger) !important;
+        border-right: 1px solid var(--danger) !important;
+    }
+    &.is-error-first {
+        border-top: 1px solid var(--danger) !important;
+    }
+    &.is-error-last {
+        border-bottom: 1px solid var(--danger) !important;
+    }
+}

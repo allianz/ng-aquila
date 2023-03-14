@@ -6,3 +6,10 @@
 td.nx-comparison-table__mobile-popular-cell.is-hidden {
     padding: 0;
 }
+
+.nx-comparison-table__mobile-popular-cell {
+    &.is-error {
+        border-left: 1px solid var(--danger) !important;
+        border-right: 1px solid var(--danger) !important;
+    }
+}

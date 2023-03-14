@@ -9,7 +9,7 @@
             [attr.id]="id"
             [attr.headers]="_getHeaderIds()"
         >
-            <div class="nx-comparison-table__cell-content">
+            <div class="nx-comparison-table__cell-content" [ngClass]="_getErrorClass()">
                 <ng-container *ngTemplateOutlet="ngContent"></ng-container>
             </div>
         </div>
@@ -23,6 +23,7 @@
             [attr.scope]="type === 'header' ? 'row' : ''"
             [attr.id]="id"
             [attr.headers]="_getHeaderIds()"
+            [ngClass]="_getErrorClass()"
         >
             <ng-container *ngTemplateOutlet="ngContent"></ng-container>
         </td>

@@ -44,6 +44,14 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     /** @docs-private */
     @ContentChildren(NxTableContentElement, { descendants: true }) elements!: QueryList<NxTableContentElement>;
 
+    @Input() set isError(error: boolean) {
+        this._isError = error;
+    }
+    get isError(): boolean {
+        return this._isError;
+    }
+    private _isError!: boolean;
+
     private readonly _scrollableArea = new CdkScrollable(this._element, this.scrollDispatch, this._ngZone);
 
     @ViewChild('headerRow') _headerRowElement!: NxComparisonTableFlexRow;

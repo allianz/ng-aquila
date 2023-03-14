@@ -24,6 +24,8 @@ export abstract class NxComparisonTableBase implements OnDestroy {
 
     protected readonly _destroyed = new Subject<void>();
 
+    abstract isError: boolean;
+
     /** Get all header cells of the table. */
     abstract _getHeaderCells(): NxComparisonTableCell[];
 

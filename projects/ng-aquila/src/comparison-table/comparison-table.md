@@ -155,3 +155,7 @@ A more neutral variant is available for expert applications.
 <!-- example(recommendation-table-expert) -->
 
 </div>
+
+ #### Error state
+You can display an error state for the header and footer of the table using the `isError` attribute as shown in the example below.
+ <!-- example(comparison-table-error) -->
