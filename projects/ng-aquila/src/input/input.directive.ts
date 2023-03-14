@@ -2,7 +2,7 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { getSupportedInputTypes, Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { Directive, DoCheck, ElementRef, Inject, InjectionToken, Input, OnChanges, OnDestroy, OnInit, Optional, Self } from '@angular/core';
-import { FormGroupDirective, NgControl, NgForm, UntypedFormControl } from '@angular/forms';
+import { FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { NxFormfieldControl, NxFormfieldUpdateEventType } from '@aposin/ng-aquila/formfield';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
@@ -259,7 +259,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     updateErrorState() {
         const oldState = this.errorState;
         const parent = this._parentFormGroup || this._parentForm;
-        const control = this.ngControl ? (this.ngControl.control as UntypedFormControl) : null;
+        const control = this.ngControl ? (this.ngControl.control as FormControl) : null;
         const newState = this._errorStateMatcher.isErrorState(control, parent);
 
         if (newState !== oldState) {

@@ -1,6 +1,6 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NxIbanMaskDirective } from './iban-mask.directive';
 import { NxMaskDirective } from './mask.directive';
@@ -12,8 +12,8 @@ abstract class IbanMaskTest {
     @ViewChild(NxMaskDirective) maskInstance!: NxMaskDirective;
     @ViewChild(NxIbanMaskDirective) ibanInstance!: NxIbanMaskDirective;
 
-    testForm: UntypedFormGroup = new UntypedFormGroup({
-        maskInput: new UntypedFormControl('', {}),
+    testForm: FormGroup = new FormGroup({
+        maskInput: new FormControl('', {}),
     });
 
     validateMask = true;
@@ -462,8 +462,8 @@ class FormIbanMaskComponent extends IbanMaskTest {}
     `,
 })
 class FormWithInitalIbanMaskComponent extends IbanMaskTest {
-    testForm: UntypedFormGroup = new UntypedFormGroup({
-        maskInput: new UntypedFormControl('NL91 ABNA 0417 1643 00', {}),
+    testForm: FormGroup = new FormGroup({
+        maskInput: new FormControl('NL91 ABNA 0417 1643 00', {}),
     });
 }
 
@@ -475,7 +475,7 @@ class FormWithInitalIbanMaskComponent extends IbanMaskTest {
     `,
 })
 class FormIbanOnBlurMaskComponent extends IbanMaskTest {
-    testForm: UntypedFormGroup = new UntypedFormGroup({
-        maskInput: new UntypedFormControl('', { updateOn: 'blur' }),
+    testForm: FormGroup = new FormGroup({
+        maskInput: new FormControl('', { updateOn: 'blur' }),
     });
 }

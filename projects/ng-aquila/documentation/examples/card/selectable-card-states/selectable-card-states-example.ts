@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import {
-    AbstractControl,
-    UntypedFormBuilder,
-    Validators,
-} from '@angular/forms';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Selectable cards states example
@@ -19,7 +15,7 @@ export class SelectableCardStatesExampleComponent {
         errorCard2: [true, validateSecondCard],
     });
 
-    constructor(private readonly fb: UntypedFormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         this.formGroup.markAllAsTouched();
     }
 }

@@ -1,6 +1,6 @@
 import { Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 
 import { NxCheckboxComponent, NxCheckboxGroupChangeEvent, NxCheckboxGroupComponent } from './checkbox.component';
@@ -12,7 +12,7 @@ abstract class CheckboxGroupTest {
     @ViewChildren(NxCheckboxComponent) checkboxInstances!: QueryList<NxCheckboxComponent>;
 
     checked = false;
-    myFormGroup!: UntypedFormGroup;
+    myFormGroup!: FormGroup;
     labelSize!: string;
     disabled = false;
     negative = false;
@@ -244,11 +244,11 @@ class BasicCheckboxGroup extends CheckboxGroupTest {}
     `,
 })
 class CheckboxGroupValidation extends CheckboxGroupTest {
-    myFormGroup!: UntypedFormGroup;
+    myFormGroup!: FormGroup;
 
     checkboxGroupCheckedValues = ['Term 2', 'Term 3'];
 
-    constructor(private readonly fb: UntypedFormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         super();
         this.createForm();
     }
@@ -272,12 +272,12 @@ class CheckboxGroupValidation extends CheckboxGroupTest {
     `,
 })
 class CheckboxGroupDynamic extends CheckboxGroupTest {
-    myFormGroup!: UntypedFormGroup;
+    myFormGroup!: FormGroup;
 
     data = ['one', 'two', 'three'];
     i = 1;
 
-    constructor(private readonly fb: UntypedFormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         super();
         this.createForm();
     }
@@ -314,9 +314,9 @@ class CheckboxGroupDynamic extends CheckboxGroupTest {
     `,
 })
 export class CheckboxGroupReactive extends CheckboxGroupTest {
-    myFormGroup: UntypedFormGroup;
+    myFormGroup: FormGroup;
 
-    constructor(private readonly fb: UntypedFormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         super();
         this.myFormGroup = this.fb.group({
             terms: [['Term 1', 'Term 2'], null],
@@ -334,11 +334,11 @@ export class CheckboxGroupReactive extends CheckboxGroupTest {
     `,
 })
 export class ConditionalCheckboxGroupReactive extends CheckboxGroupTest {
-    myFormGroup: UntypedFormGroup;
+    myFormGroup: FormGroup;
     showCheckboxes = true;
     checkboxes: string[] = ['Term 1', 'Term 2', 'Term 3'];
 
-    constructor(private readonly fb: UntypedFormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         super();
         this.myFormGroup = this.fb.group({
             checkboxes: [['Term 1', 'Term 2']],

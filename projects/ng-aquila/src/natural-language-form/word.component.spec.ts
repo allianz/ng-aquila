@@ -1,7 +1,7 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { ChangeDetectionStrategy, Component, Directive, ElementRef, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormsModule, NgControl, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
 
 import { NxNaturalLanguageFormComponent } from './natural-language-form.component';
@@ -67,7 +67,7 @@ describe('NxNaturalLanguageFormComponent', () => {
 
         it('should show an error in a popover', fakeAsync(() => {
             createTestComponent(NaturalLanguageFormBasicComponent);
-            const formControl = testInstance.inputs.first.ngControl?.control as UntypedFormControl;
+            const formControl = testInstance.inputs.first.ngControl?.control as FormControl;
             formControl.markAsTouched();
 
             fixture.detectChanges();
@@ -79,7 +79,7 @@ describe('NxNaturalLanguageFormComponent', () => {
 
         it('should dispose overlay container for word popover upon destroy', fakeAsync(() => {
             createTestComponent(NaturalLanguageFormBasicComponent);
-            const formControl = testInstance.inputs.first.ngControl?.control as UntypedFormControl;
+            const formControl = testInstance.inputs.first.ngControl?.control as FormControl;
             formControl.markAsTouched();
 
             fixture.detectChanges();
@@ -287,9 +287,9 @@ class NaturalLanguageFormSmallComponent extends NaturalLanguageFormTest {}
     `,
 })
 class FormWithPreviousFormfieldComponent extends NaturalLanguageFormTest {
-    input = new UntypedFormControl(null, Validators.required);
-    nlfInput = new UntypedFormControl(null, Validators.required);
-    form = new UntypedFormGroup({
+    input = new FormControl(null, Validators.required);
+    nlfInput = new FormControl(null, Validators.required);
+    form = new FormGroup({
         input: this.input,
         nlfInput: this.nlfInput,
     });

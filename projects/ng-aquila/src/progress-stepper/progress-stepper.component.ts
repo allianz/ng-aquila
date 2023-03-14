@@ -17,7 +17,7 @@ import {
     QueryList,
     SkipSelf,
 } from '@angular/core';
-import { FormGroupDirective, NgForm, UntypedFormControl } from '@angular/forms';
+import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil, takeWhile } from 'rxjs/operators';
@@ -53,7 +53,7 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
     readonly _destroyed = new Subject<void>();
 
     /** Custom error state matcher that checks for validity of the step form. */
-    isErrorState(control: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
         const originalErrorState = this._errorStateMatcher.isErrorState(control, form);
 
         // Checks for the validity of a step form that is not submitted or touched,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 interface MyOption {
     label: string;
@@ -86,7 +86,7 @@ export class MultiSelectExampleComponent {
 
     options: MyOption[] = getOptions();
 
-    control = new UntypedFormControl(undefined, {
+    control = new FormControl([], {
         validators: Validators.minLength(3),
     });
 

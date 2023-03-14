@@ -11,7 +11,7 @@ import {
 } from '@angular/common/http';
 import { Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NxLabelModule } from '@aposin/ng-aquila/base';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -35,7 +35,7 @@ export class UploadInterceptor implements HttpInterceptor {
 @Directive()
 abstract class FileUploaderTest {
     @ViewChild(NxFileUploaderComponent, { static: false }) fileUploaderInstance!: NxFileUploaderComponent;
-    form!: UntypedFormGroup;
+    form!: FormGroup;
     files!: null | FileItem[];
 
     uploader!: NxFileUploader;
@@ -322,12 +322,12 @@ describe('NxFileUploaderComponent', () => {
     `,
 })
 class BasicFileUpload extends FileUploaderTest {
-    fb: UntypedFormBuilder;
+    fb: FormBuilder;
 
     constructor(private readonly http: HttpClient) {
         super();
 
-        this.fb = new UntypedFormBuilder();
+        this.fb = new FormBuilder();
         this.form = this.fb.group({
             documents: [this.files],
         });

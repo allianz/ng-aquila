@@ -13,7 +13,7 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, UntypedFormControl, Validator } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
 import { MappedStyles } from '@aposin/ng-aquila/core';
 import { mapClassNames, pad } from '@aposin/ng-aquila/utils';
 import { Decimal } from 'decimal.js';
@@ -461,7 +461,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     }
 
     /** @docs-private */
-    validate(c: UntypedFormControl) {
+    validate(c: FormControl) {
         return this._validateFn();
     }
 

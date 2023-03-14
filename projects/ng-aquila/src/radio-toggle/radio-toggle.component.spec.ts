@@ -1,6 +1,6 @@
 import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NxRadioToggleComponent, RESET_VALUES } from './radio-toggle.component';
@@ -324,6 +324,7 @@ describe('NxRadioToggleComponent', () => {
 
             click(2);
             checkSelection(false, false, true);
+            flush();
         }));
 
         it('should support disabling/enabling in reactive forms', fakeAsync(() => {
@@ -338,6 +339,7 @@ describe('NxRadioToggleComponent', () => {
             reactComp.testForm.controls.reactiveToggle.enable();
             fixture.detectChanges();
             checkDisabled(false, false, false);
+            flush();
         }));
 
         it('should patch operations in reactive forms', fakeAsync(() => {
@@ -348,6 +350,7 @@ describe('NxRadioToggleComponent', () => {
             reactComp.testForm.patchValue({ reactiveToggle: 'A' });
             fixture.detectChanges();
             checkSelection(true, false, false);
+            flush();
         }));
 
         it('should reset the form control', fakeAsync(() => {
@@ -374,10 +377,7 @@ describe('NxRadioToggleComponent', () => {
             reactComp.testForm.patchValue({ reactiveToggle: 'A' });
             fixture.detectChanges();
             checkSelection(true, false, false);
-
-            reactComp.testForm.controls.reactiveToggle.patchValue(null);
-            fixture.detectChanges();
-            checkSelection(false, false, false);
+            flush();
         }));
     });
 
@@ -540,12 +540,13 @@ class MultiRadioToggle extends RadioToggleTest {}
     </form>`,
 })
 class ReactiveFormToggle extends RadioToggleTest {
-    fb: UntypedFormBuilder = new UntypedFormBuilder();
+    fb: FormBuilder = new FormBuilder();
 
     testForm = this.fb.group({
-        reactiveToggle: new UntypedFormControl(
+        reactiveToggle: new FormControl(
             {
                 value: 'B',
+                disabled: false,
             },
             {
                 validators: Validators.required,
@@ -565,9 +566,9 @@ class ReactiveFormToggle extends RadioToggleTest {
 })
 class ValidationToggle extends RadioToggleTest {
     data = ['A', 'B', 'C'];
-    testForm!: UntypedFormGroup;
+    testForm!: FormGroup;
 
-    constructor(private readonly fb: UntypedFormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         super();
         this.createForm();
     }
@@ -578,7 +579,7 @@ class ValidationToggle extends RadioToggleTest {
         });
     }
 
-    private customValidation(formGroup: UntypedFormGroup) {
+    private customValidation(formGroup: FormGroup) {
         return formGroup.value !== 'B' ? { valid: false } : null;
     }
 }

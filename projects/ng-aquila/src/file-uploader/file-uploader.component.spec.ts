@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
@@ -13,7 +13,7 @@ import { NxFileUploaderModule } from './file-uploader.module';
 abstract class FileUploaderTest {
     @ViewChild(NxFileUploaderComponent, { static: false }) fileUploaderInstance!: NxFileUploaderComponent;
 
-    form!: UntypedFormGroup;
+    form!: FormGroup;
     queueList!: null | FileItem[];
     required = false;
     multiple = false;
@@ -461,7 +461,7 @@ class BasicFileUpload extends FileUploaderTest {
     constructor() {
         super();
 
-        this.fb = new UntypedFormBuilder();
+        this.fb = new FormBuilder();
 
         this.form = this.fb.group({
             documents: [],
@@ -509,7 +509,7 @@ class ReactiveFileUpload extends FileUploaderTest {
     constructor() {
         super();
 
-        this.fb = new UntypedFormBuilder();
+        this.fb = new FormBuilder();
         this.form = this.fb.group({
             documents: [this.queueList, Validators.required],
         });

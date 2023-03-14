@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
 
 import { NxFormfieldErrorDirective } from './error.directive';
@@ -22,7 +22,7 @@ abstract class FormfieldTest {
     @ViewChild(NxFormfieldNoteDirective) formfieldNote!: NxFormfieldNoteDirective;
     @ViewChild(NxFormfieldHintDirective) formfieldHint!: NxFormfieldHintDirective;
 
-    testForm!: UntypedFormGroup;
+    testForm!: FormGroup;
     currentValue: any;
     appearance!: AppearanceType;
     floatLabel!: FloatLabelType;

@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import {
-    UntypedFormBuilder,
-    UntypedFormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 /**
  * @title Simple form example
@@ -14,10 +10,10 @@ import {
     styleUrls: ['./formfield-simple-form-example.css'],
 })
 export class FormfieldSimpleFormExampleComponent {
-    formGroup: UntypedFormGroup;
+    formGroup: FormGroup;
 
     constructor() {
-        this.formGroup = new UntypedFormBuilder().group({
+        this.formGroup = new FormBuilder().group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             items: ['', Validators.required],

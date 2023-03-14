@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 /**
  * @title Validation example
@@ -10,11 +10,11 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
     styleUrls: ['./mask-validation-example.css'],
 })
 export class MaskValidationExampleComponent {
-    validatedMaskForm: UntypedFormGroup = new UntypedFormGroup({
-        maskInput: new UntypedFormControl('', {}),
+    validatedMaskForm: FormGroup = new FormGroup({
+        maskInput: new FormControl('', {}),
     });
 
-    unvalidatedMaskForm: UntypedFormGroup = new UntypedFormGroup({
-        maskInput2: new UntypedFormControl('', {}),
+    unvalidatedMaskForm: FormGroup = new FormGroup({
+        maskInput2: new FormControl('', {}),
     });
 }

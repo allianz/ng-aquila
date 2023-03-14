@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 /**
  * @title Multiple errors example
@@ -10,7 +10,7 @@ import { UntypedFormControl, Validators } from '@angular/forms';
     styleUrls: ['./formfield-multiple-errors-example.css'],
 })
 export class FormfieldMultipleErrorsExampleComponent {
-    emailFormControl = new UntypedFormControl('', [
+    emailFormControl = new FormControl('', [
         Validators.required,
         Validators.email,
     ]);

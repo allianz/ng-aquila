@@ -1,7 +1,7 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, DebugElement, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormControl, Validators } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
@@ -366,7 +366,7 @@ class ConfigurablePhoneInput extends PhoneInputTest {
     </nx-formfield>`,
 })
 class ReactiveFormsPhoneInput extends PhoneInputTest {
-    formControl = new UntypedFormControl('+49123456', Validators.required);
+    formControl = new FormControl('+49123456', Validators.required);
 }
 
 @Injectable()
@@ -390,7 +390,7 @@ class I18nProviderTest extends PhoneInputTest {}
     </nx-formfield>`,
 })
 class CustomFormatter extends PhoneInputTest {
-    formControl = new UntypedFormControl('+49123456', Validators.required);
+    formControl = new FormControl('+49123456', Validators.required);
     formatter(value: string, countryCode: string) {
         return value.match(/.{1,2}/g)?.join(' ') || '';
     }

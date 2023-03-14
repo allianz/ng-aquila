@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, Injectable } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -44,7 +44,7 @@ export class WikipediaService {
 export class AutocompleteDataBindingExampleComponent {
     modelBoundData = 'asdf';
 
-    testForm = new UntypedFormBuilder().group({
+    testForm = new FormBuilder().group({
         autocomplete: [null, Validators.required],
     });
 

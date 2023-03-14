@@ -10,8 +10,9 @@ import {
 } from '@angular/core';
 import {
     ControlValueAccessor,
+    FormBuilder,
+    FormGroup,
     NgControl,
-    UntypedFormBuilder,
     Validators,
 } from '@angular/forms';
 import { NxFormfieldControl } from '@aposin/ng-aquila/formfield';
@@ -53,33 +54,7 @@ export class FormfieldCustomTelInputExampleComponent
 {
     static nextId = 0;
 
-    readonly parts = this.fb.group({
-        area: [
-            null,
-            [
-                Validators.required,
-                Validators.minLength(3),
-                Validators.maxLength(3),
-            ],
-        ],
-        exchange: [
-            null,
-            [
-                Validators.required,
-                Validators.minLength(3),
-                Validators.maxLength(3),
-            ],
-        ],
-        subscriber: [
-            null,
-            [
-                Validators.required,
-                Validators.minLength(4),
-                Validators.maxLength(4),
-            ],
-        ],
-    });
-
+    readonly parts: FormGroup;
     readonly!: boolean;
     readonly stateChanges = new Subject<void>();
     focused = false;
@@ -148,11 +123,38 @@ export class FormfieldCustomTelInputExampleComponent
     onTouched = () => {};
 
     constructor(
-        private readonly fb: UntypedFormBuilder,
+        private readonly fb: FormBuilder,
         private readonly _focusMonitor: FocusMonitor,
         private readonly _elementRef: ElementRef<HTMLElement>,
         @Optional() @Self() readonly ngControl: NgControl | null,
     ) {
+        this.parts = this.fb.group({
+            area: [
+                null,
+                [
+                    Validators.required,
+                    Validators.minLength(3),
+                    Validators.maxLength(3),
+                ],
+            ],
+            exchange: [
+                null,
+                [
+                    Validators.required,
+                    Validators.minLength(3),
+                    Validators.maxLength(3),
+                ],
+            ],
+            subscriber: [
+                null,
+                [
+                    Validators.required,
+                    Validators.minLength(4),
+                    Validators.maxLength(4),
+                ],
+            ],
+        });
+
         _focusMonitor
             .monitor(_elementRef, true)
             .pipe(takeUntil(this._destroyed))

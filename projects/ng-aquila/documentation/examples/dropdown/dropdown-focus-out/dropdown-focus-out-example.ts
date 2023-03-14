@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 /**
  * @title Focus out example
@@ -10,7 +10,7 @@ import { UntypedFormBuilder } from '@angular/forms';
     styleUrls: ['./dropdown-focus-out-example.css'],
 })
 export class DropdownFocusOutExampleComponent {
-    form = new UntypedFormBuilder().group({
+    form = new FormBuilder().group({
         dropdown: ['BMW'],
     });
 

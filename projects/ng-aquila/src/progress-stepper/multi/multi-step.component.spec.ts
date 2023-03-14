@@ -1,7 +1,7 @@
 import { DOWN_ARROW, ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE, UP_ARROW } from '@angular/cdk/keycodes';
 import { Component, Directive, ElementRef, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
@@ -384,7 +384,7 @@ class MultiStepDirectionTest extends MultiStepTest {
     `,
 })
 class LinearStepBasicTest extends MultiStepTest {
-    _formBuilder: UntypedFormBuilder = new UntypedFormBuilder();
+    _formBuilder: FormBuilder = new FormBuilder();
     manualCompletionForm = this._formBuilder.group({ form1: ['', Validators.required] });
 }
 
@@ -422,9 +422,9 @@ class MultiStepCompletionTest extends MultiStepTest {
     `,
 })
 class MultiStepValidationTest extends MultiStepTest {
-    manualCompletionForm = new UntypedFormGroup({
-        name: new UntypedFormControl('', Validators.required),
-        fruit: new UntypedFormControl('', Validators.required),
+    manualCompletionForm = new FormGroup({
+        name: new FormControl('', Validators.required),
+        fruit: new FormControl('', Validators.required),
     });
 }
 

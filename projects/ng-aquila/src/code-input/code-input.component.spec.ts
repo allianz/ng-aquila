@@ -1,7 +1,7 @@
 import { DOWN_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { createKeyboardEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxCodeInputComponent } from './code-input.component';
@@ -384,8 +384,8 @@ describe('NxCodeInputComponent', () => {
 })
 class CodeInputTest1 extends CodeInputTest {
     inputValue = '';
-    codeForm: UntypedFormGroup = new UntypedFormGroup({
-        keyCode: new UntypedFormControl(this.inputValue, {
+    codeForm: FormGroup = new FormGroup({
+        keyCode: new FormControl(this.inputValue, {
             validators: [Validators.required, Validators.pattern('[A-Z]+'), Validators.minLength(4)],
             updateOn: 'submit',
         }),
@@ -401,8 +401,8 @@ class CodeInputTest1 extends CodeInputTest {
 })
 class CodeInputTest2 extends CodeInputTest {
     inputValue2 = '';
-    codeForm2: UntypedFormGroup = new UntypedFormGroup({
-        keyCode2: new UntypedFormControl(this.inputValue2, {
+    codeForm2: FormGroup = new FormGroup({
+        keyCode2: new FormControl(this.inputValue2, {
             validators: [Validators.required, Validators.minLength(6)],
             updateOn: 'blur',
         }),
@@ -421,8 +421,8 @@ class CodeInputTest2 extends CodeInputTest {
 })
 class CodeInputTest3 extends CodeInputTest {
     inputValue3 = '';
-    codeForm3: UntypedFormGroup = new UntypedFormGroup({
-        keyCode3: new UntypedFormControl(this.inputValue3, {
+    codeForm3: FormGroup = new FormGroup({
+        keyCode3: new FormControl(this.inputValue3, {
             validators: [Validators.required, Validators.minLength(6)],
             updateOn: 'blur',
         }),

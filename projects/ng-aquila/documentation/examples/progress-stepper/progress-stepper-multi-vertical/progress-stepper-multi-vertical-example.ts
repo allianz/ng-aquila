@@ -1,9 +1,5 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
-import {
-    UntypedFormBuilder,
-    UntypedFormControl,
-    Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import {
     NxMultiStepperComponent,
     NxMultiStepperDirection,
@@ -13,8 +9,8 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 interface Animal {
-    type: 'dog' | 'cat';
-    name: string;
+    animalType: string;
+    name?: string;
     dogBreed?: string;
     catBreed?: string;
     age: number;
@@ -85,7 +81,7 @@ export class ProgressStepperMultiVerticalExampleComponent implements OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private readonly fb: UntypedFormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         this.animalTypeForm.form
             .get('animalType')
             ?.valueChanges.pipe(takeUntil(this._destroyed))
@@ -94,13 +90,13 @@ export class ProgressStepperMultiVerticalExampleComponent implements OnDestroy {
                     this.breedForm.form.removeControl('catBreed');
                     this.breedForm.form.addControl(
                         'dogBreed',
-                        new UntypedFormControl('', Validators.required),
+                        new FormControl('', Validators.required),
                     );
                 } else if (value === 'cat') {
                     this.breedForm.form.removeControl('dogBreed');
                     this.breedForm.form.addControl(
                         'catBreed',
-                        new UntypedFormControl('', Validators.required),
+                        new FormControl('', Validators.required),
                     );
                 }
 
@@ -115,10 +111,10 @@ export class ProgressStepperMultiVerticalExampleComponent implements OnDestroy {
 
     onSubmit() {
         this.value = {
-            ...this.animalTypeForm.form.value,
-            ...this.ageForm.form.value,
-            ...this.breedForm.form.value,
-            ...this.nameForm.form.value,
+            animalType: { ...this.animalTypeForm.form.value } as string,
+            age: { ...this.ageForm.form.value } as number,
+            dogBreed: { ...this.breedForm.form.value } as string,
+            catBreed: { ...this.nameForm.form.value } as string,
         };
 
         this.stepper.steps.last.interacted = true;

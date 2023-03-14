@@ -1,6 +1,6 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
 import * as moment from 'moment';
@@ -22,7 +22,7 @@ abstract class DatefieldTest {
     min!: Moment;
     max!: Moment;
 
-    form!: UntypedFormGroup;
+    form!: FormGroup;
 
     @ViewChild(NxDatefieldDirective) textInstance!: NxDatefieldDirective<Date>;
 }
@@ -289,7 +289,7 @@ class ReactiveDatefield extends DatefieldTest {
     constructor() {
         super();
 
-        this.fb = new UntypedFormBuilder();
+        this.fb = new FormBuilder();
 
         this.form = this.fb.group({
             datefield: { disabled: false, value: moment([2018, 0, 1]) },
@@ -299,7 +299,7 @@ class ReactiveDatefield extends DatefieldTest {
 
 @Directive()
 abstract class DatefieldIsoTest {
-    form!: UntypedFormGroup;
+    form!: FormGroup;
     @ViewChild(NxDatefieldDirective) datefieldInstance!: NxDatefieldDirective<Date>;
 }
 
@@ -363,7 +363,7 @@ class ReactiveIsoDatefield extends DatefieldIsoTest {
 
     constructor() {
         super();
-        this.fb = new UntypedFormBuilder();
+        this.fb = new FormBuilder();
         this.form = this.fb.group({
             datefield: '01.01.2021',
         });

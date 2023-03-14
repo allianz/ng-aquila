@@ -1,6 +1,6 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
 
@@ -365,7 +365,7 @@ class BasicTextarea extends InputTest {}
     `,
 })
 class BasicInputWithFormControl extends InputTest {
-    formControl = new UntypedFormControl();
+    formControl = new FormControl();
 }
 
 @Component({

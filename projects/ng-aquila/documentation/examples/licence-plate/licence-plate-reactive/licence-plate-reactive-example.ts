@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { nxLicensePlateValidator } from '@aposin/ng-aquila/licence-plate';
 
 /**
@@ -11,11 +11,11 @@ import { nxLicensePlateValidator } from '@aposin/ng-aquila/licence-plate';
     styleUrls: ['licence-plate-reactive-example.css'],
 })
 export class LicencePlateReactiveExample {
-    licencePlateForm: UntypedFormGroup;
+    licencePlateForm: FormGroup;
 
     constructor() {
-        this.licencePlateForm = new UntypedFormGroup({
-            licencePlateInput: new UntypedFormControl(
+        this.licencePlateForm = new FormGroup({
+            licencePlateInput: new FormControl(
                 '',
                 nxLicensePlateValidator('de_standard'),
             ),

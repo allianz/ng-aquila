@@ -4,7 +4,7 @@ import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { of } from 'rxjs';
@@ -1498,7 +1498,7 @@ class MultiSelectTemplateBinding extends DropdownTest {
     </form>`,
 })
 class MultiselectReactiveBinding extends DropdownTest {
-    testForm = new UntypedFormBuilder().group({
+    testForm = new FormBuilder().group({
         dropdown: [['Audi', 'Mini'], Validators.required],
     });
 }
@@ -1618,7 +1618,7 @@ class SimpleBindingDropdownComponent extends DropdownTest {
     </form>`,
 })
 class ReactiveBindingDropdownComponent extends DropdownTest {
-    testForm = new UntypedFormBuilder().group({
+    testForm = new FormBuilder().group({
         dropdown: ['BMW', Validators.required],
     });
 }
@@ -1646,7 +1646,7 @@ class ReactiveBindingDropdownComponent extends DropdownTest {
     </form>`,
 })
 class FormFieldDropdownComponent extends DropdownTest {
-    testForm = new UntypedFormBuilder().group({
+    testForm = new FormBuilder().group({
         dropdown: [null, Validators.required],
     });
 }

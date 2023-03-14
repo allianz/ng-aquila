@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Accordion Error Example
@@ -21,7 +21,7 @@ export class AccordionErrorExampleComponent {
     showErrorPayment = true;
     showErrorInfo = false;
 
-    constructor(private readonly fb: UntypedFormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         this.formGroupPayment.markAllAsTouched();
     }
 

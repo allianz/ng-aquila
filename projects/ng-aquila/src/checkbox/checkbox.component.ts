@@ -21,7 +21,7 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, FormGroupDirective, NgControl, NgForm, UntypedFormControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
@@ -245,7 +245,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     updateErrorState() {
         const oldState = this.errorState;
         const parent = this._parentFormGroup || this._parentForm;
-        const control = this.ngControl ? (this.ngControl.control as UntypedFormControl) : null;
+        const control = this.ngControl ? (this.ngControl.control as FormControl) : null;
         const newState = this._errorStateMatcher.isErrorState(control, parent);
 
         if (newState !== oldState) {
@@ -447,15 +447,15 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     /** @docs-private */
     _controlInvalid(): boolean {
         const parent = this._parentFormGroup || this._parentForm;
-        let control: UntypedFormControl | NgControl | null = null; // TODO this doesn't seem correct
+        let control: FormControl | NgControl | null = null; // TODO this doesn't seem correct
 
         if (this.checkboxGroup?.ngControl) {
             control = this.checkboxGroup.ngControl;
         } else {
-            control = this.ngControl ? (this.ngControl.control as UntypedFormControl) : null;
+            control = this.ngControl ? (this.ngControl.control as FormControl) : null;
         }
 
-        return this._errorStateMatcher.isErrorState(control as UntypedFormControl, parent);
+        return this._errorStateMatcher.isErrorState(control as FormControl, parent);
     }
 
     ngOnInit(): void {

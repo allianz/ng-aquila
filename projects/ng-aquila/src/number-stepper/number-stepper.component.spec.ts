@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NxNumberStepperComponent } from './number-stepper.component';
@@ -25,7 +25,7 @@ abstract class NumberStepperTest {
     inputAriaLabel = 'input label';
     incrementAriaLabel = 'increase number';
     decrementAriaLabel = 'decrease number';
-    testForm: UntypedFormGroup = new UntypedFormBuilder().group({ stepper: 3 });
+    testForm: FormGroup = new FormBuilder().group({ stepper: 3 });
     @ViewChild(NxNumberStepperComponent) stepperInstance!: NxNumberStepperComponent;
 
     onSubmit() {}
@@ -693,7 +693,7 @@ class ReactiveFormStepper extends NumberStepperTest {}
     `,
 })
 class ReactiveFormOnBlurStepper extends NumberStepperTest {
-    constructor(private readonly fb: UntypedFormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         super();
         this.testForm = this.fb.group(
             {

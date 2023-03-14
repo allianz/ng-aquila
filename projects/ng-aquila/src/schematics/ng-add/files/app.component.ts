@@ -1,5 +1,5 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 @Component({
@@ -10,10 +10,10 @@ export class AppComponent {
     @ViewChild('consentTemplate') consentTemplateRef!: TemplateRef<any>;
     @ViewChild('submitTemplate') submitTemplateRef!: TemplateRef<any>;
     dialogRef!: NxModalRef<any>;
-    formGroup: UntypedFormGroup;
+    formGroup: FormGroup;
 
     constructor(readonly dialogService: NxDialogService) {
-        this.formGroup = new UntypedFormBuilder().group({
+        this.formGroup = new FormBuilder().group({
             name: ['', Validators.required],
             items: ['', Validators.required],
             email: ['', [Validators.email, Validators.required]],

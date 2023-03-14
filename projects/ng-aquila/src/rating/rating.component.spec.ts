@@ -1,7 +1,7 @@
 import { ENTER, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { dispatchKeyboardEvent, dispatchMouseEvent } from '../cdk-test-utils';
@@ -323,8 +323,8 @@ class NgModelBindingRatingComponent extends RatingTest {
     `,
 })
 class ReactiveBindingRatingComponent extends RatingTest {
-    testForm = new UntypedFormBuilder().group({
-        rating: new UntypedFormControl(),
+    testForm = new FormBuilder().group({
+        rating: new FormControl(),
     });
 }
 

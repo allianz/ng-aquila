@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import {
-    UntypedFormControl,
-    UntypedFormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 /**
  * @title Reactive example
@@ -14,8 +10,8 @@ import {
     styleUrls: ['./input-reactive-example.css'],
 })
 export class InputReactiveExampleComponent {
-    testForm: UntypedFormGroup = new UntypedFormGroup({
-        textfield: new UntypedFormControl('', {
+    testForm: FormGroup = new FormGroup({
+        textfield: new FormControl('', {
             validators: Validators.required,
         }),
     });

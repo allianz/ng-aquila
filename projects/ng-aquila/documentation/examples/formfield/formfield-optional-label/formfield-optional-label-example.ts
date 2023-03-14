@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import {
-    UntypedFormBuilder,
-    UntypedFormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 /**
  * @title Optional label example
@@ -14,10 +10,10 @@ import {
     styleUrls: ['./formfield-optional-label-example.css'],
 })
 export class FormfieldOptionalLabelExampleComponent {
-    formGroup: UntypedFormGroup;
+    formGroup: FormGroup;
 
     constructor() {
-        this.formGroup = new UntypedFormBuilder().group({
+        this.formGroup = new FormBuilder().group({
             firstName: ['', Validators.required],
             lastName: [''],
             items: [''],
