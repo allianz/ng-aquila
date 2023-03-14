@@ -69,9 +69,9 @@ export class NxErrorComponent implements OnDestroy {
      *
      * Default: `'message'`.
      */
-    @Input() set appearance(value: ErrorStyleType) {
+    @Input() set appearance(value: ErrorStyleType | undefined | '') {
         if (value !== this.appearance) {
-            this._appearance = value;
+            this._appearance = value ? value : 'message';
             this._cdr.markForCheck();
         }
     }
