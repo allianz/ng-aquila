@@ -101,8 +101,6 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     @Output() readonly filesSelected = new EventEmitter<FileItem[]>();
 
     private _controlValidators: ValidatorFn | null = null;
-    _inputId = `${this.id}-input`;
-    _labelId = `${this.id}-label`;
     _templateContext;
 
     /** @docs-private */
@@ -123,6 +121,8 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         return this._id;
     }
     private _id = `nx-file-uploader-${nextId++}`;
+    _inputId = `${this.id}-input`;
+    _labelId = `${this.id}-label`;
 
     /** Whether the file uploader is required. */
     @Input() set required(value: BooleanInput) {

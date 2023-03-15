@@ -71,6 +71,16 @@ describe('NxFileUploaderComponent', () => {
         }).compileComponents();
     }));
 
+    describe('basic', () => {
+        it('should correctly assign id and label', () => {
+            createTestComponent(BasicFileUpload);
+            fixture.detectChanges();
+
+            expect(fileUploaderInstance._inputId).toMatch(/nx-file-uploader-.+-input/);
+            expect(fileUploaderInstance._labelId).toMatch(/nx-file-uploader-.+-label/);
+        });
+    });
+
     describe('trigger directive', () => {
         it('should call uploadFiles when triggerButton was clicked', () => {
             createTestComponent(BasicFileUpload);
