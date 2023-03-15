@@ -796,7 +796,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         if (this._panelOpen) {
             this._panelOpen = false;
             this._cdr.markForCheck();
-            this._onTouched();
+            if (this.ngControl?.control?.updateOn !== 'blur') {
+                this._onTouched();
+            }
             this.openedChange.emit(false);
             // defer the focus if the dropdown triggers actions that detach
             // a template/view from the DOM to prevent changed after checked errors

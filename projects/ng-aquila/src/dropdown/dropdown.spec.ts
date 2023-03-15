@@ -4,7 +4,7 @@ import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { of } from 'rxjs';
@@ -166,7 +166,12 @@ describe('NxDropdownComponent', () => {
 
     describe('basic dropdown', () => {
         beforeEach(fakeAsync(() => {
-            configureNxDropdownTestingModule([SimpleDropdownComponent, DynamicDropdownComponent, CustomClosedLabelComponent]);
+            configureNxDropdownTestingModule([
+                SimpleDropdownComponent,
+                DynamicDropdownComponent,
+                CustomClosedLabelComponent,
+                ReactiveDropdownUpdateOnBlurComponent,
+            ]);
         }));
 
         it('should open the dropdown by click and close it by click on the backdrop', fakeAsync(() => {
@@ -466,6 +471,18 @@ describe('NxDropdownComponent', () => {
             expect(touched).toBeFalsy();
             clickOnItem(0);
             expect(touched).toBeTruthy();
+        }));
+
+        it('should not trigger touched event when dropdown closed with updateOn is blur', fakeAsync(() => {
+            createTestComponent(ReactiveDropdownUpdateOnBlurComponent);
+            let touched = false;
+            dropdownInstance.registerOnTouched(() => {
+                touched = true;
+            });
+            openDropdownByClick();
+            expect(touched).toBeFalsy();
+            clickOnBackdrop();
+            expect(touched).toBeFalsy();
         }));
 
         it('should should select the value by clicking on a dropdown item and close the dropdown', fakeAsync(() => {
@@ -1397,6 +1414,7 @@ abstract class DropdownTest {
     showFilter = false;
     selected: any = 'BMW';
     placeholder = 'Choose a car';
+    testForm!: UntypedFormGroup;
 }
 
 @Component({
@@ -1620,6 +1638,24 @@ class SimpleBindingDropdownComponent extends DropdownTest {
 class ReactiveBindingDropdownComponent extends DropdownTest {
     testForm = new FormBuilder().group({
         dropdown: ['BMW', Validators.required],
+    });
+}
+
+@Component({
+    template: `<form [formGroup]="testForm">
+        <nx-dropdown nxLabel="Car brand" formControlName="dropdown">
+            <nx-dropdown-item nxValue="BMW">BMW</nx-dropdown-item>
+            <nx-dropdown-item nxValue="Audi">Audi</nx-dropdown-item>
+            <nx-dropdown-item nxValue="Volvo">Volvo</nx-dropdown-item>
+            <nx-dropdown-item nxValue="Mini">Mini</nx-dropdown-item>
+        </nx-dropdown>
+    </form>`,
+})
+class ReactiveDropdownUpdateOnBlurComponent extends DropdownTest {
+    testForm = new UntypedFormBuilder().group({
+        dropdown: new UntypedFormControl(undefined, {
+            updateOn: 'blur',
+        }),
     });
 }
 
