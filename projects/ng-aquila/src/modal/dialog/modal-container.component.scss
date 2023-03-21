@@ -2,7 +2,7 @@
 
 $max-modal-content-height: 65vh !default;
 $horizontal-offset: 48px;
-$action-bar-height: nx-spacer(2xl);
+$action-bar-height: nx-spacer(xl);
 
 :host {
     background: v(modal-background-color);
@@ -30,7 +30,7 @@ $action-bar-height: nx-spacer(2xl);
 
     @include media-breakpoint-down('small') {
         margin: 0 nx-spacer(2xs); // keep distance to the end of the screen
-        padding: nx-spacer(3m) nx-spacer(2m) nx-spacer(4m) nx-spacer(2m);
+        padding: nx-spacer(2m) nx-spacer(2m) nx-spacer(2m) nx-spacer(2m);
     }
 
     @media screen and (forced-colors: active) {
@@ -70,6 +70,7 @@ $action-bar-height: nx-spacer(2xl);
     border-bottom-right-radius: nx-border-radius(s);
 
     @include media-breakpoint-down('small') {
+        margin-bottom: -#{nx-spacer(2m)};
         margin-left: -#{nx-spacer(2m)};
         margin-right: -#{nx-spacer(2m)};
         padding: 0 nx-spacer(2m);

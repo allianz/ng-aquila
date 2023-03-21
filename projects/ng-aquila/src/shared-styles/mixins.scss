@@ -102,6 +102,18 @@ $border-size: nx-border-size(xs);
     }
 }
 
+@mixin create-modal-margin-class() {
+    .nx-modal-margin-bottom {
+        margin-bottom: nx-spacer(3m) !important;
+    }
+
+    @include media-breakpoint-response(mobile) {
+        .nx-modal-margin-bottom {
+            margin-bottom: nx-spacer(2m) !important;
+        }
+    }
+}
+
 @mixin dropdown-overlay__option {
     $dropdown-overlay__option-padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2xs);
     @include type-style(dropdown-item);
