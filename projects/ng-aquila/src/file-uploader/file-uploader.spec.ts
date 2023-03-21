@@ -54,6 +54,7 @@ describe('NxFileUploaderComponent', () => {
     let testInstance: FileUploaderTest;
     let fileUploaderInstance: NxFileUploaderComponent;
     let triggerButton: HTMLButtonElement;
+    let addFileButton: HTMLButtonElement;
 
     function createTestComponent(component: Type<FileUploaderTest>) {
         fixture = TestBed.createComponent(component);
@@ -61,6 +62,7 @@ describe('NxFileUploaderComponent', () => {
         testInstance = fixture.componentInstance;
         fileUploaderInstance = testInstance.fileUploaderInstance;
         triggerButton = fixture.nativeElement.querySelector('#upload-trigger') as HTMLButtonElement;
+        addFileButton = fixture.nativeElement.querySelector('#add-file') as HTMLButtonElement;
     }
 
     beforeEach(waitForAsync(() => {
@@ -86,6 +88,7 @@ describe('NxFileUploaderComponent', () => {
             createTestComponent(BasicFileUpload);
             const spy = spyOn(testInstance.uploader, 'uploadFiles');
             triggerButton.click();
+
             fixture.detectChanges();
             expect(spy).toHaveBeenCalled();
         });
@@ -315,6 +318,30 @@ describe('NxFileUploaderComponent', () => {
 
             fileUploaderInstance.uploadFiles();
         });
+
+        it('should emit opened event when open file-picker dialog', done => {
+            createTestComponent(BasicFileUpload);
+            const opened = jasmine.createSpy('spy');
+            fileUploaderInstance._openedStream.subscribe(() => {
+                opened();
+                done();
+            });
+            addFileButton.click();
+            expect(opened).toHaveBeenCalled();
+        });
+
+        it('should emit closed event when closed file-picker dialog', done => {
+            createTestComponent(BasicFileUpload);
+            const closed = jasmine.createSpy('spy');
+            fileUploaderInstance._closedStream.subscribe(() => {
+                closed();
+                done();
+            });
+            addFileButton.click();
+            addFileButton.focus();
+            fixture.detectChanges();
+            expect(closed).toHaveBeenCalled();
+        });
     });
 });
 
@@ -324,7 +351,7 @@ describe('NxFileUploaderComponent', () => {
             <nx-file-uploader #documentUpload formControlName="documents" [uploader]="uploader" multiple>
                 <nx-label>Required file to upload</nx-label>
                 <span nxFileUploadHint>All files are accepted</span>
-                <button type="button" nxFileUploadButton>Add Files</button>
+                <button type="button" nxFileUploadButton id="add-file">Add Files</button>
             </nx-file-uploader>
 
             <button id="upload-trigger" [nxFileUploadTriggerFor]="documentUpload" type="button">Upload files</button>

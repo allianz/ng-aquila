@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Directive, HostListener, Input, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Directive, ElementRef, HostListener, Input, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 
 // This Directive solely purpose is to mark given ng-content and project it into the required destination.
@@ -24,7 +24,7 @@ export class NxFileUploaderButtonDirective implements OnDestroy {
     readonly _clicked = new Subject();
     _ariaDescribedby?: string;
 
-    constructor(private readonly _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef, readonly elemetRef: ElementRef) {}
 
     /** @docs-private */
     setDescribedByIds(ids: string[]): void {

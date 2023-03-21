@@ -27,8 +27,8 @@ import {
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm, ValidatorFn } from '@angular/forms';
 import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
-import { Subject, Subscription } from 'rxjs';
-import { startWith, takeUntil } from 'rxjs/operators';
+import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
+import { filter, map, startWith, takeUntil } from 'rxjs/operators';
 
 import { NxFileUploader } from './file-uploader';
 import { FileItem } from './file-uploader.model';
@@ -229,6 +229,21 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     private readonly _destroyed = new Subject<void>();
 
+    /** Event emitted when the file picker dialog has been toggled. */
+    @Output() readonly openedChange = new EventEmitter<boolean>();
+
+    /** Event emitted when the file picker dialog has been opened. */
+    @Output('opened') readonly _openedStream: Observable<void> = this.openedChange.pipe(
+        filter(o => o),
+        map(() => {}),
+    );
+
+    /** Event emitted when the file picker dialog has been closed. */
+    @Output('closed') readonly _closedStream: Observable<void> = this.openedChange.pipe(
+        filter(o => !o),
+        map(() => {}),
+    );
+
     constructor(
         private readonly _cdr: ChangeDetectorRef,
         private readonly _errorStateMatcher: ErrorStateMatcher,
@@ -346,6 +361,22 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         }
         this.button._clicked.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this.nativeInputFile.nativeElement.click();
+        });
+        const focusButton$ = fromEvent(this.button.elemetRef.nativeElement, 'focus');
+        const clickButton$ = fromEvent(this.button.elemetRef.nativeElement, 'click');
+        let opened = false;
+
+        clickButton$.pipe(takeUntil(this._destroyed)).subscribe(() => {
+            opened = true;
+            this.openedChange.emit(opened);
+        });
+
+        focusButton$.pipe(takeUntil(this._destroyed)).subscribe(() => {
+            // file picker dialog dont have closed event, so using combination of focus + opend to check instead.
+            if (opened) {
+                opened = false;
+                this.openedChange.emit(opened);
+            }
         });
 
         this.button.disabled = this.disabled;

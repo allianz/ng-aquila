@@ -699,6 +699,14 @@ describe('NxMultiSelectComponent', () => {
             const nxFormField = fixture.elementRef.nativeElement.querySelector('nx-formfield');
             expect(nxFormField).toHaveClass('is-disabled');
         });
+
+        it('should emit openedChange when opened or closed', async () => {
+            spyOn(multiSelectInstance.openedChange, 'emit');
+            await multiSelectHarness.click();
+            expect(multiSelectInstance.openedChange.emit).toHaveBeenCalled();
+            multiSelectInstance._close();
+            expect(multiSelectInstance.openedChange.emit).toHaveBeenCalled();
+        });
     });
 });
 

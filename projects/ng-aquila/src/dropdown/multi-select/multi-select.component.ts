@@ -22,8 +22,8 @@ import {
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { AppearanceType, NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
-import { Subject } from 'rxjs';
-import { take, takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { filter, map, take, takeUntil } from 'rxjs/operators';
 
 import { NxDropdownIntl } from '../dropdown';
 import { getPositionOffset, getPositions } from '../dropdown-position';
@@ -183,6 +183,21 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     @ViewChildren(NxMultiSelectOptionComponent) private _options!: QueryList<NxMultiSelectOptionComponent<T>>;
+
+    /** Event emitted when the select panel has been toggled. */
+    @Output() readonly openedChange = new EventEmitter<boolean>();
+
+    /** Event emitted when the select has been opened. */
+    @Output('opened') readonly _openedStream: Observable<void> = this.openedChange.pipe(
+        filter(o => o),
+        map(() => {}),
+    );
+
+    /** Event emitted when the select has been closed. */
+    @Output('closed') readonly _closedStream: Observable<void> = this.openedChange.pipe(
+        filter(o => !o),
+        map(() => {}),
+    );
 
     private _openedBy: FocusOrigin = 'mouse';
 
@@ -404,6 +419,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     _close() {
         this._isOpen = false;
+        this.openedChange.emit(false);
         this._updateTooltipText();
         this._trigger?.nativeElement.focus();
     }
@@ -511,6 +527,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
                 this._keyManager.setFirstItemActive();
                 this._scrollActiveOptionIntoView();
             }
+            this.openedChange.emit(true);
             this._cdr.markForCheck();
         });
     }
