@@ -13,6 +13,8 @@ The class `nx-modal-margin-bottom` can be used to get the correct vertical spaci
 
 **Important:** Please note that the module for this component depends on the Angular animations module, so in case you do not already have it, you need to explicitly import the `BrowserModule` and `BrowserAnimationsModule` in your app.module.
 
+The visual representation of modal overlay depends on Angular CDK styles. Make sure you [enable Angular CDK styles](./documentation/overlay/overview#angular-cdk) in your application.
+
 ### Modal Opening
 
 A modal can be opened by using the `open` method of the service and passing an optional configuration object as a second parameter as shown below. The return object of the open function is a reference to the opened modal, which can be used for closing the modal or subscribing to its closing events.
