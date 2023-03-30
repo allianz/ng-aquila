@@ -44,15 +44,25 @@
 
     &.nx-file-uploader--default-template {
         nx-file-upload-name {
-            flex: 1;
+            flex: none;
+            max-width: 65%;
+            overflow-wrap: break-word;
+            line-height: nx-line-height(xs);
 
             @include media-breakpoint-down('small') {
                 flex: 100%;
+                max-width: 100%;
             }
         }
 
         nx-file-upload-size {
-            flex: none;
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+
+            @include media-breakpoint-down('small') {
+                justify-content: flex-start;
+            }
         }
 
         nx-file-upload-status {
