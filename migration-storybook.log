@@ -1,0 +1,58 @@
+🔎 checking possible migrations..
+
+attention => Storybook now collects completely anonymous telemetry regarding usage.
+This information is used to shape Storybook's roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://storybook.js.org/telemetry
+
+
+🔎 found a 'eslintPlugin' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                      │
+│   We've detected you are not using our eslint-plugin.                                                                                │
+│                                                                                                                                      │
+│   In order to have the best experience with Storybook and follow best practices, we advise you to install eslint-plugin-storybook.   │
+│                                                                                                                                      │
+│   More info: https://github.com/storybookjs/eslint-plugin-storybook#readme                                                           │
+│                                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'eslintPlugin' migration on your project? › (Y/n)✔ Do you want to run the 'eslintPlugin' migration on your project? … yes
+✅ Adding dependencies: eslint-plugin-storybook
+✅ Adding Storybook plugin to .eslintrc.json
+❌ error when running eslintPlugin migration
+SyntaxError: .eslintrc.json: Unexpected token / in JSON at position 882
+    at JSON.parse (<anonymous>)
+    at _readFile (/Users/philipp/.npm/_npx/eb8bf615e50a412a/node_modules/jsonfile/index.js:25:16)
+    at async Object.run (/Users/philipp/.npm/_npx/eb8bf615e50a412a/node_modules/@storybook/cli/dist/generate.js:121:142)
+    at async runFixes (/Users/philipp/.npm/_npx/eb8bf615e50a412a/node_modules/@storybook/cli/dist/generate.js:322:1144)
+    at async automigrate (/Users/philipp/.npm/_npx/eb8bf615e50a412a/node_modules/@storybook/cli/dist/generate.js:317:636)
+    at async doInitiate (/Users/philipp/.npm/_npx/eb8bf615e50a412a/node_modules/@storybook/cli/dist/generate.js:352:373)
+    at async withTelemetry (/Users/philipp/.npm/_npx/eb8bf615e50a412a/node_modules/@storybook/core-server/dist/index.js:35:3422)
+    at async initiate (/Users/philipp/.npm/_npx/eb8bf615e50a412a/node_modules/@storybook/cli/dist/generate.js:363:109)
+
+
+╭ Migration check ran with failures ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                     │
+│   Failed migrations:                                                                                                                                │
+│                                                                                                                                                     │
+│   eslintPlugin:                                                                                                                                     │
+│   .eslintrc.json: Unexpected token / in JSON at position 882                                                                                        │
+│                                                                                                                                                     │
+│   You can find the full logs in /Users/philipp/dev/allianz/ng-aquila/migration-storybook.log                                                        │
+│                                                                                                                                                     │
+│   ─────────────────────────────────────────────────                                                                                                 │
+│                                                                                                                                                     │
+│   If you'd like to run the migrations again, you can do so by running 'npx storybook@next automigrate'                                              │
+│                                                                                                                                                     │
+│   The automigrations try to migrate common patterns in your project, but might not contain everything needed to migrate to the latest version of    │
+│   Storybook.                                                                                                                                        │
+│                                                                                                                                                     │
+│   Please check the changelog and migration guide for manual migrations and more information: https://storybook.js.org/migration-guides/7.0          │
+│   And reach out on Discord if you need help: https://discord.gg/storybook                                                                           │
+│                                                                                                                                                     │
+│   ─────────────────────────────────────────────────                                                                                                 │
+│                                                                                                                                                     │
+│   You can find more information for a given dependency by running npm ls --depth=1 <package-name>                                                   │
+│                                                                                                                                                     │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+

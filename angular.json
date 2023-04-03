@@ -53,6 +53,26 @@
                     "options": {
                         "lintFilePatterns": ["projects/ng-aquila/**/*.ts", "projects/ng-aquila/**/*.html"]
                     }
+                },
+                "storybook": {
+                    "builder": "@storybook/angular:start-storybook",
+                    "options": {
+                        "configDir": "projects/ng-aquila/.storybook",
+                        "browserTarget": "ng-aquila:build",
+                        "compodoc": true,
+                        "compodocArgs": ["-e", "json", "-d", "projects/ng-aquila"],
+                        "port": 6006
+                    }
+                },
+                "build-storybook": {
+                    "builder": "@storybook/angular:build-storybook",
+                    "options": {
+                        "configDir": "projects/ng-aquila/.storybook",
+                        "browserTarget": "ng-aquila:build",
+                        "compodoc": true,
+                        "compodocArgs": ["-e", "json", "-d", "projects/ng-aquila"],
+                        "outputDir": "dist/storybook/ng-aquila"
+                    }
                 }
             }
         },
