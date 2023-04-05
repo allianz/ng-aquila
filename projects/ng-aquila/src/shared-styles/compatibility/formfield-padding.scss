@@ -1,0 +1,15 @@
+// Contains the old formfield bottom padding
+
+.nx-formfield__wrapper {
+    padding-bottom: 24px;
+}
+
+.nx-formfield.has-outline {
+    .nx-formfield__wrapper {
+        padding-bottom: 24px;
+    }
+}
+
+.has-hint .nx-formfield__wrapper {
+    padding-bottom: 0;
+}
