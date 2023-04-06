@@ -317,6 +317,17 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     private _onTouched: () => void = () => {};
 
+    private sortSelectedToTop = (a: S, b: S) => {
+        const aSelected = this.selectedItems.has(a);
+        const bSelected = this.selectedItems.has(b);
+        if (aSelected && !bSelected) {
+            return -1;
+        } else if (!aSelected && bSelected) {
+            return 1;
+        }
+        return 0;
+    };
+
     _selectValue(option: S): T {
         if (!this.selectValue) {
             return option as unknown as T;
@@ -396,22 +407,11 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             return;
         }
 
-        const sortSelectedToTop = (a: S, b: S) => {
-            const aSelected = this.selectedItems.has(a);
-            const bSelected = this.selectedItems.has(b);
-            if (aSelected && !bSelected) {
-                return -1;
-            } else if (!aSelected && bSelected) {
-                return 1;
-            }
-            return 0;
-        };
-
         $event.preventDefault();
         this._filterValue = '';
         this._width = Math.max(OVERLAY_MIN_WIDTH, this._trigger?.nativeElement.getBoundingClientRect().width);
         this._isOpen = true;
-        this.listItems = this.options.slice().sort(sortSelectedToTop);
+        this.listItems = this.options.slice().sort(this.sortSelectedToTop);
         this._divider = this.selectedItems.size - 1;
         this._openedBy = origin;
         this._cdr.markForCheck();
@@ -490,10 +490,12 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     _onFilterChange(query: string | null | undefined) {
         if (query) {
-            this.listItems = this.options.filter(item => this.filterFn(query, this._selectLabel(item)));
+            this.listItems = this.options.sort(this.sortSelectedToTop).filter(item => this.filterFn(query, this._selectLabel(item)));
         } else {
             this.listItems = this.options.slice();
         }
+
+        this._divider = this.listItems.filter(element => this.selectedItems.has(element)).length - 1;
 
         if (this._isActiveItemFiltered) {
             setTimeout(() => {
