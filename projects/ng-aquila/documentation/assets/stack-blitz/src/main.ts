@@ -10,6 +10,7 @@ import 'zone.js';
 
 import { AquilaModule } from './app/aquila.module';
 import { AquilaDocsExample } from './app/aquila-docs-example';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
     bootstrap: [AquilaDocsExample],
@@ -23,6 +24,7 @@ import { AquilaDocsExample } from './app/aquila-docs-example';
         ReactiveFormsModule,
         RouterModule.forRoot([]),
         AquilaModule,
+        EditorModule,
     ],
 })
 export class AppModule {}
