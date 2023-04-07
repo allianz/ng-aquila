@@ -61,7 +61,17 @@
                         "browserTarget": "ng-aquila:build",
                         "compodoc": true,
                         "compodocArgs": ["-e", "json", "-d", "projects/ng-aquila"],
-                        "port": 6006
+                        "port": 6006,
+                        "styles": [
+                            "node_modules/@angular/cdk/a11y-prebuilt.css",
+                            "node_modules/@angular/cdk/overlay-prebuilt.css",
+                            "projects/opensource-documentation/src/styles.scss",
+                            "projects/ng-aquila/src/shared-styles/utilities.scss",
+                            "projects/ngx-docs-ui/src/lib/styles/global-styles.scss",
+                            "projects/ngx-docs-ui/src/lib/styles/viewer-styles.scss",
+                            "node_modules/highlight.js/styles/tomorrow-night-blue.css",
+                            "node_modules/@fortawesome/fontawesome-free/css/all.css"
+                        ]
                     }
                 },
                 "build-storybook": {
