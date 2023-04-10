@@ -28,7 +28,7 @@ const EXAMPLES = [
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
-export class CodeExamplesModule {
+export class CodeInputExamplesModule {
     static components() {
         return {
             'code-input-disabled': CodeInputDisabledExampleComponent,

@@ -66,7 +66,7 @@ const EXAMPLES = [
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
-export class ComparisonExamplesModule {
+export class ComparisonTableExamplesModule {
     static components() {
         return {
             'comparison-table': ComparisonTableExampleComponent,

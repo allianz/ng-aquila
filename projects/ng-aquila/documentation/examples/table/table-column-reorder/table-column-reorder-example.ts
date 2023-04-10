@@ -11,7 +11,7 @@ import {
     styleUrls: ['./table-column-reorder-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableColumnReorderExample {
+export class TableColumnReorderExampleComponent {
     header = [
         { title: 'ID', field: 'id' },
         { title: 'Product', field: 'product' },

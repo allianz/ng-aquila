@@ -17,7 +17,7 @@ import { skip, takeUntil } from 'rxjs/operators';
     templateUrl: './sidepanel-focus-example.html',
     styleUrls: ['sidepanel-focus-example.css'],
 })
-export class SidepanelFocuskExampleComponent
+export class SidepanelFocusExampleComponent
     implements OnDestroy, AfterViewInit
 {
     opened = true;

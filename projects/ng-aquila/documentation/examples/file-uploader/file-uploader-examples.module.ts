@@ -52,7 +52,7 @@ const EXAMPLES = [
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
-export class FileExamplesModule {
+export class FileUploaderExamplesModule {
     static components() {
         return {
             'file-uploader-auto': FileUploaderAutoExampleComponent,

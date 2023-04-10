@@ -8,4 +8,4 @@ import { Component } from '@angular/core';
     templateUrl: './small-stage-w-bg-example.html',
     styleUrls: ['./small-stage-w-bg-example.css'],
 })
-export class SmallStageWithBackgroundExampleComponent {}
+export class SmallStageWBgExampleComponent {}

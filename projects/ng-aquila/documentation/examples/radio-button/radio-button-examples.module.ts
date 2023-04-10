@@ -36,7 +36,7 @@ const EXAMPLES = [
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
-export class RadioExamplesModule {
+export class RadioButtonExamplesModule {
     static components() {
         return {
             'radio-button': RadioButtonExampleComponent,

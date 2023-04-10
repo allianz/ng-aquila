@@ -8,4 +8,4 @@ import { Component } from '@angular/core';
     templateUrl: './number-stepper-a11y-example.html',
     styleUrls: ['./number-stepper-a11y-example.css'],
 })
-export class NumberStepperAccessibilityExampleComponent {}
+export class NumberStepperA11yExampleComponent {}

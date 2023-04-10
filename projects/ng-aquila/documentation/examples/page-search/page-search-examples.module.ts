@@ -31,7 +31,7 @@ const EXAMPLES = [
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
-export class PageExamplesModule {
+export class PageSearchExamplesModule {
     static components() {
         return {
             'page-search-autocomplete': PageSearchAutocompleteExampleComponent,

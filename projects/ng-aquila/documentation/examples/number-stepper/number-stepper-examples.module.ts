@@ -6,7 +6,7 @@ import { NxNumberStepperModule } from '@aposin/ng-aquila/number-stepper';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
-import { NumberStepperAccessibilityExampleComponent } from './number-stepper-a11y/number-stepper-a11y-example';
+import { NumberStepperA11yExampleComponent } from './number-stepper-a11y/number-stepper-a11y-example';
 import { NumberStepperAdditionsExampleComponent } from './number-stepper-additions/number-stepper-additions-example';
 import { NumberStepperAutoResizingExampleComponent } from './number-stepper-auto-resizing/number-stepper-auto-resizing-example';
 import { NumberStepperCustomLabelExampleComponent } from './number-stepper-custom-label/number-stepper-custom-label-example';
@@ -24,7 +24,7 @@ import { NumberStepperTemplateDrivenExampleComponent } from './number-stepper-te
 import { NumberStepperValidationExampleComponent } from './number-stepper-validation/number-stepper-validation-example';
 
 const EXAMPLES = [
-    NumberStepperAccessibilityExampleComponent,
+    NumberStepperA11yExampleComponent,
     NumberStepperAdditionsExampleComponent,
     NumberStepperAutoResizingExampleComponent,
     NumberStepperCustomLabelExampleComponent,
@@ -54,10 +54,10 @@ const EXAMPLES = [
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
-export class NumberExamplesModule {
+export class NumberStepperExamplesModule {
     static components() {
         return {
-            'number-stepper-a11y': NumberStepperAccessibilityExampleComponent,
+            'number-stepper-a11y': NumberStepperA11yExampleComponent,
             'number-stepper-additions': NumberStepperAdditionsExampleComponent,
             'number-stepper-auto-resizing':
                 NumberStepperAutoResizingExampleComponent,

@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
     templateUrl: 'licence-plate-ngmodel-example.html',
     styleUrls: ['licence-plate-ngmodel-example.css'],
 })
-export class LicencePlateNgmodelExample {
+export class LicencePlateNgmodelExampleComponent {
     model = '';
 }

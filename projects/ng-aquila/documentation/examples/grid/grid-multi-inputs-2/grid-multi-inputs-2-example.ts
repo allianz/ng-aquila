@@ -8,4 +8,4 @@ import { Component } from '@angular/core';
     templateUrl: './grid-multi-inputs-2-example.html',
     styleUrls: ['./grid-multi-inputs-2-example.css'],
 })
-export class GridMultiInputs2ExampleComponent {}
+export class GridMultiInputs_2ExampleComponent {}

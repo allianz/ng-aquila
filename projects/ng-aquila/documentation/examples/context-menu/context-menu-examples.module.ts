@@ -54,7 +54,7 @@ const EXAMPLES = [
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
-export class ContextExamplesModule {
+export class ContextMenuExamplesModule {
     static components() {
         return {
             'context-menu-basic': ContextMenuBasicExampleComponent,

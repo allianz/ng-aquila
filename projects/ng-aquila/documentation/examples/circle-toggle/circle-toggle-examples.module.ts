@@ -40,7 +40,7 @@ const EXAMPLES = [
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
-export class CircleExamplesModule {
+export class CircleToggleExamplesModule {
     static components() {
         return {
             'circle-toggle-group': CircleToggleGroupExampleComponent,

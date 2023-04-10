@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
     templateUrl: './table-column-hiding-example.html',
     styleUrls: ['./table-column-hiding-example.css'],
 })
-export class TableCoumnHidingExampleComponent {
+export class TableColumnHidingExampleComponent {
     tableElements = [
         {
             product: 'Car',

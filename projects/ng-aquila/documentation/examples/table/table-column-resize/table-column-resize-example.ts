@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./table-column-resize-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableColumnResizeExample {
+export class TableColumnResizeExampleComponent {
     tableElements = [
         {
             product: 'Car',

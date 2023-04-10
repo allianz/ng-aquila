@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
     templateUrl: 'licence-plate-expert-states-example.html',
     styleUrls: ['licence-plate-expert-states-example.css'],
 })
-export class LicencePlateExpertStatesExample {
+export class LicencePlateExpertStatesExampleComponent {
     disabled = false;
     readonly = false;
     value = '';

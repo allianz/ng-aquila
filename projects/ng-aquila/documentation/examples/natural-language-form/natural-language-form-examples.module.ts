@@ -26,7 +26,7 @@ const EXAMPLES = [
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
-export class NaturalExamplesModule {
+export class NaturalLanguageFormExamplesModule {
     static components() {
         return {
             'natural-language-form-basic':

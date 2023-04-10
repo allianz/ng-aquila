@@ -10,7 +10,7 @@ import { nxLicensePlateValidator } from '@aposin/ng-aquila/licence-plate';
     templateUrl: 'licence-plate-reactive-example.html',
     styleUrls: ['licence-plate-reactive-example.css'],
 })
-export class LicencePlateReactiveExample {
+export class LicencePlateReactiveExampleComponent {
     licencePlateForm: UntypedFormGroup;
 
     constructor() {

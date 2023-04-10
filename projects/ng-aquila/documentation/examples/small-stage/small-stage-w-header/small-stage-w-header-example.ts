@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
     templateUrl: './small-stage-w-header-example.html',
     styleUrls: ['./small-stage-w-header-example.css'],
 })
-export class SmallStageWithHeaderExampleComponent {
+export class SmallStageWHeaderExampleComponent {
     items = ['Home', 'Insurance', 'Health Insurance'];
 
     dynamicItems = this.items;

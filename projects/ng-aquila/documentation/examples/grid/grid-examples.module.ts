@@ -8,8 +8,8 @@ import { GridColOrderExampleComponent } from './grid-col-order/grid-col-order-ex
 import { GridInGridExampleComponent } from './grid-in-grid/grid-in-grid-example';
 import { GridJustifyExampleComponent } from './grid-justify/grid-justify-example';
 import { GridMaxwidthExampleComponent } from './grid-maxwidth/grid-maxwidth-example';
-import { GridMultiInputs1ExampleComponent } from './grid-multi-inputs-1/grid-multi-inputs-1-example';
-import { GridMultiInputs2ExampleComponent } from './grid-multi-inputs-2/grid-multi-inputs-2-example';
+import { GridMultiInputs_1ExampleComponent } from './grid-multi-inputs-1/grid-multi-inputs-1-example';
+import { GridMultiInputs_2ExampleComponent } from './grid-multi-inputs-2/grid-multi-inputs-2-example';
 import { GridNogutterExampleComponent } from './grid-nogutter/grid-nogutter-example';
 import { GridOffsetExampleComponent } from './grid-offset/grid-offset-example';
 import { GridOneInputExampleComponent } from './grid-one-input/grid-one-input-example';
@@ -21,8 +21,8 @@ const EXAMPLES = [
     GridColOrderExampleComponent,
     GridJustifyExampleComponent,
     GridMaxwidthExampleComponent,
-    GridMultiInputs1ExampleComponent,
-    GridMultiInputs2ExampleComponent,
+    GridMultiInputs_1ExampleComponent,
+    GridMultiInputs_2ExampleComponent,
     GridNogutterExampleComponent,
     GridOffsetExampleComponent,
     GridOneInputExampleComponent,
@@ -43,8 +43,8 @@ export class GridExamplesModule {
             'grid-col-order': GridColOrderExampleComponent,
             'grid-justify': GridJustifyExampleComponent,
             'grid-maxwidth': GridMaxwidthExampleComponent,
-            'grid-multi-inputs-1': GridMultiInputs1ExampleComponent,
-            'grid-multi-inputs-2': GridMultiInputs2ExampleComponent,
+            'grid-multi-inputs-1': GridMultiInputs_1ExampleComponent,
+            'grid-multi-inputs-2': GridMultiInputs_2ExampleComponent,
             'grid-nogutter': GridNogutterExampleComponent,
             'grid-offset': GridOffsetExampleComponent,
             'grid-one-input': GridOneInputExampleComponent,

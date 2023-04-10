@@ -46,7 +46,7 @@ const EXAMPLES = [
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
-export class ProgressExamplesModule {
+export class ProgressStepperExamplesModule {
     static components() {
         return {
             'progress-stepper': ProgressStepperExampleComponent,

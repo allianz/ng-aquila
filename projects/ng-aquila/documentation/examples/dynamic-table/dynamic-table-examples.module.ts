@@ -34,7 +34,7 @@ const EXAMPLES = [
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
-export class DynamicExamplesModule {
+export class DynamicTableExamplesModule {
     static components() {
         return {
             'dynamic-table': DynamicTableExampleComponent,

@@ -30,7 +30,7 @@ const EXAMPLES = [
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
-export class NotificationExamplesModule {
+export class NotificationPanelExamplesModule {
     static components() {
         return {
             'notification-panel-actions':

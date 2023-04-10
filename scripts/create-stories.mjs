@@ -1,13 +1,14 @@
 import { readdirSync, existsSync, readFileSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 import { storyTemplate } from './story-template.mjs';
+import { pascalCase } from 'pascal-case';
 
 const componentSrcFolder = 'projects/ng-aquila/src';
 const examplesFolder = 'projects/ng-aquila/documentation/examples';
 const ignoreList = ['accessibility', 'core', 'rtl', 'types', 'typography', 'utils', 'stories', 'iso-date-adapter', 'moment-date-adapter'];
 
 const getComponentExampleFolder = componentName => resolve(examplesFolder, componentName);
-const getComponentSrcFolder = (componentName = resolve(componentSrcFolder, componentName));
+const getComponentSrcFolder = componentName => resolve(componentSrcFolder, componentName);
 
 const findComponentSelector = content => {
     const match = content.match(/selector:[\s]'(.*)'/);
@@ -20,8 +21,8 @@ const getExampleComponents = componentName => {
     const folders = readdirSync(componentFolder, { withFileTypes: true })
         .filter(entry => entry.isDirectory())
         .map(entry => entry.name);
-    folders.forEach(exampleName => {
-        const componentFile = resolve(componentFolder, exampleName, `${exampleName}-example.ts`);
+    folders.forEach(exampleFolderName => {
+        const componentFile = resolve(componentFolder, exampleFolderName, `${exampleFolderName}-example.ts`);
         if (!existsSync(componentFile)) {
             console.log(`Error, cannot find ${componentFile}`);
             return;
@@ -29,10 +30,10 @@ const getExampleComponents = componentName => {
         const fileContents = readFileSync(componentFile).toString();
         const selector = findComponentSelector(fileContents);
         if (!selector) {
-            console.log("Error, couldn't find selector", componentName, exampleName);
+            console.log("Error, couldn't find selector", componentName, exampleFolderName);
             return;
         }
-        allExamples.push({ exampleName, selector });
+        allExamples.push({ exampleName: exampleFolderName, selector, exampleComponent: `${pascalCase(exampleFolderName)}ExampleComponent` });
     });
     return allExamples;
 };
@@ -43,7 +44,7 @@ const getExampleModule = componentName => {
     if (!existsSync(modulePath)) {
         throw new Error('Example module not found');
     }
-    return { modulePath, moduleName: `${componentName}-examples.module.ts` };
+    return { modulePath, moduleName: `${pascalCase(componentName)}ExamplesModule`, moduleFile: `${componentName}-examples.module.ts` };
 };
 
 const createComponentStoryFile = (componentName, exampleModule, examples) => {
@@ -72,7 +73,8 @@ componentNames.forEach(componentName => {
     try {
         const moduleData = getExampleModule(componentName);
         const examples = getExampleComponents(componentName);
-        createComponentStoryFile();
+        console.log(examples);
+        createComponentStoryFile(componentName, moduleData, examples);
     } catch (e) {
         console.log(`Error for ${componentName}: `, e);
     }

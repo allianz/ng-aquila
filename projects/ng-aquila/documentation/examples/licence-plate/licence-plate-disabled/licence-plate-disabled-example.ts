@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
     templateUrl: 'licence-plate-disabled-example.html',
     styleUrls: ['licence-plate-disabled-example.css'],
 })
-export class LicencePlateDisabledExample {
+export class LicencePlateDisabledExampleComponent {
     disabled = true;
     value = '';
 }
