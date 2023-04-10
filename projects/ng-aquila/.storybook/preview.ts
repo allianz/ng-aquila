@@ -1,11 +1,18 @@
 import { setCompodocJson } from '@storybook/addon-docs/angular';
-import type { Preview } from '@storybook/angular';
+import { moduleMetadata, Preview } from '@storybook/angular';
+import { NxDocumentationIconModule } from 'projects/ng-aquila/src/documentation-icons/documentation-icons';
 
 import docJson from '../documentation.json';
 
 setCompodocJson(docJson);
 
 const preview: Preview = {
+    decorators: [
+        moduleMetadata({
+            // declarations: [NxButtonComponent, ButtonExampleComponent],
+            imports: [NxDocumentationIconModule],
+        }),
+    ],
     parameters: {
         actions: { argTypesRegex: '^on[A-Z].*' },
         controls: {
