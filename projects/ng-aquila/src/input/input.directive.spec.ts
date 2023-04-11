@@ -1,6 +1,6 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
 
@@ -43,6 +43,7 @@ describe('NxInputDirective', () => {
                 RequiredInput,
                 NgModelInput,
                 BasicInputWithFormControl,
+                BasicInputWithRequiredFormControl,
                 ConfigurableInput,
                 InputWithLabelAndPlaceholder,
                 NoChangeDetectionInput,
@@ -295,6 +296,13 @@ describe('NxInputDirective', () => {
             expect(ariaRequired).toBe('true');
         }));
 
+        it('sets aria-required when form control is required', waitForAsync(() => {
+            createTestComponent(BasicInputWithRequiredFormControl);
+            const ariaRequired = nativeElement.attributes.getNamedItem('aria-required')!.value;
+
+            expect(ariaRequired).toBe('true');
+        }));
+
         it('sets aria-invalid', fakeAsync(() => {
             createTestComponent(NgModelInput);
             inputInstance.ngControl!.control!.markAsTouched();
@@ -360,12 +368,23 @@ class BasicTextarea extends InputTest {}
 @Component({
     template: `
         <nx-formfield nxLabel="Label">
-            <input required nxInput [formControl]="formControl" />
+            <input nxInput [formControl]="formControl" />
         </nx-formfield>
     `,
 })
 class BasicInputWithFormControl extends InputTest {
-    formControl = new FormControl();
+    formControl = new FormControl('');
+}
+
+@Component({
+    template: `
+        <nx-formfield nxLabel="Label">
+            <input nxInput [formControl]="formControl" />
+        </nx-formfield>
+    `,
+})
+class BasicInputWithRequiredFormControl extends InputTest {
+    formControl = new FormControl('', Validators.required);
 }
 
 @Component({
