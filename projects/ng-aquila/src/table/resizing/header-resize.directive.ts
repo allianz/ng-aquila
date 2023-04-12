@@ -34,10 +34,10 @@ export class NxHeaderResizeDirective implements OnInit, OnDestroy, AfterViewChec
             const { width, right } = this.header.elementRef.nativeElement.getBoundingClientRect();
             return merge(this.mousemove, this.touchmove).pipe(
                 map(v => {
-                    if (v instanceof TouchEvent) {
+                    if (window.TouchEvent && v instanceof TouchEvent) {
                         return v.touches[0].screenX;
                     }
-                    return v.clientX;
+                    return (v as MouseEvent).clientX;
                 }),
                 map(clientX => width + clientX - right),
                 distinctUntilChanged(),
