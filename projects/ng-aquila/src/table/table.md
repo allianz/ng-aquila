@@ -34,9 +34,9 @@ Please note that you are only allowed to make the first and/or last column stick
 
 <!-- example(table-sticky) -->
 
-### Column hiding
+### Column hiding and reorder columns
 
-Application developers can implement custom column behavior, such as column hiding.
+Application developers can implement custom column behavior, such as column hiding and reorder columns.
 
 <!-- example(table-column-hiding) -->
 

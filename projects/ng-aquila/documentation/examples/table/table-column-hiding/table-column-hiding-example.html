@@ -8,13 +8,26 @@
     </button>
 </div>
 
-<nx-context-menu #menu="nxContextMenu">
-    <nx-checkbox-group [(ngModel)]="selected">
+<nx-context-menu #menu="nxContextMenu" cdkDropListGroup>
+    <nx-context-menu-header> Column Settings </nx-context-menu-header>
+    <nx-checkbox-group
+        [(ngModel)]="selected"
+        cdkDropList
+        [cdkDropListData]="options"
+        (cdkDropListDropped)="drop($event)"
+    >
         <div
             nxContextMenuItem
             disableCloseOnSelect
             *ngFor="let option of options"
+            cdkDrag
         >
+            <img
+                height="32"
+                aria-hidden="true"
+                src="/assets/images/drag-handler.svg"
+                alt="drag handler icon"
+            />
             <nx-checkbox [value]="option.value">{{option.label}}</nx-checkbox>
         </div>
     </nx-checkbox-group>
