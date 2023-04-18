@@ -50,7 +50,7 @@ describe('NxSelectableCardComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicSelectableCard, ReactiveSelectableCard, DynamicErrorSelectableCard, ExpertSelectableCard],
+            declarations: [BasicSelectableCard, ReactiveSelectableCard, DynamicErrorSelectableCard, ExpertSelectableCard, HighlightSelectableCard],
             imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
         }).compileComponents();
     }));
@@ -107,6 +107,27 @@ describe('NxSelectableCardComponent', () => {
             createTestComponent(ExpertSelectableCard);
             expect(selectableCardInstance.appearance).toBe('expert');
             expect(selectableCardNativeElement).toHaveClass('is-expert');
+        });
+    });
+
+    describe('highlight', () => {
+        it('does not have the highlight', () => {
+            createTestComponent(BasicSelectableCard);
+            expect(selectableCardInstance.highlight).toBe(false);
+            expect(selectableCardNativeElement).not.toHaveClass('is-highlight');
+        });
+
+        it('has the highlight', () => {
+            createTestComponent(HighlightSelectableCard);
+            expect(selectableCardInstance.highlight).toBe(true);
+            expect(selectableCardNativeElement).toHaveClass('is-highlight');
+        });
+
+        it('has the highlight header', () => {
+            createTestComponent(HighlightSelectableCard);
+            const hightlightHeader = selectableCardNativeElement.querySelector('.nx-card-highlight');
+            expect(hightlightHeader).toBeTruthy();
+            expect(hightlightHeader?.textContent?.trim()).toContain('Highlight');
         });
     });
 
@@ -188,6 +209,16 @@ class BasicSelectableCard extends SelectableCardTest {}
     `,
 })
 class ExpertSelectableCard extends SelectableCardTest {}
+
+@Component({
+    template: `
+        <nx-selectable-card highlight>
+            <div nxHighlightHeader>Highlight</div>
+            <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+        </nx-selectable-card>
+    `,
+})
+class HighlightSelectableCard extends SelectableCardTest {}
 
 @Component({
     template: `

@@ -8,8 +8,11 @@
     border-radius: v(card-border-radius);
     box-shadow: none;
     display: inline-block;
-    padding: nx-spacer(m) - nx-border-size(xs);
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
+
+    .nx-card-inner {
+        padding: nx-spacer(m) - nx-border-size(xs);
+    }
 
     &:hover,
     &:focus {
@@ -19,4 +22,18 @@
 
 :host.cdk-keyboard-focused {
     @include focus-style;
+}
+
+.nx-card-highlight {
+    padding: 0 nx-spacer(m) - nx-border-size(xs);
+    border-radius: v(selectable-card-border-radius) v(selectable-card-border-radius) 0 0;
+    background: v(card-highlight-background-color);
+    color: v(card-highlight-text-color);
+    line-height: nx-line-height(xs);
+    font-size: nx-font-size(4xs);
+    text-align: center;
+}
+
+.is-expert .nx-card-highlight {
+    text-align: left;
 }

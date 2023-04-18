@@ -17,14 +17,19 @@
 />
 
 <label [attr.for]="id">
-    <span class="checkbox" *ngIf="appearance === 'default'; else expert">
-        <nx-icon *ngIf="checked" name="check" aria-hidden="true"></nx-icon>
-    </span>
+    <div class="nx-card-highlight" *ngIf="highlight">
+        <ng-content select="[nxHighlightHeader]"></ng-content>
+    </div>
+    <div class="nx-card-inner">
+        <span class="checkbox" *ngIf="appearance === 'default'; else expert">
+            <nx-icon *ngIf="checked" name="check" aria-hidden="true"></nx-icon>
+        </span>
 
-    <div class="content">
-        <ng-content select="nx-card-header"></ng-content>
-        <ng-content></ng-content>
-        <ng-content select="nx-card-footer"></ng-content>
+        <div class="content">
+            <ng-content select="nx-card-header"></ng-content>
+            <ng-content></ng-content>
+            <ng-content select="nx-card-footer"></ng-content>
+        </div>
     </div>
 </label>
 

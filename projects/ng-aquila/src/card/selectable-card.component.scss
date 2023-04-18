@@ -146,17 +146,29 @@ label {
     border: var(--selectable-card-border-width) solid v(selectable-card-border-color);
     display: block;
     position: relative;
-    padding: nx-spacer(s);
     cursor: pointer;
     width: 100%;
     min-height: nx-spacer(l);
     border-radius: v(selectable-card-border-radius);
     background: v(selectable-card-background-color);
 
+    .nx-card-inner {
+        padding: nx-spacer(s);
+    }
+
     &:hover {
         background: v(selectable-card-background-hover-color);
         border-color: v(selectable-card-border-hover-color);
     }
+}
+
+.nx-card-highlight {
+    padding: 0 nx-spacer(s);
+    border-radius: v(selectable-card-border-radius) v(selectable-card-border-radius) 0 0;
+    background: v(card-highlight-background-color);
+    color: v(card-highlight-text-color);
+    line-height: nx-line-height(xs);
+    font-size: nx-font-size(4xs);
 }
 
 // reset hover styles for devices that don't support hover
@@ -178,6 +190,10 @@ label {
     }
 
     .checkmark {
+        opacity: 40%;
+    }
+
+    .nx-card-highlight {
         opacity: 40%;
     }
 
@@ -247,11 +263,14 @@ input.cdk-keyboard-focused + label {
         input:checked + label,
         input:checked + label:hover {
             border-width: nx-border-size(l);
-            padding: nx-spacer(s) - nx-border-size(l) + nx-border-size(xs);
             border-color: highlight;
 
             .checkmark {
                 color: CanvasText;
+            }
+
+            .nx-card-inner {
+                padding: nx-spacer(s) - nx-border-size(l) + nx-border-size(xs);
             }
         }
     }

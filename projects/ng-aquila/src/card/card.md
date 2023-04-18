@@ -13,6 +13,12 @@ Use this component to present a card with different options.
 
 <!-- example(card) -->
 
+### Highlight card
+
+With `highlight` you can allow a highlight header to be shown on the card.
+
+<!-- example(highlight-card) -->
+
 ### Selectable Card
 
 #### Basic
@@ -26,6 +32,12 @@ Use this component to present a card with different options.
 #### Selectable Card States
 
 <!-- example(selectable-card-states) -->
+
+#### Highlight selectable card
+
+With `highlight` you can allow a highlight header to be shown on the card.
+
+<!-- example(highlight-selectable-card) -->
 
 #### Reactive Forms
 

@@ -57,6 +57,7 @@ export const SELECTABLE_CARD_DEFAULT_OPTIONS = new InjectionToken<SelectableCard
         '[attr.aria-invalid]': '_errorState',
         'attr.role': 'checkbox',
         '[attr.aria-checked]': 'checked',
+        '[class.is-highlight]': 'highlight',
     },
 })
 export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck, AfterContentInit, OnDestroy, AfterViewInit {
@@ -192,6 +193,19 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
         return this._tabindex;
     }
     private _tabindex = '0';
+
+    /** Whether the selectable card  is highlight. */
+    @Input() set highlight(value: BooleanInput) {
+        const newValue = coerceBooleanProperty(value);
+        if (newValue !== this._highlight) {
+            this._highlight = newValue;
+            this._cdr.markForCheck();
+        }
+    }
+    get highlight(): boolean {
+        return this._highlight;
+    }
+    private _highlight = false;
 
     @HostBinding('class.is-expert') get _isExpert() {
         return this.appearance === 'expert';
