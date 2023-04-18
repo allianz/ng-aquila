@@ -37,9 +37,11 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
     @Input() container!: string;
 
     links: Link[] = [];
-    headerSelectors = '.docs-markdown--h2, .docs-api-h2, .docs-markdown--h3, .docs-markdown--h4, .docs-api-h3, .docs-api-h4';
 
     _rootUrl = this._router.url.split('#')[0];
+
+    headerSelectors = '.docs-markdown--h2, .docs-api-h2, .docs-markdown--h3, .docs-markdown--h4, .docs-api-h3, .docs-api-h4';
+
     private _urlFragment = '';
     scrollingSubscription: any;
 
@@ -92,6 +94,10 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
     }
 
     private createLinks(): Link[] {
+        if (this._rootUrl === '/guides/CHANGELOG') {
+            return [];
+        }
+
         const links = [];
         const headers = Array.from(this._document.querySelectorAll(this.headerSelectors)) as HTMLElement[];
 

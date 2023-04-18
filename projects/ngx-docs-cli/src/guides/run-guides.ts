@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra';
 import * as glob from 'glob';
 import * as path from 'path';
-import { bindNodeCallback, of, pipe } from 'rxjs';
+import { bindNodeCallback, combineLatest, of, pipe } from 'rxjs';
 import { concatAll, map, mergeMap, take } from 'rxjs/operators';
 
 import { showProcessingNotice } from '../shared/logging';
@@ -14,6 +14,8 @@ import chalk = require('chalk');
 
 const mdFiles$ = bindNodeCallback(glob);
 const outputFile$ = bindNodeCallback(fs.outputFile);
+
+const getChangelogFile = () => of([path.join(process.cwd(), 'CHANGELOG.md')]);
 
 const findAllFiles = filePaths => {
     // when a file array comes from a config.json
@@ -56,8 +58,9 @@ const saveForSearch = (file: MarkdownFile, searchDest: string) => {
 };
 
 export const build = ({ source, dest, searchDest }) =>
-    findAllFiles(source).pipe(
+    combineLatest([findAllFiles(source), getChangelogFile()]).pipe(
         showProcessingNotice('Processing Guides'),
+        map((arrays: any[]) => arrays.flat()),
         concatAll(),
         readMarkdownFileStream,
         transform,
