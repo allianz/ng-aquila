@@ -12,6 +12,17 @@
             @include type-style(checkbox-small-label);
         }
     }
+
+    &.divider {
+        border-bottom: 1px solid v(dropdown-item-divider);
+        margin-bottom: 16px;
+        padding-bottom: 21px;
+
+        &.is-outline {
+            margin-bottom: 7px;
+            padding-bottom: 16px;
+        }
+    }
 }
 
 .nx-checkbox {

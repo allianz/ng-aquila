@@ -13,10 +13,15 @@
     border-radius: nx-border-radius(s);
     background: v(ui-01);
 
+    .filter {
+        --formfield-label-height: 6px;
+        --formfield-bottom-padding: 4px;
+    }
+
     &.is-outline {
         .filter {
             --formfield-label-height: 8px;
-            --formfield-bottom-padding: 8px;
+            --formfield-bottom-padding: 3px;
         }
 
         .items {
@@ -119,9 +124,4 @@
 
 .hidden {
     display: none;
-}
-.divider {
-    border-bottom: 1px solid v(dropdown-item-divider);
-    margin-bottom: 8px;
-    padding-bottom: 16px;
 }
