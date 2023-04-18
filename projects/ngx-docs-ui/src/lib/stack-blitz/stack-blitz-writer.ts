@@ -66,8 +66,6 @@ const dependencies = {
     rxjs: '^6.6.7',
     tslib: '^2.3.0',
     'zone.js': '~0.11.4',
-    '@tinymce/tinymce-angular': '^7.0.0',
-    tinymce: '^6.4.0',
 };
 
 const testDependencies = {
