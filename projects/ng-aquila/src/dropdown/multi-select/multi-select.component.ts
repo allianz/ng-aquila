@@ -251,7 +251,14 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     /**
      * List of options to choose from.
      */
-    @Input() options: S[] = [];
+    private _option: S[] = [];
+    @Input() set options(value: S[]) {
+        this._option = value;
+        this.writeValue(this.ngControl?.value);
+    }
+    get options() {
+        return this._option;
+    }
 
     /**
      * Placeholder for the filter input.

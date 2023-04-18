@@ -641,6 +641,27 @@ describe('NxMultiSelectComponent', () => {
                     { label: 'Cherry', id: 3, otherLabel: 'C' },
                 ]);
             });
+
+            it('should displayed value in the label, If the selected value still exists after the options have been changed', async () => {
+                multiSelectInstance.selectValue = 'label';
+                testInstance.model = ['Potato'];
+                testInstance.options = [
+                    {
+                        label: 'Apple',
+                        otherLabel: 'A',
+                        id: 1,
+                    },
+                    {
+                        label: 'Potato',
+                        otherLabel: 'O',
+                        id: 2,
+                    },
+                ];
+                fixture.detectChanges();
+
+                expect(await multiSelectHarness.getValueText()).toBe('Potato(1)');
+                expect(testInstance.model).toEqual(['Potato']);
+            });
         });
 
         describe('and using selectValue with a string', () => {
