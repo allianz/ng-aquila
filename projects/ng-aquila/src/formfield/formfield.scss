@@ -17,10 +17,11 @@ $outline-padding: 7px;
 .nx-formfield__wrapper {
     padding-bottom: v(formfield-bottom-padding);
     padding-top: v(formfield-label-height);
+}
 
-    @include media-breakpoint-response(mobile) {
-        padding-bottom: v(formfield-mobile-bottom-padding);
-    }
+// the hint should not push the other content down
+.has-hint .nx-formfield__wrapper {
+    padding-bottom: 0;
 }
 
 .nx-formfield__row {
@@ -251,7 +252,6 @@ $outline-padding: 7px;
     }
 
     .nx-formfield__wrapper {
-        padding-bottom: v(formfield-outline-bottom-padding);
         padding-top: v(formfield-outline-label-height);
     }
 
