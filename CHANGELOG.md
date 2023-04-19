@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [15.2.0](https://github.com/allianz/ng-aquila/compare/v15.1.0...v15.2.0) (2023-04-18)
+
+
+### Bug Fixes
+
+* **file-uploader:** file name overflow ([d474a5e](https://github.com/allianz/ng-aquila/commit/d474a5e91bc25ae087b0393768db556c5e0fb06f))
+* **file-uploader:** prevent undefined id and label ([af02631](https://github.com/allianz/ng-aquila/commit/af026313ee21498214e985f35aa05608ca27660a))
+* **forms:** migration to typed forms ([b41d419](https://github.com/allianz/ng-aquila/commit/b41d41928b666390b48badd1afff4a8c06e3702a))
+* **input:** set aria-required when form control is required ([762ec06](https://github.com/allianz/ng-aquila/commit/762ec066a41e39e90064635b2b90f75b7652bf44))
+* **modal:** button styling ([1267d16](https://github.com/allianz/ng-aquila/commit/1267d1662a23184e9540c06794ebbd135a134f8e))
+* **modal:** update vertical spacings ([18bd4e4](https://github.com/allianz/ng-aquila/commit/18bd4e4d60bdca265b1a578600a7c0f3d8d0e14c))
+* **multi-select:** sort by selected before filter ([686f678](https://github.com/allianz/ng-aquila/commit/686f67844a49bcbe13a5099d255d426afbeb9f26))
+* **multi-select/dropdown:** comply with updateOn formcontrol ([ff97c82](https://github.com/allianz/ng-aquila/commit/ff97c8256ae518a2165da80eda7bb8b9c066a34c))
+* **multi-select:** correct divider style ([acf6c93](https://github.com/allianz/ng-aquila/commit/acf6c93b05df74005111e2fe852a42641abe8a10))
+* **multi-select:** keep selected value when option changes ([0f44af1](https://github.com/allianz/ng-aquila/commit/0f44af14dc6b0112a4a41eb94d6600307e1d87c0))
+* **multi-select:** update tooltip on value change ([d6edef6](https://github.com/allianz/ng-aquila/commit/d6edef6eae43fa155a109016b669a66ae026958a))
+* **table:** column resize error in firefox/safari ([946d96d](https://github.com/allianz/ng-aquila/commit/946d96d2f82626c8b0112c521589cf9061ec5272))
+
+
+### Features
+
+* **card:** add highlight header ([b5f37cc](https://github.com/allianz/ng-aquila/commit/b5f37ccb15e326d6bab524abd685b856f00e7bbc))
+* **comparison-table:** add error state ([521bf44](https://github.com/allianz/ng-aquila/commit/521bf44edbd1f22c327432f279a6989ccc38f61e))
+* **error:** allow setting empty appearance and fallback to message type ([bd7c684](https://github.com/allianz/ng-aquila/commit/bd7c684222dd98ee894d7e99fa3ee6cab61faf90))
+* **multi-select:** add opened/closed event ([4e44786](https://github.com/allianz/ng-aquila/commit/4e447861c4c7a7afe77f8ddabb7f1b819a0a962b))
+
+### Styles
+
+* **multi-select:** change select all button style, remove clear all button ([bf01401](https://github.com/allianz/ng-aquila/commit/bf01401af44164457118ea19ca8ea88089878a69))
+
+
 # [15.1.0](https://github.com/allianz/ng-aquila/compare/v15.0.0...v15.1.0) (2023-02-20)
 
 
