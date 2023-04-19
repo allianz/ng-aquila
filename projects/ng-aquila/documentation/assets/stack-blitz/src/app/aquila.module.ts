@@ -13,6 +13,7 @@ import { NxCodeInputModule } from '@aposin/ng-aquila/code-input';
 import { NxComparisonTableModule } from '@aposin/ng-aquila/comparison-table';
 import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
 import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
+import { NxDataDisplayModule } from '@aposin/ng-aquila/data-display';
 import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
 import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
@@ -78,6 +79,7 @@ import { NxVideoModule } from '@aposin/ng-aquila/video';
         NxComparisonTableModule,
         NxContextMenuModule,
         NxCopytextModule,
+        NxDataDisplayModule,
         NxDatefieldModule,
         NxDocumentationIconModule,
         NxDropdownModule,
