@@ -1,9 +1,5 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">OnDestroy</span>, <span class="hljs-title class_">ViewChild</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">UntypedFormBuilder</span>,
-    <span class="hljs-title class_">UntypedFormControl</span>,
-    <span class="hljs-title class_">Validators</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormBuilder</span>, <span class="hljs-title class_">FormControl</span>, <span class="hljs-title class_">Validators</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">NxMultiStepperComponent</span>,
     <span class="hljs-title class_">NxMultiStepperDirection</span>,
@@ -13,8 +9,8 @@
 <span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
 
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Animal</span> {
-    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;dog&#x27;</span> | <span class="hljs-string">&#x27;cat&#x27;</span>;
-    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">animalType</span>: <span class="hljs-built_in">string</span>;
+    name?: <span class="hljs-built_in">string</span>;
     dogBreed?: <span class="hljs-built_in">string</span>;
     catBreed?: <span class="hljs-built_in">string</span>;
     <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span>;
@@ -85,7 +81,7 @@
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subject</span>&lt;<span class="hljs-built_in">void</span>&gt;();
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: UntypedFormBuilder</span>) {
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">animalTypeForm</span>.<span class="hljs-property">form</span>
             .<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;animalType&#x27;</span>)
             ?.<span class="hljs-property">valueChanges</span>.<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">takeUntil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>))
@@ -94,13 +90,13 @@
                     <span class="hljs-variable language_">this</span>.<span class="hljs-property">breedForm</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">removeControl</span>(<span class="hljs-string">&#x27;catBreed&#x27;</span>);
                     <span class="hljs-variable language_">this</span>.<span class="hljs-property">breedForm</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">addControl</span>(
                         <span class="hljs-string">&#x27;dogBreed&#x27;</span>,
-                        <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>),
+                        <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>),
                     );
                 } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (value === <span class="hljs-string">&#x27;cat&#x27;</span>) {
                     <span class="hljs-variable language_">this</span>.<span class="hljs-property">breedForm</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">removeControl</span>(<span class="hljs-string">&#x27;dogBreed&#x27;</span>);
                     <span class="hljs-variable language_">this</span>.<span class="hljs-property">breedForm</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">addControl</span>(
                         <span class="hljs-string">&#x27;catBreed&#x27;</span>,
-                        <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>),
+                        <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>),
                     );
                 }
 
@@ -115,10 +111,10 @@
 
     <span class="hljs-title function_">onSubmit</span>(<span class="hljs-params"></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> = {
-            ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">animalTypeForm</span>.<span class="hljs-property">form</span>.<span class="hljs-property">value</span>,
-            ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">ageForm</span>.<span class="hljs-property">form</span>.<span class="hljs-property">value</span>,
-            ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">breedForm</span>.<span class="hljs-property">form</span>.<span class="hljs-property">value</span>,
-            ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">nameForm</span>.<span class="hljs-property">form</span>.<span class="hljs-property">value</span>,
+            <span class="hljs-attr">animalType</span>: { ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">animalTypeForm</span>.<span class="hljs-property">form</span>.<span class="hljs-property">value</span> } <span class="hljs-keyword">as</span> <span class="hljs-built_in">string</span>,
+            <span class="hljs-attr">age</span>: { ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">ageForm</span>.<span class="hljs-property">form</span>.<span class="hljs-property">value</span> } <span class="hljs-keyword">as</span> <span class="hljs-built_in">number</span>,
+            <span class="hljs-attr">dogBreed</span>: { ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">breedForm</span>.<span class="hljs-property">form</span>.<span class="hljs-property">value</span> } <span class="hljs-keyword">as</span> <span class="hljs-built_in">string</span>,
+            <span class="hljs-attr">catBreed</span>: { ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">nameForm</span>.<span class="hljs-property">form</span>.<span class="hljs-property">value</span> } <span class="hljs-keyword">as</span> <span class="hljs-built_in">string</span>,
         };
 
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">stepper</span>.<span class="hljs-property">steps</span>.<span class="hljs-property">last</span>.<span class="hljs-property">interacted</span> = <span class="hljs-literal">true</span>;

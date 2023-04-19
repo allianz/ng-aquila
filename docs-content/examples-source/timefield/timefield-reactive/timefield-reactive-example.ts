@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Timefield reactive forms example
@@ -14,5 +14,5 @@ export class TimefieldReactiveExampleComponent {
         timefieldReactive: ['22:54', Validators.required],
     });
 
-    constructor(private readonly fb: UntypedFormBuilder) {}
+    constructor(private readonly fb: FormBuilder) {}
 }

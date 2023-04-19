@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-    UntypedFormControl,
-    UntypedFormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 /**
  * @title Four character code input example
@@ -15,11 +11,11 @@ import {
 })
 export class CodeInputFourCharExampleComponent implements OnInit {
     inputValue = '';
-    codeForm!: UntypedFormGroup;
+    codeForm!: FormGroup;
 
     ngOnInit() {
-        this.codeForm = new UntypedFormGroup({
-            keyCode: new UntypedFormControl(this.inputValue, {
+        this.codeForm = new FormGroup({
+            keyCode: new FormControl(this.inputValue, {
                 validators: [
                     Validators.required,
                     Validators.pattern('[A-Z]+'),

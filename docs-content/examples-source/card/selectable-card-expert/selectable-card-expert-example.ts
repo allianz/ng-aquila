@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Selectable cards expert example
@@ -14,7 +14,7 @@ export class SelectableCardExpertExampleComponent {
         card: [false, Validators.requiredTrue],
     });
 
-    constructor(private readonly fb: UntypedFormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         this.formGroup.markAllAsTouched();
     }
 }

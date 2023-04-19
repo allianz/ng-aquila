@@ -1,9 +1,5 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">UntypedFormArray</span>,
-    <span class="hljs-title class_">UntypedFormControl</span>,
-    <span class="hljs-title class_">UntypedFormGroup</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormArray</span>, <span class="hljs-title class_">FormControl</span>, <span class="hljs-title class_">FormGroup</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">DATEPICKER_DEFAULT_OPTIONS</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
 <span class="hljs-keyword">import</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
@@ -28,40 +24,40 @@
     ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TableFormElementsExampleComponent</span> {
-    formArray = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormArray</span>([
-        <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormGroup</span>({
-            <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;123456789&#x27;</span>),
-            <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-number">250.0</span>),
-            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-title function_">moment</span>([<span class="hljs-number">2021</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>])),
-            <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;open&#x27;</span>),
+    formArray = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormArray</span>([
+        <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>({
+            <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;123456789&#x27;</span>),
+            <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">250.0</span>),
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-title function_">moment</span>([<span class="hljs-number">2021</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>])),
+            <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;open&#x27;</span>),
         }),
-        <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormGroup</span>({
-            <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;987654321&#x27;</span>),
-            <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-number">1000.4</span>),
-            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-title function_">moment</span>([<span class="hljs-number">2023</span>, <span class="hljs-number">2</span>, <span class="hljs-number">23</span>])),
-            <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;processing&#x27;</span>),
+        <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>({
+            <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;987654321&#x27;</span>),
+            <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">1000.4</span>),
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-title function_">moment</span>([<span class="hljs-number">2023</span>, <span class="hljs-number">2</span>, <span class="hljs-number">23</span>])),
+            <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;processing&#x27;</span>),
         }),
-        <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormGroup</span>({
-            <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;123456700&#x27;</span>),
-            <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-number">40</span>),
-            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-title function_">moment</span>([<span class="hljs-number">2019</span>, <span class="hljs-number">11</span>, <span class="hljs-number">31</span>])),
-            <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;accepted&#x27;</span>),
+        <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>({
+            <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;123456700&#x27;</span>),
+            <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">40</span>),
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-title function_">moment</span>([<span class="hljs-number">2019</span>, <span class="hljs-number">11</span>, <span class="hljs-number">31</span>])),
+            <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;accepted&#x27;</span>),
         }),
-        <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormGroup</span>({
-            <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;123456780&#x27;</span>),
-            <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-number">501</span>),
-            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-title function_">moment</span>([<span class="hljs-number">2018</span>, <span class="hljs-number">11</span>, <span class="hljs-number">31</span>])),
-            <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;rejected&#x27;</span>),
+        <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>({
+            <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;123456780&#x27;</span>),
+            <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">501</span>),
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-title function_">moment</span>([<span class="hljs-number">2018</span>, <span class="hljs-number">11</span>, <span class="hljs-number">31</span>])),
+            <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;rejected&#x27;</span>),
         }),
     ]);
 
     <span class="hljs-title function_">addRow</span>(<span class="hljs-params"></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">formArray</span>.<span class="hljs-title function_">push</span>(
-            <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormGroup</span>({
-                <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),
-                <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),
-                <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),
-                <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),
+            <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>({
+                <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),
+                <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">0</span>),
+                <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-title function_">moment</span>(<span class="hljs-string">&#x27;&#x27;</span>)),
+                <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),
             }),
         );
     }
@@ -70,7 +66,7 @@
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">formArray</span>.<span class="hljs-title function_">removeAt</span>(index);
     }
 
-    <span class="hljs-title function_">getFormGroup</span>(<span class="hljs-attr">i</span>: <span class="hljs-built_in">number</span>): <span class="hljs-title class_">UntypedFormGroup</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formArray</span>.<span class="hljs-property">controls</span>[i] <span class="hljs-keyword">as</span> <span class="hljs-title class_">UntypedFormGroup</span>;
+    <span class="hljs-title function_">getFormGroup</span>(<span class="hljs-attr">i</span>: <span class="hljs-built_in">number</span>): <span class="hljs-title class_">FormGroup</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formArray</span>.<span class="hljs-property">controls</span>[i] <span class="hljs-keyword">as</span> <span class="hljs-title class_">FormGroup</span>;
     }
 }

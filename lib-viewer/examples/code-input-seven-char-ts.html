@@ -1,9 +1,5 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">OnInit</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">UntypedFormControl</span>,
-    <span class="hljs-title class_">UntypedFormGroup</span>,
-    <span class="hljs-title class_">Validators</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormControl</span>, <span class="hljs-title class_">FormGroup</span>, <span class="hljs-title class_">Validators</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Seven character code input example
@@ -15,11 +11,11 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CodeInputSevenCharExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnInit</span> {
     inputValue = <span class="hljs-string">&#x27;&#x27;</span>;
-    codeForm!: <span class="hljs-title class_">UntypedFormGroup</span>;
+    codeForm!: <span class="hljs-title class_">FormGroup</span>;
 
     <span class="hljs-title function_">ngOnInit</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">codeForm</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormGroup</span>({
-            <span class="hljs-attr">keyCode</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">UntypedFormControl</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">inputValue</span>, {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">codeForm</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>({
+            <span class="hljs-attr">keyCode</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">inputValue</span>, {
                 <span class="hljs-attr">validators</span>: [<span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-title function_">minLength</span>(<span class="hljs-number">7</span>)],
                 <span class="hljs-attr">updateOn</span>: <span class="hljs-string">&#x27;submit&#x27;</span>,
             }),

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Reactive example
@@ -10,7 +10,7 @@ import { UntypedFormBuilder, Validators } from '@angular/forms';
     styleUrls: ['./dropdown-reactive-example.css'],
 })
 export class DropdownReactiveExampleComponent {
-    form = new UntypedFormBuilder().group({
+    form = new FormBuilder().group({
         dropdown: ['BMW', Validators.required],
     });
 

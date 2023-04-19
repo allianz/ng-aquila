@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import {
+    CdkDragDrop,
+    moveItemInArray,
+    transferArrayItem,
+} from '@angular/cdk/drag-drop';
+import { ChangeDetectorRef, Component } from '@angular/core';
 
 /**
  * @title Table Column Options
@@ -9,6 +14,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./table-column-hiding-example.css'],
 })
 export class TableCoumnHidingExampleComponent {
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
     tableElements = [
         {
             product: 'Car',
@@ -57,5 +63,30 @@ export class TableCoumnHidingExampleComponent {
         { label: 'Status', value: 'statusText' },
     ];
 
-    selected = ['product', 'website', 'endingAt', 'statusText'];
+    selected = [
+        'product',
+        'website',
+        'endingAt',
+        'statusText',
+        'contractNumber',
+        'desc',
+    ];
+
+    drop(event: CdkDragDrop<any[]>) {
+        if (event.previousContainer === event.container) {
+            moveItemInArray(
+                event.container.data,
+                event.previousIndex,
+                event.currentIndex,
+            );
+        } else {
+            transferArrayItem(
+                event.previousContainer.data,
+                event.container.data,
+                event.previousIndex,
+                event.currentIndex,
+            );
+        }
+        this._cdr.detectChanges();
+    }
 }

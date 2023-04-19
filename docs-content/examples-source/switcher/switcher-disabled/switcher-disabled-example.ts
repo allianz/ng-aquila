@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /** @title Switcher Disabled Reactive Form */
 @Component({
@@ -15,7 +15,7 @@ export class SwitcherDisabledExampleComponent {
         switcherDisabledReactive: [false, Validators.requiredTrue],
     });
 
-    constructor(private readonly fb: UntypedFormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         this.testForm.disable();
     }
 

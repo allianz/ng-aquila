@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import {
-    UntypedFormControl,
-    UntypedFormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 /**
  * @title Phone input usage in forms
@@ -15,11 +11,11 @@ import {
 })
 export class PhoneInputFormsExampleComponent {
     value = '';
-    formGroup: UntypedFormGroup;
+    formGroup: FormGroup;
 
     constructor() {
-        this.formGroup = new UntypedFormGroup({
-            phone: new UntypedFormControl('', Validators.required),
+        this.formGroup = new FormGroup({
+            phone: new FormControl('', Validators.required),
         });
     }
 }

@@ -67,3 +67,17 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ApplicationModule</span> {}
 </code></pre>
+<h3 id="reset-error-state" tabindex="-1" class="docs-markdown--h3">Reset error state</h3>
+<p class="docs-markdown--p">To reset the validation state of an Angular form, use <code>resetForm</code> from the formGroup directive instead of the formGroup instance. This method checks for the form submitted state which available via the directive.</p>
+<pre><code>&lt;form [formGroup]=&quot;myForm&quot; (ngSubmit)=&quot;submitForm(ngForm)&quot; #ngForm=&quot;ngForm&quot;&gt;
+</code></pre>
+<pre><code>submitForm(ngForm: FormGroupDirective): void {
+
+  // won't work!
+  // this.myForm.reset();
+
+  // resets the form to the initial values and also resets the `submitted` status.
+  ngForm.resetForm();
+}
+</code></pre>
+<div nx-docs-example="error-reset" config="{}">exampleID: error-reset</div>

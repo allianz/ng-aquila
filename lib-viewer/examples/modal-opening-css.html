@@ -2,14 +2,15 @@
     <span class="hljs-attribute">display</span>: flex;
     <span class="hljs-attribute">flex-direction</span>: column;
     <span class="hljs-attribute">align-items</span>: center;
+    <span class="hljs-attribute">text-align</span>: center;
 }
 
-<span class="hljs-selector-class">.two-button-container</span> {
-    <span class="hljs-attribute">flex-direction</span>: row;
-    <span class="hljs-attribute">display</span>: flex;
-    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
-}
+<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">703px</span>) {
+    <span class="hljs-selector-class">.two-button-container</span> {
+        <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+    }
 
-<span class="hljs-selector-class">.two-button-container</span> <span class="hljs-selector-tag">button</span> {
-    <span class="hljs-attribute">flex</span>: auto;
+    <span class="hljs-selector-class">.two-button-container</span> <span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:first</span>-child {
+        <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">16px</span>;
+    }
 }

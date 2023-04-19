@@ -417,6 +417,8 @@
   --card-border-color: var(--ui-04);
   --card-border-width: 1px;
   --card-border-radius: 4px;
+  --card-highlight-text-color: var(--text-01);
+  --card-highlight-background-color: ui-3;
   --comparison-table-popular-cell-text-color: var(--text-01);
   --comparison-table-popular-cell-background-color: #194666;
   --comparison-table-selected-column-background-color: var(--ui-03);

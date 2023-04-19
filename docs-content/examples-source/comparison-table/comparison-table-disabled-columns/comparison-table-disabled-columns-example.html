@@ -28,7 +28,10 @@
                         ></button>
                     </div>
                 </nx-comparison-table-cell>
-                <nx-comparison-table-cell type="header" disabledColumn="true">
+                <nx-comparison-table-cell
+                    type="header"
+                    [disabledColumn]="disableColumn"
+                >
                     <div class="header-container">
                         <p class="product-title">Product 3</p>
                         <p class="product-price">115,99 €</p>
@@ -100,15 +103,33 @@
                         </nx-popover>
                     </div>
                 </nx-comparison-table-description-cell>
-                <nx-comparison-table-cell disabledColumn="true"
+                <nx-comparison-table-cell [disabledColumn]="disableColumn"
                     >100 Mio. Euro</nx-comparison-table-cell
                 >
                 <nx-comparison-table-cell
                     >150 Mio. Euro</nx-comparison-table-cell
                 >
                 <nx-comparison-table-cell
-                    >200 Mio. Euro</nx-comparison-table-cell
-                >
+                    >200 Mio. Euro
+                    <nx-formfield
+                        nxLabel="Select Product"
+                        class="nx-margin-top-s"
+                    >
+                        <nx-dropdown [nxDisabled]="disableColumn">
+                            <nx-dropdown-item>product A</nx-dropdown-item>
+                        </nx-dropdown>
+                    </nx-formfield>
+                    <nx-formfield nxLabel="Text">
+                        <input nxInput type="text" [disabled]="disableColumn" />
+                    </nx-formfield>
+                    <nx-checkbox
+                        [disabled]="disableColumn"
+                        class="nx-margin-top-s"
+                    >
+                        Checked<br />
+                        An action or item is selected.
+                    </nx-checkbox>
+                </nx-comparison-table-cell>
             </ng-container>
 
             <ng-container nxComparisonTableRow type="footer">

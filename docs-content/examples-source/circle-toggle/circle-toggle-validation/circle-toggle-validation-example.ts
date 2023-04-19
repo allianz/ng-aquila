@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
     AbstractControl,
-    UntypedFormBuilder,
+    FormBuilder,
     ValidatorFn,
     Validators,
 } from '@angular/forms';
@@ -22,7 +22,7 @@ const selectBothValidator: ValidatorFn = (ctrl: AbstractControl) => {
     styleUrls: ['./circle-toggle-validation-example.css'],
 })
 export class CircleToggleValidationExampleComponent {
-    formBuilder = new UntypedFormBuilder();
+    formBuilder = new FormBuilder();
 
     testForm = this.formBuilder.group({
         reactiveToggle: ['', Validators.required],

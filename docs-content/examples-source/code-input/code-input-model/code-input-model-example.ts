@@ -1,9 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-    UntypedFormControl,
-    UntypedFormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -18,8 +14,8 @@ import { takeUntil } from 'rxjs/operators';
 export class CodeInputModelExampleComponent implements OnInit, OnDestroy {
     inputValue = '';
 
-    codeForm = new UntypedFormGroup({
-        keyCode: new UntypedFormControl(this.inputValue, {
+    codeForm = new FormGroup({
+        keyCode: new FormControl(this.inputValue, {
             validators: [Validators.required, Validators.minLength(4)],
             updateOn: 'change',
         }),

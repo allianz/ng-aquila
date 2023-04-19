@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 /**
  * @title Disabled as part of disabled form example
@@ -10,7 +10,7 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
     styleUrls: ['./number-stepper-disabled-implicit-example.css'],
 })
 export class NumberStepperDisabledImplicitExampleComponent {
-    fb = new UntypedFormGroup({
-        amount: new UntypedFormControl({ value: '', disabled: true }),
+    fb = new FormGroup({
+        amount: new FormControl({ value: '', disabled: true }),
     });
 }

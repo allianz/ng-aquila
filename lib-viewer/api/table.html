@@ -6,7 +6,7 @@
             <span class="docs-api-module-import__import-span">import</span>
             { NxTableModule }
             <span class="docs-api-module-import__from-span">from</span>
-            <span class="docs-api-module-import__path-span">'@aposin/ng-aquila'</span>;
+            <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/table'</span>;
         </code>
     </p><h3 id="components" class="docs-header-link docs-api-h3">
         <span header-link="components"></span>
@@ -496,10 +496,10 @@ It provides the logic to expand/collapse all expandable rows simultanously.</p>
                 <span class="docs-api-property__type">merge(this.mousedown, this.touchstart).pipe(tap(e => e.stopPropagation()), tap(e => e.preventDefault()), switchMap(() => {
     const { width, right } = this.header.elementRef.nativeElement.getBoundingClientRect();
     return merge(this.mousemove, this.touchmove).pipe(map(v => {
-        if (v instanceof TouchEvent) {
+        if (window.TouchEvent && v instanceof TouchEvent) {
             return v.touches[0].screenX;
         }
-        return v.clientX;
+        return (v as MouseEvent).clientX;
     }), map(clientX => width + clientX - right), distinctUntilChanged(), tap(v => {
         const minWidth = 50;
         const newWidth = Math.max(v, minWidth);

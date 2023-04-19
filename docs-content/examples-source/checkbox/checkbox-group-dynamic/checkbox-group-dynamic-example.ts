@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Checkbox group dynamic checkboxes example
@@ -18,7 +18,7 @@ export class CheckboxGroupDynamicExampleComponent {
 
     i = 1;
 
-    constructor(private readonly fb: UntypedFormBuilder) {}
+    constructor(private readonly fb: FormBuilder) {}
 
     addNewCb() {
         this.data.push('Checkbox ' + this.i);

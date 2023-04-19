@@ -35,7 +35,7 @@
 <p class="docs-markdown--p">Multiple table rows can be grouped in a toggle section (<code>nxComparisonTableToggleSection</code>) with a toggle section header (<code>nx-comparison-table-toggle-section-header</code>) as shown in the example below.</p>
 <div nx-docs-example="comparison-table-with-toggle-sections" config="{}">exampleID: comparison-table-with-toggle-sections</div>
 <h4 id="disabled-table-columns" tabindex="-1" class="docs-markdown--h4">Disabled table columns</h4>
-<p class="docs-markdown--p">You can disable certain columns of the comparison table via the input <code>disabledColumn</code> on a header <code>nx-comparison-table-cell</code> as shown in the example below. Keep in mind that the <code>disabledColumn</code> attribute can be set only on header cells.</p>
+<p class="docs-markdown--p">You can disable certain columns of the comparison table via the input <code>disabledColumn</code> on a header <code>nx-comparison-table-cell</code> as shown in the example below. Keep in mind that the <code>disabledColumn</code> attribute can be set only on header cells. Note that disabling a column in the comparison table using the <code>disabledColumn</code> attribute on a header cell won't automatically disable other input fields like dropdowns, text fields, and checkboxes. You'll have to manually disable those fields using the disabled attribute.</p>
 <div nx-docs-example="comparison-table-disabled-columns" config="{}">exampleID: comparison-table-disabled-columns</div>
 <h4 id="hidden-table-columns" tabindex="-1" class="docs-markdown--h4">Hidden table columns</h4>
 <p class="docs-markdown--p">You can hide certain columns of the comparison table via the input <code>hiddenIndexes</code> on table <code>nx-comparison-table</code> as shown in the example below. Keep in mind that <code>hiddenIndexes</code> will also hide selected columns - to avoid submitting selections of not visible columns please make sure that you do not provide the possibility to hide columns that are selected at the same time.</p>
@@ -73,3 +73,6 @@
 <p class="docs-markdown--p">A more neutral variant is available for expert applications.</p>
 <div nx-docs-example="recommendation-table-expert" config="{}">exampleID: recommendation-table-expert</div>
 </div>
+<h4 id="error-state" tabindex="-1" class="docs-markdown--h4">Error state</h4>
+<p class="docs-markdown--p">You can display an error state for the header and footer of the table using the <code>isError</code> attribute as shown in the example below.</p>
+ <div nx-docs-example="comparison-table-error" config="{}">exampleID: comparison-table-error</div>

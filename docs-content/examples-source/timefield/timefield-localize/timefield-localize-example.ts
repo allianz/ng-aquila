@@ -1,9 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import {
-    UntypedFormControl,
-    UntypedFormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NxTimefieldIntl } from '@aposin/ng-aquila/timefield';
 
 @Injectable()
@@ -22,11 +18,11 @@ export class MyIntl extends NxTimefieldIntl {
     providers: [{ provide: NxTimefieldIntl, useClass: MyIntl }],
 })
 export class TimefieldLocalizeExampleComponent implements OnInit {
-    testForm!: UntypedFormGroup;
+    testForm!: FormGroup;
 
     ngOnInit(): void {
-        this.testForm = new UntypedFormGroup({
-            today: new UntypedFormControl('', {
+        this.testForm = new FormGroup({
+            today: new FormControl('', {
                 validators: [Validators.required],
             }),
         });

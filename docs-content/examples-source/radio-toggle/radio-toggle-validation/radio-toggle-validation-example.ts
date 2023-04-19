@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 /**
  * @title Validation Example
@@ -18,9 +18,9 @@ export class RadioToggleValidationExampleComponent {
 
     isSubmitted = false;
 
-    constructor(private readonly fb: UntypedFormBuilder) {}
+    constructor(private readonly fb: FormBuilder) {}
 
-    private customValidation(formGroup: UntypedFormGroup) {
+    private customValidation(formGroup: FormGroup) {
         return formGroup.value !== 'B' ? { valid: false } : null;
     }
 

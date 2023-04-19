@@ -1,10 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-    UntypedFormControl,
-    UntypedFormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
     NxFileUploadConfig,
     NxFileUploader,
@@ -39,8 +35,8 @@ export class FileUploaderReactiveExampleComponent implements OnInit, OnDestroy {
 
     readonly uploader = new NxFileUploader(this.uploadConfig, this.http);
 
-    readonly testForm = new UntypedFormGroup({
-        documents: new UntypedFormControl([], Validators.required),
+    readonly testForm = new FormGroup({
+        documents: new FormControl([], Validators.required),
     });
 
     private readonly _destroyed = new Subject<void>();

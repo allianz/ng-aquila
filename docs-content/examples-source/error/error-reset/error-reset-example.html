@@ -1,0 +1,15 @@
+<form [formGroup]="form" #formGroupDirective>
+    <nx-formfield nxLabel="Label">
+        <input nxInput formControlName="label" />
+        <nx-error nxFormfieldError> This field is required. </nx-error>
+    </nx-formfield>
+    <button type="submit" nxButton="primary small">submit</button>
+    <button
+        type="button"
+        nxButton="secondary small"
+        class="nx-margin-left-s"
+        (click)="formGroupDirective.reset()"
+    >
+        Reset
+    </button>
+</form>
