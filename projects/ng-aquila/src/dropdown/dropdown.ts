@@ -129,6 +129,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         '[attr.aria-required]': 'required',
         '[attr.aria-disabled]': 'disabled',
         '[attr.aria-labelledby]': '_getAriaLabelledBy()',
+        '[attr.aria-controls]': 'modalId',
         'aria-haspopup': 'listbox',
         '[attr.aria-expanded]': 'panelOpen',
         '[attr.readonly]': 'readonly || null',
@@ -155,6 +156,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
     /** The ID of rendered dropdown html element. */
     readonly renderedValueId: string = `nx-dropdown-rendered-${nextUniqueId++}`;
+    readonly modalId: string = `nx-dropdown-modal-${nextUniqueId++}`;
 
     private _focused = false;
 
