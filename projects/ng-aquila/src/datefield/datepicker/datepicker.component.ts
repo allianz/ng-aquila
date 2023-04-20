@@ -5,6 +5,7 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+import { FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ESCAPE } from '@angular/cdk/keycodes';
@@ -13,6 +14,7 @@ import { ComponentPortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
 import {
     AfterContentInit,
+    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ComponentRef,
@@ -89,15 +91,29 @@ export const DATEPICKER_DEFAULT_OPTIONS = new InjectionToken<DatepickerDefaultOp
     exportAs: 'nxDatepickerContent',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NxDatepickerContentComponent<D> implements AfterContentInit {
+export class NxDatepickerContentComponent<D> implements AfterContentInit, AfterViewInit, OnDestroy {
     datepicker!: NxDatepickerComponent<D>;
 
     @ViewChild(NxCalendarComponent, { static: true }) _calendar!: NxCalendarComponent<D>;
+    @ViewChild('closeButton') _closeButton!: ElementRef<HTMLElement>;
 
-    constructor(readonly _intl: NxDatepickerIntl, readonly elementRef: ElementRef, private readonly _ngZone: NgZone) {}
+    constructor(
+        readonly _intl: NxDatepickerIntl,
+        readonly elementRef: ElementRef,
+        private readonly _ngZone: NgZone,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {}
 
     ngAfterContentInit(): void {
         this._focusActiveCell();
+    }
+
+    ngAfterViewInit(): void {
+        this._focusMonitor.monitor(this._closeButton);
+    }
+
+    ngOnDestroy(): void {
+        this._focusMonitor.stopMonitoring(this._closeButton);
     }
 
     /** Focuses the active cell after the microtask queue is empty. */

@@ -1,22 +1,23 @@
-<div class="nx-datepicker-header">
-    <button (click)="datepicker.close()" class="nx-datepicker-close" type="button">
-        <nx-icon name="close"></nx-icon>
-    </button>
-</div>
+<div class="nx-calendar-focus-trap" cdkTrapFocus>
+    <div class="nx-datepicker-header">
+        <button (click)="datepicker.close()" class="nx-datepicker-close" type="button" #closeButton>
+            <nx-icon name="close"></nx-icon>
+        </button>
+    </div>
 
-<nx-calendar
-    cdkTrapFocus
-    [id]="datepicker.id"
-    [ngClass]="datepicker.panelClass"
-    [startAt]="datepicker.startAt"
-    [startView]="datepicker.startView"
-    [minDate]="datepicker.minDate"
-    [maxDate]="datepicker.maxDate"
-    [dateFilter]="datepicker.dateFilter"
-    [selected]="datepicker.selected"
-    (selectedChange)="datepicker.select($event)"
-    (yearSelected)="datepicker.selectYear($event)"
-    (monthSelected)="datepicker.selectMonth($event)"
-    (_userSelection)="datepicker.close()"
->
-</nx-calendar>
+    <nx-calendar
+        [id]="datepicker.id"
+        [ngClass]="datepicker.panelClass"
+        [startAt]="datepicker.startAt"
+        [startView]="datepicker.startView"
+        [minDate]="datepicker.minDate"
+        [maxDate]="datepicker.maxDate"
+        [dateFilter]="datepicker.dateFilter"
+        [selected]="datepicker.selected"
+        (selectedChange)="datepicker.select($event)"
+        (yearSelected)="datepicker.selectYear($event)"
+        (monthSelected)="datepicker.selectMonth($event)"
+        (_userSelection)="datepicker.close()"
+    >
+    </nx-calendar>
+</div>

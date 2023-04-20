@@ -33,6 +33,11 @@ $calendar-width-mobile: calc(7 * #{$item-size} + 2 * #{$spacing-sides-calendar-m
     border-radius: nx-border-radius(s);
 }
 
+.nx-calendar-focus-trap {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
 .nx-datepicker-header {
     background: v(datefield-panel-header-background-color);
     padding: calc(#{$header-padding} - #{$datepicker-border-width}) $header-padding $header-padding $header-padding;
@@ -59,6 +64,11 @@ $calendar-width-mobile: calc(7 * #{$item-size} + 2 * #{$spacing-sides-calendar-m
         margin-right: auto;
         margin-left: initial;
     }
+}
+
+.nx-datepicker-close.cdk-keyboard-focused {
+    @include focus-style;
+    border-radius: nx-border-radius(s);
 }
 
 nx-calendar {
