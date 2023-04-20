@@ -135,7 +135,7 @@ Use `nogutters` to remove the spacing from rows and (direct) columns. Use `nopad
 <!-- example(grid-nogutter) -->
 
 #### Grid in grid
-You can nest grids inside of other grids to get subdivided columns and achieve more granular positioning. Make sure to use `nogutter` and `nopadding` for [grid in grid scenario](./documentation/grid/overview#nogutters-and-nopadding).
+You can nest grids inside of other grids to get subdivided columns and achieve more granular positioning. Make sure to use `nogutters` and `nopadding` for [grid in grid scenario](./documentation/grid/overview#nogutters-and-nopadding).
 <!-- example(grid-in-grid) -->
 
 #### MaxWidth
