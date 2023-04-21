@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RouterModule } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 
 import 'zone.js';
 
@@ -23,6 +24,7 @@ import { AquilaDocsExample } from './app/aquila-docs-example';
         ReactiveFormsModule,
         RouterModule.forRoot([]),
         AquilaModule,
+        NgOptimizedImage,
     ],
 })
 export class AppModule {}

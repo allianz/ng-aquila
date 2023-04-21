@@ -6,6 +6,15 @@ expert: true
 stable: done
 ---
 
+### NgOptimizedImage
+
+You have the possibility to use optimized images with the [new Angular Image Directive capabilities](https://developer.chrome.com/blog/angular-image-directive/). In order to take advantage of `NgOptimizedImage`, make sure to [import it into your module](https://angular.io/api/common/NgOptimizedImage#description).
+
+```ts
+import { NgOptimizedImage } from '@angular/common';
+```
+
+
 ### Default images
 
 In general, the `<img>` element will always be contained in a `<figure>` element with a `nxFigure` attribute. Modifiers, which affect the visual appearance and behaviour of the image, are applied as input to the `nxFigure` attribute. These include modifiers for the aspect ratio as well as the general shape of the image, as detailed below.
