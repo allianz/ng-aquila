@@ -11,28 +11,37 @@
     display: none;
 }
 
-.nx-comparison-table__cell-content {
+//  Error state : desktop
+.nx-comparison-table__footer-cell,
+.nx-comparison-table__header-cell {
     &.is-error {
-        border-top: 1px solid var(--danger) !important;
-        border-bottom: 1px solid var(--danger) !important;
+        .nx-comparison-table__cell-content {
+            border-top: 1px solid var(--danger);
+            border-bottom: 1px solid var(--danger);
+        }
     }
-    &.is-error-first {
-        border-left: 1px solid var(--danger) !important;
+    &.first.is-error {
+        .nx-comparison-table__cell-content {
+            border-left: 1px solid var(--danger);
+        }
     }
-    &.is-error-last {
-        border-right: 1px solid var(--danger) !important;
+    &.last.is-error {
+        .nx-comparison-table__cell-content {
+            border-right: 1px solid var(--danger);
+        }
     }
 }
 
+//  Error state : mobile
 .nx-comparison-table__mobile-header-cell {
     &.is-error {
         border-left: 1px solid var(--danger) !important;
         border-right: 1px solid var(--danger) !important;
     }
-    &.is-error-first {
+    &.first.is-error {
         border-top: 1px solid var(--danger) !important;
     }
-    &.is-error-last {
+    &.last.is-error {
         border-bottom: 1px solid var(--danger) !important;
     }
 }

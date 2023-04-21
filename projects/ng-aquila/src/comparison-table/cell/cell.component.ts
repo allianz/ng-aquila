@@ -1,10 +1,9 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, ContentChild, EventEmitter, Input, Optional, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Optional, Output, TemplateRef, ViewChild } from '@angular/core';
 
 import { NxComparisonTableRowType } from '../comparison-table.models';
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
-import { NxComparisonTableSelectButton } from '../select-button/select-button.component';
 import { NxToggleSectionBase } from '../toggle-section/toggle-section-base';
 
 let nextId = 0;
@@ -16,7 +15,6 @@ let nextId = 0;
 })
 export class NxComparisonTableCell {
     @ViewChild('content', { static: true }) _content!: TemplateRef<any>;
-    @ContentChild(NxComparisonTableSelectButton) selectButton!: NxComparisonTableSelectButton;
 
     /** @docs-private */
     @Input() set index(newValue: number) {
@@ -99,19 +97,6 @@ export class NxComparisonTableCell {
         return Array.isArray(this._table._hiddenIndexes) && this._table._hiddenIndexes.includes(this.index);
     }
 
-    _getErrorClass(): string {
-        if (!this.selectButton || !this._table.isError) {
-            return '';
-        }
-        if (this._isLastColumn()) {
-            return 'is-error is-error-last';
-        }
-        if (this._isFirstColumn()) {
-            return 'is-error is-error-first';
-        }
-        return 'is-error';
-    }
-
     _selectCell() {
         this._table.selectedIndex = this.index;
     }
@@ -132,11 +117,11 @@ export class NxComparisonTableCell {
         return headers;
     }
 
-    _isLastColumn() {
-        return this.index + 1 === this._table._infoColumnCount();
+    _isFirst() {
+        return this.index === 0;
     }
 
-    _isFirstColumn() {
-        return this.index === 0;
+    _isLast() {
+        return this.index + 1 === this._table._infoColumnCount();
     }
 }

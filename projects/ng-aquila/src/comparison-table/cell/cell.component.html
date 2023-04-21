@@ -2,14 +2,19 @@
     <ng-container *ngIf="_table.viewType === 'desktop' || _table.viewType === 'tablet'">
         <div
             class="nx-comparison-table__cell"
+            [class.nx-comparison-table__header-cell]="type === 'header'"
+            [class.nx-comparison-table__footer-cell]="type === 'footer'"
             [class.is-disabled]="_isCellDisabled"
             [attr.role]="type === 'header' ? 'columnheader' : 'cell'"
             [class.is-selected]="_isSelected()"
             [class.is-hidden]="_isCellHidden()"
             [attr.id]="id"
             [attr.headers]="_getHeaderIds()"
+            [class.is-error]="_table.isError"
+            [class.first]="_isFirst()"
+            [class.last]="_isLast()"
         >
-            <div class="nx-comparison-table__cell-content" [ngClass]="_getErrorClass()">
+            <div class="nx-comparison-table__cell-content">
                 <ng-container *ngTemplateOutlet="ngContent"></ng-container>
             </div>
         </div>
@@ -18,12 +23,15 @@
         <td
             [class.nx-comparison-table__mobile-header-cell]="type === 'header'"
             [class.nx-comparison-table__cell]="type !== 'header'"
+            [class.nx-comparison-table__footer-cell]="type === 'footer'"
             [class.is-selected]="_isSelected()"
             [class.is-hidden]="_isCellHidden()"
             [attr.scope]="type === 'header' ? 'row' : ''"
             [attr.id]="id"
             [attr.headers]="_getHeaderIds()"
-            [ngClass]="_getErrorClass()"
+            [class.is-error]="_table.isError"
+            [class.first]="_isFirst()"
+            [class.last]="_isLast()"
         >
             <ng-container *ngTemplateOutlet="ngContent"></ng-container>
         </td>

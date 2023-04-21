@@ -20,6 +20,7 @@ abstract class CellTest {
 
     selected = 0;
     headerTestId = 'header-cell-0';
+    isError = false;
 }
 
 describe('NxComparisonTableCell', () => {
@@ -83,6 +84,16 @@ describe('NxComparisonTableCell', () => {
             expect(cellInstances.toArray()[0].type).toBe('header');
             expect(cellInstances.toArray()[1].type).toBe('content');
             expect(cellInstances.toArray()[2].type).toBe('footer');
+        });
+
+        it('should set is-error class when table is error', () => {
+            createTestComponent(ConfigurableCellComponent);
+            const contentCell = cellElements[0].nativeElement;
+
+            testInstance.isError = true;
+            fixture.detectChanges();
+
+            expect(contentCell.classList.contains('is-error')).toBeTruthy();
         });
     });
 
@@ -233,7 +244,7 @@ class BasicCellComponent extends CellTest {}
 
 @Component({
     template: `
-        <nx-comparison-table [selectedIndex]="selected">
+        <nx-comparison-table [selectedIndex]="selected" [isError]="isError">
             <ng-container nxComparisonTableRow type="header">
                 <nx-comparison-table-cell type="header" [id]="headerTestId">This is a header cell</nx-comparison-table-cell>
             </ng-container>
