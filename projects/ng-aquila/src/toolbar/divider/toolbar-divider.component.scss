@@ -1,0 +1,8 @@
+@import '../../shared-styles/index';
+
+:host {
+    background-color: var(--header-border-color);
+    width: 1px;
+    height: 32px;
+    margin: nx-spacer(s);
+}

@@ -1,0 +1,13 @@
+.nx-toolbar-description {
+    margin-right: auto;
+}
+
+.dot {
+    padding-left: 12px;
+    position: relative;
+}
+.dot::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+}

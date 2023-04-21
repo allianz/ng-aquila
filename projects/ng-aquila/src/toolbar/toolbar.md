@@ -15,6 +15,12 @@ The toolbar is a visual container for elements (e.g. icons, buttons, icon toolti
 
 <!-- example(toolbar) -->
 
+### Toolbar with divider
+
+In combination with a business description and a divider line, an icon only back-link can be used. Use `<nx-toolbar-divider>` for the divider.
+
+<!-- example(toolbar-divider) -->
+
 ### Positioning toolbar content
 
 The toolbar component is a container for its content without any positioning. So you have the freedom to position the content depending on the use case.
