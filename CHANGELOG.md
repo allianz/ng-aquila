@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [15.2.1](https://github.com/allianz/ng-aquila/compare/v15.2.0...v15.2.1) (2023-04-21)
+
+
+### Bug Fixes
+
+* **comparison-table:** avoid circular dependency ([3743236](https://github.com/allianz/ng-aquila/commit/37432362be84f79139e82106fa3313857f1b05bf))
+* **data-display:** add missing module in stackblitz ([edb9bfa](https://github.com/allianz/ng-aquila/commit/edb9bfa7850b4294fffcb572fba23c2114443076))
+* **datepicker:** add focus to close button ([0e2ac29](https://github.com/allianz/ng-aquila/commit/0e2ac296f44dcdee1ee56a7d399377fc1f190443))
+* **dropdown:** add aria-controls ([70368f2](https://github.com/allianz/ng-aquila/commit/70368f23c1858921b01a572c634efc99793e848c))
+
+
+
 # [15.2.0](https://github.com/allianz/ng-aquila/compare/v15.1.0...v15.2.0) (2023-04-18)
 
 
@@ -31,6 +43,10 @@ All notable changes to this project will be documented in this file. See [standa
 ### Styles
 
 * **multi-select:** change select all button style, remove clear all button ([bf01401](https://github.com/allianz/ng-aquila/commit/bf01401af44164457118ea19ca8ea88089878a69))
+
+### BREAKING CHANGES
+
+-   We have moved DayJS and Decimal.js to peerDepencencies ([fa5eef59f](https://github.com/allianz/ng-aquila/commit/fa5eef59ff9d18af16d5868c4fc715a26eb97586)). In case you experience problems, make sure you install these libraries.
 
 
 # [15.1.0](https://github.com/allianz/ng-aquila/compare/v15.0.0...v15.1.0) (2023-02-20)
