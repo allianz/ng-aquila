@@ -2,6 +2,7 @@ import { Directionality } from '@angular/cdk/bidi';
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { DOWN_ARROW, ENTER, ESCAPE, TAB, UP_ARROW } from '@angular/cdk/keycodes';
 import { FlexibleConnectedPositionStrategy, Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy, ViewportRuler } from '@angular/cdk/overlay';
+import { _getEventTarget } from '@angular/cdk/platform';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { DOCUMENT } from '@angular/common';
@@ -26,11 +27,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { NxWordComponent } from '@aposin/ng-aquila/natural-language-form';
 import { defer, fromEvent, merge, Observable, of, Subject, Subscription } from 'rxjs';
-import { debounceTime, delay, filter, first, switchMap, take, takeUntil, tap } from 'rxjs/operators';
+import { debounceTime, delay, filter, first, map, switchMap, take, takeUntil, tap } from 'rxjs/operators';
 
 import { NxAutocompleteComponent } from './autocomplete.component';
 import { NxAutocompleteOptionComponent, NxAutocompleteOptionSelected } from './autocomplete-option.component';
-
 /**
  * Provider that allows the autocomplete to register as a ControlValueAccessor.
  *
@@ -198,13 +198,14 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         }
 
         return merge(fromEvent<MouseEvent | TouchEvent>(this._document, 'mouseup'), fromEvent<MouseEvent | TouchEvent>(this._document, 'touchend')).pipe(
-            filter((event: MouseEvent | TouchEvent) => {
-                const clickTarget = event.target as HTMLElement;
+            map(event => _getEventTarget(event)),
+            filter((target: EventTarget | null) => {
+                const clickTarget = target as HTMLElement;
                 const formField = this._formField ? this._formField.elementRef.nativeElement : null;
 
                 return (
                     this._overlayAttached &&
-                    clickTarget !== this._element.nativeElement &&
+                    !this._element.nativeElement.contains(target as Node | null) &&
                     (!formField || !formField.contains(clickTarget)) &&
                     !!this._overlayRef &&
                     !this._overlayRef.overlayElement.contains(clickTarget)

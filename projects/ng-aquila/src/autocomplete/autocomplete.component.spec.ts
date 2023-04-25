@@ -89,6 +89,14 @@ describe('NxAutocompleteComponent:', () => {
         expect(isVisible(getAutocompletePanel())).toBeTruthy();
     }));
 
+    it('should open the overlay when focus the shadow input field', fakeAsync(() => {
+        createTestComponent(ShadowAutoCompleteComponent, true);
+        input.focus();
+        flush();
+
+        expect(getAutocompletePanel()).toBeTruthy();
+    }));
+
     it('should close the overlay', fakeAsync(() => {
         createTestComponent(BasicAutocompleteComponent);
         input.dispatchEvent(new Event('focus'));
