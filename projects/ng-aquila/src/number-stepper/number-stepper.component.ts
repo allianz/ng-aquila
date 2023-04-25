@@ -225,6 +225,15 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     }
     private _disabled = false;
 
+    /** Whether the user can directly interact with the input value via input field. Default: false */
+    @Input('nxReadonlyInput') set readonlyInput(value: BooleanInput) {
+        this._readonlyInput = coerceBooleanProperty(value);
+    }
+    get readonlyInput(): boolean {
+        return this._readonlyInput;
+    }
+    private _readonlyInput = false;
+
     private readonly _destroyed = new Subject<void>();
 
     constructor(private readonly _cdr: ChangeDetectorRef, _renderer: Renderer2, _elementRef: ElementRef, readonly _intl: NxNumberStepperIntl) {

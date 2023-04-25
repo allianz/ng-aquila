@@ -59,6 +59,10 @@ $margin-default: nx-spacer(s);
         -webkit-text-fill-color: v(number-stepper-disabled-color);
         cursor: not-allowed;
     }
+
+    &:read-only {
+        cursor: default;
+    }
 }
 
 .nx-stepper__input,

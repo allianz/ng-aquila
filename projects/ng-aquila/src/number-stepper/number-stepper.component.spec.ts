@@ -25,6 +25,7 @@ abstract class NumberStepperTest {
     inputAriaLabel = 'input label';
     incrementAriaLabel = 'increase number';
     decrementAriaLabel = 'decrease number';
+    readonlyInput = false;
     testForm: FormGroup = new FormBuilder().group({ stepper: 3 });
     @ViewChild(NxNumberStepperComponent) stepperInstance!: NxNumberStepperComponent;
 
@@ -551,6 +552,21 @@ describe('NxNumberStepperComponent', () => {
         });
     });
 
+    describe('nxReadonly Input', () => {
+        it('should not be readonly input field by default', () => {
+            createTestComponent(ConfigurableStepper);
+            expect(inputElement.getAttribute('readonly')).toBeNull();
+        });
+
+        it('should be readonly input field when set readonlyInput', () => {
+            createTestComponent(ConfigurableStepper);
+            testInstance.readonlyInput = true;
+            fixture.detectChanges();
+
+            expect(inputElement.getAttribute('readonly')).not.toBeNull();
+        });
+    });
+
     describe('a11y', () => {
         it('should use injected subclass for button aria-labels', inject([NxNumberStepperIntl], (intl: NxNumberStepperIntl) => {
             createTestComponent(BasicStepper);
@@ -648,6 +664,7 @@ class NgModelStepper extends NumberStepperTest {}
             [inputAriaLabel]="inputAriaLabel"
             [incrementAriaLabel]="incrementAriaLabel"
             [decrementAriaLabel]="decrementAriaLabel"
+            [nxReadonlyInput]="readonlyInput"
         ></nx-number-stepper>
     `,
 })

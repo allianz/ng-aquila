@@ -101,3 +101,7 @@ The example below shows the usage of the above mentioned `aria-label` inputs.
 #### Localization
 
 <!-- example(number-stepper-localize) -->
+ 
+ ### Readonly input field
+ You can use the `[nxReadonlyInput]` attribute to prevent manual input of values in an input field.
+ <!-- example(number-stepper-readonly-input) -->
