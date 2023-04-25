@@ -8,6 +8,8 @@ stable: done
 
 The **dynamic table** is a component to show data in an organized way in a simple table. This component implements the table using Angular CDK, specifically `cdk-table` that is an unopinionated, customizable data-table with a fully-templated API, dynamic columns, and an accessible DOM structure. When the viewport is smaller than the table, a horizontal scroll will appear on top of the table.
 
+Please note that **supported data types** are string and numeric. Using markup, images or other components in dynamic tables is not currently possible.
+
 ### Ways for implementation
 
 User can choose between two options when implementing a dynamic table.
