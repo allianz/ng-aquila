@@ -23,7 +23,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NG_VALUE_ACCESSOR, NgControl, NgForm } from '@angular/forms';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
-import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
+import { ErrorStateMatcher, randomString } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -276,9 +276,11 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     }
     private _id = `nx-radio-${nextId++}`;
 
+    private _inputIdSuffix = randomString();
+
     /** @docs-private */
     get inputId(): string {
-        return `${this.id}-input`;
+        return `${this.id}-input-${this._inputIdSuffix}`;
     }
 
     /** @docs-private */
