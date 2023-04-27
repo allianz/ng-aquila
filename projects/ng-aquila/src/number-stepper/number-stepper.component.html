@@ -3,7 +3,7 @@
         {{ label }}
     </label>
 </div>
-<div class="nx-stepper__label" #customLabel *ngIf="!label" [id]="ariaDescribedBy">
+<div class="nx-stepper__label" #customLabel *ngIf="!label" [attr.id]="ariaDescribedBy">
     <ng-content></ng-content>
 </div>
 <div class="nx-stepper__input-container">
