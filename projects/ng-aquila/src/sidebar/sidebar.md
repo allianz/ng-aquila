@@ -23,6 +23,8 @@ One possible content for the sidebar is a list of navigation links, in this case
 
 ### Resizeable Side navigation with Tree
 
+[nxTree](./documentation/tree/overview) is designed to work in conjunction with the Sidebar. It is heavily inspired my the Angular Material Flat Tree. For an in depth documentation see [material.angular.io](https://material.angular.io/components/tree/overview).
+
 A `<nx-sidebar>` can be resized by dragging the right edge when the option `resizeable` is set.
 
 <!-- example(sidebar-resizeable) -->
