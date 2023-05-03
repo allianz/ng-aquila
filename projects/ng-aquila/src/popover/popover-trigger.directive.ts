@@ -1,7 +1,7 @@
 import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory, FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { ENTER, SPACE, TAB } from '@angular/cdk/keycodes';
 import {
     ConnectionPositionPair,
     FlexibleConnectedPositionStrategy,
@@ -230,6 +230,11 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
                         case SPACE:
                         case ENTER:
                             this.handleClick();
+                            break;
+                        case TAB:
+                            if (this.trigger === 'hover') {
+                                this.show = !this.isOpen;
+                            }
                             break;
                         default:
                     }
