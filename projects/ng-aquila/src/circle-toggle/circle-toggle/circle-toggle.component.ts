@@ -19,7 +19,7 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 
 import { NxCircleToggleGroupComponent } from '../circle-toggle-group/circle-toggle-group.component';
 import { NxMobileToggleButtonComponent } from '../mobile-toggle-button/mobile-toggle-button.component';
@@ -222,6 +222,12 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         return !!this._disabled;
     }
     private _disabled?: boolean;
+
+    get required() {
+        const selfRequired = this.ngControl?.control?.hasValidator(Validators.required);
+        const parentRequired = this.toggleGroup?.ngControl?.control?.hasValidator(Validators.required);
+        return selfRequired ?? parentRequired ?? false;
+    }
 
     /** @docs-private */
     @ViewChild(NxMobileToggleButtonComponent, { static: true }) toggleButton!: NxMobileToggleButtonComponent;

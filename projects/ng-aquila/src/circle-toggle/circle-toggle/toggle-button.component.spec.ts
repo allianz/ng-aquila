@@ -308,6 +308,11 @@ describe('NxToggleButton', () => {
             createTestComponent(SimpleCircleToggleButtonComponent);
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
+
+        it('should set aria-required', () => {
+            createTestComponent(ReactiveToggleButtonComponent);
+            expect(input.getAttribute('aria-required')).toBe('true');
+        });
     });
 });
 
