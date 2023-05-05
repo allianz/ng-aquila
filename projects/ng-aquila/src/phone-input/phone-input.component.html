@@ -26,6 +26,7 @@
         [attr.required]="required || null"
         [attr.disabled]="disabled || null"
         [attr.placeholder]="placeholder || null"
+        [attr.aria-invalid]="errorState"
     />
 
     <input
@@ -37,5 +38,6 @@
         [value]="_getReadonlyValue()"
         [attr.aria-describedby]="_describedBy"
         [attr.aria-labelledby]="_ariaLabelledBy"
+        [attr.aria-invalid]="errorState"
     />
 </div>

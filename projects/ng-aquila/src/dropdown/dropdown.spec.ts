@@ -1299,7 +1299,13 @@ describe('NxDropdownComponent', () => {
 
     describe('accessibility', () => {
         beforeEach(fakeAsync(() => {
-            configureNxDropdownTestingModule([SimpleDropdownComponent, TabIndexTestComponent, PlainTabIndexTestComponent, DropdownCustomLabelComponent]);
+            configureNxDropdownTestingModule([
+                SimpleDropdownComponent,
+                TabIndexTestComponent,
+                PlainTabIndexTestComponent,
+                DropdownCustomLabelComponent,
+                ReactiveBindingDropdownComponent,
+            ]);
         }));
 
         it('has no accessibility violations', async () => {
@@ -1323,6 +1329,16 @@ describe('NxDropdownComponent', () => {
             const labelledby = localDropdownElement.attributes.getNamedItem('aria-labelledby').value.split(' ');
             expect(labelledby).toHaveSize(1);
             expect(labelledby[0]).toContain('nx-dropdown-rendered-');
+        });
+
+        it('sets aria-invalid', () => {
+            createTestComponent(ReactiveBindingDropdownComponent);
+            testInstance.testForm.controls.dropdown.setValue('');
+            testInstance.testForm.controls.dropdown.markAllAsTouched();
+            fixture.detectChanges();
+
+            const ariaInvalid = dropdownElement.getAttribute('aria-invalid');
+            expect(ariaInvalid).toBe('true');
         });
 
         it('should set the tabindex of the select to 0 by default', fakeAsync(() => {

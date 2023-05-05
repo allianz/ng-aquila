@@ -130,6 +130,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         '[attr.aria-disabled]': 'disabled',
         '[attr.aria-labelledby]': '_getAriaLabelledBy()',
         '[attr.aria-controls]': 'modalId',
+        '[attr.aria-invalid]': 'errorState',
         'aria-haspopup': 'listbox',
         '[attr.aria-expanded]': 'panelOpen',
         '[attr.readonly]': 'readonly || null',
