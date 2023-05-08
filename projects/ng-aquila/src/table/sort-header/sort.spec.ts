@@ -217,7 +217,7 @@ describe('NxSort', () => {
         it('has the correct aria label for an unsorted column', () => {
             createTestComponent(BasicSortTableComponent);
             const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader .nx-sort-header__icons-container');
-            expect(nameHeaderElement.getAttribute('aria-label')).toBe('');
+            expect(nameHeaderElement.getAttribute('aria-label')).toBeNull();
         });
 
         it('has the correct aria label for a sorted column', () => {

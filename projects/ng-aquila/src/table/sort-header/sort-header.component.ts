@@ -89,7 +89,7 @@ export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         return this._sort.active === this._key && this._sort.direction === 'desc';
     }
 
-    _getAriaLabel(): string {
+    _getAriaLabel(): string | null {
         if (this._sort.active === this._key) {
             if (this._sort.direction === 'asc') {
                 return `${this._intl.sortedAscendingAriaLabel}`;
@@ -97,7 +97,7 @@ export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
             return `${this._intl.sortedDescendingAriaLabel}`;
         }
 
-        return '';
+        return null;
     }
 
     _getTitle(): string {
