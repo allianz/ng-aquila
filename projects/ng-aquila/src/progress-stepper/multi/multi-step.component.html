@@ -16,6 +16,7 @@
                 [active]="selectedIndex > i"
                 [disabled]="_stepDisabled(i)"
                 [direction]="direction"
+                [ariaControls]="_getStepContentId(i)"
             >
             </nx-multi-step-item>
         </ng-container>
@@ -27,6 +28,7 @@
         class="label"
         role="tab"
         tabindex="-1"
+        [attr.aria-controls]="_getStepContentId(i)"
         [attr.aria-selected]="selectedIndex === i"
         *ngFor="let step of steps; let i = index"
         [ngClass]="{ 'is-disabled': _stepDisabled(i), 'is-selected': selectedIndex === i }"
@@ -71,6 +73,7 @@
                         [active]="selectedIndex > _getIndex(step)"
                         [disabled]="_stepDisabled(_getIndex(step))"
                         [direction]="direction"
+                        [ariaControls]="_getStepContentId(i)"
                     >
                     </nx-multi-step-item>
                 </ng-container>

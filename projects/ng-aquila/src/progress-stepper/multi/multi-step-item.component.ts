@@ -20,6 +20,7 @@ import { NxMultiStepperDirection } from '../progress-stepper.models';
         '[class.is-last]': 'last',
         '[attr.aria-disabled]': 'disabled ? "true" : null',
         role: 'tab',
+        '[attr.aria-controls]': 'ariaControls',
         '[attr.aria-selected]': 'selected',
         '[attr.aria-label]': 'label',
     },
@@ -86,6 +87,14 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
         return this._completed;
     }
     private _completed!: boolean;
+
+    @Input() set ariaControls(value: string) {
+        this._ariaControls = value;
+    }
+    get ariaControls() {
+        return this._ariaControls;
+    }
+    private _ariaControls!: string;
 
     constructor(private readonly _cdr: ChangeDetectorRef, readonly _elementRef: ElementRef<HTMLElement>, private readonly _focusMonitor: FocusMonitor) {
         super(_elementRef);
