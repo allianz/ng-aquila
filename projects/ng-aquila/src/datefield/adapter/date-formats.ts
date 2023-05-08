@@ -14,3 +14,4 @@ export interface NxDateFormats {
 }
 
 export const NX_DATE_FORMATS = new InjectionToken<NxDateFormats>('nx-date-formats');
+export const NX_DATE_STRICT = new InjectionToken<boolean>('nx-date-strict');

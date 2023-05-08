@@ -15,7 +15,7 @@ import { NX_INPUT_VALUE_ACCESSOR } from '@aposin/ng-aquila/input';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { NX_DATE_FORMATS, NxDateAdapter, NxDateFormats } from './adapter/index';
+import { NX_DATE_FORMATS, NX_DATE_STRICT, NxDateAdapter, NxDateFormats } from './adapter/index';
 import { NxDateValidators } from './date-validators';
 import { createMissingDateImplError } from './datefield.functions';
 import { NxDatepickerComponent } from './datepicker/datepicker.component';
@@ -236,6 +236,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
         private readonly _elementRef: ElementRef,
         @Optional() _dateAdapter: NxDateAdapter<D> | null,
         @Optional() @Inject(NX_DATE_FORMATS) _dateFormats: NxDateFormats | null,
+        @Optional() @Inject(NX_DATE_STRICT) _dateStrict: boolean | null,
         @Optional() private readonly _formField: NxFormfieldComponent | null,
     ) {
         if (!_dateAdapter) {
@@ -247,6 +248,8 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
             throw createMissingDateImplError('NX_DATE_FORMATS');
         }
         this._dateFormats = _dateFormats;
+
+        this._strict = _dateStrict ?? true;
 
         // Update the displayed date when the locale changes.
         _dateAdapter.localeChanges.pipe(takeUntil(this._destroyed)).subscribe(() => {
