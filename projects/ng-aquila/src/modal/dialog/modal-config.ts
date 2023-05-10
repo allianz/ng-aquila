@@ -62,7 +62,7 @@ export class NxModalConfig<D = any> {
     /** Min-height of the modal. If a number is provided, assumes pixel units. */
     minHeight?: number | string;
 
-    /** Max-width of the modal. If a number is provided, assumes pixel units. Defaults to 100vw. */
+    /** Max-width of the modal. If a number is provided, assumes pixel units. Defaults to '736px'. */
     maxWidth?: number | string = '736px';
 
     /** Max-height of the modal. If a number is provided, assumes pixel units. */
