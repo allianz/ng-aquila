@@ -1,0 +1,33 @@
+<button
+    nxButton="primary small"
+    [nxPopoverTriggerFor]="popoverWithoutArrow"
+    nxPopoverDirection="right"
+    nxPopoverTrigger="click"
+    [hidePopoverArrow]="hideArrow"
+    type="button"
+    [(nxPopoverShow)]="popoverManualOpenFlag"
+>
+    Click
+</button>
+
+<nx-popover #popoverWithoutArrow>
+    <div class="nx-popover__content-wrapper">
+        <div class="centered-content">
+            <h3 nxHeadline="subsection-small" class="nx-margin-bottom-s">
+                Popover without arrow
+            </h3>
+            <p class="nx-margin-bottom-m nx-margin-top-0">
+                I am a popover without an arrow, showing centered content, a
+                headline and a link.
+            </p>
+            <div class="nx-popover__footer">
+                <nx-link nxStyle="block">
+                    <a routerLink="/documentation">
+                        <nx-icon name="arrow-right"></nx-icon>
+                        More recommendations
+                    </a>
+                </nx-link>
+            </div>
+        </div>
+    </div>
+</nx-popover>

@@ -154,6 +154,19 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     }
     private _closeOnClickOutside = true;
 
+    /** Whether to show the popover arrow. By default set to true */
+    @Input() set hidePopoverArrow(value: BooleanInput) {
+        this._hidearrow = coerceBooleanProperty(value);
+
+        if (this.popover) {
+            this.popover.hidePopoverArrow = this._hidearrow;
+        }
+    }
+    get hidePopoverArrow(): boolean {
+        return this._hidearrow!;
+    }
+    private _hidearrow: boolean | null = null;
+
     /** Links the trigger with the popover to open. */
     @Input('nxPopoverTriggerFor') popover!: NxPopoverComponent;
 

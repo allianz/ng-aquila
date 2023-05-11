@@ -48,6 +48,22 @@ The popover can carry custom content.
 
 <!-- example(popover-custom) -->
 
+### Extended popover
+
+The popover can be extended with a header and a footer, consisting of a headline and buttons.
+
+<!-- example(popover-extended) -->
+
+The popover can be used for a guided tour
+
+<!-- example(popover-guided-tour) -->
+
+### Popover without arrow
+
+The popover arrow can be hidden using the `nxPopoverHideArrow`.
+
+<!-- example(popover-without-arrow) -->
+
 ### Custom lazyloaded content
 
 The popovers supports lazyloading when you provide a `ng-template` with the `nxPopoverContent` directive attached. The content of the template will only be instantiated once the popover gets opened. After closing the content will be destroyed again.

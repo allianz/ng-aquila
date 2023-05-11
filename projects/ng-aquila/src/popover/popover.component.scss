@@ -30,8 +30,8 @@ $arrow-shadow: -2px -2px -4px v(shadow-small-color);
 .nx-popover__close-icon {
     display: flex;
     position: absolute;
-    top: nx-spacer(3xs);
-    right: nx-spacer(3xs);
+    top: nx-spacer(s);
+    right: nx-spacer(s);
     cursor: pointer;
     font-size: v(popover-close-icon-size);
     color: v(popover-close-icon-color);

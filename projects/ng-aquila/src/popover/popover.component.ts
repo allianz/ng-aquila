@@ -44,6 +44,9 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
     direction!: string;
 
     /** @docs-private */
+    hidePopoverArrow = false;
+
+    /** @docs-private */
     showCloseButton = false;
 
     /** @docs-private */

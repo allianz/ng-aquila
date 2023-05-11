@@ -2,11 +2,15 @@ import { CdkScrollableModule } from '@angular/cdk/scrolling';
 import { NgModule } from '@angular/core';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxDynamicTableModule } from '@aposin/ng-aquila/dynamic-table';
+import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 import { PopoverClickOutsideExampleComponent } from './popover-click-outside/popover-click-outside-example';
 import { PopoverCustomExampleComponent } from './popover-custom/popover-custom-example';
+import { PopoverExtendedExampleComponent } from './popover-extended/popover-extended-example';
+import { PopoverGuidedTourExampleComponent } from './popover-guided-tour/popover-guided-tour-example';
 import { PopoverHoverExampleComponent } from './popover-hover/popover-hover-example';
 import { PopoverI18nExampleComponent } from './popover-i18n/popover-i18n-example';
 import { PopoverLazyloadExampleComponent } from './popover-lazyload/popover-lazyload-example';
@@ -17,6 +21,7 @@ import { PopoverScrollStrategyProviderExampleComponent } from './popover-scroll-
 import { PopoverScrollableExampleComponent } from './popover-scrollable/popover-scrollable-example';
 import { PopoverTableExampleComponent } from './popover-table/popover-table-example';
 import { PopoverTriggerExampleComponent } from './popover-trigger/popover-trigger-example';
+import { PopoverWithoutArrowExampleComponent } from './popover-without-arrow/popover-without-arrow-example';
 
 const EXAMPLES = [
     PopoverClickOutsideExampleComponent,
@@ -31,6 +36,9 @@ const EXAMPLES = [
     PopoverTriggerExampleComponent,
     PopoverI18nExampleComponent,
     PopoverScrollStrategyProviderExampleComponent,
+    PopoverExtendedExampleComponent,
+    PopoverWithoutArrowExampleComponent,
+    PopoverGuidedTourExampleComponent,
 ];
 
 @NgModule({
@@ -40,6 +48,8 @@ const EXAMPLES = [
         NxIconModule,
         NxDynamicTableModule,
         CdkScrollableModule,
+        NxHeadlineModule,
+        NxLinkModule,
     ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
@@ -60,6 +70,9 @@ export class PopoverExamplesModule {
             'popover-i18n': PopoverI18nExampleComponent,
             'popover-scroll-strategy-provider':
                 PopoverScrollStrategyProviderExampleComponent,
+            'popover-extended': PopoverExtendedExampleComponent,
+            'popover-without-arrow': PopoverWithoutArrowExampleComponent,
+            'popover-guided-tour': PopoverGuidedTourExampleComponent,
         };
     }
 }
