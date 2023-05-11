@@ -21,5 +21,12 @@ export const inputNames: VersionChanges<InputNameUpgradeData> = {
                 { replace: 'nxValue', replaceWith: 'value', limitedTo: { elements: ['nx-dropdown-item'] } },
             ],
         },
+        {
+            pr: '',
+            changes: [
+                { replace: 'nxStyle', replaceWith: 'variant', limitedTo: { elements: ['nx-expansion-panel'] } },
+                { replace: 'nxStyle', replaceWith: 'variant', limitedTo: { elements: ['nx-accordion'] } },
+            ],
+        },
     ],
 };

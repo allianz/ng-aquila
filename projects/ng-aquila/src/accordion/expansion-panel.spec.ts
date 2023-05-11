@@ -422,7 +422,7 @@ class LazyPanelOpenOnLoad extends PanelTest {}
 class PanelWithTwoWayBinding extends PanelTest {}
 
 @Component({
-    template: `<nx-expansion-panel [negative]="negative" [nxStyle]="style">
+    template: `<nx-expansion-panel [negative]="negative" [variant]="style">
         <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
     </nx-expansion-panel>`,
 })
@@ -432,11 +432,11 @@ class PanelWithDifferentAppearances extends PanelTest {
 }
 
 @Component({
-    template: `<nx-accordion negative="true" nxStyle="light">
+    template: `<nx-accordion negative="true" variant="light">
         <nx-expansion-panel>
             <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
         </nx-expansion-panel>
-        <nx-expansion-panel negative="false" nxStyle="regular">
+        <nx-expansion-panel negative="false" variant="regular">
             <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
         </nx-expansion-panel>
         <nx-accordion></nx-accordion

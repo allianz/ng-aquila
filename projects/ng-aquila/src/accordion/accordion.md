@@ -27,7 +27,7 @@ If you want the user to be able to expand multiple items simultaneously you can 
 
 ### Styling options
 
-The appearance of an accordion can be changed by setting according properties `nxStyle` and `negative` on `nx-accordion` or by giving each of the expansion panels their own configuration. Panels will always prefer their own configuration if given.
+The appearance of an accordion can be changed by setting according properties `variant` and `negative` on `nx-accordion` or by giving each of the expansion panels their own configuration. Panels will always prefer their own configuration if given.
 
 #### Negative
 

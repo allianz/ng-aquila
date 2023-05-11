@@ -66,7 +66,7 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
      * Value for the styling that should be chosen.
      * Default: `'regular'`.
      */
-    @Input('nxStyle') set style(value: AccordionStyle) {
+    @Input('variant') set style(value: AccordionStyle) {
         value = value ? value : DEFAULT_TYPE;
 
         const [newValue] = value.match(/regular|light|extra-light/) || [DEFAULT_TYPE];
