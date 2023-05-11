@@ -281,7 +281,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     ngAfterViewInit(): void {
         this.popover.id = this.id;
 
-        this._removeEventListener = this.eventManager.addGlobalEventListener('window', 'keyup.esc', () => {
+        this._removeEventListener = this.eventManager.addEventListener(document.body, 'keyup.esc', () => {
             if (this.isOpen) {
                 this.show = false;
             }

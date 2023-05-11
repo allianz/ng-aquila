@@ -27,15 +27,17 @@ export async function createWorkspace(runner: SchematicTestRunner, tree?: Tree):
             },
             tree,
         )
-        .toPromise();
+        .toPromise() as Promise<UnitTestTree>;
 }
 
 export async function createApp(runner: SchematicTestRunner, tree: Tree, options = {}): Promise<UnitTestTree> {
-    return runner.runExternalSchematicAsync('@schematics/angular', 'application', { name: 'aquila-testing', ...options }, tree).toPromise();
+    return runner
+        .runExternalSchematicAsync('@schematics/angular', 'application', { name: 'aquila-testing', ...options }, tree)
+        .toPromise() as Promise<UnitTestTree>;
 }
 
 export async function createTestLibrary(runner: SchematicTestRunner, tree?: Tree, options = {}): Promise<UnitTestTree> {
-    return runner.runExternalSchematicAsync('@schematics/angular', 'library', { name: 'aquila-testing-library' }, tree).toPromise();
+    return runner.runExternalSchematicAsync('@schematics/angular', 'library', { name: 'aquila-testing-library' }, tree).toPromise() as Promise<UnitTestTree>;
 }
 
 /**
@@ -49,7 +51,7 @@ export async function createTestLibrary(runner: SchematicTestRunner, tree?: Tree
 export async function addLibrary(options: any, tree: Tree): Promise<UnitTestTree> {
     const aquilarunner = new SchematicTestRunner('aquila', require.resolve('../../collection.json'));
     const tempTree = await aquilarunner.runSchematicAsync('ng-add', { type: 'b2c', ...options }, tree).toPromise();
-    return aquilarunner.runSchematicAsync('ng-add-setup-project', { type: 'b2c', ...options }, tempTree).toPromise();
+    return aquilarunner.runSchematicAsync('ng-add-setup-project', { type: 'b2c', ...options }, tempTree).toPromise() as Promise<UnitTestTree>;
 }
 
 /**
@@ -186,6 +188,6 @@ export class SchematicTestSetup {
      * Run your migration.
      */
     async runMigration(options = {}): Promise<UnitTestTree> {
-        return this.runner.runSchematicAsync(this.schematicName, options, this.appTree).toPromise();
+        return this.runner.runSchematicAsync(this.schematicName, options, this.appTree).toPromise() as Promise<UnitTestTree>;
     }
 }

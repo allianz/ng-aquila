@@ -5,11 +5,12 @@ import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync
 import { By } from '@angular/platform-browser';
 import { Subject, Subscription } from 'rxjs';
 
-import { dispatchFakeEvent } from '../cdk-test-utils';
+import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxPopoverComponent } from './popover.component';
 import { NxPopoverModule } from './popover.module';
 import { NxPopoverIntl } from './popover-intl';
 import { NxPopoverTriggerDirective } from './popover-trigger.directive';
+import { ESCAPE, SPACE } from '@angular/cdk/keycodes';
 
 @Component({
     selector: 'nx-test-component',
@@ -353,7 +354,7 @@ describe('NxPopoverTriggerDirective', () => {
             const event = new KeyboardEvent('keyup', {
                 key: 'Escape',
             });
-            window.dispatchEvent(event);
+            document.body.dispatchEvent(event);
             expect(getPopoverContent()).toBeFalsy();
             flush();
         }));
@@ -445,7 +446,7 @@ describe('NxPopoverTriggerDirective', () => {
                 key: 'Escape',
             });
 
-            window.dispatchEvent(event);
+            document.body.dispatchEvent(event);
             expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledWith(false);
             expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledTimes(2);
             flush();

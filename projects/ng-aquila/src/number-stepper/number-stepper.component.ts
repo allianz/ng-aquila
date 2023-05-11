@@ -426,7 +426,10 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     /** @docs-private */
     isBetweenLimits(value: number | Decimal) {
-        return value <= this._max && value >= this._min;
+        const decimalMin = new Decimal(this._min);
+        const decimalMax = new Decimal(this._max);
+        const valueDecimal = new Decimal(value);
+        return valueDecimal.lessThanOrEqualTo(decimalMax) && valueDecimal.greaterThanOrEqualTo(decimalMin);
     }
 
     /** @docs-private */

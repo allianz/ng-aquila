@@ -5,9 +5,8 @@
         {
             "files": ["*.ts"],
             "rules": {
-                "no-console": "off", // console output is ok for schematics
-
-                "@typescript-eslint/no-var-requires": "off" // recommended overide: used once
+                "no-console": "off",
+                "@typescript-eslint/no-var-requires": "off"
             }
         }
     ]

@@ -8,6 +8,7 @@ import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableComponent } from './comparison-table.component';
 import { NxComparisonTableModule } from './comparison-table.module';
 import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
+import axe from 'axe-core';
 
 declare let viewport: any;
 const THROTTLE_TIME = 200;
@@ -630,9 +631,27 @@ describe('NxComparisonTableComponent', () => {
             expect(toggleSectionBody.attributes.role).toBe('rowgroup');
         });
 
-        it('has no accessibility violations', async () => {
+        it('has no accessibility violations', function (done) {
             createTestComponent(BasicComponent);
-            await expectAsync(fixture.nativeElement).toBeAccessible();
+
+            axe.run(
+                fixture.nativeElement,
+                {
+                    rules: {
+                        'empty-table-header': { enabled: false },
+                        'aria-required-children': { enabled: false },
+                    },
+                },
+                (error: Error, results: axe.AxeResults) => {
+                    expect(results.violations.length).toBe(0);
+                    const violationMessages = results.violations.map(item => item.description);
+                    if (violationMessages.length) {
+                        console.error(violationMessages);
+                        expect(violationMessages).toBeFalsy();
+                    }
+                    done();
+                },
+            );
         });
 
         afterEach(() => {

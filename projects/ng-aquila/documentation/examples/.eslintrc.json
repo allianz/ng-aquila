@@ -5,13 +5,13 @@
         {
             "files": ["*.ts"],
             "rules": {
-                "no-console": "off" // console output is ok in examples
+                "no-console": "off"
             }
         },
         {
             "files": ["*.html"],
             "rules": {
-                "@angular-eslint/template/accessibility-elements-content": "off" // conflicts with comparison-table select buttons
+                "@angular-eslint/template/elements-content": "off"
             }
         }
     ]

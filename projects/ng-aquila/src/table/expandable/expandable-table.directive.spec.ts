@@ -150,7 +150,7 @@ describe(NxTableComponent.name, () => {
                 <td nxHeaderCell>
                     <nx-toggle-button [target]="expandableTable" ariaLabel="toggle all rows"></nx-toggle-button>
                 </td>
-                <th nxHeaderCell></th>
+                <th nxHeaderCell>toggle all rows</th>
             </tr>
         </thead>
         <tbody>

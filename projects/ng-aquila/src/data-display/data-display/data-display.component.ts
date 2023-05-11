@@ -53,9 +53,9 @@ export class NxDataDisplayComponent {
         this.#size = value;
     }
     get size(): NxDataDisplaySize {
-        return this.#size ?? 'large';
+        return this.#size || this._defaultOptions?.size || 'large';
     }
-    #size?: NxDataDisplaySize | null = this._defaultOptions?.size;
+    #size?: NxDataDisplaySize | null;
 
     /**
      * Layout orientation of the label and value.

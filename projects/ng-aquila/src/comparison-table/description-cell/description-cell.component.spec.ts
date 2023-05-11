@@ -6,6 +6,7 @@ import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.s
 import { NxComparisonTableModule } from '../comparison-table.module';
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
 import { NxComparisonTableDescriptionCell } from './description-cell.component';
+import axe from 'axe-core';
 
 declare let viewport: any;
 const THROTTLE_TIME = 200;
@@ -171,9 +172,26 @@ describe('NxComparisonTableDescriptionCell', () => {
             expect(descriptionCellElements[0].attributes['aria-colspan']).toBe('2');
         }));
 
-        it('has no accessibility violations', async () => {
+        it('has no accessibility violations', function (done) {
             createTestComponent(DescriptionCellComponent);
-            await expectAsync(fixture.nativeElement).toBeAccessible();
+
+            axe.run(
+                fixture.nativeElement,
+                {
+                    rules: {
+                        'empty-table-header': { enabled: false },
+                    },
+                },
+                (error: Error, results: axe.AxeResults) => {
+                    expect(results.violations.length).toBe(0);
+                    const violationMessages = results.violations.map(item => item.description);
+                    if (violationMessages.length) {
+                        console.error(violationMessages);
+                        expect(violationMessages).toBeFalsy();
+                    }
+                    done();
+                },
+            );
         });
 
         afterEach(() => {
