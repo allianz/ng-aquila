@@ -62,7 +62,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     private _tabindex = 0;
 
     /** Whether the form should auto capitalize or lowercase (optional). */
-    @Input('nxConvertTo') set convertTo(value: NxConversionTypes) {
+    @Input() set convertTo(value: NxConversionTypes) {
         this._convertTo = value;
         this._cdr.markForCheck();
     }

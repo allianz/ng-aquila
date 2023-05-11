@@ -378,7 +378,7 @@ describe('NxCodeInputComponent', () => {
 @Component({
     template: `
         <form class="nx-code-input-demo-form" [formGroup]="codeForm" (ngSubmit)="onSubmit()">
-            <nx-code-input [length]="4" nxConvertTo="upper" formControlName="keyCode"></nx-code-input>
+            <nx-code-input [length]="4" convertTo="upper" formControlName="keyCode"></nx-code-input>
         </form>
     `,
 })
