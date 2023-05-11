@@ -437,7 +437,6 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         } else {
             this.selectedItems.delete(item);
         }
-
         this._onChange(this.value);
         this.selectionChange.emit(this.value);
     }

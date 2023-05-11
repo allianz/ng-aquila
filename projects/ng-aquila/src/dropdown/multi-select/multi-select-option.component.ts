@@ -1,4 +1,4 @@
-import { Highlightable } from '@angular/cdk/a11y';
+import { Highlightable, LiveAnnouncer } from '@angular/cdk/a11y';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { AppearanceType } from '@aposin/ng-aquila/formfield';
 
@@ -66,7 +66,7 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable {
         return this._active;
     }
 
-    constructor(private readonly _cdr: ChangeDetectorRef, readonly elementRef: ElementRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef, readonly elementRef: ElementRef, private liveAnnouncer: LiveAnnouncer) {}
 
     setActiveStyles(): void {
         this.active = true;
@@ -81,6 +81,7 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable {
         if (!this.disabled) {
             this.selected = !this.selected;
             this.selectedChange.emit(this.selected);
+            this.liveAnnouncer.announce(`${this.label} ${this.selected ? 'selected' : 'unselected'}`);
         }
     }
 
