@@ -26,6 +26,7 @@ export const inputNames: VersionChanges<InputNameUpgradeData> = {
             changes: [
                 { replace: 'nxStyle', replaceWith: 'variant', limitedTo: { elements: ['nx-expansion-panel'] } },
                 { replace: 'nxStyle', replaceWith: 'variant', limitedTo: { elements: ['nx-accordion'] } },
+                { replace: 'nxValueFormatter', replaceWith: 'valueFormatter', limitedTo: { elements: ['nx-autocomplete'] } },
             ],
         },
     ],

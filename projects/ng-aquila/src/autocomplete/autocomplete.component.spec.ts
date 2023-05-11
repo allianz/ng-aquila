@@ -371,7 +371,7 @@ class CustomAutocompleteComponent extends AutocompleteComponent {}
 @Component({
     template: `
         <input type="text" [nxAutocomplete]="auto1" [(ngModel)]="inputVal" />
-        <nx-autocomplete #auto1 [nxValueFormatter]="valFormatter">
+        <nx-autocomplete #auto1 [valueFormatter]="valFormatter">
             <nx-autocomplete-option *ngFor="let item of searchComplexData(inputVal)" [value]="item">
                 {{ item.desc | lowercase }}
             </nx-autocomplete-option>

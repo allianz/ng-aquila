@@ -150,7 +150,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
      *
      * Default: `value => value ? value.toString() : null`.
      */
-    @Input('nxValueFormatter') valueFormatter: (value: any) => string = (value: any) => (value ? value.toString() : null);
+    @Input() valueFormatter: (value: any) => string = (value: any) => (value ? value.toString() : null);
 
     constructor(
         private readonly _cdr: ChangeDetectorRef,
