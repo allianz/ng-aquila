@@ -28,6 +28,8 @@ export const inputNames: VersionChanges<InputNameUpgradeData> = {
                 { replace: 'nxStyle', replaceWith: 'variant', limitedTo: { elements: ['nx-accordion'] } },
                 { replace: 'nxValueFormatter', replaceWith: 'valueFormatter', limitedTo: { elements: ['nx-autocomplete'] } },
                 { replace: 'nxConvertTo', replaceWith: 'convertTo', limitedTo: { elements: ['nx-code-input'] } },
+                { replace: 'nxData', replaceWith: 'data', limitedTo: { elements: ['nx-dynamic-table'] } },
+                { replace: 'nxDisplayedColumns', replaceWith: 'displayedColumns', limitedTo: { elements: ['nx-dynamic-table'] } },
             ],
         },
     ],

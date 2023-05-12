@@ -15,7 +15,7 @@ export class NxDynamicTableComponent implements OnInit {
     private _columnKeys: string[] = [];
 
     /** Sets the data that it will show in the table. */
-    @Input('nxData') set data(value: any[]) {
+    @Input() set data(value: any[]) {
         this._data = value.filter(element => element);
         // If user dont pass displayedColumns the table will show all data and the name of columns will be the key of data
         if (!this._displayedColumns) {
@@ -45,7 +45,7 @@ export class NxDynamicTableComponent implements OnInit {
     private _data: any[] = [];
 
     /** Sets the name order and type of columns. */
-    @Input('nxDisplayedColumns') set displayedColumns(value: NxDynamicTableColumnDefinition[] | undefined) {
+    @Input() set displayedColumns(value: NxDynamicTableColumnDefinition[] | undefined) {
         this._displayedColumns = value!;
         this._columnKeys = value ? value.map(column => column.key) : [];
         this._cdr.markForCheck();
@@ -56,7 +56,7 @@ export class NxDynamicTableComponent implements OnInit {
     private _displayedColumns!: NxDynamicTableColumnDefinition[];
 
     /** An event is dispatched when a row is clicked. */
-    @Output() readonly nxRowClick = new EventEmitter();
+    @Output() readonly rowClick = new EventEmitter();
 
     /** @docs-private */
     get dataSource(): NxDynamicTableDataSource {
@@ -80,7 +80,7 @@ export class NxDynamicTableComponent implements OnInit {
 
     /** @docs-private */
     handleRowClick(row: object): void {
-        this.nxRowClick.emit(row);
+        this.rowClick.emit(row);
     }
 
     /** @docs-private */

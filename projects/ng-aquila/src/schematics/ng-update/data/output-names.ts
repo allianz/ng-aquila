@@ -6,5 +6,9 @@ export const outputNames: VersionChanges<OutputNameUpgradeData> = {
             pr: '',
             changes: [{ replace: 'nxValueChange', replaceWith: 'valueChange', limitedTo: { elements: ['nx-dropdown'] } }],
         },
+        {
+            pr: '',
+            changes: [{ replace: 'nxRowClick', replaceWith: 'rowClick', limitedTo: { elements: ['nx-dynamic-table'] } }],
+        },
     ],
 };
