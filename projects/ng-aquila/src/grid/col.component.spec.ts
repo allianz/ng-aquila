@@ -118,7 +118,7 @@ describe('NxColDirective', () => {
         ).not.toBeNull();
     });
 
-    describe('nxColOffset', () => {
+    describe('colOffset', () => {
         it('should test with 9', () => {
             createTestComponent(OffsetTest);
             const col = getColumn();
@@ -290,7 +290,7 @@ class BasicTestNxColClassTest extends DirectiveTest {}
 @Component({
     template: `<div nxLayout="grid">
         <div nxRow="row">
-            <div nxCol="10" nxColOrder="first,first,last,first">Hello World 1</div>
+            <div nxCol="10" colOrder="first,first,last,first">Hello World 1</div>
         </div>
     </div>`,
 })
@@ -299,7 +299,7 @@ class BasicTestNxOrderInputs extends DirectiveTest {}
 @Component({
     template: `<div nxLayout="grid">
         <div nxRow="row">
-            <div nxCol="10" nxAlignSelf="start">Hello World 1</div>
+            <div nxCol="10" alignSelf="start">Hello World 1</div>
         </div>
     </div>`,
 })
@@ -308,7 +308,7 @@ class BasicTestColAlignSelf extends DirectiveTest {}
 @Component({
     template: `<div nxLayout="grid">
         <div nxRow="row">
-            <div nxCol="10" nxColOrder="first">Hello World 1</div>
+            <div nxCol="10" colOrder="first">Hello World 1</div>
         </div>
     </div>`,
 })
@@ -316,14 +316,14 @@ class BasicTestColOrder extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid">
-        <div nxRow="row"><div nxCol="10" nxColOffset="9">Hello World 1</div></div>
+        <div nxRow="row"><div nxCol="10" colOffset="9">Hello World 1</div></div>
     </div>`,
 })
 class OffsetTest extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid">
-        <div nxRow="row"><div nxCol="10" nxColOffset="9,6">Hello World 1</div></div>
+        <div nxRow="row"><div nxCol="10" colOffset="9,6">Hello World 1</div></div>
     </div>`,
 })
 class OffsetTestTwoInputs extends DirectiveTest {}
@@ -331,7 +331,7 @@ class OffsetTestTwoInputs extends DirectiveTest {}
 @Component({
     template: `<div nxLayout="grid">
         <div nxRow="row">
-            <div nxCol="10" nxColOffset="9,6,5">Hello World 1</div>
+            <div nxCol="10" colOffset="9,6,5">Hello World 1</div>
         </div>
     </div>`,
 })
@@ -340,7 +340,7 @@ class OffsetTestThreeInputs extends DirectiveTest {}
 @Component({
     template: `<div nxLayout="grid">
         <div nxRow="row">
-            <div nxCol="10" nxColOffset="9,6,5,3">Hello World 1</div>
+            <div nxCol="10" colOffset="9,6,5,3">Hello World 1</div>
         </div>
     </div>`,
 })
@@ -349,7 +349,7 @@ class OffsetTestFourInputs extends DirectiveTest {}
 @Component({
     template: `<div nxLayout="grid">
         <div nxRow="row">
-            <div nxCol="10" nxColOffset="9,6,5,0">Hello World 1</div>
+            <div nxCol="10" colOffset="9,6,5,0">Hello World 1</div>
         </div>
     </div>`,
 })
@@ -358,7 +358,7 @@ class OffsetTestFourInputsWithZero extends DirectiveTest {}
 @Component({
     template: `<div nxLayout="grid">
         <div nxRow="row">
-            <div [nxCol]="cols" [nxColOrder]="order" [nxColOffset]="offset" [nxAlignSelf]="alignSelf">Hello World</div>
+            <div [nxCol]="cols" [nxColOrder]="order" [colOffset]="offset" [nxAlignSelf]="alignSelf">Hello World</div>
         </div>
     </div>`,
 })

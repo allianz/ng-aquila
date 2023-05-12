@@ -85,20 +85,20 @@ export class NxColComponent implements OnInit {
      *
      * Values: 1 - 12, default value: 12.
      */
-    @Input('nxColOffset') set offset(value: string) {
+    @Input('colOffset') set offset(value: string) {
         this._offsetClasses = this._mapTiers(value, [], OFFSET_MAPPING);
     }
     private _offsetClasses = '';
 
     /** The alignment for a column inside the flexible container. */
-    @Input('nxAlignSelf') set itemSelf(value: ColSelfAlignment | string) {
+    @Input('alignSelf') set itemSelf(value: ColSelfAlignment | string) {
         /** Values: auto, start, end, center, baseline, stretch */
         this._alignSelfClasses = value ? addStylesFromDimensions(value, MAPPING_ALIGN_SELF) : '';
     }
     private _alignSelfClasses = '';
 
     /** Order of the column within the row. */
-    @Input('nxColOrder') set order(value: ColOrder | string) {
+    @Input('colOrder') set order(value: ColOrder | string) {
         /** Values: first, last or unordered */
         this._orderClasses = value ? addStylesFromDimensions(value, MAPPING_ORDER) : '';
     }

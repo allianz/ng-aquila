@@ -124,7 +124,7 @@ For example:
 
 #### nxCol: Offset columns
 
-If you want to offset a column you can use the `nxColOffset` property similar to the `nxCol` logic.
+If you want to offset a column you can use the `colOffset` property similar to the `nxCol` logic.
 
 <!-- example(grid-offset) -->
 
@@ -162,14 +162,14 @@ The `nxRowAlignItems` directive defines the default vertical alignment for items
 
 <!-- example(grid-align-items) -->
 
-#### nxAlignSelf
+#### alignSelf
 
-The `nxAlignSelf` property specifies the alignment for a selected item inside the flexible container.
+The `alignSelf` property specifies the alignment for a selected item inside the flexible container.
 
 <!-- example(grid-align-self) -->
 
-#### nxColOrder
+#### colOrder
 
-To specify the order within the row, apply the `nxColOrder` property.
+To specify the order within the row, apply the `colOrder` property.
 
 <!-- example(grid-col-order) -->
