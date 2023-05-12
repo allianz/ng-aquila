@@ -144,21 +144,21 @@ In order to constrain the grid, define an overall maximum width (width: 1184px a
 
 <!-- example(grid-maxwidth) -->
 
-#### nxRowJustify
+#### rowJustify
 
-The `nxRowJustify` directive aligns the flexible container's items when the items do not use all available space on the main axis (horizontally).
+The `rowJustify` directive aligns the flexible container's items when the items do not use all available space on the main axis (horizontally).
 
 <!-- example(grid-justify) -->
 
-#### nxRowAlignContent
+#### rowAlignContent
 
-To modify the behavior of the flex-wrap property, use the `nxRowAlignContent` directive. It is similar to `nxRowAlignItems`, but instead of aligning flex items, it aligns flex lines.
+To modify the behavior of the flex-wrap property, use the `rowAlignContent` directive. It is similar to `rowAlignItems`, but instead of aligning flex items, it aligns flex lines.
 
 <!-- example(grid-align-content) -->
 
-#### nxRowAlignItems
+#### rowAlignItems
 
-The `nxRowAlignItems` directive defines the default vertical alignment for items inside the flexible container.
+The `rowAlignItems` directive defines the default vertical alignment for items inside the flexible container.
 
 <!-- example(grid-align-items) -->
 

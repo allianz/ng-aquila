@@ -97,7 +97,7 @@ describe('NxRowDirective', () => {
         ).not.toBeNull();
     });
 
-    it('should test with input row and nxRowJustify (nxRowJustify="start")', () => {
+    it('should test with input row and rowJustify (rowJustify="start")', () => {
         createTestComponent(BasicRowJustifyStart);
         expect(
             getElementByClass(
@@ -106,7 +106,7 @@ describe('NxRowDirective', () => {
         ).not.toBeNull();
     });
 
-    it('should test with input row and nxRowJustify (nxRowJustify="around,end")', () => {
+    it('should test with input row and rowJustify (rowJustify="around,end")', () => {
         createTestComponent(BasicRowJustifyEnd);
         expect(
             getElementByClass(
@@ -115,28 +115,28 @@ describe('NxRowDirective', () => {
         ).not.toBeNull();
     });
 
-    it('should test with input row and nxRowAlignContent (nxRowAlignContent="start,start,end,around")', () => {
+    it('should test with input row and rowAlignContent (rowAlignContent="start,start,end,around")', () => {
         createTestComponent(BasicRowContentStart);
         expect(
             getElementByClass('.nx-grid__row.nx-align-content-start.nx-align-content-small-start.nx-align-content-medium-end.nx-align-content-large-around'),
         ).not.toBeNull();
     });
 
-    it('should test with input row and nxRowAlignContent (nxRowAlignContent="end")', () => {
+    it('should test with input row and rowAlignContent (rowAlignContent="end")', () => {
         createTestComponent(BasicRowContentEnd);
         expect(
             getElementByClass('.nx-grid__row.nx-align-content-end.nx-align-content-small-end.nx-align-content-medium-end.nx-align-content-large-end'),
         ).not.toBeNull();
     });
 
-    it('should test with input row and nxRowAlignItems (nxRowAlignItems="start,start,stretch")', () => {
+    it('should test with input row and rowAlignItems (rowAlignItems="start,start,stretch")', () => {
         createTestComponent(BasicRowItemsStart);
         expect(
             getElementByClass('.nx-grid__row.nx-align-items-start.nx-align-items-small-start.nx-align-items-medium-stretch.nx-align-items-large-stretch'),
         ).not.toBeNull();
     });
 
-    it('should test with input row and nxRowAlignItems (nxRowAlignItems="end")', () => {
+    it('should test with input row and rowAlignItems (rowAlignItems="end")', () => {
         createTestComponent(BasicRowItemsEnd);
         expect(
             getElementByClass('.nx-grid__row.nx-align-items-end.nx-align-items-small-end.nx-align-items-medium-end.nx-align-items-large-end'),
@@ -198,70 +198,70 @@ class BasicRowReverse extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid">
-        <div nxRow="row" nxRowWrap="wrap"></div>
+        <div nxRow="row" rowWrap="wrap"></div>
     </div>`,
 })
 class BasicRowWrap extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid">
-        <div nxRow="row" nxRowWrap="wrap,reverse"></div>
+        <div nxRow="row" rowWrap="wrap,reverse"></div>
     </div>`,
 })
 class BasicRowWrapReverse extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid">
-        <div nxRow="row" nxRowWrap="nowrap,nowrap,wrap,reverse"></div>
+        <div nxRow="row" rowWrap="nowrap,nowrap,wrap,reverse"></div>
     </div>`,
 })
 class BasicRowNoWrap extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid">
-        <div nxRow="row" nxRowJustify="start,start,start,start"></div>
+        <div nxRow="row" rowJustify="start,start,start,start"></div>
     </div>`,
 })
 class BasicRowJustifyStart extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid">
-        <div nxRow="row" nxRowJustify="around,end"></div>
+        <div nxRow="row" rowJustify="around,end"></div>
     </div>`,
 })
 class BasicRowJustifyEnd extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid">
-        <div nxRow="row" nxRowAlignContent="start,start,end,around"></div>
+        <div nxRow="row" rowAlignContent="start,start,end,around"></div>
     </div>`,
 })
 class BasicRowContentStart extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid">
-        <div nxRow="row" nxRowAlignContent="end"></div>
+        <div nxRow="row" rowAlignContent="end"></div>
     </div>`,
 })
 class BasicRowContentEnd extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid">
-        <div nxRow="row" nxRowAlignItems="start,start,stretch"></div>
+        <div nxRow="row" rowAlignItems="start,start,stretch"></div>
     </div>`,
 })
 class BasicRowItemsStart extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid">
-        <div nxRow="row" nxRowAlignItems="end"></div>
+        <div nxRow="row" rowAlignItems="end"></div>
     </div>`,
 })
 class BasicRowItemsEnd extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid">
-        <div [nxRow]="row" [nxRowAlignItems]="alignItems" [nxRowAlignContent]="alignContent" [nxRowJustify]="justify" [nxRowWrap]="wrap"></div>
+        <div [nxRow]="row" [rowAlignItems]="alignItems" [rowAlignContent]="alignContent" [rowJustify]="justify" [rowWrap]="wrap"></div>
     </div>`,
 })
 class DynamicTest extends DirectiveTest {

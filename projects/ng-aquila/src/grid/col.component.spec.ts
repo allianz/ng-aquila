@@ -104,11 +104,11 @@ describe('NxColDirective', () => {
         ).not.toBeNull();
     });
 
-    it('should test with input row and nxRowAlignItems (alignSelf="start")', () => {
+    it('should test with input row and rowAlignItems (alignSelf="start")', () => {
         expect(getClassesCreated(BasicTestColAlignSelf, '.nx-align-self-small-start.nx-align-self-medium-start.nx-align-self-large-start')).not.toBeNull();
     });
 
-    it('should test with input row and nxRowAlignItems (colOrder="first")', () => {
+    it('should test with input row and rowAlignItems (colOrder="first")', () => {
         expect(
             getClassesCreated(
                 BasicTestColOrder,
