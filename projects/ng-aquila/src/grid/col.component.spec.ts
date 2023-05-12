@@ -104,11 +104,11 @@ describe('NxColDirective', () => {
         ).not.toBeNull();
     });
 
-    it('should test with input row and nxRowAlignItems (nxAlignSelf="start")', () => {
+    it('should test with input row and nxRowAlignItems (alignSelf="start")', () => {
         expect(getClassesCreated(BasicTestColAlignSelf, '.nx-align-self-small-start.nx-align-self-medium-start.nx-align-self-large-start')).not.toBeNull();
     });
 
-    it('should test with input row and nxRowAlignItems (nxColOrder="first")', () => {
+    it('should test with input row and nxRowAlignItems (colOrder="first")', () => {
         expect(
             getClassesCreated(
                 BasicTestColOrder,
@@ -358,7 +358,7 @@ class OffsetTestFourInputsWithZero extends DirectiveTest {}
 @Component({
     template: `<div nxLayout="grid">
         <div nxRow="row">
-            <div [nxCol]="cols" [nxColOrder]="order" [colOffset]="offset" [nxAlignSelf]="alignSelf">Hello World</div>
+            <div [nxCol]="cols" [colOrder]="order" [colOffset]="offset" [alignSelf]="alignSelf">Hello World</div>
         </div>
     </div>`,
 })
