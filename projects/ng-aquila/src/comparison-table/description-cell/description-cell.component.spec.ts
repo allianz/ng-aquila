@@ -1,12 +1,12 @@
 import { Component, DebugElement, Directive, QueryList, Type, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import axe from 'axe-core';
 
 import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.spec';
 import { NxComparisonTableModule } from '../comparison-table.module';
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
 import { NxComparisonTableDescriptionCell } from './description-cell.component';
-import axe from 'axe-core';
 
 declare let viewport: any;
 const THROTTLE_TIME = 200;
@@ -172,7 +172,7 @@ describe('NxComparisonTableDescriptionCell', () => {
             expect(descriptionCellElements[0].attributes['aria-colspan']).toBe('2');
         }));
 
-        it('has no accessibility violations', function (done) {
+        it('has no accessibility violations', done => {
             createTestComponent(DescriptionCellComponent);
 
             axe.run(

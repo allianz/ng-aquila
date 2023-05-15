@@ -126,7 +126,7 @@ describe('NxComparisonTableIntersectionCell', () => {
             expect(intersectionCellElements[0].attributes.rowspan).toBe('3');
         }));
 
-        it('has no accessibility violations', function (done) {
+        it('has no accessibility violations', done => {
             createTestComponent(IntersectionCellComponent);
 
             axe.run(

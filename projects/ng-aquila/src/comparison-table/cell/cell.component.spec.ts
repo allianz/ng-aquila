@@ -214,7 +214,7 @@ describe('NxComparisonTableCell', () => {
             expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
         }));
 
-        it('has no accessibility violations', function (done) {
+        it('has no accessibility violations', done => {
             createTestComponent(BasicCellComponent);
 
             axe.run(

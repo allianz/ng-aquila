@@ -2,13 +2,13 @@ import { ChangeDetectionStrategy, Component, DebugElement, Directive, QueryList,
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import axe from 'axe-core';
 
 import { dispatchFakeEvent } from '../cdk-test-utils';
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableComponent } from './comparison-table.component';
 import { NxComparisonTableModule } from './comparison-table.module';
 import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
-import axe from 'axe-core';
 
 declare let viewport: any;
 const THROTTLE_TIME = 200;
@@ -631,7 +631,7 @@ describe('NxComparisonTableComponent', () => {
             expect(toggleSectionBody.attributes.role).toBe('rowgroup');
         });
 
-        it('has no accessibility violations', function (done) {
+        it('has no accessibility violations', done => {
             createTestComponent(BasicComponent);
 
             axe.run(

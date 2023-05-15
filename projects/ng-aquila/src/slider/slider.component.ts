@@ -64,7 +64,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
      * How often to show ticks. Relative to the step so that a tick always appears on a step.
      * Ex: Tick interval of 4 with a step of 3 will draw a tick every 4 steps (every 12 values).
      */
-    @Input('tickInterval') set tickInterval(value: NumberInput) {
+    @Input() set tickInterval(value: NumberInput) {
         this._tickInterval = coerceNumberProperty(value);
         this.ticks = this.getTicks(this.min, this.max, this.step, this._tickInterval, this.longTicks);
         this._cdr.markForCheck();
@@ -81,7 +81,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     _labelPosition: string = DEFAULT_LABEL_POSITION;
 
     /** Sets the id of the slider. */
-    @Input('id') set id(value: string) {
+    @Input() set id(value: string) {
         if (this._id !== value) {
             this._id = value;
             this._cdr.markForCheck();
@@ -194,7 +194,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _value = 0;
 
     /** Whether the negative set of styles is applied (Default: 'false').*/
-    @Input('negative') set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -204,7 +204,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _negative = false;
 
     /** Hides the min/max labels (Default: 'false'). */
-    @Input('hideLabels') set hideLabels(value: BooleanInput) {
+    @Input() set hideLabels(value: BooleanInput) {
         this._hideLabels = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -214,7 +214,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _hideLabels = false;
 
     /** Sets the array of value which will render as long tick (Default: Middle value if present). */
-    @Input('longTicks') set longTicks(value: number[]) {
+    @Input() set longTicks(value: number[]) {
         if (this._longTicks !== value) {
             this._longTicks = value;
             this.ticks = this.getTicks(this.min, this.max, this.step, this.tickInterval, this._longTicks);

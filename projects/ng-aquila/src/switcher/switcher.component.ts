@@ -137,7 +137,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     private _disabled = false;
 
     /** An event is dispatched each time the switcher value is changed */
-    @Output('checkedChange') readonly checkedChange = new EventEmitter<boolean>();
+    @Output() readonly checkedChange = new EventEmitter<boolean>();
 
     private onChangeCallback = (_: any) => {};
     private onTouchedCallback = () => {};

@@ -39,7 +39,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     private _altText = '';
 
     /** Sets the value of the aria-label attribute on the play button (Default: Play Video). */
-    @Input('nxPlayButtonAriaLabel') set nxPlayButtonAriaLabel(value: string) {
+    @Input() set nxPlayButtonAriaLabel(value: string) {
         if (this._playButtonAriaLabel !== value) {
             this._playButtonAriaLabel = value;
             this._cdr.markForCheck();

@@ -62,7 +62,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     readonly _stateChanges = new Subject<void>();
 
     /** Sets the Id of the radio group. */
-    @Input('id') set id(value: string) {
+    @Input() set id(value: string) {
         if (this._id !== value) {
             this._id = value;
             this._cdr.markForCheck();
@@ -265,7 +265,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
     /** Sets the id of the radio component. */
-    @Input('id') set id(value: string) {
+    @Input() set id(value: string) {
         if (this._id !== value) {
             this._id = value;
             this._cdr.markForCheck();
@@ -290,7 +290,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
 
     // this is also the name attribute, which is mandatory in conjunction with ngModel, hence no nx prefix
     /** Sets the name of this radio component, which is mandatory in conjunction with ngModel (Default: null). */
-    @Input('name') set name(value: string) {
+    @Input() set name(value: string) {
         if (this._name !== value) {
             this._name = value;
             this._cdr.markForCheck();

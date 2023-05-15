@@ -9,10 +9,7 @@
             }
         },
         {
-            "files": ["*.html"],
-            "rules": {
-                "@angular-eslint/template/elements-content": "off"
-            }
+            "files": ["*.html"]
         }
     ]
 }

@@ -5,12 +5,11 @@ import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync
 import { By } from '@angular/platform-browser';
 import { Subject, Subscription } from 'rxjs';
 
-import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
+import { dispatchFakeEvent } from '../cdk-test-utils';
 import { NxPopoverComponent } from './popover.component';
 import { NxPopoverModule } from './popover.module';
 import { NxPopoverIntl } from './popover-intl';
 import { NxPopoverTriggerDirective } from './popover-trigger.directive';
-import { ESCAPE, SPACE } from '@angular/cdk/keycodes';
 
 @Component({
     selector: 'nx-test-component',

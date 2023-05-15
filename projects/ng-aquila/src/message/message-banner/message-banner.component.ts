@@ -18,7 +18,7 @@ export class NxMessageBannerComponent extends NxMessageComponent {
      *
      * Default: `'info'`.
      */
-    @Input('context') set context(value: BANNER_CONTEXT) {
+    @Input() set context(value: BANNER_CONTEXT) {
         this._updateContext(value);
     }
     get context(): BANNER_CONTEXT {
