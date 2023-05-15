@@ -411,7 +411,7 @@ class MultiStepCompletionTest extends MultiStepTest {
                     </nx-formfield>
                     <nx-formfield nxLabel="Name">
                         <nx-dropdown formControlName="fruit">
-                            <nx-dropdown-item nxValue="banana">Banana</nx-dropdown-item>
+                            <nx-dropdown-item value="banana">Banana</nx-dropdown-item>
                         </nx-dropdown>
                     </nx-formfield>
                     <button type="button" nxStepperNext>Next</button>

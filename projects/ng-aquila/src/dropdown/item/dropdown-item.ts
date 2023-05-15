@@ -63,7 +63,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
      * You can't use undefined, null and '' (empty strings)
      * as they are sentinel values signalling empty data.
      */
-    @Input('nxValue') value: any;
+    @Input() value: any;
 
     get label(): string {
         return this._mostRecentViewValue || this.viewValue;
@@ -118,7 +118,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
      * @docs-private
      */
     get truncateItems(): boolean {
-        return !this._dropdown?.ignoreItemTrunctation;
+        return !this._dropdown?.ignoreItemTruncation;
     }
 
     /** Emits whenever the component is destroyed. */

@@ -9,7 +9,7 @@ alias: select, multi select
 
 <div class="docs-deprecation-warning">
   <strong>Important: </strong>
-  Please note that the <strong>nxIsMultiselect</strong> option of the dropdown is deprecated. Use the new <strong>nx-multi-select</strong> component instead.
+  Please note that the <strong>isMultiselect</strong> option of the dropdown is deprecated. Use the new <strong>nx-multi-select</strong> component instead.
 </div>
 
 It is recommended to use the dropdown component in combination with NxFormField. Therefore, make sure to import this module as well:
@@ -34,9 +34,9 @@ It is possible to show a placeholder instead of the floating label. The placehol
 
 ### Rendering of dropdown-items
 
-The items inside the dropdown can be rendered either by `[nxValueFormatter]` or by ng-content. If no ng-content is provided, the `[nxValue]` in combination with `[nxValueFormatter]` will be used to render the item content (left). This example also shows the usage of `[nxValueFormatter]`. It is possible to transform any `[nxValue]` into the rendered state (here: "uppercase").
+The items inside the dropdown can be rendered either by `[valueFormatter]` or by ng-content. If no ng-content is provided, the `[value]` in combination with `[valueFormatter]` will be used to render the item content (left). This example also shows the usage of `[valueFormatter]`. It is possible to transform any `[value]` into the rendered state (here: "uppercase").
 
-If there is ng-content projected by nx-dropdown-item, this content will be used by the dropdown to display the items (middle). The library implements a fallback if you do not provide `[nxValueFormatter]` and ng-content. In this case, `[nxValue]` will be used by .toString() as value for the item (right).
+If there is ng-content projected by nx-dropdown-item, this content will be used by the dropdown to display the items (middle). The library implements a fallback if you do not provide `[valueFormatter]` and ng-content. In this case, `[value]` will be used by .toString() as value for the item (right).
 
 <!-- example(dropdown-rendering-items) -->
 
@@ -116,7 +116,7 @@ Please note that **this is an Expert styling option**. This means that the outli
 
 #### Multi Select Dropdown
 
-The multi select dropdown is a new component which is a replacement for the `<dropdown nxIsMultiselect ...>`. It offers a filter to quicky find items in long lists, improved accessibility and better performance.
+The multi select dropdown is a new component which is a replacement for the `<dropdown isMultiselect ...>`. It offers a filter to quicky find items in long lists, improved accessibility and better performance.
 
 <!-- example(multi-select) -->
 

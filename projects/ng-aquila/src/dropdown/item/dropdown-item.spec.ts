@@ -95,7 +95,7 @@ describe('NxDropdownItem component', () => {
 });
 
 @Component({
-    template: `<nx-dropdown><nx-dropdown-item nxValue="option"></nx-dropdown-item></nx-dropdown>`,
+    template: `<nx-dropdown><nx-dropdown-item value="option"></nx-dropdown-item></nx-dropdown>`,
 })
 class BasicItem extends DropdownItemTest {}
 
@@ -106,7 +106,7 @@ class EmptyItem extends DropdownItemTest {}
 
 @Component({
     template: `<nx-dropdown
-        ><nx-dropdown-item nxValue="option"><span>label</span></nx-dropdown-item></nx-dropdown
+        ><nx-dropdown-item value="option"><span>label</span></nx-dropdown-item></nx-dropdown
     >`,
 })
 class ProjectedItem extends DropdownItemTest {}

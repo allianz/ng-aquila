@@ -2,10 +2,10 @@
     <div nxRow>
         <div nxCol="12,12,10,6" nxColOffset="0,0,1,3">
             <nx-formfield nxLabel="Country">
-                <nx-dropdown [(nxValue)]="country">
+                <nx-dropdown [(value)]="country">
                     <nx-dropdown-item
                         *ngFor="let country of countriesList"
-                        [nxValue]="country.country"
+                        [value]="country.country"
                     >
                         {{country.countryName}}
                     </nx-dropdown-item>

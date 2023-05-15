@@ -29,7 +29,7 @@
                     <nx-dropdown formControlName="animalType">
                         <nx-dropdown-item
                             *ngFor="let animalType of animalTypes"
-                            [nxValue]="animalType"
+                            [value]="animalType"
                         ></nx-dropdown-item>
                     </nx-dropdown>
                     <nx-error appearance="text" nxFormfieldError>
@@ -82,7 +82,7 @@
                     <nx-dropdown formControlName="dogBreed">
                         <nx-dropdown-item
                             *ngFor="let breed of dogBreeds"
-                            [nxValue]="breed"
+                            [value]="breed"
                         ></nx-dropdown-item>
                     </nx-dropdown>
                     <nx-error appearance="text" nxFormfieldError>
@@ -99,7 +99,7 @@
                     <nx-dropdown formControlName="catBreed">
                         <nx-dropdown-item
                             *ngFor="let breed of catBreeds"
-                            [nxValue]="breed"
+                            [value]="breed"
                         ></nx-dropdown-item>
                     </nx-dropdown>
                     <nx-error appearance="text" nxFormfieldError>

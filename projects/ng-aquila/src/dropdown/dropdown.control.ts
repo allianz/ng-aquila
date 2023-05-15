@@ -9,7 +9,7 @@ export abstract class NxDropdownControl extends NxFormfieldControl<any> {
      */
     isMultiSelect = false;
 
-    ignoreItemTrunctation = false;
+    ignoreItemTruncation = false;
 
     readonly filterChanges!: Subject<any>;
 

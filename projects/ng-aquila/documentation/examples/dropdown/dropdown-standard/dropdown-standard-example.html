@@ -2,21 +2,21 @@
     <div nxRow class="nx-margin-bottom-m">
         <div nxCol="12, 12, 6">
             <nx-formfield nxLabel="Car brand">
-                <nx-dropdown [nxValueFormatter]="toText">
+                <nx-dropdown [valueFormatter]="toText">
                     <nx-dropdown-item
                         *ngFor="let option of options"
-                        [nxValue]="option"
+                        [value]="option"
                     ></nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
         </div>
         <div nxCol="12, 12, 6">
             <nx-formfield nxLabel="Preselected Dropdown">
-                <nx-dropdown nxValue="BMW">
-                    <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
-                    <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
-                    <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
-                    <nx-dropdown-item nxValue="Mini"></nx-dropdown-item>
+                <nx-dropdown value="BMW">
+                    <nx-dropdown-item value="BMW"></nx-dropdown-item>
+                    <nx-dropdown-item value="Audi"></nx-dropdown-item>
+                    <nx-dropdown-item value="Volvo"></nx-dropdown-item>
+                    <nx-dropdown-item value="Mini"></nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
         </div>
@@ -25,17 +25,17 @@
     <div nxRow>
         <div nxCol="12, 12, 6">
             <nx-formfield nxLabel="Readonly Dropdown">
-                <nx-dropdown nxValue="BMW" nxReadonly>
-                    <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
-                    <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
+                <nx-dropdown value="BMW" readonly>
+                    <nx-dropdown-item value="BMW"></nx-dropdown-item>
+                    <nx-dropdown-item value="Audi"></nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
         </div>
         <div nxCol="12, 12, 6">
             <nx-formfield nxLabel="Disabled Dropdown">
-                <nx-dropdown nxValue="BMW" nxDisabled>
-                    <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
-                    <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
+                <nx-dropdown value="BMW" disabled>
+                    <nx-dropdown-item value="BMW"></nx-dropdown-item>
+                    <nx-dropdown-item value="Audi"></nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
         </div>

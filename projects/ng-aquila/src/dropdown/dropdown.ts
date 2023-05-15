@@ -144,7 +144,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
 })
 export class NxDropdownComponent implements NxDropdownControl, ControlValueAccessor, OnInit, AfterViewInit, AfterContentInit, OnDestroy, DoCheck {
     /** Whether the dropdown is readonly. */
-    @Input('nxReadonly') set readonly(value: BooleanInput) {
+    @Input() set readonly(value: BooleanInput) {
         this._readonly = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
@@ -231,7 +231,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     private _tabIndex = 0;
 
     /** Selected value */
-    @Input('nxValue') set value(newValue: any) {
+    @Input() set value(newValue: any) {
         if (newValue !== this._value) {
             this.writeValue(newValue);
             this._value = newValue;
@@ -245,7 +245,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     private _value: any;
 
     /** Whether the dropdown is disabled. */
-    @Input('nxDisabled') set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
     }
     get disabled(): boolean {
@@ -260,7 +260,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      * @throws Error if true and the bound value is not an array.
      * @deprecated Please use the new `<nx-multi-select>` component instead.
      */
-    @Input('nxIsMultiselect') isMultiSelect = false;
+    @Input() isMultiSelect = false;
 
     /** The id of the input. */
     get id() {
@@ -268,14 +268,21 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     /** Whether the component is required. This adds an aria-required label to the component. */
-    @Input('nxRequired') required!: boolean;
+    @Input() set required(value: BooleanInput) {
+        this._required = coerceBooleanProperty(value);
+    }
+    get required(): boolean {
+        return this._required;
+    }
+
+    protected _required = false;
 
     private _style = '';
     /** Whether the dropdown should render in its negative style or not. */
     _negative = false;
 
     /** If set to 'negative', the component is displayed with the negative set of styles. */
-    @Input('nxStyle') set styles(value: string) {
+    @Input('variant') set styles(value: string) {
         if (this._style === value) {
             return;
         }
@@ -299,22 +306,22 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      * We recommend following UX guidelines and always truncating long items.
      * Please only disable truncation if it's impossible to use short descriptions.
      */
-    @Input('nxIgnoreItemTrunctation') set ignoreItemTrunctation(value: BooleanInput) {
-        this._ignoreItemTrunctation = coerceBooleanProperty(value);
+    @Input() set ignoreItemTruncation(value: BooleanInput) {
+        this._ignoreItemTruncation = coerceBooleanProperty(value);
     }
-    get ignoreItemTrunctation(): boolean {
-        return this._ignoreItemTrunctation;
+    get ignoreItemTruncation(): boolean {
+        return this._ignoreItemTruncation;
     }
-    private _ignoreItemTrunctation = false;
+    private _ignoreItemTruncation = false;
 
     /** Whether the dropdown should be shown with an additional filter input. */
-    @Input('nxShowFilter') showFilter = false;
+    @Input() showFilter = false;
 
     /** Text displayed as placeholder for the filter. */
-    @Input('nxFilterPlaceholder') filterPlaceholder = '';
+    @Input() filterPlaceholder = '';
 
     /** Text that is displayed at the top of the overlay. If not set the formfield label is used by default. */
-    @Input('nxOverlayLabel') overlayLabel = '';
+    @Input() overlayLabel = '';
 
     /** Event emitted when the select panel has been toggled. */
     @Output() readonly openedChange = new EventEmitter<boolean>();
@@ -346,7 +353,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      *
      * @docs-private
      */
-    @Output('nxValueChange') readonly valueChange = new EventEmitter<any>();
+    @Output() readonly valueChange = new EventEmitter<any>();
 
     /** Event emitted when the selected value has been changed. */
     @Output() readonly selectionChange = new EventEmitter<NxDropdownSelectChange>();
@@ -428,7 +435,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      *
      * Default: `(value: any) => value == null ? '' : value.toString()`.
      */
-    @Input('nxValueFormatter') set valueFormatter(value: NxDropdownValueFormatterFn | null | undefined) {
+    @Input() set valueFormatter(value: NxDropdownValueFormatterFn | null | undefined) {
         this.#valueFormatter = value;
     }
     get valueFormatter(): NxDropdownValueFormatterFn {

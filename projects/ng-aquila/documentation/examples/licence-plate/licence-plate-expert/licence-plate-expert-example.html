@@ -8,11 +8,11 @@
             >
                 <nx-dropdown
                     placeholder="Choose a type"
-                    [(nxValue)]="licencePlateModel.type"
+                    [(value)]="licencePlateModel.type"
                 >
                     <nx-dropdown-item
                         *ngFor="let type of licencePlateTypes"
-                        [nxValue]="type.type"
+                        [value]="type.type"
                         >{{type.typeName}}</nx-dropdown-item
                     >
                 </nx-dropdown>
@@ -24,10 +24,10 @@
                     appearance="outline"
                     nxFloatLabel="always"
                 >
-                    <nx-dropdown [(nxValue)]="licencePlateModel.startDate">
+                    <nx-dropdown [(value)]="licencePlateModel.startDate">
                         <nx-dropdown-item
                             *ngFor="let date of monthsOfYearList"
-                            [nxValue]="date.month"
+                            [value]="date.month"
                         >
                             {{date.monthName}}
                         </nx-dropdown-item>
@@ -38,10 +38,10 @@
                     appearance="outline"
                     nxFloatLabel="always"
                 >
-                    <nx-dropdown [(nxValue)]="licencePlateModel.endDate">
+                    <nx-dropdown [(value)]="licencePlateModel.endDate">
                         <nx-dropdown-item
                             *ngFor="let date of monthsOfYearList"
-                            [nxValue]="date.month"
+                            [value]="date.month"
                         >
                             {{date.monthName}}
                         </nx-dropdown-item>
@@ -55,10 +55,10 @@
                     appearance="outline"
                     nxFloatLabel="always"
                 >
-                    <nx-dropdown [(nxValue)]="licencePlateModel.country">
+                    <nx-dropdown [(value)]="licencePlateModel.country">
                         <nx-dropdown-item
                             *ngFor="let country of countriesList"
-                            [nxValue]="country.country"
+                            [value]="country.country"
                         >
                             {{country.countryName}}
                         </nx-dropdown-item>

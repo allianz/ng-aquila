@@ -8,5 +8,5 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class NxDropdownGroupComponent {
     /** Label displayed in the group. */
-    @Input('nxLabel') label!: string;
+    @Input() label!: string;
 }

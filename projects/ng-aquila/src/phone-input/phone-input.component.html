@@ -1,12 +1,12 @@
 <div class="nx-phone-input___wrapper">
     <nx-dropdown
         [class.hide]="readonly && !disabled"
-        [nxValue]="countryCode"
+        [value]="countryCode"
         #dropdown
-        [nxShowFilter]="true"
-        [nxDisabled]="disabled"
-        [nxOverlayLabel]="areaCodeLabel"
-        (nxValueChange)="_onCountryChange($event)"
+        [showFilter]="true"
+        [disabled]="disabled"
+        [overlayLabel]="areaCodeLabel"
+        (valueChange)="_onCountryChange($event)"
         [options]="_sortedCountries"
     >
         <span *nxClosedLabel>+{{ _getCallingCode(dropdown.value) }}</span>

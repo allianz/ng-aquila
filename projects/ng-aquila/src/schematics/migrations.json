@@ -1,9 +1,9 @@
 {
     "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
     "schematics": {
-        "migration-v15": {
-            "version": "15.0.0-0",
-            "description": "Updates ng-aquila to v15",
+        "migration-v16": {
+            "version": "16.0.0-0",
+            "description": "Updates ng-aquila to v16",
             "factory": "./ng-update/index"
         }
     }

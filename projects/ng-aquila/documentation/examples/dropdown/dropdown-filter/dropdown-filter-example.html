@@ -3,12 +3,12 @@
         <div nxCol="12,12,6">
             <nx-formfield nxLabel="Car brand">
                 <nx-dropdown
-                    [nxShowFilter]="true"
-                    nxFilterPlaceholder="Type to search car"
+                    [showFilter]="true"
+                    filterPlaceholder="Type to search car"
                 >
                     <nx-dropdown-item
                         *ngFor="let brand of options"
-                        [nxValue]="brand"
+                        [value]="brand"
                     ></nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
