@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
     selector: 'nx-file-upload-status',
     styleUrls: ['./file-uploader-status.component.scss'],
     template: `
-        <nx-spinner *ngIf="isUploading" nxSize="medium"></nx-spinner>
+        <nx-spinner *ngIf="isUploading" size="medium"></nx-spinner>
         <nx-icon name="check-circle" *ngIf="isUploaded" size="s" [attr.aria-label]="uploadedLabel || null"> </nx-icon>
     `,
 })

@@ -23,7 +23,7 @@ const DEFAULT_SIZE = 'small';
 })
 export class NxSpinnerComponent {
     /** Sets the size of the spinner. Default is 'small'. */
-    @Input('nxSize') set size(value: SpinnerSize) {
+    @Input() set size(value: SpinnerSize) {
         if (value !== this._size) {
             this._size = value;
             this._cdr.markForCheck();

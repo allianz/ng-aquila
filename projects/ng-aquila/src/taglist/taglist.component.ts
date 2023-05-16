@@ -35,16 +35,16 @@ import { NxTagComponent } from './tag.component';
 })
 export class NxTaglistComponent implements ControlValueAccessor {
     /** An event is dispatched each time when the list of tags changed. */
-    @Output('nxTagsChange') readonly tagsChange = new EventEmitter<any[]>();
+    @Output('tagsChange') readonly tagsChange = new EventEmitter<any[]>();
 
     /** An event is dispatched each time when a tag is clicked. */
-    @Output('nxTagClick') readonly tagClickEvent = new EventEmitter<any>();
+    @Output('onTagClick') readonly tagClickEvent = new EventEmitter<any>();
 
     /** @docs-private */
     @ViewChildren(NxTagComponent, { read: ElementRef }) tagChildren!: QueryList<ElementRef>;
 
     /** Sets the list of tags. */
-    @Input('nxTags') set tags(value: any[]) {
+    @Input('tags') set tags(value: any[]) {
         this._tags = value;
         this._cdr.markForCheck();
     }
@@ -64,7 +64,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     private _tabindex = -1;
 
     /** Whether the tags can be removed from the list. Default: true. */
-    @Input('nxAllowTagDeletion') set allowTagDeletion(value: BooleanInput) {
+    @Input() set allowTagDeletion(value: BooleanInput) {
         this._allowTagDeletion = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -74,7 +74,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     private _allowTagDeletion = true;
 
     /** Whether the tags can be styled as keywords. */
-    @Input('nxIsKeywordList') set isKeywordList(value: BooleanInput) {
+    @Input() set isKeywordList(value: BooleanInput) {
         this._isKeywordList = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -84,13 +84,13 @@ export class NxTaglistComponent implements ControlValueAccessor {
     private _isKeywordList = false;
 
     /** Sets the label property, in case tags represent objects. */
-    @Input('nxLabelProperty') set labelProp(value: string) {
+    @Input() set labelProperty(value: string) {
         if (this._labelProperty !== value) {
             this._labelProperty = value;
             this._cdr.markForCheck();
         }
     }
-    get labelProp(): string {
+    get labelProperty(): string {
         return this._labelProperty;
     }
     private _labelProperty = 'nxTaglistLabel';
@@ -108,7 +108,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     private _ariaLabelledBy!: string;
 
     /** Sets the customization function for tag value.  */
-    @Input('nxValueFormatter') set valueFormatter(fn: (value: any) => string) {
+    @Input() set valueFormatter(fn: (value: any) => string) {
         this._valueFormatterFn = fn;
         this._cdr.markForCheck();
     }
@@ -147,7 +147,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
         // make sure tag is either string or has the configured label prop and is not yet in the list
         if (
             (typeof tag === 'string' && !this.tags.includes(tag)) ||
-            (tag[this.labelProp] && this.tags.filter(t => t[this.labelProp] === tag[this.labelProp]).length < 1)
+            (tag[this.labelProperty] && this.tags.filter(t => t[this.labelProperty] === tag[this.labelProperty]).length < 1)
         ) {
             this.tags = [...this.tags, tag];
             this._onChange(this.tags);
@@ -177,7 +177,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
 
     /** @docs-private */
     renderTag(tag: any) {
-        const tagStr: string = typeof tag === 'string' ? tag : tag[this.labelProp];
+        const tagStr: string = typeof tag === 'string' ? tag : tag[this.labelProperty];
         return this.valueFormatter(tagStr);
     }
 

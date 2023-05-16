@@ -94,7 +94,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     private _checked = false;
 
     /** Whether the big switcher is used */
-    @Input('nxBig') set big(value: BooleanInput) {
+    @Input() set big(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         this._big = newValue;
         this._cdr.markForCheck();
@@ -115,7 +115,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     private _labelSize: LABEL_SIZE = 'large';
 
     /** Whether the style for a dark background is used */
-    @Input('nxNegative') set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         this._negative = newValue;
         this._cdr.markForCheck();

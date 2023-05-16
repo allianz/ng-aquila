@@ -103,12 +103,12 @@ describe('nxSpinnerComponent', () => {
 class BasicTestSpinner extends SpinnerTest {}
 
 @Component({
-    template: `<nx-spinner [nxSize]="size" [negative]="negative"></nx-spinner>`,
+    template: `<nx-spinner [size]="size" [negative]="negative"></nx-spinner>`,
 })
 class ConfigurableSpinner extends SpinnerTest {}
 
 @Component({
-    template: `<nx-spinner [nxSize]="size" [negative]="negative"></nx-spinner>`,
+    template: `<nx-spinner [size]="size" [negative]="negative"></nx-spinner>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class OnPushSpinner extends SpinnerTest {}

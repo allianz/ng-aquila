@@ -23,5 +23,24 @@ export const outputNames: VersionChanges<OutputNameUpgradeData> = {
                 { replace: 'nxValueChange', replaceWith: 'valueChange', limitedTo: { elements: ['nx-dropdown'] } },
             ],
         },
+        {
+            pr: '',
+            changes: [
+                {
+                    replace: 'nxTagsChange',
+                    replaceWith: 'tagsChange',
+                    limitedTo: {
+                        elements: ['nx-taglist'],
+                    },
+                },
+                {
+                    replace: 'nxTagClick',
+                    replaceWith: 'onTagClick',
+                    limitedTo: {
+                        elements: ['nx-taglist'],
+                    },
+                },
+            ],
+        },
     ],
 };

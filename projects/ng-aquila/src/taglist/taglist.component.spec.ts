@@ -204,7 +204,7 @@ describe('NxTaglistComponent', () => {
             fixture.detectChanges();
             tagElements = getTagElements();
             expect(tagElements.item(0).textContent?.trim()).toBe('');
-            testInstance.taglistInstance.labelProp = 'customLabelProp';
+            testInstance.taglistInstance.labelProperty = 'customLabelProp';
             fixture.detectChanges();
             tagElements = getTagElements();
             expect(tagElements.item(0).textContent?.trim()).toBe('a');
@@ -264,24 +264,24 @@ describe('NxTaglistComponent', () => {
 });
 
 @Component({
-    template: `<nx-taglist [nxTags]="tags">empty</nx-taglist>`,
+    template: `<nx-taglist [tags]="tags">empty</nx-taglist>`,
 })
 class BasicTaglist extends TaglistTest {}
 
 @Component({
-    template: `<nx-taglist [nxTags]="tags" [nxAllowTagDeletion]="false"></nx-taglist>`,
+    template: `<nx-taglist [tags]="tags" [allowTagDeletion]="false"></nx-taglist>`,
 })
 class TaglistNoDelete extends TaglistTest {}
 
 @Component({
-    template: `<nx-taglist [nxTags]="tags" nxLabelProperty="testLabelProp"></nx-taglist>`,
+    template: `<nx-taglist [tags]="tags" labelProperty="testLabelProp"></nx-taglist>`,
 })
 class TaglistObjects extends TaglistTest {
     tags = [{ testLabelProp: 'foo' }, { testLabelProp: 'bar' }];
 }
 
 @Component({
-    template: `<nx-taglist [nxTags]="tags" [nxValueFormatter]="myFormatter">empty</nx-taglist>`,
+    template: `<nx-taglist [tags]="tags" [valueFormatter]="myFormatter">empty</nx-taglist>`,
 })
 class TaglistWithFormatter extends TaglistTest {
     myFormatter = (value: any) => `my ${value}`;
@@ -289,7 +289,7 @@ class TaglistWithFormatter extends TaglistTest {
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `<nx-taglist [nxTags]="tags">empty</nx-taglist>`,
+    template: `<nx-taglist [tags]="tags">empty</nx-taglist>`,
 })
 class TaglistOnPush extends TaglistTest {}
 
@@ -297,7 +297,7 @@ class TaglistOnPush extends TaglistTest {}
     template: `
         <h5 id="taglist-headline">Aria label</h5>
         <h5 id="taglist-headline2">Other label</h5>
-        <nx-taglist [nxTags]="tags" [aria-labelledby]="labelledBy"></nx-taglist>
+        <nx-taglist [tags]="tags" [aria-labelledby]="labelledBy"></nx-taglist>
     `,
 })
 class AriaLabelledByTaglist extends TaglistTest {

@@ -8,5 +8,6 @@ export const propertyNames: VersionChanges<PropertyNameUpgradeData> = {
         { pr: '', changes: [{ replace: 'nxRowAlignContent', replaceWith: 'rowAlignContent', limitedTo: { classes: ['NxRowComponent'] } }] },
         { pr: '', changes: [{ replace: 'nxRowAlignItems', replaceWith: 'rowAlignItems', limitedTo: { classes: ['NxRowComponent'] } }] },
         { pr: '', changes: [{ replace: 'nxRowWrap', replaceWith: 'rowWrap', limitedTo: { classes: ['NxRowComponent'] } }] },
+        { pr: '', changes: [{ replace: 'labelProp', replaceWith: 'labelProperty', limitedTo: { classes: ['NxTaglistComponent'] } }] },
     ],
 };

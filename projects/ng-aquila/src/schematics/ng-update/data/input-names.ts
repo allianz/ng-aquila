@@ -178,5 +178,74 @@ export const inputNames: VersionChanges<InputNameUpgradeData> = {
                 { replace: 'nxInterfaceLanguage', replaceWith: 'interfaceLanguage', limitedTo: { elements: ['nx-video'] } },
             ],
         },
+        {
+            pr: '',
+            changes: [
+                {
+                    replace: 'nxTags',
+                    replaceWith: 'tags',
+                    limitedTo: {
+                        elements: ['nx-taglist'],
+                    },
+                },
+                {
+                    replace: '(nxTags)',
+                    replaceWith: '(tags)',
+                    limitedTo: {
+                        elements: ['nx-taglist'],
+                    },
+                },
+                {
+                    replace: 'nxAllowTagDeletion',
+                    replaceWith: 'allowTagDeletion',
+                    limitedTo: {
+                        elements: ['nx-taglist'],
+                    },
+                },
+                {
+                    replace: 'nxIsKeywordList',
+                    replaceWith: 'isKeywordList',
+                    limitedTo: {
+                        elements: ['nx-taglist'],
+                    },
+                },
+                {
+                    replace: 'nxLabelProperty',
+                    replaceWith: 'labelProperty',
+                    limitedTo: {
+                        elements: ['nx-taglist'],
+                    },
+                },
+                {
+                    replace: 'nxValueFormatter',
+                    replaceWith: 'valueFormatter',
+                    limitedTo: {
+                        elements: ['nx-taglist'],
+                    },
+                },
+
+                {
+                    replace: 'nxSize',
+                    replaceWith: 'size',
+                    limitedTo: {
+                        elements: ['nx-spinner'],
+                    },
+                },
+                {
+                    replace: 'nxBig',
+                    replaceWith: 'big',
+                    limitedTo: {
+                        elements: ['nx-switcher'],
+                    },
+                },
+                {
+                    replace: 'nxNegative',
+                    replaceWith: 'negative',
+                    limitedTo: {
+                        elements: ['nx-switcher'],
+                    },
+                },
+            ],
+        },
     ],
 };

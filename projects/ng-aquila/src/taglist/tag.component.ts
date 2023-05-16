@@ -31,7 +31,7 @@ export class NxTagComponent implements OnDestroy {
     /**
      * Sets the tab-index of a tag. Default value: -1.
      *
-     * If `nxAllowTagDeletion` of the taglist is set to true, the default value is 0.
+     * If `allowTagDeletion` of the taglist is set to true, the default value is 0.
      */
     @Input()
     set tabindex(value: NumberInput) {

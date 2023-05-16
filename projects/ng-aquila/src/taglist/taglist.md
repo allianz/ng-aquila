@@ -15,7 +15,7 @@ By default, the tag component allows individual values to be deleted on click. T
 
 ### Tag Keywords
 
-The tags can optionally be styled as keywords by setting the respective option `nxIsKeywordList`.
+The tags can optionally be styled as keywords by setting the respective option `isKeywordList`.
 
 <!-- example(taglist-keyword) -->
 
@@ -27,7 +27,7 @@ The textual representation of tags can be customized through a formatter functio
 
 ### Delete Tags
 
-If the option `nxAllowTagDeletion` is not set to false, tags can be deleted from the list on click.
+If the option `allowTagDeletion` is not set to false, tags can be deleted from the list on click.
 
 Note that tags can be added and the list can be cleared by calling the respective methods `addTag` and `clearTags` on the component. The respective buttons and input in this example are independent of the component and only included in this example to show that they can be placed anywhere on the page and that any custom business logic and validation can be used. Any content of the element will be used as empty state and is displayed in case the tags array is empty.
 
@@ -37,7 +37,7 @@ Note that tags can be added and the list can be cleared by calling the respectiv
 
 ### Objects as Input
 
-In order to give you as much flexibility as possible and support a wide variety of use cases, the tag list not only works with strings but accepts any object as input which has a `nxTaglistLabel` property. Note that while this is the default name, the label property can be configured via the input. `nxLabelProperty`.
+In order to give you as much flexibility as possible and support a wide variety of use cases, the tag list not only works with strings but accepts any object as input which has a `nxTaglistLabel` property. Note that while this is the default name, the label property can be configured via the input. `labelProperty`.
 
 <!-- example(taglist-objects) -->
 
@@ -71,4 +71,4 @@ In oder to improve accessibility, please consider **linking a label** to the tag
 
 #### Keybord navigation
 
-If `nxAllowTagDeletion` is set to `true`, you can remove selected tags using BACKSPACE. If your tags trigger actions on click, these actions will be also triggered on ENTER click.
+If `allowTagDeletion` is set to `true`, you can remove selected tags using BACKSPACE. If your tags trigger actions on click, these actions will be also triggered on ENTER click.
