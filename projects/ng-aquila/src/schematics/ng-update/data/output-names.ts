@@ -10,5 +10,18 @@ export const outputNames: VersionChanges<OutputNameUpgradeData> = {
             pr: '',
             changes: [{ replace: 'nxRowClick', replaceWith: 'rowClick', limitedTo: { elements: ['nx-dynamic-table'] } }],
         },
+        {
+            pr: '',
+            changes: [
+                {
+                    replace: 'nxValueChange',
+                    replaceWith: 'valueChange',
+                    limitedTo: {
+                        elements: ['nx-rating', 'nx-slider'],
+                    },
+                },
+                { replace: 'nxValueChange', replaceWith: 'valueChange', limitedTo: { elements: ['nx-dropdown'] } },
+            ],
+        },
     ],
 };

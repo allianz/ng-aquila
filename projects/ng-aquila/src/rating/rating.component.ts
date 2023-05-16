@@ -37,7 +37,7 @@ import { IconSize, NxIconComponent } from '@aposin/ng-aquila/icon';
     },
 })
 export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
-    @Input('nxSize') set size(newSize: IconSize) {
+    @Input() set size(newSize: IconSize) {
         this._size = newSize;
         this._cdr.markForCheck();
     }
@@ -47,7 +47,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     private _size: IconSize = 'l';
 
     /** Sets the selected rating 1 - 5. */
-    @Input('nxValue') set value(newValue: NumberInput) {
+    @Input() set value(newValue: NumberInput) {
         this._value = coerceNumberProperty(newValue);
         this._cdr.markForCheck();
     }
@@ -59,7 +59,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     private _hover = 0;
 
     /** Whether the rating component should be disabled. */
-    @Input('nxDisabled') set disabled(newValue: BooleanInput) {
+    @Input() set disabled(newValue: BooleanInput) {
         if (this._disabled === newValue) {
             return;
         }
@@ -72,7 +72,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     private _disabled = false;
 
     /** Whether the negative colors be used. */
-    @Input('nxNegative') set negative(newValue: BooleanInput) {
+    @Input() set negative(newValue: BooleanInput) {
         if (this._negative === newValue) {
             return;
         }
@@ -85,7 +85,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     private _negative = false;
 
     /** Sets the label painted at the start of the rating component. */
-    @Input('nxStartLabel') set startLabel(newValue: string) {
+    @Input() set startLabel(newValue: string) {
         this._startLabel = newValue;
         this._cdr.markForCheck();
     }
@@ -95,7 +95,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     private _startLabel = '';
 
     /** Sets the label painted at the end of the rating component. */
-    @Input('nxEndLabel') set endLabel(newValue: string) {
+    @Input() set endLabel(newValue: string) {
         this._endLabel = newValue;
         this._cdr.markForCheck();
     }
@@ -104,9 +104,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     }
     private _endLabel: string | null = null;
 
-    @Input('nxAriaLabel') /** Sets an array of custom aria-describedby attributes for each of the stars in the component. */ set ariaLabel(
-        newAriaLabels: string[],
-    ) {
+    @Input() /** Sets an array of custom aria-describedby attributes for each of the stars in the component. */ set ariaLabel(newAriaLabels: string[]) {
         this._ariaLabel = newAriaLabels;
         this._cdr.markForCheck();
     }
@@ -115,7 +113,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     }
     private _ariaLabel: string[] = ['1/5', '2/5', '3/5', '4/5', '5/5'];
 
-    @Input('nxIconColor') /** Sets the color of rating icon. */ set iconColor(color: string) {
+    @Input() /** Sets the color of rating icon. */ set iconColor(color: string) {
         this._iconColor = color;
         this._cdr.markForCheck();
     }
@@ -125,7 +123,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     private _iconColor = '';
 
     /** An event is dispatched each time when the rating changes. */
-    @Output('nxValueChange') readonly valueChange = new EventEmitter<number>();
+    @Output() readonly valueChange = new EventEmitter<number>();
 
     /** @docs-private */
     @ViewChildren(NxIconComponent, { read: ElementRef }) icons!: QueryList<ElementRef>;

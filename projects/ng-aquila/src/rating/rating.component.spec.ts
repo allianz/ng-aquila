@@ -297,12 +297,12 @@ class RatingTest {
 }
 
 @Component({
-    template: `<nx-rating nxStartLabel="poor" nxEndLabel="great"></nx-rating>`,
+    template: `<nx-rating startLabel="poor" endLabel="great"></nx-rating>`,
 })
 class SimpleRatingComponent extends RatingTest {}
 
 @Component({
-    template: `<nx-rating [(nxValue)]="theValue"></nx-rating>`,
+    template: `<nx-rating [(value)]="theValue"></nx-rating>`,
 })
 class SimpleBindingRatingComponent extends RatingTest {
     theValue: any;
@@ -329,7 +329,7 @@ class ReactiveBindingRatingComponent extends RatingTest {
 }
 
 @Component({
-    template: `<nx-rating [nxValue]="currentValue" [nxStartLabel]="startLabel" [nxEndLabel]="endLabel"></nx-rating>`,
+    template: `<nx-rating [value]="currentValue" [startLabel]="startLabel" [endLabel]="endLabel"></nx-rating>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class RatingOnPushComponent extends RatingTest {
@@ -347,7 +347,7 @@ class TemplateDrivenOnPushComponent extends RatingTest {
 }
 
 @Component({
-    template: `<nx-rating [nxSize]="size"></nx-rating>`,
+    template: `<nx-rating [size]="size"></nx-rating>`,
 })
 class SizeRatingComponent extends RatingTest {
     size = 'm';

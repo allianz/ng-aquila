@@ -5,6 +5,132 @@ export const inputNames: VersionChanges<InputNameUpgradeData> = {
         {
             pr: '',
             changes: [
+                {
+                    replace: 'nxSize',
+                    replaceWith: 'size',
+                    limitedTo: {
+                        elements: ['nx-rating'],
+                    },
+                },
+                {
+                    replace: '(nxValue)',
+                    replaceWith: '(value)',
+                    limitedTo: {
+                        elements: ['nx-rating', 'nx-slider'],
+                    },
+                },
+                {
+                    replace: 'nxValue',
+                    replaceWith: 'value',
+                    limitedTo: {
+                        elements: ['nx-rating', 'nx-slider'],
+                    },
+                },
+                {
+                    replace: 'nxDisabled',
+                    replaceWith: 'disabled',
+                    limitedTo: {
+                        elements: ['nx-rating'],
+                    },
+                },
+                {
+                    replace: 'nxNegative',
+                    replaceWith: 'negative',
+                    limitedTo: {
+                        elements: ['nx-rating'],
+                    },
+                },
+                {
+                    replace: 'nxStartLabel',
+                    replaceWith: 'startLabel',
+                    limitedTo: {
+                        elements: ['nx-rating'],
+                    },
+                },
+                {
+                    replace: 'nxEndLabel',
+                    replaceWith: 'endLabel',
+                    limitedTo: {
+                        elements: ['nx-rating'],
+                    },
+                },
+                {
+                    replace: 'nxAriaLabel',
+                    replaceWith: 'ariaLabel',
+                    limitedTo: {
+                        elements: ['nx-rating'],
+                    },
+                },
+                {
+                    replace: 'nxIconColor',
+                    replaceWith: 'iconColor',
+                    limitedTo: {
+                        elements: ['nx-rating'],
+                    },
+                },
+                {
+                    replace: 'nxMin',
+                    replaceWith: 'min',
+                    limitedTo: {
+                        elements: ['nx-slider'],
+                    },
+                },
+                {
+                    replace: 'nxMax',
+                    replaceWith: 'max',
+                    limitedTo: {
+                        elements: ['nx-slider'],
+                    },
+                },
+                {
+                    replace: 'nxStep',
+                    replaceWith: 'step',
+                    limitedTo: {
+                        elements: ['nx-slider'],
+                    },
+                },
+                {
+                    replace: 'nxLabel',
+                    replaceWith: 'label',
+                    limitedTo: {
+                        elements: ['nx-slider'],
+                    },
+                },
+                {
+                    replace: 'nxInverted',
+                    replaceWith: 'inverted',
+                    limitedTo: {
+                        elements: ['nx-slider'],
+                    },
+                },
+
+                {
+                    replace: 'nxValueFormatter',
+                    replaceWith: 'valueFormatter',
+                    limitedTo: {
+                        elements: ['nx-slider'],
+                    },
+                },
+                {
+                    replace: 'nxLabelMinFormatter',
+                    replaceWith: 'labelMinFormatter',
+                    limitedTo: {
+                        elements: ['nx-slider'],
+                    },
+                },
+                {
+                    replace: 'nxLabelMaxFormatter',
+                    replaceWith: 'labelMaxFormatter',
+                    limitedTo: {
+                        elements: ['nx-slider'],
+                    },
+                },
+            ],
+        },
+
+        {
+            pr: '',
+            changes: [
                 { replace: 'nxDisabled', replaceWith: 'disabled', limitedTo: { elements: ['nx-dropdown'] } },
                 { replace: 'nxReadonly', replaceWith: 'readonly', limitedTo: { elements: ['nx-dropdown'] } },
                 { replace: 'nxValue', replaceWith: 'value', limitedTo: { elements: ['nx-dropdown'] } },

@@ -38,6 +38,6 @@ stable: done
 
 ### Accessibility
 
-The component can be accessed via keyboard. To do that, use the TAB-key to focus on one of the stars and hit the ENTER-key to select it. Alternatively, increase or decrease the selected value by hitting the LEFT-ARROW- or RIGHT-ARROW-key. Moreover, it is possible to provide custom descriptions for each star. Please refer to nxAriaLabel in the API section for more information.
+The component can be accessed via keyboard. To do that, use the TAB-key to focus on one of the stars and hit the ENTER-key to select it. Alternatively, increase or decrease the selected value by hitting the LEFT-ARROW- or RIGHT-ARROW-key. Moreover, it is possible to provide custom descriptions for each star. Please refer to `ariaLabel` in the API section for more information.
 
 <!-- example(rating-accessibility) -->

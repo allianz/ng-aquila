@@ -607,7 +607,7 @@ const styles = `
 @Component({
     template: `
         <div class="slider-container">
-            <nx-slider id="testSlider" nxLabel="testLabel"> </nx-slider>
+            <nx-slider id="testSlider" label="testLabel"> </nx-slider>
         </div>
     `,
     styles: [styles],
@@ -617,7 +617,7 @@ class BasicSlider extends SliderTest {}
 @Component({
     template: `
         <div class="slider-container">
-            <nx-slider id="testSlider" nxLabel="testLabel"> </nx-slider>
+            <nx-slider id="testSlider" label="testLabel"> </nx-slider>
         </div>
     `,
     styles: [styles],
@@ -630,11 +630,11 @@ class BasicSliderOnPush extends SliderTest {}
         <div class="slider-container" [style.width.px]="width">
             <nx-slider
                 id="testSlider"
-                nxLabel="testLabel"
-                [nxMin]="min"
-                [nxMax]="max"
-                [nxStep]="stepSize"
-                [nxValue]="value"
+                label="testLabel"
+                [min]="min"
+                [max]="max"
+                [step]="stepSize"
+                [value]="value"
                 [thumbLabel]="thumblabel"
                 [hideLabels]="hideLabels"
             >
@@ -648,7 +648,7 @@ class ConfigurableSlider extends SliderTest {}
 @Component({
     template: `
         <div class="slider-container">
-            <nx-slider [nxMin]="-50" [nxMax]="50" [nxStep]="1"> </nx-slider>
+            <nx-slider [min]="-50" [max]="50" [step]="1"> </nx-slider>
         </div>
     `,
     styles: [styles],
@@ -658,7 +658,7 @@ class NegativeSlider extends SliderTest {}
 @Component({
     template: `
         <div class="slider-container">
-            <nx-slider [nxMin]="0" [nxMax]="2" [nxStep]="0.1"> </nx-slider>
+            <nx-slider [min]="0" [max]="2" [step]="0.1"> </nx-slider>
         </div>
     `,
     styles: [styles],
@@ -668,7 +668,7 @@ class TruncateTestSlider extends SliderTest {}
 @Component({
     template: `
         <div class="slider-container">
-            <nx-slider [nxMin]="0" [nxMax]="1" [nxStep]="0.1"> </nx-slider>
+            <nx-slider [min]="0" [max]="1" [step]="0.1"> </nx-slider>
         </div>
     `,
     styles: [styles],
@@ -678,7 +678,7 @@ class FloatSlider extends SliderTest {}
 @Component({
     template: `
         <div class="slider-container">
-            <nx-slider [nxValue]="42" [disabled]="true"> </nx-slider>
+            <nx-slider [value]="42" [disabled]="true"> </nx-slider>
         </div>
     `,
     styles: [styles],
@@ -688,7 +688,7 @@ class DisabledSlider extends SliderTest {}
 @Component({
     template: `
         <div class="slider-container">
-            <nx-slider [nxInverted]="true"> </nx-slider>
+            <nx-slider [inverted]="true"> </nx-slider>
         </div>
     `,
     styles: [styles],
@@ -698,7 +698,7 @@ class InvertedSlider extends SliderTest {}
 @Component({
     template: `
         <div class="slider-container">
-            <nx-slider [(nxValue)]="value"> </nx-slider>
+            <nx-slider [(value)]="value"> </nx-slider>
         </div>
     `,
     styles: [styles],

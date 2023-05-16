@@ -17,13 +17,13 @@ For better decimal/floating point handling this module is using the 3rd party li
 
 ### Default values
 
-If no input is provided, the default values of `nxMin=0`, `nxMax=100` and `nxStep=1` apply. This is also the case if the provided inputs are invalid, for example if the minimum value is higher than the maximum value.
+If no input is provided, the default values of `min=0`, `max=100` and `step=1` apply. This is also the case if the provided inputs are invalid, for example if the minimum value is higher than the maximum value.
 
 <!-- example(slider-default) -->
 
 ### Decimal handling
 
-To mitigate floating point precision erros the value of the slider gets rounded to the closest value based on the step size. For integer step sizes the value will be integers. For decimal step sizes the value will be rounded to the number of decimal places. So for `nxStep=0.1` the value will have a maximum of 1 decimal place (1, 1.1 etc.). For `nxStep=0.01` the value will have a maximum of 2 decimal places (1, 1.01, etc.) and so on.
+To mitigate floating point precision erros the value of the slider gets rounded to the closest value based on the step size. For integer step sizes the value will be integers. For decimal step sizes the value will be rounded to the number of decimal places. So for `step=0.1` the value will have a maximum of 1 decimal place (1, 1.1 etc.). For `step=0.01` the value will have a maximum of 2 decimal places (1, 1.01, etc.) and so on.
 
 Try to change the step size below to 0.01 and move the slider again to see the effect.
 
@@ -83,5 +83,5 @@ The Min/Max labels under the slider can be hidden by changing the `[hideLabels]`
 
 ### Slider with ticks
 
-Tick under the slider can be shown with `[tickInterval]` which relative to `[nxStep]`
+Tick under the slider can be shown with `[tickInterval]` which relative to `[step]`
 <!-- example(slider-tick) -->
