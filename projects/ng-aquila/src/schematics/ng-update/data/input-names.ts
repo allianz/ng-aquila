@@ -166,5 +166,17 @@ export const inputNames: VersionChanges<InputNameUpgradeData> = {
                 { replace: 'nxRowWrap', replaceWith: 'rowWrap', limitedTo: { attributes: ['nxRow'] } },
             ],
         },
+        {
+            pr: '',
+            changes: [
+                { replace: 'nxVideoId', replaceWith: 'videoId', limitedTo: { elements: ['nx-video'] } },
+                { replace: 'nxAltText', replaceWith: 'altText', limitedTo: { elements: ['nx-video'] } },
+                { replace: 'nxPlayButtonAriaLabel', replaceWith: 'playButtonAriaLabel', limitedTo: { elements: ['nx-video'] } },
+                { replace: 'nxPreviewImageSrc', replaceWith: 'previewImageSrc', limitedTo: { elements: ['nx-video'] } },
+                { replace: 'nxShowPlayerControls', replaceWith: 'showPlayerControls', limitedTo: { elements: ['nx-video'] } },
+                { replace: 'nxAllowFullScreen', replaceWith: 'allowFullScreen', limitedTo: { elements: ['nx-video'] } },
+                { replace: 'nxInterfaceLanguage', replaceWith: 'interfaceLanguage', limitedTo: { elements: ['nx-video'] } },
+            ],
+        },
     ],
 };

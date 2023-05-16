@@ -80,7 +80,7 @@ describe('NxVideoComponent', () => {
         expect(videoInstance.imgSrc).toBe('testURI');
     }));
 
-    it('uses sensible defaults for nxPlayButtonAriaLabel if not set', waitForAsync(() => {
+    it('uses sensible defaults for playButtonAriaLabel if not set', waitForAsync(() => {
         createTestComponent(BasicVideo);
 
         const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
@@ -96,7 +96,7 @@ describe('NxVideoComponent', () => {
         expect(playButton.nativeElement.getAttribute('aria-label')).toBe('foo - Play Video');
     }));
 
-    it('uses nxPlayButtonAriaLabel as aria-label if set', waitForAsync(() => {
+    it('uses playButtonAriaLabel as aria-label if set', waitForAsync(() => {
         createTestComponent(BasicVideo);
         testInstance.nxPlayButtonAriaLabel = 'foobar';
         fixture.detectChanges();
@@ -147,7 +147,7 @@ describe('NxVideoComponent', () => {
 
         it('should update on nxPlayButtonAriaLabel change', () => {
             createTestComponent(BasicVideo);
-            videoInstance.nxPlayButtonAriaLabel = 'play-label';
+            videoInstance.playButtonAriaLabel = 'play-label';
             fixture.detectChanges();
             const playButton = getVideoPlayButton();
             expect(playButton.getAttribute('aria-label')).toBe('play-label');
@@ -202,11 +202,11 @@ describe('NxVideoComponent', () => {
 @Component({
     template: `
         <nx-video
-            [nxAltText]="altText"
-            [nxPreviewImageSrc]="previewImageSrc"
-            [nxVideoId]="videoId"
-            [nxPlayButtonAriaLabel]="nxPlayButtonAriaLabel"
-            [nxAllowFullScreen]="fullscreen"
+            [altText]="altText"
+            [previewImageSrc]="previewImageSrc"
+            [videoId]="videoId"
+            [playButtonAriaLabel]="nxPlayButtonAriaLabel"
+            [allowFullScreen]="fullscreen"
         ></nx-video>
     `,
 })
