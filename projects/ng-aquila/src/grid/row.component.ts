@@ -82,25 +82,25 @@ export class NxRowComponent {
     private _rowClass: string = MAPPING_LAYOUT.row;
 
     /** Align items on the main axis (horizontally). */
-    @Input() set nxRowJustify(value: RowJustification | string) {
+    @Input() set rowJustify(value: RowJustification | string) {
         this._justifyClasses = value ? addStylesFromDimensions(value, MAPPING_JUSTIFY) : '';
     }
     private _justifyClasses = '';
 
     /** Similar to nxRowAlignItems, but instead of aligning flex items, it aligns flex lines. */
-    @Input() set nxRowAlignContent(value: RowContentAlignment | string) {
+    @Input() set rowAlignContent(value: RowContentAlignment | string) {
         this._alignContentClasses = value ? addStylesFromDimensions(value, MAPPING_ALIGN_CONTENT) : '';
     }
     private _alignContentClasses = '';
 
     /** The default alignment for items inside the flexible container. */
-    @Input() set nxRowAlignItems(value: RowItemsAlignment | string) {
+    @Input() set rowAlignItems(value: RowItemsAlignment | string) {
         this._alignItemsClasses = value ? addStylesFromDimensions(value, MAPPING_ALIGN_ITEMS) : '';
     }
     private _alignItemsClasses = '';
 
     /** How the flexible items should be wrapped. */
-    @Input() set nxRowWrap(value: RowWrapping) {
+    @Input() set rowWrap(value: RowWrapping) {
         this._wrapClasses = value ? addStylesFromDimensions(value, MAPPING_WRAP) : '';
     }
     private _wrapClasses = '';
