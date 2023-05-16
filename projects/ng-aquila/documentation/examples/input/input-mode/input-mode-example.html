@@ -1,4 +1,4 @@
-<nx-formfield nxLabel="With virtual keyboard">
+<nx-formfield label="With virtual keyboard">
     <nx-dropdown [(value)]="inputMode" placeholder="Select input mode">
         <nx-dropdown-item value="text"></nx-dropdown-item>
         <nx-dropdown-item value="decimal"></nx-dropdown-item>
@@ -10,6 +10,6 @@
     </nx-dropdown>
 </nx-formfield>
 
-<nx-formfield [nxLabel]="inputMode">
+<nx-formfield [label]="inputMode">
     <input nxInput type="text" [attr.inputmode]="inputMode" />
 </nx-formfield>

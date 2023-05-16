@@ -258,7 +258,7 @@ describe('NxDatefieldDirective with Moment', () => {
 
 @Component({
     template: `
-        <nx-formfield nxLabel="Given Label">
+        <nx-formfield label="Given Label">
             <input nxInput nxDatefield [disabled]="disabled" />
         </nx-formfield>
     `,
@@ -277,7 +277,7 @@ class MinMaxDatefield extends DatefieldTest {}
 @Component({
     template: `
         <form [formGroup]="form">
-            <nx-formfield nxLabel="Given Label">
+            <nx-formfield label="Given Label">
                 <input nxInput nxDatefield [nxStrict]="strict" [nxParseFormat]="parseFormat" [nxDisplayFormat]="displayFormat" formControlName="datefield" />
             </nx-formfield>
         </form>
@@ -352,7 +352,7 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
 @Component({
     template: `
         <form [formGroup]="form">
-            <nx-formfield nxLabel="Given Label">
+            <nx-formfield label="Given Label">
                 <input nxInput nxDatefield formControlName="datefield" />
             </nx-formfield>
         </form>

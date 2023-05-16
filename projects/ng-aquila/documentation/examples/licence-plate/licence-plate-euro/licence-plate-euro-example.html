@@ -1,7 +1,7 @@
 <div nxLayout="grid maxwidth">
     <div nxRow>
         <div nxCol="12,12,10,6" colOffset="0,0,1,3">
-            <nx-formfield nxLabel="Country">
+            <nx-formfield label="Country">
                 <nx-dropdown [(value)]="country">
                     <nx-dropdown-item
                         *ngFor="let country of countriesList"
@@ -16,7 +16,7 @@
 
     <div nxRow>
         <div nxCol="12,12,10,6" colOffset="0,0,1,3">
-            <nx-formfield nxLabel="License Plate">
+            <nx-formfield label="License Plate">
                 <nx-licence-plate-euro-prefix nxFormfieldPrefix
                     >{{ country }}</nx-licence-plate-euro-prefix
                 >

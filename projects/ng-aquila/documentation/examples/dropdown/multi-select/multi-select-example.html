@@ -1,5 +1,5 @@
 <h3>With filter</h3>
-<nx-formfield appearance="outline" nxFloatLabel="always" nxLabel="Multi select">
+<nx-formfield appearance="outline" floatLabel="always" label="Multi select">
     <nx-multi-select
         filter
         placeholder="Choose options"
@@ -16,7 +16,7 @@
 </div>
 
 <h3>Without filter</h3>
-<nx-formfield appearance="outline" nxFloatLabel="always" nxLabel="Multi select">
+<nx-formfield appearance="outline" floatLabel="always" label="Multi select">
     <nx-multi-select
         placeholder="Choose options"
         [(ngModel)]="model"
@@ -32,7 +32,7 @@
 </div>
 
 <h3>Reactive forms validation</h3>
-<nx-formfield nxFloatLabel="always" nxLabel="Multi select with validation">
+<nx-formfield floatLabel="always" label="Multi select with validation">
     <nx-multi-select
         placeholder="Choose options"
         [formControl]="control"

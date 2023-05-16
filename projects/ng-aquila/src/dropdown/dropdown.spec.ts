@@ -1434,7 +1434,7 @@ abstract class DropdownTest {
 }
 
 @Component({
-    template: `<nx-formfield nxLabel="Car brand">
+    template: `<nx-formfield label="Car brand">
         <nx-dropdown [overlayLabel]="overlayLabel">
             <nx-dropdown-item value="BMW">B</nx-dropdown-item>
             <nx-dropdown-item value="Audi">A</nx-dropdown-item>
@@ -1448,7 +1448,7 @@ class SimpleDropdownComponent extends DropdownTest {
 }
 
 @Component({
-    template: `<nx-formfield nxLabel="Car brand" appearance="outline">
+    template: `<nx-formfield label="Car brand" appearance="outline">
         <nx-dropdown [placeholder]="placeholder">
             <nx-dropdown-item value="BMW">B</nx-dropdown-item>
         </nx-dropdown>
@@ -1677,7 +1677,7 @@ class ReactiveDropdownUpdateOnBlurComponent extends DropdownTest {
 
 @Component({
     template: `<form [formGroup]="testForm">
-        <nx-formfield nxLabel="Car brand">
+        <nx-formfield label="Car brand">
             <nx-dropdown nxInput nxLabel="Car brand" formControlName="dropdown" [placeholder]="placeholder">
                 <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
                 <nx-dropdown-item value="Audi">Audi</nx-dropdown-item>

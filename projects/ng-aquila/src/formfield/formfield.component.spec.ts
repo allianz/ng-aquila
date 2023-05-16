@@ -471,7 +471,7 @@ describe('NxFormfieldComponent', () => {
 
 @Component({
     template: `
-        <nx-formfield nxLabel="Given Label">
+        <nx-formfield label="Given Label">
             <input nxInput [disabled]="disabled" [readonly]="readonly" />
         </nx-formfield>
     `,
@@ -541,7 +541,7 @@ class NoChangeDetectionFormfield extends FormfieldTest {}
 class NoteFormfield extends FormfieldTest {}
 @Component({
     template: `
-        <nx-formfield nxLabel="Given Label">
+        <nx-formfield label="Given Label">
             <input nxInput [(ngModel)]="currentValue" />
         </nx-formfield>
     `,
@@ -550,7 +550,7 @@ class NgModelFormfield extends FormfieldTest {}
 
 @Component({
     template: `
-        <nx-formfield [nxFloatLabel]="floatLabel">
+        <nx-formfield [floatLabel]="floatLabel">
             <input nxInput [(ngModel)]="currentValue" />
         </nx-formfield>
     `,
@@ -573,7 +573,7 @@ class NativeSelectFormfield extends FormfieldTest {}
 
 @Component({
     template: `
-        <nx-formfield nxLabel="inputLabel">
+        <nx-formfield label="inputLabel">
             <nx-formfield-label>directiveLabel</nx-formfield-label>
             <input nxInput />
         </nx-formfield>
@@ -599,7 +599,7 @@ class OutlineFormfield extends FormfieldTest {}
 class OnPushFormfield extends FormfieldTest {}
 
 @Component({
-    template: `<nx-formfield nxLabel="IBAN">
+    template: `<nx-formfield label="IBAN">
         <input *ngIf="true" nxInput />
         <span nxFormfieldHint>my hint</span>
     </nx-formfield>`,

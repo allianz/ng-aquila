@@ -22,8 +22,8 @@
         <div nxCol="12" [ngSwitch]="stepper.selectedIndex">
             <form *ngSwitchCase="0" [formGroup]="animalTypeForm.form">
                 <nx-formfield
-                    [nxLabel]="animalTypeForm.label"
-                    nxFloatLabel="always"
+                    [label]="animalTypeForm.label"
+                    floatLabel="always"
                     appearance="outline"
                 >
                     <nx-dropdown formControlName="animalType">
@@ -47,8 +47,8 @@
 
             <form *ngSwitchCase="1" [formGroup]="nameForm.form">
                 <nx-formfield
-                    [nxLabel]="nameForm.label"
-                    nxFloatLabel="always"
+                    [label]="nameForm.label"
+                    floatLabel="always"
                     appearance="outline"
                 >
                     <input nxInput formControlName="name" type="text" />
@@ -75,8 +75,8 @@
             <form *ngSwitchCase="2" [formGroup]="breedForm.form">
                 <nx-formfield
                     *ngIf="breedForm.form.get('dogBreed')"
-                    [nxLabel]="breedForm.label"
-                    nxFloatLabel="always"
+                    [label]="breedForm.label"
+                    floatLabel="always"
                     appearance="outline"
                 >
                     <nx-dropdown formControlName="dogBreed">
@@ -92,8 +92,8 @@
 
                 <nx-formfield
                     *ngIf="breedForm.form.get('catBreed')"
-                    [nxLabel]="breedForm.label"
-                    nxFloatLabel="always"
+                    [label]="breedForm.label"
+                    floatLabel="always"
                     appearance="outline"
                 >
                     <nx-dropdown formControlName="catBreed">
@@ -129,8 +129,8 @@
                 (submit)="onSubmit()"
             >
                 <nx-formfield
-                    [nxLabel]="ageForm.label"
-                    nxFloatLabel="always"
+                    [label]="ageForm.label"
+                    floatLabel="always"
                     appearance="outline"
                 >
                     <input nxInput formControlName="age" type="number" />

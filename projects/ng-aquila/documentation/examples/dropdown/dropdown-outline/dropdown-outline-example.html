@@ -2,7 +2,7 @@
     <div nxRow>
         <div nxCol="12">
             <h4 nxHeadline="subsection-xsmall">Standard dropdown</h4>
-            <nx-formfield nxLabel="Car brand">
+            <nx-formfield label="Car brand">
                 <nx-dropdown>
                     <nx-dropdown-item
                         *ngFor="let brand of options"
@@ -10,19 +10,19 @@
                     ></nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
-            <nx-formfield nxLabel="Readonly Dropdown">
+            <nx-formfield label="Readonly Dropdown">
                 <nx-dropdown value="BMW" readonly>
                     <nx-dropdown-item value="BMW"></nx-dropdown-item>
                     <nx-dropdown-item value="Audi"></nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
-            <nx-formfield nxLabel="Disabled Dropdown">
+            <nx-formfield label="Disabled Dropdown">
                 <nx-dropdown value="BMW" disabled>
                     <nx-dropdown-item value="BMW"></nx-dropdown-item>
                     <nx-dropdown-item value="Audi"></nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
-            <nx-formfield nxLabel="Error dropdown">
+            <nx-formfield label="Error dropdown">
                 <nx-dropdown
                     #exampleErrorNgModel
                     [(ngModel)]="modelBlank"
@@ -37,7 +37,7 @@
                     Error message
                 </nx-error>
             </nx-formfield>
-            <nx-formfield nxLabel="With icon dropdown">
+            <nx-formfield label="With icon dropdown">
                 <nx-dropdown>
                     <nx-dropdown-item
                         *ngFor="let brand of options"
@@ -51,7 +51,7 @@
     <div nxRow>
         <div nxCol="12">
             <h4 nxHeadline="subsection-xsmall">Filter dropdown</h4>
-            <nx-formfield nxLabel="Car brand">
+            <nx-formfield label="Car brand">
                 <nx-dropdown
                     [showFilter]="true"
                     filterPlaceholder="Type to search car"
@@ -65,7 +65,7 @@
         </div>
         <div nxCol="12">
             <h4 nxHeadline="subsection-xsmall">Group dropdown</h4>
-            <nx-formfield nxLabel="Animals">
+            <nx-formfield label="Animals">
                 <nx-dropdown [(value)]="model">
                     <nx-dropdown-group
                         *ngFor="let group of groups"
@@ -82,7 +82,7 @@
 
         <div nxCol="12">
             <h4 nxHeadline="subsection-xsmall">Multi select dropdown</h4>
-            <nx-formfield nxLabel="Car brand">
+            <nx-formfield label="Car brand">
                 <nx-multi-select
                     filter
                     [(ngModel)]="brands"

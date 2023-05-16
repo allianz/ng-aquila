@@ -1,7 +1,7 @@
 <div nxLayout="grid">
     <div nxRow>
         <div nxCol="12, 12, 4">
-            <nx-formfield nxLabel="Car brand">
+            <nx-formfield label="Car brand">
                 <nx-dropdown [valueFormatter]="toText">
                     <nx-dropdown-item
                         *ngFor="let brand of demoData"
@@ -11,7 +11,7 @@
             </nx-formfield>
         </div>
         <div nxCol="12, 12, 4">
-            <nx-formfield nxLabel="Car brand">
+            <nx-formfield label="Car brand">
                 <nx-dropdown>
                     <nx-dropdown-item value="BMW">B</nx-dropdown-item>
                     <nx-dropdown-item value="Audi">A</nx-dropdown-item>
@@ -22,7 +22,7 @@
         </div>
 
         <div nxCol="12, 12, 4">
-            <nx-formfield nxLabel="Car brand">
+            <nx-formfield label="Car brand">
                 <nx-dropdown>
                     <nx-dropdown-item value="BMW"></nx-dropdown-item>
                     <nx-dropdown-item value="Audi"></nx-dropdown-item>

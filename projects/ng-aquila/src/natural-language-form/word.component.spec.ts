@@ -271,7 +271,7 @@ class NaturalLanguageFormSmallComponent extends NaturalLanguageFormTest {}
 @Component({
     template: `
         <form [formGroup]="form">
-            <nx-formfield [nxLabel]="'some label'">
+            <nx-formfield [label]="'some label'">
                 <input nxInput [formControl]="input" />
                 <nx-error nxFormfieldError> This field is required! </nx-error>
             </nx-formfield>

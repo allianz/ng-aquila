@@ -12,14 +12,14 @@
             </div>
             <div nxRow>
                 <div nxCol="12,12,6">
-                    <nx-formfield nxLabel="Your Name">
+                    <nx-formfield label="Your Name">
                         <input nxInput formControlName="name" />
                         <nx-error nxFormfieldError> <strong>Please note:</strong> this field is required! </nx-error>
                     </nx-formfield>
                 </div>
 
                 <div nxCol="12,12,6">
-                    <nx-formfield nxLabel="Number of items">
+                    <nx-formfield label="Number of items">
                         <nx-dropdown formControlName="items">
                             <nx-dropdown-item value="1">1</nx-dropdown-item>
                             <nx-dropdown-item value="2">2</nx-dropdown-item>
@@ -31,7 +31,7 @@
             </div>
             <div nxRow>
                 <div nxCol="12,12,6">
-                    <nx-formfield nxLabel="E-Mail">
+                    <nx-formfield label="E-Mail">
                         <input nxInput formControlName="email" />
 
                         <nx-icon nxFormfieldAppendix name="info-circle-o" [nxPopoverTriggerFor]="popoverEmail" nxPopoverTrigger="hover"> </nx-icon>

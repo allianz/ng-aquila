@@ -93,12 +93,12 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
      * Sets the label which will act as a floating label.
      * In addition, the component uses input and label to properly support accessibility.
      */
-    @Input('nxLabel') label?: string | null;
+    @Input() label?: string | null;
 
     /**
      * Set optional text, which will addtional show in label if a field is not mandatory.
      */
-    @Input('nxOptionalLabel') optionalLabel? = this._defaultOptions?.nxOptionalLabel;
+    @Input() optionalLabel? = this._defaultOptions?.nxOptionalLabel;
     get optional() {
         if (this._isRequired() || !this.optionalLabel) {
             return '';
@@ -121,7 +121,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
      * Whether the label should float once the input is focused or filled (auto, default)
      * or force it to always float with a value of always to simulate a more static form.
      */
-    @Input('nxFloatLabel') set floatLabel(value: FloatLabelType) {
+    @Input() set floatLabel(value: FloatLabelType) {
         if (value !== this._floatLabel) {
             this._floatLabel = value || 'auto';
             this._cdr.markForCheck();
@@ -136,7 +136,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
      * Sets the styling of the formfield.
      * If 'negative', a negative set of stylings is used.
      */
-    @Input('nxStyle') set styles(value: string) {
+    @Input('variant') set styles(value: string) {
         if (this._styles === value) {
             return;
         }

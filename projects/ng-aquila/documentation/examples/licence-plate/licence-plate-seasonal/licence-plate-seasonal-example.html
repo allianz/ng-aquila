@@ -1,7 +1,7 @@
 <div nxLayout="grid maxwidth">
     <div nxRow>
         <div nxCol="12,12,10,6" colOffset="0,0,1,3">
-            <nx-formfield nxLabel="Start date">
+            <nx-formfield label="Start date">
                 <nx-dropdown [(value)]="startMonth">
                     <nx-dropdown-item
                         *ngFor="let date of monthsOfYearList"
@@ -11,7 +11,7 @@
                     </nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
-            <nx-formfield nxLabel="End date">
+            <nx-formfield label="End date">
                 <nx-dropdown [(value)]="endMonth">
                     <nx-dropdown-item
                         *ngFor="let date of monthsOfYearList"
@@ -26,7 +26,7 @@
 
     <div nxRow>
         <div nxCol="12,12,10,6" colOffset="0,0,1,3">
-            <nx-formfield nxLabel="License Plate">
+            <nx-formfield label="License Plate">
                 <nx-licence-plate-euro-prefix nxFormfieldPrefix
                     >D</nx-licence-plate-euro-prefix
                 >

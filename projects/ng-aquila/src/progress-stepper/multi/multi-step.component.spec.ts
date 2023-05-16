@@ -374,7 +374,7 @@ class MultiStepDirectionTest extends MultiStepTest {
         <nx-multi-stepper [linear]="true" currentStepLabel="Step">
             <nx-step label="Step1" [stepControl]="manualCompletionForm">
                 <form [formGroup]="manualCompletionForm">
-                    <nx-formfield nxLabel="Name">
+                    <nx-formfield label="Name">
                         <input nxInput required formControlName="form1" />
                     </nx-formfield>
                 </form>
@@ -406,10 +406,10 @@ class MultiStepCompletionTest extends MultiStepTest {
         <nx-multi-stepper [linear]="true">
             <nx-step label="Your name" [stepControl]="manualCompletionForm">
                 <form [formGroup]="manualCompletionForm">
-                    <nx-formfield nxLabel="Name">
+                    <nx-formfield label="Name">
                         <input nxInput formControlName="name" />
                     </nx-formfield>
-                    <nx-formfield nxLabel="Name">
+                    <nx-formfield label="Name">
                         <nx-dropdown formControlName="fruit">
                             <nx-dropdown-item value="banana">Banana</nx-dropdown-item>
                         </nx-dropdown>

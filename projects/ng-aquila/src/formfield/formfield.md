@@ -41,13 +41,13 @@ The formfield width depends only on the grid column it is placed in and expands 
 
 ### Floating
 
-By default the label will float once the input is focused or filled. By specifying `nxFloatLabel` with a value of always you can make this formfield appear as a static input + label combination.
+By default the label will float once the input is focused or filled. By specifying `floatLabel` with a value of always you can make this formfield appear as a static input + label combination.
 
 <!-- example(formfield-floating) -->
 
 ### Custom formfield label
 
-You can pass text label content via the input `nxLabel`. If you need a more complex label you an use the directive `nx-formfield-label` as shown in the code example below. If both are defined, then `nx-formfield-label` will take precedence.
+You can pass text label content via the input `label`. If you need a more complex label you an use the directive `nx-formfield-label` as shown in the code example below. If both are defined, then `nx-formfield-label` will take precedence.
 
 <!-- example(formfield-custom-label) -->
 
@@ -163,7 +163,7 @@ If you want you can create custom form field controls and add custom logic to it
 The HTML code below shows how we can consume our custom control.
 
 ```html
-<nx-formfield nxLabel="Phone number">
+<nx-formfield label="Phone number">
     <formfield-custom-tel-input-example></formfield-custom-tel-input-example>
 </nx-formfield>
 ```

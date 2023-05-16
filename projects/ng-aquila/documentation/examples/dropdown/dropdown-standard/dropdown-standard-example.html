@@ -1,7 +1,7 @@
 <div nxLayout="grid">
     <div nxRow class="nx-margin-bottom-m">
         <div nxCol="12, 12, 6">
-            <nx-formfield nxLabel="Car brand">
+            <nx-formfield label="Car brand">
                 <nx-dropdown [valueFormatter]="toText">
                     <nx-dropdown-item
                         *ngFor="let option of options"
@@ -11,7 +11,7 @@
             </nx-formfield>
         </div>
         <div nxCol="12, 12, 6">
-            <nx-formfield nxLabel="Preselected Dropdown">
+            <nx-formfield label="Preselected Dropdown">
                 <nx-dropdown value="BMW">
                     <nx-dropdown-item value="BMW"></nx-dropdown-item>
                     <nx-dropdown-item value="Audi"></nx-dropdown-item>
@@ -24,7 +24,7 @@
 
     <div nxRow>
         <div nxCol="12, 12, 6">
-            <nx-formfield nxLabel="Readonly Dropdown">
+            <nx-formfield label="Readonly Dropdown">
                 <nx-dropdown value="BMW" readonly>
                     <nx-dropdown-item value="BMW"></nx-dropdown-item>
                     <nx-dropdown-item value="Audi"></nx-dropdown-item>
@@ -32,7 +32,7 @@
             </nx-formfield>
         </div>
         <div nxCol="12, 12, 6">
-            <nx-formfield nxLabel="Disabled Dropdown">
+            <nx-formfield label="Disabled Dropdown">
                 <nx-dropdown value="BMW" disabled>
                     <nx-dropdown-item value="BMW"></nx-dropdown-item>
                     <nx-dropdown-item value="Audi"></nx-dropdown-item>

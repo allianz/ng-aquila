@@ -91,7 +91,7 @@ describe('NxPasswordToggleComponent', () => {
 
 @Component({
     template: `
-        <nx-formfield nxLabel="Password">
+        <nx-formfield label="Password">
             <input required nxInput #testInput type="password" [(ngModel)]="inputValue" />
             <span nxFormfieldSuffix>
                 <nx-password-toggle [control]="testInput"></nx-password-toggle>
@@ -105,7 +105,7 @@ class BasicPasswordToggle extends PasswordToggleTest {
 
 @Component({
     template: `
-        <nx-formfield nxLabel="Password">
+        <nx-formfield label="Password">
             <input required nxInput #testInput type="password" [(ngModel)]="inputValue" />
             <span nxFormfieldSuffix>
                 <nx-password-toggle [control]="testInput"></nx-password-toggle>

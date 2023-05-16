@@ -329,7 +329,7 @@ describe('NxInputDirective', () => {
 
 @Component({
     template: `
-        <nx-formfield nxLabel="Input">
+        <nx-formfield label="Input">
             <input nxInput />
         </nx-formfield>
     `,
@@ -358,7 +358,7 @@ class NoChangeDetectionInput extends InputTest {}
 
 @Component({
     template: `
-        <nx-formfield nxLabel="Textarea">
+        <nx-formfield label="Textarea">
             <textarea nxInput></textarea>
         </nx-formfield>
     `,
@@ -367,7 +367,7 @@ class BasicTextarea extends InputTest {}
 
 @Component({
     template: `
-        <nx-formfield nxLabel="Label">
+        <nx-formfield label="Label">
             <input nxInput [formControl]="formControl" />
         </nx-formfield>
     `,
@@ -378,7 +378,7 @@ class BasicInputWithFormControl extends InputTest {
 
 @Component({
     template: `
-        <nx-formfield nxLabel="Label">
+        <nx-formfield label="Label">
             <input nxInput [formControl]="formControl" />
         </nx-formfield>
     `,
@@ -394,7 +394,7 @@ class ConfigurableInput extends InputTest {}
 
 @Component({
     template: `
-        <nx-formfield nxLabel="Label" [nxFloatLabel]="floatLabel" [appearance]="appearance">
+        <nx-formfield label="Label" [floatLabel]="floatLabel" [appearance]="appearance">
             <input nxInput [placeholder]="placeholderText" />
         </nx-formfield>
     `,

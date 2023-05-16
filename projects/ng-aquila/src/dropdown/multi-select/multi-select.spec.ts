@@ -752,7 +752,7 @@ abstract class DropdownTest {
 }
 
 @Component({
-    template: `<nx-formfield nxLabel="Car brand" [appearance]="appearance">
+    template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options"></nx-multi-select>
     </nx-formfield>`,
 })
@@ -767,7 +767,7 @@ interface ComplexOption {
 }
 
 @Component({
-    template: `<nx-formfield nxLabel="Car brand" [appearance]="appearance">
+    template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [selectLabel]="selectLabel" [selectValue]="selectValue" [(ngModel)]="model" [filter]="filter" [options]="options"></nx-multi-select>
     </nx-formfield>`,
 })
