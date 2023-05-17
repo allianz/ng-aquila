@@ -175,7 +175,7 @@ describe('NxExpertPreset', () => {
 
 @Component({
     template: `
-        <input nxDatefield nxInput [nxDatepicker]="myDatepicker1" />
+        <input nxDatefield nxInput [datepicker]="myDatepicker1" />
         <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker1></nx-datepicker>
     `,

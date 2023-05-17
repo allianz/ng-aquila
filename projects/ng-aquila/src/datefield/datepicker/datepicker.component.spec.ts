@@ -112,7 +112,7 @@ describe('NxDatepicker', () => {
 
 @Component({
     template: `
-        <input nxDatefield [nxDatepicker]="d" [value]="date" />
+        <input nxDatefield [datepicker]="d" [value]="date" />
         <nx-datepicker #d [disabled]="disabled" [opened]="opened"></nx-datepicker>
     `,
 })

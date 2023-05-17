@@ -150,7 +150,7 @@ describe('NxDatepickerToggleComponent using injection token', () => {
 
 @Component({
     template: `
-        <input nxDatefield nxInput [nxDatepicker]="myDatepicker1" />
+        <input nxDatefield nxInput [datepicker]="myDatepicker1" />
         <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker1></nx-datepicker>
     `,
@@ -159,7 +159,7 @@ class BasicToggleDateComponent extends DatepickerToggleTest {}
 
 @Component({
     template: `
-        <input nxDatefield nxInput [nxDatepicker]="myDatepicker1" />
+        <input nxDatefield nxInput [datepicker]="myDatepicker1" />
         <nx-datepicker-toggle [for]="myDatepicker1" [tabindex]="tabindex" nxFormfieldSuffix></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker1></nx-datepicker>
     `,
@@ -168,7 +168,7 @@ class ConfigurableToggleDateComponent extends DatepickerToggleTest {}
 
 @Component({
     template: `
-        <input nxDatefield nxInput [nxDatepicker]="myDatepicker1" />
+        <input nxDatefield nxInput [datepicker]="myDatepicker1" />
         <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
         <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker1></nx-datepicker>
@@ -178,7 +178,7 @@ class DoubleToggleErrorComponent extends DatepickerToggleTest {}
 
 @Component({
     template: `
-        <input nxDatefield nxInput readonly [nxDatepicker]="myDatepicker1" />
+        <input nxDatefield nxInput readonly [datepicker]="myDatepicker1" />
         <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker1></nx-datepicker>
     `,

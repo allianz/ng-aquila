@@ -5,7 +5,7 @@
                 <input
                     nxDatefield
                     nxInput
-                    [nxDatepicker]="startDatepicker"
+                    [datepicker]="startDatepicker"
                     [(ngModel)]="startDate"
                     (dateChange)="updateEndDatepicker()"
                 />
@@ -23,7 +23,7 @@
                 <input
                     nxDatefield
                     nxInput
-                    [nxDatepicker]="endDatepicker"
+                    [datepicker]="endDatepicker"
                     [(ngModel)]="endDate"
                 />
                 <span nxFormfieldHint>MM/DD/YYYY</span>

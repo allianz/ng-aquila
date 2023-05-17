@@ -84,13 +84,13 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     private _isInitialized?: boolean;
 
     /** The datepicker that this input is associated with. */
-    @Input('nxDatepicker') set datepicker(value: NxDatepickerComponent<D>) {
+    @Input() set datepicker(value: NxDatepickerComponent<D>) {
         this.registerDatepicker(value);
     }
     _datepicker!: NxDatepickerComponent<D>;
 
     /** Function that can be used to filter out dates within the datepicker and invalidate values in the datefield. */
-    @Input('nxDatefieldFilter') set datefieldFilter(value: (date: D | null) => boolean) {
+    @Input() set datefieldFilter(value: (date: D | null) => boolean) {
         this._dateFilter = value;
         this._validatorOnChange();
     }
@@ -112,7 +112,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     private _value!: D | null;
 
     /** Sets the minimum valid date. */
-    @Input('nxMin') set min(value: D | null) {
+    @Input() set min(value: D | null) {
         this._min = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
         this._validatorOnChange();
     }
@@ -122,7 +122,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     private _min!: D | null;
 
     /** Sets the maximum valid date. */
-    @Input('nxMax') set max(value: D | null) {
+    @Input() set max(value: D | null) {
         this._max = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
         this._validatorOnChange();
     }
@@ -136,7 +136,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
      *
      * The date value is not updated on a `strict` change.
      */
-    @Input('nxStrict') set strict(value: any) {
+    @Input() set strict(value: any) {
         this._strict = coerceBooleanProperty(value);
     }
     get strict() {
@@ -149,7 +149,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
      *
      * The date value is not updated on a `parseFormat` change.
      */
-    @Input('nxParseFormat') set parseFormat(value: string | string[]) {
+    @Input() set parseFormat(value: string | string[]) {
         this._parseFormat = value;
     }
     get parseFormat() {
@@ -158,7 +158,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     private _parseFormat!: string | string[];
 
     /** Override the display format given with display.dateInput with the token NX_DATE_FORMATS  */
-    @Input('nxDisplayFormat') set displayFormat(value: string) {
+    @Input() set displayFormat(value: string) {
         this._displayFormat = value;
         this._formatValue(this.value);
     }

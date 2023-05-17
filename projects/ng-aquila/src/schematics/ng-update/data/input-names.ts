@@ -288,5 +288,17 @@ export const inputNames: VersionChanges<InputNameUpgradeData> = {
                 { replace: 'nxStyle', replaceWith: 'negative', limitedTo: { elements: ['nx-formfield'] } },
             ],
         },
+        {
+            pr: '',
+            changes: [
+                { replace: 'nxDatepicker', replaceWith: 'datepicker', limitedTo: { attributes: ['nxDatefield'] } },
+                { replace: 'nxDatefieldFilter', replaceWith: 'datefieldFilter', limitedTo: { attributes: ['nxDatefield'] } },
+                { replace: 'nxMin', replaceWith: 'min', limitedTo: { attributes: ['nxDatefield'] } },
+                { replace: 'nxMax', replaceWith: 'max', limitedTo: { attributes: ['nxDatefield'] } },
+                { replace: 'nxStrict', replaceWith: 'strict', limitedTo: { attributes: ['nxDatefield'] } },
+                { replace: 'nxParseFormat', replaceWith: 'parseFormat', limitedTo: { attributes: ['nxDatefield'] } },
+                { replace: 'nxDisplayFormat', replaceWith: 'displayFormat', limitedTo: { attributes: ['nxDatefield'] } },
+            ],
+        },
     ],
 };

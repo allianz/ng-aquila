@@ -11,8 +11,8 @@
                 <input
                     nxDatefield
                     nxInput
-                    nxStrict="true"
-                    [nxParseFormat]="parseFormat"
+                    strict="true"
+                    [parseFormat]="parseFormat"
                     [(ngModel)]="strictDate"
                     #strictDatefield="nxDatefield"
                 />
@@ -46,8 +46,8 @@
                 <input
                     nxDatefield
                     nxInput
-                    nxStrict="false"
-                    [nxParseFormat]="parseFormat"
+                    strict="false"
+                    [parseFormat]="parseFormat"
                     [(ngModel)]="nonStrictDate"
                     #nonStrictDatefield="nxDatefield"
                 />
