@@ -9,5 +9,13 @@ export const propertyNames: VersionChanges<PropertyNameUpgradeData> = {
         { pr: '', changes: [{ replace: 'nxRowAlignItems', replaceWith: 'rowAlignItems', limitedTo: { classes: ['NxRowComponent'] } }] },
         { pr: '', changes: [{ replace: 'nxRowWrap', replaceWith: 'rowWrap', limitedTo: { classes: ['NxRowComponent'] } }] },
         { pr: '', changes: [{ replace: 'labelProp', replaceWith: 'labelProperty', limitedTo: { classes: ['NxTaglistComponent'] } }] },
+        {
+            pr: '',
+            changes: [
+                { replace: 'nxGoPrev', replaceWith: 'goPrev', limitedTo: { classes: ['NxPaginationComponent'] } },
+                { replace: 'nxGoNext', replaceWith: 'goNext', limitedTo: { classes: ['NxPaginationComponent'] } },
+                { replace: 'nxGoPage', replaceWith: 'goPage', limitedTo: { classes: ['NxPaginationComponent'] } },
+            ],
+        },
     ],
 };

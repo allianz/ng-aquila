@@ -46,7 +46,7 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     readonly onChecked = new Subject<NxRadioToggleButtonChange>();
 
     /** @docs-private */
-    @Input('nxDisabled') set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -58,7 +58,7 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     /** Sets the checked state and notify siblings and the parent group about the change */
     // Only use this if you want the onChecked event to be fired, this will inform the parent about the change!
     // To select a button without firing the event use the select() function
-    @Input('nxSelected') set selected(value: boolean) {
+    @Input() set selected(value: boolean) {
         if (this._selected !== value) {
             this._selected = value;
             if (this._selected) {

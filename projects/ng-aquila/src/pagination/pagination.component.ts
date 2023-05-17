@@ -49,7 +49,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     totalNumberPages = 0;
 
     /** Sets the current page. */
-    @Input('nxPage') set page(value: number) {
+    @Input() set page(value: number) {
         this._page = value;
         this._cdr.markForCheck();
     }
@@ -59,7 +59,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     private _page!: number;
 
     /** Number of total items over all pages. */
-    @Input('nxCount') set count(value: number) {
+    @Input() set count(value: number) {
         this._count = value;
         this.totalNumberPages = this.calculateTotalPages();
         this._cdr.markForCheck();
@@ -70,7 +70,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     private _count!: number;
 
     /** Sets the number of items you want to show per page. */
-    @Input('nxPerPage') set perPage(value: number) {
+    @Input() set perPage(value: number) {
         this._perPage = value;
         this.totalNumberPages = this.calculateTotalPages();
         this._cdr.markForCheck();
@@ -85,7 +85,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
      *
      * Values: simple | advanced, default: simple.
      */
-    @Input('nxType') set type(value: string) {
+    @Input() set type(value: string) {
         // type advanced or simple
         this._type = value;
         this._cdr.markForCheck();
@@ -96,16 +96,16 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     private _type = 'simple';
 
     /** An event emitted when the previous page button is clicked. */
-    @Output() readonly nxGoPrev = new EventEmitter<void>();
+    @Output() readonly goPrev = new EventEmitter<void>();
 
     /** An event emitted when the next page button is clicked */
-    @Output() readonly nxGoNext = new EventEmitter<void>();
+    @Output() readonly goNext = new EventEmitter<void>();
 
     /**
      * An event emitted when a page number is clicked.
      * Provides the number of the page as parameter.
      */
-    @Output() readonly nxGoPage = new EventEmitter<number>();
+    @Output() readonly goPage = new EventEmitter<number>();
 
     private readonly _destroyed = new Subject<void>();
 
@@ -170,20 +170,20 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
 
     /** Directs to the page with number n. */
     onPage(n: number): void {
-        this.nxGoPage.emit(n);
+        this.goPage.emit(n);
     }
 
     /** Directs to the previous page. */
     onPrev(): void {
         if (!this._isPaginationPreviousDisabled()) {
-            this.nxGoPrev.emit();
+            this.goPrev.emit();
         }
     }
 
     /** Directs to the next page. */
     onNext(): void {
         if (!this._isPaginationNextDisabled()) {
-            this.nxGoNext.emit();
+            this.goNext.emit();
         }
     }
 

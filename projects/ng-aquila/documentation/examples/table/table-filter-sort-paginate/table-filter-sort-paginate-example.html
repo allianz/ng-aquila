@@ -49,13 +49,13 @@
 
     <nx-pagination
         class="pagination"
-        [nxCount]="currentlyAvailableElements.length"
-        [nxPage]="page"
-        nxType="advanced"
-        [nxPerPage]="elementsPerPage"
-        (nxGoPrev)="prevPage()"
-        (nxGoNext)="nextPage()"
-        (nxGoPage)="goToPage($event)"
+        [count]="currentlyAvailableElements.length"
+        [page]="page"
+        type="advanced"
+        [perPage]="elementsPerPage"
+        (goPrev)="prevPage()"
+        (goNext)="nextPage()"
+        (goPage)="goToPage($event)"
     >
     </nx-pagination>
 </div>

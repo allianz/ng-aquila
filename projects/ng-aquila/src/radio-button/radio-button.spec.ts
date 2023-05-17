@@ -553,8 +553,8 @@ class LabellessRadio extends RadioTest {}
 @Component({
     template: `
         <nx-radio-group [name]="name" [(ngModel)]="templateModel">
-            <nx-radio *ngFor="let fruit of data" [nxValue]="fruit">{{ fruit }}</nx-radio>
-            <nx-radio nxValue="1">1</nx-radio>
+            <nx-radio *ngFor="let fruit of data" [value]="fruit">{{ fruit }}</nx-radio>
+            <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
 })
@@ -566,8 +566,8 @@ class DynamicRadio extends RadioTest {
 @Component({
     template: `
         <nx-radio-group name="groupTest">
-            <nx-radio nxValue="0">0</nx-radio>
-            <nx-radio nxValue="1">1</nx-radio>
+            <nx-radio value="0">0</nx-radio>
+            <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
 })
@@ -575,9 +575,9 @@ class BasicRadioGroup extends RadioTest {}
 
 @Component({
     template: `
-        <nx-radio-group name="groupTest" [(nxValue)]="templateModel" [negative]="groupNegative">
-            <nx-radio nxValue="0" [negative]="radioNegative">0</nx-radio>
-            <nx-radio nxValue="1">1</nx-radio>
+        <nx-radio-group name="groupTest" [(value)]="templateModel" [negative]="groupNegative">
+            <nx-radio value="0" [negative]="radioNegative">0</nx-radio>
+            <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
 })
@@ -590,8 +590,8 @@ class MultipleRadio extends RadioTest {
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
         <nx-radio-group name="groupTest">
-            <nx-radio nxValue="0">0</nx-radio>
-            <nx-radio nxValue="1">1</nx-radio>
+            <nx-radio value="0">0</nx-radio>
+            <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
 })
@@ -599,9 +599,9 @@ class MultipleRadioOnPush extends RadioTest {}
 
 @Component({
     template: `
-        <nx-radio-group name="groupTest" [nxDisabled]="disabled">
-            <nx-radio nxValue="0">0</nx-radio>
-            <nx-radio nxValue="1">1</nx-radio>
+        <nx-radio-group name="groupTest" [disabled]="disabled">
+            <nx-radio value="0">0</nx-radio>
+            <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
 })
@@ -613,8 +613,8 @@ class MultipleRadioDisabled extends RadioTest {
     template: `
         <form [formGroup]="testForm">
             <nx-radio-group name="reactiveTest" formControlName="radioTestReactive">
-                <nx-radio nxValue="0">0</nx-radio>
-                <nx-radio nxValue="1">1</nx-radio>
+                <nx-radio value="0">0</nx-radio>
+                <nx-radio value="1">1</nx-radio>
             </nx-radio-group>
             <p>Form value: {{ testForm.value | json }}</p>
             <p>Form status: {{ testForm.status | json }}</p>
@@ -637,8 +637,8 @@ class ReactiveRadio extends RadioTest {
 @Component({
     template: `
         <nx-radio-group name="groupTest" [(ngModel)]="templateModel">
-            <nx-radio nxValue="0">0</nx-radio>
-            <nx-radio nxValue="1">1</nx-radio>
+            <nx-radio value="0">0</nx-radio>
+            <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
 })
@@ -650,9 +650,9 @@ class GroupWithNgModel extends RadioTest {}
             <nx-radio-group name="reactiveTest" formControlName="radioTestReactive" [required]="true">
                 <nx-label [size]="'small'">What do you prefer?</nx-label>
                 <nx-error appearance="text"> Please make a choice. </nx-error>
-                <nx-radio nxValue="coffee" [labelSize]="'small'" class="radio-item">Coffee</nx-radio>
-                <nx-radio nxValue="tea" [labelSize]="'small'" class="radio-item">Tea</nx-radio>
-                <nx-radio nxValue="water" [labelSize]="'small'" class="radio-item">Water</nx-radio>
+                <nx-radio value="coffee" [labelSize]="'small'" class="radio-item">Coffee</nx-radio>
+                <nx-radio value="tea" [labelSize]="'small'" class="radio-item">Tea</nx-radio>
+                <nx-radio value="water" [labelSize]="'small'" class="radio-item">Water</nx-radio>
             </nx-radio-group>
             <br />
             <button type="submit" nxButton="primary">Submit</button>
@@ -687,9 +687,9 @@ class RadioGroupValidation extends RadioTest {
             <nx-radio-group name="reactiveTest" formControlName="radioTestReactive" [required]="true">
                 <nx-label [size]="'small'">What do you prefer?</nx-label>
                 <nx-error appearance="text"> Please make a choice. </nx-error>
-                <nx-radio nxValue="coffee" [labelSize]="'small'" class="radio-item">Coffee</nx-radio>
-                <nx-radio nxValue="tea" [labelSize]="'small'" class="radio-item">Tea</nx-radio>
-                <nx-radio nxValue="water" [labelSize]="'small'" class="radio-item">Water</nx-radio>
+                <nx-radio value="coffee" [labelSize]="'small'" class="radio-item">Coffee</nx-radio>
+                <nx-radio value="tea" [labelSize]="'small'" class="radio-item">Tea</nx-radio>
+                <nx-radio value="water" [labelSize]="'small'" class="radio-item">Water</nx-radio>
             </nx-radio-group>
             <br />
             <button type="submit" nxButton="primary">Submit</button>
@@ -725,8 +725,8 @@ class RadioGroupValidationTouched extends RadioTest {
     template: `
         <nx-radio-group name="radioGroupTest">
             <nx-label>What do you prefer?</nx-label>
-            <nx-radio nxValue="0">0</nx-radio>
-            <nx-radio nxValue="1">1</nx-radio>
+            <nx-radio value="0">0</nx-radio>
+            <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
 })

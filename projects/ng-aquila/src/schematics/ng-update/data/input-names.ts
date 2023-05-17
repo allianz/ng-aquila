@@ -5,6 +5,45 @@ export const inputNames: VersionChanges<InputNameUpgradeData> = {
         {
             pr: '',
             changes: [
+                { replace: 'nxResize', replaceWith: 'resize', limitedTo: { elements: ['nx-number-stepper'] } },
+                { replace: 'nxLabel', replaceWith: 'label', limitedTo: { elements: ['nx-number-stepper'] } },
+                { replace: 'nxStep', replaceWith: 'step', limitedTo: { elements: ['nx-number-stepper'] } },
+                { replace: 'nxMin', replaceWith: 'min', limitedTo: { elements: ['nx-number-stepper'] } },
+                { replace: 'nxMax', replaceWith: 'max', limitedTo: { elements: ['nx-number-stepper'] } },
+                { replace: 'nxValue', replaceWith: 'value', limitedTo: { elements: ['nx-number-stepper'] } },
+                { replace: '(nxValue)', replaceWith: '(value)', limitedTo: { elements: ['nx-number-stepper'] } },
+                { replace: 'nxDisabled', replaceWith: 'disabled', limitedTo: { elements: ['nx-number-stepper'] } },
+                { replace: 'nxReadonlyInput', replaceWith: 'readonly', limitedTo: { elements: ['nx-number-stepper'] } },
+                { replace: 'nxSize', replaceWith: 'size', limitedTo: { elements: ['nx-number-stepper'] } },
+
+                { replace: 'nxButtonLabel', replaceWith: 'buttonLabel', limitedTo: { elements: ['nx-page-search'] } },
+                { replace: 'nxHideSearchButton', replaceWith: 'hideSearchButton', limitedTo: { elements: ['nx-page-search'] } },
+                { replace: 'nxButtonLayout', replaceWith: 'buttonLayout', limitedTo: { elements: ['nx-page-search'] } },
+                { replace: 'nxContentLayout', replaceWith: 'contentLayout', limitedTo: { elements: ['nx-page-search'] } },
+
+                { replace: 'nxPage', replaceWith: 'page', limitedTo: { elements: ['nx-pagination'] } },
+                { replace: 'nxCount', replaceWith: 'count', limitedTo: { elements: ['nx-pagination'] } },
+                { replace: 'nxPerPage', replaceWith: 'perPage', limitedTo: { elements: ['nx-pagination'] } },
+                { replace: 'nxType', replaceWith: 'type', limitedTo: { elements: ['nx-pagination'] } },
+
+                { replace: 'nxDisabled', replaceWith: 'disabled', limitedTo: { elements: ['nx-radio-toggle'] } },
+                { replace: 'nxName', replaceWith: 'name', limitedTo: { elements: ['nx-radio-toggle'] } },
+                { replace: 'nxStyle', replaceWith: 'variant', limitedTo: { elements: ['nx-radio-toggle'] } },
+                { replace: 'nxSelection', replaceWith: 'selection', limitedTo: { elements: ['nx-radio-toggle'] } },
+
+                { replace: 'nxDisabled', replaceWith: 'disabled', limitedTo: { elements: ['nx-radio-group'] } },
+                { replace: 'nxValue', replaceWith: 'value', limitedTo: { elements: ['nx-radio-group'] } },
+                { replace: '(nxValue)', replaceWith: '(value)', limitedTo: { elements: ['nx-radio-group'] } },
+
+                { replace: 'nxValue', replaceWith: 'value', limitedTo: { elements: ['nx-radio'] } },
+                { replace: '(nxValue)', replaceWith: '(value)', limitedTo: { elements: ['nx-radio'] } },
+                { replace: 'nxChecked', replaceWith: 'checked', limitedTo: { elements: ['nx-radio'] } },
+                { replace: 'nxDisabled', replaceWith: 'disabled', limitedTo: { elements: ['nx-radio'] } },
+
+                { replace: 'nxDisabled', replaceWith: 'disabled', limitedTo: { elements: ['nx-radio-toggle-button'] } },
+                { replace: 'nxSelected', replaceWith: 'selected', limitedTo: { elements: ['nx-radio-toggle-button'] } },
+                { replace: 'nxValue', replaceWith: 'value', limitedTo: { elements: ['nx-radio-toggle-button'] } },
+                { replace: '(nxValue)', replaceWith: '(value)', limitedTo: { elements: ['nx-radio-toggle-button'] } },
                 { replace: 'nxType', replaceWith: 'menuButtonType', limitedTo: { elements: ['button'], attributes: ['nxMenuButton'] } },
                 { replace: 'nxContext', replaceWith: 'context', limitedTo: { elements: ['nx-message'] } },
                 { replace: 'nxBody', replaceWith: 'modalBody', limitedTo: { elements: ['nx-modal'] } },

@@ -1,10 +1,8 @@
 <nx-sidepanel-outer-container class="example-container">
     <div class="main-content">
-        <nx-radio-toggle nxStyle="small" [(ngModel)]="opened">
-            <nx-radio-toggle-button [nxValue]="true"
-                >Open</nx-radio-toggle-button
-            >
-            <nx-radio-toggle-button [nxValue]="false"
+        <nx-radio-toggle variant="small" [(ngModel)]="opened">
+            <nx-radio-toggle-button [value]="true">Open</nx-radio-toggle-button>
+            <nx-radio-toggle-button [value]="false"
                 >Close</nx-radio-toggle-button
             >
         </nx-radio-toggle>

@@ -10,7 +10,7 @@ export class NxRadioToggleButtonBaseComponent {
     toggleButtonId: string = 'nx-radio-toggle-button-' + nextId++;
 
     /** @docs-private */
-    @Input('nxValue') value: any;
+    @Input() value: any;
 
     /** @docs-private */
     @ViewChild('toggleButtonLabelContainer', { static: true }) labelContainer!: ElementRef;

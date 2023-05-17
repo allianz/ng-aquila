@@ -90,7 +90,7 @@ class PageSearchTestComponent {
 
 @Component({
     template: `
-        <nx-page-search nxButtonLabel="Search">
+        <nx-page-search buttonLabel="Search">
             <input />
         </nx-page-search>
     `,
@@ -99,7 +99,7 @@ class PageSearchSimpleComponent extends PageSearchTestComponent {}
 
 @Component({
     template: `
-        <nx-page-search nxButtonLabel="Search" [nxHideSearchButton]="true">
+        <nx-page-search buttonLabel="Search" [hideSearchButton]="true">
             <input />
         </nx-page-search>
     `,

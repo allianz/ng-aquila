@@ -45,7 +45,7 @@ const CUSTOM_VALIDATOR = {
 let nextUniqueId = 0;
 
 /**
- * `Input('nxSize') classNames` defines the size of the number stepper.
+ * `Input('size') classNames` defines the size of the number stepper.
  *
  * Values: `'big' | 'normal'`.
  *
@@ -56,7 +56,7 @@ let nextUniqueId = 0;
     templateUrl: 'number-stepper.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['number-stepper.component.scss'],
-    inputs: ['classNames: nxSize'],
+    inputs: ['classNames: size'],
     host: {
         '[class.is-negative]': 'negative',
         '[class.is-disabled]': 'disabled',
@@ -89,10 +89,10 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     @ViewChild('nativeInput') nativeInput!: ElementRef;
 
     /** An event emitted on value change. */
-    @Output('nxValueChange') readonly valueChange = new EventEmitter<number>();
+    @Output('valueChange') readonly valueChange = new EventEmitter<number>();
 
     /** Whether the input should be resized. Default: false */
-    @Input('nxResize') set resize(value: BooleanInput) {
+    @Input() set resize(value: BooleanInput) {
         this._resize = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -102,7 +102,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     private _resize = false;
 
     /** Defines the the label shown above the stepper input. */
-    @Input('nxLabel') set label(value: string) {
+    @Input() set label(value: string) {
         if (this._label !== value) {
             this._label = value;
             this._cdr.markForCheck();
@@ -141,7 +141,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     private _inputAriaLabel = '';
 
     /** Sets the step size. Default: 1 */
-    @Input('nxStep') set step(value: NumberInput) {
+    @Input() set step(value: NumberInput) {
         // only internal changes no need to call markForCheck
         this._step = Number(value);
     }
@@ -151,7 +151,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     private _step = 1;
 
     /** Sets the minimum accepted number. Default: 0 */
-    @Input('nxMin') set min(value: NumberInput) {
+    @Input() set min(value: NumberInput) {
         this._min = Number(value);
     }
     get min(): number {
@@ -160,7 +160,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     private _min = 0;
 
     /** Sets the maximum accepted number. Default: 100 */
-    @Input('nxMax') set max(value: NumberInput) {
+    @Input() set max(value: NumberInput) {
         this._max = Number(value);
     }
     get max(): number {
@@ -169,7 +169,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     private _max = 100;
 
     /** Sets the value of the number-stepper. */
-    @Input('nxValue') set value(value: number | null) {
+    @Input() set value(value: number | null) {
         this._value = value!;
         if (this._value) {
             this.setInputValue(this._value);
@@ -217,7 +217,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
      *
      * Default: `false`.
      */
-    @Input('nxDisabled') set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
     }
     get disabled(): boolean {
@@ -226,7 +226,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     private _disabled = false;
 
     /** Whether the user can directly interact with the input value via input field. Default: false */
-    @Input('nxReadonlyInput') set readonlyInput(value: BooleanInput) {
+    @Input('readonly') set readonlyInput(value: BooleanInput) {
         this._readonlyInput = coerceBooleanProperty(value);
     }
     get readonlyInput(): boolean {

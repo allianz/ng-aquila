@@ -46,11 +46,11 @@
     'file-upload' ? 'Valid url' : 'Invalid url' }}
 </p>
 
-<nx-radio-toggle nxStyle="small" [(ngModel)]="uploadConfig['requestUrl']">
-    <nx-radio-toggle-button nxValue="file-upload"
+<nx-radio-toggle variant="small" [(ngModel)]="uploadConfig['requestUrl']">
+    <nx-radio-toggle-button value="file-upload"
         >Valid url</nx-radio-toggle-button
     >
-    <nx-radio-toggle-button nxValue="file-upload-error"
+    <nx-radio-toggle-button value="file-upload-error"
         >Invalid url</nx-radio-toggle-button
     >
 </nx-radio-toggle>

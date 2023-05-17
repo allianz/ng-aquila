@@ -20,9 +20,9 @@
                 >
                     <td nxTableCell class="nx-table-cell--checkbox">
                         <nx-radio
-                            (nxValueChange)="selection.select(item)"
+                            (valueChange)="selection.select(item)"
                             [attr.aria-label]="'Select ' + item.product + ' row'"
-                            [nxChecked]="selection.isSelected(item)"
+                            [checked]="selection.isSelected(item)"
                         ></nx-radio>
                     </td>
                     <td nxTableCell>{{item.product}}</td>

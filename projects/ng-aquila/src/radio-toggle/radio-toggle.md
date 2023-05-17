@@ -27,7 +27,7 @@ alias: radio toggle
 
 ### Reactive form
 
-When using reactive forms you have to disable the control with the form control and not the `nxDisabled` property!
+When using reactive forms you have to disable the control with the form control and not the `disabled` property!
 
 <!-- example(radio-toggle-reactive) -->
 

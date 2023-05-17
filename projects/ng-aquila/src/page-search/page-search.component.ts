@@ -12,7 +12,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, In
 })
 export class NxPageSearchComponent {
     /** Sets the text label of the button. */
-    @Input('nxButtonLabel') set buttonLabel(value: string) {
+    @Input() set buttonLabel(value: string) {
         if (this._buttonLabel !== value) {
             this._buttonLabel = value;
             this._cdr.markForCheck();
@@ -24,7 +24,7 @@ export class NxPageSearchComponent {
     private _buttonLabel: string | null = null;
 
     /** Whether the search button should be hidden. */
-    @Input('nxHideSearchButton') set hideSearchButton(value: BooleanInput) {
+    @Input() set hideSearchButton(value: BooleanInput) {
         this._hideSearchButton = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -34,7 +34,7 @@ export class NxPageSearchComponent {
     private _hideSearchButton = false;
 
     /** Layout of the search button inside of a NxGrid. Default: 12,12,12,2. */
-    @Input('nxButtonLayout') set buttonLayout(value: string) {
+    @Input() set buttonLayout(value: string) {
         if (this._buttonLayout !== value) {
             this._buttonLayout = value;
             this._cdr.markForCheck();
@@ -46,7 +46,7 @@ export class NxPageSearchComponent {
     private _buttonLayout = '12,12,12,2';
 
     /** Layout of the content area inside of a NxGrid. Default: 12,12,12,10 | 12 (if search button is hidden). */
-    @Input('nxContentLayout') set contentLayout(value: string) {
+    @Input() set contentLayout(value: string) {
         if (this._contentLayout !== value) {
             this._contentLayout = value;
             this._cdr.markForCheck();
@@ -61,7 +61,7 @@ export class NxPageSearchComponent {
     private _contentLayout: string | null = null;
 
     /** An event emitted when the user clicks the search button. */
-    @Output('nxButtonClick') readonly buttonClick = new EventEmitter();
+    @Output() readonly buttonClick = new EventEmitter();
 
     constructor(private readonly _cdr: ChangeDetectorRef) {}
 

@@ -74,7 +74,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     private _id = `nx-radio-group-${nextId++}`;
 
     /** Whether every radio button in this group should be disabled. */
-    @Input('nxDisabled') set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         // inform childs about the change where CD should be triggered
         this._stateChanges.next();
@@ -105,7 +105,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     private _required = false;
 
     /** An event is dispatched on each group value change. */
-    @Output('nxGroupValueChange') readonly groupValueChange = new EventEmitter<NxRadioChange>();
+    @Output() readonly groupValueChange = new EventEmitter<NxRadioChange>();
 
     // The currently selected radio button; should match _value
     private _selected: NxRadioComponent | null = null;
@@ -124,7 +124,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     private _name = `nx-radio-group-${nextId++}`;
 
     /** Sets the value of the selected radion button in this group (Default: null). */
-    @Input('nxValue') set value(newValue: any) {
+    @Input() set value(newValue: any) {
         if (this._value !== newValue) {
             // Set this before proceeding to ensure no circular loop occurs with selection.
             this._value = newValue;
@@ -335,7 +335,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     private _negative = false;
 
     /** An event is dispatched on each value change. */
-    @Output('nxValueChange') readonly valueChange = new EventEmitter<NxRadioChange>();
+    @Output() readonly valueChange = new EventEmitter<NxRadioChange>();
 
     /** @docs-private */
     get labelHasContent(): boolean {
@@ -343,7 +343,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     }
 
     /** Sets the value of the form control element (Default: null). */
-    @Input('nxValue') set value(value: any) {
+    @Input() set value(value: any) {
         if (value !== this._value) {
             this._value = value;
             this.onChangeCallback(value);
@@ -355,7 +355,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     private _value: any = null;
 
     /** Whether the radio component is selected. */
-    @Input('nxChecked') set checked(value: boolean) {
+    @Input() set checked(value: boolean) {
         if (this._checked !== value) {
             this._checked = value;
             this._cdr.markForCheck();
@@ -368,7 +368,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     private _checked = false;
 
     /** Whether the radio button should be disabled or not. */
-    @Input('nxDisabled') set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }

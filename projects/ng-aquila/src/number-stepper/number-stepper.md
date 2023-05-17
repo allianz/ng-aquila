@@ -59,7 +59,7 @@ Floating point numbers are fully supported and can be enabled by setting the ste
 
 #### Disabled
 
-You can fully disable user input on the number stepper component by setting `nxDisabled` property to `true`.
+You can fully disable user input on the number stepper component by setting `disabled` property to `true`.
 
 <!-- example(number-stepper-disabled-explicit) -->
 
@@ -80,7 +80,7 @@ As usual you can use this error key to distinguish from other errors. Try it bel
 
 ### Auto resizing
 
-When working with larger numbers or decimals the input width might be too small to properly show the current number. By enabling `nxResize="true"` the input automatically grows and shrinks to the width of the input value including border and padding.
+When working with larger numbers or decimals the input width might be too small to properly show the current number. By enabling `resize="true"` the input automatically grows and shrinks to the width of the input value including border and padding.
 
 <!-- example(number-stepper-auto-resizing) -->
 
@@ -92,7 +92,7 @@ The increment and decrement buttons need to have an `aria-label` for a11y suppor
 
 In addition, the input of the number stepper should also have an `aria-label` attribute, which can be set only via the input `inputAriaLabel`.
 
-**Please make sure to use either `nxLabel` or `inputAriaLabel`** to set the label on the number-stepper. In case you use a [custom label](./documentation/number-stepper/overview#custom-label), you should also use an additional `inputAriaLabel`.
+**Please make sure to use either `[label]` or `inputAriaLabel`** to set the label on the number-stepper. In case you use a [custom label](./documentation/number-stepper/overview#custom-label), you should also use an additional `inputAriaLabel`.
 
 The example below shows the usage of the above mentioned `aria-label` inputs.
 
@@ -103,5 +103,5 @@ The example below shows the usage of the above mentioned `aria-label` inputs.
 <!-- example(number-stepper-localize) -->
  
  ### Readonly input field
- You can use the `[nxReadonlyInput]` attribute to prevent manual input of values in an input field.
+ You can use the `[readonly]` attribute to prevent manual input of values in an input field.
  <!-- example(number-stepper-readonly-input) -->
