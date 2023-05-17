@@ -50,5 +50,17 @@ export const outputNames: VersionChanges<OutputNameUpgradeData> = {
                 },
             ],
         },
+        {
+            pr: '',
+            changes: [
+                {
+                    replace: 'nxClosed',
+                    replaceWith: 'closed',
+                    limitedTo: {
+                        elements: ['nx-popover'],
+                    },
+                },
+            ],
+        },
     ],
 };

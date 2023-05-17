@@ -32,7 +32,7 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
     @ContentChild(NxPopoverContentDirective) _lazyContent?: NxPopoverContentDirective;
 
     /** Event emitted when the popover is closed. */
-    @Output('nxClosed') readonly closed = new EventEmitter<void>();
+    @Output() readonly closed = new EventEmitter<void>();
 
     /** @docs-private */
     readonly closeButtonClick = new Subject<void>();
