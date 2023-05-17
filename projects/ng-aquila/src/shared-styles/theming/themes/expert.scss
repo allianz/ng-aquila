@@ -52,4 +52,10 @@ $expert-theme: (
     small-stage-image-container-padding-to-content: 40px,
 );
 
+body,
+:host {
+    background-color: v(ui-background);
+    color: v(text-01);
+}
+
 $themes: nx-register-theme($expert-theme, expert, aposin);

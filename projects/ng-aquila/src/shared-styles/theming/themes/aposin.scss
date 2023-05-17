@@ -1,3 +1,9 @@
 @import '../theming';
 
+body,
+:host {
+    background-color: v(ui-background);
+    color: v(text-01);
+}
+
 $nx-themes: nx-register-theme($nx-theme, aposin);

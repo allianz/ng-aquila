@@ -42,12 +42,6 @@
             @include _css-var($name, $value);
         }
     }
-
-    body,
-    :host {
-        background-color: v(ui-background);
-        color: v(text-01);
-    }
 }
 
 /// @access public
