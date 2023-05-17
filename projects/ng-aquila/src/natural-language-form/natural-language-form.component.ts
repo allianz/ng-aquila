@@ -34,7 +34,7 @@ const DEFAULT_SIZE = 'large';
 })
 export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestroy {
     /** Whether the negative set of stylings should be used. */
-    @Input('nxNegative') set negative(value: BooleanInput) {
+    @Input('negativeStyles') set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
     }
     get negative() {

@@ -4,15 +4,16 @@ export const outputNames: VersionChanges<OutputNameUpgradeData> = {
     [TargetVersion.V16]: [
         {
             pr: '',
-            changes: [{ replace: 'nxValueChange', replaceWith: 'valueChange', limitedTo: { elements: ['nx-dropdown'] } }],
-        },
-        {
-            pr: '',
-            changes: [{ replace: 'nxRowClick', replaceWith: 'rowClick', limitedTo: { elements: ['nx-dynamic-table'] } }],
-        },
-        {
-            pr: '',
             changes: [
+                {
+                    replace: 'nxClose',
+                    replaceWith: 'onModalClose',
+                    limitedTo: {
+                        elements: ['nx-modal'],
+                    },
+                },
+                { replace: 'nxValueChange', replaceWith: 'valueChange', limitedTo: { elements: ['nx-dropdown'] } },
+                { replace: 'nxRowClick', replaceWith: 'rowClick', limitedTo: { elements: ['nx-dynamic-table'] } },
                 {
                     replace: 'nxValueChange',
                     replaceWith: 'valueChange',

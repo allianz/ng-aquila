@@ -226,7 +226,7 @@ describe('NxNaturalLanguageFormComponent', () => {
     template: `
         <nx-natural-language-form>
             A Word
-            <nx-word nxLabel="Label for the form">
+            <nx-word label="Label for the form">
                 <input nxInput ngModel required />
                 <div nxError>This field is required.</div>
             </nx-word>
@@ -248,7 +248,7 @@ class NaturalLanguageFormErrorComponent extends NaturalLanguageFormTest {}
 @Component({
     template: `
         <nx-natural-language-form [ngStyle]="{ width: '500px' }">
-            <nx-word [nxSize]="size">
+            <nx-word [size]="size">
                 <input nxInput [(ngModel)]="value" required />
             </nx-word>
         </nx-natural-language-form>
@@ -277,7 +277,7 @@ class NaturalLanguageFormSmallComponent extends NaturalLanguageFormTest {}
             </nx-formfield>
             <nx-natural-language-form>
                 <span>text text text text text text text text</span>
-                <nx-word nxSize="short" nxLabel="Always a label">
+                <nx-word size="short" label="Always a label">
                     <input nxInput [formControl]="nlfInput" />
                     <div nxError>This word is required!</div>
                 </nx-word>

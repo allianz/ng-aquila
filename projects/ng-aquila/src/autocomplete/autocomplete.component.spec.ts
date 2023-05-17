@@ -432,7 +432,7 @@ class ReactiveAutocompleteComponent extends AutocompleteComponent {
             <nx-autocomplete #auto1></nx-autocomplete>
         </ng-template>
 
-        <nx-modal #basicModal id="basicModal" [nxBody]="basicModalBody" *ngIf="open"> </nx-modal>
+        <nx-modal #basicModal id="basicModal" [modalBody]="basicModalBody" *ngIf="open"> </nx-modal>
     `,
 })
 class AutocompleteInModalComponent extends AutocompleteComponent {

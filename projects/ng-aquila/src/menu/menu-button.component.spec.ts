@@ -150,6 +150,6 @@ describe(NxMenuButtonComponent.name, () => {
 class DefaultMenuButton extends MenuButtonTest {}
 
 @Component({
-    template: `<a nxMenuButton [nxType]="type" [expandable]="expandable" [expanded]="expanded"> example menuButton </a>`,
+    template: `<a nxMenuButton [menuButtonType]="type" [expandable]="expandable" [expanded]="expanded"> example menuButton </a>`,
 })
 class BasicMenuButton extends MenuButtonTest {}

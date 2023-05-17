@@ -5,6 +5,16 @@ export const inputNames: VersionChanges<InputNameUpgradeData> = {
         {
             pr: '',
             changes: [
+                { replace: 'nxType', replaceWith: 'menuButtonType', limitedTo: { elements: ['button'], attributes: ['nxMenuButton'] } },
+                { replace: 'nxContext', replaceWith: 'context', limitedTo: { elements: ['nx-message'] } },
+                { replace: 'nxBody', replaceWith: 'modalBody', limitedTo: { elements: ['nx-modal'] } },
+                { replace: 'nxHideOnEsc', replaceWith: 'hideOnEsc', limitedTo: { elements: ['nx-modal'] } },
+                { replace: 'nxHideOnClickOutside', replaceWith: 'hideOnClickOutside', limitedTo: { elements: ['nx-modal'] } },
+                { replace: 'nxShowCloseIcon', replaceWith: 'showCloseIcon', limitedTo: { elements: ['nx-modal'] } },
+                { replace: 'nxSize', replaceWith: 'windowSize', limitedTo: { elements: ['nx-modal'] } },
+                { replace: 'nxNegative', replaceWith: 'negativeStyles', limitedTo: { elements: ['nx-natural-language-form'] } },
+                { replace: 'nxSize', replaceWith: 'size', limitedTo: { elements: ['nx-word'] } },
+                { replace: 'nxLabel', replaceWith: 'label', limitedTo: { elements: ['nx-word'] } },
                 {
                     replace: 'nxSize',
                     replaceWith: 'size',
@@ -125,12 +135,6 @@ export const inputNames: VersionChanges<InputNameUpgradeData> = {
                         elements: ['nx-slider'],
                     },
                 },
-            ],
-        },
-
-        {
-            pr: '',
-            changes: [
                 { replace: 'nxDisabled', replaceWith: 'disabled', limitedTo: { elements: ['nx-dropdown'] } },
                 { replace: 'nxReadonly', replaceWith: 'readonly', limitedTo: { elements: ['nx-dropdown'] } },
                 { replace: 'nxValue', replaceWith: 'value', limitedTo: { elements: ['nx-dropdown'] } },
@@ -145,11 +149,6 @@ export const inputNames: VersionChanges<InputNameUpgradeData> = {
                 { replace: 'nxValueFormatter', replaceWith: 'valueFormatter', limitedTo: { elements: ['nx-dropdown'] } },
                 { replace: 'nxLabel', replaceWith: 'label', limitedTo: { elements: ['nx-dropdown-group'] } },
                 { replace: 'nxValue', replaceWith: 'value', limitedTo: { elements: ['nx-dropdown-item'] } },
-            ],
-        },
-        {
-            pr: '',
-            changes: [
                 { replace: 'nxStyle', replaceWith: 'variant', limitedTo: { elements: ['nx-expansion-panel'] } },
                 { replace: 'nxStyle', replaceWith: 'variant', limitedTo: { elements: ['nx-accordion'] } },
                 { replace: 'nxValueFormatter', replaceWith: 'valueFormatter', limitedTo: { elements: ['nx-autocomplete'] } },
@@ -159,7 +158,6 @@ export const inputNames: VersionChanges<InputNameUpgradeData> = {
                 { replace: 'nxColOffset', replaceWith: 'colOffset', limitedTo: { attributes: ['nxCol'] } },
                 { replace: 'nxAlignSelf', replaceWith: 'alignSelf', limitedTo: { attributes: ['nxCol'] } },
                 { replace: 'nxColOrder', replaceWith: 'colOrder', limitedTo: { attributes: ['nxCol'] } },
-
                 { replace: 'nxRowJustify', replaceWith: 'rowJustify', limitedTo: { attributes: ['nxRow'] } },
                 { replace: 'nxRowAlignContent', replaceWith: 'rowAlignContent', limitedTo: { attributes: ['nxRow'] } },
                 { replace: 'nxRowAlignItems', replaceWith: 'rowAlignItems', limitedTo: { attributes: ['nxRow'] } },

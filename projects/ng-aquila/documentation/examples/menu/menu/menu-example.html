@@ -22,7 +22,7 @@
                 [nxMenuItem]="node.icon ? 's' : 'l'"
                 expandable
                 [expanded]="_treeControl.isExpanded(node)"
-                [nxType]="node.level === 0 ? 'root' : 'nested'"
+                [menuButtonType]="node.level === 0 ? 'root' : 'nested'"
                 type="button"
             >
                 <nx-icon

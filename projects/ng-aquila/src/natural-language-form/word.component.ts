@@ -64,14 +64,14 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
 
     // this will apply different min-widths to our component through our styles
     /** Provide a hint for a minimal width. The actual size will be determined for inputs for each change. */
-    @Input('nxSize') size: SIZES = 'regular';
+    @Input() size: SIZES = 'regular';
 
     /**
      * A word doesn't have a set place to show labels.
      * In order to be accessible, you have to provide a label with this property.
      * It will be attached to the given input through `aria-label`.
      */
-    @Input('nxLabel') label = '';
+    @Input('label') label = '';
 
     private readonly _destroyed = new Subject<void>();
 

@@ -82,39 +82,39 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
      * A template reference variable pointing to the template
      * which contains the content of the modal view.
      */
-    @Input('nxBody') body!: TemplateRef<any>;
+    @Input('modalBody') body!: TemplateRef<any>;
 
     /**
      * Whether the modal view should close when the user hits the escape key.
      * Default: `true`.
      */
-    @Input('nxHideOnEsc') hideOnEsc = true;
+    @Input() hideOnEsc = true;
 
     /**
      * Whether the modal view should close when the user clicks on the backdrop.
      * Default: `true`.
      */
-    @Input('nxHideOnClickOutside') hideOnClickOutside = true;
+    @Input() hideOnClickOutside = true;
 
     /**
      * Whether the modal view should have a close icon in the upper right corner.
      * Default: `true`.
      */
-    @Input('nxShowCloseIcon') showCloseIcon = true;
+    @Input() showCloseIcon = true;
 
     /**
      * Controls the width of the dialog.
      * On `auto` the width is controlled by the content width,
      * on `fixed` the dialog gets a fixed width of 736px if the viewport is big enough.
      */
-    @Input('nxSize') size: 'fixed' | 'auto' = 'auto';
+    @Input('windowSize') size: 'fixed' | 'auto' = 'auto';
 
     /**
      * An event emitted when the user clicks on the backdrop or uses the built-in close button.
      * This event can be applied in conjunction with the custom open state handling
      * of a modal to close it when requested by the user.
      */
-    @Output('nxClose') readonly closeEvent = new EventEmitter<void>();
+    @Output('onModalClose') readonly closeEvent = new EventEmitter<void>();
 
     private readonly _destroyed = new Subject<void>();
 

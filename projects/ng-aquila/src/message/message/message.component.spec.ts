@@ -153,12 +153,12 @@ describe('NxMessageComponent', () => {
 });
 
 @Component({
-    template: `<nx-message [nxContext]="context"> lorem ipsum </nx-message>`,
+    template: `<nx-message [context]="context"> lorem ipsum </nx-message>`,
 })
 class MessageBasicComponent extends MessageTest {}
 
 @Component({
-    template: `<nx-message [nxContext]="context"> lorem ipsum </nx-message>`,
+    template: `<nx-message [context]="context"> lorem ipsum </nx-message>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class MessageOnPushComponent extends MessageTest {}

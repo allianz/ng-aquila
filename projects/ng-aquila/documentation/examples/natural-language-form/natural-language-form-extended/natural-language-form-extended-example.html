@@ -1,7 +1,7 @@
 <form>
     <nx-natural-language-form [formGroup]="naturalForm">
         <span>I want to be</span>
-        <nx-word nxSize="long" nxLabel="Always a label">
+        <nx-word size="long" label="Always a label">
             <nx-dropdown formControlName="who">
                 <nx-dropdown-item value="student">a Student</nx-dropdown-item>
                 <nx-dropdown-item value="philosopher"
@@ -14,12 +14,12 @@
 
         <span>and visit the city of</span>
 
-        <nx-word nxSize="short" nxLabel="Always a label">
+        <nx-word size="short" label="Always a label">
             <input nxInput formControlName="city" />
             <div nxError>This field is required.</div>
         </nx-word>
         <span>and see</span>
-        <nx-word nxSize="regular" nxLabel="Always a label">
+        <nx-word size="regular" label="Always a label">
             <input nxInput formControlName="spots" />
             <div
                 nxError

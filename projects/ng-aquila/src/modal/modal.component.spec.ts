@@ -183,7 +183,7 @@ describe('NxModalComponent', () => {
             <button id="button">BUTTON</button>
         </ng-template>
 
-        <nx-modal #basicModal id="basicModal" [nxBody]="basicModalBody" *nxOpenModalOnClick="basicModalButton"> </nx-modal>
+        <nx-modal #basicModal id="basicModal" [modalBody]="basicModalBody" *nxOpenModalOnClick="basicModalButton"> </nx-modal>
     `,
 })
 class BasicModal extends ModalTest {}
@@ -195,7 +195,7 @@ class BasicModal extends ModalTest {}
             <button id="button">BUTTON</button>
         </ng-template>
 
-        <nx-modal #basicModal id="basicModal" [nxBody]="basicModalBody" *ngIf="open"> </nx-modal>
+        <nx-modal #basicModal id="basicModal" [modalBody]="basicModalBody" *ngIf="open"> </nx-modal>
     `,
 })
 class ManualModal extends ModalTest {}
@@ -207,7 +207,7 @@ class ManualModal extends ModalTest {}
             <button id="button">BUTTON</button>
         </ng-template>
 
-        <nx-modal #basicModal id="basicModal" [nxBody]="basicModalBody" nxSize="fixed" *ngIf="open"> </nx-modal>
+        <nx-modal #basicModal id="basicModal" [modalBody]="basicModalBody" windowSize="fixed" *ngIf="open"> </nx-modal>
     `,
 })
 class FixedWidthModal extends ModalTest {}
@@ -222,7 +222,7 @@ class FixedWidthModal extends ModalTest {}
             <button id="button">BUTTON</button>
         </ng-template>
 
-        <nx-modal #basicModal id="basicModal" [nxBody]="basicModalBody" *nxOpenModalOnClick="basicModalButton"> </nx-modal>
+        <nx-modal #basicModal id="basicModal" [modalBody]="basicModalBody" *nxOpenModalOnClick="basicModalButton"> </nx-modal>
     `,
 })
 class OnPushTest extends ModalTest {}

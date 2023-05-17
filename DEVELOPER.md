@@ -61,7 +61,7 @@ What not to do as the component API:
 
 ```html
 <!-- 🚫 BAD EXAMPLE: don't do this -->
-<nx-menu buttonSize="small" buttonType="primary" buttonText="Menu" (buttonClick)="buttonClicked()" tooltipText="Opens the menu" tooltipDelay="50">
+<nx-menu buttonSize="small" menuButtonType="primary" buttonText="Menu" (buttonClick)="buttonClicked()" tooltipText="Opens the menu" tooltipDelay="50">
     <nx-menu-item>Settings</nx-menu-item>
     <nx-menu-item>Remove</nx-menu-item>
 </nx-menu>
@@ -73,7 +73,7 @@ When the menu components template could look like this:
 <!-- 🚫 BAD EXAMPLE: don't do this -->
 <button
     class="menu-trigger"
-    [nxButton]="buttonSize + ' ' + buttonType"
+    [nxButton]="buttonSize + ' ' + menuButtonType"
     (click)="toggleMenuAndEmitButtonClickEvent()"
     [nxTooltip]="tooltipText"
     [nxTooltipDelay]="tooltipDelay"

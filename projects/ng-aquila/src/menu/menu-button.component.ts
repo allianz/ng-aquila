@@ -49,7 +49,7 @@ export class NxMenuButtonComponent implements OnDestroy {
      * The type of this menu button.
      * Can be `primary` or `secondary`, defaults to `primary`.
      */
-    @Input('nxType') set type(value: NxMenuButtonType) {
+    @Input('menuButtonType') set type(value: NxMenuButtonType) {
         if (value === 'root' || value === 'nested') {
             this._type = value;
             this._cdr.markForCheck();
