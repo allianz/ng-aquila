@@ -246,7 +246,7 @@ export const inputNames: VersionChanges<InputNameUpgradeData> = {
                 { replace: 'nxLabel', replaceWith: 'label', limitedTo: { elements: ['nx-formfield'] } },
                 { replace: 'nxOptionalLabel', replaceWith: 'optionalLabel', limitedTo: { elements: ['nx-formfield'] } },
                 { replace: 'nxFloatLabel', replaceWith: 'floatLabel', limitedTo: { elements: ['nx-formfield'] } },
-                { replace: 'nxStyle', replaceWith: 'variant', limitedTo: { elements: ['nx-formfield'] } },
+                { replace: 'nxStyle', replaceWith: 'negative', limitedTo: { elements: ['nx-formfield'] } },
             ],
         },
     ],

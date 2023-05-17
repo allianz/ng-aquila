@@ -18,7 +18,6 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { getClassNameList } from '@aposin/ng-aquila/utils';
 import { asapScheduler, merge, Subject } from 'rxjs';
 import { observeOn, startWith, takeUntil } from 'rxjs/operators';
 
@@ -30,10 +29,6 @@ import { NxFormfieldLabelDirective } from './label.directive';
 import { NxFormfieldNoteDirective } from './note.directive';
 import { NxFormfieldPrefixDirective } from './prefix.directive';
 import { NxFormfieldSuffixDirective } from './suffix.directive';
-
-const NX_STYLES = {
-    negative: 'nx-formfield--negative',
-};
 
 let nextUniqueId = 0;
 
@@ -76,12 +71,14 @@ export type AppearanceType = 'outline' | 'auto';
         '[class.has-error]': 'this._control.errorState',
         '[class.has-outline]': 'this.appearance === "outline"',
         '[class.has-hint]': 'this._hintChildren?.length > 0',
+        '[class.nx-formfield--negative]': 'this._negative',
         '(focusout)': '_onBlur()',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
 export class NxFormfieldComponent implements AfterContentInit, AfterContentChecked, OnDestroy {
+    protected _negative = false;
     private _styles = '';
 
     /** Html id of the formfield label */
@@ -136,18 +133,12 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
      * Sets the styling of the formfield.
      * If 'negative', a negative set of stylings is used.
      */
-    @Input('variant') set styles(value: string) {
-        if (this._styles === value) {
-            return;
-        }
-
-        const classNames = getClassNameList(value, NX_STYLES);
-
-        classNames.forEach(classStr => {
-            this.renderer.addClass(this.elementRef.nativeElement, classStr);
-        });
-
+    @Input('negative') set styles(value: string) {
+        this._negative = !!value.match(/negative/);
         this._styles = value;
+    }
+    get styles() {
+        return this._styles;
     }
 
     /**
