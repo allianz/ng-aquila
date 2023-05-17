@@ -7,6 +7,8 @@ stable: done
 alias: control
 ---
 
+**Changes to formfield paddings:** Bottom padding is now applied to both Error and Hint messages. The new bottom padding for Expert is 16px, Retail (Desktop) 32px and Retail (Mobile) 24px. Use the compatibility css for backwards compatibility in projects/ng-aquila/src/shared-styles/compatibility/formfield-padding.scss.
+
 In most cases it is sufficient to only import the nxInputModule - this **already includes the NxFormfieldModule module**.
 
 ```ts
