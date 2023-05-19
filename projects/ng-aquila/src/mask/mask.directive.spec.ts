@@ -38,6 +38,7 @@ abstract class MaskTest {
     separators: string[] = ['(', ')', ':', '-'];
     dropSpecialCharacters = false;
     validateMask = true;
+    allowEmpty = false;
     modelVal!: string;
     convertTo!: string;
     deactivateMask = false;
@@ -277,6 +278,20 @@ describe('NxMaskDirective', () => {
             nativeElement.value = '1234';
             nativeElement.dispatchEvent(new Event('input'));
             fixture.detectChanges();
+            expect(testInstance.testForm.valid).toBeTrue();
+            expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
+        });
+
+        it('should be valid when allowEmpty and value is empty', () => {
+            createTestComponent(ValidationMaskComponent);
+            testInstance.mask = '00:00-00';
+            testInstance.allowEmpty = true;
+            fixture.detectChanges();
+
+            nativeElement.value = '';
+            nativeElement.dispatchEvent(new Event('input'));
+            fixture.detectChanges();
+
             expect(testInstance.testForm.valid).toBeTrue();
             expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
         });
@@ -975,7 +990,7 @@ class ConfigurableMaskComponent extends MaskTest {}
 @Component({
     template: `
         <form [formGroup]="testForm">
-            <input [nxMask]="mask" formControlName="maskInput" [validateMask]="validateMask" [deactivateMask]="deactivateMask" />
+            <input [nxMask]="mask" formControlName="maskInput" [validateMask]="validateMask" [deactivateMask]="deactivateMask" [allowEmpty]="allowEmpty" />
         </form>
     `,
 })

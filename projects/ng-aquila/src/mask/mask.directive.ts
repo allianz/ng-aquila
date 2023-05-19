@@ -152,6 +152,19 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
     }
     private _validateMask = true;
 
+    /** Whether the mask validation should be applied on the empty value. Default: false. */
+    @Input() set allowEmpty(value: BooleanInput) {
+        const newValue = coerceBooleanProperty(value);
+        if (newValue !== this._allowEmpty) {
+            this._allowEmpty = newValue;
+            this._validatorOnChange();
+        }
+    }
+    get allowEmpty(): boolean {
+        return this._allowEmpty;
+    }
+    private _allowEmpty = false;
+
     /** @docs-private */
     get elementRefValue(): string {
         return this._elementRef.nativeElement.value;
@@ -512,7 +525,15 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
         this._validatorOnChange = fn;
     }
 
+    private isEmptyInputValue(value: any): boolean {
+        return value == null || (typeof value === 'string' && value.length === 0);
+    }
+
     _validateFn() {
+        const value = this._elementRef.nativeElement.value;
+        if (this.allowEmpty && this.isEmptyInputValue(value)) {
+            return null;
+        }
         const inputLength = this._elementRef.nativeElement.value.length;
         const maskLength = this._mask.length;
         if (inputLength !== maskLength && !this.deactivateMask) {
