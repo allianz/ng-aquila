@@ -1,0 +1,15 @@
+.nx-popover__content-wrapper {
+    margin: 0 8px 8px 8px;
+}
+
+@media (min-width: 704px) {
+    .nx-popover__content-wrapper {
+        width: 400px;
+    }
+}
+
+.nx-popover__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

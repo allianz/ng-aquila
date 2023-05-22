@@ -1,0 +1,42 @@
+<button
+    nxButton="primary small"
+    [nxPopoverTriggerFor]="popoverExtendedContent"
+    nxPopoverDirection="right"
+    nxPopoverTrigger="click"
+    type="button"
+    [(nxPopoverShow)]="popoverManualOpenFlag"
+>
+    Click
+</button>
+
+<nx-popover #popoverExtendedContent>
+    <div class="nx-popover__content-wrapper">
+        <h3 nxHeadline="subsection-small" class="nx-margin-bottom-s">
+            Extended popover
+        </h3>
+        <p class="nx-margin-bottom-m">
+            I am an extended popover with a headline and buttons.
+        </p>
+        <div class="nx-popover__footer">
+            <div class="nx-popover__steps">Step 1/3</div>
+            <div class="nx-popover__buttons">
+                <button
+                    class="nx-margin-bottom-0 nx-margin-right-xs"
+                    nxButton="small secondary"
+                    type="button"
+                    (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
+                >
+                    Skip tour
+                </button>
+                <button
+                    class="nx-margin-bottom-0"
+                    nxButton="small"
+                    type="button"
+                    (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
+                >
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
+</nx-popover>

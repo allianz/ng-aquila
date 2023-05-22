@@ -1,3 +1,7 @@
+.nx-popover__text {
+    margin: 0 24px 0 0;
+}
+
 nx-icon {
     color: var(--interactive-primary, #27abd6);
     vertical-align: middle;
