@@ -38,7 +38,6 @@ abstract class MaskTest {
     separators: string[] = ['(', ')', ':', '-'];
     dropSpecialCharacters = false;
     validateMask = true;
-    allowEmpty = false;
     modelVal!: string;
     convertTo!: string;
     deactivateMask = false;
@@ -240,12 +239,26 @@ describe('NxMaskDirective', () => {
             expect(maskInstance.validateMask).toBeTrue();
         });
 
+        it('should mark valid if value empty', () => {
+            createTestComponent(ValidationMaskComponent);
+            testInstance.mask = '00:00-00';
+            fixture.detectChanges();
+
+            expect(testInstance.testForm.valid).toBeTrue();
+            expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
+
+            nativeElement.value = '';
+            nativeElement.dispatchEvent(new Event('input'));
+            fixture.detectChanges();
+
+            expect(testInstance.testForm.valid).toBeTrue();
+            expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
+        });
+
         it('should mark invalid if value is too short', () => {
             createTestComponent(ValidationMaskComponent);
             testInstance.mask = '00:00-00';
             fixture.detectChanges();
-            expect(testInstance.testForm.valid).toBeFalse();
-            expect(testInstance.testForm.get('maskInput')!.valid).toBeFalse();
 
             nativeElement.value = '1234';
             nativeElement.dispatchEvent(new Event('input'));
@@ -278,20 +291,6 @@ describe('NxMaskDirective', () => {
             nativeElement.value = '1234';
             nativeElement.dispatchEvent(new Event('input'));
             fixture.detectChanges();
-            expect(testInstance.testForm.valid).toBeTrue();
-            expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
-        });
-
-        it('should be valid when allowEmpty and value is empty', () => {
-            createTestComponent(ValidationMaskComponent);
-            testInstance.mask = '00:00-00';
-            testInstance.allowEmpty = true;
-            fixture.detectChanges();
-
-            nativeElement.value = '';
-            nativeElement.dispatchEvent(new Event('input'));
-            fixture.detectChanges();
-
             expect(testInstance.testForm.valid).toBeTrue();
             expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
         });
@@ -990,7 +989,7 @@ class ConfigurableMaskComponent extends MaskTest {}
 @Component({
     template: `
         <form [formGroup]="testForm">
-            <input [nxMask]="mask" formControlName="maskInput" [validateMask]="validateMask" [deactivateMask]="deactivateMask" [allowEmpty]="allowEmpty" />
+            <input [nxMask]="mask" formControlName="maskInput" [validateMask]="validateMask" [deactivateMask]="deactivateMask" />
         </form>
     `,
 })
