@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [15.3.0](https://github.com/allianz/ng-aquila/compare/v15.2.1...v15.3.0) (2023-05-22)
+
+
+### Bug Fixes
+
+* **auto-complete:** open panel in shadow dom ([d55e0f9](https://github.com/allianz/ng-aquila/commit/d55e0f9baf5ba1decf8d8e9a2e59b1138cac9918))
+* **circle-toggle:** add aria-required ([fed3efe](https://github.com/allianz/ng-aquila/commit/fed3efe7bf5aacf5db4632e46d62654d4697120c))
+* **dropdown:** close tooltip on dropdown click ([e2ac39d](https://github.com/allianz/ng-aquila/commit/e2ac39de8ddb3d055c019cdd7e4010267deecfd1))
+* **multi-select:** screenreader for option selection ([54dcf0a](https://github.com/allianz/ng-aquila/commit/54dcf0adf2a4056d0fa8ae016af4cf9e199a8810))
+* **multi-step:** add aria-controls ([7213fd1](https://github.com/allianz/ng-aquila/commit/7213fd112dabe6eafb7164680ded80e6616a8dac))
+* **number-stepper:** prevent null id ([1e71035](https://github.com/allianz/ng-aquila/commit/1e7103522e06f482362ad86121ad8d55a606e4fe))
+* **phone-input, dropdown:** add aria-invalid ([da08695](https://github.com/allianz/ng-aquila/commit/da086951ec00c3d17c08a8ea1314acb3a0305d8e))
+* **popover:** add extended example ([dcb8cf5](https://github.com/allianz/ng-aquila/commit/dcb8cf5aec1b2c4c366cabae99e8bd1bc79f2da8))
+* **popover:** close on tab ([cab9391](https://github.com/allianz/ng-aquila/commit/cab9391c7171ff127046f93b581a95f2a987172a))
+* **radiobutton:** give radiobuttons a random ID suffix ([0bae42a](https://github.com/allianz/ng-aquila/commit/0bae42ab9d24ad125b63ede15bc5af591014fcea))
+* **table:** remove empty aria label of sort-header ([c901b8a](https://github.com/allianz/ng-aquila/commit/c901b8a459ae79631d4daaf74f8ec83d1d02b11e))
+
+
+### Features
+
+* **allianz-one:** add allianz one module ([463ec5d](https://github.com/allianz/ng-aquila/commit/463ec5d25c28681f7458cb176c9e8f050835a091))
+* **datefield:** introduce strict date parsing token ([74caa17](https://github.com/allianz/ng-aquila/commit/74caa176ee1c1d48f76c52adedd6a365ecb56e02))
+* **number-stepper:** add api to disable input field direct interaction ([39aabd0](https://github.com/allianz/ng-aquila/commit/39aabd081cfd4b5111644a8f2987d9bc3db11a50))
+* **toolbar:** add divider component ([5dd0b95](https://github.com/allianz/ng-aquila/commit/5dd0b9576acd3dc3eec95e6ef6812b5208fad940))
+
+
+
 ## [15.2.1](https://github.com/allianz/ng-aquila/compare/v15.2.0...v15.2.1) (2023-04-21)
 
 
