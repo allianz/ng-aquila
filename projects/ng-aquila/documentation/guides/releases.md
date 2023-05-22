@@ -1,8 +1,8 @@
 ---
-title: Releases und updating
+title: Releases and updating
 ---
 
-# Releases und updating
+# Releases and updating
 
 ## Release plan
 
