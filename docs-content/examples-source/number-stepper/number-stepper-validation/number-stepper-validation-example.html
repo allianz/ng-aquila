@@ -1,13 +1,13 @@
 <nx-number-stepper
-    nxSize="big"
+    size="big"
     [(ngModel)]="number"
     #stepperValidModel="ngModel"
-    nxStep="2"
+    step="2"
     inputAriaLabel="Number of travellers"
 ></nx-number-stepper>
 
 <nx-message
-    nxContext="info"
+    context="info"
     *ngIf="!stepperValidModel.errors"
     class="nx-margin-top-xs"
 >

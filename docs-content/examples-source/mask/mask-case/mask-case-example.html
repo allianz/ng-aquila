@@ -2,14 +2,14 @@
     <div nxRow>
         <div nxCol="6">
             <nx-radio-group [(ngModel)]="templateModel">
-                <nx-radio nxValue="upper" class="nx-margin-bottom-m"
+                <nx-radio value="upper" class="nx-margin-bottom-m"
                     >Upper case</nx-radio
                 >
-                <nx-radio nxValue="lower">Lower case</nx-radio>
+                <nx-radio value="lower">Lower case</nx-radio>
             </nx-radio-group>
         </div>
         <div nxCol="6">
-            <nx-formfield nxLabel="Input">
+            <nx-formfield label="Input">
                 <input
                     nxInput
                     nxMask="AAAA"

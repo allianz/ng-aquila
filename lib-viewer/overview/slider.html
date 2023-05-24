@@ -3,10 +3,10 @@
 <h3 id="basic" tabindex="-1" class="docs-markdown--h3">Basic</h3>
 <div nx-docs-example="slider-basic" config="{}">exampleID: slider-basic</div>
 <h3 id="default-values" tabindex="-1" class="docs-markdown--h3">Default values</h3>
-<p class="docs-markdown--p">If no input is provided, the default values of <code>nxMin=0</code>, <code>nxMax=100</code> and <code>nxStep=1</code> apply. This is also the case if the provided inputs are invalid, for example if the minimum value is higher than the maximum value.</p>
+<p class="docs-markdown--p">If no input is provided, the default values of <code>min=0</code>, <code>max=100</code> and <code>step=1</code> apply. This is also the case if the provided inputs are invalid, for example if the minimum value is higher than the maximum value.</p>
 <div nx-docs-example="slider-default" config="{}">exampleID: slider-default</div>
 <h3 id="decimal-handling" tabindex="-1" class="docs-markdown--h3">Decimal handling</h3>
-<p class="docs-markdown--p">To mitigate floating point precision erros the value of the slider gets rounded to the closest value based on the step size. For integer step sizes the value will be integers. For decimal step sizes the value will be rounded to the number of decimal places. So for <code>nxStep=0.1</code> the value will have a maximum of 1 decimal place (1, 1.1 etc.). For <code>nxStep=0.01</code> the value will have a maximum of 2 decimal places (1, 1.01, etc.) and so on.</p>
+<p class="docs-markdown--p">To mitigate floating point precision erros the value of the slider gets rounded to the closest value based on the step size. For integer step sizes the value will be integers. For decimal step sizes the value will be rounded to the number of decimal places. So for <code>step=0.1</code> the value will have a maximum of 1 decimal place (1, 1.1 etc.). For <code>step=0.01</code> the value will have a maximum of 2 decimal places (1, 1.01, etc.) and so on.</p>
 <p class="docs-markdown--p">Try to change the step size below to 0.01 and move the slider again to see the effect.</p>
 <div nx-docs-example="slider-decimal" config="{}">exampleID: slider-decimal</div>
 <h3 id="label-formatters" tabindex="-1" class="docs-markdown--h3">Label Formatters</h3>
@@ -36,5 +36,5 @@
 <p class="docs-markdown--p">The Min/Max labels under the slider can be hidden by changing the <code>[hideLabels]</code> input property to true.</p>
 <div nx-docs-example="slider-labels" config="{}">exampleID: slider-labels</div>
 <h3 id="slider-with-ticks" tabindex="-1" class="docs-markdown--h3">Slider with ticks</h3>
-<p class="docs-markdown--p">Tick under the slider can be shown with <code>[tickInterval]</code> which relative to <code>[nxStep]</code></p>
+<p class="docs-markdown--p">Tick under the slider can be shown with <code>[tickInterval]</code> which relative to <code>[step]</code></p>
 <div nx-docs-example="slider-tick" config="{}">exampleID: slider-tick</div>

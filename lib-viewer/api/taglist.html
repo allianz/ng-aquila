@@ -57,7 +57,7 @@
     </td>
     <td class="docs-api-property-description">
         <p>Sets the tab-index of a tag. Default value: -1.</p>
-<p>If <code>nxAllowTagDeletion</code> of the taglist is set to true, the default value is 0.</p>
+<p>If <code>allowTagDeletion</code> of the taglist is set to true, the default value is 0.</p>
 </td>
 </tr>
    
@@ -129,7 +129,8 @@
      
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxAllowTagDeletion'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">allowTagDeletion</span>:
                 <span class="docs-api-property__type">boolean</span>
@@ -143,7 +144,8 @@
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxIsKeywordList'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">isKeywordList</span>:
                 <span class="docs-api-property__type">boolean</span>
@@ -157,9 +159,10 @@
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxLabelProperty'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">labelProp</span>:
+                <span class="docs-api-property__name">labelProperty</span>:
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -200,7 +203,7 @@
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxTags'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'tags'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">tags</span>:
                 <span class="docs-api-property__type">any[]</span>
@@ -214,7 +217,8 @@
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxValueFormatter'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">valueFormatter</span>:
                 <span class="docs-api-property__type">(value: any) => string</span>
@@ -228,7 +232,7 @@
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'nxTagClick'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'onTagClick'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">tagClickEvent</span>:
                 <span class="docs-api-property__type">EventEmitter<any></span>
@@ -242,7 +246,7 @@
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'nxTagsChange'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'tagsChange'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">tagsChange</span>:
                 <span class="docs-api-property__type">EventEmitter<any[]></span>

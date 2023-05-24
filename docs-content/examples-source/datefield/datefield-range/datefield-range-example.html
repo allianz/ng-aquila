@@ -1,11 +1,11 @@
 <div nxLayout="grid">
     <div nxRow>
         <div nxCol="6">
-            <nx-formfield nxLabel="Start date">
+            <nx-formfield label="Start date">
                 <input
                     nxDatefield
                     nxInput
-                    [nxDatepicker]="startDatepicker"
+                    [datepicker]="startDatepicker"
                     [(ngModel)]="startDate"
                     (dateChange)="updateEndDatepicker()"
                 />
@@ -19,11 +19,11 @@
         </div>
 
         <div nxCol="6">
-            <nx-formfield nxLabel="End date">
+            <nx-formfield label="End date">
                 <input
                     nxDatefield
                     nxInput
-                    [nxDatepicker]="endDatepicker"
+                    [datepicker]="endDatepicker"
                     [(ngModel)]="endDate"
                 />
                 <span nxFormfieldHint>MM/DD/YYYY</span>

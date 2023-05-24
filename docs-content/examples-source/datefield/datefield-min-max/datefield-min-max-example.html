@@ -1,12 +1,12 @@
-<nx-formfield nxLabel="Date of damage">
+<nx-formfield label="Date of damage">
     <input
-        [nxMin]="minDate"
-        [nxMax]="maxDate"
+        [min]="minDate"
+        [max]="maxDate"
         ngModel
         #dateMinMaxModel="ngModel"
         nxDatefield
         nxInput
-        [nxDatepicker]="picker2"
+        [datepicker]="picker2"
     />
 
     <span nxFormfieldHint>MM/DD/YYYY</span>

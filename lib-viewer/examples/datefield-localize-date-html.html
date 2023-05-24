@@ -1,4 +1,4 @@
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span> <span class="hljs-attr">nxContext</span>=<span class="hljs-string">&quot;info&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span> <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;info&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>&gt;</span>
     Try changing the locale and look how the Datefield display format and
     parsing and the labels in the Datepicker calendar are changing.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
 
@@ -14,11 +14,11 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-message</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Date of damage&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Date of damage&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
         <span class="hljs-attr">nxDatefield</span>
         <span class="hljs-attr">nxInput</span>
-        [<span class="hljs-attr">nxDatepicker</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
+        [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
         [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;currentDate&quot;</span>
     /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>

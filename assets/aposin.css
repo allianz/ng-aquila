@@ -1,3 +1,9 @@
+body,
+:host {
+  background-color: var(--ui-background);
+  color: var(--text-01);
+}
+
 :root,
 :host {
   --font-family: 'Public Sans Latin', sans-serif !important;
@@ -669,7 +675,8 @@
   --footer-padding-bottom: 32px;
   --footer-mobile-padding-top: 48px;
   --footer-mobile-padding-bottom: 48px;
-  --formfield-bottom-padding: 24px;
+  --formfield-bottom-padding: 32px;
+  --formfield-mobile-bottom-padding: 24px;
   --formfield-icon-size: 24px;
   --formfield-label-color: var(--text-01);
   --formfield-control-color: var(--text-01);
@@ -720,6 +727,7 @@
   --formfield-outline-control-font-weight: var(--paragraph-03-font-weight);
   --formfield-outline-control-letter-spacing: var(--paragraph-03-letter-spacing);
   --formfield-outline-label-height: 28px;
+  --formfield-outline-bottom-padding: 16px;
   --formfield-outline-floating-distance: -29px;
   --formfield-outline-hint-spacing: 8px;
   --formfield-outline-label-font-size: var(--paragraph-03-font-size);
@@ -1182,10 +1190,4 @@
   --timefield-label-font-weight: var(--paragraph-05-font-weight);
   --licence-plate-prefix-background: #003399;
   --licence-plate-prefix-color: var(--negative);
-}
-
-body,
-:host {
-  background-color: var(--ui-background);
-  color: var(--text-01);
 }

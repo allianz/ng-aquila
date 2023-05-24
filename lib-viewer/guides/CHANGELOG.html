@@ -1,5 +1,36 @@
 <h1 class="docs-markdown--h1" id="changelog" tabindex="-1">Changelog</h1>
 <p class="docs-markdown--p">All notable changes to this project will be documented in this file. See <a href="https://github.com/conventional-changelog/standard-version">standard-version</a> for commit guidelines.</p>
+<h1 class="docs-markdown--h1" id="16.0.0-(2023-05-23)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v15.3.0...v16.0.0">16.0.0</a> (2023-05-23)</h1>
+<p class="docs-markdown--p">Aquila v16.0.0 is based on Angular 16. For updating please see our update guide: https://allianz.github.io/ng-aquila/guides/releases</p>
+<h3 class="docs-markdown--h3" id="removal-of-nx-prefixes-for-inputs-and-outputs" tabindex="-1">Removal of <code>nx</code> prefixes for Inputs and Outputs</h3>
+<p class="docs-markdown--p">We cleaned up some inconsistencies in our input and output namings and removed <code>nx</code> prefixes, e.g. <code>nxDisabled</code> on the dropdown is now <code>disabled</code>. These changes will be migrated automatically for you and applied in your application when you run <code>ng update</code>.
+In the <code>Breaking Changes</code> section of <a href="./guides/CHANGELOG">the Changelog</a> you can find commits with affected components. If after the migrations you get errors please check the API pages of the respective components. The angular compiler should also guide you pretty well and often suggest the correct names.</p>
+<h3 class="docs-markdown--h3" id="formfield-visual-change" tabindex="-1">Formfield visual change</h3>
+<p class="docs-markdown--p">The formfield formerly reserved space at the bottom for a possible hint. This space also served as the spacing between formfields and the hint would render in this reserved space. This leads to situations where you don't have sufficient space between the hint and the next row.
+From now on if a hint is present there will be additional space after the hint.</p>
+<p class="docs-markdown--p">If this somehow affects your application in a negative way you can temporarily use a compatibility CSS file which provides the previous styles. For that import the file <code>@aposin/ng-aquila/css/compatibility/formfield-padding.css</code> in the angular.json</p>
+<h3 class="docs-markdown--h3" id="nxmask-validation-prevented-optional-controls" tabindex="-1"><code>nxMask</code> validation prevented optional controls</h3>
+<p class="docs-markdown--p">The <code>nxMask</code> internal validator always validated empty strings, resulting in a <code>nxMaskLengthError</code>. This makes it impossible to have a control as optional. We fixed this bug which is technically a breaking change. If you relied on getting the <code>nxMaskLengthError</code> for empty strings as a replacement for a required validator please add the <code>required</code> validator now.</p>
+<h3 class="docs-markdown--h3" id="breaking-changes" tabindex="-1">BREAKING CHANGES</h3>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>accordion:</strong> remove nx prefixes for inputs (<a href="https://github.com/allianz/ng-aquila/commit/449178e70312e7e0502cb75aa93099c50a53feea">449178e</a>)</li>
+<li class="docs-markdown--li"><strong>autocomplete:</strong> remove nx prefixes from inputs (<a href="https://github.com/allianz/ng-aquila/commit/c00cda0c31826a2c91a8404a4025eab088b63245">c00cda0</a>)</li>
+<li class="docs-markdown--li"><strong>code-input:</strong> remove nx prefix from inputs (<a href="https://github.com/allianz/ng-aquila/commit/b539cdac9d98783c32e1dd5b05c98b7226104a9c">b539cda</a>)</li>
+<li class="docs-markdown--li"><strong>col:</strong> remove nx prefix from input (<a href="https://github.com/allianz/ng-aquila/commit/a79ea4d41ea5220a2ed8a5d17799881c7ec494cf">a79ea4d</a>)</li>
+<li class="docs-markdown--li"><strong>col:</strong> remove nx prefix from input (<a href="https://github.com/allianz/ng-aquila/commit/50e1baf2f91234b84b3e61c3630c4db437faf1ae">50e1baf</a>)</li>
+<li class="docs-markdown--li"><strong>dropdown:</strong> remove nx prefixes from inputs and outputs (<a href="https://github.com/allianz/ng-aquila/commit/a416425173108e45d039fbd316d692f1dd3718b4">a416425</a>)</li>
+<li class="docs-markdown--li"><strong>dynamic-table:</strong> remove nx prefix from input and output (<a href="https://github.com/allianz/ng-aquila/commit/d249203b17b60bf86668cd42f32415b12475d3f1">d249203</a>)</li>
+<li class="docs-markdown--li"><strong>formfield:</strong> change tokens for bottom padding (<a href="https://github.com/allianz/ng-aquila/commit/79dc92fe134fea4c457413a306828c9d2aa73d3c">79dc92f</a>)</li>
+<li class="docs-markdown--li"><strong>formfield:</strong> remove nx prefixes from inputs (<a href="https://github.com/allianz/ng-aquila/commit/2192dcffa8b4f8061a40da2535f246697ad270b9">2192dcf</a>)</li>
+<li class="docs-markdown--li"><strong>formfield:</strong> rename input name nxStyle to negative (<a href="https://github.com/allianz/ng-aquila/commit/0b2667f424242e754c0523a036de8bfbb2e06894">0b2667f</a>)</li>
+<li class="docs-markdown--li"><strong>spinner, switcher, taglist:</strong> remove nx prefixes (<a href="https://github.com/allianz/ng-aquila/commit/f900cb0a1841a8eb12e11834546e8758815b6ae2">f900cb0</a>)</li>
+<li class="docs-markdown--li"><strong>number-stepper, page-search, pagination, radio-button:</strong> remove nx prefixes (<a href="https://github.com/allianz/ng-aquila/commit/c6088bc999d74033d1a0c616a392cfd1b8ab2862">c6088bc</a>)</li>
+<li class="docs-markdown--li"><strong>menu-button, message, modal, natural-language-form, word:</strong> remove nx prefixes (<a href="https://github.com/allianz/ng-aquila/commit/65f6b6383a3fb2c23d2016b9ff34cdaf6558ed12">65f6b63</a>)</li>
+<li class="docs-markdown--li"><strong>row:</strong> remove nx prefix from input (<a href="https://github.com/allianz/ng-aquila/commit/4be7205fc01f395b4ce3c3b5ed0a86899330522c">4be7205</a>)</li>
+<li class="docs-markdown--li"><strong>row:</strong> remove nx prefix from inputs (<a href="https://github.com/allianz/ng-aquila/commit/7cd01b72f7b8e3dc4ac009425414fd4d074657a0">7cd01b7</a>)</li>
+<li class="docs-markdown--li"><strong>video:</strong> remove nx prefix input (<a href="https://github.com/allianz/ng-aquila/commit/a5dedc11cb4e9c0e334ccd7562a15bb0cfe8ee18">a5dedc1</a>)</li>
+<li class="docs-markdown--li"><strong>mask:</strong> not mark empty value as invalid (<a href="https://github.com/allianz/ng-aquila/commit/b35473dc9648e961b403e188b062cd9d41388c57">b35473d</a>)</li>
+</ul>
 <h1 class="docs-markdown--h1" id="15.3.0-(2023-05-22)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v15.2.1...v15.3.0">15.3.0</a> (2023-05-22)</h1>
 <h3 class="docs-markdown--h3" id="bug-fixes" tabindex="-1">Bug Fixes</h3>
 <ul class="docs-markdown--ul">
@@ -57,7 +88,7 @@
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>multi-select:</strong> change select all button style, remove clear all button (<a href="https://github.com/allianz/ng-aquila/commit/bf01401af44164457118ea19ca8ea88089878a69">bf01401</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="breaking-changes" tabindex="-1">BREAKING CHANGES</h3>
+<h3 class="docs-markdown--h3" id="breaking-changes-1" tabindex="-1">BREAKING CHANGES</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">We have moved DayJS and Decimal.js to peerDepencencies (<a href="https://github.com/allianz/ng-aquila/commit/fa5eef59ff9d18af16d5868c4fc715a26eb97586">fa5eef59f</a>). In case you experience problems, make sure you install these libraries.</li>
 </ul>
@@ -307,7 +338,7 @@
 <p class="docs-markdown--p">The new <code>nx-multi-select</code> supports selection of multiple items as well as filtering.</p>
 <h4 class="docs-markdown--h4" id="data-display-component" tabindex="-1">Data Display component</h4>
 <p class="docs-markdown--p">The new <code>nx-data-display</code> provides a description component that consists of a label and a value.</p>
-<h3 class="docs-markdown--h3" id="breaking-changes-1" tabindex="-1">BREAKING CHANGES</h3>
+<h3 class="docs-markdown--h3" id="breaking-changes-2" tabindex="-1">BREAKING CHANGES</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">We have removed JS code and CSS specific to Internet Explorer, so make sure your project doesn't need IE support before migrating to v13. In case you still need to support IE, consider using our LTS v12.</li>
 <li class="docs-markdown--li"><strong>footer:</strong> default paddings changed (to restore previous values, please refer to our release notes)</li>
@@ -592,7 +623,7 @@
 <li class="docs-markdown--li">update to Angular 11 (<a href="https://github.com/aposin/ng-aquila/commit/7157dfd6fb7c38659ba1bd6e143b5103efe275de">7157dfd</a>)</li>
 <li class="docs-markdown--li"><strong>small-stage</strong>: rewrite to support retail (<a href="https://github.com/aposin/ng-aquila/commit/dd7e22e91bbd23ff113e080cdd2b64ada88b9db7">dd7e22e</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="breaking-changes-2" tabindex="-1">BREAKING CHANGES</h3>
+<h3 class="docs-markdown--h3" id="breaking-changes-3" tabindex="-1">BREAKING CHANGES</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>small-stage</strong>: the component was refactored to support both retail and expert, the changes in detail contain:
 <ul class="docs-markdown--ul">
@@ -821,7 +852,7 @@
 <li class="docs-markdown--li"><strong>rtl:</strong> add right-to-left (RTL) support</li>
 <li class="docs-markdown--li"><strong>timefield:</strong> add new timefield component</li>
 </ul>
-<h3 class="docs-markdown--h3" id="breaking-changes-3" tabindex="-1">BREAKING CHANGES</h3>
+<h3 class="docs-markdown--h3" id="breaking-changes-4" tabindex="-1">BREAKING CHANGES</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">
 <p class="docs-markdown--p"><strong>accordion:</strong> In order to change the border color of the tabs on mobile you have to overwrite both the tokens <code>accordion-regular-mobile-border-color</code> and <code>accordion-regular-mobile-border-separator-color</code>. Previously only the first one had to be changed.</p>

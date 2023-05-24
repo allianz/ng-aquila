@@ -2,18 +2,18 @@
     <div nxLayout="grid">
         <div nxRow>
             <div nxCol="12,12,6">
-                <nx-formfield nxLabel="Car brand">
+                <nx-formfield label="Car brand">
                     <nx-dropdown formControlName="dropdown">
                         <nx-dropdown-item>CLEAR VALUE</nx-dropdown-item>
-                        <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
-                        <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
-                        <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
-                        <nx-dropdown-item nxValue="Mini"></nx-dropdown-item>
+                        <nx-dropdown-item value="BMW"></nx-dropdown-item>
+                        <nx-dropdown-item value="Audi"></nx-dropdown-item>
+                        <nx-dropdown-item value="Volvo"></nx-dropdown-item>
+                        <nx-dropdown-item value="Mini"></nx-dropdown-item>
                     </nx-dropdown>
                     <nx-error nxFormfieldError>
                         Please select a value
                     </nx-error>
-                    <nx-message nxContext="info" nxFormfieldNote>
+                    <nx-message context="info" nxFormfieldNote>
                         This field is required
                     </nx-message>
                 </nx-formfield>

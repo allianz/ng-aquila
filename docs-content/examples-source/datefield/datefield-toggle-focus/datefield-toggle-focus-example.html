@@ -4,11 +4,11 @@
             <h4 nxHeadline="subsection-xsmall">
                 With focus on toggle (default)
             </h4>
-            <nx-formfield nxLabel="Date">
+            <nx-formfield label="Date">
                 <input
                     nxDatefield
                     nxInput
-                    [nxDatepicker]="myDatepicker1"
+                    [datepicker]="myDatepicker1"
                     [(ngModel)]="date1"
                 />
                 <span nxFormfieldHint>MM/DD/YYYY</span>
@@ -22,11 +22,11 @@
         </div>
         <div nxCol="6">
             <h4 nxHeadline="subsection-xsmall">Without focus on toggle</h4>
-            <nx-formfield nxLabel="Date">
+            <nx-formfield label="Date">
                 <input
                     nxDatefield
                     nxInput
-                    [nxDatepicker]="myDatepicker2"
+                    [datepicker]="myDatepicker2"
                     [(ngModel)]="date2"
                 />
                 <span nxFormfieldHint>MM/DD/YYYY</span>

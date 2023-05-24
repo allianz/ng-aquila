@@ -1,14 +1,14 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12, 12, 4&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Country Code&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Country Code&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;customLabelDropdownValue&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> <span class="hljs-attr">nxClosedLabel</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{{ customLabelDropdownValue?.prefix }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span>
                         *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of telPrefixDemoData&quot;</span>
-                        [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;item&quot;</span>
+                        [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>
                     &gt;</span>
                         {{ item.prefix }} ({{ item.countryId }})
                     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>

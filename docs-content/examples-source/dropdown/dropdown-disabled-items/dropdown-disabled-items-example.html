@@ -1,31 +1,31 @@
 <div nxLayout="grid">
     <div nxRow>
         <div nxCol="12, 12, 4">
-            <nx-formfield nxLabel="Disabled dropdown">
-                <nx-dropdown nxDisabled="true">
-                    <nx-dropdown-item nxValue="BMW">B</nx-dropdown-item>
-                    <nx-dropdown-item nxValue="Audi">A</nx-dropdown-item>
-                    <nx-dropdown-item nxValue="Volvo">V</nx-dropdown-item>
-                    <nx-dropdown-item nxValue="Mini">M</nx-dropdown-item>
+            <nx-formfield label="Disabled dropdown">
+                <nx-dropdown disabled="true">
+                    <nx-dropdown-item value="BMW">B</nx-dropdown-item>
+                    <nx-dropdown-item value="Audi">A</nx-dropdown-item>
+                    <nx-dropdown-item value="Volvo">V</nx-dropdown-item>
+                    <nx-dropdown-item value="Mini">M</nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
         </div>
 
         <div nxCol="12, 12, 4">
-            <nx-formfield nxLabel="With disabled item">
+            <nx-formfield label="With disabled item">
                 <nx-dropdown>
-                    <nx-dropdown-item disabled="true" nxValue="BMW"
+                    <nx-dropdown-item disabled="true" value="BMW"
                         >B</nx-dropdown-item
                     >
-                    <nx-dropdown-item nxValue="Audi">A</nx-dropdown-item>
-                    <nx-dropdown-item nxValue="Volvo">V</nx-dropdown-item>
-                    <nx-dropdown-item nxValue="Mini">M</nx-dropdown-item>
+                    <nx-dropdown-item value="Audi">A</nx-dropdown-item>
+                    <nx-dropdown-item value="Volvo">V</nx-dropdown-item>
+                    <nx-dropdown-item value="Mini">M</nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
         </div>
 
         <div nxCol="12, 12, 4">
-            <nx-formfield nxLabel="With disabled multi item">
+            <nx-formfield label="With disabled multi item">
                 <nx-multi-select
                     [options]="options"
                     selectValue="id"

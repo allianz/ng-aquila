@@ -1,4 +1,4 @@
-<h1 class="docs-markdown--h1" id="releases-und-updating" tabindex="-1">Releases und updating</h1>
+<h1 class="docs-markdown--h1" id="releases-and-updating" tabindex="-1">Releases and updating</h1>
 <h2 class="docs-markdown--h2" id="release-plan" tabindex="-1">Release plan</h2>
 <p class="docs-markdown--p">Our release strategy is naturally synchronized with <a href="https://angular.io/guide/releases">Angular's</a>. The main reason for this is to minimize the frequency of breaking changes. The Angular team releases a major version every six months, whenever we update to this version we expect breaking changes. Thus, we will release any breaking change within Angular NDBX along with the major release of Angular. Consequently, you can expect breaking changes (major update) within ng-aquila about every six months.</p>
 <p class="docs-markdown--p">As the Angular team now provides release dates down to a week, we are able to prepare in advance and provide more specific release terms. We will release a major version during a 6-week period after a major Angular release. Any delays will be communicated on this page.</p>
@@ -14,12 +14,6 @@
 </thead>
 <tbody>
 <tr>
-<td>September 2021</td>
-<td>12</td>
-<td>12</td>
-<td>November 2022</td>
-</tr>
-<tr>
 <td>December 2021</td>
 <td>13</td>
 <td>13</td>
@@ -29,18 +23,40 @@
 <td>November 2022</td>
 <td>14</td>
 <td>14</td>
-<td>December 2023</td>
+<td>May 2024</td>
 </tr>
 <tr>
 <td>December 2022</td>
 <td>15</td>
 <td>15</td>
-<td>January 2024</td>
+<td>June 2024</td>
+</tr>
+<tr>
+<td>May 2023</td>
+<td>16</td>
+<td>16</td>
+<td>November 2024</td>
 </tr>
 </tbody>
 </table>
-<p class="docs-markdown--p">Angular NDBX versions 11 and older are no longer supported.</p>
+<p class="docs-markdown--p">Aquila versions 12 and older are no longer supported.</p>
 <p class="docs-markdown--p">During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.</p>
+<h2 class="docs-markdown--h2" id="updating-to-version-16" tabindex="-1">Updating to version 16</h2>
+<p class="docs-markdown--p">With v16, we are upgrading to <a href="https://blog.angular.io/angular-v16-is-here-4d7a28ec680d">Angular 16</a>. This Angular update has been named the biggest release since the initial rollout of Angular, making large leaps in reactivity, server-side rendering, and tooling. In order to make sure you leverage the new Angular features in your application, we encourage you to check <a href="https://angular.io/guide/update-to-version-16">the official documentation</a>.</p>
+<p class="docs-markdown--p">Updating Aquila to version 16 should be simple, though. In most cases the following command should do the Angular update for you:</p>
+<p class="docs-markdown--p"><code>ng update @angular/cli @angular/core</code></p>
+<p class="docs-markdown--p">Then it should be easy to update Aquila with the following command:</p>
+<p class="docs-markdown--p"><code>ng update @aposin/ng-aquila --force</code></p>
+<h3 class="docs-markdown--h3" id="breaking-changes" tabindex="-1">Breaking Changes</h3>
+<h3 class="docs-markdown--h3" id="removal-of-nx-prefixes-for-inputs-and-outputs" tabindex="-1">Removal of <code>nx</code> prefixes for Inputs and Outputs</h3>
+<p class="docs-markdown--p">We cleaned up some inconsistencies in our input and output namings and removed <code>nx</code> prefixes, e.g. <code>nxDisabled</code> on the dropdown is now <code>disabled</code>. These changes will be migrated automatically for you and applied in your application when you run <code>ng update</code>.
+In the <code>Breaking Changes</code> section of <a href="./guides/CHANGELOG">the Changelog</a> you can find commits with affected components. If after the migrations you get errors please check the API pages of the respective components. The angular compiler should also guide you pretty well and often suggest the correct names.</p>
+<h3 class="docs-markdown--h3" id="formfield-visual-change" tabindex="-1">Formfield visual change</h3>
+<p class="docs-markdown--p">The formfield formerly reserved space at the bottom for a possible hint. This space also served as the spacing between formfields and the hint would render in this reserved space. This leads to situations where you don't have sufficient space between the hint and the next row.
+From now on if a hint is present there will be additional space after the hint.</p>
+<p class="docs-markdown--p">If this somehow affects your application in a negative way you can temporarily use a compatibility CSS file which provides the previous styles. For that import the file <code>@aposin/ng-aquila/css/compatibility/formfield-padding.css</code> in the angular.json</p>
+<h3 class="docs-markdown--h3" id="nxmask-validation-prevented-optional-controls" tabindex="-1"><code>nxMask</code> validation prevented optional controls</h3>
+<p class="docs-markdown--p">The <code>nxMask</code> internal validator always validated empty strings, resulting in a <code>nxMaskLengthError</code>. This makes it impossible to have a control as optional. We fixed this bug which is technically a breaking change. If you relied on getting the <code>nxMaskLengthError</code> for empty strings as a replacement for a required validator please add the <code>required</code> validator now.</p>
 <h2 class="docs-markdown--h2" id="updating-to-version-15" tabindex="-1">Updating to version 15</h2>
 <p class="docs-markdown--p">With v15, we are upgrading to <a href="https://blog.angular.io/angular-v15-is-now-available-df7be7f2f4c8">Angular 15</a>. In most cases the following command should do the Angular update for you:</p>
 <p class="docs-markdown--p"><code>ng update @angular/cli @angular/core</code></p>
@@ -50,7 +66,7 @@
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">⚠️ (nx-input-phone) wrapper class name within component has been changed to avoid interfering with global stylesheets.</li>
 </ul>
-<h3 class="docs-markdown--h3" id="breaking-changes" tabindex="-1">Breaking Changes</h3>
+<h3 class="docs-markdown--h3" id="breaking-changes-1" tabindex="-1">Breaking Changes</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>rating:</strong> visual layout and component API have been updated to align with the current NDBX guidelines</li>
 </ul>
@@ -60,7 +76,7 @@
 <p class="docs-markdown--p"><code>ng update @angular/cli @angular/core</code></p>
 <p class="docs-markdown--p">Then it should be easy to update Aquila with the following command:</p>
 <p class="docs-markdown--p"><code>ng update @aposin/ng-aquila --force</code></p>
-<h3 class="docs-markdown--h3" id="breaking-changes-1" tabindex="-1">Breaking Changes</h3>
+<h3 class="docs-markdown--h3" id="breaking-changes-2" tabindex="-1">Breaking Changes</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">added readonly keyword to public properties which are not meant to be changed.</li>
 </ul>
@@ -75,7 +91,7 @@
 <li class="docs-markdown--li">With this release we are dropping support of Internet Explorer and removing all the code that was meant to support IE-only functionality and fix its issues. Make sure your project doesn't need IE support before migrating to v13. In case you still need to support IE, consider using LTS v12.</li>
 <li class="docs-markdown--li">Following Angular development, the library is now distributed in ivy partial compilation mode.</li>
 </ul>
-<h3 class="docs-markdown--h3" id="breaking-changes-2" tabindex="-1">Breaking Changes</h3>
+<h3 class="docs-markdown--h3" id="breaking-changes-3" tabindex="-1">Breaking Changes</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>footer:</strong> spacing - to restore previous values, override the following new variables:
 <ul class="docs-markdown--ul">
@@ -99,7 +115,7 @@
 <p class="docs-markdown--p"><code>ng update @aposin/ng-aquila --force</code></p>
 <p class="docs-markdown--p"><strong>Important:</strong> The visual padding of the Accordion component changes with this update in accordance with the design guidelines. <strong>We are not providing an automatic update for this breaking change.</strong></p>
 <h2 class="docs-markdown--h2" id="updating-to-version-11" tabindex="-1">Updating to version 11</h2>
-<h3 class="docs-markdown--h3" id="breaking-changes-3" tabindex="-1">Breaking Changes</h3>
+<h3 class="docs-markdown--h3" id="breaking-changes-4" tabindex="-1">Breaking Changes</h3>
 <p class="docs-markdown--p">With v11 there are some breaking changes:</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">

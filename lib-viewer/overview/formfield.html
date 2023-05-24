@@ -6,6 +6,7 @@
 </code></pre>
 <p class="docs-markdown--p">The formfield component is only usable in combination with a compatible input like nxInput. You will get floating labels, hints and a space to properly render additional information and errors below the input.</p>
 <p class="docs-markdown--p">You can't use the formfield without a matching input. A matching input fulfills the requirements of the <code>NxFormfieldControl</code> interface.</p>
+<p class="docs-markdown--p"><strong>Changes to formfield paddings:</strong> Starting v16, bottom padding is now applied to both Error and Hint messages. The new bottom padding for Expert is 16px, Retail (Desktop) 32px and Retail (Mobile) 24px. If you would like to keep the old padding values, include <code>@aposin/ng-aquila/css/compatibility/formfield-padding.css</code> in your <code>angular.json</code>.</p>
 <h3 id="basic-example" tabindex="-1" class="docs-markdown--h3">Basic Example</h3>
 <div nx-docs-example="formfield-basic" config="{}">exampleID: formfield-basic</div>
 <h3 id="simple-form" tabindex="-1" class="docs-markdown--h3">Simple Form</h3>
@@ -14,10 +15,10 @@
 <p class="docs-markdown--p"><strong>Note:</strong> You have to include NxPopoverModule to run this example. See <a href="./documentation/popover/overview">NxPopover</a> for details.</p>
 <div nx-docs-example="formfield-simple-form" config="{}">exampleID: formfield-simple-form</div>
 <h3 id="floating" tabindex="-1" class="docs-markdown--h3">Floating</h3>
-<p class="docs-markdown--p">By default the label will float once the input is focused or filled. By specifying <code>nxFloatLabel</code> with a value of always you can make this formfield appear as a static input + label combination.</p>
+<p class="docs-markdown--p">By default the label will float once the input is focused or filled. By specifying <code>floatLabel</code> with a value of always you can make this formfield appear as a static input + label combination.</p>
 <div nx-docs-example="formfield-floating" config="{}">exampleID: formfield-floating</div>
 <h3 id="custom-formfield-label" tabindex="-1" class="docs-markdown--h3">Custom formfield label</h3>
-<p class="docs-markdown--p">You can pass text label content via the input <code>nxLabel</code>. If you need a more complex label you an use the directive <code>nx-formfield-label</code> as shown in the code example below. If both are defined, then <code>nx-formfield-label</code> will take precedence.</p>
+<p class="docs-markdown--p">You can pass text label content via the input <code>label</code>. If you need a more complex label you an use the directive <code>nx-formfield-label</code> as shown in the code example below. If both are defined, then <code>nx-formfield-label</code> will take precedence.</p>
 <div nx-docs-example="formfield-custom-label" config="{}">exampleID: formfield-custom-label</div>
 <h3 id="negative-styling" tabindex="-1" class="docs-markdown--h3">Negative styling</h3>
 <p class="docs-markdown--p">The negative modifier can be used whenever the component is used on a dark background.</p>
@@ -75,7 +76,7 @@
 <h3 id="creating-a-custom-form-field-control" tabindex="-1" class="docs-markdown--h3">Creating a custom form field control</h3>
 <p class="docs-markdown--p">If you want you can create custom form field controls and add custom logic to it. Your custom form field control then should be wrapped inside <code>nx-formfield</code>. Let's start simple and check how it looks once you implement the necessary interfaces. Our goal is to implement custom form field controls for phone numbers.</p>
 <p class="docs-markdown--p">The HTML code below shows how we can consume our custom control.</p>
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Phone number&quot;</span>&gt;</span>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Phone number&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">formfield-custom-tel-input-example</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">formfield-custom-tel-input-example</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 </code></pre>

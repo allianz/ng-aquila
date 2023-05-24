@@ -159,7 +159,7 @@ Will emit on subscribe if there are no open modals to begin with.</p>
      
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxBody'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'modalBody'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">body</span>:
                 <span class="docs-api-property__type">TemplateRef<any></span>
@@ -190,7 +190,8 @@ which contains the content of the modal view.</p>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxHideOnClickOutside'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">hideOnClickOutside</span>:
                 <span class="docs-api-property__type">true</span>
@@ -205,7 +206,8 @@ Default: <code>true</code>.</p>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxHideOnEsc'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">hideOnEsc</span>:
                 <span class="docs-api-property__type">true</span>
@@ -220,7 +222,8 @@ Default: <code>true</code>.</p>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxShowCloseIcon'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">showCloseIcon</span>:
                 <span class="docs-api-property__type">true</span>
@@ -235,7 +238,7 @@ Default: <code>true</code>.</p>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxSize'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'windowSize'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">size</span>:
                 <span class="docs-api-property__type">'fixed' | 'auto'</span>
@@ -251,7 +254,7 @@ on <code>fixed</code> the dialog gets a fixed width of 736px if the viewport is 
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'nxClose'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'onModalClose'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">closeEvent</span>:
                 <span class="docs-api-property__type">EventEmitter<void></span>

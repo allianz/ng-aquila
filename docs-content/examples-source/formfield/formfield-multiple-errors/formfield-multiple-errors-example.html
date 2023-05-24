@@ -1,5 +1,5 @@
 <form>
-    <nx-formfield nxLabel="Email">
+    <nx-formfield label="Email">
         <input nxInput [formControl]="emailFormControl" />
         <nx-error
             *ngIf="emailFormControl.hasError('required')"

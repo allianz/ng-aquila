@@ -1,11 +1,11 @@
-<nx-formfield nxLabel="Date of damage">
+<nx-formfield label="Date of damage">
     <input
-        [nxDatefieldFilter]="onlyDaysWith6"
+        [datefieldFilter]="onlyDaysWith6"
         ngModel
         #dateFilterModel="ngModel"
         nxDatefield
         nxInput
-        [nxDatepicker]="picker3"
+        [datepicker]="picker3"
     />
     <span nxFormfieldHint>MM/DD/YYYY</span>
     <nx-datepicker-toggle

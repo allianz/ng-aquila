@@ -2,18 +2,15 @@
     <div nxLayout="grid">
         <div nxRow>
             <div nxCol="12,6">
-                <nx-formfield
-                    nxLabel="Number of items"
-                    nxOptionalLabel="Optional"
-                >
+                <nx-formfield label="Number of items" optionalLabel="Optional">
                     <nx-dropdown formControlName="items">
-                        <nx-dropdown-item nxValue="1">1</nx-dropdown-item>
-                        <nx-dropdown-item nxValue="2">2</nx-dropdown-item>
+                        <nx-dropdown-item value="1">1</nx-dropdown-item>
+                        <nx-dropdown-item value="2">2</nx-dropdown-item>
                     </nx-dropdown>
                 </nx-formfield>
             </div>
             <div nxCol="12,6">
-                <nx-formfield nxLabel="Last Name" nxOptionalLabel="Optional">
+                <nx-formfield label="Last Name" optionalLabel="Optional">
                     <input nxInput formControlName="lastName" />
                 </nx-formfield>
             </div>
@@ -25,23 +22,23 @@
         <div nxRow>
             <div nxCol="12,6">
                 <nx-formfield
-                    nxLabel="Number of items"
+                    label="Number of items"
                     appearance="outline"
-                    nxFloatLabel="always"
-                    nxOptionalLabel="optional"
+                    floatLabel="always"
+                    optionalLabel="optional"
                 >
                     <nx-dropdown formControlName="items">
-                        <nx-dropdown-item nxValue="1">1</nx-dropdown-item>
-                        <nx-dropdown-item nxValue="2">2</nx-dropdown-item>
+                        <nx-dropdown-item value="1">1</nx-dropdown-item>
+                        <nx-dropdown-item value="2">2</nx-dropdown-item>
                     </nx-dropdown>
                 </nx-formfield>
             </div>
             <div nxCol="12,6">
                 <nx-formfield
-                    nxLabel="Last Name"
+                    label="Last Name"
                     appearance="outline"
-                    nxFloatLabel="always"
-                    nxOptionalLabel="optional"
+                    floatLabel="always"
+                    optionalLabel="optional"
                 >
                     <input nxInput formControlName="lastName" />
                 </nx-formfield>

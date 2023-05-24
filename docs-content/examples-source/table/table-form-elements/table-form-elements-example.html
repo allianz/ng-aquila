@@ -30,7 +30,7 @@
                         <input
                             nxDatefield
                             nxInput
-                            [nxDatepicker]="myDatepicker"
+                            [datepicker]="myDatepicker"
                             formControlName="endingAt"
                         />
 
@@ -44,15 +44,15 @@
                 <td nxTableCell class="status-cell">
                     <nx-formfield>
                         <nx-dropdown formControlName="status">
-                            <nx-dropdown-item nxValue="open"></nx-dropdown-item>
+                            <nx-dropdown-item value="open"></nx-dropdown-item>
                             <nx-dropdown-item
-                                nxValue="processing"
+                                value="processing"
                             ></nx-dropdown-item>
                             <nx-dropdown-item
-                                nxValue="accepted"
+                                value="accepted"
                             ></nx-dropdown-item>
                             <nx-dropdown-item
-                                nxValue="rejected"
+                                value="rejected"
                             ></nx-dropdown-item>
                         </nx-dropdown>
                     </nx-formfield>

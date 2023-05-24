@@ -1,4 +1,4 @@
-<nx-message nxContext="info" class="nx-margin-bottom-xs">
+<nx-message context="info" class="nx-margin-bottom-xs">
     Try changing the locale and look how the Datefield display format and
     parsing and the labels in the Datepicker calendar are changing.<br />
 
@@ -14,11 +14,11 @@
     </select>
 </nx-message>
 
-<nx-formfield nxLabel="Date of damage">
+<nx-formfield label="Date of damage">
     <input
         nxDatefield
         nxInput
-        [nxDatepicker]="myDatepicker"
+        [datepicker]="myDatepicker"
         [(ngModel)]="currentDate"
     />
     <nx-datepicker-toggle

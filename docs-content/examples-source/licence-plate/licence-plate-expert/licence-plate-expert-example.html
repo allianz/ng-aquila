@@ -1,18 +1,18 @@
 <div nxLayout="grid maxwidth">
     <div nxRow>
-        <div nxCol="12,12,10,4" nxColOffset="0,0,1,4">
+        <div nxCol="12,12,10,4" colOffset="0,0,1,4">
             <nx-formfield
-                nxLabel="Licence plate types"
+                label="Licence plate types"
                 appearance="outline"
-                nxFloatLabel="always"
+                floatLabel="always"
             >
                 <nx-dropdown
                     placeholder="Choose a type"
-                    [(nxValue)]="licencePlateModel.type"
+                    [(value)]="licencePlateModel.type"
                 >
                     <nx-dropdown-item
                         *ngFor="let type of licencePlateTypes"
-                        [nxValue]="type.type"
+                        [value]="type.type"
                         >{{type.typeName}}</nx-dropdown-item
                     >
                 </nx-dropdown>
@@ -20,28 +20,28 @@
 
             <div *ngIf="licencePlateModel.type === 'de_season'">
                 <nx-formfield
-                    nxLabel="Start date"
+                    label="Start date"
                     appearance="outline"
-                    nxFloatLabel="always"
+                    floatLabel="always"
                 >
-                    <nx-dropdown [(nxValue)]="licencePlateModel.startDate">
+                    <nx-dropdown [(value)]="licencePlateModel.startDate">
                         <nx-dropdown-item
                             *ngFor="let date of monthsOfYearList"
-                            [nxValue]="date.month"
+                            [value]="date.month"
                         >
                             {{date.monthName}}
                         </nx-dropdown-item>
                     </nx-dropdown>
                 </nx-formfield>
                 <nx-formfield
-                    nxLabel="End date"
+                    label="End date"
                     appearance="outline"
-                    nxFloatLabel="always"
+                    floatLabel="always"
                 >
-                    <nx-dropdown [(nxValue)]="licencePlateModel.endDate">
+                    <nx-dropdown [(value)]="licencePlateModel.endDate">
                         <nx-dropdown-item
                             *ngFor="let date of monthsOfYearList"
-                            [nxValue]="date.month"
+                            [value]="date.month"
                         >
                             {{date.monthName}}
                         </nx-dropdown-item>
@@ -51,14 +51,14 @@
 
             <div *ngIf="licencePlateModel.type === 'euro'">
                 <nx-formfield
-                    nxLabel="Country"
+                    label="Country"
                     appearance="outline"
-                    nxFloatLabel="always"
+                    floatLabel="always"
                 >
-                    <nx-dropdown [(nxValue)]="licencePlateModel.country">
+                    <nx-dropdown [(value)]="licencePlateModel.country">
                         <nx-dropdown-item
                             *ngFor="let country of countriesList"
-                            [nxValue]="country.country"
+                            [value]="country.country"
                         >
                             {{country.countryName}}
                         </nx-dropdown-item>
@@ -67,9 +67,9 @@
             </div>
 
             <nx-formfield
-                nxLabel="License Plate"
+                label="License Plate"
                 appearance="outline"
-                nxFloatLabel="always"
+                floatLabel="always"
             >
                 <nx-licence-plate-euro-prefix
                     nxFormfieldPrefix
@@ -99,7 +99,7 @@
 </div>
 <div nxLayout="grid maxwidth" class="nx-margin-top-s">
     <div nxRow class="example-controls">
-        <div nxCol="12,12,10,4" nxColOffset="0,0,1,4">
+        <div nxCol="12,12,10,4" colOffset="0,0,1,4">
             <pre>Licence plate model value: {{ licencePlateModel | json }}</pre>
         </div>
     </div>

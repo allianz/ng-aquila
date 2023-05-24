@@ -1,6 +1,6 @@
 <div class="docs-deprecation-warning">
   <strong>Important: </strong>
-  Please note that the <strong>nxIsMultiselect</strong> option of the dropdown is deprecated. Use the new <strong>nx-multi-select</strong> component instead.
+  Please note that the <strong>isMultiselect</strong> option of the dropdown is deprecated. Use the new <strong>nx-multi-select</strong> component instead.
 </div>
 <p class="docs-markdown--p">It is recommended to use the dropdown component in combination with NxFormField. Therefore, make sure to import this module as well:</p>
 <pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
@@ -13,8 +13,8 @@
 <p class="docs-markdown--p">It is possible to show a placeholder instead of the floating label. The placeholder will only be shown if no option is selected.</p>
 <div nx-docs-example="dropdown-placeholder" config="{}">exampleID: dropdown-placeholder</div>
 <h3 id="rendering-of-dropdown-items" tabindex="-1" class="docs-markdown--h3">Rendering of dropdown-items</h3>
-<p class="docs-markdown--p">The items inside the dropdown can be rendered either by <code>[nxValueFormatter]</code> or by ng-content. If no ng-content is provided, the <code>[nxValue]</code> in combination with <code>[nxValueFormatter]</code> will be used to render the item content (left). This example also shows the usage of <code>[nxValueFormatter]</code>. It is possible to transform any <code>[nxValue]</code> into the rendered state (here: &quot;uppercase&quot;).</p>
-<p class="docs-markdown--p">If there is ng-content projected by nx-dropdown-item, this content will be used by the dropdown to display the items (middle). The library implements a fallback if you do not provide <code>[nxValueFormatter]</code> and ng-content. In this case, <code>[nxValue]</code> will be used by .toString() as value for the item (right).</p>
+<p class="docs-markdown--p">The items inside the dropdown can be rendered either by <code>[valueFormatter]</code> or by ng-content. If no ng-content is provided, the <code>[value]</code> in combination with <code>[valueFormatter]</code> will be used to render the item content (left). This example also shows the usage of <code>[valueFormatter]</code>. It is possible to transform any <code>[value]</code> into the rendered state (here: &quot;uppercase&quot;).</p>
+<p class="docs-markdown--p">If there is ng-content projected by nx-dropdown-item, this content will be used by the dropdown to display the items (middle). The library implements a fallback if you do not provide <code>[valueFormatter]</code> and ng-content. In this case, <code>[value]</code> will be used by .toString() as value for the item (right).</p>
 <div nx-docs-example="dropdown-rendering-items" config="{}">exampleID: dropdown-rendering-items</div>
 <h3 id="custom-closed-label-dropdown" tabindex="-1" class="docs-markdown--h3">Custom closed label dropdown</h3>
 <p class="docs-markdown--p">There might be use cases where you want to render a different label when the dropdown is closed. For such a use case we provide the option to add the <code>nxClosedLabel</code> directive on a <code>ng-template</code>.</p>
@@ -54,7 +54,7 @@
 <p class="docs-markdown--p">Please note that <strong>this is an Expert styling option</strong>. This means that the outline appearance is only intended for internal applications and not for applications that are client facing.</p>
 <div nx-docs-example="dropdown-outline" config="{}">exampleID: dropdown-outline</div>
 <h4 id="multi-select-dropdown-1" tabindex="-1" class="docs-markdown--h4">Multi Select Dropdown</h4>
-<p class="docs-markdown--p">The multi select dropdown is a new component which is a replacement for the <code>&lt;dropdown nxIsMultiselect ...&gt;</code>. It offers a filter to quicky find items in long lists, improved accessibility and better performance.</p>
+<p class="docs-markdown--p">The multi select dropdown is a new component which is a replacement for the <code>&lt;dropdown isMultiselect ...&gt;</code>. It offers a filter to quicky find items in long lists, improved accessibility and better performance.</p>
 <div nx-docs-example="multi-select" config="{}">exampleID: multi-select</div>
 </div>
 <h3 id="global-settings" tabindex="-1" class="docs-markdown--h3">Global Settings</h3>

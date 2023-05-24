@@ -1,7 +1,7 @@
 <nx-dynamic-table
-    [nxDisplayedColumns]="displayedColumns"
-    [nxData]="data"
-    (nxRowClick)="handleRowClick($event)"
+    [displayedColumns]="displayedColumns"
+    [data]="data"
+    (rowClick)="handleRowClick($event)"
 ></nx-dynamic-table>
 <ng-template #ngIfModalBody>
     <div class="u-text-center">
@@ -15,8 +15,8 @@
 </ng-template>
 <nx-modal
     #basicModal
-    [nxBody]="ngIfModalBody"
-    [nxShowCloseIcon]="false"
+    [modalBody]="ngIfModalBody"
+    [showCloseIcon]="false"
     *ngIf="modalOpen"
 >
 </nx-modal>

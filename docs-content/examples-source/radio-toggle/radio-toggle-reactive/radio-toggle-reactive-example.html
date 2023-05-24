@@ -1,6 +1,6 @@
 <form novalidate [formGroup]="testForm">
     <nx-radio-toggle formControlName="testToggle">
-        <nx-radio-toggle-button *ngFor="let item of data" [nxValue]="item"
+        <nx-radio-toggle-button *ngFor="let item of data" [value]="item"
             >{{item}}
         </nx-radio-toggle-button>
     </nx-radio-toggle>

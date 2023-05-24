@@ -1,7 +1,7 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-dynamic-table</span>
-    [<span class="hljs-attr">nxDisplayedColumns</span>]=<span class="hljs-string">&quot;displayedColumns&quot;</span>
-    [<span class="hljs-attr">nxData</span>]=<span class="hljs-string">&quot;data&quot;</span>
-    (<span class="hljs-attr">nxRowClick</span>)=<span class="hljs-string">&quot;handleRowClick($event)&quot;</span>
+    [<span class="hljs-attr">displayedColumns</span>]=<span class="hljs-string">&quot;displayedColumns&quot;</span>
+    [<span class="hljs-attr">data</span>]=<span class="hljs-string">&quot;data&quot;</span>
+    (<span class="hljs-attr">rowClick</span>)=<span class="hljs-string">&quot;handleRowClick($event)&quot;</span>
 &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dynamic-table</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> #<span class="hljs-attr">ngIfModalBody</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;u-text-center&quot;</span>&gt;</span>
@@ -15,8 +15,8 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-modal</span>
     #<span class="hljs-attr">basicModal</span>
-    [<span class="hljs-attr">nxBody</span>]=<span class="hljs-string">&quot;ngIfModalBody&quot;</span>
-    [<span class="hljs-attr">nxShowCloseIcon</span>]=<span class="hljs-string">&quot;false&quot;</span>
+    [<span class="hljs-attr">modalBody</span>]=<span class="hljs-string">&quot;ngIfModalBody&quot;</span>
+    [<span class="hljs-attr">showCloseIcon</span>]=<span class="hljs-string">&quot;false&quot;</span>
     *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;modalOpen&quot;</span>
 &gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-modal</span>&gt;</span>

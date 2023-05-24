@@ -7,12 +7,12 @@
 
     <div nxRow>
         <div nxCol="6">
-            <nx-formfield nxLabel="Date of damage">
+            <nx-formfield label="Date of damage">
                 <input
                     nxDatefield
                     nxInput
-                    nxStrict="true"
-                    [nxParseFormat]="parseFormat"
+                    strict="true"
+                    [parseFormat]="parseFormat"
                     [(ngModel)]="strictDate"
                     #strictDatefield="nxDatefield"
                 />
@@ -42,12 +42,12 @@
 
     <div nxRow>
         <div nxCol="6">
-            <nx-formfield nxLabel="Date of damage">
+            <nx-formfield label="Date of damage">
                 <input
                     nxDatefield
                     nxInput
-                    nxStrict="false"
-                    [nxParseFormat]="parseFormat"
+                    strict="false"
+                    [parseFormat]="parseFormat"
                     [(ngModel)]="nonStrictDate"
                     #nonStrictDatefield="nxDatefield"
                 />
@@ -71,7 +71,7 @@
 
     <div nxRow>
         <div nxCol="12">
-            <nx-formfield nxLabel="Parse Pattern">
+            <nx-formfield label="Parse Pattern">
                 <input nxInput [(ngModel)]="parseFormat" />
             </nx-formfield>
         </div>

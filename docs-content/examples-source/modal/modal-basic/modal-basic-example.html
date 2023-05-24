@@ -11,20 +11,20 @@
             (<code>nxHeadline</code>, <code>nxCopytext</code> and
             <code>nx-formfield</code>) and styling (<code>u-text-center</code>).
         </p>
-        <nx-formfield nxLabel="First Name">
+        <nx-formfield label="First Name">
             <input nxInput />
         </nx-formfield>
 
-        <nx-formfield nxLabel="Last Name">
+        <nx-formfield label="Last Name">
             <input nxInput />
         </nx-formfield>
 
-        <nx-formfield nxLabel="Car brand">
+        <nx-formfield label="Car brand">
             <nx-dropdown>
-                <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
-                <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
-                <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
-                <nx-dropdown-item nxValue="Mini"></nx-dropdown-item>
+                <nx-dropdown-item value="BMW"></nx-dropdown-item>
+                <nx-dropdown-item value="Audi"></nx-dropdown-item>
+                <nx-dropdown-item value="Volvo"></nx-dropdown-item>
+                <nx-dropdown-item value="Mini"></nx-dropdown-item>
             </nx-dropdown>
         </nx-formfield>
     </div>
@@ -32,7 +32,7 @@
 
 <nx-modal
     #basicModal
-    [nxBody]="basicModalBody"
+    [modalBody]="basicModalBody"
     *nxOpenModalOnClick="basicModalButton"
 >
 </nx-modal>

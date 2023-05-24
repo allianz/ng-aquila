@@ -22,14 +22,14 @@
         <div nxCol="12" [ngSwitch]="stepper.selectedIndex">
             <form *ngSwitchCase="0" [formGroup]="animalTypeForm.form">
                 <nx-formfield
-                    [nxLabel]="animalTypeForm.label"
-                    nxFloatLabel="always"
+                    [label]="animalTypeForm.label"
+                    floatLabel="always"
                     appearance="outline"
                 >
                     <nx-dropdown formControlName="animalType">
                         <nx-dropdown-item
                             *ngFor="let animalType of animalTypes"
-                            [nxValue]="animalType"
+                            [value]="animalType"
                         ></nx-dropdown-item>
                     </nx-dropdown>
                     <nx-error appearance="text" nxFormfieldError>
@@ -47,8 +47,8 @@
 
             <form *ngSwitchCase="1" [formGroup]="nameForm.form">
                 <nx-formfield
-                    [nxLabel]="nameForm.label"
-                    nxFloatLabel="always"
+                    [label]="nameForm.label"
+                    floatLabel="always"
                     appearance="outline"
                 >
                     <input nxInput formControlName="name" type="text" />
@@ -75,14 +75,14 @@
             <form *ngSwitchCase="2" [formGroup]="breedForm.form">
                 <nx-formfield
                     *ngIf="breedForm.form.get('dogBreed')"
-                    [nxLabel]="breedForm.label"
-                    nxFloatLabel="always"
+                    [label]="breedForm.label"
+                    floatLabel="always"
                     appearance="outline"
                 >
                     <nx-dropdown formControlName="dogBreed">
                         <nx-dropdown-item
                             *ngFor="let breed of dogBreeds"
-                            [nxValue]="breed"
+                            [value]="breed"
                         ></nx-dropdown-item>
                     </nx-dropdown>
                     <nx-error appearance="text" nxFormfieldError>
@@ -92,14 +92,14 @@
 
                 <nx-formfield
                     *ngIf="breedForm.form.get('catBreed')"
-                    [nxLabel]="breedForm.label"
-                    nxFloatLabel="always"
+                    [label]="breedForm.label"
+                    floatLabel="always"
                     appearance="outline"
                 >
                     <nx-dropdown formControlName="catBreed">
                         <nx-dropdown-item
                             *ngFor="let breed of catBreeds"
-                            [nxValue]="breed"
+                            [value]="breed"
                         ></nx-dropdown-item>
                     </nx-dropdown>
                     <nx-error appearance="text" nxFormfieldError>
@@ -129,8 +129,8 @@
                 (submit)="onSubmit()"
             >
                 <nx-formfield
-                    [nxLabel]="ageForm.label"
-                    nxFloatLabel="always"
+                    [label]="ageForm.label"
+                    floatLabel="always"
                     appearance="outline"
                 >
                     <input nxInput formControlName="age" type="number" />
@@ -168,11 +168,11 @@
                 Reset
             </button>
 
-            <nx-radio-toggle [(ngModel)]="direction" nxStyle="small">
-                <nx-radio-toggle-button nxValue="vertical"
+            <nx-radio-toggle [(ngModel)]="direction" variant="small">
+                <nx-radio-toggle-button value="vertical"
                     >Vertical</nx-radio-toggle-button
                 >
-                <nx-radio-toggle-button nxValue="horizontal"
+                <nx-radio-toggle-button value="horizontal"
                     >Horizontal</nx-radio-toggle-button
                 >
             </nx-radio-toggle>

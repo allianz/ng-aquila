@@ -22,14 +22,14 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span> [<span class="hljs-attr">ngSwitch</span>]=<span class="hljs-string">&quot;stepper.selectedIndex&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">form</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;0&quot;</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;animalTypeForm.form&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                    [<span class="hljs-attr">nxLabel</span>]=<span class="hljs-string">&quot;animalTypeForm.label&quot;</span>
-                    <span class="hljs-attr">nxFloatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+                    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;animalTypeForm.label&quot;</span>
+                    <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
                     <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
                 &gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;animalType&quot;</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span>
                             *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let animalType of animalTypes&quot;</span>
-                            [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;animalType&quot;</span>
+                            [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;animalType&quot;</span>
                         &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
@@ -47,8 +47,8 @@
 
             <span class="hljs-tag">&lt;<span class="hljs-name">form</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;1&quot;</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;nameForm.form&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                    [<span class="hljs-attr">nxLabel</span>]=<span class="hljs-string">&quot;nameForm.label&quot;</span>
-                    <span class="hljs-attr">nxFloatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+                    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;nameForm.label&quot;</span>
+                    <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
                     <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
                 &gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> /&gt;</span>
@@ -75,14 +75,14 @@
             <span class="hljs-tag">&lt;<span class="hljs-name">form</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;2&quot;</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;breedForm.form&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
                     *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;breedForm.form.get(&#x27;dogBreed&#x27;)&quot;</span>
-                    [<span class="hljs-attr">nxLabel</span>]=<span class="hljs-string">&quot;breedForm.label&quot;</span>
-                    <span class="hljs-attr">nxFloatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+                    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;breedForm.label&quot;</span>
+                    <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
                     <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
                 &gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;dogBreed&quot;</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span>
                             *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let breed of dogBreeds&quot;</span>
-                            [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;breed&quot;</span>
+                            [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;breed&quot;</span>
                         &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
@@ -92,14 +92,14 @@
 
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
                     *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;breedForm.form.get(&#x27;catBreed&#x27;)&quot;</span>
-                    [<span class="hljs-attr">nxLabel</span>]=<span class="hljs-string">&quot;breedForm.label&quot;</span>
-                    <span class="hljs-attr">nxFloatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+                    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;breedForm.label&quot;</span>
+                    <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
                     <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
                 &gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;catBreed&quot;</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span>
                             *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let breed of catBreeds&quot;</span>
-                            [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;breed&quot;</span>
+                            [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;breed&quot;</span>
                         &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
@@ -129,8 +129,8 @@
                 (<span class="hljs-attr">submit</span>)=<span class="hljs-string">&quot;onSubmit()&quot;</span>
             &gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                    [<span class="hljs-attr">nxLabel</span>]=<span class="hljs-string">&quot;ageForm.label&quot;</span>
-                    <span class="hljs-attr">nxFloatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+                    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;ageForm.label&quot;</span>
+                    <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
                     <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
                 &gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;age&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> /&gt;</span>
@@ -168,11 +168,11 @@
                 Reset
             <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;direction&quot;</span> <span class="hljs-attr">nxStyle</span>=<span class="hljs-string">&quot;small&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> <span class="hljs-attr">nxValue</span>=<span class="hljs-string">&quot;vertical&quot;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;direction&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;small&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;vertical&quot;</span>
                     &gt;</span>Vertical&lt;/nx-radio-toggle-button
                 &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> <span class="hljs-attr">nxValue</span>=<span class="hljs-string">&quot;horizontal&quot;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;horizontal&quot;</span>
                     &gt;</span>Horizontal&lt;/nx-radio-toggle-button
                 &gt;
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-toggle</span>&gt;</span>

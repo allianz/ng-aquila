@@ -3,17 +3,17 @@
         <div nxCol="6">
             <nx-formfield
                 appearance="outline"
-                nxLabel="Prefilled field"
-                nxFloatLabel="always"
+                label="Prefilled field"
+                floatLabel="always"
             >
                 <input nxInput value="prefilled" />
             </nx-formfield>
         </div>
         <div nxCol="6">
             <nx-formfield
-                nxLabel="Readonly field"
+                label="Readonly field"
                 appearance="outline"
-                nxFloatLabel="always"
+                floatLabel="always"
             >
                 <span nxFormfieldPrefix>$</span>
                 <input nxInput readonly value="500" />
@@ -25,23 +25,23 @@
     <div nxRow>
         <div nxCol="6">
             <nx-formfield
-                nxLabel="Dropdown Label"
+                label="Dropdown Label"
                 appearance="outline"
-                nxFloatLabel="always"
+                floatLabel="always"
             >
                 <nx-dropdown>
-                    <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
-                    <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
-                    <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
-                    <nx-dropdown-item nxValue="Mini"></nx-dropdown-item>
+                    <nx-dropdown-item value="BMW"></nx-dropdown-item>
+                    <nx-dropdown-item value="Audi"></nx-dropdown-item>
+                    <nx-dropdown-item value="Volvo"></nx-dropdown-item>
+                    <nx-dropdown-item value="Mini"></nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
         </div>
         <div nxCol="6">
             <nx-formfield
-                nxLabel="Label"
+                label="Label"
                 appearance="outline"
-                nxFloatLabel="always"
+                floatLabel="always"
             >
                 <input nxInput disabled value="Disabled input" />
             </nx-formfield>
@@ -51,14 +51,14 @@
     <div nxRow>
         <div nxCol="6">
             <nx-formfield
-                nxLabel="Birthday"
+                label="Birthday"
                 appearance="outline"
-                nxFloatLabel="always"
+                floatLabel="always"
             >
                 <input
                     nxDatefield
                     nxInput
-                    [nxDatepicker]="myDatepicker"
+                    [datepicker]="myDatepicker"
                     [(ngModel)]="currentDate"
                 />
                 <nx-datepicker-toggle
@@ -71,7 +71,7 @@
         </div>
 
         <div nxCol="6">
-            <nx-formfield appearance="outline" nxFloatLabel="always">
+            <nx-formfield appearance="outline" floatLabel="always">
                 <nx-formfield-label
                     >Textarea Label
                     <span class="nx-font-weight-regular"
@@ -86,9 +86,9 @@
     <div nxRow>
         <div nxCol="6">
             <nx-formfield
-                nxLabel="Character count"
+                label="Character count"
                 appearance="outline"
-                nxFloatLabel="always"
+                floatLabel="always"
             >
                 <input nxInput #inputToCount maxlength="15" />
                 <span nxFormfieldHint>

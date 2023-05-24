@@ -24,7 +24,7 @@
 <h4 id="negative-styling" tabindex="-1" class="docs-markdown--h4">Negative styling</h4>
 <div nx-docs-example="number-stepper-negative" config="{}">exampleID: number-stepper-negative</div>
 <h4 id="disabled" tabindex="-1" class="docs-markdown--h4">Disabled</h4>
-<p class="docs-markdown--p">You can fully disable user input on the number stepper component by setting <code>nxDisabled</code> property to <code>true</code>.</p>
+<p class="docs-markdown--p">You can fully disable user input on the number stepper component by setting <code>disabled</code> property to <code>true</code>.</p>
 <div nx-docs-example="number-stepper-disabled-explicit" config="{}">exampleID: number-stepper-disabled-explicit</div>
 <p class="docs-markdown--p">The number stepper will also be disabled as part of a disabled form.</p>
 <div nx-docs-example="number-stepper-disabled-implicit" config="{}">exampleID: number-stepper-disabled-implicit</div>
@@ -37,17 +37,17 @@
 <p class="docs-markdown--p">As usual you can use this error key to distinguish from other errors. Try it below: Enter 1 or type in any letter to see the errors.</p>
 <div nx-docs-example="number-stepper-validation" config="{}">exampleID: number-stepper-validation</div>
 <h3 id="auto-resizing" tabindex="-1" class="docs-markdown--h3">Auto resizing</h3>
-<p class="docs-markdown--p">When working with larger numbers or decimals the input width might be too small to properly show the current number. By enabling <code>nxResize=&quot;true&quot;</code> the input automatically grows and shrinks to the width of the input value including border and padding.</p>
+<p class="docs-markdown--p">When working with larger numbers or decimals the input width might be too small to properly show the current number. By enabling <code>resize=&quot;true&quot;</code> the input automatically grows and shrinks to the width of the input value including border and padding.</p>
 <div nx-docs-example="number-stepper-auto-resizing" config="{}">exampleID: number-stepper-auto-resizing</div>
 <h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">If the component owns the focus, you can increment by pressing the ARROW-UP button and decrement by pressing the ARROW-DOWN button.</p>
 <p class="docs-markdown--p">The increment and decrement buttons need to have an <code>aria-label</code> for a11y support. By default they have english aria-labels, to translate them you can subclass the <code>NxNumberStepperIntl</code> and provide it in your module as shown in the <a href="./documentation/number-stepper/overview#localization">Localization example</a>. If you want to set these aria-labels separately for a certain number stepper you can use the inputs <code>incrementAriaLabel</code> and <code>decrementAriaLabel</code>. These inputs take precedence over <code>NxNumberStepperIntl</code>.</p>
 <p class="docs-markdown--p">In addition, the input of the number stepper should also have an <code>aria-label</code> attribute, which can be set only via the input <code>inputAriaLabel</code>.</p>
-<p class="docs-markdown--p"><strong>Please make sure to use either <code>nxLabel</code> or <code>inputAriaLabel</code></strong> to set the label on the number-stepper. In case you use a <a href="./documentation/number-stepper/overview#custom-label">custom label</a>, you should also use an additional <code>inputAriaLabel</code>.</p>
+<p class="docs-markdown--p"><strong>Please make sure to use either <code>[label]</code> or <code>inputAriaLabel</code></strong> to set the label on the number-stepper. In case you use a <a href="./documentation/number-stepper/overview#custom-label">custom label</a>, you should also use an additional <code>inputAriaLabel</code>.</p>
 <p class="docs-markdown--p">The example below shows the usage of the above mentioned <code>aria-label</code> inputs.</p>
 <div nx-docs-example="number-stepper-a11y" config="{}">exampleID: number-stepper-a11y</div>
 <h4 id="localization" tabindex="-1" class="docs-markdown--h4">Localization</h4>
 <div nx-docs-example="number-stepper-localize" config="{}">exampleID: number-stepper-localize</div>
 <h3 id="readonly-input-field" tabindex="-1" class="docs-markdown--h3">Readonly input field</h3>
-<p class="docs-markdown--p">You can use the <code>[nxReadonlyInput]</code> attribute to prevent manual input of values in an input field.</p>
+<p class="docs-markdown--p">You can use the <code>[readonly]</code> attribute to prevent manual input of values in an input field.</p>
  <div nx-docs-example="number-stepper-readonly-input" config="{}">exampleID: number-stepper-readonly-input</div>
