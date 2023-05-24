@@ -14,14 +14,43 @@ We trigger minor or bug fix releases if they provide a meaningful delivery (fix 
 
 | Date           | Angular version | ng-aquila version | LTS end      |
 | -------------- | --------------- | ----------------- | ------------ |
-| September 2021 | 12              | 12                | November 2022|
 | December 2021  | 13              | 13                | May 2023     |
-| November 2022  | 14              | 14                | December 2023|
-| December 2022  | 15              | 15                | January 2024 |
+| November 2022  | 14              | 14                | May 2024|
+| December 2022  | 15              | 15                | June 2024 |
+| May 2023       | 16              | 16                | November 2024    |
 
-Angular NDBX versions 11 and older are no longer supported.
+Aquila versions 12 and older are no longer supported.
 
 During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
+
+## Updating to version 16
+
+With v16, we are upgrading to [Angular 16](https://blog.angular.io/angular-v16-is-here-4d7a28ec680d). This Angular update has been named the biggest release since the initial rollout of Angular, making large leaps in reactivity, server-side rendering, and tooling. In order to make sure you leverage the new Angular features in your application, we encourage you to check [the official documentation](https://angular.io/guide/update-to-version-16).
+
+Updating Aquila to version 16 should be simple, though. In most cases the following command should do the Angular update for you:
+
+`ng update @angular/cli @angular/core`
+
+Then it should be easy to update Aquila with the following command:
+
+`ng update @aposin/ng-aquila --force`
+
+### Breaking Changes
+
+### Removal of `nx` prefixes for Inputs and Outputs
+We cleaned up some inconsistencies in our input and output namings and removed `nx` prefixes, e.g. `nxDisabled` on the dropdown is now `disabled`. These changes will be migrated automatically for you and applied in your application when you run `ng update`.
+In the `Breaking Changes` section of [the Changelog](./guides/CHANGELOG) you can find commits with affected components. If after the migrations you get errors please check the API pages of the respective components. The angular compiler should also guide you pretty well and often suggest the correct names.
+
+### Formfield visual change
+The formfield formerly reserved space at the bottom for a possible hint. This space also served as the spacing between formfields and the hint would render in this reserved space. This leads to situations where you don't have sufficient space between the hint and the next row.
+From now on if a hint is present there will be additional space after the hint.
+
+If this somehow affects your application in a negative way you can temporarily use a compatibility CSS file which provides the previous styles. For that import the file `@aposin/ng-aquila/css/compatibility/formfield-padding.css` in the angular.json
+
+### `nxMask` validation prevented optional controls
+The `nxMask` internal validator always validated empty strings, resulting in a `nxMaskLengthError`. This makes it impossible to have a control as optional. We fixed this bug which is technically a breaking change. If you relied on getting the `nxMaskLengthError` for empty strings as a replacement for a required validator please add the `required` validator now.
+
+
 
 ## Updating to version 15
 

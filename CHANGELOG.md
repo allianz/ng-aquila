@@ -2,6 +2,47 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [16.0.0](https://github.com/allianz/ng-aquila/compare/v15.3.0...v16.0.0) (2023-05-23)
+
+Aquila v16.0.0 is based on Angular 16. For updating please see our update guide: https://allianz.github.io/ng-aquila/guides/releases
+
+### Removal of `nx` prefixes for Inputs and Outputs
+We cleaned up some inconsistencies in our input and output namings and removed `nx` prefixes, e.g. `nxDisabled` on the dropdown is now `disabled`. These changes will be migrated automatically for you and applied in your application when you run `ng update`.
+In the `Breaking Changes` section of [the Changelog](./guides/CHANGELOG) you can find commits with affected components. If after the migrations you get errors please check the API pages of the respective components. The angular compiler should also guide you pretty well and often suggest the correct names.
+
+### Formfield visual change
+The formfield formerly reserved space at the bottom for a possible hint. This space also served as the spacing between formfields and the hint would render in this reserved space. This leads to situations where you don't have sufficient space between the hint and the next row.
+From now on if a hint is present there will be additional space after the hint.
+
+If this somehow affects your application in a negative way you can temporarily use a compatibility CSS file which provides the previous styles. For that import the file `@aposin/ng-aquila/css/compatibility/formfield-padding.css` in the angular.json
+
+### `nxMask` validation prevented optional controls
+The `nxMask` internal validator always validated empty strings, resulting in a `nxMaskLengthError`. This makes it impossible to have a control as optional. We fixed this bug which is technically a breaking change. If you relied on getting the `nxMaskLengthError` for empty strings as a replacement for a required validator please add the `required` validator now.
+
+
+### BREAKING CHANGES
+
+* **accordion:** remove nx prefixes for inputs ([449178e](https://github.com/allianz/ng-aquila/commit/449178e70312e7e0502cb75aa93099c50a53feea))
+* **autocomplete:** remove nx prefixes from inputs ([c00cda0](https://github.com/allianz/ng-aquila/commit/c00cda0c31826a2c91a8404a4025eab088b63245))
+* **code-input:** remove nx prefix from inputs ([b539cda](https://github.com/allianz/ng-aquila/commit/b539cdac9d98783c32e1dd5b05c98b7226104a9c))
+* **col:** remove nx prefix from input ([a79ea4d](https://github.com/allianz/ng-aquila/commit/a79ea4d41ea5220a2ed8a5d17799881c7ec494cf))
+* **col:** remove nx prefix from input ([50e1baf](https://github.com/allianz/ng-aquila/commit/50e1baf2f91234b84b3e61c3630c4db437faf1ae))
+* **dropdown:** remove nx prefixes from inputs and outputs ([a416425](https://github.com/allianz/ng-aquila/commit/a416425173108e45d039fbd316d692f1dd3718b4))
+* **dynamic-table:** remove nx prefix from input and output ([d249203](https://github.com/allianz/ng-aquila/commit/d249203b17b60bf86668cd42f32415b12475d3f1))
+* **formfield:** change tokens for bottom padding ([79dc92f](https://github.com/allianz/ng-aquila/commit/79dc92fe134fea4c457413a306828c9d2aa73d3c))
+* **formfield:** remove nx prefixes from inputs ([2192dcf](https://github.com/allianz/ng-aquila/commit/2192dcffa8b4f8061a40da2535f246697ad270b9))
+* **formfield:** rename input name nxStyle to negative ([0b2667f](https://github.com/allianz/ng-aquila/commit/0b2667f424242e754c0523a036de8bfbb2e06894))
+* **spinner, switcher, taglist:** remove nx prefixes ([f900cb0](https://github.com/allianz/ng-aquila/commit/f900cb0a1841a8eb12e11834546e8758815b6ae2))
+* **number-stepper, page-search, pagination, radio-button:** remove nx prefixes ([c6088bc](https://github.com/allianz/ng-aquila/commit/c6088bc999d74033d1a0c616a392cfd1b8ab2862))
+* **menu-button, message, modal, natural-language-form, word:** remove nx prefixes ([65f6b63](https://github.com/allianz/ng-aquila/commit/65f6b6383a3fb2c23d2016b9ff34cdaf6558ed12))
+* **row:** remove nx prefix from input ([4be7205](https://github.com/allianz/ng-aquila/commit/4be7205fc01f395b4ce3c3b5ed0a86899330522c))
+* **row:** remove nx prefix from inputs ([7cd01b7](https://github.com/allianz/ng-aquila/commit/7cd01b72f7b8e3dc4ac009425414fd4d074657a0))
+* **video:** remove nx prefix input ([a5dedc1](https://github.com/allianz/ng-aquila/commit/a5dedc11cb4e9c0e334ccd7562a15bb0cfe8ee18))
+* **mask:** not mark empty value as invalid ([b35473d](https://github.com/allianz/ng-aquila/commit/b35473dc9648e961b403e188b062cd9d41388c57))
+
+
+
+
 # [15.3.0](https://github.com/allianz/ng-aquila/compare/v15.2.1...v15.3.0) (2023-05-22)
 
 
