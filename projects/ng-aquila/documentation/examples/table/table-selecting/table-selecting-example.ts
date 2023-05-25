@@ -1,5 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 interface Contract {
     product: string;
@@ -18,11 +20,28 @@ interface Contract {
     templateUrl: './table-selecting-example.html',
     styleUrls: ['./table-selecting-example.css'],
 })
-export class TableSelectingExampleComponent {
+export class TableSelectingExampleComponent implements OnDestroy {
+    private readonly _destroyed = new Subject<void>();
+
     showSelected = false;
 
     activateSelected = true;
     activeRow?: Contract;
+
+    page = 1;
+    elementsPerPage = 5;
+    numSelectedPage = 0;
+    currentlyShownPageElements!: Contract[];
+    currentlyAvailableElements!: Contract[];
+
+    constructor() {
+        this.currentlyAvailableElements = this.tableElements;
+        this.selection.changed
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(r => this.updateNumPageSelected());
+        // init first page on page load
+        this.updatePage();
+    }
 
     tableElements: Contract[] = [
         {
@@ -42,7 +61,7 @@ export class TableSelectingExampleComponent {
             statusText: 'accepted',
         },
         {
-            product: 'Car',
+            product: 'Auto',
             contractNumber: 353455,
             website: 'www.example.com',
             endingAt: new Date('6/2/2020'),
@@ -57,6 +76,94 @@ export class TableSelectingExampleComponent {
             status: 'critical',
             statusText: 'rejected',
         },
+        {
+            product: 'Travel',
+            contractNumber: 76344,
+            website: 'www.allianz.com',
+            endingAt: new Date('8/3/2026'),
+            status: 'negative',
+            statusText: 'open',
+        },
+        {
+            product: 'Renters',
+            contractNumber: 32344,
+            website: 'www.example.org',
+            endingAt: new Date('1/2/2027'),
+            status: 'positive',
+            statusText: 'accepted',
+        },
+        {
+            product: 'Pet',
+            contractNumber: 87444,
+            website: 'www.allianz.com',
+            endingAt: new Date('1/2/2027'),
+            status: 'critical',
+            statusText: 'rejected',
+        },
+        {
+            product: 'Business',
+            contractNumber: 91102,
+            website: 'www.example.org',
+            endingAt: new Date('1/2/2027'),
+            status: 'negative',
+            statusText: 'open',
+        },
+        {
+            product: 'Motorcycle',
+            contractNumber: 58172,
+            website: 'www.allianz.com',
+            endingAt: new Date('1/2/2027'),
+            status: 'critical',
+            statusText: 'rejected',
+        },
+        {
+            product: 'Dental',
+            contractNumber: 11298,
+            website: 'www.example.org',
+            endingAt: new Date('2/3/2026'),
+            status: 'negative',
+            statusText: 'open',
+        },
+        {
+            product: 'Vision',
+            contractNumber: 76122,
+            website: 'www.allianz.com',
+            endingAt: new Date('11/12/2029'),
+            status: 'critical',
+            statusText: 'rejected',
+        },
+        {
+            product: 'Disability',
+            contractNumber: 12411,
+            website: 'www.example.org',
+            endingAt: new Date('1/12/2028'),
+            status: 'negative',
+            statusText: 'open',
+        },
+        {
+            product: 'Critical Illness',
+            contractNumber: 36711,
+            website: 'www.allianz.com',
+            endingAt: new Date('1/3/2028'),
+            status: 'negative',
+            statusText: 'open',
+        },
+        {
+            product: 'Earthquake',
+            contractNumber: 47591,
+            website: 'www.example.org',
+            endingAt: new Date('12/2/2025'),
+            status: 'positive',
+            statusText: 'accepted',
+        },
+        {
+            product: 'Flood',
+            contractNumber: 41874,
+            website: 'www.example.org',
+            endingAt: new Date('12/2/2025'),
+            status: 'positive',
+            statusText: 'accepted',
+        },
     ];
 
     selection = new SelectionModel<Contract>(true, []);
@@ -68,15 +175,70 @@ export class TableSelectingExampleComponent {
         return numSelected === numRows;
     }
 
-    /** Selects all rows if they are not all selected; otherwise clear selection. */
-    toggleAll() {
-        this.isAllSelected()
-            ? this.selection.clear()
-            : this.tableElements.forEach(row => this.selection.select(row));
+    /** Selects all rows if they are not all selected; otherwise clear selection of the page. */
+    toggleAllPage() {
+        const isAllPageSelected = this.isAllPageSelected();
+        this.currentlyShownPageElements.forEach(row => {
+            if (isAllPageSelected) {
+                this.selection.deselect(row);
+            } else {
+                this.selection.select(row);
+            }
+        });
+    }
+
+    isAllPageSelected() {
+        return this.numSelectedPage === this.elementsPerPage;
+    }
+
+    somePageSelected() {
+        return (
+            this.numSelectedPage > 0 &&
+            this.numSelectedPage < this.elementsPerPage
+        );
+    }
+
+    updateNumPageSelected() {
+        this.numSelectedPage = this.currentlyShownPageElements.filter(row =>
+            this.selection.isSelected(row),
+        )?.length;
+    }
+
+    selectAll() {
+        this.tableElements.forEach(row => this.selection.select(row));
+    }
+
+    prevPage() {
+        this.page--;
+        this.updatePage();
+    }
+
+    nextPage() {
+        this.page++;
+        this.updatePage();
+    }
+    goToPage(n: number) {
+        this.page = n;
+        this.updatePage();
+    }
+
+    updatePage() {
+        const indexMin = (this.page - 1) * this.elementsPerPage;
+        const indexMax = indexMin + this.elementsPerPage;
+        this.currentlyShownPageElements =
+            this.currentlyAvailableElements.filter(
+                (x, index) => index >= indexMin && index < indexMax,
+            );
+        this.updateNumPageSelected();
     }
 
     /** Marks a row as active without changing this.selection */
     activateRow(row: Contract) {
         this.activeRow = row;
+    }
+
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 }
