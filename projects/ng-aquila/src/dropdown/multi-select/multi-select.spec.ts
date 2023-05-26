@@ -1,4 +1,4 @@
-import { DOWN_ARROW, ESCAPE, TAB, UP_ARROW } from '@angular/cdk/keycodes';
+import { DOWN_ARROW, ESCAPE, LEFT_ARROW, RIGHT_ARROW, TAB, UP_ARROW } from '@angular/cdk/keycodes';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { ComponentHarness, HarnessLoader, LocatorFactory, parallel, TestElement } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
@@ -95,14 +95,14 @@ class MultiSelectHarness extends ComponentHarness {
         await this.forceStabilize();
     }
 
-    async pressKey(key: string, keyCode?: number) {
+    async pressKey(key: string, keyCode?: number, altKey?: boolean) {
         const isOpen = await this.isOpen();
         if (isOpen) {
             const panel = await this.getPanel();
-            panel?.dispatchEvent('keydown', { key, keyCode });
+            panel?.dispatchEvent('keydown', { key, keyCode, altKey });
         } else {
             const value = await this.getValue();
-            value.dispatchEvent('keydown', { key, keyCode });
+            value.dispatchEvent('keydown', { key, keyCode, altKey });
         }
     }
 }
@@ -393,6 +393,46 @@ describe('NxMultiSelectComponent', () => {
             describe('and opening using SPACE', () => {
                 beforeEach(async () => {
                     await multiSelectHarness.pressKey('Enter');
+                });
+
+                it('is open', async () => {
+                    expect(await multiSelectHarness.isOpen()).toBeTrue();
+                });
+            });
+
+            describe('and opening using ALT and ARROW DOWN', () => {
+                beforeEach(async () => {
+                    await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW, true);
+                });
+
+                it('is open', async () => {
+                    expect(await multiSelectHarness.isOpen()).toBeTrue();
+                });
+            });
+
+            describe('and opening using ALT and ARROW UP', () => {
+                beforeEach(async () => {
+                    await multiSelectHarness.pressKey('ArrowUp', UP_ARROW, true);
+                });
+
+                it('is open', async () => {
+                    expect(await multiSelectHarness.isOpen()).toBeTrue();
+                });
+            });
+
+            describe('and opening using ALT and ARROW LEFT', () => {
+                beforeEach(async () => {
+                    await multiSelectHarness.pressKey('ArrowLeft', LEFT_ARROW, true);
+                });
+
+                it('is open', async () => {
+                    expect(await multiSelectHarness.isOpen()).toBeTrue();
+                });
+            });
+
+            describe('and opening using ALT and ARROW RIGHT', () => {
+                beforeEach(async () => {
+                    await multiSelectHarness.pressKey('ArrowRight', RIGHT_ARROW, true);
                 });
 
                 it('is open', async () => {

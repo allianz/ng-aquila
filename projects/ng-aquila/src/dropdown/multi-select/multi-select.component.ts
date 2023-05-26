@@ -442,30 +442,40 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     _onKeydown($event: KeyboardEvent) {
-        if (!this._isOpen || this.disabled) {
+        if (this.disabled) {
             return;
         }
 
+        const altKey = $event.altKey;
         const key = $event.key;
 
-        if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'Home' || key === 'End') {
-            this._keyManager.onKeydown($event);
-            this._scrollActiveOptionIntoView();
-            $event.preventDefault();
-        }
+        const isArrowKey = key === 'ArrowDown' || key === 'ArrowUp' || key === 'ArrowLeft' || key === 'ArrowRight';
 
-        if ((window.navigator.platform.match('Mac') ? $event.metaKey : $event.ctrlKey) && key === 'a') {
-            this._onSelectAll();
-            $event.preventDefault();
-        }
+        if (!this._isOpen) {
+            if (altKey && isArrowKey) {
+                this._open($event, 'keyboard');
+                $event.preventDefault();
+            }
+        } else {
+            if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'Home' || key === 'End') {
+                this._keyManager.onKeydown($event);
+                this._scrollActiveOptionIntoView();
+                $event.preventDefault();
+            }
 
-        if (key === 'Tab') {
-            this._keyManager.onKeydown($event);
-        }
+            if ((window.navigator.platform.match('Mac') ? $event.metaKey : $event.ctrlKey) && key === 'a') {
+                this._onSelectAll();
+                $event.preventDefault();
+            }
 
-        if (key === 'Enter' || (this._filterValue.trim() === '' && key === ' ')) {
-            this._keyManager.activeItem?.selectViaInteraction();
-            $event.preventDefault();
+            if (key === 'Tab') {
+                this._keyManager.onKeydown($event);
+            }
+
+            if (key === 'Enter' || (this._filterValue.trim() === '' && key === ' ')) {
+                this._keyManager.activeItem?.selectViaInteraction();
+                $event.preventDefault();
+            }
         }
     }
 
