@@ -20,10 +20,10 @@ export class CssVarSidebarComponent {
     constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     getCustomProperties() {
-        return Array.from(document.styleSheets).reduce((rules, styleSheet: CSSStyleSheet) => {
+        return Array.from(document.styleSheets).reduce((rules, styleSheet: CSSStyleSheet, currIdx) => {
             if (styleSheet.cssRules) {
                 Array.from(styleSheet.cssRules).reduce((innerRules: string[], cssRule: any) => {
-                    if (cssRule.selectorText === ':root') {
+                    if (cssRule.selectorText?.includes(':root')) {
                         let css = cssRule.cssText.split('{');
                         css = css[1].replace('}', '').split(';');
                         for (let i = 0; i < css.length; i++) {

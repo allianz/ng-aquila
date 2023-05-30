@@ -31,6 +31,14 @@
         border-color: v(button-#{$type}-active-border-color);
     }
 
+    // resets the text-decoration of tertiary button
+    &:active:not([disabled]),
+    &:hover:not([disabled]) {
+        .nx-button__content-wrapper.nx-button__content-wrapper {
+            text-decoration: none;
+        }
+    }
+
     &[disabled] {
         background-color: v(button-#{$type}-disabled-background-color);
         color: v(button-#{$type}-disabled-text-color);
@@ -47,7 +55,7 @@
     border-style: solid;
     border-color: transparent;
     cursor: pointer;
-    padding: button-padding(nx-spacer(xs)) button-padding(nx-spacer(2m));
+    padding: v(button-medium-padding);
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
     user-select: none;
     width: auto;
@@ -172,6 +180,12 @@
     @include button-theme(tertiary);
 }
 
+:host(.nx-button--tertiary:not(.nx-icon-button)) {
+    .nx-button__content-wrapper {
+        text-decoration: v(button-tertiary-text-decoration);
+    }
+}
+
 :host(.nx-button--tertiary.nx-button--danger) {
     @include button-theme(tertiary-danger);
 }
@@ -228,7 +242,7 @@
     @include type-style('button-small');
     min-height: v(button-small-height);
     display: inline-block;
-    padding: button-padding(nx-spacer(2xs)) button-padding(nx-spacer(s));
+    padding: v(button-small-padding);
     text-transform: none;
     width: auto;
 }
@@ -259,7 +273,7 @@
 
 :host(.nx-icon-button),
 :host(.nx-sidebar__toggle-button) {
-    padding: 0;
+    padding: v(icon-button-medium-padding);
     flex: 0 0 auto;
 
     &.nx-button--small {

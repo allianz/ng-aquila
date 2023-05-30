@@ -7,6 +7,7 @@ import { ComponentDescriptor } from '../../../core/manifest';
 import { NXV_FEEDBACK_LINKS } from '../../../core/tokens';
 import { ComponentService } from '../../../service/component.service';
 import { ManifestService } from '../../../service/manifest.service';
+import { ThemeSwitcherService } from '@aposin/ngx-docs-ui';
 
 export interface DocItem {
     id: string;
@@ -48,6 +49,7 @@ export class NxvComponentPage implements OnDestroy {
         private readonly router: Router,
         private readonly manifestService: ManifestService,
         readonly componentService: ComponentService,
+        readonly themeSwitcherService: ThemeSwitcherService,
         @Optional() @Inject(NXV_FEEDBACK_LINKS) readonly feedbackLinks: any | null,
     ) {
         // Listen to changes on the current route for the doc id (e.g. button/checkbox) and the
