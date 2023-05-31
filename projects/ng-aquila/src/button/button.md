@@ -42,11 +42,9 @@ We work with five different types of buttons. The primary's heavy appearance is 
 
 <!-- example(button-negative) -->
 
-### Icons
+### With icons
 
-A button with an icon is particularily useful whenever the interface space is limited. Users may even recognize them more quickly than a text if the icon represents the connected action adequately.
-
-**Please add a margin** between icon and text. You can use the [utility classes](./documentation/margins/overview) `nx-margin-right-2xs` and `nx-margin-left-2xs`.
+Use the `nxIconPositionStart` or `nxIconPositionEnd` attributes to position the icons. Please also don't set any size on the icon, the button component will handle the correct size for you.
 
 <!-- example(button-with-icon) -->
 
@@ -58,7 +56,7 @@ Use the `nxIconButton` component if your button contains only an icon and no tex
 
 #### Indicators
 
-Inside the icon button there can be used a [`<nx-indicator>`](./documentation/indicator/overview):
+Inside the icon button you can add the [`<nx-indicator>`](./documentation/indicator/overview) component:
 
 <!-- example(button-icon-indicator) -->
 

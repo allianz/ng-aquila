@@ -7,7 +7,7 @@
 >
     <span class="desktop-label">{{ formatVersion(_selected) }}</span>
     <span class="mobile-label">{{ mobileFormatVersion(_selected) }}</span>
-    <nx-icon name="chevron-down" class="nx-margin-left-2xs" [class.icon-rotated]="_versionSelectIsOpened"></nx-icon>
+    <nx-icon name="chevron-down" nxIconPositionEnd [class.icon-rotated]="_versionSelectIsOpened"></nx-icon>
 </button>
 
 <nx-context-menu #nxvVersionSelect="nxContextMenu">

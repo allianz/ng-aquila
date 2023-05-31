@@ -6,9 +6,9 @@
     (contextMenuClosed)="_themeSwitchIsOpened = false"
     aria-label="switch color theme"
 >
-    <nx-icon name="fill-drip"></nx-icon>
-    <span class="label-text nx-margin-left-xs">{{ selected.displayName }}</span>
-    <nx-icon name="chevron-down" class="nx-margin-left-2xs" [class.icon-rotated]="_themeSwitchIsOpened"></nx-icon>
+    <nx-icon name="fill-drip" nxIconPositionStart></nx-icon>
+    <span class="label-text">{{ selected.displayName }}</span>
+    <nx-icon name="chevron-down" nxIconPositionEnd [class.icon-rotated]="_themeSwitchIsOpened"></nx-icon>
 </button>
 
 <nx-context-menu #nxvThemeSwitch="nxContextMenu">

@@ -39,6 +39,14 @@
         }
     }
 
+    // resets the text-decoration of tertiary button
+    &:active:not([disabled]),
+    &:hover:not([disabled]) {
+        .nx-button__content-wrapper.nx-button__content-wrapper {
+            text-decoration: none;
+        }
+    }
+
     &[disabled] {
         background-color: v(button-#{$type}-disabled-background-color);
         color: v(button-#{$type}-disabled-text-color);
@@ -62,6 +70,13 @@
     hyphens: none;
     vertical-align: middle;
 
+    // TODO use tokens in proper implementation
+    &:has([nxiconpositionstart]) {
+        padding-left: v(button-medium-icon-start-padding);
+    }
+    &:has([nxiconpositionend]) {
+        padding-right: v(button-medium-icon-end-padding);
+    }
     // Fix for IE to make overflowing indicators visible
     overflow: visible;
 
@@ -181,7 +196,7 @@
 }
 
 :host(.nx-button--tertiary:not(.nx-icon-button)) {
-    .nx-button__content-wrapper {
+    .nx-button__content {
         text-decoration: v(button-tertiary-text-decoration);
     }
 }
@@ -245,6 +260,13 @@
     padding: v(button-small-padding);
     text-transform: none;
     width: auto;
+
+    &:has([nxiconpositionstart]) {
+        padding-left: v(button-small-icon-start-padding);
+    }
+    &:has([nxiconpositionend]) {
+        padding-right: v(button-small-icon-end-padding);
+    }
 }
 
 // Some additional colorful variants
@@ -263,12 +285,17 @@
     }
 }
 
-:host .nx-button__content-wrapper {
+:host .nx-button__content-wrapper,
+:host .nx-button__content {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     vertical-align: bottom;
     position: relative;
+}
+
+:host .nx-button__content-wrapper {
+    gap: v(button-gap);
 }
 
 :host(.nx-icon-button),

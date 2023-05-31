@@ -38,11 +38,16 @@
         cursor: not-allowed;
     }
 
-    .nx-plain-button__content-wrapper {
+    .nx-plain-button__content-wrapper,
+    .nx-button__content {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         vertical-align: bottom;
+    }
+
+    .nx-plain-button__content-wrapper {
+        gap: v(plain-button-gap);
     }
 }
 
