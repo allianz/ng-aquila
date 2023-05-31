@@ -29,6 +29,10 @@
             max-height: 200px;
         }
     }
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .value {
