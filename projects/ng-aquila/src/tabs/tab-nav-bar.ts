@@ -17,6 +17,7 @@ import {
     SkipSelf,
     ViewChild,
 } from '@angular/core';
+import { NxViewportService } from '@aposin/ng-aquila/utils';
 
 import { NxScrollableTabBar } from './scrollable-tab-bar';
 import { NxTabsAppearance, TAB_NAV_BAR_DEFAULT_OPTIONS, TabNavBarDefaultOptions } from './tabs.models';
@@ -86,8 +87,9 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
         @Optional() _dir: Directionality | null,
         @Optional() @Inject(TAB_NAV_BAR_DEFAULT_OPTIONS) private readonly _defaultOptions: TabNavBarDefaultOptions | null,
         _element: ElementRef,
+        viewportService: NxViewportService,
     ) {
-        super(_cdr, _dir, _element);
+        super(_cdr, _dir, _element, viewportService);
     }
 }
 

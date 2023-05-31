@@ -120,6 +120,16 @@ describe('Scrollable TabHeader', () => {
             fixture.detectChanges();
         }));
 
+        it('should update scroll button when viewport size change', fakeAsync(() => {
+            const spy = spyOn(testInstance.tabGroupInstance.tabHeader, '_updateScrollButtons').and.callThrough();
+            viewport.set('desktop');
+            window.dispatchEvent(new Event('resize'));
+            tick(THROTTLE_TIME);
+            fixture.detectChanges();
+
+            expect(spy).toHaveBeenCalledTimes(1);
+        }));
+
         it('marks scrollButtons as mobile', fakeAsync(() => {
             expect(getStartScrollElement()).toHaveClass('is-mobile');
             expect(getStartScrollElement()).not.toHaveClass('is-desktop-button');

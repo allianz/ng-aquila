@@ -15,6 +15,7 @@ import {
     QueryList,
     ViewChild,
 } from '@angular/core';
+import { NxViewportService } from '@aposin/ng-aquila/utils';
 
 import { NxScrollableTabBar } from './scrollable-tab-bar';
 import { NxTabGroupBase } from './tab-group-base';
@@ -72,8 +73,14 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
 
     @ContentChildren(NxTabLabelWrapperDirective) labels!: QueryList<NxTabLabelWrapperDirective>;
 
-    constructor(_cdr: ChangeDetectorRef, @Optional() _dir: Directionality | null, @Optional() readonly _tabGroup: NxTabGroupBase | null, _element: ElementRef) {
-        super(_cdr, _dir, _element);
+    constructor(
+        _cdr: ChangeDetectorRef,
+        @Optional() _dir: Directionality | null,
+        @Optional() readonly _tabGroup: NxTabGroupBase | null,
+        _element: ElementRef,
+        viewportService: NxViewportService,
+    ) {
+        super(_cdr, _dir, _element, viewportService);
     }
 
     ngAfterContentInit(): void {

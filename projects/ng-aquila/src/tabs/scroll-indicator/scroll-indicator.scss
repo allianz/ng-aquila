@@ -26,65 +26,74 @@
             display: none;
         }
     }
-}
 
-:host.is-desktop-button {
-    padding: 8px 8px 10px 8px;
-    width: 40px;
+    // mobile
+    @include media-breakpoint-down(medium) {
+        width: 16px;
 
-    &.start-button.is-scrolled-to-start {
-        display: none;
-    }
-
-    button {
-        vertical-align: bottom;
-    }
-
-    &.start-button {
-        .nx-tab-scroll-indicator__divider {
-            right: 0;
-
-            [dir='rtl'] & {
-                right: initial;
-                left: 0;
-            }
-        }
-    }
-
-    &.end-button {
-        .nx-tab-scroll-indicator__divider {
-            left: 0;
-
-            [dir='rtl'] & {
-                left: initial;
+        &.start-button:not(.is-scrolled-to-start) {
+            .nx-tab-scroll-indicator__divider {
                 right: 0;
+
+                [dir='rtl'] & {
+                    right: initial;
+                    left: 0;
+                }
             }
         }
-    }
-}
 
-:host.is-mobile {
-    width: 16px;
-
-    &.start-button:not(.is-scrolled-to-start) {
-        .nx-tab-scroll-indicator__divider {
-            right: 0;
-
-            [dir='rtl'] & {
-                right: initial;
+        &.end-button:not(.is-scrolled-to-end) {
+            .nx-tab-scroll-indicator__divider {
                 left: 0;
+
+                [dir='rtl'] & {
+                    left: initial;
+                    right: 0;
+                }
             }
+        }
+        button {
+            display: none;
         }
     }
 
-    &.end-button:not(.is-scrolled-to-end) {
-        .nx-tab-scroll-indicator__divider {
-            left: 0;
+    // desktop
+    @include media-breakpoint-up(medium) {
+        padding: 8px 8px 10px 8px;
+        width: 40px;
 
-            [dir='rtl'] & {
-                left: initial;
+        &.start-button.is-scrolled-to-start {
+            display: none;
+        }
+
+        button {
+            vertical-align: bottom;
+        }
+
+        &.start-button {
+            .nx-tab-scroll-indicator__divider {
                 right: 0;
+
+                [dir='rtl'] & {
+                    right: initial;
+                    left: 0;
+                }
             }
+        }
+
+        &.end-button {
+            .nx-tab-scroll-indicator__divider {
+                left: 0;
+
+                [dir='rtl'] & {
+                    left: initial;
+                    right: 0;
+                }
+            }
+        }
+
+        button {
+            display: block;
         }
     }
 }
