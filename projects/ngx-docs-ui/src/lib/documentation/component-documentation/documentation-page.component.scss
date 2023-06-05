@@ -19,3 +19,11 @@ main {
 .documentation__wrapper {
     flex: 1 0 auto;
 }
+
+:host ::ng-deep .docs-a1 {
+    display: none;
+}
+
+:host ::ng-deep .show-a1 .docs-a1 {
+    display: block;
+}

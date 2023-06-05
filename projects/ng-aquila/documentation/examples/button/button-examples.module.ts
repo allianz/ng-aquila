@@ -17,6 +17,8 @@ import { ButtonPlainExampleComponent } from './button-plain/button-plain-example
 import { ButtonSmallExampleComponent } from './button-small/button-small-example';
 import { ButtonSmallMediumExampleComponent } from './button-small-medium/button-small-medium-example';
 import { ButtonWithIconExampleComponent } from './button-with-icon/button-with-icon-example';
+import { ButtonPlainA1ExampleComponent } from './button-plain-a1/button-plain-a1-example';
+import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
 
 const EXAMPLES = [
     ButtonExampleComponent,
@@ -32,10 +34,17 @@ const EXAMPLES = [
     ButtonWithIconExampleComponent,
     ButtonIconIndicatorExampleComponent,
     AnchorButtonExampleComponent,
+    ButtonPlainA1ExampleComponent,
 ];
 
 @NgModule({
-    imports: [NxButtonModule, CommonModule, NxIconModule, NxIndicatorModule],
+    imports: [
+        NxButtonModule,
+        CommonModule,
+        NxIconModule,
+        NxIndicatorModule,
+        NxHeadlineModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
@@ -55,6 +64,7 @@ export class ButtonExamplesModule {
             'button-with-icon': ButtonWithIconExampleComponent,
             'button-icon-indicator': ButtonIconIndicatorExampleComponent,
             'anchor-button': AnchorButtonExampleComponent,
+            'button-plain-a1': ButtonPlainA1ExampleComponent,
         };
     }
 }

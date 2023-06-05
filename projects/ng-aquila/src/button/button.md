@@ -66,6 +66,12 @@ The `nxPlainButton` does not need a lot of space. If only icons are used, they n
 
 <!-- example(button-plain) -->
 
+<div class="docs-a1">
+For One Allianz the plain button supports new API options `size` and `variant`.
+
+<!-- example(button-plain-a1) -->
+</div>
+
 ### Anchor Button
 
 You can use an `<a>` instead of a `<button>` element, in case you want to have an anchor styled like a button.

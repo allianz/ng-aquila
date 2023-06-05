@@ -34,15 +34,7 @@
     // resets the text-decoration of tertiary button
     &:active:not([disabled]),
     &:hover:not([disabled]) {
-        .nx-button__content-wrapper.nx-button__content-wrapper {
-            text-decoration: none;
-        }
-    }
-
-    // resets the text-decoration of tertiary button
-    &:active:not([disabled]),
-    &:hover:not([disabled]) {
-        .nx-button__content-wrapper.nx-button__content-wrapper {
+        .nx-button__content.nx-button__content {
             text-decoration: none;
         }
     }

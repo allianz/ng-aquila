@@ -13,6 +13,16 @@
     padding: 0;
     @include type-style(plain-button);
 
+    .nx-plain-button__content {
+        text-decoration: v(button-tertiary-text-decoration);
+    }
+
+    // hides the content wrapper if empty for the case when a single nx-icon is projected next to it
+    // that we don't get the flexbox gap
+    .nx-plain-button__content:empty {
+        display: none;
+    }
+
     &:focus {
         outline: none;
     }
@@ -38,8 +48,16 @@
         cursor: not-allowed;
     }
 
+    // in A1 only the resting state is supposed to have text-decoration
+    &:active:not([disabled]),
+    &:hover:not([disabled]) {
+        .nx-plain-button__content.nx-plain-button__content {
+            text-decoration: none;
+        }
+    }
+
     .nx-plain-button__content-wrapper,
-    .nx-button__content {
+    .nx-plain-button__content {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -48,6 +66,45 @@
 
     .nx-plain-button__content-wrapper {
         gap: v(plain-button-gap);
+    }
+}
+
+:host(.nx-plain-button) {
+    ::ng-deep nx-icon {
+        font-size: v(plain-button-icon-size);
+    }
+}
+
+:host.nx-plain-button--small {
+    @include type-style(plain-button-small);
+
+    ::ng-deep nx-icon {
+        font-size: v(plain-button-small-icon-size);
+    }
+}
+
+:host.nx-plain-button--secondary {
+    color: v(plain-button-secondary-color);
+
+    &:hover {
+        color: v(plain-button-secondary-hover-color);
+    }
+
+    // reset hover styles for devices that don't support hover
+    @media (hover: none) {
+        &:hover {
+            color: v(plain-button-secondary-color);
+        }
+    }
+
+    &:active,
+    &.nx-button--active {
+        color: v(plain-button-secondary-active-color);
+    }
+
+    &[disabled] {
+        color: v(plain-button-secondary-disabled-color);
+        cursor: not-allowed;
     }
 }
 
@@ -72,12 +129,6 @@
 
     &[disabled] {
         color: v(plain-button-danger-disabled-color);
-    }
-}
-
-:host(.nx-plain-button) {
-    ::ng-deep nx-icon {
-        font-size: v(plain-button-icon-size);
     }
 }
 
