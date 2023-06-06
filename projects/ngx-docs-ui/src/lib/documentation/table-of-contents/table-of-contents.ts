@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -16,9 +16,6 @@ export interface Link {
 
     /* name of the anchor */
     name: string;
-
-    /* top offset px of the anchor */
-    top: number;
 
     /* If the anchor should be available only for private packages */
     private: boolean;
@@ -50,7 +47,6 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
     constructor(
         private readonly _router: Router,
         private readonly _route: ActivatedRoute,
-        private readonly _element: ElementRef,
         @Inject(DOCUMENT) private readonly _document: Document,
         private readonly _cdr: ChangeDetectorRef,
     ) {
@@ -58,20 +54,18 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
             if (event instanceof NavigationEnd) {
                 const rootUrl = _router.url.split('#')[0];
                 if (rootUrl !== this._rootUrl) {
-                    this.links = this.createLinks();
+                    this.refresh();
                     this._rootUrl = rootUrl;
                 }
             }
         });
+    }
 
-        this._route.fragment.pipe(takeUntil(this._destroyed)).subscribe(fragment => {
-            this._urlFragment = fragment!;
-
-            const target = this._document.getElementById(this._urlFragment);
-            if (target) {
-                target.scrollIntoView();
-            }
-        });
+    scrollIntoview(id: string | null) {
+        if (!id) {
+            return;
+        }
+        this._document.getElementById(id)?.scrollIntoView();
     }
 
     ngAfterViewInit(): void {
@@ -86,10 +80,7 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
     refresh(): void {
         this.links = this.createLinks();
 
-        const target = this._document.getElementById(this._urlFragment);
-        if (target) {
-            target.scrollIntoView();
-        }
+        this.scrollIntoview(this._route.snapshot.fragment);
         this._cdr.detectChanges();
     }
 
@@ -105,11 +96,9 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
             for (const header of headers) {
                 // remove the 'link' icon name from the inner text
                 const name = header.innerText.trim().replace(/^link/, '');
-                const { top } = header.getBoundingClientRect();
                 links.push({
                     name,
                     type: header.tagName.toLowerCase(),
-                    top,
                     id: header.id,
                     private: header.matches(`${DOCS_PRIVATE_CLASS_SELECTOR} .${header.classList[0]}`),
                     public: header.matches(`${DOCS_PUBLIC_CLASS_SELECTOR} .${header.classList[0]}`),

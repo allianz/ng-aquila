@@ -8,6 +8,7 @@
             class="docs-level-{{link.type}} docs-link"
             [class.docs-private]="link.private"
             [class.docs-public]="link.public"
+            (click)="scrollIntoview(link.id)"
         >
             {{link.name}}
         </a>
