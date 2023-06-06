@@ -10,6 +10,23 @@
 </form>
 
 <div class="scroll-container">
+    <div *ngIf="selection.selected.length">
+        No. of selected product:
+        <strong>{{ selection.selected.length }}</strong>
+        <nx-link
+            (click)="selectAll()"
+            *ngIf="!isAllSelected()"
+            class="nx-margin-left-s"
+            >Select all {{ tableElements.length }} products.</nx-link
+        >
+        <nx-link
+            (click)="selection.clear()"
+            *ngIf="isAllSelected()"
+            class="nx-margin-left-s"
+        >
+            Clear selection</nx-link
+        >
+    </div>
     <table nxTable>
         <thead>
             <tr nxTableRow>
@@ -19,10 +36,10 @@
                     aria-label="Row selection"
                 >
                     <nx-checkbox
-                        (checkedChange)="toggleAll()"
+                        (checkedChange)="toggleAllPage()"
                         aria-label="Toggle selection of all rows"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [checked]="isAllPageSelected()"
+                        [indeterminate]="somePageSelected()"
                     >
                     </nx-checkbox>
                 </th>
@@ -34,7 +51,7 @@
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let item of tableElements">
+            <ng-container *ngFor="let item of currentlyShownPageElements">
                 <tr
                     nxTableRow
                     [selected]="activateSelected ? selection.isSelected(item) : item === activeRow"
@@ -66,6 +83,18 @@
         </tbody>
     </table>
 </div>
+
+<nx-pagination
+    class="pagination"
+    [count]="currentlyAvailableElements.length"
+    [page]="page"
+    type="advanced"
+    [perPage]="elementsPerPage"
+    (goPrev)="prevPage()"
+    (goNext)="nextPage()"
+    (goPage)="goToPage($event)"
+>
+</nx-pagination>
 
 <div class="nx-margin-top-m">
     <nx-switcher [(checked)]="showSelected">Debug selected value</nx-switcher>

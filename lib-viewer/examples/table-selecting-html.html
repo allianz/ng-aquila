@@ -10,6 +10,23 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scroll-container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;selection.selected.length&quot;</span>&gt;</span>
+        No. of selected product:
+        <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>{{ selection.selected.length }}<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-link</span>
+            (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;selectAll()&quot;</span>
+            *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!isAllSelected()&quot;</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-s&quot;</span>
+            &gt;</span>Select all {{ tableElements.length }} products.&lt;/nx-link
+        &gt;
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-link</span>
+            (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;selection.clear()&quot;</span>
+            *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;isAllSelected()&quot;</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-s&quot;</span>
+        &gt;</span>
+            Clear selection&lt;/nx-link
+        &gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">nxTable</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
@@ -19,10 +36,10 @@
                     <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Row selection&quot;</span>
                 &gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span>
-                        (<span class="hljs-attr">checkedChange</span>)=<span class="hljs-string">&quot;toggleAll()&quot;</span>
+                        (<span class="hljs-attr">checkedChange</span>)=<span class="hljs-string">&quot;toggleAllPage()&quot;</span>
                         <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Toggle selection of all rows&quot;</span>
-                        [<span class="hljs-attr">checked</span>]=<span class="hljs-string">&quot;selection.hasValue() &amp;&amp; isAllSelected()&quot;</span>
-                        [<span class="hljs-attr">indeterminate</span>]=<span class="hljs-string">&quot;selection.hasValue() &amp;&amp; !isAllSelected()&quot;</span>
+                        [<span class="hljs-attr">checked</span>]=<span class="hljs-string">&quot;isAllPageSelected()&quot;</span>
+                        [<span class="hljs-attr">indeterminate</span>]=<span class="hljs-string">&quot;somePageSelected()&quot;</span>
                     &gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
@@ -34,7 +51,7 @@
             <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of tableElements&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of currentlyShownPageElements&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>
                     <span class="hljs-attr">nxTableRow</span>
                     [<span class="hljs-attr">selected</span>]=<span class="hljs-string">&quot;activateSelected ? selection.isSelected(item) : item === activeRow&quot;</span>
@@ -66,6 +83,18 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-pagination</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pagination&quot;</span>
+    [<span class="hljs-attr">count</span>]=<span class="hljs-string">&quot;currentlyAvailableElements.length&quot;</span>
+    [<span class="hljs-attr">page</span>]=<span class="hljs-string">&quot;page&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;advanced&quot;</span>
+    [<span class="hljs-attr">perPage</span>]=<span class="hljs-string">&quot;elementsPerPage&quot;</span>
+    (<span class="hljs-attr">goPrev</span>)=<span class="hljs-string">&quot;prevPage()&quot;</span>
+    (<span class="hljs-attr">goNext</span>)=<span class="hljs-string">&quot;nextPage()&quot;</span>
+    (<span class="hljs-attr">goPage</span>)=<span class="hljs-string">&quot;goToPage($event)&quot;</span>
+&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-pagination</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-m&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-switcher</span> [(<span class="hljs-attr">checked</span>)]=<span class="hljs-string">&quot;showSelected&quot;</span>&gt;</span>Debug selected value<span class="hljs-tag">&lt;/<span class="hljs-name">nx-switcher</span>&gt;</span>

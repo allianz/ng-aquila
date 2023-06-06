@@ -16,19 +16,22 @@
 <div nx-docs-example="button-block" config="{}">exampleID: button-block</div>
 <h3 id="negative" tabindex="-1" class="docs-markdown--h3">Negative</h3>
 <div nx-docs-example="button-negative" config="{}">exampleID: button-negative</div>
-<h3 id="icons" tabindex="-1" class="docs-markdown--h3">Icons</h3>
-<p class="docs-markdown--p">A button with an icon is particularily useful whenever the interface space is limited. Users may even recognize them more quickly than a text if the icon represents the connected action adequately.</p>
-<p class="docs-markdown--p"><strong>Please add a margin</strong> between icon and text. You can use the <a href="./documentation/margins/overview">utility classes</a> <code>nx-margin-right-2xs</code> and <code>nx-margin-left-2xs</code>.</p>
+<h3 id="with-icons" tabindex="-1" class="docs-markdown--h3">With icons</h3>
+<p class="docs-markdown--p">Use the <code>nxIconPositionStart</code> or <code>nxIconPositionEnd</code> attributes to position the icons. Please also don't set any size on the icon, the button component will handle the correct size for you.</p>
 <div nx-docs-example="button-with-icon" config="{}">exampleID: button-with-icon</div>
 <h3 id="icon-button" tabindex="-1" class="docs-markdown--h3">Icon Button</h3>
 <p class="docs-markdown--p">Use the <code>nxIconButton</code> component if your button contains only an icon and no text. Please be aware that icons are not accessible, and you need to provide an additional description. This can be done using an <code>aria-label</code> or a tooltip.</p>
 <div nx-docs-example="button-icon" config="{}">exampleID: button-icon</div>
 <h4 id="indicators" tabindex="-1" class="docs-markdown--h4">Indicators</h4>
-<p class="docs-markdown--p">Inside the icon button there can be used a <a href="./documentation/indicator/overview"><code>&lt;nx-indicator&gt;</code></a>:</p>
+<p class="docs-markdown--p">Inside the icon button you can add the <a href="./documentation/indicator/overview"><code>&lt;nx-indicator&gt;</code></a> component:</p>
 <div nx-docs-example="button-icon-indicator" config="{}">exampleID: button-icon-indicator</div>
 <h3 id="plain-button" tabindex="-1" class="docs-markdown--h3">Plain Button</h3>
 <p class="docs-markdown--p">The <code>nxPlainButton</code> does not need a lot of space. If only icons are used, they need to be made accessible, e.g. by using an <code>aria-label</code> or a tooltip.</p>
 <div nx-docs-example="button-plain" config="{}">exampleID: button-plain</div>
+<div class="docs-a1">
+For One Allianz the plain button supports new API options `size` and `variant`.
+<div nx-docs-example="button-plain-a1" config="{}">exampleID: button-plain-a1</div>
+</div>
 <h3 id="anchor-button" tabindex="-1" class="docs-markdown--h3">Anchor Button</h3>
 <p class="docs-markdown--p">You can use an <code>&lt;a&gt;</code> instead of a <code>&lt;button&gt;</code> element, in case you want to have an anchor styled like a button.</p>
 <div nx-docs-example="anchor-button" config="{}">exampleID: anchor-button</div>
