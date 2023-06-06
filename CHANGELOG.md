@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [16.1.0](https://github.com/allianz/ng-aquila/compare/v16.0.0...v16.1.0) (2023-06-06)
+
+### Button with icons
+A new API was added to position icons inside buttons correctly with the proper spacing. That way you do not have to add spacing between icons and text manually anymore. See the 
+[with icons example](https://allianz.github.io/ng-aquila/documentation/button/overview#with-icons) how to use it.
+
+### Bug Fixes
+
+* **mult-select:** remove focus outline ([89c8e2b](https://github.com/allianz/ng-aquila/commit/89c8e2bed2e82f144438503bc610b5b0a968f0a9))
+* **multiselect:** open with alt plus arrow ([58b0749](https://github.com/allianz/ng-aquila/commit/58b0749992912e315bc2b81d112d57948fd49fe3))
+* **popover:** prevent page scroll and close abruptly ([0c9c813](https://github.com/allianz/ng-aquila/commit/0c9c813ece4c470c4a48d15566a1f51dcdc98b1b))
+* **radio:** respect errorstatematcher ([b83ee84](https://github.com/allianz/ng-aquila/commit/b83ee84caf4ebfbb645776a6f911e08d24b0330e))
+* **tabs:** prevent navigation button flashing ([c1e8421](https://github.com/allianz/ng-aquila/commit/c1e84210a52f1591a2ffa1df7d43787e98caa3be))
+
+
+### Features
+
+* **button:** add icon position attributes ([d50c923](https://github.com/allianz/ng-aquila/commit/d50c923a0b3798c700c42c0cb57b8d8d64eebca5))
+* **plain-button:** add variant and size for one allianz ([eb4f5c3](https://github.com/allianz/ng-aquila/commit/eb4f5c30c2389ffc38ab481c0de74a42a81b7e68))
+
+
+
 # [16.0.0](https://github.com/allianz/ng-aquila/compare/v15.3.0...v16.0.0) (2023-05-23)
 
 Aquila v16.0.0 is based on Angular 16. For updating please see our update guide: https://allianz.github.io/ng-aquila/guides/releases
