@@ -56,7 +56,6 @@ $arrow-shadow: -2px -2px -4px v(shadow-small-color);
     }
 }
 
-.nx-popover__content.cdk-keyboard-focused,
 .nx-popover__close-icon.cdk-keyboard-focused {
     @include focus-style;
 }

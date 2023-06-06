@@ -241,6 +241,9 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
                 .set('keydown', (event: any) => {
                     switch (event.keyCode) {
                         case SPACE:
+                            this.handleClick();
+                            event?.preventDefault(); // prevent page scroll
+                            break;
                         case ENTER:
                             this.handleClick();
                             break;
@@ -401,7 +404,10 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
             this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__content')!);
             this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__close-icon')!);
 
-            this._returnFocusAfterPopover();
+            setTimeout(() => {
+                this._returnFocusAfterPopover();
+            });
+
             this.overlayRef!.detach();
             this._embeddedViewRef = null;
             this._focusTrap.destroy();

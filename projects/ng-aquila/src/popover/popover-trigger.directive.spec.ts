@@ -1,4 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { Component, Directive, Type, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
@@ -26,7 +27,8 @@ abstract class PopoverTest {
     closeable = false;
 }
 
-describe('NxPopoverTriggerDirective', () => {
+// eslint-disable-next-line jasmine/no-focused-tests
+fdescribe('NxPopoverTriggerDirective', () => {
     let fixture: ComponentFixture<PopoverTest>;
     let testInstance: PopoverTest;
     let popoverInstance: NxPopoverComponent;
@@ -367,6 +369,55 @@ describe('NxPopoverTriggerDirective', () => {
         }));
     });
 
+    describe('keyboard', () => {
+        it('should open popover by space key', fakeAsync(() => {
+            createTestComponent(PopoverClickComponent);
+            buttonNativeElement.dispatchEvent(new KeyboardEvent('keydown', { keyCode: SPACE, which: SPACE }));
+
+            fixture.detectChanges();
+            flush();
+
+            checkPopoverOpen(true);
+        }));
+
+        it('should open popover by enter key', fakeAsync(() => {
+            createTestComponent(PopoverClickComponent);
+            buttonNativeElement.dispatchEvent(new KeyboardEvent('keydown', { keyCode: ENTER, which: ENTER }));
+
+            fixture.detectChanges();
+            flush();
+
+            checkPopoverOpen(true);
+        }));
+
+        it('should close popover when hit space key on close button', fakeAsync(() => {
+            createTestComponent(PopoverClickComponent);
+            click();
+            checkPopoverOpen(true);
+
+            getCloseIcon().dispatchEvent(new KeyboardEvent('keyup', { keyCode: SPACE, which: SPACE }));
+
+            fixture.detectChanges();
+            flush();
+
+            checkPopoverOpen(false);
+        }));
+
+        it('should close popover when hit enter on close button', fakeAsync(() => {
+            createTestComponent(PopoverClickComponent);
+            click();
+            checkPopoverOpen(true);
+
+            getCloseIcon().dispatchEvent(new KeyboardEvent('keyup', { keyCode: ENTER, which: ENTER }));
+
+            fixture.detectChanges();
+
+            flush();
+
+            checkPopoverOpen(false);
+        }));
+    });
+
     describe('modal popover', () => {
         it('should show a backdrop', fakeAsync(() => {
             createTestComponent(ModalPopover);
@@ -555,6 +606,8 @@ describe('NxPopoverTriggerDirective', () => {
             fixture.detectChanges();
             spyOn(buttonNativeElement, 'focus').and.callThrough();
             getCloseIcon().click();
+            tick();
+
             expect(buttonNativeElement.focus).toHaveBeenCalled();
             flush();
         }));

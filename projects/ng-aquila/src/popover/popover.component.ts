@@ -86,6 +86,13 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
     }
 
     /** @docs-private */
+    _onCloseKeydown($event: KeyboardEvent) {
+        if ($event.keyCode === SPACE) {
+            $event.preventDefault();
+        }
+    }
+
+    /** @docs-private */
     emitClosedEvent() {
         this.closed.emit();
     }
