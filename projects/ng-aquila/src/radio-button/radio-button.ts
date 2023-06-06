@@ -146,7 +146,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
         @Optional() @Self() readonly ngControl: NgControl | null,
         @Optional() readonly _parentForm: NgForm | null,
         @Optional() readonly _parentFormGroup: FormGroupDirective | null,
-        private readonly _errorStateMatcher: ErrorStateMatcher,
+        readonly _errorStateMatcher: ErrorStateMatcher,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of
@@ -486,7 +486,10 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     /** @docs-private */
     _controlInvalid(): boolean {
         const form = this.radioGroup && (this.radioGroup._parentFormGroup || this.radioGroup._parentForm);
-        this._cdr.markForCheck();
-        return !!(this.radioGroup?.ngControl?.invalid && (this.radioGroup.ngControl.touched || form?.submitted));
+        const control = this.radioGroup?.ngControl ? (this.radioGroup.ngControl.control as FormControl) : null;
+        if (this.radioGroup?._errorStateMatcher) {
+            return this.radioGroup._errorStateMatcher.isErrorState(control, form);
+        }
+        return !!(control?.invalid && (control.touched || form?.submitted));
     }
 }

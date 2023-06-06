@@ -512,6 +512,16 @@ describe('NxRadioComponent', () => {
             errors = fixture.nativeElement.querySelectorAll('nx-error');
             expect(errors).toHaveSize(1);
         });
+
+        it('should be invalid when error state matcher is true', () => {
+            createTestComponent(RadioGroupValidation);
+            const radios = fixture.nativeElement.querySelectorAll('nx-radio');
+            expect(radios[0]).not.toHaveClass('has-error');
+            // eslint-disable-next-line @typescript-eslint/dot-notation
+            (testInstance.radioGroup['_errorStateMatcher'] as any) = { isErrorState: () => true }; // workaround: accessing private class member
+            fixture.detectChanges();
+            expect(radios[0]).toHaveClass('has-error');
+        });
     });
 
     describe('a11y', () => {
