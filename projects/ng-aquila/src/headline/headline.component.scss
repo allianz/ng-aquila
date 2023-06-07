@@ -10,6 +10,7 @@
 
 :host {
     margin: 0;
+    color: v(headline-color);
     ::ng-deep .nx-link,
     ::ng-deep nx-link a,
     a {
@@ -44,6 +45,30 @@
 
 :host(.nx-heading--subsection-xsmall) {
     @include headline-typography('heading-06');
+}
+
+:host(.nx-heading--new-api) {
+    &.nx-heading--4xl {
+        @include headline-typography('heading-00');
+    }
+    &.nx-heading--3xl {
+        @include headline-typography('heading-01');
+    }
+    &.nx-heading--2xl {
+        @include headline-typography('heading-02');
+    }
+    &.nx-heading--xl {
+        @include headline-typography('heading-03');
+    }
+    &.nx-heading--l {
+        @include headline-typography('heading-04');
+    }
+    &.nx-heading--m {
+        @include headline-typography('heading-05');
+    }
+    &.nx-heading--s {
+        @include headline-typography('heading-06');
+    }
 }
 
 :host(.nx-heading--negative) {

@@ -1,13 +1,15 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { NxHeadlineComponent } from './headline.component';
+import { NxHeadlineComponent, NxHeadlineSize } from './headline.component';
 import { NxHeadlineModule } from './headline.module';
 
 @Directive()
 abstract class HeadlineTest {
     @ViewChild(NxHeadlineComponent) headlineInstance!: NxHeadlineComponent;
     size = '';
+    typedSize: NxHeadlineSize = undefined;
+    negative = false;
 }
 
 describe('NxHeadlineDirective', () => {
@@ -29,9 +31,18 @@ describe('NxHeadlineDirective', () => {
         fixture.detectChanges();
     }
 
+    function setTypedSize(value: NxHeadlineSize) {
+        fixture.componentInstance.typedSize = value;
+        fixture.detectChanges();
+    }
+
+    function expectNewApiClass() {
+        expect(headlineNativeElement).toHaveClass('nx-heading--new-api');
+    }
+
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicHeadline, HeadlineWithArbitraryClass],
+            declarations: [BasicHeadline, HeadlineWithArbitraryClass, DynamicHeadline],
             imports: [NxHeadlineModule],
         }).compileComponents();
     }));
@@ -78,6 +89,39 @@ describe('NxHeadlineDirective', () => {
         expect(headlineNativeElement).toHaveClass('nx-heading--negative');
     }));
 
+    it('should add classes for size input', () => {
+        createTestComponent(DynamicHeadline);
+
+        setTypedSize('s');
+        expect(headlineNativeElement).toHaveClass('nx-heading--s');
+        expectNewApiClass();
+        setTypedSize('m');
+        expect(headlineNativeElement).toHaveClass('nx-heading--m');
+        expectNewApiClass();
+        setTypedSize('l');
+        expect(headlineNativeElement).toHaveClass('nx-heading--l');
+        expectNewApiClass();
+        setTypedSize('xl');
+        expect(headlineNativeElement).toHaveClass('nx-heading--xl');
+        expectNewApiClass();
+        setTypedSize('2xl');
+        expect(headlineNativeElement).toHaveClass('nx-heading--2xl');
+        expectNewApiClass();
+        setTypedSize('3xl');
+        expect(headlineNativeElement).toHaveClass('nx-heading--3xl');
+        expectNewApiClass();
+        setTypedSize('4xl');
+        expect(headlineNativeElement).toHaveClass('nx-heading--4xl');
+        expectNewApiClass();
+    });
+
+    it('should set class for negative input', () => {
+        createTestComponent(DynamicHeadline);
+        fixture.componentInstance.negative = true;
+        fixture.detectChanges();
+        expect(headlineNativeElement).toHaveClass('nx-heading--negative');
+    });
+
     it('passes through an unknown class', waitForAsync(() => {
         createTestComponent(HeadlineWithArbitraryClass);
         expect(headlineNativeElement).toHaveClass('some-arbitray-class-name');
@@ -100,3 +144,8 @@ class BasicHeadline extends HeadlineTest {}
     template: `<h1 nxHeadline="page" class="some-arbitray-class-name">With arbitrary class</h1>`,
 })
 class HeadlineWithArbitraryClass extends HeadlineTest {}
+
+@Component({
+    template: `<h1 nxHeadline [size]="typedSize" [negative]="negative">Hello Headline</h1>`,
+})
+class DynamicHeadline extends HeadlineTest {}

@@ -27,3 +27,6 @@ main {
 :host ::ng-deep .show-a1 .docs-a1 {
     display: block;
 }
+:host ::ng-deep .show-a1 .docs-hide-a1 {
+    display: none;
+}
