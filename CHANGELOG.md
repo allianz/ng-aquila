@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [16.2.0](https://github.com/allianz/ng-aquila/compare/v16.1.0...v16.2.0) (2023-06-13)
+
+
+### Bug Fixes
+
+* **modal:** prevent buttons flicker when open modal ([5bcbd9f](https://github.com/allianz/ng-aquila/commit/5bcbd9f77881a11214e38cf07c3b305e733dc366))
+
+
+### Features
+
+* **headline:** add size and negative inputs ([b1ca6ff](https://github.com/allianz/ng-aquila/commit/b1ca6ff22e357582232a1052124fc2ccc53a05dd))
+* **formfield:** add new tokens for one allianz ([1979b4b](https://github.com/allianz/ng-aquila/commit/1979b4b9c6124d7c73bad53ad690efb2ce3853a7))
+
+
+
 # [16.1.0](https://github.com/allianz/ng-aquila/compare/v16.0.0...v16.1.0) (2023-06-06)
 
 ### Button with icons
