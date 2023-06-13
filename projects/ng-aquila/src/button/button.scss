@@ -56,7 +56,6 @@
     border-color: transparent;
     cursor: pointer;
     padding: v(button-medium-padding);
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
     user-select: none;
     width: auto;
     hyphens: none;
@@ -71,6 +70,11 @@
     }
     // Fix for IE to make overflowing indicators visible
     overflow: visible;
+
+    &:hover,
+    &:focus {
+        transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
 
     // Expand every button on mobile to the full width
     @include media-breakpoint-response(mobile) {
