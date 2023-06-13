@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
-import { NxExpertModule } from '@aposin/ng-aquila/config';
 import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxFooterModule } from '@aposin/ng-aquila/footer';
@@ -50,7 +49,6 @@ import { AppComponent } from './app.component';
         NxOverlayModule,
         NxPopoverModule,
         NxSmallStageModule,
-        NxExpertModule,
     ],
     bootstrap: [AppComponent],
 })

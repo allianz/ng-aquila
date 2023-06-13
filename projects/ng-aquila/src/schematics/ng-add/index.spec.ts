@@ -76,5 +76,14 @@ describe('ng-aquila: ng add', () => {
             expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts')).toContain(`/** Copyright Allianz ${currentYear} */`);
             expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html')).toContain(`<!-- Copyright Allianz ${currentYear} -->`);
         });
+
+        it('should create Retail version Starter App by default', () => {
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.module.ts')).not.toContain('NxExpertModule');
+        });
+
+        it('should create Expert Starter App when requested', async () => {
+            await testSetup.runMigration({ project: 'aquila-testing', starter: true, type: 'b2b' });
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.module.ts')).toContain('NxExpertModule');
+        });
     });
 });

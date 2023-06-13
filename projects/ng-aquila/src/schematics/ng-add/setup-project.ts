@@ -12,8 +12,8 @@ export default function (options: Schema): Rule {
     return (tree, context) => {
         context.addTask(new NodePackageInstallTask());
         return chain([
-            options?.type === 'b2b' ? addExpertModule(options) : noop(),
             options?.starter ? addStarterApp(options) : noop(),
+            options?.type === 'b2b' ? addExpertModule(options) : noop(),
             options.noTheme ? noop() : addAposinTheme(options),
             addCdkStyles(options),
         ]);
