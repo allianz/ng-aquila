@@ -743,6 +743,8 @@ $nx-theme: (
     formfield-disabled-border-color: disabled-01,
     formfield-readonly-border-color: readonly-02,
     formfield-readonly-background-color: readonly-01,
+    formfield-input-color: text-01,
+    formfield-hint-color: text-01,
     // ------------ formfield tokens only for the default appearance ------------ //
     // -------------------------------------------------------------------------- //
     formfield-control-height: 32px,
@@ -751,6 +753,7 @@ $nx-theme: (
     formfield-border-color: ui-06,
     formfield-active-border-color: interactive-primary,
     formfield-background-color: transparent,
+    formfield-message-gap: 4px,
     // The typography for the flexfield container
     // The typography is set here that all controls
     // like dropdown, input, textarea and especially custom controls inherit the typography
@@ -783,6 +786,10 @@ $nx-theme: (
     // --------- formfield tokens only for the outline appearance --------------- //
     // -------------------------------------------------------------------------- //
     formfield-outline-control-height: 40px,
+    formfield-outline-border-radius: 4px,
+    formfield-outline-input-container-padding: 0,
+    formfield-outline-spacing: 7px,
+    formfield-outline-gap: 0,
     formfield-outline-border-color: ui-05,
     formfield-outline-background-color: ui-03,
     formfield-outline-active-border-color: interactive-text,
@@ -794,12 +801,16 @@ $nx-theme: (
     formfield-outline-label-height: 28px,
     formfield-outline-bottom-padding: 16px,
     formfield-outline-floating-distance: -29px,
-    formfield-outline-hint-spacing: 8px,
+    formfield-outline-hint-spacing: 8px 0 0 0,
     formfield-outline-label-font-size: paragraph-03-font-size,
     formfield-outline-label-line-height: paragraph-03-line-height,
     formfield-outline-label-font-weight: paragraph-03-font-weight,
     formfield-outline-label-letter-spacing: paragraph-03-letter-spacing,
-    // TODO integrate
+    formfield-outline-optional-label-font-size: formfield-outline-label-font-size,
+    formfield-outline-optional-label-line-height: formfield-outline-label-line-height,
+    formfield-outline-optional-label-font-weight: formfield-outline-label-font-weight,
+    formfield-outline-optional-label-letter-spacing: formfield-outline-label-letter-spacing,
+    formfield-outline-optional-label-gap: 8px,
     formfield-outline-hint-font-size: paragraph-03-font-size,
     formfield-outline-hint-line-height: 1em,
     formfield-outline-hint-font-weight: paragraph-03-font-weight,
@@ -809,6 +820,7 @@ $nx-theme: (
     formfield-outline-input-native-placeholder-font-weight: 200,
     formfield-outline-input-native-placeholder-letter-spacing: formfield-outline-control-letter-spacing,
     formfield-outline-input-native-placeholder-color: ui-05,
+    formfield-input-native-placeholder-disabled-color: inherit,
     header-font-size: paragraph-03-font-size,
     header-line-height: paragraph-03-line-height,
     header-font-weight: paragraph-03-font-weight,

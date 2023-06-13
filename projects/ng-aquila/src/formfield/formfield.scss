@@ -2,12 +2,11 @@
 
 $formfield-margin-bottom: nx-spacer(m);
 $margin-to-message: nx-spacer(3xs);
-$outline-padding: 7px;
 
 .nx-formfield {
     display: block;
     //default theme is white and gets overwritten depending of the focus, error state or given modifiers
-    color: v(text-01);
+    color: v(formfield-input-color);
 
     nx-message {
         margin-top: nx-spacer(xs);
@@ -171,9 +170,9 @@ $outline-padding: 7px;
 
 // Hints
 .nx-formfield__hints {
-    color: v(text-01);
+    color: v(formfield-hint-color);
     @include type-style(formfield-hint);
-    padding-top: 8px;
+    padding-top: v(formfield-hint-spacing);
     text-align: right;
 
     [dir='rtl'] & {
@@ -190,7 +189,7 @@ $outline-padding: 7px;
 
 // Messages
 .nx-formfield__message {
-    margin-top: $margin-to-message;
+    margin-top: v(formfield-message-gap);
 }
 
 .nx-formfield:not(.nx-formfield--negative) {
@@ -265,44 +264,45 @@ $outline-padding: 7px;
     }
 
     .nx-formfield__input-container {
-        padding: 0;
+        padding: v(formfield-outline-input-container-padding);
         border-width: v(formfield-border-width);
         border-color: v(formfield-outline-border-color);
         background-color: v(formfield-outline-background-color);
         border-style: solid;
-        border-radius: nx-border-radius(s);
+        border-radius: v(formfield-outline-border-radius);
         height: v(formfield-outline-control-height);
+        gap: v(formfield-outline-gap);
     }
 
     input,
     nx-dropdown .nx-dropdown__container,
     nx-multi-select .value {
-        padding: 0 $outline-padding;
+        padding: 0 v(formfield-outline-spacing);
     }
 
     .nx-formfield__suffix {
-        margin-right: $outline-padding;
+        margin-right: v(formfield-outline-spacing);
         margin-left: 0;
 
         [dir='rtl'] & {
             margin-right: 0;
-            margin-left: $outline-padding;
+            margin-left: v(formfield-outline-spacing);
         }
     }
 
     .nx-formfield__prefix {
-        margin-left: $outline-padding;
+        margin-left: v(formfield-outline-spacing);
         margin-right: 0;
 
         [dir='rtl'] & {
-            margin-right: $outline-padding;
+            margin-right: v(formfield-outline-spacing);
             margin-left: 0;
         }
     }
 
     .nx-formfield__input textarea.nx-input {
         line-height: nx-line-height(2xs);
-        padding: $outline-padding;
+        padding: v(formfield-outline-spacing);
         min-height: v(formfield-outline-control-line-height);
     }
 
@@ -323,6 +323,7 @@ $outline-padding: 7px;
     .nx-formfield__hints {
         text-align: left;
         @include type-style(formfield-outline-hint);
+        padding: v(formfield-outline-hint-spacing);
 
         [dir='rtl'] & {
             text-align: right;
@@ -470,6 +471,15 @@ $outline-padding: 7px;
         border-color: v(formfield-disabled-border-color);
     }
 
+    &.has-outline {
+        input,
+        textarea {
+            @include input-placeholder {
+                color: v(formfield-input-native-placeholder-disabled-color);
+            }
+        }
+    }
+
     nx-datepicker-toggle button {
         color: v(formfield-disabled-text-color);
     }
@@ -609,8 +619,8 @@ input:-webkit-autofill {
         justify-content: flex-end;
     }
     .optional {
-        margin-left: nx-spacer(2xs);
-        font-weight: nx-font-weight(light);
+        margin-left: v(formfield-outline-optional-label-gap);
+        @include type-style(formfield-outline-optional-label);
     }
 }
 .optional {
