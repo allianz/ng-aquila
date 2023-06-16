@@ -26,6 +26,8 @@ export class NxModalRef<T, R = any> {
     /** Whether the user is allowed to close the modal. */
     disableClose?: boolean = this._containerInstance._config.disableClose;
 
+    shouldClose = this._containerInstance._config.shouldClose;
+
     /** Subject for notifying the user that the modal has finished opening. */
     private readonly _afterOpened = new Subject<void>();
 
@@ -85,7 +87,7 @@ export class NxModalRef<T, R = any> {
 
         _overlayRef
             .keydownEvents()
-            .pipe(filter(event => event.keyCode === ESCAPE && !this.disableClose && !hasModifierKey(event)))
+            .pipe(filter(event => event.keyCode === ESCAPE && !!this.shouldClose?.() && !this.disableClose && !hasModifierKey(event)))
             .subscribe(event => {
                 event.preventDefault();
                 this.close();

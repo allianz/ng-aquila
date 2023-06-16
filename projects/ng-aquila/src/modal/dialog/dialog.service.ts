@@ -216,7 +216,7 @@ export class NxDialogService implements OnDestroy {
                 .backdropClick()
                 .pipe(takeUntil(this._destroyed))
                 .subscribe(() => {
-                    if (!modalRef.disableClose) {
+                    if (config?.shouldClose?.() && !modalRef.disableClose) {
                         modalRef.close();
                     }
                 });
@@ -331,5 +331,5 @@ export class NxDialogService implements OnDestroy {
  * @returns The new configuration object.
  */
 function _applyConfigDefaults(config?: NxModalConfig, defaultOptions?: NxModalConfig): NxModalConfig {
-    return { ...defaultOptions, ...config };
+    return { shouldClose: () => true, ...defaultOptions, ...config };
 }

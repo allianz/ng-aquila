@@ -125,4 +125,6 @@ export class NxModalConfig<D = any> {
      * Default: `'ltr'`.
      */
     direction?: Direction = 'ltr';
+
+    shouldClose?: () => boolean = () => true;
 }
