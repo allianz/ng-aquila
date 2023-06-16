@@ -11,6 +11,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Even
         class: 'nx-table-row',
         '[class.is-selected]': 'selected',
         '[class.nx-table-row--selectable]': 'selectable',
+        '[class.nx-table-row--sticky]': 'mayStick',
         '[attr.aria-selected]': 'selected',
         '(click)': '_onSelect($event)',
         '(keydown.space)': '_onSelect($event)',
@@ -40,6 +41,16 @@ export class NxTableRowComponent {
     private _selected = false;
 
     @Output() readonly select = new EventEmitter<void>();
+
+    /** Whether this row is rendered "sticky". Only works for `nxHeaderCell` cells. */
+    @Input() set mayStick(value: BooleanInput) {
+        this._mayStick = coerceBooleanProperty(value);
+        this._cdr.markForCheck();
+    }
+    get mayStick(): boolean {
+        return this._mayStick;
+    }
+    private _mayStick = false;
 
     constructor(protected readonly _cdr: ChangeDetectorRef, private readonly _elementRef: ElementRef) {}
 

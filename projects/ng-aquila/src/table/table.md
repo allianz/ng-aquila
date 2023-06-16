@@ -32,7 +32,15 @@ Using attribute `sticky`, you can make first or last column (or both of them at 
 
 Please note that you are only allowed to make the first and/or last column sticky, to prohibit covering too much screen estate by fixed columns. For the same reason, this setting won't have effect on mobile screens.
 
-<!-- example(table-sticky) -->
+<!-- example(table-sticky-column) -->
+
+### Sticky header
+
+For a simple "sticky" header you can use the attribute `mayStick` on the `nxTableRow` element.
+
+For more complex use-cases, please consider either coming up with a custom CSS/Typescript solution or using a third-party datatable library.
+
+<!-- example(table-sticky-header) -->
 
 ### Column hiding and reorder columns
 

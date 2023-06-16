@@ -4,11 +4,11 @@ import { Component } from '@angular/core';
  * @title Sticky Columns Table
  */
 @Component({
-    selector: 'table-sticky-example',
-    templateUrl: './table-sticky-example.html',
-    styleUrls: ['./table-sticky-example.css'],
+    selector: 'table-sticky-column-example',
+    templateUrl: './table-sticky-column-example.html',
+    styleUrls: ['./table-sticky-column-example.css'],
 })
-export class TableStickyExampleComponent {
+export class TableStickyColumnExampleComponent {
     stickyColumn = 'first';
     tableElements = [
         {

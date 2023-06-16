@@ -244,6 +244,14 @@ $sticky-shadow-size: nx-spacer(3xs);
             border-color: v(selectable-table-row-selected-border-color);
         }
     }
+
+    &.nx-table-row--sticky {
+        .nx-header-cell {
+            position: sticky;
+            top: 0;
+            background: v(ui-background); //since `table-header-cell-background-color` is currently transparent in all themes
+        }
+    }
 }
 
 // remove margins from some components that are placed inside table cells
