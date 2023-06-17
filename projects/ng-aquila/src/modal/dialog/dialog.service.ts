@@ -216,7 +216,7 @@ export class NxDialogService implements OnDestroy {
                 .backdropClick()
                 .pipe(takeUntil(this._destroyed))
                 .subscribe(() => {
-                    if (config?.shouldClose?.() && !modalRef.disableClose) {
+                    if (!modalRef.disableClose) {
                         modalRef.close();
                     }
                 });

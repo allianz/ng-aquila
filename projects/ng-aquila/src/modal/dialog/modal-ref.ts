@@ -37,6 +37,8 @@ export class NxModalRef<T, R = any> {
     /** Subject for notifying the user that the modal has started closing. */
     private readonly _beforeClosed = new Subject<R | undefined>();
 
+    readonly onShouldClose$ = new Subject<boolean>();
+
     /** Result to be passed to afterClosed. */
     private _result?: R;
 
@@ -87,7 +89,7 @@ export class NxModalRef<T, R = any> {
 
         _overlayRef
             .keydownEvents()
-            .pipe(filter(event => event.keyCode === ESCAPE && !!this.shouldClose?.() && !this.disableClose && !hasModifierKey(event)))
+            .pipe(filter(event => event.keyCode === ESCAPE && !this.disableClose && !hasModifierKey(event)))
             .subscribe(event => {
                 event.preventDefault();
                 this.close();
@@ -101,6 +103,12 @@ export class NxModalRef<T, R = any> {
      */
     close(modalResult?: R): void {
         this._result = modalResult;
+
+        const shouldClose = this.shouldClose?.(modalResult);
+        this.onShouldClose$.next(shouldClose);
+        if (!shouldClose) {
+            return;
+        }
 
         // Transition the backdrop in parallel to the modal.
         this._containerInstance._animationStateChanged
