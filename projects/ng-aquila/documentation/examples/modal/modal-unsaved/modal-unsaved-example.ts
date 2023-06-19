@@ -30,7 +30,7 @@ export class ModalUnsavedExampleComponent {
 
     constructor(private readonly dialogService: NxDialogService) {}
 
-    openFromTemplate(): void {
+    openModal(): void {
         this.dialogRef = this.dialogService.open(this.templateRef, {
             showCloseIcon: true,
             disableClose: false,
