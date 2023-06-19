@@ -349,6 +349,28 @@ describe('NxDialog', () => {
 
             expect(closeIconButton.getAttribute('aria-label')).toBe('best label');
         }));
+
+        it('should not close modal and emit closeDenied stream when shouldClose return false', fakeAsync(() => {
+            const modalRef = dialog.open(PizzaMsg, {
+                viewContainerRef: testViewContainerRef,
+                showCloseIcon: true,
+                closeIconButtonLabel: 'best label',
+                shouldClose: () => false,
+            });
+
+            const spy = jasmine.createSpy('closeDenied spy');
+            modalRef.closeDenied.subscribe(spy);
+            viewContainerFixture.detectChanges();
+
+            const closeIconButton = overlayContainerElement.querySelector('.nx-modal__close') as HTMLElement;
+            closeIconButton.click();
+
+            viewContainerFixture.detectChanges();
+            flush();
+
+            expect(overlayContainerElement.querySelector('nx-modal-container')).toBeTruthy();
+            expect(spy).toHaveBeenCalledTimes(1);
+        }));
     });
 
     it('should emit the backdropClick stream when clicking on the overlay backdrop', fakeAsync(() => {
