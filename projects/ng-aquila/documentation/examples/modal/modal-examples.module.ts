@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxModalModule } from '@aposin/ng-aquila/modal';
+import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 import { ModalBasicExampleComponent } from './modal-basic/modal-basic-example';
 import { ModalClosingExampleComponent } from './modal-closing/modal-closing-example';
@@ -13,9 +17,11 @@ import { ModalContentActionsExampleComponent } from './modal-content-actions/mod
 import { ModalDataInjectionExampleComponent } from './modal-data-injection/modal-data-injection-example';
 import { ModalFixedWidthExampleComponent } from './modal-fixed-width/modal-fixed-width-example';
 import { ModalOpeningExampleComponent } from './modal-opening/modal-opening-example';
+import { ModalUnsavedExampleComponent } from './modal-unsaved/modal-unsaved-example';
 import { ModalWithDirectionExampleComponent } from './modal-with-direction/modal-with-direction-example';
 
 const EXAMPLES = [
+    ModalUnsavedExampleComponent,
     ModalBasicExampleComponent,
     ModalClosingExampleComponent,
     ModalClosingBehaviourExampleComponent,
@@ -34,6 +40,10 @@ const EXAMPLES = [
         NxButtonModule,
         NxCopytextModule,
         NxHeadlineModule,
+        NxPopoverModule,
+        NxIconModule,
+        NxFormfieldModule,
+        ReactiveFormsModule,
     ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
@@ -41,6 +51,7 @@ const EXAMPLES = [
 export class ModalExamplesModule {
     static components() {
         return {
+            'modal-unsaved': ModalUnsavedExampleComponent,
             'modal-basic': ModalBasicExampleComponent,
             'modal-closing': ModalClosingExampleComponent,
             'modal-closing-behaviour': ModalClosingBehaviourExampleComponent,

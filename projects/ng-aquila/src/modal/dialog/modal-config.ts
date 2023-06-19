@@ -126,5 +126,6 @@ export class NxModalConfig<D = any> {
      */
     direction?: Direction = 'ltr';
 
+    /** Define custom function to determine whether a modal can be closed  */
     shouldClose?: (modalResult?: any) => boolean = () => true;
 }

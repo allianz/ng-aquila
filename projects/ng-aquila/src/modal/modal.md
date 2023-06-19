@@ -7,7 +7,7 @@ stable: done
 alias: dialog
 ---
 
-The `NxDialogService` can be used to open modals from components or predefined templates. 
+The `NxDialogService` can be used to open modals from components or predefined templates.
 
 The class `nx-modal-margin-bottom` can be used to get the correct vertical spacing for the elements withing the modal.
 
@@ -177,3 +177,7 @@ import { NxModalModule } from '@aposin/ng-aquila/modal';
 ```
 
 <!-- example(modal-basic) -->
+
+ ### Modal unsaved
+The following example demonstrates the usage of the `shouldClose` and `closeDenied` APIs to create a modal that displays a popover notification when attempting to close the modal with unsaved data.
+ <!-- example(modal-unsaved) -->
