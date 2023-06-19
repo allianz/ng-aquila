@@ -9,6 +9,10 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 import { delay } from 'rxjs/operators';
 
 type MyDialogResult = 'proceed' | 'cancel';
+
+/**
+ * @title Modal with unsave changes popover example
+ */
 @Component({
     selector: 'modal-unsaved-example',
     templateUrl: './modal-unsaved-example.html',
