@@ -1,23 +1,6 @@
 <p class="docs-markdown--p">Headlines are decoupled from the actual markup. You can pick any tag from h1 - h6 to fulfill the expected semantics and adjust the appearance with the following attributes.</p>
 <h3 id="sizes" tabindex="-1" class="docs-markdown--h3">Sizes</h3>
-<div class="docs-deprecation-warning">
-  <strong><code>nxHeadline</code> with string inputs is deprecated. Use the explicit <code>size</code> input. </strong>
-  In preparation for the future design system updates the headline component gets new size names and a dedicated new <code>size</code> input with a proper typing. See the table below for the mapping from old size names to the new names.
-  Example:
-<pre><code class="language-html"><span class="hljs-comment">&lt;!-- old usage --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;section&quot;</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- new usage --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;2xl&quot;</span>&gt;</span>
-</code></pre>
-<p class="docs-markdown--p">You can still use the old API for quite a while until your project gets updated to the new One Allianz designs where you can then switch to the new size input according to the designs you will get.</p>
-</div>
-<h4 id="size-input" tabindex="-1" class="docs-markdown--h4">Size input</h4>
-<div nx-docs-example="headline-sizes-a1" config="{}">exampleID: headline-sizes-a1</div>
-<h4 id="deprecated-sizes" tabindex="-1" class="docs-markdown--h4">Deprecated sizes</h4>
 <div nx-docs-example="headline-sizes-deprecated" config="{}">exampleID: headline-sizes-deprecated</div>
-<h4 id="mappings" tabindex="-1" class="docs-markdown--h4">Mappings</h4>
-<p class="docs-markdown--p">This table shows you how the old names will translate to in the new design.</p>
-<div nx-docs-example="headline-sizes-mapping" config="{ 'hideHeader': true }">exampleID: headline-sizes-mapping</div>
 <h3 id="font-weights" tabindex="-1" class="docs-markdown--h3">Font weights</h3>
 <div class="docs-a1">
 For the One Allianz design the font-weights of the headlines are already set as they should be. You should not need to change them anymore.
@@ -32,6 +15,24 @@ For the One Allianz design the font-weights of the headlines are already set as 
 <div nx-docs-example="headline-links" config="{}">exampleID: headline-links</div>
 <h3 id="negative" tabindex="-1" class="docs-markdown--h3">Negative</h3>
 <div class="docs-deprecation-warning">
-  <strong><code>nxHeadline="negative"</code> is deprecated. Use the boolean <code>negative</code> input instead.
+  <strong><code>nxHeadline="negative"</code></strong> is deprecated. Use the boolean <code>negative</code> input instead.
 </div>
 <div nx-docs-example="headline-negative" config="{}">exampleID: headline-negative</div>
+<h3 id="new-explicit-size-input" tabindex="-1" class="docs-markdown--h3">New explicit size input</h3>
+<div class="docs-deprecation-warning">
+  <strong>Please note:</strong> In preparation for future design system updates for One Allianz the headline component gets new size names and a dedicated new <code>size</code> input with a proper typing.
+  For existing NDBX projects you do not have to update to this API now, you can keep using the old one and we will keep it in the library for quite some time, even though it is marked as deprecated.
+  Please also note that the t-shirt sizes are matching the One Allianz design and not the NDBX design. So if you want to use it already please double check if the font-size matches the design, as it will not necessarily match sizings in Figma for NDBX.
+<p class="docs-markdown--p">Example for the new API:</p>
+<pre><code class="language-html"><span class="hljs-comment">&lt;!-- old usage --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;section&quot;</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- new usage --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;2xl&quot;</span>&gt;</span>
+</code></pre>
+<p class="docs-markdown--p">You can also find a mapping table from old to new values below for One Allianz.</p>
+</div>
+<h4 id="size-input" tabindex="-1" class="docs-markdown--h4">Size input</h4>
+<div nx-docs-example="headline-sizes-a1" config="{}">exampleID: headline-sizes-a1</div>
+<h4 id="mappings" tabindex="-1" class="docs-markdown--h4">Mappings</h4>
+<p class="docs-markdown--p">This table shows you how the old names will translate to in the new design.</p>
+<div nx-docs-example="headline-sizes-mapping" config="{ 'hideHeader': true }">exampleID: headline-sizes-mapping</div>

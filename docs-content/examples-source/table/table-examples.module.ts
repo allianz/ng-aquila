@@ -28,7 +28,8 @@ import { TableFormElementsExampleComponent } from './table-form-elements/table-f
 import { TableSelectingExampleComponent } from './table-selecting/table-selecting-example';
 import { TableSingleSelectExampleComponent } from './table-single-select/table-single-select-example';
 import { TableSortingExampleComponent } from './table-sorting/table-sorting-example';
-import { TableStickyExampleComponent } from './table-sticky/table-sticky-example';
+import { TableStickyColumnExampleComponent } from './table-sticky-column/table-sticky-column-example';
+import { TableStickyHeaderExampleComponent } from './table-sticky-header/table-sticky-header-example';
 import { TableZebraExampleComponent } from './table-zebra/table-zebra-example';
 
 const EXAMPLES = [
@@ -43,7 +44,8 @@ const EXAMPLES = [
     TableSortingExampleComponent,
     TableZebraExampleComponent,
     TableFormElementsExampleComponent,
-    TableStickyExampleComponent,
+    TableStickyColumnExampleComponent,
+    TableStickyHeaderExampleComponent,
     TableCoumnHidingExampleComponent,
 ];
 
@@ -85,7 +87,8 @@ export class TableExamplesModule {
             'table-sorting': TableSortingExampleComponent,
             'table-zebra': TableZebraExampleComponent,
             'table-form-elements': TableFormElementsExampleComponent,
-            'table-sticky': TableStickyExampleComponent,
+            'table-sticky-column': TableStickyColumnExampleComponent,
+            'table-sticky-header': TableStickyHeaderExampleComponent,
             'table-column-hiding': TableCoumnHidingExampleComponent,
         };
     }

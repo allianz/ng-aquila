@@ -1,0 +1,20 @@
+<div class="table-container">
+    <table nxTable>
+        <thead>
+            <tr nxTableRow mayStick="true">
+                <th nxHeaderCell>Product</th>
+                <th nxHeaderCell>Contract Number</th>
+                <th nxHeaderCell>Description</th>
+                <th nxHeaderCell>Ending At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr nxTableRow *ngFor="let item of tableElements">
+                <td nxTableCell>{{item.product}}</td>
+                <td nxTableCell>{{item.contractNumber}}</td>
+                <td nxTableCell>{{item.desc}}</td>
+                <td nxTableCell>{{item.endingAt}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

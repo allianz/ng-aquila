@@ -11,7 +11,11 @@
 <h3 id="sticky-columns" tabindex="-1" class="docs-markdown--h3">Sticky columns</h3>
 <p class="docs-markdown--p">Using attribute <code>sticky</code>, you can make first or last column (or both of them at the same time) of the table be displayed as &quot;sticky&quot;, by setting its value to <code>first</code>, <code>last</code> or <code>both</code> respectively.</p>
 <p class="docs-markdown--p">Please note that you are only allowed to make the first and/or last column sticky, to prohibit covering too much screen estate by fixed columns. For the same reason, this setting won't have effect on mobile screens.</p>
-<div nx-docs-example="table-sticky" config="{}">exampleID: table-sticky</div>
+<div nx-docs-example="table-sticky-column" config="{}">exampleID: table-sticky-column</div>
+<h3 id="sticky-header" tabindex="-1" class="docs-markdown--h3">Sticky header</h3>
+<p class="docs-markdown--p">For a simple &quot;sticky&quot; header you can use the attribute <code>mayStick</code> on the <code>nxTableRow</code> element.</p>
+<p class="docs-markdown--p">For more complex use-cases, please consider either coming up with a custom CSS/Typescript solution or using a third-party datatable library.</p>
+<div nx-docs-example="table-sticky-header" config="{}">exampleID: table-sticky-header</div>
 <h3 id="column-hiding-and-reorder-columns" tabindex="-1" class="docs-markdown--h3">Column hiding and reorder columns</h3>
 <p class="docs-markdown--p">Application developers can implement custom column behavior, such as column hiding and reorder columns.</p>
 <div nx-docs-example="table-column-hiding" config="{}">exampleID: table-column-hiding</div>
