@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [16.3.0](https://github.com/allianz/ng-aquila/compare/v16.2.0...v16.3.0) (2023-06-21)
+
+
+### Bug Fixes
+
+* **datepicker:** have fallback for locale normalize format ([294027a](https://github.com/allianz/ng-aquila/commit/294027a707adbbef08e5d8bb7079010e17e69b40))
+* **schematics:** add workaround for nx workspaces ([63c361b](https://github.com/allianz/ng-aquila/commit/63c361b7b8e396e90b7e85e9542fd188d1464ce0))
+
+
+### Features
+
+* **table:** table row maystick ([7ea074a](https://github.com/allianz/ng-aquila/commit/7ea074a2241a6308674ac8adc94f8eaf726729f2))
+
+
+
 # [16.2.0](https://github.com/allianz/ng-aquila/compare/v16.1.0...v16.2.0) (2023-06-13)
 
 
