@@ -27,8 +27,7 @@ abstract class PopoverTest {
     closeable = false;
 }
 
-// eslint-disable-next-line jasmine/no-focused-tests
-fdescribe('NxPopoverTriggerDirective', () => {
+describe('NxPopoverTriggerDirective', () => {
     let fixture: ComponentFixture<PopoverTest>;
     let testInstance: PopoverTest;
     let popoverInstance: NxPopoverComponent;
