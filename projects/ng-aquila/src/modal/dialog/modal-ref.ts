@@ -106,7 +106,7 @@ export class NxModalRef<T, R = any> {
     close(modalResult?: R): void {
         this._result = modalResult;
 
-        const shouldClose = this.shouldClose?.(modalResult);
+        const shouldClose = this?.shouldClose && this.shouldClose?.(modalResult);
         if (!shouldClose) {
             this.closeDenied.next();
             return;
