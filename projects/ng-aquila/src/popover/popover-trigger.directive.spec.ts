@@ -1,12 +1,12 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { ENTER, ESCAPE, SPACE } from '@angular/cdk/keycodes';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { Component, Directive, Type, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject, Subscription } from 'rxjs';
 
-import { dispatchFakeEvent } from '../cdk-test-utils';
+import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxPopoverComponent } from './popover.component';
 import { NxPopoverModule } from './popover.module';
 import { NxPopoverIntl } from './popover-intl';
@@ -351,10 +351,9 @@ describe('NxPopoverTriggerDirective', () => {
         it('should close the popover by hitting Esc key', fakeAsync(() => {
             createTestComponent(PopoverClickComponent);
             click();
-            const event = new KeyboardEvent('keyup', {
-                key: 'Escape',
-            });
-            document.body.dispatchEvent(event);
+
+            dispatchKeyboardEvent(document.body, 'keydown', ESCAPE);
+
             expect(getPopoverContent()).toBeFalsy();
             flush();
         }));
@@ -491,11 +490,8 @@ describe('NxPopoverTriggerDirective', () => {
             click();
             expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledWith(true);
 
-            const event = new KeyboardEvent('keyup', {
-                key: 'Escape',
-            });
+            dispatchKeyboardEvent(document.body, 'keydown', ESCAPE);
 
-            document.body.dispatchEvent(event);
             expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledWith(false);
             expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledTimes(2);
             flush();

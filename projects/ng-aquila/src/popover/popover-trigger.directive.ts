@@ -1,7 +1,7 @@
 import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory, FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ENTER, SPACE, TAB } from '@angular/cdk/keycodes';
+import { ENTER, ESCAPE, SPACE, TAB } from '@angular/cdk/keycodes';
 import {
     ConnectionPositionPair,
     FlexibleConnectedPositionStrategy,
@@ -95,7 +95,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     private _elementFocusedBeforePopoverWasOpened: HTMLElement | null = null;
     private readonly _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
     private readonly _possiblePopoverDirections: PopoverDirection[] = ['bottom', 'top', 'left', 'right'];
-    private _removeEventListener!: () => void;
 
     closeOnLeftViewport = new IntersectionObserver(
         entries => {
@@ -284,12 +283,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     ngAfterViewInit(): void {
         this.popover.id = this.id;
 
-        this._removeEventListener = this.eventManager.addEventListener(document.body, 'keyup.esc', () => {
-            if (this.isOpen) {
-                this.show = false;
-            }
-        }) as () => void;
-
         this.popover.closeButtonClick.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this.show = false;
         });
@@ -303,7 +296,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         this._destroyed.next();
         this._destroyed.complete();
         this.show = false;
-        this._removeEventListener();
         this._focusMonitor.stopMonitoring(this.elementRef.nativeElement);
         // Clean up the event listeners set in the constructor
         this._manualListeners.forEach((listener, event) => {
@@ -443,6 +435,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
             this.subscribeToPositions(overlayState.positionStrategy as FlexibleConnectedPositionStrategy);
             this._subscribeToAttach();
             this._subscribeToDetach();
+            this._subscribeToKeypress();
+
             if (this._modal && this._closeOnClickOutside) {
                 this._subscribeToBackdropClick();
             }
@@ -497,6 +491,19 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
             .pipe(takeUntil(this._overlayDestroyed))
             .subscribe(data => {
                 this.changeShow.emit(this._show);
+            });
+    }
+
+    private _subscribeToKeypress() {
+        this.overlayRef!.keydownEvents()
+            .pipe(
+                filter(event => event.keyCode === ESCAPE),
+                takeUntil(this._overlayDestroyed),
+            )
+            .subscribe(event => {
+                if (this.isOpen) {
+                    this.show = false;
+                }
             });
     }
 
