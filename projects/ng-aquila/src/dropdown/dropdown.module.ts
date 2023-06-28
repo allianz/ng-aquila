@@ -16,6 +16,7 @@ import { NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER, NxDropdownComponent, NxDropdownIn
 import { NxDropdownGroupComponent } from './group/dropdown-group';
 import { NxDropdownItemComponent } from './item/dropdown-item';
 import { NxMultiSelectComponent } from './multi-select/multi-select.component';
+import { NxMultiSelectAllComponent } from './multi-select/multi-select-all.component';
 import { NxMultiSelectOptionComponent } from './multi-select/multi-select-option.component';
 
 @NgModule({
@@ -39,6 +40,7 @@ import { NxMultiSelectOptionComponent } from './multi-select/multi-select-option
         NxDropdownClosedLabelDirective,
         NxMultiSelectComponent,
         NxMultiSelectOptionComponent,
+        NxMultiSelectAllComponent,
     ],
     providers: [NxDropdownIntl, NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER],
     exports: [NxDropdownComponent, NxDropdownItemComponent, NxDropdownGroupComponent, NxDropdownClosedLabelDirective, NxMultiSelectComponent],

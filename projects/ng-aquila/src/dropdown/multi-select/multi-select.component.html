@@ -51,11 +51,16 @@
         <div *ngIf="!_isOutline && _overlayLabel" class="panel-header" #panelHeader>
             {{ _overlayLabel }}
         </div>
+
         <div class="item actions select-all" *ngIf="_isOutline && !disableSelectAll">
-            <nx-checkbox [ngModel]="_allSelected" (ngModelChange)="_onSelectAll()" [indeterminate]="_someSelected">
-                {{ _intl.selectAll }}
-            </nx-checkbox>
+            <nx-multi-select-all
+                (selectedAllChange)="_onSelectAll()"
+                [label]="_intl.selectAll"
+                [indeterminate]="_someSelected"
+                #selectAllCheckbox
+            ></nx-multi-select-all>
         </div>
+
         <div *ngIf="filter" class="filter-wrapper">
             <nx-formfield class="filter" appearance="auto">
                 <input
@@ -91,6 +96,7 @@
                 [selected]="this.selectedItems.has(option)"
                 [disabled]="this._isDisabled(option)"
                 [appearance]="_appearance"
+                #option
             ></nx-multi-select-option>
         </div>
     </div>

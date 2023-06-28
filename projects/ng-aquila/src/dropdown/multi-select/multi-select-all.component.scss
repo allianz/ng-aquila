@@ -1,0 +1,8 @@
+@import '../../shared-styles/index';
+
+.nx-checkbox {
+    &.is-active {
+        @include focus-style;
+        border-radius: 4px;
+    }
+}

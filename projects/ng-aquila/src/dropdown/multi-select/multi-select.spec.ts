@@ -25,7 +25,7 @@ class MultiSelectHarness extends ComponentHarness {
 
     getOptions = this.documentRootLocator.locatorForAll(MultiSelectOptionHarness);
 
-    getSelectAllButton = this.documentRootLocator.locatorForOptional('.actions input[type="checkbox"]');
+    getSelectAllButton = this.documentRootLocator.locatorForOptional('nx-multi-select-all');
 
     getClearAllButton = this.documentRootLocator.locatorForOptional('.actions button');
 
@@ -72,7 +72,7 @@ class MultiSelectHarness extends ComponentHarness {
 
     async click() {
         const trigger = await this.getValue();
-        trigger.click();
+        await trigger.click();
     }
 
     async clickOption(index: number) {
@@ -205,10 +205,10 @@ describe('NxMultiSelectComponent', () => {
                     await panel?.focus();
                 });
 
-                it('focuses the filter', fakeAsync(async () => {
+                it('focuses the filter', async () => {
                     const filter = await multiSelectHarness.getFilter();
                     expect(await filter?.isFocused()).toBeTrue();
-                }));
+                });
             });
 
             it('shows all options', async () => {
@@ -479,6 +479,7 @@ describe('NxMultiSelectComponent', () => {
             describe('and navigate to next option', () => {
                 beforeEach(async () => {
                     await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
+                    await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
                 });
 
                 it('sets the first option active', async () => {
@@ -568,6 +569,7 @@ describe('NxMultiSelectComponent', () => {
                         // set second option active
                         await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
                         await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
+                        await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
                         // filter it
                         await multiSelectHarness.setFilter('BMW');
                     });
@@ -649,9 +651,15 @@ describe('NxMultiSelectComponent', () => {
             });
 
             describe('with appearance auto', () => {
-                beforeEach(() => {
+                beforeEach(async () => {
                     testInstance.appearance = 'auto';
                     fixture.detectChanges();
+                    // we need to click again to simulate some form of user interaction to trigger CD
+                    // in the multiselect itself. there is currently no connection between the formfield and the control
+                    // that the control should run CD when the formfield changes, only from control to formfield.
+                    // in reality this is kind of an edge case, it's very unlikely that the formfield appearance gets changed
+                    // while the overlay is open
+                    await multiSelectHarness.click();
                 });
 
                 it('has no action buttons', async () => {
@@ -660,6 +668,7 @@ describe('NxMultiSelectComponent', () => {
 
                 it('has a header in the panel', async () => {
                     const panelHeader = await multiSelectHarness.getPanelHeader();
+
                     expect(panelHeader).not.toBeNull();
                     expect(await panelHeader?.text()).toBe('Car brand');
                 });

@@ -27,6 +27,7 @@ import { filter, map, take, takeUntil } from 'rxjs/operators';
 
 import { NxDropdownIntl } from '../dropdown';
 import { getPositionOffset, getPositions } from '../dropdown-position';
+import { NxMultiSelectAllComponent } from './multi-select-all.component';
 import { NxMultiSelectOptionComponent } from './multi-select-option.component';
 
 let id = 0;
@@ -182,7 +183,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         );
     }
 
-    @ViewChildren(NxMultiSelectOptionComponent) private _options!: QueryList<NxMultiSelectOptionComponent<T>>;
+    @ViewChildren('selectAllCheckbox,option') private _options!: QueryList<NxMultiSelectAllComponent<T> | NxMultiSelectOptionComponent<T>>;
 
     /** Event emitted when the select panel has been toggled. */
     @Output() readonly openedChange = new EventEmitter<boolean>();
@@ -246,7 +247,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     readonly stateChanges = new Subject<any>();
 
-    _keyManager!: ActiveDescendantKeyManager<NxMultiSelectOptionComponent<T>>;
+    _keyManager!: ActiveDescendantKeyManager<NxMultiSelectOptionComponent<T> | NxMultiSelectAllComponent<T>>;
 
     /**
      * List of options to choose from.
@@ -515,7 +516,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
         if (this._isActiveItemFiltered) {
             setTimeout(() => {
-                this._keyManager.setFirstItemActive();
+                this._keyManager.setActiveItem(1);
             });
         }
 
@@ -542,7 +543,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             this._panelContent?.nativeElement.focus();
 
             if (this._openedBy === 'keyboard') {
-                this._keyManager.setFirstItemActive();
+                this._keyManager.setActiveItem(1);
                 this._scrollActiveOptionIntoView();
             }
             this.openedChange.emit(true);
@@ -658,11 +659,11 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     private _initKeyManager() {
-        this._keyManager = new ActiveDescendantKeyManager<NxMultiSelectOptionComponent<T>>(this._options)
+        this._keyManager = new ActiveDescendantKeyManager<NxMultiSelectAllComponent<T> | NxMultiSelectOptionComponent<T>>(this._options)
             .withHomeAndEnd()
             .withVerticalOrientation()
             .withHorizontalOrientation('ltr')
-            .skipPredicate(item => item.disabled);
+            .skipPredicate(item => item?.disabled);
 
         this._keyManager.tabOut.pipe(takeUntil(this._destroyed)).subscribe(() => this._close());
     }
