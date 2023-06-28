@@ -506,9 +506,9 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     _onFilterChange(query: string | null | undefined) {
         if (query) {
-            this.listItems = this.options.sort(this.sortSelectedToTop).filter(item => this.filterFn(query, this._selectLabel(item)));
+            this.listItems = [...this.options].sort(this.sortSelectedToTop).filter(item => this.filterFn(query, this._selectLabel(item)));
         } else {
-            this.listItems = this.options.slice();
+            this.listItems = [...this.options].sort(this.sortSelectedToTop).slice();
         }
 
         this._divider = this.listItems.filter(element => this.selectedItems.has(element)).length - 1;

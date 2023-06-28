@@ -297,7 +297,7 @@ describe('NxMultiSelectComponent', () => {
                 await multiSelectHarness.closeWithEsc();
                 await multiSelectHarness.click();
                 await multiSelectHarness.setFilter('m');
-                expect(multiSelectInstance.listItems).toEqual(['BMW', 'Mini', 'Mercedez']);
+                expect(multiSelectInstance.listItems).toEqual(['BMW', 'Mini', 'Mercedes']);
                 expect(multiSelectInstance._divider).toEqual(1);
             });
 
@@ -359,11 +359,11 @@ describe('NxMultiSelectComponent', () => {
                 });
 
                 it('shows the value in the trigger', async () => {
-                    expect(await multiSelectHarness.getValueText()).toBe('BMW, Audi, Volvo, Mini, Mercedez(5)');
+                    expect(await multiSelectHarness.getValueText()).toBe('BMW, Audi, Volvo, Mini, Mercedes(5)');
                 });
 
                 it('updates the model', async () => {
-                    expect(testInstance.model).toEqual(['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedez']);
+                    expect(testInstance.model).toEqual(['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes']);
                 });
 
                 describe('and deselecting all', () => {
@@ -617,6 +617,24 @@ describe('NxMultiSelectComponent', () => {
                     expect(await multiSelectHarness.getOptions()).toHaveSize(1);
                     expect(await (await (await multiSelectHarness.getOptions()).at(0)?.getLabel())?.text()).toBe('BMW');
                 });
+
+                it('shows original options when filter/select then unfilter/unselect', async () => {
+                    await multiSelectHarness.setFilter('');
+
+                    testInstance.model = ['Volvo'];
+                    await multiSelectHarness.setFilter('Volvo');
+                    expect(await multiSelectHarness.getOptions()).toHaveSize(1);
+
+                    testInstance.model = [];
+                    await multiSelectHarness.setFilter('');
+                    expect(await multiSelectHarness.getOptions()).toHaveSize(5);
+
+                    const options = await multiSelectHarness.getOptions();
+
+                    ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes'].forEach(async (label, i) => {
+                        expect(await options[i].getLabelText()).toBe(label);
+                    });
+                });
             });
 
             describe('without filter', () => {
@@ -797,7 +815,7 @@ abstract class DropdownTest {
     </nx-formfield>`,
 })
 class BasicMultiSelectComponent extends DropdownTest {
-    options = ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedez'];
+    options = ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes'];
 }
 
 interface ComplexOption {
