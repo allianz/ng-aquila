@@ -249,7 +249,7 @@ $sticky-shadow-size: nx-spacer(3xs);
         .nx-header-cell {
             position: sticky;
             top: 0;
-            background: v(ui-background); //since `table-header-cell-background-color` is currently transparent in all themes
+            background: v(ui-01); //since `table-header-cell-background-color` is currently transparent in all themes
         }
     }
 }
