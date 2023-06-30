@@ -7,6 +7,8 @@ import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxHeaderModule } from '@aposin/ng-aquila/header';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
+import { NxMessageModule } from '@aposin/ng-aquila/message';
+import { NxErrorModule } from '@aposin/ng-aquila/base';
 
 import { ExampleFullScreenModule } from '../example-full-screen/example-full-screen.module';
 import { ComponentService } from '../service/component.service';
@@ -63,6 +65,8 @@ class DestroyComponentPageRouteReuseStrategy extends BaseRouteReuseStrategy {
         CssVarSidebarModule,
         ExampleFullScreenModule,
         NxvSearchInputModule,
+        NxMessageModule,
+        NxErrorModule,
     ],
     exports: [RouterModule],
     declarations: [DocumentationFrameComponent],
