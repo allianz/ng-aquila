@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [16.3.1](https://github.com/allianz/ng-aquila/compare/v16.3.0...v16.3.1) (2023-06-30)
+
+
+### Bug Fixes
+
+* **card:** fix highlight background token ([2a52654](https://github.com/allianz/ng-aquila/commit/2a5265496e17e8eea80af84009fcfaf6c0270f68))
+* **multi-select:** add select all to keyboard nav ([f101dbf](https://github.com/allianz/ng-aquila/commit/f101dbfc1d63479588a5d39d4be528c7d56fb325))
+* **multi-select:** prevent incorrect sorting of the list when applying filter ([ebe1381](https://github.com/allianz/ng-aquila/commit/ebe1381b730cf135e2ed52685329e83ec09f9a15))
+* **table:** default sticky row background ([f3acc02](https://github.com/allianz/ng-aquila/commit/f3acc0273466c6fa78379f2ccb2b258da043a10e))
+
+
+
 # [16.3.0](https://github.com/allianz/ng-aquila/compare/v16.2.0...v16.3.0) (2023-06-21)
 
 
