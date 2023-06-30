@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [16.3.2](https://github.com/allianz/ng-aquila/compare/v16.3.1...v16.3.2) (2023-06-30)
+
+This is a technical release containing internal documentation changes.
+
 ## [16.3.1](https://github.com/allianz/ng-aquila/compare/v16.3.0...v16.3.1) (2023-06-30)
 
 
