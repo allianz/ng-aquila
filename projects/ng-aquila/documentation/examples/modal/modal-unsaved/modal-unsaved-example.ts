@@ -11,7 +11,7 @@ import { delay } from 'rxjs/operators';
 type MyDialogResult = 'proceed' | 'cancel';
 
 /**
- * @title Modal with unsave changes popover example
+ * @title Modal with unsaved changes and popover example
  */
 @Component({
     selector: 'modal-unsaved-example',

@@ -160,6 +160,10 @@ When a dialog opens, the first focusable element will be focused. The CdkOverlay
 
 Pressing the escape key will close the dialog per default. You can disable this behaviour by setting the `disabledClose` option to false in the `NxModalConfig`, but it is recommended to keep it on as it is the expected behaviour of a modal dialog.
 
+ ### Block modal closing
+The following example demonstrates the usage of the `shouldClose` and `closeDenied` APIs to create a modal that displays a popover notification when attempting to close the modal with unsaved data.
+ <!-- example(modal-unsaved) -->
+
 ### Deprecated Modal Component
 
 The example below shows the previous implementation of the modal dialog, which is already deprecated and should not be used.
@@ -177,7 +181,3 @@ import { NxModalModule } from '@aposin/ng-aquila/modal';
 ```
 
 <!-- example(modal-basic) -->
-
- ### Modal unsaved
-The following example demonstrates the usage of the `shouldClose` and `closeDenied` APIs to create a modal that displays a popover notification when attempting to close the modal with unsaved data.
- <!-- example(modal-unsaved) -->
