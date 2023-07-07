@@ -241,7 +241,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
                     switch (event.keyCode) {
                         case SPACE:
                             this.handleClick();
-                            event?.preventDefault(); // prevent page scroll
                             break;
                         case ENTER:
                             this.handleClick();
@@ -384,6 +383,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
             if (!hasMovedFocus) {
                 element.focus();
             }
+            event?.preventDefault(); // prevent page scroll
         });
     }
 
