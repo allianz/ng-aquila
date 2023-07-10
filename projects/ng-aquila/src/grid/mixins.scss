@@ -3,8 +3,7 @@
 @import '../shared-styles/index';
 
 @mixin make-grid-columns-bem-style($columns: $grid-columns, $gutters: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
-    // Common properties for all breakpoints
-    %grid-column {
+    :host.nx-grid__column {
         position: relative;
         width: 100%;
         min-height: 1px; // Prevent columns from collapsing when empty
@@ -14,21 +13,6 @@
 
     @each $breakpoint in map-keys($breakpoints) {
         $infix: breakpoint-infix($breakpoint, $breakpoints);
-
-        // Allow columns to stretch full width below their breakpoints
-        @for $i from 1 through $columns {
-            :host(.nx-grid__column#{$infix}-#{$i}) {
-                @extend %grid-column;
-            }
-        }
-
-        :host(.nx-grid__column#{$infix}) {
-            @extend %grid-column;
-        }
-
-        :host(.nx-grid__column#{$infix}-fit) {
-            @extend %grid-column;
-        }
 
         @include media-breakpoint-up($breakpoint, $breakpoints) {
             :host(.nx-grid__column#{$infix}) {
@@ -45,14 +29,6 @@
             @for $i from 1 through $columns {
                 :host(.nx-grid__column#{$infix}-#{$i}) {
                     @include make-col($i, $columns);
-                }
-            }
-
-            @each $modifier in (pull, push) {
-                @for $i from 0 through $columns {
-                    .#{$modifier}#{$infix}-#{$i} {
-                        @include make-col-modifier($modifier, $i, $columns);
-                    }
                 }
             }
 

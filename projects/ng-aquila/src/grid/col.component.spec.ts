@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NxGridModule } from '@aposin/ng-aquila/grid';
 
-import { sortedClassNames } from '../cdk-test-utils';
 import { NxColComponent } from './col.component';
 
 @Directive()
@@ -123,7 +122,9 @@ describe('NxColDirective', () => {
             createTestComponent(OffsetTest);
             const col = getColumn();
             const expected = ['nx-grid--offset-9', 'nx-grid__column-10'];
-            expect(sortedClassNames(col)).toEqual(expected);
+            expected.forEach(className => {
+                expect(col).toHaveClass(className);
+            });
         });
 
         it('should test with 9,6', () => {
@@ -139,7 +140,9 @@ describe('NxColDirective', () => {
                 'nx-grid--offset-xlarge-6',
                 'nx-grid__column-10',
             ];
-            expect(sortedClassNames(col)).toEqual(expected);
+            expected.forEach(className => {
+                expect(col).toHaveClass(className);
+            });
         });
 
         it('should test with 9,6,5', () => {
@@ -155,7 +158,9 @@ describe('NxColDirective', () => {
                 'nx-grid--offset-xlarge-5',
                 'nx-grid__column-10',
             ];
-            expect(sortedClassNames(col)).toEqual(expected);
+            expected.forEach(className => {
+                expect(col).toHaveClass(className);
+            });
         });
 
         it('should test with 9,6,5,3', () => {
@@ -171,7 +176,9 @@ describe('NxColDirective', () => {
                 'nx-grid--offset-xlarge-3',
                 'nx-grid__column-10',
             ];
-            expect(sortedClassNames(col)).toEqual(expected);
+            expected.forEach(className => {
+                expect(col).toHaveClass(className);
+            });
         });
 
         it('should test with 9,6,5,0', () => {
@@ -187,7 +194,9 @@ describe('NxColDirective', () => {
                 'nx-grid--offset-xlarge-0',
                 'nx-grid__column-10',
             ];
-            expect(sortedClassNames(col)).toEqual(expected);
+            expected.forEach(className => {
+                expect(col).toHaveClass(className);
+            });
         });
     });
 
@@ -214,7 +223,9 @@ describe('NxColDirective', () => {
                 'nx-grid--offset-2',
                 'nx-grid__column-10',
             ];
-            expect(sortedClassNames(col)).toEqual(expected);
+            expected.forEach(className => {
+                expect(col).toHaveClass(className);
+            });
 
             test.cols = '3';
             test.offset = '4';
@@ -240,7 +251,9 @@ describe('NxColDirective', () => {
                 'nx-grid--offset-4',
                 'nx-grid__column-3',
             ];
-            expect(sortedClassNames(col)).toEqual(expectedUpdate);
+            expectedUpdate.forEach(className => {
+                expect(col).toHaveClass(className);
+            });
         });
     });
 });

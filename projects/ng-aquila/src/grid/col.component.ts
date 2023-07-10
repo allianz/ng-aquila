@@ -55,6 +55,7 @@ export type ColOrder = 'first' | 'last' | 'unordered';
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['col.component.scss'],
     host: {
+        '[class.nx-grid__column]': 'true',
         '[class]': '_classNames',
     },
 })

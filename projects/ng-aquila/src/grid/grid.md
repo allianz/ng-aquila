@@ -25,7 +25,7 @@ This bar will show you the current tier of the grid. Change the size of your bro
 
 #### Breakpoints
 
-You can size columns and apply modifications (like justify, push, pull properties) depending on a given set of breakpoints. You will find a set of 7 tiers called tiny, small, medium, large, xlarge, 2xlarge and 3xlarge. We are mobile first, so you will never use tiny as it's the default case.
+You can size columns and apply modifiers (like justify or offset properties) depending on a given set of breakpoints. You will find a set of 7 tiers called tiny, small, medium, large, xlarge, 2xlarge and 3xlarge. We are mobile first, so you will never use tiny as it's the default case.
 
 When you specify a tier, it is always understood as from that tier up.
 
@@ -80,7 +80,7 @@ Never forget a row when using a column; otherwise you will have spacing problems
 
 The grid is based on the common 12 column base. This means that a single column takes up 1/12 of the available width. You can configure a column to take up more space ranging from 1 to 12 columns by using the directive `nxCol`.
 
-There are modifiers available like `align-self-start`, `push`, `pull` and `offset`.
+There are modifiers available like `align-self-start` and `offset`.
 
 ### Examples
 
