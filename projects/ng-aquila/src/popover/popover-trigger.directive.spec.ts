@@ -64,6 +64,7 @@ describe('NxPopoverTriggerDirective', () => {
                 PopoverWithinRTLContainer,
                 PopoverClickShadowDomComponent,
                 I18nTest,
+                PopoverDivTrigger,
             ],
         });
 
@@ -110,6 +111,8 @@ describe('NxPopoverTriggerDirective', () => {
     }
 
     function getPopoverContent(): HTMLDivElement {
+        console.log(overlayContainer.getContainerElement().querySelector('.nx-popover__content'));
+
         return overlayContainer.getContainerElement().querySelector('.nx-popover__content') as HTMLDivElement;
     }
 
@@ -413,6 +416,22 @@ describe('NxPopoverTriggerDirective', () => {
             flush();
 
             checkPopoverOpen(false);
+        }));
+
+        it('should call preventDefault if trigger is not button element', fakeAsync(() => {
+            createTestComponent(PopoverDivTrigger);
+            fixture.detectChanges();
+
+            const triggerElement = fixture.debugElement.query(By.css('.trigger'));
+            const keydownEvent = new KeyboardEvent('keydown', { keyCode: SPACE, which: SPACE });
+            const spy = spyOn(keydownEvent, 'preventDefault');
+            triggerElement.nativeElement.dispatchEvent(keydownEvent);
+
+            fixture.detectChanges();
+            flush();
+
+            checkPopoverOpen(true);
+            expect(spy).toHaveBeenCalled();
         }));
     });
 
@@ -861,3 +880,9 @@ class PopoverWithinRTLContainer extends PopoverTest {
     ],
 })
 class I18nTest extends PopoverTest {}
+
+@Component({
+    template: `<div [nxPopoverTriggerFor]="popoverClick" nxPopoverTrigger="click" tabindex="1" class="trigger">Div</div>
+        <nx-popover #popoverClick>Content</nx-popover><button></button>`,
+})
+class PopoverDivTrigger extends PopoverTest {}
