@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectorRef, Directive, ElementRef, HostBinding, Input, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Directive, ElementRef, HostBinding, Input, NgZone, OnDestroy } from '@angular/core';
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 
 /** Type of a button. */
@@ -149,4 +149,28 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
         this.active = false;
         this._cdr.markForCheck();
     }
+}
+
+/** @docs-private **/
+@Directive()
+export class NxAnchorButtonBase extends NxButtonBase {
+    constructor(private _ngZone: NgZone, _cdr: ChangeDetectorRef, elementRef: ElementRef, focusMonitor: FocusMonitor) {
+        super(_cdr, elementRef, focusMonitor);
+        this._ngZone.runOutsideAngular(() => {
+            (<HTMLAnchorElement>this.elementRef.nativeElement).addEventListener('click', this._checkEventsDisabled);
+        });
+    }
+
+    override ngOnDestroy() {
+        super.ngOnDestroy();
+        (<HTMLAnchorElement>this.elementRef.nativeElement).removeEventListener('click', this._checkEventsDisabled);
+    }
+
+    /** @docs-private */
+    private _checkEventsDisabled = (event: Event) => {
+        if (this.disabled) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        }
+    };
 }

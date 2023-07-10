@@ -1,28 +1,16 @@
-import { FocusMonitor } from '@angular/cdk/a11y';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
-
-import { NxButtonComponent } from './button.component';
+import { NxAnchorButtonBase } from './button-base';
 
 @Component({
     templateUrl: './button.html',
     styleUrls: ['button.scss'],
     selector: 'a[nxButton]',
-    inputs: ['classNames:nxButton'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    inputs: ['classNames:nxButton'],
     providers: [{ provide: NxTriggerButton, useExisting: NxAnchorButtonComponent }],
+    host: {
+        class: 'nx-button',
+    },
 })
-export class NxAnchorButtonComponent extends NxButtonComponent {
-    /** @docs-private */
-    @HostListener('click', ['$event'])
-    _checkEventsDisabled(event: Event) {
-        if (this.disabled) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-        }
-    }
-
-    constructor(_cdr: ChangeDetectorRef, elementRef: ElementRef, focusMonitor: FocusMonitor) {
-        super(_cdr, elementRef, focusMonitor);
-    }
-}
+export class NxAnchorButtonComponent extends NxAnchorButtonBase {}

@@ -1,59 +1,64 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { NxAnchorPlainButtonComponent } from './anchor-plain-button.component';
-import { NxButtonModule } from './button.module';
+import { NxAnchorPlainButtonComponent, NxButtonModule } from '.';
+import { NxAnchorButtonComponent } from './anchor-button.component';
 
 @Directive()
-abstract class ButtonTest {
-    @ViewChild('button') buttonInstance!: NxAnchorPlainButtonComponent;
-
-    disabled = false;
+abstract class AnchorButtonTest {
+    @ViewChild('button') buttonInstance!: NxAnchorButtonComponent;
 }
 
 @Component({
-    template: `<a [nxPlainButton]="classNames" #button>Hello Button</a>`,
+    template: `<a nxPlainButton #button href="#" class="some-arbitrary-class-name">Link Text</a>`,
 })
-class BasicButton extends ButtonTest {}
+class TestInstance extends AnchorButtonTest {
+    clickBindingSpy = jasmine.createSpy('clickSpy');
+}
 
-describe('NxAnchorPlainButtonComponent', () => {
-    let fixture: ComponentFixture<ButtonTest>;
-    let testInstance: ButtonTest;
-    let buttonElement: HTMLAnchorElement;
-
-    function createTestComponent(component: Type<ButtonTest>) {
-        fixture = TestBed.createComponent(component);
-        fixture.detectChanges();
-        testInstance = fixture.componentInstance;
-        buttonElement = fixture.nativeElement.querySelector('a') as HTMLAnchorElement;
-    }
-
+describe('NxAnchorButtonComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
+            declarations: [TestInstance],
             imports: [NxButtonModule],
-            declarations: [BasicButton],
         }).compileComponents();
     }));
 
-    it('should create the button component', () => {
-        createTestComponent(BasicButton);
-        expect(testInstance.buttonInstance).toBeTruthy();
-        expect(buttonElement).toBeTruthy();
-        expect(buttonElement.textContent).toBe('Hello Button');
-    });
+    let fixture: ComponentFixture<TestInstance>;
+    let testInstance: TestInstance;
+    let buttonInstance: NxAnchorPlainButtonComponent;
+    let buttonNativeElement: HTMLAnchorElement;
 
-    it('prevents default when the anchor button is disabled', fakeAsync(() => {
-        createTestComponent(BasicButton);
-        const clickSpy = jasmine.createSpy('clickSpy');
-        buttonElement.addEventListener('click', clickSpy);
-        testInstance.buttonInstance.disabled = true;
-        buttonElement.click();
-        expect(clickSpy).toHaveBeenCalledTimes(0);
+    function createTestComponent(component: Type<TestInstance>) {
+        fixture = TestBed.createComponent(component);
+        fixture.detectChanges();
+        testInstance = fixture.componentInstance;
+        buttonInstance = fixture.componentInstance.buttonInstance;
+        buttonNativeElement = fixture.nativeElement.querySelector('a') as HTMLAnchorElement;
+    }
+
+    it('creates the button', waitForAsync(() => {
+        createTestComponent(TestInstance);
+        expect(buttonInstance).toBeTruthy();
     }));
+
+    it('has correct base class', waitForAsync(() => {
+        createTestComponent(TestInstance);
+        expect(buttonNativeElement).toHaveClass('nx-plain-button');
+    }));
+
+    it('disabled state prevents click binding on host element from firing', () => {
+        createTestComponent(TestInstance);
+        fixture.detectChanges();
+        buttonInstance.disabled = true;
+        buttonNativeElement.click();
+
+        expect(testInstance.clickBindingSpy).not.toHaveBeenCalled();
+    });
 
     describe('a11y', () => {
         it('has no accessibility violations', async () => {
-            createTestComponent(BasicButton);
+            createTestComponent(TestInstance);
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
     });

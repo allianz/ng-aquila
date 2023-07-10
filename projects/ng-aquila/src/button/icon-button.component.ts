@@ -12,7 +12,7 @@ import { NxButtonBase } from './button-base';
     inputs: ['classNames:nxIconButton'],
     providers: [{ provide: NxTriggerButton, useExisting: NxIconButtonComponent }],
     host: {
-        '[class.nx-icon-button]': 'true',
+        class: 'nx-icon-button',
     },
 })
 export class NxIconButtonComponent extends NxButtonBase {

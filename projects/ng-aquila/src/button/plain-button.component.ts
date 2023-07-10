@@ -15,7 +15,7 @@ export type NxPlainButtonVariant = 'primary' | 'secondary';
     changeDetection: ChangeDetectionStrategy.OnPush,
     inputs: ['classNames:nxPlainButton'],
     host: {
-        '[class.nx-plain-button]': 'true',
+        class: 'nx-plain-button',
         '[class.nx-plain-button--danger]': 'critical',
         '[class.nx-plain-button--secondary]': 'variant === "secondary"',
         '[class.nx-plain-button--small]': 'size === "small"',
