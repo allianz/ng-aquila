@@ -111,8 +111,6 @@ describe('NxPopoverTriggerDirective', () => {
     }
 
     function getPopoverContent(): HTMLDivElement {
-        console.log(overlayContainer.getContainerElement().querySelector('.nx-popover__content'));
-
         return overlayContainer.getContainerElement().querySelector('.nx-popover__content') as HTMLDivElement;
     }
 
