@@ -240,6 +240,9 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
                 .set('keydown', (event: any) => {
                     switch (event.keyCode) {
                         case SPACE:
+                            if (event?.target?.tagName !== 'BUTTON') {
+                                event?.preventDefault();
+                            }
                             this.handleClick();
                             break;
                         case ENTER:
@@ -383,8 +386,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
             if (!hasMovedFocus) {
                 element.focus();
             }
-            event?.preventDefault(); // prevent page scroll
         });
+        event?.preventDefault(); // prevent page scroll
     }
 
     // detaches the overlay
