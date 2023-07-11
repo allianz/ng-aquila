@@ -102,6 +102,9 @@ myDialogRef.<span class="hljs-title function_">close</span>(<span class="hljs-st
 <p class="docs-markdown--p">The aria-label, aria-labelledby, and aria-describedby attributes of the modal as well as the aria-label of the optional close button can be set via the <code>NxModalConfig</code> as well. It is recommended to at least give a modal an aria-label or aria-labelledby attribute.</p>
 <p class="docs-markdown--p">When a dialog opens, the first focusable element will be focused. The CdkOverlay used in the dialog traps the focus in itself in order to prevent users from interacting with elements in the background. Per default, the focus will be given back to the element which has been focused before the opening of the dialog.</p>
 <p class="docs-markdown--p">Pressing the escape key will close the dialog per default. You can disable this behaviour by setting the <code>disabledClose</code> option to false in the <code>NxModalConfig</code>, but it is recommended to keep it on as it is the expected behaviour of a modal dialog.</p>
+<h3 id="block-modal-closing" tabindex="-1" class="docs-markdown--h3">Block modal closing</h3>
+<p class="docs-markdown--p">The following example demonstrates the usage of the <code>shouldClose</code> and <code>closeDenied</code> APIs to create a modal that displays a popover notification when attempting to close the modal with unsaved data.</p>
+ <div nx-docs-example="modal-unsaved" config="{}">exampleID: modal-unsaved</div>
 <h3 id="deprecated-modal-component" tabindex="-1" class="docs-markdown--h3">Deprecated Modal Component</h3>
 <p class="docs-markdown--p">The example below shows the previous implementation of the modal dialog, which is already deprecated and should not be used.</p>
 <p class="docs-markdown--p">For using it you have to import the <code>NxModalModule</code> as follows:</p>

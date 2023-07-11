@@ -1,0 +1,77 @@
+<button
+    nxButton
+    class="nx-margin-right-xs nx-margin-bottom-m"
+    (click)="openModal()"
+>
+    open modal
+</button>
+
+<ng-template #template>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div nxModalContent>
+            <h3 nxHeadline="subsection-medium" class="nx-modal-margin-bottom">
+                Form in a modal
+            </h3>
+            <nx-formfield label="Text">
+                <input nxInput type="text" formControlName="text" />
+            </nx-formfield>
+        </div>
+
+        <div nxModalActions>
+            <button
+                class="nx-margin-bottom-0 nx-margin-right-xs"
+                nxButton="small secondary"
+                type="button"
+                #cancelButton
+                (click)="dialogRef?.close()"
+                [nxPopoverTriggerFor]="cancelPopover"
+                [(nxPopoverShow)]="showPopoverFlag"
+                nxPopoverDirection="top"
+                nxPopoverTrigger="manual"
+                closeOnClickOutside="true"
+                nxPopoverModal="true"
+            >
+                Cancel
+            </button>
+            <button
+                nxModalClose="proceed"
+                class="nx-margin-bottom-0"
+                nxButton="small"
+                type="submit"
+            >
+                Save
+            </button>
+        </div>
+
+        <nx-popover #cancelPopover>
+            <h4 nxHeadline="subsection-xsmall" class="nx-font-weight-semibold">
+                <nx-icon
+                    name="exclamation-circle"
+                    class="nx-margin-right-2xs"
+                ></nx-icon>
+                <span>Unsaved changes</span>
+            </h4>
+            <p class="nx-margin-bottom-2m">
+                Are you sure you want to discard your changes?
+            </p>
+
+            <div class="action-buttons nx-margin-top-3m">
+                <button
+                    nxButton="secondary danger small-medium"
+                    type="button"
+                    class="nx-margin-right-s"
+                    (click)="discard()"
+                >
+                    Discard
+                </button>
+                <button
+                    nxButton="secondary small-medium"
+                    type="button"
+                    (click)="closePopover()"
+                >
+                    Keep editing
+                </button>
+            </div>
+        </nx-popover>
+    </form>
+</ng-template>
