@@ -38,7 +38,7 @@ $action-bar-height: nx-spacer(xl);
     }
 }
 
-::ng-deep .nx-modal__content {
+:host ::ng-deep .nx-modal__content {
     display: block;
     margin: 0 -#{nx-spacer(3m)};
     padding: 0 nx-spacer(3m);
@@ -52,7 +52,7 @@ $action-bar-height: nx-spacer(xl);
     }
 }
 
-::ng-deep .nx-modal__actions {
+:host ::ng-deep .nx-modal__actions {
     // Pull the actions down to avoid their padding stacking with the modal's padding.
     margin-bottom: -#{nx-spacer(3m)};
 
