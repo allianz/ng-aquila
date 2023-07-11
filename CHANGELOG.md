@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [16.4.0](https://github.com/allianz/ng-aquila/compare/v16.3.2...v16.4.0) (2023-07-11)
+
+### Grid bundle size reduction
+The grid component created a lot of duplicate or unused css. We optimized this now which results in a parsed size reduction of around 50% and a compressed size reduction of around 33%. We removed some css classes that were there in code but were not used by any public API of the component. The classes affected are `push-{tier}-{number}` and `pull-{tier}-{number}`. If you have applied them manually please use some other mechanism like flexbox order instead.
+
+
+### Bug Fixes
+
+* **button:** prevent click bindings from firing on disabled anchor buttons ([3d2ef2d](https://github.com/allianz/ng-aquila/commit/3d2ef2dba24ab466a327c7f85e5500a712cf9cc9))
+* **datefield:** allow NX_DATE_LOCALE to be provided in platformBrowserDynamic ([2928f7a](https://github.com/allianz/ng-aquila/commit/2928f7aaaecc13a17fdaa21afdb5737038eaee53))
+* **modal:** scope modal style ([b6e50a6](https://github.com/allianz/ng-aquila/commit/b6e50a66e07e959b2c71174e587c692a0ad12767))
+
+
+### Features
+
+* **grid:** improve css to reduce bundle size ([b9789c4](https://github.com/allianz/ng-aquila/commit/b9789c4c2def600c5745d4d46c1bb684019b1dda))
+* **modal:** add shouldClose api ([1693766](https://github.com/allianz/ng-aquila/commit/1693766be1a2d709881c009d7efeeec627974aef))
+
+
+
 ## [16.3.2](https://github.com/allianz/ng-aquila/compare/v16.3.1...v16.3.2) (2023-06-30)
 
 This is a technical release containing internal documentation changes.
@@ -51,7 +71,7 @@ This is a technical release containing internal documentation changes.
 # [16.1.0](https://github.com/allianz/ng-aquila/compare/v16.0.0...v16.1.0) (2023-06-06)
 
 ### Button with icons
-A new API was added to position icons inside buttons correctly with the proper spacing. That way you do not have to add spacing between icons and text manually anymore. See the 
+A new API was added to position icons inside buttons correctly with the proper spacing. That way you do not have to add spacing between icons and text manually anymore. See the
 [with icons example](https://allianz.github.io/ng-aquila/documentation/button/overview#with-icons) how to use it.
 
 ### Bug Fixes
@@ -252,9 +272,9 @@ Aquila v14.0.0 is based on Angular 14. For updating please see our update guide:
 * **progress-stepper:** always show selected step ([72d6b65](https://github.com/allianz/ng-aquila/commit/72d6b653a4ce6cacfe64946478f58298e1f37817))
 * **rating:** add selected hover and active styling ([cdcbadf](https://github.com/allianz/ng-aquila/commit/cdcbadfd09c909bde3098da3c0e7d4a2e4e28587))
 * **toggle-button:** make view align with state ([1ca164d](https://github.com/allianz/ng-aquila/commit/1ca164d17cef5de1526dfb61927d593408cec759))
-* **autocomplete:** disabled option styling ([#757](https://github.com/allianz/ng-aquila/commit/479e8f3401aad30ccc5ef5c86bb0b7d9afd0f6c4)) 
-* **dropdown:** prevent selecting disabled option by keyboard ([#755](https://github.com/allianz/ng-aquila/commit/f17389e1dbdf360c380a138c96198e71ea5542cc)) 
-* **modal:** remove extra scrollbar ([#760](https://github.com/allianz/ng-aquila/commit/e1c186375387130f4c0b12e679668dc08873ee0c)) 
+* **autocomplete:** disabled option styling ([#757](https://github.com/allianz/ng-aquila/commit/479e8f3401aad30ccc5ef5c86bb0b7d9afd0f6c4))
+* **dropdown:** prevent selecting disabled option by keyboard ([#755](https://github.com/allianz/ng-aquila/commit/f17389e1dbdf360c380a138c96198e71ea5542cc))
+* **modal:** remove extra scrollbar ([#760](https://github.com/allianz/ng-aquila/commit/e1c186375387130f4c0b12e679668dc08873ee0c))
 
 
 ### Features
