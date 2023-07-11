@@ -366,7 +366,10 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
                 this._focusMonitor.monitor(closeIcon);
             }
 
-            this._autoFocusFirstTabbableElement(element);
+            setTimeout(() => {
+                // prevent page scroll, when it lose focus from trigger element.
+                this._autoFocusFirstTabbableElement(element);
+            });
 
             // attach a close click listener only if it makes sense (ignore it on hover e.g.)
             if (this.closeOnClickOutside) {
@@ -387,7 +390,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
                 element.focus();
             }
         });
-        event?.preventDefault(); // prevent page scroll
     }
 
     // detaches the overlay

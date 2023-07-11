@@ -431,6 +431,21 @@ describe('NxPopoverTriggerDirective', () => {
             checkPopoverOpen(true);
             expect(spy).toHaveBeenCalled();
         }));
+
+        it('should not call preventDefault if trigger is button element', fakeAsync(() => {
+            createTestComponent(PopoverClickComponent);
+            fixture.detectChanges();
+
+            const keydownEvent = new KeyboardEvent('keydown', { keyCode: SPACE, which: SPACE });
+            const spy = spyOn(keydownEvent, 'preventDefault');
+            buttonNativeElement.dispatchEvent(keydownEvent);
+
+            fixture.detectChanges();
+            flush();
+
+            checkPopoverOpen(true);
+            expect(spy).not.toHaveBeenCalled();
+        }));
     });
 
     describe('modal popover', () => {
