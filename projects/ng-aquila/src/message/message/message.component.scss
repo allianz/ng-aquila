@@ -78,19 +78,11 @@ $border-size: nx-border-size(xs);
 }
 
 :host(.nx-message--closable) {
-    padding-right: message-padding(nx-spacer(3m));
-
-    @include media-breakpoint-response(mobile) {
-        padding-right: message-padding(nx-spacer(2m));
-    }
+    padding-right: message-padding(nx-spacer(4m));
 
     [dir='rtl'] & {
         padding-right: message-padding(nx-spacer(m));
-        padding-left: message-padding(nx-spacer(3m));
-
-        @include media-breakpoint-response(mobile) {
-            padding-left: message-padding(nx-spacer(2m));
-        }
+        padding-left: message-padding(nx-spacer(4m));
     }
 }
 
