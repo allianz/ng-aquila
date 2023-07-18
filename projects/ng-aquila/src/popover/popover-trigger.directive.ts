@@ -78,7 +78,7 @@ export function getNxPopoverInvalidDirectionError(direction: string) {
     exportAs: 'nxPopoverTrigger',
     host: {
         '(click)': 'handleClick()',
-        'aria-haspopup': 'true',
+        '[attr.aria-haspopup]': 'true',
         '[attr.aria-expanded]': 'isOpen',
         '[attr.aria-describedby]': 'isOpen ? id : null',
     },
