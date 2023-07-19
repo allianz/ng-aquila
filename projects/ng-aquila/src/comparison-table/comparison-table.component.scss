@@ -302,7 +302,9 @@
 
     // MOBILE STYLING
     @include media-breakpoint-down(small) {
-        overflow-x: scroll;
+        &:has(.nx-comparison-table__mobile-view) {
+            overflow-x: scroll;
+        }
     }
 
     ::ng-deep table {

@@ -108,7 +108,7 @@ Mobile: table is flipped diagonally (with no footer cells!):
 <!-- mobile template ------------------------------------------->
 
 <ng-template #mobileTable>
-    <table>
+    <table class="nx-comparison-table__mobile-view">
         <!-- row for toggle section headers -->
         <tr *ngIf="_containsToggleSection()" class="nx-comparison-table__toggle-section-header-row">
             <th class="nx-comparison-table__placeholder-cell"></th>
