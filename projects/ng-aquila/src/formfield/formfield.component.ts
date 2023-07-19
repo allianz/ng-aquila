@@ -101,7 +101,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
             return '';
         }
 
-        return this._isOutline() ? `( ${this.optionalLabel} )` : `${this.optionalLabel} : `;
+        return this.optionalLabel;
     }
 
     @ContentChild(NxFormfieldLabelDirective) _labelChild!: NxFormfieldLabelDirective;

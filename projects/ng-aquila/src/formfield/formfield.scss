@@ -110,6 +110,14 @@ $margin-to-message: nx-spacer(3xs);
         left: auto;
         text-align: right;
     }
+
+    .optional {
+        font-weight: nx-font-weight(regular);
+        &::after {
+            content: ':';
+            margin-right: 4px;
+        }
+    }
 }
 
 .nx-formfield__appendix,
@@ -351,6 +359,28 @@ $margin-to-message: nx-spacer(3xs);
             line-height: calc(#{v(formfield-outline-control-height)} - 2 * #{v(formfield-border-width)});
         }
     }
+
+    input:-webkit-autofill::first-line {
+        @include type-style(formfield-outline-control);
+    }
+    .nx-formfield__label {
+        flex-direction: row-reverse;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .optional {
+        margin-left: v(formfield-outline-optional-label-gap);
+        @include type-style(formfield-outline-optional-label);
+        font-weight: nx-font-weight(regular);
+
+        &::before {
+            content: '(';
+        }
+
+        &::after {
+            content: ')';
+        }
+    }
 }
 
 .nx-formfield.has-outline.is-readonly:not(.is-disabled) {
@@ -378,7 +408,7 @@ $margin-to-message: nx-spacer(3xs);
         transition: none;
     }
     .optional {
-        font-weight: nx-font-weight(light);
+        font-weight: nx-font-weight(regular);
     }
 
     &.has-outline {
@@ -386,6 +416,7 @@ $margin-to-message: nx-spacer(3xs);
             padding-top: 0;
             transform: translateY(v(formfield-outline-floating-distance));
             @include type-style(formfield-outline-label);
+            font-weight: nx-font-weight(semibold);
         }
 
         .nx-formfield__prefix ~ .nx-formfield__input {
@@ -607,22 +638,4 @@ input:-webkit-autofill {
         font-family: v(font-family);
         color: v(formfield-control-color);
     }
-}
-
-.nx-formfield.has-outline {
-    input:-webkit-autofill::first-line {
-        @include type-style(formfield-outline-control);
-    }
-    .nx-formfield__label {
-        flex-direction: row-reverse;
-        display: flex;
-        justify-content: flex-end;
-    }
-    .optional {
-        margin-left: v(formfield-outline-optional-label-gap);
-        @include type-style(formfield-outline-optional-label);
-    }
-}
-.optional {
-    font-weight: nx-font-weight(semibold);
 }
