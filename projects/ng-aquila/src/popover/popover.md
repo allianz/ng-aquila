@@ -96,7 +96,7 @@ The following examples illustrates the usage of `cdkScrollable`. Make sure to im
 
 ### Hover triggered popover
 
-The popover triggered by hover will close immediately after the mouse exits the trigger.
+The popover triggered by hover will close immediately after the mouse exits the trigger. `nxPopoverCloseable` can't be used with trigger type hover.
 
 Please note that the popover with hover is only suitable for optional information. The information in the popover is not accessible for all use cases (e.g., touch devices) and is therefore to be used with care - if at all.
 

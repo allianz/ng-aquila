@@ -140,21 +140,19 @@ describe('NxPopoverTriggerDirective', () => {
         return overlayContainer.getContainerElement().querySelector('.cdk-overlay-backdrop') as HTMLElement;
     }
 
-    describe('basic', () => {
-        it('should display the close icon when nxPopoverCloseable is true', fakeAsync(() => {
+    describe('open by hover', () => {
+        it('should not display the close icon on hover when nxPopoverCloseable is true', fakeAsync(() => {
             createTestComponent(PopoverShowClose);
-            hover();
-            expect(getCloseIcon()).toBeTruthy();
-        }));
-
-        it('should hide the close icon when nxPopoverCloseable is false', fakeAsync(() => {
-            createTestComponent(PopoverHideClose);
             hover();
             expect(getCloseIcon()).toBeFalsy();
         }));
-    });
 
-    describe('open by hover', () => {
+        it('popover should not have focus', fakeAsync(() => {
+            createTestComponent(PopoverShowClose);
+            hover();
+            expect(overlayContainer.getContainerElement().contains(document.activeElement)).toBeFalse();
+        }));
+
         it('should support display to left', fakeAsync(() => {
             createTestComponent(PopoverHoverComponent);
             triggerInstance.direction = 'left';

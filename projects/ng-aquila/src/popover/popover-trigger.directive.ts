@@ -131,7 +131,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     }
     private _show = false;
 
-    /** Whether to show a close button. By default a close icon is only shown for trigger type click. */
+    /** Whether to show a close button. By default a close icon is only shown for trigger type click. Can't be used for trigger type hover. */
     @Input('nxPopoverCloseable') set closeable(value: BooleanInput) {
         this._closeable = coerceBooleanProperty(value);
 
@@ -318,7 +318,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
     /** @docs-private */
     isCloseable(): boolean {
-        return (this.trigger === 'click' && this._closeable === null) || !!this._closeable;
+        return (this.trigger === 'click' && this._closeable === null) || (!!this._closeable && this.trigger !== 'hover');
     }
 
     /** Update the popover with the given position strategy. */
@@ -366,10 +366,12 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
                 this._focusMonitor.monitor(closeIcon);
             }
 
-            setTimeout(() => {
-                // prevent page scroll, when it lose focus from trigger element.
-                this._autoFocusFirstTabbableElement(element);
-            });
+            if (this.trigger !== 'hover') {
+                setTimeout(() => {
+                    // prevent page scroll, when it lose focus from trigger element.
+                    this._autoFocusFirstTabbableElement(element);
+                });
+            }
 
             // attach a close click listener only if it makes sense (ignore it on hover e.g.)
             if (this.closeOnClickOutside) {
