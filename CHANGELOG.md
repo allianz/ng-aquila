@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [16.4.1](https://github.com/allianz/ng-aquila/compare/v16.4.0...v16.4.1) (2023-07-20)
+
+
+### Bug Fixes
+
+* **comparison-table:** tablet layout sticky on mobile ([c6532ba](https://github.com/allianz/ng-aquila/commit/c6532ba19602b89719b9e492930300b4b8ee0d40))
+* **formfield:** correct optional label style ([3f130cf](https://github.com/allianz/ng-aquila/commit/3f130cf0343065e165f0e0250aa19c930b3dcdfe))
+* **message:** increase the right padding ([03d1879](https://github.com/allianz/ng-aquila/commit/03d187959529e64dec5bbbed54d446408de3a55c))
+* **pagination:** prevent a11y landmark duplication ([d0748e6](https://github.com/allianz/ng-aquila/commit/d0748e64ad627bc39e5c47d5a868856542230361))
+* **popover:** change role for a11y landmark ([6318c56](https://github.com/allianz/ng-aquila/commit/6318c56ad4f3502bbf7fdca41d53eb3c43e7a1ec))
+* **popover:** don't move focus and remove close button for trigger type hover ([a6c5279](https://github.com/allianz/ng-aquila/commit/a6c5279cbb17603d1b578e3ce314648753fbafee))
+* **table:** add zebra color to sticky column ([f5d071a](https://github.com/allianz/ng-aquila/commit/f5d071a6d705b81dbab29ecc082e26f017641e4a))
+
+
+
 # [16.4.0](https://github.com/allianz/ng-aquila/compare/v16.3.2...v16.4.0) (2023-07-11)
 
 ### Grid bundle size reduction
