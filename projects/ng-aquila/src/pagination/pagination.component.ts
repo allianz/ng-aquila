@@ -48,6 +48,16 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     /** @docs-private */
     totalNumberPages = 0;
 
+    private _ariaLabel = '';
+
+    /** Sets the aria label on the nav element of the pagination. Use this to override the global aria-label from PaginationTexts. */
+    @Input() set ariaLabel(value: string) {
+        this._ariaLabel = value;
+    }
+    get ariaLabel(): string {
+        return this._ariaLabel || this.paginationTexts.ariaLabel;
+    }
+
     /** Sets the current page. */
     @Input() set page(value: number) {
         this._page = value;

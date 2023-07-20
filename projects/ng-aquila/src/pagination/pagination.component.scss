@@ -1,6 +1,8 @@
 @import '../shared-styles/index';
 
 :host {
+    display: block;
+
     button:focus {
         outline: none;
     }

@@ -17,7 +17,7 @@
             </nx-link>
         </nx-header-brand>
 
-        <nx-header-navigation>
+        <nx-header-navigation aria-label="header navigation">
             <nx-header-navigation-item class="hidden-with-sidebar">
                 <a [routerLink]="'/welcome'" routerLinkActive="is-active" nxHeaderLink>Welcome</a>
             </nx-header-navigation-item>
@@ -65,7 +65,7 @@
         >
             <nx-icon name="bars"></nx-icon>
         </button>
-        <nx-header-navigation>
+        <nx-header-navigation aria-label="mobile header navigation">
             <nx-header-navigation-item>
                 <a [routerLink]="'/welcome'" routerLinkActive="is-active" nxHeaderLink>Welcome</a>
             </nx-header-navigation-item>

@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 
 import { NxPaginationComponent } from './pagination.component';
 import { NxPaginationModule } from './pagination.module';
-import { IPaginationTexts, NX_PAGINATION_TEXTS } from './pagination-texts';
+import { DefaultPaginationTexts, IPaginationTexts, NX_PAGINATION_TEXTS } from './pagination-texts';
 import { NxPaginationUtils } from './pagination-utils';
 
 const customTexts: IPaginationTexts = {
@@ -22,6 +22,7 @@ abstract class PaginationTest {
     prevPage = jasmine.createSpy('prevPageSpy');
     nextPage = jasmine.createSpy('nextPageSpy');
     goToPage = jasmine.createSpy('goToPageSpy');
+    ariaLabel = '';
 }
 
 describe('NxPaginationComponent', () => {
@@ -80,7 +81,7 @@ describe('NxPaginationComponent', () => {
                 SimplePaginationWithDirection,
                 AdvancedPaginationWithDirection,
             ],
-            providers: [NxPaginationUtils, { provide: NX_PAGINATION_TEXTS, useValue: { previous: 'Before', next: 'Later' } }],
+            providers: [NxPaginationUtils],
         }).compileComponents();
     }));
 
@@ -100,7 +101,7 @@ describe('NxPaginationComponent', () => {
             expect(currentPage && totalPages && nextArrowSimple).not.toBeNull();
             expect(currentPage.textContent).toContain('1');
             expect(totalPages.textContent).toContain('21');
-            expect(spanElement.nativeElement.textContent).toBe(' Before ');
+            expect(spanElement.nativeElement.textContent).toBe(` ${DefaultPaginationTexts.previous} `);
         });
 
         it('should emit an event when click next arrow', () => {
@@ -222,12 +223,16 @@ describe('NxPaginationComponent', () => {
 
     describe('localization', () => {
         it('should use injected NX_PAGINATION_TEXTS token', () => {
+            TestBed.overrideProvider(NX_PAGINATION_TEXTS, { useValue: customTexts });
             createTestComponent(LocalizationToken);
+
             expect(paginationInstance.paginationTexts).toEqual(customTexts);
             expect(nextArrowSimple.querySelector('.nx-pagination-compact__direction-label')?.textContent?.trim()).toBe('myNext');
             expect(prevArrowSimple.querySelector('.nx-pagination-compact__direction-label')?.textContent?.trim()).toBe('myPrevious');
             expect(pageSeparator.textContent?.trim()).toBe('myOf');
+
             const navElement = fixture.nativeElement.querySelector('.nx-pagination-compact') as HTMLElement;
+
             expect(navElement.attributes.getNamedItem('aria-label')?.value).toBe('myAriaLabel');
         });
     });
@@ -310,12 +315,51 @@ describe('NxPaginationComponent', () => {
             createTestComponent(SimplePagination);
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
+
+        it('should only render one nav element', () => {
+            createTestComponent(AdvancedPagination);
+            (testInstance as AdvancedPagination).type = 'simple';
+            fixture.detectChanges();
+            expect(fixture.nativeElement.querySelectorAll('nav').length).toBe(1);
+            (testInstance as AdvancedPagination).type = 'advanced';
+            fixture.detectChanges();
+            expect(fixture.nativeElement.querySelectorAll('nav').length).toBe(1);
+        });
+
+        it('should use ariaLabel input over paginationTexts', () => {
+            createTestComponent(AdvancedPagination);
+            testInstance.ariaLabel = 'custom aria-label';
+            fixture.detectChanges();
+
+            const navElement = fixture.nativeElement.querySelector('nav') as HTMLElement;
+
+            expect(navElement.attributes.getNamedItem('aria-label')?.value).toBe('custom aria-label');
+        });
+
+        it('should use paginationTexts when ariaLabel input is falsy', () => {
+            createTestComponent(AdvancedPagination);
+            testInstance.ariaLabel = '';
+            fixture.detectChanges();
+
+            const navElement = fixture.nativeElement.querySelector('nav') as HTMLElement;
+
+            expect(navElement.attributes.getNamedItem('aria-label')?.value).toBe(DefaultPaginationTexts.ariaLabel);
+        });
     });
 });
 
 @Component({
     template: `
-        <nx-pagination [count]="count" [page]="page" [perPage]="perPage" [type]="type" (goPrev)="prevPage()" (goNext)="nextPage()" (goPage)="goToPage($event)">
+        <nx-pagination
+            [count]="count"
+            [page]="page"
+            [perPage]="perPage"
+            [type]="type"
+            (goPrev)="prevPage()"
+            (goNext)="nextPage()"
+            (goPage)="goToPage($event)"
+            [ariaLabel]="ariaLabel"
+        >
         </nx-pagination>
     `,
 })

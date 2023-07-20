@@ -7,7 +7,7 @@ stable: done
 alias: pager, paginator
 ---
 
-If you have a web site with lots of pages, you may wish to add some sort of pagination to each page. Pagination is a mechanism which provides users with additional navigation options for browsing through single parts of a given article, table or something. User can choise between two options:
+Pagination is used for splitting up content or data into several pages, with controls for navigating to the next or previous page. You can choose between two options:
 
 -   Advanced pagination where parts are referred to by numbers and arrows.
 -   Simple pagination where parts are referred with “previous” and “next” buttons.
@@ -31,3 +31,9 @@ Pay attention that `IPaginationTexts` has two optional attributes: `first` and `
 <!-- example(pagination-localize) -->
 
 <!-- example(pagination-localize-advanced) -->
+
+### Accessibility
+
+If you have multiple paginations on the same page you have to consider the `Landmarks should have a unique role or role/label/title combination` rule. You can achieve this by adding a unique `ariaLabel` to the `nx-pagination` component. You can either use the `ariaLabel` input directly or wrap the pagination in a component and provide the `NX_PAGINATION_TEXTS` token.
+
+<!-- example(pagination-a11y) -->

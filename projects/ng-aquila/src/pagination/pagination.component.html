@@ -1,5 +1,5 @@
-<nav *ngIf="isPaginationVisible()" aria-label="Page navigation" class="nx-pagination">
-    <ul *ngIf="isPaginationContainerVisible()" [attr.aria-label]="paginationTexts.ariaLabel" class="nx-pagination__container">
+<nav *ngIf="isPaginationVisible() && isPaginationContainerVisible()" [attr.aria-label]="ariaLabel" class="nx-pagination">
+    <ul class="nx-pagination__container">
         <li class="nx-pagination__item">
             <button
                 #link
@@ -76,7 +76,7 @@
         </li>
     </ul>
 </nav>
-<nav *ngIf="isPaginationCompactVisible()" [attr.aria-label]="paginationTexts.ariaLabel" class="nx-pagination-compact">
+<nav *ngIf="isPaginationCompactVisible()" [attr.aria-label]="ariaLabel" class="nx-pagination-compact">
     <button
         #link
         [attr.aria-label]="paginationTexts.previous"
