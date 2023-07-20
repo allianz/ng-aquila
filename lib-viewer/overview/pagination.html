@@ -1,4 +1,4 @@
-<p class="docs-markdown--p">If you have a web site with lots of pages, you may wish to add some sort of pagination to each page. Pagination is a mechanism which provides users with additional navigation options for browsing through single parts of a given article, table or something. User can choise between two options:</p>
+<p class="docs-markdown--p">Pagination is used for splitting up content or data into several pages, with controls for navigating to the next or previous page. You can choose between two options:</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">Advanced pagination where parts are referred to by numbers and arrows.</li>
 <li class="docs-markdown--li">Simple pagination where parts are referred with “previous” and “next” buttons.</li>
@@ -13,3 +13,6 @@
 <p class="docs-markdown--p">Pay attention that <code>IPaginationTexts</code> has two optional attributes: <code>first</code> and <code>last</code> used for the first and last arrows of the advanced pagination.</p>
 <div nx-docs-example="pagination-localize" config="{}">exampleID: pagination-localize</div>
 <div nx-docs-example="pagination-localize-advanced" config="{}">exampleID: pagination-localize-advanced</div>
+<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
+<p class="docs-markdown--p">If you have multiple paginations on the same page you have to consider the <code>Landmarks should have a unique role or role/label/title combination</code> rule. You can achieve this by adding a unique <code>ariaLabel</code> to the <code>nx-pagination</code> component. You can either use the <code>ariaLabel</code> input directly or wrap the pagination in a component and provide the <code>NX_PAGINATION_TEXTS</code> token.</p>
+<div nx-docs-example="pagination-a11y" config="{}">exampleID: pagination-a11y</div>

@@ -1,0 +1,71 @@
+<nx-message context="warning">
+    This example intends to show how to set explicit
+    <code>ariaLabels</code> when you have multiple paginations, try it with a
+    screenreader or look at the html code how the <code>ariaLabel</code> inputs
+    are set. The example is not supposed to show how to have a working
+    pagination on a table.
+</nx-message>
+
+<p>
+    The following pagination gets the aria label set to "Cars table pagination"
+</p>
+
+<table nxTable style="table-layout: fixed">
+    <thead>
+        <tr nxTableRow>
+            <th nxHeaderCell>Car</th>
+            <th nxHeaderCell>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr nxTableRow>
+            <td nxTableCell>Porsche</td>
+            <td nxTableCell>72500</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="pagination nx-margin-top-s">
+    <nx-pagination
+        [count]="count"
+        [page]="page"
+        [perPage]="perPage"
+        (goPrev)="prevPage()"
+        (goNext)="nextPage()"
+        (goPage)="goToPage($event)"
+        ariaLabel="Cars table pagination"
+    >
+    </nx-pagination>
+</div>
+
+<p>
+    The following pagination gets the aria label set to "Customers table
+    pagination"
+</p>
+
+<table nxTable class="nx-margin-top-m" style="table-layout: fixed">
+    <thead>
+        <tr nxTableRow>
+            <th nxHeaderCell>Name</th>
+            <th nxHeaderCell>ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr nxTableRow>
+            <td nxTableCell>Max Mustermann</td>
+            <td nxTableCell>12345</td>
+        </tr>
+    </tbody>
+</table>
+<div class="pagination nx-margin-top-s">
+    <nx-pagination
+        [count]="count"
+        [page]="page"
+        [perPage]="perPage"
+        (goPrev)="prevPage()"
+        (goNext)="nextPage()"
+        (goPage)="goToPage($event)"
+        ariaLabel="Customers table pagination"
+    >
+    </nx-pagination>
+</div>

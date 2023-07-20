@@ -773,7 +773,7 @@ body,
   --formfield-outline-optional-label-line-height: var(--formfield-outline-label-line-height);
   --formfield-outline-optional-label-font-weight: var(--formfield-outline-label-font-weight);
   --formfield-outline-optional-label-letter-spacing: var(--formfield-outline-label-letter-spacing);
-  --formfield-outline-optional-label-gap: 8px;
+  --formfield-outline-optional-label-gap: 4px;
   --formfield-outline-hint-font-size: var(--paragraph-03-font-size);
   --formfield-outline-hint-line-height: 1em;
   --formfield-outline-hint-font-weight: var(--paragraph-03-font-weight);
@@ -1141,7 +1141,7 @@ body,
   --table-cell-color: var(--text-01);
   --table-header-cell-background-color: transparent;
   --table-row-background-color: transparent;
-  --table-sticky-column-background-color: var(--ui-03);
+  --table-sticky-column-background-color: var(--ui-background);
   --selectable-table-row-hover-background-color: var(--ui-02);
   --selectable-table-row-active-background-color: var(--ui-02);
   --selectable-table-row-selected-hover-background-color: var(--ui-02);
