@@ -5,10 +5,12 @@ import { FileItem } from './file-uploader.model';
 /**
  * Verifies the file type against the accepted types.
  */
-export function isFileTypeValid(file: File, accept: string): boolean {
-    if (!accept || !file.type) {
+export function isFileTypeValid(file: File, accept: string, strict: boolean): boolean {
+    if (!accept || (!file.type && !strict)) {
         return true;
     }
+
+    const fileExtension = getFileExtension(file.name);
 
     return (
         accept
@@ -16,9 +18,20 @@ export function isFileTypeValid(file: File, accept: string): boolean {
             .split(',')
             .filter(acc => {
                 const testExp = new RegExp(acc);
-                return testExp.test(file.type) || testExp.test(file.name);
+                return testExp.test(file.type) || acc === fileExtension;
             }).length > 0
     );
+}
+
+/** Returns the file extension including the dot or empty string if filename has no extension */
+export function getFileExtension(filename: string) {
+    const parts = filename.split('.');
+
+    if (parts.length === 1) {
+        return '';
+    }
+
+    return '.' + parts.pop();
 }
 
 /**
@@ -40,9 +53,9 @@ export class NxFileUploaderValidators {
     }
 
     /** The form control validator for the accepted file type. */
-    static fileType<D>(file: File, accept: string | undefined): ValidatorFn {
+    static fileType<D>(file: File, accept: string | undefined, strict: boolean): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
-            if (isFileTypeValid(file, accept!)) {
+            if (isFileTypeValid(file, accept!, strict)) {
                 return null;
             }
             return { NxFileUploadFileTypeNotAccepted: { fileName: file.name } };

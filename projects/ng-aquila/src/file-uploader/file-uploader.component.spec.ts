@@ -3,6 +3,7 @@ import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
+import { getFileExtension } from './file-uploader.validations';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxFileUploaderComponent } from './file-uploader.component';
@@ -20,6 +21,7 @@ abstract class FileUploaderTest {
     maxFileSize!: number;
     maxFileNumber!: number;
     accept: any;
+    strictAcceptValidation = false;
 }
 
 describe('NxFileUploaderComponent', () => {
@@ -349,6 +351,53 @@ describe('NxFileUploaderComponent', () => {
             expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBeTrue();
         });
 
+        describe('getFileExtension', () => {
+            it('should return the file extension', () => {
+                expect(getFileExtension('test.png')).toBe('.png');
+            });
+
+            it('should return empty string when input is empty', () => {
+                expect(getFileExtension('')).toBe('');
+            });
+
+            it('should return empty string when input has no extension', () => {
+                expect(getFileExtension('no-extension')).toBe('');
+            });
+
+            it('should return the file extension for dotfiles', () => {
+                expect(getFileExtension('.htaccess')).toBe('.htaccess');
+            });
+        });
+
+        describe('strict type validaton', () => {
+            it('should not be valid when file has no file type set', () => {
+                createTestComponent(ReactiveFileUpload);
+                testInstance.strictAcceptValidation = true;
+                testInstance.accept = 'image/png';
+                fixture.detectChanges();
+                createAndAddFile('test.log', '');
+                expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBeTrue();
+            });
+
+            it('should be valid when file extension matches', () => {
+                createTestComponent(ReactiveFileUpload);
+                testInstance.strictAcceptValidation = true;
+                testInstance.accept = '.png';
+                fixture.detectChanges();
+                createAndAddFile('test.png', '');
+                expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBeFalse();
+            });
+
+            it('should be valid when mime type and file extension is given but file has no type set', () => {
+                createTestComponent(ReactiveFileUpload);
+                testInstance.strictAcceptValidation = true;
+                testInstance.accept = 'image/png,.png';
+                fixture.detectChanges();
+                createAndAddFile('test.png', '');
+                expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBeFalse();
+            });
+        });
+
         describe('maxFileNumber', () => {
             it('is valid if maxFileNumber is not set', () => {
                 createTestComponent(ReactiveFileUpload);
@@ -479,6 +528,7 @@ class BasicFileUpload extends FileUploaderTest {
                 multiple
                 [maxFileNumber]="maxFileNumber"
                 [accept]="accept"
+                [strictAcceptValidation]="strictAcceptValidation"
             >
                 <nx-label size="small">Required file to upload</nx-label>
                 <span nxFileUploadHint>maximum Filesize 2MB</span>

@@ -50,11 +50,35 @@ The return error is `NxFileUploadMaxFileNumber`.
 
 #### Accepted file types
 
-The permitted file types can be set via `[accept]` and are passed down to the native input[type='file'] element.
+The permitted file types can be set via `[accept]` and are passed down to the native input[type='file'] element. Allowed is a comma separated list of MIME types or file extensions.
+
+- wildcard mime types: e.g. `image/*`
+- specific mime types: e.g. `image/png`
+- file extensions including the dot: e.g. `.png`
 
 Additionally, there is a basic client side validation integrated in the component which returns the error `NxFileUploadFileTypeNotAccepted`. However, **files should be always verified on the server side**.
 
+<div class="docs-deprecation-warning">
+  <strong>Please note: </strong><br>
+  <p>Depending on operating system settings files sometimes don't get an associated MIME type added to them.</p>
+  <p>
+  In the past we skipped validation when the file type was missing to mitigate some problems. This means that the file uploader will accept undesired files, e.g. a .log file.</p><p> To improve this behavior we added a new option <code>strictAcceptValidation</code> which we do not enable by default yet because it would introduce a breaking change. If you want to enable it, please set it to <code>true</code>.<br>
+  See the <a href="./documentation/file-uploader/overview#strict-file-type-validation">Strict file type validation</a> section further below for more details.</p>
+</div>
+
 <!-- example(file-uploader-type-validation) -->
+
+#### Strict file type validation
+
+The File objects that are created by the browsers sometimes do not provide a file mime type. This usually happens if the operating system does not have a file type associated, e.g. for a .log file or for .xslx if microsoft office or excel is not installed.
+
+Because this created some challenges by default the file type validation is skipped in this case. This means that undesired files can be accepted.
+
+You can harden against these cases with the `strictAcceptValidation` option. When enabled you might have to add file extensions in addition to mime types for some file types. E.g. for excel files this has been a problem in the past to only rely on the mime type. A good approach in this case could be  `accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xls,.xlsx"`.
+
+Try to drag and drop a .log file (at least these files worked best for us in testing across windows and mac) in the example below. It should throw an error, then disable the `strictAcceptValidation` option with the button and try again to see the difference.
+
+<!-- example(file-uploader-strict-type-validation) -->
 
 ### Upload
 

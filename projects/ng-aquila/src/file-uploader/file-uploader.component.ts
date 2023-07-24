@@ -187,6 +187,9 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     }
     private _accept!: string;
 
+    /** Whether to validate files that don't have provide a file type. Disabled by default. */
+    @Input() strictAcceptValidation = false;
+
     /** The max file size in bytes used for validation */
     @Input() set maxFileSize(value: NumberInput) {
         this._maxFileSize = coerceNumberProperty(value);
@@ -495,9 +498,9 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         let isValid = false;
 
         this.validatorFnArray.push(NxFileUploaderValidators.maxFileSize(this.maxFileSize, file));
-        this.validatorFnArray.push(NxFileUploaderValidators.fileType(file, this.accept));
+        this.validatorFnArray.push(NxFileUploaderValidators.fileType(file, this.accept, this.strictAcceptValidation));
 
-        if ((!this.maxFileSize || file.size <= this.maxFileSize) && isFileTypeValid(file, this.accept)) {
+        if ((!this.maxFileSize || file.size <= this.maxFileSize) && isFileTypeValid(file, this.accept, this.strictAcceptValidation)) {
             isValid = true;
         }
 

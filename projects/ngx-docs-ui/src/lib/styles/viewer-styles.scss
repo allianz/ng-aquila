@@ -233,6 +233,7 @@ a {
 }
 
 ::ng-deep .docs-markdown--p code,
+::ng-deep .docs-deprecation-warning code,
 ::ng-deep .docs-markdown--li > code,
 ::ng-deep .docs-markdown--table code {
     padding: 2px;
