@@ -1,5 +1,5 @@
 <!-- input and stuff-->
-<div cdkOverlayOrigin #origin="cdkOverlayOrigin" class="nx-dropdown__container" #trigger>
+<div cdkOverlayOrigin #fallbackOrigin="cdkOverlayOrigin" class="nx-dropdown__container" #trigger>
     <div class="nx-dropdown__rendered" [id]="renderedValueId">
         <span *ngIf="empty && placeholder">{{ placeholder }}</span>
         <ng-container *ngIf="!empty">
@@ -21,10 +21,10 @@
     cdkConnectedOverlayHasBackdrop
     cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
     [cdkConnectedOverlayScrollStrategy]="_scrollStrategy"
-    [cdkConnectedOverlayOrigin]="origin"
+    [cdkConnectedOverlayOrigin]="overlayOrigin"
     [cdkConnectedOverlayOpen]="panelOpen"
     [cdkConnectedOverlayPositions]="_positions"
-    [cdkConnectedOverlayMinWidth]="_triggerRect?.width!"
+    [cdkConnectedOverlayMinWidth]="_overlayWidth"
     [cdkConnectedOverlayFlexibleDimensions]="true"
     [cdkConnectedOverlayViewportMargin]="_overlayViewportMargin"
     [cdkConnectedOverlayPush]="true"

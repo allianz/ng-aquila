@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild, ViewChi
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxFormfieldComponent, NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -76,6 +76,10 @@ describe('NxDropdownComponent', () => {
 
     function getDropdown() {
         return overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel');
+    }
+
+    function getOverlayPane() {
+        return overlayContainer.getContainerElement().querySelector('.cdk-overlay-pane') as HTMLElement;
     }
 
     function getBackdrop() {
@@ -498,17 +502,21 @@ describe('NxDropdownComponent', () => {
             expect(dropdownInstance.value).toBe('BMW');
         }));
 
-        it('overlay should have same width as the dropdown', fakeAsync(() => {
+        it('overlay should have same min width as the formfield', fakeAsync(() => {
             createTestComponent(SimpleDropdownComponent);
-            dropdownElement.style.width = '400px';
+            const formfieldElement = fixture.debugElement.query(By.css('nx-formfield')).nativeElement;
+            formfieldElement.style.width = '400px';
             openDropdownByClick();
-            fixture.detectChanges();
-            tick();
-            fixture.detectChanges();
-            tick();
-            flush();
 
-            expect(getDropdown()!.clientWidth).toBe(400);
+            expect(getOverlayPane()!.style.minWidth).toBe('400px');
+        }));
+
+        it('should not set a min width when panelMinWidth is "none"', fakeAsync(() => {
+            createTestComponent(DynamicDropdownComponent);
+            testInstance.panelMinWidth = 'none';
+            fixture.detectChanges();
+            openDropdownByClick();
+            expect(getOverlayPane()!.style.minWidth).toBeFalsy();
         }));
 
         it('should not autofill monitor dropdown', () => {
@@ -1416,6 +1424,7 @@ interface DropdownTestItem {
 
 @Directive()
 abstract class DropdownTest {
+    @ViewChild(NxFormfieldComponent) formfield!: NxFormfieldComponent;
     @ViewChild(NxDropdownComponent) dropdown!: NxDropdownComponent;
     @ViewChildren(NxDropdownItemComponent) dropdownItems!: {
         forEach(arg0: (item: any, itemIndex: any) => void): void;
@@ -1431,6 +1440,7 @@ abstract class DropdownTest {
     selected: any = 'BMW';
     placeholder = 'Choose a car';
     testForm!: UntypedFormGroup;
+    panelMinWidth = 'trigger';
 }
 
 @Component({
@@ -1481,7 +1491,7 @@ class CustomClosedLabelComponent extends DropdownTest {
 }
 
 @Component({
-    template: `<nx-dropdown [(ngModel)]="selected" [placeholder]="placeholder">
+    template: `<nx-dropdown [(ngModel)]="selected" [placeholder]="placeholder" [panelMinWidth]="panelMinWidth">
         <nx-dropdown-item *ngFor="let item of items" [value]="item.value">{{ item.label }}</nx-dropdown-item>
     </nx-dropdown>`,
 })

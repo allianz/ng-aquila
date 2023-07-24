@@ -273,7 +273,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
         }
     }
 
-    /** @docs-private */
+    /** Returns an element that overlays can attach to. */
     getConnectedOverlayOrigin(): ElementRef {
         return this._connectionContainerRef || this.elementRef;
     }

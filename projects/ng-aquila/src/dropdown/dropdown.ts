@@ -3,7 +3,14 @@ import { Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SHIFT, SPACE, TAB, UP_ARROW } from '@angular/cdk/keycodes';
-import { CdkConnectedOverlay, ConnectionPositionPair, FlexibleConnectedPositionStrategy, Overlay, ScrollStrategy } from '@angular/cdk/overlay';
+import {
+    CdkConnectedOverlay,
+    CdkOverlayOrigin,
+    ConnectionPositionPair,
+    FlexibleConnectedPositionStrategy,
+    Overlay,
+    ScrollStrategy,
+} from '@angular/cdk/overlay';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -55,6 +62,8 @@ export interface NxDropdownOption {
     value: any;
     label?: string;
 }
+
+export type NxDropdownPanelMinWidth = 'trigger' | 'none';
 
 /** Dropdown data that requires internationalization. */
 export class NxDropdownIntl {
@@ -167,6 +176,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     /** @docs-private */
     errorState = false;
 
+    /** Width of the overlay panel. */
+    _overlayWidth: string | number = '';
+
     /**
      * Name of this control that is used inside the formfield component.
      *
@@ -176,9 +188,6 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
     /** The minimal space between the viewport and the overlay */
     _overlayViewportMargin: number = this.dir === 'rtl' ? 0 : 16;
-
-    /** The last measured value for the trigger's client bounding rect. */
-    _triggerRect?: ClientRect;
 
     /** Holds the panelWidth after panel was attached. */
     _panelWidth?: number;
@@ -323,6 +332,14 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     /** Text that is displayed at the top of the overlay. If not set the formfield label is used by default. */
     @Input() overlayLabel = '';
 
+    /**
+     * Sets how the panel min width will be determined.
+     * 'trigger' will set the panels min-width to the trigger width.
+     * 'none' will not set a min-width and will let the panel grow naturally with its content so it can be smaller than the trigger.
+     * This is mostly for special use cases like the country code dropdown in the phone input.
+     */
+    @Input() panelMinWidth: NxDropdownPanelMinWidth = 'trigger';
+
     /** Event emitted when the select panel has been toggled. */
     @Output() readonly openedChange = new EventEmitter<boolean>();
 
@@ -370,6 +387,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
     /** @docs-private */
     @ViewChild('trigger', { static: true }) trigger!: ElementRef;
+
+    /** @docs-private */
+    @ViewChild('fallbackOrigin') fallbackOrigin!: ElementRef | CdkOverlayOrigin;
 
     /** @docs-private */
     @ViewChild('filterInput') filterInput?: ElementRef;
@@ -778,6 +798,10 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         this._elementRef.nativeElement.focus();
     }
 
+    get overlayOrigin() {
+        return this.formFieldComponent ? this.formFieldComponent.getConnectedOverlayOrigin() : this.fallbackOrigin;
+    }
+
     /** Opens the panel of the dropdown. */
     openPanel($event: Event) {
         if (this.disabled || this.readonly || !(this.dropdownItems?.length || this.options?.length) || this._panelOpen) {
@@ -797,8 +821,18 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
             this._initActiveItem();
         });
 
-        this._triggerRect = this.trigger.nativeElement.getBoundingClientRect();
+        this._overlayWidth = this.getOverlayWidth();
         this._cdr.markForCheck();
+    }
+
+    private getOverlayWidth() {
+        if (this.panelMinWidth === 'trigger') {
+            const origin = this.overlayOrigin;
+            const ref = origin instanceof CdkOverlayOrigin ? origin.elementRef : origin;
+            return ref.nativeElement.getBoundingClientRect().width;
+        }
+        // Empty string will let the cdk overlay not set a min-width
+        return '';
     }
 
     /** Closes the panel of the dropdown. */

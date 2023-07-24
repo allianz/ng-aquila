@@ -8,6 +8,7 @@
         [overlayLabel]="areaCodeLabel"
         (valueChange)="_onCountryChange($event)"
         [options]="_sortedCountries"
+        panelMinWidth="none"
     >
         <span *nxClosedLabel>+{{ _getCallingCode(dropdown.value) }}</span>
     </nx-dropdown>
