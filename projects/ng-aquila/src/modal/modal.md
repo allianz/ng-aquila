@@ -72,6 +72,12 @@ By default the width of the modal dialog is `736px`. You can change this behavio
 
 <!-- example(modal-fixed-width) -->
 
+### Fullscreen
+
+Set `fullscreen` to `true` to show the modal in fullscreen. When using `fullscreen` the `width`, `height`, `maxWidth` and `maxHeight` are overwritten.
+
+<!-- example(modal-fullscreen) -->
+
 ### Configuration
 
 Every dialog is opened with a default configuration. By passing a second parameter (`NxModalConfig` object) when opening a modal you can overwrite this configuration. Configurable are settings such as the dialog width and height, closing on backdrop click, adding additional classses to the dialog container etc. For more details on all configurable properties check out the `NxModalConfig` documentation [here](./documentation/modal/api#NxModalConfig).

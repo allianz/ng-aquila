@@ -1,8 +1,17 @@
 @import '../../shared-styles/index';
 
-$max-modal-content-height: 65vh !default;
 $horizontal-offset: 48px;
-$action-bar-height: nx-spacer(xl);
+$action-bar-height: nx-spacer(2xl);
+
+::ng-deep .cdk-overlay-pane {
+    &.is-fullscreen {
+        padding-top: nx-spacer(2m);
+
+        @include media-breakpoint-down('small') {
+            padding-top: nx-spacer(2xs);
+        }
+    }
+}
 
 :host {
     background: v(modal-background-color);
@@ -12,7 +21,8 @@ $action-bar-height: nx-spacer(xl);
     border-radius: nx-border-radius(s);
     box-shadow: v(shadow-large);
 
-    display: block;
+    display: flex;
+    flex-flow: column;
     position: relative;
     box-sizing: border-box;
 
@@ -28,6 +38,10 @@ $action-bar-height: nx-spacer(xl);
     min-height: inherit;
     max-height: inherit;
 
+    .is-fullscreen & {
+        border-radius: nx-spacer(2xs) nx-spacer(2xs) 0 0;
+    }
+
     @include media-breakpoint-down('small') {
         margin: 0 nx-spacer(2xs); // keep distance to the end of the screen
         padding: nx-spacer(2m) nx-spacer(2m) nx-spacer(2m) nx-spacer(2m);
@@ -42,9 +56,9 @@ $action-bar-height: nx-spacer(xl);
     display: block;
     margin: 0 -#{nx-spacer(3m)};
     padding: 0 nx-spacer(3m);
-    max-height: $max-modal-content-height;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    flex: 1 1 auto;
 
     @include media-breakpoint-down('small') {
         margin: 0 -#{nx-spacer(2m)};
@@ -60,7 +74,7 @@ $action-bar-height: nx-spacer(xl);
     margin-left: -#{nx-spacer(3m)};
     margin-right: -#{nx-spacer(3m)};
 
-    height: $action-bar-height;
+    flex: 0 0 $action-bar-height;
     border-top: nx-border-size(xs) solid v(modal-actions-border-color);
     display: flex;
     align-items: center;

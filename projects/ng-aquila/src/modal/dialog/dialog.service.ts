@@ -168,6 +168,11 @@ export class NxDialogService implements OnDestroy {
             state.backdropClass = modalConfig.backdropClass;
         }
 
+        if (modalConfig.fullscreen) {
+            state.maxWidth = '';
+            state.maxHeight = '';
+        }
+
         return state;
     }
 
@@ -209,6 +214,14 @@ export class NxDialogService implements OnDestroy {
         // Create a reference to the modal we're creating in order to give the user a handle
         // to modify and close it.
         const modalRef = new NxModalRef<T, R>(overlayRef, modalContainer, config.id);
+
+        // If fullscreen is set to true, set the width and height to be the the fullscreen with and height
+        // Add a class for styling the fullscreen modal
+        if (config.fullscreen) {
+            config.width = '100%';
+            config.height = '100%';
+            overlayRef.addPanelClass('is-fullscreen');
+        }
 
         // When the modal backdrop is clicked, we want to close it.
         if (config.hasBackdrop) {

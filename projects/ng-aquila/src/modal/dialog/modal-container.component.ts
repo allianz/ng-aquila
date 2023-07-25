@@ -43,7 +43,7 @@ export function throwNxDialogContentAlreadyAttachedError() {
     styleUrls: ['modal-container.component.scss'],
     // Using OnPush for modals caused some G3 sync issues. Disabled until we can track them down.
     changeDetection: ChangeDetectionStrategy.Default,
-    animations: [NxModalAnimations.modalContainer],
+    animations: [NxModalAnimations.modalContainer, NxModalAnimations.modalContainerFullscreen],
     host: {
         class: 'nx-modal__container',
         tabindex: '-1',
@@ -53,9 +53,12 @@ export function throwNxDialogContentAlreadyAttachedError() {
         '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',
         '[attr.aria-label]': '_config.ariaLabel',
         '[attr.aria-describedby]': '_config.ariaDescribedBy || null',
-        '[@modalContainer]': '_state',
+        '[@modalContainer]': '{ value: !_config.fullscreen ? _state : "" }',
         '(@modalContainer.start)': '_onAnimationStart($event)',
         '(@modalContainer.done)': '_onAnimationDone($event)',
+        '[@slideInOut]': '{ value: _config.fullscreen ? _state : "" }',
+        '(@slideInOut.start)': '_onAnimationStart($event)',
+        '(@slideInOut.done)': '_onAnimationDone($event)',
     },
 })
 export class NxModalContainer extends BasePortalOutlet implements AfterViewInit, OnDestroy {

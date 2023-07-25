@@ -50,6 +50,9 @@ export class NxModalConfig<D = any> {
     /** Whether the user can use escape or clicking on the backdrop to close the modal. */
     disableClose?: boolean = false;
 
+    /** Whether the modal is to be shown in fullscreen. When set to true, the width, height, maxWidth and maxHeight are overwritten */
+    fullscreen?: boolean = false;
+
     /** Width of the modal. */
     width?: string = '736px';
 
@@ -65,8 +68,8 @@ export class NxModalConfig<D = any> {
     /** Max-width of the modal. If a number is provided, assumes pixel units. Defaults to '736px'. */
     maxWidth?: number | string = '736px';
 
-    /** Max-height of the modal. If a number is provided, assumes pixel units. */
-    maxHeight?: number | string;
+    /** Max-height of the modal. If a number is provided, assumes pixel units. Defaults to '65vh'. */
+    maxHeight?: number | string = '65vh';
 
     /** Position overrides. */
     position?: NxDialogPosition;

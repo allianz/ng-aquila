@@ -1385,6 +1385,35 @@ describe('NxDialog', () => {
             expect(container.hasAttribute('aria-labelledby')).toBeFalse();
         }));
     });
+
+    describe('fullscreen', () => {
+        it('should have custom panelClass', () => {
+            dialog.open(PizzaMsg, {
+                fullscreen: true,
+                viewContainerRef: testViewContainerRef,
+            });
+
+            viewContainerFixture.detectChanges();
+
+            const pane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
+            expect(pane).toHaveClass('is-fullscreen');
+        });
+
+        it('should be shown in fullscreen', () => {
+            dialog.open(PizzaMsg, {
+                fullscreen: true,
+                viewContainerRef: testViewContainerRef,
+            });
+
+            viewContainerFixture.detectChanges();
+
+            const pane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
+            expect(pane.style.width).toBe('100%');
+            expect(pane.style.height).toBe('100%');
+            expect(pane.style.maxWidth).toBe('');
+            expect(pane.style.maxHeight).toBe('');
+        });
+    });
 });
 
 describe('NxDialog with a parent NxDialog', () => {
