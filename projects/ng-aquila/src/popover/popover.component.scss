@@ -7,6 +7,8 @@ $popover-border-size: nx-border-size(xs);
 
 $arrow-shadow: -2px -2px -4px v(shadow-small-color);
 
+$padding-content: nx-spacer(2m) - $popover-border-size;
+
 .nx-popover__content {
     @include type-style(popover-content);
     background-color: v(popover-background-color);
@@ -14,7 +16,7 @@ $arrow-shadow: -2px -2px -4px v(shadow-small-color);
     border: $popover-border-size solid v(popover-border-color);
     border-radius: $popover-border-radius;
     box-shadow: v(shadow-small);
-    padding: nx-spacer(m) - $popover-border-size;
+    padding: nx-spacer(m) nx-spacer(4m) nx-spacer(m) nx-spacer(2m);
     display: block;
 
     &:focus {
