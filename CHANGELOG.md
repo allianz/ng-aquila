@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [16.5.0](https://github.com/allianz/ng-aquila/compare/v16.4.1...v16.5.0) (2023-07-27)
+
+
+### Bug Fixes
+
+* **popover:** correct content padding and close icon size ([5a4c54a](https://github.com/allianz/ng-aquila/commit/5a4c54a7571a69fdf8eff7b7dfbe9870ce5b0756))
+
+
+### Features
+
+* **file-uploader:** add option for stricter file type validation ([37f6f32](https://github.com/allianz/ng-aquila/commit/37f6f325ad44185dbcffa8d09a25d59922d57ec7))
+* **modal:** add fullscreen config option ([0edede7](https://github.com/allianz/ng-aquila/commit/0edede7e8fb33ee81162b920d71e09a11f84fca9))
+
+
+
 ## [16.4.1](https://github.com/allianz/ng-aquila/compare/v16.4.0...v16.4.1) (2023-07-20)
 
 
