@@ -40,6 +40,9 @@ myDialogRef.<span class="hljs-title function_">close</span>(<span class="hljs-st
 <h3 id="fixed-width" tabindex="-1" class="docs-markdown--h3">Fixed width</h3>
 <p class="docs-markdown--p">By default the width of the modal dialog is <code>736px</code>. You can change this behavior by setting the <code>width</code> property in the <code>NxModalConfig</code>.</p>
 <div nx-docs-example="modal-fixed-width" config="{}">exampleID: modal-fixed-width</div>
+<h3 id="fullscreen" tabindex="-1" class="docs-markdown--h3">Fullscreen</h3>
+<p class="docs-markdown--p">Set <code>fullscreen</code> to <code>true</code> to show the modal in fullscreen. When using <code>fullscreen</code> the <code>width</code>, <code>height</code>, <code>maxWidth</code> and <code>maxHeight</code> are overwritten.</p>
+<div nx-docs-example="modal-fullscreen" config="{}">exampleID: modal-fullscreen</div>
 <h3 id="configuration" tabindex="-1" class="docs-markdown--h3">Configuration</h3>
 <p class="docs-markdown--p">Every dialog is opened with a default configuration. By passing a second parameter (<code>NxModalConfig</code> object) when opening a modal you can overwrite this configuration. Configurable are settings such as the dialog width and height, closing on backdrop click, adding additional classses to the dialog container etc. For more details on all configurable properties check out the <code>NxModalConfig</code> documentation <a href="./documentation/modal/api#NxModalConfig">here</a>.</p>
 <p class="docs-markdown--p">You can also share data with your dialog via the configuration object:</p>

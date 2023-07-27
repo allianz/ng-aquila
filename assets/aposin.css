@@ -928,7 +928,7 @@ body,
   --popover-content-line-height: var(--paragraph-03-line-height);
   --popover-content-font-weight: var(--paragraph-03-font-weight);
   --popover-content-letter-spacing: var(--paragraph-03-letter-spacing);
-  --popover-close-icon-size: 16px;
+  --popover-close-icon-size: 24px;
   --popover-text-color: var(--text-01);
   --popover-background-color: var(--ui-01);
   --popover-border-color: var(--ui-04);

@@ -163,6 +163,24 @@ Please only disable truncation if it&#39;s impossible to use short descriptions.
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
             <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
+                <span class="docs-api-property__name">panelMinWidth</span>:
+                <span class="docs-api-property__type">NxDropdownPanelMinWidth</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets how the panel min width will be determined.
+&#39;trigger&#39; will set the panels min-width to the trigger width.
+&#39;none&#39; will not set a min-width and will let the panel grow naturally with its content so it can be smaller than the trigger.
+This is mostly for special use cases like the country code dropdown in the phone input.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
                 <span class="docs-api-property__name">placeholder</span>:
                 <span class="docs-api-property__type">string</span>
             </code>
@@ -384,6 +402,19 @@ This function is used for displaying and filtering the content.</p>
             <code>
                 <span class="docs-api-property__name">modalId</span>:
                 <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">overlayOrigin</span>:
+                <span class="docs-api-property__type"></span>
             </code>
         </p>
     </td>
@@ -1368,6 +1399,15 @@ If no label is specified, the value will be displayed instead.</p>
         Additional type aliases
     </h3>
      
+
+<h4 id="NxDropdownPanelMinWidth" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxDropdownPanelMinWidth"></span>
+    <code>NxDropdownPanelMinWidth</code>
+</h4><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'trigger' | 'none'</code>
+</p>
+   
 
 <h4 id="FilterInputType" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
     <span header-link="FilterInputType"></span>
