@@ -1,0 +1,14 @@
+@import '../../shared-styles/index';
+
+.nx-status-icon--error {
+    color: v(danger);
+}
+.nx-status-icon--warning {
+    color: v(warning);
+}
+.nx-status-icon--info {
+    color: v(info);
+}
+.nx-status-icon--success {
+    color: v(success);
+}

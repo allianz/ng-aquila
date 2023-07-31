@@ -95,6 +95,9 @@ The filled option should only be used with **product** icons.
 </div>
 <!-- example(icon-filled) -->
 
+### Status icon
+<!-- example(status-icon) -->
+
 <div class="docs-private">
 
 ### Functional icons
