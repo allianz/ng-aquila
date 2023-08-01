@@ -20,6 +20,7 @@ $dot-border-radius: 50%;
 
 :host(.nx-list--xsmall) {
     @include type-style(paragraph-04);
+    font-weight: 400;
 }
 
 // Inverting the color is enough for most states,
