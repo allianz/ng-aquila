@@ -69,7 +69,7 @@ export class NxModalConfig<D = any> {
     maxWidth?: number | string = '736px';
 
     /** Max-height of the modal. If a number is provided, assumes pixel units. Defaults to '65vh'. */
-    maxHeight?: number | string = '65vh';
+    maxHeight?: number | string;
 
     /** Position overrides. */
     position?: NxDialogPosition;

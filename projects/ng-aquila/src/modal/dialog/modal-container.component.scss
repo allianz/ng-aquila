@@ -1,5 +1,6 @@
 @import '../../shared-styles/index';
 
+$max-modal-content-height: 65vh !default;
 $horizontal-offset: 48px;
 $action-bar-height: nx-spacer(2xl);
 
@@ -21,8 +22,7 @@ $action-bar-height: nx-spacer(2xl);
     border-radius: nx-border-radius(s);
     box-shadow: v(shadow-large);
 
-    display: flex;
-    flex-flow: column;
+    display: block;
     position: relative;
     box-sizing: border-box;
 
@@ -56,13 +56,21 @@ $action-bar-height: nx-spacer(2xl);
     display: block;
     margin: 0 -#{nx-spacer(3m)};
     padding: 0 nx-spacer(3m);
+    max-height: $max-modal-content-height;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    flex: 1 1 auto;
+
+    .is-fullscreen & {
+        max-height: calc(100% - #{nx-spacer(2m)});
+    }
 
     @include media-breakpoint-down('small') {
         margin: 0 -#{nx-spacer(2m)};
         padding: 0 nx-spacer(2m);
+
+        .is-fullscreen & {
+            max-height: calc(100% - #{nx-spacer(3m)});
+        }
     }
 }
 
@@ -74,7 +82,7 @@ $action-bar-height: nx-spacer(2xl);
     margin-left: -#{nx-spacer(3m)};
     margin-right: -#{nx-spacer(3m)};
 
-    flex: 0 0 $action-bar-height;
+    height: $action-bar-height;
     border-top: nx-border-size(xs) solid v(modal-actions-border-color);
     display: flex;
     align-items: center;
@@ -83,11 +91,22 @@ $action-bar-height: nx-spacer(2xl);
     border-bottom-left-radius: nx-border-radius(s);
     border-bottom-right-radius: nx-border-radius(s);
 
+    .is-fullscreen & {
+        background: v(modal-background-color);
+        position: absolute;
+        bottom: calc(#{$action-bar-height} - #{nx-spacer(2m)});
+        width: 100%;
+    }
+
     @include media-breakpoint-down('small') {
         margin-bottom: -#{nx-spacer(2m)};
         margin-left: -#{nx-spacer(2m)};
         margin-right: -#{nx-spacer(2m)};
         padding: 0 nx-spacer(2m);
+
+        .is-fullscreen & {
+            bottom: calc(#{$action-bar-height} - #{nx-spacer(3m)});
+        }
     }
 }
 
