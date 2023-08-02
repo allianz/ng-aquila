@@ -16,8 +16,12 @@ $padding-content: nx-spacer(2m) - $popover-border-size;
     border: $popover-border-size solid v(popover-border-color);
     border-radius: $popover-border-radius;
     box-shadow: v(shadow-small);
-    padding: nx-spacer(m) nx-spacer(4m) nx-spacer(m) nx-spacer(2m);
+    padding: nx-spacer(m) nx-spacer(2m);
     display: block;
+
+    &:has(.nx-popover__close-icon) {
+        padding: nx-spacer(m) nx-spacer(4m) nx-spacer(m) nx-spacer(2m);
+    }
 
     &:focus {
         outline: none;
