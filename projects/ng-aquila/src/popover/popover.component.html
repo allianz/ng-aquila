@@ -1,6 +1,6 @@
 <ng-template>
     <div [ngClass]="classList" class="nx-popover" role="dialog" aria-hidden="false" (click)="_onClick($event)">
-        <div class="nx-popover__content" tabindex="0">
+        <div class="nx-popover__content" [attr.tabindex]="triggerType === 'hover' ? null : 0">
             <div class="nx-popover__arrow" [ngStyle]="arrowStyle" *ngIf="!hidePopoverArrow"></div>
             <span
                 [attr.aria-label]="_intl.closeIconLabel"

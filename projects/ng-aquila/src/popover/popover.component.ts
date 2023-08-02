@@ -16,6 +16,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { NxPopoverContentDirective } from './popover-content';
 import { NxPopoverIntl } from './popover-intl';
+import { PopoverTriggerType } from './popover-trigger.directive';
 
 @Component({
     selector: 'nx-popover',
@@ -48,6 +49,9 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
 
     /** @docs-private */
     showCloseButton = false;
+
+    /** @docs-private */
+    triggerType: PopoverTriggerType = 'click';
 
     /** @docs-private */
     arrowStyle = {};

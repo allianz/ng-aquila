@@ -1,9 +1,11 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { ENTER, ESCAPE, SPACE } from '@angular/cdk/keycodes';
+import { ENTER, ESCAPE, SPACE, TAB } from '@angular/cdk/keycodes';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { Component, Directive, Type, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxInputModule } from '@aposin/ng-aquila/input';
 import { Subject, Subscription } from 'rxjs';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
@@ -42,12 +44,12 @@ describe('NxPopoverTriggerDirective', () => {
         testInstance = fixture.componentInstance;
         popoverInstance = testInstance.popoverInstance;
         triggerInstance = testInstance.triggerInstance;
-        buttonNativeElement = fixture.debugElement.query(By.css('button')).nativeElement as HTMLButtonElement;
+        buttonNativeElement = fixture.debugElement.query(By.css('button'))?.nativeElement as HTMLButtonElement;
     }
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [OverlayModule, NxPopoverModule],
+            imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
             declarations: [
                 PopoverShowClose,
                 PopoverHideClose,
@@ -65,6 +67,7 @@ describe('NxPopoverTriggerDirective', () => {
                 PopoverClickShadowDomComponent,
                 I18nTest,
                 PopoverDivTrigger,
+                PopoverHoverFormfieldComponent,
             ],
         });
 
@@ -132,10 +135,6 @@ describe('NxPopoverTriggerDirective', () => {
         tick();
     }
 
-    function patchElementFocus(element: HTMLElement) {
-        element.focus = () => dispatchFakeEvent(element, 'focus');
-    }
-
     function getBackdrop(): HTMLElement {
         return overlayContainer.getContainerElement().querySelector('.cdk-overlay-backdrop') as HTMLElement;
     }
@@ -145,6 +144,19 @@ describe('NxPopoverTriggerDirective', () => {
             createTestComponent(PopoverShowClose);
             hover();
             expect(getCloseIcon()).toBeFalsy();
+        }));
+
+        it('should not set tabindex on content wrapper', fakeAsync(() => {
+            createTestComponent(PopoverShowClose);
+            hover();
+            expect(getPopoverContent().getAttribute('tabindex')).toBeFalsy();
+        }));
+
+        it('should not create focus trap', fakeAsync(() => {
+            createTestComponent(PopoverShowClose);
+            hover();
+            const focusTrapAnchors = overlayContainer.getContainerElement().querySelectorAll('.cdk-focus-trap-anchor');
+            expect(focusTrapAnchors.length).toBe(0);
         }));
 
         it('popover should not have focus', fakeAsync(() => {
@@ -204,6 +216,19 @@ describe('NxPopoverTriggerDirective', () => {
             mouseLeave();
             expect(spy).toHaveBeenCalled();
             subscription.unsubscribe();
+        }));
+
+        it('should listen to keyboard focus in child elements', fakeAsync(() => {
+            createTestComponent(PopoverHoverFormfieldComponent);
+            const inputElement = fixture.nativeElement.querySelector('input');
+            focusMonitor.focusVia(inputElement, 'keyboard');
+            fixture.detectChanges();
+            flush();
+            expect(getPopoverContent()).toBeTruthy();
+            dispatchKeyboardEvent(inputElement, 'keydown', TAB);
+            fixture.detectChanges();
+            flush();
+            expect(getPopoverContent()).toBeFalsy();
         }));
     });
 
@@ -273,6 +298,13 @@ describe('NxPopoverTriggerDirective', () => {
             fixture.detectChanges();
             flush();
             expect(getPopoverContent()).toBeFalsy();
+        }));
+
+        it('should create focus trap', fakeAsync(() => {
+            createTestComponent(PopoverClickComponent);
+            click();
+            const focusTrapAnchors = overlayContainer.getContainerElement().querySelectorAll('.cdk-focus-trap-anchor');
+            expect(focusTrapAnchors.length).toBeGreaterThan(0);
         }));
 
         it('should not close when clicked outside if closeOnClickOutside is set to false', fakeAsync(() => {
@@ -714,6 +746,18 @@ describe('NxPopoverTriggerDirective', () => {
         </nx-popover>`,
 })
 class PopoverHoverComponent extends PopoverTest {}
+@Component({
+    template: `<div style="width: 400px; height: 400px; display: flex; justify-content: center; align-items: center;">
+            <nx-formfield label="Label" [nxPopoverTriggerFor]="popoverHover" nxPopoverTrigger="hover">
+                <input nxInput />
+            </nx-formfield>
+        </div>
+
+        <nx-popover #popoverHover>
+            <span>Content</span>
+        </nx-popover>`,
+})
+class PopoverHoverFormfieldComponent extends PopoverTest {}
 
 @Component({
     template: `<div>

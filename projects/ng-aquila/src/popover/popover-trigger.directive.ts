@@ -29,7 +29,6 @@ import {
     Input,
     NgZone,
     OnDestroy,
-    OnInit,
     Optional,
     Output,
     ViewContainerRef,
@@ -83,7 +82,7 @@ export function getNxPopoverInvalidDirectionError(direction: string) {
         '[attr.aria-describedby]': 'isOpen ? id : null',
     },
 })
-export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnInit {
+export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
     private overlayRef!: OverlayRef | null;
     private portal!: TemplatePortal;
     private readonly _overlayDestroyed = new Subject<void>();
@@ -267,7 +266,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         this._manualListeners.forEach((listener, event) => element.addEventListener(event, listener));
 
         this._focusMonitor
-            .monitor(element)
+            .monitor(element, true)
             .pipe(takeUntil(this._destroyed))
             .subscribe(origin => {
                 if (origin === 'keyboard' && this.trigger === 'hover') {
@@ -276,10 +275,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
             });
 
         this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(this._dirChangeHandler.bind(this));
-    }
-
-    ngOnInit(): void {
-        this.popover.showCloseButton = this.isCloseable();
     }
 
     ngAfterViewInit(): void {
@@ -354,30 +349,40 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
     private openPopover(): void {
         if (!this.createOverlay().hasAttached()) {
+            this.setPopoverProperties();
+
             this._embeddedViewRef = this.createOverlay().attach(this.portal);
 
-            const element = this.getPopoverContainer()!;
-            this._focusTrap = this._focusTrapFactory.create(element);
-            this._elementFocusedBeforePopoverWasOpened = this.elementRef.nativeElement;
-
-            this._focusMonitor.monitor(element.querySelector('.nx-popover__content')!);
-            const closeIcon: HTMLElement = element.querySelector('.nx-popover__close-icon')!;
-            if (closeIcon) {
-                this._focusMonitor.monitor(closeIcon);
-            }
-
             if (this.trigger !== 'hover') {
+                const element = this.getPopoverContainer()!;
+
+                this._focusTrap = this._focusTrapFactory.create(element);
+
+                this._elementFocusedBeforePopoverWasOpened = this.elementRef.nativeElement;
+                this._focusMonitor.monitor(element.querySelector('.nx-popover__content')!);
+                const closeIcon: HTMLElement = element.querySelector('.nx-popover__close-icon')!;
+
+                if (closeIcon) {
+                    this._focusMonitor.monitor(closeIcon);
+                }
+
                 setTimeout(() => {
                     // prevent page scroll, when it lose focus from trigger element.
                     this._autoFocusFirstTabbableElement(element);
                 });
-            }
 
-            // attach a close click listener only if it makes sense (ignore it on hover e.g.)
-            if (this.closeOnClickOutside) {
-                this.waitForClose();
+                // attach a close click listener only if it makes sense (ignore it on hover e.g.)
+                if (this.closeOnClickOutside) {
+                    this.waitForClose();
+                }
             }
         }
+    }
+
+    /** Sets some popover component properties that are needed to render it properly. */
+    private setPopoverProperties() {
+        this.popover.triggerType = this.trigger;
+        this.popover.showCloseButton = this.isCloseable();
     }
 
     /**
@@ -399,17 +404,22 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     // on the popover component
     private closePopover(): void {
         if (this.overlayRef!.hasAttached()) {
-            const element = this.getPopoverContainer();
-            this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__content')!);
-            this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__close-icon')!);
+            if (this.trigger !== 'hover') {
+                const element = this.getPopoverContainer();
+                this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__content')!);
+                this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__close-icon')!);
 
-            setTimeout(() => {
-                this._returnFocusAfterPopover();
-            });
+                setTimeout(() => {
+                    this._returnFocusAfterPopover();
+                });
+            }
 
             this.overlayRef!.detach();
             this._embeddedViewRef = null;
-            this._focusTrap.destroy();
+
+            if (this._focusTrap) {
+                this._focusTrap.destroy();
+            }
         }
     }
 
