@@ -29,7 +29,12 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
     private readonly _destroyed = new Subject<void>();
 
     constructor(private readonly _elementRef: ElementRef, @Inject(forwardRef(() => NxMaskDirective)) private readonly maskDirective: NxMaskDirective) {
-        this.maskDirective.registerAfterInputHook(this._afterInputHook);
+        // this is a needed workaround for browser autofill values. these are sent as one
+        // input event with the full value, and not as the input handler of the mask assumes
+        // one character at a time. in this case we need to find the country code and set the mask
+        // before the rest of the onInputChange handler is executed.
+        this.maskDirective.registerBeforeInputHook(this._setCountryCodeFromInputValue);
+        this.maskDirective.registerAfterInputHook(this._setCountryCodeFromInputValue);
         this.maskDirective.registerBeforePasteHook(this._beforePasteHook);
 
         this.maskDirective.cvaModelChange.pipe(takeUntil(this._destroyed)).subscribe((value: string) => {
@@ -38,7 +43,7 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
         });
     }
 
-    private _afterInputHook = (event: KeyboardEvent) => {
+    private _setCountryCodeFromInputValue = (event: Event) => {
         const input = event.target as HTMLInputElement;
         this._setCountryCode(input.value.substr(0, 2));
     };
@@ -60,7 +65,10 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
         if (code.length === 2 && this._countryCode !== code) {
             if (IBAN.countries[code]) {
                 this._countryCode = code;
-                this.maskDirective.setMask(this._getMask(this._countryCode));
+                // we need to run withUpdate = false here or it will mess with the current mask logic.
+                // in the beforeInput hook it would already set the input value too early which will mess
+                // with the cursor logic
+                this.maskDirective.setMask(this._getMask(this._countryCode), false);
             } else {
                 this._countryCode = null;
                 this.maskDirective.setMask('SS');

@@ -75,6 +75,19 @@ describe('NxIbanMaskDirective', () => {
             expect(maskInstance.mask).toBe('SS00 0000 0000 00AA AAAA AAAA A00');
         });
 
+        it('has correct cursor positions when typing', () => {
+            createTestComponent(BasicIbanMaskComponent);
+            assertInputValue(nativeElement, 'DE', 'DE');
+            expect(nativeElement.selectionStart).toBe(2);
+            expect(nativeElement.selectionEnd).toBe(2);
+            assertInputValue(nativeElement, 'DE1', 'DE1');
+            expect(nativeElement.selectionStart).toBe(3);
+            expect(nativeElement.selectionEnd).toBe(3);
+            assertInputValue(nativeElement, 'DE123', 'DE12 3');
+            expect(nativeElement.selectionStart).toBe(6);
+            expect(nativeElement.selectionEnd).toBe(6);
+        });
+
         it('does not update mask on entering invalid country code', () => {
             createTestComponent(BasicIbanMaskComponent);
             expect(maskInstance.mask).toBe('SS');
@@ -113,6 +126,18 @@ describe('NxIbanMaskDirective', () => {
             createTestComponent(FormIbanMaskComponent);
             testInstance.testForm.patchValue({ maskInput: 'NL91ABNA0417164300' });
             expect(nativeElement.value).toBe('NL91 ABNA 0417 1643 00');
+        });
+    });
+
+    describe('browser autofill', () => {
+        it('should correctly set the value and cursor on auto fill', () => {
+            createTestComponent(BasicIbanMaskComponent);
+            nativeElement.value = 'DE89370400440532013000';
+            nativeElement.dispatchEvent(new Event('input'));
+            fixture.detectChanges();
+            expect(nativeElement.value).toBe('DE89 3704 0044 0532 0130 00');
+            expect(nativeElement.selectionStart).toBe(27);
+            expect(nativeElement.selectionEnd).toBe(27);
         });
     });
 

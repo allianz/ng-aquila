@@ -171,9 +171,16 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
         }
     }
 
+    private _beforeInputHook = (event: Event) => {};
     private _afterInputHook = (event: KeyboardEvent) => {};
     private _beforePasteHook = (event: ClipboardEvent) => {};
 
+    /**
+     * Registers a function to be executed before the onInput handler.
+     */
+    registerBeforeInputHook(beforeInput: (event: Event) => void): void {
+        this._beforeInputHook = beforeInput;
+    }
     /**
      * Registers a function to be executed after the onInput handler.
      * The registered hook receives a `KeyboardEvent` from the onInput event handler as a parameter.
@@ -201,18 +208,21 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
     }
 
     /**
-     * Sets the mask (for programmatical use).
+     * Sets the mask (for programmatical use). Use `withUpdate = false` to not call
+     * the internal updateValue function if needed.
      *
      * No `_onChangeCallback()` will be called!
      */
-    setMask(value: string) {
+    setMask(value: string, withUpdate = true) {
         if (!value) {
             value = '';
         }
         if (value !== this._mask) {
             this._mask = value;
-            this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
-            this._validatorOnChange();
+            if (withUpdate) {
+                this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
+                this._validatorOnChange();
+            }
         }
     }
 
@@ -301,9 +311,14 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
     /**
      * Handles the onInput event.
      * `_beforeInputHook()` is called before the actual execution.
+     *  `_afterInputHook()` is called at the end of the execution.
      *
      */
     _onInputChange(event: KeyboardEvent) {
+        // KeyboardEvent is not correct here but would be a breaking change
+        // InputEvent in theory is also wrong because in Chrome the event is only of type Event
+        // during browser autofill
+        this._beforeInputHook(event as Event);
         // _inputValue is updated in updateValue(), so I need to pick it up here to compare it to a new value
         const oldVal = this._inputValue;
         const input: HTMLInputElement = event.target as HTMLInputElement;
