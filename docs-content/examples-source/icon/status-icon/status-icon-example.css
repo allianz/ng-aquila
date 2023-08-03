@@ -1,0 +1,12 @@
+section {
+    display: flex;
+    align-items: flex-end;
+    font-size: 16px;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+
+section div {
+    flex: 1;
+}

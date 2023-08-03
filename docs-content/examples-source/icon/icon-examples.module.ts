@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { IconEssentialIconsExampleComponent } from './icon-essential-icons/icon-essential-icons-example';
@@ -9,6 +10,7 @@ import { IconGeneralExampleComponent } from './icon-general/icon-general-example
 import { IconOutlineExampleComponent } from './icon-outline/icon-outline-example';
 import { IconRegistryExampleComponent } from './icon-registry/icon-registry-example';
 import { IconSizesExampleComponent } from './icon-sizes/icon-sizes-example';
+import { StatusIconExampleComponent } from './status-icon/status-icon-example';
 
 const EXAMPLES = [
     IconEssentialIconsExampleComponent,
@@ -18,10 +20,11 @@ const EXAMPLES = [
     IconOutlineExampleComponent,
     IconRegistryExampleComponent,
     IconSizesExampleComponent,
+    StatusIconExampleComponent,
 ];
 
 @NgModule({
-    imports: [NxIconModule, CommonModule],
+    imports: [NxIconModule, CommonModule, NxHeadlineModule],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
@@ -35,6 +38,7 @@ export class IconExamplesModule {
             'icon-outline': IconOutlineExampleComponent,
             'icon-registry': IconRegistryExampleComponent,
             'icon-sizes': IconSizesExampleComponent,
+            'status-icon': StatusIconExampleComponent,
         };
     }
 }

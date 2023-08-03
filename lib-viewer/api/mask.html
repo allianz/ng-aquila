@@ -191,6 +191,26 @@ to perform similar changes for pasting.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
+            <span class="docs-api-method-name">registerBeforeInputHook(beforeInput: <span class="docs-api-property__type">(event</span>)</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Registers a function to be executed before the onInput handler.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                beforeInput:
+                <span class="docs-api-method-parameter-type">(event</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
             <span class="docs-api-method-name">registerBeforePasteHook(beforePaste: <span class="docs-api-property__type">(event</span>)</span>
         </code>
     </div>
@@ -212,10 +232,11 @@ The registered hook receives a <code>ClipboardEvent</code> from the onPaste even
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">setMask(value: <span class="docs-api-property__type">string</span>)</span>
+            <span class="docs-api-method-name">setMask(value: <span class="docs-api-property__type">string</span>,withUpdate: <span class="docs-api-property__type">boolean = true</span>)</span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Sets the mask (for programmatical use).</p>
+    <div class="docs-api-method-description"><p>Sets the mask (for programmatical use). Use <code>withUpdate = false</code> to not call
+the internal updateValue function if needed.</p>
 <p>No <code>_onChangeCallback()</code> will be called!</p>
 </div><div class="docs-api-method-params">
         <p class="docs-api-method-param-title">Parameters:</p>
@@ -224,6 +245,13 @@ The registered hook receives a <code>ClipboardEvent</code> from the onPaste even
             <code class="docs-api-parameter-name">
                 value:
                 <span class="docs-api-method-parameter-type">string</span>
+            </code>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                withUpdate:
+                <span class="docs-api-method-parameter-type">boolean = true</span>
             </code>
         </div>
         
