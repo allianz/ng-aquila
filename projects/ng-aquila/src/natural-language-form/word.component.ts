@@ -136,6 +136,9 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
         }
 
         const ctx = this.measureCanvas.getContext('2d');
+        if (!ctx) {
+            return;
+        }
         const inputRef = this._control.elementRef;
         const styles = window.getComputedStyle(inputRef.nativeElement);
         ctx!.font = getFontShorthand(styles);

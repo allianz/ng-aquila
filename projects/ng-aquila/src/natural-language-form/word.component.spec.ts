@@ -19,7 +19,6 @@ abstract class NaturalLanguageFormTest {
     @ViewChildren(NxInputDirective) inputs!: QueryList<NxInputDirective>;
     @ViewChildren(NxWordComponent, { read: ElementRef }) words!: QueryList<ElementRef>;
 }
-
 describe('NxNaturalLanguageFormComponent', () => {
     let fixture: ComponentFixture<NaturalLanguageFormTest>;
     let testInstance: NaturalLanguageFormTest;
@@ -186,6 +185,20 @@ describe('NxNaturalLanguageFormComponent', () => {
             const dimensionForm = (testInstance.formInstanceNative.nativeElement as HTMLElement).getBoundingClientRect();
 
             expect(dimensionWord.width).toBeLessThanOrEqual(dimensionForm.width);
+        }));
+
+        it('should not throw even environment does not have Canvas', fakeAsync(() => {
+            createTestComponent(NaturalLanguageFormSizesComponent);
+
+            expect(() => {
+                const getContext = HTMLCanvasElement.prototype.getContext;
+                HTMLCanvasElement.prototype.getContext = () => null;
+                testInstance.value = 'lorem ipsum dolar sit amet';
+                fixture.detectChanges();
+                tick();
+
+                HTMLCanvasElement.prototype.getContext = getContext;
+            }).not.toThrow();
         }));
     });
 

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { NxAutoResizeDirective } from './auto-resize.directive';
@@ -126,6 +126,23 @@ describe('NxAutoResizeDirective', () => {
         fixture.detectChanges();
         styles = window.getComputedStyle(nativeElement);
         expect(parseFloat(styles.width)).toBe(22);
+    });
+
+    describe('Error handling', () => {
+        it('should not throw even environment does not have Canvas', fakeAsync(() => {
+            createTestComponent(DefaultResize);
+
+            expect(() => {
+                const getContext = HTMLCanvasElement.prototype.getContext;
+                HTMLCanvasElement.prototype.getContext = () => null;
+                nativeElement.value = '1000';
+                nativeElement.dispatchEvent(new Event('input'));
+                fixture.detectChanges();
+                tick();
+
+                HTMLCanvasElement.prototype.getContext = getContext;
+            }).not.toThrow();
+        }));
     });
 });
 
