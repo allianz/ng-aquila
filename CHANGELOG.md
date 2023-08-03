@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [16.6.0](https://github.com/allianz/ng-aquila/compare/v16.5.0...v16.6.0) (2023-08-03)
+
+
+### Bug Fixes
+
+* **footer:** center align navigation items on mobile ([d412e88](https://github.com/allianz/ng-aquila/commit/d412e8814182f6c0a51010c2a57374b86adfb2fd))
+* **iban-mask:** set country code earlier on browser autofill ([7c61a10](https://github.com/allianz/ng-aquila/commit/7c61a108fe30a8185ca3986de4e44859c7023c69))
+* **list:** change font weight of xsmall lists ([bad4c27](https://github.com/allianz/ng-aquila/commit/bad4c27d728e0d4eb786b5a919d2857eef213c52))
+* **modal:** revert back to old fullscreen css ([94705a8](https://github.com/allianz/ng-aquila/commit/94705a897c21c5c956adad93ce51da8ee5ad4fc1))
+* **nx-word, nxAutoResize:** prevent runtime error ([81ebd74](https://github.com/allianz/ng-aquila/commit/81ebd74e12dac1bee5001e6193d5d4bde4d26304))
+* **popover:** padding without close icon ([bb1eeb7](https://github.com/allianz/ng-aquila/commit/bb1eeb73f5f1e3abdd697d25216d4ae19d7ed21e))
+* **popover:** prevent focusing for trigger type hover ([25f5472](https://github.com/allianz/ng-aquila/commit/25f5472e7eb4d24c7cff60a48394c5a4de8b2ff7))
+* update font version in docs ([c330d6e](https://github.com/allianz/ng-aquila/commit/c330d6ecd5ae79155375bc0a46840a44f4a04419))
+
+
+### Features
+
+* **status-icon:** add status icon component ([854cbc5](https://github.com/allianz/ng-aquila/commit/854cbc56c7bca9b384fe82d51786b1f5ab50a12e))
+
+
+
 # [16.5.0](https://github.com/allianz/ng-aquila/compare/v16.4.1...v16.5.0) (2023-07-27)
 
 
