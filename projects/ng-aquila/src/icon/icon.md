@@ -14,7 +14,7 @@ The icons are comprised of two general types: **functional** and **product icons
 
 The general functionality of the icons is provided with the `NxIconModule` of `ng-aquila`. The Allianz Icons are provided with the additional `NdbxIconModule` of `@allianz/ngx-ndbx`. To use it, import it in the `app.module.ts` or in any other module:
 
-current icon version: **2.15.0** --- from [Global Allianz Icons](https://github.developer.allianz.io/oneMarketing/allianz-icons)
+current icon version: **2.20.0** --- from [Global Allianz Icons](https://github.developer.allianz.io/oneMarketing/allianz-icons)
 
 ```ts
 import { NxIconModule } from '@aposin/ng-aquila/icon';
