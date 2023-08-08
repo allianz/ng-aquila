@@ -4,8 +4,8 @@ import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { NX_DOCS_GITHUB_LINK, NX_DOCS_LOGO_PATH } from '../core/tokens';
-import { GithubLinkConfig, LogoPath } from '../core/types';
+import { NX_ANNOUNCEMENT, NX_DOCS_GITHUB_LINK, NX_DOCS_LOGO_PATH } from '../core/tokens';
+import { GithubLinkConfig, LogoPath, NxAnnouncement } from '../core/types';
 import { ManifestService } from '../service/manifest.service';
 import { CssVarSidebarComponent } from './css-vars-sandbox/css-var-sidebar-component';
 import { Egg } from './egg';
@@ -24,6 +24,7 @@ export const NX_DOCS_FEATURE_FLAGS = new InjectionToken<NxDocFeatures>('NX_DOCS_
     styleUrls: ['./documentation-frame.scss'],
     host: {
         '[class.hide-nav]': 'hideNavigation',
+        '[style.padding-top.px]': 'showAnnouncement ? 120 : null',
     },
 })
 export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
@@ -38,6 +39,8 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     showThemingSidebar = false;
 
     showMobileMenuButton = false;
+
+    showAnnouncement = false;
 
     hideNavigation = false;
 
@@ -56,9 +59,11 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
         @Optional() @Inject(NX_DOCS_FEATURE_FLAGS) private readonly _featureFlags: NxDocFeatures | null,
         @Inject(NX_DOCS_LOGO_PATH) readonly logoPath: LogoPath,
         @Inject(NX_DOCS_GITHUB_LINK) readonly githubLinkConfig: GithubLinkConfig,
+        @Optional() @Inject(NX_ANNOUNCEMENT) readonly announcement: NxAnnouncement,
     ) {
         this.themes = this._themeSwitcherService.themes();
         this.showThemingSwitcher = this._featureFlags ? this._featureFlags.themeSwitcher : false;
+        this.showAnnouncement = this.announcement && this.announcement?.endTime >= new Date();
 
         const themeQuery = this._route.snapshot.queryParamMap.get('theme');
         const themeFromQuery = this._themeSwitcherService.get(themeQuery!);

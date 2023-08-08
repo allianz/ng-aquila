@@ -1,8 +1,9 @@
 <header nx-header *ngIf="!hideNavigation">
-    <nx-header-row *ngIf="githubLinkConfig.repoLink !== 'https://github.com/allianz/ng-aquila'">
+    <nx-header-row *ngIf="showAnnouncement">
         <nx-error appearance="text">
-            Breaking change: we had to move to a new Nexus instance, so all users have to update Nexus URL. Please check the
-            <nx-link><a href="https://github.developer.allianz.io/ilt/ngx-ndbx/pull/4067/files">Github migration issue</a></nx-link
+            {{ announcement.title }}
+            <nx-link *ngIf="announcement?.link"
+                ><a href="{{ announcement.link?.url }}">{{ announcement.link?.title }}</a></nx-link
             >.
         </nx-error>
     </nx-header-row>

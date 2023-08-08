@@ -22,3 +22,12 @@ export interface NxvDocumentationConfig {
     welcomeComponent: any;
     footerComponent: any;
 }
+
+export interface NxAnnouncement {
+    title: string;
+    link?: {
+        title: string;
+        url: string;
+    };
+    endTime: Date;
+}
