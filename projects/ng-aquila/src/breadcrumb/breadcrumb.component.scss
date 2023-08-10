@@ -11,15 +11,16 @@
     ::ng-deep .nx-breadcrumb-item {
         color: v(breadcrumb-link-color);
     }
-
     ::ng-deep .nx-breadcrumb-item__text {
-        &:hover {
-            color: v(breadcrumb-link-hover-color);
-        }
-
         &:active {
             color: v(breadcrumb-link-active-color);
         }
+    }
+}
+
+::ng-deep li:not(:last-child) .nx-breadcrumb-item__text {
+    &:hover {
+        color: v(breadcrumb-link-hover-color);
     }
 }
 

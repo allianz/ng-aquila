@@ -19,6 +19,10 @@
     }
 }
 
+:host:not([href]) .nx-breadcrumb-item__text {
+    cursor: auto;
+}
+
 .nx-breadcrumb-item__text {
     cursor: pointer;
 }

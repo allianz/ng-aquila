@@ -1,8 +1,8 @@
 <div class="docs-inverse-container">
     <nav aria-label="Breadcrumb">
         <ol nxBreadcrumb negative="true">
-            <li *ngFor="let item of dynamicItems; let i = index">
-                <a nxBreadcrumbItem (click)="goToItem(i)" routerLink="#">
+            <li *ngFor="let item of items; let i = index; last as isLast">
+                <a nxBreadcrumbItem [routerLink]="isLast ? null : '#'">
                     {{ item }}
                 </a>
             </li>
