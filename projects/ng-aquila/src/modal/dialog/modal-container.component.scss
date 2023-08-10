@@ -50,6 +50,44 @@ $action-bar-height: nx-spacer(2xl);
     @media screen and (forced-colors: active) {
         border: nx-border-size(m) solid CanvasText;
     }
+
+    ::ng-deep .nx-modal__title {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 36px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+        margin-bottom: #{nx-spacer(m)};
+        @include media-breakpoint-down('small') {
+            font-size: 26px;
+        }
+    }
+    ::ng-deep .nx-modal__status {
+        margin-bottom: #{nx-spacer(s)};
+        font-size: 64px;
+    }
+}
+
+:host(.is-expert) {
+    ::ng-deep .nx-modal__status {
+        display: flex;
+        margin-bottom: 0;
+        margin-right: #{nx-spacer(s)};
+        font-size: 36px !important;
+    }
+    ::ng-deep .nx-modal__title {
+        font-weight: 400;
+        text-align: left;
+        flex-direction: row;
+        margin-bottom: #{nx-spacer(s)};
+    }
+
+    ::ng-deep .nx-modal__actions {
+        justify-content: flex-end;
+    }
 }
 
 :host ::ng-deep .nx-modal__content {

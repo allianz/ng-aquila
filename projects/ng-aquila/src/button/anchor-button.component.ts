@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
+
 import { NxAnchorButtonBase } from './button-base';
 
 @Component({

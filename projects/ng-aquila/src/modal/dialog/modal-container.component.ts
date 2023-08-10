@@ -14,6 +14,7 @@ import {
     EventEmitter,
     Inject,
     OnDestroy,
+    OnInit,
     Optional,
     ViewChild,
 } from '@angular/core';
@@ -53,6 +54,7 @@ export function throwNxDialogContentAlreadyAttachedError() {
         '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',
         '[attr.aria-label]': '_config.ariaLabel',
         '[attr.aria-describedby]': '_config.ariaDescribedBy || null',
+        '[class.is-expert]': '_isExpert',
         '[@modalContainer]': '{ value: !_config.fullscreen ? _state : "" }',
         '(@modalContainer.start)': '_onAnimationStart($event)',
         '(@modalContainer.done)': '_onAnimationDone($event)',
@@ -61,7 +63,7 @@ export function throwNxDialogContentAlreadyAttachedError() {
         '(@slideInOut.done)': '_onAnimationDone($event)',
     },
 })
-export class NxModalContainer extends BasePortalOutlet implements AfterViewInit, OnDestroy {
+export class NxModalContainer extends BasePortalOutlet implements AfterViewInit, OnDestroy, OnInit {
     /** The portal outlet inside of this container into which the modal content will be loaded. */
     @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet!: CdkPortalOutlet;
 
@@ -88,6 +90,9 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
     /** ID for the container DOM element. */
     _id!: string;
 
+    /** for appearance of modal */
+    _isExpert = false;
+
     constructor(
         private readonly _elementRef: ElementRef,
         private readonly _focusTrapFactory: FocusTrapFactory,
@@ -105,6 +110,11 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
         if (this._config.showCloseIcon) {
             this._focusMonitor.monitor(this._closeButton);
         }
+    }
+
+    ngOnInit(): void {
+        const appearance = this._config.appearance;
+        this._isExpert = appearance === 'expert';
     }
 
     ngOnDestroy(): void {

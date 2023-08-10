@@ -5,6 +5,8 @@ import { ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 /** Valid ARIA roles for a modal element. */
 export type NxModalRole = 'dialog' | 'alertdialog';
 
+export type NxModalAppearance = 'expert' | 'default';
+
 /** Possible overrides for a modal's position. */
 export interface NxDialogPosition {
     /** Override for the modal's top position. */
@@ -37,6 +39,13 @@ export class NxModalConfig<D = any> {
 
     /** The ARIA role of the modal element. */
     role?: NxModalRole = 'dialog';
+
+    /**
+     * The appearance of the modal.
+     *
+     * Default: `'default'`.
+     */
+    appearance?: NxModalAppearance;
 
     /** Custom class for the overlay pane. */
     panelClass?: string | string[] = '';

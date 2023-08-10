@@ -16,6 +16,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
+import { NxStatusIconType } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -39,6 +40,23 @@ export class NxModalActionsDirective {}
     },
 })
 export class NxModalContentDirective {}
+
+/** Title of a modal. */
+@Component({
+    selector: '[nxModalTitle]',
+    host: {
+        '[class.nx-modal__title]': 'true',
+    },
+    template: `<nx-status-icon *ngIf="status" [type]="status" class="nx-modal__status"></nx-status-icon><ng-content></ng-content>`,
+})
+export class NxModalTitleComponent {
+    /**
+     * Show icon based on status type.
+     *
+     * Default: `undefined`.
+     */
+    @Input() status?: NxStatusIconType;
+}
 
 @Component({
     selector: 'nx-modal',

@@ -72,6 +72,10 @@ By default the width of the modal dialog is `736px`. You can change this behavio
 
 <!-- example(modal-fixed-width) -->
 
+ ### Modal with status
+ Below is an example of how to create a modal with status by using the `nxModalTitle`
+ <!-- example(modal-status) -->
+
 ### Fullscreen
 
 Set `fullscreen` to `true` to show the modal in fullscreen. When using `fullscreen` the `width`, `height`, `maxWidth` and `maxHeight` are overwritten.

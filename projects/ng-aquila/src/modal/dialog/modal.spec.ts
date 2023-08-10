@@ -950,6 +950,29 @@ describe('NxDialog', () => {
         expect(pane).withContext('Expected class to be removed').not.toHaveClass('custom-class-one');
     });
 
+    it('has expert appearance', fakeAsync(() => {
+        const dialogRef = dialog.open(PizzaMsg, {
+            appearance: 'expert',
+        });
+        viewContainerFixture.detectChanges();
+        flush();
+
+        const dialogContainerElement = overlayContainerElement.querySelector('nx-modal-container')!;
+        expect(dialogContainerElement).toHaveClass('is-expert');
+    }));
+
+    it('should show correct class for status and title', fakeAsync(() => {
+        const dialogRef = dialog.open(TitleStatusDialog);
+        viewContainerFixture.detectChanges();
+        flush();
+
+        const dialogContainerElement = overlayContainerElement.querySelector('nx-modal-container')!;
+        const status = dialogContainerElement.querySelector('.nx-modal__status')!;
+        const title = dialogContainerElement.querySelector('.nx-modal__title')!;
+        expect(status).toBeTruthy();
+        expect(title).toBeTruthy();
+    }));
+
     describe('disableClose option', () => {
         it('should prevent closing via clicks on the backdrop', fakeAsync(() => {
             dialog.open(PizzaMsg, {
@@ -1636,6 +1659,20 @@ class PizzaMsg {
     constructor(readonly dialogRef: NxModalRef<PizzaMsg>, readonly dialogInjector: Injector, readonly directionality: Directionality) {}
 }
 
+/** Simple component for testing title and status headline. */
+@Component({
+    template: `
+        <h2 nxModalTitle status="error">
+            {{ headline }}
+        </h2>
+    `,
+})
+class TitleStatusDialog {
+    headline = 'hello world';
+
+    constructor(readonly dialogRef: NxModalRef<TitleStatusDialog>, readonly dialogInjector: Injector, readonly directionality: Directionality) {}
+}
+
 @Component({
     template: `
         <div nxModalContent>Lorem ipsum dolor sit amet.</div>
@@ -1704,6 +1741,7 @@ const TEST_DIRECTIVES = [
     DialogWithoutFocusableElements,
     ComponentWithContentElementTemplateRef,
     ShadowDomComponent,
+    TitleStatusDialog,
 ];
 
 @NgModule({

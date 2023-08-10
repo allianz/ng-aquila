@@ -1,0 +1,85 @@
+<div>Default</div>
+<button
+    nxButton
+    class="nx-margin-right-xs nx-margin-bottom-m"
+    (click)="open('success', 'default')"
+>
+    success
+</button>
+<button
+    nxButton
+    class="nx-margin-right-xs nx-margin-bottom-m"
+    (click)="open('info', 'default')"
+>
+    info
+</button>
+<button
+    nxButton
+    class="nx-margin-right-xs nx-margin-bottom-m"
+    (click)="open('error', 'default')"
+>
+    error
+</button>
+<button
+    nxButton
+    class="nx-margin-right-xs nx-margin-bottom-m"
+    (click)="open('warning', 'default')"
+>
+    warning
+</button>
+<div>Expert</div>
+<button
+    nxButton
+    class="nx-margin-right-xs nx-margin-bottom-m"
+    (click)="open('success', 'expert')"
+>
+    success
+</button>
+<button
+    nxButton
+    class="nx-margin-right-xs nx-margin-bottom-m"
+    (click)="open('info', 'expert')"
+>
+    info
+</button>
+<button
+    nxButton
+    class="nx-margin-right-xs nx-margin-bottom-m"
+    (click)="open('error', 'expert')"
+>
+    error
+</button>
+<button
+    nxButton
+    class="nx-margin-right-xs nx-margin-bottom-m"
+    (click)="open('warning', 'expert')"
+>
+    warning
+</button>
+
+<ng-template #template>
+    <h2 nxModalTitle [status]="status">Modal heading</h2>
+    <div nxModalContent>
+        <p nxCopytext="small" class="nx-modal-margin-bottom">
+            This content is placed within the <code>nx-modal-container</code>
+        </p>
+    </div>
+    <div nxModalActions class="status-action">
+        <button
+            (click)="dialogRef?.close()"
+            class="nx-margin-bottom-0 nx-margin-right-xs"
+            nxButton="small secondary"
+            type="button"
+        >
+            Cancel
+        </button>
+        <button
+            class="nx-margin-bottom-0"
+            nxButton="small"
+            type="button"
+            (click)="open('warning', 'expert')"
+        >
+            Proceed
+        </button>
+    </div>
+</ng-template>

@@ -157,13 +157,13 @@ export class NxAnchorButtonBase extends NxButtonBase {
     constructor(private _ngZone: NgZone, _cdr: ChangeDetectorRef, elementRef: ElementRef, focusMonitor: FocusMonitor) {
         super(_cdr, elementRef, focusMonitor);
         this._ngZone.runOutsideAngular(() => {
-            (<HTMLAnchorElement>this.elementRef.nativeElement).addEventListener('click', this._checkEventsDisabled);
+            (this.elementRef.nativeElement as HTMLAnchorElement).addEventListener('click', this._checkEventsDisabled);
         });
     }
 
     override ngOnDestroy() {
         super.ngOnDestroy();
-        (<HTMLAnchorElement>this.elementRef.nativeElement).removeEventListener('click', this._checkEventsDisabled);
+        (this.elementRef.nativeElement as HTMLAnchorElement).removeEventListener('click', this._checkEventsDisabled);
     }
 
     /** @docs-private */
