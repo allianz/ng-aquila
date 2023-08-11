@@ -52,6 +52,8 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
 
     readonly _destroyed = new Subject<void>();
 
+    wasCompleted = false;
+
     /** Custom error state matcher that checks for validity of the step form. */
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
         const originalErrorState = this._errorStateMatcher.isErrorState(control, form);
@@ -77,8 +79,13 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
                         takeWhile(() => this._stepControl === this.stepControl),
                         takeUntil(this._destroyed),
                     )
-                    .subscribe(() => {
-                        this.stepper._stateChanged();
+                    .subscribe((status: any) => {
+                        if (this.wasCompleted && status === 'DISABLED') {
+                            this.stepper._stateChanged();
+                        } else {
+                            this.wasCompleted = status === 'VALID';
+                            this.stepper._stateChanged();
+                        }
                     });
             }
         }

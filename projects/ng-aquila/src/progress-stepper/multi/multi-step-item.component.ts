@@ -88,6 +88,15 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     }
     private _completed!: boolean;
 
+    /** Sets the step was completed. */
+    @Input() set wasCompleted(value: BooleanInput) {
+        this._wasCompleted = coerceBooleanProperty(value);
+    }
+    get wasCompleted(): boolean {
+        return this._wasCompleted;
+    }
+    private _wasCompleted!: boolean;
+
     @Input() set ariaControls(value: string) {
         this._ariaControls = value;
     }

@@ -318,6 +318,38 @@ describe('NxMultiStepperComponent', () => {
                 expect(step).toHaveClass('is-completed');
             });
         });
+
+        describe('form disable', () => {
+            beforeEach(() => {
+                createTestComponent(MultiStepValidationTest);
+            });
+
+            it('should be complete when form is valid then disabled', () => {
+                const comp: MultiStepValidationTest = fixture.componentInstance as MultiStepValidationTest;
+                comp.manualCompletionForm.setValue({
+                    name: 'Joestar',
+                    fruit: 'Locacaca',
+                });
+                comp.manualCompletionForm.get('name')?.disable();
+                comp.manualCompletionForm.get('fruit')?.disable();
+
+                fixture.detectChanges();
+
+                const step = fixture.nativeElement.querySelector('nx-multi-step-item');
+                expect(step).toHaveClass('is-completed');
+            });
+
+            it('should be incomplete when form is disabled and not valid', () => {
+                const comp: MultiStepValidationTest = fixture.componentInstance as MultiStepValidationTest;
+                comp.manualCompletionForm.get('name')?.disable();
+                comp.manualCompletionForm.get('fruit')?.disable();
+
+                fixture.detectChanges();
+
+                const step = fixture.nativeElement.querySelector('nx-multi-step-item');
+                expect(step).not.toHaveClass('is-completed');
+            });
+        });
     });
 
     describe('programmatic', () => {

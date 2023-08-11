@@ -11,12 +11,13 @@
                 [last]="isLast"
                 [tabindex]="_getFocusIndex() === i ? 0 : -1"
                 [label]="step.stepLabel || step.label"
-                [completed]="step.completed"
+                [completed]="step.completed || step.wasCompleted"
                 [selected]="selectedIndex === i"
                 [active]="selectedIndex > i"
                 [disabled]="_stepDisabled(i)"
                 [direction]="direction"
                 [ariaControls]="_getStepContentId(i)"
+                [wasCompleted]="step.wasCompleted"
             >
             </nx-multi-step-item>
         </ng-container>
@@ -68,11 +69,12 @@
                         [tabindex]="_getFocusIndex() === _getIndex(step) ? 0 : -1"
                         [last]="isLast"
                         [label]="step.stepLabel || step.label"
-                        [completed]="step.completed"
+                        [completed]="step.completed || step.wasCompleted"
                         [selected]="selectedIndex === _getIndex(step)"
                         [active]="selectedIndex > _getIndex(step)"
                         [disabled]="_stepDisabled(_getIndex(step))"
                         [direction]="direction"
+                        [wasCompleted]="step.wasCompleted"
                         [ariaControls]="_getStepContentId(i)"
                     >
                     </nx-multi-step-item>
