@@ -173,11 +173,6 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
         private readonly _focusMonitor: FocusMonitor,
     ) {
         this._groupId = nextId++;
-
-        this.viewportService
-            .max(NxBreakpoints.BREAKPOINT_MEDIUM)
-            .pipe(takeUntil(this._destroyed))
-            .subscribe(isSmallTablet => this._switchAppearance(isSmallTablet));
     }
 
     ngAfterContentInit(): void {
@@ -265,6 +260,15 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     }
 
     ngAfterViewInit(): void {
+        // we need to make the subscription later, somewhere between rxjs 7.5.0 and 7.8.1 a change was made that
+        // the value gets emitted before the input setters of the angular component got called and then
+        // the tabs would show the mobile accordion even if the user did disable it.
+        this.viewportService
+            .max(NxBreakpoints.BREAKPOINT_MEDIUM)
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(isSmallTablet => {
+                this._switchAppearance(isSmallTablet);
+            });
         this._tabButtons.forEach(button => this._focusMonitor.monitor(button));
         this._tabButtonsPrevious = this._tabButtons;
         this._tabButtons.changes.subscribe(tabButtons => {
