@@ -1,7 +1,7 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Breadcrumb&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">nxBreadcrumb</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items; let i = index&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">nxBreadcrumbItem</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;goToItem(i)&quot;</span> <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items; let i = index; last as isLast&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">nxBreadcrumbItem</span> [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;isLast ? null : &#x27;#&#x27;&quot;</span>&gt;</span>
                 {{ item }}
             <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>

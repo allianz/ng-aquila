@@ -10,8 +10,4 @@ import { Component } from '@angular/core';
 })
 export class BreadcrumbExampleComponent {
     items = ['Home', 'Insurance', 'Health Insurance'];
-
-    goToItem(i: number) {
-        this.items = this.items.slice(0, i + 1);
-    }
 }

@@ -10,10 +10,4 @@ import { Component } from '@angular/core';
 })
 export class BreadcrumbNegativeExampleComponent {
     items = ['Home', 'Insurance', 'Health Insurance'];
-
-    dynamicItems = this.items;
-
-    goToItem(i: number) {
-        this.dynamicItems = this.items.slice(0, i + 1);
-    }
 }

@@ -10,10 +10,4 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BreadcrumbNegativeExampleComponent</span> {
     items = [<span class="hljs-string">&#x27;Home&#x27;</span>, <span class="hljs-string">&#x27;Insurance&#x27;</span>, <span class="hljs-string">&#x27;Health Insurance&#x27;</span>];
-
-    dynamicItems = <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>;
-
-    <span class="hljs-title function_">goToItem</span>(<span class="hljs-params">i: <span class="hljs-built_in">number</span></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">dynamicItems</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, i + <span class="hljs-number">1</span>);
-    }
 }
