@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [16.7.0](https://github.com/allianz/ng-aquila/compare/v16.6.0...v16.7.0) (2023-08-17)
+
+
+### Bug Fixes
+
+* **breadcrumbs:** add hover to all variants ([36b0c36](https://github.com/allianz/ng-aquila/commit/36b0c36807f291fe62b58f2170191e5df630976a))
+* **stepper:** show check mark when form  disabled ([f646b34](https://github.com/allianz/ng-aquila/commit/f646b3495172ad7647ace3099dbcf824af2ddd70))
+* **tabs:** mobileAccordion option not working with rxjs > 7.8.0 ([9307ba0](https://github.com/allianz/ng-aquila/commit/9307ba0162883e7354ccb3e84240561a3ce98fdc))
+
+
+### Features
+
+* **modal:** add modal status config ([41705dd](https://github.com/allianz/ng-aquila/commit/41705ddd72107ebe9ad7a65b50aded8235008765))
+
+
+
 # [16.6.0](https://github.com/allianz/ng-aquila/compare/v16.5.0...v16.6.0) (2023-08-03)
 
 
