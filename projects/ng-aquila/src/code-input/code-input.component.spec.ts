@@ -1,4 +1,4 @@
-import { DOWN_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
+import { CONTROL, DOWN_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -20,6 +20,8 @@ abstract class CodeInputTest {
 
     negative = false;
     disabled = false;
+    tabindex = 0;
+    type = 'text';
 
     onSubmit() {}
 }
@@ -42,15 +44,7 @@ describe('NxCodeInputComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
-            declarations: [
-                CodeInputTest1,
-                CodeInputTest2,
-                CodeInputTest3,
-                NumberCodeInput,
-                ConfigurableCodeInput,
-                OnPushCodeInput,
-                OverrideDefaultLabelsCodeInput,
-            ],
+            declarations: [CodeInputTest1, CodeInputTest2, CodeInputTest3, NumberCodeInput, ConfigurableCodeInput, OverrideDefaultLabelsCodeInput],
             providers: [NxCodeInputIntl],
         }).compileComponents();
     }));
@@ -58,6 +52,7 @@ describe('NxCodeInputComponent', () => {
     it('creates a 4 character input form', () => {
         createTestComponent(CodeInputTest1);
         expect(testInstance).toBeTruthy();
+        expect(testInstance.codeInputInstance._keyCode).toEqual(['', '', '', '']);
     });
 
     it('should have a codeLength of 4', () => {
@@ -87,6 +82,30 @@ describe('NxCodeInputComponent', () => {
     it('should be rendered invalid', () => {
         createTestComponent(CodeInputTest1);
         expect(codeInputElement).toHaveClass('ng-invalid');
+    });
+
+    it('should set selection range on keydown paste', () => {
+        createTestComponent(CodeInputTest1);
+        inputElement.value = '1';
+        inputElement.focus();
+        expect(inputElement.selectionStart).toBe(1);
+        expect(inputElement.selectionEnd).toBe(1);
+        dispatchKeyboardEvent(inputElement, 'keydown', CONTROL);
+        fixture.detectChanges();
+        expect(inputElement.selectionStart).toBe(0);
+        expect(inputElement.selectionEnd).toBe(1);
+    });
+
+    it('should set selection range on mousedown', () => {
+        createTestComponent(CodeInputTest1);
+        inputElement.value = '1';
+        inputElement.focus();
+        expect(inputElement.selectionStart).toBe(1);
+        expect(inputElement.selectionEnd).toBe(1);
+        inputElement.dispatchEvent(new Event('mousedown'));
+        fixture.detectChanges();
+        expect(inputElement.selectionStart).toBe(0);
+        expect(inputElement.selectionEnd).toBe(1);
     });
 
     it('should select second input on right arrow', fakeAsync(() => {
@@ -129,45 +148,50 @@ describe('NxCodeInputComponent', () => {
         expect(codeInputElement).toHaveClass('has-error');
     }));
 
-    it('should paste', fakeAsync(() => {
+    it('should paste', () => {
         createTestComponent(CodeInputTest1);
-        const data = new DataTransfer();
-        data.items.add('abcd', 'text/plain');
-        const clipboard = new ClipboardEvent('paste', {
-            clipboardData: data,
-        } as ClipboardEventInit);
 
         inputElement.focus();
-        inputElement.dispatchEvent(clipboard);
+        inputElement.dispatchEvent(new InputEvent('input', { data: 'abcd' }));
         fixture.detectChanges();
-        tick(1);
         ['A', 'B', 'C', 'D'].forEach((char, i) => {
             const input = codeInputElement.querySelector(`input:nth-child(${i + 1})`) as HTMLInputElement;
             expect(input.value).toBe(char);
         });
-    }));
+    });
 
-    it('should ignore non-number characters on paste on number input', fakeAsync(() => {
-        createTestComponent(NumberCodeInput);
-        const data = new DataTransfer();
-        data.items.add('1a23', 'text/plain');
-        const clipboard = new ClipboardEvent('paste', {
-            clipboardData: data,
-        } as ClipboardEventInit);
-
+    it('should work on browser autofill', () => {
+        /**
+         * important: this test will not fail if you add maxlength="1" in the template again.
+         * on android chrome e.g. what will happen then that it will create two input events. first one with the whole pasted value
+         * and a second one only with the first character. we can't really simulate this behaviour in a test.
+         */
+        createTestComponent(CodeInputTest1);
         inputElement.focus();
-        inputElement.dispatchEvent(clipboard);
         fixture.detectChanges();
-        tick(1);
+
+        inputElement.dispatchEvent(new InputEvent('input', { data: '1234' }));
+        fixture.detectChanges();
+
+        ['1', '2', '3', '4'].forEach((char, i) => {
+            const input = codeInputElement.querySelector(`input:nth-child(${i + 1})`) as HTMLInputElement;
+            expect(input.value).toBe(char);
+        });
+    });
+
+    it('should ignore non-number characters on paste on number input', () => {
+        createTestComponent(NumberCodeInput);
+        inputElement.focus();
+        inputElement.dispatchEvent(new InputEvent('input', { data: '1a23' }));
+        fixture.detectChanges();
 
         ['1', '2', '3', ''].forEach((char, i) => {
             const input = codeInputElement.querySelector(`input:nth-child(${i + 1})`) as HTMLInputElement;
             expect(input.value).toBe(char);
         });
 
-        // @ts-expect-error fix nullability
-        expect(testInstance.codeInputInstance._keyCode).toEqual(['1', '2', '3', undefined]);
-    }));
+        expect(testInstance.codeInputInstance._keyCode).toEqual(['1', '2', '3', '']);
+    });
 
     it('should prevent default on down arrow press in an empty input', fakeAsync(() => {
         createTestComponent(NumberCodeInput);
@@ -249,8 +273,8 @@ describe('NxCodeInputComponent', () => {
     });
 
     it('should set the passed tabindex', () => {
-        createTestComponent(CodeInputTest1);
-        testInstance.codeInputInstance.tabindex = 1;
+        createTestComponent(ConfigurableCodeInput);
+        testInstance.tabindex = 1;
         fixture.detectChanges();
         expect(codeInputElement.getAttribute('tabindex')).toBe('-1');
 
@@ -261,8 +285,8 @@ describe('NxCodeInputComponent', () => {
     });
 
     it('should change the input type', fakeAsync(() => {
-        createTestComponent(CodeInputTest3);
-        fixture.componentInstance.codeInputInstance.type = 'number';
+        createTestComponent(ConfigurableCodeInput);
+        fixture.componentInstance.type = 'number';
         fixture.detectChanges();
         const inputEl = fixture.nativeElement.querySelector('.nx-code-input__field') as HTMLInputElement;
         expect(inputEl.getAttribute('type')).toBe('number');
@@ -287,18 +311,6 @@ describe('NxCodeInputComponent', () => {
             testInstance.negative = false;
             fixture.detectChanges();
             expect(testInstance.codeInputInstance.negative).toBeFalse();
-            expect(codeInputElement).not.toHaveClass('is-negative');
-        });
-
-        it('should update on negative change (programmatic change)', () => {
-            createTestComponent(OnPushCodeInput);
-
-            testInstance.codeInputInstance.negative = true;
-            fixture.detectChanges();
-            expect(codeInputElement).toHaveClass('is-negative');
-
-            testInstance.codeInputInstance.negative = false;
-            fixture.detectChanges();
             expect(codeInputElement).not.toHaveClass('is-negative');
         });
     });
@@ -331,18 +343,6 @@ describe('NxCodeInputComponent', () => {
             Array.from(inputElements).forEach(inputEl => {
                 expect((inputEl as HTMLElement).getAttribute('disabled')).toBeNull();
             });
-        });
-
-        it('should update on disabled change (programmatic change)', () => {
-            createTestComponent(OnPushCodeInput);
-
-            testInstance.codeInputInstance.disabled = true;
-            fixture.detectChanges();
-            expect(codeInputElement).toHaveClass('is-disabled');
-
-            testInstance.codeInputInstance.disabled = false;
-            fixture.detectChanges();
-            expect(codeInputElement).not.toHaveClass('is-disabled');
         });
 
         it('should update disabled on formGroup update', () => {
@@ -436,15 +436,9 @@ class CodeInputTest3 extends CodeInputTest {
 class NumberCodeInput extends CodeInputTest {}
 
 @Component({
-    template: `<nx-code-input [negative]="negative" [disabled]="disabled" [length]="4"> </nx-code-input>`,
+    template: `<nx-code-input [negative]="negative" [disabled]="disabled" [length]="4" [tabindex]="tabindex" [type]="type"> </nx-code-input>`,
 })
 class ConfigurableCodeInput extends CodeInputTest {}
-
-@Component({
-    template: `<nx-code-input [negative]="negative" [length]="4"> </nx-code-input>`,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-})
-class OnPushCodeInput extends CodeInputTest {}
 
 @Component({
     template: `<nx-code-input [length]="4"></nx-code-input>`,
