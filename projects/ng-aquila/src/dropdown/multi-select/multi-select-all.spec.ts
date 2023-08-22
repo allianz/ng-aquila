@@ -17,6 +17,8 @@ export class MultiSelectAllHarness extends ComponentHarness {
 
     getCheckIcon = this.locatorForOptional('nx-icon');
 
+    getIndeterminate = this.locatorFor('.nx-checkbox__indeterminate-indicator');
+
     async getLabelText() {
         const label = await this.getLabel();
         return label.text();
@@ -115,8 +117,14 @@ describe('NxMultiSelectAllComponent', () => {
             expect(ariaDisabled).toBeNull();
         });
 
+        it('is show indeterminate mark', async () => {
+            testInstance.indeterminate = true;
+            expect(await multiSelectAllHarness.getIndeterminate()).toBeTruthy();
+        });
+
         describe('when selected by click', () => {
             beforeEach(async () => {
+                testInstance.selected = true;
                 await multiSelectAllHarness.click();
             });
 
@@ -167,6 +175,9 @@ describe('NxMultiSelectAllComponent', () => {
     describe('accessibility', () => {
         it('read out select state', async () => {
             createTestComponent(BasicMultiSelectAllComponent);
+            multiSelectAllHarness = await loader.getHarness(MultiSelectAllHarness);
+            multiSelectAllInstance.selected = true;
+
             const announceSpy = spyOn(liveAnnouncer, 'announce');
             await multiSelectAllHarness.click();
 
@@ -178,7 +189,6 @@ describe('NxMultiSelectAllComponent', () => {
 @Directive()
 abstract class MultiSelectAllTest {
     @ViewChild(NxMultiSelectAllComponent) multiSelectOption!: NxMultiSelectAllComponent<any>;
-
     selected = false;
     label = 'Select All';
     onSelectAll = jasmine.createSpy('onSelectAll');

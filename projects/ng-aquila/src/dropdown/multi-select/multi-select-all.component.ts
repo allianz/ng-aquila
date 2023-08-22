@@ -38,7 +38,15 @@ export class NxMultiSelectAllComponent<T> implements Highlightable {
     /**
      * Indeterminate
      */
-    @Input() indeterminate = false;
+    @Input()
+    set indeterminate(value: boolean) {
+        this._indeterminate = value;
+    }
+
+    get indeterminate() {
+        return this._indeterminate;
+    }
+    _indeterminate = false;
 
     /**
      * Whether this option is selected.
@@ -86,7 +94,6 @@ export class NxMultiSelectAllComponent<T> implements Highlightable {
 
     _onSelect() {
         if (!this.disabled) {
-            this.selected = !this.selected;
             this.selectedAllChange.emit(this.selected);
             this.liveAnnouncer.announce(`${this.label} ${this.selected ? 'selected' : 'unselected'}`);
         }

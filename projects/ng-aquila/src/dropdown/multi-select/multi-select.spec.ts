@@ -37,6 +37,10 @@ class MultiSelectHarness extends ComponentHarness {
 
     getDivider = this.documentRootLocator.locatorForOptional('.divider');
 
+    getCheckmark = this.documentRootLocator.locatorForOptional('nx-multi-select-all .is-selected');
+
+    getIndeterminate = this.documentRootLocator.locatorForOptional('nx-multi-select-all .nx-checkbox__indeterminate-indicator');
+
     async clickOptions(indexes: number[]) {
         const options = await this.getOptions();
         for (const i of indexes) {
@@ -356,6 +360,27 @@ describe('NxMultiSelectComponent', () => {
                     await multiSelectHarness.clickSelectAll();
 
                     expect(testInstance.model).toEqual(['Audi', 'Mini']);
+                });
+
+                it('unselect only visible option when filter', async () => {
+                    await multiSelectHarness.setFilter('Audi');
+                    await multiSelectHarness.clickSelectAll(); // to remove audi
+
+                    expect(testInstance.model).toEqual(['BMW', 'Volvo', 'Mini', 'Mercedes']);
+                });
+
+                it('show indeterminate when not all options selected', async () => {
+                    await multiSelectHarness.setFilter('Audi');
+                    await multiSelectHarness.clickSelectAll(); // to remove audi
+
+                    const indeterminate = await multiSelectHarness.getIndeterminate();
+
+                    expect(indeterminate).toBeTruthy();
+                });
+
+                it('show checkmark when all options selected', async () => {
+                    const checkmark = await multiSelectHarness.getCheckmark();
+                    expect(checkmark).toBeTruthy();
                 });
 
                 it('shows the value in the trigger', async () => {
