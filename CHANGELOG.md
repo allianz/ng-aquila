@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [16.7.1](https://github.com/allianz/ng-aquila/compare/v16.7.0...v16.7.1) (2023-08-24)
+
+
+### Bug Fixes
+
+* **code-input:** handle mobile keyboard clipboard pasting ([bf095ee](https://github.com/allianz/ng-aquila/commit/bf095ee1ce94926d70da6bbcef70a731bdec052b))
+* **multi-select:** select all with filter ([b1af230](https://github.com/allianz/ng-aquila/commit/b1af2306e73021190b2d5e34a498d1df251f4caf))
+* **slider:** increase value label font-weight ([ba1ea01](https://github.com/allianz/ng-aquila/commit/ba1ea01c3efdcaaf9408b007d84136ed4cf7e309))
+
+
+
 # [16.7.0](https://github.com/allianz/ng-aquila/compare/v16.6.0...v16.7.0) (2023-08-17)
 
 
