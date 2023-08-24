@@ -1030,7 +1030,7 @@ body,
   --slider-value-label-font-size: var(--paragraph-03-font-size);
   --slider-value-label-line-height: var(--paragraph-03-line-height);
   --slider-value-label-letter-spacing: var(--paragraph-03-letter-spacing);
-  --slider-value-label-font-weight: 300;
+  --slider-value-label-font-weight: 400;
   --slider-handle-value-font-size: var(--paragraph-05-font-size);
   --slider-handle-value-line-height: var(--paragraph-05-line-height);
   --slider-handle-value-font-weight: var(--paragraph-05-font-weight);
