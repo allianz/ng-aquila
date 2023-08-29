@@ -21,6 +21,20 @@ function compileTheme(theme) {
     });
 }
 
+function compileAgGridTheme() {
+    let nodeModulesPath = 'node_modules';
+    // little trick to build it correctly when it is used as a git submodule
+    if (fs.existsSync('../node_modules/ag-grid-community')) {
+        nodeModulesPath = '../node_modules';
+    }
+    execSync(
+        `sass --no-source-map --load-path=${nodeModulesPath} projects/ng-aquila/src/ag-grid/ag-theme-aquila.scss dist/ng-aquila/themes/ag-theme-aquila.css`,
+        {
+            stdio: 'inherit',
+        },
+    );
+}
+
 function globCopy(sourcePath, destinationPath, globPath) {
     const files = glob.sync(sourcePath + globPath, null);
     files.forEach(src => {
@@ -43,6 +57,8 @@ console.log('  Building themes');
 opensourceThemes.forEach(theme => {
     compileTheme(theme);
 });
+console.log('  Building ag-grid theme');
+compileAgGridTheme();
 
 console.log('============================');
 console.log('  Building utility css');
