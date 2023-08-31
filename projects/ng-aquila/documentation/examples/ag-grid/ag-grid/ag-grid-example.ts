@@ -67,18 +67,20 @@ export class AgGridExampleComponent {
             resizable: true,
             initialHide: true,
             showRowGroup: false,
-
+            floatingFilter: true,
             children: [
                 {
                     field: 'model',
                     filter: 'agTextColumnFilter',
                     cellEditorPopup: true,
                     resizable: true,
+                    floatingFilter: true,
                 },
                 {
                     field: 'price',
                     filter: 'agTextColumnFilter',
                     resizable: true,
+                    floatingFilter: true,
                 },
             ],
         },

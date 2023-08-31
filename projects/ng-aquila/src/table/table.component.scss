@@ -380,3 +380,14 @@ $sticky-shadow-size: nx-spacer(3xs);
         }
     }
 }
+
+:host ::ng-deep .nx-table__resize-handle {
+    position: absolute;
+    right: 0;
+    border-right: 2px solid v(table-resize-handle-color);
+    cursor: col-resize;
+    height: 24px;
+    top: 50%;
+    width: 12px;
+    transform: translate(0, -50%);
+}

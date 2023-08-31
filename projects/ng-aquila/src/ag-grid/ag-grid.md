@@ -19,6 +19,8 @@ For complex data tables (data grids) we suggest using the [ag-grid](https://www.
 ## Compatibility
 The theme was built with ag-grid-angular version `^30.0.0`. It might work with other versions as well, but we did not test it.
 
+Please also note that for some design features the theme makes use of the `:has` css selector which is currently still in development in Firefox, as such we are not supporting Firefox at the moment.
+
 ## How to use
 The ag-grid theme assumes that one of the library themes is already imported to use css variables from there.
 

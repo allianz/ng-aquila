@@ -8,14 +8,7 @@ import { NxHeaderCellDirective } from '../header-cell.directive';
 @Directive({
     selector: '[nxHeaderResize]',
     host: {
-        '[style.right]': '"0"',
-        '[style.position]': '"absolute"',
-        '[style.border-right]': '"2px solid var(--ui-04)"',
-        '[style.cursor]': '"col-resize"',
-        '[style.height]': '"24px"',
-        '[style.top]': '"50%"',
-        '[style.width]': '"12px"',
-        '[style.transform]': '"translate(0, -50%)"',
+        '[class.nx-table__resize-handle]': 'true',
     },
 })
 export class NxHeaderResizeDirective implements OnInit, OnDestroy, AfterViewChecked {

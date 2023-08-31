@@ -19,15 +19,20 @@ $icon-mapping: (
     menu: '\e928',
     save: '\e917',
 );
-// TODO: ag-border-color for aposin
-// note: the sass API does some auto magic with deriving colors when you set some variables. this does not work if we want to use one of our
-// css variables, the sass build will throw an error if that happens. the solution is to move the declaration then into the .ag-theme-aquila block
-// and also find the derived colors that need to be adjusted manually
+// note: the sass API does some auto magic with deriving colors with transparency from certain values. this does not work if we want to use one of our
+// css variables, the sass build will throw an error if that happens.
+// you can find the color blends of ag-grid here: https://github.com/ag-grid/ag-grid/blob/latest/grid-community-modules/styles/_index.scss
+// that gives a good indication which other variables need to be set manually by us.
+// or as a quick workaround you can move move the declaration into the .ag-theme-aquila block
+// but then something where the blended colors from default alpine are used might not work well with
+// our theme
 $aquila-theme: (
     theme: aquila,
     extend-theme: alpine,
     --ag-card-radius: 4px,
-    --ag-background-color: transparent,
+    --ag-background-color: var(--ui-01),
+    --ag-modal-overlay-background-color: var(--ui-01),
+    --ag-control-panel-background-color: var(--ui-01),
     --ag-popup-shadow: var(--shadow-small),
     --ag-card-shadow: var(--shadow-large),
     --ag-font-family: var(--font-family),
@@ -42,13 +47,19 @@ $aquila-theme: (
     --ag-checkbox-checked-color: var(--checkbox-selected-background-color),
     --ag-row-hover-color: var(--selectable-table-row-hover-background-color),
     --ag-selected-row-background-color: var(--zebra-table-row-selected-background-color),
-    // TODO
-    --ag-range-selection-border-color: #008ed6,
-    // TODO why different to the NDBX table?
-    --ag-header-column-resize-handle-color: #c2c2c2,
+    --ag-header-column-resize-handle-color: var(--table-resize-handle-color),
+    --ag-header-column-separator-color: var(--table-resize-handle-color),
     --ag-header-column-resize-handle-height: 50%,
     --ag-border-radius: 4px,
     --ag-widget-vertical-spacing: 12px,
+    --ag-cell-horizontal-padding: 16px,
+    --ag-border-color: var(--ui-04),
+    --ag-foreground-color: var(--text-01),
+    --ag-disabled-foreground-color: var(--disabled-01),
+    --ag-input-disabled-background-color: var(--formfield-background-color),
+    --ag-input-disabled-border-color: var(--formfield-disabled-border-color),
+    // that might need adjustment don't know where that is used
+    --ag-chip-background-color: var(--ui-01),
 );
 
 @include ag.grid-styles($aquila-theme);
@@ -71,8 +82,33 @@ $aquila-theme: (
 }
 
 .ag-theme-aquila {
-    --ag-foreground-color: var(--text-01);
     --ag-input-border-color: var(--formfield-outline-border-color);
+    --ag-range-selection-border-color: var(--selectable-table-row-selected-border-color);
+
+    // creates the spacing of the group header border to the resize handles
+    // by hiding parts of the border with the properly positioned pseudo elements
+    // a bit hacky but works :)
+    .ag-header-group-cell {
+        &:before,
+        &:after {
+            content: ' ';
+            width: 8px;
+            position: absolute;
+            height: 100%;
+            background-color: var(--ag-background-color);
+            top: 50%;
+            z-index: 2;
+            display: block;
+        }
+
+        &:before {
+            left: 0;
+        }
+
+        &::after {
+            right: 2px;
+        }
+    }
 
     .ag-header-row:has(+ .ag-header-row-column-filter) {
         --ag-header-column-resize-handle-height: 67px;
@@ -93,22 +129,8 @@ $aquila-theme: (
     }
 
     .ag-header-row-column-group:has(+ .ag-header-row) {
-        .ag-header-cell-resize {
-            margin-right: -8px;
-        }
-
         .ag-header-cell-resize::after {
             height: 109px;
-        }
-    }
-
-    .ag-header-row-column-group + .ag-header-row .ag-header-cell:not(.ag-header-span-height):has(+ .ag-header-span-height) .ag-header-cell-resize::after {
-        display: none;
-    }
-
-    .ag-header-cell.ag-header-span-height {
-        .ag-header-cell-resize {
-            margin-right: 8px !important;
         }
     }
 
@@ -150,11 +172,9 @@ $aquila-theme: (
     }
 
     .ag-floating-filter-input .ag-disabled {
-        --ag-input-disabled-border-color: var(--formfield-disabled-border-color);
         input:disabled {
             border-right: none;
             color: var(--formfield-disabled-text-color);
-            --ag-input-disabled-background-color: transparent;
         }
     }
 
@@ -191,10 +211,6 @@ $aquila-theme: (
         -webkit-font-smoothing: antialiased;
     }
 
-    .ag-menu {
-        background-color: var(--ui-01);
-    }
-
     input[class^='ag-'][type='text'] {
         min-height: 32px;
     }
@@ -214,8 +230,6 @@ $aquila-theme: (
     }
 
     .ag-row-hover.ag-row-selected::before {
-        // TODO: why different to NDBX table? specific ag-grid variable?
-        background-color: #e6f4f6;
         background-color: var(--selectable-table-row-selected-hover-background-color);
         background-image: none;
     }
