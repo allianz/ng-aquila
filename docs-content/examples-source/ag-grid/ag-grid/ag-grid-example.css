@@ -1,0 +1,17 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+    padding-bottom: 24px;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.buttons button {
+    flex: 1 0 auto;
+}

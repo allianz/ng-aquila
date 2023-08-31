@@ -23,6 +23,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'accessibility': return import('../examples/accessibility/accessibility-examples.module').then(m => m.AccessibilityExamplesModule);
             case 'accordion': return import('../examples/accordion/accordion-examples.module').then(m => m.AccordionExamplesModule);
             case 'action': return import('../examples/action/action-examples.module').then(m => m.ActionExamplesModule);
+            case 'ag-grid': return import('../examples/ag-grid/ag-grid-examples.module').then(m => m.HeadlineExamplesModule);
             case 'autocomplete': return import('../examples/autocomplete/autocomplete-examples.module').then(m => m.AutocompleteExamplesModule);
             case 'avatar': return import('../examples/avatar/avatar-examples.module').then(m => m.AvatarExamplesModule);
             case 'badge': return import('../examples/badge/badge-examples.module').then(m => m.BadgeExamplesModule);
