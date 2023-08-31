@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [16.8.0](https://github.com/allianz/ng-aquila/compare/v16.7.1...v16.8.0) (2023-08-31)
+
+
+### Ag-grid theme
+For complex data tables we are now providing a theme for ag-grid. We wanted to provide an early version and we are looking for feedback. Please try it out and let us know what you think.
+
+### Bug Fixes
+
+* **ag-grid:** resize handle, popup backgrounds ([2a37a0e](https://github.com/allianz/ng-aquila/commit/2a37a0e6bfee11f141ba8df146a636768daf2a9a))
+* **code-input:** fix initial disabled state ([b435621](https://github.com/allianz/ng-aquila/commit/b4356219ef4c33a699a7012c5f7d6d53c01ff87d))
+* **pagination:** add font inherit ([0de0306](https://github.com/allianz/ng-aquila/commit/0de030609dabe5f035cf3b6272406634bd6f4990))
+
+
+### Features
+
+* **ag-grid:** provide theme for ag-grid ([74ada8e](https://github.com/allianz/ng-aquila/commit/74ada8ee5133c273a7f177695d85faf739c74ea6))
+
+
+
 ## [16.7.1](https://github.com/allianz/ng-aquila/compare/v16.7.0...v16.7.1) (2023-08-24)
 
 
