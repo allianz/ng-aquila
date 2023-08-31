@@ -37,7 +37,6 @@ export class NxHeadlineComponent {
      * Changes the type of the headline which affects the visual appearance.
      *
      * You can combine a HeadlineType and 'negative'.
-     * @deprecated Use the size and negative inputs instead.
      */
     @Input('nxHeadline') set classNames(value: string) {
         if (this._classNames === value) {
