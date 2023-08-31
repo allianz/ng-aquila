@@ -11,6 +11,6 @@
     (mousedown)="_selectText($event)"
     (keydown)="_keydownAction($event)"
     [attr.tabindex]="tabindex"
-    [attr.disabled]="disabled ? '' : null"
+    [disabled]="disabled ? true : false"
     autocomplete="one-time-code"
 />

@@ -1,9 +1,9 @@
 import { CONTROL, DOWN_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { createKeyboardEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
+import { createKeyboardEvent, dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxCodeInputComponent } from './code-input.component';
 import { NxCodeInputModule } from './code-input.module';
 import { NxCodeInputIntl } from './code-input-intl';
@@ -129,7 +129,7 @@ describe('NxCodeInputComponent', () => {
 
         const lastInput = fixture.nativeElement.querySelector('input:last-child');
         lastInput.focus();
-        lastInput.blur();
+        dispatchFakeEvent(lastInput, 'blur');
         tick();
         fixture.detectChanges();
         expect(codeInputElement).toHaveClass('has-error');
@@ -321,7 +321,7 @@ describe('NxCodeInputComponent', () => {
             expect(testInstance.codeInputInstance.disabled).toBeFalse();
         });
 
-        it('should update on disabled change', () => {
+        it('should update on disabled change', fakeAsync(() => {
             createTestComponent(ConfigurableCodeInput);
             const inputElements = codeInputElement.querySelectorAll('.nx-code-input__field');
             expect(testInstance.codeInputInstance.disabled).toBeFalse();
@@ -329,6 +329,8 @@ describe('NxCodeInputComponent', () => {
 
             testInstance.disabled = true;
             fixture.detectChanges();
+            flush();
+
             expect(testInstance.codeInputInstance.disabled).toBeTrue();
             expect(codeInputElement).toHaveClass('is-disabled');
 
@@ -338,12 +340,15 @@ describe('NxCodeInputComponent', () => {
 
             testInstance.disabled = false;
             fixture.detectChanges();
+            flush();
+
             expect(testInstance.codeInputInstance.disabled).toBeFalse();
             expect(codeInputElement).not.toHaveClass('is-disabled');
+
             Array.from(inputElements).forEach(inputEl => {
                 expect((inputEl as HTMLElement).getAttribute('disabled')).toBeNull();
             });
-        });
+        }));
 
         it('should update disabled on formGroup update', () => {
             createTestComponent(CodeInputTest1);
