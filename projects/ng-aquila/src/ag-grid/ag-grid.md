@@ -24,7 +24,7 @@ Please also note that for some design features the theme makes use of the `:has`
 ## How to use
 The ag-grid theme assumes that one of the library themes is already imported to use css variables from there.
 
-- Import the provided file from `@aposin/ng-aquila/css/themes/ag-theme-aquila.css` and add it to your application. You can choose any of the typical ways in an angular application, e.g. in the angular.json file or in your main styles.(s)css file.
+- Import the provided file from `@aposin/ng-aquila/themes/ag-theme-aquila.css` and add it to your application. You can choose any of the typical ways in an angular application, e.g. in the angular.json file or in your main styles.(s)css file.
 - Add the class `ag-theme-aquila` to the ag-grid-angular element.
 - **Optional:** add one of the modifier classes `ag-theme-aquila-dense` or `ag-theme-aquila-zebra` to the ag-grid-angular element as well. You can also combine them and add or remove them dynamically.
 - **Allianz internal projects**: add the class `ag-allianz-icons` to the ag-grid-angular element to overwrite the default ag-grid alpine icons with the Allianz icons.
