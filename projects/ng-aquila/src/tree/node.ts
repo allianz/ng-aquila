@@ -14,7 +14,7 @@ import { NxTreeComponent } from './tree.component';
     inputs: ['disabled', 'tabIndex'],
     host: {
         '[attr.aria-expanded]': 'isExpanded',
-        '[attr.aria-level]': 'role === "treeitem" ? level : null',
+        '[attr.aria-level]': 'role === "treeitem" ? level + 1 : null',
         '[attr.role]': 'role',
         class: 'nx-tree__node',
         '[class.is-expanded]': 'isExpanded',

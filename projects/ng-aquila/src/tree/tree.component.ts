@@ -39,7 +39,7 @@ import { NxTreeNodeOutletDirective } from './outlet';
         // the ElementRef is not available in the constructor so the class can't be applied directly
         // without a breaking constructor change.
         class: 'nx-tree cdk-tree',
-        role: 'application',
+        role: 'tree',
         '[attr.tabindex]': '_tabIndex',
         '(keydown)': '_handleKeydown($event)',
         '(focus)': 'focus()',
