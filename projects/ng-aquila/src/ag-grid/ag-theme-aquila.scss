@@ -18,6 +18,12 @@ $icon-mapping: (
     left: '\e902',
     menu: '\e928',
     save: '\e917',
+    eye-slash: '\ea52',
+    tick: '\e911',
+    copy: '\ea35',
+    eye: '\ea54',
+    small-left: '\ea28',
+    small-down: '\e90a',
 );
 // note: the sass API does some auto magic with deriving colors with transparency from certain values. this does not work if we want to use one of our
 // css variables, the sass build will throw an error if that happens.
@@ -110,6 +116,11 @@ $aquila-theme: (
         }
     }
 
+    // safari fix that the before and after from above are placed on top of the border
+    .ag-header-row-column-group {
+        z-index: 1;
+    }
+
     .ag-header-row:has(+ .ag-header-row-column-filter) {
         --ag-header-column-resize-handle-height: 67px;
 
@@ -130,7 +141,7 @@ $aquila-theme: (
 
     .ag-header-row-column-group:has(+ .ag-header-row) {
         .ag-header-cell-resize::after {
-            height: 109px;
+            height: calc(200% - var(--ag-grid-size) * 4);
         }
     }
 
