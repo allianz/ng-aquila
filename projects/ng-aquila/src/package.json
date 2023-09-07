@@ -23,6 +23,8 @@
         "migrations": "./schematics/migrations.json"
     },
     "exports": {
-        "./css/": "./css/"
+        "./css/": "./css/",
+        "./themes/": "./themes/",
+        "./styles/": "./styles/"
     }
 }
