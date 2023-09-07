@@ -60,6 +60,8 @@ const dependencies = {
     '@angular/platform-browser-dynamic': angularVersion,
     '@angular/router': angularVersion,
     '@aposin/ng-aquila': aquilaVersion,
+    'ag-grid-angular': '^30.1.0',
+    'ag-grid-community': '^30.1.0',
     dayjs: '^1.11.5',
     'decimal.js': '^10.3.1',
     'i18n-iso-countries': '^7.4.0',
