@@ -62,7 +62,7 @@ By default, the modal will close if the user clicks on the backdrop or hits the 
 
 ### Modal Content Directives
 
-You can separate the dialog body into dialog content and dialog actions by using the directives `nxModalContent` and `nxModalActions`. `nxModalActions` is container for action buttons placed at the bottom of the dialog. The example below shows how to apply them for a Dialog with a disclaimer look.
+You can separate the dialog body into dialog content and dialog actions by using the directives `nxModalContent` and `nxModalActions`. `nxModalActions` is container for action buttons placed at the bottom of the dialog. `nxModalTitle` can be used to put the title above or inside the `nxModalContent`. Placed inside `nxModalContent` the headline will scroll with the content, placed on top it will stay fixed. The example below shows how to apply them for a Dialog with a disclaimer look.
 
 <!-- example(modal-content-actions) -->
 
