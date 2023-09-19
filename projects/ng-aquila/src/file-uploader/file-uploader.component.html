@@ -11,7 +11,7 @@
     (change)="_onFileChange($event)"
     [id]="_inputId"
 />
-<ng-container *ngIf="value">
+<ng-container *ngIf="value && value.length > 0">
     <div class="nx-file-uploader--file-list nx-margin-bottom-m" role="list" [attr.aria-labelledby]="_labelId">
         <div
             #fileRowElement
