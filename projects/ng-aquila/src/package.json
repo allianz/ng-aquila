@@ -11,7 +11,7 @@
         "@angular/cdk": "^16.0.0",
         "@angular/common": "^16.0.0",
         "@angular/core": "^16.0.0",
-        "i18n-iso-countries": "^6.8.0",
+        "i18n-iso-countries": "^6.8.0||^7.5.0",
         "iban": "^0.0.14",
         "moment": "^2.29.1",
         "dayjs": "^1.11.5",
