@@ -114,8 +114,6 @@ node('adp-jenkins-agent-nodejs-with-azure-cli') {
   stage("Build documentation") {
     shared.withNotification('ci/build/documentation', "Build documentation") {
       echo "Building documentation"
-      // workaround until https://github.com/angular/angular/issues/35602 is fixed
-      sh "sed -i 's/\"sideEffects\": false/\"sideEffects\": true/g' dist/ng-aquila/package.json"
       sh "npm run build:docs -- --progress=false"
     }
   }
