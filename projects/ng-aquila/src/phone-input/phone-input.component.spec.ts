@@ -176,6 +176,26 @@ describe('PhoneInputComponent', () => {
         expect(input.value).toBe('1234');
     }));
 
+    it('should not remove leading zeros on blur if country is italy ', fakeAsync(() => {
+        createTestComponent(ReactiveFormsPhoneInput);
+        flush();
+        const input = getInput().nativeElement;
+
+        const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+        formControl.setValue('+390123');
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+        dispatchFakeEvent(input, 'input');
+        fixture.detectChanges();
+        flush();
+        dispatchFakeEvent(input, 'blur');
+        fixture.detectChanges();
+        flush();
+        expect(getInput().nativeElement.value).toBe('0123');
+        expect((testInstance as ReactiveFormsPhoneInput).formControl.value).toBe('+390123');
+    }));
+
     it('should remove leading zero in model', fakeAsync(() => {
         createTestComponent(ReactiveFormsPhoneInput);
         flush();

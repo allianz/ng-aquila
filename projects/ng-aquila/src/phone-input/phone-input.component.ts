@@ -326,7 +326,10 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     }
 
     private _removeLeadingZero(value: string) {
-        return value.replace(/^0/, '');
+        // It is valid for an Italian landline phone numbers to start with 0.
+        const italyCountryCallingCode = '39';
+        const isItaly = this._countryCallingCode === italyCountryCallingCode;
+        return isItaly ? value : value.replace(/^0/, '');
     }
 
     /** Returns the combined string of selected calling code + input number */
