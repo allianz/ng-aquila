@@ -114,7 +114,11 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
         if (parentData) {
             this.parentMap.set(data, parentData);
         }
-        this._getChildrenList(parentData).splice(index, 0, data);
+        // prevent duplicate items when node expanded
+        const hasData = this._getChildrenList(parentData).includes(data);
+        if (!hasData) {
+            this._getChildrenList(parentData).splice(index, 0, data);
+        }
     }
 
     /** Remove a node data from node list based on the owner of view container. */
@@ -276,9 +280,15 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
         if (!this._focusedData) {
             return;
         }
+
         const parent = this.parentMap.get(this._focusedData);
         const nodeList = this.childrenMap.get(parent);
         const index = nodeList!.indexOf(this._focusedData);
+        const isExpanded = this.treeControl.isExpanded(this._focusedData);
+        if (!isExpanded) {
+            this._removeChildren();
+        }
+
         if (index === 0) {
             return parent;
         } else if (index > 0) {
@@ -292,8 +302,13 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
         if (!this._focusedData) {
             return;
         }
+        const isExpanded = this.treeControl.isExpanded(this._focusedData);
+        if (!isExpanded) {
+            this._removeChildren();
+        }
+
         // Always return first child if the node is expanded
-        if (this.childrenMap.has(this._focusedData) && this.treeControl && this.treeControl.isExpanded(this._focusedData)) {
+        if (this.childrenMap.has(this._focusedData) && this.treeControl && isExpanded) {
             const childNodeList = this._getChildrenList(this._focusedData);
             if (childNodeList.length) {
                 return childNodeList[0];
@@ -301,6 +316,7 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
         }
         // Or return next sibling / parent's next child if any
         let currentData: T | undefined = this._focusedData;
+
         while (currentData) {
             const parent = this.parentMap.get(currentData);
             const nodeList = this.childrenMap.get(parent);
@@ -334,6 +350,41 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
             }
         }
         return undefined;
+    }
+
+    /** Remove all nodes under collapsed tree */
+    _removeChildren() {
+        const parent = this.parentMap.get(this._focusedData);
+        const nodeList = this._getChildrenList();
+        const currentFocusIndex = nodeList.indexOf(this._focusedData);
+        const children = this._getNestLevels(nodeList, currentFocusIndex);
+
+        children.forEach(child => {
+            this.nodeMap.delete(child);
+            this.parentMap.delete(child);
+        });
+        const removedList = nodeList.filter(node => !children.includes(node));
+        this.childrenMap.set(parent, removedList);
+    }
+
+    /** Get all nest nodes under an expandable node. */
+    _getNestLevels(data: any[], fromIndex: number) {
+        const fromLevel = data[fromIndex]?.level;
+        const selectedObjects = [];
+        let currentIndex = fromIndex + 1;
+
+        while (currentIndex < data.length) {
+            const currentObject = data[currentIndex];
+
+            if (currentObject.level <= fromLevel) {
+                break; // Stop when a higher-level object is encountered
+            }
+
+            selectedObjects.push(currentObject);
+            currentIndex++;
+        }
+
+        return selectedObjects;
     }
 
     /**

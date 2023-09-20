@@ -283,6 +283,7 @@ describe(NxTreeComponent.name, () => {
                 const data = underlyingDataSource.data;
                 underlyingDataSource.addChild(data[0]);
                 underlyingDataSource.addChild(data[0]);
+
                 fixture.detectChanges();
 
                 // Focus first item
@@ -313,6 +314,80 @@ describe(NxTreeComponent.name, () => {
                 expect(component.tree.focusedData.pizzaTopping).toBe('topping_1');
 
                 expect(component.treeControl.expansionModel.selected).withContext('no node expanded').toHaveSize(0);
+
+                // Focus next parent
+                dispatchKeyboardEvent(treeElement, 'keydown', DOWN_ARROW);
+                fixture.detectChanges();
+                expect(component.tree.focusedData.pizzaTopping).toBe('topping_2');
+
+                // Focus previous parent
+                dispatchKeyboardEvent(treeElement, 'keydown', UP_ARROW);
+                fixture.detectChanges();
+                expect(component.tree.focusedData.pizzaTopping).toBe('topping_1');
+            });
+
+            it('should get nest level list', () => {
+                const data = [
+                    {
+                        label: '1',
+                        level: 0,
+                    },
+                    {
+                        label: '2',
+                        level: 0,
+                    },
+                    {
+                        label: '2.1',
+                        level: 1,
+                    },
+                    {
+                        label: '2.2',
+                        level: 1,
+                    },
+                    {
+                        label: '3',
+                        level: 0,
+                    },
+                    {
+                        label: '3.1',
+                        level: 1,
+                    },
+                    {
+                        label: '3.2',
+                        level: 2,
+                    },
+                    {
+                        label: '4',
+                        level: 0,
+                    },
+                ];
+                expect(component.tree._getNestLevels(data, 0)).toEqual([]);
+                expect(component.tree._getNestLevels(data, 1)).toEqual([
+                    {
+                        label: '2.1',
+                        level: 1,
+                    },
+                    {
+                        label: '2.2',
+                        level: 1,
+                    },
+                ]);
+                expect(component.tree._getNestLevels(data, 4)).toEqual([
+                    {
+                        label: '3.1',
+                        level: 1,
+                    },
+                    {
+                        label: '3.2',
+                        level: 2,
+                    },
+                ]);
+                expect(component.tree._getNestLevels(data, 5)).toEqual([
+                    {
+                        label: '3.2',
+                        level: 2,
+                    },
+                ]);
             });
         });
     });
