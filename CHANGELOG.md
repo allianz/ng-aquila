@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [16.9.0](https://github.com/allianz/ng-aquila/compare/v16.8.0...v16.9.0) (2023-09-20)
+
+
+### File uploader new option to handle errors
+We identified some problems with how the file type, max file size and max files validators are handled. These validators were added to the form control validators. But as they also block the files from being added to the file list this can lead to a situation where the control is invalid but it is not obvious for the user how to resolve that.
+The mentioned validations can now be accessed via an `errors` property on the `nx-file-uploader` component. In addition you can disable that the validators are added to the form control validators by setting `noBlockingValidators="true"`. This is opt-in as it would be a breaking change. You can find more information and updated examples in the file uploader documentation page.
+
+### Bug Fixes
+
+* **ag-grid:** add more icon mappings ([8fee8a0](https://github.com/allianz/ng-aquila/commit/8fee8a07a37ce8ae06996d4a615142c9cf4cbb00))
+* **data-display:** correct font weight ([d036d23](https://github.com/allianz/ng-aquila/commit/d036d23f923ba2338d8c4ad29d2674c4db52e7b0))
+* **datepicker:** add close icon aria label ([b971a2a](https://github.com/allianz/ng-aquila/commit/b971a2a789211933b61f1c9bf5af037de599bfdc))
+* **docs:** add nxModalTitle ([12781f9](https://github.com/allianz/ng-aquila/commit/12781f985f529d39a1bf121352c572068d4b868a))
+* **error:** add aria-hidden to the icon ([0f899e3](https://github.com/allianz/ng-aquila/commit/0f899e32908594203102430ea92b32a58086f10d))
+* export themes and styles in package.json ([3b5bc1d](https://github.com/allianz/ng-aquila/commit/3b5bc1da2b8d06cd7aad0cb33fbb779a5b751c63))
+* **fileuploader:** hide file list container ([4b1fe2d](https://github.com/allianz/ng-aquila/commit/4b1fe2db17a19a72936e9cd9cad4f80c5829b5d1))
+* **mulit-select:** add readonly ([86013b1](https://github.com/allianz/ng-aquila/commit/86013b15788be3f522438aa21e8567b8ae0fe7d8))
+* **phone-input:** allow leading zero for Italy ([399cd9e](https://github.com/allianz/ng-aquila/commit/399cd9ef47cb3d9d84653c65463053cadc80a470))
+* **tooltip:** add retail ([eb82e89](https://github.com/allianz/ng-aquila/commit/eb82e89c4bcd72d14490027b7549ad47c8ad9fef))
+* **tree:** keyboard navigation ([46448ea](https://github.com/allianz/ng-aquila/commit/46448ead48380b5bf659e1157ec345cbc1b880b4))
+* **tree:** use role tree, correct aria-level ([a865a0d](https://github.com/allianz/ng-aquila/commit/a865a0d10d8ad1d0576b999403529f8ca67e7036))
+
+
+### Features
+
+* **file-uploader:** provide new error list for blocking validations ([d5f6b2e](https://github.com/allianz/ng-aquila/commit/d5f6b2e02b192e94f334136ce529d372b293de86))
+
+
+
 # [16.8.0](https://github.com/allianz/ng-aquila/compare/v16.7.1...v16.8.0) (2023-08-31)
 
 
