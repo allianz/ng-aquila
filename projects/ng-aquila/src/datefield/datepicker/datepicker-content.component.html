@@ -1,6 +1,12 @@
 <div class="nx-calendar-focus-trap" cdkTrapFocus>
     <div class="nx-datepicker-header">
-        <button (click)="datepicker.close()" class="nx-datepicker-close" type="button" #closeButton>
+        <button
+            (click)="datepicker.close()"
+            class="nx-datepicker-close"
+            type="button"
+            #closeButton
+            [attr.aria-label]="_intl.closeIconLabel || 'Close calendar'"
+        >
             <nx-icon name="close"></nx-icon>
         </button>
     </div>

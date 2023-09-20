@@ -23,6 +23,9 @@ export class NxDatepickerIntl {
     /** A label for the button used to open the calendar popup (used by screen readers). */
     openCalendarLabel = 'Open calendar';
 
+    /** A label for the button used to close the calendar popup (used by screen readers). */
+    closeIconLabel = 'Close calendar';
+
     /** A label for the previous month button (used by screen readers). */
     prevMonthLabel = 'Previous month';
 
