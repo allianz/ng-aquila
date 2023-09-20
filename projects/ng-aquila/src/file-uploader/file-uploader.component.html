@@ -29,7 +29,7 @@
     </div>
 </ng-container>
 
-<ng-content select="nx-error" *ngIf="errorState"></ng-content>
+<ng-content select="nx-error" *ngIf="errorState || errors.length"></ng-content>
 
 <ng-template #defaultFileRow let-templateContext="templateContext" let-file="file">
     <nx-file-upload-name [name]="file?.name"></nx-file-upload-name>

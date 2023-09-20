@@ -22,6 +22,7 @@ abstract class FileUploaderTest {
     maxFileNumber!: number;
     accept: any;
     strictAcceptValidation = false;
+    disableCommonValidator = false;
 }
 
 describe('NxFileUploaderComponent', () => {
@@ -271,6 +272,60 @@ describe('NxFileUploaderComponent', () => {
             expect(testInstance.form.controls.documents.hasError('required')).toBeTrue();
         });
 
+        it('should list all files error in errors property', () => {
+            createTestComponent(ReactiveFileUpload);
+            testInstance.required = true;
+            testInstance.maxFileSize = 1024;
+            testInstance.accept = 'text/html';
+            fixture.detectChanges();
+
+            let invalidFile1 = new File(['3555'], 'big file', { type: 'text/html' });
+            invalidFile1 = Object.defineProperty(invalidFile1, 'size', { value: 1024 ** 3, writable: false });
+            let invalidFile2 = new File(['3555'], 'big file2', { type: 'text/html' });
+            invalidFile2 = Object.defineProperty(invalidFile2, 'size', { value: 1024 ** 3, writable: false });
+            const invalidFile3 = new File(['100'], 'wrong type', { type: 'png' });
+            invalidFile2 = Object.defineProperty(invalidFile2, 'size', { value: 1024 ** 3, writable: false });
+            const validFile = new File(['3555'], 'valid file', { type: 'text/html' });
+
+            const fileList = {
+                0: invalidFile1,
+                1: invalidFile2,
+                2: invalidFile3,
+                3: validFile,
+                length: 3,
+                item: () => invalidFile1,
+            };
+
+            fileUploaderInstance._onFileChange({
+                type: 'change',
+                target: {
+                    files: fileList,
+                },
+            });
+            fixture.detectChanges();
+
+            expect(fileUploaderInstance.errors).toEqual([
+                {
+                    filename: 'big file',
+                    type: 'fileSize',
+                    max: 1024,
+                    actual: 1073741824,
+                },
+                {
+                    filename: 'big file2',
+                    type: 'fileSize',
+                    max: 1024,
+                    actual: 1073741824,
+                },
+                {
+                    filename: 'wrong type',
+                    type: 'fileType',
+                    actual: '',
+                    extension: 'text/html',
+                },
+            ]);
+        });
+
         it('should be error when selected file size is bigger than the max file', () => {
             createTestComponent(ReactiveFileUpload);
             testInstance.required = true;
@@ -426,7 +481,35 @@ describe('NxFileUploaderComponent', () => {
                 expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBeFalse();
             });
 
+            it('should has fileNumber error in errors property if file number > maxFileNumbe', () => {
+                createTestComponent(ReactiveFileUpload);
+                testInstance.maxFileNumber = 2;
+                createAndAddFile('test.png', 'some type');
+                createAndAddFile('test.png', 'some type');
+                createAndAddFile('test.png', 'some type');
+                fixture.detectChanges();
+
+                expect(fileUploaderInstance.errors).toEqual([
+                    {
+                        filename: '',
+                        type: 'fileNumber',
+                        max: 2,
+                        actual: 3,
+                    },
+                ]);
+            });
+
             it('is invalid if file number > maxFileNumber', () => {
+                createTestComponent(ReactiveFileUpload);
+                testInstance.maxFileNumber = 2;
+                createAndAddFile('test.png', 'some type');
+                createAndAddFile('test.png', 'some type');
+                createAndAddFile('test.png', 'some type');
+                fixture.detectChanges();
+                expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBeTrue();
+            });
+
+            it('should not add file more than maxFileNumer', () => {
                 createTestComponent(ReactiveFileUpload);
                 testInstance.maxFileNumber = 2;
                 createAndAddFile('test.png', 'some type');
@@ -434,7 +517,8 @@ describe('NxFileUploaderComponent', () => {
                 createAndAddFile('test.png', 'some type');
                 inputElm.dispatchEvent(new Event('change'));
                 fixture.detectChanges();
-                expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBeTrue();
+
+                expect(fileUploaderInstance.value?.length).toBe(2);
             });
 
             it('is updated after deleting a file', () => {
@@ -451,6 +535,69 @@ describe('NxFileUploaderComponent', () => {
                 fixture.detectChanges();
 
                 expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBeFalse();
+            });
+        });
+
+        describe('disable validators', () => {
+            it('should has require validation error even if disableCommonValidator is true', () => {
+                createTestComponent(ReactiveFileUpload);
+                fixture.componentInstance.disableCommonValidator = true;
+
+                const submitButton = fixture.nativeElement.querySelector('#submit-button') as HTMLButtonElement;
+                testInstance.required = true;
+                fixture.detectChanges();
+                submitButton.click();
+                fixture.detectChanges();
+                expect(testInstance.form.controls.documents.hasError('required')).toBeTrue();
+            });
+
+            it('should not has max fileNumber validator error if disableCommonValidator is true', () => {
+                createTestComponent(ReactiveFileUpload);
+                testInstance.maxFileNumber = 2;
+                fixture.componentInstance.disableCommonValidator = true;
+                fixture.detectChanges();
+
+                createAndAddFile('test.png', 'some type');
+                createAndAddFile('test.png', 'some type');
+                createAndAddFile('test.png', 'some type');
+                fixture.detectChanges();
+                expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBeFalse();
+            });
+
+            it('should not has file type validator error if disableCommonValidator is true', () => {
+                createTestComponent(ReactiveFileUpload);
+                fixture.componentInstance.disableCommonValidator = true;
+
+                testInstance.accept = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+                fixture.detectChanges();
+
+                createAndAddFile('fake file', 'text/html');
+                expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBeFalse();
+            });
+
+            it('should not has file size validator error if disableCommonValidator is true', () => {
+                createTestComponent(ReactiveFileUpload);
+                fixture.componentInstance.disableCommonValidator = true;
+                testInstance.maxFileSize = 1024;
+                fixture.detectChanges();
+
+                let fakeFile = new File(['3555'], 'fake file', { type: 'text/html' });
+                fakeFile = Object.defineProperty(fakeFile, 'size', { value: 1024 ** 3, writable: false });
+                const fileList = {
+                    0: fakeFile,
+                    1: fakeFile,
+                    length: 2,
+                    item: () => fakeFile,
+                };
+
+                fileUploaderInstance._onFileChange({
+                    type: 'change',
+                    target: {
+                        files: fileList,
+                    },
+                });
+                fixture.detectChanges();
+                expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileSize')).toBeFalse();
             });
         });
     });
@@ -528,6 +675,7 @@ class BasicFileUpload extends FileUploaderTest {
                 multiple
                 [maxFileNumber]="maxFileNumber"
                 [accept]="accept"
+                [noBlockingValidators]="disableCommonValidator"
                 [strictAcceptValidation]="strictAcceptValidation"
             >
                 <nx-label size="small">Required file to upload</nx-label>
@@ -555,6 +703,7 @@ class ReactiveFileUpload extends FileUploaderTest {
     maxFileSize: any;
     queueList: any;
     maxFileNumber: any;
+    disableCommonValidator = false;
 
     constructor() {
         super();

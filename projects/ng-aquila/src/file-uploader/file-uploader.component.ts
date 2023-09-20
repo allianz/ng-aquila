@@ -28,11 +28,18 @@ import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgFor
 import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
-import { filter, map, startWith, takeUntil } from 'rxjs/operators';
+import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
 
 import { NxFileUploader } from './file-uploader';
 import { FileItem } from './file-uploader.model';
-import { isFileTypeValid, NxFileUploaderValidators } from './file-uploader.validations';
+import {
+    FileUploadError,
+    getFileExtension,
+    isFileTypeValid,
+    isMaxFileNumberValid,
+    isMaxFileSizeValid,
+    NxFileUploaderValidators,
+} from './file-uploader.validations';
 import { NxFileUploaderButtonDirective } from './file-uploader-button.directive';
 import { NxFileUploaderDropZoneComponent } from './file-uploader-drop-zone.component';
 import { NxFileUploaderHintDirective } from './file-uploader-hint.directive';
@@ -105,6 +112,18 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     /** @docs-private */
     errorState = false;
+
+    /** List of errors */
+    errors: FileUploadError[] = [];
+
+    /** Whether the file uploader use common validators (file type, file size). */
+    @Input() set noBlockingValidators(value: BooleanInput) {
+        this._noBlockingValidators = coerceBooleanProperty(value);
+    }
+    get noBlockingValidators(): boolean {
+        return this._noBlockingValidators;
+    }
+    private _noBlockingValidators = false;
 
     /** @docs-private */
     readonly stateChanges = new Subject<void>();
@@ -343,15 +362,32 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         }
     }
 
+    private isValidOnSelection(file: File) {
+        if (!isMaxFileSizeValid(file, this.maxFileSize)) {
+            this.setFileSizeError(file);
+        }
+        if (!isFileTypeValid(file, this.accept, this.strictAcceptValidation)) {
+            this.setFileTypeError(file);
+        }
+
+        return this.errors.length === 0;
+    }
+
     _resetValidators(clear = false) {
         if (this.ngControl?.control) {
             if (clear) {
                 this.ngControl.control.clearValidators();
             }
 
-            const validators = this._controlValidators
-                ? [this._controlValidators, NxFileUploaderValidators.maxFileNumber(this.value!, this.maxFileNumber), ...this.validatorFnArray]
-                : [NxFileUploaderValidators.maxFileNumber(this.value!, this.maxFileNumber), ...this.validatorFnArray];
+            const validators = [];
+
+            if (this._controlValidators) {
+                validators.unshift(this._controlValidators);
+            }
+
+            if (this.validatorFnArray) {
+                validators.push(...this.validatorFnArray);
+            }
 
             this.ngControl.control.setValidators(validators);
             this.ngControl.control.updateValueAndValidity();
@@ -363,6 +399,13 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
             return;
         }
         this.button._clicked.pipe(takeUntil(this._destroyed)).subscribe(() => {
+            this.errors = [];
+
+            const reachMaxFileNumber = this.maxFileNumber && (this.value?.length || 0) === this.maxFileNumber;
+            if (reachMaxFileNumber) {
+                this.setMaxFileNumberError(this.maxFileNumber);
+                return;
+            }
             this.nativeInputFile.nativeElement.click();
         });
         const focusButton$ = fromEvent(this.button.elemetRef.nativeElement, 'focus');
@@ -434,17 +477,24 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         if (files === null) {
             this.value = undefined;
         } else {
-            files.forEach((file: File) => {
-                if (this.isValidOnSelection(file)) {
-                    const tmp = new FileItem(file);
-                    if (this.value) {
-                        this.value.push(tmp);
-                    } else {
-                        this.value = [tmp];
+            this.errors = [];
+            const totalFilesNum = (this.value?.length || 0) + files.length;
+            if (isMaxFileNumberValid(totalFilesNum, this.maxFileNumber)) {
+                files.forEach((file: File) => {
+                    if (this.isValidOnSelection(file)) {
+                        const tmp = new FileItem(file);
+                        if (this.value) {
+                            this.value.push(tmp);
+                        } else {
+                            this.value = [tmp];
+                        }
+                        this._cdr.markForCheck();
                     }
-                    this._cdr.markForCheck();
-                }
-            });
+                });
+            } else {
+                this.setMaxFileNumberError(totalFilesNum);
+            }
+
             this._subscribeToFileChanges();
         }
     }
@@ -481,6 +531,14 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         }
 
         if (this.uploader) {
+            this.uploader.response.pipe(take(1)).subscribe(res => {
+                const success = res.success?.files.filter(file => file.isUploaded);
+                const errorFiles = res.error?.files.filter(file => file.isError);
+                if (errorFiles?.length) {
+                    errorFiles?.forEach(file => this.setFileUploadError(file, 'An error occured while uploading'));
+                }
+                this.value = success;
+            });
             this.uploader.uploadFiles(this.value!);
         }
     }
@@ -492,19 +550,6 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
             // that whatever logic is in here has to be super lean or we risk destroying the performance.
             this.updateErrorState();
         }
-    }
-
-    private isValidOnSelection(file: File) {
-        let isValid = false;
-
-        this.validatorFnArray.push(NxFileUploaderValidators.maxFileSize(this.maxFileSize, file));
-        this.validatorFnArray.push(NxFileUploaderValidators.fileType(file, this.accept, this.strictAcceptValidation));
-
-        if ((!this.maxFileSize || file.size <= this.maxFileSize) && isFileTypeValid(file, this.accept, this.strictAcceptValidation)) {
-            isValid = true;
-        }
-
-        return isValid;
     }
 
     /**
@@ -590,5 +635,49 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
                 this._filesSubscriptions.push(subscription);
             });
         }
+    }
+
+    private setMaxFileNumberError(totalFilesNum: number) {
+        this.errors.push({
+            filename: '',
+            type: 'fileNumber',
+            max: this.maxFileNumber,
+            actual: totalFilesNum,
+        });
+        if (!this.noBlockingValidators && this.ngControl?.control) {
+            this.validatorFnArray.push(NxFileUploaderValidators.maxFileNumber(totalFilesNum, this.maxFileNumber));
+        }
+    }
+
+    private setFileSizeError(file: File) {
+        this.errors.push({
+            filename: file.name,
+            type: 'fileSize',
+            max: this.maxFileSize,
+            actual: file.size,
+        });
+        if (!this.noBlockingValidators && this.ngControl?.control) {
+            this.validatorFnArray.push(NxFileUploaderValidators.maxFileSize(this.maxFileSize, file));
+        }
+    }
+
+    private setFileTypeError(file: File) {
+        this.errors.push({
+            filename: file.name,
+            type: 'fileType',
+            extension: this.accept,
+            actual: getFileExtension(file.name),
+        });
+        if (!this.noBlockingValidators && this.ngControl?.control) {
+            this.validatorFnArray.push(NxFileUploaderValidators.fileType(file, this.accept, this.strictAcceptValidation));
+        }
+    }
+
+    private setFileUploadError(file: FileItem, reason: string) {
+        this.errors.push({
+            filename: file.name,
+            type: 'upload',
+            reason,
+        });
     }
 }

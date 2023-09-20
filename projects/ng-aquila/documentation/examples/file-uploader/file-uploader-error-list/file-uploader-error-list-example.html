@@ -1,0 +1,67 @@
+<form [formGroup]="testForm">
+    <nx-file-uploader
+        #documentUpload
+        multiple
+        formControlName="documents"
+        maxFileSize="{{2 * 1024 * 1024}}"
+        (fileDeleted)="onDelete($event)"
+        (valueChange)="onChange($event)"
+        [uploader]="uploader"
+        accept="png"
+        disableCommonValidator
+        maxFileNumber="2"
+        [noBlockingValidators]="true"
+    >
+        <nx-label size="small" class="nx-margin-bottom-3xs"
+            >Required file to upload</nx-label
+        >
+        <span class="nx-margin-bottom-s" nxFileUploadHint
+            >Maximum file size 2MB, Accept only PNG files, Maximum 2 files</span
+        >
+
+        <button
+            nxButton="primary"
+            type="button"
+            class="nx-margin-bottom-s"
+            nxFileUploadButton
+        >
+            <nx-icon name="plus" class="nx-margin-right-2xs"></nx-icon>
+            Add File
+        </button>
+
+        <nx-error *ngIf="testForm.controls['documents'].hasError('required')"
+            >Required!</nx-error
+        >
+        <nx-error *ngIf="testForm.controls['documents'].hasError('serverError')"
+            >An error occured while uploading.</nx-error
+        >
+        <nx-error *ngIf="documentUpload?.errors?.length">
+            Errors:
+            <ul>
+                <li *ngFor="let error of documentUpload?.errors">
+                    <div *ngIf="error.type === 'fileType'">
+                        "{{error.filename}}" could not be uploaded. The
+                        supported extensions us PNG.
+                    </div>
+                    <div *ngIf="error.type === 'fileSize'">
+                        "{{error.filename}}" could not be uploaded. max file
+                        size is {{ error.max }}.
+                    </div>
+                    <div *ngIf="error.type === 'fileNumber'">
+                        You cannot upload more than {{ error.max }} documents.
+                    </div>
+                </li>
+            </ul>
+        </nx-error>
+    </nx-file-uploader>
+</form>
+
+<button
+    nxButton="primary small"
+    type="button"
+    [disabled]="!testForm.valid"
+    [nxFileUploadTriggerFor]="documentUpload"
+    (click)="testForm.controls['documents'].setErrors({ 'serverError': false });"
+>
+    Upload files
+</button>

@@ -30,6 +30,20 @@ Most of the examples are using the `[nxFileUploadTriggerFor]` directive for trig
 
 The FileItem class provides a set of methods and properties in order to set the current state of the file.
 
+#### Error list
+For all kinds of events where a file is blocked from being added to the file list model (e.g. wrong file type, too large, too many files), the file uploader component provides an `errors` property with an array of errors.
+
+<div class="docs-deprecation-warning">
+    <strong>Please note: </strong><br>
+    <p>Previously we registered all validations as form control validators. We identified some problems with this approach such as that only the last file for each error was added in the form control errors instead of all files that do not validate. Additionally it creates some UX challenges when a file was blocked from being added to the model. The form control is then not valid and the user cannot proceed but leaves the user with the challenge what they should do.</p>
+    <p>To mitigate these problems we introduced the <code>noBlockingValidators</code> option which we do not enable by default yet because it would introduce a breaking change. For the new and improved behavior, please set it to <code>true</code>.
+    For further details see the <a href="./documentation/file-uploader/overview#disable-blocking-validators">Disable blocking validators</a> section.</p>
+</div>
+
+The following example shows how you can use both the form control validators (e.g. required or custom validators) and the `errors` property to display a comprehensive list of all errors.
+
+<!-- example(file-uploader-error-list) -->
+
 #### Max file size
 
 The max file size is set via the `[maxFileSize]` property. Please note that the file size is passed in bytes.
@@ -79,6 +93,16 @@ You can harden against these cases with the `strictAcceptValidation` option. Whe
 Try to drag and drop a .log file (at least these files worked best for us in testing across windows and mac) in the example below. It should throw an error, then disable the `strictAcceptValidation` option with the button and try again to see the difference.
 
 <!-- example(file-uploader-strict-type-validation) -->
+
+#### Disable blocking validators
+
+Previously we registered all validations as form control validators. We identified some problems with this approach such as that only the last file for each error was added in the form control errors instead of all files that do not validate. Additionally it creates some UX challenges when a file was blocked from being added to the model. The form control is then not valid and the user cannot proceed but leaves the user with the challenge what they should do.<br>
+
+To mitigate these problems we introduced the <code>noBlockingValidators</code> option which we do not enable by default yet because it would introduce a breaking change. By enabling this option all validators that block files from being added to the list, like max file size, max file number or file type validation, are not added to the form control anymore. Instead you can access these types of errors via the <code>errors</code> property of the component. See the <a href="./documentation/file-uploader/overview#error-list">error list</a> section.
+
+In the following example you can see how enabling and disabling `noBlockingValidators` and then trying to add an invalid file to the list will influence the form control errors object.
+
+<!-- example(file-uploader-disable-common-validators) -->
 
 ### Upload
 

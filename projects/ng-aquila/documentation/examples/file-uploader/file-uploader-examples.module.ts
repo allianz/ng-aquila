@@ -12,7 +12,9 @@ import { ExamplesSharedModule } from '../examples-shared.module';
 import { FileUploaderAutoExampleComponent } from './file-uploader-auto/file-uploader-auto-example';
 import { FileUploaderBasicExampleComponent } from './file-uploader-basic/file-uploader-basic-example';
 import { FileUploaderCustomItemExampleComponent } from './file-uploader-custom-item/file-uploader-custom-item-example';
+import { FileUploadernoBlockingValidatorsExampleComponent } from './file-uploader-disable-common-validators/file-uploader-disable-common-validators-example';
 import { FileUploaderDropZoneExampleComponent } from './file-uploader-drop-zone/file-uploader-drop-zone-example';
+import { FileUploaderErrorListExampleComponent } from './file-uploader-error-list/file-uploader-error-list-example';
 import { FileUploaderExpertExampleComponent } from './file-uploader-expert/file-uploader-expert-example';
 import { FileUploaderIntlExampleComponent } from './file-uploader-intl/file-uploader-intl-example';
 import { FileUploaderMaxFileNumberExampleComponent } from './file-uploader-max-file-number/file-uploader-max-file-number-example';
@@ -25,6 +27,7 @@ import { FileUploaderValidationExampleComponent } from './file-uploader-validati
 import { FileUploaderWithRequestExampleComponent } from './file-uploader-with-request/file-uploader-with-request-example';
 
 const EXAMPLES = [
+    FileUploaderErrorListExampleComponent,
     FileUploaderAutoExampleComponent,
     FileUploaderBasicExampleComponent,
     FileUploaderDropZoneExampleComponent,
@@ -39,6 +42,7 @@ const EXAMPLES = [
     FileUploaderCustomItemExampleComponent,
     FileUploaderExpertExampleComponent,
     FileUploaderStrictTypeValidationExampleComponent,
+    FileUploadernoBlockingValidatorsExampleComponent,
 ];
 
 @NgModule({
@@ -59,6 +63,7 @@ const EXAMPLES = [
 export class FileExamplesModule {
     static components() {
         return {
+            'file-uploader-error-list': FileUploaderErrorListExampleComponent,
             'file-uploader-auto': FileUploaderAutoExampleComponent,
             'file-uploader-basic': FileUploaderBasicExampleComponent,
             'file-uploader-drop-zone': FileUploaderDropZoneExampleComponent,
@@ -79,6 +84,8 @@ export class FileExamplesModule {
             'file-uploader-expert': FileUploaderExpertExampleComponent,
             'file-uploader-strict-type-validation':
                 FileUploaderStrictTypeValidationExampleComponent,
+            'file-uploader-disable-common-validators':
+                FileUploadernoBlockingValidatorsExampleComponent,
         };
     }
 }
