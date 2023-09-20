@@ -50,6 +50,10 @@ const _defaultFilterFn: NxMultiSelectFilterFn = (query, label) => label.toLowerC
     styleUrls: ['./multi-select.component.scss'],
     providers: [{ provide: NxFormfieldControl, useExisting: NxMultiSelectComponent }],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class.is-readonly]': 'readonly',
+        '[attr.readonly]': 'readonly || null',
+    },
 })
 export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFormfieldControl<T[]>, DoCheck, OnDestroy, AfterViewInit {
     get value(): T[] {
@@ -411,7 +415,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     _open($event: Event, origin: FocusOrigin) {
-        if (this._isOpen || this.disabled) {
+        if (this._isOpen || this.disabled || this.readonly) {
             return;
         }
 
@@ -443,7 +447,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     _onKeydown($event: KeyboardEvent) {
-        if (this.disabled) {
+        if (this.disabled || this.readonly) {
             return;
         }
 
@@ -484,7 +488,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         if (this.ngControl?.control?.updateOn !== 'blur') {
             this._onTouched();
         }
-        if (!this._isOpen && !this.disabled) {
+        if (!this._isOpen && !this.disabled && !this.readonly) {
             this._onTouched();
             this.focusOut.emit(true);
         }

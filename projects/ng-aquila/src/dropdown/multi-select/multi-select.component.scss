@@ -58,6 +58,18 @@
     }
 }
 
+:host(.is-readonly) {
+    .indicator {
+        color: v(formfield-disabled-text-color);
+        @media screen and (forced-colors: active) {
+            color: GrayText !important;
+        }
+    }
+    .value {
+        cursor: not-allowed;
+    }
+}
+
 .value-text {
     overflow: hidden;
     white-space: nowrap;
