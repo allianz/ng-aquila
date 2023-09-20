@@ -29,7 +29,7 @@
         "@aposin/ng-aquila": "^16.0.0",
         "ag-grid-angular": "^30.1.0",
         "ag-grid-community": "^30.1.0",
-        "i18n-iso-countries": "^6.8.0",
+        "i18n-iso-countries": "^7.5.0",
         "iban": "^0.0.14",
         "moment": "^2.29.1",
         "dayjs": "^1.11.5",

@@ -511,7 +511,7 @@ body,
   --data-display-medium-letter-spacing: var(--paragraph-03-letter-spacing);
   --data-display-small-font-size: var(--paragraph-04-font-size);
   --data-display-small-line-height: var(--paragraph-04-line-height);
-  --data-display-small-font-weight: var(--paragraph-04-font-weight);
+  --data-display-small-font-weight: 400;
   --data-display-small-letter-spacing: var(--paragraph-04-letter-spacing);
   --selectable-card-text-color: var(--text-01);
   --selectable-card-background-color: var(--ui-01);

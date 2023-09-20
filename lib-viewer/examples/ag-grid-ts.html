@@ -24,12 +24,12 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./ag-grid-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AgGridExampleComponent</span> {
+    floatingFilter = <span class="hljs-literal">true</span>;
     <span class="hljs-attr">columnsNoGroup</span>: <span class="hljs-title class_">ColDef</span>[] = [
         {
             <span class="hljs-attr">colId</span>: <span class="hljs-string">&#x27;make&#x27;</span>,
             <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;make&#x27;</span>,
             <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
-            <span class="hljs-attr">floatingFilter</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">headerCheckboxSelection</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">checkboxSelection</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">showDisabledCheckboxes</span>: <span class="hljs-literal">true</span>,
@@ -37,13 +37,11 @@
         },
         {
             <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;model&#x27;</span>,
-            <span class="hljs-attr">floatingFilter</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
             <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
         },
         {
             <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;price&#x27;</span>,
-            <span class="hljs-attr">floatingFilter</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
             <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
         },
@@ -56,7 +54,6 @@
             <span class="hljs-attr">colId</span>: <span class="hljs-string">&#x27;make&#x27;</span>,
             <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;make&#x27;</span>,
             <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
-            <span class="hljs-attr">floatingFilter</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">headerCheckboxSelection</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">checkboxSelection</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">showDisabledCheckboxes</span>: <span class="hljs-literal">true</span>,
@@ -67,32 +64,27 @@
             <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">initialHide</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">showRowGroup</span>: <span class="hljs-literal">false</span>,
-            <span class="hljs-attr">floatingFilter</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">children</span>: [
                 {
                     <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;model&#x27;</span>,
                     <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
                     <span class="hljs-attr">cellEditorPopup</span>: <span class="hljs-literal">true</span>,
                     <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
-                    <span class="hljs-attr">floatingFilter</span>: <span class="hljs-literal">true</span>,
                 },
                 {
                     <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;price&#x27;</span>,
                     <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
                     <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
-                    <span class="hljs-attr">floatingFilter</span>: <span class="hljs-literal">true</span>,
                 },
             ],
         },
         {
             <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;model&#x27;</span>,
-            <span class="hljs-attr">floatingFilter</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
             <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
         },
         {
             <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;price&#x27;</span>,
-            <span class="hljs-attr">floatingFilter</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
             <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
         },
@@ -104,6 +96,7 @@
         <span class="hljs-attr">sortable</span>: <span class="hljs-literal">true</span>,
         <span class="hljs-attr">filter</span>: <span class="hljs-literal">true</span>,
         <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">floatingFilter</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">floatingFilter</span>,
     };
 
     <span class="hljs-comment">// Data that gets displayed in the grid</span>
@@ -167,6 +160,14 @@
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">showGroup</span> ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">columnsWithGroup</span> : <span class="hljs-variable language_">this</span>.<span class="hljs-property">columnsNoGroup</span>,
         );
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">sizeColumnsToFit</span>();
+    }
+
+    <span class="hljs-title function_">toggleFloatingFilter</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">floatingFilter</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">floatingFilter</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">defaultColDef</span> = {
+            ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">defaultColDef</span>,
+            <span class="hljs-attr">floatingFilter</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">floatingFilter</span>,
+        };
     }
 
     <span class="hljs-attr">columnDefsTest</span>: <span class="hljs-title class_">ColDef</span>[] = [

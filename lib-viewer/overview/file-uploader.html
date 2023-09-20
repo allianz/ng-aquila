@@ -10,6 +10,16 @@
 <div nx-docs-example="file-uploader-template-driven" config="{}">exampleID: file-uploader-template-driven</div>
 <h3 id="validation" tabindex="-1" class="docs-markdown--h3">Validation</h3>
 <p class="docs-markdown--p">The FileItem class provides a set of methods and properties in order to set the current state of the file.</p>
+<h4 id="error-list" tabindex="-1" class="docs-markdown--h4">Error list</h4>
+<p class="docs-markdown--p">For all kinds of events where a file is blocked from being added to the file list model (e.g. wrong file type, too large, too many files), the file uploader component provides an <code>errors</code> property with an array of errors.</p>
+<div class="docs-deprecation-warning">
+    <strong>Please note: </strong><br>
+    <p>Previously we registered all validations as form control validators. We identified some problems with this approach such as that only the last file for each error was added in the form control errors instead of all files that do not validate. Additionally it creates some UX challenges when a file was blocked from being added to the model. The form control is then not valid and the user cannot proceed but leaves the user with the challenge what they should do.</p>
+    <p>To mitigate these problems we introduced the <code>noBlockingValidators</code> option which we do not enable by default yet because it would introduce a breaking change. For the new and improved behavior, please set it to <code>true</code>.
+    For further details see the <a href="./documentation/file-uploader/overview#disable-blocking-validators">Disable blocking validators</a> section.</p>
+</div>
+<p class="docs-markdown--p">The following example shows how you can use both the form control validators (e.g. required or custom validators) and the <code>errors</code> property to display a comprehensive list of all errors.</p>
+<div nx-docs-example="file-uploader-error-list" config="{}">exampleID: file-uploader-error-list</div>
 <h4 id="max-file-size" tabindex="-1" class="docs-markdown--h4">Max file size</h4>
 <p class="docs-markdown--p">The max file size is set via the <code>[maxFileSize]</code> property. Please note that the file size is passed in bytes.</p>
 <p class="docs-markdown--p">The returned error is <code>NxFileUploadMaxFileSize</code>.</p>
@@ -41,6 +51,11 @@
 <p class="docs-markdown--p">You can harden against these cases with the <code>strictAcceptValidation</code> option. When enabled you might have to add file extensions in addition to mime types for some file types. E.g. for excel files this has been a problem in the past to only rely on the mime type. A good approach in this case could be  <code>accept=&quot;application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xls,.xlsx&quot;</code>.</p>
 <p class="docs-markdown--p">Try to drag and drop a .log file (at least these files worked best for us in testing across windows and mac) in the example below. It should throw an error, then disable the <code>strictAcceptValidation</code> option with the button and try again to see the difference.</p>
 <div nx-docs-example="file-uploader-strict-type-validation" config="{}">exampleID: file-uploader-strict-type-validation</div>
+<h4 id="disable-blocking-validators" tabindex="-1" class="docs-markdown--h4">Disable blocking validators</h4>
+<p class="docs-markdown--p">Previously we registered all validations as form control validators. We identified some problems with this approach such as that only the last file for each error was added in the form control errors instead of all files that do not validate. Additionally it creates some UX challenges when a file was blocked from being added to the model. The form control is then not valid and the user cannot proceed but leaves the user with the challenge what they should do.<br></p>
+<p class="docs-markdown--p">To mitigate these problems we introduced the <code>noBlockingValidators</code> option which we do not enable by default yet because it would introduce a breaking change. By enabling this option all validators that block files from being added to the list, like max file size, max file number or file type validation, are not added to the form control anymore. Instead you can access these types of errors via the <code>errors</code> property of the component. See the <a href="./documentation/file-uploader/overview#error-list">error list</a> section.</p>
+<p class="docs-markdown--p">In the following example you can see how enabling and disabling <code>noBlockingValidators</code> and then trying to add an invalid file to the list will influence the form control errors object.</p>
+<div nx-docs-example="file-uploader-disable-common-validators" config="{}">exampleID: file-uploader-disable-common-validators</div>
 <h3 id="upload" tabindex="-1" class="docs-markdown--h3">Upload</h3>
 <p class="docs-markdown--p">All previous examples are implemented with the built-in uploading functionality of the file uploader.</p>
 <h4 id="auto-upload" tabindex="-1" class="docs-markdown--h4">Auto upload</h4>

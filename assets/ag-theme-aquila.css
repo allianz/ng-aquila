@@ -8364,8 +8364,14 @@ input[class^=ag-][type=range]:disabled {
   --ag-icon-font-code-left: "";
   --ag-icon-font-code-menu: "";
   --ag-icon-font-code-save: "";
+  --ag-icon-font-code-eye-slash: "";
+  --ag-icon-font-code-tick: "";
+  --ag-icon-font-code-copy: "";
+  --ag-icon-font-code-eye: "";
+  --ag-icon-font-code-small-left: "";
+  --ag-icon-font-code-small-down: "";
 }
-.ag-allianz-icons .ag-icon.ag-icon-filter, .ag-allianz-icons .ag-icon.ag-icon-asc, .ag-allianz-icons .ag-icon.ag-icon-desc, .ag-allianz-icons .ag-icon.ag-icon-excel, .ag-allianz-icons .ag-icon.ag-icon-last, .ag-allianz-icons .ag-icon.ag-icon-none, .ag-allianz-icons .ag-icon.ag-icon-right, .ag-allianz-icons .ag-icon.ag-icon-small-right, .ag-allianz-icons .ag-icon.ag-icon-tree-indeterminate, .ag-allianz-icons .ag-icon.ag-icon-arrows, .ag-allianz-icons .ag-icon.ag-icon-cross, .ag-allianz-icons .ag-icon.ag-icon-first, .ag-allianz-icons .ag-icon.ag-icon-left, .ag-allianz-icons .ag-icon.ag-icon-menu, .ag-allianz-icons .ag-icon.ag-icon-save {
+.ag-allianz-icons .ag-icon.ag-icon-filter, .ag-allianz-icons .ag-icon.ag-icon-asc, .ag-allianz-icons .ag-icon.ag-icon-desc, .ag-allianz-icons .ag-icon.ag-icon-excel, .ag-allianz-icons .ag-icon.ag-icon-last, .ag-allianz-icons .ag-icon.ag-icon-none, .ag-allianz-icons .ag-icon.ag-icon-right, .ag-allianz-icons .ag-icon.ag-icon-small-right, .ag-allianz-icons .ag-icon.ag-icon-tree-indeterminate, .ag-allianz-icons .ag-icon.ag-icon-arrows, .ag-allianz-icons .ag-icon.ag-icon-cross, .ag-allianz-icons .ag-icon.ag-icon-first, .ag-allianz-icons .ag-icon.ag-icon-left, .ag-allianz-icons .ag-icon.ag-icon-menu, .ag-allianz-icons .ag-icon.ag-icon-save, .ag-allianz-icons .ag-icon.ag-icon-eye-slash, .ag-allianz-icons .ag-icon.ag-icon-tick, .ag-allianz-icons .ag-icon.ag-icon-copy, .ag-allianz-icons .ag-icon.ag-icon-eye, .ag-allianz-icons .ag-icon.ag-icon-small-left, .ag-allianz-icons .ag-icon.ag-icon-small-down {
   --ag-icon-font-family: Allianz-Icons;
 }
 
@@ -8389,6 +8395,9 @@ input[class^=ag-][type=range]:disabled {
 .ag-theme-aquila .ag-header-group-cell::after {
   right: 2px;
 }
+.ag-theme-aquila .ag-header-row-column-group {
+  z-index: 1;
+}
 .ag-theme-aquila .ag-header-row:has(+ .ag-header-row-column-filter) {
   --ag-header-column-resize-handle-height: 67px;
 }
@@ -8402,7 +8411,7 @@ input[class^=ag-][type=range]:disabled {
   height: 112px;
 }
 .ag-theme-aquila .ag-header-row-column-group:has(+ .ag-header-row) .ag-header-cell-resize::after {
-  height: 109px;
+  height: calc(200% - var(--ag-grid-size) * 4);
 }
 .ag-theme-aquila .ag-cell-focus:not(.ag-cell-range-selected):focus-within {
   border-left-width: 2px;

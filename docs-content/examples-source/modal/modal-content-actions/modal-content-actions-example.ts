@@ -1,9 +1,4 @@
-import {
-    ChangeDetectorRef,
-    Component,
-    TemplateRef,
-    ViewChild,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, TemplateRef } from '@angular/core';
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 type MyDialogResult = 'agree' | 'disagree';
@@ -17,8 +12,6 @@ type MyDialogResult = 'agree' | 'disagree';
     styleUrls: ['./modal-content-actions-example.css'],
 })
 export class ModalContentActionsExampleComponent {
-    @ViewChild('template') templateRef!: TemplateRef<any>;
-
     dialogRef?: NxModalRef<any, MyDialogResult | undefined>; // cancel and backdrop click return undefined
 
     actionResult?: MyDialogResult;
@@ -28,8 +21,8 @@ export class ModalContentActionsExampleComponent {
         private readonly _cdr: ChangeDetectorRef,
     ) {}
 
-    openFromTemplate(): void {
-        this.dialogRef = this.dialogService.open(this.templateRef, {
+    openFromTemplate(templateRef: TemplateRef<any>): void {
+        this.dialogRef = this.dialogService.open(templateRef, {
             ariaLabel: 'A modal with content and actions sections',
             showCloseIcon: true,
         });

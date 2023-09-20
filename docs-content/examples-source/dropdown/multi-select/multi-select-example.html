@@ -47,3 +47,15 @@
     Selected options:
     <pre>[{{ control.value?.join(', ') }}]</pre>
 </div>
+
+<h3>Readonly</h3>
+<nx-formfield appearance="outline" floatLabel="always" label="Multi select">
+    <nx-multi-select
+        filter
+        placeholder="Choose options"
+        [options]="options"
+        selectValue="i'"
+        selectLabel="label"
+        readonly
+    ></nx-multi-select>
+</nx-formfield>

@@ -24,12 +24,12 @@ import { Observable } from 'rxjs';
     styleUrls: ['./ag-grid-example.css'],
 })
 export class AgGridExampleComponent {
+    floatingFilter = true;
     columnsNoGroup: ColDef[] = [
         {
             colId: 'make',
             field: 'make',
             filter: 'agTextColumnFilter',
-            floatingFilter: true,
             headerCheckboxSelection: true,
             checkboxSelection: true,
             showDisabledCheckboxes: true,
@@ -37,13 +37,11 @@ export class AgGridExampleComponent {
         },
         {
             field: 'model',
-            floatingFilter: true,
             filter: 'agTextColumnFilter',
             resizable: true,
         },
         {
             field: 'price',
-            floatingFilter: true,
             filter: 'agTextColumnFilter',
             resizable: true,
         },
@@ -56,7 +54,6 @@ export class AgGridExampleComponent {
             colId: 'make',
             field: 'make',
             filter: 'agTextColumnFilter',
-            floatingFilter: true,
             headerCheckboxSelection: true,
             checkboxSelection: true,
             showDisabledCheckboxes: true,
@@ -67,32 +64,27 @@ export class AgGridExampleComponent {
             resizable: true,
             initialHide: true,
             showRowGroup: false,
-            floatingFilter: true,
             children: [
                 {
                     field: 'model',
                     filter: 'agTextColumnFilter',
                     cellEditorPopup: true,
                     resizable: true,
-                    floatingFilter: true,
                 },
                 {
                     field: 'price',
                     filter: 'agTextColumnFilter',
                     resizable: true,
-                    floatingFilter: true,
                 },
             ],
         },
         {
             field: 'model',
-            floatingFilter: true,
             filter: 'agTextColumnFilter',
             resizable: true,
         },
         {
             field: 'price',
-            floatingFilter: true,
             filter: 'agTextColumnFilter',
             resizable: true,
         },
@@ -104,6 +96,7 @@ export class AgGridExampleComponent {
         sortable: true,
         filter: true,
         resizable: true,
+        floatingFilter: this.floatingFilter,
     };
 
     // Data that gets displayed in the grid
@@ -167,6 +160,14 @@ export class AgGridExampleComponent {
             this.showGroup ? this.columnsWithGroup : this.columnsNoGroup,
         );
         this.gridApi.sizeColumnsToFit();
+    }
+
+    toggleFloatingFilter() {
+        this.floatingFilter = !this.floatingFilter;
+        this.defaultColDef = {
+            ...this.defaultColDef,
+            floatingFilter: this.floatingFilter,
+        };
     }
 
     columnDefsTest: ColDef[] = [

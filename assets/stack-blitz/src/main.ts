@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RouterModule } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
+import { AgGridModule } from 'ag-grid-angular';
 
 import 'zone.js';
 
@@ -25,6 +26,7 @@ import { AquilaDocsExample } from './app/aquila-docs-example';
         RouterModule.forRoot([]),
         AquilaModule,
         NgOptimizedImage,
+        AgGridModule,
     ],
 })
 export class AppModule {}
