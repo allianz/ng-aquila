@@ -22,7 +22,7 @@ abstract class FileUploaderTest {
     maxFileNumber!: number;
     accept: any;
     strictAcceptValidation = false;
-    disableCommonValidator = false;
+    noBlockingValidators = false;
 }
 
 describe('NxFileUploaderComponent', () => {
@@ -406,6 +406,18 @@ describe('NxFileUploaderComponent', () => {
             expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBeTrue();
         });
 
+        it('invalid when file number reached max then click add button', () => {
+            createTestComponent(ReactiveFileUpload);
+            testInstance.maxFileNumber = 2;
+            fixture.detectChanges();
+
+            createAndAddFile('test.png', 'some type');
+            createAndAddFile('test.png', 'some type');
+            createAndAddFile('test.png', 'some type');
+            fixture.detectChanges();
+            expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBeTrue();
+        });
+
         describe('getFileExtension', () => {
             it('should return the file extension', () => {
                 expect(getFileExtension('test.png')).toBe('.png');
@@ -538,10 +550,10 @@ describe('NxFileUploaderComponent', () => {
             });
         });
 
-        describe('disable validators', () => {
-            it('should has require validation error even if disableCommonValidator is true', () => {
+        describe('no blocking validators', () => {
+            it('should has require validation error even if noBlockingValidators is true', () => {
                 createTestComponent(ReactiveFileUpload);
-                fixture.componentInstance.disableCommonValidator = true;
+                fixture.componentInstance.noBlockingValidators = true;
 
                 const submitButton = fixture.nativeElement.querySelector('#submit-button') as HTMLButtonElement;
                 testInstance.required = true;
@@ -551,10 +563,10 @@ describe('NxFileUploaderComponent', () => {
                 expect(testInstance.form.controls.documents.hasError('required')).toBeTrue();
             });
 
-            it('should not has max fileNumber validator error if disableCommonValidator is true', () => {
+            it('should not has max fileNumber validator error if noBlockingValidators is true', () => {
                 createTestComponent(ReactiveFileUpload);
                 testInstance.maxFileNumber = 2;
-                fixture.componentInstance.disableCommonValidator = true;
+                fixture.componentInstance.noBlockingValidators = true;
                 fixture.detectChanges();
 
                 createAndAddFile('test.png', 'some type');
@@ -564,9 +576,9 @@ describe('NxFileUploaderComponent', () => {
                 expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBeFalse();
             });
 
-            it('should not has file type validator error if disableCommonValidator is true', () => {
+            it('should not has file type validator error if noBlockingValidators is true', () => {
                 createTestComponent(ReactiveFileUpload);
-                fixture.componentInstance.disableCommonValidator = true;
+                fixture.componentInstance.noBlockingValidators = true;
 
                 testInstance.accept = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
                 fixture.detectChanges();
@@ -575,9 +587,9 @@ describe('NxFileUploaderComponent', () => {
                 expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBeFalse();
             });
 
-            it('should not has file size validator error if disableCommonValidator is true', () => {
+            it('should not has file size validator error if noBlockingValidators is true', () => {
                 createTestComponent(ReactiveFileUpload);
-                fixture.componentInstance.disableCommonValidator = true;
+                fixture.componentInstance.noBlockingValidators = true;
                 testInstance.maxFileSize = 1024;
                 fixture.detectChanges();
 
@@ -675,7 +687,7 @@ class BasicFileUpload extends FileUploaderTest {
                 multiple
                 [maxFileNumber]="maxFileNumber"
                 [accept]="accept"
-                [noBlockingValidators]="disableCommonValidator"
+                [noBlockingValidators]="noBlockingValidators"
                 [strictAcceptValidation]="strictAcceptValidation"
             >
                 <nx-label size="small">Required file to upload</nx-label>
@@ -703,7 +715,7 @@ class ReactiveFileUpload extends FileUploaderTest {
     maxFileSize: any;
     queueList: any;
     maxFileNumber: any;
-    disableCommonValidator = false;
+    noBlockingValidators = false;
 
     constructor() {
         super();

@@ -25,17 +25,22 @@
             Add File
         </button>
 
-        <nx-error *ngIf="testForm.controls['documents'].hasError('required')"
-            >Required!</nx-error
-        >
-        <nx-error
-            *ngIf="testForm.controls['documents'].hasError('NxFileUploadMaxFileNumber')"
-        >
-            There were
-            {{testForm.controls['documents'].getError('NxFileUploadMaxFileNumber').actual
-            | json}} files added, but the maximum is
-            {{testForm.controls['documents'].getError('NxFileUploadMaxFileNumber').max
-            | json}}
+        <nx-error *ngIf="testForm.controls['documents']?.errors">
+            <div class="nx-font-weight-bold">Error</div>
+            <ul>
+                <li *ngIf="testForm.controls['documents'].hasError('required')">
+                    Required!
+                </li>
+                <li
+                    *ngIf="testForm.controls['documents'].hasError('NxFileUploadMaxFileNumber')"
+                >
+                    There were
+                    {{testForm.controls['documents'].getError('NxFileUploadMaxFileNumber').actual
+                    | json}} files added, but the maximum is
+                    {{testForm.controls['documents'].getError('NxFileUploadMaxFileNumber').max
+                    | json}}
+                </li>
+            </ul>
         </nx-error>
     </nx-file-uploader>
 </form>

@@ -5,9 +5,21 @@
 
     ::ng-deep nx-error.nx-error--message {
         margin: nx-spacer(xs) 0;
+
+        ul {
+            margin-left: 28px;
+            margin-top: 6px;
+        }
+        li {
+            line-height: nx-spacer(m);
+        }
     }
 }
 
+.nx-file-uploader--file-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
 .nx-file-uploader--file-row {
     display: flex;
     flex-wrap: wrap;

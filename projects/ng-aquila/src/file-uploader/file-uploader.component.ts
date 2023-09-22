@@ -24,8 +24,8 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm, ValidatorFn } from '@angular/forms';
-import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
+import { AbstractControl, ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { ERROR_DEFAULT_OPTIONS, NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
 import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
@@ -57,6 +57,14 @@ let nextId = 0;
         '[attr.aria-invalid]': 'errorState',
         '[class.has-error]': 'errorState',
     },
+    providers: [
+        {
+            provide: ERROR_DEFAULT_OPTIONS,
+            useValue: {
+                appearance: 'message',
+            },
+        },
+    ],
 })
 export class NxFileUploaderComponent implements ControlValueAccessor, AfterContentInit, OnChanges, OnDestroy, DoCheck, OnInit, AfterViewInit {
     /** @docs-private */
@@ -404,6 +412,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
             const reachMaxFileNumber = this.maxFileNumber && (this.value?.length || 0) === this.maxFileNumber;
             if (reachMaxFileNumber) {
                 this.setMaxFileNumberError(this.maxFileNumber);
+                this._resetValidators(true);
                 return;
             }
             this.nativeInputFile.nativeElement.click();
@@ -645,7 +654,9 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
             actual: totalFilesNum,
         });
         if (!this.noBlockingValidators && this.ngControl?.control) {
-            this.validatorFnArray.push(NxFileUploaderValidators.maxFileNumber(totalFilesNum, this.maxFileNumber));
+            this.validatorFnArray.push((control: AbstractControl): ValidationErrors | null => ({
+                NxFileUploadMaxFileNumber: { max: this.maxFileNumber, actual: totalFilesNum },
+            }));
         }
     }
 
@@ -679,5 +690,10 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
             type: 'upload',
             reason,
         });
+    }
+
+    /** weather all files is uplaoded */
+    get allFilesUploaded(): boolean {
+        return this.value?.every(f => f.isUploaded) || false;
     }
 }

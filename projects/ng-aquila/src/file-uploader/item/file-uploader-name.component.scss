@@ -3,3 +3,25 @@
 :host {
     @include type-style(file-uploader-file-name);
 }
+.extension {
+    position: relative;
+    top: 4px;
+    display: inline-flex;
+}
+.extension-icon {
+    font-size: 22px;
+}
+.extension-label {
+    position: absolute;
+    text-transform: uppercase;
+    -webkit-user-select: none;
+    user-select: none;
+    line-height: normal;
+    font-weight: bold;
+    padding: 1px 3px;
+    right: 4px;
+    bottom: 4px;
+    border-radius: 2px 0 0 2px;
+    font-size: 6px;
+    color: white;
+}
