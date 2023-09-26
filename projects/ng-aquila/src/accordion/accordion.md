@@ -58,3 +58,26 @@ By default the content of the accordion items will be loaded eagerly even when t
 ### Accordion with Error State
 
 <!-- example(accordion-error) -->
+
+### Global settings
+
+To enable and configure scroll behavior you can use the EXPANSION_PANEL_DEFAULT_OPTIONS injection token as shown in the code snippet below:
+
+```ts
+@NgModule({
+    providers: [
+        {
+            provide: EXPANSION_PANEL_DEFAULT_OPTIONS,
+            useValue: {
+                scrollIntoViewActive: true,
+                scrollIntoViewOptions: {
+                    behavior: 'smooth'
+                }
+            }
+        }
+    ]
+```
+
+or configure the scrollIntoViewActive- and scrollIntoViewOptions-Input-decorators as shown in this example:
+
+<!-- example(accordion-scroll-smooth) -->

@@ -1,3 +1,4 @@
+import { AnimationEvent } from '@angular/animations';
 import { CdkAccordionItem } from '@angular/cdk/accordion';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
@@ -8,6 +9,8 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChild,
+    Inject,
+    InjectionToken,
     Input,
     OnChanges,
     OnDestroy,
@@ -28,6 +31,24 @@ let nextId = 0;
 /** The styling of the accordion. */
 export type AccordionStyle = 'regular' | 'light' | 'extra-light';
 const DEFAULT_TYPE = 'regular';
+
+/**
+ * This interface defines the default options of the expansion-panel.
+ */
+export interface ExpansionPanelDefaultOptions {
+    scrollIntoViewActive: boolean;
+    scrollIntoViewOptions?: ScrollIntoViewOptions;
+}
+
+/** Injection token that determines whether and how the body should scroll into view. */
+export const EXPANSION_PANEL_DEFAULT_OPTIONS = new InjectionToken<ExpansionPanelDefaultOptions>('EXPANSION_PANEL_DEFAULT_OPTIONS', {
+    factory: () => ({
+        scrollIntoViewActive: false,
+        scrollIntoViewOptions: {
+            behavior: 'smooth',
+        },
+    }),
+});
 
 @Component({
     selector: 'nx-expansion-panel',
@@ -78,6 +99,12 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
     }
     private _style: AccordionStyle | null = null;
 
+    /** Whether scrollIntoView should be enabled. */
+    @Input() scrollIntoViewActive? = this._defaultOptions?.scrollIntoViewActive;
+
+    /** Configuration for the scrollIntoView behaviour after the expand animation is done. */
+    @Input() scrollIntoViewOptions? = this._defaultOptions?.scrollIntoViewOptions;
+
     /** @docs-private */
     @ContentChild(NxExpansionPanelBodyDirective) lazyContent: any;
 
@@ -98,6 +125,7 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
         _cdr: ChangeDetectorRef,
         _expansionDispatcher: UniqueSelectionDispatcher,
         private readonly _viewContainerRef: ViewContainerRef,
+        @Optional() @Inject(EXPANSION_PANEL_DEFAULT_OPTIONS) private readonly _defaultOptions: ExpansionPanelDefaultOptions,
     ) {
         super(accordion!, _cdr, _expansionDispatcher);
     }
@@ -140,5 +168,12 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
     /** @docs-private */
     getOpenState() {
         return this.expanded ? 'open' : 'closed';
+    }
+
+    /** @docs-private */
+    bodyExpansionDone(event: AnimationEvent) {
+        if (event.fromState === 'closed' && event.toState === 'open') {
+            event.element.scrollIntoView(this.scrollIntoViewOptions);
+        }
     }
 }
