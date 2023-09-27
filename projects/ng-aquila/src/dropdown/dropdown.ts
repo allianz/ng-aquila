@@ -40,6 +40,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
 import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
@@ -125,6 +126,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
     providers: [
         { provide: NxDropdownControl, useExisting: NxDropdownComponent },
         { provide: NxFormfieldControl, useExisting: NxDropdownComponent },
+        { provide: NxAbstractControl, useExisting: NxDropdownComponent },
     ],
     host: {
         role: 'combobox',
@@ -151,7 +153,9 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         '(click)': 'openPanel($event)',
     },
 })
-export class NxDropdownComponent implements NxDropdownControl, ControlValueAccessor, OnInit, AfterViewInit, AfterContentInit, OnDestroy, DoCheck {
+export class NxDropdownComponent
+    implements NxAbstractControl, NxDropdownControl, ControlValueAccessor, OnInit, AfterViewInit, AfterContentInit, OnDestroy, DoCheck
+{
     /** Whether the dropdown is readonly. */
     @Input() set readonly(value: BooleanInput) {
         this._readonly = coerceBooleanProperty(value);
@@ -161,6 +165,11 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         return this._readonly;
     }
     private _readonly = false;
+
+    /** set readonly state */
+    setReadonly(value: boolean) {
+        this.readonly = value;
+    }
 
     private _selectionModel!: SelectionModel<NxDropdownOption>;
 

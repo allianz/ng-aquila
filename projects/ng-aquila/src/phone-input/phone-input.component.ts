@@ -19,6 +19,7 @@ import {
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { NxDropdownComponent, NxDropdownOption } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { LocalizedCountryNames } from 'i18n-iso-countries';
 import { Subject } from 'rxjs';
@@ -34,12 +35,15 @@ let next = 0;
     templateUrl: './phone-input.component.html',
     styleUrls: ['./phone-input.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{ provide: NxFormfieldControl, useExisting: NxPhoneInputComponent }],
+    providers: [
+        { provide: NxFormfieldControl, useExisting: NxPhoneInputComponent },
+        { provide: NxAbstractControl, useExisting: NxPhoneInputComponent },
+    ],
     host: {
         '[attr.id]': 'id',
     },
 })
-export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldControl<any>, OnDestroy, DoCheck, OnInit, AfterViewInit {
+export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldControl<any>, OnDestroy, DoCheck, OnInit, AfterViewInit, NxAbstractControl {
     @ViewChild(NxDropdownComponent, { static: true }) dropdown!: NxDropdownComponent;
     @Output() readonly focusOut = new EventEmitter<boolean>();
     @Output() readonly focusIn = new EventEmitter<boolean>();
@@ -101,6 +105,11 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
         return this._readonly;
     }
     private _readonly = false;
+
+    /** set readonly state */
+    setReadonly(value: boolean) {
+        this.readonly = value;
+    }
 
     private _initialCountryCode = 'DE';
 

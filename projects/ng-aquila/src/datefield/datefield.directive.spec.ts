@@ -347,6 +347,20 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
         fixture.detectChanges();
         expect(testInstance.form.get('datefield')!.valid).toBeTrue();
     });
+
+    it('should reflect readonly state when setReadonly changed', () => {
+        createTestComponent(ReactiveIsoDatefield);
+        const nativeElement = fixture.nativeElement.querySelector('input');
+
+        datefieldInstance.setReadonly(true);
+        fixture.detectChanges();
+
+        expect(nativeElement.readOnly).toBeTruthy();
+
+        datefieldInstance.setReadonly(false);
+        fixture.detectChanges();
+        expect(nativeElement.readOnly).toBeFalse();
+    });
 });
 
 @Component({

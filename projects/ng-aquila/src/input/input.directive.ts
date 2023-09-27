@@ -4,6 +4,7 @@ import { AutofillMonitor } from '@angular/cdk/text-field';
 import { Directive, DoCheck, ElementRef, Inject, InjectionToken, Input, OnChanges, OnDestroy, OnInit, Optional, Self } from '@angular/core';
 import { FormControl, FormGroupDirective, NgControl, NgForm, Validators } from '@angular/forms';
 import { NxFormfieldControl, NxFormfieldUpdateEventType } from '@aposin/ng-aquila/formfield';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -38,9 +39,12 @@ let nextUniqueId = 0;
         '(focusout)': '_focusChanged(false)',
         '(focus)': '_focusChanged(true)',
     },
-    providers: [{ provide: NxFormfieldControl, useExisting: NxInputDirective }],
+    providers: [
+        { provide: NxFormfieldControl, useExisting: NxInputDirective },
+        { provide: NxAbstractControl, useExisting: NxInputDirective },
+    ],
 })
-export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, NxFormfieldControl<any> {
+export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, NxFormfieldControl<any>, NxAbstractControl {
     protected _uid = `nx-input-${nextUniqueId++}`;
     protected _previousNativeValue: any;
     private _inputValueAccessor: { value: any };
@@ -95,6 +99,11 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
         return this._readonly;
     }
     private _readonly = false;
+
+    /** set readonly state */
+    setReadonly(value: boolean) {
+        this.readonly = value;
+    }
 
     /** Whether the input is disabled. */
     @Input() set disabled(value: BooleanInput) {

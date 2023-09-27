@@ -12,6 +12,7 @@ import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, Inje
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { NX_INPUT_VALUE_ACCESSOR } from '@aposin/ng-aquila/input';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -61,6 +62,7 @@ export class NxDatepickerInputEvent<D> {
         NX_DATEFIELD_VALIDATORS,
         // {provide: NX_INPUT_VALUE_ACCESSOR, useExisting: NxDatefieldDirective},
         { provide: NX_INPUT_VALUE_ACCESSOR, useExisting: NxDatefieldDirective },
+        { provide: NxAbstractControl, useExisting: NxDatefieldDirective },
     ],
     host: {
         '[attr.aria-haspopup]': 'true',
@@ -76,7 +78,7 @@ export class NxDatepickerInputEvent<D> {
     },
     exportAs: 'nxDatefield',
 })
-export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAccessor, OnDestroy, Validator {
+export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAccessor, OnDestroy, Validator, NxAbstractControl {
     /** @docs-private */
     currentFormattedDate: string | null = null;
 
@@ -203,6 +205,11 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
         return !!this._readonly;
     }
     private _readonly!: boolean;
+
+    /** set readonly state */
+    setReadonly(value: boolean) {
+        this.readonly = value;
+    }
 
     /** Emits when a `change` event is fired on this `<input>`. */
     @Output() readonly dateChange = new EventEmitter<NxDatepickerInputEvent<D>>();

@@ -1072,6 +1072,27 @@ describe('NxDropdownComponent', () => {
         }));
     });
 
+    describe('with readonly state', () => {
+        beforeEach(fakeAsync(() => {
+            configureNxDropdownTestingModule([DropdownOnPush]);
+        }));
+
+        it('should correctly reflect readonly styles on programmatic setReadonly change', fakeAsync(() => {
+            createTestComponent(DropdownOnPush);
+            tick();
+
+            dropdownInstance.setReadonly(true);
+            fixture.detectChanges();
+            expect(dropdownElement).toHaveClass('is-readonly');
+
+            flush();
+
+            dropdownInstance.setReadonly(false);
+            fixture.detectChanges();
+            expect(dropdownElement).not.toHaveClass('is-readonly');
+        }));
+    });
+
     describe('with formfield', () => {
         beforeEach(fakeAsync(() => {
             configureNxDropdownTestingModule([FormFieldDropdownComponent]);

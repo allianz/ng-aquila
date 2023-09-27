@@ -205,6 +205,19 @@ describe('NxInputDirective', () => {
             expect(spy).toHaveBeenCalled();
             subscription.unsubscribe();
         });
+
+        it('should reflect readonly state when setReadonly changed', () => {
+            createTestComponent(BasicInput);
+            const container = fixture.debugElement.query(By.css('nx-formfield'))!.nativeElement;
+
+            inputInstance.setReadonly(true);
+            fixture.detectChanges();
+            expect(container).toHaveClass('is-readonly');
+
+            inputInstance.setReadonly(false);
+            fixture.detectChanges();
+            expect(container).not.toHaveClass('is-readonly');
+        });
     });
 
     describe('formControl', () => {
