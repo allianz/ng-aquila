@@ -1,4 +1,4 @@
-import { END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE } from '@angular/cdk/keycodes';
+import { END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE, TAB } from '@angular/cdk/keycodes';
 import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -99,6 +99,18 @@ describe('NxTabHeaderComponent', () => {
                 dispatchKeyboardEvent(tabListContainer, 'keydown', END);
                 fixture.detectChanges();
                 expect(testInstance.selectedIndex).toBe(2);
+            });
+
+            it('should not focus on navigation button when pressing TAB key', () => {
+                createTestComponent(BasicHeader);
+                testInstance.selectedIndex = 1;
+                testInstance.tabHeaderInstance._isScrolledToEnd = false;
+                fixture.detectChanges();
+
+                dispatchKeyboardEvent(tabListContainer, 'keydown', TAB);
+                fixture.detectChanges();
+                const navigationButton = tabHeaderNativeElement.querySelector('.end-button button');
+                expect(document.activeElement).not.toBe(navigationButton);
             });
         });
 

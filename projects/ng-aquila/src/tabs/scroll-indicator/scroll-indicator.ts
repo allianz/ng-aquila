@@ -18,6 +18,7 @@ export type NxScrollDirection = 'start' | 'end';
         '[class.is-mobile]': '_view === "mobile"',
         '[class.is-scrolled-to-start]': 'isScrolledToStart',
         '[class.is-scrolled-to-end]': 'isScrolledToEnd',
+        '[attr.aria-hidden]': 'true',
     },
 })
 export class NxTabScrollIndicator implements OnDestroy {
