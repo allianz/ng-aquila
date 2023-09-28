@@ -161,6 +161,12 @@ $aquila-theme: (
         border-bottom-right-radius: 0 !important;
     }
 
+    .ag-input-field-input {
+        &:focus {
+            color: var(--formfield-active-color);
+        }
+    }
+
     .ag-floating-filter-button {
         margin-left: 0;
         width: calc(var(--ag-icon-size) + 14px);
@@ -187,6 +193,10 @@ $aquila-theme: (
             border-right: none;
             color: var(--formfield-disabled-text-color);
         }
+    }
+
+    .ag-selection-checkbox {
+        margin-right: 16px;
     }
 
     // move the popup slightly away from the icon
@@ -230,6 +240,10 @@ $aquila-theme: (
         min-height: 32px;
         border: var(--ag-borders-input) var(--ag-input-border-color);
         border-radius: var(--ag-border-radius);
+
+        & .ag-picker-field-icon {
+            margin-right: 8px;
+        }
     }
 
     .ag-floating-filter {
@@ -251,6 +265,13 @@ $aquila-theme: (
         &.ag-disabled {
             color: var(--pagination-link-disabled-color);
             cursor: not-allowed;
+        }
+    }
+
+    // hide the "1 to 100 of xxxxx" on mobile that the pagination doesn't line break
+    @media (max-width: 475px) {
+        .ag-paging-row-summary-panel {
+            display: none;
         }
     }
 }
