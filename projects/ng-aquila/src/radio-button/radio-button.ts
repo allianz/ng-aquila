@@ -156,7 +156,10 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     }
 
     ngAfterContentInit(): void {
-        this._updateSelectedRadioFromValue();
+        if (this.ngControl) {
+            // prevent group overwrite radio buttons since there is no value from group
+            this._updateSelectedRadioFromValue();
+        }
         this._checkSelectedRadioButton();
     }
 
