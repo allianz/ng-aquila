@@ -589,19 +589,19 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     writeValue(value: T[]): void {
-        this.selectedItems.clear();
+        setTimeout(() => {
+            this.selectedItems.clear();
 
-        if (Array.isArray(value)) {
-            for (const item of value) {
-                const selectedItem = this.options.find(option => this._selectValue(option) === item);
-                if (selectedItem) {
-                    this.selectedItems.add(selectedItem);
-                } else {
-                    console.warn('NxMultiSelect: Model contains value that does not exist in given options', item);
+            if (Array.isArray(value)) {
+                for (const item of value) {
+                    const selectedItem = this.options.find(option => this._selectValue(option) === item);
+                    if (selectedItem) {
+                        this.selectedItems.add(selectedItem);
+                    } else {
+                        console.warn('NxMultiSelect: Model contains value that does not exist in given options', item);
+                    }
                 }
             }
-        }
-        setTimeout(() => {
             this._updateTooltipText();
             this._cdr.markForCheck();
         });
