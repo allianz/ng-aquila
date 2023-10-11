@@ -218,12 +218,18 @@ $margin-to-message: nx-spacer(3xs);
     color: v(formfield-active-color);
 
     .nx-formfield__input-container {
-        border-bottom-color: v(formfield-active-border-color);
+        border-bottom-color: v(hover-link);
     }
 
     // overwrite with white to maintain contrast
     &.nx-formfield--negative {
         color: v(negative);
+    }
+}
+
+.nx-formfield.is-focused:not(.has-outline) {
+    .nx-formfield__input-container {
+        border-bottom-width: 4px;
     }
 }
 
