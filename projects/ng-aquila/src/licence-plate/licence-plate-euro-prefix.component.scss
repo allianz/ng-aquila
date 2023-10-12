@@ -24,5 +24,6 @@
 :host(.is-disabled) {
     -webkit-text-fill-color: v(licence-plate-prefix-color);
     color: v(licence-plate-prefix-color);
-    background-color: v(formfield-disabled-border-color);
+    background-color: v(licence-plate-prefix-background);
+    opacity: 0.4;
 }
