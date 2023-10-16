@@ -8,6 +8,7 @@
                 [class.is-disabled]="_isPaginationPreviousDisabled()"
                 class="nx-pagination__link nx-pagination__link--first"
                 (click)="onFirst()"
+                type="button"
             >
                 <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-last' : 'arrow-first'"></nx-icon>
             </button>
@@ -20,6 +21,7 @@
                 [class.is-disabled]="_isPaginationPreviousDisabled()"
                 class="nx-pagination__link nx-pagination__link--previous"
                 (click)="onPrev()"
+                type="button"
             >
                 <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-right' : 'arrow-left'"></nx-icon>
             </button>
@@ -32,6 +34,7 @@
                 (click)="onPage(pageNum.value)"
                 [attr.aria-current]="pageNum.value === page ? 'page' : ''"
                 [ngClass]="getPaginationNumberClasses(pageNum)"
+                type="button"
             >
                 {{ pageNum.label }}
             </button>
@@ -46,6 +49,7 @@
                 (click)="onPage(pageNum.value)"
                 [attr.aria-current]="pageNum.value === page ? 'page' : ''"
                 [ngClass]="getPaginationNumberClasses(pageNum)"
+                type="button"
             >
                 {{ pageNum.label }}
             </button>
@@ -58,6 +62,7 @@
                 [class.is-disabled]="_isPaginationNextDisabled()"
                 class="nx-pagination__link nx-pagination__link--next"
                 (click)="onNext()"
+                type="button"
             >
                 <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-left' : 'arrow-right'"></nx-icon>
             </button>
@@ -70,6 +75,7 @@
                 [class.is-disabled]="_isPaginationNextDisabled()"
                 class="nx-pagination__link nx-pagination__link--last"
                 (click)="onLast()"
+                type="button"
             >
                 <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-first' : 'arrow-last'"></nx-icon>
             </button>
@@ -84,6 +90,7 @@
         [disabled]="_isPaginationPreviousDisabled()"
         [class.is-disabled]="_isPaginationPreviousDisabled()"
         (click)="onPrev()"
+        type="button"
     >
         <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-right' : 'arrow-left'"></nx-icon>
         <span class="nx-pagination-compact__direction-label">
@@ -102,6 +109,7 @@
         [class.is-disabled]="_isPaginationNextDisabled()"
         [attr.aria-label]="paginationTexts.next"
         (click)="onNext()"
+        type="button"
     >
         <span class="nx-pagination-compact__direction-label"> {{ paginationTexts.next }} </span>
         <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-left' : 'arrow-right'"></nx-icon>
