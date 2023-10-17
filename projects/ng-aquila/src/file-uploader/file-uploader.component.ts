@@ -363,8 +363,6 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
                     this._filesSubscriptions = [];
                 }
             }
-
-            this._resetValidators();
             this._value = value;
             this._subscribeToFileChanges();
         }
@@ -539,14 +537,15 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
             return;
         }
 
+        // Remove latest upload failed from the list
         if (this.uploader) {
             this.uploader.response.pipe(take(1)).subscribe(res => {
-                const success = res.success?.files.filter(file => file.isUploaded);
-                const errorFiles = res.error?.files.filter(file => file.isError);
+                const successFiles = this.value?.filter(file => file.isUploaded && !file.isError);
+                const errorFiles = res.error?.files.filter(file => !file.isUploaded && file.isError);
                 if (errorFiles?.length) {
                     errorFiles?.forEach(file => this.setFileUploadError(file, 'An error occured while uploading'));
                 }
-                this.value = success;
+                this.value = successFiles;
             });
             this.uploader.uploadFiles(this.value!);
         }

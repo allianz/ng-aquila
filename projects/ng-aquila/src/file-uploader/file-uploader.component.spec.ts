@@ -1,10 +1,13 @@
-import { HttpClientModule } from '@angular/common/http';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { ChangeDetectorRef, Component, Directive, Type, ViewChild } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
+import { NxFileUploader } from './file-uploader';
 import { NxFileUploaderComponent } from './file-uploader.component';
 import { FileItem } from './file-uploader.model';
 import { NxFileUploaderModule } from './file-uploader.module';
@@ -33,6 +36,7 @@ describe('NxFileUploaderComponent', () => {
     let hintElement: HTMLElement;
     let inputElm: HTMLInputElement;
     let labelElm: HTMLInputElement;
+    let httpTestingController: HttpTestingController;
 
     function createTestComponent(component: Type<FileUploaderTest>) {
         fixture = TestBed.createComponent(component);
@@ -55,9 +59,20 @@ describe('NxFileUploaderComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicFileUpload, ReactiveFileUpload, DynamicFileUpload, CustomItemTemplateFileUpload],
-            imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule, HttpClientModule],
+            declarations: [BasicFileUpload, ReactiveFileUpload, DynamicFileUpload, CustomItemTemplateFileUpload, UploadFail],
+            imports: [
+                NxFileUploaderModule,
+                NxLabelModule,
+                NxIconModule,
+                ReactiveFormsModule,
+                FormsModule,
+                NxErrorModule,
+                HttpClientModule,
+                HttpClientTestingModule,
+            ],
         }).compileComponents();
+
+        httpTestingController = TestBed.inject(HttpTestingController);
     }));
 
     describe('basic', () => {
@@ -270,6 +285,37 @@ describe('NxFileUploaderComponent', () => {
 
             expect(testInstance.form.controls.documents.value.length).toBe(0);
             expect(testInstance.form.controls.documents.hasError('required')).toBeTrue();
+        });
+
+        it('should remove failed upload file from the list and show error message', () => {
+            createTestComponent(UploadFail);
+            fixture.detectChanges();
+            let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
+            fakeFile = Object.defineProperty(fakeFile, 'size', { value: 12, writable: false });
+            const fileList = {
+                0: fakeFile,
+                length: 1,
+                item: () => fakeFile,
+            };
+
+            fileUploaderInstance._onFileChange({
+                type: 'change',
+                target: {
+                    files: fileList,
+                },
+            });
+            fixture.detectChanges();
+            expect(fileUploaderInstance.value?.length).toBe(1);
+
+            const uploadButton = fixture.nativeElement.querySelector('#upload-trigger');
+
+            uploadButton.click();
+            fixture.detectChanges();
+
+            httpTestingController.expectOne('/file-upload-error').flush(null, { status: 404, statusText: 'error' });
+
+            expect(fileUploaderInstance.value?.length).toBe(0);
+            expect(testInstance.form?.get('documents')?.hasError('serverError')).toBeTruthy();
         });
 
         it('should list all files error in errors property', () => {
@@ -794,5 +840,45 @@ class CustomItemTemplateFileUpload extends FileUploaderTest {
 
     setOutputFile(value: any) {
         this.outputFile = value;
+    }
+}
+@Component({
+    template: `
+        <form [formGroup]="form">
+            <nx-file-uploader #documentUpload formControlName="documents" [uploader]="uploader" multiple>
+                <nx-label>Required file to upload</nx-label>
+                <span nxFileUploadHint>All files are accepted</span>
+                <button type="button" nxFileUploadButton>Add Files</button>
+            </nx-file-uploader>
+            <nx-error *ngIf="form.controls['documents'].hasError('serverError')" class="error-message"> An error occured while uploading. </nx-error>
+            <button id="upload-trigger" [nxFileUploadTriggerFor]="documentUpload" type="button">Upload files</button>
+        </form>
+    `,
+})
+class UploadFail extends FileUploaderTest {
+    fb: FormBuilder;
+    files!: null | FileItem[];
+    uploadConfig = {
+        requestUrl: '/file-upload-error',
+        options: {
+            reportProgress: true,
+        },
+        uploadSeparately: false,
+    };
+    uploader = new NxFileUploader(this.uploadConfig, this.http);
+
+    constructor(private readonly http: HttpClient, private cdr: ChangeDetectorRef) {
+        super();
+        this.uploader.response.pipe(takeUntilDestroyed()).subscribe(result => {
+            if (result.error) {
+                this.form.controls.documents.setErrors({
+                    serverError: true,
+                });
+            }
+        });
+        this.fb = new FormBuilder();
+        this.form = this.fb.group({
+            documents: new FormControl([]),
+        });
     }
 }
