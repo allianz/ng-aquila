@@ -24,3 +24,20 @@
 <div nx-docs-example="accordion-lazy" config="{}">exampleID: accordion-lazy</div>
 <h3 id="accordion-with-error-state" tabindex="-1" class="docs-markdown--h3">Accordion with Error State</h3>
 <div nx-docs-example="accordion-error" config="{}">exampleID: accordion-error</div>
+<h3 id="global-settings" tabindex="-1" class="docs-markdown--h3">Global settings</h3>
+<p class="docs-markdown--p">To enable and configure scroll behavior you can use the EXPANSION_PANEL_DEFAULT_OPTIONS injection token as shown in the code snippet below:</p>
+<pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
+    <span class="hljs-attr">providers</span>: [
+        {
+            <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">EXPANSION_PANEL_DEFAULT_OPTIONS</span>,
+            <span class="hljs-attr">useValue</span>: {
+                <span class="hljs-attr">scrollIntoViewActive</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">scrollIntoViewOptions</span>: {
+                    <span class="hljs-attr">behavior</span>: <span class="hljs-string">&#x27;smooth&#x27;</span>
+                }
+            }
+        }
+    ]
+</code></pre>
+<p class="docs-markdown--p">or configure the scrollIntoViewActive- and scrollIntoViewOptions-Input-decorators as shown in this example:</p>
+<div nx-docs-example="accordion-scroll-smooth" config="{}">exampleID: accordion-scroll-smooth</div>

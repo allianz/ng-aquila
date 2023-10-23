@@ -14,6 +14,7 @@ import { AccordionLightExampleComponent } from './accordion-light/accordion-ligh
 import { AccordionLightNegativeExampleComponent } from './accordion-light-negative/accordion-light-negative-example';
 import { AccordionMultiExampleComponent } from './accordion-multi/accordion-multi-example';
 import { AccordionNegativeExampleComponent } from './accordion-negative/accordion-negative-example';
+import { AccordionScrollSmoothExampleComponent } from './accordion-scroll-smooth/accordion-scroll-smooth-example';
 import { AccordionStandaloneExampleComponent } from './accordion-standalone/accordion-standalone-example';
 
 const EXAMPLES = [
@@ -27,6 +28,7 @@ const EXAMPLES = [
     AccordionMultiExampleComponent,
     AccordionNegativeExampleComponent,
     AccordionStandaloneExampleComponent,
+    AccordionScrollSmoothExampleComponent,
 ];
 
 @NgModule({
@@ -54,6 +56,7 @@ export class AccordionExamplesModule {
             'accordion-multi': AccordionMultiExampleComponent,
             'accordion-negative': AccordionNegativeExampleComponent,
             'accordion-standalone': AccordionStandaloneExampleComponent,
+            'accordion-scroll-smooth': AccordionScrollSmoothExampleComponent,
         };
     }
 }

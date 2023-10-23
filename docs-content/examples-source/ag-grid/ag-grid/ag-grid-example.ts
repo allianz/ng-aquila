@@ -68,7 +68,6 @@ export class AgGridExampleComponent {
                 {
                     field: 'model',
                     filter: 'agTextColumnFilter',
-                    cellEditorPopup: true,
                     resizable: true,
                 },
                 {

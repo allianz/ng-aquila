@@ -648,9 +648,9 @@ body,
   --datefield-cell-active-color: var(--interactive-primary);
   --datefield-cell-hover-background-color: var(--ui-03);
   --datefield-cell-hover-color: var(--text-01);
-  --datefield-cell-disabled-color: var(--disabled-01);
+  --datefield-cell-disabled-color: #767676;
   --datefield-cell-focused-background-color: var(--ui-01);
-  --datefield-header-cell-color: #c3c3c3;
+  --datefield-header-cell-color: var(--datefield-cell-disabled-color);
   --datefield-period-label-font-size: var(--large-label-font-size);
   --datefield-period-label-line-height: var(--datefield-controls-icon-size);
   --datefield-period-label-font-weight: 600;
