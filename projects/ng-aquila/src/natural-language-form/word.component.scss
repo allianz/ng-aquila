@@ -100,6 +100,10 @@ $border-size: nx-border-size(m);
                 border-color: v(natural-language-form-active-border-color);
             }
 
+            &.has-focus {
+                border-bottom-width: 4px;
+            }
+
             .nx-dropdown__icon {
                 line-height: inherit;
             }
@@ -115,6 +119,12 @@ $border-size: nx-border-size(m);
 :host(.is-filled) {
     .nx-word__inner-wrapper {
         border-color: v(natural-language-form-active-border-color);
+    }
+}
+
+:host(.is-focused) {
+    .nx-word__inner-wrapper {
+        border-bottom-width: 4px;
     }
 }
 
