@@ -245,6 +245,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
                             this.handleClick();
                             break;
                         case ENTER:
+                            event?.preventDefault();
                             this.handleClick();
                             break;
                         case TAB:
