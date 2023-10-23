@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [16.10.0](https://github.com/allianz/ng-aquila/compare/v16.9.0...v16.10.0) (2023-10-23)
+
+### File Uploader UX updates
+The file uploader got some updates to recent UX guideline changes. Most notable changes are:
+- the error messages are shown above the label
+- files that do not validate or have an error while uploading get removed from the file list
+- the file list shows a file icon depending on the type now
+
+
+### Bug Fixes
+
+* **ag-grid:** color and layout fixes([735d3ea](https://github.com/allianz/ng-aquila/commit/735d3ea887d9dc42ecb68ef1ac3cb4a7c60f3aa0))
+* **datefield:** accessible disabled colors ([4f96fbf](https://github.com/allianz/ng-aquila/commit/4f96fbf4531e1d44939c530679d66928db90aaa9))
+* **formfield:** update focus styles ([2fb75fe](https://github.com/allianz/ng-aquila/commit/2fb75fe979b84b783849892a03e175aa41bd2510))
+* **license-plate:** correct disable style ([9a40f97](https://github.com/allianz/ng-aquila/commit/9a40f97a039112d2aef24e38105f30f97ac86def))
+* **multi-select:** prevent value is not present in option warning ([c3291c0](https://github.com/allianz/ng-aquila/commit/c3291c0700a776f95ab08f6735c70c0dd11def0e))
+* **pagination:** add button type ([f87c95d](https://github.com/allianz/ng-aquila/commit/f87c95dd75003b5c9e4b171cd73d009313b560f0))
+* **popover:** fix for keycode enter ([28fe521](https://github.com/allianz/ng-aquila/commit/28fe521e512caf40ba4d2ad9ac39aa4fd33856fa))
+* **radio:** prevent group overwrite checked button ([cd6e2b2](https://github.com/allianz/ng-aquila/commit/cd6e2b22381be0d28298b29fafc7ed80a8382d3e))
+* **table:** set sticky header z-index ([89c05ad](https://github.com/allianz/ng-aquila/commit/89c05ad99abb63c9153f356abfadd10dcbc496c3))
+* **tabs:** remove scroll buttons from tabindex ([6738f12](https://github.com/allianz/ng-aquila/commit/6738f12c0d692e0f3b07959497c7c1bf5b6573e8))
+* **upload:** prevent error disappear when upload failed ([cffaca6](https://github.com/allianz/ng-aquila/commit/cffaca6607564d12e840903372ec84817fc79c69))
+* **word:** update focus styles ([cadd2ee](https://github.com/allianz/ng-aquila/commit/cadd2ee48590b5ccafebabbd14f5cc36165f2656))
+
+
+### Features
+
+* **accordion:** add option to scroll body into view when panel gets opened ([3cf35ab](https://github.com/allianz/ng-aquila/commit/3cf35ab331d418abaf8719a7e8c694bcb0e5d049))
+* **forms:** add programmatic readonly api to existing components ([d715947](https://github.com/allianz/ng-aquila/commit/d715947cef67f53fdb113219021ab55478b2b87d))
+* **uploader:** changes showing error, add file icon ([c4c592e](https://github.com/allianz/ng-aquila/commit/c4c592e89c72bb0f2aa4d1f88104773f54df0329))
+
+
+
 # [16.9.0](https://github.com/allianz/ng-aquila/compare/v16.8.0...v16.9.0) (2023-09-20)
 
 
