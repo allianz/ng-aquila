@@ -21,6 +21,7 @@
 
     .nx-tab-header__item:first-child {
         margin-left: 0;
+        padding-left: 7px;
 
         [dir='rtl'] & {
             margin-right: 0;
@@ -30,6 +31,7 @@
 
     .nx-tab-header__item:last-child {
         margin-right: 0;
+        padding-right: 7px;
 
         [dir='rtl'] & {
             margin-right: nx-spacer(s);

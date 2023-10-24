@@ -103,10 +103,12 @@ describe('Scrollable TabHeader', () => {
 
         it('hides scroll-to-end indicator when at end', fakeAsync(() => {
             const scrollableContainer = tabHeaderNativeElement.querySelector('.nx-tab-header');
+            expect(getEndScrollElement()).not.toHaveClass('is-scrolled-to-end');
+
             scrollableContainer!.scrollTo({ left: 1000 });
             dispatchFakeEvent(scrollableContainer as Node, 'scroll');
             fixture.detectChanges();
-            expect(getEndScrollElement()).toHaveClass('is-scrolled-to-end');
+            expect(getEndScrollElement()).toBeNull();
         }));
     });
 
