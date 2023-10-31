@@ -16,4 +16,6 @@ export class NxFileUploaderIntl {
     deleteLabel = 'Delete';
     /** Aria-label for the 'successfully-uploaded' icon. */
     uploadedStateLabel = 'uploaded';
+    /** Aria-label for the uploaded files list. */
+    uploadedListLabel = 'List of uploaded files';
 }

@@ -14,7 +14,7 @@
     [id]="_inputId"
 />
 <ng-container *ngIf="value && value.length > 0">
-    <div class="nx-file-uploader--file-list nx-margin-bottom-m" role="list" [attr.aria-labelledby]="_labelId">
+    <div class="nx-file-uploader--file-list nx-margin-bottom-m" role="list" [attr.aria-label]="_templateContext.uploadedListLabel">
         <div
             #fileRowElement
             class="nx-file-uploader--file-row"

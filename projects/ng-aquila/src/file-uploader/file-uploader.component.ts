@@ -588,6 +588,15 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     }
 
     /**
+     * The label for the uploaded files in the queue.
+     *
+     * @docs-private
+     */
+    get uploadedListLabel(): string {
+        return this._intl.uploadedListLabel;
+    }
+
+    /**
      * Sets the list of element IDs that describe the child control. This allows the trigger element (button) to update
      * its `aria-describedby` attribute accordingly.
      */
