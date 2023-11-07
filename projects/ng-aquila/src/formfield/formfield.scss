@@ -422,7 +422,6 @@ $margin-to-message: nx-spacer(3xs);
             padding-top: 0;
             transform: translateY(v(formfield-outline-floating-distance));
             @include type-style(formfield-outline-label);
-            font-weight: nx-font-weight(semibold);
         }
 
         .nx-formfield__prefix ~ .nx-formfield__input {
