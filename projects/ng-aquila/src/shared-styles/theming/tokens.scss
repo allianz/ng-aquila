@@ -737,6 +737,7 @@ $nx-theme: (
     formfield-label-color: text-01,
     formfield-control-color: text-01,
     formfield-border-width: 1px,
+    formfield-active-border-width: 4px,
     formfield-active-color: interactive-text,
     formfield-hover-border-color: ui-06,
     formfield-disabled-text-color: disabled-01,
@@ -751,7 +752,7 @@ $nx-theme: (
     formfield-error-input-font-weight: 700,
     formfield-input-padding: 0 0 3px 0,
     formfield-border-color: ui-06,
-    formfield-active-border-color: interactive-primary,
+    formfield-active-border-color: hover-link,
     formfield-background-color: transparent,
     formfield-message-gap: 4px,
     // The typography for the flexfield container
