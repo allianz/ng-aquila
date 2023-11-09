@@ -9,6 +9,10 @@ $arrow-shadow: -2px -2px -4px v(shadow-small-color);
 
 $padding-content: nx-spacer(2m) - $popover-border-size;
 
+.nx-popover {
+    position: relative;
+}
+
 .nx-popover__content {
     @include type-style(popover-content);
     background-color: v(popover-background-color);

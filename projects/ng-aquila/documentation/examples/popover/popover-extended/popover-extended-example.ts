@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./popover-extended-example.css'],
 })
 export class PopoverExtendedExampleComponent {
+    popoverWidth = '500px';
     popoverManualOpenFlag = false;
 
     cancelPopover() {

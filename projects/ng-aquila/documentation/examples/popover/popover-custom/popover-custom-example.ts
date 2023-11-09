@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
     templateUrl: './popover-custom-example.html',
     styleUrls: ['./popover-custom-example.css'],
 })
-export class PopoverCustomExampleComponent {}
+export class PopoverCustomExampleComponent {
+    popoverWidth = '400px';
+}

@@ -8,8 +8,3 @@
 .nx-popover__content-wrapper {
     margin: 0 8px;
 }
-@media (min-width: 704px) {
-    .nx-popover__content-wrapper {
-        width: 400px;
-    }
-}

@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
     templateUrl: './popover-lazyload-example.html',
     styleUrls: ['./popover-lazyload-example.css'],
 })
-export class PopoverLazyloadExampleComponent {}
+export class PopoverLazyloadExampleComponent {
+    popoverWidth = '400px';
+}

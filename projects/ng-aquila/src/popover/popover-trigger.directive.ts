@@ -63,6 +63,28 @@ export const NX_POPOVER_SCROLL_STRATEGY_PROVIDER = {
     deps: [Overlay],
 };
 
+/** Default `nxPopover` options that can be overridden. */
+export interface PopoverDefaultOptions {
+    /** Default width of popover */
+    popoverWidth?: string | undefined;
+
+    /** Default max-width of popover */
+    popoverMaxWidth?: string | undefined;
+}
+
+/** Injection token to be used to override the default options for `nxPopover`. */
+export const POPOVER_DEFAULT_OPTIONS = new InjectionToken<PopoverDefaultOptions>('popover-default-options', {
+    providedIn: 'root',
+    factory: POPOVER_DEFAULT_OPTIONS_FACTORY,
+});
+
+export function POPOVER_DEFAULT_OPTIONS_FACTORY(): PopoverDefaultOptions {
+    return {
+        popoverWidth: undefined,
+        popoverMaxWidth: undefined,
+    };
+}
+
 /**
  * Creates an error to be thrown if the user provided an invalid popover direction.
  *
@@ -165,6 +187,24 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
     }
     private _hidearrow: boolean | null = null;
 
+    /** Popover width */
+    @Input('nxPopoverWidth') set popoverWidth(value: string | undefined) {
+        this._popoverWidth = value;
+    }
+    get popoverWidth(): string | undefined {
+        return this._popoverWidth || this._defaultOptions?.popoverWidth;
+    }
+    private _popoverWidth: string | undefined;
+
+    /** Popover max-width */
+    @Input('nxPopoverMaxWidth') set popoverMaxWidthh(value: string | undefined) {
+        this._popoverMaxWidth = value;
+    }
+    get popoverMaxWidth(): string | undefined {
+        return this._popoverMaxWidth || this._defaultOptions?.popoverMaxWidth;
+    }
+    private _popoverMaxWidth: string | undefined;
+
     /** Links the trigger with the popover to open. */
     @Input('nxPopoverTriggerFor') popover!: NxPopoverComponent;
 
@@ -220,6 +260,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
         private readonly _ngZone: NgZone,
         private readonly _platform: Platform,
         @Optional() private readonly _dir: Directionality | null,
+        @Optional() @Inject(POPOVER_DEFAULT_OPTIONS) private readonly _defaultOptions: PopoverDefaultOptions | null,
         @Inject(NX_POPOVER_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
         private readonly _cdr: ChangeDetectorRef,
     ) {
@@ -437,6 +478,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
         if (!this.overlayRef) {
             this.portal = new TemplatePortal(this.popover.templateRef, this.viewContainerRef);
             const overlayState = new OverlayConfig();
+            overlayState.width = this.popoverWidth;
+            overlayState.maxWidth = this.popoverMaxWidth;
             overlayState.positionStrategy = this.getPosition();
             this._positionStrategy = overlayState.positionStrategy;
 

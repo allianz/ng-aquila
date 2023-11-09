@@ -12,7 +12,12 @@ import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxPopoverComponent } from './popover.component';
 import { NxPopoverModule } from './popover.module';
 import { NxPopoverIntl } from './popover-intl';
-import { NxPopoverTriggerDirective } from './popover-trigger.directive';
+import { NxPopoverTriggerDirective, POPOVER_DEFAULT_OPTIONS, PopoverDefaultOptions } from './popover-trigger.directive';
+
+const popoverDefaultOptions: PopoverDefaultOptions = {
+    popoverWidth: '',
+    popoverMaxWidth: '',
+};
 
 @Component({
     selector: 'nx-test-component',
@@ -27,6 +32,8 @@ abstract class PopoverTest {
     @ViewChild(NxTestComponent) testComponentInstance!: NxTestComponent;
 
     closeable = false;
+    popoverWidth!: string;
+    popoverMaxWidth!: string;
 }
 
 describe('NxPopoverTriggerDirective', () => {
@@ -68,7 +75,10 @@ describe('NxPopoverTriggerDirective', () => {
                 I18nTest,
                 PopoverDivTrigger,
                 PopoverHoverFormfieldComponent,
+                PopoverWidthComponent,
+                PopoverDefaultWidthComponent,
             ],
+            providers: [{ provide: POPOVER_DEFAULT_OPTIONS, useValue: popoverDefaultOptions }],
         });
 
         // Simple trick to simulate that the user is using `preserveWhitespaces: true`
@@ -117,6 +127,10 @@ describe('NxPopoverTriggerDirective', () => {
         return overlayContainer.getContainerElement().querySelector('.nx-popover__content') as HTMLDivElement;
     }
 
+    function getOverlayPane(): HTMLDivElement {
+        return overlayContainer.getContainerElement().querySelector('.cdk-overlay-pane') as HTMLDivElement;
+    }
+
     function hover() {
         buttonNativeElement.dispatchEvent(new Event('mouseenter'));
         fixture.detectChanges();
@@ -140,6 +154,10 @@ describe('NxPopoverTriggerDirective', () => {
     }
 
     describe('open by hover', () => {
+        beforeEach(waitForAsync(() => {
+            popoverDefaultOptions.popoverMaxWidth = '100px';
+        }));
+
         it('should not display the close icon on hover when nxPopoverCloseable is true', fakeAsync(() => {
             createTestComponent(PopoverShowClose);
             hover();
@@ -734,6 +752,83 @@ describe('NxPopoverTriggerDirective', () => {
             flush();
         }));
     });
+
+    describe('popover default width', () => {
+        beforeEach(waitForAsync(() => {
+            popoverDefaultOptions.popoverWidth = '500px';
+            popoverDefaultOptions.popoverMaxWidth = '400px';
+        }));
+
+        it('popover should use default width', fakeAsync(() => {
+            createTestComponent(PopoverDefaultWidthComponent);
+            click();
+            expect(getOverlayPane().clientWidth).toBe(400);
+        }));
+
+        it('popover width should be less than or equal to default max-width', fakeAsync(() => {
+            createTestComponent(PopoverDefaultWidthComponent);
+            click();
+            expect(getOverlayPane().clientWidth).toBeLessThanOrEqual(400);
+        }));
+
+        it('popover width should be undefined when there are no default settings', fakeAsync(() => {
+            delete popoverDefaultOptions.popoverWidth;
+            createTestComponent(PopoverDefaultWidthComponent);
+            click();
+            expect(getOverlayPane().clientWidth).toBeLessThanOrEqual(400);
+            expect((testInstance as PopoverWidthComponent).popoverMaxWidth).toBeUndefined();
+        }));
+
+        it('popover max-width should be undefined when there are no default settings', fakeAsync(() => {
+            delete popoverDefaultOptions.popoverMaxWidth;
+            createTestComponent(PopoverDefaultWidthComponent);
+            click();
+            expect(getOverlayPane().clientWidth).toBe(500);
+            expect((testInstance as PopoverWidthComponent).popoverMaxWidth).toBeUndefined();
+        }));
+    });
+
+    describe('popover property width', () => {
+        beforeEach(waitForAsync(() => {
+            popoverDefaultOptions.popoverWidth = '500px';
+            popoverDefaultOptions.popoverMaxWidth = '400px';
+        }));
+
+        it('popover should use default max-width if the property popoverMaxWidth has not been set', fakeAsync(() => {
+            createTestComponent(PopoverWidthComponent);
+            (testInstance as PopoverWidthComponent).popoverWidth = '600px';
+            fixture.detectChanges();
+            click();
+            expect(getOverlayPane().clientWidth).toBe(400);
+            expect((testInstance as PopoverWidthComponent).popoverMaxWidth).toBeUndefined();
+        }));
+
+        it('popover should use default width if the property popoverWidth has not been set', fakeAsync(() => {
+            createTestComponent(PopoverWidthComponent);
+            (testInstance as PopoverWidthComponent).popoverMaxWidth = '600px';
+            fixture.detectChanges();
+            click();
+            expect(getOverlayPane().clientWidth).toBe(500);
+        }));
+
+        it('popover should use width if max-width > width', fakeAsync(() => {
+            createTestComponent(PopoverWidthComponent);
+            (testInstance as PopoverWidthComponent).popoverMaxWidth = '700px';
+            (testInstance as PopoverWidthComponent).popoverWidth = '500px';
+            fixture.detectChanges();
+            click();
+            expect(getOverlayPane().clientWidth).toBe(500);
+        }));
+
+        it('popover should use max-width if max-width < width', fakeAsync(() => {
+            createTestComponent(PopoverWidthComponent);
+            (testInstance as PopoverWidthComponent).popoverMaxWidth = '500px';
+            (testInstance as PopoverWidthComponent).popoverWidth = '700px';
+            fixture.detectChanges();
+            click();
+            expect(getOverlayPane().clientWidth).toBe(500);
+        }));
+    });
 });
 
 @Component({
@@ -941,3 +1036,24 @@ class I18nTest extends PopoverTest {}
         <nx-popover #popoverClick>Content</nx-popover><button></button>`,
 })
 class PopoverDivTrigger extends PopoverTest {}
+
+@Component({
+    template: `<button
+            [nxPopoverTriggerFor]="popoverPropertyWidth"
+            nxPopoverTrigger="click"
+            [nxPopoverWidth]="popoverWidth"
+            [nxPopoverMaxWidth]="popoverMaxWidth"
+        >
+            Click
+        </button>
+
+        <nx-popover #popoverPropertyWidth></nx-popover>`,
+})
+class PopoverWidthComponent extends PopoverTest {}
+
+@Component({
+    template: `<button [nxPopoverTriggerFor]="popoverDefaultWidth" nxPopoverTrigger="click">Click</button>
+
+        <nx-popover #popoverDefaultWidth></nx-popover>`,
+})
+class PopoverDefaultWidthComponent extends PopoverTest {}

@@ -8,6 +8,12 @@ stable: done
 
 Popover requires Angular CDK (incl. CSS). Learn [how to enable Angular CDK styles](./documentation/overlay/overview#angular-cdk).
 
+### Global settings
+
+If you want to use default settings for all popovers, you can use the `POPOVER_DEFAULT_OPTIONS` injection token. Here global settings for `popoverWidth` and `popoverMaxWidth` can be defined.
+
+If a certain popover should have another styling, you can overwrite the global default by explicitly defining the property in the template.
+
 ### UX guidelines
 
 If you're building an Expert (internal B2B/B2E) application, you can use both the Popover and the [Tooltip component](./documentation/tooltip/overview#ux-guidelines). If you only need to display a short contextual hint (button hint, info icon, etc.) please consider if the simpler [Tooltip element is better for your use case](./documentation/tooltip/overview#ux-guidelines).
@@ -63,6 +69,12 @@ The popover can be used for a guided tour
 The popover arrow can be hidden using the `nxPopoverHideArrow`.
 
 <!-- example(popover-without-arrow) -->
+
+### Popover width and maxWidth
+
+The popover `width` and `max-width` can be set with the `popoverWidth` and `popoverMaxWidth` inputs. To set the `width` and `max-width` globally use the injection token `POPOVER_DEFAULT_OPTIONS`.
+
+<!-- example(popover-width) -->
 
 ### Custom lazyloaded content
 
