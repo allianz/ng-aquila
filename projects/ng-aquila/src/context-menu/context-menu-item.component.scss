@@ -62,12 +62,17 @@
     }
 
     .nx-context-menu-item__content-wrapper ::ng-deep > nx-icon:not(.nx-context-menu-item__expand) {
-        margin-right: nx-spacer(2xs);
         font-size: v(context-menu-item-icon-size);
+        position: absolute;
+
+        [dir='ltr'] & {
+            margin-right: nx-spacer(2xs);
+            left: 8px;
+        }
 
         [dir='rtl'] & {
-            margin-right: initial;
             margin-left: nx-spacer(2xs);
+            right: 8px;
         }
     }
 
