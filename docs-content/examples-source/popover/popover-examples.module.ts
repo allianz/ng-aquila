@@ -21,6 +21,7 @@ import { PopoverScrollStrategyProviderExampleComponent } from './popover-scroll-
 import { PopoverScrollableExampleComponent } from './popover-scrollable/popover-scrollable-example';
 import { PopoverTableExampleComponent } from './popover-table/popover-table-example';
 import { PopoverTriggerExampleComponent } from './popover-trigger/popover-trigger-example';
+import { PopoverWidthExampleComponent } from './popover-width/popover-width-example';
 import { PopoverWithoutArrowExampleComponent } from './popover-without-arrow/popover-without-arrow-example';
 
 const EXAMPLES = [
@@ -39,6 +40,7 @@ const EXAMPLES = [
     PopoverExtendedExampleComponent,
     PopoverWithoutArrowExampleComponent,
     PopoverGuidedTourExampleComponent,
+    PopoverWidthExampleComponent,
 ];
 
 @NgModule({
@@ -73,6 +75,7 @@ export class PopoverExamplesModule {
             'popover-extended': PopoverExtendedExampleComponent,
             'popover-without-arrow': PopoverWithoutArrowExampleComponent,
             'popover-guided-tour': PopoverGuidedTourExampleComponent,
+            'popover-width': PopoverWidthExampleComponent,
         };
     }
 }

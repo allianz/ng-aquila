@@ -1,9 +1,3 @@
-@media (min-width: 704px) {
-    .nx-popover__content-wrapper {
-        width: 400px;
-    }
-}
-
 .nx-popover__footer {
     display: flex;
     align-items: center;

@@ -22,10 +22,10 @@ export class PopoverTriggerExampleComponent
     popoverManualOpenFlag = false;
 
     @ViewChild('clickTriggerIcon')
-    _clickTriggerIcon!: ElementRef<HTMLElement>;
+    _clickTriggerIcon!: ElementRef<HTMLButtonElement>;
 
     @ViewChild('manualTriggerIcon')
-    _manualTriggerIcon!: ElementRef<HTMLElement>;
+    _manualTriggerIcon!: ElementRef<HTMLButtonElement>;
 
     constructor(private readonly _focusMonitor: FocusMonitor) {}
 

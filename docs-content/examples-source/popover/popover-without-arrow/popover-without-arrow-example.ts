@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./popover-without-arrow-example.css'],
 })
 export class PopoverWithoutArrowExampleComponent {
+    popoverWidth = '500px';
     popoverManualOpenFlag = false;
     hideArrow = true;
 

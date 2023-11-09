@@ -76,6 +76,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'rtl': return import('../examples/rtl/rtl-examples.module').then(m => m.RtlExamplesModule);
             case 'sidebar': return import('../examples/sidebar/sidebar-examples.module').then(m => m.SidebarExamplesModule);
             case 'sidepanel': return import('../examples/sidepanel/sidepanel-examples.module').then(m => m.SidepanelExamplesModule);
+            case 'signal-button': return import('../examples/signal-button/signal-button-examples.module').then(m => m.SignalButtonExamplesModule);
             case 'slider': return import('../examples/slider/slider-examples.module').then(m => m.SliderExamplesModule);
             case 'small-stage': return import('../examples/small-stage/small-stage-examples.module').then(m => m.SmallExamplesModule);
             case 'spinner': return import('../examples/spinner/spinner-examples.module').then(m => m.SpinnerExamplesModule);

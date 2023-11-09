@@ -1,4 +1,7 @@
 <p class="docs-markdown--p">Popover requires Angular CDK (incl. CSS). Learn <a href="./documentation/overlay/overview#angular-cdk">how to enable Angular CDK styles</a>.</p>
+<h3 id="global-settings" tabindex="-1" class="docs-markdown--h3">Global settings</h3>
+<p class="docs-markdown--p">If you want to use default settings for all popovers, you can use the <code>POPOVER_DEFAULT_OPTIONS</code> injection token. Here global settings for <code>popoverWidth</code> and <code>popoverMaxWidth</code> can be defined.</p>
+<p class="docs-markdown--p">If a certain popover should have another styling, you can overwrite the global default by explicitly defining the property in the template.</p>
 <h3 id="ux-guidelines" tabindex="-1" class="docs-markdown--h3">UX guidelines</h3>
 <p class="docs-markdown--p">If you're building an Expert (internal B2B/B2E) application, you can use both the Popover and the <a href="./documentation/tooltip/overview#ux-guidelines">Tooltip component</a>. If you only need to display a short contextual hint (button hint, info icon, etc.) please consider if the simpler <a href="./documentation/tooltip/overview#ux-guidelines">Tooltip element is better for your use case</a>.</p>
 <h3 id="trigger-types" tabindex="-1" class="docs-markdown--h3">Trigger types</h3>
@@ -31,6 +34,9 @@
 <h3 id="popover-without-arrow" tabindex="-1" class="docs-markdown--h3">Popover without arrow</h3>
 <p class="docs-markdown--p">The popover arrow can be hidden using the <code>nxPopoverHideArrow</code>.</p>
 <div nx-docs-example="popover-without-arrow" config="{}">exampleID: popover-without-arrow</div>
+<h3 id="popover-width-and-maxwidth" tabindex="-1" class="docs-markdown--h3">Popover width and maxWidth</h3>
+<p class="docs-markdown--p">The popover <code>width</code> and <code>max-width</code> can be set with the <code>popoverWidth</code> and <code>popoverMaxWidth</code> inputs. To set the <code>width</code> and <code>max-width</code> globally use the injection token <code>POPOVER_DEFAULT_OPTIONS</code>.</p>
+<div nx-docs-example="popover-width" config="{}">exampleID: popover-width</div>
 <h3 id="custom-lazyloaded-content" tabindex="-1" class="docs-markdown--h3">Custom lazyloaded content</h3>
 <p class="docs-markdown--p">The popovers supports lazyloading when you provide a <code>ng-template</code> with the <code>nxPopoverContent</code> directive attached. The content of the template will only be instantiated once the popover gets opened. After closing the content will be destroyed again.</p>
 <div nx-docs-example="popover-lazyload" config="{}">exampleID: popover-lazyload</div>
@@ -50,7 +56,7 @@
 <p class="docs-markdown--p">The popover triggered by hover will close immediately after the mouse exits the trigger. <code>nxPopoverCloseable</code> can't be used with trigger type hover.</p>
 <p class="docs-markdown--p">Please note that the popover with hover is only suitable for optional information. The information in the popover is not accessible for all use cases (e.g., touch devices) and is therefore to be used with care - if at all.</p>
 <div nx-docs-example="popover-hover" config="{}">exampleID: popover-hover</div>
-<h3 id="global-settings" tabindex="-1" class="docs-markdown--h3">Global Settings</h3>
+<h3 id="global-settings-1" tabindex="-1" class="docs-markdown--h3">Global Settings</h3>
 <p class="docs-markdown--p">If you want to use a custom scroll strategy, you can use the <code>NX_POPOVER_SCROLL_STRATEGY</code> injection token with a factory provider. The <code>Overlay</code> service from <code>@angular/cdk/overlay</code> offers 4 different scroll strategy options:</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>reposition:</strong> allow background scroll, the overlay moves with the background (default).</li>

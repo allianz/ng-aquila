@@ -1,0 +1,70 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">OnInit</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormBuilder</span>, <span class="hljs-title class_">FormGroup</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">EditorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@tinymce/tinymce-angular&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Editor</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;tinymce&#x27;</span>;
+
+<span class="hljs-keyword">const</span> customIcon = [
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;bold&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;bold&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;italic&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;italic&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;underline&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;underline&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;alignleft&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;align-left&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;alignright&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;align-right&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;aligncenter&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;align-center&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;alignjustify&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;align-justify&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;indent&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;indent-more&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;outdent&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;indent-less&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;numlist&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;list-number&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;bullist&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;list-bullet&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;undo&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;undo&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;redo&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;redo&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;hr&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;divider&#x27;</span> },
+    { <span class="hljs-attr">iconName</span>: <span class="hljs-string">&#x27;link&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;link&#x27;</span> },
+];
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Rich Text Editor Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;rich-text-editor-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./rich-text-editor-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./rich-text-editor-example.css&#x27;</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RichTextEditorExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnInit</span> {
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>) {}
+
+    init = {
+        <span class="hljs-attr">promotion</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">branding</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">menubar</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">plugins</span>: <span class="hljs-string">&#x27;table link lists&#x27;</span>,
+        <span class="hljs-attr">toolbar</span>:
+            <span class="hljs-string">&#x27;fontsizeselect bold italic underline forecolor | alignleft alignright aligncenter alignjustify indent outdent | numlist bullist | link  hr table undo redo  | myCustomButton&#x27;</span>,
+        <span class="hljs-attr">content_style</span>: <span class="hljs-string">&#x27;body {font-family: Allianz Neo}&#x27;</span>,
+        <span class="hljs-attr">setup</span>: <span class="hljs-function">(<span class="hljs-params">editor: Editor</span>) =&gt;</span> {
+            editor.<span class="hljs-property">ui</span>.<span class="hljs-property">registry</span>.<span class="hljs-title function_">addButton</span>(<span class="hljs-string">&#x27;myCustomButton&#x27;</span>, {
+                <span class="hljs-attr">text</span>: <span class="hljs-string">&#x27;Custom&#x27;</span>,
+                <span class="hljs-attr">onAction</span>: <span class="hljs-function">() =&gt;</span> {
+                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Custom button clicked&#x27;</span>);
+                },
+            });
+
+            customIcon.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> {
+                editor.<span class="hljs-property">ui</span>.<span class="hljs-property">registry</span>.<span class="hljs-title function_">addIcon</span>(
+                    v.<span class="hljs-property">iconName</span>,
+                    <span class="hljs-string">`&lt;image src=&quot;assets/icons/toolbar/<span class="hljs-subst">${v.image}</span>.svg&quot;/&gt;`</span>,
+                );
+            });
+        },
+    };
+
+    form!: <span class="hljs-title class_">FormGroup</span>;
+
+    editor!: <span class="hljs-title class_">EditorComponent</span>;
+    <span class="hljs-title function_">ngOnInit</span>(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
+            <span class="hljs-attr">content</span>: [
+                <span class="hljs-string">&#x27;&lt;h3&gt;Lorem ipsum&lt;/h3&gt; &lt;p&gt;is simply dummy text of the printing and typesetting industry&amp;nbsp;&lt;/p&gt; &lt;table&gt; &lt;thead&gt; &lt;tr&gt; &lt;th&gt;Element&lt;/th&gt; &lt;th&gt;Symbol&lt;/th&gt; &lt;th&gt;Atomic Number&lt;/th&gt; &lt;th&gt;Melting Point (&amp;deg;C)&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td&gt;Sodium&lt;/td&gt; &lt;td&gt;Na&lt;/td&gt; &lt;td&gt;11&lt;/td&gt; &lt;td&gt;97.8&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Oxygen&lt;/td&gt; &lt;td&gt;O&lt;/td&gt; &lt;td&gt;8&lt;/td&gt; &lt;td&gt;-218.79&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Gold&lt;/td&gt; &lt;td&gt;Au&lt;/td&gt; &lt;td&gt;79&lt;/td&gt; &lt;td&gt;1064&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&#x27;</span>,
+            ],
+        });
+    }
+}

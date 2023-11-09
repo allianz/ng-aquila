@@ -17,6 +17,7 @@ export class FileUploaderIntl extends NxFileUploaderIntl {
     uploadingLabel = 'Téléchargement';
     deleteLabel = 'Supprimer';
     uploadedStateLabel = 'Téléchargé';
+    uploadedListLabel = 'Liste des fichiers téléchargés';
 }
 
 export const myCustomConfig: NxMessageToastConfig = {

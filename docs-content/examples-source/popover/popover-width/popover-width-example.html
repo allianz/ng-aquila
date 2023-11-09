@@ -1,0 +1,42 @@
+<button
+    nxButton="primary small"
+    [nxPopoverTriggerFor]="popoverProperty"
+    nxPopoverDirection="right"
+    nxPopoverTrigger="click"
+    type="button"
+    [nxPopoverWidth]="popoverWidth"
+    [nxPopoverMaxWidth]="popoverMaxWidth"
+    class="nx-margin-right-2xs"
+>
+    Property values
+</button>
+
+<nx-popover #popoverProperty>
+    <span class="nx-popover__text"
+        >This popover has a width of `100%` and a max-width of `100%`.
+        Sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. Sadipscing elitr, sed
+        diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+        erat, sed diam voluptua.
+    </span>
+</nx-popover>
+
+<button
+    nxButton="primary small"
+    [nxPopoverTriggerFor]="popoverDefault"
+    nxPopoverDirection="right"
+    nxPopoverTrigger="click"
+    type="button"
+>
+    Default values
+</button>
+
+<nx-popover #popoverDefault>
+    <span class="nx-popover__text"
+        >This popover has a width of `800px` and a max-width of `700px`.
+        Sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. Sadipscing elitr, sed
+        diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+        erat, sed diam voluptua.</span
+    >
+</nx-popover>
