@@ -1,0 +1,73 @@
+@import '../shared-styles/index';
+
+:host {
+    .nx-signal-button__button {
+        width: v(signal-button-width);
+        height: v(signal-button-height);
+        font-size: v(signal-button-font-size);
+        border-radius: v(signal-button-border-radius);
+        padding: 0;
+        outline: 0;
+        border: none;
+        background: none;
+
+        &.cdk-keyboard-focused,
+        &:focus-visible {
+            box-shadow: v(signal-button-focus-box-shadow);
+        }
+        &[disabled] {
+            opacity: v(signal-button-disabled-opacity);
+        }
+    }
+}
+:host(.context-error) {
+    .nx-signal-button__icon {
+        color: v(signal-button-error-icon-color);
+    }
+    &:hover:not(:active):not([disabled]) {
+        .nx-signal-button__icon {
+            color: v(signal-button-error-hover-icon-color);
+        }
+    }
+    &:active:not([disabled]),
+    .is-active:not([disabled]) {
+        .nx-signal-button__icon {
+            color: v(signal-button-error-active-icon-color);
+        }
+    }
+}
+
+:host(.context-success) {
+    .nx-signal-button__icon {
+        color: v(signal-button-success-icon-color);
+    }
+    &:hover:not(:active):not([disabled]) {
+        .nx-signal-button__icon {
+            color: v(signal-button-success-hover-icon-color);
+        }
+    }
+    &:active:not([disabled]),
+    .is-active:not([disabled]) {
+        .nx-signal-button__icon {
+            color: v(signal-button-success-active-icon-color);
+        }
+    }
+}
+
+:host(.context-warning) {
+    .nx-signal-button__icon {
+        color: v(signal-button-warning-icon-color);
+    }
+
+    &:hover:not(:active):not([disabled]) {
+        .nx-signal-button__icon {
+            color: v(signal-button-warning-hover-icon-color);
+        }
+    }
+    &:active:not([disabled]),
+    .is-active:not([disabled]) {
+        .nx-signal-button__icon {
+            color: v(signal-button-warning-active-icon-color);
+        }
+    }
+}

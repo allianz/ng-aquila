@@ -1,0 +1,19 @@
+<button
+    type="button"
+    class="nx-signal-button__button"
+    [nxPopoverTriggerFor]="signalButtonPopover"
+    [nxPopoverDirection]="popoverDirection"
+    [nxPopoverScrollStrategy]="scrollStrategy"
+    (nxPopoverShowChange)="_onActiveChange($event)"
+    [class.is-active]="active"
+    [attr.aria-label]="ariaLabel"
+    [attr.aria-labelledby]="ariaLabelledby"
+    nxPopoverTrigger="click"
+    [disabled]="disabled"
+>
+    <nx-icon *ngIf="_iconName" class="nx-signal-button__icon" [name]="_iconName" size="s" aria-hidden="true"> </nx-icon>
+</button>
+
+<nx-popover #signalButtonPopover>
+    <ng-content></ng-content>
+</nx-popover>
