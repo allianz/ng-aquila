@@ -1,15 +1,15 @@
 <p>
-    <nx-icon
-        #clickTriggerIcon
-        aria-label="trigger by click"
-        name="info-circle-o"
-        size="s"
+    <button
+        nxIconButton="tertiary small"
         [nxPopoverTriggerFor]="popoverClick"
         nxPopoverTrigger="click"
-        tabindex="0"
-        role="button"
+        type="button"
+        #clickTriggerIcon
+        aria-label="trigger by click"
+        class="nx-popover__button nx-margin-right-3xs"
     >
-    </nx-icon>
+        <nx-icon name="info-circle-o" size="s"> </nx-icon>
+    </button>
     Triggered by click
 </p>
 <nx-popover #popoverClick>
@@ -17,10 +17,10 @@
 </nx-popover>
 
 <p>
-    <nx-icon
+    <button
+        nxIconButton="tertiary small"
+        type="button"
         #manualTriggerIcon
-        name="info-circle-o"
-        size="s"
         #popoverTrigger="nxPopoverTrigger"
         [nxPopoverTriggerFor]="popoverManual"
         [(nxPopoverShow)]="popoverManualOpenFlag"
@@ -28,11 +28,11 @@
         (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
         (keydown)="handleKeydown($event)"
         nxPopoverTrigger="manual"
-        tabindex="0"
         aria-label="trigger manually"
-        role="button"
+        class="nx-popover__button nx-margin-right-3xs"
     >
-    </nx-icon>
+        <nx-icon name="info-circle-o" size="s"> </nx-icon>
+    </button>
     Triggered manually
 </p>
 
