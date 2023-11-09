@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [16.11.0](https://github.com/allianz/ng-aquila/compare/v16.10.0...v16.11.0) (2023-11-09)
+
+
+### Bug Fixes
+
+* **context-menu:** checked icon position ([24c0e94](https://github.com/allianz/ng-aquila/commit/24c0e943057403e97f3b277b289d45ba3b50c640))
+* **context-menu:** revert icon size change ([ca341d4](https://github.com/allianz/ng-aquila/commit/ca341d4c89ca684f0e0ef2b1d991148cba6c0a40))
+* **file-uploader:** add aria label for file list ([8254c00](https://github.com/allianz/ng-aquila/commit/8254c00210e6f6760d637c677f00cfeca76ddfd0))
+* **formfield:** dont overwrite the formfield-outline-label-font-weight token ([5dcd3c2](https://github.com/allianz/ng-aquila/commit/5dcd3c25f3f201e15c90163641f80d2b95211e98))
+* **tabs:** fully scroll button into view ([51656a0](https://github.com/allianz/ng-aquila/commit/51656a062eb9f75757b6d3456bdb3a9ee6e2bc0d))
+
+
+### Features
+
+* **formfield:** add new active border width token ([6d08cd6](https://github.com/allianz/ng-aquila/commit/6d08cd6a5bc58bb6afc380c8ff982b92b451a751))
+* **popover:** popover width and maxwidth ([7813b54](https://github.com/allianz/ng-aquila/commit/7813b5446e7d1b8e2287cb9ab466fb684393147b))
+* **signal-button:** signal button with popover ([9abaec1](https://github.com/allianz/ng-aquila/commit/9abaec177b74a0a304c579ffd35c9befce1286c8))
+
+
+
 # [16.10.0](https://github.com/allianz/ng-aquila/compare/v16.9.0...v16.10.0) (2023-10-23)
 
 ### File Uploader UX updates
