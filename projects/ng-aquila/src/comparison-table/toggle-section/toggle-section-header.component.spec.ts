@@ -143,7 +143,7 @@ describe('ToggleSectionHeaderComponent', () => {
             tick(THROTTLE_TIME);
             expect(headerElements[0].attributes.role).toBe('row');
             const wrapper = headerElements[0].nativeElement.querySelector('.nx-comparison-table-toggle-section__header-wrapper') as HTMLElement;
-            expect(wrapper.getAttribute('role')).toBe('columnheader');
+            expect(wrapper.getAttribute('role')).toBe('rowheader');
             expect(wrapper.getAttribute('aria-colspan')).toBe('2');
         }));
 
