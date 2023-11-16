@@ -1090,15 +1090,22 @@ export class NxDropdownComponent
             return;
         }
 
-        const isArrowKey = keyCode === DOWN_ARROW || keyCode === UP_ARROW;
+        const isUpDown = keyCode === DOWN_ARROW || keyCode === UP_ARROW;
+        const isLeftRight = keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW;
+        const isHomeEnd = keyCode === HOME || keyCode === END;
         const manager = this._keyManager;
 
         const allHidden = this.dropdownItems.map(option => option._hidden).every(option => Boolean(option));
 
-        if (keyCode === HOME || keyCode === END) {
+        // navigate filter input field
+        if ((isLeftRight || isHomeEnd) && this.showFilter) {
+            return;
+        }
+
+        if (isHomeEnd) {
             event.preventDefault();
             keyCode === HOME ? manager.setFirstItemActive() : manager.setLastItemActive();
-        } else if (isArrowKey && event.altKey) {
+        } else if (isUpDown && event.altKey) {
             // Close the select on ALT + arrow key to match the native <select>
             event.preventDefault();
             this.closePanel();
@@ -1119,7 +1126,7 @@ export class NxDropdownComponent
             const previouslyFocusedIndex = manager.activeItemIndex;
             manager.onKeydown(event);
 
-            if (this.isMultiSelect && isArrowKey && event.shiftKey && manager.activeItem && manager.activeItemIndex !== previouslyFocusedIndex) {
+            if (this.isMultiSelect && isUpDown && event.shiftKey && manager.activeItem && manager.activeItemIndex !== previouslyFocusedIndex) {
                 manager.activeItem._selectViaInteraction();
             }
         }

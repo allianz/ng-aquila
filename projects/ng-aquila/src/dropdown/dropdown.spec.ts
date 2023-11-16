@@ -1,4 +1,4 @@
-import { B, D, DOWN_ARROW, ENTER, SPACE, TAB, UP_ARROW, V } from '@angular/cdk/keycodes';
+import { B, D, DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE, TAB, UP_ARROW, V } from '@angular/cdk/keycodes';
 import { MutationObserverFactory } from '@angular/cdk/observers';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
@@ -870,6 +870,80 @@ describe('NxDropdownComponent', () => {
             tick(300);
             expectDropdownOpen();
             expect(getVisibleItems()).toHaveSize(1);
+        }));
+
+        it('should not move item focus on LEFT and RIGHT arrow keys', fakeAsync(() => {
+            createTestComponent(FilterDropdownComponent);
+            openDropdownByClick();
+            const filterInput = getFilterInput();
+            dispatchKeyboardEvent(getDropdown()!, 'keydown', RIGHT_ARROW);
+
+            fixture.detectChanges();
+            flush();
+            tick(300);
+            expectItemsHighlighted([0]);
+
+            dispatchKeyboardEvent(getDropdown()!, 'keydown', LEFT_ARROW);
+
+            fixture.detectChanges();
+            flush();
+            tick(300);
+            expectItemsHighlighted([0]);
+
+            filterInput.value = 'E';
+            dispatchFakeEvent(filterInput, 'input');
+            fixture.detectChanges();
+            flush();
+            tick(300);
+            dispatchKeyboardEvent(getDropdown()!, 'keydown', RIGHT_ARROW);
+
+            fixture.detectChanges();
+            flush();
+            tick(300);
+            expectItemsHighlighted([0]);
+
+            dispatchKeyboardEvent(getDropdown()!, 'keydown', LEFT_ARROW);
+
+            fixture.detectChanges();
+            flush();
+            tick(300);
+            expectItemsHighlighted([0]);
+        }));
+
+        it('should not move item focus with HOME AND END keys', fakeAsync(() => {
+            createTestComponent(FilterDropdownComponent);
+            openDropdownByClick();
+            const filterInput = getFilterInput();
+            dispatchKeyboardEvent(getDropdown()!, 'keydown', HOME);
+            fixture.detectChanges();
+            flush();
+            tick(300);
+            expectItemsHighlighted([0]);
+
+            dispatchKeyboardEvent(getDropdown()!, 'keydown', END);
+            // dispatchFakeEvent(filterInput, 'input');
+            fixture.detectChanges();
+            flush();
+            tick(300);
+            expectItemsHighlighted([0]);
+
+            filterInput.value = 'E';
+            dispatchFakeEvent(filterInput, 'input');
+            dispatchKeyboardEvent(getDropdown()!, 'keydown', HOME);
+            fixture.detectChanges();
+            flush();
+            tick(300);
+            dispatchKeyboardEvent(getDropdown()!, 'keydown', HOME);
+            fixture.detectChanges();
+            flush();
+            tick(300);
+            expectItemsHighlighted([0]);
+
+            dispatchKeyboardEvent(getDropdown()!, 'keydown', END);
+            fixture.detectChanges();
+            flush();
+            tick(300);
+            expectItemsHighlighted([0]);
         }));
     });
 
