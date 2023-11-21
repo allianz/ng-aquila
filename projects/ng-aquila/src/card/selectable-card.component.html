@@ -1,6 +1,6 @@
 <input
     #input
-    type="checkbox"
+    [type]="inputType"
     [checked]="checked"
     [value]="value || null"
     [attr.disabled]="disabled || null"
@@ -15,15 +15,12 @@
     [attr.aria-invalid]="_errorState"
     [attr.aria-describedby]="_errorListIds || null"
 />
-
 <label [attr.for]="id">
     <div class="nx-card-highlight" *ngIf="highlight">
         <ng-content select="[nxHighlightHeader]"></ng-content>
     </div>
     <div class="nx-card-inner">
-        <span class="checkbox" *ngIf="appearance === 'default'; else expert">
-            <nx-icon *ngIf="checked" name="check" aria-hidden="true"></nx-icon>
-        </span>
+        <ng-container *ngTemplateOutlet="indicatorElement"></ng-container>
 
         <div class="content">
             <ng-content select="nx-card-header"></ng-content>
@@ -35,6 +32,9 @@
 
 <ng-content *ngIf="_errorState" select="nx-error"></ng-content>
 
-<ng-template #expert>
-    <nx-icon name="check-circle" size="s" aria-hidden="true" class="checkmark"> </nx-icon>
+<ng-template #indicatorElement>
+    <span [class]="['indicator-element', inputType]">
+        <nx-icon *ngIf="checked && inputType === 'checkbox'" name="check" aria-hidden="true"></nx-icon>
+        <div *ngIf="checked && inputType === 'radio'" class="check-dot"></div>
+    </span>
 </ng-template>

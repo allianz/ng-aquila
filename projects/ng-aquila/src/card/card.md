@@ -21,9 +21,16 @@ With `highlight` you can allow a highlight header to be shown on the card.
 
 ### Selectable Card
 
-#### Basic
+#### Checkbox behavior
 
 <!-- example(selectable-card-basic) -->
+
+#### Radio button behavior
+
+in case you want selectable cards with radio selection,
+you can use `nx-selectable-card-group` to group the cards, and they will automatically function as radio buttons.
+
+<!-- example(selectable-card-radio) -->
 
 #### Product Card
 
@@ -51,7 +58,9 @@ With `highlight` you can allow a highlight header to be shown on the card.
 
 ### Expert: Appearance
 
-With `appearance` you can change the styling of the card to expert.
+With `appearance` you can change the styling of the card to expert. Using the `NxExpertModule` will automatically set that option and you don't have to set it in the template manually.
+Works for both checkbox and radio style cards.
 
 <!-- example(selectable-card-expert) -->
 </div>
+

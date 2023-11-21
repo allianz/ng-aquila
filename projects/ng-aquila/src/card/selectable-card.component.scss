@@ -18,39 +18,8 @@
     display: block;
 }
 
-.checkmark {
-    float: right;
-    position: relative;
-    color: v(selectable-card-icon-color);
-
-    :host-context([dir='rtl']) & {
-        float: left;
-    }
-
-    &::before,
-    ::ng-deep svg {
-        display: none;
-        z-index: 1;
-    }
-
-    &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 22px;
-        height: 22px;
-        border: 1px solid v(selectable-card-icon-placeholder-border-color);
-        border-radius: 50%;
-    }
-}
-
-.checkbox {
+.indicator-element {
     float: left;
-    background-color: v(checkbox-background-color);
-    border-style: solid;
-    border-width: v(checkbox-border-width);
-    border-color: v(checkbox-border-color);
-    border-radius: v(checkbox-border-radius);
     color: v(checkbox-icon-color);
     font-size: v(checkbox-icon-size);
     height: v(checkbox-control-size);
@@ -64,6 +33,29 @@
     :host-context([dir='rtl']) & {
         float: right;
     }
+}
+
+.checkbox {
+    background-color: v(checkbox-background-color);
+    border-style: solid;
+    border-width: v(checkbox-border-width);
+    border-color: v(checkbox-border-color);
+    border-radius: v(checkbox-border-radius);
+}
+
+.radio {
+    border-style: solid;
+    border-width: nx-border-size(m);
+    border-color: v(radio-button-circle-color);
+    border-radius: 50%;
+}
+
+.check-dot {
+    width: v(radio-button-dot-size);
+    height: v(radio-button-dot-size);
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    background-color: v(radio-button-selected-dot-color);
 }
 
 :host(:not(.is-expert)) {
@@ -89,15 +81,6 @@
 :host(.is-expert) {
     label:hover {
         background: v(selectable-card-expert-background-hover-color);
-
-        .checkmark {
-            color: v(selectable-card-unchecked-icon-hover-color);
-
-            &::before,
-            ::ng-deep svg {
-                display: block;
-            }
-        }
     }
 
     input:checked + label {
@@ -105,6 +88,15 @@
 
         &:hover {
             background: v(selectable-card-expert-background-selected-hover-color);
+        }
+    }
+
+    .indicator-element {
+        float: right;
+        position: relative;
+
+        :host-context([dir='rtl']) & {
+            float: left;
         }
     }
 }
@@ -120,23 +112,16 @@ input {
         background: v(selectable-card-background-selected-color);
         border-color: v(selectable-card-border-selected-color);
 
-        .checkmark {
-            &::before,
-            ::ng-deep svg {
-                display: block;
-            }
-        }
-
         &:hover {
             background: v(selectable-card-background-selected-hover-color);
-
-            .checkmark {
-                color: v(selectable-card-icon-color);
-            }
         }
 
         .checkbox {
             background-color: v(checkbox-selected-background-color);
+            border-color: v(checkbox-selected-border-color);
+        }
+
+        .radio {
             border-color: v(checkbox-selected-border-color);
         }
     }
@@ -189,40 +174,25 @@ label {
         cursor: not-allowed;
     }
 
-    .checkmark {
-        opacity: 40%;
-    }
-
     .nx-card-highlight {
         opacity: 40%;
     }
 
     label:hover {
         background: v(selectable-card-background-disabled-color);
-
-        .checkmark {
-            &::before,
-            ::ng-deep svg {
-                display: none;
-            }
-        }
     }
 
     input:checked + label {
         background: v(selectable-card-background-disabled-selected-color);
         border-color: v(selectable-card-border-disabled-selected-color);
 
-        .checkbox {
-            background-color: v(checkbox-disabled-selected-background-color);
+        .indicator-element {
             border-color: v(checkbox-disabled-border-color);
-            color: v(checkbox-disabled-icon-color);
         }
 
-        .checkmark {
-            &::before,
-            ::ng-deep svg {
-                display: block;
-            }
+        .checkbox {
+            background-color: v(checkbox-disabled-selected-background-color);
+            color: v(checkbox-disabled-icon-color);
         }
     }
 
@@ -236,6 +206,17 @@ label {
         background-color: v(checkbox-disabled-background-color);
         border-color: v(checkbox-disabled-border-color);
         color: v(checkbox-disabled-icon-color);
+    }
+
+    .radio {
+        cursor: not-allowed;
+        color: v(radio-button-disabled-text-color);
+        border-color: v(radio-button-disabled-border-color);
+    }
+
+    .check-dot {
+        border-color: v(radio-button-disabled-border-color);
+        background-color: v(radio-button-disabled-selected-dot-color);
     }
 }
 
@@ -265,10 +246,6 @@ input.cdk-keyboard-focused + label {
             border-width: nx-border-size(l);
             border-color: highlight;
 
-            .checkmark {
-                color: CanvasText;
-            }
-
             .nx-card-inner {
                 padding: nx-spacer(s) - nx-border-size(l) + nx-border-size(xs);
             }
@@ -280,10 +257,6 @@ input.cdk-keyboard-focused + label {
         input:checked + label {
             border-color: GrayText;
             color: GrayText;
-
-            .checkmark {
-                color: GrayText;
-            }
         }
     }
 }

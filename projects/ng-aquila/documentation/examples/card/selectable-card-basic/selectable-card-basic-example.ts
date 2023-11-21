@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
- * @title Selectable cards basic example
+ * @title Selectable cards checkbox example
  */
 @Component({
     selector: 'selectable-card-basic-example',

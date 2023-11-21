@@ -13,10 +13,12 @@ import { SelectableCardBasicExampleComponent } from './selectable-card-basic/sel
 import { SelectableCardDynamicExampleComponent } from './selectable-card-dynamic/selectable-card-dynamic-example';
 import { SelectableCardExpertExampleComponent } from './selectable-card-expert/selectable-card-expert-example';
 import { SelectableCardProductExampleComponent } from './selectable-card-product/selectable-card-product-example';
+import { SelectableCardRadioExampleComponent } from './selectable-card-radio/selectable-card-radio-example';
 import { SelectableCardReactiveExampleComponent } from './selectable-card-reactive/selectable-card-reactive-example';
 import { SelectableCardStatesExampleComponent } from './selectable-card-states/selectable-card-states-example';
 
 const EXAMPLES = [
+    SelectableCardRadioExampleComponent,
     CardExampleComponent,
     HighlightCardExampleComponent,
     HighlightSelectableCardExampleComponent,
@@ -43,6 +45,7 @@ const EXAMPLES = [
 export class CardExamplesModule {
     static components() {
         return {
+            'selectable-card-radio': SelectableCardRadioExampleComponent,
             card: CardExampleComponent,
             'highlight-card': HighlightCardExampleComponent,
             'selectable-card-basic': SelectableCardBasicExampleComponent,
