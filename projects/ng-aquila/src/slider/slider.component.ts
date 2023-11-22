@@ -7,6 +7,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ContentChildren,
     ElementRef,
     EventEmitter,
     forwardRef,
@@ -15,12 +16,15 @@ import {
     OnDestroy,
     Optional,
     Output,
+    QueryList,
     ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { clamp } from '@aposin/ng-aquila/utils';
 import { Decimal } from 'decimal.js';
 import { fromEvent, Subscription } from 'rxjs';
+
+import { NxSliderAppendixDirective } from './appendix.directive';
 
 interface TickItem {
     gapSize: number;
@@ -77,6 +81,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     ticks: TickItem[] = [];
 
     @ViewChild('handle', { static: true }) private _handleElement!: ElementRef;
+    @ContentChildren(NxSliderAppendixDirective) _appendixChildren!: QueryList<NxSliderAppendixDirective>;
 
     _labelPosition: string = DEFAULT_LABEL_POSITION;
 

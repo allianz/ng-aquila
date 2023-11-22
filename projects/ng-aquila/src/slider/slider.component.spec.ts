@@ -64,6 +64,7 @@ describe('NxSliderComponent', () => {
                 NgModelSlider,
                 ReactiveFormsSlider,
                 BasicSliderOnPush,
+                AppendixSlider,
             ],
         }).compileComponents();
     }));
@@ -440,6 +441,13 @@ describe('NxSliderComponent', () => {
         });
     });
 
+    describe('show appendix', () => {
+        it('display a given appendix', () => {
+            createTestComponent(AppendixSlider);
+            expect(fixture.nativeElement.querySelector('.nx-slider__appendix')).toBeTruthy();
+        });
+    });
+
     describe('programmatic change', () => {
         it('should update after tabindex change', () => {
             createTestComponent(BasicSliderOnPush);
@@ -732,3 +740,15 @@ class ReactiveFormsSlider extends SliderTest {
         slide: new FormControl(10),
     });
 }
+
+@Component({
+    template: `
+        <div class="slider-container">
+            <nx-slider [min]="-50" [max]="50" [step]="1">
+                <span nxSliderAppendix></span>
+            </nx-slider>
+        </div>
+    `,
+    styles: [styles],
+})
+class AppendixSlider extends SliderTest {}

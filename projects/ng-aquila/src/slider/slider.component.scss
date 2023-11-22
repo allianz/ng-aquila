@@ -20,14 +20,17 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 }
 
 .nx-slider__wrapper {
-    width: 100%;
+    display: flex;
     padding-top: $wrapper-padding-top;
-    padding-left: 0;
-    padding-right: 0;
+    padding-bottom: 36px;
+}
 
-    &.nx-slider__has-ticks {
-        padding-bottom: $wrapper-padding-bottom;
-    }
+.nx-slider__slide {
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    display: flex;
+    align-items: center;
 }
 
 .nx-slider__background {
@@ -38,10 +41,11 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
     border-radius: nx-border-radius(xs);
     white-space: nowrap;
     cursor: pointer;
+    width: 100%;
 }
 
 .nx-slider__tick-container {
-    margin-top: 9px;
+    margin-top: 13px;
     display: flex;
     border-left: 1px solid v(slider-tick-color);
     border-right: 1px solid v(slider-tick-color);
@@ -160,6 +164,10 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
     justify-content: space-between;
     @include type-style(slider-value-label);
     color: v(slider-value-label-color);
+
+    .nx-slider__has-ticks & {
+        margin-top: 16px;
+    }
 }
 
 .nx-slider__max-value-label {
@@ -289,5 +297,22 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
         .nx-slider__filler {
             background-color: GrayText;
         }
+    }
+}
+
+.nx-slider__appendix {
+    align-items: center;
+    white-space: nowrap;
+    margin-left: nx-spacer(s);
+    display: flex;
+    height: 0;
+
+    // ensure auto sized icons get 24px and don't inherit 20px from the base font size of this component
+    ::ng-deep nx-icon.nx-icon--auto {
+        font-size: v(slider-icon-size);
+    }
+
+    ::ng-deep nx-icon {
+        display: block;
     }
 }

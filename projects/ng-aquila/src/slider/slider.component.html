@@ -1,42 +1,46 @@
 <label class="nx-slider__label" [id]="id + '-label'" [attr.for]="id + '-handle'" (click)="_focusHandleElement()">{{ label }}</label>
 
-<div class="nx-slider__wrapper" (click)="_sliderClick($event)" [class.nx-slider__has-ticks]="!tickInterval">
-    <span class="nx-slider__background">
-        <span class="nx-slider__filler" [style.width.%]="_percentageValue">
-            <div
-                class="nx-slider__handle"
-                [id]="id + '-handle'"
-                [attr.tabindex]="tabindex"
-                [attr.aria-labelledby]="id + '-label'"
-                role="slider"
-                [attr.aria-valuemin]="_formatLabelMin()"
-                [attr.aria-valuemax]="_formatLabelMax()"
-                [attr.aria-valuetext]="_formatValue(value)"
-                [attr.aria-valuenow]="_formatValue(value)"
-                (mousedown)="_dragStart()"
-                (touchstart)="_dragStart()"
-                (selectstart)="_selectStart()"
-                #handle
-            >
-                <ng-container *ngIf="thumbLabel">
-                    <span [style.transform]="_labelPosition" class="nx-slider__value">{{ _formatValue(value) }} </span>
-                    <div class="nx-slider__arrow"></div>
-                </ng-container>
+<div class="nx-slider__wrapper" [class.nx-slider__has-ticks]="!tickInterval">
+    <div class="nx-slider__slide" (click)="_sliderClick($event)">
+        <div class="nx-slider__background">
+            <div class="nx-slider__filler" [style.width.%]="_percentageValue">
+                <div
+                    class="nx-slider__handle"
+                    [id]="id + '-handle'"
+                    [attr.tabindex]="tabindex"
+                    [attr.aria-labelledby]="id + '-label'"
+                    role="slider"
+                    [attr.aria-valuemin]="_formatLabelMin()"
+                    [attr.aria-valuemax]="_formatLabelMax()"
+                    [attr.aria-valuetext]="_formatValue(value)"
+                    [attr.aria-valuenow]="_formatValue(value)"
+                    (mousedown)="_dragStart()"
+                    (touchstart)="_dragStart()"
+                    (selectstart)="_selectStart()"
+                    #handle
+                >
+                    <ng-container *ngIf="thumbLabel">
+                        <span [style.transform]="_labelPosition" class="nx-slider__value">{{ _formatValue(value) }} </span>
+                        <div class="nx-slider__arrow"></div>
+                    </ng-container>
+                </div>
             </div>
-        </span>
-    </span>
-    <div *ngIf="tickInterval" class="nx-slider__tick-container">
-        <div
-            *ngFor="let t of ticks"
-            class="nx-slider__tick"
-            [class.nx-slider__tick-primary]="t.isLongTick"
-            [class.nx-slider__tick-hidden]="t.hideTick"
-            [ngStyle]="{ width: t.gapSize + '%' }"
-        ></div>
+            <div *ngIf="tickInterval" class="nx-slider__tick-container">
+                <div
+                    *ngFor="let t of ticks"
+                    class="nx-slider__tick"
+                    [class.nx-slider__tick-primary]="t.isLongTick"
+                    [class.nx-slider__tick-hidden]="t.hideTick"
+                    [ngStyle]="{ width: t.gapSize + '%' }"
+                ></div>
+            </div>
+            <div *ngIf="!hideLabels" class="nx-slider__label-container">
+                <span class="nx-slider__value-label">{{ _formatLabelLeft() }}</span>
+                <span class="nx-slider__value-label">{{ _formatLabelRight() }}</span>
+            </div>
+        </div>
     </div>
-</div>
-
-<div *ngIf="!hideLabels" class="nx-slider__label-container">
-    <span class="nx-slider__value-label">{{ _formatLabelLeft() }}</span>
-    <span class="nx-slider__value-label">{{ _formatLabelRight() }}</span>
+    <div class="nx-slider__appendix" *ngIf="_appendixChildren.length">
+        <ng-content select="[nxSliderAppendix]"></ng-content>
+    </div>
 </div>

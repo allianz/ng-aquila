@@ -15,6 +15,12 @@ For better decimal/floating point handling this module is using the 3rd party li
 
 <!-- example(slider-basic) -->
 
+### Appendix
+
+Provide additional information like info icons aligned with the slider line.
+
+<!-- example(slider-appendix) -->
+
 ### Default values
 
 If no input is provided, the default values of `min=0`, `max=100` and `step=1` apply. This is also the case if the provided inputs are invalid, for example if the minimum value is higher than the maximum value.
