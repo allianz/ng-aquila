@@ -101,7 +101,7 @@ describe('PhoneInputComponent', () => {
         expect(fixture.nativeElement.querySelector('.readonly-input').value).toBe('+49123456');
     }));
 
-    it('should reflect readonly state when setReadonly changed', fakeAsync(() => {
+    it('should reflect readonly state when setReadonly changed', () => {
         createTestComponent(DefaultPhoneInput);
 
         const container = fixture.debugElement.query(By.css('nx-formfield'))!.nativeElement;
@@ -109,11 +109,13 @@ describe('PhoneInputComponent', () => {
         phoneInputInstance.setReadonly(true);
         fixture.detectChanges();
         expect(container).toHaveClass('is-readonly');
+        expect(container.querySelector('.readonly-input')).toBeTruthy();
 
         phoneInputInstance.setReadonly(false);
         fixture.detectChanges();
         expect(container).not.toHaveClass('is-readonly');
-    }));
+        expect(container.querySelector('.readonly-input')).toBeFalsy();
+    });
 
     it('should disable from input', () => {
         createTestComponent(ConfigurablePhoneInput);

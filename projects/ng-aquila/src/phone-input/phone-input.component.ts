@@ -109,6 +109,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     /** set readonly state */
     setReadonly(value: boolean) {
         this.readonly = value;
+        this._cdr.markForCheck();
     }
 
     private _initialCountryCode = 'DE';
