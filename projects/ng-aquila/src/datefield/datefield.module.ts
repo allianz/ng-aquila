@@ -9,7 +9,6 @@ import { NxDatefieldDirective } from './datefield.directive';
 import { NxCalendarComponent } from './datepicker/calendar';
 import { NxCalendarBodyComponent } from './datepicker/calendar-body';
 import { NX_DATEPICKER_SCROLL_STRATEGY_PROVIDER, NxDatepickerComponent, NxDatepickerContentComponent } from './datepicker/datepicker.component';
-import { NxDatepickerIntl } from './datepicker/datepicker-intl';
 import { NxDatepickerToggleComponent, NxDatepickerToggleIconComponent } from './datepicker/datepicker-toggle';
 import { NxMonthViewComponent } from './datepicker/month-view';
 import { NxMultiYearViewComponent } from './datepicker/multi-year-view';
@@ -20,7 +19,6 @@ import { NxYearViewComponent } from './datepicker/year-view';
     providers: [
         // Provide our NX_DATE_LOCALE to determine the current language
         NX_DATE_LOCALE_PROVIDER,
-        NxDatepickerIntl,
         NX_DATEPICKER_SCROLL_STRATEGY_PROVIDER,
     ],
     declarations: [
