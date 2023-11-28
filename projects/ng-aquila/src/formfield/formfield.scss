@@ -217,10 +217,6 @@ $margin-to-message: nx-spacer(3xs);
 .nx-formfield.is-focused:not(.nx-formfield--negative):not(.has-error) {
     color: v(formfield-active-color);
 
-    .nx-formfield__input-container {
-        border-bottom-color: v(formfield-active-border-color);
-    }
-
     // overwrite with white to maintain contrast
     &.nx-formfield--negative {
         color: v(negative);
@@ -229,7 +225,34 @@ $margin-to-message: nx-spacer(3xs);
 
 .nx-formfield.is-focused:not(.has-outline) {
     .nx-formfield__input-container {
-        border-bottom-width: v(formfield-active-border-width);
+        border-bottom-color: v(formfield-active-border-bottom-color);
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: calc(v(formfield-control-height) - v(formfield-border-width));
+            border-radius: v(formfield-active-border-radius);
+            height: v(formfield-active-border-width);
+            background-color: v(formfield-active-border-color);
+            width: 100%;
+        }
+    }
+
+    &.nx-formfield--negative {
+        .nx-formfield__input-container {
+            &:after {
+                background-color: v(negative);
+            }
+        }
+    }
+
+    &.has-error {
+        .nx-formfield__input-container {
+            &:after {
+                background-color: v(danger);
+            }
+        }
     }
 }
 
@@ -470,8 +493,10 @@ $margin-to-message: nx-spacer(3xs);
         }
     }
 
-    .nx-formfield__input-container {
-        border-bottom-color: v(danger);
+    &:not(.is-focused) {
+        .nx-formfield__input-container {
+            border-bottom-color: v(danger);
+        }
     }
 
     &.is-floating {
