@@ -57,6 +57,10 @@
 :host(.context-warning) {
     .nx-signal-button__icon {
         color: v(signal-button-warning-icon-color);
+        background: v(signal-button-warning-icon-background-color);
+        border-radius: 50%;
+        width: 80%;
+        height: 80%;
     }
 
     &:hover:not(:active):not([disabled]) {
@@ -64,6 +68,7 @@
             color: v(signal-button-warning-hover-icon-color);
         }
     }
+
     &:active:not([disabled]),
     .is-active:not([disabled]) {
         .nx-signal-button__icon {

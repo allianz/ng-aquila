@@ -8,7 +8,7 @@ export type NxSignalButtonContext = 'success' | 'warning' | 'error';
 const ICONS: { [k: string]: string } = {
     error: 'exclamation-triangle',
     success: 'check-circle',
-    warning: 'exclamation-circle-warning',
+    warning: 'exclamation-circle',
 };
 
 @Component({
