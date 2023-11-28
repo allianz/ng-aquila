@@ -3,7 +3,7 @@
 @import '../shared-styles/index';
 
 @mixin make-grid-columns-bem-style($columns: $grid-columns, $gutters: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
-    :host.nx-grid__column {
+    &.nx-grid__column {
         position: relative;
         width: 100%;
         min-height: 1px; // Prevent columns from collapsing when empty
@@ -15,19 +15,19 @@
         $infix: breakpoint-infix($breakpoint, $breakpoints);
 
         @include media-breakpoint-up($breakpoint, $breakpoints) {
-            :host(.nx-grid__column#{$infix}) {
+            &.nx-grid__column#{$infix} {
                 flex-basis: 0;
                 flex-grow: 1;
                 max-width: 100%;
             }
 
-            :host(.nx-grid__column#{$infix}-fit) {
+            &.nx-grid__column#{$infix}-fit {
                 flex: 0 0 auto;
                 width: auto;
             }
 
             @for $i from 1 through $columns {
-                :host(.nx-grid__column#{$infix}-#{$i}) {
+                &.nx-grid__column#{$infix}-#{$i} {
                     @include make-col($i, $columns);
                 }
             }
@@ -36,7 +36,7 @@
             @for $i from 0 through ($columns - 1) {
                 @if not($infix == '' and $i == 0) {
                     // Avoid emitting useless .offset-xs-0
-                    :host(.nx-grid--offset#{$infix}-#{$i}) {
+                    &.nx-grid--offset#{$infix}-#{$i} {
                         @include make-col-modifier(offset, $i, $columns);
                     }
                 }
@@ -45,7 +45,50 @@
     }
 }
 
-@mixin make-container($gutters: $grid-gutter-widths) {
+@mixin make-grid-columns-bem-style-by-container-query($columns: $grid-columns, $gutters: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
+    &.nx-grid__column {
+        position: relative;
+        width: 100%;
+        min-height: 1px; // Prevent columns from collapsing when empty
+
+        @include make-gutters-by-container-query($gutters);
+    }
+
+    @each $breakpoint in map-keys($breakpoints) {
+        $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+        @include container-breakpoint-up($breakpoint, $breakpoints) {
+            &.nx-grid__column#{$infix} {
+                flex-basis: 0;
+                flex-grow: 1;
+                max-width: 100%;
+            }
+
+            &.nx-grid__column#{$infix}-fit {
+                flex: 0 0 auto;
+                width: auto;
+            }
+
+            @for $i from 1 through $columns {
+                &.nx-grid__column#{$infix}-#{$i} {
+                    @include make-col($i, $columns);
+                }
+            }
+
+            // `$columns - 1` because offsetting by the width of an entire row isn't possible
+            @for $i from 0 through ($columns - 1) {
+                @if not($infix == '' and $i == 0) {
+                    // Avoid emitting useless .offset-xs-0
+                    &.nx-grid--offset#{$infix}-#{$i} {
+                        @include make-col-modifier(offset, $i, $columns);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin make-container-by-media-query($gutters: $grid-gutter-widths) {
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -70,6 +113,15 @@
         }
     }
 }
+@mixin make-gutters-by-container-query($gutters: $grid-gutter-widths) {
+    @each $breakpoint in map-keys($gutters) {
+        @include container-breakpoint-up($breakpoint) {
+            $gutter: map-get($gutters, $breakpoint);
+            padding-right: ($gutter * 0.5);
+            padding-left: ($gutter * 0.5);
+        }
+    }
+}
 
 @mixin make-row($gutters: $grid-gutter-widths) {
     display: flex;
@@ -77,6 +129,20 @@
 
     @each $breakpoint in map-keys($gutters) {
         @include media-breakpoint-up($breakpoint) {
+            $gutter: map-get($gutters, $breakpoint);
+            margin-right: math.div($gutter, -2);
+            margin-left: math.div($gutter, -2);
+            position: relative;
+        }
+    }
+}
+
+@mixin make-row-by-container-query($gutters: $grid-gutter-widths) {
+    display: flex;
+    flex-wrap: wrap;
+
+    @each $breakpoint in map-keys($gutters) {
+        @include container-breakpoint-up($breakpoint) {
             $gutter: map-get($gutters, $breakpoint);
             margin-right: math.div($gutter, -2);
             margin-left: math.div($gutter, -2);
@@ -103,6 +169,7 @@
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
+    container-name: size-#{$size}-columns-#{$columns};
     flex: 0 0 percentage(math.div($size, $columns));
     // width: percentage($size / $columns);
     // Add a `max-width` to ensure content within each column does not blow out
@@ -153,6 +220,88 @@
 @mixin make-row-variations {
     @each $breakpoint in map-keys($grid-breakpoints) {
         @include media-breakpoint-up($breakpoint) {
+            $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+            &.nx-flex#{$infix}-row {
+                flex-direction: row !important;
+            }
+            &.nx-flex#{$infix}-column {
+                flex-direction: column !important;
+            }
+            &.nx-flex#{$infix}-row-reverse {
+                flex-direction: row-reverse !important;
+            }
+            &.nx-flex#{$infix}-column-reverse {
+                flex-direction: column-reverse !important;
+            }
+
+            &.nx-flex#{$infix}-wrap {
+                flex-wrap: wrap !important;
+            }
+            &.nx-flex#{$infix}-nowrap {
+                flex-wrap: nowrap !important;
+            }
+            &.nx-flex#{$infix}-wrap-reverse {
+                flex-wrap: wrap-reverse !important;
+            }
+
+            &.nx-justify-content#{$infix}-start {
+                justify-content: flex-start !important;
+            }
+            &.nx-justify-content#{$infix}-end {
+                justify-content: flex-end !important;
+            }
+            &.nx-justify-content#{$infix}-center {
+                justify-content: center !important;
+            }
+            &.nx-justify-content#{$infix}-between {
+                justify-content: space-between !important;
+            }
+            &.nx-justify-content#{$infix}-around {
+                justify-content: space-around !important;
+            }
+
+            &.nx-align-items#{$infix}-start {
+                align-items: flex-start !important;
+            }
+            &.nx-align-items#{$infix}-end {
+                align-items: flex-end !important;
+            }
+            &.nx-align-items#{$infix}-center {
+                align-items: center !important;
+            }
+            &.nx-align-items#{$infix}-baseline {
+                align-items: baseline !important;
+            }
+            &.nx-align-items#{$infix}-stretch {
+                align-items: stretch !important;
+            }
+
+            &.nx-align-content#{$infix}-start {
+                align-content: flex-start !important;
+            }
+            &.nx-align-content#{$infix}-end {
+                align-content: flex-end !important;
+            }
+            &.nx-align-content#{$infix}-center {
+                align-content: center !important;
+            }
+            &.nx-align-content#{$infix}-between {
+                align-content: space-between !important;
+            }
+            &.nx-align-content#{$infix}-around {
+                align-content: space-around !important;
+            }
+            &.nx-align-content#{$infix}-stretch {
+                align-content: stretch !important;
+            }
+        }
+    }
+}
+
+@mixin make-row-variations-by-container-query {
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        @include container-breakpoint-up($breakpoint) {
             $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
             :host(.nx-flex#{$infix}-row) {
@@ -235,6 +384,43 @@
 @mixin make-col-variations {
     @each $breakpoint in map-keys($grid-breakpoints) {
         @include media-breakpoint-up($breakpoint) {
+            $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+            :host(.nx-flex#{$infix}-first) {
+                order: -1;
+            }
+            :host(.nx-flex#{$infix}-last) {
+                order: 1;
+            }
+            :host(.nx-flex#{$infix}-unordered) {
+                order: 0;
+            }
+
+            :host(.nx-align-self#{$infix}-auto) {
+                align-self: auto !important;
+            }
+            :host(.nx-align-self#{$infix}-start) {
+                align-self: flex-start !important;
+            }
+            :host(.nx-align-self#{$infix}-end) {
+                align-self: flex-end !important;
+            }
+            :host(.nx-align-self#{$infix}-center) {
+                align-self: center !important;
+            }
+            :host(.nx-align-self#{$infix}-baseline) {
+                align-self: baseline !important;
+            }
+            :host(.nx-align-self#{$infix}-stretch) {
+                align-self: stretch !important;
+            }
+        }
+    }
+}
+
+@mixin make-col-variations-by-container-query {
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        @include container-breakpoint-up($breakpoint) {
             $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
             :host(.nx-flex#{$infix}-first) {

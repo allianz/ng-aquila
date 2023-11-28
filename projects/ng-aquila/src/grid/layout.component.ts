@@ -10,6 +10,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
         '[class.nx-grid--no-gutters]': 'noGutters',
         '[class.nx-grid--max-width]': 'maxWidth',
         '[class.nx-grid--no-padding]': 'noPadding',
+        '[class.nx-grid--container-query]': 'containerQuery',
+        '[class.nx-grid--media-query]': '!containerQuery',
     },
 })
 export class NxLayoutComponent {
@@ -24,6 +26,12 @@ export class NxLayoutComponent {
 
     /** @docs-private */
     noPadding!: boolean;
+
+    /**
+     * On `true` the Grid will use container queries instead of media queries.
+     * See [mdn docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries) for more info
+     */
+    @Input() containerQuery = false;
 
     /**
      * Type of layout.
@@ -42,8 +50,10 @@ export class NxLayoutComponent {
         this.maxWidth = !!this._classNames?.includes('maxwidth');
         this.noPadding = !!this._classNames?.includes('nopadding');
     }
+
     get classNames(): string {
         return this._classNames;
     }
+
     private _classNames = '';
 }

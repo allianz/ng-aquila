@@ -82,6 +82,28 @@ The grid is based on the common 12 column base. This means that a single column 
 
 There are modifiers available like `align-self-start` and `offset`.
 
+### CSS Media and Container Queries
+
+CSS Media Queries allow for the styling of web content based on the characteristics of the device or browser that it is being viewed on, while CSS Container Queries enable responsive design by allowing elements to adapt their styling based on the size of their container rather than the viewport.
+You can choose the query type for each grid based on your needs.
+
+#### Media Queries
+
+Media queries are based on the browser where the web page is viewed on.
+We use CSS Media Queries as the default. All components and examples are based on Media Queries if not stated otherwise.
+
+#### Container Queries
+
+Container queries are a way to create layouts that are based on the size of each individual container, rather than the viewport.
+Checkout the [mozilla container queries documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries) for more information.
+
+To enable container querying use `[containerQuery]="true"` on the grid.
+
+This example illustrates the difference between media and container queries. Both sub grids use the same definitions for __rows__ and __columns__. The only difference is the query type.
+
+<!-- example(grid-query-comparison) -->
+
+
 ### Examples
 
 #### nxLayout
@@ -173,3 +195,4 @@ The `alignSelf` property specifies the alignment for a selected item inside the 
 To specify the order within the row, apply the `colOrder` property.
 
 <!-- example(grid-col-order) -->
+

@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, Optional } from '@angular/core';
 import { mapClassNames } from '@aposin/ng-aquila/utils';
 
+import { NxLayoutComponent } from './layout.component';
 import { addStylesFromDimensions, isEmptyArray, processSplit, validateClassInElement } from './utils';
 
 const MAPPING = {
@@ -56,6 +57,8 @@ export type ColOrder = 'first' | 'last' | 'unordered';
     styleUrls: ['col.component.scss'],
     host: {
         '[class.nx-grid__column]': 'true',
+        '[class.nx-grid__column--container-query]': 'gridLayoutComponent.containerQuery',
+        '[class.nx-grid__column--media-query]': '!gridLayoutComponent.containerQuery',
         '[class]': '_classNames',
     },
 })
@@ -79,6 +82,7 @@ export class NxColComponent implements OnInit {
             this.generateError('Exception: NxColDirective. Empty nxCol attribute.');
         }
     }
+
     private _columnClasses = '';
 
     /**
@@ -89,6 +93,7 @@ export class NxColComponent implements OnInit {
     @Input('colOffset') set offset(value: string) {
         this._offsetClasses = this._mapTiers(value, [], OFFSET_MAPPING);
     }
+
     private _offsetClasses = '';
 
     /** The alignment for a column inside the flexible container. */
@@ -96,6 +101,7 @@ export class NxColComponent implements OnInit {
         /** Values: auto, start, end, center, baseline, stretch */
         this._alignSelfClasses = value ? addStylesFromDimensions(value, MAPPING_ALIGN_SELF) : '';
     }
+
     private _alignSelfClasses = '';
 
     /** Order of the column within the row. */
@@ -103,13 +109,14 @@ export class NxColComponent implements OnInit {
         /** Values: first, last or unordered */
         this._orderClasses = value ? addStylesFromDimensions(value, MAPPING_ORDER) : '';
     }
+
     private _orderClasses = '';
 
     get _classNames() {
         return [this._columnClasses, this._offsetClasses, this._alignSelfClasses, this._orderClasses, this.class].filter(classes => classes?.length).join(' ');
     }
 
-    constructor(private readonly el: ElementRef) {}
+    constructor(private readonly el: ElementRef, @Optional() protected readonly gridLayoutComponent: NxLayoutComponent) {}
 
     ngOnInit(): void {
         if (!validateClassInElement(this.el.nativeElement.parentElement, 'nxRow')) {

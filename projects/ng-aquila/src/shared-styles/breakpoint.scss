@@ -1,5 +1,7 @@
 // Breakpoint viewport sizes and media queries.
 
+@import './grid';
+
 @function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
     $n: index($breakpoint-names, $name);
     @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
@@ -119,5 +121,31 @@ $screen-small-1: 685px;
         @include media-breakpoint-up(large) {
             @content;
         }
+    }
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+@mixin container-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+    $max: breakpoint-max($name, $breakpoints);
+    @if $max {
+        @container (max-width: #{$max}) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin container-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    @if $min {
+        @container (min-width: #{$min} ) {
+            @content;
+        }
+    } @else {
+        @content;
     }
 }

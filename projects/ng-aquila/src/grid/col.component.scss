@@ -1,8 +1,15 @@
 @import './mixins.scss';
 
-@include make-grid-columns-bem-style();
+:host(.nx-grid__column--media-query) {
+    @include make-grid-columns-bem-style();
+    @include make-col-variations();
+}
+
+:host(.nx-grid__column--container-query) {
+    @include make-grid-columns-bem-style-by-container-query();
+    @include make-col-variations-by-container-query();
+}
 
 /**
  * COL VARIATIONS
  */
-@include make-col-variations();

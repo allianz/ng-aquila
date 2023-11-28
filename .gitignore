@@ -31,6 +31,9 @@ speed-measure-plugin*.json
 !.vscode/extensions.json
 .history/*
 
+# IDE - IntelliJ
+*.iml
+
 # misc
 /.angular/cache
 /.sass-cache

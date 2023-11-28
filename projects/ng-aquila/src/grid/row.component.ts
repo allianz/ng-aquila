@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Optional } from '@angular/core';
 
+import { NxLayoutComponent } from './layout.component';
 import { addStylesFromDimensions } from './utils';
 
 const MAPPING_JUSTIFY = {
@@ -53,6 +54,8 @@ export type RowWrapping = 'wrap' | 'nowrap' | 'reverse';
     styleUrls: ['row.component.scss'],
     host: {
         '[class]': '_classNames',
+        '[class.nx-grid__row--container-query]': 'gridLayoutComponent.containerQuery',
+        '[class.nx-grid__row--media-query]': '!gridLayoutComponent.containerQuery',
     },
 })
 export class NxRowComponent {
@@ -79,30 +82,35 @@ export class NxRowComponent {
             this._rowClass = MAPPING_LAYOUT.row;
         }
     }
+
     private _rowClass: string = MAPPING_LAYOUT.row;
 
     /** Align items on the main axis (horizontally). */
     @Input() set rowJustify(value: RowJustification | string) {
         this._justifyClasses = value ? addStylesFromDimensions(value, MAPPING_JUSTIFY) : '';
     }
+
     private _justifyClasses = '';
 
     /** Similar to nxRowAlignItems, but instead of aligning flex items, it aligns flex lines. */
     @Input() set rowAlignContent(value: RowContentAlignment | string) {
         this._alignContentClasses = value ? addStylesFromDimensions(value, MAPPING_ALIGN_CONTENT) : '';
     }
+
     private _alignContentClasses = '';
 
     /** The default alignment for items inside the flexible container. */
     @Input() set rowAlignItems(value: RowItemsAlignment | string) {
         this._alignItemsClasses = value ? addStylesFromDimensions(value, MAPPING_ALIGN_ITEMS) : '';
     }
+
     private _alignItemsClasses = '';
 
     /** How the flexible items should be wrapped. */
     @Input() set rowWrap(value: RowWrapping) {
         this._wrapClasses = value ? addStylesFromDimensions(value, MAPPING_WRAP) : '';
     }
+
     private _wrapClasses = '';
 
     get _classNames() {
@@ -110,4 +118,6 @@ export class NxRowComponent {
             .filter(classes => classes?.length)
             .join(' ');
     }
+
+    constructor(@Optional() protected readonly gridLayoutComponent: NxLayoutComponent) {}
 }

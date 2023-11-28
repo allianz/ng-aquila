@@ -475,6 +475,104 @@ a {
     }
 }
 
+.grid-component__current-grid-tier-container {
+    color: v(documentation-grid-text-color);
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 45px;
+    z-index: 1;
+
+    @container (min-width: 0) and (max-width: 319px) {
+        background-color: cyan;
+    }
+
+    @container (min-width: 320px) and (max-width: 703px) {
+        background-color: #b0050c;
+    }
+
+    @container (min-width: 704px) and (max-width: 991px) {
+        background-color: olivedrab;
+    }
+
+    @container (min-width: 992px) and (max-width: 1279px) {
+    }
+
+    @container (min-width: 1280px) and (max-width: 1471px) {
+        background-color: v(documentation-grid-xlarge-color);
+    }
+
+    @container (min-width: 1472px) and (max-width: 1759px) {
+        background-color: v(documentation-grid-2xlarge-color);
+    }
+
+    @container (min-width: 1760px) {
+        background-color: v(documentation-grid-3xlarge-color);
+    }
+
+    .current-grid__tier {
+        padding: 8px;
+        height: 100%;
+        width: 100%;
+        display: none;
+    }
+
+    .current-grid__tier-tiny {
+        @container (min-width: 0) and (max-width: 319px) {
+            background-color: v(documentation-grid-tiny-color);
+            display: inline-block;
+        }
+    }
+
+    .current-grid__tier-small {
+        @container (min-width: 320px) and (max-width: 703px) {
+            background-color: v(documentation-grid-small-color);
+            display: inline-block;
+        }
+    }
+
+    .current-grid__tier-medium {
+        @container (min-width: 704px) and (max-width: 991px) {
+            background-color: v(documentation-grid-medium-color);
+            display: inline-block;
+        }
+    }
+
+    .current-grid__tier-large {
+        @container (min-width: 992px) and (max-width: 1279px) {
+            background-color: v(documentation-grid-large-color);
+            display: inline-block;
+        }
+    }
+
+    .current-grid__tier-xlarge {
+        @container (min-width: 1280px) and (max-width: 1471px) {
+            display: inline-block;
+        }
+    }
+
+    .current-grid__tier-2xlarge {
+        @container (min-width: 1472px) and (max-width: 1759px) {
+            display: inline-block;
+        }
+    }
+
+    .current-grid__tier-3xlarge {
+        @container (min-width: 1760px) {
+            display: inline-block;
+        }
+    }
+
+    //@media screen and (forced-colors: active) {
+    //    background-color: highlight;
+    //    color: highlightText;
+    //    forced-color-adjust: none;
+    //}
+}
+
 .docs-grid-colored-grid {
     @media only screen and (min-width: 0) and (max-width: 319px) {
         background-color: v(documentation-grid-tiny-color-02);
