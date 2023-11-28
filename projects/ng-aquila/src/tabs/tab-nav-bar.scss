@@ -126,6 +126,7 @@
 
     a.nx-tab-link.is-disabled:not(.is-active) {
         border-bottom-color: transparent;
+        color: v(tab-expert-item-disabled-color);
     }
 }
 

@@ -103,6 +103,10 @@
             color: buttonText;
         }
     }
+    .nx-tab-header__item--disabled {
+        color: v(tab-expert-item-disabled-color);
+        border-color: v(tab-expert-item-disabled-color);
+    }
 }
 
 .nx-tab-header__item--active {

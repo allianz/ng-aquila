@@ -193,7 +193,7 @@ $border-size: nx-border-size(xs);
 }
 
 @mixin tab__item--disabled {
-    border-color: v(tab-item-disabled-border-color);
+    border-color: v(tab-item-disabled-color);
     color: v(tab-item-disabled-color);
     cursor: not-allowed;
 
@@ -206,6 +206,10 @@ $border-size: nx-border-size(xs);
         border-color: GrayText;
         background-color: buttonFace;
         color: GrayText;
+    }
+
+    ::ng-deep .nx-indicator {
+        opacity: 0.4;
     }
 }
 
