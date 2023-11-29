@@ -171,7 +171,6 @@ export class StackBlitzWriter {
 
     /**
      * Reads the file and adds its text to the form
-     *
      * @param form the html form you are appending to
      * @param data example metadata about the example
      * @param filename file name of the example
@@ -202,7 +201,6 @@ export class StackBlitzWriter {
 
     /**
      * Adds the file text to the form.
-     *
      * @param form The html form you are appending to.
      * @param data Example metadata about the example.
      * @param content File contents.

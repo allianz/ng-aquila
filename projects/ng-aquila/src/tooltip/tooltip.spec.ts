@@ -447,7 +447,9 @@ describe('NxTooltipDirective', () => {
             const tooltipWrapper = overlayContainerElement.querySelector('.cdk-overlay-connected-position-bounding-box');
 
             expect(tooltipWrapper).withContext('Expected tooltip to be shown.').toBeTruthy();
-            expect(tooltipWrapper?.getAttribute('dir')).withContext('Expected tooltip to be in RTL mode.').toBe('rtl');
+            expect(tooltipWrapper?.getAttribute('dir'))
+                .withContext('Expected tooltip to be in RTL mode.')
+                .toBe('rtl');
         }));
 
         it('should keep the overlay direction in sync with the trigger direction', fakeAsync(() => {
@@ -459,7 +461,9 @@ describe('NxTooltipDirective', () => {
             tick(500);
 
             let tooltipWrapper = overlayContainerElement.querySelector('.cdk-overlay-connected-position-bounding-box');
-            expect(tooltipWrapper?.getAttribute('dir')).withContext('Expected tooltip to be in RTL.').toBe('rtl');
+            expect(tooltipWrapper?.getAttribute('dir'))
+                .withContext('Expected tooltip to be in RTL.')
+                .toBe('rtl');
 
             tooltipDirective.hide(0);
             tick(200);
@@ -474,7 +478,9 @@ describe('NxTooltipDirective', () => {
             tick(500);
 
             tooltipWrapper = overlayContainerElement.querySelector('.cdk-overlay-connected-position-bounding-box');
-            expect(tooltipWrapper?.getAttribute('dir')).withContext('Expected tooltip to be in LTR.').toBe('ltr');
+            expect(tooltipWrapper?.getAttribute('dir'))
+                .withContext('Expected tooltip to be in LTR.')
+                .toBe('ltr');
         }));
 
         it('should be able to set the tooltip message as a number', fakeAsync(() => {

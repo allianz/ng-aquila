@@ -2,7 +2,7 @@ import * as fs from 'fs';
 
 import { fuseOptions, SearchDisplayType } from './search.constants';
 
-const fuse = require('fuse.js');
+const Fuse = require('fuse.js');
 
 const mapComponent = (type?: string) => comp => {
     // set display type
@@ -55,8 +55,8 @@ export const buildSearchIndex = ({ manifest, guides }) => {
         }),
     ];
 
-    const searchIndex = fuse.createIndex(fuseOptions.keys, searchEntries);
+    const searchIndex = Fuse.createIndex(fuseOptions.keys, searchEntries);
     // Serialize and save it
-    fs.writeFileSync(basePath + 'fuse-search-index.json', JSON.stringify(searchIndex.toJSON()));
+    fs.writeFileSync(basePath + 'fuse-search-index.json', JSON.stringify(searchIndex));
     fs.writeFileSync(basePath + 'fuse-search-entries.json', JSON.stringify(searchEntries));
 };

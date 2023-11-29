@@ -2,7 +2,6 @@ import { animate, AnimationTriggerMetadata, state, style, transition, trigger } 
 
 /**
  * Animations used by the Message Toast.
- *
  * @docs-private
  */
 export const messageToastAnimations: {

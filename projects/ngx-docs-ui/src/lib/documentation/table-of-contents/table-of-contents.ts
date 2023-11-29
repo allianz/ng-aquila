@@ -39,7 +39,7 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
 
     headerSelectors = '.docs-markdown--h2, .docs-api-h2, .docs-markdown--h3, .docs-markdown--h4, .docs-api-h3, .docs-api-h4';
 
-    private _urlFragment = '';
+    private readonly _urlFragment = '';
     scrollingSubscription: any;
 
     private readonly _destroyed = new Subject<void>();

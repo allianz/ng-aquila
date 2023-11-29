@@ -25,16 +25,19 @@ import { take, takeUntil } from 'rxjs/operators';
 
 /**
  * An internal class that represents the data corresponding to a single calendar cell.
- *
  * @docs-private
  */
 export class NxCalendarCell {
-    constructor(readonly value: number, readonly displayValue: string, readonly ariaLabel?: string, readonly enabled?: boolean) {}
+    constructor(
+        readonly value: number,
+        readonly displayValue: string,
+        readonly ariaLabel?: string,
+        readonly enabled?: boolean,
+    ) {}
 }
 
 /**
  * An internal component used to display calendar data in a table.
- *
  * @docs-private
  */
 @Component({
@@ -93,7 +96,11 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private readonly _elementRef: ElementRef, private readonly _ngZone: NgZone, private readonly _focusMonitor: FocusMonitor) {}
+    constructor(
+        private readonly _elementRef: ElementRef,
+        private readonly _ngZone: NgZone,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {}
 
     ngAfterViewInit(): void {
         this._cells.forEach(cell => this._focusMonitor.monitor(cell));

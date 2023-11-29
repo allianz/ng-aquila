@@ -1,8 +1,7 @@
 const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs-extra');
-const { promisify } = require('util');
-const rimraf = promisify(require('rimraf'));
+const { rimrafSync } = require('rimraf');
 const { opensourceThemes } = require('./themes.js');
 const glob = require('glob');
 
@@ -44,7 +43,7 @@ function globCopy(sourcePath, destinationPath, globPath) {
 }
 
 function compileSchematics() {
-    rimraf.sync('./dist/ng-aquila/schematics');
+    rimrafSync('./dist/ng-aquila/schematics');
 
     execSync(`tsc -p ./projects/ng-aquila/tsconfig.schematics.json`, { stdio: 'inherit' });
     console.log('============================');

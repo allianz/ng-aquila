@@ -13,7 +13,11 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inpu
     },
 })
 export class NxCardComponent implements OnDestroy {
-    constructor(private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor, private readonly _cdr: ChangeDetectorRef) {
+    constructor(
+        private readonly _elementRef: ElementRef,
+        private readonly _focusMonitor: FocusMonitor,
+        private readonly _cdr: ChangeDetectorRef,
+    ) {
         // we still listen for focus in case the user set a tabindex on the element
         // the focus monitor only adds the cdk-keyboard-focus class if the element is focusable
         // meaning it needs a tabindex in this case

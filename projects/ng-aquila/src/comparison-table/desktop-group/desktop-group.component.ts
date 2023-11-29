@@ -12,7 +12,6 @@ import { NxComparisonTableRowGroupDirective } from '../comparison-table-row-grou
 
 /**
  * Component that is only used internally for displaying a `nxComparisonTableRowGroup` in desktop and tablet view.
- *
  * @docs-private
  */
 @Component({

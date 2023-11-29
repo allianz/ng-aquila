@@ -52,7 +52,6 @@ export class NxModalCloseDirective implements OnInit, OnChanges {
 
 /**
  * Finds the closest NxModalRef to an element by looking at the DOM.
- *
  * @param element Element relative to which to look for a modal.
  * @param openDialogs References to the currently-open modals.
  */

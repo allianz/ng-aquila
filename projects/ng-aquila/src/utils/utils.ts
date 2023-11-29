@@ -108,7 +108,7 @@ export function numberOfDecimals(number: string | number): number {
     if (Number.isNaN(parsed) || Number.isInteger(parsed)) {
         return 0;
     }
-    const match = parsed.toString().match(/(?:\.(\d+))?(?:[Ee]([+-]?\d+))?$/);
+    const match = parsed.toString().match(/(?:\.(\d+))?(?:E([+-]?\d+))?$/i);
     if (!match || !match[1]) {
         return 0;
     }

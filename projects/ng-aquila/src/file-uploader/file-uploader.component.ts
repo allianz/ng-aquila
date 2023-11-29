@@ -96,7 +96,6 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
      * An event emitted when queue is changed.
      *
      * Emits the changed array of FileItems.
-     *
      * @docs-private
      */
     @Output() readonly valueChange = new EventEmitter<FileItem[]>();
@@ -562,7 +561,6 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     /**
      * The label for the uploading state used in the queue.
-     *
      * @docs-private
      */
     get uploadingLabel(): string {
@@ -571,7 +569,6 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     /**
      * The label for the uploading state used in the queue.
-     *
      * @docs-private
      */
     get deleteLabel(): string {
@@ -580,7 +577,6 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     /**
      * The label for the uploading state used in the queue.
-     *
      * @docs-private
      */
     get uploadedLabel(): string {
@@ -589,7 +585,6 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     /**
      * The label for the uploaded files in the queue.
-     *
      * @docs-private
      */
     get uploadedListLabel(): string {

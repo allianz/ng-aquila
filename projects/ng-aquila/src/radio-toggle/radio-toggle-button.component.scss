@@ -188,7 +188,10 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
     flex-grow: 1;
     text-align: center;
     text-transform: v(button-text-transform);
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
     display: flex;
     align-items: center;
     height: 100%;

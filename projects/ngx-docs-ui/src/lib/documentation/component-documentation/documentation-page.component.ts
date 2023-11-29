@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
+import { ThemeSwitcherService } from '@aposin/ngx-docs-ui';
 
 import { ComponentService } from '../../service/component.service';
 import { DocumentationFrameComponent } from '../documentation-frame.component';
-import { ThemeSwitcherService } from '@aposin/ngx-docs-ui';
 
 @Component({
     selector: 'nxv-documentation',

@@ -2,7 +2,6 @@ import { animate, AnimationTriggerMetadata, group, query, state, style, transiti
 
 /**
  * Animations used by the NxContextMenuComponent.
- *
  * @docs-private
  */
 export const nxContextMenuAnimations: {

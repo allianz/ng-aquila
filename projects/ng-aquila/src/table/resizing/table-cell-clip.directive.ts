@@ -7,7 +7,10 @@ import { AfterViewInit, Directive, ElementRef, Renderer2 } from '@angular/core';
     },
 })
 export class NxTableCellClipDirective implements AfterViewInit {
-    constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+    constructor(
+        private elementRef: ElementRef,
+        private renderer: Renderer2,
+    ) {}
 
     clipCell(cell: any) {
         this.renderer.setStyle(cell, 'white-space', 'nowrap');

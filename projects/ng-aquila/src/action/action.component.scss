@@ -11,7 +11,9 @@
     cursor: pointer;
     padding: nx-spacer(2xs) nx-spacer(s) nx-spacer(2xs) 0;
     width: 100%;
-    transition: all 0.2s ease, padding 0 none;
+    transition:
+        all 0.2s ease,
+        padding 0 none;
     text-decoration: none;
     color: v(action-color);
     background-color: v(action-background-color);

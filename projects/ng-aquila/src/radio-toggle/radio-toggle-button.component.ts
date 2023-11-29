@@ -21,7 +21,10 @@ import { NxRadioToggleButtonBaseComponent } from './radio-toggle-button-base.com
 
 /** @docs-private */
 export class NxRadioToggleButtonChange {
-    constructor(readonly source: NxRadioToggleButtonComponent, readonly value: any) {}
+    constructor(
+        readonly source: NxRadioToggleButtonComponent,
+        readonly value: any,
+    ) {}
 }
 
 @Component({

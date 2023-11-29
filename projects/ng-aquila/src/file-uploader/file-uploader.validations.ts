@@ -47,7 +47,6 @@ export function isMaxFileNumberValid(numFile: number, max: number | undefined) {
  * Provides a set of file uploader validators that can be used by form controls.
  *
  * Currently `maxFileSize` and `fileType` are available.
- *
  * @dynamic
  */
 export class NxFileUploaderValidators {

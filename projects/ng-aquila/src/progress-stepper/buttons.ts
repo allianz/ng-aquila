@@ -16,7 +16,10 @@ export class NxStepperNextDirective extends CdkStepperNext implements DoCheck {
     /** @docs-private */
     disabled = false;
 
-    constructor(_stepper: CdkStepper, private readonly _cdr: ChangeDetectorRef) {
+    constructor(
+        _stepper: CdkStepper,
+        private readonly _cdr: ChangeDetectorRef,
+    ) {
         super(_stepper);
     }
 

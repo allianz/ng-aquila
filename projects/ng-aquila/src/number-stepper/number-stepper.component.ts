@@ -236,7 +236,12 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private readonly _cdr: ChangeDetectorRef, _renderer: Renderer2, _elementRef: ElementRef, readonly _intl: NxNumberStepperIntl) {
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        _renderer: Renderer2,
+        _elementRef: ElementRef,
+        readonly _intl: NxNumberStepperIntl,
+    ) {
         super(SIZE_MAPPING, _elementRef, _renderer, DEFAULT_CLASSES);
 
         this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => this._cdr.markForCheck());
@@ -294,7 +299,6 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     /**
      * Disables the stepper. Part of the ControlValueAccessor interface required
      * to integrate with Angular's core forms API.
-     *
      * @param isDisabled Sets whether the component is disabled.
      */
     setDisabledState(isDisabled: boolean): void {

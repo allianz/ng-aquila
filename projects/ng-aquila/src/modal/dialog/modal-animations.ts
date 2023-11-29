@@ -2,7 +2,6 @@ import { animate, AnimationTriggerMetadata, state, style, transition, trigger } 
 
 /**
  * Animations used by the `NxModalContainer`.
- *
  * @docs-private
  */
 export const NxModalAnimations: {

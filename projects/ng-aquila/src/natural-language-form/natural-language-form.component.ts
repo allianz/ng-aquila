@@ -65,7 +65,10 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private readonly _cdr: ChangeDetectorRef, private readonly _ngZone: NgZone) {
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _ngZone: NgZone,
+    ) {
         // Normally we wouldn't have to explicitly run this outside the `NgZone`, however
         // if the consumer is using `zone-patch-rxjs`, the call throws `Maximum call stack size exceeded` error.
         this._ngZone.runOutsideAngular(() => {

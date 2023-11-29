@@ -65,7 +65,6 @@ export type ColOrder = 'first' | 'last' | 'unordered';
 export class NxColComponent implements OnInit {
     /**
      * Overwrite default class property to access user provided class.
-     *
      * @docs-private
      */
     @Input() class!: string;
@@ -116,7 +115,10 @@ export class NxColComponent implements OnInit {
         return [this._columnClasses, this._offsetClasses, this._alignSelfClasses, this._orderClasses, this.class].filter(classes => classes?.length).join(' ');
     }
 
-    constructor(private readonly el: ElementRef, @Optional() protected readonly gridLayoutComponent: NxLayoutComponent) {}
+    constructor(
+        private readonly el: ElementRef,
+        @Optional() protected readonly gridLayoutComponent: NxLayoutComponent,
+    ) {}
 
     ngOnInit(): void {
         if (!validateClassInElement(this.el.nativeElement.parentElement, 'nxRow')) {

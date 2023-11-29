@@ -3,12 +3,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRouteSnapshot, BaseRouteReuseStrategy, RouteReuseStrategy, RouterModule, ROUTES } from '@angular/router';
+import { NxErrorModule } from '@aposin/ng-aquila/base';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxHeaderModule } from '@aposin/ng-aquila/header';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { NxMessageModule } from '@aposin/ng-aquila/message';
-import { NxErrorModule } from '@aposin/ng-aquila/base';
 
 import { ExampleFullScreenModule } from '../example-full-screen/example-full-screen.module';
 import { ComponentService } from '../service/component.service';

@@ -78,7 +78,6 @@ export class NxDialogService implements OnDestroy {
 
     /**
      * Opens a modal modal containing the given component.
-     *
      * @param componentOrTemplateRef Type of the component to load into the dialog, or a TemplateRef to instantiate as the modal content.
      * @param config Extra configuration options.
      * @returns Reference to the newly-opened modal.
@@ -115,7 +114,6 @@ export class NxDialogService implements OnDestroy {
 
     /**
      * Finds an open modal by its id.
-     *
      * @param id ID to use when looking up the modal.
      */
     getModalById(id: string): NxModalRef<any> | undefined {
@@ -135,7 +133,6 @@ export class NxDialogService implements OnDestroy {
 
     /**
      * Creates the overlay into which the modal will be loaded.
-     *
      * @param config The modal configuration.
      * @returns A promise resolving to the OverlayRef for the created overlay.
      */
@@ -146,7 +143,6 @@ export class NxDialogService implements OnDestroy {
 
     /**
      * Creates an overlay config from a modal config.
-     *
      * @param modalConfig The modal configuration.
      * @returns The overlay configuration.
      */
@@ -178,7 +174,6 @@ export class NxDialogService implements OnDestroy {
 
     /**
      * Attaches an NxModalContainer to a dialog's already-created overlay.
-     *
      * @param overlay Reference to the dialog's underlying overlay.
      * @param config The modal configuration.
      * @returns A promise resolving to a ComponentRef for the attached container.
@@ -198,7 +193,6 @@ export class NxDialogService implements OnDestroy {
 
     /**
      * Attaches the user-provided component to the already-created NxModalContainer.
-     *
      * @param componentOrTemplateRef The type of component being loaded into the dialog, or a TemplateRef to instantiate as the content.
      * @param modalContainer Reference to the wrapping NxModalContainer.
      * @param overlayRef Reference to the overlay in which the modal resides.
@@ -251,7 +245,6 @@ export class NxDialogService implements OnDestroy {
     /**
      * Creates a custom injector to be used inside the modal. This allows a component loaded inside
      * of a modal to close itself and, optionally, to return a value.
-     *
      * @param config Config object that is used to construct the modal.
      * @param modalRef Reference to the modal.
      * @param modalContainer Modal container element that wraps all of the contents.
@@ -275,7 +268,6 @@ export class NxDialogService implements OnDestroy {
 
     /**
      * Removes a modal from the array of open modals.
-     *
      * @param modalRef Modal to be removed.
      */
     private _removeOpenModal(modalRef: NxModalRef<any>) {
@@ -338,7 +330,6 @@ export class NxDialogService implements OnDestroy {
 
 /**
  * Applies default options to the modal config.
- *
  * @param config Config to be modified.
  * @param defaultOptions Default options provided.
  * @returns The new configuration object.

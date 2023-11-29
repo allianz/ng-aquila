@@ -130,7 +130,10 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     private onTouchedCallback: () => void = () => {};
     private onChangeCallback: (option: any) => any = (option: any) => {};
 
-    constructor(private readonly _cdr: ChangeDetectorRef, private readonly _focusMonitor: FocusMonitor) {}
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {}
 
     ngAfterViewInit(): void {
         this.icons.forEach(icon => this._focusMonitor.monitor(icon));

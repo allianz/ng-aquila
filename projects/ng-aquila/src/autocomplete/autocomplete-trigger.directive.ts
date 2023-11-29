@@ -33,7 +33,6 @@ import { NxAutocompleteComponent } from './autocomplete.component';
 import { NxAutocompleteOptionComponent, NxAutocompleteOptionSelected } from './autocomplete-option.component';
 /**
  * Provider that allows the autocomplete to register as a ControlValueAccessor.
- *
  * @docs-private
  */
 export const NX_AUTOCOMPLETE_VALUE_ACCESSOR: any = {
@@ -739,7 +738,6 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
 /**
  * Determines the position to which to scroll a panel in order for an option to be into view.
- *
  * @param optionOffset Option offset.
  * @param optionHeight Height of the options.
  * @param currentScrollPosition Current scroll position of the panel.

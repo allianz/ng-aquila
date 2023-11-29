@@ -110,7 +110,6 @@ export class NxOverlayRef<T, R = any> {
 
     /**
      * Close the overlay.
-     *
      * @param overlayResult Optional result to return to the overlay opener.
      */
     close(overlayResult?: R): void {

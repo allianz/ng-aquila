@@ -8,9 +8,8 @@ import { NxComparisonTableRowDirective } from '../comparison-table-row.directive
 
 /**
  *
- * Component that is only used internally for displaying a `nxComparisonTableRow`
- * (header, content and footer rows) in desktop and tablet view.
- *
+ *Component that is only used internally for displaying a `nxComparisonTableRow`
+ *(header, content and footer rows) in desktop and tablet view.
  * @docs-private
  */
 @Component({
@@ -30,7 +29,11 @@ export class NxComparisonTableFlexRow implements OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(readonly _table: NxComparisonTableBase, private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
+    constructor(
+        readonly _table: NxComparisonTableBase,
+        private readonly _elementRef: ElementRef,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {
         this._focusMonitor
             .monitor(this._elementRef, true)
             .pipe(takeUntil(this._destroyed))

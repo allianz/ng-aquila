@@ -63,5 +63,8 @@ export class NxTableComponent {
     }
     private _sticky!: string;
 
-    constructor(private readonly _cdr: ChangeDetectorRef, @Optional() private readonly _expandableTableDirective: NxExpandableTableDirective | null) {}
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        @Optional() private readonly _expandableTableDirective: NxExpandableTableDirective | null,
+    ) {}
 }

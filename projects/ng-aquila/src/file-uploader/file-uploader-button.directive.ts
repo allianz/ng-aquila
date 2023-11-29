@@ -24,7 +24,10 @@ export class NxFileUploaderButtonDirective implements OnDestroy {
     readonly _clicked = new Subject();
     _ariaDescribedby?: string;
 
-    constructor(private readonly _cdr: ChangeDetectorRef, readonly elemetRef: ElementRef) {}
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        readonly elemetRef: ElementRef,
+    ) {}
 
     /** @docs-private */
     setDescribedByIds(ids: string[]): void {

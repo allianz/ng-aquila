@@ -3,7 +3,9 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url('../fonts/PublicSans/public-sans-latin-300.woff2') format('woff2'), url('../fonts/PublicSans/public-sans-latin-300.woff') format('woff');
+    src:
+        url('../fonts/PublicSans/public-sans-latin-300.woff2') format('woff2'),
+        url('../fonts/PublicSans/public-sans-latin-300.woff') format('woff');
 }
 
 @font-face {
@@ -11,7 +13,8 @@
     font-style: italic;
     font-weight: 300;
     font-display: swap;
-    src: url('../fonts/PublicSans/public-sans-latin-300italic.woff2') format('woff2'),
+    src:
+        url('../fonts/PublicSans/public-sans-latin-300italic.woff2') format('woff2'),
         url('../fonts/PublicSans/public-sans-latin-300italic.woff') format('woff');
 }
 
@@ -20,7 +23,9 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/PublicSans/public-sans-latin-regular.woff2') format('woff2'), url('../fonts/PublicSans/public-sans-latin-regular.woff') format('woff');
+    src:
+        url('../fonts/PublicSans/public-sans-latin-regular.woff2') format('woff2'),
+        url('../fonts/PublicSans/public-sans-latin-regular.woff') format('woff');
 }
 
 @font-face {
@@ -28,7 +33,9 @@
     font-style: italic;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/PublicSans/public-sans-latin-italic.woff2') format('woff2'), url('../fonts/PublicSans/public-sans-latin-italic.woff') format('woff');
+    src:
+        url('../fonts/PublicSans/public-sans-latin-italic.woff2') format('woff2'),
+        url('../fonts/PublicSans/public-sans-latin-italic.woff') format('woff');
 }
 
 @font-face {
@@ -36,7 +43,9 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url('../fonts/PublicSans/public-sans-latin-600.woff2') format('woff2'), url('../fonts/PublicSans/public-sans-latin-600.woff') format('woff');
+    src:
+        url('../fonts/PublicSans/public-sans-latin-600.woff2') format('woff2'),
+        url('../fonts/PublicSans/public-sans-latin-600.woff') format('woff');
 }
 
 @font-face {
@@ -44,7 +53,8 @@
     font-style: italic;
     font-weight: 600;
     font-display: swap;
-    src: url('../fonts/PublicSans/public-sans-latin-600italic.woff2') format('woff2'),
+    src:
+        url('../fonts/PublicSans/public-sans-latin-600italic.woff2') format('woff2'),
         url('../fonts/PublicSans/public-sans-latin-600italic.woff') format('woff');
 }
 
@@ -53,7 +63,9 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('../fonts/PublicSans/public-sans-latin-700.woff2') format('woff2'), url('../fonts/PublicSans/public-sans-latin-700.woff') format('woff');
+    src:
+        url('../fonts/PublicSans/public-sans-latin-700.woff2') format('woff2'),
+        url('../fonts/PublicSans/public-sans-latin-700.woff') format('woff');
 }
 
 @font-face {
@@ -61,7 +73,8 @@
     font-style: italic;
     font-weight: 700;
     font-display: swap;
-    src: url('../fonts/PublicSans/public-sans-latin-700italic.woff2') format('woff2'),
+    src:
+        url('../fonts/PublicSans/public-sans-latin-700italic.woff2') format('woff2'),
         url('../fonts/PublicSans/public-sans-latin-700italic.woff') format('woff');
 }
 
@@ -70,7 +83,9 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url('../fonts/Nunito/nunito-v12-latin-300.woff2') format('woff2'), url('../fonts/Nunito/nunito-v12-latin-300.woff') format('woff');
+    src:
+        url('../fonts/Nunito/nunito-v12-latin-300.woff2') format('woff2'),
+        url('../fonts/Nunito/nunito-v12-latin-300.woff') format('woff');
 }
 
 @font-face {
@@ -78,7 +93,9 @@
     font-style: italic;
     font-weight: 300;
     font-display: swap;
-    src: url('../fonts/Nunito/nunito-v12-latin-300italic.woff2') format('woff2'), url('../fonts/Nunito/nunito-v12-latin-300italic.woff') format('woff');
+    src:
+        url('../fonts/Nunito/nunito-v12-latin-300italic.woff2') format('woff2'),
+        url('../fonts/Nunito/nunito-v12-latin-300italic.woff') format('woff');
 }
 
 @font-face {
@@ -86,7 +103,9 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/Nunito/nunito-v12-latin-regular.woff2') format('woff2'), url('../fonts/Nunito/nunito-v12-latin-regular.woff') format('woff');
+    src:
+        url('../fonts/Nunito/nunito-v12-latin-regular.woff2') format('woff2'),
+        url('../fonts/Nunito/nunito-v12-latin-regular.woff') format('woff');
 }
 
 @font-face {
@@ -94,7 +113,9 @@
     font-style: italic;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/Nunito/nunito-v12-latin-italic.woff2') format('woff2'), url('../fonts/Nunito/nunito-v12-latin-italic.woff') format('woff');
+    src:
+        url('../fonts/Nunito/nunito-v12-latin-italic.woff2') format('woff2'),
+        url('../fonts/Nunito/nunito-v12-latin-italic.woff') format('woff');
 }
 
 @font-face {
@@ -102,7 +123,9 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url('../fonts/Nunito/nunito-v12-latin-600.woff2') format('woff2'), url('../fonts/Nunito/nunito-v12-latin-600.woff') format('woff');
+    src:
+        url('../fonts/Nunito/nunito-v12-latin-600.woff2') format('woff2'),
+        url('../fonts/Nunito/nunito-v12-latin-600.woff') format('woff');
 }
 
 @font-face {
@@ -110,7 +133,9 @@
     font-style: italic;
     font-weight: 600;
     font-display: swap;
-    src: url('../fonts/Nunito/nunito-v12-latin-600italic.woff2') format('woff2'), url('../fonts/Nunito/nunito-v12-latin-600italic.woff') format('woff');
+    src:
+        url('../fonts/Nunito/nunito-v12-latin-600italic.woff2') format('woff2'),
+        url('../fonts/Nunito/nunito-v12-latin-600italic.woff') format('woff');
 }
 
 @font-face {
@@ -118,7 +143,9 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('../fonts/Nunito/nunito-v12-latin-700.woff2') format('woff2'), url('../fonts/Nunito/nunito-v12-latin-700.woff') format('woff');
+    src:
+        url('../fonts/Nunito/nunito-v12-latin-700.woff2') format('woff2'),
+        url('../fonts/Nunito/nunito-v12-latin-700.woff') format('woff');
 }
 
 @font-face {
@@ -126,5 +153,7 @@
     font-style: italic;
     font-weight: 700;
     font-display: swap;
-    src: url('../fonts/Nunito/nunito-v12-latin-700italic.woff2') format('woff2'), url('../fonts/Nunito/nunito-v12-latin-700italic.woff') format('woff');
+    src:
+        url('../fonts/Nunito/nunito-v12-latin-700italic.woff2') format('woff2'),
+        url('../fonts/Nunito/nunito-v12-latin-700italic.woff') format('woff');
 }

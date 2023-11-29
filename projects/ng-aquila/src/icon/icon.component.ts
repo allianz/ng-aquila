@@ -67,7 +67,10 @@ export class NxIconComponent implements OnChanges {
     /** Sets the font name that should be used. */
     @Input() font = '';
 
-    constructor(/** @docs-private */ readonly el: ElementRef, private readonly _iconRegistry: NxIconRegistry) {}
+    constructor(
+        /** @docs-private */ readonly el: ElementRef,
+        private readonly _iconRegistry: NxIconRegistry,
+    ) {}
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.name || changes.font) {

@@ -52,7 +52,10 @@ export class NxTableRowComponent {
     }
     private _mayStick = false;
 
-    constructor(protected readonly _cdr: ChangeDetectorRef, private readonly _elementRef: ElementRef) {}
+    constructor(
+        protected readonly _cdr: ChangeDetectorRef,
+        private readonly _elementRef: ElementRef,
+    ) {}
 
     _onSelect($event: KeyboardEvent) {
         if (!this._selectable || this.isSelectionPrevented($event)) {

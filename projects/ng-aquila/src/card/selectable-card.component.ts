@@ -261,7 +261,6 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
 
     /**
      * Whether the selectable card is negative.
-     *
      * @deprecated Obsolete as negative state is not implemented.
      * @deletion-target 12.0.0
      */

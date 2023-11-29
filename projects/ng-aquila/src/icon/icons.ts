@@ -9,7 +9,11 @@ import { NxIconFontDefinition } from './icon-registry';
 export class NxSvgIcon {
     svgElement: SVGElement | undefined;
 
-    constructor(protected readonly _httpClient: HttpClient | null, protected readonly _sanitizer: DomSanitizer, protected readonly _document: Document) {}
+    constructor(
+        protected readonly _httpClient: HttpClient | null,
+        protected readonly _sanitizer: DomSanitizer,
+        protected readonly _document: Document,
+    ) {}
 
     /** Returns the content. */
     getContent(): Observable<SVGElement | undefined> {
@@ -116,7 +120,10 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
 }
 
 export class NxFontIcon {
-    constructor(readonly alias: string, readonly font: NxIconFontDefinition) {}
+    constructor(
+        readonly alias: string,
+        readonly font: NxIconFontDefinition,
+    ) {}
 
     getClasses() {
         return { alias: this.alias, font: this.font };

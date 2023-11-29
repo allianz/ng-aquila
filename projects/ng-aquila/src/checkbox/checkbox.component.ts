@@ -421,7 +421,6 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
 
     /**
      * Callback for when the content of the label has changed.
-     *
      * @docs-private
      */
     labelContentChanged() {

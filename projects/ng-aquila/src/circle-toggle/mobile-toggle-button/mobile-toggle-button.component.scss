@@ -3,7 +3,10 @@
 :host {
     display: none;
     position: relative;
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
     flex-direction: row;
     border-width: nx-border-size(xs) nx-border-size(m);
     border-color: v(circle-toggle-border-color);

@@ -47,7 +47,12 @@ export class NxLinkComponent extends MappedStyles implements AfterContentInit, O
     }
     private _size: NxLinkSize = 'small';
 
-    constructor(_elementRef: ElementRef, _renderer: Renderer2, private readonly _cdr: ChangeDetectorRef, private readonly _focusMonitor: FocusMonitor) {
+    constructor(
+        _elementRef: ElementRef,
+        _renderer: Renderer2,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {
         super(MAPPING, _elementRef, _renderer, DEFAULT_CLASSES);
         this._focusMonitor.monitor(this._elementRef, true);
     }

@@ -11,7 +11,11 @@ import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, Renderer2 } 
     },
 })
 export class NxBreadcrumbItemComponent implements OnDestroy {
-    constructor(private readonly _renderer: Renderer2, private readonly _elemRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
+    constructor(
+        private readonly _renderer: Renderer2,
+        private readonly _elemRef: ElementRef,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {
         this._focusMonitor.monitor(this._elemRef);
     }
 

@@ -9,7 +9,6 @@ import { NxMessageToastConfig, NxMessageToastContext, NxMessageToastData } from 
 
 /**
  * Internal component that wraps user-provided message toast content.
- *
  * @docs-private
  */
 @Component({

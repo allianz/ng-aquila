@@ -9,7 +9,6 @@ type TooltipVisibility = 'initial' | 'visible' | 'hidden';
 
 /**
  * Internal component that wraps the tooltip's content.
- *
  * @docs-private
  */
 @Component({
@@ -88,11 +87,13 @@ export class NxTooltipComponent implements OnDestroy {
     /** Subject for notifying that the tooltip has been hidden from the view */
     private readonly _onHide = new Subject<any>();
 
-    constructor(private readonly _cdr: ChangeDetectorRef, readonly elementRef: ElementRef) {}
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        readonly elementRef: ElementRef,
+    ) {}
 
     /**
      * Shows the tooltip with an aninxion originating from the provided origin
-     *
      * @param delay Amount of milliseconds to the delay showing the tooltip.
      */
     show(delay: number): void {
@@ -116,7 +117,6 @@ export class NxTooltipComponent implements OnDestroy {
 
     /**
      * Begins the animation to hide the tooltip after the provided delay in ms.
-     *
      * @param delay Amount of milliseconds to delay showing the tooltip.
      */
     hide(delay: number): void {

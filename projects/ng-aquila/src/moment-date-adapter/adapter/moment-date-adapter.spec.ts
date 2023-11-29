@@ -1,6 +1,6 @@
 import { inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxDateAdapter } from '@aposin/ng-aquila/datefield';
-import * as moment from 'moment';
+import moment from 'moment';
 
 import { NxMomentDateModule } from './index';
 import { NxMomentDateAdapter } from './moment-date-adapter';

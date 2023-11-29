@@ -17,7 +17,11 @@ export class ExampleFullScreenComponent {
 
     @HostBinding('class') background: ExampleBackgroundType = '';
 
-    constructor(_route: ActivatedRoute, _themeSwitcherService: ThemeSwitcherService, readonly _location: Location) {
+    constructor(
+        _route: ActivatedRoute,
+        _themeSwitcherService: ThemeSwitcherService,
+        readonly _location: Location,
+    ) {
         const routeSnapshot = _route.snapshot;
         this.example = routeSnapshot.params.id;
 

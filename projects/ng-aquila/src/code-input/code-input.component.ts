@@ -151,7 +151,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     }
 
     /** Reacts to keydown event. */
-    _keydownAction(event: KeyboardEvent): void | false {
+    _keydownAction(event: KeyboardEvent) {
         const targetElement: HTMLInputElement = event.target as HTMLInputElement;
         const previousInputField: HTMLInputElement = targetElement.previousElementSibling as HTMLInputElement;
         const nextInputField: HTMLInputElement = targetElement.nextElementSibling as HTMLInputElement;
@@ -200,6 +200,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
                 this.selectInput(targetElement);
                 break;
         }
+        return true;
     }
 
     /** Selects the value on click of an input field. */
@@ -298,7 +299,6 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     /**
      * Disables the code input. Part of the ControlValueAccessor interface required
      * to integrate with Angular's core forms API.
-     *
      * @param isDisabled Sets whether the component is disabled.
      */
     setDisabledState(isDisabled: boolean): void {
@@ -373,7 +373,6 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
 
     /**
      * Workaround preventing the selection error because the `setSelectionRange` is not supported on input['type=number']
-     *
      * @docs-private
      */
     selectInput(input: HTMLInputElement) {

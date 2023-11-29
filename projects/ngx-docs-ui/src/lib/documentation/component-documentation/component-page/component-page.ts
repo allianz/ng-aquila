@@ -1,5 +1,6 @@
 import { Component, Inject, OnDestroy, Optional } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ThemeSwitcherService } from '@aposin/ngx-docs-ui';
 import { Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
 
@@ -7,7 +8,6 @@ import { ComponentDescriptor } from '../../../core/manifest';
 import { NXV_FEEDBACK_LINKS } from '../../../core/tokens';
 import { ComponentService } from '../../../service/component.service';
 import { ManifestService } from '../../../service/manifest.service';
-import { ThemeSwitcherService } from '@aposin/ngx-docs-ui';
 
 export interface DocItem {
     id: string;

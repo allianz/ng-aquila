@@ -4,7 +4,6 @@ import { NxDateAdapter, NxDateFormats } from './adapter';
 
 /**
  * Provides a set of date validators that can be used by form controls.
- *
  * @dynamic
  */
 export class NxDateValidators {

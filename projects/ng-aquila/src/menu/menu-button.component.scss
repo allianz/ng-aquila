@@ -15,7 +15,9 @@
     font-weight: nx-font-weight(regular);
     font-size: nx-font-size(2xs);
     width: 100%;
-    transition: all 0.2s ease, padding 0 none;
+    transition:
+        all 0.2s ease,
+        padding 0 none;
     text-decoration: none;
     padding: nx-spacer(m);
 

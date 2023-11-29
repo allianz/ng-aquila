@@ -50,7 +50,11 @@ export class NxModalRef<T, R = any> {
     /** Current state of the modal. */
     private _state = NxModalState.OPEN;
 
-    constructor(private readonly _overlayRef: OverlayRef, readonly _containerInstance: NxModalContainer, readonly id: string = `nx-modal-${nexId++}`) {
+    constructor(
+        private readonly _overlayRef: OverlayRef,
+        readonly _containerInstance: NxModalContainer,
+        readonly id: string = `nx-modal-${nexId++}`,
+    ) {
         // Pass the id along to the container.
         _containerInstance._id = id;
 
@@ -100,7 +104,6 @@ export class NxModalRef<T, R = any> {
 
     /**
      * Close the modal.
-     *
      * @param modalResult Optional result to return to the modal opener.
      */
     close(modalResult?: R): void {
@@ -175,7 +178,6 @@ export class NxModalRef<T, R = any> {
 
     /**
      * Updates the modal's position.
-     *
      * @param position New modal position.
      */
     updatePosition(position?: NxDialogPosition): this {
@@ -200,7 +202,6 @@ export class NxModalRef<T, R = any> {
 
     /**
      * Updates the modal's width and height.
-     *
      * @param width New width of the modal.
      * @param height New height of the modal.
      */

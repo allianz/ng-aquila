@@ -297,7 +297,6 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
 
     /**
      * Gets the element that the datepicker popup should be connected to.
-     *
      * @returns The element to connect the popup to.
      * @docs-private
      */

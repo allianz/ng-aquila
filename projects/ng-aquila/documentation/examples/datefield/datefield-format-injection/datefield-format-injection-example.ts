@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NX_DATE_FORMATS } from '@aposin/ng-aquila/datefield';
-import * as moment from 'moment';
+import moment from 'moment';
 
 export const MY_FORMATS = {
     parse: {

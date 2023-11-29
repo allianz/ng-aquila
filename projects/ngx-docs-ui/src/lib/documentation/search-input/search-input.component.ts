@@ -12,7 +12,10 @@ export class NxvSearchInputComponent implements OnInit {
     searchTerm = '';
     searchTermChanged$ = new BehaviorSubject<string>('');
 
-    constructor(private readonly router: Router, private readonly route: ActivatedRoute) {}
+    constructor(
+        private readonly router: Router,
+        private readonly route: ActivatedRoute,
+    ) {}
 
     ngOnInit() {
         this.searchTermChanged$

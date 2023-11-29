@@ -43,7 +43,10 @@ export class NxAvatarComponent {
     },
 })
 export class NxAvatarButtonDirective implements OnDestroy {
-    constructor(private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
+    constructor(
+        private readonly _elementRef: ElementRef,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

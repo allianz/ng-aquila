@@ -6,12 +6,12 @@ import { concatAll, filter, map, mergeMap, take } from 'rxjs/operators';
 
 import { showProcessingNotice } from '../shared/logging';
 import { MarkdownFile } from '../shared/markdown-file';
+import { readFile$ } from '../shared/utility';
 import { manifest } from './manifest';
 import { transform } from './transform';
 
 // prepare callback functions to use in rxjs
 const mdFiles$ = bindNodeCallback(glob);
-const readFile$ = bindNodeCallback(fs.readFile);
 const outputFile$ = bindNodeCallback(fs.outputFile);
 
 // This is our stream of relevant files we want to transform.
@@ -22,7 +22,9 @@ const findAllFiles = sourceFolder => {
 };
 
 const readFileStream = pipe(
-    mergeMap(filename => readFile$(filename, 'utf8').pipe(map((content: any) => ({ filename, content, rawData: content, yaml: {} } as MarkdownFile)))),
+    mergeMap((filename: string) =>
+        readFile$(filename, 'utf8').pipe(map((content: any) => ({ filename, content, rawData: content, yaml: {} }) as MarkdownFile)),
+    ),
 );
 
 const save = folder =>

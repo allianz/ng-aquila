@@ -12,7 +12,10 @@ import { Directive, ElementRef, OnDestroy } from '@angular/core';
     },
 })
 export class NxMenuLinkDirective implements OnDestroy {
-    constructor(private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
+    constructor(
+        private readonly _elementRef: ElementRef,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

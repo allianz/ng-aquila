@@ -111,7 +111,10 @@ describe('shared utils', () => {
     },
 })
 class TestComponent {
-    constructor(private readonly _elementRef: ElementRef, private readonly _renderer: Renderer2) {}
+    constructor(
+        private readonly _elementRef: ElementRef,
+        private readonly _renderer: Renderer2,
+    ) {}
 
     testAppendClasses(classes: any) {
         appendClasses(this._renderer, this._elementRef, classes);

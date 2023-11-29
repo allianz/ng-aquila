@@ -28,7 +28,10 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private readonly _elementRef: ElementRef, @Inject(forwardRef(() => NxMaskDirective)) private readonly maskDirective: NxMaskDirective) {
+    constructor(
+        private readonly _elementRef: ElementRef,
+        @Inject(forwardRef(() => NxMaskDirective)) private readonly maskDirective: NxMaskDirective,
+    ) {
         // this is a needed workaround for browser autofill values. these are sent as one
         // input event with the full value, and not as the input handler of the mask assumes
         // one character at a time. in this case we need to find the country code and set the mask

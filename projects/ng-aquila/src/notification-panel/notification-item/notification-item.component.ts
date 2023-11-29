@@ -36,7 +36,10 @@ export class NxNotificationPanelItemComponent implements FocusableOption, OnDest
 
     private _hasFocus = false;
 
-    constructor(private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
+    constructor(
+        private readonly _elementRef: ElementRef,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

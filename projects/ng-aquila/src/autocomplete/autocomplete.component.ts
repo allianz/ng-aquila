@@ -65,7 +65,6 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
 
     /**
      * Element for the panel containing the autocomplete options.
-     *
      * @docs-private
      */
     @ViewChild('panel') panel!: ElementRef;
@@ -97,7 +96,6 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
 
     /**
      * Is items observable set.
-     *
      * @docs-private
      */
     get hasItems(): boolean {

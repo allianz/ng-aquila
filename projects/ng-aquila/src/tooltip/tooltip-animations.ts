@@ -2,7 +2,6 @@ import { animate, AnimationTriggerMetadata, state, style, transition, trigger } 
 
 /**
  * Animations used by NxTooltip.
- *
  * @docs-private
  */
 export const nxTooltipAnimations: {

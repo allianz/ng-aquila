@@ -8,7 +8,9 @@
     border-radius: v(card-border-radius);
     box-shadow: none;
     display: inline-block;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
 
     .nx-card-inner {
         padding: nx-spacer(m) - nx-border-size(xs);

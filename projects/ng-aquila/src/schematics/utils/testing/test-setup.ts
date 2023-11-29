@@ -16,42 +16,38 @@ export async function createTestApp(runner: SchematicTestRunner, tree?: Tree, ap
 }
 
 export async function createWorkspace(runner: SchematicTestRunner, tree?: Tree): Promise<UnitTestTree> {
-    return runner
-        .runExternalSchematicAsync(
-            '@schematics/angular',
-            'workspace',
-            {
-                name: 'workspace',
-                version: '1', // angular.json schema version
-                newProjectRoot: 'projects',
-            },
-            tree,
-        )
-        .toPromise() as Promise<UnitTestTree>;
+    return runner.runExternalSchematic(
+        '@schematics/angular',
+        'workspace',
+        {
+            name: 'workspace',
+            version: '1', // angular.json schema version
+            newProjectRoot: 'projects',
+        },
+        tree,
+    );
 }
 
 export async function createApp(runner: SchematicTestRunner, tree: Tree, options = {}): Promise<UnitTestTree> {
-    return runner
-        .runExternalSchematicAsync('@schematics/angular', 'application', { name: 'aquila-testing', ...options }, tree)
-        .toPromise() as Promise<UnitTestTree>;
+    // temporary fix to set standalone: false that the starter app tests still work.
+    return runner.runExternalSchematic('@schematics/angular', 'application', { name: 'aquila-testing', standalone: false, ...options }, tree);
 }
 
 export async function createTestLibrary(runner: SchematicTestRunner, tree?: Tree, options = {}): Promise<UnitTestTree> {
-    return runner.runExternalSchematicAsync('@schematics/angular', 'library', { name: 'aquila-testing-library' }, tree).toPromise() as Promise<UnitTestTree>;
+    return runner.runExternalSchematic('@schematics/angular', 'library', { name: 'aquila-testing-library' }, tree);
 }
 
 /**
  * Reuses our own ng add and ng add setup project schematics to add the library.
  *
  * Use the options parameter to change it to expert.
- *
  * @example
  * addLibrary({type: 'b2b'});
  */
 export async function addLibrary(options: any, tree: Tree): Promise<UnitTestTree> {
     const aquilarunner = new SchematicTestRunner('aquila', require.resolve('../../collection.json'));
-    const tempTree = await aquilarunner.runSchematicAsync('ng-add', { type: 'b2c', ...options }, tree).toPromise();
-    return aquilarunner.runSchematicAsync('ng-add-setup-project', { type: 'b2c', ...options }, tempTree).toPromise() as Promise<UnitTestTree>;
+    const tempTree = await aquilarunner.runSchematic('ng-add', { type: 'b2c', ...options }, tree);
+    return aquilarunner.runSchematic('ng-add-setup-project', { type: 'b2c', ...options }, tempTree);
 }
 
 /**
@@ -63,7 +59,6 @@ export async function addLibrary(options: any, tree: Tree): Promise<UnitTestTree
  * + writeFile: makes it possibble to write to the tempFileSystemHost and also updates the hostTree
  * + syncTreeToFileSystem: syncs the whole app tree to the disk
  * + runMigration: call to run the schematic name you specified in the constructor
- *
  * @example
  * ```ts
  * describe('my schematic tests', () => {
@@ -100,7 +95,10 @@ export class SchematicTestSetup {
     hostTree!: HostTree;
     appTree!: UnitTestTree;
 
-    constructor(readonly schematicName: string, readonly collection = Collection.MIGRATIONS) {
+    constructor(
+        readonly schematicName: string,
+        readonly collection = Collection.MIGRATIONS,
+    ) {
         this.init();
     }
 
@@ -188,6 +186,6 @@ export class SchematicTestSetup {
      * Run your migration.
      */
     async runMigration(options = {}): Promise<UnitTestTree> {
-        return this.runner.runSchematicAsync(this.schematicName, options, this.appTree).toPromise() as Promise<UnitTestTree>;
+        return this.runner.runSchematic(this.schematicName, options, this.appTree);
     }
 }

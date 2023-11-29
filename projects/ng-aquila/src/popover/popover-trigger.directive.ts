@@ -87,7 +87,6 @@ export function POPOVER_DEFAULT_OPTIONS_FACTORY(): PopoverDefaultOptions {
 
 /**
  * Creates an error to be thrown if the user provided an invalid popover direction.
- *
  * @docs-private
  */
 export function getNxPopoverInvalidDirectionError(direction: string) {

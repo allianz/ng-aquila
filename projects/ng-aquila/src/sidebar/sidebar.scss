@@ -96,7 +96,9 @@ $sidebar-width: 280px;
             forced-colors-adjust: none;
             color: buttonText;
             background-color: buttonFace;
-            box-shadow: 0 0 0 6px buttonFace, 0 0 0 nx-spacer(2xs) buttonText;
+            box-shadow:
+                0 0 0 6px buttonFace,
+                0 0 0 nx-spacer(2xs) buttonText;
         }
     }
 

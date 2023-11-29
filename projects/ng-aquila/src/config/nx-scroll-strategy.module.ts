@@ -18,7 +18,6 @@ import { NxScrollStrategyDefaultConfig, NxScrollStrategyFactoryConfig } from './
  * - overlay
  * - popover
  * - tooltip
- *
  * @example
  * NxScrollStrategyModule.withConfig({
  *   scrollStrategy: 'close',

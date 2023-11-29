@@ -78,7 +78,10 @@ export class NxAutocompleteOptionComponent {
     /** Event emitted when the option is selected or deselected. */
     @Output() readonly onSelectionChange = new EventEmitter<NxAutocompleteOptionSelected>();
 
-    constructor(/** @docs-private */ readonly elementRef: ElementRef, private readonly _cdr: ChangeDetectorRef) {}
+    constructor(
+        /** @docs-private */ readonly elementRef: ElementRef,
+        private readonly _cdr: ChangeDetectorRef,
+    ) {}
 
     /** Ensures the option is selected when activated from the keyboard. */
     _handleKeydown(event: KeyboardEvent): void {
@@ -122,7 +125,6 @@ export class NxAutocompleteOptionComponent {
      * This method sets display styles on the option to make it appear
      * active. This is used by the ActiveDescendantKeyManager so key
      * events will display the proper options as active on arrow key events.
-     *
      * @docs-private
      */
     setActiveStyles(): void {
@@ -136,7 +138,6 @@ export class NxAutocompleteOptionComponent {
      * This method removes display styles on the option that made it appear
      * active. This is used by the ActiveDescendantKeyManager so key
      * events will display the proper options as active on arrow key events.
-     *
      * @docs-private
      */
     setInactiveStyles(): void {
@@ -148,7 +149,6 @@ export class NxAutocompleteOptionComponent {
 
     /**
      * Gets the label to be used when determining whether the option should be focused.
-     *
      * @docs-private
      */
     getLabel(): string {
@@ -171,7 +171,6 @@ export class NxAutocompleteOptionComponent {
 
     /**
      * Sets focus onto this option.
-     *
      * @docs-private
      */
     focus(): void {

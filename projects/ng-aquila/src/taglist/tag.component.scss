@@ -18,7 +18,9 @@ $border-size: nx-border-size(m);
     border: $border-size solid v(taglist-border-color);
     border-radius: nx-border-radius(s);
     user-select: none;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
     cursor: pointer;
 
     &:hover {

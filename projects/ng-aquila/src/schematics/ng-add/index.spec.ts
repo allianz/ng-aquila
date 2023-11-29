@@ -49,7 +49,7 @@ describe('ng-aquila: ng add', () => {
             expect(testProjectConfig.targets.get('build')!.options!.styles).toContain('node_modules/@aposin/ng-aquila/themes/expert.css');
         });
 
-        it('should add Expert Module', async () => {
+        it('should add Expert Module for module based application', async () => {
             expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.module.ts')).toContain('NxExpertModule');
         });
     });

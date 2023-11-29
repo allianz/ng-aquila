@@ -105,7 +105,6 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
 
     /**
      * Whether the parent dropdown is in multiselect mode.
-     *
      * @docs-private
      */
     get multiselect(): boolean {
@@ -114,7 +113,6 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
 
     /**
      * Whether the parent dropdown allows item truncation.
-     *
      * @docs-private
      */
     get truncateItems(): boolean {
@@ -132,7 +130,6 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
 
     /**
      * The wrapping div in the template. Used by dropdown to use the container height for scrolling.
-     *
      * @docs-private
      */
     @ViewChild('container', { static: true }) containerElement: any;
@@ -202,7 +199,6 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
      * Gets the `aria-selected` value for the option. The attribute is omitted from the single-select dropdown
      * for the unselected options. Including the `aria-selected="false" attributes adds a lot of of noise to
      * screen-reader users without providing useful information.
-     *
      * @docs-private
      */
     _getAriaSelected(): boolean | null {
@@ -286,7 +282,6 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
 
     /**
      * Returns the list item's text label. Implemented as a part of the ListKeyManagerOption.
-     *
      * @docs-private
      */
     getLabel(): string {

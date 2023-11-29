@@ -61,7 +61,6 @@ export type RowWrapping = 'wrap' | 'nowrap' | 'reverse';
 export class NxRowComponent {
     /**
      * Overwrite default class property to access user provided class.
-     *
      * @docs-private
      */
     @Input() class = '';

@@ -98,7 +98,10 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
     /** Event emitted when the close icon of the message has been clicked. */
     @Output('close') readonly closeEvent = new EventEmitter<void>();
 
-    constructor(private readonly _cdr: ChangeDetectorRef, private readonly _focusMonitor: FocusMonitor) {}
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {}
 
     ngAfterViewInit(): void {
         if (this.closable) {

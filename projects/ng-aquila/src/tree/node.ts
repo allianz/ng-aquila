@@ -24,7 +24,11 @@ import { NxTreeComponent } from './tree.component';
     templateUrl: './node.html',
 })
 export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy {
-    constructor(_elementRef: ElementRef<HTMLElement>, _tree: CdkTree<T>, protected readonly _focusMonitor: FocusMonitor) {
+    constructor(
+        _elementRef: ElementRef<HTMLElement>,
+        _tree: CdkTree<T>,
+        protected readonly _focusMonitor: FocusMonitor,
+    ) {
         super(_elementRef, _tree);
         this._focusMonitor.monitor(this._elementRef.nativeElement);
     }

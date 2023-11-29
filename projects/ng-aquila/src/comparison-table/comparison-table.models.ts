@@ -9,7 +9,6 @@ export const COMPARISON_TABLE_DEFAULT_OPTIONS = new InjectionToken<ComparisonTab
 
 /**
  * The size of the window.
- *
  * @docs-private
  */
 export type NxComparisonTableViewType = 'mobile' | 'tablet' | 'desktop';

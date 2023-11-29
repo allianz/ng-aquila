@@ -1,7 +1,7 @@
-import { addModuleImportToRootModule, getProjectFromWorkspace, getProjectStyleFile, getProjectTargetOptions } from '@angular/cdk/schematics';
+import { getProjectFromWorkspace, getProjectStyleFile, getProjectTargetOptions } from '@angular/cdk/schematics';
 import { apply, chain, MergeStrategy, mergeWith, move, noop, Rule, SchematicsException, url } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import { readWorkspace, updateWorkspace } from '@schematics/angular/utility';
+import { addRootImport, readWorkspace, updateWorkspace } from '@schematics/angular/utility';
 import { buildDefaultPath } from '@schematics/angular/utility/workspace';
 import * as chalk from 'chalk';
 
@@ -21,11 +21,7 @@ export default function (options: Schema): Rule {
 }
 
 function addExpertModule(options: Schema): Rule {
-    return async (tree, context) => {
-        const workspace = await readWorkspace(tree);
-        const project = getProjectFromWorkspace(workspace, options.project);
-        addModuleImportToRootModule(tree, 'NxExpertModule', '@aposin/ng-aquila/config', project);
-    };
+    return addRootImport(options.project, ({ code, external }) => code`${external('NxExpertModule', '@aposin/ng-aquila/config')}`);
 }
 
 function addStarterApp(options: Schema): Rule {

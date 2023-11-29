@@ -181,7 +181,10 @@ export class NxSidepanelOuterContainerComponent implements OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(@Optional() private readonly _dir: Directionality | null, private readonly _cdr: ChangeDetectorRef) {
+    constructor(
+        @Optional() private readonly _dir: Directionality | null,
+        private readonly _cdr: ChangeDetectorRef,
+    ) {
         this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this._cdr.markForCheck();
         });

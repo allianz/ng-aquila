@@ -231,7 +231,6 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
 
     /**
      * Callback for when the content of the label has changed.
-     *
      * @docs-private
      */
     labelContentChanged() {

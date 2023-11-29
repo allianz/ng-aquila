@@ -7,7 +7,10 @@ import { NXV_TOP_INFO } from './../../../core/tokens';
     template: '',
 })
 export class NxvTopInfoComponent implements OnInit {
-    constructor(@Inject(NXV_TOP_INFO) private readonly _topInfoComponent: any, private readonly _viewContainerRef: ViewContainerRef) {}
+    constructor(
+        @Inject(NXV_TOP_INFO) private readonly _topInfoComponent: any,
+        private readonly _viewContainerRef: ViewContainerRef,
+    ) {}
 
     ngOnInit(): void {
         this._viewContainerRef.createComponent(this._topInfoComponent);

@@ -48,14 +48,12 @@ export const NX_TOOLTIP_SCROLL_STRATEGY_PROVIDER = {
 
 /**
  * CSS class that will be attached to the overlay panel.
- *
  * @docs-private
  */
 export const NX_TOOLTIP_PANEL_CLASS = 'nx-tooltip-panel';
 
 /**
  * Creates an error to be thrown if the user provided an invalid tooltip position.
- *
  * @docs-private
  */
 export function getNxTooltipInvalidPositionError(position: string) {

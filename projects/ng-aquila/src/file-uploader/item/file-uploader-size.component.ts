@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
     template: `
         <span *ngIf="isUploading; else uploaded">{{ uploadingLabel }}</span>
         <ng-template #uploaded>
-            <span>{{ size / 1024 / 1024 | number : '.2' }} MB</span>
+            <span>{{ size / 1024 / 1024 | number: '.2' }} MB</span>
         </ng-template>
     `,
 })

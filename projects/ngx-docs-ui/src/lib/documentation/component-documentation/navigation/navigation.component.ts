@@ -12,7 +12,12 @@ export interface NxTreeNode {
 }
 
 class MyFlatTreeNode {
-    constructor(readonly label: string, readonly expandable: boolean, readonly level: number, readonly component?: ComponentDescriptor) {}
+    constructor(
+        readonly label: string,
+        readonly expandable: boolean,
+        readonly level: number,
+        readonly component?: ComponentDescriptor,
+    ) {}
 }
 
 @Component({

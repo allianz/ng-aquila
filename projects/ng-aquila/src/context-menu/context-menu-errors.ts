@@ -1,6 +1,5 @@
 /**
  * Throws an exception for the case when menu trigger doesn't have a valid nx-context-menu instance
- *
  * @docs-private
  */
 export function throwNxContextMenuMissingError() {

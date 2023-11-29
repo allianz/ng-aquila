@@ -39,7 +39,6 @@ const yearsPerPage = 20;
 
 /**
  * A calendar that is used as part of the datepicker.
- *
  * @docs-private
  */
 @Component({

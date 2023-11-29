@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as moment from 'moment';
+import moment from 'moment';
 
 /**
  * @title Example of setting min and max values

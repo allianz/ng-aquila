@@ -15,7 +15,10 @@ import { NXV_FOOTER } from './../../../core/tokens';
     ],
 })
 export class NxvFooterComponent implements OnInit {
-    constructor(@Inject(NXV_FOOTER) private readonly _footerComponent: any, private readonly _viewContainerRef: ViewContainerRef) {}
+    constructor(
+        @Inject(NXV_FOOTER) private readonly _footerComponent: any,
+        private readonly _viewContainerRef: ViewContainerRef,
+    ) {}
 
     ngOnInit(): void {
         this._viewContainerRef.createComponent(this._footerComponent);

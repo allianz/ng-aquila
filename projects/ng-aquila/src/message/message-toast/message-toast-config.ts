@@ -39,7 +39,6 @@ export class NxMessageToastConfig {
 
 /**
  * Needed so that the user text data can be injected in the message toast component.
- *
  * @docs-private
  */
 export class NxMessageToastData {

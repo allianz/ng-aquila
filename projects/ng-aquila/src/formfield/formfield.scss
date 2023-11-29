@@ -101,7 +101,9 @@ $margin-to-message: nx-spacer(3xs);
     text-overflow: ellipsis;
     overflow: hidden;
     transform-origin: 0 0;
-    transition: transform 0.15s ease-out, font-size 0.15s ease-out;
+    transition:
+        transform 0.15s ease-out,
+        font-size 0.15s ease-out;
     text-size-adjust: 100%;
     text-align: left;
 

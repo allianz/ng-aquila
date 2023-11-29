@@ -29,7 +29,7 @@ export const upgradeData: UpgradeData = {
 };
 
 export default function (): Rule {
-    return createMigrationSchematicRule(TargetVersion.V16, [], upgradeData, onMigrationComplete);
+    return createMigrationSchematicRule(TargetVersion.V17, [], upgradeData, onMigrationComplete);
 }
 
 /** Function that will be called when the migration completed. */

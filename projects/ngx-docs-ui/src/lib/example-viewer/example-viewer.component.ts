@@ -54,7 +54,10 @@ export class ExampleViewerComponent {
 
     @Input() config?: ExampleConfig | null;
 
-    constructor(readonly manifestService: ManifestService, readonly copyService: CopyService) {}
+    constructor(
+        readonly manifestService: ManifestService,
+        readonly copyService: CopyService,
+    ) {}
 
     toggleSourceView() {
         this.showSourceCode = !this.showSourceCode;

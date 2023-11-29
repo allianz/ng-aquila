@@ -6,7 +6,6 @@ let optionId = 0;
 
 /**
  * A single option witin the multi select.
- *
  * @docs-private
  */
 @Component({
@@ -66,7 +65,11 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable {
         return this._active;
     }
 
-    constructor(private readonly _cdr: ChangeDetectorRef, readonly elementRef: ElementRef, private liveAnnouncer: LiveAnnouncer) {}
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        readonly elementRef: ElementRef,
+        private liveAnnouncer: LiveAnnouncer,
+    ) {}
 
     setActiveStyles(): void {
         this.active = true;

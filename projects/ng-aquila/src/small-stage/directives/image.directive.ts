@@ -14,5 +14,8 @@ export class NxSmallStageImageDirective {
         this._renderer.setStyle(this._elementRef.nativeElement, 'backgroundImage', `url('${value}')`);
     }
 
-    constructor(private readonly _elementRef: ElementRef, private readonly _renderer: Renderer2) {}
+    constructor(
+        private readonly _elementRef: ElementRef,
+        private readonly _renderer: Renderer2,
+    ) {}
 }

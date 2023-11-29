@@ -29,7 +29,10 @@ export class NxvSearchResultsComponent implements OnInit, OnDestroy {
         return this._searchInput;
     }
 
-    constructor(private readonly activeRoute: ActivatedRoute, private readonly fuseSearch: FuseSearchService) {}
+    constructor(
+        private readonly activeRoute: ActivatedRoute,
+        private readonly fuseSearch: FuseSearchService,
+    ) {}
 
     ngOnInit() {
         this.initSearch();

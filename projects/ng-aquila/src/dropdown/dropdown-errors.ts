@@ -1,7 +1,6 @@
 /**
  * Returns an exception to be thrown when attempting to change a select's `multiple` option
  * after initialization.
- *
  * @docs-private
  */
 export function getNxDropdownDynamicMultipleError(): Error {
@@ -12,7 +11,6 @@ export function getNxDropdownDynamicMultipleError(): Error {
  * Returns an exception to be thrown when attempting to assign a non-array value to a select
  * in `multiselect` mode. Note that `undefined` and `null` are still valid values to allow for
  * resetting the value.
- *
  * @docs-private
  */
 export function getNxDropdownNonArrayValueError(): Error {

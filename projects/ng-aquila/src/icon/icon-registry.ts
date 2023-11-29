@@ -11,7 +11,10 @@ export function throwNxIconNotFoundError(iconName: string) {
 }
 
 export class NxIconFontDefinition {
-    constructor(readonly hostClass: string, readonly prefix: string = '') {}
+    constructor(
+        readonly hostClass: string,
+        readonly prefix: string = '',
+    ) {}
 }
 
 @Injectable({ providedIn: 'root' })
@@ -89,7 +92,6 @@ export class NxIconRegistry implements OnDestroy {
 
     /**
      * Register an icon font which can be used by the font input on the icon component.
-     *
      * @param name Custom name identifier.
      * @param hostClass The hostClass is the general class like `fa` and an optional prefix can be given.
      * @param prefix The prefix is helpful if your class name for the icon would be prefixed,

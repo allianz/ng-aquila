@@ -78,7 +78,6 @@ export const DATEPICKER_DEFAULT_OPTIONS = new InjectionToken<DatepickerDefaultOp
  * NxCalendarComponent directly as the content so we can control the initial focus. This also gives us a
  * place to put additional features of the popup that are not part of the calendar itself in the
  * future. (e.g. confirmation buttons).
- *
  * @docs-private
  */
 @Component({
@@ -203,14 +202,12 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     /**
      * The id for the datepicker calendar.
-     *
      * @docs-private
      */
     id = `nx-datepicker-${datepickerUid++}`;
 
     /**
      * The currently selected date.
-     *
      * @docs-private
      */
     set selected(value: D | null) {
@@ -223,7 +220,6 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     /**
      * The minimum selectable date.
-     *
      * @docs-private
      */
     get minDate(): D | null {
@@ -232,7 +228,6 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     /**
      * The maximum selectable date.
-     *
      * @docs-private
      */
     get maxDate(): D | null {
@@ -305,7 +300,6 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     /**
      * Selects the given date.
-     *
      * @docs-private
      */
     select(date: D): void {
@@ -318,7 +312,6 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     /**
      * Emits the selected year in multiyear view.
-     *
      * @docs-private
      */
     selectYear(normalizedYear: D): void {
@@ -327,7 +320,6 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     /**
      * Emits selected month in year view.
-     *
      * @docs-private
      */
     selectMonth(normalizedMonth: D): void {
@@ -336,7 +328,6 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     /**
      * Register an input with this datepicker.
-     *
      * @param input The datepicker input to register with this datepicker.
      * @docs-private
      */
@@ -350,7 +341,6 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     /**
      * Register an input toggle with this datepicker.
-     *
      * @docs-private
      */
     registerToggle(toggle: NxDatepickerToggleComponent<D>) {
@@ -362,7 +352,6 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     /**
      * Open the calendar.
-     *
      * @docs-private
      */
     open(): void {
@@ -384,7 +373,6 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     /**
      * Close the calendar.
-     *
      * @docs-private
      */
     close(): void {

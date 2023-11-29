@@ -190,7 +190,6 @@ export class NxDropdownComponent
 
     /**
      * Name of this control that is used inside the formfield component.
-     *
      * @docs-private
      */
     controlType = 'nx-dropdown';
@@ -205,7 +204,6 @@ export class NxDropdownComponent
 
     /**
      * Emits when internal state changes to inform formfield about it.
-     *
      * @docs-private
      */
     readonly stateChanges = new Subject<any>();
@@ -274,7 +272,6 @@ export class NxDropdownComponent
     /**
      * Whether the dropdown should allow multi selection and additional checkboxes are shown.
      * Note: Please make sure the value you bind is an array.
-     *
      * @throws Error if true and the bound value is not an array.
      * @deprecated Please use the new `<nx-multi-select>` component instead.
      */
@@ -376,7 +373,6 @@ export class NxDropdownComponent
     /**
      * Event that emits whenever the raw value of the select changes. This is here primarily
      * to facilitate the two-way binding for the `value` input.
-     *
      * @docs-private
      */
     @Output() readonly valueChange = new EventEmitter<any>();
@@ -386,7 +382,6 @@ export class NxDropdownComponent
 
     /**
      * Panel containing the select options.
-     *
      * @docs-private
      */
     @ViewChild('panel') panel?: ElementRef;
@@ -405,7 +400,6 @@ export class NxDropdownComponent
 
     /**
      * Overlay pane containing the options.
-     *
      * @docs-private
      */
     @ViewChild(CdkConnectedOverlay, { static: true }) overlayDir!: CdkConnectedOverlay;
@@ -508,7 +502,6 @@ export class NxDropdownComponent
 
     /**
      * Whether the select is focused.
-     *
      * @docs-private
      */
     get focused(): boolean {
@@ -917,7 +910,6 @@ export class NxDropdownComponent
 
     /**
      * Formfield implementation.
-     *
      * @docs-private
      */
     setDescribedByIds(ids: string[]): void {
@@ -928,7 +920,6 @@ export class NxDropdownComponent
      * Support for aria-label removed in favor of aria-labelledby
      * The NxFormfieldControl abstract class requires implementation
      * of below method.
-     *
      * @docs-private
      */
     setAriaLabel(value: string) {
@@ -938,7 +929,6 @@ export class NxDropdownComponent
     /**
      * Returns html ids of dropdown rendered value and label (if available),
      * separated by space.
-     *
      * @docs-private
      */
     _getAriaLabelledBy(): string {
@@ -956,7 +946,6 @@ export class NxDropdownComponent
 
     /**
      * Whether the select has a value.
-     *
      * @docs-private
      */
     get empty(): boolean {
@@ -983,7 +972,6 @@ export class NxDropdownComponent
      * so that we have the input `options` set, and it's shown properly in the dropdown
      * https://github.com/angular/angular/issues/29218#issuecomment-592015773
      * It can be removed after the Angular issue is resolved
-     *
      * @param value New value to be written to the model.
      */
     writeValue(value: any): void {
@@ -1003,7 +991,6 @@ export class NxDropdownComponent
     /**
      * Disables the select. Part of the ControlValueAccessor interface required
      * to integrate with Angular's core forms API.
-     *
      * @param isDisabled Sets whether the component is disabled.
      */
     setDisabledState(isDisabled: boolean): void {
@@ -1156,7 +1143,6 @@ export class NxDropdownComponent
 
     /**
      * The value displayed in the trigger.
-     *
      * @docs-private
      */
     get triggerValue(): string {

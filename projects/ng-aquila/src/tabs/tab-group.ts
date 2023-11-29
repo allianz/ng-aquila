@@ -333,7 +333,6 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
 
     /**
      * Returns the tabindex for a tab label.
-     *
      * @docs-private
      */
     getTabIndex(tab: NxTabComponent, idx: number): number | null {

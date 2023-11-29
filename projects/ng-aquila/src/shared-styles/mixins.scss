@@ -14,7 +14,9 @@ $border-size: nx-border-size(xs);
     box-shadow: v(focus-box-shadow);
 
     @media screen and (forced-colors: active), (forced-colors: active) {
-        box-shadow: 0 0 0 2px background, 0 0 0 6px CanvasText;
+        box-shadow:
+            0 0 0 2px background,
+            0 0 0 6px CanvasText;
         outline: 4px solid CanvasText; // Chromium Edge
         outline-offset: 2px; // Chromium Edge
     }
@@ -33,7 +35,9 @@ $border-size: nx-border-size(xs);
     box-shadow: v(focus-inset-box-shadow);
 
     @media screen and (forced-colors: active) {
-        box-shadow: inset 0 0 0 4px CanvasText, inset 0 0 0 6px background;
+        box-shadow:
+            inset 0 0 0 4px CanvasText,
+            inset 0 0 0 6px background;
         border: 4px solid CanvasText; // Chromium Edge
     }
 }

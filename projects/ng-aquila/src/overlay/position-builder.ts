@@ -14,7 +14,6 @@ import { BASE_OFFSET, CLOCKWISE_DIRECTIONS, HORIZONTAL_DIRECTIONS, NxOverlayConf
 
 /**
  * Creates an error to be thrown if the user provided an invalid popover direction.
- *
  * @docs-private
  */
 export function getNxOverlayInvalidDirectionError(direction: string) {
@@ -76,7 +75,10 @@ export const ORIGIN_POSITIONS: { [key in NxOverlayDirection]: (arg0: boolean) =>
 
 @Injectable()
 export class NxOverlayPositionBuilder {
-    constructor(private readonly _overlay: Overlay, @Optional() private readonly _dir: Directionality | null) {}
+    constructor(
+        private readonly _overlay: Overlay,
+        @Optional() private readonly _dir: Directionality | null,
+    ) {}
 
     createPositionStrategy(element: FlexibleConnectedPositionStrategyOrigin, config: NxOverlayConfig) {
         const fallbacks = this._getFallbackPositions(config.direction!, config);

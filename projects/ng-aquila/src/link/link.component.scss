@@ -7,7 +7,9 @@
     cursor: pointer;
     position: relative;
     text-decoration: none;
-    transition: color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        color 0.2s ease,
+        box-shadow 0.2s ease;
     hyphens: none;
 
     &:hover {

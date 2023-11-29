@@ -33,7 +33,6 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
 
     /**
      * Content for the tab label given by `<ng-template nxTabLabel>`.
-     *
      * @docs-private
      */
     @ContentChild(NxTabLabelDirective, { read: TemplateRef, static: true }) set templateLabel(value: TemplateRef<any>) {

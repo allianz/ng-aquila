@@ -109,7 +109,10 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
     }
 
     &:active {
-        box-shadow: v(shadow-small), inset 0 0 0 4px v(slider-handle-background-color), inset 0 0 0 $handle-diameter v(slider-handle-active-inset-color);
+        box-shadow:
+            v(shadow-small),
+            inset 0 0 0 4px v(slider-handle-background-color),
+            inset 0 0 0 $handle-diameter v(slider-handle-active-inset-color);
         cursor: grabbing;
     }
 
@@ -153,7 +156,9 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
     top: $value-top + $value-height - $arrow-size;
     transform: translate(-50%, 3px) rotate(45deg);
     position: absolute;
-    box-shadow: -2px -2px 1px 1px v(slider-value-background-color), 2px 2px 4px v(shadow-small-color);
+    box-shadow:
+        -2px -2px 1px 1px v(slider-value-background-color),
+        2px 2px 4px v(shadow-small-color);
     background: v(slider-value-background-color);
     border-color: v(slider-handle-border-color);
 }
@@ -205,7 +210,9 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 
     .nx-slider__arrow {
         background: v(slider-value-disabled-background-color);
-        box-shadow: -2px -2px 1px 1px v(slider-value-disabled-background-color), nx-spacer(4xs) nx-spacer(4xs) nx-spacer(3xs) rgba(65, 65, 65, 0.5);
+        box-shadow:
+            -2px -2px 1px 1px v(slider-value-disabled-background-color),
+            nx-spacer(4xs) nx-spacer(4xs) nx-spacer(3xs) rgba(65, 65, 65, 0.5);
     }
 
     .nx-slider__background {

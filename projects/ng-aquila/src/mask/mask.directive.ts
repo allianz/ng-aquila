@@ -300,8 +300,8 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
     private _isStringAllowed(value: string, maskedValue: MASK_TYPE) {
         if (
             (maskedValue === '0' && /^\d$/.test(value)) ||
-            (maskedValue === 'A' && /^[\dA-Za-z]$/.test(value)) ||
-            (maskedValue === 'S' && /^[A-Za-z]$/.test(value))
+            (maskedValue === 'A' && /^[\dA-Z]$/i.test(value)) ||
+            (maskedValue === 'S' && /^[A-Z]$/i.test(value))
         ) {
             return true;
         }

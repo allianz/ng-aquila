@@ -1656,7 +1656,11 @@ class ComponentWithTemplateRef {
 /** Simple component for testing ComponentPortal. */
 @Component({ template: '<p>Pizza</p> <input> <button>Close</button>' })
 class PizzaMsg {
-    constructor(readonly dialogRef: NxModalRef<PizzaMsg>, readonly dialogInjector: Injector, readonly directionality: Directionality) {}
+    constructor(
+        readonly dialogRef: NxModalRef<PizzaMsg>,
+        readonly dialogInjector: Injector,
+        readonly directionality: Directionality,
+    ) {}
 }
 
 /** Simple component for testing title and status headline. */
@@ -1670,7 +1674,11 @@ class PizzaMsg {
 class TitleStatusDialog {
     headline = 'hello world';
 
-    constructor(readonly dialogRef: NxModalRef<TitleStatusDialog>, readonly dialogInjector: Injector, readonly directionality: Directionality) {}
+    constructor(
+        readonly dialogRef: NxModalRef<TitleStatusDialog>,
+        readonly dialogInjector: Injector,
+        readonly directionality: Directionality,
+    ) {}
 }
 
 @Component({

@@ -57,7 +57,6 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
 
     /**
      * Name of this control that is used inside the formfield component
-     *
      * @docs-private
      */
     controlType = 'nx-input';

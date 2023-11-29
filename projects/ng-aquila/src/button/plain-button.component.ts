@@ -76,7 +76,11 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
         return this._classNames;
     }
 
-    constructor(private readonly _cdr: ChangeDetectorRef, private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _elementRef: ElementRef,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

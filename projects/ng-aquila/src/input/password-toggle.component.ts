@@ -47,7 +47,11 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
     }
     private _ariaLabel = 'Show password';
 
-    constructor(private readonly _cdr: ChangeDetectorRef, private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _elementRef: ElementRef,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

@@ -25,7 +25,6 @@ import { NxModalConfig } from './modal-config';
 /**
  * Throws an exception for the case when a ComponentPortal is
  * attached to a DomPortalOutlet without an origin.
- *
  * @docs-private
  */
 export function throwNxDialogContentAlreadyAttachedError() {
@@ -35,7 +34,6 @@ export function throwNxDialogContentAlreadyAttachedError() {
 /**
  * Internal component that wraps user-provided modal content.
  * Animation is based on https://material.io/guidelines/motion/choreography.html.
- *
  * @docs-private
  */
 @Component({
@@ -123,7 +121,6 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
 
     /**
      * Attach a ComponentPortal as content to this modal container.
-     *
      * @param portal Portal to be attached as the modal content.
      */
     attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {
@@ -137,7 +134,6 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
 
     /**
      * Attach a TemplatePortal as content to this modal container.
-     *
      * @param portal Portal to be attached as the modal content.
      */
     attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C> {
@@ -151,7 +147,6 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
 
     /**
      * Attaches a DOM portal to the modal container.
-     *
      * @param portal Portal to be attached.
      * @deprecated To be turned into a method when changed in the CDK.
      */

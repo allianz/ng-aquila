@@ -365,7 +365,6 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     /**
      * Method called by the group if the internal value of the group is changed programatically,
      * does not trigger change emission.
-     *
      * @docs-private
      */
     setGroupSelection() {

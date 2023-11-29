@@ -252,7 +252,6 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
 
     /**
      * Inform the selected button if the group selection is set programattically at the beginning.
-     *
      * @docs-private
      */
     notifySelectedChild(newValue: string) {

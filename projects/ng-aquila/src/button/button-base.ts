@@ -125,14 +125,17 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
      * since button got changed from directive to component the reference used by the ngOpenModelOnClick directive
      * for nxButtons is a reference to component instance instead of an element reference. As a workaround we need a
      * way to reach the elementRef of the component until the modal gets refactored.
-     *
      * @docs-private
      */
     get elementRef() {
         return this._elementRef;
     }
 
-    constructor(private readonly _cdr: ChangeDetectorRef, private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _elementRef: ElementRef,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {
         this._focusMonitor.monitor(this._elementRef);
     }
 
@@ -154,7 +157,12 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
 /** @docs-private **/
 @Directive()
 export class NxAnchorButtonBase extends NxButtonBase {
-    constructor(private _ngZone: NgZone, _cdr: ChangeDetectorRef, elementRef: ElementRef, focusMonitor: FocusMonitor) {
+    constructor(
+        private _ngZone: NgZone,
+        _cdr: ChangeDetectorRef,
+        elementRef: ElementRef,
+        focusMonitor: FocusMonitor,
+    ) {
         super(_cdr, elementRef, focusMonitor);
         this._ngZone.runOutsideAngular(() => {
             (this.elementRef.nativeElement as HTMLAnchorElement).addEventListener('click', this._checkEventsDisabled);

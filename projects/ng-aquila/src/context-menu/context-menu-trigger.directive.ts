@@ -374,7 +374,6 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
 
     /**
      * Sets the position on a position strategy so the overlay is placed at the cursor.
-     *
      * @param positionStrategy Strategy whose position to update.
      * @param cursorPosition Position of the cursor.
      */
@@ -411,7 +410,6 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     /**
      * Sets the appropriate positions on a position strategy
      * so the overlay connects with the trigger correctly.
-     *
      * @param positionStrategy Strategy whose position to update.
      */
     private _setPosition(positionStrategy: FlexibleConnectedPositionStrategy) {

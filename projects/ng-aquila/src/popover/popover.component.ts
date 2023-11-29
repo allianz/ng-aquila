@@ -58,7 +58,10 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(readonly _intl: NxPopoverIntl, private readonly _cdr: ChangeDetectorRef) {}
+    constructor(
+        readonly _intl: NxPopoverIntl,
+        private readonly _cdr: ChangeDetectorRef,
+    ) {}
 
     ngOnInit(): void {
         this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
@@ -74,7 +77,6 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
 
     /**
      * Emits event to notify the popover trigger directive that the close button was clicked.
-     *
      * @docs-private
      */
     emitCloseButtonClick() {

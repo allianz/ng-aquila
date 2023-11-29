@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import chalk = require('chalk');
-import * as program from 'commander';
+import { Command } from '@commander-js/extra-typings';
 import * as path from 'path';
 import { concat } from 'rxjs';
 import { auditTime, filter, switchMap, take, tap, toArray } from 'rxjs/operators';
@@ -12,6 +12,8 @@ import { processManifestData } from './manifest/run-manifest';
 import overview from './overview/overview';
 import { RxWatchData, rxWatcher } from './rx-watcher';
 import { buildSearchIndex } from './shared/search-indexer';
+
+const program = new Command();
 
 const fs = require('fs');
 
@@ -43,18 +45,18 @@ program
     |-- documentation/generated
   `,
     )
-    .option('-s, --source-files [path]', 'Location of your library source files.', parsePath)
+    .option('-s, --source-files <path>', 'Location of your library source files.', parsePath)
 
-    .option('-d, --documentation [path]', 'Folder with guides and examples. By default ./documentation', parsePath)
-    .option('-e, --examples [path]', 'Examples Folder. By default ./documentation/examples', parsePath)
-    .option('-g, --guides [path]', 'Guides Folder ./documentation/guides', parsePath)
+    .option('-d, --documentation <path>', 'Folder with guides and examples. By default ./documentation', parsePath)
+    .option('-e, --examples <path>', 'Examples Folder. By default ./documentation/examples', parsePath)
+    .option('-g, --guides <path>', 'Guides Folder ./documentation/guides', parsePath)
     .option('-w, --watch', 'Watch the source folder')
-    .option('-c, --config [path]', 'Path to config file', parsePath)
-    .option('-o, --output [path]', 'Where to save all generated files. By default `./generated` in your documentaiton folder .', parsePath)
-    .option('-pe, --private-examples [path]', 'An additional private examples folder.', null)
+    .option('-c, --config <path>', 'Path to config file', parsePath)
+    .option('-o, --output <path>', 'Where to save all generated files. By default `./generated` in your documentaiton folder .', parsePath)
+    .option('-pe, --private-examples <path>', 'An additional private examples folder.', null)
 
     .option(
-        '-m, --with-module [path]',
+        '-m, --with-module <path>',
         'Enable Example Module generation. Pass in path otherwise the file is generated in the example folder.',
         parsePath,
         'true',

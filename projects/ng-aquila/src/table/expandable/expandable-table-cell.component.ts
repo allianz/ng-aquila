@@ -41,7 +41,10 @@ export class NxExpandableTableCellComponent implements OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(_row: NxExpandableTableRowComponent, private readonly _cdr: ChangeDetectorRef) {
+    constructor(
+        _row: NxExpandableTableRowComponent,
+        private readonly _cdr: ChangeDetectorRef,
+    ) {
         _row.expanded.pipe(takeUntil(this._destroyed)).subscribe(open => {
             this._open = open;
             this._cdr.markForCheck();

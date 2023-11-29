@@ -15,7 +15,10 @@ export class DocViewerComponent {
 
     @Output() readonly contentLoaded = new EventEmitter<any>();
 
-    constructor(private readonly _http: HttpClient, private readonly _elementRef: ElementRef) {}
+    constructor(
+        private readonly _http: HttpClient,
+        private readonly _elementRef: ElementRef,
+    ) {}
 
     get content() {
         return this._loadedContent;

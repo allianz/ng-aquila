@@ -100,12 +100,12 @@
             "prefix": "doc",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
+                    "builder": "@angular-devkit/build-angular:application",
                     "options": {
                         "allowedCommonJsDependencies": ["parse-color", "decimal.js", "iban", "moment", "i18n-iso-countries"],
                         "outputPath": "dist/opensource-documentation",
                         "index": "projects/opensource-documentation/src/index.html",
-                        "main": "projects/opensource-documentation/src/main.ts",
+                        "browser": "projects/opensource-documentation/src/main.ts",
                         "polyfills": ["zone.js"],
                         "tsConfig": "projects/opensource-documentation/tsconfig.app.json",
                         "assets": [
@@ -161,9 +161,7 @@
                             "outputHashing": "all"
                         },
                         "development": {
-                            "buildOptimizer": false,
                             "optimization": false,
-                            "vendorChunk": true,
                             "extractLicenses": false,
                             "sourceMap": true,
                             "namedChunks": true
@@ -175,10 +173,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "opensource-documentation:build:production"
+                            "buildTarget": "opensource-documentation:build:production"
                         },
                         "development": {
-                            "browserTarget": "opensource-documentation:build:development"
+                            "buildTarget": "opensource-documentation:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -186,7 +184,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "opensource-documentation:build"
+                        "buildTarget": "opensource-documentation:build"
                     }
                 },
                 "lint": {

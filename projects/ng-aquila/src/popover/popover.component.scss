@@ -83,7 +83,9 @@ $padding-content: nx-spacer(2m) - $popover-border-size;
 .nx-popover--top .nx-popover__arrow {
     transform: translate(-50%, 0) rotate(225deg);
     bottom: $popover-arrow-offset;
-    box-shadow: 2px 2px 1px 1px v(popover-background-color), $arrow-shadow;
+    box-shadow:
+        2px 2px 1px 1px v(popover-background-color),
+        $arrow-shadow;
 }
 
 .nx-popover--right .nx-popover__arrow {
