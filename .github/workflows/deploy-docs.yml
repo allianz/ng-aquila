@@ -26,7 +26,7 @@ jobs:
                   npm run build:lib
                   npm run library:generate:docs
                   npm run build:docs -- --base-href=/ng-aquila/ --no-progress
-                  cp projects/opensource-documentation/src/404.html dist/opensource-documentation
+                  cp projects/opensource-documentation/src/404.html dist/opensource-documentation/browser
 
             - name: Deploy 🚀
               uses: JamesIves/github-pages-deploy-action@3.7.1
