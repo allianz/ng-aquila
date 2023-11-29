@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [16.12.0](https://github.com/allianz/ng-aquila/compare/v16.11.0...v16.12.0) (2023-11-29)
+
+### Container Queries
+We added a new feature to the grid component that introduces container queries. The grid will then automatically adjust the number of columns and rows based on the container size and not on the viewport size.
+
+
+### Bug Fixes
+
+* **comparision-table:** improve toggle section screen reader output([f435eb0](https://github.com/allianz/ng-aquila/commit/f435eb0b00c815695072f4590fda1c85ada6e4f7))
+* **datefield:** provide NxDatepickerIntl in root and not in module  ([36b46fe](https://github.com/allianz/ng-aquila/commit/36b46fed725350667a7e9c49988c7f99c19c3fec))
+* **dropdown:** cursor navigation in filter input field ([0f44626](https://github.com/allianz/ng-aquila/commit/0f446261d54e37c2f06b0c25e244810180919665))
+* **formfield:** formfield focus style ([ac6c1bb](https://github.com/allianz/ng-aquila/commit/ac6c1bbe64934eabec17fe0161a7ff3b4ea7f93e))
+* overflow issue on sticky header and column ([5e73c09](https://github.com/allianz/ng-aquila/commit/5e73c09cb2138cb93d2dfafe6cbd4f98f377e686))
+* **phone-input:** mark for check when setReadonly is called ([620ab37](https://github.com/allianz/ng-aquila/commit/620ab370bf6278b88161b127f66a0659c150d494))
+* remove relation icon from essential icons ([50272e9](https://github.com/allianz/ng-aquila/commit/50272e978cf7eac9f476e40876c9198b855b43e8))
+* **signal-button:** change warning icon ([1e27714](https://github.com/allianz/ng-aquila/commit/1e2771468959029e89e5b0ea19209fadaa74032c))
+* **tabs:** correct disabled style ([255377f](https://github.com/allianz/ng-aquila/commit/255377f15e85177e0851d675228f15021007fc70))
+
+
+### Features
+
+* **grid:** add container query option ([017bad2](https://github.com/allianz/ng-aquila/commit/017bad21d9e34c44a2bd2a5a27b7e9576942a813))
+* **selectable-card:** add radio button behavior ([d24d5a6](https://github.com/allianz/ng-aquila/commit/d24d5a69b96fe0b11f389739cb30e3df2cb78805))
+* **slider:** slider info icon slot ([f068681](https://github.com/allianz/ng-aquila/commit/f068681336e77991d5a81143f3ad4145c1d70bdb))
+
+
+
 # [16.11.0](https://github.com/allianz/ng-aquila/compare/v16.10.0...v16.11.0) (2023-11-09)
 
 
