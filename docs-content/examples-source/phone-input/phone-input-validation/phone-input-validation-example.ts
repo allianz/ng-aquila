@@ -19,7 +19,6 @@ const LANDLINE_TYPES: NumberType[] = [
 
 /**
  * Validates phone numbers. International numbers are accepted if they contain a country code.
- *
  * @param type (optional) Type of number, can be `mobile` or `landline`
  */
 export function phoneNumberValidator(type?: PhoneNumberType): ValidatorFn {
