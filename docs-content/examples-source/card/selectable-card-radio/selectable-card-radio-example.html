@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup">
+    <nx-selectable-card-group formControlName="radio" name="radio-group">
+        <div *ngFor="let card of cards; index as i">
+            <nx-selectable-card
+                class="nx-margin-bottom-xs"
+                [value]="card.value"
+                [disabled]="card.disabled"
+            >
+                <h3 nxCopytext class="nx-margin-bottom-2m">{{card.title}}</h3>
+            </nx-selectable-card>
+        </div>
+        <nx-error> This card must be selected. </nx-error>
+    </nx-selectable-card-group>
+</form>
+<button
+    (click)="addNewCard()"
+    nxButton="primary small"
+    type="button"
+    class="nx-margin-top-m"
+>
+    Add new card
+</button>
+<p>Form value: {{ formGroup.value | json }}</p>

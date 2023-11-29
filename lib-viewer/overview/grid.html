@@ -54,6 +54,18 @@
 <h4 id="column" tabindex="-1" class="docs-markdown--h4">Column</h4>
 <p class="docs-markdown--p">The grid is based on the common 12 column base. This means that a single column takes up 1/12 of the available width. You can configure a column to take up more space ranging from 1 to 12 columns by using the directive <code>nxCol</code>.</p>
 <p class="docs-markdown--p">There are modifiers available like <code>align-self-start</code> and <code>offset</code>.</p>
+<h3 id="css-media-and-container-queries" tabindex="-1" class="docs-markdown--h3">CSS Media and Container Queries</h3>
+<p class="docs-markdown--p">CSS Media Queries allow for the styling of web content based on the characteristics of the device or browser that it is being viewed on, while CSS Container Queries enable responsive design by allowing elements to adapt their styling based on the size of their container rather than the viewport.
+You can choose the query type for each grid based on your needs.</p>
+<h4 id="media-queries" tabindex="-1" class="docs-markdown--h4">Media Queries</h4>
+<p class="docs-markdown--p">Media queries are based on the browser where the web page is viewed on.
+We use CSS Media Queries as the default. All components and examples are based on Media Queries if not stated otherwise.</p>
+<h4 id="container-queries" tabindex="-1" class="docs-markdown--h4">Container Queries</h4>
+<p class="docs-markdown--p">Container queries are a way to create layouts that are based on the size of each individual container, rather than the viewport.
+Checkout the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries">mozilla container queries documentation</a> for more information.</p>
+<p class="docs-markdown--p">To enable container querying use <code>[containerQuery]=&quot;true&quot;</code> on the grid.</p>
+<p class="docs-markdown--p">This example illustrates the difference between media and container queries. Both sub grids use the same definitions for <strong>rows</strong> and <strong>columns</strong>. The only difference is the query type.</p>
+<div nx-docs-example="grid-query-comparison" config="{}">exampleID: grid-query-comparison</div>
 <h3 id="examples" tabindex="-1" class="docs-markdown--h3">Examples</h3>
 <h4 id="nxlayout" tabindex="-1" class="docs-markdown--h4">nxLayout</h4>
 <p class="docs-markdown--p">Use the nxLayout directive on a <code>div</code> element to specify if it's a container:</p>

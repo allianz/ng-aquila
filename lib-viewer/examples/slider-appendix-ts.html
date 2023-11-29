@@ -1,0 +1,19 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Slider Appendix Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;slider-appendix-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./slider-appendix-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./slider-appendix-example.css&#x27;</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SliderAppendixExampleComponent</span> {
+    popoverMaxWidth = <span class="hljs-string">&#x27;400px&#x27;</span>;
+    sliderDemoValue = <span class="hljs-number">40</span>;
+    step = <span class="hljs-number">8</span>;
+    interval = <span class="hljs-number">1</span>;
+    min = <span class="hljs-number">0</span>;
+    max = <span class="hljs-number">100</span>;
+    <span class="hljs-attr">longTicks</span>: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">16</span>, <span class="hljs-number">32</span>, <span class="hljs-number">48</span>, <span class="hljs-number">64</span>, <span class="hljs-number">80</span>, <span class="hljs-number">96</span>];
+}

@@ -1,0 +1,53 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ChangeDetectionStrategy</span>, <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormBuilder</span>, <span class="hljs-title class_">Validators</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Selectable cards radio example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;selectable-card-radio-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./selectable-card-radio-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./selectable-card-radio-example.scss&#x27;</span>],
+    <span class="hljs-attr">changeDetection</span>: <span class="hljs-title class_">ChangeDetectionStrategy</span>.<span class="hljs-property">OnPush</span>,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SelectableCardRadioExampleComponent</span> {
+    cards = [
+        {
+            <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;a&#x27;</span>,
+            <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Selectable radio card&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;b&#x27;</span>,
+            <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Selectable radio card&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;c&#x27;</span>,
+            <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Disabled selected radio card&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;d&#x27;</span>,
+            <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Disabled radio card&#x27;</span>,
+        },
+    ];
+    <span class="hljs-keyword">readonly</span> formGroup = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
+        <span class="hljs-attr">radio</span>: [<span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
+    });
+
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>) {}
+
+    <span class="hljs-title function_">addNewCard</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">cards</span>.<span class="hljs-title function_">push</span>({
+            <span class="hljs-attr">value</span>: (<span class="hljs-variable language_">this</span>.<span class="hljs-property">cards</span>.<span class="hljs-property">length</span> + <span class="hljs-number">1</span>).<span class="hljs-title function_">toString</span>(),
+            <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;New radio card&#x27;</span>,
+        });
+    }
+
+    <span class="hljs-title function_">removeFirstCard</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">cards</span>.<span class="hljs-title function_">pop</span>();
+    }
+}

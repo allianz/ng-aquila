@@ -27,6 +27,7 @@ export class TabsWithIndicatorExampleComponent {
             label: 'Fourth tab',
             notification: true,
             notificationCount: 105,
+            disabled: true,
         },
     ];
 

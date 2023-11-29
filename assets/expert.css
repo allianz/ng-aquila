@@ -723,6 +723,8 @@ body,
   --formfield-border-width: 1px;
   --formfield-active-border-width: 4px;
   --formfield-active-color: var(--interactive-text);
+  --formfield-active-border-radius: 2px;
+  --formfield-active-border-bottom-color: transparent;
   --formfield-hover-border-color: var(--ui-06);
   --formfield-disabled-text-color: var(--disabled-01);
   --formfield-disabled-border-color: var(--disabled-01);
@@ -1000,6 +1002,7 @@ body,
   --radio-button-selected-circle-color: var(--interactive-primary);
   --radio-button-dot-background-color: transparent;
   --radio-button-selected-background-color: transparent;
+  --tab-expert-item-disabled-color: var(--disabled-01);
   --radio-button-dot-size: 8px;
   --radio-button-disabled-selected-background-color: transparent;
   --radio-button-disabled-selected-dot-color: var(--disabled-01);
@@ -1066,6 +1069,7 @@ body,
   --slider-handle-value-letter-spacing: var(--paragraph-05-letter-spacing);
   --slider-negative-background-color: var(--negative-dimmed);
   --slider-tick-color: var(--text-01);
+  --slider-icon-size: 24px;
   --small-stage-min-height: 208px;
   --small-stage-image-min-height: 64px;
   --small-stage-image-max-height: 144px;
@@ -1145,7 +1149,6 @@ body,
   --tab-item-border-color: var(--ui-05);
   --tab-item-active-border-color: var(--interactive-text);
   --tab-item-disabled-color: var(--disabled-01);
-  --tab-item-disabled-border-color: var(--disabled-01);
   --tab-item-font-size: var(--paragraph-02-font-size);
   --tab-item-line-height: var(--paragraph-02-line-height);
   --tab-item-font-weight: var(--paragraph-02-font-weight);

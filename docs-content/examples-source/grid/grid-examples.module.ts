@@ -13,6 +13,7 @@ import { GridMultiInputs2ExampleComponent } from './grid-multi-inputs-2/grid-mul
 import { GridNogutterExampleComponent } from './grid-nogutter/grid-nogutter-example';
 import { GridOffsetExampleComponent } from './grid-offset/grid-offset-example';
 import { GridOneInputExampleComponent } from './grid-one-input/grid-one-input-example';
+import { GridQueryComparisonComponent } from './grid-query-comparison/grid-query-comparison-example';
 
 const EXAMPLES = [
     GridAlignContentExampleComponent,
@@ -27,6 +28,7 @@ const EXAMPLES = [
     GridOffsetExampleComponent,
     GridOneInputExampleComponent,
     GridInGridExampleComponent,
+    GridQueryComparisonComponent,
 ];
 
 @NgModule({
@@ -49,6 +51,7 @@ export class GridExamplesModule {
             'grid-offset': GridOffsetExampleComponent,
             'grid-one-input': GridOneInputExampleComponent,
             'grid-in-grid': GridInGridExampleComponent,
+            'grid-query-comparison': GridQueryComparisonComponent,
         };
     }
 }

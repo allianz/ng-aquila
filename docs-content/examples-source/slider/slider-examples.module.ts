@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { NxSliderModule } from '@aposin/ng-aquila/slider';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { SliderAppendixExampleComponent } from './slider-appendix/slider-appendix-example';
 import { SliderBasicExampleComponent } from './slider-basic/slider-basic-example';
 import { SliderDecimalExampleComponent } from './slider-decimal/slider-decimal-example';
 import { SliderDefaultExampleComponent } from './slider-default/slider-default-example';
@@ -19,6 +22,7 @@ import { SliderTickExampleComponent } from './slider-tick/slider-tick-example';
 
 const EXAMPLES = [
     SliderTickExampleComponent,
+    SliderAppendixExampleComponent,
     SliderBasicExampleComponent,
     SliderDecimalExampleComponent,
     SliderDefaultExampleComponent,
@@ -34,13 +38,20 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxSliderModule, NxInputModule, ExamplesSharedModule],
+    imports: [
+        NxSliderModule,
+        NxInputModule,
+        ExamplesSharedModule,
+        NxPopoverModule,
+        NxIconModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class SliderExamplesModule {
     static components() {
         return {
+            'slider-appendix': SliderAppendixExampleComponent,
             'slider-tick': SliderTickExampleComponent,
             'slider-basic': SliderBasicExampleComponent,
             'slider-decimal': SliderDecimalExampleComponent,
