@@ -46,8 +46,8 @@ const TEST_TEMPLATE_FILES = [
 
 const TAGS: string[] = ['allianz', 'aquila', 'example'];
 
-const angularVersion = '^16.0.0';
-const aquilaVersion = '^16.0.0';
+const angularVersion = '^17.0.0';
+const aquilaVersion = '^17.0.0';
 
 const dependencies = {
     '@angular/animations': angularVersion,
@@ -63,13 +63,13 @@ const dependencies = {
     'ag-grid-angular': '^30.1.0',
     'ag-grid-community': '^30.1.0',
     dayjs: '^1.11.5',
-    'decimal.js': '^10.3.1',
-    'i18n-iso-countries': '^7.4.0',
+    'decimal.js': '^10.4.2',
+    'i18n-iso-countries': '^7.5.0',
     iban: '^0.0.14',
-    moment: '^2.29.3',
-    rxjs: '^6.6.7',
+    moment: '^2.29.4',
+    rxjs: '~6.6.7',
     tslib: '^2.3.0',
-    'zone.js': '~0.11.4',
+    'zone.js': '~0.14.2',
 };
 
 const testDependencies = {
@@ -85,13 +85,13 @@ const testDependencies = {
     '@aposin/ng-aquila': aquilaVersion,
     'i18n-iso-countries': '^7.4.0',
     iban: '^0.0.14',
-    jasmine: '^4.0.2',
-    'jasmine-core': '^4.0.1',
+    jasmine: '^5.1.0',
+    'jasmine-core': '^5.1.1',
     'jasmine-spec-reporter': '^7.0.0',
-    moment: '^2.29.3',
-    rxjs: '^6.6.7',
+    moment: '^2.29.4',
+    rxjs: '~6.6.7',
     tslib: '^2.3.0',
-    'zone.js': '~0.11.4',
+    'zone.js': '~0.14.2',
 };
 
 /**

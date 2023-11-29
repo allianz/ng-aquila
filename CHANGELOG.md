@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [17.0.0](https://github.com/allianz/ng-aquila/compare/v16.12.0...v17.0.0) (2023-11-29)
+
+
+### Features
+
+* update to Angular 17 ([ebdf31e](https://github.com/allianz/ng-aquila/commit/ebdf31e8cfcc6be87d7bc5a472e5d7e1c07cae17))
+
+
+
 # [16.12.0](https://github.com/allianz/ng-aquila/compare/v16.11.0...v16.12.0) (2023-11-29)
 
 ### Container Queries
