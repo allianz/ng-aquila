@@ -14,12 +14,11 @@ We trigger minor or bug fix releases if they provide a meaningful delivery (fix 
 
 | Date           | Angular version | ng-aquila version | LTS end      |
 | -------------- | --------------- | ----------------- | ------------ |
-| December 2021  | 13              | 13                | May 2023     |
-| November 2022  | 14              | 14                | May 2024|
-| December 2022  | 15              | 15                | June 2024 |
-| May 2023       | 16              | 16                | November 2024    |
+| December 2022  | 15              | 15                | May 2024     |
+| May 2023       | 16              | 16                | November 2024|
+| November 2023  | 17              | 17                | May 2025     |
 
-Aquila versions 12 and older are no longer supported.
+Aquila versions 14 and older are no longer supported.
 
 During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
 
