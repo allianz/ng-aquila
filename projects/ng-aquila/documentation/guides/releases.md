@@ -6,9 +6,9 @@ title: Releases and updating
 
 ## Release plan
 
-Our release strategy is naturally synchronized with [Angular's](https://angular.io/guide/releases). The main reason for this is to minimize the frequency of breaking changes. The Angular team releases a major version every six months, whenever we update to this version we expect breaking changes. Thus, we will release any breaking change within Angular NDBX along with the major release of Angular. Consequently, you can expect breaking changes (major update) within ng-aquila about every six months. 
+Our release strategy is naturally synchronized with [Angular's](https://angular.io/guide/releases). The main reason for this is to minimize the frequency of breaking changes. The Angular team releases a major version every six months, whenever we update to this version we expect breaking changes. Thus, we will release any breaking change along with the major release of Angular. Consequently, you can expect breaking changes (major update) within ng-aquila about every six months. 
 
-As the Angular team now provides release dates down to a week, we are able to prepare in advance and provide more specific release terms. We will release a major version during a 6-week period after a major Angular release. Any delays will be communicated on this page. 
+As the Angular team now provides release dates down to a week, we are able to prepare in advance and provide more specific release terms. Our ambition is release a major version during a 6-week period after any major Angular release. 
 
 We trigger minor or bug fix releases if they provide a meaningful delivery (fix or feature). This is usually decided in our weekly refinement meeting.
 
@@ -34,19 +34,19 @@ Then it should be easy to update Aquila with the following command:
 
 `ng update @aposin/ng-aquila --force`
 
-### Breaking Changes
+#### Breaking Changes
 
-### Removal of `nx` prefixes for Inputs and Outputs
+#### Removal of `nx` prefixes for Inputs and Outputs
 We cleaned up some inconsistencies in our input and output namings and removed `nx` prefixes, e.g. `nxDisabled` on the dropdown is now `disabled`. These changes will be migrated automatically for you and applied in your application when you run `ng update`.
 In the `Breaking Changes` section of [the Changelog](./guides/CHANGELOG) you can find commits with affected components. If after the migrations you get errors please check the API pages of the respective components. The angular compiler should also guide you pretty well and often suggest the correct names.
 
-### Formfield visual change
+#### Formfield visual change
 The formfield formerly reserved space at the bottom for a possible hint. This space also served as the spacing between formfields and the hint would render in this reserved space. This leads to situations where you don't have sufficient space between the hint and the next row.
 From now on if a hint is present there will be additional space after the hint.
 
 If this somehow affects your application in a negative way you can temporarily use a compatibility CSS file which provides the previous styles. For that import the file `@aposin/ng-aquila/css/compatibility/formfield-padding.css` in the angular.json
 
-### `nxMask` validation prevented optional controls
+#### `nxMask` validation prevented optional controls
 The `nxMask` internal validator always validated empty strings, resulting in a `nxMaskLengthError`. This makes it impossible to have a control as optional. We fixed this bug which is technically a breaking change. If you relied on getting the `nxMaskLengthError` for empty strings as a replacement for a required validator please add the `required` validator now.
 
 
@@ -65,7 +65,7 @@ Then it should be easy to update Aquila with the following command:
 
 - ⚠️ (nx-input-phone) wrapper class name within component has been changed to avoid interfering with global stylesheets.
 
-### Breaking Changes
+#### Breaking Changes
 
 -   **rating:** visual layout and component API have been updated to align with the current NDBX guidelines
 
@@ -83,7 +83,7 @@ Then it should be easy to update Aquila with the following command:
 
 `ng update @aposin/ng-aquila --force`
 
-### Breaking Changes
+#### Breaking Changes
 
 -   added readonly keyword to public properties which are not meant to be changed.
 
@@ -104,7 +104,7 @@ Then it should be easy to update Aquila with the following command:
 -   With this release we are dropping support of Internet Explorer and removing all the code that was meant to support IE-only functionality and fix its issues. Make sure your project doesn't need IE support before migrating to v13. In case you still need to support IE, consider using LTS v12.
 -   Following Angular development, the library is now distributed in ivy partial compilation mode.
 
-### Breaking Changes
+#### Breaking Changes
 
 -   **footer:** spacing - to restore previous values, override the following new variables:
     -   `footer-padding-top: 24px` (retail only)
@@ -133,7 +133,7 @@ It should be easy to update with the following command:
 
 ## Updating to version 11
 
-### Breaking Changes
+#### Breaking Changes
 
 With v11 there are some breaking changes:
 
@@ -216,7 +216,7 @@ With v11 there are some breaking changes:
     -   The `small-stage-image-container-padding-start` theming token was renamed to `small-stage-image-container-padding-to-content`.
     -   The `small-stage-background-color` theming token was removed. Please set the background-color directly with css.
 
-### Automatic update (`ng update`)
+## Automatic update (`ng update`)
 
 We want to make the update as seamless as possible for you with the use of Angular schematics. By using `ng update` from the Angular CLI this will automatically migrate your project to the new setup. You can update with the following commands:
 
@@ -227,5 +227,3 @@ ng update @aposin/ng-aquila --force
 ```
 
 You can use the Angular CLI's `--allowDirty` flag if you don't want to commit between these steps.
-
-
