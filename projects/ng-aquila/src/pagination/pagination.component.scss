@@ -217,3 +217,24 @@ nx-icon.nx-pagination__arrow {
         display: block;
     }
 }
+
+.nx-pagination-slider {
+    .nx-pagination__item {
+        display: flex;
+        align-items: center;
+        margin: 0 nx-spacer(s);
+    }
+    .nx-pagination--icon {
+        width: v(pagination-slider-icon-width);
+        height: v(pagination-slider-icon-height);
+        border: 1px solid v(pagination-slider-icon-border-color);
+        border-radius: 50%;
+        padding: 0;
+        background: none;
+        cursor: pointer;
+    }
+    .nx-pagination--icon.is-active {
+        background-color: v(pagination-slider-icon-active-color);
+        cursor: auto;
+    }
+}

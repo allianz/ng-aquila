@@ -9,6 +9,7 @@ import { PaginationAdvancedExampleComponent } from './pagination-advanced/pagina
 import { PaginationLocalizeExampleComponent } from './pagination-localize/pagination-localize-example';
 import { PaginationLocalizeAdvancedExampleComponent } from './pagination-localize-advanced/pagination-localize-advanced-example';
 import { PaginationSimpleExampleComponent } from './pagination-simple/pagination-simple-example';
+import { PaginationSliderExampleComponent } from './pagination-slider/pagination-slider-example';
 
 const EXAMPLES = [
     PaginationAdvancedExampleComponent,
@@ -16,6 +17,7 @@ const EXAMPLES = [
     PaginationLocalizeAdvancedExampleComponent,
     PaginationSimpleExampleComponent,
     PaginationA11yExampleComponent,
+    PaginationSliderExampleComponent,
 ];
 
 @NgModule({
@@ -37,6 +39,7 @@ export class PaginationExamplesModule {
                 PaginationLocalizeAdvancedExampleComponent,
             'pagination-simple': PaginationSimpleExampleComponent,
             'pagination-a11y': PaginationA11yExampleComponent,
+            'pagination-slider': PaginationSliderExampleComponent,
         };
     }
 }

@@ -15,6 +15,10 @@ export class NxPaginationUtils {
     private readonly _elipsisText = '...';
     private readonly _classExpanded = 'expanded-view';
 
+    getSlides(totalSlides: number): any[] {
+        return Array.from(Array(totalSlides).keys()).map(item => this.createPaginationItem(item + 1, item + 1));
+    }
+
     getPages(currentPage: number, totalPages: number): Page[] {
         let pages = [];
         let start = [],

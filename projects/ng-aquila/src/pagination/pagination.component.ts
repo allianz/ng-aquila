@@ -217,6 +217,11 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     }
 
     /** @docs-private */
+    getSlides(): Page[] {
+        return this.paginationUtilsService.getSlides(this._count);
+    }
+
+    /** @docs-private */
     getPages(): Page[] {
         return this.paginationUtilsService.getPages(this._page, this.totalNumberPages);
     }
@@ -255,6 +260,11 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
         return this.type.includes('simple') && this.count > 0;
     }
 
+    /** Returns true, if `nxCount` is greater than 0 and the type of pagination is 'slider', else false. */
+    isPaginationSliderVisible(): boolean {
+        return this.type.includes('slider') && this.count > 0;
+    }
+
     /** @docs-private */
     isPaginationContainerVisible(): boolean {
         return this.type.includes('advanced');
@@ -266,6 +276,14 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
 
     _isPaginationNextDisabled(): boolean {
         return this.page === this.totalNumberPages;
+    }
+
+    _isPaginationSliderPreviousDisabled(): boolean {
+        return this.page === 1;
+    }
+
+    _isPaginationSliderNextDisabled(): boolean {
+        return this.page === this.count;
     }
 
     get _isRTL(): boolean {

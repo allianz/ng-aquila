@@ -45,6 +45,8 @@ describe('NxPaginationComponent', () => {
     let mobileListElements: DebugElement[];
     let mobilePageElements: DebugElement[];
 
+    let sliderElements: DebugElement[];
+
     function createTestComponent(component: Type<PaginationTest>) {
         fixture = TestBed.createComponent(component);
         fixture.detectChanges();
@@ -65,6 +67,8 @@ describe('NxPaginationComponent', () => {
         mobileListElements = fixture.nativeElement.querySelectorAll('.nx-pagination__item.nx-pagination__item--mobile');
         pageElements = fixture.nativeElement.querySelectorAll('.nx-pagination__item:not(.nx-pagination__item--mobile) .nx-pagination--number');
         mobilePageElements = fixture.nativeElement.querySelectorAll('.nx-pagination__item.nx-pagination__item--mobile .nx-pagination--number');
+
+        sliderElements = fixture.nativeElement.querySelectorAll('.nx-pagination__item:not(.nx-pagination__item--mobile) .nx-pagination--icon');
     }
 
     beforeEach(waitForAsync(() => {
@@ -80,6 +84,8 @@ describe('NxPaginationComponent', () => {
                 LocalizationToken,
                 SimplePaginationWithDirection,
                 AdvancedPaginationWithDirection,
+                SliderPagination,
+                SliderPaginationBeginat6,
             ],
             providers: [NxPaginationUtils],
         }).compileComponents();
@@ -209,6 +215,50 @@ describe('NxPaginationComponent', () => {
             const arrowFirst = fixture.debugElement.nativeElement.querySelector('.nx-pagination__link--first');
             arrowFirst.click();
             expect(testInstance.goToPage).toHaveBeenCalledWith(1);
+        });
+    });
+
+    describe('slider variation', () => {
+        it('displays a slider pagination', () => {
+            createTestComponent(SliderPagination);
+            expect(sliderElements).not.toBeNull();
+            expect(listElements).not.toHaveSize(0);
+        });
+
+        it('should emit an event when click next arrow', () => {
+            createTestComponent(SliderPagination);
+            fixture.detectChanges();
+            nextArrow.click();
+            expect(testInstance.nextPage).toHaveBeenCalled();
+        });
+
+        it('should emit an event when click next arrow', () => {
+            createTestComponent(SliderPagination);
+            fixture.detectChanges();
+            nextArrow.click();
+            expect(testInstance.nextPage).toHaveBeenCalled();
+        });
+
+        it('should emit an event when click prev arrow', () => {
+            createTestComponent(SliderPaginationBeginat6);
+            fixture.detectChanges();
+            prevArrow.click();
+            expect(testInstance.prevPage).toHaveBeenCalled();
+        });
+
+        it('should emit an event when click a page', () => {
+            createTestComponent(SliderPagination);
+            fixture.detectChanges();
+            const pages = fixture.debugElement.nativeElement.querySelector('.nx-pagination--icon');
+            pages.click();
+            expect(testInstance.goToPage).toHaveBeenCalled();
+        });
+
+        it('should emit an event when click a page', () => {
+            createTestComponent(SliderPagination);
+            const pages = fixture.debugElement.nativeElement.querySelector('.nx-pagination--icon');
+            pages.click();
+            expect(testInstance.goToPage).toHaveBeenCalled();
         });
     });
 
@@ -517,4 +567,32 @@ class AdvancedPaginationWithDirection extends PaginationTest {
     count = 210;
     perPage = 10;
     type = 'advanced';
+}
+
+@Component({
+    template: `
+        <nx-pagination
+            [count]="slides"
+            [page]="activeSlide"
+            type="slider"
+            (goPrev)="prevPage()"
+            (goNext)="nextPage()"
+            (goPage)="goToPage($event)"
+        ></nx-pagination>
+    `,
+})
+class SliderPagination extends PaginationTest {
+    slides = 6;
+    activeSlide = 1;
+}
+
+@Component({
+    template: `
+        <nx-pagination [count]="slides" [page]="activeSlide" type="slider" (goPrev)="prevPage()" (goNext)="nextPage()" (goPage)="goToPage($event)">
+        </nx-pagination>
+    `,
+})
+class SliderPaginationBeginat6 extends PaginationTest {
+    slides = 6;
+    activeSlide = 6;
 }

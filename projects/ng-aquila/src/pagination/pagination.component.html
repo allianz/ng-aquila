@@ -115,3 +115,43 @@
         <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-left' : 'arrow-right'"></nx-icon>
     </button>
 </nav>
+<nav *ngIf="isPaginationSliderVisible()" [attr.aria-label]="ariaLabel" class="nx-pagination-slider">
+    <ul class="nx-pagination__container">
+        <li class="nx-pagination__item nx-pagination__item-previous">
+            <button
+                #link
+                [disabled]="_isPaginationSliderPreviousDisabled()"
+                [attr.aria-label]="paginationTexts.previous"
+                [class.is-disabled]="_isPaginationSliderPreviousDisabled()"
+                class="nx-pagination__link nx-pagination__link--previous"
+                (click)="onPrev()"
+                type="button"
+            >
+                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-right' : 'arrow-left'"></nx-icon>
+            </button>
+        </li>
+        <li *ngFor="let pageNum of getSlides()" class="nx-pagination__item">
+            <button
+                #link
+                class="nx-pagination--icon"
+                (click)="onPage(pageNum.value)"
+                [attr.aria-current]="pageNum.value === page ? 'page' : ''"
+                [class.is-active]="pageNum.value === page"
+                type="button"
+            ></button>
+        </li>
+        <li class="nx-pagination__item nx-pagination__item-next">
+            <button
+                #link
+                [disabled]="_isPaginationSliderNextDisabled()"
+                [attr.aria-label]="paginationTexts.next"
+                [class.is-disabled]="_isPaginationSliderNextDisabled()"
+                class="nx-pagination__link nx-pagination__link--next"
+                (click)="onNext()"
+                type="button"
+            >
+                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-left' : 'arrow-right'"></nx-icon>
+            </button>
+        </li>
+    </ul>
+</nav>

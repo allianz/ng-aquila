@@ -22,6 +22,11 @@ Pagination is used for splitting up content or data into several pages, with con
 
 <!-- example(pagination-simple) -->
 
+### Slider Pagination
+The pagination can be used for a slider using `type="slider"`. **Important:** Maximum 6 slides are supported. 
+
+<!-- example(pagination-slider) -->
+
 ### Localization
 
 In order to localize the component you have to implement the interface `IPaginationTexts` and provide your implementation with the `NX_PAGINATION_TEXTS` injection token.
