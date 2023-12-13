@@ -15,6 +15,13 @@ body {
     padding: 24px;
 }
 
+.docs-outer-grid {
+    margin-left: 0 !important;
+    margin-top: 32px !important;
+    padding: 0 !important;
+    border-style: dotted;
+}
+
 .docs-inverse-container {
     background: #e5e7e6;
     padding: 24px;
@@ -32,6 +39,7 @@ body {
 .docs-container-inline-size {
     // not required for container queries -> just for coloring the example
     container-type: inline-size;
+    margin-top: 16px;
 }
 
 // GRID STYLES
@@ -75,170 +83,4 @@ body {
     .docs-grid-colored-grid-container {
         background-color: darken($color-3xlarge, 40%);
     }
-}
-
-.docs-grid-colored-col-container {
-    font-weight: 600;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    background-clip: content-box, padding-box;
-    outline: 2px dotted $dotted-border-color;
-
-    @container (min-width: 0) and (max-width: 319px) {
-        background-image: linear-gradient(
-                to bottom,
-                var(--ui-01) 0%,
-                var(--ui-01) 100%
-            ),
-            linear-gradient(to bottom, $color-tiny 0%, $color-tiny 100%);
-    }
-
-    @container (min-width: 320px) and (max-width: 703px) {
-        background-image: linear-gradient(
-                to bottom,
-                var(--ui-01) 0%,
-                var(--ui-01) 100%
-            ),
-            linear-gradient(to bottom, $color-small 0%, $color-small 100%);
-    }
-
-    @container (min-width: 704px) and (max-width: 991px) {
-        background-image: linear-gradient(
-                to bottom,
-                var(--ui-01) 0%,
-                var(--ui-01) 100%
-            ),
-            linear-gradient(to bottom, $color-medium 0%, $color-medium 100%);
-    }
-
-    @container (min-width: 992px) and (max-width: 1279px) {
-        background-image: linear-gradient(
-                to bottom,
-                var(--ui-01) 0%,
-                var(--ui-01) 100%
-            ),
-            linear-gradient(to bottom, $color-large 0%, $color-large 100%);
-    }
-
-    @container (min-width: 1280px) and (max-width: 1471px) {
-        background-image: linear-gradient(
-                to bottom,
-                var(--ui-01) 0%,
-                var(--ui-01) 100%
-            ),
-            linear-gradient(to bottom, $color-xlarge 0%, $color-xlarge 100%);
-    }
-
-    @container (min-width: 1472px) and (max-width: 1759px) {
-        background-image: linear-gradient(
-                to bottom,
-                var(--ui-01) 0%,
-                var(--ui-01) 100%
-            ),
-            linear-gradient(to bottom, $color-2xlarge 0%, $color-2xlarge 100%);
-    }
-
-    @container (min-width: 1760px) {
-        background-image: linear-gradient(
-                to bottom,
-                var(--ui-01) 0%,
-                var(--ui-01) 100%
-            ),
-            linear-gradient(to bottom, $color-3xlarge 0%, $color-3xlarge 100%);
-    }
-
-    outline-offset: -1px;
-}
-
-.docs-grid-colored-offset-container {
-    @container (min-width: 0) and (max-width: 319px) {
-        background: linear-gradient(
-            to right,
-            darken($color-tiny, 20%) 50%,
-            transparent 50%
-        );
-    }
-
-    @container (min-width: 320px) and (max-width: 703px) {
-        background: linear-gradient(
-            to right,
-            darken($color-small, 20%) 50%,
-            transparent 50%
-        );
-    }
-
-    @container (min-width: 704px) and (max-width: 991px) {
-        background: linear-gradient(
-            to right,
-            darken($color-medium, 20%) 50%,
-            transparent 50%
-        );
-    }
-
-    @container (min-width: 992px) and (max-width: 1279px) {
-        background: linear-gradient(
-            to right,
-            darken($color-large, 20%) 50%,
-            transparent 50%
-        );
-    }
-
-    @container (min-width: 1280px) and (max-width: 1471px) {
-        background: linear-gradient(
-            to right,
-            darken($color-xlarge, 20%) 50%,
-            transparent 50%
-        );
-    }
-
-    @container (min-width: 1472px) and (max-width: 1759px) {
-        background: linear-gradient(
-            to right,
-            darken($color-2xlarge, 20%) 50%,
-            transparent 50%
-        );
-    }
-
-    @container (min-width: 1760px) {
-        background: linear-gradient(
-            to right,
-            darken($color-3xlarge, 20%) 50%,
-            transparent 50%
-        );
-    }
-}
-
-.docs-grid-text-tiny {
-    font-weight: 700;
-    color: $color-tiny;
-}
-
-.docs-grid-text-small {
-    font-weight: 700;
-    color: $color-small;
-}
-
-.docs-grid-text-medium {
-    font-weight: 700;
-    color: $color-medium;
-}
-
-.docs-grid-text-large {
-    font-weight: 700;
-    color: $color-large;
-}
-
-.docs-grid-text-xlarge {
-    font-weight: 700;
-    color: $color-xlarge;
-}
-
-.docs-grid-text-2xlarge {
-    font-weight: 700;
-    color: $color-2xlarge;
-}
-
-.docs-grid-text-3xlarge {
-    font-weight: 700;
-    color: $color-3xlarge;
 }

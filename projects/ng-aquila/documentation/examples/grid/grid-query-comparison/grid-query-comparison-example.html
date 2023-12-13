@@ -1,68 +1,86 @@
-<div nxLayout="grid">
-    <div nxRow class="docs-grid-colored-row">
-        <div nxCol="6" style="align-content: center">
-            <h3>Media Query Sub Grid</h3>
-        </div>
-        <div nxCol="6" style="align-content: center">
-            <h3>Container Query Sub Grid</h3>
-        </div>
-    </div>
-
+<nx-slider
+    [min]="10"
+    [max]="maxExampleGridWidth"
+    [step]="2"
+    [valueFormatter]="appendPx"
+    [(value)]="exampleGridWidth"
+    label="Set width of example grids"
+>
+</nx-slider>
+<div
+    nxLayout="grid"
+    [style.width.px]="exampleGridWidth"
+    class="docs-outer-grid"
+>
     <div nxRow>
-        <div nxCol="6">
+        <div nxCol="12">
             <div
                 nxLayout="grid"
                 [containerQuery]="false"
                 class="docs-grid-colored-grid"
             >
                 <div nxRow class="docs-grid-colored-row">
-                    <div nxCol="12,8" class="docs-grid-colored-col">
-                        nxCol="12,8"
+                    <div nxCol="12,10,8" class="nx-margin-top-s">
+                        <h3>Media Query Subgrid</h3>
                     </div>
                 </div>
                 <div nxRow class="docs-grid-colored-row">
-                    <div nxCol="12,8,2" class="docs-grid-colored-col">
-                        nxCol="12,8,2"
+                    <div nxCol="12,8,4" class="">
+                        <h4>Some simple form</h4>
                     </div>
                 </div>
                 <div nxRow class="docs-grid-colored-row">
-                    <div nxCol="12,6" class="docs-grid-colored-col">
-                        nxCol="12,6"
+                    <div nxCol="12,12,6" class="">
+                        <nx-formfield label="Long input">
+                            <input nxInput type="text" />
+                        </nx-formfield>
                     </div>
-                    <div nxCol="12,6,2" class="docs-grid-colored-col">
-                        nxCol="12,6,2"
+                    <div nxCol="12,8,4" class="">
+                        <nx-formfield label="Short input">
+                            <input nxInput type="text" />
+                        </nx-formfield>
                     </div>
-                    <div nxCol="12,6,2" class="docs-grid-colored-col">
-                        nxCol="12,6,2"
+                    <div nxCol="12,4,2" class="">
+                        <nx-formfield label="Tiny input">
+                            <input nxInput type="text" />
+                        </nx-formfield>
                     </div>
                 </div>
             </div>
         </div>
-        <div nxCol="6" class="docs-container-inline-size">
+    </div>
+    <div nxRow>
+        <div nxCol="12" class="docs-container-inline-size">
             <div
                 nxLayout="grid"
                 [containerQuery]="true"
                 class="docs-grid-colored-grid-container"
             >
                 <div nxRow class="docs-grid-colored-row">
-                    <div nxCol="12,8" class="docs-grid-colored-col-container">
-                        nxCol="12,8"
+                    <div nxCol="12,10,8" class="nx-margin-top-s">
+                        <h3>Container Query Subgrid</h3>
                     </div>
                 </div>
                 <div nxRow class="docs-grid-colored-row">
-                    <div nxCol="12,8,2" class="docs-grid-colored-col-container">
-                        nxCol="12,8,2"
+                    <div nxCol="12,8,4" class="">
+                        <h4>Some simple form</h4>
                     </div>
                 </div>
                 <div nxRow class="docs-grid-colored-row">
-                    <div nxCol="12,6" class="docs-grid-colored-col-container">
-                        nxCol="12,6"
+                    <div nxCol="12,12,6" class="">
+                        <nx-formfield label="Long input">
+                            <input nxInput type="text" />
+                        </nx-formfield>
                     </div>
-                    <div nxCol="12,6,2" class="docs-grid-colored-col-container">
-                        nxCol="12,6,2"
+                    <div nxCol="12,8,4" class="">
+                        <nx-formfield label="Short input">
+                            <input nxInput type="text" />
+                        </nx-formfield>
                     </div>
-                    <div nxCol="12,6,2" class="docs-grid-colored-col-container">
-                        nxCol="12,6,2"
+                    <div nxCol="12,4,2" class="">
+                        <nx-formfield label="Tiny input">
+                            <input nxInput type="text" />
+                        </nx-formfield>
                     </div>
                 </div>
             </div>

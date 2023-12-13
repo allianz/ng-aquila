@@ -100,6 +100,7 @@ Checkout the [mozilla container queries documentation](https://developer.mozilla
 To enable container querying use `[containerQuery]="true"` on the grid.
 
 This example illustrates the difference between media and container queries. Both sub grids use the same definitions for __rows__ and __columns__. The only difference is the query type.
+Watch the container grid adjust to changes of the container size in contrast to the media query grid.
 
 <!-- example(grid-query-comparison) -->
 

@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { NxGridModule } from '@aposin/ng-aquila/grid';
 
+import { NxFormfieldModule } from '../../../src/formfield';
+import { NxInputModule } from '../../../src/input';
+import { NxSliderModule } from '../../../src/slider/slider.module';
 import { GridAlignContentExampleComponent } from './grid-align-content/grid-align-content-example';
 import { GridAlignItemsExampleComponent } from './grid-align-items/grid-align-items-example';
 import { GridAlignSelfExampleComponent } from './grid-align-self/grid-align-self-example';
@@ -32,7 +35,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxGridModule],
+    imports: [NxGridModule, NxSliderModule, NxFormfieldModule, NxInputModule],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
