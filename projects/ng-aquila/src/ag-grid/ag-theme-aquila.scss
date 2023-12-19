@@ -1,4 +1,3 @@
-@use 'ag-grid-community/styles' as ag;
 @use 'sass:map';
 @use 'sass:list';
 
@@ -25,54 +24,10 @@ $icon-mapping: (
     small-left: '\ea28',
     small-down: '\e90a',
 );
-// note: the sass API does some auto magic with deriving colors with transparency from certain values. this does not work if we want to use one of our
-// css variables, the sass build will throw an error if that happens.
-// you can find the color blends of ag-grid here: https://github.com/ag-grid/ag-grid/blob/latest/grid-community-modules/styles/_index.scss
-// that gives a good indication which other variables need to be set manually by us.
-// or as a quick workaround you can move move the declaration into the .ag-theme-aquila block
-// but then something where the blended colors from default alpine are used might not work well with
-// our theme
-$aquila-theme: (
-    theme: aquila,
-    extend-theme: alpine,
-    --ag-card-radius: 4px,
-    --ag-background-color: var(--ui-01),
-    --ag-modal-overlay-background-color: var(--ui-01),
-    --ag-control-panel-background-color: var(--ui-01),
-    --ag-popup-shadow: var(--shadow-small),
-    --ag-card-shadow: var(--shadow-large),
-    --ag-font-family: var(--font-family),
-    --ag-header-background-color: var(--table-header-cell-background-color),
-    --ag-font-size: var(--table-header-cell-font-size),
-    --ag-odd-row-background-color: var(--table-row-background-color),
-    --ag-row-border-color: var(--table-cell-border-top-color),
-    --ag-row-height: 56px,
-    --ag-input-focus-box-shadow: var(--formfield-outline-focus-box-shadow),
-    --ag-input-focus-border-color: var(--formfield-outline-active-border-color),
-    --ag-checkbox-unchecked-color: var(--checkbox-border-color),
-    --ag-checkbox-checked-color: var(--checkbox-selected-background-color),
-    --ag-row-hover-color: var(--selectable-table-row-hover-background-color),
-    --ag-selected-row-background-color: var(--zebra-table-row-selected-background-color),
-    --ag-header-column-resize-handle-color: var(--table-resize-handle-color),
-    --ag-header-column-separator-color: var(--table-resize-handle-color),
-    --ag-header-column-resize-handle-height: 50%,
-    --ag-border-radius: 4px,
-    --ag-widget-vertical-spacing: 12px,
-    --ag-cell-horizontal-padding: 16px,
-    --ag-border-color: var(--ui-04),
-    --ag-foreground-color: var(--text-01),
-    --ag-disabled-foreground-color: var(--disabled-01),
-    --ag-input-disabled-background-color: var(--formfield-background-color),
-    --ag-input-disabled-border-color: var(--formfield-disabled-border-color),
-    // that might need adjustment don't know where that is used
-    --ag-chip-background-color: var(--ui-01),
-);
-
-@include ag.grid-styles($aquila-theme);
 
 // ICONS where we already want to use the allianz icon font
 // we override this for each icon separately until we have the full set
-.ag-allianz-icons .ag-icon {
+.ag-theme-allianz-icons .ag-icon {
     @each $icon-name, $character in $icon-mapping {
         --ag-icon-font-code-#{$icon-name}: '#{$character}';
     }
@@ -88,6 +43,37 @@ $aquila-theme: (
 }
 
 .ag-theme-aquila {
+    --ag-card-radius: 4px;
+    --ag-background-color: var(--ui-01);
+    --ag-modal-overlay-background-color: var(--ui-01);
+    --ag-control-panel-background-color: var(--ui-01);
+    --ag-popup-shadow: var(--shadow-small);
+    --ag-card-shadow: var(--shadow-large);
+    --ag-font-family: var(--font-family);
+    --ag-header-background-color: var(--table-header-cell-background-color);
+    --ag-font-size: var(--table-header-cell-font-size);
+    --ag-odd-row-background-color: var(--table-row-background-color);
+    --ag-row-border-color: var(--table-cell-border-top-color);
+    --ag-row-height: 56px;
+    --ag-input-focus-box-shadow: var(--formfield-outline-focus-box-shadow);
+    --ag-input-focus-border-color: var(--formfield-outline-active-border-color);
+    --ag-checkbox-unchecked-color: var(--checkbox-border-color);
+    --ag-checkbox-checked-color: var(--checkbox-selected-background-color);
+    --ag-row-hover-color: var(--selectable-table-row-hover-background-color);
+    --ag-selected-row-background-color: var(--zebra-table-row-selected-background-color);
+    --ag-header-column-resize-handle-color: var(--table-resize-handle-color);
+    --ag-header-column-separator-color: var(--table-resize-handle-color);
+    --ag-header-column-resize-handle-height: 50%;
+    --ag-border-radius: 4px;
+    --ag-widget-vertical-spacing: 12px;
+    --ag-cell-horizontal-padding: 16px;
+    --ag-border-color: var(--ui-04);
+    --ag-foreground-color: var(--text-01);
+    --ag-disabled-foreground-color: var(--disabled-01);
+    --ag-input-disabled-background-color: var(--formfield-background-color);
+    --ag-input-disabled-border-color: var(--formfield-disabled-border-color);
+    // that might need adjustment don't know where that is used
+    --ag-chip-background-color: var(--ui-01);
     --ag-input-border-color: var(--formfield-outline-border-color);
     --ag-range-selection-border-color: var(--selectable-table-row-selected-border-color);
 
