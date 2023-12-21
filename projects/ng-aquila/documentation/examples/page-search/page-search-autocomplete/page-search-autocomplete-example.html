@@ -4,52 +4,54 @@
     contentLayout="12,12,12,8"
     aria-label="Search autocomplete example"
 >
-    <div nxRow>
-        <div nxCol="12,12,6,6">
-            <nx-formfield>
-                <input
-                    nxInput
-                    [nxAutocomplete]="auto1"
-                    [nxAutocompleteItems]="searchFunction"
-                    [(ngModel)]="searchTerm1"
-                    type="search"
-                />
-                <nx-autocomplete #auto1="nxAutocomplete"></nx-autocomplete>
-                <span nxFormfieldPrefix>
-                    <nx-icon name="search" size="s"></nx-icon>
-                </span>
-                <span
-                    nxFormfieldSuffix
-                    *ngIf="searchTerm1"
-                    aria-hidden="true"
-                    (click)="searchTerm1=''"
-                >
-                    <nx-icon name="close" size="s"></nx-icon>
-                </span>
-            </nx-formfield>
-        </div>
-        <div nxCol="12,12,6,6">
-            <nx-formfield>
-                <input
-                    nxInput
-                    [nxAutocomplete]="auto2"
-                    [nxAutocompleteItems]="searchFunction"
-                    [(ngModel)]="searchTerm2"
-                    type="search"
-                />
-                <nx-autocomplete #auto2="nxAutocomplete"></nx-autocomplete>
-                <span nxFormfieldPrefix>
-                    <nx-icon name="search" size="s"></nx-icon>
-                </span>
-                <span
-                    nxFormfieldSuffix
-                    *ngIf="searchTerm2"
-                    aria-hidden="true"
-                    (click)="searchTerm2=''"
-                >
-                    <nx-icon name="close" size="s"></nx-icon>
-                </span>
-            </nx-formfield>
+    <div nxLayout="grid nopadding">
+        <div nxRow>
+            <div nxCol="12,12,6,6">
+                <nx-formfield>
+                    <input
+                        nxInput
+                        [nxAutocomplete]="auto1"
+                        [nxAutocompleteItems]="searchFunction"
+                        [(ngModel)]="searchTerm1"
+                        type="search"
+                    />
+                    <nx-autocomplete #auto1="nxAutocomplete"></nx-autocomplete>
+                    <span nxFormfieldPrefix>
+                        <nx-icon name="search" size="s"></nx-icon>
+                    </span>
+                    <span
+                        nxFormfieldSuffix
+                        *ngIf="searchTerm1"
+                        aria-hidden="true"
+                        (click)="searchTerm1=''"
+                    >
+                        <nx-icon name="close" size="s"></nx-icon>
+                    </span>
+                </nx-formfield>
+            </div>
+            <div nxCol="12,12,6,6">
+                <nx-formfield>
+                    <input
+                        nxInput
+                        [nxAutocomplete]="auto2"
+                        [nxAutocompleteItems]="searchFunction"
+                        [(ngModel)]="searchTerm2"
+                        type="search"
+                    />
+                    <nx-autocomplete #auto2="nxAutocomplete"></nx-autocomplete>
+                    <span nxFormfieldPrefix>
+                        <nx-icon name="search" size="s"></nx-icon>
+                    </span>
+                    <span
+                        nxFormfieldSuffix
+                        *ngIf="searchTerm2"
+                        aria-hidden="true"
+                        (click)="searchTerm2=''"
+                    >
+                        <nx-icon name="close" size="s"></nx-icon>
+                    </span>
+                </nx-formfield>
+            </div>
         </div>
     </div>
 </nx-page-search>

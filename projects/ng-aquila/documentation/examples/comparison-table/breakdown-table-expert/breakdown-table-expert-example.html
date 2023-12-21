@@ -1,43 +1,51 @@
-<div nxRow rowJustify="center">
-    <div nxCol="12,12,12,12,10,9">
-        <div class="breakdown-table nx-margin-bottom-s">
-            <p nxCopytext="small" class="nx-margin-bottom-2xs">
-                Based on your annual premium and additional selected coverages
-            </p>
+<div nxLayout="grid">
+    <div nxRow rowJustify="center">
+        <div nxCol="12,12,12,12,10,9">
+            <div class="breakdown-table nx-margin-bottom-s">
+                <p nxCopytext="small" class="nx-margin-bottom-2xs">
+                    Based on your annual premium and additional selected
+                    coverages
+                </p>
 
-            <div nxHeadline="subsection-small" class="nx-margin-bottom-s">
-                <span class="nx-font-weight-semibold">Total coverage: </span>
-                <span class="nx-font-weight-semibold">$ 705 </span>
-                <span nxCopytext>/year</span>
+                <div nxHeadline="subsection-small" class="nx-margin-bottom-s">
+                    <span class="nx-font-weight-semibold"
+                        >Total coverage:
+                    </span>
+                    <span class="nx-font-weight-semibold">$ 705 </span>
+                    <span nxCopytext>/year</span>
+                </div>
+
+                <div class="breakdown-table__divider"></div>
+
+                <h6 nxCopytext class="nx-font-weight-bold nx-margin-bottom-s">
+                    Premium breakdown
+                </h6>
+
+                <nx-data-display
+                    label="Annual base premium"
+                    orientation="horizontal"
+                >
+                    {{421 | currency}}
+                </nx-data-display>
+                <nx-data-display
+                    label="Windscreen cover"
+                    orientation="horizontal"
+                >
+                    {{120 | currency}}
+                </nx-data-display>
+                <nx-data-display
+                    label="Emergency and/or fire service levies"
+                    orientation="horizontal"
+                >
+                    {{8 | currency}}
+                </nx-data-display>
+                <nx-data-display
+                    label="Goods & services tax (GST)"
+                    orientation="horizontal"
+                >
+                    {{78 | currency}}
+                </nx-data-display>
             </div>
-
-            <div class="breakdown-table__divider"></div>
-
-            <h6 nxCopytext class="nx-font-weight-bold nx-margin-bottom-s">
-                Premium breakdown
-            </h6>
-
-            <nx-data-display
-                label="Annual base premium"
-                orientation="horizontal"
-            >
-                {{421 | currency}}
-            </nx-data-display>
-            <nx-data-display label="Windscreen cover" orientation="horizontal">
-                {{120 | currency}}
-            </nx-data-display>
-            <nx-data-display
-                label="Emergency and/or fire service levies"
-                orientation="horizontal"
-            >
-                {{8 | currency}}
-            </nx-data-display>
-            <nx-data-display
-                label="Goods & services tax (GST)"
-                orientation="horizontal"
-            >
-                {{78 | currency}}
-            </nx-data-display>
         </div>
     </div>
 </div>
