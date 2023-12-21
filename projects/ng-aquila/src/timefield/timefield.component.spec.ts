@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { dispatchFakeEvent } from 'projects/ng-aquila/src/cdk-test-utils';
 
 import { NxTimefieldComponent } from './timefield.component';
 import { NxTimefieldModule } from './timefield.module';
@@ -374,6 +375,21 @@ describe('NxTimefieldComponent', () => {
             assertTime('00:00');
             expect(reactInstance.testForm.status).toBe('VALID');
         }));
+
+        it('should mark as touched on blur only', () => {
+            createTestComponent(ReactiveTimefield);
+            const form = (testInstance as ReactiveTimefield).testForm;
+            expect(form.touched).toBeFalse();
+            // test input event to avoid a regression
+            inputElementHours.value = '0';
+            inputElementHours.dispatchEvent(new Event('input'));
+            inputElementHours.focus();
+            fixture.detectChanges();
+            expect(form.touched).toBeFalse();
+            dispatchFakeEvent(inputElementHours, 'focusout');
+            fixture.detectChanges();
+            expect(form.touched).toBeTrue();
+        });
     });
 
     describe('a11y', () => {

@@ -290,7 +290,6 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     }
 
     _onInput(event: any, type: string) {
-        this._onTouchedCallback();
         if (type === 'hours') {
             this.hours = event.target.value;
         } else if (type === 'minutes') {
