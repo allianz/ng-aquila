@@ -233,7 +233,7 @@ $margin-to-message: nx-spacer(3xs);
             content: '';
             position: absolute;
             left: 0;
-            top: calc(v(formfield-control-height) - v(formfield-border-width));
+            bottom: calc(v(formfield-active-border-width) * -1 + v(formfield-border-width));
             border-radius: v(formfield-active-border-radius);
             height: v(formfield-active-border-width);
             background-color: v(formfield-active-border-color);
