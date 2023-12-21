@@ -2,23 +2,46 @@
     <strong>Beta/Experimental version: </strong> please note that this is a first version for teams to jump  in early and provide feedback.
     There might be features of ag-grid that do not work well with the theme yet. We are happy to hear your feedback.
 </div>
-<p class="docs-markdown--p">For complex data tables (data grids) we suggest using the <a href="https://www.ag-grid.com/">ag-grid</a> library. We are providing an <code>ag-theme-aquila</code> theme for the ag-grid-angular component which is based on the ag-theme-alpine theme and is a drop-in replacement for the default ag-grid themes. You can also choose from additional modifier themes on top of the base theme:</p>
+<p class="docs-markdown--p">For complex data tables (data grids) we suggest using the <a href="https://www.ag-grid.com/">ag-grid</a> library. We are providing an <code>ag-theme-aquila</code> theme for the ag-grid-angular component which is based on the Alpine theme from ag-grid. You can also choose from additional modifiers on top of the base theme:</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><code>ag-theme-aquila-dense</code> for more compact rows</li>
 <li class="docs-markdown--li"><code>ag-theme-aquila-zebra</code> for zebra striped rows</li>
 </ul>
-<h2 id="compatibility" tabindex="-1" class="docs-markdown--h2">Compatibility</h2>
-<p class="docs-markdown--p">The theme was built with ag-grid-angular version <code>^30.0.0</code>. It might work with other versions as well, but we did not test it.</p>
-<p class="docs-markdown--p">Please also note that for some design features the theme makes use of the <code>:has</code> css selector which is currently still in development in Firefox, as such we are not supporting Firefox at the moment.</p>
-<h2 id="how-to-use" tabindex="-1" class="docs-markdown--h2">How to use</h2>
+<h3 id="compatibility" tabindex="-1" class="docs-markdown--h3">Compatibility</h3>
+<p class="docs-markdown--p">The theme was initially built with ag-grid-angular version <code>30.0.0</code>. In general it should continue to work in later minor versions, but ag-grid does not give any guarantee that things do not change between minor versions. They try to keep their CSS classes as stable as possible, but we cannot test every update of ag-grid. So please let us know if you encounter any issues.</p>
+<p class="docs-markdown--p">Please also note that for some design features the theme makes use of the <code>:has</code> css selector which is currently still in development in Firefox, as such we are not supporting Firefox at the moment. Firefox 121 will ship the <code>:has</code> selector and the theme will look the same as on other browsers then.</p>
+<h3 id="how-to-use" tabindex="-1" class="docs-markdown--h3">How to use</h3>
 <p class="docs-markdown--p">The ag-grid theme assumes that one of the library themes is already imported to use css variables from there.</p>
+<h4 id="necessary-css-imports" tabindex="-1" class="docs-markdown--h4">Necessary CSS Imports</h4>
 <ul class="docs-markdown--ul">
-<li class="docs-markdown--li">Import the provided file from <code>@aposin/ng-aquila/themes/ag-theme-aquila.css</code> and add it to your application. You can choose any of the typical ways in an angular application, e.g. in the angular.json file or in your main styles.(s)css file.</li>
-<li class="docs-markdown--li">Add the class <code>ag-theme-aquila</code> to the ag-grid-angular element.</li>
-<li class="docs-markdown--li"><strong>Optional:</strong> add one of the modifier classes <code>ag-theme-aquila-dense</code> or <code>ag-theme-aquila-zebra</code> to the ag-grid-angular element as well. You can also combine them and add or remove them dynamically.</li>
-<li class="docs-markdown--li"><strong>Allianz internal projects</strong>: add the class <code>ag-allianz-icons</code> to the ag-grid-angular element to overwrite the default ag-grid alpine icons with the Allianz icons.</li>
+<li class="docs-markdown--li">Import the base ag-grid styles and the Alpine theme</li>
+<li class="docs-markdown--li">Import the provided file from <code>@aposin/ng-aquila/themes/ag-theme-aquila.css</code></li>
 </ul>
-<h2 id="example" tabindex="-1" class="docs-markdown--h2">Example</h2>
+<p class="docs-markdown--p">You can choose any of the typical ways in an angular application, e.g. in the angular.json file or in your main styles.(s)css file.
+Angular.json example:</p>
+<pre><code class="language-json"><span class="hljs-attr">&quot;styles&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+  <span class="hljs-string">&quot;node_modules/ag-grid-community/styles/ag-grid.css&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-string">&quot;node_modules/ag-grid-community/styles/ag-theme-alpine.css&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-string">&quot;node_modules/@aposin/ng-aquila/themes/ag-theme-aquila.css&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-string">&quot;src/styles.scss&quot;</span>
+<span class="hljs-punctuation">]</span>
+</code></pre>
+<h4 id="add-theme-to-the-ag-grid-element" tabindex="-1" class="docs-markdown--h4">Add theme to the ag-grid element</h4>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">Add the classes <code>ag-theme-alpine</code> and <code>ag-theme-aquila</code> to the ag-grid-angular element.</li>
+</ul>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ag-grid-angular</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ag-theme-alpine ag-theme-aquila&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ag-grid-angular</span>&gt;</span>
+</code></pre>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>Allianz internal projects</strong>: add the class <code>ag-theme-allianz-icons</code> to the ag-grid-angular element to overwrite the default ag-grid alpine icons with the Allianz icons.</li>
+</ul>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ag-grid-angular</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ag-theme-alpine ag-theme-aquila ag-theme-allianz-icons&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ag-grid-angular</span>&gt;</span>
+</code></pre>
+<h4 id="optional%3A-add-modifiers" tabindex="-1" class="docs-markdown--h4">Optional: add modifiers</h4>
+<p class="docs-markdown--p">Add one or multiple of the modifier classes <code>ag-theme-aquila-dense</code> or <code>ag-theme-aquila-zebra</code> to the ag-grid-angular element as well. You can combine them and add or remove them dynamically.</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ag-grid-angular</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ag-theme-aquila ag-theme-aquila ag-theme-aquila-dense&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ag-grid-angular</span>&gt;</span>
+</code></pre>
+<h3 id="example" tabindex="-1" class="docs-markdown--h3">Example</h3>
 <div class="docs-public">
 <div nx-docs-example="ag-grid-opensource" config="{}">exampleID: ag-grid-opensource</div>
 </div>

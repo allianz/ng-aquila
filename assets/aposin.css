@@ -889,6 +889,10 @@ body,
   --pagination-compact-direction-line-height: var(--link-small-line-height);
   --pagination-compact-direction-font-weight: var(--link-small-font-weight);
   --pagination-compact-direction-letter-spacing: var(--link-small-letter-spacing);
+  --pagination-slider-icon-width: 8px;
+  --pagination-slider-icon-height: 8px;
+  --pagination-slider-icon-border-color: var(--ui-06);
+  --pagination-slider-icon-active-color: var(--ui-06);
   --natural-language-form-large-font-size: var(--heading-02-font-size);
   --natural-language-form-large-line-height: 52px;
   --natural-language-form-large-font-weight: var(--heading-02-font-weight);

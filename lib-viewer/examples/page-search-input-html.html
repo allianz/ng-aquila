@@ -4,24 +4,26 @@
     <span class="hljs-attr">contentLayout</span>=<span class="hljs-string">&quot;12,12,12,8&quot;</span>
     <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Search input example&quot;</span>
 &gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-                    <span class="hljs-attr">nxInput</span>
-                    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter Keyword&quot;</span>
-                    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;searchTerm&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span>
-                /&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                    <span class="hljs-attr">nxFormfieldSuffix</span>
-                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;searchTerm&quot;</span>
-                    <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;searchTerm=&#x27;&#x27;&quot;</span>
-                &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;close&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid nopadding&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                        <span class="hljs-attr">nxInput</span>
+                        <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter Keyword&quot;</span>
+                        [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;searchTerm&quot;</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span>
+                    /&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
+                        <span class="hljs-attr">nxFormfieldSuffix</span>
+                        *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;searchTerm&quot;</span>
+                        <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
+                        (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;searchTerm=&#x27;&#x27;&quot;</span>
+                    &gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;close&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-page-search</span>&gt;</span>

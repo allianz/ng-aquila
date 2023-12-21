@@ -1,41 +1,42 @@
 Configure slider
-<div nxRow class="nx-margin-top-s">
-    <div nxCol="12,6,6,6,3">
-        <nx-formfield label="Min">
-            <input nxInput type="number" [(ngModel)]="min" />
-        </nx-formfield>
+<div nxLayout="grid">
+    <div nxRow class="nx-margin-top-s">
+        <div nxCol="12,6,6,6,3">
+            <nx-formfield label="Min">
+                <input nxInput type="number" [(ngModel)]="min" />
+            </nx-formfield>
+        </div>
+        <div nxCol="12,6,6,6,3">
+            <nx-formfield label="Max">
+                <input nxInput type="number" [(ngModel)]="max" />
+            </nx-formfield>
+        </div>
+        <div nxCol="12,6,6,6,3">
+            <nx-formfield label="Step">
+                <input nxInput type="number" [(ngModel)]="step" />
+            </nx-formfield>
+        </div>
+        <div nxCol="12,6,6,6,3">
+            <nx-formfield label="TickInterval">
+                <input nxInput type="number" [(ngModel)]="interval" />
+            </nx-formfield>
+        </div>
     </div>
-    <div nxCol="12,6,6,6,3">
-        <nx-formfield label="Max">
-            <input nxInput type="number" [(ngModel)]="max" />
-        </nx-formfield>
-    </div>
-    <div nxCol="12,6,6,6,3">
-        <nx-formfield label="Step">
-            <input nxInput type="number" [(ngModel)]="step" />
-        </nx-formfield>
-    </div>
-    <div nxCol="12,6,6,6,3">
-        <nx-formfield label="TickInterval">
-            <input nxInput type="number" [(ngModel)]="interval" />
-        </nx-formfield>
+    <div nxRow class="nx-margin-top-s" rowAlignItems="center">
+        <div nxCol="12">
+            <nx-formfield
+                label="Long ticks (Array of value which will render as long tick)"
+            >
+                <input
+                    nxInput
+                    type="text"
+                    [(ngModel)]="longTicksString"
+                    (ngModelChange)="toArray()"
+                />
+            </nx-formfield>
+        </div>
     </div>
 </div>
-<div nxRow class="nx-margin-top-s" rowAlignItems="center">
-    <div nxCol="12">
-        <nx-formfield
-            label="Long ticks (Array of value which will render as long tick)"
-        >
-            <input
-                nxInput
-                type="text"
-                [(ngModel)]="longTicksString"
-                (ngModelChange)="toArray()"
-            />
-        </nx-formfield>
-    </div>
-</div>
-
 <nx-slider
     [min]="min"
     [max]="max"

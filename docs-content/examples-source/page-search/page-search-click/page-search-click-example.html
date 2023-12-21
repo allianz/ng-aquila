@@ -5,25 +5,27 @@
     contentLayout="12,12,12,8"
     aria-label="Search click example"
 >
-    <div nxRow>
-        <div nxCol="12">
-            <nx-formfield>
-                <input
-                    #clickExampleInput
-                    nxInput
-                    placeholder="Enter Keyword"
-                    [(ngModel)]="searchTerm"
-                    type="search"
-                />
-                <span
-                    nxFormfieldSuffix
-                    *ngIf="searchTerm"
-                    aria-hidden="true"
-                    (click)="searchTerm=''"
-                >
-                    <nx-icon name="close" size="s"></nx-icon>
-                </span>
-            </nx-formfield>
+    <div nxLayout="grid nopadding">
+        <div nxRow>
+            <div nxCol="12">
+                <nx-formfield>
+                    <input
+                        #clickExampleInput
+                        nxInput
+                        placeholder="Enter Keyword"
+                        [(ngModel)]="searchTerm"
+                        type="search"
+                    />
+                    <span
+                        nxFormfieldSuffix
+                        *ngIf="searchTerm"
+                        aria-hidden="true"
+                        (click)="searchTerm=''"
+                    >
+                        <nx-icon name="close" size="s"></nx-icon>
+                    </span>
+                </nx-formfield>
+            </div>
         </div>
     </div>
 </nx-page-search>

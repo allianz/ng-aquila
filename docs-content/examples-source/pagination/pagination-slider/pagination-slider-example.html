@@ -1,0 +1,9 @@
+<nx-pagination
+    [count]="slides"
+    [page]="activeSlide"
+    type="slider"
+    (goPrev)="prevPage()"
+    (goNext)="nextPage()"
+    (goPage)="goToPage($event)"
+>
+</nx-pagination>
