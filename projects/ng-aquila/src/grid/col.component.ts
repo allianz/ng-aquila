@@ -57,8 +57,8 @@ export type ColOrder = 'first' | 'last' | 'unordered';
     styleUrls: ['col.component.scss'],
     host: {
         '[class.nx-grid__column]': 'true',
-        '[class.nx-grid__column--container-query]': 'gridLayoutComponent.containerQuery',
-        '[class.nx-grid__column--media-query]': '!gridLayoutComponent.containerQuery',
+        '[class.nx-grid__column--container-query]': 'gridLayoutComponent?.containerQuery ?? false',
+        '[class.nx-grid__column--media-query]': '!gridLayoutComponent?.containerQuery ?? true',
         '[class]': '_classNames',
     },
 })
@@ -117,7 +117,7 @@ export class NxColComponent implements OnInit {
 
     constructor(
         private readonly el: ElementRef,
-        @Optional() protected readonly gridLayoutComponent: NxLayoutComponent,
+        @Optional() protected readonly gridLayoutComponent?: NxLayoutComponent,
     ) {}
 
     ngOnInit(): void {

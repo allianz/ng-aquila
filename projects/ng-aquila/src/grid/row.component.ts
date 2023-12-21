@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, isDevMode, Optional } from '@angular/core';
 
 import { NxLayoutComponent } from './layout.component';
 import { addStylesFromDimensions } from './utils';
@@ -54,8 +54,8 @@ export type RowWrapping = 'wrap' | 'nowrap' | 'reverse';
     styleUrls: ['row.component.scss'],
     host: {
         '[class]': '_classNames',
-        '[class.nx-grid__row--container-query]': 'gridLayoutComponent.containerQuery',
-        '[class.nx-grid__row--media-query]': '!gridLayoutComponent.containerQuery',
+        '[class.nx-grid__row--container-query]': 'gridLayoutComponent?.containerQuery ?? false',
+        '[class.nx-grid__row--media-query]': '!gridLayoutComponent?.containerQuery ?? true',
     },
 })
 export class NxRowComponent {
@@ -118,5 +118,11 @@ export class NxRowComponent {
             .join(' ');
     }
 
-    constructor(@Optional() protected readonly gridLayoutComponent: NxLayoutComponent) {}
+    constructor(@Optional() protected readonly gridLayoutComponent?: NxLayoutComponent) {
+        if (isDevMode() && !gridLayoutComponent) {
+            console.warn(
+                'NxRowComponent: missing NxLayoutComponent in the parent component hierarchy. Please add a <div nxLayout> element around the rows. This might become an error in the future.',
+            );
+        }
+    }
 }

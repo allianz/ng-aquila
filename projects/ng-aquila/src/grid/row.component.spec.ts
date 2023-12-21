@@ -46,6 +46,7 @@ describe('NxRowDirective', () => {
                 BasicRowItemsStart,
                 BasicRowItemsEnd,
                 DynamicTest,
+                RowWithoutLayout,
             ],
             imports: [NxGridModule],
         }).compileComponents();
@@ -141,6 +142,12 @@ describe('NxRowDirective', () => {
         expect(
             getElementByClass('.nx-grid__row.nx-align-items-end.nx-align-items-small-end.nx-align-items-medium-end.nx-align-items-large-end'),
         ).not.toBeNull();
+    });
+
+    it('should not fail when no nxLayout is present', () => {
+        expect(() => {
+            createTestComponent(RowWithoutLayout);
+        }).not.toThrow();
     });
 
     describe('dynamic inputs', () => {
@@ -271,3 +278,8 @@ class DynamicTest extends DirectiveTest {
     justify = 'end';
     wrap = 'wrap';
 }
+
+@Component({
+    template: `<div nxRow="row"></div>`,
+})
+class RowWithoutLayout extends DirectiveTest {}

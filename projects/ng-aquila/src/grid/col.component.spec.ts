@@ -48,6 +48,7 @@ describe('NxColDirective', () => {
                 OffsetTestFourInputs,
                 OffsetTestFourInputsWithZero,
                 DynamicTest,
+                ColWithoutLayout,
             ],
             imports: [NxGridModule],
         }).compileComponents();
@@ -198,6 +199,12 @@ describe('NxColDirective', () => {
                 expect(col).toHaveClass(className);
             });
         });
+    });
+
+    it('should not fail when no nxLayout is present', () => {
+        expect(() => {
+            createTestComponent(ColWithoutLayout);
+        }).not.toThrow();
     });
 
     describe('dynamic inputs', () => {
@@ -381,3 +388,12 @@ class DynamicTest extends DirectiveTest {
     offset = '2';
     alignSelf = 'start';
 }
+
+@Component({
+    template: `
+        <div nxRow="row">
+            <div nxCol="12">Hello World</div>
+        </div>
+    `,
+})
+class ColWithoutLayout extends DirectiveTest {}
