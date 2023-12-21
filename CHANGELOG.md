@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [17.1.0](https://github.com/allianz/ng-aquila/compare/v17.0.0...v17.1.0) (2023-12-21)
+
+### Grid structure expectations
+Some projects were affected by a change in 16.12.0 that caused a runtime error. The error is caused when `nxRow` elements are not surrounded by any `nxLayout` parent.
+As a workaround we made the `nxLayout` parent optional for now. But we want to encourage you to always use the `nxLayout` parent as it is described in the grid documentation. A warning is shown in the console when the dev mode is active to show you that you are affected. But we might change this in a future major version and make the `nxLayout` parent mandatory.
+
+For users affected in the 16.x.x versions we recommend to stay at 16.11.0 and not update to 16.12.0 before you upate to 17.1.0.
+
+### Ag-grid theme beta necessary breaking change
+We had to move away from our first approach to use the SASS API of Ag-grid for multiple reasons. This unfortunately results in a breaking change which we reserve outside of a major version while a feature is still in beta/experimental state.
+
+Please see the [ag-grid theme documentation](https://allianz.github.io/ng-aquila/documentation/ag-grid-theme) for the updated documentation.
+
+In short:
+- make sure that you import the ag-grid base styles and the alpine theme. these were compiled into the aquila theme file before which is the root of the problems. e.g. in the angular.json file:
+```
+"styles": [
+  "node_modules/ag-grid-community/styles/ag-grid.css",
+  "node_modules/ag-grid-community/styles/ag-theme-alpine.css",
+  "node_modules/@aposin/ng-aquila/themes/ag-theme-aquila.css",
+  "src/styles.scss"
+]
+```
+- add the `ag-theme-alpine` class to the grid container
+```
+<ag-grid-angular class="ag-theme-alpine ag-theme-aquila"></ag-grid-angular>
+```
+- Allianz internal projects: rename `ag-allianz-icons` to `ag-theme-allianz-icons`
+
+
+### Bug Fixes
+
+* **ag-grid:** remove SASS API usage ([0c6ab9a](https://github.com/allianz/ng-aquila/commit/0c6ab9a3832117212d860dbb064e053a0556e209))
+* **formfield:** make focus style always at the bottom ([0e43f44](https://github.com/allianz/ng-aquila/commit/0e43f442848315d5fa99f1d540095509f8b6fb40))
+* **grid:** make nxLayout parent optional for now ([5147ae6](https://github.com/allianz/ng-aquila/commit/5147ae6b02e98147764a240694d60abb9bbe5cd4))
+* **table:** hide sort button in screen reader form mode  ([0b0bad1](https://github.com/allianz/ng-aquila/commit/0b0bad144fb73d272538f3b49addc1b545dbf048))
+* **timefield:** remove ontouched from oninput ([8572312](https://github.com/allianz/ng-aquila/commit/8572312292feb080eaf7d9dbccb4faf7ebb785cd))
+
+
+### Features
+
+* **pagination:** pagination with bullets ([f334029](https://github.com/allianz/ng-aquila/commit/f334029a3f1b77212fc39a760a5b9890cf2af35e))
+
+
+
 # [17.0.0](https://github.com/allianz/ng-aquila/compare/v16.12.0...v17.0.0) (2023-11-29)
 
 
