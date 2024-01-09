@@ -228,6 +228,7 @@ $margin-to-message: nx-spacer(3xs);
 .nx-formfield.is-focused:not(.has-outline) {
     .nx-formfield__input-container {
         border-bottom-color: v(formfield-active-border-bottom-color);
+        position: relative;
 
         &:after {
             content: '';
