@@ -140,7 +140,13 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
         if (this._show !== value) {
             this._show = value;
             if (this._show) {
-                this.openPopover();
+                if (this.popover.templateRef) {
+                    this.openPopover();
+                } else {
+                    setTimeout(() => {
+                        this.openPopover();
+                    });
+                }
             } else {
                 this.closePopover();
             }
