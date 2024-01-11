@@ -184,18 +184,19 @@ $dropdown-border-size: nx-border-size(xs);
     font-size: nx-font-size(s);
 }
 
-.nx-dropdown__filter-input:focus {
-    border-color: v(dropdown-filter-input-active-border-color);
-}
-
-.nx-dropdown__filter-input.is-filled:focus {
+.nx-dropdown__filter-input {
     font-weight: nx-font-weight(semibold);
 
-    color: v(dropdown-filter-input-active-text-color);
-    border-color: v(dropdown-filter-input-active-border-color);
+    &:focus {
+        border-color: v(dropdown-filter-input-active-border-color);
+    }
 
-    & + .nx-dropdown__filter-icon {
+    &.is-filled:focus {
         color: v(dropdown-filter-input-active-text-color);
+
+        & + .nx-dropdown__filter-icon {
+            color: v(dropdown-filter-input-active-text-color);
+        }
     }
 }
 
