@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.1.1](https://github.com/allianz/ng-aquila/compare/v17.1.0...v17.1.1) (2024-01-11)
+
+
+### Bug Fixes
+
+* **dropdown:** filter input resizing on focus out ([59bdd31](https://github.com/allianz/ng-aquila/commit/59bdd311c8a6a517f9dec9fd4bf60aed3be672c8))
+* **formfield:** correct focus style ([a9dffff](https://github.com/allianz/ng-aquila/commit/a9dffff96f49792efd5beb4d079e802688baa45d))
+* **popover:** defer opening of popover ([3c29a37](https://github.com/allianz/ng-aquila/commit/3c29a3797e7cb77f863dad8018788aa1bd23512b))
+
+
+
 # [17.1.0](https://github.com/allianz/ng-aquila/compare/v17.0.0...v17.1.0) (2023-12-21)
 
 ### Grid structure expectations
