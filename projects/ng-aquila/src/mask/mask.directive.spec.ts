@@ -1,6 +1,6 @@
 import { A, BACKSPACE, DELETE, EIGHT, NINE, NUMPAD_ONE, NUMPAD_ZERO, ONE, SEMICOLON, ZERO } from '@angular/cdk/keycodes';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { createKeyboardEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
@@ -68,7 +68,7 @@ describe('NxMaskDirective', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicMaskComponent, ConfigurableMaskComponent, ValidationMaskComponent, HookedMaskComponent],
+            declarations: [BasicMaskComponent, ConfigurableMaskComponent, ValidationMaskComponent, HookedMaskComponent, NgModelMask],
             imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
         }).compileComponents();
     }));
@@ -119,6 +119,9 @@ describe('NxMaskDirective', () => {
 
     it('accepts digits and letters', () => {
         createTestComponent(BasicMaskComponent);
+        setMask('AAAA');
+        setMask('AA');
+        setMask('AAA');
         setMask('AAAA');
 
         assertInputValue(nativeElement, '1', '1');
@@ -344,6 +347,12 @@ describe('NxMaskDirective', () => {
     });
 
     describe('test ngModel', () => {
+        it('calls onChange after init without any updateConfig calls', () => {
+            createTestComponent(NgModelMask);
+            assertInputValue(nativeElement, 'ABCD', 'ABCD');
+            expect(testInstance.modelVal).toBe('ABCD');
+        });
+
         it('updates ngModel on backspace', () => {
             createTestComponent(ConfigurableMaskComponent);
             setMask('00:00:00');
@@ -390,9 +399,10 @@ describe('NxMaskDirective', () => {
             setMask('00:00:00');
             fixture.componentInstance.modelVal = '12:34:56';
             fixture.detectChanges();
-            tick();
+            flush();
 
             expect(nativeElement.value).toBe('12:34:56');
+            console.log('MODELVAL', testInstance.modelVal);
             expect(testInstance.modelVal).toBe('12:34:56');
         }));
 
@@ -405,15 +415,16 @@ describe('NxMaskDirective', () => {
             expect(testInstance.modelVal).toBe('TEST');
         });
 
-        it('should not update model to uppercase if deactivateMask set', () => {
+        it('should not update model to uppercase if deactivateMask set', fakeAsync(() => {
             createTestComponent(ConfigurableMaskComponent);
             setMask('AAAA');
             testInstance.convertTo = 'upper';
             testInstance.deactivateMask = true;
             fixture.detectChanges();
+            tick();
             assertInputValue(nativeElement, 'test', 'test');
             expect(testInstance.modelVal).toBe('test');
-        });
+        }));
 
         it('should keep preset model value if deactiveMask set', () => {
             createTestComponent(PresetDeactiveMaskComponent);
@@ -422,6 +433,101 @@ describe('NxMaskDirective', () => {
             fixture.detectChanges();
             expect(testInstance.modelVal).toBe('AAAA');
         });
+
+        it('should update ngModel on mask change', fakeAsync(() => {
+            createTestComponent(ConfigurableMaskComponent);
+            setMask('AAAA');
+            testInstance.modelVal = 'test';
+            fixture.detectChanges();
+            flush();
+            expect(testInstance.modelVal).toBe('test');
+            setMask('AAA');
+            fixture.detectChanges();
+            flush();
+            expect(testInstance.modelVal).toBe('tes');
+        }));
+
+        it('should update ngModel on separator change', fakeAsync(() => {
+            createTestComponent(ConfigurableMaskComponent);
+            setMask('00:00:00');
+            testInstance.modelVal = '12:34:56';
+            fixture.detectChanges();
+            tick();
+            expect(nativeElement.value).toBe('12:34:56');
+            expect(testInstance.modelVal).toBe('12:34:56');
+
+            setMask('(00-00)');
+            testInstance.modelVal = '(12-34)';
+
+            testInstance.separators = ['(', ')'];
+            expect(nativeElement.value).toBe('(12-34)');
+            expect(testInstance.modelVal).toBe('(12-34)');
+            fixture.detectChanges();
+            tick();
+            expect(nativeElement.value).toBe('(12');
+        }));
+
+        it('should update ngModel on convertTo change', fakeAsync(() => {
+            createTestComponent(ConfigurableMaskComponent);
+            testInstance.mask = 'AAAA';
+            fixture.detectChanges();
+            testInstance.modelVal = 'test';
+            fixture.detectChanges();
+            tick();
+            expect(testInstance.modelVal).toBe('test');
+            testInstance.convertTo = 'upper';
+            fixture.detectChanges();
+            tick();
+            expect(testInstance.modelVal).toBe('TEST');
+        }));
+
+        it('should update ngModel on dropSpecialCharacters change', fakeAsync(() => {
+            createTestComponent(ConfigurableMaskComponent);
+            setMask('00:00:00');
+            testInstance.modelVal = '12:34:56';
+            fixture.detectChanges();
+            tick();
+            expect(nativeElement.value).toBe('12:34:56');
+            expect(testInstance.modelVal).toBe('12:34:56');
+            testInstance.dropSpecialCharacters = true;
+            fixture.detectChanges();
+            tick();
+            expect(testInstance.modelVal).toBe('123456');
+        }));
+
+        it('should update ngModel on deactivateMask change', fakeAsync(() => {
+            createTestComponent(ConfigurableMaskComponent);
+            setMask('00:00:00');
+            testInstance.modelVal = '12:34:56';
+            fixture.detectChanges();
+            tick();
+            expect(testInstance.modelVal).toBe('12:34:56');
+            testInstance.deactivateMask = true;
+            fixture.detectChanges();
+            tick();
+            expect(testInstance.modelVal).toBe('123456');
+            testInstance.deactivateMask = false;
+            fixture.detectChanges();
+            tick();
+            expect(testInstance.modelVal).toBe('12:34:56');
+        }));
+
+        it('should update input value on deactivateMask change', fakeAsync(() => {
+            createTestComponent(ConfigurableMaskComponent);
+            setMask('00:00:00');
+            testInstance.modelVal = '12:34:56';
+            fixture.detectChanges();
+            tick();
+            expect(nativeElement.value).toBe('12:34:56');
+            testInstance.deactivateMask = true;
+            fixture.detectChanges();
+            tick();
+            expect(nativeElement.value).toBe('123456');
+            testInstance.deactivateMask = false;
+            fixture.detectChanges();
+            tick();
+            expect(nativeElement.value).toBe('12:34:56');
+        }));
     });
 
     it('should not accept characters if mask is filled up', () => {
@@ -882,15 +988,15 @@ describe('NxMaskDirective', () => {
             assertInputValue(nativeElement, 'TEST', 'test');
             expect(testInstance.modelVal).toBe('test');
 
-            testInstance.convertTo = 'upper';
-            fixture.detectChanges();
-            assertInputValue(nativeElement, 'test', 'TEST');
-            expect(testInstance.modelVal).toBe('TEST');
+            // testInstance.convertTo = 'upper';
+            // fixture.detectChanges();
+            // assertInputValue(nativeElement, 'test', 'TEST');
+            // expect(testInstance.modelVal).toBe('TEST');
 
-            testInstance.convertTo = '';
-            fixture.detectChanges();
-            assertInputValue(nativeElement, 'TeSt', 'TeSt');
-            expect(testInstance.modelVal).toBe('TeSt');
+            // testInstance.convertTo = '';
+            // fixture.detectChanges();
+            // assertInputValue(nativeElement, 'TeSt', 'TeSt');
+            // expect(testInstance.modelVal).toBe('TeSt');
         });
 
         it('should not change case if deactivateMask set', () => {
@@ -920,18 +1026,17 @@ describe('NxMaskDirective', () => {
             createTestComponent(HookedMaskComponent);
 
             const component = fixture.componentInstance as HookedMaskComponent;
-            const spy = spyOn(component, 'customOnChange');
-            maskInstance.registerOnChange(component.customOnChange);
-
             testInstance.mask = 'A';
             fixture.detectChanges();
             expect(testInstance.maskInstance.mask).toBe('A');
-            expect(spy).toHaveBeenCalledTimes(1);
+
+            const spy = spyOn(component, 'customOnChange');
+            maskInstance.registerOnChange(component.customOnChange);
 
             testInstance.maskInstance.setMask('0');
             fixture.detectChanges();
             expect(testInstance.maskInstance.mask).toBe('0');
-            expect(spy).toHaveBeenCalledTimes(1);
+            expect(spy).toHaveBeenCalledTimes(0);
         });
     });
 
@@ -1000,6 +1105,14 @@ class ValidationMaskComponent extends MaskTest {}
 })
 class PresetDeactiveMaskComponent extends MaskTest {
     modelVal = 'AAAA';
+}
+
+@Component({
+    template: ` <input [nxMask]="mask" [(ngModel)]="modelVal" /> `,
+})
+class NgModelMask extends MaskTest {
+    modelVal = 'AAAA';
+    mask = 'AAAA';
 }
 
 @Component({

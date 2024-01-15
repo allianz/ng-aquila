@@ -19,9 +19,6 @@ export const NX_IBAN_MASK_VALIDATORS: any = {
     selector: 'input[nxIbanMask]',
     exportAs: 'nxIbanMaskDirective',
     providers: [NX_IBAN_MASK_VALIDATORS],
-    host: {
-        '(input)': '_countryCodeValid() && _touch()',
-    },
 })
 export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
     private _countryCode!: string | null;
@@ -130,7 +127,7 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
     }
 
     private _validateFn() {
-        if (this._countryCodeValid()) {
+        if (this._countryCodeInvalid()) {
             return { nxIbanInvalidCountryError: 'no valid country code' };
         }
         if (!IBAN.isValid(this.maskDirective.getUnmaskedValue())) {
@@ -141,16 +138,11 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
 
     /** @docs-private */
     validate() {
-        return this.maskDirective.validateMask ? this._validateFn() : null;
+        return this.maskDirective.validateMask && this.maskDirective.elementRefValue ? this._validateFn() : null;
     }
 
-    _touch() {
-        this.maskDirective._touch();
-    }
-
-    private _countryCodeValid(): boolean {
+    private _countryCodeInvalid(): boolean {
         const enteredCountryCode = this._elementRef.nativeElement.value.substr(0, 2);
-
-        return enteredCountryCode.length === 2 && !IBAN.countries[enteredCountryCode];
+        return enteredCountryCode.length !== 2 || !IBAN.countries[enteredCountryCode];
     }
 }

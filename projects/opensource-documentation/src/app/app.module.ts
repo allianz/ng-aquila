@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
 import { NxFooterModule } from '@aposin/ng-aquila/footer';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { NxGridModule } from '@aposin/ng-aquila/grid';
+import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxMaskModule } from '@aposin/ng-aquila/mask';
 import {
     BaseLazyLoadingService,
     DocVersions,
@@ -80,6 +84,10 @@ const GITHUB_REPO_LINK: GithubLinkConfig = {
         NxFooterModule,
         NxButtonModule,
         NxGridModule,
+        ReactiveFormsModule,
+        NxFormfieldModule,
+        NxInputModule,
+        NxMaskModule,
     ],
     providers: [
         { provide: NX_DOCS_LOGO_PATH, useValue: LOGO_PATH },

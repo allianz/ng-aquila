@@ -1,6 +1,7 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { dispatchFakeEvent } from 'projects/ng-aquila/src/cdk-test-utils';
 
 import { NxIbanMaskDirective } from './iban-mask.directive';
 import { NxMaskDirective } from './mask.directive';
@@ -125,6 +126,7 @@ describe('NxIbanMaskDirective', () => {
         it('should correctly update on patchValue', () => {
             createTestComponent(FormIbanMaskComponent);
             testInstance.testForm.patchValue({ maskInput: 'NL91ABNA0417164300' });
+            fixture.detectChanges();
             expect(nativeElement.value).toBe('NL91 ABNA 0417 1643 00');
         });
     });
@@ -295,14 +297,13 @@ describe('NxIbanMaskDirective', () => {
     });
 
     describe('validation', () => {
-        it('should mark as invalid and touch input immediately for non-existing country code', () => {
+        it('should set nxIbanInvalidCountryError immediately for non-existing country code', () => {
             createTestComponent(FormIbanMaskComponent);
-            expect(testInstance.testForm.touched).toBeFalse();
+            expect(testInstance.testForm.controls.maskInput.getError('nxIbanInvalidCountryError')).toBeNull();
 
             assertInputValue(nativeElement, 'GD', 'GD');
 
-            expect(testInstance.testForm.valid).toBeFalse();
-            expect(testInstance.testForm.touched).toBeTrue();
+            expect(testInstance.testForm.controls.maskInput.getError('nxIbanInvalidCountryError')).toBeTruthy();
             expect(testInstance.testForm.get('maskInput')!.value).toBe('GD');
         });
 
@@ -312,29 +313,32 @@ describe('NxIbanMaskDirective', () => {
             const invalidIbanErrorKey = 'nxIbanInvalidCountryError';
 
             assertInputValue(nativeElement, 'G', 'G');
-
-            expect(maskInput.getError(invalidIbanErrorKey)).toBeUndefined();
+            fixture.detectChanges();
+            expect(maskInput.getError(invalidIbanErrorKey)).toBeNull();
 
             assertInputValue(nativeElement, 'GD', 'GD');
+            fixture.detectChanges();
+            expect(maskInput.getError(invalidIbanErrorKey)).toBeNull();
 
+            dispatchFakeEvent(nativeElement, 'blur');
+            fixture.detectChanges();
             expect(maskInput.getError(invalidIbanErrorKey)).toBeTruthy();
         });
 
-        it('should mark as invalid if iban is not valid', () => {
+        // quick solution for getting the mask updated after entering the first two letters
+        it('should set nxIbanParseError if iban is not valid', () => {
             createTestComponent(FormIbanMaskComponent);
 
-            // quick solution for getting the mask updated after entering the first to letters
-            assertInputValue(nativeElement, 'DE', 'DE');
             assertInputValue(nativeElement, 'DE89370400440532013001', 'DE89 3704 0044 0532 0130 01');
-            expect(testInstance.testForm.valid).toBeFalse();
+            expect(testInstance.testForm.controls.maskInput.getError('nxIbanParseError')).toBeTruthy();
             expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 01');
 
             assertInputValue(nativeElement, 'DE89370400440532013000', 'DE89 3704 0044 0532 0130 00');
-            expect(testInstance.testForm.valid).toBeTrue();
+            expect(testInstance.testForm.controls.maskInput.getError('nxIbanParseError')).toBeNull();
             expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 00');
 
             assertInputValue(nativeElement, 'DE89370400440532013002', 'DE89 3704 0044 0532 0130 02');
-            expect(testInstance.testForm.valid).toBeFalse();
+            expect(testInstance.testForm.controls.maskInput.getError('nxIbanParseError')).toBeTruthy();
             expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 02');
         });
 
