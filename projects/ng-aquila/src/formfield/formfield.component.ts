@@ -315,4 +315,20 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     _isOutline() {
         return this.appearance === 'outline';
     }
+
+    _isNxInput() {
+        return this._control.elementRef.nativeElement.tagName === 'INPUT' && this._control.elementRef.nativeElement.hasAttribute('nxInput');
+    }
+
+    /** @docs-private */
+    get inputValueText() {
+        if (!this._control.readonly && !this._control.disabled) {
+            return;
+        }
+        return (this._control.elementRef.nativeElement.value || '').trim();
+    }
+
+    _isEllipsisActive() {
+        return this._control.elementRef.nativeElement.offsetWidth < this._control.elementRef.nativeElement.scrollWidth;
+    }
 }

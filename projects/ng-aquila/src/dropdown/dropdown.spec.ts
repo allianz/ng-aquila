@@ -1782,7 +1782,7 @@ class ReactiveDropdownUpdateOnBlurComponent extends DropdownTest {
 @Component({
     template: `<form [formGroup]="testForm">
         <nx-formfield label="Car brand">
-            <nx-dropdown nxInput nxLabel="Car brand" formControlName="dropdown" [placeholder]="placeholder">
+            <nx-dropdown nxLabel="Car brand" formControlName="dropdown" [placeholder]="placeholder">
                 <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
                 <nx-dropdown-item value="Audi">Audi</nx-dropdown-item>
                 <nx-dropdown-item value="Volvo">Volvo</nx-dropdown-item>

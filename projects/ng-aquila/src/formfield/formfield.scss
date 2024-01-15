@@ -549,6 +549,19 @@ $margin-to-message: nx-spacer(3xs);
     }
 }
 
+// Ellipsis for readonly and disabled
+.nx-formfield.is-readonly,
+.nx-formfield.is-disabled {
+    input {
+        text-overflow: ellipsis;
+    }
+}
+
+.nx-formfield__tooltip {
+    width: 100%;
+    display: flex;
+}
+
 // Readonly color
 .nx-formfield.is-readonly:not(.is-disabled) {
     nx-datepicker-toggle button {
