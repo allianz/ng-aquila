@@ -124,44 +124,47 @@ describe('NxSort', () => {
         it('shows both icons for a unsorted column', () => {
             createTestComponent(BasicSortTableComponent);
             const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
-            const chevronUpElement = nameHeaderElement.querySelector('.nx-sort-header__icon-up') as HTMLElement;
-            const chevronDownElement = nameHeaderElement.querySelector('.nx-sort-header__icon-down') as HTMLElement;
+            const chevrons = nameHeaderElement.querySelectorAll('.nx-sort-header__unsorted');
 
-            expect(chevronUpElement).not.toHaveClass('.nx-sort-header__hidden-icon');
-            expect(chevronDownElement).not.toHaveClass('.nx-sort-header__hidden-icon');
+            expect(chevrons.length).toEqual(2);
 
             const countHeaderElement = fixture.nativeElement.querySelector('#countHeader');
             countHeaderElement.click();
             fixture.detectChanges();
-
-            expect(chevronUpElement).not.toHaveClass('nx-sort-header__hidden-icon');
-            expect(chevronDownElement).not.toHaveClass('nx-sort-header__hidden-icon');
+            expect(chevrons.length).toEqual(2);
         });
 
-        it('hides one icon when sorted', () => {
+        it('show ascending icon', () => {
             createTestComponent(BasicSortTableComponent);
-
             const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
-            const chevronUpElement = nameHeaderElement.querySelector('.nx-sort-header__icon-up') as HTMLElement;
-            const chevronDownElement = nameHeaderElement.querySelector('.nx-sort-header__icon-down') as HTMLElement;
 
             // sort ascending
             nameHeaderElement.click();
             fixture.detectChanges();
-            expect(chevronUpElement).not.toHaveClass('nx-sort-header__hidden-icon');
-            expect(chevronDownElement).toHaveClass('nx-sort-header__hidden-icon');
+            const arrowUp = nameHeaderElement.querySelector('.nx-sort-header__ascend') as HTMLElement;
+            const arrowDown = nameHeaderElement.querySelector('.nx-sort-header__descend') as HTMLElement;
+            const chevrons = nameHeaderElement.querySelectorAll('.nx-sort-header__unsorted');
+
+            expect(arrowUp).not.toBeNull();
+            expect(arrowDown).toBeNull();
+            expect(chevrons.length).toEqual(0);
+        });
+
+        it('show descending icon', () => {
+            createTestComponent(BasicSortTableComponent);
+            const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
 
             // sort descending
             nameHeaderElement.click();
+            nameHeaderElement.click();
             fixture.detectChanges();
-            expect(chevronUpElement).toHaveClass('nx-sort-header__hidden-icon');
-            expect(chevronDownElement).not.toHaveClass('nx-sort-header__hidden-icon');
+            const arrowUp = nameHeaderElement.querySelector('.nx-sort-header__ascend') as HTMLElement;
+            const arrowDown = nameHeaderElement.querySelector('.nx-sort-header__descend') as HTMLElement;
+            const chevrons = nameHeaderElement.querySelectorAll('.nx-sort-header__unsorted');
 
-            const countHeaderElement = fixture.nativeElement.querySelector('#countHeader');
-            countHeaderElement.click();
-            fixture.detectChanges();
-            expect(chevronUpElement).not.toHaveClass('nx-sort-header__hidden-icon');
-            expect(chevronDownElement).not.toHaveClass('nx-sort-header__hidden-icon');
+            expect(arrowDown).not.toBeNull();
+            expect(arrowUp).toBeNull();
+            expect(chevrons.length).toEqual(0);
         });
     });
 

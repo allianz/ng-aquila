@@ -89,6 +89,10 @@ export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         return this._sort.active === this._key && this._sort.direction === 'desc';
     }
 
+    _isSorted() {
+        return this._sort.active === this._key;
+    }
+
     _getAriaLabel(): string | null {
         if (this._sort.active === this._key) {
             if (this._sort.direction === 'asc') {

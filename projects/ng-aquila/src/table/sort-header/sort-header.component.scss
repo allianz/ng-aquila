@@ -1,42 +1,46 @@
 @import '../../../../ng-aquila/src/shared-styles/index';
 
 $icon-width: 9px; // approximation: chevron icon svg path
-$up-icon-shift: -4px; // approximation: icon position
-$down-icon-shift: 5px; // approximation: icon position
+$icon-height: 9px; // approximation: chevron icon svg path
+$icon-shift: -1px; // approximation: shifting icon position
 
 :host {
     cursor: pointer;
 }
 
 .nx-sort-header__icons-container {
-    display: inline-block;
-    margin-right: nx-spacer(s);
+    display: flex;
+    margin-left: nx-spacer(s);
     vertical-align: bottom;
     width: $icon-width;
+
     position: relative;
+    flex-direction: column;
+    justify-content: center;
 
     :host-context([dir='rtl']) & {
         margin-right: initial;
         margin-left: nx-spacer(s);
     }
 
-    nx-icon {
-        font-size: nx-font-size(xs);
-        position: absolute;
-        font-weight: nx-font-weight(semibold);
-        width: $icon-width;
-    }
+    .nx-sort-header {
+        &__unsorted {
+            font-size: nx-font-size(2xs);
+            position: relative;
+            font-weight: nx-font-weight(semibold);
+            width: $icon-width;
+            height: $icon-height;
+        }
 
-    .nx-sort-header__icon-up {
-        top: $up-icon-shift;
-    }
-
-    .nx-sort-header__icon-down {
-        top: $down-icon-shift;
-    }
-
-    .nx-sort-header__hidden-icon {
-        visibility: hidden;
+        &__ascend,
+        &__descend {
+            font-weight: nx-font-weight(regular);
+            font-size: var(--table-sort-icon-size);
+            width: $icon-width;
+            top: $icon-shift;
+            position: relative;
+            transform: rotate(90deg);
+        }
     }
 }
 
