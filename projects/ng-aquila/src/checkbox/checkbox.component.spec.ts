@@ -205,6 +205,15 @@ describe('NxCheckboxComponent', () => {
             fixture.componentInstance.checked = false;
             flushAndAssertChecked(false);
         }));
+
+        it('should be invalid if required', () => {
+            createTestComponent(CheckboxTemplateDriven);
+
+            expect(checkboxNativeElement).toHaveClass('ng-valid');
+            (fixture as ComponentFixture<CheckboxTemplateDriven>).componentInstance.required = true;
+            fixture.detectChanges();
+            expect(checkboxNativeElement).toHaveClass('ng-invalid');
+        });
     });
 
     describe('programmatic tests', () => {
@@ -306,9 +315,11 @@ class CheckboxLabelSize extends CheckboxTest {}
 class CheckboxOnPush extends CheckboxTest {}
 
 @Component({
-    template: `<nx-checkbox [(ngModel)]="checked"></nx-checkbox>`,
+    template: `<nx-checkbox [(ngModel)]="checked" [required]="required"></nx-checkbox>`,
 })
-class CheckboxTemplateDriven extends CheckboxTest {}
+class CheckboxTemplateDriven extends CheckboxTest {
+    required = false;
+}
 
 @Component({
     template: `<nx-checkbox [negative]="negative"></nx-checkbox>`,

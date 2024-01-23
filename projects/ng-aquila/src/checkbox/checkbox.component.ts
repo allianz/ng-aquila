@@ -12,6 +12,7 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
+    Injector,
     Input,
     OnDestroy,
     OnInit,
@@ -21,7 +22,18 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import {
+    AbstractControl,
+    ControlValueAccessor,
+    FormControl,
+    FormGroupDirective,
+    NG_VALIDATORS,
+    NG_VALUE_ACCESSOR,
+    NgControl,
+    NgForm,
+    ValidationErrors,
+    Validator,
+} from '@angular/forms';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
@@ -270,8 +282,20 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
         '[attr.required]': 'required',
         '[attr.aria-invalid]': '_controlInvalid() || null',
     },
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => NxCheckboxComponent),
+            multi: true,
+        },
+        {
+            provide: NG_VALIDATORS,
+            useExisting: forwardRef(() => NxCheckboxComponent),
+            multi: true,
+        },
+    ],
 })
-export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnInit, AfterViewInit {
+export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnInit, AfterViewInit, Validator {
     /** @docs-private */
     @ViewChild('checkboxLabelWrapper', { static: true }) _checkboxLabelWrapper!: ElementRef;
 
@@ -427,20 +451,20 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         this._cdr.detectChanges();
     }
 
+    ngControl: NgControl | null = null;
+
     constructor(
         private readonly _cdr: ChangeDetectorRef,
         private readonly _errorStateMatcher: ErrorStateMatcher,
         @Optional() readonly checkboxGroup: NxCheckboxGroupComponent | null,
-        @Optional() @Self() readonly ngControl: NgControl | null,
         @Optional() private readonly _parentForm: NgForm | null,
         @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
         private readonly _focusMonitor: FocusMonitor,
-    ) {
-        if (this.ngControl) {
-            // Note: we provide the value accessor through here, instead of
-            // the `providers` to avoid running into a circular import.
-            this.ngControl.valueAccessor = this;
-        }
+        private injector: Injector,
+    ) {}
+
+    validate(control: AbstractControl<any, any>): ValidationErrors | null {
+        return this.required && control.value !== true ? { required: true } : null;
     }
 
     /** @docs-private */
@@ -453,11 +477,12 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         } else {
             control = this.ngControl ? (this.ngControl.control as FormControl) : null;
         }
-
         return this._errorStateMatcher.isErrorState(control as FormControl, parent);
     }
 
     ngOnInit(): void {
+        this.ngControl = this.injector.get(NgControl, null);
+
         if (this.checkboxGroup) {
             this.name = this.checkboxGroup.name;
             // when relevant properties of the parent like name and disabled change
