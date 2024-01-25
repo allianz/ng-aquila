@@ -1171,7 +1171,8 @@ body,
   --table-cell-color: var(--text-01);
   --table-header-cell-background-color: transparent;
   --table-row-background-color: transparent;
-  --table-resize-handle-color: var(--ui-04);
+  --table-resize-handle-color: #c2c2c2;
+  --table-sort-icon-size: 20px;
   --table-sticky-column-background-color: var(--ui-background);
   --selectable-table-row-hover-background-color: var(--ui-02);
   --selectable-table-row-active-background-color: var(--ui-02);

@@ -176,7 +176,7 @@ export class FormfieldCustomTelInputExampleComponent
     }
 
     get elementRef(): ElementRef {
-        throw new Error('Method not implemented.');
+        return this._elementRef;
     }
 
     ngOnDestroy(): void {
