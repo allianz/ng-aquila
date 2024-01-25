@@ -699,4 +699,9 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     get allFilesUploaded(): boolean {
         return this.value?.every(f => f.isUploaded) || false;
     }
+
+    setDisabledState?(isDisabled: boolean) {
+        this.disabled = isDisabled;
+        this.stateChanges.next();
+    }
 }

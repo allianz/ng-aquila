@@ -213,6 +213,12 @@ describe('NxFileUploaderComponent', () => {
             expect(testInstance.form.controls.documents.value.length).toBe(2);
             expect((fixture.nativeElement.querySelectorAll('.nx-file-uploader--file-row') as HTMLElement[]).length).toBe(2);
         });
+
+        it('should be able to disable in reactive form', () => {
+            createTestComponent(ReactiveFileUpload);
+            testInstance.form.controls.documents.disable();
+            expect(fileUploaderInstance.disabled).toBe(true);
+        });
     });
 
     describe('Queue actions', () => {
