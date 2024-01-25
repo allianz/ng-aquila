@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.1.2](https://github.com/allianz/ng-aquila/compare/v17.1.1...v17.1.2) (2024-01-25)
+
+
+### Bug Fixes
+
+* **checkbox:** add custom requiredTrue validator ([081fd6a](https://github.com/allianz/ng-aquila/commit/081fd6aee12e460389122e602631d6e088894b9b))
+* **file-uploader:** disable in reactive form ([6e22a4b](https://github.com/allianz/ng-aquila/commit/6e22a4bd5729ff99510deabc66dd481ea614fd52))
+* **formfield:** ellipsis and tooltip for disabled and readonly nxInput ([7bf660d](https://github.com/allianz/ng-aquila/commit/7bf660d49f679a27ee5f1e627ef0b6c4c225f0be))
+* **table:** design alignment NDBX  and AG Grid theme ([38e9123](https://github.com/allianz/ng-aquila/commit/38e9123f0ac121f50bdefdddac30ad44ef61de21))
+* **tree:** use inputs alias to mitigate CDK change ([15caf21](https://github.com/allianz/ng-aquila/commit/15caf2136c2fef5f6c1e98018d5a4258ece1aeac))
+
+
+
 ## [17.1.1](https://github.com/allianz/ng-aquila/compare/v17.1.0...v17.1.1) (2024-01-11)
 
 
