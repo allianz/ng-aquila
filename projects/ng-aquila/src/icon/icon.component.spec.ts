@@ -40,6 +40,11 @@ describe('NxIconComponent', () => {
         expect(iconInstance).toBeTruthy();
     }));
 
+    it('adds the name data attribute for an icon', waitForAsync(() => {
+        createTestComponent(BasicIcon);
+        expect(iconNativeElement.getAttribute('data-nx-icon-name')).toBe('heart');
+    }));
+
     it('adds the class name for a icon', waitForAsync(() => {
         createTestComponent(BasicIcon);
         expect(iconNativeElement).toHaveClass('heart');
