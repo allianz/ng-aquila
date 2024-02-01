@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [17.2.0](https://github.com/allianz/ng-aquila/compare/v17.1.2...v17.2.0) (2024-02-01)
+
+
+### Bug Fixes
+
+* **grid-examples:** wrong imports breaking the docs ([7f1a13a](https://github.com/allianz/ng-aquila/commit/7f1a13ab87a55f0490155b6f49264af2f8729cd3))
+* **multi-select:** error message shown too early([cc5f666](https://github.com/allianz/ng-aquila/commit/cc5f666f22a20722995ece8afb03010f51a82fe4))
+* **radio-button:** no random suffix for custom ID ([65d9828](https://github.com/allianz/ng-aquila/commit/65d98282c602031261541c6c12a945ab504e62a2))
+
+
+### Features
+
+* **button,icon:** add testing harness ([cd07c76](https://github.com/allianz/ng-aquila/commit/cd07c7629adf23fd9ed33d48b4e036fa5ecb4995))
+
+
+
 ## [17.1.2](https://github.com/allianz/ng-aquila/compare/v17.1.1...v17.1.2) (2024-01-25)
 
 
