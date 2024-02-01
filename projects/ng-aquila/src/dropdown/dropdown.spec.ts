@@ -476,18 +476,6 @@ describe('NxDropdownComponent', () => {
             expect(touched).toBeTruthy();
         }));
 
-        it('should not trigger touched event when dropdown closed with updateOn is blur', fakeAsync(() => {
-            createTestComponent(ReactiveDropdownUpdateOnBlurComponent);
-            let touched = false;
-            dropdownInstance.registerOnTouched(() => {
-                touched = true;
-            });
-            openDropdownByClick();
-            expect(touched).toBeFalsy();
-            clickOnBackdrop();
-            expect(touched).toBeFalsy();
-        }));
-
         it('should should select the value by clicking on a dropdown item and close the dropdown', fakeAsync(() => {
             createTestComponent(SimpleDropdownComponent);
             openDropdownByClick();

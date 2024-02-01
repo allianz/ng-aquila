@@ -484,9 +484,6 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     _onTriggerBlur() {
-        if (this.ngControl?.control?.updateOn !== 'blur') {
-            this._onTouched();
-        }
         if (!this._isOpen && !this.disabled && !this.readonly) {
             this._onTouched();
             this.focusOut.emit(true);

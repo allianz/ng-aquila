@@ -197,6 +197,11 @@ describe('NxMultiSelectComponent', () => {
                 await multiSelectHarness.click();
             });
 
+            it('should not add ng-touched class when dropdown is opened', async () => {
+                const hasNgTouchedClass = multiSelectInstance.elementRef.nativeElement.classList.contains('ng-touched');
+                expect(hasNgTouchedClass).toBe(false);
+            });
+
             it('focuses the filter', fakeAsync(async () => {
                 flush();
                 const filter = await multiSelectHarness.getFilter();
@@ -295,6 +300,15 @@ describe('NxMultiSelectComponent', () => {
                 const divider = await multiSelectHarness.getDivider();
 
                 expect(divider).not.toBeNull();
+            });
+
+            it('should have ng-touched class when closed panel and blur', async () => {
+                await multiSelectHarness.closeWithEsc();
+                const value = await multiSelectHarness.getValue();
+                await value.blur();
+                const hasNgTouchedClass = multiSelectInstance.elementRef.nativeElement.classList.contains('ng-touched');
+
+                expect(hasNgTouchedClass).toBe(true);
             });
 
             it('should sort correctly when filter', async () => {
