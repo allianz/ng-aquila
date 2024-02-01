@@ -280,13 +280,12 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     get id(): string {
         return this._id;
     }
-    private _id = `nx-radio-${nextId++}`;
 
-    private _inputIdSuffix = randomString();
+    private _id = `nx-radio-${nextId++}-${randomString()}`;
 
     /** @docs-private */
     get inputId(): string {
-        return `${this.id}-input-${this._inputIdSuffix}`;
+        return `${this.id}-input`;
     }
 
     /** @docs-private */

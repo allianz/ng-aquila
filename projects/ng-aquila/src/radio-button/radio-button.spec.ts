@@ -357,7 +357,7 @@ describe('NxRadioComponent', () => {
             radioInstance.id = 'custom-radio-id';
             fixture.detectChanges();
             const radioElement = fixture.nativeElement.querySelector('nx-radio');
-            expect(getRadioInputElement(radioElement).getAttribute('id')?.startsWith('custom-radio-id-input')).toBeTrue();
+            expect(getRadioInputElement(radioElement).getAttribute('id')).toBe('custom-radio-id-input');
             expect(getRadioLabelElement(radioElement).getAttribute('id')).toBe('custom-radio-id-label');
         });
 
