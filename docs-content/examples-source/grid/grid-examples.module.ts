@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { NxGridModule } from '@aposin/ng-aquila/grid';
+import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxSliderModule } from '@aposin/ng-aquila/slider';
 
-import { NxFormfieldModule } from '../../../src/formfield';
-import { NxInputModule } from '../../../src/input';
-import { NxSliderModule } from '../../../src/slider/slider.module';
 import { GridAlignContentExampleComponent } from './grid-align-content/grid-align-content-example';
 import { GridAlignItemsExampleComponent } from './grid-align-items/grid-align-items-example';
 import { GridAlignSelfExampleComponent } from './grid-align-self/grid-align-self-example';
