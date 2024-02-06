@@ -22,6 +22,18 @@ Aquila versions 14 and older are no longer supported.
 
 During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
 
+## Updating to version 17
+
+With Aquila 17, we are upgrading to Angular 17. This Angular update has several features & improvements, such as control flow, new lifecycle hooks, faster builds, check out all the details of [Angular 17](https://blog.angular.io/introducing-angular-v17-4d7033312e4b).
+
+For updating Aquila to version 17, in most cases the following command should do the update for you:
+
+`ng update @angular/cli @angular/core`
+
+Then it should be easy to update Aquila with the following command:
+
+`ng update @aposin/ng-aquila --force`
+
 ## Updating to version 16
 
 With v16, we are upgrading to [Angular 16](https://blog.angular.io/angular-v16-is-here-4d7a28ec680d). This Angular update has been named the biggest release since the initial rollout of Angular, making large leaps in reactivity, server-side rendering, and tooling. In order to make sure you leverage the new Angular features in your application, we encourage you to check [the official documentation](https://angular.io/guide/update-to-version-16).
