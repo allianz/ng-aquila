@@ -60,13 +60,17 @@
     background-position: bottom left;
 }
 
-.header {
+.header:not(:empty) {
     -ms-grid-column: 1;
     -ms-grid-column-span: 3;
     grid-column: 1 / -1;
     min-height: v(small-stage-header-height);
     padding: v(small-stage-header-padding);
     display: flex;
+}
+
+.header:empty {
+    display: none;
 }
 
 :host(:not(.is-expert)) {
@@ -183,13 +187,13 @@
         justify-content: flex-end;
     }
 
-    .header {
+    .header:not(:empty) {
         min-height: v(small-stage-expert-header-height);
         padding: v(small-stage-expert-header-padding);
     }
 
     @include media-breakpoint-up(medium) {
-        .content {
+        .header:not(:empty) ~ .content {
             min-height: v(small-stage-expert-content-min-height);
         }
     }
@@ -198,6 +202,10 @@
         .container {
             -ms-grid-columns: 8fr 4fr;
             grid-template-columns: 8fr 4fr;
+        }
+
+        .content {
+            margin-bottom: v(small-stage-expert-tablet-content-margin-bottom);
         }
 
         ::ng-deep [nxSmallStageImageEnd] {
@@ -216,7 +224,7 @@
             margin-bottom: v(small-stage-expert-mobile-content-margin-bottom);
         }
 
-        .header {
+        .header:not(:empty) {
             padding: v(small-stage-expert-mobile-header-padding);
         }
 
