@@ -5,8 +5,12 @@
         aria-label="a useful label"
         class="back"
     >
-        <nx-icon name="arrow-left" nxIconPositionStart></nx-icon>Previous Page
-        Title
+        <nx-icon
+            name="arrow-left"
+            nxIconPositionStart
+            aria-hidden="true"
+        ></nx-icon
+        >Previous Page Title
     </button>
 
     <button
@@ -15,7 +19,7 @@
         type="button"
         class="nx-margin-right-2xs nx-margin-bottom-0"
     >
-        <nx-icon name="speech-bubble-o"></nx-icon>
+        <nx-icon name="speech-bubble-o" aria-hidden="true"></nx-icon>
     </button>
     <button
         nxIconButton="tertiary small"
@@ -23,7 +27,7 @@
         type="button"
         class="nx-margin-right-2xs nx-margin-bottom-0"
     >
-        <nx-icon name="close"></nx-icon>
+        <nx-icon name="close" aria-hidden="true"></nx-icon>
     </button>
     <button
         nxIconButton="tertiary small"
@@ -31,7 +35,7 @@
         type="button"
         class="nx-margin-right-2xs nx-margin-bottom-0"
     >
-        <nx-icon name="refresh"></nx-icon>
+        <nx-icon name="refresh" aria-hidden="true"></nx-icon>
     </button>
 
     <button
@@ -41,12 +45,16 @@
         type="button"
         class="nx-margin-right-2xs nx-margin-bottom-0"
     >
-        <nx-icon aria-hidden="true" name="ellipsis-h"></nx-icon>
+        <nx-icon name="ellipsis-h" aria-hidden="true"></nx-icon>
     </button>
 
     <button nxButton="primary small" type="button">
-        <nx-icon name="save-o" class="nx-margin-right-2xs"></nx-icon>Save
-        changes
+        <nx-icon
+            name="save-o"
+            class="nx-margin-right-2xs"
+            aria-hidden="true"
+        ></nx-icon
+        >Save changes
     </button>
 </nx-toolbar>
 

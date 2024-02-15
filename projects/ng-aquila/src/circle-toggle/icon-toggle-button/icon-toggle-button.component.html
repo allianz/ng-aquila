@@ -1,12 +1,12 @@
 <div class="nx-toggle-circle__icon-wrapper">
     <ng-container *ngIf="!inGroup">
         <span class="nx-toggle-circle__check-icon">
-            <nx-icon name="check"></nx-icon>
+            <nx-icon name="check" aria-hidden="true"></nx-icon>
         </span>
         <div class="nx-toggle-circle__check-focus"></div>
     </ng-container>
     <span class="nx-toggle-circle__icon">
-        <nx-icon size="m" *ngIf="icon" [name]="icon"></nx-icon>
+        <nx-icon size="m" *ngIf="icon" [name]="icon" aria-hidden="true"></nx-icon>
         <img *ngIf="svgUrl" class="nx-toggle-circle__icon-image" [src]="svgUrl" />
         <span *ngIf="circleText" class="nx-toggle-circle__content-text">{{ circleText }}</span>
     </span>

@@ -7,13 +7,13 @@
             (click)="_previousClicked()"
             [attr.aria-label]="_prevButtonLabel"
         >
-            <nx-icon [name]="this._isRtl ? 'chevron-right' : 'chevron-left'"></nx-icon>
+            <nx-icon [name]="this._isRtl ? 'chevron-right' : 'chevron-left'" aria-hidden="true"></nx-icon>
         </button>
 
         <span class="nx-calendar-period-label"> {{_periodButtonText}} </span>
 
         <button #nextButton class="nx-calendar-next-button" [disabled]="!_nextEnabled()" (click)="_nextClicked()" [attr.aria-label]="_nextButtonLabel">
-            <nx-icon [name]="this._isRtl ? 'chevron-left' : 'chevron-right'"></nx-icon>
+            <nx-icon [name]="this._isRtl ? 'chevron-left' : 'chevron-right'" aria-hidden="true"></nx-icon>
         </button>
     </div>
 

@@ -2,7 +2,7 @@
     <div class="nx-video__iframe">
         <div *ngIf="!showPlayer">
             <button #playButton class="nx-video__play-button" (click)="select()" [attr.aria-label]="playButtonAriaLabel" (keydown.enter)="select()">
-                <nx-icon class="nx-video__high-contrast-icon" name="play" size="s"></nx-icon>
+                <nx-icon class="nx-video__high-contrast-icon" name="play" size="s" aria-hidden="true"></nx-icon>
             </button>
             <img [src]="imgSrc" class="nx-video__thumbnail" [alt]="altText" (click)="select()" (keydown.enter)="select()" />
         </div>

@@ -10,7 +10,7 @@
                 (click)="onFirst()"
                 type="button"
             >
-                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-last' : 'arrow-first'"></nx-icon>
+                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-last' : 'arrow-first'" aria-hidden="true"></nx-icon>
             </button>
         </li>
         <li class="nx-pagination__item nx-pagination__item-previous">
@@ -23,7 +23,7 @@
                 (click)="onPrev()"
                 type="button"
             >
-                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-right' : 'arrow-left'"></nx-icon>
+                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-right' : 'arrow-left'" aria-hidden="true"></nx-icon>
             </button>
         </li>
         <li *ngFor="let pageNum of getPages()" class="nx-pagination__item nx-pagination__item--desktop" [ngClass]="getPaginationItemClasses(pageNum)">
@@ -64,7 +64,7 @@
                 (click)="onNext()"
                 type="button"
             >
-                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-left' : 'arrow-right'"></nx-icon>
+                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-left' : 'arrow-right'" aria-hidden="true"></nx-icon>
             </button>
         </li>
         <li class="nx-pagination__item">
@@ -77,7 +77,7 @@
                 (click)="onLast()"
                 type="button"
             >
-                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-first' : 'arrow-last'"></nx-icon>
+                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-first' : 'arrow-last'" aria-hidden="true"></nx-icon>
             </button>
         </li>
     </ul>
@@ -92,7 +92,7 @@
         (click)="onPrev()"
         type="button"
     >
-        <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-right' : 'arrow-left'"></nx-icon>
+        <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-right' : 'arrow-left'" aria-hidden="true"></nx-icon>
         <span class="nx-pagination-compact__direction-label">
             {{ paginationTexts.previous }}
         </span>
@@ -112,7 +112,7 @@
         type="button"
     >
         <span class="nx-pagination-compact__direction-label"> {{ paginationTexts.next }} </span>
-        <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-left' : 'arrow-right'"></nx-icon>
+        <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-left' : 'arrow-right'" aria-hidden="true"></nx-icon>
     </button>
 </nav>
 <nav *ngIf="isPaginationSliderVisible()" [attr.aria-label]="ariaLabel" class="nx-pagination-slider">
@@ -127,7 +127,7 @@
                 (click)="onPrev()"
                 type="button"
             >
-                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-right' : 'arrow-left'"></nx-icon>
+                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-right' : 'arrow-left'" aria-hidden="true"></nx-icon>
             </button>
         </li>
         <li *ngFor="let pageNum of getSlides()" class="nx-pagination__item">
@@ -150,7 +150,7 @@
                 (click)="onNext()"
                 type="button"
             >
-                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-left' : 'arrow-right'"></nx-icon>
+                <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-left' : 'arrow-right'" aria-hidden="true"></nx-icon>
             </button>
         </li>
     </ul>

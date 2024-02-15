@@ -1,6 +1,6 @@
 <div class="nx-action__wrapper">
     <ng-container *ngIf="expandable">
-        <nx-icon class="nx-action__expand-icon" name="chevron-right"></nx-icon>
+        <nx-icon class="nx-action__expand-icon" name="chevron-right" aria-hidden="true"></nx-icon>
     </ng-container>
     <span class="nx-action-icon__container" *ngIf="_iconChild">
         <ng-content select="[nxActionIcon]"></ng-content>

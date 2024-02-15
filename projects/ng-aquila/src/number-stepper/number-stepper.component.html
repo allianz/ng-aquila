@@ -15,7 +15,7 @@
         [disabled]="disabled || (value || 0) <= min"
         type="button"
     >
-        <nx-icon name="minus" size="s"></nx-icon>
+        <nx-icon name="minus" size="s" aria-hidden="true"></nx-icon>
     </button>
     <div class="nx-stepper__input-wrapper">
         <div class="nx-stepper__inner-wrapper">
@@ -51,6 +51,6 @@
         [disabled]="disabled || (value || 0) >= max"
         type="button"
     >
-        <nx-icon name="plus" size="s"></nx-icon>
+        <nx-icon name="plus" size="s" aria-hidden="true"></nx-icon>
     </button>
 </div>
