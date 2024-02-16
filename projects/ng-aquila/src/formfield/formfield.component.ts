@@ -228,6 +228,11 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
                 this._cdr.markForCheck();
             });
         }
+
+        // Whenever there are updates to ngControl, it's necessary to trigger change detection to ensure the view reflects these changes
+        this._control.ngControl?.valueChanges?.pipe(takeUntil(this._destroyed)).subscribe(() => {
+            this._cdr.markForCheck();
+        });
     }
 
     ngAfterContentChecked(): void {

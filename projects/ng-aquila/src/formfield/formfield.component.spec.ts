@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
 
 import { NxFormfieldErrorDirective } from './error.directive';
@@ -215,6 +215,18 @@ describe('NxFormfieldComponent', () => {
             fixture.detectChanges();
             tick();
             expect(formfieldElement).toHaveClass('has-error');
+        }));
+
+        it('should reflect view when ngControl changed', fakeAsync(() => {
+            createTestComponent(NgModelFormfield);
+
+            expect(labelElement.querySelector('span')?.textContent).toContain('Optional');
+            fixture.detectChanges();
+            testInstance.inputInstance.ngControl!.control!.setValidators(Validators.required);
+            testInstance.inputInstance.ngControl!.control?.updateValueAndValidity();
+            fixture.detectChanges();
+
+            expect(labelElement.querySelector('span')?.textContent).not.toContain('Optional');
         }));
 
         it('shows the error instead of a given note', fakeAsync(() => {
@@ -541,7 +553,7 @@ class NoChangeDetectionFormfield extends FormfieldTest {}
 class NoteFormfield extends FormfieldTest {}
 @Component({
     template: `
-        <nx-formfield label="Given Label">
+        <nx-formfield label="Given Label" optionalLabel="Optional">
             <input nxInput [(ngModel)]="currentValue" />
         </nx-formfield>
     `,
