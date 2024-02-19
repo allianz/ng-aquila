@@ -63,7 +63,7 @@ The `NxMessageToastModule` provides a service for displaying these Message Toast
 
 #### Showing a message toast
 
-The `NxMessageToastService` offers two options for showing a message toast: by passing a text string or a template.
+The `NxMessageToastService` offers multiple options for showing a message toast: by passing a text string, a template or a component.
 
 ```ts
 // Simple message toast with a custom text
@@ -71,10 +71,27 @@ let toastRef: NxMessageToastRef = messageToastService.open('My message toast tex
 
 // Message toast with a custom template
 let toastRef: NxMessageToastRef = messageToastService.openFromTemplate(myTemplateRef);
+
+// Message toast from a custom component
+let toastRef: NxMessageToastRef = messageToastService.openFromComponent(myComponent);
 ```
 
-In both cases a `NxMessageToastRef` is returned. It can be used for closing the message toast or subscribing to its closing. This behaviour is shown in the following examples.
+In all cases a `NxMessageToastRef` is returned. It can be used for closing the message toast or subscribing to its closing. This behaviour is shown in the following examples.
 
+If using `openFromComponent` you can access data from the component by injecting the `NX_MESSAGE_TOAST_COMPONENT_DATA` token:
+
+```ts
+import { Component, Inject } from '@angular/core';
+import { NX_MESSAGE_TOAST_COMPONENT_DATA } from '@aposin/ng-aquila/message-toast';
+
+@Component({
+    selector: 'your-message-toast',
+    template: 'passed in {{ data.name }}',
+})
+export class YourMessageToast {
+    constructor(@Inject(NX_MESSAGE_TOAST_COMPONENT_DATA) readonly data: any) {}
+}
+```
 <!-- example(message-toast-opening) -->
 
 #### Configuration

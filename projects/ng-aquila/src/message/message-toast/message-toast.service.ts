@@ -1,6 +1,6 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
+import { ComponentPortal, ComponentType, TemplatePortal } from '@angular/cdk/portal';
 import { ComponentRef, Inject, Injectable, InjectionToken, Injector, OnDestroy, Optional, SkipSelf, TemplateRef } from '@angular/core';
 
 import { NxMessageModule } from '../message.module';
@@ -10,6 +10,9 @@ import { NxMessageToastRef } from './message-toast-ref';
 
 /** Injection token that can be used to specify default message toast. */
 export const NX_MESSAGE_TOAST_DEFAULT_CONFIG = new InjectionToken<NxMessageToastConfig>('NX_MESSAGE_TOAST_DEFAULT_CONFIG');
+
+/** Injection token that can be used to access the data that was passed in to a message toast. */
+export const NX_MESSAGE_TOAST_COMPONENT_DATA = new InjectionToken<any>('NxMessageToastComponentData');
 
 /** A service for dispatching and displaying toast messages. */
 @Injectable({ providedIn: NxMessageModule })
@@ -54,7 +57,7 @@ export class NxMessageToastService implements OnDestroy {
 
         const componentPortal = new ComponentPortal(NxMessageToastComponent, undefined, injector);
         const componentRef = overlayRef.attach(componentPortal);
-        const toastRef = new NxMessageToastRef(componentRef.instance, overlayRef);
+        const toastRef = new NxMessageToastRef(componentRef.instance, overlayRef, null!);
 
         this._animateToast(toastRef, currentConfig);
         this._oldToastMessageRef = toastRef;
@@ -70,10 +73,29 @@ export class NxMessageToastService implements OnDestroy {
         const currentConfig = { ...new NxMessageToastConfig(), ...this._defaultConfig, ...config };
         const overlayRef = this._createOverlay(currentConfig);
         const container = this._attachToastComponent(overlayRef, currentConfig);
-        const toastRef = new NxMessageToastRef(container, overlayRef);
-        const portal = new TemplatePortal(template, null!, toastRef);
+        const toastRef = new NxMessageToastRef(container, overlayRef, null!);
+        const portal = new TemplatePortal(template, null!, toastRef, { $implicit: currentConfig.data, toastRef } as any);
 
         container.attachTemplatePortal(portal);
+        this._animateToast(toastRef, currentConfig);
+        this._oldToastMessageRef = toastRef;
+        return this._oldToastMessageRef;
+    }
+
+    /**
+     * Creates and dispatches a message toast using a component for the content.
+     * @param component Component to be used for the message toast.
+     * @param config Extra configuration for the message toast.
+     */
+    openFromComponent(component: ComponentType<any>, config?: NxMessageToastConfig): NxMessageToastRef {
+        const currentConfig = { ...new NxMessageToastConfig(), ...this._defaultConfig, ...config };
+        const overlayRef = this._createOverlay(currentConfig);
+        const container = this._attachToastComponent(overlayRef, currentConfig);
+
+        const portal = new ComponentPortal(component, null!);
+
+        const componentRef = container.attachComponentPortal(portal);
+        const toastRef = new NxMessageToastRef(container, overlayRef, componentRef);
         this._animateToast(toastRef, currentConfig);
         this._oldToastMessageRef = toastRef;
         return this._oldToastMessageRef;
@@ -143,6 +165,7 @@ export class NxMessageToastService implements OnDestroy {
             providers: [
                 { provide: NxMessageToastConfig, useValue: config },
                 { provide: NxMessageToastData, useValue: data },
+                { provide: NX_MESSAGE_TOAST_COMPONENT_DATA, useValue: config.data },
             ],
             name: 'nx-message-toast__portal-injector',
         });

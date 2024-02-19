@@ -6,7 +6,7 @@ export type NxMessageToastContext = 'info' | 'success';
 /**
  * Configuration used when opening a message toast.
  */
-export class NxMessageToastConfig {
+export class NxMessageToastConfig<D = any> {
     /**
      * The politeness level for the LiveAnnouncer announcement.
      *
@@ -35,6 +35,9 @@ export class NxMessageToastConfig {
      * Default: `'info'`.
      */
     context?: NxMessageToastContext = 'info';
+
+    /** Data being injected into the child component. */
+    data?: D | null = null;
 }
 
 /**

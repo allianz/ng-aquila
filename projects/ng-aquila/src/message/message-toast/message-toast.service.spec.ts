@@ -130,6 +130,38 @@ describe('NxMessageToast', () => {
         }));
     });
 
+    describe('open from component', () => {
+        let componentFixture: ComponentFixture<BasicMessageToastTest>;
+
+        beforeEach(() => {
+            componentFixture = TestBed.createComponent(BasicMessageToastTest);
+            componentFixture.detectChanges();
+        });
+
+        it('should be able to open', () => {
+            messageToastService.openFromComponent(SimpleMessageToastComponent);
+            componentFixture.detectChanges();
+
+            const containerElement = overlayContainerElement.querySelector('nx-message-toast')!;
+
+            expect(containerElement.textContent).toContain('Message from a component');
+        });
+
+        it('should be able to open and close', fakeAsync(() => {
+            const toastRef = messageToastService.openFromComponent(SimpleMessageToastComponent, { context: 'success' });
+            componentFixture.detectChanges();
+
+            const containerElement = overlayContainerElement.querySelector('nx-message-toast')!;
+            expect(containerElement.textContent).toContain('Message from a component');
+
+            toastRef.dismiss();
+            fixture.detectChanges();
+            flush();
+
+            expect(overlayContainerElement.childNodes).toHaveSize(0);
+        }));
+    });
+
     it('should dismiss automatically after a specified timeout', fakeAsync(() => {
         const toastRef = messageToastService.open('content', { duration: 300 });
         const afterDismissSpy = jasmine.createSpy('after dismiss spy');
@@ -342,3 +374,11 @@ class ComponentProvidingService {
     declarations: [BasicMessageToastTest, ComponentWithTemplateRef],
 })
 class NxMessageToastTestModule {}
+
+@Component({
+    template: `<div class="u-text-center">
+        <h3>Message from a component</h3>
+        <p>This text comes from the SimpleMessageToastComponent.</p>
+    </div>`,
+})
+class SimpleMessageToastComponent {}
