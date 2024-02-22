@@ -203,16 +203,8 @@ $icon-mapping: (
         border-bottom: 2px solid var(--table-border-bottom-color);
     }
 
-    .ag-row:has(+ .ag-row.ag-row-selected) {
-        --ag-row-border-color: var(--selectable-table-row-selected-border-color);
-    }
-
     .ag-row {
         font-size: var(--ag-font-size);
-
-        &.ag-row-selected {
-            --ag-row-border-color: var(--selectable-table-row-selected-border-color);
-        }
     }
     .ag-cell {
         -webkit-font-smoothing: antialiased;
