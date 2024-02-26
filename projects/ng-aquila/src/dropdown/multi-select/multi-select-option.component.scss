@@ -78,6 +78,8 @@
 .nx-checkbox__label {
     padding: 0;
     margin-left: v(checkbox-small-label-text-margin-left);
+    word-break: break-word;
+    hyphens: auto;
 
     :host-context([dir='rtl']) & {
         margin-left: initial;
