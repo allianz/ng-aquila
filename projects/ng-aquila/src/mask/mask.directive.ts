@@ -155,6 +155,10 @@ export class NxMaskDirective implements ControlValueAccessor, Validator, OnInit 
     }
 
     private handleMaskChange(value: string) {
+        if (this.dropSpecialCharacters) {
+            value = this.nxMask?.getUnmaskedValue(value) as string;
+        }
+
         this.cvaModelChange.next(value);
         this._onChangeCallback?.(value);
         // this seems to be necessary in cases like our documentation examples where views are created dynamically

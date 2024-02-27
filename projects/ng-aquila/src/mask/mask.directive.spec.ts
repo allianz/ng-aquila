@@ -231,6 +231,18 @@ describe('NxMaskDirective', () => {
         expect(testInstance.modelVal).toBe('12:34-56');
     });
 
+    it('modelVal should be unmasked when dropSpecialCharacters is true', () => {
+        createTestComponent(ConfigurableMaskComponent);
+        setMask('00:00-00');
+
+        testInstance.dropSpecialCharacters = true;
+        fixture.detectChanges();
+        assertInputValue(nativeElement, '123456', '12:34-56');
+        expect(maskInstance.dropSpecialCharacters).toBeTrue();
+        expect(nativeElement.value).toBe('12:34-56');
+        expect(testInstance.modelVal).toBe('123456');
+    });
+
     it('sets deactivateMask to false on default', () => {
         createTestComponent(BasicMaskComponent);
         expect(maskInstance.deactivateMask).toBeFalse();
