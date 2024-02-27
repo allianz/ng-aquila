@@ -63,7 +63,7 @@
                         (click)="removeRow(i)"
                         aria-label="Remove row"
                     >
-                        <nx-icon name="trash-o"></nx-icon>
+                        <nx-icon name="trash-o" aria-hidden="true"></nx-icon>
                     </button>
                 </td>
             </tr>
@@ -72,5 +72,6 @@
 </div>
 
 <button nxPlainButton (click)="addRow()">
-    <nx-icon name="plus" nxIconPositionStart></nx-icon>Add row
+    <nx-icon name="plus" nxIconPositionStart aria-hidden="true"></nx-icon>Add
+    row
 </button>

@@ -35,7 +35,7 @@
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">open(text: <span class="docs-api-property__type">string</span>,config: <span class="docs-api-property__type">NxMessageToastConfig</span>): <span class="docs-api-method-returns-type">NxMessageToastRef</span></span>
+            <span class="docs-api-method-name">open(text: <span class="docs-api-property__type">string</span>,config: <span class="docs-api-property__type">NxMessageToastConfig<any></span>): <span class="docs-api-method-returns-type">NxMessageToastRef</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Creates and dispatches a message toast with a custom text.</p>
@@ -53,7 +53,7 @@
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 config<span class="docs-api-method-parameter-optional-marker">?</span>:
-                <span class="docs-api-method-parameter-type">NxMessageToastConfig</span>
+                <span class="docs-api-method-parameter-type">NxMessageToastConfig<any></span>
             </code>
             <p class="docs-api-method-parameter-description"> Extra configuration for the message toast. </p>
         </div>
@@ -64,7 +64,36 @@
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">openFromTemplate(template: <span class="docs-api-property__type">TemplateRef<any></span>,config: <span class="docs-api-property__type">NxMessageToastConfig</span>): <span class="docs-api-method-returns-type">NxMessageToastRef</span></span>
+            <span class="docs-api-method-name">openFromComponent(component: <span class="docs-api-property__type">ComponentType<any></span>,config: <span class="docs-api-property__type">NxMessageToastConfig<any></span>): <span class="docs-api-method-returns-type">NxMessageToastRef</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Creates and dispatches a message toast using a component for the content.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                component:
+                <span class="docs-api-method-parameter-type">ComponentType<any></span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Component to be used for the message toast. </p>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                config<span class="docs-api-method-parameter-optional-marker">?</span>:
+                <span class="docs-api-method-parameter-type">NxMessageToastConfig<any></span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Extra configuration for the message toast. </p>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">openFromTemplate(template: <span class="docs-api-property__type">TemplateRef<any></span>,config: <span class="docs-api-property__type">NxMessageToastConfig<any></span>): <span class="docs-api-method-returns-type">NxMessageToastRef</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Creates and dispatches a message toast with a custom template for the content.</p>
@@ -82,7 +111,7 @@
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 config<span class="docs-api-method-parameter-optional-marker">?</span>:
-                <span class="docs-api-method-parameter-type">NxMessageToastConfig</span>
+                <span class="docs-api-method-parameter-type">NxMessageToastConfig<any></span>
             </code>
             <p class="docs-api-method-parameter-description"> Extra configuration for the message toast. </p>
         </div>
@@ -288,6 +317,20 @@ component or template, the announcement message will default to the specified me
     <td class="docs-api-property-description">
         <p>Context of the message toast.</p>
 <p>Default: <code>&#39;info&#39;</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">data</span>?:
+                <span class="docs-api-property__type">D | null</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Data being injected into the child component.</p>
 </td>
 </tr>
    

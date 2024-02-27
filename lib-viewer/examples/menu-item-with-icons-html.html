@@ -8,7 +8,12 @@
         [<span class="hljs-attr">expanded</span>]=<span class="hljs-string">&quot;item.expanded&quot;</span>
         <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
     &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">nxMenuButtonIcon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;item.icon&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+            <span class="hljs-attr">nxMenuButtonIcon</span>
+            [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;item.icon&quot;</span>
+            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+            <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
         {{item.label}}
     <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxMenuItem</span>=<span class="hljs-string">&quot;l&quot;</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;item.children &amp;&amp; item.expanded&quot;</span>&gt;</span>

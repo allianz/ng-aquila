@@ -25,8 +25,13 @@
                 class="nx-margin-left-xs"
                 [nxPopoverTriggerFor]="popover"
                 nxPopoverTrigger="click"
+                aria-label="More information"
             >
-                <nx-icon size="s" name="info-circle-o"></nx-icon>
+                <nx-icon
+                    size="s"
+                    name="info-circle-o"
+                    aria-hidden="true"
+                ></nx-icon>
             </button>
         </div>
     </div>

@@ -461,6 +461,146 @@
 </table> 
 
  
+   
+
+<h4 id="NxCardHarness" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxCardHarness"></span>
+    <code>NxCardHarness</code><span class="docs-api-class-extends-clauses">
+        <span class="docs-api-class-extends-label">extends</span>
+        <span class="docs-api-class-extends-type">ContentContainerComponentHarness</span>
+    </span></h4> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getHeadingText(): <span class="docs-api-method-returns-type">Promise<string></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Get the text of the first heading element within the Card</p>
+<p>Can be an HTML h* element or an element with role=&quot;heading&quot;</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getHighlight(): <span class="docs-api-method-returns-type">Promise<TestElement | null></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Find the highlight element within the card</p>
+</div></div>
+   
+   
+
+<h4 id="NxSelectableCardHarness" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxSelectableCardHarness"></span>
+    <code>NxSelectableCardHarness</code><span class="docs-api-class-extends-clauses">
+        <span class="docs-api-class-extends-label">extends</span>
+        <span class="docs-api-class-extends-type">NxCardHarness</span>
+    </span></h4> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">click(...args: <span class="docs-api-property__type">[number, number] | [center?</span>): <span class="docs-api-method-returns-type">Promise<void></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                ...args:
+                <span class="docs-api-method-parameter-type">[number, number] | [center?</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getHeadingText(): <span class="docs-api-method-returns-type">Promise<string></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Get the text of the first heading element within the Card</p>
+<p>Can be an HTML h* element or an element with role=&quot;heading&quot;</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getHighlight(): <span class="docs-api-method-returns-type">Promise<TestElement | null></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Find the highlight element within the card</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">hasError()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">isChecked()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+   
+
+<h4 id="NxSelectableCardGroupHarness" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxSelectableCardGroupHarness"></span>
+    <code>NxSelectableCardGroupHarness</code><span class="docs-api-class-extends-clauses">
+        <span class="docs-api-class-extends-label">extends</span>
+        <span class="docs-api-class-extends-type">ComponentHarness</span>
+    </span></h4> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getCards(filter: <span class="docs-api-property__type">NxSelectableCardHarnessFilters</span>): <span class="docs-api-method-returns-type">Promise<NxSelectableCardHarness[]></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                filter<span class="docs-api-method-parameter-optional-marker">?</span>:
+                <span class="docs-api-method-parameter-type">NxSelectableCardHarnessFilters</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getErrorText(): <span class="docs-api-method-returns-type">Promise<string | null></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
   <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
         <span header-link="additional_interfaces"></span>
         Additional interfaces
@@ -491,6 +631,72 @@ It can be configured using the <code>NX_SELECTABLE_CARD_DEFAULT_OPTIONS</code> i
     <td class="docs-api-property-description">
         <p>Sets the default appearance (optional).</p>
 </td>
+</tr>
+  
+</table>   
+   
+
+<h4 id="NxCardHarnessFilters" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxCardHarnessFilters"></span>
+    <code>NxCardHarnessFilters</code>
+</h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">heading</span>?:
+                <span class="docs-api-property__type">string | RegExp</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">highlight</span>?:
+                <span class="docs-api-property__type">boolean | string | RegExp</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>boolean to check for presence, string or RegExp to the highlight&#39;s text</p>
+</td>
+</tr>
+  
+</table>   
+   
+
+<h4 id="NxSelectableCardHarnessFilters" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxSelectableCardHarnessFilters"></span>
+    <code>NxSelectableCardHarnessFilters</code>
+</h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">checked</span>?:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
 </tr>
   
 </table>   

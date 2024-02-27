@@ -1,5 +1,16 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">TemplateRef</span>, <span class="hljs-title class_">ViewChild</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxMessageToastService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/message&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxMessageToastRef</span>,
+    <span class="hljs-title class_">NxMessageToastService</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/message&#x27;</span>;
+
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">template</span>: <span class="hljs-string">`&lt;div class=&quot;u-text-center&quot;&gt;
+        &lt;h3&gt;Message from a component&lt;/h3&gt;
+        &lt;p&gt;This text comes from the SimpleMessageToastComponent.&lt;/p&gt;
+    &lt;/div&gt;`</span>,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SimpleMessageToastComponent</span> {}
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Opening example
@@ -13,6 +24,8 @@
     <span class="hljs-keyword">readonly</span> toastText = <span class="hljs-string">&#x27;A success message toast with a custom text.&#x27;</span>;
 
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template&#x27;</span>) templateRef!: <span class="hljs-title class_">TemplateRef</span>&lt;<span class="hljs-built_in">any</span>&gt;;
+
+    componentMessageToastRef?: <span class="hljs-title class_">NxMessageToastRef</span>;
 
     <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> messageToastService: NxMessageToastService</span>) {}
 
@@ -28,5 +41,15 @@
             <span class="hljs-attr">announcementMessage</span>:
                 <span class="hljs-string">&#x27;You see an info message. It will disappear in 3000 ms.&#x27;</span>,
         });
+    }
+
+    <span class="hljs-title function_">openFromComponent</span>(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">componentMessageToastRef</span> =
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">messageToastService</span>.<span class="hljs-title function_">openFromComponent</span>(
+                <span class="hljs-title class_">SimpleMessageToastComponent</span>,
+                {
+                    <span class="hljs-attr">duration</span>: <span class="hljs-number">5000</span>,
+                },
+            );
     }
 }

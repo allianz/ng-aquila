@@ -4,7 +4,7 @@
     (click)="onSelect(action)"
     [selected]="action === selectedAction"
 >
-    <nx-icon nxActionIcon [name]="action.icon"></nx-icon>
+    <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
     <span class="label-content">
         {{action.label}}
         <nx-indicator

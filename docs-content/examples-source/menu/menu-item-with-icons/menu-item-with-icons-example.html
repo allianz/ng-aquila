@@ -8,7 +8,12 @@
         [expanded]="item.expanded"
         type="button"
     >
-        <nx-icon nxMenuButtonIcon [name]="item.icon" size="s"></nx-icon>
+        <nx-icon
+            nxMenuButtonIcon
+            [name]="item.icon"
+            size="s"
+            aria-hidden="true"
+        ></nx-icon>
         {{item.label}}
     </button>
     <div nxMenuItem="l" *ngIf="item.children && item.expanded">

@@ -7,7 +7,7 @@
         routerLinkActive="is-selected"
         type="button"
     >
-        <nx-icon nxActionIcon [name]="action.icon"></nx-icon>
+        <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
         {{action.label}}
     </button>
 
@@ -19,7 +19,7 @@
             class="nx-margin-0"
             type="button"
         >
-            <nx-icon name="setting"></nx-icon>
+            <nx-icon name="setting" aria-hidden="true"></nx-icon>
         </button>
         <button
             nxSidebarToggle

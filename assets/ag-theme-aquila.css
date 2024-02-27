@@ -148,14 +148,8 @@
   border: none;
   border-bottom: 2px solid var(--table-border-bottom-color);
 }
-.ag-theme-aquila .ag-row:has(+ .ag-row.ag-row-selected) {
-  --ag-row-border-color: var(--selectable-table-row-selected-border-color);
-}
 .ag-theme-aquila .ag-row {
   font-size: var(--ag-font-size);
-}
-.ag-theme-aquila .ag-row.ag-row-selected {
-  --ag-row-border-color: var(--selectable-table-row-selected-border-color);
 }
 .ag-theme-aquila .ag-cell {
   -webkit-font-smoothing: antialiased;
