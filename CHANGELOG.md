@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [17.3.0](https://github.com/allianz/ng-aquila/compare/v17.2.0...v17.3.0) (2024-02-27)
+
+
+### Bug Fixes
+
+* **ag-grid-theme:** remove selected row border ([457ca0c](https://github.com/allianz/ng-aquila/commit/457ca0ce4d25f60606324659f23e545f2ae7140e))
+* **formfield:** run change detection when control changes ([9cfddc8](https://github.com/allianz/ng-aquila/commit/9cfddc88328b7766b94762cc03cdf815eaba36c5))
+* **icon:** set aria-hidden ([d7f47de](https://github.com/allianz/ng-aquila/commit/d7f47deaa3e97b54a2f8cbabad9f969739351934))
+* **mask:** update model correclty when dropspecialcharacters changes ([1859690](https://github.com/allianz/ng-aquila/commit/1859690f566d2b2d52c57f817fb2bba9054fe791))
+* **multi-select:** prevent overlay scroll when text too long ([37bf2de](https://github.com/allianz/ng-aquila/commit/37bf2dec1d5ea1b432540c8b5f8b08258f64c421))
+* **progress-indicator:** change disabled colors ([e87eec4](https://github.com/allianz/ng-aquila/commit/e87eec426604f70f409425942fa30820f4de0c62))
+* **small-stage:** vertical spacing ([56834b4](https://github.com/allianz/ng-aquila/commit/56834b4f6ad8540c62ac7758e15b417602702035))
+
+
+### Features
+
+* **link,data-display,checkbox,radio,card:** add testing harnesses ([8ae0652](https://github.com/allianz/ng-aquila/commit/8ae065222ba87afc006871613bc8075eec086c3b))
+* **message-toast:** message toast from component ([882010f](https://github.com/allianz/ng-aquila/commit/882010f0a4b23b16949b79c6c6c3526e590ef9da))
+
+
+
 # [17.2.0](https://github.com/allianz/ng-aquila/compare/v17.1.2...v17.2.0) (2024-02-01)
 
 
