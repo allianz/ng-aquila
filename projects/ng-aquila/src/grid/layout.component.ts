@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
     selector: '[nxLayout]',
@@ -31,7 +31,7 @@ export class NxLayoutComponent {
      * On `true` the Grid will use container queries instead of media queries.
      * See [mdn docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries) for more info
      */
-    @Input() containerQuery = false;
+    @Input({ transform: booleanAttribute }) containerQuery = false;
 
     /**
      * Type of layout.
