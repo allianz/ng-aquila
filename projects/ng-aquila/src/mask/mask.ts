@@ -253,7 +253,8 @@ export class NxMask {
     }
 
     private updateValue(value: string, callOnChange = true) {
-        let newValue = this.maskConfig.deactivateMask ? this.getUnmaskedValue(value) : value;
+        let newValue = value === undefined || value === null ? '' : value.toString();
+        newValue = this.maskConfig.deactivateMask ? this.getUnmaskedValue(value) : value;
         if (!this.maskConfig.deactivateMask) {
             if (this.maskConfig.convertTo === 'upper') {
                 newValue = newValue.toUpperCase();
@@ -317,6 +318,8 @@ export class NxMask {
     }
 
     getMaskedString(inputValue: string, maskStartIndex = 0): string {
+        // inputValue could actually be a number, so we need to convert it
+        const transformedValue = inputValue.toString();
         let formattedValue = '';
         let maskIndex = maskStartIndex;
         let inputIndex = 0;
@@ -327,10 +330,10 @@ export class NxMask {
             maskIndex++;
         }
 
-        while (inputIndex < inputValue.length) {
+        while (inputIndex < transformedValue.length) {
             // test if letters are valid
-            if (this._isStringAllowed(inputValue[inputIndex], this.maskConfig.mask[maskIndex] as MASK_TYPE)) {
-                formattedValue += inputValue[inputIndex];
+            if (this._isStringAllowed(transformedValue[inputIndex], this.maskConfig.mask[maskIndex] as MASK_TYPE)) {
+                formattedValue += transformedValue[inputIndex];
                 inputIndex++;
                 maskIndex++;
             } else {

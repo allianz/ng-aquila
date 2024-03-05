@@ -245,34 +245,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator, OnInit 
 
     /** @docs-private */
     getMaskedString(inputValue: string, maskStartIndex = 0): string {
-        let formattedValue = '';
-        let maskIndex = maskStartIndex;
-        let inputIndex = 0;
-
-        // insert if next in mask is separator
-        while (this.isSeparator(this.mask[maskIndex])) {
-            formattedValue += this.mask[maskIndex];
-            maskIndex++;
-        }
-
-        while (inputIndex < inputValue.length) {
-            // test if letters are valid
-            if (this._isStringAllowed(inputValue[inputIndex], this.mask[maskIndex] as MASK_TYPE)) {
-                formattedValue += inputValue[inputIndex];
-                inputIndex++;
-                maskIndex++;
-            } else {
-                inputIndex++;
-            }
-
-            // insert if next in mask is separator
-            while (this.isSeparator(this.mask[maskIndex])) {
-                formattedValue += this.mask[maskIndex];
-                maskIndex++;
-            }
-        }
-
-        return formattedValue;
+        return this.nxMask?.getMaskedString(inputValue, maskStartIndex) || '';
     }
 
     private isSeparator(value: string): boolean {
@@ -281,13 +254,12 @@ export class NxMaskDirective implements ControlValueAccessor, Validator, OnInit 
 
     // control value accessor
     writeValue(value: any): void {
-        if (!value) {
-            value = '';
-        }
+        const newValue = value === undefined || value === null ? '' : value;
+
         // this has to be fired before we set the value next, that the iban mask
         // can be set correctly to the country first
-        this.cvaModelChange.next(value);
-        this.nxMask?.setValue(this.getMaskedString(value));
+        this.cvaModelChange.next(newValue);
+        this.nxMask?.setValue(this.getMaskedString(newValue));
     }
 
     registerOnChange(onChange: any): void {

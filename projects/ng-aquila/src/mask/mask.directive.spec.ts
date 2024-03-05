@@ -38,7 +38,7 @@ abstract class MaskTest {
     separators: string[] = ['(', ')', ':', '-'];
     dropSpecialCharacters = false;
     validateMask = true;
-    modelVal!: string;
+    modelVal!: any;
     convertTo!: string;
     deactivateMask = false;
 
@@ -116,6 +116,25 @@ describe('NxMaskDirective', () => {
         assertInputValue(nativeElement, 'a12b', 'ab');
         assertInputValue(nativeElement, 'ab,cd', 'abcd');
     });
+
+    it('should handle number values in model', fakeAsync(() => {
+        createTestComponent(ConfigurableMaskComponent);
+        setMask('000');
+        testInstance.modelVal = 123;
+        fixture.detectChanges();
+        flush();
+        expect(nativeElement.value).toBe('123');
+
+        testInstance.modelVal = 0;
+        fixture.detectChanges();
+        flush();
+        expect(nativeElement.value).toBe('0');
+
+        testInstance.modelVal = 420;
+        fixture.detectChanges();
+        flush();
+        expect(nativeElement.value).toBe('420');
+    }));
 
     it('accepts digits and letters', () => {
         createTestComponent(BasicMaskComponent);
@@ -414,7 +433,6 @@ describe('NxMaskDirective', () => {
             flush();
 
             expect(nativeElement.value).toBe('12:34:56');
-            console.log('MODELVAL', testInstance.modelVal);
             expect(testInstance.modelVal).toBe('12:34:56');
         }));
 
