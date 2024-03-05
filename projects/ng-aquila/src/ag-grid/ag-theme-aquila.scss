@@ -262,3 +262,8 @@ $icon-mapping: (
     --ag-odd-row-background-color: var(--zebra-table-even-row-background-color);
     --ag-row-border-style: none;
 }
+
+.ag-dnd-ghost {
+    box-shadow: 0 0 24px 0 rgba(65, 65, 65, 0.35);
+    border: 0;
+}
