@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.3.1](https://github.com/allianz/ng-aquila/compare/v17.3.0...v17.3.1) (2024-03-07)
+
+
+### Bug Fixes
+
+* **grid:** remove :host from css selectors ([ebf1c82](https://github.com/allianz/ng-aquila/commit/ebf1c825d8dfbcd13b6901646a8702116937b541))
+* **mask:** handle initial number values in form model ([42747b3](https://github.com/allianz/ng-aquila/commit/42747b3e305d500e76b18aa8f1e0cf399437e04c))
+* **small-stage:** change spacings ([5d70fb8](https://github.com/allianz/ng-aquila/commit/5d70fb80b6818903ae68a834910015376aa4766f))
+* **table:** table and ag-grid visual alignments ([f9e0c83](https://github.com/allianz/ng-aquila/commit/f9e0c83311dd69a5be065d5bb0715cf38a9a2970))
+
+
+
 # [17.3.0](https://github.com/allianz/ng-aquila/compare/v17.2.0...v17.3.0) (2024-02-27)
 
 
