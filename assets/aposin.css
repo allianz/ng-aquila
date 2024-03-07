@@ -1072,6 +1072,8 @@ body,
   --small-stage-image-min-height: 64px;
   --small-stage-image-max-height: 144px;
   --small-stage-header-height: 64px;
+  --small-stage-header-height-tablet: 32px;
+  --small-stage-header-height-mobile: 32px;
   --small-stage-header-padding: 16px 0 24px;
   --small-stage-mobile-header-height: 32px;
   --small-stage-mobile-header-padding: 16px 0;
@@ -1082,10 +1084,10 @@ body,
   --small-stage-mobile-content-margin-bottom: 32px;
   --small-stage-text-color: var(--text-01);
   --small-stage-default-background-color: var(--ui-03);
-  --small-stage-expert-header-height: 0;
+  --small-stage-expert-header-height: 32px;
   --small-stage-expert-header-padding: 16px 0 8px;
-  --small-stage-expert-content-min-height: 72px;
-  --small-stage-expert-content-margin-top: 32px;
+  --small-stage-expert-content-min-height: 0;
+  --small-stage-expert-content-margin-top: 0;
   --small-stage-expert-content-margin-bottom: 32px;
   --small-stage-expert-tablet-content-margin-bottom: 24px;
   --small-stage-expert-mobile-content-margin-bottom: 16px;

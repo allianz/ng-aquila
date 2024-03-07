@@ -1,4 +1,4 @@
-<table nxTable>
+<table nxTable class="nx-table--reorder">
     <thead>
         <tr
             nxTableRow
@@ -11,7 +11,6 @@
                 nxHeaderCell
                 cdkDrag
                 cdkDragLockAxis="x"
-                class="col"
             >
                 {{h.title}}
             </th>
@@ -19,7 +18,9 @@
     </thead>
     <tbody>
         <tr nxTableRow *ngFor="let item of content">
-            <td nxTableCell *ngFor="let h of header">{{item[h.field]}}</td>
+            <td nxTableCell *ngFor="let h of header" class="col">
+                {{item[h.field]}}
+            </td>
         </tr>
     </tbody>
 </table>
