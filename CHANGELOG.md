@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.3.2](https://github.com/allianz/ng-aquila/compare/v17.3.1...v17.3.2) (2024-03-08)
+
+
+### Bug Fixes
+
+* **circle-toggle:** inherit properties from group dynamically ([c4b899d](https://github.com/allianz/ng-aquila/commit/c4b899d00e2b32786e37a2c5918cfb655871f3fc))
+* **table:** allow sort column to read out by screeenreader ([16e71e0](https://github.com/allianz/ng-aquila/commit/16e71e076adfb0a57fa59b7c3638409c4d95af03))
+
+
+
 ## [17.3.1](https://github.com/allianz/ng-aquila/compare/v17.3.0...v17.3.1) (2024-03-07)
 
 
