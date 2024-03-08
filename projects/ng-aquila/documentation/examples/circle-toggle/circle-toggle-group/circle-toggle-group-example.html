@@ -9,3 +9,34 @@
     >
     </nx-circle-toggle>
 </nx-circle-toggle-group>
+
+<p nxCopytext="large" class="nx-margin-y-m">You can disable the whole group:</p>
+
+<nx-circle-toggle-group disabled>
+    <nx-circle-toggle
+        *ngFor="let item of sampleValues"
+        [value]="item.value"
+        [icon]="item.icon"
+        [hint]="item.hint"
+        [label]="item.label"
+        [checked]="item.selected"
+    >
+    </nx-circle-toggle>
+</nx-circle-toggle-group>
+
+<p nxCopytext="large" class="nx-margin-y-m">
+    And you can disable individual circle toggles in a group:
+</p>
+
+<nx-circle-toggle-group>
+    <nx-circle-toggle
+        *ngFor="let item of sampleValues"
+        [value]="item.value"
+        [icon]="item.icon"
+        [hint]="item.hint"
+        [label]="item.label"
+        [checked]="item.selected"
+        [disabled]="item.value === 'B'"
+    >
+    </nx-circle-toggle>
+</nx-circle-toggle-group>

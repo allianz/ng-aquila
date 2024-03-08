@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators 
 import { By } from '@angular/platform-browser';
 
 import { NxCircleToggleModule } from '../circle-toggle.module';
+import { NxCircleToggleComponent } from '../circle-toggle/circle-toggle.component';
 import { NxCircleToggleGroupComponent } from './circle-toggle-group.component';
 
 describe('NxToggleButtonGroup', () => {
@@ -163,6 +164,30 @@ describe('NxToggleButtonGroup', () => {
         const iconToggles = Array.from(toggleButtons).map(toggle => toggle.querySelector('nx-icon-toggle-button'));
         iconToggles.forEach(toggle => expect(toggle).toHaveClass('is-negative'));
     });
+
+    it('circle toggle components inherit responsive property on change from toggle group', () => {
+        createTestComponent(SimpleCircleToggleGroupComponent);
+        toggleComponent.responsive = true;
+        fixture.detectChanges();
+        toggleButtons.forEach(toggle => expect(toggle).toHaveClass('is-responsive'));
+    });
+
+    it('circle toggle components can be disabled individually', () => {
+        createTestComponent(SimpleCircleToggleGroupComponent);
+        const secondToggle = fixture.debugElement.queryAll(By.directive(NxCircleToggleComponent))[1];
+        secondToggle.componentInstance.disabled = true;
+        fixture.detectChanges();
+        expect(toggleButtons.item(1)).toHaveClass('is-disabled');
+    });
+
+    it('should not show check icon when in group', fakeAsync(() => {
+        createTestComponent(NgModelCircleToggleGroupComponent);
+        fixture.componentInstance.modelValue = 'B';
+        fixture.detectChanges();
+        flush();
+        expect(toggleComponent.buttons.toArray()[1].checked).toBeTruthy();
+        expect(toggleButtons.item(1).querySelector('.nx-toggle-circle__check-icon')).toBeFalsy();
+    }));
 
     it('circle toggle gets correct styles on value change', fakeAsync(() => {
         createTestComponent(SimpleCircleToggleGroupComponent);

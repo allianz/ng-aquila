@@ -3,6 +3,7 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import {
     AfterViewInit,
+    booleanAttribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -13,12 +14,12 @@ import {
     HostListener,
     Input,
     OnDestroy,
-    OnInit,
     Optional,
     Output,
     Self,
     ViewChild,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 
 import { NxCircleToggleGroupComponent } from '../circle-toggle-group/circle-toggle-group.component';
@@ -55,7 +56,7 @@ let nextId = 0;
         '[class.has-error]': 'errorState',
     },
 })
-export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor, DoCheck {
+export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, AfterViewInit, ControlValueAccessor, DoCheck {
     private _id = `toggle-button-${nextId++}`;
 
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
@@ -185,43 +186,52 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     private _hint: string | null = null;
 
     /** Whether the circle toggle uses the negative set of styling. */
-    @Input() set negative(value: BooleanInput) {
-        const newValue = coerceBooleanProperty(value);
-        if (this.negative !== newValue) {
-            this._negative = newValue;
-            this._cdr.markForCheck();
-        }
+    @Input({ transform: booleanAttribute }) set negative(value) {
+        this._negative = value;
+        // this call should be removed. this is left from a time where we wanted to
+        // support the case where components are created dynamically and then you would set
+        // inputs directly on the component instances bypassing Angular features
+        // this has come a long way since then and setting inputs on dynamic components is now possible
+        // for not breaking anyone's code by accident we keep this for now
+        // @deletion-target 18.0.0
+        this._cdr.markForCheck();
     }
     get negative(): boolean {
-        return !!this._negative;
+        return this._negative || !!this.toggleGroup?.negative;
     }
-    private _negative?: boolean;
+    private _negative = false;
 
     /** Whether the circle toggle has a responsive behavior. */
-    @Input() set responsive(value: BooleanInput) {
-        const newValue = coerceBooleanProperty(value);
-        if (this.responsive !== newValue) {
-            this._responsive = newValue;
-            this._cdr.markForCheck();
-        }
+    @Input({ transform: booleanAttribute }) set responsive(value) {
+        this._responsive = value;
+        // this call should be removed. this is left from a time where we wanted to
+        // support the case where components are created dynamically and then you would set
+        // inputs directly on the component instances bypassing Angular features
+        // this has come a long way since then and setting inputs on dynamic components is now possible
+        // for not breaking anyone's code by accident we keep this for now
+        // @deletion-target 18.0.0
+        this._cdr.markForCheck();
     }
     get responsive(): boolean {
-        return !!this._responsive;
+        return this._responsive || !!this.toggleGroup?.responsive;
     }
-    private _responsive?: boolean;
+    private _responsive = false;
 
     /** Whether the circle toggle is disabled. */
-    @Input() set disabled(value: BooleanInput) {
-        const newValue = coerceBooleanProperty(value);
-        if (this.disabled !== newValue) {
-            this._disabled = newValue;
-            this._cdr.markForCheck();
-        }
+    @Input({ transform: booleanAttribute }) set disabled(value) {
+        this._disabled = value;
+        // this call should be removed. this is left from a time where we wanted to
+        // support the case where components are created dynamically and then you would set
+        // inputs directly on the component instances bypassing Angular features
+        // this has come a long way since then and setting inputs on dynamic components is now possible
+        // for not breaking anyone's code by accident we keep this for now
+        // @deletion-target 18.0.0
+        this._cdr.markForCheck();
     }
     get disabled(): boolean {
-        return !!this._disabled;
+        return this._disabled || !!this.toggleGroup?.disabled;
     }
-    private _disabled?: boolean;
+    private _disabled = false;
 
     get required() {
         const selfRequired = this.ngControl?.control?.hasValidator(Validators.required);
@@ -271,18 +281,21 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         super();
 
         if (this.toggleGroup) {
+            this.inGroup = true;
             this.name = this.toggleGroup.name;
+            this.id = this.toggleGroup.id + `-button-${nextId++}`;
         }
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of
             // the `providers` to avoid running into a circular import.
             this.ngControl.valueAccessor = this;
         }
-    }
 
-    ngOnInit(): void {
         if (this.toggleGroup) {
             this.attachListenerForGroup();
+            this.toggleGroup._stateChanges.pipe(takeUntilDestroyed()).subscribe(() => {
+                this._cdr.markForCheck();
+            });
         }
     }
 
@@ -296,16 +309,6 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     }
 
     ngAfterViewInit(): void {
-        Promise.resolve().then(() => {
-            if (this.toggleGroup) {
-                this.inGroup = true;
-                this.negative = this.toggleGroup.negative;
-                this.disabled = this.toggleGroup.disabled;
-                this.responsive = this.toggleGroup.responsive;
-                this.id = this.toggleGroup.id + `-button-${nextId++}`;
-            }
-        });
-
         this._focusMonitor.monitor(this._nativeInput);
     }
 

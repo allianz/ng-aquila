@@ -7,7 +7,7 @@ import { dispatchFakeEvent, dispatchTouchEvent } from '../../cdk-test-utils';
 import { NxCircleToggleModule } from '../circle-toggle.module';
 import { NxCircleToggleComponent } from './circle-toggle.component';
 
-describe('NxToggleButton', () => {
+describe('NxCircleToggle', () => {
     let fixture: ComponentFixture<AbstractButtonToggleComponent>;
     let toggleComponent: NxCircleToggleComponent;
     let nativeToggleComponent: HTMLElement;
@@ -76,6 +76,11 @@ describe('NxToggleButton', () => {
         createTestComponent(SimpleCircleToggleButtonComponent);
         const textElement = nativeToggleComponent.querySelector('.nx-toggle-circle__label-text');
         expect(textElement).toBeTruthy();
+    });
+
+    it('should show check icon', () => {
+        createTestComponent(PreselectedCircleToggleButtoncComponent);
+        expect(fixture.nativeElement.querySelector('.nx-toggle-circle__check-icon')).toBeTruthy();
     });
 
     it('should work in template driven forms using ngModel', fakeAsync(() => {

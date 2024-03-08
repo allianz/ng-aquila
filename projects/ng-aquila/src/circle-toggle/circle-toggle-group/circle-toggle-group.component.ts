@@ -80,6 +80,10 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     }
     private _id = `nx-circle-toggle-group-${nextId++}`;
 
+    // emits when the internal state changes on properties which are relevant
+    // for the child components so that they can mark themself for check
+    readonly _stateChanges = new Subject<void>();
+
     /** Name that is used for accessibility. */
     @Input() set name(value: string) {
         this._name = value;
@@ -98,9 +102,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
             this._disabled = newValue;
             this._cdr.markForCheck();
         }
-        if (this.buttons) {
-            this.buttons.forEach(button => (button.disabled = newValue));
-        }
+        this._stateChanges.next();
     }
     get disabled(): boolean {
         return this._disabled;
@@ -113,9 +115,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         if (this.negative !== newValue) {
             this._negative = newValue;
         }
-        if (this.buttons) {
-            this.buttons.forEach(button => (button.negative = newValue));
-        }
+        this._stateChanges.next();
     }
     get negative(): boolean {
         return this._negative;
@@ -138,6 +138,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
             this._responsive = newValue;
             this._cdr.markForCheck();
         }
+        this._stateChanges.next();
     }
     get responsive(): boolean {
         if (this._isExpert) {
