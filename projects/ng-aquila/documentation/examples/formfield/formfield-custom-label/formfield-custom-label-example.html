@@ -2,7 +2,7 @@
     <nx-formfield-label>
         Favourite Animal
         <nx-icon name="product-heart" aria-hidden="true"></nx-icon>
-        {{isOptional}}</nx-formfield-label
+        {{suffix}}</nx-formfield-label
     >
     <input nxInput />
     <span nxFormfieldHint> some additional information </span>
@@ -13,12 +13,12 @@
         Favourite Animal
         <nx-icon name="product-heart" aria-hidden="true"></nx-icon>
         <span class="nx-font-weight-regular">
-            {{isOptional}}</span
+            {{suffix}}</span
         ></nx-formfield-label
     >
     <input nxInput />
 </nx-formfield>
 
 <button nxButton="primary small" (click)="addOptionalSuffix()" type="button">
-    Toggle Optional Suffix
+    Toggle Suffix
 </button>
