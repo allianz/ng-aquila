@@ -72,7 +72,3 @@ export function addStylesFromDimensions(input: string, map: object): string {
 export function processSplit(aux: string, char = ','): string[] {
     return aux.split(char).map(item => item.trim());
 }
-
-export function validateClassInElement(el: any, aux: string): boolean {
-    return el.hasAttribute(aux);
-}

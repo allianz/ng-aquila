@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, Optional } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, isDevMode, Optional } from '@angular/core';
 import { mapClassNames } from '@aposin/ng-aquila/utils';
 
 import { NxLayoutComponent } from './layout.component';
-import { addStylesFromDimensions, isEmptyArray, processSplit, validateClassInElement } from './utils';
+import { addStylesFromDimensions, isEmptyArray, processSplit } from './utils';
 
 const MAPPING = {
     '': 'nx-grid__column-',
@@ -62,7 +62,7 @@ export type ColOrder = 'first' | 'last' | 'unordered';
         '[class]': '_classNames',
     },
 })
-export class NxColComponent implements OnInit {
+export class NxColComponent implements AfterViewInit {
     /**
      * Overwrite default class property to access user provided class.
      * @docs-private
@@ -120,9 +120,9 @@ export class NxColComponent implements OnInit {
         @Optional() protected readonly gridLayoutComponent?: NxLayoutComponent,
     ) {}
 
-    ngOnInit(): void {
-        if (!validateClassInElement(this.el.nativeElement.parentElement, 'nxRow')) {
-            this.generateError("Exception: NxColDirective. nxRow don't exist");
+    ngAfterViewInit(): void {
+        if (isDevMode() && !this.el.nativeElement.parentElement?.classList.contains('nx-grid__row')) {
+            console.warn('NxColComponent: no nxRow found. Please make sure to use the nxCol directive within an element with the nxRow component.');
         }
     }
 
