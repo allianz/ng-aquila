@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [17.4.0](https://github.com/allianz/ng-aquila/compare/v17.3.2...v17.4.0) (2024-03-20)
+
+
+### Bug Fixes
+
+* **grid:** throw only warning if nxRow element is missing ([bd35395](https://github.com/allianz/ng-aquila/commit/bd353956d0c5b11594759831d91a5da93e4856b2))
+
+
+### Features
+
+* **forms:** add Formfield, Dropdown and Input harnesses ([36d4b1d](https://github.com/allianz/ng-aquila/commit/36d4b1d78c21241d956faf00e6e2367ab7299713))
+
+
+
 ## [17.3.2](https://github.com/allianz/ng-aquila/compare/v17.3.1...v17.3.2) (2024-03-08)
 
 
