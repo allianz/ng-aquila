@@ -16,7 +16,12 @@
                 floatLabel="always"
             >
                 <span nxFormfieldPrefix>$</span>
-                <input nxInput readonly value="500" />
+                <input
+                    nxInput
+                    readonly
+                    value="500"
+                    nxAriaLabel="Enter dollar amount"
+                />
                 <nx-icon nxFormfieldAppendix name="info-circle-o"> </nx-icon>
             </nx-formfield>
         </div>
@@ -60,6 +65,7 @@
                     nxInput
                     [datepicker]="myDatepicker"
                     [(ngModel)]="currentDate"
+                    nxAriaLabel="Enter date"
                 />
                 <nx-datepicker-toggle
                     [for]="myDatepicker"

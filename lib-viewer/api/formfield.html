@@ -319,6 +319,270 @@ If &#39;negative&#39;, a negative set of stylings is used.</p>
     <code>NxFormfieldSuffixDirective</code></h4> 
 
  
+  <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+        <span header-link="additional_classes"></span>
+        Additional classes
+    </h3>
+     
+
+<h4 id="NxFormfieldControlHarness" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxFormfieldControlHarness"></span>
+    <code>NxFormfieldControlHarness</code><span class="docs-api-class-extends-clauses">
+        <span class="docs-api-class-extends-label">extends</span>
+        <span class="docs-api-class-extends-type">ComponentHarness</span>
+    </span></h4><p class="docs-api-class-description"><p>Base class for Controls to be used in NxFormfieldHarness</p>
+<p>This allows custom controls to be returned by NxFormfieldHarness.getControl()
+with generic result typing.</p>
+</p> 
+
+ 
+   
+
+<h4 id="NxFormfieldErrorHarness" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxFormfieldErrorHarness"></span>
+    <code>NxFormfieldErrorHarness</code><span class="docs-api-class-extends-clauses">
+        <span class="docs-api-class-extends-label">extends</span>
+        <span class="docs-api-class-extends-type">ContentContainerComponentHarness</span>
+    </span></h4> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getText()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+   
+
+<h4 id="NxFormfieldHarness" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxFormfieldHarness"></span>
+    <code>NxFormfieldHarness</code><span class="docs-api-class-extends-clauses">
+        <span class="docs-api-class-extends-label">extends</span>
+        <span class="docs-api-class-extends-type">ContentContainerComponentHarness</span>
+    </span></h4> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getAppendix(): <span class="docs-api-method-returns-type">Promise<TestElement | null></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getControl(type: <span class="docs-api-property__type">HarnessQuery<T></span>)</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                type<span class="docs-api-method-parameter-optional-marker">?</span>:
+                <span class="docs-api-method-parameter-type">HarnessQuery<T></span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getErrorTexts(filter: <span class="docs-api-property__type">NxFormfieldErrorHarnessFilters = {}</span>): <span class="docs-api-method-returns-type">Promise<string[]></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                filter:
+                <span class="docs-api-method-parameter-type">NxFormfieldErrorHarnessFilters = {}</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getErrors(filter: <span class="docs-api-property__type">NxFormfieldErrorHarnessFilters = {}</span>): <span class="docs-api-method-returns-type">Promise<NxFormfieldErrorHarness[]></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                filter:
+                <span class="docs-api-method-parameter-type">NxFormfieldErrorHarnessFilters = {}</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getHint(): <span class="docs-api-method-returns-type">Promise<TestElement | null></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getHintText(): <span class="docs-api-method-returns-type">Promise<string></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getLabel(): <span class="docs-api-method-returns-type">Promise<string></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getNoteTexts(filter: <span class="docs-api-property__type">NxFormfieldNoteHarnessFilters = {}</span>): <span class="docs-api-method-returns-type">Promise<string[]></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                filter:
+                <span class="docs-api-method-parameter-type">NxFormfieldNoteHarnessFilters = {}</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getNotes(filter: <span class="docs-api-property__type">NxFormfieldNoteHarnessFilters = {}</span>): <span class="docs-api-method-returns-type">Promise<NxFormfieldNoteHarness[]></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                filter:
+                <span class="docs-api-method-parameter-type">NxFormfieldNoteHarnessFilters = {}</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getPrefix(): <span class="docs-api-method-returns-type">Promise<TestElement | null></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getSuffix(): <span class="docs-api-method-returns-type">Promise<TestElement | null></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">hasErrors(filter: <span class="docs-api-property__type">NxFormfieldErrorHarnessFilters = {}</span>): <span class="docs-api-method-returns-type">Promise<boolean></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                filter:
+                <span class="docs-api-method-parameter-type">NxFormfieldErrorHarnessFilters = {}</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">hasNotes(filter: <span class="docs-api-property__type">NxFormfieldNoteHarnessFilters = {}</span>): <span class="docs-api-method-returns-type">Promise<boolean></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                filter:
+                <span class="docs-api-method-parameter-type">NxFormfieldNoteHarnessFilters = {}</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">isValid(): <span class="docs-api-method-returns-type">Promise<boolean></span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+   
+
+<h4 id="NxFormfieldNoteHarness" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxFormfieldNoteHarness"></span>
+    <code>NxFormfieldNoteHarness</code><span class="docs-api-class-extends-clauses">
+        <span class="docs-api-class-extends-label">extends</span>
+        <span class="docs-api-class-extends-type">ContentContainerComponentHarness</span>
+    </span></h4> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getText()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
   <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
         <span header-link="additional_interfaces"></span>
         Additional interfaces
@@ -393,6 +657,97 @@ using the <code>FORMFIELD_DEFAULT_OPTIONS</code> injection token.</p>
 </tr>
   
 </table>   
+   
+
+<h4 id="NxFormfieldErrorHarnessFilters" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxFormfieldErrorHarnessFilters"></span>
+    <code>NxFormfieldErrorHarnessFilters</code>
+</h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">text</span>?:
+                <span class="docs-api-property__type">string | RegExp</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table>   
+   
+
+<h4 id="NxFormfieldFilters" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxFormfieldFilters"></span>
+    <code>NxFormfieldFilters</code>
+</h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">hasErrors</span>?:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">label</span>?:
+                <span class="docs-api-property__type">string | RegExp</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table>   
+   
+
+<h4 id="NxFormfieldNoteHarnessFilters" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxFormfieldNoteHarnessFilters"></span>
+    <code>NxFormfieldNoteHarnessFilters</code>
+</h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">text</span>?:
+                <span class="docs-api-property__type">string | RegExp</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table>   
   <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
         <span header-link="additional_type_aliases"></span>
         Additional type aliases
@@ -426,5 +781,14 @@ using the <code>FORMFIELD_DEFAULT_OPTIONS</code> injection token.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
     <code class="docs-api-type-alias-value">'outline' | 'auto'</code>
+</p>
+   
+
+<h4 id="FormfieldControlHarness" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="FormfieldControlHarness"></span>
+    <code>FormfieldControlHarness</code>
+</h4><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">NxInputHarness | NxDropdownHarness</code>
 </p>
   </div>

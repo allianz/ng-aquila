@@ -9,9 +9,9 @@ import { Component } from '@angular/core';
     styleUrls: ['./formfield-custom-label-example.css'],
 })
 export class FormfieldCustomLabelExampleComponent {
-    isOptional = '(optional)';
+    suffix = '(suffix)';
 
     addOptionalSuffix() {
-        this.isOptional = this.isOptional === '' ? '(optional)' : '';
+        this.suffix = this.suffix === '' ? '(suffix)' : '';
     }
 }

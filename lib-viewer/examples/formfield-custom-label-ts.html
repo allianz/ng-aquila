@@ -9,9 +9,9 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./formfield-custom-label-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FormfieldCustomLabelExampleComponent</span> {
-    isOptional = <span class="hljs-string">&#x27;(optional)&#x27;</span>;
+    suffix = <span class="hljs-string">&#x27;(suffix)&#x27;</span>;
 
     <span class="hljs-title function_">addOptionalSuffix</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOptional</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOptional</span> === <span class="hljs-string">&#x27;&#x27;</span> ? <span class="hljs-string">&#x27;(optional)&#x27;</span> : <span class="hljs-string">&#x27;&#x27;</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">suffix</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">suffix</span> === <span class="hljs-string">&#x27;&#x27;</span> ? <span class="hljs-string">&#x27;(suffix)&#x27;</span> : <span class="hljs-string">&#x27;&#x27;</span>;
     }
 }
