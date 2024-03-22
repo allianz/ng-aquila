@@ -1,3 +1,11 @@
+<nx-formfield label="Type in here to filter">
+    <input
+        nxInput
+        [ngModel]="filterValue"
+        (ngModelChange)="onFilterValueChange($event)"
+    />
+</nx-formfield>
+
 <form novalidate class="nx-margin-bottom-s">
     <p nxCopytext class="nx-margin-bottom-2xs">
         Selection highlights row at the same time:

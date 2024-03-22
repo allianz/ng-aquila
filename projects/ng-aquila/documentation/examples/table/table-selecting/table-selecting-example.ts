@@ -1,5 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnDestroy } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { Component, Inject, LOCALE_ID, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -27,6 +28,7 @@ export class TableSelectingExampleComponent implements OnDestroy {
 
     activateSelected = true;
     activeRow?: Contract;
+    filterValue = '';
 
     page = 1;
     elementsPerPage = 5;
@@ -34,7 +36,7 @@ export class TableSelectingExampleComponent implements OnDestroy {
     currentlyShownPageElements!: Contract[];
     currentlyAvailableElements!: Contract[];
 
-    constructor() {
+    constructor(@Inject(LOCALE_ID) private readonly localeId: string) {
         this.currentlyAvailableElements = this.tableElements;
         this.selection.changed
             .pipe(takeUntil(this._destroyed))
@@ -188,13 +190,17 @@ export class TableSelectingExampleComponent implements OnDestroy {
     }
 
     isAllPageSelected() {
-        return this.numSelectedPage === this.elementsPerPage;
+        return (
+            this.numSelectedPage === this.elementsPerPage ||
+            this.currentlyAvailableElements.length === this.numSelectedPage
+        );
     }
 
     somePageSelected() {
         return (
             this.numSelectedPage > 0 &&
-            this.numSelectedPage < this.elementsPerPage
+            this.numSelectedPage < this.elementsPerPage &&
+            this.numSelectedPage < this.currentlyAvailableElements.length
         );
     }
 
@@ -219,6 +225,33 @@ export class TableSelectingExampleComponent implements OnDestroy {
     }
     goToPage(n: number) {
         this.page = n;
+        this.updatePage();
+    }
+
+    onFilterValueChange(value: string) {
+        this.page = 1;
+        this.filterData(value);
+    }
+
+    filterData(filterValue: string) {
+        const filterRegexp = new RegExp(filterValue, 'i');
+        const dateFormat = 'dd/MM/yyyy';
+
+        this.currentlyAvailableElements = this.tableElements.filter(
+            tableRowObject =>
+                Object.values(tableRowObject).some(propertyValue =>
+                    filterRegexp.test(
+                        propertyValue instanceof Date
+                            ? formatDate(
+                                  propertyValue,
+                                  dateFormat,
+                                  this.localeId,
+                              )
+                            : String(propertyValue),
+                    ),
+                ),
+        );
+
         this.updatePage();
     }
 
