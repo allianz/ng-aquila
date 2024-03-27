@@ -16,7 +16,7 @@ describe(NxTreeComponent.name, () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [NxTreeModule],
-            declarations: [SimpleNxTreeApp, NxTreeAppWithToggle, WhenNodeNxTreeApp],
+            declarations: [SimpleNxTreeApp, NxTreeAppWithToggle, WhenNodeNxTreeApp, NxTreeAppWithButton],
         }).compileComponents();
     }));
 
@@ -74,6 +74,24 @@ describe(NxTreeComponent.name, () => {
                     ['topping_3 - cheese_3 + base_3'],
                     ['_, topping_4 - cheese_4 + base_4'],
                 );
+            });
+        });
+
+        describe('with button', () => {
+            let fixture: ComponentFixture<NxTreeAppWithButton>;
+            let component: NxTreeAppWithButton;
+
+            it('with the right accessibility roles', () => {
+                fixture = TestBed.createComponent(NxTreeAppWithButton);
+
+                component = fixture.componentInstance;
+                treeElement = fixture.nativeElement.querySelector('nx-tree');
+
+                fixture.detectChanges();
+
+                getNodes(treeElement).forEach(node => {
+                    expect(node.getAttribute('role')).toBe('group');
+                });
             });
         });
 
@@ -621,6 +639,41 @@ class WhenNodeNxTreeApp {
     @ViewChild(NxTreeComponent) tree!: NxTreeComponent<TestData>;
 
     isSpecial = (_: number, node: TestData) => node.isSpecial;
+
+    constructor() {
+        this.underlyingDataSource.connect().subscribe(data => {
+            this.dataSource.data = data;
+        });
+    }
+}
+
+@Component({
+    template: `
+        <nx-tree [dataSource]="dataSource" [treeControl]="treeControl">
+            <nx-tree-node
+                *nxTreeNodeDef="let node"
+                class="customNodeClass"
+                nxTreeNodePadding
+                [nxTreeNodePaddingOffset]="32"
+                nxTreeNodeToggle
+                [nxTreeNodeToggleRecursive]="toggleRecursively"
+            >
+                <button nxTreeNodeActionItem>
+                    {{ node.label }}
+                </button>
+            </nx-tree-node>
+        </nx-tree>
+    `,
+})
+class NxTreeAppWithButton {
+    toggleRecursively = true;
+
+    treeControl = new NxFlatTreeControl();
+
+    dataSource = new NxTreeFlatDataSource(this.treeControl);
+    underlyingDataSource = new FakeDataSource();
+
+    @ViewChild(NxTreeComponent) tree!: NxTreeComponent<TestData>;
 
     constructor() {
         this.underlyingDataSource.connect().subscribe(data => {

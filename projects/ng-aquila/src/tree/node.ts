@@ -13,9 +13,8 @@ import { NxTreeComponent } from './tree.component';
     exportAs: 'nxTreeNode',
     inputs: ['disabled', 'tabIndex'],
     host: {
-        '[attr.aria-expanded]': 'isExpanded',
-        '[attr.aria-level]': 'role === "treeitem" ? level + 1 : null',
-        '[attr.role]': 'role',
+        '[attr.aria-level]': 'actionItem ? null : level + 1',
+        '[attr.role]': 'actionItem ? "group" : "treeitem"',
         class: 'nx-tree__node',
         '[class.is-expanded]': 'isExpanded',
         '[attr.tabindex]': '-1',
