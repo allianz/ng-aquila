@@ -607,7 +607,7 @@ export class NxDropdownComponent
     /** Sets up a key manager to listen to keyboard events on the overlay panel. */
     private _initKeyManager() {
         this._keyManager = new ActiveDescendantKeyManager<NxDropdownItemComponent>(this.dropdownItems)
-            .withTypeAhead()
+            .withTypeAhead(500)
             .withHomeAndEnd()
             .withVerticalOrientation()
             .withHorizontalOrientation('ltr')
