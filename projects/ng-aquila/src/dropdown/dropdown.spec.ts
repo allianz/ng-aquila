@@ -1182,7 +1182,7 @@ describe('NxDropdownComponent', () => {
             hostElement.focus();
             dispatchKeyboardEvent(hostElement, 'keydown', B);
             fixture.detectChanges();
-            tick(300);
+            tick(500);
             flush();
 
             expectDropdownClose();
@@ -1347,13 +1347,13 @@ describe('NxDropdownComponent', () => {
             const dropdownOverlayDiv = getDropdown();
             dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', V);
             fixture.detectChanges();
-            tick(300);
+            tick(500);
             flush();
             expectItemsHighlighted([2]);
 
             dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', B);
             fixture.detectChanges();
-            tick(300);
+            tick(500);
             flush();
             expectItemsHighlighted([0]);
         }));
