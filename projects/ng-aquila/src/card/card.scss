@@ -20,6 +20,48 @@
     &:focus {
         outline: none;
     }
+
+    &.is-clickable {
+        position: relative;
+    }
+
+    &.is-clickable:not(.is-disabled) {
+        &:hover {
+            background-color: v(clickable-card-hover-background-color);
+            border-color: v(clickable-card-hover-border-color);
+        }
+        &:active {
+            background-color: v(clickable-card-active-background-color);
+            border-color: v(clickable-card-active-border-color);
+        }
+
+        &:focus-within:has(.nx-card-main-link:focus) {
+            @include focus-style;
+        }
+    }
+
+    &.is-disabled {
+        border-color: v(clickable-card-disabled-border-color);
+        pointer-events: none;
+    }
+
+    ::ng-deep {
+        .nx-card-main-link {
+            &::after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                content: ' ';
+            }
+        }
+
+        .nx-card-secondary-info {
+            position: relative;
+            z-index: 2;
+        }
+    }
 }
 
 :host.cdk-keyboard-focused {

@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy } from '@angular/core';
 
 @Component({
     templateUrl: './card.component.html',
@@ -10,6 +10,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inpu
     host: {
         class: 'nx-card',
         '[class.is-highlight]': 'highlight',
+        '[class.is-clickable]': 'clickable',
+        '[class.is-disabled]': 'disabled',
     },
 })
 export class NxCardComponent implements OnDestroy {
@@ -41,4 +43,8 @@ export class NxCardComponent implements OnDestroy {
     get highlight(): boolean {
         return this._highlight;
     }
+
+    @Input({ transform: booleanAttribute }) clickable = false;
+
+    @Input({ transform: booleanAttribute }) disabled = false;
 }

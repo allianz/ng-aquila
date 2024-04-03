@@ -1,0 +1,34 @@
+<nx-card clickable class="nx-margin-2xs">
+    <h3 nxHeadline size="l">
+        <a nxCardMainLink href="/">Card title</a>
+    </h3>
+    <p nxCardSecondaryInfo>This is some text of the card</p>
+    <nx-link size="small"
+        ><a nxCardSecondaryInfo href="/guides/getting-started"
+            >Some optional link</a
+        ></nx-link
+    >
+</nx-card>
+
+<nx-card clickable class="nx-margin-2xs">
+    <div style="display: flex; justify-content: space-between">
+        <h3 nxHeadline size="l">
+            <a nxCardMainLink href="/">Card title</a>
+        </h3>
+        <button
+            nxPlainButton
+            nxCardSecondaryInfo
+            (click)="edit()"
+            aria-label="edit"
+        >
+            <nx-icon name="pen" aria-hidden="true" />
+        </button>
+    </div>
+
+    <p nxCardSecondaryInfo>This is some text of the card</p>
+    <nx-link size="small"
+        ><a nxCardSecondaryInfo href="/guides/getting-started"
+            >Some optional link</a
+        ></nx-link
+    >
+</nx-card>
