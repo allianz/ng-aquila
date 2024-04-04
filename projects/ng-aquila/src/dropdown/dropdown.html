@@ -1,5 +1,5 @@
 <!-- input and stuff-->
-<div cdkOverlayOrigin #fallbackOrigin="cdkOverlayOrigin" class="nx-dropdown__container" #trigger>
+<div cdkOverlayOrigin #fallbackOrigin="cdkOverlayOrigin" class="nx-dropdown__container" #trigger [nxTooltip]="_tooltipText">
     <div class="nx-dropdown__rendered" [id]="renderedValueId">
         <span *ngIf="empty && placeholder">{{ placeholder }}</span>
         <ng-container *ngIf="!empty">

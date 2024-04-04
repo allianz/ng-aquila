@@ -638,7 +638,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         const { paddingLeft, paddingRight } = getComputedStyle(this._trigger.nativeElement);
         const triggerContentWidth = this._trigger.nativeElement.clientWidth - parseInt(paddingLeft, 10) - parseInt(paddingRight, 10);
 
-        if (triggerContentWidth - suffix.offsetWidth - icon.offsetWidth <= label.offsetWidth) {
+        if (triggerContentWidth - suffix.offsetWidth - icon.offsetWidth < label.scrollWidth) {
             this._tooltipText = this._getValueText();
         } else {
             this._tooltipText = '';

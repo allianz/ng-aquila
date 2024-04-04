@@ -185,6 +185,8 @@ export class NxDropdownComponent
     /** @docs-private */
     errorState = false;
 
+    _tooltipText = '';
+
     /** Width of the overlay panel. */
     _overlayWidth: string | number = '';
 
@@ -604,6 +606,21 @@ export class NxDropdownComponent
         }
     }
 
+    private _updateTooltipText() {
+        if (!this.trigger) {
+            return;
+        }
+        const [label, icon] = this.trigger.nativeElement.children;
+        const { paddingLeft, paddingRight } = getComputedStyle(this.trigger.nativeElement);
+        const triggerContentWidth = this.trigger.nativeElement.clientWidth - parseInt(paddingLeft, 10) - parseInt(paddingRight, 10);
+
+        if (triggerContentWidth - icon.offsetWidth < label.scrollWidth) {
+            this._tooltipText = this.triggerValue;
+        } else {
+            this._tooltipText = '';
+        }
+    }
+
     /** Sets up a key manager to listen to keyboard events on the overlay panel. */
     private _initKeyManager() {
         this._keyManager = new ActiveDescendantKeyManager<NxDropdownItemComponent>(this.dropdownItems)
@@ -692,6 +709,11 @@ export class NxDropdownComponent
 
         if (wasSelected !== isSelected) {
             this._propagateChanges();
+
+            this._tooltipText = '';
+            setTimeout(() => {
+                this._updateTooltipText();
+            });
         }
 
         this.stateChanges.next();
