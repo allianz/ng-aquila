@@ -26,6 +26,10 @@
     }
 }
 
+:host.nx-link--xsmall {
+    @include type-style(link-xsmall);
+}
+
 :host.nx-link--small {
     @include type-style(link-small);
 }
@@ -103,6 +107,13 @@
     nx-icon.nx-link__icon::before {
         line-height: inherit;
         font-size: inherit;
+    }
+}
+
+:host.nx-link--xsmall ::ng-deep {
+    .c-icon,
+    nx-icon.nx-link__icon {
+        font-size: v(link-xsmall-icon-size);
     }
 }
 

@@ -4,7 +4,7 @@ import { MappedStyles } from '@aposin/ng-aquila/core';
 import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 /** The size of the link. */
-export type NxLinkSize = 'small' | 'large';
+export type NxLinkSize = 'xsmall' | 'small' | 'large';
 
 const MAPPING = {
     black: 'nx-link--black',
@@ -27,6 +27,7 @@ const DEFAULT_CLASSES = ['nx-link'];
     template: '<ng-content></ng-content>',
     inputs: ['classNames: nxStyle'],
     host: {
+        '[class.nx-link--xsmall]': 'this.size === "xsmall"',
         '[class.nx-link--small]': 'this.size === "small"',
         '[class.nx-link--large]': 'this.size === "large"',
     },
