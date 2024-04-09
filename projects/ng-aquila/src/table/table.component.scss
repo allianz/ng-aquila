@@ -398,3 +398,12 @@ $sticky-shadow-size: nx-spacer(3xs);
     width: 12px;
     transform: translate(0, -50%);
 }
+
+:host([nxTableCellClip]) ::ng-deep {
+    td,
+    th {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
