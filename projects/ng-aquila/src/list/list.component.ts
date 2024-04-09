@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 const DEFAULT_TYPE = 'normal';
 
@@ -13,8 +13,11 @@ export type NxListSize = 'xsmall' | 'small' | 'normal';
     host: {
         '[class.nx-list]': 'true',
         '[class.nx-list--xsmall]': 'type === "xsmall"',
+        '[class.nx-list--xsmall-condensed]': 'type === "xsmall" && condensed',
         '[class.nx-list--small]': 'type === "small"',
+        '[class.nx-list--small-condensed]': 'type === "small" && condensed',
         '[class.nx-list--normal]': 'type === "normal"',
+        '[class.nx-list--normal-condensed]': 'type === "normal" && condensed',
         '[class.nx-list--negative]': 'negative',
         '[class.nx-list--ordered-circle]': 'orderedCircle',
     },
@@ -43,10 +46,20 @@ export class NxListComponent {
         this.negative = !!this._classNames?.match(/negative/);
         this.orderedCircle = !!this._classNames?.match(/ordered-circle/);
     }
+
     get classNames(): string {
         return this._classNames;
     }
     private _classNames = '';
+
+    /** Change the list mode to condensed  */
+    @Input({ transform: booleanAttribute }) set condensed(value) {
+        this._condensed = value;
+    }
+    get condensed(): boolean {
+        return this._condensed;
+    }
+    _condensed: boolean = false;
 
     /** @docs-private */
     type?: NxListSize = DEFAULT_TYPE;

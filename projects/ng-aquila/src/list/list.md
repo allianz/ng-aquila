@@ -34,6 +34,12 @@ The size can be one of these values: `xsmall`, `small`, `normal`. The default va
 
 <!-- example(list-copytext) -->
 
+### Condensed list
+
+By using attribute `condensed`, you can activate the condensed mode of the list. Use the style tokens to set the spacing. The normal list remains the same in `condensed` mode.
+
+<!-- example(list-condensed) -->
+
 ### Negative styling
 
 <!-- example(list-negative) -->
