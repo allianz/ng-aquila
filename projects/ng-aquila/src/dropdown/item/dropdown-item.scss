@@ -18,10 +18,6 @@ $option-margin-checked: nx-spacer(m);
     padding-top: nx-spacer(s);
 }
 
-:host:last-child .nx-dropdown-results__option {
-    padding-bottom: nx-spacer(m);
-}
-
 nx-checkbox {
     margin-bottom: 0;
 }
