@@ -74,7 +74,7 @@ export class NxMessageToastService implements OnDestroy {
         const overlayRef = this._createOverlay(currentConfig);
         const container = this._attachToastComponent(overlayRef, currentConfig);
         const toastRef = new NxMessageToastRef(container, overlayRef, null!);
-        const portal = new TemplatePortal(template, null!, toastRef, { $implicit: currentConfig.data, toastRef } as any);
+        const portal = new TemplatePortal(template, null!, { $implicit: currentConfig.data, toastRef } as any);
 
         container.attachTemplatePortal(portal);
         this._animateToast(toastRef, currentConfig);
