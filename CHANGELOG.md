@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.5.0](https://github.com/allianz/ng-aquila/compare/v17.4.0...v17.5.0) (2024-04-15)
+
+
+### Documentation 📚
+
+* **date:** correct appearance ([494095c](https://github.com/allianz/ng-aquila/commit/494095cade74d25b2be7bc0dc9c760c4e658cd84))
+* **table:** add showcase of filter+selecting table ([9e80f60](https://github.com/allianz/ng-aquila/commit/9e80f60e065e059d886065c30f8a957339d83f61))
+
+
+### Features ✨
+
+* **card:** add clickable card ([6859993](https://github.com/allianz/ng-aquila/commit/685999363098622eb66e28f57278600c5e3f48cb))
+
+
+### Bug Fixes 🐛
+
+* **context-menu:** position icon ([5ad6feb](https://github.com/allianz/ng-aquila/commit/5ad6feb02ed4fbe76ec677eaa7f0214ef083a8d1))
+* **dropdown, multiselect:** Add tooltip only if label overflows ([bd84f4c](https://github.com/allianz/ng-aquila/commit/bd84f4c9ed230a7c7f970eee166b9ac4d1f71530))
+* **dropdown:** active filter bottom padding ([888b500](https://github.com/allianz/ng-aquila/commit/888b5000d7cbcef82ee1bdb8ebc35b3babc3652e))
+* **dropdown:** fix tests ([c9499ee](https://github.com/allianz/ng-aquila/commit/c9499ee32a3bc36a02b5644d2c65d1d0c7d6df72))
+* **dropdown:** increase time to wait for withTypeAhead ([8a1de5f](https://github.com/allianz/ng-aquila/commit/8a1de5f49a846997880f40e60959dd53cf5c30da))
+* **dropdown:** no scrolling or highlighting of the selected option if list not loaded before ([54aa4f4](https://github.com/allianz/ng-aquila/commit/54aa4f425c6308fa30a0f2f6fc27c2304fab829d))
+* **formfield:** prevent animation for label when always floating ([5b961d2](https://github.com/allianz/ng-aquila/commit/5b961d2260b2188b212f878e0efba3674a28efc1))
+* improve Accordion error accessibility ([18adddf](https://github.com/allianz/ng-aquila/commit/18adddfb88ce7727d2941356930c4d8bc4323465))
+* **link:** add x-small link ([bff886a](https://github.com/allianz/ng-aquila/commit/bff886a9bc51d9ec6761e9e792981660c7608a87))
+* **list:** add condensed option ([4e1b0d7](https://github.com/allianz/ng-aquila/commit/4e1b0d70f9d10a5a6f122d6de230f15fbbb9fe94))
+* **message:** fix injector bug ([9c9f115](https://github.com/allianz/ng-aquila/commit/9c9f1152a5a64eba2d24eb30e50e707a583c25e3))
+* **table:** add css for nxtablecellclip pagination ([6a76b5b](https://github.com/allianz/ng-aquila/commit/6a76b5b459999c4b41c95c10d1c1871d07ef3c58))
+* **table:** remove clipcell and width calculation ([f4ac95d](https://github.com/allianz/ng-aquila/commit/f4ac95d65740ff0100d08675fcc2d94aa643028c))
+* **timefield:** call ontouched only when the whole component gets blurred ([4690669](https://github.com/allianz/ng-aquila/commit/46906695feb88b1a704fa1398fc46c4b81a950d3))
+* **tree, action:** make navigation work with screenreader ([f550810](https://github.com/allianz/ng-aquila/commit/f550810f81a101214748625067ea13428df7edeb))
+
 # [17.4.0](https://github.com/allianz/ng-aquila/compare/v17.3.2...v17.4.0) (2024-03-20)
 
 

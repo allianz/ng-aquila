@@ -23,6 +23,7 @@ module.exports = {
     bumpFiles: ['projects/ng-aquila/src/package.json'],
     infile: 'CHANGELOG.md',
     path: 'projects/ng-aquila',
-    preset: 'angular',
+    /* the preset seems to not work somehow disabling it for now */
+    //preset: 'angular',
     releaseCommitMessageFormat: 'release: cut {{currentTag}}',
 };
