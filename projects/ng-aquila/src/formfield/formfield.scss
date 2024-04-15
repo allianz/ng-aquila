@@ -101,9 +101,7 @@ $margin-to-message: nx-spacer(3xs);
     text-overflow: ellipsis;
     overflow: hidden;
     transform-origin: 0 0;
-    transition:
-        transform 0.15s ease-out,
-        font-size 0.15s ease-out;
+
     text-size-adjust: 100%;
     text-align: left;
 
@@ -463,6 +461,15 @@ $margin-to-message: nx-spacer(3xs);
         .nx-formfield__input {
             position: unset;
         }
+    }
+}
+
+// Prevent animation for always floating
+.nx-formfield.is-auto-floating {
+    .nx-formfield__label {
+        transition:
+            transform 0.15s ease-out,
+            font-size 0.15s ease-out;
     }
 }
 
