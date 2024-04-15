@@ -674,6 +674,9 @@ export class NxDropdownComponent
                 // the combination of dropdown-item notifying parent and when the parent
                 // tries to fetch the triggerValue from the child throws these errors
                 setTimeout(() => {
+                    if (this._panelOpen) {
+                        this._initActiveItem();
+                    }
                     this._cdr.markForCheck();
                     this.stateChanges.next();
                 });

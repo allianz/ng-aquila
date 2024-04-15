@@ -606,6 +606,17 @@ describe('NxDropdownComponent', () => {
             // 4 * 44 + 22 (half of item height) + 12 (firstItemPaddingTop) - 100 (middle of panel)
             expect(dropdownInstance.panelBody?.nativeElement.scrollTop).toBe(110);
         }));
+
+        it('should scroll the selected item in the middle of the panel on dropdown change', fakeAsync(() => {
+            createTestComponent(ScrollingTestComponent);
+            trigger.click();
+            tick(500);
+            flush();
+            fixture.detectChanges();
+            tick(1);
+            // 4 * 44 + 22 (half of item height) + 12 (firstItemPaddingTop) - 100 (middle of panel)
+            expect(dropdownInstance.panelBody?.nativeElement.scrollTop).toBe(110);
+        }));
     });
 
     describe('multiselect dropdown', () => {
