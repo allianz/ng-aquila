@@ -57,6 +57,8 @@ By default the content of the accordion items will be loaded eagerly even when t
 
 ### Accordion with Error State
 
+Example error behaviour with accessible error messages using dynamic `aria-invalid` and `aria-describedby`:
+
 <!-- example(accordion-error) -->
 
 ### Global settings

@@ -1,6 +1,9 @@
 <nx-accordion>
     <nx-expansion-panel>
-        <nx-expansion-panel-header>
+        <nx-expansion-panel-header
+            [attr.aria-invalid]="infoHasError"
+            [attr.aria-describedby]="infoHasError ? 'error_example' : ''"
+        >
             <nx-expansion-panel-title>
                 <div class="expansion-title-with-icon">
                     <nx-icon
@@ -29,7 +32,10 @@
         </form>
     </nx-expansion-panel>
     <nx-expansion-panel>
-        <nx-expansion-panel-header>
+        <nx-expansion-panel-header
+            [attr.aria-invalid]="paymentHasError"
+            [attr.aria-describedby]="paymentHasError ? 'error_example' : ''"
+        >
             <nx-expansion-panel-title>
                 <div class="expansion-title-with-icon">
                     <nx-icon
@@ -59,6 +65,7 @@
     </nx-expansion-panel>
 </nx-accordion>
 <nx-message
+    id="error_example"
     *ngIf="infoHasError || paymentHasError"
     context="error"
     class="nx-margin-top-xs"
