@@ -1,5 +1,5 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { ErrorStateMatcher, pad } from '@aposin/ng-aquila/utils';
 
@@ -228,6 +228,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         @Optional() private readonly _parentForm: NgForm | null,
         @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
         readonly _intl: NxTimefieldIntl,
+        private readonly elementRef: ElementRef,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of
@@ -298,9 +299,12 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         this._updateTime();
     }
 
-    _onBlur(type: string) {
-        this._onTouchedCallback();
-        this._hasFocus = false;
+    _onBlur(event: any, type: string) {
+        if (!this.elementRef.nativeElement.contains(event.relatedTarget)) {
+            this._onTouchedCallback();
+
+            this._hasFocus = false;
+        }
         // set 0X is the value entered in X
         if (type === 'hours' && Number(this.hours) < 10 && this.hours !== '') {
             this.hours = pad(String(this.hours));

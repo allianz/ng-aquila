@@ -1,3 +1,4 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
 import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -35,6 +36,7 @@ describe('NxTimefieldComponent', () => {
     let spanElementSeperator: HTMLSpanElement;
     let divElementInputFields: HTMLDivElement;
     let divElementsWrapper: HTMLDivElement;
+    let focusMonitor: FocusMonitor;
 
     function createTestComponent(component: Type<TimefieldTest>) {
         fixture = TestBed.createComponent(component);
@@ -352,6 +354,24 @@ describe('NxTimefieldComponent', () => {
             expect(timefieldInstance.minutes).toBe('00');
             expect(inputElementMinutes.value).toBe('00');
         }));
+
+        it('should zero pad the hours field if the value is <10 when focus goes from hours to minutes field', fakeAsync(() => {
+            createTestComponent(SimpleTimefield);
+            inputElementHours.value = '0';
+            inputElementHours.dispatchEvent(new Event('input'));
+            inputElementHours.focus();
+            fixture.detectChanges();
+            tick();
+            expect(document.activeElement).toEqual(inputElementHours);
+            expect(inputElementHours.value).toBe('0');
+
+            inputElementMinutes.focus();
+            fixture.detectChanges();
+            tick();
+            expect(document.activeElement).toEqual(inputElementMinutes);
+            expect(timefieldInstance.hours).toBe('00');
+            expect(inputElementHours.value).toBe('00');
+        }));
     });
 
     describe('validation', () => {
@@ -389,6 +409,26 @@ describe('NxTimefieldComponent', () => {
             dispatchFakeEvent(inputElementHours, 'focusout');
             fixture.detectChanges();
             expect(form.touched).toBeTrue();
+        });
+
+        it('should show error only when all inputs have lost focus', () => {
+            createTestComponent(ReactiveTimefield);
+            const form = (testInstance as ReactiveTimefield).testForm;
+
+            inputElementHours.value = '25';
+            inputElementHours.dispatchEvent(new Event('input'));
+            inputElementHours.focus();
+            fixture.detectChanges();
+            expect(timefieldElement).not.toHaveClass('has-error');
+
+            inputElementMinutes.dispatchEvent(new Event('input'));
+            inputElementMinutes.focus();
+            fixture.detectChanges();
+            expect(timefieldElement).not.toHaveClass('has-error');
+
+            dispatchFakeEvent(inputElementMinutes, 'focusout');
+            fixture.detectChanges();
+            expect(timefieldElement).toHaveClass('has-error');
         });
     });
 
