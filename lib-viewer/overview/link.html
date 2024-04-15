@@ -3,7 +3,7 @@
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">the <code>nx-link</code> component wraps an <code>&lt;a&gt;&lt;/a&gt;</code> element in combination with e.g. an href-attribute or a routerLink directive.</li>
 <li class="docs-markdown--li">disabled links should have the attribute <code>aria-disabled=&quot;true&quot;</code> and will be styled accordingly.</li>
-<li class="docs-markdown--li">disabled links should either omit the href attribute or add <code>tabindex=&quot;-1&quot;</code>. if you use <code>routerLink</code> there is currently no way to remove the href attribute, here you can use <code>tabindex=&quot;-1&quot;</code></li>
+<li class="docs-markdown--li">disabled links should either omit the href attribute or add <code>tabindex=&quot;-1&quot;</code>. If you use <code>routerLink</code> you can pass <code>null</code> and the href attribute will not be rendered.</li>
 </ul>
 <p class="docs-markdown--p">Depending on the context, pick one of the following types - or a reasonable combination thereof.</p>
 <h3 id="default" tabindex="-1" class="docs-markdown--h3">Default</h3>

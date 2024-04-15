@@ -1,6 +1,9 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-accordion</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel-header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel-header</span>
+            [<span class="hljs-attr">attr.aria-invalid</span>]=<span class="hljs-string">&quot;infoHasError&quot;</span>
+            [<span class="hljs-attr">attr.aria-describedby</span>]=<span class="hljs-string">&quot;infoHasError ? &#x27;error_example&#x27; : &#x27;&#x27;&quot;</span>
+        &gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel-title</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expansion-title-with-icon&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
@@ -29,7 +32,10 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-expansion-panel</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel-header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel-header</span>
+            [<span class="hljs-attr">attr.aria-invalid</span>]=<span class="hljs-string">&quot;paymentHasError&quot;</span>
+            [<span class="hljs-attr">attr.aria-describedby</span>]=<span class="hljs-string">&quot;paymentHasError ? &#x27;error_example&#x27; : &#x27;&#x27;&quot;</span>
+        &gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel-title</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expansion-title-with-icon&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
@@ -59,6 +65,7 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-expansion-panel</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-accordion</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span>
+    <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error_example&quot;</span>
     *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;infoHasError || paymentHasError&quot;</span>
     <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;error&quot;</span>
     <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-xs&quot;</span>

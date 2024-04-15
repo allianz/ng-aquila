@@ -1,0 +1,39 @@
+<nx-card clickable class="nx-margin-2xs">
+    <h3 nxHeadline size="l">
+        <a nxCardMainLink href="/">Card with extra link</a>
+    </h3>
+    <p>This is some text of the card</p>
+    <nx-link size="small"
+        ><a nxCardSecondaryInfo href="/guides/getting-started"
+            >Some optional link</a
+        ></nx-link
+    >
+</nx-card>
+
+<nx-card clickable class="nx-margin-2xs">
+    <div style="display: flex; justify-content: space-between">
+        <h3 nxHeadline size="l">
+            <a nxCardMainLink href="/">Card with extra link and button</a>
+        </h3>
+        <button nxPlainButton nxCardSecondaryInfo aria-label="edit">
+            <nx-icon name="pen" aria-hidden="true" />
+        </button>
+    </div>
+
+    <p>This is some text of the card</p>
+    <nx-link size="small"
+        ><a nxCardSecondaryInfo href="/guides/getting-started"
+            >Some optional link</a
+        ></nx-link
+    >
+</nx-card>
+
+<nx-card clickable class="nx-margin-2xs">
+    <h3 nxHeadline size="l">
+        <a nxCardMainLink href="/">Card with raised text</a>
+    </h3>
+    <p nxCardSecondaryInfo>
+        This text is raised above the pseudo element of the main link. You can
+        select it but you cannot use the area to click the card.
+    </p>
+</nx-card>

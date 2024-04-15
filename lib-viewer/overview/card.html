@@ -22,6 +22,21 @@ you can use <code>nx-selectable-card-group</code> to group the cards, and they w
 <div nx-docs-example="selectable-card-reactive" config="{}">exampleID: selectable-card-reactive</div>
 <h4 id="dynamically-adding-and-removing-cards" tabindex="-1" class="docs-markdown--h4">Dynamically adding and removing cards</h4>
 <div nx-docs-example="selectable-card-dynamic" config="{}">exampleID: selectable-card-dynamic</div>
+<h3 id="clickable-card" tabindex="-1" class="docs-markdown--h3">Clickable Card</h3>
+<p class="docs-markdown--p">With <code>clickable=&quot;true&quot;</code> and <code>nxCardMainLink</code> you can make the whole card clickable.
+Use <code>nxCardMainLink</code> on an <code>&lt;a&gt;</code> element as the main clickable action of the card.
+Use <code>nxCardSecondaryInfo</code> to add other selectable elements like optional links or raise text.</p>
+<p class="docs-markdown--p">The usage of a headline around the link is optional depending on your project's needs.</p>
+ <div nx-docs-example="clickable-card" config="{}">exampleID: clickable-card</div>
+<h4 id="disabling-clickable-card" tabindex="-1" class="docs-markdown--h4">Disabling clickable card</h4>
+<p class="docs-markdown--p">Use <code>disabled</code> on the <code>nx-card</code> component to provide a visual representation of a disabled card. In addition, the <code>nxCardMainLink</code> item will add <code>aria-disabled=&quot;true&quot;</code> automatically. Please make sure that you that you do not set the <code>href</code> attribute on the <code>nxCardMainLink</code> element.
+See the example how to do that with and without the Angular router.</p>
+<div nx-docs-example="clickable-card-disabled" config="{}">exampleID: clickable-card-disabled</div>
+<h4 id="raising-content" tabindex="-1" class="docs-markdown--h4">Raising content</h4>
+<p class="docs-markdown--p">To make the whole card area clickable the so called &quot;pseudo content trick&quot; is used, which spans the pseudo element of the main link over the whole card element.
+This means that even text inside the card is behind that pseudo element and is not selectable.</p>
+<p class="docs-markdown--p">You can raise content like texts but also other interactive elements via the <code>nxCardSecondaryInfo</code>. Please note that this content will be create a gap in the clickable area of the card.</p>
+<div nx-docs-example="clickable-card-raised-content" config="{}">exampleID: clickable-card-raised-content</div>
 <div class="docs-expert-container">
 <h3 id="expert%3A-appearance" tabindex="-1" class="docs-markdown--h3">Expert: Appearance</h3>
 <p class="docs-markdown--p">With <code>appearance</code> you can change the styling of the card to expert. Using the <code>NxExpertModule</code> will automatically set that option and you don't have to set it in the template manually.

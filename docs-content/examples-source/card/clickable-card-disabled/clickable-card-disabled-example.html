@@ -1,0 +1,15 @@
+<nx-card clickable class="nx-margin-2xs" disabled>
+    <h3 nxHeadline size="l">
+        <a [attr.href]="disabled ? null : '/'" nxCardMainLink>Disabled card</a>
+    </h3>
+    <p nxCardSecondaryInfo>This is some text of the card</p>
+</nx-card>
+
+<nx-card clickable class="nx-margin-2xs" disabled>
+    <h3 nxHeadline size="l">
+        <a nxCardMainLink [routerLink]="disabled ? null : '/'"
+            >Disabled card with Router</a
+        >
+    </h3>
+    <p nxCardSecondaryInfo>This is some text of the card</p>
+</nx-card>

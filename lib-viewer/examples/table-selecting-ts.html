@@ -1,5 +1,6 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">SelectionModel</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/collections&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">OnDestroy</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { formatDate } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Inject</span>, <span class="hljs-variable constant_">LOCALE_ID</span>, <span class="hljs-title class_">OnDestroy</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Subject</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 <span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
 
@@ -27,6 +28,7 @@
 
     activateSelected = <span class="hljs-literal">true</span>;
     activeRow?: <span class="hljs-title class_">Contract</span>;
+    filterValue = <span class="hljs-string">&#x27;&#x27;</span>;
 
     page = <span class="hljs-number">1</span>;
     elementsPerPage = <span class="hljs-number">5</span>;
@@ -34,7 +36,7 @@
     currentlyShownPageElements!: <span class="hljs-title class_">Contract</span>[];
     currentlyAvailableElements!: <span class="hljs-title class_">Contract</span>[];
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-meta">@Inject</span>(LOCALE_ID) <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> localeId: <span class="hljs-built_in">string</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentlyAvailableElements</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">tableElements</span>;
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">selection</span>.<span class="hljs-property">changed</span>
             .<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">takeUntil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>))
@@ -188,13 +190,17 @@
     }
 
     <span class="hljs-title function_">isAllPageSelected</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">numSelectedPage</span> === <span class="hljs-variable language_">this</span>.<span class="hljs-property">elementsPerPage</span>;
+        <span class="hljs-keyword">return</span> (
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">numSelectedPage</span> === <span class="hljs-variable language_">this</span>.<span class="hljs-property">elementsPerPage</span> ||
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentlyAvailableElements</span>.<span class="hljs-property">length</span> === <span class="hljs-variable language_">this</span>.<span class="hljs-property">numSelectedPage</span>
+        );
     }
 
     <span class="hljs-title function_">somePageSelected</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> (
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">numSelectedPage</span> &gt; <span class="hljs-number">0</span> &amp;&amp;
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">numSelectedPage</span> &lt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">elementsPerPage</span>
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">numSelectedPage</span> &lt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">elementsPerPage</span> &amp;&amp;
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">numSelectedPage</span> &lt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentlyAvailableElements</span>.<span class="hljs-property">length</span>
         );
     }
 
@@ -219,6 +225,33 @@
     }
     <span class="hljs-title function_">goToPage</span>(<span class="hljs-params">n: <span class="hljs-built_in">number</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">page</span> = n;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updatePage</span>();
+    }
+
+    <span class="hljs-title function_">onFilterValueChange</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">page</span> = <span class="hljs-number">1</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">filterData</span>(value);
+    }
+
+    <span class="hljs-title function_">filterData</span>(<span class="hljs-params">filterValue: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-keyword">const</span> filterRegexp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(filterValue, <span class="hljs-string">&#x27;i&#x27;</span>);
+        <span class="hljs-keyword">const</span> dateFormat = <span class="hljs-string">&#x27;dd/MM/yyyy&#x27;</span>;
+
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentlyAvailableElements</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">tableElements</span>.<span class="hljs-title function_">filter</span>(
+            <span class="hljs-function"><span class="hljs-params">tableRowObject</span> =&gt;</span>
+                <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">values</span>(tableRowObject).<span class="hljs-title function_">some</span>(<span class="hljs-function"><span class="hljs-params">propertyValue</span> =&gt;</span>
+                    filterRegexp.<span class="hljs-title function_">test</span>(
+                        propertyValue <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Date</span>
+                            ? <span class="hljs-title function_">formatDate</span>(
+                                  propertyValue,
+                                  dateFormat,
+                                  <span class="hljs-variable language_">this</span>.<span class="hljs-property">localeId</span>,
+                              )
+                            : <span class="hljs-title class_">String</span>(propertyValue),
+                    ),
+                ),
+        );
+
         <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updatePage</span>();
     }
 
