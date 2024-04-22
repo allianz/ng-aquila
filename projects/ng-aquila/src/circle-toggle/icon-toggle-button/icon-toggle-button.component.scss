@@ -268,7 +268,7 @@ $check-icon-size: nx-spacer(2m);
     }
 }
 
-:host:hover.is-flipped:not(.has-checkmark) {
+:host:hover.is-flipped:not(.has-checkmark):not(.is-disabled) {
     cursor: auto;
 }
 
