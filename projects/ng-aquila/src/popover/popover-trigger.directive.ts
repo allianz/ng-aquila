@@ -269,7 +269,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
         @Inject(NX_POPOVER_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
         private readonly _cdr: ChangeDetectorRef,
     ) {
-        const element: HTMLElement = elementRef.nativeElement;
         if (!this._platform.IOS && !this._platform.ANDROID) {
             this._manualListeners
                 .set('mouseenter', () => {
@@ -310,10 +309,14 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
             });
         }
 
-        this._manualListeners.forEach((listener, event) => element.addEventListener(event, listener));
+        this._manualListeners.forEach((listener, event) => this.elementRef.nativeElement.addEventListener(event, listener));
 
+        this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(this._dirChangeHandler.bind(this));
+    }
+
+    ngAfterViewInit(): void {
         this._focusMonitor
-            .monitor(element, true)
+            .monitor(this.elementRef.nativeElement, true)
             .pipe(takeUntil(this._destroyed))
             .subscribe(origin => {
                 if (origin === 'keyboard' && this.trigger === 'hover') {
@@ -321,10 +324,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
                 }
             });
 
-        this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(this._dirChangeHandler.bind(this));
-    }
-
-    ngAfterViewInit(): void {
         this.popover.id = this.id;
 
         this.popover.closeButtonClick.pipe(takeUntil(this._destroyed)).subscribe(() => {

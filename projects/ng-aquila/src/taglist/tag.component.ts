@@ -1,7 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { BACKSPACE, DELETE, ENTER } from '@angular/cdk/keycodes';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 
 @Component({
     selector: 'nx-tag',
@@ -14,7 +14,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Even
         '[attr.tabindex]': 'tabindex',
     },
 })
-export class NxTagComponent implements OnDestroy {
+export class NxTagComponent implements OnDestroy, AfterViewInit {
     private _removable!: boolean;
 
     /** Whether the tag is removeable. */
@@ -65,7 +65,9 @@ export class NxTagComponent implements OnDestroy {
         private readonly _cdr: ChangeDetectorRef,
         private readonly _elementRef: ElementRef,
         private readonly _focusMonitor: FocusMonitor,
-    ) {
+    ) {}
+
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elementRef);
     }
 

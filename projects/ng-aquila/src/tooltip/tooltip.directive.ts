@@ -16,7 +16,20 @@ import {
 import { Platform } from '@angular/cdk/platform';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
-import { ComponentRef, Directive, ElementRef, Inject, InjectionToken, Input, NgZone, OnDestroy, OnInit, Optional, ViewContainerRef } from '@angular/core';
+import {
+    AfterViewInit,
+    ComponentRef,
+    Directive,
+    ElementRef,
+    Inject,
+    InjectionToken,
+    Input,
+    NgZone,
+    OnDestroy,
+    OnInit,
+    Optional,
+    ViewContainerRef,
+} from '@angular/core';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 
@@ -101,7 +114,7 @@ export function NX_TOOLTIP_DEFAULT_OPTIONS_FACTORY(): NxTooltipDefaultOptions {
         '(touchend)': '_handleTouchend()',
     },
 })
-export class NxTooltipDirective implements OnDestroy, OnInit {
+export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
     _overlayRef!: OverlayRef | null;
     _tooltipInstance!: NxTooltipComponent | null;
 
@@ -223,18 +236,6 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
 
         this._manualListeners.forEach((listener, event) => element.addEventListener(event, listener));
 
-        _focusMonitor
-            .monitor(_elementRef)
-            .pipe(takeUntil(this._destroyed))
-            .subscribe(origin => {
-                // Note that the focus monitor runs outside the Angular zone.
-                if (!origin) {
-                    _ngZone.run(() => this.hide(0));
-                } else if (origin === 'keyboard') {
-                    _ngZone.run(() => this.show());
-                }
-            });
-
         if (_defaultOptions?.position) {
             this.position = _defaultOptions.position;
         }
@@ -242,6 +243,20 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         this._updateSelectabilityStyles();
+    }
+
+    ngAfterViewInit(): void {
+        this._focusMonitor
+            .monitor(this._elementRef)
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(origin => {
+                // Note that the focus monitor runs outside the Angular zone.
+                if (!origin) {
+                    this._ngZone.run(() => this.hide(0));
+                } else if (origin === 'keyboard') {
+                    this._ngZone.run(() => this.show());
+                }
+            });
     }
 
     /**

@@ -1,6 +1,6 @@
 import { FocusableOption, FocusMonitor } from '@angular/cdk/a11y';
 import { CdkTree, CdkTreeNode, CdkTreeNodeDef } from '@angular/cdk/tree';
-import { Component, ContentChild, Directive, ElementRef, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, Directive, ElementRef, Input, OnDestroy } from '@angular/core';
 
 import { NxTreeNodeActionItem } from './action-item.directive';
 import { NxTreeComponent } from './tree.component';
@@ -22,17 +22,20 @@ import { NxTreeComponent } from './tree.component';
     providers: [{ provide: CdkTreeNode, useExisting: NxTreeNodeComponent }],
     templateUrl: './node.html',
 })
-export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy {
+export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy, AfterViewInit {
     constructor(
         _elementRef: ElementRef<HTMLElement>,
         _tree: CdkTree<T>,
         protected readonly _focusMonitor: FocusMonitor,
     ) {
         super(_elementRef, _tree);
-        this._focusMonitor.monitor(this._elementRef.nativeElement);
     }
 
     @ContentChild(NxTreeNodeActionItem) actionItem!: FocusableOption;
+
+    ngAfterViewInit(): void {
+        this._focusMonitor.monitor(this._elementRef.nativeElement);
+    }
 
     ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._elementRef.nativeElement);

@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Directive, ElementRef, Host, OnDestroy } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Directive, ElementRef, Host, OnDestroy } from '@angular/core';
 import { merge, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
@@ -27,7 +27,7 @@ import { NxExpansionPanelComponent } from './expansion-panel';
         '(click)': 'toggle()',
     },
 })
-export class NxExpansionPanelHeaderComponent implements OnDestroy {
+export class NxExpansionPanelHeaderComponent implements OnDestroy, AfterViewInit {
     private readonly _destroyed = new Subject<void>();
 
     constructor(
@@ -39,7 +39,9 @@ export class NxExpansionPanelHeaderComponent implements OnDestroy {
         merge(panel.opened, panel.closed, panel._inputChanges.pipe(filter(changes => !!(changes.hideToggle || changes.disabled))))
             .pipe(takeUntil(this._destroyed))
             .subscribe(() => this._cdr.markForCheck());
+    }
 
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elementRef);
     }
 

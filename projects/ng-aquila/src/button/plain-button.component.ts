@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Input, OnDestroy } from '@angular/core';
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 
 /** Please note: small is only for meant for the One Allianz Design */
@@ -22,7 +22,7 @@ export type NxPlainButtonVariant = 'primary' | 'secondary';
     },
     providers: [{ provide: NxTriggerButton, useExisting: NxPlainButtonComponent }],
 })
-export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
+export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy, AfterViewInit {
     /** @docs-private */
     @HostBinding('attr.disabled') get isDisabled(): boolean | null {
         return this.disabled || null;
@@ -80,7 +80,9 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
         private readonly _cdr: ChangeDetectorRef,
         private readonly _elementRef: ElementRef,
         private readonly _focusMonitor: FocusMonitor,
-    ) {
+    ) {}
+
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elementRef);
     }
 

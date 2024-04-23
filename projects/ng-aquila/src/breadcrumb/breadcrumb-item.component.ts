@@ -1,5 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
 
 @Component({
     selector: 'a[nxBreadcrumbItem]',
@@ -10,12 +10,16 @@ import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, Renderer2 } 
         class: 'nx-breadcrumb-item',
     },
 })
-export class NxBreadcrumbItemComponent implements OnDestroy {
+export class NxBreadcrumbItemComponent implements OnDestroy, AfterViewInit {
     constructor(
         private readonly _renderer: Renderer2,
         private readonly _elemRef: ElementRef,
         private readonly _focusMonitor: FocusMonitor,
     ) {
+        this._focusMonitor.monitor(this._elemRef);
+    }
+
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elemRef);
     }
 

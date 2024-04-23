@@ -2,6 +2,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -104,7 +105,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
         '[attr.aria-disabled]': 'disabled.toString()',
     },
 })
-export class NxTabLinkDirective implements OnDestroy {
+export class NxTabLinkDirective implements OnDestroy, AfterViewInit {
     /** Whether the tab link is active and has the active styling. */
     @Input() set active(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
@@ -137,7 +138,9 @@ export class NxTabLinkDirective implements OnDestroy {
         if (!this._tabNavBar) {
             throw Error(`The nx-tab-link element has to be wrapped in a nx-tab-nav-bar to work.`);
         }
+    }
 
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elementRef);
     }
 

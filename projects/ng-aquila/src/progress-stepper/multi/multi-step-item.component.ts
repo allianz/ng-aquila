@@ -1,7 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkStepHeader, CdkStepLabel } from '@angular/cdk/stepper';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy } from '@angular/core';
 
 import { NxMultiStepperDirection } from '../progress-stepper.models';
 
@@ -25,7 +25,7 @@ import { NxMultiStepperDirection } from '../progress-stepper.models';
         '[attr.aria-label]': 'label',
     },
 })
-export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy {
+export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy, AfterViewInit {
     /** The direction of the step */
     @Input() set direction(value: NxMultiStepperDirection) {
         this._direction = value;
@@ -111,6 +111,9 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
         private readonly _focusMonitor: FocusMonitor,
     ) {
         super(_elementRef);
+    }
+
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elementRef);
     }
 

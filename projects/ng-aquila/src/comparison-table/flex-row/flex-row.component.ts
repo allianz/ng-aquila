@@ -1,5 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { Component, ElementRef, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -24,7 +24,7 @@ import { NxComparisonTableRowDirective } from '../comparison-table-row.directive
         '[class.has-intersection]': 'row.intersectionCell',
     },
 })
-export class NxComparisonTableFlexRow implements OnDestroy {
+export class NxComparisonTableFlexRow implements OnDestroy, AfterViewInit {
     @Input() row!: NxComparisonTableRowDirective;
 
     private readonly _destroyed = new Subject<void>();
@@ -33,7 +33,9 @@ export class NxComparisonTableFlexRow implements OnDestroy {
         readonly _table: NxComparisonTableBase,
         private readonly _elementRef: ElementRef,
         private readonly _focusMonitor: FocusMonitor,
-    ) {
+    ) {}
+
+    ngAfterViewInit(): void {
         this._focusMonitor
             .monitor(this._elementRef, true)
             .pipe(takeUntil(this._destroyed))

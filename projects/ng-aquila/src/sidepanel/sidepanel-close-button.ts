@@ -1,5 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy } from '@angular/core';
 
 import { NxSidepanelComponent } from './sidepanel';
 
@@ -12,7 +12,7 @@ import { NxSidepanelComponent } from './sidepanel';
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NxSidepanelCloseButtonComponent implements OnDestroy {
+export class NxSidepanelCloseButtonComponent implements OnDestroy, AfterViewInit {
     _toggle() {
         this._sidepanel.toggle();
     }
@@ -21,7 +21,9 @@ export class NxSidepanelCloseButtonComponent implements OnDestroy {
         private readonly _sidepanel: NxSidepanelComponent,
         private readonly _focusMonitor: FocusMonitor,
         private readonly _elementRef: ElementRef,
-    ) {
+    ) {}
+
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elementRef);
     }
 

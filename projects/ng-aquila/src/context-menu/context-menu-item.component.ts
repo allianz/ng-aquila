@@ -2,6 +2,7 @@ import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { DOCUMENT } from '@angular/common';
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -41,7 +42,7 @@ import { Subject } from 'rxjs';
     `,
     styleUrls: ['./context-menu-item.component.scss'],
 })
-export class NxContextMenuItemComponent implements OnDestroy {
+export class NxContextMenuItemComponent implements OnDestroy, AfterViewInit {
     /** Stream that emits when the context menu item is hovered. */
     readonly _hovered = new Subject<NxContextMenuItemComponent>();
 
@@ -76,9 +77,7 @@ export class NxContextMenuItemComponent implements OnDestroy {
         @Optional() @Inject(DOCUMENT) private readonly _document: Document | null,
         private readonly _cdr: ChangeDetectorRef,
         private readonly _focusMonitor: FocusMonitor,
-    ) {
-        this._focusMonitor.monitor(this._elementRef);
-    }
+    ) {}
 
     /** Focuses this context menu item. */
     focus(origin?: FocusOrigin): void {
@@ -87,6 +86,10 @@ export class NxContextMenuItemComponent implements OnDestroy {
         } else {
             this._getHostElement().focus();
         }
+    }
+
+    ngAfterViewInit(): void {
+        this._focusMonitor.monitor(this._elementRef);
     }
 
     ngOnDestroy(): void {

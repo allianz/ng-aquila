@@ -1,6 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
+    AfterViewInit,
     Component,
     ElementRef,
     Input,
@@ -50,7 +51,11 @@ export class MyTel {
     },
 })
 export class FormfieldCustomTelInputExampleComponent
-    implements ControlValueAccessor, NxFormfieldControl<MyTel>, OnDestroy
+    implements
+        ControlValueAccessor,
+        NxFormfieldControl<MyTel>,
+        OnDestroy,
+        AfterViewInit
 {
     static nextId = 0;
 
@@ -155,17 +160,6 @@ export class FormfieldCustomTelInputExampleComponent
             ],
         });
 
-        _focusMonitor
-            .monitor(_elementRef, true)
-            .pipe(takeUntil(this._destroyed))
-            .subscribe(origin => {
-                if (this.focused && !origin) {
-                    this.onTouched();
-                }
-                this.focused = !!origin;
-                this.stateChanges.next();
-            });
-
         if (this.ngControl != null) {
             this.ngControl.valueAccessor = this;
         }
@@ -177,6 +171,19 @@ export class FormfieldCustomTelInputExampleComponent
 
     get elementRef(): ElementRef {
         return this._elementRef;
+    }
+
+    ngAfterViewInit(): void {
+        this._focusMonitor
+            .monitor(this._elementRef, true)
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(origin => {
+                if (this.focused && !origin) {
+                    this.onTouched();
+                }
+                this.focused = !!origin;
+                this.stateChanges.next();
+            });
     }
 
     ngOnDestroy(): void {

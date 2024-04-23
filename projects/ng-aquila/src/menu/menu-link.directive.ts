@@ -1,5 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { Directive, ElementRef, OnDestroy } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, OnDestroy } from '@angular/core';
 
 /**
  * This is a menu link.
@@ -11,11 +11,13 @@ import { Directive, ElementRef, OnDestroy } from '@angular/core';
         class: 'nx-menu__link',
     },
 })
-export class NxMenuLinkDirective implements OnDestroy {
+export class NxMenuLinkDirective implements OnDestroy, AfterViewInit {
     constructor(
         private readonly _elementRef: ElementRef,
         private readonly _focusMonitor: FocusMonitor,
-    ) {
+    ) {}
+
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elementRef);
     }
 

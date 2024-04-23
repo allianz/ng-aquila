@@ -1,5 +1,16 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, Input, OnDestroy, Renderer2 } from '@angular/core';
+import {
+    AfterContentInit,
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ContentChild,
+    ElementRef,
+    Input,
+    OnDestroy,
+    Renderer2,
+} from '@angular/core';
 import { MappedStyles } from '@aposin/ng-aquila/core';
 import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
@@ -32,7 +43,7 @@ const DEFAULT_CLASSES = ['nx-link'];
         '[class.nx-link--large]': 'this.size === "large"',
     },
 })
-export class NxLinkComponent extends MappedStyles implements AfterContentInit, OnDestroy {
+export class NxLinkComponent extends MappedStyles implements AfterContentInit, OnDestroy, AfterViewInit {
     /** @docs-private */
     @ContentChild(NxIconComponent) icon!: NxIconComponent;
 
@@ -55,7 +66,6 @@ export class NxLinkComponent extends MappedStyles implements AfterContentInit, O
         private readonly _focusMonitor: FocusMonitor,
     ) {
         super(MAPPING, _elementRef, _renderer, DEFAULT_CLASSES);
-        this._focusMonitor.monitor(this._elementRef, true);
     }
 
     ngAfterContentInit(): void {
@@ -64,6 +74,10 @@ export class NxLinkComponent extends MappedStyles implements AfterContentInit, O
         for (let i = 0; i < icons.length; i++) {
             this._renderer.addClass(icons[i], 'nx-link__icon');
         }
+    }
+
+    ngAfterViewInit(): void {
+        this._focusMonitor.monitor(this._elementRef, true);
     }
 
     ngOnDestroy(): void {

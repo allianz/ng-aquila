@@ -1,5 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { ChangeDetectionStrategy, Component, ContentChild, Directive, ElementRef, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChild, Directive, ElementRef, Input, OnDestroy } from '@angular/core';
 
 @Directive({
     selector: 'nx-footer-copyright',
@@ -28,11 +28,13 @@ export class NxFooterNavigationDirective {}
         role: 'listitem',
     },
 })
-export class NxFooterLinkDirective implements OnDestroy {
+export class NxFooterLinkDirective implements OnDestroy, AfterViewInit {
     constructor(
         private readonly _elementRef: ElementRef,
         private readonly _focusMonitor: FocusMonitor,
-    ) {
+    ) {}
+
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elementRef, true);
     }
 

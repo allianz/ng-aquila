@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, Component, ContentChildren, Directive, ElementRef, Input, OnDestroy, QueryList } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, Directive, ElementRef, Input, OnDestroy, QueryList } from '@angular/core';
 
 /** This directive defines a header row within the `<nx-header>` component. */
 @Directive({
@@ -91,11 +91,13 @@ export class NxHeaderNavigationItemDirective {}
     },
     template: '<span class="nx-header__link-title"><ng-content></ng-content></span>',
 })
-export class NxHeaderLinkComponent implements OnDestroy {
+export class NxHeaderLinkComponent implements OnDestroy, AfterViewInit {
     constructor(
         private readonly _elementRef: ElementRef,
         private readonly _focusMonitor: FocusMonitor,
-    ) {
+    ) {}
+
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elementRef);
     }
 

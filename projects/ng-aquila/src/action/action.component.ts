@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, Input, OnDestroy } from '@angular/core';
 
 import { NxActionIconDirective } from './action-icon.directive';
 
@@ -16,7 +16,7 @@ import { NxActionIconDirective } from './action-icon.directive';
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NxActionComponent implements OnDestroy {
+export class NxActionComponent implements OnDestroy, AfterViewInit {
     @ContentChild(NxActionIconDirective) _iconChild!: NxActionIconDirective;
 
     /** Whether this action is selected or not.  */
@@ -57,7 +57,9 @@ export class NxActionComponent implements OnDestroy {
         private readonly _cdr: ChangeDetectorRef,
         private readonly _elementRef: ElementRef,
         private readonly _focusMonitor: FocusMonitor,
-    ) {
+    ) {}
+
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elementRef);
     }
 
