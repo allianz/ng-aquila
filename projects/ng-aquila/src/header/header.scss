@@ -26,6 +26,10 @@ $header-link-border-width: nx-border-size(xl);
     @media screen and (forced-colors: active) {
         background-color: Canvas;
     }
+
+    @media screen and (max-width: 703px) {
+        padding: nx-border-size(xs) nx-spacer(s) 0 nx-spacer(s);
+    }
 }
 
 ::ng-deep .nx-header__link {

@@ -16,4 +16,8 @@
     @media screen and (forced-colors: active) {
         border: 1px solid CanvasText;
     }
+
+    @media screen and (max-width: 703px) {
+        padding: 0 nx-spacer(s);
+    }
 }
