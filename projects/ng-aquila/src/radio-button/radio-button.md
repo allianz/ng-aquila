@@ -75,3 +75,8 @@ Please note that the `nx-error` is only for **Expert**.
 <!-- example(radio-button-group-validation) -->
 
 </div>
+
+### Accessibility
+If your radio button doesn't have any accompanying label text,
+it's recommended to use `ariaLabel` or `ariaLabelledBy`
+inputs to provide helpful information for users relying on screen readers or other assistive technologies."

@@ -270,6 +270,9 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     @ViewChild('radioLabelWrapper', { static: true }) _radioLabelWrapper!: ElementRef;
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
+    @Input() ariaLabel: string | null = null;
+    @Input() ariaLabelledBy: string | null = null;
+
     /** Sets the id of the radio component. */
     @Input() set id(value: string) {
         if (this._id !== value) {

@@ -9,6 +9,8 @@
     (blur)="touch()"
     role="switch"
     [attr.aria-checked]="checked"
+    [attr.aria-labelledby]="ariaLabelledBy"
+    [attr.aria-label]="ariaLabel"
     class="nx-switcher__input"
 />
 <label [attr.for]="id" class="nx-switcher__label" [class.has-label]="labelHasContent">

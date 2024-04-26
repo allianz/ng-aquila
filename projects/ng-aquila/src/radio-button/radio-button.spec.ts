@@ -54,6 +54,7 @@ describe('NxRadioComponent', () => {
                 RadioGroupTest,
                 RadioGroupValidation,
                 RadioGroupValidationTouched,
+                RadioA11y,
             ],
         }).compileComponents();
     }));
@@ -534,6 +535,14 @@ describe('NxRadioComponent', () => {
             createTestComponent(RadioGroupTest);
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
+
+        it('should set aria-label, aria-labelledBy', async () => {
+            createTestComponent(RadioA11y);
+            expect(radioElements.item(0).getAttribute('aria-label')).toBe('label');
+            expect(radioElements.item(0).getAttribute('aria-labelledby')).toBe('labelBy');
+            expect(radioElements.item(1).getAttribute('aria-label')).toBeFalsy();
+            expect(radioElements.item(1).getAttribute('aria-labelledby')).toBeFalsy();
+        });
     });
 });
 
@@ -741,3 +750,17 @@ class RadioGroupValidationTouched extends RadioTest {
     `,
 })
 class RadioGroupTest extends RadioTest {}
+
+@Component({
+    template: `
+        <nx-radio-group name="radioGroupTest">
+            <nx-label>What do you prefer?</nx-label>
+            <nx-radio value="0" [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy">0</nx-radio>
+            <nx-radio value="1">1</nx-radio>
+        </nx-radio-group>
+    `,
+})
+class RadioA11y extends RadioTest {
+    ariaLabel: string | null = 'label';
+    ariaLabelledBy: string | null = 'labelBy';
+}

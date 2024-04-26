@@ -93,3 +93,8 @@ With `size` you can change the styling of the checkbox-group's label. The label 
 The properties can be inherited from the checkbox group to the checkboxes inside it. In this example you can toggle them and check the result.
 
 <!-- example(checkbox-group-inheritance) -->
+
+### Accessibility
+If your checkbox doesn't have any accompanying label text,
+it's recommended to use `ariaLabel` or `ariaLabelledBy`
+inputs to provide helpful information for users relying on screen readers or other assistive technologies."

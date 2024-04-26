@@ -50,6 +50,7 @@ describe('NxSwitcherComponent', () => {
                 LabelSizeSwitcher,
                 ValidationSwitcherForm,
                 LabellessSwitcher,
+                SwitcherA11y,
             ],
             imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
         }).compileComponents();
@@ -253,6 +254,21 @@ describe('NxSwitcherComponent', () => {
             createTestComponent(BasicSwitcher);
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
+
+        it('should set aria-label, aria-labelledBy', () => {
+            createTestComponent(SwitcherA11y);
+
+            expect(inputElement.getAttribute('aria-label')).toBeFalsy();
+            expect(inputElement.getAttribute('aria-labelledby')).toBeFalsy();
+
+            const instance = testInstance as SwitcherA11y;
+            instance.ariaLabel = 'label';
+            instance.ariaLabelledBy = 'labelBy';
+            fixture.detectChanges();
+
+            expect(inputElement.getAttribute('aria-label')).toBe('label');
+            expect(inputElement.getAttribute('aria-labelledby')).toBe('labelBy');
+        });
     });
 });
 
@@ -289,6 +305,14 @@ class SwitcherReactiveForm extends SwitcherTest {
     template: `<nx-switcher [labelSize]="labelSize" id="testSwitcher">basicLabel</nx-switcher>`,
 })
 class LabelSizeSwitcher extends SwitcherTest {}
+
+@Component({
+    template: `<nx-switcher [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy">basicLabel</nx-switcher>`,
+})
+class SwitcherA11y extends SwitcherTest {
+    ariaLabel: string | null = null;
+    ariaLabelledBy: string | null = null;
+}
 
 @Component({
     template: `

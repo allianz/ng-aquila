@@ -54,3 +54,9 @@ The switcher component can be used in reactive forms.
 ### Disabled
 
 <!-- example(switcher-disabled) -->
+
+
+### Accessibility
+If your switcher button doesn't have any accompanying label text,
+it's recommended to use `ariaLabel` or `ariaLabelledBy`
+inputs to provide helpful information for users relying on screen readers or other assistive technologies."

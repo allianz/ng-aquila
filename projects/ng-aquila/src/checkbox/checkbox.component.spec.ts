@@ -63,6 +63,7 @@ describe('NxCheckboxComponent', () => {
                 CheckboxLabelSize,
                 CheckboxOnPush,
                 CheckboxNegative,
+                CheckboxA11y,
             ],
             imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
         }).compileComponents();
@@ -286,6 +287,20 @@ describe('NxCheckboxComponent', () => {
             createTestComponent(BasicCheckbox);
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
+
+        it('should set aria-label, aria-labelledBy', async () => {
+            createTestComponent(CheckboxA11y);
+
+            expect(inputElement.getAttribute('aria-label')).toBeFalsy();
+            expect(inputElement.getAttribute('aria-labelledby')).toBeFalsy();
+
+            (fixture as ComponentFixture<CheckboxA11y>).componentInstance.ariaLabel = 'label';
+            (fixture as ComponentFixture<CheckboxA11y>).componentInstance.ariaLabelledBy = 'labelBy';
+            fixture.detectChanges();
+
+            expect(inputElement.getAttribute('aria-label')).toBe('label');
+            expect(inputElement.getAttribute('aria-labelledby')).toBe('labelBy');
+        });
     });
 });
 
@@ -319,6 +334,14 @@ class CheckboxOnPush extends CheckboxTest {}
 })
 class CheckboxTemplateDriven extends CheckboxTest {
     required = false;
+}
+
+@Component({
+    template: `<nx-checkbox [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy"></nx-checkbox>`,
+})
+class CheckboxA11y extends CheckboxTest {
+    ariaLabel: string | null = null;
+    ariaLabelledBy: string | null = null;
 }
 
 @Component({

@@ -53,6 +53,9 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
 
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
+    @Input() ariaLabel: string | null = null;
+    @Input() ariaLabelledBy: string | null = null;
+
     /** Sets the id of the switcher */
     @Input() set id(value: string) {
         this._id = value;

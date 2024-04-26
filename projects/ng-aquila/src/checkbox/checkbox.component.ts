@@ -301,6 +301,8 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
 
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
+    @Input() ariaLabel: string | null = null;
+    @Input() ariaLabelledBy: string | null = null;
     /**
      * Id of the checkbox.
      *

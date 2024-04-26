@@ -21,7 +21,7 @@
                     <td nxTableCell class="nx-table-cell--checkbox">
                         <nx-radio
                             (valueChange)="selection.select(item)"
-                            [attr.aria-label]="'Select ' + item.product + ' row'"
+                            [ariaLabel]="'Select ' + item.product + ' row'"
                             [checked]="selection.isSelected(item)"
                         ></nx-radio>
                     </td>
