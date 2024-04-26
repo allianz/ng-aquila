@@ -454,13 +454,13 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     }
 
     ngControl: NgControl | null = null;
+    _parentForm: NgForm | null = null;
+    _parentFormGroup: FormGroupDirective | null = null;
 
     constructor(
         private readonly _cdr: ChangeDetectorRef,
         private readonly _errorStateMatcher: ErrorStateMatcher,
         @Optional() readonly checkboxGroup: NxCheckboxGroupComponent | null,
-        @Optional() private readonly _parentForm: NgForm | null,
-        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
         private readonly _focusMonitor: FocusMonitor,
         private injector: Injector,
     ) {}
@@ -484,6 +484,8 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
 
     ngOnInit(): void {
         this.ngControl = this.injector.get(NgControl, null);
+        this._parentForm = this.injector.get(NgForm, null);
+        this._parentFormGroup = this.injector.get(FormGroupDirective, null);
 
         if (this.checkboxGroup) {
             this.name = this.checkboxGroup.name;
