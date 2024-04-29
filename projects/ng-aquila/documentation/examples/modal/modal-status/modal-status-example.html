@@ -2,28 +2,28 @@
 <button
     nxButton
     class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('success', 'default')"
+    (click)="open('success', 'default', template)"
 >
     success
 </button>
 <button
     nxButton
     class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('info', 'default')"
+    (click)="open('info', 'default', template)"
 >
     info
 </button>
 <button
     nxButton
     class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('error', 'default')"
+    (click)="open('error', 'default', template)"
 >
     error
 </button>
 <button
     nxButton
     class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('warning', 'default')"
+    (click)="open('warning', 'default', template)"
 >
     warning
 </button>
@@ -31,28 +31,28 @@
 <button
     nxButton
     class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('success', 'expert')"
+    (click)="open('success', 'expert', expertTemplate)"
 >
     success
 </button>
 <button
     nxButton
     class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('info', 'expert')"
+    (click)="open('info', 'expert', expertTemplate)"
 >
     info
 </button>
 <button
     nxButton
     class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('error', 'expert')"
+    (click)="open('error', 'expert', expertTemplate)"
 >
     error
 </button>
 <button
     nxButton
     class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('warning', 'expert')"
+    (click)="open('warning', 'expert', expertTemplate)"
 >
     warning
 </button>
@@ -77,7 +77,34 @@
             class="nx-margin-bottom-0"
             nxButton="small"
             type="button"
-            (click)="open('warning', 'expert')"
+            (click)="dialogRef?.close()"
+        >
+            Proceed
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #expertTemplate>
+    <h2 nxModalTitle [status]="status">Modal heading</h2>
+    <div nxModalContent>
+        <p nxCopytext="small" class="nx-modal-margin-bottom">
+            This content is placed within the <code>nx-modal-container</code>
+        </p>
+    </div>
+    <div nxModalActions class="status-action">
+        <button
+            (click)="dialogRef?.close()"
+            class="nx-margin-bottom-0 nx-margin-right-xs"
+            nxButton="small-medium secondary"
+            type="button"
+        >
+            Cancel
+        </button>
+        <button
+            class="nx-margin-bottom-0"
+            nxButton="small-medium"
+            type="button"
+            (click)="dialogRef?.close()"
         >
             Proceed
         </button>
