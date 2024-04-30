@@ -89,6 +89,15 @@ $item-size: nx-spacer(3m);
     }
 }
 
+.nx-calendar-body-disabled {
+    .nx-calendar-body-today {
+        color: v(datefield-controls-disabled-color) !important;
+        &::after {
+            background-color: v(datefield-controls-disabled-color) !important;
+        }
+    }
+}
+
 :not(.nx-calendar-body-disabled) {
     &:hover {
         & > .nx-calendar-body-cell-content,
