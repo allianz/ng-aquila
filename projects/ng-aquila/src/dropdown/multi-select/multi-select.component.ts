@@ -187,6 +187,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     @ViewChildren('selectAllCheckbox,option') private _options!: QueryList<NxMultiSelectAllComponent<T> | NxMultiSelectOptionComponent<T>>;
+    @ViewChild('selectAllCheckbox') private _selectAll!: NxMultiSelectAllComponent<T>;
 
     /** Event emitted when the select panel has been toggled. */
     @Output() readonly openedChange = new EventEmitter<boolean>();
@@ -425,6 +426,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         this.listItems = this.options.slice().sort(this.sortSelectedToTop);
         this._divider = this.selectedItems.size - 1;
         this._openedBy = origin;
+
         this._cdr.markForCheck();
     }
 
@@ -542,10 +544,12 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             this._filterInput?.nativeElement.focus();
             this._panelContent?.nativeElement.focus();
 
-            if (this._openedBy === 'keyboard') {
+            if (this._selectAll && this.selectedItems.size > 0) {
                 this._keyManager.setActiveItem(1);
-                this._scrollActiveOptionIntoView();
+            } else {
+                this._keyManager.setFirstItemActive();
             }
+            this._scrollActiveOptionIntoView();
             this.openedChange.emit(true);
             this._cdr.markForCheck();
         });
