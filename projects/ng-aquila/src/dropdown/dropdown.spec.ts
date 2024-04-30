@@ -1156,12 +1156,16 @@ describe('NxDropdownComponent', () => {
             dropdownInstance.setReadonly(true);
             fixture.detectChanges();
             expect(dropdownElement).toHaveClass('is-readonly');
+            expect(dropdownElement.getAttribute('aria-disabled')).toBe('true');
+            expect(dropdownElement.getAttribute('readonly')).toBe('true');
 
             flush();
 
             dropdownInstance.setReadonly(false);
             fixture.detectChanges();
             expect(dropdownElement).not.toHaveClass('is-readonly');
+            expect(dropdownElement.getAttribute('aria-disabled')).toBe('false');
+            expect(dropdownElement.getAttribute('readonly')).toBe(null);
         }));
     });
 

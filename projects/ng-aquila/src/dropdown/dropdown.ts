@@ -138,7 +138,6 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         '[class.nx-dropdown--disabled]': 'disabled',
         '[attr.aria-describedby]': 'ariaDescribedby || null',
         '[attr.aria-required]': 'required',
-        '[attr.aria-disabled]': 'disabled',
         '[attr.aria-labelledby]': '_getAriaLabelledBy()',
         '[attr.aria-controls]': 'modalId',
         '[attr.aria-invalid]': 'errorState',
@@ -146,6 +145,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         '[attr.aria-expanded]': 'panelOpen',
         '[attr.readonly]': 'readonly || null',
         '[attr.disabled]': 'disabled || null',
+        '[attr.aria-disabled]': 'disabled || readonly',
         '[attr.tabindex]': 'tabIndex',
         '(keydown)': '_handleKeydown($event)',
         '(focus)': '_onFocus()',
@@ -244,7 +244,7 @@ export class NxDropdownComponent
         this._tabIndex = value != null ? value : 0;
     }
     get tabIndex(): number {
-        return this.disabled || this.readonly ? -1 : this._tabIndex;
+        return this.disabled ? -1 : this._tabIndex;
     }
     private _tabIndex = 0;
 
@@ -1063,7 +1063,6 @@ export class NxDropdownComponent
 
     private _handleClosedKeydown(event: KeyboardEvent) {
         if (this.disabled || this.readonly) {
-            event.preventDefault();
             return;
         }
 
