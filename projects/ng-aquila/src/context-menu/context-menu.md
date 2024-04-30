@@ -98,7 +98,7 @@ Alternatively, the `NX_CONTEXT_MENU_SCROLL_STRATEGY` injection token can be prov
 
 ### Selection Menu
 
-Selection menu stores its state. It can easily be built on top of Context Menu, simply copy the source code of the examples below and modify as needed.
+Selection menu stores its state. It can easily be built on top of Context Menu, simply copy the source code of the examples below and modify as needed. Use the `selectable` option on the menu items for the correct styling.
 
 #### Single selection
 

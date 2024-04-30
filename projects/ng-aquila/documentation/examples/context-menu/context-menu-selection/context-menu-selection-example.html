@@ -2,9 +2,12 @@
     <nx-context-menu-header> Language </nx-context-menu-header>
     <button
         nxContextMenuItem
+        selectable
         type="button"
         *ngFor="let o of options"
         (click)="selectedLanguage = o.value"
+        role="menuitemradio"
+        [attr.aria-checked]="selectedLanguage === o.value ? 'true' : 'false'"
     >
         <nx-icon
             aria-hidden="true"

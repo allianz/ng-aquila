@@ -3,6 +3,7 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { DOCUMENT } from '@angular/common';
 import {
     AfterViewInit,
+    booleanAttribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -32,6 +33,7 @@ import { Subject } from 'rxjs';
         '[attr.disabled]': 'disabled || null',
         '(mouseenter)': '_handleMouseEnter()',
         '(click)': '_checkDisabled($event)',
+        '[class.is-selectable]': '_selectable',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
@@ -45,6 +47,15 @@ import { Subject } from 'rxjs';
 export class NxContextMenuItemComponent implements OnDestroy, AfterViewInit {
     /** Stream that emits when the context menu item is hovered. */
     readonly _hovered = new Subject<NxContextMenuItemComponent>();
+
+    /** Whether the context menu item is selectable */
+    @Input({ transform: booleanAttribute }) set selectable(value) {
+        this._selectable = value;
+    }
+    get selectable(): boolean {
+        return this._selectable;
+    }
+    private _selectable = false;
 
     /** Whether the context menu item is disabled. */
     @Input() set disabled(value: BooleanInput) {

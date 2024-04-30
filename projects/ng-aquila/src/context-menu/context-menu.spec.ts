@@ -1417,6 +1417,20 @@ describe('nxContextMenu', () => {
             });
         });
     });
+
+    describe('selectable menu item', () => {
+        let fixture: ComponentFixture<SelectionMenu>;
+
+        beforeEach(() => {
+            fixture = createComponent(SelectionMenu);
+            fixture.componentInstance.trigger.openContextMenu();
+        });
+
+        it('menu item with selectable should have is-selectable class', fakeAsync(() => {
+            const menuItem = overlayContainerElement.querySelector('[nxContextMenuItem]') as HTMLElement;
+            expect(menuItem!).toHaveClass('is-selectable');
+        }));
+    });
 });
 
 @Component({
@@ -1441,6 +1455,24 @@ class SimpleMenu {
     @ViewChildren(NxContextMenuItemComponent) items!: QueryList<NxContextMenuItemComponent>;
     extraItems: string[] = [];
     closeCallback = jasmine.createSpy('menu closed callback');
+}
+
+@Component({
+    template: `
+        <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu">Toggle menu</button>
+        <nx-context-menu #menu="nxContextMenu" [class]="panelClass" (closed)="closeCallback($event)">
+            <button nxContextMenuItem selectable>Item</button>
+            <button nxContextMenuItem selectable>Item 2</button>
+            <button nxContextMenuItem selectable>
+                <nx-icon name="check"></nx-icon>
+                Item with an icon
+            </button>
+        </nx-context-menu>
+    `,
+})
+class SelectionMenu {
+    @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
+    @ViewChildren(NxContextMenuItemComponent) items!: QueryList<NxContextMenuItemComponent>;
 }
 
 @Component({
