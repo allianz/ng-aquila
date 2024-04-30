@@ -219,7 +219,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     }
 
     _focusChanged(isFocused: boolean) {
-        if (isFocused !== this.focused && !this.readonly) {
+        if (isFocused !== this.focused) {
             this.focused = isFocused;
             this.stateChanges.next();
 
