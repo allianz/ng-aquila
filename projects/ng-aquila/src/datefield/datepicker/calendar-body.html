@@ -7,15 +7,7 @@
     https://www.w3schools.com/howto/howto_css_aspect_ratio.asp).
   -->
     <ng-container *ngIf="rowIndex === 0">
-        <td
-            *ngFor="let item of previousItems"
-            aria-hidden="true"
-            class="nx-calendar-adjacent-cell"
-            [class.nx-calendar-body-disabled]="!item.enabled"
-            (click)="_previousCellClicked(item)"
-        >
-            <div aria-hidden="true" class="nx-calendar-adjacent-cell-content">{{ item.displayValue }}</div>
-        </td>
+        <td *ngFor="let items of [].constructor(previousItems)" aria-hidden="true"></td>
     </ng-container>
 
     <td
@@ -41,24 +33,6 @@
     </td>
 
     <ng-container *ngIf="rowIndex === _lastRowIndex && _lastRowOffset">
-        <td
-            *ngFor="let item of followingItems[0]"
-            aria-hidden="true"
-            class="nx-calendar-adjacent-cell"
-            [class.nx-calendar-body-disabled]="!item.enabled"
-            (click)="_followingCellClicked(item)"
-        >
-            <div aria-hidden="true" class="nx-calendar-adjacent-cell-content">{{ item.displayValue }}</div>
-        </td>
+        <td *ngFor="let item of [].constructor(followingItems)" aria-hidden="true"></td>
     </ng-container>
-</tr>
-
-<!-- 
-  if there are still elements remaining in 'following-elements', then create some extra rows
-  to fill up the space
--->
-<tr *ngFor="let row of _followingRows" aria-hidden="true">
-    <td *ngFor="let item of row" class="nx-calendar-adjacent-cell" [class.nx-calendar-body-disabled]="!item.enabled" (click)="_followingCellClicked(item)">
-        <div class="nx-calendar-adjacent-cell-content">{{ item.displayValue }}</div>
-    </td>
 </tr>

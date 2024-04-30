@@ -122,49 +122,18 @@ describe('NxCalendarBodyComponent', () => {
 
         it('should have correct number of total rows', () => {
             let rows = calendarBodyNativeElement.querySelectorAll('tr');
-            expect(rows).toHaveSize(6);
+            expect(rows).toHaveSize(4);
 
             testComponent.previousItems = [];
             testComponent.rows = [
                 [1, 2, 3, 4, 5, 6, 7],
                 [8, 9, 10, 11, 12, 13, 14],
             ].map(r => r.map(v => createCell(v)));
-            testComponent.followingItems = [[1, 2, 3, 4, 5, 6, 7]];
+            testComponent.followingItems = 7;
             fixture.detectChanges();
 
             rows = calendarBodyNativeElement.querySelectorAll('tr');
-            expect(rows).toHaveSize(3);
-        });
-
-        it('should have the correct number of adjacent items', () => {
-            const followingItemsCount = testComponent.previousItems.length + testComponent.followingItems.reduce((prev, next) => prev.concat(next)).length;
-            let adjacentCells = calendarBodyNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
-            expect(adjacentCells).toHaveSize(followingItemsCount);
-
-            // only followingitems filled
-            testComponent.previousItems = [];
-            testComponent.rows = [
-                [1, 2, 3, 4, 5, 6, 7],
-                [8, 9, 10, 11, 12, 13, 14],
-            ].map(r => r.map(v => createCell(v)));
-            testComponent.followingItems = [[1, 2, 3, 4, 5, 6, 7]];
-            fixture.detectChanges();
-
-            adjacentCells = calendarBodyNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
-            expect(adjacentCells).toHaveSize(7);
-
-            // only previous items filled
-            testComponent.previousItems = [28, 29, 30];
-            testComponent.rows = [
-                [1, 2, 3, 4],
-                [5, 6, 7, 8, 9, 10, 11],
-                [12, 13, 14, 15, 16, 17, 18],
-            ].map(r => r.map(v => createCell(v)));
-            testComponent.followingItems = [];
-            fixture.detectChanges();
-
-            adjacentCells = calendarBodyNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
-            expect(adjacentCells).toHaveSize(3);
+            expect(rows).toHaveSize(2);
         });
     });
 });
@@ -216,11 +185,7 @@ class CalendarBodyWithPreviousAndFollowingCells {
         [12, 13, 14, 15, 16, 17, 18],
         [19, 20],
     ].map(r => r.map(v => createCell(v)));
-    followingItems = [
-        [1, 2, 3, 4, 5],
-        [6, 7, 8, 9, 10, 11, 12],
-        [13, 14, 15, 16, 17, 18],
-    ];
+    followingItems = 20;
 }
 
 function createCell(value: number, enabled = true) {

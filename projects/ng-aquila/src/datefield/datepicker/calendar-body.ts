@@ -75,10 +75,10 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
     @Input() activeCell = 0;
 
     /** The items to display in the first row in the offset space. */
-    @Input() previousItems: NxCalendarCell[] = [];
+    @Input() previousItems: number = 0;
 
     /** The items to display in the last row in the offset space. */
-    @Input() followingItems: NxCalendarCell[][] = [[]];
+    @Input() followingItems: number = 0;
 
     /** Emits when a new value out of rows is selected. */
     @Output() readonly selectedValueChange = new EventEmitter<number>();
@@ -153,21 +153,6 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
     /** The index of the last row. */
     get _lastRowIndex(): number {
         return this.rows?.length ? this.rows.length - 1 : 0;
-    }
-
-    /**
-     * The following full rows to display and fill up the calendar.
-     */
-    get _followingRows(): NxCalendarCell[][] {
-        if (this.followingItems?.length) {
-            // if first row is not a full row => display them in offset space
-            if (this.followingItems[0].length < this.numCols) {
-                return this.followingItems.slice(1, this.followingItems.length);
-            }
-            return this.followingItems;
-        }
-
-        return [];
     }
 
     _isActiveCell(rowIndex: number, colIndex: number): boolean {

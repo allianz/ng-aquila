@@ -5,7 +5,7 @@ import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/t
 import { By } from '@angular/platform-browser';
 import { NxDateAdapter, NxNativeDateModule } from '@aposin/ng-aquila/datefield';
 
-import { APR, AUG, DEC, dispatchFakeEvent, dispatchKeyboardEvent, FEB, JAN, JUN, MAR, MAY, NOV, SEP } from '../../cdk-test-utils';
+import { AUG, DEC, dispatchFakeEvent, dispatchKeyboardEvent, FEB, JAN, MAR, MAY, NOV, SEP } from '../../cdk-test-utils';
 import { NxNativeDateAdapter } from '../adapter/native-date-adapter';
 import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
 import { NxMonthViewComponent } from './month-view';
@@ -84,85 +84,6 @@ describe('NxMonthView', () => {
             expect(selectedEl!.innerHTML.trim()).toBe('31');
         });
 
-        it('fires previous selected change on previous cell clicked', () => {
-            testComponent.activeDate = new Date(2019, MAY, 10);
-            fixture.detectChanges();
-
-            // adjacent cells:
-            // previous: 28 29 30 (APR)
-            // following: 1 2 3 4 5 6 7 8 (JUN)
-            const adjacentCells = monthViewNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
-            (adjacentCells[1] as HTMLElement).click(); // click 29 APR
-            fixture.detectChanges();
-
-            expect(testComponent.selected).toEqual(new Date(2019, APR, 29));
-        });
-
-        it('selects correct date when previous cell is in previous year', () => {
-            testComponent.activeDate = new Date(2020, JAN, 10);
-            fixture.detectChanges();
-
-            // adjacent cells:
-            // previous: 29 30 31 (DEC 2019)
-            const adjacentCells = monthViewNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
-            (adjacentCells[1] as HTMLElement).click(); // click 30 DEC
-            fixture.detectChanges();
-
-            expect(testComponent.selected).toEqual(new Date(2019, DEC, 30));
-        });
-
-        it('fires following selected change on following cell clicked', () => {
-            testComponent.activeDate = new Date(2019, MAY, 10);
-            fixture.detectChanges();
-
-            // adjacent cells:
-            // previous: 28 29 30 (APR)
-            // following:
-            //    1 (JUN) (first row)
-            //    2 3 4 5 6 7 8 (JUN) (second row)
-
-            let adjacentCells = monthViewNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
-            (adjacentCells[adjacentCells.length - 8] as HTMLElement).click(); // click 1 JUN
-            fixture.detectChanges();
-
-            expect(testComponent.selected).toEqual(new Date(2019, JUN, 1));
-
-            testComponent.activeDate = new Date(2019, MAY, 10);
-            fixture.detectChanges();
-
-            adjacentCells = monthViewNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
-            (adjacentCells[adjacentCells.length - 1] as HTMLElement).click(); // click 8 JUN
-            fixture.detectChanges();
-
-            expect(testComponent.selected).toEqual(new Date(2019, JUN, 8));
-        });
-
-        it('selects correct date when following cell is in next year', () => {
-            testComponent.activeDate = new Date(2020, DEC, 10);
-            fixture.detectChanges();
-
-            // adjacent cells:
-            // previous: 29 30 (NOV)
-            // following:
-            //    1 2 (JAN) (first row)
-            //    3 4 5 6 7 8 9 (JAN) (second row)
-
-            let adjacentCells = monthViewNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
-            (adjacentCells[adjacentCells.length - 8] as HTMLElement).click(); // click 2 JAN
-            fixture.detectChanges();
-
-            expect(testComponent.selected).toEqual(new Date(2021, JAN, 2));
-
-            testComponent.activeDate = new Date(2020, DEC, 10);
-            fixture.detectChanges();
-
-            adjacentCells = monthViewNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
-            (adjacentCells[adjacentCells.length - 1] as HTMLElement).click(); // click 9 JAN
-            fixture.detectChanges();
-
-            expect(testComponent.selected).toEqual(new Date(2021, JAN, 9));
-        });
-
         it('should mark active date', () => {
             const cellEls = monthViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
             expect((cellEls[4] as HTMLElement).innerText.trim()).toBe('5');
@@ -172,42 +93,39 @@ describe('NxMonthView', () => {
         it('should return the correct number of previous items', () => {
             testComponent.activeDate = new Date(2019, FEB, 10);
             fixture.detectChanges();
-            expect(monthViewInstance._firstWeekOffset).toBe(5);
-            let previousItems = monthViewInstance._getLastDaysOfPreviousMonth();
-            assertAdjacentCells(previousItems, [27, 28, 29, 30, 31]);
+            let previousItems = monthViewInstance._firstWeekOffset;
+            expect(previousItems).toBe(5);
 
             testComponent.activeDate = new Date(2019, SEP, 10);
             fixture.detectChanges();
-            previousItems = monthViewInstance._getLastDaysOfPreviousMonth();
-            expect(previousItems).toHaveSize(0);
+            previousItems = monthViewInstance._firstWeekOffset;
+            expect(previousItems).toBe(0);
         });
 
         it('should return the correct number of following items', () => {
             testComponent.activeDate = new Date(2019, MAR, 16);
             fixture.detectChanges();
             let followingItems = monthViewInstance._getFirstDaysOfFollowingMonth();
-            expect(followingItems).toHaveSize(1);
-            assertAdjacentCells(followingItems[0], [1, 2, 3, 4, 5, 6]);
+            fixture.detectChanges();
+            expect(followingItems).toBe(6);
 
             testComponent.activeDate = new Date(2019, MAY, 16);
             fixture.detectChanges();
             followingItems = monthViewInstance._getFirstDaysOfFollowingMonth();
-            expect(followingItems).toHaveSize(2);
-            assertAdjacentCells(followingItems[0], [1]);
-            assertAdjacentCells(followingItems[1], [2, 3, 4, 5, 6, 7, 8]);
+            fixture.detectChanges();
+            expect(followingItems).toBe(1);
 
             testComponent.activeDate = new Date(2019, AUG, 16);
             fixture.detectChanges();
             followingItems = monthViewInstance._getFirstDaysOfFollowingMonth();
-            expect(followingItems).toHaveSize(1);
-            assertAdjacentCells(followingItems[0], [1, 2, 3, 4, 5, 6, 7]);
+            fixture.detectChanges();
+            expect(followingItems).toBe(0);
 
             testComponent.activeDate = new Date(2015, FEB, 16);
             fixture.detectChanges();
             followingItems = monthViewInstance._getFirstDaysOfFollowingMonth();
-            expect(followingItems).toHaveSize(2);
-            assertAdjacentCells(followingItems[0], [1, 2, 3, 4, 5, 6, 7]);
-            assertAdjacentCells(followingItems[1], [8, 9, 10, 11, 12, 13, 14]);
+            fixture.detectChanges();
+            expect(followingItems).toBe(0);
         });
 
         it('should return a correct row of days', () => {

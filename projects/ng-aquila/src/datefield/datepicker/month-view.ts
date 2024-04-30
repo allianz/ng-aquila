@@ -312,54 +312,14 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
     }
 
     /**
-     * The last days of the previous month that should be displayed
-     * in the first row of the calendar.
+     * Fill up the last row of the current month
      */
-    _getLastDaysOfPreviousMonth(): NxCalendarCell[] {
-        const firstDayOfMonth: D = this._dateAdapter.createDate(this._dateAdapter.getYear(this.activeDate), this._dateAdapter.getMonth(this.activeDate), 1);
-
-        const firstDayOfPreviousItems = this._dateAdapter.addCalendarDays(firstDayOfMonth, -this._firstWeekOffset);
-
-        return this._getRowOfDays(firstDayOfPreviousItems, this._firstWeekOffset);
-    }
-
-    /**
-     * The first days of the following month that should be displayed
-     * after the days of the current month. After filling up the last
-     * row of the current month, additional rows are added, so that a
-     * total of 42 days (6 rows/weeks) is displayed.
-     */
-    _getFirstDaysOfFollowingMonth(): NxCalendarCell[][] {
-        const followingDays: NxCalendarCell[][] = [];
-
-        const firstDayOfNextMonth: D = this._dateAdapter.addCalendarMonths(
-            this._dateAdapter.createDate(this._dateAdapter.getYear(this.activeDate), this._dateAdapter.getMonth(this.activeDate), 1),
-            1,
-        );
-
-        // there should be displayed a total of 7 * 6 items
+    _getFirstDaysOfFollowingMonth(): number {
         const followingDaysCount = TOTAL_DAYS_TO_DISPLAY - this._firstWeekOffset - this._dateAdapter.getNumDaysInMonth(this.activeDate);
         const offsetItems = followingDaysCount % 7;
 
-        // add a non-full row to following rows.
-        // These items will fill up the last incomplete row of the current month.
-        if (offsetItems > 0) {
-            const offsetRow = this._getRowOfDays(firstDayOfNextMonth, offsetItems);
-            followingDays.push(offsetRow);
-        }
-
-        let remainingDays = followingDaysCount - offsetItems;
-        let firstDayInRow = this._dateAdapter.addCalendarDays(firstDayOfNextMonth, offsetItems);
-
-        // fill remaining rows if needed
-        while (remainingDays > 0) {
-            followingDays.push(this._getRowOfDays(firstDayInRow, this._numCols));
-
-            firstDayInRow = this._dateAdapter.addCalendarDays(firstDayInRow, this._numCols);
-            remainingDays -= this._numCols;
-        }
-
-        return followingDays;
+        // If there are any offset items, use them to complete the last row of the current month
+        return offsetItems > 0 ? offsetItems : 0;
     }
 
     /**
