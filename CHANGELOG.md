@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.6.0](https://github.com/allianz/ng-aquila/compare/v17.5.0...v17.6.0) (2024-05-02)
+
+
+### Documentation 📚
+
+* **modal:** showcase correct button size for expert ([9d1e8c1](https://github.com/allianz/ng-aquila/commit/9d1e8c11d39850ca0a8bae6d8f6afcfa67d96437))
+
+
+### Features ✨
+
+* **context-menu:** selection menu styling([d03bec4](https://github.com/allianz/ng-aquila/commit/d03bec4fbb68332efad7c931f816b7caeef32dec))
+* **switcher, radio, checkbox:** add ariaLabel ([c85820f](https://github.com/allianz/ng-aquila/commit/c85820f5e03f28003779f6c1f06291b3b12640b9))
+
+
+### Bug Fixes 🐛
+
+* **checkbox:** solve circular dependency ([072b664](https://github.com/allianz/ng-aquila/commit/072b664669f69250136790f2c8778dcd8dbcb2d0))
+* **circle-toggle:** change cursor for disabled flipped circle toggle ([4a4ad48](https://github.com/allianz/ng-aquila/commit/4a4ad4896800dc2cbda0e611253c5a376b58833c))
+* **datefield:** remove days from previous month and following month in current month view ([4f88a99](https://github.com/allianz/ng-aquila/commit/4f88a991e64816c7b262f9fd34bbd932c009d6bb))
+* **datepicker:** datepicker colors ([47552d6](https://github.com/allianz/ng-aquila/commit/47552d62418b8d84e8138890817113a96188a855))
+* **dropdown:** allow focus readonly ([c41b78b](https://github.com/allianz/ng-aquila/commit/c41b78b6a489aa2bc8f89ac07b819a7a61afcd60))
+* **dropdown:** fix scrollActiveOptionIntoView for dropdown with many groups ([b63fb68](https://github.com/allianz/ng-aquila/commit/b63fb684aab64799ca6a66ae3578064bbd280c8d))
+* **formfield:** show focus style on readonly field ([5c63d95](https://github.com/allianz/ng-aquila/commit/5c63d9528ac4fb4298ae98f72c636035469a0146))
+* move focusmonitor from constructor to ngAfterViewInit ([2118d17](https://github.com/allianz/ng-aquila/commit/2118d175215252388ea5e4bc16a7c2b80c4e2fed))
+* **multi-select:** auto focus first element on open ([c771eba](https://github.com/allianz/ng-aquila/commit/c771ebaff710d4e84451d1bb3217a191d47da4c7))
+* **toolbar, header:** mobile padding ([90452e9](https://github.com/allianz/ng-aquila/commit/90452e96d1bae0fcdb4cc85cbd0631911c413a4e))
+
 ## [17.5.0](https://github.com/allianz/ng-aquila/compare/v17.4.0...v17.5.0) (2024-04-15)
 
 
