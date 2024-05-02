@@ -69,7 +69,7 @@
                     <td nxTableCell class="nx-table-cell--checkbox">
                         <nx-checkbox
                             (checkedChange)="selection.toggle(item)"
-                            aria-label="Toggle row selection"
+                            [ariaLabel]="'Toggle row ' + item.product + ' selection'"
                             [checked]="selection.isSelected(item)"
                         ></nx-checkbox>
                     </td>

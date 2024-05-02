@@ -1,6 +1,7 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FocusMonitor</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/a11y&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">BooleanInput</span>, coerceBooleanProperty } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/coercion&#x27;</span>;
 <span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">AfterViewInit</span>,
     <span class="hljs-title class_">Component</span>,
     <span class="hljs-title class_">ElementRef</span>,
     <span class="hljs-title class_">Input</span>,
@@ -50,7 +51,11 @@
     },
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FormfieldCustomTelInputExampleComponent</span>
-    <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ControlValueAccessor</span>, <span class="hljs-title class_">NxFormfieldControl</span>&lt;<span class="hljs-title class_">MyTel</span>&gt;, <span class="hljs-title class_">OnDestroy</span>
+    <span class="hljs-keyword">implements</span>
+        <span class="hljs-title class_">ControlValueAccessor</span>,
+        <span class="hljs-title class_">NxFormfieldControl</span>&lt;<span class="hljs-title class_">MyTel</span>&gt;,
+        <span class="hljs-title class_">OnDestroy</span>,
+        <span class="hljs-title class_">AfterViewInit</span>
 {
     <span class="hljs-keyword">static</span> nextId = <span class="hljs-number">0</span>;
 
@@ -155,17 +160,6 @@
             ],
         });
 
-        _focusMonitor
-            .<span class="hljs-title function_">monitor</span>(_elementRef, <span class="hljs-literal">true</span>)
-            .<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">takeUntil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>))
-            .<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">origin</span> =&gt;</span> {
-                <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">focused</span> &amp;&amp; !origin) {
-                    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">onTouched</span>();
-                }
-                <span class="hljs-variable language_">this</span>.<span class="hljs-property">focused</span> = !!origin;
-                <span class="hljs-variable language_">this</span>.<span class="hljs-property">stateChanges</span>.<span class="hljs-title function_">next</span>();
-            });
-
         <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">ngControl</span> != <span class="hljs-literal">null</span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">ngControl</span>.<span class="hljs-property">valueAccessor</span> = <span class="hljs-variable language_">this</span>;
         }
@@ -177,6 +171,19 @@
 
     <span class="hljs-keyword">get</span> <span class="hljs-title function_">elementRef</span>(): <span class="hljs-title class_">ElementRef</span> {
         <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">_elementRef</span>;
+    }
+
+    <span class="hljs-title function_">ngAfterViewInit</span>(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_focusMonitor</span>
+            .<span class="hljs-title function_">monitor</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_elementRef</span>, <span class="hljs-literal">true</span>)
+            .<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">takeUntil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>))
+            .<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">origin</span> =&gt;</span> {
+                <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">focused</span> &amp;&amp; !origin) {
+                    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">onTouched</span>();
+                }
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">focused</span> = !!origin;
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">stateChanges</span>.<span class="hljs-title function_">next</span>();
+            });
     }
 
     <span class="hljs-title function_">ngOnDestroy</span>(): <span class="hljs-built_in">void</span> {

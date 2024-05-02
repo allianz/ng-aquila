@@ -1,9 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    TemplateRef,
-    ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
 import { NxStatusIconType } from '@aposin/ng-aquila/icon';
 import {
     NxDialogService,
@@ -21,17 +16,19 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalStatusExample {
-    @ViewChild('template') templateRef!: TemplateRef<any>;
-
     dialogRef?: NxModalRef<any>;
 
     status!: NxStatusIconType;
 
     constructor(private readonly dialogService: NxDialogService) {}
 
-    open(status: NxStatusIconType, appearance: NxModalAppearance): void {
+    open(
+        status: NxStatusIconType,
+        appearance: NxModalAppearance,
+        template: TemplateRef<any>,
+    ): void {
         this.status = status;
-        this.dialogRef = this.dialogService.open(this.templateRef, {
+        this.dialogRef = this.dialogService.open(template, {
             ariaLabel: 'A simple modal',
             showCloseIcon: true,
             appearance,

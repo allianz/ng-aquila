@@ -677,6 +677,7 @@ body,
   --datefield-controls-color: var(--interactive-text);
   --datefield-controls-hover-color: var(--hover-primary);
   --datefield-controls-icon-size: 24px;
+  --datefield-controls-disabled-color: var(--datefield-cell-disabled-color);
   --datefield-panel-background-color: var(--ui-01);
   --datefield-panel-header-background-color: var(--ui-01);
   --datefield-panel-border-color: var(--ui-04);
