@@ -906,20 +906,7 @@ export class NxDropdownComponent
 
         const activeItem = this._keyManager.activeItem.containerElement.nativeElement;
         this.liveAnnouncer.announce(activeItem.textContent); // force screen reader to speak active option
-        const panel = this.panelBody.nativeElement;
-        const panelOffset = panel.offsetTop; // how much the overlay is repositioned on the page
-        const panelTopScrollPosition = panel.scrollTop;
-        const panelHeight = panel.clientHeight;
-        const itemTop = activeItem.offsetTop - panelOffset;
-        const itemBottom = activeItem.offsetTop - panelOffset + activeItem.getBoundingClientRect().height;
-
-        // item half or less visible on top
-        if (itemTop < panelTopScrollPosition) {
-            this.panelBody.nativeElement.scrollTop = itemTop;
-            // item half or less visible on bottom
-        } else if (itemBottom > panelTopScrollPosition + panelHeight) {
-            this.panelBody.nativeElement.scrollTop = itemBottom - panelHeight;
-        }
+        activeItem.scrollIntoView({ block: 'nearest' });
     }
 
     private _getItemOffset(item: NxDropdownItemComponent | null): number {
