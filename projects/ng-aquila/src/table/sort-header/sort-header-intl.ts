@@ -14,7 +14,7 @@ export class NxSortHeaderIntl {
     /** The aria label for a header that can be clicked to sort descending. */
     sortDescendingAriaLabel = 'click to sort descending';
     /** The aria label for a column that is sorted ascending. */
-    sortedAscendingAriaLabel = 'sorted ascending by';
+    sortedAscendingAriaLabel = 'sorted ascending';
     /** The aria label for a column that is sorted descending. */
-    sortedDescendingAriaLabel = 'sorted descending by';
+    sortedDescendingAriaLabel = 'sorted descending';
 }

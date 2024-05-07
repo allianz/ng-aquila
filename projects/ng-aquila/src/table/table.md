@@ -58,11 +58,32 @@ Application developers can implement custom column behavior, such as column hidi
 Additionally, if you need to truncate text when the column is resized and the content overflows, you can use the `nxTableCellClip` directive.
  <!-- example(table-column-resize) -->
 
+### Localization
+For **localization** please use the provider `NxHeaderSortIntl` which contains some labels for screen reader users. By default the labels are in english.
+
+```ts
+@Injectable()
+export class MyIntl extends NxSortHeaderIntl {
+    sortAscendingAriaLabel = 'klick, um absteigend zu sortieren';
+    sortDescendingAriaLabel = 'klick, um absteigend zu sortieren';
+    sortedAscendingAriaLabel = 'aufsteigend sortiert nach';
+    sortedDescendingAriaLabel = 'absteigend sortiert nach';
+}
+
+@Component({
+    ...
+    providers: [
+        { 
+            provide: NxSortHeaderIntl, 
+            useClass: MyIntl 
+        }
+    ],
+})
+```
+
 ### Sorting header
 
 This example shows how you can implement a basic sorting functionality for a table with `nxSort` and `nxSortHeaderCell`. As we don't know how your data looks like, you can implement the actual sorting function by yourself and call the function every time an `(sortChange)` event is outputted.
-
-For **localization** please use the provider `NxHeaderSortIntl` which contains some labels for screen reader users. By default the labels are in english. This is also shown in the following example.
 
 <!-- example(table-sorting) -->
 

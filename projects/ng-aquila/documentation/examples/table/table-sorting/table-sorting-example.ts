@@ -1,9 +1,5 @@
-import { Component, Injectable } from '@angular/core';
-import {
-    NxSortHeaderIntl,
-    SortDirection,
-    SortEvent,
-} from '@aposin/ng-aquila/table';
+import { Component } from '@angular/core';
+import { SortDirection, SortEvent } from '@aposin/ng-aquila/table';
 
 interface Contract {
     product: string;
@@ -15,14 +11,6 @@ interface Contract {
     statusText: string;
 }
 
-@Injectable()
-export class MyIntl extends NxSortHeaderIntl {
-    sortAscendingAriaLabel = 'click to sort ascending';
-    sortDescendingAriaLabel = 'click to sort descending';
-    sortedAscendingAriaLabel = 'sorted ascending by';
-    sortedDescendingAriaLabel = 'sorted descending by';
-}
-
 /**
  * @title Sorting example
  */
@@ -30,7 +18,6 @@ export class MyIntl extends NxSortHeaderIntl {
     selector: 'table-sorting-example',
     templateUrl: './table-sorting-example.html',
     styleUrls: ['table-sorting-example.css'],
-    providers: [{ provide: NxSortHeaderIntl, useClass: MyIntl }],
 })
 export class TableSortingExampleComponent {
     tableElements: Contract[] = [
