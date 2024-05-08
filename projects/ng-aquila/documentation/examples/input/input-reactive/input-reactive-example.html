@@ -1,6 +1,9 @@
 <form [formGroup]="testForm">
     <nx-formfield label="Label">
-        <input required nxInput formControlName="textfield" />
+        <input nxInput formControlName="textfield" />
+        <nx-error nxFormfieldError>
+            <strong>Please note:</strong> this field is required!
+        </nx-error>
     </nx-formfield>
 </form>
 

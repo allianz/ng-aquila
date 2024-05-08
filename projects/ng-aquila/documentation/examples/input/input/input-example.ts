@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
     templateUrl: './input-example.html',
     styleUrls: ['./input-example.css'],
 })
-export class InputExampleComponent {}
+export class InputExampleComponent {
+    urlRegex = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
+}
