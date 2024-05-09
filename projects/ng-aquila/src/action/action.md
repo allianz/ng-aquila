@@ -22,3 +22,6 @@ The action is fully compatible with the angular router. When using the `routerLi
 Inside the `nxAction` item there can be used a [`<nx-indicator>`](./documentation/indicator/overview):
 
 <!-- example(action-indicator) -->
+
+### Accessibility
+If you use this Component for navigation consider enclosing your list within a `<nav>` element or applying the `role="navigation"` attribute for improved accessibility in your application.

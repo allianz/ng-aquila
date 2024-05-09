@@ -5,7 +5,7 @@
 >
     <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
         <nx-tree-node *nxTreeNodeDef="let node">
-            <button
+            <a
                 nxAction
                 nxTreeNodePadding
                 nxTreeNodeActionItem
@@ -14,7 +14,6 @@
                 [queryParams]="node.query"
                 routerLinkActive="is-selected"
                 title="{{node.label}}"
-                type="button"
             >
                 <nx-icon
                     *ngIf="node.icon"
@@ -22,7 +21,7 @@
                     [name]="node.icon"
                 ></nx-icon>
                 {{node.label}}
-            </button>
+            </a>
         </nx-tree-node>
         <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
             <button

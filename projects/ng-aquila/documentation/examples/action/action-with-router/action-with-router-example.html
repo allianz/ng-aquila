@@ -1,10 +1,12 @@
-<button
-    nxAction
-    *ngFor="let action of actions"
-    routerLink="./"
-    [queryParams]="action.query"
-    routerLinkActive="is-selected"
->
-    <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
-    {{action.label}}
-</button>
+<nav aria-label="menu">
+    <a
+        nxAction
+        *ngFor="let action of actions"
+        routerLink="./"
+        [queryParams]="action.query"
+        routerLinkActive="is-selected"
+    >
+        <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
+        {{action.label}}
+    </a>
+</nav>
