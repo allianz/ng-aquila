@@ -25,12 +25,12 @@
 <ng-template
     cdkConnectedOverlay
     cdkConnectedOverlayHasBackdrop
-    cdkConnectedOverlayPush
     cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
     [cdkConnectedOverlayPositions]="_positions"
     [cdkConnectedOverlayWidth]="_width"
     [cdkConnectedOverlayOrigin]="origin"
     [cdkConnectedOverlayOpen]="_isOpen"
+    [cdkConnectedOverlayPush]="false"
     (overlayOutsideClick)="_close()"
     (attach)="_onAttach()"
     (detach)="_onDetach()"
