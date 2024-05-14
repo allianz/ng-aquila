@@ -76,6 +76,64 @@
             }
         }
     }
+
+    input:not(:disabled) {
+        + label {
+            &:hover {
+                .checkbox {
+                    border-color: v(selectable-card-checkbox-border-hover-color);
+                }
+
+                .radio {
+                    border-color: v(selectable-card-radio-border-hover-color);
+                }
+            }
+        }
+        &:checked + label {
+            &:hover {
+                .checkbox {
+                    background-color: v(selectable-card-checkbox-selected-background-hover-color);
+                    border-color: v(selectable-card-checkbox-selected-border-hover-color);
+                }
+
+                .radio {
+                    border-color: v(selectable-card-radio-border-hover-color);
+
+                    .check-dot {
+                        background-color: v(selectable-card-radio-dot-hover-color);
+                    }
+                }
+            }
+        }
+    }
+
+    &.has-error {
+        input:not(:disabled) {
+            + label {
+                .checkbox {
+                    border-color: v(selectable-card-checkbox-error-border-color);
+                }
+
+                .radio {
+                    border-color: v(selectable-card-radio-error-border-color);
+                }
+            }
+            &:checked + label {
+                .checkbox {
+                    background-color: v(selectable-card-checkbox-error-background-color);
+                    border-color: v(selectable-card-checkbox-error-border-color);
+                }
+
+                .radio {
+                    border-color: v(selectable-card-radio-error-border-color);
+
+                    .check-dot {
+                        background-color: v(selectable-card-radio-error-dot-color);
+                    }
+                }
+            }
+        }
+    }
 }
 
 :host(.is-expert) {
