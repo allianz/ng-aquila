@@ -171,6 +171,8 @@ export class NxDropdownComponent
         this.readonly = value;
     }
 
+    @Input() ariaLabelledBy: string | null = null;
+
     private _selectionModel!: SelectionModel<NxDropdownOption>;
 
     /** The ID of rendered dropdown html element. */
@@ -942,6 +944,9 @@ export class NxDropdownComponent
      * @docs-private
      */
     _getAriaLabelledBy(): string {
+        if (this.ariaLabelledBy) {
+            return this.ariaLabelledBy;
+        }
         const valueId = this.renderedValueId;
         const labelId = this.formFieldComponent?.labelId;
         if (labelId) {
