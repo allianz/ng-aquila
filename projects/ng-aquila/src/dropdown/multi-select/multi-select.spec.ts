@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 import { NxFormfieldComponent, NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 
 import { NxDropdownModule } from '../dropdown.module';
@@ -20,6 +21,8 @@ class MultiSelectHarness extends ComponentHarness {
     getValue = this.locatorFor('.value');
 
     getPanel = this.documentRootLocator.locatorForOptional('.panel');
+
+    getOverlayPane = this.documentRootLocator.locatorForOptional('.cdk-overlay-pane');
 
     getBackdrop = this.documentRootLocator.locatorFor('.cdk-overlay-backdrop');
 
@@ -121,7 +124,7 @@ describe('NxMultiSelectComponent', () => {
     async function configureTestingModule() {
         return TestBed.configureTestingModule({
             imports: [CommonModule, OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
-            declarations: [BasicMultiSelectComponent, ComplexMultiSelectComponent, ReactiveMultiSelectComponent],
+            declarations: [BasicMultiSelectComponent, ComplexMultiSelectComponent, ReactiveMultiSelectComponent, LongOptionLabelComponent],
         }).compileComponents();
     }
 
@@ -844,6 +847,91 @@ describe('NxMultiSelectComponent', () => {
             expect(multiSelectInstance.openedChange.emit).toHaveBeenCalled();
         });
     });
+
+    describe('overlay width with long option label and panelGrow', () => {
+        beforeEach(async () => {
+            await createTestComponent(LongOptionLabelComponent);
+        });
+
+        it('should have the width of the trigger if panelGrow is set to false', async () => {
+            const multiselectElement = fixture.debugElement.query(By.css('nx-formfield'));
+            multiselectElement.nativeElement.style.width = '400px';
+            testInstance.panelGrow = false;
+            fixture.detectChanges();
+            await multiSelectHarness.click();
+            const panel = (await multiSelectHarness.getOverlayPane()) as TestElement;
+
+            expect((await panel.getDimensions()).width).toBe(398);
+        });
+
+        it('should not have a min width if panelgrow is set to false', async () => {
+            const multiselectElement = fixture.debugElement.query(By.css('nx-formfield'));
+            multiselectElement.nativeElement.style.width = '400px';
+            testInstance.panelGrow = false;
+            fixture.detectChanges();
+            await multiSelectHarness.click();
+            fixture.detectChanges();
+            const overlayPane = (await multiSelectHarness.getOverlayPane()) as TestElement;
+            expect(await overlayPane.getAttribute('style')).not.toContain('min-width');
+        });
+
+        it('should have a width if panelgrow is set to false', async () => {
+            const multiselectElement = fixture.debugElement.query(By.css('nx-formfield'));
+            multiselectElement.nativeElement.style.width = '400px';
+            testInstance.panelGrow = false;
+            fixture.detectChanges();
+            await multiSelectHarness.click();
+            fixture.detectChanges();
+
+            const overlayPane = (await multiSelectHarness.getOverlayPane()) as TestElement;
+            expect(await overlayPane.getAttribute('style')).toContain('width');
+        });
+
+        it('should have a min width if panelgrow is set to true', async () => {
+            const multiselectElement = fixture.debugElement.query(By.css('nx-formfield'));
+            multiselectElement.nativeElement.style.width = '400px';
+            testInstance.panelGrow = true;
+            fixture.detectChanges();
+            await multiSelectHarness.click();
+            fixture.detectChanges();
+            const overlayPane = (await multiSelectHarness.getOverlayPane()) as TestElement;
+            expect(await overlayPane.getAttribute('style')).toContain('min-width');
+        });
+
+        it('should have a width if panelgrow is set to true', async () => {
+            const multiselectElement = fixture.debugElement.query(By.css('nx-formfield'));
+            multiselectElement.nativeElement.style.width = '400px';
+            testInstance.panelGrow = true;
+            fixture.detectChanges();
+            await multiSelectHarness.click();
+            fixture.detectChanges();
+            const overlayPane = (await multiSelectHarness.getOverlayPane()) as TestElement;
+            expect(await overlayPane.getAttribute('style')).toContain('width');
+        });
+
+        it('should be larger than the trigger if panelGrow is set to true', async () => {
+            const multiselectElement = fixture.debugElement.query(By.css('nx-formfield'));
+            multiselectElement.nativeElement.style.width = '400px';
+            testInstance.panelGrow = true;
+            fixture.detectChanges();
+            await multiSelectHarness.click();
+            fixture.detectChanges();
+            const overlayPane = (await multiSelectHarness.getOverlayPane()) as TestElement;
+            expect(await overlayPane.getProperty('clientWidth')).toBeGreaterThan(400);
+        });
+
+        it('should be larger than the trigger if panelGrow is set to true', async () => {
+            const multiselectElement = fixture.debugElement.query(By.css('nx-formfield'));
+            multiselectElement.nativeElement.style.width = '300px';
+            testInstance.panelGrow = true;
+            testInstance.panelMaxWidth = '400px';
+            fixture.detectChanges();
+            await multiSelectHarness.click();
+            fixture.detectChanges();
+            const overlayPane = (await multiSelectHarness.getOverlayPane()) as TestElement;
+            expect(await overlayPane.getProperty('clientWidth')).toBe(400);
+        });
+    });
 });
 
 @Directive()
@@ -855,6 +943,8 @@ abstract class DropdownTest {
     filter = true;
     model: any[] = [];
     appearance = 'outline';
+    panelGrow = false;
+    panelMaxWidth = '';
 }
 
 @Component({
@@ -866,6 +956,20 @@ class BasicMultiSelectComponent extends DropdownTest {
     options = ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes'];
 }
 
+@Component({
+    template: `<nx-formfield label="Car brand" [appearance]="appearance">
+        <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options" [panelGrow]="panelGrow" [panelMaxWidth]="panelMaxWidth"></nx-multi-select>
+    </nx-formfield>`,
+})
+class LongOptionLabelComponent extends DropdownTest {
+    options = [
+        'Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut',
+        'Audi',
+        'Volvo',
+        'Mini',
+        'Mercedes',
+    ];
+}
 interface ComplexOption {
     label: string;
     otherLabel: string;

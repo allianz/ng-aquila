@@ -14,23 +14,11 @@
 
 <ng-template #contentTemplate>
     <div class="nx-dropdown-results__option-label">
-        <div
-            #content
-            #tooltip="nxTooltip"
-            (cdkObserveContent)="_onLabelChange()"
-            [nxTooltip]="truncateItems && viewValue?.length > 35 ? viewValue : null"
-            [ngClass]="{ 'ellipsis': truncateItems }"
-            (click)="tooltip.hide()"
-        >
+        <div #content (cdkObserveContent)="_onLabelChange()">
             <ng-content></ng-content>
         </div>
 
-        <div
-            #pTooltip="nxTooltip"
-            [nxTooltip]="truncateItems && value?.length > 35 ? value : null"
-            [ngClass]="{ 'ellipsis': truncateItems }"
-            (click)="pTooltip.hide()"
-        >
+        <div>
             <ng-container *ngIf="_isContentEmpty(content)"> {{_formattedValue }} </ng-container>
         </div>
     </div>

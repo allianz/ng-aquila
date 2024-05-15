@@ -111,14 +111,6 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
         return this._dropdown?.isMultiSelect;
     }
 
-    /**
-     * Whether the parent dropdown allows item truncation.
-     * @docs-private
-     */
-    get truncateItems(): boolean {
-        return !this._dropdown?.ignoreItemTruncation;
-    }
-
     /** Emits whenever the component is destroyed. */
     private readonly _destroyed = new Subject<void>();
 

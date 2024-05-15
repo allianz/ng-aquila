@@ -137,6 +137,7 @@ $border-size: nx-border-size(xs);
     padding: 0 nx-spacer(2xs) + $dropdown-overlay__focus-line-width;
     margin: 0 $dropdown-overlay__option-margin;
     color: v(dropdown-item-text-color);
+    word-break: break-word;
 
     @media screen and (forced-colors: active) {
         forced-colors-adjust: none;

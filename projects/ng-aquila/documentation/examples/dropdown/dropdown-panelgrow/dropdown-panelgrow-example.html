@@ -1,0 +1,38 @@
+<div nxLayout="grid">
+    <div nxRow class="nx-margin-bottom-m">
+        <div nxCol="12, 12, 4">
+            <nx-formfield label="Without panelGrow">
+                <nx-dropdown [panelGrow]="false" value="BMW">
+                    <nx-dropdown-item
+                        *ngFor="let option of options"
+                        [value]="option"
+                    ></nx-dropdown-item>
+                </nx-dropdown>
+            </nx-formfield>
+        </div>
+        <div nxCol="12, 12, 4">
+            <nx-formfield label="With panelGrow">
+                <nx-dropdown [panelGrow]="true" value="BMW">
+                    <nx-dropdown-item
+                        *ngFor="let option of options"
+                        [value]="option"
+                    ></nx-dropdown-item>
+                </nx-dropdown>
+            </nx-formfield>
+        </div>
+        <div nxCol="12, 12, 4">
+            <nx-formfield label="PanelGrow with a max-width">
+                <nx-dropdown
+                    [panelGrow]="true"
+                    [panelMaxWidth]="500"
+                    value="BMW"
+                >
+                    <nx-dropdown-item
+                        *ngFor="let option of options"
+                        [value]="option"
+                    ></nx-dropdown-item>
+                </nx-dropdown>
+            </nx-formfield>
+        </div>
+    </div>
+</div>

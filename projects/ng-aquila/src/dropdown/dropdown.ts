@@ -15,6 +15,7 @@ import {
     AfterContentInit,
     AfterViewInit,
     Attribute,
+    booleanAttribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -192,6 +193,9 @@ export class NxDropdownComponent
     /** Width of the overlay panel. */
     _overlayWidth: string | number = '';
 
+    /** Min-width of the overlay panel. */
+    _overlayMinWidth: string | number = '';
+
     /**
      * Name of this control that is used inside the formfield component.
      * @docs-private
@@ -324,9 +328,14 @@ export class NxDropdownComponent
      * Disable truncation of long item texts.
      * We recommend following UX guidelines and always truncating long items.
      * Please only disable truncation if it's impossible to use short descriptions.
+     * @deprecated
      */
     @Input() set ignoreItemTruncation(value: BooleanInput) {
         this._ignoreItemTruncation = coerceBooleanProperty(value);
+
+        if (this._ignoreItemTruncation) {
+            this.ignoreItemTruncationWasSet = true;
+        }
     }
     get ignoreItemTruncation(): boolean {
         return this._ignoreItemTruncation;
@@ -342,13 +351,11 @@ export class NxDropdownComponent
     /** Text that is displayed at the top of the overlay. If not set the formfield label is used by default. */
     @Input() overlayLabel = '';
 
-    /**
-     * Sets how the panel min width will be determined.
-     * 'trigger' will set the panels min-width to the trigger width.
-     * 'none' will not set a min-width and will let the panel grow naturally with its content so it can be smaller than the trigger.
-     * This is mostly for special use cases like the country code dropdown in the phone input.
-     */
-    @Input() panelMinWidth: NxDropdownPanelMinWidth = 'trigger';
+    /** Can be used as a fallback to the CdkOverlayOrigin */
+    @Input('overlayFallbackOrigin') overlayFallbackOrigin!: NxDropdownComponent;
+
+    /* panelMaxWidth accepts a number for pixel values or a string for any css value */
+    @Input() panelMaxWidth!: string | number;
 
     /** Event emitted when the select panel has been toggled. */
     @Output() readonly openedChange = new EventEmitter<boolean>();
@@ -433,6 +440,12 @@ export class NxDropdownComponent
 
     private _keyManager!: ActiveDescendantKeyManager<NxDropdownItemComponent>;
 
+    private panelMinWidthWasSet = false;
+
+    private panelGrowWasSet = false;
+
+    private ignoreItemTruncationWasSet = false;
+
     set panelOpen(value: boolean) {
         this._panelOpen = value;
     }
@@ -455,6 +468,35 @@ export class NxDropdownComponent
 
         return this.overlayLabel ? this.overlayLabel : this.formFieldComponent?.label ?? '';
     }
+
+    /**
+     * Sets how the panel min width will be determined.
+     * 'trigger' will set the panels min-width to the trigger width.
+     * 'none' will not set a min-width and will let the panel grow naturally with its content so it can be smaller than the trigger.
+     * This is mostly for special use cases like the country code dropdown in the phone input.
+     * @deprecated Use `panelGrow` instead.
+     */
+    @Input() set panelMinWidth(value: NxDropdownPanelMinWidth) {
+        this.panelMinWidthWasSet = true;
+        this._panelMinWidth = value;
+    }
+    get panelMinWidth(): NxDropdownPanelMinWidth {
+        return this._panelMinWidth;
+    }
+    _panelMinWidth: NxDropdownPanelMinWidth = 'trigger';
+
+    /**
+     * panelGrow: true means the overlay can grow larger than the trigger and grows with the longest label
+     * panelGrow: false means the overlay is the size of the trigger
+     */
+    @Input({ transform: booleanAttribute }) set panelGrow(value) {
+        this.panelGrowWasSet = true;
+        this._panelGrow = value;
+    }
+    get panelGrow(): boolean {
+        return this._panelGrow;
+    }
+    _panelGrow: boolean = false;
 
     /**
      * Function that transforms the value into a string.
@@ -828,6 +870,9 @@ export class NxDropdownComponent
     }
 
     get overlayOrigin() {
+        if (this.overlayFallbackOrigin) {
+            return this.overlayFallbackOrigin.elementRef;
+        }
         return this.formFieldComponent ? this.formFieldComponent.getConnectedOverlayOrigin() : this.fallbackOrigin;
     }
 
@@ -850,18 +895,30 @@ export class NxDropdownComponent
             this._initActiveItem();
         });
 
-        this._overlayWidth = this.getOverlayWidth();
+        // If panelMinWidth or ignoreTruncation have been set, they will be mapped to panelGrow
+        // If panelGrow has been set, panelMinWidth and ignoreTruncation will be ignored
+        if ((this.panelMinWidthWasSet && !this.panelGrowWasSet) || (this.ignoreItemTruncationWasSet && !this.panelGrowWasSet)) {
+            this.panelGrow = true;
+        }
+
+        this.getOverlayWidth();
         this._cdr.markForCheck();
     }
 
     private getOverlayWidth() {
-        if (this.panelMinWidth === 'trigger') {
-            const origin = this.overlayOrigin;
-            const ref = origin instanceof CdkOverlayOrigin ? origin.elementRef : origin;
-            return ref.nativeElement.getBoundingClientRect().width;
+        const origin = this.overlayOrigin;
+        const ref = origin instanceof CdkOverlayOrigin ? origin.elementRef : origin;
+        const triggerWidth = ref.nativeElement.getBoundingClientRect().width;
+
+        if (this.panelGrow) {
+            // If panelGrow is set to true, the overlay will receive a
+            // min-width the size of the trigger to be able to grow
+            this._overlayMinWidth = triggerWidth;
+        } else if (!this.panelGrow) {
+            // If panelGrow is set to false, the overlay will receive a
+            // fixed width the size of the trigger
+            this._overlayWidth = triggerWidth;
         }
-        // Empty string will let the cdk overlay not set a min-width
-        return '';
     }
 
     /** Closes the panel of the dropdown. */
@@ -1182,6 +1239,7 @@ export class NxDropdownComponent
             const overlayRef = this.overlayDir.overlayRef;
             const positionStrategy = overlayRef.getConfig().positionStrategy as FlexibleConnectedPositionStrategy;
 
+            overlayRef.updateSize({ maxWidth: this.panelMaxWidth });
             this._updatePosition();
             positionStrategy.withPositions(this._positions);
             overlayRef.updatePosition();

@@ -32,6 +32,14 @@ It is possible to show a placeholder instead of the floating label. The placehol
 
 <!-- example(dropdown-placeholder) -->
 
+### PanelGrow and PanelMaxWidth
+
+With `panelGrow` set to `true` the overlay can grow larger than the trigger and grows with the longest label. 
+With `panelGrow` set to `false` the overlay is the size of the trigger. With `panelMaxWidth` a max-width can be set, `panelMaxWidth` accepts a number for pixel values or a string for any css value.
+
+<!-- example(dropdown-panelgrow) -->
+
+
 ### Rendering of dropdown-items
 
 The items inside the dropdown can be rendered either by `[valueFormatter]` or by ng-content. If no ng-content is provided, the `[value]` in combination with `[valueFormatter]` will be used to render the item content (left). This example also shows the usage of `[valueFormatter]`. It is possible to transform any `[value]` into the rendered state (here: "uppercase").

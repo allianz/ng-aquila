@@ -174,6 +174,7 @@ describe('NxDropdownComponent', () => {
                 DynamicDropdownComponent,
                 CustomClosedLabelComponent,
                 ReactiveDropdownUpdateOnBlurComponent,
+                OverlayFallbackOriginDropdownComponent,
             ]);
         }));
 
@@ -495,15 +496,7 @@ describe('NxDropdownComponent', () => {
             formfieldElement.style.width = '400px';
             openDropdownByClick();
 
-            expect(getOverlayPane()!.style.minWidth).toBe('400px');
-        }));
-
-        it('should not set a min width when panelMinWidth is "none"', fakeAsync(() => {
-            createTestComponent(DynamicDropdownComponent);
-            testInstance.panelMinWidth = 'none';
-            fixture.detectChanges();
-            openDropdownByClick();
-            expect(getOverlayPane()!.style.minWidth).toBeFalsy();
+            expect(getOverlayPane()!.clientWidth).toBe(400);
         }));
 
         it('should not autofill monitor dropdown', () => {
@@ -574,21 +567,154 @@ describe('NxDropdownComponent', () => {
             dropdownElement.style.width = '200px';
         }));
 
-        it('should not use the whole viewport width by default', fakeAsync(() => {
-            openDropdownByClick();
+        it('should map panelMinWidth "none" to panelGrow true if panelGrow has not been set', fakeAsync(() => {
+            testInstance.panelMinWidth = 'none';
             fixture.detectChanges();
-            flush();
-
-            expect(getDropdown()!.clientWidth).toBe(453);
+            openDropdownByClick();
+            expect(dropdownInstance.panelGrow).toBeTrue();
         }));
 
-        it('should use the whole viewport width with _truncateItems', fakeAsync(() => {
-            dropdownInstance.ignoreItemTruncation = true;
+        it('should map panelMinWidth "trigger" to panelGrow true if panelGrow has not been set', fakeAsync(() => {
+            testInstance.panelMinWidth = 'trigger';
+            fixture.detectChanges();
+            openDropdownByClick();
+            expect(dropdownInstance.panelGrow).toBeTrue();
+        }));
+    });
+
+    describe('ignoreItemTruncation', () => {
+        beforeEach(fakeAsync(() => {
+            configureNxDropdownTestingModule([ignoreItemTruncationDropdownComponent]);
+            createTestComponent(ignoreItemTruncationDropdownComponent);
+            dropdownElement.style.width = '200px';
+        }));
+
+        it('should map ignoreItemTruncation to panelGrow if panelGrow has not been set', fakeAsync(() => {
+            testInstance.ignoreItemTruncation = true;
+            fixture.detectChanges();
+            openDropdownByClick();
+            fixture.detectChanges();
+            expect(dropdownInstance.panelGrow).toBeTrue();
+        }));
+
+        it('should be larger than the trigger if ignoreItemTruncation is set to true', fakeAsync(() => {
+            testInstance.ignoreItemTruncation = true;
+            fixture.detectChanges();
+            openDropdownByClick();
+            fixture.detectChanges();
+            expect(getOverlayPane()!.clientWidth).toBeGreaterThan(trigger.clientWidth);
+        }));
+    });
+
+    describe('overlay width with long option label and panelGrow', () => {
+        beforeEach(fakeAsync(() => {
+            configureNxDropdownTestingModule([LongOptionLabelPanelgrowDropdownComponent]);
+            createTestComponent(LongOptionLabelPanelgrowDropdownComponent);
+            dropdownElement.style.width = '200px';
+        }));
+
+        it('should not map panelMinWidth to panelGrow if panelGrow has been set', fakeAsync(() => {
+            testInstance.panelGrow = false;
+            testInstance.panelMinWidth = 'trigger';
+            fixture.detectChanges();
+            openDropdownByClick();
+            expect(dropdownInstance.panelGrow).toBeFalse();
+        }));
+
+        it('should have the width of the trigger if panelGrow is set to false', fakeAsync(() => {
+            testInstance.panelGrow = false;
+            fixture.detectChanges();
             openDropdownByClick();
             fixture.detectChanges();
             flush();
+            expect(getDropdown()!.clientWidth).toBe(200);
+        }));
 
-            expect(getDropdown()!.clientWidth).toBe(document.body.clientWidth - dropdownInstance._overlayViewportMargin);
+        it('should not have a min width if panelgrow is set to false', fakeAsync(() => {
+            testInstance.panelGrow = false;
+            fixture.detectChanges();
+            openDropdownByClick();
+            fixture.detectChanges();
+            expect(getOverlayPane()!.style.minWidth).toBeFalsy();
+        }));
+
+        it('should have a width if panelgrow is set to false', fakeAsync(() => {
+            testInstance.panelGrow = false;
+            fixture.detectChanges();
+            openDropdownByClick();
+            fixture.detectChanges();
+            expect(getOverlayPane()!.style.width).toBeTruthy();
+        }));
+
+        it('should have a min width if panelgrow is set to true', fakeAsync(() => {
+            testInstance.panelGrow = true;
+            fixture.detectChanges();
+            openDropdownByClick();
+            fixture.detectChanges();
+            expect(getOverlayPane()!.style.minWidth).toBeTruthy();
+        }));
+
+        it('should not have a width if panelgrow is set to true', fakeAsync(() => {
+            testInstance.panelGrow = true;
+            fixture.detectChanges();
+            openDropdownByClick();
+            fixture.detectChanges();
+            expect(getOverlayPane()!.style.width).toBeFalsy();
+        }));
+
+        it('should be larger than the trigger if panelGrow is set to true', fakeAsync(() => {
+            testInstance.panelGrow = true;
+            fixture.detectChanges();
+            openDropdownByClick();
+            fixture.detectChanges();
+            expect(getOverlayPane()!.clientWidth).toBeGreaterThan(trigger.clientWidth);
+        }));
+
+        it('should have a max width when panelMaxWidth is set', fakeAsync(() => {
+            testInstance.panelGrow = true;
+            testInstance.panelMaxWidth = '400px';
+            fixture.detectChanges();
+            openDropdownByClick();
+            fixture.detectChanges();
+            expect(getOverlayPane()!.clientWidth).toBe(400);
+        }));
+    });
+
+    describe('with overlayFallbackOrigin', () => {
+        beforeEach(fakeAsync(() => {
+            configureNxDropdownTestingModule([OverlayFallbackOriginDropdownComponent]);
+            createTestComponent(OverlayFallbackOriginDropdownComponent);
+        }));
+
+        it('should use overlayFallbackOrigin as origin', fakeAsync(() => {
+            const formfieldElement = fixture.debugElement.query(By.css('nx-formfield')).nativeElement;
+            formfieldElement.style.width = '600px';
+            dropdownElement.style.width = '400px';
+            testInstance.panelGrow = false;
+            fixture.detectChanges();
+            openDropdownByClick();
+            fixture.detectChanges();
+            flush();
+            expect(getOverlayPane()!.clientWidth).toBe(400);
+        }));
+    });
+
+    describe('without overlayFallbackOrigin', () => {
+        beforeEach(fakeAsync(() => {
+            configureNxDropdownTestingModule([SimpleDropdownComponent]);
+            createTestComponent(SimpleDropdownComponent);
+        }));
+
+        it('should use formfield as origin', fakeAsync(() => {
+            const formfieldElement = fixture.debugElement.query(By.css('nx-formfield')).nativeElement;
+            formfieldElement.style.width = '600px';
+            dropdownElement.style.width = '400px';
+            testInstance.panelGrow = false;
+            fixture.detectChanges();
+            openDropdownByClick();
+            fixture.detectChanges();
+            flush();
+            expect(getOverlayPane()!.clientWidth).toBe(600);
         }));
     });
 
@@ -1538,6 +1664,9 @@ abstract class DropdownTest {
     placeholder = 'Choose a car';
     testForm!: UntypedFormGroup;
     panelMinWidth = 'trigger';
+    panelGrow = false;
+    panelMaxWidth = '';
+    ignoreItemTruncation = false;
 }
 
 @Component({
@@ -1555,6 +1684,18 @@ class SimpleDropdownComponent extends DropdownTest {
 }
 
 @Component({
+    template: `<nx-formfield label="Car brand">
+        <nx-dropdown [panelMinWidth]="panelMinWidth" [panelGrow]="panelGrow" [panelMaxWidth]="panelMaxWidth" [overlayFallbackOrigin]="dropdown" #dropdown>
+            <nx-dropdown-item value="BMW">B</nx-dropdown-item>
+            <nx-dropdown-item value="Audi">A</nx-dropdown-item>
+            <nx-dropdown-item value="Volvo">V</nx-dropdown-item>
+            <nx-dropdown-item value="Mini">M</nx-dropdown-item>
+        </nx-dropdown>
+    </nx-formfield>`,
+})
+class OverlayFallbackOriginDropdownComponent extends DropdownTest {}
+
+@Component({
     template: `<nx-formfield label="Car brand" appearance="outline">
         <nx-dropdown [placeholder]="placeholder">
             <nx-dropdown-item value="BMW">B</nx-dropdown-item>
@@ -1564,7 +1705,17 @@ class SimpleDropdownComponent extends DropdownTest {
 class DropdownInOutlineFieldComponent extends DropdownTest {}
 
 @Component({
-    template: `<nx-dropdown nxLabel="Car brand" [placeholder]="placeholder">
+    template: `<nx-dropdown nxLabel="Car brand" [placeholder]="placeholder" [ignoreItemTruncation]="ignoreItemTruncation">
+        <nx-dropdown-item value="Lorem ipsum">
+            Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut
+            labore et dolore magna aliqua.
+        </nx-dropdown-item>
+    </nx-dropdown>`,
+})
+class ignoreItemTruncationDropdownComponent extends DropdownTest {}
+
+@Component({
+    template: `<nx-dropdown nxLabel="Car brand" [placeholder]="placeholder" [panelMinWidth]="panelMinWidth" [ignoreItemTruncation]="ignoreItemTruncation">
         <nx-dropdown-item value="Lorem ipsum">
             Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut
             labore et dolore magna aliqua.
@@ -1572,6 +1723,22 @@ class DropdownInOutlineFieldComponent extends DropdownTest {}
     </nx-dropdown>`,
 })
 class LongOptionLabelDropdownComponent extends DropdownTest {}
+
+@Component({
+    template: `<nx-dropdown
+        nxLabel="Car brand"
+        [placeholder]="placeholder"
+        [panelMinWidth]="panelMinWidth"
+        [panelGrow]="panelGrow"
+        [panelMaxWidth]="panelMaxWidth"
+    >
+        <nx-dropdown-item value="Lorem ipsum">
+            Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut
+            labore et dolore magna aliqua.
+        </nx-dropdown-item>
+    </nx-dropdown>`,
+})
+class LongOptionLabelPanelgrowDropdownComponent extends DropdownTest {}
 
 @Component({
     template: `

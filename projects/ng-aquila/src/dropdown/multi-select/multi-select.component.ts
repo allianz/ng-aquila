@@ -3,6 +3,7 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkConnectedOverlay, ConnectionPositionPair, FlexibleConnectedPositionStrategy } from '@angular/cdk/overlay';
 import {
     AfterViewInit,
+    booleanAttribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -235,7 +236,11 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     _ariaDescribedby = '';
 
-    _width = 0;
+    /** Width of the overlay panel. */
+    _width: string | number = '';
+
+    /** Min-width of the overlay panel. */
+    _minWidth: string | number = '';
 
     _filterValue = '';
 
@@ -252,6 +257,9 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     readonly stateChanges = new Subject<any>();
 
     _keyManager!: ActiveDescendantKeyManager<NxMultiSelectOptionComponent<T> | NxMultiSelectAllComponent<T>>;
+
+    /** The minimal space between the viewport and the overlay */
+    _overlayViewportMargin: number = 16;
 
     /**
      * List of options to choose from.
@@ -289,6 +297,15 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
      * Can be either a property name or a selector function.
      */
     @Input() selectDisabled?: string | ((option: S) => boolean);
+
+    /**
+     * panelGrow: true means the overlay can grow larger than the trigger and grows with the longest label
+     * panelGrow: false means the overlay is the size of the trigger
+     */
+    @Input({ transform: booleanAttribute }) panelGrow = false;
+
+    /* panelMaxWidth accepts a number for pixel values or a string for any css value */
+    @Input() panelMaxWidth!: string | number;
 
     @HostBinding('class.is-open') _isOpen = false;
 
@@ -419,15 +436,35 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             return;
         }
 
+        // If the multi select takes upp 100% of the width of the window, don't add margin
+        if (this._formFieldComponent!.elementRef.nativeElement.getBoundingClientRect().width === window.innerWidth) {
+            this._overlayViewportMargin = 0;
+        }
+
         $event.preventDefault();
         this._filterValue = '';
-        this._width = Math.max(OVERLAY_MIN_WIDTH, this._trigger?.nativeElement.getBoundingClientRect().width);
+        this.getOverlayWidth();
+
         this._isOpen = true;
         this.listItems = this.options.slice().sort(this.sortSelectedToTop);
         this._divider = this.selectedItems.size - 1;
         this._openedBy = origin;
 
         this._cdr.markForCheck();
+    }
+
+    private getOverlayWidth() {
+        const triggerWidth = Math.max(OVERLAY_MIN_WIDTH, this._trigger?.nativeElement.getBoundingClientRect().width);
+
+        if (this.panelGrow) {
+            // If panelGrow is set to true, the overlay will receive a
+            // min-width the size of the trigger to be able to grow
+            this._minWidth = triggerWidth;
+        } else if (!this.panelGrow) {
+            // If panelGrow is set to false, the overlay will receive a
+            // fixed width the size of the trigger
+            this._width = triggerWidth;
+        }
     }
 
     _close() {
@@ -537,6 +574,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             const overlayRef = this._overlayDir!.overlayRef;
             const positionStrategy = overlayRef.getConfig().positionStrategy as FlexibleConnectedPositionStrategy;
 
+            overlayRef.updateSize({ maxWidth: this.panelMaxWidth });
             this._updatePositions();
             positionStrategy.withPositions(this._positions);
             overlayRef.updatePosition();
