@@ -1,3 +1,6 @@
+<nx-error *ngIf="control.value === null">
+    <p id="error-message">Please choose a product from the table.</p>
+</nx-error>
 <div class="container">
     <nx-comparison-table
         (selectedIndexChange)="select($event)"
@@ -36,6 +39,7 @@
                         nxComparisonTableSelectButton
                         unselectedLabel="Select"
                         selectedLabel="Selected"
+                        aria-describedby="error-message"
                         type="button"
                     ></button>
                 </div>
@@ -48,6 +52,7 @@
                         nxComparisonTableSelectButton
                         unselectedLabel="Select"
                         selectedLabel="Selected"
+                        aria-describedby="error-message"
                         type="button"
                     ></button>
                 </div>
@@ -60,6 +65,7 @@
                         nxComparisonTableSelectButton
                         unselectedLabel="Select"
                         selectedLabel="Selected"
+                        aria-describedby="error-message"
                         type="button"
                     ></button>
                 </div>
@@ -149,6 +155,7 @@
                     selectedLabel="Selected"
                     class="nx-margin-bottom-s"
                     type="button"
+                    aria-describedby="error-message"
                 ></button>
                 <p class="product-underline">Some short information</p>
             </nx-comparison-table-cell>
@@ -159,6 +166,7 @@
                     selectedLabel="Selected"
                     class="nx-margin-bottom-s"
                     type="button"
+                    aria-describedby="error-message"
                 ></button>
                 <p class="product-underline">Some short information</p>
             </nx-comparison-table-cell>
@@ -169,6 +177,7 @@
                     selectedLabel="Selected"
                     class="nx-margin-bottom-s"
                     type="button"
+                    aria-describedby="error-message"
                 ></button>
                 <p class="product-underline">Some short information</p>
             </nx-comparison-table-cell>

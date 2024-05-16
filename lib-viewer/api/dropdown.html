@@ -28,6 +28,20 @@
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
             <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
+                <span class="docs-api-property__name">ariaLabelledBy</span>:
+                <span class="docs-api-property__type">string | null</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
                 <span class="docs-api-property__name">compareWith</span>:
                 <span class="docs-api-property__type">NxDropdownCompareWithFn</span>
             </code>
@@ -109,23 +123,6 @@ to set their visibility state. A boolean should be returned.</p>
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
             <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">ignoreItemTruncation</span>:
-                <span class="docs-api-property__type">boolean</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Disable truncation of long item texts.
-We recommend following UX guidelines and always truncating long items.
-Please only disable truncation if it&#39;s impossible to use short descriptions.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
                 <span class="docs-api-property__name">options</span>:
                 <span class="docs-api-property__type">NxDropdownOption[]</span>
             </code>
@@ -133,6 +130,20 @@ Please only disable truncation if it&#39;s impossible to use short descriptions.
     </td>
     <td class="docs-api-property-description">
         <p>Array of options for the dropdown.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'overlayFallbackOrigin'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">overlayFallbackOrigin</span>:
+                <span class="docs-api-property__type">NxDropdownComponent</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Can be used as a fallback to the CdkOverlayOrigin</p>
 </td>
 </tr>
    
@@ -153,20 +164,31 @@ Please only disable truncation if it&#39;s impossible to use short descriptions.
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">{ transform: booleanAttribute }</span>) </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">panelMinWidth</span>:
-                <span class="docs-api-property__type">NxDropdownPanelMinWidth</span>
+                <span class="docs-api-property__name">panelGrow</span>:
+                <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets how the panel min width will be determined.
-&#39;trigger&#39; will set the panels min-width to the trigger width.
-&#39;none&#39; will not set a min-width and will let the panel grow naturally with its content so it can be smaller than the trigger.
-This is mostly for special use cases like the country code dropdown in the phone input.</p>
+        <p>panelGrow: true means the overlay can grow larger than the trigger and grows with the longest label
+panelGrow: false means the overlay is the size of the trigger</p>
 </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">panelMaxWidth</span>:
+                <span class="docs-api-property__type">string | number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
 </tr>
    
 
@@ -434,6 +456,23 @@ This function is used for displaying and filtering the content.</p>
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
             <span class="docs-api-input__keyword">@Input</span>()</div><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
             <code>
+                <span class="docs-api-property__name">ignoreItemTruncation</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Disable truncation of long item texts.
+We recommend following UX guidelines and always truncating long items.
+Please only disable truncation if it&#39;s impossible to use short descriptions.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
+            <code>
                 <span class="docs-api-property__name">isMultiSelect</span>:
                 <span class="docs-api-property__type">false</span>
             </code>
@@ -442,6 +481,24 @@ This function is used for displaying and filtering the content.</p>
     <td class="docs-api-property-description">
         <p>Whether the dropdown should allow multi selection and additional checkboxes are shown.
 Note: Please make sure the value you bind is an array.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">panelMinWidth</span>:
+                <span class="docs-api-property__type">NxDropdownPanelMinWidth</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets how the panel min width will be determined.
+&#39;trigger&#39; will set the panels min-width to the trigger width.
+&#39;none&#39; will not set a min-width and will let the panel grow naturally with its content so it can be smaller than the trigger.
+This is mostly for special use cases like the country code dropdown in the phone input.</p>
 </td>
 </tr>
   
@@ -761,6 +818,35 @@ to set their visibility state. A boolean should be returned.</p>
             <code>
                 <span class="docs-api-property__name">options</span>:
                 <span class="docs-api-property__type">S[]</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">{ transform: booleanAttribute }</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">panelGrow</span>:
+                <span class="docs-api-property__type">false</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>panelGrow: true means the overlay can grow larger than the trigger and grows with the longest label
+panelGrow: false means the overlay is the size of the trigger</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">panelMaxWidth</span>:
+                <span class="docs-api-property__type">string | number</span>
             </code>
         </p>
     </td>

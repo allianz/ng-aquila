@@ -538,6 +538,15 @@ body,
   --selectable-card-background-selected-hover-color: var(--ui-03);
   --selectable-card-background-disabled-color: var(--ui-01);
   --selectable-card-background-disabled-selected-color: var(--ui-02);
+  --selectable-card-checkbox-border-hover-color: var(--ui-06);
+  --selectable-card-checkbox-selected-background-hover-color: var(--hover-primary);
+  --selectable-card-checkbox-selected-border-hover-color: var(--hover-primary);
+  --selectable-card-checkbox-error-border-color: var(--danger);
+  --selectable-card-checkbox-error-background-color: var(--danger);
+  --selectable-card-radio-border-hover-color: var(--hover-primary);
+  --selectable-card-radio-dot-hover-color: var(--hover-primary);
+  --selectable-card-radio-error-dot-color: var(--danger);
+  --selectable-card-radio-error-border-color: var(--danger);
   --selectable-card-expert-background-hover-color: var(--ui-05);
   --selectable-card-expert-background-selected-color: var(--ui-02);
   --selectable-card-expert-background-disabled-selected-color: var(--ui-02);

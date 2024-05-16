@@ -15,6 +15,7 @@ import { DropdownLazyExampleComponent } from './dropdown-lazy/dropdown-lazy-exam
 import { DropdownMultiSelectExampleComponent } from './dropdown-multi-select/dropdown-multi-select-example';
 import { DropdownNegativeExampleComponent } from './dropdown-negative/dropdown-negative-example';
 import { DropdownOutlineExampleComponent } from './dropdown-outline/dropdown-outline-example';
+import { DropdownPanelgrowExampleComponent } from './dropdown-panelgrow/dropdown-panelgrow-example';
 import { DropdownPlaceholderExampleComponent } from './dropdown-placeholder/dropdown-placeholder-example';
 import { DropdownReactiveExampleComponent } from './dropdown-reactive/dropdown-reactive-example';
 import { DropdownRenderingItemsExampleComponent } from './dropdown-rendering-items/dropdown-rendering-items-example';
@@ -45,6 +46,7 @@ const EXAMPLES = [
     DropdownFocusOutExampleComponent,
     MultiSelectExampleComponent,
     MultiSelectIntlExampleComponent,
+    DropdownPanelgrowExampleComponent,
 ];
 
 @NgModule({
@@ -81,6 +83,7 @@ export class DropdownExamplesModule {
                 DropdownScrollStrategyProviderExampleComponent,
             'multi-select': MultiSelectExampleComponent,
             'multi-select-intl': MultiSelectIntlExampleComponent,
+            'dropdown-panelgrow': DropdownPanelgrowExampleComponent,
         };
     }
 }

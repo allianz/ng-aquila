@@ -65,7 +65,7 @@
                     nxInput
                     [datepicker]="myDatepicker"
                     [(ngModel)]="currentDate"
-                    nxAriaLabel="Enter date"
+                    nxAriaLabel="Enter the date of your Birthday"
                 />
                 <nx-datepicker-toggle
                     [for]="myDatepicker"
@@ -73,6 +73,10 @@
                 ></nx-datepicker-toggle>
                 <nx-datepicker #myDatepicker></nx-datepicker>
                 <span nxFormfieldHint> mm/dd/yyyy </span>
+                <nx-error nxFormfieldError>
+                    <strong>Error: </strong>Please type in a valid Date in the
+                    Format mm/dd/yyyy or use the calendar to select a Date.
+                </nx-error>
             </nx-formfield>
         </div>
 

@@ -1,13 +1,12 @@
 <nx-sidebar class="my-sidebar" resizeable #sidebar>
-    <button
+    <a
         nxAction
         *ngFor="let action of actions"
         routerLink="./"
         [queryParams]="action.query"
         routerLinkActive="is-selected"
-        type="button"
     >
         <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
         {{action.label}}
-    </button>
+    </a>
 </nx-sidebar>

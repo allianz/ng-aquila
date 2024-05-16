@@ -65,7 +65,7 @@
                     <span class="hljs-attr">nxInput</span>
                     [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
                     [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;currentDate&quot;</span>
-                    <span class="hljs-attr">nxAriaLabel</span>=<span class="hljs-string">&quot;Enter date&quot;</span>
+                    <span class="hljs-attr">nxAriaLabel</span>=<span class="hljs-string">&quot;Enter the date of your Birthday&quot;</span>
                 /&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
                     [<span class="hljs-attr">for</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
@@ -73,6 +73,10 @@
                 &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">myDatepicker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span> mm/dd/yyyy <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Error: <span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>Please type in a valid Date in the
+                    Format mm/dd/yyyy or use the calendar to select a Date.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 

@@ -71,6 +71,19 @@ function getOptions(): MyOption[] {
     ];
 }
 
+function getLongOptions(): MyOption[] {
+    return [
+        {
+            label: 'Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut.',
+            id: 1,
+        },
+        {
+            label: 'Sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut.',
+            id: 2,
+        },
+    ];
+}
+
 /**
  * @title Basic multi select example
  */
@@ -85,6 +98,8 @@ export class MultiSelectExampleComponent {
     modelWithFilter: number[] = [];
 
     options: MyOption[] = getOptions();
+
+    longOptions: MyOption[] = getLongOptions();
 
     control = new FormControl([], {
         validators: Validators.minLength(3),

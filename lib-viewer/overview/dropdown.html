@@ -12,6 +12,10 @@
 <h3 id="placeholder" tabindex="-1" class="docs-markdown--h3">Placeholder</h3>
 <p class="docs-markdown--p">It is possible to show a placeholder instead of the floating label. The placeholder will only be shown if no option is selected.</p>
 <div nx-docs-example="dropdown-placeholder" config="{}">exampleID: dropdown-placeholder</div>
+<h3 id="panelgrow-and-panelmaxwidth" tabindex="-1" class="docs-markdown--h3">PanelGrow and PanelMaxWidth</h3>
+<p class="docs-markdown--p">With <code>panelGrow</code> set to <code>true</code> the overlay can grow larger than the trigger and grows with the longest label.
+With <code>panelGrow</code> set to <code>false</code> the overlay is the size of the trigger. With <code>panelMaxWidth</code> a max-width can be set, <code>panelMaxWidth</code> accepts a number for pixel values or a string for any css value.</p>
+<div nx-docs-example="dropdown-panelgrow" config="{}">exampleID: dropdown-panelgrow</div>
 <h3 id="rendering-of-dropdown-items" tabindex="-1" class="docs-markdown--h3">Rendering of dropdown-items</h3>
 <p class="docs-markdown--p">The items inside the dropdown can be rendered either by <code>[valueFormatter]</code> or by ng-content. If no ng-content is provided, the <code>[value]</code> in combination with <code>[valueFormatter]</code> will be used to render the item content (left). This example also shows the usage of <code>[valueFormatter]</code>. It is possible to transform any <code>[value]</code> into the rendered state (here: &quot;uppercase&quot;).</p>
 <p class="docs-markdown--p">If there is ng-content projected by nx-dropdown-item, this content will be used by the dropdown to display the items (middle). The library implements a fallback if you do not provide <code>[valueFormatter]</code> and ng-content. In this case, <code>[value]</code> will be used by .toString() as value for the item (right).</p>

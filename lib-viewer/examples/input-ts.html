@@ -8,4 +8,6 @@
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./input-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./input-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">InputExampleComponent</span> {}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">InputExampleComponent</span> {
+    urlRegex = <span class="hljs-string">&#x27;(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?&#x27;</span>;
+}

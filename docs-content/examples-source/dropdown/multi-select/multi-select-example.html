@@ -59,3 +59,28 @@
         readonly
     ></nx-multi-select>
 </nx-formfield>
+
+<h3>With panelGrow</h3>
+<nx-formfield appearance="outline" floatLabel="always" label="Multi select">
+    <nx-multi-select
+        filter
+        placeholder="Choose options"
+        [options]="longOptions"
+        selectValue="id"
+        selectLabel="label"
+        panelGrow="true"
+    ></nx-multi-select>
+</nx-formfield>
+
+<h3>With panelMaxWidth</h3>
+<nx-formfield appearance="outline" floatLabel="always" label="Multi select">
+    <nx-multi-select
+        filter
+        placeholder="Choose options"
+        [options]="longOptions"
+        selectValue="id"
+        selectLabel="label"
+        panelGrow="true"
+        [panelMaxWidth]="800"
+    ></nx-multi-select>
+</nx-formfield>

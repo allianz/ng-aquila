@@ -14,13 +14,19 @@
 
         <div class="l-grid__column-6">
             <nx-formfield label="E-Mail">
-                <input nxInput type="email" />
+                <input nxInput type="email" ngModel email />
+                <nx-error nxFormfieldError>
+                    <strong>Error: </strong>Please type in a valid email address
+                </nx-error>
             </nx-formfield>
         </div>
 
         <div class="l-grid__column-6">
             <nx-formfield label="URL">
-                <input nxInput type="url" />
+                <input nxInput type="url" ngModel [pattern]="urlRegex" />
+                <nx-error nxFormfieldError>
+                    <strong>Error: </strong>Please type in a valid URL
+                </nx-error>
             </nx-formfield>
         </div>
         <div class="l-grid__column-12">

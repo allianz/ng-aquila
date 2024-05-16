@@ -2,10 +2,12 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">nxTable</span> <span class="hljs-attr">condensed</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Assignment/Case ID<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Gross Amount<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Ending At<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Status<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;assign&quot;</span>&gt;</span>Assignment/Case ID<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;amount&quot;</span>&gt;</span>Gross Amount<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ending&quot;</span>&gt;</span>Ending At<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;status&quot;</span>&gt;</span>Status<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
@@ -17,12 +19,20 @@
             &gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;id&quot;</span> /&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                            <span class="hljs-attr">nxInput</span>
+                            <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;id&quot;</span>
+                            [<span class="hljs-attr">attr.aria-labelledby</span>]=<span class="hljs-string">&quot;&#x27;assign&#x27;&quot;</span>
+                        /&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;amount&quot;</span> /&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                            <span class="hljs-attr">nxInput</span>
+                            <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;amount&quot;</span>
+                            [<span class="hljs-attr">attr.aria-labelledby</span>]=<span class="hljs-string">&quot;&#x27;amount&#x27;&quot;</span>
+                        /&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;date-cell&quot;</span>&gt;</span>
@@ -32,6 +42,7 @@
                             <span class="hljs-attr">nxInput</span>
                             [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
                             <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;endingAt&quot;</span>
+                            [<span class="hljs-attr">attr.aria-labelledby</span>]=<span class="hljs-string">&quot;&#x27;ending&#x27;&quot;</span>
                         /&gt;</span>
 
                         <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
@@ -43,7 +54,10 @@
                 <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;status-cell&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;status&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span>
+                            <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;status&quot;</span>
+                            <span class="hljs-attr">ariaLabelledBy</span>=<span class="hljs-string">&quot;status&quot;</span>
+                        &gt;</span>
                             <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;open&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
                             <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span>
                                 <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;processing&quot;</span>

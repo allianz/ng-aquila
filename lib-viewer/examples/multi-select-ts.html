@@ -71,6 +71,19 @@
     ];
 }
 
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">getLongOptions</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">MyOption</span>[] {
+    <span class="hljs-keyword">return</span> [
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut.&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut.&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+        },
+    ];
+}
+
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Basic multi select example
  */</span>
@@ -85,6 +98,8 @@
     <span class="hljs-attr">modelWithFilter</span>: <span class="hljs-built_in">number</span>[] = [];
 
     <span class="hljs-attr">options</span>: <span class="hljs-title class_">MyOption</span>[] = <span class="hljs-title function_">getOptions</span>();
+
+    <span class="hljs-attr">longOptions</span>: <span class="hljs-title class_">MyOption</span>[] = <span class="hljs-title function_">getLongOptions</span>();
 
     control = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>([], {
         <span class="hljs-attr">validators</span>: <span class="hljs-title class_">Validators</span>.<span class="hljs-title function_">minLength</span>(<span class="hljs-number">3</span>),

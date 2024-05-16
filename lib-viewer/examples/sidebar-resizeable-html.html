@@ -5,7 +5,7 @@
 &gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-tree</span> [<span class="hljs-attr">dataSource</span>]=<span class="hljs-string">&quot;_dataSource&quot;</span> [<span class="hljs-attr">treeControl</span>]=<span class="hljs-string">&quot;_treeControl&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-tree-node</span> *<span class="hljs-attr">nxTreeNodeDef</span>=<span class="hljs-string">&quot;let node&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
                 <span class="hljs-attr">nxAction</span>
                 <span class="hljs-attr">nxTreeNodePadding</span>
                 <span class="hljs-attr">nxTreeNodeActionItem</span>
@@ -14,7 +14,6 @@
                 [<span class="hljs-attr">queryParams</span>]=<span class="hljs-string">&quot;node.query&quot;</span>
                 <span class="hljs-attr">routerLinkActive</span>=<span class="hljs-string">&quot;is-selected&quot;</span>
                 <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;{{node.label}}&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
             &gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
                     *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;node.icon&quot;</span>
@@ -22,7 +21,7 @@
                     [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;node.icon&quot;</span>
                 &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
                 {{node.label}}
-            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tree-node</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-tree-node</span> *<span class="hljs-attr">nxTreeNodeDef</span>=<span class="hljs-string">&quot;let node; when: _hasChild&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">button</span>

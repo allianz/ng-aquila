@@ -2,10 +2,12 @@
     <table nxTable condensed class="nx-margin-bottom-xs">
         <thead>
             <tr nxTableRow>
-                <th nxHeaderCell>Assignment/Case ID</th>
-                <th nxHeaderCell>Gross Amount</th>
-                <th nxHeaderCell>Ending At</th>
-                <th nxHeaderCell>Status</th>
+                <th nxHeaderCell>
+                    <span id="assign">Assignment/Case ID</span>
+                </th>
+                <th nxHeaderCell><span id="amount">Gross Amount</span></th>
+                <th nxHeaderCell><span id="ending">Ending At</span></th>
+                <th nxHeaderCell><span id="status">Status</span></th>
                 <th nxHeaderCell></th>
             </tr>
         </thead>
@@ -17,12 +19,20 @@
             >
                 <td nxTableCell>
                     <nx-formfield>
-                        <input nxInput formControlName="id" />
+                        <input
+                            nxInput
+                            formControlName="id"
+                            [attr.aria-labelledby]="'assign'"
+                        />
                     </nx-formfield>
                 </td>
                 <td nxTableCell>
                     <nx-formfield>
-                        <input nxInput formControlName="amount" />
+                        <input
+                            nxInput
+                            formControlName="amount"
+                            [attr.aria-labelledby]="'amount'"
+                        />
                     </nx-formfield>
                 </td>
                 <td nxTableCell class="date-cell">
@@ -32,6 +42,7 @@
                             nxInput
                             [datepicker]="myDatepicker"
                             formControlName="endingAt"
+                            [attr.aria-labelledby]="'ending'"
                         />
 
                         <nx-datepicker-toggle
@@ -43,7 +54,10 @@
                 </td>
                 <td nxTableCell class="status-cell">
                     <nx-formfield>
-                        <nx-dropdown formControlName="status">
+                        <nx-dropdown
+                            formControlName="status"
+                            ariaLabelledBy="status"
+                        >
                             <nx-dropdown-item value="open"></nx-dropdown-item>
                             <nx-dropdown-item
                                 value="processing"

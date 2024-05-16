@@ -26,9 +26,28 @@
 <p class="docs-markdown--p">To let users adjust the width of a column in your table, you can add a resize handler in column header by using <code>nxHeaderResize</code> directive into <code>nxHeaderCell</code> element.</p>
 <p class="docs-markdown--p">Additionally, if you need to truncate text when the column is resized and the content overflows, you can use the <code>nxTableCellClip</code> directive.</p>
  <div nx-docs-example="table-column-resize" config="{}">exampleID: table-column-resize</div>
+<h3 id="localization" tabindex="-1" class="docs-markdown--h3">Localization</h3>
+<p class="docs-markdown--p">For <strong>localization</strong> please use the provider <code>NxHeaderSortIntl</code> which contains some labels for screen reader users. By default the labels are in english.</p>
+<pre><code class="language-ts"><span class="hljs-meta">@Injectable</span>()
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">NxSortHeaderIntl</span> {
+    sortAscendingAriaLabel = <span class="hljs-string">&#x27;klick, um absteigend zu sortieren&#x27;</span>;
+    sortDescendingAriaLabel = <span class="hljs-string">&#x27;klick, um absteigend zu sortieren&#x27;</span>;
+    sortedAscendingAriaLabel = <span class="hljs-string">&#x27;aufsteigend sortiert nach&#x27;</span>;
+    sortedDescendingAriaLabel = <span class="hljs-string">&#x27;absteigend sortiert nach&#x27;</span>;
+}
+
+<span class="hljs-meta">@Component</span>({
+    ...
+    <span class="hljs-attr">providers</span>: [
+        { 
+            <span class="hljs-attr">provide</span>: <span class="hljs-title class_">NxSortHeaderIntl</span>, 
+            <span class="hljs-attr">useClass</span>: <span class="hljs-title class_">MyIntl</span> 
+        }
+    ],
+})
+</code></pre>
 <h3 id="sorting-header" tabindex="-1" class="docs-markdown--h3">Sorting header</h3>
 <p class="docs-markdown--p">This example shows how you can implement a basic sorting functionality for a table with <code>nxSort</code> and <code>nxSortHeaderCell</code>. As we don't know how your data looks like, you can implement the actual sorting function by yourself and call the function every time an <code>(sortChange)</code> event is outputted.</p>
-<p class="docs-markdown--p">For <strong>localization</strong> please use the provider <code>NxHeaderSortIntl</code> which contains some labels for screen reader users. By default the labels are in english. This is also shown in the following example.</p>
 <div nx-docs-example="table-sorting" config="{}">exampleID: table-sorting</div>
 <h3 id="advanced-example%3A-combine-sorting%2C-filtering-and-pagination" tabindex="-1" class="docs-markdown--h3">Advanced example: Combine sorting, filtering and pagination</h3>
 <p class="docs-markdown--p">By using the <code>nx-pagination</code> and <code>nx-formfield</code> you can filter and paginate the table items as shown in the example below:</p>
