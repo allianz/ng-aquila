@@ -158,4 +158,6 @@ A more neutral variant is available for expert applications.
 
  #### Error state
 You can display an error state for the header and footer of the table using the `isError` attribute as shown in the example below.
+
+To enhance accessibility,  please ensure that an explanation of any error messages is included above the table, if applicable.
  <!-- example(comparison-table-error) -->
