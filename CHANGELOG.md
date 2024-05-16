@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.7.0](https://github.com/allianz/ng-aquila/compare/v17.6.0...v17.7.0) (2024-05-16)
+
+
+### Dropdown and multiselect flyout changes
+
+The label options inside the dropdown where limited to a certain character length and then cut off. This has been revised and long labels will now line break again. In addition the dropdown overlay size will now always be the size of the dropdown trigger element. As that can sometimes mean the overlay would be very narrow we introduced a new API that lets the overlay grow past the trigger element width if needed. In addition you can also set a max-width that the overlay doesn't get too long.
+
+
+### Bug Fixes 🐛
+
+* **selectable-card:** visual design enhancement ([318f6ed](https://github.com/allianz/ng-aquila/commit/318f6edb64eaff39fa3ef04bc166f2aec6a220db))
+* **table:** change sorted arial label and move myintl to docs ([072cac0](https://github.com/allianz/ng-aquila/commit/072cac07d17eae823848ade69e1333714fea6482))
+
+
+### Features ✨
+* **dropdown, multi-select:** let overlay scroll out of viewport ([61cfed2](https://github.com/allianz/ng-aquila/commit/61cfed2534305cba7da7efb30e2cbf98af890400))
+* **dropdown, multi-select:** remove ellipsis and add new api for overlaywidth ([b09e876](https://github.developer.allianz.io/ilt/ng-aquila/commit/b09e8764c9093f9418c0f1746d3dfd187efca542))
+* **dropdown:** add ariaLabelledBy input ([c96d4fe](https://github.com/allianz/ng-aquila/commit/c96d4fe43daecc364d2f5f5051f207b5942516cb))
+
+
+### Documentation 📚
+
+* **action, side nav:** a11y ([c1feff9](https://github.com/allianz/ng-aquila/commit/c1feff98778264b94bd43bd92967a42016d6cae0))
+* **comparison-table:** add error message in example ([8ce553c](https://github.com/allianz/ng-aquila/commit/8ce553c043d483b9cdfc6d1c1553ad673f57b82f))
+* **input:** enhance accessibility of documentation examples  ([463c366](https://github.com/allianz/ng-aquila/commit/463c36673a0e021a76efe9a943c830ca0f3383bb))
+* **table**: use aria-labelledby in example ([c96d4fe](https://github.com/allianz/ng-aquila/commit/c96d4fe43daecc364d2f5f5051f207b5942516cb))
+
 ## [17.6.0](https://github.com/allianz/ng-aquila/compare/v17.5.0...v17.6.0) (2024-05-02)
 
 
