@@ -1,7 +1,7 @@
 ---
 name: Feature request
 about: Suggest a component or feature
-title: ''
+title: '[<component or scope>] <title>'
 labels: ''
 assignees: ''
 ---
