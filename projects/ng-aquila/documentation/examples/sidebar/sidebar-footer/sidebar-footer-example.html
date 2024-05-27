@@ -1,4 +1,9 @@
-<nx-sidebar class="my-sidebar" resizeable #sidebar>
+<nx-sidebar
+    resizeHandleAriaLabel="Toggle sidebar width"
+    class="my-sidebar"
+    resizeable
+    #sidebar
+>
     <a
         nxAction
         *ngFor="let action of actions"
