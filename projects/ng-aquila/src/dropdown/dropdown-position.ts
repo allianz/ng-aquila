@@ -55,5 +55,5 @@ export function getPositionOffset(dropdownElement: Element, formFieldElement: El
     const formFieldRect = formFieldElement.getBoundingClientRect();
     const dropdownRect = dropdownElement.getBoundingClientRect();
     const panelHeaderPaddingTop = panelHeaderElement ? parseInt(getComputedStyle(panelHeaderElement).paddingTop, 10) : 0;
-    return formFieldRect.top - dropdownRect.top - panelHeaderPaddingTop;
+    return Math.round(formFieldRect.top) - Math.round(dropdownRect.top) - Math.round(panelHeaderPaddingTop);
 }
