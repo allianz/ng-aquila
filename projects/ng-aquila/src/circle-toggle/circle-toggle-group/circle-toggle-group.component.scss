@@ -18,9 +18,3 @@
         flex-direction: row;
     }
 }
-
-:host(.has-error) {
-    ::ng-deep .nx-toggle-circle__icon-wrapper {
-        border-color: v(danger);
-    }
-}

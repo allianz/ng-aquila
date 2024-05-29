@@ -94,8 +94,13 @@ describe('NxToggleButtonGroup', () => {
         reactComp.testGroup.controls.reactiveToggle.setValue(null);
         reactComp.testGroup.markAllAsTouched();
         fixture.detectChanges();
+        const children = fixture.nativeElement.querySelectorAll('.nx-toggle-circle');
+
         tick();
 
+        children.forEach((child: any) => {
+            expect(child).toHaveClass('has-error');
+        });
         expect(toggleComponent.errorState).toBeTrue();
     }));
 

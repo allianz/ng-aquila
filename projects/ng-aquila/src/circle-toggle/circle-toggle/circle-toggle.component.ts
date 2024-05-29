@@ -53,7 +53,7 @@ let nextId = 0;
         '[class.in-group]': 'inGroup',
         '[class.is-disabled]': 'disabled',
         '[class.is-responsive]': 'responsive',
-        '[class.has-error]': 'errorState',
+        '[class.has-error]': 'toggleGroup?.errorState || errorState',
     },
 })
 export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, AfterViewInit, ControlValueAccessor, DoCheck {
