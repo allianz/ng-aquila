@@ -101,6 +101,12 @@
     flex: 1;
 }
 
+@media only screen and (min-width: 703px) {
+    ul.benefits-list {
+        columns: 2;
+    }
+}
+
 ul.benefits-list ::ng-deep nx-icon {
     color: var(--success);
 }
