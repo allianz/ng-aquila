@@ -65,9 +65,9 @@ For more information on which colors to use in the high contrast mode, please vi
 
 <!-- example(accessibility-high-contrast-svg) -->
 
-#### Standards and testing 
+#### Standards and testing
 
-Our library enables accessibility with the AA (W3C) standard. To keep your application compatible with the standard please check with ([WAI-ARIA](http://w3c.github.io/aria-practices/)). In addition, we recommend to include automated tests checking a11y properties for every component using [Axe - automatic a11y compliance checker](https://www.deque.com/axe). 
+Our library enables accessibility with the AA (W3C) standard. To keep your application compatible with the standard please check with ([WAI-ARIA](http://w3c.github.io/aria-practices/)). In addition, we recommend to include automated tests checking a11y properties for every component using [Axe - automatic a11y compliance checker](https://www.deque.com/axe).
 
 The main a11y tasks are to ensure that:
 
@@ -77,7 +77,7 @@ The main a11y tasks are to ensure that:
 -   components are working in [high-contrast mode](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/master/Accessibility/HighContrast/explainer.md)
 -   color contrast is sufficient (use [Color contrast checker](https://webaim.org/resources/contrastchecker/) or install a browser plugin)
 
-You could easily include basic A11Y testing with [Axe](https://www.deque.com/axe) in your automated tests like so: 
+You could easily include basic A11Y testing with [Axe](https://www.deque.com/axe) in your automated tests like so:
 
 ```typescript
 axe.run(actual, {}, (error: Error, results: axe.AxeResults) => {
@@ -91,6 +91,19 @@ You can also refer to our [Jasmine custom Axe matcher](https://github.com/allian
 
 Please also check:
 -   [Easy Checks – A First Review of Web Accessibility](https://www.w3.org/WAI/test-evaluate/preliminary/)
+
+### Different behaviour of `aria-live` in screen readers
+
+The behaviour of `aria-live` is implemented differently in screen readers. _VoiceOver_  will read any new element
+that has a `aria-live` attribute as well as changes within a container with the `aria-live` attribute. Screen readers
+like _NVDA_ will only announce the content of a `aria-live` container if there are changes inside that container.
+
+To reliably announce newly created/injected `aria-live` elements, consider using
+the [Angular CDK LiveAnnouncer](https://github.com/angular/components/blob/main/src/cdk/a11y/live-announcer/live-announcer.md).
+
+Additional info on `aria-live` Screen Reader behavior:
+- [a11ysupport.io/status-role]: https://a11ysupport.io/tech/aria/status_role#support-table-0
+- [a11ysupport.io/aria-live]: https://a11ysupport.io/tests/tech__aria__aria-live
 
 ### Helpful tools and links for ARIA guidelines and verification
 
