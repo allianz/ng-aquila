@@ -239,6 +239,16 @@ describe('NxPaginationComponent', () => {
             expect(testInstance.nextPage).toHaveBeenCalled();
         });
 
+        it('should have aria lables for individual page buttons', () => {
+            createTestComponent(SliderPagination);
+            fixture.detectChanges();
+
+            const paginationButtons = fixture.debugElement.queryAll(By.css('button.nx-pagination--icon'));
+
+            expect(paginationButtons.length).toBe(6);
+            expect(paginationButtons[0].nativeElement.getAttribute('aria-label')).toEqual('1');
+        });
+
         it('should emit an event when click prev arrow', () => {
             createTestComponent(SliderPaginationBeginat6);
             fixture.detectChanges();

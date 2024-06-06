@@ -135,6 +135,7 @@
                 #link
                 class="nx-pagination--icon"
                 (click)="onPage(pageNum.value)"
+                [attr.aria-label]="pageNum.value"
                 [attr.aria-current]="pageNum.value === page ? 'page' : ''"
                 [class.is-active]="pageNum.value === page"
                 type="button"

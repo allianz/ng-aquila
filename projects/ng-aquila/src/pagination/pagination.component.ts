@@ -93,7 +93,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     /**
      * Determines the type of pagination.
      *
-     * Values: simple | advanced, default: simple.
+     * Values: simple | advanced | slider, default: simple.
      */
     @Input() set type(value: string) {
         // type advanced or simple
