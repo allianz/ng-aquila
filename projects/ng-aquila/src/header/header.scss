@@ -131,7 +131,7 @@ $header-link-border-width: nx-border-size(xl);
     border-radius: nx-border-radius(s);
 }
 
-::ng-deep a:focus {
+:host ::ng-deep a:focus {
     outline: none;
 }
 
