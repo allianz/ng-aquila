@@ -19,6 +19,8 @@ The Tooltip provides a text label that is displayed when the user hovers over or
 
 Please note that according to our UX guidelines the Tooltip is only supposed to contain **short (1-2 sentences) plain text descriptions**. The Tooltip is not supposed to contain any formatting or control elements and thus does not support this. If you need to display a longer text (like manual instructions, explanations and so on) that needs to be formatted, or you need to insert control elements (buttons, links, etc.), then you have to [use the Popover component instead of the Tooltip](./documentation/popover/overview#ux-guidelines).
 
+For better accessibility, we recommend using tooltips with interactive elements such as `button`. If you need to use a tooltip with a non-interactive element, add tabindex="0" to make it accessible via keyboard.
+
 ### Basic tooltip
 
 <!-- example(tooltip-basic) -->
