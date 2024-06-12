@@ -36,6 +36,7 @@
             <nxv-theme-switch *ngIf="showThemingSwitcher" [themes]="themes" [selected]="selectedTheme" (selectedChange)="selectTheme($event)">
             </nxv-theme-switch>
             <nxv-version-select></nxv-version-select>
+            <ng-container *ngComponentOutlet="headerSlot"></ng-container>
             <nx-link>
                 <a [href]="githubLinkConfig.repoLink" target="_blank">
                     <svg

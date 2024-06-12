@@ -10,4 +10,5 @@ export const NXV_FOOTER = new InjectionToken<any>('NXV_FOOTER');
 export const NXV_TOP_INFO = new InjectionToken<any>('NXV_TOP_INFO');
 export const NXV_FEEDBACK_LINKS = new InjectionToken<any>('NXV_FEEDBACK_LINKS');
 export const NX_DOCS_GITHUB_LINK = new InjectionToken<GithubLinkConfig>('NX_DOCS_GITHUB_LINK');
+export const NX_DOCS_HEADER_SLOT = new InjectionToken<GithubLinkConfig>('NX_DOCS_HEADER_SLOT');
 export const NX_ANNOUNCEMENT = new InjectionToken<NxAnnouncement>('NX_ANNOUNCEMENT');

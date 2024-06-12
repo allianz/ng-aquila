@@ -4,7 +4,7 @@ import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { NX_ANNOUNCEMENT, NX_DOCS_GITHUB_LINK, NX_DOCS_LOGO_PATH } from '../core/tokens';
+import { NX_ANNOUNCEMENT, NX_DOCS_GITHUB_LINK, NX_DOCS_HEADER_SLOT, NX_DOCS_LOGO_PATH } from '../core/tokens';
 import { GithubLinkConfig, LogoPath, NxAnnouncement } from '../core/types';
 import { ManifestService } from '../service/manifest.service';
 import { CssVarSidebarComponent } from './css-vars-sandbox/css-var-sidebar-component';
@@ -59,6 +59,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
         @Optional() @Inject(NX_DOCS_FEATURE_FLAGS) private readonly _featureFlags: NxDocFeatures | null,
         @Inject(NX_DOCS_LOGO_PATH) readonly logoPath: LogoPath,
         @Inject(NX_DOCS_GITHUB_LINK) readonly githubLinkConfig: GithubLinkConfig,
+        @Optional() @Inject(NX_DOCS_HEADER_SLOT) readonly headerSlot: { new (): Component },
         @Optional() @Inject(NX_ANNOUNCEMENT) readonly announcement: NxAnnouncement,
     ) {
         this.themes = this._themeSwitcherService.themes();
