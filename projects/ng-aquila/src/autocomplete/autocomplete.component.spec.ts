@@ -111,6 +111,22 @@ describe('NxAutocompleteComponent:', () => {
         expect(getAutocompletePanel()).toBeFalsy();
     }));
 
+    it('should not focus item when mousedown', fakeAsync(() => {
+        createTestComponent(BasicAutocompleteComponent);
+        input.dispatchEvent(new Event('focus'));
+        typeInput('A');
+        flush();
+        const event = new MouseEvent('mousedown', { bubbles: true });
+
+        const item = getAutocompleteItems().item(1) as any;
+        spyOn(item, 'focus');
+
+        item.dispatchEvent(event);
+        flush();
+
+        expect(item.focus).not.toHaveBeenCalled();
+    }));
+
     it('should close the overlay when clicking outside', fakeAsync(() => {
         createTestComponent(BasicAutocompleteComponent);
         input.dispatchEvent(new Event('focus'));
