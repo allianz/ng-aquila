@@ -167,6 +167,12 @@ If you want to **change the locale during runtime** you can use the `setLocale()
 
 **Please note** that the locale setting does not change all labels and texts in the datepicker, only the date related parts are translated. You need to provide your own translation for texts like the header. You can find an example in the next chapter [Localizing labels and messages](./documentation/datefield/overview#localizing-labels-and-messages).
 
+From Angular v.17 each locale needs to be imported separately with moment.js:
+```ts
+import 'moment/locale/de';
+import 'moment/locale/ja';
+import 'moment/locale/ar';
+```
 <!-- example(datefield-localize-date) -->
 
 #### Localizing labels and messages

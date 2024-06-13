@@ -1,3 +1,7 @@
+import 'moment/locale/de';
+import 'moment/locale/ja';
+import 'moment/locale/ar';
+
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { NX_DATE_LOCALE, NxDateAdapter } from '@aposin/ng-aquila/datefield';
 import { Moment } from 'moment';
