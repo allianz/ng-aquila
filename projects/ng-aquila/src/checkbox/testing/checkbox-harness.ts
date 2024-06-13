@@ -3,6 +3,7 @@ import { type BaseHarnessFilters, ComponentHarness, HarnessPredicate } from '@an
 export interface NxCheckboxHarnessFilters extends BaseHarnessFilters {
     label?: string | RegExp;
     checked?: boolean;
+    enabled?: boolean;
 }
 
 export class NxCheckboxHarness extends ComponentHarness {
@@ -14,7 +15,8 @@ export class NxCheckboxHarness extends ComponentHarness {
     static with(options: NxCheckboxHarnessFilters = {}) {
         return new HarnessPredicate(NxCheckboxHarness, options)
             .addOption('label', options.label, (harness, label) => HarnessPredicate.stringMatches(harness.getLabel(), label))
-            .addOption('checked', options.checked, async (harness, checked) => (await harness.isChecked()) === checked);
+            .addOption('checked', options.checked, async (harness, checked) => (await harness.isChecked()) === checked)
+            .addOption('enabled', options.enabled, async (harness, enabled) => (await harness.isDisabled()) !== enabled);
     }
 
     async getLabel(): Promise<string> {
@@ -29,5 +31,10 @@ export class NxCheckboxHarness extends ComponentHarness {
     async isChecked(): Promise<boolean> {
         const checkmark = await this._getCheckmark();
         return !!checkmark;
+    }
+
+    async isDisabled(): Promise<boolean> {
+        const input = await this._input();
+        return input.getProperty('disabled');
     }
 }
