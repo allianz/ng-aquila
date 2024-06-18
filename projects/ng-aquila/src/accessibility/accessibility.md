@@ -92,6 +92,15 @@ You can also refer to our [Jasmine custom Axe matcher](https://github.com/allian
 Please also check:
 -   [Easy Checks – A First Review of Web Accessibility](https://www.w3.org/WAI/test-evaluate/preliminary/)
 
+#### HTML attribute: autocomplete
+you can enhance the accessibility and usability of web forms, making it easier for all users to navigate and interact.
+
+Below is an example utilizing the `autocomplete` attribute for an email input field:
+```
+<input type="email" id="email" name="email" autocomplete="email">
+```
+You can find more information on the `autocomplete` attribute [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete).
+
 ### Different behaviour of `aria-live` in screen readers
 
 The behaviour of `aria-live` is implemented differently in screen readers. _VoiceOver_  will read any new element
