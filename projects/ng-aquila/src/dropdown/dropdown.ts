@@ -151,7 +151,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         '(keydown)': '_handleKeydown($event)',
         '(focus)': '_onFocus()',
         '(blur)': '_onBlur()',
-        '(click)': 'openPanel($event)',
+        '(click)': 'openedByKeyboard = false; openPanel($event)',
     },
 })
 export class NxDropdownComponent
@@ -689,6 +689,8 @@ export class NxDropdownComponent
         });
     }
 
+    openedByKeyboard = true;
+
     private _initActiveItem() {
         if (!this.isMultiSelect && this._selectionModel.selected[0]) {
             const option = this.dropdownItems.find(o => o.value === this._selectionModel.selected[0].value);
@@ -1073,6 +1075,7 @@ export class NxDropdownComponent
     /** End ControlValueAccessor */
 
     _handleKeydown(event: KeyboardEvent) {
+        this.openedByKeyboard = true;
         this.panelOpen ? this._handleOpenKeydown(event) : this._handleClosedKeydown(event);
     }
 

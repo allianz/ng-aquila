@@ -72,15 +72,16 @@ nx-checkbox {
         margin-left: nx-spacer(2xs);
     }
 }
-
 // focus style
 /* clean-css ignore:start */
-:host(.nx-dropdown-item--active) {
+
+:host-context(.keyboard-focused) :host(.nx-dropdown-item--active) {
     .nx-dropdown-results__option .nx-dropdown-results__option-label {
         border-radius: nx-border-radius(s);
         @include focus-style;
     }
 }
+
 /* clean-css ignore:end */
 
 // focus style - multiselect dropdown item

@@ -61,6 +61,7 @@
             tabindex="-1"
             role="listbox"
             [id]="modalId"
+            [class.keyboard-focused]="openedByKeyboard"
             #panelBody
             [attr.aria-activedescendant]="_getAriaActiveDescendant()"
             [attr.aria-multiselectable]="isMultiSelect"

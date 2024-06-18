@@ -181,6 +181,9 @@ describe('NxDropdownComponent', () => {
         it('should open the dropdown by click and close it by click on the backdrop', fakeAsync(() => {
             createTestComponent(SimpleDropdownComponent);
             openDropdownByClick();
+            const panelBody = getDropdown()?.querySelector('.nx-dropdown__panel-body');
+            expect(panelBody).not.toHaveClass('keyboard-focused');
+
             expectDropdownOpen();
             clickOnBackdrop();
             expectDropdownClose();
@@ -1455,6 +1458,10 @@ describe('NxDropdownComponent', () => {
             openDropdownByKeyboard();
             fixture.detectChanges();
             tick();
+
+            const panelBody = getDropdown()?.querySelector('.nx-dropdown__panel-body');
+            expect(panelBody).toHaveClass('keyboard-focused');
+
             expectDropdownOpen();
         }));
 
