@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.8.0](https://github.com/allianz/ng-aquila/compare/v17.7.0...v17.8.0) (2024-06-18)
+
+
+### Features ✨
+
+* **checkbox-harness:** add isDisabled ([5e3a96f](https://github.com/allianz/ng-aquila/commit/5e3a96f9413fa836b5bad327be49fe09c9344382))
+
+
+### Documentation 📚
+
+* **accordion:** improve accessibility of the error state example ([bbec6d5](https://github.com/allianz/ng-aquila/commit/bbec6d5d837591e2482165f67a762607fa1b3714))
+* **circle-toggle:** correct disabled element ([20c6aab](https://github.com/allianz/ng-aquila/commit/20c6aab52af82748e6a199a447a7a407c51e8b63))
+* **comparison-table:** enhance NVDA readability for column header cells ([1bc8534](https://github.com/allianz/ng-aquila/commit/1bc853499dc0695b45d7d7668d0d6dbf60bcc933))
+* **small-stage:** focusable breadcrumb in small stage example ([f5ccd56](https://github.com/allianz/ng-aquila/commit/f5ccd56e652fd8aa546557714f82d9168fbc73da))
+* **table:** correct aria label ([656b258](https://github.com/allianz/ng-aquila/commit/656b2588d90fe7e9c9d3cd286cbba827fb5c5259))
+* **tooltip:** show focusable non-interactive tooltip ([92d09d5](https://github.com/allianz/ng-aquila/commit/92d09d5bd7a3341c00bda67ed40c14cdef63196b))
+* update allianz-icons version ([216c5b8](https://github.com/allianz/ng-aquila/commit/216c5b8d8c22193a5a2c3a33824de6cd3bff393a))
+
+
+### Bug Fixes 🐛
+
+* **autocomplete:** prevent early error ([9fe622f](https://github.com/allianz/ng-aquila/commit/9fe622f15f06f58b248430305c9a1e7b0c411730))
+* **circle-toggle:** addition check error state from group ([01e518f](https://github.com/allianz/ng-aquila/commit/01e518fe6b1faa315aaf1a1cc7d81edbbb316fa3))
+* **datefield:** add localization for de, ja and ar ([419ed09](https://github.com/allianz/ng-aquila/commit/419ed099ef04679286959049d4d9089f2025d6eb))
+* **dropdown:** only show focus when interact by keyboard ([e8ee8af](https://github.com/allianz/ng-aquila/commit/e8ee8af5b74a360a48c05755d359e169c230b25c))
+* **dropdown:** round position offset values ([5e6bca0](https://github.com/allianz/ng-aquila/commit/5e6bca03d01ba20a3f0a3e7393e7cf099917425f))
+* **header:** prevent style leak ([21a5907](https://github.com/allianz/ng-aquila/commit/21a5907412f4c5e57981827da1a1b0c1bb893113))
+* **radio-button:** focus host element ([2cd3c3d](https://github.com/allianz/ng-aquila/commit/2cd3c3d7d11c7cc0124221d85d584e82f679becd))
+* **sidebar:** add aria labels on examples ([f971fa6](https://github.com/allianz/ng-aquila/commit/f971fa6250fc3fd63325023b9ea1acfba13c307c))
+* **spinner:** announce spinner via screen reader ([9de19d4](https://github.com/allianz/ng-aquila/commit/9de19d42179e1fb91c7848593c2018902044dd4a))
+
 ## [17.7.0](https://github.com/allianz/ng-aquila/compare/v17.6.0...v17.7.0) (2024-05-16)
 
 
