@@ -66,6 +66,23 @@
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><a href="https://www.w3.org/WAI/test-evaluate/preliminary/">Easy Checks – A First Review of Web Accessibility</a></li>
 </ul>
+<h4 id="html-attribute%3A-autocomplete" tabindex="-1" class="docs-markdown--h4">HTML attribute: autocomplete</h4>
+<p class="docs-markdown--p">you can enhance the accessibility and usability of web forms, making it easier for all users to navigate and interact.</p>
+<p class="docs-markdown--p">Below is an example utilizing the <code>autocomplete</code> attribute for an email input field:</p>
+<pre><code>&lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; autocomplete=&quot;email&quot;&gt;
+</code></pre>
+<p class="docs-markdown--p">You can find more information on the <code>autocomplete</code> attribute <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">here</a>.</p>
+<h3 id="different-behaviour-of-aria-live-in-screen-readers" tabindex="-1" class="docs-markdown--h3">Different behaviour of <code>aria-live</code> in screen readers</h3>
+<p class="docs-markdown--p">The behaviour of <code>aria-live</code> is implemented differently in screen readers. <em>VoiceOver</em>  will read any new element
+that has a <code>aria-live</code> attribute as well as changes within a container with the <code>aria-live</code> attribute. Screen readers
+like <em>NVDA</em> will only announce the content of a <code>aria-live</code> container if there are changes inside that container.</p>
+<p class="docs-markdown--p">To reliably announce newly created/injected <code>aria-live</code> elements, consider using
+the <a href="https://github.com/angular/components/blob/main/src/cdk/a11y/live-announcer/live-announcer.md">Angular CDK LiveAnnouncer</a>.</p>
+<p class="docs-markdown--p">Additional info on <code>aria-live</code> Screen Reader behavior:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"></li>
+<li class="docs-markdown--li"></li>
+</ul>
 <h3 id="helpful-tools-and-links-for-aria-guidelines-and-verification" tabindex="-1" class="docs-markdown--h3">Helpful tools and links for ARIA guidelines and verification</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><a href="https://webaim.org/resources/contrastchecker/">Color contrast checker</a></li>

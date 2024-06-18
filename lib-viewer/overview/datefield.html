@@ -111,6 +111,11 @@
 </code></pre>
 <p class="docs-markdown--p">If you want to <strong>change the locale during runtime</strong> you can use the <code>setLocale()</code> method of the used DateAdapter implementation. This is shown in the following example.</p>
 <p class="docs-markdown--p"><strong>Please note</strong> that the locale setting does not change all labels and texts in the datepicker, only the date related parts are translated. You need to provide your own translation for texts like the header. You can find an example in the next chapter <a href="./documentation/datefield/overview#localizing-labels-and-messages">Localizing labels and messages</a>.</p>
+<p class="docs-markdown--p">From Angular v.17 each locale needs to be imported separately with moment.js:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;moment/locale/de&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;moment/locale/ja&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;moment/locale/ar&#x27;</span>;
+</code></pre>
 <div nx-docs-example="datefield-localize-date" config="{}">exampleID: datefield-localize-date</div>
 <h4 id="localizing-labels-and-messages" tabindex="-1" class="docs-markdown--h4">Localizing labels and messages</h4>
 <p class="docs-markdown--p">The different texts and strings in the datepicker (like the button &quot;Choose a date&quot;) can be translated by implementing a subclass of <code>NxDatepickerIntl</code> and provide it in your (root) module. Here is an example where we changed the default &quot;Choose month and year&quot; text to &quot;Choose button&quot;.</p>

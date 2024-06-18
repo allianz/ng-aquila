@@ -20,7 +20,12 @@
                 <div nxRow>
                     <div nxCol="12,12,12,6,6">
                         <nx-formfield label="Surname">
-                            <input required nxInput formControlName="surname" />
+                            <input
+                                required
+                                nxInput
+                                formControlName="surname"
+                                autocomplete="family-name"
+                            />
                             <nx-error nxFormfieldError>
                                 <strong> Please note: </strong> you have to fill
                                 out this field to continue.
@@ -70,5 +75,6 @@
     context="error"
     class="nx-margin-top-xs"
 >
-    <strong> Error: </strong> Please check the red marked areas.
+    <strong> Error: </strong> Please check the section containing an error
+    marked with a red triangle with an exclamation mark.
 </nx-message>

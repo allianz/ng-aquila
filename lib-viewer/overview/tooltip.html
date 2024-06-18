@@ -5,6 +5,7 @@
 <h3 id="ux-guidelines" tabindex="-1" class="docs-markdown--h3">UX guidelines</h3>
 <p class="docs-markdown--p">The Tooltip provides a text label that is displayed when the user hovers over or focuses an element. It allows to display additional information for supporting the customer, and should <strong>only be used for optional information</strong>.</p>
 <p class="docs-markdown--p">Please note that according to our UX guidelines the Tooltip is only supposed to contain <strong>short (1-2 sentences) plain text descriptions</strong>. The Tooltip is not supposed to contain any formatting or control elements and thus does not support this. If you need to display a longer text (like manual instructions, explanations and so on) that needs to be formatted, or you need to insert control elements (buttons, links, etc.), then you have to <a href="./documentation/popover/overview#ux-guidelines">use the Popover component instead of the Tooltip</a>.</p>
+<p class="docs-markdown--p">For better accessibility, we recommend using tooltips with interactive elements such as <code>button</code>. If you need to use a tooltip with a non-interactive element, add tabindex=&quot;0&quot; to make it accessible via keyboard.</p>
 <h3 id="basic-tooltip" tabindex="-1" class="docs-markdown--h3">Basic tooltip</h3>
 <div nx-docs-example="tooltip-basic" config="{}">exampleID: tooltip-basic</div>
 <h3 id="positioning" tabindex="-1" class="docs-markdown--h3">Positioning</h3>

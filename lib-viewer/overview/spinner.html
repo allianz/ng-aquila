@@ -4,3 +4,17 @@
 <h3 id="negative-styling" tabindex="-1" class="docs-markdown--h3">Negative styling</h3>
 <p class="docs-markdown--p">You can apply a negative styling by using the <code>[negative]</code> property.</p>
 <div nx-docs-example="spinner-negative" config="{}">exampleID: spinner-negative</div>
+<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
+<p class="docs-markdown--p">The spinner component is a purely visual component and therefore should be accompanied by explanatory text.</p>
+<p class="docs-markdown--p">Loading content should be announced to users with assistive tools, so they know they have to wait.
+There are different ways of achieving that like</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><code>aria-live</code> containers or</li>
+<li class="docs-markdown--li">spinner live announcements.</li>
+</ul>
+<p class="docs-markdown--p"><em>Note: As every application has different requirements, this example can only be an inspiration.</em></p>
+<div nx-docs-example="spinner-aria-announcement" config="{}">exampleID: spinner-aria-announcement</div>
+<h4 id="limitations" tabindex="-1" class="docs-markdown--h4">Limitations</h4>
+<p class="docs-markdown--p"><code>aria-label</code> announcement for elements with <code>role=&quot;status&quot;</code>
+is <a href="https://a11ysupport.io/tech/aria/status_role#support-table-4">not implemented on all screen readers</a>. Consider
+accompanying text instead of an <code>aria-label</code> on the <code>nx-spinner</code></p>

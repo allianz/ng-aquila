@@ -1,10 +1,14 @@
 <div class="docs-inverse-container">
-    <h4 nxHeadline="subsection-xsmall negative">Large</h4>
+    <h4 nxHeadline="subsection-xsmall negative">A large spinner</h4>
     <nx-spinner size="large" negative="true"></nx-spinner>
     <br />
-    <h4 nxHeadline="subsection-xsmall negative">Medium</h4>
+    <h4 nxHeadline="subsection-xsmall negative">A medium spinner</h4>
     <nx-spinner size="medium" negative="true"></nx-spinner>
     <br />
-    <h4 nxHeadline="subsection-xsmall negative">Small</h4>
-    <nx-spinner negative="true"></nx-spinner>
+    <h4 nxHeadline="subsection-xsmall negative">A small spinner</h4>
+    <nx-spinner
+        negative="true"
+        [activationAnnouncement]="'Loading small data'"
+        [completionAnnouncement]="'Done loading small data'"
+    ></nx-spinner>
 </div>
