@@ -263,6 +263,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
         '[class.nx-radio--negative]': 'negative',
         '[class.has-error]': '_controlInvalid() || null',
         '[attr.aria-invalid]': '_controlInvalid() || null',
+        '(focus)': '_forwardFocusToInput()',
     },
 })
 export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy {
@@ -462,6 +463,11 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     /** Focuses the radio button element. */
     focus(focusOrigin?: FocusOrigin) {
         this._focusMonitor.focusVia(this._nativeInput, focusOrigin as FocusOrigin);
+    }
+
+    /** Forward focus from host to hidden input field */
+    _forwardFocusToInput() {
+        this._nativeInput.nativeElement.focus();
     }
 
     /** @docs-private */

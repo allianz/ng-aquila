@@ -77,6 +77,7 @@ export type NxCheckboxLabelSize = 'small' | 'large';
         '[attr.disabled]': 'disabled || null',
         '[attr.aria-labelledby]': 'this._label?.id  || null',
         '[attr.role]': '"group"',
+        '(focus)': '_forwardFocusToInput()',
     },
 })
 export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterContentInit, OnDestroy, DoCheck {
@@ -555,6 +556,11 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     /** Focuses the checkbox element. */
     focus(focusOrigin?: FocusOrigin) {
         this._focusMonitor.focusVia(this._nativeInput, focusOrigin as FocusOrigin);
+    }
+
+    /** Forward focus from host to hidden input field */
+    _forwardFocusToInput() {
+        this._nativeInput.nativeElement.focus();
     }
 
     /** @docs-private */

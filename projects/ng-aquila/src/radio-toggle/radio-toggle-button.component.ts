@@ -6,12 +6,14 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ElementRef,
     forwardRef,
     HostListener,
     Inject,
     Input,
     OnDestroy,
     Renderer2,
+    ViewChild,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -41,12 +43,15 @@ export class NxRadioToggleButtonChange {
     host: {
         '[class.has-error]': '_controlInvalid() || null',
         '[attr.aria-invalid]': '_controlInvalid() || null',
+        '(focus)': '_forwardFocusToInput()',
     },
 })
 export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseComponent implements AfterViewInit, OnDestroy {
     /** @docs-private */
     // emits when the button is checked to notify the group
     readonly onChecked = new Subject<NxRadioToggleButtonChange>();
+
+    @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
     /** @docs-private */
     @Input() set disabled(value: BooleanInput) {
@@ -166,5 +171,10 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     /** @docs-private */
     _controlInvalid(): boolean {
         return !!this.radioToggle?.errorState;
+    }
+
+    /** Forward focus from host to hidden input field */
+    _forwardFocusToInput() {
+        this._nativeInput.nativeElement.focus();
     }
 }

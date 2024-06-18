@@ -53,6 +53,7 @@ let nextId = 0;
         '[class.in-group]': 'inGroup',
         '[class.is-disabled]': 'disabled',
         '[class.is-responsive]': 'responsive',
+        '(focus)': '_forwardFocusToInput()',
         '[class.has-error]': 'toggleGroup?.errorState || errorState',
     },
 })
@@ -346,6 +347,11 @@ export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, 
     /** Focuses the radio button element. */
     focus(focusOrigin?: FocusOrigin) {
         this._focusMonitor.focusVia(this._nativeInput, focusOrigin as FocusOrigin);
+    }
+
+    /** Forward focus from host to hidden input field */
+    _forwardFocusToInput() {
+        this._nativeInput.nativeElement.focus();
     }
 
     /** @docs-private */

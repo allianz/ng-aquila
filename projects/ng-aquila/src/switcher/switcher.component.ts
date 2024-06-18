@@ -42,6 +42,7 @@ export type LABEL_SIZE = 'small' | 'large';
         '[class.is-swapped]': 'labelPosition === "left"',
         '[class.has-error]': 'errorState',
         '[attr.aria-invalid]': 'errorState',
+        '(focus)': '_forwardFocusToInput()',
     },
 })
 export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, AfterViewInit, OnDestroy {
@@ -238,5 +239,10 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
      */
     labelContentChanged() {
         this._cdr.detectChanges();
+    }
+
+    /** Forward focus from host to hidden input field */
+    _forwardFocusToInput() {
+        this._nativeInput.nativeElement.focus();
     }
 }
