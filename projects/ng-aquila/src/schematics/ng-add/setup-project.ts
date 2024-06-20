@@ -1,7 +1,7 @@
-import { getProjectFromWorkspace, getProjectStyleFile, getProjectTargetOptions } from '@angular/cdk/schematics';
+import { getProjectFromWorkspace, getProjectStyleFile, getProjectTargetOptions, isStandaloneApp } from '@angular/cdk/schematics';
 import { apply, chain, MergeStrategy, mergeWith, move, noop, Rule, SchematicsException, url } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import { addRootImport, readWorkspace, updateWorkspace } from '@schematics/angular/utility';
+import { addRootImport, addRootProvider, readWorkspace, updateWorkspace } from '@schematics/angular/utility';
 import { buildDefaultPath } from '@schematics/angular/utility/workspace';
 import * as chalk from 'chalk';
 
@@ -16,8 +16,13 @@ export default function (options: Schema): Rule {
             options?.type === 'b2b' ? addExpertModule(options) : noop(),
             options.noTheme ? noop() : addAposinTheme(options),
             addCdkStyles(options),
+            addAnimationsProvider(options),
         ]);
     };
+}
+
+function addAnimationsProvider(options: Schema): Rule {
+    return addRootProvider(options.project, ({ code, external }) => code`${external('provideAnimations', '@angular/platform-browser/animations')}()`);
 }
 
 function addExpertModule(options: Schema): Rule {
@@ -30,6 +35,7 @@ function addStarterApp(options: Schema): Rule {
         const project = getProjectFromWorkspace(workspace, options.project);
         const projectRoot = project.sourceRoot || '.';
         const projectAppPath = buildDefaultPath(project);
+        let files = './files/standalone';
 
         if (!isAngularApplicationProject(project)) {
             throw new SchematicsException('Project is not an application or is using an unsupported builder');
@@ -38,9 +44,6 @@ function addStarterApp(options: Schema): Rule {
         const mainBuffer = tree.read(`${projectRoot}/main.ts`);
         if (!mainBuffer) {
             throw new SchematicsException('Incompatible project: cannot find main.ts');
-        }
-        if (!mainBuffer.toString().includes('AppModule')) {
-            throw new SchematicsException('Incompatible project: main.ts does not bootstrapp AppModule');
         }
 
         const indexBuffer = tree.read(`${projectRoot}/index.html`);
@@ -51,28 +54,38 @@ function addStarterApp(options: Schema): Rule {
             throw new SchematicsException('Incompatible project: index.html does not include <app-root> element');
         }
 
-        const moduleBuffer = tree.read(`${projectAppPath}/app.module.ts`);
-        if (!moduleBuffer) {
-            throw new SchematicsException(`Incompatible project: ${projectAppPath}/app.module.ts does not exist`);
-        }
-        if (!moduleBuffer.toString().includes('AppComponent')) {
-            throw new SchematicsException(`Incompatible project: ${projectAppPath}/app.module.ts does not import AppComponent`);
+        if (!isStandaloneApp(tree, projectRoot + '/main.ts')) {
+            files = './files/module';
+
+            if (!mainBuffer.toString().includes('AppModule')) {
+                throw new SchematicsException('Incompatible project: main.ts does not bootstrapp AppModule');
+            }
+
+            const moduleBuffer = tree.read(`${projectAppPath}/app.module.ts`);
+            if (!moduleBuffer) {
+                throw new SchematicsException(`Incompatible project: ${projectAppPath}/app.module.ts does not exist`);
+            }
+            if (!moduleBuffer.toString().includes('AppComponent')) {
+                throw new SchematicsException(`Incompatible project: ${projectAppPath}/app.module.ts does not import AppComponent`);
+            }
         }
 
-        return chain([mergeWith(apply(url('./files'), [move(projectAppPath)]), MergeStrategy.Overwrite), rewriteCopyrightYear()]);
+        return chain([mergeWith(apply(url(files), [move(projectAppPath)]), MergeStrategy.Overwrite), rewriteCopyrightYear(projectAppPath, projectRoot)]);
     };
 
-    function rewriteCopyrightYear(): Rule {
+    function rewriteCopyrightYear(projectAppPath: string, projectRoot: string): Rule {
         return async (tree, context) => {
             const currentYear = new Date().getFullYear();
             const copyrightTemplate = 'Copyright ALLIANZ';
             const copyrightStamp = `Copyright Allianz ${currentYear}`;
 
-            const workspace = await readWorkspace(tree);
-            const project = getProjectFromWorkspace(workspace, options.project);
-            const projectAppPath = buildDefaultPath(project);
+            const projectFiles = [`${projectAppPath}/app.component.ts`, `${projectAppPath}/app.component.html`];
 
-            [`${projectAppPath}/app.module.ts`, `${projectAppPath}/app.component.ts`, `${projectAppPath}/app.component.html`].forEach(file => {
+            if (!isStandaloneApp(tree, projectRoot + '/main.ts')) {
+                projectFiles.push(`${projectAppPath}/app.module.ts`);
+            }
+
+            projectFiles.forEach(file => {
                 let fileContent = tree.read(file)!.toString('utf-8');
                 fileContent = fileContent.replace(copyrightTemplate, copyrightStamp);
                 tree.overwrite(file, fileContent);

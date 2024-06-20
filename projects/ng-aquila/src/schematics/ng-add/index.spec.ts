@@ -9,12 +9,12 @@ describe('ng-aquila: ng add', () => {
 
     async function getTestProjectConfig() {
         const workspace = await readWorkspace(testSetup.appTree);
-        return getProjectFromWorkspace(workspace, 'aquila-testing');
+        return getProjectFromWorkspace(workspace, testSetup.appTreeName);
     }
 
     describe('general and b2c', () => {
         beforeEach(async () => {
-            await testSetup.runMigration({ project: 'aquila-testing' });
+            await testSetup.runMigration({ project: testSetup.appTreeName });
             testProjectConfig = await getTestProjectConfig();
         });
 
@@ -28,19 +28,23 @@ describe('ng-aquila: ng add', () => {
         });
 
         it('should add CDK styles', async () => {
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/styles.css')).toContain('@import "@angular/cdk/overlay-prebuilt.css";');
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/styles.css')).toContain('@import "@angular/cdk/a11y-prebuilt.css";');
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeName + '/src/styles.css')).toContain(
+                '@import "@angular/cdk/overlay-prebuilt.css";',
+            );
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeName + '/src/styles.css')).toContain(
+                '@import "@angular/cdk/a11y-prebuilt.css";',
+            );
         });
 
         it('should not write Starter App files by default', () => {
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts')).not.toContain('openConsentDialog()');
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html')).not.toContain('Aquila Insurance App');
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeName + '/src/app/app.component.ts')).not.toContain('openConsentDialog()');
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeName + '/src/app/app.component.html')).not.toContain('Aquila Insurance App');
         });
     });
 
     describe('expert', () => {
         beforeEach(async () => {
-            await testSetup.runMigration({ project: 'aquila-testing', type: 'b2b' });
+            await testSetup.runMigration({ project: testSetup.appTreeName, type: 'b2b' });
             testProjectConfig = await getTestProjectConfig();
         });
 
@@ -50,13 +54,13 @@ describe('ng-aquila: ng add', () => {
         });
 
         it('should add Expert Module for module based application', async () => {
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.module.ts')).toContain('NxExpertModule');
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeName + '/src/app/app.module.ts')).toContain('NxExpertModule');
         });
     });
 
     describe('no theme', () => {
         beforeEach(async () => {
-            await testSetup.runMigration({ project: 'aquila-testing', type: 'b2c', noTheme: true });
+            await testSetup.runMigration({ project: testSetup.appTreeName, type: 'b2c', noTheme: true });
             testProjectConfig = await getTestProjectConfig();
         });
 
@@ -67,23 +71,124 @@ describe('ng-aquila: ng add', () => {
 
     describe('starter app', () => {
         beforeEach(async () => {
-            await testSetup.runMigration({ project: 'aquila-testing', starter: true });
+            await testSetup.runMigration({ project: testSetup.appTreeName, starter: true });
             testProjectConfig = await getTestProjectConfig();
         });
 
         it('should update Starter App files', () => {
             const currentYear = new Date().getFullYear();
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts')).toContain(`/** Copyright Allianz ${currentYear} */`);
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html')).toContain(`<!-- Copyright Allianz ${currentYear} -->`);
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeName + '/src/app/app.component.ts')).toContain(
+                `/** Copyright Allianz ${currentYear} */`,
+            );
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeName + '/src/app/app.component.html')).toContain(
+                `<!-- Copyright Allianz ${currentYear} -->`,
+            );
         });
 
         it('should create Retail version Starter App by default', () => {
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.module.ts')).not.toContain('NxExpertModule');
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeName + '/src/app/app.module.ts')).not.toContain('NxExpertModule');
         });
 
         it('should create Expert Starter App when requested', async () => {
-            await testSetup.runMigration({ project: 'aquila-testing', starter: true, type: 'b2b' });
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.module.ts')).toContain('NxExpertModule');
+            await testSetup.runMigration({ project: testSetup.appTreeName, starter: true, type: 'b2b' });
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeName + '/src/app/app.module.ts')).toContain('NxExpertModule');
+        });
+    });
+});
+
+describe('ng-aquila: ng add standalone', () => {
+    const testSetup = new SchematicTestSetup('ng-add-setup-project', Collection.SCHEMATICS);
+    let testProjectConfig: ProjectDefinition;
+
+    async function getTestProjectConfig() {
+        const workspace = await readWorkspace(testSetup.appTreeStandalone);
+        return getProjectFromWorkspace(workspace, testSetup.appTreeNameStandalone);
+    }
+
+    describe('general and b2c for standalone apps', () => {
+        beforeEach(async () => {
+            await testSetup.runMigration({ project: testSetup.appTreeNameStandalone });
+            testProjectConfig = await getTestProjectConfig();
+        });
+
+        it('should add normalize.css for standalone apps', async () => {
+            expect(testProjectConfig.targets.get('build')!.options!.styles).toContain('node_modules/@aposin/ng-aquila/css/normalize.css');
+        });
+
+        it('should add aposin theme for standalone apps', async () => {
+            expect(testProjectConfig.targets.get('build')!.options!.styles).toContain('node_modules/@aposin/ng-aquila/themes/aposin.css');
+            expect(testProjectConfig.targets.get('build')!.options!.styles).not.toContain('node_modules/@aposin/ng-aquila/themes/expert.css');
+        });
+
+        it('should add CDK styles for standalone apps', async () => {
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeNameStandalone + '/src/styles.css')).toContain(
+                '@import "@angular/cdk/overlay-prebuilt.css";',
+            );
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeNameStandalone + '/src/styles.css')).toContain(
+                '@import "@angular/cdk/a11y-prebuilt.css";',
+            );
+        });
+
+        it('should not write Starter App files by default for standalone apps', () => {
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeNameStandalone + '/src/app/app.component.ts')).not.toContain(
+                'openConsentDialog()',
+            );
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeNameStandalone + '/src/app/app.component.html')).not.toContain(
+                'Aquila Insurance App',
+            );
+        });
+    });
+
+    describe('expert for standalone apps', () => {
+        beforeEach(async () => {
+            await testSetup.runMigration({ project: testSetup.appTreeNameStandalone, type: 'b2b' });
+            testProjectConfig = await getTestProjectConfig();
+        });
+
+        it('should add expert theme for standalone apps', async () => {
+            expect(testProjectConfig.targets.get('build')!.options!.styles).not.toContain('node_modules/@aposin/ng-aquila/themes/aposin.css');
+            expect(testProjectConfig.targets.get('build')!.options!.styles).toContain('node_modules/@aposin/ng-aquila/themes/expert.css');
+        });
+
+        it('should add Expert Module for module based application for standalone apps', async () => {
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeNameStandalone + '/src/app/app.config.ts')).toContain('NxExpertModule');
+        });
+    });
+
+    describe('no theme for standalone apps', () => {
+        beforeEach(async () => {
+            await testSetup.runMigration({ project: testSetup.appTreeNameStandalone, type: 'b2c', noTheme: true });
+            testProjectConfig = await getTestProjectConfig();
+        });
+
+        it('should not add a theme file if no-theme is set to true for standalone apps', () => {
+            expect(testProjectConfig.targets.get('build')!.options!.styles).not.toContain('node_modules/@aposin/ng-aquila/themes/aposin.css');
+        });
+    });
+
+    describe('starter app for standalone apps', () => {
+        beforeEach(async () => {
+            await testSetup.runMigration({ project: testSetup.appTreeNameStandalone, starter: true });
+            testProjectConfig = await getTestProjectConfig();
+        });
+
+        it('should update Starter App files for standalone apps', () => {
+            const currentYear = new Date().getFullYear();
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeNameStandalone + '/src/app/app.component.ts')).toContain(
+                `/** Copyright Allianz ${currentYear} */`,
+            );
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeNameStandalone + '/src/app/app.component.html')).toContain(
+                `<!-- Copyright Allianz ${currentYear} -->`,
+            );
+        });
+
+        it('should create Retail version Starter App by default for standalone apps', () => {
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeNameStandalone + '/src/app/app.config.ts')).not.toContain('NxExpertModule');
+        });
+
+        it('should create Expert Starter App when requested for standalone apps', async () => {
+            await testSetup.runMigration({ project: testSetup.appTreeNameStandalone, starter: true, type: 'b2b' });
+            expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeNameStandalone + '/src/app/app.config.ts')).toContain('NxExpertModule');
         });
     });
 });

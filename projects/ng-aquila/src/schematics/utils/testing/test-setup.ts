@@ -9,12 +9,6 @@ export enum Collection {
     MIGRATIONS = 2,
 }
 
-export async function createTestApp(runner: SchematicTestRunner, tree?: Tree, appOptions = {}): Promise<UnitTestTree> {
-    const workspaceTree = await createWorkspace(runner, tree);
-
-    return createApp(runner, workspaceTree, appOptions);
-}
-
 export async function createWorkspace(runner: SchematicTestRunner, tree?: Tree): Promise<UnitTestTree> {
     return runner.runExternalSchematic(
         '@schematics/angular',
@@ -30,7 +24,7 @@ export async function createWorkspace(runner: SchematicTestRunner, tree?: Tree):
 
 export async function createApp(runner: SchematicTestRunner, tree: Tree, options = {}): Promise<UnitTestTree> {
     // temporary fix to set standalone: false that the starter app tests still work.
-    return runner.runExternalSchematic('@schematics/angular', 'application', { name: 'aquila-testing', standalone: false, ...options }, tree);
+    return runner.runExternalSchematic('@schematics/angular', 'application', options, tree);
 }
 
 export async function createTestLibrary(runner: SchematicTestRunner, tree?: Tree, options = {}): Promise<UnitTestTree> {
@@ -94,6 +88,9 @@ export class SchematicTestSetup {
     errorOutput!: string[];
     hostTree!: HostTree;
     appTree!: UnitTestTree;
+    appTreeStandalone!: UnitTestTree;
+    appTreeName: string = 'aquila-testing';
+    appTreeNameStandalone: string = 'aquila-testing-standalone';
 
     constructor(
         readonly schematicName: string,
@@ -108,43 +105,59 @@ export class SchematicTestSetup {
             this.runner = new SchematicTestRunner('test', schematics);
             this.tempFileSystemHost = new TempScopedNodeJsSyncHost();
             this.hostTree = new HostTree(this.tempFileSystemHost);
-            // create whole test app
-            this.appTree = await createTestApp(this.runner, this.hostTree, { name: 'aquila-testing' });
-            const testAppTsconfigPath = 'projects/aquila-testing/tsconfig.app.json';
 
-            // remove comments and parse json
-            const testAppTsconfig = JSON.parse(this.appTree.readContent(testAppTsconfigPath).replace(/\/\*.*\*\//, ''));
+            // create workspace
+            const workspaceTree = await createWorkspace(this.runner, this.hostTree);
 
-            // include all TypeScript files in the project. Otherwise all test input
-            // files won't be part of the program and cannot be migrated.
-            testAppTsconfig.include.push('src/**/*.ts');
-            this.appTree.overwrite(testAppTsconfigPath, JSON.stringify(testAppTsconfig, null, 2));
-            this.syncTreeToFileSystem();
+            // create module based app
+            this.appTree = await createApp(this.runner, workspaceTree, { name: this.appTreeName, standalone: false });
+            this.createFileDir(this.appTree);
 
-            this.warnOutput = [];
-            this.infoOutput = [];
-            this.errorOutput = [];
-            this.runner.logger.subscribe(logEntry => {
-                if (logEntry.level === 'warn') {
-                    this.warnOutput.push(logEntry.message);
-                } else if (logEntry.level === 'info') {
-                    this.infoOutput.push(logEntry.message);
-                } else if (logEntry.level === 'error') {
-                    this.errorOutput.push(logEntry.message);
-                }
-            });
-
-            this.previousWorkingDir = shx.pwd();
-            this.tmpDirPath = getSystemPath(this.tempFileSystemHost.root);
-            // Switch into the temporary directory path. This allows us to run
-            // the schematic against our custom unit test tree.
-            shx.cd(this.tmpDirPath);
+            // create standalone app
+            this.appTreeStandalone = await createApp(this.runner, workspaceTree, { name: this.appTreeNameStandalone, standalone: true });
+            this.createFileDir(this.appTreeStandalone);
         });
 
         afterEach(async () => {
             shx.cd(this.previousWorkingDir);
             shx.rm('-r', this.tmpDirPath);
         });
+    }
+
+    /**
+     * Create file directory, remove comments and add ts files
+     */
+    createFileDir(testApp: UnitTestTree): void {
+        const testAppTsconfigPath = 'projects/' + this.appTreeName + '/tsconfig.app.json';
+
+        // remove comments and parse json
+        const testAppTsconfig = JSON.parse(testApp.readContent(testAppTsconfigPath).replace(/\/\*.*\*\//, ''));
+
+        // include all TypeScript files in the project. Otherwise all test input
+        // files won't be part of the program and cannot be migrated.
+        testAppTsconfig.include.push('src/**/*.ts');
+        testApp.overwrite(testAppTsconfigPath, JSON.stringify(testAppTsconfig, null, 2));
+
+        this.syncTreeToFileSystem(testApp);
+
+        this.warnOutput = [];
+        this.infoOutput = [];
+        this.errorOutput = [];
+        this.runner.logger.subscribe(logEntry => {
+            if (logEntry.level === 'warn') {
+                this.warnOutput.push(logEntry.message);
+            } else if (logEntry.level === 'info') {
+                this.infoOutput.push(logEntry.message);
+            } else if (logEntry.level === 'error') {
+                this.errorOutput.push(logEntry.message);
+            }
+        });
+
+        this.previousWorkingDir = shx.pwd();
+        this.tmpDirPath = getSystemPath(this.tempFileSystemHost.root);
+        // Switch into the temporary directory path. This allows us to run
+        // the schematic against our custom unit test tree.
+        shx.cd(this.tmpDirPath);
     }
 
     /**
@@ -176,10 +189,10 @@ export class SchematicTestSetup {
     /**
      * Syncs the whole virtual tree to the disk.
      */
-    syncTreeToFileSystem(): void {
+    syncTreeToFileSystem(appTree: UnitTestTree): void {
         // Since the TypeScript compiler API expects all files to be present on the real file system, we
         // map every file in the app tree to a temporary location on the file system.
-        this.appTree.files.forEach(f => this.writeFile(f, this.appTree.readContent(f)));
+        appTree.files.forEach(f => this.writeFile(f, appTree.readContent(f)));
     }
 
     /**
