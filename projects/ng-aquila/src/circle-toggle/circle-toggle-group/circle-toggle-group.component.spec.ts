@@ -238,6 +238,51 @@ describe('NxToggleButtonGroup', () => {
             fixture.detectChanges();
             expect(toggleNativeElement).not.toHaveClass('is-responsive');
         });
+
+        it('should reset when form value is null', fakeAsync(() => {
+            createTestComponent(ReactiveCircleToggleGroupComponent);
+
+            const reactComp: ReactiveCircleToggleGroupComponent = fixture.componentInstance as ReactiveCircleToggleGroupComponent;
+            const buttonA = toggleButtons.item(0).querySelector('nx-icon-toggle-button');
+            reactComp.testGroup.controls.reactiveToggle.setValue('A');
+            tick();
+            fixture.detectChanges();
+            flush();
+
+            expect(buttonA).toHaveClass('is-flipped');
+
+            reactComp.testGroup.controls.reactiveToggle.setValue(null);
+            tick();
+            fixture.detectChanges();
+            flush();
+            expect(buttonA).not.toHaveClass('is-flipped');
+        }));
+
+        it('should reset when ngModel value is set to null', fakeAsync(() => {
+            createTestComponent(NgModelCircleToggleGroupComponent);
+
+            click(0);
+
+            const buttonA = toggleButtons.item(0).querySelector('nx-icon-toggle-button');
+            expect(buttonA).toHaveClass('is-flipped');
+
+            fixture.componentInstance.modelValue = null;
+
+            tick();
+            fixture.detectChanges();
+            flush();
+
+            expect(buttonA).not.toHaveClass('is-flipped');
+        }));
+
+        it('should sync group value with clicked child item', fakeAsync(() => {
+            createTestComponent(ReactiveCircleToggleGroupComponent);
+
+            click(1);
+            tick();
+            fixture.detectChanges();
+            expect(toggleComponent.value).toBe('B');
+        }));
     });
 
     describe('appearance', () => {
@@ -265,7 +310,7 @@ describe('NxToggleButtonGroup', () => {
 abstract class ButtonToggleGroupTest {
     @ViewChild(NxCircleToggleGroupComponent) buttonToggleGroup!: NxCircleToggleGroupComponent;
 
-    modelValue!: string;
+    modelValue!: string | null;
     valueBinding = 'B';
     appearance = 'default';
 }

@@ -10,5 +10,5 @@ export abstract class ToggleButton {
     abstract selectionChange: any;
     abstract toggleButton: any;
     abstract toggle(event: Event): any;
-    abstract setGroupSelection(): any;
+    abstract setGroupSelection(checked: boolean): any;
 }

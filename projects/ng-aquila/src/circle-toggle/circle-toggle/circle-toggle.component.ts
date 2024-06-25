@@ -376,16 +376,14 @@ export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, 
      * does not trigger change emission.
      * @docs-private
      */
-    setGroupSelection() {
+    setGroupSelection(checked: boolean) {
         if (!this.toggleGroup) {
             return;
         }
         // propagate changes only if the value in the group is different than the button checked value
-        if (!this.checked) {
-            this.checked = !this.checked;
-            this.onChangeCallback(this.checked);
-            this._checkedDispatcher.notify(this.toggleGroup.id, this.id);
-        }
+        this.checked = checked;
+        this.onChangeCallback(this.checked);
+        this._checkedDispatcher.notify(this.toggleGroup.id, this.id);
     }
 
     /** @docs-private */

@@ -209,10 +209,8 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
 
     writeValue(value: any) {
         Promise.resolve().then(() => {
-            if (this.value !== value) {
-                this._value = value;
-                this.notifySelectedChild(value);
-            }
+            this._value = value;
+            this.notifySelectedChild(value);
         });
     }
 
@@ -246,6 +244,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         merge(...this.buttons.map(button => button.selectionChange))
             .pipe(takeUntil(this.buttons.changes), takeUntil(this._destroyed))
             .subscribe((change: any) => {
+                this.value = change.value;
                 this.onChangeCallback(change.value);
                 this.valueChange.emit(change.value);
             });
@@ -257,9 +256,16 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
      */
     notifySelectedChild(newValue: string) {
         if (this.buttons) {
-            const selected = this.buttons.find(button => button.value === newValue);
-            if (selected) {
-                selected.setGroupSelection();
+            if (!newValue) {
+                const selected = this.buttons.find(button => button.checked);
+                if (selected) {
+                    selected.setGroupSelection(false);
+                }
+                return;
+            }
+            const selecting = this.buttons.find(button => button.value === newValue);
+            if (selecting) {
+                selecting.setGroupSelection(true);
             }
         }
     }
