@@ -53,6 +53,26 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
     /** @docs-private */
     triggerType: PopoverTriggerType = 'click';
 
+    // necessary for direct usages of popover where the popover should not be traversable through tabs like in the natural language form
+    /** Sets the tabIndex for the popover. Will only be considered if triggerType is 'manual' */
+    set tabIndex(value: number | null) {
+        this._tabIndex = value;
+    }
+
+    /**
+     * gets the tabindex for the popover
+     * if triggerType='hover' -> null
+     * if triggerType='click' -> 0
+     * if triggerType='manual' -> whatever is set on tabIndex. Defaults to 0 on 'manual'
+     */
+    get tabIndex(): number | null {
+        if (this.triggerType === 'manual') {
+            return this._tabIndex;
+        }
+        return this.triggerType === 'hover' ? null : 0;
+    }
+    private _tabIndex: number | null = 0;
+
     /** @docs-private */
     arrowStyle = {};
 

@@ -153,6 +153,41 @@ describe('NxPopoverTriggerDirective', () => {
         return overlayContainer.getContainerElement().querySelector('.cdk-overlay-backdrop') as HTMLElement;
     }
 
+    describe('popover state', () => {
+        it('should ignore set tabIndex for triggerType "hover"', fakeAsync(() => {
+            createTestComponent(PopoverShowClose);
+
+            popoverInstance.tabIndex = 42;
+            hover();
+            expect(getPopoverContent().getAttribute('tabindex')).toBeFalsy();
+        }));
+
+        it('should ignore set tabIndex for triggerType "click" and use default', fakeAsync(() => {
+            createTestComponent(PopoverClickComponent);
+
+            popoverInstance.tabIndex = 42;
+            click();
+            expect(getPopoverContent().getAttribute('tabindex')).toEqual('0');
+        }));
+
+        it('should set tabIndex for triggerType "manual"', fakeAsync(() => {
+            createTestComponent(ManualTrigger);
+            popoverInstance.tabIndex = 42;
+            spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit');
+            click();
+
+            expect(getPopoverContent().getAttribute('tabindex')).toEqual('42');
+        }));
+
+        it('should use default tabIndex for triggerType "manual"', fakeAsync(() => {
+            createTestComponent(ManualTrigger);
+            spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit');
+            click();
+
+            expect(getPopoverContent().getAttribute('tabindex')).toEqual('0');
+        }));
+    });
+
     describe('open by hover', () => {
         beforeEach(waitForAsync(() => {
             popoverDefaultOptions.popoverMaxWidth = '100px';
