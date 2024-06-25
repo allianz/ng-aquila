@@ -19,6 +19,9 @@ alias: radio toggle
 
 ### Custom
 
+Important: If you use only icons or anything else that is not descriptive enough for screen readers, make sure to set a
+descriptive `ariaLabel`.
+
 <!-- example(radio-toggle-custom) -->
 
 ### Template-driven form with ngModel
@@ -36,3 +39,8 @@ When using reactive forms you have to disable the control with the form control 
 Below you can find an example with a custom validator, which accepts only `B` as a correct option.
 
 <!-- example(radio-toggle-validation) -->
+
+### Accessibility
+
+If you use only icons or anything else that is not descriptive enough for screen readers, make sure to set a descriptive
+`ariaLabel` <a href="documentation/radio-toggle/overview#custom">as shown in the _Custom_ Toggle Buttons example</a>.

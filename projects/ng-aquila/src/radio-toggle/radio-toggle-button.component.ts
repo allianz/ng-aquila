@@ -63,6 +63,15 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     }
     private _disabled = false;
 
+    /** Aria label for screen reader users */
+    @Input() set ariaLabel(value: string) {
+        this._ariaLabel = value;
+    }
+    get ariaLabel(): string {
+        return this._ariaLabel;
+    }
+    private _ariaLabel = '';
+
     /** Sets the checked state and notify siblings and the parent group about the change */
     // Only use this if you want the onChecked event to be fired, this will inform the parent about the change!
     // To select a button without firing the event use the select() function

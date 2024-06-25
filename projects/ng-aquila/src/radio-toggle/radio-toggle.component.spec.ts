@@ -25,6 +25,7 @@ describe('NxRadioToggleComponent', () => {
         TestBed.configureTestingModule({
             imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
             declarations: [
+                AriaRadioToggle,
                 NoSelectionRadioToggle,
                 EmptyRadioToggle,
                 MultiRadioToggle,
@@ -436,6 +437,14 @@ describe('NxRadioToggleComponent', () => {
             createTestComponent(NoSelectionRadioToggle);
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
+
+        it('should set aria-labels', () => {
+            createTestComponent(AriaRadioToggle);
+            const radioInputElements = fixture.debugElement.queryAll(By.css('nx-radio-toggle-button>input.nx-radio-toggle__input'));
+            expect(radioInputElements.length).toBe(2);
+            expect(radioInputElements[0].nativeElement.getAttribute('aria-label')).toBe('cat');
+            expect(radioInputElements[1].nativeElement.getAttribute('aria-label')).toBe('dog');
+        });
     });
 });
 
@@ -526,6 +535,15 @@ class EmptyRadioToggle extends RadioToggleTest {}
     `,
 })
 class MultiRadioToggle extends RadioToggleTest {}
+@Component({
+    template: `
+        <nx-radio-toggle>
+            <nx-radio-toggle-button value="A" ariaLabel="cat">A</nx-radio-toggle-button>
+            <nx-radio-toggle-button value="B" ariaLabel="dog">B</nx-radio-toggle-button>
+        </nx-radio-toggle>
+    `,
+})
+class AriaRadioToggle extends RadioToggleTest {}
 
 @Component({
     template: `<form novalidate [formGroup]="testForm">
