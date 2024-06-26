@@ -119,6 +119,113 @@
     </div>
     <div class="docs-api-method-description"></div></div>
    
+   
+
+<h4 id="AppComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="AppComponent"></span>
+    <code>AppComponent</code></h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">consentTemplateRef</span>:
+                <span class="docs-api-property__type">TemplateRef<any></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">dialogRef</span>:
+                <span class="docs-api-property__type">NxModalRef<any></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">dialogService</span>:
+                <span class="docs-api-property__type">NxDialogService</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">formGroup</span>:
+                <span class="docs-api-property__type">FormGroup</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">submitTemplateRef</span>:
+                <span class="docs-api-property__type">TemplateRef<any></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">closeDialog()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">openConsentDialog()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">openSubmitDialog()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
   <h3 id="additional_classes" class="docs-header-link docs-api-h3">
         <span header-link="additional_classes"></span>
         Additional classes
@@ -148,6 +255,45 @@ registers the beforeEach and afterEach hooks for jasmine.</p>
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">appTree</span>:
+                <span class="docs-api-property__type">UnitTestTree</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">appTreeName</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">appTreeNameStandalone</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">appTreeStandalone</span>:
                 <span class="docs-api-property__type">UnitTestTree</span>
             </code>
         </p>
@@ -294,6 +440,26 @@ registers the beforeEach and afterEach hooks for jasmine.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
+            <span class="docs-api-method-name">createFileDir(testApp: <span class="docs-api-property__type">UnitTestTree</span>)</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Create file directory, remove comments and add ts files</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                testApp:
+                <span class="docs-api-method-parameter-type">UnitTestTree</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
             <span class="docs-api-method-name">deleteFile(filePath: <span class="docs-api-property__type">string</span>)</span>
         </code>
     </div>
@@ -343,11 +509,21 @@ registers the beforeEach and afterEach hooks for jasmine.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">syncTreeToFileSystem()</span>
+            <span class="docs-api-method-name">syncTreeToFileSystem(appTree: <span class="docs-api-property__type">UnitTestTree</span>)</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Syncs the whole virtual tree to the disk.</p>
-</div></div>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                appTree:
+                <span class="docs-api-method-parameter-type">UnitTestTree</span>
+            </code>
+        </div>
+        
+    </div></div>
    
 
 <div class="docs-api-method-card">

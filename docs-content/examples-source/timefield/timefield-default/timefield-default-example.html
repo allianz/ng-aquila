@@ -1,0 +1,10 @@
+<form [formGroup]="testForm">
+    <nx-timefield
+        #timefield
+        label="Time"
+        formControlName="timefieldReactive"
+    ></nx-timefield>
+    @if (timefield.errorState) {
+    <nx-error class="nx-margin-y-xs"> Invalid time input. </nx-error>
+    }
+</form>

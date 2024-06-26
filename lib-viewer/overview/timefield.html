@@ -1,10 +1,22 @@
 <p class="docs-markdown--p">The timefield component makes it easier for users to enter time inputs. Maximum character length per input field is 2 and by default it accepts time inputs in 24h format (ex: 23:00, 12:35,...). Programmatic time input is always accepted in <code>ISO 24h</code> time format.</p>
 <p class="docs-markdown--p">In 24h format you can enter hours between 0-23 and minutes between 0-59. Using the <code>twelveHourFormat</code> input of the timefield component, the AM/PM toggler can be activated. In 12h format you can enter hours between 1-12 and minutes between 0-59. Note that the model will always accept and return time in 24h format.</p>
-<h3 id="reactive-form-example" tabindex="-1" class="docs-markdown--h3">Reactive form example</h3>
+<h3 id="timefield" tabindex="-1" class="docs-markdown--h3">Timefield</h3>
+<div nx-docs-example="timefield-default" config="{}">exampleID: timefield-default</div>
+<h3 id="with-timepicker-dropdown" tabindex="-1" class="docs-markdown--h3">With timepicker dropdown</h3>
+<p class="docs-markdown--p">You can opt in to use the timepicker dropdown by setting the <code>withTimepicker</code> input to <code>true</code>. The timepicker dropdown will be displayed either by clicking on the icon button or when the user starts typing inside the input fields.</p>
+<p class="docs-markdown--p"><strong>Important:</strong> With the timepicker enabled you have to translate the <code>buttonOpenTimepickerAriaLabel</code> in the <code>NxTimefieldIntl</code> class for non-english languages to provide a meaningful label for the timepicker button.</p>
+<div nx-docs-example="timefield-with-timepicker" config="{}">exampleID: timefield-with-timepicker</div>
+<h4 id="changing-the-timepicker-options" tabindex="-1" class="docs-markdown--h4">Changing the timepicker options</h4>
+<p class="docs-markdown--p">You can set the start time, end time or the desired interval via component inputs.</p>
+<div nx-docs-example="timefield-options-interval" config="{}">exampleID: timefield-options-interval</div>
+<h4 id="enabling-timepicker-globally" tabindex="-1" class="docs-markdown--h4">Enabling timepicker globally</h4>
+<p class="docs-markdown--p">You can enable the timepicker globally by providing the <code>TimefieldDefaultOptions</code> and set <code>withTimepicker</code> to <code>true</code>, see the example below.</p>
+<div nx-docs-example="timefield-with-timepicker-global" config="{}">exampleID: timefield-with-timepicker-global</div>
+<h3 id="reactive-forms" tabindex="-1" class="docs-markdown--h3">Reactive forms</h3>
 <div nx-docs-example="timefield-reactive" config="{}">exampleID: timefield-reactive</div>
-<h3 id="template-driven-form-example" tabindex="-1" class="docs-markdown--h3">Template Driven form example</h3>
+<h3 id="template-driven-forms" tabindex="-1" class="docs-markdown--h3">Template Driven forms</h3>
 <div nx-docs-example="timefield-template-driven" config="{}">exampleID: timefield-template-driven</div>
-<h3 id="12h-time-format-toggler-example" tabindex="-1" class="docs-markdown--h3">12h time format toggler example</h3>
+<h3 id="12h-time-format-toggle" tabindex="-1" class="docs-markdown--h3">12h time format toggle</h3>
 <p class="docs-markdown--p">12h time format AM/PM toggler can be activated using <code>twelveHourFormat</code> input. Note that the model value will always be returned in 24h format.</p>
 <div nx-docs-example="timefield-format-toggler" config="{}">exampleID: timefield-format-toggler</div>
 <h3 id="disabled" tabindex="-1" class="docs-markdown--h3">Disabled</h3>
@@ -13,12 +25,16 @@
 <h3 id="negative-styling" tabindex="-1" class="docs-markdown--h3">Negative styling</h3>
 <p class="docs-markdown--p">You can apply the negative styling to the timefield by using the <code>[negative]</code> input.</p>
 <div nx-docs-example="timefield-negative" config="{}">exampleID: timefield-negative</div>
+<h3 id="expert" tabindex="-1" class="docs-markdown--h3">Expert</h3>
+<p class="docs-markdown--p">Switching the appearance will typically happen by providers, e.g. from the <code>NxExpertModule</code>, then you can omit the <code>appearance</code> input property. But you can also set the appearance directly on the component with the <code>appearance</code> property.</p>
+ <div nx-docs-example="timefield-expert" config="{}">exampleID: timefield-expert</div>
 <h3 id="localization" tabindex="-1" class="docs-markdown--h3">Localization</h3>
-<p class="docs-markdown--p">By default input fields have English aria-labels. To translate them you can subclass the <code>NxTimefieldIntl</code> and provide it in your module.</p>
+<p class="docs-markdown--p">By default input fields and the timepicker button have english aria-labels. To translate them you can subclass the <code>NxTimefieldIntl</code> and provide it in your module.</p>
 <p class="docs-markdown--p">The default aria-label's are:</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">hours input (hh): &quot;hours&quot;</li>
 <li class="docs-markdown--li">minutes input (mm): &quot;minutes&quot;</li>
+<li class="docs-markdown--li">timepicker button: &quot;Open time picker&quot;</li>
 </ul>
 <p class="docs-markdown--p">Thereby you can provide your own translations for the inputs as given in the example below.</p>
 <div nx-docs-example="timefield-localize" config="{}">exampleID: timefield-localize</div>

@@ -2102,6 +2102,10 @@
         {
           "name": "AppComponent",
           "title": ""
+        },
+        {
+          "name": "AppComponent",
+          "title": ""
         }
       ],
       "services": [],
@@ -2505,8 +2509,17 @@
     {
       "id": "timefield",
       "ngModule": "NxTimefieldModule",
-      "directive": [],
+      "directive": [
+        {
+          "name": "NxTimefieldOption",
+          "title": ""
+        }
+      ],
       "component": [
+        {
+          "name": "NxTimefieldControl",
+          "title": ""
+        },
         {
           "name": "NxTimefieldComponent",
           "title": ""
@@ -2515,12 +2528,26 @@
       "services": [],
       "classes": [
         {
+          "name": "TimefieldDefaultOptions",
+          "title": ""
+        },
+        {
           "name": "NxTimefieldIntl",
           "title": ""
         }
       ],
-      "interface": [],
-      "typeAlias": []
+      "interface": [
+        {
+          "name": "NxTimefield",
+          "title": "Parent component that should be wrapped around `MatStartDate` and `MatEndDate`."
+        }
+      ],
+      "typeAlias": [
+        {
+          "name": "TimepickerOption",
+          "title": ""
+        }
+      ]
     },
     {
       "id": "toolbar",
@@ -2669,31 +2696,6 @@
   ],
   "components": [
     {
-      "id": "action",
-      "title": "Action",
-      "examples": [
-        {
-          "name": "action",
-          "config": {}
-        },
-        {
-          "name": "action-with-router",
-          "config": {}
-        },
-        {
-          "name": "action-indicator",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/action.html",
-      "overviewFile": "lib-viewer/overview/action.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "menu"
-    },
-    {
       "id": "accessibility",
       "title": "Accessibility",
       "examples": [
@@ -2768,6 +2770,52 @@
       "alias": "expansion panel, collapse"
     },
     {
+      "id": "action",
+      "title": "Action",
+      "examples": [
+        {
+          "name": "action",
+          "config": {}
+        },
+        {
+          "name": "action-with-router",
+          "config": {}
+        },
+        {
+          "name": "action-indicator",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/action.html",
+      "overviewFile": "lib-viewer/overview/action.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "menu"
+    },
+    {
+      "id": "ag-grid",
+      "title": "Ag-grid",
+      "examples": [
+        {
+          "name": "ag-grid-opensource",
+          "config": {}
+        },
+        {
+          "name": "ag-grid",
+          "config": {}
+        }
+      ],
+      "category": "Third-party",
+      "apiFile": "lib-viewer/api/ag-grid.html",
+      "overviewFile": "lib-viewer/overview/ag-grid.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "progress",
+      "noApi": true
+    },
+    {
       "id": "avatar",
       "title": "Avatar",
       "examples": [
@@ -2794,6 +2842,48 @@
       "b2c": false,
       "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "badge",
+      "title": "Badge",
+      "examples": [
+        {
+          "name": "badge",
+          "config": {}
+        },
+        {
+          "name": "badge-vibrant",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/badge.html",
+      "overviewFile": "lib-viewer/overview/badge.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "chip"
+    },
+    {
+      "id": "base",
+      "title": "Base Components",
+      "examples": [
+        {
+          "name": "error",
+          "config": {}
+        },
+        {
+          "name": "label",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/base.html",
+      "overviewFile": "lib-viewer/overview/base.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "label, error"
     },
     {
       "id": "autocomplete",
@@ -2830,69 +2920,6 @@
       "b2c": true,
       "expert": true,
       "stable": "done"
-    },
-    {
-      "id": "badge",
-      "title": "Badge",
-      "examples": [
-        {
-          "name": "badge",
-          "config": {}
-        },
-        {
-          "name": "badge-vibrant",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/badge.html",
-      "overviewFile": "lib-viewer/overview/badge.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "chip"
-    },
-    {
-      "id": "ag-grid",
-      "title": "Ag-grid",
-      "examples": [
-        {
-          "name": "ag-grid-opensource",
-          "config": {}
-        },
-        {
-          "name": "ag-grid",
-          "config": {}
-        }
-      ],
-      "category": "Third-party",
-      "apiFile": "lib-viewer/api/ag-grid.html",
-      "overviewFile": "lib-viewer/overview/ag-grid.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "progress",
-      "noApi": true
-    },
-    {
-      "id": "base",
-      "title": "Base Components",
-      "examples": [
-        {
-          "name": "error",
-          "config": {}
-        },
-        {
-          "name": "label",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/base.html",
-      "overviewFile": "lib-viewer/overview/base.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "label, error"
     },
     {
       "id": "breadcrumb",
@@ -3165,18 +3192,6 @@
       "stable": "done"
     },
     {
-      "id": "config",
-      "title": "Expert",
-      "examples": [],
-      "category": "general",
-      "apiFile": "lib-viewer/api/config.html",
-      "overviewFile": "lib-viewer/overview/config.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true
-    },
-    {
       "id": "circle-toggle",
       "title": "Circle Toggle",
       "examples": [
@@ -3310,117 +3325,154 @@
       "stable": "done"
     },
     {
-      "id": "context-menu",
-      "title": "Context Menu",
-      "examples": [
-        {
-          "name": "context-menu-basic",
-          "config": {}
-        },
-        {
-          "name": "context-menu-programmatic",
-          "config": {}
-        },
-        {
-          "name": "context-menu-icons",
-          "config": {}
-        },
-        {
-          "name": "context-menu-indicator",
-          "config": {}
-        },
-        {
-          "name": "context-menu-nested",
-          "config": {}
-        },
-        {
-          "name": "context-menu-disabled",
-          "config": {}
-        },
-        {
-          "name": "context-menu-lazy",
-          "config": {}
-        },
-        {
-          "name": "context-menu-data",
-          "config": {}
-        },
-        {
-          "name": "context-menu-scroll-strategy",
-          "config": {}
-        },
-        {
-          "name": "context-menu-cursor-mode",
-          "config": {}
-        },
-        {
-          "name": "context-menu-scroll-strategy-provider",
-          "config": {}
-        },
-        {
-          "name": "context-menu-selection",
-          "config": {}
-        },
-        {
-          "name": "context-menu-select-multiple",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/context-menu.html",
-      "overviewFile": "lib-viewer/overview/context-menu.html",
-      "b2c": false,
+      "id": "config",
+      "title": "Expert",
+      "examples": [],
+      "category": "general",
+      "apiFile": "lib-viewer/api/config.html",
+      "overviewFile": "lib-viewer/overview/config.html",
+      "b2c": true,
       "expert": true,
       "stable": "done",
-      "alias": "menu"
+      "noApi": true
     },
     {
-      "id": "copytext",
-      "title": "Copytext",
+      "id": "datefield",
+      "title": "Date Field",
       "examples": [
         {
-          "name": "copytext-sizes",
+          "name": "datefield-iso",
           "config": {}
         },
         {
-          "name": "copytext-negative",
+          "name": "datefield-basic",
+          "config": {}
+        },
+        {
+          "name": "datefield-disabled",
+          "config": {}
+        },
+        {
+          "name": "datefield-min-max",
+          "config": {}
+        },
+        {
+          "name": "datefield-filter",
+          "config": {}
+        },
+        {
+          "name": "datefield-range",
+          "config": {}
+        },
+        {
+          "name": "datefield-reactive",
+          "config": {}
+        },
+        {
+          "name": "datefield-format-injection",
+          "config": {}
+        },
+        {
+          "name": "datefield-parsing",
+          "config": {}
+        },
+        {
+          "name": "datefield-formatting",
+          "config": {}
+        },
+        {
+          "name": "datefield-startview",
+          "config": {}
+        },
+        {
+          "name": "datefield-manual",
+          "config": {}
+        },
+        {
+          "name": "datefield-localize-date",
+          "config": {}
+        },
+        {
+          "name": "datefield-localize-texts",
+          "config": {}
+        },
+        {
+          "name": "datefield-toggle-focus",
+          "config": {}
+        },
+        {
+          "name": "datefield-injection-token",
+          "config": {}
+        },
+        {
+          "name": "datefield-scroll-strategy-provider",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/copytext.html",
-      "overviewFile": "lib-viewer/overview/copytext.html",
+      "apiFile": "lib-viewer/api/datefield.html",
+      "overviewFile": "lib-viewer/overview/datefield.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "datepicker"
+    },
+    {
+      "id": "dynamic-table",
+      "title": "Dynamic Tables",
+      "examples": [
+        {
+          "name": "dynamic-table",
+          "config": {}
+        },
+        {
+          "name": "dynamic-table-data",
+          "config": {}
+        },
+        {
+          "name": "dynamic-table-without-data",
+          "config": {}
+        },
+        {
+          "name": "dynamic-table-event",
+          "config": {}
+        },
+        {
+          "name": "dynamic-table-column-options",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/dynamic-table.html",
+      "overviewFile": "lib-viewer/overview/dynamic-table.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
     },
     {
-      "id": "data-display",
-      "title": "Data Display",
+      "id": "error-handling",
+      "title": "Error handling",
       "examples": [
         {
-          "name": "data-display-standard",
+          "name": "error",
           "config": {}
         },
         {
-          "name": "data-display-condensed",
+          "name": "error-custom-matcher-formfield",
           "config": {}
         },
         {
-          "name": "data-display-horizontal",
-          "config": {}
-        },
-        {
-          "name": "data-display-responsive",
+          "name": "error-reset",
           "config": {}
         }
       ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/data-display.html",
-      "overviewFile": "lib-viewer/overview/data-display.html",
+      "category": "general",
+      "apiFile": "lib-viewer/api/error-handling.html",
+      "overviewFile": "lib-viewer/overview/error-handling.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "done",
+      "noApi": true
     },
     {
       "id": "dropdown",
@@ -3516,61 +3568,128 @@
       "alias": "select, multi select"
     },
     {
-      "id": "dynamic-table",
-      "title": "Dynamic Tables",
+      "id": "file-uploader",
+      "title": "File uploader",
       "examples": [
         {
-          "name": "dynamic-table",
+          "name": "file-uploader-basic",
           "config": {}
         },
         {
-          "name": "dynamic-table-data",
+          "name": "file-uploader-reactive",
           "config": {}
         },
         {
-          "name": "dynamic-table-without-data",
+          "name": "file-uploader-template-driven",
           "config": {}
         },
         {
-          "name": "dynamic-table-event",
+          "name": "file-uploader-error-list",
           "config": {}
         },
         {
-          "name": "dynamic-table-column-options",
+          "name": "file-uploader-validation",
+          "config": {}
+        },
+        {
+          "name": "file-uploader-max-file-number",
+          "config": {}
+        },
+        {
+          "name": "file-uploader-type-validation",
+          "config": {}
+        },
+        {
+          "name": "file-uploader-strict-type-validation",
+          "config": {}
+        },
+        {
+          "name": "file-uploader-disable-common-validators",
+          "config": {}
+        },
+        {
+          "name": "file-uploader-auto",
+          "config": {}
+        },
+        {
+          "name": "file-uploader-separate-requests",
+          "config": {}
+        },
+        {
+          "name": "file-uploader-with-request",
+          "config": {}
+        },
+        {
+          "name": "file-uploader-expert",
+          "config": {}
+        },
+        {
+          "name": "file-uploader-drop-zone",
+          "config": {}
+        },
+        {
+          "name": "file-uploader-intl",
+          "config": {}
+        },
+        {
+          "name": "file-uploader-custom-item",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/dynamic-table.html",
-      "overviewFile": "lib-viewer/overview/dynamic-table.html",
-      "b2c": true,
+      "apiFile": "lib-viewer/api/file-uploader.html",
+      "overviewFile": "lib-viewer/overview/file-uploader.html",
+      "b2c": false,
       "expert": true,
       "stable": "done"
     },
     {
-      "id": "error-handling",
-      "title": "Error handling",
+      "id": "footer",
+      "title": "Footer",
       "examples": [
         {
-          "name": "error",
+          "name": "footer-basic",
           "config": {}
         },
         {
-          "name": "error-custom-matcher-formfield",
-          "config": {}
-        },
-        {
-          "name": "error-reset",
+          "name": "footer-default-copyright",
           "config": {}
         }
       ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/error-handling.html",
-      "overviewFile": "lib-viewer/overview/error-handling.html",
+      "category": "components",
+      "apiFile": "lib-viewer/api/footer.html",
+      "overviewFile": "lib-viewer/overview/footer.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "data-display",
+      "title": "Data Display",
+      "examples": [
+        {
+          "name": "data-display-standard",
+          "config": {}
+        },
+        {
+          "name": "data-display-condensed",
+          "config": {}
+        },
+        {
+          "name": "data-display-horizontal",
+          "config": {}
+        },
+        {
+          "name": "data-display-responsive",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/data-display.html",
+      "overviewFile": "lib-viewer/overview/data-display.html",
       "b2c": true,
       "expert": true,
-      "stable": "done",
-      "noApi": true
+      "stable": "done"
     },
     {
       "id": "formfield",
@@ -3674,251 +3793,6 @@
       "alias": "control"
     },
     {
-      "id": "datefield",
-      "title": "Date Field",
-      "examples": [
-        {
-          "name": "datefield-iso",
-          "config": {}
-        },
-        {
-          "name": "datefield-basic",
-          "config": {}
-        },
-        {
-          "name": "datefield-disabled",
-          "config": {}
-        },
-        {
-          "name": "datefield-min-max",
-          "config": {}
-        },
-        {
-          "name": "datefield-filter",
-          "config": {}
-        },
-        {
-          "name": "datefield-range",
-          "config": {}
-        },
-        {
-          "name": "datefield-reactive",
-          "config": {}
-        },
-        {
-          "name": "datefield-format-injection",
-          "config": {}
-        },
-        {
-          "name": "datefield-parsing",
-          "config": {}
-        },
-        {
-          "name": "datefield-formatting",
-          "config": {}
-        },
-        {
-          "name": "datefield-startview",
-          "config": {}
-        },
-        {
-          "name": "datefield-manual",
-          "config": {}
-        },
-        {
-          "name": "datefield-localize-date",
-          "config": {}
-        },
-        {
-          "name": "datefield-localize-texts",
-          "config": {}
-        },
-        {
-          "name": "datefield-toggle-focus",
-          "config": {}
-        },
-        {
-          "name": "datefield-injection-token",
-          "config": {}
-        },
-        {
-          "name": "datefield-scroll-strategy-provider",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/datefield.html",
-      "overviewFile": "lib-viewer/overview/datefield.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "datepicker"
-    },
-    {
-      "id": "footer",
-      "title": "Footer",
-      "examples": [
-        {
-          "name": "footer-basic",
-          "config": {}
-        },
-        {
-          "name": "footer-default-copyright",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/footer.html",
-      "overviewFile": "lib-viewer/overview/footer.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "file-uploader",
-      "title": "File uploader",
-      "examples": [
-        {
-          "name": "file-uploader-basic",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-reactive",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-template-driven",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-error-list",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-validation",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-max-file-number",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-type-validation",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-strict-type-validation",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-disable-common-validators",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-auto",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-separate-requests",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-with-request",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-expert",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-drop-zone",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-intl",
-          "config": {}
-        },
-        {
-          "name": "file-uploader-custom-item",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/file-uploader.html",
-      "overviewFile": "lib-viewer/overview/file-uploader.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "headline",
-      "title": "Headline",
-      "examples": [
-        {
-          "name": "headline-sizes-deprecated",
-          "config": {}
-        },
-        {
-          "name": "headline-font-weights",
-          "config": {}
-        },
-        {
-          "name": "headline-links",
-          "config": {}
-        },
-        {
-          "name": "headline-negative",
-          "config": {}
-        },
-        {
-          "name": "headline-sizes-a1",
-          "config": {}
-        },
-        {
-          "name": "headline-sizes-mapping",
-          "config": {
-            "hideHeader": true
-          }
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/headline.html",
-      "overviewFile": "lib-viewer/overview/headline.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "heading, title"
-    },
-    {
-      "id": "header",
-      "title": "Header",
-      "examples": [
-        {
-          "name": "header",
-          "config": {}
-        },
-        {
-          "name": "header-two-rows",
-          "config": {}
-        },
-        {
-          "name": "header-icons",
-          "config": {}
-        },
-        {
-          "name": "header-cobranding",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/header.html",
-      "overviewFile": "lib-viewer/overview/header.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
-      "alias": "toolbar, navbar"
-    },
-    {
       "id": "grid",
       "title": "Grid",
       "examples": [
@@ -3984,6 +3858,35 @@
       "alias": "container, column, layout"
     },
     {
+      "id": "header",
+      "title": "Header",
+      "examples": [
+        {
+          "name": "header",
+          "config": {}
+        },
+        {
+          "name": "header-two-rows",
+          "config": {}
+        },
+        {
+          "name": "header-icons",
+          "config": {}
+        },
+        {
+          "name": "header-cobranding",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/header.html",
+      "overviewFile": "lib-viewer/overview/header.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "alias": "toolbar, navbar"
+    },
+    {
       "id": "icon",
       "title": "Icons",
       "examples": [
@@ -4022,6 +3925,211 @@
       "b2c": true,
       "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "copytext",
+      "title": "Copytext",
+      "examples": [
+        {
+          "name": "copytext-sizes",
+          "config": {}
+        },
+        {
+          "name": "copytext-negative",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/copytext.html",
+      "overviewFile": "lib-viewer/overview/copytext.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "context-menu",
+      "title": "Context Menu",
+      "examples": [
+        {
+          "name": "context-menu-basic",
+          "config": {}
+        },
+        {
+          "name": "context-menu-programmatic",
+          "config": {}
+        },
+        {
+          "name": "context-menu-icons",
+          "config": {}
+        },
+        {
+          "name": "context-menu-indicator",
+          "config": {}
+        },
+        {
+          "name": "context-menu-nested",
+          "config": {}
+        },
+        {
+          "name": "context-menu-disabled",
+          "config": {}
+        },
+        {
+          "name": "context-menu-lazy",
+          "config": {}
+        },
+        {
+          "name": "context-menu-data",
+          "config": {}
+        },
+        {
+          "name": "context-menu-scroll-strategy",
+          "config": {}
+        },
+        {
+          "name": "context-menu-cursor-mode",
+          "config": {}
+        },
+        {
+          "name": "context-menu-scroll-strategy-provider",
+          "config": {}
+        },
+        {
+          "name": "context-menu-selection",
+          "config": {}
+        },
+        {
+          "name": "context-menu-select-multiple",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/context-menu.html",
+      "overviewFile": "lib-viewer/overview/context-menu.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "alias": "menu"
+    },
+    {
+      "id": "input",
+      "title": "Input Field",
+      "examples": [
+        {
+          "name": "input-without-formfield",
+          "config": {}
+        },
+        {
+          "name": "input",
+          "config": {}
+        },
+        {
+          "name": "formfield-appearance",
+          "config": {}
+        },
+        {
+          "name": "input-mode",
+          "config": {}
+        },
+        {
+          "name": "input-autoresize",
+          "config": {}
+        },
+        {
+          "name": "input-standalone",
+          "config": {}
+        },
+        {
+          "name": "input-template-driven",
+          "config": {}
+        },
+        {
+          "name": "input-reactive",
+          "config": {}
+        },
+        {
+          "name": "formfield-password-visibility",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/input.html",
+      "overviewFile": "lib-viewer/overview/input.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "headline",
+      "title": "Headline",
+      "examples": [
+        {
+          "name": "headline-sizes-deprecated",
+          "config": {}
+        },
+        {
+          "name": "headline-font-weights",
+          "config": {}
+        },
+        {
+          "name": "headline-links",
+          "config": {}
+        },
+        {
+          "name": "headline-negative",
+          "config": {}
+        },
+        {
+          "name": "headline-sizes-a1",
+          "config": {}
+        },
+        {
+          "name": "headline-sizes-mapping",
+          "config": {
+            "hideHeader": true
+          }
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/headline.html",
+      "overviewFile": "lib-viewer/overview/headline.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "heading, title"
+    },
+    {
+      "id": "layout",
+      "title": "Layout",
+      "examples": [
+        {
+          "name": "margin-sizes",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "margin-usage",
+          "config": {}
+        },
+        {
+          "name": "hidden-classes",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "viewport-change",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/layout.html",
+      "overviewFile": "lib-viewer/overview/layout.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true
     },
     {
       "id": "image",
@@ -4089,187 +4197,6 @@
       "alias": "badge"
     },
     {
-      "id": "input",
-      "title": "Input Field",
-      "examples": [
-        {
-          "name": "input-without-formfield",
-          "config": {}
-        },
-        {
-          "name": "input",
-          "config": {}
-        },
-        {
-          "name": "formfield-appearance",
-          "config": {}
-        },
-        {
-          "name": "input-mode",
-          "config": {}
-        },
-        {
-          "name": "input-autoresize",
-          "config": {}
-        },
-        {
-          "name": "input-standalone",
-          "config": {}
-        },
-        {
-          "name": "input-template-driven",
-          "config": {}
-        },
-        {
-          "name": "input-reactive",
-          "config": {}
-        },
-        {
-          "name": "formfield-password-visibility",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/input.html",
-      "overviewFile": "lib-viewer/overview/input.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "layout",
-      "title": "Layout",
-      "examples": [
-        {
-          "name": "margin-sizes",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "margin-usage",
-          "config": {}
-        },
-        {
-          "name": "hidden-classes",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "viewport-change",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/layout.html",
-      "overviewFile": "lib-viewer/overview/layout.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true
-    },
-    {
-      "id": "list",
-      "title": "List",
-      "examples": [
-        {
-          "name": "list-unordered",
-          "config": {}
-        },
-        {
-          "name": "list-ordered",
-          "config": {}
-        },
-        {
-          "name": "list-circles",
-          "config": {}
-        },
-        {
-          "name": "list-icons",
-          "config": {}
-        },
-        {
-          "name": "list-copytext",
-          "config": {}
-        },
-        {
-          "name": "list-condensed",
-          "config": {}
-        },
-        {
-          "name": "list-negative",
-          "config": {}
-        },
-        {
-          "name": "list-custom-color",
-          "config": {}
-        },
-        {
-          "name": "list-nesting",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/list.html",
-      "overviewFile": "lib-viewer/overview/list.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "licence-plate",
-      "title": "Licence Plate",
-      "examples": [
-        {
-          "name": "licence-plate-standard",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-seasonal",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-special",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-euro",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-other",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-ngmodel",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-reactive",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-disabled",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-expert",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-expert-states",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/licence-plate.html",
-      "overviewFile": "lib-viewer/overview/licence-plate.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "link",
       "title": "Link",
       "examples": [
@@ -4310,38 +4237,6 @@
       "stable": "done"
     },
     {
-      "id": "menu",
-      "title": "Menu",
-      "examples": [
-        {
-          "name": "menu-button",
-          "config": {}
-        },
-        {
-          "name": "menu-link",
-          "config": {}
-        },
-        {
-          "name": "menu-item",
-          "config": {}
-        },
-        {
-          "name": "menu-item-with-icons",
-          "config": {}
-        },
-        {
-          "name": "menu",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/menu.html",
-      "overviewFile": "lib-viewer/overview/menu.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "mask",
       "title": "Input Mask",
       "examples": [
@@ -4378,6 +4273,67 @@
       "apiFile": "lib-viewer/api/mask.html",
       "overviewFile": "lib-viewer/overview/mask.html",
       "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "natural-language-form",
+      "title": "Natural Language Form",
+      "examples": [
+        {
+          "name": "natural-language-form-basic",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-extended",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-negative",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-sizes",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/natural-language-form.html",
+      "overviewFile": "lib-viewer/overview/natural-language-form.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "text form, inline field"
+    },
+    {
+      "id": "menu",
+      "title": "Menu",
+      "examples": [
+        {
+          "name": "menu-button",
+          "config": {}
+        },
+        {
+          "name": "menu-link",
+          "config": {}
+        },
+        {
+          "name": "menu-item",
+          "config": {}
+        },
+        {
+          "name": "menu-item-with-icons",
+          "config": {}
+        },
+        {
+          "name": "menu",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/menu.html",
+      "overviewFile": "lib-viewer/overview/menu.html",
+      "b2c": false,
       "expert": true,
       "stable": "done"
     },
@@ -4456,33 +4412,81 @@
       "alias": "popover"
     },
     {
-      "id": "natural-language-form",
-      "title": "Natural Language Form",
+      "id": "modal",
+      "title": "Modal",
       "examples": [
         {
-          "name": "natural-language-form-basic",
+          "name": "modal-opening",
           "config": {}
         },
         {
-          "name": "natural-language-form-extended",
+          "name": "modal-closing",
           "config": {}
         },
         {
-          "name": "natural-language-form-negative",
+          "name": "modal-closing-behaviour",
           "config": {}
         },
         {
-          "name": "natural-language-form-sizes",
+          "name": "modal-content-actions",
+          "config": {}
+        },
+        {
+          "name": "modal-fixed-width",
+          "config": {}
+        },
+        {
+          "name": "modal-status",
+          "config": {}
+        },
+        {
+          "name": "modal-fullscreen",
+          "config": {}
+        },
+        {
+          "name": "modal-data-injection",
+          "config": {}
+        },
+        {
+          "name": "modal-with-direction",
+          "config": {}
+        },
+        {
+          "name": "modal-unsaved",
+          "config": {}
+        },
+        {
+          "name": "modal-basic",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/natural-language-form.html",
-      "overviewFile": "lib-viewer/overview/natural-language-form.html",
+      "apiFile": "lib-viewer/api/modal.html",
+      "overviewFile": "lib-viewer/overview/modal.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "alias": "text form, inline field"
+      "alias": "dialog"
+    },
+    {
+      "id": "overlay",
+      "title": "Overlay",
+      "examples": [
+        {
+          "name": "overlay-positioning",
+          "config": {}
+        },
+        {
+          "name": "overlay-limiting-fallbacks",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/overlay.html",
+      "overviewFile": "lib-viewer/overview/overlay.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
     },
     {
       "id": "number-stepper",
@@ -4566,83 +4570,6 @@
       "alias": "number input, range"
     },
     {
-      "id": "modal",
-      "title": "Modal",
-      "examples": [
-        {
-          "name": "modal-opening",
-          "config": {}
-        },
-        {
-          "name": "modal-closing",
-          "config": {}
-        },
-        {
-          "name": "modal-closing-behaviour",
-          "config": {}
-        },
-        {
-          "name": "modal-content-actions",
-          "config": {}
-        },
-        {
-          "name": "modal-fixed-width",
-          "config": {}
-        },
-        {
-          "name": "modal-status",
-          "config": {}
-        },
-        {
-          "name": "modal-fullscreen",
-          "config": {}
-        },
-        {
-          "name": "modal-data-injection",
-          "config": {}
-        },
-        {
-          "name": "modal-with-direction",
-          "config": {}
-        },
-        {
-          "name": "modal-unsaved",
-          "config": {}
-        },
-        {
-          "name": "modal-basic",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/modal.html",
-      "overviewFile": "lib-viewer/overview/modal.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "dialog"
-    },
-    {
-      "id": "overlay",
-      "title": "Overlay",
-      "examples": [
-        {
-          "name": "overlay-positioning",
-          "config": {}
-        },
-        {
-          "name": "overlay-limiting-fallbacks",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/overlay.html",
-      "overviewFile": "lib-viewer/overview/overlay.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "page-search",
       "title": "Page Search",
       "examples": [
@@ -4672,41 +4599,104 @@
       "alias": "search field"
     },
     {
-      "id": "pagination",
-      "title": "Pagination",
+      "id": "licence-plate",
+      "title": "Licence Plate",
       "examples": [
         {
-          "name": "pagination-advanced",
+          "name": "licence-plate-standard",
           "config": {}
         },
         {
-          "name": "pagination-simple",
+          "name": "licence-plate-seasonal",
           "config": {}
         },
         {
-          "name": "pagination-slider",
+          "name": "licence-plate-special",
           "config": {}
         },
         {
-          "name": "pagination-localize",
+          "name": "licence-plate-euro",
           "config": {}
         },
         {
-          "name": "pagination-localize-advanced",
+          "name": "licence-plate-other",
           "config": {}
         },
         {
-          "name": "pagination-a11y",
+          "name": "licence-plate-ngmodel",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-reactive",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-disabled",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-expert",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-expert-states",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/pagination.html",
-      "overviewFile": "lib-viewer/overview/pagination.html",
+      "apiFile": "lib-viewer/api/licence-plate.html",
+      "overviewFile": "lib-viewer/overview/licence-plate.html",
       "b2c": true,
       "expert": true,
-      "stable": "done",
-      "alias": "pager, paginator"
+      "stable": "done"
+    },
+    {
+      "id": "list",
+      "title": "List",
+      "examples": [
+        {
+          "name": "list-unordered",
+          "config": {}
+        },
+        {
+          "name": "list-ordered",
+          "config": {}
+        },
+        {
+          "name": "list-circles",
+          "config": {}
+        },
+        {
+          "name": "list-icons",
+          "config": {}
+        },
+        {
+          "name": "list-copytext",
+          "config": {}
+        },
+        {
+          "name": "list-condensed",
+          "config": {}
+        },
+        {
+          "name": "list-negative",
+          "config": {}
+        },
+        {
+          "name": "list-custom-color",
+          "config": {}
+        },
+        {
+          "name": "list-nesting",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/list.html",
+      "overviewFile": "lib-viewer/overview/list.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
     },
     {
       "id": "phone-input",
@@ -4755,6 +4745,43 @@
       "b2c": true,
       "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "pagination",
+      "title": "Pagination",
+      "examples": [
+        {
+          "name": "pagination-advanced",
+          "config": {}
+        },
+        {
+          "name": "pagination-simple",
+          "config": {}
+        },
+        {
+          "name": "pagination-slider",
+          "config": {}
+        },
+        {
+          "name": "pagination-localize",
+          "config": {}
+        },
+        {
+          "name": "pagination-localize-advanced",
+          "config": {}
+        },
+        {
+          "name": "pagination-a11y",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/pagination.html",
+      "overviewFile": "lib-viewer/overview/pagination.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "pager, paginator"
     },
     {
       "id": "progress-stepper",
@@ -4816,84 +4843,6 @@
       "expert": true,
       "stable": "done",
       "alias": "stepper"
-    },
-    {
-      "id": "popover",
-      "title": "Popover",
-      "examples": [
-        {
-          "name": "popover-trigger",
-          "config": {}
-        },
-        {
-          "name": "popover-click-outside",
-          "config": {}
-        },
-        {
-          "name": "popover-positioning",
-          "config": {}
-        },
-        {
-          "name": "popover-table",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "popover-custom",
-          "config": {}
-        },
-        {
-          "name": "popover-extended",
-          "config": {}
-        },
-        {
-          "name": "popover-guided-tour",
-          "config": {}
-        },
-        {
-          "name": "popover-without-arrow",
-          "config": {}
-        },
-        {
-          "name": "popover-width",
-          "config": {}
-        },
-        {
-          "name": "popover-lazyload",
-          "config": {}
-        },
-        {
-          "name": "popover-modal",
-          "config": {}
-        },
-        {
-          "name": "popover-scroll",
-          "config": {}
-        },
-        {
-          "name": "popover-scrollable",
-          "config": {}
-        },
-        {
-          "name": "popover-hover",
-          "config": {}
-        },
-        {
-          "name": "popover-scroll-strategy-provider",
-          "config": {}
-        },
-        {
-          "name": "popover-i18n",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/popover.html",
-      "overviewFile": "lib-viewer/overview/popover.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
     },
     {
       "id": "progressbar",
@@ -5020,6 +4969,84 @@
       "stable": "done"
     },
     {
+      "id": "popover",
+      "title": "Popover",
+      "examples": [
+        {
+          "name": "popover-trigger",
+          "config": {}
+        },
+        {
+          "name": "popover-click-outside",
+          "config": {}
+        },
+        {
+          "name": "popover-positioning",
+          "config": {}
+        },
+        {
+          "name": "popover-table",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "popover-custom",
+          "config": {}
+        },
+        {
+          "name": "popover-extended",
+          "config": {}
+        },
+        {
+          "name": "popover-guided-tour",
+          "config": {}
+        },
+        {
+          "name": "popover-without-arrow",
+          "config": {}
+        },
+        {
+          "name": "popover-width",
+          "config": {}
+        },
+        {
+          "name": "popover-lazyload",
+          "config": {}
+        },
+        {
+          "name": "popover-modal",
+          "config": {}
+        },
+        {
+          "name": "popover-scroll",
+          "config": {}
+        },
+        {
+          "name": "popover-scrollable",
+          "config": {}
+        },
+        {
+          "name": "popover-hover",
+          "config": {}
+        },
+        {
+          "name": "popover-scroll-strategy-provider",
+          "config": {}
+        },
+        {
+          "name": "popover-i18n",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/popover.html",
+      "overviewFile": "lib-viewer/overview/popover.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
       "id": "radio-toggle",
       "title": "Toggle Button",
       "examples": [
@@ -5055,39 +5082,6 @@
       "expert": true,
       "stable": "done",
       "alias": "radio toggle"
-    },
-    {
-      "id": "sidebar",
-      "title": "Side Navigation",
-      "examples": [
-        {
-          "name": "sidebar",
-          "config": {}
-        },
-        {
-          "name": "sidebar-resizeable",
-          "config": {}
-        },
-        {
-          "name": "sidebar-methods",
-          "config": {}
-        },
-        {
-          "name": "sidebar-footer",
-          "config": {}
-        },
-        {
-          "name": "sidebar-outputs",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/sidebar.html",
-      "overviewFile": "lib-viewer/overview/sidebar.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "sidenav, side navigation"
     },
     {
       "id": "sidepanel",
@@ -5148,6 +5142,31 @@
       "noApi": true
     },
     {
+      "id": "spinner",
+      "title": "Spinner",
+      "examples": [
+        {
+          "name": "spinner-sizes",
+          "config": {}
+        },
+        {
+          "name": "spinner-negative",
+          "config": {}
+        },
+        {
+          "name": "spinner-aria-announcement",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/spinner.html",
+      "overviewFile": "lib-viewer/overview/spinner.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "progress spinner"
+    },
+    {
       "id": "signal-button",
       "title": "Signal Button",
       "examples": [
@@ -5168,73 +5187,37 @@
       "stable": "done"
     },
     {
-      "id": "slider",
-      "title": "Slider",
+      "id": "sidebar",
+      "title": "Side Navigation",
       "examples": [
         {
-          "name": "slider-basic",
+          "name": "sidebar",
           "config": {}
         },
         {
-          "name": "slider-appendix",
+          "name": "sidebar-resizeable",
           "config": {}
         },
         {
-          "name": "slider-default",
+          "name": "sidebar-methods",
           "config": {}
         },
         {
-          "name": "slider-decimal",
+          "name": "sidebar-footer",
           "config": {}
         },
         {
-          "name": "slider-label",
-          "config": {}
-        },
-        {
-          "name": "slider-textual",
-          "config": {}
-        },
-        {
-          "name": "slider-disabled",
-          "config": {}
-        },
-        {
-          "name": "slider-negative",
-          "config": {}
-        },
-        {
-          "name": "slider-inverted",
-          "config": {}
-        },
-        {
-          "name": "slider-template",
-          "config": {}
-        },
-        {
-          "name": "slider-reactive",
-          "config": {}
-        },
-        {
-          "name": "slider-thumb",
-          "config": {}
-        },
-        {
-          "name": "slider-labels",
-          "config": {}
-        },
-        {
-          "name": "slider-tick",
+          "name": "sidebar-outputs",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/slider.html",
-      "overviewFile": "lib-viewer/overview/slider.html",
+      "apiFile": "lib-viewer/api/sidebar.html",
+      "overviewFile": "lib-viewer/overview/sidebar.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "alias": "number input, range"
+      "alias": "sidenav, side navigation"
     },
     {
       "id": "swipebar",
@@ -5287,74 +5270,72 @@
       "alias": "page banner"
     },
     {
-      "id": "spinner",
-      "title": "Spinner",
+      "id": "table",
+      "title": "Table",
       "examples": [
         {
-          "name": "spinner-sizes",
+          "name": "table",
           "config": {}
         },
         {
-          "name": "spinner-negative",
+          "name": "table-condensed",
           "config": {}
         },
         {
-          "name": "spinner-aria-announcement",
+          "name": "table-zebra",
+          "config": {}
+        },
+        {
+          "name": "table-sticky-column",
+          "config": {}
+        },
+        {
+          "name": "table-sticky-header",
+          "config": {}
+        },
+        {
+          "name": "table-column-hiding",
+          "config": {}
+        },
+        {
+          "name": "table-column-reorder",
+          "config": {}
+        },
+        {
+          "name": "table-column-resize",
+          "config": {}
+        },
+        {
+          "name": "table-sorting",
+          "config": {}
+        },
+        {
+          "name": "table-filter-sort-paginate",
+          "config": {}
+        },
+        {
+          "name": "table-single-select",
+          "config": {}
+        },
+        {
+          "name": "table-selecting",
+          "config": {}
+        },
+        {
+          "name": "table-expandable",
+          "config": {}
+        },
+        {
+          "name": "table-form-elements",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/spinner.html",
-      "overviewFile": "lib-viewer/overview/spinner.html",
+      "apiFile": "lib-viewer/api/table.html",
+      "overviewFile": "lib-viewer/overview/table.html",
       "b2c": true,
       "expert": true,
-      "stable": "done",
-      "alias": "progress spinner"
-    },
-    {
-      "id": "switcher",
-      "title": "Switcher",
-      "examples": [
-        {
-          "name": "switcher-default",
-          "config": {}
-        },
-        {
-          "name": "switcher-large",
-          "config": {}
-        },
-        {
-          "name": "switcher-label-small",
-          "config": {}
-        },
-        {
-          "name": "switcher-negative",
-          "config": {}
-        },
-        {
-          "name": "switcher-label-left",
-          "config": {}
-        },
-        {
-          "name": "switcher-template-driven",
-          "config": {}
-        },
-        {
-          "name": "switcher-reactive-form",
-          "config": {}
-        },
-        {
-          "name": "switcher-disabled",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/switcher.html",
-      "overviewFile": "lib-viewer/overview/switcher.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "slide toggle, checkbox"
+      "stable": "done"
     },
     {
       "id": "tabs",
@@ -5438,69 +5419,282 @@
       "alias": "navigation tabs"
     },
     {
-      "id": "table",
-      "title": "Table",
+      "id": "slider",
+      "title": "Slider",
       "examples": [
         {
-          "name": "table",
+          "name": "slider-basic",
           "config": {}
         },
         {
-          "name": "table-condensed",
+          "name": "slider-appendix",
           "config": {}
         },
         {
-          "name": "table-zebra",
+          "name": "slider-default",
           "config": {}
         },
         {
-          "name": "table-sticky-column",
+          "name": "slider-decimal",
           "config": {}
         },
         {
-          "name": "table-sticky-header",
+          "name": "slider-label",
           "config": {}
         },
         {
-          "name": "table-column-hiding",
+          "name": "slider-textual",
           "config": {}
         },
         {
-          "name": "table-column-reorder",
+          "name": "slider-disabled",
           "config": {}
         },
         {
-          "name": "table-column-resize",
+          "name": "slider-negative",
           "config": {}
         },
         {
-          "name": "table-sorting",
+          "name": "slider-inverted",
           "config": {}
         },
         {
-          "name": "table-filter-sort-paginate",
+          "name": "slider-template",
           "config": {}
         },
         {
-          "name": "table-single-select",
+          "name": "slider-reactive",
           "config": {}
         },
         {
-          "name": "table-selecting",
+          "name": "slider-thumb",
           "config": {}
         },
         {
-          "name": "table-expandable",
+          "name": "slider-labels",
           "config": {}
         },
         {
-          "name": "table-form-elements",
+          "name": "slider-tick",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/table.html",
-      "overviewFile": "lib-viewer/overview/table.html",
+      "apiFile": "lib-viewer/api/slider.html",
+      "overviewFile": "lib-viewer/overview/slider.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "number input, range"
+    },
+    {
+      "id": "switcher",
+      "title": "Switcher",
+      "examples": [
+        {
+          "name": "switcher-default",
+          "config": {}
+        },
+        {
+          "name": "switcher-large",
+          "config": {}
+        },
+        {
+          "name": "switcher-label-small",
+          "config": {}
+        },
+        {
+          "name": "switcher-negative",
+          "config": {}
+        },
+        {
+          "name": "switcher-label-left",
+          "config": {}
+        },
+        {
+          "name": "switcher-template-driven",
+          "config": {}
+        },
+        {
+          "name": "switcher-reactive-form",
+          "config": {}
+        },
+        {
+          "name": "switcher-disabled",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/switcher.html",
+      "overviewFile": "lib-viewer/overview/switcher.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "slide toggle, checkbox"
+    },
+    {
+      "id": "theming",
+      "title": "Theming",
+      "examples": [],
+      "category": "general",
+      "apiFile": "lib-viewer/api/theming.html",
+      "overviewFile": "lib-viewer/overview/theming.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true
+    },
+    {
+      "id": "timefield",
+      "title": "Timefield",
+      "examples": [
+        {
+          "name": "timefield-default",
+          "config": {}
+        },
+        {
+          "name": "timefield-with-timepicker",
+          "config": {}
+        },
+        {
+          "name": "timefield-options-interval",
+          "config": {}
+        },
+        {
+          "name": "timefield-with-timepicker-global",
+          "config": {}
+        },
+        {
+          "name": "timefield-reactive",
+          "config": {}
+        },
+        {
+          "name": "timefield-template-driven",
+          "config": {}
+        },
+        {
+          "name": "timefield-format-toggler",
+          "config": {}
+        },
+        {
+          "name": "timefield-disabled",
+          "config": {}
+        },
+        {
+          "name": "timefield-negative",
+          "config": {}
+        },
+        {
+          "name": "timefield-expert",
+          "config": {}
+        },
+        {
+          "name": "timefield-localize",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/timefield.html",
+      "overviewFile": "lib-viewer/overview/timefield.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "timepicker"
+    },
+    {
+      "id": "toolbar",
+      "title": "Toolbar",
+      "examples": [
+        {
+          "name": "toolbar",
+          "config": {}
+        },
+        {
+          "name": "toolbar-divider",
+          "config": {}
+        },
+        {
+          "name": "toolbar-positioning-content",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/toolbar.html",
+      "overviewFile": "lib-viewer/overview/toolbar.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "typography",
+      "title": "Typography",
+      "examples": [
+        {
+          "name": "headline-font-weights",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/typography.html",
+      "overviewFile": "lib-viewer/overview/typography.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true
+    },
+    {
+      "id": "utils",
+      "title": "Utilities",
+      "examples": [
+        {
+          "name": "utils-type-guards",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/utils.html",
+      "overviewFile": "lib-viewer/overview/utils.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "progress",
+      "noApi": true
+    },
+    {
+      "id": "tree",
+      "title": "Tree",
+      "examples": [
+        {
+          "name": "tree",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/tree.html",
+      "overviewFile": "lib-viewer/overview/tree.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "video",
+      "title": "Video",
+      "examples": [
+        {
+          "name": "video",
+          "config": {}
+        },
+        {
+          "name": "video-custom",
+          "config": {}
+        },
+        {
+          "name": "video-advanced",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/video.html",
+      "overviewFile": "lib-viewer/overview/video.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -5559,95 +5753,6 @@
       "alias": "chip, badge"
     },
     {
-      "id": "timefield",
-      "title": "Timefield",
-      "examples": [
-        {
-          "name": "timefield-reactive",
-          "config": {}
-        },
-        {
-          "name": "timefield-template-driven",
-          "config": {}
-        },
-        {
-          "name": "timefield-format-toggler",
-          "config": {}
-        },
-        {
-          "name": "timefield-disabled",
-          "config": {}
-        },
-        {
-          "name": "timefield-negative",
-          "config": {}
-        },
-        {
-          "name": "timefield-localize",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/timefield.html",
-      "overviewFile": "lib-viewer/overview/timefield.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "timepicker"
-    },
-    {
-      "id": "toolbar",
-      "title": "Toolbar",
-      "examples": [
-        {
-          "name": "toolbar",
-          "config": {}
-        },
-        {
-          "name": "toolbar-divider",
-          "config": {}
-        },
-        {
-          "name": "toolbar-positioning-content",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/toolbar.html",
-      "overviewFile": "lib-viewer/overview/toolbar.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "theming",
-      "title": "Theming",
-      "examples": [],
-      "category": "general",
-      "apiFile": "lib-viewer/api/theming.html",
-      "overviewFile": "lib-viewer/overview/theming.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true
-    },
-    {
-      "id": "tree",
-      "title": "Tree",
-      "examples": [
-        {
-          "name": "tree",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/tree.html",
-      "overviewFile": "lib-viewer/overview/tree.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "tooltip",
       "title": "Tooltip",
       "examples": [
@@ -5693,64 +5798,6 @@
       "category": "components",
       "apiFile": "lib-viewer/api/tooltip.html",
       "overviewFile": "lib-viewer/overview/tooltip.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "typography",
-      "title": "Typography",
-      "examples": [
-        {
-          "name": "headline-font-weights",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/typography.html",
-      "overviewFile": "lib-viewer/overview/typography.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true
-    },
-    {
-      "id": "utils",
-      "title": "Utilities",
-      "examples": [
-        {
-          "name": "utils-type-guards",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/utils.html",
-      "overviewFile": "lib-viewer/overview/utils.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "progress",
-      "noApi": true
-    },
-    {
-      "id": "video",
-      "title": "Video",
-      "examples": [
-        {
-          "name": "video",
-          "config": {}
-        },
-        {
-          "name": "video-custom",
-          "config": {}
-        },
-        {
-          "name": "video-advanced",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/video.html",
-      "overviewFile": "lib-viewer/overview/video.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -11324,6 +11371,17 @@
       "url": "lib-viewer/examples/taglist-templatedriven-###TYPE###.html"
     },
     {
+      "id": "timefield-default",
+      "title": "Timefield without timepicker example",
+      "module": "timefield",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/timefield-default-###TYPE###.html"
+    },
+    {
       "id": "timefield-disabled",
       "title": "Timefield disabled example",
       "module": "timefield",
@@ -11333,6 +11391,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/timefield-disabled-###TYPE###.html"
+    },
+    {
+      "id": "timefield-expert",
+      "title": "Timefield Expert example",
+      "module": "timefield",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/timefield-expert-###TYPE###.html"
     },
     {
       "id": "timefield-format-toggler",
@@ -11368,6 +11437,17 @@
       "url": "lib-viewer/examples/timefield-negative-###TYPE###.html"
     },
     {
+      "id": "timefield-options-interval",
+      "title": "Timefield different options",
+      "module": "timefield",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/timefield-options-interval-###TYPE###.html"
+    },
+    {
       "id": "timefield-reactive",
       "title": "Timefield reactive forms example",
       "module": "timefield",
@@ -11388,6 +11468,28 @@
         "css"
       ],
       "url": "lib-viewer/examples/timefield-template-driven-###TYPE###.html"
+    },
+    {
+      "id": "timefield-with-timepicker",
+      "title": "Timefield with timepicker",
+      "module": "timefield",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/timefield-with-timepicker-###TYPE###.html"
+    },
+    {
+      "id": "timefield-with-timepicker-global",
+      "title": "Timefield with timepicker enabled globally",
+      "module": "timefield",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/timefield-with-timepicker-global-###TYPE###.html"
     },
     {
       "id": "toolbar",
