@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.9.0](https://github.com/allianz/ng-aquila/compare/v17.8.0...v17.9.0) (2024-06-26)
+
+### Timefield new opt-in timepicker
+A new timepicker dropdown was added to the timefield that let's users select a time from a dropdown. This feature is opt-in for now, please see the documentation page for more infos.
+
+
+### Documentation 📚
+
+* **avatar:** add aria-label in examples ([bb20e9d](https://github.com/allianz/ng-aquila/commit/bb20e9d664f99df5ce8b2e9f5d8e11974381cdb3))
+
+
+### Bug Fixes 🐛
+
+* **circle-toggle:** setting group control value reflect on child view ([302b511](https://github.com/allianz/ng-aquila/commit/302b511a9b9d31d553fe499bd915190611d069d7))
+* **schematics:** schematics and tests for standalone ([7b2037c](https://github.com/allianz/ng-aquila/commit/7b2037c766ed14698bce63c7ca43e6db0ea8d675))
+
+
+### Features ✨
+
+* **popover:** enable setting tabindex for manual trigger ([d729998](https://github.com/allianz/ng-aquila/commit/d729998eb9a917e8bce4ef2243ad9aa0b23fc94c))
+* **timefield:** add timepicker dropdown ([f912ec7](https://github.com/allianz/ng-aquila/commit/f912ec7557858bdebc3a3d0cd02e40511539c73b))
+* **toggle-button:** enable setting aria-label for the inner radio input ([e74335d](https://github.com/allianz/ng-aquila/commit/e74335d63b1781277999d9a5bd0d956189436372))
+
 ## [17.8.0](https://github.com/allianz/ng-aquila/compare/v17.7.0...v17.8.0) (2024-06-18)
 
 
