@@ -7,7 +7,9 @@
 .nx-radio-toggle {
     display: flex;
     height: 100%;
+}
 
+.nx-radio-toggle:not(.disable-mobile) {
     @include media-breakpoint-down('small') {
         flex-direction: column;
         text-align: center;

@@ -1,0 +1,26 @@
+<form [formGroup]="testForm">
+    <div nxLayout="grid">
+        <div nxRow>
+            <div nxCol="12,12,6">
+                <nx-timefield
+                    label="Time"
+                    #timefield
+                    formControlName="timefieldReactive"
+                    appearance="outline"
+                ></nx-timefield>
+            </div>
+            <div nxCol="12,12,6">
+                <nx-timefield
+                    #timefield
+                    label="Time"
+                    formControlName="timefield12Reactive"
+                    twelveHourFormat
+                    appearance="outline"
+                ></nx-timefield>
+            </div>
+        </div>
+    </div>
+</form>
+
+<p class="nx-margin-bottom-0">Form value: {{ testForm.value | json }}</p>
+<p class="nx-margin-y-0">Form status: {{ testForm.status | json }}</p>

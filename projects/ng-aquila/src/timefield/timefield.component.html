@@ -1,6 +1,13 @@
-<label class="nx-timefield__label" [ngClass]="hasFocus || ''" [attr.for]="hours">{{ label }}</label>
-<div class="nx-timefield__wrapper">
-    <div class="nx-timefield-input__fields" [ngClass]="hasFocus || ''">
+<div class="nx-timefield__wrapper" [ngClass]="{ 'has-outline': appearance === 'outline' }">
+    <nx-formfield
+        cdkOverlayOrigin
+        #overlayOrigin="cdkOverlayOrigin"
+        [label]="label"
+        [optionalLabel]="optionalLabel"
+        [appearance]="appearance"
+        floatLabel="always"
+        [negative]="negative ? 'negative' : ''"
+    >
         <input
             [id]="idHours"
             #inputHours
@@ -9,47 +16,116 @@
             type="text"
             maxlength="2"
             autocomplete="off"
-            (focusout)="_onBlur($event, 'hours')"
+            role="combobox"
             (input)="_onInput($event, 'hours')"
-            (focus)="_onFocus()"
+            (keydown)="handleKeyDown($event)"
+            (focus)="_onFocus($event)"
+            (blur)="_onInputBlur('hours')"
             [required]="required"
+            [disabled]="disabled"
+            [placeholder]="placeholderHours"
+            aria-autocomplete="list"
             [attr.aria-required]="required"
             [attr.aria-label]="_getAriaLabel('hours')"
-            [disabled]="disabled"
-            [ngClass]="hasFocus || ''"
-            [placeholder]="placeholderHours"
+            [attr.aria-expanded]="isOpen.toString()"
+            [attr.aria-controls]="isOpen ? idOptionList : null"
+            [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
         />
-        <span class="nx-timefield-hours-separator" [ngClass]="hasFocus || ''">:</span>
+        <span class="nx-timefield-hours-separator">:</span>
         <input
             [id]="idMinutes"
-            required
             #inputMinutes
             [value]="minutes || null"
             class="nx-timefield-input__field__minutes"
             type="text"
             maxlength="2"
             autocomplete="off"
+            role="combobox"
             (input)="_onInput($event, 'minutes')"
-            (focus)="_onFocus()"
-            (focusout)="_onBlur($event, 'minutes')"
+            (focus)="_onFocus($event)"
+            (blur)="_onInputBlur('minutes')"
+            (keydown)="handleKeyDown($event)"
             [required]="required"
+            [disabled]="disabled"
+            [placeholder]="placeholderMinutes"
+            aria-autocomplete="list"
             [attr.aria-required]="required"
             [attr.aria-label]="_getAriaLabel('minutes')"
-            [disabled]="disabled"
-            [ngClass]="hasFocus || ''"
-            [placeholder]="placeholderMinutes"
+            [attr.aria-expanded]="isOpen.toString()"
+            [attr.aria-controls]="isOpen ? idOptionList : null"
+            [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
         />
-    </div>
-    <nx-radio-group
+        @if (withTimepicker) {
+            <button
+                nxFormfieldSuffix
+                #toggleButton
+                [ngClass]="{ 'nx-timepicker-toggle--disabled': disabled }"
+                (click)="!disabled && toggleButtonClick()"
+                (focus)="_onFocus($event)"
+                class="nx-timepicker-toggle-button"
+                type="button"
+                [disabled]="disabled"
+                [attr.aria-label]="intl.buttonOpenTimepickerAriaLabel"
+                [attr.aria-expanded]="isOpen.toString()"
+                [attr.aria-controls]="isOpen ? idOptionList : null"
+                [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+                (keydown)="handleKeyDown($event)"
+            >
+                <nx-icon name="clock-o" aria-hidden="true" size="s"></nx-icon>
+            </button>
+        }
+        <nx-timefield-control style="display: none" [errorState]="errorState" [disabled]="disabled" [required]="required" [value]="time" [focused]="hasFocus" />
+        <span nxFormfieldHint *ngIf="hint"> {{ hint }} </span>
+        <ng-content select="[nxFormfieldError]" ngProjectAs="[nxFormfieldError]"></ng-content>
+    </nx-formfield>
+
+    <nx-radio-toggle
         [name]="idRadioGroup"
         [(ngModel)]="_toggleAMPM"
         (ngModelChange)="_updateTime()"
         *ngIf="twelveHourFormat"
         (click)="_updateTime()"
         [disabled]="disabled"
-        [negative]="negative"
+        [variant]="negative ? 'small negative' : 'small'"
+        disableMobile
     >
-        <nx-radio labelSize="small" value="AM">{{ labelAM }}</nx-radio>
-        <nx-radio labelSize="small" value="PM">{{ labelPM }}</nx-radio>
-    </nx-radio-group>
+        <nx-radio-toggle-button disableMobile value="AM">{{ labelAM }}</nx-radio-toggle-button>
+        <nx-radio-toggle-button disableMobile value="PM">{{ labelPM }}</nx-radio-toggle-button>
+    </nx-radio-toggle>
 </div>
+
+<ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOpen]="isOpen"
+    [cdkConnectedOverlayHasBackdrop]="true"
+    [cdkConnectedOverlayOrigin]="overlayOrigin"
+    [cdkConnectedOverlayMinWidth]="_overlayWidth"
+    [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
+    (backdropClick)="closeOverlay()"
+    (detach)="closeOverlay()"
+>
+    <section
+        role="dialog"
+        aria-modal="true"
+        [ngClass]="{
+            'has-outline': appearance === 'outline',
+            'twelve-hour-format': twelveHourFormat
+        }"
+    >
+        <ul
+            #list
+            role="listbox"
+            [id]="idOptionList"
+            tabindex="0"
+            class="option-list"
+            [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+            (keydown)="handleKeyDown($event)"
+        >
+            @for (item of timeList; track item.value; let i = $index) {
+                <li [nxTimefieldOption]="item.value" (mousedown)="preventFocus($event)" (click)="selectOption(item.value)">
+                    <div class="option-label">{{ item.label }}</div>
+                </li>
+            }
+        </ul>
+    </section>
+</ng-template>

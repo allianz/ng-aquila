@@ -1,11 +1,106 @@
+/* eslint-disable @angular-eslint/no-conflicting-lifecycle */
+import { ActiveDescendantKeyManager, FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
+import { CdkConnectedOverlay, CdkOverlayOrigin } from '@angular/cdk/overlay';
+import {
+    AfterViewInit,
+    booleanAttribute,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    DestroyRef,
+    DoCheck,
+    ElementRef,
+    EventEmitter,
+    Inject,
+    inject,
+    InjectionToken,
+    Input,
+    numberAttribute,
+    OnDestroy,
+    Optional,
+    Output,
+    QueryList,
+    Self,
+    SimpleChanges,
+    ViewChild,
+    ViewChildren,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import {
+    AppearanceType,
+    FORMFIELD_DEFAULT_OPTIONS,
+    FormfieldDefaultOptions,
+    NxFormfieldControl,
+    NxFormfieldUpdateEventType,
+} from '@aposin/ng-aquila/formfield';
 import { ErrorStateMatcher, pad } from '@aposin/ng-aquila/utils';
+import { Subject } from 'rxjs';
 
 import { NxTimefieldIntl } from './timefield-intl';
+import { NxTimefieldOption } from './timefield-option';
+import { getClosestTime, getTimeArray } from './utils';
 
 let nextId = 0;
+
+export const DEFAULT_END_TIME = '24:00';
+export const DEFAULT_START_TIME = '00:00';
+export const DEFAULT_TIME_SPAN = 30;
+
+export type TimepickerOption = { value: string; label: string };
+
+export function TIMEFIELD_DEFAULT_OPTIONS_FACTORY(): TimefieldDefaultOptions {
+    return {
+        withTimepicker: false,
+    };
+}
+
+export const TIMEFIELD_DEFAULT_OPTIONS = new InjectionToken<TimefieldDefaultOptions>('FORMFIELD_DEFAULT_OPTIONS', {
+    providedIn: 'root',
+    factory: TIMEFIELD_DEFAULT_OPTIONS_FACTORY,
+});
+
+export class TimefieldDefaultOptions {
+    withTimepicker = false;
+}
+
+@Component({
+    selector: 'nx-timefield-control',
+    template: ``,
+    standalone: true,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{ provide: NxFormfieldControl, useExisting: NxTimefieldControl }],
+})
+export class NxTimefieldControl implements NxFormfieldControl<string> {
+    timefield = inject(NxTimefieldComponent);
+    ngControl = inject(NgControl, { optional: true, self: true });
+
+    @Input() value: string | null = null;
+    readonly stateChanges = new Subject<void>();
+    get empty() {
+        return !!this.value;
+    }
+    id: string = ''; // noop for now
+    @Input() focused = false;
+    @Input() required = false;
+    @Input() disabled = false;
+    @Input() readonly = false;
+    readonly shouldLabelFloat = true;
+    @Input() errorState = false;
+    @Input() placeholder = '';
+    controlType = 'nx-timefield';
+    @Input() updateOn: NxFormfieldUpdateEventType = 'change';
+    setDescribedByIds(ids: string[]): void {
+        // noop
+    }
+    setAriaLabel?(value: string): void {
+        // noop
+    }
+    get elementRef(): ElementRef<any> {
+        return this.timefield.elementRef;
+    }
+}
 
 @Component({
     selector: 'nx-timefield',
@@ -16,33 +111,103 @@ let nextId = 0;
         '[class.has-error]': 'errorState',
         '[class.is-negative]': 'negative',
         '[class.is-disabled]': 'disabled',
+        '[class.has-timepicker]': 'withTimepicker',
+        '(focusout)': '_onBlur($event)',
     },
 })
-export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
+export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck {
     /** @docs-private */
     errorState = false;
 
     _toggleAMPM!: string | null;
+    protected isOpen = false;
 
-    /** Event that emits the time in 24h ISO format. */
+    protected readonly intl = inject(NxTimefieldIntl);
+    protected readonly focusMonitor = inject(FocusMonitor);
+
+    /* The appearance of the formfield. Should be mostly handled via dependency injection and not over this input. */
+    @Input() appearance: AppearanceType = this._formfieldDefaultOptions?.appearance ?? 'auto';
+    /* The hint to be shown below the field. */
+    @Input() hint = '';
+    /* The optional label for the formfield. */
+    @Input() optionalLabel: string = '';
+
+    private _withTimepicker = false;
+    /* Whether to show the timepicker. Not enabled by default. */
+    @Input({ transform: booleanAttribute }) set withTimepicker(value: boolean) {
+        this.focusMonitor.stopMonitoring(this.toggleButton?.nativeElement);
+        this._withTimepicker = value;
+        setTimeout(() => this.toggleButton && this.focusMonitor.monitor(this.toggleButton.nativeElement));
+    }
+    get withTimepicker(): boolean {
+        return this._withTimepicker;
+    }
+
+    /* Event that emits the time in 24h ISO format. */
     @Output() readonly valueChange = new EventEmitter<string>();
 
-    private readonly _idHours = `nx-timefield__hours-${nextId++}`;
-    /** @docs-private */
-    get idHours(): string {
-        return this._idHours;
+    @ViewChild('list') timePickerList?: ElementRef<HTMLUListElement>;
+    @ViewChild('toggleButton') toggleButton!: ElementRef<HTMLButtonElement>;
+    @ViewChild('overlayOrigin') overlayOrigin!: CdkOverlayOrigin;
+    @ViewChild('inputMinutes') inputMinutes!: ElementRef<HTMLInputElement>;
+    @ViewChild('inputHours') inputHours!: ElementRef<HTMLInputElement>;
+    @ViewChild(CdkConnectedOverlay) overlay?: CdkConnectedOverlay;
+    @ViewChildren(NxTimefieldOption) timepickerOptions!: QueryList<NxTimefieldOption>;
+
+    private destroyRef = inject(DestroyRef);
+
+    timeList: TimepickerOption[] = [];
+    pickerValue: any;
+    protected _keyManager?: ActiveDescendantKeyManager<NxTimefieldOption>;
+
+    handleKeyDown(event: KeyboardEvent) {
+        if (!this.withTimepicker) {
+            return;
+        }
+        if (!this.isOpen && event.target instanceof HTMLButtonElement && (event.key === 'Enter' || event.key === ' ')) {
+            // space and enter on the button are handled by the click handler
+            // we return here otherwise the overlay would get closed immediately
+            return;
+        }
+
+        if (this.isOpen) {
+            switch (event.key) {
+                case 'Enter':
+                case ' ':
+                    event.preventDefault();
+                    this.selectOption(this._keyManager?.activeItem?.value);
+                    break;
+                default:
+                    this._keyManager?.onKeydown(event);
+                    break;
+            }
+        } else if (!this.isOpen && event.key !== 'Enter' && event.key !== 'Tab' && event.key !== 'Shift') {
+            this.toggleOverlay();
+        }
     }
 
     private readonly _idMinutes = `nx-timefield__minutes-${nextId++}`;
-    /** @docs-private */
+    /** The id of the minutes input field. */
     get idMinutes(): string {
         return this._idMinutes;
     }
 
+    private readonly _idHours = `nx-timefield__hours-${nextId++}`;
+    /** The id of the hours input field. */
+    get idHours(): string {
+        return this._idHours;
+    }
+
     private readonly _idRadioGroup = `nx-timefield__radio-group-${nextId++}`;
-    /** @docs-private */
+    /** The id of the am/pm selection. */
     get idRadioGroup(): string {
         return this._idRadioGroup;
+    }
+
+    private readonly _idOptionList = `nx-timefield__list-${nextId++}`;
+    /** The id of option list in the timepicker overlay. */
+    get idOptionList(): string {
+        return this._idOptionList;
     }
 
     private _maxHours = 23;
@@ -182,6 +347,10 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     }
     private _negative = false;
 
+    @Input() pickerStartTime = DEFAULT_START_TIME;
+    @Input() pickerEndTime = DEFAULT_END_TIME;
+    @Input({ transform: numberAttribute }) pickerTimeInterval = DEFAULT_TIME_SPAN;
+
     /** Whether the timefield is disabled. */
     @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
@@ -215,11 +384,13 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         return this._minutes;
     }
 
-    private _hasFocus!: any;
-    /** @docs-private */
-    get hasFocus() {
-        return this._hasFocus ? 'has-focus' : null;
+    protected hasFocus = false;
+
+    get elementRef(): ElementRef<HTMLElement> {
+        return this._elementRef;
     }
+
+    protected _overlayWidth: string | number = '';
 
     constructor(
         private readonly _cdr: ChangeDetectorRef,
@@ -228,13 +399,29 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         @Optional() private readonly _parentForm: NgForm | null,
         @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
         readonly _intl: NxTimefieldIntl,
-        private readonly elementRef: ElementRef,
+        private readonly _elementRef: ElementRef,
+        // TODO use these default options
+        @Optional() @Inject(FORMFIELD_DEFAULT_OPTIONS) private readonly _formfieldDefaultOptions?: FormfieldDefaultOptions,
+        @Optional() @Inject(TIMEFIELD_DEFAULT_OPTIONS) private readonly _timefieldDefaultOptions?: TimefieldDefaultOptions,
     ) {
+        if (_timefieldDefaultOptions) {
+            this.withTimepicker = this._timefieldDefaultOptions?.withTimepicker ?? false;
+        }
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of
             // the `providers` to avoid running into a circular import.
             this.ngControl.valueAccessor = this;
         }
+    }
+
+    ngAfterViewInit() {
+        // this.focusMonitor.monitor(this.toggleButton?.nativeElement);
+        this._keyManager = new ActiveDescendantKeyManager(this.timepickerOptions).withWrap();
+        this._keyManager.change.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
+            if (this._keyManager?.activeItem) {
+                this.scrollOptionIntoView(this._keyManager?.activeItem);
+            }
+        });
     }
 
     ngDoCheck(): void {
@@ -246,6 +433,25 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         }
     }
 
+    ngOnInit() {
+        this._createTimelist();
+    }
+
+    private _createTimelist() {
+        this.timeList = getTimeArray(this.pickerStartTime, this.pickerEndTime, this.pickerTimeInterval, this.twelveHourFormat);
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes.time || changes.pickerStartTime || changes.pickerEndTime || changes.pickerTimeInterval || changes.twelveHourFormat) {
+            this._createTimelist();
+            setTimeout(() => this.scrollSelectedItemIntoView());
+        }
+    }
+
+    ngOnDestroy() {
+        this.focusMonitor.stopMonitoring(this.toggleButton?.nativeElement);
+    }
+
     /** @docs-private */
     updateErrorState() {
         const oldState = this.errorState;
@@ -255,6 +461,28 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         if (newState !== oldState) {
             this.errorState = newState;
         }
+    }
+
+    toggleOverlay() {
+        this.isOpen ? this.closeOverlay() : this.openOverlay();
+    }
+
+    openOverlay() {
+        if (this.disabled) {
+            return;
+        }
+        this._overlayWidth = this.overlayOrigin.elementRef.nativeElement.getBoundingClientRect().width;
+        this.isOpen = true;
+        setTimeout(() => this.scrollSelectedItemIntoView());
+    }
+
+    closeOverlay() {
+        this.isOpen = false;
+        this._onTouchedCallback();
+    }
+
+    toggleButtonClick() {
+        this.toggleOverlay();
     }
 
     private _convertToISOFormat(hours: string, minutes: string) {
@@ -273,8 +501,11 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         this._onChangeCallback(this._time);
     }
 
-    _onFocus() {
-        this._hasFocus = true;
+    _onFocus(event: Event) {
+        this.hasFocus = true;
+        if (event.target instanceof HTMLInputElement) {
+            event.target.select();
+        }
     }
 
     _getAriaLabel(type: string) {
@@ -290,25 +521,43 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         return label;
     }
 
-    _onInput(event: any, type: string) {
+    _onInput(event: Event, type: string) {
+        const target = event.target as HTMLInputElement;
         if (type === 'hours') {
-            this.hours = event.target.value;
+            this.hours = target.value;
+            if (target.value.length === 2 && target.selectionStart === 2) {
+                this.inputMinutes.nativeElement.focus();
+            }
+            // user has entered the first digit again. for quicker typing select the second digit
+            if (target.value.length === 2 && target.selectionStart === 1) {
+                target.selectionEnd = 2;
+            }
         } else if (type === 'minutes') {
-            this.minutes = event.target.value;
+            this.minutes = target.value;
         }
         this._updateTime();
+        const closestOption = this.findClosestOption(this.time);
+        if (closestOption) {
+            this._keyManager?.setActiveItem(closestOption);
+        }
     }
 
-    _onBlur(event: any, type: string) {
-        if (!this.elementRef.nativeElement.contains(event.relatedTarget)) {
+    _onBlur(event: FocusEvent) {
+        if (
+            !this.elementRef.nativeElement.contains(event.relatedTarget as HTMLElement) &&
+            !this.overlay?.overlayRef?.overlayElement?.contains(event.relatedTarget as HTMLElement)
+        ) {
             this._onTouchedCallback();
-
-            this._hasFocus = false;
+            this.hasFocus = false;
+            this.closeOverlay();
         }
+    }
+
+    _onInputBlur(element: 'hours' | 'minutes') {
         // set 0X is the value entered in X
-        if (type === 'hours' && Number(this.hours) < 10 && this.hours !== '') {
+        if (element === 'hours' && Number(this.hours) < 10 && this.hours !== '') {
             this.hours = pad(String(this.hours));
-        } else if (type === 'minutes' && Number(this.minutes) < 10 && this.minutes !== '') {
+        } else if (element === 'minutes' && Number(this.minutes) < 10 && this.minutes !== '') {
             this.minutes = pad(String(this.minutes));
         }
     }
@@ -376,6 +625,42 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         }
 
         return null;
+    }
+
+    selectOption(value?: string) {
+        if (!value) {
+            return;
+        }
+        const [hours] = value.split(':');
+
+        this._toggleAMPM = Number(hours) >= 12 ? 'PM' : 'AM';
+        this.writeValue(value);
+        this.closeOverlay();
+    }
+
+    preventFocus(event: Event) {
+        event.preventDefault();
+    }
+
+    scrollSelectedItemIntoView() {
+        const selectedItem = this.findClosestOption(this.time);
+        if (selectedItem) {
+            this._keyManager?.setActiveItem(selectedItem);
+            this.scrollOptionIntoView(selectedItem);
+        }
+    }
+
+    findClosestOption(time: string) {
+        const closestTime = getClosestTime(
+            this.timeList.map(t => t.value),
+            time || '00:00',
+        );
+        const option = this.timepickerOptions?.find(option => option.value === closestTime);
+        return option;
+    }
+
+    scrollOptionIntoView(option: NxTimefieldOption) {
+        option.element.scrollIntoView({ block: 'center' });
     }
 
     writeValue(value: string) {

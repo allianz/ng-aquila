@@ -23,7 +23,15 @@ const customMatchers: jasmine.CustomAsyncMatcherFactories = {
                         }
 
                         if (results.violations.length) {
-                            result.message = results.violations.map(violation => `* ${violation.description}\n  ${violation.helpUrl}`).join('\n');
+                            results.violations.forEach(violation => {
+                                console.log(violation.tags, violation.nodes);
+                            });
+                            result.message = results.violations
+                                .map(
+                                    violation =>
+                                        `* ${violation.description}\n  ${violation.helpUrl}\n  Affected nodes:\n ${violation.nodes.map(node => `  ${node.html}\n  ${node.failureSummary}`).join('\n\n')}}`,
+                                )
+                                .join('\n');
                         } else {
                             result.pass = true;
                         }

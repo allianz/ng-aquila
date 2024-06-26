@@ -69,9 +69,11 @@ $border-radius: nx-border-radius(s);
     color: v(toggle-button-selected-text-color);
     cursor: default;
 
-    .nx-toggle-button__mobile-check {
-        @include media-breakpoint-down('small') {
-            display: inline-block;
+    &:not(.disable-mobile) {
+        .nx-toggle-button__mobile-check {
+            @include media-breakpoint-down('small') {
+                display: inline-block;
+            }
         }
     }
 
@@ -100,9 +102,11 @@ $border-radius: nx-border-radius(s);
         padding: button-padding(nx-spacer(2xs));
         text-transform: none;
 
-        @include media-breakpoint-down('small') {
-            @include type-style(toggle-button-large);
-            padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
+        &:not(.disable-mobile) {
+            @include media-breakpoint-down('small') {
+                @include type-style(toggle-button-large);
+                padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
+            }
         }
     }
 }
@@ -124,10 +128,12 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
     border-radius: $border-rounded-on-the-left;
     border-width: $border-width 0 $border-width $border-width;
 
-    @include media-breakpoint-down('small') {
-        border-width: $border-width;
-        border-bottom-width: nx-border-size(xs);
-        border-radius: $border-rounded-on-the-top;
+    &:not(.disable-mobile) {
+        @include media-breakpoint-down('small') {
+            border-width: $border-width;
+            border-bottom-width: nx-border-size(xs);
+            border-radius: $border-rounded-on-the-top;
+        }
     }
 
     :host-context([dir='rtl']) & {
@@ -151,15 +157,17 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
         border-width: $border-width;
     }
 
-    @include media-breakpoint-down('small') {
-        border-width: $border-width;
-        border-top-width: nx-border-size(xs);
-        border-radius: $border-rounded-on-the-bottom;
-
-        // prevent style changes if there is only one toggle option
-        &.nx-radio-toggle__label-container--first {
-            border-radius: $border-radius;
+    &:not(.disable-mobile) {
+        @include media-breakpoint-down('small') {
             border-width: $border-width;
+            border-top-width: nx-border-size(xs);
+            border-radius: $border-rounded-on-the-bottom;
+
+            // prevent style changes if there is only one toggle option
+            &.nx-radio-toggle__label-container--first {
+                border-radius: $border-radius;
+                border-width: $border-width;
+            }
         }
     }
 
@@ -197,10 +205,12 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
     height: 100%;
     min-height: nx-spacer(m);
 
-    @include media-breakpoint-down('small') {
-        border-width: nx-border-size(xs) nx-border-size(m);
-        justify-content: center;
-        padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
+    &:not(.disable-mobile) {
+        @include media-breakpoint-down('small') {
+            border-width: nx-border-size(xs) nx-border-size(m);
+            justify-content: center;
+            padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
+        }
     }
 
     :host-context([dir='rtl']) & {

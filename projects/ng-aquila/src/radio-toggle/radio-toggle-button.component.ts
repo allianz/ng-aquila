@@ -3,6 +3,7 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import {
     AfterViewInit,
+    booleanAttribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -50,6 +51,8 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     /** @docs-private */
     // emits when the button is checked to notify the group
     readonly onChecked = new Subject<NxRadioToggleButtonChange>();
+
+    @Input({ transform: booleanAttribute }) disableMobile = false;
 
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 

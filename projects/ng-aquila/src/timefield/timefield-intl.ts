@@ -14,4 +14,7 @@ export class NxTimefieldIntl {
 
     /** Label that should replace the 'minutes' input field of the aria-label. */
     inputFieldMinutesAriaLabel = 'minutes';
+
+    /** Label for the time picker button. */
+    buttonOpenTimepickerAriaLabel = 'Open time picker';
 }

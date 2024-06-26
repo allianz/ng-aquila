@@ -3,8 +3,8 @@
     "editor.detectIndentation": false,
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true,
-        "source.organizeImports": false
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "never"
     },
     "eslint.options": {
         "extensions": [".ts", ".html"]

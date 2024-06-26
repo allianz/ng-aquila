@@ -1,6 +1,7 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     AfterContentInit,
+    booleanAttribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -37,6 +38,9 @@ export const RESET_VALUES = [null, undefined, ''];
 })
 export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, AfterContentInit, DoCheck {
     private readonly _toggleId: string = (nextId++).toString();
+
+    /** Whether the component should switch to vertical buttons on mobile viewports. */
+    @Input({ transform: booleanAttribute }) disableMobile = false;
 
     private _selection: any;
 

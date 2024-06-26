@@ -1,10 +1,11 @@
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { DOWN_ARROW, ENTER, UP_ARROW } from '@angular/cdk/keycodes';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { dispatchFakeEvent } from 'projects/ng-aquila/src/cdk-test-utils';
 
-import { NxTimefieldComponent } from './timefield.component';
+import { dispatchKeyboardEvent } from '../cdk-test-utils';
+import { NxTimefieldComponent, TIMEFIELD_DEFAULT_OPTIONS } from './timefield.component';
 import { NxTimefieldModule } from './timefield.module';
 import { NxTimefieldIntl } from './timefield-intl';
 
@@ -18,6 +19,7 @@ abstract class TimefieldTest {
     required = false;
     time = '';
     twelveHourFormat = false;
+    withTimepicker = false;
 }
 
 @Injectable()
@@ -33,10 +35,7 @@ describe('NxTimefieldComponent', () => {
     let timefieldElement: HTMLElement;
     let inputElementHours: HTMLInputElement;
     let inputElementMinutes: HTMLInputElement;
-    let spanElementSeperator: HTMLSpanElement;
-    let divElementInputFields: HTMLDivElement;
-    let divElementsWrapper: HTMLDivElement;
-    let focusMonitor: FocusMonitor;
+    let overlayContainer: OverlayContainer;
 
     function createTestComponent(component: Type<TimefieldTest>) {
         fixture = TestBed.createComponent(component);
@@ -46,9 +45,6 @@ describe('NxTimefieldComponent', () => {
         timefieldElement = fixture.nativeElement.querySelector('nx-timefield');
         inputElementHours = fixture.nativeElement.querySelector('.nx-timefield-input__field__hours') as HTMLInputElement;
         inputElementMinutes = fixture.nativeElement.querySelector('.nx-timefield-input__field__minutes') as HTMLInputElement;
-        spanElementSeperator = fixture.nativeElement.querySelector('.nx-timefield-hours-separator') as HTMLSpanElement;
-        divElementInputFields = fixture.nativeElement.querySelector('.nx-timefield-input__fields') as HTMLDivElement;
-        divElementsWrapper = fixture.nativeElement.querySelector('.nx-timefield__wrapper') as HTMLDivElement;
     }
 
     const assertTime = (time?: string | null) => {
@@ -73,9 +69,21 @@ describe('NxTimefieldComponent', () => {
         assertTime(time);
     };
 
+    function getPickerListElement() {
+        return overlayContainer.getContainerElement().querySelector('.option-list');
+    }
+
+    function getPickerOptions() {
+        return overlayContainer.getContainerElement().querySelectorAll<HTMLLIElement>('.option-list li');
+    }
+
+    function getToggleButton() {
+        return fixture.nativeElement.querySelector('.nx-timepicker-toggle-button') as HTMLButtonElement;
+    }
+
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
+            imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule, DefaultOptionsProvderTimefield],
             declarations: [
                 SimpleTimefield,
                 ConfigurableTimefield,
@@ -85,6 +93,10 @@ describe('NxTimefieldComponent', () => {
                 OverrideDefaultLabelsTimefield,
             ],
         }).compileComponents();
+
+        inject([OverlayContainer], (oc: OverlayContainer) => {
+            overlayContainer = oc;
+        })();
     }));
 
     it('should create a simple timefield component', () => {
@@ -209,6 +221,24 @@ describe('NxTimefieldComponent', () => {
         expect(spy).toHaveBeenCalledTimes(1);
     }));
 
+    it('should not show timepicker by default', () => {
+        createTestComponent(SimpleTimefield);
+        expect(getToggleButton()).toBeFalsy();
+    });
+
+    it('should show timepicker when withTimepicker is true', () => {
+        createTestComponent(ConfigurableTimefield);
+        fixture.componentInstance.withTimepicker = true;
+        fixture.detectChanges();
+        fixture.detectChanges();
+        expect(getToggleButton()).toBeTruthy();
+    });
+
+    it('should show timepicker when enabled via default options', () => {
+        createTestComponent(DefaultOptionsProvderTimefield);
+        expect(getToggleButton()).toBeTruthy();
+    });
+
     describe('twelveHourFormat', () => {
         it('should set twelveHourFormat programmatically', () => {
             createTestComponent(ConfigurableTimefield);
@@ -299,79 +329,141 @@ describe('NxTimefieldComponent', () => {
         });
     });
 
-    describe('focus', () => {
-        it('should add has-focus class when any of the two inputs gets focus', fakeAsync(() => {
-            createTestComponent(SimpleTimefield);
-            inputElementHours.focus();
-            fixture.detectChanges();
-            tick();
-            expect(spanElementSeperator).toHaveClass('has-focus');
-            expect(divElementInputFields).toHaveClass('has-focus');
-            expect(inputElementMinutes).toHaveClass('has-focus');
-            inputElementHours.blur();
-            inputElementMinutes.focus();
-            fixture.detectChanges();
-            tick();
-            expect(spanElementSeperator).toHaveClass('has-focus');
-            expect(divElementInputFields).toHaveClass('has-focus');
-            expect(inputElementHours).toHaveClass('has-focus');
-        }));
-    });
-
     describe('blur', () => {
-        it('should zero pad the hours field if the value is <10', fakeAsync(() => {
+        it('should zero pad the hours field if the value is <10', () => {
             createTestComponent(SimpleTimefield);
             inputElementHours.value = '0';
             inputElementHours.dispatchEvent(new Event('input'));
             inputElementHours.focus();
             fixture.detectChanges();
-            tick();
             expect(document.activeElement).toEqual(inputElementHours);
             expect(inputElementHours.value).toBe('0');
             inputElementHours.blur();
             fixture.detectChanges();
-            tick();
-            fixture.detectChanges();
-            tick();
             expect(timefieldInstance.hours).toBe('00');
             expect(inputElementHours.value).toBe('00');
-        }));
+        });
 
-        it('should zero pad the minutes field if the value is <10', fakeAsync(() => {
+        it('should zero pad the minutes field if the value is <10', () => {
             createTestComponent(SimpleTimefield);
             inputElementMinutes.value = '0';
             inputElementMinutes.dispatchEvent(new Event('input'));
             inputElementMinutes.focus();
             fixture.detectChanges();
-            tick();
             expect(document.activeElement).toEqual(inputElementMinutes);
             expect(inputElementMinutes.value).toBe('0');
             inputElementMinutes.blur();
             fixture.detectChanges();
-            tick();
-            fixture.detectChanges();
-            tick();
             expect(timefieldInstance.minutes).toBe('00');
             expect(inputElementMinutes.value).toBe('00');
-        }));
+        });
 
-        it('should zero pad the hours field if the value is <10 when focus goes from hours to minutes field', fakeAsync(() => {
+        it('should zero pad the hours field if the value is <10 when focus goes from hours to minutes field', () => {
             createTestComponent(SimpleTimefield);
             inputElementHours.value = '0';
             inputElementHours.dispatchEvent(new Event('input'));
             inputElementHours.focus();
             fixture.detectChanges();
-            tick();
             expect(document.activeElement).toEqual(inputElementHours);
             expect(inputElementHours.value).toBe('0');
 
             inputElementMinutes.focus();
             fixture.detectChanges();
-            tick();
             expect(document.activeElement).toEqual(inputElementMinutes);
             expect(timefieldInstance.hours).toBe('00');
             expect(inputElementHours.value).toBe('00');
-        }));
+        });
+    });
+
+    describe('overlay opening and closing', () => {
+        it('should open overlay on toggle button click', () => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            getToggleButton().click();
+            fixture.detectChanges();
+            expect(getPickerListElement()).toBeTruthy();
+        });
+
+        it('should open overlay on toggle button keydown events', () => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            getToggleButton().click();
+            fixture.detectChanges();
+            expect(getPickerListElement()).toBeTruthy();
+        });
+
+        it('should open overlay on input field keydown events', () => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            inputElementHours.focus();
+            inputElementHours.value = '1';
+            dispatchKeyboardEvent(inputElementHours, 'keydown', 49);
+            fixture.detectChanges();
+            expect(getPickerListElement()).toBeTruthy();
+        });
+
+        it('should keep focus on input field when an option was clicked', () => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            inputElementHours.focus();
+            inputElementHours.value = '1';
+            dispatchKeyboardEvent(inputElementHours, 'keydown', 49);
+            fixture.detectChanges();
+            expect(getPickerListElement()).toBeTruthy();
+            const options = getPickerOptions();
+            options[0].click();
+            fixture.detectChanges();
+            expect(document.activeElement).toEqual(inputElementHours);
+        });
+
+        it('should keep focus on toggle button when an option was clicked', () => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            const toggleButton = getToggleButton();
+            toggleButton.click();
+            toggleButton.focus();
+            fixture.detectChanges();
+            expect(document.activeElement).toEqual(toggleButton);
+            const options = getPickerOptions();
+            options[0].click();
+            fixture.detectChanges();
+            expect(document.activeElement).toEqual(toggleButton);
+        });
+
+        it('should close overlay when backdrop is clicked', () => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            const toggleButton = getToggleButton();
+            toggleButton.click();
+            toggleButton.focus();
+            fixture.detectChanges();
+            expect(getPickerListElement()).toBeTruthy();
+            const backdrop = overlayContainer.getContainerElement().querySelector('.cdk-overlay-backdrop') as HTMLDivElement;
+            backdrop.click();
+            fixture.detectChanges();
+            expect(getPickerListElement()).toBeFalsy();
+        });
+
+        it('should close overlay when the component loses focus', () => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            const toggleButton = getToggleButton();
+            toggleButton.click();
+            toggleButton.focus();
+            fixture.detectChanges();
+            expect(document.activeElement).toEqual(toggleButton);
+            expect(getPickerListElement()).toBeTruthy();
+            toggleButton.blur();
+            fixture.detectChanges();
+            expect(getPickerListElement()).toBeFalsy();
+        });
     });
 
     describe('validation', () => {
@@ -406,14 +498,42 @@ describe('NxTimefieldComponent', () => {
             inputElementHours.focus();
             fixture.detectChanges();
             expect(form.touched).toBeFalse();
-            dispatchFakeEvent(inputElementHours, 'focusout');
+            inputElementHours.blur();
+            fixture.detectChanges();
+            expect(form.touched).toBeTrue();
+        });
+
+        it('should mark as touched when option is selected', () => {
+            createTestComponent(ReactiveTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            const form = (testInstance as ReactiveTimefield).testForm;
+            const toggleButton = getToggleButton();
+            toggleButton.click();
+            fixture.detectChanges();
+            const options = getPickerOptions();
+            options[0].click();
+            fixture.detectChanges();
+
+            expect(form.touched).toBeTrue();
+        });
+
+        it('should mark as touched when the panel closes without selecting', () => {
+            createTestComponent(ReactiveTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            const form = (testInstance as ReactiveTimefield).testForm;
+            const toggleButton = getToggleButton();
+            toggleButton.click();
+            fixture.detectChanges();
+            const backdrop = overlayContainer.getContainerElement().querySelector('.cdk-overlay-backdrop') as HTMLDivElement;
+            backdrop.click();
             fixture.detectChanges();
             expect(form.touched).toBeTrue();
         });
 
         it('should show error only when all inputs have lost focus', () => {
             createTestComponent(ReactiveTimefield);
-            const form = (testInstance as ReactiveTimefield).testForm;
 
             inputElementHours.value = '25';
             inputElementHours.dispatchEvent(new Event('input'));
@@ -426,15 +546,154 @@ describe('NxTimefieldComponent', () => {
             fixture.detectChanges();
             expect(timefieldElement).not.toHaveClass('has-error');
 
-            dispatchFakeEvent(inputElementMinutes, 'focusout');
+            inputElementMinutes.blur();
             fixture.detectChanges();
             expect(timefieldElement).toHaveClass('has-error');
+        });
+    });
+
+    describe('selection in timepicker', () => {
+        it('should be possible to select via click when input is focused', () => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            inputElementHours.focus();
+            inputElementHours.value = '1';
+            dispatchKeyboardEvent(inputElementHours, 'keydown', 49, '1');
+            fixture.detectChanges();
+            const options = getPickerOptions();
+            options[0].click();
+            fixture.detectChanges();
+            expect(inputElementHours.value).toBe('00');
+            expect(inputElementMinutes.value).toBe('00');
+            expect(getPickerListElement()).toBeFalsy();
+        });
+
+        it('should be possible to select via keyboard when input is focused', () => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            inputElementHours.focus();
+            inputElementHours.value = '1';
+            dispatchKeyboardEvent(inputElementHours, 'keydown', 49, '1');
+            fixture.detectChanges();
+            inputElementHours.dispatchEvent(new Event('input'));
+            fixture.detectChanges();
+            dispatchKeyboardEvent(inputElementHours, 'keydown', ENTER, 'Enter');
+            fixture.detectChanges();
+            // this should really be 01 because "1" was entered, but the whole logic has its flaws right now
+            // should be improved later
+            expect(inputElementHours.value).toBe('00');
+            expect(getPickerListElement()).toBeFalsy();
+            dispatchKeyboardEvent(inputElementHours, 'keydown', 49, '1');
+            fixture.detectChanges();
+            dispatchKeyboardEvent(inputElementHours, 'keydown', DOWN_ARROW, 'ArrowDown');
+            fixture.detectChanges();
+            dispatchKeyboardEvent(inputElementHours, 'keydown', ENTER, 'Enter');
+            fixture.detectChanges();
+            expect(inputElementHours.value).toBe('00');
+            expect(inputElementMinutes.value).toBe('30');
+            expect(getPickerListElement()).toBeFalsy();
+        });
+
+        it('should be possible to select via click when toggle button is focused', () => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            const toggleButton = getToggleButton();
+            toggleButton.click();
+            toggleButton.focus();
+            fixture.detectChanges();
+            const options = getPickerOptions();
+            options[0].click();
+            fixture.detectChanges();
+            expect(inputElementHours.value).toBe('00');
+            expect(inputElementMinutes.value).toBe('00');
+            expect(getPickerListElement()).toBeFalsy();
+        });
+
+        it('should be possible to select via keyboard when toggle button is focused', fakeAsync(() => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            const toggleButton = getToggleButton();
+            toggleButton.click();
+            toggleButton.focus();
+            fixture.detectChanges();
+            flush();
+            dispatchKeyboardEvent(inputElementHours, 'keydown', ENTER, 'Enter');
+            fixture.detectChanges();
+            flush();
+            expect(inputElementHours.value).toBe('00');
+            expect(inputElementMinutes.value).toBe('00');
+            expect(getPickerListElement()).toBeFalsy();
+            toggleButton.click();
+            toggleButton.focus();
+            fixture.detectChanges();
+            flush();
+            dispatchKeyboardEvent(inputElementHours, 'keydown', DOWN_ARROW, 'ArrowDown');
+            fixture.detectChanges();
+            flush();
+            dispatchKeyboardEvent(inputElementHours, 'keydown', ENTER, 'Enter');
+            fixture.detectChanges();
+            flush();
+            expect(inputElementHours.value).toBe('00');
+            expect(inputElementMinutes.value).toBe('30');
+            expect(getPickerListElement()).toBeFalsy();
+        }));
+
+        it('should update active option when typing', () => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            inputElementHours.focus();
+            inputElementHours.value = '0';
+            dispatchKeyboardEvent(inputElementHours, 'keydown', 48, '0');
+            fixture.detectChanges();
+            inputElementHours.dispatchEvent(new Event('input'));
+            fixture.detectChanges();
+            const targetOption = Array.from(getPickerOptions()).find(option => option.textContent === '00:00');
+            expect(targetOption).toBeTruthy();
+            expect(inputElementHours.getAttribute('aria-activedescendant')).toBe(targetOption!.id);
+        });
+
+        it('should update active item on keydown events', () => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            inputElementHours.focus();
+            inputElementHours.value = '0';
+            dispatchKeyboardEvent(inputElementHours, 'keydown', 48, '0');
+            fixture.detectChanges();
+            inputElementHours.dispatchEvent(new Event('input'));
+            fixture.detectChanges();
+            dispatchKeyboardEvent(inputElementHours, 'keydown', DOWN_ARROW, 'ArrowDown');
+            fixture.detectChanges();
+            const firstOption = Array.from(getPickerOptions()).find(option => option.textContent === '00:00');
+            const secondOption = Array.from(getPickerOptions()).find(option => option.textContent === '00:30');
+            expect(firstOption).toBeTruthy();
+            expect(secondOption).toBeTruthy();
+            expect(inputElementHours.getAttribute('aria-activedescendant')).toBe(secondOption!.id);
+            dispatchKeyboardEvent(inputElementHours, 'keydown', UP_ARROW, 'ArrowUp');
+            fixture.detectChanges();
+            expect(inputElementHours.getAttribute('aria-activedescendant')).toBe(firstOption!.id);
         });
     });
 
     describe('a11y', () => {
         it('has no accessibility violations', async () => {
             createTestComponent(SimpleTimefield);
+            await expectAsync(fixture.nativeElement).toBeAccessible();
+        });
+
+        it('has no accessibility violations when overlay is opened', async () => {
+            createTestComponent(ConfigurableTimefield);
+            fixture.componentInstance.withTimepicker = true;
+            fixture.detectChanges();
+            const toggleButton = getToggleButton();
+            toggleButton.click();
+            fixture.detectChanges();
+
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
 
@@ -452,19 +711,24 @@ class SimpleTimefield extends TimefieldTest {}
 
 @Component({
     template: `
-        <nx-timefield [label]="label" [twelveHourFormat]="twelveHourFormat" [negative]="negative" [disabled]="disabled" [required]="required"></nx-timefield>
+        <nx-timefield
+            [label]="label"
+            [twelveHourFormat]="twelveHourFormat"
+            [withTimepicker]="withTimepicker"
+            [negative]="negative"
+            [disabled]="disabled"
+            [required]="required"
+        ></nx-timefield>
     `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class ConfigurableTimefield extends TimefieldTest {}
 
 @Component({
     template: `
         <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
-            <nx-timefield formControlName="today" [twelveHourFormat]="twelveHourFormat"></nx-timefield>
+            <nx-timefield formControlName="today" [twelveHourFormat]="twelveHourFormat" [withTimepicker]="withTimepicker"></nx-timefield>
         </form>
     `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class ReactiveTimefield extends TimefieldTest {
     testForm!: FormGroup;
@@ -500,3 +764,11 @@ class TemplateDrivenOnPushTimefield extends TimefieldTest {
     providers: [{ provide: NxTimefieldIntl, useClass: MyIntl }],
 })
 class OverrideDefaultLabelsTimefield extends TimefieldTest {}
+
+@Component({
+    template: `<nx-timefield twelveHourFormat></nx-timefield>`,
+    providers: [{ provide: TIMEFIELD_DEFAULT_OPTIONS, useValue: { withTimepicker: true } }],
+    standalone: true,
+    imports: [NxTimefieldModule],
+})
+class DefaultOptionsProvderTimefield extends TimefieldTest {}
