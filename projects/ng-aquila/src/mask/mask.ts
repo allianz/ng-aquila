@@ -254,7 +254,7 @@ export class NxMask {
 
     private updateValue(value: string, callOnChange = true) {
         let newValue = value === undefined || value === null ? '' : value.toString();
-        newValue = this.maskConfig.deactivateMask ? this.getUnmaskedValue(value) : value;
+
         if (!this.maskConfig.deactivateMask) {
             if (this.maskConfig.convertTo === 'upper') {
                 newValue = newValue.toUpperCase();

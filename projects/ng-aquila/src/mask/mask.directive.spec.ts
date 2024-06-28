@@ -68,7 +68,14 @@ describe('NxMaskDirective', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicMaskComponent, ConfigurableMaskComponent, ValidationMaskComponent, HookedMaskComponent, NgModelMask],
+            declarations: [
+                BasicMaskComponent,
+                ConfigurableMaskComponent,
+                ValidationMaskComponent,
+                HookedMaskComponent,
+                NgModelMask,
+                PresetDeactiveMaskComponent,
+            ],
             imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
         }).compileComponents();
     }));
@@ -456,13 +463,26 @@ describe('NxMaskDirective', () => {
             expect(testInstance.modelVal).toBe('test');
         }));
 
-        it('should keep preset model value if deactiveMask set', () => {
+        it('should keep model value if mask conflict but deactivate is enabled', fakeAsync(() => {
             createTestComponent(PresetDeactiveMaskComponent);
             setMask('AA-AA');
+            testInstance.modelVal = 'AAAA';
 
             fixture.detectChanges();
+            tick();
+
             expect(testInstance.modelVal).toBe('AAAA');
-        });
+        }));
+
+        it('should show original value if mask conflict but deactivate is enabled', fakeAsync(() => {
+            createTestComponent(PresetDeactiveMaskComponent);
+            setMask('SS-AAAA');
+            testInstance.modelVal = '12345';
+            fixture.detectChanges();
+            tick();
+
+            expect(nativeElement.value).toBe('12345');
+        }));
 
         it('should update ngModel on mask change', fakeAsync(() => {
             createTestComponent(ConfigurableMaskComponent);
@@ -535,7 +555,7 @@ describe('NxMaskDirective', () => {
             testInstance.deactivateMask = true;
             fixture.detectChanges();
             tick();
-            expect(testInstance.modelVal).toBe('123456');
+            expect(testInstance.modelVal).toBe('12:34:56'); // dont' remove seperator when deactivate mask
             testInstance.deactivateMask = false;
             fixture.detectChanges();
             tick();
@@ -552,7 +572,7 @@ describe('NxMaskDirective', () => {
             testInstance.deactivateMask = true;
             fixture.detectChanges();
             tick();
-            expect(nativeElement.value).toBe('123456');
+            expect(nativeElement.value).toBe('12:34:56'); // dont' remove seperator when deactivate mask
             testInstance.deactivateMask = false;
             fixture.detectChanges();
             tick();

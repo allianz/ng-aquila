@@ -132,8 +132,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator, OnInit 
         this.nxMask?.updateConfig(this.maskConfig, { callOnChange, updateValue });
 
         if (this._onChangeCallback && callOnChange && this.nxMask) {
-            const valueToSend =
-                this.dropSpecialCharacters || this.deactivateMask ? this.nxMask.getUnmaskedValue(this.nxMask.element.value) : this.nxMask.element.value;
+            const valueToSend = this.dropSpecialCharacters ? this.nxMask.getUnmaskedValue(this.nxMask.element.value) : this.nxMask.element.value;
             this._onChangeCallback(valueToSend);
         }
     }
@@ -258,8 +257,13 @@ export class NxMaskDirective implements ControlValueAccessor, Validator, OnInit 
 
         // this has to be fired before we set the value next, that the iban mask
         // can be set correctly to the country first
+
         this.cvaModelChange.next(newValue);
-        this.nxMask?.setValue(this.getMaskedString(newValue));
+        if (this.deactivateMask) {
+            this.nxMask?.setValue(newValue);
+        } else {
+            this.nxMask?.setValue(this.getMaskedString(newValue));
+        }
     }
 
     registerOnChange(onChange: any): void {
