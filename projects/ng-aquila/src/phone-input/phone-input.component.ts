@@ -41,6 +41,8 @@ let next = 0;
     ],
     host: {
         '[attr.id]': 'id',
+        '[role]': '"group"',
+        '[attr.aria-labelledby]': '_ariaLabelledBy',
     },
 })
 export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldControl<any>, OnDestroy, DoCheck, OnInit, AfterViewInit, NxAbstractControl {
@@ -131,7 +133,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     }
     private _countryCode = 'DE';
 
-    /** Set the text at the top of the dropdown. The default value is 'Area Code'. */
+    /** Set the text at the top of the dropdown and aria-label of area code field. The default value is 'Area Code'. */
     @Input() set areaCodeLabel(value: string) {
         this._areaCodeLabel = value;
     }
@@ -139,6 +141,15 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
         return this._areaCodeLabel || this._intl.areaCodeLabel;
     }
     private _areaCodeLabel!: string;
+
+    /** Sets the aria-label of line number field. */
+    @Input() set lineNumberLabel(value: string) {
+        this._lineNumberLabel = value;
+    }
+    get lineNumberLabel() {
+        return this._lineNumberLabel || this._intl.lineNumberAriaLabel;
+    }
+    private _lineNumberLabel: string = '';
 
     /** Set the translations of the countries. */
     @Input() set countryNames(value: LocalizedCountryNames<any>) {

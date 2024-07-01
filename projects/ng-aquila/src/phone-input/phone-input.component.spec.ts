@@ -49,7 +49,7 @@ describe('PhoneInputComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
-            declarations: [ReactiveFormsPhoneInput, I18nProviderTest, DefaultPhoneInput, ConfigurablePhoneInput, CustomFormatter],
+            declarations: [ReactiveFormsPhoneInput, I18nProviderTest, DefaultPhoneInput, ConfigurablePhoneInput, CustomFormatter, PhoneInputA11y],
             providers: [NxPhoneInputIntl],
         }).compileComponents();
 
@@ -358,6 +358,22 @@ describe('PhoneInputComponent', () => {
         expect(testInstance.phoneInput.countryCode).toBe('UA');
         expect(testInstance.phoneInput.inputFormatter).toHaveBeenCalled();
     }));
+
+    it('should set aria-label', () => {
+        createTestComponent(PhoneInputA11y);
+        fixture.detectChanges();
+
+        const areaCodeElement = dropdown.nativeElement;
+        const phoneInput = getInput().nativeElement;
+        expect(areaCodeElement.getAttribute('aria-label')).toBe('custom area code');
+        expect(areaCodeElement.getAttribute('aria-labelledby')).toBe(null);
+
+        expect(phoneInput.getAttribute('aria-label')).toBe('custom line number');
+        expect(phoneInput.getAttribute('aria-labelledby')).toBe(null);
+
+        const formfield = fixture.debugElement.query(By.directive(NxFormfieldComponent)).componentInstance;
+        expect(phoneInputInstance.elementRef.nativeElement.getAttribute('aria-labelledby')).toBe(formfield.labelId);
+    });
 });
 
 @Directive()
@@ -431,3 +447,10 @@ class CustomFormatter extends PhoneInputTest {
         return value.match(/.{1,2}/g)?.join(' ') || '';
     }
 }
+
+@Component({
+    template: `<nx-formfield label="Telephone number">
+        <nx-phone-input [countryCode]="countryCode" lineNumberLabel="custom line number" areaCodeLabel="custom area code"></nx-phone-input>
+    </nx-formfield>`,
+})
+class PhoneInputA11y extends PhoneInputTest {}

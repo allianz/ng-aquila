@@ -10,6 +10,8 @@
         [options]="_sortedCountries"
         [overlayFallbackOrigin]="dropdown"
         [panelGrow]="true"
+        [attr.aria-label]="areaCodeLabel"
+        ariaLabelledBy=""
     >
         <span *nxClosedLabel>+{{ _getCallingCode(dropdown.value) }}</span>
     </nx-dropdown>
@@ -24,7 +26,7 @@
         [(ngModel)]="_inputValue"
         (ngModelChange)="_onInput()"
         [attr.aria-describedby]="_describedBy"
-        [attr.aria-labelledby]="_ariaLabelledBy"
+        [attr.aria-label]="lineNumberLabel"
         [attr.required]="required || null"
         [attr.disabled]="disabled || null"
         [attr.placeholder]="placeholder || null"
@@ -39,7 +41,7 @@
         [attr.aria-readonly]="readonly || null"
         [value]="_getReadonlyValue()"
         [attr.aria-describedby]="_describedBy"
-        [attr.aria-labelledby]="_ariaLabelledBy"
+        [attr.aria-label]="lineNumberLabel"
         [attr.aria-invalid]="errorState"
     />
 </div>

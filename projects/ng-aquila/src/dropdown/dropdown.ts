@@ -139,7 +139,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         '[class.nx-dropdown--disabled]': 'disabled',
         '[attr.aria-describedby]': 'ariaDescribedby || null',
         '[attr.aria-required]': 'required',
-        '[attr.aria-labelledby]': '_getAriaLabelledBy()',
+        '[attr.aria-labelledby]': '_getAriaLabelledBy() || null',
         '[attr.aria-controls]': 'modalId',
         '[attr.aria-invalid]': 'errorState',
         'aria-haspopup': 'listbox',
@@ -1003,15 +1003,14 @@ export class NxDropdownComponent
      * @docs-private
      */
     _getAriaLabelledBy(): string {
-        if (this.ariaLabelledBy) {
+        if (this.ariaLabelledBy !== null) {
             return this.ariaLabelledBy;
         }
-        const valueId = this.renderedValueId;
         const labelId = this.formFieldComponent?.labelId;
         if (labelId) {
             return labelId;
         }
-        return valueId;
+        return this.renderedValueId;
     }
 
     get _isInOutlineField(): boolean {

@@ -12,6 +12,7 @@ countries.registerLocale(fr);
 export class MyPhoneInputIntl extends NxPhoneInputIntl {
     areaCodeLabel = 'Ländervorwahl';
     countryNames = countries.getNames('de', { select: 'official' });
+    lineNumberAriaLabel = 'Zeilennummer';
 }
 
 /** @title Phone Input Internationalization */

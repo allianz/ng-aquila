@@ -14,7 +14,10 @@ export class NxPhoneInputIntl {
     readonly changes = new Subject<void>();
 
     /** The label that is shown at the top of the opened overlay. */
-    areaCodeLabel = 'Country code';
+    areaCodeLabel = 'Area code';
+
+    /** The aria-label that is used for the line number part of the phone number input */
+    lineNumberAriaLabel = 'Line Number';
 
     /** The object providing the country name translations. */
     countryNames: LocalizedCountryNames<any> = countries.getNames('en');
