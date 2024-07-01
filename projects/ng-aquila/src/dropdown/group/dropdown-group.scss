@@ -22,4 +22,5 @@
 .nx-dropdown-results__group-label {
     @include type-style(dropdown-group-label);
     padding: nx-spacer(m) nx-spacer(2m) nx-spacer(2xs);
+    color: v(dropdown-group-label-color);
 }
