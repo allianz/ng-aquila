@@ -33,7 +33,6 @@ export const ERROR_DEFAULT_OPTIONS = new InjectionToken<ErrorDefaultOptions>('ER
     styleUrls: ['./error.component.scss'],
     host: {
         '[attr.role]': '"alert"',
-        '[attr.id]': 'id',
         '[class.nx-error--message]': 'appearance == "message"',
     },
 })

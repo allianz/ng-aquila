@@ -59,25 +59,24 @@ describe('NxErrorComponent', () => {
 
         it('creates the nx-error with an auto generated id', () => {
             createTestComponent(BasicError);
-            const nxError = fixture.nativeElement.querySelector('nx-error') as HTMLButtonElement;
+            const content = fixture.nativeElement.querySelector('.nx-error__content') as HTMLElement;
 
-            expect(nxError.id).toMatch('^nx-error-[0-9]');
+            expect(content.id).toMatch('^nx-error-[0-9]');
         });
 
         it('creates the nx-error with a custom id', () => {
             createTestComponent(ConfigurableError);
-            const nxError = fixture.nativeElement.querySelector('nx-error') as HTMLButtonElement;
-
+            const content = fixture.nativeElement.querySelector('.nx-error__content') as HTMLElement;
             testInstance.id = '';
             fixture.detectChanges();
 
-            expect(nxError.id).toContain('nx-error-');
+            expect(content.id).toContain('nx-error-');
 
             testInstance.id = 'customID';
             fixture.detectChanges();
 
             expect(errorInstance.id).toBe('customID');
-            expect(nxError.id).toBe('customID');
+            expect(content.id).toBe('customID');
         });
     });
 

@@ -8,6 +8,7 @@
     (change)="_onInputChange($event)"
     (click)="_onInputClick($event)"
     [checked]="checked"
+    [attr.aria-describedby]="ariaDescribedBy"
     [attr.aria-labelledby]="ariaLabelledBy"
     [attr.aria-label]="ariaLabel"
     [attr.aria-invalid]="_controlInvalid() || null"

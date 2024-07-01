@@ -523,6 +523,17 @@ describe('NxRadioComponent', () => {
             fixture.detectChanges();
             expect(radios[0]).toHaveClass('has-error');
         });
+
+        it('should assign nx-error id to describedby input radio', () => {
+            createTestComponent(RadioGroupValidation);
+            fixture.nativeElement.querySelector('button').click();
+            fixture.detectChanges();
+
+            const errorId = fixture.nativeElement.querySelector('.nx-error__content').getAttribute('id');
+
+            expect(radioElements.item(0).getAttribute('aria-describedby')).toBe(errorId);
+            expect(radioElements.item(1).getAttribute('aria-describedby')).toBe(errorId);
+        });
     });
 
     describe('a11y', () => {

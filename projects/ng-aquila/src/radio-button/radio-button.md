@@ -60,6 +60,10 @@ The disabled-state for radio components contained in a group can be managed by t
 
 <!-- example(radio-button-event) -->
 
+
+### Radio error message retail
+<!-- example(radio-button-error-retail) -->
+
 <div class="docs-expert-container">
 
 ### Expert: Radio button group label
@@ -69,8 +73,6 @@ With `size` you can change the styling of the radio button group's label. The la
 <!-- example(radio-button-group-label-size) -->
 
 ### Expert: validation and error message
-
-Please note that the `nx-error` is only for **Expert**.
 
 <!-- example(radio-button-group-validation) -->
 
