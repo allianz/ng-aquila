@@ -1,12 +1,15 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
-import { END, ESCAPE, HOME, LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
+import { DOWN_ARROW, END, ENTER, ESCAPE, HOME, LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, NgZone, QueryList, Type, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NxButtonComponent, NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 import { Subject } from 'rxjs';
 
 import { createKeyboardEvent, createMouseEvent, dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent } from '../cdk-test-utils';
@@ -62,7 +65,7 @@ describe('nxContextMenu', () => {
 
     function createComponent<T>(component: Type<T>, providers: any[] = []): ComponentFixture<T> {
         TestBed.configureTestingModule({
-            imports: [NxContextMenuModule, NoopAnimationsModule, NxIconModule, NxButtonModule],
+            imports: [NxContextMenuModule, NoopAnimationsModule, NxIconModule, NxButtonModule, NxCheckboxModule, FormsModule, CommonModule],
             declarations: [component],
             providers,
         }).compileComponents();
@@ -1431,6 +1434,32 @@ describe('nxContextMenu', () => {
             expect(menuItem!).toHaveClass('is-selectable');
         }));
     });
+
+    describe('multiple menu checkbox', () => {
+        let fixture: ComponentFixture<CheckboxMenu>;
+
+        beforeEach(() => {
+            fixture = createComponent(CheckboxMenu);
+            fixture.componentInstance.trigger.openContextMenu();
+        });
+
+        it('should be able to navigate and select item with keyboard', fakeAsync(() => {
+            const panel = overlayContainerElement.querySelector('.nx-context-menu');
+            dispatchKeyboardEvent(panel!, 'keydown', DOWN_ARROW);
+            fixture.detectChanges();
+            tick(500);
+            const items = Array.from(panel!.querySelectorAll('.nx-context-menu-item')) as HTMLElement[];
+
+            expect(items[0]!).toHaveClass('cdk-keyboard-focused');
+
+            dispatchKeyboardEvent(items[0]!, 'keydown', ENTER);
+            fixture.detectChanges();
+            tick(500);
+            const checkbox = items[0].querySelector('.nx-checkbox__input') as HTMLInputElement;
+            expect(checkbox.checked).toBe(true);
+            expect(fixture.componentInstance.selected).toEqual(['A']);
+        }));
+    });
 });
 
 @Component({
@@ -1650,4 +1679,32 @@ class RightClickMenu {
     @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
     @ViewChild('triggerArea', { read: ElementRef }) triggerArea!: ElementRef<HTMLElement>;
     @ViewChild(NxContextMenuComponent) menu!: NxContextMenuComponent;
+}
+
+@Component({
+    template: `
+        <button [nxContextMenuTriggerFor]="menu">Toggle menu</button>
+        <nx-context-menu #menu="nxContextMenu">
+            <nx-checkbox-group [(ngModel)]="selected">
+                <nx-context-menu-item-wrap>
+                    <div nxContextMenuItem nxContextMenuItemCheckbox disableCloseOnSelect *ngFor="let o of options">
+                        <nx-checkbox [value]="o.value">{{ o.label }}</nx-checkbox>
+                    </div>
+                </nx-context-menu-item-wrap>
+            </nx-checkbox-group>
+        </nx-context-menu>
+    `,
+})
+class CheckboxMenu {
+    @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
+    @ViewChild('triggerArea', { read: ElementRef }) triggerArea!: ElementRef<HTMLElement>;
+    @ViewChild(NxContextMenuComponent) menu!: NxContextMenuComponent;
+
+    options = [
+        { label: 'Front window', value: 'A' },
+        { label: 'Driver Window', value: 'B' },
+        { label: 'Rear Window', value: 'C' },
+    ];
+
+    selected = [''];
 }

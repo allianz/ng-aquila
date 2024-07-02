@@ -1,5 +1,6 @@
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ENTER } from '@angular/cdk/keycodes';
 import { DOCUMENT } from '@angular/common';
 import {
     AfterViewInit,
@@ -7,7 +8,9 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ContentChild,
     ContentChildren,
+    Directive,
     ElementRef,
     Inject,
     Input,
@@ -15,8 +18,8 @@ import {
     Optional,
     QueryList,
 } from '@angular/core';
+import { NxCheckboxComponent } from '@aposin/ng-aquila/checkbox';
 import { Subject } from 'rxjs';
-
 /**
  * This directive is intended to be used inside an nx-context-menu tag.
  * It exists mostly to set the role attribute, disabled state and styling.
@@ -155,6 +158,25 @@ export class NxContextMenuItemComponent implements OnDestroy, AfterViewInit {
         }
 
         return output.trim();
+    }
+}
+
+@Directive({
+    selector: '[nxContextMenuItemCheckbox]',
+    host: {
+        '[attr.role]': '"menuitemcheckbox"',
+        '[attr.aria-checked]': 'checkbox.checked',
+        '(keydown)': 'onKeyDown($event)',
+    },
+})
+export class NxContextMenuItemCheckboxDirective {
+    constructor() {}
+    @ContentChild(NxCheckboxComponent) checkbox!: NxCheckboxComponent;
+
+    onKeyDown(event: KeyboardEvent) {
+        if (event.keyCode === ENTER) {
+            this.checkbox.toggle();
+        }
     }
 }
 

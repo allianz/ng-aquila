@@ -1,23 +1,13 @@
 <nx-context-menu #menu2="nxContextMenu">
     <nx-context-menu-header>Car damage</nx-context-menu-header>
-    <nx-checkbox-group
-        [(ngModel)]="selected"
-        cdkDropList
-        (cdkDropListDropped)="drop($event)"
-    >
+    <nx-checkbox-group [(ngModel)]="selected">
         <nx-context-menu-item-wrap>
             <div
                 nxContextMenuItem
+                nxContextMenuItemCheckbox
                 disableCloseOnSelect
-                cdkDrag
                 *ngFor="let o of options"
             >
-                <img
-                    height="32"
-                    aria-hidden="true"
-                    src="/assets/images/drag-handler.svg"
-                    alt="drag handler icon"
-                />
                 <nx-checkbox [value]="o.value">{{o.label}}</nx-checkbox>
             </div>
         </nx-context-menu-item-wrap>

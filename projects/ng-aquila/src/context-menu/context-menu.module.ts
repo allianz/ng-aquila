@@ -6,7 +6,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxContextMenuComponent } from './context-menu.component';
 import { NxContextMenuContentDirective } from './context-menu-content.directive';
 import { NxContextMenuHeaderComponent } from './context-menu-header.component';
-import { NxContextMenuItemComponent, NxContextMenuItemWrapComponent } from './context-menu-item.component';
+import { NxContextMenuItemCheckboxDirective, NxContextMenuItemComponent, NxContextMenuItemWrapComponent } from './context-menu-item.component';
 import { NX_CONTEXT_MENU_SCROLL_STRATEGY_PROVIDER, NxContextMenuTriggerDirective } from './context-menu-trigger.directive';
 
 const EXPORTED_MODULES = [
@@ -16,6 +16,7 @@ const EXPORTED_MODULES = [
     NxContextMenuItemWrapComponent,
     NxContextMenuTriggerDirective,
     NxContextMenuHeaderComponent,
+    NxContextMenuItemCheckboxDirective,
 ];
 
 @NgModule({
