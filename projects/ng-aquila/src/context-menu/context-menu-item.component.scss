@@ -22,7 +22,7 @@
     @media screen and (forced-colors: active) {
         forced-color-adjust: none;
         background-color: buttonFace;
-        color: button;
+        color: buttonText;
     }
 
     &:not(:disabled) {
