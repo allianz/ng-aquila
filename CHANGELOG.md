@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [17.9.1](https://github.com/allianz/ng-aquila/compare/v17.9.0...v17.9.1) (2024-07-03)
+
+
+### Documentation 📚
+
+* **action:** correct content for screenreader ([5ede503](https://github.com/allianz/ng-aquila/commit/5ede503fefe02a51b59c632dd1a34928c6b2b29b))
+* **formfield:** correct count remaining example ([b3065a4](https://github.com/allianz/ng-aquila/commit/b3065a43ddd78dfd45574ae8f2d9a7f6f1fdb875))
+* **rating:** add more info for assistive technology ([671d729](https://github.com/allianz/ng-aquila/commit/671d72954bb21c95c438979028d24e0a2eb0c321))
+
+
+### Bug Fixes 🐛
+
+* **context-menu:** correct high contrast color ([b7ddf40](https://github.com/allianz/ng-aquila/commit/b7ddf40753c25de446b718664d6ab3b310a41089))
+* **context:** keyboard selection ([f2c7342](https://github.com/allianz/ng-aquila/commit/f2c7342d3f1bb2f3a1f9d0014966af54a479d4c2))
+* **dropdown:** adjust group header label styles to match figma ([820be6f](https://github.com/allianz/ng-aquila/commit/820be6fc9312b2db2e1a9a31d449bfe18176fe66))
+* **icon:** add NX_ICON_INITIALIZER for internal icons ([e5595dc](https://github.com/allianz/ng-aquila/commit/e5595dc40479fe818a15e48365563088753a8236))
+* **mask:** don't do masking if deactivate is enabled ([13df8ef](https://github.com/allianz/ng-aquila/commit/13df8eff480672dcc25832b8b679c6771f1a26fa))
+* **phone-input:** add role group, add separate aria labels for dropdown and input ([3b1e23e](https://github.com/allianz/ng-aquila/commit/3b1e23e1261b4db12a7e35fadd41848e649d4504))
+* **radio:** add describe error message for screenreader ([7a1acc6](https://github.com/allianz/ng-aquila/commit/7a1acc64a368bd935cca79db6e5f340fa1ebd609))
+
 ## [17.9.0](https://github.com/allianz/ng-aquila/compare/v17.8.0...v17.9.0) (2024-06-26)
 
 ### Timefield new opt-in timepicker
