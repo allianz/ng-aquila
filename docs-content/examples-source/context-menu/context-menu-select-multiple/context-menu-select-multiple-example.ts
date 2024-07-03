@@ -1,4 +1,3 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 
 /**
@@ -17,8 +16,4 @@ export class ContextMenuSelectMultipleExampleComponent {
     ];
 
     selected = ['driver'];
-
-    drop(event: CdkDragDrop<string[]>) {
-        moveItemInArray(this.options, event.previousIndex, event.currentIndex);
-    }
 }

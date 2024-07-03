@@ -34,7 +34,7 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Set the text at the top of the dropdown. The default value is &#39;Area Code&#39;.</p>
+        <p>Set the text at the top of the dropdown and aria-label of area code field. The default value is &#39;Area Code&#39;.</p>
 </td>
 </tr>
    
@@ -115,6 +115,21 @@ If there is already a number in the input field changing this property has no ef
 The function is called on blur. The default function removes leading zeros.
 Please note: to determine the model value the component will remove parenthesis,
 whitespace and dash characters from the formatted input.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">lineNumberLabel</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the aria-label of line number field.</p>
 </td>
 </tr>
    
@@ -386,7 +401,7 @@ whitespace and dash characters from the formatted input.</p>
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">areaCodeLabel</span>:
-                <span class="docs-api-property__type">'Country code'</span>
+                <span class="docs-api-property__type">'Area code'</span>
             </code>
         </p>
     </td>
@@ -421,6 +436,20 @@ components if the properties have changed after initialization.</p>
     </td>
     <td class="docs-api-property-description">
         <p>The object providing the country name translations.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">lineNumberAriaLabel</span>:
+                <span class="docs-api-property__type">'Line Number'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The aria-label that is used for the line number part of the phone number input</p>
 </td>
 </tr>
   

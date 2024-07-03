@@ -21,7 +21,7 @@
 <p class="docs-markdown--p">Similar to validation the component doesn't provide formatting out of the box to not include the heavy dependency on libphonenumber-js. You can set a custom formatting function via the <code>inputFormatter</code> input property. The function is called on the blur event of the input field. To have a clean model the component removes whitespace, parenthesis and dash characters. If you use any kind of additional formatting characters you have to clean these yourself.</p>
 <div nx-docs-example="phone-input-formatting" config="{}">exampleID: phone-input-formatting</div>
 <h2 id="internationalization" tabindex="-1" class="docs-markdown--h2">Internationalization</h2>
-<p class="docs-markdown--p">To set different translations of the countries and to change texts like the overlay label you can either override it via inputs in the template or set these via the <code>NxPhoneInputIntl</code> class provider.</p>
+<p class="docs-markdown--p">To set different translations of the countries and to change texts like the overlay label, line number and area code label you can either override it via inputs <code>lineNumberLabel</code>, <code>areaCodeLabel</code> in the template or set these via the <code>NxPhoneInputIntl</code> class provider.</p>
 <p class="docs-markdown--p">To get translations for the countries you can import a different locale from the <code>i18n-iso-countries</code> package. Please note: if you provide the <code>NxPhoneInputIntl</code> class and use the inputs of the component as well, the input values take precedence.</p>
 <div nx-docs-example="phone-input-i18n" config="{}">exampleID: phone-input-i18n</div>
 <h2 id="blur%2Ffocus-events" tabindex="-1" class="docs-markdown--h2">Blur/focus events</h2>

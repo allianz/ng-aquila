@@ -1,4 +1,3 @@
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">CdkDragDrop</span>, moveItemInArray } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/drag-drop&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
@@ -17,8 +16,4 @@
     ];
 
     selected = [<span class="hljs-string">&#x27;driver&#x27;</span>];
-
-    <span class="hljs-title function_">drop</span>(<span class="hljs-params">event: CdkDragDrop&lt;<span class="hljs-built_in">string</span>[]&gt;</span>) {
-        <span class="hljs-title function_">moveItemInArray</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>, event.<span class="hljs-property">previousIndex</span>, event.<span class="hljs-property">currentIndex</span>);
-    }
 }

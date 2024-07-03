@@ -58,10 +58,15 @@
         <span class="hljs-keyword">return</span> notificationCount &gt; <span class="hljs-number">99</span> ? <span class="hljs-string">&#x27;99+&#x27;</span> : notificationCount;
     }
 
-    <span class="hljs-title function_">getAriaLabel</span>(<span class="hljs-params">notificationCount: <span class="hljs-built_in">number</span></span>) {
-        <span class="hljs-keyword">if</span> (!notificationCount) {
-            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;new notifications available&#x27;</span>;
+    <span class="hljs-title function_">getAriaLabel</span>(<span class="hljs-params">
+        label: <span class="hljs-built_in">string</span>,
+        notificationCount = <span class="hljs-string">&#x27;&#x27;</span>,
+        hasNotification?: <span class="hljs-built_in">boolean</span>,
+    </span>) {
+        <span class="hljs-keyword">if</span> (hasNotification) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${label}</span> <span class="hljs-subst">${notificationCount}</span> new notifications available`</span>;
         }
-        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${notificationCount}</span> new notifications available`</span>;
+
+        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${label}</span>`</span>;
     }
 }

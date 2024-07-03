@@ -1,4 +1,5 @@
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">ViewChild</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Appearance example
@@ -10,4 +11,13 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FormfieldAppearanceExampleComponent</span> {
     <span class="hljs-attr">currentDate</span>: <span class="hljs-title class_">Date</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+
+    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;inputToCount&#x27;</span>, { <span class="hljs-attr">read</span>: <span class="hljs-title class_">NxInputDirective</span>, <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> })
+    input!: <span class="hljs-title class_">NxInputDirective</span>;
+
+    count = <span class="hljs-number">0</span>;
+
+    <span class="hljs-title function_">onInput</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">count</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">input</span>.<span class="hljs-property">value</span>.<span class="hljs-property">length</span>;
+    }
 }

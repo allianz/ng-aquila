@@ -1,8 +1,22 @@
 <div class="docs-private">
 <h3 id="general-usage-of-ndbx-icons" tabindex="-1" class="docs-markdown--h3">General usage of NDBX icons</h3>
 <p class="docs-markdown--p">The icons are comprised of two general types: <strong>functional</strong> and <strong>product icons</strong>. <strong>Functional icons</strong> are used to indicate important actions and functions like search, close or links. In most cases, functional icons will have a size of 24x24px (<strong>s</strong>). <strong>Product icons</strong> are a visual expression of aspects of our products. They are, for instance, used to select product options or in claims use cases. To make both icons distinguishable, the name of all product icons starts with <code>product-*</code>. The outline and fill options should only be used in combination with <strong>product</strong> icons.</p>
-<p class="docs-markdown--p">The general functionality of the icons is provided with the <code>NxIconModule</code> of <code>ng-aquila</code>. The Allianz Icons are provided with the additional <code>NdbxIconModule</code> of <code>@allianz/ngx-ndbx</code>. To use it, import it in the <code>app.module.ts</code> or in any other module:</p>
-<p class="docs-markdown--p">current icon version: <strong>2.26.0</strong> --- from <a href="https://github.developer.allianz.io/oneMarketing/allianz-icons">Global Allianz Icons</a></p>
+<p class="docs-markdown--p">The general functionality of the icons is provided with the <code>NxIconModule</code> of <code>ng-aquila</code>. The Allianz Icons are provided with the additional <code>NdbxIconModule</code> of <code>@allianz/ngx-ndbx</code> for usage in modules or component imports or with <code>provideNdbxIcons()</code> as a global provider for standalone app configs.</p>
+<p class="docs-markdown--p">Current icon version: <strong>2.26.0</strong> --- from <a href="https://github.developer.allianz.io/oneMarketing/allianz-icons">Global Allianz Icons</a></p>
+<h4 id="standalone-projects" tabindex="-1" class="docs-markdown--h4">Standalone projects</h4>
+<p class="docs-markdown--p">Please note that <code>provideNdbxIcons()</code> has to be used on the root level, so in the <code>bootstrapApplication</code> call.</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { provideNdbxIcons } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ngx-ndbx/icon&#x27;</span>;
+
+<span class="hljs-comment">// in app.config.ts</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">appConfig</span>: <span class="hljs-title class_">ApplicationConfig</span> = {
+  <span class="hljs-attr">providers</span>: [
+    <span class="hljs-title function_">provideNdbxIcons</span>()
+  ],
+};
+</code></pre>
+<h4 id="module-import-usage" tabindex="-1" class="docs-markdown--h4">Module import usage</h4>
+<p class="docs-markdown--p">Instead of the global provider you can continue to use the <code>NdbxIconModule</code> and import it anywhere in your modules or standalone component imports, but it is recommended to do this at the root level of your application and not in sub components or routes.</p>
 <pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">NdbxIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ngx-ndbx/icon&#x27;</span>;
 

@@ -58,10 +58,15 @@ export class ActionIndicatorExampleComponent {
         return notificationCount > 99 ? '99+' : notificationCount;
     }
 
-    getAriaLabel(notificationCount: number) {
-        if (!notificationCount) {
-            return 'new notifications available';
+    getAriaLabel(
+        label: string,
+        notificationCount = '',
+        hasNotification?: boolean,
+    ) {
+        if (hasNotification) {
+            return `${label} ${notificationCount} new notifications available`;
         }
-        return `${notificationCount} new notifications available`;
+
+        return `${label}`;
     }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
 
 /**
  * @title Appearance example
@@ -10,4 +11,13 @@ import { Component } from '@angular/core';
 })
 export class FormfieldAppearanceExampleComponent {
     currentDate: Date | null = null;
+
+    @ViewChild('inputToCount', { read: NxInputDirective, static: true })
+    input!: NxInputDirective;
+
+    count = 0;
+
+    onInput() {
+        this.count = this.input.value.length;
+    }
 }

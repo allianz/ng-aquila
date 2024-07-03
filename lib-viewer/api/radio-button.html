@@ -14,138 +14,6 @@
     </h3>
      
 
-<h4 id="NxRadioGroupComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
-    <span header-link="NxRadioGroupComponent"></span>
-    <code>NxRadioGroupComponent</code></h4><h5 class="docs-api-method-header">Properties</h5>
-<table class="docs-api-properties-table">
-    <tr class="docs-api-properties-header-row">
-        <th class="docs-api-properties-th">Name</th>
-        <th class="docs-api-properties-th">Description</th>
-    </tr>
-     
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">disabled</span>:
-                <span class="docs-api-property__type">boolean</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Whether every radio button in this group should be disabled.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">id</span>:
-                <span class="docs-api-property__type">string</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Sets the Id of the radio group.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">name</span>:
-                <span class="docs-api-property__type">string</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Sets the name of this radio group, which is mandatory in conjunction with ngModel (Default: null).</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">negative</span>:
-                <span class="docs-api-property__type">boolean</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Whether the radio group should have negative styling.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">required</span>:
-                <span class="docs-api-property__type">boolean</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Sets if at least an option should be selected.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">value</span>:
-                <span class="docs-api-property__type">any</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Sets the value of the selected radion button in this group (Default: null).</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
-            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">groupValueChange</span>:
-                <span class="docs-api-property__type">EventEmitter<NxRadioChange></span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>An event is dispatched on each group value change.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">ngControl</span>:
-                <span class="docs-api-property__type">NgControl | null</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-  
-</table> 
-
- 
-   
-
 <h4 id="NxRadioComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxRadioComponent"></span>
     <code>NxRadioComponent</code></h4><h5 class="docs-api-method-header">Properties</h5>
@@ -155,6 +23,20 @@
         <th class="docs-api-properties-th">Description</th>
     </tr>
      
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">ariaDescribedBy</span>:
+                <span class="docs-api-property__type">string | null</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
@@ -313,6 +195,164 @@ is overwritten by the group&#39;s negative value.</p>
         
     </div></div>
    
+   
+
+<h4 id="NxRadioGroupComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxRadioGroupComponent"></span>
+    <code>NxRadioGroupComponent</code></h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">disabled</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether every radio button in this group should be disabled.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">id</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the Id of the radio group.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">name</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the name of this radio group, which is mandatory in conjunction with ngModel (Default: null).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">negative</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the radio group should have negative styling.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">required</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets if at least an option should be selected.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">value</span>:
+                <span class="docs-api-property__type">any</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the value of the selected radion button in this group (Default: null).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">groupValueChange</span>:
+                <span class="docs-api-property__type">EventEmitter<NxRadioChange></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>An event is dispatched on each group value change.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">errorChildren</span>:
+                <span class="docs-api-property__type">QueryList<NxErrorComponent></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">ngControl</span>:
+                <span class="docs-api-property__type">NgControl | null</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">radioButtonChildren</span>:
+                <span class="docs-api-property__type">QueryList<NxRadioComponent></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table> 
+
+ 
   <h3 id="additional_classes" class="docs-header-link docs-api-h3">
         <span header-link="additional_classes"></span>
         Additional classes
