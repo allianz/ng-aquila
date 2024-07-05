@@ -1,13 +1,14 @@
 import {
     HTTP_INTERCEPTORS,
     HttpClient,
-    HttpClientModule,
     HttpEvent,
     HttpHandler,
     HttpInterceptor,
     HttpParams,
     HttpRequest,
     HttpResponse,
+    provideHttpClient,
+    withInterceptorsFromDi,
 } from '@angular/common/http';
 import { Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
@@ -68,8 +69,8 @@ describe('NxFileUploaderComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [BasicFileUpload],
-            imports: [NxFileUploaderModule, NxLabelModule, HttpClientModule, ReactiveFormsModule, FormsModule],
-            providers: [{ provide: HTTP_INTERCEPTORS, useClass: UploadInterceptor, multi: true }],
+            imports: [NxFileUploaderModule, NxLabelModule, ReactiveFormsModule, FormsModule],
+            providers: [{ provide: HTTP_INTERCEPTORS, useClass: UploadInterceptor, multi: true }, provideHttpClient(withInterceptorsFromDi())],
         }).compileComponents();
     }));
 

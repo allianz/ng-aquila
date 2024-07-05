@@ -6,8 +6,8 @@
         "outDir": "./out-tsc",
         "forceConsistentCasingInFileNames": true,
         "sourceMap": true,
+        "esModuleInterop": true,
         "declaration": false,
-        "downlevelIteration": true,
         "experimentalDecorators": true,
         "moduleResolution": "node",
         "importHelpers": true,
@@ -22,7 +22,6 @@
             "@aposin/ng-aquila/documentation/*": ["projects/ng-aquila/documentation/generated/*"]
         },
         "useDefineForClassFields": false,
-        "allowSyntheticDefaultImports": true,
         "noFallthroughCasesInSwitch": true,
         "noImplicitReturns": true,
         "strict": true

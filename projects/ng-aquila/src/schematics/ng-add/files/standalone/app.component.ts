@@ -1,4 +1,4 @@
-import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -25,6 +25,10 @@ import { NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
     imports: [
         FormsModule,
         HttpClientJsonpModule,
+
+        // TODO: `HttpClientModule` should not be imported into a component directly.
+        // Please refactor the code to add `provideHttpClient()` call to the provider list in the
+        // application bootstrap logic and remove the `HttpClientModule` import from this component.
         HttpClientModule,
         ReactiveFormsModule,
         RouterModule,

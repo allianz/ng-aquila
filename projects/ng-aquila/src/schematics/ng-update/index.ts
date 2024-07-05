@@ -26,10 +26,13 @@ export const upgradeData: UpgradeData = {
     outputNames,
     propertyNames,
     symbolRemoval,
+    // material team introduced this for their design tokens/css variables
+    // could be useful for us in the future as well but currently we have no need
+    cssTokens: {},
 };
 
 export default function (): Rule {
-    return createMigrationSchematicRule(TargetVersion.V17, [], upgradeData, onMigrationComplete);
+    return createMigrationSchematicRule(TargetVersion.V18, [], upgradeData, onMigrationComplete);
 }
 
 /** Function that will be called when the migration completed. */

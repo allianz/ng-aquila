@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import {
+    provideHttpClient,
+    withInterceptorsFromDi,
+} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { AgGridModule } from 'ag-grid-angular';
@@ -10,9 +13,10 @@ import { AgGridOpensourceExampleComponent } from './ag-grid-opensource/ag-grid-o
 const EXAMPLES = [AgGridExampleComponent, AgGridOpensourceExampleComponent];
 
 @NgModule({
-    imports: [AgGridModule, CommonModule, HttpClientModule, NxButtonModule],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
+    imports: [AgGridModule, CommonModule, NxButtonModule],
+    providers: [provideHttpClient(withInterceptorsFromDi())],
 })
 export class HeadlineExamplesModule {
     static components() {

@@ -1,4 +1,4 @@
-import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withJsonpSupport } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,12 +25,11 @@ import { AppComponent } from './app.component';
 
 @NgModule({
     declarations: [AppComponent],
+    bootstrap: [AppComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
-        HttpClientJsonpModule,
-        HttpClientModule,
         ReactiveFormsModule,
         RouterModule.forRoot([]),
         NxButtonModule,
@@ -50,7 +49,7 @@ import { AppComponent } from './app.component';
         NxPopoverModule,
         NxSmallStageModule,
     ],
-    bootstrap: [AppComponent],
+    providers: [provideHttpClient(withInterceptorsFromDi(), withJsonpSupport())],
 })
 export class AppModule {}
 

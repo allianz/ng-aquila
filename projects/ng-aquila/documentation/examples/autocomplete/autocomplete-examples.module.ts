@@ -1,4 +1,8 @@
-import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import {
+    provideHttpClient,
+    withInterceptorsFromDi,
+    withJsonpSupport,
+} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { NxAutocompleteModule } from '@aposin/ng-aquila/autocomplete';
 import { NxInputModule } from '@aposin/ng-aquila/input';
@@ -22,16 +26,17 @@ const EXAMPLES = [
 ];
 
 @NgModule({
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
     imports: [
         NxAutocompleteModule,
         NxInputModule,
         NxNaturalLanguageFormModule,
         ExamplesSharedModule,
-        HttpClientJsonpModule,
-        HttpClientModule,
     ],
-    declarations: [EXAMPLES],
-    exports: [EXAMPLES],
+    providers: [
+        provideHttpClient(withInterceptorsFromDi(), withJsonpSupport()),
+    ],
 })
 export class AutocompleteExamplesModule {
     static components() {

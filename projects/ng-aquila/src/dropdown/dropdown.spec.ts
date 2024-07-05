@@ -371,31 +371,10 @@ describe('NxDropdownComponent', () => {
         }));
 
         it('should update the item label when projected content is deferred', fakeAsync(() => {
-            // material uses the MutationObserverFactory that you can call the mutationCallbacks like
-            // the _onLabelChange() callback from dropdown-item manually. Otherwise they are run too late
-            // and you can't test it properly.
-
             TestBed.resetTestingModule()
                 .configureTestingModule({
                     imports: [CommonModule, OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
                     declarations: [DeferredTestComponent],
-                    providers: [
-                        {
-                            provide: MutationObserverFactory,
-                            useValue: {
-                                // Stub out the factory that creates mutation observers for the underlying directive
-                                // to allows us to flush out the callbacks asynchronously.
-                                create: (callback: () => void) => {
-                                    mutationCallbacks.push(callback);
-
-                                    return {
-                                        observe: () => {},
-                                        disconnect: () => {},
-                                    };
-                                },
-                            },
-                        },
-                    ],
                 })
                 .compileComponents();
 
@@ -407,15 +386,15 @@ describe('NxDropdownComponent', () => {
 
             trigger.click();
             fixture.detectChanges();
+
             let items: NodeListOf<Element> = getDropdownItems();
             expect(items.item(0).textContent!.trim()).toBe('value');
+
             tick(100);
             fixture.detectChanges();
-            mutationCallbacks.forEach(callback => callback());
-            // mutationCallback should have run the change detection of the dropdown item and this
-            // needs to be reflected in the component template now
-            fixture.detectChanges();
+
             items = getDropdownItems();
+
             expect(items.item(0).textContent!.trim()).toBe('deferred label');
         }));
 

@@ -111,11 +111,11 @@ export class SchematicTestSetup {
 
             // create module based app
             this.appTree = await createApp(this.runner, workspaceTree, { name: this.appTreeName, standalone: false });
-            this.createFileDir(this.appTree);
+            this.createFileDir(this.appTree, this.appTreeName);
 
             // create standalone app
             this.appTreeStandalone = await createApp(this.runner, workspaceTree, { name: this.appTreeNameStandalone, standalone: true });
-            this.createFileDir(this.appTreeStandalone);
+            this.createFileDir(this.appTreeStandalone, this.appTreeNameStandalone);
         });
 
         afterEach(async () => {
@@ -127,11 +127,11 @@ export class SchematicTestSetup {
     /**
      * Create file directory, remove comments and add ts files
      */
-    createFileDir(testApp: UnitTestTree): void {
-        const testAppTsconfigPath = 'projects/' + this.appTreeName + '/tsconfig.app.json';
+    createFileDir(testApp: UnitTestTree, appName: string): void {
+        const testAppTsconfigPath = 'projects/' + appName + '/tsconfig.app.json';
 
         // remove comments and parse json
-        const testAppTsconfig = JSON.parse(testApp.readContent(testAppTsconfigPath).replace(/\/\*.*\*\//, ''));
+        const testAppTsconfig = JSON.parse(testApp.readContent(testAppTsconfigPath).replace(/\/\*.*\*\//g, ''));
 
         // include all TypeScript files in the project. Otherwise all test input
         // files won't be part of the program and cannot be migrated.
