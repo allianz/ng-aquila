@@ -13,6 +13,7 @@ import { NxToggleSectionBase } from './toggle-section/toggle-section-base';
         { provide: NxTableContentElement, useExisting: NxComparisonTableRowGroupDirective },
         { provide: NxComparisonTableRowGroupBase, useExisting: NxComparisonTableRowGroupDirective },
     ],
+    standalone: true,
 })
 export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGroupBase implements NxTableContentElement {
     /** @docs-private */

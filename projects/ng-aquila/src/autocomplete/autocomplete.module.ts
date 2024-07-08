@@ -5,12 +5,11 @@ import { NgModule } from '@angular/core';
 
 import { NxAutocompleteComponent } from './autocomplete.component';
 import { NxAutocompleteOptionComponent } from './autocomplete-option.component';
-import { NX_AUTOCOMPLETE_SCROLL_STRATEGY_PROVIDER, NxAutocompleteTriggerDirective } from './autocomplete-trigger.directive';
+import { NxAutocompleteTriggerDirective } from './autocomplete-trigger.directive';
 
 @NgModule({
-    declarations: [NxAutocompleteComponent, NxAutocompleteOptionComponent, NxAutocompleteTriggerDirective],
     exports: [NxAutocompleteComponent, NxAutocompleteOptionComponent, NxAutocompleteTriggerDirective],
-    imports: [CommonModule, OverlayModule, A11yModule],
-    providers: [NX_AUTOCOMPLETE_SCROLL_STRATEGY_PROVIDER],
+    imports: [CommonModule, OverlayModule, A11yModule, NxAutocompleteComponent, NxAutocompleteOptionComponent, NxAutocompleteTriggerDirective],
+    providers: [],
 })
 export class NxAutocompleteModule {}

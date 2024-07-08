@@ -1,5 +1,16 @@
 import { Component } from '@angular/core';
-import { NX_DATE_FORMATS } from '@aposin/ng-aquila/datefield';
+import { FormsModule } from '@angular/forms';
+import {
+    NX_DATE_FORMATS,
+    NxDatefieldDirective,
+    NxDatepickerComponent,
+    NxDatepickerToggleComponent,
+} from '@aposin/ng-aquila/datefield';
+import {
+    NxFormfieldComponent,
+    NxFormfieldSuffixDirective,
+} from '@aposin/ng-aquila/formfield';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
 import moment from 'moment';
 
 export const MY_FORMATS = {
@@ -22,6 +33,16 @@ export const MY_FORMATS = {
     templateUrl: './datefield-format-injection-example.html',
     styleUrls: ['./datefield-format-injection-example.css'],
     providers: [{ provide: NX_DATE_FORMATS, useValue: MY_FORMATS }],
+    standalone: true,
+    imports: [
+        NxFormfieldComponent,
+        NxDatefieldDirective,
+        NxInputDirective,
+        FormsModule,
+        NxDatepickerToggleComponent,
+        NxFormfieldSuffixDirective,
+        NxDatepickerComponent,
+    ],
 })
 export class DatefieldFormatInjectionExampleComponent {
     inputString = moment();

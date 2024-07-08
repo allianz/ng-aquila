@@ -1,16 +1,23 @@
+import { NgFor } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { NxActionModule } from '@aposin/ng-aquila/action';
+import { NxGridModule } from '@aposin/ng-aquila/grid';
+import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
 import { Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
 import { GuideDescriptor, Manifest } from '../../core/manifest';
 import { ManifestService } from '../../service/manifest.service';
+import { NxvFooterComponent } from '../component-documentation/footer/footer.component';
 import { DocumentationFrameComponent } from '../documentation-frame.component';
 
 @Component({
     selector: 'nxv-guides',
     templateUrl: 'guides.component.html',
     styleUrls: ['guides.component.scss'],
+    standalone: true,
+    imports: [NxSidebarModule, NgFor, NxActionModule, RouterLinkActive, RouterLink, NxGridModule, RouterOutlet, NxvFooterComponent],
 })
 export class NxvGuidesComponent implements OnDestroy {
     availableGuides!: GuideDescriptor[];

@@ -61,10 +61,9 @@ describe('NxMultiSelectOptionComponent', () => {
     let multiSelectOptionHarness: MultiSelectOptionHarness;
     let liveAnnouncer: LiveAnnouncer;
 
-    async function configureTestingModule(declarations: any[]) {
+    async function configureTestingModule() {
         return TestBed.configureTestingModule({
-            imports: [NxDropdownModule],
-            declarations,
+            imports: [NxDropdownModule, BasicMultiSelectOptionComponent],
             providers: [LiveAnnouncer],
         }).compileComponents();
     }
@@ -80,7 +79,7 @@ describe('NxMultiSelectOptionComponent', () => {
     }
 
     beforeEach(async () => {
-        await configureTestingModule([BasicMultiSelectOptionComponent, NxMultiSelectOptionComponent]);
+        await configureTestingModule();
         createTestComponent(BasicMultiSelectOptionComponent);
         multiSelectOptionHarness = await loader.getHarness(MultiSelectOptionHarness);
     });
@@ -224,7 +223,7 @@ describe('NxMultiSelectOptionComponent', () => {
     });
 });
 
-@Directive()
+@Directive({ standalone: true })
 abstract class MultiSelectOptionTest {
     @ViewChild(NxMultiSelectOptionComponent) multiSelectOption!: NxMultiSelectOptionComponent<any>;
 
@@ -250,5 +249,7 @@ abstract class MultiSelectOptionTest {
             </nx-multi-select-option>
         </div>
     `,
+    standalone: true,
+    imports: [NxMultiSelectOptionComponent],
 })
 class BasicMultiSelectOptionComponent extends MultiSelectOptionTest {}

@@ -9,7 +9,7 @@ interface PaginationItem {
 }
 
 /** @docs-private */
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class NxPaginationUtils {
     private readonly _pagesMobile = 3;
     private readonly _elipsisText = '...';

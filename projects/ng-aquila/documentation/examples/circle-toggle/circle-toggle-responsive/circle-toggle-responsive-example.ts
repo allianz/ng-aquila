@@ -1,4 +1,9 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import {
+    NxCircleToggleComponent,
+    NxCircleToggleGroupComponent,
+} from '@aposin/ng-aquila/circle-toggle';
 
 /**
  * @title Disable responsive example
@@ -7,6 +12,8 @@ import { Component } from '@angular/core';
     selector: 'circle-toggle-responsive-example',
     templateUrl: './circle-toggle-responsive-example.html',
     styleUrls: ['./circle-toggle-responsive-example.css'],
+    standalone: true,
+    imports: [NxCircleToggleGroupComponent, NgFor, NxCircleToggleComponent],
 })
 export class CircleToggleResponsiveExampleComponent {
     sampleValues = [

@@ -6,7 +6,7 @@ import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxLicencePlateModule } from './licence-plate.module';
 import { NxLicencePlateSeasonSuffixComponent } from './licence-plate-season-suffix.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class LicencePlateSeasonSuffixTest {
     @ViewChild(NxLicencePlateSeasonSuffixComponent) instance!: NxLicencePlateSeasonSuffixComponent;
 
@@ -30,8 +30,7 @@ describe('NxLicencePlateSeasonSuffixComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicLicencePlateSeasonSuffix],
-            imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule],
+            imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule, BasicLicencePlateSeasonSuffix],
         }).compileComponents();
     }));
 
@@ -95,5 +94,7 @@ describe('NxLicencePlateSeasonSuffixComponent', () => {
             <nx-licence-plate-season-suffix nxFormfieldSuffix [startMonth]="1" [endMonth]="10"></nx-licence-plate-season-suffix>
         </nx-formfield>
     `,
+    standalone: true,
+    imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule],
 })
 class BasicLicencePlateSeasonSuffix extends LicencePlateSeasonSuffixTest {}

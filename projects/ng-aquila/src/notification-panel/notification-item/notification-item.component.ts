@@ -14,6 +14,7 @@ import { Subject } from 'rxjs';
         '(focus)': 'focus()',
         '(blur)': '_blur()',
     },
+    standalone: true,
 })
 export class NxNotificationPanelItemComponent implements FocusableOption, OnDestroy, AfterViewInit {
     @Input() set read(value: BooleanInput) {

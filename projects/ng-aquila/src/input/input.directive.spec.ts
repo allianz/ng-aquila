@@ -6,7 +6,7 @@ import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
 
 import { createFakeEvent } from '../cdk-test-utils';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class InputTest {
     @ViewChild(NxInputDirective) inputInstance!: NxInputDirective;
     type = 'text';
@@ -36,7 +36,10 @@ describe('NxInputDirective', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [
+            imports: [
+                FormsModule,
+                NxInputModule,
+                ReactiveFormsModule,
                 BasicInput,
                 BasicTextarea,
                 TypedAndRequiredInput,
@@ -48,7 +51,6 @@ describe('NxInputDirective', () => {
                 InputWithLabelAndPlaceholder,
                 NoChangeDetectionInput,
             ],
-            imports: [FormsModule, NxInputModule, ReactiveFormsModule],
         }).compileComponents();
     }));
 
@@ -346,26 +348,36 @@ describe('NxInputDirective', () => {
             <input nxInput />
         </nx-formfield>
     `,
+    standalone: true,
+    imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class BasicInput extends InputTest {}
 
 @Component({
     template: `<input nxInput [type]="type" />`,
+    standalone: true,
+    imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class TypedAndRequiredInput extends InputTest {}
 
 @Component({
     template: `<input nxInput required />`,
+    standalone: true,
+    imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class RequiredInput extends InputTest {}
 
 @Component({
     template: `<input nxInput [(ngModel)]="currentValue" required />`,
+    standalone: true,
+    imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class NgModelInput extends InputTest {}
 
 @Component({
     template: `<input nxInput [(ngModel)]="currentValue" required [updateOn]="blur" />`,
+    standalone: true,
+    imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class NoChangeDetectionInput extends InputTest {}
 
@@ -375,6 +387,8 @@ class NoChangeDetectionInput extends InputTest {}
             <textarea nxInput></textarea>
         </nx-formfield>
     `,
+    standalone: true,
+    imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class BasicTextarea extends InputTest {}
 
@@ -384,6 +398,8 @@ class BasicTextarea extends InputTest {}
             <input nxInput [formControl]="formControl" />
         </nx-formfield>
     `,
+    standalone: true,
+    imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class BasicInputWithFormControl extends InputTest {
     formControl = new FormControl('');
@@ -395,6 +411,8 @@ class BasicInputWithFormControl extends InputTest {
             <input nxInput [formControl]="formControl" />
         </nx-formfield>
     `,
+    standalone: true,
+    imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class BasicInputWithRequiredFormControl extends InputTest {
     formControl = new FormControl('', Validators.required);
@@ -402,6 +420,8 @@ class BasicInputWithRequiredFormControl extends InputTest {
 
 @Component({
     template: `<input nxInput [required]="required" [disabled]="disabled" [readonly]="readonly" />`,
+    standalone: true,
+    imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class ConfigurableInput extends InputTest {}
 
@@ -411,6 +431,8 @@ class ConfigurableInput extends InputTest {}
             <input nxInput [placeholder]="placeholderText" />
         </nx-formfield>
     `,
+    standalone: true,
+    imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class InputWithLabelAndPlaceholder extends InputTest {
     floatLabel = 'auto';

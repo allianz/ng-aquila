@@ -1,7 +1,36 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { DATEPICKER_DEFAULT_OPTIONS } from '@aposin/ng-aquila/datefield';
-import { FORMFIELD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/formfield';
+import {
+    FormArray,
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+} from '@angular/forms';
+import { NxPlainButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    DATEPICKER_DEFAULT_OPTIONS,
+    NxDatefieldDirective,
+    NxDatepickerComponent,
+    NxDatepickerToggleComponent,
+} from '@aposin/ng-aquila/datefield';
+import {
+    NxDropdownComponent,
+    NxDropdownItemComponent,
+} from '@aposin/ng-aquila/dropdown';
+import {
+    FORMFIELD_DEFAULT_OPTIONS,
+    NxFormfieldComponent,
+    NxFormfieldSuffixDirective,
+} from '@aposin/ng-aquila/formfield';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
+import {
+    NxHeaderCellDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+} from '@aposin/ng-aquila/table';
 import moment from 'moment';
 
 /**
@@ -21,6 +50,26 @@ import moment from 'moment';
             provide: DATEPICKER_DEFAULT_OPTIONS,
             useValue: { toggleIconTabindex: -1 },
         },
+    ],
+    standalone: true,
+    imports: [
+        NxTableComponent,
+        NxTableRowComponent,
+        NxHeaderCellDirective,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        NxTableCellComponent,
+        NxFormfieldComponent,
+        NxInputDirective,
+        NxDatefieldDirective,
+        NxDatepickerToggleComponent,
+        NxFormfieldSuffixDirective,
+        NxDatepickerComponent,
+        NxDropdownComponent,
+        NxDropdownItemComponent,
+        NxPlainButtonComponent,
+        NxIconComponent,
     ],
 })
 export class TableFormElementsExampleComponent {

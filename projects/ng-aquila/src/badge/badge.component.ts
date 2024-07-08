@@ -15,6 +15,7 @@ export type NxBadgeType = 'active' | 'positive' | 'critical' | 'negative' | '';
         '[class.nx-badge--negative]': 'type === "negative"',
         '[class.nx-badge--vibrant]': 'vibrant',
     },
+    standalone: true,
 })
 export class NxBadgeComponent {
     /** Sets the class name for the badge element.  */

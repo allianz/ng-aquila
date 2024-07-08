@@ -1,4 +1,12 @@
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import {
+    NxMenuButtonComponent,
+    NxMenuButtonIconDirective,
+    NxMenuItemDirective,
+    NxMenuLinkDirective,
+} from '@aposin/ng-aquila/menu';
 
 interface MenuChild {
     label: string;
@@ -18,6 +26,16 @@ interface MenuItem {
     selector: 'menu-item-with-icons-example',
     templateUrl: 'menu-item-with-icons-example.html',
     styleUrls: ['menu-item-with-icons-example.css'],
+    standalone: true,
+    imports: [
+        NgFor,
+        NxMenuButtonComponent,
+        NxMenuItemDirective,
+        NxIconComponent,
+        NxMenuButtonIconDirective,
+        NgIf,
+        NxMenuLinkDirective,
+    ],
 })
 export class MenuItemWithIconsExampleComponent {
     menuData: MenuItem[] = [

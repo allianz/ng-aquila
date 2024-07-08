@@ -1,9 +1,24 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import {
+    NxActionComponent,
+    NxActionIconDirective,
+} from '@aposin/ng-aquila/action';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import { NxSidebarComponent } from '@aposin/ng-aquila/sidebar';
 import {
     NxFlatTreeControl,
     NxFlatTreeNode,
+    NxTreeComponent,
     NxTreeFlatDataSource,
     NxTreeNode,
+    NxTreeNodeActionItem,
+    NxTreeNodeComponent,
+    NxTreeNodeDefDirective,
+    NxTreeNodePaddingDirective,
+    NxTreeNodeToggleDirective,
 } from '@aposin/ng-aquila/tree';
 
 interface Query {
@@ -34,6 +49,23 @@ interface MyFlatTreeNode extends NxFlatTreeNode {
     selector: 'sidebar-outputs-example',
     templateUrl: './sidebar-outputs-example.html',
     styleUrls: ['sidebar-outputs-example.css'],
+    standalone: true,
+    imports: [
+        NxSidebarComponent,
+        NxTreeComponent,
+        NxTreeNodeDefDirective,
+        NxTreeNodeComponent,
+        NxActionComponent,
+        NxTreeNodePaddingDirective,
+        NxTreeNodeActionItem,
+        RouterLink,
+        RouterLinkActive,
+        NgIf,
+        NxIconComponent,
+        NxActionIconDirective,
+        NxTreeNodeToggleDirective,
+        NxButtonComponent,
+    ],
 })
 export class SidebarOutputsExampleComponent {
     navigationData: MyTreeNode[] = [

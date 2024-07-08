@@ -6,7 +6,7 @@ import { NxDynamicTableComponent } from './dynamic-table.component';
 import { NxDynamicTableColumnDefinition } from './dynamic-table.models';
 import { NxDynamicTableModule } from './dynamic-table.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class DynamicTableTest {
     @ViewChild(NxDynamicTableComponent) dynamicTableInstance!: NxDynamicTableComponent;
     data: any[] = [
@@ -52,8 +52,16 @@ describe('NxDynamicTableComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxDynamicTableModule, CdkTableModule],
-            declarations: [BasicDynamicTable, TableEmptyRows, TableWrongRows, DynamicTableEvent, EmptyDynamicTable, ProgrammaticTable],
+            imports: [
+                NxDynamicTableModule,
+                CdkTableModule,
+                BasicDynamicTable,
+                TableEmptyRows,
+                TableWrongRows,
+                DynamicTableEvent,
+                EmptyDynamicTable,
+                ProgrammaticTable,
+            ],
         }).compileComponents();
     }));
 
@@ -170,6 +178,8 @@ describe('NxDynamicTableComponent', () => {
 
 @Component({
     template: `<nx-dynamic-table [data]="data"> </nx-dynamic-table>`,
+    standalone: true,
+    imports: [NxDynamicTableModule, CdkTableModule],
 })
 class TableEmptyRows extends DynamicTableTest {
     data = [{}, {}];
@@ -177,6 +187,8 @@ class TableEmptyRows extends DynamicTableTest {
 
 @Component({
     template: `<nx-dynamic-table [data]="data"> </nx-dynamic-table>`,
+    standalone: true,
+    imports: [NxDynamicTableModule, CdkTableModule],
 })
 class TableWrongRows extends DynamicTableTest {
     data = [null, undefined];
@@ -184,6 +196,8 @@ class TableWrongRows extends DynamicTableTest {
 
 @Component({
     template: `<nx-dynamic-table [data]="data" [displayedColumns]="displayedColumns"></nx-dynamic-table>`,
+    standalone: true,
+    imports: [NxDynamicTableModule, CdkTableModule],
 })
 class BasicDynamicTable extends DynamicTableTest {
     style = 'border';
@@ -191,11 +205,15 @@ class BasicDynamicTable extends DynamicTableTest {
 
 @Component({
     template: `<nx-dynamic-table [data]="data" [displayedColumns]="displayedColumns" (rowClick)="handleRowClick($event)"></nx-dynamic-table>`,
+    standalone: true,
+    imports: [NxDynamicTableModule, CdkTableModule],
 })
 class DynamicTableEvent extends DynamicTableTest {}
 
 @Component({
     template: `<nx-dynamic-table [data]="data">Information: No data to display</nx-dynamic-table>`,
+    standalone: true,
+    imports: [NxDynamicTableModule, CdkTableModule],
 })
 class EmptyDynamicTable extends DynamicTableTest {
     data = [];
@@ -203,5 +221,7 @@ class EmptyDynamicTable extends DynamicTableTest {
 
 @Component({
     template: `<nx-dynamic-table></nx-dynamic-table>`,
+    standalone: true,
+    imports: [NxDynamicTableModule, CdkTableModule],
 })
 class ProgrammaticTable extends DynamicTableTest {}

@@ -9,6 +9,7 @@ import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
     template: `<ng-content></ng-content>`,
     styleUrls: ['licence-plate-euro-prefix.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxLicencePlateEuroPrefixComponent {
     constructor(private readonly _formField: NxFormfieldComponent) {}

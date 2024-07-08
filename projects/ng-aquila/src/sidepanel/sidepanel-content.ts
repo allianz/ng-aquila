@@ -8,5 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         tabindex: '0',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxSidepanelContentComponent {}

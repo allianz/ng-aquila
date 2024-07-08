@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NxDynamicTableColumnDefinition } from '@aposin/ng-aquila/dynamic-table';
+import {
+    NxDynamicTableColumnDefinition,
+    NxDynamicTableComponent,
+} from '@aposin/ng-aquila/dynamic-table';
 
 /**
  * @title Tooltip Fallbacks Table Example
@@ -8,6 +11,8 @@ import { NxDynamicTableColumnDefinition } from '@aposin/ng-aquila/dynamic-table'
     selector: 'tooltip-fallbacks-table-example',
     templateUrl: './tooltip-fallbacks-table-example.html',
     styleUrls: ['./tooltip-fallbacks-table-example.css'],
+    standalone: true,
+    imports: [NxDynamicTableComponent],
 })
 export class TooltipFallbacksTableExampleComponent {
     data = [

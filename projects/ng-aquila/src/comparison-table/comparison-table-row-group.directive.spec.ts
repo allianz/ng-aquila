@@ -16,7 +16,7 @@ const comparisonTableDefaultOptions: ComparisonTableDefaultOptions = {
     useFullRowForExpandableArea: true,
 };
 
-@Directive()
+@Directive({ standalone: true })
 abstract class RowGroupTest {
     visibleRows = 2;
     labelCollapsed = 'To be opened';
@@ -42,8 +42,7 @@ describe('NxComparisonTableRowGroupDirective', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxComparisonTableModule, BrowserAnimationsModule],
-            declarations: [BasicComponent, ConfigurableComponent, ToggleSectionComponent],
+            imports: [NxComparisonTableModule, BrowserAnimationsModule, BasicComponent, ConfigurableComponent, ToggleSectionComponent],
         });
         TestBed.compileComponents();
     }));
@@ -237,8 +236,7 @@ describe('NxComparisonTableRowGroupDirective using injection token', () => {
     beforeEach(waitForAsync(() => {
         comparisonTableDefaultOptions.useFullRowForExpandableArea = true;
         TestBed.configureTestingModule({
-            imports: [NxComparisonTableModule, BrowserAnimationsModule],
-            declarations: [BasicComponent, ConfigurableComponent],
+            imports: [NxComparisonTableModule, BrowserAnimationsModule, BasicComponent, ConfigurableComponent],
             providers: [{ provide: COMPARISON_TABLE_DEFAULT_OPTIONS, useValue: comparisonTableDefaultOptions }],
         });
         TestBed.compileComponents();
@@ -277,11 +275,13 @@ describe('NxComparisonTableRowGroupDirective using injection token', () => {
                 <nx-comparison-table-cell type="header">This is a header cell</nx-comparison-table-cell>
             </ng-container>
             <ng-container nxComparisonTableRowGroup>
-                <ng-container nxComparisonTableRow *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
-                    <nx-comparison-table-description-cell>This is a description cell</nx-comparison-table-description-cell>
-                    <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
-                    <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
-                </ng-container>
+                @for (i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; track i) {
+                    <ng-container nxComparisonTableRow>
+                        <nx-comparison-table-description-cell>This is a description cell</nx-comparison-table-description-cell>
+                        <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
+                        <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
+                    </ng-container>
+                }
             </ng-container>
             <ng-container nxComparisonTableRow type="footer">
                 <nx-comparison-table-cell type="footer">This is a footer cell</nx-comparison-table-cell>
@@ -289,6 +289,8 @@ describe('NxComparisonTableRowGroupDirective using injection token', () => {
             </ng-container>
         </nx-comparison-table>
     `,
+    standalone: true,
+    imports: [NxComparisonTableModule],
 })
 class BasicComponent extends RowGroupTest {}
 
@@ -307,11 +309,13 @@ class BasicComponent extends RowGroupTest {}
                 [(isExpanded)]="isExpanded"
                 [useFullRowForExpandableArea]="useFullRowForExpandableArea"
             >
-                <ng-container nxComparisonTableRow *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
-                    <nx-comparison-table-description-cell>This is a description cell</nx-comparison-table-description-cell>
-                    <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
-                    <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
-                </ng-container>
+                @for (i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; track i) {
+                    <ng-container nxComparisonTableRow>
+                        <nx-comparison-table-description-cell>This is a description cell</nx-comparison-table-description-cell>
+                        <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
+                        <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
+                    </ng-container>
+                }
             </ng-container>
             <ng-container nxComparisonTableRow>
                 <nx-comparison-table-description-cell>This is a description cell</nx-comparison-table-description-cell>
@@ -324,6 +328,8 @@ class BasicComponent extends RowGroupTest {}
             </ng-container>
         </nx-comparison-table>
     `,
+    standalone: true,
+    imports: [NxComparisonTableModule],
 })
 class ConfigurableComponent extends RowGroupTest {}
 
@@ -337,11 +343,13 @@ class ConfigurableComponent extends RowGroupTest {}
             <ng-container nxComparisonTableToggleSection>
                 <nx-comparison-table-toggle-section-header>Toggle section header</nx-comparison-table-toggle-section-header>
                 <ng-container nxComparisonTableRowGroup>
-                    <ng-container nxComparisonTableRow *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
-                        <nx-comparison-table-description-cell>This is a description cell</nx-comparison-table-description-cell>
-                        <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
-                        <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
-                    </ng-container>
+                    @for (i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; track i) {
+                        <ng-container nxComparisonTableRow>
+                            <nx-comparison-table-description-cell>This is a description cell</nx-comparison-table-description-cell>
+                            <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
+                            <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
+                        </ng-container>
+                    }
                 </ng-container>
             </ng-container>
             <ng-container nxComparisonTableRow type="footer">
@@ -350,5 +358,7 @@ class ConfigurableComponent extends RowGroupTest {}
             </ng-container>
         </nx-comparison-table>
     `,
+    standalone: true,
+    imports: [NxComparisonTableModule],
 })
 class ToggleSectionComponent extends RowGroupTest {}

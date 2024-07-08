@@ -11,7 +11,6 @@ import { NxCardMainLinkDirective, NxCardSecondaryInfoDirective } from './card-li
 import { NxSelectableCardComponent, NxSelectableCardGroupComponent } from './selectable-card.component';
 
 @NgModule({
-    declarations: [NxCardComponent, NxSelectableCardComponent, NxCardHeaderComponent, NxCardFooterComponent, NxSelectableCardGroupComponent],
     exports: [
         NxCardComponent,
         NxSelectableCardComponent,
@@ -22,6 +21,18 @@ import { NxSelectableCardComponent, NxSelectableCardGroupComponent } from './sel
         NxCardMainLinkDirective,
         NxCardSecondaryInfoDirective,
     ],
-    imports: [CommonModule, NxIconModule, NxErrorModule, NxCheckboxModule, NxCardMainLinkDirective, NxCardSecondaryInfoDirective],
+    imports: [
+        CommonModule,
+        NxIconModule,
+        NxErrorModule,
+        NxCheckboxModule,
+        NxCardMainLinkDirective,
+        NxCardSecondaryInfoDirective,
+        NxCardComponent,
+        NxSelectableCardComponent,
+        NxCardHeaderComponent,
+        NxCardFooterComponent,
+        NxSelectableCardGroupComponent,
+    ],
 })
 export class NxCardModule {}

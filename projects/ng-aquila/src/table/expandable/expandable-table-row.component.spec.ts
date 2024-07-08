@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { NxTableModule } from '../table.module';
 import { NxExpandableTableRowComponent } from './expandable-table-row.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ExpandableTableRowTest {
     isExpanded = true;
     @ViewChild(NxExpandableTableRowComponent) expandableTableRowInstance!: NxExpandableTableRowComponent;
@@ -29,8 +29,7 @@ describe(NxExpandableTableRowComponent.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicExpandableTableRowComponent, ConfigurableExpandableTableRowComponent],
-            imports: [NxTableModule],
+            imports: [NxTableModule, BasicExpandableTableRowComponent, ConfigurableExpandableTableRowComponent],
         }).compileComponents();
     }));
 
@@ -122,6 +121,8 @@ describe(NxExpandableTableRowComponent.name, () => {
         example content
     </tr>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTableModule],
 })
 class BasicExpandableTableRowComponent extends ExpandableTableRowTest {}
 
@@ -130,5 +131,7 @@ class BasicExpandableTableRowComponent extends ExpandableTableRowTest {}
         example content
     </tr>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTableModule],
 })
 class ConfigurableExpandableTableRowComponent extends ExpandableTableRowTest {}

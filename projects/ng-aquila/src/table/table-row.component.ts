@@ -18,6 +18,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Even
     },
     template: `<ng-content></ng-content>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxTableRowComponent {
     /** Whether this table row is selectable */

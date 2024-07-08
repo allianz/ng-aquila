@@ -35,8 +35,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxCheckboxModule, ExamplesSharedModule],
-    declarations: [EXAMPLES],
+    imports: [NxCheckboxModule, ExamplesSharedModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class CheckboxExamplesModule {

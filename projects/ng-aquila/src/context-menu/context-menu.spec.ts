@@ -1,23 +1,25 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { DOWN_ARROW, END, ENTER, ESCAPE, HOME, LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
-import { OverlayContainer } from '@angular/cdk/overlay';
+import { OverlayContainer, ScrollStrategy } from '@angular/cdk/overlay';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
-import { CommonModule } from '@angular/common';
-import { Component, ElementRef, EventEmitter, NgZone, QueryList, Type, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
+import { CommonModule, NgFor } from '@angular/common';
+import { Component, ElementRef, EventEmitter, Inject, NgZone, QueryList, Type, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NxButtonComponent, NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
+import { NxIconComponent, NxIconModule } from '@aposin/ng-aquila/icon';
+import { fakeScrollStrategyFunction } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 
 import { createKeyboardEvent, createMouseEvent, dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent } from '../cdk-test-utils';
-import { NxIconModule } from '../icon/public-api';
 import {
     MENU_PANEL_OFFSET_X,
     MENU_PANEL_OFFSET_Y,
     MENU_PANEL_TOP_PADDING,
+    NX_CONTEXT_MENU_SCROLL_STRATEGY,
     NxContextMenuComponent,
     NxContextMenuItemComponent,
     NxContextMenuModule,
@@ -33,6 +35,8 @@ import {
         <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu" #trigger>Open</button>
     `,
     encapsulation: ViewEncapsulation.ShadowDom,
+    standalone: true,
+    imports: [NxContextMenuModule, NxButtonComponent],
 })
 class ShadowDomTestComponent {
     @ViewChild('trigger', { static: true, read: ElementRef }) trigger?: ElementRef<HTMLButtonElement>;
@@ -65,8 +69,7 @@ describe('nxContextMenu', () => {
 
     function createComponent<T>(component: Type<T>, providers: any[] = []): ComponentFixture<T> {
         TestBed.configureTestingModule({
-            imports: [NxContextMenuModule, NoopAnimationsModule, NxIconModule, NxButtonModule, NxCheckboxModule, FormsModule, CommonModule],
-            declarations: [component],
+            imports: [NxContextMenuModule, NoopAnimationsModule, NxIconModule, NxButtonModule, NxCheckboxModule, FormsModule, CommonModule, component],
             providers,
         }).compileComponents();
 
@@ -457,6 +460,16 @@ describe('nxContextMenu', () => {
         fixture.componentInstance.trigger.closeContextMenu();
         fixture.detectChanges();
         expect(fixture.componentInstance.button.active).toBeFalse();
+    });
+
+    it('should be able to override the scroll strategy in parent injector', () => {
+        const fixture = createComponent(OverrideScrollStrategyMenu, [
+            {
+                provide: NX_CONTEXT_MENU_SCROLL_STRATEGY,
+                useFactory: () => fakeScrollStrategyFunction,
+            },
+        ]);
+        expect(fixture.componentInstance.scrollStrategy).toBe(fakeScrollStrategyFunction);
     });
 
     describe('lazy rendering', () => {
@@ -1443,22 +1456,21 @@ describe('nxContextMenu', () => {
             fixture.componentInstance.trigger.openContextMenu();
         });
 
-        it('should be able to navigate and select item with keyboard', fakeAsync(() => {
+        it('should be able to navigate and select item with keyboard', () => {
             const panel = overlayContainerElement.querySelector('.nx-context-menu');
             dispatchKeyboardEvent(panel!, 'keydown', DOWN_ARROW);
             fixture.detectChanges();
-            tick(500);
             const items = Array.from(panel!.querySelectorAll('.nx-context-menu-item')) as HTMLElement[];
-
+            console.log(items);
             expect(items[0]!).toHaveClass('cdk-keyboard-focused');
 
             dispatchKeyboardEvent(items[0]!, 'keydown', ENTER);
             fixture.detectChanges();
-            tick(500);
             const checkbox = items[0].querySelector('.nx-checkbox__input') as HTMLInputElement;
+            console.log(checkbox);
             expect(checkbox.checked).toBe(true);
             expect(fixture.componentInstance.selected).toEqual(['A']);
-        }));
+        });
     });
 });
 
@@ -1472,9 +1484,13 @@ describe('nxContextMenu', () => {
                 <nx-icon name="settings"></nx-icon>
                 Item with an icon
             </button>
-            <button *ngFor="let item of extraItems" nxContextMenuItem>{{ item }}</button>
+            @for (item of extraItems; track item) {
+                <button nxContextMenuItem>{{ item }}</button>
+            }
         </nx-context-menu>
     `,
+    standalone: true,
+    imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
 })
 class SimpleMenu {
     @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
@@ -1484,6 +1500,28 @@ class SimpleMenu {
     @ViewChildren(NxContextMenuItemComponent) items!: QueryList<NxContextMenuItemComponent>;
     extraItems: string[] = [];
     closeCallback = jasmine.createSpy('menu closed callback');
+}
+
+@Component({
+    template: `
+        <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu" #triggerEl>Toggle menu</button>
+        <nx-context-menu #menu="nxContextMenu" [class]="panelClass" (closed)="closeCallback($event)">
+            <button nxContextMenuItem>Item</button>
+            <button nxContextMenuItem disabled>Disabled</button>
+            <button nxContextMenuItem>
+                <nx-icon name="settings"></nx-icon>
+                Item with an icon
+            </button>
+            @for (item of extraItems; track item) {
+                <button nxContextMenuItem>{{ item }}</button>
+            }
+        </nx-context-menu>
+    `,
+    standalone: true,
+    imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
+})
+class OverrideScrollStrategyMenu {
+    constructor(@Inject(NX_CONTEXT_MENU_SCROLL_STRATEGY) public scrollStrategy: () => ScrollStrategy) {}
 }
 
 @Component({
@@ -1498,6 +1536,8 @@ class SimpleMenu {
             </button>
         </nx-context-menu>
     `,
+    standalone: true,
+    imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
 })
 class SelectionMenu {
     @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
@@ -1515,7 +1555,9 @@ class SelectionMenu {
         <nx-context-menu #root="nxContextMenu" (closed)="rootCloseCallback($event)">
             <button nxContextMenuItem id="level-one-trigger" [nxContextMenuTriggerFor]="levelOne" #levelOneTrigger="nxContextMenuTrigger">One</button>
             <button nxContextMenuItem>Two</button>
-            <button nxContextMenuItem *ngIf="showLazy" id="lazy-trigger" [nxContextMenuTriggerFor]="lazy" #lazyTrigger="nxContextMenuTrigger">Three</button>
+            @if (showLazy) {
+                <button nxContextMenuItem id="lazy-trigger" [nxContextMenuTriggerFor]="lazy" #lazyTrigger="nxContextMenuTrigger">Three</button>
+            }
         </nx-context-menu>
 
         <nx-context-menu #levelOne="nxContextMenu" (closed)="levelOneCloseCallback($event)">
@@ -1536,6 +1578,8 @@ class SelectionMenu {
             <button nxContextMenuItem>Twelve</button>
         </nx-context-menu>
     `,
+    standalone: true,
+    imports: [NxContextMenuModule, NxButtonComponent],
 })
 class NestedMenu {
     @ViewChild('root') rootMenu!: NxContextMenuComponent;
@@ -1570,6 +1614,8 @@ class NestedMenu {
             <button nxContextMenuItem>Two</button>
         </nx-context-menu>
     `,
+    standalone: true,
+    imports: [NxContextMenuModule, NxButtonComponent],
 })
 class NestedMenuCustomElevation {
     @ViewChild('rootTrigger') rootTrigger!: NxContextMenuTriggerDirective;
@@ -1580,7 +1626,9 @@ class NestedMenuCustomElevation {
     template: `
         <button [nxContextMenuTriggerFor]="root" #rootTriggerEl>Toggle menu</button>
         <nx-context-menu #root="nxContextMenu">
-            <button nxContextMenuItem class="level-one-trigger" *ngFor="let item of items" [nxContextMenuTriggerFor]="levelOne">{{ item }}</button>
+            @for (item of items; track item) {
+                <button nxContextMenuItem class="level-one-trigger" [nxContextMenuTriggerFor]="levelOne">{{ item }}</button>
+            }
         </nx-context-menu>
 
         <nx-context-menu #levelOne="nxContextMenu">
@@ -1588,6 +1636,8 @@ class NestedMenuCustomElevation {
             <button nxContextMenuItem>Five</button>
         </nx-context-menu>
     `,
+    standalone: true,
+    imports: [NxContextMenuModule, NxButtonComponent],
 })
 class NestedMenuRepeater {
     @ViewChild('rootTriggerEl') rootTriggerEl!: ElementRef<HTMLElement>;
@@ -1608,6 +1658,8 @@ class NestedMenuRepeater {
             </nx-context-menu>
         </nx-context-menu>
     `,
+    standalone: true,
+    imports: [NxContextMenuModule, NxButtonComponent],
 })
 class SubmenuDeclaredInsideParentMenu {
     @ViewChild('rootTriggerEl') rootTriggerEl!: ElementRef;
@@ -1624,6 +1676,8 @@ class SubmenuDeclaredInsideParentMenu {
             </ng-template>
         </nx-context-menu>
     `,
+    standalone: true,
+    imports: [NxContextMenuModule, NxButtonComponent],
 })
 class SimpleLazyMenu {
     @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
@@ -1643,6 +1697,8 @@ class SimpleLazyMenu {
             </ng-template>
         </nx-context-menu>
     `,
+    standalone: true,
+    imports: [NxContextMenuModule, NxButtonComponent],
 })
 class LazyMenuWithContext {
     @ViewChild('triggerOne') triggerOne!: NxContextMenuTriggerDirective;
@@ -1660,6 +1716,8 @@ class LazyMenuWithContext {
             <button nxContextMenuItem>Two</button>
         </nx-context-menu>
     `,
+    standalone: true,
+    imports: [NxContextMenuModule, NxButtonComponent],
 })
 class DynamicPanelMenu {
     @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
@@ -1674,6 +1732,8 @@ class DynamicPanelMenu {
             <button nxContextMenuItem>Item</button>
         </nx-context-menu>
     `,
+    standalone: true,
+    imports: [NxContextMenuModule, NxButtonComponent],
 })
 class RightClickMenu {
     @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
@@ -1682,6 +1742,7 @@ class RightClickMenu {
 }
 
 @Component({
+    standalone: true,
     template: `
         <button [nxContextMenuTriggerFor]="menu">Toggle menu</button>
         <nx-context-menu #menu="nxContextMenu">
@@ -1694,6 +1755,7 @@ class RightClickMenu {
             </nx-checkbox-group>
         </nx-context-menu>
     `,
+    imports: [NxContextMenuModule, NxCheckboxModule, NgFor, FormsModule],
 })
 class CheckboxMenu {
     @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;

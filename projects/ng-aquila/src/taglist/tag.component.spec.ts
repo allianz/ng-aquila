@@ -7,7 +7,7 @@ import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxTagComponent } from './tag.component';
 import { NxTaglistModule } from './taglist.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class TagTest {
     @ViewChild(NxTagComponent) tagInstance!: NxTagComponent;
 }
@@ -28,8 +28,7 @@ describe('NxTagComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicTag, RemovableTag],
-            imports: [NxTaglistModule],
+            imports: [NxTaglistModule, BasicTag, RemovableTag],
         }).compileComponents();
     }));
 
@@ -135,10 +134,14 @@ describe('NxTagComponent', () => {
 
 @Component({
     template: `<nx-tag value="foo"></nx-tag>`,
+    standalone: true,
+    imports: [NxTaglistModule],
 })
 class BasicTag extends TagTest {}
 
 @Component({
     template: `<nx-tag value="bar" removable="true"></nx-tag>`,
+    standalone: true,
+    imports: [NxTaglistModule],
 })
 class RemovableTag extends TagTest {}

@@ -1,6 +1,17 @@
+import { NgIf } from '@angular/common';
 import { Component, Injectable, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NxTimefieldIntl } from '@aposin/ng-aquila/timefield';
+import {
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import {
+    NxTimefieldComponent,
+    NxTimefieldIntl,
+} from '@aposin/ng-aquila/timefield';
 
 @Injectable()
 export class MyIntl extends NxTimefieldIntl {
@@ -16,6 +27,14 @@ export class MyIntl extends NxTimefieldIntl {
     templateUrl: './timefield-localize-example.html',
     styleUrls: ['./timefield-localize-example.css'],
     providers: [{ provide: NxTimefieldIntl, useClass: MyIntl }],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxTimefieldComponent,
+        NgIf,
+        NxErrorComponent,
+    ],
 })
 export class TimefieldLocalizeExampleComponent implements OnInit {
     testForm!: FormGroup;

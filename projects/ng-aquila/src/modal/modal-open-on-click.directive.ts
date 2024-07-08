@@ -5,7 +5,10 @@ import { takeUntil } from 'rxjs/operators';
 
 import { NxModalService } from './modal.service';
 
-@Directive({ selector: '[nxOpenModalOnClick]' })
+@Directive({
+    selector: '[nxOpenModalOnClick]',
+    standalone: true,
+})
 export class NxOpenModalOnClickDirective implements OnInit, OnDestroy {
     /**
      * One or multiple template reference variables pointing to elements

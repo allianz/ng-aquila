@@ -35,6 +35,7 @@ import { NxExpandableTableRowComponent } from './expandable-table-row.component'
         ]),
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxExpandableTableCellComponent implements OnDestroy {
     _open = false;

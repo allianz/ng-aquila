@@ -1,7 +1,7 @@
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ENTER } from '@angular/cdk/keycodes';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgIf } from '@angular/common';
 import {
     AfterViewInit,
     booleanAttribute,
@@ -19,6 +19,7 @@ import {
     QueryList,
 } from '@angular/core';
 import { NxCheckboxComponent } from '@aposin/ng-aquila/checkbox';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 /**
  * This directive is intended to be used inside an nx-context-menu tag.
@@ -46,6 +47,8 @@ import { Subject } from 'rxjs';
         </div>
     `,
     styleUrls: ['./context-menu-item.component.scss'],
+    standalone: true,
+    imports: [NgIf, NxIconModule],
 })
 export class NxContextMenuItemComponent implements OnDestroy, AfterViewInit {
     /** Stream that emits when the context menu item is hovered. */
@@ -168,12 +171,16 @@ export class NxContextMenuItemComponent implements OnDestroy, AfterViewInit {
         '[attr.aria-checked]': 'checkbox.checked',
         '(keydown)': 'onKeyDown($event)',
     },
+    standalone: true,
 })
 export class NxContextMenuItemCheckboxDirective {
-    constructor() {}
+    constructor() {
+        console.log('CONSTRUCTOR');
+    }
     @ContentChild(NxCheckboxComponent) checkbox!: NxCheckboxComponent;
 
     onKeyDown(event: KeyboardEvent) {
+        console.log('KEYDOWN', this.checkbox);
         if (event.keyCode === ENTER) {
             this.checkbox.toggle();
         }
@@ -196,6 +203,7 @@ export class NxContextMenuItemCheckboxDirective {
     selector: 'nx-context-menu-item-wrap',
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `<ng-content></ng-content> `,
+    standalone: true,
 })
 export class NxContextMenuItemWrapComponent {
     @ContentChildren(NxContextMenuItemComponent) _items!: QueryList<NxContextMenuItemComponent>;

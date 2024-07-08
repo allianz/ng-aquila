@@ -11,7 +11,7 @@ import { NxToggleSectionHeaderComponent } from './toggle-section-header.componen
 declare let viewport: any;
 const THROTTLE_TIME = 200;
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ToggleSectionTest {
     @ViewChildren(NxToggleSectionHeaderComponent) headerInstances!: QueryList<NxToggleSectionHeaderComponent>;
 
@@ -36,8 +36,7 @@ describe('ToggleSectionHeaderComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxComparisonTableModule, BrowserAnimationsModule],
-            declarations: [BasicComponent, IdTestingComponent],
+            imports: [NxComparisonTableModule, BrowserAnimationsModule, BasicComponent, IdTestingComponent],
         });
         TestBed.compileComponents();
     }));
@@ -208,25 +207,45 @@ describe('ToggleSectionHeaderComponent', () => {
 @Component({
     template: `
         <nx-comparison-table>
-            <ng-container *ngFor="let element of data">
-                <ng-container *ngIf="element['type'] === 'toggleSection'" nxComparisonTableToggleSection [isExpanded]="element['expanded']">
-                    <nx-comparison-table-toggle-section-header>{{ element['header'] }}</nx-comparison-table-toggle-section-header>
-                    <ng-container *ngFor="let row of element['content']" nxComparisonTableRow>
-                        <nx-comparison-table-description-cell *ngIf="row['description']">{{ row['description'] }}</nx-comparison-table-description-cell
-                        >>
-                        <nx-comparison-table-cell *ngFor="let cell of row['cells']">{{ cell }}</nx-comparison-table-cell>
-                        <nx-comparison-table-intersection-cell *ngIf="row['intersection']">{{ row['intersection'] }}</nx-comparison-table-intersection-cell>
+            @for (element of data; track element) {
+                @if (element['type'] === 'toggleSection') {
+                    <ng-container nxComparisonTableToggleSection [isExpanded]="element['expanded']">
+                        <nx-comparison-table-toggle-section-header>{{ element['header'] }}</nx-comparison-table-toggle-section-header>
+                        @for (row of element['content']; track row) {
+                            <ng-container nxComparisonTableRow>
+                                @if (row['description']) {
+                                    <nx-comparison-table-description-cell>{{ row['description'] }}</nx-comparison-table-description-cell>
+                                }
+                                >
+                                @for (cell of row['cells']; track cell) {
+                                    <nx-comparison-table-cell>{{ cell }}</nx-comparison-table-cell>
+                                }
+                                @if (row['intersection']) {
+                                    <nx-comparison-table-intersection-cell>{{ row['intersection'] }}</nx-comparison-table-intersection-cell>
+                                }
+                            </ng-container>
+                        }
                     </ng-container>
-                </ng-container>
-                <ng-container *ngIf="element['type'] !== 'toggleSection'" nxComparisonTableRow [type]="element['type']">
-                    <nx-comparison-table-description-cell *ngIf="element['description']">{{ element['description'] }}</nx-comparison-table-description-cell
-                    >>
-                    <nx-comparison-table-cell *ngFor="let cell of element['cells']" [type]="element['type']">{{ cell }}</nx-comparison-table-cell>
-                    <nx-comparison-table-intersection-cell *ngIf="element['intersection']">{{ element['intersection'] }}</nx-comparison-table-intersection-cell>
-                </ng-container>
-            </ng-container>
+                }
+                @if (element['type'] !== 'toggleSection') {
+                    <ng-container nxComparisonTableRow [type]="element['type']">
+                        @if (element['description']) {
+                            <nx-comparison-table-description-cell>{{ element['description'] }}</nx-comparison-table-description-cell>
+                        }
+                        >
+                        @for (cell of element['cells']; track cell) {
+                            <nx-comparison-table-cell [type]="element['type']">{{ cell }}</nx-comparison-table-cell>
+                        }
+                        @if (element['intersection']) {
+                            <nx-comparison-table-intersection-cell>{{ element['intersection'] }}</nx-comparison-table-intersection-cell>
+                        }
+                    </ng-container>
+                }
+            }
         </nx-comparison-table>
     `,
+    standalone: true,
+    imports: [NxComparisonTableModule],
 })
 class BasicComponent extends ToggleSectionTest {
     data = [
@@ -272,5 +291,7 @@ class BasicComponent extends ToggleSectionTest {
             </ng-container>
         </nx-comparison-table>
     `,
+    standalone: true,
+    imports: [NxComparisonTableModule],
 })
 class IdTestingComponent extends ToggleSectionTest {}

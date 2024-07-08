@@ -1,4 +1,14 @@
 import { Component } from '@angular/core';
+import { NxPlainButtonComponent } from '@aposin/ng-aquila/button';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import {
+    NxPopoverComponent,
+    NxPopoverTriggerDirective,
+} from '@aposin/ng-aquila/popover';
+import {
+    NxSliderAppendixDirective,
+    NxSliderComponent,
+} from '@aposin/ng-aquila/slider';
 
 /**
  * @title Slider Appendix Example
@@ -7,6 +17,15 @@ import { Component } from '@angular/core';
     selector: 'slider-appendix-example',
     templateUrl: './slider-appendix-example.html',
     styleUrls: ['./slider-appendix-example.css'],
+    standalone: true,
+    imports: [
+        NxSliderComponent,
+        NxPlainButtonComponent,
+        NxSliderAppendixDirective,
+        NxPopoverTriggerDirective,
+        NxIconComponent,
+        NxPopoverComponent,
+    ],
 })
 export class SliderAppendixExampleComponent {
     popoverMaxWidth = '400px';

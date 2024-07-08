@@ -7,8 +7,7 @@ import { NxvLazyExampleOutletModule } from './../lazy-example-outlet/lazy-exampl
 import { ExampleFullScreenComponent } from './example-full-screen.component';
 
 @NgModule({
-    imports: [RouterModule, NxButtonModule, NxvLazyExampleOutletModule, CommonModule],
+    imports: [RouterModule, NxButtonModule, NxvLazyExampleOutletModule, CommonModule, ExampleFullScreenComponent],
     exports: [ExampleFullScreenComponent],
-    declarations: [ExampleFullScreenComponent],
 })
 export class ExampleFullScreenModule {}

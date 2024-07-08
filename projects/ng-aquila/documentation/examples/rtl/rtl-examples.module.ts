@@ -19,8 +19,8 @@ const EXAMPLES = [RtlBasicExampleComponent, RtlDynamicExampleComponent];
         NxButtonModule,
         NxCopytextModule,
         NxSliderModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class RtlExamplesModule {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { NxIconRegistry } from '@aposin/ng-aquila/icon';
+import { NxIconComponent, NxIconRegistry } from '@aposin/ng-aquila/icon';
 
 // play-circle-fill from https://remixicon.com/
 const playSvg =
@@ -18,6 +18,8 @@ const playSvg =
         // only for this example that the rest of the documentation examples are not affected
         NxIconRegistry,
     ],
+    standalone: true,
+    imports: [NxIconComponent],
 })
 export class IconEssentialOverrideExampleComponent {
     constructor(

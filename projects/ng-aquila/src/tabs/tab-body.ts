@@ -25,6 +25,7 @@ import { NxTabGroupBase } from './tab-group-base';
     templateUrl: 'tab-body.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./tab-body.scss'],
+    standalone: true,
 })
 export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
     @ViewChild('outlet', { static: true, read: ViewContainerRef }) _outlet!: ViewContainerRef;

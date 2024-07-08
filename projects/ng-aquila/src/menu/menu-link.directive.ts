@@ -10,6 +10,7 @@ import { AfterViewInit, Directive, ElementRef, OnDestroy } from '@angular/core';
     host: {
         class: 'nx-menu__link',
     },
+    standalone: true,
 })
 export class NxMenuLinkDirective implements OnDestroy, AfterViewInit {
     constructor(

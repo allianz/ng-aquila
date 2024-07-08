@@ -1,5 +1,9 @@
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Component, Inject, OnDestroy, Optional } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { NxBadgeModule } from '@aposin/ng-aquila/badge';
+import { NxMessageModule } from '@aposin/ng-aquila/message';
+import { NxTabsModule } from '@aposin/ng-aquila/tabs';
 import { ThemeSwitcherService } from '@aposin/ngx-docs-ui';
 import { Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
@@ -20,6 +24,8 @@ export interface DocItem {
     selector: 'nxv-single-component',
     templateUrl: 'component-page.html',
     styleUrls: ['component-page.scss'],
+    standalone: true,
+    imports: [NgIf, NxMessageModule, NxBadgeModule, NxTabsModule, NgFor, RouterLinkActive, RouterLink, RouterOutlet, AsyncPipe],
 })
 export class NxvComponentPage implements OnDestroy {
     componentDescriptor!: ComponentDescriptor;

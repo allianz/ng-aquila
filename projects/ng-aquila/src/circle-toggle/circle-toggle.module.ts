@@ -8,8 +8,7 @@ import { NxIconToggleButtonComponent } from './icon-toggle-button/icon-toggle-bu
 import { NxMobileToggleButtonComponent } from './mobile-toggle-button/mobile-toggle-button.component';
 
 @NgModule({
-    declarations: [NxCircleToggleGroupComponent, NxCircleToggleComponent, NxIconToggleButtonComponent, NxMobileToggleButtonComponent],
     exports: [NxCircleToggleGroupComponent, NxIconToggleButtonComponent, NxCircleToggleComponent, NxMobileToggleButtonComponent],
-    imports: [CommonModule, NxIconModule],
+    imports: [CommonModule, NxIconModule, NxCircleToggleGroupComponent, NxCircleToggleComponent, NxIconToggleButtonComponent, NxMobileToggleButtonComponent],
 })
 export class NxCircleToggleModule {}

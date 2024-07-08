@@ -3,7 +3,10 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Directive, ElementRef, Input } from '@angular/core';
 
 /** @docs-private */
-@Directive({ selector: '[nxTabLabelWrapper]' })
+@Directive({
+    selector: '[nxTabLabelWrapper]',
+    standalone: true,
+})
 export class NxTabLabelWrapperDirective implements FocusableOption {
     /** Whether the tab group is disabled. Default: false. */
     @Input() set disabled(value: BooleanInput) {

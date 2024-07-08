@@ -25,6 +25,7 @@ import {
     EmbeddedViewRef,
     EventEmitter,
     Inject,
+    inject,
     InjectionToken,
     Input,
     NgZone,
@@ -49,14 +50,28 @@ let nextId = 0;
 const BASE_OFFSET = 16;
 
 /** Injection token that determines the scroll handling while a popover is open. */
-export const NX_POPOVER_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-popover-scroll-strategy');
+export const NX_POPOVER_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-popover-scroll-strategy', {
+    providedIn: 'root',
+    factory: () => {
+        const overlay = inject(Overlay);
+        return () => overlay.scrollStrategies.close();
+    },
+});
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export function NX_POPOVER_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
     return () => overlay.scrollStrategies.close();
 }
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export const NX_POPOVER_SCROLL_STRATEGY_PROVIDER = {
     provide: NX_POPOVER_SCROLL_STRATEGY,
     useFactory: NX_POPOVER_SCROLL_STRATEGY_PROVIDER_FACTORY,
@@ -102,6 +117,7 @@ export function getNxPopoverInvalidDirectionError(direction: string) {
         '[attr.aria-expanded]': 'isOpen',
         '[attr.aria-describedby]': 'isOpen ? id : null',
     },
+    standalone: true,
 })
 export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
     private overlayRef!: OverlayRef | null;

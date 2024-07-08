@@ -23,18 +23,18 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    declarations: [EXAMPLES],
-    exports: [EXAMPLES],
     imports: [
         NxPageSearchModule,
         NxInputModule,
         NxAutocompleteModule,
         NxIconModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
     providers: [
         provideHttpClient(withInterceptorsFromDi(), withJsonpSupport()),
     ],
+    exports: [EXAMPLES],
 })
 export class PageExamplesModule {
     static components() {

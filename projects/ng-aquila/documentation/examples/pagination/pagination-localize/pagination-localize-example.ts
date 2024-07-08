@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {
     IPaginationTexts,
     NX_PAGINATION_TEXTS,
+    NxPaginationComponent,
 } from '@aposin/ng-aquila/pagination';
 
 const myPaginationTexts: IPaginationTexts = {
@@ -19,6 +20,8 @@ const myPaginationTexts: IPaginationTexts = {
     templateUrl: './pagination-localize-example.html',
     styleUrls: ['./pagination-localize-example.css'],
     providers: [{ provide: NX_PAGINATION_TEXTS, useValue: myPaginationTexts }],
+    standalone: true,
+    imports: [NxPaginationComponent],
 })
 export class PaginationLocalizeExampleComponent {
     page = 1;

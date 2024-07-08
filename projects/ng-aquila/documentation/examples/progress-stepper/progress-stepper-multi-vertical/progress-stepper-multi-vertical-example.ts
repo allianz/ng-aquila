@@ -1,10 +1,39 @@
+import { JsonPipe, NgFor, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormControl,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxDropdownComponent,
+    NxDropdownItemComponent,
+} from '@aposin/ng-aquila/dropdown';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+} from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
 import {
     NxMultiStepperComponent,
+    NxMultiStepperComponent as NxMultiStepperComponent_1,
     NxMultiStepperDirection,
     NxProgressStepperDirective,
+    NxStepComponent,
 } from '@aposin/ng-aquila/progress-stepper';
+import {
+    NxRadioToggleButtonComponent,
+    NxRadioToggleComponent,
+} from '@aposin/ng-aquila/radio-toggle';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -26,6 +55,30 @@ interface Animal {
     host: {
         '[class.is-vertical]': 'direction === "vertical"',
     },
+    standalone: true,
+    imports: [
+        NxMultiStepperComponent_1,
+        NxStepComponent,
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NgSwitch,
+        NgSwitchCase,
+        FormsModule,
+        ReactiveFormsModule,
+        NxFormfieldComponent,
+        NxDropdownComponent,
+        NgFor,
+        NxDropdownItemComponent,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
+        NxButtonComponent,
+        NxInputDirective,
+        NgIf,
+        NxRadioToggleComponent,
+        NxRadioToggleButtonComponent,
+        JsonPipe,
+    ],
 })
 export class ProgressStepperMultiVerticalExampleComponent implements OnDestroy {
     @ViewChild(NxProgressStepperDirective, { static: true })

@@ -1,5 +1,15 @@
+import { NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCodeInputComponent } from '@aposin/ng-aquila/code-input';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -10,6 +20,15 @@ import { takeUntil } from 'rxjs/operators';
     selector: 'code-input-model-example',
     templateUrl: 'code-input-model-example.html',
     styleUrls: ['code-input-model-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxCodeInputComponent,
+        NgIf,
+        NxErrorComponent,
+        NxButtonComponent,
+    ],
 })
 export class CodeInputModelExampleComponent implements OnInit, OnDestroy {
     inputValue = '';

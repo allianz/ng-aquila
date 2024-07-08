@@ -1,6 +1,8 @@
-import { Direction } from '@angular/cdk/bidi';
+import { Dir, Direction } from '@angular/cdk/bidi';
+import { NgComponentOutlet, NgIf } from '@angular/common';
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -11,6 +13,8 @@ import { ManifestService } from './../service/manifest.service';
 @Component({
     selector: 'nxv-lazy-example',
     templateUrl: 'lazy-example-outlet.component.html',
+    standalone: true,
+    imports: [Dir, NgIf, NgComponentOutlet, NxSpinnerModule],
 })
 export class LazyExampleOutletComponent implements OnInit, OnDestroy {
     @Input() exampleId!: string;

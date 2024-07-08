@@ -14,6 +14,7 @@ import { NxNotificationPanelItemComponent } from './../notification-item/notific
         '[class.nx-notification-panel]': 'true',
         '(keydown)': '_handleKeydown($event)',
     },
+    standalone: true,
 })
 export class NxNotificationPanelComponent implements OnDestroy, AfterContentInit {
     @ViewChild(TemplateRef)

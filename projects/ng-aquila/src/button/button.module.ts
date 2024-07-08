@@ -8,7 +8,7 @@ import { NxIconButtonComponent } from './icon-button.component';
 import { NxPlainButtonComponent } from './plain-button.component';
 
 @NgModule({
-    declarations: [
+    imports: [
         NxButtonComponent,
         NxIconButtonComponent,
         NxPlainButtonComponent,

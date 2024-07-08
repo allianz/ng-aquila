@@ -8,8 +8,7 @@ import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { NxPageSearchComponent } from './page-search.component';
 
 @NgModule({
-    imports: [CommonModule, NxAutocompleteModule, NxFormfieldModule, NxButtonModule, NxGridModule],
-    declarations: [NxPageSearchComponent],
+    imports: [CommonModule, NxAutocompleteModule, NxFormfieldModule, NxButtonModule, NxGridModule, NxPageSearchComponent],
     exports: [NxPageSearchComponent],
 })
 export class NxPageSearchModule {}

@@ -6,7 +6,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxLinkComponent, NxLinkSize } from './link.component';
 import { NxLinkModule } from './link.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class LinkTest {
     @ViewChild(NxLinkComponent) linkInstance!: NxLinkComponent;
 
@@ -29,8 +29,7 @@ describe('NxLinkComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicLink, DynamicLink, IconLink, OnPushLink],
-            imports: [NxLinkModule, NxIconModule],
+            imports: [NxLinkModule, NxIconModule, BasicLink, DynamicLink, IconLink, OnPushLink],
         }).compileComponents();
     }));
 
@@ -106,6 +105,8 @@ describe('NxLinkComponent', () => {
             <a>link</a>
         </nx-link>
     `,
+    standalone: true,
+    imports: [NxLinkModule, NxIconModule],
 })
 class BasicLink extends LinkTest {}
 
@@ -115,6 +116,8 @@ class BasicLink extends LinkTest {}
             <a>link</a>
         </nx-link>
     `,
+    standalone: true,
+    imports: [NxLinkModule, NxIconModule],
 })
 class DynamicLink extends LinkTest {
     style = '';
@@ -126,6 +129,8 @@ class DynamicLink extends LinkTest {
             <a><nx-icon name="user-o"></nx-icon>link</a>
         </nx-link>
     `,
+    standalone: true,
+    imports: [NxLinkModule, NxIconModule],
 })
 class IconLink extends LinkTest {
     style = '';
@@ -138,6 +143,8 @@ class IconLink extends LinkTest {
         </nx-link>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxLinkModule, NxIconModule],
 })
 class OnPushLink extends LinkTest {
     style = '';

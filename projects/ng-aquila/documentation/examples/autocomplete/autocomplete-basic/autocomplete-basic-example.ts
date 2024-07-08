@@ -1,4 +1,10 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import {
+    NxAutocompleteComponent,
+    NxAutocompleteOptionComponent,
+    NxAutocompleteTriggerDirective,
+} from '@aposin/ng-aquila/autocomplete';
 
 /**
  * @title Autocomplete example
@@ -7,6 +13,13 @@ import { Component } from '@angular/core';
     selector: 'autocomplete-basic-example',
     templateUrl: './autocomplete-basic-example.html',
     styleUrls: ['./autocomplete-basic-example.css'],
+    standalone: true,
+    imports: [
+        NxAutocompleteTriggerDirective,
+        NxAutocompleteComponent,
+        NgFor,
+        NxAutocompleteOptionComponent,
+    ],
 })
 export class AutocompleteBasicExampleComponent {
     options = `Chimpanzee,Chinchilla,Chipmunk,Coati,Cicada,Clam,

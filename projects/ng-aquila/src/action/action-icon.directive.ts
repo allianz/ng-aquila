@@ -5,5 +5,6 @@ import { Directive } from '@angular/core';
     host: {
         class: 'nx-action__icon',
     },
+    standalone: true,
 })
 export class NxActionIconDirective {}

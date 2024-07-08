@@ -1,7 +1,8 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, NgIf, NgStyle, NgTemplateOutlet } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, Inject, Input, NgZone, OnDestroy, PLATFORM_ID, TemplateRef, ViewChild } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -16,6 +17,8 @@ let nextId = 0;
     templateUrl: './toggle-section-header.component.html',
     styleUrls: ['./toggle-section-header.component.scss'],
     animations: [NxToggleSectionAnimations.indicatorRotate],
+    standalone: true,
+    imports: [NgIf, NgTemplateOutlet, NxIconModule, NgStyle],
 })
 export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy {
     @ViewChild('content', { static: true }) _content!: TemplateRef<any>;

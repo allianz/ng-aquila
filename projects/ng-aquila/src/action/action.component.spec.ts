@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxActionComponent } from './action.component';
 import { NxActionModule } from './action.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ActionTest {
     selected!: boolean;
     expandable!: boolean;
@@ -28,8 +28,7 @@ describe(NxActionComponent.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicAction, DefaultAction],
-            imports: [NxActionModule],
+            imports: [NxActionModule, BasicAction, DefaultAction],
         }).compileComponents();
     }));
 
@@ -144,10 +143,14 @@ describe(NxActionComponent.name, () => {
 @Component({
     template: `<a nxAction> example action </a>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxActionModule],
 })
 class DefaultAction extends ActionTest {}
 
 @Component({
     template: `<a nxAction [expandable]="expandable" [expanded]="expanded" [selected]="selected"> example action </a>`,
+    standalone: true,
+    imports: [NxActionModule],
 })
 class BasicAction extends ActionTest {}

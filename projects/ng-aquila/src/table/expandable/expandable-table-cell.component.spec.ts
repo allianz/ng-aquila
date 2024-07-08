@@ -7,7 +7,7 @@ import { NxTableModule } from '../table.module';
 import { NxExpandableTableCellComponent } from './expandable-table-cell.component';
 import { NxExpandableTableRowComponent } from './expandable-table-row.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ExpandableTableCellTest {
     @ViewChild(NxExpandableTableCellComponent) expandableTableCellInstance!: NxExpandableTableCellComponent;
     @ViewChild(NxExpandableTableRowComponent) expandableTableRowInstance!: NxExpandableTableRowComponent;
@@ -31,8 +31,7 @@ describe(NxExpandableTableCellComponent.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicExpandableTableCellComponent],
-            imports: [NxTableModule, NoopAnimationsModule],
+            imports: [NxTableModule, NoopAnimationsModule, BasicExpandableTableCellComponent],
         }).compileComponents();
     }));
 
@@ -107,5 +106,7 @@ describe(NxExpandableTableCellComponent.name, () => {
         </tr>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTableModule],
 })
 class BasicExpandableTableCellComponent extends ExpandableTableCellTest {}

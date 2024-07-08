@@ -6,5 +6,6 @@ import { Directive } from '@angular/core';
     host: {
         class: 'nx-stepper__suffix',
     },
+    standalone: true,
 })
 export class NxNumberStepperSuffixDirective {}

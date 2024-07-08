@@ -3,12 +3,10 @@ import { NgModule } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxPaginationComponent } from './pagination.component';
-import { NxPaginationUtils } from './pagination-utils';
 
 @NgModule({
-    imports: [CommonModule, NxIconModule],
-    declarations: [NxPaginationComponent],
+    imports: [CommonModule, NxIconModule, NxPaginationComponent],
     exports: [NxPaginationComponent],
-    providers: [NxPaginationUtils],
+    providers: [],
 })
 export class NxPaginationModule {}

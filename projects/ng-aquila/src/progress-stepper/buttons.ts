@@ -11,6 +11,7 @@ import { NxProgressStepperDirective } from './progress-stepper.component';
     },
     inputs: ['type'],
     providers: [{ provide: CdkStepper, useExisting: NxProgressStepperDirective }],
+    standalone: true,
 })
 export class NxStepperNextDirective extends CdkStepperNext implements DoCheck {
     /** @docs-private */
@@ -48,6 +49,7 @@ export class NxStepperNextDirective extends CdkStepperNext implements DoCheck {
     },
     inputs: ['type'],
     providers: [{ provide: CdkStepper, useExisting: NxProgressStepperDirective }],
+    standalone: true,
 })
 export class NxStepperPreviousDirective extends CdkStepperPrevious {
     constructor(_stepper: CdkStepper) {

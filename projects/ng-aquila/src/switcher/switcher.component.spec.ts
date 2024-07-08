@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 import { NxSwitcherComponent } from './switcher.component';
 import { NxSwitcherModule } from './switcher.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class SwitcherTest {
     @ViewChild(NxSwitcherComponent) switcherInstance!: NxSwitcherComponent;
     checked = false;
@@ -42,7 +42,10 @@ describe('NxSwitcherComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [
+            imports: [
+                NxSwitcherModule,
+                FormsModule,
+                ReactiveFormsModule,
                 BasicSwitcher,
                 SwitcherTemplateDriven,
                 SwitcherReactiveForm,
@@ -52,7 +55,6 @@ describe('NxSwitcherComponent', () => {
                 LabellessSwitcher,
                 SwitcherA11y,
             ],
-            imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
         }).compileComponents();
     }));
 
@@ -274,17 +276,23 @@ describe('NxSwitcherComponent', () => {
 
 @Component({
     template: `<nx-switcher [(checked)]="checked" id="testSwitcher">basicLabel</nx-switcher>`,
+    standalone: true,
+    imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class BasicSwitcher extends SwitcherTest {}
 
 @Component({
     template: `<nx-switcher [(checked)]="checked" id="testSwitcher">basicLabel</nx-switcher>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class BasicSwitcherOnPush extends SwitcherTest {}
 
 @Component({
     template: `<nx-switcher [(ngModel)]="checked">templateLabel</nx-switcher>`,
+    standalone: true,
+    imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class SwitcherTemplateDriven extends SwitcherTest {}
 
@@ -294,6 +302,8 @@ class SwitcherTemplateDriven extends SwitcherTest {}
             <nx-switcher formControlName="reactiveSwitcher"> switcher </nx-switcher>
         </form>
     `,
+    standalone: true,
+    imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class SwitcherReactiveForm extends SwitcherTest {
     testForm = new FormBuilder().group({
@@ -303,11 +313,15 @@ class SwitcherReactiveForm extends SwitcherTest {
 
 @Component({
     template: `<nx-switcher [labelSize]="labelSize" id="testSwitcher">basicLabel</nx-switcher>`,
+    standalone: true,
+    imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class LabelSizeSwitcher extends SwitcherTest {}
 
 @Component({
     template: `<nx-switcher [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy">basicLabel</nx-switcher>`,
+    standalone: true,
+    imports: [NxSwitcherModule],
 })
 class SwitcherA11y extends SwitcherTest {
     ariaLabel: string | null = null;
@@ -320,6 +334,8 @@ class SwitcherA11y extends SwitcherTest {
             <nx-switcher formControlName="switcherValidationTestReactive"> switcher </nx-switcher>
         </form>
     `,
+    standalone: true,
+    imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class ValidationSwitcherForm extends SwitcherTest {
     testForm!: FormGroup;
@@ -338,5 +354,7 @@ class ValidationSwitcherForm extends SwitcherTest {
 
 @Component({
     template: `<nx-switcher [(checked)]="checked" id="testSwitcher"></nx-switcher>`,
+    standalone: true,
+    imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class LabellessSwitcher extends SwitcherTest {}

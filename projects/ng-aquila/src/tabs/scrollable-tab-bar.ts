@@ -8,7 +8,7 @@ const SPACE_BETWEEN_TABS = 32;
 const START_BUTTON_WIDTH = 40;
 
 /** @docs-private */
-@Directive()
+@Directive({ standalone: true })
 export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy {
     tabHeaderContainer!: ElementRef<HTMLElement>;
     scrollableTabsList!: ElementRef<HTMLElement>;

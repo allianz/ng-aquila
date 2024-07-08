@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxSwipebarModule } from '@aposin/ng-aquila/swipebar';
@@ -34,10 +34,29 @@ const EXPORTED_DECLARED_ELEMENTS = [
     NxTableCellClipDirective,
 ];
 
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
+export function NX_SORT_HEADER_INTL_PROVIDER_FACTORY(parentIntl: NxSortHeaderIntl) {
+    return parentIntl || new NxSortHeaderIntl();
+}
+
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
+export const NX_SORT_HEADER_INTL_PROVIDER = {
+    provide: NxSortHeaderIntl,
+    deps: [[new Optional(), new SkipSelf(), NxSortHeaderIntl]],
+    useFactory: NX_SORT_HEADER_INTL_PROVIDER_FACTORY,
+};
+
 @NgModule({
-    declarations: EXPORTED_DECLARED_ELEMENTS,
     exports: [...EXPORTED_DECLARED_ELEMENTS, NxSwipebarModule],
-    imports: [CommonModule, NxIconModule, NxCopytextModule, NxSwipebarModule],
-    providers: [NxSortHeaderIntl],
+    imports: [CommonModule, NxIconModule, NxCopytextModule, NxSwipebarModule, ...EXPORTED_DECLARED_ELEMENTS],
+    providers: [],
 })
 export class NxTableModule {}

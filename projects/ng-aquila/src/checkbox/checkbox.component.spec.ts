@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 import { NxCheckboxChangeEvent, NxCheckboxComponent } from './checkbox.component';
 import { NxCheckboxModule } from './checkbox.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class CheckboxTest {
     @ViewChild(NxCheckboxComponent) checkboxInstance!: NxCheckboxComponent;
 
@@ -54,7 +54,10 @@ describe('NxCheckboxComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [
+            imports: [
+                NxCheckboxModule,
+                FormsModule,
+                ReactiveFormsModule,
                 BasicCheckbox,
                 LabellessCheckbox,
                 CheckboxTemplateDriven,
@@ -65,7 +68,6 @@ describe('NxCheckboxComponent', () => {
                 CheckboxNegative,
                 CheckboxA11y,
             ],
-            imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
         }).compileComponents();
     }));
 
@@ -306,31 +308,43 @@ describe('NxCheckboxComponent', () => {
 
 @Component({
     template: `<nx-checkbox [(checked)]="checked" [(indeterminate)]="indeterminate">Hello NX</nx-checkbox>`,
+    standalone: true,
+    imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class BasicCheckbox extends CheckboxTest {}
 
 @Component({
     template: `<nx-checkbox></nx-checkbox>`,
+    standalone: true,
+    imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class LabellessCheckbox extends CheckboxTest {}
 
 @Component({
     template: `<nx-checkbox disabled="true">Label</nx-checkbox>`,
+    standalone: true,
+    imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class CheckboxDisabled extends CheckboxTest {}
 @Component({
     template: `<nx-checkbox [labelSize]="labelSize">Label</nx-checkbox>`,
+    standalone: true,
+    imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class CheckboxLabelSize extends CheckboxTest {}
 
 @Component({
     template: `<nx-checkbox [disabled]="disabled" [negative]="negative" [labelSize]="labelSize">Label</nx-checkbox>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class CheckboxOnPush extends CheckboxTest {}
 
 @Component({
     template: `<nx-checkbox [(ngModel)]="checked" [required]="required"></nx-checkbox>`,
+    standalone: true,
+    imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class CheckboxTemplateDriven extends CheckboxTest {
     required = false;
@@ -338,6 +352,8 @@ class CheckboxTemplateDriven extends CheckboxTest {
 
 @Component({
     template: `<nx-checkbox [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy"></nx-checkbox>`,
+    standalone: true,
+    imports: [NxCheckboxModule],
 })
 class CheckboxA11y extends CheckboxTest {
     ariaLabel: string | null = null;
@@ -346,6 +362,8 @@ class CheckboxA11y extends CheckboxTest {
 
 @Component({
     template: `<nx-checkbox [negative]="negative"></nx-checkbox>`,
+    standalone: true,
+    imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class CheckboxNegative extends CheckboxTest {}
 
@@ -356,6 +374,8 @@ class CheckboxNegative extends CheckboxTest {}
             <button nxButton="primary small" type="submit" id="submit-button">Click</button>
         </form>
     `,
+    standalone: true,
+    imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveCheckbox extends CheckboxTest {
     fb;

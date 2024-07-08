@@ -1,5 +1,14 @@
 import { Component } from '@angular/core';
-import { NxDropdownOption } from '@aposin/ng-aquila/dropdown';
+import {
+    NxDropdownComponent,
+    NxDropdownOption,
+} from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
 
 /**
  * @title Standard lazy example
@@ -8,6 +17,14 @@ import { NxDropdownOption } from '@aposin/ng-aquila/dropdown';
     selector: 'dropdown-lazy-example',
     templateUrl: './dropdown-lazy-example.html',
     styleUrls: ['./dropdown-lazy-example.css'],
+    standalone: true,
+    imports: [
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxFormfieldComponent,
+        NxDropdownComponent,
+    ],
 })
 export class DropdownLazyExampleComponent {
     items: NxDropdownOption[];

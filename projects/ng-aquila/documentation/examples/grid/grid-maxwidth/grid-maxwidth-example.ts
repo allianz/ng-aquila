@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
 
 /**
  * @title Max width example
@@ -7,5 +12,7 @@ import { Component } from '@angular/core';
     selector: 'grid-maxwidth-example',
     templateUrl: './grid-maxwidth-example.html',
     styleUrls: ['./grid-maxwidth-example.css'],
+    standalone: true,
+    imports: [NxLayoutComponent, NxRowComponent, NxColComponent],
 })
 export class GridMaxwidthExampleComponent {}

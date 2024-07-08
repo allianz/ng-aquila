@@ -1,6 +1,7 @@
 import { ActiveDescendantKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { CdkConnectedOverlay, ConnectionPositionPair, FlexibleConnectedPositionStrategy } from '@angular/cdk/overlay';
+import { CdkConnectedOverlay, CdkOverlayOrigin, ConnectionPositionPair, FlexibleConnectedPositionStrategy } from '@angular/cdk/overlay';
+import { NgFor, NgIf } from '@angular/common';
 import {
     AfterViewInit,
     booleanAttribute,
@@ -20,8 +21,11 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { AppearanceType, NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
+import { ControlValueAccessor, FormControl, FormGroupDirective, FormsModule, NgControl, NgForm } from '@angular/forms';
+import { AppearanceType, NxFormfieldComponent, NxFormfieldControl, NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Observable, Subject } from 'rxjs';
 import { filter, map, take, takeUntil } from 'rxjs/operators';
@@ -54,6 +58,20 @@ const _defaultFilterFn: NxMultiSelectFilterFn = (query, label) => label.toLowerC
         '[class.is-readonly]': 'readonly',
         '[attr.readonly]': 'readonly || null',
     },
+    standalone: true,
+    imports: [
+        CdkOverlayOrigin,
+        NxTooltipModule,
+        NxIconModule,
+        CdkConnectedOverlay,
+        NgIf,
+        NxMultiSelectAllComponent,
+        NxFormfieldModule,
+        NxInputModule,
+        FormsModule,
+        NgFor,
+        NxMultiSelectOptionComponent,
+    ],
 })
 export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFormfieldControl<T[]>, DoCheck, OnDestroy, AfterViewInit {
     get value(): T[] {

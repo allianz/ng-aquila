@@ -15,6 +15,7 @@ export class SortEvent {
 @Directive({
     selector: 'table[nxSort]',
     exportAs: 'NxSortDirective',
+    standalone: true,
 })
 export class NxSortDirective implements OnDestroy {
     readonly _stateChanges = new Subject<void>();

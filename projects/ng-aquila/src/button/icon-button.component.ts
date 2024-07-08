@@ -14,6 +14,7 @@ import { NxButtonBase } from './button-base';
     host: {
         class: 'nx-icon-button',
     },
+    standalone: true,
 })
 export class NxIconButtonComponent extends NxButtonBase {
     constructor(_cdr: ChangeDetectorRef, elementRef: ElementRef, focusMonitor: FocusMonitor) {

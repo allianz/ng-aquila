@@ -7,7 +7,7 @@ import { NxTableComponent } from '../table.component';
 import { NxTableModule } from '../table.module';
 import { NxExpandableTableDirective } from './expandable-table.directive';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class TableTest {
     @ViewChild(NxExpandableTableDirective) expandableTableInstance!: NxExpandableTableDirective;
 }
@@ -28,8 +28,7 @@ describe(NxTableComponent.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [ExpandableTableComponent],
-            imports: [NxTableModule, NoopAnimationsModule],
+            imports: [NxTableModule, NoopAnimationsModule, ExpandableTableComponent],
         }).compileComponents();
     }));
 
@@ -169,5 +168,7 @@ describe(NxTableComponent.name, () => {
         </tbody>
     </table>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTableModule],
 })
 class ExpandableTableComponent extends TableTest {}

@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxButtonModule } from './button.module';
 import { NxPlainButtonComponent, NxPlainButtonSize, NxPlainButtonVariant } from './plain-button.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ButtonTest {
     @ViewChild('button') buttonInstance!: NxPlainButtonComponent;
 
@@ -25,8 +25,7 @@ describe('NxPlainButtonComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxButtonModule],
-            declarations: [BasicButton, ButtonBindings],
+            imports: [NxButtonModule, BasicButton, ButtonBindings],
         }).compileComponents();
     }));
 
@@ -82,11 +81,15 @@ describe('NxPlainButtonComponent', () => {
 
 @Component({
     template: `<button [nxPlainButton]="classNames" #button>Hello Button</button>`,
+    standalone: true,
+    imports: [NxButtonModule],
 })
 class BasicButton extends ButtonTest {}
 
 @Component({
     template: `<button [nxPlainButton]="classNames" [size]="size" [variant]="variant" [critical]="critical" #button>Hello Button</button>`,
+    standalone: true,
+    imports: [NxButtonModule],
 })
 class ButtonBindings extends ButtonTest {
     classNames = '';

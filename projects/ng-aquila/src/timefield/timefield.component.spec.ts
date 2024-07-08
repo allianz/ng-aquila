@@ -9,7 +9,7 @@ import { NxTimefieldComponent, TIMEFIELD_DEFAULT_OPTIONS } from './timefield.com
 import { NxTimefieldModule } from './timefield.module';
 import { NxTimefieldIntl } from './timefield-intl';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class TimefieldTest {
     @ViewChild(NxTimefieldComponent) timefieldInstance!: NxTimefieldComponent;
 
@@ -83,8 +83,11 @@ describe('NxTimefieldComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule, DefaultOptionsProvderTimefield],
-            declarations: [
+            imports: [
+                NxTimefieldModule,
+                FormsModule,
+                ReactiveFormsModule,
+                DefaultOptionsProvderTimefield,
                 SimpleTimefield,
                 ConfigurableTimefield,
                 ReactiveTimefield,
@@ -706,6 +709,8 @@ describe('NxTimefieldComponent', () => {
 });
 @Component({
     template: `<nx-timefield label="Time"></nx-timefield>`,
+    standalone: true,
+    imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleTimefield extends TimefieldTest {}
 
@@ -720,6 +725,8 @@ class SimpleTimefield extends TimefieldTest {}
             [required]="required"
         ></nx-timefield>
     `,
+    standalone: true,
+    imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
 })
 class ConfigurableTimefield extends TimefieldTest {}
 
@@ -729,6 +736,8 @@ class ConfigurableTimefield extends TimefieldTest {}
             <nx-timefield formControlName="today" [twelveHourFormat]="twelveHourFormat" [withTimepicker]="withTimepicker"></nx-timefield>
         </form>
     `,
+    standalone: true,
+    imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveTimefield extends TimefieldTest {
     testForm!: FormGroup;
@@ -746,6 +755,8 @@ class ReactiveTimefield extends TimefieldTest {
 }
 @Component({
     template: `<nx-timefield [twelveHourFormat]="twelveHourFormat" [(ngModel)]="today"></nx-timefield>`,
+    standalone: true,
+    imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
 })
 class TemplateDrivenTimefield extends TimefieldTest {
     today = '00:00';
@@ -754,6 +765,8 @@ class TemplateDrivenTimefield extends TimefieldTest {
 @Component({
     template: `<nx-timefield [twelveHourFormat]="twelveHourFormat" [(ngModel)]="today"></nx-timefield>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
 })
 class TemplateDrivenOnPushTimefield extends TimefieldTest {
     today = '00:00';
@@ -762,6 +775,8 @@ class TemplateDrivenOnPushTimefield extends TimefieldTest {
 @Component({
     template: `<nx-timefield twelveHourFormat></nx-timefield>`,
     providers: [{ provide: NxTimefieldIntl, useClass: MyIntl }],
+    standalone: true,
+    imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
 })
 class OverrideDefaultLabelsTimefield extends TimefieldTest {}
 

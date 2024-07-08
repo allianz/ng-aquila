@@ -4,8 +4,7 @@ import { NgModule } from '@angular/core';
 import { NxFooterComponent, NxFooterCopyrightDirective, NxFooterLinkDirective, NxFooterNavigationDirective } from './footer.component';
 
 @NgModule({
-    imports: [CommonModule],
-    declarations: [NxFooterComponent, NxFooterCopyrightDirective, NxFooterLinkDirective, NxFooterNavigationDirective],
+    imports: [CommonModule, NxFooterComponent, NxFooterCopyrightDirective, NxFooterLinkDirective, NxFooterNavigationDirective],
     exports: [NxFooterComponent, NxFooterCopyrightDirective, NxFooterLinkDirective, NxFooterNavigationDirective],
 })
 export class NxFooterModule {}

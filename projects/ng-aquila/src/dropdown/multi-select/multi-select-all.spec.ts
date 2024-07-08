@@ -58,10 +58,9 @@ describe('NxMultiSelectAllComponent', () => {
     let multiSelectAllHarness: MultiSelectAllHarness;
     let liveAnnouncer: LiveAnnouncer;
 
-    async function configureTestingModule(declarations: any[]) {
+    async function configureTestingModule() {
         return TestBed.configureTestingModule({
-            imports: [NxDropdownModule],
-            declarations,
+            imports: [NxDropdownModule, BasicMultiSelectAllComponent],
             providers: [LiveAnnouncer],
         }).compileComponents();
     }
@@ -77,7 +76,7 @@ describe('NxMultiSelectAllComponent', () => {
     }
 
     beforeEach(async () => {
-        await configureTestingModule([BasicMultiSelectAllComponent, NxMultiSelectAllComponent]);
+        await configureTestingModule();
         createTestComponent(BasicMultiSelectAllComponent);
         multiSelectAllHarness = await loader.getHarness(MultiSelectAllHarness);
     });
@@ -186,7 +185,7 @@ describe('NxMultiSelectAllComponent', () => {
     });
 });
 
-@Directive()
+@Directive({ standalone: true })
 abstract class MultiSelectAllTest {
     @ViewChild(NxMultiSelectAllComponent) multiSelectOption!: NxMultiSelectAllComponent<any>;
     selected = false;
@@ -199,5 +198,7 @@ abstract class MultiSelectAllTest {
     template: `
         <nx-multi-select-all [selected]="selected" [label]="label" [indeterminate]="indeterminate" (selectedAllChange)="onSelectAll()"> </nx-multi-select-all>
     `,
+    standalone: true,
+    imports: [NxMultiSelectAllComponent],
 })
 class BasicMultiSelectAllComponent extends MultiSelectAllTest {}

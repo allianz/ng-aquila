@@ -77,6 +77,7 @@ export class NxDatepickerInputEvent<D> {
         '(keydown)': '_onKeydown($event)',
     },
     exportAs: 'nxDatefield',
+    standalone: true,
 })
 export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAccessor, OnDestroy, Validator, NxAbstractControl {
     /** @docs-private */

@@ -1,4 +1,11 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxCircleToggleComponent,
+    NxCircleToggleGroupComponent,
+} from '@aposin/ng-aquila/circle-toggle';
 
 /**
  * @title Template driven example with ngModel
@@ -7,6 +14,14 @@ import { Component } from '@angular/core';
     selector: 'circle-toggle-template-driven-example',
     templateUrl: './circle-toggle-template-driven-example.html',
     styleUrls: ['./circle-toggle-template-driven-example.css'],
+    standalone: true,
+    imports: [
+        NxCircleToggleGroupComponent,
+        FormsModule,
+        NgFor,
+        NxCircleToggleComponent,
+        NxButtonComponent,
+    ],
 })
 export class CircleToggleTemplateDrivenExampleComponent {
     toggleGroupModel!: string;

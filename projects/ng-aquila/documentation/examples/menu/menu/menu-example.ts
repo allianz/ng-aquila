@@ -1,9 +1,28 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import {
+    NxButtonComponent,
+    NxPlainButtonComponent,
+} from '@aposin/ng-aquila/button';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import {
+    NxMenuButtonComponent,
+    NxMenuButtonIconDirective,
+    NxMenuComponent,
+    NxMenuItemDirective,
+    NxMenuLinkDirective,
+} from '@aposin/ng-aquila/menu';
 import {
     NxFlatTreeControl,
     NxFlatTreeNode,
+    NxTreeComponent,
     NxTreeFlatDataSource,
     NxTreeNode,
+    NxTreeNodeActionItem,
+    NxTreeNodeComponent,
+    NxTreeNodeDefDirective,
+    NxTreeNodeToggleDirective,
 } from '@aposin/ng-aquila/tree';
 
 /**
@@ -30,6 +49,24 @@ interface MyFlatTreeNode extends NxFlatTreeNode {
     selector: 'menu-example',
     templateUrl: './menu-example.html',
     styleUrls: ['menu-example.css'],
+    standalone: true,
+    imports: [
+        NxPlainButtonComponent,
+        NxIconComponent,
+        NxMenuComponent,
+        NxTreeComponent,
+        NxTreeNodeDefDirective,
+        NxTreeNodeComponent,
+        NxMenuItemDirective,
+        NxMenuLinkDirective,
+        NxTreeNodeActionItem,
+        RouterLink,
+        NxMenuButtonComponent,
+        NxTreeNodeToggleDirective,
+        NgIf,
+        NxMenuButtonIconDirective,
+        NxButtonComponent,
+    ],
 })
 export class MenuExampleComponent {
     navigationData: MyTreeNode[] = [

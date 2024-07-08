@@ -61,6 +61,7 @@ export type ColOrder = 'first' | 'last' | 'unordered';
         '[class.nx-grid__column--media-query]': '!gridLayoutComponent?.containerQuery ?? true',
         '[class]': '_classNames',
     },
+    standalone: true,
 })
 export class NxColComponent implements AfterViewInit {
     /**

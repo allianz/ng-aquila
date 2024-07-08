@@ -24,8 +24,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxCodeInputModule, NxErrorModule, ExamplesSharedModule],
-    declarations: [EXAMPLES],
+    imports: [NxCodeInputModule, NxErrorModule, ExamplesSharedModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class CodeExamplesModule {

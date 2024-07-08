@@ -10,7 +10,7 @@ import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxSignalButtonComponent } from './signal-button.component';
 import { NxSignalButtonModule } from './signal-button.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class SignalButtonTestDirective {
     @ViewChild(NxSignalButtonComponent) signalButtonInstance!: NxSignalButtonComponent;
 }
@@ -32,8 +32,7 @@ describe('NxSignalButtonComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [OverlayModule, NxSignalButtonModule, NxFormfieldModule, NxInputModule],
-            declarations: [SignalButtonComponent],
+            imports: [OverlayModule, NxSignalButtonModule, NxFormfieldModule, NxInputModule, SignalButtonComponent],
         });
     }));
 
@@ -254,6 +253,8 @@ describe('NxSignalButtonComponent', () => {
 
 @Component({
     template: `<nx-signal-button [context]="context">This is the content of the success popover</nx-signal-button>`,
+    standalone: true,
+    imports: [OverlayModule, NxSignalButtonModule, NxFormfieldModule, NxInputModule],
 })
 class SignalButtonComponent extends SignalButtonTestDirective {
     context = 'success';

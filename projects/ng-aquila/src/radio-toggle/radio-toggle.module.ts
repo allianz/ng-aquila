@@ -7,8 +7,7 @@ import { NxRadioToggleComponent } from './radio-toggle.component';
 import { NxRadioToggleButtonComponent } from './radio-toggle-button.component';
 
 @NgModule({
-    declarations: [NxRadioToggleComponent, NxRadioToggleButtonComponent],
     exports: [NxRadioToggleComponent, NxRadioToggleButtonComponent],
-    imports: [CommonModule, FormsModule, NxIconModule],
+    imports: [CommonModule, FormsModule, NxIconModule, NxRadioToggleComponent, NxRadioToggleButtonComponent],
 })
 export class NxRadioToggleModule {}

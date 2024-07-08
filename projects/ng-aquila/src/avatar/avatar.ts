@@ -19,6 +19,7 @@ export type NxAvatarSize = 'xsmall' | 'small' | 'small-medium' | 'medium' | 'lar
         '[class.nx-avatar--large]': 'size === "large"',
         '[class.nx-avatar--xlarge]': 'size === "xlarge"',
     },
+    standalone: true,
 })
 export class NxAvatarComponent {
     /** Sets the size of the avatar. Default: 'medium'. */
@@ -41,6 +42,7 @@ export class NxAvatarComponent {
     host: {
         '[class.is-button]': 'true',
     },
+    standalone: true,
 })
 export class NxAvatarButtonDirective implements OnDestroy, AfterViewInit {
     constructor(

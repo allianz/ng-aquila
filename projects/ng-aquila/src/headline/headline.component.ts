@@ -28,9 +28,9 @@ const DEFAULT_TYPE = 'section';
         '[class.nx-heading--2xl]': 'size === "2xl"',
         '[class.nx-heading--3xl]': 'size === "3xl"',
         '[class.nx-heading--4xl]': 'size === "4xl"',
-
         '[class.nx-heading--negative]': 'negative',
     },
+    standalone: true,
 })
 export class NxHeadlineComponent {
     /**

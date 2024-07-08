@@ -1,11 +1,19 @@
 import { ComponentPortal } from '@angular/cdk/portal';
+import { NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { NxTabGroupComponent } from '@aposin/ng-aquila/tabs';
+import { RouterLink } from '@angular/router';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxLinkModule } from '@aposin/ng-aquila/link';
+import { NxTabGroupComponent, NxTabsModule } from '@aposin/ng-aquila/tabs';
+import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 
 import { CopyService } from '../core/copy.service';
 import { ExampleDescriptor } from '../core/manifest';
 import { ComponentExample } from '../doc-viewer/component-example';
 import { DocViewerComponent } from '../doc-viewer/doc-viewer.component';
+import { LazyExampleOutletComponent } from '../lazy-example-outlet/lazy-example-outlet.component';
+import { StackBlitzButton } from '../stack-blitz/stack-blitz-button';
 import { ManifestService } from './../service/manifest.service';
 
 interface ExampleConfig {
@@ -19,6 +27,20 @@ interface ExampleConfig {
     templateUrl: './example-viewer.component.html',
     styleUrls: ['./example-viewer.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        NgIf,
+        NxButtonModule,
+        NxIconModule,
+        NxLinkModule,
+        NxTooltipModule,
+        RouterLink,
+        StackBlitzButton,
+        NxTabsModule,
+        NgFor,
+        DocViewerComponent,
+        LazyExampleOutletComponent,
+    ],
 })
 export class ExampleViewerComponent {
     moduleId!: string;

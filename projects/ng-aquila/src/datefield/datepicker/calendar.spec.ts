@@ -20,14 +20,15 @@ describe('NxCalendarComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxButtonModule, NxNativeDateModule, NxIconModule],
-            declarations: [
+            imports: [
+                NxButtonModule,
+                NxNativeDateModule,
+                NxIconModule,
                 NxCalendarBodyComponent,
                 NxCalendarComponent,
                 NxMonthViewComponent,
                 NxYearViewComponent,
                 NxMultiYearViewComponent,
-
                 // Test components.
                 StandardCalendar,
                 CalendarWithMinMax,
@@ -516,6 +517,8 @@ describe('NxCalendarComponent', () => {
 @Component({
     template: `<nx-calendar [startAt]="startDate" [(selected)]="selected" (yearSelected)="selectedYear = $event" (monthSelected)="selectedMonth = $event">
     </nx-calendar>`,
+    standalone: true,
+    imports: [NxNativeDateModule, NxCalendarComponent],
 })
 class StandardCalendar {
     selected!: Date;
@@ -526,6 +529,8 @@ class StandardCalendar {
 
 @Component({
     template: `<nx-calendar [startAt]="startAt" [minDate]="minDate" [maxDate]="maxDate"></nx-calendar>`,
+    standalone: true,
+    imports: [NxNativeDateModule, NxCalendarComponent],
 })
 class CalendarWithMinMax {
     startAt!: Date;
@@ -535,6 +540,8 @@ class CalendarWithMinMax {
 
 @Component({
     template: `<nx-calendar [startAt]="startDate" [(selected)]="selected" [dateFilter]="dateFilter"> </nx-calendar>`,
+    standalone: true,
+    imports: [NxNativeDateModule, NxCalendarComponent],
 })
 class CalendarWithDateFilter {
     selected!: Date;

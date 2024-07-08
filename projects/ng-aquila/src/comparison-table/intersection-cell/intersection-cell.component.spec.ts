@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, DebugElement, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -13,7 +14,7 @@ import { NxComparisonTableIntersectionCell } from './intersection-cell.component
 declare let viewport: any;
 const THROTTLE_TIME = 200;
 
-@Directive()
+@Directive({ standalone: true })
 abstract class IntersectionCellTest {
     @ViewChildren(NxComparisonTableIntersectionCell) intersectionCellInstances!: QueryList<NxComparisonTableIntersectionCell>;
     @ViewChild(NxComparisonTableDescriptionCell) descriptionCellInstance!: NxComparisonTableDescriptionCell;
@@ -42,8 +43,7 @@ describe('NxComparisonTableIntersectionCell', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxComparisonTableModule, BrowserAnimationsModule],
-            declarations: [IntersectionCellComponent, ToggleSectionComponent],
+            imports: [NxComparisonTableModule, BrowserAnimationsModule, IntersectionCellComponent, ToggleSectionComponent],
         });
         TestBed.compileComponents();
     }));
@@ -156,6 +156,8 @@ describe('NxComparisonTableIntersectionCell', () => {
 
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
+    standalone: true,
+    imports: [NxComparisonTableModule, CommonModule],
 })
 class IntersectionCellComponent extends IntersectionCellTest {
     data = [
@@ -168,6 +170,8 @@ class IntersectionCellComponent extends IntersectionCellTest {
 
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
+    standalone: true,
+    imports: [NxComparisonTableModule, CommonModule],
 })
 class ToggleSectionComponent extends IntersectionCellTest {
     data = [

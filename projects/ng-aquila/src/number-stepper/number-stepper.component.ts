@@ -1,4 +1,5 @@
 import { BooleanInput, coerceBooleanProperty, NumberInput } from '@angular/cdk/coercion';
+import { NgClass, NgIf } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -14,7 +15,9 @@ import {
     ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { MappedStyles } from '@aposin/ng-aquila/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { mapClassNames, pad } from '@aposin/ng-aquila/utils';
 import { Decimal } from 'decimal.js';
 import { Subject } from 'rxjs';
@@ -62,6 +65,8 @@ let nextUniqueId = 0;
         '[class.is-disabled]': 'disabled',
     },
     providers: [CUSTOM_VALUE_ACCESSOR, CUSTOM_VALIDATOR],
+    standalone: true,
+    imports: [NgIf, NxButtonModule, NxIconModule, NxAutoResizeDirective, NgClass],
 })
 export class NxNumberStepperComponent extends MappedStyles implements AfterViewInit, ControlValueAccessor, Validator, OnDestroy {
     /** @docs-private */

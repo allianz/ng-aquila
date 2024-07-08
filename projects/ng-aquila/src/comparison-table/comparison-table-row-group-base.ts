@@ -1,7 +1,7 @@
 import { Directive } from '@angular/core';
 
 /** @docs-private */
-@Directive()
+@Directive({ standalone: true })
 export abstract class NxComparisonTableRowGroupBase {
     abstract _isPartOfToggleSection(): boolean;
 }

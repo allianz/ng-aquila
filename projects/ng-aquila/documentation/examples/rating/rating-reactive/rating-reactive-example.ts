@@ -1,5 +1,7 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NxRatingComponent } from '@aposin/ng-aquila/rating';
 
 /**
  * @title Rating Reactive Example
@@ -8,6 +10,8 @@ import { FormBuilder } from '@angular/forms';
     selector: 'rating-reactive-example',
     templateUrl: './rating-reactive-example.html',
     styleUrls: ['./rating-reactive-example.css'],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxRatingComponent, JsonPipe],
 })
 export class RatingReactiveExampleComponent {
     readonly testForm = this.fb.group({

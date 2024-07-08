@@ -1,4 +1,17 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import {
+    NxDropdownClosedLabelDirective,
+    NxDropdownComponent,
+    NxDropdownItemComponent,
+} from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
 
 interface TelephonePrefixData {
     prefix: string;
@@ -12,6 +25,18 @@ interface TelephonePrefixData {
     selector: 'dropdown-custom-label-example',
     templateUrl: './dropdown-custom-label-example.html',
     styleUrls: ['./dropdown-custom-label-example.css'],
+    standalone: true,
+    imports: [
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxFormfieldComponent,
+        NxDropdownComponent,
+        FormsModule,
+        NxDropdownClosedLabelDirective,
+        NgFor,
+        NxDropdownItemComponent,
+    ],
 })
 export class DropdownCustomLabelExampleComponent {
     customLabelDropdownValue?: TelephonePrefixData;

@@ -31,6 +31,7 @@ const DEFAULT_SIZE = 'large';
         '[class.nx-natural-language-form--small]': 'size === "small"',
         '[class.nx-natural-language-form--large]': 'size === "large"',
     },
+    standalone: true,
 })
 export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestroy {
     /** Whether the negative set of stylings should be used. */

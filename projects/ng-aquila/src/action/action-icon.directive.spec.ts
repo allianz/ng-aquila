@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxActionModule } from './action.module';
 import { NxActionIconDirective } from './action-icon.directive';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ActionIconTest {
     @ViewChild(NxActionIconDirective) actionIconInstance!: NxActionIconDirective;
 }
@@ -25,8 +25,7 @@ describe(NxActionIconDirective.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicActionIcon],
-            imports: [NxActionModule],
+            imports: [NxActionModule, BasicActionIcon],
         }).compileComponents();
     }));
 
@@ -50,5 +49,7 @@ describe(NxActionIconDirective.name, () => {
 
 @Component({
     template: `<span nxActionIcon></span>`,
+    standalone: true,
+    imports: [NxActionModule],
 })
 class BasicActionIcon extends ActionIconTest {}

@@ -13,6 +13,7 @@ export type NxIndicatorPosition = 'over-text' | 'over-icon' | 'after-text' | 'wi
         '[class.nx-indicator--after-text]': 'this._hasPosition("after-text")',
         '[class.nx-indicator--with-overlap]': 'this._hasPosition("with-overlap")',
     },
+    standalone: true,
 })
 export class NxIndicatorComponent {
     /**

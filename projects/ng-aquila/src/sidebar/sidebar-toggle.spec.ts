@@ -5,7 +5,7 @@ import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
 
 import { NxSidebarToggleComponent } from './sidebar-toggle';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ToggleTest {
     @ViewChild(NxSidebarToggleComponent) buttonInstance!: NxSidebarToggleComponent;
 }
@@ -26,8 +26,7 @@ describe('NxSidebarToggleButton', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicSidebarToggleComponent],
-            imports: [NxButtonModule, NxSidebarModule],
+            imports: [NxButtonModule, NxSidebarModule, BasicSidebarToggleComponent],
         }).compileComponents();
     }));
 
@@ -48,5 +47,7 @@ describe('NxSidebarToggleButton', () => {
             </nx-sidebar-footer>
         </nx-sidebar>
     `,
+    standalone: true,
+    imports: [NxButtonModule, NxSidebarModule],
 })
 class BasicSidebarToggleComponent extends ToggleTest {}

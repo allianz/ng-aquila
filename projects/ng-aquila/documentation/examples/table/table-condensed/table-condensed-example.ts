@@ -1,4 +1,14 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
+import { NxLinkComponent } from '@aposin/ng-aquila/link';
+import {
+    NxHeaderCellDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+} from '@aposin/ng-aquila/table';
 
 /**
  * @title Condensed Example
@@ -7,6 +17,17 @@ import { Component } from '@angular/core';
     selector: 'table-condensed-example',
     templateUrl: './table-condensed-example.html',
     styleUrls: ['./table-condensed-example.css'],
+    standalone: true,
+    imports: [
+        NxTableComponent,
+        NxTableRowComponent,
+        NxHeaderCellDirective,
+        NgFor,
+        NxTableCellComponent,
+        NxLinkComponent,
+        RouterLink,
+        NxBadgeComponent,
+    ],
 })
 export class TableCondensedExampleComponent {
     tableElements = [

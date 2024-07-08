@@ -20,6 +20,7 @@ import { NxExpandableTableDirective } from './expandable/expandable-table.direct
         '[class.nx-table--sticky-last]': 'sticky === "last" || sticky === "both"',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxTableComponent {
     /** Change the table mode to condensed  */

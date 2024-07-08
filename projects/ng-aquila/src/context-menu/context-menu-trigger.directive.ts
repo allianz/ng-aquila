@@ -11,6 +11,7 @@ import {
     ElementRef,
     EventEmitter,
     Inject,
+    inject,
     InjectionToken,
     Input,
     OnDestroy,
@@ -39,14 +40,28 @@ export type NxContextMenuScrollStrategy = 'close' | 'reposition';
 export type NxContextMenuMode = 'button' | 'cursor';
 
 /** Injection token that determines the scroll handling while a context-menu is open. */
-export const NX_CONTEXT_MENU_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-context-menu-scroll-strategy');
+export const NX_CONTEXT_MENU_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-context-menu-scroll-strategy', {
+    providedIn: 'root',
+    factory: () => {
+        const overlay = inject(Overlay);
+        return () => overlay.scrollStrategies.reposition();
+    },
+});
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export function NX_CONTEXT_MENU_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
     return () => overlay.scrollStrategies.reposition();
 }
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export const NX_CONTEXT_MENU_SCROLL_STRATEGY_PROVIDER = {
     provide: NX_CONTEXT_MENU_SCROLL_STRATEGY,
     useFactory: NX_CONTEXT_MENU_SCROLL_STRATEGY_PROVIDER_FACTORY,
@@ -73,6 +88,7 @@ interface Point {
         '(contextmenu)': '_handleRightClick($event)',
     },
     exportAs: 'nxContextMenuTrigger',
+    standalone: true,
 })
 export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestroy {
     private _portal!: TemplatePortal;

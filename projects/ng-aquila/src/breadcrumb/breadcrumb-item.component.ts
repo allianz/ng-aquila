@@ -1,5 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 @Component({
     selector: 'a[nxBreadcrumbItem]',
@@ -9,6 +10,8 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestro
     host: {
         class: 'nx-breadcrumb-item',
     },
+    standalone: true,
+    imports: [NxIconModule],
 })
 export class NxBreadcrumbItemComponent implements OnDestroy, AfterViewInit {
     constructor(

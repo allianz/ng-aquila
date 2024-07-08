@@ -4,7 +4,7 @@ import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/cor
 import { NxDropdownModule } from '../dropdown.module';
 import { NxDropdownItemComponent } from './dropdown-item';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class DropdownItemTest {
     @ViewChild(NxDropdownItemComponent) item: any;
 }
@@ -23,8 +23,7 @@ describe('NxDropdownItem component', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxDropdownModule],
-            declarations: [BasicItem, EmptyItem, ProjectedItem],
+            imports: [NxDropdownModule, BasicItem, EmptyItem, ProjectedItem],
         }).compileComponents();
     }));
 
@@ -96,11 +95,15 @@ describe('NxDropdownItem component', () => {
 
 @Component({
     template: `<nx-dropdown><nx-dropdown-item value="option"></nx-dropdown-item></nx-dropdown>`,
+    standalone: true,
+    imports: [NxDropdownModule],
 })
 class BasicItem extends DropdownItemTest {}
 
 @Component({
     template: `<nx-dropdown><nx-dropdown-item></nx-dropdown-item></nx-dropdown>`,
+    standalone: true,
+    imports: [NxDropdownModule],
 })
 class EmptyItem extends DropdownItemTest {}
 
@@ -108,5 +111,7 @@ class EmptyItem extends DropdownItemTest {}
     template: `<nx-dropdown
         ><nx-dropdown-item value="option"><span>label</span></nx-dropdown-item></nx-dropdown
     >`,
+    standalone: true,
+    imports: [NxDropdownModule],
 })
 class ProjectedItem extends DropdownItemTest {}

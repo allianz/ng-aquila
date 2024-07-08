@@ -5,6 +5,7 @@ import { NXV_TOP_INFO } from './../../../core/tokens';
 @Component({
     selector: 'nxv-top-info',
     template: '',
+    standalone: true,
 })
 export class NxvTopInfoComponent implements OnInit {
     constructor(

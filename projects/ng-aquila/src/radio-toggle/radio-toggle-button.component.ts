@@ -1,6 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
+import { NgClass } from '@angular/common';
 import {
     AfterViewInit,
     booleanAttribute,
@@ -16,6 +17,7 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -46,6 +48,8 @@ export class NxRadioToggleButtonChange {
         '[attr.aria-invalid]': '_controlInvalid() || null',
         '(focus)': '_forwardFocusToInput()',
     },
+    standalone: true,
+    imports: [NxIconModule, NgClass],
 })
 export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseComponent implements AfterViewInit, OnDestroy {
     /** @docs-private */

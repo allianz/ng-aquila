@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { NxProgressbarComponent } from './progressbar.component';
 import { NxProgressbarModule } from './progressbar.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ProgressBarTest {
     @ViewChild(NxProgressbarComponent) componentInstance!: NxProgressbarComponent;
     @ViewChild(NxProgressbarComponent, { read: ElementRef }) componentInstanceRef!: ElementRef;
@@ -27,8 +27,7 @@ describe('NxProgressbarComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [ProgressBarBasicComponent, ProgressBarValueComponent],
-            imports: [NxProgressbarModule, FormsModule],
+            imports: [NxProgressbarModule, FormsModule, ProgressBarBasicComponent, ProgressBarValueComponent],
         }).compileComponents();
     }));
 
@@ -50,10 +49,14 @@ describe('NxProgressbarComponent', () => {
 
 @Component({
     template: `<nx-progressbar></nx-progressbar>`,
+    standalone: true,
+    imports: [NxProgressbarModule, FormsModule],
 })
 class ProgressBarBasicComponent extends ProgressBarTest {}
 
 @Component({
     template: `<nx-progressbar value="0.5"></nx-progressbar>`,
+    standalone: true,
+    imports: [NxProgressbarModule, FormsModule],
 })
 class ProgressBarValueComponent extends ProgressBarTest {}

@@ -14,7 +14,7 @@ import { NxTabGroupComponent, NxTabNavBarComponent, NxTabsModule } from '@aposin
 
 import { NxExpertModule } from './nx-expert.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class PresetTest {
     @ViewChild(NxDatepickerToggleComponent) datepickerToggleInstance!: NxDatepickerToggleComponent<Date>;
     @ViewChild(NxErrorComponent) errorInstance!: NxErrorComponent;
@@ -75,8 +75,6 @@ describe('NxExpertPreset', () => {
                 NxSmallStageModule,
                 NxCircleToggleModule,
                 NxDataDisplayModule,
-            ],
-            declarations: [
                 DatepickerPresetComponent,
                 ErrorPresetComponent,
                 FormfieldPresetComponent,
@@ -179,11 +177,41 @@ describe('NxExpertPreset', () => {
         <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker1></nx-datepicker>
     `,
+    standalone: true,
+    imports: [
+        NxComparisonTableModule,
+        NxDatefieldModule,
+        NxErrorModule,
+        NxExpertModule,
+        NxInputModule,
+        NxLabelModule,
+        NxMomentDateModule,
+        NxTabsModule,
+        NxCardModule,
+        NxSmallStageModule,
+        NxCircleToggleModule,
+        NxDataDisplayModule,
+    ],
 })
 class DatepickerPresetComponent extends PresetTest {}
 
 @Component({
     template: `<nx-error>This is a preset error</nx-error>`,
+    standalone: true,
+    imports: [
+        NxComparisonTableModule,
+        NxDatefieldModule,
+        NxErrorModule,
+        NxExpertModule,
+        NxInputModule,
+        NxLabelModule,
+        NxMomentDateModule,
+        NxTabsModule,
+        NxCardModule,
+        NxSmallStageModule,
+        NxCircleToggleModule,
+        NxDataDisplayModule,
+    ],
 })
 class ErrorPresetComponent extends PresetTest {}
 
@@ -193,11 +221,41 @@ class ErrorPresetComponent extends PresetTest {}
             <input nxInput />
         </nx-formfield>
     `,
+    standalone: true,
+    imports: [
+        NxComparisonTableModule,
+        NxDatefieldModule,
+        NxErrorModule,
+        NxExpertModule,
+        NxInputModule,
+        NxLabelModule,
+        NxMomentDateModule,
+        NxTabsModule,
+        NxCardModule,
+        NxSmallStageModule,
+        NxCircleToggleModule,
+        NxDataDisplayModule,
+    ],
 })
 class FormfieldPresetComponent extends PresetTest {}
 
 @Component({
     template: `<nx-label>I am a preset label</nx-label>`,
+    standalone: true,
+    imports: [
+        NxComparisonTableModule,
+        NxDatefieldModule,
+        NxErrorModule,
+        NxExpertModule,
+        NxInputModule,
+        NxLabelModule,
+        NxMomentDateModule,
+        NxTabsModule,
+        NxCardModule,
+        NxSmallStageModule,
+        NxCircleToggleModule,
+        NxDataDisplayModule,
+    ],
 })
 class LabelPresetComponent extends PresetTest {}
 
@@ -208,17 +266,49 @@ class LabelPresetComponent extends PresetTest {}
             <nx-tab label="Second tab"> Fill in your second content! </nx-tab>
         </nx-tab-group>
     `,
+    standalone: true,
+    imports: [
+        NxComparisonTableModule,
+        NxDatefieldModule,
+        NxErrorModule,
+        NxExpertModule,
+        NxInputModule,
+        NxLabelModule,
+        NxMomentDateModule,
+        NxTabsModule,
+        NxCardModule,
+        NxSmallStageModule,
+        NxCircleToggleModule,
+        NxDataDisplayModule,
+    ],
 })
 class TabGroupPresetComponent extends PresetTest {}
 
 @Component({
     template: `
         <nx-tab-nav-bar>
-            <a nxTabLink *ngFor="let link of links" (click)="setActiveLink(link)" [active]="currentLink.label === link.label" routerLink="...">
-                {{ link.label }}
-            </a>
+            @for (link of links; track link) {
+                <a nxTabLink (click)="setActiveLink(link)" [active]="currentLink.label === link.label" routerLink="...">
+                    {{ link.label }}
+                </a>
+            }
         </nx-tab-nav-bar>
     `,
+    standalone: true,
+    imports: [
+        NxComparisonTableModule,
+        NxDatefieldModule,
+        NxErrorModule,
+        NxExpertModule,
+        NxInputModule,
+        NxLabelModule,
+        NxMomentDateModule,
+        NxTabsModule,
+        NxCardModule,
+        NxSmallStageModule,
+        NxCircleToggleModule,
+        NxDataDisplayModule,
+    ],
 })
 class TabNavBarPresetComponent extends PresetTest {
     links = [{ label: 'Subpage 1' }, { label: 'Subpage 2' }, { label: 'Subpage 3' }];
@@ -240,11 +330,13 @@ class TabNavBarPresetComponent extends PresetTest {
                 <nx-comparison-table-cell type="header">This is a header cell</nx-comparison-table-cell>
             </ng-container>
             <ng-container nxComparisonTableRowGroup>
-                <ng-container nxComparisonTableRow *ngFor="let i of [0, 1, 2, 3, 4]">
-                    <nx-comparison-table-description-cell>This is a description cell</nx-comparison-table-description-cell>
-                    <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
-                    <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
-                </ng-container>
+                @for (i of [0, 1, 2, 3, 4]; track i) {
+                    <ng-container nxComparisonTableRow>
+                        <nx-comparison-table-description-cell>This is a description cell</nx-comparison-table-description-cell>
+                        <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
+                        <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
+                    </ng-container>
+                }
             </ng-container>
             <ng-container nxComparisonTableRow type="footer">
                 <nx-comparison-table-cell type="footer">This is a footer cell</nx-comparison-table-cell>
@@ -252,6 +344,21 @@ class TabNavBarPresetComponent extends PresetTest {
             </ng-container>
         </nx-comparison-table>
     `,
+    standalone: true,
+    imports: [
+        NxComparisonTableModule,
+        NxDatefieldModule,
+        NxErrorModule,
+        NxExpertModule,
+        NxInputModule,
+        NxLabelModule,
+        NxMomentDateModule,
+        NxTabsModule,
+        NxCardModule,
+        NxSmallStageModule,
+        NxCircleToggleModule,
+        NxDataDisplayModule,
+    ],
 })
 class ComparisonTablePresetComponent extends PresetTest {
     @ViewChild(NxComparisonTableRowGroupDirective)
@@ -260,20 +367,80 @@ class ComparisonTablePresetComponent extends PresetTest {
 
 @Component({
     template: `<nx-selectable-card></nx-selectable-card>`,
+    standalone: true,
+    imports: [
+        NxComparisonTableModule,
+        NxDatefieldModule,
+        NxErrorModule,
+        NxExpertModule,
+        NxInputModule,
+        NxLabelModule,
+        NxMomentDateModule,
+        NxTabsModule,
+        NxCardModule,
+        NxSmallStageModule,
+        NxCircleToggleModule,
+        NxDataDisplayModule,
+    ],
 })
 class SelectableCardPresetComponent extends PresetTest {}
 
 @Component({
     template: `<nx-small-stage></nx-small-stage>`,
+    standalone: true,
+    imports: [
+        NxComparisonTableModule,
+        NxDatefieldModule,
+        NxErrorModule,
+        NxExpertModule,
+        NxInputModule,
+        NxLabelModule,
+        NxMomentDateModule,
+        NxTabsModule,
+        NxCardModule,
+        NxSmallStageModule,
+        NxCircleToggleModule,
+        NxDataDisplayModule,
+    ],
 })
 class SmallStagePresetComponent extends PresetTest {}
 
 @Component({
     template: `<nx-circle-toggle-group></nx-circle-toggle-group>`,
+    standalone: true,
+    imports: [
+        NxComparisonTableModule,
+        NxDatefieldModule,
+        NxErrorModule,
+        NxExpertModule,
+        NxInputModule,
+        NxLabelModule,
+        NxMomentDateModule,
+        NxTabsModule,
+        NxCardModule,
+        NxSmallStageModule,
+        NxCircleToggleModule,
+        NxDataDisplayModule,
+    ],
 })
 class CircleToggleGroupPresetComponent extends PresetTest {}
 
 @Component({
     template: `<nx-data-display></nx-data-display>`,
+    standalone: true,
+    imports: [
+        NxComparisonTableModule,
+        NxDatefieldModule,
+        NxErrorModule,
+        NxExpertModule,
+        NxInputModule,
+        NxLabelModule,
+        NxMomentDateModule,
+        NxTabsModule,
+        NxCardModule,
+        NxSmallStageModule,
+        NxCircleToggleModule,
+        NxDataDisplayModule,
+    ],
 })
 class DataDisplayPresetComponent extends PresetTest {}

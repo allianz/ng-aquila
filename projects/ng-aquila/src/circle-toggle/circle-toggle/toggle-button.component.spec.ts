@@ -30,7 +30,10 @@ describe('NxCircleToggle', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [
+            imports: [
+                NxCircleToggleModule,
+                FormsModule,
+                ReactiveFormsModule,
                 SimpleCircleToggleButtonComponent,
                 PreselectedCircleToggleButtoncComponent,
                 NgModelToggleButtonComponent,
@@ -40,7 +43,6 @@ describe('NxCircleToggle', () => {
                 CircleToggleButtonOnPushComponent,
                 TextCircleToggleButtonComponent,
             ],
-            imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
         }).compileComponents();
     }));
 
@@ -321,7 +323,7 @@ describe('NxCircleToggle', () => {
     });
 });
 
-@Directive()
+@Directive({ standalone: true })
 abstract class AbstractButtonToggleComponent {
     @ViewChild(NxCircleToggleComponent) buttonToggle!: NxCircleToggleComponent;
 
@@ -330,37 +332,51 @@ abstract class AbstractButtonToggleComponent {
 
 @Component({
     template: `<nx-circle-toggle value="A" icon="product-heart" label="text1" hint="hint1"></nx-circle-toggle>`,
+    standalone: true,
+    imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleCircleToggleButtonComponent extends AbstractButtonToggleComponent {}
 
 @Component({
     template: `<nx-circle-toggle value="A" icon="product-heart" label="text1"></nx-circle-toggle>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class CircleToggleButtonOnPushComponent extends AbstractButtonToggleComponent {}
 
 @Component({
     template: `<nx-circle-toggle value="A" svg="test.svg" svgChecked="testInverted.svg" label="text1"></nx-circle-toggle>`,
+    standalone: true,
+    imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class SvgCircleToggleButtonComponent extends AbstractButtonToggleComponent {}
 
 @Component({
     template: `<nx-circle-toggle value="A" circleText="TEXT" label="text1"></nx-circle-toggle>`,
+    standalone: true,
+    imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class TextCircleToggleButtonComponent extends AbstractButtonToggleComponent {}
 
 @Component({
     template: `<nx-circle-toggle [checked]="true" value="A" icon="product-heart" label="text1"></nx-circle-toggle>`,
+    standalone: true,
+    imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class PreselectedCircleToggleButtoncComponent extends AbstractButtonToggleComponent {}
 
 @Component({
     template: `<nx-circle-toggle disabled="true"></nx-circle-toggle>`,
+    standalone: true,
+    imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class DisabledToggleButtonComponent extends AbstractButtonToggleComponent {}
 
 @Component({
     template: `<nx-circle-toggle [(ngModel)]="toggleModel" value="A" icon="product-heart" label="text1"></nx-circle-toggle>`,
+    standalone: true,
+    imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class NgModelToggleButtonComponent extends AbstractButtonToggleComponent {}
 
@@ -370,6 +386,8 @@ class NgModelToggleButtonComponent extends AbstractButtonToggleComponent {}
             <nx-circle-toggle formControlName="reactiveToggle"></nx-circle-toggle>
         </form>
     `,
+    standalone: true,
+    imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveToggleButtonComponent extends AbstractButtonToggleComponent {
     fb: FormBuilder = new FormBuilder();

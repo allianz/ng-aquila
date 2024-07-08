@@ -10,8 +10,7 @@ import { NxMenuLinkDirective } from './menu-link.directive';
 const EXPORTED_MODULES = [NxMenuComponent, NxMenuLinkDirective, NxMenuItemDirective, NxMenuButtonComponent, NxMenuButtonIconDirective];
 
 @NgModule({
-    imports: [CommonModule, NxIconModule],
-    declarations: EXPORTED_MODULES,
+    imports: [CommonModule, NxIconModule, ...EXPORTED_MODULES],
     exports: EXPORTED_MODULES,
 })
 export class NxMenuModule {}

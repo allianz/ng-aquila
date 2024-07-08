@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxToolbarComponent } from './toolbar.component';
 import { NxToolbarModule } from './toolbar.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ToolbarTest {
     @ViewChild(NxToolbarComponent) toolbarInstance!: NxToolbarComponent;
 }
@@ -23,8 +23,7 @@ describe('NxToolbarComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicToolbar],
-            imports: [NxToolbarModule],
+            imports: [NxToolbarModule, BasicToolbar],
         }).compileComponents();
     }));
 
@@ -43,5 +42,7 @@ describe('NxToolbarComponent', () => {
 
 @Component({
     template: `<nx-toolbar></nx-toolbar>`,
+    standalone: true,
+    imports: [NxToolbarModule],
 })
 class BasicToolbar extends ToolbarTest {}

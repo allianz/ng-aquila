@@ -1,6 +1,26 @@
+import { LowerCasePipe, NgFor } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, Injectable } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import {
+    NxAutocompleteComponent,
+    NxAutocompleteOptionComponent,
+    NxAutocompleteTriggerDirective,
+} from '@aposin/ng-aquila/autocomplete';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+} from '@aposin/ng-aquila/formfield';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
+import {
+    NxNaturalLanguageFormComponent,
+    NxWordComponent,
+} from '@aposin/ng-aquila/natural-language-form';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -40,6 +60,21 @@ export class WikipediaService {
     templateUrl: './autocomplete-data-binding-example.html',
     styleUrls: ['./autocomplete-data-binding-example.css'],
     providers: [WikipediaService],
+    standalone: true,
+    imports: [
+        NxFormfieldComponent,
+        NxInputDirective,
+        NxAutocompleteTriggerDirective,
+        FormsModule,
+        NxAutocompleteComponent,
+        NgFor,
+        NxAutocompleteOptionComponent,
+        ReactiveFormsModule,
+        NxNaturalLanguageFormComponent,
+        NxWordComponent,
+        NxFormfieldErrorDirective,
+        LowerCasePipe,
+    ],
 })
 export class AutocompleteDataBindingExampleComponent {
     modelBoundData = 'asdf';

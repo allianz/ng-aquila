@@ -8,8 +8,7 @@ import { NxAccordionDirective, NxAccordionModule, NxExpansionPanelComponent } fr
 describe('NxAccordion', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [BrowserAnimationsModule, NxAccordionModule],
-            declarations: [NestedPanel, SetOfItems],
+            imports: [BrowserAnimationsModule, NxAccordionModule, NestedPanel, SetOfItems],
         });
         TestBed.compileComponents();
     }));
@@ -100,6 +99,8 @@ describe('NxAccordion', () => {
             <p>Content</p>
         </nx-expansion-panel>
     </nx-accordion>`,
+    standalone: true,
+    imports: [NxAccordionModule],
 })
 class SetOfItems {
     @ViewChild(NxAccordionDirective) accordion!: NxAccordionDirective;
@@ -120,6 +121,8 @@ class SetOfItems {
             </nx-expansion-panel>
         </nx-expansion-panel>
     </nx-accordion>`,
+    standalone: true,
+    imports: [NxAccordionModule],
 })
 class NestedPanel {
     @ViewChild('outerPanel', { static: true }) outerPanel!: NxExpansionPanelComponent;

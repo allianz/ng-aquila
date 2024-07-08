@@ -1,3 +1,4 @@
+import { NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -73,7 +74,7 @@ export const HIDDEN_INDEXES_COMPARISON_TABLE_TEMPLATE = `
     </ng-container>
   </nx-comparison-table>
 `;
-@Directive()
+@Directive({ standalone: true })
 abstract class TableTest {
     @ViewChild(NxComparisonTableComponent) tableInstance!: NxComparisonTableComponent;
     @ViewChildren(NxComparisonTableCell) cellInstances!: QueryList<NxComparisonTableCell>;
@@ -109,8 +110,9 @@ describe('NxComparisonTableComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxComparisonTableModule, BrowserAnimationsModule],
-            declarations: [
+            imports: [
+                NxComparisonTableModule,
+                BrowserAnimationsModule,
                 BasicComponent,
                 BasicOnPushComponent,
                 DisabledColumnsComponent,
@@ -745,6 +747,8 @@ describe('NxComparisonTableComponent', () => {
 
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
+    standalone: true,
+    imports: [NxComparisonTableModule, NgFor, NgIf],
 })
 class BasicComponent extends TableTest {
     data = [
@@ -765,6 +769,8 @@ class BasicComponent extends TableTest {
 @Component({
     template: `<div style="height: 200px; width: 200px; overflow: scroll;">${BASIC_COMPARISON_TABLE_TEMPLATE}</div>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxComparisonTableModule, NgFor, NgIf],
 })
 class BasicOnPushComponent extends TableTest {
     data = [
@@ -785,25 +791,45 @@ class BasicOnPushComponent extends TableTest {
 @Component({
     template: `
         <nx-comparison-table [(selectedIndex)]="selected">
-            <ng-container *ngFor="let element of data">
-                <ng-container *ngIf="element['type'] === 'toggleSection'" nxComparisonTableToggleSection>
-                    <nx-comparison-table-toggle-section-header>{{ element['header'] }}</nx-comparison-table-toggle-section-header>
-                    <ng-container *ngFor="let row of element['content']" nxComparisonTableRow>
-                        <nx-comparison-table-description-cell *ngIf="row['description']">{{ row['description'] }}</nx-comparison-table-description-cell
-                        >>
-                        <nx-comparison-table-cell *ngFor="let cell of row['cells']">{{ cell }}</nx-comparison-table-cell>
-                        <nx-comparison-table-intersection-cell *ngIf="row['intersection']">{{ row['intersection'] }}</nx-comparison-table-intersection-cell>
+            @for (element of data; track element) {
+                @if (element['type'] === 'toggleSection') {
+                    <ng-container nxComparisonTableToggleSection>
+                        <nx-comparison-table-toggle-section-header>{{ element['header'] }}</nx-comparison-table-toggle-section-header>
+                        @for (row of element['content']; track row) {
+                            <ng-container nxComparisonTableRow>
+                                @if (row['description']) {
+                                    <nx-comparison-table-description-cell>{{ row['description'] }}</nx-comparison-table-description-cell>
+                                }
+                                >
+                                @for (cell of row['cells']; track cell) {
+                                    <nx-comparison-table-cell>{{ cell }}</nx-comparison-table-cell>
+                                }
+                                @if (row['intersection']) {
+                                    <nx-comparison-table-intersection-cell>{{ row['intersection'] }}</nx-comparison-table-intersection-cell>
+                                }
+                            </ng-container>
+                        }
                     </ng-container>
-                </ng-container>
-                <ng-container *ngIf="element['type'] !== 'toggleSection'" nxComparisonTableRow [type]="element['type']">
-                    <nx-comparison-table-description-cell *ngIf="element['description']">{{ element['description'] }}</nx-comparison-table-description-cell
-                    >>
-                    <nx-comparison-table-cell *ngFor="let cell of element['cells']" [type]="element['type']">{{ cell }}</nx-comparison-table-cell>
-                    <nx-comparison-table-intersection-cell *ngIf="element['intersection']">{{ element['intersection'] }}</nx-comparison-table-intersection-cell>
-                </ng-container>
-            </ng-container>
+                }
+                @if (element['type'] !== 'toggleSection') {
+                    <ng-container nxComparisonTableRow [type]="element['type']">
+                        @if (element['description']) {
+                            <nx-comparison-table-description-cell>{{ element['description'] }}</nx-comparison-table-description-cell>
+                        }
+                        >
+                        @for (cell of element['cells']; track cell) {
+                            <nx-comparison-table-cell [type]="element['type']">{{ cell }}</nx-comparison-table-cell>
+                        }
+                        @if (element['intersection']) {
+                            <nx-comparison-table-intersection-cell>{{ element['intersection'] }}</nx-comparison-table-intersection-cell>
+                        }
+                    </ng-container>
+                }
+            }
         </nx-comparison-table>
     `,
+    standalone: true,
+    imports: [NxComparisonTableModule],
 })
 class SelectableIndexComponent extends TableTest {
     data = [
@@ -853,6 +879,8 @@ class SelectableIndexComponent extends TableTest {
             </ng-container>
         </nx-comparison-table>
     `,
+    standalone: true,
+    imports: [NxComparisonTableModule],
 })
 class DisabledColumnsComponent extends TableTest {
     disabledColumn1 = false;
@@ -862,6 +890,8 @@ class DisabledColumnsComponent extends TableTest {
 
 @Component({
     template: `<div style="height: 200px; width: 200px; overflow: scroll;">${BASIC_COMPARISON_TABLE_TEMPLATE}</div>`,
+    standalone: true,
+    imports: [NxComparisonTableModule, NgFor, NgIf],
 })
 class LongPageWithTableComponent extends TableTest {
     data = [
@@ -881,6 +911,8 @@ class LongPageWithTableComponent extends TableTest {
 
 @Component({
     template: HIDDEN_INDEXES_COMPARISON_TABLE_TEMPLATE,
+    standalone: true,
+    imports: [NxComparisonTableModule, NgFor, NgIf],
 })
 class HiddenColumnsComponent extends TableTest {
     data = [

@@ -13,7 +13,9 @@ import {
     ControlValueAccessor,
     FormBuilder,
     FormGroup,
+    FormsModule,
     NgControl,
+    ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
 import { NxFormfieldControl } from '@aposin/ng-aquila/formfield';
@@ -49,6 +51,8 @@ export class MyTel {
         '[id]': 'id',
         '[attr.aria-describedby]': 'describedBy',
     },
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule],
 })
 export class FormfieldCustomTelInputExampleComponent
     implements

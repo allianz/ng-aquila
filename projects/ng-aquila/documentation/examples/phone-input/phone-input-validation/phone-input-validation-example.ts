@@ -1,10 +1,20 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     AbstractControl,
     FormControl,
+    FormsModule,
+    ReactiveFormsModule,
     ValidatorFn,
     Validators,
 } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+    NxFormfieldLabelDirective,
+} from '@aposin/ng-aquila/formfield';
+import { NxPhoneInputComponent } from '@aposin/ng-aquila/phone-input';
 import { NumberType, parsePhoneNumber } from 'libphonenumber-js/max';
 
 export type PhoneNumberType = 'landline' | 'mobile';
@@ -59,6 +69,17 @@ export function phoneNumberValidator(type?: PhoneNumberType): ValidatorFn {
     selector: 'phone-input-validation-example',
     templateUrl: 'phone-input-validation-example.html',
     styleUrls: ['./phone-input-validation-example.css'],
+    standalone: true,
+    imports: [
+        NxFormfieldComponent,
+        NxFormfieldLabelDirective,
+        NxPhoneInputComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
+    ],
 })
 export class PhoneInputValidationExampleComponent {
     phoneControl = new FormControl('', [

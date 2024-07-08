@@ -1,6 +1,6 @@
 import { Overlay, OverlayConfig, OverlayContainer, OverlayRef, ScrollStrategy } from '@angular/cdk/overlay';
 import { ComponentPortal, ComponentType, TemplatePortal } from '@angular/cdk/portal';
-import { Inject, Injectable, InjectionToken, Injector, OnDestroy, Optional, SkipSelf, StaticProvider, TemplateRef } from '@angular/core';
+import { Inject, inject, Injectable, InjectionToken, Injector, OnDestroy, Optional, SkipSelf, StaticProvider, TemplateRef } from '@angular/core';
 import { defer, Observable, Subject } from 'rxjs';
 import { startWith, takeUntil } from 'rxjs/operators';
 
@@ -15,14 +15,24 @@ export const NX_MODAL_DATA = new InjectionToken<any>('NxModalData');
 export const NX_MODAL_DEFAULT_OPTIONS = new InjectionToken<NxModalConfig>('nx-modal-default-options');
 
 /** Injection token that determines the scroll handling while a modal is open. */
-export const NX_MODAL_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-modal-scroll-strategy');
+export const NX_MODAL_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-modal-scroll-strategy', {
+    providedIn: 'root',
+    factory: () => {
+        const overlay = inject(Overlay);
+        return () => overlay.scrollStrategies.block();
+    },
+});
 
-/** @docs-private */
+/**
+ * @docs-private
+ */
 export function NX_MODAL_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
     return () => overlay.scrollStrategies.block();
 }
 
-/** @docs-private */
+/**
+ * @docs-private
+ */
 export const NX_MODAL_SCROLL_STRATEGY_PROVIDER = {
     provide: NX_MODAL_SCROLL_STRATEGY,
     useFactory: NX_MODAL_SCROLL_STRATEGY_PROVIDER_FACTORY,
@@ -32,7 +42,7 @@ export const NX_MODAL_SCROLL_STRATEGY_PROVIDER = {
 /**
  * Service to open Material Design modal modals.
  */
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class NxDialogService implements OnDestroy {
     private readonly _openModalsAtThisLevel: NxModalRef<any>[] = [];
     private readonly _afterAllClosedAtThisLevel = new Subject<void>();

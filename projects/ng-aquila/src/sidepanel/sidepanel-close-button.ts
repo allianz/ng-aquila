@@ -1,5 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxSidepanelComponent } from './sidepanel';
 
@@ -11,6 +12,8 @@ import { NxSidepanelComponent } from './sidepanel';
         '(click)': '_toggle()',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxIconModule],
 })
 export class NxSidepanelCloseButtonComponent implements OnDestroy, AfterViewInit {
     _toggle() {

@@ -1,5 +1,7 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 
+import { DocViewerComponent } from '../../../doc-viewer/doc-viewer.component';
 import { ComponentService } from '../../../service/component.service';
 import { NxvTableOfContentsComponent } from '../../table-of-contents/table-of-contents';
 
@@ -7,6 +9,8 @@ import { NxvTableOfContentsComponent } from '../../table-of-contents/table-of-co
     selector: 'nxv-component-api',
     templateUrl: 'component-api.html',
     styleUrls: ['./component-api.scss'],
+    standalone: true,
+    imports: [DocViewerComponent, NxvTableOfContentsComponent, AsyncPipe],
 })
 export class ComponentApi {
     @ViewChild(NxvTableOfContentsComponent, { static: true }) tableOfContents!: NxvTableOfContentsComponent;

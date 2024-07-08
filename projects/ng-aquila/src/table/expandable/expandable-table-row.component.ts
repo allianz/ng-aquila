@@ -16,6 +16,7 @@ import { NxExpandable } from './toggle-button.component';
     },
     template: `<ng-content></ng-content>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxExpandableTableRowComponent implements NxExpandable {
     /* Whether the row is expanded. */

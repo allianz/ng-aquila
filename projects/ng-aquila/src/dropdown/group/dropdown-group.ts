@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     templateUrl: 'dropdown-group.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['dropdown-group.scss'],
+    standalone: true,
 })
 export class NxDropdownGroupComponent {
     /** Label displayed in the group. */

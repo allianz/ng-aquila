@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { NxSmallStageComponent } from './small-stage.component';
 import { NxSmallStageModule } from './small-stage.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class SmallStageTest {
     @ViewChild(NxSmallStageComponent) smallStageInstance!: NxSmallStageComponent;
 }
@@ -26,8 +26,7 @@ describe('NxSmallStageComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicSmallStage, SmallTextSmallStage, ExpertSmallStage],
-            imports: [NxSmallStageModule],
+            imports: [NxSmallStageModule, BasicSmallStage, SmallTextSmallStage, ExpertSmallStage],
         }).compileComponents();
     }));
 
@@ -106,6 +105,8 @@ describe('NxSmallStageComponent', () => {
             <nx-small-stage-image nxSmallStageImageBottom src="baz"></nx-small-stage-image>
         </nx-small-stage>
     `,
+    standalone: true,
+    imports: [NxSmallStageModule],
 })
 class BasicSmallStage extends SmallStageTest {}
 
@@ -118,6 +119,8 @@ class BasicSmallStage extends SmallStageTest {}
             <nx-small-stage-image nxSmallStageImageEnd src="bar"></nx-small-stage-image>
         </nx-small-stage>
     `,
+    standalone: true,
+    imports: [NxSmallStageModule],
 })
 class ExpertSmallStage extends SmallStageTest {}
 
@@ -130,5 +133,7 @@ class ExpertSmallStage extends SmallStageTest {}
             <nx-small-stage-image nxSmallStageImageEnd src="bar"></nx-small-stage-image>
         </nx-small-stage>
     `,
+    standalone: true,
+    imports: [NxSmallStageModule],
 })
 class SmallTextSmallStage extends SmallStageTest {}

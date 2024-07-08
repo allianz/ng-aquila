@@ -1,5 +1,11 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NxLabelComponent } from '@aposin/ng-aquila/base';
+import {
+    NxCheckboxComponent,
+    NxCheckboxGroupComponent,
+} from '@aposin/ng-aquila/checkbox';
 
 /**
  * @title Checkbox group reactive example
@@ -8,6 +14,15 @@ import { FormBuilder } from '@angular/forms';
     selector: 'checkbox-group-reactive-example',
     templateUrl: './checkbox-group-reactive-example.html',
     styleUrls: ['./checkbox-group-reactive-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxCheckboxGroupComponent,
+        NxLabelComponent,
+        NxCheckboxComponent,
+        JsonPipe,
+    ],
 })
 export class CheckboxGroupReactiveExampleComponent {
     readonly myFormGroup = this.fb.group({

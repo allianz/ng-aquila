@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class NxTimefieldIntl {
     /**
      * Stream that emits whenever the labels here are changed. Use this to notify

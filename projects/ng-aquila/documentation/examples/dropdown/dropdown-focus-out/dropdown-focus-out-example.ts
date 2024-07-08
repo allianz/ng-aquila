@@ -1,5 +1,18 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+    NxDropdownComponent,
+    NxDropdownItemComponent,
+} from '@aposin/ng-aquila/dropdown';
+import {
+    NxFormfieldComponent,
+    NxFormfieldNoteDirective,
+} from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
 
 /**
  * @title Focus out example
@@ -8,6 +21,18 @@ import { FormBuilder } from '@angular/forms';
     selector: 'dropdown-focus-out-example',
     templateUrl: './dropdown-focus-out-example.html',
     styleUrls: ['./dropdown-focus-out-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxFormfieldComponent,
+        NxDropdownComponent,
+        NxDropdownItemComponent,
+        NxFormfieldNoteDirective,
+    ],
 })
 export class DropdownFocusOutExampleComponent {
     form = new FormBuilder().group({

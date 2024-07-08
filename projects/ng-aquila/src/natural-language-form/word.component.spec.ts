@@ -1,4 +1,5 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Directive, ElementRef, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -8,7 +9,7 @@ import { NxNaturalLanguageFormComponent } from './natural-language-form.componen
 import { NxNaturalLanguageFormModule } from './natural-language-form.module';
 import { NxWordComponent } from './word.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class NaturalLanguageFormTest {
     size = 'regular';
     value!: string;
@@ -34,8 +35,11 @@ describe('NxNaturalLanguageFormComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
-            declarations: [
+            imports: [
+                NxNaturalLanguageFormModule,
+                FormsModule,
+                ReactiveFormsModule,
+                NxInputModule,
                 NaturalLanguageFormBasicComponent,
                 NaturalLanguageFormErrorComponent,
                 NaturalLanguageFormSizesComponent,
@@ -246,6 +250,8 @@ describe('NxNaturalLanguageFormComponent', () => {
             with copy.
         </nx-natural-language-form>
     `,
+    standalone: true,
+    imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormBasicComponent extends NaturalLanguageFormTest {}
 
@@ -255,6 +261,8 @@ class NaturalLanguageFormBasicComponent extends NaturalLanguageFormTest {}
             <nx-word></nx-word>
         </nx-natural-language-form>
     `,
+    standalone: true,
+    imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormErrorComponent extends NaturalLanguageFormTest {}
 
@@ -266,6 +274,8 @@ class NaturalLanguageFormErrorComponent extends NaturalLanguageFormTest {}
             </nx-word>
         </nx-natural-language-form>
     `,
+    standalone: true,
+    imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule, CommonModule],
 })
 class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
 
@@ -278,6 +288,8 @@ class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
             </nx-word>
         </nx-natural-language-form>
     `,
+    standalone: true,
+    imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormSmallComponent extends NaturalLanguageFormTest {}
 
@@ -298,6 +310,8 @@ class NaturalLanguageFormSmallComponent extends NaturalLanguageFormTest {}
             <button type="submit">submit</button>
         </form>
     `,
+    standalone: true,
+    imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class FormWithPreviousFormfieldComponent extends NaturalLanguageFormTest {
     input = new FormControl(null, Validators.required);

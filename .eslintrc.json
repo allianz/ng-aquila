@@ -229,7 +229,8 @@
                 "@angular-eslint/no-input-rename": "off",
                 "@angular-eslint/no-inputs-metadata-property": "off",
                 "@angular-eslint/directive-class-suffix": "off",
-                "@angular-eslint/no-output-rename": "off"
+                "@angular-eslint/no-output-rename": "off",
+                "@angular-eslint/prefer-standalone": ["error"]
             }
         },
         {
@@ -243,7 +244,8 @@
                 "jasmine/prefer-toHaveBeenCalledWith": "off",
                 "@typescript-eslint/no-unused-vars": "off",
                 "@typescript-eslint/non-nullable-type-assertion-style": "off",
-                "@angular-eslint/no-empty-lifecycle-method": "off"
+                "@angular-eslint/no-empty-lifecycle-method": "off",
+                "@angular-eslint/prefer-standalone": ["error"]
             }
         },
         {

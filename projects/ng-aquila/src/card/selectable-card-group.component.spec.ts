@@ -6,7 +6,7 @@ import { NxErrorModule } from '@aposin/ng-aquila/base';
 import { NxCardModule } from './card.module';
 import { NxSelectableCardComponent } from './selectable-card.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class SelectableCardTest {
     @ViewChildren(NxSelectableCardComponent) cardList!: QueryList<NxSelectableCardComponent>;
 
@@ -27,8 +27,7 @@ describe('NxSelectableCardGroupComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicSelectableCardGroup],
-            imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
+            imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule, BasicSelectableCardGroup],
         }).compileComponents();
     }));
 
@@ -62,15 +61,19 @@ describe('NxSelectableCardGroupComponent', () => {
     template: `
         <form [formGroup]="formGroup">
             <nx-selectable-card-group formControlName="radio" name="radio-group">
-                <div *ngFor="let card of cards; index as i">
-                    <nx-selectable-card [value]="card">
-                        {{ card.title }}
-                    </nx-selectable-card>
-                </div>
+                @for (card of cards; track card; let i = $index) {
+                    <div>
+                        <nx-selectable-card [value]="card">
+                            {{ card.title }}
+                        </nx-selectable-card>
+                    </div>
+                }
                 <nx-error> This card must be selected. </nx-error>
             </nx-selectable-card-group>
         </form>
     `,
+    standalone: true,
+    imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class BasicSelectableCardGroup extends SelectableCardTest {
     cards = ['a', 'b', 'c'];

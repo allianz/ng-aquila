@@ -9,9 +9,8 @@ import { NxvFooterModule } from '../component-documentation/footer/footer.module
 import { NxvGuidesComponent } from './guides.component';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, NxGridModule, NxvFooterModule, NxSidebarModule, NxActionModule],
+    imports: [CommonModule, RouterModule, NxGridModule, NxvFooterModule, NxSidebarModule, NxActionModule, NxvGuidesComponent],
     exports: [],
-    declarations: [NxvGuidesComponent],
     providers: [],
 })
 export class NxvGuidesModule {}

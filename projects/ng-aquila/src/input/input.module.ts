@@ -7,8 +7,7 @@ import { NxInputDirective } from './input.directive';
 import { NxPasswordToggleComponent } from './password-toggle.component';
 
 @NgModule({
-    imports: [CommonModule, NxFormfieldModule, NxIconModule],
-    declarations: [NxInputDirective, NxPasswordToggleComponent],
+    imports: [CommonModule, NxFormfieldModule, NxIconModule, NxInputDirective, NxPasswordToggleComponent],
     exports: [NxFormfieldModule, NxInputDirective, NxPasswordToggleComponent],
 })
 export class NxInputModule {}

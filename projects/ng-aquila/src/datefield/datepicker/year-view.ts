@@ -35,6 +35,8 @@ import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
     exportAs: 'nxYearView',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['year-view.scss'],
+    standalone: true,
+    imports: [NxCalendarBodyComponent],
 })
 export class NxYearViewComponent<D> implements AfterContentInit {
     /** The date to display in this year view (everything other than the year is ignored). */

@@ -1,5 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { NgFor, NgIf } from '@angular/common';
 import {
     AfterContentChecked,
     AfterContentInit,
@@ -19,7 +20,7 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import { NxAccordionDirective, NxExpansionPanelComponent } from '@aposin/ng-aquila/accordion';
+import { NxAccordionDirective, NxAccordionModule, NxExpansionPanelComponent } from '@aposin/ng-aquila/accordion';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { merge, Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -28,6 +29,8 @@ import { NxTabComponent } from './tab';
 import { NxTabBodyComponent } from './tab-body';
 import { NxTabGroupBase } from './tab-group-base';
 import { NxTabHeaderComponent } from './tab-header';
+import { NxTabHeaderOutletComponent } from './tab-header-outlet';
+import { NxTabLabelWrapperDirective } from './tab-label-wrapper';
 import { NxTabsAppearance, TAB_GROUP_DEFAULT_OPTIONS, TabGroupDefaultOptions } from './tabs.models';
 
 export class NxTabChangeEvent {
@@ -51,6 +54,8 @@ let nextId = 0;
         '[class.is-expert]': 'appearance === "expert"',
     },
     providers: [{ provide: NxTabGroupBase, useExisting: NxTabGroupComponent }],
+    standalone: true,
+    imports: [NgIf, NxTabHeaderComponent, NgFor, NxTabLabelWrapperDirective, NxTabHeaderOutletComponent, NxTabBodyComponent, NxAccordionModule],
 })
 export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterViewInit, AfterContentInit, AfterContentChecked {
     private readonly _groupId: number;

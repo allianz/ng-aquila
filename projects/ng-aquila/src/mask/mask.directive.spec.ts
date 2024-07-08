@@ -30,7 +30,7 @@ export function assertInputValue(nativeElement: HTMLInputElement, inputValue: st
     expect(nativeElement.value).toBe(asserted);
 }
 
-@Directive()
+@Directive({ standalone: true })
 abstract class MaskTest {
     @ViewChild(NxMaskDirective) maskInstance!: NxMaskDirective;
 
@@ -68,7 +68,10 @@ describe('NxMaskDirective', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [
+            imports: [
+                FormsModule,
+                ReactiveFormsModule,
+                NxMaskModule,
                 BasicMaskComponent,
                 ConfigurableMaskComponent,
                 ValidationMaskComponent,
@@ -76,7 +79,6 @@ describe('NxMaskDirective', () => {
                 NgModelMask,
                 PresetDeactiveMaskComponent,
             ],
-            imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
         }).compileComponents();
     }));
 
@@ -1123,6 +1125,8 @@ describe('NxMaskDirective', () => {
 
 @Component({
     template: `<input [nxMask]="mask" />`,
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class BasicMaskComponent extends MaskTest {}
 
@@ -1138,6 +1142,8 @@ class BasicMaskComponent extends MaskTest {}
             [(ngModel)]="modelVal"
         />
     `,
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class ConfigurableMaskComponent extends MaskTest {}
 
@@ -1147,11 +1153,15 @@ class ConfigurableMaskComponent extends MaskTest {}
             <input [nxMask]="mask" formControlName="maskInput" [validateMask]="validateMask" [deactivateMask]="deactivateMask" />
         </form>
     `,
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class ValidationMaskComponent extends MaskTest {}
 
 @Component({
+    standalone: true,
     template: ` <input [nxMask]="mask" [(ngModel)]="modelVal" [deactivateMask]="true" /> `,
+    imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class PresetDeactiveMaskComponent extends MaskTest {
     modelVal = 'AAAA';
@@ -1159,6 +1169,8 @@ class PresetDeactiveMaskComponent extends MaskTest {
 
 @Component({
     template: ` <input [nxMask]="mask" [(ngModel)]="modelVal" /> `,
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class NgModelMask extends MaskTest {
     modelVal = 'AAAA';
@@ -1167,6 +1179,8 @@ class NgModelMask extends MaskTest {
 
 @Component({
     template: `<input [nxMask]="mask" [separators]="separators" />`,
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class HookedMaskComponent extends MaskTest {
     customInputHook = () => {};

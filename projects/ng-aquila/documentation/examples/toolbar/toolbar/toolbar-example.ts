@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxToolbarComponent } from '@aposin/ng-aquila/toolbar';
 
 /**
  * @title Toolbar basic example
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
     selector: 'toolbar-example',
     templateUrl: './toolbar-example.html',
     styleUrls: ['./toolbar-example.css'],
+    standalone: true,
+    imports: [NxToolbarComponent],
 })
 export class ToolbarExampleComponent {}

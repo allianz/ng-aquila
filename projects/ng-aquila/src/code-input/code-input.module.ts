@@ -3,12 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NxCodeInputComponent } from './code-input.component';
-import { NxCodeInputIntl } from './code-input-intl';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, ReactiveFormsModule],
-    declarations: [NxCodeInputComponent],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, NxCodeInputComponent],
     exports: [NxCodeInputComponent],
-    providers: [NxCodeInputIntl],
+    providers: [],
 })
 export class NxCodeInputModule {}

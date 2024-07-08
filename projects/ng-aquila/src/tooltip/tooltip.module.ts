@@ -4,12 +4,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { NxTooltipComponent } from './tooltip.component';
-import { NX_TOOLTIP_SCROLL_STRATEGY_PROVIDER, NxTooltipDirective } from './tooltip.directive';
+import { NxTooltipDirective } from './tooltip.directive';
 
 @NgModule({
-    imports: [A11yModule, CommonModule, OverlayModule],
+    imports: [A11yModule, CommonModule, OverlayModule, NxTooltipDirective, NxTooltipComponent],
     exports: [NxTooltipDirective, NxTooltipComponent],
-    declarations: [NxTooltipDirective, NxTooltipComponent],
-    providers: [NX_TOOLTIP_SCROLL_STRATEGY_PROVIDER],
+    providers: [],
 })
 export class NxTooltipModule {}

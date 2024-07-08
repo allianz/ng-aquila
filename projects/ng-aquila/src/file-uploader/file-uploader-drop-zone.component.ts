@@ -13,6 +13,7 @@ function exists<T>(item: T | null | undefined): item is T {
         '[class.is-active]': 'active',
         '[class.is-disabled]': 'disabled',
     },
+    standalone: true,
 })
 export class NxFileUploaderDropZoneComponent {
     /** Whether the file uploader is disabled. */

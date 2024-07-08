@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxRatingComponent } from '@aposin/ng-aquila/rating';
 
 /**
  * @title Rating Disabled Example
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
     selector: 'rating-disabled-example',
     templateUrl: './rating-disabled-example.html',
     styleUrls: ['./rating-disabled-example.css'],
+    standalone: true,
+    imports: [NxRatingComponent],
 })
 export class RatingDisabledExampleComponent {}

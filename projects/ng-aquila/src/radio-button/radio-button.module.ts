@@ -7,8 +7,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxRadioComponent, NxRadioGroupComponent } from './radio-button';
 
 @NgModule({
-    declarations: [NxRadioComponent, NxRadioGroupComponent],
     exports: [NxRadioComponent, NxRadioGroupComponent, NxErrorModule, NxLabelModule],
-    imports: [CommonModule, NxIconModule, ObserversModule],
+    imports: [CommonModule, NxIconModule, ObserversModule, NxRadioComponent, NxRadioGroupComponent],
 })
 export class NxRadioModule {}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxSliderComponent } from '@aposin/ng-aquila/slider';
 
 /**
  * @title Slider Label Example
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
     selector: 'slider-label-example',
     templateUrl: './slider-label-example.html',
     styleUrls: ['./slider-label-example.css'],
+    standalone: true,
+    imports: [NxSliderComponent],
 })
 export class SliderLabelExampleComponent {
     euroSliderDemoValue = 0;

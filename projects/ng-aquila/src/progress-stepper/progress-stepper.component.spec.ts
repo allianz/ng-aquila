@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { NxProgressStepperDirective } from './progress-stepper.component';
 import { NxProgressStepperModule } from './progress-stepper.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ProgressStepperTest {
     @ViewChild(NxProgressStepperDirective) componentInstance!: NxProgressStepperDirective;
     @ViewChild(NxProgressStepperDirective, { read: ElementRef }) componentInstanceRef!: ElementRef;
@@ -27,8 +27,7 @@ describe('NxProgressStepperDirective', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [ProgressStepperBasicComponent],
-            imports: [NxProgressStepperModule, FormsModule],
+            imports: [NxProgressStepperModule, FormsModule, ProgressStepperBasicComponent],
         }).compileComponents();
     }));
 
@@ -55,11 +54,13 @@ describe('NxProgressStepperDirective', () => {
 @Component({
     template: `
         <div nxProgressStepper currentStepLabel="myLabel">
-            <ng-container *ngFor="let step of steps">
+            @for (step of steps; track step) {
                 <nx-step [label]="step"> step {{ step }} content </nx-step>
-            </ng-container>
+            }
         </div>
     `,
+    standalone: true,
+    imports: [NxProgressStepperModule, FormsModule],
 })
 class ProgressStepperBasicComponent extends ProgressStepperTest {
     steps = ['step1', 'step2'];

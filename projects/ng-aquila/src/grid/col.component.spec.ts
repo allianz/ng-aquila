@@ -5,7 +5,7 @@ import { NxGridModule } from '@aposin/ng-aquila/grid';
 
 import { NxColComponent } from './col.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class DirectiveTest {
     @ViewChild(NxColComponent) column!: NxColComponent;
 }
@@ -32,7 +32,8 @@ describe('NxColDirective', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [
+            imports: [
+                NxGridModule,
                 BasicTestNxColFourInputs,
                 BasicTestNxColTwoInputs,
                 BasicTestNxColTrheeInputs,
@@ -50,7 +51,6 @@ describe('NxColDirective', () => {
                 DynamicTest,
                 ColWithoutLayout,
             ],
-            imports: [NxGridModule],
         }).compileComponents();
     }));
 
@@ -269,6 +269,8 @@ describe('NxColDirective', () => {
     template: `<div nxLayout="grid">
         <div nxRow="row"><div nxCol="8,3,5,7"></div></div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicTestNxColFourInputs extends DirectiveTest {}
 
@@ -276,6 +278,8 @@ class BasicTestNxColFourInputs extends DirectiveTest {}
     template: `<div nxLayout="grid">
         <div nxRow="row"><div nxCol="7,2"></div></div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicTestNxColTwoInputs extends DirectiveTest {}
 
@@ -283,6 +287,8 @@ class BasicTestNxColTwoInputs extends DirectiveTest {}
     template: `<div nxLayout="grid">
         <div nxRow="row"><div nxCol="7,3,4"></div></div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicTestNxColTrheeInputs extends DirectiveTest {}
 
@@ -290,6 +296,8 @@ class BasicTestNxColTrheeInputs extends DirectiveTest {}
     template: `<div nxLayout="grid">
         <div nxRow="row"><div nxCol="10"></div></div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicTestNxColOneInputs extends DirectiveTest {}
 
@@ -297,6 +305,8 @@ class BasicTestNxColOneInputs extends DirectiveTest {}
     template: `<div nxLayout="grid">
         <div nxRow="row"><div nxCol=""></div></div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicTestNxColEmptyInputs extends DirectiveTest {}
 
@@ -304,6 +314,8 @@ class BasicTestNxColEmptyInputs extends DirectiveTest {}
     template: `<div nxLayout="grid">
         <div nxRow="row"><div nxCol="10" class="test"></div></div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicTestNxColClassTest extends DirectiveTest {}
 
@@ -313,6 +325,8 @@ class BasicTestNxColClassTest extends DirectiveTest {}
             <div nxCol="10" colOrder="first,first,last,first">Hello World 1</div>
         </div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicTestNxOrderInputs extends DirectiveTest {}
 
@@ -322,6 +336,8 @@ class BasicTestNxOrderInputs extends DirectiveTest {}
             <div nxCol="10" alignSelf="start">Hello World 1</div>
         </div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicTestColAlignSelf extends DirectiveTest {}
 
@@ -331,6 +347,8 @@ class BasicTestColAlignSelf extends DirectiveTest {}
             <div nxCol="10" colOrder="first">Hello World 1</div>
         </div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicTestColOrder extends DirectiveTest {}
 
@@ -338,6 +356,8 @@ class BasicTestColOrder extends DirectiveTest {}
     template: `<div nxLayout="grid">
         <div nxRow="row"><div nxCol="10" colOffset="9">Hello World 1</div></div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class OffsetTest extends DirectiveTest {}
 
@@ -345,6 +365,8 @@ class OffsetTest extends DirectiveTest {}
     template: `<div nxLayout="grid">
         <div nxRow="row"><div nxCol="10" colOffset="9,6">Hello World 1</div></div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class OffsetTestTwoInputs extends DirectiveTest {}
 
@@ -354,6 +376,8 @@ class OffsetTestTwoInputs extends DirectiveTest {}
             <div nxCol="10" colOffset="9,6,5">Hello World 1</div>
         </div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class OffsetTestThreeInputs extends DirectiveTest {}
 
@@ -363,6 +387,8 @@ class OffsetTestThreeInputs extends DirectiveTest {}
             <div nxCol="10" colOffset="9,6,5,3">Hello World 1</div>
         </div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class OffsetTestFourInputs extends DirectiveTest {}
 
@@ -372,6 +398,8 @@ class OffsetTestFourInputs extends DirectiveTest {}
             <div nxCol="10" colOffset="9,6,5,0">Hello World 1</div>
         </div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class OffsetTestFourInputsWithZero extends DirectiveTest {}
 
@@ -381,6 +409,8 @@ class OffsetTestFourInputsWithZero extends DirectiveTest {}
             <div [nxCol]="cols" [colOrder]="order" [colOffset]="offset" [alignSelf]="alignSelf">Hello World</div>
         </div>
     </div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class DynamicTest extends DirectiveTest {
     cols = '10';
@@ -395,5 +425,7 @@ class DynamicTest extends DirectiveTest {
             <div nxCol="12">Hello World</div>
         </div>
     `,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class ColWithoutLayout extends DirectiveTest {}

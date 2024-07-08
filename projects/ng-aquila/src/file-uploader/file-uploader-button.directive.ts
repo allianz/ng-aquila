@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
         '[attr.disabled]': 'disabled || null',
         '[class.nx-file-upload-button]': 'true',
     },
+    standalone: true,
 })
 export class NxFileUploaderButtonDirective implements OnDestroy {
     /** Whether the file uploader is disabled */

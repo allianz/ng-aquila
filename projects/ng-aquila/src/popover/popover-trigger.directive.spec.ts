@@ -1,18 +1,20 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, ESCAPE, SPACE, TAB } from '@angular/cdk/keycodes';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
-import { Component, Directive, Type, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Directive, Inject, Type, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { NxInputModule } from '@aposin/ng-aquila/input';
+import { fakeScrollStrategyFunction } from '@aposin/ng-aquila/utils';
 import { Subject, Subscription } from 'rxjs';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxPopoverComponent } from './popover.component';
 import { NxPopoverModule } from './popover.module';
 import { NxPopoverIntl } from './popover-intl';
-import { NxPopoverTriggerDirective, POPOVER_DEFAULT_OPTIONS, PopoverDefaultOptions } from './popover-trigger.directive';
+import { NX_POPOVER_SCROLL_STRATEGY, NxPopoverTriggerDirective, POPOVER_DEFAULT_OPTIONS, PopoverDefaultOptions } from './popover-trigger.directive';
 
 const popoverDefaultOptions: PopoverDefaultOptions = {
     popoverWidth: '',
@@ -21,11 +23,13 @@ const popoverDefaultOptions: PopoverDefaultOptions = {
 
 @Component({
     selector: 'nx-test-component',
-    template: '<span>This is a test component</span>',
+    template: '<span class="my-test-component">This is a test component</span>',
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class NxTestComponent {}
 
-@Directive()
+@Directive({ standalone: true })
 abstract class PopoverTest {
     @ViewChild(NxPopoverComponent) popoverInstance!: NxPopoverComponent;
     @ViewChild(NxPopoverTriggerDirective) triggerInstance!: NxPopoverTriggerDirective;
@@ -56,8 +60,11 @@ describe('NxPopoverTriggerDirective', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
-            declarations: [
+            imports: [
+                OverlayModule,
+                NxPopoverModule,
+                NxFormfieldModule,
+                NxInputModule,
                 PopoverShowClose,
                 PopoverHideClose,
                 PopoverHoverComponent,
@@ -864,6 +871,22 @@ describe('NxPopoverTriggerDirective', () => {
             expect(getOverlayPane().clientWidth).toBe(500);
         }));
     });
+
+    it('should be able to override the scroll strategy in parent injector', () => {
+        TestBed.resetTestingModule()
+            .configureTestingModule({
+                imports: [PopoverClickComponent, NxPopoverModule, NxInputModule, NoopAnimationsModule],
+                providers: [
+                    {
+                        provide: NX_POPOVER_SCROLL_STRATEGY,
+                        useFactory: () => fakeScrollStrategyFunction,
+                    },
+                ],
+            })
+            .compileComponents();
+        createTestComponent(PopoverClickComponent);
+        expect((testInstance as PopoverClickComponent).scrollStrategy).toBe(fakeScrollStrategyFunction);
+    });
 });
 
 @Component({
@@ -874,6 +897,8 @@ describe('NxPopoverTriggerDirective', () => {
         <nx-popover #popoverHover>
             <span>Content</span>
         </nx-popover>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class PopoverHoverComponent extends PopoverTest {}
 @Component({
@@ -886,6 +911,8 @@ class PopoverHoverComponent extends PopoverTest {}
         <nx-popover #popoverHover>
             <span>Content</span>
         </nx-popover>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class PopoverHoverFormfieldComponent extends PopoverTest {}
 
@@ -897,8 +924,14 @@ class PopoverHoverFormfieldComponent extends PopoverTest {}
         <nx-popover #popoverHover>
             <span>Content</span>
         </nx-popover>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
-class PopoverClickComponent extends PopoverTest {}
+class PopoverClickComponent extends PopoverTest {
+    constructor(@Inject(NX_POPOVER_SCROLL_STRATEGY) public scrollStrategy: any) {
+        super();
+    }
+}
 
 @Component({
     template: `<div>
@@ -911,6 +944,8 @@ class PopoverClickComponent extends PopoverTest {}
             <span>Content</span>
         </nx-popover>`,
     encapsulation: ViewEncapsulation.ShadowDom,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class PopoverClickShadowDomComponent extends PopoverTest {}
 
@@ -922,6 +957,8 @@ class PopoverClickShadowDomComponent extends PopoverTest {}
         <nx-popover #popoverHover>
             <span>Content</span>
         </nx-popover>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class PopoverShowClose extends PopoverTest {}
 
@@ -933,6 +970,8 @@ class PopoverShowClose extends PopoverTest {}
         <nx-popover #popoverHover>
             <span>Content</span>
         </nx-popover>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class PopoverHideClose extends PopoverTest {}
 
@@ -944,6 +983,8 @@ class PopoverHideClose extends PopoverTest {}
         <nx-popover #popoverHover>
             <span>Content</span>
         </nx-popover>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class PopoverHideCloseForClick extends PopoverTest {}
 
@@ -956,6 +997,8 @@ class PopoverHideCloseForClick extends PopoverTest {}
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
             1500s.
         </nx-popover>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class PopoverFallBackComponent extends PopoverTest {}
 
@@ -976,6 +1019,8 @@ class PopoverFallBackComponent extends PopoverTest {}
         <nx-popover #popoverHover>
             <span>Content</span>
         </nx-popover>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class ModalPopover extends PopoverTest {
     closable = true;
@@ -991,6 +1036,8 @@ class ModalPopover extends PopoverTest {
             </ng-template>
         </nx-popover>
     `,
+    standalone: true,
+    imports: [OverlayModule, NxTestComponent, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class LazyloadContent extends PopoverTest {}
 
@@ -1013,6 +1060,8 @@ class LazyloadContent extends PopoverTest {}
             <div><span>Trigger manually</span></div>
         </nx-popover>
     `,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class ManualTrigger extends PopoverTest {
     popoverManualOpenFlag = false;
@@ -1028,6 +1077,8 @@ class ManualTrigger extends PopoverTest {
         </div>
 
         <nx-popover #popoverHover> </nx-popover>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class ClickOnDocument extends PopoverTest {
     closable = true;
@@ -1039,6 +1090,8 @@ class ClickOnDocument extends PopoverTest {
         </div>
 
         <nx-popover #popoverInScrollableContainer> </nx-popover>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class ScrollablePopover extends PopoverTest {}
 
@@ -1050,6 +1103,8 @@ class ScrollablePopover extends PopoverTest {}
         </div>
 
         <nx-popover #popoverHover> </nx-popover>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class PopoverWithinRTLContainer extends PopoverTest {
     direction = 'rtl';
@@ -1063,12 +1118,16 @@ class PopoverWithinRTLContainer extends PopoverTest {
             useValue: { closeIconLabel: 'custom close label', changes: new Subject() },
         },
     ],
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class I18nTest extends PopoverTest {}
 
 @Component({
     template: `<div [nxPopoverTriggerFor]="popoverClick" nxPopoverTrigger="click" tabindex="1" class="trigger">Div</div>
         <nx-popover #popoverClick>Content</nx-popover><button></button>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class PopoverDivTrigger extends PopoverTest {}
 
@@ -1083,6 +1142,8 @@ class PopoverDivTrigger extends PopoverTest {}
         </button>
 
         <nx-popover #popoverPropertyWidth></nx-popover>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class PopoverWidthComponent extends PopoverTest {}
 
@@ -1090,5 +1151,7 @@ class PopoverWidthComponent extends PopoverTest {}
     template: `<button [nxPopoverTriggerFor]="popoverDefaultWidth" nxPopoverTrigger="click">Click</button>
 
         <nx-popover #popoverDefaultWidth></nx-popover>`,
+    standalone: true,
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class PopoverDefaultWidthComponent extends PopoverTest {}

@@ -1,5 +1,17 @@
 import { SelectionModel } from '@angular/cdk/collections';
+import { DatePipe, JsonPipe, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
+import { NxLinkComponent } from '@aposin/ng-aquila/link';
+import { NxRadioComponent } from '@aposin/ng-aquila/radio-button';
+import { NxSwitcherComponent } from '@aposin/ng-aquila/switcher';
+import {
+    NxHeaderCellDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+} from '@aposin/ng-aquila/table';
 
 interface Contract {
     product: string;
@@ -17,6 +29,22 @@ interface Contract {
     selector: 'table-single-select-example',
     templateUrl: './table-single-select-example.html',
     styleUrls: ['./table-single-select-example.css'],
+    standalone: true,
+    imports: [
+        NxTableComponent,
+        NxTableRowComponent,
+        NxHeaderCellDirective,
+        NgFor,
+        NxTableCellComponent,
+        NxRadioComponent,
+        NxLinkComponent,
+        RouterLink,
+        NxBadgeComponent,
+        NxSwitcherComponent,
+        NgIf,
+        JsonPipe,
+        DatePipe,
+    ],
 })
 export class TableSingleSelectExampleComponent {
     showSelected = false;

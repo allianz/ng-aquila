@@ -6,8 +6,22 @@ import { ALLIANZ_ONE, AllianzOneOptions, NxAllianzOneModule } from './allianz-on
 
 @Component({
     template: ` <p>Doesn't matter</p> `,
+    standalone: true,
+    imports: [NxAllianzOneModule],
 })
 class AllianzOnePresetTest {
+    constructor(
+        @Optional() @Inject(ALLIANZ_ONE) readonly allianzOne: AllianzOneOptions,
+        @Optional() @Inject(FORMFIELD_DEFAULT_OPTIONS) readonly formfieldOptions: FormfieldDefaultOptions,
+    ) {}
+}
+
+@Component({
+    template: ` <p>Doesn't matter</p> `,
+    standalone: true,
+    imports: [],
+})
+class AllianzOneWithoutModuleImportPresetTest {
     constructor(
         @Optional() @Inject(ALLIANZ_ONE) readonly allianzOne: AllianzOneOptions,
         @Optional() @Inject(FORMFIELD_DEFAULT_OPTIONS) readonly formfieldOptions: FormfieldDefaultOptions,
@@ -28,8 +42,7 @@ describe('NxAllianzOneModule', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxAllianzOneModule],
-            declarations: [AllianzOnePresetTest],
+            imports: [NxAllianzOneModule, AllianzOnePresetTest],
         }).compileComponents();
 
         createTestComponent(AllianzOnePresetTest);
@@ -48,12 +61,11 @@ describe('NxAllianzOneModule', () => {
     it('should not provide tokens when not imported', () => {
         TestBed.resetTestingModule()
             .configureTestingModule({
-                imports: [],
-                declarations: [AllianzOnePresetTest],
+                imports: [AllianzOneWithoutModuleImportPresetTest],
             })
             .compileComponents();
 
-        createTestComponent(AllianzOnePresetTest);
+        createTestComponent(AllianzOneWithoutModuleImportPresetTest);
 
         expect(testInstance.allianzOne).toBeFalsy();
         expect(testInstance.formfieldOptions).toBeFalsy();

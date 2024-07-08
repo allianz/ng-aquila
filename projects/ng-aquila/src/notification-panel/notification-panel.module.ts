@@ -9,11 +9,21 @@ import {
     NxNotificationItemHeaderDirective,
     NxNotificationItemMetadataDirective,
 } from './notification-item/notification-item-slots';
-import { NX_NOTIFICATION_PANEL_SCROLL_STRATEGY_PROVIDER, NxNotificationPanelTriggerDirective } from './notification-panel-trigger.directive';
+import { NxNotificationPanelTriggerDirective } from './notification-panel-trigger.directive';
 import { NxNotificationPanelComponent } from './panel/notification-panel.component';
 
 @NgModule({
-    imports: [NxOverlayModule, RouterModule],
+    imports: [
+        NxOverlayModule,
+        RouterModule,
+        NxNotificationPanelComponent,
+        NxNotificationPanelItemComponent,
+        NxNotificationPanelTriggerDirective,
+        NxNotificationItemActionsDirective,
+        NxNotificationItemContentDirective,
+        NxNotificationItemMetadataDirective,
+        NxNotificationItemHeaderDirective,
+    ],
     exports: [
         NxNotificationPanelComponent,
         NxNotificationPanelItemComponent,
@@ -23,15 +33,6 @@ import { NxNotificationPanelComponent } from './panel/notification-panel.compone
         NxNotificationItemMetadataDirective,
         NxNotificationItemHeaderDirective,
     ],
-    declarations: [
-        NxNotificationPanelComponent,
-        NxNotificationPanelItemComponent,
-        NxNotificationPanelTriggerDirective,
-        NxNotificationItemActionsDirective,
-        NxNotificationItemContentDirective,
-        NxNotificationItemMetadataDirective,
-        NxNotificationItemHeaderDirective,
-    ],
-    providers: [NX_NOTIFICATION_PANEL_SCROLL_STRATEGY_PROVIDER],
+    providers: [],
 })
 export class NxNotificationPanelModule {}

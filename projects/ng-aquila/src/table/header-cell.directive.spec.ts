@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { NxHeaderCellDirective } from './header-cell.directive';
 import { NxTableModule } from './table.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class HeaderCellTest {
     @ViewChild(NxHeaderCellDirective) headerCellInstance!: NxHeaderCellDirective;
 }
@@ -26,8 +26,7 @@ describe(NxHeaderCellDirective.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicHeaderCellComponent],
-            imports: [NxTableModule],
+            imports: [NxTableModule, BasicHeaderCellComponent],
         }).compileComponents();
     }));
 
@@ -60,5 +59,7 @@ describe(NxHeaderCellDirective.name, () => {
 @Component({
     template: `<td nxHeaderCell>example content</td>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTableModule],
 })
 class BasicHeaderCellComponent extends HeaderCellTest {}

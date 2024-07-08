@@ -1,4 +1,5 @@
 import { NumberInput } from '@angular/cdk/coercion';
+import { NgStyle } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { clamp } from '@aposin/ng-aquila/utils';
 
@@ -12,6 +13,8 @@ let progressbarId = 0;
     host: {
         '[attr.aria-valuenow]': 'value',
     },
+    standalone: true,
+    imports: [NgStyle],
 })
 export class NxProgressbarComponent {
     /** @docs-private */

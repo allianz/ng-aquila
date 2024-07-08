@@ -5,7 +5,7 @@ import { NxInputModule } from '@aposin/ng-aquila/input';
 
 import { NxDirectModule } from './nx-direct.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class PresetTest {
     @ViewChild(NxFormfieldComponent) formfieldInstance!: NxFormfieldComponent;
 }
@@ -26,8 +26,7 @@ describe('NxDirectPreset', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxDirectModule, NxInputModule],
-            declarations: [FormfieldPresetComponent],
+            imports: [NxDirectModule, NxInputModule, FormfieldPresetComponent],
         }).compileComponents();
     }));
 
@@ -48,5 +47,7 @@ describe('NxDirectPreset', () => {
             <input nxInput />
         </nx-formfield>
     `,
+    standalone: true,
+    imports: [NxDirectModule, NxInputModule],
 })
 class FormfieldPresetComponent extends PresetTest {}

@@ -1,5 +1,13 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxSelectableCardComponent } from '@aposin/ng-aquila/card';
 
 /**
  * @title Selectable cards reactive example
@@ -8,6 +16,14 @@ import { FormBuilder, Validators } from '@angular/forms';
     selector: 'selectable-card-reactive-example',
     templateUrl: './selectable-card-reactive-example.html',
     styleUrls: ['./selectable-card-reactive-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxSelectableCardComponent,
+        NxErrorComponent,
+        JsonPipe,
+    ],
 })
 export class SelectableCardReactiveExampleComponent {
     readonly testForm = this.fb.group({

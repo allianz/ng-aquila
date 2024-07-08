@@ -5,6 +5,7 @@ import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/co
 import { RouterTestingModule } from '@angular/router/testing';
 import { NxButtonComponent, NxButtonModule } from '@aposin/ng-aquila/button';
 
+import { NxButtonComponent as NxButtonComponent_1 } from '../button/button.component';
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxOverlayModule } from './overlay.module';
 import { NxOverlayRef } from './overlay-ref';
@@ -18,8 +19,7 @@ describe('NxOverlayService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [NxOverlayModule, OverlayTestModule, RouterTestingModule.withRoutes([]), NxButtonModule],
-            declarations: [TestRootComponent],
+            imports: [NxOverlayModule, OverlayTestModule, RouterTestingModule.withRoutes([]), NxButtonModule, TestRootComponent],
             providers: [],
         });
 
@@ -156,6 +156,8 @@ describe('NxOverlayService', () => {
     template: `<button #button nxButton="tertiary small">Trigger</button>
 
         <ng-template let-data let-overlayRef="overlayRef"> Hello {{ localValue }} {{ data?.value }}{{ setDialogRef(overlayRef) }}</ng-template>`,
+    standalone: true,
+    imports: [NxButtonComponent_1],
 })
 class ComponentWithTemplateRef {
     localValue!: string;
@@ -172,20 +174,22 @@ class ComponentWithTemplateRef {
 }
 
 @Component({
-    template: `<button #button>Trigger</button> <router-outlet></router-outlet>`,
-})
-export class TestRootComponent {
-    @ViewChild('button') trigger!: ElementRef;
-}
-
-@Component({
     template: `<div class="hello">Hello World</div>`,
+    standalone: true,
 })
 class PlainComponent {}
 
 @NgModule({
-    imports: [NxOverlayModule, NxButtonModule],
+    imports: [NxOverlayModule, NxButtonModule, ComponentWithTemplateRef, PlainComponent],
     exports: [ComponentWithTemplateRef, PlainComponent],
-    declarations: [ComponentWithTemplateRef, PlainComponent],
 })
 class OverlayTestModule {}
+
+@Component({
+    template: `<button #button>Trigger</button> <router-outlet></router-outlet>`,
+    standalone: true,
+    imports: [NxOverlayModule, NxButtonModule, RouterTestingModule],
+})
+export class TestRootComponent {
+    @ViewChild('button') trigger!: ElementRef;
+}

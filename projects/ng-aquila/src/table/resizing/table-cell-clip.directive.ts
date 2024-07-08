@@ -5,5 +5,6 @@ import { Directive } from '@angular/core';
     host: {
         '[style.table-layout]': '"fixed"',
     },
+    standalone: true,
 })
 export class NxTableCellClipDirective {}

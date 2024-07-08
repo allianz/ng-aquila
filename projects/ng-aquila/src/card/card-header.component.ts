@@ -8,5 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     selector: 'nx-card-header',
     templateUrl: './card-header.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxCardHeaderComponent {}

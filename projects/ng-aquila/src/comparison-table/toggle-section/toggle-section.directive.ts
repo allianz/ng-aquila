@@ -11,6 +11,7 @@ import { NxToggleSectionHeaderComponent } from './toggle-section-header.componen
         { provide: NxTableContentElement, useExisting: NxToggleSectionDirective },
         { provide: NxToggleSectionBase, useExisting: NxToggleSectionDirective },
     ],
+    standalone: true,
 })
 export class NxToggleSectionDirective extends NxToggleSectionBase implements NxTableContentElement {
     /** @docs-private */

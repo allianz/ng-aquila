@@ -6,7 +6,7 @@ import { NxLabelModule } from './label.module';
 
 const customDefaultOptions: LabelDefaultOptions = { size: 'small' };
 
-@Directive()
+@Directive({ standalone: true })
 abstract class LabelTest {
     @ViewChild(NxLabelComponent) labelInstance!: NxLabelComponent;
     size!: LABEL_SIZE_TYPE;
@@ -29,8 +29,7 @@ describe('NxLabelComponent', () => {
     describe('basic', () => {
         beforeEach(waitForAsync(() => {
             TestBed.configureTestingModule({
-                declarations: [BasicLabel],
-                imports: [NxLabelModule],
+                imports: [NxLabelModule, BasicLabel],
             }).compileComponents();
         }));
 
@@ -45,8 +44,7 @@ describe('NxLabelComponent', () => {
         beforeEach(waitForAsync(() => {
             customDefaultOptions.size = 'small';
             TestBed.configureTestingModule({
-                declarations: [BasicLabel, ConfigurableLabel],
-                imports: [NxLabelModule],
+                imports: [NxLabelModule, BasicLabel, ConfigurableLabel],
                 providers: [{ provide: LABEL_DEFAULT_OPTIONS, useValue: customDefaultOptions }],
             }).compileComponents();
         }));
@@ -80,10 +78,14 @@ describe('NxLabelComponent', () => {
 
 @Component({
     template: `<nx-label>I am a label</nx-label>`,
+    standalone: true,
+    imports: [NxLabelModule],
 })
 class BasicLabel extends LabelTest {}
 
 @Component({
     template: `<nx-label [size]="size">I am a label</nx-label>`,
+    standalone: true,
+    imports: [NxLabelModule],
 })
 class ConfigurableLabel extends LabelTest {}

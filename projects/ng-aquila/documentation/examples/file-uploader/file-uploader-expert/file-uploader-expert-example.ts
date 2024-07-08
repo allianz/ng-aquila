@@ -1,9 +1,16 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NxLabelComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
     NxFileUploadConfig,
     NxFileUploader,
+    NxFileUploaderButtonDirective,
+    NxFileUploaderComponent,
+    NxFileUploaderHintDirective,
+    NxFileUploaderTriggerDirective,
 } from '@aposin/ng-aquila/file-uploader';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import {
     NxMessageToastConfig,
     NxMessageToastService,
@@ -22,6 +29,16 @@ export const myCustomConfig: NxMessageToastConfig = {
     selector: 'file-uploader-expert-example',
     templateUrl: './file-uploader-expert-example.html',
     styleUrls: ['./file-uploader-expert-example.css'],
+    standalone: true,
+    imports: [
+        NxFileUploaderComponent,
+        NxLabelComponent,
+        NxFileUploaderHintDirective,
+        NxButtonComponent,
+        NxFileUploaderButtonDirective,
+        NxIconComponent,
+        NxFileUploaderTriggerDirective,
+    ],
 })
 export class FileUploaderExpertExampleComponent implements OnInit, OnDestroy {
     readonly uploadConfig: NxFileUploadConfig = {

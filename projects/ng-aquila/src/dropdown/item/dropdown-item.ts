@@ -1,5 +1,7 @@
 import { Highlightable } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { CdkObserveContent } from '@angular/cdk/observers';
+import { NgClass, NgIf, NgTemplateOutlet } from '@angular/common';
 import {
     AfterViewChecked,
     ChangeDetectionStrategy,
@@ -14,6 +16,9 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
+import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -50,6 +55,8 @@ let nextId = 0;
         '[class.nx-multiselect]': 'multiselect',
         '(click)': '_onClick($event)',
     },
+    standalone: true,
+    imports: [NgClass, NgIf, NxCheckboxModule, NgTemplateOutlet, NxIconModule, NxTooltipModule, CdkObserveContent],
 })
 export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterViewChecked {
     _hidden = false;

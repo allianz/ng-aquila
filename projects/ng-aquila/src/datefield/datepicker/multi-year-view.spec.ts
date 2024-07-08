@@ -14,11 +14,10 @@ describe('NxMultiYearView', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxNativeDateModule],
-            declarations: [
+            imports: [
+                NxNativeDateModule,
                 NxCalendarBodyComponent,
                 NxMultiYearViewComponent,
-
                 // Test components.
                 StandardMultiYearView,
                 MultiYearViewWithDateFilter,
@@ -221,6 +220,8 @@ describe('NxMultiYearView', () => {
 
 @Component({
     template: `<nx-multi-year-view [(activeDate)]="date" [(selected)]="selected" (yearSelected)="selectedYear = $event"></nx-multi-year-view>`,
+    standalone: true,
+    imports: [NxNativeDateModule, NxMultiYearViewComponent],
 })
 class StandardMultiYearView {
     date = new Date(2017, JAN, 1);
@@ -232,6 +233,8 @@ class StandardMultiYearView {
 
 @Component({
     template: `<nx-multi-year-view [(activeDate)]="activeDate" [dateFilter]="dateFilter"></nx-multi-year-view>`,
+    standalone: true,
+    imports: [NxNativeDateModule, NxMultiYearViewComponent],
 })
 class MultiYearViewWithDateFilter {
     activeDate = new Date(2001, JAN, 1);

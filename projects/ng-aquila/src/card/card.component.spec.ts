@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxCardComponent } from './card.component';
 import { NxCardModule } from './card.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class CardTest {
     @ViewChild(NxCardComponent) cardInstance!: NxCardComponent;
     isDisabled = false;
@@ -27,8 +27,7 @@ describe('NxCardComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicCard, ClickableCardTest],
-            imports: [NxCardModule],
+            imports: [NxCardModule, BasicCard, ClickableCardTest],
         }).compileComponents();
     }));
 
@@ -83,6 +82,8 @@ describe('NxCardComponent', () => {
 @Component({
     template: `<nx-card>Hello Text</nx-card>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxCardModule],
 })
 class BasicCard extends CardTest {}
 
@@ -91,5 +92,7 @@ class BasicCard extends CardTest {}
         ><a href="/" nxCardMainLink>Card title</a>
         <p>Hello Text</p></nx-card
     >`,
+    standalone: true,
+    imports: [NxCardModule],
 })
 class ClickableCardTest extends CardTest {}

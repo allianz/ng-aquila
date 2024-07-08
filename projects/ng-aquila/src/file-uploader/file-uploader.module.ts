@@ -9,7 +9,6 @@ import { NxFileUploaderComponent } from './file-uploader.component';
 import { NxFileUploaderButtonDirective } from './file-uploader-button.directive';
 import { NxFileUploaderDropZoneComponent } from './file-uploader-drop-zone.component';
 import { NxFileUploaderHintDirective } from './file-uploader-hint.directive';
-import { NxFileUploaderIntl } from './file-uploader-intl';
 import { NxFileUploaderTriggerDirective } from './file-uploader-trigger.directive';
 import { NxFileUploaderItemDelete } from './item/file-uploader-delete.component';
 import { NxFileUploaderItemName } from './item/file-uploader-name.component';
@@ -17,8 +16,11 @@ import { NxFileUploaderItemSize } from './item/file-uploader-size.component';
 import { NxFileUploaderItemStatus } from './item/file-uploader-status.component';
 
 @NgModule({
-    imports: [CommonModule, NxIconModule, NxButtonModule, NxSpinnerModule],
-    declarations: [
+    imports: [
+        CommonModule,
+        NxIconModule,
+        NxButtonModule,
+        NxSpinnerModule,
         NxFileUploaderComponent,
         NxFileUploaderButtonDirective,
         NxFileUploaderHintDirective,
@@ -42,6 +44,5 @@ import { NxFileUploaderItemStatus } from './item/file-uploader-status.component'
         NxFileUploaderItemStatus,
         NxFileUploaderItemDelete,
     ],
-    providers: [NxFileUploaderIntl],
 })
 export class NxFileUploaderModule {}

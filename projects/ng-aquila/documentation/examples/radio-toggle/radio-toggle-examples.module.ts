@@ -20,8 +20,12 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxRadioToggleModule, NxIconModule, ExamplesSharedModule],
-    declarations: [EXAMPLES],
+    imports: [
+        NxRadioToggleModule,
+        NxIconModule,
+        ExamplesSharedModule,
+        EXAMPLES,
+    ],
     exports: [EXAMPLES],
 })
 export class RadioToggleExamplesModule {

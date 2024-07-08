@@ -1,4 +1,10 @@
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import {
+    NxMenuButtonComponent,
+    NxMenuItemDirective,
+    NxMenuLinkDirective,
+} from '@aposin/ng-aquila/menu';
 
 interface MenuChild {
     label: string;
@@ -17,6 +23,14 @@ interface MenuItem {
     selector: 'menu-item-example',
     templateUrl: 'menu-item-example.html',
     styleUrls: ['menu-item-example.css'],
+    standalone: true,
+    imports: [
+        NgFor,
+        NxMenuButtonComponent,
+        NxMenuItemDirective,
+        NgIf,
+        NxMenuLinkDirective,
+    ],
 })
 export class MenuItemExampleComponent {
     menuData: MenuItem[] = [

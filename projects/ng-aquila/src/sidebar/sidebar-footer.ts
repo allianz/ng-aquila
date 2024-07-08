@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
     },
     styleUrls: ['./sidebar-footer.scss'],
     template: '<div class="nx-sidebar__footer-container"><ng-content></ng-content></div>',
+    standalone: true,
 })
 export class NxSidebarFooterComponent {}

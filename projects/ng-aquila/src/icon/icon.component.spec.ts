@@ -8,7 +8,7 @@ import { NxIconComponent } from './icon.component';
 import { NxIconModule } from './icon.module';
 import { NxIconRegistry } from './icon-registry';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class IconTest {
     @ViewChild(NxIconComponent) buttonInstance!: NxIconComponent;
     name = '';
@@ -31,8 +31,7 @@ describe('NxIconComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicIcon, SizeIcon, OutlineIcon, FillIcon, DynamicIcon, FontIcon],
-            imports: [NxIconModule],
+            imports: [NxIconModule, BasicIcon, SizeIcon, OutlineIcon, FillIcon, DynamicIcon, FontIcon],
             providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
         }).compileComponents();
     }));
@@ -262,26 +261,36 @@ describe('NxIconComponent', () => {
 
 @Component({
     template: `<nx-icon name="heart"></nx-icon>`,
+    standalone: true,
+    imports: [NxIconModule],
 })
 class BasicIcon extends IconTest {}
 
 @Component({
     template: `<nx-icon name="heart" size="m"></nx-icon>`,
+    standalone: true,
+    imports: [NxIconModule],
 })
 class SizeIcon extends IconTest {}
 
 @Component({
     template: `<nx-icon name="heart" outline="true"></nx-icon>`,
+    standalone: true,
+    imports: [NxIconModule],
 })
 class OutlineIcon extends IconTest {}
 
 @Component({
     template: `<nx-icon name="heart" fill="true"></nx-icon>`,
+    standalone: true,
+    imports: [NxIconModule],
 })
 class FillIcon extends IconTest {}
 
 @Component({
     template: `<nx-icon [name]="name" [size]="size" fill="true"></nx-icon>`,
+    standalone: true,
+    imports: [NxIconModule],
 })
 class DynamicIcon extends IconTest {
     name = 'heart';
@@ -290,6 +299,8 @@ class DynamicIcon extends IconTest {
 
 @Component({
     template: `<nx-icon [name]="name" [font]="font"></nx-icon>`,
+    standalone: true,
+    imports: [NxIconModule],
 })
 class FontIcon extends IconTest {
     font = 'custom-font';

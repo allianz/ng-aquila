@@ -15,8 +15,7 @@ describe(NxTreeComponent.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxTreeModule],
-            declarations: [SimpleNxTreeApp, NxTreeAppWithToggle, WhenNodeNxTreeApp, NxTreeAppWithButton],
+            imports: [NxTreeModule, SimpleNxTreeApp, NxTreeAppWithToggle, WhenNodeNxTreeApp, NxTreeAppWithButton],
         }).compileComponents();
     }));
 
@@ -570,6 +569,8 @@ function expectNestedTreeToNxch(treeElement: Element, ...expectedTree: any[]) {
             </nx-tree-node>
         </nx-tree>
     `,
+    standalone: true,
+    imports: [NxTreeModule],
 })
 class SimpleNxTreeApp {
     treeControl = new NxFlatTreeControl();
@@ -601,6 +602,8 @@ class SimpleNxTreeApp {
             </nx-tree-node>
         </nx-tree>
     `,
+    standalone: true,
+    imports: [NxTreeModule],
 })
 class NxTreeAppWithToggle {
     toggleRecursively = true;
@@ -630,6 +633,8 @@ class NxTreeAppWithToggle {
             </nx-tree-node>
         </nx-tree>
     `,
+    standalone: true,
+    imports: [NxTreeModule],
 })
 class WhenNodeNxTreeApp {
     treeControl = new NxFlatTreeControl();
@@ -664,6 +669,8 @@ class WhenNodeNxTreeApp {
             </nx-tree-node>
         </nx-tree>
     `,
+    standalone: true,
+    imports: [NxTreeModule],
 })
 class NxTreeAppWithButton {
     toggleRecursively = true;

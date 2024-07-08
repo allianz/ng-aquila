@@ -1,4 +1,5 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NgIf } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -64,6 +65,8 @@ let nextId = 0;
         '[class.nx-circle-toggle-group]': 'true',
         role: 'radiogroup',
     },
+    standalone: true,
+    imports: [NgIf],
 })
 export class NxCircleToggleGroupComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck {
     /**

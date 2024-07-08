@@ -7,8 +7,7 @@ import { BadgeVibrantExampleComponent } from './badge-vibrant/badge-vibrant-exam
 const EXAMPLES = [BadgeExampleComponent, BadgeVibrantExampleComponent];
 
 @NgModule({
-    imports: [NxBadgeModule],
-    declarations: [EXAMPLES],
+    imports: [NxBadgeModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class BadgeExamplesModule {

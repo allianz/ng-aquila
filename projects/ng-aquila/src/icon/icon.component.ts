@@ -20,6 +20,7 @@ export type IconSize = 'auto' | 's' | 'm' | 'l' | 'xl';
         /** Provide a stable selector for getting icons by name or retrieving the name (primarily for harnesses) */
         '[attr.data-nx-icon-name]': 'name',
     },
+    standalone: true,
 })
 export class NxIconComponent implements OnChanges {
     /** Keeps track of the elements and attributes that we've prefixed with the current path. */

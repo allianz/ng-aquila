@@ -36,6 +36,7 @@ let _uniqueIdCounter = 0;
         '[style.display]': '"block"', // needed for to be able to calculate offset height
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxAutocompleteOptionComponent {
     /** Id of the autocomplete option. By default it is set to an incremented value. */

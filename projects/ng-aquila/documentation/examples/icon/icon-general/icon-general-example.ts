@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 /**
  * @title General Icons Example
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
     selector: 'icon-general-example',
     templateUrl: './icon-general-example.html',
     styleUrls: ['./icon-general-example.css'],
+    standalone: true,
+    imports: [NxIconComponent],
 })
 export class IconGeneralExampleComponent {}

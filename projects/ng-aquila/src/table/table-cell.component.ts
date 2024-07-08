@@ -10,5 +10,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         '[class.nx-table-cell]': 'true',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxTableCellComponent {}

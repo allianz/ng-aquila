@@ -1,4 +1,5 @@
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
 
 import { NxComparisonTableBase } from '../comparison-table-base';
@@ -10,6 +11,8 @@ let nextId = 0;
     selector: 'nx-comparison-table-popular-cell',
     styleUrls: ['./popular-cell.component.scss'],
     templateUrl: './popular-cell.component.html',
+    standalone: true,
+    imports: [NgIf, NgTemplateOutlet],
 })
 export class NxComparisonTablePopularCell {
     @ViewChild('content', { static: true }) _content!: TemplateRef<any>;

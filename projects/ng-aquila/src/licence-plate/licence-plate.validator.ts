@@ -43,6 +43,7 @@ export function nxLicensePlateValidator(type: NxLicencePlateType): ValidatorFn {
             multi: true,
         },
     ],
+    standalone: true,
 })
 export class NxLicencePlateValidatorDirective implements Validator {
     /**

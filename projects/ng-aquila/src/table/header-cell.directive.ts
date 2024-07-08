@@ -8,6 +8,7 @@ import { Directive, ElementRef } from '@angular/core';
     host: {
         '[class.nx-header-cell]': 'true',
     },
+    standalone: true,
 })
 export class NxHeaderCellDirective {
     constructor(readonly elementRef: ElementRef<HTMLElement>) {}

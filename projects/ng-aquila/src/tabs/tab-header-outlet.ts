@@ -8,6 +8,7 @@ import { NxTabGroupBase } from './tab-group-base';
 @Component({
     selector: 'nx-tab-header-outlet',
     template: '<ng-container #outlet></ng-container>',
+    standalone: true,
 })
 export class NxTabHeaderOutletComponent implements OnInit, OnDestroy {
     @ViewChild('outlet', { static: true, read: ViewContainerRef }) _outlet!: ViewContainerRef;

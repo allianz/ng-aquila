@@ -7,9 +7,8 @@ import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
 describe('NxCalendarBodyComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [
+            imports: [
                 NxCalendarBodyComponent,
-
                 // Test components.
                 StandardCalendarBody,
                 CalendarBodyWithDisabledCells,
@@ -149,6 +148,8 @@ describe('NxCalendarBodyComponent', () => {
         [activeCell]="10"
         (selectedValueChange)="onSelect($event)"
     ></table>`,
+    imports: [NxCalendarBodyComponent],
+    standalone: true,
 })
 class StandardCalendarBody {
     label = 'Jan 2017';
@@ -167,6 +168,8 @@ class StandardCalendarBody {
 
 @Component({
     template: `<table nx-calendar-body [rows]="rows" [allowDisabledSelection]="allowDisabledSelection" (selectedValueChange)="selected = $event"></table>`,
+    standalone: true,
+    imports: [NxCalendarBodyComponent],
 })
 class CalendarBodyWithDisabledCells {
     rows = [[1, 2, 3, 4]].map(r => r.map(d => createCell(d, d % 2 === 0)));
@@ -176,6 +179,8 @@ class CalendarBodyWithDisabledCells {
 
 @Component({
     template: `<table nx-calendar-body [rows]="rows" [previousItems]="previousItems" [followingItems]="followingItems"></table>`,
+    standalone: true,
+    imports: [NxCalendarBodyComponent],
 })
 class CalendarBodyWithPreviousAndFollowingCells {
     previousItems = [28, 29, 30];

@@ -26,6 +26,7 @@ import { NxTabLabelDirective } from './tab-label';
     exportAs: 'nxTab',
     templateUrl: 'tab.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
     /** Emits whenever the internal state of the tab changes. */

@@ -10,7 +10,7 @@ import { NX_DATE_LOCALE } from './adapter/date-token';
 import { NxDatefieldDirective } from './datefield.directive';
 import { NxDatefieldModule } from './datefield.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class DatefieldTest {
     disabled = false;
     strict = true;
@@ -42,8 +42,17 @@ describe('NxDatefieldDirective with Moment', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicDatefield, AdvancedDatefield, MinMaxDatefield, ReactiveDatefield],
-            imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
+            imports: [
+                NxDatefieldModule,
+                NxMomentDateModule,
+                NxInputModule,
+                FormsModule,
+                ReactiveFormsModule,
+                BasicDatefield,
+                AdvancedDatefield,
+                MinMaxDatefield,
+                ReactiveDatefield,
+            ],
             providers: [{ provide: NX_DATE_LOCALE, useValue: 'ja' }],
         }).compileComponents();
     }));
@@ -261,15 +270,21 @@ describe('NxDatefieldDirective with Moment', () => {
             <input nxInput nxDatefield [disabled]="disabled" />
         </nx-formfield>
     `,
+    standalone: true,
+    imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class BasicDatefield extends DatefieldTest {}
 
 @Component({
     template: `<input nxInput nxDatefield [(ngModel)]="value" [parseFormat]="parseFormat" [displayFormat]="displayFormat" [strict]="strict" />`,
+    standalone: true,
+    imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class AdvancedDatefield extends DatefieldTest {}
 @Component({
     template: `<input nxInput nxDatefield [(ngModel)]="value" [min]="min" [max]="max" />`,
+    standalone: true,
+    imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class MinMaxDatefield extends DatefieldTest {}
 
@@ -281,6 +296,8 @@ class MinMaxDatefield extends DatefieldTest {}
             </nx-formfield>
         </form>
     `,
+    standalone: true,
+    imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveDatefield extends DatefieldTest {
     fb;
@@ -296,7 +313,7 @@ class ReactiveDatefield extends DatefieldTest {
     }
 }
 
-@Directive()
+@Directive({ standalone: true })
 abstract class DatefieldIsoTest {
     form!: FormGroup;
     @ViewChild(NxDatefieldDirective) datefieldInstance!: NxDatefieldDirective<Date>;
@@ -318,8 +335,7 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [ReactiveIsoDatefield],
-            imports: [NxDatefieldModule, NxIsoDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
+            imports: [NxDatefieldModule, NxIsoDateModule, NxInputModule, FormsModule, ReactiveFormsModule, ReactiveIsoDatefield],
             providers: [{ provide: NX_DATE_LOCALE, useValue: 'en' }],
         }).compileComponents();
     }));
@@ -370,6 +386,8 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
             </nx-formfield>
         </form>
     `,
+    standalone: true,
+    imports: [NxDatefieldModule, NxIsoDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveIsoDatefield extends DatefieldIsoTest {
     fb;

@@ -6,6 +6,7 @@ import { NxStepComponent } from '../progress-stepper.component';
     templateUrl: './multi-step-group.component.html',
     selector: 'nx-step-group',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxMultiStepperGroupComponent {
     /** @docs-private */

@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxPopoverComponent,
+    NxPopoverTriggerDirective,
+} from '@aposin/ng-aquila/popover';
 
 /**
  * @title Popover positioning Example
@@ -7,5 +12,7 @@ import { Component } from '@angular/core';
     selector: 'popover-positioning-example',
     templateUrl: './popover-positioning-example.html',
     styleUrls: ['./popover-positioning-example.css'],
+    standalone: true,
+    imports: [NxButtonComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverPositioningExampleComponent {}

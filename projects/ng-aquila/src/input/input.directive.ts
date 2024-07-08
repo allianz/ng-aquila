@@ -43,6 +43,7 @@ let nextUniqueId = 0;
         { provide: NxFormfieldControl, useExisting: NxInputDirective },
         { provide: NxAbstractControl, useExisting: NxInputDirective },
     ],
+    standalone: true,
 })
 export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, NxFormfieldControl<any>, NxAbstractControl {
     protected _uid = `nx-input-${nextUniqueId++}`;

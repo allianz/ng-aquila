@@ -9,7 +9,7 @@ import { DocVersions, NX_DOC_VERSIONS } from '@aposin/ngx-docs-ui';
 import { NxVersionSelectComponent } from './version-select.component';
 import { NxvVersionSelectModule } from './version-select.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class VersionSelectTest {
     versions: DocVersions = {
         channels: [
@@ -43,8 +43,7 @@ describe('NxvVersionSelectComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicVersionSelect, VersionSelectWithToken],
-            imports: [NxvVersionSelectModule, BrowserAnimationsModule],
+            imports: [NxvVersionSelectModule, BrowserAnimationsModule, BasicVersionSelect, VersionSelectWithToken],
             providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
         }).compileComponents();
 
@@ -86,6 +85,8 @@ describe('NxvVersionSelectComponent', () => {
 
 @Component({
     template: `<nxv-version-select [versions]="versions"> </nxv-version-select>`,
+    standalone: true,
+    imports: [NxvVersionSelectModule],
 })
 class BasicVersionSelect extends VersionSelectTest {}
 
@@ -102,5 +103,7 @@ const versions: DocVersions = {
 @Component({
     template: `<nxv-version-select> </nxv-version-select>`,
     providers: [{ provide: NX_DOC_VERSIONS, useValue: versions }],
+    standalone: true,
+    imports: [NxvVersionSelectModule],
 })
 class VersionSelectWithToken extends VersionSelectTest {}

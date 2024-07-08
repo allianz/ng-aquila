@@ -33,7 +33,7 @@ export class UploadInterceptor implements HttpInterceptor {
     }
 }
 
-@Directive()
+@Directive({ standalone: true })
 abstract class FileUploaderTest {
     @ViewChild(NxFileUploaderComponent, { static: false }) fileUploaderInstance!: NxFileUploaderComponent;
     form!: FormGroup;
@@ -68,8 +68,7 @@ describe('NxFileUploaderComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicFileUpload],
-            imports: [NxFileUploaderModule, NxLabelModule, ReactiveFormsModule, FormsModule],
+            imports: [NxFileUploaderModule, NxLabelModule, ReactiveFormsModule, FormsModule, BasicFileUpload],
             providers: [{ provide: HTTP_INTERCEPTORS, useClass: UploadInterceptor, multi: true }, provideHttpClient(withInterceptorsFromDi())],
         }).compileComponents();
     }));
@@ -358,6 +357,8 @@ describe('NxFileUploaderComponent', () => {
             <button id="upload-trigger" [nxFileUploadTriggerFor]="documentUpload" type="button">Upload files</button>
         </form>
     `,
+    standalone: true,
+    imports: [NxFileUploaderModule, NxLabelModule, ReactiveFormsModule, FormsModule],
 })
 class BasicFileUpload extends FileUploaderTest {
     fb: FormBuilder;

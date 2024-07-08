@@ -1,5 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
 export interface NxExpandable {
@@ -26,6 +27,8 @@ export interface NxExpandable {
     templateUrl: './toggle-button.component.html',
     styleUrls: ['./toggle-button.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxIconModule],
 })
 export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
     _expanded = false;

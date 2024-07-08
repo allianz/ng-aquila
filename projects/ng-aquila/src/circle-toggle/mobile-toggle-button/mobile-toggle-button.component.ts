@@ -1,4 +1,6 @@
+import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 /** @docs-private */
 @Component({
@@ -13,6 +15,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
         '[class.is-last]': 'isLast',
         '[class.is-flipped]': 'checked',
     },
+    standalone: true,
+    imports: [NxIconModule, NgIf],
 })
 export class NxMobileToggleButtonComponent {
     @Input() checked = false;

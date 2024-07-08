@@ -1,5 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NgIf } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -13,6 +14,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 /** The contextual type of a message. */
 export type CONTEXT = 'regular' | 'info' | 'error' | 'success' | 'warning';
@@ -30,6 +32,8 @@ const ICONS: { [k: string]: string } = {
     styleUrls: ['./message.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: 'nxMessage',
+    standalone: true,
+    imports: [NgIf, NxIconModule],
 })
 export class NxMessageComponent implements AfterViewInit, OnDestroy {
     @HostBinding('class.context-info') get _isInfo() {

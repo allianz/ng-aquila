@@ -7,8 +7,7 @@ import { NxNaturalLanguageFormComponent } from './natural-language-form.componen
 import { NxWordComponent } from './word.component';
 
 @NgModule({
-    imports: [CommonModule, NxInputModule, NxPopoverModule],
-    declarations: [NxNaturalLanguageFormComponent, NxWordComponent],
+    imports: [CommonModule, NxInputModule, NxPopoverModule, NxNaturalLanguageFormComponent, NxWordComponent, NxWordComponent],
     exports: [NxNaturalLanguageFormComponent, NxWordComponent],
 })
 export class NxNaturalLanguageFormModule {}

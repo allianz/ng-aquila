@@ -13,6 +13,7 @@ import { NxModalRef } from './modal-ref';
         '[attr.aria-label]': 'ariaLabel || null',
         '[attr.type]': 'type',
     },
+    standalone: true,
 })
 export class NxModalCloseDirective implements OnInit, OnChanges {
     /** Screenreader label for the button. */

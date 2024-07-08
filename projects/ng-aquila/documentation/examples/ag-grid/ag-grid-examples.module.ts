@@ -13,9 +13,8 @@ import { AgGridOpensourceExampleComponent } from './ag-grid-opensource/ag-grid-o
 const EXAMPLES = [AgGridExampleComponent, AgGridOpensourceExampleComponent];
 
 @NgModule({
-    declarations: [EXAMPLES],
+    imports: [AgGridModule, CommonModule, NxButtonModule, EXAMPLES],
     exports: [EXAMPLES],
-    imports: [AgGridModule, CommonModule, NxButtonModule],
     providers: [provideHttpClient(withInterceptorsFromDi())],
 })
 export class HeadlineExamplesModule {

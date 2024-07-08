@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import {
+    NxRadioToggleButtonComponent,
+    NxRadioToggleComponent,
+} from '@aposin/ng-aquila/radio-toggle';
 
 /**
  * @title Template Driven Form Example
@@ -7,6 +12,12 @@ import { Component } from '@angular/core';
     selector: 'radio-toggle-form-example',
     templateUrl: './radio-toggle-form-example.html',
     styleUrls: ['./radio-toggle-form-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        NxRadioToggleComponent,
+        NxRadioToggleButtonComponent,
+    ],
 })
 export class RadioToggleFormExampleComponent {
     testSelect = 'B';

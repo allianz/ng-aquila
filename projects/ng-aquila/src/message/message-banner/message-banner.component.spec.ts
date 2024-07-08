@@ -6,7 +6,7 @@ import { dispatchMouseEvent } from '../../cdk-test-utils';
 import { NxMessageModule } from '../message.module';
 import { BANNER_CONTEXT, NxMessageBannerComponent } from './message-banner.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class MessageBannerTest {
     context: BANNER_CONTEXT = 'info';
 
@@ -47,8 +47,14 @@ describe('NxMessageBannerComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicMessageBannerComponent, MessageBannerOnPushComponent, ClosableMessageBannerComponent, ClosableMessageBannerWithFormComponent],
-            imports: [NxMessageModule, FormsModule],
+            imports: [
+                NxMessageModule,
+                FormsModule,
+                BasicMessageBannerComponent,
+                MessageBannerOnPushComponent,
+                ClosableMessageBannerComponent,
+                ClosableMessageBannerWithFormComponent,
+            ],
         }).compileComponents();
     }));
 
@@ -143,17 +149,23 @@ describe('NxMessageBannerComponent', () => {
 
 @Component({
     template: `<nx-message-banner [context]="context"> lorem ipsum </nx-message-banner>`,
+    standalone: true,
+    imports: [NxMessageModule, FormsModule],
 })
 class BasicMessageBannerComponent extends MessageBannerTest {}
 
 @Component({
     template: `<nx-message-banner [context]="context"> lorem ipsum </nx-message-banner>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxMessageModule, FormsModule],
 })
 class MessageBannerOnPushComponent extends MessageBannerTest {}
 
 @Component({
     template: `<nx-message-banner [closable]="closable"> lorem ipsum </nx-message-banner>`,
+    standalone: true,
+    imports: [NxMessageModule, FormsModule],
 })
 class ClosableMessageBannerComponent extends MessageBannerTest {
     closable = true;
@@ -165,6 +177,8 @@ class ClosableMessageBannerComponent extends MessageBannerTest {
             <nx-message-banner [closable]="closable"> lorem ipsum </nx-message-banner>
         </form>
     `,
+    standalone: true,
+    imports: [NxMessageModule, FormsModule],
 })
 class ClosableMessageBannerWithFormComponent extends MessageBannerTest {
     closable = true;

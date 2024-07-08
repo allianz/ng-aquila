@@ -4,9 +4,8 @@ import { NgModule } from '@angular/core';
 import { NxProgressbarComponent } from './progressbar.component';
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule, NxProgressbarComponent],
     exports: [NxProgressbarComponent],
-    declarations: [NxProgressbarComponent],
     providers: [],
 })
 export class NxProgressbarModule {}

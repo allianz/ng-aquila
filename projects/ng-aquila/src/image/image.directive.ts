@@ -2,6 +2,7 @@ import { Directive } from '@angular/core';
 
 @Directive({
     selector: 'img[nxImg]',
+    standalone: true,
 })
 export class NxImageDirective {
     constructor() {

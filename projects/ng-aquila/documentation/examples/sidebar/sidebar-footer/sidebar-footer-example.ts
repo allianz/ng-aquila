@@ -1,4 +1,17 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import {
+    NxActionComponent,
+    NxActionIconDirective,
+} from '@aposin/ng-aquila/action';
+import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import {
+    NxSidebarComponent,
+    NxSidebarFooterComponent,
+    NxSidebarToggleComponent,
+} from '@aposin/ng-aquila/sidebar';
 
 /**
  * @title Side navigation with footer area
@@ -7,6 +20,19 @@ import { Component } from '@angular/core';
     selector: 'sidebar-footer-example',
     styleUrls: ['sidebar-footer-example.css'],
     templateUrl: './sidebar-footer-example.html',
+    standalone: true,
+    imports: [
+        NxSidebarComponent,
+        NgFor,
+        NxActionComponent,
+        RouterLink,
+        RouterLinkActive,
+        NxIconComponent,
+        NxActionIconDirective,
+        NxSidebarFooterComponent,
+        NxIconButtonComponent,
+        NxSidebarToggleComponent,
+    ],
 })
 export class SidebarFooterExampleComponent {
     actions = [

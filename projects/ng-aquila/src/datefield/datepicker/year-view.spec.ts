@@ -27,11 +27,10 @@ describe('NxYearView', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxNativeDateModule],
-            declarations: [
+            imports: [
+                NxNativeDateModule,
                 NxCalendarBodyComponent,
                 NxYearViewComponent,
-
                 // Test components.
                 StandardYearView,
                 YearViewWithDateFilter,
@@ -318,6 +317,8 @@ describe('NxYearView', () => {
 
 @Component({
     template: `<nx-year-view [(activeDate)]="date" [(selected)]="selected" (monthSelected)="selectedMonth = $event"></nx-year-view>`,
+    standalone: true,
+    imports: [NxNativeDateModule, NxYearViewComponent],
 })
 class StandardYearView {
     date = new Date(2017, JAN, 5);
@@ -329,6 +330,8 @@ class StandardYearView {
 
 @Component({
     template: `<nx-year-view [(activeDate)]="activeDate" [dateFilter]="dateFilter"></nx-year-view>`,
+    standalone: true,
+    imports: [NxNativeDateModule, NxYearViewComponent],
 })
 class YearViewWithDateFilter {
     activeDate = new Date(2017, JAN, 1);

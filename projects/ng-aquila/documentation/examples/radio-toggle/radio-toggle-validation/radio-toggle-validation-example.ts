@@ -1,5 +1,16 @@
+import { JsonPipe, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+    FormBuilder,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+} from '@angular/forms';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxRadioToggleButtonComponent,
+    NxRadioToggleComponent,
+} from '@aposin/ng-aquila/radio-toggle';
 
 /**
  * @title Validation Example
@@ -8,6 +19,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     selector: 'radio-toggle-validation-example',
     templateUrl: './radio-toggle-validation-example.html',
     styleUrls: ['./radio-toggle-validation-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxRadioToggleComponent,
+        NgFor,
+        NxRadioToggleButtonComponent,
+        NxButtonComponent,
+        JsonPipe,
+    ],
 })
 export class RadioToggleValidationExampleComponent {
     readonly data = ['A', 'B', 'C'];

@@ -1,5 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
-import { NxContextMenuTriggerDirective } from '@aposin/ng-aquila/context-menu';
+import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxContextMenuComponent,
+    NxContextMenuItemComponent,
+    NxContextMenuTriggerDirective,
+    NxContextMenuTriggerDirective as NxContextMenuTriggerDirective_1,
+} from '@aposin/ng-aquila/context-menu';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 /**
  * @title Programmatic Context Menu Example
@@ -11,6 +19,15 @@ import { NxContextMenuTriggerDirective } from '@aposin/ng-aquila/context-menu';
     host: {
         '(document:keydown.control.p)': 'openContextMenu($event)',
     },
+    standalone: true,
+    imports: [
+        NxCopytextComponent,
+        NxContextMenuComponent,
+        NxContextMenuItemComponent,
+        NxIconButtonComponent,
+        NxContextMenuTriggerDirective_1,
+        NxIconComponent,
+    ],
 })
 export class ContextMenuProgrammaticExampleComponent {
     @ViewChild(NxContextMenuTriggerDirective)

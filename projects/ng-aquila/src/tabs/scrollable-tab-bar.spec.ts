@@ -11,7 +11,7 @@ import { NxTabsModule } from './tabs.module';
 declare let viewport: any;
 const THROTTLE_TIME = 200;
 
-@Directive()
+@Directive({ standalone: true })
 abstract class TabHeaderScrollableTest {
     direction: any;
     tabs: any;
@@ -34,8 +34,7 @@ describe('Scrollable TabHeader', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [NotScrollableTabGroupTest, ScrollableTabGroupTest],
-            imports: [NxTabsModule, BrowserAnimationsModule],
+            imports: [NxTabsModule, BrowserAnimationsModule, NotScrollableTabGroupTest, ScrollableTabGroupTest],
         }).compileComponents();
     }));
 
@@ -152,7 +151,7 @@ describe('Scrollable TabHeader', () => {
     });
 });
 
-@Directive()
+@Directive({ standalone: true })
 abstract class TabNavBarScrollableTest {
     direction: any;
     links: any;
@@ -174,8 +173,7 @@ describe('Scrollable TabNavBar', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [NotScrollableTabNavBarTest, ScrollableTabNavBarTest],
-            imports: [NxTabsModule, BrowserAnimationsModule],
+            imports: [NxTabsModule, BrowserAnimationsModule, NotScrollableTabNavBarTest, ScrollableTabNavBarTest],
         }).compileComponents();
     }));
 
@@ -256,11 +254,15 @@ describe('Scrollable TabNavBar', () => {
 @Component({
     template: `
         <nx-tab-group mobileAccordion="false">
-            <nx-tab *ngFor="let tab of tabs" [label]="tab.label">
-                {{ tab.content }}
-            </nx-tab>
+            @for (tab of tabs; track tab) {
+                <nx-tab [label]="tab.label">
+                    {{ tab.content }}
+                </nx-tab>
+            }
         </nx-tab-group>
     `,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class NotScrollableTabGroupTest extends TabHeaderScrollableTest {
     tabs = [
@@ -274,12 +276,16 @@ class NotScrollableTabGroupTest extends TabHeaderScrollableTest {
     template: `
         <div style="max-width: 400px" [dir]="direction">
             <nx-tab-group mobileAccordion="false">
-                <nx-tab *ngFor="let tab of tabs" [label]="tab.label">
-                    {{ tab.content }}
-                </nx-tab>
+                @for (tab of tabs; track tab) {
+                    <nx-tab [label]="tab.label">
+                        {{ tab.content }}
+                    </nx-tab>
+                }
             </nx-tab-group>
         </div>
     `,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class ScrollableTabGroupTest extends TabHeaderScrollableTest {
     tabs = [
@@ -294,11 +300,15 @@ class ScrollableTabGroupTest extends TabHeaderScrollableTest {
 @Component({
     template: `
         <nx-tab-nav-bar>
-            <a nxTabLink *ngFor="let link of links" [active]="link.active">
-                {{ link.label }}
-            </a>
+            @for (link of links; track link) {
+                <a nxTabLink [active]="link.active">
+                    {{ link.label }}
+                </a>
+            }
         </nx-tab-nav-bar>
     `,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class NotScrollableTabNavBarTest extends TabNavBarScrollableTest {
     links = [
@@ -312,12 +322,16 @@ class NotScrollableTabNavBarTest extends TabNavBarScrollableTest {
     template: `
         <div style="max-width: 400px" [dir]="direction">
             <nx-tab-nav-bar>
-                <a nxTabLink *ngFor="let link of links" [active]="link.active">
-                    {{ link.label }}
-                </a>
+                @for (link of links; track link) {
+                    <a nxTabLink [active]="link.active">
+                        {{ link.label }}
+                    </a>
+                }
             </nx-tab-nav-bar>
         </div>
     `,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class ScrollableTabNavBarTest extends TabNavBarScrollableTest {
     links = [

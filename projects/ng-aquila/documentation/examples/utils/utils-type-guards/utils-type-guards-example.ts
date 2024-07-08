@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 import {
+    NxHeaderCellDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+} from '@aposin/ng-aquila/table';
+import {
     isBoolean,
     isFalse,
     isNull,
@@ -42,6 +48,13 @@ type primitive = string | number | boolean;
     selector: 'utils-type-guards-example',
     templateUrl: './utils-type-guards-example.html',
     styleUrls: ['./utils-type-guards-example.css'],
+    standalone: true,
+    imports: [
+        NxTableComponent,
+        NxTableRowComponent,
+        NxHeaderCellDirective,
+        NxTableCellComponent,
+    ],
 })
 export class UtilsTypeGuardsExampleComponent {
     mixedArray = mixedArray;

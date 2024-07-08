@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NxIconRegistry } from '@aposin/ng-aquila/icon';
+import { NxIconModule, NxIconRegistry } from '@aposin/ng-aquila/icon';
 
 import { STATUS_TYPE } from '../../../core/manifest';
 
@@ -10,6 +10,8 @@ import { STATUS_TYPE } from '../../../core/manifest';
     host: {
         '[class.checkmark]': 'iconName === "check"',
     },
+    standalone: true,
+    imports: [NxIconModule],
 })
 export class NxvStatusDotComponent {
     message = 'Not applicable';

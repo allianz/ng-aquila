@@ -3,7 +3,7 @@ import { Directive } from '@angular/core';
 import { NxToggleSectionHeaderComponent } from './toggle-section-header.component';
 
 /** @docs-private */
-@Directive()
+@Directive({ standalone: true })
 export abstract class NxToggleSectionBase {
     /** Whether the toggle section is expanded. */
     abstract isExpanded: boolean;

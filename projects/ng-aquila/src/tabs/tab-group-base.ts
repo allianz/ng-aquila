@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { NxTabsAppearance } from './tabs.models';
 
 /** @docs-private */
-@Directive()
+@Directive({ standalone: true })
 export class NxTabGroupBase {
     disabled!: boolean;
     appearance!: NxTabsAppearance;

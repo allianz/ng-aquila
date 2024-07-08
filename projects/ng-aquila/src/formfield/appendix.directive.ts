@@ -8,6 +8,7 @@ let uniqueId = 0;
     host: {
         '[attr.id]': 'id',
     },
+    standalone: true,
 })
 export class NxFormfieldAppendixDirective {
     /** Sets the id of the formfield appendix. */

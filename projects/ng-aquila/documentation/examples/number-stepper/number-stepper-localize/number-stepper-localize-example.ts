@@ -1,5 +1,8 @@
 import { Component, Injectable } from '@angular/core';
-import { NxNumberStepperIntl } from '@aposin/ng-aquila/number-stepper';
+import {
+    NxNumberStepperComponent,
+    NxNumberStepperIntl,
+} from '@aposin/ng-aquila/number-stepper';
 
 @Injectable()
 export class MyIntl extends NxNumberStepperIntl {
@@ -15,5 +18,7 @@ export class MyIntl extends NxNumberStepperIntl {
     templateUrl: './number-stepper-localize-example.html',
     styleUrls: ['./number-stepper-localize-example.css'],
     providers: [{ provide: NxNumberStepperIntl, useClass: MyIntl }],
+    standalone: true,
+    imports: [NxNumberStepperComponent],
 })
 export class NumberStepperLocalizeExampleComponent {}

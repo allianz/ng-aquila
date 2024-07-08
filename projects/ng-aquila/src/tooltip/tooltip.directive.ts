@@ -22,6 +22,7 @@ import {
     Directive,
     ElementRef,
     Inject,
+    inject,
     InjectionToken,
     Input,
     NgZone,
@@ -45,14 +46,28 @@ export type TooltipHorizontalPosition = 'left' | 'right';
 export type TooltipVerticalPosition = 'top' | 'bottom';
 
 /** Injection token that determines the scroll handling while a tooltip is open. */
-export const NX_TOOLTIP_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-tooltip-scroll-strategy');
+export const NX_TOOLTIP_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-tooltip-scroll-strategy', {
+    providedIn: 'root',
+    factory: () => {
+        const overlay = inject(Overlay);
+        return () => overlay.scrollStrategies.reposition();
+    },
+});
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export function NX_TOOLTIP_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
     return () => overlay.scrollStrategies.reposition();
 }
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export const NX_TOOLTIP_SCROLL_STRATEGY_PROVIDER = {
     provide: NX_TOOLTIP_SCROLL_STRATEGY,
     useFactory: NX_TOOLTIP_SCROLL_STRATEGY_PROVIDER_FACTORY,
@@ -113,6 +128,7 @@ export function NX_TOOLTIP_DEFAULT_OPTIONS_FACTORY(): NxTooltipDefaultOptions {
         '(keydown)': '_handleKeydown($event)',
         '(touchend)': '_handleTouchend()',
     },
+    standalone: true,
 })
 export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
     _overlayRef!: OverlayRef | null;

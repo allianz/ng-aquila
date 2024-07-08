@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NxErrorModule } from '@aposin/ng-aquila/base';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { NxTimefieldModule } from '@aposin/ng-aquila/timefield';
 
-import { ExamplesSharedModule } from '../examples-shared.module';
 import { TimefieldDefaultExampleComponent } from './timefield-default/timefield-default-example';
 import { TimefieldDisabledExampleComponent } from './timefield-disabled/timefield-disabled-example';
 import { TimefieldExpertExampleComponent } from './timefield-expert/timefield-expert-example';
@@ -28,16 +24,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [
-        NxTimefieldModule,
-        ExamplesSharedModule,
-        NxErrorModule,
-        NxFormfieldModule,
-        TimefieldDefaultExampleComponent,
-        TimefieldWithTimepickerExampleComponent,
-        TimefieldWithTimepickerGlobalExampleComponent,
-    ],
-    declarations: [EXAMPLES],
+    imports: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class TimefieldExamplesModule {

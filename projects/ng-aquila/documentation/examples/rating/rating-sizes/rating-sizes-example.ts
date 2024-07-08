@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxRatingComponent } from '@aposin/ng-aquila/rating';
 
 /**
  * @title Rating Sizes Example
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
     selector: 'rating-sizes-example',
     templateUrl: './rating-sizes-example.html',
     styleUrls: ['./rating-sizes-example.css'],
+    standalone: true,
+    imports: [NxRatingComponent],
 })
 export class RatingSizesExampleComponent {}

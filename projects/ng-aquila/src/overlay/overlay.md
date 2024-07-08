@@ -66,7 +66,7 @@ If you want to use a custom scroll strategy, you can use the `NX_OVERLAY_SCROLL_
 
 ```ts
 function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
-    return () => overlay.scrollStrategies.close({ threshold: 100 });
+    return () => overlay.scrollStrategies.close();
 }
 
 @NgModule({

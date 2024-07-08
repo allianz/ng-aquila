@@ -56,8 +56,8 @@ const EXAMPLES = [
         ExamplesSharedModule,
         NxIconModule,
         NxErrorModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class DropdownExamplesModule {

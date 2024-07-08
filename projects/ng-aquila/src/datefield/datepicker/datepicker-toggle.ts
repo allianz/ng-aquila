@@ -1,5 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { NgIf } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -17,6 +18,7 @@ import {
     SimpleChanges,
     ViewChild,
 } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { merge, of as observableOf, Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -26,6 +28,7 @@ import { NxDatepickerIntl } from './datepicker-intl';
 /** Can be used to override the icon of a `nxDatepickerToggle`. */
 @Directive({
     selector: '[nxDatepickerToggleIcon]',
+    standalone: true,
 })
 export class NxDatepickerToggleIconComponent {}
 
@@ -40,6 +43,8 @@ export class NxDatepickerToggleIconComponent {}
     },
     exportAs: 'nxDatepickerToggle',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, NxIconModule],
 })
 export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterViewInit, OnChanges, OnDestroy {
     private _stateChanges = Subscription.EMPTY;

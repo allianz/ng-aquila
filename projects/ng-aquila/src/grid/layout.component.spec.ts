@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxGridModule } from './grid.module';
 import { NxLayoutComponent } from './layout.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class DirectiveTest {
     @ViewChild(NxLayoutComponent) layoutInstance!: NxLayoutComponent;
 }
@@ -34,7 +34,8 @@ describe('NxLayoutDirective', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [
+            imports: [
+                NxGridModule,
                 BasicLayout,
                 BasicContainerQueryGridLayout,
                 BasicGridLayout,
@@ -47,7 +48,6 @@ describe('NxLayoutDirective', () => {
                 BasicCompleteReverse,
                 DynamicLayout,
             ],
-            imports: [NxGridModule],
         }).compileComponents();
     }));
 
@@ -97,55 +97,77 @@ describe('NxLayoutDirective', () => {
 
 @Component({
     template: `<div nxLayout=""></div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicLayout extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid"></div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicGridLayout extends DirectiveTest {}
 @Component({
     template: `<div nxLayout="grid" [containerQuery]="true"></div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicContainerQueryGridLayout extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid" class="test"></div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicGridLayoutClassTest extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid nogutters"></div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicNoGutters extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid maxwidth"></div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicMaxWidth extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid maxwidth nogutters"></div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicCombinate extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid nogutters maxwidth"></div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class Basic2Combinate extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="maxwidth grid nogutters"></div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicCompleteReverse extends DirectiveTest {}
 
 @Component({
     template: `<div nxLayout="grid nopadding"></div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class BasicNoPadding extends DirectiveTest {}
 
 @Component({
     template: `<div [nxLayout]="layout"></div>`,
+    standalone: true,
+    imports: [NxGridModule],
 })
 class DynamicLayout extends DirectiveTest {
     layout = 'grid';

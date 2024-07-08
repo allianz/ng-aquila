@@ -15,11 +15,10 @@ describe('NxMonthView', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxNativeDateModule],
-            declarations: [
+            imports: [
+                NxNativeDateModule,
                 NxCalendarBodyComponent,
                 NxMonthViewComponent,
-
                 // Test components.
                 StandardMonthView,
                 MonthViewWithDateFilter,
@@ -312,6 +311,8 @@ describe('NxMonthView', () => {
 
 @Component({
     template: `<nx-month-view [(activeDate)]="activeDate" [(selected)]="selected"></nx-month-view>`,
+    standalone: true,
+    imports: [NxNativeDateModule, NxMonthViewComponent],
 })
 class StandardMonthView {
     @ViewChild(NxMonthViewComponent) monthView!: NxMonthViewComponent<Date>;
@@ -321,6 +322,8 @@ class StandardMonthView {
 
 @Component({
     template: `<nx-month-view [activeDate]="activeDate" [dateFilter]="dateFilter"></nx-month-view>`,
+    standalone: true,
+    imports: [NxNativeDateModule, NxMonthViewComponent],
 })
 class MonthViewWithDateFilter {
     activeDate = new Date(2017, JAN, 1);

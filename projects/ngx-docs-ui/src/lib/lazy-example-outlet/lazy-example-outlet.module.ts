@@ -6,9 +6,8 @@ import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
 import { LazyExampleOutletComponent } from './lazy-example-outlet.component';
 
 @NgModule({
-    imports: [NxSpinnerModule, CommonModule, BidiModule],
+    imports: [NxSpinnerModule, CommonModule, BidiModule, LazyExampleOutletComponent],
     exports: [LazyExampleOutletComponent],
-    declarations: [LazyExampleOutletComponent],
     providers: [],
 })
 export class NxvLazyExampleOutletModule {}

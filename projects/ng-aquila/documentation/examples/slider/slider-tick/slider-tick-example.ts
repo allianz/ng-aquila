@@ -1,4 +1,13 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
+import { NxSliderComponent } from '@aposin/ng-aquila/slider';
 
 /**
  * @title Slider Tick Example
@@ -7,6 +16,16 @@ import { Component } from '@angular/core';
     selector: 'slider-tick-example',
     templateUrl: './slider-tick-example.html',
     styleUrls: ['./slider-tick-example.css'],
+    standalone: true,
+    imports: [
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxFormfieldComponent,
+        NxInputDirective,
+        FormsModule,
+        NxSliderComponent,
+    ],
 })
 export class SliderTickExampleComponent {
     sliderDemoValue = 40;

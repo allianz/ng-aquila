@@ -6,6 +6,7 @@ import { NxFileUploaderComponent } from './file-uploader.component';
 @Directive({
     selector: '[nxFileUploadTriggerFor]',
     exportAs: 'nxFileUploadTrigger',
+    standalone: true,
 })
 export class NxFileUploaderTriggerDirective {
     /** References the file upload component instance that the trigger is associated with. */

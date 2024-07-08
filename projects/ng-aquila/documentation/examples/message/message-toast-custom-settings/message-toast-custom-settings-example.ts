@@ -1,4 +1,5 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
     NxMessageToastConfig,
     NxMessageToastRef,
@@ -18,6 +19,8 @@ export const myCustomConfig: NxMessageToastConfig = {
     selector: 'message-toast-custom-settings-example',
     templateUrl: './message-toast-custom-settings-example.html',
     styleUrls: ['./message-toast-custom-settings-example.css'],
+    standalone: true,
+    imports: [NxButtonComponent],
 })
 export class MessageToastCustomSettingsExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;

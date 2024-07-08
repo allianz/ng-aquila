@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxTaglistComponent } from '@aposin/ng-aquila/taglist';
 
 /**
  * @title Tag Formatter Example
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
     selector: 'taglist-formatter-example',
     templateUrl: './taglist-formatter-example.html',
     styleUrls: ['./taglist-formatter-example.css'],
+    standalone: true,
+    imports: [NxTaglistComponent],
 })
 export class TaglistFormatterExampleComponent {
     tags: string[] = [

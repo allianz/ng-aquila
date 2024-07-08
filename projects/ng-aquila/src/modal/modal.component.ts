@@ -1,5 +1,7 @@
 import { animateChild, query, transition, trigger, useAnimation } from '@angular/animations';
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { CdkTrapFocus, FocusMonitor } from '@angular/cdk/a11y';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -16,7 +18,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
-import { NxStatusIconType } from '@aposin/ng-aquila/icon';
+import { NxIconModule, NxStatusIconType } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -29,6 +31,7 @@ import { NxModalService } from './modal.service';
     host: {
         '[class.nx-modal__actions]': 'true',
     },
+    standalone: true,
 })
 export class NxModalActionsDirective {}
 
@@ -38,6 +41,7 @@ export class NxModalActionsDirective {}
     host: {
         '[class.nx-modal__content]': 'true',
     },
+    standalone: true,
 })
 export class NxModalContentDirective {}
 
@@ -48,6 +52,8 @@ export class NxModalContentDirective {}
         '[class.nx-modal__title]': 'true',
     },
     template: `<nx-status-icon *ngIf="status" [type]="status" class="nx-modal__status"></nx-status-icon><ng-content></ng-content>`,
+    standalone: true,
+    imports: [NgIf, NxIconModule],
 })
 export class NxModalTitleComponent {
     /**
@@ -74,6 +80,8 @@ export class NxModalTitleComponent {
         '[@fadeInOut]': '',
         '[class.nx-modal--fixed-width]': 'size === "fixed"',
     },
+    standalone: true,
+    imports: [CdkTrapFocus, NgIf, NxIconModule, CdkScrollable, NgTemplateOutlet],
 })
 export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
     private _closeButtonLabel = 'Close dialog';

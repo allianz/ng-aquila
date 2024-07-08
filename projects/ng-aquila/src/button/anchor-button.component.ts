@@ -13,5 +13,6 @@ import { NxAnchorButtonBase } from './button-base';
     host: {
         class: 'nx-button',
     },
+    standalone: true,
 })
 export class NxAnchorButtonComponent extends NxAnchorButtonBase {}

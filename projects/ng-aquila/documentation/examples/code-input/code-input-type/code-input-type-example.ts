@@ -1,5 +1,15 @@
+import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCodeInputComponent } from '@aposin/ng-aquila/code-input';
 
 /**
  * @title Code input type example
@@ -8,6 +18,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     selector: 'code-input-type-example',
     templateUrl: './code-input-type-example.html',
     styleUrls: ['./code-input-type-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxCodeInputComponent,
+        NgIf,
+        NxErrorComponent,
+        NxButtonComponent,
+    ],
 })
 export class CodeInputTypeExampleComponent implements OnInit {
     inputValue = '';

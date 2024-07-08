@@ -14,7 +14,7 @@ class MyIntl extends NxCodeInputIntl {
     ofLabel = 'testOf';
 }
 
-@Directive()
+@Directive({ standalone: true })
 abstract class CodeInputTest {
     @ViewChild(NxCodeInputComponent) codeInputInstance!: NxCodeInputComponent;
 
@@ -43,9 +43,18 @@ describe('NxCodeInputComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
-            declarations: [CodeInputTest1, CodeInputTest2, CodeInputTest3, NumberCodeInput, ConfigurableCodeInput, OverrideDefaultLabelsCodeInput],
-            providers: [NxCodeInputIntl],
+            imports: [
+                NxCodeInputModule,
+                FormsModule,
+                ReactiveFormsModule,
+                CodeInputTest1,
+                CodeInputTest2,
+                CodeInputTest3,
+                NumberCodeInput,
+                ConfigurableCodeInput,
+                OverrideDefaultLabelsCodeInput,
+            ],
+            providers: [],
         }).compileComponents();
     }));
 
@@ -372,6 +381,21 @@ describe('NxCodeInputComponent', () => {
         });
     });
 
+    it('should be possible to override Intl class from parent injector', () => {
+        TestBed.resetTestingModule()
+            .configureTestingModule({
+                imports: [ConfigurableCodeInput],
+                providers: [{ provide: NxCodeInputIntl, useClass: MyIntl }],
+            })
+            .compileComponents();
+        createTestComponent(ConfigurableCodeInput);
+        const inputElements = codeInputElement.querySelectorAll('.nx-code-input__field');
+
+        Array.from(inputElements).forEach((inputEl, index) => {
+            expect((inputEl as HTMLElement).getAttribute('aria-label')).toBe(`Test ${index + 1} testOf ${inputElements.length}`);
+        });
+    });
+
     describe('a11y', () => {
         it('has no accessibility violations', async () => {
             createTestComponent(CodeInputTest1);
@@ -386,6 +410,8 @@ describe('NxCodeInputComponent', () => {
             <nx-code-input [length]="4" convertTo="upper" formControlName="keyCode"></nx-code-input>
         </form>
     `,
+    standalone: true,
+    imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class CodeInputTest1 extends CodeInputTest {
     inputValue = '';
@@ -403,6 +429,8 @@ class CodeInputTest1 extends CodeInputTest {
             <nx-code-input formControlName="keyCode2"></nx-code-input>
         </form>
     `,
+    standalone: true,
+    imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class CodeInputTest2 extends CodeInputTest {
     inputValue2 = '';
@@ -423,6 +451,8 @@ class CodeInputTest2 extends CodeInputTest {
         </form>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class CodeInputTest3 extends CodeInputTest {
     inputValue3 = '';
@@ -437,16 +467,22 @@ class CodeInputTest3 extends CodeInputTest {
 @Component({
     template: `<nx-code-input [length]="4" type="number"></nx-code-input>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class NumberCodeInput extends CodeInputTest {}
 
 @Component({
     template: `<nx-code-input [negative]="negative" [disabled]="disabled" [length]="4" [tabindex]="tabindex" [type]="type"> </nx-code-input>`,
+    standalone: true,
+    imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class ConfigurableCodeInput extends CodeInputTest {}
 
 @Component({
     template: `<nx-code-input [length]="4"></nx-code-input>`,
     providers: [{ provide: NxCodeInputIntl, useClass: MyIntl }],
+    standalone: true,
+    imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class OverrideDefaultLabelsCodeInput extends CodeInputTest {}

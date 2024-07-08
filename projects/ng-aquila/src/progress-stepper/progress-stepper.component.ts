@@ -32,6 +32,7 @@ import { takeUntil, takeWhile } from 'rxjs/operators';
     exportAs: 'nxStep',
     providers: [{ provide: ErrorStateMatcher, useExisting: NxStepComponent }],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnChanges, OnDestroy {
     constructor(
@@ -108,6 +109,7 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
 @Directive({
     selector: '[nxProgressStepper]',
     exportAs: 'nxProgressStepper',
+    standalone: true,
 })
 export class NxProgressStepperDirective extends CdkStepper implements AfterContentInit {
     // Do not initialize with an empty QueryList or the hasNext() function produces

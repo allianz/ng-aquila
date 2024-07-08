@@ -1,4 +1,6 @@
+import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 /** @docs-private */
 @Component({
@@ -14,6 +16,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
         '[class.is-negative]': 'negative',
         '[class.is-touched]': 'touched',
     },
+    standalone: true,
+    imports: [NgIf, NxIconModule],
 })
 export class NxIconToggleButtonComponent {
     @Input() inGroup = true;

@@ -8,9 +8,8 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxVersionSelectComponent } from './version-select.component';
 
 @NgModule({
-    imports: [NxButtonModule, NxContextMenuModule, FormsModule, CommonModule, NxIconModule],
+    imports: [NxButtonModule, NxContextMenuModule, FormsModule, CommonModule, NxIconModule, NxVersionSelectComponent],
     exports: [NxVersionSelectComponent],
-    declarations: [NxVersionSelectComponent],
     providers: [],
 })
 export class NxvVersionSelectModule {}

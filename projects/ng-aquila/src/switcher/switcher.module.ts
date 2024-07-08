@@ -6,8 +6,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxSwitcherComponent } from './switcher.component';
 
 @NgModule({
-    declarations: [NxSwitcherComponent],
     exports: [NxSwitcherComponent],
-    imports: [CommonModule, NxIconModule, ObserversModule],
+    imports: [CommonModule, NxIconModule, ObserversModule, NxSwitcherComponent],
 })
 export class NxSwitcherModule {}

@@ -6,8 +6,7 @@ import { LabelExampleComponent } from './label/label-example';
 const EXAMPLES = [LabelExampleComponent];
 
 @NgModule({
-    imports: [NxLabelModule],
-    declarations: [EXAMPLES],
+    imports: [NxLabelModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class LabelExamplesModule {

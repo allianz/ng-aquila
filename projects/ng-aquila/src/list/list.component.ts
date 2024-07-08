@@ -21,6 +21,7 @@ export type NxListSize = 'xsmall' | 'small' | 'normal';
         '[class.nx-list--negative]': 'negative',
         '[class.nx-list--ordered-circle]': 'orderedCircle',
     },
+    standalone: true,
 })
 export class NxListComponent {
     /**

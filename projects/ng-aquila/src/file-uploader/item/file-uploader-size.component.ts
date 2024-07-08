@@ -1,3 +1,4 @@
+import { DecimalPipe, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 /** Shows a file size in Megabyte (MB) or an alternative label while the file is uploading. */
@@ -10,6 +11,8 @@ import { Component, Input } from '@angular/core';
             <span>{{ size / 1024 / 1024 | number: '.2' }} MB</span>
         </ng-template>
     `,
+    standalone: true,
+    imports: [NgIf, DecimalPipe],
 })
 export class NxFileUploaderItemSize {
     /** The size of the file in bytes.*/

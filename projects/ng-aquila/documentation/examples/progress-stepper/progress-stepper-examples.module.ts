@@ -42,8 +42,8 @@ const EXAMPLES = [
         NxSliderModule,
         NxDropdownModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class ProgressExamplesModule {

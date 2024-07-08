@@ -1,6 +1,8 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NgIf } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { PopoverDirection, PopoverTriggerScrollStrategy } from '@aposin/ng-aquila/popover';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxPopoverModule, PopoverDirection, PopoverTriggerScrollStrategy } from '@aposin/ng-aquila/popover';
 
 /** The contextual type of a signal button. */
 export type NxSignalButtonContext = 'success' | 'warning' | 'error';
@@ -20,6 +22,8 @@ const ICONS: { [k: string]: string } = {
         '[class.context-warning]': 'this._context === "warning"',
         '[class.context-error]': 'this._context === "error"',
     },
+    standalone: true,
+    imports: [NxPopoverModule, NgIf, NxIconModule],
 })
 export class NxSignalButtonComponent {
     private _popoverDirection: PopoverDirection = 'bottom';

@@ -1,5 +1,5 @@
 import { ActiveDescendantKeyManager, LiveAnnouncer } from '@angular/cdk/a11y';
-import { Direction, Directionality } from '@angular/cdk/bidi';
+import { Dir, Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SHIFT, SPACE, TAB, UP_ARROW } from '@angular/cdk/keycodes';
@@ -11,6 +11,7 @@ import {
     Overlay,
     ScrollStrategy,
 } from '@angular/cdk/overlay';
+import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -25,6 +26,8 @@ import {
     ElementRef,
     EventEmitter,
     Inject,
+    inject,
+    Injectable,
     InjectionToken,
     Input,
     isDevMode,
@@ -41,7 +44,9 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxAbstractControl } from '@aposin/ng-aquila/shared';
+import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
 import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
@@ -68,6 +73,7 @@ export interface NxDropdownOption {
 export type NxDropdownPanelMinWidth = 'trigger' | 'none';
 
 /** Dropdown data that requires internationalization. */
+@Injectable({ providedIn: 'root' })
 export class NxDropdownIntl {
     /**
      * Stream that emits whenever the labels here are changed. Use this to notify
@@ -76,7 +82,11 @@ export class NxDropdownIntl {
     readonly changes = new Subject<void>();
     /** A label for the multi-select component. */
     selectAll = 'Select all';
-    /** A label for the multi-select component. */
+    /**
+     * A label for the multi-select component.
+     * @deprecated No longer used.
+     * @deletion-target 18.0.0
+     */
     clearAll = 'Clear all';
 }
 
@@ -91,14 +101,28 @@ export class NxDropdownSelectChange<T = any> {
 }
 
 /** Injection token that determines the scroll handling while a dropdown is open. */
-export const NX_DROPDOWN_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-dropdown-scroll-strategy');
+export const NX_DROPDOWN_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-dropdown-scroll-strategy', {
+    providedIn: 'root',
+    factory: () => {
+        const overlay = inject(Overlay);
+        return () => overlay.scrollStrategies.reposition();
+    },
+});
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export function NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
     return () => overlay.scrollStrategies.reposition();
 }
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export const NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER = {
     provide: NX_DROPDOWN_SCROLL_STRATEGY,
     useFactory: NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER_FACTORY,
@@ -153,6 +177,8 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         '(blur)': '_onBlur()',
         '(click)': 'openedByKeyboard = false; openPanel($event)',
     },
+    standalone: true,
+    imports: [CdkOverlayOrigin, NgIf, NgTemplateOutlet, NxIconModule, CdkConnectedOverlay, Dir, NgFor, NxDropdownItemComponent, NxTooltipModule],
 })
 export class NxDropdownComponent
     implements NxAbstractControl, NxDropdownControl, ControlValueAccessor, OnInit, AfterViewInit, AfterContentInit, OnDestroy, DoCheck

@@ -1,3 +1,4 @@
+import { NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import {
     AfterContentChecked,
     AfterContentInit,
@@ -18,6 +19,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import { Validators } from '@angular/forms';
+import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 import { asapScheduler, merge, Subject } from 'rxjs';
 import { observeOn, startWith, takeUntil } from 'rxjs/operators';
 
@@ -77,6 +79,8 @@ export type AppearanceType = 'outline' | 'auto';
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    standalone: true,
+    imports: [NgIf, NxTooltipModule, NgSwitch, NgSwitchCase],
 })
 export class NxFormfieldComponent implements AfterContentInit, AfterContentChecked, OnDestroy {
     protected _negative = false;

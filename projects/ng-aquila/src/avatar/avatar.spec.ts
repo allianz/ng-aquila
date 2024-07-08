@@ -5,7 +5,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxAvatarComponent, NxAvatarSize } from './avatar';
 import { NxAvatarModule } from './avatar.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class AvatarTest {
     @ViewChild(NxAvatarComponent) avatarInstance!: NxAvatarComponent;
     size: NxAvatarSize = 'small';
@@ -27,8 +27,7 @@ describe('NxAvatarComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxAvatarModule, NxIconModule],
-            declarations: [AvatarWithText, AvatarWithIcon, AvatarWithImage, AvatarButton, ConfigurableAvatar],
+            imports: [NxAvatarModule, NxIconModule, AvatarWithText, AvatarWithIcon, AvatarWithImage, AvatarButton, ConfigurableAvatar],
         }).compileComponents();
     }));
 
@@ -89,6 +88,8 @@ describe('NxAvatarComponent', () => {
 
 @Component({
     template: `<div nxAvatar>SM</div>`,
+    standalone: true,
+    imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarWithText extends AvatarTest {}
 
@@ -98,6 +99,8 @@ class AvatarWithText extends AvatarTest {}
             <nx-icon name="user-o"></nx-icon>
         </div>
     `,
+    standalone: true,
+    imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarWithIcon extends AvatarTest {}
 
@@ -109,15 +112,21 @@ class AvatarWithIcon extends AvatarTest {}
             </figure>
         </div>
     `,
+    standalone: true,
+    imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarWithImage extends AvatarTest {}
 
 @Component({
     template: `<button nxAvatar>SM</button>`,
+    standalone: true,
+    imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarButton extends AvatarTest {}
 
 @Component({
     template: `<div nxAvatar [size]="size">SM</div>`,
+    standalone: true,
+    imports: [NxAvatarModule, NxIconModule],
 })
 class ConfigurableAvatar extends AvatarTest {}

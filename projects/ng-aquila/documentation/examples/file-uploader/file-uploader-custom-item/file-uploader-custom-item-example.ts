@@ -1,14 +1,28 @@
+import { NgIf } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
+import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
     FileItem,
+    NxFileUploaderButtonDirective,
     NxFileUploaderComponent,
+    NxFileUploaderComponent as NxFileUploaderComponent_1,
+    NxFileUploaderItemDelete,
+    NxFileUploaderItemName,
+    NxFileUploaderItemSize,
+    NxFileUploaderItemStatus,
 } from '@aposin/ng-aquila/file-uploader';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import {
     NxMessageToastConfig,
     NxMessageToastService,
 } from '@aposin/ng-aquila/message';
+import {
+    NxRadioComponent,
+    NxRadioGroupComponent,
+} from '@aposin/ng-aquila/radio-button';
 
 export class CustomFileItem extends FileItem {
     formData!: FormData;
@@ -25,6 +39,23 @@ export const myCustomConfig: NxMessageToastConfig = {
     selector: 'file-uploader-custom-item-example',
     templateUrl: './file-uploader-custom-item-example.html',
     styleUrls: ['./file-uploader-custom-item-example.css'],
+    standalone: true,
+    imports: [
+        NxFileUploaderComponent_1,
+        FormsModule,
+        NxLabelComponent,
+        NxButtonComponent,
+        NxFileUploaderButtonDirective,
+        NxIconComponent,
+        NgIf,
+        NxErrorComponent,
+        NxFileUploaderItemName,
+        NxFileUploaderItemSize,
+        NxFileUploaderItemStatus,
+        NxFileUploaderItemDelete,
+        NxRadioGroupComponent,
+        NxRadioComponent,
+    ],
 })
 export class FileUploaderCustomItemExampleComponent {
     myFiles: CustomFileItem[] = [];

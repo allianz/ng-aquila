@@ -1,5 +1,16 @@
+import { JsonPipe, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxCircleToggleComponent,
+    NxCircleToggleGroupComponent,
+} from '@aposin/ng-aquila/circle-toggle';
 
 /**
  * @title Reactive example
@@ -8,6 +19,16 @@ import { FormBuilder, Validators } from '@angular/forms';
     selector: 'circle-toggle-reactive-example',
     templateUrl: './circle-toggle-reactive-example.html',
     styleUrls: ['./circle-toggle-reactive-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxCircleToggleGroupComponent,
+        NgFor,
+        NxCircleToggleComponent,
+        NxButtonComponent,
+        JsonPipe,
+    ],
 })
 export class CircleToggleReactiveExampleComponent {
     formBuilder = new FormBuilder();

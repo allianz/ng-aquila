@@ -1,4 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxGridModule } from '@aposin/ng-aquila/grid';
 
 /**
  * @title PanelGrow and panelMaxWidth dropdown example
@@ -7,6 +11,8 @@ import { Component } from '@angular/core';
     selector: 'dropdown-panelgrow-example',
     templateUrl: './dropdown-panelgrow-example.html',
     styleUrls: ['./dropdown-panelgrow-example.css'],
+    standalone: true,
+    imports: [NxGridModule, NxFormfieldModule, NxDropdownModule, CommonModule],
 })
 export class DropdownPanelgrowExampleComponent {
     options = [

@@ -1,7 +1,9 @@
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, Input, Optional } from '@angular/core';
 
 import { DATA_DISPLAY_DEFAULT_OPTIONS, DataDisplayDefaultOptions, NxDataDisplayOrientation, NxDataDisplaySize } from '../data-display.models';
+import { NxDataDisplayLabelComponent } from '../data-display-label/data-display-label.component';
 
 /**
  * Data display component.
@@ -22,6 +24,8 @@ import { DATA_DISPLAY_DEFAULT_OPTIONS, DataDisplayDefaultOptions, NxDataDisplayO
         '[class.nx-data-display__label-columns-8]': 'labelColumns === 8',
         '[class.nx-data-display__label-columns-9]': 'labelColumns === 9',
     },
+    standalone: true,
+    imports: [NgIf, NxDataDisplayLabelComponent],
 })
 export class NxDataDisplayComponent {
     /**

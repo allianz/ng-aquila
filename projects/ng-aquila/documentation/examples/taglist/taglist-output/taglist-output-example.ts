@@ -1,4 +1,6 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { NxTaglistComponent } from '@aposin/ng-aquila/taglist';
 
 /**
  * @title Tag Output Example
@@ -7,6 +9,8 @@ import { Component } from '@angular/core';
     selector: 'taglist-output-example',
     templateUrl: './taglist-output-example.html',
     styleUrls: ['./taglist-output-example.css'],
+    standalone: true,
+    imports: [NxTaglistComponent, NgIf],
 })
 export class TaglistOutputExampleComponent {
     tags = ['Apples', 'Oranges'];

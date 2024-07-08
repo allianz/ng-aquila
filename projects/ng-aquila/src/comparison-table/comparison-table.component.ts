@@ -1,6 +1,7 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceArray, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
+import { NgFor, NgIf, NgStyle, NgTemplateOutlet } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectorRef,
@@ -26,6 +27,7 @@ import { NxComparisonTableViewType } from './comparison-table.models';
 import { NxComparisonTableBase } from './comparison-table-base';
 import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
 import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group.directive';
+import { NxComparisonTableDesktopGroup } from './desktop-group/desktop-group.component';
 import { NxComparisonTableFlexRow } from './flex-row/flex-row.component';
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
 import { NxTableContentElement } from './table-content-element.directive';
@@ -38,6 +40,8 @@ import { NxToggleSectionAnimations } from './toggle-section/toggle-section-anima
     styleUrls: ['./comparison-table.component.scss'],
     animations: [NxToggleSectionAnimations.bodyExpansion],
     providers: [{ provide: NxComparisonTableBase, useExisting: NxComparisonTableComponent }],
+    standalone: true,
+    imports: [NgIf, NgTemplateOutlet, NxComparisonTableFlexRow, NgStyle, NgFor, NxComparisonTableDesktopGroup],
 })
 export class NxComparisonTableComponent extends NxComparisonTableBase implements OnInit, AfterViewInit, OnDestroy {
     // Attention: this contains all rows and toggle sections, AND all rows contained in a toggle section!

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
 
 /**
  * @title Negative styling example
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
     selector: 'copytext-negative-example',
     templateUrl: './copytext-negative-example.html',
     styleUrls: ['./copytext-negative-example.css'],
+    standalone: true,
+    imports: [NxCopytextComponent],
 })
 export class CopytextNegativeExampleComponent {}

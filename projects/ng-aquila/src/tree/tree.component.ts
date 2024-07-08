@@ -48,6 +48,8 @@ import { NxTreeNodeOutletDirective } from './outlet';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{ provide: CdkTree, useExisting: NxTreeComponent }],
+    standalone: true,
+    imports: [NxTreeNodeOutletDirective],
 })
 export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit {
     // Outlets within the tree's template where the dataNodes will be inserted.

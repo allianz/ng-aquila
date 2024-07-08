@@ -9,6 +9,7 @@ import { Directive, ElementRef } from '@angular/core';
         '[attr.role]': '"treeitem"',
         '[attr.aria-level]': '_treeNode?.level + 1',
     },
+    standalone: true,
 })
 export class NxTreeNodeActionItem<T> {
     constructor(

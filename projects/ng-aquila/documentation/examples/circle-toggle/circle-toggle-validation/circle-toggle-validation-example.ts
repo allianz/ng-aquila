@@ -1,10 +1,19 @@
+import { JsonPipe, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     AbstractControl,
     FormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
     ValidatorFn,
     Validators,
 } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxCircleToggleComponent,
+    NxCircleToggleGroupComponent,
+} from '@aposin/ng-aquila/circle-toggle';
 
 const selectBothValidator: ValidatorFn = (ctrl: AbstractControl) => {
     const heart = ctrl.get('heart')?.value;
@@ -20,6 +29,18 @@ const selectBothValidator: ValidatorFn = (ctrl: AbstractControl) => {
     selector: 'circle-toggle-validation-example',
     templateUrl: './circle-toggle-validation-example.html',
     styleUrls: ['./circle-toggle-validation-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxCircleToggleGroupComponent,
+        NgFor,
+        NxCircleToggleComponent,
+        NxErrorComponent,
+        NxButtonComponent,
+        NgIf,
+        JsonPipe,
+    ],
 })
 export class CircleToggleValidationExampleComponent {
     formBuilder = new FormBuilder();

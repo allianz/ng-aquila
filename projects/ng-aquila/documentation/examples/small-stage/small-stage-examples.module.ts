@@ -28,8 +28,8 @@ const EXAMPLES = [
         NxLinkModule,
         NxIconModule,
         NgOptimizedImage,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class SmallExamplesModule {

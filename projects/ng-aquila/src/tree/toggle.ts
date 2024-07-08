@@ -8,6 +8,7 @@ import { Directive } from '@angular/core';
     selector: '[nxTreeNodeToggle]',
     inputs: ['recursive: nxTreeNodeToggleRecursive'],
     providers: [{ provide: CdkTreeNodeToggle, useExisting: NxTreeNodeToggleDirective }],
+    standalone: true,
     host: {
         '[attr.aria-expanded]': '_treeNode?.isExpanded',
     },

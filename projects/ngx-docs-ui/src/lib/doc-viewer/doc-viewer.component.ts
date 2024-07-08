@@ -5,6 +5,7 @@ import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/cor
     selector: 'nxv-doc-viewer',
     template: 'Loading document...',
     styleUrls: ['./doc-viewer.component.css'],
+    standalone: true,
 })
 export class DocViewerComponent {
     @Input() set fileUrl(url: string) {

@@ -1,5 +1,9 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { Component, ElementRef, Inject, Input, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -14,6 +18,8 @@ import { NXV_FEEDBACK_LINKS } from './../../core/tokens';
         '[class.is-mobile]': 'showMobileView',
         '[class.is-desktop]': '!showMobileView',
     },
+    standalone: true,
+    imports: [NgIf, NgTemplateOutlet, NxPopoverModule, NxIconModule, NxButtonModule],
 })
 export class NxvFeedbackComponent implements OnInit, OnDestroy {
     @ViewChild('mobileButton') mobileButton!: ElementRef;

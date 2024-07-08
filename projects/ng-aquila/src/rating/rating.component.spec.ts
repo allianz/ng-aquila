@@ -30,8 +30,10 @@ describe('NxRatingComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
-            declarations: [
+            imports: [
+                FormsModule,
+                ReactiveFormsModule,
+                NxRatingModule,
                 SizeRatingComponent,
                 SimpleRatingComponent,
                 SimpleBindingRatingComponent,
@@ -291,18 +293,22 @@ describe('NxRatingComponent', () => {
     });
 });
 
-@Directive()
+@Directive({ standalone: true })
 class RatingTest {
     @ViewChild(NxRatingComponent) rating: any;
 }
 
 @Component({
     template: `<nx-rating startLabel="poor" endLabel="great"></nx-rating>`,
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class SimpleRatingComponent extends RatingTest {}
 
 @Component({
     template: `<nx-rating [(value)]="theValue"></nx-rating>`,
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class SimpleBindingRatingComponent extends RatingTest {
     theValue: any;
@@ -310,6 +316,8 @@ class SimpleBindingRatingComponent extends RatingTest {
 
 @Component({
     template: `<nx-rating [(ngModel)]="theValue"></nx-rating>`,
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class NgModelBindingRatingComponent extends RatingTest {
     theValue: any;
@@ -321,6 +329,8 @@ class NgModelBindingRatingComponent extends RatingTest {
             <nx-rating formControlName="rating"></nx-rating>
         </form>
     `,
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class ReactiveBindingRatingComponent extends RatingTest {
     testForm = new FormBuilder().group({
@@ -331,6 +341,8 @@ class ReactiveBindingRatingComponent extends RatingTest {
 @Component({
     template: `<nx-rating [value]="currentValue" [startLabel]="startLabel" [endLabel]="endLabel"></nx-rating>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class RatingOnPushComponent extends RatingTest {
     startLabel = 'startLabel';
@@ -341,6 +353,8 @@ class RatingOnPushComponent extends RatingTest {
 @Component({
     template: `<nx-rating [(ngModel)]="ngModelValue"></nx-rating>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class TemplateDrivenOnPushComponent extends RatingTest {
     ngModelValue = 2;
@@ -348,6 +362,8 @@ class TemplateDrivenOnPushComponent extends RatingTest {
 
 @Component({
     template: `<nx-rating [size]="size"></nx-rating>`,
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class SizeRatingComponent extends RatingTest {
     size = 'm';

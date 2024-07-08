@@ -23,7 +23,7 @@ export async function createWorkspace(runner: SchematicTestRunner, tree?: Tree):
 }
 
 export async function createApp(runner: SchematicTestRunner, tree: Tree, options = {}): Promise<UnitTestTree> {
-    // temporary fix to set standalone: false that the starter app tests still work.
+    // temporary fix to set  standalone: false that the starter app tests still work.
     return runner.runExternalSchematic('@schematics/angular', 'application', options, tree);
 }
 

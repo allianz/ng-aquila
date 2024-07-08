@@ -14,6 +14,7 @@ import {
     forwardRef,
     Host,
     Inject,
+    inject,
     InjectionToken,
     Input,
     NgZone,
@@ -42,14 +43,28 @@ export const NX_AUTOCOMPLETE_VALUE_ACCESSOR: any = {
 };
 
 /** Injection token that determines the scroll handling while an autocomplete is open. */
-export const NX_AUTOCOMPLETE_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-autocomplete-scroll-strategy');
+export const NX_AUTOCOMPLETE_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-autocomplete-scroll-strategy', {
+    providedIn: 'root',
+    factory: () => {
+        const overlay = inject(Overlay);
+        return () => overlay.scrollStrategies.reposition();
+    },
+});
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export function NX_AUTOCOMPLETE_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
     return () => overlay.scrollStrategies.reposition();
 }
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export const NX_AUTOCOMPLETE_SCROLL_STRATEGY_PROVIDER = {
     provide: NX_AUTOCOMPLETE_SCROLL_STRATEGY,
     useFactory: NX_AUTOCOMPLETE_SCROLL_STRATEGY_PROVIDER_FACTORY,
@@ -85,6 +100,7 @@ export function getNxAutocompleteMissingPanelError(): Error {
     },
     exportAs: 'nxAutocompleteTrigger',
     providers: [NX_AUTOCOMPLETE_VALUE_ACCESSOR],
+    standalone: true,
 })
 export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnDestroy, OnChanges, AfterViewInit, OnInit {
     private _overlayRef!: OverlayRef | null;

@@ -1,5 +1,16 @@
+import { JsonPipe, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
+import {
+    NxCheckboxComponent,
+    NxCheckboxGroupComponent,
+} from '@aposin/ng-aquila/checkbox';
 
 /**
  * @title Checkbox group inheritance example
@@ -8,6 +19,17 @@ import { FormBuilder, Validators } from '@angular/forms';
     selector: 'checkbox-group-inheritance-example',
     templateUrl: './checkbox-group-inheritance-example.html',
     styleUrls: ['./checkbox-group-inheritance-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxCheckboxComponent,
+        NgClass,
+        NxCheckboxGroupComponent,
+        NxLabelComponent,
+        NxErrorComponent,
+        JsonPipe,
+    ],
 })
 export class CheckboxGroupInheritanceExampleComponent {
     readonly optionsForm = this.fb.group({

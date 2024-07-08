@@ -5,7 +5,7 @@ import { NxBreadcrumbComponent } from './breadcrumb.component';
 import { NxBreadcrumbModule } from './breadcrumb.module';
 import { NxBreadcrumbItemComponent } from './breadcrumb-item.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class BreadcrumbTest {
     @ViewChild(NxBreadcrumbComponent) breadcrumbInstance!: NxBreadcrumbComponent;
     @ViewChildren(NxBreadcrumbItemComponent) breadcrumbItems!: QueryList<NxBreadcrumbItemComponent>;
@@ -25,8 +25,7 @@ describe('NxBreadcrumbComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxBreadcrumbModule],
-            declarations: [BasicBreadcrumbComponent, BreadcrumbOnPushComponent, DynamicBreadcrumbComponent, LinkBreadcrumbComponent],
+            imports: [NxBreadcrumbModule, BasicBreadcrumbComponent, BreadcrumbOnPushComponent, DynamicBreadcrumbComponent, LinkBreadcrumbComponent],
         }).compileComponents();
     }));
 
@@ -83,6 +82,8 @@ describe('NxBreadcrumbComponent', () => {
         </ol>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxBreadcrumbModule],
 })
 class BreadcrumbOnPushComponent extends BreadcrumbTest {
     negative = true;
@@ -99,6 +100,8 @@ class BreadcrumbOnPushComponent extends BreadcrumbTest {
             </li>
         </ol>
     `,
+    standalone: true,
+    imports: [NxBreadcrumbModule],
 })
 class BasicBreadcrumbComponent extends BreadcrumbTest {
     negative = false;
@@ -107,13 +110,17 @@ class BasicBreadcrumbComponent extends BreadcrumbTest {
 @Component({
     template: `
         <ol nxBreadcrumb>
-            <li *ngFor="let item of items">
-                <a nxBreadcrumbItem>
-                    {{ item }}
-                </a>
-            </li>
+            @for (item of items; track item) {
+                <li>
+                    <a nxBreadcrumbItem>
+                        {{ item }}
+                    </a>
+                </li>
+            }
         </ol>
     `,
+    standalone: true,
+    imports: [NxBreadcrumbModule],
 })
 class DynamicBreadcrumbComponent extends BreadcrumbTest {
     items = ['Home', 'Test', 'Test2'];
@@ -130,6 +137,8 @@ class DynamicBreadcrumbComponent extends BreadcrumbTest {
             </li>
         </ol>
     `,
+    standalone: true,
+    imports: [NxBreadcrumbModule],
 })
 class LinkBreadcrumbComponent extends BreadcrumbTest {
     appearance = 'link';

@@ -19,9 +19,8 @@ describe('NxDatepicker', () => {
     // Creates a test component fixture.
     function createComponent(component: any, imports: any[] = [], providers: any[] = []): ComponentFixture<any> {
         TestBed.configureTestingModule({
-            imports: [FormsModule, NxDatefieldModule, NxFormfieldModule, NxInputModule, NoopAnimationsModule, ReactiveFormsModule, ...imports],
+            imports: [FormsModule, NxDatefieldModule, NxFormfieldModule, NxInputModule, NoopAnimationsModule, ReactiveFormsModule, ...imports, component],
             providers,
-            declarations: [component],
         }).compileComponents();
 
         return TestBed.createComponent(component);
@@ -115,6 +114,8 @@ describe('NxDatepicker', () => {
         <input nxDatefield [datepicker]="d" [value]="date" />
         <nx-datepicker #d [disabled]="disabled" [opened]="opened"></nx-datepicker>
     `,
+    standalone: true,
+    imports: [NxDatefieldModule, NxFormfieldModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class StandardDatepicker {
     opened = false;

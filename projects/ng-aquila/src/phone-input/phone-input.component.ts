@@ -1,5 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NgIf } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -16,8 +17,8 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { NxDropdownComponent, NxDropdownOption } from '@aposin/ng-aquila/dropdown';
+import { ControlValueAccessor, FormControl, FormGroupDirective, FormsModule, NgControl, NgForm } from '@angular/forms';
+import { NxDropdownComponent, NxDropdownModule, NxDropdownOption } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
@@ -44,6 +45,8 @@ let next = 0;
         '[role]': '"group"',
         '[attr.aria-labelledby]': '_ariaLabelledBy',
     },
+    standalone: true,
+    imports: [NxDropdownModule, FormsModule, NgIf],
 })
 export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldControl<any>, OnDestroy, DoCheck, OnInit, AfterViewInit, NxAbstractControl {
     @ViewChild(NxDropdownComponent, { static: true }) dropdown!: NxDropdownComponent;

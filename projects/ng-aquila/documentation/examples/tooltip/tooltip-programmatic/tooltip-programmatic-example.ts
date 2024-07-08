@@ -1,5 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { NxTooltipDirective } from '@aposin/ng-aquila/tooltip';
+import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxTooltipDirective,
+    NxTooltipDirective as NxTooltipDirective_1,
+} from '@aposin/ng-aquila/tooltip';
 
 /**
  * @title Tooltip programmatic toggling
@@ -8,6 +13,8 @@ import { NxTooltipDirective } from '@aposin/ng-aquila/tooltip';
     selector: 'tooltip-programmatic-example',
     templateUrl: './tooltip-programmatic-example.html',
     styleUrls: ['./tooltip-programmatic-example.css'],
+    standalone: true,
+    imports: [NxButtonComponent, NxBadgeComponent, NxTooltipDirective_1],
 })
 export class TooltipProgrammaticExampleComponent {
     @ViewChild(NxTooltipDirective, { static: true })

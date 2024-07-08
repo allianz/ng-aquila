@@ -12,6 +12,7 @@ import { NxExpandable } from './toggle-button.component';
 @Directive({
     selector: 'table[nxExpandableTable]',
     exportAs: 'nxExpandableTable',
+    standalone: true,
 })
 export class NxExpandableTableDirective implements OnDestroy, AfterViewInit, NxExpandable {
     @ContentChildren(NxExpandableTableRowComponent, { descendants: true }) rows!: QueryList<NxExpandableTableRowComponent>;

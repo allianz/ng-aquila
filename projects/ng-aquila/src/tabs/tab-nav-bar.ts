@@ -1,6 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NgIf } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -20,6 +21,7 @@ import {
 } from '@angular/core';
 import { NxViewportService } from '@aposin/ng-aquila/utils';
 
+import { NxTabScrollIndicator } from './scroll-indicator/scroll-indicator';
 import { NxScrollableTabBar } from './scrollable-tab-bar';
 import { NxTabsAppearance, TAB_NAV_BAR_DEFAULT_OPTIONS, TabNavBarDefaultOptions } from './tabs.models';
 
@@ -36,6 +38,8 @@ import { NxTabsAppearance, TAB_NAV_BAR_DEFAULT_OPTIONS, TabNavBarDefaultOptions 
         '[class.at-start]': '_isScrolledToStart',
         '[class.scrollable]': 'scrollable',
     },
+    standalone: true,
+    imports: [NgIf, NxTabScrollIndicator],
 })
 export class NxTabNavBarComponent extends NxScrollableTabBar {
     @ViewChild('tabsList') scrollableTabsList!: ElementRef<HTMLElement>;
@@ -104,6 +108,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
         '[attr.tabindex]': '_getTabIndex()',
         '[attr.aria-disabled]': 'disabled.toString()',
     },
+    standalone: true,
 })
 export class NxTabLinkDirective implements OnDestroy, AfterViewInit {
     /** Whether the tab link is active and has the active styling. */

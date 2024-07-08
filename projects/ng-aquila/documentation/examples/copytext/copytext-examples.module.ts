@@ -10,8 +10,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxCopytextModule],
-    declarations: [EXAMPLES],
+    imports: [NxCopytextModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class CopytextExamplesModule {

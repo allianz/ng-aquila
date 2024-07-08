@@ -6,6 +6,7 @@ import { Directive, TemplateRef } from '@angular/core';
  */
 @Directive({
     selector: 'ng-template[nxPopoverContent]',
+    standalone: true,
 })
 export class NxPopoverContentDirective {
     constructor(readonly _template: TemplateRef<any>) {}

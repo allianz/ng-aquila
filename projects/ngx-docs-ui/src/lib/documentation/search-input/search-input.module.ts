@@ -6,9 +6,8 @@ import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxvSearchInputComponent } from './search-input.component';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, NxInputModule],
+    imports: [CommonModule, FormsModule, NxInputModule, NxvSearchInputComponent],
     exports: [NxvSearchInputComponent],
-    declarations: [NxvSearchInputComponent],
     providers: [],
 })
 export class NxvSearchInputModule {}

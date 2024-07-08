@@ -1,4 +1,13 @@
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxContextMenuComponent,
+    NxContextMenuHeaderComponent,
+    NxContextMenuItemComponent,
+    NxContextMenuTriggerDirective,
+} from '@aposin/ng-aquila/context-menu';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 /**
  * @title Context Menu Single Selection Example
@@ -7,6 +16,17 @@ import { Component } from '@angular/core';
     selector: 'context-menu-selection-example',
     templateUrl: './context-menu-selection-example.html',
     styleUrls: ['./context-menu-selection-example.css'],
+    standalone: true,
+    imports: [
+        NxContextMenuComponent,
+        NxContextMenuHeaderComponent,
+        NgFor,
+        NxContextMenuItemComponent,
+        NgIf,
+        NxIconComponent,
+        NxButtonComponent,
+        NxContextMenuTriggerDirective,
+    ],
 })
 export class ContextMenuSelectionExampleComponent {
     selectedLanguage = 'de';

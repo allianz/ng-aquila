@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxCopytextComponent } from './copytext.component';
 import { NxCopytextModule } from './copytext.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class CopytextTest {
     @ViewChild(NxCopytextComponent) textInstance!: NxCopytextComponent;
     size = '';
@@ -31,8 +31,7 @@ describe('NxCopytextDirective', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicCopytext],
-            imports: [NxCopytextModule],
+            imports: [NxCopytextModule, BasicCopytext],
         }).compileComponents();
     }));
 
@@ -73,5 +72,7 @@ describe('NxCopytextDirective', () => {
 
 @Component({
     template: `<p [nxCopytext]="size">Hello Text</p>`,
+    standalone: true,
+    imports: [NxCopytextModule],
 })
 class BasicCopytext extends CopytextTest {}

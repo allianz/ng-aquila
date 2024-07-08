@@ -9,7 +9,7 @@ import { NxComparisonTablePopularCell } from './popular-cell.component';
 declare let viewport: any;
 const THROTTLE_TIME = 200;
 
-@Directive()
+@Directive({ standalone: true })
 abstract class PopularCellTest {
     @ViewChild(NxComparisonTablePopularCell) popularCellInstance!: NxComparisonTablePopularCell;
     @ViewChildren(NxComparisonTableRowDirective) rowInstances!: QueryList<NxComparisonTableRowDirective>;
@@ -33,8 +33,7 @@ describe('NxComparisonTablePopularCell', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxComparisonTableModule],
-            declarations: [PopularCellComponent],
+            imports: [NxComparisonTableModule, PopularCellComponent],
         });
         TestBed.compileComponents();
     }));
@@ -154,5 +153,7 @@ describe('NxComparisonTablePopularCell', () => {
             </ng-container>
         </nx-comparison-table>
     `,
+    standalone: true,
+    imports: [NxComparisonTableModule],
 })
 class PopularCellComponent extends PopularCellTest {}

@@ -1,6 +1,7 @@
 import { FocusKeyManager } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { END, ENTER, HOME, SPACE } from '@angular/cdk/keycodes';
+import { NgIf } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -18,6 +19,7 @@ import {
 } from '@angular/core';
 import { NxViewportService } from '@aposin/ng-aquila/utils';
 
+import { NxTabScrollIndicator } from './scroll-indicator/scroll-indicator';
 import { NxScrollableTabBar } from './scrollable-tab-bar';
 import { NxTabGroupBase } from './tab-group-base';
 import { NxTabLabelWrapperDirective } from './tab-label-wrapper';
@@ -32,6 +34,8 @@ import { NxTabLabelWrapperDirective } from './tab-label-wrapper';
         '[class.at-start]': '_isScrolledToStart',
         '[class.scrollable]': 'scrollable',
     },
+    standalone: true,
+    imports: [NgIf, NxTabScrollIndicator],
 })
 export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterContentInit, AfterViewInit {
     private _keyManager!: FocusKeyManager<NxTabLabelWrapperDirective>;

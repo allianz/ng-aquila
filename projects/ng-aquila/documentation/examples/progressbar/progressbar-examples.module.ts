@@ -10,8 +10,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxProgressbarModule],
-    declarations: [EXAMPLES],
+    imports: [NxProgressbarModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class ProgressbarExamplesModule {

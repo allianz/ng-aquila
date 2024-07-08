@@ -21,7 +21,7 @@ class MyIntl extends NxSortHeaderIntl {
     sortedDescendingAriaLabel = 'absteigend sortiert';
 }
 
-@Directive()
+@Directive({ standalone: true })
 abstract class SortHeaderTest {
     @ViewChild('nameHeader') nameHeader!: NxSortHeaderComponent;
     @ViewChild('countHeader') countHeader!: NxSortHeaderComponent;
@@ -68,8 +68,7 @@ describe('NxSort', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicSortTableComponent, ConfigurableSortTableComponent],
-            imports: [NxTableModule],
+            imports: [NxTableModule, BasicSortTableComponent, ConfigurableSortTableComponent],
             providers: [{ provide: NxSortHeaderIntl, useClass: MyIntl }],
         }).compileComponents();
     }));
@@ -290,6 +289,8 @@ describe('NxSort', () => {
             </thead>
         </table>
     `,
+    standalone: true,
+    imports: [NxTableModule],
 })
 class BasicSortTableComponent extends SortHeaderTest {}
 
@@ -304,5 +305,7 @@ class BasicSortTableComponent extends SortHeaderTest {}
             </thead>
         </table>
     `,
+    standalone: true,
+    imports: [NxTableModule],
 })
 class ConfigurableSortTableComponent extends SortHeaderTest {}

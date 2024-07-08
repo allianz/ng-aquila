@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
 
 /**
  * @title Block Example
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
     selector: 'button-block-example',
     templateUrl: './button-block-example.html',
     styleUrls: ['./button-block-example.css'],
+    standalone: true,
+    imports: [NxButtonComponent],
 })
 export class ButtonBlockExampleComponent {}

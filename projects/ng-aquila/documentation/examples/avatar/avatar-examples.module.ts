@@ -16,8 +16,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxAvatarModule, NxIconModule, NxImageModule],
-    declarations: [EXAMPLES],
+    imports: [NxAvatarModule, NxIconModule, NxImageModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class AvatarExamplesModule {

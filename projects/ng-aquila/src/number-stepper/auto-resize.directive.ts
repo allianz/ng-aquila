@@ -5,6 +5,7 @@ import { getFontShorthand } from '@aposin/ng-aquila/utils';
 /** @docs-private */
 @Directive({
     selector: 'input[nxAutoResize]',
+    standalone: true,
 })
 export class NxAutoResizeDirective implements AfterViewInit, OnDestroy {
     @HostBinding('style.width.px') width!: number;

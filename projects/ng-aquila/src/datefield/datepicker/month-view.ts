@@ -1,5 +1,6 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
+import { NgFor } from '@angular/common';
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
@@ -39,6 +40,8 @@ const TOTAL_DAYS_TO_DISPLAY = 6 * DAYS_PER_WEEK;
     exportAs: 'nxMonthView',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['month-view.scss'],
+    standalone: true,
+    imports: [NgFor, NxCalendarBodyComponent],
 })
 export class NxMonthViewComponent<D> implements AfterContentInit {
     /**

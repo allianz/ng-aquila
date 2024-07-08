@@ -1,6 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { ChangeDetectorRef, Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -12,8 +13,9 @@ import { NxFileUploaderComponent } from './file-uploader.component';
 import { FileItem } from './file-uploader.model';
 import { NxFileUploaderModule } from './file-uploader.module';
 import { getFileExtension } from './file-uploader.validations';
+import { NxFileUploaderIntl } from './file-uploader-intl';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class FileUploaderTest {
     @ViewChild(NxFileUploaderComponent, { static: false }) fileUploaderInstance!: NxFileUploaderComponent;
 
@@ -26,6 +28,14 @@ abstract class FileUploaderTest {
     accept: any;
     strictAcceptValidation = false;
     noBlockingValidators = false;
+}
+
+@Injectable()
+class CustomIntl extends NxFileUploaderIntl {
+    deleteLabel = 'Test delete';
+    uploadedListLabel = 'Test uploaded list';
+    uploadedStateLabel = 'Test uploaded state';
+    uploadingLabel = 'Test uploading';
 }
 
 describe('NxFileUploaderComponent', () => {
@@ -59,8 +69,20 @@ describe('NxFileUploaderComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicFileUpload, ReactiveFileUpload, DynamicFileUpload, CustomItemTemplateFileUpload, UploadFail],
-            imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
+            imports: [
+                NxFileUploaderModule,
+                NxLabelModule,
+                NxIconModule,
+                ReactiveFormsModule,
+                FormsModule,
+                NxErrorModule,
+                BasicFileUpload,
+                ReactiveFileUpload,
+                DynamicFileUpload,
+                CustomItemTemplateFileUpload,
+                UploadFail,
+                IntlOverrideFileUpload,
+            ],
             providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
         }).compileComponents();
 
@@ -88,6 +110,24 @@ describe('NxFileUploaderComponent', () => {
 
             expect(defaultTemplateWrapper).not.toBeNull();
         }));
+    });
+
+    describe('i18n', () => {
+        it('should override the default intl', () => {
+            createTestComponent(IntlOverrideFileUpload);
+            expect((testInstance as IntlOverrideFileUpload).intl.uploadingLabel).toBe('Test uploading');
+        });
+
+        it('should be possible to override Intl class from parent injector', () => {
+            TestBed.resetTestingModule()
+                .configureTestingModule({
+                    imports: [BasicFileUpload],
+                    providers: [{ provide: NxFileUploaderIntl, useClass: CustomIntl }],
+                })
+                .compileComponents();
+            createTestComponent(BasicFileUpload);
+            expect((testInstance as BasicFileUpload).intl.uploadingLabel).toBe('Test uploading');
+        });
     });
 
     describe('Template-Driven Form', () => {
@@ -706,11 +746,44 @@ describe('NxFileUploaderComponent', () => {
             </nx-file-uploader>
         </form>
     `,
+    standalone: true,
+    imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
 })
 class BasicFileUpload extends FileUploaderTest {
     fb;
 
-    constructor() {
+    constructor(public intl: NxFileUploaderIntl) {
+        super();
+
+        this.fb = new FormBuilder();
+
+        this.form = this.fb.group({
+            documents: [],
+        });
+    }
+}
+
+@Component({
+    template: `
+        <form>
+            <nx-file-uploader>
+                <nx-label>Required file to upload</nx-label>
+                <span nxFileUploadHint>All files are accepted</span>
+                <button nxButton="primary" type="button" nxFileUploadButton>
+                    <nx-icon name="download" class="nx-margin-right-2xs"></nx-icon>
+                    Add Files
+                </button>
+            </nx-file-uploader>
+        </form>
+    `,
+    standalone: true,
+    imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
+    providers: [{ provide: NxFileUploaderIntl, useClass: CustomIntl }],
+})
+class IntlOverrideFileUpload extends FileUploaderTest {
+    fb;
+
+    constructor(public intl: NxFileUploaderIntl) {
         super();
 
         this.fb = new FormBuilder();
@@ -742,16 +815,22 @@ class BasicFileUpload extends FileUploaderTest {
                     Add Files
                 </button>
 
-                <nx-error *ngIf="form.controls['documents'].hasError('required')">Required!</nx-error>
-                <nx-error *ngIf="form.controls['documents'].hasError('NxFileUploadMaxFileSize')">
-                    File „ {{ form.controls['documents'].getError('NxFileUploadMaxFileSize').fileName | json }}“ can not be uploaded. File size exceeds size
-                    limit!
-                </nx-error>
+                @if (form.controls['documents'].hasError('required')) {
+                    <nx-error>Required!</nx-error>
+                }
+                @if (form.controls['documents'].hasError('NxFileUploadMaxFileSize')) {
+                    <nx-error>
+                        File „ {{ form.controls['documents'].getError('NxFileUploadMaxFileSize').fileName | json }}“ can not be uploaded. File size exceeds size
+                        limit!
+                    </nx-error>
+                }
             </nx-file-uploader>
 
             <button nxButton="primary" type="submit" id="submit-button">Upload files</button>
         </form>
     `,
+    standalone: true,
+    imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule, CommonModule],
 })
 class ReactiveFileUpload extends FileUploaderTest {
     fb;
@@ -781,6 +860,8 @@ class ReactiveFileUpload extends FileUploaderTest {
             </button>
         </nx-file-uploader>
     `,
+    standalone: true,
+    imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
 })
 class DynamicFileUpload extends FileUploaderTest {
     queueList: any;
@@ -826,6 +907,8 @@ class DynamicFileUpload extends FileUploaderTest {
             </section>
         </ng-template>
     `,
+    standalone: true,
+    imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
 })
 class CustomItemTemplateFileUpload extends FileUploaderTest {
     queueList: any;
@@ -848,10 +931,14 @@ class CustomItemTemplateFileUpload extends FileUploaderTest {
                 <span nxFileUploadHint>All files are accepted</span>
                 <button type="button" nxFileUploadButton>Add Files</button>
             </nx-file-uploader>
-            <nx-error *ngIf="form.controls['documents'].hasError('serverError')" class="error-message"> An error occured while uploading. </nx-error>
+            @if (form.controls['documents'].hasError('serverError')) {
+                <nx-error class="error-message"> An error occured while uploading. </nx-error>
+            }
             <button id="upload-trigger" [nxFileUploadTriggerFor]="documentUpload" type="button">Upload files</button>
         </form>
     `,
+    standalone: true,
+    imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
 })
 class UploadFail extends FileUploaderTest {
     fb: FormBuilder;

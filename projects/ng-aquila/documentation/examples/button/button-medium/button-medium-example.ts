@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
 
 /**
  * @title Medium Size Example
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
     selector: 'button-medium-example',
     templateUrl: './button-medium-example.html',
     styleUrls: ['./button-medium-example.css'],
+    standalone: true,
+    imports: [NxButtonComponent],
 })
 export class ButtonMediumExampleComponent {}

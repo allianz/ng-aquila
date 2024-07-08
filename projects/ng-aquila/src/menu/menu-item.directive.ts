@@ -10,6 +10,7 @@ import { Directive, Input } from '@angular/core';
         '[class.nx-menu__item--small]': 'size === "s"',
         '[class.nx-menu__item--large]': 'size === "l"',
     },
+    standalone: true,
 })
 export class NxMenuItemDirective {
     @Input('nxMenuItem') set size(value: string) {

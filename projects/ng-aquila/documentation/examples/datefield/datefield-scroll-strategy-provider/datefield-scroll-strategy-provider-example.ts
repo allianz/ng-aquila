@@ -1,10 +1,26 @@
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
-import { NX_DATEPICKER_SCROLL_STRATEGY } from '@aposin/ng-aquila/datefield';
+import { FormsModule } from '@angular/forms';
+import {
+    NX_DATEPICKER_SCROLL_STRATEGY,
+    NxDatefieldDirective,
+    NxDatepickerComponent,
+    NxDatepickerToggleComponent,
+} from '@aposin/ng-aquila/datefield';
+import {
+    NxFormfieldComponent,
+    NxFormfieldSuffixDirective,
+} from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
 import { Moment } from 'moment';
 
 function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
-    return () => overlay.scrollStrategies.close({ threshold: 100 });
+    return () => overlay.scrollStrategies.close();
 }
 
 /**
@@ -20,6 +36,19 @@ function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
             useFactory: scrollStrategyFactory,
             deps: [Overlay],
         },
+    ],
+    standalone: true,
+    imports: [
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxFormfieldComponent,
+        NxDatefieldDirective,
+        NxInputDirective,
+        FormsModule,
+        NxDatepickerToggleComponent,
+        NxFormfieldSuffixDirective,
+        NxDatepickerComponent,
     ],
 })
 export class DatefieldScrollStrategyProviderExampleComponent {

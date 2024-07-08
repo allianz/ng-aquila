@@ -1,4 +1,7 @@
+import { NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
 
 /** Shows the current uploading status of a file. */
 @Component({
@@ -8,6 +11,8 @@ import { Component, Input } from '@angular/core';
         <nx-spinner *ngIf="isUploading" size="medium"></nx-spinner>
         <nx-icon name="check-circle" *ngIf="isUploaded" size="s" [attr.aria-label]="uploadedLabel || null"> </nx-icon>
     `,
+    standalone: true,
+    imports: [NgIf, NxSpinnerModule, NxIconModule],
 })
 export class NxFileUploaderItemStatus {
     /** Whether the file is uploading at the moment. If this is true, a spinner is shown. Default: false.*/

@@ -4,8 +4,7 @@ import { NgModule } from '@angular/core';
 import { NxIndicatorComponent } from './indicator.component';
 
 @NgModule({
-    imports: [CommonModule],
-    declarations: [NxIndicatorComponent],
+    imports: [CommonModule, NxIndicatorComponent],
     exports: [NxIndicatorComponent],
 })
 export class NxIndicatorModule {}

@@ -1,4 +1,11 @@
+import { KeyValuePipe, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import {
+    NxHeaderCellDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+} from '@aposin/ng-aquila/table';
 
 /**
  * @title Margin sizes
@@ -7,6 +14,15 @@ import { Component } from '@angular/core';
     selector: 'margin-sizes-example',
     templateUrl: './margin-sizes-example.html',
     styleUrls: ['./margin-sizes-example.css'],
+    standalone: true,
+    imports: [
+        NxTableComponent,
+        NxTableRowComponent,
+        NxHeaderCellDirective,
+        NgFor,
+        NxTableCellComponent,
+        KeyValuePipe,
+    ],
 })
 export class MarginSizesExampleComponent {
     marginSizes = {

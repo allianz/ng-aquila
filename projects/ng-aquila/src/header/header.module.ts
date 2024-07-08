@@ -24,8 +24,7 @@ const EXPORTS = [
 ];
 
 @NgModule({
-    declarations: EXPORTS,
     exports: EXPORTS,
-    imports: [CommonModule],
+    imports: [CommonModule, ...EXPORTS],
 })
 export class NxHeaderModule {}

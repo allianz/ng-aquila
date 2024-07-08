@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Appearance, NxSidepanelComponent, NxSidepanelOuterContainerComponent, PositionType } from './sidepanel';
 import { NxSidepanelModule } from './sidepanel.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class SidepanelTest {
     @ViewChild(NxSidepanelComponent) sidebarInstance!: NxSidepanelComponent;
     @ViewChild(NxSidepanelOuterContainerComponent) wrapperInstance!: NxSidepanelOuterContainerComponent;
@@ -34,8 +34,15 @@ describe('NxSidepanelComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicSidepanel, SidepanelWithoutHeaderAndContent, ConfigurableSidepanel, SidepanelWithDirection],
-            imports: [BrowserAnimationsModule, NxSidepanelModule, BidiModule],
+            imports: [
+                BrowserAnimationsModule,
+                NxSidepanelModule,
+                BidiModule,
+                BasicSidepanel,
+                SidepanelWithoutHeaderAndContent,
+                ConfigurableSidepanel,
+                SidepanelWithDirection,
+            ],
         }).compileComponents();
     }));
 
@@ -245,6 +252,8 @@ describe('NxSidepanelComponent', () => {
             </nx-sidepanel>
         </nx-sidepanel-outer-container>
     `,
+    standalone: true,
+    imports: [NxSidepanelModule, BidiModule],
 })
 class BasicSidepanel extends SidepanelTest {}
 
@@ -255,6 +264,8 @@ class BasicSidepanel extends SidepanelTest {}
             <nx-sidepanel>My sidepanel</nx-sidepanel>
         </nx-sidepanel-outer-container>
     `,
+    standalone: true,
+    imports: [NxSidepanelModule, BidiModule],
 })
 class SidepanelWithoutHeaderAndContent extends SidepanelTest {}
 
@@ -268,6 +279,8 @@ class SidepanelWithoutHeaderAndContent extends SidepanelTest {}
             </nx-sidepanel>
         </nx-sidepanel-outer-container>
     `,
+    standalone: true,
+    imports: [NxSidepanelModule, BidiModule],
 })
 class ConfigurableSidepanel extends SidepanelTest {}
 
@@ -280,6 +293,8 @@ class ConfigurableSidepanel extends SidepanelTest {}
             </nx-sidepanel-outer-container>
         </div>
     `,
+    standalone: true,
+    imports: [NxSidepanelModule, BidiModule],
 })
 class SidepanelWithDirection extends SidepanelTest {
     direction = 'rtl';

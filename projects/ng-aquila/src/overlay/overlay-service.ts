@@ -1,7 +1,7 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { FlexibleConnectedPositionStrategyOrigin, Overlay, OverlayConfig, OverlayRef, ScrollStrategy } from '@angular/cdk/overlay';
 import { ComponentPortal, ComponentType, TemplatePortal } from '@angular/cdk/portal';
-import { Inject, Injectable, InjectionToken, Injector, OnDestroy, Optional, SkipSelf, StaticProvider, TemplateRef } from '@angular/core';
+import { Inject, inject, Injectable, InjectionToken, Injector, OnDestroy, Optional, SkipSelf, StaticProvider, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
@@ -11,7 +11,13 @@ import { NxOverlayRef } from './overlay-ref';
 import { NxOverlayPositionBuilder } from './position-builder';
 
 /** Injection token that determines the scroll handling while a overlay is open. */
-export const NX_OVERLAY_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-overlay-scroll-strategy');
+export const NX_OVERLAY_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-overlay-scroll-strategy', {
+    providedIn: 'root',
+    factory: () => {
+        const overlay = inject(Overlay);
+        return () => overlay.scrollStrategies.reposition();
+    },
+});
 
 /** @docs-private */
 export function NX_OVERLAY_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
@@ -31,7 +37,7 @@ export const enum NxOverlayState {
     CLOSED,
 }
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class NxOverlayService implements OnDestroy {
     private readonly _afterAllClosedAtThisLevel = new Subject<void>();
     private readonly _afterOpenedAtThisLevel = new Subject<NxOverlayRef<any>>();

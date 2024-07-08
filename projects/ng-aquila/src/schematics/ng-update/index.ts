@@ -27,7 +27,7 @@ export const upgradeData: UpgradeData = {
     propertyNames,
     symbolRemoval,
     // material team introduced this for their design tokens/css variables
-    // could be useful for us in the future as well but currently we have no need
+    // could be useful for us in the future as well but currently w e have no need
     cssTokens: {},
 };
 

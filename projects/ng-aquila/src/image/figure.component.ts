@@ -22,6 +22,7 @@ const DEFAULT_SIZE = 'auto';
         '[class.nx-image--2dot6by1]': 'size === "2dot6by1"',
         '[class.nx-image--rounded]': 'rounded',
     },
+    standalone: true,
 })
 export class NxFigureComponent {
     /**

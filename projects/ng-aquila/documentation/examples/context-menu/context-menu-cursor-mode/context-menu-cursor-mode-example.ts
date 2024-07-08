@@ -1,4 +1,13 @@
 import { Component } from '@angular/core';
+import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCardComponent } from '@aposin/ng-aquila/card';
+import {
+    NxContextMenuComponent,
+    NxContextMenuItemComponent,
+    NxContextMenuTriggerDirective,
+} from '@aposin/ng-aquila/context-menu';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 /**
  * @title Cursor Mode Context Menu Example
@@ -7,5 +16,15 @@ import { Component } from '@angular/core';
     selector: 'context-menu-cursor-mode-example',
     templateUrl: './context-menu-cursor-mode-example.html',
     styleUrls: ['./context-menu-cursor-mode-example.css'],
+    standalone: true,
+    imports: [
+        NxContextMenuComponent,
+        NxContextMenuItemComponent,
+        NxCardComponent,
+        NxContextMenuTriggerDirective,
+        NxCopytextComponent,
+        NxIconButtonComponent,
+        NxIconComponent,
+    ],
 })
 export class ContextMenuCursorModeExampleComponent {}

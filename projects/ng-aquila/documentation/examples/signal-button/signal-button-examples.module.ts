@@ -10,8 +10,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxSignalButtonModule],
-    declarations: [EXAMPLES],
+    imports: [NxSignalButtonModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class SignalButtonExamplesModule {

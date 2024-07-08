@@ -7,8 +7,7 @@ import { UtilsTypeGuardsExampleComponent } from './utils-type-guards/utils-type-
 const EXAMPLES = [UtilsTypeGuardsExampleComponent];
 
 @NgModule({
-    imports: [CommonModule, NxTableModule],
-    declarations: [EXAMPLES],
+    imports: [CommonModule, NxTableModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class UtilsExamplesModule {

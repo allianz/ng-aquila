@@ -7,7 +7,7 @@ import { dispatchMouseEvent } from '../cdk-test-utils';
 import { NxTableModule } from './table.module';
 import { NxTableRowComponent } from './table-row.component';
 
-@Directive()
+@Directive({ standalone: true })
 class TableRowTest {
     @ViewChild(NxTableRowComponent) tableRowInstance!: NxTableRowComponent;
 }
@@ -32,8 +32,7 @@ describe(NxTableRowComponent.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicTableRowComponent, SelectableTableRowComponent],
-            imports: [NxTableModule, NxDropdownModule],
+            imports: [NxTableModule, NxDropdownModule, BasicTableRowComponent, SelectableTableRowComponent],
         }).compileComponents();
     }));
 
@@ -205,6 +204,8 @@ describe(NxTableRowComponent.name, () => {
         example content
     </tr>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTableModule, NxDropdownModule],
 })
 class BasicTableRowComponent extends TableRowTest {}
 
@@ -235,6 +236,8 @@ class BasicTableRowComponent extends TableRowTest {}
         </tr>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTableModule, NxDropdownModule],
 })
 class SelectableTableRowComponent extends TableRowTest {
     selectable = true;

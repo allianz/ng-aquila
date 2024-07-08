@@ -1,7 +1,8 @@
 /* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 import { ActiveDescendantKeyManager, FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { CdkConnectedOverlay, CdkOverlayOrigin } from '@angular/cdk/overlay';
+import { CdkConnectedOverlay, CdkOverlayOrigin, OverlayModule } from '@angular/cdk/overlay';
+import { NgClass, NgIf } from '@angular/common';
 import {
     AfterViewInit,
     booleanAttribute,
@@ -17,7 +18,9 @@ import {
     InjectionToken,
     Input,
     numberAttribute,
+    OnChanges,
     OnDestroy,
+    OnInit,
     Optional,
     Output,
     QueryList,
@@ -27,14 +30,18 @@ import {
     ViewChildren,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormGroupDirective, FormsModule, NgControl, NgForm } from '@angular/forms';
 import {
     AppearanceType,
     FORMFIELD_DEFAULT_OPTIONS,
     FormfieldDefaultOptions,
     NxFormfieldControl,
+    NxFormfieldModule,
     NxFormfieldUpdateEventType,
 } from '@aposin/ng-aquila/formfield';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
+import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 import { ErrorStateMatcher, pad } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 
@@ -114,8 +121,21 @@ export class NxTimefieldControl implements NxFormfieldControl<string> {
         '[class.has-timepicker]': 'withTimepicker',
         '(focusout)': '_onBlur($event)',
     },
+    standalone: true,
+    imports: [
+        NgClass,
+        NgIf,
+        NxRadioModule,
+        FormsModule,
+        NxTimefieldControl,
+        NxTimefieldOption,
+        NxFormfieldModule,
+        NxIconModule,
+        NxRadioToggleModule,
+        OverlayModule,
+    ],
 })
-export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck {
+export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck, OnInit, OnChanges {
     /** @docs-private */
     errorState = false;
 
@@ -400,7 +420,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit
         @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
         readonly _intl: NxTimefieldIntl,
         private readonly _elementRef: ElementRef,
-        // TODO use these default options
+
         @Optional() @Inject(FORMFIELD_DEFAULT_OPTIONS) private readonly _formfieldDefaultOptions?: FormfieldDefaultOptions,
         @Optional() @Inject(TIMEFIELD_DEFAULT_OPTIONS) private readonly _timefieldDefaultOptions?: TimefieldDefaultOptions,
     ) {
@@ -655,7 +675,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit
             this.timeList.map(t => t.value),
             time || '00:00',
         );
-        const option = this.timepickerOptions?.find(option => option.value === closestTime);
+        const option = this.timepickerOptions?.find(timepickerOption => timepickerOption.value === closestTime);
         return option;
     }
 

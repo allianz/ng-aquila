@@ -6,8 +6,7 @@ import { NxLayoutComponent } from './layout.component';
 import { NxRowComponent } from './row.component';
 
 @NgModule({
-    declarations: [NxLayoutComponent, NxRowComponent, NxColComponent],
     exports: [NxLayoutComponent, NxRowComponent, NxColComponent],
-    imports: [CommonModule],
+    imports: [CommonModule, NxLayoutComponent, NxRowComponent, NxColComponent],
 })
 export class NxGridModule {}

@@ -7,8 +7,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxCheckboxComponent, NxCheckboxGroupComponent } from './checkbox.component';
 
 @NgModule({
-    declarations: [NxCheckboxComponent, NxCheckboxGroupComponent],
     exports: [NxCheckboxComponent, NxCheckboxGroupComponent, NxLabelModule, NxErrorModule],
-    imports: [CommonModule, NxIconModule, ObserversModule],
+    imports: [CommonModule, NxIconModule, ObserversModule, NxCheckboxComponent, NxCheckboxGroupComponent],
 })
 export class NxCheckboxModule {}

@@ -1,11 +1,26 @@
+import { JsonPipe, NgIf } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
     FileItem,
     NxFileUploadConfig,
     NxFileUploader,
+    NxFileUploaderButtonDirective,
+    NxFileUploaderComponent,
+    NxFileUploaderDropZoneComponent,
+    NxFileUploaderHintDirective,
+    NxFileUploaderTriggerDirective,
 } from '@aposin/ng-aquila/file-uploader';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import {
     NxMessageToastConfig,
     NxMessageToastService,
@@ -24,6 +39,22 @@ export const myCustomConfig: NxMessageToastConfig = {
     selector: 'file-uploader-strict-type-validation-example',
     templateUrl: './file-uploader-strict-type-validation-example.html',
     styleUrls: ['./file-uploader-strict-type-validation-example.css'],
+    standalone: true,
+    imports: [
+        NxButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        NxFileUploaderComponent,
+        NxLabelComponent,
+        NxFileUploaderHintDirective,
+        NxFileUploaderDropZoneComponent,
+        NxFileUploaderButtonDirective,
+        NxIconComponent,
+        NgIf,
+        NxErrorComponent,
+        NxFileUploaderTriggerDirective,
+        JsonPipe,
+    ],
 })
 export class FileUploaderStrictTypeValidationExampleComponent
     implements OnInit, OnDestroy

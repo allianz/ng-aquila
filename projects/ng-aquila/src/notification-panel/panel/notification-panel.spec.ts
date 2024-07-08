@@ -7,7 +7,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxNotificationPanelModule } from '../notification-panel.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class NotificationPanelTest {}
 
 describe('NxLinkComponent', () => {
@@ -24,8 +24,7 @@ describe('NxLinkComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [TestComponent],
-            imports: [NxNotificationPanelModule, NxButtonModule, NxIconModule, RouterTestingModule],
+            imports: [NxNotificationPanelModule, NxButtonModule, NxIconModule, RouterTestingModule, TestComponent],
         }).compileComponents();
 
         inject([OverlayContainer], (oc: OverlayContainer) => {
@@ -110,5 +109,7 @@ describe('NxLinkComponent', () => {
             </nx-notification-panel>
         </ng-template>
     `,
+    standalone: true,
+    imports: [NxNotificationPanelModule, NxButtonModule, NxIconModule, RouterTestingModule],
 })
 class TestComponent extends NotificationPanelTest {}

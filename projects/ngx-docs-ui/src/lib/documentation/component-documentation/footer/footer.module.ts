@@ -5,8 +5,7 @@ import { NxFooterModule } from '@aposin/ng-aquila/footer';
 import { NxvFooterComponent } from './footer.component';
 
 @NgModule({
-    imports: [CommonModule, NxFooterModule],
-    declarations: [NxvFooterComponent],
+    imports: [CommonModule, NxFooterModule, NxvFooterComponent],
     exports: [NxvFooterComponent],
 })
 export class NxvFooterModule {}

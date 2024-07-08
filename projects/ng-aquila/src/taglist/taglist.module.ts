@@ -6,8 +6,7 @@ import { NxTagComponent } from './tag.component';
 import { NxTaglistComponent } from './taglist.component';
 
 @NgModule({
-    declarations: [NxTaglistComponent, NxTagComponent],
     exports: [NxTaglistComponent, NxTagComponent],
-    imports: [CommonModule, NxIconModule],
+    imports: [CommonModule, NxIconModule, NxTaglistComponent, NxTagComponent],
 })
 export class NxTaglistModule {}

@@ -1,5 +1,20 @@
 import { AfterContentInit, Component, ViewChild } from '@angular/core';
-import { NxInputDirective } from '@aposin/ng-aquila/input';
+import { FormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+    NxFormfieldHintDirective,
+} from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
+import {
+    NxInputDirective,
+    NxInputDirective as NxInputDirective_1,
+} from '@aposin/ng-aquila/input';
 
 /**
  * @title Two column example
@@ -8,6 +23,18 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'formfield-error-two-column-example',
     templateUrl: './formfield-error-two-column-example.html',
     styleUrls: ['./formfield-error-two-column-example.css'],
+    standalone: true,
+    imports: [
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxFormfieldComponent,
+        NxInputDirective_1,
+        FormsModule,
+        NxFormfieldHintDirective,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
+    ],
 })
 export class FormfieldErrorTwoColumnExampleComponent
     implements AfterContentInit

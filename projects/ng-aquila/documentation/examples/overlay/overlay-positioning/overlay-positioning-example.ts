@@ -1,4 +1,7 @@
+import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
 import {
     NxOverlayDirection,
     NxOverlayRef,
@@ -12,6 +15,8 @@ import {
     selector: 'overlay-positioning-example',
     templateUrl: './overlay-positioning-example.html',
     styleUrls: ['./overlay-positioning-example.css'],
+    standalone: true,
+    imports: [NxButtonComponent, CdkOverlayOrigin, NxCopytextComponent],
 })
 export class OverlayPositioningExampleComponent {
     currentOverlay!: NxOverlayRef<any>;

@@ -6,8 +6,7 @@ import { NxMessageModule } from '@aposin/ng-aquila/message';
 import { NxErrorComponent } from './error.component';
 
 @NgModule({
-    imports: [CommonModule, NxIconModule, NxMessageModule],
-    declarations: [NxErrorComponent],
+    imports: [CommonModule, NxIconModule, NxMessageModule, NxErrorComponent],
     exports: [NxErrorComponent],
 })
 export class NxErrorModule {}

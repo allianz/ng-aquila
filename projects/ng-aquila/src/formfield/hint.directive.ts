@@ -9,6 +9,7 @@ let uniqueId = 0;
         '[attr.id]': 'id',
         '[class.nx-formfield-hint]': 'true',
     },
+    standalone: true,
 })
 export class NxFormfieldHintDirective {
     /** Sets the id of the formfield hint. */

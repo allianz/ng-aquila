@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import {
+    NxTabComponent,
+    NxTabGroupComponent,
+    NxTabLabelDirective,
+} from '@aposin/ng-aquila/tabs';
 
 /**
  * @title Using templates for labels
@@ -7,6 +13,13 @@ import { Component } from '@angular/core';
     selector: 'tabs-template-example',
     templateUrl: './tabs-template-example.html',
     styleUrls: ['./tabs-template-example.css'],
+    standalone: true,
+    imports: [
+        NxTabGroupComponent,
+        NxTabComponent,
+        NxTabLabelDirective,
+        NxIconComponent,
+    ],
 })
 export class TabsTemplateExampleComponent {
     currentIndex = 0;

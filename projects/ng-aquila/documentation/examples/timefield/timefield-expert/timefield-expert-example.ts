@@ -1,6 +1,9 @@
+import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FORMFIELD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/formfield';
+import { NxGridModule } from '@aposin/ng-aquila/grid';
+import { NxTimefieldModule } from '@aposin/ng-aquila/timefield';
 
 /**
  * @title Timefield Expert example
@@ -18,6 +21,8 @@ import { FORMFIELD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/formfield';
             useValue: { appearance: 'outline' },
         },
     ],
+    standalone: true,
+    imports: [NxTimefieldModule, ReactiveFormsModule, NxGridModule, JsonPipe],
 })
 export class TimefieldExpertExampleComponent {
     readonly testForm = this.fb.group({

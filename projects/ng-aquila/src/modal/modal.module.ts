@@ -14,8 +14,12 @@ import { NxModalService } from './modal.service';
 import { NxOpenModalOnClickDirective } from './modal-open-on-click.directive';
 
 @NgModule({
-    imports: [A11yModule, OverlayModule, PortalModule, CommonModule, NxIconModule],
-    declarations: [
+    imports: [
+        A11yModule,
+        OverlayModule,
+        PortalModule,
+        CommonModule,
+        NxIconModule,
         NxModalComponent,
         NxOpenModalOnClickDirective,
         NxModalActionsDirective,
@@ -35,6 +39,7 @@ import { NxOpenModalOnClickDirective } from './modal-open-on-click.directive';
         NxModalCloseDirective,
         NxModalTitleComponent,
     ],
+    // we need to keep these providers for backwards compatibility
     providers: [NxDialogService, NX_MODAL_SCROLL_STRATEGY_PROVIDER],
 })
 export class NxModalModule {

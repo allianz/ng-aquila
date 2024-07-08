@@ -2,6 +2,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { LEFT_ARROW, RIGHT_ARROW, SPACE } from '@angular/cdk/keycodes';
+import { NgIf } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -33,6 +34,8 @@ export const RESIZE_STEP_SIZE = 20;
         '[class.is-closed]': '!open',
         '[style.width.px]': `_sidebarElementWidth`,
     },
+    standalone: true,
+    imports: [NgIf],
 })
 export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     @ViewChild('resizeHandle') _resizeHandle!: ElementRef;

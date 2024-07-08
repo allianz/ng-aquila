@@ -5,8 +5,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxVideoComponent } from './video.component';
 
 @NgModule({
-    declarations: [NxVideoComponent],
     exports: [NxVideoComponent],
-    imports: [CommonModule, NxIconModule],
+    imports: [CommonModule, NxIconModule, NxVideoComponent],
 })
 export class NxVideoModule {}

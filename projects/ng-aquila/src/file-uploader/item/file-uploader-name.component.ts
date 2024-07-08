@@ -1,4 +1,6 @@
+import { NgIf } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { getFileExtension } from '../file-uploader.validations';
 
@@ -13,6 +15,8 @@ import { getFileExtension } from '../file-uploader.validations';
         </span>
         <span class="nx-margin-left-2xs">{{ name }}</span>
     `,
+    standalone: true,
+    imports: [NgIf, NxIconModule],
 })
 export class NxFileUploaderItemName implements OnInit {
     /** The filename.*/

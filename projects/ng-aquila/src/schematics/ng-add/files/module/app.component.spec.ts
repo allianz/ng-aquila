@@ -1,7 +1,7 @@
-import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { provideHttpClient, withInterceptorsFromDi, withJsonpSupport } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
@@ -26,11 +26,9 @@ describe('AppComponent', () => {
         await TestBed.configureTestingModule({
             declarations: [AppComponent],
             imports: [
-                BrowserModule,
+                CommonModule,
                 BrowserAnimationsModule,
                 FormsModule,
-                HttpClientJsonpModule,
-                HttpClientModule,
                 ReactiveFormsModule,
                 NxButtonModule,
                 NxCheckboxModule,
@@ -48,6 +46,7 @@ describe('AppComponent', () => {
                 NxOverlayModule,
                 NxPopoverModule,
             ],
+            providers: [provideHttpClient(withInterceptorsFromDi(), withJsonpSupport())],
         }).compileComponents();
     });
 

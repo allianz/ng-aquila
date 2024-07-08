@@ -6,13 +6,14 @@ import { CdkScrollable, OverlayContainer, OverlayModule } from '@angular/cdk/ove
 import { Platform } from '@angular/cdk/platform';
 import { Location } from '@angular/common';
 import { SpyLocation } from '@angular/common/testing';
-import { ChangeDetectionStrategy, Component, DebugElement, ElementRef, EventEmitter, NgZone, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DebugElement, ElementRef, EventEmitter, Inject, NgZone, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, flushMicrotasks, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { fakeScrollStrategyFunction } from '@aposin/ng-aquila/utils';
 
 import { createKeyboardEvent } from '../cdk-test-utils';
-import { NX_TOOLTIP_DEFAULT_OPTIONS, NX_TOOLTIP_PANEL_CLASS, NxTooltipDirective } from './tooltip.directive';
+import { NX_TOOLTIP_DEFAULT_OPTIONS, NX_TOOLTIP_PANEL_CLASS, NX_TOOLTIP_SCROLL_STRATEGY, NxTooltipDirective } from './tooltip.directive';
 import { NxTooltipModule } from './tooltip.module';
 
 function createFakeEvent(type: string, bubbles = false, cancelable = true) {
@@ -51,8 +52,17 @@ describe('NxTooltipDirective', () => {
         platform = { IOS: false, isBrowser: true, ANDROID: false };
 
         TestBed.configureTestingModule({
-            imports: [NxTooltipModule, OverlayModule, NoopAnimationsModule],
-            declarations: [BasicTooltipDemo, ScrollableTooltipDemo, OnPushTooltipDemo, DynamicTooltipsDemo, TooltipOnTextFields, SelectableTooltip],
+            imports: [
+                NxTooltipModule,
+                OverlayModule,
+                NoopAnimationsModule,
+                BasicTooltipDemo,
+                ScrollableTooltipDemo,
+                OnPushTooltipDemo,
+                DynamicTooltipsDemo,
+                TooltipOnTextFields,
+                SelectableTooltip,
+            ],
             providers: [
                 { provide: Platform, useFactory: () => platform },
                 {
@@ -581,6 +591,23 @@ describe('NxTooltipDirective', () => {
 
             expect(overlayRef?.detach).not.toHaveBeenCalled();
         }));
+
+        it('should be able to override the scroll strategy in parent injector', () => {
+            TestBed.resetTestingModule()
+                .configureTestingModule({
+                    imports: [BasicTooltipDemo, NxTooltipModule, NoopAnimationsModule],
+                    providers: [
+                        {
+                            provide: NX_TOOLTIP_SCROLL_STRATEGY,
+                            useFactory: () => fakeScrollStrategyFunction,
+                        },
+                    ],
+                })
+                .compileComponents();
+            fixture = TestBed.createComponent(BasicTooltipDemo);
+            fixture.detectChanges();
+            expect(fixture.componentInstance.scrollStrategy).toBe(fakeScrollStrategyFunction);
+        });
     });
 
     describe('fallback positions', () => {
@@ -810,14 +837,13 @@ describe('navigation', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxTooltipModule, BrowserAnimationsModule, OverlayModule],
+            imports: [NxTooltipModule, BrowserAnimationsModule, OverlayModule, TooltipDispose],
             providers: [
                 {
                     provide: Location,
                     useClass: SpyLocation,
                 },
             ],
-            declarations: [TooltipDispose],
         }).compileComponents();
     }));
 
@@ -858,8 +884,7 @@ describe('NxTooltipComponent', () => {
     it('should be able to override the default show and hide delays', fakeAsync(() => {
         TestBed.resetTestingModule()
             .configureTestingModule({
-                imports: [NxTooltipModule, OverlayModule, NoopAnimationsModule],
-                declarations: [BasicTooltipDemo],
+                imports: [NxTooltipModule, OverlayModule, NoopAnimationsModule, BasicTooltipDemo],
                 providers: [
                     {
                         provide: NX_TOOLTIP_DEFAULT_OPTIONS,
@@ -894,7 +919,6 @@ describe('NxTooltipComponent', () => {
         TestBed.resetTestingModule()
             .configureTestingModule({
                 imports: [NxTooltipModule, OverlayModule, NoopAnimationsModule],
-                declarations: [TooltipDemoWithoutPositionBinding],
                 providers: [
                     {
                         provide: NX_TOOLTIP_DEFAULT_OPTIONS,
@@ -919,7 +943,11 @@ describe('NxTooltipComponent', () => {
 
 @Component({
     selector: 'nx-app',
-    template: `<button #button *ngIf="showButton" [nxTooltip]="message" [nxTooltipPosition]="position">Button</button>`,
+    template: `@if (showButton) {
+        <button #button [nxTooltip]="message" [nxTooltipPosition]="position">Button</button>
+    }`,
+    standalone: true,
+    imports: [NxTooltipModule, OverlayModule],
 })
 class BasicTooltipDemo {
     position = 'bottom';
@@ -928,6 +956,8 @@ class BasicTooltipDemo {
     showTooltipClass = false;
     @ViewChild(NxTooltipDirective) tooltip!: NxTooltipDirective;
     @ViewChild('button') button!: ElementRef<HTMLButtonElement>;
+
+    constructor(@Inject(NX_TOOLTIP_SCROLL_STRATEGY) public scrollStrategy: any) {}
 }
 
 @Component({
@@ -937,8 +967,12 @@ class BasicTooltipDemo {
         style="padding: 100px; margin: 300px;
                                height: 200px; width: 200px; overflow: auto;"
     >
-        <button *ngIf="showButton" style="margin-bottom: 600px" [nxTooltip]="message" [nxTooltipPosition]="position">Button</button>
+        @if (showButton) {
+            <button style="margin-bottom: 600px" [nxTooltip]="message" [nxTooltipPosition]="position">Button</button>
+        }
     </div>`,
+    standalone: true,
+    imports: [NxTooltipModule, OverlayModule],
 })
 class ScrollableTooltipDemo {
     position = 'bottom';
@@ -962,6 +996,8 @@ class ScrollableTooltipDemo {
     selector: 'nx-app',
     template: `<button [nxTooltip]="message" [nxTooltipPosition]="position">Button</button>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTooltipModule, OverlayModule],
 })
 class OnPushTooltipDemo {
     position = 'bottom';
@@ -970,7 +1006,11 @@ class OnPushTooltipDemo {
 
 @Component({
     selector: 'nx-app',
-    template: `<button *ngFor="let tooltip of tooltips" [nxTooltip]="tooltip">Button {{ tooltip }}</button>`,
+    template: `@for (tooltip of tooltips; track tooltip) {
+        <button [nxTooltip]="tooltip">Button {{ tooltip }}</button>
+    }`,
+    standalone: true,
+    imports: [NxTooltipModule, OverlayModule],
 })
 class DynamicTooltipsDemo {
     tooltips: string[] = [];
@@ -988,6 +1028,8 @@ class DynamicTooltipsDemo {
 
         <textarea #textarea nxTooltip="Another thing"></textarea>
     `,
+    standalone: true,
+    imports: [NxTooltipModule, OverlayModule],
 })
 class TooltipOnTextFields {
     @ViewChild('input') input!: ElementRef<HTMLInputElement>;
@@ -995,8 +1037,10 @@ class TooltipOnTextFields {
 }
 
 @Component({
+    standalone: true,
     selector: 'nx-app',
     template: `<button #button [nxTooltip]="message">Button</button>`,
+    imports: [NxTooltipModule],
 })
 class TooltipDemoWithoutPositionBinding {
     message: any = initialTooltipMessage;
@@ -1009,6 +1053,8 @@ class TooltipDemoWithoutPositionBinding {
     template: `<button nxButton [nxTooltipShowDelay]="1000" [nxTooltipHideDelay]="1500" nxTooltip="This message appears after 1 second" type="button" #hover>
         Delayed tooltip
     </button>`,
+    standalone: true,
+    imports: [NxTooltipModule, OverlayModule],
 })
 class TooltipDispose {
     @ViewChild(NxTooltipDirective) tooltip!: NxTooltipDirective;
@@ -1023,6 +1069,8 @@ class TooltipDispose {
 
         <textarea #textarea [nxTooltipSelectable]="selectable" nxTooltip="Another thing"></textarea>
     `,
+    standalone: true,
+    imports: [NxTooltipModule, OverlayModule],
 })
 class SelectableTooltip {
     message: any = initialTooltipMessage;

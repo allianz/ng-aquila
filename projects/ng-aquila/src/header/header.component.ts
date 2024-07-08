@@ -9,6 +9,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, Dir
     host: {
         class: 'nx-header__row',
     },
+    standalone: true,
 })
 export class NxHeaderRowDirective {}
 
@@ -22,6 +23,7 @@ export class NxHeaderRowDirective {}
         class: 'nx-header',
         '[class.nx-header--single-row]': '_headerRows.length === 0',
     },
+    standalone: true,
 })
 export class NxHeaderComponent {
     @ContentChildren(NxHeaderRowDirective) _headerRows!: QueryList<NxHeaderRowDirective>;
@@ -34,6 +36,7 @@ export class NxHeaderComponent {
     host: {
         class: 'nx-header__brand',
     },
+    standalone: true,
 })
 export class NxHeaderBrandDirective {}
 
@@ -45,6 +48,7 @@ export class NxHeaderBrandDirective {}
         class: 'nx-header__actions',
         '[class.nx-header__actions--show-separator]': 'showSeparator',
     },
+    standalone: true,
 })
 export class NxHeaderActionsDirective {
     /* Whenever to show the left separator*/
@@ -67,6 +71,7 @@ export class NxHeaderActionsDirective {
         role: 'navigation',
     },
     template: '<div role="list" class="nx-header__navigation-items"><ng-content></ng-content></div>',
+    standalone: true,
 })
 export class NxHeaderNavigationComponent {}
 
@@ -78,6 +83,7 @@ export class NxHeaderNavigationComponent {}
         role: 'listitem',
         class: 'nx-header__navigation-item',
     },
+    standalone: true,
 })
 export class NxHeaderNavigationItemDirective {}
 
@@ -90,6 +96,7 @@ export class NxHeaderNavigationItemDirective {}
         '[attr.text-content]': 'textContent',
     },
     template: '<span class="nx-header__link-title"><ng-content></ng-content></span>',
+    standalone: true,
 })
 export class NxHeaderLinkComponent implements OnDestroy, AfterViewInit {
     constructor(
@@ -117,5 +124,6 @@ export class NxHeaderLinkComponent implements OnDestroy, AfterViewInit {
     host: {
         class: 'nx-header__app-title',
     },
+    standalone: true,
 })
 export class NxHeaderAppTitleDirective {}

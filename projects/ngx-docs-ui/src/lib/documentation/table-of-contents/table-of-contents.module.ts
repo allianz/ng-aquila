@@ -5,8 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NxvTableOfContentsComponent } from './table-of-contents';
 
 @NgModule({
-    imports: [CommonModule, RouterModule],
-    declarations: [NxvTableOfContentsComponent],
+    imports: [CommonModule, RouterModule, NxvTableOfContentsComponent],
     exports: [NxvTableOfContentsComponent],
 })
 export class NxvTableOfContentsModule {}

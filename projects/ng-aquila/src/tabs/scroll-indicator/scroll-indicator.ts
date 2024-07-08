@@ -1,5 +1,7 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, Optional, Output } from '@angular/core';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -20,6 +22,8 @@ export type NxScrollDirection = 'start' | 'end';
         '[class.is-scrolled-to-end]': 'isScrolledToEnd',
         '[attr.aria-hidden]': 'true',
     },
+    standalone: true,
+    imports: [NxButtonModule, NxIconModule],
 })
 export class NxTabScrollIndicator implements OnDestroy {
     _view = 'desktop';

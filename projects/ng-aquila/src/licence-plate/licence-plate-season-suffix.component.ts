@@ -12,6 +12,7 @@ import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
     `,
     styleUrls: ['licence-plate-season-suffix.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxLicencePlateSeasonSuffixComponent {
     /**

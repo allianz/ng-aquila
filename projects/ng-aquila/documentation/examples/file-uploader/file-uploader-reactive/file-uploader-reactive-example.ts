@@ -1,10 +1,23 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
     NxFileUploadConfig,
     NxFileUploader,
+    NxFileUploaderButtonDirective,
+    NxFileUploaderComponent,
+    NxFileUploaderHintDirective,
+    NxFileUploaderTriggerDirective,
 } from '@aposin/ng-aquila/file-uploader';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import {
     NxMessageToastConfig,
     NxMessageToastService,
@@ -23,6 +36,19 @@ export const myCustomConfig: NxMessageToastConfig = {
     selector: 'file-uploader-reactive-example',
     templateUrl: './file-uploader-reactive-example.html',
     styleUrls: ['./file-uploader-reactive-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxFileUploaderComponent,
+        NxLabelComponent,
+        NxFileUploaderHintDirective,
+        NxButtonComponent,
+        NxFileUploaderButtonDirective,
+        NxIconComponent,
+        NxErrorComponent,
+        NxFileUploaderTriggerDirective,
+    ],
 })
 export class FileUploaderReactiveExampleComponent implements OnInit, OnDestroy {
     readonly uploadConfig: NxFileUploadConfig = {

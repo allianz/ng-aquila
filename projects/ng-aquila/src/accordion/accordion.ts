@@ -12,6 +12,7 @@ const DEFAULT_TYPE: AccordionStyle = 'regular';
         '[class.nx-accordion]': 'true',
         role: 'presentation',
     },
+    standalone: true,
 })
 export class NxAccordionDirective extends CdkAccordion {
     /**

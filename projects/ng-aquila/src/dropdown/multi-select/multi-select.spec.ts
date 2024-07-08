@@ -7,12 +7,17 @@ import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxDropdownIntl } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldComponent, NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 
 import { NxDropdownModule } from '../dropdown.module';
 import { NxMultiSelectComponent } from './multi-select.component';
 import { MultiSelectOptionHarness } from './multi-select-option.spec';
 
+class CustomIntl extends NxDropdownIntl {
+    selectAll = 'Test select all';
+    clearAll = 'Test clear all';
+}
 class MultiSelectHarness extends ComponentHarness {
     static hostSelector = 'nx-multi-select';
 
@@ -123,8 +128,18 @@ describe('NxMultiSelectComponent', () => {
 
     async function configureTestingModule() {
         return TestBed.configureTestingModule({
-            imports: [CommonModule, OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
-            declarations: [BasicMultiSelectComponent, ComplexMultiSelectComponent, ReactiveMultiSelectComponent, LongOptionLabelComponent],
+            imports: [
+                CommonModule,
+                OverlayModule,
+                NxDropdownModule,
+                FormsModule,
+                ReactiveFormsModule,
+                NxFormfieldModule,
+                BasicMultiSelectComponent,
+                ComplexMultiSelectComponent,
+                ReactiveMultiSelectComponent,
+                IntlOverrideMultiSelect,
+            ],
         }).compileComponents();
     }
 
@@ -192,6 +207,28 @@ describe('NxMultiSelectComponent', () => {
                 it('closes the panel', async () => {
                     expect(await multiSelectHarness.isOpen()).toBeFalse();
                 });
+            });
+        });
+
+        describe('providers', () => {
+            it('should overwrite intl class for i18n', async () => {
+                await createTestComponent(IntlOverrideMultiSelect);
+                await multiSelectHarness.click();
+
+                expect(await (await multiSelectHarness.getSelectAllButton())?.text()).toBe('Test select all');
+            });
+
+            it('should be possible to override Intl class from parent injector', async () => {
+                TestBed.resetTestingModule()
+                    .configureTestingModule({
+                        imports: [BasicMultiSelectComponent],
+                        providers: [{ provide: NxDropdownIntl, useClass: CustomIntl }],
+                    })
+                    .compileComponents();
+                await createTestComponent(BasicMultiSelectComponent);
+                await multiSelectHarness.click();
+
+                expect(await (await multiSelectHarness.getSelectAllButton())?.text()).toBe('Test select all');
             });
         });
 
@@ -934,7 +971,7 @@ describe('NxMultiSelectComponent', () => {
     });
 });
 
-@Directive()
+@Directive({ standalone: true })
 abstract class DropdownTest {
     @ViewChild(NxMultiSelectComponent) multiSelect!: NxMultiSelectComponent<string, string>;
     @ViewChild(NxFormfieldComponent) formField!: NxFormfieldComponent;
@@ -951,6 +988,8 @@ abstract class DropdownTest {
     template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options"></nx-multi-select>
     </nx-formfield>`,
+    standalone: true,
+    imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class BasicMultiSelectComponent extends DropdownTest {
     options = ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes'];
@@ -958,8 +997,26 @@ class BasicMultiSelectComponent extends DropdownTest {
 
 @Component({
     template: `<nx-formfield label="Car brand" [appearance]="appearance">
+        <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options"></nx-multi-select>
+    </nx-formfield>`,
+    standalone: true,
+    imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
+    providers: [{ provide: NxDropdownIntl, useClass: CustomIntl }],
+})
+class IntlOverrideMultiSelect extends DropdownTest {
+    options = ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes'];
+
+    constructor(public intl: NxDropdownIntl) {
+        super();
+    }
+}
+
+@Component({
+    template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options" [panelGrow]="panelGrow" [panelMaxWidth]="panelMaxWidth"></nx-multi-select>
     </nx-formfield>`,
+    standalone: true,
+    imports: [NxDropdownModule, NxFormfieldModule],
 })
 class LongOptionLabelComponent extends DropdownTest {
     options = [
@@ -980,6 +1037,8 @@ interface ComplexOption {
     template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [selectLabel]="selectLabel" [selectValue]="selectValue" [(ngModel)]="model" [filter]="filter" [options]="options"></nx-multi-select>
     </nx-formfield>`,
+    standalone: true,
+    imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class ComplexMultiSelectComponent extends DropdownTest {
     options: ComplexOption[] = [
@@ -1008,6 +1067,8 @@ class ComplexMultiSelectComponent extends DropdownTest {
     template: `<form [formGroup]="testForm">
         <nx-formfield> <nx-multi-select formControlName="testControl" [options]="options"></nx-multi-select> </nx-formfield>
     </form>`,
+    standalone: true,
+    imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class ReactiveMultiSelectComponent extends DropdownTest {
     options = ['BMW', 'Audi', 'Volvo', 'Mini'];

@@ -19,6 +19,7 @@ export const NX_IBAN_MASK_VALIDATORS: any = {
     selector: 'input[nxIbanMask]',
     exportAs: 'nxIbanMaskDirective',
     providers: [NX_IBAN_MASK_VALIDATORS],
+    standalone: true,
 })
 export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
     private _countryCode!: string | null;

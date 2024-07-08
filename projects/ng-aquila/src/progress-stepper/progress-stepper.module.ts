@@ -14,8 +14,12 @@ import { NxProgressStepperDirective, NxStepComponent } from './progress-stepper.
 import { NxSingleStepperComponent } from './single/single-step.component';
 
 @NgModule({
-    imports: [CommonModule, CdkStepperModule, NxIconModule, NxProgressbarModule, NxLabelModule],
-    declarations: [
+    imports: [
+        CommonModule,
+        CdkStepperModule,
+        NxIconModule,
+        NxProgressbarModule,
+        NxLabelModule,
         NxProgressStepperDirective,
         NxMultiStepperComponent,
         NxStepComponent,

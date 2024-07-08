@@ -4,8 +4,7 @@ import { NgModule } from '@angular/core';
 import { NxSpinnerComponent } from './spinner.component';
 
 @NgModule({
-    declarations: [NxSpinnerComponent],
-    imports: [CommonModule],
+    imports: [CommonModule, NxSpinnerComponent],
     exports: [NxSpinnerComponent],
     bootstrap: [],
     providers: [],

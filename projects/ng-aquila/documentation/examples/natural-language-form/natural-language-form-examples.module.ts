@@ -22,8 +22,8 @@ const EXAMPLES = [
         NxDropdownModule,
         NxInputModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class NaturalExamplesModule {

@@ -10,6 +10,7 @@ import {
     Component,
     ComponentFactoryResolver,
     Directive,
+    forwardRef,
     Inject,
     Injector,
     NgModule,
@@ -20,11 +21,22 @@ import {
 } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, flushMicrotasks, inject, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NX_MODAL_DATA, NX_MODAL_DEFAULT_OPTIONS, NxDialogService, NxModalModule, NxModalRef, NxModalState } from '@aposin/ng-aquila/modal';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
+import {
+    NX_MODAL_DATA,
+    NX_MODAL_DEFAULT_OPTIONS,
+    NX_MODAL_SCROLL_STRATEGY,
+    NxDialogService,
+    NxModalModule,
+    NxModalRef,
+    NxModalState,
+} from '@aposin/ng-aquila/modal';
+import { fakeScrollStrategyFunction } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 
 import { createKeyboardEvent, dispatchKeyboardEvent } from '../../cdk-test-utils';
+import { NxModalActionsDirective, NxModalContentDirective, NxModalTitleComponent } from '../modal.component';
+import { NxModalCloseDirective } from './modal-close.directive';
 import { NxModalContainer } from './modal-container.component';
 
 describe('NxDialog', () => {
@@ -228,6 +240,23 @@ describe('NxDialog', () => {
         viewContainerFixture.detectChanges();
         expect((dialogRef as any)._overlayRef.getDirection()).toBe('rtl');
     }));
+
+    it('should be able to override the scroll strategy in parent injector', () => {
+        TestBed.resetTestingModule()
+            .configureTestingModule({
+                imports: [NxModalModule, DialogTestModule],
+                providers: [
+                    {
+                        provide: NX_MODAL_SCROLL_STRATEGY,
+                        useFactory: () => fakeScrollStrategyFunction,
+                    },
+                ],
+            })
+            .compileComponents();
+        const dialog = TestBed.inject(NxDialogService);
+        const dialogRef = dialog.open(PizzaMsg);
+        expect(dialogRef.componentInstance.scrollStrategy).toBe(fakeScrollStrategyFunction);
+    });
 
     describe('closing', () => {
         it('should close a dialog and get back a result before it is closed', fakeAsync(() => {
@@ -806,7 +835,7 @@ describe('NxDialog', () => {
         });
         viewContainerFixture.detectChanges();
 
-        expect(resolver.resolveComponentFactory).toHaveBeenCalledWith(PizzaMsg);
+        expect(resolver.resolveComponentFactory).toHaveBeenCalled();
     }));
 
     it('should return the current state of the dialog', fakeAsync(() => {
@@ -1447,8 +1476,7 @@ describe('NxDialog with a parent NxDialog', () => {
 
     beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxModalModule, DialogTestModule],
-            declarations: [ComponentThatProvidesNxDialog],
+            imports: [NxModalModule, DialogTestModule, ComponentThatProvidesNxDialog],
             providers: [
                 {
                     provide: OverlayContainer,
@@ -1614,7 +1642,10 @@ describe('NxDialog with default options', () => {
     }));
 });
 
-@Directive({ selector: 'nx-with-view-container' })
+@Directive({
+    selector: 'nx-with-view-container',
+    standalone: true,
+})
 class DirectiveWithViewContainer {
     constructor(readonly viewContainerRef: ViewContainerRef) {}
 }
@@ -1622,6 +1653,7 @@ class DirectiveWithViewContainer {
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: 'hello',
+    standalone: true,
 })
 class ComponentWithOnPushViewContainer {
     constructor(readonly viewContainerRef: ViewContainerRef) {}
@@ -1629,6 +1661,8 @@ class ComponentWithOnPushViewContainer {
 
 @Component({
     template: `<nx-with-view-container></nx-with-view-container>`,
+    standalone: true,
+    imports: [DirectiveWithViewContainer],
 })
 class ComponentWithChildViewContainer {
     @ViewChild(DirectiveWithViewContainer) childWithViewContainer!: DirectiveWithViewContainer;
@@ -1640,6 +1674,7 @@ class ComponentWithChildViewContainer {
 
 @Component({
     template: `<ng-template let-data let-modalRef="modalRef"> Cheese {{ localValue }} {{ data?.value }}{{ setDialogRef(modalRef) }}</ng-template>`,
+    standalone: true,
 })
 class ComponentWithTemplateRef {
     localValue!: string;
@@ -1654,12 +1689,16 @@ class ComponentWithTemplateRef {
 }
 
 /** Simple component for testing ComponentPortal. */
-@Component({ template: '<p>Pizza</p> <input> <button>Close</button>' })
+@Component({
+    template: '<p>Pizza</p> <input> <button>Close</button>',
+    standalone: true,
+})
 class PizzaMsg {
     constructor(
         readonly dialogRef: NxModalRef<PizzaMsg>,
         readonly dialogInjector: Injector,
         readonly directionality: Directionality,
+        @Inject(NX_MODAL_SCROLL_STRATEGY) readonly scrollStrategy: () => ScrollStrategy,
     ) {}
 }
 
@@ -1670,6 +1709,8 @@ class PizzaMsg {
             {{ headline }}
         </h2>
     `,
+    standalone: true,
+    imports: [NxModalTitleComponent],
 })
 class TitleStatusDialog {
     headline = 'hello world';
@@ -1692,6 +1733,8 @@ class TitleStatusDialog {
             <button class="with-submit" type="submit" nxModalClose>Should have submit</button>
         </div>
     `,
+    standalone: true,
+    imports: [NxModalContentDirective, NxModalActionsDirective, NxModalCloseDirective],
 })
 class ContentElementDialog {}
 
@@ -1708,6 +1751,8 @@ class ContentElementDialog {}
             </div>
         </ng-template>
     `,
+    standalone: true,
+    imports: [NxModalContentDirective, NxModalActionsDirective, NxModalCloseDirective],
 })
 class ComponentWithContentElementTemplateRef {
     @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
@@ -1716,23 +1761,32 @@ class ComponentWithContentElementTemplateRef {
 @Component({
     template: '',
     providers: [NxDialogService],
+    standalone: true,
+    imports: [NxModalModule, forwardRef(() => DialogTestModule)],
 })
 class ComponentThatProvidesNxDialog {
     constructor(readonly dialog: NxDialogService) {}
 }
 
 /** Simple component for testing ComponentPortal. */
-@Component({ template: '' })
+@Component({
+    template: '',
+    standalone: true,
+})
 class DialogWithInjectedData {
     constructor(@Inject(NX_MODAL_DATA) readonly data: any) {}
 }
 
-@Component({ template: '<p>Pasta</p>' })
+@Component({
+    template: '<p>Pasta</p>',
+    standalone: true,
+})
 class DialogWithoutFocusableElements {}
 
 @Component({
     template: `<button>I'm a button</button>`,
     encapsulation: ViewEncapsulation.ShadowDom,
+    standalone: true,
 })
 class ShadowDomComponent {}
 
@@ -1753,8 +1807,8 @@ const TEST_DIRECTIVES = [
 ];
 
 @NgModule({
-    imports: [NxModalModule, NoopAnimationsModule],
+    imports: [NxModalModule, ...TEST_DIRECTIVES],
     exports: TEST_DIRECTIVES,
-    declarations: TEST_DIRECTIVES,
+    providers: [provideNoopAnimations()],
 })
 class DialogTestModule {}

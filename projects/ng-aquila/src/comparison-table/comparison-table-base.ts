@@ -8,7 +8,7 @@ import { NxComparisonTableViewType } from './comparison-table.models';
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
 
 /** @docs-private */
-@Directive()
+@Directive({ standalone: true })
 export abstract class NxComparisonTableBase implements OnDestroy {
     selectedIndexChange!: EventEmitter<number>;
 

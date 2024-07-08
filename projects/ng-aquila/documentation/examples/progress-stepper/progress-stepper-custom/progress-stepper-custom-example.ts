@@ -1,4 +1,12 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxSingleStepperComponent,
+    NxStepComponent,
+    NxStepperNextDirective,
+    NxStepperPreviousDirective,
+} from '@aposin/ng-aquila/progress-stepper';
 
 /**
  * @title Progress Indicator custom label example
@@ -7,6 +15,15 @@ import { Component } from '@angular/core';
     selector: 'progress-stepper-custom-example',
     templateUrl: './progress-stepper-custom-example.html',
     styleUrls: ['./progress-stepper-custom-example.css'],
+    standalone: true,
+    imports: [
+        NxSingleStepperComponent,
+        NgFor,
+        NxStepComponent,
+        NxButtonComponent,
+        NxStepperPreviousDirective,
+        NxStepperNextDirective,
+    ],
 })
 export class ProgressStepperCustomExampleComponent {
     testStepsData = ['Lorem', 'Ipsum', 'Dolar'];

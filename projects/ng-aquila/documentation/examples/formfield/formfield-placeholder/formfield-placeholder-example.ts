@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
 
 /**
  * @title Placeholder example
@@ -7,5 +9,7 @@ import { Component } from '@angular/core';
     selector: 'formfield-placeholder-example',
     templateUrl: './formfield-placeholder-example.html',
     styleUrls: ['./formfield-placeholder-example.css'],
+    standalone: true,
+    imports: [NxFormfieldComponent, NxInputDirective],
 })
 export class FormfieldPlaceholderExampleComponent {}

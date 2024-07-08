@@ -34,8 +34,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxRadioModule, NxIconModule, ExamplesSharedModule],
-    declarations: [EXAMPLES],
+    imports: [NxRadioModule, NxIconModule, ExamplesSharedModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class RadioExamplesModule {

@@ -44,8 +44,8 @@ const EXAMPLES = [
         ExamplesSharedModule,
         NxPopoverModule,
         NxIconModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class SliderExamplesModule {

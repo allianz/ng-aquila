@@ -19,6 +19,7 @@ export type NxBreadcrumpAppearance = 'default' | 'link';
         '[class.is-negative]': 'negative',
         '[class.is-link]': 'appearance === "link"',
     },
+    standalone: true,
 })
 export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy {
     /**

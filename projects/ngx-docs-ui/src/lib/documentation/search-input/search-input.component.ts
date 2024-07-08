@@ -1,5 +1,9 @@
+import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxInputModule } from '@aposin/ng-aquila/input';
 import { BehaviorSubject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
@@ -7,6 +11,8 @@ import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
     selector: 'nxv-search',
     templateUrl: './search-input.component.html',
     styleUrls: ['./search-input.component.scss'],
+    standalone: true,
+    imports: [NxFormfieldModule, NxInputModule, FormsModule, NgIf],
 })
 export class NxvSearchInputComponent implements OnInit {
     searchTerm = '';

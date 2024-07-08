@@ -1,12 +1,32 @@
+import { JsonPipe, NgFor, NgIf } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    OnDestroy,
+    OnInit,
+    ViewChild,
+} from '@angular/core';
+import {
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
     FileItem,
     NxFileUploadConfig,
     NxFileUploader,
+    NxFileUploaderButtonDirective,
     NxFileUploaderComponent,
+    NxFileUploaderComponent as NxFileUploaderComponent_1,
+    NxFileUploaderHintDirective,
+    NxFileUploaderTriggerDirective,
 } from '@aposin/ng-aquila/file-uploader';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import { NxMessageToastService } from '@aposin/ng-aquila/message';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -19,8 +39,26 @@ import { myCustomConfig } from '../file-uploader-auto/file-uploader-auto-example
     templateUrl: './file-uploader-disable-common-validators-example.html',
     styleUrls: ['./file-uploader-disable-common-validators-example.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxFileUploaderComponent_1,
+        NxLabelComponent,
+        NxFileUploaderHintDirective,
+        NxButtonComponent,
+        NxFileUploaderButtonDirective,
+        NxIconComponent,
+        NgIf,
+        NxErrorComponent,
+        NgFor,
+        NxFileUploaderTriggerDirective,
+        JsonPipe,
+    ],
 })
-export class FileUploadernoBlockingValidatorsExampleComponent {
+export class FileUploadernoBlockingValidatorsExampleComponent
+    implements OnInit, OnDestroy
+{
     @ViewChild('documentUpload', { static: false })
     documentUpload!: NxFileUploaderComponent;
 

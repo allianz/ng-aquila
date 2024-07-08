@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import {
+    NxNumberStepperComponent,
+    NxNumberStepperPrefixDirective,
+    NxNumberStepperSuffixDirective,
+} from '@aposin/ng-aquila/number-stepper';
 
 /**
  * @title Prefix and Suffix
@@ -7,5 +12,11 @@ import { Component } from '@angular/core';
     selector: 'number-stepper-additions-example',
     templateUrl: './number-stepper-additions-example.html',
     styleUrls: ['./number-stepper-additions-example.css'],
+    standalone: true,
+    imports: [
+        NxNumberStepperComponent,
+        NxNumberStepperSuffixDirective,
+        NxNumberStepperPrefixDirective,
+    ],
 })
 export class NumberStepperAdditionsExampleComponent {}

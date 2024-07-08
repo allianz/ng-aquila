@@ -2,9 +2,18 @@ import { Component, Injectable } from '@angular/core';
 import {
     FormControl,
     FormGroupDirective,
+    FormsModule,
     NgForm,
+    ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+    NxFormfieldHintDirective,
+} from '@aposin/ng-aquila/formfield';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 
 @Injectable()
@@ -27,6 +36,16 @@ export class ShowOnDirtyErrorStateMatcher implements ErrorStateMatcher {
     styleUrls: ['./error-custom-matcher-formfield-example.css'],
     providers: [
         { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+    ],
+    standalone: true,
+    imports: [
+        NxFormfieldComponent,
+        NxInputDirective,
+        FormsModule,
+        ReactiveFormsModule,
+        NxFormfieldHintDirective,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
     ],
 })
 export class ErrorCustomMatcherFormfieldExampleComponent {

@@ -5,5 +5,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     template: '<ng-content></ng-content>',
     styleUrls: ['./sidepanel-header.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxSidepanelHeaderComponent {}

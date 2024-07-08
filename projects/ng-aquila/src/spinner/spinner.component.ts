@@ -26,6 +26,7 @@ const ANNOUNCER_DURATION = 1000;
         '[attr.aria-live]': '"assertive"',
         '[attr.aria-hidden]': '"true"',
     },
+    standalone: true,
 })
 export class NxSpinnerComponent implements OnInit, OnDestroy {
     /** Sets the size of the spinner. Default is 'small'. */

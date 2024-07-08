@@ -19,6 +19,7 @@ import { NxToggleSectionBase } from './toggle-section/toggle-section-base';
         { provide: NxTableContentElement, useExisting: NxComparisonTableRowDirective },
         { provide: NxComparisonTableRowBase, useExisting: NxComparisonTableRowDirective },
     ],
+    standalone: true,
 })
 export class NxComparisonTableRowDirective extends NxComparisonTableRowBase implements AfterContentInit, OnDestroy, NxTableContentElement {
     /** @docs-private */

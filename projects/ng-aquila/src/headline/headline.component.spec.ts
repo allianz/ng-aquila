@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxHeadlineComponent, NxHeadlineSize } from './headline.component';
 import { NxHeadlineModule } from './headline.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class HeadlineTest {
     @ViewChild(NxHeadlineComponent) headlineInstance!: NxHeadlineComponent;
     size = '';
@@ -42,8 +42,7 @@ describe('NxHeadlineDirective', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicHeadline, HeadlineWithArbitraryClass, DynamicHeadline],
-            imports: [NxHeadlineModule],
+            imports: [NxHeadlineModule, BasicHeadline, HeadlineWithArbitraryClass, DynamicHeadline],
         }).compileComponents();
     }));
 
@@ -137,15 +136,21 @@ describe('NxHeadlineDirective', () => {
 
 @Component({
     template: `<h1 [nxHeadline]="size">Hello Headline</h1>`,
+    standalone: true,
+    imports: [NxHeadlineModule],
 })
 class BasicHeadline extends HeadlineTest {}
 
 @Component({
     template: `<h1 nxHeadline="page" class="some-arbitray-class-name">With arbitrary class</h1>`,
+    standalone: true,
+    imports: [NxHeadlineModule],
 })
 class HeadlineWithArbitraryClass extends HeadlineTest {}
 
 @Component({
     template: `<h1 nxHeadline [size]="typedSize" [negative]="negative">Hello Headline</h1>`,
+    standalone: true,
+    imports: [NxHeadlineModule],
 })
 class DynamicHeadline extends HeadlineTest {}

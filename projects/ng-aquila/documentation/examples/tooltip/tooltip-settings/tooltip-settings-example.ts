@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
 import {
     NX_TOOLTIP_DEFAULT_OPTIONS,
     NxTooltipDefaultOptions,
+    NxTooltipDirective,
 } from '@aposin/ng-aquila/tooltip';
 
 const myDefaultOptions: NxTooltipDefaultOptions = {
@@ -21,5 +23,7 @@ const myDefaultOptions: NxTooltipDefaultOptions = {
     providers: [
         { provide: NX_TOOLTIP_DEFAULT_OPTIONS, useValue: myDefaultOptions },
     ],
+    standalone: true,
+    imports: [NxBadgeComponent, NxTooltipDirective],
 })
 export class TooltipSettingsExampleComponent {}

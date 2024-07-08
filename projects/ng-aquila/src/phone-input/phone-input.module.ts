@@ -8,9 +8,8 @@ import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxPhoneInputComponent } from './phone-input.component';
 
 @NgModule({
-    imports: [NxDropdownModule, CommonModule, FormsModule, NxInputModule],
+    imports: [NxDropdownModule, CommonModule, FormsModule, NxInputModule, NxPhoneInputComponent],
     exports: [NxPhoneInputComponent, NxFormfieldModule],
-    declarations: [NxPhoneInputComponent],
     providers: [],
 })
 export class NxPhoneInputModule {}

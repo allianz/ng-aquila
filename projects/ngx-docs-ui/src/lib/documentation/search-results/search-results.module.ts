@@ -30,9 +30,9 @@ const routes: Routes = [
         NxIconModule,
         NxMessageModule,
         RouterModule.forChild(routes),
+        NxvSearchResultsComponent,
     ],
     exports: [NxvSearchResultsComponent],
-    declarations: [NxvSearchResultsComponent],
     providers: [],
 })
 export class SearchResultsModule {}

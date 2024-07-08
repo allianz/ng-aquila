@@ -68,8 +68,8 @@ const EXAMPLES = [
         ExamplesSharedModule,
         RouterModule,
         DragDropModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class TableExamplesModule {

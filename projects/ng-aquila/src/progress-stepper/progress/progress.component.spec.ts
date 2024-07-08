@@ -6,7 +6,7 @@ import { NxProgressStepperDirective } from '../progress-stepper.component';
 import { NxProgressStepperModule } from '../progress-stepper.module';
 import { NxProgressStepperComponent } from './progress.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ProgressTest {
     @ViewChild(NxProgressStepperDirective) componentInstance!: NxProgressStepperDirective;
     @ViewChild(NxProgressStepperDirective, { read: ElementRef }) componentInstanceRef!: ElementRef;
@@ -31,8 +31,7 @@ describe('NxProgressStepperComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [ProgressBasicTest, ProgressBindingTest, ProgressClampTest],
-            imports: [NxProgressStepperModule],
+            imports: [NxProgressStepperModule, ProgressBasicTest, ProgressBindingTest, ProgressClampTest],
         }).compileComponents();
     }));
 
@@ -74,6 +73,8 @@ describe('NxProgressStepperComponent', () => {
             <nx-step label="Step 2"> step 2 content </nx-step> </nx-progress-stepper
         >>
     `,
+    standalone: true,
+    imports: [NxProgressStepperModule],
 })
 class ProgressBasicTest extends ProgressTest {}
 
@@ -84,6 +85,8 @@ class ProgressBasicTest extends ProgressTest {}
             <nx-step label="Step 2"> step 2 content </nx-step>
         </nx-progress-stepper>
     `,
+    standalone: true,
+    imports: [NxProgressStepperModule],
 })
 class ProgressBindingTest extends ProgressTest {}
 @Component({
@@ -93,5 +96,7 @@ class ProgressBindingTest extends ProgressTest {}
             <nx-step label="Step 2"> step 2 content </nx-step>
         </nx-progress-stepper>
     `,
+    standalone: true,
+    imports: [NxProgressStepperModule],
 })
 class ProgressClampTest extends ProgressTest {}

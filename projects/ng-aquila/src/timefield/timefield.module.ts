@@ -11,7 +11,6 @@ import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
 import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 
 import { NxTimefieldComponent, NxTimefieldControl } from './timefield.component';
-import { NxTimefieldIntl } from './timefield-intl';
 import { NxTimefieldOption } from './timefield-option';
 
 @NgModule({
@@ -29,9 +28,9 @@ import { NxTimefieldOption } from './timefield-option';
         ReactiveFormsModule,
         NxTimefieldOption,
         NxTimefieldControl,
+        NxTimefieldComponent,
     ],
-    declarations: [NxTimefieldComponent],
     exports: [NxTimefieldComponent],
-    providers: [NxTimefieldIntl],
+    providers: [],
 })
 export class NxTimefieldModule {}

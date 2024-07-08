@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
  * @title Small stage with header example
  */
 @Component({
+    standalone: true,
     selector: 'small-stage-w-header-example',
     templateUrl: './small-stage-w-header-example.html',
     styleUrls: ['./small-stage-w-header-example.css'],

@@ -7,7 +7,7 @@ import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxTaglistComponent } from './taglist.component';
 import { NxTaglistModule } from './taglist.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class TaglistTest {
     @ViewChild(NxTaglistComponent) taglistInstance!: NxTaglistComponent;
     tags: (string | object)[] = ['foo', 'bar'];
@@ -39,8 +39,7 @@ describe('NxTaglistComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicTaglist, TaglistNoDelete, TaglistObjects, TaglistWithFormatter, AriaLabelledByTaglist, TaglistOnPush],
-            imports: [NxTaglistModule],
+            imports: [NxTaglistModule, BasicTaglist, TaglistNoDelete, TaglistObjects, TaglistWithFormatter, AriaLabelledByTaglist, TaglistOnPush],
         }).compileComponents();
     }));
 
@@ -265,16 +264,22 @@ describe('NxTaglistComponent', () => {
 
 @Component({
     template: `<nx-taglist [tags]="tags">empty</nx-taglist>`,
+    standalone: true,
+    imports: [NxTaglistModule],
 })
 class BasicTaglist extends TaglistTest {}
 
 @Component({
     template: `<nx-taglist [tags]="tags" [allowTagDeletion]="false"></nx-taglist>`,
+    standalone: true,
+    imports: [NxTaglistModule],
 })
 class TaglistNoDelete extends TaglistTest {}
 
 @Component({
     template: `<nx-taglist [tags]="tags" labelProperty="testLabelProp"></nx-taglist>`,
+    standalone: true,
+    imports: [NxTaglistModule],
 })
 class TaglistObjects extends TaglistTest {
     tags = [{ testLabelProp: 'foo' }, { testLabelProp: 'bar' }];
@@ -282,6 +287,8 @@ class TaglistObjects extends TaglistTest {
 
 @Component({
     template: `<nx-taglist [tags]="tags" [valueFormatter]="myFormatter">empty</nx-taglist>`,
+    standalone: true,
+    imports: [NxTaglistModule],
 })
 class TaglistWithFormatter extends TaglistTest {
     myFormatter = (value: any) => `my ${value}`;
@@ -290,6 +297,8 @@ class TaglistWithFormatter extends TaglistTest {
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `<nx-taglist [tags]="tags">empty</nx-taglist>`,
+    standalone: true,
+    imports: [NxTaglistModule],
 })
 class TaglistOnPush extends TaglistTest {}
 
@@ -299,6 +308,8 @@ class TaglistOnPush extends TaglistTest {}
         <h5 id="taglist-headline2">Other label</h5>
         <nx-taglist [tags]="tags" [aria-labelledby]="labelledBy"></nx-taglist>
     `,
+    standalone: true,
+    imports: [NxTaglistModule],
 })
 class AriaLabelledByTaglist extends TaglistTest {
     labelledBy = 'taglist-headline';

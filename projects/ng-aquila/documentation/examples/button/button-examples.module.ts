@@ -44,8 +44,8 @@ const EXAMPLES = [
         NxIconModule,
         NxIndicatorModule,
         NxHeadlineModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class ButtonExamplesModule {

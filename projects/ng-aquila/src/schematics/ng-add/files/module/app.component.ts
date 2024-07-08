@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 @Component({
+    standalone: true,
     selector: 'app-root',
     templateUrl: './app.component.html',
 })

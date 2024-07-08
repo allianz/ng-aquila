@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAX_WIDTH, MIN_WIDTH, NxSidebarComponent, RESIZE_STEP_SIZE } from './sidebar.component';
 import { NxSidebarModule } from './sidebar.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class SidebarTest {
     @ViewChild(NxSidebarComponent) sidebarInstance!: NxSidebarComponent;
 }
@@ -56,8 +56,7 @@ describe('NxSidebarComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicSidebar, ResizeableSidebar, WideSidebar],
-            imports: [BrowserAnimationsModule, NxSidebarModule],
+            imports: [BrowserAnimationsModule, NxSidebarModule, BasicSidebar, ResizeableSidebar, WideSidebar],
         }).compileComponents();
     }));
 
@@ -407,12 +406,16 @@ describe('NxSidebarComponent', () => {
 @Component({
     template: `<nx-sidebar>Hello sidebar</nx-sidebar>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxSidebarModule],
 })
 class BasicSidebar extends SidebarTest {}
 
 @Component({
     template: `<nx-sidebar resizeable resizeHandleAriaLabel="example label">Hello sidebar</nx-sidebar>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxSidebarModule],
 })
 class ResizeableSidebar extends SidebarTest {}
 
@@ -426,5 +429,7 @@ class ResizeableSidebar extends SidebarTest {}
         </nx-sidebar>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxSidebarModule],
 })
 class WideSidebar extends SidebarTest {}

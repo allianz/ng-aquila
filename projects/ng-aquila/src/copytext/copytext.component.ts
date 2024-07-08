@@ -18,6 +18,7 @@ const DEFAULT_TYPE = 'normal';
         '[class.nx-copy--large]': 'type === "large"',
         '[class.nx-copy--negative]': 'negative',
     },
+    standalone: true,
 })
 export class NxCopytextComponent {
     /**

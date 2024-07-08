@@ -8,7 +8,7 @@ describe('StatusIconComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [NxStatusIconComponent],
+            imports: [NxStatusIconComponent],
         });
         fixture = TestBed.createComponent(NxStatusIconComponent);
         component = fixture.componentInstance;

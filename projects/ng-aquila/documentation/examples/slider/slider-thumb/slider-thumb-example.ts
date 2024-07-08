@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxSliderComponent } from '@aposin/ng-aquila/slider';
 
 /**
  * @title Slider Thumb Example
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
     selector: 'slider-thumb-example',
     templateUrl: './slider-thumb-example.html',
     styleUrls: ['./slider-thumb-example.css'],
+    standalone: true,
+    imports: [NxSliderComponent],
 })
 export class SliderThumbExampleComponent {}

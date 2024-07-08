@@ -1,4 +1,9 @@
+import { NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { ColorPickerModule } from 'ngx-color-picker';
 import parseColor from 'parse-color';
 
 @Component({
@@ -9,6 +14,8 @@ import parseColor from 'parse-color';
         '[class.sidebar-hidden]': '!shown',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxButtonModule, NgIf, NxIconModule, FormsModule, NgFor, ColorPickerModule],
 })
 export class CssVarSidebarComponent {
     shown = true;

@@ -23,8 +23,13 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxLinkModule, NxIconModule, NxCopytextModule, RouterModule],
-    declarations: [EXAMPLES],
+    imports: [
+        NxLinkModule,
+        NxIconModule,
+        NxCopytextModule,
+        RouterModule,
+        EXAMPLES,
+    ],
     exports: [EXAMPLES],
 })
 export class LinkExamplesModule {

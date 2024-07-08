@@ -1,5 +1,17 @@
+import { NgFor } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
-import { NxMultiStepperComponent } from '@aposin/ng-aquila/progress-stepper';
+import { FormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+} from '@aposin/ng-aquila/formfield';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
+import {
+    NxMultiStepperComponent,
+    NxProgressStepperModule,
+} from '@aposin/ng-aquila/progress-stepper';
 
 /**
  * @title Progress Indicator Multi Groups Example
@@ -8,6 +20,17 @@ import { NxMultiStepperComponent } from '@aposin/ng-aquila/progress-stepper';
     selector: 'progress-stepper-multi-groups-example',
     templateUrl: './progress-stepper-multi-groups-example.html',
     styleUrls: ['./progress-stepper-multi-groups-example.css'],
+    standalone: true,
+    imports: [
+        NgFor,
+        NxProgressStepperModule,
+        FormsModule,
+        NxFormfieldComponent,
+        NxInputDirective,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
+        NxButtonComponent,
+    ],
 })
 export class ProgressStepperMultiGroupsExampleComponent {
     @ViewChild('stepper') stepper!: NxMultiStepperComponent;

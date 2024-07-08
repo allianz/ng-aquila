@@ -2,7 +2,7 @@ import { AnimationEvent } from '@angular/animations';
 import { CdkAccordionItem } from '@angular/cdk/accordion';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
-import { TemplatePortal } from '@angular/cdk/portal';
+import { CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
@@ -70,6 +70,8 @@ export const EXPANSION_PANEL_DEFAULT_OPTIONS = new InjectionToken<ExpansionPanel
         // to the same accordion.
         { provide: NxAccordionDirective, useValue: undefined },
     ],
+    standalone: true,
+    imports: [CdkPortalOutlet],
 })
 export class NxExpansionPanelComponent extends CdkAccordionItem implements AfterContentInit, OnChanges, OnDestroy {
     /** Whether the negative set of styles should be used. */

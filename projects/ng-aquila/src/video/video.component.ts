@@ -1,13 +1,17 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NgIf } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 @Component({
     selector: 'nx-video',
     templateUrl: 'video.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./video.component.scss'],
+    standalone: true,
+    imports: [NgIf, NxIconModule],
 })
 
 // note that this currently only supports youtube videos

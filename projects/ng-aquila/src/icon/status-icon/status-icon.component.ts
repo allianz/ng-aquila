@@ -1,4 +1,7 @@
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { NxIconComponent } from '../icon.component';
 
 export type NxStatusIconType = 'success' | 'info' | 'error' | 'warning';
 
@@ -9,6 +12,8 @@ export type NxStatusIconSize = 'auto' | 's' | 'm' | 'l' | 'xl';
     templateUrl: './status-icon.component.html',
     styleUrls: ['./status-icon.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxIconComponent, NgClass],
 })
 export class NxStatusIconComponent {
     /** Sets status type */

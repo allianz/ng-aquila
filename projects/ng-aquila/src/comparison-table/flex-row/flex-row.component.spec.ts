@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, DebugElement, Directive, Type } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -8,7 +9,7 @@ import { NxComparisonTableModule } from '../comparison-table.module';
 declare let viewport: any;
 const THROTTLE_TIME = 200;
 
-@Directive()
+@Directive({ standalone: true })
 abstract class FlexRowTest {
     selected = 0;
 }
@@ -25,8 +26,7 @@ describe('ComparisonTableFlexRow', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxComparisonTableModule],
-            declarations: [BasicComponent],
+            imports: [NxComparisonTableModule, BasicComponent],
         });
         TestBed.compileComponents();
     }));
@@ -92,6 +92,8 @@ describe('ComparisonTableFlexRow', () => {
 
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
+    standalone: true,
+    imports: [NxComparisonTableModule, CommonModule],
 })
 class BasicComponent extends FlexRowTest {
     data = [

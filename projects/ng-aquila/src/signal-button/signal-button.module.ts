@@ -7,8 +7,7 @@ import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { NxSignalButtonComponent } from './signal-button.component';
 
 @NgModule({
-    imports: [CommonModule, NxPopoverModule, NxIconModule, NxButtonModule],
-    declarations: [NxSignalButtonComponent],
+    imports: [CommonModule, NxPopoverModule, NxIconModule, NxButtonModule, NxSignalButtonComponent],
     exports: [NxSignalButtonComponent],
 })
 export class NxSignalButtonModule {}

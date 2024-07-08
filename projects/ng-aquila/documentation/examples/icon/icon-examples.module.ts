@@ -24,8 +24,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxIconModule, CommonModule, NxHeadlineModule],
-    declarations: [EXAMPLES],
+    imports: [NxIconModule, CommonModule, NxHeadlineModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class IconExamplesModule {

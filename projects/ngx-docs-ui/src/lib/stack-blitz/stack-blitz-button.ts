@@ -12,6 +12,8 @@ import { StackBlitzWriter } from './stack-blitz-writer';
     selector: 'nxv-stack-blitz-button',
     templateUrl: './stack-blitz-button.html',
     providers: [StackBlitzWriter],
+    standalone: true,
+    imports: [NxButtonModule, NxTooltipModule, NxIconModule],
 })
 export class StackBlitzButton {
     /**
@@ -81,9 +83,8 @@ export class StackBlitzButton {
 }
 
 @NgModule({
-    imports: [NxButtonModule, NxIconModule, NxTooltipModule],
+    imports: [NxButtonModule, NxIconModule, NxTooltipModule, StackBlitzButton],
     exports: [StackBlitzButton],
-    declarations: [StackBlitzButton],
     providers: [StackBlitzWriter],
 })
 export class StackBlitzButtonModule {}

@@ -1,5 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -24,6 +25,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -58,6 +60,8 @@ export const SELECTABLE_CARD_DEFAULT_OPTIONS = new InjectionToken<SelectableCard
         '[class.has-error]': 'errorState',
     },
     styleUrls: ['./selectable-card-group.scss'],
+    standalone: true,
+    imports: [NgIf],
 })
 export class NxSelectableCardGroupComponent implements ControlValueAccessor, AfterContentInit, DoCheck {
     @ContentChildren(forwardRef(() => NxSelectableCardComponent), { descendants: true }) _cards!: QueryList<NxSelectableCardComponent>;
@@ -170,6 +174,8 @@ export class NxSelectableCardGroupComponent implements ControlValueAccessor, Aft
         '[class.has-error]': '_errorState',
         '[class.is-highlight]': 'highlight',
     },
+    standalone: true,
+    imports: [NgIf, NgTemplateOutlet, NxIconModule],
 })
 export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck, AfterContentInit, OnDestroy, AfterViewInit {
     _errorListIds = '';

@@ -1,4 +1,9 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import {
+    NxCircleToggleComponent,
+    NxCircleToggleGroupComponent,
+} from '@aposin/ng-aquila/circle-toggle';
 
 /**
  * @title Circle Toggle group example
@@ -7,6 +12,8 @@ import { Component } from '@angular/core';
     selector: 'circle-toggle-group-example',
     templateUrl: './circle-toggle-group-example.html',
     styleUrls: ['./circle-toggle-group-example.css'],
+    standalone: true,
+    imports: [NxCircleToggleGroupComponent, NgFor, NxCircleToggleComponent],
 })
 export class CircleToggleGroupExampleComponent {
     sampleValues = [

@@ -7,7 +7,7 @@ import { NxSwipebarModule } from './swipebar.module';
 
 const screenWidth = document.body.offsetWidth;
 
-@Directive()
+@Directive({ standalone: true })
 abstract class SwipebarTest {
     @ViewChild(NxSwipebarComponent) swipebarInstance!: NxSwipebarComponent;
     overflow = false;
@@ -29,8 +29,7 @@ describe(NxSwipebarComponent.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicSwipebar],
-            imports: [NxSwipebarModule],
+            imports: [NxSwipebarModule, BasicSwipebar],
         }).compileComponents();
     }));
 
@@ -115,5 +114,7 @@ async function nextFrame() {
             }
         `,
     ],
+    standalone: true,
+    imports: [NxSwipebarModule],
 })
 class BasicSwipebar extends SwipebarTest {}

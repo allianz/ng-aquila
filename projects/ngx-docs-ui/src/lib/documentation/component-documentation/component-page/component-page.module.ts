@@ -16,7 +16,6 @@ import { ComponentOverview } from './component-overview';
 import { NxvComponentPage } from './component-page';
 
 @NgModule({
-    declarations: [NxvComponentPage, ComponentOverview, ComponentApi, ComponentExamples],
     imports: [
         CommonModule,
         DocViewerModule,
@@ -27,6 +26,14 @@ import { NxvComponentPage } from './component-page';
         NxBadgeModule,
         NxTabsModule,
         NxMessageModule,
+        NxvComponentPage,
+        ComponentOverview,
+        ComponentApi,
+        ComponentExamples,
+        NxvComponentPage,
+        ComponentOverview,
+        ComponentApi,
+        ComponentExamples,
     ],
     providers: [provideHttpClient(withInterceptorsFromDi())],
 })

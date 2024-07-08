@@ -1,14 +1,18 @@
-import { Location } from '@angular/common';
+import { Location, NgIf } from '@angular/common';
 import { Component, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
 
 import { ThemeSwitcherService } from '../documentation/theme-switcher/theme-switcher.service';
+import { LazyExampleOutletComponent } from '../lazy-example-outlet/lazy-example-outlet.component';
 
 type ExampleBackgroundType = '' | 'blank';
 
 @Component({
     templateUrl: './example-full-screen.component.html',
     styleUrls: ['./example-full-screen.component.scss'],
+    standalone: true,
+    imports: [NgIf, NxButtonModule, LazyExampleOutletComponent],
 })
 export class ExampleFullScreenComponent {
     example: string;

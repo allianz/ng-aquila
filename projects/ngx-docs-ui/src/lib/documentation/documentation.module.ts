@@ -67,9 +67,9 @@ class DestroyComponentPageRouteReuseStrategy extends BaseRouteReuseStrategy {
         NxvSearchInputModule,
         NxMessageModule,
         NxErrorModule,
+        DocumentationFrameComponent,
     ],
     exports: [RouterModule],
-    declarations: [DocumentationFrameComponent],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,

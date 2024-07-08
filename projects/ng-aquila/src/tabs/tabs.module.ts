@@ -17,19 +17,12 @@ import { NxTabLabelWrapperDirective } from './tab-label-wrapper';
 import { NxTabLinkDirective, NxTabNavBarComponent } from './tab-nav-bar';
 
 @NgModule({
-    imports: [CommonModule, PortalModule, NxAccordionModule, NxIconModule, NxButtonModule],
-    exports: [
-        NxTabComponent,
-        NxTabGroupComponent,
-        NxTabLabelDirective,
-        NxTabLabelWrapperDirective,
-        NxTabHeaderComponent,
-        NxTabBodyComponent,
-        NxTabNavBarComponent,
-        NxTabLinkDirective,
-        NxTabContentDirective,
-    ],
-    declarations: [
+    imports: [
+        CommonModule,
+        PortalModule,
+        NxAccordionModule,
+        NxIconModule,
+        NxButtonModule,
         NxTabComponent,
         NxTabGroupComponent,
         NxTabLabelDirective,
@@ -41,6 +34,17 @@ import { NxTabLinkDirective, NxTabNavBarComponent } from './tab-nav-bar';
         NxTabContentDirective,
         NxTabHeaderOutletComponent,
         NxTabScrollIndicator,
+    ],
+    exports: [
+        NxTabComponent,
+        NxTabGroupComponent,
+        NxTabLabelDirective,
+        NxTabLabelWrapperDirective,
+        NxTabHeaderComponent,
+        NxTabBodyComponent,
+        NxTabNavBarComponent,
+        NxTabLinkDirective,
+        NxTabContentDirective,
     ],
 })
 export class NxTabsModule {}

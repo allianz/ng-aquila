@@ -1,5 +1,5 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectorRef, Directive, ElementRef, forwardRef, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Directive, ElementRef, forwardRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
 import { NX_INPUT_VALUE_ACCESSOR } from '@aposin/ng-aquila/input';
 import { Subject } from 'rxjs';
@@ -26,8 +26,9 @@ export const NX_MASK_VALIDATORS: any = {
     },
     exportAs: 'nxMaskDirective',
     providers: [NX_MASK_VALUE_ACCESSOR, { provide: NX_INPUT_VALUE_ACCESSOR, useExisting: NxMaskDirective }, NX_MASK_VALIDATORS],
+    standalone: true,
 })
-export class NxMaskDirective implements ControlValueAccessor, Validator, OnInit {
+export class NxMaskDirective implements ControlValueAccessor, Validator, OnInit, OnDestroy {
     /**
      * Emits the unmasked value before the value changes.
      */

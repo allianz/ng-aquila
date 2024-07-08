@@ -13,6 +13,7 @@ import { NXV_FOOTER } from './../../../core/tokens';
             }
         `,
     ],
+    standalone: true,
 })
 export class NxvFooterComponent implements OnInit {
     constructor(

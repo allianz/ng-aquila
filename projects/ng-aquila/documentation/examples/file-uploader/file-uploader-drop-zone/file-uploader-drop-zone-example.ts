@@ -1,9 +1,18 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NxLabelComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
 import {
     NxFileUploadConfig,
     NxFileUploader,
+    NxFileUploaderButtonDirective,
+    NxFileUploaderComponent,
+    NxFileUploaderDropZoneComponent,
+    NxFileUploaderHintDirective,
+    NxFileUploaderTriggerDirective,
 } from '@aposin/ng-aquila/file-uploader';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import {
     NxMessageToastConfig,
     NxMessageToastService,
@@ -22,6 +31,18 @@ export const myCustomConfig: NxMessageToastConfig = {
     selector: 'file-uploader-drop-zone-example',
     templateUrl: './file-uploader-drop-zone-example.html',
     styleUrls: ['./file-uploader-drop-zone-example.css'],
+    standalone: true,
+    imports: [
+        NxFileUploaderComponent,
+        NxLabelComponent,
+        NxFileUploaderHintDirective,
+        NxFileUploaderDropZoneComponent,
+        NxCopytextComponent,
+        NxButtonComponent,
+        NxFileUploaderButtonDirective,
+        NxIconComponent,
+        NxFileUploaderTriggerDirective,
+    ],
 })
 export class FileUploaderDropZoneExampleComponent implements OnInit, OnDestroy {
     readonly uploadConfig: NxFileUploadConfig = {

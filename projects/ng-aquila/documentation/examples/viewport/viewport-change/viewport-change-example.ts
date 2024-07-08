@@ -1,5 +1,15 @@
+import { NgFor } from '@angular/common';
 import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { NxSidebarComponent } from '@aposin/ng-aquila/sidebar';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import {
+    NxActionComponent,
+    NxActionIconDirective,
+} from '@aposin/ng-aquila/action';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import {
+    NxSidebarComponent,
+    NxSidebarComponent as NxSidebarComponent_1,
+} from '@aposin/ng-aquila/sidebar';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -11,6 +21,16 @@ import { takeUntil } from 'rxjs/operators';
     selector: 'viewport-change-example',
     templateUrl: './viewport-change-example.html',
     styleUrls: ['./viewport-change-example.css'],
+    standalone: true,
+    imports: [
+        NxSidebarComponent_1,
+        NgFor,
+        NxActionComponent,
+        RouterLink,
+        RouterLinkActive,
+        NxIconComponent,
+        NxActionIconDirective,
+    ],
 })
 export class ViewportChangeExampleComponent implements OnDestroy {
     @ViewChild('sidebar') sidebar!: NxSidebarComponent;

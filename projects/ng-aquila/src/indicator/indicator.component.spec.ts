@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxIndicatorComponent } from './indicator.component';
 import { NxIndicatorModule } from './indicator.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class IndicatorTest {
     @ViewChild(NxIndicatorComponent) indicatorInstance!: NxIndicatorComponent;
 }
@@ -25,8 +25,7 @@ describe('NxIndicatorComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicIndicator],
-            imports: [NxIndicatorModule],
+            imports: [NxIndicatorModule, BasicIndicator],
         }).compileComponents();
     }));
 
@@ -64,6 +63,8 @@ describe('NxIndicatorComponent', () => {
 
 @Component({
     template: `<nx-indicator [position]="position">1</nx-indicator>`,
+    standalone: true,
+    imports: [NxIndicatorModule],
 })
 class BasicIndicator extends IndicatorTest {
     position = '';

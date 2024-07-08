@@ -1,15 +1,24 @@
+import { AsyncPipe, NgComponentOutlet, NgIf } from '@angular/common';
 import { AfterViewInit, Component, Inject, InjectionToken, OnDestroy, Optional, ViewChild } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { NxIconRegistry } from '@aposin/ng-aquila/icon';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { NxErrorModule } from '@aposin/ng-aquila/base';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxHeaderModule } from '@aposin/ng-aquila/header';
+import { NxIconModule, NxIconRegistry } from '@aposin/ng-aquila/icon';
+import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { NX_ANNOUNCEMENT, NX_DOCS_GITHUB_LINK, NX_DOCS_HEADER_SLOT, NX_DOCS_LOGO_PATH } from '../core/tokens';
 import { GithubLinkConfig, LogoPath, NxAnnouncement } from '../core/types';
 import { ManifestService } from '../service/manifest.service';
+import { NxVersionSelectComponent } from './component-documentation/version-select/version-select.component';
 import { CssVarSidebarComponent } from './css-vars-sandbox/css-var-sidebar-component';
 import { Egg } from './egg';
 import { RabbitHole } from './rabbit-hole.service';
+import { NxvSearchInputComponent } from './search-input/search-input.component';
+import { NxvThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 import { Theme, ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
 
 export class NxDocFeatures {
@@ -26,6 +35,25 @@ export const NX_DOCS_FEATURE_FLAGS = new InjectionToken<NxDocFeatures>('NX_DOCS_
         '[class.hide-nav]': 'hideNavigation',
         '[style.padding-top.px]': 'showAnnouncement ? 120 : null',
     },
+    standalone: true,
+    imports: [
+        NgIf,
+        NxHeaderModule,
+        NxErrorModule,
+        NxLinkModule,
+        RouterLink,
+        RouterLinkActive,
+        NxvSearchInputComponent,
+        NxvThemeSwitcherComponent,
+        NxVersionSelectComponent,
+        NgComponentOutlet,
+        NxButtonModule,
+        NxIconModule,
+        RouterOutlet,
+        FormsModule,
+        CssVarSidebarComponent,
+        AsyncPipe,
+    ],
 })
 export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     manifestFile!: Blob;

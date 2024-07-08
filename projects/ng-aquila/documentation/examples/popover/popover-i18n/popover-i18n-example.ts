@@ -1,5 +1,10 @@
 import { Component, Injectable } from '@angular/core';
-import { NxPopoverIntl } from '@aposin/ng-aquila/popover';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxPopoverComponent,
+    NxPopoverIntl,
+    NxPopoverTriggerDirective,
+} from '@aposin/ng-aquila/popover';
 
 @Injectable()
 export class MyPopoverIntl extends NxPopoverIntl {
@@ -17,5 +22,7 @@ export class MyPopoverIntl extends NxPopoverIntl {
             useClass: MyPopoverIntl,
         },
     ],
+    standalone: true,
+    imports: [NxButtonComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverI18nExampleComponent {}

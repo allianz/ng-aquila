@@ -1,4 +1,5 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NgClass } from '@angular/common';
 import {
     AfterContentInit,
     booleanAttribute,
@@ -35,6 +36,8 @@ export const RESET_VALUES = [null, undefined, ''];
     templateUrl: 'radio-toggle.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['radio-toggle.component.scss'],
+    standalone: true,
+    imports: [NgClass],
 })
 export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, AfterContentInit, DoCheck {
     private readonly _toggleId: string = (nextId++).toString();

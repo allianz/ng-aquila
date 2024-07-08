@@ -1,5 +1,7 @@
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { CdkObserveContent } from '@angular/cdk/observers';
+import { NgIf } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -35,6 +37,7 @@ import {
     Validator,
 } from '@angular/forms';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -79,6 +82,8 @@ export type NxCheckboxLabelSize = 'small' | 'large';
         '[attr.role]': '"group"',
         '(focus)': '_forwardFocusToInput()',
     },
+    standalone: true,
+    imports: [NgIf],
 })
 export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterContentInit, OnDestroy, DoCheck {
     @ContentChildren(forwardRef(() => NxCheckboxComponent), { descendants: true }) _checkboxes!: QueryList<NxCheckboxComponent>;
@@ -295,6 +300,8 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
             multi: true,
         },
     ],
+    standalone: true,
+    imports: [NgIf, NxIconModule, CdkObserveContent],
 })
 export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnInit, AfterViewInit, Validator {
     /** @docs-private */

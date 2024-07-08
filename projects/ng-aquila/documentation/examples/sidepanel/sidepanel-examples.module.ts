@@ -28,8 +28,8 @@ const EXAMPLES = [
         FormsModule,
         NxIconModule,
         NxTabsModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class SidepanelExamplesModule {

@@ -1,5 +1,8 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxGridModule } from '@aposin/ng-aquila/grid';
 
 @Component({
     selector: 'nx-page-search',
@@ -9,6 +12,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, In
     host: {
         '[attr.role]': '"search"',
     },
+    standalone: true,
+    imports: [NxGridModule, NgIf, NxButtonModule],
 })
 export class NxPageSearchComponent {
     /** Sets the text label of the button. */

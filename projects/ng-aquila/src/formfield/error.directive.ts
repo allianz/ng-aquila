@@ -8,6 +8,7 @@ let uniqueId = 0;
         role: 'alert',
         '[attr.id]': 'id',
     },
+    standalone: true,
 })
 export class NxFormfieldErrorDirective {
     // create a unique id to be used by aria-described-by

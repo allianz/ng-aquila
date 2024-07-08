@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -23,8 +24,10 @@ describe('NxRadioToggleComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
-            declarations: [
+            imports: [
+                NxRadioToggleModule,
+                FormsModule,
+                ReactiveFormsModule,
                 AriaRadioToggle,
                 NoSelectionRadioToggle,
                 EmptyRadioToggle,
@@ -448,7 +451,7 @@ describe('NxRadioToggleComponent', () => {
     });
 });
 
-@Directive()
+@Directive({ standalone: true })
 abstract class RadioToggleTest {
     value: any;
 
@@ -461,6 +464,8 @@ abstract class RadioToggleTest {
         <nx-radio-toggle-button value="B">B</nx-radio-toggle-button>
         <nx-radio-toggle-button value="C">C</nx-radio-toggle-button>
     </nx-radio-toggle>`,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class NoSelectionRadioToggle extends RadioToggleTest {}
 
@@ -470,6 +475,8 @@ class NoSelectionRadioToggle extends RadioToggleTest {}
         <nx-radio-toggle-button [selected]="true" value="B">B</nx-radio-toggle-button>
         <nx-radio-toggle-button value="C">C</nx-radio-toggle-button>
     </nx-radio-toggle>`,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class SelectionRadioToggle extends RadioToggleTest {}
 
@@ -477,6 +484,8 @@ class SelectionRadioToggle extends RadioToggleTest {}
     template: `<nx-radio-toggle [variant]="'small negative'">
         <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
     </nx-radio-toggle>`,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ModifiedRadioToggle extends RadioToggleTest {}
 
@@ -486,6 +495,8 @@ class ModifiedRadioToggle extends RadioToggleTest {}
         <nx-radio-toggle-button value="B" [disabled]="true">B</nx-radio-toggle-button>
         <nx-radio-toggle-button value="C">C</nx-radio-toggle-button>
     </nx-radio-toggle>`,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class SingleDisableRadioToggle extends RadioToggleTest {}
 
@@ -495,6 +506,8 @@ class SingleDisableRadioToggle extends RadioToggleTest {}
         <nx-radio-toggle-button value="B">B</nx-radio-toggle-button>
         <nx-radio-toggle-button value="C">C</nx-radio-toggle-button>
     </nx-radio-toggle>`,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class AllDisableRadioToggle extends RadioToggleTest {}
 @Component({
@@ -503,6 +516,8 @@ class AllDisableRadioToggle extends RadioToggleTest {}
         <nx-radio-toggle-button value="B">B</nx-radio-toggle-button>
         <nx-radio-toggle-button value="C">C</nx-radio-toggle-button>
     </nx-radio-toggle>`,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ModelRadioToggle extends RadioToggleTest {
     changeSpy = jasmine.createSpy('change spy');
@@ -510,8 +525,12 @@ class ModelRadioToggle extends RadioToggleTest {
 
 @Component({
     template: `<nx-radio-toggle [(ngModel)]="value">
-        <nx-radio-toggle-button *ngFor="let value of data" [value]="value"> {{ value }} </nx-radio-toggle-button>
+        @for (value of data; track value) {
+            <nx-radio-toggle-button [value]="value"> {{ value }} </nx-radio-toggle-button>
+        }
     </nx-radio-toggle>`,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class LoopedRadioToggle extends RadioToggleTest {
     data: any[] = ['A', 'B', 'C'];
@@ -519,6 +538,8 @@ class LoopedRadioToggle extends RadioToggleTest {
 
 @Component({
     template: `<nx-radio-toggle> </nx-radio-toggle>`,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class EmptyRadioToggle extends RadioToggleTest {}
 
@@ -533,15 +554,19 @@ class EmptyRadioToggle extends RadioToggleTest {}
             <nx-radio-toggle-button value="B">B</nx-radio-toggle-button>
         </nx-radio-toggle>
     `,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class MultiRadioToggle extends RadioToggleTest {}
 @Component({
+    standalone: true,
     template: `
         <nx-radio-toggle>
             <nx-radio-toggle-button value="A" ariaLabel="cat">A</nx-radio-toggle-button>
             <nx-radio-toggle-button value="B" ariaLabel="dog">B</nx-radio-toggle-button>
         </nx-radio-toggle>
     `,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class AriaRadioToggle extends RadioToggleTest {}
 
@@ -556,6 +581,8 @@ class AriaRadioToggle extends RadioToggleTest {}
         <p>Form value: {{ testForm.value | json }}</p>
         <p>Form status: {{ testForm.status | json }}</p>
     </form>`,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule, CommonModule],
 })
 class ReactiveFormToggle extends RadioToggleTest {
     fb: FormBuilder = new FormBuilder();
@@ -581,6 +608,8 @@ class ReactiveFormToggle extends RadioToggleTest {
             <nx-radio-toggle-button value="C">C</nx-radio-toggle-button>
         </nx-radio-toggle>
     </form>`,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ValidationToggle extends RadioToggleTest {
     data = ['A', 'B', 'C'];

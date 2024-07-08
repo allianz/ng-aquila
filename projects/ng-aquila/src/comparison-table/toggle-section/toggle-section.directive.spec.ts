@@ -6,7 +6,7 @@ import { NxComparisonTableModule } from '../comparison-table.module';
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
 import { NxToggleSectionDirective } from './toggle-section.directive';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ToggleSectionTest {
     @ViewChildren(NxToggleSectionDirective) toggleSectionInstances!: QueryList<NxToggleSectionDirective>;
     @ViewChildren(NxComparisonTableRowDirective) rowInstances!: QueryList<NxComparisonTableRowDirective>;
@@ -30,8 +30,7 @@ describe('ToggleSectionHeaderComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxComparisonTableModule, BrowserAnimationsModule],
-            declarations: [BasicComponent],
+            imports: [NxComparisonTableModule, BrowserAnimationsModule, BasicComponent],
         });
         TestBed.compileComponents();
     }));
@@ -124,5 +123,7 @@ describe('ToggleSectionHeaderComponent', () => {
             </ng-container>
         </nx-comparison-table>
     `,
+    standalone: true,
+    imports: [NxComparisonTableModule],
 })
 class BasicComponent extends ToggleSectionTest {}

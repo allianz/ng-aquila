@@ -14,8 +14,7 @@ describe('NxvTableOfContentsComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxvTableOfContentsModule, BrowserAnimationsModule, RouterTestingModule],
-            declarations: [TableOfContentsTest],
+            imports: [NxvTableOfContentsModule, BrowserAnimationsModule, RouterTestingModule, TableOfContentsTest],
         }).compileComponents();
     }));
 
@@ -86,5 +85,7 @@ describe('NxvTableOfContentsComponent', () => {
         </div>
         <nxv-table-of-contents container="test-content"> </nxv-table-of-contents>
     `,
+    standalone: true,
+    imports: [NxvTableOfContentsModule, RouterTestingModule],
 })
 class TableOfContentsTest {}

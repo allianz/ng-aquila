@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxContextMenuComponent,
+    NxContextMenuItemComponent,
+    NxContextMenuTriggerDirective,
+} from '@aposin/ng-aquila/context-menu';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 /**
  * @title Basic Context Menu Example
@@ -7,5 +14,13 @@ import { Component } from '@angular/core';
     selector: 'context-menu-basic-example',
     templateUrl: './context-menu-basic-example.html',
     styleUrls: ['./context-menu-basic-example.css'],
+    standalone: true,
+    imports: [
+        NxContextMenuComponent,
+        NxContextMenuItemComponent,
+        NxIconButtonComponent,
+        NxContextMenuTriggerDirective,
+        NxIconComponent,
+    ],
 })
 export class ContextMenuBasicExampleComponent {}

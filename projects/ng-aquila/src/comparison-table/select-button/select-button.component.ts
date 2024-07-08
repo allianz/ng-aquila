@@ -1,6 +1,8 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy } from '@angular/core';
 import { NxButtonBase } from '@aposin/ng-aquila/button';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -18,6 +20,8 @@ import { NxComparisonTableBase } from '../comparison-table-base';
         '(click)': '_selectCell()',
         '[attr.aria-pressed]': '_ariaPressed',
     },
+    standalone: true,
+    imports: [NgIf, NxIconModule],
 })
 export class NxComparisonTableSelectButton extends NxButtonBase implements OnDestroy {
     /** Sets the label that is displayed when the column is selected. Default: 'Selected'. */

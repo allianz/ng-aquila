@@ -6,7 +6,7 @@ import { NxComparisonTableDescriptionCell } from './description-cell/description
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
 
 /** @docs-private */
-@Directive()
+@Directive({ standalone: true })
 export abstract class NxComparisonTableRowBase {
     cells!: QueryList<NxComparisonTableCell>;
     descriptionCell!: NxComparisonTableDescriptionCell;

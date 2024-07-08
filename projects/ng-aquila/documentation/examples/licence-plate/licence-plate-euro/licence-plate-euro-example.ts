@@ -1,4 +1,26 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import {
+    NxDropdownComponent,
+    NxDropdownItemComponent,
+} from '@aposin/ng-aquila/dropdown';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+    NxFormfieldPrefixDirective,
+} from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
+import {
+    NxLicencePlateEuroPrefixComponent,
+    NxLicencePlateValidatorDirective,
+} from '@aposin/ng-aquila/licence-plate';
 
 /**
  * @title Licence plate euro
@@ -7,6 +29,23 @@ import { Component } from '@angular/core';
     selector: 'licence-plate-euro-example',
     templateUrl: 'licence-plate-euro-example.html',
     styleUrls: ['licence-plate-euro-example.css'],
+    standalone: true,
+    imports: [
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxFormfieldComponent,
+        NxDropdownComponent,
+        NgFor,
+        NxDropdownItemComponent,
+        NxLicencePlateEuroPrefixComponent,
+        NxFormfieldPrefixDirective,
+        NxInputDirective,
+        FormsModule,
+        NxLicencePlateValidatorDirective,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
+    ],
 })
 export class LicencePlateEuroExampleComponent {
     country = 'A';

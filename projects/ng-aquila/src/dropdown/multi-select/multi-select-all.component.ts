@@ -1,5 +1,6 @@
 import { Highlightable, LiveAnnouncer } from '@angular/cdk/a11y';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 
 let nextId = 0;
 
@@ -18,6 +19,8 @@ let nextId = 0;
         '[attr.aria-disabled]': 'disabled || null',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxCheckboxModule],
 })
 export class NxMultiSelectAllComponent<T> implements Highlightable {
     private _active = false;

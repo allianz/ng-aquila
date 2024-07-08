@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
  */
 @Directive({
     selector: 'ng-template[nxContextMenuContent]',
+    standalone: true,
 })
 export class NxContextMenuContentDirective implements OnDestroy {
     private _portal!: TemplatePortal;

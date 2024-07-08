@@ -22,8 +22,8 @@ const EXAMPLES = [
         NxLinkModule,
         NxListModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class DataDisplayExamplesModule {

@@ -1,15 +1,37 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import {
+    CdkDrag,
+    CdkDragDrop,
+    CdkDropList,
+    moveItemInArray,
+} from '@angular/cdk/drag-drop';
+import { NgFor } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
 } from '@angular/core';
+import {
+    NxHeaderCellDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+} from '@aposin/ng-aquila/table';
 
 @Component({
     selector: 'table-column-reorder-example',
     templateUrl: './table-column-reorder-example.html',
     styleUrls: ['./table-column-reorder-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        NxTableComponent,
+        NxTableRowComponent,
+        CdkDropList,
+        NgFor,
+        NxHeaderCellDirective,
+        CdkDrag,
+        NxTableCellComponent,
+    ],
 })
 export class TableColumnReorderExample {
     header = [

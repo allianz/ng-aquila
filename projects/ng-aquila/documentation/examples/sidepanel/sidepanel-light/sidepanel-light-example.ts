@@ -1,4 +1,16 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import {
+    NxRadioToggleButtonComponent,
+    NxRadioToggleComponent,
+} from '@aposin/ng-aquila/radio-toggle';
+import {
+    NxSidepanelCloseButtonComponent,
+    NxSidepanelComponent,
+    NxSidepanelContentComponent,
+    NxSidepanelHeaderComponent,
+    NxSidepanelOuterContainerComponent,
+} from '@aposin/ng-aquila/sidepanel';
 
 /**
  * @title Light color variant
@@ -7,6 +19,17 @@ import { Component } from '@angular/core';
     selector: 'sidepanel-light-example',
     templateUrl: './sidepanel-light-example.html',
     styleUrls: ['sidepanel-light-example.css'],
+    standalone: true,
+    imports: [
+        NxSidepanelOuterContainerComponent,
+        NxRadioToggleComponent,
+        FormsModule,
+        NxRadioToggleButtonComponent,
+        NxSidepanelComponent,
+        NxSidepanelHeaderComponent,
+        NxSidepanelCloseButtonComponent,
+        NxSidepanelContentComponent,
+    ],
 })
 export class SidepanelLightExampleComponent {
     opened = true;

@@ -1,4 +1,11 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import {
+    NxActionComponent,
+    NxActionIconDirective,
+} from '@aposin/ng-aquila/action';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 /**
  * @title Action with Router Example
@@ -7,6 +14,15 @@ import { Component } from '@angular/core';
     selector: 'action-with-router-example',
     styleUrls: ['action-with-router-example.css'],
     templateUrl: './action-with-router-example.html',
+    standalone: true,
+    imports: [
+        NgFor,
+        NxActionComponent,
+        RouterLink,
+        RouterLinkActive,
+        NxIconComponent,
+        NxActionIconDirective,
+    ],
 })
 export class ActionWithRouterExampleComponent {
     actions = [

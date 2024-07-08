@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxSliderComponent } from '@aposin/ng-aquila/slider';
 
 /**
  * @title Slider Example
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
     selector: 'slider-basic-example',
     templateUrl: './slider-basic-example.html',
     styleUrls: ['./slider-basic-example.css'],
+    standalone: true,
+    imports: [NxSliderComponent],
 })
 export class SliderBasicExampleComponent {
     sliderDemoValue = 42;

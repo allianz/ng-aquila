@@ -2,6 +2,7 @@ import { AnimationEvent } from '@angular/animations';
 import { FocusKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import { Direction } from '@angular/cdk/bidi';
 import { END, ESCAPE, hasModifierKey, HOME, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
+import { NgClass } from '@angular/common';
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
@@ -31,6 +32,8 @@ import { NxContextMenuItemComponent, NxContextMenuItemWrapComponent } from './co
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: 'nxContextMenu',
     animations: [nxContextMenuAnimations.transformContextMenu],
+    standalone: true,
+    imports: [NgClass],
 })
 export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     private _keyManager!: FocusKeyManager<NxContextMenuItemComponent>;

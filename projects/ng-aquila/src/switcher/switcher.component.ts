@@ -1,5 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { CdkObserveContent } from '@angular/cdk/observers';
+import { NgIf } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -16,6 +18,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { ErrorStateMatcher, randomString } from '@aposin/ng-aquila/utils';
 
 let nextId = 0;
@@ -44,6 +47,8 @@ export type LABEL_SIZE = 'small' | 'large';
         '[attr.aria-invalid]': 'errorState',
         '(focus)': '_forwardFocusToInput()',
     },
+    standalone: true,
+    imports: [NgIf, NxIconModule, CdkObserveContent],
 })
 export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, AfterViewInit, OnDestroy {
     /** @docs-private */

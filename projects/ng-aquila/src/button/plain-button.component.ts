@@ -21,6 +21,7 @@ export type NxPlainButtonVariant = 'primary' | 'secondary';
         '[class.nx-plain-button--small]': 'size === "small"',
     },
     providers: [{ provide: NxTriggerButton, useExisting: NxPlainButtonComponent }],
+    standalone: true,
 })
 export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy, AfterViewInit {
     /** @docs-private */

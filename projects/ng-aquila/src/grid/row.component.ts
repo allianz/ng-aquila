@@ -57,6 +57,7 @@ export type RowWrapping = 'wrap' | 'nowrap' | 'reverse';
         '[class.nx-grid__row--container-query]': 'gridLayoutComponent?.containerQuery ?? false',
         '[class.nx-grid__row--media-query]': '!gridLayoutComponent?.containerQuery ?? true',
     },
+    standalone: true,
 })
 export class NxRowComponent {
     /**

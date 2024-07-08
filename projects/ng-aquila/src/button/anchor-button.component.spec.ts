@@ -4,13 +4,15 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxButtonModule } from '.';
 import { NxAnchorButtonComponent } from './anchor-button.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class AnchorButtonTest {
     @ViewChild('button') buttonInstance!: NxAnchorButtonComponent;
 }
 
 @Component({
     template: `<a nxButton #button href="#" class="some-arbitrary-class-name">Hello Anchor Button</a>`,
+    standalone: true,
+    imports: [NxButtonModule],
 })
 class TestInstance extends AnchorButtonTest {
     clickBindingSpy = jasmine.createSpy('clickSpy');
@@ -19,8 +21,7 @@ class TestInstance extends AnchorButtonTest {
 describe('NxAnchorButtonComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [TestInstance],
-            imports: [NxButtonModule],
+            imports: [NxButtonModule, TestInstance],
         }).compileComponents();
     }));
 

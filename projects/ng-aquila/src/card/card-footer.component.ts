@@ -8,5 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     selector: 'nx-card-footer',
     templateUrl: './card-footer.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxCardFooterComponent {}

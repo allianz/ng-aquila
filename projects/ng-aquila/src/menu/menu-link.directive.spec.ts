@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxMenuModule } from './menu.module';
 import { NxMenuLinkDirective } from './menu-link.directive';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class MenuLinkTest {
     @ViewChild(NxMenuLinkDirective) menuLinkInstance!: NxMenuLinkDirective;
 }
@@ -25,8 +25,7 @@ describe(NxMenuLinkDirective.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicMenuLink],
-            imports: [NxMenuModule],
+            imports: [NxMenuModule, BasicMenuLink],
         }).compileComponents();
     }));
 
@@ -54,5 +53,7 @@ describe(NxMenuLinkDirective.name, () => {
 
 @Component({
     template: `<a nxMenuLink>Link</a>`,
+    standalone: true,
+    imports: [NxMenuModule],
 })
 class BasicMenuLink extends MenuLinkTest {}

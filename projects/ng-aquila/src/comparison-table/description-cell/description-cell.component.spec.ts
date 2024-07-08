@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, DebugElement, Directive, QueryList, Type, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -11,7 +12,7 @@ import { NxComparisonTableDescriptionCell } from './description-cell.component';
 declare let viewport: any;
 const THROTTLE_TIME = 200;
 
-@Directive()
+@Directive({ standalone: true })
 abstract class DescriptionCellTest {
     @ViewChildren(NxComparisonTableDescriptionCell) descriptionCellInstances!: QueryList<NxComparisonTableDescriptionCell>;
     @ViewChildren(NxComparisonTableRowDirective) rowInstances!: QueryList<NxComparisonTableRowDirective>;
@@ -37,8 +38,7 @@ describe('NxComparisonTableDescriptionCell', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxComparisonTableModule],
-            declarations: [DescriptionCellComponent, ConfigurableDescriptionCellComponent],
+            imports: [NxComparisonTableModule, DescriptionCellComponent, ConfigurableDescriptionCellComponent],
         });
         TestBed.compileComponents();
     }));
@@ -202,6 +202,8 @@ describe('NxComparisonTableDescriptionCell', () => {
 
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
+    standalone: true,
+    imports: [NxComparisonTableModule, CommonModule],
 })
 class DescriptionCellComponent extends DescriptionCellTest {
     data = [
@@ -227,5 +229,7 @@ class DescriptionCellComponent extends DescriptionCellTest {
             </ng-container>
         </nx-comparison-table>
     `,
+    standalone: true,
+    imports: [NxComparisonTableModule],
 })
 class ConfigurableDescriptionCellComponent extends DescriptionCellTest {}

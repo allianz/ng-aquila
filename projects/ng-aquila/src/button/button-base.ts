@@ -13,7 +13,7 @@ const DEFAULT_SIZE = 'medium';
 const DEFAULT_TYPE = 'primary';
 
 /** @docs-private */
-@Directive()
+@Directive({ standalone: true })
 export class NxButtonBase implements NxTriggerButton, OnDestroy, AfterViewInit {
     private _classNames = '';
 
@@ -157,8 +157,8 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy, AfterViewInit {
 }
 
 /** @docs-private **/
-@Directive()
-export class NxAnchorButtonBase extends NxButtonBase {
+@Directive({ standalone: true })
+export class NxAnchorButtonBase extends NxButtonBase implements OnDestroy {
     constructor(
         private _ngZone: NgZone,
         _cdr: ChangeDetectorRef,

@@ -15,7 +15,7 @@ const customTexts: IPaginationTexts = {
     ariaLabel: 'myAriaLabel',
 };
 
-@Directive()
+@Directive({ standalone: true })
 abstract class PaginationTest {
     @ViewChild(NxPaginationComponent) paginationInstance!: NxPaginationComponent;
     page = 1;
@@ -73,8 +73,9 @@ describe('NxPaginationComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxPaginationModule, BidiModule],
-            declarations: [
+            imports: [
+                NxPaginationModule,
+                BidiModule,
                 SimplePagination,
                 SimplePaginationBeginat10,
                 AdvancedPagination,
@@ -422,6 +423,8 @@ describe('NxPaginationComponent', () => {
         >
         </nx-pagination>
     `,
+    standalone: true,
+    imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPagination extends PaginationTest {
     count = 210;
@@ -440,6 +443,8 @@ class AdvancedPagination extends PaginationTest {
             (goPage)="goToPage($event)"
         ></nx-pagination>
     `,
+    standalone: true,
+    imports: [NxPaginationModule, BidiModule],
 })
 class SimplePagination extends PaginationTest {
     count = 210;
@@ -459,6 +464,8 @@ class SimplePagination extends PaginationTest {
         >
         </nx-pagination>
     `,
+    standalone: true,
+    imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPaginationLess10 extends PaginationTest {
     count = 30;
@@ -479,6 +486,8 @@ class AdvancedPaginationLess10 extends PaginationTest {
         >
         </nx-pagination>
     `,
+    standalone: true,
+    imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPaginationMore10 extends PaginationTest {
     count = 210;
@@ -499,6 +508,8 @@ class AdvancedPaginationMore10 extends PaginationTest {
         >
         </nx-pagination>
     `,
+    standalone: true,
+    imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPaginationBeginat10 extends PaginationTest {
     count = 210;
@@ -518,6 +529,8 @@ class AdvancedPaginationBeginat10 extends PaginationTest {
             (goPage)="goToPage($event)"
         ></nx-pagination>
     `,
+    standalone: true,
+    imports: [NxPaginationModule, BidiModule],
 })
 class SimplePaginationBeginat10 extends PaginationTest {
     count = 210;
@@ -530,6 +543,8 @@ class SimplePaginationBeginat10 extends PaginationTest {
         <nx-pagination [count]="count" [page]="2" [perPage]="perPage" (goPrev)="prevPage()" (goNext)="nextPage()" (goPage)="goToPage($event)"></nx-pagination>
     `,
     providers: [{ provide: NX_PAGINATION_TEXTS, useValue: customTexts }],
+    standalone: true,
+    imports: [NxPaginationModule, BidiModule],
 })
 class LocalizationToken extends PaginationTest {
     count = 210;
@@ -549,6 +564,8 @@ class LocalizationToken extends PaginationTest {
             ></nx-pagination>
         </div>
     `,
+    standalone: true,
+    imports: [NxPaginationModule, BidiModule],
 })
 class SimplePaginationWithDirection extends PaginationTest {
     direction: Direction = 'ltr';
@@ -571,6 +588,8 @@ class SimplePaginationWithDirection extends PaginationTest {
             </nx-pagination>
         </div>
     `,
+    standalone: true,
+    imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPaginationWithDirection extends PaginationTest {
     direction: Direction = 'ltr';
@@ -590,6 +609,8 @@ class AdvancedPaginationWithDirection extends PaginationTest {
             (goPage)="goToPage($event)"
         ></nx-pagination>
     `,
+    standalone: true,
+    imports: [NxPaginationModule, BidiModule],
 })
 class SliderPagination extends PaginationTest {
     slides = 6;
@@ -601,6 +622,8 @@ class SliderPagination extends PaginationTest {
         <nx-pagination [count]="slides" [page]="activeSlide" type="slider" (goPrev)="prevPage()" (goNext)="nextPage()" (goPage)="goToPage($event)">
         </nx-pagination>
     `,
+    standalone: true,
+    imports: [NxPaginationModule, BidiModule],
 })
 class SliderPaginationBeginat6 extends PaginationTest {
     slides = 6;

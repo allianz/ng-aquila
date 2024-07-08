@@ -24,6 +24,7 @@ export const SMALL_STAGE_DEFAULT_OPTIONS = new InjectionToken<SmallStageDefaultO
     templateUrl: './small-stage.component.html',
     styleUrls: ['./small-stage.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxSmallStageComponent {
     /**

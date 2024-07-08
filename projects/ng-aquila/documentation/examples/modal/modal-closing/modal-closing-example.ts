@@ -4,7 +4,16 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
+import {
+    NxDialogService,
+    NxModalActionsDirective,
+    NxModalCloseDirective,
+    NxModalContentDirective,
+    NxModalRef,
+} from '@aposin/ng-aquila/modal';
 
 type MyDialogResult = 'proceed' | 'cancel';
 
@@ -15,6 +24,15 @@ type MyDialogResult = 'proceed' | 'cancel';
     selector: 'modal-closing-example',
     templateUrl: './modal-closing-example.html',
     styleUrls: ['./modal-closing-example.css'],
+    standalone: true,
+    imports: [
+        NxButtonComponent,
+        NxModalContentDirective,
+        NxHeadlineComponent,
+        NxCopytextComponent,
+        NxModalActionsDirective,
+        NxModalCloseDirective,
+    ],
 })
 export class ModalClosingExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;

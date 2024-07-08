@@ -1,5 +1,6 @@
 import { ConnectionPositionPair, FlexibleConnectedPositionStrategy, Overlay, OverlayConfig, OverlayPositionBuilder, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
+import { NgIf } from '@angular/common';
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
@@ -20,7 +21,7 @@ import {
 } from '@angular/core';
 import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldControl, NxFormfieldErrorDirective } from '@aposin/ng-aquila/formfield';
-import { NxPopoverComponent } from '@aposin/ng-aquila/popover';
+import { NxPopoverComponent, NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { getFontShorthand } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { startWith, takeUntil } from 'rxjs/operators';
@@ -42,6 +43,8 @@ export type SIZES = 'regular' | 'short' | 'long';
         '[class.has-dropdown]': 'hasDropdown',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, NxPopoverModule],
 })
 export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     private measureCanvas!: HTMLCanvasElement;

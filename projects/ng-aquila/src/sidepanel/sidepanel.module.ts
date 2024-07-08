@@ -9,8 +9,10 @@ import { NxSidepanelContentComponent } from './sidepanel-content';
 import { NxSidepanelHeaderComponent } from './sidepanel-header';
 
 @NgModule({
-    imports: [CommonModule, NxIconModule, NxButtonModule],
-    declarations: [
+    imports: [
+        CommonModule,
+        NxIconModule,
+        NxButtonModule,
         NxSidepanelComponent,
         NxSidepanelHeaderComponent,
         NxSidepanelContentComponent,

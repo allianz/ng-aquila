@@ -5,7 +5,15 @@ import {
     OnDestroy,
     ViewChild,
 } from '@angular/core';
-import { NxSidepanelComponent } from '@aposin/ng-aquila/sidepanel';
+import { FormsModule } from '@angular/forms';
+import {
+    NxRadioToggleButtonComponent,
+    NxRadioToggleComponent,
+} from '@aposin/ng-aquila/radio-toggle';
+import {
+    NxSidepanelComponent,
+    NxSidepanelModule,
+} from '@aposin/ng-aquila/sidepanel';
 import { Subject } from 'rxjs';
 import { skip, takeUntil } from 'rxjs/operators';
 
@@ -16,6 +24,13 @@ import { skip, takeUntil } from 'rxjs/operators';
     selector: 'sidepanel-focus-example',
     templateUrl: './sidepanel-focus-example.html',
     styleUrls: ['sidepanel-focus-example.css'],
+    standalone: true,
+    imports: [
+        NxRadioToggleComponent,
+        FormsModule,
+        NxRadioToggleButtonComponent,
+        NxSidepanelModule,
+    ],
 })
 export class SidepanelFocuskExampleComponent
     implements OnDestroy, AfterViewInit

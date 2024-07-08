@@ -10,6 +10,7 @@ import { NxHeaderCellDirective } from '../header-cell.directive';
     host: {
         '[class.nx-table__resize-handle]': 'true',
     },
+    standalone: true,
 })
 export class NxHeaderResizeDirective implements OnInit, OnDestroy, AfterViewChecked {
     private mousedown = fromEvent(this.elementRef.nativeElement, 'mousedown');

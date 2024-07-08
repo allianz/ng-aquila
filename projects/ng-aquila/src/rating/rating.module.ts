@@ -5,8 +5,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxRatingComponent } from './rating.component';
 
 @NgModule({
-    imports: [CommonModule, NxIconModule],
-    declarations: [NxRatingComponent],
+    imports: [CommonModule, NxIconModule, NxRatingComponent],
     exports: [NxRatingComponent],
 })
 export class NxRatingModule {}

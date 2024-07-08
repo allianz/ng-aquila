@@ -36,8 +36,8 @@ const EXAMPLES = [
         ExamplesSharedModule,
         NxErrorModule,
         NxFormfieldModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class CircleExamplesModule {

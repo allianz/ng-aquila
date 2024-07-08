@@ -1,4 +1,5 @@
 import { AnimationEvent } from '@angular/animations';
+import { NgClass, NgStyle } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
@@ -24,6 +25,8 @@ type TooltipVisibility = 'initial' | 'visible' | 'hidden';
         '(body:click)': 'this._handleBodyInteraction()',
         'aria-hidden': 'true',
     },
+    standalone: true,
+    imports: [NgClass, NgStyle],
 })
 export class NxTooltipComponent implements OnDestroy {
     /** The timeout ID of any current timer set to show the tooltip */

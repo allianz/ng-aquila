@@ -6,7 +6,7 @@ import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxLicencePlateModule } from './licence-plate.module';
 import { NxLicencePlateEuroPrefixComponent } from './licence-plate-euro-prefix.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class LicencePlateEuroPrefixTest {
     @ViewChild(NxLicencePlateEuroPrefixComponent) instance!: NxLicencePlateEuroPrefixComponent;
 
@@ -30,8 +30,7 @@ describe('NxLicencePlateEuroPrefixComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicLicencePlateEuroPrefix],
-            imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule],
+            imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule, BasicLicencePlateEuroPrefix],
         }).compileComponents();
     }));
 
@@ -85,5 +84,7 @@ describe('NxLicencePlateEuroPrefixComponent', () => {
             <input nxInput [disabled]="disabled" />
         </nx-formfield>
     `,
+    standalone: true,
+    imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule],
 })
 class BasicLicencePlateEuroPrefix extends LicencePlateEuroPrefixTest {}

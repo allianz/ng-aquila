@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { NxListModule } from '@aposin/ng-aquila/list';
 
 import { ListCirclesExampleComponent } from './list-circles/list-circles-example';
 import { ListCondensedExampleComponent } from './list-condensed/list-condensed-example';
@@ -24,8 +23,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxListModule],
-    declarations: [EXAMPLES],
+    imports: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class ListExamplesModule {

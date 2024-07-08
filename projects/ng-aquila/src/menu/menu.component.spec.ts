@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NxMenuComponent } from './menu.component';
 import { NxMenuModule } from './menu.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class MenuTest {
     open = false;
     @ViewChild(NxMenuComponent) menuInstance!: NxMenuComponent;
@@ -36,8 +36,7 @@ describe(NxMenuComponent.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicMenu],
-            imports: [NoopAnimationsModule, NxMenuModule],
+            imports: [NoopAnimationsModule, NxMenuModule, BasicMenu],
         }).compileComponents();
     }));
 
@@ -113,5 +112,7 @@ describe(NxMenuComponent.name, () => {
             <div nxMenuItem>content</div>
         </nx-menu>
     `,
+    standalone: true,
+    imports: [NxMenuModule],
 })
 class BasicMenu extends MenuTest {}

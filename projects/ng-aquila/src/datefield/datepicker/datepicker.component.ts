@@ -5,13 +5,13 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { CdkTrapFocus, FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ESCAPE } from '@angular/cdk/keycodes';
 import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgClass } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -21,6 +21,7 @@ import {
     ElementRef,
     EventEmitter,
     Inject,
+    inject,
     Injectable,
     InjectionToken,
     Input,
@@ -31,6 +32,7 @@ import {
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { merge, Subject } from 'rxjs';
 import { filter, take, takeUntil } from 'rxjs/operators';
 
@@ -45,14 +47,28 @@ import { NxDatepickerToggleComponent } from './datepicker-toggle';
 let datepickerUid = 0;
 
 /** Injection token that determines the scroll handling while the calendar is open. */
-export const NX_DATEPICKER_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-datepicker-scroll-strategy');
+export const NX_DATEPICKER_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-datepicker-scroll-strategy', {
+    providedIn: 'root',
+    factory: () => {
+        const overlay = inject(Overlay);
+        return () => overlay.scrollStrategies.reposition();
+    },
+});
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export function NX_DATEPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
     return () => overlay.scrollStrategies.reposition();
 }
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export const NX_DATEPICKER_SCROLL_STRATEGY_PROVIDER = {
     provide: NX_DATEPICKER_SCROLL_STRATEGY,
     deps: [Overlay],
@@ -89,6 +105,8 @@ export const DATEPICKER_DEFAULT_OPTIONS = new InjectionToken<DatepickerDefaultOp
     },
     exportAs: 'nxDatepickerContent',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [CdkTrapFocus, NxIconModule, NxCalendarComponent, NgClass],
 })
 export class NxDatepickerContentComponent<D> implements AfterContentInit, AfterViewInit, OnDestroy {
     datepicker!: NxDatepickerComponent<D>;
@@ -134,6 +152,7 @@ export class NxDatepickerContentComponent<D> implements AfterContentInit, AfterV
     template: '',
     exportAs: 'nxDatepicker',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxDatepickerComponent<D> implements OnDestroy {
     /** The date to open the calendar initially. */

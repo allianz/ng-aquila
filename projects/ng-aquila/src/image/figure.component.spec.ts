@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxFigureComponent } from './figure.component';
 import { NxImageModule } from './image.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ImageTest {
     @ViewChild(NxFigureComponent) imageInstance!: NxFigureComponent;
     keyword!: string;
@@ -33,8 +33,7 @@ describe('NxImageDirective', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicImage, FigureWithModifier],
-            imports: [NxImageModule],
+            imports: [NxImageModule, BasicImage, FigureWithModifier],
         }).compileComponents();
     }));
 
@@ -78,6 +77,8 @@ describe('NxImageDirective', () => {
             <img alt="foo" />
         </figure>
     `,
+    standalone: true,
+    imports: [NxImageModule],
 })
 class BasicImage extends ImageTest {}
 
@@ -87,5 +88,7 @@ class BasicImage extends ImageTest {}
             <img alt="foo" />
         </figure>
     `,
+    standalone: true,
+    imports: [NxImageModule],
 })
 class FigureWithModifier extends ImageTest {}

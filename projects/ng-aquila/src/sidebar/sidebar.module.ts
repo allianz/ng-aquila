@@ -8,8 +8,7 @@ import { NxSidebarFooterComponent } from './sidebar-footer';
 import { NxSidebarToggleComponent } from './sidebar-toggle';
 
 @NgModule({
-    imports: [CommonModule, NxIconModule, NxButtonModule],
-    declarations: [NxSidebarComponent, NxSidebarFooterComponent, NxSidebarToggleComponent],
+    imports: [CommonModule, NxIconModule, NxButtonModule, NxSidebarComponent, NxSidebarFooterComponent, NxSidebarToggleComponent],
     exports: [NxSidebarComponent, NxSidebarFooterComponent, NxSidebarToggleComponent],
 })
 export class NxSidebarModule {}

@@ -4,7 +4,7 @@ import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/co
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
-import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import { NxFormfieldComponent, NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import countries from 'i18n-iso-countries';
 import de from 'i18n-iso-countries/langs/de.json';
 
@@ -48,8 +48,17 @@ describe('PhoneInputComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
-            declarations: [ReactiveFormsPhoneInput, I18nProviderTest, DefaultPhoneInput, ConfigurablePhoneInput, CustomFormatter, PhoneInputA11y],
+            imports: [
+                NxPhoneInputModule,
+                ReactiveFormsModule,
+                FormsModule,
+                ReactiveFormsPhoneInput,
+                I18nProviderTest,
+                DefaultPhoneInput,
+                ConfigurablePhoneInput,
+                CustomFormatter,
+                PhoneInputA11y,
+            ],
             providers: [NxPhoneInputIntl],
         }).compileComponents();
 
@@ -376,7 +385,7 @@ describe('PhoneInputComponent', () => {
     });
 });
 
-@Directive()
+@Directive({ standalone: true })
 abstract class PhoneInputTest {
     @ViewChild(NxPhoneInputComponent) phoneInput!: NxPhoneInputComponent;
     disabled = false;
@@ -391,6 +400,8 @@ abstract class PhoneInputTest {
     template: `<nx-formfield label="Telephone number">
         <nx-phone-input [countryCode]="countryCode"></nx-phone-input>
     </nx-formfield>`,
+    standalone: true,
+    imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class DefaultPhoneInput extends PhoneInputTest {}
 
@@ -406,6 +417,8 @@ class DefaultPhoneInput extends PhoneInputTest {}
             [countryCode]="countryCode"
         ></nx-phone-input>
     </nx-formfield>`,
+    standalone: true,
+    imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class ConfigurablePhoneInput extends PhoneInputTest {
     value = '+49123456';
@@ -416,6 +429,8 @@ class ConfigurablePhoneInput extends PhoneInputTest {
         <nx-phone-input [formControl]="formControl" [readonly]="readonly" [countryCode]="countryCode"></nx-phone-input>
         <nx-error nxFormfieldError>Error message</nx-error>
     </nx-formfield>`,
+    standalone: true,
+    imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class ReactiveFormsPhoneInput extends PhoneInputTest {
     formControl = new FormControl('+49123456', Validators.required);
@@ -432,6 +447,8 @@ class MyIntl extends NxPhoneInputIntl {
         <nx-phone-input></nx-phone-input>
     </nx-formfield>`,
     providers: [{ provide: NxPhoneInputIntl, useClass: MyIntl }],
+    standalone: true,
+    imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class I18nProviderTest extends PhoneInputTest {}
 
@@ -440,6 +457,8 @@ class I18nProviderTest extends PhoneInputTest {}
         <nx-phone-input [inputFormatter]="formatter" [formControl]="formControl"></nx-phone-input>
         <nx-error nxFormfieldError>Error message</nx-error>
     </nx-formfield>`,
+    standalone: true,
+    imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class CustomFormatter extends PhoneInputTest {
     formControl = new FormControl('+49123456', Validators.required);
@@ -449,8 +468,10 @@ class CustomFormatter extends PhoneInputTest {
 }
 
 @Component({
+    standalone: true,
     template: `<nx-formfield label="Telephone number">
         <nx-phone-input [countryCode]="countryCode" lineNumberLabel="custom line number" areaCodeLabel="custom area code"></nx-phone-input>
     </nx-formfield>`,
+    imports: [NxFormfieldModule, NxPhoneInputModule],
 })
 class PhoneInputA11y extends PhoneInputTest {}

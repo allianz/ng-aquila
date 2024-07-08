@@ -5,13 +5,15 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxButtonModule } from '.';
 import { NxAnchorButtonComponent } from './anchor-button.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class AnchorButtonTest {
     @ViewChild('button') buttonInstance!: NxAnchorButtonComponent;
 }
 
 @Component({
     template: `<a nxIconButton #button href="#" class="some-arbitrary-class-name" aria-label="Link Text"><nx-icon name="info"></nx-icon></a>`,
+    standalone: true,
+    imports: [NxIconModule, NxButtonModule],
 })
 class TestInstance extends AnchorButtonTest {
     clickBindingSpy = jasmine.createSpy('clickSpy');
@@ -20,8 +22,7 @@ class TestInstance extends AnchorButtonTest {
 describe('NxAnchorIconButtonComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [TestInstance],
-            imports: [NxIconModule, NxButtonModule],
+            imports: [NxIconModule, NxButtonModule, TestInstance],
         }).compileComponents();
     }));
 

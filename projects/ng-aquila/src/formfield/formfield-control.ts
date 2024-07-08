@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export type NxFormfieldUpdateEventType = 'change' | 'blur';
 
 /** @docs-private */
-@Directive()
+@Directive({ standalone: true })
 export abstract class NxFormfieldControl<T> {
     value!: T | null;
 

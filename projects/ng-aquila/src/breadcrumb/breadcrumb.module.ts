@@ -5,8 +5,7 @@ import { NxBreadcrumbComponent } from './breadcrumb.component';
 import { NxBreadcrumbItemComponent } from './breadcrumb-item.component';
 
 @NgModule({
-    declarations: [NxBreadcrumbItemComponent, NxBreadcrumbComponent],
     exports: [NxBreadcrumbItemComponent, NxBreadcrumbComponent],
-    imports: [NxIconModule],
+    imports: [NxIconModule, NxBreadcrumbItemComponent, NxBreadcrumbComponent],
 })
 export class NxBreadcrumbModule {}

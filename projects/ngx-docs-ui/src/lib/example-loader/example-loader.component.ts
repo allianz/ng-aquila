@@ -14,6 +14,7 @@ import {
     ViewContainerRef,
 } from '@angular/core';
 
+import { DocViewerComponent } from '../doc-viewer/doc-viewer.component';
 import { ExampleViewerComponent } from '../example-viewer/example-viewer.component';
 
 const EXAMPLE_SELECTOR = 'nx-docs-example';
@@ -21,6 +22,8 @@ const EXAMPLE_SELECTOR = 'nx-docs-example';
 @Component({
     selector: 'nxv-example-loader',
     templateUrl: 'example-loader.component.html',
+    standalone: true,
+    imports: [DocViewerComponent],
 })
 export class ExampleLoaderComponent {
     @Input() file!: string;

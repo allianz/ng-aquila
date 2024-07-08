@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxTabComponent } from './tab';
 import { NxTabsModule } from './tabs.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class TabTest {
     @ViewChild(NxTabComponent) tab!: NxTabComponent;
 }
@@ -21,8 +21,7 @@ describe('NxTabComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [NoGroupTest, WithGroup],
-            imports: [NxTabsModule],
+            imports: [NxTabsModule, NoGroupTest, WithGroup],
         }).compileComponents();
     }));
 
@@ -43,6 +42,8 @@ describe('NxTabComponent', () => {
 
 @Component({
     template: `<nx-tab>Some content</nx-tab>`,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class NoGroupTest extends TabTest {}
 
@@ -52,5 +53,7 @@ class NoGroupTest extends TabTest {}
             <nx-tab><ng-template nxTabLabel>Label</ng-template>Some content</nx-tab>
         </nx-tab-group>
     `,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class WithGroup extends TabTest {}

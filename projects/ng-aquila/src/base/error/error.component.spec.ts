@@ -10,7 +10,7 @@ const errorOptions: ErrorDefaultOptions = {
     appearance: 'text',
 };
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ErrorTest {
     @ViewChild(NxErrorComponent) errorInstance!: NxErrorComponent;
     id!: string;
@@ -32,8 +32,7 @@ describe('NxErrorComponent', () => {
     describe('basic', () => {
         beforeEach(waitForAsync(() => {
             TestBed.configureTestingModule({
-                declarations: [BasicError, ConfigurableError],
-                imports: [NxErrorModule],
+                imports: [NxErrorModule, BasicError, ConfigurableError],
             }).compileComponents();
         }));
 
@@ -84,8 +83,7 @@ describe('NxErrorComponent', () => {
         beforeEach(waitForAsync(() => {
             errorOptions.appearance = 'text';
             TestBed.configureTestingModule({
-                declarations: [BasicError, ConfigurableError],
-                imports: [NxErrorModule],
+                imports: [NxErrorModule, BasicError, ConfigurableError],
                 providers: [{ provide: ERROR_DEFAULT_OPTIONS, useValue: errorOptions }],
             }).compileComponents();
         }));
@@ -125,10 +123,14 @@ describe('NxErrorComponent', () => {
 
 @Component({
     template: `<nx-error>I am an error message.</nx-error>`,
+    standalone: true,
+    imports: [NxErrorModule],
 })
 class BasicError extends ErrorTest {}
 
 @Component({
     template: `<nx-error [appearance]="appearance" [id]="id">I am an error message with an icon.</nx-error>`,
+    standalone: true,
+    imports: [NxErrorModule],
 })
 class ConfigurableError extends ErrorTest {}

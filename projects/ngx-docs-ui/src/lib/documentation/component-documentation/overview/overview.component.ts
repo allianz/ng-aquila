@@ -1,16 +1,24 @@
+import { NgFor, NgIf } from '@angular/common';
 import { Component, Inject, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { NxBadgeModule } from '@aposin/ng-aquila/badge';
+import { NxGridModule } from '@aposin/ng-aquila/grid';
+import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
+import { NxTableModule } from '@aposin/ng-aquila/table';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { NX_DOCS_GITHUB_LINK } from '../../../core/tokens';
 import { GithubLinkConfig } from '../../../core/types';
 import { Category, ManifestService } from '../../../service/manifest.service';
+import { NxvStatusDotComponent } from './status-dot.component';
 
 @Component({
     selector: 'nxv-overview',
     templateUrl: 'overview.component.html',
     styleUrls: ['overview.component.scss'],
+    standalone: true,
+    imports: [NxGridModule, NxvStatusDotComponent, NgFor, NxHeadlineModule, NxTableModule, RouterLink, NgIf, NxBadgeModule],
 })
 export class NxvOverviewComponent implements OnDestroy {
     components!: Category[];

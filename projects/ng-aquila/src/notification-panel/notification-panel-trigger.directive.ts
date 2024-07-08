@@ -1,17 +1,31 @@
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
-import { Directive, ElementRef, Inject, InjectionToken, Input, Optional, Self, TemplateRef } from '@angular/core';
+import { Directive, ElementRef, Inject, inject, InjectionToken, Input, Optional, Self, TemplateRef } from '@angular/core';
 import { NxOverlayConfig, NxOverlayRef, NxOverlayService, NxTriggerButton } from '@aposin/ng-aquila/overlay';
 import { take } from 'rxjs/operators';
 
 /** Injection token that determines the scroll handling while a notification-panel is open. */
-export const NX_NOTIFICATION_PANEL_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-notification-panel-scroll-strategy');
+export const NX_NOTIFICATION_PANEL_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-notification-panel-scroll-strategy', {
+    providedIn: 'root',
+    factory: () => {
+        const overlay = inject(Overlay);
+        return () => overlay.scrollStrategies.reposition();
+    },
+});
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export function NX_NOTIFICATION_PANEL_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
     return () => overlay.scrollStrategies.reposition();
 }
 
-/** @docs-private */
+/**
+ * @docs-private
+ * @deprecated No longer used.
+ * @deletion-target 18.0.0
+ */
 export const NX_NOTIFICATION_PANEL_SCROLL_STRATEGY_PROVIDER = {
     provide: NX_NOTIFICATION_PANEL_SCROLL_STRATEGY,
     useFactory: NX_NOTIFICATION_PANEL_SCROLL_STRATEGY_PROVIDER_FACTORY,
@@ -30,6 +44,7 @@ const DEFAULT_CONFIG: NxOverlayConfig = {
     host: {
         '(click)': 'open()',
     },
+    standalone: true,
 })
 export class NxNotificationPanelTriggerDirective {
     private _overlayRef!: NxOverlayRef<any> | null;

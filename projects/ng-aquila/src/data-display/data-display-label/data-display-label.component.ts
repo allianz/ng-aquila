@@ -9,5 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./data-display-label.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: { class: 'nx-data-display__label' },
+    standalone: true,
 })
 export class NxDataDisplayLabelComponent {}

@@ -1,6 +1,8 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NgIf } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Directive, ElementRef, Input, OnDestroy } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 export type NxMenuButtonType = 'root' | 'nested';
 
@@ -20,6 +22,8 @@ export type NxMenuButtonType = 'root' | 'nested';
         class: 'nx-menu-button',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, NxIconModule],
 })
 export class NxMenuButtonComponent implements OnDestroy, AfterViewInit {
     /** Whether this menu button is expandable or not. Will add a caret icon. */
@@ -83,5 +87,6 @@ export class NxMenuButtonComponent implements OnDestroy, AfterViewInit {
     host: {
         class: 'nx-menu-button__icon',
     },
+    standalone: true,
 })
 export class NxMenuButtonIconDirective {}

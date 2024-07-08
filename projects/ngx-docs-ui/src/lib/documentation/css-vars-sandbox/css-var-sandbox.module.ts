@@ -8,8 +8,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { CssVarSidebarComponent } from './css-var-sidebar-component';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, ColorPickerModule, NxIconModule, NxButtonModule],
+    imports: [CommonModule, FormsModule, ColorPickerModule, NxIconModule, NxButtonModule, CssVarSidebarComponent],
     exports: [CssVarSidebarComponent],
-    declarations: [CssVarSidebarComponent],
 })
 export class CssVarSidebarModule {}

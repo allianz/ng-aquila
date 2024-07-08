@@ -50,8 +50,8 @@ const EXAMPLES = [
         ExamplesSharedModule,
         DragDropModule,
         NxCheckboxModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class ContextExamplesModule {

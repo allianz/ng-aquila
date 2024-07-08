@@ -16,7 +16,7 @@ const tabsDefaultOptions: TabGroupDefaultOptions = {
     appearance: 'expert',
 };
 
-@Directive()
+@Directive({ standalone: true })
 abstract class TabsTest {
     @ViewChildren(NxAccordionDirective) accordion!: QueryList<NxAccordionDirective>;
 
@@ -59,8 +59,9 @@ describe('NxTabGroupComponent', () => {
     describe('no preset options', () => {
         beforeEach(waitForAsync(() => {
             TestBed.configureTestingModule({
-                imports: [NxTabsModule, BrowserAnimationsModule],
-                declarations: [
+                imports: [
+                    NxTabsModule,
+                    BrowserAnimationsModule,
                     BasicTabs,
                     OnPushTabs,
                     ConfigurableTabs,
@@ -516,8 +517,7 @@ describe('NxTabGroupComponent', () => {
         beforeEach(waitForAsync(() => {
             tabsDefaultOptions.appearance = 'expert';
             TestBed.configureTestingModule({
-                imports: [NxTabsModule, BrowserAnimationsModule],
-                declarations: [BasicTabs, ConfigurableTabs],
+                imports: [NxTabsModule, BrowserAnimationsModule, BasicTabs, ConfigurableTabs],
                 providers: [{ provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: tabsDefaultOptions }],
             }).compileComponents();
         }));
@@ -570,6 +570,8 @@ describe('NxTabGroupComponent', () => {
             <nx-tab label="Second label">Second</nx-tab>
         </nx-tab-group>
     `,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class BasicTabs extends TabsTest {}
 
@@ -581,6 +583,8 @@ class BasicTabs extends TabsTest {}
         </nx-tab-group>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class OnPushTabs extends TabsTest {}
 
@@ -591,6 +595,8 @@ class OnPushTabs extends TabsTest {}
             <nx-tab label="Second label">Second</nx-tab>
         </nx-tab-group>
     `,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class ConfigurableTabs extends TabsTest {}
 
@@ -601,6 +607,8 @@ class ConfigurableTabs extends TabsTest {}
             <nx-tab label="Second label">Second</nx-tab>
         </nx-tab-group>
     `,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class BindingTabs extends TabsTest {
     selectedIndex: any;
@@ -613,6 +621,8 @@ class BindingTabs extends TabsTest {
             <nx-tab label="Second label">Second</nx-tab>
         </nx-tab-group>
     `,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class EventTabsTest extends TabsTest {
     selectedIndex: any;
@@ -632,11 +642,15 @@ class EventTabsTest extends TabsTest {
             (selectedIndexChange)="onIndexChange($event)"
             (selectedTabChange)="handleSelection($event)"
         >
-            <nx-tab *ngFor="let tab of tabs" [label]="tab.label">
-                {{ tab.content }}
-            </nx-tab>
+            @for (tab of tabs; track tab) {
+                <nx-tab [label]="tab.label">
+                    {{ tab.content }}
+                </nx-tab>
+            }
         </nx-tab-group>
     `,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class DynamicTabTest extends TabsTest {
     autoselect = true;
@@ -662,6 +676,8 @@ class DynamicTabTest extends TabsTest {
 @Component({
     template: '<span>I am a test component</span>',
     selector: 'my-test-component',
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class TestComponent implements OnDestroy {
     ngOnDestroy(): void {}
@@ -677,6 +693,8 @@ class TestComponent implements OnDestroy {
             <nx-tab label="Second label">Second</nx-tab>
         </nx-tab-group>
     `,
+    standalone: true,
+    imports: [NxTabsModule, TestComponent],
 })
 class CustomElementTest extends TabsTest {
     @ViewChild('customElement', { read: TestComponent }) customElement!: TestComponent;
@@ -690,6 +708,8 @@ class CustomElementTest extends TabsTest {
             <nx-tab label="Second label">Second</nx-tab>
         </nx-tab-group>
     `,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class DisabledTabs extends TabsTest {
     disabled = false;
@@ -712,6 +732,8 @@ class DisabledTabs extends TabsTest {
             </nx-tab>
         </nx-tab-group>
     `,
+    standalone: true,
+    imports: [NxTabsModule, TestComponent],
 })
 class TemplateTabs extends TabsTest {
     selectedIndex = 0;

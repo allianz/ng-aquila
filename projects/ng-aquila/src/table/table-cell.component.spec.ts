@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { NxTableModule } from './table.module';
 import { NxTableCellComponent } from './table-cell.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class TableCellTest {
     @ViewChild(NxTableCellComponent) tableCellInstance!: NxTableCellComponent;
 }
@@ -26,8 +26,7 @@ describe(NxTableCellComponent.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicTableCellComponent],
-            imports: [NxTableModule],
+            imports: [NxTableModule, BasicTableCellComponent],
         }).compileComponents();
     }));
 
@@ -60,5 +59,7 @@ describe(NxTableCellComponent.name, () => {
 @Component({
     template: `<td nxTableCell>example content</td>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTableModule],
 })
 class BasicTableCellComponent extends TableCellTest {}

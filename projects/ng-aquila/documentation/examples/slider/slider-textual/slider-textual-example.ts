@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
+import { NxSliderComponent } from '@aposin/ng-aquila/slider';
 
 enum FruitPreferenceType {
     NEVER,
@@ -15,6 +21,13 @@ enum FruitPreferenceType {
     selector: 'slider-textual-example',
     templateUrl: './slider-textual-example.html',
     styleUrls: ['./slider-textual-example.css'],
+    standalone: true,
+    imports: [
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxSliderComponent,
+    ],
 })
 export class SliderTextualExampleComponent {
     fruitPreferenceFormatter = (value: FruitPreferenceType) => {

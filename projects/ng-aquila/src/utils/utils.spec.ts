@@ -61,8 +61,7 @@ describe('shared utils', () => {
     describe('appendClasses/removeClasses', () => {
         beforeEach(waitForAsync(() => {
             TestBed.configureTestingModule({
-                declarations: [TestComponent],
-                imports: [],
+                imports: [TestComponent],
             }).compileComponents();
         }));
 
@@ -109,6 +108,7 @@ describe('shared utils', () => {
     host: {
         '[class.testClass]': 'true',
     },
+    standalone: true,
 })
 class TestComponent {
     constructor(

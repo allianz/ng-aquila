@@ -2,6 +2,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
+import { NgFor, NgIf, NgStyle } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -58,6 +59,8 @@ const VALUE_MARGIN = 4;
         '[class.nx-slider--disabled]': 'disabled',
         '[class.nx-slider--negative]': 'negative',
     },
+    standalone: true,
+    imports: [NgIf, NgFor, NgStyle],
 })
 export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
     private _dragSubscriptions: Subscription[] = [];

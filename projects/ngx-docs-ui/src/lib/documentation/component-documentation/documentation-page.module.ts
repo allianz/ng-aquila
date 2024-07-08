@@ -10,9 +10,8 @@ import { NxvFooterModule } from './footer/footer.module';
 import { NavigationModule } from './navigation/navigation.module';
 
 @NgModule({
-    imports: [NxSidebarModule, NavigationModule, RouterModule, CommonModule, NxGridModule, NxvFooterModule, ScrollingModule],
+    imports: [NxSidebarModule, NavigationModule, RouterModule, CommonModule, NxGridModule, NxvFooterModule, ScrollingModule, NxvDocumentationComponent],
     exports: [],
-    declarations: [NxvDocumentationComponent],
     providers: [],
 })
 export class NxvDocumentationPageModule {}

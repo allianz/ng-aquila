@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NxPlainButtonComponent } from '@aposin/ng-aquila/button';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 /**
  * @title Plain Buttons Example
@@ -7,5 +9,7 @@ import { Component } from '@angular/core';
     selector: 'button-plain-example',
     templateUrl: './button-plain-example.html',
     styleUrls: ['./button-plain-example.css'],
+    standalone: true,
+    imports: [NxPlainButtonComponent, NxIconComponent],
 })
 export class ButtonPlainExampleComponent {}

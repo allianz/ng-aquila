@@ -7,7 +7,7 @@ import { NxSidepanelComponent } from './sidepanel';
 import { NxSidepanelModule } from './sidepanel.module';
 import { NxSidepanelCloseButtonComponent } from './sidepanel-close-button';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class SidepanelCloseButtonTest {
     @ViewChild(NxSidepanelComponent) sidebarInstance!: NxSidepanelComponent;
     @ViewChild(NxSidepanelCloseButtonComponent) buttonInstance!: NxSidepanelCloseButtonComponent;
@@ -31,8 +31,7 @@ describe('NxSidepanelCloseButtonComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicSidepanel],
-            imports: [BrowserAnimationsModule, NxSidepanelModule],
+            imports: [BrowserAnimationsModule, NxSidepanelModule, BasicSidepanel],
         }).compileComponents();
     }));
 
@@ -68,5 +67,7 @@ describe('NxSidepanelCloseButtonComponent', () => {
             <button nxSidepanelCloseButton aria-label="Close Sidepanel"></button>
         </nx-sidepanel>
     `,
+    standalone: true,
+    imports: [NxSidepanelModule],
 })
 class BasicSidepanel extends SidepanelCloseButtonTest {}

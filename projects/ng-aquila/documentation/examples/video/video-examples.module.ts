@@ -12,8 +12,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxVideoModule],
-    declarations: [EXAMPLES],
+    imports: [NxVideoModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class VideoExamplesModule {

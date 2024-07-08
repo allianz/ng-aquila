@@ -1,10 +1,35 @@
+import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
+import { NxLinkComponent } from '@aposin/ng-aquila/link';
+import {
+    NxHeaderCellDirective,
+    NxHeaderResizeDirective,
+    NxTableCellClipDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+} from '@aposin/ng-aquila/table';
 
 @Component({
     selector: 'table-column-resize-example',
     templateUrl: './table-column-resize-example.html',
     styleUrls: ['./table-column-resize-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        NxTableComponent,
+        NxTableCellClipDirective,
+        NxTableRowComponent,
+        NxHeaderCellDirective,
+        NxHeaderResizeDirective,
+        NgFor,
+        NxTableCellComponent,
+        NxLinkComponent,
+        RouterLink,
+        NxBadgeComponent,
+    ],
 })
 export class TableColumnResizeExample {
     tableElements = [

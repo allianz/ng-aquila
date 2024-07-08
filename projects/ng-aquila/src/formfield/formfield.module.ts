@@ -13,8 +13,9 @@ import { NxFormfieldPrefixDirective } from './prefix.directive';
 import { NxFormfieldSuffixDirective } from './suffix.directive';
 
 @NgModule({
-    imports: [CommonModule, NxTooltipModule],
-    declarations: [
+    imports: [
+        CommonModule,
+        NxTooltipModule,
         NxFormfieldComponent,
         NxFormfieldHintDirective,
         NxFormfieldErrorDirective,

@@ -1,9 +1,25 @@
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
-import { NX_NOTIFICATION_PANEL_SCROLL_STRATEGY } from '@aposin/ng-aquila/notification-panel';
+import {
+    NxIconButtonComponent,
+    NxPlainButtonComponent,
+} from '@aposin/ng-aquila/button';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import { NxLinkComponent } from '@aposin/ng-aquila/link';
+import {
+    NX_NOTIFICATION_PANEL_SCROLL_STRATEGY,
+    NxNotificationItemActionsDirective,
+    NxNotificationItemContentDirective,
+    NxNotificationItemHeaderDirective,
+    NxNotificationItemMetadataDirective,
+    NxNotificationPanelComponent,
+    NxNotificationPanelItemComponent,
+    NxNotificationPanelTriggerDirective,
+} from '@aposin/ng-aquila/notification-panel';
 
 function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
-    return () => overlay.scrollStrategies.close({ threshold: 100 });
+    return () => overlay.scrollStrategies.close();
 }
 
 /**
@@ -19,6 +35,21 @@ function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
             useFactory: scrollStrategyFactory,
             deps: [Overlay],
         },
+    ],
+    standalone: true,
+    imports: [
+        NxIconButtonComponent,
+        NxNotificationPanelTriggerDirective,
+        NxIconComponent,
+        NxNotificationPanelComponent,
+        NxNotificationItemHeaderDirective,
+        NxCopytextComponent,
+        NxPlainButtonComponent,
+        NxNotificationPanelItemComponent,
+        NxNotificationItemMetadataDirective,
+        NxNotificationItemContentDirective,
+        NxNotificationItemActionsDirective,
+        NxLinkComponent,
     ],
 })
 export class NotificationPanelScrollStrategyProviderExampleComponent {}

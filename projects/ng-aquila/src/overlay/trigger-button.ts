@@ -4,7 +4,7 @@ import { Directive } from '@angular/core';
  * Interface for any kind of button that should be active while
  * an overlay is open.
  */
-@Directive()
+@Directive({ standalone: true })
 export abstract class NxTriggerButton {
     /** Applies active styles to the button. */
     abstract setTriggerActive(): void;

@@ -8,8 +8,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxvThemeSwitcherComponent } from './theme-switcher.component';
 
 @NgModule({
-    imports: [CommonModule, NxButtonModule, NxContextMenuModule, NxIconModule, FormsModule],
+    imports: [CommonModule, NxButtonModule, NxContextMenuModule, NxIconModule, FormsModule, NxvThemeSwitcherComponent],
     exports: [NxvThemeSwitcherComponent],
-    declarations: [NxvThemeSwitcherComponent],
 })
 export class NxvThemeSwitcherModule {}

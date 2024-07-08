@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxHeaderComponent } from './header.component';
 import { NxHeaderModule } from './header.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class HeaderTest {
     @ViewChild(NxHeaderComponent) headerInstance!: NxHeaderComponent;
     showSeparator = false;
@@ -26,8 +26,7 @@ describe(NxHeaderComponent.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicHeader, MultiRowHeader, CobrandingHeader],
-            imports: [NxHeaderModule],
+            imports: [NxHeaderModule, BasicHeader, MultiRowHeader, CobrandingHeader],
         }).compileComponents();
     }));
 
@@ -127,6 +126,8 @@ describe(NxHeaderComponent.name, () => {
             <nx-header-actions> Example action </nx-header-actions>
         </nx-header>
     `,
+    standalone: true,
+    imports: [NxHeaderModule],
 })
 class BasicHeader extends HeaderTest {}
 
@@ -137,6 +138,8 @@ class BasicHeader extends HeaderTest {}
             <nx-header-row> </nx-header-row>
         </nx-header>
     `,
+    standalone: true,
+    imports: [NxHeaderModule],
 })
 class MultiRowHeader extends HeaderTest {}
 
@@ -156,6 +159,8 @@ class MultiRowHeader extends HeaderTest {}
             <nx-header-row> </nx-header-row>
         </nx-header>
     `,
+    standalone: true,
+    imports: [NxHeaderModule],
 })
 class CobrandingHeader extends HeaderTest {
     showSeparator: any;

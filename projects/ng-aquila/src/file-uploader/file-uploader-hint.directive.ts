@@ -8,6 +8,7 @@ let nextId = 0;
         '[attr.id]': 'id',
         '[class.nx-file-upload-hint]': 'true',
     },
+    standalone: true,
 })
 export class NxFileUploaderHintDirective {
     /** Sets the id of the file upload hint. */

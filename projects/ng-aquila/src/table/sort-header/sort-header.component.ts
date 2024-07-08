@@ -1,6 +1,8 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { NgIf } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -17,6 +19,8 @@ import { NxSortHeaderIntl } from './sort-header-intl';
         '(keydown)': '_onKeydown($event)',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, NxIconModule],
 })
 export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     /** Sets the key of this sort header. */

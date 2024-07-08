@@ -10,8 +10,9 @@ import { NxTreeNodeToggleDirective } from './toggle';
 import { NxTreeComponent } from './tree.component';
 
 @NgModule({
-    imports: [CdkTreeModule, CommonModule],
-    declarations: [
+    imports: [
+        CdkTreeModule,
+        CommonModule,
         NxTreeComponent,
         NxTreeNodeComponent,
         NxTreeNodeDefDirective,

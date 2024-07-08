@@ -1,4 +1,5 @@
 import { Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 @Component({
     selector: 'li[nxListIcon]',
@@ -9,6 +10,8 @@ import { Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
             <nx-icon [name]="name"></nx-icon>
         </span>
         <ng-content></ng-content>`,
+    standalone: true,
+    imports: [NxIconModule],
 })
 export class NxListIconComponent {
     /** @docs-private */

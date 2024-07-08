@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
@@ -11,10 +11,31 @@ import { NxNumberStepperIntl } from './number-stepper-intl';
 import { NxNumberStepperPrefixDirective } from './number-stepper-prefix.directive';
 import { NxNumberStepperSuffixDirective } from './number-stepper-suffix.directive';
 
+/** @docs-private */
+export function NX_NUMBER_STEPPER_INTL_PROVIDER_FACTORY(parentIntl: NxNumberStepperIntl) {
+    return parentIntl || new NxNumberStepperIntl();
+}
+
+/** @docs-private */
+export const NX_NUMBER_STEPPER_INTL_PROVIDER = {
+    provide: NxNumberStepperIntl,
+    deps: [[new Optional(), new SkipSelf(), NxNumberStepperIntl]],
+    useFactory: NX_NUMBER_STEPPER_INTL_PROVIDER_FACTORY,
+};
+
 @NgModule({
-    imports: [NxInputModule, FormsModule, NxIconModule, NxButtonModule, CommonModule],
+    imports: [
+        NxInputModule,
+        FormsModule,
+        NxIconModule,
+        NxButtonModule,
+        CommonModule,
+        NxNumberStepperComponent,
+        NxAutoResizeDirective,
+        NxNumberStepperPrefixDirective,
+        NxNumberStepperSuffixDirective,
+    ],
     exports: [NxNumberStepperComponent, NxAutoResizeDirective, NxNumberStepperPrefixDirective, NxNumberStepperSuffixDirective],
-    declarations: [NxNumberStepperComponent, NxAutoResizeDirective, NxNumberStepperPrefixDirective, NxNumberStepperSuffixDirective],
-    providers: [NxNumberStepperIntl],
+    providers: [],
 })
 export class NxNumberStepperModule {}

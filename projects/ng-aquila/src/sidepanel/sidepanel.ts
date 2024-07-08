@@ -44,6 +44,7 @@ export type Appearance = 'light' | 'dark';
         '[class.without-wrapper]': '!this._wrapper',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxSidepanelComponent {
     /** Whether the sidepanel should be opened and visible. */
@@ -175,6 +176,7 @@ export class NxSidepanelComponent {
     `,
     styleUrls: ['./sidepanel-outer-container.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class NxSidepanelOuterContainerComponent implements OnDestroy {
     @ContentChild(NxSidepanelComponent) _sidepanel!: NxSidepanelComponent;

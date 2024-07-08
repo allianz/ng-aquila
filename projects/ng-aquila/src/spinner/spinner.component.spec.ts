@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxSpinnerComponent, SpinnerSize } from './spinner.component';
 import { NxSpinnerModule } from './spinner.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class SpinnerTest {
     @ViewChild(NxSpinnerComponent) spinnerInstance!: NxSpinnerComponent;
 
@@ -28,8 +28,7 @@ describe('nxSpinnerComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicTestSpinner, OnPushSpinner, ConfigurableSpinner],
-            imports: [NxSpinnerModule],
+            imports: [NxSpinnerModule, BasicTestSpinner, OnPushSpinner, ConfigurableSpinner],
         }).compileComponents();
     }));
 
@@ -99,16 +98,22 @@ describe('nxSpinnerComponent', () => {
 
 @Component({
     template: `<nx-spinner></nx-spinner>`,
+    standalone: true,
+    imports: [NxSpinnerModule],
 })
 class BasicTestSpinner extends SpinnerTest {}
 
 @Component({
     template: `<nx-spinner [size]="size" [negative]="negative"></nx-spinner>`,
+    standalone: true,
+    imports: [NxSpinnerModule],
 })
 class ConfigurableSpinner extends SpinnerTest {}
 
 @Component({
     template: `<nx-spinner [size]="size" [negative]="negative"></nx-spinner>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxSpinnerModule],
 })
 class OnPushSpinner extends SpinnerTest {}

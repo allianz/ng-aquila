@@ -10,7 +10,7 @@ import { NxTableModule } from './table.module';
 import { NxTableCellComponent } from './table-cell.component';
 import { NxTableRowComponent } from './table-row.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class TableTest {
     @ViewChild(NxTableComponent) tableInstance!: NxTableComponent;
 }
@@ -36,8 +36,7 @@ describe(NxTableComponent.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [SimpleTableComponent, ZebraTableComponent, CondensedTableComponent, NxExpandableTableDirective],
-            imports: [NxTableModule, NoopAnimationsModule],
+            imports: [NxTableModule, NoopAnimationsModule, SimpleTableComponent, ZebraTableComponent, CondensedTableComponent, NxExpandableTableDirective],
         }).compileComponents();
     }));
 
@@ -143,6 +142,8 @@ describe(NxTableComponent.name, () => {
         </tbody>
     </table>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTableModule],
 })
 class SimpleTableComponent extends TableTest {}
 
@@ -160,10 +161,13 @@ class SimpleTableComponent extends TableTest {}
         </tbody>
     </table>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTableModule],
 })
 class ZebraTableComponent extends TableTest {}
 
 @Component({
+    standalone: true,
     template: `<table nxTable nxExpandableTable zebra>
         <thead>
             <tr nxTableRow>
@@ -194,5 +198,7 @@ class ExpandableNonZebraTableComponent extends TableTest {}
         </tbody>
     </table>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTableModule],
 })
 class CondensedTableComponent extends TableTest {}

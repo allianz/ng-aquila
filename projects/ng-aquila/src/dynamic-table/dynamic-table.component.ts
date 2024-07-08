@@ -1,3 +1,16 @@
+import {
+    CdkCell,
+    CdkCellDef,
+    CdkColumnDef,
+    CdkHeaderCell,
+    CdkHeaderCellDef,
+    CdkHeaderRow,
+    CdkHeaderRowDef,
+    CdkRow,
+    CdkRowDef,
+    CdkTable,
+} from '@angular/cdk/table';
+import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -8,6 +21,23 @@ import { NxDynamicTableColumnDefinition, NxDynamicTableDataSource } from './dyna
     templateUrl: './dynamic-table.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./dynamic-table.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        CdkTable,
+        NgFor,
+        CdkColumnDef,
+        CdkHeaderCellDef,
+        CdkHeaderCell,
+        NgClass,
+        NgStyle,
+        CdkCellDef,
+        CdkCell,
+        CdkHeaderRowDef,
+        CdkHeaderRow,
+        CdkRowDef,
+        CdkRow,
+    ],
 })
 export class NxDynamicTableComponent implements OnInit {
     private readonly _dataChange = new BehaviorSubject<any[]>([]);

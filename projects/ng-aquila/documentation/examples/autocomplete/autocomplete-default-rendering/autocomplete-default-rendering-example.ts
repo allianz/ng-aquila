@@ -1,5 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, Injectable } from '@angular/core';
+import {
+    NxAutocompleteComponent,
+    NxAutocompleteTriggerDirective,
+} from '@aposin/ng-aquila/autocomplete';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -39,6 +43,8 @@ export class WikipediaService {
     templateUrl: './autocomplete-default-rendering-example.html',
     styleUrls: ['./autocomplete-default-rendering-example.css'],
     providers: [WikipediaService],
+    standalone: true,
+    imports: [NxAutocompleteTriggerDirective, NxAutocompleteComponent],
 })
 export class AutocompleteDefaultRenderingExampleComponent {
     dynamicBackendOptions: (term: string) => Observable<string[]>;

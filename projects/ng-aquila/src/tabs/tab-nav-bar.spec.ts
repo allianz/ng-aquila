@@ -10,7 +10,7 @@ const tabsDefaultOptions: TabNavBarDefaultOptions = {
     appearance: 'expert',
 };
 
-@Directive()
+@Directive({ standalone: true })
 abstract class TabNavBarTest {
     @ViewChildren(NxTabLinkDirective) tabLinks!: QueryList<NxTabLinkDirective>;
     @ViewChild(NxTabNavBarComponent) tabNavBar!: NxTabNavBarComponent;
@@ -35,8 +35,7 @@ describe('NxTabBarNavComponent', () => {
     describe('no preset options', () => {
         beforeEach(waitForAsync(() => {
             TestBed.configureTestingModule({
-                declarations: [SimpleTabNavBar, ConfigurableTabNavBar, TabNavBarOnPush],
-                imports: [NxTabsModule],
+                imports: [NxTabsModule, SimpleTabNavBar, ConfigurableTabNavBar, TabNavBarOnPush],
             }).compileComponents();
         }));
 
@@ -123,8 +122,7 @@ describe('NxTabBarNavComponent', () => {
         beforeEach(waitForAsync(() => {
             tabsDefaultOptions.appearance = 'expert';
             TestBed.configureTestingModule({
-                declarations: [SimpleTabNavBar, ConfigurableTabNavBar],
-                imports: [NxTabsModule],
+                imports: [NxTabsModule, SimpleTabNavBar, ConfigurableTabNavBar],
                 providers: [{ provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: tabsDefaultOptions }],
             }).compileComponents();
         }));
@@ -171,11 +169,15 @@ describe('NxTabBarNavComponent', () => {
 @Component({
     template: `
         <nx-tab-nav-bar>
-            <a nxTabLink *ngFor="let link of links" [active]="link.active">
-                {{ link.label }}
-            </a>
+            @for (link of links; track link) {
+                <a nxTabLink [active]="link.active">
+                    {{ link.label }}
+                </a>
+            }
         </nx-tab-nav-bar>
     `,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class SimpleTabNavBar extends TabNavBarTest {
     links = [
@@ -187,11 +189,15 @@ class SimpleTabNavBar extends TabNavBarTest {
 @Component({
     template: `
         <nx-tab-nav-bar [appearance]="appearance">
-            <a nxTabLink *ngFor="let link of links" [active]="link.active">
-                {{ link.label }}
-            </a>
+            @for (link of links; track link) {
+                <a nxTabLink [active]="link.active">
+                    {{ link.label }}
+                </a>
+            }
         </nx-tab-nav-bar>
     `,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class ConfigurableTabNavBar extends TabNavBarTest {
     links = [
@@ -203,12 +209,16 @@ class ConfigurableTabNavBar extends TabNavBarTest {
 @Component({
     template: `
         <nx-tab-nav-bar [disabled]="disabled">
-            <a nxTabLink *ngFor="let link of links" [disabled]="disabled" [active]="link.active">
-                {{ link.label }}
-            </a>
+            @for (link of links; track link) {
+                <a nxTabLink [disabled]="disabled" [active]="link.active">
+                    {{ link.label }}
+                </a>
+            }
         </nx-tab-nav-bar>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTabsModule],
 })
 class TabNavBarOnPush extends TabNavBarTest {
     links = [

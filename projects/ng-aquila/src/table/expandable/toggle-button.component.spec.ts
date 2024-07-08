@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { NxTableModule } from '../table.module';
 import { NxExpandable, NxToggleButtonComponent } from './toggle-button.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ToggleButtonTest {
     @ViewChild(NxToggleButtonComponent) toggleButtonInstance!: NxToggleButtonComponent;
     target!: NxExpandable;
@@ -28,8 +28,7 @@ describe(NxToggleButtonComponent.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicToggleButtonComponent],
-            imports: [NxTableModule],
+            imports: [NxTableModule, BasicToggleButtonComponent],
         }).compileComponents();
     }));
 
@@ -81,6 +80,8 @@ describe(NxToggleButtonComponent.name, () => {
 @Component({
     template: `<nx-toggle-button [target]="target" ariaLabel="toggle all rows"></nx-toggle-button>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxTableModule],
 })
 class BasicToggleButtonComponent extends ToggleButtonTest {
     target: NxExpandable;

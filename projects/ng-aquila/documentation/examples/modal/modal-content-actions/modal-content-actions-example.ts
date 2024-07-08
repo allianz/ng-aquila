@@ -1,5 +1,14 @@
 import { ChangeDetectorRef, Component, TemplateRef } from '@angular/core';
-import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import {
+    NxDialogService,
+    NxModalActionsDirective,
+    NxModalCloseDirective,
+    NxModalContentDirective,
+    NxModalRef,
+    NxModalTitleComponent,
+} from '@aposin/ng-aquila/modal';
 
 type MyDialogResult = 'agree' | 'disagree';
 
@@ -10,6 +19,15 @@ type MyDialogResult = 'agree' | 'disagree';
     selector: 'modal-content-actions-example',
     templateUrl: './modal-content-actions-example.html',
     styleUrls: ['./modal-content-actions-example.css'],
+    standalone: true,
+    imports: [
+        NxButtonComponent,
+        NxModalContentDirective,
+        NxModalTitleComponent,
+        NxCopytextComponent,
+        NxModalActionsDirective,
+        NxModalCloseDirective,
+    ],
 })
 export class ModalContentActionsExampleComponent {
     dialogRef?: NxModalRef<any, MyDialogResult | undefined>; // cancel and backdrop click return undefined

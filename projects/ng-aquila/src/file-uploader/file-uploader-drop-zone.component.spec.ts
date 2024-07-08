@@ -11,7 +11,7 @@ import { FileItem } from './file-uploader.model';
 import { NxFileUploaderModule } from './file-uploader.module';
 import { NxFileUploaderDropZoneComponent } from './file-uploader-drop-zone.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class FileUploaderTest {
     @ViewChild(NxFileUploaderComponent, { static: false }) fileUploaderInstance!: NxFileUploaderComponent;
 
@@ -41,8 +41,7 @@ describe('NxFileUploaderComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [DropZoneFileUpload],
-            imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
+            imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule, DropZoneFileUpload],
             providers: [provideHttpClient(withInterceptorsFromDi())],
         }).compileComponents();
     }));
@@ -110,16 +109,22 @@ describe('NxFileUploaderComponent', () => {
                         Add Files
                     </button>
                 </nx-file-uploader-drop-zone>
-                <nx-error *ngIf="form.controls['documents'].hasError('required')">Required!</nx-error>
-                <nx-error *ngIf="form.controls['documents'].hasError('NxFileUploadMaxFileSize')">
-                    File „ {{ form.controls['documents'].getError('NxFileUploadMaxFileSize').fileName | json }}“ can not be uploaded. File size exceeds size
-                    limit!
-                </nx-error>
+                @if (form.controls['documents'].hasError('required')) {
+                    <nx-error>Required!</nx-error>
+                }
+                @if (form.controls['documents'].hasError('NxFileUploadMaxFileSize')) {
+                    <nx-error>
+                        File „ {{ form.controls['documents'].getError('NxFileUploadMaxFileSize').fileName | json }}“ can not be uploaded. File size exceeds size
+                        limit!
+                    </nx-error>
+                }
             </nx-file-uploader>
 
             <button nxButton="primary" type="submit" id="submit-button">Upload files</button>
         </form>
     `,
+    standalone: true,
+    imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
 })
 class DropZoneFileUpload extends FileUploaderTest {
     fb;

@@ -13,8 +13,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [CommonModule, NxTableModule],
-    declarations: [EXAMPLES],
+    imports: [CommonModule, NxTableModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class LayoutExamplesModule {

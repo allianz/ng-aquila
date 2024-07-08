@@ -6,12 +6,11 @@ import { RouterModule } from '@angular/router';
 
 import { NxOverlayContainerComponent } from './overlay-container.component';
 import { NX_OVERLAY_SCROLL_STRATEGY_PROVIDER, NxOverlayService } from './overlay-service';
-import { NxOverlayPositionBuilder } from './position-builder';
 
 @NgModule({
-    imports: [OverlayModule, A11yModule, PortalModule, RouterModule],
+    imports: [OverlayModule, A11yModule, PortalModule, RouterModule, NxOverlayContainerComponent],
     exports: [NxOverlayContainerComponent, OverlayModule],
-    declarations: [NxOverlayContainerComponent],
-    providers: [NxOverlayService, NxOverlayPositionBuilder, NX_OVERLAY_SCROLL_STRATEGY_PROVIDER],
+    // we need to keep these providers for backwards compatibility
+    providers: [NxOverlayService, NX_OVERLAY_SCROLL_STRATEGY_PROVIDER],
 })
 export class NxOverlayModule {}

@@ -28,8 +28,8 @@ const EXAMPLES = [
         NxTreeModule,
         RouterModule,
         CommonModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class MenuExamplesModule {

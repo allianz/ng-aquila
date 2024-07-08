@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { NxVideoComponent } from './video.component';
 import { NxVideoModule } from './video.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class VideoTest {
     @ViewChild(NxVideoComponent) videoInstance!: NxVideoComponent;
 
@@ -42,8 +42,7 @@ describe('NxVideoComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicVideo],
-            imports: [NxVideoModule],
+            imports: [NxVideoModule, BasicVideo],
         }).compileComponents();
     }));
 
@@ -209,5 +208,7 @@ describe('NxVideoComponent', () => {
             [allowFullScreen]="fullscreen"
         ></nx-video>
     `,
+    standalone: true,
+    imports: [NxVideoModule],
 })
 class BasicVideo extends VideoTest {}

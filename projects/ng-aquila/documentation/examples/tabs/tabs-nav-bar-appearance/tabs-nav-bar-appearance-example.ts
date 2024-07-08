@@ -1,4 +1,10 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import {
+    NxTabLinkDirective,
+    NxTabNavBarComponent,
+} from '@aposin/ng-aquila/tabs';
 
 interface Link {
     label: string;
@@ -13,6 +19,8 @@ interface Link {
     selector: 'tabs-nav-bar-appearance-example',
     templateUrl: './tabs-nav-bar-appearance-example.html',
     styleUrls: ['./tabs-nav-bar-appearance-example.css'],
+    standalone: true,
+    imports: [NxTabNavBarComponent, NgFor, NxTabLinkDirective, RouterLink],
 })
 export class TabsNavBarAppearanceExampleComponent {
     links: Link[] = [

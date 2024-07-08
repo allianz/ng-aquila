@@ -7,8 +7,7 @@ import { IndicatorExampleComponent } from './indicator/indicator-example';
 const EXAMPLES = [IndicatorExampleComponent];
 
 @NgModule({
-    imports: [NxIndicatorModule, CommonModule],
-    declarations: [EXAMPLES],
+    imports: [NxIndicatorModule, CommonModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class IndicatorExamplesModule {

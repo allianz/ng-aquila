@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxListComponent } from '@aposin/ng-aquila/list';
 
 /**
  * @title Ordered list example
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
     selector: 'list-ordered-example',
     templateUrl: './list-ordered-example.html',
     styleUrls: ['./list-ordered-example.css'],
+    standalone: true,
+    imports: [NxListComponent],
 })
 export class ListOrderedExampleComponent {}

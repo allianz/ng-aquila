@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { NxIconRegistry } from '@aposin/ng-aquila/icon';
+import { NxIconComponent, NxIconRegistry } from '@aposin/ng-aquila/icon';
 
 /**
  * @title Register Icons Example
@@ -9,6 +9,8 @@ import { NxIconRegistry } from '@aposin/ng-aquila/icon';
     selector: 'icon-registry-example',
     templateUrl: './icon-registry-example.html',
     styleUrls: ['./icon-registry-example.css'],
+    standalone: true,
+    imports: [NxIconComponent],
 })
 export class IconRegistryExampleComponent {
     constructor(

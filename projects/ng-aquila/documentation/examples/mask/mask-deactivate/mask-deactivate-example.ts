@@ -1,4 +1,20 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import {
+    NxFormfieldComponent,
+    NxFormfieldHintDirective,
+} from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
+import { NxMaskDirective } from '@aposin/ng-aquila/mask';
+import {
+    NxRadioComponent,
+    NxRadioGroupComponent,
+} from '@aposin/ng-aquila/radio-button';
 
 /**
  * @title Mask Deactivate example
@@ -7,6 +23,19 @@ import { Component } from '@angular/core';
     selector: 'mask-deactivate-example',
     templateUrl: './mask-deactivate-example.html',
     styleUrls: ['./mask-deactivate-example.css'],
+    standalone: true,
+    imports: [
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxRadioGroupComponent,
+        FormsModule,
+        NxRadioComponent,
+        NxFormfieldComponent,
+        NxInputDirective,
+        NxMaskDirective,
+        NxFormfieldHintDirective,
+    ],
 })
 export class MaskDeactivateExampleComponent {
     modelVal = 'SSAAAAA';

@@ -6,7 +6,7 @@ import { dispatchMouseEvent } from '../../cdk-test-utils';
 import { NxMessageModule } from '../message.module';
 import { CONTEXT, NxMessageComponent } from './message.component';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class MessageTest {
     context: CONTEXT = 'regular';
 
@@ -49,8 +49,7 @@ describe('NxMessageComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [MessageBasicComponent, MessageOnPushComponent, ClosableMessageComponent, ClosableFormMessageComponent],
-            imports: [NxMessageModule, FormsModule],
+            imports: [NxMessageModule, FormsModule, MessageBasicComponent, MessageOnPushComponent, ClosableMessageComponent, ClosableFormMessageComponent],
         }).compileComponents();
     }));
 
@@ -154,17 +153,23 @@ describe('NxMessageComponent', () => {
 
 @Component({
     template: `<nx-message [context]="context"> lorem ipsum </nx-message>`,
+    standalone: true,
+    imports: [NxMessageModule, FormsModule],
 })
 class MessageBasicComponent extends MessageTest {}
 
 @Component({
     template: `<nx-message [context]="context"> lorem ipsum </nx-message>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxMessageModule, FormsModule],
 })
 class MessageOnPushComponent extends MessageTest {}
 
 @Component({
     template: `<nx-message [closable]="closable"> lorem ipsum </nx-message>`,
+    standalone: true,
+    imports: [NxMessageModule, FormsModule],
 })
 class ClosableMessageComponent extends MessageTest {
     closable = true;
@@ -176,6 +181,8 @@ class ClosableMessageComponent extends MessageTest {
             <nx-message [closable]="closable"> lorem ipsum </nx-message>
         </form>
     `,
+    standalone: true,
+    imports: [NxMessageModule, FormsModule],
 })
 class ClosableFormMessageComponent extends MessageTest {
     closable = true;

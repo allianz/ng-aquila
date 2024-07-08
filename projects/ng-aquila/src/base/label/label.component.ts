@@ -25,6 +25,7 @@ export const LABEL_DEFAULT_OPTIONS = new InjectionToken<LabelDefaultOptions>('LA
         '[class.nx-label--large]': 'size === "large"',
         '[class.nx-label--small]': 'size === "small"',
     },
+    standalone: true,
 })
 export class NxLabelComponent {
     readonly _stateChanges = new Subject<void>();

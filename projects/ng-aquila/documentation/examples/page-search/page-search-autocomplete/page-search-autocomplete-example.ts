@@ -1,5 +1,24 @@
+import { NgIf } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, Injectable } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import {
+    NxAutocompleteComponent,
+    NxAutocompleteTriggerDirective,
+} from '@aposin/ng-aquila/autocomplete';
+import {
+    NxFormfieldComponent,
+    NxFormfieldPrefixDirective,
+    NxFormfieldSuffixDirective,
+} from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
+import { NxPageSearchComponent } from '@aposin/ng-aquila/page-search';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -39,6 +58,22 @@ export class WikipediaService {
     templateUrl: './page-search-autocomplete-example.html',
     styleUrls: ['./page-search-autocomplete-example.css'],
     providers: [WikipediaService],
+    standalone: true,
+    imports: [
+        NxPageSearchComponent,
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxFormfieldComponent,
+        NxInputDirective,
+        NxAutocompleteTriggerDirective,
+        FormsModule,
+        NxAutocompleteComponent,
+        NxFormfieldPrefixDirective,
+        NxIconComponent,
+        NgIf,
+        NxFormfieldSuffixDirective,
+    ],
 })
 export class PageSearchAutocompleteExampleComponent {
     searchFunction: (term: string) => Observable<string[]>;

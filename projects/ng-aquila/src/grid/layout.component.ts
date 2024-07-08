@@ -13,6 +13,7 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, Input } from '@an
         '[class.nx-grid--container-query]': 'containerQuery',
         '[class.nx-grid--media-query]': '!containerQuery',
     },
+    standalone: true,
 })
 export class NxLayoutComponent {
     /** @docs-private */

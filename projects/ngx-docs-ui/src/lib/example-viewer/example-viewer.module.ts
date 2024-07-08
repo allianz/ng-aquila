@@ -27,9 +27,9 @@ import { ExampleViewerComponent } from './example-viewer.component';
         NxTooltipModule,
         NxvLazyExampleOutletModule,
         StackBlitzButtonModule,
+        ExampleViewerComponent,
     ],
     exports: [ExampleViewerComponent],
-    declarations: [ExampleViewerComponent],
     providers: [CopyService],
 })
 export class ExampleViewerModule {}

@@ -1,4 +1,18 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import {
+    NxAutocompleteComponent,
+    NxAutocompleteOptionComponent,
+    NxAutocompleteTriggerDirective,
+} from '@aposin/ng-aquila/autocomplete';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
+import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
 
 /**
  * @title Autocomplete with formfield example
@@ -7,6 +21,19 @@ import { Component } from '@angular/core';
     selector: 'autocomplete-outline-example',
     templateUrl: './autocomplete-outline-example.html',
     styleUrls: ['./autocomplete-outline-example.css'],
+    standalone: true,
+    imports: [
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxHeadlineComponent,
+        NxFormfieldComponent,
+        NxInputDirective,
+        NxAutocompleteTriggerDirective,
+        NxAutocompleteComponent,
+        NgFor,
+        NxAutocompleteOptionComponent,
+    ],
 })
 export class AutocompleteOutlineExampleComponent {
     filteredOptions: string[];

@@ -1,5 +1,8 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 /**
@@ -9,6 +12,8 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
     selector: 'modal-with-direction-example',
     templateUrl: './modal-with-direction-example.html',
     styleUrls: ['./modal-with-direction-example.css'],
+    standalone: true,
+    imports: [NxButtonComponent, NxHeadlineComponent, NxCopytextComponent],
 })
 export class ModalWithDirectionExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;

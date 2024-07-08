@@ -7,8 +7,7 @@ import { AccessibilityHighContrastSvgExampleComponent } from './accessibility-hi
 const EXAMPLES = [AccessibilityHighContrastSvgExampleComponent];
 
 @NgModule({
-    imports: [NxMessageModule, NxGridModule],
-    declarations: [EXAMPLES],
+    imports: [NxMessageModule, NxGridModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class AccessibilityExamplesModule {

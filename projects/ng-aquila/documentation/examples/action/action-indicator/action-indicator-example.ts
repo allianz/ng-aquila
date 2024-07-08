@@ -1,4 +1,11 @@
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import {
+    NxActionComponent,
+    NxActionIconDirective,
+} from '@aposin/ng-aquila/action';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import { NxIndicatorComponent } from '@aposin/ng-aquila/indicator';
 
 interface Action {
     icon: string;
@@ -14,6 +21,15 @@ interface Action {
     selector: 'action-indicator-example',
     styleUrls: ['./action-indicator-example.css'],
     templateUrl: './action-indicator-example.html',
+    standalone: true,
+    imports: [
+        NgFor,
+        NxActionComponent,
+        NxIconComponent,
+        NxActionIconDirective,
+        NgIf,
+        NxIndicatorComponent,
+    ],
 })
 export class ActionIndicatorExampleComponent {
     actions: Action[] = [

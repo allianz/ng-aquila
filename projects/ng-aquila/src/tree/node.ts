@@ -21,6 +21,7 @@ import { NxTreeComponent } from './tree.component';
     },
     providers: [{ provide: CdkTreeNode, useExisting: NxTreeNodeComponent }],
     templateUrl: './node.html',
+    standalone: true,
 })
 export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy, AfterViewInit {
     constructor(
@@ -63,6 +64,7 @@ export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy,
     selector: '[nxTreeNodeDef]',
     inputs: ['when: nxTreeNodeDefWhen'],
     providers: [{ provide: CdkTreeNodeDef, useExisting: NxTreeNodeDefDirective }],
+    standalone: true,
 })
 export class NxTreeNodeDefDirective<T> extends CdkTreeNodeDef<T> {
     @Input('nxTreeNode') data!: T;

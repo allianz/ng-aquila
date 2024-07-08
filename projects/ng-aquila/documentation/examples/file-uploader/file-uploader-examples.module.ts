@@ -56,8 +56,8 @@ const EXAMPLES = [
         NxFormfieldModule,
         NxInputModule,
         NxMessageModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class FileExamplesModule {

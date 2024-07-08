@@ -1,5 +1,18 @@
+import { JsonPipe, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxSelectableCardComponent,
+    NxSelectableCardGroupComponent,
+} from '@aposin/ng-aquila/card';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
 
 /**
  * @title Selectable cards radio example
@@ -9,6 +22,18 @@ import { FormBuilder, Validators } from '@angular/forms';
     templateUrl: './selectable-card-radio-example.html',
     styleUrls: ['./selectable-card-radio-example.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxSelectableCardGroupComponent,
+        NgFor,
+        NxSelectableCardComponent,
+        NxCopytextComponent,
+        NxErrorComponent,
+        NxButtonComponent,
+        JsonPipe,
+    ],
 })
 export class SelectableCardRadioExampleComponent {
     cards = [

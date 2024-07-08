@@ -52,8 +52,8 @@ const EXAMPLES = [
         NxSwitcherModule,
         NxMessageModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class DatefieldExamplesModule {

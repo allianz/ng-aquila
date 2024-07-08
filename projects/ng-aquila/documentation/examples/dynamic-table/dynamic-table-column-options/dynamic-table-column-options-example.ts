@@ -1,6 +1,28 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import {
+    CdkDrag,
+    CdkDragDrop,
+    CdkDropList,
+    moveItemInArray,
+} from '@angular/cdk/drag-drop';
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { NxDynamicTableColumnDefinition } from '@aposin/ng-aquila/dynamic-table';
+import { FormsModule } from '@angular/forms';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxCheckboxComponent,
+    NxCheckboxGroupComponent,
+} from '@aposin/ng-aquila/checkbox';
+import {
+    NxContextMenuComponent,
+    NxContextMenuItemComponent,
+    NxContextMenuItemWrapComponent,
+    NxContextMenuTriggerDirective,
+} from '@aposin/ng-aquila/context-menu';
+import {
+    NxDynamicTableColumnDefinition,
+    NxDynamicTableComponent,
+} from '@aposin/ng-aquila/dynamic-table';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 /**
  * @title Table Column Options Example
@@ -9,6 +31,22 @@ import { NxDynamicTableColumnDefinition } from '@aposin/ng-aquila/dynamic-table'
     selector: 'dynamic-table-column-options-example',
     templateUrl: './dynamic-table-column-options-example.html',
     styleUrls: ['./dynamic-table-column-options-example.css'],
+    standalone: true,
+    imports: [
+        NxButtonComponent,
+        NxContextMenuTriggerDirective,
+        NxContextMenuComponent,
+        NxCheckboxGroupComponent,
+        CdkDropList,
+        FormsModule,
+        NxContextMenuItemWrapComponent,
+        NgFor,
+        NxContextMenuItemComponent,
+        CdkDrag,
+        NxIconComponent,
+        NxCheckboxComponent,
+        NxDynamicTableComponent,
+    ],
 })
 export class DynamicTableColumnOptionsExampleComponent {
     data = [

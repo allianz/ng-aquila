@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { NxListComponent } from './list.component';
 import { NxListModule } from './list.module';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class ListTest {
     @ViewChild(NxListComponent) listInstance!: NxListComponent;
 }
@@ -26,8 +26,7 @@ describe('NxListComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicList, ListWithModifier, ListWithIcons, ConfigurableList],
-            imports: [NxListModule],
+            imports: [NxListModule, BasicList, ListWithModifier, ListWithIcons, ConfigurableList],
         }).compileComponents();
     }));
 
@@ -90,6 +89,8 @@ describe('NxListComponent', () => {
             <li>2</li>
         </ul>
     `,
+    standalone: true,
+    imports: [NxListModule],
 })
 class BasicList extends ListTest {}
 
@@ -100,6 +101,8 @@ class BasicList extends ListTest {}
             <li>2</li>
         </ul>
     `,
+    standalone: true,
+    imports: [NxListModule],
 })
 class ListWithModifier extends ListTest {}
 
@@ -110,6 +113,8 @@ class ListWithModifier extends ListTest {}
             <li nxListIcon="product-cross">2</li>
         </ul>
     `,
+    standalone: true,
+    imports: [NxListModule],
 })
 class ListWithIcons extends ListTest {}
 
@@ -120,6 +125,8 @@ class ListWithIcons extends ListTest {}
             <li>2</li>
         </ul>
     `,
+    standalone: true,
+    imports: [NxListModule],
 })
 class ConfigurableList extends ListTest {
     type = 'small';

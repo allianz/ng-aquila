@@ -20,8 +20,8 @@ const EXAMPLES = [
         NxContextMenuModule,
         NxIconModule,
         NxButtonModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class ToolbarExamplesModule {

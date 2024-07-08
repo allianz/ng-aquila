@@ -1,3 +1,4 @@
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { Component, Optional, TemplateRef, ViewChild } from '@angular/core';
 
 import { NxComparisonTableBase } from '../comparison-table-base';
@@ -7,6 +8,8 @@ import { NxToggleSectionBase } from '../toggle-section/toggle-section-base';
 @Component({
     selector: 'nx-comparison-table-intersection-cell',
     templateUrl: './intersection-cell.component.html',
+    standalone: true,
+    imports: [NgIf, NgTemplateOutlet],
 })
 export class NxComparisonTableIntersectionCell {
     @ViewChild('content', { static: true }) _content!: TemplateRef<any>;

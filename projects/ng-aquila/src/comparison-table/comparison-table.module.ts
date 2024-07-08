@@ -16,8 +16,9 @@ import { NxToggleSectionDirective } from './toggle-section/toggle-section.direct
 import { NxToggleSectionHeaderComponent } from './toggle-section/toggle-section-header.component';
 
 @NgModule({
-    imports: [CommonModule, NxIconModule],
-    declarations: [
+    imports: [
+        CommonModule,
+        NxIconModule,
         NxComparisonTableComponent,
         NxComparisonTableCell,
         NxComparisonTableDescriptionCell,

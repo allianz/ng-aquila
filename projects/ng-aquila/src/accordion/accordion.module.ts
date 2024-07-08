@@ -9,8 +9,10 @@ import { NxExpansionPanelBodyDirective } from './expansion-panel-body';
 import { NxExpansionPanelDescriptionDirective, NxExpansionPanelHeaderComponent, NxExpansionPanelTitleDirective } from './expansion-panel-header';
 
 @NgModule({
-    imports: [CommonModule, PortalModule, NxIconModule],
-    exports: [
+    imports: [
+        CommonModule,
+        PortalModule,
+        NxIconModule,
         NxAccordionDirective,
         NxExpansionPanelComponent,
         NxExpansionPanelHeaderComponent,
@@ -18,7 +20,7 @@ import { NxExpansionPanelDescriptionDirective, NxExpansionPanelHeaderComponent, 
         NxExpansionPanelTitleDirective,
         NxExpansionPanelBodyDirective,
     ],
-    declarations: [
+    exports: [
         NxAccordionDirective,
         NxExpansionPanelComponent,
         NxExpansionPanelHeaderComponent,

@@ -8,7 +8,7 @@ import { NxCardModule } from './card.module';
 import { NxSelectableCardComponent } from './selectable-card.component';
 import { NxSelectableCardChangeEvent } from './selectable-card-change-event';
 
-@Directive()
+@Directive({ standalone: true })
 abstract class SelectableCardTest {
     @ViewChild(NxSelectableCardComponent) selectableCardInstance!: NxSelectableCardComponent;
     @ViewChildren(NxErrorComponent) errors!: QueryList<NxErrorComponent>;
@@ -50,8 +50,17 @@ describe('NxSelectableCardComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicSelectableCard, ReactiveSelectableCard, DynamicErrorSelectableCard, ExpertSelectableCard, HighlightSelectableCard],
-            imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
+            imports: [
+                NxCardModule,
+                FormsModule,
+                ReactiveFormsModule,
+                NxErrorModule,
+                BasicSelectableCard,
+                ReactiveSelectableCard,
+                DynamicErrorSelectableCard,
+                ExpertSelectableCard,
+                HighlightSelectableCard,
+            ],
         }).compileComponents();
     }));
 
@@ -198,6 +207,8 @@ describe('NxSelectableCardComponent', () => {
             <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
         </nx-selectable-card>
     `,
+    standalone: true,
+    imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class BasicSelectableCard extends SelectableCardTest {}
 
@@ -207,6 +218,8 @@ class BasicSelectableCard extends SelectableCardTest {}
             <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
         </nx-selectable-card>
     `,
+    standalone: true,
+    imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class ExpertSelectableCard extends SelectableCardTest {}
 
@@ -217,6 +230,8 @@ class ExpertSelectableCard extends SelectableCardTest {}
             <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
         </nx-selectable-card>
     `,
+    standalone: true,
+    imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class HighlightSelectableCard extends SelectableCardTest {}
 
@@ -228,6 +243,8 @@ class HighlightSelectableCard extends SelectableCardTest {}
             </nx-selectable-card>
         </form>
     `,
+    standalone: true,
+    imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class ReactiveSelectableCard extends SelectableCardTest {
     constructor() {
@@ -246,11 +263,17 @@ class ReactiveSelectableCard extends SelectableCardTest {
         <form [formGroup]="testForm">
             <nx-selectable-card formControlName="card">
                 <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                <nx-error appearance="text" *ngIf="testForm.controls.card.hasError('required')"> This card must be selected. </nx-error>
-                <nx-error appearance="text" *ngIf="customError"> Another Error </nx-error>
+                @if (testForm.controls.card.hasError('required')) {
+                    <nx-error appearance="text"> This card must be selected. </nx-error>
+                }
+                @if (customError) {
+                    <nx-error appearance="text"> Another Error </nx-error>
+                }
             </nx-selectable-card>
         </form>
     `,
+    standalone: true,
+    imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class DynamicErrorSelectableCard extends SelectableCardTest {
     constructor() {

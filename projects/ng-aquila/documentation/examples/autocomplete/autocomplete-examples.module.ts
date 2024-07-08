@@ -26,17 +26,17 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    declarations: [EXAMPLES],
-    exports: [EXAMPLES],
     imports: [
         NxAutocompleteModule,
         NxInputModule,
         NxNaturalLanguageFormModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
     providers: [
         provideHttpClient(withInterceptorsFromDi(), withJsonpSupport()),
     ],
+    exports: [EXAMPLES],
 })
 export class AutocompleteExamplesModule {
     static components() {

@@ -42,6 +42,7 @@ const DEFAULT_CLASSES = ['nx-link'];
         '[class.nx-link--small]': 'this.size === "small"',
         '[class.nx-link--large]': 'this.size === "large"',
     },
+    standalone: true,
 })
 export class NxLinkComponent extends MappedStyles implements AfterContentInit, OnDestroy, AfterViewInit {
     /** @docs-private */
