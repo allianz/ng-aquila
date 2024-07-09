@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [17.9.2](https://github.com/allianz/ng-aquila/compare/v17.9.1...v17.9.2) (2024-07-09)
+
+
+### Bug Fixes 🐛
+
+* **radio-button:** cannot access radiogroup before initialization error ([08afe61](https://github.com/allianz/ng-aquila/commit/08afe61b480d4600a2896b96804cac9380ae0878))
+
 ### [17.9.1](https://github.com/allianz/ng-aquila/compare/v17.9.0...v17.9.1) (2024-07-03)
 
 
