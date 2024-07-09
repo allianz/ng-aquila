@@ -521,11 +521,8 @@ export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit
         this._onChangeCallback(this._time);
     }
 
-    _onFocus(event: Event) {
+    _onFocus() {
         this.hasFocus = true;
-        if (event.target instanceof HTMLInputElement) {
-            event.target.select();
-        }
     }
 
     _getAriaLabel(type: string) {
