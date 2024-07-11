@@ -82,6 +82,17 @@ describe('NxTaglistComponent', () => {
         expect(document.activeElement).toEqual(tagElements.item(1));
     });
 
+    it('deletes tags on delete button click and focuses the previous one', () => {
+        createTestComponent(BasicTaglist);
+        const lastTag = tagElements.item(tagElements.length - 1);
+        lastTag.focus();
+        dispatchKeyboardEvent(lastTag, 'keydown', DELETE);
+        fixture.detectChanges();
+
+        expect(taglistInstance.tags).toHaveSize(1);
+        expect(document.activeElement).toEqual(tagElements.item(tagElements.length - 2));
+    });
+
     it('emits event on click', () => {
         createTestComponent(BasicTaglist);
         spyOn(taglistInstance.tagClickEvent, 'emit');

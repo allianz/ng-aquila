@@ -130,9 +130,12 @@ export class NxTaglistComponent implements ControlValueAccessor {
         if (this.allowTagDeletion) {
             this.tags = [...this.tags.slice(0, index), ...this.tags.slice(index + 1)];
 
-            // focus next element after deletion
-            if (this.tagChildren.toArray()[index + 1]) {
-                this.tagChildren.toArray()[index + 1].nativeElement.focus();
+            // focus next/previous element after deletion
+            const list = this.tagChildren.toArray();
+            if (list[index + 1]) {
+                list[index + 1].nativeElement.focus();
+            } else if (list[index - 1]) {
+                list[index - 1].nativeElement.focus();
             }
 
             this._onChange(this.tags);
