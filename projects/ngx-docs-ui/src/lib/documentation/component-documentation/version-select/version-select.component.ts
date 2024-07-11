@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component, Inject, Input, Optional, ViewChild } from '@angular/core';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxContextMenuModule, NxContextMenuTriggerDirective } from '@aposin/ng-aquila/context-menu';
@@ -12,7 +11,7 @@ import { DocVersionChannel, DocVersions } from './../../../core/types';
     templateUrl: 'version-select.component.html',
     styleUrls: ['version-select.component.scss'],
     standalone: true,
-    imports: [NxButtonModule, NxContextMenuModule, NxIconModule, NgFor],
+    imports: [NxButtonModule, NxContextMenuModule, NxIconModule],
 })
 export class NxVersionSelectComponent {
     _selected = '';

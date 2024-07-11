@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     NxMenuButtonComponent,
@@ -24,13 +23,7 @@ interface MenuItem {
     templateUrl: 'menu-item-example.html',
     styleUrls: ['menu-item-example.css'],
     standalone: true,
-    imports: [
-        NgFor,
-        NxMenuButtonComponent,
-        NxMenuItemDirective,
-        NgIf,
-        NxMenuLinkDirective,
-    ],
+    imports: [NxMenuButtonComponent, NxMenuItemDirective, NxMenuLinkDirective],
 })
 export class MenuItemExampleComponent {
     menuData: MenuItem[] = [

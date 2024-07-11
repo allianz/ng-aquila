@@ -3,9 +3,9 @@ and expanded according to the viewport:
 <br />
 <br />
 <nx-sidebar class="my-sidebar" resizeable #sidebar>
+    @for (action of actions; track action) {
     <button
         nxAction
-        *ngFor="let action of actions"
         routerLink="./"
         [queryParams]="action.query"
         routerLinkActive="is-selected"
@@ -14,4 +14,5 @@ and expanded according to the viewport:
         <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
         {{action.label}}
     </button>
+    }
 </nx-sidebar>

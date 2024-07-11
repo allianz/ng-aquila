@@ -1,4 +1,4 @@
-import { JsonPipe, NgFor, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     FormBuilder,
@@ -24,11 +24,9 @@ import {
     imports: [
         FormsModule,
         ReactiveFormsModule,
-        NgIf,
         NxCheckboxGroupComponent,
         NxLabelComponent,
         NxErrorComponent,
-        NgFor,
         NxCheckboxComponent,
         NxButtonComponent,
         JsonPipe,

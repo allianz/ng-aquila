@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
     FormControl,
@@ -24,7 +23,6 @@ import { NxCodeInputComponent } from '@aposin/ng-aquila/code-input';
         FormsModule,
         ReactiveFormsModule,
         NxCodeInputComponent,
-        NgIf,
         NxErrorComponent,
         NxButtonComponent,
     ],

@@ -1,5 +1,5 @@
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { NgClass, NgIf, NgStyle, NgTemplateOutlet } from '@angular/common';
+import { NgClass, NgStyle, NgTemplateOutlet } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -27,7 +27,7 @@ import { PopoverTriggerType } from './popover-trigger.directive';
     styleUrls: ['./popover.component.scss'],
     exportAs: 'nxPopover',
     standalone: true,
-    imports: [NgClass, NgIf, NgStyle, NxIconModule, NgTemplateOutlet],
+    imports: [NgClass, NgStyle, NxIconModule, NgTemplateOutlet],
 })
 export class NxPopoverComponent implements OnDestroy, OnInit {
     /** @docs-private */

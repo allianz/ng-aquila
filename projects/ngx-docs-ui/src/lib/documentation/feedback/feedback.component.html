@@ -1,10 +1,14 @@
-<div *ngIf="!showMobileView" class="desktop-box">
-    <ng-container *ngTemplateOutlet="feedbackButtons"></ng-container>
-</div>
+@if (!showMobileView) {
+    <div class="desktop-box">
+        <ng-container *ngTemplateOutlet="feedbackButtons"></ng-container>
+    </div>
+}
 
-<button *ngIf="showMobileView" #mobileButton class="mobile-button" [nxPopoverTriggerFor]="mobilePopover" nxPopoverTrigger="click">
-    <nx-icon name="speech-bubble-o"></nx-icon>
-</button>
+@if (showMobileView) {
+    <button #mobileButton class="mobile-button" [nxPopoverTriggerFor]="mobilePopover" nxPopoverTrigger="click">
+        <nx-icon name="speech-bubble-o"></nx-icon>
+    </button>
+}
 
 <nx-popover #mobilePopover>
     <ng-container *ngTemplateOutlet="feedbackButtons"></ng-container>

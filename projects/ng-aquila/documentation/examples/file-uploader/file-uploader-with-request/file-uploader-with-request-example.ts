@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
@@ -35,7 +34,6 @@ const myCustomConfig: NxMessageToastConfig = {
         NxButtonComponent,
         NxFileUploaderButtonDirective,
         NxIconComponent,
-        NgIf,
         NxErrorComponent,
     ],
 })

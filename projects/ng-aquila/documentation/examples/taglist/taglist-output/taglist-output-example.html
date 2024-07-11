@@ -5,4 +5,6 @@
     (onTagClick)="log($event)"
 >
 </nx-taglist>
-<pre *ngIf="logMessage">{{logMessage}}</pre>
+@if (logMessage) {
+<pre>{{logMessage}}</pre>
+}

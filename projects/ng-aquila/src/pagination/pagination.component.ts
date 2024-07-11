@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -38,7 +38,7 @@ export interface Page {
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./pagination.component.scss'],
     standalone: true,
-    imports: [NgIf, NxIconModule, NgFor, NgClass],
+    imports: [NxIconModule, NgClass],
 })
 export class NxPaginationComponent implements OnInit, AfterContentInit, AfterViewInit, OnDestroy {
     @ViewChildren('link') _linkElements!: QueryList<ElementRef>;

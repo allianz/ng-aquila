@@ -1,4 +1,4 @@
-import { DatePipe, NgFor } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
@@ -38,7 +38,6 @@ interface Contract {
         NxTableRowComponent,
         NxSortHeaderComponent,
         NxHeaderCellDirective,
-        NgFor,
         NxTableCellComponent,
         NxLinkComponent,
         RouterLink,

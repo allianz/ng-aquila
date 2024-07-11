@@ -7,7 +7,9 @@
         required
     ></nx-timefield>
     <p>Model Value (24h format): {{templateModel}}</p>
-    <div *ngIf="timefield.errorState">
+    @if (timefield.errorState) {
+    <div>
         <nx-error> Invalid time input. </nx-error>
     </div>
+    }
 </form>

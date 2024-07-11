@@ -1,32 +1,37 @@
-<div class="nx-table__container" *ngIf="data && data.length > 0">
-    <div class="nx-table__scroll">
-        <cdk-table [dataSource]="dataSource" class="nx-table">
-            <!-- Column Definitions -->
-            <ng-container *ngFor="let column of displayedColumns" cdkColumnDef="{{ column.key }}">
-                <cdk-header-cell
-                    *cdkHeaderCellDef
-                    class="nx-table__header-cell"
-                    [ngClass]="[column.headerCellClass ?? '', isNumeric(column) ? 'nx-table__header-cell--number' : '']"
-                    [ngStyle]="column.headerCellStyle || null"
-                    ><div class="nx-table__header-title--block">
-                        <span class="nx-table__header-title">{{ column.title }}</span>
-                    </div>
-                </cdk-header-cell>
-                <cdk-cell
-                    *cdkCellDef="let row"
-                    class="nx-table__cell"
-                    [ngClass]="[column.cellClass ?? '', isNumeric(column) ? 'nx-table__cell--number' : '']"
-                    [ngStyle]="column.cellStyle ?? null"
-                    [innerHTML]="row[column.key]"
-                ></cdk-cell>
-            </ng-container>
-
-            <!-- Header and Row Declarations -->
-            <cdk-header-row *cdkHeaderRowDef="columnKeys" class="nx-table__header-row"></cdk-header-row>
-            <cdk-row *cdkRowDef="let row; columns: columnKeys" class="nx-table__row" (dblclick)="handleRowClick(row)"></cdk-row>
-        </cdk-table>
+@if (data && data.length > 0) {
+    <div class="nx-table__container">
+        <div class="nx-table__scroll">
+            <cdk-table [dataSource]="dataSource" class="nx-table">
+                <!-- Column Definitions -->
+                @for (column of displayedColumns; track column) {
+                    <ng-container cdkColumnDef="{{ column.key }}">
+                        <cdk-header-cell
+                            *cdkHeaderCellDef
+                            class="nx-table__header-cell"
+                            [ngClass]="[column.headerCellClass ?? '', isNumeric(column) ? 'nx-table__header-cell--number' : '']"
+                            [ngStyle]="column.headerCellStyle || null"
+                            ><div class="nx-table__header-title--block">
+                                <span class="nx-table__header-title">{{ column.title }}</span>
+                            </div>
+                        </cdk-header-cell>
+                        <cdk-cell
+                            *cdkCellDef="let row"
+                            class="nx-table__cell"
+                            [ngClass]="[column.cellClass ?? '', isNumeric(column) ? 'nx-table__cell--number' : '']"
+                            [ngStyle]="column.cellStyle ?? null"
+                            [innerHTML]="row[column.key]"
+                        ></cdk-cell>
+                    </ng-container>
+                }
+                <!-- Header and Row Declarations -->
+                <cdk-header-row *cdkHeaderRowDef="columnKeys" class="nx-table__header-row"></cdk-header-row>
+                <cdk-row *cdkRowDef="let row; columns: columnKeys" class="nx-table__row" (dblclick)="handleRowClick(row)"></cdk-row>
+            </cdk-table>
+        </div>
     </div>
-</div>
-<div class="nx-table__appendix" *ngIf="data.length === 0">
-    <ng-content></ng-content>
-</div>
+}
+@if (data.length === 0) {
+    <div class="nx-table__appendix">
+        <ng-content></ng-content>
+    </div>
+}

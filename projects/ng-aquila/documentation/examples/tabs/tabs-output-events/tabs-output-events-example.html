@@ -1,4 +1,6 @@
-<pre *ngIf="logMessage">{{logMessage}}</pre>
+@if (logMessage) {
+<pre>{{logMessage}}</pre>
+}
 
 <nx-tab-group
     (selectedTabChange)="tabChanged($event)"

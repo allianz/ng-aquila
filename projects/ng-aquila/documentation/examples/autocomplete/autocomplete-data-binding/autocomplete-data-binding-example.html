@@ -8,12 +8,11 @@
     />
 </nx-formfield>
 <nx-autocomplete #auto3="nxAutocomplete">
-    <nx-autocomplete-option
-        *ngFor="let item of simpleFilteredOptions(modelBoundData)"
-        [value]="item"
-    >
+    @for (item of simpleFilteredOptions(modelBoundData); track item) {
+    <nx-autocomplete-option [value]="item">
         {{item | lowercase}}
     </nx-autocomplete-option>
+    }
 </nx-autocomplete>
 Template bound: {{ modelBoundData }}
 

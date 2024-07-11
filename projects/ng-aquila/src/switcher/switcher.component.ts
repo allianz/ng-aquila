@@ -1,7 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkObserveContent } from '@angular/cdk/observers';
-import { NgIf } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -48,7 +47,7 @@ export type LABEL_SIZE = 'small' | 'large';
         '(focus)': '_forwardFocusToInput()',
     },
     standalone: true,
-    imports: [NgIf, NxIconModule, CdkObserveContent],
+    imports: [NxIconModule, CdkObserveContent],
 })
 export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, AfterViewInit, OnDestroy {
     /** @docs-private */

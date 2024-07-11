@@ -1,9 +1,6 @@
 <div class="container">
-    <nx-expansion-panel
-        *ngIf="showOverviewSeparately"
-        variant="extra-light"
-        class="nx-margin-bottom-2m"
-    >
+    @if (showOverviewSeparately) {
+    <nx-expansion-panel variant="extra-light" class="nx-margin-bottom-2m">
         <nx-expansion-panel-header>
             <nx-expansion-panel-title
                 >Overview of product benefits
@@ -11,6 +8,7 @@
         </nx-expansion-panel-header>
         <ng-container *ngTemplateOutlet="benefitsList"></ng-container>
     </nx-expansion-panel>
+    }
 
     <nx-comparison-table selectedIndex="1">
         <ng-container nxComparisonTableRow type="header">
@@ -102,7 +100,8 @@
             </nx-comparison-table-cell>
         </ng-container>
 
-        <ng-container *ngIf="!showOverviewSeparately" nxComparisonTableRow>
+        @if (!showOverviewSeparately) {
+        <ng-container nxComparisonTableRow>
             <nx-comparison-table-description-cell>
                 <div class="has-popover">
                     <span>Overview of product benefits</span>
@@ -129,6 +128,7 @@
                 <ng-container *ngTemplateOutlet="benefitsList"></ng-container>
             </nx-comparison-table-intersection-cell>
         </ng-container>
+        }
 
         <ng-container nxComparisonTableRow>
             <nx-comparison-table-description-cell>

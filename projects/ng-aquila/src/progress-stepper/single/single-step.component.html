@@ -19,13 +19,14 @@
     </div>
 </div>
 
-<div
-    *ngFor="let step of steps; let i = index"
-    class="nx-progress-stepper__content"
-    role="tabpanel"
-    [id]="_getStepContentId(i)"
-    [attr.aria-label]="currentLabel"
-    [attr.aria-expanded]="selectedIndex === i"
->
-    <ng-container [ngTemplateOutlet]="step.content"></ng-container>
-</div>
+@for (step of steps; track step; let i = $index) {
+    <div
+        class="nx-progress-stepper__content"
+        role="tabpanel"
+        [id]="_getStepContentId(i)"
+        [attr.aria-label]="currentLabel"
+        [attr.aria-expanded]="selectedIndex === i"
+    >
+        <ng-container [ngTemplateOutlet]="step.content"></ng-container>
+    </div>
+}

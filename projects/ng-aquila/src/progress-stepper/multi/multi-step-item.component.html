@@ -1,9 +1,17 @@
 <div class="label-box">
     <div class="dot">
-        <div *ngIf="selected" class="small-dot"></div>
-        <nx-icon *ngIf="(wasCompleted && !selected) || (completed && !disabled && !selected)" name="check"></nx-icon>
+        @if (selected) {
+            <div class="small-dot"></div>
+        }
+        @if ((wasCompleted && !selected) || (completed && !disabled && !selected)) {
+            <nx-icon name="check"></nx-icon>
+        }
     </div>
-    <div *ngIf="direction === 'vertical'" class="label" [attr.label]="label">{{ label }}</div>
+    @if (direction === 'vertical') {
+        <div class="label" [attr.label]="label">{{ label }}</div>
+    }
 </div>
 
-<div *ngIf="!last" class="line"></div>
+@if (!last) {
+    <div class="line"></div>
+}

@@ -1,5 +1,5 @@
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -48,7 +48,7 @@ export class NxAutocompleteSelectedEvent {
         class: 'nx-autocomplete',
     },
     standalone: true,
-    imports: [NgClass, NgIf, NgFor, NxAutocompleteOptionComponent],
+    imports: [NgClass, NxAutocompleteOptionComponent],
 })
 export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     /** Manages active item in option list based on key events. */

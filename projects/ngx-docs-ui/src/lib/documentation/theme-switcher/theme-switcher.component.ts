@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
@@ -11,7 +10,7 @@ import { Theme } from './theme-switcher.service';
     templateUrl: 'theme-switcher.component.html',
     styleUrls: ['theme-switcher.component.scss'],
     standalone: true,
-    imports: [NxButtonModule, NxContextMenuModule, NxIconModule, NgFor],
+    imports: [NxButtonModule, NxContextMenuModule, NxIconModule],
 })
 export class NxvThemeSwitcherComponent {
     _themeSwitchIsOpened = false;

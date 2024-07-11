@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     NxAutocompleteComponent,
@@ -31,7 +30,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
         NxInputDirective,
         NxAutocompleteTriggerDirective,
         NxAutocompleteComponent,
-        NgFor,
         NxAutocompleteOptionComponent,
     ],
 })

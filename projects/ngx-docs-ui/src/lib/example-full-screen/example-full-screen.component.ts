@@ -1,4 +1,4 @@
-import { Location, NgIf } from '@angular/common';
+import { Location } from '@angular/common';
 import { Component, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
@@ -12,7 +12,7 @@ type ExampleBackgroundType = '' | 'blank';
     templateUrl: './example-full-screen.component.html',
     styleUrls: ['./example-full-screen.component.scss'],
     standalone: true,
-    imports: [NgIf, NxButtonModule, LazyExampleOutletComponent],
+    imports: [NxButtonModule, LazyExampleOutletComponent],
 })
 export class ExampleFullScreenComponent {
     example: string;

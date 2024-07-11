@@ -19,28 +19,35 @@
                     (selectstart)="_selectStart()"
                     #handle
                 >
-                    <ng-container *ngIf="thumbLabel">
+                    @if (thumbLabel) {
                         <span [style.transform]="_labelPosition" class="nx-slider__value">{{ _formatValue(value) }} </span>
                         <div class="nx-slider__arrow"></div>
-                    </ng-container>
+                    }
                 </div>
             </div>
-            <div *ngIf="tickInterval" class="nx-slider__tick-container">
-                <div
-                    *ngFor="let t of ticks"
-                    class="nx-slider__tick"
-                    [class.nx-slider__tick-primary]="t.isLongTick"
-                    [class.nx-slider__tick-hidden]="t.hideTick"
-                    [ngStyle]="{ width: t.gapSize + '%' }"
-                ></div>
-            </div>
-            <div *ngIf="!hideLabels" class="nx-slider__label-container">
-                <span class="nx-slider__value-label">{{ _formatLabelLeft() }}</span>
-                <span class="nx-slider__value-label">{{ _formatLabelRight() }}</span>
-            </div>
+            @if (tickInterval) {
+                <div class="nx-slider__tick-container">
+                    @for (t of ticks; track t) {
+                        <div
+                            class="nx-slider__tick"
+                            [class.nx-slider__tick-primary]="t.isLongTick"
+                            [class.nx-slider__tick-hidden]="t.hideTick"
+                            [ngStyle]="{ width: t.gapSize + '%' }"
+                        ></div>
+                    }
+                </div>
+            }
+            @if (!hideLabels) {
+                <div class="nx-slider__label-container">
+                    <span class="nx-slider__value-label">{{ _formatLabelLeft() }}</span>
+                    <span class="nx-slider__value-label">{{ _formatLabelRight() }}</span>
+                </div>
+            }
         </div>
     </div>
-    <div class="nx-slider__appendix" *ngIf="_appendixChildren.length">
-        <ng-content select="[nxSliderAppendix]"></ng-content>
-    </div>
+    @if (_appendixChildren.length) {
+        <div class="nx-slider__appendix">
+            <ng-content select="[nxSliderAppendix]"></ng-content>
+        </div>
+    }
 </div>

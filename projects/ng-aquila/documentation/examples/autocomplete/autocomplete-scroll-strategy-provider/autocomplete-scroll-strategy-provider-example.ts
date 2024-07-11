@@ -1,5 +1,4 @@
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     NX_AUTOCOMPLETE_SCROLL_STRATEGY,
@@ -32,7 +31,6 @@ function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
     imports: [
         NxAutocompleteTriggerDirective,
         NxAutocompleteComponent,
-        NgFor,
         NxAutocompleteOptionComponent,
     ],
 })

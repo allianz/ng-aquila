@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     FormControl,
@@ -26,7 +25,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
         NxFormfieldComponent,
         NxInputDirective,
         ReactiveFormsModule,
-        NgIf,
         NxErrorComponent,
         NxFormfieldErrorDirective,
     ],

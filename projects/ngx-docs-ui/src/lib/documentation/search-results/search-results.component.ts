@@ -1,5 +1,5 @@
 import { CdkScrollable } from '@angular/cdk/scrolling';
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NxBadgeModule } from '@aposin/ng-aquila/badge';
@@ -15,7 +15,7 @@ import { FuseSearchService } from '../../service/fuse-search.service';
     templateUrl: './search-results.component.html',
     styleUrls: ['./search-results.component.scss'],
     standalone: true,
-    imports: [CdkScrollable, NxGridModule, NgIf, NgFor, NxLinkModule, NxBadgeModule, AsyncPipe],
+    imports: [CdkScrollable, NxGridModule, NxLinkModule, NxBadgeModule, AsyncPipe],
 })
 export class NxvSearchResultsComponent implements OnInit, OnDestroy {
     maxEntriesPerCategory = 15;

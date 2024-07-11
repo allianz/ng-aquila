@@ -1,11 +1,15 @@
-<div *ngIf="label" class="nx-stepper__label">
-    <label [for]="inputId">
-        {{ label }}
-    </label>
-</div>
-<div class="nx-stepper__label" #customLabel *ngIf="!label" [attr.id]="ariaDescribedBy">
-    <ng-content></ng-content>
-</div>
+@if (label) {
+    <div class="nx-stepper__label">
+        <label [for]="inputId">
+            {{ label }}
+        </label>
+    </div>
+}
+@if (!label) {
+    <div class="nx-stepper__label" #customLabel [attr.id]="ariaDescribedBy">
+        <ng-content></ng-content>
+    </div>
+}
 <div class="nx-stepper__input-container">
     <button
         [attr.aria-label]="decrementAriaLabel || _intl.decrementAriaLabel"

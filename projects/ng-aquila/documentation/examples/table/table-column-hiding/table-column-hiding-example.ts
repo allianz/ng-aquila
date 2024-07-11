@@ -6,7 +6,6 @@ import {
     moveItemInArray,
     transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { NgFor, NgIf } from '@angular/common';
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -34,10 +33,8 @@ import { NxTableModule } from '@aposin/ng-aquila/table';
         NxCheckboxGroupComponent,
         CdkDropList,
         FormsModule,
-        NgFor,
         CdkDrag,
         NxCheckboxComponent,
-        NgIf,
         NxLinkComponent,
         RouterLink,
         NxBadgeComponent,

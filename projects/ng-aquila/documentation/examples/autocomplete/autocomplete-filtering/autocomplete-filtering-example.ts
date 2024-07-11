@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     NxAutocompleteComponent,
@@ -17,7 +16,6 @@ import {
     imports: [
         NxAutocompleteTriggerDirective,
         NxAutocompleteComponent,
-        NgFor,
         NxAutocompleteOptionComponent,
     ],
 })

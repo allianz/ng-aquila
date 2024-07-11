@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
 import {
@@ -14,7 +13,7 @@ import {
     templateUrl: './radio-button-event-example.html',
     styleUrls: ['./radio-button-event-example.css'],
     standalone: true,
-    imports: [NxRadioGroupComponent, NxLabelComponent, NxRadioComponent, NgIf],
+    imports: [NxRadioGroupComponent, NxLabelComponent, NxRadioComponent],
 })
 export class RadioButtonEventExampleComponent {
     logMessage!: string;

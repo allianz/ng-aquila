@@ -1,7 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { DOWN_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
-import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -71,7 +71,7 @@ let nextId = 0;
         },
     ],
     standalone: true,
-    imports: [NgIf, NgFor, NgTemplateOutlet, NxFileUploaderItemName, NxFileUploaderItemSize, NxFileUploaderItemStatus, NxFileUploaderItemDelete],
+    imports: [NgTemplateOutlet, NxFileUploaderItemName, NxFileUploaderItemSize, NxFileUploaderItemStatus, NxFileUploaderItemDelete],
 })
 export class NxFileUploaderComponent implements ControlValueAccessor, AfterContentInit, OnChanges, OnDestroy, DoCheck, OnInit, AfterViewInit {
     /** @docs-private */

@@ -1,3 +1,5 @@
-<nx-footer-copyright *ngIf="copyright && !_copyrightDirective">&copy; {{ copyright }} {{ currentYear }}</nx-footer-copyright>
+@if (copyright && !_copyrightDirective) {
+    <nx-footer-copyright>&copy; {{ copyright }} {{ currentYear }}</nx-footer-copyright>
+}
 
 <ng-content></ng-content>

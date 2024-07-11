@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxDataDisplayComponent } from '@aposin/ng-aquila/data-display';
 import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
@@ -12,12 +11,7 @@ import { NxSpinnerComponent } from '@aposin/ng-aquila/spinner';
     templateUrl: './spinner-aria-announcement-example.html',
     styleUrls: ['./spinner-aria-announcement-example.css'],
     standalone: true,
-    imports: [
-        NxSpinnerComponent,
-        NxDataDisplayComponent,
-        NxHeadlineComponent,
-        CommonModule,
-    ],
+    imports: [NxSpinnerComponent, NxDataDisplayComponent, NxHeadlineComponent],
 })
 export class SpinnerAriaAnnouncementExampleComponent {
     calculationInProgress = false;

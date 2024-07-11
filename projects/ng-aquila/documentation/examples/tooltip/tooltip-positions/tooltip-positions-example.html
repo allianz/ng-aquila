@@ -1,10 +1,10 @@
-<ng-container *ngFor="let position of positions">
-    <nx-badge
-        type="active"
-        [nxTooltipPosition]="position"
-        [nxTooltip]="'This tooltip is on the ' + position"
-        tabindex="0"
-    >
-        {{position}}
-    </nx-badge>
-</ng-container>
+@for (position of positions; track position) {
+<nx-badge
+    type="active"
+    [nxTooltipPosition]="position"
+    [nxTooltip]="'This tooltip is on the ' + position"
+    tabindex="0"
+>
+    {{position}}
+</nx-badge>
+}

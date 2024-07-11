@@ -24,9 +24,9 @@
     </div>
 </div>
 
-<div class="nx-calendar-content" [ngSwitch]="_currentView" cdkMonitorSubtreeFocus tabindex="-1">
+<div class="nx-calendar-content" cdkMonitorSubtreeFocus tabindex="-1">
+    @switch (_currentView) { @case ('month') {
     <nx-month-view
-        *ngSwitchCase="'month'"
         [(activeDate)]="_activeDate"
         [selected]="selected"
         [dateFilter]="dateFilter"
@@ -36,9 +36,8 @@
         (_userSelection)="_userSelected()"
     >
     </nx-month-view>
-
+    } @case ('year') {
     <nx-year-view
-        *ngSwitchCase="'year'"
         [(activeDate)]="_activeDate"
         [selected]="selected"
         [dateFilter]="dateFilter"
@@ -48,9 +47,8 @@
         (selectedChange)="_goToDateInView($event, 'month')"
     >
     </nx-year-view>
-
+    } @case ('multi-year') {
     <nx-multi-year-view
-        *ngSwitchCase="'multi-year'"
         [(activeDate)]="_activeDate"
         [selected]="selected"
         [dateFilter]="dateFilter"
@@ -60,4 +58,5 @@
         (selectedChange)="_goToDateInView($event, 'year')"
     >
     </nx-multi-year-view>
+    } }
 </div>

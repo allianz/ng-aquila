@@ -1,11 +1,12 @@
 <nx-circle-toggle-group [(ngModel)]="toggleGroupModel">
+    @for (item of sampleValues; track item) {
     <nx-circle-toggle
-        *ngFor="let item of sampleValues"
         [value]="item.value"
         [icon]="item.icon"
         [hint]="item.hint"
         [label]="item.label"
     ></nx-circle-toggle>
+    }
 </nx-circle-toggle-group>
 
 <p>Try to set the value to A, B or C</p>

@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
@@ -16,7 +15,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
         '[class.is-flipped]': 'checked',
     },
     standalone: true,
-    imports: [NxIconModule, NgIf],
+    imports: [NxIconModule],
 })
 export class NxMobileToggleButtonComponent {
     @Input() checked = false;

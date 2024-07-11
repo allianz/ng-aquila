@@ -11,7 +11,9 @@
     nxPopoverTrigger="click"
     [disabled]="disabled"
 >
-    <nx-icon *ngIf="_iconName" class="nx-signal-button__icon" [name]="_iconName" size="s" aria-hidden="true"> </nx-icon>
+    @if (_iconName) {
+        <nx-icon class="nx-signal-button__icon" [name]="_iconName" size="s" aria-hidden="true"> </nx-icon>
+    }
 </button>
 
 <nx-popover #signalButtonPopover>

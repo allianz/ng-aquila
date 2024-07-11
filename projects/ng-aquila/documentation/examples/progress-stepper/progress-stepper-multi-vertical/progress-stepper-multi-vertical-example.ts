@@ -1,4 +1,4 @@
-import { JsonPipe, NgFor, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { Component, OnDestroy, ViewChild } from '@angular/core';
 import {
     FormBuilder,
@@ -62,19 +62,15 @@ interface Animal {
         NxLayoutComponent,
         NxRowComponent,
         NxColComponent,
-        NgSwitch,
-        NgSwitchCase,
         FormsModule,
         ReactiveFormsModule,
         NxFormfieldComponent,
         NxDropdownComponent,
-        NgFor,
         NxDropdownItemComponent,
         NxErrorComponent,
         NxFormfieldErrorDirective,
         NxButtonComponent,
         NxInputDirective,
-        NgIf,
         NxRadioToggleComponent,
         NxRadioToggleButtonComponent,
         JsonPipe,

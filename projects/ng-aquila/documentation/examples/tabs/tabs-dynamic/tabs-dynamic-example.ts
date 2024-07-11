@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import { NxTabComponent, NxTabGroupComponent } from '@aposin/ng-aquila/tabs';
@@ -11,7 +10,7 @@ import { NxTabComponent, NxTabGroupComponent } from '@aposin/ng-aquila/tabs';
     templateUrl: './tabs-dynamic-example.html',
     styleUrls: ['./tabs-dynamic-example.css'],
     standalone: true,
-    imports: [NxTabGroupComponent, NgFor, NxTabComponent, NxButtonComponent],
+    imports: [NxTabGroupComponent, NxTabComponent, NxButtonComponent],
 })
 export class TabsDynamicExampleComponent {
     tabs = ['one', 'two', 'three'];

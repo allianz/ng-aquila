@@ -14,10 +14,7 @@
     ></nx-datepicker-toggle>
     <nx-datepicker #picker3></nx-datepicker>
 
-    <nx-error
-        nxFormfieldError
-        *ngIf="dateFilterModel.errors && dateFilterModel.errors.nxDatefieldFilter"
-    >
-        That's not the 6th of a month.
-    </nx-error>
+    @if (dateFilterModel.errors && dateFilterModel.errors.nxDatefieldFilter) {
+    <nx-error nxFormfieldError> That's not the 6th of a month. </nx-error>
+    }
 </nx-formfield>

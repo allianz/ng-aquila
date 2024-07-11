@@ -2,7 +2,7 @@
 import { ActiveDescendantKeyManager, FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkConnectedOverlay, CdkOverlayOrigin, OverlayModule } from '@angular/cdk/overlay';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
     AfterViewInit,
     booleanAttribute,
@@ -122,18 +122,7 @@ export class NxTimefieldControl implements NxFormfieldControl<string> {
         '(focusout)': '_onBlur($event)',
     },
     standalone: true,
-    imports: [
-        NgClass,
-        NgIf,
-        NxRadioModule,
-        FormsModule,
-        NxTimefieldControl,
-        NxTimefieldOption,
-        NxFormfieldModule,
-        NxIconModule,
-        NxRadioToggleModule,
-        OverlayModule,
-    ],
+    imports: [NgClass, NxRadioModule, FormsModule, NxTimefieldControl, NxTimefieldOption, NxFormfieldModule, NxIconModule, NxRadioToggleModule, OverlayModule],
 })
 export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck, OnInit, OnChanges {
     /** @docs-private */

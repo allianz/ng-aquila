@@ -26,12 +26,12 @@
 
 <nx-context-menu #documentsSubmenu="nxContextMenu">
     <ng-template nxContextMenuContent let-documents="documents">
-        <ng-container *ngFor="let document of documents">
-            <button nxContextMenuItem type="button">
-                <nx-icon aria-hidden="true" name="pdf"></nx-icon>
-                {{ document }}
-            </button>
-        </ng-container>
+        @for (document of documents; track document) {
+        <button nxContextMenuItem type="button">
+            <nx-icon aria-hidden="true" name="pdf"></nx-icon>
+            {{ document }}
+        </button>
+        }
     </ng-template>
 </nx-context-menu>
 
@@ -44,7 +44,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr nxTableRow *ngFor="let contract of contracts">
+        @for (contract of contracts; track contract) {
+        <tr nxTableRow>
             <td nxTableCell>{{ contract.id }}</td>
             <td nxTableCell>
                 <nx-badge [type]="contract.status"
@@ -63,5 +64,6 @@
                 </button>
             </td>
         </tr>
+        }
     </tbody>
 </table>

@@ -2,7 +2,7 @@ import { AnimationEvent } from '@angular/animations';
 import { FocusMonitor, FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, DomPortal, TemplatePortal } from '@angular/cdk/portal';
-import { DOCUMENT, NgIf } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -62,7 +62,7 @@ export function throwNxDialogContentAlreadyAttachedError() {
         '(@slideInOut.done)': '_onAnimationDone($event)',
     },
     standalone: true,
-    imports: [NgIf, NxIconModule, CdkPortalOutlet],
+    imports: [NxIconModule, CdkPortalOutlet],
 })
 export class NxModalContainer extends BasePortalOutlet implements AfterViewInit, OnDestroy, OnInit {
     /** The portal outlet inside of this container into which the modal content will be loaded. */

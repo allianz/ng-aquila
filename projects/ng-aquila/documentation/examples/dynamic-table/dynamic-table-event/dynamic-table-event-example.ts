@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
@@ -22,7 +21,6 @@ import { NxModalComponent } from '@aposin/ng-aquila/modal';
         NxHeadlineComponent,
         NxCopytextComponent,
         NxButtonComponent,
-        NgIf,
         NxModalComponent,
     ],
 })

@@ -1,4 +1,4 @@
-import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     NxHeaderCellDirective,
@@ -19,10 +19,8 @@ import {
         NxTableComponent,
         NxTableRowComponent,
         NxHeaderCellDirective,
-        NgFor,
         NgStyle,
         NxTableCellComponent,
-        NgIf,
     ],
 })
 export class HiddenClassesExampleComponent {

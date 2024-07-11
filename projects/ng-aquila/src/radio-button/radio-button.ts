@@ -1,7 +1,6 @@
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkObserveContent } from '@angular/cdk/observers';
-import { NgIf } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -57,7 +56,7 @@ let nextId = 0;
     },
     styleUrls: ['radio-button-group.scss'],
     standalone: true,
-    imports: [NgIf],
+    imports: [],
 })
 export class NxRadioGroupComponent implements ControlValueAccessor, AfterContentInit, OnDestroy, DoCheck {
     @ContentChild(forwardRef(() => NxLabelComponent)) _label!: NxLabelComponent;
@@ -275,7 +274,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
         '(focus)': '_forwardFocusToInput()',
     },
     standalone: true,
-    imports: [NgIf, CdkObserveContent],
+    imports: [CdkObserveContent],
 })
 export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy {
     /** @docs-private */

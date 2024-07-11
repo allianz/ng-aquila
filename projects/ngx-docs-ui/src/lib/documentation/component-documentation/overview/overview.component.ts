@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component, Inject, OnDestroy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { NxBadgeModule } from '@aposin/ng-aquila/badge';
@@ -18,7 +17,7 @@ import { NxvStatusDotComponent } from './status-dot.component';
     templateUrl: 'overview.component.html',
     styleUrls: ['overview.component.scss'],
     standalone: true,
-    imports: [NxGridModule, NxvStatusDotComponent, NgFor, NxHeadlineModule, NxTableModule, RouterLink, NgIf, NxBadgeModule],
+    imports: [NxGridModule, NxvStatusDotComponent, NxHeadlineModule, NxTableModule, RouterLink, NxBadgeModule],
 })
 export class NxvOverviewComponent implements OnDestroy {
     components!: Category[];

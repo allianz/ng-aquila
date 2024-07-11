@@ -1,15 +1,15 @@
 <div #container class="nx-dropdown-results__option" [ngClass]="{'nx-dropdown-results__option--selected': selected}">
-    <nx-checkbox *ngIf="multiselect" [checked]="selected" [disabled]="disabled">
+    @if (multiselect) {
+    <nx-checkbox [checked]="selected" [disabled]="disabled">
         <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
     </nx-checkbox>
-
-    <span *ngIf="!multiselect" class="nx-dropdown-results__option-checkicon">
+    } @if (!multiselect) {
+    <span class="nx-dropdown-results__option-checkicon">
         <nx-icon name="check" aria-hidden="true"></nx-icon>
     </span>
-
-    <ng-container *ngIf="!multiselect">
-        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-    </ng-container>
+    } @if (!multiselect) {
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    }
 </div>
 
 <ng-template #contentTemplate>
@@ -18,8 +18,6 @@
             <ng-content></ng-content>
         </div>
 
-        <div>
-            <ng-container *ngIf="_isContentEmpty(content)"> {{_formattedValue }} </ng-container>
-        </div>
+        <div>@if (_isContentEmpty(content)) { {{_formattedValue }} }</div>
     </div>
 </ng-template>

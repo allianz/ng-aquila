@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     NxIconButtonComponent,
@@ -35,8 +34,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
         NxContextMenuTriggerDirective,
         NxIconComponent,
         NxContextMenuComponent,
-        NgFor,
-        NgIf,
         NxContextMenuItemComponent,
         NxSwipebarComponent,
         NxComparisonTableComponent,

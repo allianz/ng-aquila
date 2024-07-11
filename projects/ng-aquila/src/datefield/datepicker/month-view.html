@@ -1,7 +1,9 @@
 <table class="nx-calendar-table">
     <thead class="nx-calendar-table-head">
         <tr>
-            <th class="nx-calendar-table-header" *ngFor="let day of _weekdays" [attr.aria-label]="day.long">{{day.narrow}}</th>
+            @for (day of _weekdays; track day) {
+            <th class="nx-calendar-table-header" [attr.aria-label]="day.long">{{day.narrow}}</th>
+            }
         </tr>
         <tr></tr>
     </thead>

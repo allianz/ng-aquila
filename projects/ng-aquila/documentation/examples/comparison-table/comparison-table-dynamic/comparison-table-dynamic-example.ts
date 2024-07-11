@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxPlainButtonComponent } from '@aposin/ng-aquila/button';
 import {
@@ -39,8 +38,6 @@ type TableData = (ContentCell | ToggleSection)[];
     imports: [
         NxSwipebarComponent,
         NxComparisonTableComponent,
-        NgFor,
-        NgIf,
         NxComparisonTableRowDirective,
         NxComparisonTableCell,
         NxComparisonTableSelectButton,

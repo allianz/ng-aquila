@@ -1,6 +1,7 @@
 <form [formGroup]="formGroup">
     <nx-selectable-card-group formControlName="radio" name="radio-group">
-        <div *ngFor="let card of cards; index as i">
+        @for (card of cards; track card; let i = $index) {
+        <div>
             <nx-selectable-card
                 class="nx-margin-bottom-xs"
                 [value]="card.value"
@@ -9,6 +10,7 @@
                 <h3 nxCopytext class="nx-margin-bottom-2m">{{card.title}}</h3>
             </nx-selectable-card>
         </div>
+        }
         <nx-error> This card must be selected. </nx-error>
     </nx-selectable-card-group>
 </form>

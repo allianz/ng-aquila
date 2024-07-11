@@ -11,7 +11,7 @@ import {
     Overlay,
     ScrollStrategy,
 } from '@angular/cdk/overlay';
-import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -178,7 +178,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         '(click)': 'openedByKeyboard = false; openPanel($event)',
     },
     standalone: true,
-    imports: [CdkOverlayOrigin, NgIf, NgTemplateOutlet, NxIconModule, CdkConnectedOverlay, Dir, NgFor, NxDropdownItemComponent, NxTooltipModule],
+    imports: [CdkOverlayOrigin, NgTemplateOutlet, NxIconModule, CdkConnectedOverlay, Dir, NxDropdownItemComponent, NxTooltipModule],
 })
 export class NxDropdownComponent
     implements NxAbstractControl, NxDropdownControl, ControlValueAccessor, OnInit, AfterViewInit, AfterContentInit, OnDestroy, DoCheck

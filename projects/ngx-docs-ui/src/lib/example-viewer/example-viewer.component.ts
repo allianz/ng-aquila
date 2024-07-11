@@ -1,5 +1,4 @@
 import { ComponentPortal } from '@angular/cdk/portal';
-import { NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
@@ -29,7 +28,6 @@ interface ExampleConfig {
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [
-        NgIf,
         NxButtonModule,
         NxIconModule,
         NxLinkModule,
@@ -37,7 +35,6 @@ interface ExampleConfig {
         RouterLink,
         StackBlitzButton,
         NxTabsModule,
-        NgFor,
         DocViewerComponent,
         LazyExampleOutletComponent,
     ],

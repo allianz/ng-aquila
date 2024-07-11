@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
@@ -8,11 +7,15 @@ import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
     selector: 'nx-file-upload-status',
     styleUrls: ['./file-uploader-status.component.scss'],
     template: `
-        <nx-spinner *ngIf="isUploading" size="medium"></nx-spinner>
-        <nx-icon name="check-circle" *ngIf="isUploaded" size="s" [attr.aria-label]="uploadedLabel || null"> </nx-icon>
+        @if (isUploading) {
+            <nx-spinner size="medium"></nx-spinner>
+        }
+        @if (isUploaded) {
+            <nx-icon name="check-circle" size="s" [attr.aria-label]="uploadedLabel || null"> </nx-icon>
+        }
     `,
     standalone: true,
-    imports: [NgIf, NxSpinnerModule, NxIconModule],
+    imports: [NxSpinnerModule, NxIconModule],
 })
 export class NxFileUploaderItemStatus {
     /** Whether the file is uploading at the moment. If this is true, a spinner is shown. Default: false.*/

@@ -16,8 +16,12 @@
 
 <label [id]="id + '-label'" [attr.for]="id" class="nx-checkbox__label" [class.has-label]="labelHasContent">
     <span class="nx-checkbox__control">
-        <nx-icon *ngIf="checked" name="check" aria-hidden="true"></nx-icon>
-        <div *ngIf="indeterminate" class="nx-checkbox__indeterminate-indicator"></div>
+        @if (checked) {
+            <nx-icon name="check" aria-hidden="true"></nx-icon>
+        }
+        @if (indeterminate) {
+            <div class="nx-checkbox__indeterminate-indicator"></div>
+        }
     </span>
     <div class="nx-checkbox__label-text" #checkboxLabelWrapper (cdkObserveContent)="labelContentChanged()">
         <ng-content></ng-content>

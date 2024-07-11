@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -61,7 +61,7 @@ export const SELECTABLE_CARD_DEFAULT_OPTIONS = new InjectionToken<SelectableCard
     },
     styleUrls: ['./selectable-card-group.scss'],
     standalone: true,
-    imports: [NgIf],
+    imports: [],
 })
 export class NxSelectableCardGroupComponent implements ControlValueAccessor, AfterContentInit, DoCheck {
     @ContentChildren(forwardRef(() => NxSelectableCardComponent), { descendants: true }) _cards!: QueryList<NxSelectableCardComponent>;
@@ -175,7 +175,7 @@ export class NxSelectableCardGroupComponent implements ControlValueAccessor, Aft
         '[class.is-highlight]': 'highlight',
     },
     standalone: true,
-    imports: [NgIf, NgTemplateOutlet, NxIconModule],
+    imports: [NgTemplateOutlet, NxIconModule],
 })
 export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck, AfterContentInit, OnDestroy, AfterViewInit {
     _errorListIds = '';

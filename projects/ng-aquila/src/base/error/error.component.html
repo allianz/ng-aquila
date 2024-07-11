@@ -1,19 +1,23 @@
 <!-- b2b (expert) error notification -->
-<ng-container *ngIf="appearance === 'text'">
-    <nx-icon *ngIf="showIcon" class="nx-error__icon" [name]="'exclamation-triangle'" aria-hidden="true"> </nx-icon>
+@if (appearance === 'text') {
+    @if (showIcon) {
+        <nx-icon class="nx-error__icon" [name]="'exclamation-triangle'" aria-hidden="true"> </nx-icon>
+    }
     <div class="nx-error__content-wrapper">
         <div class="nx-error__content" [attr.id]="id">
             <ng-container [ngTemplateOutlet]="errorContent"></ng-container>
         </div>
     </div>
-</ng-container>
+}
 
 <!-- b2c error notification -->
-<nx-message *ngIf="appearance === 'message'" context="error">
-    <div class="nx-error__content" [attr.id]="id">
-        <ng-container [ngTemplateOutlet]="errorContent"></ng-container>
-    </div>
-</nx-message>
+@if (appearance === 'message') {
+    <nx-message context="error">
+        <div class="nx-error__content" [attr.id]="id">
+            <ng-container [ngTemplateOutlet]="errorContent"></ng-container>
+        </div>
+    </nx-message>
+}
 
 <ng-template #errorContent>
     <ng-content></ng-content>

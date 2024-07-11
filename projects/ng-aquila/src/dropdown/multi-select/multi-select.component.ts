@@ -1,7 +1,6 @@
 import { ActiveDescendantKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkConnectedOverlay, CdkOverlayOrigin, ConnectionPositionPair, FlexibleConnectedPositionStrategy } from '@angular/cdk/overlay';
-import { NgFor, NgIf } from '@angular/common';
 import {
     AfterViewInit,
     booleanAttribute,
@@ -64,12 +63,10 @@ const _defaultFilterFn: NxMultiSelectFilterFn = (query, label) => label.toLowerC
         NxTooltipModule,
         NxIconModule,
         CdkConnectedOverlay,
-        NgIf,
         NxMultiSelectAllComponent,
         NxFormfieldModule,
         NxInputModule,
         FormsModule,
-        NgFor,
         NxMultiSelectOptionComponent,
     ],
 })

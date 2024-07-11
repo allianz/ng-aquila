@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
     NxActionComponent,
@@ -21,7 +20,7 @@ interface Action {
     styleUrls: ['./action-example.css'],
     templateUrl: './action-example.html',
     standalone: true,
-    imports: [NgFor, NxActionComponent, NxIconComponent, NxActionIconDirective],
+    imports: [NxActionComponent, NxIconComponent, NxActionIconDirective],
 })
 export class ActionExampleComponent implements OnInit {
     actions: Action[] = [

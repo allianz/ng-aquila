@@ -1,5 +1,5 @@
 import { OverlayContainer, OverlayModule, ScrollStrategy } from '@angular/cdk/overlay';
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe, LowerCasePipe } from '@angular/common';
 import { Component, Directive, ElementRef, Inject, Type, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -422,7 +422,7 @@ class ScrollStrategyOverrideComponent extends AutocompleteComponent {
         </nx-autocomplete>
     `,
     standalone: true,
-    imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule, CommonModule],
+    imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule, LowerCasePipe],
 })
 class CustomAutocompleteComponent extends AutocompleteComponent {}
 
@@ -439,7 +439,7 @@ class CustomAutocompleteComponent extends AutocompleteComponent {}
         {{ inputVal | json }}
     `,
     standalone: true,
-    imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule, CommonModule],
+    imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule, JsonPipe, LowerCasePipe],
 })
 class ComplexDataAutocompleteComponent extends AutocompleteComponent {
     valFormatter = (val: any) => (val ? val.desc : null);

@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
@@ -20,7 +19,7 @@ interface Link {
     templateUrl: './tabs-nav-bar-appearance-example.html',
     styleUrls: ['./tabs-nav-bar-appearance-example.css'],
     standalone: true,
-    imports: [NxTabNavBarComponent, NgFor, NxTabLinkDirective, RouterLink],
+    imports: [NxTabNavBarComponent, NxTabLinkDirective, RouterLink],
 })
 export class TabsNavBarAppearanceExampleComponent {
     links: Link[] = [

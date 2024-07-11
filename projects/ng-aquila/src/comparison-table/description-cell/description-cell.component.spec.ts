@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, DebugElement, Directive, QueryList, Type, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -203,7 +202,7 @@ describe('NxComparisonTableDescriptionCell', () => {
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
     standalone: true,
-    imports: [NxComparisonTableModule, CommonModule],
+    imports: [NxComparisonTableModule],
 })
 class DescriptionCellComponent extends DescriptionCellTest {
     data = [

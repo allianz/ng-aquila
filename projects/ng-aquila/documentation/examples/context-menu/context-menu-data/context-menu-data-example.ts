@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxBadgeComponent, NxBadgeType } from '@aposin/ng-aquila/badge';
 import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
@@ -37,7 +36,6 @@ interface Contract {
         NxContextMenuItemComponent,
         NxIconComponent,
         NxContextMenuTriggerDirective,
-        NgFor,
         NxTableComponent,
         NxTableRowComponent,
         NxHeaderCellDirective,

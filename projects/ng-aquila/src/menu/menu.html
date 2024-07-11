@@ -1,3 +1,5 @@
-<div class="nx-menu__wrapper" *ngIf="open">
+@if (open) {
+<div class="nx-menu__wrapper">
     <ng-content></ng-content>
 </div>
+}

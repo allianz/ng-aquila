@@ -7,7 +7,9 @@
     [disabled]="disabled"
     (click)="_open($event)"
 >
-    <nx-icon name="calendar" *ngIf="!_customIcon" aria-hidden="true"></nx-icon>
+    @if (!_customIcon) {
+    <nx-icon name="calendar" aria-hidden="true"></nx-icon>
+    }
 
     <ng-content select="[nxDatepickerToggleIcon]"></ng-content>
 </button>

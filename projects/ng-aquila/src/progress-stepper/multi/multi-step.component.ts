@@ -1,5 +1,5 @@
 import { Directionality } from '@angular/cdk/bidi';
-import { NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewChecked,
@@ -31,7 +31,7 @@ import { NxMultiStepItemComponent } from './multi-step-item.component';
         '[class.nx-multi-stepper--vertical]': 'direction === "vertical"',
     },
     standalone: true,
-    imports: [NgIf, NgFor, NxMultiStepItemComponent, NgClass, NgTemplateOutlet],
+    imports: [NxMultiStepItemComponent, NgClass, NgTemplateOutlet],
 })
 export class NxMultiStepperComponent extends NxProgressStepperDirective implements OnDestroy, AfterContentInit, AfterViewChecked {
     /**

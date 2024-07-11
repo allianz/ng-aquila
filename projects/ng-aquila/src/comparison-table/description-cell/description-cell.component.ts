@@ -1,4 +1,4 @@
-import { NgIf, NgStyle, NgTemplateOutlet } from '@angular/common';
+import { NgStyle, NgTemplateOutlet } from '@angular/common';
 import { Component, ElementRef, Input, TemplateRef, ViewChild } from '@angular/core';
 
 import { NxComparisonTableBase } from '../comparison-table-base';
@@ -10,7 +10,7 @@ let nextId = 0;
     selector: 'nx-comparison-table-description-cell',
     templateUrl: './description-cell.component.html',
     standalone: true,
-    imports: [NgIf, NgTemplateOutlet, NgStyle],
+    imports: [NgTemplateOutlet, NgStyle],
 })
 export class NxComparisonTableDescriptionCell {
     @ViewChild('content', { static: true }) _content!: TemplateRef<any>;

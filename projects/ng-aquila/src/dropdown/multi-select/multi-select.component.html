@@ -51,57 +51,64 @@
         [attr.aria-labelledby]="_getAriaLabelledBy()"
         #panelContent
     >
-        <div *ngIf="!_isOutline && _overlayLabel" class="panel-header" #panelHeader>
-            {{ _overlayLabel }}
-        </div>
+        @if (!_isOutline && _overlayLabel) {
+            <div class="panel-header" #panelHeader>
+                {{ _overlayLabel }}
+            </div>
+        }
 
-        <div class="item actions select-all" *ngIf="_isOutline && !disableSelectAll">
-            <nx-multi-select-all
-                (selectedAllChange)="_onSelectAll()"
-                [label]="_intl.selectAll"
-                [indeterminate]="_someSelected"
-                [selected]="_allSelected"
-                #selectAllCheckbox
-            ></nx-multi-select-all>
-        </div>
+        @if (_isOutline && !disableSelectAll) {
+            <div class="item actions select-all">
+                <nx-multi-select-all
+                    (selectedAllChange)="_onSelectAll()"
+                    [label]="_intl.selectAll"
+                    [indeterminate]="_someSelected"
+                    [selected]="_allSelected"
+                    #selectAllCheckbox
+                ></nx-multi-select-all>
+            </div>
+        }
 
-        <div *ngIf="filter" class="filter-wrapper">
-            <nx-formfield class="filter" appearance="auto">
-                <input
-                    nxInput
-                    #filterInput
-                    [(ngModel)]="_filterValue"
-                    (ngModelChange)="_onFilterChange($event)"
-                    [placeholder]="filterPlaceholder"
-                    autocomplete="off"
-                    [attr.aria-controls]="_comboboxId"
-                    [attr.aria-labelledby]="_getAriaLabelledBy()"
-                    [attr.aria-activedescendant]="_getAriaActiveDescendant()"
-                />
-                <nx-icon
-                    aria-hidden="true"
-                    nxFormfieldSuffix
-                    [class.hidden]="!_filterValue.length"
-                    class="clear"
-                    (click)="_clearFilter()"
-                    name="close"
-                ></nx-icon>
-            </nx-formfield>
-        </div>
+        @if (filter) {
+            <div class="filter-wrapper">
+                <nx-formfield class="filter" appearance="auto">
+                    <input
+                        nxInput
+                        #filterInput
+                        [(ngModel)]="_filterValue"
+                        (ngModelChange)="_onFilterChange($event)"
+                        [placeholder]="filterPlaceholder"
+                        autocomplete="off"
+                        [attr.aria-controls]="_comboboxId"
+                        [attr.aria-labelledby]="_getAriaLabelledBy()"
+                        [attr.aria-activedescendant]="_getAriaActiveDescendant()"
+                    />
+                    <nx-icon
+                        aria-hidden="true"
+                        nxFormfieldSuffix
+                        [class.hidden]="!_filterValue.length"
+                        class="clear"
+                        (click)="_clearFilter()"
+                        name="close"
+                    ></nx-icon>
+                </nx-formfield>
+            </div>
+        }
 
         <div class="items" #itemsList [id]="_comboboxId" role="listbox" aria-multiselectable="true">
-            <nx-multi-select-option
-                *ngFor="let option of listItems; let i = index"
-                class="item"
-                [class.divider]="_divider === i"
-                (selectedChange)="_onSelect(option, $event)"
-                [value]="_selectValue(option)"
-                [label]="_selectLabel(option)"
-                [selected]="this.selectedItems.has(option)"
-                [disabled]="this._isDisabled(option)"
-                [appearance]="_appearance"
-                #option
-            ></nx-multi-select-option>
+            @for (option of listItems; track option; let i = $index) {
+                <nx-multi-select-option
+                    class="item"
+                    [class.divider]="_divider === i"
+                    (selectedChange)="_onSelect(option, $event)"
+                    [value]="_selectValue(option)"
+                    [label]="_selectLabel(option)"
+                    [selected]="this.selectedItems.has(option)"
+                    [disabled]="this._isDisabled(option)"
+                    [appearance]="_appearance"
+                    #option
+                ></nx-multi-select-option>
+            }
         </div>
     </div>
 </ng-template>

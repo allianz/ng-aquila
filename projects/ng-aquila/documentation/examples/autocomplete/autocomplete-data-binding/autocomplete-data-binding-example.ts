@@ -1,4 +1,4 @@
-import { LowerCasePipe, NgFor } from '@angular/common';
+import { LowerCasePipe } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, Injectable } from '@angular/core';
 import {
@@ -67,7 +67,6 @@ export class WikipediaService {
         NxAutocompleteTriggerDirective,
         FormsModule,
         NxAutocompleteComponent,
-        NgFor,
         NxAutocompleteOptionComponent,
         ReactiveFormsModule,
         NxNaturalLanguageFormComponent,

@@ -1,5 +1,4 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { NgIf } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChild, Directive, ElementRef, Input, OnDestroy } from '@angular/core';
 
 @Directive({
@@ -57,7 +56,7 @@ export class NxFooterLinkDirective implements OnDestroy, AfterViewInit {
         role: 'contentinfo',
     },
     standalone: true,
-    imports: [NgIf, NxFooterCopyrightDirective],
+    imports: [NxFooterCopyrightDirective],
 })
 export class NxFooterComponent {
     @Input() copyright?: string | null;

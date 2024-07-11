@@ -1,4 +1,4 @@
-import { JsonPipe, NgFor } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     FormBuilder,
@@ -24,7 +24,6 @@ import {
         FormsModule,
         ReactiveFormsModule,
         NxRadioToggleComponent,
-        NgFor,
         NxRadioToggleButtonComponent,
         NxButtonComponent,
         JsonPipe,

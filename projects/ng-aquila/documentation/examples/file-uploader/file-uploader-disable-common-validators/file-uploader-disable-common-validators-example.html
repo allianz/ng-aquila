@@ -33,30 +33,36 @@
             Add File
         </button>
 
-        <nx-error *ngIf="testForm.controls['documents'].hasError('required')"
-            >Required!</nx-error
-        >
-        <nx-error *ngIf="testForm.controls['documents'].hasError('serverError')"
-            >An error occured while uploading.</nx-error
-        >
-        <nx-error *ngIf="documentUpload?.errors?.length">
+        @if (testForm.controls['documents'].hasError('required')) {
+        <nx-error>Required!</nx-error>
+        } @if (testForm.controls['documents'].hasError('serverError')) {
+        <nx-error>An error occured while uploading.</nx-error>
+        } @if (documentUpload?.errors?.length) {
+        <nx-error>
             Errors:
             <ul>
-                <li *ngFor="let error of documentUpload?.errors">
-                    <div *ngIf="error.type === 'fileType'">
+                @for (error of documentUpload?.errors; track error) {
+                <li>
+                    @if (error.type === 'fileType') {
+                    <div>
                         "{{error.filename}}" could not be uploaded. The
                         supported extensions us PNG.
                     </div>
-                    <div *ngIf="error.type === 'fileSize'">
+                    } @if (error.type === 'fileSize') {
+                    <div>
                         "{{error.filename}}" could not be uploaded. max file
                         size is {{ error.max }}.
                     </div>
-                    <div *ngIf="error.type === 'fileNumber'">
+                    } @if (error.type === 'fileNumber') {
+                    <div>
                         You cannot upload more than {{ error.max }} documents.
                     </div>
+                    }
                 </li>
+                }
             </ul>
         </nx-error>
+        }
     </nx-file-uploader>
 </form>
 
@@ -81,7 +87,7 @@
 </button>
 
 <pre>
-validators: {{testForm.controls['documents'].errors | json}}
-<br/>
-errors property: {{ documentUpload?.errors | json }}
-</pre>
+          validators: {{testForm.controls['documents'].errors | json}}
+          <br/>
+          errors property: {{ documentUpload?.errors | json }}
+        </pre>

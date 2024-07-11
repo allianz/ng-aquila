@@ -1,7 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
-import { NgFor, NgIf } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -37,7 +36,7 @@ import { IconSize, NxIconComponent, NxIconModule } from '@aposin/ng-aquila/icon'
         '[style.--iconColor]': 'iconColor',
     },
     standalone: true,
-    imports: [NgFor, NxIconModule, NgIf],
+    imports: [NxIconModule],
 })
 export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
     @Input() set size(newSize: IconSize) {

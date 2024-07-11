@@ -1,7 +1,7 @@
 import { Highlightable } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkObserveContent } from '@angular/cdk/observers';
-import { NgClass, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
     AfterViewChecked,
     ChangeDetectionStrategy,
@@ -56,7 +56,7 @@ let nextId = 0;
         '(click)': '_onClick($event)',
     },
     standalone: true,
-    imports: [NgClass, NgIf, NxCheckboxModule, NgTemplateOutlet, NxIconModule, NxTooltipModule, CdkObserveContent],
+    imports: [NgClass, NxCheckboxModule, NgTemplateOutlet, NxIconModule, NxTooltipModule, CdkObserveContent],
 })
 export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterViewChecked {
     _hidden = false;

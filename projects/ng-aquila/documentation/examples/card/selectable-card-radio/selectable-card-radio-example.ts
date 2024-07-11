@@ -1,4 +1,4 @@
-import { JsonPipe, NgFor } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
     FormBuilder,
@@ -27,7 +27,6 @@ import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
         FormsModule,
         ReactiveFormsModule,
         NxSelectableCardGroupComponent,
-        NgFor,
         NxSelectableCardComponent,
         NxCopytextComponent,
         NxErrorComponent,

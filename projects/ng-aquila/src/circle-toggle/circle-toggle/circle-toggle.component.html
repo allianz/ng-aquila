@@ -27,8 +27,10 @@
     >
     </nx-icon-toggle-button>
     <!-- The mobile toggle button is needed for the responsive mobile version of the component.
-    The display swtich is handled in the css. -->
+  The display swtich is handled in the css. -->
     <nx-mobile-toggle-button [label]="label" [hint]="hint" [checked]="checked" [negative]="negative" [disabled]="disabled" [circleText]="circleText">
     </nx-mobile-toggle-button>
-    <ng-content select="nx-error" *ngIf="errorState"></ng-content>
+    @if (errorState) {
+        <ng-content select="nx-error"></ng-content>
+    }
 </label>

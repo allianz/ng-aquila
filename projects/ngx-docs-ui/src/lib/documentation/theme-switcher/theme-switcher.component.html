@@ -12,5 +12,7 @@
 </button>
 
 <nx-context-menu #nxvThemeSwitch="nxContextMenu">
-    <button nxContextMenuItem type="button" (click)="select(theme)" [value]="theme.name" *ngFor="let theme of themes">{{ theme.displayName }}</button>
+    @for (theme of themes; track theme) {
+        <button nxContextMenuItem type="button" (click)="select(theme)" [value]="theme.name">{{ theme.displayName }}</button>
+    }
 </nx-context-menu>

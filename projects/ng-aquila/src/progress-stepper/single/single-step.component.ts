@@ -1,5 +1,5 @@
 import { Directionality } from '@angular/cdk/bidi';
-import { NgFor, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, Optional } from '@angular/core';
 import { NxProgressbarModule } from '@aposin/ng-aquila/progressbar';
 
@@ -12,7 +12,7 @@ import { NxProgressStepperDirective } from '../progress-stepper.component';
     providers: [{ provide: NxProgressStepperDirective, useExisting: NxSingleStepperComponent }],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NxProgressbarModule, NgFor, NgTemplateOutlet],
+    imports: [NxProgressbarModule, NgTemplateOutlet],
 })
 export class NxSingleStepperComponent extends NxProgressStepperDirective {
     /** Sets the label on the right showing the next step. */

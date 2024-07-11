@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     NxBreadcrumbComponent,
@@ -27,7 +26,6 @@ import {
         NxSmallStageComponent,
         NxSmallStageHeaderDirective,
         NxBreadcrumbComponent,
-        NgFor,
         NxBreadcrumbItemComponent,
         NxSmallStageImageDirective,
         NxSmallStageImageStartDirective,

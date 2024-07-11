@@ -2,7 +2,6 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { NgFor, NgIf } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, Optional, Output, ViewChild } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
@@ -22,7 +21,7 @@ import { NxComparisonTableFlexRow } from '../flex-row/flex-row.component';
     templateUrl: './desktop-group.component.html',
     styleUrls: ['./desktop-group.component.scss'],
     standalone: true,
-    imports: [NgFor, NgIf, NxComparisonTableFlexRow, NxIconModule],
+    imports: [NxComparisonTableFlexRow, NxIconModule],
 })
 export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
     @Input() group!: NxComparisonTableRowGroupDirective;

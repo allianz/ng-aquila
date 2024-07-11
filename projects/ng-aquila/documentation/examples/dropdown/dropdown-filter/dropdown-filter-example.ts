@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     NxDropdownComponent,
@@ -26,7 +25,6 @@ import {
         NxColComponent,
         NxFormfieldComponent,
         NxDropdownComponent,
-        NgFor,
         NxDropdownItemComponent,
         NxMultiSelectComponent,
     ],

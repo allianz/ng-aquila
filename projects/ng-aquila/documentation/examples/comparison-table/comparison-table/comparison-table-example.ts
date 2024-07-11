@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -43,7 +42,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
         NxIconComponent,
         NxPopoverComponent,
         NxComparisonTableCell,
-        NgIf,
         NxComparisonTableSelectButton,
         NxComparisonTableDescriptionCell,
         NxButtonComponent,

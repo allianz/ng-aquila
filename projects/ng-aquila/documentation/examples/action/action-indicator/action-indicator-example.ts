@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     NxActionComponent,
@@ -23,11 +22,9 @@ interface Action {
     templateUrl: './action-indicator-example.html',
     standalone: true,
     imports: [
-        NgFor,
         NxActionComponent,
         NxIconComponent,
         NxActionIconDirective,
-        NgIf,
         NxIndicatorComponent,
     ],
 })

@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -22,7 +21,6 @@ import { NxSidebarComponent } from '@aposin/ng-aquila/sidebar';
     standalone: true,
     imports: [
         NxSidebarComponent,
-        NgFor,
         NxActionComponent,
         RouterLink,
         RouterLinkActive,

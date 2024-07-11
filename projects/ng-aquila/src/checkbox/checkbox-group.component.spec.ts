@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -332,7 +332,7 @@ class CheckboxGroupDynamic extends CheckboxGroupTest {
         </form>
     `,
     standalone: true,
-    imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule, CommonModule],
+    imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule, JsonPipe],
 })
 export class CheckboxGroupReactive extends CheckboxGroupTest {
     myFormGroup: FormGroup;

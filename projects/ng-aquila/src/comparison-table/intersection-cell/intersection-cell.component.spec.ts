@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, DebugElement, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -157,7 +156,7 @@ describe('NxComparisonTableIntersectionCell', () => {
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
     standalone: true,
-    imports: [NxComparisonTableModule, CommonModule],
+    imports: [NxComparisonTableModule],
 })
 class IntersectionCellComponent extends IntersectionCellTest {
     data = [
@@ -171,7 +170,7 @@ class IntersectionCellComponent extends IntersectionCellTest {
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
     standalone: true,
-    imports: [NxComparisonTableModule, CommonModule],
+    imports: [NxComparisonTableModule],
 })
 class ToggleSectionComponent extends IntersectionCellTest {
     data = [

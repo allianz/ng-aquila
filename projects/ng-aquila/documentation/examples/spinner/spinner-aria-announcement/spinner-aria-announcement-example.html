@@ -2,16 +2,19 @@
     <div>
         <h3>Aria live example</h3>
         <div aria-live="assertive">
-            <div *ngIf="calculationInProgress">
+            @if (calculationInProgress) {
+            <div>
                 <h3>Calculating Price. This can take a minute.</h3>
                 <nx-spinner size="large" class="margin-auto"></nx-spinner>
             </div>
-            <div *ngIf="!calculationInProgress">
+            } @if (!calculationInProgress) {
+            <div>
                 <h3 nxHeadline="subsection-small">Awesome Product</h3>
                 <nx-data-display label="Price" class="margin-top-small">
                     123,45 €
                 </nx-data-display>
             </div>
+            }
         </div>
         <button
             nxButton="primary small"
@@ -25,7 +28,8 @@
     <div class="margin-auto">
         <h3>Spinner build in example</h3>
         <div>
-            <div *ngIf="buildInProgress">
+            @if (buildInProgress) {
+            <div>
                 <h3>Calculating Price. This can take a minute.</h3>
                 <nx-spinner
                     size="large"
@@ -35,10 +39,12 @@
                 >
                 </nx-spinner>
             </div>
-            <div *ngIf="!buildInProgress">
+            } @if (!buildInProgress) {
+            <div>
                 <h3 nxHeadline="subsection-small">Awesome Product</h3>
                 <nx-data-display label="Price"> 123,45 € </nx-data-display>
             </div>
+            }
         </div>
         <button
             nxButton="primary small"

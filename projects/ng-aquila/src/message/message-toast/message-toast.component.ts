@@ -1,6 +1,5 @@
 import { AnimationEvent } from '@angular/animations';
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
-import { NgIf } from '@angular/common';
 import { ChangeDetectorRef, Component, ComponentRef, EmbeddedViewRef, NgZone, OnDestroy, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -24,7 +23,7 @@ import { NxMessageToastConfig, NxMessageToastContext, NxMessageToastData } from 
     },
     animations: [messageToastAnimations.toastState],
     standalone: true,
-    imports: [NxMessageComponent, CdkPortalOutlet, NgIf],
+    imports: [NxMessageComponent, CdkPortalOutlet],
 })
 export class NxMessageToastComponent extends BasePortalOutlet implements OnDestroy {
     /** Whether the component has been destroyed. */

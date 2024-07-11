@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
@@ -14,12 +13,7 @@ import {
     templateUrl: './breadcrumb-negative-example.html',
     styleUrls: ['./breadcrumb-negative-example.css'],
     standalone: true,
-    imports: [
-        NxBreadcrumbComponent,
-        NgFor,
-        NxBreadcrumbItemComponent,
-        RouterLink,
-    ],
+    imports: [NxBreadcrumbComponent, NxBreadcrumbItemComponent, RouterLink],
 })
 export class BreadcrumbNegativeExampleComponent {
     items = ['Home', 'Insurance', 'Health Insurance'];

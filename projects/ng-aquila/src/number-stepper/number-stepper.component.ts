@@ -1,5 +1,5 @@
 import { BooleanInput, coerceBooleanProperty, NumberInput } from '@angular/cdk/coercion';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -66,7 +66,7 @@ let nextUniqueId = 0;
     },
     providers: [CUSTOM_VALUE_ACCESSOR, CUSTOM_VALIDATOR],
     standalone: true,
-    imports: [NgIf, NxButtonModule, NxIconModule, NxAutoResizeDirective, NgClass],
+    imports: [NxButtonModule, NxIconModule, NxAutoResizeDirective, NgClass],
 })
 export class NxNumberStepperComponent extends MappedStyles implements AfterViewInit, ControlValueAccessor, Validator, OnDestroy {
     /** @docs-private */

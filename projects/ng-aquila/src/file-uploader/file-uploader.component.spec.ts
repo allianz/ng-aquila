@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { ChangeDetectorRef, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
@@ -830,7 +830,7 @@ class IntlOverrideFileUpload extends FileUploaderTest {
         </form>
     `,
     standalone: true,
-    imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule, CommonModule],
+    imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule, JsonPipe],
 })
 class ReactiveFileUpload extends FileUploaderTest {
     fb;

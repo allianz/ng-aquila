@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import { NxMessageComponent } from '@aposin/ng-aquila/message';
@@ -11,7 +10,7 @@ import { NxMessageComponent } from '@aposin/ng-aquila/message';
     templateUrl: './message-closable-example.html',
     styleUrls: ['./message-closable-example.css'],
     standalone: true,
-    imports: [NgIf, NxMessageComponent, NxButtonComponent],
+    imports: [NxMessageComponent, NxButtonComponent],
 })
 export class MessageClosableExampleComponent {
     closed = false;

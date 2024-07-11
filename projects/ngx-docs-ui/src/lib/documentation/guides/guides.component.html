@@ -1,7 +1,9 @@
 <nx-sidebar class="docs-sidebar" minWidth="240" [class.mobile-sidebar--visible]="documentationFrame.mobileSidebar">
-    <button nxAction *ngFor="let guide of availableGuides" routerLink="{{ guide.id }}" routerLinkActive="is-selected" type="button">
-        {{ guide.title }}
-    </button>
+    @for (guide of availableGuides; track guide) {
+        <button nxAction routerLink="{{ guide.id }}" routerLinkActive="is-selected" type="button">
+            {{ guide.title }}
+        </button>
+    }
 </nx-sidebar>
 
 <main (click)="mainContentClicked()">

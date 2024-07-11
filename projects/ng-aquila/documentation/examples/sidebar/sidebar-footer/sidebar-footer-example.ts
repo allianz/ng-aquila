@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
@@ -23,7 +22,6 @@ import {
     standalone: true,
     imports: [
         NxSidebarComponent,
-        NgFor,
         NxActionComponent,
         RouterLink,
         RouterLinkActive,

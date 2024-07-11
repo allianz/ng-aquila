@@ -6,21 +6,18 @@
             (cdkDropListDropped)="drop($event)"
             cdkDropListOrientation="horizontal"
         >
-            <th
-                *ngFor="let h of header; let i = index"
-                nxHeaderCell
-                cdkDrag
-                cdkDragLockAxis="x"
-            >
-                {{h.title}}
-            </th>
+            @for (h of header; track h; let i = $index) {
+            <th nxHeaderCell cdkDrag cdkDragLockAxis="x">{{h.title}}</th>
+            }
         </tr>
     </thead>
     <tbody>
-        <tr nxTableRow *ngFor="let item of content">
-            <td nxTableCell *ngFor="let h of header" class="col">
-                {{item[h.field]}}
-            </td>
+        @for (item of content; track item) {
+        <tr nxTableRow>
+            @for (h of header; track h) {
+            <td nxTableCell class="col">{{item[h.field]}}</td>
+            }
         </tr>
+        }
     </tbody>
 </table>

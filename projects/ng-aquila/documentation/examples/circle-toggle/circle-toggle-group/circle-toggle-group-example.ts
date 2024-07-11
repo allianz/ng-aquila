@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     NxCircleToggleComponent,
@@ -13,7 +12,7 @@ import {
     templateUrl: './circle-toggle-group-example.html',
     styleUrls: ['./circle-toggle-group-example.css'],
     standalone: true,
-    imports: [NxCircleToggleGroupComponent, NgFor, NxCircleToggleComponent],
+    imports: [NxCircleToggleGroupComponent, NxCircleToggleComponent],
 })
 export class CircleToggleGroupExampleComponent {
     sampleValues = [

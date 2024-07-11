@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     FormArray,
@@ -56,7 +55,6 @@ import moment from 'moment';
         NxTableComponent,
         NxTableRowComponent,
         NxHeaderCellDirective,
-        NgFor,
         FormsModule,
         ReactiveFormsModule,
         NxTableCellComponent,

@@ -2,5 +2,7 @@
     <!-- Used when opening from a template -->
     <ng-template cdkPortalOutlet></ng-template>
     <!-- Used when opening only with custom text-->
-    <ng-container *ngIf="data">{{ data.data }}</ng-container>
+    @if (data) {
+        {{ data.data }}
+    }
 </nx-message>

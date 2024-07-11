@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
@@ -23,7 +22,7 @@ const myDefaultOptions: TabNavBarDefaultOptions = {
         { provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: myDefaultOptions },
     ],
     standalone: true,
-    imports: [NxTabNavBarComponent, NgFor, NxTabLinkDirective, RouterLink],
+    imports: [NxTabNavBarComponent, NxTabLinkDirective, RouterLink],
 })
 export class TabsNavBarInjectionTokenExampleComponent {
     links = [

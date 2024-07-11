@@ -1,6 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
-import { NgIf } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -44,7 +43,7 @@ export class NxDatepickerToggleIconComponent {}
     exportAs: 'nxDatepickerToggle',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NgIf, NxIconModule],
+    imports: [NxIconModule],
 })
 export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterViewInit, OnChanges, OnDestroy {
     private _stateChanges = Subscription.EMPTY;

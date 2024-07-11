@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
@@ -51,7 +50,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
         NxFormfieldSuffixDirective,
         NxDatepickerComponent,
         NxFormfieldHintDirective,
-        NgIf,
         NxErrorComponent,
     ],
 })

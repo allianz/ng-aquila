@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
@@ -16,7 +15,6 @@ import { NxNumberStepperComponent } from '@aposin/ng-aquila/number-stepper';
     imports: [
         NxNumberStepperComponent,
         FormsModule,
-        NgIf,
         NxMessageComponent,
         NxErrorComponent,
     ],

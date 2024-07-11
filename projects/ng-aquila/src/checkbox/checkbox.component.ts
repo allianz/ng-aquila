@@ -1,7 +1,6 @@
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkObserveContent } from '@angular/cdk/observers';
-import { NgIf } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -83,7 +82,7 @@ export type NxCheckboxLabelSize = 'small' | 'large';
         '(focus)': '_forwardFocusToInput()',
     },
     standalone: true,
-    imports: [NgIf],
+    imports: [],
 })
 export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterContentInit, OnDestroy, DoCheck {
     @ContentChildren(forwardRef(() => NxCheckboxComponent), { descendants: true }) _checkboxes!: QueryList<NxCheckboxComponent>;
@@ -301,7 +300,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
         },
     ],
     standalone: true,
-    imports: [NgIf, NxIconModule, CdkObserveContent],
+    imports: [NxIconModule, CdkObserveContent],
 })
 export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnInit, AfterViewInit, Validator {
     /** @docs-private */

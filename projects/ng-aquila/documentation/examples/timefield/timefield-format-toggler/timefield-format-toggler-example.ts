@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
@@ -11,7 +10,7 @@ import { NxTimefieldComponent } from '@aposin/ng-aquila/timefield';
     templateUrl: './timefield-format-toggler-example.html',
     styleUrls: ['./timefield-format-toggler-example.css'],
     standalone: true,
-    imports: [FormsModule, NxTimefieldComponent, NgIf, NxErrorComponent],
+    imports: [FormsModule, NxTimefieldComponent, NxErrorComponent],
 })
 export class TimefieldFormatTogglerExampleComponent {
     templateModel = '12:01';

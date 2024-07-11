@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
@@ -35,7 +34,6 @@ import {
         NxComparisonTableSelectButton,
         NxComparisonTableDescriptionCell,
         NxErrorComponent,
-        CommonModule,
     ],
 })
 export class ComparisonTableErrorExample {

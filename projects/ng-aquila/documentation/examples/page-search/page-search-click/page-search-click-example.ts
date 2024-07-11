@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
@@ -30,10 +29,8 @@ import { NxPageSearchComponent } from '@aposin/ng-aquila/page-search';
         NxFormfieldComponent,
         NxInputDirective,
         FormsModule,
-        NgIf,
         NxFormfieldSuffixDirective,
         NxIconComponent,
-        NgFor,
     ],
 })
 export class PageSearchClickExampleComponent {

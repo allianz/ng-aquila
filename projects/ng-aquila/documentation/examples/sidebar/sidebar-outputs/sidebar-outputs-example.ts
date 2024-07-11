@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
@@ -60,7 +59,6 @@ interface MyFlatTreeNode extends NxFlatTreeNode {
         NxTreeNodeActionItem,
         RouterLink,
         RouterLinkActive,
-        NgIf,
         NxIconComponent,
         NxActionIconDirective,
         NxTreeNodeToggleDirective,

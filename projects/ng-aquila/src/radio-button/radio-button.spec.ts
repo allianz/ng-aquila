@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -676,7 +676,7 @@ class MultipleRadioDisabled extends RadioTest {
         </form>
     `,
     standalone: true,
-    imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule, CommonModule],
+    imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule, JsonPipe],
 })
 class ReactiveRadio extends RadioTest {
     fb;

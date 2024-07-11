@@ -16,9 +16,11 @@
     [attr.aria-describedby]="_errorListIds || null"
 />
 <label [attr.for]="id">
-    <div class="nx-card-highlight" *ngIf="highlight">
-        <ng-content select="[nxHighlightHeader]"></ng-content>
-    </div>
+    @if (highlight) {
+        <div class="nx-card-highlight">
+            <ng-content select="[nxHighlightHeader]"></ng-content>
+        </div>
+    }
     <div class="nx-card-inner">
         <ng-container *ngTemplateOutlet="indicatorElement"></ng-container>
 
@@ -30,11 +32,17 @@
     </div>
 </label>
 
-<ng-content *ngIf="_errorState" select="nx-error"></ng-content>
+@if (_errorState) {
+    <ng-content select="nx-error"></ng-content>
+}
 
 <ng-template #indicatorElement>
     <span [class]="['indicator-element', inputType]">
-        <nx-icon *ngIf="checked && inputType === 'checkbox'" name="check" aria-hidden="true"></nx-icon>
-        <div *ngIf="checked && inputType === 'radio'" class="check-dot"></div>
+        @if (checked && inputType === 'checkbox') {
+            <nx-icon name="check" aria-hidden="true"></nx-icon>
+        }
+        @if (checked && inputType === 'radio') {
+            <div class="check-dot"></div>
+        }
     </span>
 </ng-template>

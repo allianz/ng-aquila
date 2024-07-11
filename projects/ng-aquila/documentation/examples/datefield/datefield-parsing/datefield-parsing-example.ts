@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
@@ -37,7 +36,6 @@ import { takeUntil } from 'rxjs/operators';
         NxInputDirective,
         FormsModule,
         NxSwitcherComponent,
-        NgIf,
     ],
 })
 export class DatefieldParsingExampleComponent implements OnInit, OnDestroy {

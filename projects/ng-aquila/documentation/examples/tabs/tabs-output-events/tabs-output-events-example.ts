@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
 import {
@@ -15,7 +14,7 @@ import {
     templateUrl: './tabs-output-events-example.html',
     styleUrls: ['./tabs-output-events-example.css'],
     standalone: true,
-    imports: [NgIf, NxTabGroupComponent, NxTabComponent, NxHeadlineComponent],
+    imports: [NxTabGroupComponent, NxTabComponent, NxHeadlineComponent],
 })
 export class TabsOutputEventsExampleComponent {
     messages: any[] = [];

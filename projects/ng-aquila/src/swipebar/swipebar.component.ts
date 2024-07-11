@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostListener, Input, NgZone, ViewChild } from '@angular/core';
 import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
 
@@ -12,7 +11,7 @@ import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
     styleUrls: ['swipebar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NgIf, NxCopytextModule],
+    imports: [NxCopytextModule],
 })
 export class NxSwipebarComponent implements AfterViewInit {
     @ViewChild('element') private _element!: ElementRef;

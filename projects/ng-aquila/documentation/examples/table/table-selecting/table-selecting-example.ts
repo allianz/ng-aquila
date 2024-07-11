@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { DatePipe, formatDate, JsonPipe, NgFor, NgIf } from '@angular/common';
+import { DatePipe, formatDate, JsonPipe } from '@angular/common';
 import { Component, Inject, LOCALE_ID, OnDestroy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -48,13 +48,11 @@ interface Contract {
         NxInputModule,
         NxRadioToggleComponent,
         NxRadioToggleButtonComponent,
-        NgIf,
         NxLinkComponent,
         NxTableComponent,
         NxTableRowComponent,
         NxHeaderCellDirective,
         NxCheckboxComponent,
-        NgFor,
         NxTableCellComponent,
         RouterLink,
         NxBadgeComponent,

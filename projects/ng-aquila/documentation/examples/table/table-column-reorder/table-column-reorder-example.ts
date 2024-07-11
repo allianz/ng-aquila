@@ -4,7 +4,6 @@ import {
     CdkDropList,
     moveItemInArray,
 } from '@angular/cdk/drag-drop';
-import { NgFor } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -27,7 +26,6 @@ import {
         NxTableComponent,
         NxTableRowComponent,
         CdkDropList,
-        NgFor,
         NxHeaderCellDirective,
         CdkDrag,
         NxTableCellComponent,

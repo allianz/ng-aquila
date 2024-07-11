@@ -1,22 +1,19 @@
 <nx-context-menu #menu2="nxContextMenu">
     <nx-context-menu-header> Language </nx-context-menu-header>
+    @for (o of options; track o) {
     <button
         nxContextMenuItem
         selectable
         type="button"
-        *ngFor="let o of options"
         (click)="selectedLanguage = o.value"
         role="menuitemradio"
         [attr.aria-checked]="selectedLanguage === o.value ? 'true' : 'false'"
     >
-        <nx-icon
-            aria-hidden="true"
-            *ngIf="selectedLanguage === o.value"
-            name="check"
-            nxIconPositionStart
-        ></nx-icon>
-        {{o.label}}
+        @if (selectedLanguage === o.value) {
+        <nx-icon aria-hidden="true" name="check" nxIconPositionStart></nx-icon>
+        } {{o.label}}
     </button>
+    }
 </nx-context-menu>
 
 <button

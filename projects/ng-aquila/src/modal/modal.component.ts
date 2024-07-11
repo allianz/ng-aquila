@@ -1,7 +1,7 @@
 import { animateChild, query, transition, trigger, useAnimation } from '@angular/animations';
 import { CdkTrapFocus, FocusMonitor } from '@angular/cdk/a11y';
 import { CdkScrollable } from '@angular/cdk/scrolling';
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -51,9 +51,12 @@ export class NxModalContentDirective {}
     host: {
         '[class.nx-modal__title]': 'true',
     },
-    template: `<nx-status-icon *ngIf="status" [type]="status" class="nx-modal__status"></nx-status-icon><ng-content></ng-content>`,
+    template: `@if (status) {
+            <nx-status-icon [type]="status" class="nx-modal__status"></nx-status-icon>
+        }
+        <ng-content></ng-content>`,
     standalone: true,
-    imports: [NgIf, NxIconModule],
+    imports: [NxIconModule],
 })
 export class NxModalTitleComponent {
     /**
@@ -81,7 +84,7 @@ export class NxModalTitleComponent {
         '[class.nx-modal--fixed-width]': 'size === "fixed"',
     },
     standalone: true,
-    imports: [CdkTrapFocus, NgIf, NxIconModule, CdkScrollable, NgTemplateOutlet],
+    imports: [CdkTrapFocus, NxIconModule, CdkScrollable, NgTemplateOutlet],
 })
 export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
     private _closeButtonLabel = 'Close dialog';

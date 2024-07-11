@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
@@ -33,7 +32,6 @@ import moment from 'moment';
         NxDatepickerToggleComponent,
         NxFormfieldSuffixDirective,
         NxDatepickerComponent,
-        NgIf,
         NxErrorComponent,
         NxFormfieldErrorDirective,
     ],

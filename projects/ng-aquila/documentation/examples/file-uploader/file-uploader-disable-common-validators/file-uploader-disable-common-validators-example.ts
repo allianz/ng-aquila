@@ -1,4 +1,4 @@
-import { JsonPipe, NgFor, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import {
     ChangeDetectionStrategy,
@@ -49,9 +49,7 @@ import { myCustomConfig } from '../file-uploader-auto/file-uploader-auto-example
         NxButtonComponent,
         NxFileUploaderButtonDirective,
         NxIconComponent,
-        NgIf,
         NxErrorComponent,
-        NgFor,
         NxFileUploaderTriggerDirective,
         JsonPipe,
     ],

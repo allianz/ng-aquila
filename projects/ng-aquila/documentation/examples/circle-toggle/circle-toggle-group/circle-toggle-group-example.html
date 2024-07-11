@@ -1,6 +1,6 @@
 <nx-circle-toggle-group>
+    @for (item of sampleValues; track item) {
     <nx-circle-toggle
-        *ngFor="let item of sampleValues"
         [value]="item.value"
         [icon]="item.icon"
         [hint]="item.hint"
@@ -8,13 +8,14 @@
         [checked]="item.selected"
     >
     </nx-circle-toggle>
+    }
 </nx-circle-toggle-group>
 
 <p nxCopytext="large" class="nx-margin-y-m">You can disable the whole group:</p>
 
 <nx-circle-toggle-group disabled>
+    @for (item of sampleValues; track item) {
     <nx-circle-toggle
-        *ngFor="let item of sampleValues"
         [value]="item.value"
         [icon]="item.icon"
         [hint]="item.hint"
@@ -22,6 +23,7 @@
         [checked]="item.selected"
     >
     </nx-circle-toggle>
+    }
 </nx-circle-toggle-group>
 
 <p nxCopytext="large" class="nx-margin-y-m">
@@ -29,8 +31,8 @@
 </p>
 
 <nx-circle-toggle-group>
+    @for (item of sampleValues; track item) {
     <nx-circle-toggle
-        *ngFor="let item of sampleValues"
         [value]="item.value"
         [icon]="item.icon"
         [hint]="item.hint"
@@ -39,4 +41,5 @@
         [disabled]="item.value === 'A'"
     >
     </nx-circle-toggle>
+    }
 </nx-circle-toggle-group>

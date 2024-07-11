@@ -11,35 +11,33 @@
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let item of tableElements">
-                <tr
-                    nxTableRow
-                    [selected]="selection.isSelected(item)"
-                    (select)="selection.select(item)"
-                    selectable
-                >
-                    <td nxTableCell class="nx-table-cell--checkbox">
-                        <nx-radio
-                            (valueChange)="selection.select(item)"
-                            [ariaLabel]="'Select ' + item.product + ' row'"
-                            [checked]="selection.isSelected(item)"
-                        ></nx-radio>
-                    </td>
-                    <td nxTableCell>{{item.product}}</td>
-                    <td nxTableCell>{{item.contractNumber}}</td>
-                    <td nxTableCell>
-                        <nx-link
-                            ><a routerLink="#">{{item.website}}</a></nx-link
-                        >
-                    </td>
-                    <td nxTableCell>{{item.endingAt | date: 'dd/MM/yyyy'}}</td>
-                    <td nxTableCell>
-                        <nx-badge [type]="item.status"
-                            >{{item.statusText}}</nx-badge
-                        >
-                    </td>
-                </tr>
-            </ng-container>
+            @for (item of tableElements; track item) {
+            <tr
+                nxTableRow
+                [selected]="selection.isSelected(item)"
+                (select)="selection.select(item)"
+                selectable
+            >
+                <td nxTableCell class="nx-table-cell--checkbox">
+                    <nx-radio
+                        (valueChange)="selection.select(item)"
+                        [ariaLabel]="'Select ' + item.product + ' row'"
+                        [checked]="selection.isSelected(item)"
+                    ></nx-radio>
+                </td>
+                <td nxTableCell>{{item.product}}</td>
+                <td nxTableCell>{{item.contractNumber}}</td>
+                <td nxTableCell>
+                    <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
+                </td>
+                <td nxTableCell>{{item.endingAt | date: 'dd/MM/yyyy'}}</td>
+                <td nxTableCell>
+                    <nx-badge [type]="item.status"
+                        >{{item.statusText}}</nx-badge
+                    >
+                </td>
+            </tr>
+            }
         </tbody>
     </table>
 </div>
@@ -47,8 +45,8 @@
 <div class="nx-margin-top-m">
     <nx-switcher [(checked)]="showSelected">Debug selected value</nx-switcher>
 
-    <ng-container *ngIf="showSelected">
-        <p>Selected value:</p>
-        <code>{{ selection.selected[0] | json }}</code>
-    </ng-container>
+    @if (showSelected) {
+    <p>Selected value:</p>
+    <code>{{ selection.selected[0] | json }}</code>
+    }
 </div>

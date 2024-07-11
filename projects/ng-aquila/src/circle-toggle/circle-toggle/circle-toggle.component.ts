@@ -1,7 +1,6 @@
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
-import { NgIf } from '@angular/common';
 import {
     AfterViewInit,
     booleanAttribute,
@@ -59,7 +58,7 @@ let nextId = 0;
         '[class.has-error]': 'toggleGroup?.errorState || errorState',
     },
     standalone: true,
-    imports: [NxIconToggleButtonComponent, NxMobileToggleButtonComponent, NgIf],
+    imports: [NxIconToggleButtonComponent, NxMobileToggleButtonComponent],
 })
 export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, AfterViewInit, ControlValueAccessor, DoCheck {
     private _id = `toggle-button-${nextId++}`;

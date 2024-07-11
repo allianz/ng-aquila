@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     FormBuilder,
@@ -39,7 +38,6 @@ import { NxMessageComponent } from '@aposin/ng-aquila/message';
         NxExpansionPanelComponent,
         NxExpansionPanelHeaderComponent,
         NxExpansionPanelTitleDirective,
-        NgIf,
         NxIconComponent,
         FormsModule,
         ReactiveFormsModule,

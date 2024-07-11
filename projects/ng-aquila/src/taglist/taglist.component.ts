@@ -1,5 +1,4 @@
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
-import { NgFor, NgIf } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -34,7 +33,7 @@ import { NxTagComponent } from './tag.component';
         '[attr.tabindex]': '-1',
     },
     standalone: true,
-    imports: [NgIf, NgFor, NxTagComponent],
+    imports: [NxTagComponent],
 })
 export class NxTaglistComponent implements ControlValueAccessor {
     /** An event is dispatched each time when the list of tags changed. */

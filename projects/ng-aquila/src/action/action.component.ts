@@ -1,6 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { NgIf } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, Input, OnDestroy } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
@@ -18,7 +17,7 @@ import { NxActionIconDirective } from './action-icon.directive';
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NgIf, NxIconModule],
+    imports: [NxIconModule],
 })
 export class NxActionComponent implements OnDestroy, AfterViewInit {
     @ContentChild(NxActionIconDirective) _iconChild!: NxActionIconDirective;

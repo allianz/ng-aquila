@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
     FormControl,
@@ -25,7 +24,6 @@ import { takeUntil } from 'rxjs/operators';
         FormsModule,
         ReactiveFormsModule,
         NxCodeInputComponent,
-        NgIf,
         NxErrorComponent,
         NxButtonComponent,
     ],

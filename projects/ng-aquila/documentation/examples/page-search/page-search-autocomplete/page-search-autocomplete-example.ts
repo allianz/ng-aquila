@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -71,7 +70,6 @@ export class WikipediaService {
         NxAutocompleteComponent,
         NxFormfieldPrefixDirective,
         NxIconComponent,
-        NgIf,
         NxFormfieldSuffixDirective,
     ],
 })

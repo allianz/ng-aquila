@@ -6,12 +6,11 @@
                     <ng-template nxClosedLabel>
                         <span>{{ customLabelDropdownValue?.prefix }}</span>
                     </ng-template>
-                    <nx-dropdown-item
-                        *ngFor="let item of telPrefixDemoData"
-                        [value]="item"
-                    >
+                    @for (item of telPrefixDemoData; track item) {
+                    <nx-dropdown-item [value]="item">
                         {{ item.prefix }} ({{ item.countryId }})
                     </nx-dropdown-item>
+                    }
                 </nx-dropdown>
             </nx-formfield>
         </div>

@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
@@ -10,13 +9,15 @@ import { getFileExtension } from '../file-uploader.validations';
     styleUrls: ['./file-uploader-name.component.scss'],
     template: `
         <span class="extension">
-            <span class="extension-label" *ngIf="extension" [style.background-color]="iconColor[extension] || '#000'">{{ extension }}</span>
+            @if (extension) {
+                <span class="extension-label" [style.background-color]="iconColor[extension] || '#000'">{{ extension }}</span>
+            }
             <nx-icon name="file" class="extension-icon"></nx-icon>
         </span>
         <span class="nx-margin-left-2xs">{{ name }}</span>
     `,
     standalone: true,
-    imports: [NgIf, NxIconModule],
+    imports: [NxIconModule],
 })
 export class NxFileUploaderItemName implements OnInit {
     /** The filename.*/

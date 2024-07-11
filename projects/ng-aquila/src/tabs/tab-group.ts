@@ -1,6 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
-import { NgFor, NgIf } from '@angular/common';
 import {
     AfterContentChecked,
     AfterContentInit,
@@ -55,7 +54,7 @@ let nextId = 0;
     },
     providers: [{ provide: NxTabGroupBase, useExisting: NxTabGroupComponent }],
     standalone: true,
-    imports: [NgIf, NxTabHeaderComponent, NgFor, NxTabLabelWrapperDirective, NxTabHeaderOutletComponent, NxTabBodyComponent, NxAccordionModule],
+    imports: [NxTabHeaderComponent, NxTabLabelWrapperDirective, NxTabHeaderOutletComponent, NxTabBodyComponent, NxAccordionModule],
 })
 export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterViewInit, AfterContentInit, AfterContentChecked {
     private readonly _groupId: number;

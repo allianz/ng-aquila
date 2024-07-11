@@ -33,15 +33,16 @@
         [attr.aria-invalid]="errorState"
     />
 
-    <input
-        class="c-input readonly-input"
-        *ngIf="readonly && !disabled"
-        type="tel"
-        [attr.readonly]="readonly || null"
-        [attr.aria-readonly]="readonly || null"
-        [value]="_getReadonlyValue()"
-        [attr.aria-describedby]="_describedBy"
-        [attr.aria-label]="lineNumberLabel"
-        [attr.aria-invalid]="errorState"
-    />
+    @if (readonly && !disabled) {
+        <input
+            class="c-input readonly-input"
+            type="tel"
+            [attr.readonly]="readonly || null"
+            [attr.aria-readonly]="readonly || null"
+            [value]="_getReadonlyValue()"
+            [attr.aria-describedby]="_describedBy"
+            [attr.aria-label]="lineNumberLabel"
+            [attr.aria-invalid]="errorState"
+        />
+    }
 </div>

@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, Injectable, OnInit } from '@angular/core';
 import {
     FormControl,
@@ -32,7 +31,6 @@ export class MyIntl extends NxTimefieldIntl {
         FormsModule,
         ReactiveFormsModule,
         NxTimefieldComponent,
-        NgIf,
         NxErrorComponent,
     ],
 })

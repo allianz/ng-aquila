@@ -19,33 +19,31 @@
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let item of tableElements">
-                <tr nxTableRow>
-                    <td nxTableCell class="nx-table-cell--toggle">
-                        <nx-toggle-button
-                            [target]="expandableRow"
-                            ariaLabel="Toggle {{item.product}} row"
-                        ></nx-toggle-button>
-                    </td>
-                    <td nxTableCell>{{item.product}}</td>
-                    <td nxTableCell>{{item.contractNumber}}</td>
-                    <td nxTableCell>{{item.endingAt}}</td>
-                    <td nxTableCell>
-                        <nx-badge [type]="item.status"
-                            >{{item.statusText}}</nx-badge
-                        >
-                    </td>
-                </tr>
-                <tr nxExpandableTableRow #expandableRow>
-                    <td nxExpandableTableCell></td>
-                    <td nxExpandableTableCell>
-                        <nx-link
-                            ><a routerLink="#">{{item.website}}</a></nx-link
-                        >
-                    </td>
-                    <td nxExpandableTableCell colspan="3">{{item.desc}}</td>
-                </tr>
-            </ng-container>
+            @for (item of tableElements; track item) {
+            <tr nxTableRow>
+                <td nxTableCell class="nx-table-cell--toggle">
+                    <nx-toggle-button
+                        [target]="expandableRow"
+                        ariaLabel="Toggle {{item.product}} row"
+                    ></nx-toggle-button>
+                </td>
+                <td nxTableCell>{{item.product}}</td>
+                <td nxTableCell>{{item.contractNumber}}</td>
+                <td nxTableCell>{{item.endingAt}}</td>
+                <td nxTableCell>
+                    <nx-badge [type]="item.status"
+                        >{{item.statusText}}</nx-badge
+                    >
+                </td>
+            </tr>
+            <tr nxExpandableTableRow #expandableRow>
+                <td nxExpandableTableCell></td>
+                <td nxExpandableTableCell>
+                    <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
+                </td>
+                <td nxExpandableTableCell colspan="3">{{item.desc}}</td>
+            </tr>
+            }
         </tbody>
     </table>
 </div>

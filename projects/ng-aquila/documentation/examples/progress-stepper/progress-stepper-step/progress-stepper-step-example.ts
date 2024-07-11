@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
@@ -19,7 +18,6 @@ import { NxSliderComponent } from '@aposin/ng-aquila/slider';
     standalone: true,
     imports: [
         NxProgressStepperComponent,
-        NgFor,
         NxStepComponent,
         NxSliderComponent,
         NxButtonComponent,

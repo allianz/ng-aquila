@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
 import { NxTooltipDirective, TooltipPosition } from '@aposin/ng-aquila/tooltip';
@@ -11,7 +10,7 @@ import { NxTooltipDirective, TooltipPosition } from '@aposin/ng-aquila/tooltip';
     templateUrl: './tooltip-positions-example.html',
     styleUrls: ['./tooltip-positions-example.css'],
     standalone: true,
-    imports: [NgFor, NxBadgeComponent, NxTooltipDirective],
+    imports: [NxBadgeComponent, NxTooltipDirective],
 })
 export class TooltipPositionsExampleComponent {
     positions: TooltipPosition[];

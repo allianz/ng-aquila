@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
@@ -36,7 +35,6 @@ import {
         NxColComponent,
         NxFormfieldComponent,
         NxDropdownComponent,
-        NgFor,
         NxDropdownItemComponent,
         NxLicencePlateEuroPrefixComponent,
         NxFormfieldPrefixDirective,

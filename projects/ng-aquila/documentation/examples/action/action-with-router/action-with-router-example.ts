@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
@@ -16,7 +15,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     templateUrl: './action-with-router-example.html',
     standalone: true,
     imports: [
-        NgFor,
         NxActionComponent,
         RouterLink,
         RouterLinkActive,

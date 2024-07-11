@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
@@ -18,7 +17,6 @@ import {
     imports: [
         NxCircleToggleGroupComponent,
         FormsModule,
-        NgFor,
         NxCircleToggleComponent,
         NxButtonComponent,
     ],

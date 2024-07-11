@@ -1,6 +1,5 @@
 import { CdkMonitorFocus, FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
-import { NgSwitch, NgSwitchCase } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -53,7 +52,7 @@ const yearsPerPage = 20;
     exportAs: 'nxCalendar',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NxIconModule, CdkMonitorFocus, NgSwitch, NgSwitchCase, NxMonthViewComponent, NxYearViewComponent, NxMultiYearViewComponent],
+    imports: [NxIconModule, CdkMonitorFocus, NxMonthViewComponent, NxYearViewComponent, NxMultiYearViewComponent],
 })
 export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, OnDestroy, OnChanges {
     /** A date representing the period (month or year) to start the calendar in. */

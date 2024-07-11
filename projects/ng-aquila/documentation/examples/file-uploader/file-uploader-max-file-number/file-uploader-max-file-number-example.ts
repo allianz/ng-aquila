@@ -1,4 +1,4 @@
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
@@ -48,7 +48,6 @@ const myCustomConfig: NxMessageToastConfig = {
         NxButtonComponent,
         NxFileUploaderButtonDirective,
         NxIconComponent,
-        NgIf,
         NxErrorComponent,
         NxFileUploaderTriggerDirective,
         JsonPipe,

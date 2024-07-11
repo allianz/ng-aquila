@@ -8,21 +8,21 @@
 </button>
 
 <nx-context-menu #menu="nxContextMenu">
-    <ng-container *ngFor="let item of [].constructor(3); let i = index">
-        <button
-            *ngIf="i !== selectedColumnIndex"
-            [disabled]="selectedColumnIndex === i"
-            nxContextMenuItem
-            type="button"
-            (click)="toggleHiddenIndexes(i)"
-        >
-            <nx-icon
-                aria-hidden="true"
-                [name]="isHiddenIndex(i) ? 'password-hide-o': 'password-show-o'"
-            ></nx-icon>
-            Produkt {{i + 1}}
-        </button>
-    </ng-container>
+    @for (item of [].constructor(3); track item; let i = $index) { @if (i !==
+    selectedColumnIndex) {
+    <button
+        [disabled]="selectedColumnIndex === i"
+        nxContextMenuItem
+        type="button"
+        (click)="toggleHiddenIndexes(i)"
+    >
+        <nx-icon
+            aria-hidden="true"
+            [name]="isHiddenIndex(i) ? 'password-hide-o': 'password-show-o'"
+        ></nx-icon>
+        Produkt {{i + 1}}
+    </button>
+    } }
 </nx-context-menu>
 
 <div class="container">

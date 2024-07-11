@@ -1,7 +1,7 @@
 import { B, D, DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE, TAB, UP_ARROW, V } from '@angular/cdk/keycodes';
 import { MutationObserverFactory } from '@angular/cdk/observers';
 import { OverlayContainer, OverlayModule, ScrollStrategy } from '@angular/cdk/overlay';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Directive, Inject, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
@@ -1797,7 +1797,7 @@ class LongOptionLabelPanelgrowDropdownComponent extends DropdownTest {}
         </nx-dropdown>
     `,
     standalone: true,
-    imports: [NxDropdownModule, FormsModule, NxFormfieldModule, CommonModule],
+    imports: [NxDropdownModule, FormsModule, NxFormfieldModule],
 })
 class CustomClosedLabelComponent extends DropdownTest {
     value = 'BMW';
@@ -1810,7 +1810,7 @@ class CustomClosedLabelComponent extends DropdownTest {
         }
     </nx-dropdown>`,
     standalone: true,
-    imports: [CommonModule, NxDropdownModule, FormsModule],
+    imports: [NxDropdownModule, FormsModule],
 })
 class DynamicDropdownComponent extends DropdownTest {}
 
@@ -2122,7 +2122,7 @@ const mutationCallbacks: (() => void)[] = [];
         <nx-dropdown-item [value]="value">{{ asyncLabel | async }}</nx-dropdown-item>
     </nx-dropdown>`,
     standalone: true,
-    imports: [NxDropdownModule, CommonModule],
+    imports: [NxDropdownModule, AsyncPipe],
     providers: [
         {
             provide: MutationObserverFactory,
@@ -2157,7 +2157,7 @@ class DeferredTestComponent extends DropdownTest {
         }
     </nx-dropdown>`,
     standalone: true,
-    imports: [NxDropdownModule, FormsModule, CommonModule],
+    imports: [NxDropdownModule, FormsModule],
 })
 class DropdownCustomLabelComponent extends DropdownTest {
     customLabelDropdownValue: any;

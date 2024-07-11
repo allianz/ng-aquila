@@ -1,6 +1,8 @@
 <ul class="iconlist">
-    <li class="iconlist__item" *ngFor="let icon of iconList">
+    @for (icon of iconList; track icon) {
+    <li class="iconlist__item">
         <nx-icon [name]="icon" size="s" aria-hidden="true"></nx-icon>
         <span>{{ icon }}</span>
     </li>
+    }
 </ul>

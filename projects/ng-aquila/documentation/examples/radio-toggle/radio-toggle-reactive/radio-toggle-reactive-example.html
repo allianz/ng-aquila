@@ -1,8 +1,10 @@
 <form novalidate [formGroup]="testForm">
     <nx-radio-toggle formControlName="testToggle">
-        <nx-radio-toggle-button *ngFor="let item of data" [value]="item"
+        @for (item of data; track item) {
+        <nx-radio-toggle-button [value]="item"
             >{{item}}
         </nx-radio-toggle-button>
+        }
     </nx-radio-toggle>
 
     <p>Form value: {{ testForm.value | json }}</p>

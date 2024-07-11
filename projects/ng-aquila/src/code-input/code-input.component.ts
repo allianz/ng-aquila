@@ -1,6 +1,6 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { BACKSPACE, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, SPACE, UP_ARROW } from '@angular/cdk/keycodes';
-import { NgClass, NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, Input, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, FormsModule, NgControl, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
@@ -27,7 +27,7 @@ export type NxConversionTypes = 'lower' | 'upper';
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NgFor, FormsModule, NgClass],
+    imports: [FormsModule, NgClass],
 })
 export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     /** Whether the current input of the component has an error. */

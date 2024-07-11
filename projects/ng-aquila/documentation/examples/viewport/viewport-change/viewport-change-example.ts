@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
@@ -24,7 +23,6 @@ import { takeUntil } from 'rxjs/operators';
     standalone: true,
     imports: [
         NxSidebarComponent_1,
-        NgFor,
         NxActionComponent,
         RouterLink,
         RouterLinkActive,

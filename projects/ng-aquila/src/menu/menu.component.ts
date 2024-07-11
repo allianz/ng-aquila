@@ -1,5 +1,4 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 
 /**
@@ -16,7 +15,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
         '[attr.aria-expanded]': 'open',
     },
     standalone: true,
-    imports: [NgIf],
+    imports: [],
 })
 export class NxMenuComponent {
     /** Whether the menu is open or closed. */

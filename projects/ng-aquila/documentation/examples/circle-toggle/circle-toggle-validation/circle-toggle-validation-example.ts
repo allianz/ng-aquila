@@ -1,4 +1,4 @@
-import { JsonPipe, NgFor, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     AbstractControl,
@@ -34,11 +34,9 @@ const selectBothValidator: ValidatorFn = (ctrl: AbstractControl) => {
         FormsModule,
         ReactiveFormsModule,
         NxCircleToggleGroupComponent,
-        NgFor,
         NxCircleToggleComponent,
         NxErrorComponent,
         NxButtonComponent,
-        NgIf,
         JsonPipe,
     ],
 })

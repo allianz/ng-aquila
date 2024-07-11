@@ -1,6 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { NgIf } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -33,7 +32,7 @@ const ICONS: { [k: string]: string } = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: 'nxMessage',
     standalone: true,
-    imports: [NgIf, NxIconModule],
+    imports: [NxIconModule],
 })
 export class NxMessageComponent implements AfterViewInit, OnDestroy {
     @HostBinding('class.context-info') get _isInfo() {

@@ -2,7 +2,7 @@ import { Direction, Directionality } from '@angular/cdk/bidi';
 import { DOWN_ARROW, END, ENTER, ESCAPE, HOME, LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
 import { OverlayContainer, ScrollStrategy } from '@angular/cdk/overlay';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Inject, NgZone, QueryList, Type, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
@@ -1461,13 +1461,11 @@ describe('nxContextMenu', () => {
             dispatchKeyboardEvent(panel!, 'keydown', DOWN_ARROW);
             fixture.detectChanges();
             const items = Array.from(panel!.querySelectorAll('.nx-context-menu-item')) as HTMLElement[];
-            console.log(items);
             expect(items[0]!).toHaveClass('cdk-keyboard-focused');
 
             dispatchKeyboardEvent(items[0]!, 'keydown', ENTER);
             fixture.detectChanges();
             const checkbox = items[0].querySelector('.nx-checkbox__input') as HTMLInputElement;
-            console.log(checkbox);
             expect(checkbox.checked).toBe(true);
             expect(fixture.componentInstance.selected).toEqual(['A']);
         });
@@ -1748,14 +1746,16 @@ class RightClickMenu {
         <nx-context-menu #menu="nxContextMenu">
             <nx-checkbox-group [(ngModel)]="selected">
                 <nx-context-menu-item-wrap>
-                    <div nxContextMenuItem nxContextMenuItemCheckbox disableCloseOnSelect *ngFor="let o of options">
-                        <nx-checkbox [value]="o.value">{{ o.label }}</nx-checkbox>
-                    </div>
+                    @for (o of options; track o) {
+                        <div nxContextMenuItem nxContextMenuItemCheckbox disableCloseOnSelect>
+                            <nx-checkbox [value]="o.value">{{ o.label }}</nx-checkbox>
+                        </div>
+                    }
                 </nx-context-menu-item-wrap>
             </nx-checkbox-group>
         </nx-context-menu>
     `,
-    imports: [NxContextMenuModule, NxCheckboxModule, NgFor, FormsModule],
+    imports: [NxContextMenuModule, NxCheckboxModule, FormsModule],
 })
 class CheckboxMenu {
     @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;

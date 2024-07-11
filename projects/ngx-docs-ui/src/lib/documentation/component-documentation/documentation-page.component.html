@@ -1,6 +1,8 @@
-<nx-sidebar *ngIf="!documentationFrame.hideNavigation" class="docs-sidebar" minWidth="240" [class.mobile-sidebar--visible]="documentationFrame.mobileSidebar">
-    <nxv-navigation></nxv-navigation>
-</nx-sidebar>
+@if (!documentationFrame.hideNavigation) {
+    <nx-sidebar class="docs-sidebar" minWidth="240" [class.mobile-sidebar--visible]="documentationFrame.mobileSidebar">
+        <nxv-navigation></nxv-navigation>
+    </nx-sidebar>
+}
 
 <main cdkScrollable (click)="mainContentClicked()" [class.show-a1]="themeSwitcherService.selectedTheme()?.name?.includes('allianz-one')">
     <div nxLayout="grid maxwidth" class="documentation__wrapper">

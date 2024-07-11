@@ -1,5 +1,4 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { NgIf } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -48,9 +47,9 @@ let nextId = 0;
 @Component({
     selector: 'nx-circle-toggle-group',
     template: `<ng-content></ng-content>
-        <ng-container *ngIf="errorState">
+        @if (errorState) {
             <ng-content select="nx-error"></ng-content>
-        </ng-container> `,
+        }`,
     styleUrls: ['./circle-toggle-group.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [],
@@ -66,7 +65,7 @@ let nextId = 0;
         role: 'radiogroup',
     },
     standalone: true,
-    imports: [NgIf],
+    imports: [],
 })
 export class NxCircleToggleGroupComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck {
     /**

@@ -19,14 +19,15 @@
                     <span nxFormfieldPrefix>
                         <nx-icon name="search" size="s"></nx-icon>
                     </span>
+                    @if (searchTerm1) {
                     <span
                         nxFormfieldSuffix
-                        *ngIf="searchTerm1"
                         aria-hidden="true"
                         (click)="searchTerm1=''"
                     >
                         <nx-icon name="close" size="s"></nx-icon>
                     </span>
+                    }
                 </nx-formfield>
             </div>
             <div nxCol="12,12,6,6">
@@ -42,14 +43,15 @@
                     <span nxFormfieldPrefix>
                         <nx-icon name="search" size="s"></nx-icon>
                     </span>
+                    @if (searchTerm2) {
                     <span
                         nxFormfieldSuffix
-                        *ngIf="searchTerm2"
                         aria-hidden="true"
                         (click)="searchTerm2=''"
                     >
                         <nx-icon name="close" size="s"></nx-icon>
                     </span>
+                    }
                 </nx-formfield>
             </div>
         </div>

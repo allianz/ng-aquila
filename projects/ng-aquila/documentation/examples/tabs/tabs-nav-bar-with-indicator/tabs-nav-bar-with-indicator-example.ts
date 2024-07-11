@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NxIndicatorComponent } from '@aposin/ng-aquila/indicator';
@@ -17,10 +16,8 @@ import {
     standalone: true,
     imports: [
         NxTabNavBarComponent,
-        NgFor,
         NxTabLinkDirective,
         RouterLink,
-        NgIf,
         NxIndicatorComponent,
     ],
 })

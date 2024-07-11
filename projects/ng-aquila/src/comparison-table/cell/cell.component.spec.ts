@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, DebugElement, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -285,7 +284,7 @@ class ConfigurableCellComponent extends CellTest {}
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
     standalone: true,
-    imports: [NxComparisonTableModule, CommonModule],
+    imports: [NxComparisonTableModule],
 })
 class ToggleSectionCellComponent extends CellTest {
     data = [

@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
@@ -20,7 +19,6 @@ import {
     imports: [
         NxSingleStepperComponent,
         NxLabelComponent,
-        NgFor,
         NxStepComponent,
         NxButtonComponent,
         NxStepperPreviousDirective,

@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -43,7 +42,6 @@ export const myCustomConfig: NxMessageToastConfig = {
         NxButtonComponent,
         NxFileUploaderButtonDirective,
         NxIconComponent,
-        NgIf,
         NxErrorComponent,
         NxRadioToggleComponent,
         FormsModule,

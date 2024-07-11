@@ -1,7 +1,7 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceArray, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
-import { NgFor, NgIf, NgStyle, NgTemplateOutlet } from '@angular/common';
+import { NgStyle, NgTemplateOutlet } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectorRef,
@@ -41,7 +41,7 @@ import { NxToggleSectionAnimations } from './toggle-section/toggle-section-anima
     animations: [NxToggleSectionAnimations.bodyExpansion],
     providers: [{ provide: NxComparisonTableBase, useExisting: NxComparisonTableComponent }],
     standalone: true,
-    imports: [NgIf, NgTemplateOutlet, NxComparisonTableFlexRow, NgStyle, NgFor, NxComparisonTableDesktopGroup],
+    imports: [NgTemplateOutlet, NxComparisonTableFlexRow, NgStyle, NxComparisonTableDesktopGroup],
 })
 export class NxComparisonTableComponent extends NxComparisonTableBase implements OnInit, AfterViewInit, OnDestroy {
     // Attention: this contains all rows and toggle sections, AND all rows contained in a toggle section!

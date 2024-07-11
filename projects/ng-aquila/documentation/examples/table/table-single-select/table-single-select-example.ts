@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { DatePipe, JsonPipe, NgFor, NgIf } from '@angular/common';
+import { DatePipe, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
@@ -34,14 +34,12 @@ interface Contract {
         NxTableComponent,
         NxTableRowComponent,
         NxHeaderCellDirective,
-        NgFor,
         NxTableCellComponent,
         NxRadioComponent,
         NxLinkComponent,
         RouterLink,
         NxBadgeComponent,
         NxSwitcherComponent,
-        NgIf,
         JsonPipe,
         DatePipe,
     ],

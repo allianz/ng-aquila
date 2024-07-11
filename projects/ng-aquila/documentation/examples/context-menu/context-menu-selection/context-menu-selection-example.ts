@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
@@ -20,9 +19,7 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     imports: [
         NxContextMenuComponent,
         NxContextMenuHeaderComponent,
-        NgFor,
         NxContextMenuItemComponent,
-        NgIf,
         NxIconComponent,
         NxButtonComponent,
         NxContextMenuTriggerDirective,

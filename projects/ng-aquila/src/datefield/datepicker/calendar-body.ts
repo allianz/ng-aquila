@@ -7,7 +7,6 @@
  */
 
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { NgFor, NgIf } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -53,7 +52,7 @@ export class NxCalendarCell {
     exportAs: 'nxCalendarBody',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NgFor, NgIf],
+    imports: [],
 })
 export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
     /** The label for the table. (e.g. "Jan 2017"). */

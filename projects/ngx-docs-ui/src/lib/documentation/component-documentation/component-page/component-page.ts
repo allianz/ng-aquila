@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, Inject, OnDestroy, Optional } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NxBadgeModule } from '@aposin/ng-aquila/badge';
@@ -25,7 +25,7 @@ export interface DocItem {
     templateUrl: 'component-page.html',
     styleUrls: ['component-page.scss'],
     standalone: true,
-    imports: [NgIf, NxMessageModule, NxBadgeModule, NxTabsModule, NgFor, RouterLinkActive, RouterLink, RouterOutlet, AsyncPipe],
+    imports: [NxMessageModule, NxBadgeModule, NxTabsModule, RouterLinkActive, RouterLink, RouterOutlet, AsyncPipe],
 })
 export class NxvComponentPage implements OnDestroy {
     componentDescriptor!: ComponentDescriptor;

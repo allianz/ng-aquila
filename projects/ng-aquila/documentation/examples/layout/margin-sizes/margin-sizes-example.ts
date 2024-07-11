@@ -1,4 +1,4 @@
-import { KeyValuePipe, NgFor } from '@angular/common';
+import { KeyValuePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     NxHeaderCellDirective,
@@ -19,7 +19,6 @@ import {
         NxTableComponent,
         NxTableRowComponent,
         NxHeaderCellDirective,
-        NgFor,
         NxTableCellComponent,
         KeyValuePipe,
     ],

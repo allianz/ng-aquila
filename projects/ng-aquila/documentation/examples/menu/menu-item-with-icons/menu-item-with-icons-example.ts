@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import {
@@ -28,12 +27,10 @@ interface MenuItem {
     styleUrls: ['menu-item-with-icons-example.css'],
     standalone: true,
     imports: [
-        NgFor,
         NxMenuButtonComponent,
         NxMenuItemDirective,
         NxIconComponent,
         NxMenuButtonIconDirective,
-        NgIf,
         NxMenuLinkDirective,
     ],
 })

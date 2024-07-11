@@ -1,10 +1,12 @@
 <div class="nx-action__wrapper">
-    <ng-container *ngIf="expandable">
+    @if (expandable) {
         <nx-icon class="nx-action__expand-icon" name="chevron-right" aria-hidden="true"></nx-icon>
-    </ng-container>
-    <span class="nx-action-icon__container" *ngIf="_iconChild">
-        <ng-content select="[nxActionIcon]"></ng-content>
-    </span>
+    }
+    @if (_iconChild) {
+        <span class="nx-action-icon__container">
+            <ng-content select="[nxActionIcon]"></ng-content>
+        </span>
+    }
     <span class="nx-action__label">
         <ng-content></ng-content>
     </span>

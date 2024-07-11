@@ -1,4 +1,4 @@
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     FormBuilder,
@@ -36,7 +36,6 @@ import {
         NxDropdownItemComponent,
         NxFormfieldErrorDirective,
         NxInputDirective,
-        NgIf,
         NxButtonComponent,
         JsonPipe,
     ],

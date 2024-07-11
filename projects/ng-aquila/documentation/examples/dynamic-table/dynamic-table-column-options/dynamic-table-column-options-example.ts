@@ -4,7 +4,6 @@ import {
     CdkDropList,
     moveItemInArray,
 } from '@angular/cdk/drag-drop';
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
@@ -40,7 +39,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
         CdkDropList,
         FormsModule,
         NxContextMenuItemWrapComponent,
-        NgFor,
         NxContextMenuItemComponent,
         CdkDrag,
         NxIconComponent,

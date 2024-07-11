@@ -15,26 +15,21 @@
         (cdkDropListDropped)="drop($event)"
     >
         <nx-context-menu-item-wrap>
-            <div
-                nxContextMenuItem
-                disableCloseOnSelect
-                cdkDrag
-                *ngFor="let column of columns"
-            >
+            @for (column of columns; track column) {
+            <div nxContextMenuItem disableCloseOnSelect cdkDrag>
                 <nx-icon
                     aria-hidden="true"
                     size="s"
                     name="grip-vertical"
                     class="nx-margin-right-xs"
                 ></nx-icon>
-
                 <nx-checkbox [value]="column.key">
                     {{column.title}}
                 </nx-checkbox>
-
                 <!-- TODO keyboard selection not working -->
                 <!-- TODO item span not full length, icon cannot be at the end -->
             </div>
+            }
         </nx-context-menu-item-wrap>
     </nx-checkbox-group>
 </nx-context-menu>

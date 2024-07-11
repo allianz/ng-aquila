@@ -1,22 +1,25 @@
 <div class="nx-rating__container" role="radiogroup">
-    <nx-icon
-        *ngFor="let rating of [1, 2, 3, 4, 5]"
-        (click)="setSelection(rating)"
-        (keyup)="handleKeyUp($event, rating)"
-        role="radio"
-        [attr.aria-label]="getAriaLabel(rating)"
-        [attr.aria-checked]="isSelected(rating)"
-        [tabindex]="disabled ? -1 : 0"
-        class="nx-rating__icon"
-        [class.nx-rating__icon--selected]="isChecked(rating)"
-        [name]="getIconName(rating)"
-        (mouseenter)="setHover(rating)"
-        (mouseleave)="setHover(0)"
-        [size]="size"
-    >
-    </nx-icon>
+    @for (rating of [1, 2, 3, 4, 5]; track rating) {
+        <nx-icon
+            (click)="setSelection(rating)"
+            (keyup)="handleKeyUp($event, rating)"
+            role="radio"
+            [attr.aria-label]="getAriaLabel(rating)"
+            [attr.aria-checked]="isSelected(rating)"
+            [tabindex]="disabled ? -1 : 0"
+            class="nx-rating__icon"
+            [class.nx-rating__icon--selected]="isChecked(rating)"
+            [name]="getIconName(rating)"
+            (mouseenter)="setHover(rating)"
+            (mouseleave)="setHover(0)"
+            [size]="size"
+        >
+        </nx-icon>
+    }
 </div>
-<div class="nx-rating__label" *ngIf="startLabel || endLabel">
-    <span class="nx-rating__label--start">{{ startLabel }}</span>
-    <span class="nx-rating__label--end">{{ endLabel }}</span>
-</div>
+@if (startLabel || endLabel) {
+    <div class="nx-rating__label">
+        <span class="nx-rating__label--start">{{ startLabel }}</span>
+        <span class="nx-rating__label--end">{{ endLabel }}</span>
+    </div>
+}

@@ -1,7 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { NgIf } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -39,7 +38,7 @@ import { NxTabsAppearance, TAB_NAV_BAR_DEFAULT_OPTIONS, TabNavBarDefaultOptions 
         '[class.scrollable]': 'scrollable',
     },
     standalone: true,
-    imports: [NgIf, NxTabScrollIndicator],
+    imports: [NxTabScrollIndicator],
 })
 export class NxTabNavBarComponent extends NxScrollableTabBar {
     @ViewChild('tabsList') scrollableTabsList!: ElementRef<HTMLElement>;

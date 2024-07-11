@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     NxHeaderCellDirective,
@@ -19,7 +18,6 @@ import {
         NxTableComponent,
         NxTableRowComponent,
         NxHeaderCellDirective,
-        NgFor,
         NxTableCellComponent,
     ],
 })

@@ -33,13 +33,15 @@
             <nx-comparison-table-cell type="header">
                 <div class="header-container">
                     <p class="product-title">Product One</p>
-                    <p
-                        aria-label="12,50 €"
-                        class="product-price-dynamic"
-                        *ngIf="!loading; else spinner"
-                    >
+                    @if (!loading) {
+                    <p aria-label="12,50 €" class="product-price-dynamic">
                         105,99 €
                     </p>
+                    } @else {
+                    <div class="spinner">
+                        <nx-spinner size="medium"></nx-spinner>
+                    </div>
+                    }
                     <button
                         nxComparisonTableSelectButton
                         unselectedLabel="Select"
@@ -53,12 +55,13 @@
                     <p class="product-title">
                         Product Two with a very long name
                     </p>
-                    <p
-                        class="product-price-dynamic"
-                        *ngIf="!loading; else spinner"
-                    >
-                        110,99 €
-                    </p>
+                    @if (!loading) {
+                    <p class="product-price-dynamic">110,99 €</p>
+                    } @else {
+                    <div class="spinner">
+                        <nx-spinner size="medium"></nx-spinner>
+                    </div>
+                    }
                     <button
                         nxComparisonTableSelectButton
                         unselectedLabel="Select"
@@ -70,12 +73,13 @@
             <nx-comparison-table-cell type="header">
                 <div class="header-container">
                     <p class="product-title">Product Three</p>
-                    <p
-                        class="product-price-dynamic"
-                        *ngIf="!loading; else spinner"
-                    >
-                        115,99 €
-                    </p>
+                    @if (!loading) {
+                    <p class="product-price-dynamic">115,99 €</p>
+                    } @else {
+                    <div class="spinner">
+                        <nx-spinner size="medium"></nx-spinner>
+                    </div>
+                    }
                     <button
                         nxComparisonTableSelectButton
                         unselectedLabel="Select"

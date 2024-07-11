@@ -1,4 +1,4 @@
-import { DatePipe, formatDate, NgFor } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { Component, Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -55,7 +55,6 @@ export class MyIntl extends NxSortHeaderIntl {
         NxTableRowComponent,
         NxSortHeaderComponent,
         NxHeaderCellDirective,
-        NgFor,
         NxTableCellComponent,
         NxLinkComponent,
         RouterLink,

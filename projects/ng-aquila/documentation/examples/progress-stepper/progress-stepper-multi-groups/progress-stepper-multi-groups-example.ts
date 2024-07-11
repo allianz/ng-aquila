@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
@@ -22,7 +21,6 @@ import {
     styleUrls: ['./progress-stepper-multi-groups-example.css'],
     standalone: true,
     imports: [
-        NgFor,
         NxProgressStepperModule,
         FormsModule,
         NxFormfieldComponent,

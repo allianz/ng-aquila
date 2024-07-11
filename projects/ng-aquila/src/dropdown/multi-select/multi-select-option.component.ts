@@ -1,5 +1,4 @@
 import { Highlightable, LiveAnnouncer } from '@angular/cdk/a11y';
-import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { AppearanceType } from '@aposin/ng-aquila/formfield';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
@@ -23,7 +22,7 @@ let optionId = 0;
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NgIf, NxIconModule],
+    imports: [NxIconModule],
 })
 export class NxMultiSelectOptionComponent<T> implements Highlightable {
     private _active = false;

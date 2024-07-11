@@ -1,4 +1,4 @@
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
     NxExpansionPanelComponent,
@@ -34,7 +34,6 @@ import { takeUntil } from 'rxjs/operators';
     styleUrls: ['./comparison-table-with-intersection-example.css'],
     standalone: true,
     imports: [
-        NgIf,
         NxExpansionPanelComponent,
         NxExpansionPanelHeaderComponent,
         NxExpansionPanelTitleDirective,

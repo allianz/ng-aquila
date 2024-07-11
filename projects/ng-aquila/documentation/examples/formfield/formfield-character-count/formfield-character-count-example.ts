@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import {
     NxFormfieldComponent,
@@ -14,12 +13,7 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     templateUrl: './formfield-character-count-example.html',
     styleUrls: ['./formfield-character-count-example.css'],
     standalone: true,
-    imports: [
-        NxFormfieldComponent,
-        NxInputDirective,
-        NxFormfieldHintDirective,
-        NgIf,
-    ],
+    imports: [NxFormfieldComponent, NxInputDirective, NxFormfieldHintDirective],
 })
 export class FormfieldCharacterCountExampleComponent {
     @ViewChild('inputToCount', { read: NxInputDirective, static: true })

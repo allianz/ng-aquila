@@ -1,15 +1,25 @@
 <div class="nx-toggle-circle__icon-wrapper">
-    <ng-container *ngIf="!inGroup">
+    @if (!inGroup) {
         <span class="nx-toggle-circle__check-icon">
             <nx-icon name="check" aria-hidden="true"></nx-icon>
         </span>
         <div class="nx-toggle-circle__check-focus"></div>
-    </ng-container>
+    }
     <span class="nx-toggle-circle__icon">
-        <nx-icon size="m" *ngIf="icon" [name]="icon" aria-hidden="true"></nx-icon>
-        <img *ngIf="svgUrl" class="nx-toggle-circle__icon-image" [src]="svgUrl" />
-        <span *ngIf="circleText" class="nx-toggle-circle__content-text">{{ circleText }}</span>
+        @if (icon) {
+            <nx-icon size="m" [name]="icon" aria-hidden="true"></nx-icon>
+        }
+        @if (svgUrl) {
+            <img class="nx-toggle-circle__icon-image" [src]="svgUrl" />
+        }
+        @if (circleText) {
+            <span class="nx-toggle-circle__content-text">{{ circleText }}</span>
+        }
     </span>
 </div>
-<span *ngIf="label" [class.is-label-bold]="hint" class="nx-toggle-circle__label-text">{{ label }}</span>
-<span *ngIf="hint" class="nx-toggle-circle__label-hint">{{ hint }}</span>
+@if (label) {
+    <span [class.is-label-bold]="hint" class="nx-toggle-circle__label-text">{{ label }}</span>
+}
+@if (hint) {
+    <span class="nx-toggle-circle__label-hint">{{ hint }}</span>
+}

@@ -1,4 +1,4 @@
-import { DOCUMENT, NgFor, NgIf } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -30,7 +30,7 @@ export interface Link {
     templateUrl: './table-of-contents.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NgIf, NgFor, RouterLink],
+    imports: [RouterLink],
 })
 export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
     @Input() container!: string;

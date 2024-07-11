@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     AbstractControl,
@@ -76,7 +75,6 @@ export function phoneNumberValidator(type?: PhoneNumberType): ValidatorFn {
         NxPhoneInputComponent,
         FormsModule,
         ReactiveFormsModule,
-        NgIf,
         NxErrorComponent,
         NxFormfieldErrorDirective,
     ],

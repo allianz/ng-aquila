@@ -1,4 +1,3 @@
-import { NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import {
     AfterContentChecked,
     AfterContentInit,
@@ -80,7 +79,7 @@ export type AppearanceType = 'outline' | 'auto';
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     standalone: true,
-    imports: [NgIf, NxTooltipModule, NgSwitch, NgSwitchCase],
+    imports: [NxTooltipModule],
 })
 export class NxFormfieldComponent implements AfterContentInit, AfterContentChecked, OnDestroy {
     protected _negative = false;

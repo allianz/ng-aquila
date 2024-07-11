@@ -1,10 +1,11 @@
-<div *ngIf="links?.length" class="docs-toc-container">
+@if (links?.length) {
+<div class="docs-toc-container">
     <div class="docs-toc-heading">Content</div>
     <nav>
+        @for (link of links; track link; let i = $index) {
         <a
             [routerLink]="_rootUrl"
             [fragment]="link.id"
-            *ngFor="let link of links; let i = index"
             class="docs-level-{{link.type}} docs-link"
             [class.docs-private]="link.private"
             [class.docs-public]="link.public"
@@ -12,5 +13,7 @@
         >
             {{link.name}}
         </a>
+        }
     </nav>
 </div>
+}

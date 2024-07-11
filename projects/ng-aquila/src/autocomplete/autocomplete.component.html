@@ -7,13 +7,15 @@
         [class.nx-autocomplete-panel--in-outline-field]="_isInOutlineField"
         #panel
     >
-        <ng-container *ngIf="hasItems">
-            <nx-autocomplete-option *ngFor="let item of items" [value]="item">
-                {{ item }}
-            </nx-autocomplete-option>
-        </ng-container>
-        <ng-container *ngIf="!hasItems">
+        @if (hasItems) {
+            @for (item of items; track item) {
+                <nx-autocomplete-option [value]="item">
+                    {{ item }}
+                </nx-autocomplete-option>
+            }
+        }
+        @if (!hasItems) {
             <ng-content></ng-content>
-        </ng-container>
+        }
     </div>
 </ng-template>

@@ -1,4 +1,4 @@
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     FormBuilder,
@@ -21,7 +21,6 @@ import { NxTimefieldComponent } from '@aposin/ng-aquila/timefield';
         FormsModule,
         ReactiveFormsModule,
         NxTimefieldComponent,
-        NgIf,
         NxErrorComponent,
         JsonPipe,
     ],

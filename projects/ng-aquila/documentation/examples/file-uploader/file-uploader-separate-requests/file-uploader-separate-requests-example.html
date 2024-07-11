@@ -21,7 +21,9 @@
     </button>
 </nx-file-uploader>
 
-<nx-error *ngIf="showUploadError"> An error occured while uploading. </nx-error>
+@if (showUploadError) {
+<nx-error> An error occured while uploading. </nx-error>
+}
 
 <p>
     Set url for testing the upload: {{ uploadConfig['requestUrl'] ===

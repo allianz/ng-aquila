@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -582,7 +582,7 @@ class AriaRadioToggle extends RadioToggleTest {}
         <p>Form status: {{ testForm.status | json }}</p>
     </form>`,
     standalone: true,
-    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule, CommonModule],
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule, JsonPipe],
 })
 class ReactiveFormToggle extends RadioToggleTest {
     fb: FormBuilder = new FormBuilder();

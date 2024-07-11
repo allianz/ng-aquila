@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
@@ -12,7 +11,7 @@ import { NxGridModule } from '@aposin/ng-aquila/grid';
     templateUrl: './dropdown-panelgrow-example.html',
     styleUrls: ['./dropdown-panelgrow-example.css'],
     standalone: true,
-    imports: [NxGridModule, NxFormfieldModule, NxDropdownModule, CommonModule],
+    imports: [NxGridModule, NxFormfieldModule, NxDropdownModule],
 })
 export class DropdownPanelgrowExampleComponent {
     options = [

@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
@@ -47,7 +46,6 @@ export const myCustomConfig: NxMessageToastConfig = {
         NxButtonComponent,
         NxFileUploaderButtonDirective,
         NxIconComponent,
-        NgIf,
         NxErrorComponent,
         NxFileUploaderItemName,
         NxFileUploaderItemSize,

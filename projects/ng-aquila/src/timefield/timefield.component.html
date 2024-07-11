@@ -75,23 +75,26 @@
             </button>
         }
         <nx-timefield-control style="display: none" [errorState]="errorState" [disabled]="disabled" [required]="required" [value]="time" [focused]="hasFocus" />
-        <span nxFormfieldHint *ngIf="hint"> {{ hint }} </span>
+        @if (hint) {
+            <span nxFormfieldHint> {{ hint }} </span>
+        }
         <ng-content select="[nxFormfieldError]" ngProjectAs="[nxFormfieldError]"></ng-content>
     </nx-formfield>
 
-    <nx-radio-toggle
-        [name]="idRadioGroup"
-        [(ngModel)]="_toggleAMPM"
-        (ngModelChange)="_updateTime()"
-        *ngIf="twelveHourFormat"
-        (click)="_updateTime()"
-        [disabled]="disabled"
-        [variant]="negative ? 'small negative' : 'small'"
-        disableMobile
-    >
-        <nx-radio-toggle-button disableMobile value="AM">{{ labelAM }}</nx-radio-toggle-button>
-        <nx-radio-toggle-button disableMobile value="PM">{{ labelPM }}</nx-radio-toggle-button>
-    </nx-radio-toggle>
+    @if (twelveHourFormat) {
+        <nx-radio-toggle
+            [name]="idRadioGroup"
+            [(ngModel)]="_toggleAMPM"
+            (ngModelChange)="_updateTime()"
+            (click)="_updateTime()"
+            [disabled]="disabled"
+            [variant]="negative ? 'small negative' : 'small'"
+            disableMobile
+        >
+            <nx-radio-toggle-button disableMobile value="AM">{{ labelAM }}</nx-radio-toggle-button>
+            <nx-radio-toggle-button disableMobile value="PM">{{ labelPM }}</nx-radio-toggle-button>
+        </nx-radio-toggle>
+    }
 </div>
 
 <ng-template

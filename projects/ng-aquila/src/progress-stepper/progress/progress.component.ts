@@ -1,5 +1,5 @@
 import { Directionality } from '@angular/cdk/bidi';
-import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, Optional } from '@angular/core';
 import { NxProgressbarModule } from '@aposin/ng-aquila/progressbar';
 import { clamp } from '@aposin/ng-aquila/utils';
@@ -13,7 +13,7 @@ import { NxProgressStepperDirective } from '../progress-stepper.component';
     providers: [{ provide: NxProgressStepperDirective, useExisting: NxProgressStepperComponent }],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NgFor, NgIf, NxProgressbarModule, NgTemplateOutlet],
+    imports: [NxProgressbarModule, NgTemplateOutlet],
 })
 export class NxProgressStepperComponent extends NxProgressStepperDirective {
     /** Sets the current value/progress of the progress bar. */

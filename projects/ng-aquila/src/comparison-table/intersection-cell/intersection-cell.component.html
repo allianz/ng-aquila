@@ -1,5 +1,5 @@
 <ng-template #content>
-    <ng-container *ngIf="_table.viewType === 'desktop' || _table.viewType === 'tablet'">
+    @if (_table.viewType === 'desktop' || _table.viewType === 'tablet') {
         <div
             class="nx-comparison-table__intersection-cell"
             role="cell"
@@ -11,12 +11,12 @@
                 <ng-container *ngTemplateOutlet="ngContent"></ng-container>
             </div>
         </div>
-    </ng-container>
-    <ng-container *ngIf="_table.viewType === 'mobile'">
+    }
+    @if (_table.viewType === 'mobile') {
         <td class="nx-comparison-table__intersection-cell" [attr.rowspan]="_getMobileRowspan()" [attr.headers]="_getHeaderIds()">
             <ng-container *ngTemplateOutlet="ngContent"></ng-container>
         </td>
-    </ng-container>
+    }
 </ng-template>
 
 <ng-template #ngContent>

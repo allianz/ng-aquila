@@ -1,5 +1,4 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { NgIf } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxPopoverModule, PopoverDirection, PopoverTriggerScrollStrategy } from '@aposin/ng-aquila/popover';
@@ -23,7 +22,7 @@ const ICONS: { [k: string]: string } = {
         '[class.context-error]': 'this._context === "error"',
     },
     standalone: true,
-    imports: [NxPopoverModule, NgIf, NxIconModule],
+    imports: [NxPopoverModule, NxIconModule],
 })
 export class NxSignalButtonComponent {
     private _popoverDirection: PopoverDirection = 'bottom';

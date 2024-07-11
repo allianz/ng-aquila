@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { AfterContentInit, Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
@@ -44,7 +43,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
         NxHeadlineComponent,
         NxFormfieldComponent,
         NxDropdownComponent_1,
-        NgFor,
         NxDropdownItemComponent,
         FormsModule,
         NxErrorComponent,

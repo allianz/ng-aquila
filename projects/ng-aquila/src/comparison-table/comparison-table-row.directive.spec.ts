@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
@@ -103,7 +102,7 @@ describe('NxComparisonTableRowDirective', () => {
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
     standalone: true,
-    imports: [NxComparisonTableModule, CommonModule],
+    imports: [NxComparisonTableModule],
 })
 class BasicComponent extends RowTest {
     data = [

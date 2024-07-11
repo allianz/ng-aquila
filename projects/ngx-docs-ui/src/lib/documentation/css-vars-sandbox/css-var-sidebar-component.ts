@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
@@ -15,7 +14,7 @@ import parseColor from 'parse-color';
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NxButtonModule, NgIf, NxIconModule, FormsModule, NgFor, ColorPickerModule],
+    imports: [NxButtonModule, NxIconModule, FormsModule, ColorPickerModule],
 })
 export class CssVarSidebarComponent {
     shown = true;

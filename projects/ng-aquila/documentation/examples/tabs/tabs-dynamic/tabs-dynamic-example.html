@@ -1,5 +1,6 @@
 <nx-tab-group>
-    <nx-tab *ngFor="let tab of tabs; let i = index" [label]="tab">
+    @for (tab of tabs; track tab; let i = $index) {
+    <nx-tab [label]="tab">
         <div class="tab__content nx-margin-bottom-m">
             Content of tab {{tab}}
             <button
@@ -12,6 +13,7 @@
             </button>
         </div>
     </nx-tab>
+    }
 </nx-tab-group>
 
 <div class="add-container">

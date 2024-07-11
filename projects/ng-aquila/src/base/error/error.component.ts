@@ -1,5 +1,5 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Injectable, InjectionToken, Input, OnDestroy, Optional } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxMessageModule } from '@aposin/ng-aquila/message';
@@ -39,7 +39,7 @@ export const ERROR_DEFAULT_OPTIONS = new InjectionToken<ErrorDefaultOptions>('ER
         '[class.nx-error--message]': 'appearance == "message"',
     },
     standalone: true,
-    imports: [NgIf, NxIconModule, NgTemplateOutlet, NxMessageModule],
+    imports: [NxIconModule, NgTemplateOutlet, NxMessageModule],
 })
 export class NxErrorComponent implements OnDestroy {
     /** Whether an icon should be displayed. Only has an effect for type 'text' */

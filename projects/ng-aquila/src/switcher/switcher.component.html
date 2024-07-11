@@ -16,7 +16,9 @@
 <label [attr.for]="id" class="nx-switcher__label" [class.has-label]="labelHasContent">
     <div class="nx-switcher__toggle">
         <div class="nx-switcher__dot">
-            <nx-icon *ngIf="big" name="check" aria-hidden="true"></nx-icon>
+            @if (big) {
+                <nx-icon name="check" aria-hidden="true"></nx-icon>
+            }
         </div>
     </div>
     <div class="nx-switcher__label-text" #switcherLabelWrapper (cdkObserveContent)="labelContentChanged()">

@@ -1,15 +1,17 @@
 <nx-formfield>
     <nx-formfield-label>Phone number</nx-formfield-label>
     <nx-phone-input [formControl]="phoneControl"></nx-phone-input>
-    <nx-error nxFormfieldError *ngIf="phoneControl.errors?.phoneNumber">
-        Please provide a valid phone number
-    </nx-error>
+    @if (phoneControl.errors?.phoneNumber) {
+    <nx-error nxFormfieldError> Please provide a valid phone number </nx-error>
+    }
 </nx-formfield>
 
 <nx-formfield>
     <nx-formfield-label>Mobile phone number</nx-formfield-label>
     <nx-phone-input [formControl]="mobilePhoneControl"></nx-phone-input>
-    <nx-error nxFormfieldError *ngIf="mobilePhoneControl.errors?.phoneNumber">
+    @if (mobilePhoneControl.errors?.phoneNumber) {
+    <nx-error nxFormfieldError>
         Please provide a valid mobile phone number
     </nx-error>
+    }
 </nx-formfield>

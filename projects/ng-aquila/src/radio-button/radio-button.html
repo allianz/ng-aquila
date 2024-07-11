@@ -16,7 +16,9 @@
 />
 <label [id]="labelId" [attr.for]="inputId" class="nx-radio__label" [class.has-label]="labelHasContent">
     <div class="nx-radio__circle">
-        <div *ngIf="checked" class="nx-radio__dot"></div>
+        @if (checked) {
+        <div class="nx-radio__dot"></div>
+        }
     </div>
     <span class="nx-radio__label--text" #radioLabelWrapper (cdkObserveContent)="labelContentChanged()">
         <ng-content></ng-content>

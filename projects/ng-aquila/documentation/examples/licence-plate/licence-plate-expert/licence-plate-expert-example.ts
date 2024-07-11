@@ -1,4 +1,4 @@
-import { JsonPipe, NgFor, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
@@ -40,9 +40,7 @@ import {
         NxColComponent,
         NxFormfieldComponent,
         NxDropdownComponent,
-        NgFor,
         NxDropdownItemComponent,
-        NgIf,
         NxLicencePlateEuroPrefixComponent,
         NxFormfieldPrefixDirective,
         NxInputDirective,
