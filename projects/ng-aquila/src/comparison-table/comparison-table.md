@@ -12,7 +12,7 @@ It is recommended to use the comparison table with a **maximum of 5 products**.
 
 The footer cells are not displayed on mobile. Therefore please **do not put any important content in the footer**.
 
-For better mobile side-to-side scrolling user experience the table should be placed in a horizontal scroll indicator `<nx-swipebar>` component.
+For better mobile user experience the table should be placed in a horizontal scrollable container.
 
 ### Accessibility
 
