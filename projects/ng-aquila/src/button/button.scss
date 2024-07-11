@@ -278,6 +278,10 @@
     @include button-theme(emphasis);
 }
 
+:host(.nx-button--attention) {
+    @include button-theme(attention);
+}
+
 :host(.nx-button--block) {
     @include media-breakpoint-up(medium) {
         display: block;

@@ -93,6 +93,9 @@ export class NxButtonHarness extends ContentContainerComponentHarness {
         if (await host.hasClass('nx-button--emphasis')) {
             return 'emphasis';
         }
+        if (await host.hasClass('nx-button--attention')) {
+            return 'attention';
+        }
         return 'primary';
     }
 

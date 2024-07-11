@@ -9,6 +9,7 @@ import { AnchorButtonExampleComponent } from './anchor-button/anchor-button-exam
 import { ButtonExampleComponent } from './button/button-example';
 import { ButtonBlockExampleComponent } from './button-block/button-block-example';
 import { ButtonDangerExampleComponent } from './button-danger/button-danger-example';
+import { ButtonEmphasisExampleComponent } from './button-emphasis/button-emphasis-example';
 import { ButtonIconExampleComponent } from './button-icon/button-icon-example';
 import { ButtonIconIndicatorExampleComponent } from './button-icon-indicator/button-icon-indicator-example';
 import { ButtonLargeExampleComponent } from './button-large/button-large-example';
@@ -35,6 +36,7 @@ const EXAMPLES = [
     ButtonIconIndicatorExampleComponent,
     AnchorButtonExampleComponent,
     ButtonPlainA1ExampleComponent,
+    ButtonEmphasisExampleComponent,
 ];
 
 @NgModule({
@@ -65,6 +67,7 @@ export class ButtonExamplesModule {
             'button-icon-indicator': ButtonIconIndicatorExampleComponent,
             'anchor-button': AnchorButtonExampleComponent,
             'button-plain-a1': ButtonPlainA1ExampleComponent,
+            'button-emphasis': ButtonEmphasisExampleComponent,
         };
     }
 }

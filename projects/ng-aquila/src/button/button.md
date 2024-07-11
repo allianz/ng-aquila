@@ -10,11 +10,17 @@ Buttons are used to make common actions immediately visible and easy to perform.
 
 We work with five different types of buttons. The primary's heavy appearance is intended to direct the user to take a suggested primary action; the secondary's lighter design best works to compliment a primary action or to reduce visual noise if there are several hierarchically equal actions on the same page. Emphasis, call-to-action and disabled should be self-explanatory.
 
-<div class="docs-private">
-**Please note:** for the Emphasis button, only the `large` variant is in line with WCAG accessibility requirements, while variants `small` and `medium` do not fulfill the visual contrast criteria. This is a known problem that is going to be addressed with the new One Allianz design.
-</div>
+### Basic button
 
 <!-- example(button) -->
+
+### Emphasis
+
+<div class="docs-deprecation-warning">
+  The <strong><code>Emphasis</code></strong> button has been deprecated due to not fulfilling the WCAG accessibility contrast requirements. It is recommended to use the new <code>Attention</code>  variant instead.
+</div>
+
+<!-- example(button-emphasis) -->
 
 ### Sizes
 

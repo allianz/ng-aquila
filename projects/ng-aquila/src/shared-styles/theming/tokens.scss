@@ -48,6 +48,8 @@ $nx-theme: (
     // emphasis
     accent-02: #6b8cff,
     // cta
+    accent-03: #c7a7ec,
+    // attention
     disabled-01: #969696,
     disabled-02: #dbdbdb,
     disabled-03: #ededed,
@@ -378,6 +380,18 @@ $nx-theme: (
     button-cta-disabled-background-color: rgba(107, 140, 255, 0.4),
     button-cta-disabled-text-color: rgba(255, 255, 255, 0.4),
     button-cta-disabled-border-color: transparent,
+    button-attention-background-color: accent-03,
+    button-attention-border-color: transparent,
+    button-attention-text-color: text-02,
+    button-attention-hover-background-color: #cd9eff,
+    button-attention-hover-border-color: transparent,
+    button-attention-hover-text-color: text-02,
+    button-attention-active-background-color: #dab9fd,
+    button-attention-active-text-color: text-02,
+    button-attention-active-border-color: transparent,
+    button-attention-disabled-background-color: rgba(189, 65, 127, 0.4),
+    button-attention-disabled-text-color: rgba(255, 255, 255, 0.4),
+    button-attention-disabled-border-color: transparent,
     button-primary-danger-background-color: danger,
     button-primary-danger-border-color: transparent,
     button-primary-danger-text-color: text-02,

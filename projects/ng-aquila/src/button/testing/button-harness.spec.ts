@@ -20,7 +20,7 @@ describe('NxButtonHarness', () => {
 
     it('should load all buttons', async () => {
         const buttons = await loader.getAllHarnesses(NxButtonHarness);
-        expect(buttons.length).toBe(30);
+        expect(buttons.length).toBe(31);
     });
 
     it('should get button text', async () => {
@@ -53,7 +53,7 @@ describe('NxButtonHarness', () => {
         const buttons = await loader.getAllHarnesses(NxButtonHarness.with({ ancestor: '#variants' }));
         const types = await parallel(() => buttons.map(button => button.getVariant()));
 
-        expect(types).toEqual(['primary', 'secondary', 'tertiary', 'cta', 'emphasis']);
+        expect(types).toEqual(['primary', 'secondary', 'tertiary', 'cta', 'emphasis', 'attention']);
     });
 
     it('should get whether button is disabled', async () => {
@@ -78,7 +78,7 @@ describe('NxButtonHarness', () => {
     describe('filters', () => {
         it('should find by type', async () => {
             const buttons = await loader.getAllHarnesses(NxButtonHarness.with({ type: 'basic' }));
-            expect(buttons.length).toBe(14);
+            expect(buttons.length).toBe(15);
         });
 
         it('should find by text', async () => {
@@ -132,6 +132,7 @@ describe('NxButtonHarness', () => {
             <button nxButton="tertiary">Tertiary</button>
             <button nxButton="cta">CTA</button>
             <button nxButton="emphasis">Emphasis</button>
+            <button nxButton="attention">Attention</button>
         </div>
 
         <div id="critical">

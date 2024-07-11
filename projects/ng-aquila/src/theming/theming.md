@@ -154,6 +154,7 @@ Our components are themed by the following general tokens. You can overwrite the
 
   accent-01: #00B17F, // emphasis
   accent-02: #6B8CFF, // cta
+  accent-03: #C7A7EC, // attention
 
   disabled-01: #969696,
   disabled-02: #DBDBDB,

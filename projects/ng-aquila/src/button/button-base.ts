@@ -4,7 +4,7 @@ import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, HostBinding, I
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 
 /** Type of a button. */
-export type NxButtonType = 'primary' | 'secondary' | 'tertiary' | 'cta' | 'emphasis';
+export type NxButtonType = 'primary' | 'secondary' | 'tertiary' | 'cta' | 'emphasis' | 'attention';
 
 /** Size of a button. */
 export type NxButtonSize = 'small' | 'small-medium' | 'medium' | 'large';
@@ -36,6 +36,10 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy, AfterViewInit {
     /** @docs-private */
     @HostBinding('class.nx-button--emphasis') get isEmphasis(): boolean {
         return this.type === 'emphasis';
+    }
+    /** @docs-private */
+    @HostBinding('class.nx-button--attention') get isAttention(): boolean {
+        return this.type === 'attention';
     }
 
     /** @docs-private */
@@ -103,7 +107,7 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy, AfterViewInit {
         this._classNames = value;
 
         // TODO kick null safeguards after setter value is properly coerced
-        const [type = null] = this._classNames?.match(/primary|secondary|tertiary|cta|emphasis/) ?? [DEFAULT_TYPE];
+        const [type = null] = this._classNames?.match(/primary|secondary|tertiary|cta|emphasis|attention/) ?? [DEFAULT_TYPE];
         this.type = type as NxButtonType;
 
         const [size = null] = this._classNames?.match(/small-medium|small|medium|large/) ?? [DEFAULT_SIZE];

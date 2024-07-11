@@ -183,6 +183,7 @@ class ConfigurableOnPushIconButton extends ButtonTest {}
                 changeAndCheckButtonType('secondary', 'nx-button--secondary');
                 changeAndCheckButtonType('cta', 'nx-button--cta');
                 changeAndCheckButtonType('emphasis', 'nx-button--emphasis');
+                changeAndCheckButtonType('attention', 'nx-button--attention');
                 changeAndCheckButtonType('primary', 'nx-button--primary');
                 changeAndCheckButtonType('tertiary', 'nx-button--tertiary');
             });
@@ -251,6 +252,7 @@ class ConfigurableOnPushIconButton extends ButtonTest {}
                 changeAndCheckButtonTypeProgrammaticly('tertiary', 'nx-button--tertiary');
                 changeAndCheckButtonTypeProgrammaticly('cta', 'nx-button--cta');
                 changeAndCheckButtonTypeProgrammaticly('emphasis', 'nx-button--emphasis');
+                changeAndCheckButtonTypeProgrammaticly('attention', 'nx-button--attention');
             });
 
             it('renders the button with the chosen [buttonSize]', () => {
