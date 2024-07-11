@@ -57,28 +57,10 @@ $border-size: nx-border-size(xs);
         .nx-margin-#{$key} {
             margin: $value !important;
         }
-
-        .nx-margin-x-#{$key} {
-            margin-right: $value !important;
-            margin-left: $value !important;
-        }
-
-        .nx-margin-y-#{$key} {
-            margin-top: $value !important;
-            margin-bottom: $value !important;
-        }
-
-        @each $position in $positions {
-            .nx-margin-#{$position}-#{$key} {
-                margin-#{$position}: $value !important;
-            }
-        }
     }
 
-    @each $position in $positions {
-        .nx-margin-#{$position}-0 {
-            margin-#{$position}: 0 !important;
-        }
+    .nx-margin-0 {
+        margin: 0 !important;
     }
 
     .nx-margin-x-0 {
@@ -91,8 +73,30 @@ $border-size: nx-border-size(xs);
         margin-bottom: 0 !important;
     }
 
-    .nx-margin-0 {
-        margin: 0 !important;
+    @each $key, $value in $margins {
+        .nx-margin-x-#{$key} {
+            margin-right: $value !important;
+            margin-left: $value !important;
+        }
+
+        .nx-margin-y-#{$key} {
+            margin-top: $value !important;
+            margin-bottom: $value !important;
+        }
+    }
+
+    @each $position in $positions {
+        .nx-margin-#{$position}-0 {
+            margin-#{$position}: 0 !important;
+        }
+    }
+
+    @each $key, $value in $margins {
+        @each $position in $positions {
+            .nx-margin-#{$position}-#{$key} {
+                margin-#{$position}: $value !important;
+            }
+        }
     }
 }
 
