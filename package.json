@@ -47,7 +47,7 @@
         "@commander-js/extra-typings": "^11.1.0",
         "@fortawesome/fontawesome-free": "^6.2.0",
         "ag-grid-angular": "^31.2.0",
-        "ag-grid-community": "^31.2.0",
+        "ag-grid-community": "^32.0.1",
         "chalk": "^4.1.2",
         "fuse.js": "^7.0.0",
         "highlight.js": "^11.6.0",
