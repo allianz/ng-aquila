@@ -46,8 +46,8 @@ const TEST_TEMPLATE_FILES = [
 
 const TAGS: string[] = ['allianz', 'aquila', 'example'];
 
-const angularVersion = '^17.0.0';
-const aquilaVersion = '^17.0.0';
+const angularVersion = '^18.0.0';
+const aquilaVersion = '^18.0.0';
 
 const dependencies = {
     '@angular/animations': angularVersion,

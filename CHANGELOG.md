@@ -2,6 +2,72 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.0.0](https://github.com/allianz/ng-aquila/compare/v17.9.1...v18.0.0) (2024-07-15)
+
+### Replacement of the emphasis button
+The emphasis button was not fulfilling WCAG accessibility requirements and was replaced by the new attention button variant. The emphasis button is deprecated and will be removed in the future. As different usages could lead to other solutions than using the attention button, the change is opt-in and will not be done automatically.
+
+### Library migration to standalone
+The library has been migrated to the Angular standalone APIs. This change should not affect you and everything should work the same and you can import and use the modules as before. But the components and directives are now standalone and you can make use of new Angular features like host directives, import only components/directives instead of a module or find better solutions for mocking in tests.
+
+### Library migration to new control flow syntax
+The templates of components use the new control flow syntax from Angular. This should have no negative effect on your application or changes needed as everything should work as before.
+
+### ⚠ BREAKING CHANGES
+
+* **iso-date-adapter:** The iso date adapter was loading the requested locales from dayjs lazily by a built in feature.
+This doesn't work with the new vite based build system from Angular anymore so we remove it.
+If you did not explicitly import the necessary locales before you will have to do so with this update.
+
+Add the respective imports into your application:
+```
+import 'dayjs/locales/de';
+import 'dayjs/locales/es';
+```
+
+For lazy loading projects have to find a custom solution that works together with vite and rollup.
+* **layout:** The order of the nx-margins have been changed for specificity reasons, this can change the behaviour of current margins.
+
+EXAMPLES:
+
+class="nx-margin-0 nx-margin-top-xl"
+before: margin top: 0, left: 0 , right: 0 , bottom: 0
+now: margin: top: 64 (xl), left: 0 , right: 0 , bottom: 0
+
+class="nx-margin-s nx-margin-top-xs nx-margin-bottom-m"
+before: margin top: 16 (s), left: 16 (s), right: 16 (s), bottom: 24 (m)
+now: margin: top: 12 (xs), left: 16 (s), right: 16 (s), bottom: 24 (m)
+* **progress-indicator**: to fulfill accessibility requirements the variant with a progress bar between steps needs an accessible label. The label can be set with the `progressbarAriaLabel` or `progressbarAriaLabelledBy` input. There is an english default but you should set this to a meaningful value for your application. Please see more details in the documentatioon.
+
+### DEPRECATIONS
+* **swipebar:**: The swipebar component has been deprecated and will be removed in the future. Please rely on native scroll bars.
+* **button:**: the `emphasis` button has been deprecated and will be removed in the future. Please use the `attention` button instead.
+
+### Documentation 📚
+
+* **swipebar:** deprecate swipebar component ([88f7127](https://github.com/allianz/ng-aquila/commit/88f71273fd1ad99c7c73e78a60e71fd53960b057))
+
+
+### Features ✨
+
+* **button:** add attention button and deprecate emphasis button ([b043927](https://github.com/allianz/ng-aquila/commit/b043927f44bde4d8e396d1d1aaea23ff449a3414))
+* migrate library to standalone ([0a9b4ee](https://github.com/allianz/ng-aquila/commit/0a9b4eeda7deec1036d7cff15a796b2ff7b75b87))
+* **progress-bar:** set aria attributes and allow custom ranges ([e7fa382](https://github.com/allianz/ng-aquila/commit/e7fa3829d51875b8bce3842db582106b7eca1b37))
+* update to Angular 18 ([717db8b](https://github.com/allianz/ng-aquila/commit/717db8bd6c2620dc19070cfba16fe39922ed8c95))
+
+
+### Bug Fixes 🐛
+
+* **avatar:** add role image in examples ([1209151](https://github.com/allianz/ng-aquila/commit/120915193a23a5c8d4a845fb286d89a81a6a9baa))
+* **datefield:** propagate readonly state to all directives and components ([8ca1e89](https://github.com/allianz/ng-aquila/commit/8ca1e899ec0b9447a10e266a9eb0c1959248a247))
+* **iso-date-adapter:** remove automatic lazy loading of locales ([edb6909](https://github.com/allianz/ng-aquila/commit/edb6909ae5259ad657c2d99eb15f9d446e351628))
+* **layout:** fix nx-margin-classes for better specificity ([3b050dd](https://github.com/allianz/ng-aquila/commit/3b050ddbe029ca29aa301569e1890b3448e04d71))
+* **radio-button:** cannot access radiogroup before initialization error ([49a6346](https://github.com/allianz/ng-aquila/commit/49a634634cf163a47ff3e273196040795da78534))
+* **status-icon:** add inline-flex to status icon ([a5cdc6a](https://github.com/allianz/ng-aquila/commit/a5cdc6a059beaf5c10235c79ecba0971e944ceae))
+* **tag:** keep focus after tag deleted ([c8ee14e](https://github.com/allianz/ng-aquila/commit/c8ee14e1051a12b835961b0238e841cd03cac3ef))
+* **timefield:** group time input fields for improved screen reader us… ([3bc35e9](https://github.com/allianz/ng-aquila/commit/3bc35e99b260a62ad1d1d226f081da2024e2b6dd))
+* **timefield:** make screen readers read all infos instead of content only ([415c553](https://github.com/allianz/ng-aquila/commit/415c5537659715a341ba945598c7a926fa69f9cf))
+
 ### [17.9.1](https://github.com/allianz/ng-aquila/compare/v17.9.0...v17.9.1) (2024-07-03)
 
 
