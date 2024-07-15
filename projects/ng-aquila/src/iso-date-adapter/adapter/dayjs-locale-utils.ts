@@ -1,4 +1,3 @@
-import dayjs from 'dayjs';
 import supportedLocales from 'dayjs/locale.json';
 
 /**
@@ -32,20 +31,4 @@ export function convertToDayjsLocale(localeId: string): string {
     }
 
     return dayjsLocale.key;
-}
-
-/**
- * This function uses a dynamic import to load the dayjs data for the requested locale
- * and returns the localeData for this locale.
- * @param localeId A "language-range" following the BCP 47 standard.
- * @returns A Promise that resolves with the dayjs localeData for the given locale.
- */
-export async function getDayjsLocaleData(localeId: string): Promise<dayjs.InstanceLocaleDataReturn> {
-    return import(`dayjs/locale/${localeId}.js`)
-        .then(() => dayjs().locale(localeId).localeData())
-        .catch(() => {
-            console.warn(`The requested dayjs locale '${localeId}' could not be loaded.`);
-            // return the global localeData as fallback
-            return dayjs.localeData();
-        });
 }

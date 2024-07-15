@@ -7,7 +7,7 @@ import localeData from 'dayjs/plugin/localeData';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import utc from 'dayjs/plugin/utc';
 
-import { convertToDayjsLocale, getDayjsLocaleData } from './dayjs-locale-utils';
+import { convertToDayjsLocale } from './dayjs-locale-utils';
 
 dayjs.extend(localeData);
 dayjs.extend(customParseFormat);
@@ -228,9 +228,9 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
         return this._localeData.narrowDaysOfWeek;
     }
 
-    async setLocale(locale: string) {
+    setLocale(locale: string) {
         this._dayjsLocale = convertToDayjsLocale(locale);
-        const data = await getDayjsLocaleData(this._dayjsLocale);
+        const data = dayjs().locale(this._dayjsLocale).localeData();
 
         this._localeData = {
             firstDayOfWeek: data.firstDayOfWeek(),
