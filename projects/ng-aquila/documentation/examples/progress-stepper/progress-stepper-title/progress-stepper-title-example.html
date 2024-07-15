@@ -1,4 +1,7 @@
-<nx-single-stepper currentStepLabel="Step">
+<nx-single-stepper
+    currentStepLabel="Step"
+    [progressbarAriaLabel]="'Progress to file your claim'"
+>
     <nx-label>My Title</nx-label>
     @for (step of testStepsData; track step) {
     <nx-step [label]="step">

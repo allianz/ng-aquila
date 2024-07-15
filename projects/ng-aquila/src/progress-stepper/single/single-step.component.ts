@@ -24,6 +24,12 @@ export class NxSingleStepperComponent extends NxProgressStepperDirective {
     }
     private _rightLabel = 'Next step:';
 
+    /** Overrides the `aria-label` of the nx-progressbar. Defaults to "Progress" */
+    @Input() progressbarAriaLabel: string | undefined = 'Progress';
+
+    /** Sets the `aria-labelledby` of the nx-progressbar */
+    @Input('progressbarAriaLabeledBy') progressbarAriaLabeledBy: string | undefined;
+
     /** @docs-private */
     get progress() {
         return (this.selectedIndex + 1) / this.count;

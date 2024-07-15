@@ -3,7 +3,7 @@
         <ng-content select="nx-label"></ng-content>
     </span>
 
-    <nx-progressbar [value]="progress"></nx-progressbar>
+    <nx-progressbar [value]="progress" [ariaLabel]="progressbarAriaLabel" [ariaLabelledBy]="progressbarAriaLabeledBy"></nx-progressbar>
 
     <div class="nx-single-step__infos">
         <div class="nx-single-step__current">

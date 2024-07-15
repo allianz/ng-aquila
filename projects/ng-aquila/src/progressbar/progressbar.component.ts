@@ -1,9 +1,5 @@
-import { NumberInput } from '@angular/cdk/coercion';
 import { NgStyle } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { clamp } from '@aposin/ng-aquila/utils';
-
-let progressbarId = 0;
+import { ChangeDetectionStrategy, Component, Input, numberAttribute } from '@angular/core';
 
 @Component({
     selector: 'nx-progressbar',
@@ -12,25 +8,33 @@ let progressbarId = 0;
     styleUrls: ['./progressbar.component.scss'],
     host: {
         '[attr.aria-valuenow]': 'value',
+        '[attr.role]': '"progressbar"',
+        '[attr.aria-valuemax]': 'this.max',
+        '[attr.aria-valuemin]': 'this.min',
+        '[attr.aria-label]': 'this.ariaLabel',
+        '[attr.aria-labelledby]': 'this.ariaLabelledBy',
     },
     standalone: true,
     imports: [NgStyle],
 })
 export class NxProgressbarComponent {
-    /** @docs-private */
-    progressbarId = `nx-progress-bar-${progressbarId++}`;
+    /** Overrides the `aria-label` of the nx-progressbar. Defaults to "Progress" */
+    @Input() ariaLabel: string | undefined = 'Progress';
 
-    /** Sets the value of the progress bar. Defaults to zero. Mirrored to aria-value now. */
-    @Input() set value(value: NumberInput) {
-        this._value = clamp((value as any) || 0); // TODO properly coerce input value
-    }
-    get value(): number {
-        return this._value;
-    }
-    private _value = 0;
+    /** Sets the `aria-labelledby` of the nx-progressbar */
+    @Input() ariaLabelledBy: string | undefined;
+
+    /** Sets the value of the progress bar. Defaults to zero. Mirrored to aria-valuenow. */
+    @Input({ transform: numberAttribute }) value = 0;
+
+    /** The minimum value of the progress bar. Used for percentage calculation and mirrored to `aria-valuemin`. Defaults to 0 */
+    @Input({ transform: numberAttribute }) min = 0;
+
+    /** The maximum value of the progress bar. Used for percentage calculation and mirrored to `aria-valuemax`. Defaults to 1 */
+    @Input({ transform: numberAttribute }) max = 1;
 
     _primaryTransform() {
-        const scale = this.value;
+        const scale = (this.value - this.min) / (this.max - this.min);
         return { transform: `scaleX(${scale})` };
     }
 }

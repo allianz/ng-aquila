@@ -16,6 +16,12 @@ import { NxProgressStepperDirective } from '../progress-stepper.component';
     imports: [NxProgressbarModule, NgTemplateOutlet],
 })
 export class NxProgressStepperComponent extends NxProgressStepperDirective {
+    /** Overrides the `aria-label` of the nx-progressbar. Defaults to "Progress" */
+    @Input() progressbarAriaLabel: string | undefined = 'Progress';
+
+    /** Sets the `aria-labelledby` of the nx-progressbar */
+    @Input() progressbarAriaLabeledBy: string | undefined;
+
     /** Sets the current value/progress of the progress bar. */
     @Input() set progress(value: number) {
         this._progress = clamp(value || 0);

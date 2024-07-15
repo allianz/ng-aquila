@@ -1,4 +1,8 @@
-<nx-single-stepper currentStepLabel="Left label" nextLabel="Right label">
+<nx-single-stepper
+    currentStepLabel="Left label"
+    nextLabel="Right label"
+    [progressbarAriaLabel]="'Progress towards your new coverage'"
+>
     @for (step of testStepsData; track step) {
     <nx-step [label]="step">
         <div class="nx-margin-y-s">content for {{step}}</div>

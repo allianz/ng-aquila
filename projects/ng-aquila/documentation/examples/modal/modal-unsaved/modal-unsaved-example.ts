@@ -82,7 +82,6 @@ export class ModalUnsavedExampleComponent {
     }
 
     onSubmit(): void {
-        console.log('form submitted', this.formGroup.get('text')?.value);
         this.formGroup.reset();
     }
 

@@ -18,7 +18,7 @@
             <div class="nx-subprogress__label">{{ step.stepLabel || step.label }}</div>
             @if (selectedIndex === i) {
                 <div class="nx-subprogress__progress">
-                    <nx-progressbar [value]="progress"></nx-progressbar>
+                    <nx-progressbar [value]="progress" [ariaLabel]="progressbarAriaLabel" [ariaLabelledBy]="progressbarAriaLabeledBy"></nx-progressbar>
                 </div>
             }
         </div>
