@@ -27,6 +27,7 @@ import { NxTimefieldModule } from '@aposin/ng-aquila/timefield';
 export class TimefieldExpertExampleComponent {
     readonly testForm = this.fb.group({
         timefieldReactive: ['22:54', Validators.required],
+        timefieldPickerReactive: ['20:15', Validators.required],
         timefield12Reactive: ['', Validators.required],
     });
 

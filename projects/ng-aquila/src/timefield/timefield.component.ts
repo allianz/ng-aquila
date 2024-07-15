@@ -35,6 +35,7 @@ import {
     AppearanceType,
     FORMFIELD_DEFAULT_OPTIONS,
     FormfieldDefaultOptions,
+    NxFormfieldComponent,
     NxFormfieldControl,
     NxFormfieldModule,
     NxFormfieldUpdateEventType,
@@ -127,6 +128,8 @@ export class NxTimefieldControl implements NxFormfieldControl<string> {
 export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck, OnInit, OnChanges {
     /** @docs-private */
     errorState = false;
+
+    @ViewChild(NxFormfieldComponent) formfield!: NxFormfieldComponent;
 
     _toggleAMPM!: string | null;
     protected isOpen = false;
@@ -690,5 +693,12 @@ export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit
     }
     setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
+    }
+
+    getLabelledBy() {
+        if (this.formfield) {
+            return this.formfield.labelId;
+        }
+        return null;
     }
 }

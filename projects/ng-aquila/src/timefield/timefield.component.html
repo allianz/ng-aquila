@@ -8,77 +8,86 @@
         floatLabel="always"
         [negative]="negative ? 'negative' : ''"
     >
-        <input
-            [id]="idHours"
-            #inputHours
-            [value]="hours || null"
-            class="nx-timefield-input__field__hours"
-            type="text"
-            maxlength="2"
-            autocomplete="off"
-            role="combobox"
-            (input)="_onInput($event, 'hours')"
-            (keydown)="handleKeyDown($event)"
-            (focus)="_onFocus()"
-            (blur)="_onInputBlur('hours')"
-            [required]="required"
-            [disabled]="disabled"
-            [placeholder]="placeholderHours"
-            aria-autocomplete="list"
-            [attr.aria-required]="required"
-            [attr.aria-label]="_getAriaLabel('hours')"
-            [attr.aria-expanded]="isOpen.toString()"
-            [attr.aria-controls]="isOpen ? idOptionList : null"
-            [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
-        />
-        <span class="nx-timefield-hours-separator">:</span>
-        <input
-            [id]="idMinutes"
-            #inputMinutes
-            [value]="minutes || null"
-            class="nx-timefield-input__field__minutes"
-            type="text"
-            maxlength="2"
-            autocomplete="off"
-            role="combobox"
-            (input)="_onInput($event, 'minutes')"
-            (focus)="_onFocus()"
-            (blur)="_onInputBlur('minutes')"
-            (keydown)="handleKeyDown($event)"
-            [required]="required"
-            [disabled]="disabled"
-            [placeholder]="placeholderMinutes"
-            aria-autocomplete="list"
-            [attr.aria-required]="required"
-            [attr.aria-label]="_getAriaLabel('minutes')"
-            [attr.aria-expanded]="isOpen.toString()"
-            [attr.aria-controls]="isOpen ? idOptionList : null"
-            [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
-        />
-        @if (withTimepicker) {
-            <button
-                nxFormfieldSuffix
-                #toggleButton
-                [ngClass]="{ 'nx-timepicker-toggle--disabled': disabled }"
-                (click)="!disabled && toggleButtonClick()"
+        <div role="group" [attr.aria-labelledby]="getLabelledBy()" class="time-group">
+            <input
+                [id]="idHours"
+                #inputHours
+                [value]="hours || null"
+                class="nx-timefield-input__field__hours"
+                type="text"
+                maxlength="2"
+                autocomplete="off"
+                role="combobox"
+                (input)="_onInput($event, 'hours')"
+                (keydown)="handleKeyDown($event)"
                 (focus)="_onFocus()"
-                class="nx-timepicker-toggle-button"
-                type="button"
+                (blur)="_onInputBlur('hours')"
+                [required]="required"
                 [disabled]="disabled"
-                [attr.aria-label]="intl.buttonOpenTimepickerAriaLabel"
+                [placeholder]="placeholderHours"
+                aria-autocomplete="list"
+                [attr.aria-required]="required"
+                [attr.aria-label]="_getAriaLabel('hours')"
                 [attr.aria-expanded]="isOpen.toString()"
                 [attr.aria-controls]="isOpen ? idOptionList : null"
                 [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+            />
+            <span class="nx-timefield-hours-separator" aria-hidden="true">:</span>
+            <input
+                [id]="idMinutes"
+                #inputMinutes
+                [value]="minutes || null"
+                class="nx-timefield-input__field__minutes"
+                type="text"
+                maxlength="2"
+                autocomplete="off"
+                role="combobox"
+                (input)="_onInput($event, 'minutes')"
+                (focus)="_onFocus()"
+                (blur)="_onInputBlur('minutes')"
                 (keydown)="handleKeyDown($event)"
-            >
-                <nx-icon name="clock-o" aria-hidden="true" size="s"></nx-icon>
-            </button>
-        }
-        <nx-timefield-control style="display: none" [errorState]="errorState" [disabled]="disabled" [required]="required" [value]="time" [focused]="hasFocus" />
-        @if (hint) {
-            <span nxFormfieldHint> {{ hint }} </span>
-        }
-        <ng-content select="[nxFormfieldError]" ngProjectAs="[nxFormfieldError]"></ng-content>
+                [required]="required"
+                [disabled]="disabled"
+                [placeholder]="placeholderMinutes"
+                aria-autocomplete="list"
+                [attr.aria-required]="required"
+                [attr.aria-label]="_getAriaLabel('minutes')"
+                [attr.aria-expanded]="isOpen.toString()"
+                [attr.aria-controls]="isOpen ? idOptionList : null"
+                [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+            />
+            @if (withTimepicker) {
+                <button
+                    nxFormfieldSuffix
+                    #toggleButton
+                    [ngClass]="{ 'nx-timepicker-toggle--disabled': disabled }"
+                    (click)="!disabled && toggleButtonClick()"
+                    (focus)="_onFocus()"
+                    class="nx-timepicker-toggle-button"
+                    type="button"
+                    [disabled]="disabled"
+                    [attr.aria-label]="intl.buttonOpenTimepickerAriaLabel"
+                    [attr.aria-expanded]="isOpen.toString()"
+                    [attr.aria-controls]="isOpen ? idOptionList : null"
+                    [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+                    (keydown)="handleKeyDown($event)"
+                >
+                    <nx-icon name="clock-o" aria-hidden="true" size="s"></nx-icon>
+                </button>
+            }
+            <nx-timefield-control
+                style="display: none"
+                [errorState]="errorState"
+                [disabled]="disabled"
+                [required]="required"
+                [value]="time"
+                [focused]="hasFocus"
+            />
+            @if (hint) {
+                <span nxFormfieldHint> {{ hint }} </span>
+            }
+            <ng-content select="[nxFormfieldError]" ngProjectAs="[nxFormfieldError]"></ng-content>
+        </div>
     </nx-formfield>
 
     @if (twelveHourFormat) {

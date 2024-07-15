@@ -1,7 +1,7 @@
 <form [formGroup]="testForm">
     <div nxLayout="grid">
         <div nxRow>
-            <div nxCol="12,12,6">
+            <div nxCol="12,12,4">
                 <nx-timefield
                     label="Time"
                     #timefield
@@ -9,7 +9,16 @@
                     appearance="outline"
                 ></nx-timefield>
             </div>
-            <div nxCol="12,12,6">
+            <div nxCol="12,12,4">
+                <nx-timefield
+                    label="Time"
+                    #timefield
+                    formControlName="timefieldPickerReactive"
+                    appearance="outline"
+                    withTimepicker
+                ></nx-timefield>
+            </div>
+            <div nxCol="12,12,4">
                 <nx-timefield
                     #timefield
                     label="Time"
