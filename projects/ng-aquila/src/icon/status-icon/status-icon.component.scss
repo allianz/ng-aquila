@@ -1,5 +1,9 @@
 @import '../../shared-styles/index';
 
+:host {
+    display: inline-flex;
+}
+
 .nx-status-icon--error {
     color: v(danger);
 }
