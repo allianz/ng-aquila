@@ -9,7 +9,12 @@ import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-export const NX_INPUT_VALUE_ACCESSOR = new InjectionToken<{ value: any }>('NX_INPUT_VALUE_ACCESSOR');
+export const NX_INPUT_VALUE_ACCESSOR = new InjectionToken<NxInputValueAccessor>('NX_INPUT_VALUE_ACCESSOR');
+
+export interface NxInputValueAccessor {
+    value: any;
+    setReadonly?(value: boolean): void;
+}
 
 const INVALID_TYPES = ['button', 'checkbox', 'file', 'hidden', 'image', 'radio', 'range', 'reset', 'submit'];
 
@@ -48,7 +53,7 @@ let nextUniqueId = 0;
 export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, NxFormfieldControl<any>, NxAbstractControl {
     protected _uid = `nx-input-${nextUniqueId++}`;
     protected _previousNativeValue: any;
-    private _inputValueAccessor: { value: any };
+    private _inputValueAccessor: NxInputValueAccessor;
     _ariaDescribedby!: string;
 
     @Input('nxAriaLabel') _ariaLabel!: string;
@@ -93,6 +98,9 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     /** Whether the element is readonly. */
     @Input() set readonly(value: BooleanInput) {
         this._readonly = coerceBooleanProperty(value);
+        if (this._inputValueAccessor && this._inputValueAccessor.setReadonly) {
+            this._inputValueAccessor.setReadonly?.(this._readonly);
+        }
         this.stateChanges.next();
     }
     get readonly(): boolean {
@@ -184,7 +192,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
         @Optional() private readonly _parentForm: NgForm | null,
         @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
         private readonly _errorStateMatcher: ErrorStateMatcher,
-        @Optional() @Self() @Inject(NX_INPUT_VALUE_ACCESSOR) inputValueAccessor: { value: any } | null,
+        @Optional() @Self() @Inject(NX_INPUT_VALUE_ACCESSOR) private inputValueAccessor: NxInputValueAccessor | null,
         private readonly _autofillMonitor: AutofillMonitor,
     ) {
         const id = this.id;

@@ -79,7 +79,7 @@ export class NxDatepickerInputEvent<D> {
     exportAs: 'nxDatefield',
     standalone: true,
 })
-export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAccessor, OnDestroy, Validator, NxAbstractControl {
+export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAccessor, OnDestroy, Validator {
     /** @docs-private */
     currentFormattedDate: string | null = null;
 
@@ -194,7 +194,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     private _disabled!: boolean;
 
     /** Whether the datefield is readonly. */
-    @Input() set readonly(value: BooleanInput) {
+    set readonly(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 
         if (this._readonly !== newValue) {
@@ -205,9 +205,8 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     get readonly(): boolean {
         return !!this._readonly;
     }
-    private _readonly!: boolean;
+    private _readonly: boolean = false;
 
-    /** set readonly state */
     setReadonly(value: boolean) {
         this.readonly = value;
     }

@@ -106,6 +106,10 @@ To create a date range, you can open the datepicker for the end date automatical
 
 <!-- example(datefield-reactive) -->
 
+#### Readonly
+
+<!-- example(datefield-readonly) -->
+
 ### Parsing & Formatting
 
 Both parsing and formatting depend on the capabilities of the chosen DateAdapter. Every date adapter brings it's own defaults so you don't have to set anything by default. To do so anyway you inject the necessary patterns through the injection token `NX_DATE_FORMATS`:
