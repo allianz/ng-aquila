@@ -13,10 +13,7 @@
         </button>
     </div>
 </ng-template>
-<nx-modal
-    #basicModal
-    [modalBody]="ngIfModalBody"
-    [showCloseIcon]="false"
-    *ngIf="modalOpen"
->
+@if (modalOpen) {
+<nx-modal #basicModal [modalBody]="ngIfModalBody" [showCloseIcon]="false">
 </nx-modal>
+}

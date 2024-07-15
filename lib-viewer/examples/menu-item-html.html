@@ -1,21 +1,19 @@
-<span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of menuData&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-        <span class="hljs-attr">nxMenuButton</span>
-        (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;onClick(item)&quot;</span>
-        <span class="hljs-attr">menuButtonType</span>=<span class="hljs-string">&quot;root&quot;</span>
-        [<span class="hljs-attr">expandable</span>]=<span class="hljs-string">&quot;!!item.children&quot;</span>
-        <span class="hljs-attr">nxMenuItem</span>
-        [<span class="hljs-attr">expanded</span>]=<span class="hljs-string">&quot;item.expanded&quot;</span>
-        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-    &gt;</span>
-        {{item.label}}
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxMenuItem</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;item.children &amp;&amp; item.expanded&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
-            *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let child of item.children&quot;</span>
-            <span class="hljs-attr">nxMenuLink</span>
-            <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:void(0)&quot;</span>
-            &gt;</span>{{child.label}}&lt;/a
-        &gt;
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+@for (item of menuData; track item) {
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxMenuButton</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;onClick(item)&quot;</span>
+    <span class="hljs-attr">menuButtonType</span>=<span class="hljs-string">&quot;root&quot;</span>
+    [<span class="hljs-attr">expandable</span>]=<span class="hljs-string">&quot;!!item.children&quot;</span>
+    <span class="hljs-attr">nxMenuItem</span>
+    [<span class="hljs-attr">expanded</span>]=<span class="hljs-string">&quot;item.expanded&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+&gt;</span>
+    {{item.label}}
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+@if (item.children &amp;&amp; item.expanded) {
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxMenuItem</span>&gt;</span>
+    @for (child of item.children; track child) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">nxMenuLink</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:void(0)&quot;</span>&gt;</span>{{child.label}}<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+} }

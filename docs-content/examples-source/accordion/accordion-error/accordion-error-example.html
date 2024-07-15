@@ -6,11 +6,12 @@
         >
             <nx-expansion-panel-title>
                 <div class="expansion-title-with-icon">
+                    @if (infoHasError) {
                     <nx-icon
-                        *ngIf="infoHasError"
                         class="nx-error__icon"
                         [name]="'exclamation-triangle'"
                     ></nx-icon>
+                    }
                     <span>General Information</span>
                 </div>
             </nx-expansion-panel-title>
@@ -43,11 +44,12 @@
         >
             <nx-expansion-panel-title>
                 <div class="expansion-title-with-icon">
+                    @if (paymentHasError) {
                     <nx-icon
-                        *ngIf="paymentHasError"
                         class="nx-error__icon"
                         [name]="'exclamation-triangle'"
                     ></nx-icon>
+                    }
                     <span>Payment details</span>
                 </div>
             </nx-expansion-panel-title>
@@ -69,12 +71,9 @@
         </form>
     </nx-expansion-panel>
 </nx-accordion>
-<nx-message
-    id="error_example"
-    *ngIf="infoHasError || paymentHasError"
-    context="error"
-    class="nx-margin-top-xs"
->
+@if (infoHasError || paymentHasError) {
+<nx-message id="error_example" context="error" class="nx-margin-top-xs">
     <strong> Error: </strong> Please check the section containing an error
     marked with a red triangle with an exclamation mark.
 </nx-message>
+}

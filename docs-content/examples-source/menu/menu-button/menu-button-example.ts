@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import {
+    NxMenuButtonComponent,
+    NxMenuButtonIconDirective,
+} from '@aposin/ng-aquila/menu';
 
 /**
  * @title Menu button variations
@@ -7,6 +12,12 @@ import { Component } from '@angular/core';
     selector: 'menu-button-example',
     templateUrl: 'menu-button-example.html',
     styleUrls: ['menu-button-example.css'],
+    standalone: true,
+    imports: [
+        NxMenuButtonComponent,
+        NxIconComponent,
+        NxMenuButtonIconDirective,
+    ],
 })
 export class MenuButtonExampleComponent {
     primaryExpanded = false;

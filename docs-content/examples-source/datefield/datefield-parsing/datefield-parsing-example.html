@@ -26,13 +26,15 @@
         </div>
     </div>
 
-    <div *ngIf="openedStrict" nxRow>
+    @if (openedStrict) {
+    <div nxRow>
         <div nxCol="12" class="debug-container">
             Current Locale: {{ currentLocale }} <br />
             Formatted value: {{ strictDatefield.currentFormattedDate }} <br />
             Moment Object: {{ strictDatefield.value }} <br />
         </div>
     </div>
+    }
 
     <div nxRow>
         <div nxCol="12">
@@ -61,13 +63,15 @@
         </div>
     </div>
 
-    <div *ngIf="openedNonStrict" nxRow>
+    @if (openedNonStrict) {
+    <div nxRow>
         <div nxCol="12" class="debug-container">
             Current Locale: {{ currentLocale }} <br />
             Formatted value: {{ nonStrictDatefield.currentFormattedDate }}<br />
             Moment Object: {{ nonStrictDatefield.value }} <br />
         </div>
     </div>
+    }
 
     <div nxRow>
         <div nxCol="12">

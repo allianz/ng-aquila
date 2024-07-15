@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {
+    NxTabComponent,
+    NxTabGroupComponent,
     TAB_GROUP_DEFAULT_OPTIONS,
     TabGroupDefaultOptions,
 } from '@aposin/ng-aquila/tabs';
@@ -18,6 +20,8 @@ const myDefaultOptions: TabGroupDefaultOptions = {
     providers: [
         { provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: myDefaultOptions },
     ],
+    standalone: true,
+    imports: [NxTabGroupComponent, NxTabComponent],
 })
 export class TabsInjectionTokenExampleComponent {
     currentIndex = 0;

@@ -1,0 +1,32 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, inject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxDateAdapter</span>,
+    <span class="hljs-title class_">NxDatefieldDirective</span>,
+    <span class="hljs-title class_">NxDatepickerComponent</span>,
+    <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Datefield readonly example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;datefield-readonly-example&#x27;</span>,
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./datefield-readonly-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./datefield-readonly-example.css&#x27;</span>],
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxFormfieldComponent</span>,
+        <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
+        <span class="hljs-title class_">NxDatepickerComponent</span>,
+        <span class="hljs-title class_">NxDatefieldDirective</span>,
+        <span class="hljs-title class_">FormsModule</span>,
+        <span class="hljs-title class_">NxInputModule</span>,
+    ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DatefieldReadonlyExample</span> {
+    adapter = <span class="hljs-title function_">inject</span>(<span class="hljs-title class_">NxDateAdapter</span>);
+    currentDate = <span class="hljs-variable language_">this</span>.<span class="hljs-property">adapter</span>.<span class="hljs-title function_">today</span>();
+}

@@ -2,16 +2,19 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Aria live example<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">aria-live</span>=<span class="hljs-string">&quot;assertive&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;calculationInProgress&quot;</span>&gt;</span>
+            @if (calculationInProgress) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Calculating Price. This can take a minute.<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-spinner</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;large&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;margin-auto&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-spinner</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!calculationInProgress&quot;</span>&gt;</span>
+            } @if (!calculationInProgress) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-small&quot;</span>&gt;</span>Awesome Product<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-data-display</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Price&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;margin-top-small&quot;</span>&gt;</span>
                     123,45 €
                 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-data-display</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            }
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
             <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
@@ -25,7 +28,8 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;margin-auto&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Spinner build in example<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;buildInProgress&quot;</span>&gt;</span>
+            @if (buildInProgress) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Calculating Price. This can take a minute.<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-spinner</span>
                     <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;large&quot;</span>
@@ -35,10 +39,12 @@
                 &gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-spinner</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!buildInProgress&quot;</span>&gt;</span>
+            } @if (!buildInProgress) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-small&quot;</span>&gt;</span>Awesome Product<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-data-display</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Price&quot;</span>&gt;</span> 123,45 € <span class="hljs-tag">&lt;/<span class="hljs-name">nx-data-display</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            }
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
             <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>

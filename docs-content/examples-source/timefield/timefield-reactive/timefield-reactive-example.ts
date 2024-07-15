@@ -1,5 +1,13 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxTimefieldComponent } from '@aposin/ng-aquila/timefield';
 
 /**
  * @title Timefield reactive forms example
@@ -8,6 +16,14 @@ import { FormBuilder, Validators } from '@angular/forms';
     selector: 'nx-timefield-reactive-example',
     templateUrl: './timefield-reactive-example.html',
     styleUrls: ['./timefield-reactive-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxTimefieldComponent,
+        NxErrorComponent,
+        JsonPipe,
+    ],
 })
 export class TimefieldReactiveExampleComponent {
     readonly testForm = this.fb.group({

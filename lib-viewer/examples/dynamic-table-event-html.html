@@ -13,10 +13,7 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-modal</span>
-    #<span class="hljs-attr">basicModal</span>
-    [<span class="hljs-attr">modalBody</span>]=<span class="hljs-string">&quot;ngIfModalBody&quot;</span>
-    [<span class="hljs-attr">showCloseIcon</span>]=<span class="hljs-string">&quot;false&quot;</span>
-    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;modalOpen&quot;</span>
-&gt;</span>
+@if (modalOpen) {
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-modal</span> #<span class="hljs-attr">basicModal</span> [<span class="hljs-attr">modalBody</span>]=<span class="hljs-string">&quot;ngIfModalBody&quot;</span> [<span class="hljs-attr">showCloseIcon</span>]=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-modal</span>&gt;</span>
+}

@@ -24,8 +24,13 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxRatingModule, ReactiveFormsModule, FormsModule, CommonModule],
-    declarations: [EXAMPLES],
+    imports: [
+        NxRatingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        CommonModule,
+        EXAMPLES,
+    ],
     exports: [EXAMPLES],
 })
 export class RatingExamplesModule {

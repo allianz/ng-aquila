@@ -2,6 +2,7 @@
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">IPaginationTexts</span>,
     <span class="hljs-variable constant_">NX_PAGINATION_TEXTS</span>,
+    <span class="hljs-title class_">NxPaginationComponent</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/pagination&#x27;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">myPaginationTexts</span>: <span class="hljs-title class_">IPaginationTexts</span> = {
@@ -21,6 +22,8 @@
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./pagination-localize-advanced-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./pagination-localize-advanced-example.css&#x27;</span>],
     <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">NX_PAGINATION_TEXTS</span>, <span class="hljs-attr">useValue</span>: myPaginationTexts }],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxPaginationComponent</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PaginationLocalizeAdvancedExampleComponent</span> {
     page = <span class="hljs-number">1</span>;

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxPaginationComponent } from '@aposin/ng-aquila/pagination';
 
 /**
  * @title Advanced Pagination Example
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
     selector: 'pagination-advanced-example',
     templateUrl: './pagination-advanced-example.html',
     styleUrls: ['./pagination-advanced-example.css'],
+    standalone: true,
+    imports: [NxPaginationComponent],
 })
 export class PaginationAdvancedExampleComponent {
     count = 210;

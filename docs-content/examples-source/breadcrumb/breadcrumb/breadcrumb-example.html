@@ -1,9 +1,11 @@
 <nav aria-label="Breadcrumb">
     <ol nxBreadcrumb>
-        <li *ngFor="let item of items; let i = index; last as isLast">
+        @for (item of items; track item; let i = $index; let isLast = $last) {
+        <li>
             <a nxBreadcrumbItem [routerLink]="isLast ? null : '#'">
                 {{ item }}
             </a>
         </li>
+        }
     </ol>
 </nav>

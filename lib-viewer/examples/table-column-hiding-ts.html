@@ -1,9 +1,23 @@
 <span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">CdkDrag</span>,
     <span class="hljs-title class_">CdkDragDrop</span>,
+    <span class="hljs-title class_">CdkDropList</span>,
+    <span class="hljs-title class_">CdkDropListGroup</span>,
     moveItemInArray,
     transferArrayItem,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/drag-drop&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ChangeDetectorRef</span>, <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">RouterLink</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/router&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBadgeComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/badge&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxCheckboxComponent</span>,
+    <span class="hljs-title class_">NxCheckboxGroupComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/checkbox&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxContextMenuModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/context-menu&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLinkComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/link&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTableModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/table&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Table Column Options
@@ -12,6 +26,21 @@
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;table-column-hiding-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./table-column-hiding-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./table-column-hiding-example.css&#x27;</span>],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxButtonComponent</span>,
+        <span class="hljs-title class_">CdkDropListGroup</span>,
+        <span class="hljs-title class_">NxCheckboxGroupComponent</span>,
+        <span class="hljs-title class_">CdkDropList</span>,
+        <span class="hljs-title class_">FormsModule</span>,
+        <span class="hljs-title class_">CdkDrag</span>,
+        <span class="hljs-title class_">NxCheckboxComponent</span>,
+        <span class="hljs-title class_">NxLinkComponent</span>,
+        <span class="hljs-title class_">RouterLink</span>,
+        <span class="hljs-title class_">NxBadgeComponent</span>,
+        <span class="hljs-title class_">NxTableModule</span>,
+        <span class="hljs-title class_">NxContextMenuModule</span>,
+    ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TableCoumnHidingExampleComponent</span> {
     <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _cdr: ChangeDetectorRef</span>) {}

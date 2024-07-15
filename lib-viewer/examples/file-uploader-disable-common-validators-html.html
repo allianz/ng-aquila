@@ -33,30 +33,36 @@
             Add File
         <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;testForm.controls[&#x27;documents&#x27;].hasError(&#x27;required&#x27;)&quot;</span>
-            &gt;</span>Required!&lt;/nx-error
-        &gt;
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;testForm.controls[&#x27;documents&#x27;].hasError(&#x27;serverError&#x27;)&quot;</span>
-            &gt;</span>An error occured while uploading.&lt;/nx-error
-        &gt;
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;documentUpload?.errors?.length&quot;</span>&gt;</span>
+        @if (testForm.controls[&#x27;documents&#x27;].hasError(&#x27;required&#x27;)) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>Required!<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        } @if (testForm.controls[&#x27;documents&#x27;].hasError(&#x27;serverError&#x27;)) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>An error occured while uploading.<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        } @if (documentUpload?.errors?.length) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
             Errors:
             <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let error of documentUpload?.errors&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;error.type === &#x27;fileType&#x27;&quot;</span>&gt;</span>
+                @for (error of documentUpload?.errors; track error) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                    @if (error.type === &#x27;fileType&#x27;) {
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
                         &quot;{{error.filename}}&quot; could not be uploaded. The
                         supported extensions us PNG.
                     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;error.type === &#x27;fileSize&#x27;&quot;</span>&gt;</span>
+                    } @if (error.type === &#x27;fileSize&#x27;) {
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
                         &quot;{{error.filename}}&quot; could not be uploaded. max file
                         size is {{ error.max }}.
                     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;error.type === &#x27;fileNumber&#x27;&quot;</span>&gt;</span>
+                    } @if (error.type === &#x27;fileNumber&#x27;) {
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
                         You cannot upload more than {{ error.max }} documents.
                     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    }
                 <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                }
             <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        }
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-file-uploader</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 
@@ -81,7 +87,7 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>
-validators: {{testForm.controls[&#x27;documents&#x27;].errors | json}}
-<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span>
-errors property: {{ documentUpload?.errors | json }}
-<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+          validators: {{testForm.controls[&#x27;documents&#x27;].errors | json}}
+          <span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span>
+          errors property: {{ documentUpload?.errors | json }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>

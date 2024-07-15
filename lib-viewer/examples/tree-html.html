@@ -12,12 +12,9 @@
                 <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;{{node.label}}&quot;</span>
                 <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
             &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;node.icon&quot;</span>
-                    <span class="hljs-attr">nxActionIcon</span>
-                    [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;node.icon&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                {{node.label}}
+                @if (node.icon) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">nxActionIcon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;node.icon&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                } {{node.label}}
             <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tree-node</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-tree-node</span> *<span class="hljs-attr">nxTreeNodeDef</span>=<span class="hljs-string">&quot;let node; when: _hasChild&quot;</span>&gt;</span>
@@ -32,12 +29,9 @@
                 <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;{{node.label}}&quot;</span>
                 <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
             &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;node.icon&quot;</span>
-                    <span class="hljs-attr">nxActionIcon</span>
-                    [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;node.icon&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                {{node.label}}
+                @if (node.icon) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">nxActionIcon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;node.icon&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                } {{node.label}}
             <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tree-node</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tree</span>&gt;</span>

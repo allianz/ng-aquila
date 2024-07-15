@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {
+    NxCircleToggleComponent,
+    NxCircleToggleGroupComponent,
+} from '@aposin/ng-aquila/circle-toggle';
 
 /**
  * @title Circle toggle group expert default example
@@ -7,6 +11,8 @@ import { Component } from '@angular/core';
     selector: 'circle-toggle-group-expert-example',
     templateUrl: './circle-toggle-group-expert-example.html',
     styleUrls: ['./circle-toggle-group-expert-example.css'],
+    standalone: true,
+    imports: [NxCircleToggleGroupComponent, NxCircleToggleComponent],
 })
 export class CircleToggleGroupExpertExampleComponent {
     sampleValues = [

@@ -1,11 +1,12 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle-group</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;toggleGroupModel&quot;</span>&gt;</span>
+    @for (item of sampleValues; track item) {
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle</span>
-        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of sampleValues&quot;</span>
         [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item.value&quot;</span>
         [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;item.icon&quot;</span>
         [<span class="hljs-attr">hint</span>]=<span class="hljs-string">&quot;item.hint&quot;</span>
         [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;item.label&quot;</span>
     &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
+    }
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle-group</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Try to set the value to A, B or C<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>

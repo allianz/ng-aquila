@@ -1,15 +1,17 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield-label</span>&gt;</span>Phone number<span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield-label</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-phone-input</span> [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;phoneControl&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-phone-input</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;phoneControl.errors?.phoneNumber&quot;</span>&gt;</span>
-        Please provide a valid phone number
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    @if (phoneControl.errors?.phoneNumber) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> Please provide a valid phone number <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    }
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield-label</span>&gt;</span>Mobile phone number<span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield-label</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-phone-input</span> [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;mobilePhoneControl&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-phone-input</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;mobilePhoneControl.errors?.phoneNumber&quot;</span>&gt;</span>
+    @if (mobilePhoneControl.errors?.phoneNumber) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
         Please provide a valid mobile phone number
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    }
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>

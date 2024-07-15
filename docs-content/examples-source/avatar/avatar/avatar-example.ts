@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NxAvatarComponent } from '@aposin/ng-aquila/avatar';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import { NxFigureComponent } from '@aposin/ng-aquila/image';
 /**
  * @title Avatar example
  */
@@ -6,5 +9,7 @@ import { Component } from '@angular/core';
     selector: 'avatar-example',
     templateUrl: './avatar-example.html',
     styleUrls: ['./avatar-example.css'],
+    standalone: true,
+    imports: [NxAvatarComponent, NxIconComponent, NxFigureComponent],
 })
 export class AvatarExampleComponent {}

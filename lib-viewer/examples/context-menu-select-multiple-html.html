@@ -2,14 +2,15 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu-header</span>&gt;</span>Car damage<span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu-header</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox-group</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;selected&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu-item-wrap</span>&gt;</span>
+            @for (o of options; track o) {
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
                 <span class="hljs-attr">nxContextMenuItem</span>
                 <span class="hljs-attr">nxContextMenuItemCheckbox</span>
                 <span class="hljs-attr">disableCloseOnSelect</span>
-                *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let o of options&quot;</span>
             &gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;o.value&quot;</span>&gt;</span>{{o.label}}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            }
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu-item-wrap</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox-group</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu</span>&gt;</span>

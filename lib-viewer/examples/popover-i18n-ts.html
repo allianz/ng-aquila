@@ -1,5 +1,10 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Injectable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPopoverIntl</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/popover&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxPopoverComponent</span>,
+    <span class="hljs-title class_">NxPopoverIntl</span>,
+    <span class="hljs-title class_">NxPopoverTriggerDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/popover&#x27;</span>;
 
 <span class="hljs-meta">@Injectable</span>()
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPopoverIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">NxPopoverIntl</span> {
@@ -17,5 +22,7 @@
             <span class="hljs-attr">useClass</span>: <span class="hljs-title class_">MyPopoverIntl</span>,
         },
     ],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxButtonComponent</span>, <span class="hljs-title class_">NxPopoverTriggerDirective</span>, <span class="hljs-title class_">NxPopoverComponent</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PopoverI18nExampleComponent</span> {}

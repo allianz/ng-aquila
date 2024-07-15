@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {
+    NxActionComponent,
+    NxActionIconDirective,
+} from '@aposin/ng-aquila/action';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 interface Action {
     icon: string;
@@ -14,6 +19,8 @@ interface Action {
     selector: 'action-example',
     styleUrls: ['./action-example.css'],
     templateUrl: './action-example.html',
+    standalone: true,
+    imports: [NxActionComponent, NxIconComponent, NxActionIconDirective],
 })
 export class ActionExampleComponent implements OnInit {
     actions: Action[] = [

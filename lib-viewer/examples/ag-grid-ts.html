@@ -1,3 +1,4 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">AsyncPipe</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">HttpClient</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">ChangeDetectorRef</span>,
@@ -5,7 +6,8 @@
     <span class="hljs-title class_">ElementRef</span>,
     <span class="hljs-title class_">ViewChild</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">AgGridAngular</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;ag-grid-angular&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">AgGridAngular</span>, <span class="hljs-title class_">AgGridModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;ag-grid-angular&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">CellClickedEvent</span>,
     <span class="hljs-title class_">ColDef</span>,
@@ -22,6 +24,8 @@
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;ag-grid-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./ag-grid-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./ag-grid-example.css&#x27;</span>],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxButtonComponent</span>, <span class="hljs-title class_">AgGridModule</span>, <span class="hljs-title class_">AsyncPipe</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AgGridExampleComponent</span> {
     floatingFilter = <span class="hljs-literal">true</span>;

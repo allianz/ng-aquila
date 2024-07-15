@@ -1,10 +1,39 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">JsonPipe</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">OnDestroy</span>, <span class="hljs-title class_">ViewChild</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormBuilder</span>, <span class="hljs-title class_">FormControl</span>, <span class="hljs-title class_">Validators</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FormBuilder</span>,
+    <span class="hljs-title class_">FormControl</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">Validators</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxDropdownComponent</span>,
+    <span class="hljs-title class_">NxDropdownItemComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">NxMultiStepperComponent</span>,
+    <span class="hljs-title class_">NxMultiStepperComponent</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">NxMultiStepperComponent</span>_1,
     <span class="hljs-title class_">NxMultiStepperDirection</span>,
     <span class="hljs-title class_">NxProgressStepperDirective</span>,
+    <span class="hljs-title class_">NxStepComponent</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/progress-stepper&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxRadioToggleButtonComponent</span>,
+    <span class="hljs-title class_">NxRadioToggleComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/radio-toggle&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Subject</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 <span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
 
@@ -26,6 +55,26 @@
     <span class="hljs-attr">host</span>: {
         <span class="hljs-string">&#x27;[class.is-vertical]&#x27;</span>: <span class="hljs-string">&#x27;direction === &quot;vertical&quot;&#x27;</span>,
     },
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxMultiStepperComponent</span>_1,
+        <span class="hljs-title class_">NxStepComponent</span>,
+        <span class="hljs-title class_">NxLayoutComponent</span>,
+        <span class="hljs-title class_">NxRowComponent</span>,
+        <span class="hljs-title class_">NxColComponent</span>,
+        <span class="hljs-title class_">FormsModule</span>,
+        <span class="hljs-title class_">ReactiveFormsModule</span>,
+        <span class="hljs-title class_">NxFormfieldComponent</span>,
+        <span class="hljs-title class_">NxDropdownComponent</span>,
+        <span class="hljs-title class_">NxDropdownItemComponent</span>,
+        <span class="hljs-title class_">NxErrorComponent</span>,
+        <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+        <span class="hljs-title class_">NxButtonComponent</span>,
+        <span class="hljs-title class_">NxInputDirective</span>,
+        <span class="hljs-title class_">NxRadioToggleComponent</span>,
+        <span class="hljs-title class_">NxRadioToggleButtonComponent</span>,
+        <span class="hljs-title class_">JsonPipe</span>,
+    ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProgressStepperMultiVerticalExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnDestroy</span> {
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-title class_">NxProgressStepperDirective</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> })

@@ -1,4 +1,16 @@
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import {
+    NxRadioToggleButtonComponent,
+    NxRadioToggleComponent,
+} from '@aposin/ng-aquila/radio-toggle';
+import {
+    NxSidepanelCloseButtonComponent,
+    NxSidepanelComponent,
+    NxSidepanelContentComponent,
+    NxSidepanelHeaderComponent,
+    NxSidepanelOuterContainerComponent,
+} from '@aposin/ng-aquila/sidepanel';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -10,6 +22,17 @@ import { takeUntil } from 'rxjs/operators';
     selector: 'sidepanel-floating-example',
     templateUrl: './sidepanel-floating-example.html',
     styleUrls: ['sidepanel-floating-example.css'],
+    standalone: true,
+    imports: [
+        NxSidepanelOuterContainerComponent,
+        NxRadioToggleComponent,
+        FormsModule,
+        NxRadioToggleButtonComponent,
+        NxSidepanelComponent,
+        NxSidepanelHeaderComponent,
+        NxSidepanelCloseButtonComponent,
+        NxSidepanelContentComponent,
+    ],
 })
 export class SidepanelFloatingExampleComponent implements OnDestroy {
     opened = true;

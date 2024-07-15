@@ -1,4 +1,4 @@
-import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withJsonpSupport } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,18 +16,8 @@ import { AquilaDocsExample } from './app/aquila-docs-example';
 @NgModule({
     bootstrap: [AquilaDocsExample],
     declarations: [AquilaDocsExample],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        HttpClientJsonpModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        RouterModule.forRoot([]),
-        AquilaModule,
-        NgOptimizedImage,
-        AgGridModule,
-    ],
+    imports: [BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot([]), AquilaModule, NgOptimizedImage, AgGridModule],
+    providers: [provideHttpClient(withInterceptorsFromDi(), withJsonpSupport())],
 })
 export class AppModule {}
 

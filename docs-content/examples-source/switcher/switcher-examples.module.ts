@@ -23,8 +23,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxSwitcherModule, ExamplesSharedModule],
-    declarations: [EXAMPLES],
+    imports: [NxSwitcherModule, ExamplesSharedModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class SwitcherExamplesModule {

@@ -1,9 +1,14 @@
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
-import { NX_POPOVER_SCROLL_STRATEGY } from '@aposin/ng-aquila/popover';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NX_POPOVER_SCROLL_STRATEGY,
+    NxPopoverComponent,
+    NxPopoverTriggerDirective,
+} from '@aposin/ng-aquila/popover';
 
 function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
-    return () => overlay.scrollStrategies.close({ threshold: 100 });
+    return () => overlay.scrollStrategies.close();
 }
 
 /**
@@ -20,5 +25,7 @@ function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
             deps: [Overlay],
         },
     ],
+    standalone: true,
+    imports: [NxButtonComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverScrollStrategyProviderExampleComponent {}

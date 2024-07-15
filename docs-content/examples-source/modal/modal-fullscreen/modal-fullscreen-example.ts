@@ -1,5 +1,13 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { NxDialogService } from '@aposin/ng-aquila/modal';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
+import {
+    NxDialogService,
+    NxModalActionsDirective,
+    NxModalCloseDirective,
+    NxModalContentDirective,
+} from '@aposin/ng-aquila/modal';
 
 /**
  * @title Fullscreen example
@@ -8,6 +16,15 @@ import { NxDialogService } from '@aposin/ng-aquila/modal';
     selector: 'modal-fullscreen-example',
     templateUrl: './modal-fullscreen-example.html',
     styleUrls: ['./modal-fullscreen-example.css'],
+    standalone: true,
+    imports: [
+        NxButtonComponent,
+        NxModalContentDirective,
+        NxHeadlineComponent,
+        NxCopytextComponent,
+        NxModalActionsDirective,
+        NxModalCloseDirective,
+    ],
 })
 export class ModalFullscreenExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;

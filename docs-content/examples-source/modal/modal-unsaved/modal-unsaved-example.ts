@@ -4,8 +4,28 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
+import {
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+} from '@angular/forms';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
+import {
+    NxDialogService,
+    NxModalActionsDirective,
+    NxModalCloseDirective,
+    NxModalContentDirective,
+    NxModalRef,
+} from '@aposin/ng-aquila/modal';
+import {
+    NxPopoverComponent,
+    NxPopoverTriggerDirective,
+} from '@aposin/ng-aquila/popover';
 import { delay } from 'rxjs/operators';
 
 type MyDialogResult = 'proceed' | 'cancel';
@@ -18,6 +38,21 @@ type MyDialogResult = 'proceed' | 'cancel';
     templateUrl: './modal-unsaved-example.html',
     styleUrls: ['./modal-unsaved-example.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        NxButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        NxModalContentDirective,
+        NxHeadlineComponent,
+        NxFormfieldComponent,
+        NxInputDirective,
+        NxModalActionsDirective,
+        NxPopoverTriggerDirective,
+        NxModalCloseDirective,
+        NxPopoverComponent,
+        NxIconComponent,
+    ],
 })
 export class ModalUnsavedExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;
@@ -47,7 +82,6 @@ export class ModalUnsavedExampleComponent {
     }
 
     onSubmit(): void {
-        console.log('form submitted', this.formGroup.get('text')?.value);
         this.formGroup.reset();
     }
 

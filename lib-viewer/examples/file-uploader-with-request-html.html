@@ -21,7 +21,9 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-file-uploader</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;showUploadError&quot;</span>&gt;</span> An error occured while uploading. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+@if (showUploadError) {
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> An error occured while uploading. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+}
 
 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
     <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>

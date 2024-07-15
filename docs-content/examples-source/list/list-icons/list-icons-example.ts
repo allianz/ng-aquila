@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxListComponent, NxListIconComponent } from '@aposin/ng-aquila/list';
 
 /**
  * @title Lists with icons examples
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
     selector: 'list-icons-example',
     templateUrl: './list-icons-example.html',
     styleUrls: ['./list-icons-example.css'],
+    standalone: true,
+    imports: [NxListComponent, NxListIconComponent],
 })
 export class ListIconsExampleComponent {}

@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import {
+    NxHeaderCellDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+} from '@aposin/ng-aquila/table';
 
 /**
  * @title Sticky Header Table
@@ -7,6 +13,13 @@ import { Component } from '@angular/core';
     selector: 'table-sticky-header-example',
     templateUrl: './table-sticky-header-example.html',
     styleUrls: ['./table-sticky-header-example.css'],
+    standalone: true,
+    imports: [
+        NxTableComponent,
+        NxTableRowComponent,
+        NxHeaderCellDirective,
+        NxTableCellComponent,
+    ],
 })
 export class TableStickyHeaderExampleComponent {
     tableElements = [

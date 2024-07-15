@@ -26,8 +26,8 @@ const EXAMPLES = [
         RouterModule,
         NxLinkModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class NotificationExamplesModule {

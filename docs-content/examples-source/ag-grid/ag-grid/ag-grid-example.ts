@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import {
     ChangeDetectorRef,
@@ -5,7 +6,8 @@ import {
     ElementRef,
     ViewChild,
 } from '@angular/core';
-import { AgGridAngular } from 'ag-grid-angular';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
 import {
     CellClickedEvent,
     ColDef,
@@ -22,6 +24,8 @@ import { Observable } from 'rxjs';
     selector: 'ag-grid-example',
     templateUrl: './ag-grid-example.html',
     styleUrls: ['./ag-grid-example.css'],
+    standalone: true,
+    imports: [NxButtonComponent, AgGridModule, AsyncPipe],
 })
 export class AgGridExampleComponent {
     floatingFilter = true;

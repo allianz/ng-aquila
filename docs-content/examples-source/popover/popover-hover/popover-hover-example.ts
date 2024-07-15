@@ -6,6 +6,11 @@ import {
     OnDestroy,
     ViewChild,
 } from '@angular/core';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import {
+    NxPopoverComponent,
+    NxPopoverTriggerDirective,
+} from '@aposin/ng-aquila/popover';
 
 /**
  * @title Popover Hover Example
@@ -14,6 +19,8 @@ import {
     selector: 'popover-hover-example',
     templateUrl: './popover-hover-example.html',
     styleUrls: ['./popover-hover-example.css'],
+    standalone: true,
+    imports: [NxIconComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverHoverExampleComponent implements AfterViewInit, OnDestroy {
     popoverManualOpenFlag = false;

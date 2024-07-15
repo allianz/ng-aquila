@@ -1,4 +1,7 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 interface MyDialogData {
@@ -12,6 +15,8 @@ interface MyDialogData {
     selector: 'modal-data-injection-example',
     templateUrl: './modal-data-injection-example.html',
     styleUrls: ['./modal-data-injection-example.css'],
+    standalone: true,
+    imports: [NxButtonComponent, NxHeadlineComponent, NxCopytextComponent],
 })
 export class ModalDataInjectionExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;

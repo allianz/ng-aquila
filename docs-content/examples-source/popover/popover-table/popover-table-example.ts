@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NxDynamicTableColumnDefinition } from '@aposin/ng-aquila/dynamic-table';
+import {
+    NxDynamicTableColumnDefinition,
+    NxDynamicTableComponent,
+} from '@aposin/ng-aquila/dynamic-table';
 
 /**
  * @title Popover Table Example
@@ -8,6 +11,8 @@ import { NxDynamicTableColumnDefinition } from '@aposin/ng-aquila/dynamic-table'
     selector: 'popover-table-example',
     templateUrl: './popover-table-example.html',
     styleUrls: ['./popover-table-example.css'],
+    standalone: true,
+    imports: [NxDynamicTableComponent],
 })
 export class PopoverTableExampleComponent {
     data = [

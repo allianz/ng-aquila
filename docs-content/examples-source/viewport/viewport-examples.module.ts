@@ -16,8 +16,8 @@ const EXAMPLES = [ViewportChangeExampleComponent];
         RouterModule,
         CommonModule,
         NxActionModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class ViewportExamplesModule {

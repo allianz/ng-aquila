@@ -1,5 +1,12 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxSliderComponent } from '@aposin/ng-aquila/slider';
 
 /**
  * @title Slider Reactive Form Example
@@ -8,6 +15,8 @@ import { FormBuilder, Validators } from '@angular/forms';
     selector: 'slider-reactive-example',
     templateUrl: './slider-reactive-example.html',
     styleUrls: ['./slider-reactive-example.css'],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NxSliderComponent, JsonPipe],
 })
 export class SliderReactiveExampleComponent {
     readonly testForm = this.fb.group({

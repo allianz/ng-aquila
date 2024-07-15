@@ -16,8 +16,8 @@ const EXAMPLES = [TreeExampleComponent];
         NxActionModule,
         RouterModule,
         CommonModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class TreeExamplesModule {

@@ -26,22 +26,25 @@
             </button>
         </nx-file-uploader-drop-zone>
 
-        <nx-error *ngIf="testForm.controls['documents']?.errors">
+        @if (testForm.controls['documents']?.errors) {
+        <nx-error>
             <div class="nx-font-weight-bold">Error</div>
             <ul>
-                <li *ngIf="testForm.controls['documents'].hasError('required')">
-                    Required!
-                </li>
-                <li
-                    *ngIf="testForm.controls['documents'].hasError('NxFileUploadFileTypeNotAccepted')"
-                >
+                @if (testForm.controls['documents'].hasError('required')) {
+                <li>Required!</li>
+                } @if
+                (testForm.controls['documents'].hasError('NxFileUploadFileTypeNotAccepted'))
+                {
+                <li>
                     File
                     {{testForm.controls['documents'].getError('NxFileUploadFileTypeNotAccepted').fileName
                     | json}} can not be uploaded. This file type is not
                     supported!
                 </li>
+                }
             </ul>
         </nx-error>
+        }
     </nx-file-uploader>
 
     <button

@@ -68,8 +68,8 @@ const EXAMPLES = [
         NxSpinnerModule,
         NxSwipebarModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class ComparisonExamplesModule {

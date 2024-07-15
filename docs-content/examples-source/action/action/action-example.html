@@ -1,9 +1,10 @@
+@for (action of actions; track action) {
 <button
     nxAction
-    *ngFor="let action of actions"
     (click)="onSelect(action)"
     [selected]="action === selectedAction"
 >
     <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
     {{action.label}}
 </button>
+}

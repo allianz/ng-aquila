@@ -1,9 +1,10 @@
 <nx-formfield label="Label">
     <input nxInput #inputToCount maxlength="15" (input)="onInput()" />
     <span nxFormfieldHint>
-        <span *ngIf="count === 0"> max. 15 characters </span>
-        <span *ngIf="count > 0">
-            {{15 - (count || 0)}} characters remaining
-        </span>
+        @if (count === 0) {
+        <span> max. 15 characters </span>
+        } @if (count > 0) {
+        <span> {{15 - (count || 0)}} characters remaining </span>
+        }
     </span>
 </nx-formfield>

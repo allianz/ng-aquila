@@ -7,10 +7,8 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>
-            <span class="hljs-attr">nxTableRow</span>
-            *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let margin of marginSizes | keyvalue: returnZero&quot;</span>
-        &gt;</span>
+        @for (margin of marginSizes | keyvalue: returnZero; track margin) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{margin.key}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{margin.value}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
@@ -21,5 +19,6 @@
                 &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        }
     <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>

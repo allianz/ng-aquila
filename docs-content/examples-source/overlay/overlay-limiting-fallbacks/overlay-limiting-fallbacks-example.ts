@@ -1,4 +1,6 @@
+import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
     NxOverlayConfig,
     NxOverlayDirection,
@@ -13,6 +15,8 @@ import {
     selector: 'overlay-limiting-fallbacks-example',
     templateUrl: './overlay-limiting-fallbacks-example.html',
     styleUrls: ['./overlay-limiting-fallbacks-example.css'],
+    standalone: true,
+    imports: [NxButtonComponent, CdkOverlayOrigin],
 })
 export class OverlayLimitingFallbacksExampleComponent {
     fallbacks: NxOverlayDirection[] = ['top', 'bottom'];

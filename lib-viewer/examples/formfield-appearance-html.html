@@ -106,10 +106,11 @@
                     (<span class="hljs-attr">input</span>)=<span class="hljs-string">&quot;onInput()&quot;</span>
                 /&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;count === 0&quot;</span>&gt;</span> max. 15 characters <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;count &gt; 0&quot;</span>&gt;</span>
-                        {{15 - count }} characters remaining
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    @if (count === 0) {
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> max. 15 characters <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    } @if (count &gt; 0) {
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> {{15 - count }} characters remaining <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    }
                 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

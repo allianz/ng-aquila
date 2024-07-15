@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
 
 /**
  * @title Standalone example
@@ -7,5 +9,7 @@ import { Component } from '@angular/core';
     selector: 'input-standalone-example',
     templateUrl: './input-standalone-example.html',
     styleUrls: ['./input-standalone-example.css'],
+    standalone: true,
+    imports: [NxFormfieldComponent, NxInputDirective],
 })
 export class InputStandaloneExampleComponent {}

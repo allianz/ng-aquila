@@ -2,14 +2,15 @@
     <nx-context-menu-header>Car damage</nx-context-menu-header>
     <nx-checkbox-group [(ngModel)]="selected">
         <nx-context-menu-item-wrap>
+            @for (o of options; track o) {
             <div
                 nxContextMenuItem
                 nxContextMenuItemCheckbox
                 disableCloseOnSelect
-                *ngFor="let o of options"
             >
                 <nx-checkbox [value]="o.value">{{o.label}}</nx-checkbox>
             </div>
+            }
         </nx-context-menu-item-wrap>
     </nx-checkbox-group>
 </nx-context-menu>

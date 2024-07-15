@@ -14,8 +14,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxBreadcrumbModule, CommonModule, RouterModule],
-    declarations: [EXAMPLES],
+    imports: [NxBreadcrumbModule, CommonModule, RouterModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class BreadcrumbExamplesModule {

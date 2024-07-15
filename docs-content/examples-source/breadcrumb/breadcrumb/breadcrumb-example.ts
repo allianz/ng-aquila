@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import {
+    NxBreadcrumbComponent,
+    NxBreadcrumbItemComponent,
+} from '@aposin/ng-aquila/breadcrumb';
 
 /**
  * @title Basic usage
@@ -7,6 +12,8 @@ import { Component } from '@angular/core';
     selector: 'breadcrumb-example',
     templateUrl: './breadcrumb-example.html',
     styleUrls: ['./breadcrumb-example.css'],
+    standalone: true,
+    imports: [NxBreadcrumbComponent, NxBreadcrumbItemComponent, RouterLink],
 })
 export class BreadcrumbExampleComponent {
     items = ['Home', 'Insurance', 'Health Insurance'];

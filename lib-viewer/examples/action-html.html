@@ -1,9 +1,10 @@
+@for (action of actions; track action) {
 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
     <span class="hljs-attr">nxAction</span>
-    *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let action of actions&quot;</span>
     (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;onSelect(action)&quot;</span>
     [<span class="hljs-attr">selected</span>]=<span class="hljs-string">&quot;action === selectedAction&quot;</span>
 &gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">nxActionIcon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;action.icon&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
     {{action.label}}
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+}

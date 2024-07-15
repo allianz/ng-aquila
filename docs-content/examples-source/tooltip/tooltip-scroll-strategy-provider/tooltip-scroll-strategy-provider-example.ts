@@ -1,9 +1,13 @@
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
-import { NX_TOOLTIP_SCROLL_STRATEGY } from '@aposin/ng-aquila/tooltip';
+import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
+import {
+    NX_TOOLTIP_SCROLL_STRATEGY,
+    NxTooltipDirective,
+} from '@aposin/ng-aquila/tooltip';
 
 function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
-    return () => overlay.scrollStrategies.close({ threshold: 100 });
+    return () => overlay.scrollStrategies.close();
 }
 
 /**
@@ -20,5 +24,7 @@ function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
             deps: [Overlay],
         },
     ],
+    standalone: true,
+    imports: [NxBadgeComponent, NxTooltipDirective],
 })
 export class TooltipScrollStrategyProviderExampleComponent {}

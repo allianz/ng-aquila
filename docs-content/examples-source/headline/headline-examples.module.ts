@@ -20,8 +20,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxHeadlineModule, NxLinkModule, NxTableModule],
-    declarations: [EXAMPLES],
+    imports: [NxHeadlineModule, NxLinkModule, NxTableModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class HeadlineExamplesModule {

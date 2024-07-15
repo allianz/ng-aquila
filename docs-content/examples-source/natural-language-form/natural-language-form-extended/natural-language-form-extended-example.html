@@ -21,15 +21,11 @@
         <span>and see</span>
         <nx-word size="regular" label="Always a label">
             <input nxInput formControlName="spots" />
-            <div
-                nxError
-                *ngIf="naturalForm.controls.spots.hasError('required')"
-            >
-                This field is required.
-            </div>
-            <div nxError *ngIf="naturalForm.controls.spots.hasError('pattern')">
-                Only numbers are allowed.
-            </div>
+            @if (naturalForm.controls.spots.hasError('required')) {
+            <div nxError>This field is required.</div>
+            } @if (naturalForm.controls.spots.hasError('pattern')) {
+            <div nxError>Only numbers are allowed.</div>
+            }
         </nx-word>
         <span> nice spots.</span>
     </nx-natural-language-form>

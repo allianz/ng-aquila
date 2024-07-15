@@ -1,7 +1,8 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-small-stage</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Breadcrumb&quot;</span> <span class="hljs-attr">nxSmallStageHeader</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">nxBreadcrumb</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of dynamicItems; let i = index&quot;</span>&gt;</span>
+            @for (item of dynamicItems; track item; let i = $index) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
                     <span class="hljs-attr">nxBreadcrumbItem</span>
                     (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;goToItem(i)&quot;</span>
@@ -10,6 +11,7 @@
                     {{ item }}
                 <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            }
         <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-small-stage-image</span>

@@ -1,4 +1,13 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
+import { NxLinkComponent } from '@aposin/ng-aquila/link';
+import {
+    NxHeaderCellDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+} from '@aposin/ng-aquila/table';
 
 /**
  * @title Zebra mode example
@@ -7,6 +16,16 @@ import { Component } from '@angular/core';
     selector: 'table-zebra-example',
     templateUrl: './table-zebra-example.html',
     styleUrls: ['./table-zebra-example.css'],
+    standalone: true,
+    imports: [
+        NxTableComponent,
+        NxTableRowComponent,
+        NxHeaderCellDirective,
+        NxTableCellComponent,
+        NxLinkComponent,
+        RouterLink,
+        NxBadgeComponent,
+    ],
 })
 export class TableZebraExampleComponent {
     tableElements = [

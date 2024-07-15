@@ -5,4 +5,6 @@
     (<span class="hljs-attr">onTagClick</span>)=<span class="hljs-string">&quot;log($event)&quot;</span>
 &gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-taglist</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">pre</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;logMessage&quot;</span>&gt;</span>{{logMessage}}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+@if (logMessage) {
+<span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{{logMessage}}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+}

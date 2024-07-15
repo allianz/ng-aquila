@@ -1,4 +1,28 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+    NxExpansionPanelComponent,
+    NxExpansionPanelHeaderComponent,
+    NxExpansionPanelTitleDirective,
+} from '@aposin/ng-aquila/accordion';
+import { NxPlainButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxComparisonTableCell,
+    NxComparisonTableComponent,
+    NxComparisonTableDescriptionCell,
+    NxComparisonTableIntersectionCell,
+    NxComparisonTablePopularCell,
+    NxComparisonTableRowDirective,
+    NxComparisonTableRowGroupDirective,
+    NxComparisonTableSelectButton,
+} from '@aposin/ng-aquila/comparison-table';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import { NxListComponent, NxListIconComponent } from '@aposin/ng-aquila/list';
+import {
+    NxPopoverComponent,
+    NxPopoverTriggerDirective,
+} from '@aposin/ng-aquila/popover';
+import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -8,6 +32,28 @@ import { takeUntil } from 'rxjs/operators';
     selector: 'comparison-table-with-intersection-example',
     templateUrl: './comparison-table-with-intersection-example.html',
     styleUrls: ['./comparison-table-with-intersection-example.css'],
+    standalone: true,
+    imports: [
+        NxExpansionPanelComponent,
+        NxExpansionPanelHeaderComponent,
+        NxExpansionPanelTitleDirective,
+        NgTemplateOutlet,
+        NxSwipebarComponent,
+        NxComparisonTableComponent,
+        NxComparisonTableRowDirective,
+        NxComparisonTablePopularCell,
+        NxPlainButtonComponent,
+        NxPopoverTriggerDirective,
+        NxIconComponent,
+        NxPopoverComponent,
+        NxComparisonTableCell,
+        NxComparisonTableSelectButton,
+        NxComparisonTableDescriptionCell,
+        NxComparisonTableIntersectionCell,
+        NxComparisonTableRowGroupDirective,
+        NxListComponent,
+        NxListIconComponent,
+    ],
 })
 export class ComparisonTableWithIntersectionExampleComponent
     implements OnInit, OnDestroy

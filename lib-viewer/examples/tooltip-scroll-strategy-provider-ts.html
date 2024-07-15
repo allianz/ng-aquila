@@ -1,9 +1,13 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Overlay</span>, <span class="hljs-title class_">ScrollStrategy</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/overlay&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">NX_TOOLTIP_SCROLL_STRATEGY</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tooltip&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBadgeComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/badge&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-variable constant_">NX_TOOLTIP_SCROLL_STRATEGY</span>,
+    <span class="hljs-title class_">NxTooltipDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tooltip&#x27;</span>;
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">scrollStrategyFactory</span>(<span class="hljs-params">overlay: Overlay</span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ScrollStrategy</span> {
-    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> overlay.<span class="hljs-property">scrollStrategies</span>.<span class="hljs-title function_">close</span>({ <span class="hljs-attr">threshold</span>: <span class="hljs-number">100</span> });
+    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> overlay.<span class="hljs-property">scrollStrategies</span>.<span class="hljs-title function_">close</span>();
 }
 
 <span class="hljs-comment">/**
@@ -20,5 +24,7 @@
             <span class="hljs-attr">deps</span>: [<span class="hljs-title class_">Overlay</span>],
         },
     ],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxBadgeComponent</span>, <span class="hljs-title class_">NxTooltipDirective</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TooltipScrollStrategyProviderExampleComponent</span> {}

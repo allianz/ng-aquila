@@ -7,10 +7,9 @@
                     filterPlaceholder="Type to search car"
                     [filterFn]="myFilter"
                 >
-                    <nx-dropdown-item
-                        *ngFor="let brand of demoData"
-                        [value]="brand"
-                    ></nx-dropdown-item>
+                    @for (brand of demoData; track brand) {
+                    <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+                    }
                 </nx-dropdown>
             </nx-formfield>
         </div>

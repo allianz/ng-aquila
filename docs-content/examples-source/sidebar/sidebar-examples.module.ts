@@ -30,8 +30,8 @@ const EXAMPLES = [
         RouterModule,
         NxActionModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class SidebarExamplesModule {

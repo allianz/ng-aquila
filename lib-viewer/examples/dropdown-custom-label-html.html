@@ -6,12 +6,11 @@
                     <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> <span class="hljs-attr">nxClosedLabel</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{{ customLabelDropdownValue?.prefix }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span>
-                        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of telPrefixDemoData&quot;</span>
-                        [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>
-                    &gt;</span>
+                    @for (item of telPrefixDemoData; track item) {
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>
                         {{ item.prefix }} ({{ item.countryId }})
                     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+                    }
                 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

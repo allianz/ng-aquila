@@ -7,14 +7,15 @@
     >
     </nx-code-input>
 
-    <div *ngIf="codeInput.errorState">
-        <nx-error *ngIf="keyCode?.hasError('required')" class="nx-margin-y-xs">
-            Entry is required.
-        </nx-error>
-        <nx-error *ngIf="keyCode?.hasError('minlength')" class="nx-margin-y-xs">
-            Entry is too short.
-        </nx-error>
+    @if (codeInput.errorState) {
+    <div>
+        @if (keyCode?.hasError('required')) {
+        <nx-error class="nx-margin-y-xs"> Entry is required. </nx-error>
+        } @if (keyCode?.hasError('minlength')) {
+        <nx-error class="nx-margin-y-xs"> Entry is too short. </nx-error>
+        }
     </div>
+    }
 
     <br />
     <button nxButton="primary small" type="submit">Submit</button>

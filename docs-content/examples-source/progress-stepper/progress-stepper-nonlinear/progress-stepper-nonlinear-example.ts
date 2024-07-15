@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxMultiStepperComponent,
+    NxStepComponent,
+    NxStepperNextDirective,
+    NxStepperPreviousDirective,
+} from '@aposin/ng-aquila/progress-stepper';
 
 /**
  * @title Progress Indicator non linear step completion example
@@ -7,6 +14,14 @@ import { Component } from '@angular/core';
     selector: 'progress-stepper-nonlinear-example',
     templateUrl: './progress-stepper-nonlinear-example.html',
     styleUrls: ['./progress-stepper-nonlinear-example.css'],
+    standalone: true,
+    imports: [
+        NxMultiStepperComponent,
+        NxStepComponent,
+        NxButtonComponent,
+        NxStepperPreviousDirective,
+        NxStepperNextDirective,
+    ],
 })
 export class ProgressStepperNonlinearExampleComponent {
     multiSteps = [

@@ -21,10 +21,8 @@
     </div>
     <form [formGroup]="myFormGroup">
         <div nxRow formArrayName="cards">
-            <div
-                *ngFor="let card of cards.controls; index as i"
-                nxCol="12,12,12,4"
-            >
+            @for (card of cards.controls; track card; let i = $index) {
+            <div nxCol="12,12,12,4">
                 <nx-selectable-card
                     [formControlName]="i"
                     class="nx-margin-bottom-xs"
@@ -34,6 +32,7 @@
                     </h3>
                 </nx-selectable-card>
             </div>
+            }
         </div>
         <p>Form value: {{ myFormGroup.value | json }}</p>
     </form>

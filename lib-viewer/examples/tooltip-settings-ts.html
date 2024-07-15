@@ -1,7 +1,9 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBadgeComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/badge&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-variable constant_">NX_TOOLTIP_DEFAULT_OPTIONS</span>,
     <span class="hljs-title class_">NxTooltipDefaultOptions</span>,
+    <span class="hljs-title class_">NxTooltipDirective</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tooltip&#x27;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">myDefaultOptions</span>: <span class="hljs-title class_">NxTooltipDefaultOptions</span> = {
@@ -21,5 +23,7 @@
     <span class="hljs-attr">providers</span>: [
         { <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">NX_TOOLTIP_DEFAULT_OPTIONS</span>, <span class="hljs-attr">useValue</span>: myDefaultOptions },
     ],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxBadgeComponent</span>, <span class="hljs-title class_">NxTooltipDirective</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TooltipSettingsExampleComponent</span> {}

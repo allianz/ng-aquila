@@ -10,27 +10,27 @@
                     placeholder="Choose a type"
                     [(value)]="licencePlateModel.type"
                 >
-                    <nx-dropdown-item
-                        *ngFor="let type of licencePlateTypes"
-                        [value]="type.type"
+                    @for (type of licencePlateTypes; track type) {
+                    <nx-dropdown-item [value]="type.type"
                         >{{type.typeName}}</nx-dropdown-item
                     >
+                    }
                 </nx-dropdown>
             </nx-formfield>
 
-            <div *ngIf="licencePlateModel.type === 'de_season'">
+            @if (licencePlateModel.type === 'de_season') {
+            <div>
                 <nx-formfield
                     label="Start date"
                     appearance="outline"
                     floatLabel="always"
                 >
                     <nx-dropdown [(value)]="licencePlateModel.startDate">
-                        <nx-dropdown-item
-                            *ngFor="let date of monthsOfYearList"
-                            [value]="date.month"
-                        >
+                        @for (date of monthsOfYearList; track date) {
+                        <nx-dropdown-item [value]="date.month">
                             {{date.monthName}}
                         </nx-dropdown-item>
+                        }
                     </nx-dropdown>
                 </nx-formfield>
                 <nx-formfield
@@ -39,55 +39,54 @@
                     floatLabel="always"
                 >
                     <nx-dropdown [(value)]="licencePlateModel.endDate">
-                        <nx-dropdown-item
-                            *ngFor="let date of monthsOfYearList"
-                            [value]="date.month"
-                        >
+                        @for (date of monthsOfYearList; track date) {
+                        <nx-dropdown-item [value]="date.month">
                             {{date.monthName}}
                         </nx-dropdown-item>
+                        }
                     </nx-dropdown>
                 </nx-formfield>
             </div>
-
-            <div *ngIf="licencePlateModel.type === 'euro'">
+            } @if (licencePlateModel.type === 'euro') {
+            <div>
                 <nx-formfield
                     label="Country"
                     appearance="outline"
                     floatLabel="always"
                 >
                     <nx-dropdown [(value)]="licencePlateModel.country">
-                        <nx-dropdown-item
-                            *ngFor="let country of countriesList"
-                            [value]="country.country"
-                        >
+                        @for (country of countriesList; track country) {
+                        <nx-dropdown-item [value]="country.country">
                             {{country.countryName}}
                         </nx-dropdown-item>
+                        }
                     </nx-dropdown>
                 </nx-formfield>
             </div>
+            }
 
             <nx-formfield
                 label="License Plate"
                 appearance="outline"
                 floatLabel="always"
             >
-                <nx-licence-plate-euro-prefix
-                    nxFormfieldPrefix
-                    *ngIf="licencePlateModel.type !== 'other'"
-                >
+                @if (licencePlateModel.type !== 'other') {
+                <nx-licence-plate-euro-prefix nxFormfieldPrefix>
                     {{ licencePlateModel.country }}
                 </nx-licence-plate-euro-prefix>
+                }
                 <input
                     nxInput
                     [nxLicensePlate]="licencePlateModel.type"
                     [ngModel]="licencePlateModel.value"
                 />
+                @if (licencePlateModel.type === 'de_season') {
                 <nx-licence-plate-season-suffix
-                    *ngIf="licencePlateModel.type === 'de_season'"
                     nxFormfieldSuffix
                     [startMonth]="licencePlateModel.startDate"
                     [endMonth]="licencePlateModel.endDate"
                 ></nx-licence-plate-season-suffix>
+                }
                 <span nxFormfieldHint>Format: M-AA 1234</span>
                 <nx-error nxFormfieldError
                     >Please enter a license plate number in the format "M-AA

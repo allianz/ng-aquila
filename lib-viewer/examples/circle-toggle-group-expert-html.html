@@ -1,6 +1,6 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle-group</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;expert&quot;</span>&gt;</span>
+    @for (item of sampleValues; track item) {
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle</span>
-        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of sampleValues&quot;</span>
         [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item.value&quot;</span>
         [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;item.icon&quot;</span>
         [<span class="hljs-attr">hint</span>]=<span class="hljs-string">&quot;item.hint&quot;</span>
@@ -8,4 +8,5 @@
         [<span class="hljs-attr">checked</span>]=<span class="hljs-string">&quot;item.selected&quot;</span>
     &gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
+    }
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle-group</span>&gt;</span>

@@ -1,7 +1,11 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 @Component({
+    standalone: true,
     template: `<div class="u-text-center">
         <h3>Modal Dialog from a component</h3>
         <p>
@@ -18,6 +22,8 @@ export class SimpleModalComponent {}
     selector: 'modal-opening-example',
     templateUrl: './modal-opening-example.html',
     styleUrls: ['./modal-opening-example.css'],
+    standalone: true,
+    imports: [NxButtonComponent, NxHeadlineComponent, NxCopytextComponent],
 })
 export class ModalOpeningExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;

@@ -17,12 +17,11 @@
                     (<span class="hljs-attr">input</span>)=<span class="hljs-string">&quot;filter(animalInput.value)&quot;</span>
                 /&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">animal1</span>=<span class="hljs-string">&quot;nxAutocomplete&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete-option</span>
-                        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let option of filteredOptions&quot;</span>
-                        [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;option&quot;</span>
-                    &gt;</span>
+                    @for (option of filteredOptions; track option) {
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete-option</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>
                         {{ option }}
                     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete-option</span>&gt;</span>
+                    }
                 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

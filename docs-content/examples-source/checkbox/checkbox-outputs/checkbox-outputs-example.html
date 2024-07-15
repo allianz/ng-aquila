@@ -14,4 +14,6 @@
     Toggle Indeterminate
 </button>
 <br />
-<pre *ngIf="logMessage">{{logMessage}}</pre>
+@if (logMessage) {
+<pre>{{logMessage}}</pre>
+}

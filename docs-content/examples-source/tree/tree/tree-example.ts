@@ -1,9 +1,21 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import {
+    NxActionComponent,
+    NxActionIconDirective,
+} from '@aposin/ng-aquila/action';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import {
     NxFlatTreeControl,
     NxFlatTreeNode,
+    NxTreeComponent,
     NxTreeFlatDataSource,
     NxTreeNode,
+    NxTreeNodeActionItem,
+    NxTreeNodeComponent,
+    NxTreeNodeDefDirective,
+    NxTreeNodePaddingDirective,
+    NxTreeNodeToggleDirective,
 } from '@aposin/ng-aquila/tree';
 
 /**
@@ -30,6 +42,20 @@ interface MyFlatTreeNode extends NxFlatTreeNode {
     selector: 'tree-example',
     templateUrl: './tree-example.html',
     styleUrls: ['./tree-example.css'],
+    standalone: true,
+    imports: [
+        NxTreeComponent,
+        NxTreeNodeDefDirective,
+        NxTreeNodeComponent,
+        NxActionComponent,
+        NxTreeNodeActionItem,
+        NxTreeNodePaddingDirective,
+        RouterLinkActive,
+        RouterLink,
+        NxIconComponent,
+        NxActionIconDirective,
+        NxTreeNodeToggleDirective,
+    ],
 })
 export class TreeExampleComponent {
     navigationData: MyTreeNode[] = [

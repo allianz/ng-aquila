@@ -11,8 +11,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxFooterModule, RouterModule],
-    declarations: [EXAMPLES],
+    imports: [NxFooterModule, RouterModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class FooterExamplesModule {

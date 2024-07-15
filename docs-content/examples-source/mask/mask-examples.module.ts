@@ -23,8 +23,13 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxMaskModule, NxRadioModule, NxInputModule, ExamplesSharedModule],
-    declarations: [EXAMPLES],
+    imports: [
+        NxMaskModule,
+        NxRadioModule,
+        NxInputModule,
+        ExamplesSharedModule,
+        EXAMPLES,
+    ],
     exports: [EXAMPLES],
 })
 export class MaskExamplesModule {

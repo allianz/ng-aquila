@@ -25,13 +25,9 @@
                 [menuButtonType]="node.level === 0 ? 'root' : 'nested'"
                 type="button"
             >
-                <nx-icon
-                    *ngIf="node.icon"
-                    nxMenuButtonIcon
-                    [name]="node.icon"
-                    size="s"
-                ></nx-icon>
-                {{node.label}}
+                @if (node.icon) {
+                <nx-icon nxMenuButtonIcon [name]="node.icon" size="s"></nx-icon>
+                } {{node.label}}
             </button>
         </nx-tree-node>
     </nx-tree>

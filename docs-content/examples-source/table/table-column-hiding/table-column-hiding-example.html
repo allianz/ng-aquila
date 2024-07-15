@@ -12,16 +12,17 @@
     <nx-context-menu-header> Column Settings </nx-context-menu-header>
     <nx-checkbox-group [(ngModel)]="selected">
         <nx-context-menu-item-wrap>
+            @for (option of options; track option) {
             <div
                 nxContextMenuItem
                 nxContextMenuItemCheckbox
                 disableCloseOnSelect
-                *ngFor="let option of options"
             >
                 <nx-checkbox [value]="option.value"
                     >{{option.label}}</nx-checkbox
                 >
             </div>
+            }
         </nx-context-menu-item-wrap>
     </nx-checkbox-group>
 </nx-context-menu>
@@ -30,48 +31,49 @@
     <table nxTable class="nx-table--scrollable">
         <thead>
             <tr nxTableRow>
-                <ng-container *ngFor="let option of options">
-                    <th nxHeaderCell *ngIf="selected?.includes(option.value)">
-                        {{option.label}}
-                    </th>
-                </ng-container>
+                @for (option of options; track option) { @if
+                (selected?.includes(option.value)) {
+                <th nxHeaderCell>{{option.label}}</th>
+                } }
                 <!-- <th
-                    nxHeaderCell
-                    *ngIf="!selected?.length"
-                    style="text-align: center"
-                >
-                    All table columns are currently hidden.
-                </th> -->
+          nxHeaderCell
+          *ngIf="!selected?.length"
+          style="text-align: center"
+          >
+          All table columns are currently hidden.
+        </th> -->
             </tr>
         </thead>
         <tbody>
-            <tr nxTableRow *ngFor="let item of tableElements">
-                <td nxTableCell *ngIf="selected?.includes('product')">
-                    {{item.product}}
-                </td>
-                <td nxTableCell *ngIf="selected?.includes('contractNumber')">
-                    {{item.contractNumber}}
-                </td>
-                <td nxTableCell *ngIf="selected?.includes('desc')">
-                    {{item.desc}}
-                </td>
-                <td nxTableCell *ngIf="selected?.includes('website')">
+            @for (item of tableElements; track item) {
+            <tr nxTableRow>
+                @if (selected?.includes('product')) {
+                <td nxTableCell>{{item.product}}</td>
+                } @if (selected?.includes('contractNumber')) {
+                <td nxTableCell>{{item.contractNumber}}</td>
+                } @if (selected?.includes('desc')) {
+                <td nxTableCell>{{item.desc}}</td>
+                } @if (selected?.includes('website')) {
+                <td nxTableCell>
                     <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
                 </td>
-                <td nxTableCell *ngIf="selected?.includes('endingAt')">
-                    {{item.endingAt}}
-                </td>
-                <td nxTableCell *ngIf="selected?.includes('statusText')">
+                } @if (selected?.includes('endingAt')) {
+                <td nxTableCell>{{item.endingAt}}</td>
+                } @if (selected?.includes('statusText')) {
+                <td nxTableCell>
                     <nx-badge [type]="item.status">
                         {{item.statusText}}
                     </nx-badge>
                 </td>
+                }
             </tr>
-            <tr nxTableRow *ngIf="!selected?.length">
+            } @if (!selected?.length) {
+            <tr nxTableRow>
                 <td nxTableCell style="text-align: center">
                     All table columns are currently hidden.
                 </td>
             </tr>
+            }
         </tbody>
     </table>
 </div>

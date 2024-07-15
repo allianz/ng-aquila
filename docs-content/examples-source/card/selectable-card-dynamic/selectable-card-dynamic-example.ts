@@ -1,5 +1,20 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl } from '@angular/forms';
+import {
+    FormArray,
+    FormBuilder,
+    FormControl,
+    FormsModule,
+    ReactiveFormsModule,
+} from '@angular/forms';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxSelectableCardComponent } from '@aposin/ng-aquila/card';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
 
 /**
  * @title Selectable cards dynamic example
@@ -8,6 +23,18 @@ import { FormArray, FormBuilder, FormControl } from '@angular/forms';
     selector: 'selectable-card-dynamic-example',
     templateUrl: './selectable-card-dynamic-example.html',
     styleUrls: ['./selectable-card-dynamic-example.css'],
+    standalone: true,
+    imports: [
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        NxSelectableCardComponent,
+        NxCopytextComponent,
+        JsonPipe,
+    ],
 })
 export class SelectableCardDynamicExampleComponent {
     readonly cardArray = new FormArray([

@@ -1,6 +1,26 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { formatDate } from '@angular/common';
+import { DatePipe, formatDate, JsonPipe } from '@angular/common';
 import { Component, Inject, LOCALE_ID, OnDestroy } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
+import { NxCheckboxComponent } from '@aposin/ng-aquila/checkbox';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxLinkComponent } from '@aposin/ng-aquila/link';
+import { NxPaginationComponent } from '@aposin/ng-aquila/pagination';
+import {
+    NxRadioToggleButtonComponent,
+    NxRadioToggleComponent,
+} from '@aposin/ng-aquila/radio-toggle';
+import { NxSwitcherComponent } from '@aposin/ng-aquila/switcher';
+import {
+    NxHeaderCellDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+} from '@aposin/ng-aquila/table';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -20,6 +40,27 @@ interface Contract {
     selector: 'table-selecting-example',
     templateUrl: './table-selecting-example.html',
     styleUrls: ['./table-selecting-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        NxCopytextComponent,
+        NxFormfieldModule,
+        NxInputModule,
+        NxRadioToggleComponent,
+        NxRadioToggleButtonComponent,
+        NxLinkComponent,
+        NxTableComponent,
+        NxTableRowComponent,
+        NxHeaderCellDirective,
+        NxCheckboxComponent,
+        NxTableCellComponent,
+        RouterLink,
+        NxBadgeComponent,
+        NxPaginationComponent,
+        NxSwitcherComponent,
+        JsonPipe,
+        DatePipe,
+    ],
 })
 export class TableSelectingExampleComponent implements OnDestroy {
     private readonly _destroyed = new Subject<void>();

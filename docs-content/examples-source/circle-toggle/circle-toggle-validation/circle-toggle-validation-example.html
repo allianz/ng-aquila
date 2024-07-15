@@ -5,7 +5,8 @@
             formControlName="reactiveToggle"
             responsive="false"
         >
-            <div *ngFor="let item of sampleValues">
+            @for (item of sampleValues; track item) {
+            <div>
                 <nx-circle-toggle
                     [value]="item.value"
                     [icon]="item.icon"
@@ -13,6 +14,7 @@
                     [label]="item.label"
                 ></nx-circle-toggle>
             </div>
+            }
             <nx-error appearance="message" class="nx-margin-top-xs">
                 Please make a choice.
             </nx-error>
@@ -57,9 +59,11 @@
         [class.has-error]="testForm3.invalid"
     >
     </nx-circle-toggle>
-    <div *ngIf="testForm3.invalid">
+    @if (testForm3.invalid) {
+    <div>
         <nx-error class="nx-margin-y-xs"> Need to select 2 options </nx-error>
     </div>
+    }
 </form>
 <p>Form value: {{ testForm3.value | json }}</p>
 <p>Form status: {{ testForm3.status | json }}</p>

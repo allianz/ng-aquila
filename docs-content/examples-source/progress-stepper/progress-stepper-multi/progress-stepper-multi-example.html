@@ -1,20 +1,20 @@
 <nx-multi-stepper currentStepLabel="Step">
-    <ng-container *ngFor="let step of testStepsData">
-        <nx-step [label]="step">
-            <div class="nx-margin-top-s">
-                <p nxCopy>content for {{step}}</p>
-                <button
-                    nxButton="secondary small"
-                    nxStepperPrevious
-                    class="nx-margin-right-2xs"
-                    type="button"
-                >
-                    Previous
-                </button>
-                <button nxButton="primary small" nxStepperNext type="button">
-                    Next
-                </button>
-            </div>
-        </nx-step>
-    </ng-container>
+    @for (step of testStepsData; track step) {
+    <nx-step [label]="step">
+        <div class="nx-margin-top-s">
+            <p nxCopy>content for {{step}}</p>
+            <button
+                nxButton="secondary small"
+                nxStepperPrevious
+                class="nx-margin-right-2xs"
+                type="button"
+            >
+                Previous
+            </button>
+            <button nxButton="primary small" nxStepperNext type="button">
+                Next
+            </button>
+        </div>
+    </nx-step>
+    }
 </nx-multi-stepper>

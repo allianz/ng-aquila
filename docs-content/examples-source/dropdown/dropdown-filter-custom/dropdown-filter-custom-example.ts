@@ -1,4 +1,14 @@
 import { Component } from '@angular/core';
+import {
+    NxDropdownComponent,
+    NxDropdownItemComponent,
+} from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
 
 /**
  * @title Custom Filter Example
@@ -7,6 +17,15 @@ import { Component } from '@angular/core';
     selector: 'dropdown-filter-custom-example',
     templateUrl: './dropdown-filter-custom-example.html',
     styleUrls: ['./dropdown-filter-custom-example.css'],
+    standalone: true,
+    imports: [
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxFormfieldComponent,
+        NxDropdownComponent,
+        NxDropdownItemComponent,
+    ],
 })
 export class DropdownFilterCustomExampleComponent {
     demoData = [

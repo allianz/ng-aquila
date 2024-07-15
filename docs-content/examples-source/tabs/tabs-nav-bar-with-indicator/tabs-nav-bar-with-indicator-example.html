@@ -1,19 +1,20 @@
 <nx-tab-nav-bar appearance="expert">
+    @for (link of links; track link) {
     <a
         nxTabLink
-        *ngFor="let link of links"
         (click)="setActiveLink(link)"
         [active]="currentLink.label === link.label"
         [routerLink]="link.path"
     >
         <span class="link-content">
-            {{link.label}}
+            {{link.label}} @if (link.notification) {
             <nx-indicator
-                *ngIf="link.notification"
                 position="over-text"
                 [attr.aria-label]="getAriaLabel(link.notificationCount!)"
                 >{{ link.notificationCount }}</nx-indicator
             >
+            }
         </span>
     </a>
+    }
 </nx-tab-nav-bar>

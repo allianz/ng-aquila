@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { NxDynamicTableColumnDefinition } from '@aposin/ng-aquila/dynamic-table';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import {
+    NxDynamicTableColumnDefinition,
+    NxDynamicTableComponent,
+} from '@aposin/ng-aquila/dynamic-table';
+import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
+import { NxModalComponent } from '@aposin/ng-aquila/modal';
 
 /**
  * @title Table Event Example
@@ -8,6 +15,14 @@ import { NxDynamicTableColumnDefinition } from '@aposin/ng-aquila/dynamic-table'
     selector: 'dynamic-table-event-example',
     templateUrl: './dynamic-table-event-example.html',
     styleUrls: ['./dynamic-table-event-example.css'],
+    standalone: true,
+    imports: [
+        NxDynamicTableComponent,
+        NxHeadlineComponent,
+        NxCopytextComponent,
+        NxButtonComponent,
+        NxModalComponent,
+    ],
 })
 export class DynamicTableEventExampleComponent {
     data = [

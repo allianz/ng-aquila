@@ -1,5 +1,5 @@
+@if (!closed) {
 <nx-message
-    *ngIf="!closed"
     context="info"
     closable="true"
     (close)="closed = true"
@@ -11,5 +11,7 @@
     accusantium commodi vel libero, nesciunt maxime minus exercitationem iste
     quod.
 </nx-message>
-<p *ngIf="closed">A close event was emitted!</p>
+} @if (closed) {
+<p>A close event was emitted!</p>
+}
 <button nxButton (click)="closed = !closed" type="button">Toggle closed</button>

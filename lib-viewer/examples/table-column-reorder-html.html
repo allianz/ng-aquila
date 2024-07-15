@@ -6,21 +6,18 @@
             (<span class="hljs-attr">cdkDropListDropped</span>)=<span class="hljs-string">&quot;drop($event)&quot;</span>
             <span class="hljs-attr">cdkDropListOrientation</span>=<span class="hljs-string">&quot;horizontal&quot;</span>
         &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>
-                *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let h of header; let i = index&quot;</span>
-                <span class="hljs-attr">nxHeaderCell</span>
-                <span class="hljs-attr">cdkDrag</span>
-                <span class="hljs-attr">cdkDragLockAxis</span>=<span class="hljs-string">&quot;x&quot;</span>
-            &gt;</span>
-                {{h.title}}
-            <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            @for (h of header; track h; let i = $index) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span> <span class="hljs-attr">cdkDrag</span> <span class="hljs-attr">cdkDragLockAxis</span>=<span class="hljs-string">&quot;x&quot;</span>&gt;</span>{{h.title}}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            }
         <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of content&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let h of header&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col&quot;</span>&gt;</span>
-                {{item[h.field]}}
-            <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        @for (item of content; track item) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
+            @for (h of header; track h) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col&quot;</span>&gt;</span>{{item[h.field]}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            }
         <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        }
     <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>

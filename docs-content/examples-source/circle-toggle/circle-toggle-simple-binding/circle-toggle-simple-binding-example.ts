@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxCircleToggleComponent,
+    NxCircleToggleGroupComponent,
+} from '@aposin/ng-aquila/circle-toggle';
 
 /**
  * @title Simple binding example
@@ -7,6 +12,12 @@ import { Component } from '@angular/core';
     selector: 'circle-toggle-simple-binding-example',
     templateUrl: './circle-toggle-simple-binding-example.html',
     styleUrls: ['./circle-toggle-simple-binding-example.css'],
+    standalone: true,
+    imports: [
+        NxCircleToggleGroupComponent,
+        NxCircleToggleComponent,
+        NxButtonComponent,
+    ],
 })
 export class CircleToggleSimpleBindingExampleComponent {
     simpleBinding!: string;

@@ -26,8 +26,8 @@ const EXAMPLES = [
         NxTableModule,
         NxHeadlineModule,
         NxMessageModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class PaginationExamplesModule {

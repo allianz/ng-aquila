@@ -1,8 +1,17 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">CurrencyPipe</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ChangeDetectionStrategy</span>, <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCopytextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/copytext&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-variable constant_">DATA_DISPLAY_DEFAULT_OPTIONS</span>,
     <span class="hljs-title class_">DataDisplayDefaultOptions</span>,
+    <span class="hljs-title class_">NxDataDisplayComponent</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/data-display&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/headline&#x27;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">options</span>: <span class="hljs-title class_">DataDisplayDefaultOptions</span> = {
     <span class="hljs-attr">size</span>: <span class="hljs-string">&#x27;medium&#x27;</span>, <span class="hljs-comment">// expert mode default size</span>
@@ -21,6 +30,16 @@
             <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">DATA_DISPLAY_DEFAULT_OPTIONS</span>,
             <span class="hljs-attr">useValue</span>: options,
         },
+    ],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxLayoutComponent</span>,
+        <span class="hljs-title class_">NxRowComponent</span>,
+        <span class="hljs-title class_">NxColComponent</span>,
+        <span class="hljs-title class_">NxCopytextComponent</span>,
+        <span class="hljs-title class_">NxHeadlineComponent</span>,
+        <span class="hljs-title class_">NxDataDisplayComponent</span>,
+        <span class="hljs-title class_">CurrencyPipe</span>,
     ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BreakdownTableExpertExampleComponent</span> {}

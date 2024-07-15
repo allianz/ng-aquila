@@ -1,7 +1,21 @@
-import { formatDate } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { Component, Inject, Injectable, LOCALE_ID } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
+import { NxLinkComponent } from '@aposin/ng-aquila/link';
+import { NxPaginationComponent } from '@aposin/ng-aquila/pagination';
 import {
+    NxHeaderCellDirective,
+    NxSortDirective,
+    NxSortHeaderComponent,
     NxSortHeaderIntl,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
     SortDirection,
     SortEvent,
 } from '@aposin/ng-aquila/table';
@@ -30,6 +44,24 @@ export class MyIntl extends NxSortHeaderIntl {
     templateUrl: './table-filter-sort-paginate-example.html',
     styleUrls: ['./table-filter-sort-paginate-example.css'],
     providers: [{ provide: NxSortHeaderIntl, useClass: MyIntl }],
+    standalone: true,
+    imports: [
+        NxFormfieldComponent,
+        NxInputDirective,
+        FormsModule,
+        NxCopytextComponent,
+        NxTableComponent,
+        NxSortDirective,
+        NxTableRowComponent,
+        NxSortHeaderComponent,
+        NxHeaderCellDirective,
+        NxTableCellComponent,
+        NxLinkComponent,
+        RouterLink,
+        NxBadgeComponent,
+        NxPaginationComponent,
+        DatePipe,
+    ],
 })
 export class TableFilterSortPaginateExampleComponent {
     tableElements: Contract[] = [

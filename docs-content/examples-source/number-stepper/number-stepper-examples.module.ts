@@ -52,8 +52,8 @@ const EXAMPLES = [
         NxErrorModule,
         NxMessageModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class NumberExamplesModule {

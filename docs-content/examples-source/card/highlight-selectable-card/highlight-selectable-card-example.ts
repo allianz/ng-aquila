@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NxSelectableCardComponent } from '@aposin/ng-aquila/card';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
 
 /**
  * @title Selectable cards states example
@@ -7,5 +9,7 @@ import { Component } from '@angular/core';
     selector: 'highlight-selectable-card-example',
     templateUrl: './highlight-selectable-card-example.html',
     styleUrls: ['./highlight-selectable-card-example.css'],
+    standalone: true,
+    imports: [NxSelectableCardComponent, NxCopytextComponent],
 })
 export class HighlightSelectableCardExampleComponent {}

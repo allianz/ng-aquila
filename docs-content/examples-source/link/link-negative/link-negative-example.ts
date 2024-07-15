@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NxLinkComponent } from '@aposin/ng-aquila/link';
 
 /**
  * @title Negative styling example
@@ -7,5 +9,7 @@ import { Component } from '@angular/core';
     selector: 'link-negative-example',
     templateUrl: './link-negative-example.html',
     styleUrls: ['./link-negative-example.css'],
+    standalone: true,
+    imports: [NxLinkComponent, RouterLink],
 })
 export class LinkNegativeExampleComponent {}

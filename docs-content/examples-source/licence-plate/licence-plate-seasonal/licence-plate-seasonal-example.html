@@ -3,22 +3,20 @@
         <div nxCol="12,12,10,6" colOffset="0,0,1,3">
             <nx-formfield label="Start date">
                 <nx-dropdown [(value)]="startMonth">
-                    <nx-dropdown-item
-                        *ngFor="let date of monthsOfYearList"
-                        [value]="date.month"
-                    >
+                    @for (date of monthsOfYearList; track date) {
+                    <nx-dropdown-item [value]="date.month">
                         {{date.monthName}}
                     </nx-dropdown-item>
+                    }
                 </nx-dropdown>
             </nx-formfield>
             <nx-formfield label="End date">
                 <nx-dropdown [(value)]="endMonth">
-                    <nx-dropdown-item
-                        *ngFor="let date of monthsOfYearList"
-                        [value]="date.month"
-                    >
+                    @for (date of monthsOfYearList; track date) {
+                    <nx-dropdown-item [value]="date.month">
                         {{date.monthName}}
                     </nx-dropdown-item>
+                    }
                 </nx-dropdown>
             </nx-formfield>
         </div>

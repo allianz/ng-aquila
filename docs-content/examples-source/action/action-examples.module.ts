@@ -22,8 +22,8 @@ const EXAMPLES = [
         NxIconModule,
         NxIndicatorModule,
         CommonModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class ActionExamplesModule {

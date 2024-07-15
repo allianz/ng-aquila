@@ -1,9 +1,19 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">AsyncPipe</span>, <span class="hljs-title class_">NgClass</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-variable constant_">DATA_DISPLAY_DEFAULT_OPTIONS</span>,
     <span class="hljs-title class_">DataDisplayDefaultOptions</span>,
+    <span class="hljs-title class_">NxDataDisplayComponent</span>,
+    <span class="hljs-title class_">NxDataDisplayLabelComponent</span>,
     <span class="hljs-title class_">NxDataDisplayOrientation</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/data-display&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLinkComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/link&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxListComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/list&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBreakpoints</span>, <span class="hljs-title class_">NxViewportService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/utils&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Observable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 <span class="hljs-keyword">import</span> { map } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
@@ -24,6 +34,18 @@
             <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">DATA_DISPLAY_DEFAULT_OPTIONS</span>,
             <span class="hljs-attr">useValue</span>: options,
         },
+    ],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxLayoutComponent</span>,
+        <span class="hljs-title class_">NxRowComponent</span>,
+        <span class="hljs-title class_">NxColComponent</span>,
+        <span class="hljs-title class_">NgClass</span>,
+        <span class="hljs-title class_">NxDataDisplayComponent</span>,
+        <span class="hljs-title class_">NxDataDisplayLabelComponent</span>,
+        <span class="hljs-title class_">NxLinkComponent</span>,
+        <span class="hljs-title class_">NxListComponent</span>,
+        <span class="hljs-title class_">AsyncPipe</span>,
     ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DataDisplayResponsiveExampleComponent</span> {

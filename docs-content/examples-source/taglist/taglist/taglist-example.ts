@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxTaglistComponent } from '@aposin/ng-aquila/taglist';
 
 /**
  * @title Tag Example
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
     selector: 'taglist-example',
     templateUrl: './taglist-example.html',
     styleUrls: ['./taglist-example.css'],
+    standalone: true,
+    imports: [NxTaglistComponent],
 })
 export class TaglistExampleComponent {
     tags: string[] = [

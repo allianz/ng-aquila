@@ -1,5 +1,6 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-tab-group</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tab</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let tab of tabs; let i = index&quot;</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;tab&quot;</span>&gt;</span>
+    @for (tab of tabs; track tab; let i = $index) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tab</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;tab&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tab__content nx-margin-bottom-m&quot;</span>&gt;</span>
             Content of tab {{tab}}
             <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
@@ -12,6 +13,7 @@
             <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tab</span>&gt;</span>
+    }
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tab-group</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;add-container&quot;</span>&gt;</span>

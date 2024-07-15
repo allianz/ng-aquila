@@ -6,11 +6,12 @@
         &gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel-title</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expansion-title-with-icon&quot;</span>&gt;</span>
+                    @if (infoHasError) {
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                        *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;infoHasError&quot;</span>
                         <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-error__icon&quot;</span>
                         [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;&#x27;exclamation-triangle&#x27;&quot;</span>
                     &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    }
                     <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>General Information<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-expansion-panel-title</span>&gt;</span>
@@ -43,11 +44,12 @@
         &gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel-title</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expansion-title-with-icon&quot;</span>&gt;</span>
+                    @if (paymentHasError) {
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                        *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;paymentHasError&quot;</span>
                         <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-error__icon&quot;</span>
                         [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;&#x27;exclamation-triangle&#x27;&quot;</span>
                     &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    }
                     <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Payment details<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-expansion-panel-title</span>&gt;</span>
@@ -69,12 +71,9 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-expansion-panel</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-accordion</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span>
-    <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error_example&quot;</span>
-    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;infoHasError || paymentHasError&quot;</span>
-    <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;error&quot;</span>
-    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-xs&quot;</span>
-&gt;</span>
+@if (infoHasError || paymentHasError) {
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error_example&quot;</span> <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;error&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-xs&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span> Error: <span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> Please check the section containing an error
     marked with a red triangle with an exclamation mark.
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-message</span>&gt;</span>
+}

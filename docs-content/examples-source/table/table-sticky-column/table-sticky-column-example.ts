@@ -1,4 +1,19 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
+import { NxLinkComponent } from '@aposin/ng-aquila/link';
+import {
+    NxRadioToggleButtonComponent,
+    NxRadioToggleComponent,
+} from '@aposin/ng-aquila/radio-toggle';
+import {
+    NxHeaderCellDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+} from '@aposin/ng-aquila/table';
 
 /**
  * @title Sticky Columns Table
@@ -7,6 +22,20 @@ import { Component } from '@angular/core';
     selector: 'table-sticky-column-example',
     templateUrl: './table-sticky-column-example.html',
     styleUrls: ['./table-sticky-column-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        NxCopytextComponent,
+        NxRadioToggleComponent,
+        NxRadioToggleButtonComponent,
+        NxTableComponent,
+        NxTableRowComponent,
+        NxHeaderCellDirective,
+        NxTableCellComponent,
+        NxLinkComponent,
+        RouterLink,
+        NxBadgeComponent,
+    ],
 })
 export class TableStickyColumnExampleComponent {
     stickyColumn = 'first';

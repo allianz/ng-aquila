@@ -29,23 +29,26 @@
             Add File
         <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;testForm.controls[&#x27;documents&#x27;]?.errors&quot;</span>&gt;</span>
+        @if (testForm.controls[&#x27;documents&#x27;]?.errors) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-bold&quot;</span>&gt;</span>Error<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;testForm.controls[&#x27;documents&#x27;].hasError(&#x27;required&#x27;)&quot;</span>&gt;</span>
-                    Required!
-                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>
-                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;testForm.controls[&#x27;documents&#x27;].hasError(&#x27;NxFileUploadMaxFileNumber&#x27;)&quot;</span>
-                &gt;</span>
+                @if (testForm.controls[&#x27;documents&#x27;].hasError(&#x27;required&#x27;)) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Required!<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                } @if
+                (testForm.controls[&#x27;documents&#x27;].hasError(&#x27;NxFileUploadMaxFileNumber&#x27;))
+                {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
                     There were
                     {{testForm.controls[&#x27;documents&#x27;].getError(&#x27;NxFileUploadMaxFileNumber&#x27;).actual
                     | json}} files added, but the maximum is
                     {{testForm.controls[&#x27;documents&#x27;].getError(&#x27;NxFileUploadMaxFileNumber&#x27;).max
                     | json}}
                 <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                }
             <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        }
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-file-uploader</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 

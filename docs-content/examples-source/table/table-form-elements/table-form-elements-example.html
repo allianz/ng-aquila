@@ -12,11 +12,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr
-                nxTableRow
-                *ngFor="let control of formArray.controls; index as i"
-                [formGroup]="getFormGroup(i)"
-            >
+            @for (control of formArray.controls; track control; let i = $index)
+            {
+            <tr nxTableRow [formGroup]="getFormGroup(i)">
                 <td nxTableCell>
                     <nx-formfield>
                         <input
@@ -44,7 +42,6 @@
                             formControlName="endingAt"
                             [attr.aria-labelledby]="'ending'"
                         />
-
                         <nx-datepicker-toggle
                             [for]="myDatepicker"
                             nxFormfieldSuffix
@@ -81,6 +78,7 @@
                     </button>
                 </td>
             </tr>
+            }
         </tbody>
     </table>
 </div>

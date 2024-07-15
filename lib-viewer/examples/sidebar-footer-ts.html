@@ -1,4 +1,16 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">RouterLink</span>, <span class="hljs-title class_">RouterLinkActive</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/router&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxActionComponent</span>,
+    <span class="hljs-title class_">NxActionIconDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/action&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxSidebarComponent</span>,
+    <span class="hljs-title class_">NxSidebarFooterComponent</span>,
+    <span class="hljs-title class_">NxSidebarToggleComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/sidebar&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Side navigation with footer area
@@ -7,6 +19,18 @@
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;sidebar-footer-example&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;sidebar-footer-example.css&#x27;</span>],
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./sidebar-footer-example.html&#x27;</span>,
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxSidebarComponent</span>,
+        <span class="hljs-title class_">NxActionComponent</span>,
+        <span class="hljs-title class_">RouterLink</span>,
+        <span class="hljs-title class_">RouterLinkActive</span>,
+        <span class="hljs-title class_">NxIconComponent</span>,
+        <span class="hljs-title class_">NxActionIconDirective</span>,
+        <span class="hljs-title class_">NxSidebarFooterComponent</span>,
+        <span class="hljs-title class_">NxIconButtonComponent</span>,
+        <span class="hljs-title class_">NxSidebarToggleComponent</span>,
+    ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SidebarFooterExampleComponent</span> {
     actions = [

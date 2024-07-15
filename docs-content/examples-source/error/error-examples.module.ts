@@ -20,8 +20,8 @@ const EXAMPLES = [
         NxInputModule,
         NxButtonModule,
         ReactiveFormsModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class ErrorExamplesModule {

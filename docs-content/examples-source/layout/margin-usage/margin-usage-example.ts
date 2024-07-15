@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
     selector: 'margin-usage-example',
     templateUrl: './margin-usage-example.html',
     styleUrls: ['./margin-usage-example.css'],
+    standalone: true,
 })
 export class MarginUsageExampleComponent {}

@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import {
+    NxTabLinkDirective,
+    NxTabNavBarComponent,
+} from '@aposin/ng-aquila/tabs';
 
 /**
  * @title Tabs Navbar
@@ -7,6 +12,8 @@ import { Component } from '@angular/core';
     selector: 'tabs-nav-bar-example',
     templateUrl: './tabs-nav-bar-example.html',
     styleUrls: ['./tabs-nav-bar-example.css'],
+    standalone: true,
+    imports: [NxTabNavBarComponent, NxTabLinkDirective, RouterLink],
 })
 export class TabsNavBarExampleComponent {
     links = [

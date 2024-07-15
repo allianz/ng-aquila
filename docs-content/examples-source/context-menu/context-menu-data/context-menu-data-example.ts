@@ -1,5 +1,19 @@
 import { Component } from '@angular/core';
-import { NxBadgeType } from '@aposin/ng-aquila/badge';
+import { NxBadgeComponent, NxBadgeType } from '@aposin/ng-aquila/badge';
+import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxContextMenuComponent,
+    NxContextMenuContentDirective,
+    NxContextMenuItemComponent,
+    NxContextMenuTriggerDirective,
+} from '@aposin/ng-aquila/context-menu';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import {
+    NxHeaderCellDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+} from '@aposin/ng-aquila/table';
 
 interface Contract {
     id: string;
@@ -15,6 +29,20 @@ interface Contract {
     selector: 'context-menu-data-example',
     templateUrl: './context-menu-data-example.html',
     styleUrls: ['context-menu-data-example.css'],
+    standalone: true,
+    imports: [
+        NxContextMenuComponent,
+        NxContextMenuContentDirective,
+        NxContextMenuItemComponent,
+        NxIconComponent,
+        NxContextMenuTriggerDirective,
+        NxTableComponent,
+        NxTableRowComponent,
+        NxHeaderCellDirective,
+        NxTableCellComponent,
+        NxBadgeComponent,
+        NxIconButtonComponent,
+    ],
 })
 export class ContextMenuDataExampleComponent {
     contracts: Contract[] = [

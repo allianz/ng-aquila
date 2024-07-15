@@ -19,18 +19,20 @@
 
 <main nxLayout="grid maxwidth">
     <div nxRow>
-        <div nxCol="12" [ngSwitch]="stepper.selectedIndex">
-            <form *ngSwitchCase="0" [formGroup]="animalTypeForm.form">
+        <div nxCol="12">
+            @switch (stepper.selectedIndex) { @case (0) {
+            <form [formGroup]="animalTypeForm.form">
                 <nx-formfield
                     [label]="animalTypeForm.label"
                     floatLabel="always"
                     appearance="outline"
                 >
                     <nx-dropdown formControlName="animalType">
+                        @for (animalType of animalTypes; track animalType) {
                         <nx-dropdown-item
-                            *ngFor="let animalType of animalTypes"
                             [value]="animalType"
                         ></nx-dropdown-item>
+                        }
                     </nx-dropdown>
                     <nx-error appearance="text" nxFormfieldError>
                         Please choose an animal species!
@@ -44,8 +46,8 @@
                     Next
                 </button>
             </form>
-
-            <form *ngSwitchCase="1" [formGroup]="nameForm.form">
+            } @case (1) {
+            <form [formGroup]="nameForm.form">
                 <nx-formfield
                     [label]="nameForm.label"
                     floatLabel="always"
@@ -71,42 +73,39 @@
                     Next
                 </button>
             </form>
-
-            <form *ngSwitchCase="2" [formGroup]="breedForm.form">
+            } @case (2) {
+            <form [formGroup]="breedForm.form">
+                @if (breedForm.form.get('dogBreed')) {
                 <nx-formfield
-                    *ngIf="breedForm.form.get('dogBreed')"
                     [label]="breedForm.label"
                     floatLabel="always"
                     appearance="outline"
                 >
                     <nx-dropdown formControlName="dogBreed">
-                        <nx-dropdown-item
-                            *ngFor="let breed of dogBreeds"
-                            [value]="breed"
-                        ></nx-dropdown-item>
+                        @for (breed of dogBreeds; track breed) {
+                        <nx-dropdown-item [value]="breed"></nx-dropdown-item>
+                        }
                     </nx-dropdown>
                     <nx-error appearance="text" nxFormfieldError>
                         Please select a breed!
                     </nx-error>
                 </nx-formfield>
-
+                } @if (breedForm.form.get('catBreed')) {
                 <nx-formfield
-                    *ngIf="breedForm.form.get('catBreed')"
                     [label]="breedForm.label"
                     floatLabel="always"
                     appearance="outline"
                 >
                     <nx-dropdown formControlName="catBreed">
-                        <nx-dropdown-item
-                            *ngFor="let breed of catBreeds"
-                            [value]="breed"
-                        ></nx-dropdown-item>
+                        @for (breed of catBreeds; track breed) {
+                        <nx-dropdown-item [value]="breed"></nx-dropdown-item>
+                        }
                     </nx-dropdown>
                     <nx-error appearance="text" nxFormfieldError>
                         Please select a breed!
                     </nx-error>
                 </nx-formfield>
-
+                }
                 <button
                     nxButton="secondary small"
                     (click)="stepper.previous()"
@@ -122,12 +121,8 @@
                     Next
                 </button>
             </form>
-
-            <form
-                *ngSwitchCase="3"
-                [formGroup]="ageForm.form"
-                (submit)="onSubmit()"
-            >
+            } @case (3) {
+            <form [formGroup]="ageForm.form" (submit)="onSubmit()">
                 <nx-formfield
                     [label]="ageForm.label"
                     floatLabel="always"
@@ -153,6 +148,7 @@
                     Submit
                 </button>
             </form>
+            } }
         </div>
     </div>
 

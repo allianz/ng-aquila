@@ -1,4 +1,11 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxMultiSelectComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
 
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">MyOption</span> {
     <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
@@ -12,6 +19,14 @@
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-multi-select-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-multi-select-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-multi-select-example.css&#x27;</span>],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxLayoutComponent</span>,
+        <span class="hljs-title class_">NxRowComponent</span>,
+        <span class="hljs-title class_">NxColComponent</span>,
+        <span class="hljs-title class_">NxFormfieldComponent</span>,
+        <span class="hljs-title class_">NxMultiSelectComponent</span>,
+    ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DropdownMultiSelectExampleComponent</span> {
     <span class="hljs-attr">options</span>: <span class="hljs-built_in">string</span>[] = [<span class="hljs-string">&#x27;Apple&#x27;</span>, <span class="hljs-string">&#x27;Orange&#x27;</span>, <span class="hljs-string">&#x27;Plum&#x27;</span>, <span class="hljs-string">&#x27;Cherry&#x27;</span>];

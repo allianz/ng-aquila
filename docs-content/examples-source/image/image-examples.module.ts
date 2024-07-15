@@ -17,8 +17,13 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxImageModule, NxGridModule, NxCopytextModule, NgOptimizedImage],
-    declarations: [EXAMPLES],
+    imports: [
+        NxImageModule,
+        NxGridModule,
+        NxCopytextModule,
+        NgOptimizedImage,
+        EXAMPLES,
+    ],
     exports: [EXAMPLES],
 })
 export class ImageExamplesModule {

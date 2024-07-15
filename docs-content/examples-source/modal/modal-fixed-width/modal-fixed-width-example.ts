@@ -1,4 +1,6 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
 import { NxDialogService } from '@aposin/ng-aquila/modal';
 
 /**
@@ -8,6 +10,8 @@ import { NxDialogService } from '@aposin/ng-aquila/modal';
     selector: 'modal-fixed-width-example',
     templateUrl: './modal-fixed-width-example.html',
     styleUrls: ['./modal-fixed-width-example.css'],
+    standalone: true,
+    imports: [NxButtonComponent, NxCopytextComponent],
 })
 export class ModalFixedWidthExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;

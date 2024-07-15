@@ -1,14 +1,27 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">HttpClient</span>, <span class="hljs-title class_">HttpParams</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">ViewChild</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NgModel</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span>, <span class="hljs-title class_">NgModel</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span>, <span class="hljs-title class_">NxLabelComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">FileItem</span>,
+    <span class="hljs-title class_">NxFileUploaderButtonDirective</span>,
     <span class="hljs-title class_">NxFileUploaderComponent</span>,
+    <span class="hljs-title class_">NxFileUploaderComponent</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">NxFileUploaderComponent</span>_1,
+    <span class="hljs-title class_">NxFileUploaderItemDelete</span>,
+    <span class="hljs-title class_">NxFileUploaderItemName</span>,
+    <span class="hljs-title class_">NxFileUploaderItemSize</span>,
+    <span class="hljs-title class_">NxFileUploaderItemStatus</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/file-uploader&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">NxMessageToastConfig</span>,
     <span class="hljs-title class_">NxMessageToastService</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/message&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxRadioComponent</span>,
+    <span class="hljs-title class_">NxRadioGroupComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/radio-button&#x27;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomFileItem</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">FileItem</span> {
     formData!: <span class="hljs-title class_">FormData</span>;
@@ -25,6 +38,22 @@
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;file-uploader-custom-item-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./file-uploader-custom-item-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./file-uploader-custom-item-example.css&#x27;</span>],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxFileUploaderComponent</span>_1,
+        <span class="hljs-title class_">FormsModule</span>,
+        <span class="hljs-title class_">NxLabelComponent</span>,
+        <span class="hljs-title class_">NxButtonComponent</span>,
+        <span class="hljs-title class_">NxFileUploaderButtonDirective</span>,
+        <span class="hljs-title class_">NxIconComponent</span>,
+        <span class="hljs-title class_">NxErrorComponent</span>,
+        <span class="hljs-title class_">NxFileUploaderItemName</span>,
+        <span class="hljs-title class_">NxFileUploaderItemSize</span>,
+        <span class="hljs-title class_">NxFileUploaderItemStatus</span>,
+        <span class="hljs-title class_">NxFileUploaderItemDelete</span>,
+        <span class="hljs-title class_">NxRadioGroupComponent</span>,
+        <span class="hljs-title class_">NxRadioComponent</span>,
+    ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FileUploaderCustomItemExampleComponent</span> {
     <span class="hljs-attr">myFiles</span>: <span class="hljs-title class_">CustomFileItem</span>[] = [];

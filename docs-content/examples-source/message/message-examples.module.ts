@@ -32,8 +32,8 @@ const EXAMPLES = [
         NxButtonModule,
         CommonModule,
         NxHeadlineModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class MessageExamplesModule {

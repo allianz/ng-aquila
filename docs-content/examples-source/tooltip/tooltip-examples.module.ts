@@ -34,8 +34,8 @@ const EXAMPLES = [
         CommonModule,
         NxButtonModule,
         NxBadgeModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class TooltipExamplesModule {

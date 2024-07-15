@@ -16,22 +16,11 @@
     &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">picker2</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>
-        <span class="hljs-attr">nxFormfieldError</span>
-        *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;dateMinMaxModel.errors &amp;&amp; dateMinMaxModel.errors.nxDatefieldMax&quot;</span>
-    &gt;</span>
-        The date is too far in the future
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>
-        <span class="hljs-attr">nxFormfieldError</span>
-        *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;dateMinMaxModel.errors &amp;&amp; dateMinMaxModel.errors.nxDatefieldMin&quot;</span>
-    &gt;</span>
-        The date is too far in the past
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>
-        <span class="hljs-attr">nxFormfieldError</span>
-        *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;dateMinMaxModel.errors &amp;&amp; dateMinMaxModel.errors.nxDatefieldParse&quot;</span>
-    &gt;</span>
-        That&#x27;s not a date
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    @if (dateMinMaxModel.errors &amp;&amp; dateMinMaxModel.errors.nxDatefieldMax) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> The date is too far in the future <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    } @if (dateMinMaxModel.errors &amp;&amp; dateMinMaxModel.errors.nxDatefieldMin) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> The date is too far in the past <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    } @if (dateMinMaxModel.errors &amp;&amp; dateMinMaxModel.errors.nxDatefieldParse) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> That&#x27;s not a date <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    }
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>

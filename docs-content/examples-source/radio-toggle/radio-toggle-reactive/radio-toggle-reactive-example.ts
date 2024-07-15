@@ -1,5 +1,16 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxRadioToggleButtonComponent,
+    NxRadioToggleComponent,
+} from '@aposin/ng-aquila/radio-toggle';
 
 /**
  * @title Reactive Form Example
@@ -8,6 +19,15 @@ import { FormBuilder, Validators } from '@angular/forms';
     selector: 'radio-toggle-reactive-example',
     templateUrl: './radio-toggle-reactive-example.html',
     styleUrls: ['./radio-toggle-reactive-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxRadioToggleComponent,
+        NxRadioToggleButtonComponent,
+        NxButtonComponent,
+        JsonPipe,
+    ],
 })
 export class RadioToggleReactiveExampleComponent {
     readonly data = ['A', 'B', 'C'];

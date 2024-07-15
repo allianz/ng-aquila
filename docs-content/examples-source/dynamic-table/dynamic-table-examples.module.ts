@@ -30,8 +30,8 @@ const EXAMPLES = [
         NxIconModule,
         DragDropModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class DynamicExamplesModule {

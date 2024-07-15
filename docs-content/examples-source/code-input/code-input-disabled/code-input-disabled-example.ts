@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxCodeInputComponent } from '@aposin/ng-aquila/code-input';
 
 /**
  * @title Disabled example
@@ -8,6 +17,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     selector: 'code-input-disabled-example',
     templateUrl: 'code-input-disabled-example.html',
     styleUrls: ['code-input-disabled-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxCodeInputComponent,
+        NxErrorComponent,
+        NxButtonComponent,
+    ],
 })
 export class CodeInputDisabledExampleComponent implements OnInit {
     inputValue = '';

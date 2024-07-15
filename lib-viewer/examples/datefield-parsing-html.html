@@ -26,13 +26,15 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;openedStrict&quot;</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    @if (openedStrict) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-container&quot;</span>&gt;</span>
             Current Locale: {{ currentLocale }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
             Formatted value: {{ strictDatefield.currentFormattedDate }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
             Moment Object: {{ strictDatefield.value }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    }
 
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
@@ -61,13 +63,15 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;openedNonStrict&quot;</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    @if (openedNonStrict) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-container&quot;</span>&gt;</span>
             Current Locale: {{ currentLocale }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
             Formatted value: {{ nonStrictDatefield.currentFormattedDate }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
             Moment Object: {{ nonStrictDatefield.value }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    }
 
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>

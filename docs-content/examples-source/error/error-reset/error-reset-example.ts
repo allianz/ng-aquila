@@ -1,5 +1,17 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import {
+    FormsModule,
+    ReactiveFormsModule,
+    UntypedFormBuilder,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+} from '@aposin/ng-aquila/formfield';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
 
 /**
  * @title Error Reset Example
@@ -8,6 +20,16 @@ import { UntypedFormBuilder, Validators } from '@angular/forms';
     selector: 'error-reset-example',
     templateUrl: './error-reset-example.html',
     styleUrls: ['./error-reset-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxFormfieldComponent,
+        NxInputDirective,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
+        NxButtonComponent,
+    ],
 })
 export class ErrorResetExampleComponent {
     constructor(private readonly fb: UntypedFormBuilder) {}

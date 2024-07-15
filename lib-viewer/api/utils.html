@@ -168,4 +168,106 @@
         
     </div></div>
    
+   
+
+<h4 id="FakeScrollStrategy" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="FakeScrollStrategy"></span>
+    <code>FakeScrollStrategy</code></h4><p class="docs-api-class-description"><p>Helper ScrollStrategy to be used in tests to test overriding the default scroll strategy.</p>
+<p>Example usage:
+TestBed.resetTestingModule()
+.configureTestingModule({
+imports: [ScrollStrategyOverrideComponent, NxAutocompleteModule, NxInputModule, NoopAnimationsModule],
+providers: [
+{
+ provide: NX_AUTOCOMPLETE_SCROLL_STRATEGY,
+ useFactory: () =&gt; fakeScrollStrategyFunction,
+},
+],
+})
+.compileComponents();
+createTestComponent(ScrollStrategyOverrideComponent);
+expect((testInstance as ScrollStrategyOverrideComponent).scrollStrategy).toBe(fakeScrollStrategyFunction);</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">isEnabled</span>:
+                <span class="docs-api-property__type">false</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">overlayRef</span>:
+                <span class="docs-api-property__type">OverlayRef</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">attach(overlayRef: <span class="docs-api-property__type">OverlayRef</span>)</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                overlayRef:
+                <span class="docs-api-method-parameter-type">OverlayRef</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">detach()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">disable()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">enable()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
   </div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NxTimefieldComponent } from '@aposin/ng-aquila/timefield';
 /**
  * @title Timefield negative example
  */
@@ -6,6 +8,8 @@ import { Component } from '@angular/core';
     selector: 'timefield-negative-example',
     templateUrl: './timefield-negative-example.html',
     styleUrls: ['./timefield-negative-example.css'],
+    standalone: true,
+    imports: [FormsModule, NxTimefieldComponent],
 })
 export class TimefieldNegativeExampleComponent {
     templateModel = '00:54';

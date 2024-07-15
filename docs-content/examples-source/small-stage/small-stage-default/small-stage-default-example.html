@@ -1,7 +1,8 @@
 <nx-small-stage>
     <nav aria-label="Breadcrumb" nxSmallStageHeader>
         <ol nxBreadcrumb>
-            <li *ngFor="let item of dynamicItems; let i = index">
+            @for (item of dynamicItems; track item; let i = $index) {
+            <li>
                 <a
                     nxBreadcrumbItem
                     (click)="goToItem(i)"
@@ -10,6 +11,7 @@
                     {{ item }}
                 </a>
             </li>
+            }
         </ol>
     </nav>
     <nx-small-stage-image

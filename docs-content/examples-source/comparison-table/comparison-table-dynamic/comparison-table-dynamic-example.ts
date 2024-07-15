@@ -1,5 +1,21 @@
 import { Component } from '@angular/core';
-import { NxComparisonTableRowType } from '@aposin/ng-aquila/comparison-table';
+import { NxPlainButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxComparisonTableCell,
+    NxComparisonTableComponent,
+    NxComparisonTableDescriptionCell,
+    NxComparisonTableRowDirective,
+    NxComparisonTableRowType,
+    NxComparisonTableSelectButton,
+    NxToggleSectionDirective,
+    NxToggleSectionHeaderComponent,
+} from '@aposin/ng-aquila/comparison-table';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import {
+    NxPopoverComponent,
+    NxPopoverTriggerDirective,
+} from '@aposin/ng-aquila/popover';
+import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
 
 interface ContentCell {
     type: NxComparisonTableRowType;
@@ -18,6 +34,21 @@ type TableData = (ContentCell | ToggleSection)[];
     selector: 'comparison-table-dynamic-example',
     templateUrl: './comparison-table-dynamic-example.html',
     styleUrls: ['./comparison-table-dynamic-example.css'],
+    standalone: true,
+    imports: [
+        NxSwipebarComponent,
+        NxComparisonTableComponent,
+        NxComparisonTableRowDirective,
+        NxComparisonTableCell,
+        NxComparisonTableSelectButton,
+        NxComparisonTableDescriptionCell,
+        NxPlainButtonComponent,
+        NxPopoverTriggerDirective,
+        NxIconComponent,
+        NxPopoverComponent,
+        NxToggleSectionDirective,
+        NxToggleSectionHeaderComponent,
+    ],
 })
 export class ComparisonTableDynamicExampleComponent {
     data: TableData = [

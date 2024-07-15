@@ -1,4 +1,17 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
+import { NxLinkComponent } from '@aposin/ng-aquila/link';
+import {
+    NxExpandableTableCellComponent,
+    NxExpandableTableDirective,
+    NxExpandableTableRowComponent,
+    NxHeaderCellDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+    NxToggleButtonComponent,
+} from '@aposin/ng-aquila/table';
 
 /**
  * @title Expandable Rows
@@ -7,6 +20,20 @@ import { Component } from '@angular/core';
     selector: 'table-expandable-example',
     templateUrl: './table-expandable-example.html',
     styleUrls: ['./table-expandable-example.css'],
+    standalone: true,
+    imports: [
+        NxTableComponent,
+        NxExpandableTableDirective,
+        NxTableRowComponent,
+        NxHeaderCellDirective,
+        NxToggleButtonComponent,
+        NxTableCellComponent,
+        NxBadgeComponent,
+        NxExpandableTableRowComponent,
+        NxExpandableTableCellComponent,
+        NxLinkComponent,
+        RouterLink,
+    ],
 })
 export class TableExpandableExampleComponent {
     tableElements = [

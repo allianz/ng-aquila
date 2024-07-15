@@ -1,9 +1,23 @@
 import {
+    CdkDrag,
     CdkDragDrop,
+    CdkDropList,
+    CdkDropListGroup,
     moveItemInArray,
     transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxCheckboxComponent,
+    NxCheckboxGroupComponent,
+} from '@aposin/ng-aquila/checkbox';
+import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
+import { NxLinkComponent } from '@aposin/ng-aquila/link';
+import { NxTableModule } from '@aposin/ng-aquila/table';
 
 /**
  * @title Table Column Options
@@ -12,6 +26,21 @@ import { ChangeDetectorRef, Component } from '@angular/core';
     selector: 'table-column-hiding-example',
     templateUrl: './table-column-hiding-example.html',
     styleUrls: ['./table-column-hiding-example.css'],
+    standalone: true,
+    imports: [
+        NxButtonComponent,
+        CdkDropListGroup,
+        NxCheckboxGroupComponent,
+        CdkDropList,
+        FormsModule,
+        CdkDrag,
+        NxCheckboxComponent,
+        NxLinkComponent,
+        RouterLink,
+        NxBadgeComponent,
+        NxTableModule,
+        NxContextMenuModule,
+    ],
 })
 export class TableCoumnHidingExampleComponent {
     constructor(private readonly _cdr: ChangeDetectorRef) {}

@@ -1,7 +1,35 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormArray</span>, <span class="hljs-title class_">FormControl</span>, <span class="hljs-title class_">FormGroup</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">DATEPICKER_DEFAULT_OPTIONS</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FormArray</span>,
+    <span class="hljs-title class_">FormControl</span>,
+    <span class="hljs-title class_">FormGroup</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPlainButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-variable constant_">DATEPICKER_DEFAULT_OPTIONS</span>,
+    <span class="hljs-title class_">NxDatefieldDirective</span>,
+    <span class="hljs-title class_">NxDatepickerComponent</span>,
+    <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxDropdownComponent</span>,
+    <span class="hljs-title class_">NxDropdownItemComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxHeaderCellDirective</span>,
+    <span class="hljs-title class_">NxTableCellComponent</span>,
+    <span class="hljs-title class_">NxTableComponent</span>,
+    <span class="hljs-title class_">NxTableRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/table&#x27;</span>;
 <span class="hljs-keyword">import</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
 
 <span class="hljs-comment">/**
@@ -21,6 +49,25 @@
             <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">DATEPICKER_DEFAULT_OPTIONS</span>,
             <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">toggleIconTabindex</span>: -<span class="hljs-number">1</span> },
         },
+    ],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxTableComponent</span>,
+        <span class="hljs-title class_">NxTableRowComponent</span>,
+        <span class="hljs-title class_">NxHeaderCellDirective</span>,
+        <span class="hljs-title class_">FormsModule</span>,
+        <span class="hljs-title class_">ReactiveFormsModule</span>,
+        <span class="hljs-title class_">NxTableCellComponent</span>,
+        <span class="hljs-title class_">NxFormfieldComponent</span>,
+        <span class="hljs-title class_">NxInputDirective</span>,
+        <span class="hljs-title class_">NxDatefieldDirective</span>,
+        <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
+        <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+        <span class="hljs-title class_">NxDatepickerComponent</span>,
+        <span class="hljs-title class_">NxDropdownComponent</span>,
+        <span class="hljs-title class_">NxDropdownItemComponent</span>,
+        <span class="hljs-title class_">NxPlainButtonComponent</span>,
+        <span class="hljs-title class_">NxIconComponent</span>,
     ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TableFormElementsExampleComponent</span> {

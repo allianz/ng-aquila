@@ -4,9 +4,9 @@
     <span class="hljs-attr">resizeable</span>
     #<span class="hljs-attr">sidebar</span>
 &gt;</span>
+    @for (action of actions; track action) {
     <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
         <span class="hljs-attr">nxAction</span>
-        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let action of actions&quot;</span>
         <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&quot;./&quot;</span>
         [<span class="hljs-attr">queryParams</span>]=<span class="hljs-string">&quot;action.query&quot;</span>
         <span class="hljs-attr">routerLinkActive</span>=<span class="hljs-string">&quot;is-selected&quot;</span>
@@ -14,6 +14,7 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">nxActionIcon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;action.icon&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
         {{action.label}}
     <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    }
 
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-sidebar-footer</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">button</span>

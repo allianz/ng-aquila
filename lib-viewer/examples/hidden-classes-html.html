@@ -2,29 +2,31 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            @for (breakpoint of breakpoints; track breakpoint; let i = $index) {
             <span class="hljs-tag">&lt;<span class="hljs-name">th</span>
                 <span class="hljs-attr">nxHeaderCell</span>
-                *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let breakpoint of breakpoints; let i = index&quot;</span>
                 [<span class="hljs-attr">ngStyle</span>]=<span class="hljs-string">&quot;{ background: &#x27;var(--documentation-grid-&#x27; + breakpoint.name + &#x27;-color)&#x27;}&quot;</span>
             &gt;</span>
                 {{ breakpoint.name }}
             <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            }
         <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let breakpoint of breakpoints&quot;</span>&gt;</span>
+        @for (breakpoint of breakpoints; track breakpoint) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>.nx-hidden-{{breakpoint.prefix}}<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let col of breakpoints&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">td</span>
-                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;breakpoint.prefix === col.prefix; else visible&quot;</span>
-                    <span class="hljs-attr">nxTableCell</span>
-                &gt;</span>
-                    hidden
-                <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> #<span class="hljs-attr">visible</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;visible&quot;</span>&gt;</span>visible<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+            @for (col of breakpoints; track col) { @if (breakpoint.prefix ===
+            col.prefix) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>hidden<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            } @else {
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;visible&quot;</span>&gt;</span>visible<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            }
+            <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> #<span class="hljs-attr">visible</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;visible&quot;</span>&gt;</span>visible<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
+            }
         <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        }
     <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>

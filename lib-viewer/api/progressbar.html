@@ -28,13 +28,70 @@
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
             <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">value</span>:
-                <span class="docs-api-property__type">number</span>
+                <span class="docs-api-property__name">ariaLabel</span>:
+                <span class="docs-api-property__type">string | undefined</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the value of the progress bar. Defaults to zero. Mirrored to aria-value now.</p>
+        <p>Overrides the <code>aria-label</code> of the nx-progressbar. Defaults to &quot;Progress&quot;</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">ariaLabelledBy</span>:
+                <span class="docs-api-property__type">string | undefined</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the <code>aria-labelledby</code> of the nx-progressbar</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">{ transform: numberAttribute }</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">max</span>:
+                <span class="docs-api-property__type">1</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The maximum value of the progress bar. Used for percentage calculation and mirrored to <code>aria-valuemax</code>. Defaults to 1</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">{ transform: numberAttribute }</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">min</span>:
+                <span class="docs-api-property__type">0</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The minimum value of the progress bar. Used for percentage calculation and mirrored to <code>aria-valuemin</code>. Defaults to 0</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">{ transform: numberAttribute }</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">value</span>:
+                <span class="docs-api-property__type">0</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the value of the progress bar. Defaults to zero. Mirrored to aria-valuenow.</p>
 </td>
 </tr>
   

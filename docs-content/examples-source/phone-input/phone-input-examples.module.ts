@@ -35,8 +35,8 @@ const EXAMPLES = [
         ReactiveFormsModule,
         NxHeadlineModule,
         NxCheckboxModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class PhoneInputExamplesModule {

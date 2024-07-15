@@ -1,6 +1,17 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NxCodeInputIntl } from '@aposin/ng-aquila/code-input';
+import {
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxCodeInputComponent,
+    NxCodeInputIntl,
+} from '@aposin/ng-aquila/code-input';
 
 @Injectable()
 export class MyIntl extends NxCodeInputIntl {
@@ -16,6 +27,14 @@ export class MyIntl extends NxCodeInputIntl {
     templateUrl: 'code-input-localize-example.html',
     styleUrls: ['code-input-localize-example.css'],
     providers: [{ provide: NxCodeInputIntl, useClass: MyIntl }],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxCodeInputComponent,
+        NxErrorComponent,
+        NxButtonComponent,
+    ],
 })
 export class CodeInputLocalizeExampleComponent implements OnInit {
     inputValue = '';

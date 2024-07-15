@@ -2,9 +2,18 @@
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">FormControl</span>,
     <span class="hljs-title class_">FormGroupDirective</span>,
+    <span class="hljs-title class_">FormsModule</span>,
     <span class="hljs-title class_">NgForm</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
     <span class="hljs-title class_">Validators</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+    <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ErrorStateMatcher</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/utils&#x27;</span>;
 
 <span class="hljs-meta">@Injectable</span>()
@@ -27,6 +36,16 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./error-custom-matcher-formfield-example.css&#x27;</span>],
     <span class="hljs-attr">providers</span>: [
         { <span class="hljs-attr">provide</span>: <span class="hljs-title class_">ErrorStateMatcher</span>, <span class="hljs-attr">useClass</span>: <span class="hljs-title class_">ShowOnDirtyErrorStateMatcher</span> },
+    ],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxFormfieldComponent</span>,
+        <span class="hljs-title class_">NxInputDirective</span>,
+        <span class="hljs-title class_">FormsModule</span>,
+        <span class="hljs-title class_">ReactiveFormsModule</span>,
+        <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+        <span class="hljs-title class_">NxErrorComponent</span>,
+        <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
     ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ErrorCustomMatcherFormfieldExampleComponent</span> {

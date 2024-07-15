@@ -1,10 +1,54 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPlainButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCheckboxComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/checkbox&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxComparisonTableCell</span>,
+    <span class="hljs-title class_">NxComparisonTableComponent</span>,
+    <span class="hljs-title class_">NxComparisonTableDescriptionCell</span>,
+    <span class="hljs-title class_">NxComparisonTableIntersectionCell</span>,
+    <span class="hljs-title class_">NxComparisonTableRowDirective</span>,
+    <span class="hljs-title class_">NxComparisonTableSelectButton</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/comparison-table&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxDropdownComponent</span>,
+    <span class="hljs-title class_">NxDropdownItemComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxListComponent</span>, <span class="hljs-title class_">NxListIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/list&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxPopoverComponent</span>,
+    <span class="hljs-title class_">NxPopoverTriggerDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/popover&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSwipebarComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/swipebar&#x27;</span>;
 
 <span class="hljs-comment">/** <span class="hljs-doctag">@title</span> Disabled Columns example */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;comparison-table-disabled-columns-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./comparison-table-disabled-columns-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./comparison-table-disabled-columns-example.css&#x27;</span>],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxSwipebarComponent</span>,
+        <span class="hljs-title class_">NxComparisonTableComponent</span>,
+        <span class="hljs-title class_">NxComparisonTableRowDirective</span>,
+        <span class="hljs-title class_">NxComparisonTableCell</span>,
+        <span class="hljs-title class_">NxComparisonTableSelectButton</span>,
+        <span class="hljs-title class_">NxComparisonTableDescriptionCell</span>,
+        <span class="hljs-title class_">NxPlainButtonComponent</span>,
+        <span class="hljs-title class_">NxPopoverTriggerDirective</span>,
+        <span class="hljs-title class_">NxIconComponent</span>,
+        <span class="hljs-title class_">NxPopoverComponent</span>,
+        <span class="hljs-title class_">NxComparisonTableIntersectionCell</span>,
+        <span class="hljs-title class_">NxListComponent</span>,
+        <span class="hljs-title class_">NxListIconComponent</span>,
+        <span class="hljs-title class_">NxFormfieldComponent</span>,
+        <span class="hljs-title class_">NxDropdownComponent</span>,
+        <span class="hljs-title class_">NxDropdownItemComponent</span>,
+        <span class="hljs-title class_">NxInputDirective</span>,
+        <span class="hljs-title class_">NxCheckboxComponent</span>,
+    ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ComparisonTableDisabledColumnsExampleComponent</span> {
     disableColumn = <span class="hljs-literal">true</span>;

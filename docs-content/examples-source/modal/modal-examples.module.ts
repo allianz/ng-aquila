@@ -48,8 +48,8 @@ const EXAMPLES = [
         NxIconModule,
         NxFormfieldModule,
         ReactiveFormsModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class ModalExamplesModule {

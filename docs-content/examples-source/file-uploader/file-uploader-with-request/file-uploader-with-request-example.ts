@@ -1,9 +1,15 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
+import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
     FileItem,
+    NxFileUploaderButtonDirective,
     NxFileUploaderComponent,
+    NxFileUploaderComponent as NxFileUploaderComponent_1,
+    NxFileUploaderHintDirective,
 } from '@aposin/ng-aquila/file-uploader';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import {
     NxMessageToastConfig,
     NxMessageToastService,
@@ -20,6 +26,16 @@ const myCustomConfig: NxMessageToastConfig = {
     selector: 'file-uploader-with-request-example',
     templateUrl: './file-uploader-with-request-example.html',
     styleUrls: ['./file-uploader-with-request-example.css'],
+    standalone: true,
+    imports: [
+        NxFileUploaderComponent_1,
+        NxLabelComponent,
+        NxFileUploaderHintDirective,
+        NxButtonComponent,
+        NxFileUploaderButtonDirective,
+        NxIconComponent,
+        NxErrorComponent,
+    ],
 })
 export class FileUploaderWithRequestExampleComponent {
     @ViewChild('documentUpload', { static: false })

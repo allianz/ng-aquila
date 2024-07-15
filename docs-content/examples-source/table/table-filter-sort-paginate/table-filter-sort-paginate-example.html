@@ -25,7 +25,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr nxTableRow *ngFor="let item of currentlyShownPageElements">
+                @for (item of currentlyShownPageElements; track item) {
+                <tr nxTableRow>
                     <td nxTableCell>{{item.product}}</td>
                     <td nxTableCell>{{item.contractNumber}}</td>
                     <td nxTableCell>{{item.desc}}</td>
@@ -43,6 +44,7 @@
                         >
                     </td>
                 </tr>
+                }
             </tbody>
         </table>
     </div>

@@ -25,13 +25,9 @@
                 [<span class="hljs-attr">menuButtonType</span>]=<span class="hljs-string">&quot;node.level === 0 ? &#x27;root&#x27; : &#x27;nested&#x27;&quot;</span>
                 <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
             &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;node.icon&quot;</span>
-                    <span class="hljs-attr">nxMenuButtonIcon</span>
-                    [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;node.icon&quot;</span>
-                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                {{node.label}}
+                @if (node.icon) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">nxMenuButtonIcon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;node.icon&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                } {{node.label}}
             <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tree-node</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tree</span>&gt;</span>

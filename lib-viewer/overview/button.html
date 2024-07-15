@@ -1,9 +1,12 @@
 <p class="docs-markdown--p">Buttons are used to make common actions immediately visible and easy to perform. This component allows users to trigger an action – either by clicking on or tapping the button, or by pressing certain keyboard keys (such as Enter or the space bar). Depending on the use case, buttons contain a label and/or an icon. There are multiple styles, sizes, and variations that can be used for different situations. We attach buttons through a directive so that we can rely on the native abilities of a real <strong><code>&lt;button&gt;</code></strong> tag.</p>
 <p class="docs-markdown--p">We work with five different types of buttons. The primary's heavy appearance is intended to direct the user to take a suggested primary action; the secondary's lighter design best works to compliment a primary action or to reduce visual noise if there are several hierarchically equal actions on the same page. Emphasis, call-to-action and disabled should be self-explanatory.</p>
-<div class="docs-private">
-**Please note:** for the Emphasis button, only the `large` variant is in line with WCAG accessibility requirements, while variants `small` and `medium` do not fulfill the visual contrast criteria. This is a known problem that is going to be addressed with the new One Allianz design.
-</div>
+<h3 id="basic-button" tabindex="-1" class="docs-markdown--h3">Basic button</h3>
 <div nx-docs-example="button" config="{}">exampleID: button</div>
+<h3 id="emphasis" tabindex="-1" class="docs-markdown--h3">Emphasis</h3>
+<div class="docs-deprecation-warning">
+  The <strong><code>Emphasis</code></strong> button has been deprecated due to not fulfilling the WCAG accessibility contrast requirements. It is recommended to use the new <code>Attention</code>  variant instead.
+</div>
+<div nx-docs-example="button-emphasis" config="{}">exampleID: button-emphasis</div>
 <h3 id="sizes" tabindex="-1" class="docs-markdown--h3">Sizes</h3>
 <h4 id="small" tabindex="-1" class="docs-markdown--h4">Small</h4>
 <div nx-docs-example="button-small" config="{}">exampleID: button-small</div>

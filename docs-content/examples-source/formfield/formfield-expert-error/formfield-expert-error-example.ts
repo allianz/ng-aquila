@@ -1,5 +1,20 @@
 import { AfterContentInit, Component, ViewChild } from '@angular/core';
-import { NxInputDirective } from '@aposin/ng-aquila/input';
+import { FormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+    NxFormfieldHintDirective,
+} from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
+import {
+    NxInputDirective,
+    NxInputDirective as NxInputDirective_1,
+} from '@aposin/ng-aquila/input';
 
 /**
  * @title Expert error message example
@@ -8,6 +23,18 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'formfield-expert-error-example',
     templateUrl: './formfield-expert-error-example.html',
     styleUrls: ['./formfield-expert-error-example.css'],
+    standalone: true,
+    imports: [
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxFormfieldComponent,
+        NxInputDirective_1,
+        FormsModule,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
+        NxFormfieldHintDirective,
+    ],
 })
 export class FormfieldExpertErrorExampleComponent implements AfterContentInit {
     @ViewChild('exampleErrorNgModel', { static: true })

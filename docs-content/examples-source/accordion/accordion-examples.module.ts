@@ -38,8 +38,8 @@ const EXAMPLES = [
         NxIconModule,
         NxMessageModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class AccordionExamplesModule {

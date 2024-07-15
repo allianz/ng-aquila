@@ -3,10 +3,9 @@
         <div nxCol="12, 12, 4">
             <nx-formfield label="Car brand">
                 <nx-dropdown [valueFormatter]="toText">
-                    <nx-dropdown-item
-                        *ngFor="let brand of demoData"
-                        [value]="brand"
-                    ></nx-dropdown-item>
+                    @for (brand of demoData; track brand) {
+                    <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+                    }
                 </nx-dropdown>
             </nx-formfield>
         </div>

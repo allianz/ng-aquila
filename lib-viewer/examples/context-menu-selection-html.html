@@ -1,22 +1,19 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu</span> #<span class="hljs-attr">menu2</span>=<span class="hljs-string">&quot;nxContextMenu&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu-header</span>&gt;</span> Language <span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu-header</span>&gt;</span>
+    @for (o of options; track o) {
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
         <span class="hljs-attr">nxContextMenuItem</span>
         <span class="hljs-attr">selectable</span>
         <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let o of options&quot;</span>
         (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;selectedLanguage = o.value&quot;</span>
         <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;menuitemradio&quot;</span>
         [<span class="hljs-attr">attr.aria-checked</span>]=<span class="hljs-string">&quot;selectedLanguage === o.value ? &#x27;true&#x27; : &#x27;false&#x27;&quot;</span>
     &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-            <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-            *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;selectedLanguage === o.value&quot;</span>
-            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
-            <span class="hljs-attr">nxIconPositionStart</span>
-        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-        {{o.label}}
+        @if (selectedLanguage === o.value) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span> <span class="hljs-attr">nxIconPositionStart</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+        } {{o.label}}
     <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    }
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>

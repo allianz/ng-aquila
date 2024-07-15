@@ -28,8 +28,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxTaglistModule, NxInputModule, ExamplesSharedModule],
-    declarations: [EXAMPLES],
+    imports: [NxTaglistModule, NxInputModule, ExamplesSharedModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class TaglistExamplesModule {

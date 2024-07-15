@@ -1,9 +1,10 @@
 <nx-circle-toggle-group>
+    @for (item of sampleValues; track item) {
     <nx-circle-toggle
-        *ngFor="let item of sampleValues"
         [value]="item.value"
         [circleText]="item.circleText"
         [checked]="item.selected"
     >
     </nx-circle-toggle>
+    }
 </nx-circle-toggle-group>

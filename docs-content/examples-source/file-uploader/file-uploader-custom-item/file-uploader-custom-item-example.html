@@ -24,8 +24,11 @@
     </button>
 </nx-file-uploader>
 
-<nx-error *ngIf="showUploadError"> An error occured while uploading. </nx-error>
-<nx-error *ngIf="ngModel.control.hasError('required')">Required!</nx-error>
+@if (showUploadError) {
+<nx-error> An error occured while uploading. </nx-error>
+} @if (ngModel.control.hasError('required')) {
+<nx-error>Required!</nx-error>
+}
 
 <button
     nxButton="secondary small"

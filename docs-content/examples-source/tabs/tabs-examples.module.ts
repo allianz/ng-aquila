@@ -50,8 +50,8 @@ const EXAMPLES = [
         NxIconModule,
         NxIndicatorModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class TabsExamplesModule {

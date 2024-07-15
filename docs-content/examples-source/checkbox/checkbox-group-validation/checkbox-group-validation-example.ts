@@ -1,5 +1,17 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import {
+    AbstractControl,
+    FormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
+import {
+    NxCheckboxComponent,
+    NxCheckboxGroupComponent,
+} from '@aposin/ng-aquila/checkbox';
 
 /**
  * @title Checkbox group validation example
@@ -8,6 +20,16 @@ import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
     selector: 'checkbox-group-validation-example',
     templateUrl: './checkbox-group-validation-example.html',
     styleUrls: ['./checkbox-group-validation-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxCheckboxGroupComponent,
+        NxLabelComponent,
+        NxErrorComponent,
+        NxCheckboxComponent,
+        JsonPipe,
+    ],
 })
 export class CheckboxGroupValidationExampleComponent {
     readonly myFormGroup = this.fb.group({

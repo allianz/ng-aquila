@@ -1,5 +1,16 @@
 import { Component, Injectable } from '@angular/core';
-import { NxDatepickerIntl } from '@aposin/ng-aquila/datefield';
+import { FormsModule } from '@angular/forms';
+import {
+    NxDatefieldDirective,
+    NxDatepickerComponent,
+    NxDatepickerIntl,
+    NxDatepickerToggleComponent,
+} from '@aposin/ng-aquila/datefield';
+import {
+    NxFormfieldComponent,
+    NxFormfieldSuffixDirective,
+} from '@aposin/ng-aquila/formfield';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
 import { Moment } from 'moment';
 
 @Injectable()
@@ -24,6 +35,16 @@ export class MyIntl extends NxDatepickerIntl {
     templateUrl: './datefield-localize-texts-example.html',
     styleUrls: ['./datefield-localize-texts-example.css'],
     providers: [{ provide: NxDatepickerIntl, useClass: MyIntl }],
+    standalone: true,
+    imports: [
+        NxFormfieldComponent,
+        NxDatefieldDirective,
+        NxInputDirective,
+        FormsModule,
+        NxDatepickerToggleComponent,
+        NxFormfieldSuffixDirective,
+        NxDatepickerComponent,
+    ],
 })
 export class DatefieldLocalizeTextsExampleComponent {
     currentDate: Moment | null = null;

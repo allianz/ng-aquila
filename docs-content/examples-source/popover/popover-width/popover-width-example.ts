@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
+    NxPopoverComponent,
+    NxPopoverTriggerDirective,
     POPOVER_DEFAULT_OPTIONS,
     PopoverDefaultOptions,
 } from '@aposin/ng-aquila/popover';
@@ -19,6 +22,8 @@ const myDefaultOptions: PopoverDefaultOptions = {
     providers: [
         { provide: POPOVER_DEFAULT_OPTIONS, useValue: myDefaultOptions },
     ],
+    standalone: true,
+    imports: [NxButtonComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverWidthExampleComponent {
     popoverWidth = '100%';

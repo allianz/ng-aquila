@@ -1,5 +1,10 @@
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Direction</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/bidi&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Dir</span>, <span class="hljs-title class_">Direction</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/bidi&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">UpperCasePipe</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCopytextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/copytext&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSliderComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/slider&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> RTL Dynamic Example
@@ -8,6 +13,15 @@
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;rtl-dynamic-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./rtl-dynamic-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./rtl-dynamic-example.css&#x27;</span>],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">Dir</span>,
+        <span class="hljs-title class_">NxHeadlineComponent</span>,
+        <span class="hljs-title class_">NxCopytextComponent</span>,
+        <span class="hljs-title class_">NxSliderComponent</span>,
+        <span class="hljs-title class_">NxButtonComponent</span>,
+        <span class="hljs-title class_">UpperCasePipe</span>,
+    ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RtlDynamicExampleComponent</span> {
     <span class="hljs-attr">direction</span>: <span class="hljs-title class_">Direction</span> = <span class="hljs-string">&#x27;ltr&#x27;</span>;

@@ -3,10 +3,9 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12, 12, 4&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Car brand&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [<span class="hljs-attr">valueFormatter</span>]=<span class="hljs-string">&quot;toText&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span>
-                        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let brand of demoData&quot;</span>
-                        [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;brand&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+                    @for (brand of demoData; track brand) {
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;brand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+                    }
                 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

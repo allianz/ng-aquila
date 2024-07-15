@@ -1,10 +1,26 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Overlay</span>, <span class="hljs-title class_">ScrollStrategy</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/overlay&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">NX_DATEPICKER_SCROLL_STRATEGY</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-variable constant_">NX_DATEPICKER_SCROLL_STRATEGY</span>,
+    <span class="hljs-title class_">NxDatefieldDirective</span>,
+    <span class="hljs-title class_">NxDatepickerComponent</span>,
+    <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Moment</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">scrollStrategyFactory</span>(<span class="hljs-params">overlay: Overlay</span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ScrollStrategy</span> {
-    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> overlay.<span class="hljs-property">scrollStrategies</span>.<span class="hljs-title function_">close</span>({ <span class="hljs-attr">threshold</span>: <span class="hljs-number">100</span> });
+    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> overlay.<span class="hljs-property">scrollStrategies</span>.<span class="hljs-title function_">close</span>();
 }
 
 <span class="hljs-comment">/**
@@ -20,6 +36,19 @@
             <span class="hljs-attr">useFactory</span>: scrollStrategyFactory,
             <span class="hljs-attr">deps</span>: [<span class="hljs-title class_">Overlay</span>],
         },
+    ],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxLayoutComponent</span>,
+        <span class="hljs-title class_">NxRowComponent</span>,
+        <span class="hljs-title class_">NxColComponent</span>,
+        <span class="hljs-title class_">NxFormfieldComponent</span>,
+        <span class="hljs-title class_">NxDatefieldDirective</span>,
+        <span class="hljs-title class_">NxInputDirective</span>,
+        <span class="hljs-title class_">FormsModule</span>,
+        <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
+        <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+        <span class="hljs-title class_">NxDatepickerComponent</span>,
     ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DatefieldScrollStrategyProviderExampleComponent</span> {

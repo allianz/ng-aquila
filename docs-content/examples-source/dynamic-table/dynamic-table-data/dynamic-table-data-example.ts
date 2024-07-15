@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxDynamicTableComponent } from '@aposin/ng-aquila/dynamic-table';
 
 /**
  * @title Table Data Example
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
     selector: 'dynamic-table-data-example',
     templateUrl: './dynamic-table-data-example.html',
     styleUrls: ['./dynamic-table-data-example.css'],
+    standalone: true,
+    imports: [NxDynamicTableComponent],
 })
 export class DynamicTableDataExampleComponent {
     data = [

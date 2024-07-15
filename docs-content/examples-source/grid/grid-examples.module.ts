@@ -35,8 +35,13 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxGridModule, NxSliderModule, NxFormfieldModule, NxInputModule],
-    declarations: [EXAMPLES],
+    imports: [
+        NxGridModule,
+        NxSliderModule,
+        NxFormfieldModule,
+        NxInputModule,
+        EXAMPLES,
+    ],
     exports: [EXAMPLES],
 })
 export class GridExamplesModule {

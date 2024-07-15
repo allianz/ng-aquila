@@ -20,12 +20,9 @@
                     title="{{node.label}}"
                     type="button"
                 >
-                    <nx-icon
-                        *ngIf="node.icon"
-                        nxActionIcon
-                        [name]="node.icon"
-                    ></nx-icon>
-                    {{node.label}}
+                    @if (node.icon) {
+                    <nx-icon nxActionIcon [name]="node.icon"></nx-icon>
+                    } {{node.label}}
                 </button>
             </nx-tree-node>
             <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
@@ -40,12 +37,9 @@
                     title="{{node.label}}"
                     type="button"
                 >
-                    <nx-icon
-                        *ngIf="node.icon"
-                        nxActionIcon
-                        [name]="node.icon"
-                    ></nx-icon>
-                    {{node.label}}
+                    @if (node.icon) {
+                    <nx-icon nxActionIcon [name]="node.icon"></nx-icon>
+                    } {{node.label}}
                 </button>
             </nx-tree-node>
         </nx-tree>
@@ -54,4 +48,6 @@
         toggle expansion
     </button>
 </div>
-<pre *ngIf="logMessage">{{logMessage}}</pre>
+@if (logMessage) {
+<pre>{{logMessage}}</pre>
+}

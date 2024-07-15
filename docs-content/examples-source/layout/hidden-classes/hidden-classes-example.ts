@@ -1,4 +1,11 @@
+import { NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
+import {
+    NxHeaderCellDirective,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+} from '@aposin/ng-aquila/table';
 
 /**
  * @title Hidden classes
@@ -7,6 +14,14 @@ import { Component } from '@angular/core';
     selector: 'hidden-classes-example',
     templateUrl: './hidden-classes-example.html',
     styleUrls: ['./hidden-classes-example.css'],
+    standalone: true,
+    imports: [
+        NxTableComponent,
+        NxTableRowComponent,
+        NxHeaderCellDirective,
+        NgStyle,
+        NxTableCellComponent,
+    ],
 })
 export class HiddenClassesExampleComponent {
     breakpoints = [

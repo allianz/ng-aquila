@@ -29,26 +29,26 @@
             Add File
         </button>
 
-        <nx-error *ngIf="testForm.controls['documents'].errors">
+        @if (testForm.controls['documents'].errors) {
+        <nx-error>
             <div class="nx-font-weight-bold">Error</div>
             <ul>
-                <li *ngIf="testForm.controls['documents'].hasError('required')">
-                    Required!
-                </li>
-                <li
-                    *ngIf="testForm.controls['documents'].hasError('serverError')"
-                >
-                    An error occured while uploading.
-                </li>
-                <li
-                    *ngIf="testForm.controls['documents'].hasError('NxFileUploadMaxFileSize')"
-                >
+                @if (testForm.controls['documents'].hasError('required')) {
+                <li>Required!</li>
+                } @if (testForm.controls['documents'].hasError('serverError')) {
+                <li>An error occured while uploading.</li>
+                } @if
+                (testForm.controls['documents'].hasError('NxFileUploadMaxFileSize'))
+                {
+                <li>
                     File
                     {{testForm.controls['documents'].getError('NxFileUploadMaxFileSize').fileName
                     | json}} can not be uploaded. File size exceeds size limit!
                 </li>
+                }
             </ul>
         </nx-error>
+        }
     </nx-file-uploader>
 </form>
 

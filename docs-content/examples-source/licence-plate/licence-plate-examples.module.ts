@@ -43,8 +43,8 @@ const EXAMPLES = [
         NxDropdownModule,
         NxFormfieldModule,
         NxInputModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class LicencePlateExamplesModule {

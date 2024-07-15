@@ -1,19 +1,22 @@
-<nx-single-stepper currentStepLabel="Step">
+<nx-single-stepper
+    currentStepLabel="Step"
+    [progressbarAriaLabel]="'Progress to file your claim'"
+>
     <nx-label>My Title</nx-label>
-    <ng-container *ngFor="let step of testStepsData">
-        <nx-step [label]="step">
-            <div class="nx-margin-y-s">content for {{step}}</div>
-            <button
-                nxButton="secondary small"
-                nxStepperPrevious
-                class="nx-margin-right-2xs"
-                type="button"
-            >
-                Previous
-            </button>
-            <button nxButton="primary small" nxStepperNext type="button">
-                Next
-            </button>
-        </nx-step>
-    </ng-container>
+    @for (step of testStepsData; track step) {
+    <nx-step [label]="step">
+        <div class="nx-margin-y-s">content for {{step}}</div>
+        <button
+            nxButton="secondary small"
+            nxStepperPrevious
+            class="nx-margin-right-2xs"
+            type="button"
+        >
+            Previous
+        </button>
+        <button nxButton="primary small" nxStepperNext type="button">
+            Next
+        </button>
+    </nx-step>
+    }
 </nx-single-stepper>

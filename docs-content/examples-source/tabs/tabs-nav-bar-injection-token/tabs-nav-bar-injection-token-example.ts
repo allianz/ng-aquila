@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
+    NxTabLinkDirective,
+    NxTabNavBarComponent,
     TAB_NAV_BAR_DEFAULT_OPTIONS,
     TabNavBarDefaultOptions,
 } from '@aposin/ng-aquila/tabs';
@@ -18,6 +21,8 @@ const myDefaultOptions: TabNavBarDefaultOptions = {
     providers: [
         { provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: myDefaultOptions },
     ],
+    standalone: true,
+    imports: [NxTabNavBarComponent, NxTabLinkDirective, RouterLink],
 })
 export class TabsNavBarInjectionTokenExampleComponent {
     links = [

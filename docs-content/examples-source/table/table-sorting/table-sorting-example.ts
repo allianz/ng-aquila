@@ -1,5 +1,18 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { SortDirection, SortEvent } from '@aposin/ng-aquila/table';
+import { RouterLink } from '@angular/router';
+import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
+import { NxLinkComponent } from '@aposin/ng-aquila/link';
+import {
+    NxHeaderCellDirective,
+    NxSortDirective,
+    NxSortHeaderComponent,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+    SortDirection,
+    SortEvent,
+} from '@aposin/ng-aquila/table';
 
 interface Contract {
     product: string;
@@ -18,6 +31,19 @@ interface Contract {
     selector: 'table-sorting-example',
     templateUrl: './table-sorting-example.html',
     styleUrls: ['table-sorting-example.css'],
+    standalone: true,
+    imports: [
+        NxTableComponent,
+        NxSortDirective,
+        NxTableRowComponent,
+        NxSortHeaderComponent,
+        NxHeaderCellDirective,
+        NxTableCellComponent,
+        NxLinkComponent,
+        RouterLink,
+        NxBadgeComponent,
+        DatePipe,
+    ],
 })
 export class TableSortingExampleComponent {
     tableElements: Contract[] = [

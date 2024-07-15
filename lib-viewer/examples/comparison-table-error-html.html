@@ -1,6 +1,8 @@
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;control.value === null&quot;</span>&gt;</span>
+@if (control.value === null) {
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-message&quot;</span>&gt;</span>Please choose a product from the table.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+}
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table</span>
         (<span class="hljs-attr">selectedIndexChange</span>)=<span class="hljs-string">&quot;select($event)&quot;</span>

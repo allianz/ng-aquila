@@ -6,6 +6,11 @@
     <span class="hljs-title class_">OnDestroy</span>,
     <span class="hljs-title class_">ViewChild</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxPopoverComponent</span>,
+    <span class="hljs-title class_">NxPopoverTriggerDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/popover&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Popover Hover Example
@@ -14,6 +19,8 @@
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;popover-hover-example&#x27;</span>,
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./popover-hover-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./popover-hover-example.css&#x27;</span>],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxIconComponent</span>, <span class="hljs-title class_">NxPopoverTriggerDirective</span>, <span class="hljs-title class_">NxPopoverComponent</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PopoverHoverExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterViewInit</span>, <span class="hljs-title class_">OnDestroy</span> {
     popoverManualOpenFlag = <span class="hljs-literal">false</span>;

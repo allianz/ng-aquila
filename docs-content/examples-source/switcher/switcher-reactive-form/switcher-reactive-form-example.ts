@@ -1,11 +1,27 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxSwitcherComponent } from '@aposin/ng-aquila/switcher';
 
 /** @title Switcher Reactive Form */
 @Component({
     selector: 'switcher-reactive-form-example',
     templateUrl: './switcher-reactive-form-example.html',
     styleUrls: ['./switcher-reactive-form-example.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxSwitcherComponent,
+        NxButtonComponent,
+        JsonPipe,
+    ],
 })
 export class SwitcherReactiveFormExampleComponent {
     readonly testForm = this.fb.group({

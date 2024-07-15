@@ -13,7 +13,9 @@
     <span class="hljs-title class_">ControlValueAccessor</span>,
     <span class="hljs-title class_">FormBuilder</span>,
     <span class="hljs-title class_">FormGroup</span>,
+    <span class="hljs-title class_">FormsModule</span>,
     <span class="hljs-title class_">NgControl</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
     <span class="hljs-title class_">Validators</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldControl</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
@@ -49,6 +51,8 @@
         <span class="hljs-string">&#x27;[id]&#x27;</span>: <span class="hljs-string">&#x27;id&#x27;</span>,
         <span class="hljs-string">&#x27;[attr.aria-describedby]&#x27;</span>: <span class="hljs-string">&#x27;describedBy&#x27;</span>,
     },
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">FormsModule</span>, <span class="hljs-title class_">ReactiveFormsModule</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FormfieldCustomTelInputExampleComponent</span>
     <span class="hljs-keyword">implements</span>

@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxCircleToggleComponent,
+    NxCircleToggleGroupComponent,
+} from '@aposin/ng-aquila/circle-toggle';
 
 /**
  * @title Negative styling example
@@ -7,6 +12,12 @@ import { Component } from '@angular/core';
     selector: 'circle-toggle-negative-example',
     templateUrl: './circle-toggle-negative-example.html',
     styleUrls: ['./circle-toggle-negative-example.css'],
+    standalone: true,
+    imports: [
+        NxCircleToggleGroupComponent,
+        NxCircleToggleComponent,
+        NxButtonComponent,
+    ],
 })
 export class CircleToggleNegativeExampleComponent {
     negative = true;

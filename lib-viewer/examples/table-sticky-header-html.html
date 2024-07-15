@@ -9,12 +9,14 @@
             <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of tableElements&quot;</span>&gt;</span>
+            @for (item of tableElements; track item) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.product}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.contractNumber}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.desc}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.endingAt}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+            }
         <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

@@ -1,5 +1,29 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import {
+    NxAccordionDirective,
+    NxExpansionPanelComponent,
+    NxExpansionPanelHeaderComponent,
+    NxExpansionPanelTitleDirective,
+} from '@aposin/ng-aquila/accordion';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+} from '@aposin/ng-aquila/formfield';
+import {
+    NxColComponent,
+    NxLayoutComponent,
+    NxRowComponent,
+} from '@aposin/ng-aquila/grid';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import { NxInputDirective } from '@aposin/ng-aquila/input';
+import { NxMessageComponent } from '@aposin/ng-aquila/message';
 
 /**
  * @title Accordion Error Example
@@ -8,6 +32,24 @@ import { FormBuilder, Validators } from '@angular/forms';
     selector: 'accordion-error-example',
     templateUrl: './accordion-error-example.html',
     styleUrls: ['./accordion-error-example.css'],
+    standalone: true,
+    imports: [
+        NxAccordionDirective,
+        NxExpansionPanelComponent,
+        NxExpansionPanelHeaderComponent,
+        NxExpansionPanelTitleDirective,
+        NxIconComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        NxLayoutComponent,
+        NxRowComponent,
+        NxColComponent,
+        NxFormfieldComponent,
+        NxInputDirective,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
+        NxMessageComponent,
+    ],
 })
 export class AccordionErrorExampleComponent {
     readonly formGroupInfo = this.fb.group({

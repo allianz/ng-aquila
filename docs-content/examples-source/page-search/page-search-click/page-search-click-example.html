@@ -16,18 +16,21 @@
                         [(ngModel)]="searchTerm"
                         type="search"
                     />
+                    @if (searchTerm) {
                     <span
                         nxFormfieldSuffix
-                        *ngIf="searchTerm"
                         aria-hidden="true"
                         (click)="searchTerm=''"
                     >
                         <nx-icon name="close" size="s"></nx-icon>
                     </span>
+                    }
                 </nx-formfield>
             </div>
         </div>
     </div>
 </nx-page-search>
 <br />
-<div *ngFor="let value of valuesByClick">Value at click: {{value}}</div>
+@for (value of valuesByClick; track value) {
+<div>Value at click: {{value}}</div>
+}

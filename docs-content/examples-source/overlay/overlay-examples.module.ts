@@ -11,8 +11,7 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxOverlayModule, ExamplesSharedModule],
-    declarations: [EXAMPLES],
+    imports: [NxOverlayModule, ExamplesSharedModule, EXAMPLES],
     exports: [EXAMPLES],
 })
 export class OverlayExamplesModule {

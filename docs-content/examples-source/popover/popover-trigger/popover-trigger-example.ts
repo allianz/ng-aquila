@@ -7,6 +7,12 @@ import {
     OnDestroy,
     ViewChild,
 } from '@angular/core';
+import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import {
+    NxPopoverComponent,
+    NxPopoverTriggerDirective,
+} from '@aposin/ng-aquila/popover';
 
 /**
  * @title Popover Trigger Example
@@ -15,6 +21,13 @@ import {
     selector: 'popover-trigger-example',
     templateUrl: './popover-trigger-example.html',
     styleUrls: ['./popover-trigger-example.css'],
+    standalone: true,
+    imports: [
+        NxIconButtonComponent,
+        NxPopoverTriggerDirective,
+        NxIconComponent,
+        NxPopoverComponent,
+    ],
 })
 export class PopoverTriggerExampleComponent
     implements AfterViewInit, OnDestroy

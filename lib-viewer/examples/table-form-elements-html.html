@@ -12,11 +12,9 @@
             <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>
-                <span class="hljs-attr">nxTableRow</span>
-                *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let control of formArray.controls; index as i&quot;</span>
-                [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;getFormGroup(i)&quot;</span>
-            &gt;</span>
+            @for (control of formArray.controls; track control; let i = $index)
+            {
+            <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;getFormGroup(i)&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
@@ -44,7 +42,6 @@
                             <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;endingAt&quot;</span>
                             [<span class="hljs-attr">attr.aria-labelledby</span>]=<span class="hljs-string">&quot;&#x27;ending&#x27;&quot;</span>
                         /&gt;</span>
-
                         <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
                             [<span class="hljs-attr">for</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
                             <span class="hljs-attr">nxFormfieldSuffix</span>
@@ -81,6 +78,7 @@
                     <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+            }
         <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

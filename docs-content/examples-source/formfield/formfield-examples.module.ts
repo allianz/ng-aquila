@@ -70,8 +70,8 @@ const EXAMPLES = [
         NxNativeDateModule,
         NxMessageModule,
         ExamplesSharedModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class FormfieldExamplesModule {

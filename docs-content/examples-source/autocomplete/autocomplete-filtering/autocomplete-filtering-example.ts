@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import {
+    NxAutocompleteComponent,
+    NxAutocompleteOptionComponent,
+    NxAutocompleteTriggerDirective,
+} from '@aposin/ng-aquila/autocomplete';
 
 /**
  * @title Autocomplete filtering example
@@ -7,6 +12,12 @@ import { Component } from '@angular/core';
     selector: 'autocomplete-filtering-example',
     templateUrl: './autocomplete-filtering-example.html',
     styleUrls: ['./autocomplete-filtering-example.css'],
+    standalone: true,
+    imports: [
+        NxAutocompleteTriggerDirective,
+        NxAutocompleteComponent,
+        NxAutocompleteOptionComponent,
+    ],
 })
 export class AutocompleteFilteringExampleComponent {
     filteredOptions: string[];

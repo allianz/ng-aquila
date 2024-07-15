@@ -1,13 +1,23 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">AfterContentInit</span>, <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">ViewChild</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-variable constant_">ERROR_DEFAULT_OPTIONS</span>,
     <span class="hljs-title class_">ErrorDefaultOptions</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span>,
     <span class="hljs-title class_">FormfieldDefaultOptions</span>,
+    <span class="hljs-title class_">NxFormfieldAppendixDirective</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+    <span class="hljs-title class_">NxFormfieldPrefixDirective</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxInputDirective</span>,
+    <span class="hljs-title class_">NxInputDirective</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">NxInputDirective</span>_1,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">myDefaultOptions</span>: <span class="hljs-title class_">FormfieldDefaultOptions</span> = {
     <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;outline&#x27;</span>,
@@ -29,6 +39,17 @@
     <span class="hljs-attr">providers</span>: [
         { <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span>, <span class="hljs-attr">useValue</span>: myDefaultOptions },
         { <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">ERROR_DEFAULT_OPTIONS</span>, <span class="hljs-attr">useValue</span>: myErrorOptions },
+    ],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxFormfieldComponent</span>,
+        <span class="hljs-title class_">NxInputDirective</span>_1,
+        <span class="hljs-title class_">NxFormfieldPrefixDirective</span>,
+        <span class="hljs-title class_">NxIconComponent</span>,
+        <span class="hljs-title class_">NxFormfieldAppendixDirective</span>,
+        <span class="hljs-title class_">FormsModule</span>,
+        <span class="hljs-title class_">NxErrorComponent</span>,
+        <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
     ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FormfieldGlobalExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterContentInit</span> {

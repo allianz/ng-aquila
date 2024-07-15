@@ -4,10 +4,9 @@
             <h4 nxHeadline="subsection-xsmall">Standard dropdown</h4>
             <nx-formfield label="Car brand">
                 <nx-dropdown>
-                    <nx-dropdown-item
-                        *ngFor="let brand of options"
-                        [value]="brand"
-                    ></nx-dropdown-item>
+                    @for (brand of options; track brand) {
+                    <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+                    }
                 </nx-dropdown>
             </nx-formfield>
             <nx-formfield label="Readonly Dropdown">
@@ -28,10 +27,9 @@
                     [(ngModel)]="modelBlank"
                     required
                 >
-                    <nx-dropdown-item
-                        *ngFor="let brand of options"
-                        [value]="brand"
-                    ></nx-dropdown-item>
+                    @for (brand of options; track brand) {
+                    <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+                    }
                 </nx-dropdown>
                 <nx-error nxFormfieldError appearance="text">
                     Error message
@@ -39,10 +37,9 @@
             </nx-formfield>
             <nx-formfield label="With icon dropdown">
                 <nx-dropdown>
-                    <nx-dropdown-item
-                        *ngFor="let brand of options"
-                        [value]="brand"
-                    ></nx-dropdown-item>
+                    @for (brand of options; track brand) {
+                    <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+                    }
                 </nx-dropdown>
                 <nx-icon nxFormfieldAppendix name="info-circle-o"> </nx-icon>
             </nx-formfield>
@@ -56,10 +53,9 @@
                     [showFilter]="true"
                     filterPlaceholder="Type to search car"
                 >
-                    <nx-dropdown-item
-                        *ngFor="let brand of options"
-                        [value]="brand"
-                    ></nx-dropdown-item>
+                    @for (brand of options; track brand) {
+                    <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+                    }
                 </nx-dropdown>
             </nx-formfield>
         </div>
@@ -67,15 +63,13 @@
             <h4 nxHeadline="subsection-xsmall">Group dropdown</h4>
             <nx-formfield label="Animals">
                 <nx-dropdown [(value)]="model">
-                    <nx-dropdown-group
-                        *ngFor="let group of groups"
-                        [label]="group.label"
-                    >
-                        <nx-dropdown-item
-                            *ngFor="let item of group.items"
-                            [value]="item"
-                        ></nx-dropdown-item>
+                    @for (group of groups; track group) {
+                    <nx-dropdown-group [label]="group.label">
+                        @for (item of group.items; track item) {
+                        <nx-dropdown-item [value]="item"></nx-dropdown-item>
+                        }
                     </nx-dropdown-group>
+                    }
                 </nx-dropdown>
             </nx-formfield>
         </div>

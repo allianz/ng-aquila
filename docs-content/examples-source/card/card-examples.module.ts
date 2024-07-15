@@ -44,8 +44,8 @@ const EXAMPLES = [
         NxPopoverModule,
         ExamplesSharedModule,
         RouterModule,
+        EXAMPLES,
     ],
-    declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
 export class CardExamplesModule {

@@ -2,29 +2,31 @@
     <thead>
         <tr nxTableRow>
             <th nxHeaderCell></th>
+            @for (breakpoint of breakpoints; track breakpoint; let i = $index) {
             <th
                 nxHeaderCell
-                *ngFor="let breakpoint of breakpoints; let i = index"
                 [ngStyle]="{ background: 'var(--documentation-grid-' + breakpoint.name + '-color)'}"
             >
                 {{ breakpoint.name }}
             </th>
+            }
         </tr>
     </thead>
     <tbody>
-        <tr nxTableRow *ngFor="let breakpoint of breakpoints">
+        @for (breakpoint of breakpoints; track breakpoint) {
+        <tr nxTableRow>
             <td nxTableCell><code>.nx-hidden-{{breakpoint.prefix}}</code></td>
-            <ng-container *ngFor="let col of breakpoints">
-                <td
-                    *ngIf="breakpoint.prefix === col.prefix; else visible"
-                    nxTableCell
-                >
-                    hidden
-                </td>
-                <ng-template #visible>
-                    <td nxTableCell class="visible">visible</td>
-                </ng-template>
-            </ng-container>
+            @for (col of breakpoints; track col) { @if (breakpoint.prefix ===
+            col.prefix) {
+            <td nxTableCell>hidden</td>
+            } @else {
+            <td nxTableCell class="visible">visible</td>
+            }
+            <ng-template #visible>
+                <td nxTableCell class="visible">visible</td>
+            </ng-template>
+            }
         </tr>
+        }
     </tbody>
 </table>
