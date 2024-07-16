@@ -6,7 +6,7 @@ title: Releases and updating
 
 ## Release plan
 
-Our release strategy is naturally synchronized with [Angular's](https://angular.io/guide/releases). The main reason for this is to minimize the frequency of breaking changes. The Angular team releases a major version every six months, whenever we update to this version we expect breaking changes. Thus, we will release any breaking change along with the major release of Angular. Consequently, you can expect breaking changes (major update) within ng-aquila about every six months. 
+Our release strategy is naturally synchronized with [Angular's](https://angular.io/guide/releases). The main reason for this is to minimize the frequency of breaking changes. The Angular team releases a major version every six months, whenever we update to this version we expect breaking changes. Thus, we will release any breaking change along with the major release of Angular. Consequently, you can expect breaking changes (major update) about every six months. 
 
 As the Angular team now provides release dates down to a week, we are able to prepare in advance and provide more specific release terms. Our ambition is release a major version during a 6-week period after any major Angular release. 
 
@@ -14,13 +14,25 @@ We trigger minor or bug fix releases if they provide a meaningful delivery (fix 
 
 | Date           | Angular version | ng-aquila version | LTS end      |
 | -------------- | --------------- | ----------------- | ------------ |
-| December 2022  | 15              | 15                | May 2024     |
-| May 2023       | 16              | 16                | November 2024|
+| May 2023       | 16              | 16                | Nov 2024     |
 | November 2023  | 17              | 17                | May 2025     |
+| July 2024      | 18              | 18                | Nov 2025     |
 
-Aquila versions 14 and older are no longer supported.
+Aquila versions 15 and older are no longer supported.
 
 During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
+
+## Updating to version 18
+
+With Aquila 18, we are upgrading to Angular 18. This update marks control flow and deferrable views as stable. In addition, experimental support for zoneless change detection, Server-side rendering improvements and signal APIs in developer preview are shipped. Check out all the details of [Angular 18](https://blog.angular.dev/angular-v18-is-now-available-e79d5ac0affe).
+
+For updating Aquila to version 18, in most cases the following command should do the update for you:
+
+`ng update @angular/cli @angular/core`
+
+Then it should be easy to update Aquila with the following command:
+
+`ng update @aposin/ng-aquila --force`
 
 ## Updating to version 17
 
