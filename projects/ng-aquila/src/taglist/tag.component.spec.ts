@@ -1,4 +1,4 @@
-import { BACKSPACE, DELETE } from '@angular/cdk/keycodes';
+import { ENTER } from '@angular/cdk/keycodes';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -51,7 +51,7 @@ describe('NxTagComponent', () => {
         expect(closeIcon).toBeTruthy();
     });
 
-    it('should emit event when tag is clicked', () => {
+    it('should emit (clicked) event when tag is clicked', () => {
         createTestComponent(BasicTag);
         spyOn(tagInstance.clicked, 'emit');
         fixture.debugElement.nativeElement.querySelector('nx-tag').click();
@@ -59,7 +59,17 @@ describe('NxTagComponent', () => {
         expect(tagInstance.clicked.emit).toHaveBeenCalledWith('foo');
     });
 
-    it('should emit event when close icon is clicked', () => {
+    it('should emit a (clicked) event when the tag is keydown with ENTER', () => {
+        createTestComponent(BasicTag);
+        spyOn(tagInstance.clicked, 'emit');
+        const tagEl = fixture.nativeElement.querySelector('nx-tag');
+
+        dispatchKeyboardEvent(tagEl, 'keydown', ENTER);
+        fixture.detectChanges();
+        expect(tagInstance.clicked.emit).toHaveBeenCalledWith('foo');
+    });
+
+    it('should emit (removed) event when close icon is clicked', () => {
         createTestComponent(RemovableTag);
         spyOn(tagInstance.removed, 'emit');
         fixture.debugElement.nativeElement.querySelector('.nx-tag__close').click();
@@ -71,11 +81,7 @@ describe('NxTagComponent', () => {
         createTestComponent(BasicTag);
         spyOn(tagInstance.removed, 'emit');
         const tagEl = fixture.nativeElement.querySelector('nx-tag');
-        dispatchKeyboardEvent(tagEl, 'keydown', DELETE);
-        fixture.detectChanges();
-        expect(tagInstance.removed.emit).not.toHaveBeenCalledWith('foo');
-
-        dispatchKeyboardEvent(tagEl, 'keydown', BACKSPACE);
+        dispatchKeyboardEvent(tagEl, 'keydown', ENTER);
         fixture.detectChanges();
         expect(tagInstance.removed.emit).not.toHaveBeenCalledWith('foo');
 
@@ -107,22 +113,23 @@ describe('NxTagComponent', () => {
     });
 
     describe('a11y', () => {
-        it('should emit (removed) event when BACKSPACE is pressed', () => {
+        it('is a delete button for ensure a11y', () => {
             createTestComponent(RemovableTag);
-            spyOn(tagInstance.removed, 'emit');
-            const tagEl = fixture.nativeElement.querySelector('nx-tag');
-            dispatchKeyboardEvent(tagEl, 'keydown', BACKSPACE);
-            fixture.detectChanges();
-            expect(tagInstance.removed.emit).toHaveBeenCalledWith('bar');
+            const deleteButton = fixture.nativeElement.querySelector('.nx-tag__close');
+            expect(deleteButton.tagName.toLowerCase()).toBe('button');
         });
 
-        it('should emit (removed) event when DELETE is pressed', () => {
+        it('should emit (removed) event when delete', () => {
             createTestComponent(RemovableTag);
             spyOn(tagInstance.removed, 'emit');
-            const tagEl = fixture.nativeElement.querySelector('nx-tag');
-            dispatchKeyboardEvent(tagEl, 'keydown', DELETE);
+            spyOn(tagInstance.clicked, 'emit');
+
+            const deleteButton = fixture.nativeElement.querySelector('.nx-tag__close');
+            deleteButton.click();
+
             fixture.detectChanges();
             expect(tagInstance.removed.emit).toHaveBeenCalledWith('bar');
+            expect(tagInstance.clicked.emit).not.toHaveBeenCalled();
         });
 
         it('has no accessibility violations', async () => {

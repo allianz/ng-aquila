@@ -1,7 +1,8 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
-import { BACKSPACE, DELETE, ENTER } from '@angular/cdk/keycodes';
+import { ENTER } from '@angular/cdk/keycodes';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 @Component({
@@ -11,11 +12,11 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
     styleUrls: ['tag.component.scss'],
     host: {
         '(click)': 'tagClickHandler()',
-        '(keydown)': 'removeKeyHandler($event)',
+        '(keydown)': 'enterKeyHandler($event)',
         '[attr.tabindex]': 'tabindex',
     },
     standalone: true,
-    imports: [NxIconModule],
+    imports: [NxIconModule, NxButtonModule],
 })
 export class NxTagComponent implements OnDestroy, AfterViewInit {
     private _removable!: boolean;
@@ -80,19 +81,13 @@ export class NxTagComponent implements OnDestroy, AfterViewInit {
 
     /** @docs-private */
     // Emit the removed event that the parent can remove the value
-    removeClickHandler(event: MouseEvent) {
+    removeHandler(event: MouseEvent) {
         event.stopPropagation();
         this.removed.emit(this.value);
     }
 
     /** @docs-private */
-    removeKeyHandler(event: KeyboardEvent) {
-        if (this.removable && (event.keyCode === DELETE || event.keyCode === BACKSPACE)) {
-            event.preventDefault();
-            event.stopPropagation();
-            this.removed.emit(this.value);
-        }
-
+    enterKeyHandler(event: KeyboardEvent) {
         if (event.keyCode === ENTER) {
             this.clicked.emit(this.value);
         }

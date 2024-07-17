@@ -1,9 +1,7 @@
-import { BACKSPACE, DELETE } from '@angular/cdk/keycodes';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxTaglistComponent } from './taglist.component';
 import { NxTaglistModule } from './taglist.module';
 
@@ -72,10 +70,8 @@ describe('NxTaglistComponent', () => {
 
     it('deletes tags on delete button click and focuses the next one', () => {
         createTestComponent(BasicTaglist);
-        const firstTag = tagElements.item(0);
-        firstTag.focus();
-        dispatchKeyboardEvent(firstTag, 'keydown', DELETE);
-
+        const firstTagDeleteButton = tagElements.item(0).querySelector('.nx-tag__close') as HTMLButtonElement;
+        firstTagDeleteButton.click();
         fixture.detectChanges();
 
         expect(taglistInstance.tags).toHaveSize(1);
@@ -85,8 +81,8 @@ describe('NxTaglistComponent', () => {
     it('deletes tags on delete button click and focuses the previous one', () => {
         createTestComponent(BasicTaglist);
         const lastTag = tagElements.item(tagElements.length - 1);
-        lastTag.focus();
-        dispatchKeyboardEvent(lastTag, 'keydown', DELETE);
+        const lastTagDeleteButton = lastTag.querySelector('.nx-tag__close') as HTMLButtonElement;
+        lastTagDeleteButton.click();
         fixture.detectChanges();
 
         expect(taglistInstance.tags).toHaveSize(1);
@@ -237,19 +233,11 @@ describe('NxTaglistComponent', () => {
     });
 
     describe('a11y', () => {
-        it('emits (removed) event on BACKSPACE key pressed', () => {
+        it('emits (removed) event on delete', () => {
             createTestComponent(BasicTaglist);
             spyOn(taglistInstance.tagsChange, 'emit');
-            const tag = listNativeElement.querySelectorAll('li').item(0).querySelector('nx-tag');
-            dispatchKeyboardEvent(tag as Node, 'keydown', BACKSPACE);
-            expect(taglistInstance.tagsChange.emit).toHaveBeenCalledWith(['bar']);
-        });
-
-        it('emits (removed) event on DELETE key pressed', () => {
-            createTestComponent(BasicTaglist);
-            spyOn(taglistInstance.tagsChange, 'emit');
-            const tag = listNativeElement.querySelectorAll('li').item(0).querySelector('nx-tag');
-            dispatchKeyboardEvent(tag as Node, 'keydown', DELETE);
+            const tag = listNativeElement.querySelectorAll('li').item(0).querySelector('.nx-tag__close') as HTMLButtonElement;
+            tag.click();
             expect(taglistInstance.tagsChange.emit).toHaveBeenCalledWith(['bar']);
         });
 

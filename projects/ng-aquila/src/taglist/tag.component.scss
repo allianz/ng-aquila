@@ -42,11 +42,13 @@ $border-size: nx-border-size(m);
     outline: none;
     display: block;
     font-size: v(taglist-close-icon-size);
+    color: v(taglist-color);
 }
 
 .nx-tag__close {
     margin-left: nx-spacer(2xs);
-
+    padding: 0;
+    min-height: unset;
     :host-context([dir='rtl']) & {
         margin-right: nx-spacer(2xs);
         margin-left: initial;

@@ -1,7 +1,7 @@
 @if (tags.length > 0) {
-    <ul class="nx-taglist">
+    <ul class="nx-taglist" role="list">
         @for (tag of tags; track tag; let i = $index) {
-            <li class="nx-taglist__list-item" tabindex="-1">
+            <li class="nx-taglist__list-item" tabindex="-1" role="listitem">
                 <nx-tag
                     [value]="renderTag(tag)"
                     [removable]="allowTagDeletion"
