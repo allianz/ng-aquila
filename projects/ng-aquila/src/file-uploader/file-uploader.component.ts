@@ -374,17 +374,6 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         }
     }
 
-    private isValidOnSelection(file: File) {
-        if (!isMaxFileSizeValid(file, this.maxFileSize)) {
-            this.setFileSizeError(file);
-        }
-        if (!isFileTypeValid(file, this.accept, this.strictAcceptValidation)) {
-            this.setFileTypeError(file);
-        }
-
-        return this.errors.length === 0;
-    }
-
     _resetValidators(clear = false) {
         if (this.ngControl?.control) {
             if (clear) {
@@ -494,20 +483,27 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
             const totalFilesNum = (this.value?.length || 0) + files.length;
             if (isMaxFileNumberValid(totalFilesNum, this.maxFileNumber)) {
                 files.forEach((file: File) => {
-                    if (this.isValidOnSelection(file)) {
-                        const tmp = new FileItem(file);
-                        if (this.value) {
-                            this.value.push(tmp);
-                        } else {
-                            this.value = [tmp];
-                        }
-                        this._cdr.markForCheck();
+                    if (!isMaxFileSizeValid(file, this.maxFileSize)) {
+                        this.setFileSizeError(file);
+                        return;
                     }
+                    if (!isFileTypeValid(file, this.accept, this.strictAcceptValidation)) {
+                        this.setFileTypeError(file);
+                        return;
+                    }
+
+                    const newFile = new FileItem(file);
+                    if (this.value) {
+                        this.value.push(newFile);
+                    } else {
+                        this.value = [newFile];
+                    }
+                    this._cdr.markForCheck();
                 });
             } else {
                 this.setMaxFileNumberError(totalFilesNum);
             }
-
+            console.log(this.errors);
             this._subscribeToFileChanges();
         }
     }

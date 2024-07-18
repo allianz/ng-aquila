@@ -410,6 +410,54 @@ describe('NxFileUploaderComponent', () => {
             ]);
         });
 
+        it('should remove only invalid files when add files to queue', () => {
+            createTestComponent(ReactiveFileUpload);
+            testInstance.required = true;
+            testInstance.maxFileSize = 1024;
+            testInstance.accept = 'text/html';
+            fixture.detectChanges();
+
+            const invalidFile0 = new File(['100'], '0', { type: 'png' });
+            const invalidFile2 = new File(['100'], '2', { type: 'png' });
+
+            const validFile1 = new File(['11'], '1', { type: 'text/html' });
+            const validFile3 = new File(['11'], '3', { type: 'text/html' });
+
+            const fileList = {
+                0: invalidFile0,
+                1: validFile1,
+                2: invalidFile2,
+                3: validFile3,
+                length: 4,
+            };
+
+            fileUploaderInstance._onFileChange({
+                type: 'change',
+                target: {
+                    files: fileList,
+                },
+            });
+            fixture.detectChanges();
+            expect(fileUploaderInstance.errors).toEqual([
+                {
+                    filename: '0',
+                    type: 'fileType',
+                    extension: 'text/html',
+                    actual: '',
+                },
+                {
+                    filename: '2',
+                    type: 'fileType',
+                    extension: 'text/html',
+                    actual: '',
+                },
+            ]);
+            expect(fileUploaderInstance.errors.length).toEqual(2);
+            expect(fileUploaderInstance.value?.length).toEqual(2);
+            expect(fileUploaderInstance.value?.[0].name).toBe('1');
+            expect(fileUploaderInstance.value?.[1].name).toBe('3');
+        });
+
         it('should be error when selected file size is bigger than the max file', () => {
             createTestComponent(ReactiveFileUpload);
             testInstance.required = true;
