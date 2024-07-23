@@ -11,6 +11,18 @@
                         formControlName="maskInput"
                     />
                     <span nxFormfieldHint> Mask: 00:00:00 </span>
+                    @if
+                    (validatedMaskForm.get('maskInput')?.hasError('required')) {
+                    <nx-error nxFormfieldError>
+                        This field is required.
+                    </nx-error>
+                    } @if
+                    (validatedMaskForm.get('maskInput')?.hasError('nxMaskLengthError'))
+                    {
+                    <nx-error nxFormfieldError>
+                        Please enter a valid length.
+                    </nx-error>
+                    }
                 </nx-formfield>
                 <button
                     nxButton="primary small"
@@ -22,7 +34,9 @@
             </form>
 
             Form value: {{ validatedMaskForm.value | json }}<br />
-            Testform: {{ validatedMaskForm.status | json }}
+            Testform: {{ validatedMaskForm.status | json }} <br />
+            Validation errors: {{ validatedMaskForm.get('maskInput')?.errors |
+            json }}
         </div>
         <div nxCol="6">
             <h4 nxHeadline="subsection-xsmall">Without mask validation</h4>

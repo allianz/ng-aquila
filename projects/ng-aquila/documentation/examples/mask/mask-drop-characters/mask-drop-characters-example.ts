@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import {
     NxFormfieldComponent,
+    NxFormfieldErrorDirective,
     NxFormfieldHintDirective,
 } from '@aposin/ng-aquila/formfield';
 import {
@@ -29,6 +31,8 @@ import { NxMaskDirective } from '@aposin/ng-aquila/mask';
         NxMaskDirective,
         FormsModule,
         NxFormfieldHintDirective,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
     ],
 })
 export class MaskDropCharactersExampleComponent {

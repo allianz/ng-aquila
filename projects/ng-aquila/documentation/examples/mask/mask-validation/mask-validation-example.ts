@@ -5,10 +5,13 @@ import {
     FormGroup,
     FormsModule,
     ReactiveFormsModule,
+    Validators,
 } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
     NxFormfieldComponent,
+    NxFormfieldErrorDirective,
     NxFormfieldHintDirective,
 } from '@aposin/ng-aquila/formfield';
 import {
@@ -40,12 +43,16 @@ import { NxMaskDirective } from '@aposin/ng-aquila/mask';
         NxMaskDirective,
         NxFormfieldHintDirective,
         NxButtonComponent,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
         JsonPipe,
     ],
 })
 export class MaskValidationExampleComponent {
     validatedMaskForm: FormGroup = new FormGroup({
-        maskInput: new FormControl('', {}),
+        maskInput: new FormControl('', {
+            validators: [Validators.required],
+        }),
     });
 
     unvalidatedMaskForm: FormGroup = new FormGroup({

@@ -9,13 +9,13 @@
                     dropSpecialCharacters="true"
                 />
                 <span nxFormfieldHint> 00/00/00 00:00:00 </span>
+                <nx-error nxFormfieldError> Error: Invalid format. </nx-error>
             </nx-formfield>
         </div>
         <div nxCol="6">
             <p>Current value: {{ dateTimeDropped }}</p>
         </div>
     </div>
-
     <div nxRow>
         <div nxCol="6">
             <nx-formfield label="Not dropped (default)">
@@ -26,6 +26,7 @@
                     dropSpecialCharacters="false"
                 />
                 <span nxFormfieldHint> 00/00/00 00:00:00 </span>
+                <nx-error nxFormfieldError> Error: Invalid format. </nx-error>
             </nx-formfield>
         </div>
         <div nxCol="6">
