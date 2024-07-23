@@ -25,6 +25,9 @@ const LICENCE_PLATE_PATTERNS: { [key in NxLicencePlateType]: RegExp } = {
  */
 export function nxLicensePlateValidator(type: NxLicencePlateType): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
+        if (!control.value) {
+            return null;
+        }
         const valid = LICENCE_PLATE_PATTERNS[type].test(control.value);
 
         if (valid) {
