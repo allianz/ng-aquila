@@ -10,5 +10,6 @@
     z-index: 1;
     position: relative;
     top: -8px;
-    font-weight: bold;
+    font-weight: v(context-menu-header-font-weight);
+    font-size: v(context-menu-header-font-size);
 }
