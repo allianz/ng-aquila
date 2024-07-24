@@ -155,6 +155,8 @@ describe('NxTooltipDirective', () => {
 
             tooltipDirective.show();
             tick(200);
+            flush();
+
             expect(tooltipDirective._isTooltipVisible()).toBeTrue();
         }));
 
@@ -169,6 +171,7 @@ describe('NxTooltipDirective', () => {
             expect(overlayContainerElement.textContent).toContain('');
 
             tick(tooltipDelay);
+            flush();
             expect(tooltipDirective._isTooltipVisible()).toBeTrue();
             expect(overlayContainerElement.textContent).toContain(initialTooltipMessage);
         }));
@@ -177,6 +180,7 @@ describe('NxTooltipDirective', () => {
             tooltipDirective.show();
             fixture.detectChanges();
             tick(200);
+            flush();
 
             const overlayRef = tooltipDirective._overlayRef;
 
@@ -200,6 +204,8 @@ describe('NxTooltipDirective', () => {
             tooltipDirective.show();
             fixture.detectChanges();
             tick(200);
+            flush();
+
             expect(tooltipDirective._isTooltipVisible()).toBeTrue();
         }));
 
@@ -303,6 +309,7 @@ describe('NxTooltipDirective', () => {
             tooltipDirective.hide(0);
             fixture.detectChanges();
             tick();
+            flush();
 
             // At this point the animation should be able to complete itself and trigger the
             // _animationDone function, but for unknown reasons in the test infrastructure,
@@ -335,6 +342,7 @@ describe('NxTooltipDirective', () => {
             tooltipDirective.message = newMessage;
 
             fixture.detectChanges();
+            flush();
             expect(overlayContainerElement.textContent).toContain(newMessage);
         }));
 
@@ -343,6 +351,7 @@ describe('NxTooltipDirective', () => {
             tick(200); // Tick for the show delay (default is 200)
             expect(tooltipDirective._isTooltipVisible()).toBeTrue();
 
+            flush();
             fixture.destroy();
             expect(overlayContainerElement.childNodes).toHaveSize(0);
             expect(overlayContainerElement.textContent).toBe('');
@@ -453,6 +462,7 @@ describe('NxTooltipDirective', () => {
             tooltipDirective.show();
             tick(200);
             fixture.detectChanges();
+            flush();
 
             const tooltipWrapper = overlayContainerElement.querySelector('.cdk-overlay-connected-position-bounding-box');
 
@@ -935,6 +945,7 @@ describe('NxTooltipComponent', () => {
         tooltipDirective.show();
         newFixture.detectChanges();
         tick();
+        flush();
 
         expect(tooltipDirective.position).toBe('right');
         expect(tooltipDirective._getOverlayPosition(tooltipDirective.position).overlayX).toBe('start');
