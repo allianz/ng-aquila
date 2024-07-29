@@ -55,7 +55,10 @@ Application developers can implement custom column behavior, such as column hidi
  ### Column resize
  To let users adjust the width of a column in your table, you can add a resize handler in column header by using `nxHeaderResize` directive into `nxHeaderCell` element.
 
-Additionally, if you need to truncate text when the column is resized and the content overflows, you can use the `nxTableCellClip` directive.
+<div class="docs-deprecation-warning">
+  <strong><code>nxTableCellClip</code></strong> directive was deprecated since it was violating WCAG accessibility criteria. See the <a href="./documentation/table/overview#accessibility">Accessibility</a> section for more info.
+</div>
+
  <!-- example(table-column-resize) -->
 
 ### Localization
@@ -127,3 +130,6 @@ Form elements can also be added to the table:
 <!-- example(table-form-elements) -->
 
 </div>
+
+### Accessibility
+Content should not be clipped, find more info on the [WCAG criteria](https://www.w3.org/WAI/WCAG21/Understanding/reflow.html). If clipping/cropping is strictly required it can be done via custom css. In that case it's necessary to make the full content accessible through other means. Align with your accessibility expert if clipping of content is required.
