@@ -22,8 +22,8 @@ import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldControl, NxFormfieldErrorDirective } from '@aposin/ng-aquila/formfield';
 import { NxPopoverComponent, NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { getFontShorthand } from '@aposin/ng-aquila/utils';
-import { Subject } from 'rxjs';
-import { startWith, takeUntil } from 'rxjs/operators';
+import { asapScheduler, Subject } from 'rxjs';
+import { observeOn, startWith, takeUntil } from 'rxjs/operators';
 
 /** Type to determine the minimal width of a word. */
 export type SIZES = 'regular' | 'short' | 'long';
@@ -75,6 +75,15 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
      */
     @Input('label') label = '';
 
+    /**
+     * Sets the `aria-describedby` for the formfield.
+     * Will be automatically set for nxErrors within the `nx-word` component.
+     * Set if necessary for custom hint/error logic.
+     *
+     * Should be space seperated list of `id`s.
+     */
+    @Input('describedBy') describedBy = '';
+
     private readonly _destroyed = new Subject<void>();
 
     constructor(
@@ -112,7 +121,12 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
             });
         }
 
-        this._control.setAriaLabel!(this.label);
+        this._errorChildren.changes.pipe(startWith(null), observeOn(asapScheduler), takeUntil(this._destroyed)).subscribe(() => {
+            // Update the aria-described by when the number of errors changes.
+            this._syncDescribedByIds();
+            this._cdr.markForCheck();
+            this.updateErrorPopoverState();
+        });
     }
 
     ngOnDestroy(): void {
@@ -207,6 +221,10 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     }
 
     setupErrorPopover() {
+        // error popovers should not be focusable because they will be read via aria-describedby
+        this._popover.triggerType = 'manual';
+        this._popover.tabIndex = null;
+
         const positionStrategy = this._overlayPositionBuilder
             .flexibleConnectedTo(this.elementRef)
             .withLockedPosition(true)
@@ -274,5 +292,11 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
 
     hidePopover() {
         this._overlayRef.detach();
+    }
+
+    private _syncDescribedByIds() {
+        let ids: string[] = this.describedBy.length > 0 ? [this.describedBy] : [];
+        ids = [...this._errorChildren.map(error => error.id), ...ids];
+        this._control.setDescribedByIds(ids);
     }
 }

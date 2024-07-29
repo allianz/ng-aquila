@@ -1,4 +1,5 @@
 <div>
+    <label class="cdk-visually-hidden" [attr.for]="_control.id">{{ label }}</label>
     <!-- We only allow formfield controls here -->
     @if (!hasDropdown) {
         <div class="nx-word__inner-wrapper">

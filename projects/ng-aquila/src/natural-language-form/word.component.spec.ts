@@ -1,7 +1,9 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Directive, ElementRef, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
 
 import { NxNaturalLanguageFormComponent } from './natural-language-form.component';
@@ -44,6 +46,7 @@ describe('NxNaturalLanguageFormComponent', () => {
                 NaturalLanguageFormSizesComponent,
                 NaturalLanguageFormSmallComponent,
                 FormWithPreviousFormfieldComponent,
+                NaturalLanguageFormWithErrorId,
             ],
         }).compileComponents();
     }));
@@ -217,7 +220,34 @@ describe('NxNaturalLanguageFormComponent', () => {
             tick();
 
             const input = testInstance.inputs.first.elementRef.nativeElement;
-            expect(input.attributes.getNamedItem('aria-label').value).toBe('Label for the form');
+            const label = fixture.debugElement.query(By.css('nx-word>div>label'));
+
+            const inputId = input.attributes.getNamedItem('id').value;
+            const labelForId = label.nativeElement.attributes.getNamedItem('for').value;
+            expect(inputId).toBe(labelForId);
+        }));
+
+        it('assigns describedby to error components within the word component', fakeAsync(() => {
+            createTestComponent(FormWithPreviousFormfieldComponent);
+            tick();
+            fixture.detectChanges();
+
+            const wordInputElement = fixture.debugElement.query(By.css('nx-word>div>div>input'));
+
+            expect(wordInputElement.nativeElement.getAttribute('aria-describedby')).toBeDefined();
+
+            const ariaDescribedBy: string = wordInputElement.nativeElement.getAttribute('aria-describedby');
+            expect(ariaDescribedBy.startsWith('nx-formfield-error-')).toBeTruthy();
+        }));
+
+        it('assigns aria-describedby to input element', fakeAsync(() => {
+            createTestComponent(NaturalLanguageFormWithErrorId);
+            tick();
+            fixture.detectChanges();
+
+            const wordInputElement = fixture.debugElement.query(By.css('nx-word>div>div>input'));
+
+            expect(wordInputElement.nativeElement.getAttribute('aria-describedby')).toBe('custom-error-id some-other-id');
         }));
     });
 
@@ -277,6 +307,20 @@ class NaturalLanguageFormErrorComponent extends NaturalLanguageFormTest {}
     imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
+
+@Component({
+    template: `
+        <nx-natural-language-form>
+            <nx-word describedBy="some-other-id">
+                <input nxInput required />
+                <div nxError id="custom-error-id">My Error Text</div>
+            </nx-word>
+        </nx-natural-language-form>
+    `,
+    standalone: true,
+    imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule, CommonModule],
+})
+class NaturalLanguageFormWithErrorId extends NaturalLanguageFormTest {}
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,

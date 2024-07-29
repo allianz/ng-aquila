@@ -5,8 +5,9 @@ let uniqueId = 0;
 @Directive({
     selector: '[nxFormfieldError], [nxError]',
     host: {
-        role: 'alert',
         '[attr.id]': 'id',
+        'aria-live': 'assertive',
+        'aria-atomic': 'true',
     },
     standalone: true,
 })
