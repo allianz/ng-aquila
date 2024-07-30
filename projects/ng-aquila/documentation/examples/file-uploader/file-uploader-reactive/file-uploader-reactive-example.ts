@@ -28,7 +28,7 @@ import { takeUntil } from 'rxjs/operators';
 export const myCustomConfig: NxMessageToastConfig = {
     duration: 3000,
     context: 'success',
-    announcementMessage: 'Yay, you see a success message toast',
+    announcementMessage: 'All files were uploaded successfully!',
 };
 
 /** @title File uploader reactive form example */
