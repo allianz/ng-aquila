@@ -1,0 +1,16 @@
+<nx-checkbox-group [(ngModel)]="checkboxes">
+    <nx-label>Responsive horizontal layout with nx grid component</nx-label>
+    <div nxLayout="nopadding">
+        <div nxRow style="row-gap: 16px">
+            <div nxCol="12,8,6,4">
+                <nx-checkbox value="checkbox 1">Checkbox 1</nx-checkbox>
+            </div>
+            <div nxCol="12,8,6,4">
+                <nx-checkbox value="checkbox 2">Checkbox 2</nx-checkbox>
+            </div>
+            <div nxCol="12,8,6,4">
+                <nx-checkbox value="checkbox 3">Checkbox 3</nx-checkbox>
+            </div>
+        </div>
+    </div>
+</nx-checkbox-group>

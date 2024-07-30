@@ -10,10 +10,6 @@ The Checkbox is used when there is a list of options and the user may select one
 
 This component implements the checkbox as the combination of a label and an input tag. It is not intended that you use the checkbox without a label.
 
-### Label binding
-
-For better accessibility, the checkbox is always bound to its label by using a `for` tag.
-
 ### Examples
 
 The following six checkbox states are supported:
@@ -60,9 +56,11 @@ Checkboxes can be grouped under one label and validated together. The checkbox g
 
 <!-- example(checkbox-group-basic) -->
 
-#### Horizontal usage
+#### Layouting
 
-<!-- example(checkbox-group-horizontal) -->
+You are free to choose how you want to layout the checkboxes inside the group. You can for example use the grid component, your own css flexbox or css grid around it.
+
+<!-- example(checkbox-group-layout) -->
 
 #### Reactive form
 

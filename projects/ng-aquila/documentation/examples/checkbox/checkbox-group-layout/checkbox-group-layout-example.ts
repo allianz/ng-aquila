@@ -6,12 +6,13 @@ import {
     NxCheckboxComponent,
     NxCheckboxGroupComponent,
 } from '@aposin/ng-aquila/checkbox';
+import { NxGridModule } from '@aposin/ng-aquila/grid';
 
-/** @title Checkbox Group Horizontal Example */
+/** @title Checkbox Group responsive horizontal layout  */
 @Component({
-    selector: 'checkbox-group-horizontal-example',
-    templateUrl: './checkbox-group-horizontal-example.html',
-    styleUrls: ['./checkbox-group-horizontal-example.css'],
+    selector: 'checkbox-group-layout-example',
+    templateUrl: './checkbox-group-layout-example.html',
+    styleUrls: ['./checkbox-group-layout-example.css'],
     standalone: true,
     imports: [
         NxCheckboxGroupComponent,
@@ -19,8 +20,9 @@ import {
         NxLabelComponent,
         NxCheckboxComponent,
         JsonPipe,
+        NxGridModule,
     ],
 })
-export class CheckboxGroupHorizontalExampleComponent {
+export class CheckboxGroupLayoutExampleComponent {
     checkboxes = ['checkbox 1'];
 }
