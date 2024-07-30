@@ -1,11 +1,3 @@
-import {
-    CdkDrag,
-    CdkDragDrop,
-    CdkDropList,
-    CdkDropListGroup,
-    moveItemInArray,
-    transferArrayItem,
-} from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -29,11 +21,8 @@ import { NxTableModule } from '@aposin/ng-aquila/table';
     standalone: true,
     imports: [
         NxButtonComponent,
-        CdkDropListGroup,
         NxCheckboxGroupComponent,
-        CdkDropList,
         FormsModule,
-        CdkDrag,
         NxCheckboxComponent,
         NxLinkComponent,
         RouterLink,
@@ -100,22 +89,4 @@ export class TableCoumnHidingExampleComponent {
         'contractNumber',
         'desc',
     ];
-
-    drop(event: CdkDragDrop<any[]>) {
-        if (event.previousContainer === event.container) {
-            moveItemInArray(
-                event.container.data,
-                event.previousIndex,
-                event.currentIndex,
-            );
-        } else {
-            transferArrayItem(
-                event.previousContainer.data,
-                event.container.data,
-                event.previousIndex,
-                event.currentIndex,
-            );
-        }
-        this._cdr.detectChanges();
-    }
 }

@@ -1,9 +1,3 @@
-import {
-    CdkDrag,
-    CdkDragDrop,
-    CdkDropList,
-    moveItemInArray,
-} from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
@@ -11,12 +5,7 @@ import {
     NxCheckboxComponent,
     NxCheckboxGroupComponent,
 } from '@aposin/ng-aquila/checkbox';
-import {
-    NxContextMenuComponent,
-    NxContextMenuItemComponent,
-    NxContextMenuItemWrapComponent,
-    NxContextMenuTriggerDirective,
-} from '@aposin/ng-aquila/context-menu';
+import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
 import {
     NxDynamicTableColumnDefinition,
     NxDynamicTableComponent,
@@ -33,17 +22,12 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     standalone: true,
     imports: [
         NxButtonComponent,
-        NxContextMenuTriggerDirective,
-        NxContextMenuComponent,
         NxCheckboxGroupComponent,
-        CdkDropList,
         FormsModule,
-        NxContextMenuItemWrapComponent,
-        NxContextMenuItemComponent,
-        CdkDrag,
         NxIconComponent,
         NxCheckboxComponent,
         NxDynamicTableComponent,
+        NxContextMenuModule,
     ],
 })
 export class DynamicTableColumnOptionsExampleComponent {
@@ -110,9 +94,5 @@ export class DynamicTableColumnOptionsExampleComponent {
         return this.columns.filter(column =>
             this.selected.some(selected => column.key === selected),
         );
-    }
-
-    drop(event: CdkDragDrop<string[], any>) {
-        moveItemInArray(this.columns, event.previousIndex, event.currentIndex);
     }
 }
