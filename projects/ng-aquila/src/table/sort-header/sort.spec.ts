@@ -4,7 +4,7 @@ import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/t
 
 import { dispatchKeyboardEvent } from '../../cdk-test-utils';
 import { NxTableModule } from '../table.module';
-import { SortDirection, SortEvent } from './sort.directive';
+import { NxSortDirective, SortDirection, SortEvent } from './sort.directive';
 import { NxSortHeaderComponent } from './sort-header.component';
 import { NxSortHeaderIntl } from './sort-header-intl';
 
@@ -25,6 +25,7 @@ class MyIntl extends NxSortHeaderIntl {
 abstract class SortHeaderTest {
     @ViewChild('nameHeader') nameHeader!: NxSortHeaderComponent;
     @ViewChild('countHeader') countHeader!: NxSortHeaderComponent;
+    @ViewChild(NxSortDirective) tableSort!: NxSortDirective;
 
     active = 'name';
     direction: SortDirection = 'desc';
@@ -168,35 +169,59 @@ describe('NxSort', () => {
     });
 
     describe('configurable tests', () => {
-        it('creates table with initial sorting', () => {
+        it('should not sort when initialize', () => {
             createTestComponent(ConfigurableSortTableComponent);
+
             expect(testInstance.data).toEqual([
                 { name: 'rabbit', count: 5 },
-                { name: 'coney', count: 1000 },
                 { name: 'bunny', count: 15 },
+                { name: 'coney', count: 1000 },
             ]);
         });
 
-        it('sorts after active change', () => {
+        it('sorts after click column header', () => {
             createTestComponent(ConfigurableSortTableComponent);
+
             testInstance.active = 'count';
+            testInstance.direction = 'desc';
             fixture.detectChanges();
+
+            // sort by count asc
             expect(testInstance.data).toEqual([
-                { name: 'coney', count: 1000 },
-                { name: 'bunny', count: 15 },
                 { name: 'rabbit', count: 5 },
+                { name: 'bunny', count: 15 },
+                { name: 'coney', count: 1000 },
             ]);
         });
 
-        it('sorts after direction change', () => {
+        it('should not emit sortChange when set active, direction', () => {
             createTestComponent(ConfigurableSortTableComponent);
-            testInstance.direction = 'asc';
+            const sortChange = spyOn(testInstance.tableSort.sortChange, 'emit');
+
+            testInstance.active = 'count';
+            testInstance.direction = 'desc';
             fixture.detectChanges();
-            expect(testInstance.data).toEqual([
-                { name: 'bunny', count: 15 },
-                { name: 'coney', count: 1000 },
-                { name: 'rabbit', count: 5 },
-            ]);
+
+            expect(sortChange).not.toHaveBeenCalled();
+        });
+
+        it('should not emit sortChange on initialization', () => {
+            createTestComponent(ConfigurableSortTableComponent);
+            const sortChange = spyOn(testInstance.tableSort.sortChange, 'emit');
+
+            expect(sortChange).not.toHaveBeenCalled();
+            fixture.detectChanges();
+        });
+
+        it('should emit sortChange when interact with header', () => {
+            createTestComponent(ConfigurableSortTableComponent);
+            const sortChange = spyOn(testInstance.tableSort.sortChange, 'emit');
+            const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
+            nameHeaderElement.click();
+            fixture.detectChanges();
+
+            expect(sortChange).toHaveBeenCalled();
+            fixture.detectChanges();
         });
 
         it('still sorts on click when inputs are set in code', () => {

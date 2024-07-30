@@ -24,7 +24,6 @@ export class NxSortDirective implements OnDestroy {
     @Input() set active(value: string) {
         if (this._active !== value) {
             this._active = value;
-            this.sortChange.emit(new SortEvent(this.active, this.direction));
             this._stateChanges.next();
         }
     }
@@ -37,7 +36,6 @@ export class NxSortDirective implements OnDestroy {
     @Input() set direction(value: SortDirection) {
         if (this._direction !== value) {
             this._direction = value;
-            this.sortChange.emit(new SortEvent(this.active, this.direction));
             this._stateChanges.next();
         }
     }
@@ -87,6 +85,7 @@ export class NxSortDirective implements OnDestroy {
         }
 
         this.sortChange.emit(new SortEvent(this.active, this.direction));
+
         this._stateChanges.next();
     }
 }
