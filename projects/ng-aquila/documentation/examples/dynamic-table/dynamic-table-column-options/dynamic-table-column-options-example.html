@@ -13,7 +13,11 @@
     <nx-checkbox-group [(ngModel)]="selected">
         <nx-context-menu-item-wrap>
             @for (column of columns; track column) {
-            <div nxContextMenuItem disableCloseOnSelect>
+            <div
+                nxContextMenuItem
+                nxContextMenuItemCheckbox
+                disableCloseOnSelect
+            >
                 <nx-checkbox [value]="column.key">
                     {{column.title}}
                 </nx-checkbox>
