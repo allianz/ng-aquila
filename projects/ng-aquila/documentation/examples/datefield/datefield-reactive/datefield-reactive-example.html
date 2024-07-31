@@ -13,5 +13,10 @@
             nxFormfieldSuffix
         ></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker></nx-datepicker>
+        @if( testForm.get('date')?.hasError('required')) {
+        <nx-error nxFormfieldError> This field is required </nx-error>
+        } @if ( testForm.get('date')?.hasError('nxDatefieldParse')) {
+        <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+        }
     </nx-formfield>
 </form>

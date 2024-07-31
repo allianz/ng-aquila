@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import {
     DATEPICKER_DEFAULT_OPTIONS,
     DatepickerDefaultOptions,
@@ -9,6 +10,7 @@ import {
 } from '@aposin/ng-aquila/datefield';
 import {
     NxFormfieldComponent,
+    NxFormfieldErrorDirective,
     NxFormfieldHintDirective,
     NxFormfieldSuffixDirective,
 } from '@aposin/ng-aquila/formfield';
@@ -52,6 +54,8 @@ const datepickerExpertOptions: DatepickerDefaultOptions = {
         NxDatepickerToggleComponent,
         NxFormfieldSuffixDirective,
         NxDatepickerComponent,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
     ],
 })
 export class DatefieldInjectionTokenExampleComponent {

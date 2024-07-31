@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import {
     NxDatefieldDirective,
     NxDatepickerComponent,
@@ -8,6 +9,7 @@ import {
 } from '@aposin/ng-aquila/datefield';
 import {
     NxFormfieldComponent,
+    NxFormfieldErrorDirective,
     NxFormfieldHintDirective,
     NxFormfieldSuffixDirective,
 } from '@aposin/ng-aquila/formfield';
@@ -39,6 +41,8 @@ import { Moment } from 'moment';
         NxDatepickerToggleComponent,
         NxFormfieldSuffixDirective,
         NxDatepickerComponent_1,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
     ],
 })
 export class DatefieldRangeExampleComponent {

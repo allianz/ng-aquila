@@ -1,6 +1,7 @@
 import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import {
     NX_DATEPICKER_SCROLL_STRATEGY,
     NxDatefieldDirective,
@@ -9,6 +10,7 @@ import {
 } from '@aposin/ng-aquila/datefield';
 import {
     NxFormfieldComponent,
+    NxFormfieldErrorDirective,
     NxFormfieldSuffixDirective,
 } from '@aposin/ng-aquila/formfield';
 import {
@@ -49,6 +51,8 @@ function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
         NxDatepickerToggleComponent,
         NxFormfieldSuffixDirective,
         NxDatepickerComponent,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
     ],
 })
 export class DatefieldScrollStrategyProviderExampleComponent {

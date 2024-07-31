@@ -1,11 +1,15 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import {
     NX_DATE_LOCALE,
     NxDateAdapter,
     NxDatefieldDirective,
 } from '@aposin/ng-aquila/datefield';
-import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+} from '@aposin/ng-aquila/formfield';
 import {
     NxColComponent,
     NxLayoutComponent,
@@ -36,6 +40,8 @@ import { takeUntil } from 'rxjs/operators';
         NxInputDirective,
         FormsModule,
         NxSwitcherComponent,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
     ],
 })
 export class DatefieldParsingExampleComponent implements OnInit, OnDestroy {

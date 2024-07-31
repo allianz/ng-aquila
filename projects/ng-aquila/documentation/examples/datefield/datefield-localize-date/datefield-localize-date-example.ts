@@ -4,6 +4,7 @@ import 'moment/locale/ar';
 
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import {
     NX_DATE_LOCALE,
     NxDateAdapter,
@@ -13,6 +14,7 @@ import {
 } from '@aposin/ng-aquila/datefield';
 import {
     NxFormfieldComponent,
+    NxFormfieldErrorDirective,
     NxFormfieldSuffixDirective,
 } from '@aposin/ng-aquila/formfield';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
@@ -38,6 +40,8 @@ import { takeUntil } from 'rxjs/operators';
         NxDatepickerToggleComponent,
         NxFormfieldSuffixDirective,
         NxDatepickerComponent,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
     ],
 })
 export class DatefieldLocalizeDateExampleComponent

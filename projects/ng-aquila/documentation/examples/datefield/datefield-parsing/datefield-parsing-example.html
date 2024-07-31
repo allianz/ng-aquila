@@ -16,6 +16,9 @@
                     [(ngModel)]="strictDate"
                     #strictDatefield="nxDatefield"
                 />
+                <nx-error nxFormfieldError>
+                    Please enter a valid date.
+                </nx-error>
             </nx-formfield>
         </div>
 
@@ -53,6 +56,9 @@
                     [(ngModel)]="nonStrictDate"
                     #nonStrictDatefield="nxDatefield"
                 />
+                <nx-error nxFormfieldError>
+                    Please enter a valid date.
+                </nx-error>
             </nx-formfield>
         </div>
 

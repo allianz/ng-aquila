@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxDatefieldDirective } from '@aposin/ng-aquila/datefield';
 import {
     NxFormfieldComponent,
+    NxFormfieldErrorDirective,
     NxFormfieldHintDirective,
 } from '@aposin/ng-aquila/formfield';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
@@ -21,6 +23,8 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
         NxInputDirective,
         FormsModule,
         NxFormfieldHintDirective,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
     ],
 })
 export class DatefieldIsoExampleComponent {

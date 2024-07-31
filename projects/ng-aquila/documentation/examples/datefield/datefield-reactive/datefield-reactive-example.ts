@@ -6,6 +6,7 @@ import {
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import {
     NxDatefieldDirective,
     NxDatepickerComponent,
@@ -13,6 +14,7 @@ import {
 } from '@aposin/ng-aquila/datefield';
 import {
     NxFormfieldComponent,
+    NxFormfieldErrorDirective,
     NxFormfieldHintDirective,
     NxFormfieldSuffixDirective,
 } from '@aposin/ng-aquila/formfield';
@@ -36,6 +38,8 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
         NxDatepickerToggleComponent,
         NxFormfieldSuffixDirective,
         NxDatepickerComponent,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
     ],
 })
 export class DatefieldReactiveExampleComponent {
