@@ -114,7 +114,7 @@ You can also install ng-aquila manually.
 
 We fully support the following browsers:
 
--   Chrome: latest
+-   Chrome: 2 most recent major versions
 -   Firefox: latest and extended support release (ESR)
 -   MS Edge: 2 most recent major versions
 -   Safari: 2 most recent major versions
