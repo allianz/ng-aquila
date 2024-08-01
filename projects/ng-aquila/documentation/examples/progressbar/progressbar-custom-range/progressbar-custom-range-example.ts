@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { NxProgressbarComponent } from '@aposin/ng-aquila/progressbar';
 
 /**

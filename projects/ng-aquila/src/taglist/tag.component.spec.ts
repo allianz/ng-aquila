@@ -1,10 +1,11 @@
 import { ENTER } from '@angular/cdk/keycodes';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxTagComponent } from './tag.component';
+import { NxTagIntl } from './tag-intl';
 import { NxTaglistModule } from './taglist.module';
 
 @Directive({ standalone: true })
@@ -28,7 +29,7 @@ describe('NxTagComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxTaglistModule, BasicTag, RemovableTag],
+            imports: [NxTaglistModule, BasicTag, RemovableTag, IntlTag],
         }).compileComponents();
     }));
 
@@ -136,6 +137,24 @@ describe('NxTagComponent', () => {
             createTestComponent(BasicTag);
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
+
+        it('should set aria-label of delete button', () => {
+            createTestComponent(RemovableTag);
+            spyOn(tagInstance.removed, 'emit');
+            const deleteButton = fixture.nativeElement.querySelector('.nx-tag__close');
+            expect(deleteButton.getAttribute('aria-label')).toBe('Delete tag');
+
+            (testInstance as RemovableTag).deleteAriaLabel = 'hello';
+
+            fixture.detectChanges();
+            expect(deleteButton.getAttribute('aria-label')).toBe('hello');
+        });
+
+        it('should override the default intl', () => {
+            createTestComponent(IntlTag);
+            const deleteButton = fixture.nativeElement.querySelector('.nx-tag__close');
+            expect(deleteButton.getAttribute('aria-label')).toBe('Custom delete aria-label');
+        });
     });
 });
 
@@ -146,9 +165,29 @@ describe('NxTagComponent', () => {
 })
 class BasicTag extends TagTest {}
 
+@Injectable()
+class MyIntl extends NxTagIntl {
+    deleteAriaLabel = 'Custom delete aria-label';
+}
+
 @Component({
-    template: `<nx-tag value="bar" removable="true"></nx-tag>`,
+    template: `<nx-tag value="foo" removable="true"></nx-tag>`,
+    standalone: true,
+    imports: [NxTaglistModule],
+    providers: [
+        {
+            provide: NxTagIntl,
+            useClass: MyIntl,
+        },
+    ],
+})
+class IntlTag extends TagTest {}
+
+@Component({
+    template: `<nx-tag value="bar" removable="true" [deleteAriaLabel]="deleteAriaLabel"></nx-tag>`,
     standalone: true,
     imports: [NxTaglistModule],
 })
-class RemovableTag extends TagTest {}
+class RemovableTag extends TagTest {
+    deleteAriaLabel = '';
+}

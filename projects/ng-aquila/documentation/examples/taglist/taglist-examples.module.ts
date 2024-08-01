@@ -8,6 +8,7 @@ import { TaglistA11yExampleComponent } from './taglist-a11y/taglist-a11y-example
 import { TaglistBasicExampleComponent } from './taglist-basic/taglist-basic-example';
 import { TaglistDeleteExampleComponent } from './taglist-delete/taglist-delete-example';
 import { TaglistFormatterExampleComponent } from './taglist-formatter/taglist-formatter-example';
+import { TaglistIntlExampleComponent } from './taglist-intl/taglist-intl-example';
 import { TaglistKeywordExampleComponent } from './taglist-keyword/taglist-keyword-example';
 import { TaglistObjectsExampleComponent } from './taglist-objects/taglist-objects-example';
 import { TaglistOutputExampleComponent } from './taglist-output/taglist-output-example';
@@ -15,6 +16,7 @@ import { TaglistReactiveExampleComponent } from './taglist-reactive/taglist-reac
 import { TaglistTemplatedrivenExampleComponent } from './taglist-templatedriven/taglist-templatedriven-example';
 
 const EXAMPLES = [
+    TaglistIntlExampleComponent,
     TaglistExampleComponent,
     TaglistA11yExampleComponent,
     TaglistBasicExampleComponent,
@@ -34,6 +36,7 @@ const EXAMPLES = [
 export class TaglistExamplesModule {
     static components() {
         return {
+            'taglist-intl': TaglistIntlExampleComponent,
             taglist: TaglistExampleComponent,
             'taglist-a11y': TaglistA11yExampleComponent,
             'taglist-basic': TaglistBasicExampleComponent,

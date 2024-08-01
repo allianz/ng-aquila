@@ -1,9 +1,23 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { ENTER } from '@angular/cdk/keycodes';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    EventEmitter,
+    inject,
+    Input,
+    OnDestroy,
+    Output,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+
+import { NxTagIntl } from './tag-intl';
 
 @Component({
     selector: 'nx-tag',
@@ -65,11 +79,17 @@ export class NxTagComponent implements OnDestroy, AfterViewInit {
     /** An event is dispatched each time when the tag is removed. */
     @Output() readonly removed = new EventEmitter<any>();
 
+    @Input() deleteAriaLabel = '';
+
+    intl = inject(NxTagIntl);
+
     constructor(
         private readonly _cdr: ChangeDetectorRef,
         private readonly _elementRef: ElementRef,
         private readonly _focusMonitor: FocusMonitor,
-    ) {}
+    ) {
+        this.intl.changes.pipe(takeUntilDestroyed()).subscribe(() => this._cdr.markForCheck());
+    }
 
     ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elementRef);

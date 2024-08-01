@@ -69,6 +69,10 @@ In oder to improve accessibility, please consider **linking a label** to the tag
 
 <!-- example(taglist-a11y) -->
 
+ ### Internationalization
+The provider `NxTagIntl` contains various strings to provide labels for display and screen readers. You have to provide a proper translation for each of your locales.
+ <!-- example(taglist-intl) -->
+
 #### Keybord navigation
 
 If `allowTagDeletion` is set to `true`, you can remove selected tags using BACKSPACE. If your tags trigger actions on click, these actions will be also triggered on ENTER click.

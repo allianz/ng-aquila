@@ -4,7 +4,7 @@
         (keydown.enter)="$event.stopPropagation()"
         nxButton="tertiary small"
         type="button"
-        aria-label="delete tag"
+        [attr.aria-label]="deleteAriaLabel || intl.deleteAriaLabel"
         class="nx-tag__close"
         (click)="removeHandler($event)"
     >
