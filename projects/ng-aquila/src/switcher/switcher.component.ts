@@ -3,20 +3,36 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkObserveContent } from '@angular/cdk/observers';
 import {
     AfterViewInit,
+    booleanAttribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     DoCheck,
     ElementRef,
     EventEmitter,
+    forwardRef,
+    inject,
+    Injector,
     Input,
     OnDestroy,
+    OnInit,
     Optional,
     Output,
-    Self,
     ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import {
+    AbstractControl,
+    ControlValueAccessor,
+    FormControl,
+    FormGroupDirective,
+    NG_VALIDATORS,
+    NG_VALUE_ACCESSOR,
+    NgControl,
+    NgForm,
+    ValidationErrors,
+    Validator,
+    Validators,
+} from '@angular/forms';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { ErrorStateMatcher, randomString } from '@aposin/ng-aquila/utils';
 
@@ -43,13 +59,24 @@ export type LABEL_SIZE = 'small' | 'large';
         '[class.is-disabled]': 'disabled',
         '[class.is-swapped]': 'labelPosition === "left"',
         '[class.has-error]': 'errorState',
-        '[attr.aria-invalid]': 'errorState',
         '(focus)': '_forwardFocusToInput()',
     },
     standalone: true,
     imports: [NxIconModule, CdkObserveContent],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => NxSwitcherComponent),
+            multi: true,
+        },
+        {
+            provide: NG_VALIDATORS,
+            useExisting: forwardRef(() => NxSwitcherComponent),
+            multi: true,
+        },
+    ],
 })
-export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, AfterViewInit, OnDestroy {
+export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, OnInit, AfterViewInit, OnDestroy, Validator {
     /** @docs-private */
     errorState = false;
 
@@ -150,19 +177,31 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     private onChangeCallback = (_: any) => {};
     private onTouchedCallback = () => {};
 
+    @Input({ transform: booleanAttribute }) set required(value: boolean) {
+        this._required = value;
+    }
+    get required() {
+        return this._required ?? this.ngControl?.control?.hasValidator(Validators.requiredTrue) ?? false;
+    }
+    protected _required: boolean | undefined;
+
+    ngControl: NgControl | null = null;
+
     constructor(
         private readonly _cdr: ChangeDetectorRef,
-        @Optional() @Self() readonly ngControl: NgControl | null,
         private readonly _errorStateMatcher: ErrorStateMatcher,
         @Optional() private readonly _parentForm: NgForm | null,
         @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
         private readonly _focusMonitor: FocusMonitor,
-    ) {
-        if (this.ngControl) {
-            // Note: we provide the value accessor through here, instead of
-            // the `providers` to avoid running into a circular import.
-            this.ngControl.valueAccessor = this;
-        }
+    ) {}
+    validate(control: AbstractControl): ValidationErrors | null {
+        return this.required && control.value !== true ? { required: true } : null;
+    }
+
+    private injector = inject(Injector);
+
+    ngOnInit(): void {
+        this.ngControl = this.injector.get(NgControl, null);
     }
 
     ngAfterViewInit(): void {

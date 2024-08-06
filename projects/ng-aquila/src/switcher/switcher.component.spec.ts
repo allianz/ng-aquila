@@ -230,7 +230,7 @@ describe('NxSwitcherComponent', () => {
             expect(switcherNativeElement).toHaveClass('ng-untouched');
         });
 
-        it('Should reflect the error state', fakeAsync(() => {
+        it('Should reflect the error state in reactive form', fakeAsync(() => {
             createTestComponent(ValidationSwitcherForm);
             const reactInstance = testInstance as ValidationSwitcherForm;
             assertChecked(false);
@@ -248,6 +248,17 @@ describe('NxSwitcherComponent', () => {
             tick();
             assertChecked(false);
             expect(switcherNativeElement).toHaveClass('has-error');
+        }));
+
+        it('should be invalid if field is required in template driven form', fakeAsync(() => {
+            createTestComponent(SwitcherTemplateDriven);
+            inputElement.click();
+            fixture.detectChanges();
+            inputElement.click();
+            assertChecked(false);
+
+            expect(switcherNativeElement).toHaveClass('has-error');
+            expect(inputElement.getAttribute('aria-invalid')).toBeTruthy();
         }));
     });
 
@@ -271,6 +282,19 @@ describe('NxSwitcherComponent', () => {
             expect(inputElement.getAttribute('aria-label')).toBe('label');
             expect(inputElement.getAttribute('aria-labelledby')).toBe('labelBy');
         });
+
+        it('should set aria-required for template driven ', () => {
+            createTestComponent(SwitcherTemplateDriven);
+
+            expect(inputElement.getAttribute('aria-required')).toBeTruthy();
+            expect(inputElement.getAttribute('required')).toBeTruthy();
+        });
+
+        it('should set aria-required for reactive form ', () => {
+            createTestComponent(SwitcherReactiveForm);
+            expect(inputElement.getAttribute('aria-required')).toBeTruthy();
+            expect(inputElement.getAttribute('required')).toBeTruthy();
+        });
     });
 });
 
@@ -290,11 +314,13 @@ class BasicSwitcher extends SwitcherTest {}
 class BasicSwitcherOnPush extends SwitcherTest {}
 
 @Component({
-    template: `<nx-switcher [(ngModel)]="checked">templateLabel</nx-switcher>`,
+    template: `<nx-switcher [(ngModel)]="checked" [required]="required">templateLabel</nx-switcher>`,
     standalone: true,
     imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
-class SwitcherTemplateDriven extends SwitcherTest {}
+class SwitcherTemplateDriven extends SwitcherTest {
+    required = true;
+}
 
 @Component({
     template: `
@@ -307,7 +333,7 @@ class SwitcherTemplateDriven extends SwitcherTest {}
 })
 class SwitcherReactiveForm extends SwitcherTest {
     testForm = new FormBuilder().group({
-        reactiveSwitcher: new FormControl({ value: false, disabled: false }, { validators: Validators.required }),
+        reactiveSwitcher: new FormControl({ value: false, disabled: false }, { validators: Validators.requiredTrue }),
     });
 }
 

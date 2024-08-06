@@ -11,6 +11,9 @@
     [attr.aria-checked]="checked"
     [attr.aria-labelledby]="ariaLabelledBy"
     [attr.aria-label]="ariaLabel"
+    [attr.aria-invalid]="errorState"
+    [attr.aria-required]="required"
+    [attr.required]="required || null"
     class="nx-switcher__input"
 />
 <label [attr.for]="id" class="nx-switcher__label" [class.has-label]="labelHasContent">
