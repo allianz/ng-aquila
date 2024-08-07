@@ -2,9 +2,35 @@
     <div nxRow>
         <div nxCol="12, 12, 4">
             <nx-formfield label="Car brand">
-                <nx-dropdown [valueFormatter]="toText">
-                    @for (brand of demoData; track brand) {
-                    <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+                <nx-dropdown
+                    [valueFormatter]="toText"
+                    verticalAlignCheckmark="center"
+                    [(ngModel)]="value"
+                >
+                    <ng-template nxClosedLabel>
+                        <span>{{ value?.brand }}</span>
+                    </ng-template>
+                    @for (car of demoData; track car.id) {
+                    <nx-dropdown-item [value]="car">
+                        <div style="display: flex; align-items: center">
+                            <div
+                                nxAvatar
+                                size="small"
+                                class="nx-margin-right-m"
+                            >
+                                {{ car.avatar }}
+                            </div>
+
+                            <div style="display: flex; flex-direction: column">
+                                <span class="nx-font-weight-semibold">
+                                    {{ car.brand }}
+                                </span>
+                                <span class="nx-font-weight-light">
+                                    {{ car.year }}
+                                </span>
+                            </div>
+                        </div>
+                    </nx-dropdown-item>
                     }
                 </nx-dropdown>
             </nx-formfield>

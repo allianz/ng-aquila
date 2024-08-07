@@ -46,6 +46,8 @@ The items inside the dropdown can be rendered either by `[valueFormatter]` or by
 
 If there is ng-content projected by nx-dropdown-item, this content will be used by the dropdown to display the items (middle). The library implements a fallback if you do not provide `[valueFormatter]` and ng-content. In this case, `[value]` will be used by .toString() as value for the item (right).
 
+For more advanced content see the first dropdown where `[verticalAlignCheckmark]` is used to center the checkmark vertically.
+
 <!-- example(dropdown-rendering-items) -->
 
 ### Custom closed label dropdown

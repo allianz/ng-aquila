@@ -69,6 +69,14 @@ $dropdown-border-size: nx-border-size(xs);
         outline: none;
     }
 
+    &.centered-checkmark {
+        ::ng-deep nx-dropdown-item {
+            .nx-dropdown-results__option {
+                align-items: center;
+            }
+        }
+    }
+
     &--in-outline-field {
         .nx-dropdown__panel-body {
             // (6 * line-height of item + padding of item) + 16px for top and bottom padding of first and last element

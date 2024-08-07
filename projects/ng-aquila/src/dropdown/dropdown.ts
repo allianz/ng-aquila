@@ -72,6 +72,9 @@ export interface NxDropdownOption {
 
 export type NxDropdownPanelMinWidth = 'trigger' | 'none';
 
+/** Vertical alignment of dropdown checkmark */
+export type VerticalAlignCheckmark = 'top' | 'center';
+
 /** Dropdown data that requires internationalization. */
 @Injectable({ providedIn: 'root' })
 export class NxDropdownIntl {
@@ -199,6 +202,8 @@ export class NxDropdownComponent
     }
 
     @Input() ariaLabelledBy: string | null = null;
+
+    @Input() verticalAlignCheckmark: VerticalAlignCheckmark = 'top';
 
     private _selectionModel!: SelectionModel<NxDropdownOption>;
 

@@ -1646,6 +1646,21 @@ describe('NxDropdownComponent', () => {
             expect(renderedResult.textContent).toBe('DE');
         }));
     });
+
+    describe('vertical align checkmark', () => {
+        beforeEach(fakeAsync(() => {
+            configureNxDropdownTestingModule([VerticalAlignCheckmarkComponent]);
+        }));
+
+        it('dropdown should have class centered-checkmark', fakeAsync(() => {
+            createTestComponent(VerticalAlignCheckmarkComponent);
+            dropdownInstance.verticalAlignCheckmark = 'center';
+            fixture.detectChanges();
+            openDropdownByClick();
+
+            expect(getDropdown()).toHaveClass('centered-checkmark');
+        }));
+    });
 });
 
 interface DropdownTestItem {
@@ -2240,4 +2255,15 @@ class DropdownLazy extends DropdownTest {
             label: 'three',
         },
     ];
+}
+
+@Component({
+    template: `<nx-dropdown nxLabel="Car brand" [(value)]="selectedValue" [placeholder]="placeholder" [verticalAlignCheckmark]="verticalAlignCheckmark">
+        <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
+    </nx-dropdown>`,
+    standalone: true,
+    imports: [NxDropdownModule],
+})
+class VerticalAlignCheckmarkComponent extends DropdownTest {
+    verticalAlignCheckmark = 'top';
 }

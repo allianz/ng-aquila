@@ -64,7 +64,15 @@ nx-checkbox {
 
     nx-icon {
         line-height: v(dropdown-item-line-height);
-        font-size: nx-font-size(3xs);
+        font-size: nx-font-size(xs);
+
+        ::ng-deep .nx-dropdown__panel--in-outline-field & {
+            font-size: nx-font-size(3xs) !important;
+        }
+
+        &:has(svg) {
+            height: v(dropdown-item-line-height);
+        }
     }
 
     :host-context([dir='rtl']) & {
@@ -72,6 +80,7 @@ nx-checkbox {
         margin-left: nx-spacer(2xs);
     }
 }
+
 // focus style
 /* clean-css ignore:start */
 
