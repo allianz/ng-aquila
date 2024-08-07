@@ -7,7 +7,17 @@
 <nx-formfield label="Label">
     <span nxFormfieldPrefix>$</span>
     <input nxInput nxAriaLabel="Enter dollar amount" />
-    <nx-icon nxFormfieldAppendix name="info-circle-o"> </nx-icon>
+    <button
+        nxFormfieldAppendix
+        nxIconButton="tertiary small"
+        nxPopoverDirection="top"
+        [nxPopoverTriggerFor]="popoverGlobalExample"
+        nxPopoverTrigger="click"
+        type="button"
+        aria-label="More information"
+    >
+        <nx-icon name="info-circle-o" size="s" aria-hidden="true"> </nx-icon>
+    </button>
 </nx-formfield>
 
 <nx-formfield label="Formfield with error">
@@ -28,3 +38,12 @@
 >
     <input nxInput />
 </nx-formfield>
+
+<nx-popover #popoverGlobalExample>
+    <div style="max-width: 300px">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni,
+        nostrum. Obcaecati cupiditate numquam, fugit illo incidunt molestiae
+        ipsam perferendis officia accusamus. Enim magnam recusandae velit
+        accusamus ipsa. Nemo, eius exercitationem?
+    </div>
+</nx-popover>

@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxButtonModule, NxIconButtonComponent } from '@aposin/ng-aquila/button';
 import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
@@ -48,6 +48,7 @@ import { AppComponent } from './app.component';
         NxOverlayModule,
         NxPopoverModule,
         NxSmallStageModule,
+        NxIconButtonComponent,
     ],
     providers: [provideHttpClient(withInterceptorsFromDi(), withJsonpSupport())],
 })

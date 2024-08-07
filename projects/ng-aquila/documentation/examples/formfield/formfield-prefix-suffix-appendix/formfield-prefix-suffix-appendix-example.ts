@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
 import {
     NxFormfieldAppendixDirective,
     NxFormfieldComponent,
@@ -29,6 +30,7 @@ import {
         NxPopoverTriggerDirective,
         NxIconComponent,
         NxPopoverComponent,
+        NxIconButtonComponent,
     ],
 })
 export class FormfieldPrefixSuffixAppendixExampleComponent {

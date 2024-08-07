@@ -17,7 +17,18 @@
             >
                 <span nxFormfieldPrefix>$</span>
                 <input nxInput readonly value="500" />
-                <nx-icon nxFormfieldAppendix name="info-circle-o"> </nx-icon>
+                <button
+                    nxFormfieldAppendix
+                    nxIconButton="tertiary small"
+                    nxPopoverDirection="top"
+                    [nxPopoverTriggerFor]="popoverAppearanceExample"
+                    nxPopoverTrigger="click"
+                    type="button"
+                    aria-label="More information"
+                >
+                    <nx-icon name="info-circle-o" size="s" aria-hidden="true">
+                    </nx-icon>
+                </button>
             </nx-formfield>
         </div>
     </div>
@@ -111,3 +122,12 @@
         </div>
     </div>
 </div>
+
+<nx-popover #popoverAppearanceExample>
+    <div style="max-width: 300px">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni,
+        nostrum. Obcaecati cupiditate numquam, fugit illo incidunt molestiae
+        ipsam perferendis officia accusamus. Enim magnam recusandae velit
+        accusamus ipsa. Nemo, eius exercitationem?
+    </div>
+</nx-popover>

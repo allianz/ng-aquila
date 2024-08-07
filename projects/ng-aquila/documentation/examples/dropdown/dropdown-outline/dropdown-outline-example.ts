@@ -1,6 +1,7 @@
 import { AfterContentInit, Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
 import {
     NxDropdownComponent,
     NxDropdownComponent as NxDropdownComponent_1,
@@ -21,6 +22,10 @@ import {
 } from '@aposin/ng-aquila/grid';
 import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
 import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import {
+    NxPopoverComponent,
+    NxPopoverTriggerDirective,
+} from '@aposin/ng-aquila/popover';
 
 /**
  * @title Outline formfield example
@@ -51,6 +56,9 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
         NxFormfieldAppendixDirective,
         NxDropdownGroupComponent,
         NxMultiSelectComponent,
+        NxIconButtonComponent,
+        NxPopoverComponent,
+        NxPopoverTriggerDirective,
     ],
 })
 export class DropdownOutlineExampleComponent implements AfterContentInit {

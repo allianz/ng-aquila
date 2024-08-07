@@ -4,14 +4,20 @@
     inputAriaLabel="Number of travellers"
 >
     <label>Number of travellers</label>
-    <nx-icon
-        class="info-icon nx-margin-left-2xs"
-        [nxPopoverTriggerFor]="popoverHover"
-        nxPopoverTrigger="hover"
-        name="info-circle-o"
-        size="s"
-    ></nx-icon>
+    <button
+        class="nx-margin-left-2xs"
+        nxFormfieldAppendix
+        nxIconButton="tertiary small"
+        nxPopoverDirection="top"
+        [nxPopoverTriggerFor]="popover"
+        nxPopoverTrigger="click"
+        type="button"
+        aria-label="More information"
+        nx-margin-left-2xs
+    >
+        <nx-icon name="info-circle-o" size="s" aria-hidden="true"> </nx-icon>
+    </button>
 </nx-number-stepper>
-<nx-popover #popoverHover>
+<nx-popover #popover>
     <div><span>Custom help text as popover</span></div>
 </nx-popover>

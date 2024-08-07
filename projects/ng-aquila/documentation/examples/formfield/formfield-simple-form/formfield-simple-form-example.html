@@ -37,13 +37,21 @@
                 <nx-formfield label="E-Mail">
                     <input nxInput formControlName="email" />
 
-                    <nx-icon
+                    <button
                         nxFormfieldAppendix
-                        name="info-circle-o"
+                        nxIconButton="tertiary small"
                         [nxPopoverTriggerFor]="popoverEmail"
-                        nxPopoverTrigger="hover"
+                        nxPopoverTrigger="click"
+                        type="button"
+                        aria-label="More information"
                     >
-                    </nx-icon>
+                        <nx-icon
+                            name="info-circle-o"
+                            size="s"
+                            aria-hidden="true"
+                        >
+                        </nx-icon>
+                    </button>
                     <nx-error nxFormfieldError>
                         Your email is missing.
                     </nx-error>

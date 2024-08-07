@@ -34,7 +34,18 @@
                     <nx-formfield label="E-Mail">
                         <input nxInput formControlName="email" />
 
-                        <nx-icon nxFormfieldAppendix name="info-circle-o" [nxPopoverTriggerFor]="popoverEmail" nxPopoverTrigger="hover"> </nx-icon>
+                        <button
+                            nxFormfieldAppendix
+                            nxIconButton="tertiary small"
+                            nxPopoverDirection="top"
+                            [nxPopoverTriggerFor]="popoverEmail"
+                            nxPopoverTrigger="click"
+                            type="button"
+                            aria-label="More information"
+                        >
+                            <nx-icon name="info-circle-o" size="s" aria-hidden="true"> </nx-icon>
+                        </button>
+
                         <nx-error nxFormfieldError> Please provide a valid email address. </nx-error>
                     </nx-formfield>
                 </div>

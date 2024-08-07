@@ -2,7 +2,7 @@ import {} from '@angular/common/http';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxButtonModule, NxIconButtonComponent } from '@aposin/ng-aquila/button';
 import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
@@ -42,6 +42,7 @@ import { NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
         NxOverlayModule,
         NxPopoverModule,
         NxSmallStageModule,
+        NxIconButtonComponent,
     ],
     templateUrl: './app.component.html',
 })

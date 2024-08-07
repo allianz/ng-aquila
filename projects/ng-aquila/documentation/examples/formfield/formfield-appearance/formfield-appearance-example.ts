@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
 import {
     NxDatefieldDirective,
     NxDatepickerComponent,
@@ -24,6 +25,10 @@ import {
 } from '@aposin/ng-aquila/grid';
 import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
+import {
+    NxPopoverComponent,
+    NxPopoverTriggerDirective,
+} from '@aposin/ng-aquila/popover';
 
 /**
  * @title Appearance example
@@ -51,6 +56,9 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
         NxDatepickerComponent,
         NxFormfieldHintDirective,
         NxErrorComponent,
+        NxIconButtonComponent,
+        NxPopoverComponent,
+        NxPopoverTriggerDirective,
     ],
 })
 export class FormfieldAppearanceExampleComponent {

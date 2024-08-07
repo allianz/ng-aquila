@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
 import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import { NxNumberStepperComponent } from '@aposin/ng-aquila/number-stepper';
 import {
@@ -19,6 +20,7 @@ import {
         NxIconComponent,
         NxPopoverTriggerDirective,
         NxPopoverComponent,
+        NxIconButtonComponent,
     ],
 })
 export class NumberStepperCustomLabelExampleComponent {}
