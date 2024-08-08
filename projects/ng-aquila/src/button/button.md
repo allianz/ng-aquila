@@ -14,14 +14,6 @@ We work with five different types of buttons. The primary's heavy appearance is 
 
 <!-- example(button) -->
 
-### Emphasis
-
-<div class="docs-deprecation-warning">
-  The <strong><code>Emphasis</code></strong> button has been deprecated due to not fulfilling the WCAG accessibility contrast requirements. It is recommended to use the new <code>Attention</code>  variant instead.
-</div>
-
-<!-- example(button-emphasis) -->
-
 ### Sizes
 
 #### Small
