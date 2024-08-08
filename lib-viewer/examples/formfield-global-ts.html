@@ -5,6 +5,7 @@
     <span class="hljs-title class_">ErrorDefaultOptions</span>,
     <span class="hljs-title class_">NxErrorComponent</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span>,
     <span class="hljs-title class_">FormfieldDefaultOptions</span>,
@@ -18,6 +19,10 @@
     <span class="hljs-title class_">NxInputDirective</span>,
     <span class="hljs-title class_">NxInputDirective</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">NxInputDirective</span>_1,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxPopoverComponent</span>,
+    <span class="hljs-title class_">NxPopoverTriggerDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/popover&#x27;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">myDefaultOptions</span>: <span class="hljs-title class_">FormfieldDefaultOptions</span> = {
     <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;outline&#x27;</span>,
@@ -50,6 +55,9 @@
         <span class="hljs-title class_">FormsModule</span>,
         <span class="hljs-title class_">NxErrorComponent</span>,
         <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+        <span class="hljs-title class_">NxPopoverComponent</span>,
+        <span class="hljs-title class_">NxPopoverTriggerDirective</span>,
+        <span class="hljs-title class_">NxIconButtonComponent</span>,
     ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FormfieldGlobalExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterContentInit</span> {

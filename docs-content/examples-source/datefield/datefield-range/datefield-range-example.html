@@ -15,6 +15,9 @@
                     nxFormfieldSuffix
                 ></nx-datepicker-toggle>
                 <nx-datepicker #startDatepicker></nx-datepicker>
+                <nx-error nxFormfieldError>
+                    Please enter a valid date.
+                </nx-error>
             </nx-formfield>
         </div>
 
@@ -24,6 +27,7 @@
                     nxDatefield
                     nxInput
                     [datepicker]="endDatepicker"
+                    #endModel="ngModel"
                     [(ngModel)]="endDate"
                 />
                 <span nxFormfieldHint>MM/DD/YYYY</span>
@@ -32,6 +36,12 @@
                     nxFormfieldSuffix
                 ></nx-datepicker-toggle>
                 <nx-datepicker #endDatepicker></nx-datepicker>
+                @if (endModel.errors && endModel.errors.nxDatefieldParse) {
+                <nx-error nxFormfieldError>
+                    Please enter a valid date.
+                </nx-error>
+
+                }
             </nx-formfield>
         </div>
     </div>

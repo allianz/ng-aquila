@@ -41,7 +41,18 @@
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;brand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
                     }
                 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">nxFormfieldAppendix</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                    <span class="hljs-attr">nxFormfieldAppendix</span>
+                    <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">&quot;tertiary small&quot;</span>
+                    <span class="hljs-attr">nxPopoverDirection</span>=<span class="hljs-string">&quot;top&quot;</span>
+                    [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverOutlineExample&quot;</span>
+                    <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;More information&quot;</span>
+                &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -86,3 +97,12 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverOutlineExample</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;max-width: 300px&quot;</span>&gt;</span>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni,
+        nostrum. Obcaecati cupiditate numquam, fugit illo incidunt molestiae
+        ipsam perferendis officia accusamus. Enim magnam recusandae velit
+        accusamus ipsa. Nemo, eius exercitationem?
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>

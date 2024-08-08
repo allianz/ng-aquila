@@ -1,4 +1,3 @@
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
 import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
@@ -28,7 +27,6 @@ const EXAMPLES = [
         NxCheckboxModule,
         NxContextMenuModule,
         NxIconModule,
-        DragDropModule,
         ExamplesSharedModule,
         EXAMPLES,
     ],

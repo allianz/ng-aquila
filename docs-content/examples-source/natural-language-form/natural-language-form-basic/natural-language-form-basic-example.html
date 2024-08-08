@@ -2,7 +2,9 @@
     Here is a word
     <nx-word label="Provide this required field">
         <input nxInput ngModel required />
-        <div nxError>This field is required.</div>
+        <div nxError>
+            <strong>Required:</strong> Some description what input is expected
+        </div>
     </nx-word>
     with some following copy.
 </nx-natural-language-form>

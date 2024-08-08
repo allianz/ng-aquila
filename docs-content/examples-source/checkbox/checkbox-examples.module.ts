@@ -4,9 +4,9 @@ import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { CheckboxGroupBasicExampleComponent } from './checkbox-group-basic/checkbox-group-basic-example';
 import { CheckboxGroupDynamicExampleComponent } from './checkbox-group-dynamic/checkbox-group-dynamic-example';
-import { CheckboxGroupHorizontalExampleComponent } from './checkbox-group-horizontal/checkbox-group-horizontal-example';
 import { CheckboxGroupInheritanceExampleComponent } from './checkbox-group-inheritance/checkbox-group-inheritance-example';
 import { CheckboxGroupLabelSizeExampleComponent } from './checkbox-group-label-size/checkbox-group-label-size-example';
+import { CheckboxGroupLayoutExampleComponent } from './checkbox-group-layout/checkbox-group-layout-example';
 import { CheckboxGroupReactiveExampleComponent } from './checkbox-group-reactive/checkbox-group-reactive-example';
 import { CheckboxGroupValidationExampleComponent } from './checkbox-group-validation/checkbox-group-validation-example';
 import { CheckboxLabelSizeExampleComponent } from './checkbox-label-size/checkbox-label-size-example';
@@ -20,7 +20,7 @@ import { CheckboxTemplateDrivenExampleComponent } from './checkbox-template-driv
 const EXAMPLES = [
     CheckboxGroupBasicExampleComponent,
     CheckboxGroupDynamicExampleComponent,
-    CheckboxGroupHorizontalExampleComponent,
+    CheckboxGroupLayoutExampleComponent,
     CheckboxGroupInheritanceExampleComponent,
     CheckboxGroupLabelSizeExampleComponent,
     CheckboxGroupReactiveExampleComponent,
@@ -43,8 +43,7 @@ export class CheckboxExamplesModule {
         return {
             'checkbox-group-basic': CheckboxGroupBasicExampleComponent,
             'checkbox-group-dynamic': CheckboxGroupDynamicExampleComponent,
-            'checkbox-group-horizontal':
-                CheckboxGroupHorizontalExampleComponent,
+            'checkbox-group-layout': CheckboxGroupLayoutExampleComponent,
             'checkbox-group-inheritance':
                 CheckboxGroupInheritanceExampleComponent,
             'checkbox-group-label-size': CheckboxGroupLabelSizeExampleComponent,

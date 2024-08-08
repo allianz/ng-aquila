@@ -16,5 +16,8 @@
 
     @if (dateFilterModel.errors && dateFilterModel.errors.nxDatefieldFilter) {
     <nx-error nxFormfieldError> That's not the 6th of a month. </nx-error>
+    } @if (dateFilterModel.errors && dateFilterModel.errors.nxDatefieldParse) {
+    <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+
     }
 </nx-formfield>

@@ -15,6 +15,9 @@
                     <span class="hljs-attr">nxFormfieldSuffix</span>
                 &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">startDatepicker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+                    Please enter a valid date.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
@@ -24,6 +27,7 @@
                     <span class="hljs-attr">nxDatefield</span>
                     <span class="hljs-attr">nxInput</span>
                     [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;endDatepicker&quot;</span>
+                    #<span class="hljs-attr">endModel</span>=<span class="hljs-string">&quot;ngModel&quot;</span>
                     [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;endDate&quot;</span>
                 /&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>MM/DD/YYYY<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
@@ -32,6 +36,12 @@
                     <span class="hljs-attr">nxFormfieldSuffix</span>
                 &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">endDatepicker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
+                @if (endModel.errors &amp;&amp; endModel.errors.nxDatefieldParse) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+                    Please enter a valid date.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+
+                }
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

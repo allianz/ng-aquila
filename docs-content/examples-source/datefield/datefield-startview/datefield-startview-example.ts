@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import {
     NxDatefieldDirective,
     NxDatepickerComponent,
@@ -7,6 +8,7 @@ import {
 } from '@aposin/ng-aquila/datefield';
 import {
     NxFormfieldComponent,
+    NxFormfieldErrorDirective,
     NxFormfieldSuffixDirective,
 } from '@aposin/ng-aquila/formfield';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
@@ -26,6 +28,8 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
         NxDatepickerToggleComponent,
         NxFormfieldSuffixDirective,
         NxDatepickerComponent,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
     ],
 })
 export class DatefieldStartviewExampleComponent {}

@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
     NxDatefieldDirective,
     NxDatepickerComponent,
 } from '@aposin/ng-aquila/datefield';
-import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+} from '@aposin/ng-aquila/formfield';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
 /**
  * @title Manual control example
@@ -22,6 +26,8 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
         FormsModule,
         NxDatepickerComponent,
         NxButtonComponent,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
     ],
 })
 export class DatefieldManualExampleComponent {}

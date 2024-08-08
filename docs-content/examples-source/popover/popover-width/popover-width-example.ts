@@ -9,7 +9,7 @@ import {
 
 const myDefaultOptions: PopoverDefaultOptions = {
     popoverWidth: '800px',
-    popoverMaxWidth: '700px',
+    popoverMaxWidth: '100%',
 };
 
 /**

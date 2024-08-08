@@ -24,7 +24,9 @@
  <div nx-docs-example="table-column-reorder" config="{}">exampleID: table-column-reorder</div>
 <h3 id="column-resize" tabindex="-1" class="docs-markdown--h3">Column resize</h3>
 <p class="docs-markdown--p">To let users adjust the width of a column in your table, you can add a resize handler in column header by using <code>nxHeaderResize</code> directive into <code>nxHeaderCell</code> element.</p>
-<p class="docs-markdown--p">Additionally, if you need to truncate text when the column is resized and the content overflows, you can use the <code>nxTableCellClip</code> directive.</p>
+<div class="docs-deprecation-warning">
+  <strong><code>nxTableCellClip</code></strong> directive was deprecated since it was violating WCAG accessibility criteria. See the <a href="./documentation/table/overview#accessibility">Accessibility</a> section for more info.
+</div>
  <div nx-docs-example="table-column-resize" config="{}">exampleID: table-column-resize</div>
 <h3 id="localization" tabindex="-1" class="docs-markdown--h3">Localization</h3>
 <p class="docs-markdown--p">For <strong>localization</strong> please use the provider <code>NxHeaderSortIntl</code> which contains some labels for screen reader users. By default the labels are in english.</p>
@@ -69,3 +71,5 @@
 <p class="docs-markdown--p">Form elements can also be added to the table:</p>
 <div nx-docs-example="table-form-elements" config="{}">exampleID: table-form-elements</div>
 </div>
+<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
+<p class="docs-markdown--p">Content should not be clipped, find more info on the <a href="https://www.w3.org/WAI/WCAG21/Understanding/reflow.html">WCAG criteria</a>. If clipping/cropping is strictly required it can be done via custom css. In that case it's necessary to make the full content accessible through other means. Align with your accessibility expert if clipping of content is required.</p>

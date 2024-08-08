@@ -16,5 +16,8 @@
 
     @if (dateFilterModel.errors &amp;&amp; dateFilterModel.errors.nxDatefieldFilter) {
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> That&#x27;s not the 6th of a month. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    } @if (dateFilterModel.errors &amp;&amp; dateFilterModel.errors.nxDatefieldParse) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> Please enter a valid date. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+
     }
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>

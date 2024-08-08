@@ -1,6 +1,6 @@
 <h1 class="docs-markdown--h1" id="releases-and-updating" tabindex="-1">Releases and updating</h1>
 <h2 class="docs-markdown--h2" id="release-plan" tabindex="-1">Release plan</h2>
-<p class="docs-markdown--p">Our release strategy is naturally synchronized with <a href="https://angular.io/guide/releases">Angular's</a>. The main reason for this is to minimize the frequency of breaking changes. The Angular team releases a major version every six months, whenever we update to this version we expect breaking changes. Thus, we will release any breaking change along with the major release of Angular. Consequently, you can expect breaking changes (major update) within ng-aquila about every six months.</p>
+<p class="docs-markdown--p">Our release strategy is naturally synchronized with <a href="https://angular.io/guide/releases">Angular's</a>. The main reason for this is to minimize the frequency of breaking changes. The Angular team releases a major version every six months, whenever we update to this version we expect breaking changes. Thus, we will release any breaking change along with the major release of Angular. Consequently, you can expect breaking changes (major update) about every six months.</p>
 <p class="docs-markdown--p">As the Angular team now provides release dates down to a week, we are able to prepare in advance and provide more specific release terms. Our ambition is release a major version during a 6-week period after any major Angular release.</p>
 <p class="docs-markdown--p">We trigger minor or bug fix releases if they provide a meaningful delivery (fix or feature). This is usually decided in our weekly refinement meeting.</p>
 <table class="docs-markdown--table">
@@ -14,16 +14,10 @@
 </thead>
 <tbody>
 <tr>
-<td>December 2022</td>
-<td>15</td>
-<td>15</td>
-<td>May 2024</td>
-</tr>
-<tr>
 <td>May 2023</td>
 <td>16</td>
 <td>16</td>
-<td>November 2024</td>
+<td>Nov 2024</td>
 </tr>
 <tr>
 <td>November 2023</td>
@@ -31,10 +25,22 @@
 <td>17</td>
 <td>May 2025</td>
 </tr>
+<tr>
+<td>July 2024</td>
+<td>18</td>
+<td>18</td>
+<td>Nov 2025</td>
+</tr>
 </tbody>
 </table>
-<p class="docs-markdown--p">Aquila versions 14 and older are no longer supported.</p>
+<p class="docs-markdown--p">Aquila versions 15 and older are no longer supported.</p>
 <p class="docs-markdown--p">During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.</p>
+<h2 class="docs-markdown--h2" id="updating-to-version-18" tabindex="-1">Updating to version 18</h2>
+<p class="docs-markdown--p">With Aquila 18, we are upgrading to Angular 18. This update marks control flow and deferrable views as stable. In addition, experimental support for zoneless change detection, Server-side rendering improvements and signal APIs in developer preview are shipped. Check out all the details of <a href="https://blog.angular.dev/angular-v18-is-now-available-e79d5ac0affe">Angular 18</a>.</p>
+<p class="docs-markdown--p">For updating Aquila to version 18, in most cases the following command should do the update for you:</p>
+<p class="docs-markdown--p"><code>ng update @angular/cli @angular/core</code></p>
+<p class="docs-markdown--p">Then it should be easy to update Aquila with the following command:</p>
+<p class="docs-markdown--p"><code>ng update @aposin/ng-aquila --force</code></p>
 <h2 class="docs-markdown--h2" id="updating-to-version-17" tabindex="-1">Updating to version 17</h2>
 <p class="docs-markdown--p">With Aquila 17, we are upgrading to Angular 17. This Angular update has several features &amp; improvements, such as control flow, new lifecycle hooks, faster builds, check out all the details of <a href="https://blog.angular.io/introducing-angular-v17-4d7033312e4b">Angular 17</a>.</p>
 <p class="docs-markdown--p">For updating Aquila to version 17, in most cases the following command should do the update for you:</p>

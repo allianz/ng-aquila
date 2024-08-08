@@ -7,7 +7,10 @@ import {
     Validators,
 } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
-import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import {
+    NxButtonComponent,
+    NxIconButtonComponent,
+} from '@aposin/ng-aquila/button';
 import {
     NxDropdownComponent,
     NxDropdownItemComponent,
@@ -54,6 +57,7 @@ import {
         NxPopoverTriggerDirective,
         NxButtonComponent,
         NxPopoverComponent,
+        NxIconButtonComponent,
     ],
 })
 export class FormfieldSimpleFormExampleComponent {

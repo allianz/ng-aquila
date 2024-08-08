@@ -1,16 +1,17 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Label&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span> some additional information <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldAppendix</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
-            [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverAppendixExample&quot;</span>
-            <span class="hljs-attr">nxPopoverDirection</span>=<span class="hljs-string">&quot;top&quot;</span>
-            <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;hover&quot;</span>
-            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;More information&quot;</span>
-        &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-attr">nxFormfieldAppendix</span>
+        <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">&quot;tertiary small&quot;</span>
+        <span class="hljs-attr">nxPopoverDirection</span>=<span class="hljs-string">&quot;top&quot;</span>
+        [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverAppendixExample&quot;</span>
+        <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;More information&quot;</span>
+    &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverAppendixExample</span>&gt;</span>

@@ -37,13 +37,21 @@
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;E-Mail&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;email&quot;</span> /&gt;</span>
 
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
                         <span class="hljs-attr">nxFormfieldAppendix</span>
-                        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>
+                        <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">&quot;tertiary small&quot;</span>
                         [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverEmail&quot;</span>
-                        <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;hover&quot;</span>
+                        <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;More information&quot;</span>
                     &gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                            <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
+                        &gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
                         Your email is missing.
                     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>

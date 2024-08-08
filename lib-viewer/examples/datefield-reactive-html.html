@@ -13,5 +13,10 @@
             <span class="hljs-attr">nxFormfieldSuffix</span>
         &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">myDatepicker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
+        @if( testForm.get(&#x27;date&#x27;)?.hasError(&#x27;required&#x27;)) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> This field is required <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        } @if ( testForm.get(&#x27;date&#x27;)?.hasError(&#x27;nxDatefieldParse&#x27;)) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> Please enter a valid date. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        }
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>

@@ -6,8 +6,12 @@ import {
     FormsModule,
     ReactiveFormsModule,
 } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
-import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+} from '@aposin/ng-aquila/formfield';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
 import { NxIbanMaskDirective, NxMaskDirective } from '@aposin/ng-aquila/mask';
 
@@ -28,6 +32,8 @@ import { NxIbanMaskDirective, NxMaskDirective } from '@aposin/ng-aquila/mask';
         NxIbanMaskDirective,
         NxButtonComponent,
         JsonPipe,
+        NxErrorComponent,
+        NxFormfieldErrorDirective,
     ],
 })
 export class IbanMaskExampleComponent {

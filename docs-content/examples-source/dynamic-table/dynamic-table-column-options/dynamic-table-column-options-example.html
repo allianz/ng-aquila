@@ -9,20 +9,15 @@
 </div>
 
 <nx-context-menu #menu="nxContextMenu">
-    <nx-checkbox-group
-        [(ngModel)]="selected"
-        cdkDropList
-        (cdkDropListDropped)="drop($event)"
-    >
+    <nx-context-menu-header> Column Settings </nx-context-menu-header>
+    <nx-checkbox-group [(ngModel)]="selected">
         <nx-context-menu-item-wrap>
             @for (column of columns; track column) {
-            <div nxContextMenuItem disableCloseOnSelect cdkDrag>
-                <nx-icon
-                    aria-hidden="true"
-                    size="s"
-                    name="grip-vertical"
-                    class="nx-margin-right-xs"
-                ></nx-icon>
+            <div
+                nxContextMenuItem
+                nxContextMenuItemCheckbox
+                disableCloseOnSelect
+            >
                 <nx-checkbox [value]="column.key">
                     {{column.title}}
                 </nx-checkbox>

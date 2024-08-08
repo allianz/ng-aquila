@@ -11,6 +11,18 @@
                         <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;maskInput&quot;</span>
                     /&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span> Mask: 00:00:00 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    @if
+                    (validatedMaskForm.get(&#x27;maskInput&#x27;)?.hasError(&#x27;required&#x27;)) {
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+                        This field is required.
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+                    } @if
+                    (validatedMaskForm.get(&#x27;maskInput&#x27;)?.hasError(&#x27;nxMaskLengthError&#x27;))
+                    {
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+                        Please enter a valid length.
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+                    }
                 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
                     <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
@@ -22,7 +34,9 @@
             <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 
             Form value: {{ validatedMaskForm.value | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-            Testform: {{ validatedMaskForm.status | json }}
+            Testform: {{ validatedMaskForm.status | json }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+            Validation errors: {{ validatedMaskForm.get(&#x27;maskInput&#x27;)?.errors |
+            json }}
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>&gt;</span>Without mask validation<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>

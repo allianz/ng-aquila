@@ -29,5 +29,8 @@
 <p class="docs-markdown--p">The default value of the <code>tabindex</code> of the tag items is <code>-1</code>. If the tags are removable then the default value is <code>0</code> so that they are focusable. In all other cases please take care of setting an appropriate tab-index via the input <code>tabindex</code> on the taglist (please check the <a href="./documentation/taglist/overview#output">output example</a>).</p>
 <p class="docs-markdown--p">In oder to improve accessibility, please consider <strong>linking a label</strong> to the tag list component, for example like this:</p>
 <div nx-docs-example="taglist-a11y" config="{}">exampleID: taglist-a11y</div>
+<h3 id="internationalization" tabindex="-1" class="docs-markdown--h3">Internationalization</h3>
+<p class="docs-markdown--p">The provider <code>NxTagIntl</code> contains various strings to provide labels for display and screen readers. You have to provide a proper translation for each of your locales.</p>
+ <div nx-docs-example="taglist-intl" config="{}">exampleID: taglist-intl</div>
 <h4 id="keybord-navigation" tabindex="-1" class="docs-markdown--h4">Keybord navigation</h4>
 <p class="docs-markdown--p">If <code>allowTagDeletion</code> is set to <code>true</code>, you can remove selected tags using BACKSPACE. If your tags trigger actions on click, these actions will be also triggered on ENTER click.</p>

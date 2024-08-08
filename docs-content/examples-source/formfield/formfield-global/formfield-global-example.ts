@@ -5,6 +5,7 @@ import {
     ErrorDefaultOptions,
     NxErrorComponent,
 } from '@aposin/ng-aquila/base';
+import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
 import {
     FORMFIELD_DEFAULT_OPTIONS,
     FormfieldDefaultOptions,
@@ -18,6 +19,10 @@ import {
     NxInputDirective,
     NxInputDirective as NxInputDirective_1,
 } from '@aposin/ng-aquila/input';
+import {
+    NxPopoverComponent,
+    NxPopoverTriggerDirective,
+} from '@aposin/ng-aquila/popover';
 
 const myDefaultOptions: FormfieldDefaultOptions = {
     appearance: 'outline',
@@ -50,6 +55,9 @@ const myErrorOptions: ErrorDefaultOptions = {
         FormsModule,
         NxErrorComponent,
         NxFormfieldErrorDirective,
+        NxPopoverComponent,
+        NxPopoverTriggerDirective,
+        NxIconButtonComponent,
     ],
 })
 export class FormfieldGlobalExampleComponent implements AfterContentInit {

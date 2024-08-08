@@ -658,6 +658,8 @@ body,
   --code-input-active-color: var(--interactive-primary);
   --code-input-error-color: var(--danger);
   --code-input-disabled-color: var(--disabled-01);
+  --context-menu-header-font-size: var(--header-font-size);
+  --context-menu-header-font-weight: var(--heading-05-font-weight);
   --context-menu-font-size: var(--paragraph-03-font-size);
   --context-menu-line-height: var(--paragraph-03-line-height);
   --context-menu-font-weight: var(--paragraph-03-font-weight);
@@ -691,6 +693,7 @@ body,
   --datefield-cell-disabled-color: #767676;
   --datefield-cell-focused-background-color: var(--ui-01);
   --datefield-header-cell-color: var(--datefield-cell-disabled-color);
+  --datefield-header-cell-font-weight: 600;
   --datefield-period-label-font-size: var(--large-label-font-size);
   --datefield-period-label-line-height: var(--datefield-controls-icon-size);
   --datefield-period-label-font-weight: 600;

@@ -12,16 +12,17 @@
 
 <nx-formfield label="Your name (Appendix)">
     <input nxInput />
-    <span nxFormfieldAppendix>
-        <a
-            [nxPopoverTriggerFor]="popoverAppendixExample"
-            nxPopoverDirection="top"
-            nxPopoverTrigger="hover"
-            aria-label="More information"
-        >
-            <nx-icon name="info-circle-o" aria-hidden="true"></nx-icon>
-        </a>
-    </span>
+    <button
+        nxFormfieldAppendix
+        nxIconButton="tertiary small"
+        nxPopoverDirection="top"
+        [nxPopoverTriggerFor]="popoverAppendixExample"
+        nxPopoverTrigger="click"
+        type="button"
+        aria-label="More information"
+    >
+        <nx-icon name="info-circle-o" size="s" aria-hidden="true"> </nx-icon>
+    </button>
 </nx-formfield>
 
 <nx-popover #popoverAppendixExample>
