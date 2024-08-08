@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.1.0](https://github.com/allianz/ng-aquila/compare/v18.0.0...v18.1.0) (2024-08-08)
+
+### Emphasis button update
+The emphasis button was deprecated in 18.0.0 because there was no plan to make the colors accessibility compliant. This decision was changed and now the orange colors got updated to fulfill WCAG contrast requirements. The emphasis button is not deprecated anymore and can be used again.
+
+### Features ✨
+
+* **dropdown:** align dropdown checkmark ([5fed95d](https://github.com/allianz/ng-aquila/commit/5fed95ddd5cba2ee510600a9c3f6f5850559b09c))
+* **natural-language-form:** enable `aria-describedby` for words  ([d418a65](https://github.com/allianz/ng-aquila/commit/d418a6584bf0a6b98526e98a7016871bf37620ac))
+* **tag:** add nxTagIntl provider for i18n ([a4b9ffd](https://github.com/allianz/ng-aquila/commit/a4b9ffd38982784a949707eeea060602544b987d))
+
+
+### Bug Fixes 🐛
+
+* **action:** use new line instead of ellipsis for narrow space ([aa76f08](https://github.com/allianz/ng-aquila/commit/aa76f08f223227f1c84f4a36599c750d3accf696))
+* **context-menu:** adjust header styles to selection menu designs ([adb40ee](https://github.com/allianz/ng-aquila/commit/adb40ee210f4f5d2de70049607819606d92c34c5))
+* **dynamictable:** add nxContextMenuItemCheckbox to column settings checkboxes ([edd5cd0](https://github.com/allianz/ng-aquila/commit/edd5cd07805bdbe3d5c91640ccf0421cf98e6fbc))
+* **dynamictable:** remove drag and drop from custom settings ([f70cf23](https://github.com/allianz/ng-aquila/commit/f70cf2368effe12d60eb4825b5ce69c6383d7056))
+* **file-uploader:** don't intterupt adding file when an invalid file is found ([2f23c2a](https://github.com/allianz/ng-aquila/commit/2f23c2aca1330576218fe1aadf7c50735a175079))
+* **formfield:** add role group and aria label to custom formfield ([0852a44](https://github.com/allianz/ng-aquila/commit/0852a44ff245a436dffd9b3663145407282e5ba6))
+* **formfield:** change from nx-icon hover to button click for popover ([a0b8d2b](https://github.com/allianz/ng-aquila/commit/a0b8d2b6bbcdb103539e5a1c1bcf2d9d7fd353d2))
+* **formfield:** remove aria label for readonly ([b3f5125](https://github.com/allianz/ng-aquila/commit/b3f5125a00da71adc6da05ccfe0f4bc58110e27e))
+* **licence-plate:** empty value is valid in validator ([0ed5059](https://github.com/allianz/ng-aquila/commit/0ed505964d46af2ac1bfe770a7b82caca96ac3e8))
+* **popover:** change maxwidth to 100% to work for small screens ([3c7f91c](https://github.com/allianz/ng-aquila/commit/3c7f91c95ae6847762aa173154a9965c3b79214e))
+* **switcher:** set required validator, correct aria ([1e4c2e7](https://github.com/allianz/ng-aquila/commit/1e4c2e7d3f135617c6cc15905a4c3454a7c51dc1))
+* **table:** don't emit sortChange when set active, direction ([06390a9](https://github.com/allianz/ng-aquila/commit/06390a92404ee4097014acb883d6b52f0e363b0e))
+* **table:** remove nxTableCellClip from column resize table ([02143af](https://github.com/allianz/ng-aquila/commit/02143afe6257b47f7100e82d646dd3807e9f649e))
+* **tag:** remove backspace deletion use focusable button instead ([f456efe](https://github.com/allianz/ng-aquila/commit/f456efe74450381f8b5acbbb6e1340e05adff1d6))
+* **tooltip:** annouce message when show ([3d39cd5](https://github.com/allianz/ng-aquila/commit/3d39cd564fa02af10a19b05c115b8b8f19f94c78))
+
+
+### Documentation 📚
+
+* **button:** undeprecate emphasis button ([fc1d126](https://github.com/allianz/ng-aquila/commit/fc1d1265f62bce03afec162e5c505ebb8cbeebcc))
+* **checkbox:** show freedom of layouting ([7c3f680](https://github.com/allianz/ng-aquila/commit/7c3f6804433e54440b4ef833e2f0a25ea03c9b0a))
+* **datefield:** add error messages in examples ([19b76ec](https://github.com/allianz/ng-aquila/commit/19b76eccd02813fee8e751337a01c113acd76a88))
+* **file-uploader:** fix a11y screen reader issue in example  ([4b677d4](https://github.com/allianz/ng-aquila/commit/4b677d4822c73ee5cd73cda43a3b64b3a9099af3))
+* **input-mask:** add error messages in examples ([90589dd](https://github.com/allianz/ng-aquila/commit/90589dd37d8b064eac71104690a4338f48e98a37))
+* **input:** add instruction to import css when using cdkTextareaAutosize ([56b12bd](https://github.com/allianz/ng-aquila/commit/56b12bd1a4b4d688804dfadae94aee476e95c335))
+* **mask-input:** add error messages to examples ([e221643](https://github.com/allianz/ng-aquila/commit/e2216433173a8340462c1f9e783fb34dca11106e))
+* release guide update  ([e769015](https://github.com/allianz/ng-aquila/commit/e7690152a20480b11d63fc48904528578143ee42))
+* sync browser support with Angular ([318cce1](https://github.com/allianz/ng-aquila/commit/318cce1c028ab1dfad67f773eb1f55babe366163))
+
 ## [18.0.0](https://github.com/allianz/ng-aquila/compare/v17.9.1...v18.0.0) (2024-07-15)
 
 ### Replacement of the emphasis button
@@ -1223,7 +1266,7 @@ To install this version, run `npm install @aposin/ng-aquila@next`.
 
 ### Bug Fixes
 
--   **accordion:** unify content padding ([#306](https://github.com/aposin/ng-aquila/issues/306)) ([65e46cc](https://github.com/aposin/ng-aquila/commit/65e46ccef971adc04e4e7d7efba3b6608b3e210e))
+-   **accordion:** unify content padding ([65e46cc](https://github.com/aposin/ng-aquila/commit/65e46ccef971adc04e4e7d7efba3b6608b3e210e))
 -   **progress-stepper:** cdk typings change ([c82d7f2](https://github.com/aposin/ng-aquila/commit/c82d7f20b47d833d6ea85935eeca0efb2e1c04cd))
 
 ## [11.7.3](https://github.com/aposin/ng-aquila/compare/v11.7.2...v11.7.3) (2021-07-27)
@@ -1608,7 +1651,7 @@ As a documentation change there was added a link to stack-blitz for the examples
 ### Features
 
 -   **overlay-service:** add new overlay service ([9755de6](https://github.com/aposin/ng-aquila/commit/9755de6))
--   typescript 4 support ([#66](https://github.com/aposin/ng-aquila/issues/66)) ([c1330ad](https://github.com/aposin/ng-aquila/commit/c1330ad))
+-   typescript 4 support ([c1330ad](https://github.com/aposin/ng-aquila/commit/c1330ad))
 -   **accordion:** add extra light option ([38b9652](https://github.com/aposin/ng-aquila/commit/38b9652))
 
 <a name="10.1.0"></a>
