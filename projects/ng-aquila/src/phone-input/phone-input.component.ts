@@ -41,7 +41,7 @@ let next = 0;
     ],
     host: {
         '[attr.id]': 'id',
-        '[role]': '"group"',
+        role: 'group',
         '[attr.aria-labelledby]': '_ariaLabelledBy',
     },
     standalone: true,
