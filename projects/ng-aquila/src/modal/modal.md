@@ -160,6 +160,11 @@ To get your app direction we recommend using [Directionality](https://material.a
 
 <!-- example(modal-with-direction)> -->
 
+
+ ### Block modal closing
+The following example demonstrates the usage of the `shouldClose` and `closeDenied` APIs to create a modal that displays a popover notification when attempting to close the modal with unsaved data.
+ <!-- example(modal-unsaved) -->
+
 ### Accessibility
 
 By default, each modal has `role="dialog"` on the root element. The role can be changed to `alertdialog` via the `NxModalConfig`.
@@ -170,9 +175,9 @@ When a dialog opens, the first focusable element will be focused. The CdkOverlay
 
 Pressing the escape key will close the dialog per default. You can disable this behaviour by setting the `disabledClose` option to false in the `NxModalConfig`, but it is recommended to keep it on as it is the expected behaviour of a modal dialog.
 
- ### Block modal closing
-The following example demonstrates the usage of the `shouldClose` and `closeDenied` APIs to create a modal that displays a popover notification when attempting to close the modal with unsaved data.
- <!-- example(modal-unsaved) -->
+#### Scrollable areas and long content
+
+Non interactive scrollable areas and long content in size restricted containers can be problematic for keyboard users. [Have a look into our general accessibility guide on that.](/documentation/accessibility/overview#scroll-containers-and-keyboard-navigation) TLDR: setting `tabindex="0"` on the scrollable container is a valid workaround until this will be supported natively by browsers.
 
 ### Deprecated Modal Component
 
@@ -184,8 +189,8 @@ For using it you have to import the `NxModalModule` as follows:
 import { NxModalModule } from '@aposin/ng-aquila/modal';
 
 @NgModule({
-  imports: [
-    NxModalModule.forRoot()
+    imports: [
+        NxModalModule.forRoot()
   ]
 })
 ```

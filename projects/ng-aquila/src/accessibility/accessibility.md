@@ -114,6 +114,21 @@ Additional info on `aria-live` Screen Reader behavior:
 - [a11ysupport.io/status-role]: https://a11ysupport.io/tech/aria/status_role#support-table-0
 - [a11ysupport.io/aria-live]: https://a11ysupport.io/tests/tech__aria__aria-live
 
+### Scroll containers and keyboard navigation
+
+Scrollable areas have to be accessible for all users. Mouse users can easily navigate through such containers and screen reader also can discover the content of scroll containers. Keyboard users on the other hand, can't always focus the scroll area and therefore not discover their content.
+
+Some browsers like Firefox already natively make such areas focusable, [others browsers will implement this behavior soon](https://developer.chrome.com/blog/keyboard-focusable-scrollers). Until this is a widely available making the scrollable container focusable by setting `tabindex="0"` is a valid fix.
+
+So this is valid:
+```html
+<div class="i-do-scroll" tabindex="0">
+    <p> A very long text </p>
+    ...
+    <p> End. </p>
+</div>
+```
+
 ### Helpful tools and links for ARIA guidelines and verification
 
 -   [Color contrast checker](https://webaim.org/resources/contrastchecker/)
