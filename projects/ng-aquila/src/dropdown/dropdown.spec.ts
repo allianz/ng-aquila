@@ -2,7 +2,7 @@ import { B, D, DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE, TAB
 import { MutationObserverFactory } from '@angular/cdk/observers';
 import { OverlayContainer, OverlayModule, ScrollStrategy } from '@angular/cdk/overlay';
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Directive, Inject, Type, ViewChild, ViewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Inject, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -1466,6 +1466,48 @@ describe('NxDropdownComponent', () => {
             expectDropdownOpen();
         }));
 
+        it('should open the dropdown via UP or DOWN key', fakeAsync(() => {
+            createTestComponent(SimpleBindingDropdownComponent);
+            dispatchKeyboardEvent(dropdownElement, 'keydown', UP_ARROW);
+
+            fixture.detectChanges();
+            tick();
+            flush();
+
+            const panelBody = getDropdown()?.querySelector('.nx-dropdown__panel-body');
+            expect(panelBody).toHaveClass('keyboard-focused');
+
+            expectDropdownOpen();
+            clickOnBackdrop();
+
+            dispatchKeyboardEvent(dropdownElement, 'keydown', DOWN_ARROW);
+
+            fixture.detectChanges();
+            tick();
+            flush();
+            expect(panelBody).toHaveClass('keyboard-focused');
+        }));
+
+        it('should open the dropdown and select item via HOME/END key', fakeAsync(() => {
+            createTestComponent(SimpleBindingDropdownComponent);
+            dispatchKeyboardEvent(dropdownElement, 'keydown', END);
+            fixture.detectChanges();
+            tick(1000);
+            flush();
+            const last = testInstance.dropdownItems.length - 1;
+            expectDropdownOpen();
+            expect(testInstance?.dropdownItems?.get(last)?.active).toBe(true);
+
+            clickOnBackdrop();
+
+            dispatchKeyboardEvent(dropdownElement, 'keydown', HOME);
+            fixture.detectChanges();
+            tick(1000);
+            flush();
+            expectDropdownOpen();
+            expect(testInstance?.dropdownItems?.get(0)?.active).toBe(true);
+        }));
+
         it('should highlight the first item after opening when no value is selected', fakeAsync(() => {
             createTestComponent(MultiSelectDropdownComponent);
             openDropdownByKeyboard();
@@ -1672,7 +1714,7 @@ interface DropdownTestItem {
 abstract class DropdownTest {
     @ViewChild(NxFormfieldComponent) formfield!: NxFormfieldComponent;
     @ViewChild(NxDropdownComponent) dropdown!: NxDropdownComponent;
-    @ViewChildren(NxDropdownItemComponent) dropdownItems!: {
+    @ViewChildren(NxDropdownItemComponent) dropdownItems!: QueryList<NxDropdownItemComponent> & {
         forEach(arg0: (item: any, itemIndex: any) => void): void;
         filter(arg0: { (item: any): any; (item: any): boolean }): any;
         length: jasmine.Expected<number>;

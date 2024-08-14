@@ -926,6 +926,7 @@ export class NxDropdownComponent
                 }
             });
             this._initActiveItem();
+            this._cdr.markForCheck();
         });
 
         // If panelMinWidth or ignoreTruncation have been set, they will be mapped to panelGrow
@@ -1160,11 +1161,25 @@ export class NxDropdownComponent
         } else if (!this.isMultiSelect) {
             switch (keyCode) {
                 case DOWN_ARROW:
-                    this.setNextItemActive();
+                case UP_ARROW:
+                    this.openPanel(event);
+
                     event.preventDefault();
                     break;
-                case UP_ARROW:
-                    this.setPreviousItemActive();
+                case HOME:
+                    this.openPanel(event);
+                    setTimeout(() => {
+                        this._keyManager.setFirstItemActive();
+                        this._cdr.markForCheck();
+                    });
+                    event.preventDefault();
+                    break;
+                case END:
+                    this.openPanel(event);
+                    setTimeout(() => {
+                        this._keyManager.setLastItemActive();
+                        this._cdr.markForCheck();
+                    });
                     event.preventDefault();
                     break;
                 default:
