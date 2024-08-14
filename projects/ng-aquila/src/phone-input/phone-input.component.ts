@@ -312,12 +312,14 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
         this._inputValue = this.inputFormatter(this._inputValue, this._countryCallingCode);
 
         if (!this.disabled) {
+            this.focused = false;
             this.focusOut.emit(true);
         }
     }
 
     _onInputFocus() {
         if (!this.disabled) {
+            this.focused = true;
             this.focusIn.emit(true);
         }
     }

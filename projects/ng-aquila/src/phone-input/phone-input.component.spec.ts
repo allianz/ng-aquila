@@ -383,6 +383,29 @@ describe('PhoneInputComponent', () => {
         const formfield = fixture.debugElement.query(By.directive(NxFormfieldComponent)).componentInstance;
         expect(phoneInputInstance.elementRef.nativeElement.getAttribute('aria-labelledby')).toBe(formfield.labelId);
     });
+
+    it('should update focused state when focus', () => {
+        createTestComponent(DefaultPhoneInput);
+        expect(testInstance.phoneInput.focused).toBe(false);
+
+        const container = fixture.debugElement.query(By.css('nx-formfield'))!.nativeElement;
+        const input = getInput()?.nativeElement;
+        input.focus();
+        fixture.detectChanges();
+
+        expect(testInstance.phoneInput.focused).toBe(true);
+        expect(container).toHaveClass('is-focused');
+
+        input.blur();
+        fixture.detectChanges();
+        expect(testInstance.phoneInput.focused).toBe(false);
+        expect(container).not.toHaveClass('is-focused');
+
+        dropdown.nativeElement.focus();
+        fixture.detectChanges();
+        expect(testInstance.phoneInput.focused).toBe(true);
+        expect(container).toHaveClass('is-focused');
+    });
 });
 
 @Directive({ standalone: true })

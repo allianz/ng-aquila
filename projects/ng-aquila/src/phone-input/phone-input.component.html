@@ -9,6 +9,8 @@
         (valueChange)="_onCountryChange($event)"
         [options]="_sortedCountries"
         [overlayFallbackOrigin]="dropdown"
+        (focusOut)="_onInputBlur()"
+        (focus)="_onInputFocus()"
         [panelGrow]="true"
         [attr.aria-label]="areaCodeLabel"
         ariaLabelledBy=""
