@@ -5,10 +5,11 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { CommonModule } from '@angular/common';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxDropdownIntl } from '@aposin/ng-aquila/dropdown';
-import { NxFormfieldComponent, NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxFormfieldComponent, NxFormfieldErrorDirective, NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 
 import { NxDropdownModule } from '../dropdown.module';
 import { NxMultiSelectComponent } from './multi-select.component';
@@ -139,6 +140,7 @@ describe('NxMultiSelectComponent', () => {
                 ComplexMultiSelectComponent,
                 ReactiveMultiSelectComponent,
                 IntlOverrideMultiSelect,
+                ErrorMultiSelectComponent,
             ],
         }).compileComponents();
     }
@@ -375,6 +377,28 @@ describe('NxMultiSelectComponent', () => {
 
                 stateChangesSubscription.unsubscribe();
             }));
+
+            it('should add aria-describedby and aria-invalid', async () => {
+                createTestComponent(ErrorMultiSelectComponent);
+                const input = await multiSelectHarness.getValue();
+                const ariaInvalid = await input.getAttribute('aria-invalid');
+                const ariaDescribedBy = await input.getAttribute('aria-describedby');
+                expect(ariaInvalid).toBe('false');
+                expect(ariaDescribedBy).toBe(null);
+
+                await multiSelectHarness.click();
+                await multiSelectHarness.closeWithEsc();
+                const input2 = await multiSelectHarness.getValue();
+                const error = (testInstance as ErrorMultiSelectComponent).error;
+
+                await input2.blur();
+                fixture.detectChanges();
+                const ariaDescribedBy2 = await input2.getAttribute('aria-describedby');
+                const ariaInvalid2 = await input2.getAttribute('aria-invalid');
+
+                expect(ariaDescribedBy2).toBe(error.id);
+                expect(ariaInvalid2).toBe('true');
+            });
 
             describe('and using "clear" button', () => {
                 beforeEach(async () => {
@@ -1076,4 +1100,24 @@ class ReactiveMultiSelectComponent extends DropdownTest {
     testForm = new FormBuilder().group({
         testControl: ['BMW'],
     });
+}
+
+@Component({
+    template: `<form [formGroup]="testForm">
+        <nx-formfield>
+            <nx-multi-select formControlName="testControl" [options]="options"></nx-multi-select>
+            <nx-error nxFormfieldError> this is error </nx-error>
+        </nx-formfield>
+    </form>`,
+    standalone: true,
+    imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule, NxErrorComponent, NxFormfieldErrorDirective],
+})
+class ErrorMultiSelectComponent extends DropdownTest {
+    options = ['BMW', 'Audi', 'Volvo', 'Mini'];
+
+    testForm = new FormBuilder().group({
+        testControl: ['', Validators.required],
+    });
+
+    @ViewChild(NxFormfieldErrorDirective) error!: NxFormfieldErrorDirective;
 }

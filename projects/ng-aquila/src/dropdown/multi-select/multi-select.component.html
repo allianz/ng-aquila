@@ -14,6 +14,8 @@
     (blur)="_onTriggerBlur(); _inputFocused = false"
     [attr.aria-expanded]="_isOpen"
     [attr.aria-labelledby]="_getAriaLabelledBy()"
+    [attr.aria-describedby]="_ariaDescribedby || null"
+    [attr.aria-invalid]="errorState"
     [id]="id"
     (focus)="disabled ? null : (_inputFocused = true)"
     (keydown)="_onKeydown($event)"
