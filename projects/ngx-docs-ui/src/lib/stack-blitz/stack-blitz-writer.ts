@@ -16,22 +16,12 @@ const COPYRIGHT = `Copyright ALLIANZ ${currentYear}`;
 const DOCS_CONTENT_PATH = 'docs-content/examples-source';
 
 const TEMPLATE_PATH = 'assets/stack-blitz/';
-const TEMPLATE_FILES = [
-    'src/app/aquila.module.ts',
-    'src/index.html',
-    'src/main.ts',
-    'src/styles.scss',
-    'angular.json',
-    'package.json',
-    'tsconfig.json',
-    'tsconfig.app.json',
-];
+const TEMPLATE_FILES = ['src/index.html', 'src/main.ts', 'src/styles.scss', 'angular.json', 'package.json', 'tsconfig.json', 'tsconfig.app.json'];
 
 const ASSETS_BASE_PATH = 'https://allianz.github.io/ng-aquila/';
 
 const TEST_TEMPLATE_PATH = 'assets/stack-blitz-tests/';
 const TEST_TEMPLATE_FILES = [
-    'src/app/aquila.module.ts',
     'src/index.html',
     'src/main.ts',
     'src/styles.scss',
@@ -234,26 +224,21 @@ export class StackBlitzWriter {
             fileContent = fileContent.replace(/aquila-docs-example/g, data.selectorName);
             fileContent = fileContent.replace(/\{\{version\}\}/g, aquilaVersion);
         } else if (fileName === 'src/main.ts') {
-            const joinedComponentNames = data.componentNames.join(', ');
-            // Replace the component name in `main.ts`.
-            // Replace `import { AquilaDocsExampleComponent } from 'aquila-docs-example'`
-            // will be replaced as `import { ButtonExampleComponent } from './button-example'`
-            fileContent = fileContent.replace(/\{ AquilaDocsExample \}/g, `{ ${joinedComponentNames} }`);
-
-            // Replace `declarations: [AquilaDocsExample]`
-            // will be replaced as `declarations: [ButtonExampleComponent]`
-            fileContent = fileContent.replace(/declarations: \[AquilaDocsExample\]/g, `declarations: [${joinedComponentNames}]`);
-
-            // Replace `bootstrap: [AquilaDocsExample]`
-            // will be replaced as `bootstrap: [ButtonExampleComponent]`
-            // This assumes the first component listed in the main component
-            fileContent = fileContent.replace(/bootstrap: \[AquilaDocsExample\]/g, `bootstrap: [${data.componentNames[0]}]`);
-
-            // Replace import ... from `aquila-docs-example`
-            // will be replaced as `button-example`
+            const exampleComponentName = data.componentNames[0];
             const dotIndex = data.indexFilename.lastIndexOf('.');
             const importFileName = data.indexFilename.slice(0, dotIndex === -1 ? undefined : dotIndex);
-            fileContent = fileContent.replace(/aquila-docs-example/g, importFileName);
+            const exampleImportPath = `./app/${importFileName}`;
+
+            fileContent = `
+                import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+                import { bootstrapApplication } from '@angular/platform-browser';
+                import { ${exampleComponentName} } from '${exampleImportPath}';
+                import 'zone.js';
+
+                bootstrapApplication(${exampleComponentName}, {
+                providers: [provideAnimationsAsync()]
+                });
+            `;
         }
         return fileContent;
     }
