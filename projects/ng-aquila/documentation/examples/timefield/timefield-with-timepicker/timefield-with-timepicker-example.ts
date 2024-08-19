@@ -7,7 +7,7 @@ import { NxTimefieldModule } from '@aposin/ng-aquila/timefield';
  * @title Timefield with timepicker
  */
 @Component({
-    selector: 'nx-timefield-with-timepicker-example',
+    selector: 'timefield-with-timepicker-example',
     templateUrl: './timefield-with-timepicker-example.html',
     styleUrls: ['./timefield-with-timepicker-example.css'],
     standalone: true,

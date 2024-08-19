@@ -37,7 +37,7 @@ import { myCustomConfig } from '../file-uploader-auto/file-uploader-auto-example
 @Component({
     selector: 'file-uploader-error-list-example',
     templateUrl: './file-uploader-disable-common-validators-example.html',
-    styleUrls: ['./file-uploader-disable-common-validators-example.scss'],
+    styleUrls: ['./file-uploader-disable-common-validators-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [

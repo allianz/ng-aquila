@@ -14,7 +14,7 @@ class MyIntl extends NxTagIntl {
     standalone: true,
     imports: [NxTaglistComponent],
     templateUrl: './taglist-intl-example.html',
-    styleUrl: './taglist-intl-example.scss',
+    styleUrl: './taglist-intl-example.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

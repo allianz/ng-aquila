@@ -231,12 +231,22 @@ export class StackBlitzWriter {
 
             fileContent = `
                 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+                import { provideHttpClient, withInterceptorsFromDi, withJsonpSupport } from '@angular/common/http';
+                import { importProvidersFrom } from '@angular/core';
+                import { RouterModule } from '@angular/router';
+                import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
+
                 import { bootstrapApplication } from '@angular/platform-browser';
                 import { ${exampleComponentName} } from '${exampleImportPath}';
                 import 'zone.js';
 
                 bootstrapApplication(${exampleComponentName}, {
-                providers: [provideAnimationsAsync()]
+                providers: [
+                  provideAnimationsAsync(),
+                  provideHttpClient(withInterceptorsFromDi(), withJsonpSupport()),
+                  importProvidersFrom(RouterModule.forRoot([])),
+                  importProvidersFrom(NxDocumentationIconModule)
+                ]
                 });
             `;
         }

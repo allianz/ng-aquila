@@ -11,7 +11,7 @@ import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
     standalone: true,
     selector: 'radio-button-error-retail-example',
     templateUrl: './radio-button-error-retail-example.html',
-    styleUrl: './radio-button-error-retail-example.scss',
+    styleUrl: './radio-button-error-retail-example.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         ReactiveFormsModule,

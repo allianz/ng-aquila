@@ -10,7 +10,7 @@ import {
  * @title Timefield with timepicker enabled globally
  */
 @Component({
-    selector: 'nx-timefield-with-timepicker-global-example',
+    selector: 'timefield-with-timepicker-global-example',
     templateUrl: './timefield-with-timepicker-global-example.html',
     styleUrls: ['./timefield-with-timepicker-global-example.css'],
     standalone: true,

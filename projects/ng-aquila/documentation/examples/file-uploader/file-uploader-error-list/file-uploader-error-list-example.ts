@@ -36,7 +36,7 @@ import { myCustomConfig } from '../file-uploader-auto/file-uploader-auto-example
 @Component({
     selector: 'file-uploader-error-list-example',
     templateUrl: './file-uploader-error-list-example.html',
-    styleUrls: ['./file-uploader-error-list-example.scss'],
+    styleUrls: ['./file-uploader-error-list-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [
