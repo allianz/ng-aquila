@@ -54,6 +54,13 @@ $nx-theme: (
     disabled-02: #dbdbdb,
     disabled-03: #ededed,
     disabled-04: rgba(39, 171, 214, 0.35),
+    // developer preview:
+    // we are still implementing the new readonly features and we might need to change
+    // these tokens, but so far they look promising
+    readonly-surface-color: #0f2a3d,
+    readonly-on-surface-color: #c2c2c2,
+    readonly-surface-active-color: #c2c2c2,
+    readonly-on-surface-active-color: text-02,
     negative: ui-01,
     negative-accent: #e5e7e6,
     negative-01: #23628f,
@@ -64,9 +71,10 @@ $nx-theme: (
     negative-02-dimmed: negative-02,
     negative-background-dimmed: rgba(229, 231, 230, 0.4),
     grid-max-width: 1184px,
-    readonly-01: rgba(150, 150, 150, 0.35),
-    readonly-02: #969696,
-    readonly-03: #ffffff,
+    // deprecated use the new readonly-surface and readonly-on-surface tokens
+    readonly-01: readonly-surface-color,
+    readonly-02: readonly-on-surface-color,
+    readonly-03: readonly-on-surface-active-color,
     // new largest headline for A1, we just set it to heading-01 for old implementations
     heading-00-font-size: heading-01-font-size,
     heading-00-line-height: heading-01-line-height,
@@ -609,6 +617,12 @@ $nx-theme: (
     checkbox-disabled-background-color: disabled-04,
     checkbox-disabled-selected-background-color: disabled-01,
     checkbox-disabled-icon-color: text-02,
+    checkbox-readonly-background-color: readonly-surface-color,
+    checkbox-readonly-border-color: readonly-on-surface-color,
+    checkbox-readonly-selected-background-color: readonly-surface-active-color,
+    checkbox-readonly-selected-border-color: readonly-surface-active-color,
+    checkbox-readonly-icon-color: readonly-on-surface-active-color,
+    checkbox-readonly-indeterminate-color: readonly-surface-active-color,
     checkbox-label-color: text-01,
     checkbox-label-disabled-color: disabled-01,
     // the control and the first line of text are supposed to be aligned

@@ -4,6 +4,7 @@ import { CdkObserveContent } from '@angular/cdk/observers';
 import {
     AfterContentInit,
     AfterViewInit,
+    booleanAttribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -37,6 +38,7 @@ import {
 } from '@angular/forms';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -83,8 +85,14 @@ export type NxCheckboxLabelSize = 'small' | 'large';
     },
     standalone: true,
     imports: [],
+    providers: [
+        {
+            provide: NxAbstractControl,
+            useExisting: forwardRef(() => NxCheckboxGroupComponent),
+        },
+    ],
 })
-export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterContentInit, OnDestroy, DoCheck {
+export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterContentInit, OnDestroy, DoCheck, NxAbstractControl {
     @ContentChildren(forwardRef(() => NxCheckboxComponent), { descendants: true }) _checkboxes!: QueryList<NxCheckboxComponent>;
 
     @ContentChild(forwardRef(() => NxLabelComponent)) _label!: NxLabelComponent;
@@ -129,6 +137,16 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
         return this._disabled;
     }
     private _disabled = false;
+
+    /** Sets all checkboxes in the group to readonly. */
+    @Input({ transform: booleanAttribute }) set readonly(value) {
+        this._readonly = value;
+        this._stateChanges.next();
+    }
+    get readonly() {
+        return this._readonly;
+    }
+    private _readonly = false;
 
     /** Set the negative styles for all the checkboxes inside the nx-checkbox-group */
     @Input() set negative(value: BooleanInput) {
@@ -176,6 +194,11 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
             // the `providers` to avoid running into a circular import.
             this.ngControl.valueAccessor = this;
         }
+    }
+
+    setReadonly(value: boolean): void {
+        this.readonly = value;
+        this._cdr.markForCheck();
     }
 
     ngAfterContentInit(): void {
@@ -286,6 +309,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
         '[class.has-error]': '_controlInvalid() || null',
         '[attr.required]': 'required',
         '[attr.aria-invalid]': '_controlInvalid() || null',
+        '[class.is-readonly]': 'checkboxGroup?.readonly || readonly',
     },
     providers: [
         {
@@ -298,11 +322,15 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
             useExisting: forwardRef(() => NxCheckboxComponent),
             multi: true,
         },
+        {
+            provide: NxAbstractControl,
+            useExisting: forwardRef(() => NxCheckboxComponent),
+        },
     ],
     standalone: true,
     imports: [NxIconModule, CdkObserveContent],
 })
-export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnInit, AfterViewInit, Validator {
+export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnInit, AfterViewInit, Validator, NxAbstractControl {
     /** @docs-private */
     @ViewChild('checkboxLabelWrapper', { static: true }) _checkboxLabelWrapper!: ElementRef;
 
@@ -348,6 +376,14 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     }
     private _disabled = false;
 
+    /** Whether the checkbox should be readonly. */
+    @Input({ transform: booleanAttribute }) set readonly(value) {
+        this._readonly = value;
+    }
+    get readonly() {
+        return this.checkboxGroup?.readonly || this._readonly;
+    }
+    private _readonly = false;
     /**
      * Sets the label size of the checkbox.
      *
@@ -472,6 +508,11 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         private injector: Injector,
     ) {}
 
+    setReadonly(value: boolean): void {
+        this.readonly = value;
+        this._cdr.markForCheck();
+    }
+
     validate(control: AbstractControl<any, any>): ValidationErrors | null {
         return this.required && control.value !== true ? { required: true } : null;
     }
@@ -578,11 +619,14 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     _onInputClick(event: Event): void {
         // stop the propagation of the native click on the checkbox input so that a click is not triggered twice
         event.stopPropagation();
-        if (!this.disabled) {
-            this.toggle();
-            this.checkedChange.emit(this._checked);
-            this.checkboxChange.emit(this._createChangeEvent(this._checked));
+
+        if (this.disabled || this.readonly) {
+            event.preventDefault();
+            return;
         }
+        this.toggle();
+        this.checkedChange.emit(this._checked);
+        this.checkboxChange.emit(this._createChangeEvent(this._checked));
     }
 
     /** @docs-private */

@@ -1,9 +1,10 @@
 import { JsonPipe } from '@angular/common';
-import { Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 
+import { NxAbstractControl } from '../shared';
 import { NxCheckboxComponent, NxCheckboxGroupChangeEvent, NxCheckboxGroupComponent } from './checkbox.component';
 import { NxCheckboxModule } from './checkbox.module';
 
@@ -17,6 +18,7 @@ abstract class CheckboxGroupTest {
     labelSize!: string;
     disabled = false;
     negative = false;
+    readonly = false;
 }
 
 describe('NxCheckboxGroupComponent', () => {
@@ -48,6 +50,8 @@ describe('NxCheckboxGroupComponent', () => {
                 CheckboxGroupDynamic,
                 CheckboxGroupReactive,
                 ConditionalCheckboxGroupReactive,
+                ConfigurableCheckboxGroup,
+                CheckboxGroupOnPush,
             ],
         }).compileComponents();
     }));
@@ -70,6 +74,24 @@ describe('NxCheckboxGroupComponent', () => {
         fixture.detectChanges();
         checkboxInstances.forEach(checkbox => {
             expect(checkbox.disabled).toBeTrue();
+        });
+    });
+
+    it('should set every checkbox to readonly', () => {
+        createTestComponent(ConfigurableCheckboxGroup);
+        testInstance.readonly = true;
+        fixture.detectChanges();
+        checkboxInstances.forEach(checkbox => {
+            expect(checkbox.readonly).toBeTrue();
+        });
+    });
+
+    it('should set readonly programmatically with NxAbstractControl', () => {
+        createTestComponent(CheckboxGroupOnPush);
+        (testInstance as CheckboxGroupOnPush).group.setReadonly(true);
+        fixture.detectChanges();
+        checkboxElements.forEach(element => {
+            expect(element).toHaveClass('is-readonly');
         });
     });
 
@@ -245,6 +267,20 @@ class BasicCheckboxGroup extends CheckboxGroupTest {}
 
 @Component({
     template: `
+        <nx-checkbox-group name="terms" [disabled]="disabled" [readonly]="readonly">
+            <nx-label [id]="'terms-label'">Accept terms</nx-label>
+            <nx-checkbox>Term 1</nx-checkbox>
+            <nx-checkbox>Term 2</nx-checkbox>
+            <nx-checkbox>Term 3</nx-checkbox>
+        </nx-checkbox-group>
+    `,
+    standalone: true,
+    imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
+})
+class ConfigurableCheckboxGroup extends CheckboxGroupTest {}
+
+@Component({
+    template: `
         <form [formGroup]="myFormGroup">
             <nx-checkbox-group name="terms" formControlName="terms" required>
                 <nx-label>Accept terms</nx-label>
@@ -369,4 +405,23 @@ export class ConditionalCheckboxGroupReactive extends CheckboxGroupTest {
             checkboxes: [['Term 1', 'Term 2']],
         });
     }
+}
+
+@Component({
+    template: `
+        <form>
+            <nx-checkbox-group #checkboxGroup>
+                @for (checkbox of checkboxes; track checkbox) {
+                    <nx-checkbox [value]="checkbox">{{ checkbox }}</nx-checkbox>
+                }
+            </nx-checkbox-group>
+        </form>
+    `,
+    standalone: true,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [NxCheckboxModule, NxErrorModule, NxLabelModule],
+})
+export class CheckboxGroupOnPush extends CheckboxGroupTest {
+    checkboxes: string[] = ['Term 1', 'Term 2', 'Term 3'];
+    @ViewChild('checkboxGroup', { read: NxAbstractControl }) group!: NxAbstractControl;
 }

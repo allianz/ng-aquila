@@ -12,6 +12,8 @@ This component implements the checkbox as the combination of a label and an inpu
 
 ### Examples
 
+#### Basic states
+
 The following six checkbox states are supported:
 
 <!-- example(checkbox-states) -->
@@ -73,6 +75,15 @@ You are free to choose how you want to layout the checkboxes inside the group. Y
 With `size` you can change the styling of the checkbox-group's label. The label of the checkbox group is by default for B2C. The appearance of the label can be changed setting the `size` property to `small`.
 
 <!-- example(checkbox-group-label-size) -->
+
+#### Expert: Readonly
+
+<div class="docs-deprecation-warning">
+<strong>Expert only: </strong>
+  Please note that the readonly option is only for expert/internal applications because of accessibility restrictions. There is currently no solution for readonly states that is accepted for retail applications.
+</div>
+
+<!-- example(checkbox-readonly) -->
 
 ### Validation
 

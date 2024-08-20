@@ -2,14 +2,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NxCheckboxComponent } from '@aposin/ng-aquila/checkbox';
 
 /**
- * @title Checkbox States
+ * @title Readonly checkbox
  */
 @Component({
-    selector: 'checkbox-states-example',
-    templateUrl: './checkbox-states-example.html',
-    styleUrls: ['./checkbox-states-example.css'],
+    selector: 'checkbox-readonly-example',
+    templateUrl: './checkbox-readonly-example.html',
+    styleUrls: ['./checkbox-readonly-example.css'],
     standalone: true,
     imports: [NxCheckboxComponent],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CheckboxStatesExampleComponent {}
+export class CheckboxReadonlyExampleComponent {
+    readonly = true;
+}

@@ -139,6 +139,29 @@ $checkbox-size: nx-spacer(m);
     }
 }
 
+.nx-checkbox__input {
+    &.is-readonly + .nx-checkbox__label {
+        cursor: not-allowed;
+
+        .nx-checkbox__control {
+            cursor: not-allowed;
+            background-color: v(checkbox-readonly-background-color);
+            border-color: v(checkbox-readonly-border-color);
+            color: v(checkbox-readonly-icon-color);
+        }
+
+        .nx-checkbox__indeterminate-indicator {
+            color: v(checkbox-readonly-indeterminate-color);
+            background-color: v(checkbox-readonly-indeterminate-color);
+        }
+    }
+
+    &:checked.is-readonly + .nx-checkbox__label .nx-checkbox__control {
+        background-color: v(checkbox-readonly-selected-background-color);
+        border-color: v(checkbox-readonly-selected-border-color);
+    }
+}
+
 :host(.nx-checkbox--negative) {
     .nx-checkbox__control {
         border-color: v(negative);
@@ -181,7 +204,7 @@ $checkbox-size: nx-spacer(m);
     }
 }
 
-:host:not(.nx-checkbox--negative):not(.has-error):hover {
+:host:not(.nx-checkbox--negative):not(.has-error):not(.is-readonly):hover {
     .nx-checkbox__input:not([disabled]):checked + .nx-checkbox__label .nx-checkbox__control {
         background-color: v(checkbox-hover-background-color);
     }
@@ -195,7 +218,7 @@ $checkbox-size: nx-spacer(m);
     }
 }
 
-:host:not(.nx-checkbox--negative):active {
+:host:not(.nx-checkbox--negative):not(.is-readonly):active {
     .nx-checkbox__input:not([disabled]):checked + .nx-checkbox__label .nx-checkbox__control {
         background-color: v(checkbox-active-background-color);
     }
