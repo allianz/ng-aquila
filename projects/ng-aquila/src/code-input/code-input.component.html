@@ -15,3 +15,6 @@
         autocomplete="one-time-code"
     />
 }
+@if (errorState) {
+    <ng-content select="nx-error"></ng-content>
+}

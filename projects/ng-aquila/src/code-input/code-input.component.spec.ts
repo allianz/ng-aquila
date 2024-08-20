@@ -2,6 +2,7 @@ import { CONTROL, DOWN_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycode
 import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 
 import { createKeyboardEvent, dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxCodeInputComponent } from './code-input.component';
@@ -53,6 +54,7 @@ describe('NxCodeInputComponent', () => {
                 NumberCodeInput,
                 ConfigurableCodeInput,
                 OverrideDefaultLabelsCodeInput,
+                CodeInputWithError,
             ],
             providers: [],
         }).compileComponents();
@@ -377,7 +379,7 @@ describe('NxCodeInputComponent', () => {
         const inputElements = codeInputElement.querySelectorAll('.nx-code-input__field');
 
         Array.from(inputElements).forEach((inputEl, index) => {
-            expect((inputEl as HTMLElement).getAttribute('aria-label')).toBe(`Test ${index + 1} testOf ${inputElements.length}`);
+            expect((inputEl as HTMLElement).getAttribute('aria-label')).toBe(`${index + 1} testOf ${inputElements.length}`);
         });
     });
 
@@ -392,7 +394,7 @@ describe('NxCodeInputComponent', () => {
         const inputElements = codeInputElement.querySelectorAll('.nx-code-input__field');
 
         Array.from(inputElements).forEach((inputEl, index) => {
-            expect((inputEl as HTMLElement).getAttribute('aria-label')).toBe(`Test ${index + 1} testOf ${inputElements.length}`);
+            expect((inputEl as HTMLElement).getAttribute('aria-label')).toBe(`${index + 1} testOf ${inputElements.length}`);
         });
     });
 
@@ -400,6 +402,25 @@ describe('NxCodeInputComponent', () => {
         it('has no accessibility violations', async () => {
             createTestComponent(CodeInputTest1);
             await expectAsync(fixture.nativeElement).toBeAccessible();
+        });
+
+        it('should link error id with aria-descrideby', async () => {
+            createTestComponent(CodeInputWithError);
+            const errorId = (fixture.componentInstance as CodeInputWithError).error.id;
+            const ariaDescrideby = fixture.nativeElement.querySelector('.nx-code-input')?.getAttribute('aria-describedby');
+            expect(ariaDescrideby).toBe(errorId);
+        });
+
+        it('should set the default group aria labels', () => {
+            createTestComponent(CodeInputTest1);
+
+            expect(codeInputElement.getAttribute('aria-label')).toBe('Enter Key');
+        });
+
+        it('should overwrite the default group aria labels', () => {
+            createTestComponent(OverrideDefaultLabelsCodeInput);
+
+            expect(codeInputElement.getAttribute('aria-label')).toBe('Test');
         });
     });
 });
@@ -486,3 +507,13 @@ class ConfigurableCodeInput extends CodeInputTest {}
     imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class OverrideDefaultLabelsCodeInput extends CodeInputTest {}
+
+@Component({
+    template: `<nx-code-input [length]="4" type="number"><nx-error>error</nx-error></nx-code-input>`,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule, NxErrorComponent],
+})
+class CodeInputWithError extends CodeInputTest {
+    @ViewChild(NxErrorComponent) error!: NxErrorComponent;
+}

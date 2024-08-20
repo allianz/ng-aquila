@@ -1,8 +1,9 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { BACKSPACE, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, SPACE, UP_ARROW } from '@angular/cdk/keycodes';
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, Input, Optional, Self } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, DoCheck, ElementRef, Input, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, FormsModule, NgControl, NgForm } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 
 import { NxCodeInputIntl } from './code-input-intl';
@@ -24,12 +25,17 @@ export type NxConversionTypes = 'lower' | 'upper';
         '[class.is-negative]': 'negative',
         '[class.is-disabled]': 'disabled',
         '[attr.tabindex]': '-1',
+        role: 'group',
+        '[attr.aria-describedby]': 'error?.id || null',
+        '[attr.aria-label]': '_intl.inputFieldAriaLabel',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [FormsModule, NgClass],
 })
 export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
+    @ContentChild(NxErrorComponent) error!: NxErrorComponent;
+
     /** Whether the current input of the component has an error. */
     errorState = false;
 
@@ -115,7 +121,6 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
             this._control.valueAccessor = this;
         }
     }
-
     ngDoCheck(): void {
         if (this._control) {
             // We need to re-evaluate this on every change detection cycle, because there are some
@@ -367,11 +372,12 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
 
         if (newState !== oldState) {
             this.errorState = newState;
+            this._cdr.markForCheck();
         }
     }
 
     getAriaLabel(keyIndex: number) {
-        return `${this._intl.inputFieldAriaLabel} ${keyIndex + 1} ${this._intl.ofLabel} ${this._keyCode.length}`;
+        return `${keyIndex + 1} ${this._intl.ofLabel} ${this._keyCode.length}`;
     }
 
     /**

@@ -1,15 +1,11 @@
 <form #form="ngForm" [formGroup]="codeForm">
-    <nx-code-input #codeInput formControlName="keyCode"></nx-code-input>
-
-    @if (codeInput.errorState) {
-    <div>
+    <nx-code-input #codeInput formControlName="keyCode">
         @if (keyCode?.hasError('required')) {
         <nx-error class="nx-margin-y-xs"> Entry is required. </nx-error>
         } @if (keyCode?.hasError('minlength')) {
         <nx-error class="nx-margin-y-xs"> Entry is too short. </nx-error>
         }
-    </div>
-    }
+    </nx-code-input>
 
     <br />
     <button nxButton="primary small" type="submit">Submit</button>
