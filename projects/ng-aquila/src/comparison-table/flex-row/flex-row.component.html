@@ -14,7 +14,7 @@
                 <div class="nx-comparison-table__cell-content"></div>
             </div>
         }
-        @for (emptyCellBeforePopular of [].constructor(row.popularCell.forColumn - 1); track emptyCellBeforePopular; let i = $index) {
+        @for (emptyCellBeforePopular of [].constructor(row.popularCell.forColumn - 1); track $index; let i = $index) {
             <div
                 role="cell"
                 class="nx-comparison-table__placeholder-cell is-popular-placeholder-cell"
@@ -25,7 +25,7 @@
         }
         <!-- popular cell content -->
         <ng-container *ngTemplateOutlet="row.popularCell._content"></ng-container>
-        @for (emptyCellAfterPopular of [].constructor(row.cells.length - row.popularCell.forColumn); track emptyCellAfterPopular; let i = $index) {
+        @for (emptyCellAfterPopular of [].constructor(row.cells.length - row.popularCell.forColumn); track $index; let i = $index) {
             <div
                 role="cell"
                 class="nx-comparison-table__placeholder-cell is-popular-placeholder-cell"

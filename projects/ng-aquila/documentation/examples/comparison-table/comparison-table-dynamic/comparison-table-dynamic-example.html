@@ -4,7 +4,7 @@
         <!-- header row -->
         @if (element['type'] === 'header') {
         <ng-container nxComparisonTableRow type="header">
-            @for (cell of element['cells']; track cell) {
+            @for (cell of element['cells']; track $index;) {
             <nx-comparison-table-cell type="header">
                 {{ cell }}<br />
                 <button
@@ -41,7 +41,7 @@
                     </nx-popover>
                 </div>
             </nx-comparison-table-description-cell>
-            } @for (cell of element['cells']; track cell) {
+            } @for (cell of element['cells']; track $index;) {
             <nx-comparison-table-cell> {{ cell }} </nx-comparison-table-cell>
             }
         </ng-container>
@@ -49,7 +49,7 @@
         <!-- footer row -->
         @if (element['type'] === 'footer') {
         <ng-container nxComparisonTableRow type="footer">
-            @for (cell of element['cells']; track cell) {
+            @for (cell of element['cells']; track $index;) {
             <nx-comparison-table-cell type="footer">
                 <button
                     nxComparisonTableSelectButton
@@ -93,7 +93,7 @@
                         </nx-popover>
                     </div>
                 </nx-comparison-table-description-cell>
-                }> @for (cell of row['cells']; track cell) {
+                }> @for (cell of row['cells']; track $index;) {
                 <nx-comparison-table-cell>{{ cell }}</nx-comparison-table-cell>
                 }
             </ng-container>
