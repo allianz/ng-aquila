@@ -7,13 +7,12 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
+    inject,
     Input,
     IterableChangeRecord,
     IterableDiffer,
-    IterableDiffers,
     OnDestroy,
     OnInit,
-    Optional,
     ViewChild,
     ViewContainerRef,
     ViewEncapsulation,
@@ -52,6 +51,11 @@ import { NxTreeNodeOutletDirective } from './outlet';
     imports: [NxTreeNodeOutletDirective],
 })
 export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit {
+    private readonly _cdr = inject(ChangeDetectorRef);
+    private readonly dir = inject(Directionality);
+    private readonly _elementRef = inject(ElementRef);
+    private readonly _focusMonitor = inject(FocusMonitor);
+
     // Outlets within the tree's template where the dataNodes will be inserted.
     @ViewChild(NxTreeNodeOutletDirective, { static: true }) _nodeOutlet!: NxTreeNodeOutletDirective;
 
@@ -83,16 +87,6 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
 
     /** Subject that emits when the component has been destroyed. */
     private readonly _wrapperOnDestroy = new Subject<void>();
-
-    constructor(
-        _wrapperDiffers: IterableDiffers,
-        private readonly _cdr: ChangeDetectorRef,
-        @Optional() private readonly dir: Directionality | null,
-        protected readonly _elementRef: ElementRef,
-        protected readonly _focusMonitor: FocusMonitor,
-    ) {
-        super(_wrapperDiffers, _cdr);
-    }
 
     ngOnInit(): void {
         super.ngOnInit();
