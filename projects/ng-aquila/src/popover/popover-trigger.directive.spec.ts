@@ -737,6 +737,11 @@ describe('NxPopoverTriggerDirective', () => {
             fixture.detectChanges();
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
+
+        it('has aria-haspopup', async () => {
+            createTestComponent(PopoverClickComponent);
+            expect(buttonNativeElement.getAttribute('aria-haspopup')).toBe('dialog');
+        });
     });
 
     describe('directionality of overlay', () => {
