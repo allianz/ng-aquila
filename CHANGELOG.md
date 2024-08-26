@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.2.0](https://github.com/allianz/ng-aquila/compare/v18.1.0...v18.2.0) (2024-08-26)
+
+
+### Features ✨
+
+* **checkbox:** add readonly state ([96e717c](https://github.com/allianz/ng-aquila/commit/96e717c0e80f344fd1c8bf546c48f3f7fbe50214))
+
+
+### Bug Fixes 🐛
+
+* **code-input:** link error message with  aria-describedby ([ce2c995](https://github.com/allianz/ng-aquila/commit/ce2c995a6852d1ba5b8e98607c21f490e6fb5e32))
+* **comparision-table:** track expression warning ([f400dd8](https://github.com/allianz/ng-aquila/commit/f400dd8ed1f444bcdad9a462899053efe0b6e539))
+* **context-menu:** change behavior to match a11y guidelines ([5595eaf](https://github.com/allianz/ng-aquila/commit/5595eaf76bf778f18467539586097364842bbb1a))
+* **dropdown:** change keyboard behavior ([7f23419](https://github.com/allianz/ng-aquila/commit/7f23419a4022634b1823b7191b395ec9f9a570bf))
+* **input:** remove a password reveal button in Microsoft Edge ([f1f55df](https://github.com/allianz/ng-aquila/commit/f1f55dfc97ca4df70161a0fb0b28ee1513e1cf1d))
+* **multi-select:** add aria-describedby, aria-invalid ([98f784d](https://github.com/allianz/ng-aquila/commit/98f784d1cb30f5b04ebf62c0a82b33f1dba66a3f))
+* **phone-input:** correct focused state ([71527c5](https://github.com/allianz/ng-aquila/commit/71527c5054b2fb4d9fb3319f191c4dfdfbbe1eb5))
+* **phone-input:** remove binding from role attribute ([bfe1f23](https://github.com/allianz/ng-aquila/commit/bfe1f23e666a0187207a7a137d68379bfdc38f1b))
+* **popover:** change aria-haspopup to dialog ([7e4cdf5](https://github.com/allianz/ng-aquila/commit/7e4cdf5589e0876e8a911061a29d2b62b2f6b25e))
+
+
+### Documentation 📚
+
+* add documentation for non interactive scrollable content ([e4e201f](https://github.com/allianz/ng-aquila/commit/e4e201f1aae049a07f3b473e44f11531aa0b169f))
+* fix opening examples in stackblitz ([ea96a78](https://github.com/allianz/ng-aquila/commit/ea96a78890e18f8185dc497c65f00462f5cd6e2b))
+
 ## [18.1.0](https://github.com/allianz/ng-aquila/compare/v18.0.0...v18.1.0) (2024-08-08)
 
 ### Emphasis button update
