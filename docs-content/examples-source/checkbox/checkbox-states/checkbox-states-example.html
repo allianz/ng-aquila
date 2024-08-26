@@ -26,7 +26,11 @@
     checked. This may come in handy if you work with nested checkboxes.
 </nx-checkbox>
 
-<nx-checkbox [indeterminate]="true" [disabled]="true">
+<nx-checkbox
+    [indeterminate]="true"
+    [disabled]="true"
+    class="nx-margin-bottom-s"
+>
     Indeterminate & disabled<br />
     The box is indeterminate and can not be interacted with directly, but only
     via checking all of the subordinate boxes nested below.

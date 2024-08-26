@@ -13,7 +13,7 @@ import { NxTimefieldComponent } from '@aposin/ng-aquila/timefield';
  * @title Timefield reactive forms example
  */
 @Component({
-    selector: 'nx-timefield-reactive-example',
+    selector: 'timefield-reactive-example',
     templateUrl: './timefield-reactive-example.html',
     styleUrls: ['./timefield-reactive-example.css'],
     standalone: true,

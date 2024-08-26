@@ -29,7 +29,7 @@ import {
         NxBadgeComponent,
     ],
 })
-export class TableColumnResizeExample {
+export class TableColumnResizeExampleComponent {
     tableElements = [
         {
             product: 'Car',

@@ -45,6 +45,6 @@ import {
         NxFormfieldErrorDirective,
     ],
 })
-export class LicencePlateNgmodelExample {
+export class LicencePlateNgmodelExampleComponent {
     model = '';
 }

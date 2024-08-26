@@ -11,7 +11,7 @@ import { NxProgressbarComponent } from '@aposin/ng-aquila/progressbar';
     imports: [NxProgressbarComponent],
     standalone: true,
 })
-export class ProgressbarCustomRangeExample implements OnInit {
+export class ProgressbarCustomRangeExampleComponent implements OnInit {
     value = 15;
     min = 5;
     max = 80;

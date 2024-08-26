@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NxCheckboxComponent } from '@aposin/ng-aquila/checkbox';
 
 /**
@@ -10,5 +10,6 @@ import { NxCheckboxComponent } from '@aposin/ng-aquila/checkbox';
     styleUrls: ['./checkbox-states-example.css'],
     standalone: true,
     imports: [NxCheckboxComponent],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxStatesExampleComponent {}

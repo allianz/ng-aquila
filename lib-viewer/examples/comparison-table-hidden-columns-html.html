@@ -8,7 +8,7 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu</span> #<span class="hljs-attr">menu</span>=<span class="hljs-string">&quot;nxContextMenu&quot;</span>&gt;</span>
-    @for (item of [].constructor(3); track item; let i = $index) { @if (i !==
+    @for (item of [].constructor(3); track $index; let i = $index) { @if (i !==
     selectedColumnIndex) {
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
         [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;selectedColumnIndex === i&quot;</span>

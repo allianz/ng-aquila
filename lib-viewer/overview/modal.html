@@ -103,22 +103,24 @@ myDialogRef.<span class="hljs-title function_">close</span>(<span class="hljs-st
 <p class="docs-markdown--p">By default all dialogs are rendered with <code>ltr</code> direction. If you need the dialog to use your application locale direction, for example when you need to support RTL scripts, you can use the <code>direction</code> configuration property.</p>
 <p class="docs-markdown--p">To get your app direction we recommend using <a href="https://material.angular.io/cdk/bidi/overview">Directionality</a> from Angular CDK.</p>
 <div nx-docs-example="modal-with-direction" config="{}">exampleID: modal-with-direction</div>
+<h3 id="block-modal-closing" tabindex="-1" class="docs-markdown--h3">Block modal closing</h3>
+<p class="docs-markdown--p">The following example demonstrates the usage of the <code>shouldClose</code> and <code>closeDenied</code> APIs to create a modal that displays a popover notification when attempting to close the modal with unsaved data.</p>
+ <div nx-docs-example="modal-unsaved" config="{}">exampleID: modal-unsaved</div>
 <h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">By default, each modal has <code>role=&quot;dialog&quot;</code> on the root element. The role can be changed to <code>alertdialog</code> via the <code>NxModalConfig</code>.</p>
 <p class="docs-markdown--p">The aria-label, aria-labelledby, and aria-describedby attributes of the modal as well as the aria-label of the optional close button can be set via the <code>NxModalConfig</code> as well. It is recommended to at least give a modal an aria-label or aria-labelledby attribute.</p>
 <p class="docs-markdown--p">When a dialog opens, the first focusable element will be focused. The CdkOverlay used in the dialog traps the focus in itself in order to prevent users from interacting with elements in the background. Per default, the focus will be given back to the element which has been focused before the opening of the dialog.</p>
 <p class="docs-markdown--p">Pressing the escape key will close the dialog per default. You can disable this behaviour by setting the <code>disabledClose</code> option to false in the <code>NxModalConfig</code>, but it is recommended to keep it on as it is the expected behaviour of a modal dialog.</p>
-<h3 id="block-modal-closing" tabindex="-1" class="docs-markdown--h3">Block modal closing</h3>
-<p class="docs-markdown--p">The following example demonstrates the usage of the <code>shouldClose</code> and <code>closeDenied</code> APIs to create a modal that displays a popover notification when attempting to close the modal with unsaved data.</p>
- <div nx-docs-example="modal-unsaved" config="{}">exampleID: modal-unsaved</div>
+<h4 id="scrollable-areas-and-long-content" tabindex="-1" class="docs-markdown--h4">Scrollable areas and long content</h4>
+<p class="docs-markdown--p">Non interactive scrollable areas and long content in size restricted containers can be problematic for keyboard users. <a href="/documentation/accessibility/overview#scroll-containers-and-keyboard-navigation">Have a look into our general accessibility guide on that.</a> TLDR: setting <code>tabindex=&quot;0&quot;</code> on the scrollable container is a valid workaround until this will be supported natively by browsers.</p>
 <h3 id="deprecated-modal-component" tabindex="-1" class="docs-markdown--h3">Deprecated Modal Component</h3>
 <p class="docs-markdown--p">The example below shows the previous implementation of the modal dialog, which is already deprecated and should not be used.</p>
 <p class="docs-markdown--p">For using it you have to import the <code>NxModalModule</code> as follows:</p>
 <pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxModalModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/modal&#x27;</span>;
 
 <span class="hljs-meta">@NgModule</span>({
-  <span class="hljs-attr">imports</span>: [
-    <span class="hljs-title class_">NxModalModule</span>.<span class="hljs-title function_">forRoot</span>()
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxModalModule</span>.<span class="hljs-title function_">forRoot</span>()
   ]
 })
 </code></pre>

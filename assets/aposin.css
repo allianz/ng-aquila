@@ -41,6 +41,10 @@ body,
   --disabled-02: #dbdbdb;
   --disabled-03: #ededed;
   --disabled-04: rgba(39, 171, 214, 0.35);
+  --readonly-surface-color: #0f2a3d;
+  --readonly-on-surface-color: #c2c2c2;
+  --readonly-surface-active-color: #c2c2c2;
+  --readonly-on-surface-active-color: var(--text-02);
   --negative: var(--ui-01);
   --negative-accent: #e5e7e6;
   --negative-01: #23628f;
@@ -51,9 +55,9 @@ body,
   --negative-02-dimmed: var(--negative-02);
   --negative-background-dimmed: rgba(229, 231, 230, 0.4);
   --grid-max-width: 1184px;
-  --readonly-01: rgba(150, 150, 150, 0.35);
-  --readonly-02: #969696;
-  --readonly-03: #ffffff;
+  --readonly-01: var(--readonly-surface-color);
+  --readonly-02: var(--readonly-on-surface-color);
+  --readonly-03: var(--readonly-on-surface-active-color);
   --heading-00-font-size: var(--heading-01-font-size);
   --heading-00-line-height: var(--heading-01-line-height);
   --heading-00-font-weight: var(--heading-01-font-weight);
@@ -587,6 +591,12 @@ body,
   --checkbox-disabled-background-color: var(--disabled-04);
   --checkbox-disabled-selected-background-color: var(--disabled-01);
   --checkbox-disabled-icon-color: var(--text-02);
+  --checkbox-readonly-background-color: var(--readonly-surface-color);
+  --checkbox-readonly-border-color: var(--readonly-on-surface-color);
+  --checkbox-readonly-selected-background-color: var(--readonly-surface-active-color);
+  --checkbox-readonly-selected-border-color: var(--readonly-surface-active-color);
+  --checkbox-readonly-icon-color: var(--readonly-on-surface-active-color);
+  --checkbox-readonly-indeterminate-color: var(--readonly-surface-active-color);
   --checkbox-label-color: var(--text-01);
   --checkbox-label-disabled-color: var(--disabled-01);
   --checkbox-large-label-control-margin-top: 2px;

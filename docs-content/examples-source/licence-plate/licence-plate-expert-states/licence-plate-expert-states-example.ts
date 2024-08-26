@@ -47,7 +47,7 @@ import {
         NxCheckboxComponent,
     ],
 })
-export class LicencePlateExpertStatesExample {
+export class LicencePlateExpertStatesExampleComponent {
     disabled = false;
     readonly = false;
     value = '';

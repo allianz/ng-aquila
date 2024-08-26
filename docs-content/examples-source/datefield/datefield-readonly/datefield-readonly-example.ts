@@ -26,7 +26,7 @@ import { NxInputModule } from '@aposin/ng-aquila/input';
         NxInputModule,
     ],
 })
-export class DatefieldReadonlyExample {
+export class DatefieldReadonlyExampleComponent {
     adapter = inject(NxDateAdapter);
     currentDate = this.adapter.today();
 }

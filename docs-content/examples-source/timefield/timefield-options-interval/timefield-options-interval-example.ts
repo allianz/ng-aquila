@@ -7,7 +7,7 @@ import { NxTimefieldModule } from '@aposin/ng-aquila/timefield';
  */
 @Component({
     standalone: true,
-    selector: 'nx-timefield-options-interval-example',
+    selector: 'timefield-options-interval-example',
     templateUrl: './timefield-options-interval-example.html',
     styleUrls: ['./timefield-options-interval-example.css'],
     imports: [NxTimefieldModule, NxCopytextModule],

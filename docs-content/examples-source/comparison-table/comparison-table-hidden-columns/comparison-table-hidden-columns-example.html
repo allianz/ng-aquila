@@ -8,7 +8,7 @@
 </button>
 
 <nx-context-menu #menu="nxContextMenu">
-    @for (item of [].constructor(3); track item; let i = $index) { @if (i !==
+    @for (item of [].constructor(3); track $index; let i = $index) { @if (i !==
     selectedColumnIndex) {
     <button
         [disabled]="selectedColumnIndex === i"

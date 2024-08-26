@@ -50,7 +50,7 @@ import {
         JsonPipe,
     ],
 })
-export class LicencePlateReactiveExample {
+export class LicencePlateReactiveExampleComponent {
     licencePlateForm: FormGroup;
 
     constructor() {

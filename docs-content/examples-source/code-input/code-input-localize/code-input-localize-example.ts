@@ -15,12 +15,12 @@ import {
 
 @Injectable()
 export class MyIntl extends NxCodeInputIntl {
-    inputFieldAriaLabel = 'Key eingeben';
+    inputFieldAriaLabel = 'Geben Sie den OTP-Code ein';
     ofLabel = 'von';
 }
 
 /**
- * @title Localization example
+ * @title Aria labelling example
  */
 @Component({
     selector: 'code-input-localize-example',

@@ -31,7 +31,7 @@ import { NxTableModule } from '@aposin/ng-aquila/table';
         NxContextMenuModule,
     ],
 })
-export class TableCoumnHidingExampleComponent {
+export class TableColumnHidingExampleComponent {
     constructor(private readonly _cdr: ChangeDetectorRef) {}
     tableElements = [
         {

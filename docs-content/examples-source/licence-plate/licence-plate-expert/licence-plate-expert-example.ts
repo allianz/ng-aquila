@@ -54,7 +54,7 @@ import {
         JsonPipe,
     ],
 })
-export class LicencePlateExpertExample {
+export class LicencePlateExpertExampleComponent {
     licencePlateModel: {
         type: NxLicencePlateType;
         country: string;

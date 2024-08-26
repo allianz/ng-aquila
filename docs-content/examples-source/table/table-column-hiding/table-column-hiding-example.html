@@ -32,7 +32,7 @@
         <thead>
             <tr nxTableRow>
                 @for (option of options; track option) { @if
-                (selected?.includes(option.value)) {
+                (selected.includes(option.value)) {
                 <th nxHeaderCell>{{option.label}}</th>
                 } }
                 <!-- <th
@@ -47,19 +47,19 @@
         <tbody>
             @for (item of tableElements; track item) {
             <tr nxTableRow>
-                @if (selected?.includes('product')) {
+                @if (selected.includes('product')) {
                 <td nxTableCell>{{item.product}}</td>
-                } @if (selected?.includes('contractNumber')) {
+                } @if (selected.includes('contractNumber')) {
                 <td nxTableCell>{{item.contractNumber}}</td>
-                } @if (selected?.includes('desc')) {
+                } @if (selected.includes('desc')) {
                 <td nxTableCell>{{item.desc}}</td>
-                } @if (selected?.includes('website')) {
+                } @if (selected.includes('website')) {
                 <td nxTableCell>
                     <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
                 </td>
-                } @if (selected?.includes('endingAt')) {
+                } @if (selected.includes('endingAt')) {
                 <td nxTableCell>{{item.endingAt}}</td>
-                } @if (selected?.includes('statusText')) {
+                } @if (selected.includes('statusText')) {
                 <td nxTableCell>
                     <nx-badge [type]="item.status">
                         {{item.statusText}}
@@ -67,7 +67,7 @@
                 </td>
                 }
             </tr>
-            } @if (!selected?.length) {
+            } @if (!selected.length) {
             <tr nxTableRow>
                 <td nxTableCell style="text-align: center">
                     All table columns are currently hidden.

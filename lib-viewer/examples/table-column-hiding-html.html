@@ -32,7 +32,7 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
                 @for (option of options; track option) { @if
-                (selected?.includes(option.value)) {
+                (selected.includes(option.value)) {
                 <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>{{option.label}}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
                 } }
                 <span class="hljs-comment">&lt;!-- &lt;th
@@ -47,19 +47,19 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
             @for (item of tableElements; track item) {
             <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
-                @if (selected?.includes(&#x27;product&#x27;)) {
+                @if (selected.includes(&#x27;product&#x27;)) {
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.product}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                } @if (selected?.includes(&#x27;contractNumber&#x27;)) {
+                } @if (selected.includes(&#x27;contractNumber&#x27;)) {
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.contractNumber}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                } @if (selected?.includes(&#x27;desc&#x27;)) {
+                } @if (selected.includes(&#x27;desc&#x27;)) {
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.desc}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                } @if (selected?.includes(&#x27;website&#x27;)) {
+                } @if (selected.includes(&#x27;website&#x27;)) {
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-link</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>{{item.website}}<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-link</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                } @if (selected?.includes(&#x27;endingAt&#x27;)) {
+                } @if (selected.includes(&#x27;endingAt&#x27;)) {
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.endingAt}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                } @if (selected?.includes(&#x27;statusText&#x27;)) {
+                } @if (selected.includes(&#x27;statusText&#x27;)) {
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-badge</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;item.status&quot;</span>&gt;</span>
                         {{item.statusText}}
@@ -67,7 +67,7 @@
                 <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
                 }
             <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-            } @if (!selected?.length) {
+            } @if (!selected.length) {
             <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: center&quot;</span>&gt;</span>
                     All table columns are currently hidden.

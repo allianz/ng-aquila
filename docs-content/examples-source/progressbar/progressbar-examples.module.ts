@@ -3,12 +3,12 @@ import { NxProgressbarModule } from '@aposin/ng-aquila/progressbar';
 
 import { ProgressbarExampleComponent } from './progressbar/progressbar-example';
 import { ProgressbarBasicExampleComponent } from './progressbar-basic/progressbar-basic-example';
-import { ProgressbarCustomRangeExample } from './progressbar-custom-range/progressbar-custom-range-example';
+import { ProgressbarCustomRangeExampleComponent } from './progressbar-custom-range/progressbar-custom-range-example';
 
 const EXAMPLES = [
     ProgressbarExampleComponent,
     ProgressbarBasicExampleComponent,
-    ProgressbarCustomRangeExample,
+    ProgressbarCustomRangeExampleComponent,
 ];
 
 @NgModule({
@@ -20,7 +20,7 @@ export class ProgressbarExamplesModule {
         return {
             progressbar: ProgressbarExampleComponent,
             'progressbar-basic': ProgressbarBasicExampleComponent,
-            'progressbar-custom-range': ProgressbarCustomRangeExample,
+            'progressbar-custom-range': ProgressbarCustomRangeExampleComponent,
         };
     }
 }

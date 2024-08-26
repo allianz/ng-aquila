@@ -31,7 +31,7 @@ import {
         NxTableCellComponent,
     ],
 })
-export class TableColumnReorderExample {
+export class TableColumnReorderExampleComponent {
     header = [
         { title: 'ID', field: 'id' },
         { title: 'Product', field: 'product' },

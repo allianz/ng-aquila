@@ -4,7 +4,7 @@
         <span class="hljs-comment">&lt;!-- header row --&gt;</span>
         @if (element[&#x27;type&#x27;] === &#x27;header&#x27;) {
         <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
-            @for (cell of element[&#x27;cells&#x27;]; track cell) {
+            @for (cell of element[&#x27;cells&#x27;]; track $index;) {
             <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
                 {{ cell }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
@@ -41,7 +41,7 @@
                     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
-            } @for (cell of element[&#x27;cells&#x27;]; track cell) {
+            } @for (cell of element[&#x27;cells&#x27;]; track $index;) {
             <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span> {{ cell }} <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
             }
         <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
@@ -49,7 +49,7 @@
         <span class="hljs-comment">&lt;!-- footer row --&gt;</span>
         @if (element[&#x27;type&#x27;] === &#x27;footer&#x27;) {
         <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span>
-            @for (cell of element[&#x27;cells&#x27;]; track cell) {
+            @for (cell of element[&#x27;cells&#x27;]; track $index;) {
             <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
                     <span class="hljs-attr">nxComparisonTableSelectButton</span>
@@ -93,7 +93,7 @@
                         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
-                }&gt; @for (cell of row[&#x27;cells&#x27;]; track cell) {
+                }&gt; @for (cell of row[&#x27;cells&#x27;]; track $index;) {
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>{{ cell }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
                 }
             <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>

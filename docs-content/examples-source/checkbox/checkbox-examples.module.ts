@@ -13,6 +13,7 @@ import { CheckboxLabelSizeExampleComponent } from './checkbox-label-size/checkbo
 import { CheckboxNegativeExampleComponent } from './checkbox-negative/checkbox-negative-example';
 import { CheckboxOutputsExampleComponent } from './checkbox-outputs/checkbox-outputs-example';
 import { CheckboxReactiveExampleComponent } from './checkbox-reactive/checkbox-reactive-example';
+import { CheckboxReadonlyExampleComponent } from './checkbox-readonly/checkbox-readonly-example';
 import { CheckboxSimpleBindingExampleComponent } from './checkbox-simple-binding/checkbox-simple-binding-example';
 import { CheckboxStatesExampleComponent } from './checkbox-states/checkbox-states-example';
 import { CheckboxTemplateDrivenExampleComponent } from './checkbox-template-driven/checkbox-template-driven-example';
@@ -32,6 +33,7 @@ const EXAMPLES = [
     CheckboxSimpleBindingExampleComponent,
     CheckboxStatesExampleComponent,
     CheckboxTemplateDrivenExampleComponent,
+    CheckboxReadonlyExampleComponent,
 ];
 
 @NgModule({
@@ -57,6 +59,7 @@ export class CheckboxExamplesModule {
             'checkbox-simple-binding': CheckboxSimpleBindingExampleComponent,
             'checkbox-states': CheckboxStatesExampleComponent,
             'checkbox-template-driven': CheckboxTemplateDrivenExampleComponent,
+            'checkbox-readonly': CheckboxReadonlyExampleComponent,
         };
     }
 }

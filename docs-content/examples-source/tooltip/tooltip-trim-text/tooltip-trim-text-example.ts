@@ -5,9 +5,9 @@ import { NxTooltipDirective } from '@aposin/ng-aquila/tooltip';
 @Component({
     selector: 'tooltip-trim-text-example',
     templateUrl: './tooltip-trim-text-example.html',
-    styleUrls: ['./tooltip-trim-text-example.scss'],
+    styleUrls: ['./tooltip-trim-text-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [NxBadgeComponent, NxTooltipDirective],
 })
-export class TooltipTrimTextExample {}
+export class TooltipTrimTextExampleComponent {}

@@ -83,6 +83,16 @@ the <a href="https://github.com/angular/components/blob/main/src/cdk/a11y/live-a
 <li class="docs-markdown--li"></li>
 <li class="docs-markdown--li"></li>
 </ul>
+<h3 id="scroll-containers-and-keyboard-navigation" tabindex="-1" class="docs-markdown--h3">Scroll containers and keyboard navigation</h3>
+<p class="docs-markdown--p">Scrollable areas have to be accessible for all users. Mouse users can easily navigate through such containers and screen reader also can discover the content of scroll containers. Keyboard users on the other hand, can't always focus the scroll area and therefore not discover their content.</p>
+<p class="docs-markdown--p">Some browsers like Firefox already natively make such areas focusable, <a href="https://developer.chrome.com/blog/keyboard-focusable-scrollers">others browsers will implement this behavior soon</a>. Until this is a widely available making the scrollable container focusable by setting <code>tabindex=&quot;0&quot;</code> is a valid fix.</p>
+<p class="docs-markdown--p">So this is valid:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;i-do-scroll&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> A very long text <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    ...
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> End. <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
 <h3 id="helpful-tools-and-links-for-aria-guidelines-and-verification" tabindex="-1" class="docs-markdown--h3">Helpful tools and links for ARIA guidelines and verification</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><a href="https://webaim.org/resources/contrastchecker/">Color contrast checker</a></li>

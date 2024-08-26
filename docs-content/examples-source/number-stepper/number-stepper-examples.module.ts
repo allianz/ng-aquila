@@ -17,7 +17,7 @@ import { NumberStepperFormattingExampleComponent } from './number-stepper-format
 import { NumberStepperLocalizeExampleComponent } from './number-stepper-localize/number-stepper-localize-example';
 import { NumberStepperNegativeExampleComponent } from './number-stepper-negative/number-stepper-negative-example';
 import { NumberStepperReactiveExampleComponent } from './number-stepper-reactive/number-stepper-reactive-example';
-import { NumberStepperReadonlyInputExample } from './number-stepper-readonly-input/number-stepper-readonly-input-example';
+import { NumberStepperReadonlyInputExampleComponent } from './number-stepper-readonly-input/number-stepper-readonly-input-example';
 import { NumberStepperSimpleBindingExampleComponent } from './number-stepper-simple-binding/number-stepper-simple-binding-example';
 import { NumberStepperSizesExampleComponent } from './number-stepper-sizes/number-stepper-sizes-example';
 import { NumberStepperStandaloneExampleComponent } from './number-stepper-standalone/number-stepper-standalone-example';
@@ -25,7 +25,7 @@ import { NumberStepperTemplateDrivenExampleComponent } from './number-stepper-te
 import { NumberStepperValidationExampleComponent } from './number-stepper-validation/number-stepper-validation-example';
 
 const EXAMPLES = [
-    NumberStepperReadonlyInputExample,
+    NumberStepperReadonlyInputExampleComponent,
     NumberStepperAccessibilityExampleComponent,
     NumberStepperAdditionsExampleComponent,
     NumberStepperAutoResizingExampleComponent,
@@ -59,7 +59,8 @@ const EXAMPLES = [
 export class NumberExamplesModule {
     static components() {
         return {
-            'number-stepper-readonly-input': NumberStepperReadonlyInputExample,
+            'number-stepper-readonly-input':
+                NumberStepperReadonlyInputExampleComponent,
             'number-stepper-a11y': NumberStepperAccessibilityExampleComponent,
             'number-stepper-additions': NumberStepperAdditionsExampleComponent,
             'number-stepper-auto-resizing':

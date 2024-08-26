@@ -36,7 +36,7 @@ import {
         NxErrorComponent,
     ],
 })
-export class ComparisonTableErrorExample {
+export class ComparisonTableErrorExampleComponent {
     constructor() {}
     control = new FormControl(null);
 

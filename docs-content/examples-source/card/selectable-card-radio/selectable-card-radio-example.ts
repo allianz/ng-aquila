@@ -20,7 +20,7 @@ import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
 @Component({
     selector: 'selectable-card-radio-example',
     templateUrl: './selectable-card-radio-example.html',
-    styleUrls: ['./selectable-card-radio-example.scss'],
+    styleUrls: ['./selectable-card-radio-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [

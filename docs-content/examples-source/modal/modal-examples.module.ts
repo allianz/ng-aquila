@@ -18,12 +18,12 @@ import { ModalDataInjectionExampleComponent } from './modal-data-injection/modal
 import { ModalFixedWidthExampleComponent } from './modal-fixed-width/modal-fixed-width-example';
 import { ModalFullscreenExampleComponent } from './modal-fullscreen/modal-fullscreen-example';
 import { ModalOpeningExampleComponent } from './modal-opening/modal-opening-example';
-import { ModalStatusExample } from './modal-status/modal-status-example';
+import { ModalStatusExampleComponent } from './modal-status/modal-status-example';
 import { ModalUnsavedExampleComponent } from './modal-unsaved/modal-unsaved-example';
 import { ModalWithDirectionExampleComponent } from './modal-with-direction/modal-with-direction-example';
 
 const EXAMPLES = [
-    ModalStatusExample,
+    ModalStatusExampleComponent,
     ModalUnsavedExampleComponent,
     ModalBasicExampleComponent,
     ModalClosingExampleComponent,
@@ -55,7 +55,7 @@ const EXAMPLES = [
 export class ModalExamplesModule {
     static components() {
         return {
-            'modal-status': ModalStatusExample,
+            'modal-status': ModalStatusExampleComponent,
             'modal-unsaved': ModalUnsavedExampleComponent,
             'modal-basic': ModalBasicExampleComponent,
             'modal-closing': ModalClosingExampleComponent,

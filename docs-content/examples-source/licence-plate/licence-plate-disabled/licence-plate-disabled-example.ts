@@ -47,7 +47,7 @@ import {
         NxCheckboxComponent,
     ],
 })
-export class LicencePlateDisabledExample {
+export class LicencePlateDisabledExampleComponent {
     disabled = true;
     value = '';
 }

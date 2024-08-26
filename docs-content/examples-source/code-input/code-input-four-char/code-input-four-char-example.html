@@ -4,10 +4,7 @@
         [length]="4"
         convertTo="upper"
         formControlName="keyCode"
-    ></nx-code-input>
-
-    @if (codeInput.errorState) {
-    <div>
+    >
         @if (keyCode?.hasError('required')) {
         <nx-error class="nx-margin-y-xs"> Entry is required. </nx-error>
         } @if (keyCode?.hasError('pattern')) {
@@ -15,8 +12,7 @@
         } @if (keyCode?.hasError('minlength')) {
         <nx-error class="nx-margin-y-xs"> Entry is too short. </nx-error>
         }
-    </div>
-    }
+    </nx-code-input>
 
     <br />
     <button nxButton="primary small" type="submit">Submit</button>

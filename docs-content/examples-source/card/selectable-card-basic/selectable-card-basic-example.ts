@@ -7,7 +7,7 @@ import { NxSelectableCardComponent } from '@aposin/ng-aquila/card';
 @Component({
     selector: 'selectable-card-basic-example',
     templateUrl: './selectable-card-basic-example.html',
-    styleUrls: ['./selectable-card-basic-example.scss'],
+    styleUrls: ['./selectable-card-basic-example.css'],
     standalone: true,
     imports: [NxSelectableCardComponent],
 })

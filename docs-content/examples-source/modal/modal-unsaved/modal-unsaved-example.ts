@@ -36,7 +36,7 @@ type MyDialogResult = 'proceed' | 'cancel';
 @Component({
     selector: 'modal-unsaved-example',
     templateUrl: './modal-unsaved-example.html',
-    styleUrls: ['./modal-unsaved-example.scss'],
+    styleUrls: ['./modal-unsaved-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [

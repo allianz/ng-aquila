@@ -14,7 +14,7 @@ import {
 @Component({
     selector: 'selectable-card-product-example',
     templateUrl: './selectable-card-product-example.html',
-    styleUrls: ['./selectable-card-product-example.scss'],
+    styleUrls: ['./selectable-card-product-example.css'],
     standalone: true,
     imports: [
         NxSelectableCardComponent,
