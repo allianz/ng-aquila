@@ -25,7 +25,7 @@
         color: buttonText;
     }
 
-    &:not(:disabled) {
+    &:not(.is-disabled) {
         &:hover,
         &:active,
         &.is-highlighted {
@@ -39,8 +39,9 @@
         }
     }
 
-    &:disabled {
+    &.is-disabled {
         cursor: not-allowed;
+        pointer-events: none;
         color: v(context-menu-item-disabled-color);
 
         @media screen and (forced-colors: active) {

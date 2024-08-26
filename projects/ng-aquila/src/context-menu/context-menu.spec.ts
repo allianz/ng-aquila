@@ -662,6 +662,68 @@ describe('nxContextMenu', () => {
         }
     });
 
+    describe('disabled items', () => {
+        let fixture: ComponentFixture<DisabledItemsMenu>;
+
+        beforeEach(() => {
+            fixture = createComponent(DisabledItemsMenu);
+        });
+
+        it("should focus the first element even if it's disabled", fakeAsync(() => {
+            fixture.detectChanges();
+
+            // A click without a mousedown before it is considered a keyboard open.
+            fixture.componentInstance.triggerEl.nativeElement.click();
+            fixture.detectChanges();
+            tick(500);
+
+            // Flush due to the additional tick that is necessary for the FocusMonitor.
+            flush();
+
+            const item = document.querySelector('.nx-context-menu [nxContextMenuItem]');
+
+            expect(document.activeElement).withContext('Expected first item to be focused').toBe(item);
+        }));
+
+        it("should focus the second on ARROW_DOWN element even if it's disabled", fakeAsync(() => {
+            fixture.detectChanges();
+
+            // A click without a mousedown before it is considered a keyboard open.
+            fixture.componentInstance.triggerEl.nativeElement.click();
+            fixture.detectChanges();
+            const panel = overlayContainerElement.querySelector('.nx-context-menu');
+            const items = Array.from(panel!.querySelectorAll('.nx-context-menu-item')) as HTMLElement[];
+
+            tick(500);
+            dispatchKeyboardEvent(panel!, 'keydown', DOWN_ARROW);
+            tick(500);
+
+            // Flush due to the additional tick that is necessary for the FocusMonitor.
+            flush();
+
+            expect(document.activeElement).withContext('Expected first item to be focused').toBe(items[1]);
+        }));
+
+        it('should not call (click) handler if item is disabled', fakeAsync(() => {
+            fixture.detectChanges();
+
+            // A click without a mousedown before it is considered a keyboard open.
+            fixture.componentInstance.triggerEl.nativeElement.click();
+            fixture.detectChanges();
+            tick(500);
+
+            // Flush due to the additional tick that is necessary for the FocusMonitor.
+            flush();
+
+            const item = document.querySelector('.nx-context-menu [nxContextMenuItem]');
+
+            expect(document.activeElement).withContext('Expected first item to be focused').toBe(item);
+
+            item?.dispatchEvent(new MouseEvent('click'));
+            expect(fixture.componentInstance.doSomethingItem).not.toHaveBeenCalled();
+        }));
+    });
+
     describe('close event', () => {
         let fixture: ComponentFixture<SimpleMenu>;
 
@@ -1769,4 +1831,30 @@ class CheckboxMenu {
     ];
 
     selected = [''];
+}
+
+@Component({
+    template: `
+        <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu" #triggerEl>Toggle menu</button>
+        <nx-context-menu #menu="nxContextMenu">
+            <button nxContextMenuItem [disabled]="true" (click)="doSomethingItem()">Item</button>
+            <button nxContextMenuItem disabled (click)="doSomethingDisabled()">Disabled</button>
+            <button nxContextMenuItem disabled (click)="doSomethingIconItem()">
+                <nx-icon name="settings"></nx-icon>
+                Item with an icon
+            </button>
+        </nx-context-menu>
+    `,
+    standalone: true,
+    imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
+})
+class DisabledItemsMenu {
+    @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
+    @ViewChild('triggerEl', { read: ElementRef }) triggerEl!: ElementRef<HTMLElement>;
+    @ViewChild(NxButtonComponent) button!: NxButtonComponent;
+    @ViewChild(NxContextMenuComponent) menu!: NxContextMenuComponent;
+
+    doSomethingItem = jasmine.createSpy('itemDisabledClick');
+    doSomethingDisabled = jasmine.createSpy('disabledClick');
+    doSomethingIconItem = jasmine.createSpy('iconDisabledClick');
 }

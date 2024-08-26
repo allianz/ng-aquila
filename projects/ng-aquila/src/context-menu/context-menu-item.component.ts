@@ -31,13 +31,14 @@ import { Subject } from 'rxjs';
     host: {
         class: 'nx-context-menu-item',
         role: 'menuitem',
+        tabindex: '0',
         '[class.is-highlighted]': '_highlighted',
-        '[attr.tabindex]': '_getTabIndex()',
+        '[attr.disabled]': 'null',
         '[attr.aria-disabled]': 'disabled.toString()',
-        '[attr.disabled]': 'disabled || null',
         '(mouseenter)': '_handleMouseEnter()',
         '(click)': '_checkDisabled($event)',
         '[class.is-selectable]': '_selectable',
+        '[class.is-disabled]': 'disabled',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
@@ -96,7 +97,16 @@ export class NxContextMenuItemComponent implements OnDestroy, AfterViewInit {
         @Optional() @Inject(DOCUMENT) private readonly _document: Document | null,
         private readonly _cdr: ChangeDetectorRef,
         private readonly _focusMonitor: FocusMonitor,
-    ) {}
+    ) {
+        // register a click event listener that can block if this element is disabled
+        this._elementRef.nativeElement.addEventListener(
+            'click',
+            $event => {
+                this._handleClick($event);
+            },
+            true,
+        );
+    }
 
     /** Focuses this context menu item. */
     focus(origin?: FocusOrigin): void {
@@ -116,14 +126,20 @@ export class NxContextMenuItemComponent implements OnDestroy, AfterViewInit {
         this._focusMonitor.stopMonitoring(this._elementRef);
     }
 
-    /** Used to set the `tabindex`. */
-    _getTabIndex(): string {
-        return this.disabled ? '-1' : '0';
-    }
-
     /** Returns the host DOM element. */
     _getHostElement(): HTMLElement {
         return this._elementRef.nativeElement;
+    }
+
+    /**
+     * Blocks the click event from propagating to the origin component if this is disabled.
+     * If not disabled it has no effect
+     * @param event The MouseEvent that happened on click
+     */
+    _handleClick(event: MouseEvent) {
+        if (this.disabled) {
+            event.stopImmediatePropagation();
+        }
     }
 
     /** Prevents the default element actions if it is disabled. */

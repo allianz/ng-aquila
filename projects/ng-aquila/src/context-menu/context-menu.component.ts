@@ -88,7 +88,11 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
 
     ngAfterContentInit(): void {
         this._items = this._wrap ? this._wrap?._items : this._items;
-        this._keyManager = new FocusKeyManager<NxContextMenuItemComponent>(this._items).withWrap().withTypeAhead().setFocusOrigin('keyboard');
+        this._keyManager = new FocusKeyManager<NxContextMenuItemComponent>(this._items)
+            .withWrap()
+            .withTypeAhead()
+            .setFocusOrigin('keyboard')
+            .skipPredicate(() => false);
         this._keyManager.tabOut.pipe(takeUntil(this._destroyed)).subscribe(() => this.closed.emit('tab'));
         this._init.next();
     }
@@ -150,7 +154,7 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
             .asObservable()
             .pipe(take(1))
             .subscribe(() => {
-                this._keyManager.setFirstItemActive();
+                this._keyManager.setActiveItem(0); // always select the very first item since even disabled items are focusable
                 this._keyManager.activeItem?.focus(origin);
             });
     }
