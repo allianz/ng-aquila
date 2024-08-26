@@ -21,7 +21,7 @@ import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
         NxButtonComponent,
     ],
 })
-export class RadioButtonErrorRetailExample {
+export class RadioButtonErrorRetailExampleComponent {
     readonly testForm = this.fb.group({
         radioTestReactive: [null, Validators.required],
     });

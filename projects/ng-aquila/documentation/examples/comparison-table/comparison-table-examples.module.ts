@@ -20,7 +20,7 @@ import { BreakdownTableExpertExampleComponent } from './breakdown-table-expert/b
 import { ComparisonTableExampleComponent } from './comparison-table/comparison-table-example';
 import { ComparisonTableDisabledColumnsExampleComponent } from './comparison-table-disabled-columns/comparison-table-disabled-columns-example';
 import { ComparisonTableDynamicExampleComponent } from './comparison-table-dynamic/comparison-table-dynamic-example';
-import { ComparisonTableErrorExample } from './comparison-table-error/comparison-table-error-example';
+import { ComparisonTableErrorExampleComponent } from './comparison-table-error/comparison-table-error-example';
 import { ComparisonTableExpandableAreaExampleComponent } from './comparison-table-expandable-area/comparison-table-expandable-area-example';
 import { ComparisonTableFormElementsExampleComponent } from './comparison-table-form-elements/comparison-table-form-elements-example';
 import { ComparisonTableHiddenColumnsExampleComponent } from './comparison-table-hidden-columns/comparison-table-hidden-columns-example';
@@ -33,7 +33,7 @@ import { RecommendationTableExampleComponent } from './recommendation-table/reco
 import { RecommendationTableExpertExampleComponent } from './recommendation-table-expert/recommendation-table-expert-example';
 
 const EXAMPLES = [
-    ComparisonTableErrorExample,
+    ComparisonTableErrorExampleComponent,
     ComparisonTableExampleComponent,
     ComparisonTableStaticExampleComponent,
     ComparisonTableDisabledColumnsExampleComponent,
@@ -75,7 +75,7 @@ const EXAMPLES = [
 export class ComparisonExamplesModule {
     static components() {
         return {
-            'comparison-table-error': ComparisonTableErrorExample,
+            'comparison-table-error': ComparisonTableErrorExampleComponent,
             'comparison-table': ComparisonTableExampleComponent,
             'comparison-table-static': ComparisonTableStaticExampleComponent,
             'comparison-table-disabled-columns':

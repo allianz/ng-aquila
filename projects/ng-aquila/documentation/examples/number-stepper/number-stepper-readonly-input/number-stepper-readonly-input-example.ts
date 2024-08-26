@@ -8,4 +8,4 @@ import { NxNumberStepperComponent } from '@aposin/ng-aquila/number-stepper';
     standalone: true,
     imports: [NxNumberStepperComponent],
 })
-export class NumberStepperReadonlyInputExample {}
+export class NumberStepperReadonlyInputExampleComponent {}

@@ -10,4 +10,4 @@ import { NxTooltipDirective } from '@aposin/ng-aquila/tooltip';
     standalone: true,
     imports: [NxBadgeComponent, NxTooltipDirective],
 })
-export class TooltipTrimTextExample {}
+export class TooltipTrimTextExampleComponent {}

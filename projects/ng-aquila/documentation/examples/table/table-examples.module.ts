@@ -18,9 +18,9 @@ import { NxTableModule } from '@aposin/ng-aquila/table';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { TableExampleComponent } from './table/table-example';
-import { TableCoumnHidingExampleComponent } from './table-column-hiding/table-column-hiding-example';
-import { TableColumnReorderExample } from './table-column-reorder/table-column-reorder-example';
-import { TableColumnResizeExample } from './table-column-resize/table-column-resize-example';
+import { TableColumnHidingExampleComponent } from './table-column-hiding/table-column-hiding-example';
+import { TableColumnReorderExampleComponent } from './table-column-reorder/table-column-reorder-example';
+import { TableColumnResizeExampleComponent } from './table-column-resize/table-column-resize-example';
 import { TableCondensedExampleComponent } from './table-condensed/table-condensed-example';
 import { TableExpandableExampleComponent } from './table-expandable/table-expandable-example';
 import { TableFilterSortPaginateExampleComponent } from './table-filter-sort-paginate/table-filter-sort-paginate-example';
@@ -33,8 +33,8 @@ import { TableStickyHeaderExampleComponent } from './table-sticky-header/table-s
 import { TableZebraExampleComponent } from './table-zebra/table-zebra-example';
 
 const EXAMPLES = [
-    TableColumnResizeExample,
-    TableColumnReorderExample,
+    TableColumnResizeExampleComponent,
+    TableColumnReorderExampleComponent,
     TableExampleComponent,
     TableCondensedExampleComponent,
     TableExpandableExampleComponent,
@@ -46,7 +46,7 @@ const EXAMPLES = [
     TableFormElementsExampleComponent,
     TableStickyColumnExampleComponent,
     TableStickyHeaderExampleComponent,
-    TableCoumnHidingExampleComponent,
+    TableColumnHidingExampleComponent,
 ];
 
 @NgModule({
@@ -75,8 +75,8 @@ const EXAMPLES = [
 export class TableExamplesModule {
     static components() {
         return {
-            'table-column-resize': TableColumnResizeExample,
-            'table-column-reorder': TableColumnReorderExample,
+            'table-column-resize': TableColumnResizeExampleComponent,
+            'table-column-reorder': TableColumnReorderExampleComponent,
             table: TableExampleComponent,
             'table-condensed': TableCondensedExampleComponent,
             'table-expandable': TableExpandableExampleComponent,
@@ -89,7 +89,7 @@ export class TableExamplesModule {
             'table-form-elements': TableFormElementsExampleComponent,
             'table-sticky-column': TableStickyColumnExampleComponent,
             'table-sticky-header': TableStickyHeaderExampleComponent,
-            'table-column-hiding': TableCoumnHidingExampleComponent,
+            'table-column-hiding': TableColumnHidingExampleComponent,
         };
     }
 }

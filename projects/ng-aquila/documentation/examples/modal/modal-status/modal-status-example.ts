@@ -28,7 +28,7 @@ import {
         NxModalActionsDirective,
     ],
 })
-export class ModalStatusExample {
+export class ModalStatusExampleComponent {
     dialogRef?: NxModalRef<any>;
 
     status!: NxStatusIconType;
