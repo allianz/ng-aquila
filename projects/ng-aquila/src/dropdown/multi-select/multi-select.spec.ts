@@ -141,6 +141,7 @@ describe('NxMultiSelectComponent', () => {
                 ReactiveMultiSelectComponent,
                 IntlOverrideMultiSelect,
                 ErrorMultiSelectComponent,
+                MultiSelectWithFilterComponent,
             ],
         }).compileComponents();
     }
@@ -993,6 +994,20 @@ describe('NxMultiSelectComponent', () => {
             expect(await overlayPane.getProperty('clientWidth')).toBe(400);
         });
     });
+
+    describe('when type in filter input', () => {
+        it('should emit filter value on filter changes', async () => {
+            await createTestComponent(MultiSelectWithFilterComponent);
+            await multiSelectHarness.click();
+            await multiSelectHarness.setFilter('Audi');
+            fixture.detectChanges();
+            expect((testInstance as MultiSelectWithFilterComponent).filterInput).toBe('Audi');
+
+            await multiSelectHarness.clickClearFilter();
+            fixture.detectChanges();
+            expect((testInstance as MultiSelectWithFilterComponent).filterInput).toBe('');
+        });
+    });
 });
 
 @Directive({ standalone: true })
@@ -1120,4 +1135,20 @@ class ErrorMultiSelectComponent extends DropdownTest {
     });
 
     @ViewChild(NxFormfieldErrorDirective) error!: NxFormfieldErrorDirective;
+}
+
+@Component({
+    template: `<nx-formfield>
+        <nx-multi-select [options]="options" filter (filterInput)="test($event)"></nx-multi-select>
+    </nx-formfield>`,
+    standalone: true,
+    imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
+})
+class MultiSelectWithFilterComponent extends DropdownTest {
+    options = ['BMW', 'Audi', 'Volvo', 'Mini'];
+    filterInput = '';
+
+    test(query: string) {
+        this.filterInput = query;
+    }
 }

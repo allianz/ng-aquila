@@ -239,6 +239,9 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     /** Event emitted when the select panel has been focus out. */
     @Output() readonly focusOut = new EventEmitter<boolean>();
 
+    /** Event emitted when the user types in the filter input. */
+    @Output('filterInput') readonly filterChanges = new EventEmitter<any>();
+
     /** @docs-private */
     readonly controlType: string = 'nx-multi-select';
 
@@ -560,6 +563,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     _onFilterChange(query: string | null | undefined) {
+        this.filterChanges.next(query);
         if (query) {
             this.listItems = [...this.options].sort(this.sortSelectedToTop).filter(item => this.filterFn(query, this._selectLabel(item)));
         } else {
