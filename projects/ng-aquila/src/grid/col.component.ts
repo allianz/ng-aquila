@@ -1,7 +1,8 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, isDevMode, Optional } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, Component, ElementRef, inject, Input, isDevMode, Optional } from '@angular/core';
 import { mapClassNames } from '@aposin/ng-aquila/utils';
 
 import { NxLayoutComponent } from './layout.component';
+import { NxRowComponent } from './row.component';
 import { addStylesFromDimensions, isEmptyArray, processSplit } from './utils';
 
 const MAPPING = {
@@ -63,7 +64,7 @@ export type ColOrder = 'first' | 'last' | 'unordered';
     },
     standalone: true,
 })
-export class NxColComponent implements AfterViewInit {
+export class NxColComponent {
     /**
      * Overwrite default class property to access user provided class.
      * @docs-private
@@ -116,14 +117,18 @@ export class NxColComponent implements AfterViewInit {
         return [this._columnClasses, this._offsetClasses, this._alignSelfClasses, this._orderClasses, this.class].filter(classes => classes?.length).join(' ');
     }
 
+    private readonly row = inject(NxRowComponent, { optional: true });
+
     constructor(
         private readonly el: ElementRef,
         @Optional() protected readonly gridLayoutComponent?: NxLayoutComponent,
-    ) {}
-
-    ngAfterViewInit(): void {
-        if (isDevMode() && !this.el.nativeElement.parentElement?.classList.contains('nx-grid__row')) {
-            console.warn('NxColComponent: no nxRow found. Please make sure to use the nxCol directive within an element with the nxRow component.');
+    ) {
+        if (isDevMode()) {
+            afterNextRender(() => {
+                if (!this.row) {
+                    console.warn('NxColComponent: no nxRow found. Please make sure to use the nxCol directive within an element with the nxRow component.');
+                }
+            });
         }
     }
 

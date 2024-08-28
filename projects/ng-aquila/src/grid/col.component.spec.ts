@@ -50,6 +50,8 @@ describe('NxColDirective', () => {
                 OffsetTestFourInputsWithZero,
                 DynamicTest,
                 ColWithoutLayout,
+                ColWithoutRow,
+                ConditionalCol,
             ],
         }).compileComponents();
     }));
@@ -116,6 +118,20 @@ describe('NxColDirective', () => {
                     'nx-flex-medium-first.nx-flex-large-first.nx-flex-xlarge-first.nx-flex-2xlarge-first.nx-flex-3xlarge-first',
             ),
         ).not.toBeNull();
+    });
+
+    it('should print console warning in dev mode when row is missing', () => {
+        spyOn(console, 'warn');
+        createTestComponent(ColWithoutRow);
+        expect(console.warn).toHaveBeenCalledWith(
+            'NxColComponent: no nxRow found. Please make sure to use the nxCol directive within an element with the nxRow component.',
+        );
+    });
+
+    it('should not print console warning when ngIf is used on col', () => {
+        spyOn(console, 'warn');
+        createTestComponent(ConditionalCol);
+        expect(console.warn).not.toHaveBeenCalled();
     });
 
     describe('colOffset', () => {
@@ -429,3 +445,29 @@ class DynamicTest extends DirectiveTest {
     imports: [NxGridModule],
 })
 class ColWithoutLayout extends DirectiveTest {}
+
+@Component({
+    template: `
+        <div nxLayout="grid">
+            <div nxCol="12">Hello World</div>
+        </div>
+    `,
+    standalone: true,
+    imports: [NxGridModule],
+})
+class ColWithoutRow extends DirectiveTest {}
+
+@Component({
+    template: `
+        <div nxLayout="grid">
+            <div nxRow>
+                @if (true) {
+                    <div nxCol="12">Hello World</div>
+                }
+            </div>
+        </div>
+    `,
+    standalone: true,
+    imports: [NxGridModule],
+})
+class ConditionalCol extends DirectiveTest {}
