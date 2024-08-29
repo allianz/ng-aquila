@@ -244,7 +244,7 @@ $check-icon-size: nx-spacer(2m);
 }
 
 //HOVER STYLES
-:host:not(.is-disabled):not(.is-negative):not(.is-touched):hover {
+:host:not(.is-disabled):not(.is-readonly):not(.is-negative):not(.is-touched):hover {
     .nx-toggle-circle__icon-wrapper {
         border-color: v(circle-toggle-hover-border-color);
         background-color: v(circle-toggle-hover-background-color);
@@ -276,6 +276,31 @@ $check-icon-size: nx-spacer(2m);
 :host(.is-disabled) {
     opacity: 0.4;
     cursor: not-allowed;
+}
+
+:host(.is-readonly) {
+    cursor: not-allowed;
+
+    .nx-toggle-circle__icon-wrapper {
+        border-color: v(circle-toggle-readonly-border-color);
+        background-color: v(circle-toggle-readonly-background-color);
+    }
+
+    &.is-flipped {
+        .nx-toggle-circle__icon-wrapper {
+            background-color: v(circle-toggle-readonly-selected-background-color);
+        }
+
+        .nx-toggle-circle__icon nx-icon,
+        .nx-toggle-circle__content-text {
+            color: v(circle-toggle-readonly-selected-icon-color);
+        }
+    }
+
+    .nx-toggle-circle__icon nx-icon,
+    .nx-toggle-circle__content-text {
+        color: v(circle-toggle-readonly-icon-color);
+    }
 }
 
 // negative styles

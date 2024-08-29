@@ -1,12 +1,14 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     AfterViewInit,
+    booleanAttribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChildren,
     DoCheck,
     EventEmitter,
+    forwardRef,
     HostBinding,
     Inject,
     InjectionToken,
@@ -18,6 +20,7 @@ import {
     Self,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { merge, Subject } from 'rxjs';
 import { filter, startWith, takeUntil, tap } from 'rxjs/operators';
@@ -52,11 +55,11 @@ let nextId = 0;
         }`,
     styleUrls: ['./circle-toggle-group.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [],
+    providers: [{ provide: NxAbstractControl, useExisting: forwardRef(() => NxCircleToggleGroupComponent) }],
     host: {
         '[class.is-responsive]': 'responsive',
         '[class.is-disabled]': 'disabled',
-        '[attr.aria-disabled]': 'disabled',
+        '[attr.aria-disabled]': 'disabled || readonly || false',
         '[attr.aria-labelledby]': 'name',
         '[class.has-error]': 'errorState',
         '[attr.name]': 'name',
@@ -67,7 +70,7 @@ let nextId = 0;
     standalone: true,
     imports: [],
 })
-export class NxCircleToggleGroupComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck {
+export class NxCircleToggleGroupComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck, NxAbstractControl {
     /**
      * Id of the circle toggle group.
      *
@@ -110,6 +113,8 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         return this._disabled;
     }
     private _disabled = false;
+
+    @Input({ transform: booleanAttribute }) readonly = false;
 
     /** Whether the circle toggle group uses the negative styling. */
     @Input() set negative(value: BooleanInput) {
@@ -208,6 +213,11 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
 
     private onChangeCallback = (value: string) => {};
     private onTouchedCallback = () => {};
+
+    setReadonly(isReadonly: boolean): void {
+        this.readonly = isReadonly;
+        this._cdr.markForCheck();
+    }
 
     writeValue(value: any) {
         Promise.resolve().then(() => {

@@ -9,6 +9,7 @@
     [disabled]="disabled"
     [attr.aria-checked]="checked"
     [attr.aria-required]="required"
+    [attr.aria-disabled]="readonly || null"
     (keydown.enter)="handleEnterKey($event)"
     (click)="toggle($event)"
 />
@@ -21,6 +22,7 @@
         [negative]="negative"
         [svg]="svgUrl"
         [disabled]="disabled"
+        [readonly]="readonly"
         [inGroup]="inGroup"
         [touched]="_touched"
         [circleText]="circleText"
@@ -28,7 +30,15 @@
     </nx-icon-toggle-button>
     <!-- The mobile toggle button is needed for the responsive mobile version of the component.
   The display swtich is handled in the css. -->
-    <nx-mobile-toggle-button [label]="label" [hint]="hint" [checked]="checked" [negative]="negative" [disabled]="disabled" [circleText]="circleText">
+    <nx-mobile-toggle-button
+        [label]="label"
+        [hint]="hint"
+        [checked]="checked"
+        [negative]="negative"
+        [disabled]="disabled"
+        [readonly]="readonly"
+        [circleText]="circleText"
+    >
     </nx-mobile-toggle-button>
     @if (errorState) {
         <ng-content select="nx-error"></ng-content>

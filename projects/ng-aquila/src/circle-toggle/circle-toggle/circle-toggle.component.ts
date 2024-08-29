@@ -21,6 +21,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 
 import { NxCircleToggleGroupComponent } from '../circle-toggle-group/circle-toggle-group.component';
 import { NxIconToggleButtonComponent } from '../icon-toggle-button/icon-toggle-button.component';
@@ -48,6 +49,10 @@ let nextId = 0;
             provide: ToggleButton,
             useExisting: forwardRef(() => NxCircleToggleComponent),
         },
+        {
+            provide: NxAbstractControl,
+            useExisting: forwardRef(() => NxCircleToggleComponent),
+        },
     ],
     host: {
         '[class.nx-toggle-circle]': 'true',
@@ -56,11 +61,12 @@ let nextId = 0;
         '[class.is-responsive]': 'responsive',
         '(focus)': '_forwardFocusToInput()',
         '[class.has-error]': 'toggleGroup?.errorState || errorState',
+        '[class.is-readonly]': 'readonly',
     },
     standalone: true,
     imports: [NxIconToggleButtonComponent, NxMobileToggleButtonComponent],
 })
-export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, AfterViewInit, ControlValueAccessor, DoCheck {
+export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, AfterViewInit, ControlValueAccessor, DoCheck, NxAbstractControl {
     private _id = `toggle-button-${nextId++}`;
 
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
@@ -237,6 +243,14 @@ export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, 
     }
     private _disabled = false;
 
+    @Input({ transform: booleanAttribute }) set readonly(value) {
+        this._readonly = value;
+    }
+    get readonly() {
+        return this.toggleGroup?.readonly ?? this._readonly;
+    }
+    private _readonly = false;
+
     get required() {
         const selfRequired = this.ngControl?.control?.hasValidator(Validators.required);
         const parentRequired = this.toggleGroup?.ngControl?.control?.hasValidator(Validators.required);
@@ -322,6 +336,11 @@ export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, 
         this._focusMonitor.stopMonitoring(this._nativeInput);
     }
 
+    setReadonly(isReadonly: boolean) {
+        this.readonly = isReadonly;
+        this._cdr.markForCheck();
+    }
+
     /** @docs-private */
     attachListenerForGroup() {
         this._removeUniqueSelectionListener = this._checkedDispatcher.listen((groupId: string, buttonId: string) => {
@@ -362,15 +381,16 @@ export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, 
         event.preventDefault();
         event.stopPropagation();
 
-        // TODO simplify if statement
-        if (!((this.toggleGroup && this.checked) || this.disabled)) {
-            this.checked = !this.checked;
-            this.onChangeCallback(this.checked);
-            this.checkedChange.emit(this.checked);
-            this.selectionChange.emit(new ToggleChangeEvent(this, this.value));
-            if (this.toggleGroup) {
-                this._checkedDispatcher.notify(this.toggleGroup.id, this.id);
-            }
+        if (this.disabled || this.readonly || (this.toggleGroup && this.checked)) {
+            return;
+        }
+
+        this.checked = !this.checked;
+        this.onChangeCallback(this.checked);
+        this.checkedChange.emit(this.checked);
+        this.selectionChange.emit(new ToggleChangeEvent(this, this.value));
+        if (this.toggleGroup) {
+            this._checkedDispatcher.notify(this.toggleGroup.id, this.id);
         }
     }
 

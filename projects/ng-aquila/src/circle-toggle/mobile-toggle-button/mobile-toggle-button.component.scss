@@ -18,7 +18,7 @@
     cursor: pointer;
 }
 
-:host:not(.is-flipped):not(.is-disabled):hover {
+:host:not(.is-flipped):not(.is-disabled):not(.is-readonly):hover {
     background-color: v(circle-toggle-hover-background-color);
     border-color: v(circle-toggle-hover-border-color);
 
@@ -123,6 +123,29 @@
 :host(.is-disabled) {
     opacity: 0.4;
     cursor: not-allowed;
+}
+
+:host(.is-readonly) {
+    border-color: v(circle-toggle-readonly-border-color);
+    background-color: v(circle-toggle-readonly-background-color);
+    color: v(circle-toggle-readonly-icon-color);
+
+    &.is-flipped {
+        background-color: v(circle-toggle-readonly-selected-background-color);
+        color: v(circle-toggle-readonly-selected-icon-color);
+
+        .nx-toggle-button__label-text,
+        .nx-toggle-button__label-hint,
+        .nx-toggle-button__mobile-check {
+            color: v(circle-toggle-readonly-selected-icon-color);
+        }
+    }
+
+    .nx-toggle-button__label-text,
+    .nx-toggle-button__label-hint,
+    .nx-toggle-button__mobile-check {
+        color: v(circle-toggle-readonly-icon-color);
+    }
 }
 
 @media screen and (forced-colors: active) {

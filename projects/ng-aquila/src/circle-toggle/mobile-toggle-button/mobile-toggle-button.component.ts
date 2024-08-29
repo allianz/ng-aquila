@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 /** @docs-private */
@@ -9,6 +9,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class.is-disabled]': 'disabled',
+        '[class.is-readonly]': 'readonly',
         '[class.is-negative]': 'negative',
         '[class.is-first]': 'isFirst',
         '[class.is-last]': 'isLast',
@@ -21,6 +22,7 @@ export class NxMobileToggleButtonComponent {
     @Input() checked = false;
     @Input() negative = false;
     @Input() disabled = false;
+    @Input({ transform: booleanAttribute }) readonly = false;
     @Input() hint = '';
     @Input() label = '';
     @Input() circleText = '';

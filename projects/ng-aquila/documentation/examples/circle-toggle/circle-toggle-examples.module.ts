@@ -9,6 +9,7 @@ import { CircleToggleGroupExpertExampleComponent } from './circle-toggle-group-e
 import { CircleToggleNegativeExampleComponent } from './circle-toggle-negative/circle-toggle-negative-example';
 import { CircleToggleReactiveExampleComponent } from './circle-toggle-reactive/circle-toggle-reactive-example';
 import { CircleToggleReactiveDisabledExampleComponent } from './circle-toggle-reactive-disabled/circle-toggle-reactive-disabled-example';
+import { CircleToggleReadonlyExampleComponent } from './circle-toggle-readonly/circle-toggle-readonly-example';
 import { CircleToggleResponsiveExampleComponent } from './circle-toggle-responsive/circle-toggle-responsive-example';
 import { CircleToggleSimpleBindingExampleComponent } from './circle-toggle-simple-binding/circle-toggle-simple-binding-example';
 import { CircleToggleStandaloneExampleComponent } from './circle-toggle-standalone/circle-toggle-standalone-example';
@@ -28,6 +29,7 @@ const EXAMPLES = [
     CircleToggleTextExampleComponent,
     CircleToggleGroupExpertExampleComponent,
     CircleToggleValidationExampleComponent,
+    CircleToggleReadonlyExampleComponent,
 ];
 
 @NgModule({
@@ -58,6 +60,7 @@ export class CircleExamplesModule {
             'circle-toggle-group-expert':
                 CircleToggleGroupExpertExampleComponent,
             'circle-toggle-validation': CircleToggleValidationExampleComponent,
+            'circle-toggle-readonly': CircleToggleReadonlyExampleComponent,
         };
     }
 }

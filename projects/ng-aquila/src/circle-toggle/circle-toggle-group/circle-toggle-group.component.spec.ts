@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild, viewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 
 import { NxCircleToggleModule } from '../circle-toggle.module';
 import { NxCircleToggleComponent } from '../circle-toggle/circle-toggle.component';
@@ -47,6 +48,7 @@ describe('NxToggleButtonGroup', () => {
                 EmptyToggleOnPushComponent,
                 CircleToggleGroupWithDivComponent,
                 ExpertCircleToggleGroupComponent,
+                ReadonlyCircleToggleGroupComponent,
             ],
         }).compileComponents();
     }));
@@ -163,6 +165,25 @@ describe('NxToggleButtonGroup', () => {
         expect(toggleComponent.buttons.toArray()[1].disabled).toBeTrue();
         expect(toggleComponent.buttons.toArray()[2].disabled).toBeTrue();
     }));
+
+    it('can be set to readonly and child toggles inherit the state', () => {
+        createTestComponent(ReadonlyCircleToggleGroupComponent);
+        expect(toggleNativeElement.getAttribute('aria-disabled')).toBe('true');
+        toggleButtons.forEach(toggle => expect(toggle).toHaveClass('is-readonly'));
+    });
+
+    it('implements NxAbstractControl', () => {
+        createTestComponent(ReadonlyCircleToggleGroupComponent);
+        (testInstance as ReadonlyCircleToggleGroupComponent).abstractControl().setReadonly(false);
+        fixture.detectChanges();
+        expect(toggleNativeElement.getAttribute('aria-disabled')).toBe('false');
+        toggleButtons.forEach(toggle => expect(toggle).not.toHaveClass('is-readonly'));
+
+        (testInstance as ReadonlyCircleToggleGroupComponent).abstractControl().setReadonly(true);
+        fixture.detectChanges();
+        expect(toggleNativeElement.getAttribute('aria-disabled')).toBe('true');
+        toggleButtons.forEach(toggle => expect(toggle).toHaveClass('is-readonly'));
+    });
 
     it('circle toggle components inherit negative style on change from toggle group', () => {
         createTestComponent(SimpleCircleToggleGroupComponent);
@@ -305,6 +326,16 @@ describe('NxToggleButtonGroup', () => {
             createTestComponent(SimpleCircleToggleGroupComponent);
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
+
+        it('has no accessibility violations when readonly', async () => {
+            createTestComponent(ReadonlyCircleToggleGroupComponent);
+            await expectAsync(fixture.nativeElement).toBeAccessible();
+        });
+
+        it('has no accessibility violations when disabled', async () => {
+            createTestComponent(DisabledCircleToggleGroupComponent);
+            await expectAsync(fixture.nativeElement).toBeAccessible();
+        });
     });
 });
 
@@ -423,6 +454,21 @@ class NgForCircleToggleGroupComponent extends ButtonToggleGroupTest {
     imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class DisabledCircleToggleGroupComponent extends ButtonToggleGroupTest {}
+
+@Component({
+    template: `
+        <nx-circle-toggle-group #group readonly>
+            <nx-circle-toggle value="A" icon="product-heart" hint="info1" label="text1"></nx-circle-toggle>
+            <nx-circle-toggle value="B" icon="product-bed" hint="info2" label="text2"></nx-circle-toggle>
+            <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
+        </nx-circle-toggle-group>
+    `,
+    standalone: true,
+    imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
+})
+class ReadonlyCircleToggleGroupComponent extends ButtonToggleGroupTest {
+    abstractControl = viewChild.required('group', { read: NxAbstractControl });
+}
 
 @Component({
     template: `
