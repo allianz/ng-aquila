@@ -27,7 +27,7 @@ If you want the user to be able to expand multiple items simultaneously you can 
 
 ### Styling options
 
-The appearance of an accordion can be changed by setting according properties `variant` and `negative` on `nx-accordion` or by giving each of the expansion panels their own configuration. Panels will always prefer their own configuration if given.
+The appearance of an accordion can be changed by setting according properties `variant`, `negative`, `flushAlignment` on `nx-accordion` or by giving each of the expansion panels their own configuration. Panels will always prefer their own configuration if given for `variant` and `negative`.
 
 #### Negative
 
@@ -48,6 +48,12 @@ The appearance of an accordion can be changed by setting according properties `v
 #### Extra light negative
 
 <!-- example(accordion-extra-light-negative) -->
+
+#### Flush Alignment
+
+Flush aligned accordions or expansion panels will have no left/right padding in the header and body. This is useful when the accordion is used inside other components that already bring padding, such as cards to align headings and other content with the accordion content. Has no effect on [extra light accordions](documentation/accordion/overview#extra-light).
+
+<!-- example(accordion-flush) -->
 
 ### Lazy loading
 

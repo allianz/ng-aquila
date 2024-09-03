@@ -298,6 +298,16 @@ describe('NxExpansionPanelComponent', () => {
             const secondPanel = fixture.debugElement.query(By.css('nx-expansion-panel:nth-child(2)')).nativeElement;
             expect(secondPanel).toHaveClass('nx-expansion-panel--regular');
         });
+
+        it('should override style of accordion if value is present', () => {
+            createTestComponent(FlushPanelWithAccordion);
+
+            const expansionPanelHeader = fixture.debugElement.query(By.css('.nx-expansion-panel__header-content'));
+            const panel = fixture.componentInstance.panel;
+
+            expect(panel.flushAlignment).toBeTruthy();
+            expect(expansionPanelHeader.classes['flush-aligned']).toBeTruthy();
+        });
     });
 
     describe('disabled state', () => {
@@ -462,3 +472,16 @@ class PanelWithDifferentAppearances extends PanelTest {
     imports: [NxAccordionModule],
 })
 class PanelWithAccordion extends PanelTest {}
+
+@Component({
+    template: ` <nx-accordion flushAlignment="false">
+        <nx-expansion-panel flushAlignment="true" #firstPanel>
+            <nx-expansion-panel-header><nx-expansion-panel-title> Panel Title </nx-expansion-panel-title></nx-expansion-panel-header>
+        </nx-expansion-panel>
+    </nx-accordion>`,
+    standalone: true,
+    imports: [NxAccordionModule],
+})
+class FlushPanelWithAccordion extends PanelTest {
+    @ViewChild('firstPanel', { static: true }) panel!: NxExpansionPanelComponent;
+}

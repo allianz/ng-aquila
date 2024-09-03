@@ -17,6 +17,11 @@
     color: v(accordion-regular-header-text-color);
     background: v(accordion-regular-header-background-color);
 
+    &.flush-aligned {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     @include media-breakpoint-down(small) {
         padding: v(accordion-regular-mobile-header-padding);
     }
@@ -72,6 +77,11 @@ $header-title-small-screen-margin-after: nx-spacer(s);
         padding: v(accordion-light-header-padding);
         margin-top: 0;
         background: transparent;
+
+        &.flush-aligned {
+            padding-left: 0;
+            padding-right: 0;
+        }
 
         @include media-breakpoint-down(small) {
             padding: v(accordion-light-mobile-header-padding);

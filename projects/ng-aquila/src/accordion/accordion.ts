@@ -1,6 +1,6 @@
 import { CdkAccordion } from '@angular/cdk/accordion';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Directive, Input } from '@angular/core';
+import { booleanAttribute, Directive, Input, signal } from '@angular/core';
 
 import { AccordionStyle } from './expansion-panel';
 
@@ -39,4 +39,12 @@ export class NxAccordionDirective extends CdkAccordion {
         return !!this._negative;
     }
     private _negative?: boolean;
+
+    @Input({ transform: booleanAttribute }) set flushAlignment(flushAligned: boolean) {
+        this.flushAlignmentSignal.set(flushAligned);
+    }
+    get flushAlignment(): boolean {
+        return this.flushAlignmentSignal();
+    }
+    readonly flushAlignmentSignal = signal(false);
 }

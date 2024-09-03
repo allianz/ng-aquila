@@ -17,6 +17,11 @@
 
 .nx-expansion-panel__body {
     padding: v(accordion-regular-body-padding);
+
+    &.flush-alignment {
+        padding-left: 0;
+        padding-right: 0;
+    }
     @include type-style(accordion-body);
 
     @include media-breakpoint-down(small) {
@@ -68,6 +73,11 @@
 :host(.nx-expansion-panel--light) {
     .nx-expansion-panel__body {
         padding: v(accordion-light-body-padding);
+
+        &.flush-alignment {
+            padding-left: 0;
+            padding-right: 0;
+        }
 
         @include media-breakpoint-down(small) {
             padding: v(accordion-light-mobile-body-padding);

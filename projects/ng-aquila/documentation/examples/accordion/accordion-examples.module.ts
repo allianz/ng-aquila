@@ -9,6 +9,7 @@ import { AccordionExampleComponent } from './accordion/accordion-example';
 import { AccordionErrorExampleComponent } from './accordion-error/accordion-error-example';
 import { AccordionExtraLightExampleComponent } from './accordion-extra-light/accordion-extra-light-example';
 import { AccordionExtraLightNegativeExampleComponent } from './accordion-extra-light-negative/accordion-extra-light-negative-example';
+import { AccordionFlushExampleComponent } from './accordion-flush/accordion-flush-example';
 import { AccordionLazyExampleComponent } from './accordion-lazy/accordion-lazy-example';
 import { AccordionLightExampleComponent } from './accordion-light/accordion-light-example';
 import { AccordionLightNegativeExampleComponent } from './accordion-light-negative/accordion-light-negative-example';
@@ -57,6 +58,7 @@ export class AccordionExamplesModule {
             'accordion-negative': AccordionNegativeExampleComponent,
             'accordion-standalone': AccordionStandaloneExampleComponent,
             'accordion-scroll-smooth': AccordionScrollSmoothExampleComponent,
+            'accordion-flush': AccordionFlushExampleComponent,
         };
     }
 }

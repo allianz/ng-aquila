@@ -3,11 +3,14 @@ import { CdkAccordionItem } from '@angular/cdk/accordion';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import { CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
+import { CommonModule } from '@angular/common';
 import {
     AfterContentInit,
+    booleanAttribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    computed,
     ContentChild,
     Inject,
     InjectionToken,
@@ -15,6 +18,7 @@ import {
     OnChanges,
     OnDestroy,
     Optional,
+    signal,
     SimpleChanges,
     SkipSelf,
     ViewContainerRef,
@@ -71,7 +75,7 @@ export const EXPANSION_PANEL_DEFAULT_OPTIONS = new InjectionToken<ExpansionPanel
         { provide: NxAccordionDirective, useValue: undefined },
     ],
     standalone: true,
-    imports: [CdkPortalOutlet],
+    imports: [CdkPortalOutlet, CommonModule],
 })
 export class NxExpansionPanelComponent extends CdkAccordionItem implements AfterContentInit, OnChanges, OnDestroy {
     /** Whether the negative set of styles should be used. */
@@ -100,6 +104,20 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
         return this._style!;
     }
     private _style: AccordionStyle | null = null;
+
+    /**
+     * Setting flush alignment style: no left/right padding in expansion panel header and body
+     */
+    @Input({ transform: booleanAttribute }) set flushAlignment(flushAligned: boolean) {
+        this._flushAlignment.set(flushAligned);
+    }
+    get flushAlignment(): boolean {
+        return this.isFlushAligned();
+    }
+
+    // replicating input signal behavior until they are stable
+    private readonly _flushAlignment = signal(false);
+    private readonly isFlushAligned = computed(() => this.accordion?.flushAlignmentSignal() || this._flushAlignment());
 
     /** Whether scrollIntoView should be enabled. */
     @Input() scrollIntoViewActive? = this._defaultOptions?.scrollIntoViewActive;

@@ -8,7 +8,7 @@
     [attr.aria-labelledby]="_headerId"
     [id]="id"
 >
-    <div class="nx-expansion-panel__body">
+    <div [ngClass]="{'nx-expansion-panel__body': true, 'flush-alignment': flushAlignment}" class="nx-expansion-panel__body">
         <ng-content></ng-content>
         <ng-template [cdkPortalOutlet]="portal"></ng-template>
     </div>

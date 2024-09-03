@@ -1,5 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Directive, ElementRef, Host, OnDestroy } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { merge, Subject } from 'rxjs';
@@ -28,7 +29,7 @@ import { NxExpansionPanelComponent } from './expansion-panel';
         '(click)': 'toggle()',
     },
     standalone: true,
-    imports: [NxIconModule],
+    imports: [NxIconModule, CommonModule],
 })
 export class NxExpansionPanelHeaderComponent implements OnDestroy, AfterViewInit {
     private readonly _destroyed = new Subject<void>();
