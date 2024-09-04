@@ -506,15 +506,22 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         if (this.disabled || this.readonly) {
             return;
         }
-
         const altKey = $event.altKey;
         const key = $event.key;
 
         const isArrowKey = key === 'ArrowDown' || key === 'ArrowUp' || key === 'ArrowLeft' || key === 'ArrowRight';
 
         if (!this._isOpen) {
-            if (altKey && isArrowKey) {
+            if ((altKey && isArrowKey) || isArrowKey || key === 'Home') {
                 this._open($event, 'keyboard');
+                $event.preventDefault();
+            }
+            if (key === 'End') {
+                this._open($event, 'keyboard');
+                setTimeout(() => {
+                    this._keyManager.setLastItemActive();
+                    this._cdr.markForCheck();
+                });
                 $event.preventDefault();
             }
         } else {

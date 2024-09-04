@@ -1,4 +1,4 @@
-import { DOWN_ARROW, ESCAPE, LEFT_ARROW, RIGHT_ARROW, TAB, UP_ARROW } from '@angular/cdk/keycodes';
+import { DOWN_ARROW, END, ESCAPE, HOME, LEFT_ARROW, RIGHT_ARROW, TAB, UP_ARROW } from '@angular/cdk/keycodes';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { ComponentHarness, HarnessLoader, LocatorFactory, parallel, TestElement } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
@@ -501,6 +501,51 @@ describe('NxMultiSelectComponent', () => {
 
                 it('is open', async () => {
                     expect(await multiSelectHarness.isOpen()).toBeTrue();
+                });
+            });
+
+            describe('and opening using ARROW DOWN', () => {
+                beforeEach(async () => {
+                    await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW, true);
+                });
+
+                it('is open', async () => {
+                    expect(await multiSelectHarness.isOpen()).toBeTrue();
+                });
+            });
+
+            describe('and opening using ARROW UP', () => {
+                beforeEach(async () => {
+                    await multiSelectHarness.pressKey('ArrowUp', UP_ARROW, true);
+                });
+
+                it('is open', async () => {
+                    expect(await multiSelectHarness.isOpen()).toBeTrue();
+                });
+            });
+
+            describe('and opening using HOME key', () => {
+                beforeEach(async () => {
+                    await multiSelectHarness.pressKey('Home', HOME, true);
+                });
+
+                it('is open', async () => {
+                    expect(await multiSelectHarness.isOpen()).toBeTrue();
+                });
+            });
+
+            describe('and opening using END key', () => {
+                beforeEach(async () => {
+                    await multiSelectHarness.pressKey('End', END, true);
+                });
+
+                it('is open', async () => {
+                    expect(await multiSelectHarness.isOpen()).toBeTrue();
+                });
+
+                it('hilight last option', async () => {
+                    const options = await multiSelectHarness.getOptions();
+                    expect(await options[options.length - 1].isActive()).toBeTrue();
                 });
             });
 
