@@ -2,6 +2,7 @@
     <div class="nx-calendar-controls">
         <button
             #previousButton
+            nxPlainButton
             class="nx-calendar-previous-button"
             [disabled]="!_previousEnabled()"
             (click)="_previousClicked()"
@@ -12,13 +13,20 @@
 
         <span class="nx-calendar-period-label"> {{_periodButtonText}} </span>
 
-        <button #nextButton class="nx-calendar-next-button" [disabled]="!_nextEnabled()" (click)="_nextClicked()" [attr.aria-label]="_nextButtonLabel">
+        <button
+            #nextButton
+            nxPlainButton
+            class="nx-calendar-next-button"
+            [disabled]="!_nextEnabled()"
+            (click)="_nextClicked()"
+            [attr.aria-label]="_nextButtonLabel"
+        >
             <nx-icon [name]="this._isRtl ? 'chevron-left' : 'chevron-right'" aria-hidden="true"></nx-icon>
         </button>
     </div>
 
     <div class="nx-calendar-view-controls">
-        <button #changeViewButton class="nx-calendar-change-view-button" (click)="_changeViewClicked()" [attr.aria-label]="_periodButtonLabel">
+        <button #changeViewButton nxPlainButton class="nx-calendar-change-view-button" (click)="_changeViewClicked()" [attr.aria-label]="_periodButtonLabel">
             {{_periodButtonLabel}}
         </button>
     </div>

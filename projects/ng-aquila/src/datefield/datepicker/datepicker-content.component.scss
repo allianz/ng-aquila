@@ -51,14 +51,7 @@ $calendar-width-mobile: calc(7 * #{$item-size} + 2 * #{$spacing-sides-calendar-m
 }
 
 .nx-datepicker-close {
-    background-color: transparent;
-    border: none;
     margin-left: auto;
-    cursor: pointer;
-    padding: 0;
-    font-size: v(datefield-controls-icon-size);
-    color: v(datefield-controls-color);
-    outline: none;
 
     :host-context([dir='rtl']) & {
         margin-right: auto;

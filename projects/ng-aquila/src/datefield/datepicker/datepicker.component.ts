@@ -32,6 +32,7 @@ import {
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { merge, Subject } from 'rxjs';
 import { filter, take, takeUntil } from 'rxjs/operators';
@@ -106,7 +107,7 @@ export const DATEPICKER_DEFAULT_OPTIONS = new InjectionToken<DatepickerDefaultOp
     exportAs: 'nxDatepickerContent',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [CdkTrapFocus, NxIconModule, NxCalendarComponent, NgClass],
+    imports: [CdkTrapFocus, NxIconModule, NxCalendarComponent, NgClass, NxButtonModule],
 })
 export class NxDatepickerContentComponent<D> implements AfterContentInit, AfterViewInit, OnDestroy {
     datepicker!: NxDatepickerComponent<D>;

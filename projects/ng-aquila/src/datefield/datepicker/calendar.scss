@@ -10,23 +10,6 @@ $calendar-content-width: 7 * $item-size;
 
 .nx-calendar-previous-button,
 .nx-calendar-next-button {
-    color: v(datefield-controls-color);
-    font-size: v(datefield-controls-icon-size);
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    line-height: 0;
-
-    padding: 0;
-
-    &:focus {
-        outline: 0;
-    }
-
-    &:hover {
-        color: v(datefield-controls-hover-color);
-    }
-
     &[disabled] {
         cursor: not-allowed;
         nx-icon {
@@ -54,21 +37,7 @@ $calendar-content-width: 7 * $item-size;
 }
 
 .nx-calendar-change-view-button {
-    @include type-style(datefield-change-view);
-    color: v(datefield-change-view-color);
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
     margin: nx-spacer(2xs) 0 0 0;
-    height: nx-spacer(s);
-
-    &:focus {
-        outline: 0;
-    }
-
-    &:hover {
-        color: v(datefield-change-view-hover-color);
-    }
 }
 
 .nx-calendar-change-view-button.cdk-keyboard-focused,
