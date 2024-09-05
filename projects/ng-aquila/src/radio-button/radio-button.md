@@ -76,6 +76,15 @@ With `size` you can change the styling of the radio button group's label. The la
 
 <!-- example(radio-button-group-validation) -->
 
+### Expert: Readonly
+
+<div class="docs-deprecation-warning">
+<strong>Expert only: </strong>
+  Please note that the readonly option is only for expert/internal applications because of accessibility restrictions. There is currently no solution for readonly states that is accepted for retail applications.
+</div>
+
+ <!-- example(radio-button-readonly) -->
+
 </div>
 
 ### Accessibility

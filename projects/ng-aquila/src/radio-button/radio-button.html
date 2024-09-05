@@ -12,6 +12,7 @@
     [attr.aria-labelledby]="ariaLabelledBy"
     [attr.aria-label]="ariaLabel"
     [attr.aria-invalid]="_controlInvalid() || null"
+    [attr.aria-disabled]="disabled || readonly || null"
     class="nx-radio__input"
 />
 <label [id]="labelId" [attr.for]="inputId" class="nx-radio__label" [class.has-label]="labelHasContent">

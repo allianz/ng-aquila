@@ -4,6 +4,7 @@ import { CdkObserveContent } from '@angular/cdk/observers';
 import {
     AfterContentInit,
     AfterViewInit,
+    booleanAttribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -24,6 +25,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NG_VALUE_ACCESSOR, NgControl, NgForm } from '@angular/forms';
 import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher, randomString } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -57,14 +59,30 @@ let nextId = 0;
     styleUrls: ['radio-button-group.scss'],
     standalone: true,
     imports: [],
+    providers: [
+        {
+            provide: NxAbstractControl,
+            useExisting: forwardRef(() => NxRadioGroupComponent),
+        },
+    ],
 })
-export class NxRadioGroupComponent implements ControlValueAccessor, AfterContentInit, OnDestroy, DoCheck {
+export class NxRadioGroupComponent implements ControlValueAccessor, AfterContentInit, OnDestroy, DoCheck, NxAbstractControl {
     @ContentChild(forwardRef(() => NxLabelComponent)) _label!: NxLabelComponent;
     @ContentChildren(NxErrorComponent) errorChildren!: QueryList<NxErrorComponent>;
     @ContentChildren(forwardRef(() => NxRadioComponent), { descendants: true }) _radios!: QueryList<NxRadioComponent>;
 
     /** @docs-private */
     errorState = false;
+
+    /** Sets all radios in the group to readonly. */
+    @Input({ transform: booleanAttribute }) set readonly(value) {
+        this._readonly = value;
+        this._stateChanges.next();
+    }
+    get readonly() {
+        return this._readonly;
+    }
+    private _readonly = false;
 
     // emits when the internal state changes on properties which are relevant
     // for the radio buttons so that they can mark themself for check
@@ -217,6 +235,11 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
         this.disabled = isDisabled;
     }
 
+    setReadonly(value: boolean): void {
+        this.readonly = value;
+        this._cdr.markForCheck();
+    }
+
     private _updateSelectedRadioFromValue(): void {
         // If the value already matches the selected radio, do nothing.
         const isAlreadySelected = this._selected != null && this._selected.value === this._value;
@@ -263,6 +286,10 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
             useExisting: forwardRef(() => NxRadioComponent),
             multi: true,
         },
+        {
+            provide: NxAbstractControl,
+            useExisting: forwardRef(() => NxRadioComponent),
+        },
     ],
     host: {
         '[attr.required]': 'required',
@@ -271,12 +298,13 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
         '[class.nx-radio--negative]': 'negative',
         '[class.has-error]': '_controlInvalid() || null',
         '[attr.aria-invalid]': '_controlInvalid() || null',
+        '[class.is-readonly]': 'readonly || null',
         '(focus)': '_forwardFocusToInput()',
     },
     standalone: true,
     imports: [CdkObserveContent],
 })
-export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy {
+export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy, NxAbstractControl {
     /** @docs-private */
     @ViewChild('radioLabelWrapper', { static: true }) _radioLabelWrapper!: ElementRef;
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
@@ -284,6 +312,19 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     @Input() ariaLabel: string | null = null;
     @Input() ariaLabelledBy: string | null = null;
     @Input() ariaDescribedBy: string | null = null;
+
+    /** Sets radio to readonly. */
+    @Input({ transform: booleanAttribute }) set readonly(value) {
+        this._readonly = value;
+    }
+    get readonly() {
+        return this.radioGroup?.readonly || this._readonly;
+    }
+    private _readonly = false;
+    setReadonly(value: boolean): void {
+        this.readonly = value;
+        this._cdr.markForCheck();
+    }
 
     /** Sets the id of the radio component. */
     @Input() set id(value: string) {
@@ -502,6 +543,9 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     }
 
     _onInputClick(event: Event) {
+        if (this.readonly) {
+            event.preventDefault();
+        }
         // make sure click event propagation on the visually hidden input
         // are stopped to prevent multiple events bubbling up.
         event.stopPropagation();

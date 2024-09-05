@@ -140,6 +140,28 @@ $radio-border-radius: 50%;
     }
 }
 
+:host(.is-readonly) {
+    .nx-radio__label:hover {
+        cursor: not-allowed;
+    }
+
+    .nx-radio__circle {
+        background-color: v(radio-button-readonly-background-color);
+        border-color: v(radio-button-readonly-border-color);
+    }
+
+    .nx-radio__input:checked + .nx-radio__label {
+        .nx-radio__circle {
+            background-color: v(radio-button-readonly-background-color);
+            border-color: v(radio-button-readonly-border-color);
+        }
+
+        .nx-radio__dot {
+            background-color: v(radio-button-readonly-selected-dot-color);
+        }
+    }
+}
+
 // error style
 :host.has-error {
     .nx-radio__input + .nx-radio__label {
@@ -159,7 +181,7 @@ $radio-border-radius: 50%;
 }
 
 // hover styling
-:host:not(.nx-radio--negative):not(.has-error) .nx-radio__input:not(:disabled) {
+:host:not(.nx-radio--negative):not(.has-error):not(.is-readonly) .nx-radio__input:not(:disabled) {
     & + .nx-radio__label:hover .nx-radio__circle {
         border-color: v(radio-button-hover-circle-color);
     }
@@ -170,7 +192,7 @@ $radio-border-radius: 50%;
 }
 
 // active styling
-:host:not(.nx-radio--negative):not(.has-error) .nx-radio__input:not(:disabled) {
+:host:not(.nx-radio--negative):not(.has-error):not(.is-readonly) .nx-radio__input:not(:disabled) {
     & + .nx-radio__label:active .nx-radio__circle {
         border-color: v(radio-button-hover-circle-color);
     }

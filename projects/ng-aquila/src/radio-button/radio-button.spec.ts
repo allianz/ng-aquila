@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, Directive, QueryList, Type, ViewChi
 import { ComponentFixture, fakeAsync, flush, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NxErrorComponent, NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 
 import { NxRadioComponent, NxRadioGroupComponent } from './radio-button';
 import { NxRadioModule } from './radio-button.module';
@@ -541,6 +542,53 @@ describe('NxRadioComponent', () => {
         });
     });
 
+    describe('readonly', () => {
+        it('should set aria-disabled to each input', () => {
+            createTestComponent(RadioGroupTest);
+            (testInstance as RadioGroupTest).readonly = true;
+            fixture.detectChanges();
+
+            expect(radioElements.item(0).getAttribute('aria-disabled')).toBeTruthy();
+            expect(radioElements.item(1).getAttribute('aria-disabled')).toBeTruthy();
+        });
+
+        it('should set class is-readonly to nx-radio', () => {
+            createTestComponent(RadioGroupTest);
+            (testInstance as RadioGroupTest).readonly = true;
+            fixture.detectChanges();
+
+            const radios = fixture.nativeElement.querySelectorAll('nx-radio');
+            radios.forEach((radio: any) => {
+                expect(radio).toHaveClass('is-readonly');
+            });
+        });
+
+        it('should not clickable ', () => {
+            createTestComponent(RadioGroupTest);
+            (testInstance as RadioGroupTest).readonly = true;
+            fixture.detectChanges();
+
+            radioElements[0].click();
+            fixture.detectChanges();
+            assertChecked(0, false);
+
+            labelElements.item(1).click();
+            fixture.detectChanges();
+            assertChecked(1, false);
+        });
+
+        it('should set readonly programmatically with NxAbstractControl', () => {
+            createTestComponent(MultipleRadioOnPush);
+
+            (testInstance as MultipleRadioOnPush).group.setReadonly(true);
+            fixture.detectChanges();
+            const radios = fixture.nativeElement.querySelectorAll('nx-radio');
+            radios.forEach((radio: any) => {
+                expect(radio).toHaveClass('is-readonly');
+            });
+        });
+    });
+
     describe('a11y', () => {
         it('has no accessibility violations', async () => {
             createTestComponent(BasicRadio);
@@ -640,7 +688,7 @@ class MultipleRadio extends RadioTest {
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
-        <nx-radio-group name="groupTest">
+        <nx-radio-group name="groupTest" #radioGroup>
             <nx-radio value="0">0</nx-radio>
             <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
@@ -648,7 +696,9 @@ class MultipleRadio extends RadioTest {
     standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
-class MultipleRadioOnPush extends RadioTest {}
+class MultipleRadioOnPush extends RadioTest {
+    @ViewChild('radioGroup', { read: NxAbstractControl }) group!: NxAbstractControl;
+}
 
 @Component({
     template: `
@@ -786,7 +836,7 @@ class RadioGroupValidationTouched extends RadioTest {
 
 @Component({
     template: `
-        <nx-radio-group name="radioGroupTest">
+        <nx-radio-group name="radioGroupTest" [readonly]="readonly">
             <nx-label>What do you prefer?</nx-label>
             <nx-radio value="0">0</nx-radio>
             <nx-radio value="1">1</nx-radio>
@@ -795,7 +845,9 @@ class RadioGroupValidationTouched extends RadioTest {
     standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
-class RadioGroupTest extends RadioTest {}
+class RadioGroupTest extends RadioTest {
+    readonly = false;
+}
 
 @Component({
     template: `
