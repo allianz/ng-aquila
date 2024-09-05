@@ -8,7 +8,7 @@
     [checked]="checked"
     [disabled]="disabled"
     [attr.aria-checked]="checked"
-    [attr.aria-required]="required"
+    [attr.aria-required]="toggleGroup ? null : required"
     [attr.aria-disabled]="readonly || null"
     (keydown.enter)="handleEnterKey($event)"
     (click)="toggle($event)"

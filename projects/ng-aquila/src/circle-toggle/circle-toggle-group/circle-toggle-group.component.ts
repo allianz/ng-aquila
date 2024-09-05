@@ -19,7 +19,7 @@ import {
     QueryList,
     Self,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm, Validators } from '@angular/forms';
 import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { merge, Subject } from 'rxjs';
@@ -61,6 +61,7 @@ let nextId = 0;
         '[class.is-disabled]': 'disabled',
         '[attr.aria-disabled]': 'disabled || readonly || false',
         '[attr.aria-labelledby]': 'name',
+        '[attr.aria-required]': 'required',
         '[class.has-error]': 'errorState',
         '[attr.name]': 'name',
         '[attr.id]': 'id',
@@ -88,6 +89,10 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     // emits when the internal state changes on properties which are relevant
     // for the child components so that they can mark themself for check
     readonly _stateChanges = new Subject<void>();
+
+    get required(): boolean {
+        return this.ngControl?.control?.hasValidator(Validators.required) ?? false;
+    }
 
     /** Name that is used for accessibility. */
     @Input() set name(value: string) {
@@ -233,7 +238,6 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
 
     ngAfterViewInit(): void {
         this.subscribeToSelectionChanges();
-
         // react if a content child is deleted, added etc.
         this.buttons.changes
             .pipe(

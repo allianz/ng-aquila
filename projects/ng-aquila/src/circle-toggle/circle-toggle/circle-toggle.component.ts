@@ -252,7 +252,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, 
     private _readonly = false;
 
     get required() {
-        const selfRequired = this.ngControl?.control?.hasValidator(Validators.required);
+        const selfRequired = this.ngControl?.control?.hasValidator(Validators.required) || this.ngControl?.control?.hasValidator(Validators.requiredTrue);
         const parentRequired = this.toggleGroup?.ngControl?.control?.hasValidator(Validators.required);
         return selfRequired ?? parentRequired ?? false;
     }

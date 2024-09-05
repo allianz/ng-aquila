@@ -15,6 +15,7 @@ describe('NxToggleButtonGroup', () => {
     let toggleInputs: NodeListOf<HTMLInputElement>;
     let toggleButtons: NodeListOf<HTMLElement>;
     let toggleNativeElement: HTMLElement;
+    let input: HTMLInputElement;
 
     function createTestComponent(component: Type<ButtonToggleGroupTest>) {
         fixture = TestBed.createComponent(component);
@@ -26,6 +27,7 @@ describe('NxToggleButtonGroup', () => {
         toggleButtons = fixture.nativeElement.querySelectorAll('nx-circle-toggle');
         const toggleDebugElement = fixture.debugElement.query(By.directive(NxCircleToggleGroupComponent));
         toggleNativeElement = toggleDebugElement.nativeElement;
+        input = fixture.nativeElement.querySelector('input');
     }
 
     function click(index: number) {
@@ -335,6 +337,17 @@ describe('NxToggleButtonGroup', () => {
         it('has no accessibility violations when disabled', async () => {
             createTestComponent(DisabledCircleToggleGroupComponent);
             await expectAsync(fixture.nativeElement).toBeAccessible();
+        });
+
+        it('should set aria-required', () => {
+            createTestComponent(ReactiveCircleToggleGroupComponent);
+            const circleToggleGroup = fixture.nativeElement.querySelector('nx-circle-toggle-group');
+            expect(circleToggleGroup.getAttribute('aria-required')).toBe('true');
+        });
+
+        it('should not set aria-required on each toggle when in a group', () => {
+            createTestComponent(ReactiveCircleToggleGroupComponent);
+            expect(input.getAttribute('aria-required')).toBeNull();
         });
     });
 });
