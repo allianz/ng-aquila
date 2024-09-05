@@ -55,6 +55,12 @@ The switcher component can be used in reactive forms.
 
 <!-- example(switcher-disabled) -->
 
+### Expert: Readonly
+<div class="docs-deprecation-warning">
+  <strong>Expert only: </strong>
+  Please note that the readonly option is only for expert/internal applications because of accessibility restrictions. There is currently no solution for readonly states that is accepted for retail applications.
+</div>
+<!-- example(switcher-readonly) -->
 
 ### Accessibility
 If your switcher button doesn't have any accompanying label text,

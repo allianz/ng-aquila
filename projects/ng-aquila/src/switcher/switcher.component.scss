@@ -97,6 +97,7 @@ $switcher-border-radius: nx-border-radius(m);
         width: nx-spacer(l);
         min-width: nx-spacer(l); // fix for IE11
         height: nx-spacer(2m);
+        border-radius: nx-spacer(2m);
     }
 
     .nx-switcher__dot {
@@ -215,6 +216,27 @@ $switcher-border-radius: nx-border-radius(m);
 
     nx-icon {
         color: v(switcher-disabled-icon-color);
+    }
+}
+
+:host(.is-readonly) {
+    .nx-switcher__toggle {
+        background-color: v(switcher-readonly-background-color);
+        border: 1px solid v(switcher-readonly-border-color);
+    }
+
+    .nx-switcher__dot {
+        background-color: v(switcher-readonly-dot-background-color);
+        left: 1px;
+        bottom: 1px;
+        nx-icon {
+            color: v(switcher-readonly-icon-color);
+        }
+    }
+
+    .nx-switcher__label {
+        cursor: not-allowed;
+        color: v(switcher-readonly-text-color);
     }
 }
 

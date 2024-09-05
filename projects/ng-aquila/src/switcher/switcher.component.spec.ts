@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, View
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 
 import { NxSwitcherComponent } from './switcher.component';
 import { NxSwitcherModule } from './switcher.module';
@@ -154,6 +155,34 @@ describe('NxSwitcherComponent', () => {
         assertChecked(false);
     });
 
+    it('set the switcher to readonly', () => {
+        createTestComponent(SwitcherReactiveForm);
+        const reactInstance = testInstance as SwitcherReactiveForm;
+        reactInstance.readonly = true;
+        fixture.detectChanges();
+        expect(switcherNativeElement).toHaveClass('is-readonly');
+    });
+
+    it('does not handle clicks when the switcher is readonly', () => {
+        createTestComponent(SwitcherReactiveForm);
+        const reactInstance = testInstance as SwitcherReactiveForm;
+        reactInstance.readonly = true;
+        fixture.detectChanges();
+
+        inputElement.click();
+        fixture.detectChanges();
+
+        expect(switcherInstance.checked).toBeFalse();
+        expect(inputElement.checked).toBeFalse();
+    });
+
+    it('should set readonly using NxAbstractControl', () => {
+        createTestComponent(SwitcherReactiveForm);
+        (testInstance as SwitcherReactiveForm).abstractControl.setReadonly(true);
+        fixture.detectChanges();
+        expect(switcherNativeElement).toHaveClass('is-readonly');
+    });
+
     describe('programmatic change', () => {
         it('updates view on id change', () => {
             createTestComponent(BasicSwitcher);
@@ -295,6 +324,15 @@ describe('NxSwitcherComponent', () => {
             expect(inputElement.getAttribute('aria-required')).toBeTruthy();
             expect(inputElement.getAttribute('required')).toBeTruthy();
         });
+
+        it('should set input aria-disabled when switcher is readonly ', () => {
+            createTestComponent(SwitcherReactiveForm);
+            const reactInstance = testInstance as SwitcherReactiveForm;
+            reactInstance.readonly = true;
+            fixture.detectChanges();
+
+            expect(inputElement.getAttribute('aria-disabled')).toBeTruthy();
+        });
     });
 });
 
@@ -325,13 +363,16 @@ class SwitcherTemplateDriven extends SwitcherTest {
 @Component({
     template: `
         <form [formGroup]="testForm">
-            <nx-switcher formControlName="reactiveSwitcher"> switcher </nx-switcher>
+            <nx-switcher #switcher formControlName="reactiveSwitcher" [readonly]="readonly"> switcher </nx-switcher>
         </form>
     `,
     standalone: true,
     imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class SwitcherReactiveForm extends SwitcherTest {
+    @ViewChild('switcher', { read: NxAbstractControl }) abstractControl!: NxAbstractControl;
+
+    readonly = false;
     testForm = new FormBuilder().group({
         reactiveSwitcher: new FormControl({ value: false, disabled: false }, { validators: Validators.requiredTrue }),
     });

@@ -34,6 +34,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher, randomString } from '@aposin/ng-aquila/utils';
 
 let nextId = 0;
@@ -59,6 +60,7 @@ export type LABEL_SIZE = 'small' | 'large';
         '[class.is-disabled]': 'disabled',
         '[class.is-swapped]': 'labelPosition === "left"',
         '[class.has-error]': 'errorState',
+        '[class.is-readonly]': 'readonly',
         '(focus)': '_forwardFocusToInput()',
     },
     standalone: true,
@@ -74,9 +76,13 @@ export type LABEL_SIZE = 'small' | 'large';
             useExisting: forwardRef(() => NxSwitcherComponent),
             multi: true,
         },
+        {
+            provide: NxAbstractControl,
+            useExisting: forwardRef(() => NxSwitcherComponent),
+        },
     ],
 })
-export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, OnInit, AfterViewInit, OnDestroy, Validator {
+export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, OnInit, AfterViewInit, OnDestroy, Validator, NxAbstractControl {
     /** @docs-private */
     errorState = false;
 
@@ -213,14 +219,17 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, OnIni
     }
 
     /** Allows to toggle between the states */
-    toggle() {
-        if (!this.disabled) {
-            this.checked = !this.checked;
-            this.onChangeCallback(this.checked);
-            this.checkedChange.emit(this.checked);
-            if (this.onTouchedCallback) {
-                this.onTouchedCallback();
-            }
+    toggle(event: Event) {
+        event.stopPropagation();
+        if (this.disabled || this.readonly) {
+            event.preventDefault();
+            return;
+        }
+        this.checked = !this.checked;
+        this.onChangeCallback(this.checked);
+        this.checkedChange.emit(this.checked);
+        if (this.onTouchedCallback) {
+            this.onTouchedCallback();
         }
     }
 
@@ -287,5 +296,13 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, OnIni
     /** Forward focus from host to hidden input field */
     _forwardFocusToInput() {
         this._nativeInput.nativeElement.focus();
+    }
+
+    /** Sets switcher to readonly. */
+    @Input({ transform: booleanAttribute }) readonly = false;
+
+    setReadonly(value: boolean): void {
+        this.readonly = value;
+        this._cdr.markForCheck();
     }
 }
