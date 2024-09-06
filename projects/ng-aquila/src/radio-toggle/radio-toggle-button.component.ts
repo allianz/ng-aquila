@@ -8,14 +8,12 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ElementRef,
     forwardRef,
     HostListener,
     Inject,
     Input,
     OnDestroy,
     Renderer2,
-    ViewChild,
 } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
@@ -57,8 +55,6 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     readonly onChecked = new Subject<NxRadioToggleButtonChange>();
 
     @Input({ transform: booleanAttribute }) disableMobile = false;
-
-    @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
     /** @docs-private */
     @Input() set disabled(value: BooleanInput) {
@@ -191,6 +187,6 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
 
     /** Forward focus from host to hidden input field */
     _forwardFocusToInput() {
-        this._nativeInput.nativeElement.focus();
+        this.toggleInput.nativeElement.focus();
     }
 }

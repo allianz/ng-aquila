@@ -40,6 +40,7 @@ describe('NxRadioToggleComponent', () => {
                 ModelRadioToggle,
                 ReactiveFormToggle,
                 ValidationToggle,
+                FocusRadioToggle,
             ],
         }).compileComponents();
     }));
@@ -406,6 +407,17 @@ describe('NxRadioToggleComponent', () => {
         });
     });
 
+    describe('focus', () => {
+        it('focus should be forwarded from radio toggle button to input', () => {
+            createTestComponent(FocusRadioToggle);
+            const radioBtnElm: HTMLElement = fixture.nativeElement.querySelector('nx-radio-toggle-button');
+            radioBtnElm.focus();
+            fixture.detectChanges();
+
+            expect(document.activeElement).toEqual(fixture.nativeElement.querySelector('input'));
+        });
+    });
+
     describe('Validation', () => {
         it('should be invalid and untouched', () => {
             createTestComponent(ValidationToggle);
@@ -630,3 +642,13 @@ class ValidationToggle extends RadioToggleTest {
         return formGroup.value !== 'B' ? { valid: false } : null;
     }
 }
+
+@Component({
+    template: `<nx-radio-toggle>
+        <nx-radio-toggle-button value="A" [selected]="true" tabindex="0">Label A</nx-radio-toggle-button>
+        <nx-radio-toggle-button value="B" tabindex="0">Label B</nx-radio-toggle-button>
+    </nx-radio-toggle>`,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
+})
+class FocusRadioToggle extends RadioToggleTest {}
