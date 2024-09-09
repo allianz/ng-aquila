@@ -8,7 +8,7 @@
 <p class="docs-markdown--p">If you want the user to be able to expand multiple items simultaneously you can use <code>multi</code>.</p>
 <div nx-docs-example="accordion-multi" config="{}">exampleID: accordion-multi</div>
 <h3 id="styling-options" tabindex="-1" class="docs-markdown--h3">Styling options</h3>
-<p class="docs-markdown--p">The appearance of an accordion can be changed by setting according properties <code>variant</code> and <code>negative</code> on <code>nx-accordion</code> or by giving each of the expansion panels their own configuration. Panels will always prefer their own configuration if given.</p>
+<p class="docs-markdown--p">The appearance of an accordion can be changed by setting according properties <code>variant</code>, <code>negative</code>, <code>flushAlignment</code> on <code>nx-accordion</code> or by giving each of the expansion panels their own configuration. Panels will always prefer their own configuration if given for <code>variant</code> and <code>negative</code>.</p>
 <h4 id="negative" tabindex="-1" class="docs-markdown--h4">Negative</h4>
 <div nx-docs-example="accordion-negative" config="{}">exampleID: accordion-negative</div>
 <h4 id="light" tabindex="-1" class="docs-markdown--h4">Light</h4>
@@ -19,6 +19,9 @@
 <div nx-docs-example="accordion-extra-light" config="{}">exampleID: accordion-extra-light</div>
 <h4 id="extra-light-negative" tabindex="-1" class="docs-markdown--h4">Extra light negative</h4>
 <div nx-docs-example="accordion-extra-light-negative" config="{}">exampleID: accordion-extra-light-negative</div>
+<h4 id="flush-alignment" tabindex="-1" class="docs-markdown--h4">Flush Alignment</h4>
+<p class="docs-markdown--p">Flush aligned accordions or expansion panels will have no left/right padding in the header and body. This is useful when the accordion is used inside other components that already bring padding, such as cards to align headings and other content with the accordion content. Has no effect on <a href="documentation/accordion/overview#extra-light">extra light accordions</a>.</p>
+<div nx-docs-example="accordion-flush" config="{}">exampleID: accordion-flush</div>
 <h3 id="lazy-loading" tabindex="-1" class="docs-markdown--h3">Lazy loading</h3>
 <p class="docs-markdown--p">By default the content of the accordion items will be loaded eagerly even when the item is closed. You can choose to provide the content as an <code>ng-template</code> instead to defer the initialization until the accordion item is loaded.</p>
 <div nx-docs-example="accordion-lazy" config="{}">exampleID: accordion-lazy</div>

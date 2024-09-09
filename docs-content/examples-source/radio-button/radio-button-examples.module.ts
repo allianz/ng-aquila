@@ -14,10 +14,12 @@ import { RadioButtonGroupLabelSizeExampleComponent } from './radio-button-group-
 import { RadioButtonGroupValidationExampleComponent } from './radio-button-group-validation/radio-button-group-validation-example';
 import { RadioButtonNegativeExampleComponent } from './radio-button-negative/radio-button-negative-example';
 import { RadioButtonReactiveExampleComponent } from './radio-button-reactive/radio-button-reactive-example';
+import { RadioButtonReadonlyExampleComponent } from './radio-button-readonly/radio-button-readonly-example';
 import { RadioButtonSampleExampleComponent } from './radio-button-sample/radio-button-sample-example';
 import { RadioButtonSizesExampleComponent } from './radio-button-sizes/radio-button-sizes-example';
 
 const EXAMPLES = [
+    RadioButtonReadonlyExampleComponent,
     RadioButtonErrorRetailExampleComponent,
     RadioButtonExampleComponent,
     RadioButtonDisabledExampleComponent,
@@ -40,6 +42,7 @@ const EXAMPLES = [
 export class RadioExamplesModule {
     static components() {
         return {
+            'radio-button-readonly': RadioButtonReadonlyExampleComponent,
             'radio-button-error-retail': RadioButtonErrorRetailExampleComponent,
             'radio-button': RadioButtonExampleComponent,
             'radio-button-disabled': RadioButtonDisabledExampleComponent,

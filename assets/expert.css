@@ -629,6 +629,11 @@ body,
   --circle-toggle-selected-icon-color: #ffffff;
   --circle-toggle-selected-border-color: var(--interactive-primary);
   --circle-toggle-selected-background-color: var(--interactive-primary);
+  --circle-toggle-readonly-border-color: var(--readonly-on-surface-color);
+  --circle-toggle-readonly-background-color: var(--readonly-surface-color);
+  --circle-toggle-readonly-selected-background-color: var(--readonly-surface-active-color);
+  --circle-toggle-readonly-icon-color: var(--readonly-on-surface-color);
+  --circle-toggle-readonly-selected-icon-color: var(--readonly-on-surface-active-color);
   --circle-toggle-hover-icon-color: #ffffff;
   --circle-toggle-hover-border-color: var(--hover-primary);
   --circle-toggle-hover-background-color: var(--hover-primary);
@@ -1065,6 +1070,9 @@ body,
   --radio-button-disabled-selected-dot-color: var(--disabled-01);
   --radio-button-disabled-text-color: var(--disabled-01);
   --radio-button-disabled-border-color: var(--disabled-01);
+  --radio-button-readonly-background-color: var(--readonly-surface-color);
+  --radio-button-readonly-selected-dot-color: var(--readonly-on-surface-color);
+  --radio-button-readonly-border-color: var(--readonly-on-surface-color);
   --radio-button-label-color: var(--text-01);
   --radio-button-large-label-font-size: var(--large-label-font-size);
   --radio-button-large-label-line-height: var(--large-label-line-height);
@@ -1192,6 +1200,11 @@ body,
   --switcher-disabled-dot-background-color: var(--disabled-02);
   --switcher-disabled-icon-color: var(--disabled-01);
   --switcher-disabled-text-color: var(--disabled-01);
+  --switcher-readonly-background-color: var(--readonly-surface-color);
+  --switcher-readonly-border-color: var(--readonly-on-surface-color);
+  --switcher-readonly-dot-background-color: var(--readonly-on-surface-color);
+  --switcher-readonly-text-color: var(--readonly-surface-active-color);
+  --switcher-readonly-icon-color: var(--readonly-on-surface-active-color);
   --taglist-font-size: var(--paragraph-04-font-size);
   --taglist-line-height: 16px;
   --taglist-font-weight: var(--paragraph-04-font-weight);
@@ -1273,6 +1286,12 @@ body,
   --toggle-button-small-line-height: var(--button-small-line-height);
   --toggle-button-small-font-weight: var(--button-small-font-weight);
   --toggle-button-small-letter-spacing: var(--button-small-letter-spacing);
+  --toggle-button-readonly-unselected-border-color: var(--readonly-on-surface-color);
+  --toggle-button-readonly-unselected-text-color: var(--readonly-on-surface-color);
+  --toggle-button-readonly-unselected-background-color: var(--readonly-surface-color);
+  --toggle-button-readonly-selected-background-color: var(--readonly-on-surface-color);
+  --toggle-button-readonly-selected-border-color: var(--readonly-on-surface-color);
+  --toggle-button-readonly-selected-text-color: var(--readonly-on-surface-active-color);
   --tooltip-background-color: var(--ui-03);
   --tooltip-text-color: var(--text-01);
   --tooltip-border-radius: 4px;
