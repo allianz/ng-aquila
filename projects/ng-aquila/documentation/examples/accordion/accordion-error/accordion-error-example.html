@@ -10,6 +10,7 @@
                     <nx-icon
                         class="nx-error__icon"
                         [name]="'exclamation-triangle'"
+                        aria-hidden="true"
                     ></nx-icon>
                     }
                     <span>General Information</span>
@@ -46,6 +47,7 @@
                 <div class="expansion-title-with-icon">
                     @if (paymentHasError) {
                     <nx-icon
+                        aria-hidden="true"
                         class="nx-error__icon"
                         [name]="'exclamation-triangle'"
                     ></nx-icon>
