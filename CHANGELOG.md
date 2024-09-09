@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.3.0](https://github.com/allianz/ng-aquila/compare/v18.2.0...v18.3.0) (2024-09-09)
+
+### Readonly states for radio- and checkbox-style components
+With this release we added a readonly state to the circle toggle, radio button, checkbox, switcher and toggle button components. The number stepper has to be delayed until the next major version because of a necessary breaking change.
+Please note: the readonly states on these elements is only approved for internal (expert) applications because of accessibility constraints.
+
+
+### Features ✨
+
+* **accordion:** add flush alignment option ([28a37fd](https://github.com/allianz/ng-aquila/commit/28a37fd1dfb2b288790e5a6ff755b99fd7d9da4b))
+* **circle-toggle:** add readonly state ([c2abe67](https://github.com/allianz/ng-aquila/commit/c2abe678743f9048771aab840ac8fc1b062416a9))
+* **multi-select:** add filterInput output  ([d61712c](https://github.com/allianz/ng-aquila/commit/d61712cfe04cda0f8ec564638f0d6329cd5609f7))
+* **radio-button:** add readonly state ([b6ef4f6](https://github.com/allianz/ng-aquila/commit/b6ef4f6e8997c95dad641777a35ca68fb534a966))
+* **switcher:** add readonly state ([a72712a](https://github.com/allianz/ng-aquila/commit/a72712a0ab4036cdf175b82ea101057d208acb72))
+* **toggle-button:** add readonly state ([571e1df](https://github.com/allianz/ng-aquila/commit/571e1df916779ee42a91299a6c3bf025e0d261c4))
+
+
+### Bug Fixes 🐛
+
+* **circle-toggle:** invalid aria-required attributes in radio group ([79e18ce](https://github.com/allianz/ng-aquila/commit/79e18ce252076f0a153ffa347cac5e2e97d461b9))
+* **datefield:** to use plain buttons and update cell font-weight ([ea29b77](https://github.com/allianz/ng-aquila/commit/ea29b77f2360122328056babba084bd03c4571ac))
+* **grid:** use DI for missing nxRow warning ([8d4a236](https://github.com/allianz/ng-aquila/commit/8d4a236d85e70f7d587392270567a16f6dd91799))
+* **header:** change height of header to match figma designs ([d5bf893](https://github.com/allianz/ng-aquila/commit/d5bf893e171a37fbe77dda9facd354faf14859e7))
+* **multi-select:** open dropdown with arrow keys ([785b98e](https://github.com/allianz/ng-aquila/commit/785b98eec814969e898f7d58a55366f3535ba8f6))
+* **radio-toggle:** forward focus to toggleInput ([7c6edda](https://github.com/allianz/ng-aquila/commit/7c6edda7a4dc22fb993fb4ba82054c5bd04fdf5f))
+* **sidenavigation,action:** text and icon alignment in the navigation items ([b6b2c79](https://github.com/allianz/ng-aquila/commit/b6b2c796811c598a19d647e75d5455551b946e17))
+
+
+### Documentation 📚
+
+* **accordion:** add aria-hidden to error icons ([74c9106](https://github.com/allianz/ng-aquila/commit/74c9106eb620f6c34d2c59b50cbc9ff921d48c46))
+
 ## [18.2.0](https://github.com/allianz/ng-aquila/compare/v18.1.0...v18.2.0) (2024-08-26)
 
 
