@@ -40,7 +40,16 @@ Below you can find an example with a custom validator, which accepts only `B` as
 
 <!-- example(radio-toggle-validation) -->
 
+### Expert: Readonly
+
+<div class="docs-deprecation-warning">
+<strong>Expert only: </strong>
+  Please note that the readonly option is only for expert/internal applications because of accessibility restrictions. There is currently no solution for readonly states that is accepted for retail applications.
+</div>
+
+ <!-- example(radio-toggle-readonly) -->
+
 ### Accessibility
 
 If you use only icons or anything else that is not descriptive enough for screen readers, make sure to set a descriptive
-`ariaLabel` <a href="documentation/radio-toggle/overview#custom">as shown in the _Custom_ Toggle Buttons example</a>.
+`ariaLabel` <a href="documentation/radio-toggle/overview#custom">as shown in the _Custom_ Toggle Buttons example</a>. 

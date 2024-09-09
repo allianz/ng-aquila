@@ -1,8 +1,9 @@
 import { JsonPipe } from '@angular/common';
-import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
+import { Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 
 import { NxRadioToggleComponent, RESET_VALUES } from './radio-toggle.component';
 import { NxRadioToggleModule } from './radio-toggle.module';
@@ -461,6 +462,70 @@ describe('NxRadioToggleComponent', () => {
             expect(radioInputElements[1].nativeElement.getAttribute('aria-label')).toBe('dog');
         });
     });
+
+    describe('readonly', () => {
+        it('should set aria-disabled to each input', () => {
+            createTestComponent(RadioToggleGroupTest);
+            const testInstance = fixture.componentInstance as RadioToggleGroupTest;
+            testInstance.readonly = true;
+            fixture.detectChanges();
+
+            expect(radioElements.item(0).getAttribute('aria-disabled')).toBeTruthy();
+            expect(radioElements.item(1).getAttribute('aria-disabled')).toBeTruthy();
+        });
+
+        it('should set class is-readonly to nx-radio-toggle', () => {
+            createTestComponent(RadioToggleGroupTest);
+            const testInstance = fixture.componentInstance as RadioToggleGroupTest;
+            testInstance.readonly = true;
+            fixture.detectChanges();
+
+            const radios = fixture.nativeElement.querySelectorAll('nx-radio-toggle-button');
+            radios.forEach((radio: any) => {
+                expect(radio).toHaveClass('is-readonly');
+            });
+        });
+
+        it('should set aria-readonly to group', () => {
+            createTestComponent(RadioToggleGroupTest);
+            const testInstance = fixture.componentInstance as RadioToggleGroupTest;
+            testInstance.readonly = true;
+            const group = fixture.nativeElement.querySelector('nx-radio-toggle>div');
+            fixture.detectChanges();
+            expect(group.getAttribute('aria-readonly')).toBeTruthy();
+        });
+
+        it('should preventDefault on click', () => {
+            createTestComponent(RadioToggleGroupTest);
+            const toggleButtons = fixture.debugElement.queryAll(By.directive(NxRadioToggleButtonComponent));
+            const testInstance = fixture.componentInstance as RadioToggleGroupTest;
+
+            testInstance.readonly = true;
+            fixture.detectChanges();
+
+            click(0);
+            fixture.detectChanges();
+            expect(toggleButtons[0].componentInstance.selected).toBeFalse();
+
+            click(1);
+            fixture.detectChanges();
+            expect(toggleButtons[1].componentInstance.selected).toBeFalse();
+        });
+
+        it('should set readonly programmatically with NxAbstractControl', () => {
+            createTestComponent(RadioToggleGroupTest);
+            const testInstance = fixture.componentInstance as RadioToggleGroupTest;
+            fixture.detectChanges();
+
+            testInstance.toggleGroup.setReadonly(true);
+            fixture.detectChanges();
+
+            const radios = fixture.nativeElement.querySelectorAll('nx-radio-toggle-button');
+            radios.forEach((radio: any) => {
+                expect(radio).toHaveClass('is-readonly');
+            });
+        });
+    });
 });
 
 @Directive({ standalone: true })
@@ -652,3 +717,16 @@ class ValidationToggle extends RadioToggleTest {
     imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class FocusRadioToggle extends RadioToggleTest {}
+
+@Component({
+    template: `<nx-radio-toggle name="radioToggleGroupTest" [readonly]="readonly" #radioToggleGroup>
+        <nx-radio-toggle-button value="0">0</nx-radio-toggle-button>
+        <nx-radio-toggle-button value="1">1</nx-radio-toggle-button>
+    </nx-radio-toggle>`,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
+})
+class RadioToggleGroupTest extends RadioToggleTest {
+    readonly = false;
+    @ViewChild('radioToggleGroup', { read: NxAbstractControl }) toggleGroup!: NxAbstractControl;
+}

@@ -8,6 +8,7 @@ import {
     Component,
     ContentChildren,
     DoCheck,
+    forwardRef,
     Input,
     OnDestroy,
     Optional,
@@ -15,6 +16,7 @@ import {
     Self,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher, mapClassNames } from '@aposin/ng-aquila/utils';
 import { merge, Observable, Subject } from 'rxjs';
 import { startWith, switchMap, takeUntil } from 'rxjs/operators';
@@ -38,6 +40,12 @@ export const RESET_VALUES = [null, undefined, ''];
     styleUrls: ['radio-toggle.component.scss'],
     standalone: true,
     imports: [NgClass],
+    providers: [
+        {
+            provide: NxAbstractControl,
+            useExisting: forwardRef(() => NxRadioToggleComponent),
+        },
+    ],
 })
 export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, AfterContentInit, DoCheck {
     private readonly _toggleId: string = (nextId++).toString();
@@ -67,6 +75,19 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
         return this._disabled;
     }
     private _disabled = false;
+
+    /** Sets the component to the readonly state.*/
+    @Input({ transform: booleanAttribute }) set readonly(value: boolean) {
+        const coerced = coerceBooleanProperty(value);
+        if (this._readonly !== coerced) {
+            this._readonly = coerced;
+            this._disableChange.next();
+        }
+    }
+    get readonly(): boolean {
+        return this._readonly;
+    }
+    private _readonly = false;
 
     /** Sets the name used for accessibility. */
     @Input() set name(value: string) {
@@ -206,5 +227,10 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
         if (newState !== oldState) {
             this.errorState = newState;
         }
+    }
+
+    setReadonly(value: boolean): void {
+        this.readonly = value;
+        this._cdr.markForCheck();
     }
 }

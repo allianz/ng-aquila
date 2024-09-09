@@ -5,10 +5,12 @@
     [checked]="selected"
     class="nx-radio-toggle__input"
     type="radio"
-    (click)="selected = true"
+    (click)="_onInputClick($event)"
     [disabled]="disabled"
     [ngClass]="{ 'disable-mobile': disableMobile }"
     [attr.aria-label]="ariaLabel"
+    [attr.aria-disabled]="readonly || null"
+    [class.is-readonly]="readonly"
 />
 <div (click)="triggerInputClick($event)" [ngClass]="{ 'disable-mobile': disableMobile }" #toggleButtonLabelContainer class="nx-radio-toggle__label-container">
     <label [attr.for]="toggleButtonId" class="nx-radio-toggle__label" [ngClass]="{ 'disable-mobile': disableMobile }">

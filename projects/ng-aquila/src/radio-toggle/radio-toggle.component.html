@@ -1,3 +1,9 @@
-<div class="nx-radio-toggle {{ additionalClasses }}" [ngClass]="{ 'disable-mobile': disableMobile }" role="radiogroup" [attr.aria-label]="name">
+<div
+    class="nx-radio-toggle {{ additionalClasses }}"
+    [ngClass]="{ 'disable-mobile': disableMobile }"
+    role="radiogroup"
+    [attr.aria-label]="name"
+    [attr.aria-readonly]="readonly"
+>
     <ng-content></ng-content>
 </div>

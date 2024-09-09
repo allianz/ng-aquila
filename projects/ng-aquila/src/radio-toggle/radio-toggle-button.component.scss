@@ -61,6 +61,25 @@ $border-radius: nx-border-radius(s);
             cursor: not-allowed;
         }
     }
+
+    &.is-readonly + .nx-radio-toggle__label-container {
+        background-color: v(toggle-button-readonly-unselected-background-color);
+        border-color: v(toggle-button-readonly-unselected-border-color);
+        color: v(toggle-button-readonly-unselected-text-color);
+        .nx-radio-toggle__label:hover {
+            cursor: not-allowed;
+        }
+    }
+
+    &.is-readonly + .nx-radio-toggle__label-container:hover {
+        cursor: not-allowed;
+    }
+
+    &:checked.is-readonly + .nx-radio-toggle__label-container {
+        background-color: v(toggle-button-readonly-selected-background-color);
+        border-color: v(toggle-button-readonly-selected-border-color);
+        color: v(toggle-button-readonly-selected-text-color);
+    }
 }
 
 .nx-radio-toggle__input:checked + .nx-radio-toggle__label-container {

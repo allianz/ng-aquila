@@ -16,6 +16,7 @@ import {
     Renderer2,
 } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -40,11 +41,16 @@ export class NxRadioToggleButtonChange {
             provide: NxRadioToggleButtonBaseComponent,
             useExisting: forwardRef(() => NxRadioToggleButtonComponent),
         },
+        {
+            provide: NxAbstractControl,
+            useExisting: forwardRef(() => NxRadioToggleButtonComponent),
+        },
     ],
     host: {
         '[class.has-error]': '_controlInvalid() || null',
         '[attr.aria-invalid]': '_controlInvalid() || null',
         '(focus)': '_forwardFocusToInput()',
+        '[class.is-readonly]': 'readonly',
     },
     standalone: true,
     imports: [NxIconModule, NgClass],
@@ -65,6 +71,15 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
         return this._disabled || this.radioToggle?.disabled;
     }
     private _disabled = false;
+
+    @Input({ transform: booleanAttribute }) set readonly(value: boolean) {
+        this._readonly = coerceBooleanProperty(value);
+        this._cdr.markForCheck();
+    }
+    get readonly(): boolean {
+        return this._readonly || this.radioToggle?.readonly;
+    }
+    private _readonly = false;
 
     /** Aria label for screen reader users */
     @Input() set ariaLabel(value: string) {
@@ -132,6 +147,11 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
         this._focusMonitor.stopMonitoring(this.toggleInput);
     }
 
+    setReadonly(value: boolean): void {
+        this.readonly = value;
+        this._cdr.markForCheck();
+    }
+
     /** @docs-private */
     get toggleId(): string {
         return this.radioToggle.id;
@@ -188,5 +208,13 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     /** Forward focus from host to hidden input field */
     _forwardFocusToInput() {
         this.toggleInput.nativeElement.focus();
+    }
+
+    _onInputClick(event: MouseEvent) {
+        if (this.readonly) {
+            event.preventDefault();
+            return;
+        }
+        this.selected = true;
     }
 }
