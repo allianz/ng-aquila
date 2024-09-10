@@ -117,7 +117,7 @@ We fully support the following browsers:
 -   Chrome: 2 most recent major versions
 -   Firefox: latest and extended support release (ESR)
 -   MS Edge: 2 most recent major versions
--   Safari: 2 most recent major versions
+-   Safari: most recent major version
 
 We do not support IE11 since version 13 and recommend to use modern browsers instead.
 
