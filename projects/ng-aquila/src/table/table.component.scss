@@ -20,7 +20,7 @@ $sticky-shadow-size: nx-spacer(3xs);
     }
 }
 
-::ng-deep .nx-header-cell {
+:host ::ng-deep .nx-header-cell {
     @include type-style(table-header-cell);
     color: v(table-header-cell-color);
     background: v(table-header-cell-background-color);
@@ -60,7 +60,7 @@ $sticky-shadow-size: nx-spacer(3xs);
     background: v(table-row-background-color);
 }
 
-::ng-deep .nx-table-cell {
+:host ::ng-deep .nx-table-cell {
     @include type-style(table-cell);
     color: v(table-cell-color);
     padding-top: $vertical-padding;
