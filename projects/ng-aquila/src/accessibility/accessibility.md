@@ -20,9 +20,9 @@ All components in our Component Library are compliant with the WCAG 2 Level AA a
 
 ### We aim to support the following screen readers:
 
--   VoiceOver macOS 12 (evergreen)
--   JAWS 2019
--   NVDA (evergreen)
+-   NVDA + Firefox
+-   JAWS 2023 + Edge/Chrome
+-   VoiceOver macOS/iOS + Safari
 
 ### Guidelines
 
