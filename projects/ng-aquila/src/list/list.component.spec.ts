@@ -79,6 +79,14 @@ describe('NxListComponent', () => {
             createTestComponent(BasicList);
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
+
+        it('should set aria-hidden to the icon', () => {
+            createTestComponent(ListWithIcons);
+            fixture.detectChanges();
+            const listItems: NodeListOf<HTMLLIElement> = listNativeElement.querySelectorAll('li');
+            const nxIcon = listItems.item(0).querySelector('nx-icon');
+            expect(nxIcon?.getAttribute('aria-hidden')).toBe('true');
+        });
     });
 });
 
