@@ -234,7 +234,8 @@ export class StackBlitzWriter {
                 import { provideHttpClient, withInterceptorsFromDi, withJsonpSupport } from '@angular/common/http';
                 import { importProvidersFrom } from '@angular/core';
                 import { RouterModule } from '@angular/router';
-                import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
+                import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';   
+                import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
 
                 import { bootstrapApplication } from '@angular/platform-browser';
                 import { ${exampleComponentName} } from '${exampleImportPath}';
@@ -245,7 +246,8 @@ export class StackBlitzWriter {
                   provideAnimationsAsync(),
                   provideHttpClient(withInterceptorsFromDi(), withJsonpSupport()),
                   importProvidersFrom(RouterModule.forRoot([])),
-                  importProvidersFrom(NxDocumentationIconModule)
+                  importProvidersFrom(NxDocumentationIconModule),            
+                  importProvidersFrom(NxMomentDateModule)
                 ]
                 });
             `;
