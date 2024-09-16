@@ -1,0 +1,43 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "aquila-docs-example": {
+            "root": "",
+            "sourceRoot": "src",
+            "projectType": "application",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "aot": true,
+                        "outputPath": "dist",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": ["zone.js"],
+                        "tsConfig": "tsconfig.app.json",
+                        "assets": [],
+                        "styles": [
+                            "node_modules/@angular/cdk/a11y-prebuilt.css",
+                            "node_modules/@angular/cdk/overlay-prebuilt.css",
+                            "src/styles.scss",
+                            "node_modules/@aposin/ng-aquila/css/normalize.css",
+                            "node_modules/@aposin/ng-aquila/css/utilities.css",
+                            "node_modules/@aposin/ng-aquila/themes/aposin.css"
+                        ],
+                        "scripts": [],
+                        "outputHashing": "all"
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "aquila-docs-example:build"
+                    }
+                }
+            }
+        }
+    }
+}
