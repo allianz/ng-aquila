@@ -56,7 +56,7 @@ $sticky-shadow-size: nx-spacer(3xs);
     }
 }
 
-::ng-deep .nx-table-row {
+:host ::ng-deep .nx-table-row {
     background: v(table-row-background-color);
 }
 
@@ -120,7 +120,7 @@ $sticky-shadow-size: nx-spacer(3xs);
     }
 }
 
-::ng-deep .nx-expandable-table-cell {
+:host ::ng-deep .nx-expandable-table-cell {
     @include type-style(table-cell);
     color: v(table-cell-color);
 
@@ -198,7 +198,7 @@ $sticky-shadow-size: nx-spacer(3xs);
     }
 }
 
-::ng-deep .nx-table-row {
+:host ::ng-deep .nx-table-row {
     &:first-child .nx-table-cell {
         border-top: 0;
     }
@@ -262,9 +262,9 @@ $sticky-shadow-size: nx-spacer(3xs);
 }
 
 // remove margins from some components that are placed inside table cells
-::ng-deep .nx-header-cell,
-::ng-deep .nx-table-cell,
-::ng-deep .nx-exandable-table-cell {
+:host ::ng-deep .nx-header-cell,
+:host ::ng-deep .nx-table-cell,
+:host ::ng-deep .nx-exandable-table-cell {
     nx-checkbox {
         margin: 0;
 
@@ -309,8 +309,8 @@ $sticky-shadow-size: nx-spacer(3xs);
 
 // sticky columns
 @include media-breakpoint-up(medium) {
-    ::ng-deep .nx-header-cell,
-    ::ng-deep .nx-table-cell {
+    :host ::ng-deep .nx-header-cell,
+    :host ::ng-deep .nx-table-cell {
         :host(.nx-table--sticky-first) &:first-child,
         :host(.nx-table--sticky-last) &:last-child {
             position: sticky;
@@ -339,7 +339,7 @@ $sticky-shadow-size: nx-spacer(3xs);
         }
 
         // add the zebra color to the sticky column
-        ::ng-deep .nx-table-row:nth-child(2n) & {
+        :host ::ng-deep .nx-table-row:nth-child(2n) & {
             :host(.nx-table--sticky-first.nx-table--zebra) &:first-child,
             :host(.nx-table--sticky-last.nx-table--zebra) &:last-child {
                 background: v(zebra-table-even-row-background-color);
@@ -347,7 +347,7 @@ $sticky-shadow-size: nx-spacer(3xs);
         }
 
         // add the selected row color to the sticky column
-        ::ng-deep .nx-table-row--selectable.is-selected & {
+        :host ::ng-deep .nx-table-row--selectable.is-selected & {
             :host(.nx-table--sticky-first) &:first-child,
             :host(.nx-table--sticky-last) &:last-child {
                 background: v(zebra-table-row-selected-background-color);
@@ -355,7 +355,7 @@ $sticky-shadow-size: nx-spacer(3xs);
         }
 
         // add hover to the sticky column of non selected rows
-        ::ng-deep .nx-table-row--selectable:not(.is-selected):hover & {
+        :host ::ng-deep .nx-table-row--selectable:not(.is-selected):hover & {
             :host(.nx-table--sticky-first) &:first-child,
             :host(.nx-table--sticky-last) &:last-child {
                 background: v(selectable-table-row-hover-background-color);
@@ -363,7 +363,7 @@ $sticky-shadow-size: nx-spacer(3xs);
         }
 
         // add hover to the sticky column of non selected zebra rows
-        ::ng-deep .nx-table-row--selectable:not(.is-selected):hover & {
+        :host ::ng-deep .nx-table-row--selectable:not(.is-selected):hover & {
             :host(.nx-table--sticky-first.nx-table--zebra) &:first-child,
             :host(.nx-table--sticky-last.nx-table--zebra) &:last-child {
                 background: v(zebra-table-row-hover-background-color);
@@ -371,7 +371,7 @@ $sticky-shadow-size: nx-spacer(3xs);
         }
 
         // add hover to the sticky column of selected rows
-        ::ng-deep .nx-table-row--selectable.is-selected:hover & {
+        :host ::ng-deep .nx-table-row--selectable.is-selected:hover & {
             :host(.nx-table--sticky-first) &:first-child,
             :host(.nx-table--sticky-last) &:last-child {
                 background: v(zebra-table-even-row-background-color);
@@ -379,7 +379,7 @@ $sticky-shadow-size: nx-spacer(3xs);
         }
 
         // add active to the sticky column of non selected rows
-        ::ng-deep .nx-table-row--selectable:not(.is-selected):active & {
+        :host ::ng-deep .nx-table-row--selectable:not(.is-selected):active & {
             :host(.nx-table--sticky-first.nx-table--zebra) &:first-child,
             :host(.nx-table--sticky-last.nx-table--zebra) &:last-child {
                 background: v(zebra-table-row-active-background-color);
