@@ -54,14 +54,12 @@
 </div>
 
 @if (direction === 'horizontal') {
-    <div class="labels-container" role="tablist">
+    <div class="labels-container">
         @for (step of steps; track step; let i = $index) {
             <div
                 class="label"
-                role="tab"
                 tabindex="-1"
                 [attr.aria-controls]="_getStepContentId(i)"
-                [attr.aria-selected]="selectedIndex === i"
                 [ngClass]="{ 'is-disabled': _stepDisabled(i), 'is-selected': selectedIndex === i }"
                 (click)="!_stepDisabled(i) && step.select()"
             >
