@@ -69,7 +69,7 @@ describe(NxFooterComponent.name, () => {
 
         it('should display default copyright text with custom input', () => {
             expect(footerNativeElement.querySelectorAll('nx-footer-copyright').length).toBe(1);
-            expect(footerNativeElement.querySelector('nx-footer-copyright')?.textContent).toEqual(`© Other company ${currentYear}`);
+            expect(footerNativeElement.querySelector('nx-footer-copyright')?.textContent).toEqual(`© ${currentYear} Other company`);
         });
     });
 

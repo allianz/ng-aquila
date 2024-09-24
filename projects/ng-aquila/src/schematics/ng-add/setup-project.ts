@@ -77,7 +77,7 @@ function addStarterApp(options: Schema): Rule {
         return async (tree, context) => {
             const currentYear = new Date().getFullYear();
             const copyrightTemplate = 'Copyright ALLIANZ';
-            const copyrightStamp = `Copyright Allianz ${currentYear}`;
+            const copyrightStamp = `Copyright ${currentYear} Allianz`;
 
             const projectFiles = [`${projectAppPath}/app.component.ts`, `${projectAppPath}/app.component.html`];
 

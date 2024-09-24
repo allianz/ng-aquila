@@ -78,10 +78,10 @@ describe('ng-aquila: ng add', () => {
         it('should update Starter App files', () => {
             const currentYear = new Date().getFullYear();
             expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeName + '/src/app/app.component.ts')).toContain(
-                `/** Copyright Allianz ${currentYear} */`,
+                `/** Copyright ${currentYear} Allianz */`,
             );
             expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeName + '/src/app/app.component.html')).toContain(
-                `<!-- Copyright Allianz ${currentYear} -->`,
+                `<!-- Copyright ${currentYear} Allianz -->`,
             );
         });
 
@@ -175,10 +175,10 @@ describe('ng-aquila: ng add standalone', () => {
         it('should update Starter App files for standalone apps', () => {
             const currentYear = new Date().getFullYear();
             expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeNameStandalone + '/src/app/app.component.ts')).toContain(
-                `/** Copyright Allianz ${currentYear} */`,
+                `/** Copyright ${currentYear} Allianz */`,
             );
             expect(testSetup.appTree.readContent('projects/' + testSetup.appTreeNameStandalone + '/src/app/app.component.html')).toContain(
-                `<!-- Copyright Allianz ${currentYear} -->`,
+                `<!-- Copyright ${currentYear} Allianz -->`,
             );
         });
 

@@ -37,11 +37,11 @@ describe('StackBlitzWriter', () => {
         const currentYear = new Date().getFullYear();
         expect(stackBlitzWriter._appendCopyright('test.ts', 'NoContent')).toBe(`NoContent
 
-/**  Copyright ALLIANZ ${currentYear} */`);
+/**  Copyright ${currentYear} ALLIANZ */`);
 
         expect(stackBlitzWriter._appendCopyright('test.html', 'NoContent')).toBe(`NoContent
 
-<!-- Copyright ALLIANZ ${currentYear} -->`);
+<!-- Copyright ${currentYear} ALLIANZ -->`);
     });
 
     it('should create form element', () => {

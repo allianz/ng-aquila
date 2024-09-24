@@ -6,7 +6,7 @@ import { ExampleData } from './example-data';
 const STACKBLITZ_URL = 'https://run.stackblitz.com/api/angular/v1';
 
 const currentYear = new Date().getFullYear();
-const COPYRIGHT = `Copyright ALLIANZ ${currentYear}`;
+const COPYRIGHT = `Copyright ${currentYear} ALLIANZ`;
 
 /**
  * Path that refers to the docs-content from the "@angular/components-examples" package. The
@@ -234,7 +234,7 @@ export class StackBlitzWriter {
                 import { provideHttpClient, withInterceptorsFromDi, withJsonpSupport } from '@angular/common/http';
                 import { importProvidersFrom } from '@angular/core';
                 import { RouterModule } from '@angular/router';
-                import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';   
+                import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
                 import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
 
                 import { bootstrapApplication } from '@angular/platform-browser';
@@ -246,7 +246,7 @@ export class StackBlitzWriter {
                   provideAnimationsAsync(),
                   provideHttpClient(withInterceptorsFromDi(), withJsonpSupport()),
                   importProvidersFrom(RouterModule.forRoot([])),
-                  importProvidersFrom(NxDocumentationIconModule),            
+                  importProvidersFrom(NxDocumentationIconModule),
                   importProvidersFrom(NxMomentDateModule)
                 ]
                 });
