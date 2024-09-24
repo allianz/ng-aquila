@@ -13,7 +13,8 @@ import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } 
 import { ComponentPortal } from '@angular/cdk/portal';
 import { DOCUMENT, NgClass } from '@angular/common';
 import {
-    AfterContentInit,
+    afterNextRender,
+    AfterRenderPhase,
     AfterViewInit,
     ChangeDetectionStrategy,
     Component,
@@ -24,8 +25,8 @@ import {
     inject,
     Injectable,
     InjectionToken,
+    Injector,
     Input,
-    NgZone,
     OnDestroy,
     Optional,
     Output,
@@ -35,7 +36,7 @@ import {
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { merge, Subject } from 'rxjs';
-import { filter, take, takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 
 import { NxDateAdapter } from '../adapter/date-adapter';
 import { NxDatefieldDirective } from '../datefield.directive';
@@ -109,8 +110,17 @@ export const DATEPICKER_DEFAULT_OPTIONS = new InjectionToken<DatepickerDefaultOp
     standalone: true,
     imports: [CdkTrapFocus, NxIconModule, NxCalendarComponent, NgClass, NxButtonModule],
 })
-export class NxDatepickerContentComponent<D> implements AfterContentInit, AfterViewInit, OnDestroy {
+export class NxDatepickerContentComponent<D> implements AfterViewInit, OnDestroy {
     datepicker!: NxDatepickerComponent<D>;
+
+    private _afterNextRenderInitial = afterNextRender(
+        () => {
+            this.elementRef.nativeElement.querySelector('.nx-calendar-body-active').focus();
+        },
+        {
+            phase: AfterRenderPhase.Read,
+        },
+    );
 
     @ViewChild(NxCalendarComponent, { static: true }) _calendar!: NxCalendarComponent<D>;
     @ViewChild('closeButton') _closeButton!: ElementRef<HTMLElement>;
@@ -118,13 +128,8 @@ export class NxDatepickerContentComponent<D> implements AfterContentInit, AfterV
     constructor(
         readonly _intl: NxDatepickerIntl,
         readonly elementRef: ElementRef,
-        private readonly _ngZone: NgZone,
         private readonly _focusMonitor: FocusMonitor,
     ) {}
-
-    ngAfterContentInit(): void {
-        this._focusActiveCell();
-    }
 
     ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._closeButton);
@@ -132,18 +137,7 @@ export class NxDatepickerContentComponent<D> implements AfterContentInit, AfterV
 
     ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._closeButton);
-    }
-
-    /** Focuses the active cell after the microtask queue is empty. */
-    private _focusActiveCell() {
-        this._ngZone.runOutsideAngular(() => {
-            this._ngZone.onStable
-                .asObservable()
-                .pipe(take(1))
-                .subscribe(() => {
-                    this.elementRef.nativeElement.querySelector('.nx-calendar-body-active').focus();
-                });
-        });
+        this._afterNextRenderInitial.destroy();
     }
 }
 
@@ -156,6 +150,8 @@ export class NxDatepickerContentComponent<D> implements AfterContentInit, AfterV
     standalone: true,
 })
 export class NxDatepickerComponent<D> implements OnDestroy {
+    private _injector = inject(Injector);
+
     /** The date to open the calendar initially. */
     @Input() set startAt(value: D | null) {
         this._startAt = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
@@ -288,7 +284,6 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     constructor(
         private readonly _overlay: Overlay,
-        private readonly _ngZone: NgZone,
         private readonly _viewContainerRef: ViewContainerRef,
         @Inject(NX_DATEPICKER_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
         @Optional() _dateAdapter: NxDateAdapter<D> | null,
@@ -450,13 +445,15 @@ export class NxDatepickerComponent<D> implements OnDestroy {
             this._popupComponentRef = this._popupRef!.attach(this._calendarPortal);
             this._popupComponentRef.instance.datepicker = this;
 
-            // Update the position once the calendar has rendered.
-            this._ngZone.onStable
-                .asObservable()
-                .pipe(take(1))
-                .subscribe(() => {
+            afterNextRender(
+                () => {
                     this._popupRef!.updatePosition();
-                });
+                },
+                {
+                    injector: this._injector,
+                    phase: AfterRenderPhase.Write,
+                },
+            );
         }
     }
 

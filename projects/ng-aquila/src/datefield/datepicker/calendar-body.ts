@@ -8,20 +8,23 @@
 
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
+    afterNextRender,
+    AfterRenderPhase,
     AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     EventEmitter,
+    inject,
+    Injector,
     Input,
-    NgZone,
     OnDestroy,
     Output,
     QueryList,
     ViewChildren,
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { take, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 /**
  * An internal class that represents the data corresponding to a single calendar cell.
@@ -93,6 +96,8 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
 
     @ViewChildren('cell') _cells!: QueryList<ElementRef<HTMLElement>>;
 
+    private _injector = inject(Injector);
+
     /** Preserves the current value of the _cells ViewChildren in case _cells changes. */
     private _cellsPrevious!: QueryList<ElementRef<HTMLElement>>;
 
@@ -100,7 +105,6 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
 
     constructor(
         private readonly _elementRef: ElementRef,
-        private readonly _ngZone: NgZone,
         private readonly _focusMonitor: FocusMonitor,
     ) {}
 
@@ -170,13 +174,14 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
 
     /** Focuses the active cell after the microtask queue is empty. */
     _focusActiveCell() {
-        this._ngZone.runOutsideAngular(() => {
-            this._ngZone.onStable
-                .asObservable()
-                .pipe(take(1))
-                .subscribe(() => {
-                    this._elementRef.nativeElement.querySelector('.nx-calendar-body-active').focus();
-                });
-        });
+        afterNextRender(
+            () => {
+                this._elementRef.nativeElement.querySelector('.nx-calendar-body-active').focus();
+            },
+            {
+                injector: this._injector,
+                phase: AfterRenderPhase.Read,
+            },
+        );
     }
 }
