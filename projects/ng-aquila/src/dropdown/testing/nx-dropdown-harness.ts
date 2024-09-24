@@ -49,7 +49,9 @@ export class NxDropdownHarness extends NxFormfieldControlHarness {
     }
 
     async isFocused(): Promise<boolean> {
-        return (await this.host()).isFocused();
+        const newVar = await this.host();
+        newVar.matchesSelector(':focus-within');
+        return newVar.isFocused();
     }
 
     async isEmpty(): Promise<boolean> {

@@ -17,6 +17,7 @@ import { NxFormfieldNoteHarness, NxFormfieldNoteHarnessFilters } from './nx-form
 export interface NxFormfieldFilters extends BaseHarnessFilters {
     label?: string | RegExp;
     hasErrors?: boolean;
+    readonly?: boolean;
 }
 
 export type FormfieldControlHarness = NxInputHarness | NxDropdownHarness;
@@ -27,7 +28,8 @@ export class NxFormfieldHarness extends ContentContainerComponentHarness {
     static with(options: NxFormfieldFilters = {}): HarnessPredicate<NxFormfieldHarness> {
         return new HarnessPredicate<NxFormfieldHarness>(NxFormfieldHarness, options)
             .addOption('label', options.label, (harness, label) => HarnessPredicate.stringMatches(harness.getLabel(), label))
-            .addOption('hasErrors', options.hasErrors, async (harness, hasErrors) => (await harness.hasErrors()) === hasErrors);
+            .addOption('hasErrors', options.hasErrors, async (harness, hasErrors) => (await harness.hasErrors()) === hasErrors)
+            .addOption('readonly', options.readonly, async (harness, readonly) => (await harness.isReadonly()) === readonly);
     }
 
     private _label = this.locatorFor('label.nx-formfield__label');
@@ -115,5 +117,9 @@ export class NxFormfieldHarness extends ContentContainerComponentHarness {
     async isValid(): Promise<boolean> {
         const host = await this.host();
         return host.hasClass('has-error').then(result => !result);
+    }
+
+    async isReadonly(): Promise<boolean> {
+        return (await this.host()).hasClass('is-readonly');
     }
 }

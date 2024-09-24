@@ -110,6 +110,13 @@ describe('NxFormfieldHarness', () => {
         expect(await formfield.getHintText()).toBe('The Hint');
     });
 
+    it('should get is readonly', async () => {
+        const { loader } = createTestComponent(`<nx-formfield><input nxInput readonly></nx-formfield>`);
+        const formfield = await loader.getHarness(NxFormfieldHarness);
+
+        expect(await formfield.isReadonly()).toBe(true);
+    });
+
     describe('filters', () => {
         it('should find by label', async () => {
             const { loader } = createTestComponent(
@@ -131,6 +138,17 @@ describe('NxFormfieldHarness', () => {
             control.markAllAsTouched();
             expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ hasErrors: true }))).toHaveSize(1);
             expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ hasErrors: false }))).toHaveSize(1);
+        });
+
+        it('should find by readonly', async () => {
+            const { loader } = createTestComponent(
+                `<nx-formfield><input nxInput [readonly]="true"></nx-formfield>
+                <nx-formfield><input nxInput></nx-formfield>`,
+                new FormControl<string>('', Validators.required),
+            );
+
+            expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ readonly: true }))).toHaveSize(1);
+            expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ readonly: false }))).toHaveSize(1);
         });
     });
 });
