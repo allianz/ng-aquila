@@ -127,8 +127,14 @@ describe('NxCheckboxGroupComponent', () => {
         fixture.detectChanges();
 
         let errors = fixture.nativeElement.querySelectorAll('nx-error') as NodeListOf<HTMLInputElement>;
+
+        const group = fixture.nativeElement.querySelector('nx-checkbox-group');
+        const labelId = fixture.nativeElement.querySelector('.nx-label__content')?.id;
+        const errorId = errors[0]?.querySelector('.nx-error__content')?.id;
+
         expect(errors).toHaveSize(1);
         expect(checkboxGroupInstance.errorState).toBeTruthy();
+        expect(group.getAttribute('aria-labelledby')).toBe(`${labelId} ${errorId}`);
 
         [0, 1, 2].forEach(i => checkboxElements[i].click());
         fixture.detectChanges();

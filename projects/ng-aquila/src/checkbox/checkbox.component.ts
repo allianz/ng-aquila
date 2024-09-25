@@ -36,7 +36,7 @@ import {
     ValidationErrors,
     Validator,
 } from '@angular/forms';
-import { NxLabelComponent } from '@aposin/ng-aquila/base';
+import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
@@ -79,9 +79,9 @@ export type NxCheckboxLabelSize = 'small' | 'large';
         '[attr.id]': 'id',
         '[attr.required]': 'required',
         '[attr.disabled]': 'disabled || null',
-        '[attr.aria-labelledby]': 'this._label?.id  || null',
         '[attr.role]': '"group"',
         '(focus)': '_forwardFocusToInput()',
+        '[attr.aria-labelledby]': 'getLabelledby()',
     },
     standalone: true,
     imports: [],
@@ -96,6 +96,8 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     @ContentChildren(forwardRef(() => NxCheckboxComponent), { descendants: true }) _checkboxes!: QueryList<NxCheckboxComponent>;
 
     @ContentChild(forwardRef(() => NxLabelComponent)) _label!: NxLabelComponent;
+
+    @ContentChild(NxErrorComponent) error!: NxErrorComponent;
 
     errorState = false;
 
@@ -292,6 +294,13 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
             this.errorState = newState;
             this._cdr.markForCheck();
         }
+    }
+
+    getLabelledby() {
+        if (!this._label?.id && !this.error?.id) {
+            return null;
+        }
+        return [this._label?.id, this.error?.id].join(' ');
     }
 }
 
