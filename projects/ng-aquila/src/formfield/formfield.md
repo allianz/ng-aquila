@@ -188,3 +188,19 @@ The implementation is similar to Angular Material and can be checked for referen
 
 ### Showing optional label
 <!-- example(formfield-optional-label) -->
+ 
+### Customizing Form Field Spacing with CSS Variables 
+
+To customize the spacing of form fields, you can adjust the existing CSS variables. This allows for flexibility when applying styles, whether you need to remove or modify the spacing across specific forms, individual form fields, or the entire application.
+
+We provide default spacing for form fields, but in cases where you need to adjust it, you can use the following CSS variables:
+
+```scss
+--formfield-bottom-padding: 0;
+--formfield-outline-bottom-padding: 0;
+--formfield-mobile-bottom-padding: 0;
+```
+
+Here’s an example of how to remove bottom spacing for a whole form:
+
+<!-- example(formfield-spacing-adjuster) -->
