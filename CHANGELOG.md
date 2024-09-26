@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.4.0](https://github.com/allianz/ng-aquila/compare/v18.3.0...v18.4.0) (2024-09-26)
+
+
+### Documentation 📚
+
+* add aquila issue template ([05515fd](https://github.com/allianz/ng-aquila/commit/05515fd58d1e2a5478c2afb007b353ff5ea32d15))
+* update icon version info ([e6c02ea](https://github.com/allianz/ng-aquila/commit/e6c02eaf75d01ca8775105ee126043fbdf189d76))
+* update safari just to most recent ([6193c65](https://github.com/allianz/ng-aquila/commit/6193c658c2cca374f24fb0a9b7ed709c4b0c776f))
+* update screenreader support page ([feaae27](https://github.com/allianz/ng-aquila/commit/feaae27f9b84ecd433d4abfe4d37d212bb32ce85))
+
+
+### Bug Fixes 🐛
+
+* **checkbox:** link checkbox group aria-labelledby with projected nx-error ([1793088](https://github.com/allianz/ng-aquila/commit/1793088a10734af02d93ad84a77a29f7adcd02e9))
+* **datefield:** make the datepicker zoneless ready ([e64213d](https://github.com/allianz/ng-aquila/commit/e64213da6ad6b47ddd285a4aee7f05eacd5f73e5))
+* **foooter:** first year then company ([78da2e8](https://github.com/allianz/ng-aquila/commit/78da2e81e2e30c7cc4bef3cbc227b8a05158d2e7))
+* **list:** icons missing aria-labels ([50da7ee](https://github.com/allianz/ng-aquila/commit/50da7ee3c2f639dbbdea6ef85d7e2996a838dd24))
+* **multi-stepper:** remove unnecessary aria role ([967aea3](https://github.com/allianz/ng-aquila/commit/967aea32ad1da17f8dcec887e6d8939a7113ca75))
+* **table:** add :host to ::ng-deep for block-scoped styles ([d1014e3](https://github.com/allianz/ng-aquila/commit/d1014e3e63b01468f7c84e05836b32603d4b08e7))
+* **table:** spacing issues with ndbx-base-integrated styles ([4d4dc1c](https://github.com/allianz/ng-aquila/commit/4d4dc1cf9725126aa349eee1d0fdd54e61686bc8))
+
+
+### Features ✨
+
+* **formfield-harness:** add isReadonly query and filter ([93c1149](https://github.com/allianz/ng-aquila/commit/93c1149ded8b85dbe74da1c27361866f3f60b47b))
+* **formfield:** add example of customizing spacing with theming tokens ([6b25bac](https://github.com/allianz/ng-aquila/commit/6b25bacfdb5ffd5e534ece77c843d008405455b0))
+* **switcher:** announce errors by screen readers by linking error message  ([4ba485f](https://github.com/allianz/ng-aquila/commit/4ba485f6702903c099dc36677c57a26f2b80ea44))
+
 ## [18.3.0](https://github.com/allianz/ng-aquila/compare/v18.2.0...v18.3.0) (2024-09-09)
 
 ### Readonly states for radio- and checkbox-style components
