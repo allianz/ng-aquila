@@ -1,11 +1,12 @@
 import { JsonPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
     FormBuilder,
     FormsModule,
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import { NxSwitcherComponent } from '@aposin/ng-aquila/switcher';
 
@@ -21,9 +22,11 @@ import { NxSwitcherComponent } from '@aposin/ng-aquila/switcher';
         NxSwitcherComponent,
         NxButtonComponent,
         JsonPipe,
+        NxErrorComponent,
     ],
 })
 export class SwitcherReactiveFormExampleComponent {
+    @ViewChild(NxSwitcherComponent) switcher!: NxSwitcherComponent;
     readonly testForm = this.fb.group({
         switcherTestReactive: [false, Validators.requiredTrue],
     });

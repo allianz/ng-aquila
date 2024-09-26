@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, View
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxErrorModule } from '@aposin/ng-aquila/base';
 import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 
 import { NxSwitcherComponent } from './switcher.component';
@@ -312,6 +313,30 @@ describe('NxSwitcherComponent', () => {
             expect(inputElement.getAttribute('aria-labelledby')).toBe('labelBy');
         });
 
+        it('Should reflect aria describedby ids', fakeAsync(() => {
+            createTestComponent(ValidationSwitcherForm);
+            const reactInstance = testInstance as ValidationSwitcherForm;
+            assertChecked(false);
+            expect(switcherNativeElement).not.toHaveClass('has-error');
+            inputElement.click();
+            fixture.detectChanges();
+            tick();
+            assertChecked(true);
+            expect(reactInstance.testForm.touched).toBeTrue();
+            expect(reactInstance.testForm.status).toBe('VALID');
+            expect(switcherNativeElement).not.toHaveClass('has-error');
+            expect(switcherNativeElement).toHaveClass('ng-touched');
+            inputElement.click();
+            fixture.detectChanges();
+            tick();
+            assertChecked(false);
+            expect(switcherNativeElement).toHaveClass('has-error');
+            expect(reactInstance.switcherInstance.errorState).toBeTruthy();
+            expect(reactInstance.switcherInstance._errorChildren.length).toEqual(1);
+
+            expect(inputElement.getAttribute('aria-describedby')).toEqual(`${reactInstance.switcherInstance._errorChildren.first.id} `);
+        }));
+
         it('should set aria-required for template driven ', () => {
             createTestComponent(SwitcherTemplateDriven);
 
@@ -398,11 +423,11 @@ class SwitcherA11y extends SwitcherTest {
 @Component({
     template: `
         <form [formGroup]="testForm">
-            <nx-switcher formControlName="switcherValidationTestReactive"> switcher </nx-switcher>
+            <nx-switcher formControlName="switcherValidationTestReactive"> switcher <nx-error>required</nx-error> </nx-switcher>
         </form>
     `,
     standalone: true,
-    imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
+    imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class ValidationSwitcherForm extends SwitcherTest {
     testForm!: FormGroup;

@@ -7,6 +7,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ContentChildren,
     DoCheck,
     ElementRef,
     EventEmitter,
@@ -18,6 +19,7 @@ import {
     OnInit,
     Optional,
     Output,
+    QueryList,
     ViewChild,
 } from '@angular/core';
 import {
@@ -33,9 +35,12 @@ import {
     Validator,
     Validators,
 } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher, randomString } from '@aposin/ng-aquila/utils';
+import { asapScheduler, Subject } from 'rxjs';
+import { observeOn, startWith, takeUntil } from 'rxjs/operators';
 
 let nextId = 0;
 /** Options for placement of the label */
@@ -89,10 +94,23 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, OnIni
     /** @docs-private */
     @ViewChild('switcherLabelWrapper', { static: true }) _switcherLabelWrapper!: ElementRef;
 
+    @ContentChildren(NxErrorComponent) _errorChildren!: QueryList<NxErrorComponent>;
+
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
     @Input() ariaLabel: string | null = null;
     @Input() ariaLabelledBy: string | null = null;
+    @Input() set ariaDescribedBy(value: string | null) {
+        this._ariaDescribedBy = value;
+        this._syncDescribedByIds();
+        this._cdr.markForCheck();
+    }
+
+    get ariaDescribedBy(): string | null {
+        return this._ariaDescribedBy;
+    }
+
+    private _ariaDescribedBy: string | null = null;
 
     /** Sets the id of the switcher */
     @Input() set id(value: string) {
@@ -183,6 +201,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, OnIni
     private onChangeCallback = (_: any) => {};
     private onTouchedCallback = () => {};
 
+    private readonly _destroyed = new Subject<void>();
     @Input({ transform: booleanAttribute }) set required(value: boolean) {
         this._required = value;
     }
@@ -212,10 +231,16 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, OnIni
 
     ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._nativeInput);
+        this._errorChildren.changes.pipe(startWith(null), observeOn(asapScheduler), takeUntil(this._destroyed)).subscribe(() => {
+            this._syncDescribedByIds();
+            this._cdr.markForCheck();
+        });
     }
 
     ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._nativeInput);
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     /** Allows to toggle between the states */
@@ -256,6 +281,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, OnIni
             // error triggers that we can't subscribe to (e.g. parent form submissions). This means
             // that whatever logic is in here has to be super lean or we risk destroying the performance.
             this.updateErrorState();
+            this._cdr.markForCheck();
         }
     }
 
@@ -296,6 +322,12 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, OnIni
     /** Forward focus from host to hidden input field */
     _forwardFocusToInput() {
         this._nativeInput.nativeElement.focus();
+    }
+
+    private _syncDescribedByIds() {
+        const errorChildren = this._errorChildren || [];
+
+        this._ariaDescribedBy = [...errorChildren.map(error => error.id), this.ariaDescribedBy].join(' ');
     }
 
     /** Sets switcher to readonly. */

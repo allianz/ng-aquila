@@ -10,6 +10,7 @@
     role="switch"
     [attr.aria-checked]="checked"
     [attr.aria-labelledby]="ariaLabelledBy"
+    [attr.aria-describedby]="ariaDescribedBy"
     [attr.aria-label]="ariaLabel"
     [attr.aria-invalid]="errorState"
     [attr.aria-required]="required"
@@ -29,3 +30,9 @@
         <ng-content></ng-content>
     </div>
 </label>
+
+@if (errorState) {
+    <div class="nx-switcher-error">
+        <ng-content select="nx-error"></ng-content>
+    </div>
+}

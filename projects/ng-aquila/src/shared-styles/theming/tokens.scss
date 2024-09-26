@@ -1256,6 +1256,8 @@ $nx-theme: (
     switcher-disabled-dot-background-color: disabled-02,
     switcher-disabled-icon-color: disabled-01,
     switcher-disabled-text-color: disabled-01,
+    // developer preview: stack values are preparation for a1 tokens and might change
+    switcher-stack: 16px,
     switcher-readonly-background-color: readonly-surface-color,
     switcher-readonly-border-color: readonly-on-surface-color,
     switcher-readonly-dot-background-color: readonly-on-surface-color,

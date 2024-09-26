@@ -1,6 +1,7 @@
 <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
     <nx-switcher name="reactiveTest" formControlName="switcherTestReactive">
         switcher label
+        <nx-error>This is required</nx-error>
     </nx-switcher>
 
     <button nxButton="primary small" type="submit" class="nx-margin-top-m">
@@ -11,4 +12,5 @@
     <p class="nx-margin-y-0">
         Form is {{ isSubmitted ? '' : ' not ' }} submitted
     </p>
+    <p class="nx-margin-y-0">Switcher hasError {{switcher?.errorState}}</p>
 </form>

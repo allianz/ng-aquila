@@ -2,12 +2,12 @@
 
 $switcher-border-radius: nx-border-radius(m);
 
-:host {
+.nx-switcher-control {
     position: relative;
     display: flex;
 }
 
-:host(.is-swapped) .nx-switcher__label {
+.nx-switcher-control .is-swapped .nx-switcher__label {
     flex-direction: row-reverse;
 
     &.has-label .nx-switcher__toggle {
@@ -331,4 +331,9 @@ $switcher-border-radius: nx-border-radius(m);
             }
         }
     }
+}
+
+// Error
+.nx-switcher-error {
+    margin-top: v(switcher-stack);
 }
