@@ -91,3 +91,12 @@
 <div nx-docs-example="formfield-custom-tel-input" config="{}">exampleID: formfield-custom-tel-input</div>
 <h3 id="showing-optional-label" tabindex="-1" class="docs-markdown--h3">Showing optional label</h3>
 <div nx-docs-example="formfield-optional-label" config="{}">exampleID: formfield-optional-label</div>
+<h3 id="customizing-form-field-spacing-with-css-variables" tabindex="-1" class="docs-markdown--h3">Customizing Form Field Spacing with CSS Variables</h3>
+<p class="docs-markdown--p">To customize the spacing of form fields, you can adjust the existing CSS variables. This allows for flexibility when applying styles, whether you need to remove or modify the spacing across specific forms, individual form fields, or the entire application.</p>
+<p class="docs-markdown--p">We provide default spacing for form fields, but in cases where you need to adjust it, you can use the following CSS variables:</p>
+<pre><code class="language-scss"><span class="hljs-attr">--formfield-bottom-padding</span>: <span class="hljs-number">0</span>;
+<span class="hljs-attr">--formfield-outline-bottom-padding</span>: <span class="hljs-number">0</span>;
+<span class="hljs-attr">--formfield-mobile-bottom-padding</span>: <span class="hljs-number">0</span>;
+</code></pre>
+<p class="docs-markdown--p">Here’s an example of how to remove bottom spacing for a whole form:</p>
+<div nx-docs-example="formfield-spacing-adjuster" config="{}">exampleID: formfield-spacing-adjuster</div>

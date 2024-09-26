@@ -33,8 +33,10 @@ import { FormfieldPasswordVisibilityExampleComponent } from './formfield-passwor
 import { FormfieldPlaceholderExampleComponent } from './formfield-placeholder/formfield-placeholder-example';
 import { FormfieldPrefixSuffixAppendixExampleComponent } from './formfield-prefix-suffix-appendix/formfield-prefix-suffix-appendix-example';
 import { FormfieldSimpleFormExampleComponent } from './formfield-simple-form/formfield-simple-form-example';
+import { FormfieldSpacingAdjusterExampleComponent } from './formfield-spacing-adjuster/formfield-spacing-adjuster-example';
 
 const EXAMPLES = [
+    FormfieldSpacingAdjusterExampleComponent,
     FormfieldAppearanceExampleComponent,
     FormfieldBasicExampleComponent,
     FormfieldCharacterCountExampleComponent,
@@ -77,6 +79,8 @@ const EXAMPLES = [
 export class FormfieldExamplesModule {
     static components() {
         return {
+            'formfield-spacing-adjuster':
+                FormfieldSpacingAdjusterExampleComponent,
             'formfield-appearance': FormfieldAppearanceExampleComponent,
             'formfield-basic': FormfieldBasicExampleComponent,
             'formfield-character-count':

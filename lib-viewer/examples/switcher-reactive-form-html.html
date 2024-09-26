@@ -1,6 +1,7 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;testForm&quot;</span> (<span class="hljs-attr">ngSubmit</span>)=<span class="hljs-string">&quot;onSubmit()&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-switcher</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;reactiveTest&quot;</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;switcherTestReactive&quot;</span>&gt;</span>
         switcher label
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>This is required<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-switcher</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-m&quot;</span>&gt;</span>
@@ -11,4 +12,5 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-0&quot;</span>&gt;</span>
         Form is {{ isSubmitted ? &#x27;&#x27; : &#x27; not &#x27; }} submitted
     <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-0&quot;</span>&gt;</span>Switcher hasError {{switcher?.errorState}}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>

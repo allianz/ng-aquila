@@ -1200,6 +1200,7 @@ body,
   --switcher-disabled-dot-background-color: var(--disabled-02);
   --switcher-disabled-icon-color: var(--disabled-01);
   --switcher-disabled-text-color: var(--disabled-01);
+  --switcher-stack: 16px;
   --switcher-readonly-background-color: var(--readonly-surface-color);
   --switcher-readonly-border-color: var(--readonly-on-surface-color);
   --switcher-readonly-dot-background-color: var(--readonly-on-surface-color);
