@@ -33,15 +33,15 @@
             Add File
         </button>
 
-        @if (testForm.controls['documents'].hasError('required')) {
-        <nx-error>Required!</nx-error>
-        } @if (testForm.controls['documents'].hasError('serverError')) {
-        <nx-error>An error occured while uploading.</nx-error>
-        } @if (documentUpload?.errors?.length) {
         <nx-error>
-            Errors:
+            <div class="nx-font-weight-bold">Error</div>
             <ul>
-                @for (error of documentUpload?.errors; track error) {
+                @if (testForm.controls['documents'].hasError('required')) {
+                <li>File is Required!</li>
+                } @if (testForm.controls['documents'].hasError('serverError')) {
+                <li>An error occured while uploading.</li>
+                } @if (documentUpload?.errors?.length) { @for (error of
+                documentUpload?.errors; track error) {
                 <li>
                     @if (error.type === 'fileType') {
                     <div>
@@ -59,10 +59,9 @@
                     </div>
                     }
                 </li>
-                }
+                } }
             </ul>
         </nx-error>
-        }
     </nx-file-uploader>
 </form>
 
