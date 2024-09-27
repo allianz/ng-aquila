@@ -3,6 +3,7 @@ import { Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 
 import { NxRadioToggleComponent, RESET_VALUES } from './radio-toggle.component';
@@ -42,6 +43,7 @@ describe('NxRadioToggleComponent', () => {
                 ReactiveFormToggle,
                 ValidationToggle,
                 FocusRadioToggle,
+                RadioToggleGroupErrorTest,
             ],
         }).compileComponents();
     }));
@@ -463,6 +465,42 @@ describe('NxRadioToggleComponent', () => {
         });
     });
 
+    describe('Error state', () => {
+        it('should show the error if in error state', () => {
+            createTestComponent(RadioToggleGroupErrorTest);
+
+            let errorMessage = fixture.debugElement.query(By.css('nx-error'));
+            const submitButton = fixture.debugElement.query(By.css('#submit-button'));
+
+            expect(errorMessage).toBeNull();
+
+            submitButton.nativeElement.click();
+            fixture.detectChanges();
+
+            errorMessage = fixture.debugElement.query(By.css('nx-error'));
+
+            expect(errorMessage).not.toBeNull();
+            expect(errorMessage.nativeElement.textContent).toContain('Required');
+        });
+
+        it('should not show error if form is in a valid state', () => {
+            createTestComponent(RadioToggleGroupErrorTest);
+
+            const toggleButtons = fixture.debugElement.queryAll(By.css('nx-radio-toggle-button>input.nx-radio-toggle__input'));
+            let errorMessage = fixture.debugElement.query(By.css('nx-error'));
+            const submitButton = fixture.debugElement.query(By.css('#submit-button'));
+
+            expect(errorMessage).toBeNull();
+
+            toggleButtons[0].nativeElement.click();
+            submitButton.nativeElement.click();
+            fixture.detectChanges();
+
+            errorMessage = fixture.debugElement.query(By.css('nx-error'));
+            expect(errorMessage).toBeNull();
+        });
+    });
+
     describe('readonly', () => {
         it('should set aria-disabled to each input', () => {
             createTestComponent(RadioToggleGroupTest);
@@ -729,4 +767,25 @@ class FocusRadioToggle extends RadioToggleTest {}
 class RadioToggleGroupTest extends RadioToggleTest {
     readonly = false;
     @ViewChild('radioToggleGroup', { read: NxAbstractControl }) toggleGroup!: NxAbstractControl;
+}
+@Component({
+    template: `<form [formGroup]="testForm">
+        <nx-radio-toggle formControlName="reactiveToggle">
+            <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
+            <nx-radio-toggle-button value="B">B</nx-radio-toggle-button>
+            <nx-radio-toggle-button value="C">C</nx-radio-toggle-button>
+            <nx-error> Required. Greetings treveler! </nx-error>
+        </nx-radio-toggle>
+
+        <button type="submit" id="submit-button">submit</button>
+    </form>`,
+    standalone: true,
+    imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule, NxErrorComponent],
+})
+class RadioToggleGroupErrorTest extends RadioToggleTest {
+    fb: FormBuilder = new FormBuilder();
+
+    testForm = this.fb.group({
+        reactiveToggle: ['', Validators.required],
+    });
 }

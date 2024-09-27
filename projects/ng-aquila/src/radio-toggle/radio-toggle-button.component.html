@@ -10,6 +10,8 @@
     [ngClass]="{ 'disable-mobile': disableMobile }"
     [attr.aria-label]="ariaLabel"
     [attr.aria-disabled]="readonly || null"
+    [attr.aria-describedby]="errorMessageId()"
+    [attr.aria-invalid]="controlInvalid()"
     [class.is-readonly]="readonly"
 />
 <div (click)="triggerInputClick($event)" [ngClass]="{ 'disable-mobile': disableMobile }" #toggleButtonLabelContainer class="nx-radio-toggle__label-container">

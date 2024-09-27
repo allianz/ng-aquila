@@ -1,8 +1,10 @@
 <form [formGroup]="testForm" (ngSubmit)="onsubmit()">
-    <nx-radio-toggle formControlName="testToggle">
+    <nx-label id="toggle-label">Favorite Letter</nx-label>
+    <nx-radio-toggle ariaLabelledBy="toggle-label" formControlName="testToggle">
         @for (item of data; track item) {
         <nx-radio-toggle-button [value]="item">{{item}}</nx-radio-toggle-button>
         }
+        <nx-error> Please select "B" </nx-error>
     </nx-radio-toggle>
 
     <button nxButton="primary small" class="nx-margin-top-s" type="submit">

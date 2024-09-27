@@ -6,6 +6,8 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    computed,
+    ContentChild,
     ContentChildren,
     DoCheck,
     forwardRef,
@@ -14,8 +16,11 @@ import {
     Optional,
     QueryList,
     Self,
+    Signal,
+    signal,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher, mapClassNames } from '@aposin/ng-aquila/utils';
 import { merge, Observable, Subject } from 'rxjs';
@@ -49,6 +54,7 @@ export const RESET_VALUES = [null, undefined, ''];
 })
 export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, AfterContentInit, DoCheck {
     private readonly _toggleId: string = (nextId++).toString();
+    @ContentChild(NxErrorComponent) errorChild?: NxErrorComponent;
 
     /** Whether the component should switch to vertical buttons on mobile viewports. */
     @Input({ transform: booleanAttribute }) disableMobile = false;
@@ -56,7 +62,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
     private _selection: any;
 
     /** @docs-private */
-    errorState = false;
+    errorState = signal(false);
     // emits to signal children to run change detection
     readonly _disableChange = new Subject<void>();
 
@@ -89,17 +95,46 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
     }
     private _readonly = false;
 
-    /** Sets the name used for accessibility. */
+    /**
+     * @deprecated use ariaLabel or ariaLabelledby instead
+     * Sets the name used for accessibility.
+     */
     @Input() set name(value: string) {
-        if (this._name !== value) {
-            this._name = value;
+        if (this._ariaLabel !== value) {
+            this._ariaLabel = value;
             this._cdr.markForCheck();
         }
     }
     get name(): string {
-        return this._name;
+        return this._ariaLabel || '';
     }
-    private _name!: string;
+
+    @Input() set ariaLabel(value: string | null) {
+        this._ariaLabel = value;
+        this._cdr.markForCheck();
+    }
+
+    get ariaLabel(): string | null {
+        return this._ariaLabel;
+    }
+
+    private _ariaLabel: string | null = null;
+
+    @Input() set ariaLabelledBy(value: string | null) {
+        this._ariaLabelledBy = value;
+        this._cdr.markForCheck();
+    }
+
+    get ariaLabelledBy(): string | null {
+        return this._ariaLabelledBy;
+    }
+
+    private _ariaLabelledBy: string | null = null;
+
+    errorMessageId: Signal<string | null> = computed(() => {
+        const isErrorVisible = this.errorState() && this.errorChild;
+        return isErrorVisible ? this.errorChild!.id : null;
+    });
 
     /** @docs-private */
     @ContentChildren(NxRadioToggleButtonBaseComponent) toggleButtons = new QueryList<NxRadioToggleButtonBaseComponent>();
@@ -219,14 +254,11 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
 
     /** @docs-private */
     updateErrorState() {
-        const oldState = this.errorState;
         const parent = this._parentFormGroup || this._parentForm;
         const control = this.ngControl ? (this.ngControl.control as FormControl) : null;
         const newState = this._errorStateMatcher.isErrorState(control, parent);
 
-        if (newState !== oldState) {
-            this.errorState = newState;
-        }
+        this.errorState.set(newState);
     }
 
     setReadonly(value: boolean): void {

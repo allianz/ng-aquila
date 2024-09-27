@@ -8,6 +8,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    computed,
     forwardRef,
     HostListener,
     Inject,
@@ -47,8 +48,7 @@ export class NxRadioToggleButtonChange {
         },
     ],
     host: {
-        '[class.has-error]': '_controlInvalid() || null',
-        '[attr.aria-invalid]': '_controlInvalid() || null',
+        '[class.has-error]': 'controlInvalid()',
         '(focus)': '_forwardFocusToInput()',
         '[class.is-readonly]': 'readonly',
     },
@@ -82,13 +82,16 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     private _readonly = false;
 
     /** Aria label for screen reader users */
-    @Input() set ariaLabel(value: string) {
+    @Input() set ariaLabel(value: string | null) {
         this._ariaLabel = value;
     }
-    get ariaLabel(): string {
+    get ariaLabel(): string | null {
         return this._ariaLabel;
     }
-    private _ariaLabel = '';
+    private _ariaLabel: string | null = null;
+
+    /** @docs-private */
+    controlInvalid = computed(() => this.radioToggle?.errorState() || null);
 
     /** Sets the checked state and notify siblings and the parent group about the change */
     // Only use this if you want the onChecked event to be fired, this will inform the parent about the change!
@@ -113,6 +116,8 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
 
     /** Unregister function for _expansionDispatcher. */
     private _removeUniqueSelectionListener: () => void = () => {};
+
+    errorMessageId = computed(() => this.radioToggle?.errorMessageId() || null);
 
     constructor(
         @Inject(forwardRef(() => NxRadioToggleComponent)) private readonly radioToggle: NxRadioToggleComponent,
@@ -198,11 +203,6 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     onKeyupSpace(): void {
         this._selected = false;
         this._notifySiblings();
-    }
-
-    /** @docs-private */
-    _controlInvalid(): boolean {
-        return !!this.radioToggle?.errorState;
     }
 
     /** Forward focus from host to hidden input field */
