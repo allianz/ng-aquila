@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.5.0](https://github.com/allianz/ng-aquila/compare/v18.4.0...v18.5.0) (2024-09-30)
+
+
+### Documentation 📚
+
+* **file-uploader:** make screenreader read error message ([7a5ac74](https://github.com/allianz/ng-aquila/commit/7a5ac749d8cb8ac10823953a68f3fa7279f296c5))
+* only show implemented components for A1 themes ([9d190ed](https://github.com/allianz/ng-aquila/commit/9d190ed302ed44d05b26685eb0fa8f2df4f85936))
+
+
+### Bug Fixes 🐛
+
+* **radio-button, circle-toggle:** add tabindex="-1" to label element in radio groups ([e3ada6b](https://github.com/allianz/ng-aquila/commit/e3ada6b3f60a8564bf71e1d307afd74f2193c877))
+
+
+### Features ✨
+
+* **radio toggle:** link error message to radio toggle by aria-describedby ([50249cf](https://github.com/allianz/ng-aquila/commit/50249cf52bfa4ef8b77cbe13aa4d094fcf0aa614))
+* **spinner:** add ariaPoliteness input ([0aa0483](https://github.com/allianz/ng-aquila/commit/0aa0483889e04317291a94fded6df0838eb8b6b0))
+
 ## [18.4.0](https://github.com/allianz/ng-aquila/compare/v18.3.0...v18.4.0) (2024-09-26)
 
 
