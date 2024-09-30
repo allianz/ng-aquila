@@ -6,6 +6,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
 } from '@angular/forms';
+import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
     NxRadioToggleButtonComponent,
@@ -27,6 +28,8 @@ import {
         NxRadioToggleButtonComponent,
         NxButtonComponent,
         JsonPipe,
+        NxErrorComponent,
+        NxLabelComponent,
     ],
 })
 export class RadioToggleValidationExampleComponent {

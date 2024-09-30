@@ -1293,6 +1293,7 @@ body,
   --toggle-button-readonly-selected-background-color: var(--readonly-on-surface-color);
   --toggle-button-readonly-selected-border-color: var(--readonly-on-surface-color);
   --toggle-button-readonly-selected-text-color: var(--readonly-on-surface-active-color);
+  --radio-toggle-stack: 16px;
   --tooltip-background-color: var(--ui-03);
   --tooltip-text-color: var(--text-01);
   --tooltip-border-radius: 4px;

@@ -33,15 +33,15 @@
             Add File
         <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
-        @if (testForm.controls[&#x27;documents&#x27;].hasError(&#x27;required&#x27;)) {
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>Required!<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-        } @if (testForm.controls[&#x27;documents&#x27;].hasError(&#x27;serverError&#x27;)) {
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>An error occured while uploading.<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-        } @if (documentUpload?.errors?.length) {
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
-            Errors:
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-bold&quot;</span>&gt;</span>Error<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
-                @for (error of documentUpload?.errors; track error) {
+                @if (testForm.controls[&#x27;documents&#x27;].hasError(&#x27;required&#x27;)) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>File is Required!<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                } @if (testForm.controls[&#x27;documents&#x27;].hasError(&#x27;serverError&#x27;)) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>An error occured while uploading.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                } @if (documentUpload?.errors?.length) { @for (error of
+                documentUpload?.errors; track error) {
                 <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
                     @if (error.type === &#x27;fileType&#x27;) {
                     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
@@ -59,10 +59,9 @@
                     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                     }
                 <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-                }
+                } }
             <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-        }
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-file-uploader</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 
