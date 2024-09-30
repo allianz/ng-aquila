@@ -1,5 +1,4 @@
-import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Inject, Injectable, InjectionToken, signal } from '@angular/core';
 
 export interface Theme {
     name: string;
@@ -11,17 +10,15 @@ export const NX_DOCS_SELECTABLE_THEMES = new InjectionToken<Theme[]>('DOCS_SELEC
 
 @Injectable({ providedIn: 'root' })
 export class ThemeSwitcherService {
-    readonly themeChanged = new Subject<Theme>();
-    private _selectedTheme!: Theme;
+    private readonly _selectedTheme = signal<Theme>(this._themes[0]);
+    readonly selectedTheme = this._selectedTheme.asReadonly();
 
     constructor(@Inject(NX_DOCS_SELECTABLE_THEMES) private readonly _themes: Theme[]) {}
 
     switchTheme(newTheme: Theme) {
-        if (this._selectedTheme === newTheme) {
+        if (this._selectedTheme() === newTheme) {
             return;
         }
-
-        this._selectedTheme = newTheme;
 
         // get the theme link element
         const oldEl = document.getElementById('docs-theme');
@@ -35,7 +32,7 @@ export class ThemeSwitcherService {
         newEl.setAttribute('rel', 'stylesheet');
         newEl.setAttribute('href', newTheme.url);
         newEl.setAttribute('id', 'docs-theme');
-        newEl.onload = () => this.themeChanged.next(this._selectedTheme);
+        newEl.onload = () => this._selectedTheme.set(newTheme);
 
         const head = document.getElementsByTagName('head');
         head[0].appendChild(newEl);
@@ -52,15 +49,11 @@ export class ThemeSwitcherService {
     }
 
     reset() {
-        this.switchTheme(this._selectedTheme);
+        this.switchTheme(this._selectedTheme());
     }
 
     themes(): Theme[] {
         return this._themes;
-    }
-
-    selectedTheme(): Theme {
-        return this._selectedTheme;
     }
 
     get(name: string) {

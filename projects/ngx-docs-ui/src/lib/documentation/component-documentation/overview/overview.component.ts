@@ -31,7 +31,7 @@ export class NxvOverviewComponent implements OnDestroy {
         private readonly _router: Router,
     ) {
         manifestService.manifest.pipe(takeUntil(this._destroyed)).subscribe(() => {
-            this.components = this.manifestService.getGroupedComponents();
+            this.components = this.manifestService.groupedComponents();
         });
 
         this.issueBoardLink = `${githubLinkConfig.repoLink}/issues`;

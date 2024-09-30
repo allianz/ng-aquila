@@ -5,6 +5,7 @@ b2c: true
 expert: true
 stable: done
 noApi: true
+a1: true
 ---
 
 All components in our Component Library are compliant with the WCAG 2 Level AA accessibility standards. These Accessibility Guidelines (WCAG) are part of a series of web accessibility guidelines published by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C). By being complaint with them we want to make our components accessible, primarily for people with disabilities, but also for all users on all devices (including highly limited devices, such as mobile phones).

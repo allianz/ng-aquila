@@ -19,6 +19,7 @@ export interface ComponentDescriptor {
     expert: boolean;
     deprecated: boolean;
     stable: STATUS_TYPE;
+    a1?: boolean;
 }
 
 export interface GuideDescriptor {

@@ -1,10 +1,11 @@
-import { Inject, Injectable, Optional } from '@angular/core';
+import { computed, Inject, inject, Injectable, Optional } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 
 import { ComponentDescriptor, ExampleDescriptor, GuideDescriptor, Manifest } from '../core/manifest';
 import { NXV_MANIFEST_TOKEN } from '../core/tokens';
+import { ThemeSwitcherService } from '../documentation/theme-switcher/theme-switcher.service';
 
-class CategoryChild {
+export class CategoryChild {
     label!: string;
     component!: ComponentDescriptor;
 }
@@ -33,6 +34,7 @@ export class ManifestService {
     protected readonly _manifestChanges = new ReplaySubject<Manifest>(1);
     readonly available = new ReplaySubject<boolean>(1);
     protected _current!: Manifest;
+    private readonly themingService = inject(ThemeSwitcherService);
 
     constructor(@Optional() @Inject(NXV_MANIFEST_TOKEN) private readonly initialManifest: Manifest | null) {
         this.init();
@@ -71,7 +73,17 @@ export class ManifestService {
         return this._current.components.find(item => item.id === id)!;
     }
 
-    getGroupedComponents(): Category[] {
+    groupedComponents = computed(() => {
+        const groupedComponents = this.getGroupedComponents();
+        if (this.themingService.selectedTheme().name.includes('allianz-one')) {
+            return groupedComponents
+                .map(category => ({ ...category, children: category.children.filter((component: CategoryChild) => component.component.a1 || false) }))
+                .filter(category => category.label !== 'third-party');
+        }
+        return groupedComponents;
+    });
+
+    private getGroupedComponents(): Category[] {
         // group components by category
         const componentsDict: { [key: string]: any[] } = this._current.components.reduce((categories: any, component: ComponentDescriptor) => {
             (categories[component.category] = categories[component.category] || []).push(component);

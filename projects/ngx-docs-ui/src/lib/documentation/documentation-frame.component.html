@@ -37,7 +37,12 @@
             </nx-header-navigation>
             <nx-header-actions>
                 @if (showThemingSwitcher) {
-                    <nxv-theme-switch [themes]="themes" [selected]="selectedTheme" (selectedChange)="selectTheme($event)"> </nxv-theme-switch>
+                    <nxv-theme-switch
+                        [themes]="_themeSwitcherService.themes()"
+                        [selected]="_themeSwitcherService.selectedTheme()"
+                        (selectedChange)="selectTheme($event)"
+                    >
+                    </nxv-theme-switch>
                 }
                 <nxv-version-select></nxv-version-select>
                 <ng-container *ngComponentOutlet="headerSlot"></ng-container>

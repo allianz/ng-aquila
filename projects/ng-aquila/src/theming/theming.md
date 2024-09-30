@@ -5,6 +5,7 @@ b2c: true
 expert: true
 stable: done
 noApi: true
+a1: true
 ---
 
 ## Custom theming - release candidate
