@@ -15,7 +15,7 @@
     [attr.aria-disabled]="disabled || readonly || null"
     class="nx-radio__input"
 />
-<label [id]="labelId" [attr.for]="inputId" class="nx-radio__label" [class.has-label]="labelHasContent">
+<label [id]="labelId" [attr.for]="inputId" tabindex="-1" class="nx-radio__label" [class.has-label]="labelHasContent">
     <div class="nx-radio__circle">
         @if (checked) {
         <div class="nx-radio__dot"></div>

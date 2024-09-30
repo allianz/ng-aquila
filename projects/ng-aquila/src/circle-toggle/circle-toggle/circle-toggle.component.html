@@ -13,7 +13,7 @@
     (keydown.enter)="handleEnterKey($event)"
     (click)="toggle($event)"
 />
-<label class="nx-circle-toggle__label" [for]="id + '-input'" [id]="id + '-label'">
+<label class="nx-circle-toggle__label" [for]="id + '-input'" [id]="id + '-label'" tabindex="-1">
     <nx-icon-toggle-button
         [label]="label"
         [hint]="hint"
