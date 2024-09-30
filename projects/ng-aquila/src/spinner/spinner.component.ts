@@ -5,6 +5,9 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy
 /** Options for sizing of the spinner. */
 export type SpinnerSize = 'small' | 'medium' | 'large';
 
+/** Options for aria live regions of the spinner. */
+export type AriaPolite = 'polite' | 'assertive' | 'off';
+
 const DEFAULT_SIZE = 'small';
 
 const ARIA_POLITENESS_ASSERTIVE = 'assertive';
@@ -23,7 +26,7 @@ const ANNOUNCER_DURATION = 1000;
         '[class.nx-spinner--large]': 'size === "large"',
         '[class.nx-spinner--negative]': 'negative',
         '[attr.role]': '"status"',
-        '[attr.aria-live]': '"assertive"',
+        '[attr.aria-live]': 'ariaPoliteness',
         '[attr.aria-hidden]': '"true"',
     },
     standalone: true,
@@ -87,6 +90,9 @@ export class NxSpinnerComponent implements OnInit, OnDestroy {
 
     private _completionAnnouncement: string = '';
 
+    /** Sets the aria live regions of the spinner. Default is 'assertive'. */
+    @Input() ariaPoliteness: AriaPolite = ARIA_POLITENESS_ASSERTIVE;
+
     constructor(
         private readonly _cdr: ChangeDetectorRef,
         private readonly liveAnnouncer: LiveAnnouncer,
@@ -102,7 +108,7 @@ export class NxSpinnerComponent implements OnInit, OnDestroy {
 
     private async announce(message: string) {
         if (message.length > 0) {
-            await this.liveAnnouncer.announce(message, ARIA_POLITENESS_ASSERTIVE, ANNOUNCER_DURATION);
+            await this.liveAnnouncer.announce(message, this.ariaPoliteness, ANNOUNCER_DURATION);
         }
     }
 }
