@@ -76,11 +76,21 @@
             [attr.aria-multiselectable]="isMultiSelect"
         >
             <ng-content></ng-content>
-            @for (option of options; track option) {
+
+            @if (useVirtualScrolling) {
+            <cdk-virtual-scroll-viewport>
+                <nx-dropdown-item
+                    *cdkVirtualFor="let option of filteredOptions$ | async;"
+                    (onSelectionChange)="_onSelect($event.item, $event.isUserInput, option)"
+                    [value]="option.value"
+                    >{{ _getLabel(option) }}</nx-dropdown-item
+                >
+            </cdk-virtual-scroll-viewport>
+            } @else { @for (option of options; track option) {
             <nx-dropdown-item (onSelectionChange)="_onSelect($event.item, $event.isUserInput, option)" [value]="option.value"
                 >{{ _getLabel(option) }}</nx-dropdown-item
             >
-            }
+            } }
         </div>
     </div>
 </ng-template>

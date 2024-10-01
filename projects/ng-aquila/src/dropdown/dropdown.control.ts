@@ -11,6 +11,8 @@ export abstract class NxDropdownControl extends NxFormfieldControl<any> {
 
     ignoreItemTruncation = false;
 
+    useVirtualScrolling: boolean = false;
+
     readonly filterChanges!: Subject<any>;
 
     readonly _closedStream!: Observable<void>;

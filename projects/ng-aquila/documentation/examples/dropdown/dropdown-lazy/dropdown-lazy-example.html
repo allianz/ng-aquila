@@ -2,7 +2,11 @@
     <div nxRow>
         <div nxCol="12, 12, 6">
             <nx-formfield label="Lazy options">
-                <nx-dropdown [options]="items"></nx-dropdown>
+                <nx-dropdown
+                    [showFilter]="true"
+                    [options]="items"
+                    [useVirtualScrolling]="true"
+                ></nx-dropdown>
             </nx-formfield>
         </div>
     </div>

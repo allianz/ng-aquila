@@ -11,7 +11,8 @@ import {
     Overlay,
     ScrollStrategy,
 } from '@angular/cdk/overlay';
-import { NgTemplateOutlet } from '@angular/common';
+import { CdkVirtualScrollViewport, ScrollingModule, VIRTUAL_SCROLL_STRATEGY } from '@angular/cdk/scrolling';
+import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -48,13 +49,14 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
-import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, merge, Observable, Subject } from 'rxjs';
 import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
 
 import { NxDropdownClosedLabelDirective } from './closed-label.directive';
 import { NxDropdownControl } from './dropdown.control';
 import { getNxDropdownNonArrayValueError } from './dropdown-errors';
 import { getPositionOffset, getPositions } from './dropdown-position';
+import { DropdownVirtualScrollStrategy } from './dropdown-vs-strategy';
 import { NxDropdownGroupComponent } from './group/dropdown-group';
 import { NxDropdownItemComponent } from './item/dropdown-item';
 
@@ -155,6 +157,10 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         { provide: NxDropdownControl, useExisting: NxDropdownComponent },
         { provide: NxFormfieldControl, useExisting: NxDropdownComponent },
         { provide: NxAbstractControl, useExisting: NxDropdownComponent },
+        {
+            provide: VIRTUAL_SCROLL_STRATEGY,
+            useFactory: () => new DropdownVirtualScrollStrategy(),
+        },
     ],
     host: {
         role: 'combobox',
@@ -181,7 +187,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         '(click)': 'openedByKeyboard = false; openPanel($event)',
     },
     standalone: true,
-    imports: [CdkOverlayOrigin, NgTemplateOutlet, NxIconModule, CdkConnectedOverlay, Dir, NxDropdownItemComponent, NxTooltipModule],
+    imports: [CdkOverlayOrigin, NgTemplateOutlet, NxIconModule, CdkConnectedOverlay, Dir, NxDropdownItemComponent, NxTooltipModule, ScrollingModule, AsyncPipe],
 })
 export class NxDropdownComponent
     implements NxAbstractControl, NxDropdownControl, ControlValueAccessor, OnInit, AfterViewInit, AfterContentInit, OnDestroy, DoCheck
@@ -250,8 +256,15 @@ export class NxDropdownComponent
     /** @docs-private */
     ariaDescribedby?: string;
 
-    /** @docs-private */
-    currentFilter = '';
+    private readonly _currentFilter = new BehaviorSubject<string>('');
+
+    set currentFilter(value: string) {
+        this._currentFilter.next(value);
+    }
+
+    get currentFilter(): string {
+        return this._currentFilter.value;
+    }
 
     /**
      * Array of options for the dropdown.
@@ -264,6 +277,10 @@ export class NxDropdownComponent
     }
     // @ts-expect-error TODO: refactor to be TS compatible
     private readonly _options = new BehaviorSubject<NxDropdownOption[]>(null);
+
+    readonly filteredOptions$ = combineLatest([this._options, this._currentFilter]).pipe(
+        map(([items, filterValue]) => items.filter(item => this.filterFn(filterValue, this._getLabel(item)))),
+    );
 
     /**
      * Type of filter input (default: text).
@@ -388,6 +405,9 @@ export class NxDropdownComponent
     /* panelMaxWidth accepts a number for pixel values or a string for any css value */
     @Input() panelMaxWidth!: string | number;
 
+    /* use virtual scrolling */
+    @Input() useVirtualScrolling: boolean = false;
+
     /** Event emitted when the select panel has been toggled. */
     @Output() readonly openedChange = new EventEmitter<boolean>();
 
@@ -456,6 +476,8 @@ export class NxDropdownComponent
     @ViewChild('defaultClosedDropdownLabel', { static: true }) private _defaultClosedDropdownLabel!: TemplateRef<any>;
 
     @ViewChildren(NxDropdownItemComponent) _lazyDropdownItems!: QueryList<NxDropdownItemComponent>;
+
+    @ViewChild(CdkVirtualScrollViewport) _vsViewport?: CdkVirtualScrollViewport;
 
     get dropdownItems(): QueryList<NxDropdownItemComponent> {
         return this._isLazy ? this._lazyDropdownItems : this._contentDropdownItems;
@@ -974,6 +996,7 @@ export class NxDropdownComponent
         if (!this.panelBody) {
             return;
         }
+
         // reset the scrolltop to make calculation easier
         this.panelBody.nativeElement.scrollTop = 0;
 

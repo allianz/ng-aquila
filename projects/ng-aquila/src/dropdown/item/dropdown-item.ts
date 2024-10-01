@@ -20,7 +20,7 @@ import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 
 import { NxDropdownControl } from '../dropdown.control';
 import { NxDropdownGroupComponent } from '../group/dropdown-group';
@@ -139,9 +139,14 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
         private readonly _cdr: ChangeDetectorRef,
         private readonly _elementRef: ElementRef,
     ) {
-        this._dropdown.filterChanges.pipe(takeUntil(this._destroyed)).subscribe(value => {
-            this._showOrHideByFilter(value);
-        });
+        this._dropdown.filterChanges
+            .pipe(
+                takeUntil(this._destroyed),
+                filter(() => !this._dropdown.useVirtualScrolling),
+            )
+            .subscribe(value => {
+                this._showOrHideByFilter(value);
+            });
         // reset the hidden state when dropdown closes that on next open the user is seeing the full list again
         this._dropdown._closedStream.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this._hidden = false;
