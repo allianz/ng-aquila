@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, View
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 
 import { NxAbstractControl } from '../shared';
 import { NxCheckboxChangeEvent, NxCheckboxComponent } from './checkbox.component';
@@ -357,6 +358,15 @@ describe('NxCheckboxComponent', () => {
             expect(inputElement.getAttribute('aria-label')).toBe('label');
             expect(inputElement.getAttribute('aria-labelledby')).toBe('labelBy');
         });
+
+        it('should set aria-describedby', () => {
+            createTestComponent(ReactiveCheckbox);
+            checkboxInstance.ngControl!.control!.markAsTouched();
+            fixture.detectChanges();
+            const errorId = (testInstance as ReactiveCheckbox).error?.id;
+
+            expect(inputElement.getAttribute('aria-describedby')).toBe(errorId);
+        });
     });
 });
 
@@ -441,14 +451,19 @@ class CheckboxNegative extends CheckboxTest {}
 @Component({
     template: `
         <form [formGroup]="testForm">
-            <nx-checkbox formControlName="checkbox"> Hello NX </nx-checkbox>
+            <nx-checkbox formControlName="checkbox">
+                Hello NX
+                <nx-error>This is error</nx-error>
+            </nx-checkbox>
             <button nxButton="primary small" type="submit" id="submit-button">Click</button>
         </form>
     `,
     standalone: true,
-    imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
+    imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule, NxErrorComponent],
 })
 class ReactiveCheckbox extends CheckboxTest {
+    @ViewChild(NxErrorComponent) error!: NxErrorComponent;
+
     fb;
     constructor() {
         super();
