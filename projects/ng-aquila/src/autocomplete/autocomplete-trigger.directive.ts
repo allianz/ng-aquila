@@ -7,6 +7,7 @@ import { TemplatePortal } from '@angular/cdk/portal';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { DOCUMENT } from '@angular/common';
 import {
+    afterNextRender,
     AfterViewInit,
     ChangeDetectorRef,
     Directive,
@@ -16,6 +17,7 @@ import {
     Inject,
     inject,
     InjectionToken,
+    Injector,
     Input,
     NgZone,
     OnChanges,
@@ -136,11 +138,15 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
      */
     private _canOpenOnNextFocus = true;
 
+    private _injector = inject(Injector);
+
     /** Stream of keyboard events that can close the panel. */
     private readonly _closeKeyEventStream = new Subject<void>();
 
     /** Value changes */
     private readonly _valueChanges = new Subject<any>();
+
+    private _initialized = new Subject();
 
     /** Strategy factory that will be used to handle scrolling while the autocomplete panel is open. */
     private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;
@@ -191,10 +197,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
         // If there are any subscribers before `ngAfterViewInit`, the `autocomplete` will be undefined.
         // Return a stream that we'll replace with the real one once everything is in place.
-        return this._zone.onStable.asObservable().pipe(
-            take(1),
-            switchMap(() => this.optionSelections),
-        );
+        return this._initialized.pipe(switchMap(() => this.optionSelections));
     });
 
     /** The currently active option, coerced to NxAutocompleteOptionComponent type. */
@@ -312,6 +315,8 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     }
 
     ngAfterViewInit(): void {
+        this._initialized.next();
+        this._initialized.complete();
         this._bindAutocompleteItems();
     }
 
@@ -564,7 +569,15 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
      * stream every time the option list changes.
      */
     private _subscribeToClosingActions(): Subscription {
-        const firstStable = this._zone.onStable.asObservable().pipe(take(1));
+        const initialRender = new Observable(subscriber => {
+            afterNextRender(
+                () => {
+                    subscriber.next();
+                },
+                { injector: this._injector },
+            );
+        });
+
         const optionChanges = this.autocomplete.options.changes.pipe(
             tap(() => this._positionStrategy.reapplyLastPosition()),
             // Defer emitting to the stream until the next tick, because changing
@@ -574,7 +587,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
         // When the zone is stable initially, and when the option list changes...
         return (
-            merge(firstStable, optionChanges)
+            merge(initialRender, optionChanges)
                 .pipe(
                     // create a new stream of panelClosingActions, replacing any previous streams
                     // that were created, and flatten it so our stream only emits closing events...
