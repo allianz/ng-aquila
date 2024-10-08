@@ -31,6 +31,7 @@
                 [attr.aria-expanded]="isOpen.toString()"
                 [attr.aria-controls]="isOpen ? idOptionList : null"
                 [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+                [attr.aria-describedby]="error?.id"
             />
             <span class="nx-timefield-hours-separator" aria-hidden="true">:</span>
             <input
@@ -55,6 +56,7 @@
                 [attr.aria-expanded]="isOpen.toString()"
                 [attr.aria-controls]="isOpen ? idOptionList : null"
                 [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+                [attr.aria-describedby]="error?.id"
             />
             @if (withTimepicker) {
                 <button
@@ -86,7 +88,6 @@
             @if (hint) {
                 <span nxFormfieldHint> {{ hint }} </span>
             }
-            <ng-content select="[nxFormfieldError]" ngProjectAs="[nxFormfieldError]"></ng-content>
         </div>
     </nx-formfield>
 
@@ -105,6 +106,11 @@
         </nx-radio-toggle>
     }
 </div>
+@if (errorState) {
+    <div class="nx-margin-top-xs">
+        <ng-content select="nx-error"></ng-content>
+    </div>
+}
 
 <ng-template
     cdkConnectedOverlay

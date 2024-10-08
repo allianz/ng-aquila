@@ -3,6 +3,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxTimefieldComponent, TIMEFIELD_DEFAULT_OPTIONS } from './timefield.component';
@@ -202,6 +203,20 @@ describe('NxTimefieldComponent', () => {
         tick();
         expect(reactInstance.testForm.status).toBe('INVALID');
     }));
+
+    it('should show error message and link input aria-descridebby with error id', () => {
+        createTestComponent(ReactiveTimefield);
+        inputElementHours.value = 'd';
+        inputElementHours.dispatchEvent(new Event('input'));
+        inputElementHours.focus();
+        inputElementHours.blur();
+        fixture.detectChanges();
+
+        const error = fixture.nativeElement.querySelector('.nx-error__content');
+        expect(error).toBeTruthy();
+        expect(inputElementMinutes.getAttribute('aria-describedby')).toBe(error?.id);
+        expect(inputElementHours.getAttribute('aria-describedby')).toBe(error?.id);
+    });
 
     it('should not set value for any non-numeric entries', fakeAsync(() => {
         createTestComponent(TemplateDrivenTimefield);
@@ -733,11 +748,13 @@ class ConfigurableTimefield extends TimefieldTest {}
 @Component({
     template: `
         <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
-            <nx-timefield formControlName="today" [twelveHourFormat]="twelveHourFormat" [withTimepicker]="withTimepicker"></nx-timefield>
+            <nx-timefield formControlName="today" [twelveHourFormat]="twelveHourFormat" [withTimepicker]="withTimepicker">
+                <nx-error> This is error </nx-error>
+            </nx-timefield>
         </form>
     `,
     standalone: true,
-    imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
+    imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule, NxErrorComponent],
 })
 class ReactiveTimefield extends TimefieldTest {
     testForm!: FormGroup;

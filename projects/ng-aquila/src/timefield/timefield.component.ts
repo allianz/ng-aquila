@@ -9,6 +9,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ContentChild,
     DestroyRef,
     DoCheck,
     ElementRef,
@@ -31,6 +32,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ControlValueAccessor, FormControl, FormGroupDirective, FormsModule, NgControl, NgForm } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import {
     AppearanceType,
     FORMFIELD_DEFAULT_OPTIONS,
@@ -130,6 +132,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit
     errorState = false;
 
     @ViewChild(NxFormfieldComponent) formfield!: NxFormfieldComponent;
+    @ContentChild(NxErrorComponent) error: NxErrorComponent | undefined;
 
     _toggleAMPM!: string | null;
     protected isOpen = false;

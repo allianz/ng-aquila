@@ -9,7 +9,6 @@ $selected-box-shadow: 0 -2px 0 0;
 
 .nx-timefield__wrapper {
     display: flex;
-    justify-content: space-between;
     &:focus {
         outline: none;
     }
@@ -64,7 +63,7 @@ nx-radio-toggle {
     margin-top: var(--formfield-label-height);
 }
 
-::ng-deep {
+:host ::ng-deep {
     .nx-formfield__wrapper {
         padding-bottom: 2px;
     }
