@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DebugElement, Directive, Injectable, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DebugElement, Directive, Injectable, LOCALE_ID, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -71,6 +71,8 @@ describe('NxNumberStepperComponent', () => {
                 ResizeOnInitTestOnPush,
                 DirectivesStepper,
                 ReactiveFormStepper,
+                LocaleStepper,
+                LocaleUsStepper,
                 ReactiveFormOnBlurStepper,
                 DisableableStepper,
             ],
@@ -92,6 +94,17 @@ describe('NxNumberStepperComponent', () => {
 
     function assertInputValue(value: any) {
         expect(inputElement.value).toBe(value);
+    }
+
+    function assertInputAndValue(userInput: string, viewValue: string, modelValue: number | null) {
+        inputElement.value = userInput;
+        inputElement.dispatchEvent(new Event('input'));
+        fixture.detectChanges();
+        tick();
+
+        expect(inputElement.value).toBe(viewValue);
+        expect(testInstance.stepperInstance.value).toBe(modelValue);
+        tick();
     }
 
     describe('basic number stepper', () => {
@@ -438,6 +451,53 @@ describe('NxNumberStepperComponent', () => {
             assertInputValue('00');
             flush();
         }));
+
+        it('correctly display format in view and value', fakeAsync(() => {
+            createTestComponent(LocaleUsStepper);
+            // common
+            assertInputAndValue('00', '00', 0);
+            assertInputAndValue('12', '12', 12);
+            assertInputAndValue('-10', '-10', -10);
+
+            // decimal
+            assertInputAndValue('0.0', '0.0', 0);
+            assertInputAndValue('00.00', '0.00', 0);
+            assertInputAndValue('0.1', '0.1', 0.1);
+            assertInputAndValue('0.10', '0.10', 0.1);
+            assertInputAndValue('1.00', '1.00', 1);
+            assertInputAndValue('0.010', '0.010', 0.01);
+            assertInputAndValue('00.01', '0.01', 0.01);
+            assertInputAndValue('000.01', '0.01', 0.01);
+            assertInputAndValue('-0.1', '-0.1', -0.1);
+            assertInputAndValue('-00.10', '-0.10', -0.1);
+
+            // invalid
+            assertInputAndValue('.09', '.09', null);
+            assertInputAndValue('04.', '04.', null);
+            assertInputAndValue('02,', '02,', null);
+            assertInputAndValue('04-', '04-', null);
+            assertInputAndValue('x.01', 'x.01', null);
+            assertInputAndValue('0.01.01', '0.01.01', null);
+            assertInputAndValue('x1', 'x1', null);
+            assertInputAndValue('-01x', '-01x', null);
+        }));
+
+        it('be able to use comma as decimal seperator', fakeAsync(() => {
+            createTestComponent(LocaleUsStepper);
+            assertInputAndValue('5,55', '5.55', 5.55);
+            assertInputAndValue('0,50', '0.50', 0.5);
+            assertInputAndValue('-00,50', '-0.50', -0.5);
+            flush();
+        }));
+
+        it('show comma as deicimal seperator when set locale to DE', fakeAsync(() => {
+            createTestComponent(LocaleStepper);
+            fixture.detectChanges();
+            assertInputAndValue('7.70', '7,70', 7.7);
+            assertInputAndValue('8,08', '8,08', 8.08);
+            flush();
+            // dsd
+        }));
     });
 
     describe('reactive', () => {
@@ -723,6 +783,32 @@ class DirectivesStepper extends NumberStepperTest {}
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveFormStepper extends NumberStepperTest {}
+
+@Component({
+    template: `
+        <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+            <nx-number-stepper></nx-number-stepper>
+            <button id="submit-button">Submit</button>
+        </form>
+    `,
+    standalone: true,
+    providers: [{ provide: LOCALE_ID, useValue: 'de-DE' }],
+    imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
+})
+class LocaleStepper extends NumberStepperTest {}
+
+@Component({
+    template: `
+        <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+            <nx-number-stepper></nx-number-stepper>
+            <button id="submit-button">Submit</button>
+        </form>
+    `,
+    standalone: true,
+    providers: [{ provide: LOCALE_ID, useValue: 'en-US' }],
+    imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
+})
+class LocaleUsStepper extends NumberStepperTest {}
 
 @Component({
     template: `

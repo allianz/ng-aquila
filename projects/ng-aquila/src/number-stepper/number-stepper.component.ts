@@ -8,7 +8,9 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
+    Inject,
     Input,
+    LOCALE_ID,
     OnDestroy,
     Output,
     Renderer2,
@@ -33,7 +35,7 @@ const SIZE_MAPPING = {
 const DEFAULT_CLASSES = ['nx-stepper'];
 const INPUT_CLASSES = ['nx-stepper__input'];
 
-const ALLOWED_CHARACTERS = new RegExp(/^-?\d+(\.\d+)?$/g);
+const ALLOWED_CHARACTERS = new RegExp(/^-?\d+([,.]\d+)?$/g);
 const CUSTOM_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => NxNumberStepperComponent),
@@ -71,6 +73,8 @@ let nextUniqueId = 0;
 export class NxNumberStepperComponent extends MappedStyles implements AfterViewInit, ControlValueAccessor, Validator, OnDestroy {
     /** @docs-private */
     numberInputValue!: string;
+
+    decimalSeperator = '.';
 
     /** @docs-private */
     inputClassNames: string = mapClassNames('regular', INPUT_CLASSES);
@@ -246,10 +250,13 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         _renderer: Renderer2,
         _elementRef: ElementRef,
         readonly _intl: NxNumberStepperIntl,
+        @Inject(LOCALE_ID) private readonly localeId: string,
     ) {
         super(SIZE_MAPPING, _elementRef, _renderer, DEFAULT_CLASSES);
 
         this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => this._cdr.markForCheck());
+
+        this.decimalSeperator = this.getDecimalSeparator(this.localeId);
     }
 
     ngAfterViewInit(): void {
@@ -265,7 +272,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     }
 
     /** @docs-private */
-    setInputValue(value: number | null) {
+    setInputValue(value: number | null | string) {
         const parsedValue = value ? value : 0;
         if (this.leadingZero) {
             this.numberInputValue = pad(parsedValue.toString(), 2);
@@ -313,24 +320,51 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     /** @docs-private */
     onInputChange(event: Event) {
+        // value could be '2,01' , '2.02' depend on locale'
+        const rawValue = (event.target as HTMLInputElement).value;
+
+        const sanitizedValue = rawValue.replace(/[,.]/g, '.');
         if (this.validateUserInput((event.target as HTMLInputElement).value)) {
-            this._value = Number((event.target as HTMLInputElement).value);
+            this._value = Number(sanitizedValue);
         } else {
             this._value = null;
         }
 
         // setInputValue() should be called so that numberInputValue is updated with the user input
         if (this._value !== null) {
-            this.setInputValue(this._value);
+            const decimalPoint = this.getDecimalPoint(sanitizedValue);
+
+            // remove leading zero from value like '00.14', '04', '-02.12' case,
+            // and preserve .0 case in input view.
+            let viewValue = parseFloat(sanitizedValue).toFixed(decimalPoint);
+            viewValue = viewValue.replace('.', this.decimalSeperator);
+
+            this.setInputValue(viewValue);
         }
 
         this.valueChange.emit(this._value!);
         this.onChangeCallback(this._value);
     }
 
+    private getDecimalSeparator(locale: string) {
+        const sampleDecimalNumber = 1.1;
+        const seperator =
+            Intl.NumberFormat(locale)
+                .formatToParts(sampleDecimalNumber)
+                .find(part => part.type === 'decimal')?.value || '.';
+        return seperator;
+    }
+
     /** @docs-private */
     validateUserInput(input: string) {
         return !!input.match(ALLOWED_CHARACTERS);
+    }
+
+    private getDecimalPoint(value: string) {
+        if (value.includes('.')) {
+            return value.split('.')[1].length;
+        }
+        return 0;
     }
 
     /** @docs-private */
