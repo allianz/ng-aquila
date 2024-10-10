@@ -11,6 +11,12 @@ $margin-to-message: nx-spacer(3xs);
     nx-message {
         margin-top: nx-spacer(xs);
     }
+
+    &:has(nx-password-toggle) {
+        input::-ms-reveal {
+            display: none;
+        }
+    }
 }
 
 .nx-formfield__wrapper {

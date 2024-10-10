@@ -61,11 +61,6 @@ textarea.cdk-textarea-autosize-measuring {
         display: none;
     }
 
-    /* remove a password reveal button in Microsoft Edge. */
-    &::-ms-reveal {
-        display: none;
-    }
-
     /* Chrome Fix to remove clear button that appears on input[type=search] */
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
