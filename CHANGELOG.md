@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [18.5.1](https://github.com/allianz/ng-aquila/compare/v18.5.0...v18.5.1) (2024-10-11)
+
+
+### Bug Fixes 🐛
+
+* **autocomplete:** replace onStable to make it zoneless compatible ([5fcc2ec](https://github.com/allianz/ng-aquila/commit/5fcc2ecaac535d292a83e15299a290d9223e870f))
+* **checkbox:** link aria-describedby with projected nx-error ([32bbdde](https://github.com/allianz/ng-aquila/commit/32bbdde3ede04acbc5afc9068000178ac89ebfab))
+* **formfield:** remove css coloring icons blue in appendix ([dcea5da](https://github.com/allianz/ng-aquila/commit/dcea5da381245292147190052c30ecad69bc54a3))
+* **formfield:** remove reveal icon in Edge only when password toggle exists ([7036b7a](https://github.com/allianz/ng-aquila/commit/7036b7a82b36dbb73327a158319a83b151fbeef2))
+* **number-stepper:** allow comma as decimal separator, add commaDecimal input ([f144496](https://github.com/allianz/ng-aquila/commit/f14449607a31518ae1e7a310c47c809b87346812))
+* **radio-toggle-button:** fix disable-mobile styles ([2daa138](https://github.com/allianz/ng-aquila/commit/2daa13855c161cf99b2e2840cf9a4e48f6f3ca11))
+* **switcher:** fix css for label left ([22354ca](https://github.com/allianz/ng-aquila/commit/22354ca8dbb45b94400917568d81124d77f950ad))
+* **table:** fix sticky column not working ([c0f5b36](https://github.com/allianz/ng-aquila/commit/c0f5b366b5a6deaf7c0720463719c291bc1cff2c))
+
 ## [18.5.0](https://github.com/allianz/ng-aquila/compare/v18.4.0...v18.5.0) (2024-09-30)
 
 
