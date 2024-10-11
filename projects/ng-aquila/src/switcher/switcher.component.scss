@@ -2,20 +2,20 @@
 
 $switcher-border-radius: nx-border-radius(m);
 
-.nx-switcher-control {
+:host {
     position: relative;
     display: flex;
-}
 
-.nx-switcher-control .is-swapped .nx-switcher__label {
-    flex-direction: row-reverse;
+    &.is-swapped .nx-switcher__label {
+        flex-direction: row-reverse;
 
-    &.has-label .nx-switcher__toggle {
-        margin-left: nx-spacer(xs);
+        &.has-label .nx-switcher__toggle {
+            margin-left: nx-spacer(xs);
 
-        [dir='rtl'] & {
-            margin-right: nx-spacer(xs);
-            margin-left: initial;
+            [dir='rtl'] & {
+                margin-right: nx-spacer(xs);
+                margin-left: initial;
+            }
         }
     }
 }
