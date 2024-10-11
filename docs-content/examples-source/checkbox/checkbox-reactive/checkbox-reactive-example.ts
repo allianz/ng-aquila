@@ -1,4 +1,4 @@
-import { JsonPipe } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
     FormBuilder,
@@ -6,6 +6,7 @@ import {
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxCheckboxComponent } from '@aposin/ng-aquila/checkbox';
 
 /**
@@ -16,7 +17,14 @@ import { NxCheckboxComponent } from '@aposin/ng-aquila/checkbox';
     templateUrl: './checkbox-reactive-example.html',
     styleUrls: ['./checkbox-reactive-example.css'],
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, NxCheckboxComponent, JsonPipe],
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NxCheckboxComponent,
+        JsonPipe,
+        NxErrorComponent,
+        CommonModule,
+    ],
 })
 export class CheckboxReactiveExampleComponent {
     readonly testForm = this.fb.group({

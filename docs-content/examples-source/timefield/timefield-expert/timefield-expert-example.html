@@ -4,28 +4,31 @@
             <div nxCol="12,12,4">
                 <nx-timefield
                     label="Time"
-                    #timefield
                     formControlName="timefieldReactive"
                     appearance="outline"
-                ></nx-timefield>
+                >
+                    <nx-error> Invalid time input. </nx-error>
+                </nx-timefield>
             </div>
             <div nxCol="12,12,4">
                 <nx-timefield
                     label="Time"
-                    #timefield
                     formControlName="timefieldPickerReactive"
                     appearance="outline"
                     withTimepicker
-                ></nx-timefield>
+                >
+                    <nx-error> Invalid time input. </nx-error>
+                </nx-timefield>
             </div>
             <div nxCol="12,12,4">
                 <nx-timefield
-                    #timefield
                     label="Time"
                     formControlName="timefield12Reactive"
                     twelveHourFormat
                     appearance="outline"
-                ></nx-timefield>
+                >
+                    <nx-error> Invalid time input. </nx-error>
+                </nx-timefield>
             </div>
         </div>
     </div>
