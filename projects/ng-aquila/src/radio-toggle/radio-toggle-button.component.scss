@@ -88,14 +88,6 @@ $border-radius: nx-border-radius(s);
     color: v(toggle-button-selected-text-color);
     cursor: default;
 
-    &:not(.disable-mobile) {
-        .nx-toggle-button__mobile-check {
-            @include media-breakpoint-down('small') {
-                display: inline-block;
-            }
-        }
-    }
-
     .nx-radio-toggle__label {
         cursor: default;
     }
@@ -120,13 +112,6 @@ $border-radius: nx-border-radius(s);
         min-height: nx-spacer(s);
         padding: button-padding(nx-spacer(2xs));
         text-transform: none;
-
-        &:not(.disable-mobile) {
-            @include media-breakpoint-down('small') {
-                @include type-style(toggle-button-large);
-                padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
-            }
-        }
     }
 }
 
@@ -143,17 +128,53 @@ $border-rounded-on-the-bottom: 0 0 $border-radius $border-radius;
 $bordered-without-left: $border-width $border-width $border-width 0;
 $bordered-without-right: $border-width 0 $border-width $border-width;
 
+::ng-deep .nx-radio-toggle:not(.disable-mobile) {
+    .nx-radio-toggle__label-container {
+        @include media-breakpoint-down('small') {
+            border-width: nx-border-size(xs) nx-border-size(m);
+            padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
+
+            &.nx-radio-toggle__label-container--first {
+                border-width: $border-width;
+                border-bottom-width: nx-border-size(xs);
+                border-radius: $border-rounded-on-the-top;
+            }
+
+            &.nx-radio-toggle__label-container--last {
+                border-width: $border-width;
+                border-top-width: nx-border-size(xs);
+                border-radius: $border-rounded-on-the-bottom;
+
+                // prevent style changes if there is only one toggle option
+                &.nx-radio-toggle__label-container--first {
+                    border-radius: $border-radius;
+                    border-width: $border-width;
+                }
+            }
+        }
+    }
+
+    .nx-radio-toggle__input:checked + .nx-radio-toggle__label-container {
+        .nx-toggle-button__mobile-check {
+            @include media-breakpoint-down('small') {
+                display: inline-block;
+            }
+        }
+    }
+
+    :host-context(.nx-radio-toggle--small) {
+        .nx-radio-toggle__label-container {
+            @include media-breakpoint-down('small') {
+                @include type-style(toggle-button-large);
+                padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
+            }
+        }
+    }
+}
+
 .nx-radio-toggle__label-container.nx-radio-toggle__label-container--first {
     border-radius: $border-rounded-on-the-left;
     border-width: $border-width 0 $border-width $border-width;
-
-    &:not(.disable-mobile) {
-        @include media-breakpoint-down('small') {
-            border-width: $border-width;
-            border-bottom-width: nx-border-size(xs);
-            border-radius: $border-rounded-on-the-top;
-        }
-    }
 
     :host-context([dir='rtl']) & {
         border-radius: $border-rounded-on-the-right;
@@ -174,20 +195,6 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
     :host-context([dir='rtl']) & {
         border-radius: $border-rounded-on-the-left;
         border-width: $border-width;
-    }
-
-    &:not(.disable-mobile) {
-        @include media-breakpoint-down('small') {
-            border-width: $border-width;
-            border-top-width: nx-border-size(xs);
-            border-radius: $border-rounded-on-the-bottom;
-
-            // prevent style changes if there is only one toggle option
-            &.nx-radio-toggle__label-container--first {
-                border-radius: $border-radius;
-                border-width: $border-width;
-            }
-        }
     }
 
     :host-context([dir='rtl']) & {
@@ -224,12 +231,8 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
     height: 100%;
     min-height: nx-spacer(m);
 
-    &:not(.disable-mobile) {
-        @include media-breakpoint-down('small') {
-            border-width: nx-border-size(xs) nx-border-size(m);
-            justify-content: center;
-            padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
-        }
+    @include media-breakpoint-down('small') {
+        justify-content: center;
     }
 
     :host-context([dir='rtl']) & {
