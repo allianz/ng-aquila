@@ -206,13 +206,6 @@ $margin-to-message: nx-spacer(3xs);
     margin-top: v(formfield-message-gap);
 }
 
-.nx-formfield:not(.nx-formfield--negative) {
-    // ensure all icons gets colored blueish.
-    .nx-formfield__appendix nx-icon {
-        color: v(formfield-active-color);
-    }
-}
-
 // States
 .nx-formfield.is-focused {
     .nx-formfield__label {
