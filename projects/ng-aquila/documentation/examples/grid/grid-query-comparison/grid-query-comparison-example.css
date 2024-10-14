@@ -1,15 +1,6 @@
-$color-tiny: #dbd3d8;
-$color-small: #fac748;
-$color-medium: #87d68d;
-$color-large: #27abd6;
-$color-xlarge: #e18335;
-$color-2xlarge: #db4c40;
-$color-3xlarge: #8d6a9f;
-$dotted-border-color: #414141;
-
 body {
     background: #0f2a3d;
-    font-family: 'Public Sans', sans-serif; // Aquila font
+    font-family: 'Public Sans', sans-serif;
     font-size: 16px !important;
     line-height: 24px !important;
     padding: 24px;
@@ -36,51 +27,51 @@ body {
     }
 }
 
+/* not required for container queries -> just for coloring the example */
 .docs-container-inline-size {
-    // not required for container queries -> just for coloring the example
     container-type: inline-size;
     margin-top: 16px;
 }
 
-// GRID STYLES
+/* GRID STYLES */
 @container (min-width: 0) and (max-width: 319px) {
     .docs-grid-colored-grid-container {
-        background-color: darken($color-tiny, 40%);
+        background-color: #7c6674;
     }
 }
 
 @container (min-width: 320px) and (max-width: 703px) {
     .docs-grid-colored-grid-container {
-        background-color: darken($color-small, 40%);
+        background-color: #735304;
     }
 }
 
 @container (min-width: 704px) and (max-width: 991px) {
     .docs-grid-colored-grid-container {
-        background-color: darken($color-medium, 40%);
+        background-color: #26722e;
     }
 }
 
 @container (min-width: 992px) and (max-width: 1279px) {
     .docs-grid-colored-grid-container {
-        background-color: darken($color-large, 30%);
+        background-color: #104455;
     }
 }
 
 @container (min-width: 1280px) and (max-width: 1471px) {
     .docs-grid-colored-grid-container {
-        background-color: darken($color-xlarge, 30%);
+        background-color: #735304;
     }
 }
 
 @container (min-width: 1472px) and (max-width: 1759px) {
     .docs-grid-colored-grid-container {
-        background-color: darken($color-2xlarge, 40%);
+        background-color: #6d3a10;
     }
 }
 
 @container (min-width: 1760px) {
     .docs-grid-colored-grid-container {
-        background-color: darken($color-3xlarge, 40%);
+        background-color: #221825;
     }
 }

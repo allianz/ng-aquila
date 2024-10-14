@@ -14,7 +14,7 @@ import { NxSliderComponent } from '@aposin/ng-aquila/slider';
 @Component({
     selector: 'grid-query-comparison-example',
     templateUrl: './grid-query-comparison-example.html',
-    styleUrls: ['./grid-query-comparison-example.scss'],
+    styleUrls: ['./grid-query-comparison-example.css'],
     standalone: true,
     imports: [
         NxSliderComponent,
