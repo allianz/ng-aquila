@@ -108,6 +108,11 @@ export class TableSortingExampleComponent {
         b: number | string | Date,
         direction: SortDirection,
     ) {
-        return (a < b ? -1 : 1) * (direction === 'asc' ? 1 : -1);
+        if (a < b) {
+            return direction === 'asc' ? -1 : 1;
+        } else if (a > b) {
+            return direction === 'asc' ? 1 : -1;
+        }
+        return 0;
     }
 }
