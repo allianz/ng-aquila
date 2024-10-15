@@ -17,6 +17,8 @@ import { Platform } from '@angular/cdk/platform';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import {
+    afterNextRender,
+    AfterRenderPhase,
     AfterViewInit,
     ComponentRef,
     Directive,
@@ -24,6 +26,7 @@ import {
     Inject,
     inject,
     InjectionToken,
+    Injector,
     Input,
     NgZone,
     OnDestroy,
@@ -32,7 +35,7 @@ import {
     ViewContainerRef,
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { take, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 import { NxTooltipComponent } from './tooltip.component';
 
@@ -133,6 +136,8 @@ export function NX_TOOLTIP_DEFAULT_OPTIONS_FACTORY(): NxTooltipDefaultOptions {
 export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
     _overlayRef!: OverlayRef | null;
     _tooltipInstance!: NxTooltipComponent | null;
+
+    private _injector = inject(Injector);
 
     private _portal!: ComponentPortal<NxTooltipComponent>;
     private _embeddedViewRef!: ComponentRef<NxTooltipComponent>;
@@ -623,14 +628,17 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
         if (this._tooltipInstance) {
             this._tooltipInstance.message = this.message;
 
-            this._ngZone.onMicrotaskEmpty
-                .asObservable()
-                .pipe(take(1), takeUntil(this._destroyed))
-                .subscribe(() => {
+            afterNextRender(
+                () => {
                     if (this._tooltipInstance && this._overlayRef) {
                         this._overlayRef.updatePosition();
                     }
-                });
+                },
+                {
+                    injector: this._injector,
+                    phase: AfterRenderPhase.Write,
+                },
+            );
         }
     }
 

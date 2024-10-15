@@ -109,8 +109,6 @@ export class NxTooltipComponent implements OnDestroy {
             this._hideTimeoutId = null;
         }
 
-        // Body interactions should cancel the tooltip if there is a delay in showing.
-        this._closeOnInteraction = true;
         this._showTimeoutId = window.setTimeout(() => {
             this._visibility = 'visible';
             this._showTimeoutId = null;
