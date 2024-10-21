@@ -32,6 +32,11 @@ $sidebar-width: 280px;
             flex-direction: column;
             align-items: center;
         }
+
+        ::ng-deep .nx-action__wrapper {
+            text-wrap: nowrap;
+            flex-shrink: 1;
+        }
     }
 }
 

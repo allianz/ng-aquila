@@ -125,6 +125,7 @@
 .nx-action__label {
     flex: 1 1 50%;
     text-align: left;
+    word-break: break-word;
 
     :host-context([dir='rtl']) & {
         text-align: right;
