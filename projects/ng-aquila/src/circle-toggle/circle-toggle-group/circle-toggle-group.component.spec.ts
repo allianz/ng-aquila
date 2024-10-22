@@ -42,6 +42,7 @@ describe('NxToggleButtonGroup', () => {
                 FormsModule,
                 ReactiveFormsModule,
                 SimpleCircleToggleGroupComponent,
+                BooleanCircleToggleGroupComponent,
                 NgModelCircleToggleGroupComponent,
                 ReactiveCircleToggleGroupComponent,
                 NgForCircleToggleGroupComponent,
@@ -229,6 +230,30 @@ describe('NxToggleButtonGroup', () => {
         expect(toggleButtons.item(1).querySelector('nx-icon-toggle-button')).toHaveClass('is-flipped');
     }));
 
+    it('circle toggle gets correct styles on value is true/false', fakeAsync(() => {
+        createTestComponent(BooleanCircleToggleGroupComponent);
+        toggleComponent.value = true;
+        tick();
+        fixture.detectChanges();
+
+        expect(toggleButtons.item(0).querySelector('nx-icon-toggle-button')).not.toHaveClass('is-flipped');
+        expect(toggleButtons.item(1).querySelector('nx-icon-toggle-button')).toHaveClass('is-flipped');
+
+        toggleComponent.value = false;
+        tick();
+        fixture.detectChanges();
+
+        expect(toggleButtons.item(0).querySelector('nx-icon-toggle-button')).toHaveClass('is-flipped');
+        expect(toggleButtons.item(1).querySelector('nx-icon-toggle-button')).not.toHaveClass('is-flipped');
+
+        toggleComponent.value = null;
+        tick();
+        fixture.detectChanges();
+
+        expect(toggleButtons.item(0).querySelector('nx-icon-toggle-button')).not.toHaveClass('is-flipped');
+        expect(toggleButtons.item(1).querySelector('nx-icon-toggle-button')).not.toHaveClass('is-flipped');
+    }));
+
     it('recognizes descendants', () => {
         createTestComponent(CircleToggleGroupWithDivComponent);
         expect(toggleComponent.buttons).toHaveSize(3);
@@ -373,6 +398,18 @@ abstract class ButtonToggleGroupTest {
     imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleCircleToggleGroupComponent extends ButtonToggleGroupTest {}
+
+@Component({
+    template: `
+        <nx-circle-toggle-group>
+            <nx-circle-toggle [value]="false" icon="product-heart" hint="info1" label="text1"></nx-circle-toggle>
+            <nx-circle-toggle [value]="true" icon="product-bed" hint="info2" label="text2"></nx-circle-toggle>
+        </nx-circle-toggle-group>
+    `,
+    standalone: true,
+    imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
+})
+class BooleanCircleToggleGroupComponent extends ButtonToggleGroupTest {}
 
 @Component({
     template: `

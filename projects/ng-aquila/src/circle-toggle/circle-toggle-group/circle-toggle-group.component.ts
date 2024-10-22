@@ -135,10 +135,10 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     _negative = false;
 
     /** The value of the selected circle toggle in the circle toggle group. */
-    @Input() set value(value: string) {
+    @Input() set value(value: any) {
         this.writeValue(value);
     }
-    get value(): string {
+    get value(): any {
         return this._value;
     }
     private _value!: string;
@@ -272,7 +272,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
      */
     notifySelectedChild(newValue: string) {
         if (this.buttons) {
-            if (!newValue) {
+            if (newValue === undefined || newValue === null) {
                 const selected = this.buttons.find(button => button.checked);
                 if (selected) {
                     selected.setGroupSelection(false);

@@ -124,14 +124,14 @@ export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, 
     _checked = false;
 
     /** The value that is used in the model. */
-    @Input() set value(newValue: string) {
+    @Input() set value(newValue: any) {
         this._value = newValue;
         this._cdr.markForCheck();
     }
-    get value(): string {
+    get value(): any {
         return this._value!;
     }
-    private _value: string | null = null;
+    private _value: any = null;
 
     /** Id of the icon that should be displayed. */
     @Input('icon') set iconName(name: string) {
