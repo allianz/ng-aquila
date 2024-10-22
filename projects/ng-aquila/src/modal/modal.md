@@ -165,11 +165,21 @@ To get your app direction we recommend using [Directionality](https://material.a
 The following example demonstrates the usage of the `shouldClose` and `closeDenied` APIs to create a modal that displays a popover notification when attempting to close the modal with unsaved data.
  <!-- example(modal-unsaved) -->
 
+
+ ### Autofocus
+ The `autofocus` property allows you to control which element receives focus when a modal is opened. The following options are available:
+
+- `dialog` or `false`: Focuses on the modal dialog itself.
+- `first-tabbable` or `true`: Focuses on the first tabbable element, such as a button (this is the default behavior).
+- `first-header`: Focuses on the first header element (e.g., `h1`, `h2`, `h3`).
+- Custom CSS selectors: You can specify a custom element to focus using a selector like `div` or `.element`.
+ <!-- example(modal-autofocus) -->
+
 ### Accessibility
 
 By default, each modal has `role="dialog"` on the root element. The role can be changed to `alertdialog` via the `NxModalConfig`.
 
-The aria-label, aria-labelledby, and aria-describedby attributes of the modal as well as the aria-label of the optional close button can be set via the `NxModalConfig` as well. It is recommended to at least give a modal an aria-label or aria-labelledby attribute.
+The aria-label, aria-labelledby, and aria-describedby attributes of the modal as well as the aria-label of the optional close button can be set via the `NxModalConfig` as well. It is recommended to at least give a modal an aria-label or aria-labelledby attribute. (**Note:** `aria-label` or `aria-labelledby` is required for _Voiceover_. )
 
 When a dialog opens, the first focusable element will be focused. The CdkOverlay used in the dialog traps the focus in itself in order to prevent users from interacting with elements in the background. Per default, the focus will be given back to the element which has been focused before the opening of the dialog.
 

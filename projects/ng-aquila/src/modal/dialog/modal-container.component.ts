@@ -1,5 +1,5 @@
 import { AnimationEvent } from '@angular/animations';
-import { FocusMonitor, FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
+import { FocusMonitor, FocusTrap, FocusTrapFactory, InteractivityChecker } from '@angular/cdk/a11y';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, DomPortal, TemplatePortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
@@ -13,6 +13,7 @@ import {
     EmbeddedViewRef,
     EventEmitter,
     Inject,
+    NgZone,
     OnDestroy,
     OnInit,
     Optional,
@@ -102,6 +103,8 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
         /** The modal configuration. */
         readonly _config: NxModalConfig,
         private readonly _focusMonitor: FocusMonitor,
+        private readonly _interactivityChecker: InteractivityChecker,
+        protected _ngZone: NgZone,
     ) {
         super();
         this._ariaLabelledBy = _config.ariaLabelledBy || null;
@@ -164,29 +167,77 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
 
     /** Moves the focus inside the focus trap. */
     private _trapFocus() {
-        const element = this._elementRef.nativeElement;
+        const dialog = this._elementRef.nativeElement;
 
         if (!this._focusTrap) {
-            this._focusTrap = this._focusTrapFactory.create(element);
+            this._focusTrap = this._focusTrapFactory.create(dialog);
         }
 
-        // If we were to attempt to focus immediately, then the content of the modal would not yet be
-        // ready in instances where change detection has to run first. To deal with this, we simply
-        // wait for the microtask queue to be empty.
-        if (this._config.autoFocus) {
-            this._focusTrap.focusInitialElementWhenReady();
-        } else {
-            const activeElement = this._document?.activeElement;
+        const activeElement = this._document?.activeElement;
 
+        switch (this._config.autoFocus) {
             // Otherwise ensure that focus is on the modal container. It's possible that a different
             // component tried to move focus while the open animation was running. See:
             // https://github.com/angular/components/issues/16215. Note that we only want to do this
             // if the focus isn't inside the modal already, because it's possible that the consumer
             // turned off `autoFocus` in order to move focus themselves.
-            if (activeElement !== element && !element.contains(activeElement)) {
-                element.focus();
-            }
+            case false:
+            case 'dialog':
+                if (activeElement !== dialog && !dialog.contains(activeElement)) {
+                    dialog.focus();
+                }
+                return;
+            // If we were to attempt to focus immediately, then the content of the modal would not yet be
+            // ready in instances where change detection has to run first. To deal with this, we simply
+            // wait for the microtask queue to be empty.
+            case true:
+            case 'first-tabbable':
+                this._focusTrap.focusInitialElementWhenReady().then(() => {
+                    const focused = dialog?.querySelector('.cdk-focused') as HTMLElement;
+                    if (focused) {
+                        // make focus style appear because it only show on focus vis keyboard
+                        this._focusMonitor.focusVia(focused, 'keyboard');
+                    }
+                });
+                break;
+            case 'first-heading':
+                this._focusByCssSelector('h1, h2, h3, h4, h5, h6, [role="heading"]');
+                break;
+            default:
+                this._focusByCssSelector(this._config.autoFocus!);
+                break;
         }
+
+        // fallback, if no tabbable nor selector then focus on dialog.
+        const hasTabbable = dialog.contains(document.activeElement);
+        if (!hasTabbable) {
+            dialog.focus();
+        }
+    }
+
+    private _focusByCssSelector(selector: string, options?: FocusOptions) {
+        const elementToFocus = this._elementRef.nativeElement.querySelector(selector) as HTMLElement | null;
+        if (elementToFocus) {
+            this._forceFocus(elementToFocus, options);
+        }
+    }
+
+    private _forceFocus(element: HTMLElement, options?: FocusOptions) {
+        if (!this._interactivityChecker.isFocusable(element)) {
+            element.tabIndex = -1;
+            // The tabindex attribute should be removed to avoid navigating to that element again
+            this._ngZone.runOutsideAngular(() => {
+                const callback = () => {
+                    element.removeEventListener('blur', callback);
+                    element.removeEventListener('mousedown', callback);
+                    element.removeAttribute('tabindex');
+                };
+
+                element.addEventListener('blur', callback);
+                element.addEventListener('mousedown', callback);
+            });
+        }
+        element.focus(options);
     }
 
     /** Restores focus to the element that was focused before the modal opened. */
@@ -218,13 +269,11 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
             return;
         }
         this._elementFocusedBeforeDialogWasOpened = _getFocusedElementPierceShadowDom();
-
         // Note that there is no focus method when rendering on the server.
         if (this._elementRef.nativeElement.focus) {
-            // Move focus onto the modal immediately in order to prevent the user from accidentally
-            // opening multiple modals at the same time. Needs to be async, because the element
-            // may not be focusable immediately.
-            Promise.resolve().then(() => this._elementRef.nativeElement.focus());
+            //  prevent the user from accidentally
+            // opening multiple modals at the same time.
+            this._elementFocusedBeforeDialogWasOpened?.blur();
         }
     }
 

@@ -2,12 +2,6 @@
     <div class="nx-modal__backdrop" (click)="clickOutsideModal()">
         <div class="nx-modal__position">
             <div class="nx-modal__container" (click)="cancelClick($event)" [@scaleUpDown]>
-                @if (showCloseIcon) {
-                    <button #closeButton (click)="closeButtonClick()" [attr.aria-label]="closeButtonLabel" class="nx-modal__close" type="button">
-                        <nx-icon name="close" aria-hidden="true"></nx-icon>
-                    </button>
-                }
-
                 <div class="nx-modal__content-wrapper" cdkScrollable>
                     @if (body) {
                         <ng-container *ngTemplateOutlet="body"></ng-container>
@@ -15,6 +9,11 @@
                         <ng-content></ng-content>
                     }
                 </div>
+                @if (showCloseIcon) {
+                    <button #closeButton (click)="closeButtonClick()" [attr.aria-label]="closeButtonLabel" class="nx-modal__close" type="button">
+                        <nx-icon name="close" aria-hidden="true"></nx-icon>
+                    </button>
+                }
             </div>
         </div>
     </div>

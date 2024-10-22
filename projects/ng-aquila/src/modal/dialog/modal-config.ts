@@ -7,6 +7,8 @@ export type NxModalRole = 'dialog' | 'alertdialog';
 
 export type NxModalAppearance = 'expert' | 'default';
 
+export type AutoFocusTarget = 'dialog' | 'first-tabbable' | 'first-heading';
+
 /** Possible overrides for a modal's position. */
 export interface NxDialogPosition {
     /** Override for the modal's top position. */
@@ -96,7 +98,7 @@ export class NxModalConfig<D = any> {
     ariaLabel?: string | null = null;
 
     /** Whether the modal should focus the first focusable element on open. */
-    autoFocus?: boolean = true;
+    autoFocus?: boolean | AutoFocusTarget | string = true;
 
     /**
      * Whether the modal should restore focus to the

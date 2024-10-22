@@ -1122,9 +1122,21 @@ describe('NxDialog', () => {
 
         afterEach(() => document.body.removeChild(overlayContainerElement));
 
+        it('should focus the first tabbable element of the dialog on open as default', fakeAsync(() => {
+            dialog.open(PizzaMsg, {
+                viewContainerRef: testViewContainerRef,
+            });
+
+            viewContainerFixture.detectChanges();
+            flushMicrotasks();
+
+            expect(document.activeElement!.tagName).withContext('Expected first tabbable element (input) in the dialog to be focused.').toBe('INPUT');
+        }));
+
         it('should focus the first tabbable element of the dialog on open', fakeAsync(() => {
             dialog.open(PizzaMsg, {
                 viewContainerRef: testViewContainerRef,
+                autoFocus: 'first-tabbable',
             });
 
             viewContainerFixture.detectChanges();
@@ -1143,6 +1155,46 @@ describe('NxDialog', () => {
             flushMicrotasks();
 
             expect(document.activeElement!.tagName).not.toBe('INPUT');
+        }));
+
+        it('should focus dialog when set autofocus to dialog ', fakeAsync(() => {
+            dialog.open(PizzaMsg, {
+                viewContainerRef: testViewContainerRef,
+                autoFocus: 'dialog',
+            });
+            const container = overlayContainerElement.querySelector('nx-modal-container')!;
+
+            viewContainerFixture.detectChanges();
+            flushMicrotasks();
+            expect(document.activeElement).withContext('Expected dialog to be focused.').toBe(container);
+        }));
+
+        it('should focus the first heading element of the dialog on open', fakeAsync(() => {
+            dialog.open(PizzaMsg, {
+                viewContainerRef: testViewContainerRef,
+                autoFocus: 'first-heading',
+            });
+
+            viewContainerFixture.detectChanges();
+            flushMicrotasks();
+
+            const firstHeader = overlayContainerElement.querySelector('h1') as HTMLInputElement;
+
+            expect(document.activeElement).withContext('Expected first heading element in the dialog to be focused.').toBe(firstHeader);
+        }));
+
+        it('should focus the custom element of the dialog on open', fakeAsync(() => {
+            dialog.open(PizzaMsg, {
+                viewContainerRef: testViewContainerRef,
+                autoFocus: '.custom',
+            });
+
+            viewContainerFixture.detectChanges();
+            flushMicrotasks();
+
+            const customElement = overlayContainerElement.querySelector('.custom') as HTMLInputElement;
+
+            expect(document.activeElement).withContext('Expected custom element in the dialog to be focused.').toBe(customElement);
         }));
 
         it('should re-focus trigger element when dialog closes', fakeAsync(() => {
@@ -1690,7 +1742,7 @@ class ComponentWithTemplateRef {
 
 /** Simple component for testing ComponentPortal. */
 @Component({
-    template: '<p>Pizza</p> <input> <button>Close</button>',
+    template: '<h1>Header</h1><p>Pizza</p><div class="custom">custom</div><input> <button>Close</button>',
     standalone: true,
 })
 class PizzaMsg {
