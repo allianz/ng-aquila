@@ -319,6 +319,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
         '[attr.required]': 'required',
         '[attr.aria-invalid]': '_controlInvalid() || null',
         '[class.is-readonly]': 'checkboxGroup?.readonly || readonly',
+        '[class.can-hover]': '!readonly && !disabled && !negative',
     },
     providers: [
         {

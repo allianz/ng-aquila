@@ -165,6 +165,20 @@ describe('NxCheckboxComponent', () => {
         expect(checkboxNativeElement).not.toHaveClass('nx-checkbox--negative');
     });
 
+    it('should set can-hover class', () => {
+        createTestComponent(CheckboxConfigurable);
+        expect(checkboxNativeElement).toHaveClass('can-hover');
+        testInstance.disabled = true;
+        fixture.detectChanges();
+        expect(checkboxNativeElement).not.toHaveClass('can-hover');
+        testInstance.disabled = false;
+        testInstance.readonly = true;
+        expect(checkboxNativeElement).not.toHaveClass('can-hover');
+        testInstance.readonly = false;
+        testInstance.negative = true;
+        expect(checkboxNativeElement).not.toHaveClass('can-hover');
+    });
+
     it('toggles the checked state based on [checked] input', () => {
         createTestComponent(BasicCheckbox);
         assertChecked(false);
