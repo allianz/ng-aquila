@@ -223,7 +223,7 @@ In month view:
 | `ALT` + `PAGE_UP`   | Go to the same day in the previous year  |
 | `PAGE_DOWN`         | Go to the same day in the next month     |
 | `ALT` + `PAGE_DOWN` | Go to the same day in the next year      |
-| `ENTER`             | Select current date                      |
+| `ENTER`,`SPACE`     | Select current date                      |
 
 In year view:
 

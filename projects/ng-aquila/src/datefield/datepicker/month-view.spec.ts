@@ -1,5 +1,5 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
-import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
+import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, SPACE, UP_ARROW } from '@angular/cdk/keycodes';
 import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -282,6 +282,16 @@ describe('NxMonthView', () => {
                     activeDateEquals(2017, JAN, 10, testComponent.selected);
 
                     dispatchKeyboardEvent(calendarBodyEl, 'keydown', ENTER);
+                    fixture.detectChanges();
+                    activeDateEquals(2017, JAN, 4, testComponent.selected);
+                });
+
+                it('should select active date on space', () => {
+                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', LEFT_ARROW);
+                    fixture.detectChanges();
+                    activeDateEquals(2017, JAN, 10, testComponent.selected);
+
+                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', SPACE);
                     fixture.detectChanges();
                     activeDateEquals(2017, JAN, 4, testComponent.selected);
                 });

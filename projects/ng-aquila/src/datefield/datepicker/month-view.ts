@@ -1,5 +1,5 @@
 import { Directionality } from '@angular/cdk/bidi';
-import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
+import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, SPACE, UP_ARROW } from '@angular/cdk/keycodes';
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
@@ -216,6 +216,7 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
                     : this._dateAdapter.addCalendarMonths(this._activeDate, 1);
                 break;
             case ENTER:
+            case SPACE:
                 if (!this.dateFilter || this.dateFilter(this._activeDate)) {
                     this._dateSelected(this._dateAdapter.getDate(this._activeDate));
                     this._userSelection.emit();
