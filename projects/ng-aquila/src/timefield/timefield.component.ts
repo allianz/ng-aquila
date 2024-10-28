@@ -14,9 +14,11 @@ import {
     DoCheck,
     ElementRef,
     EventEmitter,
+    forwardRef,
     Inject,
     inject,
     InjectionToken,
+    Injector,
     Input,
     numberAttribute,
     OnChanges,
@@ -25,13 +27,24 @@ import {
     Optional,
     Output,
     QueryList,
-    Self,
     SimpleChanges,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ControlValueAccessor, FormControl, FormGroupDirective, FormsModule, NgControl, NgForm } from '@angular/forms';
+import {
+    AbstractControl,
+    ControlValueAccessor,
+    FormControl,
+    FormGroupDirective,
+    FormsModule,
+    NG_VALIDATORS,
+    NG_VALUE_ACCESSOR,
+    NgControl,
+    NgForm,
+    ValidationErrors,
+    Validator,
+} from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import {
     AppearanceType,
@@ -124,10 +137,22 @@ export class NxTimefieldControl implements NxFormfieldControl<string> {
         '[class.has-timepicker]': 'withTimepicker',
         '(focusout)': '_onBlur($event)',
     },
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => NxTimefieldComponent),
+            multi: true,
+        },
+        {
+            provide: NG_VALIDATORS,
+            useExisting: forwardRef(() => NxTimefieldComponent),
+            multi: true,
+        },
+    ],
     standalone: true,
     imports: [NgClass, NxRadioModule, FormsModule, NxTimefieldControl, NxTimefieldOption, NxFormfieldModule, NxIconModule, NxRadioToggleModule, OverlayModule],
 })
-export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck, OnInit, OnChanges {
+export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck, OnInit, OnChanges, Validator {
     /** @docs-private */
     errorState = false;
 
@@ -139,6 +164,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit
 
     protected readonly intl = inject(NxTimefieldIntl);
     protected readonly focusMonitor = inject(FocusMonitor);
+    ngControl: NgControl | null = null;
 
     /* The appearance of the formfield. Should be mostly handled via dependency injection and not over this input. */
     @Input() appearance: AppearanceType = this._formfieldDefaultOptions?.appearance ?? 'auto';
@@ -157,6 +183,9 @@ export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit
     get withTimepicker(): boolean {
         return this._withTimepicker;
     }
+
+    /* Opt-in for the time validation. */
+    @Input({ transform: booleanAttribute }) enableTimeValidation = false;
 
     /* Event that emits the time in 24h ISO format. */
     @Output() readonly valueChange = new EventEmitter<string>();
@@ -409,12 +438,12 @@ export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit
 
     constructor(
         private readonly _cdr: ChangeDetectorRef,
-        /** @docs-private */ @Optional() @Self() readonly ngControl: NgControl | null,
         private readonly _errorStateMatcher: ErrorStateMatcher,
         @Optional() private readonly _parentForm: NgForm | null,
         @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
         readonly _intl: NxTimefieldIntl,
         private readonly _elementRef: ElementRef,
+        private injector: Injector,
 
         @Optional() @Inject(FORMFIELD_DEFAULT_OPTIONS) private readonly _formfieldDefaultOptions?: FormfieldDefaultOptions,
         @Optional() @Inject(TIMEFIELD_DEFAULT_OPTIONS) private readonly _timefieldDefaultOptions?: TimefieldDefaultOptions,
@@ -422,11 +451,25 @@ export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit
         if (_timefieldDefaultOptions) {
             this.withTimepicker = this._timefieldDefaultOptions?.withTimepicker ?? false;
         }
-        if (this.ngControl) {
-            // Note: we provide the value accessor through here, instead of
-            // the `providers` to avoid running into a circular import.
-            this.ngControl.valueAccessor = this;
+    }
+
+    validate(control: AbstractControl<any, any>): ValidationErrors | null {
+        if (!this.enableTimeValidation) {
+            return null;
         }
+
+        if (this.enableTimeValidation) {
+            const hours = Number(this.hours);
+            const minutes = Number(this.minutes);
+
+            if (!hours && !minutes) {
+                return null;
+            } else if (!this._isValidTime(hours, 'hours') || !this._isValidTime(minutes, 'minutes')) {
+                return { timefieldValueError: true };
+            }
+        }
+
+        return control.value === null ? { timefieldValueError: true } : null;
     }
 
     ngAfterViewInit() {
@@ -450,6 +493,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit
 
     ngOnInit() {
         this._createTimelist();
+        this.ngControl = this.injector.get(NgControl, null);
     }
 
     private _createTimelist() {

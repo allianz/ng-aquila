@@ -95,6 +95,7 @@ describe('NxTimefieldComponent', () => {
                 TemplateDrivenTimefield,
                 TemplateDrivenOnPushTimefield,
                 OverrideDefaultLabelsTimefield,
+                CustomValidationTimefield,
             ],
         }).compileComponents();
 
@@ -185,6 +186,23 @@ describe('NxTimefieldComponent', () => {
         inputElementMinutes.click();
         fixture.detectChanges();
         tick();
+        expect(reactInstance.testForm.status).toBe('INVALID');
+    }));
+
+    it('should validate time fields when control is non required', fakeAsync(() => {
+        createTestComponent(CustomValidationTimefield);
+        const reactInstance = testInstance as CustomValidationTimefield;
+        reactInstance.twelveHourFormat = true;
+        inputElementHours.value = '25';
+        inputElementHours.value = '60';
+
+        inputElementHours.dispatchEvent(new Event('input'));
+        inputElementHours.focus();
+        inputElementHours.blur();
+
+        fixture.detectChanges();
+        tick();
+
         expect(reactInstance.testForm.status).toBe('INVALID');
     }));
 
@@ -804,3 +822,29 @@ class OverrideDefaultLabelsTimefield extends TimefieldTest {}
     imports: [NxTimefieldModule],
 })
 class DefaultOptionsProvderTimefield extends TimefieldTest {}
+
+@Component({
+    template: `
+        <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+            <nx-timefield formControlName="today" [twelveHourFormat]="twelveHourFormat" enableTimeValidation>
+                <nx-error> This is error </nx-error>
+            </nx-timefield>
+        </form>
+    `,
+    standalone: true,
+    imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule, NxErrorComponent],
+})
+class CustomValidationTimefield extends TimefieldTest {
+    testForm!: FormGroup;
+
+    constructor(private readonly fb: FormBuilder) {
+        super();
+        this.createForm();
+    }
+
+    createForm() {
+        this.testForm = this.fb.group({
+            today: [''],
+        });
+    }
+}
