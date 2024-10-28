@@ -4,10 +4,10 @@ $switcher-border-radius: nx-border-radius(m);
 
 :host {
     position: relative;
-    display: flex;
 
     &.is-swapped .nx-switcher__label {
         flex-direction: row-reverse;
+        justify-content: flex-end;
 
         &.has-label .nx-switcher__toggle {
             margin-left: nx-spacer(xs);
@@ -25,12 +25,22 @@ $switcher-border-radius: nx-border-radius(m);
     position: absolute;
 }
 
-.nx-switcher__label {
-    @include type-style(switcher-large);
-
+.nx-switcher__control {
     cursor: pointer;
     display: flex;
     position: relative;
+}
+:host(.is-swapped) .nx-switcher__control {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+
+    .nx-switcher__label-text {
+        margin-right: nx-spacer(xs);
+    }
+}
+
+.nx-switcher__label-text {
+    @include type-style(switcher-large);
 }
 
 .nx-switcher__toggle {
@@ -83,12 +93,29 @@ $switcher-border-radius: nx-border-radius(m);
     .nx-switcher__toggle {
         background-color: v(switcher-checked-background-color);
     }
+
+    nx-icon {
+        opacity: 1;
+        transition: opacity 0.2s ease;
+    }
 }
 
 :host(.is-checked.is-negative) {
     .nx-switcher__toggle {
         background-color: v(negative-dimmed);
     }
+}
+
+:host(.check-icon-small) {
+    font-size: nx-font-size(3xs); // required to override `font-size: auto;` of the nx-icon component
+}
+
+nx-icon {
+    position: absolute;
+    top: nx-spacer(4xs);
+    left: nx-spacer(4xs);
+    opacity: 0;
+    color: v(switcher-checked-icon-color);
 }
 
 // BIG
@@ -106,22 +133,12 @@ $switcher-border-radius: nx-border-radius(m);
     }
 
     nx-icon {
-        position: absolute;
-        top: nx-spacer(4xs);
-        left: nx-spacer(4xs);
         font-size: nx-font-size(s);
-        opacity: 0;
-        color: v(switcher-checked-icon-color);
 
         [dir='rtl'] & {
             right: nx-spacer(4xs);
             left: auto;
         }
-    }
-
-    &.is-checked nx-icon {
-        opacity: 1;
-        transition: opacity 0.2s ease;
     }
 
     &.nx-switcher--large-label {
@@ -164,7 +181,7 @@ $switcher-border-radius: nx-border-radius(m);
 
 // SMALL FONT
 :host(.nx-switcher--small-label) {
-    .nx-switcher__label {
+    .nx-switcher__label-text {
         @include type-style(switcher-small);
     }
 
@@ -181,7 +198,7 @@ $switcher-border-radius: nx-border-radius(m);
 
 // NEGATIVE
 :host(.is-negative) {
-    .nx-switcher__label {
+    .nx-switcher__control {
         color: v(negative);
     }
 
@@ -192,10 +209,14 @@ $switcher-border-radius: nx-border-radius(m);
     .nx-switcher__toggle {
         background-color: v(negative-dimmed);
     }
+
+    nx-icon {
+        color: v(negative-background);
+    }
 }
 
 // ARIA
-:host .nx-switcher__input.cdk-keyboard-focused + .nx-switcher__label .nx-switcher__toggle {
+:host .nx-switcher__input.cdk-keyboard-focused + .nx-switcher__control .nx-switcher__toggle {
     @include focus-style;
 }
 
@@ -209,7 +230,7 @@ $switcher-border-radius: nx-border-radius(m);
         background-color: v(switcher-disabled-dot-background-color);
     }
 
-    .nx-switcher__label {
+    .nx-switcher__control {
         cursor: not-allowed;
         color: v(switcher-disabled-text-color);
     }
@@ -234,7 +255,7 @@ $switcher-border-radius: nx-border-radius(m);
         }
     }
 
-    .nx-switcher__label {
+    .nx-switcher__control {
         cursor: not-allowed;
         color: v(switcher-readonly-text-color);
     }
@@ -245,13 +266,17 @@ $switcher-border-radius: nx-border-radius(m);
     .nx-switcher__toggle {
         background-color: v(danger);
     }
+
+    nx-icon {
+        color: v(danger);
+    }
 }
 
 // high contrast
 @media screen and (forced-colors: active) {
     :host,
     :host(.is-negative) {
-        .nx-switcher__label {
+        .nx-switcher__control {
             color: buttonText;
         }
 
@@ -293,7 +318,7 @@ $switcher-border-radius: nx-border-radius(m);
 
         // disabled
         &.is-disabled {
-            .nx-switcher__label {
+            .nx-switcher__control {
                 color: GrayText;
             }
 

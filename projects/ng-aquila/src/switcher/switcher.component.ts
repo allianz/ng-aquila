@@ -60,6 +60,7 @@ export type LABEL_SIZE = 'small' | 'large';
         '[class.is-negative]': 'negative',
         '[class.is-checked]': 'checked',
         '[class.is-big]': 'big',
+        '[class.check-icon-small]': '!big',
         '[class.nx-switcher--small-label]': 'labelSize === "small"',
         '[class.nx-switcher--large-label]': 'labelSize === "large"',
         '[class.is-disabled]': 'disabled',

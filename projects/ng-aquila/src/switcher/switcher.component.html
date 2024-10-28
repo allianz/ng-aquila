@@ -18,12 +18,10 @@
     [attr.required]="required || null"
     class="nx-switcher__input"
 />
-<label [attr.for]="id" class="nx-switcher__label" [class.has-label]="labelHasContent">
+<label [attr.for]="id" class="nx-switcher__control" [class.has-label]="labelHasContent">
     <div class="nx-switcher__toggle">
         <div class="nx-switcher__dot">
-            @if (big) {
-                <nx-icon name="check" aria-hidden="true"></nx-icon>
-            }
+            <nx-icon name="check" aria-hidden="true"></nx-icon>
         </div>
     </div>
     <div class="nx-switcher__label-text" #switcherLabelWrapper (cdkObserveContent)="labelContentChanged()">
