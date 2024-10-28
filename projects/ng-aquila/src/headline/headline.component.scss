@@ -15,10 +15,10 @@
     ::ng-deep nx-link a,
     a {
         color: v(link-color);
-        font-size: inherit;
+        font-size: inherit !important;
         font-weight: nx-font-weight(semibold);
-        line-height: inherit;
-        letter-spacing: inherit;
+        line-height: inherit !important;
+        letter-spacing: inherit !important;
         text-decoration: none;
     }
 }
