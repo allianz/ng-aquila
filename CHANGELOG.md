@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.6.0](https://github.com/allianz/ng-aquila/compare/v18.5.1...v18.6.0) (2024-10-31)
+
+### Timefield built in validator
+The timefield component now has a built in validator to check if the entered time is valid. The feature can be enabled by an opt-in setting `enableTimeValidation`.
+
+
+### Features ✨
+
+* **modal:** add more autofocus options ([a2eb516](https://github.com/allianz/ng-aquila/commit/a2eb5162fa137b35c042dd4597903091c3c9f452))
+* **switcher:** always show tickmark when checked ([6f3f5a2](https://github.com/allianz/ng-aquila/commit/6f3f5a213cb34db0166fc2c5934ea6018b732bde))
+* **timefield:** add custom validator for invalid time ([ce55e71](https://github.com/allianz/ng-aquila/commit/ce55e710c1d8259b885aa8b6ef86e9b022dfb267))
+
+
+### Bug Fixes 🐛
+
+* **checkbox:** active and error hover/active styles ([b3dbac7](https://github.com/allianz/ng-aquila/commit/b3dbac782d15e5cf00fd43617fdd1a514900c231))
+* **circle-toggle:** allow any value ([5866d47](https://github.com/allianz/ng-aquila/commit/5866d47115076029039312021f6deeb47d762375))
+* **datefield:** use spacebar to select date ([4622d74](https://github.com/allianz/ng-aquila/commit/4622d74d7e1cde19b6f7a5afe5853b65b36a1291))
+* **grid:** convert scss example file to css ([3b7ea9e](https://github.com/allianz/ng-aquila/commit/3b7ea9e54410f65268101f057fc6c9d41358e3e6))
+* **headline:** add css for links inside of headline ([ae0cd54](https://github.com/allianz/ng-aquila/commit/ae0cd54c29e0c4f7f264f5d6777a80000ad1f281))
+* **message-toast:** add NxMessageToastService to providers ([bab33f4](https://github.com/allianz/ng-aquila/commit/bab33f497e7a1e055a8658ba0e75126265f0a1b4))
+* **message-toast:** replace onMicrotaskEmpty with queueMicrotask for zoneless compatability ([3fcde39](https://github.com/allianz/ng-aquila/commit/3fcde39fe6fa511b00ffd3ef6d71679f6652815a))
+* **sidebar:** item position while resizing and when closed([0d5cf74](https://github.com/allianz/ng-aquila/commit/0d5cf745b7cecdf9ea624bbd2df93d41411c04f4))
+* **table:** change sorting direction ([e67a600](https://github.com/allianz/ng-aquila/commit/e67a6006b358fcba00d7be9f77a0f6a415728aac))
+* **tooltip:** replace onMicrotaskEmpty with afterNextRender for zoneless compatability ([7357258](https://github.com/allianz/ng-aquila/commit/7357258a582fbb5890db2669a8a70997e9b1196c))
+
 ### [18.5.1](https://github.com/allianz/ng-aquila/compare/v18.5.0...v18.5.1) (2024-10-11)
 
 
