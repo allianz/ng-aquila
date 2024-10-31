@@ -106,9 +106,18 @@ myDialogRef.<span class="hljs-title function_">close</span>(<span class="hljs-st
 <h3 id="block-modal-closing" tabindex="-1" class="docs-markdown--h3">Block modal closing</h3>
 <p class="docs-markdown--p">The following example demonstrates the usage of the <code>shouldClose</code> and <code>closeDenied</code> APIs to create a modal that displays a popover notification when attempting to close the modal with unsaved data.</p>
  <div nx-docs-example="modal-unsaved" config="{}">exampleID: modal-unsaved</div>
+<h3 id="autofocus" tabindex="-1" class="docs-markdown--h3">Autofocus</h3>
+<p class="docs-markdown--p">The <code>autofocus</code> property allows you to control which element receives focus when a modal is opened. The following options are available:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><code>dialog</code> or <code>false</code>: Focuses on the modal dialog itself.</li>
+<li class="docs-markdown--li"><code>first-tabbable</code> or <code>true</code>: Focuses on the first tabbable element, such as a button (this is the default behavior).</li>
+<li class="docs-markdown--li"><code>first-header</code>: Focuses on the first header element (e.g., <code>h1</code>, <code>h2</code>, <code>h3</code>).</li>
+<li class="docs-markdown--li">Custom CSS selectors: You can specify a custom element to focus using a selector like <code>div</code> or <code>.element</code>.</li>
+</ul>
+ <div nx-docs-example="modal-autofocus" config="{}">exampleID: modal-autofocus</div>
 <h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">By default, each modal has <code>role=&quot;dialog&quot;</code> on the root element. The role can be changed to <code>alertdialog</code> via the <code>NxModalConfig</code>.</p>
-<p class="docs-markdown--p">The aria-label, aria-labelledby, and aria-describedby attributes of the modal as well as the aria-label of the optional close button can be set via the <code>NxModalConfig</code> as well. It is recommended to at least give a modal an aria-label or aria-labelledby attribute.</p>
+<p class="docs-markdown--p">The aria-label, aria-labelledby, and aria-describedby attributes of the modal as well as the aria-label of the optional close button can be set via the <code>NxModalConfig</code> as well. It is recommended to at least give a modal an aria-label or aria-labelledby attribute. (<strong>Note:</strong> <code>aria-label</code> or <code>aria-labelledby</code> is required for <em>Voiceover</em>. )</p>
 <p class="docs-markdown--p">When a dialog opens, the first focusable element will be focused. The CdkOverlay used in the dialog traps the focus in itself in order to prevent users from interacting with elements in the background. Per default, the focus will be given back to the element which has been focused before the opening of the dialog.</p>
 <p class="docs-markdown--p">Pressing the escape key will close the dialog per default. You can disable this behaviour by setting the <code>disabledClose</code> option to false in the <code>NxModalConfig</code>, but it is recommended to keep it on as it is the expected behaviour of a modal dialog.</p>
 <h4 id="scrollable-areas-and-long-content" tabindex="-1" class="docs-markdown--h4">Scrollable areas and long content</h4>

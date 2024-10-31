@@ -1,5 +1,9 @@
 <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
-    <nx-switcher name="reactiveTest" formControlName="switcherTestReactive">
+    <nx-switcher
+        name="reactiveTest"
+        formControlName="switcherTestReactive"
+        [labelPosition]="'left'"
+    >
         switcher label
         <nx-error>This is required</nx-error>
     </nx-switcher>

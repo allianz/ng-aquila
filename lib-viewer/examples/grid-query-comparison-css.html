@@ -1,0 +1,77 @@
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#0f2a3d</span>;
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;Public Sans&#x27;</span>, sans-serif;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span> <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">24px</span> <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">24px</span>;
+}
+
+<span class="hljs-selector-class">.docs-outer-grid</span> {
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">0</span> <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">32px</span> <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">border-style</span>: dotted;
+}
+
+<span class="hljs-selector-class">.docs-inverse-container</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#e5e7e6</span>;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">24px</span>;
+
+    <span class="hljs-selector-tag">h1</span>,
+    <span class="hljs-selector-tag">h2</span>,
+    <span class="hljs-selector-tag">h3</span>,
+    <span class="hljs-selector-tag">h4</span>,
+    <span class="hljs-selector-tag">h5</span>,
+    <span class="hljs-selector-tag">h6</span> {
+        <span class="hljs-attribute">color</span>: <span class="hljs-number">#0f2a3d</span>;
+    }
+}
+
+<span class="hljs-comment">/* not required for container queries -&gt; just for coloring the example */</span>
+<span class="hljs-selector-class">.docs-container-inline-size</span> {
+    container-type: inline-size;
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">16px</span>;
+}
+
+<span class="hljs-comment">/* GRID STYLES */</span>
+<span class="hljs-keyword">@container</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">0</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">319px</span>) {
+    <span class="hljs-selector-class">.docs-grid-colored-grid-container</span> {
+        <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#7c6674</span>;
+    }
+}
+
+<span class="hljs-keyword">@container</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">320px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">703px</span>) {
+    <span class="hljs-selector-class">.docs-grid-colored-grid-container</span> {
+        <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#735304</span>;
+    }
+}
+
+<span class="hljs-keyword">@container</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">704px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">991px</span>) {
+    <span class="hljs-selector-class">.docs-grid-colored-grid-container</span> {
+        <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#26722e</span>;
+    }
+}
+
+<span class="hljs-keyword">@container</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">992px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">1279px</span>) {
+    <span class="hljs-selector-class">.docs-grid-colored-grid-container</span> {
+        <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#104455</span>;
+    }
+}
+
+<span class="hljs-keyword">@container</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">1280px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">1471px</span>) {
+    <span class="hljs-selector-class">.docs-grid-colored-grid-container</span> {
+        <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#735304</span>;
+    }
+}
+
+<span class="hljs-keyword">@container</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">1472px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">1759px</span>) {
+    <span class="hljs-selector-class">.docs-grid-colored-grid-container</span> {
+        <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#6d3a10</span>;
+    }
+}
+
+<span class="hljs-keyword">@container</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">1760px</span>) {
+    <span class="hljs-selector-class">.docs-grid-colored-grid-container</span> {
+        <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#221825</span>;
+    }
+}

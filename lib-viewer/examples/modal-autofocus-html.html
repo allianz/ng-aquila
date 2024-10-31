@@ -1,0 +1,59 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-xs&quot;</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;openFromTemplate(&#x27;dialog&#x27;)&quot;</span>
+&gt;</span>
+    dialog (false)
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-xs&quot;</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;openFromTemplate(&#x27;first-tabbable&#x27;)&quot;</span>
+&gt;</span>
+    first-tabbable (true) - default
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-xs&quot;</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;openFromTemplate(&#x27;first-heading&#x27;)&quot;</span>
+&gt;</span>
+    first-heading
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-xs&quot;</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;openFromTemplate(&#x27;.custom-content&#x27;)&quot;</span>
+&gt;</span>
+    custom selector
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> #<span class="hljs-attr">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxModalContent</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-medium&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-modal-margin-bottom&quot;</span>&gt;</span>
+            Autofocus when the modal is opened
+        <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-modal-margin-bottom&quot;</span>&gt;</span>
+            Elements inside this modal will receive focus based on the value of
+            the autofocus property.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;custom-content&quot;</span>&gt;</span>Custom selector<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxModalActions</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">nxModalClose</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-0 nx-margin-right-xs&quot;</span>
+            <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small secondary&quot;</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        &gt;</span>
+            Cancel
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">nxModalClose</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-0&quot;</span>
+            <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        &gt;</span>
+            Proceed
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>

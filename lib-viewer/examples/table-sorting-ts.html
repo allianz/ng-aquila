@@ -108,6 +108,11 @@
         b: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">Date</span>,
         direction: SortDirection,
     </span>) {
-        <span class="hljs-keyword">return</span> (a &lt; b ? -<span class="hljs-number">1</span> : <span class="hljs-number">1</span>) * (direction === <span class="hljs-string">&#x27;asc&#x27;</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">if</span> (a &lt; b) {
+            <span class="hljs-keyword">return</span> direction === <span class="hljs-string">&#x27;asc&#x27;</span> ? -<span class="hljs-number">1</span> : <span class="hljs-number">1</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a &gt; b) {
+            <span class="hljs-keyword">return</span> direction === <span class="hljs-string">&#x27;asc&#x27;</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     }
 }

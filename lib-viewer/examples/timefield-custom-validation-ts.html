@@ -1,0 +1,37 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">JsonPipe</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">AfterViewInit</span>, <span class="hljs-title class_">Component</span>, viewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormBuilder</span>, <span class="hljs-title class_">ReactiveFormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxTimefieldComponent</span>,
+    <span class="hljs-title class_">NxTimefieldModule</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/timefield&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Timefield without timepicker example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;timefield-custom-validation-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./timefield-custom-validation-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./timefield-custom-validation-example.css&#x27;</span>],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxTimefieldModule</span>, <span class="hljs-title class_">NxErrorModule</span>, <span class="hljs-title class_">ReactiveFormsModule</span>, <span class="hljs-title class_">JsonPipe</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TimefieldCustomValidationExampleComponent</span>
+    <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterViewInit</span>
+{
+    timefield = viewChild.required(<span class="hljs-title class_">NxTimefieldComponent</span>);
+
+    <span class="hljs-keyword">readonly</span> testForm = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
+        <span class="hljs-attr">timefieldReactive</span>: [<span class="hljs-string">&#x27;&#x27;</span>],
+    });
+
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>) {}
+
+    <span class="hljs-title function_">ngAfterViewInit</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-comment">// this is only to simulate user input that the example already shows the error</span>
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">timefield</span>().<span class="hljs-property">hours</span> = <span class="hljs-string">&#x27;33&#x27;</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">testForm</span>.<span class="hljs-property">controls</span>.<span class="hljs-property">timefieldReactive</span>.<span class="hljs-title function_">markAsTouched</span>();
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">testForm</span>.<span class="hljs-property">controls</span>.<span class="hljs-property">timefieldReactive</span>.<span class="hljs-title function_">updateValueAndValidity</span>();
+    }
+}

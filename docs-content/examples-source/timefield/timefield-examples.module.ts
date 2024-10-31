@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 
+import { TimefieldCustomValidationExampleComponent } from './timefield-custom-validation/timefield-custom-validation-example';
 import { TimefieldDefaultExampleComponent } from './timefield-default/timefield-default-example';
 import { TimefieldDisabledExampleComponent } from './timefield-disabled/timefield-disabled-example';
 import { TimefieldExpertExampleComponent } from './timefield-expert/timefield-expert-example';
@@ -21,6 +22,7 @@ const EXAMPLES = [
     TimefieldReactiveExampleComponent,
     TimefieldTemplateDrivenExampleComponent,
     TimefieldOptionsIntervalExampleComponent,
+    TimefieldCustomValidationExampleComponent,
 ];
 
 @NgModule({
@@ -45,6 +47,8 @@ export class TimefieldExamplesModule {
                 TimefieldWithTimepickerExampleComponent,
             'timefield-with-timepicker-global':
                 TimefieldWithTimepickerGlobalExampleComponent,
+            'timefield-custom-validation':
+                TimefieldCustomValidationExampleComponent,
         };
     }
 }

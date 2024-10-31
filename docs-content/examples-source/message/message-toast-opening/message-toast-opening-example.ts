@@ -22,6 +22,7 @@ export class SimpleMessageToastComponent {}
     templateUrl: './message-toast-opening-example.html',
     styleUrls: ['./message-toast-opening-example.css'],
     standalone: true,
+    providers: [NxMessageToastService],
     imports: [NxButtonComponent],
 })
 export class MessageToastOpeningExampleComponent {

@@ -10,6 +10,7 @@ import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxModalModule } from '@aposin/ng-aquila/modal';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
+import { ModalAutofocusExampleComponent } from './modal-autofocus/modal-autofocus-example';
 import { ModalBasicExampleComponent } from './modal-basic/modal-basic-example';
 import { ModalClosingExampleComponent } from './modal-closing/modal-closing-example';
 import { ModalClosingBehaviourExampleComponent } from './modal-closing-behaviour/modal-closing-behaviour-example';
@@ -23,6 +24,7 @@ import { ModalUnsavedExampleComponent } from './modal-unsaved/modal-unsaved-exam
 import { ModalWithDirectionExampleComponent } from './modal-with-direction/modal-with-direction-example';
 
 const EXAMPLES = [
+    ModalAutofocusExampleComponent,
     ModalStatusExampleComponent,
     ModalUnsavedExampleComponent,
     ModalBasicExampleComponent,
@@ -55,6 +57,7 @@ const EXAMPLES = [
 export class ModalExamplesModule {
     static components() {
         return {
+            'modal-autofocus': ModalAutofocusExampleComponent,
             'modal-status': ModalStatusExampleComponent,
             'modal-unsaved': ModalUnsavedExampleComponent,
             'modal-basic': ModalBasicExampleComponent,
