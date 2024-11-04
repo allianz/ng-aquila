@@ -108,7 +108,7 @@ describe('NxToggleButtonGroup', () => {
         children.forEach((child: any) => {
             expect(child).toHaveClass('has-error');
         });
-        expect(toggleComponent.errorState).toBeTrue();
+        expect(toggleComponent.errorState()).toBeTrue();
     }));
 
     it('should work with rective forms', fakeAsync(() => {

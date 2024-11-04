@@ -36,7 +36,7 @@
         label="Heart"
         #heart
     >
-        <nx-error class="nx-margin-y-xs"> Required </nx-error>
+        <nx-error class="nx-margin-y-xs"> This is required. </nx-error>
     </nx-circle-toggle>
 </form>
 
@@ -49,6 +49,7 @@
         icon="product-heart"
         label="Heart"
         [class.has-error]="testForm3.invalid"
+        ariaDescribedby="customError"
         #heart
     >
     </nx-circle-toggle>
@@ -57,11 +58,14 @@
         icon="product-car"
         label="Car"
         [class.has-error]="testForm3.invalid"
+        ariaDescribedby="customError"
     >
     </nx-circle-toggle>
     @if (testForm3.invalid) {
     <div>
-        <nx-error class="nx-margin-y-xs"> Need to select 2 options </nx-error>
+        <nx-error class="nx-margin-y-xs" id="customError">
+            Need to select 2 options
+        </nx-error>
     </div>
     }
 </form>

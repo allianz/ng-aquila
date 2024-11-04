@@ -195,7 +195,7 @@ describe('NxCircleToggle', () => {
         fixture.detectChanges();
         tick();
 
-        expect(toggleComponent.errorState).toBeTrue();
+        expect(toggleComponent.errorState()).toBeTrue();
     }));
 
     describe('programmatic change', () => {

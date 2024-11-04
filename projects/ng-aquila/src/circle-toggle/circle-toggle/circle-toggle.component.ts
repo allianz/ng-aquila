@@ -7,20 +7,26 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    computed,
+    contentChildren,
     DoCheck,
     ElementRef,
     EventEmitter,
     forwardRef,
     HostListener,
     Input,
+    input,
     OnDestroy,
     Optional,
     Output,
     Self,
+    Signal,
+    signal,
     ViewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 
 import { NxCircleToggleGroupComponent } from '../circle-toggle-group/circle-toggle-group.component';
@@ -60,7 +66,7 @@ let nextId = 0;
         '[class.is-disabled]': 'disabled',
         '[class.is-responsive]': 'responsive',
         '(focus)': '_forwardFocusToInput()',
-        '[class.has-error]': 'toggleGroup?.errorState || errorState',
+        '[class.has-error]': 'hasError()',
         '[class.is-readonly]': 'readonly',
     },
     standalone: true,
@@ -71,10 +77,25 @@ export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, 
 
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
+    errorChildren = contentChildren(NxErrorComponent);
+
+    ariaDescribedBy = input<string | null>(null);
+
+    ariaDescribedByComputed: Signal<string | null> = computed(() => {
+        if (!this.errorState() && !this.toggleGroup?.errorState() && !this.ariaDescribedBy()) {
+            return null;
+        }
+
+        const errorMessageChildrenIds = this.errorChildren().map(errorMessage => errorMessage.id);
+        const toggleGroupDescribeBy = this.toggleGroup?.ariaDescribedBy();
+
+        return [this.ariaDescribedBy(), errorMessageChildrenIds, toggleGroupDescribeBy].join(' ');
+    });
+
     /** @docs-private */
     inGroup = false;
 
-    errorState = false;
+    errorState = signal(false);
 
     /**
      * Id of the circle toggle.
@@ -317,12 +338,14 @@ export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, 
         }
     }
 
+    hasError = computed<boolean>(() => this.toggleGroup?.errorState() || this.errorState());
+
     ngDoCheck(): void {
         if (this.ngControl) {
             // We need to re-evaluate this on every change detection cycle, because there are some
             // error triggers that we can't subscribe to (e.g. parent form submissions). This means
             // that whatever logic is in here has to be super lean or we risk destroying the performance.
-            this.errorState = !this.ngControl.valid;
+            this.errorState.set(!this.ngControl.valid);
         }
     }
 
@@ -432,6 +455,14 @@ export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, 
     handleEnterKey(event: Event) {
         if (!this.toggleGroup) {
             this.toggle(event);
+        }
+    }
+
+    touch() {
+        this.onTouchedCallback();
+
+        if (this.toggleGroup) {
+            this.toggleGroup.touch();
         }
     }
 }

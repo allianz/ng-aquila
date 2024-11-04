@@ -5,11 +5,14 @@
     [attr.aria-labelledby]="id + '-label'"
     [type]="type"
     [attr.name]="name"
+    (blur)="touch()"
     [checked]="checked"
     [disabled]="disabled"
     [attr.aria-checked]="checked"
+    [attr.aria-invalid]="toggleGroup ? toggleGroup.errorState() : errorState()"
     [attr.aria-required]="toggleGroup ? null : required"
     [attr.aria-disabled]="readonly || null"
+    [attr.aria-describedby]="ariaDescribedByComputed()"
     (keydown.enter)="handleEnterKey($event)"
     (click)="toggle($event)"
 />
@@ -40,7 +43,7 @@
         [circleText]="circleText"
     >
     </nx-mobile-toggle-button>
-    @if (errorState) {
-        <ng-content select="nx-error"></ng-content>
-    }
 </label>
+@if (errorState()) {
+    <ng-content select="nx-error"></ng-content>
+}

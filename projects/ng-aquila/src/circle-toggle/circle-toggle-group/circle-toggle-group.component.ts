@@ -5,7 +5,9 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    computed,
     ContentChildren,
+    contentChildren,
     DoCheck,
     EventEmitter,
     forwardRef,
@@ -18,8 +20,11 @@ import {
     Output,
     QueryList,
     Self,
+    Signal,
+    signal,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm, Validators } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxAbstractControl } from '@aposin/ng-aquila/shared';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { merge, Subject } from 'rxjs';
@@ -50,7 +55,7 @@ let nextId = 0;
 @Component({
     selector: 'nx-circle-toggle-group',
     template: `<ng-content></ng-content>
-        @if (errorState) {
+        @if (errorState()) {
             <ng-content select="nx-error"></ng-content>
         }`,
     styleUrls: ['./circle-toggle-group.component.scss'],
@@ -86,12 +91,29 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     }
     private _id = `nx-circle-toggle-group-${nextId++}`;
 
+    private errorChildren = contentChildren(NxErrorComponent);
+    ariaDescribedBy: Signal<string | null> = computed(() => {
+        if (this.errorState() && this.errorChildren().length > 0) {
+            return this.errorChildren()
+                .map(errorChild => errorChild.id)
+                .join(' ');
+        }
+        return null;
+    });
+
     // emits when the internal state changes on properties which are relevant
     // for the child components so that they can mark themself for check
     readonly _stateChanges = new Subject<void>();
 
     get required(): boolean {
         return this.ngControl?.control?.hasValidator(Validators.required) ?? false;
+    }
+
+    /** @docs-private this is meant to be called by the radio buttons in this group. */
+    touch() {
+        if (this.onTouchedCallback) {
+            this.onTouchedCallback();
+        }
     }
 
     /** Name that is used for accessibility. */
@@ -164,7 +186,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         return this.appearance === 'expert';
     }
 
-    errorState = false;
+    errorState = signal(false);
 
     /** @docs-private */
     get selectedButton(): ToggleButton | null {
@@ -314,14 +336,13 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     }
 
     _updateErrorState() {
-        const oldState = this.errorState;
+        const oldState = this.errorState();
         const parent = this._parentFormGroup || this._parentForm;
         const control = this.ngControl ? (this.ngControl.control as FormControl) : null;
         const newState = this._errorStateMatcher.isErrorState(control, parent);
 
         if (newState !== oldState) {
-            this.errorState = newState;
-            this._cdr.markForCheck();
+            this.errorState.set(newState);
         }
     }
 }
