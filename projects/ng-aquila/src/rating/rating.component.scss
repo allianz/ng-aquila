@@ -44,32 +44,42 @@
     }
 }
 
-.nx-rating__icon {
-    font-size: v(rating-icon-size-l);
-    color: var(--iconColor, v(rating-icon-color));
-    width: auto;
-    background: none;
-    border: none;
-    margin-right: nx-spacer(s);
-    cursor: pointer;
-    outline: none;
+.rating-label {
+    line-height: 0;
 
-    &.nx-icon--s {
-        font-size: v(rating-icon-size-s);
+    &.margin-s {
         margin-right: nx-spacer(2xs);
     }
-    &.nx-icon--m {
-        font-size: v(rating-icon-size-m);
+    &.margin-m {
         margin-right: nx-spacer(xs);
     }
-    &.nx-icon--l {
-        font-size: v(rating-icon-size-l);
+    &.margin-l {
         margin-right: nx-spacer(s);
     }
 
     :host-context([dir='rtl']) & {
         margin-right: initial;
         margin-left: nx-spacer(s);
+    }
+}
+
+.nx-rating__icon {
+    font-size: v(rating-icon-size-l);
+    color: var(--iconColor, v(rating-icon-color));
+    width: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+
+    &.nx-icon--s {
+        font-size: v(rating-icon-size-s);
+    }
+    &.nx-icon--m {
+        font-size: v(rating-icon-size-m);
+    }
+    &.nx-icon--l {
+        font-size: v(rating-icon-size-l);
     }
 }
 
@@ -84,7 +94,7 @@
     }
 }
 
-.nx-rating__icon:last-child {
+.rating-label:last-child {
     margin-right: 0;
 
     :host-context([dir='rtl']) & {
@@ -121,4 +131,20 @@
             color: CanvasText;
         }
     }
+}
+
+.nx-rating__input {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+// focus style
+.nx-rating__input.cdk-keyboard-focused + label nx-icon {
+    @include focus-style;
+    border-radius: nx-border-radius(s);
 }

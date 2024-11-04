@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
-import { ENTER, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
+import { ENTER } from '@angular/cdk/keycodes';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -16,7 +16,9 @@ import {
     ViewChildren,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { IconSize, NxIconComponent, NxIconModule } from '@aposin/ng-aquila/icon';
+import { IconSize, NxIconModule } from '@aposin/ng-aquila/icon';
+
+let nextId = 0;
 
 @Component({
     selector: 'nx-rating',
@@ -39,6 +41,16 @@ import { IconSize, NxIconComponent, NxIconModule } from '@aposin/ng-aquila/icon'
     imports: [NxIconModule],
 })
 export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
+    /** @docs-private */
+    readonly radioGroupName = `nx-rating-${nextId++}`;
+
+    getRadioInputId(index: number) {
+        return this.radioInputIds[index - 1];
+    }
+
+    /** @docs-private */
+    readonly radioInputIds = Array.from([1, 2, 3, 4, 5], index => `${this.radioGroupName}-${index}`);
+
     @Input() set size(newSize: IconSize) {
         this._size = newSize;
         this._cdr.markForCheck();
@@ -106,14 +118,38 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     }
     private _endLabel: string | null = null;
 
-    @Input() /** Sets an array of custom aria-describedby attributes for each of the stars in the component. */ set ariaLabel(newAriaLabels: string[]) {
-        this._ariaLabel = newAriaLabels;
-        this._cdr.markForCheck();
+    /**
+     * @deprecated use ariaRatingLabels instead. Will be deleted with version 20
+     * Sets an array of custom aria-label attributes for each of the stars in the component.
+     */
+    @Input() set ariaLabel(newAriaLabels: string[]) {
+        this.ariaRatingLabels = newAriaLabels;
     }
     get ariaLabel(): string[] {
-        return this._ariaLabel;
+        return this.ariaRatingLabels;
     }
-    private _ariaLabel: string[] = ['1/5', '2/5', '3/5', '4/5', '5/5'];
+
+    /**
+     * Sets an array of custom aria-label attributes for the individual ratings.
+     * @arg newAriaLabels - Array of strings with length=5 that includes the label for the individual rating icons
+     */
+    @Input() set ariaRatingLabels(newAriaLabels: string[]) {
+        this._ariaRatingLabels = newAriaLabels;
+    }
+    get ariaRatingLabels(): string[] {
+        return this._ariaRatingLabels;
+    }
+    private _ariaRatingLabels: string[] = ['1/5', '2/5', '3/5', '4/5', '5/5'];
+
+    @Input() set ariaRatingGroupLabel(ariaLabel: string | null) {
+        this._ariaRatingGroupLabel = ariaLabel;
+    }
+
+    get ariaRatingGroupLabel(): string | null {
+        return this._ariaRatingGroupLabel;
+    }
+
+    private _ariaRatingGroupLabel: string | null = null;
 
     @Input() /** Sets the color of rating icon. */ set iconColor(color: string) {
         this._iconColor = color;
@@ -128,7 +164,8 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     @Output() readonly valueChange = new EventEmitter<number>();
 
     /** @docs-private */
-    @ViewChildren(NxIconComponent, { read: ElementRef }) icons!: QueryList<ElementRef>;
+    @ViewChildren('input') radioInputs!: QueryList<ElementRef>;
+
     private onTouchedCallback: () => void = () => {};
     private onChangeCallback: (option: any) => any = (option: any) => {};
 
@@ -138,20 +175,20 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     ) {}
 
     ngAfterViewInit(): void {
-        this.icons.forEach(icon => this._focusMonitor.monitor(icon));
+        this.radioInputs.forEach(input => this._focusMonitor.monitor(input));
     }
 
     ngOnDestroy(): void {
-        this.icons.forEach(icon => this._focusMonitor.stopMonitoring(icon));
+        this.radioInputs.forEach(input => this._focusMonitor.stopMonitoring(input));
     }
 
     /** Whether the given rating is selected. */
     isSelected(index: number) {
-        return index <= this.value || index <= this._hover;
+        return index === this.value;
     }
 
-    isChecked(rating: number) {
-        return rating <= this.value;
+    isVisuallyChecked(rating: number) {
+        return rating <= this.value || rating <= this._hover;
     }
 
     /** Allows to set the rating. */
@@ -167,23 +204,11 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     /** @docs-private */
     handleKeyUp(event: KeyboardEvent, rating: number) {
         const keyCode = event.keyCode;
-        event.preventDefault();
-        event.stopPropagation();
 
         if (keyCode === ENTER) {
+            event.preventDefault();
+            event.stopPropagation();
             this.setSelection(rating);
-        }
-
-        if (keyCode === RIGHT_ARROW) {
-            this.value = Math.min(this.value + 1, 5);
-            const elementRef: ElementRef = this.icons.toArray()[this.value - 1];
-            this._focusMonitor.focusVia(elementRef, 'keyboard');
-        }
-
-        if (keyCode === LEFT_ARROW) {
-            this.value = Math.max(this.value - 1, 1);
-            const elementRef: ElementRef = this.icons.toArray()[this.value - 1];
-            this._focusMonitor.focusVia(elementRef, 'keyboard');
         }
     }
 
@@ -210,7 +235,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
 
     /** @docs-private */
     getIconName(rating: number) {
-        return 'star' + (this.isSelected(rating) ? '' : '-o');
+        return 'star' + (this.isVisuallyChecked(rating) ? '' : '-o');
     }
 
     /** @docs-private */
@@ -219,5 +244,9 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
             return;
         }
         this._hover = rating;
+    }
+
+    handleChange(ratingValue: number) {
+        this.valueChange.emit(ratingValue);
     }
 }
