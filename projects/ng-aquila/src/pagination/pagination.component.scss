@@ -54,7 +54,6 @@
 .nx-pagination__link.is-active {
     color: v(pagination-text-color);
     font-weight: nx-font-weight(bold);
-    cursor: default;
 
     @media screen and (forced-colors: active) {
         border-bottom: nx-border-size(xl) solid CanvasText;
@@ -168,6 +167,7 @@ nx-icon.nx-pagination__arrow {
 .nx-pagination-compact__previous.cdk-keyboard-focused,
 .nx-pagination-compact__next.cdk-keyboard-focused,
 .nx-pagination__link.cdk-keyboard-focused,
+.nx-pagination--icon.cdk-keyboard-focused,
 .nx-pagination--number.cdk-keyboard-focused {
     @include focus-style;
     border-radius: nx-border-radius(s);

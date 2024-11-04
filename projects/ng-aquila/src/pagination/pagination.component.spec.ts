@@ -1,5 +1,5 @@
 import { BidiModule, Direction } from '@angular/cdk/bidi';
-import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
+import { Component, DebugElement, Directive, ElementRef, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -141,6 +141,19 @@ describe('NxPaginationComponent', () => {
             fixture.detectChanges();
             expect(paginationInstance.totalNumberPages).toBe(10);
         });
+
+        it('should keep focus after interaction', () => {
+            createTestComponent(SimplePagination);
+            const simpleInstance = testInstance as SimplePagination;
+            const spy = spyOn(simpleInstance.paginationInstance, 'onNext');
+            fixture.detectChanges();
+            nextArrowSimple.focus();
+            nextArrowSimple.click();
+            fixture.detectChanges();
+
+            expect(spy).toHaveBeenCalled();
+            expect(nextArrowSimple).toHaveClass('cdk-program-focused');
+        });
     });
 
     describe('advanced variation', () => {
@@ -217,6 +230,22 @@ describe('NxPaginationComponent', () => {
             arrowFirst.click();
             expect(testInstance.goToPage).toHaveBeenCalledWith(1);
         });
+
+        it('should keep focus after interaction', () => {
+            createTestComponent(AdvancedPagination);
+            const simpleInstance = testInstance as AdvancedPagination;
+            const spy = spyOn(simpleInstance.paginationInstance, 'onPage');
+            fixture.detectChanges();
+
+            const pageLinkNodes = pageElements as unknown as NodeList;
+            const page2Button = pageLinkNodes.item(1) as any;
+            page2Button.focus();
+            page2Button.click();
+            fixture.detectChanges();
+
+            expect(spy).toHaveBeenCalled();
+            expect(page2Button).toHaveClass('cdk-program-focused');
+        });
     });
 
     describe('slider variation', () => {
@@ -270,6 +299,23 @@ describe('NxPaginationComponent', () => {
             const pages = fixture.debugElement.nativeElement.querySelector('.nx-pagination--icon');
             pages.click();
             expect(testInstance.goToPage).toHaveBeenCalled();
+        });
+
+        it('should keep focus after interaction', () => {
+            createTestComponent(SliderPagination);
+            const simpleInstance = testInstance as SliderPagination;
+            const spy = spyOn(simpleInstance.paginationInstance, 'onPage');
+            fixture.detectChanges();
+
+            const pageLinkNodes = listElements as unknown as NodeList;
+            const page2ListItem = pageLinkNodes.item(1) as any;
+            const page2Button = page2ListItem.children.item(0);
+            page2Button.focus();
+            page2Button.click();
+            fixture.detectChanges();
+
+            expect(spy).toHaveBeenCalled();
+            expect(page2Button).toHaveClass('cdk-program-focused');
         });
     });
 
@@ -405,6 +451,26 @@ describe('NxPaginationComponent', () => {
             const navElement = fixture.nativeElement.querySelector('nav') as HTMLElement;
 
             expect(navElement.attributes.getNamedItem('aria-label')?.value).toBe(DefaultPaginationTexts.ariaLabel);
+        });
+    });
+
+    describe('focusCurrentPageButton', () => {
+        it('should focus the current page button', () => {
+            createTestComponent(FocusCurrentPageButtonPagination);
+
+            testInstance.page = 3;
+            (testInstance as FocusCurrentPageButtonPagination).lastInteractedButtonIsPage = true;
+
+            const mockButtonElement = jasmine.createSpyObj('ElementRef', ['focus']);
+            mockButtonElement.nativeElement = { innerText: '3', focus: jasmine.createSpy('focus') };
+
+            (testInstance as FocusCurrentPageButtonPagination)._linkElements = new QueryList<ElementRef<any>>();
+            (testInstance as FocusCurrentPageButtonPagination)._linkElements.reset([mockButtonElement]);
+
+            fixture.detectChanges();
+
+            (testInstance as FocusCurrentPageButtonPagination).focusCurrentPageButton();
+            expect(mockButtonElement.nativeElement.focus).toHaveBeenCalled();
         });
     });
 });
@@ -628,4 +694,42 @@ class SliderPagination extends PaginationTest {
 class SliderPaginationBeginat6 extends PaginationTest {
     slides = 6;
     activeSlide = 6;
+}
+
+@Component({
+    template: `
+        <nx-pagination
+            [count]="count"
+            [page]="page"
+            [perPage]="perPage"
+            (goPrev)="prevPage()"
+            (goNext)="nextPage()"
+            (goPage)="goToPage($event)"
+        ></nx-pagination>
+    `,
+    standalone: true,
+    imports: [NxPaginationModule, BidiModule],
+})
+class FocusCurrentPageButtonPagination extends PaginationTest {
+    @ViewChildren('link') _linkElements!: QueryList<ElementRef>;
+    lastInteractedButtonIsPage: boolean = true;
+    count = 210;
+    perPage = 10;
+
+    focusCurrentPageButton(): void {
+        if (!!this._linkElements && (this.lastInteractedButtonIsPage || this._isPaginationPreviousDisabled() || this._isPaginationNextDisabled())) {
+            const currentButton = this._linkElements.find(el => el.nativeElement.innerText === this.page.toString());
+            if (currentButton) {
+                currentButton.nativeElement.focus();
+            }
+        }
+    }
+
+    _isPaginationPreviousDisabled(): boolean {
+        return false;
+    }
+
+    _isPaginationNextDisabled(): boolean {
+        return false;
+    }
 }

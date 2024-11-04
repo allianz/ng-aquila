@@ -71,7 +71,7 @@ export class NxPaginationUtils {
         while (counterPages < maxSizeArray && counterPages < totalPages) {
             const startItem =
                 counterPages === 2 && currentPage > 5
-                    ? this.createPaginationItem(this._elipsisText, counterPages, true)
+                    ? this.createPaginationItem(this._elipsisText, counterPages + 1, true)
                     : this.createPaginationItem(counterPages + 1, counterPages + 1, true);
 
             start.push(startItem);

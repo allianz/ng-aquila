@@ -151,7 +151,6 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
         this._linkElements.forEach(link => this._focusMonitor.monitor(link));
         this._linkElementsPrevious = this._linkElements;
         this._linkElements.changes.subscribe(_linkElements => {
-            this._linkElementsPrevious.forEach(link => this._focusMonitor.stopMonitoring(link));
             this._linkElementsPrevious = this._linkElements;
             this._linkElements.forEach(link => this._focusMonitor.monitor(link));
         });

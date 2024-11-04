@@ -27,7 +27,7 @@
                     <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-right' : 'arrow-left'" aria-hidden="true"></nx-icon>
                 </button>
             </li>
-            @for (pageNum of getPages(); track pageNum) {
+            @for (pageNum of getPages(); track pageNum.value) {
                 <li class="nx-pagination__item nx-pagination__item--desktop" [ngClass]="getPaginationItemClasses(pageNum)">
                     @if (pageNum.label !== '...') {
                         <button
@@ -48,7 +48,7 @@
                     }
                 </li>
             }
-            @for (pageNum of getMobilePages(); track pageNum) {
+            @for (pageNum of getMobilePages(); track pageNum.value) {
                 <li class="nx-pagination__item nx-pagination__item--mobile" [ngClass]="getPaginationItemClasses(pageNum)">
                     <button
                         #link
@@ -142,7 +142,7 @@
                     <nx-icon class="nx-pagination__arrow" [name]="_isRTL ? 'arrow-right' : 'arrow-left'" aria-hidden="true"></nx-icon>
                 </button>
             </li>
-            @for (pageNum of getSlides(); track pageNum) {
+            @for (pageNum of getSlides(); track pageNum.value) {
                 <li class="nx-pagination__item">
                     <button
                         #link
