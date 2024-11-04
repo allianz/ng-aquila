@@ -2,7 +2,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
-import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DocVersions, NX_DOC_VERSIONS } from '@aposin/ngx-docs-ui';
 
@@ -56,31 +56,34 @@ describe('NxvVersionSelectComponent', () => {
         overlayContainer.ngOnDestroy();
     });
 
-    it('should show channels', () => {
+    it('should show channels', fakeAsync(() => {
         createTestComponent(BasicVersionSelect);
         openContextMenu();
         fixture.detectChanges();
         const channels = getContextMenuItems();
+        flush();
         expect(channels).toHaveSize(3);
         expect(channels[0].textContent).toContain('lts');
-    });
+    }));
 
-    it('should work with InjectionToken', () => {
+    it('should work with InjectionToken', fakeAsync(() => {
         createTestComponent(VersionSelectWithToken);
         openContextMenu();
         fixture.detectChanges();
         const channels = getContextMenuItems();
+        flush();
         expect(channels).toHaveSize(3);
         expect(channels[0].textContent).toContain('old');
-    });
+    }));
 
-    it('should show the version on the current channel', () => {
+    it('should show the version on the current channel', fakeAsync(() => {
         createTestComponent(BasicVersionSelect);
         openContextMenu();
         fixture.detectChanges();
         const button = fixture.nativeElement.querySelector('button') as HTMLButtonElement;
+        flush();
         expect(button.innerText).toBe('next (7.4.0-beta.0)');
-    });
+    }));
 });
 
 @Component({
