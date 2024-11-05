@@ -90,7 +90,7 @@ nx-radio-toggle {
             &__minutes {
                 margin: 0;
                 font-weight: 400;
-                line-height: 24px;
+                line-height: 1.5rem;
                 padding: 0;
             }
             &__hours {
@@ -233,7 +233,7 @@ section {
     outline: none;
     align-content: center;
     font-size: nx-font-size(xs);
-    line-height: 28px;
+    line-height: 1.75rem;
     outline: none;
     padding: 8px 32px;
 
@@ -254,7 +254,7 @@ section {
 .has-outline {
     .option-list > li {
         font-size: nx-font-size(3xs);
-        line-height: 24px;
+        line-height: 1.5rem;
     }
 }
 

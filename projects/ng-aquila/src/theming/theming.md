@@ -30,10 +30,10 @@ Then, you should define your new theme as a `scss-map` which overwrites all defa
 $my-theme: (
     interactive-primary: green,
     link-color: interactive-primary,
-    heading-01-font-size: 58px,
-    heading-01-line-height: 64px,
+    heading-01-font-size: 3.625rem,
+    heading-01-line-height: 4rem,
     heading-01-font-weight: 500,
-    heading-01-letter-spacing: 0.2px,
+    heading-01-letter-spacing: 0.0125rem,
 );
 
 $nx-themes: nx-register-theme($my-theme, themeName);

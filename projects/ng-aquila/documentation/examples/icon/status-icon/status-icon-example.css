@@ -1,7 +1,7 @@
 section {
     display: flex;
     align-items: flex-end;
-    font-size: 16px;
+    font-size: 1rem;
     flex-flow: row wrap;
     justify-content: space-around;
     text-align: center;

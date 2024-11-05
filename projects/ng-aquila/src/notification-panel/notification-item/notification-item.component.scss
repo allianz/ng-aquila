@@ -22,25 +22,25 @@
 
 ::ng-deep {
     nx-notification-item-metadata {
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 400;
-        line-height: 20px;
-        letter-spacing: 0.2px;
+        line-height: 1.25rem;
+        letter-spacing: 0.0125rem;
         margin-bottom: 4px;
         display: flex;
         align-items: center;
     }
 
     nx-notification-item-content {
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 400;
-        line-height: 24px;
+        line-height: 1.5rem;
     }
 
     nx-notification-item-actions {
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 400;
-        line-height: 24px;
+        line-height: 1.5rem;
         display: flex;
         justify-content: space-between;
         padding-top: 8px;

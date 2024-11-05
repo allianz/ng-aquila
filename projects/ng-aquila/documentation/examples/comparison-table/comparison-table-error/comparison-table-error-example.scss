@@ -13,19 +13,19 @@
 
 .product-price-dynamic {
     font-weight: 600;
-    font-size: 24px;
-    letter-spacing: 0.2px;
+    font-size: 1.5rem;
+    letter-spacing: 0.0125rem;
     margin-top: auto;
     margin-bottom: 16px;
     /* use fixed height to avoid CLS issues */
     height: 32px;
-    line-height: 32px;
+    line-height: 2rem;
 }
 
 .product-underline {
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 0.2px;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    letter-spacing: 0.0125rem;
     font-weight: 400;
     margin: 0;
 }

@@ -10,16 +10,16 @@
 
 .product-price {
     font-weight: 600;
-    font-size: 24px;
-    line-height: 32px;
-    letter-spacing: 0.2px;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: 0.0125rem;
     margin: 12px 0 0 0;
 }
 
 .product-underline {
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 0.2px;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    letter-spacing: 0.0125rem;
     font-weight: 400;
     margin: 0;
 }

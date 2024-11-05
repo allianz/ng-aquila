@@ -7,9 +7,9 @@ $toc-width: 200px;
 
 :host {
     display: block;
-    font-size: 16px;
+    font-size: 1rem;
     height: 100vh;
-    line-height: 24px;
+    line-height: 1.5rem;
     background: v(ui-background);
     color: v(text-01);
     padding-top: 60px;
@@ -27,8 +27,8 @@ $toc-width: 200px;
     position: fixed;
     top: 0;
     width: 100%;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
     z-index: 2;
 
     .nx-header__brand {
@@ -60,7 +60,7 @@ $toc-width: 200px;
 
 // quickfix: vertically center header links
 nx-header-navigation ::ng-deep .nx-header__link {
-    line-height: 27px;
+    line-height: 1.6875rem;
 }
 
 .hidden-with-sidebar {

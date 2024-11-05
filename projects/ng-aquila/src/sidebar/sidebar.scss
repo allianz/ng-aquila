@@ -93,7 +93,7 @@ $sidebar-width: 280px;
     &::before {
         content: '||';
         font-size: nx-font-size(4xs);
-        letter-spacing: -1px;
+        letter-spacing: -0.0625rem;
         font-weight: $font-weight-semibold;
         color: inherit;
 

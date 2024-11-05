@@ -3,8 +3,6 @@
 body {
     background: #0f2a3d;
     font-family: 'Public Sans', sans-serif; // Aquila font
-    font-size: 16px !important;
-    line-height: 24px !important;
     padding: 24px;
 }
 
@@ -27,7 +25,7 @@ body {
 }
 
 .version-info {
-    font-size: 8pt;
+    font-size: 0.6688rem;
     float: right;
     margin: 8px;
 }

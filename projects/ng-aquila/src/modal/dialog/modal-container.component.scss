@@ -53,21 +53,21 @@ $action-bar-height: nx-spacer(2xl);
 
     ::ng-deep .nx-modal__title {
         text-align: center;
-        font-size: 30px;
+        font-size: 1.875rem;
         font-weight: 300;
-        line-height: 36px;
+        line-height: 2.25rem;
         display: flex;
         align-items: center;
         flex-direction: column;
         margin: 0;
         margin-bottom: #{nx-spacer(m)};
         @include media-breakpoint-down('small') {
-            font-size: 26px;
+            font-size: 1.625rem;
         }
     }
     ::ng-deep .nx-modal__status {
         margin-bottom: #{nx-spacer(s)};
-        font-size: 64px;
+        font-size: 4rem;
     }
 }
 
@@ -76,7 +76,7 @@ $action-bar-height: nx-spacer(2xl);
         display: flex;
         margin-bottom: 0;
         margin-right: #{nx-spacer(s)};
-        font-size: 36px !important;
+        font-size: 2.25rem !important;
     }
     ::ng-deep .nx-modal__title {
         font-weight: 400;

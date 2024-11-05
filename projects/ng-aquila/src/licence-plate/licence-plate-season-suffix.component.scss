@@ -6,7 +6,7 @@
     justify-content: center;
 
     @include type-style(paragraph-05);
-    line-height: 14px;
+    line-height: 0.875rem;
     color: v(text-01);
 }
 
@@ -20,7 +20,7 @@ span:first-child {
 
 :host(.has-outline) {
     @include type-style(paragraph-04);
-    line-height: 16px;
+    line-height: 1rem;
 }
 
 :host(.is-disabled) {

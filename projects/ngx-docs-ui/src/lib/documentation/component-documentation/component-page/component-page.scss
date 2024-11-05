@@ -6,8 +6,8 @@ $toc-width: 200px;
 }
 
 ::ng-deep .docs-component-page-content {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
     width: calc(100% - #{$toc-width});
 
     // Remove this when the sidebar issues on mobile are solved.

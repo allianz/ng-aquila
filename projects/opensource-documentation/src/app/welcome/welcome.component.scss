@@ -8,8 +8,8 @@ main {
 
 .nxv-info-panel {
     text-align: center;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
 }
 
 .nxv-grey-row.nx-grid__row {
@@ -33,18 +33,18 @@ main {
 }
 
 .nxv-welcome__text {
-    font-size: 20px;
-    line-height: 28px;
-    letter-spacing: 0.2px;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    letter-spacing: 0.0125rem;
     margin: 24px 0 0 0;
     font-weight: 400;
 }
 
 .nxv-welcome__subtext {
     color: #27abd6;
-    font-size: 16px;
-    line-height: 18px;
-    letter-spacing: 0.2px;
+    font-size: 1rem;
+    line-height: 1.125rem;
+    letter-spacing: 0.0125rem;
     margin: 16px 0 24px 0;
     font-weight: 400;
 }
