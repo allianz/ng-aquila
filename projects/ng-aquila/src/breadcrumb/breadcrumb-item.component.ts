@@ -3,7 +3,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestro
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 @Component({
-    selector: 'a[nxBreadcrumbItem]',
+    selector: '[nxBreadcrumbItem]',
     templateUrl: 'breadcrumb-item.component.html',
     styleUrls: ['breadcrumb-item.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,

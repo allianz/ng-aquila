@@ -19,9 +19,15 @@ You can see the basic behaviour of the breadcrumb component in the example below
 
 ### Link appearance
 
-You can select the style of the breadcrump via the `appearance` input.
+You can select the style of the breadcrumb via the `appearance` input.
 
 <!-- example(breadcrumb-link) -->
+
+### With Context Menu
+
+This example uses the `nxBreadcrumbItem` on a `button` to open a context menu.
+
+<!-- example(breadcrumb-context-menu) -->
 
 ### Negative styling
 
@@ -29,4 +35,4 @@ You can select the style of the breadcrump via the `appearance` input.
 
 ### Accessibility
 
-Note that the breadcrumb component should be always applied on a `<ol>` tag and wrapped in a `<nav>` with `aria-label='Breadcrumb'`. The breadcrumb items should be on a `<a>` tag and wrapped in `<li>`. The currently active item is automatically marked with `aria-current='page'`. These best practices for breadcrumbs are already applied in the basic example above. You can find further information on the breadcrumb a11y practices [here](https://www.w3.org/TR/wai-aria-practices/examples/breadcrumb/index.html).
+Note that the breadcrumb component should be always applied on a `<ol>` tag and wrapped in a `<nav>` with `aria-label='Breadcrumb'`. The breadcrumb items should wrapped in `<li>`. The currently active item is automatically marked with `aria-current='page'`. These best practices for breadcrumbs are already applied in the basic example above. You can find further information on the breadcrumb a11y practices [here](https://www.w3.org/TR/wai-aria-practices/examples/breadcrumb/index.html).

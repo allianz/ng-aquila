@@ -8,6 +8,8 @@
     color: v(breadcrumb-color);
     @include type-style(breadcrumb);
     outline: none;
+    background: none;
+    border: 0;
 }
 
 .nx-breadcrumb-item__chevron {
@@ -20,7 +22,7 @@
     }
 }
 
-:host:not([href]) .nx-breadcrumb-item__text {
+:host:not([href]):not(button) .nx-breadcrumb-item__text {
     cursor: auto;
 }
 
