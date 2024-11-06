@@ -92,7 +92,7 @@ export function getNxAutocompleteMissingPanelError(): Error {
         'aria-autocomplete': 'list',
         '[attr.aria-activedescendant]': 'activeOption?.id',
         '[attr.aria-expanded]': 'panelOpen.toString()',
-        '[attr.aria-owns]': 'autocomplete?.id',
+        '[attr.aria-owns]': 'this.panelOpen ? autocomplete?.id : null',
         // Note: we use `focusin`, as opposed to `focus`, in order to open the panel
         // a little earlier. This avoids issues where IE delays the focusing of the input.
         '(focusin)': '_handleFocus()',

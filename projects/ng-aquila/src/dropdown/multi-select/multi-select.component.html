@@ -44,7 +44,7 @@
         class="panel"
         [class.is-outline]="_isOutline"
         (keydown)="_onKeydown($event)"
-        [attr.aria-owns]="_comboboxId"
+        [attr.aria-owns]="_isOpen ? _comboboxId : null"
         aria-expanded="true"
         (focusin)="_onFocusWithinOverlay($event)"
         role="combobox"

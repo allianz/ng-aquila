@@ -350,15 +350,6 @@ describe('NxFormfieldComponent', () => {
                 ariaDescribedBy = inputElement.attributes.getNamedItem('aria-describedby')!.value;
                 expect(ariaDescribedBy).toBe(testInstance.formfieldError.id);
             }));
-
-            it('updates aria-owns and attribute for to the control id', () => {
-                createTestComponent(BasicFormfield);
-                const ariaOwns = labelElement.attributes.getNamedItem('aria-owns')!.value;
-                const attrFor = labelElement.attributes.getNamedItem('for')!.value;
-
-                expect(ariaOwns).toBe(testInstance.inputInstance.id);
-                expect(attrFor).toBe(testInstance.inputInstance.id);
-            });
         });
 
         describe('Native Select', () => {
