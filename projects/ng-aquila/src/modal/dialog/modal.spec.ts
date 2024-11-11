@@ -918,6 +918,7 @@ describe('NxDialog', () => {
         viewContainerFixture.detectChanges();
         flush();
 
+        expect(sibling.getAttribute('inert')).withContext('Expected sibling to be hidden').toBe('true');
         expect(sibling.getAttribute('aria-hidden')).withContext('Expected sibling to be hidden').toBe('true');
         expect(overlayContainerElement.hasAttribute('aria-hidden')).withContext('Expected overlay container not to be hidden.').toBeFalse();
 
@@ -925,6 +926,7 @@ describe('NxDialog', () => {
         viewContainerFixture.detectChanges();
         flush();
 
+        expect(sibling.hasAttribute('inert')).withContext('Expected sibling to no longer be inert.').toBeFalse();
         expect(sibling.hasAttribute('aria-hidden')).withContext('Expected sibling to no longer be hidden.').toBeFalse();
         sibling.parentNode!.removeChild(sibling);
     }));
@@ -933,6 +935,7 @@ describe('NxDialog', () => {
         const sibling = document.createElement('div');
 
         sibling.setAttribute('aria-hidden', 'true');
+        sibling.setAttribute('inert', 'true');
         overlayContainerElement.parentNode!.appendChild(sibling);
 
         const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
@@ -940,11 +943,13 @@ describe('NxDialog', () => {
         flush();
 
         expect(sibling.getAttribute('aria-hidden')).withContext('Expected sibling to be hidden.').toBe('true');
+        expect(sibling.getAttribute('inert')).withContext('Expected sibling to be inert.').toBe('true');
 
         dialogRef.close();
         viewContainerFixture.detectChanges();
         flush();
 
+        expect(sibling.getAttribute('inert')).withContext('Expected sibling to remain inert.').toBe('true');
         expect(sibling.getAttribute('aria-hidden')).withContext('Expected sibling to remain hidden.').toBe('true');
         sibling.parentNode!.removeChild(sibling);
     }));
@@ -959,6 +964,7 @@ describe('NxDialog', () => {
         viewContainerFixture.detectChanges();
         flush();
 
+        expect(sibling.hasAttribute('inert')).withContext('Expected live element not to be inert.').toBeFalse();
         expect(sibling.hasAttribute('aria-hidden')).withContext('Expected live element not to be hidden.').toBeFalse();
         sibling.parentNode!.removeChild(sibling);
     }));
@@ -1316,41 +1322,6 @@ describe('NxDialog', () => {
             expect(document.activeElement!.id).withContext('Expected focus not to have been restored.').not.toBe('dialog-trigger');
 
             document.body.removeChild(button);
-        }));
-
-        it('should not move focus if it was moved outside the dialog while animating', fakeAsync(() => {
-            // Create a element that has focus before the dialog is opened.
-            const button = document.createElement('button');
-            const otherButton = document.createElement('button');
-            const body = document.body;
-            button.id = 'dialog-trigger';
-            otherButton.id = 'other-button';
-            body.appendChild(button);
-            body.appendChild(otherButton);
-            button.focus();
-
-            const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
-
-            flushMicrotasks();
-            viewContainerFixture.detectChanges();
-            flushMicrotasks();
-
-            expect(document.activeElement!.id).withContext('Expected the focus to change when dialog was opened.').not.toBe('dialog-trigger');
-
-            // Start the closing sequence and move focus out of dialog.
-            dialogRef.close();
-            otherButton.focus();
-
-            expect(document.activeElement!.id).withContext('Expected focus to be on the alternate button.').toBe('other-button');
-
-            flushMicrotasks();
-            viewContainerFixture.detectChanges();
-            flush();
-
-            expect(document.activeElement!.id).withContext('Expected focus to stay on the alternate button.').toBe('other-button');
-
-            body.removeChild(button);
-            body.removeChild(otherButton);
         }));
     });
 

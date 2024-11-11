@@ -109,7 +109,8 @@ export class NxDialogService implements OnDestroy {
         }
 
         this.openModals.push(modalRef);
-        modalRef.afterClosed().subscribe(() => this._removeOpenModal(modalRef));
+
+        modalRef.beforeClosed().subscribe(() => this._removeOpenModal(modalRef));
         this.afterOpened.next(modalRef);
 
         return modalRef;
@@ -282,18 +283,19 @@ export class NxDialogService implements OnDestroy {
      */
     private _removeOpenModal(modalRef: NxModalRef<any>) {
         const index = this.openModals.indexOf(modalRef);
-
         if (index > -1) {
             this.openModals.splice(index, 1);
 
-            // If all the modals were closed, remove/restore the `aria-hidden`
+            // If all the modals were closed, remove/restore the `aria-hidden` and `inert`
             // to a the siblings and emit to the `afterAllClosed` stream.
             if (!this.openModals.length) {
                 this._ariaHiddenElements.forEach((previousValue, element) => {
                     if (previousValue) {
                         element.setAttribute('aria-hidden', previousValue);
+                        element.setAttribute('inert', previousValue);
                     } else {
                         element.removeAttribute('aria-hidden');
+                        element.removeAttribute('inert');
                     }
                 });
 
@@ -318,7 +320,9 @@ export class NxDialogService implements OnDestroy {
 
                 if (sibling !== overlayContainer && sibling.nodeName !== 'SCRIPT' && sibling.nodeName !== 'STYLE' && !sibling.hasAttribute('aria-live')) {
                     this._ariaHiddenElements.set(sibling, sibling.getAttribute('aria-hidden'));
+                    this._ariaHiddenElements.set(sibling, sibling.getAttribute('inert'));
                     sibling.setAttribute('aria-hidden', 'true');
+                    sibling.setAttribute('inert', 'true');
                 }
             }
         }
