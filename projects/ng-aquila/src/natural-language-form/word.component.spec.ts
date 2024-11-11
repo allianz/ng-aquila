@@ -304,7 +304,7 @@ class NaturalLanguageFormErrorComponent extends NaturalLanguageFormTest {}
         </nx-natural-language-form>
     `,
     standalone: true,
-    imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
+    imports: [CommonModule, NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
 

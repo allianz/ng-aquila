@@ -1,13 +1,16 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     AfterContentInit,
+    afterRender,
+    AfterRenderPhase,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChildren,
     HostListener,
+    inject,
+    Injector,
     Input,
-    NgZone,
     OnDestroy,
     QueryList,
 } from '@angular/core';
@@ -43,6 +46,7 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
     }
     private _negative = false;
 
+    private _injector = inject(Injector);
     /**
      * Sets the size of the NLF. Default value: large.
      */
@@ -66,18 +70,16 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(
-        private readonly _cdr: ChangeDetectorRef,
-        private readonly _ngZone: NgZone,
-    ) {
-        // Normally we wouldn't have to explicitly run this outside the `NgZone`, however
-        // if the consumer is using `zone-patch-rxjs`, the call throws `Maximum call stack size exceeded` error.
-        this._ngZone.runOutsideAngular(() => {
-            this._ngZone.onStable.pipe(takeUntil(this._destroyed)).subscribe(() => {
-                // wait until all elements are stable for repositioning popovers
+    constructor(private readonly _cdr: ChangeDetectorRef) {
+        afterRender(
+            () => {
                 this.updatePositionPopovers();
-            });
-        });
+            },
+            {
+                injector: this._injector,
+                phase: AfterRenderPhase.Write,
+            },
+        );
     }
 
     /** @docs-private */
