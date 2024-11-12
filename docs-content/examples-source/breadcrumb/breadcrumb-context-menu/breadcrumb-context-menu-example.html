@@ -1,0 +1,29 @@
+<nav aria-label="Breadcrumb">
+    <ol nxBreadcrumb>
+        <li>
+            <button
+                nxBreadcrumbItem
+                [nxContextMenuTriggerFor]="menu"
+                aria-label="Show hidden breadcrumbs"
+            >
+                ...
+            </button>
+        </li>
+        <li>
+            <a nxBreadcrumbItem [routerLink]="'#'"> Subpage 3 </a>
+        </li>
+        <li>
+            <a nxBreadcrumbItem [routerLink]="null"> Current </a>
+        </li>
+    </ol>
+</nav>
+
+<nx-context-menu #menu="nxContextMenu">
+    <button nxContextMenuItem type="button">Home</button>
+    <button nxContextMenuItem type="button" class="nx-margin-left-s">
+        Subpage 1
+    </button>
+    <button nxContextMenuItem type="button" class="nx-margin-left-2m">
+        Subpage 2
+    </button>
+</nx-context-menu>

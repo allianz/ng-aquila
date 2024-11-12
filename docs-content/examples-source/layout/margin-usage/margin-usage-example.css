@@ -17,7 +17,7 @@
         var(--documentation-margin-example-background-color, #1c7997);
     background-color: var(--ui-01, #0f2a3d);
     display: block;
-    line-height: 20px;
+    line-height: 1.25rem;
     padding: 8px;
     width: 400px;
 }

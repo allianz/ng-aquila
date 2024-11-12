@@ -36,7 +36,7 @@
         <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Heart&quot;</span>
         #<span class="hljs-attr">heart</span>
     &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span> Required <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span> This is required. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 
@@ -49,6 +49,7 @@
         <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;product-heart&quot;</span>
         <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Heart&quot;</span>
         [<span class="hljs-attr">class.has-error</span>]=<span class="hljs-string">&quot;testForm3.invalid&quot;</span>
+        <span class="hljs-attr">ariaDescribedby</span>=<span class="hljs-string">&quot;customError&quot;</span>
         #<span class="hljs-attr">heart</span>
     &gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
@@ -57,11 +58,14 @@
         <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;product-car&quot;</span>
         <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Car&quot;</span>
         [<span class="hljs-attr">class.has-error</span>]=<span class="hljs-string">&quot;testForm3.invalid&quot;</span>
+        <span class="hljs-attr">ariaDescribedby</span>=<span class="hljs-string">&quot;customError&quot;</span>
     &gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
     @if (testForm3.invalid) {
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span> Need to select 2 options <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;customError&quot;</span>&gt;</span>
+            Need to select 2 options
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     }
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
