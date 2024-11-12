@@ -106,7 +106,6 @@
                         "outputPath": "dist/opensource-documentation",
                         "index": "projects/opensource-documentation/src/index.html",
                         "browser": "projects/opensource-documentation/src/main.ts",
-                        "polyfills": ["zone.js"],
                         "tsConfig": "projects/opensource-documentation/tsconfig.app.json",
                         "assets": [
                             "projects/opensource-documentation/src/favicon.png",
