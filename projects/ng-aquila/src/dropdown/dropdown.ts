@@ -750,7 +750,7 @@ export class NxDropdownComponent
                 // defer it for the next cycle to not run in changed after checked errors
                 // the combination of dropdown-item notifying parent and when the parent
                 // tries to fetch the triggerValue from the child throws these errors
-                setTimeout(() => {
+                Promise.resolve().then(() => {
                     if (this._panelOpen) {
                         this._initActiveItem();
                     }
