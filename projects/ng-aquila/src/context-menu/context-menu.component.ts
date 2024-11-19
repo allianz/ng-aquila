@@ -128,6 +128,7 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
             case ESCAPE:
                 if (!hasModifierKey(event)) {
                     event.preventDefault();
+                    event.stopPropagation();
                     this.closed.emit('keydown');
                 }
                 break;
