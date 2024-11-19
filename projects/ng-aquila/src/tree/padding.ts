@@ -96,9 +96,12 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
 
     /** The padding indent value for the tree node. Returns a string with px numbers if not null. */
     _paddingIndent(): string | null {
-        const nodeLevel = this._treeNode.data && this._tree.treeControl.getLevel ? this._tree.treeControl.getLevel(this._treeNode.data) : null;
-        const level = this._level || nodeLevel;
-        return level ? `${level * this._indent + this._offset}${this.indentUnits}` : null;
+        if (this._tree.treeControl) {
+            const nodeLevel = this._treeNode.data && this._tree.treeControl.getLevel ? this._tree.treeControl.getLevel(this._treeNode.data) : null;
+            const level = this._level || nodeLevel;
+            return level ? `${level * this._indent + this._offset}${this.indentUnits}` : null;
+        }
+        return null;
     }
 
     _setPadding(forceChange = false) {

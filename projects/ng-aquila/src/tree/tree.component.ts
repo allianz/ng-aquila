@@ -53,7 +53,7 @@ import { NxTreeNodeOutletDirective } from './outlet';
 export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit {
     private readonly _cdr = inject(ChangeDetectorRef);
     private readonly dir = inject(Directionality);
-    private readonly _elementRef = inject(ElementRef);
+    private readonly elementRef = inject(ElementRef);
     private readonly _focusMonitor = inject(FocusMonitor);
 
     // Outlets within the tree's template where the dataNodes will be inserted.
@@ -277,18 +277,20 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
             return;
         }
 
-        const parent = this.parentMap.get(this._focusedData);
-        const nodeList = this.childrenMap.get(parent);
-        const index = nodeList!.indexOf(this._focusedData);
-        const isExpanded = this.treeControl.isExpanded(this._focusedData);
-        if (!isExpanded) {
-            this._removeChildren();
-        }
+        if (this.treeControl) {
+            const parent = this.parentMap.get(this._focusedData);
+            const nodeList = this.childrenMap.get(parent);
+            const index = nodeList!.indexOf(this._focusedData);
+            const isExpanded = this.treeControl.isExpanded(this._focusedData);
+            if (!isExpanded) {
+                this._removeChildren();
+            }
 
-        if (index === 0) {
-            return parent;
-        } else if (index > 0) {
-            return this._getLastChild(nodeList![index - 1]);
+            if (index === 0) {
+                return parent;
+            } else if (index > 0) {
+                return this._getLastChild(nodeList![index - 1]);
+            }
         }
         return undefined;
     }
@@ -298,29 +300,32 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
         if (!this._focusedData) {
             return;
         }
-        const isExpanded = this.treeControl.isExpanded(this._focusedData);
-        if (!isExpanded) {
-            this._removeChildren();
-        }
 
-        // Always return first child if the node is expanded
-        if (this.childrenMap.has(this._focusedData) && this.treeControl && isExpanded) {
-            const childNodeList = this._getChildrenList(this._focusedData);
-            if (childNodeList.length) {
-                return childNodeList[0];
+        if (this.treeControl) {
+            const isExpanded = this.treeControl.isExpanded(this._focusedData);
+            if (!isExpanded) {
+                this._removeChildren();
             }
-        }
-        // Or return next sibling / parent's next child if any
-        let currentData: T | undefined = this._focusedData;
 
-        while (currentData) {
-            const parent = this.parentMap.get(currentData);
-            const nodeList = this.childrenMap.get(parent);
-            const index = nodeList!.indexOf(currentData);
-            if (index === nodeList!.length - 1) {
-                currentData = parent;
-            } else if (index > -1) {
-                return nodeList![index + 1];
+            // Always return first child if the node is expanded
+            if (this.childrenMap.has(this._focusedData) && this.treeControl && isExpanded) {
+                const childNodeList = this._getChildrenList(this._focusedData);
+                if (childNodeList.length) {
+                    return childNodeList[0];
+                }
+            }
+            // Or return next sibling / parent's next child if any
+            let currentData: T | undefined = this._focusedData;
+
+            while (currentData) {
+                const parent = this.parentMap.get(currentData);
+                const nodeList = this.childrenMap.get(parent);
+                const index = nodeList!.indexOf(currentData);
+                if (index === nodeList!.length - 1) {
+                    currentData = parent;
+                } else if (index > -1) {
+                    return nodeList![index + 1];
+                }
             }
         }
         return undefined;
@@ -331,17 +336,19 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
         if (this.parentMap.has(this._focusedData)) {
             // For nested tree
             this._changeFocusedData(this.parentMap.get(this._focusedData));
-        } else if (this.treeControl.getLevel) {
-            // For flat tree
-            const nodeList = this._getChildrenList();
-            const index = nodeList.indexOf(this._focusedData);
-            const level = this.treeControl.getLevel(this._focusedData) - 1;
-            if (index <= 0) {
-                return;
-            }
-            for (let i = index - 1; i >= 0; i--) {
-                if (this.treeControl.getLevel(nodeList[i]) === level) {
-                    return nodeList[i];
+        } else if (this.treeControl) {
+            if (this.treeControl.getLevel) {
+                // For flat tree
+                const nodeList = this._getChildrenList();
+                const index = nodeList.indexOf(this._focusedData);
+                const level = this.treeControl.getLevel(this._focusedData) - 1;
+                if (index <= 0) {
+                    return;
+                }
+                for (let i = index - 1; i >= 0; i--) {
+                    if (this.treeControl.getLevel(nodeList[i]) === level) {
+                        return nodeList[i];
+                    }
                 }
             }
         }
@@ -456,7 +463,7 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
      */
     _monitorTreeFocus() {
         this._focusMonitor
-            .monitor(this._elementRef.nativeElement, true)
+            .monitor(this.elementRef.nativeElement, true)
             .pipe(takeUntil(this._wrapperOnDestroy))
             .subscribe(origin => {
                 const newTabIndex = origin ? -1 : this._userTabIndex || 0;
