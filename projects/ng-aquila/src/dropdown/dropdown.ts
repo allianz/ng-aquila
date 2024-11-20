@@ -497,7 +497,7 @@ export class NxDropdownComponent
             return '';
         }
 
-        return this.overlayLabel ? this.overlayLabel : this.formFieldComponent?.label ?? '';
+        return this.overlayLabel ? this.overlayLabel : (this.formFieldComponent?.label ?? '');
     }
 
     /**

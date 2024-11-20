@@ -312,7 +312,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
      * the context menu was opened via the keyboard.
      */
     private _initContextMenu(origin?: FocusOrigin): void {
-        this.contextMenu.parentMenu = this.triggersSubmenu() ? this._parentMenu ?? undefined : undefined;
+        this.contextMenu.parentMenu = this.triggersSubmenu() ? (this._parentMenu ?? undefined) : undefined;
         this.contextMenu.direction = this.dir;
         this._setIsContextMenuOpen(true);
         setTimeout(() => {
