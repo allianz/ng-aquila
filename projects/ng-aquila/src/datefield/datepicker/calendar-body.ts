@@ -10,6 +10,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import {
     afterNextRender,
     AfterRenderPhase,
+    AfterViewChecked,
     AfterViewInit,
     ChangeDetectionStrategy,
     Component,
@@ -57,7 +58,7 @@ export class NxCalendarCell {
     standalone: true,
     imports: [],
 })
-export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
+export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy, AfterViewChecked {
     /** The label for the table. (e.g. "Jan 2017"). */
     @Input() label!: string;
 
@@ -101,6 +102,11 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
     /** Preserves the current value of the _cells ViewChildren in case _cells changes. */
     private _cellsPrevious!: QueryList<ElementRef<HTMLElement>>;
 
+    /**
+     * Used to focus the active cell after change detection has run.
+     */
+    private _focusActiveCellAfterViewChecked = false;
+
     private readonly _destroyed = new Subject<void>();
 
     constructor(
@@ -117,6 +123,13 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
             this._cellsPrevious = this._cells;
             this._cells.forEach(cell => this._focusMonitor.monitor(cell));
         });
+    }
+
+    ngAfterViewChecked() {
+        if (this._focusActiveCellAfterViewChecked) {
+            this._focusActiveCell();
+            this._focusActiveCellAfterViewChecked = false;
+        }
     }
 
     ngOnDestroy(): void {
@@ -183,5 +196,10 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
                 phase: AfterRenderPhase.Read,
             },
         );
+    }
+
+    /** Focuses the active cell after change detection has run and the microtask queue is empty. */
+    _scheduleFocusActiveCellAfterViewChecked() {
+        this._focusActiveCellAfterViewChecked = true;
     }
 }

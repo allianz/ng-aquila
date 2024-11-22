@@ -27,6 +27,7 @@ $item-size: nx-spacer(3m);
     height: $item-size;
 
     margin: 0 auto;
+    outline: none;
     @include type-style(datefield-cell);
     color: v(datefield-cell-color);
     border-radius: 50%;
@@ -86,6 +87,22 @@ $item-size: nx-spacer(3m);
             color: GrayText;
         }
     }
+
+    &.cdk-keyboard-focused {
+        @include focus-style;
+    }
+
+    &.nx-calendar-body-disabled {
+        color: v(datefield-cell-disabled-color);
+    }
+
+    .nx-calendar-body-cell-content:not(.nx-calendar-body-selected) {
+        background-color: v(datefield-cell-focused-background-color);
+
+        @media screen and (forced-colors: active) {
+            background-color: highlight;
+        }
+    }
 }
 
 .nx-calendar-body-disabled {
@@ -140,24 +157,6 @@ $item-size: nx-spacer(3m);
                     }
                 }
             }
-        }
-    }
-}
-
-.nx-calendar-body-cell.cdk-keyboard-focused {
-    .nx-calendar-body-cell-content {
-        @include focus-style;
-    }
-
-    &.nx-calendar-body-disabled .nx-calendar-body-cell-content {
-        color: v(datefield-cell-disabled-color);
-    }
-
-    .nx-calendar-body-cell-content:not(.nx-calendar-body-selected) {
-        background-color: v(datefield-cell-focused-background-color);
-
-        @media screen and (forced-colors: active) {
-            background-color: highlight;
         }
     }
 }

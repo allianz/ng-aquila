@@ -144,14 +144,14 @@ describe('NxCalendarComponent', () => {
             expect(calendarInstance._currentView).toBe('multi-year');
             expect(calendarInstance._activeDate).toEqual(new Date(2017, JAN, 31));
 
-            const yearCells = calendarElement.querySelectorAll('.nx-calendar-body-cell');
+            const yearCells = calendarElement.querySelectorAll('.nx-calendar-body-cell-content');
             (yearCells[0] as HTMLElement).click();
             fixture.detectChanges();
 
             expect(calendarInstance._currentView).toBe('year');
             expect(calendarInstance._activeDate).toEqual(new Date(2000, JAN, 31));
 
-            const monthCells = calendarElement.querySelectorAll('.nx-calendar-body-cell');
+            const monthCells = calendarElement.querySelectorAll('.nx-calendar-body-cell-content');
             (monthCells[monthCells.length - 1] as HTMLElement).click();
             fixture.detectChanges();
 
@@ -161,7 +161,7 @@ describe('NxCalendarComponent', () => {
         });
 
         it('should select date in month view', () => {
-            const monthCells = calendarElement.querySelectorAll('.nx-calendar-body-cell');
+            const monthCells = calendarElement.querySelectorAll('.nx-calendar-body-cell-content');
             (monthCells[monthCells.length - 1] as HTMLElement).click();
             fixture.detectChanges();
 
@@ -458,7 +458,7 @@ describe('NxCalendarComponent', () => {
         });
 
         it('should disable and prevent selection of filtered dates', () => {
-            const cells = calendarElement.querySelectorAll('.nx-calendar-body-cell');
+            const cells = calendarElement.querySelectorAll('.nx-calendar-body-cell-content');
             (cells[0] as HTMLElement).click();
             fixture.detectChanges();
 

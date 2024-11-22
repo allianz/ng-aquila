@@ -10,22 +10,19 @@
     @if (rowIndex === 0) { @for (items of [].constructor(previousItems); track $index) {
     <td aria-hidden="true"></td>
     } } @for (item of row; track item; let colIndex = $index) {
-    <td
-        #cell
-        role="gridcell"
-        class="nx-calendar-body-cell"
-        [tabindex]="_isActiveCell(rowIndex, colIndex) ? 0 : -1"
-        [class.nx-calendar-body-disabled]="!item.enabled"
-        [class.nx-calendar-body-active]="_isActiveCell(rowIndex, colIndex)"
-        [attr.aria-label]="item.ariaLabel"
-        [attr.aria-disabled]="!item.enabled || null"
-        (click)="_cellClicked(item)"
-        [style.width.%]="100 / numCols"
-    >
+    <td role="gridcell" class="nx-calendar-body-cell" [style.width.%]="100 / numCols">
         <div
             class="nx-calendar-body-cell-content"
+            [attr.aria-label]="item.ariaLabel"
+            [attr.aria-disabled]="!item.enabled || null"
+            (click)="_cellClicked(item)"
+            [tabindex]="_isActiveCell(rowIndex, colIndex) ? 0 : -1"
+            [class.nx-calendar-body-disabled]="!item.enabled"
+            [class.nx-calendar-body-active]="_isActiveCell(rowIndex, colIndex)"
             [class.nx-calendar-body-selected]="selectedValue === item.value"
             [class.nx-calendar-body-today]="todayValue === item.value"
+            role="button"
+            #cell
         >
             {{item.displayValue}}
         </div>

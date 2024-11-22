@@ -57,7 +57,7 @@ describe('NxMonthView', () => {
         });
 
         it('has 31 days', () => {
-            const cellEls = monthViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
+            const cellEls = monthViewNativeElement.querySelectorAll('.nx-calendar-body-cell-content');
             expect(cellEls).toHaveSize(31);
         });
 
@@ -75,7 +75,7 @@ describe('NxMonthView', () => {
         });
 
         it('fires selected change event on cell clicked', () => {
-            const cellEls = monthViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
+            const cellEls = monthViewNativeElement.querySelectorAll('.nx-calendar-body-cell-content');
             (cellEls[cellEls.length - 1] as HTMLElement).click();
             fixture.detectChanges();
 
@@ -84,7 +84,7 @@ describe('NxMonthView', () => {
         });
 
         it('should mark active date', () => {
-            const cellEls = monthViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
+            const cellEls = monthViewNativeElement.querySelectorAll('.nx-calendar-body-cell-content');
             expect((cellEls[4] as HTMLElement).innerText.trim()).toBe('5');
             expect(cellEls[4]).toHaveClass('nx-calendar-body-active');
         });
@@ -312,7 +312,7 @@ describe('NxMonthView', () => {
         });
 
         it('should disable filtered dates', () => {
-            const cells = monthViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
+            const cells = monthViewNativeElement.querySelectorAll('.nx-calendar-body-cell-content');
             expect(cells[0]).toHaveClass('nx-calendar-body-disabled');
             expect(cells[1]).not.toHaveClass('nx-calendar-body-disabled');
         });

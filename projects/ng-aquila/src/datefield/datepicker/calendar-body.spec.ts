@@ -28,7 +28,7 @@ describe('NxCalendarBodyComponent', () => {
 
         const refreshElementLists = () => {
             rowEls = calendarBodyNativeElement.querySelectorAll('tr');
-            cellEls = calendarBodyNativeElement.querySelectorAll('.nx-calendar-body-cell');
+            cellEls = calendarBodyNativeElement.querySelectorAll('.nx-calendar-body-cell-content');
         };
 
         beforeEach(() => {
@@ -86,7 +86,7 @@ describe('NxCalendarBodyComponent', () => {
             const calendarBodyDebugElement = fixture.debugElement.query(By.directive(NxCalendarBodyComponent));
             calendarBodyNativeElement = calendarBodyDebugElement.nativeElement;
             testComponent = fixture.componentInstance;
-            cellEls = calendarBodyNativeElement.querySelectorAll('.nx-calendar-body-cell');
+            cellEls = calendarBodyNativeElement.querySelectorAll('.nx-calendar-body-cell-content');
         });
 
         it('should only allow selection of disabled cells when allowDisabledSelection is true', () => {
