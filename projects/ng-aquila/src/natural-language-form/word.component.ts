@@ -107,19 +107,10 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
             this._cdr.markForCheck();
         });
 
-        // if we have a ngcontrol available stick to its valueChanges subject
-        if (this._control.ngControl) {
-            this._control.ngControl.valueChanges!.pipe(takeUntil(this._destroyed)).subscribe(value => {
-                this.updateCurrentTextWidth();
-                this.inputChanges.next();
-            });
-            // in any other case it is a bre input and input changes are signaled through simple state changes
-        } else {
-            this._control.stateChanges.pipe(takeUntil(this._destroyed)).subscribe(value => {
-                this.updateCurrentTextWidth();
-                this.inputChanges.next();
-            });
-        }
+        this._control.stateChanges.pipe(takeUntil(this._destroyed)).subscribe(value => {
+            this.updateCurrentTextWidth();
+            this.inputChanges.next();
+        });
 
         this._errorChildren.changes.pipe(startWith(null), observeOn(asapScheduler), takeUntil(this._destroyed)).subscribe(() => {
             // Update the aria-described by when the number of errors changes.
@@ -154,11 +145,13 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
         if (!ctx) {
             return;
         }
+
         const inputRef = this._control.elementRef;
         const styles = window.getComputedStyle(inputRef.nativeElement);
         ctx!.font = getFontShorthand(styles);
 
-        const metrics = ctx!.measureText(this._control.value);
+        const metrics = ctx!.measureText(inputRef.nativeElement.value);
+
         // add 1px (cursor width) to prevent jumping of the text on blur.
         const newWidth = metrics.width + parseInt(styles.paddingRight, 10) + parseInt(styles.paddingLeft, 10) + 1;
 
