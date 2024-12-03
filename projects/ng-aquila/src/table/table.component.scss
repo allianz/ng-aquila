@@ -89,11 +89,6 @@ $sticky-shadow-size: nx-spacer(3xs);
         }
     }
 
-    :host(.nx-table--condensed) & {
-        padding-bottom: $condensed-vertical-padding - $cell-border-width;
-        padding-top: $condensed-vertical-padding;
-    }
-
     :host(.nx-table--zebra) & {
         border-top: $cell-border-width solid v(zebra-table-cell-border-top-color);
     }
@@ -101,22 +96,27 @@ $sticky-shadow-size: nx-spacer(3xs);
     :host(.nx-table--zebra) &--expandable {
         border-top: 0;
     }
-
-    :host(.nx-table--condensed) &--expandable {
-        padding-bottom: 0;
-        padding-top: 0;
-
-        .nx-table-cell__wrapper {
-            padding-bottom: $condensed-vertical-padding - $cell-border-width;
-            padding-top: $condensed-vertical-padding;
-        }
-    }
 }
 
 :host(.nx-table--condensed) {
     ::ng-deep .nx-header-cell {
         padding-top: $condensed-vertical-padding;
         padding-bottom: $condensed-vertical-padding;
+    }
+
+    ::ng-deep .nx-table-cell {
+        padding-bottom: $condensed-vertical-padding - $cell-border-width;
+        padding-top: $condensed-vertical-padding;
+    }
+
+    ::ng-deep .nx-expandable-table-cell {
+        padding-bottom: 0;
+        padding-top: 0;
+
+        .nx-expandable-table-cell__wrapper {
+            padding-bottom: $condensed-vertical-padding - $cell-border-width;
+            padding-top: $condensed-vertical-padding;
+        }
     }
 }
 
@@ -147,13 +147,6 @@ $sticky-shadow-size: nx-spacer(3xs);
         :host-context([dir='rtl']) & {
             padding-right: initial;
             padding-left: nx-spacer(2xs);
-        }
-    }
-
-    :host(.nx-table--condensed) & {
-        .nx-expandable-table-cell__wrapper {
-            padding-bottom: $condensed-vertical-padding - $cell-border-width;
-            padding-top: $condensed-vertical-padding;
         }
     }
 }
