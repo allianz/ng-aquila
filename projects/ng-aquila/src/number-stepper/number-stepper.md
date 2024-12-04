@@ -5,6 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: number input, range
+a1: true
 ---
 
 ### Examples
@@ -101,7 +102,7 @@ The example below shows the usage of the above mentioned `aria-label` inputs.
 #### Localization
 
 <!-- example(number-stepper-localize) -->
- 
+
  ### Readonly input field
  You can use the `[readonly]` attribute to prevent manual input of values in an input field.
  <!-- example(number-stepper-readonly-input) -->

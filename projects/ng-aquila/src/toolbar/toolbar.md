@@ -4,6 +4,7 @@ category: components
 b2c: false
 expert: true
 stable: done
+a1: true
 ---
 
 <div class="docs-deprecation-warning">

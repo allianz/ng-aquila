@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+a1: true
 ---
 
 The licence plate module contains different components to create an input for european licence plate numbers. It constists of a prefix `<nx-licence-plate-euro-prefix>` for the european country code, a validator directive `nxLicencePlate` and a suffix `nx-licence-plate-season-suffix` for seasonal licence plates. The optional validator currently supports only german standard and special number formats. For other countries please use your own validation by providing a `pattern`. All parts are meant to be combined with the form field to create an individual input for different licence plate fromats.

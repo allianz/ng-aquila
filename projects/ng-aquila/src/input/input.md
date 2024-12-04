@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+a1: true
 ---
 
 ### Module
@@ -48,7 +49,7 @@ Make sure to use the native `inputmode` HTML attribute to take advantage of the 
 
 You can resize `<textarea>` elements by using the `cdkTextareaAutosize` directive from the CDK `@angular/cdk/text-field` module. More information on this directive can be found [here](https://material.angular.io/cdk/text-field/overview#automatically-resizing-a-code-lt-textarea-gt-code-).
 
-**Please make sure you have imported the text-field-prebuilt stylesheet** 
+**Please make sure you have imported the text-field-prebuilt stylesheet**
 
 ```css
 @import '@angular/cdk/text-field-prebuilt.css';

@@ -5,6 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: datepicker
+a1: true
 ---
 
 ### Module

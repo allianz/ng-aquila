@@ -5,6 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: page banner
+a1: true
 ---
 
 

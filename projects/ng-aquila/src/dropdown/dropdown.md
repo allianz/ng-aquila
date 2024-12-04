@@ -5,6 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: select, multi select
+a1: true
 ---
 
 <div class="docs-deprecation-warning">
@@ -34,7 +35,7 @@ It is possible to show a placeholder instead of the floating label. The placehol
 
 ### PanelGrow and PanelMaxWidth
 
-With `panelGrow` set to `true` the overlay can grow larger than the trigger and grows with the longest label. 
+With `panelGrow` set to `true` the overlay can grow larger than the trigger and grows with the longest label.
 With `panelGrow` set to `false` the overlay is the size of the trigger. With `panelMaxWidth` a max-width can be set, `panelMaxWidth` accepts a number for pixel values or a string for any css value.
 
 <!-- example(dropdown-panelgrow) -->

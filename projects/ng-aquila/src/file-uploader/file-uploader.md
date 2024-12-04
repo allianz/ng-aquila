@@ -4,6 +4,7 @@ category: components
 b2c: false
 expert: true
 stable: done
+a1: true
 ---
 
 Use this component when you want users to upload files. The files can be uploaded via file selection or dropped in the drop zone. The `nx-file-uploader` shows the selected files in the queue list. In each row of this list, the file name is displayed with the current status and the available actions. The component is a wrapper around the native `input[type=file]` element and ensures that the standard HTML attributes (e.g. multiple) work as expected.

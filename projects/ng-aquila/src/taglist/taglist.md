@@ -5,6 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: chip, badge
+a1: true
 ---
 
 ## Examples

@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+a1: true
 ---
 
 The data display component resembles a HTML description list element. It consists of a label and a value.

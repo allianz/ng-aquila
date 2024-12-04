@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+a1: true
 ---
 
 Autocomplete is a companion to the input element. When input element receives a focus or a down arrow is pressed and autocomplete items are defined, the autcomplete panel is displayed. On selecting the autocomplete option, it's value is used to set the value of input.

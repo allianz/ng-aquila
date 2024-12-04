@@ -5,6 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: slide toggle, checkbox
+a1: true
 ---
 
 The switcher component represents a boolean value, just like the native input of a checkbox.

@@ -5,6 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: dialog
+a1: true
 ---
 
 The `NxDialogService` can be used to open modals from components or predefined templates.

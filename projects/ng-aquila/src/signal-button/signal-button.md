@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+a1: true
 ---
 
 The signal button can be used to open a popover with a message. With use of `popoverDirection` the popover can be opened in the direction `top`, `bottom`, `left` and `right`. The popover `scrollStrategy` can be set to `close` or `reposition`.
@@ -16,7 +17,7 @@ The `context` is set to `success` per default, but the signal button can also be
 
 ### Disabled
 
-With `disabled` the signal button can be disabled. 
+With `disabled` the signal button can be disabled.
 
 <!-- example(signal-button-disabled) -->
 

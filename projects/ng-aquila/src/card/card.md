@@ -5,6 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: card, selectable card
+a1: true
 ---
 
 Use this component to present a card with different options.
