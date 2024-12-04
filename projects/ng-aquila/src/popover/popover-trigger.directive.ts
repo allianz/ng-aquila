@@ -32,9 +32,11 @@ import {
     OnDestroy,
     Optional,
     Output,
+    Self,
     ViewContainerRef,
 } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
+import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 import { Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
 
@@ -284,6 +286,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
         @Optional() @Inject(POPOVER_DEFAULT_OPTIONS) private readonly _defaultOptions: PopoverDefaultOptions | null,
         @Inject(NX_POPOVER_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
         private readonly _cdr: ChangeDetectorRef,
+        @Optional() @Self() private readonly _triggerButton: NxTriggerButton | null,
     ) {
         if (!this._platform.IOS && !this._platform.ANDROID) {
             this._manualListeners
@@ -416,6 +419,11 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
             this._embeddedViewRef = this.createOverlay().attach(this.portal);
 
             if (this.trigger !== 'hover') {
+                if (this._triggerButton) {
+                    const triggerButton = this._triggerButton;
+                    triggerButton.setTriggerActive();
+                    this._embeddedViewRef.onDestroy(() => triggerButton.setTriggerInactive());
+                }
                 const element = this.getPopoverContainer()!;
 
                 this._focusTrap = this._focusTrapFactory.create(element);

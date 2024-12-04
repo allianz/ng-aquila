@@ -1,7 +1,8 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { Direction } from '@angular/cdk/bidi';
 import { ENTER, ESCAPE, SPACE, TAB } from '@angular/cdk/keycodes';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
-import { Component, Directive, Inject, Type, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Directive, Inject, signal, Type, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +12,7 @@ import { fakeScrollStrategyFunction } from '@aposin/ng-aquila/utils';
 import { Subject, Subscription } from 'rxjs';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
+import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 import { NxPopoverComponent } from './popover.component';
 import { NxPopoverModule } from './popover.module';
 import { NxPopoverIntl } from './popover-intl';
@@ -49,42 +51,20 @@ describe('NxPopoverTriggerDirective', () => {
     let overlayContainer: OverlayContainer;
     let focusMonitor: FocusMonitor;
 
-    function createTestComponent(component: Type<PopoverTest>) {
-        fixture = TestBed.createComponent(component);
+    function createTestComponent<T extends PopoverTest>(component: Type<T>): T {
+        const _fixture = TestBed.createComponent(component);
+        fixture = _fixture;
         fixture.detectChanges();
         testInstance = fixture.componentInstance;
         popoverInstance = testInstance.popoverInstance;
         triggerInstance = testInstance.triggerInstance;
         buttonNativeElement = fixture.debugElement.query(By.css('button'))?.nativeElement as HTMLButtonElement;
+
+        return _fixture.componentInstance;
     }
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [
-                OverlayModule,
-                NxPopoverModule,
-                NxFormfieldModule,
-                NxInputModule,
-                PopoverShowClose,
-                PopoverHideClose,
-                PopoverHoverComponent,
-                PopoverClickComponent,
-                PopoverHideCloseForClick,
-                ModalPopover,
-                LazyloadContent,
-                NxTestComponent,
-                PopoverFallBackComponent,
-                ManualTrigger,
-                ClickOnDocument,
-                ScrollablePopover,
-                PopoverWithinRTLContainer,
-                PopoverClickShadowDomComponent,
-                I18nTest,
-                PopoverDivTrigger,
-                PopoverHoverFormfieldComponent,
-                PopoverWidthComponent,
-                PopoverDefaultWidthComponent,
-            ],
             providers: [{ provide: POPOVER_DEFAULT_OPTIONS, useValue: popoverDefaultOptions }],
         });
 
@@ -192,6 +172,26 @@ describe('NxPopoverTriggerDirective', () => {
             click();
 
             expect(getPopoverContent().getAttribute('tabindex')).toEqual('0');
+        }));
+
+        it('should set active state for triggerType "manual" with implemented NxTriggerButton', fakeAsync(() => {
+            createTestComponent(ManualTrigger);
+
+            click();
+            expect(buttonNativeElement.classList.contains('is-trigger-test-active')).toBe(true);
+
+            click();
+            expect(buttonNativeElement.classList.contains('is-trigger-test-active')).toBe(false);
+        }));
+
+        it('should have correct boolean value in popoverShowChange event data', fakeAsync(() => {
+            const manualTrigger = createTestComponent(ManualTrigger);
+
+            click();
+            expect(manualTrigger.lastShowChangeEventData).toBe(true);
+
+            click();
+            expect(manualTrigger.lastShowChangeEventData).toBe(false);
         }));
     });
 
@@ -455,6 +455,16 @@ describe('NxPopoverTriggerDirective', () => {
             getPopoverContent().click();
             fixture.detectChanges();
             checkPopoverOpen(true);
+        }));
+
+        it('should set trigger button active state with implemented NxTriggerButton', fakeAsync(() => {
+            createTestComponent(PopoverClickComponent);
+
+            click();
+            expect(buttonNativeElement.classList.contains('is-trigger-test-active')).toBe(true);
+
+            click();
+            expect(buttonNativeElement.classList.contains('is-trigger-test-active')).toBe(false);
         }));
     });
 
@@ -894,6 +904,23 @@ describe('NxPopoverTriggerDirective', () => {
     });
 });
 
+@Directive({
+    selector: '[triggerTest]',
+    standalone: true,
+    providers: [{ provide: NxTriggerButton, useExisting: TriggerButtonTestDirective }],
+    host: { '[class.is-trigger-test-active]': 'active()' },
+})
+class TriggerButtonTestDirective extends NxTriggerButton {
+    active = signal(false);
+
+    setTriggerInactive() {
+        this.active.set(false);
+    }
+    setTriggerActive() {
+        this.active.set(true);
+    }
+}
+
 @Component({
     template: `<div style="width: 400px; height: 400px; display: flex; justify-content: center; align-items: center;">
             <button [nxPopoverTriggerFor]="popoverHover" nxPopoverTrigger="hover" [nxPopoverCloseable]="closeable">Hover</button>
@@ -923,14 +950,14 @@ class PopoverHoverFormfieldComponent extends PopoverTest {}
 
 @Component({
     template: `<div>
-            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click">Hover</button>
+            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click" triggerTest>Hover</button>
         </div>
 
         <nx-popover #popoverHover>
             <span>Content</span>
         </nx-popover>`,
     standalone: true,
-    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule, TriggerButtonTestDirective],
 })
 class PopoverClickComponent extends PopoverTest {
     constructor(@Inject(NX_POPOVER_SCROLL_STRATEGY) public scrollStrategy: any) {
@@ -1050,13 +1077,13 @@ class LazyloadContent extends PopoverTest {}
     template: `
         <button
             #popoverTrigger="nxPopoverTrigger"
-            nxButton="primary small"
             [nxPopoverTriggerFor]="popoverManual"
-            [nxPopoverShow]="popoverManualOpenFlag"
+            [nxPopoverShow]="popoverManualOpenFlag()"
             (nxPopoverShowChange)="popoverOnShowChange($event)"
             nxPopoverDirection="top"
-            (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
+            (click)="onTrigger()"
             nxPopoverTrigger="manual"
+            triggerTest
         >
             Manual
         </button>
@@ -1066,13 +1093,19 @@ class LazyloadContent extends PopoverTest {}
         </nx-popover>
     `,
     standalone: true,
-    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
+    imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule, TriggerButtonTestDirective],
 })
 class ManualTrigger extends PopoverTest {
-    popoverManualOpenFlag = false;
+    popoverManualOpenFlag = signal(false);
+
+    onTrigger = () => {
+        this.popoverManualOpenFlag.update(flag => !flag);
+    };
+
+    lastShowChangeEventData: any;
 
     popoverOnShowChange(current: any) {
-        setTimeout(() => (this.popoverManualOpenFlag = !current));
+        setTimeout(() => (this.lastShowChangeEventData = current));
     }
 }
 
@@ -1102,7 +1135,7 @@ class ScrollablePopover extends PopoverTest {}
 
 @Component({
     template: `<div [dir]="direction">
-            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click" [closeOnClickOutside]="closable">
+            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click" [closeOnClickOutside]="closeable">
                 Directionality
             </button>
         </div>
@@ -1112,7 +1145,7 @@ class ScrollablePopover extends PopoverTest {}
     imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class PopoverWithinRTLContainer extends PopoverTest {
-    direction = 'rtl';
+    direction: Direction = 'rtl';
 }
 
 @Component({
