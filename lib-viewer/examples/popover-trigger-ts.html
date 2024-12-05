@@ -40,7 +40,7 @@
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;manualTriggerIcon&#x27;</span>)
     _manualTriggerIcon!: <span class="hljs-title class_">ElementRef</span>&lt;<span class="hljs-title class_">HTMLButtonElement</span>&gt;;
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _focusMonitor: FocusMonitor</span>) {}
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_focusMonitor</span>: <span class="hljs-title class_">FocusMonitor</span></span>) {}
 
     <span class="hljs-title function_">ngAfterViewInit</span>(): <span class="hljs-built_in">void</span> {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">_focusMonitor</span>.<span class="hljs-title function_">monitor</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_clickTriggerIcon</span>);
@@ -52,7 +52,7 @@
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">_focusMonitor</span>.<span class="hljs-title function_">stopMonitoring</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_manualTriggerIcon</span>);
     }
 
-    <span class="hljs-title function_">handleKeydown</span>(<span class="hljs-params">event: KeyboardEvent</span>) {
+    <span class="hljs-title function_">handleKeydown</span>(<span class="hljs-params"><span class="hljs-attr">event</span>: <span class="hljs-title class_">KeyboardEvent</span></span>) {
         <span class="hljs-keyword">switch</span> (event.<span class="hljs-property">keyCode</span>) {
             <span class="hljs-keyword">case</span> <span class="hljs-attr">SPACE</span>:
             <span class="hljs-keyword">case</span> <span class="hljs-attr">ENTER</span>:

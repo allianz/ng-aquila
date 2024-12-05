@@ -53,8 +53,8 @@
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subject</span>&lt;<span class="hljs-built_in">void</span>&gt;();
 
     <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">readonly</span> nxDateAdapter: NxDateAdapter&lt;Moment&gt;,
-        <span class="hljs-meta">@Inject</span>(NX_DATE_LOCALE) <span class="hljs-keyword">readonly</span> nxDateLocale: <span class="hljs-built_in">string</span>,
+        <span class="hljs-keyword">readonly</span> <span class="hljs-attr">nxDateAdapter</span>: <span class="hljs-title class_">NxDateAdapter</span>&lt;<span class="hljs-title class_">Moment</span>&gt;,
+        <span class="hljs-meta">@Inject</span>(NX_DATE_LOCALE) <span class="hljs-keyword">readonly</span> <span class="hljs-attr">nxDateLocale</span>: <span class="hljs-built_in">string</span>,
     </span>) {}
 
     <span class="hljs-title function_">ngOnInit</span>(): <span class="hljs-built_in">void</span> {
@@ -70,7 +70,7 @@
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">complete</span>();
     }
 
-    <span class="hljs-title function_">changeLocal</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-title function_">changeLocal</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">nxDateAdapter</span>.<span class="hljs-title function_">setLocale</span>(value);
     }
 }

@@ -44,7 +44,7 @@
         <span class="hljs-string">&#x27;Ferrari&#x27;</span>,
     ];
 
-    <span class="hljs-title function_">myFilter</span>(<span class="hljs-params">search: <span class="hljs-built_in">any</span>, itemValue: <span class="hljs-built_in">any</span></span>) {
+    <span class="hljs-title function_">myFilter</span>(<span class="hljs-params"><span class="hljs-attr">search</span>: <span class="hljs-built_in">any</span>, <span class="hljs-attr">itemValue</span>: <span class="hljs-built_in">any</span></span>) {
         <span class="hljs-keyword">return</span> itemValue.<span class="hljs-title function_">match</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(<span class="hljs-string">&#x27;^&#x27;</span> + search, <span class="hljs-string">&#x27;g&#x27;</span>)) !== <span class="hljs-literal">null</span>;
     }
 }

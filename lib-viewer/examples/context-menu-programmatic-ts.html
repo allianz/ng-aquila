@@ -33,7 +33,7 @@
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-title class_">NxContextMenuTriggerDirective</span>)
     trigger!: <span class="hljs-title class_">NxContextMenuTriggerDirective</span>;
 
-    <span class="hljs-title function_">openContextMenu</span>(<span class="hljs-params">$event: Event</span>) {
+    <span class="hljs-title function_">openContextMenu</span>(<span class="hljs-params"><span class="hljs-attr">$event</span>: <span class="hljs-title class_">Event</span></span>) {
         $event.<span class="hljs-title function_">preventDefault</span>();
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">trigger</span>.<span class="hljs-title function_">toggleContextMenu</span>();
     }

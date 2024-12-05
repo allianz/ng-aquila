@@ -27,7 +27,7 @@
 
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;hoverTriggerIcon&#x27;</span>) _hoverTriggerIcon!: <span class="hljs-title class_">ElementRef</span>&lt;<span class="hljs-title class_">HTMLElement</span>&gt;;
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _focusMonitor: FocusMonitor</span>) {}
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_focusMonitor</span>: <span class="hljs-title class_">FocusMonitor</span></span>) {}
 
     <span class="hljs-title function_">ngAfterViewInit</span>(): <span class="hljs-built_in">void</span> {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">_focusMonitor</span>.<span class="hljs-title function_">monitor</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_hoverTriggerIcon</span>);

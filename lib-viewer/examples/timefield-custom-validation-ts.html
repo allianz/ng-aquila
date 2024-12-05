@@ -20,13 +20,13 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TimefieldCustomValidationExampleComponent</span>
     <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterViewInit</span>
 {
-    timefield = viewChild.required(<span class="hljs-title class_">NxTimefieldComponent</span>);
+    timefield = viewChild.<span class="hljs-title function_">required</span>(<span class="hljs-title class_">NxTimefieldComponent</span>);
 
     <span class="hljs-keyword">readonly</span> testForm = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
         <span class="hljs-attr">timefieldReactive</span>: [<span class="hljs-string">&#x27;&#x27;</span>],
     });
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>) {}
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">fb</span>: <span class="hljs-title class_">FormBuilder</span></span>) {}
 
     <span class="hljs-title function_">ngAfterViewInit</span>(<span class="hljs-params"></span>) {
         <span class="hljs-comment">// this is only to simulate user input that the example already shows the error</span>

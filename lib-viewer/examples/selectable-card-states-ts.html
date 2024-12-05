@@ -40,11 +40,11 @@
         <span class="hljs-attr">errorCard2</span>: [<span class="hljs-literal">true</span>, validateSecondCard],
     });
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>) {
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">fb</span>: <span class="hljs-title class_">FormBuilder</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">formGroup</span>.<span class="hljs-title function_">markAllAsTouched</span>();
     }
 }
 
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">validateSecondCard</span>(<span class="hljs-params">control: AbstractControl</span>) {
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">validateSecondCard</span>(<span class="hljs-params"><span class="hljs-attr">control</span>: <span class="hljs-title class_">AbstractControl</span></span>) {
     <span class="hljs-keyword">return</span> control.<span class="hljs-property">value</span> ? { <span class="hljs-attr">invalid</span>: <span class="hljs-literal">true</span> } : <span class="hljs-literal">null</span>;
 }

@@ -117,12 +117,12 @@
     <span class="hljs-keyword">private</span> gridApi!: <span class="hljs-title class_">GridApi</span>;
 
     <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> http: HttpClient,
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _cdr: ChangeDetectorRef,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">http</span>: <span class="hljs-title class_">HttpClient</span>,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_cdr</span>: <span class="hljs-title class_">ChangeDetectorRef</span>,
     </span>) {}
 
     <span class="hljs-comment">// Example load data from server</span>
-    <span class="hljs-title function_">onGridReady</span>(<span class="hljs-params">params: GridReadyEvent</span>) {
+    <span class="hljs-title function_">onGridReady</span>(<span class="hljs-params"><span class="hljs-attr">params</span>: <span class="hljs-title class_">GridReadyEvent</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span> = params.<span class="hljs-property">api</span>;
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">rowData$</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">http</span>.<span class="hljs-property">get</span>&lt;<span class="hljs-built_in">any</span>[]&gt;(
             <span class="hljs-string">&#x27;https://www.ag-grid.com/example-assets/row-data.json&#x27;</span>,

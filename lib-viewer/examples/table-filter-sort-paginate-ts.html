@@ -194,9 +194,9 @@
     <span class="hljs-comment">/**
      * Sorts the table data by a certain category.
      */</span>
-    <span class="hljs-title function_">sortTable</span>(<span class="hljs-params">sort: SortEvent</span>) {
+    <span class="hljs-title function_">sortTable</span>(<span class="hljs-params"><span class="hljs-attr">sort</span>: <span class="hljs-title class_">SortEvent</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentlyAvailableElements</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentlyAvailableElements</span>.<span class="hljs-title function_">sort</span>(
-            <span class="hljs-function">(<span class="hljs-params">a: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> }, b: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> }</span>) =&gt;</span> {
+            <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">a</span>: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> }, <span class="hljs-attr">b</span>: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> }</span>) =&gt;</span> {
                 <span class="hljs-keyword">if</span> (sort.<span class="hljs-property">active</span> <span class="hljs-keyword">in</span> a &amp;&amp; sort.<span class="hljs-property">active</span> <span class="hljs-keyword">in</span> b) {
                     <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">compare</span>(
                         a[sort.<span class="hljs-property">active</span>],
@@ -212,25 +212,25 @@
     }
 
     <span class="hljs-title function_">compare</span>(<span class="hljs-params">
-        a: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">Date</span>,
-        b: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">Date</span>,
-        direction: SortDirection,
+        <span class="hljs-attr">a</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Date</span>,
+        <span class="hljs-attr">b</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Date</span>,
+        <span class="hljs-attr">direction</span>: <span class="hljs-title class_">SortDirection</span>,
     </span>) {
         <span class="hljs-keyword">return</span> (a &lt; b ? -<span class="hljs-number">1</span> : <span class="hljs-number">1</span>) * (direction === <span class="hljs-string">&#x27;asc&#x27;</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>);
     }
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-meta">@Inject</span>(LOCALE_ID) <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> localeId: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-meta">@Inject</span>(LOCALE_ID) <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">localeId</span>: <span class="hljs-built_in">string</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentlyAvailableElements</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">tableElements</span>;
         <span class="hljs-comment">// init first page on page load</span>
         <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updatePage</span>();
     }
 
-    <span class="hljs-title function_">onFilterValueChange</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-title function_">onFilterValueChange</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">page</span> = <span class="hljs-number">1</span>;
         <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">filterData</span>(value);
     }
 
-    <span class="hljs-title function_">filterData</span>(<span class="hljs-params">filterValue: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-title function_">filterData</span>(<span class="hljs-params"><span class="hljs-attr">filterValue</span>: <span class="hljs-built_in">string</span></span>) {
         <span class="hljs-keyword">const</span> filterRegexp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(filterValue, <span class="hljs-string">&#x27;i&#x27;</span>);
         <span class="hljs-keyword">const</span> dateFormat = <span class="hljs-string">&#x27;dd/MM/yyyy&#x27;</span>;
 
@@ -271,7 +271,7 @@
         <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updatePage</span>();
     }
 
-    <span class="hljs-title function_">goToPage</span>(<span class="hljs-params">n: <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-title function_">goToPage</span>(<span class="hljs-params"><span class="hljs-attr">n</span>: <span class="hljs-built_in">number</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">page</span> = n;
         <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updatePage</span>();
     }

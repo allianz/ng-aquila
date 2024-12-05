@@ -22,7 +22,7 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PhoneInputFormattingExampleComponent</span> {
     value = <span class="hljs-string">&#x27;+49891234567&#x27;</span>;
 
-    <span class="hljs-title function_">whitespaceFormatter</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span>, countryCode: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-title function_">whitespaceFormatter</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">countryCode</span>: <span class="hljs-built_in">string</span></span>) {
         <span class="hljs-keyword">return</span> value.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/.{1,2}/g</span>)?.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27; &#x27;</span>) || <span class="hljs-string">&#x27;&#x27;</span>;
     }
 }

@@ -28,9 +28,9 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GridQueryComparisonComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterViewInit</span> {
     exampleGridWidth!: <span class="hljs-built_in">number</span>;
     maxExampleGridWidth!: <span class="hljs-built_in">number</span>;
-    appendPx = <span class="hljs-function">(<span class="hljs-params">value: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-string">`<span class="hljs-subst">${value}</span>px`</span>;
+    appendPx = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-string">`<span class="hljs-subst">${value}</span>px`</span>;
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> el: ElementRef</span>) {}
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">el</span>: <span class="hljs-title class_">ElementRef</span></span>) {}
 
     <span class="hljs-title function_">ngAfterViewInit</span>(): <span class="hljs-built_in">void</span> {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">exampleGridWidth</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">el</span>.<span class="hljs-property">nativeElement</span>.<span class="hljs-property">offsetWidth</span>;

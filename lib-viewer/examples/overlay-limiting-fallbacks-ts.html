@@ -31,9 +31,9 @@
 
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-title class_">TemplateRef</span>) template!: <span class="hljs-title class_">TemplateRef</span>&lt;<span class="hljs-built_in">any</span>&gt;;
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">readonly</span> nxOverlay: NxOverlayService</span>) {}
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">readonly</span> <span class="hljs-attr">nxOverlay</span>: <span class="hljs-title class_">NxOverlayService</span></span>) {}
 
-    <span class="hljs-title function_">open</span>(<span class="hljs-params">element: ElementRef</span>) {
+    <span class="hljs-title function_">open</span>(<span class="hljs-params"><span class="hljs-attr">element</span>: <span class="hljs-title class_">ElementRef</span></span>) {
         <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">currentOverlay</span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentOverlay</span>.<span class="hljs-title function_">close</span>();
         }

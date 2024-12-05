@@ -20,7 +20,7 @@
     <span class="hljs-attr">messages</span>: <span class="hljs-built_in">any</span>[] = [];
     logMessage = <span class="hljs-string">&#x27;&#x27;</span>;
 
-    <span class="hljs-title function_">tabChanged</span>(<span class="hljs-params">$event: NxTabChangeEvent</span>) {
+    <span class="hljs-title function_">tabChanged</span>(<span class="hljs-params"><span class="hljs-attr">$event</span>: <span class="hljs-title class_">NxTabChangeEvent</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">push</span>(
             <span class="hljs-string">`Selected Index: <span class="hljs-subst">${$event.index}</span> Label: <span class="hljs-subst">${$event.tab.label}</span>`</span>,
         );
@@ -29,7 +29,7 @@
         );
     }
 
-    <span class="hljs-title function_">tabFocused</span>(<span class="hljs-params">$event: NxTabChangeEvent</span>) {
+    <span class="hljs-title function_">tabFocused</span>(<span class="hljs-params"><span class="hljs-attr">$event</span>: <span class="hljs-title class_">NxTabChangeEvent</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">push</span>(
             <span class="hljs-string">`Focused Index: <span class="hljs-subst">${$event.index}</span> Label: <span class="hljs-subst">${$event.tab.label}</span>`</span>,
         );

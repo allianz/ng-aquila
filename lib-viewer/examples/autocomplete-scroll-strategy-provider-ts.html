@@ -9,7 +9,7 @@
 
 <span class="hljs-keyword">const</span> words = <span class="hljs-string">`Chimpanzee,Chinchilla,Chipmunk,Coati,Cicada,Clam,Clownfish,Cobra,Cockroach,Cod,Condor,Constrictor,Coral,Cougar,Cow,Coyote,Coypu,Crab,Crane,Crane fly,Crawdad,Crayfish,Cricket,Crocodile,Crow`</span>;
 
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">scrollStrategyFactory</span>(<span class="hljs-params">overlay: Overlay</span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ScrollStrategy</span> {
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">scrollStrategyFactory</span>(<span class="hljs-params"><span class="hljs-attr">overlay</span>: <span class="hljs-title class_">Overlay</span></span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ScrollStrategy</span> {
     <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> overlay.<span class="hljs-property">scrollStrategies</span>.<span class="hljs-title function_">close</span>();
 }
 

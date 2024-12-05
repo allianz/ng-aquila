@@ -53,7 +53,7 @@
 <pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxViewportService</span>, <span class="hljs-title class_">NxBreakpoints</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/utils&#x27;</span>;
 <span class="hljs-attr">showComponentX</span>: <span class="hljs-built_in">boolean</span>;
 
-<span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> viewportService: NxViewportService</span>) {
+<span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-attr">viewportService</span>: <span class="hljs-title class_">NxViewportService</span></span>) {
   <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewportService</span>.<span class="hljs-title function_">max</span>(<span class="hljs-title class_">NxBreakpoints</span>.<span class="hljs-property">BREAKPOINT_LARGE</span>)
     .<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">isMaximumLarge</span> =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">showComponentX</span> = isMaximumLarge);
 }

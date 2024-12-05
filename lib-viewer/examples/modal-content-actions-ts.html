@@ -35,8 +35,8 @@
     actionResult?: <span class="hljs-title class_">MyDialogResult</span>;
 
     <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> dialogService: NxDialogService,
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _cdr: ChangeDetectorRef,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">dialogService</span>: <span class="hljs-title class_">NxDialogService</span>,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_cdr</span>: <span class="hljs-title class_">ChangeDetectorRef</span>,
     </span>) {}
 
     <span class="hljs-title function_">openFromTemplate</span>(<span class="hljs-attr">templateRef</span>: <span class="hljs-title class_">TemplateRef</span>&lt;<span class="hljs-built_in">any</span>&gt;): <span class="hljs-built_in">void</span> {

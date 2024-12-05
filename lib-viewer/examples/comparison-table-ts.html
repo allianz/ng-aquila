@@ -50,7 +50,7 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ComparisonTableExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnInit</span> {
     loading = <span class="hljs-literal">true</span>;
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _cdr: ChangeDetectorRef</span>) {}
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_cdr</span>: <span class="hljs-title class_">ChangeDetectorRef</span></span>) {}
 
     <span class="hljs-title function_">ngOnInit</span>(): <span class="hljs-built_in">void</span> {
         <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">reload</span>();

@@ -38,7 +38,7 @@
 <pre><code class="language-scss"><span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-ms-high-contrast</span>: active) {
     <span class="hljs-selector-class">.g-inside-svg</span> {
         <span class="hljs-comment">/* proprietary Windows system color value; IE/Edge only */</span>
-        fill: windowText;
+        <span class="hljs-attribute">fill</span>: windowText;
     }
 }
 </code></pre>
@@ -55,7 +55,7 @@
 <li class="docs-markdown--li">color contrast is sufficient (use <a href="https://webaim.org/resources/contrastchecker/">Color contrast checker</a> or install a browser plugin)</li>
 </ul>
 <p class="docs-markdown--p">You could easily include basic A11Y testing with <a href="https://www.deque.com/axe">Axe</a> in your automated tests like so:</p>
-<pre><code class="language-typescript">axe.<span class="hljs-title function_">run</span>(actual, {}, <span class="hljs-function">(<span class="hljs-params">error: <span class="hljs-built_in">Error</span>, results: axe.AxeResults</span>) =&gt;</span> {
+<pre><code class="language-typescript">axe.<span class="hljs-title function_">run</span>(actual, {}, <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">error</span>: <span class="hljs-title class_">Error</span>, <span class="hljs-attr">results</span>: axe.<span class="hljs-title class_">AxeResults</span></span>) =&gt;</span> {
     <span class="hljs-keyword">if</span> (results.<span class="hljs-property">violations</span>.<span class="hljs-property">length</span>) {
         <span class="hljs-comment">// report violations</span>
     }

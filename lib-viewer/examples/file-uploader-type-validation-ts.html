@@ -75,8 +75,8 @@
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subject</span>&lt;<span class="hljs-built_in">void</span>&gt;();
 
     <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> messageToastService: NxMessageToastService,
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> http: HttpClient,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">messageToastService</span>: <span class="hljs-title class_">NxMessageToastService</span>,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">http</span>: <span class="hljs-title class_">HttpClient</span>,
     </span>) {}
 
     <span class="hljs-title function_">ngOnInit</span>(): <span class="hljs-built_in">void</span> {
@@ -100,11 +100,11 @@
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">complete</span>();
     }
 
-    <span class="hljs-title function_">onChange</span>(<span class="hljs-params">$event: FileItem[]</span>) {
+    <span class="hljs-title function_">onChange</span>(<span class="hljs-params"><span class="hljs-attr">$event</span>: <span class="hljs-title class_">FileItem</span>[]</span>) {
         <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>($event);
     }
 
-    <span class="hljs-title function_">onDelete</span>(<span class="hljs-params">$event: FileItem</span>) {
+    <span class="hljs-title function_">onDelete</span>(<span class="hljs-params"><span class="hljs-attr">$event</span>: <span class="hljs-title class_">FileItem</span></span>) {
         <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>($event);
     }
 }

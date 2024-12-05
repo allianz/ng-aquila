@@ -6,7 +6,7 @@
     <span class="hljs-title class_">NxTooltipDirective</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tooltip&#x27;</span>;
 
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">scrollStrategyFactory</span>(<span class="hljs-params">overlay: Overlay</span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ScrollStrategy</span> {
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">scrollStrategyFactory</span>(<span class="hljs-params"><span class="hljs-attr">overlay</span>: <span class="hljs-title class_">Overlay</span></span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ScrollStrategy</span> {
     <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> overlay.<span class="hljs-property">scrollStrategies</span>.<span class="hljs-title function_">close</span>();
 }
 

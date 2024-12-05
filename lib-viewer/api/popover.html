@@ -268,7 +268,16 @@ after the popover is opened for the first time.</p>
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">closeOnLeftViewport</span>:
-                <span class="docs-api-property__type">IntersectionObserver</span>
+                <span class="docs-api-property__type">typeof globalThis.IntersectionObserver !== 'undefined'
+    ? new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                this._ngZone.run(() => this.overlayRef?.detach());
+            }
+            this.closeOnLeftViewport!.disconnect();
+        });
+    }, { threshold: 0.2 })
+    : undefined</span>
             </code>
         </p>
     </td>

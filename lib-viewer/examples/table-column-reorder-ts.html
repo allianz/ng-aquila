@@ -77,10 +77,10 @@
         },
     ];
 
-    <span class="hljs-title function_">drop</span>(<span class="hljs-params">event: CdkDragDrop&lt;<span class="hljs-built_in">string</span>[]&gt;</span>) {
+    <span class="hljs-title function_">drop</span>(<span class="hljs-params"><span class="hljs-attr">event</span>: <span class="hljs-title class_">CdkDragDrop</span>&lt;<span class="hljs-built_in">string</span>[]&gt;</span>) {
         <span class="hljs-title function_">moveItemInArray</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">header</span>, event.<span class="hljs-property">previousIndex</span>, event.<span class="hljs-property">currentIndex</span>);
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">cdr</span>.<span class="hljs-title function_">markForCheck</span>();
     }
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> cdr: ChangeDetectorRef</span>) {}
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">cdr</span>: <span class="hljs-title class_">ChangeDetectorRef</span></span>) {}
 }

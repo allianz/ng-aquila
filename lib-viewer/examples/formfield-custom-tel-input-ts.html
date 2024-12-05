@@ -29,9 +29,9 @@
 <span class="hljs-comment">/** Data structure for holding telephone number. */</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyTel</span> {
     <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">readonly</span> area: <span class="hljs-built_in">string</span>,
-        <span class="hljs-keyword">readonly</span> exchange: <span class="hljs-built_in">string</span>,
-        <span class="hljs-keyword">readonly</span> subscriber: <span class="hljs-built_in">string</span>,
+        <span class="hljs-keyword">readonly</span> <span class="hljs-attr">area</span>: <span class="hljs-built_in">string</span>,
+        <span class="hljs-keyword">readonly</span> <span class="hljs-attr">exchange</span>: <span class="hljs-built_in">string</span>,
+        <span class="hljs-keyword">readonly</span> <span class="hljs-attr">subscriber</span>: <span class="hljs-built_in">string</span>,
     </span>) {}
 }
 
@@ -83,7 +83,7 @@
         <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">focused</span> || !<span class="hljs-variable language_">this</span>.<span class="hljs-property">empty</span>;
     }
 
-    <span class="hljs-meta">@Input</span>() <span class="hljs-keyword">set</span> <span class="hljs-title function_">placeholder</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-meta">@Input</span>() <span class="hljs-keyword">set</span> <span class="hljs-title function_">placeholder</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">_placeholder</span> = value;
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">stateChanges</span>.<span class="hljs-title function_">next</span>();
     }
@@ -92,7 +92,7 @@
     }
     <span class="hljs-keyword">private</span> _placeholder = <span class="hljs-string">&#x27;&#x27;</span>;
 
-    <span class="hljs-meta">@Input</span>() <span class="hljs-keyword">set</span> <span class="hljs-title function_">required</span>(<span class="hljs-params">value: BooleanInput</span>) {
+    <span class="hljs-meta">@Input</span>() <span class="hljs-keyword">set</span> <span class="hljs-title function_">required</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-title class_">BooleanInput</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">_required</span> = <span class="hljs-title function_">coerceBooleanProperty</span>(value);
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">stateChanges</span>.<span class="hljs-title function_">next</span>();
     }
@@ -101,7 +101,7 @@
     }
     <span class="hljs-keyword">private</span> _required = <span class="hljs-literal">false</span>;
 
-    <span class="hljs-meta">@Input</span>() <span class="hljs-keyword">set</span> <span class="hljs-title function_">disabled</span>(<span class="hljs-params">value: BooleanInput</span>) {
+    <span class="hljs-meta">@Input</span>() <span class="hljs-keyword">set</span> <span class="hljs-title function_">disabled</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-title class_">BooleanInput</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">_disabled</span> = <span class="hljs-title function_">coerceBooleanProperty</span>(value);
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">_disabled</span> ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">parts</span>.<span class="hljs-title function_">disable</span>() : <span class="hljs-variable language_">this</span>.<span class="hljs-property">parts</span>.<span class="hljs-title function_">enable</span>();
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">stateChanges</span>.<span class="hljs-title function_">next</span>();
@@ -111,7 +111,7 @@
     }
     <span class="hljs-keyword">private</span> _disabled = <span class="hljs-literal">false</span>;
 
-    <span class="hljs-meta">@Input</span>() <span class="hljs-keyword">set</span> <span class="hljs-title function_">value</span>(<span class="hljs-params">tel: MyTel | <span class="hljs-literal">null</span></span>) {
+    <span class="hljs-meta">@Input</span>() <span class="hljs-keyword">set</span> <span class="hljs-title function_">value</span>(<span class="hljs-params"><span class="hljs-attr">tel</span>: <span class="hljs-title class_">MyTel</span> | <span class="hljs-literal">null</span></span>) {
         <span class="hljs-keyword">const</span> { area, exchange, subscriber } = tel || <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyTel</span>(<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>);
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">parts</span>.<span class="hljs-title function_">setValue</span>({ area, exchange, subscriber });
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">stateChanges</span>.<span class="hljs-title function_">next</span>();
@@ -128,14 +128,14 @@
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subject</span>&lt;<span class="hljs-built_in">void</span>&gt;();
 
-    onChange = <span class="hljs-function">(<span class="hljs-params">_: <span class="hljs-built_in">any</span></span>) =&gt;</span> {};
+    onChange = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">_</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span> {};
     onTouched = <span class="hljs-function">() =&gt;</span> {};
 
     <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder,
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _focusMonitor: FocusMonitor,
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _elementRef: ElementRef&lt;HTMLElement&gt;,
-        <span class="hljs-meta">@Optional</span>() <span class="hljs-meta">@Self</span>() <span class="hljs-keyword">readonly</span> ngControl: NgControl | <span class="hljs-literal">null</span>,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">fb</span>: <span class="hljs-title class_">FormBuilder</span>,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_focusMonitor</span>: <span class="hljs-title class_">FocusMonitor</span>,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_elementRef</span>: <span class="hljs-title class_">ElementRef</span>&lt;<span class="hljs-title class_">HTMLElement</span>&gt;,
+        <span class="hljs-meta">@Optional</span>() <span class="hljs-meta">@Self</span>() <span class="hljs-keyword">readonly</span> <span class="hljs-attr">ngControl</span>: <span class="hljs-title class_">NgControl</span> | <span class="hljs-literal">null</span>,
     </span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">parts</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
             <span class="hljs-attr">area</span>: [
@@ -197,11 +197,11 @@
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">_focusMonitor</span>.<span class="hljs-title function_">stopMonitoring</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_elementRef</span>);
     }
 
-    <span class="hljs-title function_">setDescribedByIds</span>(<span class="hljs-params">ids: <span class="hljs-built_in">string</span>[]</span>) {
+    <span class="hljs-title function_">setDescribedByIds</span>(<span class="hljs-params"><span class="hljs-attr">ids</span>: <span class="hljs-built_in">string</span>[]</span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">describedBy</span> = ids.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27; &#x27;</span>);
     }
 
-    <span class="hljs-title function_">onContainerClick</span>(<span class="hljs-params">event: MouseEvent</span>) {
+    <span class="hljs-title function_">onContainerClick</span>(<span class="hljs-params"><span class="hljs-attr">event</span>: <span class="hljs-title class_">MouseEvent</span></span>) {
         <span class="hljs-keyword">if</span> ((event.<span class="hljs-property">target</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">Element</span>).<span class="hljs-property">tagName</span>.<span class="hljs-title function_">toLowerCase</span>() !== <span class="hljs-string">&#x27;input&#x27;</span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">_elementRef</span>.<span class="hljs-property">nativeElement</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;input&#x27;</span>)!.<span class="hljs-title function_">focus</span>();
         }

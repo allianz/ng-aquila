@@ -17,7 +17,7 @@
     max = <span class="hljs-number">80</span>;
 
     <span class="hljs-title function_">ngOnInit</span>(): <span class="hljs-built_in">void</span> {
-        (<span class="hljs-keyword">async</span> () =&gt; {
+        (<span class="hljs-title function_">async</span> () =&gt; {
             <span class="hljs-keyword">while</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> !== <span class="hljs-number">80</span>) {
                 <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">2000</span>));
 

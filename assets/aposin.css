@@ -700,6 +700,8 @@ body,
   --datefield-cell-hover-background-color: var(--ui-03);
   --datefield-cell-hover-color: var(--text-01);
   --datefield-cell-disabled-color: #767676;
+  --datefield-cell-disabled-today-color: #b6b6b6;
+  --datefield-cell-disabled-selected-background-color: #b6b6b6;
   --datefield-cell-focused-background-color: var(--ui-01);
   --datefield-header-cell-color: var(--datefield-cell-disabled-color);
   --datefield-header-cell-font-weight: 600;

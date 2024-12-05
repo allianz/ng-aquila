@@ -15,11 +15,11 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TabsDynamicExampleComponent</span> {
     tabs = [<span class="hljs-string">&#x27;one&#x27;</span>, <span class="hljs-string">&#x27;two&#x27;</span>, <span class="hljs-string">&#x27;three&#x27;</span>];
 
-    <span class="hljs-title function_">addTab</span>(<span class="hljs-params">text: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-title function_">addTab</span>(<span class="hljs-params"><span class="hljs-attr">text</span>: <span class="hljs-built_in">string</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">tabs</span> = [...<span class="hljs-variable language_">this</span>.<span class="hljs-property">tabs</span>, text];
     }
 
-    <span class="hljs-title function_">removeTab</span>(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-title function_">removeTab</span>(<span class="hljs-params"><span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">tabs</span>.<span class="hljs-title function_">splice</span>(index, <span class="hljs-number">1</span>);
     }
 }

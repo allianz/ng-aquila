@@ -41,9 +41,9 @@
 
     isSubmitted = <span class="hljs-literal">false</span>;
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> fb: FormBuilder</span>) {}
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">fb</span>: <span class="hljs-title class_">FormBuilder</span></span>) {}
 
-    <span class="hljs-keyword">private</span> <span class="hljs-title function_">customValidation</span>(<span class="hljs-params">formGroup: FormGroup</span>) {
+    <span class="hljs-keyword">private</span> <span class="hljs-title function_">customValidation</span>(<span class="hljs-params"><span class="hljs-attr">formGroup</span>: <span class="hljs-title class_">FormGroup</span></span>) {
         <span class="hljs-keyword">return</span> formGroup.<span class="hljs-property">value</span> !== <span class="hljs-string">&#x27;B&#x27;</span> ? { <span class="hljs-attr">valid</span>: <span class="hljs-literal">false</span> } : <span class="hljs-literal">null</span>;
     }
 

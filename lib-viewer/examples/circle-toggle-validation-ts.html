@@ -15,7 +15,7 @@
     <span class="hljs-title class_">NxCircleToggleGroupComponent</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/circle-toggle&#x27;</span>;
 
-<span class="hljs-keyword">const</span> <span class="hljs-attr">selectBothValidator</span>: <span class="hljs-title class_">ValidatorFn</span> = <span class="hljs-function">(<span class="hljs-params">ctrl: AbstractControl</span>) =&gt;</span> {
+<span class="hljs-keyword">const</span> <span class="hljs-attr">selectBothValidator</span>: <span class="hljs-title class_">ValidatorFn</span> = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">ctrl</span>: <span class="hljs-title class_">AbstractControl</span></span>) =&gt;</span> {
     <span class="hljs-keyword">const</span> heart = ctrl.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;heart&#x27;</span>)?.<span class="hljs-property">value</span>;
     <span class="hljs-keyword">const</span> car = ctrl.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;car&#x27;</span>)?.<span class="hljs-property">value</span>;
     <span class="hljs-keyword">const</span> isSelectBoth = heart &amp;&amp; car;

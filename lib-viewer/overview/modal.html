@@ -62,7 +62,7 @@ myDialogRef.<span class="hljs-title function_">close</span>(<span class="hljs-st
     <span class="hljs-attr">template</span>: <span class="hljs-string">&#x27;passed in {{ data.name }}&#x27;</span>,
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">YourDialog</span> {
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-meta">@Inject</span>(NX_MODAL_DATA) <span class="hljs-keyword">readonly</span> data: <span class="hljs-built_in">any</span></span>) {}
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-meta">@Inject</span>(NX_MODAL_DATA) <span class="hljs-keyword">readonly</span> <span class="hljs-attr">data</span>: <span class="hljs-built_in">any</span></span>) {}
 }
 </code></pre>
 <p class="docs-markdown--p">If you are using a template for the content of your dialog the data object will be available implicitly in your template as shown in the example below:</p>
@@ -84,7 +84,7 @@ myDialogRef.<span class="hljs-title function_">close</span>(<span class="hljs-st
 <li class="docs-markdown--li"><strong>block:</strong> disallow background scroll, the overlay does not move.</li>
 <li class="docs-markdown--li"><strong>noop:</strong> allow background scroll, the overlay does not move.</li>
 </ul>
-<pre><code class="language-ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">scrollStrategyFactory</span>(<span class="hljs-params">overlay: Overlay</span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ScrollStrategy</span> {
+<pre><code class="language-ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">scrollStrategyFactory</span>(<span class="hljs-params"><span class="hljs-attr">overlay</span>: <span class="hljs-title class_">Overlay</span></span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ScrollStrategy</span> {
     <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> overlay.<span class="hljs-property">scrollStrategies</span>.<span class="hljs-title function_">close</span>();
 }
 

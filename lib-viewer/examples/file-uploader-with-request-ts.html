@@ -44,11 +44,11 @@
     showUploadError = <span class="hljs-literal">false</span>;
 
     <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> messageToastService: NxMessageToastService,
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> http: HttpClient,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">messageToastService</span>: <span class="hljs-title class_">NxMessageToastService</span>,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">http</span>: <span class="hljs-title class_">HttpClient</span>,
     </span>) {}
 
-    <span class="hljs-title function_">upload</span>(<span class="hljs-params">url: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-title function_">upload</span>(<span class="hljs-params"><span class="hljs-attr">url</span>: <span class="hljs-built_in">string</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">showUploadError</span> = <span class="hljs-literal">false</span>;
 
         <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">documentUpload</span>.<span class="hljs-property">value</span>) {
@@ -57,7 +57,7 @@
 
         <span class="hljs-keyword">const</span> formData = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormData</span>();
 
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">documentUpload</span>.<span class="hljs-property">value</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">documentUpload</span>.<span class="hljs-property">value</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">fileItem</span>: <span class="hljs-title class_">FileItem</span></span>) =&gt;</span> {
             <span class="hljs-keyword">if</span> (!fileItem.<span class="hljs-property">isUploaded</span>) {
                 fileItem.<span class="hljs-title function_">setUploadingState</span>();
                 formData.<span class="hljs-title function_">append</span>(
@@ -76,7 +76,7 @@
 
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">http</span>.<span class="hljs-title function_">post</span>(url, formData, options).<span class="hljs-title function_">subscribe</span>(
             <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
-                <span class="hljs-variable language_">this</span>.<span class="hljs-property">documentUpload</span>.<span class="hljs-property">value</span>!.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">documentUpload</span>.<span class="hljs-property">value</span>!.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">fileItem</span>: <span class="hljs-title class_">FileItem</span></span>) =&gt;</span> {
                     fileItem.<span class="hljs-title function_">setUploadedState</span>();
                 });
                 <span class="hljs-variable language_">this</span>.<span class="hljs-property">messageToastService</span>.<span class="hljs-title function_">open</span>(
@@ -85,7 +85,7 @@
                 );
             },
             <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
-                <span class="hljs-variable language_">this</span>.<span class="hljs-property">documentUpload</span>.<span class="hljs-property">value</span>!.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">documentUpload</span>.<span class="hljs-property">value</span>!.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">fileItem</span>: <span class="hljs-title class_">FileItem</span></span>) =&gt;</span> {
                     <span class="hljs-keyword">if</span> (!fileItem.<span class="hljs-property">isUploaded</span>) {
                         fileItem.<span class="hljs-title function_">setErrorState</span>();
                     }

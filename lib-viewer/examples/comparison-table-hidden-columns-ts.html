@@ -52,9 +52,9 @@
 
     selectedColumnIndex = <span class="hljs-number">1</span>;
 
-    isHiddenIndex = <span class="hljs-function">(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">hiddenIndexes</span>.<span class="hljs-title function_">includes</span>(index);
+    isHiddenIndex = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">hiddenIndexes</span>.<span class="hljs-title function_">includes</span>(index);
 
-    <span class="hljs-title function_">toggleHiddenIndexes</span>(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-title function_">toggleHiddenIndexes</span>(<span class="hljs-params"><span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span></span>) {
         <span class="hljs-keyword">if</span> (index === <span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedColumnIndex</span>) {
             <span class="hljs-keyword">return</span>;
         }
@@ -68,7 +68,7 @@
         }
     }
 
-    <span class="hljs-title function_">selectedIndexChange</span>(<span class="hljs-params">selectedColumnIndex: <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-title function_">selectedIndexChange</span>(<span class="hljs-params"><span class="hljs-attr">selectedColumnIndex</span>: <span class="hljs-built_in">number</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedColumnIndex</span> = selectedColumnIndex;
     }
 }

@@ -32,7 +32,7 @@
 
     componentMessageToastRef?: <span class="hljs-title class_">NxMessageToastRef</span>;
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> messageToastService: NxMessageToastService</span>) {}
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">messageToastService</span>: <span class="hljs-title class_">NxMessageToastService</span></span>) {}
 
     <span class="hljs-title function_">openFromText</span>(<span class="hljs-params"></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">messageToastService</span>.<span class="hljs-title function_">open</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">toastText</span>, {

@@ -53,7 +53,7 @@
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">filteredOptions</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>.<span class="hljs-title function_">slice</span>();
     }
 
-    <span class="hljs-title function_">filter</span>(<span class="hljs-params">value: <span class="hljs-built_in">any</span></span>) {
+    <span class="hljs-title function_">filter</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">any</span></span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">filteredOptions</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span>
             <span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(value, <span class="hljs-string">&#x27;gi&#x27;</span>).<span class="hljs-title function_">test</span>(s),
         );

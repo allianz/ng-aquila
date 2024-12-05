@@ -23,8 +23,8 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">IconEssentialOverrideExampleComponent</span> {
     <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">readonly</span> iconRegistry: NxIconRegistry,
-        sanitizer: DomSanitizer,
+        <span class="hljs-keyword">readonly</span> <span class="hljs-attr">iconRegistry</span>: <span class="hljs-title class_">NxIconRegistry</span>,
+        <span class="hljs-attr">sanitizer</span>: <span class="hljs-title class_">DomSanitizer</span>,
     </span>) {
         <span class="hljs-comment">// override it with another SVG</span>
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">iconRegistry</span>.<span class="hljs-title function_">addSvgIconLiteral</span>(
