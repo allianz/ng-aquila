@@ -1,5 +1,6 @@
-import { fakeAsync, inject, tick } from '@angular/core/testing';
-import { Subscription } from 'rxjs';
+import { PLATFORM_ID } from '@angular/core';
+import { fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
+import { EMPTY, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { NxBreakpoints, NxViewportService } from './viewport.service';
@@ -407,5 +408,18 @@ describe('NxViewportService', () => {
             tick(25);
             expect(isTablet).toBeTrue();
         }));
+    });
+
+    it('Platform != Browser: should return EMPTY observable on all methods', () => {
+        TestBed.resetTestingModule();
+        TestBed.configureTestingModule({ providers: [{ provide: PLATFORM_ID, useValue: 'NOT_BROWSER' }] });
+
+        const service = TestBed.inject(NxViewportService);
+        expect(service.viewportChange$).toBe(EMPTY);
+        expect(service.min(NxBreakpoints.BREAKPOINT_LARGE)).toBe(EMPTY);
+        expect(service.max(NxBreakpoints.BREAKPOINT_LARGE)).toBe(EMPTY);
+        expect(service.between(NxBreakpoints.BREAKPOINT_LARGE, NxBreakpoints.BREAKPOINT_3XLARGE)).toBe(EMPTY);
+
+        TestBed.resetTestingModule();
     });
 });

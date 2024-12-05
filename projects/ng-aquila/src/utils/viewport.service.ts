@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
-import { asyncScheduler, fromEvent, Observable } from 'rxjs';
+import { Platform } from '@angular/cdk/platform';
+import { inject, Injectable } from '@angular/core';
+import { asyncScheduler, EMPTY, fromEvent, Observable } from 'rxjs';
 import { map, startWith, throttleTime } from 'rxjs/operators';
 
 /** Available breakpoints to subscribe to. */
@@ -25,10 +26,16 @@ const DEFAULT_THROTTLE_TIME = 200;
     providedIn: 'root',
 })
 export class NxViewportService {
-    readonly viewportChange$: Observable<number> = fromEvent(window, 'resize').pipe(map(() => window.innerWidth));
+    private _platform = inject(Platform);
+
+    readonly viewportChange$: Observable<number> = this._platform.isBrowser ? fromEvent(window, 'resize').pipe(map(() => window.innerWidth)) : EMPTY;
 
     /** Returns whether the current viewport width is greater than or equal (>=) to minSize. */
     min(minSize: NxBreakpoints, throttleTimeMs = DEFAULT_THROTTLE_TIME): Observable<boolean> {
+        if (!this._platform.isBrowser) {
+            return EMPTY;
+        }
+
         return this.viewportChange$.pipe(
             startWith(window.innerWidth),
             throttleTime(throttleTimeMs, asyncScheduler, { trailing: true }),
@@ -38,6 +45,10 @@ export class NxViewportService {
 
     /** Returns whether the current viewport width is lower (<) than maxSize. */
     max(maxSize: NxBreakpoints, throttleTimeMs = DEFAULT_THROTTLE_TIME): Observable<boolean> {
+        if (!this._platform.isBrowser) {
+            return EMPTY;
+        }
+
         return this.viewportChange$.pipe(
             startWith(window.innerWidth),
             throttleTime(throttleTimeMs, asyncScheduler, { trailing: true }),
@@ -47,6 +58,10 @@ export class NxViewportService {
 
     /** Returns whether the current viewport width is greater than or equal (>=) to minSize and lower (<) than maxSize. */
     between(minSize: NxBreakpoints, maxSize: NxBreakpoints, throttleTimeMs = DEFAULT_THROTTLE_TIME): Observable<boolean> {
+        if (!this._platform.isBrowser) {
+            return EMPTY;
+        }
+
         return this.viewportChange$.pipe(
             startWith(window.innerWidth),
             throttleTime(throttleTimeMs, asyncScheduler, { trailing: true }),

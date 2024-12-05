@@ -109,7 +109,7 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
     }
 
     scrollToButton(index: number) {
-        if (!this.labels || !this.scrollableTabsList) {
+        if (!this._platform.isBrowser || !this.labels || !this.scrollableTabsList) {
             return;
         }
         const container = this.scrollableTabsList.nativeElement;

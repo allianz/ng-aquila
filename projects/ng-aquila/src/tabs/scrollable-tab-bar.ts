@@ -1,5 +1,6 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
-import { AfterContentInit, ChangeDetectorRef, Directive, ElementRef, OnDestroy, Optional, QueryList } from '@angular/core';
+import { Platform } from '@angular/cdk/platform';
+import { AfterContentInit, ChangeDetectorRef, Directive, ElementRef, inject, Injector, OnDestroy, Optional, QueryList } from '@angular/core';
 import { NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -18,6 +19,8 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
     _isScrolledToEnd = true;
 
     private readonly _destroyed = new Subject<void>();
+    protected readonly _platform = inject(Platform);
+    protected readonly _injector = inject(Injector);
 
     constructor(
         protected readonly _cdr: ChangeDetectorRef,
@@ -37,11 +40,13 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
     }
 
     ngAfterContentInit(): void {
-        this.tabButtons.changes.pipe(takeUntil(this._destroyed)).subscribe(() => setTimeout(() => this._updateScrollButtons()));
-        setTimeout(() => {
-            this.scrollableTabsList.nativeElement.addEventListener('scroll', this._scrollHandler);
-            this._updateScrollButtons();
-        });
+        if (this._platform.isBrowser) {
+            this.tabButtons.changes.pipe(takeUntil(this._destroyed)).subscribe(() => setTimeout(() => this._updateScrollButtons()));
+            setTimeout(() => {
+                this.scrollableTabsList.nativeElement.addEventListener('scroll', this._scrollHandler);
+                this._updateScrollButtons();
+            });
+        }
     }
 
     ngOnDestroy(): void {
