@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [18.6.1](https://github.com/allianz/ng-aquila/compare/v18.6.0...v18.6.1) (2024-12-05)
+
+
+### Documentation 📚
+
+* activate a1 for all components ([ba59316](https://github.com/allianz/ng-aquila/commit/ba59316f0130294f320838b32811558741a82855))
+
+
+### Bug Fixes 🐛
+
+* **breadcrumb:** make nxBreadcrumbItem more lenient and add example with context menu and buttons ([e4a24ad](https://github.com/allianz/ng-aquila/commit/e4a24ad3682e7bd5cafb722ffd8a0529744d065b))
+* **circle toggle:** link error message to controls ([56ad612](https://github.com/allianz/ng-aquila/commit/56ad612b00fb85bcb5a94ad71659b02f194197fe))
+* **context-menu:** replace onStable with afterNextRender for zoneless compatability ([e7709bd](https://github.com/allianz/ng-aquila/commit/e7709bd7dce5645bca792620f51c017bc97a29ff))
+* **context-menu:** stop propagation on esc ([24e0fb6](https://github.com/allianz/ng-aquila/commit/24e0fb611a021bd51b30aaceda87d544d6c615c6))
+* **datefield:** add role="button" to the dates in the datepicker ([36daeee](https://github.com/allianz/ng-aquila/commit/36daeee1441e222e47dbbff57e5c12567463e9ca))
+* **datepicker:** disabled selected styling ([c55a66b](https://github.com/allianz/ng-aquila/commit/c55a66bdd9a5a6526ed134f4905994fa4576e05b))
+* **docs:** replace px with rem ([0bc5fd1](https://github.com/allianz/ng-aquila/commit/0bc5fd1059a8c1e30d5ae7034768ca3171d275a9))
+* **dropdown:** prevent unnecessary macrotasks ([7cec758](https://github.com/allianz/ng-aquila/commit/7cec758e323989d5bb715772ee22070eb533185e))
+* **formfield, autocomplete, datefield, multi-select:** fix accessibility issues with aria owns ([137e136](https://github.com/allianz/ng-aquila/commit/137e1361f88d8069377ab66fab891c40d5d41885))
+* **modal:** use inert to block content outside of dialog ([581b574](https://github.com/allianz/ng-aquila/commit/581b574bb0a3f8e0c573c1267199795054ec12d0))
+* **natural-language-form:** replace zone.onStable for zoneless compatibility ([7e7d1da](https://github.com/allianz/ng-aquila/commit/7e7d1da6b7f2f56f74043f50eefcd0fceac2a8d9))
+* **pagination:** improve and maintain focus state ([e8448b5](https://github.com/allianz/ng-aquila/commit/e8448b5a55d8826dc1744957490bc355f99b5118))
+* **popover:** fix IntersectionObserver not defined error in SSR when popover can only be opened through client interaction ([9a92304](https://github.com/allianz/ng-aquila/commit/9a92304c173f1d4f2f3990cab607fa98e7dc73bd))
+* **popover:** set active state for trigger button ([d33c2da](https://github.com/allianz/ng-aquila/commit/d33c2da91d2f21a6cbe2b7bd7cb1e28c4ce57116))
+* **rating:** implement radio behaviour ([e1c9842](https://github.com/allianz/ng-aquila/commit/e1c984261dc0d95b10adda609a7aed62bf9632b3))
+* **table:** fix condensed styling ([ccb6e11](https://github.com/allianz/ng-aquila/commit/ccb6e11479ed0a72e15d5186bf85ad7e4197877b))
+* **tabs:** make tabs ssr ready ([77f4235](https://github.com/allianz/ng-aquila/commit/77f42354d099b7a8f3ea72e0b60365ce07fcce80))
+* **tree:** fix errors for undefined treeControl and elementRef with separate declarations ([a560ac5](https://github.com/allianz/ng-aquila/commit/a560ac53fd8c91321def0220520d77de4c5ce4d2))
+* **word:** width of input should adapt to rendered value ([1499c01](https://github.com/allianz/ng-aquila/commit/1499c015bea727f6a73868afdb15dd5415cfe388))
+
 ## [18.6.0](https://github.com/allianz/ng-aquila/compare/v18.5.1...v18.6.0) (2024-10-31)
 
 ### Timefield built in validator
