@@ -79,7 +79,7 @@
             }
             <nx-timefield-control
                 style="display: none"
-                [errorState]="errorState"
+                [errorState]="errorState()"
                 [disabled]="disabled"
                 [required]="required"
                 [value]="time"
@@ -106,7 +106,7 @@
         </nx-radio-toggle>
     }
 </div>
-@if (errorState) {
+@if (errorState()) {
     <div class="nx-margin-top-xs">
         <ng-content select="nx-error"></ng-content>
     </div>

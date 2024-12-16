@@ -27,9 +27,11 @@ import {
     Optional,
     Output,
     QueryList,
+    signal,
     SimpleChanges,
     ViewChild,
     ViewChildren,
+    WritableSignal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -131,7 +133,7 @@ export class NxTimefieldControl implements NxFormfieldControl<string> {
     styleUrls: ['./timefield.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class.has-error]': 'errorState',
+        '[class.has-error]': 'errorState()',
         '[class.is-negative]': 'negative',
         '[class.is-disabled]': 'disabled',
         '[class.has-timepicker]': 'withTimepicker',
@@ -154,11 +156,10 @@ export class NxTimefieldControl implements NxFormfieldControl<string> {
 })
 export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck, OnInit, OnChanges, Validator {
     /** @docs-private */
-    errorState = false;
+    errorState: WritableSignal<boolean> = signal(false);
 
     @ViewChild(NxFormfieldComponent) formfield!: NxFormfieldComponent;
     @ContentChild(NxErrorComponent) error: NxErrorComponent | undefined;
-
     _toggleAMPM!: string | null;
     protected isOpen = false;
 
@@ -178,6 +179,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit
     @Input({ transform: booleanAttribute }) set withTimepicker(value: boolean) {
         this.focusMonitor.stopMonitoring(this.toggleButton?.nativeElement);
         this._withTimepicker = value;
+
         setTimeout(() => this.toggleButton && this.focusMonitor.monitor(this.toggleButton.nativeElement));
     }
     get withTimepicker(): boolean {
@@ -513,12 +515,12 @@ export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit
 
     /** @docs-private */
     updateErrorState() {
-        const oldState = this.errorState;
+        const oldState = this.errorState();
         const parent = this._parentFormGroup || this._parentForm;
         const control = this.ngControl ? (this.ngControl.control as FormControl) : null;
         const newState = this._errorStateMatcher.isErrorState(control, parent);
         if (newState !== oldState) {
-            this.errorState = newState;
+            this.errorState.set(newState);
         }
     }
 

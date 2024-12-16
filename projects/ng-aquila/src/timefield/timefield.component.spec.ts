@@ -2,7 +2,7 @@ import { DOWN_ARROW, ENTER, UP_ARROW } from '@angular/cdk/keycodes';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
 
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
@@ -583,6 +583,28 @@ describe('NxTimefieldComponent', () => {
             expect(timefieldElement).not.toHaveClass('has-error');
 
             inputElementMinutes.blur();
+            fixture.detectChanges();
+            expect(timefieldElement).toHaveClass('has-error');
+        });
+
+        it('should reflect error state when control validator changes', () => {
+            createTestComponent(ReactiveTimefield);
+            const reactInstance = testInstance as ReactiveTimefield;
+            const formControl = reactInstance.testForm.get('today') as FormControl;
+
+            inputElementHours.dispatchEvent(new Event('input'));
+            inputElementHours.focus();
+            inputElementHours.blur();
+            fixture.detectChanges();
+            expect(timefieldElement).toHaveClass('has-error');
+
+            formControl.clearValidators();
+            formControl.updateValueAndValidity();
+            fixture.detectChanges();
+            expect(timefieldElement).not.toHaveClass('has-error');
+
+            formControl.setValidators(() => ({ customError: true }));
+            formControl.updateValueAndValidity();
             fixture.detectChanges();
             expect(timefieldElement).toHaveClass('has-error');
         });
