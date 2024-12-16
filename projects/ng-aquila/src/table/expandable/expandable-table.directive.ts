@@ -10,7 +10,7 @@ import { NxExpandable } from './toggle-button.component';
  * It provides the logic to expand/collapse all expandable rows simultanously.
  */
 @Directive({
-    selector: 'table[nxExpandableTable]',
+    selector: 'table[nxExpandableTable], ng-container[nxExpandableContainer]',
     exportAs: 'nxExpandableTable',
     standalone: true,
 })
