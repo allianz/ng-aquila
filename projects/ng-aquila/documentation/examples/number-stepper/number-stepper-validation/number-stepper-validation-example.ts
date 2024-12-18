@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
 import { NxMessageComponent } from '@aposin/ng-aquila/message';
 import { NxNumberStepperComponent } from '@aposin/ng-aquila/number-stepper';
 
@@ -17,6 +17,7 @@ import { NxNumberStepperComponent } from '@aposin/ng-aquila/number-stepper';
         FormsModule,
         NxMessageComponent,
         NxErrorComponent,
+        NxLabelComponent,
     ],
 })
 export class NumberStepperValidationExampleComponent {

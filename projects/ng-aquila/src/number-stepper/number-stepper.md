@@ -20,7 +20,8 @@ This component has two sizes - big and normal.
 
 #### Custom label
 
-You can use custom markup by omiting the nxLabel attribute and provide your markup inside the element, e.g. to show a tooltip. If nxLabel is set the custom content will not be rendered!
+You can use custom markup by omitting the `label` attribute and provide your markup inside the element, e.g. to show a tooltip. If `label` is set the custom content will not be rendered.
+Use a `<nx-label>` or `<label>` inside your custom markup. That way the label will be automatically connected to the input field via `for` to improve accessibility.
 
 <!-- example(number-stepper-custom-label) -->
 

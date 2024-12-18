@@ -1,16 +1,16 @@
-@if (label) {
+@if (label()) {
     <div class="nx-stepper__label">
         <label [for]="inputId">
-            {{ label }}
+            {{ label() }}
         </label>
     </div>
 }
-@if (!label) {
-    <div class="nx-stepper__label" #customLabel [attr.id]="ariaDescribedBy">
+@if (!label()) {
+    <div class="nx-stepper__label" #customLabel [attr.id]="labelId">
         <ng-content></ng-content>
     </div>
 }
-<div class="nx-stepper__input-container">
+<div class="nx-stepper__input-container" [class.error-spacing]="errorMessages()">
     <button
         [attr.aria-label]="decrementAriaLabel || _intl.decrementAriaLabel"
         [nxButton]="_buttonType"
@@ -24,23 +24,24 @@
     <div class="nx-stepper__input-wrapper">
         <div class="nx-stepper__inner-wrapper">
             <ng-content select="nx-number-stepper-prefix"></ng-content>
-
             <input
                 type="text"
                 inputmode="decimal"
                 [nxAutoResize]="resize"
-                [attr.aria-describedby]="ariaDescribedBy"
-                [attr.aria-label]="inputAriaLabel"
                 [id]="inputId"
                 [ngClass]="inputClassNames"
                 (input)="onInputChange($event)"
                 (blur)="onTouchedCallback()"
-                (keydown.arrowup)="incrementOnKey($event)"
-                (keydown.arrowdown)="decrementOnKey($event)"
                 #nativeInput
                 spellcheck="false"
                 [disabled]="disabled"
                 [readonly]="readonlyInput"
+                [attr.aria-invalid]="errorMessages().length > 0 || null"
+                [attr.aria-describedby]="ariaDescribedByComputed()"
+                [attr.aria-label]="inputAriaLabel()"
+                [attr.aria-labelledby]="ariaLabelledByComputed()"
+                (keydown.arrowup)="incrementOnKey($event)"
+                (keydown.arrowdown)="decrementOnKey($event)"
             />
 
             <ng-content select="nx-number-stepper-suffix"></ng-content>
@@ -59,3 +60,5 @@
         <nx-icon name="plus" size="s" aria-hidden="true"></nx-icon>
     </button>
 </div>
+
+<ng-content select="nx-error"></ng-content>

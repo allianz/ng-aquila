@@ -544,7 +544,9 @@ describe('NxNumberStepperComponent', () => {
     describe('programmatic change', () => {
         it('should update on label change', () => {
             createTestComponent(BasicStepper);
-            testInstance.stepperInstance.label = 'Programmatic label';
+
+            const basicStepperInstance = testInstance as BasicStepper;
+            basicStepperInstance.label = 'Programmatic label';
             fixture.detectChanges();
             expect(label.textContent!.trim()).toBe('Programmatic label');
         });
@@ -686,11 +688,13 @@ describe('NxNumberStepperComponent', () => {
 });
 
 @Component({
-    template: `<nx-number-stepper label="Test"></nx-number-stepper>`,
+    template: `<nx-number-stepper [label]="label"></nx-number-stepper>`,
     standalone: true,
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
-class BasicStepper extends NumberStepperTest {}
+class BasicStepper extends NumberStepperTest {
+    label = 'Test';
+}
 
 @Component({
     template: `<nx-number-stepper [(value)]="value"></nx-number-stepper>`,

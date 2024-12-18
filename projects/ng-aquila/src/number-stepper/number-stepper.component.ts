@@ -5,18 +5,24 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    computed,
+    contentChildren,
+    effect,
     ElementRef,
     EventEmitter,
     forwardRef,
     Inject,
     Input,
+    input,
     LOCALE_ID,
     OnDestroy,
     Output,
     Renderer2,
     ViewChild,
+    viewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { MappedStyles } from '@aposin/ng-aquila/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
@@ -80,16 +86,47 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     inputClassNames: string = mapClassNames('regular', INPUT_CLASSES);
 
     /** @docs-private */
-    inputId = `nx-number-stepper-${nextUniqueId++}`;
+    private readonly _componentId = nextUniqueId++;
+    /** @docs-private */
+    readonly inputId = `nx-number-stepper-${this._componentId}`;
+
+    /** @docs-private */
+    readonly labelId = `nx-number-stepper-label-${this._componentId}`;
+
+    projectedLabel = viewChild(HTMLLabelElement);
 
     /** @docs-private */
     inputWidth!: number;
 
-    /** @docs-private */
-    ariaDescribedBy: string | null = null;
+    ariaDescribedBy = input<string | null>(null);
+
+    ariaDescribedByComputed = computed<string | null>(() => {
+        // This is a workaround to not cause a breaking change for projected labels that are not wrapped in a label element.
+        // if there is a projected label without a html label, we don't want to add the label id to the described by
+        // should be removed with the next major version
+        const hasProjectedLabelWithoutHtmlLabel = this.projectedLabelWrapper() && !this.projectedLabel();
+
+        const hasDescribedBy = !!this.ariaDescribedBy() || this.errorMessages().length > 0;
+        if (!hasDescribedBy && !hasProjectedLabelWithoutHtmlLabel) {
+            return null;
+        }
+
+        const describedByIds = [...this.errorMessages().map(item => item.id), this.ariaDescribedBy()];
+
+        // Still the workaround for the projected label without html label
+        // should be removed with the next major version
+        if (hasProjectedLabelWithoutHtmlLabel) {
+            describedByIds.push(this.labelId);
+        }
+
+        return describedByIds.join(' ');
+    });
 
     /** @docs-private */
-    @ViewChild('customLabel') ngContentWrapper!: ElementRef;
+    projectedLabelWrapper = viewChild<ElementRef>('customLabel');
+    projectedLabelElement = computed(() => this.projectedLabelWrapper()?.nativeElement.querySelector('label'));
+
+    errorMessages = contentChildren(NxErrorComponent);
 
     /** @docs-private */
     @ViewChild(NxAutoResizeDirective, { static: true }) autoResize!: NxAutoResizeDirective;
@@ -110,17 +147,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     }
     private _resize = false;
 
-    /** Defines the the label shown above the stepper input. */
-    @Input() set label(value: string) {
-        if (this._label !== value) {
-            this._label = value;
-            this._cdr.markForCheck();
-        }
-    }
-    get label(): string {
-        return this._label;
-    }
-    private _label!: string;
+    label = input<string | null>(null);
 
     /** Sets the aria-label for the increment button. */
     @Input() set incrementAriaLabel(value: string) {
@@ -141,13 +168,13 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     private _decrementAriaLabel = '';
 
     /** Sets the aria-label for the input of the number stepper. */
-    @Input() set inputAriaLabel(value: string) {
-        this._inputAriaLabel = value;
-    }
-    get inputAriaLabel(): string {
-        return this._inputAriaLabel;
-    }
-    private _inputAriaLabel = '';
+    inputAriaLabel = input<string | null>(null);
+
+    ariaLabelledByComputed = computed(() => {
+        const hasLabelValue = !!this.label();
+        const hasProjectedLabel = this.projectedLabelWrapper()?.nativeElement?.children?.length > 0;
+        return hasLabelValue || hasProjectedLabel ? this.labelId : null;
+    });
 
     /** Sets the step size. Default: 1 */
     @Input() set step(value: NumberInput) {
@@ -257,12 +284,15 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => this._cdr.markForCheck());
 
         this.decimalSeperator = this.getDecimalSeparator(this.localeId);
+
+        effect(() => {
+            if (this.projectedLabelElement()) {
+                this.projectedLabelElement()!.setAttribute('for', this.inputId);
+            }
+        });
     }
 
     ngAfterViewInit(): void {
-        if (this.ngContentWrapper) {
-            this.ariaDescribedBy = this.ngContentWrapper.nativeElement.children.length > 0 ? `label-for-${this.inputId}` : '';
-        }
         this.setInputValue(this._value);
     }
 
@@ -387,6 +417,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         } else {
             newValue = this.enforceLimits(this._value || 0);
         }
+
         this.value = newValue;
         this.setInputValue(this.value);
         this.valueChange.emit(this._value!);
@@ -421,6 +452,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         } else {
             newValue = this.enforceLimits(this._value || 0);
         }
+
         this.value = newValue;
         this.setInputValue(this.value);
         this.valueChange.emit(this._value!);
