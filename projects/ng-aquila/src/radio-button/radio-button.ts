@@ -523,9 +523,12 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     }
 
     /** @docs-private */
-    touch() {
-        this.onTouchedCallback();
-
+    touch(event: FocusEvent) {
+        const target = event.relatedTarget as Element;
+        const targetGroupId = target?.parentElement?.parentElement?.id;
+        if (targetGroupId === this.radioGroup?.id) {
+            return;
+        }
         if (this.radioGroup) {
             this.radioGroup.touch();
         }

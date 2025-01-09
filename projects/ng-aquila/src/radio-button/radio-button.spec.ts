@@ -310,6 +310,25 @@ describe('NxRadioComponent', () => {
             radioInstances.toArray()[0].focus();
             expect(fixture.nativeElement.querySelector('.nx-radio__input')).toEqual(document.activeElement);
         });
+
+        it('should not trigger touch when moving focus within radio group', () => {
+            createTestComponent(ReactiveRadio);
+            const radioGroup = testInstance.radioGroup;
+            const firstRadio = radioInstances.toArray()[0];
+            const secondRadio = radioInstances.toArray()[1];
+
+            firstRadio.focus();
+            fixture.detectChanges();
+            expect(testInstance.testForm.touched).toBeFalse();
+
+            secondRadio.focus();
+            fixture.detectChanges();
+            expect(testInstance.testForm.touched).toBeFalse();
+
+            secondRadio._nativeInput.nativeElement.blur();
+            fixture.detectChanges();
+            expect(testInstance.testForm.touched).toBeTrue();
+        });
     });
 
     describe('in radio group with ngModel', () => {

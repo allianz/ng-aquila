@@ -4,7 +4,7 @@
     [id]="inputId"
     [attr.name]="name"
     [disabled]="disabled"
-    (blur)="touch()"
+    (blur)="touch($event)"
     (change)="_onInputChange($event)"
     (click)="_onInputClick($event)"
     [checked]="checked"
