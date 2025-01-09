@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { AfterViewChecked, Directive, ElementRef, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { fromEvent, merge, Subject } from 'rxjs';
 import { distinctUntilChanged, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
@@ -12,7 +12,7 @@ import { NxHeaderCellDirective } from '../header-cell.directive';
     },
     standalone: true,
 })
-export class NxHeaderResizeDirective implements OnInit, OnDestroy, AfterViewChecked {
+export class NxHeaderResizeDirective implements OnInit, OnDestroy {
     private mousedown = fromEvent(this.elementRef.nativeElement, 'mousedown');
     private touchstart = fromEvent(this.elementRef.nativeElement, 'touchstart');
 
@@ -62,9 +62,5 @@ export class NxHeaderResizeDirective implements OnInit, OnDestroy, AfterViewChec
     ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
-    }
-
-    ngAfterViewChecked() {
-        this.renderer.setStyle(this.header.elementRef.nativeElement, 'position', 'relative');
     }
 }

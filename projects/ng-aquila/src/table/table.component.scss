@@ -32,6 +32,7 @@ $sticky-shadow-size: nx-spacer(3xs);
     text-align: left;
     white-space: nowrap;
     vertical-align: top;
+    position: relative;
 
     &:first-child {
         padding-left: $horizontal-padding-edges;
