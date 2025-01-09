@@ -486,6 +486,10 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     _close() {
+        if (!this._isOpen) {
+            return;
+        }
+
         this._isOpen = false;
         this.openedChange.emit(false);
         this._updateTooltipText();

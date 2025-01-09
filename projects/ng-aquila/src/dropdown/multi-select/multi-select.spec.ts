@@ -204,11 +204,13 @@ describe('NxMultiSelectComponent', () => {
 
             describe('and clicking the backdrop', () => {
                 beforeEach(async () => {
+                    spyOn(multiSelectInstance.openedChange, 'emit');
                     await multiSelectHarness.clickBackdrop();
                 });
 
                 it('closes the panel', async () => {
                     expect(await multiSelectHarness.isOpen()).toBeFalse();
+                    expect(multiSelectInstance.openedChange.emit).toHaveBeenCalledOnceWith(false);
                 });
             });
         });
@@ -600,21 +602,25 @@ describe('NxMultiSelectComponent', () => {
 
                 describe('and closing using ESC', () => {
                     beforeEach(async () => {
+                        spyOn(multiSelectInstance.openedChange, 'emit');
                         await multiSelectHarness.closeWithEsc();
                     });
 
                     it('is closed', async () => {
                         expect(await multiSelectHarness.isOpen()).toBeFalse();
+                        expect(multiSelectInstance.openedChange.emit).toHaveBeenCalledOnceWith(false);
                     });
                 });
 
                 describe('and tabing out', () => {
                     beforeEach(async () => {
+                        spyOn(multiSelectInstance.openedChange, 'emit');
                         await multiSelectHarness.pressKey('Tab', TAB);
                     });
 
                     it('is closed', async () => {
                         expect(await multiSelectHarness.isOpen()).toBeFalse();
+                        expect(multiSelectInstance.openedChange.emit).toHaveBeenCalledOnceWith(false);
                     });
                 });
             });
