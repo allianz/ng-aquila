@@ -60,7 +60,7 @@
 
 :host(:not(.is-expert)) {
     .content {
-        overflow: hidden;
+        display: flow-root;
         padding-left: nx-spacer(s);
 
         :host-context([dir='rtl']) & {
