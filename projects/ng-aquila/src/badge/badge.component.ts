@@ -1,11 +1,11 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, viewChild } from '@angular/core';
 /** Possible badge types. */
 export type NxBadgeType = 'active' | 'positive' | 'critical' | 'negative' | '';
 
 @Component({
     selector: 'nx-badge',
-    template: '<ng-content></ng-content>',
+    template: '<span #content><ng-content></ng-content></span>',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./badge.component.scss'],
     host: {
@@ -14,6 +14,7 @@ export type NxBadgeType = 'active' | 'positive' | 'critical' | 'negative' | '';
         '[class.nx-badge--critical]': 'type === "critical"',
         '[class.nx-badge--negative]': 'type === "negative"',
         '[class.nx-badge--vibrant]': 'vibrant',
+        '[class.single-letter]': 'this.content()?.nativeElement?.innerText?.length === 1',
     },
     standalone: true,
 })
@@ -45,4 +46,6 @@ export class NxBadgeComponent {
     private _vibrant = false;
 
     constructor(private readonly _cdr: ChangeDetectorRef) {}
+
+    content = viewChild<ElementRef>('content');
 }

@@ -10,6 +10,12 @@
     @media screen and (forced-colors: active) {
         border: nx-border-size(xs) solid CanvasText;
     }
+
+    &.single-letter {
+        padding: 0;
+        text-align: center;
+        min-width: v(badge-line-height);
+    }
 }
 
 @mixin badge-variant($variation: '') {

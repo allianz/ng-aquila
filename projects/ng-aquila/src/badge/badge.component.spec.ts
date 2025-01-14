@@ -29,7 +29,7 @@ describe('NxBadgeComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxBadgeModule, DefaultBadgeComponent, BasicBadgeComponent, VibrantBadgeComponent],
+            imports: [NxBadgeModule, DefaultBadgeComponent, BasicBadgeComponent, VibrantBadgeComponent, SingleLetterComponent],
         }).compileComponents();
     }));
 
@@ -49,6 +49,11 @@ describe('NxBadgeComponent', () => {
         it('should provide vibrant styling', () => {
             createTestComponent(VibrantBadgeComponent);
             expect(badgeNativeElement).toHaveClass('nx-badge--vibrant');
+        });
+
+        it('should add single letter className', () => {
+            createTestComponent(SingleLetterComponent);
+            expect(badgeNativeElement).toHaveClass('single-letter');
         });
     });
 
@@ -82,6 +87,13 @@ class BasicBadgeComponent extends BadgeTest {}
     imports: [NxBadgeModule],
 })
 class DefaultBadgeComponent extends BadgeTest {}
+
+@Component({
+    template: `<nx-badge [type]="type">A</nx-badge>`,
+    standalone: true,
+    imports: [NxBadgeModule],
+})
+class SingleLetterComponent extends BadgeTest {}
 
 @Component({
     template: '<nx-badge vibrant></nx-badge>',
