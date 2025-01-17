@@ -34,7 +34,6 @@ export const myCustomConfig: NxMessageToastConfig = {
     selector: 'file-uploader-separate-requests-example',
     templateUrl: './file-uploader-separate-requests-example.html',
     styleUrls: ['./file-uploader-separate-requests-example.css'],
-    standalone: true,
     imports: [
         NxFileUploaderComponent,
         NxLabelComponent,

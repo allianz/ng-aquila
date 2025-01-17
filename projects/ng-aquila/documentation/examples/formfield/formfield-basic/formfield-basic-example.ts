@@ -14,7 +14,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'formfield-basic-example',
     templateUrl: './formfield-basic-example.html',
     styleUrls: ['./formfield-basic-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

@@ -384,7 +384,6 @@ class AutocompleteComponent {
         />
         <nx-autocomplete #auto1></nx-autocomplete>
     `,
-    standalone: true,
     imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class BasicAutocompleteComponent extends AutocompleteComponent {}
@@ -401,7 +400,6 @@ class BasicAutocompleteComponent extends AutocompleteComponent {}
         />
         <nx-autocomplete #auto1></nx-autocomplete>
     `,
-    standalone: true,
     imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class ScrollStrategyOverrideComponent extends AutocompleteComponent {
@@ -421,7 +419,6 @@ class ScrollStrategyOverrideComponent extends AutocompleteComponent {
             }
         </nx-autocomplete>
     `,
-    standalone: true,
     imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule, LowerCasePipe],
 })
 class CustomAutocompleteComponent extends AutocompleteComponent {}
@@ -438,7 +435,6 @@ class CustomAutocompleteComponent extends AutocompleteComponent {}
         </nx-autocomplete>
         {{ inputVal | json }}
     `,
-    standalone: true,
     imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule, JsonPipe, LowerCasePipe],
 })
 class ComplexDataAutocompleteComponent extends AutocompleteComponent {
@@ -452,7 +448,6 @@ class ComplexDataAutocompleteComponent extends AutocompleteComponent {
             <nx-autocomplete #auto1></nx-autocomplete>
         </nx-formfield>
     `,
-    standalone: true,
     imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class NgModelBindingAutocompleteComponent extends AutocompleteComponent {
@@ -474,7 +469,6 @@ class NgModelBindingAutocompleteComponent extends AutocompleteComponent {
             </nx-formfield>
         </form>
     `,
-    standalone: true,
     imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveAutocompleteComponent extends AutocompleteComponent {
@@ -502,7 +496,6 @@ class ReactiveAutocompleteComponent extends AutocompleteComponent {
             <nx-modal #basicModal id="basicModal" [modalBody]="basicModalBody"> </nx-modal>
         }
     `,
-    standalone: true,
     imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule, NxModalModule],
 })
 class AutocompleteInModalComponent extends AutocompleteComponent {
@@ -523,7 +516,6 @@ class AutocompleteInModalComponent extends AutocompleteComponent {
             <nx-autocomplete #auto1></nx-autocomplete>
         </div>
     `,
-    standalone: true,
     imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class AutocompleteComponentWithDirection extends AutocompleteComponent {
@@ -541,7 +533,6 @@ class AutocompleteComponentWithDirection extends AutocompleteComponent {
         </nx-autocomplete>
     `,
     encapsulation: ViewEncapsulation.ShadowDom,
-    standalone: true,
     imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class ShadowAutoCompleteComponent extends AutocompleteComponent {

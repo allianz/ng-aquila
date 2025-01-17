@@ -9,7 +9,6 @@ import { NxLinkComponent } from '@aposin/ng-aquila/link';
     selector: 'link-default-example',
     templateUrl: './link-default-example.html',
     styleUrls: ['./link-default-example.css'],
-    standalone: true,
     imports: [NxLinkComponent, RouterLink],
 })
 export class LinkDefaultExampleComponent {}

@@ -59,7 +59,6 @@ describe('NxProgressStepperDirective', () => {
             }
         </div>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule, FormsModule],
 })
 class ProgressStepperBasicComponent extends ProgressStepperTest {

@@ -19,7 +19,6 @@ import { NxLinkComponent } from '@aposin/ng-aquila/link';
     selector: 'header-two-rows-example',
     templateUrl: './header-two-rows-example.html',
     styleUrls: ['./header-two-rows-example.css'],
-    standalone: true,
     imports: [
         NxHeaderComponent,
         NxHeaderRowDirective,

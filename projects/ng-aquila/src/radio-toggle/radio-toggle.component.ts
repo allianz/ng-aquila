@@ -43,7 +43,6 @@ export const RESET_VALUES = [null, undefined, ''];
     templateUrl: 'radio-toggle.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['radio-toggle.component.scss'],
-    standalone: true,
     imports: [NgClass],
     providers: [
         {

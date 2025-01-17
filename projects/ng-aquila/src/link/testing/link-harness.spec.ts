@@ -54,7 +54,6 @@ describe('NxLinkHarness', () => {
         <nx-link><a href="https://localhost/path">Bar</a></nx-link>
     `,
     imports: [NxLinkModule],
-    standalone: true,
 })
 class LinkHarnessTest {
     onClick() {

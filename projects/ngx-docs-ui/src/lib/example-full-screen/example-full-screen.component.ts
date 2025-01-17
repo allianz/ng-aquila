@@ -11,7 +11,6 @@ type ExampleBackgroundType = '' | 'blank';
 @Component({
     templateUrl: './example-full-screen.component.html',
     styleUrls: ['./example-full-screen.component.scss'],
-    standalone: true,
     imports: [NxButtonModule, LazyExampleOutletComponent],
 })
 export class ExampleFullScreenComponent {

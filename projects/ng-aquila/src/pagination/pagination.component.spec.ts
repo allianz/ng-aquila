@@ -489,7 +489,6 @@ describe('NxPaginationComponent', () => {
         >
         </nx-pagination>
     `,
-    standalone: true,
     imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPagination extends PaginationTest {
@@ -509,7 +508,6 @@ class AdvancedPagination extends PaginationTest {
             (goPage)="goToPage($event)"
         ></nx-pagination>
     `,
-    standalone: true,
     imports: [NxPaginationModule, BidiModule],
 })
 class SimplePagination extends PaginationTest {
@@ -530,7 +528,6 @@ class SimplePagination extends PaginationTest {
         >
         </nx-pagination>
     `,
-    standalone: true,
     imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPaginationLess10 extends PaginationTest {
@@ -552,7 +549,6 @@ class AdvancedPaginationLess10 extends PaginationTest {
         >
         </nx-pagination>
     `,
-    standalone: true,
     imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPaginationMore10 extends PaginationTest {
@@ -574,7 +570,6 @@ class AdvancedPaginationMore10 extends PaginationTest {
         >
         </nx-pagination>
     `,
-    standalone: true,
     imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPaginationBeginat10 extends PaginationTest {
@@ -595,7 +590,6 @@ class AdvancedPaginationBeginat10 extends PaginationTest {
             (goPage)="goToPage($event)"
         ></nx-pagination>
     `,
-    standalone: true,
     imports: [NxPaginationModule, BidiModule],
 })
 class SimplePaginationBeginat10 extends PaginationTest {
@@ -609,7 +603,6 @@ class SimplePaginationBeginat10 extends PaginationTest {
         <nx-pagination [count]="count" [page]="2" [perPage]="perPage" (goPrev)="prevPage()" (goNext)="nextPage()" (goPage)="goToPage($event)"></nx-pagination>
     `,
     providers: [{ provide: NX_PAGINATION_TEXTS, useValue: customTexts }],
-    standalone: true,
     imports: [NxPaginationModule, BidiModule],
 })
 class LocalizationToken extends PaginationTest {
@@ -630,7 +623,6 @@ class LocalizationToken extends PaginationTest {
             ></nx-pagination>
         </div>
     `,
-    standalone: true,
     imports: [NxPaginationModule, BidiModule],
 })
 class SimplePaginationWithDirection extends PaginationTest {
@@ -654,7 +646,6 @@ class SimplePaginationWithDirection extends PaginationTest {
             </nx-pagination>
         </div>
     `,
-    standalone: true,
     imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPaginationWithDirection extends PaginationTest {
@@ -675,7 +666,6 @@ class AdvancedPaginationWithDirection extends PaginationTest {
             (goPage)="goToPage($event)"
         ></nx-pagination>
     `,
-    standalone: true,
     imports: [NxPaginationModule, BidiModule],
 })
 class SliderPagination extends PaginationTest {
@@ -688,7 +678,6 @@ class SliderPagination extends PaginationTest {
         <nx-pagination [count]="slides" [page]="activeSlide" type="slider" (goPrev)="prevPage()" (goNext)="nextPage()" (goPage)="goToPage($event)">
         </nx-pagination>
     `,
-    standalone: true,
     imports: [NxPaginationModule, BidiModule],
 })
 class SliderPaginationBeginat6 extends PaginationTest {
@@ -707,7 +696,6 @@ class SliderPaginationBeginat6 extends PaginationTest {
             (goPage)="goToPage($event)"
         ></nx-pagination>
     `,
-    standalone: true,
     imports: [NxPaginationModule, BidiModule],
 })
 class FocusCurrentPageButtonPagination extends PaginationTest {

@@ -11,7 +11,6 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
         </button>
     `,
     styleUrls: ['file-uploader-delete.component.scss'],
-    standalone: true,
     imports: [NxButtonModule, NxIconModule],
 })
 export class NxFileUploaderItemDelete {

@@ -20,7 +20,6 @@ import { NxPageSearchComponent } from '@aposin/ng-aquila/page-search';
     selector: 'page-search-hidden-example',
     templateUrl: './page-search-hidden-example.html',
     styleUrls: ['./page-search-hidden-example.css'],
-    standalone: true,
     imports: [
         NxPageSearchComponent,
         NxLayoutComponent,

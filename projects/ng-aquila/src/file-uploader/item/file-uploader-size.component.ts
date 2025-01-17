@@ -12,7 +12,6 @@ import { Component, Input } from '@angular/core';
             <span>{{ size / 1024 / 1024 | number: '.2' }} MB</span>
         }
     `,
-    standalone: true,
     imports: [DecimalPipe],
 })
 export class NxFileUploaderItemSize {

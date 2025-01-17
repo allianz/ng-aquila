@@ -19,7 +19,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     selector: 'dynamic-table-column-options-example',
     templateUrl: './dynamic-table-column-options-example.html',
     styleUrls: ['./dynamic-table-column-options-example.css'],
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxCheckboxGroupComponent,

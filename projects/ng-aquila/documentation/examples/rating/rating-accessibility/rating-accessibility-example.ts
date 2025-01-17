@@ -8,7 +8,6 @@ import { NxRatingComponent } from '@aposin/ng-aquila/rating';
     selector: 'rating-accessibility-example',
     templateUrl: './rating-accessibility-example.html',
     styleUrls: ['./rating-accessibility-example.css'],
-    standalone: true,
     imports: [NxRatingComponent],
 })
 export class RatingAccessibilityExampleComponent {}

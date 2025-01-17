@@ -478,7 +478,6 @@ describe('NxIbanMaskDirective', () => {
 
 @Component({
     template: `<input nxMask nxIbanMask />`,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class BasicIbanMaskComponent extends IbanMaskTest {}
@@ -489,7 +488,6 @@ class BasicIbanMaskComponent extends IbanMaskTest {}
             <input nxMask nxIbanMask formControlName="maskInput" [validateMask]="validateMask" />
         </form>
     `,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class FormIbanMaskComponent extends IbanMaskTest {}
@@ -500,7 +498,6 @@ class FormIbanMaskComponent extends IbanMaskTest {}
             <input nxMask nxIbanMask formControlName="maskInput" [validateMask]="validateMask" />
         </form>
     `,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class FormWithInitalIbanMaskComponent extends IbanMaskTest {
@@ -515,7 +512,6 @@ class FormWithInitalIbanMaskComponent extends IbanMaskTest {
             <input nxMask nxIbanMask formControlName="maskInput" [validateMask]="validateMask" />
         </form>
     `,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class FormIbanOnBlurMaskComponent extends IbanMaskTest {

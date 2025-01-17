@@ -114,7 +114,6 @@ async function nextFrame() {
             }
         `,
     ],
-    standalone: true,
     imports: [NxSwipebarModule],
 })
 class BasicSwipebar extends SwipebarTest {}

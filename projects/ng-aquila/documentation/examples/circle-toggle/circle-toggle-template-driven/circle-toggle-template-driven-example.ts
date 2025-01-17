@@ -13,7 +13,6 @@ import {
     selector: 'circle-toggle-template-driven-example',
     templateUrl: './circle-toggle-template-driven-example.html',
     styleUrls: ['./circle-toggle-template-driven-example.css'],
-    standalone: true,
     imports: [
         NxCircleToggleGroupComponent,
         FormsModule,

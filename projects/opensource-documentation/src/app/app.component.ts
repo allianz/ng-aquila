@@ -5,7 +5,6 @@ import { NxvNavigationService } from '@aposin/ngx-docs-ui';
 @Component({
     selector: 'doc-root',
     template: `<router-outlet></router-outlet>`,
-    standalone: true,
     imports: [RouterOutlet],
 })
 export class AppComponent implements OnInit {

@@ -8,7 +8,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     selector: 'icon-outline-example',
     templateUrl: './icon-outline-example.html',
     styleUrls: ['./icon-outline-example.css'],
-    standalone: true,
     imports: [NxIconComponent],
 })
 export class IconOutlineExampleComponent {}

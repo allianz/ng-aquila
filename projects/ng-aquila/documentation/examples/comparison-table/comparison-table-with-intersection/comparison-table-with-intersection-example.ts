@@ -32,7 +32,6 @@ import { takeUntil } from 'rxjs/operators';
     selector: 'comparison-table-with-intersection-example',
     templateUrl: './comparison-table-with-intersection-example.html',
     styleUrls: ['./comparison-table-with-intersection-example.css'],
-    standalone: true,
     imports: [
         NxExpansionPanelComponent,
         NxExpansionPanelHeaderComponent,

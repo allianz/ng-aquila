@@ -69,7 +69,6 @@ let nextId = 0;
         '[class.has-error]': 'hasError()',
         '[class.is-readonly]': 'readonly',
     },
-    standalone: true,
     imports: [NxIconToggleButtonComponent, NxMobileToggleButtonComponent],
 })
 export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, AfterViewInit, ControlValueAccessor, DoCheck, NxAbstractControl {

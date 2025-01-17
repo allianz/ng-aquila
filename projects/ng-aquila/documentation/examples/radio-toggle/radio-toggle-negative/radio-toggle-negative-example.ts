@@ -11,7 +11,6 @@ import {
     selector: 'radio-toggle-negative-example',
     templateUrl: './radio-toggle-negative-example.html',
     styleUrls: ['./radio-toggle-negative-example.css'],
-    standalone: true,
     imports: [NxRadioToggleComponent, NxRadioToggleButtonComponent],
 })
 export class RadioToggleNegativeExampleComponent {}

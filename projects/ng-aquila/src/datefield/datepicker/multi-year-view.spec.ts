@@ -220,7 +220,6 @@ describe('NxMultiYearView', () => {
 
 @Component({
     template: `<nx-multi-year-view [(activeDate)]="date" [(selected)]="selected" (yearSelected)="selectedYear = $event"></nx-multi-year-view>`,
-    standalone: true,
     imports: [NxNativeDateModule, NxMultiYearViewComponent],
 })
 class StandardMultiYearView {
@@ -233,7 +232,6 @@ class StandardMultiYearView {
 
 @Component({
     template: `<nx-multi-year-view [(activeDate)]="activeDate" [dateFilter]="dateFilter"></nx-multi-year-view>`,
-    standalone: true,
     imports: [NxNativeDateModule, NxMultiYearViewComponent],
 })
 class MultiYearViewWithDateFilter {

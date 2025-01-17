@@ -17,7 +17,6 @@ import { NxSwitcherComponent } from '@aposin/ng-aquila/switcher';
     selector: 'accordion-flush-example',
     templateUrl: './accordion-flush-example.html',
     styleUrls: ['./accordion-flush-example.css'],
-    standalone: true,
     imports: [
         NxAccordionDirective,
         NxExpansionPanelComponent,

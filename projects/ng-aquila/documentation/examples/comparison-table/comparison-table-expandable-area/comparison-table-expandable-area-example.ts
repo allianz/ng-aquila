@@ -15,7 +15,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     selector: 'comparison-table-expandable-area-example',
     templateUrl: './comparison-table-expandable-area-example.html',
     styleUrls: ['./comparison-table-expandable-area-example.css'],
-    standalone: true,
     imports: [
         NxSwipebarComponent,
         NxComparisonTableComponent,

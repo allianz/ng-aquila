@@ -123,7 +123,6 @@ describe('ToggleSectionHeaderComponent', () => {
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class BasicComponent extends ToggleSectionTest {}

@@ -13,7 +13,6 @@ import { AfterViewInit, booleanAttribute, ChangeDetectionStrategy, ChangeDetecto
         '[class.is-clickable]': 'clickable',
         '[class.is-disabled]': 'disabled',
     },
-    standalone: true,
     imports: [],
 })
 export class NxCardComponent implements OnDestroy, AfterViewInit {

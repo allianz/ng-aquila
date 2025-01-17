@@ -317,7 +317,6 @@ describe('NxYearView', () => {
 
 @Component({
     template: `<nx-year-view [(activeDate)]="date" [(selected)]="selected" (monthSelected)="selectedMonth = $event"></nx-year-view>`,
-    standalone: true,
     imports: [NxNativeDateModule, NxYearViewComponent],
 })
 class StandardYearView {
@@ -330,7 +329,6 @@ class StandardYearView {
 
 @Component({
     template: `<nx-year-view [(activeDate)]="activeDate" [dateFilter]="dateFilter"></nx-year-view>`,
-    standalone: true,
     imports: [NxNativeDateModule, NxYearViewComponent],
 })
 class YearViewWithDateFilter {

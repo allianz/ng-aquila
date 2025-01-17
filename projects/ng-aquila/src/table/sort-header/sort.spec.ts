@@ -314,7 +314,6 @@ describe('NxSort', () => {
             </thead>
         </table>
     `,
-    standalone: true,
     imports: [NxTableModule],
 })
 class BasicSortTableComponent extends SortHeaderTest {}
@@ -330,7 +329,6 @@ class BasicSortTableComponent extends SortHeaderTest {}
             </thead>
         </table>
     `,
-    standalone: true,
     imports: [NxTableModule],
 })
 class ConfigurableSortTableComponent extends SortHeaderTest {}

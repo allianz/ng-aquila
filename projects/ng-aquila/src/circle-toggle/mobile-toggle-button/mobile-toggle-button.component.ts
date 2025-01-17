@@ -15,7 +15,6 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
         '[class.is-last]': 'isLast',
         '[class.is-flipped]': 'checked',
     },
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxMobileToggleButtonComponent {

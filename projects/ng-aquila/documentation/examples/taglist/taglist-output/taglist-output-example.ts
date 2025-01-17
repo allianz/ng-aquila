@@ -8,7 +8,6 @@ import { NxTaglistComponent } from '@aposin/ng-aquila/taglist';
     selector: 'taglist-output-example',
     templateUrl: './taglist-output-example.html',
     styleUrls: ['./taglist-output-example.css'],
-    standalone: true,
     imports: [NxTaglistComponent],
 })
 export class TaglistOutputExampleComponent {

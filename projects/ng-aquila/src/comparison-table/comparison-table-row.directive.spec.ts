@@ -101,7 +101,6 @@ describe('NxComparisonTableRowDirective', () => {
 
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class BasicComponent extends RowTest {
@@ -135,7 +134,6 @@ class BasicComponent extends RowTest {
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class DynamicTypeComponent extends RowTest {}
@@ -153,7 +151,6 @@ class DynamicTypeComponent extends RowTest {}
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class NonStickyHeaderComponent extends RowTest {

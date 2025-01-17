@@ -253,7 +253,6 @@ describe('NxSignalButtonComponent', () => {
 
 @Component({
     template: `<nx-signal-button [context]="context">This is the content of the success popover</nx-signal-button>`,
-    standalone: true,
     imports: [OverlayModule, NxSignalButtonModule, NxFormfieldModule, NxInputModule],
 })
 class SignalButtonComponent extends SignalButtonTestDirective {

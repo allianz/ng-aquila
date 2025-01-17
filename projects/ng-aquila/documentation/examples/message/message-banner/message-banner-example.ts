@@ -9,7 +9,6 @@ import { NxMessageBannerComponent } from '@aposin/ng-aquila/message';
     selector: 'message-banner-example',
     templateUrl: './message-banner-example.html',
     styleUrls: ['./message-banner-example.css'],
-    standalone: true,
     imports: [NxMessageBannerComponent, NxButtonComponent],
 })
 export class MessageBannerExampleComponent {

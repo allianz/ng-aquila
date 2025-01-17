@@ -17,7 +17,6 @@ import {
     selector: 'dropdown-standard-example',
     templateUrl: './dropdown-standard-example.html',
     styleUrls: ['./dropdown-standard-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

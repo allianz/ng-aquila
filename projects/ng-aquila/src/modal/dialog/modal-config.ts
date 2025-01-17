@@ -116,7 +116,10 @@ export class NxModalConfig<D = any> {
      */
     closeOnNavigation?: boolean = true;
 
-    /** Alternate `ComponentFactoryResolver` to use when resolving the associated component. */
+    /**
+     * Alternate `ComponentFactoryResolver` to use when resolving the associated component.
+     * @deprecated No longer used.
+     */
     componentFactoryResolver?: ComponentFactoryResolver;
 
     /**

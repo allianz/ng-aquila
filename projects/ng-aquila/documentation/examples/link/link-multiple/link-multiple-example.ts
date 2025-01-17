@@ -10,7 +10,6 @@ import { NxLinkComponent } from '@aposin/ng-aquila/link';
     selector: 'link-multiple-example',
     templateUrl: './link-multiple-example.html',
     styleUrls: ['./link-multiple-example.css'],
-    standalone: true,
     imports: [NxLinkComponent, RouterLink, NxIconComponent],
 })
 export class LinkMultipleExampleComponent {}

@@ -148,7 +148,6 @@ describe('NxButtonHarness', () => {
         <a nxPlainButton>Plain anchor</a>
         <a nxIconButton></a>
     `,
-    standalone: true,
     imports: [NxButtonModule, NxIconModule],
 })
 class ButtonHarnessTest {

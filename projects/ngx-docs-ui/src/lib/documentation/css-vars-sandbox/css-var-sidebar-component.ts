@@ -13,7 +13,6 @@ import parseColor from 'parse-color';
         '[class.sidebar-hidden]': '!shown',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxButtonModule, NxIconModule, FormsModule, ColorPickerModule],
 })
 export class CssVarSidebarComponent {

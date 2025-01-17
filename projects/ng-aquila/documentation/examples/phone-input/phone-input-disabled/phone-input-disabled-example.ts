@@ -13,7 +13,6 @@ import { NxPhoneInputComponent } from '@aposin/ng-aquila/phone-input';
     templateUrl: 'phone-input-disabled-example.html',
     styleUrls: ['./phone-input-disabled-example.css'],
     selector: 'phone-input-disabled-example',
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxFormfieldLabelDirective,

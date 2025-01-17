@@ -55,7 +55,6 @@ export class NxFooterLinkDirective implements OnDestroy, AfterViewInit {
         class: 'nx-footer',
         role: 'contentinfo',
     },
-    standalone: true,
     imports: [NxFooterCopyrightDirective],
 })
 export class NxFooterComponent {

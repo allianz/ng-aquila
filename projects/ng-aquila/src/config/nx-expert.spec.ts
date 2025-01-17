@@ -177,7 +177,6 @@ describe('NxExpertPreset', () => {
         <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker1></nx-datepicker>
     `,
-    standalone: true,
     imports: [
         NxComparisonTableModule,
         NxDatefieldModule,
@@ -197,7 +196,6 @@ class DatepickerPresetComponent extends PresetTest {}
 
 @Component({
     template: `<nx-error>This is a preset error</nx-error>`,
-    standalone: true,
     imports: [
         NxComparisonTableModule,
         NxDatefieldModule,
@@ -221,7 +219,6 @@ class ErrorPresetComponent extends PresetTest {}
             <input nxInput />
         </nx-formfield>
     `,
-    standalone: true,
     imports: [
         NxComparisonTableModule,
         NxDatefieldModule,
@@ -241,7 +238,6 @@ class FormfieldPresetComponent extends PresetTest {}
 
 @Component({
     template: `<nx-label>I am a preset label</nx-label>`,
-    standalone: true,
     imports: [
         NxComparisonTableModule,
         NxDatefieldModule,
@@ -266,7 +262,6 @@ class LabelPresetComponent extends PresetTest {}
             <nx-tab label="Second tab"> Fill in your second content! </nx-tab>
         </nx-tab-group>
     `,
-    standalone: true,
     imports: [
         NxComparisonTableModule,
         NxDatefieldModule,
@@ -294,7 +289,6 @@ class TabGroupPresetComponent extends PresetTest {}
             }
         </nx-tab-nav-bar>
     `,
-    standalone: true,
     imports: [
         NxComparisonTableModule,
         NxDatefieldModule,
@@ -344,7 +338,6 @@ class TabNavBarPresetComponent extends PresetTest {
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [
         NxComparisonTableModule,
         NxDatefieldModule,
@@ -367,7 +360,6 @@ class ComparisonTablePresetComponent extends PresetTest {
 
 @Component({
     template: `<nx-selectable-card></nx-selectable-card>`,
-    standalone: true,
     imports: [
         NxComparisonTableModule,
         NxDatefieldModule,
@@ -387,7 +379,6 @@ class SelectableCardPresetComponent extends PresetTest {}
 
 @Component({
     template: `<nx-small-stage></nx-small-stage>`,
-    standalone: true,
     imports: [
         NxComparisonTableModule,
         NxDatefieldModule,
@@ -407,7 +398,6 @@ class SmallStagePresetComponent extends PresetTest {}
 
 @Component({
     template: `<nx-circle-toggle-group></nx-circle-toggle-group>`,
-    standalone: true,
     imports: [
         NxComparisonTableModule,
         NxDatefieldModule,
@@ -427,7 +417,6 @@ class CircleToggleGroupPresetComponent extends PresetTest {}
 
 @Component({
     template: `<nx-data-display></nx-data-display>`,
-    standalone: true,
     imports: [
         NxComparisonTableModule,
         NxDatefieldModule,

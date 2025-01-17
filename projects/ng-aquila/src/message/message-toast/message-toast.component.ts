@@ -21,7 +21,6 @@ import { NxMessageToastConfig, NxMessageToastContext, NxMessageToastData } from 
         '(@state.done)': 'onAnimationEnd($event)',
     },
     animations: [messageToastAnimations.toastState],
-    standalone: true,
     imports: [NxMessageComponent, CdkPortalOutlet],
 })
 export class NxMessageToastComponent extends BasePortalOutlet implements OnDestroy {

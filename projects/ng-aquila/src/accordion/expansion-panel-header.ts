@@ -28,7 +28,6 @@ import { NxExpansionPanelComponent } from './expansion-panel';
         '(keydown)': 'keydown($event)',
         '(click)': 'toggle()',
     },
-    standalone: true,
     imports: [NxIconModule, CommonModule],
 })
 export class NxExpansionPanelHeaderComponent implements OnDestroy, AfterViewInit {

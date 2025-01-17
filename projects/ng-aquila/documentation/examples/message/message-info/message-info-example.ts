@@ -8,7 +8,6 @@ import { NxMessageComponent } from '@aposin/ng-aquila/message';
     selector: 'message-info-example',
     templateUrl: './message-info-example.html',
     styleUrls: ['./message-info-example.css'],
-    standalone: true,
     imports: [NxMessageComponent],
 })
 export class MessageInfoExampleComponent {}

@@ -22,7 +22,6 @@ import {
     selector: 'progress-stepper-form-example',
     templateUrl: './progress-stepper-form-example.html',
     styleUrls: ['./progress-stepper-form-example.css'],
-    standalone: true,
     imports: [
         NxMultiStepperComponent,
         NxStepComponent,

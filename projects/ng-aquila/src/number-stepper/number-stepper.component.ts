@@ -73,7 +73,6 @@ let nextUniqueId = 0;
         '[class.is-disabled]': 'disabled',
     },
     providers: [CUSTOM_VALUE_ACCESSOR, CUSTOM_VALIDATOR],
-    standalone: true,
     imports: [NxButtonModule, NxIconModule, NxAutoResizeDirective, NgClass],
 })
 export class NxNumberStepperComponent extends MappedStyles implements AfterViewInit, ControlValueAccessor, Validator, OnDestroy {

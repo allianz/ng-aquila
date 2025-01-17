@@ -48,7 +48,6 @@ type primitive = string | number | boolean;
     selector: 'utils-type-guards-example',
     templateUrl: './utils-type-guards-example.html',
     styleUrls: ['./utils-type-guards-example.css'],
-    standalone: true,
     imports: [
         NxTableComponent,
         NxTableRowComponent,

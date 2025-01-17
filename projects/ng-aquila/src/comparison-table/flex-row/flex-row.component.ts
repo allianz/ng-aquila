@@ -24,7 +24,6 @@ import { NxComparisonTableRowDirective } from '../comparison-table-row.directive
         '[class.is-content-row]': 'row.type === "content"',
         '[class.has-intersection]': 'row.intersectionCell',
     },
-    standalone: true,
     imports: [NgTemplateOutlet],
 })
 export class NxComparisonTableFlexRow implements OnDestroy, AfterViewInit {

@@ -82,7 +82,6 @@ describe('NxCardComponent', () => {
 @Component({
     template: `<nx-card>Hello Text</nx-card>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxCardModule],
 })
 class BasicCard extends CardTest {}
@@ -92,7 +91,6 @@ class BasicCard extends CardTest {}
         ><a href="/" nxCardMainLink>Card title</a>
         <p>Hello Text</p></nx-card
     >`,
-    standalone: true,
     imports: [NxCardModule],
 })
 class ClickableCardTest extends CardTest {}

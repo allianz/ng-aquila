@@ -14,7 +14,6 @@ import { NxSidebarComponent } from './sidebar.component';
         class: 'nx-sidebar__toggle-button',
         '(click)': 'toggle()',
     },
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxSidebarToggleComponent extends NxButtonBase {

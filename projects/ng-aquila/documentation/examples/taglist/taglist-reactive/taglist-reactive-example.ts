@@ -21,7 +21,6 @@ import { NxTaglistComponent } from '@aposin/ng-aquila/taglist';
     selector: 'taglist-reactive-example',
     templateUrl: './taglist-reactive-example.html',
     styleUrls: ['./taglist-reactive-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

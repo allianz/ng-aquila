@@ -11,7 +11,6 @@ import { NxNumberStepperComponent } from '@aposin/ng-aquila/number-stepper';
     selector: 'number-stepper-validation-example',
     templateUrl: './number-stepper-validation-example.html',
     styleUrls: ['./number-stepper-validation-example.css'],
-    standalone: true,
     imports: [
         NxNumberStepperComponent,
         FormsModule,

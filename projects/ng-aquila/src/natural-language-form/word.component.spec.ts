@@ -279,7 +279,6 @@ describe('NxNaturalLanguageFormComponent', () => {
             with copy.
         </nx-natural-language-form>
     `,
-    standalone: true,
     imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormBasicComponent extends NaturalLanguageFormTest {}
@@ -290,7 +289,6 @@ class NaturalLanguageFormBasicComponent extends NaturalLanguageFormTest {}
             <nx-word></nx-word>
         </nx-natural-language-form>
     `,
-    standalone: true,
     imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormErrorComponent extends NaturalLanguageFormTest {}
@@ -303,7 +301,6 @@ class NaturalLanguageFormErrorComponent extends NaturalLanguageFormTest {}
             </nx-word>
         </nx-natural-language-form>
     `,
-    standalone: true,
     imports: [CommonModule, NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
@@ -317,7 +314,6 @@ class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
             </nx-word>
         </nx-natural-language-form>
     `,
-    standalone: true,
     imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule, CommonModule],
 })
 class NaturalLanguageFormWithErrorId extends NaturalLanguageFormTest {}
@@ -331,7 +327,6 @@ class NaturalLanguageFormWithErrorId extends NaturalLanguageFormTest {}
             </nx-word>
         </nx-natural-language-form>
     `,
-    standalone: true,
     imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormSmallComponent extends NaturalLanguageFormTest {}
@@ -353,7 +348,6 @@ class NaturalLanguageFormSmallComponent extends NaturalLanguageFormTest {}
             <button type="submit">submit</button>
         </form>
     `,
-    standalone: true,
     imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class FormWithPreviousFormfieldComponent extends NaturalLanguageFormTest {

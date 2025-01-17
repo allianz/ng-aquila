@@ -621,7 +621,6 @@ const styles = `
         </div>
     `,
     styles: [styles],
-    standalone: true,
     imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class BasicSlider extends SliderTest {}
@@ -634,7 +633,6 @@ class BasicSlider extends SliderTest {}
     `,
     styles: [styles],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class BasicSliderOnPush extends SliderTest {}
@@ -656,7 +654,6 @@ class BasicSliderOnPush extends SliderTest {}
         </div>
     `,
     styles: [styles],
-    standalone: true,
     imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class ConfigurableSlider extends SliderTest {}
@@ -668,7 +665,6 @@ class ConfigurableSlider extends SliderTest {}
         </div>
     `,
     styles: [styles],
-    standalone: true,
     imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class NegativeSlider extends SliderTest {}
@@ -680,7 +676,6 @@ class NegativeSlider extends SliderTest {}
         </div>
     `,
     styles: [styles],
-    standalone: true,
     imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class TruncateTestSlider extends SliderTest {}
@@ -692,7 +687,6 @@ class TruncateTestSlider extends SliderTest {}
         </div>
     `,
     styles: [styles],
-    standalone: true,
     imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class FloatSlider extends SliderTest {}
@@ -704,7 +698,6 @@ class FloatSlider extends SliderTest {}
         </div>
     `,
     styles: [styles],
-    standalone: true,
     imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class DisabledSlider extends SliderTest {}
@@ -716,7 +709,6 @@ class DisabledSlider extends SliderTest {}
         </div>
     `,
     styles: [styles],
-    standalone: true,
     imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class InvertedSlider extends SliderTest {}
@@ -728,7 +720,6 @@ class InvertedSlider extends SliderTest {}
         </div>
     `,
     styles: [styles],
-    standalone: true,
     imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleBindingSlider extends SliderTest {
@@ -742,7 +733,6 @@ class SimpleBindingSlider extends SliderTest {
         </div>
     `,
     styles: [styles],
-    standalone: true,
     imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class NgModelSlider extends SliderTest {
@@ -756,7 +746,6 @@ class NgModelSlider extends SliderTest {
         </div>
     `,
     styles: [styles],
-    standalone: true,
     imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveFormsSlider extends SliderTest {
@@ -774,7 +763,6 @@ class ReactiveFormsSlider extends SliderTest {
         </div>
     `,
     styles: [styles],
-    standalone: true,
     imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class AppendixSlider extends SliderTest {}

@@ -25,7 +25,6 @@ function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
             deps: [Overlay],
         },
     ],
-    standalone: true,
     imports: [NxButtonComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverScrollStrategyProviderExampleComponent {}

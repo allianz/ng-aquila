@@ -35,7 +35,6 @@ export const NX_DOCS_FEATURE_FLAGS = new InjectionToken<NxDocFeatures>('NX_DOCS_
         '[class.hide-nav]': 'hideNavigation',
         '[style.padding-top.px]': 'showAnnouncement ? 120 : null',
     },
-    standalone: true,
     imports: [
         NxHeaderModule,
         NxErrorModule,

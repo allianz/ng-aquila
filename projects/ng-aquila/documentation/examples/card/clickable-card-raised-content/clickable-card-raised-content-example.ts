@@ -11,7 +11,6 @@ import { NxLinkModule } from '@aposin/ng-aquila/link';
     templateUrl: './clickable-card-raised-content-example.html',
     styleUrl: './clickable-card-raised-content-example.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxCardModule, NxLinkModule, NxIconModule],
 })
 export class ClickableCardRaisedContentExampleComponent {}

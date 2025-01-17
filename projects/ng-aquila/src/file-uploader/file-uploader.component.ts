@@ -70,7 +70,6 @@ let nextId = 0;
             },
         },
     ],
-    standalone: true,
     imports: [NgTemplateOutlet, NxFileUploaderItemName, NxFileUploaderItemSize, NxFileUploaderItemStatus, NxFileUploaderItemDelete],
 })
 export class NxFileUploaderComponent implements ControlValueAccessor, AfterContentInit, OnChanges, OnDestroy, DoCheck, OnInit, AfterViewInit {

@@ -19,7 +19,6 @@ import {
     selector: 'sidepanel-dark-example',
     templateUrl: './sidepanel-dark-example.html',
     styleUrls: ['sidepanel-dark-example.css'],
-    standalone: true,
     imports: [
         NxSidepanelOuterContainerComponent,
         NxRadioToggleComponent,

@@ -16,7 +16,6 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
         '[class.is-touched]': 'touched',
         '[class.is-readonly]': 'readonly',
     },
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxIconToggleButtonComponent {

@@ -19,7 +19,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'formfield-multiple-errors-example',
     templateUrl: './formfield-multiple-errors-example.html',
     styleUrls: ['./formfield-multiple-errors-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         NxFormfieldComponent,

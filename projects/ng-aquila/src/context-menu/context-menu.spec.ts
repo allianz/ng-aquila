@@ -35,7 +35,6 @@ import {
         <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu" #trigger>Open</button>
     `,
     encapsulation: ViewEncapsulation.ShadowDom,
-    standalone: true,
     imports: [NxContextMenuModule, NxButtonComponent],
 })
 class ShadowDomTestComponent {
@@ -1587,7 +1586,6 @@ describe('nxContextMenu', () => {
             }
         </nx-context-menu>
     `,
-    standalone: true,
     imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
 })
 class SimpleMenu {
@@ -1615,7 +1613,6 @@ class SimpleMenu {
             }
         </nx-context-menu>
     `,
-    standalone: true,
     imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
 })
 class OverrideScrollStrategyMenu {
@@ -1634,7 +1631,6 @@ class OverrideScrollStrategyMenu {
             </button>
         </nx-context-menu>
     `,
-    standalone: true,
     imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
 })
 class SelectionMenu {
@@ -1677,7 +1673,6 @@ class SelectionMenu {
             <button nxContextMenuItem>Twelve</button>
         </nx-context-menu>
     `,
-    standalone: true,
     imports: [NxContextMenuModule, NxButtonComponent],
 })
 class NestedMenu {
@@ -1713,7 +1708,6 @@ class NestedMenu {
             <button nxContextMenuItem>Two</button>
         </nx-context-menu>
     `,
-    standalone: true,
     imports: [NxContextMenuModule, NxButtonComponent],
 })
 class NestedMenuCustomElevation {
@@ -1735,7 +1729,6 @@ class NestedMenuCustomElevation {
             <button nxContextMenuItem>Five</button>
         </nx-context-menu>
     `,
-    standalone: true,
     imports: [NxContextMenuModule, NxButtonComponent],
 })
 class NestedMenuRepeater {
@@ -1757,7 +1750,6 @@ class NestedMenuRepeater {
             </nx-context-menu>
         </nx-context-menu>
     `,
-    standalone: true,
     imports: [NxContextMenuModule, NxButtonComponent],
 })
 class SubmenuDeclaredInsideParentMenu {
@@ -1775,7 +1767,6 @@ class SubmenuDeclaredInsideParentMenu {
             </ng-template>
         </nx-context-menu>
     `,
-    standalone: true,
     imports: [NxContextMenuModule, NxButtonComponent],
 })
 class SimpleLazyMenu {
@@ -1796,7 +1787,6 @@ class SimpleLazyMenu {
             </ng-template>
         </nx-context-menu>
     `,
-    standalone: true,
     imports: [NxContextMenuModule, NxButtonComponent],
 })
 class LazyMenuWithContext {
@@ -1815,7 +1805,6 @@ class LazyMenuWithContext {
             <button nxContextMenuItem>Two</button>
         </nx-context-menu>
     `,
-    standalone: true,
     imports: [NxContextMenuModule, NxButtonComponent],
 })
 class DynamicPanelMenu {
@@ -1831,7 +1820,6 @@ class DynamicPanelMenu {
             <button nxContextMenuItem>Item</button>
         </nx-context-menu>
     `,
-    standalone: true,
     imports: [NxContextMenuModule, NxButtonComponent],
 })
 class RightClickMenu {
@@ -1841,7 +1829,6 @@ class RightClickMenu {
 }
 
 @Component({
-    standalone: true,
     template: `
         <button [nxContextMenuTriggerFor]="menu">Toggle menu</button>
         <nx-context-menu #menu="nxContextMenu">
@@ -1884,7 +1871,6 @@ class CheckboxMenu {
             </button>
         </nx-context-menu>
     `,
-    standalone: true,
     imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
 })
 class DisabledItemsMenu {

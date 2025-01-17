@@ -28,7 +28,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     selector: 'comparison-table-disabled-columns-example',
     templateUrl: './comparison-table-disabled-columns-example.html',
     styleUrls: ['./comparison-table-disabled-columns-example.css'],
-    standalone: true,
     imports: [
         NxSwipebarComponent,
         NxComparisonTableComponent,

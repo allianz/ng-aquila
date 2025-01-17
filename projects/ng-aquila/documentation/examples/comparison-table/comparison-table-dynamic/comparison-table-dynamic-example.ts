@@ -34,7 +34,6 @@ type TableData = (ContentCell | ToggleSection)[];
     selector: 'comparison-table-dynamic-example',
     templateUrl: './comparison-table-dynamic-example.html',
     styleUrls: ['./comparison-table-dynamic-example.css'],
-    standalone: true,
     imports: [
         NxSwipebarComponent,
         NxComparisonTableComponent,

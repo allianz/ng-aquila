@@ -22,7 +22,6 @@ const myDefaultOptions: PopoverDefaultOptions = {
     providers: [
         { provide: POPOVER_DEFAULT_OPTIONS, useValue: myDefaultOptions },
     ],
-    standalone: true,
     imports: [NxButtonComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverWidthExampleComponent {

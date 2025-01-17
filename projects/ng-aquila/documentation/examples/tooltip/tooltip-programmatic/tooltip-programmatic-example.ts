@@ -13,7 +13,6 @@ import {
     selector: 'tooltip-programmatic-example',
     templateUrl: './tooltip-programmatic-example.html',
     styleUrls: ['./tooltip-programmatic-example.css'],
-    standalone: true,
     imports: [NxButtonComponent, NxBadgeComponent, NxTooltipDirective_1],
 })
 export class TooltipProgrammaticExampleComponent {

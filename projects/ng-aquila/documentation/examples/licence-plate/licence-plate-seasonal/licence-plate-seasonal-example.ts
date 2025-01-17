@@ -31,7 +31,6 @@ import {
     selector: 'licence-plate-seasonal-example',
     templateUrl: 'licence-plate-seasonal-example.html',
     styleUrls: ['licence-plate-seasonal-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

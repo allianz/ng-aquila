@@ -26,6 +26,7 @@ import { NxTreeNodeOutletDirective } from './outlet';
  * Wrapper for the CdkTree with custom design styles and keyboard nav mechanics.
  */
 @Component({
+    standalone: true,
     selector: 'nx-tree',
     exportAs: 'nxTree',
     template: `<ng-container nxTreeNodeOutlet></ng-container>`,
@@ -47,7 +48,6 @@ import { NxTreeNodeOutletDirective } from './outlet';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{ provide: CdkTree, useExisting: NxTreeComponent }],
-    standalone: true,
     imports: [NxTreeNodeOutletDirective],
 })
 export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit {

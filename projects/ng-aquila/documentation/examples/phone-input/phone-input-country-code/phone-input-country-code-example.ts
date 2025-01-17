@@ -12,7 +12,6 @@ import { NxPhoneInputComponent } from '@aposin/ng-aquila/phone-input';
     selector: 'phone-input-country-code-example',
     templateUrl: 'phone-input-country-code-example.html',
     styleUrls: ['./phone-input-country-code-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxFormfieldLabelDirective,

@@ -23,7 +23,6 @@ abstract class ButtonTest {
 }
 @Component({
     template: `<button nxButton #button class="some-arbitray-class-name">Hello Button</button>`,
-    standalone: true,
     imports: [NxIconModule, NxButtonModule],
 })
 class BasicButton extends ButtonTest {}
@@ -34,14 +33,12 @@ class BasicButton extends ButtonTest {}
             <nx-icon name="settings"></nx-icon>
         </button>
     `,
-    standalone: true,
     imports: [NxIconModule, NxButtonModule],
 })
 class BasicIconButton extends ButtonTest {}
 
 @Component({
     template: `<button [nxButton]="classNames" #button>Configurable button</button>`,
-    standalone: true,
     imports: [NxIconModule, NxButtonModule],
 })
 class ConfigurableButton extends ButtonTest {}
@@ -52,7 +49,6 @@ class ConfigurableButton extends ButtonTest {}
             <nx-icon name="settings"></nx-icon>
         </button>
     `,
-    standalone: true,
     imports: [NxIconModule, NxButtonModule],
 })
 class ConfigurableIconButton extends ButtonTest {}
@@ -60,7 +56,6 @@ class ConfigurableIconButton extends ButtonTest {}
 @Component({
     template: `<button [nxButton]="classNames" #button>Configurable button</button>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxIconModule, NxButtonModule],
 })
 class ConfigurableOnPushButton extends ButtonTest {}
@@ -72,7 +67,6 @@ class ConfigurableOnPushButton extends ButtonTest {}
         </button>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxIconModule, NxButtonModule],
 })
 class ConfigurableOnPushIconButton extends ButtonTest {}

@@ -8,7 +8,6 @@ import { NxTaglistComponent } from '@aposin/ng-aquila/taglist';
     selector: 'taglist-formatter-example',
     templateUrl: './taglist-formatter-example.html',
     styleUrls: ['./taglist-formatter-example.css'],
-    standalone: true,
     imports: [NxTaglistComponent],
 })
 export class TaglistFormatterExampleComponent {

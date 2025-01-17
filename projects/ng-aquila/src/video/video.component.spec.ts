@@ -208,7 +208,6 @@ describe('NxVideoComponent', () => {
             [allowFullScreen]="fullscreen"
         ></nx-video>
     `,
-    standalone: true,
     imports: [NxVideoModule],
 })
 class BasicVideo extends VideoTest {}

@@ -9,7 +9,6 @@ let nextId = 0;
 @Component({
     selector: 'nx-comparison-table-description-cell',
     templateUrl: './description-cell.component.html',
-    standalone: true,
     imports: [NgTemplateOutlet, NgStyle],
 })
 export class NxComparisonTableDescriptionCell {

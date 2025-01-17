@@ -29,7 +29,6 @@ interface Contract {
     selector: 'context-menu-data-example',
     templateUrl: './context-menu-data-example.html',
     styleUrls: ['context-menu-data-example.css'],
-    standalone: true,
     imports: [
         NxContextMenuComponent,
         NxContextMenuContentDirective,

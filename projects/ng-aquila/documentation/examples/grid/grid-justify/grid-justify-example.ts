@@ -12,7 +12,6 @@ import {
     selector: 'grid-justify-example',
     templateUrl: './grid-justify-example.html',
     styleUrls: ['./grid-justify-example.css'],
-    standalone: true,
     imports: [NxLayoutComponent, NxRowComponent, NxColComponent],
 })
 export class GridJustifyExampleComponent {}

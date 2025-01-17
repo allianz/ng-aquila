@@ -28,7 +28,6 @@ import { Moment } from 'moment';
     selector: 'datefield-range-example',
     templateUrl: './datefield-range-example.html',
     styleUrls: ['./datefield-range-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

@@ -801,7 +801,6 @@ describe('NxComparisonTableComponent', () => {
 
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class BasicComponent extends TableTest {
@@ -823,7 +822,6 @@ class BasicComponent extends TableTest {
 @Component({
     template: `<div style="height: 200px; width: 200px; overflow: scroll;">${BASIC_COMPARISON_TABLE_TEMPLATE}</div>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class BasicOnPushComponent extends TableTest {
@@ -882,7 +880,6 @@ class BasicOnPushComponent extends TableTest {
             }
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class SelectableIndexComponent extends TableTest {
@@ -933,7 +930,6 @@ class SelectableIndexComponent extends TableTest {
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class DisabledColumnsComponent extends TableTest {
@@ -944,7 +940,6 @@ class DisabledColumnsComponent extends TableTest {
 
 @Component({
     template: `<div style="height: 200px; width: 200px; overflow: scroll;">${BASIC_COMPARISON_TABLE_TEMPLATE}</div>`,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class LongPageWithTableComponent extends TableTest {
@@ -965,7 +960,6 @@ class LongPageWithTableComponent extends TableTest {
 
 @Component({
     template: HIDDEN_INDEXES_COMPARISON_TABLE_TEMPLATE,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class HiddenColumnsComponent extends TableTest {

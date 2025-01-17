@@ -39,7 +39,6 @@ const TOTAL_DAYS_TO_DISPLAY = 6 * DAYS_PER_WEEK;
     exportAs: 'nxMonthView',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['month-view.scss'],
-    standalone: true,
     imports: [NxCalendarBodyComponent],
 })
 export class NxMonthViewComponent<D> implements AfterContentInit {

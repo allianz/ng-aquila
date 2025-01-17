@@ -109,7 +109,6 @@ describe('NxLinkComponent', () => {
             </nx-notification-panel>
         </ng-template>
     `,
-    standalone: true,
     imports: [NxNotificationPanelModule, NxButtonModule, NxIconModule, RouterTestingModule],
 })
 class TestComponent extends NotificationPanelTest {}

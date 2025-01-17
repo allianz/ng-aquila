@@ -19,7 +19,6 @@ interface MyOption {
     selector: 'dropdown-multi-select-example',
     templateUrl: './dropdown-multi-select-example.html',
     styleUrls: ['./dropdown-multi-select-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

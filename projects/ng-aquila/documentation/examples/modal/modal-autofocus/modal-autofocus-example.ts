@@ -20,7 +20,6 @@ import {
  */
 @Component({
     selector: 'modal-autofocus-example',
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxModalContentDirective,

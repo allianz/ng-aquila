@@ -9,7 +9,6 @@ import { NxLinkComponent } from '@aposin/ng-aquila/link';
     selector: 'link-negative-example',
     templateUrl: './link-negative-example.html',
     styleUrls: ['./link-negative-example.css'],
-    standalone: true,
     imports: [NxLinkComponent, RouterLink],
 })
 export class LinkNegativeExampleComponent {}

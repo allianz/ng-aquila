@@ -17,7 +17,6 @@ import {
     selector: 'dropdown-lazy-example',
     templateUrl: './dropdown-lazy-example.html',
     styleUrls: ['./dropdown-lazy-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

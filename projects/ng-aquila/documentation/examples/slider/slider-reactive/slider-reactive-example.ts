@@ -15,7 +15,6 @@ import { NxSliderComponent } from '@aposin/ng-aquila/slider';
     selector: 'slider-reactive-example',
     templateUrl: './slider-reactive-example.html',
     styleUrls: ['./slider-reactive-example.css'],
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxSliderComponent, JsonPipe],
 })
 export class SliderReactiveExampleComponent {

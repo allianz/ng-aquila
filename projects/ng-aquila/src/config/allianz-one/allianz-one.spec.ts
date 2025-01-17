@@ -6,7 +6,6 @@ import { ALLIANZ_ONE, AllianzOneOptions, NxAllianzOneModule } from './allianz-on
 
 @Component({
     template: ` <p>Doesn't matter</p> `,
-    standalone: true,
     imports: [NxAllianzOneModule],
 })
 class AllianzOnePresetTest {
@@ -18,7 +17,6 @@ class AllianzOnePresetTest {
 
 @Component({
     template: ` <p>Doesn't matter</p> `,
-    standalone: true,
     imports: [],
 })
 class AllianzOneWithoutModuleImportPresetTest {

@@ -42,7 +42,6 @@ export class NxDatepickerToggleIconComponent {}
     },
     exportAs: 'nxDatepickerToggle',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterViewInit, OnChanges, OnDestroy {

@@ -48,7 +48,6 @@ interface MyFlatTreeNode extends NxFlatTreeNode {
     selector: 'menu-example',
     templateUrl: './menu-example.html',
     styleUrls: ['menu-example.css'],
-    standalone: true,
     imports: [
         NxPlainButtonComponent,
         NxIconComponent,

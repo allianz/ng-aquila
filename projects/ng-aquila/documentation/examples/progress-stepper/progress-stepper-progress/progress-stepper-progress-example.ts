@@ -25,7 +25,6 @@ import {
     selector: 'progress-stepper-progress-example',
     templateUrl: './progress-stepper-progress-example.html',
     styleUrls: ['./progress-stepper-progress-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

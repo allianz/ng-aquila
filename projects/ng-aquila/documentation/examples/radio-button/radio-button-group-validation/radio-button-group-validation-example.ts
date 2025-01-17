@@ -19,7 +19,6 @@ import {
     selector: 'radio-button-group-validation-example',
     templateUrl: './radio-button-group-validation-example.html',
     styleUrls: ['./radio-button-group-validation-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

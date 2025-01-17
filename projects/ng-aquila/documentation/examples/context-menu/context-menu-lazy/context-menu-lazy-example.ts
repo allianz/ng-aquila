@@ -15,7 +15,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     selector: 'context-menu-lazy-example',
     templateUrl: './context-menu-lazy-example.html',
     styleUrls: ['./context-menu-lazy-example.css'],
-    standalone: true,
     imports: [
         NxContextMenuComponent,
         NxContextMenuContentDirective,

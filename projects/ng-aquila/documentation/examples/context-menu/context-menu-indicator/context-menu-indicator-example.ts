@@ -15,7 +15,6 @@ import { NxIndicatorComponent } from '@aposin/ng-aquila/indicator';
     selector: 'context-menu-indicator-example',
     templateUrl: './context-menu-indicator-example.html',
     styleUrls: ['./context-menu-indicator-example.css'],
-    standalone: true,
     imports: [
         NxContextMenuComponent,
         NxContextMenuItemComponent,

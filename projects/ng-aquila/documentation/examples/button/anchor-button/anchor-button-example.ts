@@ -12,7 +12,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     selector: 'anchor-button-example',
     templateUrl: './anchor-button-example.html',
     styleUrls: ['./anchor-button-example.css'],
-    standalone: true,
     imports: [
         NxAnchorButtonComponent,
         NxIconComponent,

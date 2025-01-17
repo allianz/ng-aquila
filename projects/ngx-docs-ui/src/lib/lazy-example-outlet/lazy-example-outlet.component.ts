@@ -13,7 +13,6 @@ import { ManifestService } from './../service/manifest.service';
 @Component({
     selector: 'nxv-lazy-example',
     templateUrl: 'lazy-example-outlet.component.html',
-    standalone: true,
     imports: [Dir, NgComponentOutlet, NxSpinnerModule],
 })
 export class LazyExampleOutletComponent implements OnInit, OnDestroy {

@@ -22,7 +22,6 @@ interface MenuItem {
     selector: 'menu-item-example',
     templateUrl: 'menu-item-example.html',
     styleUrls: ['menu-item-example.css'],
-    standalone: true,
     imports: [NxMenuButtonComponent, NxMenuItemDirective, NxMenuLinkDirective],
 })
 export class MenuItemExampleComponent {

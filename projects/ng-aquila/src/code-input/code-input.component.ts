@@ -30,7 +30,6 @@ export type NxConversionTypes = 'lower' | 'upper';
         '[attr.aria-label]': '_intl.inputFieldAriaLabel',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [FormsModule, NgClass],
 })
 export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {

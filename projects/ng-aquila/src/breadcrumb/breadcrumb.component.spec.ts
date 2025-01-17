@@ -82,7 +82,6 @@ describe('NxBreadcrumbComponent', () => {
         </ol>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxBreadcrumbModule],
 })
 class BreadcrumbOnPushComponent extends BreadcrumbTest {
@@ -100,7 +99,6 @@ class BreadcrumbOnPushComponent extends BreadcrumbTest {
             </li>
         </ol>
     `,
-    standalone: true,
     imports: [NxBreadcrumbModule],
 })
 class BasicBreadcrumbComponent extends BreadcrumbTest {
@@ -119,7 +117,6 @@ class BasicBreadcrumbComponent extends BreadcrumbTest {
             }
         </ol>
     `,
-    standalone: true,
     imports: [NxBreadcrumbModule],
 })
 class DynamicBreadcrumbComponent extends BreadcrumbTest {
@@ -137,7 +134,6 @@ class DynamicBreadcrumbComponent extends BreadcrumbTest {
             </li>
         </ol>
     `,
-    standalone: true,
     imports: [NxBreadcrumbModule],
 })
 class LinkBreadcrumbComponent extends BreadcrumbTest {

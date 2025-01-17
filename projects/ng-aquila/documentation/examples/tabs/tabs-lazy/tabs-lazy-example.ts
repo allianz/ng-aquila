@@ -12,7 +12,6 @@ import {
     selector: 'tabs-lazy-example',
     templateUrl: './tabs-lazy-example.html',
     styleUrls: ['./tabs-lazy-example.css'],
-    standalone: true,
     imports: [
         NxTabGroupComponent,
         NxTabComponent,

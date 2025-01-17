@@ -69,7 +69,6 @@ export type LABEL_SIZE = 'small' | 'large';
         '[class.is-readonly]': 'readonly',
         '(focus)': '_forwardFocusToInput()',
     },
-    standalone: true,
     imports: [NxIconModule, CdkObserveContent],
     providers: [
         {

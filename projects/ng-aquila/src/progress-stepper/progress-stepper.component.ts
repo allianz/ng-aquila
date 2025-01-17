@@ -110,6 +110,7 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
     selector: '[nxProgressStepper]',
     exportAs: 'nxProgressStepper',
     standalone: true,
+    providers: [{ provide: CdkStepper, useExisting: NxProgressStepperDirective }],
 })
 export class NxProgressStepperDirective extends CdkStepper implements AfterContentInit {
     // Do not initialize with an empty QueryList or the hasNext() function produces

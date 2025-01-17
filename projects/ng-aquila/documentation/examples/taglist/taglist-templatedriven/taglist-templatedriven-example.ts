@@ -15,7 +15,6 @@ import { NxTaglistComponent } from '@aposin/ng-aquila/taglist';
     selector: 'taglist-templatedriven-example',
     templateUrl: './taglist-templatedriven-example.html',
     styleUrls: ['./taglist-templatedriven-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         NxTaglistComponent,

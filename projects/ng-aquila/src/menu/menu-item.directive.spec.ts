@@ -54,7 +54,6 @@ describe(NxMenuItemDirective.name, () => {
 
 @Component({
     template: `<div nxMenuItem></div>`,
-    standalone: true,
     imports: [NxMenuModule],
 })
 class BasicMenuItem extends MenuItemTest {}

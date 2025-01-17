@@ -20,7 +20,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'error-reset-example',
     templateUrl: './error-reset-example.html',
     styleUrls: ['./error-reset-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

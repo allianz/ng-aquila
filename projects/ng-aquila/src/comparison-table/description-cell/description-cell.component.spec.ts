@@ -201,7 +201,6 @@ describe('NxComparisonTableDescriptionCell', () => {
 
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class DescriptionCellComponent extends DescriptionCellTest {
@@ -228,7 +227,6 @@ class DescriptionCellComponent extends DescriptionCellTest {
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class ConfigurableDescriptionCellComponent extends DescriptionCellTest {}

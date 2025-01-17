@@ -22,7 +22,6 @@ import {
     selector: 'selectable-card-states-example',
     templateUrl: './selectable-card-states-example.html',
     styleUrls: ['./selectable-card-states-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         NxLayoutComponent,

@@ -6,7 +6,6 @@ import { NxSwitcherComponent } from '@aposin/ng-aquila/switcher';
     selector: 'switcher-default-example',
     templateUrl: './switcher-default-example.html',
     styleUrls: ['./switcher-default-example.css'],
-    standalone: true,
     imports: [NxSwitcherComponent],
 })
 export class SwitcherDefaultExampleComponent {}

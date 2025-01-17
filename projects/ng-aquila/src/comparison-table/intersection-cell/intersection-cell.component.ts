@@ -8,7 +8,6 @@ import { NxToggleSectionBase } from '../toggle-section/toggle-section-base';
 @Component({
     selector: 'nx-comparison-table-intersection-cell',
     templateUrl: './intersection-cell.component.html',
-    standalone: true,
     imports: [NgTemplateOutlet],
 })
 export class NxComparisonTableIntersectionCell {

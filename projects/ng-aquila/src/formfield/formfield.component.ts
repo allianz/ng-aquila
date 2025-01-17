@@ -78,7 +78,6 @@ export type AppearanceType = 'outline' | 'auto';
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    standalone: true,
     imports: [NxTooltipModule],
 })
 export class NxFormfieldComponent implements AfterContentInit, AfterContentChecked, OnDestroy {

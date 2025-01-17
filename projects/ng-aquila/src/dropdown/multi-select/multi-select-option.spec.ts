@@ -249,7 +249,6 @@ abstract class MultiSelectOptionTest {
             </nx-multi-select-option>
         </div>
     `,
-    standalone: true,
     imports: [NxMultiSelectOptionComponent],
 })
 class BasicMultiSelectOptionComponent extends MultiSelectOptionTest {}

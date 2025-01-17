@@ -28,7 +28,6 @@ export const yearsPerRow = 4;
     exportAs: 'nxMultiYearView',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['multi-year-view.scss'],
-    standalone: true,
     imports: [NxCalendarBodyComponent],
 })
 export class NxMultiYearViewComponent<D> implements AfterContentInit {

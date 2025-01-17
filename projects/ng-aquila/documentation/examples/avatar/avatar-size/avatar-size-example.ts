@@ -7,7 +7,6 @@ import { NxAvatarComponent } from '@aposin/ng-aquila/avatar';
     selector: 'avatar-colors-example',
     templateUrl: './avatar-size-example.html',
     styleUrls: ['./avatar-size-example.css'],
-    standalone: true,
     imports: [NxAvatarComponent],
 })
 export class AvatarSizeExampleComponent {}

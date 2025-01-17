@@ -44,7 +44,6 @@ describe('NxIconHarness', () => {
         <nx-icon name="info"></nx-icon>
         <nx-icon [name]="'warning'"></nx-icon>
     `,
-    standalone: true,
     imports: [NxIconModule],
 })
 class IconHarnessTest {}

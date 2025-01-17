@@ -19,7 +19,6 @@ import {
     selector: 'checkbox-group-inheritance-example',
     templateUrl: './checkbox-group-inheritance-example.html',
     styleUrls: ['./checkbox-group-inheritance-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

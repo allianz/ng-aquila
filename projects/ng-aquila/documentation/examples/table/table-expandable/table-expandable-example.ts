@@ -20,7 +20,6 @@ import {
     selector: 'table-expandable-example',
     templateUrl: './table-expandable-example.html',
     styleUrls: ['./table-expandable-example.css'],
-    standalone: true,
     imports: [
         NxTableComponent,
         NxExpandableTableDirective,

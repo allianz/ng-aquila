@@ -16,7 +16,6 @@ import {
     selector: 'table-example',
     templateUrl: './table-example.html',
     styleUrls: ['./table-example.css'],
-    standalone: true,
     imports: [
         NxTableComponent,
         NxTableRowComponent,

@@ -125,7 +125,6 @@ describe('NxSelectableCardHarness', () => {
 
 @Component({
     template: `<nx-selectable-card [formControl]="control"></nx-selectable-card>`,
-    standalone: true,
     imports: [NxCardModule, FormsModule, ReactiveFormsModule],
 })
 class ErrorTest {

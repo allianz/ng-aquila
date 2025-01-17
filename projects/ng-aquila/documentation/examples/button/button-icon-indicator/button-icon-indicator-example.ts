@@ -10,7 +10,6 @@ import { NxIndicatorComponent } from '@aposin/ng-aquila/indicator';
     selector: 'button-icon-indicator-example',
     templateUrl: './button-icon-indicator-example.html',
     styleUrls: ['./button-icon-indicator-example.css'],
-    standalone: true,
     imports: [NxIconButtonComponent, NxIconComponent, NxIndicatorComponent],
 })
 export class ButtonIconIndicatorExampleComponent {}

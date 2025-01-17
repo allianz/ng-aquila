@@ -25,7 +25,6 @@ import { NxMultiStepperDirection } from '../progress-stepper.models';
         '[attr.aria-selected]': 'selected',
         '[attr.aria-label]': 'label',
     },
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy, AfterViewInit {

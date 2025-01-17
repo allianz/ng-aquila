@@ -47,7 +47,6 @@ export class NxAutocompleteSelectedEvent {
     host: {
         class: 'nx-autocomplete',
     },
-    standalone: true,
     imports: [NgClass, NxAutocompleteOptionComponent],
 })
 export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {

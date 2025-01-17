@@ -31,7 +31,6 @@ export function throwNxOverlayContentAlreadyAttachedError() {
         '[attr.aria-label]': '_config.ariaLabel',
         '[attr.aria-describedby]': '_config.ariaDescribedBy || null',
     },
-    standalone: true,
     imports: [CdkPortalOutlet],
 })
 export class NxOverlayContainerComponent extends BasePortalOutlet {

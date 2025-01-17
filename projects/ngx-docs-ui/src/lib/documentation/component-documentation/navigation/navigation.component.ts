@@ -23,10 +23,10 @@ class MyFlatTreeNode {
 }
 
 @Component({
+    standalone: true,
     selector: 'nxv-navigation',
     templateUrl: 'navigation.component.html',
     styleUrls: ['./navigation.component.scss'],
-    standalone: true,
     imports: [NxTreeModule, NxActionModule, RouterLinkActive, RouterLink],
 })
 export class NavigationComponent implements OnDestroy {

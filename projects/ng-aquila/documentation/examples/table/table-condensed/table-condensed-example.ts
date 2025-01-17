@@ -16,7 +16,6 @@ import {
     selector: 'table-condensed-example',
     templateUrl: './table-condensed-example.html',
     styleUrls: ['./table-condensed-example.css'],
-    standalone: true,
     imports: [
         NxTableComponent,
         NxTableRowComponent,

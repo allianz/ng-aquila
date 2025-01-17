@@ -53,7 +53,6 @@ let nextId = 0;
         '[class.is-expert]': 'appearance === "expert"',
     },
     providers: [{ provide: NxTabGroupBase, useExisting: NxTabGroupComponent }],
-    standalone: true,
     imports: [NxTabHeaderComponent, NxTabLabelWrapperDirective, NxTabHeaderOutletComponent, NxTabBodyComponent, NxAccordionModule],
 })
 export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterViewInit, AfterContentInit, AfterContentChecked {

@@ -21,7 +21,6 @@ import { NxLinkComponent } from '@aposin/ng-aquila/link';
     selector: 'header-cobranding-example',
     templateUrl: './header-cobranding-example.html',
     styleUrls: ['header-cobranding-example.css'],
-    standalone: true,
     imports: [
         NxHeaderComponent,
         NxHeaderRowDirective,

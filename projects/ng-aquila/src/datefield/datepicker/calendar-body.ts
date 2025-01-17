@@ -55,7 +55,6 @@ export class NxCalendarCell {
     },
     exportAs: 'nxCalendarBody',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [],
 })
 export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy, AfterViewChecked {

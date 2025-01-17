@@ -94,7 +94,6 @@ describe('NxLicencePlateSeasonSuffixComponent', () => {
             <nx-licence-plate-season-suffix nxFormfieldSuffix [startMonth]="1" [endMonth]="10"></nx-licence-plate-season-suffix>
         </nx-formfield>
     `,
-    standalone: true,
     imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule],
 })
 class BasicLicencePlateSeasonSuffix extends LicencePlateSeasonSuffixTest {}

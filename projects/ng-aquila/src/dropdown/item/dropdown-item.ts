@@ -55,7 +55,6 @@ let nextId = 0;
         '[class.nx-multiselect]': 'multiselect',
         '(click)': '_onClick($event)',
     },
-    standalone: true,
     imports: [NgClass, NxCheckboxModule, NgTemplateOutlet, NxIconModule, NxTooltipModule, CdkObserveContent],
 })
 export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterViewChecked {

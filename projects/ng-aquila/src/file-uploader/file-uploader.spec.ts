@@ -357,7 +357,6 @@ describe('NxFileUploaderComponent', () => {
             <button id="upload-trigger" [nxFileUploadTriggerFor]="documentUpload" type="button">Upload files</button>
         </form>
     `,
-    standalone: true,
     imports: [NxFileUploaderModule, NxLabelModule, ReactiveFormsModule, FormsModule],
 })
 class BasicFileUpload extends FileUploaderTest {

@@ -13,7 +13,6 @@ export type BANNER_CONTEXT = 'info' | 'error' | 'warning';
     styleUrls: ['../message/message.component.scss', './message-banner.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: 'nxMessageBanner',
-    standalone: true,
     imports: [NgIf, NxIconModule],
 })
 export class NxMessageBannerComponent extends NxMessageComponent {

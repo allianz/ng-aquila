@@ -83,7 +83,6 @@ export type NxCheckboxLabelSize = 'small' | 'large';
         '(focus)': '_forwardFocusToInput()',
         '[attr.aria-labelledby]': 'getLabelledby()',
     },
-    standalone: true,
     imports: [],
     providers: [
         {
@@ -337,7 +336,6 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
             useExisting: forwardRef(() => NxCheckboxComponent),
         },
     ],
-    standalone: true,
     imports: [NxIconModule, CdkObserveContent],
 })
 export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnInit, AfterViewInit, Validator, NxAbstractControl {

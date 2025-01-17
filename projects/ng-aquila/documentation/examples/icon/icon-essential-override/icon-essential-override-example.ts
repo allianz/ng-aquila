@@ -18,7 +18,6 @@ const playSvg =
         // only for this example that the rest of the documentation examples are not affected
         NxIconRegistry,
     ],
-    standalone: true,
     imports: [NxIconComponent],
 })
 export class IconEssentialOverrideExampleComponent {

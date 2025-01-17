@@ -21,7 +21,6 @@ import { NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
 
 @Component({
     selector: 'app-root',
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

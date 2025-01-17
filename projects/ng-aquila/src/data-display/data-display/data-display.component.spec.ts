@@ -129,7 +129,6 @@ abstract class DataDisplayTestComponent {
 
 @Component({
     template: `<nx-data-display label="Example label"> Example value </nx-data-display>`,
-    standalone: true,
     imports: [NxDataDisplayModule],
 })
 class BasicDataDisplayTestComponent extends DataDisplayTestComponent {}
@@ -141,14 +140,12 @@ class BasicDataDisplayTestComponent extends DataDisplayTestComponent {}
             Example value
         </nx-data-display>
     `,
-    standalone: true,
     imports: [NxDataDisplayModule],
 })
 class CustomLabelDataDisplayTestComponent extends DataDisplayTestComponent {}
 
 @Component({
     template: `<nx-data-display label="Example label" [orientation]="orientation" [size]="size"> Example value </nx-data-display>`,
-    standalone: true,
     imports: [NxDataDisplayModule],
 })
 class ConfigurableDataDisplayTestComponent extends DataDisplayTestComponent {}

@@ -31,7 +31,6 @@ const ICONS: { [k: string]: string } = {
     styleUrls: ['./message.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: 'nxMessage',
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxMessageComponent implements AfterViewInit, OnDestroy {

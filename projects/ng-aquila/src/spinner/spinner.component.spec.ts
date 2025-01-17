@@ -141,14 +141,12 @@ describe('nxSpinnerComponent', () => {
 
 @Component({
     template: `<nx-spinner></nx-spinner>`,
-    standalone: true,
     imports: [NxSpinnerModule],
 })
 class BasicTestSpinner extends SpinnerTest {}
 
 @Component({
     template: `<nx-spinner [size]="size" [negative]="negative"></nx-spinner>`,
-    standalone: true,
     imports: [NxSpinnerModule],
 })
 class ConfigurableSpinner extends SpinnerTest {}
@@ -156,14 +154,12 @@ class ConfigurableSpinner extends SpinnerTest {}
 @Component({
     template: `<nx-spinner [size]="size" [negative]="negative"></nx-spinner>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxSpinnerModule],
 })
 class OnPushSpinner extends SpinnerTest {}
 
 @Component({
     template: ` <nx-spinner [ariaPoliteness]="'off'"></nx-spinner> `,
-    standalone: true,
     imports: [NxSpinnerModule],
 })
 class TestAriaLiveSpinnerComponent extends SpinnerTest {}

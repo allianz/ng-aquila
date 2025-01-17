@@ -18,7 +18,6 @@ import { NxExpertModule } from '@aposin/ng-aquila/config';
     selector: 'circle-toggle-readonly-example',
     templateUrl: './circle-toggle-readonly-example.html',
     styleUrls: ['./circle-toggle-readonly-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

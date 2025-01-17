@@ -364,7 +364,6 @@ class ComponentWithTemplateRef {
 @Component({
     template: '',
     providers: [NxMessageToastService],
-    standalone: true,
     imports: [forwardRef(() => NxMessageToastTestModule)],
 })
 class ComponentProvidingService {

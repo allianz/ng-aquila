@@ -22,7 +22,6 @@ import { NxIbanMaskDirective, NxMaskDirective } from '@aposin/ng-aquila/mask';
     selector: 'iban-mask-example',
     templateUrl: './iban-mask-example.html',
     styleUrls: ['./iban-mask-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

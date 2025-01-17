@@ -65,7 +65,6 @@ describe('NxSelectableCardGroupHarness', () => {
         <nx-selectable-card><h3>Bar</h3></nx-selectable-card>
         <nx-error>Error Text</nx-error>
     </nx-selectable-card-group>`,
-    standalone: true,
     imports: [NxCardModule, ReactiveFormsModule],
 })
 class ErrorTest {

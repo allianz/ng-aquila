@@ -37,7 +37,6 @@ import { NxTabsAppearance, TAB_NAV_BAR_DEFAULT_OPTIONS, TabNavBarDefaultOptions 
         '[class.at-start]': '_isScrolledToStart',
         '[class.scrollable]': 'scrollable',
     },
-    standalone: true,
     imports: [NxTabScrollIndicator],
 })
 export class NxTabNavBarComponent extends NxScrollableTabBar {

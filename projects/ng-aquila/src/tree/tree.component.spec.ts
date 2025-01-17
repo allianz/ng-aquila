@@ -629,6 +629,7 @@ function expectNestedTreeToNxch(treeElement: Element, ...expectedTree: any[]) {
 }
 
 @Component({
+    standalone: true,
     template: `
         <nx-tree [dataSource]="dataSource" [treeControl]="treeControl">
             <nx-tree-node
@@ -643,7 +644,6 @@ function expectNestedTreeToNxch(treeElement: Element, ...expectedTree: any[]) {
             </nx-tree-node>
         </nx-tree>
     `,
-    standalone: true,
     imports: [NxTreeModule],
 })
 class SimpleNxTreeApp {
@@ -662,6 +662,7 @@ class SimpleNxTreeApp {
 }
 
 @Component({
+    standalone: true,
     template: `
         <nx-tree [dataSource]="dataSource" [treeControl]="treeControl">
             <nx-tree-node
@@ -676,7 +677,6 @@ class SimpleNxTreeApp {
             </nx-tree-node>
         </nx-tree>
     `,
-    standalone: true,
     imports: [NxTreeModule],
 })
 class NxTreeAppWithToggle {
@@ -697,6 +697,7 @@ class NxTreeAppWithToggle {
 }
 
 @Component({
+    standalone: true,
     template: `
         <nx-tree [dataSource]="dataSource" [treeControl]="treeControl">
             <nx-tree-node *nxTreeNodeDef="let node" class="customNodeClass" nxTreeNodePadding [nxTreeNodePaddingIndent]="24" nxTreeNodeToggle>
@@ -707,7 +708,6 @@ class NxTreeAppWithToggle {
             </nx-tree-node>
         </nx-tree>
     `,
-    standalone: true,
     imports: [NxTreeModule],
 })
 class WhenNodeNxTreeApp {
@@ -727,6 +727,7 @@ class WhenNodeNxTreeApp {
 }
 
 @Component({
+    standalone: true,
     template: `
         <nx-tree [dataSource]="dataSource" [treeControl]="treeControl">
             <nx-tree-node
@@ -743,7 +744,6 @@ class WhenNodeNxTreeApp {
             </nx-tree-node>
         </nx-tree>
     `,
-    standalone: true,
     imports: [NxTreeModule],
 })
 class NxTreeAppWithButton {

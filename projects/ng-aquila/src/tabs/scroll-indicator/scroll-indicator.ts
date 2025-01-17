@@ -22,7 +22,6 @@ export type NxScrollDirection = 'start' | 'end';
         '[class.is-scrolled-to-end]': 'isScrolledToEnd',
         '[attr.aria-hidden]': 'true',
     },
-    standalone: true,
     imports: [NxButtonModule, NxIconModule],
 })
 export class NxTabScrollIndicator implements OnDestroy {

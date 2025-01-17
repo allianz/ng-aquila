@@ -26,7 +26,6 @@ export class MyIntl extends NxTimefieldIntl {
     templateUrl: './timefield-localize-example.html',
     styleUrls: ['./timefield-localize-example.css'],
     providers: [{ provide: NxTimefieldIntl, useClass: MyIntl }],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

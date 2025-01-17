@@ -38,7 +38,6 @@ export const ERROR_DEFAULT_OPTIONS = new InjectionToken<ErrorDefaultOptions>('ER
         '[attr.role]': '"alert"',
         '[class.nx-error--message]': 'appearance == "message"',
     },
-    standalone: true,
     imports: [NxIconModule, NgTemplateOutlet, NxMessageModule],
 })
 export class NxErrorComponent implements OnDestroy {

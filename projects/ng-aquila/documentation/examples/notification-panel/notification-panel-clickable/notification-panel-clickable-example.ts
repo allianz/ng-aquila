@@ -22,7 +22,6 @@ import {
     selector: 'notification-panel-clickable-example',
     templateUrl: './notification-panel-clickable-example.html',
     styleUrls: ['./notification-panel-clickable-example.css'],
-    standalone: true,
     imports: [
         NxIconButtonComponent,
         NxNotificationPanelTriggerDirective,

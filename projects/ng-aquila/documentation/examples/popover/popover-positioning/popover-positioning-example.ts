@@ -12,7 +12,6 @@ import {
     selector: 'popover-positioning-example',
     templateUrl: './popover-positioning-example.html',
     styleUrls: ['./popover-positioning-example.css'],
-    standalone: true,
     imports: [NxButtonComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverPositioningExampleComponent {}

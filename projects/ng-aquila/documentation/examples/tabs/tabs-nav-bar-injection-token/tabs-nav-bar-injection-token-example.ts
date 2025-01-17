@@ -21,7 +21,6 @@ const myDefaultOptions: TabNavBarDefaultOptions = {
     providers: [
         { provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: myDefaultOptions },
     ],
-    standalone: true,
     imports: [NxTabNavBarComponent, NxTabLinkDirective, RouterLink],
 })
 export class TabsNavBarInjectionTokenExampleComponent {

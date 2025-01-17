@@ -8,7 +8,6 @@ import { NxProgressbarComponent } from '@aposin/ng-aquila/progressbar';
     selector: 'progressbar-example',
     templateUrl: './progressbar-example.html',
     styleUrls: ['./progressbar-example.css'],
-    standalone: true,
     imports: [NxProgressbarComponent],
 })
 export class ProgressbarExampleComponent {}

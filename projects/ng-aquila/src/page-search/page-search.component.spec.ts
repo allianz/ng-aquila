@@ -93,7 +93,6 @@ class PageSearchTestComponent {
             <input />
         </nx-page-search>
     `,
-    standalone: true,
     imports: [NxPageSearchModule, NxAutocompleteModule],
 })
 class PageSearchSimpleComponent extends PageSearchTestComponent {}
@@ -104,7 +103,6 @@ class PageSearchSimpleComponent extends PageSearchTestComponent {}
             <input />
         </nx-page-search>
     `,
-    standalone: true,
     imports: [NxPageSearchModule, NxAutocompleteModule],
 })
 class PageSearchHideButtonComponent extends PageSearchTestComponent {}

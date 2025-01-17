@@ -14,7 +14,6 @@ import {
     selector: 'timefield-custom-validation-example',
     templateUrl: './timefield-custom-validation-example.html',
     styleUrls: ['./timefield-custom-validation-example.css'],
-    standalone: true,
     imports: [NxTimefieldModule, NxErrorModule, ReactiveFormsModule, JsonPipe],
 })
 export class TimefieldCustomValidationExampleComponent

@@ -21,7 +21,6 @@ import { NxMaskDirective } from '@aposin/ng-aquila/mask';
     selector: 'mask-drop-characters-example',
     templateUrl: './mask-drop-characters-example.html',
     styleUrls: ['./mask-drop-characters-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

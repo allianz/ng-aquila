@@ -16,7 +16,6 @@ import { NxCheckboxComponent } from '@aposin/ng-aquila/checkbox';
     selector: 'checkbox-reactive-example',
     templateUrl: './checkbox-reactive-example.html',
     styleUrls: ['./checkbox-reactive-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

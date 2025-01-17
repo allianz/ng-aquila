@@ -14,7 +14,6 @@ import { NxPhoneInputComponent } from '@aposin/ng-aquila/phone-input';
     selector: 'phone-input-expert-example',
     templateUrl: 'phone-input-expert-example.html',
     styleUrls: ['./phone-input-expert-example.css'],
-    standalone: true,
     imports: [
         NxCheckboxComponent,
         NxFormfieldComponent,

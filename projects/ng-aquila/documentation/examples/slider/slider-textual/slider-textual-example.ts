@@ -21,7 +21,6 @@ enum FruitPreferenceType {
     selector: 'slider-textual-example',
     templateUrl: './slider-textual-example.html',
     styleUrls: ['./slider-textual-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

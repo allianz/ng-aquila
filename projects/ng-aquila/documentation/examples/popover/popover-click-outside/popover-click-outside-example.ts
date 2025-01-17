@@ -12,7 +12,6 @@ import {
     selector: 'popover-click-outside-example',
     templateUrl: './popover-click-outside-example.html',
     styleUrls: ['./popover-click-outside-example.css'],
-    standalone: true,
     imports: [NxButtonComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverClickOutsideExampleComponent {

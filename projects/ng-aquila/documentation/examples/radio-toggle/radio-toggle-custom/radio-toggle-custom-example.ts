@@ -12,7 +12,6 @@ import {
     selector: 'radio-toggle-custom-example',
     templateUrl: './radio-toggle-custom-example.html',
     styleUrls: ['./radio-toggle-custom-example.css'],
-    standalone: true,
     imports: [
         NxRadioToggleComponent,
         NxRadioToggleButtonComponent,

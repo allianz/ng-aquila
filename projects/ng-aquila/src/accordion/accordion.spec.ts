@@ -107,7 +107,6 @@ describe('NxAccordion', () => {
             <p>Content</p>
         </nx-expansion-panel>
     </nx-accordion>`,
-    standalone: true,
     imports: [NxAccordionModule],
 })
 class SetOfItems {
@@ -129,7 +128,6 @@ class SetOfItems {
             </nx-expansion-panel>
         </nx-expansion-panel>
     </nx-accordion>`,
-    standalone: true,
     imports: [NxAccordionModule],
 })
 class NestedPanel {
@@ -143,7 +141,6 @@ class NestedPanel {
             Some Content
         </nx-expansion-panel>
     </nx-accordion>`,
-    standalone: true,
     imports: [NxAccordionModule],
 })
 class FlushAccordion {

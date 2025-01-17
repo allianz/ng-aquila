@@ -22,7 +22,6 @@ export class SimpleModalComponent {}
     selector: 'modal-opening-example',
     templateUrl: './modal-opening-example.html',
     styleUrls: ['./modal-opening-example.css'],
-    standalone: true,
     imports: [NxButtonComponent, NxHeadlineComponent, NxCopytextComponent],
 })
 export class ModalOpeningExampleComponent {

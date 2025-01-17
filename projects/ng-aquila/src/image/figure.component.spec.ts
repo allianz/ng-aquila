@@ -77,7 +77,6 @@ describe('NxImageDirective', () => {
             <img alt="foo" />
         </figure>
     `,
-    standalone: true,
     imports: [NxImageModule],
 })
 class BasicImage extends ImageTest {}
@@ -88,7 +87,6 @@ class BasicImage extends ImageTest {}
             <img alt="foo" />
         </figure>
     `,
-    standalone: true,
     imports: [NxImageModule],
 })
 class FigureWithModifier extends ImageTest {}

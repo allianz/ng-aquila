@@ -9,7 +9,6 @@ import { NxCheckboxComponent } from '@aposin/ng-aquila/checkbox';
     selector: 'checkbox-simple-binding-example',
     templateUrl: './checkbox-simple-binding-example.html',
     styleUrls: ['./checkbox-simple-binding-example.css'],
-    standalone: true,
     imports: [FormsModule, NxCheckboxComponent],
 })
 export class CheckboxSimpleBindingExampleComponent {

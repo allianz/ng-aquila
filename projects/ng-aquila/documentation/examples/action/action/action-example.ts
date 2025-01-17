@@ -19,7 +19,6 @@ interface Action {
     selector: 'action-example',
     styleUrls: ['./action-example.css'],
     templateUrl: './action-example.html',
-    standalone: true,
     imports: [NxActionComponent, NxIconComponent, NxActionIconDirective],
 })
 export class ActionExampleComponent implements OnInit {

@@ -10,7 +10,6 @@ import { NxLinkComponent } from '@aposin/ng-aquila/link';
     selector: 'link-within-text-example',
     templateUrl: './link-within-text-example.html',
     styleUrls: ['./link-within-text-example.css'],
-    standalone: true,
     imports: [NxCopytextComponent, NxLinkComponent, RouterLink],
 })
 export class LinkWithinTextExampleComponent {}

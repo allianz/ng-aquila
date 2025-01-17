@@ -142,7 +142,6 @@ describe(NxTableComponent.name, () => {
         </tbody>
     </table>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxTableModule],
 })
 class SimpleTableComponent extends TableTest {}
@@ -161,7 +160,6 @@ class SimpleTableComponent extends TableTest {}
         </tbody>
     </table>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxTableModule],
 })
 class ZebraTableComponent extends TableTest {}
@@ -198,7 +196,6 @@ class ExpandableNonZebraTableComponent extends TableTest {}
         </tbody>
     </table>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxTableModule],
 })
 class CondensedTableComponent extends TableTest {}

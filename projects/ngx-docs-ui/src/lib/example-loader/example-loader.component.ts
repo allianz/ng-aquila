@@ -22,7 +22,6 @@ const EXAMPLE_SELECTOR = 'nx-docs-example';
 @Component({
     selector: 'nxv-example-loader',
     templateUrl: 'example-loader.component.html',
-    standalone: true,
     imports: [DocViewerComponent],
 })
 export class ExampleLoaderComponent {

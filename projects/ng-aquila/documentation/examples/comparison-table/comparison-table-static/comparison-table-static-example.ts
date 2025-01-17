@@ -25,7 +25,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     templateUrl: './comparison-table-static-example.html',
     styleUrls: ['./comparison-table-static-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxSwipebarComponent,

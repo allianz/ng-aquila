@@ -18,7 +18,6 @@ import { NXV_FEEDBACK_LINKS } from './../../core/tokens';
         '[class.is-mobile]': 'showMobileView',
         '[class.is-desktop]': '!showMobileView',
     },
-    standalone: true,
     imports: [NgTemplateOutlet, NxPopoverModule, NxIconModule, NxButtonModule],
 })
 export class NxvFeedbackComponent implements OnInit, OnDestroy {

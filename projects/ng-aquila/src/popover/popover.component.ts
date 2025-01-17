@@ -26,7 +26,6 @@ import { PopoverTriggerType } from './popover-trigger.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./popover.component.scss'],
     exportAs: 'nxPopover',
-    standalone: true,
     imports: [NgClass, NgStyle, NxIconModule, NgTemplateOutlet],
 })
 export class NxPopoverComponent implements OnDestroy, OnInit {

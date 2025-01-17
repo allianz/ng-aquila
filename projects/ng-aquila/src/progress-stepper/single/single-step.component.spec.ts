@@ -118,7 +118,6 @@ describe('NxSingleStepperComponent', () => {
             <nx-step label="Step 2"> step 2 content </nx-step>
         </nx-single-stepper>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule, NxLabelModule],
 })
 class SingleStepBasicTest extends SingleStepTest {}
@@ -130,7 +129,6 @@ class SingleStepBasicTest extends SingleStepTest {}
             <nx-step label="Step 2"> step 2 content </nx-step>
         </nx-single-stepper>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule, NxLabelModule],
 })
 class SingleStepCustomLabelTest extends SingleStepTest {}
@@ -143,7 +141,6 @@ class SingleStepCustomLabelTest extends SingleStepTest {}
             <nx-step label="Step 2"> step 2 content </nx-step>
         </nx-single-stepper>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule, NxLabelModule],
 })
 class SingleStepTitleTest extends SingleStepTest {}
@@ -177,7 +174,6 @@ class SingleStepTitleTest extends SingleStepTest {}
             </nx-step>
         </nx-single-stepper>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule, NxLabelModule],
 })
 class DirectivesTest extends SingleStepTest {}

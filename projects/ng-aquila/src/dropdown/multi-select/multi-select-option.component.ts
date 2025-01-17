@@ -10,6 +10,7 @@ let optionId = 0;
  * @docs-private
  */
 @Component({
+    standalone: true,
     selector: 'nx-multi-select-option',
     styleUrls: ['./multi-select-option.component.scss'],
     templateUrl: './multi-select-option.component.html',
@@ -21,7 +22,6 @@ let optionId = 0;
         '[class.is-outline]': 'appearance === "outline"',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxMultiSelectOptionComponent<T> implements Highlightable, ListKeyManagerOption {

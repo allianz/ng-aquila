@@ -7,7 +7,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
  */
 @Component({
     selector: 'formfield-spacing-adjuster-example',
-    standalone: true,
     imports: [NxFormfieldComponent, NxInputDirective],
     templateUrl: './formfield-spacing-adjuster-example.html',
     styleUrl: './formfield-spacing-adjuster-example.css',

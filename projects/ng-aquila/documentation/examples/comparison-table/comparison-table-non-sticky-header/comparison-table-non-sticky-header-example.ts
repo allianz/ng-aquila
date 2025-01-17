@@ -21,7 +21,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     templateUrl: './comparison-table-non-sticky-header-example.html',
     styleUrls: ['./comparison-table-non-sticky-header-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         NxSwipebarComponent,
         NxComparisonTableComponent,

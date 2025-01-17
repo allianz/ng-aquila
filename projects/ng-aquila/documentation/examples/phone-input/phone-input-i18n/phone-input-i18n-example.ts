@@ -34,7 +34,6 @@ export class MyPhoneInputIntl extends NxPhoneInputIntl {
             useClass: MyPhoneInputIntl,
         },
     ],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxFormfieldLabelDirective,

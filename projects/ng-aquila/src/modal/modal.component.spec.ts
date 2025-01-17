@@ -185,7 +185,6 @@ describe('NxModalComponent', () => {
         <nx-modal #basicModal id="basicModal" [modalBody]="basicModalBody" *nxOpenModalOnClick="basicModalButton"> </nx-modal>
     `,
     imports: [NxModalModule],
-    standalone: true,
 })
 class BasicModal extends ModalTest {}
 
@@ -201,7 +200,6 @@ class BasicModal extends ModalTest {}
         }
     `,
     imports: [NxModalModule],
-    standalone: true,
 })
 class ManualModal extends ModalTest {}
 
@@ -217,7 +215,6 @@ class ManualModal extends ModalTest {}
         }
     `,
     imports: [NxModalModule],
-    standalone: true,
 })
 class FixedWidthModal extends ModalTest {}
 
@@ -234,6 +231,5 @@ class FixedWidthModal extends ModalTest {}
         <nx-modal #basicModal id="basicModal" [modalBody]="basicModalBody" *nxOpenModalOnClick="basicModalButton"> </nx-modal>
     `,
     imports: [NxModalModule],
-    standalone: true,
 })
 class OnPushTest extends ModalTest {}

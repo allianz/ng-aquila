@@ -74,7 +74,6 @@ export const EXPANSION_PANEL_DEFAULT_OPTIONS = new InjectionToken<ExpansionPanel
         // to the same accordion.
         { provide: NxAccordionDirective, useValue: undefined },
     ],
-    standalone: true,
     imports: [CdkPortalOutlet, CommonModule],
 })
 export class NxExpansionPanelComponent extends CdkAccordionItem implements AfterContentInit, OnChanges, OnDestroy {

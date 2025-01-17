@@ -73,7 +73,6 @@ describe('NxProgressStepperComponent', () => {
             <nx-step label="Step 2"> step 2 content </nx-step> </nx-progress-stepper
         >>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule],
 })
 class ProgressBasicTest extends ProgressTest {}
@@ -85,7 +84,6 @@ class ProgressBasicTest extends ProgressTest {}
             <nx-step label="Step 2"> step 2 content </nx-step>
         </nx-progress-stepper>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule],
 })
 class ProgressBindingTest extends ProgressTest {}
@@ -96,7 +94,6 @@ class ProgressBindingTest extends ProgressTest {}
             <nx-step label="Step 2"> step 2 content </nx-step>
         </nx-progress-stepper>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule],
 })
 class ProgressClampTest extends ProgressTest {}

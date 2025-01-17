@@ -20,7 +20,6 @@ const myPaginationTexts: IPaginationTexts = {
     templateUrl: './pagination-localize-example.html',
     styleUrls: ['./pagination-localize-example.css'],
     providers: [{ provide: NX_PAGINATION_TEXTS, useValue: myPaginationTexts }],
-    standalone: true,
     imports: [NxPaginationComponent],
 })
 export class PaginationLocalizeExampleComponent {

@@ -21,7 +21,6 @@ import {
     selector: 'dropdown-focus-out-example',
     templateUrl: './dropdown-focus-out-example.html',
     styleUrls: ['./dropdown-focus-out-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

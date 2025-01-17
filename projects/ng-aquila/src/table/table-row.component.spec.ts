@@ -204,7 +204,6 @@ describe(NxTableRowComponent.name, () => {
         example content
     </tr>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxTableModule, NxDropdownModule],
 })
 class BasicTableRowComponent extends TableRowTest {}
@@ -236,7 +235,6 @@ class BasicTableRowComponent extends TableRowTest {}
         </tr>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxTableModule, NxDropdownModule],
 })
 class SelectableTableRowComponent extends TableRowTest {

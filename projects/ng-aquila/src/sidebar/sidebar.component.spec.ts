@@ -406,7 +406,6 @@ describe('NxSidebarComponent', () => {
 @Component({
     template: `<nx-sidebar>Hello sidebar</nx-sidebar>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxSidebarModule],
 })
 class BasicSidebar extends SidebarTest {}
@@ -414,7 +413,6 @@ class BasicSidebar extends SidebarTest {}
 @Component({
     template: `<nx-sidebar resizeable resizeHandleAriaLabel="example label">Hello sidebar</nx-sidebar>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxSidebarModule],
 })
 class ResizeableSidebar extends SidebarTest {}
@@ -429,7 +427,6 @@ class ResizeableSidebar extends SidebarTest {}
         </nx-sidebar>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxSidebarModule],
 })
 class WideSidebar extends SidebarTest {}

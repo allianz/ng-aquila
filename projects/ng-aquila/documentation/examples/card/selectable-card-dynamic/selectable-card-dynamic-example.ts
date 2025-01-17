@@ -23,7 +23,6 @@ import {
     selector: 'selectable-card-dynamic-example',
     templateUrl: './selectable-card-dynamic-example.html',
     styleUrls: ['./selectable-card-dynamic-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

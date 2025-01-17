@@ -9,7 +9,6 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
     templateUrl: 'video.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./video.component.scss'],
-    standalone: true,
     imports: [NxIconModule],
 })
 

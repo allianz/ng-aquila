@@ -10,7 +10,6 @@ import { NxRatingComponent } from '@aposin/ng-aquila/rating';
     selector: 'rating-reactive-example',
     templateUrl: './rating-reactive-example.html',
     styleUrls: ['./rating-reactive-example.css'],
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxRatingComponent, JsonPipe],
 })
 export class RatingReactiveExampleComponent {

@@ -24,7 +24,6 @@ import { Observable } from 'rxjs';
     selector: 'ag-grid-opensource-example',
     templateUrl: './ag-grid-opensource-example.html',
     styleUrls: ['./ag-grid-opensource-example.css'],
-    standalone: true,
     imports: [NxButtonComponent, AgGridModule, AsyncPipe],
 })
 export class AgGridOpensourceExampleComponent {

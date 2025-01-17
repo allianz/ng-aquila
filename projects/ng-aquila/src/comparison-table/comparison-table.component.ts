@@ -40,7 +40,6 @@ import { NxToggleSectionAnimations } from './toggle-section/toggle-section-anima
     styleUrls: ['./comparison-table.component.scss'],
     animations: [NxToggleSectionAnimations.bodyExpansion],
     providers: [{ provide: NxComparisonTableBase, useExisting: NxComparisonTableComponent }],
-    standalone: true,
     imports: [NgTemplateOutlet, NxComparisonTableFlexRow, NgStyle, NxComparisonTableDesktopGroup],
 })
 export class NxComparisonTableComponent extends NxComparisonTableBase implements OnInit, AfterViewInit, OnDestroy {

@@ -8,7 +8,6 @@ import { NxRadioComponent } from '@aposin/ng-aquila/radio-button';
     selector: 'radio-button-sizes-example',
     templateUrl: './radio-button-sizes-example.html',
     styleUrls: ['./radio-button-sizes-example.css'],
-    standalone: true,
     imports: [NxRadioComponent],
 })
 export class RadioButtonSizesExampleComponent {}

@@ -20,7 +20,6 @@ import {
     selector: 'dropdown-rendering-items-example',
     templateUrl: './dropdown-rendering-items-example.html',
     styleUrls: ['./dropdown-rendering-items-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

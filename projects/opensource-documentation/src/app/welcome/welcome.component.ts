@@ -11,7 +11,6 @@ import { FooterComponent } from '../footer/footer.component';
     selector: 'doc-welcome',
     templateUrl: './welcome.component.html',
     styleUrls: ['./welcome.component.scss'],
-    standalone: true,
     imports: [NxLayoutComponent, NxRowComponent, NxColComponent, NxButtonComponent, RouterLink, FooterComponent],
 })
 export class WelcomeComponent {}

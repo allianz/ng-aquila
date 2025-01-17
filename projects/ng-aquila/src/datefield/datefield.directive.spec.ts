@@ -348,13 +348,11 @@ describe('NxDatefieldDirective with Moment', () => {
             <input nxInput nxDatefield [disabled]="disabled" />
         </nx-formfield>
     `,
-    standalone: true,
     imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class BasicDatefield extends DatefieldTest {}
 
 @Component({
-    standalone: true,
     imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
     template: `
         <nx-formfield label="Birthday">
@@ -392,14 +390,12 @@ class ReadonlyDatefield extends DatefieldTest {
 
 @Component({
     template: `<input nxInput nxDatefield [(ngModel)]="value" [parseFormat]="parseFormat" [displayFormat]="displayFormat" [strict]="strict" />`,
-    standalone: true,
     imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class AdvancedDatefield extends DatefieldTest {}
 
 @Component({
     template: `<input nxInput nxDatefield [(ngModel)]="value" [min]="min" [max]="max" />`,
-    standalone: true,
     imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class MinMaxDatefield extends DatefieldTest {}
@@ -412,7 +408,6 @@ class MinMaxDatefield extends DatefieldTest {}
             </nx-formfield>
         </form>
     `,
-    standalone: true,
     imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveDatefield extends DatefieldTest {
@@ -502,7 +497,6 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
             </nx-formfield>
         </form>
     `,
-    standalone: true,
     imports: [NxDatefieldModule, NxIsoDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveIsoDatefield extends DatefieldIsoTest {

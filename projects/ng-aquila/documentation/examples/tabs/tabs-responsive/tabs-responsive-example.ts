@@ -9,7 +9,6 @@ import { NxTabComponent, NxTabGroupComponent } from '@aposin/ng-aquila/tabs';
     selector: 'tabs-responsive-example',
     templateUrl: './tabs-responsive-example.html',
     styleUrls: ['./tabs-responsive-example.css'],
-    standalone: true,
     imports: [NxHeadlineComponent, NxTabGroupComponent, NxTabComponent],
 })
 export class TabsResponsiveExampleComponent {}

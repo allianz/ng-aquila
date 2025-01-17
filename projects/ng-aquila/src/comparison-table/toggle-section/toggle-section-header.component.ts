@@ -17,7 +17,6 @@ let nextId = 0;
     templateUrl: './toggle-section-header.component.html',
     styleUrls: ['./toggle-section-header.component.scss'],
     animations: [NxToggleSectionAnimations.indicatorRotate],
-    standalone: true,
     imports: [NgTemplateOutlet, NxIconModule, NgStyle],
 })
 export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy {

@@ -261,35 +261,30 @@ describe('NxIconComponent', () => {
 
 @Component({
     template: `<nx-icon name="heart"></nx-icon>`,
-    standalone: true,
     imports: [NxIconModule],
 })
 class BasicIcon extends IconTest {}
 
 @Component({
     template: `<nx-icon name="heart" size="m"></nx-icon>`,
-    standalone: true,
     imports: [NxIconModule],
 })
 class SizeIcon extends IconTest {}
 
 @Component({
     template: `<nx-icon name="heart" outline="true"></nx-icon>`,
-    standalone: true,
     imports: [NxIconModule],
 })
 class OutlineIcon extends IconTest {}
 
 @Component({
     template: `<nx-icon name="heart" fill="true"></nx-icon>`,
-    standalone: true,
     imports: [NxIconModule],
 })
 class FillIcon extends IconTest {}
 
 @Component({
     template: `<nx-icon [name]="name" [size]="size" fill="true"></nx-icon>`,
-    standalone: true,
     imports: [NxIconModule],
 })
 class DynamicIcon extends IconTest {
@@ -299,7 +294,6 @@ class DynamicIcon extends IconTest {
 
 @Component({
     template: `<nx-icon [name]="name" [font]="font"></nx-icon>`,
-    standalone: true,
     imports: [NxIconModule],
 })
 class FontIcon extends IconTest {

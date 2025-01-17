@@ -9,6 +9,7 @@ let nextId = 0;
  * @docs-private
  */
 @Component({
+    standalone: true,
     selector: 'nx-multi-select-all',
     styleUrls: ['./multi-select-all.component.scss'],
     templateUrl: './multi-select-all.component.html',
@@ -19,7 +20,6 @@ let nextId = 0;
         '[attr.aria-disabled]': 'disabled || null',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxCheckboxModule],
 })
 export class NxMultiSelectAllComponent<T> implements Highlightable, ListKeyManagerOption {

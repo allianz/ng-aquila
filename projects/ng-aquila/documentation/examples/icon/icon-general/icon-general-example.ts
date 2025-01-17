@@ -8,7 +8,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     selector: 'icon-general-example',
     templateUrl: './icon-general-example.html',
     styleUrls: ['./icon-general-example.css'],
-    standalone: true,
     imports: [NxIconComponent],
 })
 export class IconGeneralExampleComponent {}

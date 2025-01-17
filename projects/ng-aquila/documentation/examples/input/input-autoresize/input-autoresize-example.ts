@@ -10,7 +10,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'input-autoresize-example',
     templateUrl: './input-autoresize-example.html',
     styleUrls: ['./input-autoresize-example.css'],
-    standalone: true,
     imports: [NxFormfieldComponent, NxInputDirective, CdkTextareaAutosize],
 })
 export class InputAutoresizeExampleComponent {}

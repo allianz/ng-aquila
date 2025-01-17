@@ -106,7 +106,6 @@ describe(NxExpandableTableCellComponent.name, () => {
         </tr>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxTableModule],
 })
 class BasicExpandableTableCellComponent extends ExpandableTableCellTest {}

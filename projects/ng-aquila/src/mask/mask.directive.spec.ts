@@ -1125,7 +1125,6 @@ describe('NxMaskDirective', () => {
 
 @Component({
     template: `<input [nxMask]="mask" />`,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class BasicMaskComponent extends MaskTest {}
@@ -1142,7 +1141,6 @@ class BasicMaskComponent extends MaskTest {}
             [(ngModel)]="modelVal"
         />
     `,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class ConfigurableMaskComponent extends MaskTest {}
@@ -1153,13 +1151,11 @@ class ConfigurableMaskComponent extends MaskTest {}
             <input [nxMask]="mask" formControlName="maskInput" [validateMask]="validateMask" [deactivateMask]="deactivateMask" />
         </form>
     `,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class ValidationMaskComponent extends MaskTest {}
 
 @Component({
-    standalone: true,
     template: ` <input [nxMask]="mask" [(ngModel)]="modelVal" [deactivateMask]="true" /> `,
     imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
@@ -1169,7 +1165,6 @@ class PresetDeactiveMaskComponent extends MaskTest {
 
 @Component({
     template: ` <input [nxMask]="mask" [(ngModel)]="modelVal" /> `,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class NgModelMask extends MaskTest {
@@ -1179,7 +1174,6 @@ class NgModelMask extends MaskTest {
 
 @Component({
     template: `<input [nxMask]="mask" [separators]="separators" />`,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class HookedMaskComponent extends MaskTest {

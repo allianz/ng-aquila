@@ -18,7 +18,6 @@ import { NxSortHeaderIntl } from './sort-header-intl';
         '(keydown)': '_onKeydown($event)',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {

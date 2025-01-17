@@ -9,7 +9,6 @@ import {
     selector: 'circle-toggle-text-example',
     templateUrl: './circle-toggle-text-example.html',
     styleUrls: ['./circle-toggle-text-example.css'],
-    standalone: true,
     imports: [NxCircleToggleGroupComponent, NxCircleToggleComponent],
 })
 export class CircleToggleTextExampleComponent {

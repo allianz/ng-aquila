@@ -10,7 +10,6 @@ import { NxSpinnerComponent } from '@aposin/ng-aquila/spinner';
     selector: 'spinner-aria-announcement-example',
     templateUrl: './spinner-aria-announcement-example.html',
     styleUrls: ['./spinner-aria-announcement-example.css'],
-    standalone: true,
     imports: [NxSpinnerComponent, NxDataDisplayComponent, NxHeadlineComponent],
 })
 export class SpinnerAriaAnnouncementExampleComponent {

@@ -13,7 +13,6 @@ import {
     selector: 'popover-lazyload-example',
     templateUrl: './popover-lazyload-example.html',
     styleUrls: ['./popover-lazyload-example.css'],
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxPopoverTriggerDirective,

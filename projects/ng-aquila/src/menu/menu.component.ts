@@ -14,7 +14,6 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
     host: {
         '[attr.aria-expanded]': 'open',
     },
-    standalone: true,
     imports: [],
 })
 export class NxMenuComponent {

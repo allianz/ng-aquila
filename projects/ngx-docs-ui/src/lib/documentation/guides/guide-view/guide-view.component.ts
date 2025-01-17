@@ -13,7 +13,6 @@ import { NxvTableOfContentsComponent } from '../../table-of-contents/table-of-co
     selector: 'nxv-guide-view',
     templateUrl: 'guide-view.component.html',
     styleUrls: ['guide-view.component.scss'],
-    standalone: true,
     imports: [DocViewerComponent, NxvTableOfContentsComponent],
 })
 export class NxvGuideViewComponent implements OnDestroy {

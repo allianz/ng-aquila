@@ -9,7 +9,6 @@ import { NxSliderComponent } from '@aposin/ng-aquila/slider';
     selector: 'slider-template-example',
     templateUrl: './slider-template-example.html',
     styleUrls: ['./slider-template-example.css'],
-    standalone: true,
     imports: [FormsModule, NxSliderComponent],
 })
 export class SliderTemplateExampleComponent {

@@ -11,7 +11,6 @@ import {
     selector: 'circle-toggle-group-example',
     templateUrl: './circle-toggle-group-example.html',
     styleUrls: ['./circle-toggle-group-example.css'],
-    standalone: true,
     imports: [NxCircleToggleGroupComponent, NxCircleToggleComponent],
 })
 export class CircleToggleGroupExampleComponent {

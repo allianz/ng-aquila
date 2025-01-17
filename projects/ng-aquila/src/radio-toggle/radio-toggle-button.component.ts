@@ -52,7 +52,6 @@ export class NxRadioToggleButtonChange {
         '(focus)': '_forwardFocusToInput()',
         '[class.is-readonly]': 'readonly',
     },
-    standalone: true,
     imports: [NxIconModule, NgClass],
 })
 export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseComponent implements AfterViewInit, OnDestroy {

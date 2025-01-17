@@ -14,7 +14,6 @@ import {
     selector: 'checkbox-group-basic-example',
     templateUrl: './checkbox-group-basic-example.html',
     styleUrls: ['./checkbox-group-basic-example.css'],
-    standalone: true,
     imports: [
         NxCheckboxGroupComponent,
         FormsModule,

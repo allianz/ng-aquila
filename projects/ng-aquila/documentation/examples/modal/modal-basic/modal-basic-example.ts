@@ -20,7 +20,6 @@ import {
     selector: 'modal-basic-example',
     templateUrl: './modal-basic-example.html',
     styleUrls: ['./modal-basic-example.css'],
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxHeadlineComponent,

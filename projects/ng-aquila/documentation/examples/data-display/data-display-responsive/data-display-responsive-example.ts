@@ -35,7 +35,6 @@ const options: DataDisplayDefaultOptions = {
             useValue: options,
         },
     ],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

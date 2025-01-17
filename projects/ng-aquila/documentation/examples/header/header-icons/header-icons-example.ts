@@ -17,7 +17,6 @@ import { NxLinkComponent } from '@aposin/ng-aquila/link';
     selector: 'header-icons-example',
     templateUrl: './header-icons-example.html',
     styleUrls: ['./header-icons-example.css'],
-    standalone: true,
     imports: [
         NxHeaderComponent,
         NxHeaderBrandDirective,

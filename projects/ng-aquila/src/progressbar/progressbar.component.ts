@@ -14,7 +14,6 @@ import { ChangeDetectionStrategy, Component, Input, numberAttribute } from '@ang
         '[attr.aria-label]': 'this.ariaLabel',
         '[attr.aria-labelledby]': 'this.ariaLabelledBy',
     },
-    standalone: true,
     imports: [NgStyle],
 })
 export class NxProgressbarComponent {

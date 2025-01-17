@@ -14,7 +14,6 @@ import {
     selector: 'footer-basic-example',
     templateUrl: './footer-basic-example.html',
     styleUrls: ['footer-basic-example.css'],
-    standalone: true,
     imports: [
         NxFooterComponent,
         NxFooterCopyrightDirective,

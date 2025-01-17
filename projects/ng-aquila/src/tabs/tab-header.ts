@@ -33,7 +33,6 @@ import { NxTabLabelWrapperDirective } from './tab-label-wrapper';
         '[class.at-start]': '_isScrolledToStart',
         '[class.scrollable]': 'scrollable',
     },
-    standalone: true,
     imports: [NxTabScrollIndicator],
 })
 export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterContentInit, AfterViewInit {

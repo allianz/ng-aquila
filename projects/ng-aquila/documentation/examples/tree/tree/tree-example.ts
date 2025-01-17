@@ -42,7 +42,6 @@ interface MyFlatTreeNode extends NxFlatTreeNode {
     selector: 'tree-example',
     templateUrl: './tree-example.html',
     styleUrls: ['./tree-example.css'],
-    standalone: true,
     imports: [
         NxTreeComponent,
         NxTreeNodeDefDirective,

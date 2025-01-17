@@ -37,7 +37,6 @@ export interface Page {
     templateUrl: './pagination.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./pagination.component.scss'],
-    standalone: true,
     imports: [NxIconModule, NgClass],
 })
 export class NxPaginationComponent implements OnInit, AfterContentInit, AfterViewInit, OnDestroy {

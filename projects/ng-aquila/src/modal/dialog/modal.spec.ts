@@ -8,7 +8,6 @@ import { SpyLocation } from '@angular/common/testing';
 import {
     ChangeDetectionStrategy,
     Component,
-    ComponentFactoryResolver,
     Directive,
     forwardRef,
     Inject,
@@ -824,18 +823,6 @@ describe('NxDialog', () => {
 
         dialog.open(PizzaMsg, { scrollStrategy });
         expect(scrollStrategy.enable).toHaveBeenCalled();
-    }));
-
-    it('should be able to pass in an alternate ComponentFactoryResolver', inject([ComponentFactoryResolver], (resolver: ComponentFactoryResolver) => {
-        spyOn(resolver, 'resolveComponentFactory').and.callThrough();
-
-        dialog.open(PizzaMsg, {
-            viewContainerRef: testViewContainerRef,
-            componentFactoryResolver: resolver,
-        });
-        viewContainerFixture.detectChanges();
-
-        expect(resolver.resolveComponentFactory).toHaveBeenCalled();
     }));
 
     it('should return the current state of the dialog', fakeAsync(() => {
@@ -1684,7 +1671,6 @@ class ComponentWithOnPushViewContainer {
 
 @Component({
     template: `<nx-with-view-container></nx-with-view-container>`,
-    standalone: true,
     imports: [DirectiveWithViewContainer],
 })
 class ComponentWithChildViewContainer {
@@ -1732,7 +1718,6 @@ class PizzaMsg {
             {{ headline }}
         </h2>
     `,
-    standalone: true,
     imports: [NxModalTitleComponent],
 })
 class TitleStatusDialog {
@@ -1756,7 +1741,6 @@ class TitleStatusDialog {
             <button class="with-submit" type="submit" nxModalClose>Should have submit</button>
         </div>
     `,
-    standalone: true,
     imports: [NxModalContentDirective, NxModalActionsDirective, NxModalCloseDirective],
 })
 class ContentElementDialog {}
@@ -1774,7 +1758,6 @@ class ContentElementDialog {}
             </div>
         </ng-template>
     `,
-    standalone: true,
     imports: [NxModalContentDirective, NxModalActionsDirective, NxModalCloseDirective],
 })
 class ComponentWithContentElementTemplateRef {
@@ -1784,7 +1767,6 @@ class ComponentWithContentElementTemplateRef {
 @Component({
     template: '',
     providers: [NxDialogService],
-    standalone: true,
     imports: [NxModalModule, forwardRef(() => DialogTestModule)],
 })
 class ComponentThatProvidesNxDialog {

@@ -16,7 +16,6 @@ import {
     templateUrl: './table-column-resize-example.html',
     styleUrls: ['./table-column-resize-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         NxTableComponent,
         NxTableCellClipDirective,

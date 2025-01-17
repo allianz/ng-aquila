@@ -401,7 +401,6 @@ describe('NxMultiStepperComponent', () => {
             <nx-step label="Step 2"> step 2 content </nx-step>
         </nx-multi-stepper>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule, NxInputModule, NxFormfieldModule, FormsModule, ReactiveFormsModule, NxDropdownModule],
 })
 class MultiStepDirectionTest extends MultiStepTest {
@@ -421,7 +420,6 @@ class MultiStepDirectionTest extends MultiStepTest {
             <nx-step label="Step2"></nx-step>
         </nx-multi-stepper>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule, NxInputModule, NxFormfieldModule, FormsModule, ReactiveFormsModule, NxDropdownModule],
 })
 class LinearStepBasicTest extends MultiStepTest {
@@ -436,7 +434,6 @@ class LinearStepBasicTest extends MultiStepTest {
             <nx-step label="Step 2" [completed]="completedTwo"> step 2 content </nx-step>
         </nx-multi-stepper>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule, NxInputModule, NxFormfieldModule, FormsModule, ReactiveFormsModule, NxDropdownModule],
 })
 class MultiStepCompletionTest extends MultiStepTest {
@@ -463,7 +460,6 @@ class MultiStepCompletionTest extends MultiStepTest {
             <nx-step label="Done"> asdf </nx-step>
         </nx-multi-stepper>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule, NxInputModule, NxFormfieldModule, FormsModule, ReactiveFormsModule, NxDropdownModule],
 })
 class MultiStepValidationTest extends MultiStepTest {
@@ -480,7 +476,6 @@ class MultiStepValidationTest extends MultiStepTest {
             <nx-step label="Step 2"> step 2 content </nx-step>
         </nx-multi-stepper>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule, NxInputModule, NxFormfieldModule, FormsModule, ReactiveFormsModule, NxDropdownModule],
 })
 class MultiStepBasicTest extends MultiStepTest {}
@@ -498,7 +493,6 @@ class MultiStepBasicTest extends MultiStepTest {}
             </nx-step-group>
         </nx-multi-stepper>
     `,
-    standalone: true,
     imports: [NxProgressStepperModule, NxInputModule, NxFormfieldModule, FormsModule, ReactiveFormsModule, NxDropdownModule],
 })
 class MultiStepGroupTest extends MultiStepTest {

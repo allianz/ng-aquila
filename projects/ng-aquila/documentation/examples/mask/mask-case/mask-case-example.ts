@@ -25,7 +25,6 @@ import {
     selector: 'mask-case-example',
     templateUrl: './mask-case-example.html',
     styleUrls: ['./mask-case-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

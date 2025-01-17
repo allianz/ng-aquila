@@ -14,7 +14,6 @@ import { NxTaglistComponent } from '@aposin/ng-aquila/taglist';
     selector: 'taglist-basic-example',
     templateUrl: './taglist-basic-example.html',
     styleUrls: ['./taglist-basic-example.css'],
-    standalone: true,
     imports: [
         NxTaglistComponent,
         NxFormfieldComponent,

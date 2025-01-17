@@ -13,7 +13,6 @@ import {
     selector: 'popover-extended-example',
     templateUrl: './popover-extended-example.html',
     styleUrls: ['./popover-extended-example.css'],
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxPopoverTriggerDirective,

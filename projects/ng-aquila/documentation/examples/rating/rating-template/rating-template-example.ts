@@ -9,7 +9,6 @@ import { NxRatingComponent } from '@aposin/ng-aquila/rating';
     selector: 'rating-template-example',
     templateUrl: './rating-template-example.html',
     styleUrls: ['./rating-template-example.css'],
-    standalone: true,
     imports: [NxRatingComponent, FormsModule],
 })
 export class RatingTemplateExampleComponent {

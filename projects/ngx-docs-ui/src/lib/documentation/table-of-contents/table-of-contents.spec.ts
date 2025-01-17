@@ -85,7 +85,6 @@ describe('NxvTableOfContentsComponent', () => {
         </div>
         <nxv-table-of-contents container="test-content"> </nxv-table-of-contents>
     `,
-    standalone: true,
     imports: [NxvTableOfContentsModule, RouterTestingModule],
 })
 class TableOfContentsTest {}

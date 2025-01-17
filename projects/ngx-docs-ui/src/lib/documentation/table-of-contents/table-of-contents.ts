@@ -29,7 +29,6 @@ export interface Link {
     styleUrls: ['./table-of-contents.scss'],
     templateUrl: './table-of-contents.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [RouterLink],
 })
 export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {

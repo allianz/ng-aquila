@@ -59,7 +59,6 @@ describe(NxHeaderCellDirective.name, () => {
 @Component({
     template: `<td nxHeaderCell>example content</td>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxTableModule],
 })
 class BasicHeaderCellComponent extends HeaderCellTest {}

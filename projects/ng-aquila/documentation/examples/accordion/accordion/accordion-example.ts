@@ -15,7 +15,6 @@ import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
     selector: 'accordion-example',
     templateUrl: './accordion-example.html',
     styleUrls: ['./accordion-example.css'],
-    standalone: true,
     imports: [
         NxAccordionDirective,
         NxExpansionPanelComponent,

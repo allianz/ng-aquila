@@ -266,7 +266,6 @@ describe('NxCheckboxGroupComponent', () => {
             <nx-checkbox>Term 3</nx-checkbox>
         </nx-checkbox-group>
     `,
-    standalone: true,
     imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 class BasicCheckboxGroup extends CheckboxGroupTest {}
@@ -280,7 +279,6 @@ class BasicCheckboxGroup extends CheckboxGroupTest {}
             <nx-checkbox>Term 3</nx-checkbox>
         </nx-checkbox-group>
     `,
-    standalone: true,
     imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 class ConfigurableCheckboxGroup extends CheckboxGroupTest {}
@@ -297,7 +295,6 @@ class ConfigurableCheckboxGroup extends CheckboxGroupTest {}
             </nx-checkbox-group>
         </form>
     `,
-    standalone: true,
     imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 class CheckboxGroupValidation extends CheckboxGroupTest {
@@ -329,7 +326,6 @@ class CheckboxGroupValidation extends CheckboxGroupTest {
             </nx-checkbox-group>
         </form>
     `,
-    standalone: true,
     imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 class CheckboxGroupDynamic extends CheckboxGroupTest {
@@ -373,7 +369,6 @@ class CheckboxGroupDynamic extends CheckboxGroupTest {
             <button nxButton="primary small" id="submit-button" type="submit">Click</button>
         </form>
     `,
-    standalone: true,
     imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule, JsonPipe],
 })
 export class CheckboxGroupReactive extends CheckboxGroupTest {
@@ -397,7 +392,6 @@ export class CheckboxGroupReactive extends CheckboxGroupTest {
             </nx-checkbox-group>
         </form>
     `,
-    standalone: true,
     imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 export class ConditionalCheckboxGroupReactive extends CheckboxGroupTest {
@@ -423,7 +417,6 @@ export class ConditionalCheckboxGroupReactive extends CheckboxGroupTest {
             </nx-checkbox-group>
         </form>
     `,
-    standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [NxCheckboxModule, NxErrorModule, NxLabelModule],
 })

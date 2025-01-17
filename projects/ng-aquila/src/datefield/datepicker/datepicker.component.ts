@@ -107,7 +107,6 @@ export const DATEPICKER_DEFAULT_OPTIONS = new InjectionToken<DatepickerDefaultOp
     },
     exportAs: 'nxDatepickerContent',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [CdkTrapFocus, NxIconModule, NxCalendarComponent, NgClass, NxButtonModule],
 })
 export class NxDatepickerContentComponent<D> implements AfterViewInit, OnDestroy {

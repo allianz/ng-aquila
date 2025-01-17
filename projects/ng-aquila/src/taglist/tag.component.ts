@@ -29,7 +29,6 @@ import { NxTagIntl } from './tag-intl';
         '(keydown)': 'enterKeyHandler($event)',
         '[attr.tabindex]': 'tabindex',
     },
-    standalone: true,
     imports: [NxIconModule, NxButtonModule],
 })
 export class NxTagComponent implements OnDestroy, AfterViewInit {

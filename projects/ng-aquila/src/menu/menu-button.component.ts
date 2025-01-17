@@ -21,7 +21,6 @@ export type NxMenuButtonType = 'root' | 'nested';
         class: 'nx-menu-button',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxMenuButtonComponent implements OnDestroy, AfterViewInit {

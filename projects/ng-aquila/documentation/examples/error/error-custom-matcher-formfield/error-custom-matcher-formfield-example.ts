@@ -37,7 +37,6 @@ export class ShowOnDirtyErrorStateMatcher implements ErrorStateMatcher {
     providers: [
         { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
     ],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxInputDirective,

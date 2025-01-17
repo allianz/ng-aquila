@@ -105,7 +105,6 @@ describe('NxSmallStageComponent', () => {
             <nx-small-stage-image nxSmallStageImageBottom src="baz"></nx-small-stage-image>
         </nx-small-stage>
     `,
-    standalone: true,
     imports: [NxSmallStageModule],
 })
 class BasicSmallStage extends SmallStageTest {}
@@ -119,7 +118,6 @@ class BasicSmallStage extends SmallStageTest {}
             <nx-small-stage-image nxSmallStageImageEnd src="bar"></nx-small-stage-image>
         </nx-small-stage>
     `,
-    standalone: true,
     imports: [NxSmallStageModule],
 })
 class ExpertSmallStage extends SmallStageTest {}
@@ -133,7 +131,6 @@ class ExpertSmallStage extends SmallStageTest {}
             <nx-small-stage-image nxSmallStageImageEnd src="bar"></nx-small-stage-image>
         </nx-small-stage>
     `,
-    standalone: true,
     imports: [NxSmallStageModule],
 })
 class SmallTextSmallStage extends SmallStageTest {}

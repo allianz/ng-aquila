@@ -26,7 +26,6 @@ interface ExampleConfig {
     templateUrl: './example-viewer.component.html',
     styleUrls: ['./example-viewer.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         NxButtonModule,
         NxIconModule,

@@ -18,7 +18,6 @@ import { NxMaskDirective } from '@aposin/ng-aquila/mask';
     selector: 'mask-example',
     templateUrl: './mask-example.html',
     styleUrls: ['./mask-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

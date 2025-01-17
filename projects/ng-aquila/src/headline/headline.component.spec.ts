@@ -136,21 +136,18 @@ describe('NxHeadlineDirective', () => {
 
 @Component({
     template: `<h1 [nxHeadline]="size">Hello Headline</h1>`,
-    standalone: true,
     imports: [NxHeadlineModule],
 })
 class BasicHeadline extends HeadlineTest {}
 
 @Component({
     template: `<h1 nxHeadline="page" class="some-arbitray-class-name">With arbitrary class</h1>`,
-    standalone: true,
     imports: [NxHeadlineModule],
 })
 class HeadlineWithArbitraryClass extends HeadlineTest {}
 
 @Component({
     template: `<h1 nxHeadline [size]="typedSize" [negative]="negative">Hello Headline</h1>`,
-    standalone: true,
     imports: [NxHeadlineModule],
 })
 class DynamicHeadline extends HeadlineTest {}

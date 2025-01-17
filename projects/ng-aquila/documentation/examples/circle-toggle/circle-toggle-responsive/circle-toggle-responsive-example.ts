@@ -11,7 +11,6 @@ import {
     selector: 'circle-toggle-responsive-example',
     templateUrl: './circle-toggle-responsive-example.html',
     styleUrls: ['./circle-toggle-responsive-example.css'],
-    standalone: true,
     imports: [NxCircleToggleGroupComponent, NxCircleToggleComponent],
 })
 export class CircleToggleResponsiveExampleComponent {

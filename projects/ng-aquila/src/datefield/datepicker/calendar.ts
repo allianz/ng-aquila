@@ -52,7 +52,6 @@ const yearsPerPage = 20;
     },
     exportAs: 'nxCalendar',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxIconModule, CdkMonitorFocus, NxMonthViewComponent, NxYearViewComponent, NxMultiYearViewComponent, NxButtonModule],
 })
 export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, OnDestroy, OnChanges {

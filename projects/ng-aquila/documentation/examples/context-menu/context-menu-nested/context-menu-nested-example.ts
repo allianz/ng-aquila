@@ -14,7 +14,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     selector: 'context-menu-nested-example',
     templateUrl: './context-menu-nested-example.html',
     styleUrls: ['./context-menu-nested-example.css'],
-    standalone: true,
     imports: [
         NxContextMenuComponent,
         NxContextMenuItemComponent,

@@ -423,7 +423,6 @@ abstract class PhoneInputTest {
     template: `<nx-formfield label="Telephone number">
         <nx-phone-input [countryCode]="countryCode"></nx-phone-input>
     </nx-formfield>`,
-    standalone: true,
     imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class DefaultPhoneInput extends PhoneInputTest {}
@@ -440,7 +439,6 @@ class DefaultPhoneInput extends PhoneInputTest {}
             [countryCode]="countryCode"
         ></nx-phone-input>
     </nx-formfield>`,
-    standalone: true,
     imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class ConfigurablePhoneInput extends PhoneInputTest {
@@ -452,7 +450,6 @@ class ConfigurablePhoneInput extends PhoneInputTest {
         <nx-phone-input [formControl]="formControl" [readonly]="readonly" [countryCode]="countryCode"></nx-phone-input>
         <nx-error nxFormfieldError>Error message</nx-error>
     </nx-formfield>`,
-    standalone: true,
     imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class ReactiveFormsPhoneInput extends PhoneInputTest {
@@ -470,7 +467,6 @@ class MyIntl extends NxPhoneInputIntl {
         <nx-phone-input></nx-phone-input>
     </nx-formfield>`,
     providers: [{ provide: NxPhoneInputIntl, useClass: MyIntl }],
-    standalone: true,
     imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class I18nProviderTest extends PhoneInputTest {}
@@ -480,7 +476,6 @@ class I18nProviderTest extends PhoneInputTest {}
         <nx-phone-input [inputFormatter]="formatter" [formControl]="formControl"></nx-phone-input>
         <nx-error nxFormfieldError>Error message</nx-error>
     </nx-formfield>`,
-    standalone: true,
     imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class CustomFormatter extends PhoneInputTest {
@@ -491,7 +486,6 @@ class CustomFormatter extends PhoneInputTest {
 }
 
 @Component({
-    standalone: true,
     template: `<nx-formfield label="Telephone number">
         <nx-phone-input [countryCode]="countryCode" lineNumberLabel="custom line number" areaCodeLabel="custom area code"></nx-phone-input>
     </nx-formfield>`,

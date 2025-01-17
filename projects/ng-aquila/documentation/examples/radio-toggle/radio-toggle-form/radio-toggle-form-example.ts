@@ -12,7 +12,6 @@ import {
     selector: 'radio-toggle-form-example',
     templateUrl: './radio-toggle-form-example.html',
     styleUrls: ['./radio-toggle-form-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         NxRadioToggleComponent,

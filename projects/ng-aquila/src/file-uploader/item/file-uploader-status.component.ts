@@ -14,7 +14,6 @@ import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
             <nx-icon name="check-circle" size="s" [attr.aria-label]="uploadedLabel || null"> </nx-icon>
         }
     `,
-    standalone: true,
     imports: [NxSpinnerModule, NxIconModule],
 })
 export class NxFileUploaderItemStatus {

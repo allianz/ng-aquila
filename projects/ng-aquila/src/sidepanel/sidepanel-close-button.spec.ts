@@ -67,7 +67,6 @@ describe('NxSidepanelCloseButtonComponent', () => {
             <button nxSidepanelCloseButton aria-label="Close Sidepanel"></button>
         </nx-sidepanel>
     `,
-    standalone: true,
     imports: [NxSidepanelModule],
 })
 class BasicSidepanel extends SidepanelCloseButtonTest {}

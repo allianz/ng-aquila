@@ -20,7 +20,6 @@ import { NxComparisonTableFlexRow } from '../flex-row/flex-row.component';
     selector: 'nx-comparison-table-desktop-group',
     templateUrl: './desktop-group.component.html',
     styleUrls: ['./desktop-group.component.scss'],
-    standalone: true,
     imports: [NxComparisonTableFlexRow, NxIconModule],
 })
 export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {

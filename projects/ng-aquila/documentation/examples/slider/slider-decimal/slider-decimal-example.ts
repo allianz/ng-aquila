@@ -11,7 +11,6 @@ import { NxSliderComponent } from '@aposin/ng-aquila/slider';
     selector: 'slider-decimal-example',
     templateUrl: './slider-decimal-example.html',
     styleUrls: ['./slider-decimal-example.css'],
-    standalone: true,
     imports: [
         NxSliderComponent,
         NxFormfieldComponent,

@@ -15,7 +15,6 @@ import {
     selector: 'pagination-a11y-example',
     templateUrl: './pagination-a11y-example.html',
     styleUrls: ['./pagination-a11y-example.css'],
-    standalone: true,
     imports: [
         NxMessageComponent,
         NxTableComponent,

@@ -394,7 +394,6 @@ abstract class ButtonToggleGroupTest {
             <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
         </nx-circle-toggle-group>
     `,
-    standalone: true,
     imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleCircleToggleGroupComponent extends ButtonToggleGroupTest {}
@@ -406,7 +405,6 @@ class SimpleCircleToggleGroupComponent extends ButtonToggleGroupTest {}
             <nx-circle-toggle [value]="true" icon="product-bed" hint="info2" label="text2"></nx-circle-toggle>
         </nx-circle-toggle-group>
     `,
-    standalone: true,
     imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class BooleanCircleToggleGroupComponent extends ButtonToggleGroupTest {}
@@ -420,7 +418,6 @@ class BooleanCircleToggleGroupComponent extends ButtonToggleGroupTest {}
         </nx-circle-toggle-group>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class CircleToggleOnPushComponent extends ButtonToggleGroupTest {}
@@ -428,7 +425,6 @@ class CircleToggleOnPushComponent extends ButtonToggleGroupTest {}
 @Component({
     template: `<nx-circle-toggle-group> </nx-circle-toggle-group>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class EmptyToggleOnPushComponent extends ButtonToggleGroupTest {}
@@ -441,7 +437,6 @@ class EmptyToggleOnPushComponent extends ButtonToggleGroupTest {}
             <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
         </nx-circle-toggle-group>
     `,
-    standalone: true,
     imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class NgModelCircleToggleGroupComponent extends ButtonToggleGroupTest {}
@@ -456,7 +451,6 @@ class NgModelCircleToggleGroupComponent extends ButtonToggleGroupTest {}
             </nx-circle-toggle-group>
         </form>
     `,
-    standalone: true,
     imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveCircleToggleGroupComponent extends ButtonToggleGroupTest {
@@ -482,7 +476,6 @@ class ReactiveCircleToggleGroupComponent extends ButtonToggleGroupTest {
             }
         </nx-circle-toggle-group>
     `,
-    standalone: true,
     imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class NgForCircleToggleGroupComponent extends ButtonToggleGroupTest {
@@ -500,7 +493,6 @@ class NgForCircleToggleGroupComponent extends ButtonToggleGroupTest {
             <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
         </nx-circle-toggle-group>
     `,
-    standalone: true,
     imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class DisabledCircleToggleGroupComponent extends ButtonToggleGroupTest {}
@@ -513,7 +505,6 @@ class DisabledCircleToggleGroupComponent extends ButtonToggleGroupTest {}
             <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
         </nx-circle-toggle-group>
     `,
-    standalone: true,
     imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ReadonlyCircleToggleGroupComponent extends ButtonToggleGroupTest {
@@ -530,7 +521,6 @@ class ReadonlyCircleToggleGroupComponent extends ButtonToggleGroupTest {
             </div>
         </nx-circle-toggle-group>
     `,
-    standalone: true,
     imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class CircleToggleGroupWithDivComponent extends ButtonToggleGroupTest {}
@@ -543,7 +533,6 @@ class CircleToggleGroupWithDivComponent extends ButtonToggleGroupTest {}
             <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
         </nx-circle-toggle-group>
     `,
-    standalone: true,
     imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ExpertCircleToggleGroupComponent extends ButtonToggleGroupTest {}

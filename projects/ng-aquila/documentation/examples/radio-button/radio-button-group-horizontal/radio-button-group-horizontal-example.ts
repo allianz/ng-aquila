@@ -15,7 +15,6 @@ import {
     selector: 'radio-button-group-horizontal-example',
     templateUrl: './radio-button-group-horizontal-example.html',
     styleUrls: ['./radio-button-group-horizontal-example.css'],
-    standalone: true,
     imports: [
         NxRadioGroupComponent,
         NxLabelComponent,

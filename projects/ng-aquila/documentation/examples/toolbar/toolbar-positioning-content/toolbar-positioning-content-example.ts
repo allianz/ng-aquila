@@ -19,7 +19,6 @@ import { NxToolbarComponent } from '@aposin/ng-aquila/toolbar';
     selector: 'toolbar-positioning-content-example',
     templateUrl: './toolbar-positioning-content-example.html',
     styleUrls: ['./toolbar-positioning-content-example.css'],
-    standalone: true,
     imports: [
         NxToolbarComponent,
         NxPlainButtonComponent,

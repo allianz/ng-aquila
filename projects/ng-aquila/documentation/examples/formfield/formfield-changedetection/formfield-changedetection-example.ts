@@ -17,7 +17,6 @@ import {
     selector: 'formfield-changedetection-example',
     templateUrl: './formfield-changedetection-example.html',
     styleUrls: ['./formfield-changedetection-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxInputDirective_1,

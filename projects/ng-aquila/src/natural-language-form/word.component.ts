@@ -42,7 +42,6 @@ export type SIZES = 'regular' | 'short' | 'long';
         '[class.has-dropdown]': 'hasDropdown',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxPopoverModule],
 })
 export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {

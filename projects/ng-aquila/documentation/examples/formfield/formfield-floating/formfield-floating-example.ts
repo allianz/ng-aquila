@@ -12,7 +12,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'formfield-floating-example',
     templateUrl: './formfield-floating-example.html',
     styleUrls: ['./formfield-floating-example.css'],
-    standalone: true,
     imports: [NxFormfieldComponent, NxInputDirective, NxFormfieldHintDirective],
 })
 export class FormfieldFloatingExampleComponent {}

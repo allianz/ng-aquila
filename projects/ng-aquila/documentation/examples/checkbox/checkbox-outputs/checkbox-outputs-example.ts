@@ -9,7 +9,6 @@ import { NxCheckboxComponent } from '@aposin/ng-aquila/checkbox';
     selector: 'checkbox-outputs-example',
     templateUrl: './checkbox-outputs-example.html',
     styleUrls: ['./checkbox-outputs-example.css'],
-    standalone: true,
     imports: [NxCheckboxComponent, NxButtonComponent],
 })
 export class CheckboxOutputsExampleComponent {

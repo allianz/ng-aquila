@@ -45,6 +45,7 @@ export type LabelSize = 'small' | 'big';
 let nextId = 0;
 
 @Component({
+    standalone: true,
     selector: 'nx-radio-group',
     templateUrl: './radio-group.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -57,7 +58,6 @@ let nextId = 0;
         '[attr.aria-nx-radio-group]': 'ariaDescribedBy',
     },
     styleUrls: ['radio-button-group.scss'],
-    standalone: true,
     imports: [],
     providers: [
         {
@@ -276,6 +276,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
 }
 
 @Component({
+    standalone: true,
     selector: 'nx-radio',
     templateUrl: 'radio-button.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -301,7 +302,6 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
         '[class.is-readonly]': 'readonly || null',
         '(focus)': '_forwardFocusToInput()',
     },
-    standalone: true,
     imports: [CdkObserveContent],
 })
 export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy, NxAbstractControl {

@@ -92,14 +92,12 @@ describe(NxFooterComponent.name, () => {
             </nx-footer-navigation>
         </nx-footer>
     `,
-    standalone: true,
     imports: [NxFooterModule],
 })
 class BasicFooter extends FooterTest {}
 
 @Component({
     template: `<nx-footer copyright="Other company"></nx-footer>`,
-    standalone: true,
     imports: [NxFooterModule],
 })
 class DefaultCopyrightFooter extends FooterTest {}

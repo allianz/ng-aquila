@@ -14,7 +14,6 @@ import { NxMessageComponent } from '@aposin/ng-aquila/message';
     selector: 'formfield-note-example',
     templateUrl: './formfield-note-example.html',
     styleUrls: ['./formfield-note-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxInputDirective,

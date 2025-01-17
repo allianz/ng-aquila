@@ -22,7 +22,6 @@ import moment from 'moment';
     selector: 'datefield-min-max-example',
     templateUrl: './datefield-min-max-example.html',
     styleUrls: ['./datefield-min-max-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         FormsModule,

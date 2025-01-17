@@ -72,7 +72,6 @@ describe('NxSelectableCardGroupComponent', () => {
             </nx-selectable-card-group>
         </form>
     `,
-    standalone: true,
     imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class BasicSelectableCardGroup extends SelectableCardTest {

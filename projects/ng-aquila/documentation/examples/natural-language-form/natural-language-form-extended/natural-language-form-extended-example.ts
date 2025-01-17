@@ -26,7 +26,6 @@ import {
     selector: 'natural-language-form-extended-example',
     templateUrl: './natural-language-form-extended-example.html',
     styleUrls: ['./natural-language-form-extended-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         NxNaturalLanguageFormComponent,

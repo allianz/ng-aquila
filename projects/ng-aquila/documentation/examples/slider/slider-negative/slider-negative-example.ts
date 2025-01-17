@@ -8,7 +8,6 @@ import { NxSliderComponent } from '@aposin/ng-aquila/slider';
     selector: 'slider-negative-example',
     templateUrl: './slider-negative-example.html',
     styleUrls: ['./slider-negative-example.css'],
-    standalone: true,
     imports: [NxSliderComponent],
 })
 export class SliderNegativeExampleComponent {}

@@ -68,7 +68,6 @@ export function phoneNumberValidator(type?: PhoneNumberType): ValidatorFn {
     selector: 'phone-input-validation-example',
     templateUrl: 'phone-input-validation-example.html',
     styleUrls: ['./phone-input-validation-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxFormfieldLabelDirective,

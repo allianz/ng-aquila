@@ -16,7 +16,6 @@ import {
     selector: 'modal-closing-behaviour-example',
     templateUrl: './modal-closing-behaviour-example.html',
     styleUrls: ['./modal-closing-behaviour-example.css'],
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxModalContentDirective,

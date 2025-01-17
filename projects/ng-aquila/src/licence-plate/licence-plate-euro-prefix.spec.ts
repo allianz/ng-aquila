@@ -84,7 +84,6 @@ describe('NxLicencePlateEuroPrefixComponent', () => {
             <input nxInput [disabled]="disabled" />
         </nx-formfield>
     `,
-    standalone: true,
     imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule],
 })
 class BasicLicencePlateEuroPrefix extends LicencePlateEuroPrefixTest {}

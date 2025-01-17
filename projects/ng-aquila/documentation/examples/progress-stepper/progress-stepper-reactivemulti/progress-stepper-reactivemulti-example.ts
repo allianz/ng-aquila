@@ -18,7 +18,6 @@ import {
     selector: 'progress-stepper-reactivemulti-example',
     templateUrl: './progress-stepper-reactivemulti-example.html',
     styleUrls: ['./progress-stepper-reactivemulti-example.css'],
-    standalone: true,
     imports: [
         NxMultiStepperComponent,
         NxStepComponent,

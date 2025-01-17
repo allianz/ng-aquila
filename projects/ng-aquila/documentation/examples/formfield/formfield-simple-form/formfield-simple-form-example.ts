@@ -39,7 +39,6 @@ import {
     selector: 'formfield-simple-form-example',
     templateUrl: './formfield-simple-form-example.html',
     styleUrls: ['./formfield-simple-form-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

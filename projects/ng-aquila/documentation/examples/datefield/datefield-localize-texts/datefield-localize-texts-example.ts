@@ -37,7 +37,6 @@ export class MyIntl extends NxDatepickerIntl {
     templateUrl: './datefield-localize-texts-example.html',
     styleUrls: ['./datefield-localize-texts-example.css'],
     providers: [{ provide: NxDatepickerIntl, useClass: MyIntl }],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxDatefieldDirective,

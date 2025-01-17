@@ -252,7 +252,6 @@ describe('NxSidepanelComponent', () => {
             </nx-sidepanel>
         </nx-sidepanel-outer-container>
     `,
-    standalone: true,
     imports: [NxSidepanelModule, BidiModule],
 })
 class BasicSidepanel extends SidepanelTest {}
@@ -264,7 +263,6 @@ class BasicSidepanel extends SidepanelTest {}
             <nx-sidepanel>My sidepanel</nx-sidepanel>
         </nx-sidepanel-outer-container>
     `,
-    standalone: true,
     imports: [NxSidepanelModule, BidiModule],
 })
 class SidepanelWithoutHeaderAndContent extends SidepanelTest {}
@@ -279,7 +277,6 @@ class SidepanelWithoutHeaderAndContent extends SidepanelTest {}
             </nx-sidepanel>
         </nx-sidepanel-outer-container>
     `,
-    standalone: true,
     imports: [NxSidepanelModule, BidiModule],
 })
 class ConfigurableSidepanel extends SidepanelTest {}
@@ -293,7 +290,6 @@ class ConfigurableSidepanel extends SidepanelTest {}
             </nx-sidepanel-outer-container>
         </div>
     `,
-    standalone: true,
     imports: [NxSidepanelModule, BidiModule],
 })
 class SidepanelWithDirection extends SidepanelTest {

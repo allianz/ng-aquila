@@ -13,7 +13,6 @@ import {
     selector: 'radio-button-form-example',
     templateUrl: './radio-button-form-example.html',
     styleUrls: ['./radio-button-form-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         NxRadioGroupComponent,

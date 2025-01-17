@@ -13,7 +13,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     selector: 'action-with-router-example',
     styleUrls: ['action-with-router-example.css'],
     templateUrl: './action-with-router-example.html',
-    standalone: true,
     imports: [
         NxActionComponent,
         RouterLink,

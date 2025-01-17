@@ -21,7 +21,6 @@ const ICONS: { [k: string]: string } = {
         '[class.context-warning]': 'this._context === "warning"',
         '[class.context-error]': 'this._context === "error"',
     },
-    standalone: true,
     imports: [NxPopoverModule, NxIconModule],
 })
 export class NxSignalButtonComponent {

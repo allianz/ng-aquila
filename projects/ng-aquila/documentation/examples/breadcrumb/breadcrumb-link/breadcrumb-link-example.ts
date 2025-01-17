@@ -12,7 +12,6 @@ import {
     selector: 'breadcrumb-link-example',
     templateUrl: './breadcrumb-link-example.html',
     styleUrls: ['./breadcrumb-link-example.css'],
-    standalone: true,
     imports: [NxBreadcrumbComponent, NxBreadcrumbItemComponent, RouterLink],
 })
 export class BreadcrumbLinkExampleComponent {

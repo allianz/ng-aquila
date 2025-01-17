@@ -21,7 +21,6 @@ const visibilityIcons = {
         '(keydown)': '_onKeydown($event)',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {

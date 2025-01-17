@@ -10,7 +10,6 @@ import { DocVersionChannel, DocVersions } from './../../../core/types';
     selector: 'nxv-version-select',
     templateUrl: 'version-select.component.html',
     styleUrls: ['version-select.component.scss'],
-    standalone: true,
     imports: [NxButtonModule, NxContextMenuModule, NxIconModule],
 })
 export class NxVersionSelectComponent {

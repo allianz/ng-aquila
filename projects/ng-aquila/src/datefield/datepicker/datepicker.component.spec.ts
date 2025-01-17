@@ -114,7 +114,6 @@ describe('NxDatepicker', () => {
         <input nxDatefield [datepicker]="d" [value]="date" />
         <nx-datepicker #d [disabled]="disabled" [opened]="opened"></nx-datepicker>
     `,
-    standalone: true,
     imports: [NxDatefieldModule, NxFormfieldModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class StandardDatepicker {

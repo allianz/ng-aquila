@@ -123,14 +123,12 @@ describe('NxErrorComponent', () => {
 
 @Component({
     template: `<nx-error>I am an error message.</nx-error>`,
-    standalone: true,
     imports: [NxErrorModule],
 })
 class BasicError extends ErrorTest {}
 
 @Component({
     template: `<nx-error [appearance]="appearance" [id]="id">I am an error message with an icon.</nx-error>`,
-    standalone: true,
     imports: [NxErrorModule],
 })
 class ConfigurableError extends ErrorTest {}

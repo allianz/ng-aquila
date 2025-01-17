@@ -7,7 +7,6 @@ import { ComponentService } from '../../../service/component.service';
 @Component({
     selector: 'nxv-component-examples',
     templateUrl: 'component-examples.html',
-    standalone: true,
     imports: [ExampleViewerComponent, AsyncPipe],
 })
 export class ComponentExamples {

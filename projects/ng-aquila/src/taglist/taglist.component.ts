@@ -32,7 +32,6 @@ import { NxTagComponent } from './tag.component';
         '[attr.aria-labelledby]': 'labelledby || null',
         '[attr.tabindex]': '-1',
     },
-    standalone: true,
     imports: [NxTagComponent],
 })
 export class NxTaglistComponent implements ControlValueAccessor {

@@ -59,7 +59,6 @@ const VALUE_MARGIN = 4;
         '[class.nx-slider--disabled]': 'disabled',
         '[class.nx-slider--negative]': 'negative',
     },
-    standalone: true,
     imports: [NgStyle],
 })
 export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {

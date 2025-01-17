@@ -198,7 +198,6 @@ abstract class MultiSelectAllTest {
     template: `
         <nx-multi-select-all [selected]="selected" [label]="label" [indeterminate]="indeterminate" (selectedAllChange)="onSelectAll()"> </nx-multi-select-all>
     `,
-    standalone: true,
     imports: [NxMultiSelectAllComponent],
 })
 class BasicMultiSelectAllComponent extends MultiSelectAllTest {}

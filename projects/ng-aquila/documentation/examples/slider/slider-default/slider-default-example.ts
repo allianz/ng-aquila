@@ -8,7 +8,6 @@ import { NxSliderComponent } from '@aposin/ng-aquila/slider';
     selector: 'slider-default-example',
     templateUrl: './slider-default-example.html',
     styleUrls: ['./slider-default-example.css'],
-    standalone: true,
     imports: [NxSliderComponent],
 })
 export class SliderDefaultExampleComponent {

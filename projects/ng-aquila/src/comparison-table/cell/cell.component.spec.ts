@@ -256,7 +256,6 @@ describe('NxComparisonTableCell', () => {
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class BasicCellComponent extends CellTest {}
@@ -276,14 +275,12 @@ class BasicCellComponent extends CellTest {}
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class ConfigurableCellComponent extends CellTest {}
 
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class ToggleSectionCellComponent extends CellTest {

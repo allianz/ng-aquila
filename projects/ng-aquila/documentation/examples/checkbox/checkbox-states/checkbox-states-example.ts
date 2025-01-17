@@ -8,7 +8,6 @@ import { NxCheckboxComponent } from '@aposin/ng-aquila/checkbox';
     selector: 'checkbox-states-example',
     templateUrl: './checkbox-states-example.html',
     styleUrls: ['./checkbox-states-example.css'],
-    standalone: true,
     imports: [NxCheckboxComponent],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

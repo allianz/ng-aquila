@@ -44,7 +44,6 @@ let next = 0;
         role: 'group',
         '[attr.aria-labelledby]': '_ariaLabelledBy',
     },
-    standalone: true,
     imports: [NxDropdownModule, FormsModule],
 })
 export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldControl<any>, OnDestroy, DoCheck, OnInit, AfterViewInit, NxAbstractControl {

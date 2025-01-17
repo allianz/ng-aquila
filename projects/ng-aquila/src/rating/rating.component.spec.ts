@@ -288,14 +288,12 @@ class RatingTest {
 
 @Component({
     template: `<nx-rating startLabel="poor" endLabel="great"></nx-rating>`,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class SimpleRatingComponent extends RatingTest {}
 
 @Component({
     template: `<nx-rating [(value)]="theValue"></nx-rating>`,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class SimpleBindingRatingComponent extends RatingTest {
@@ -304,7 +302,6 @@ class SimpleBindingRatingComponent extends RatingTest {
 
 @Component({
     template: `<nx-rating [(ngModel)]="theValue"></nx-rating>`,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class NgModelBindingRatingComponent extends RatingTest {
@@ -317,7 +314,6 @@ class NgModelBindingRatingComponent extends RatingTest {
             <nx-rating formControlName="rating"></nx-rating>
         </form>
     `,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class ReactiveBindingRatingComponent extends RatingTest {
@@ -329,7 +325,6 @@ class ReactiveBindingRatingComponent extends RatingTest {
 @Component({
     template: `<nx-rating [value]="currentValue" [startLabel]="startLabel" [endLabel]="endLabel" [ariaRatingLabels]="ariaInputLabels()"></nx-rating>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class RatingOnPushComponent extends RatingTest {
@@ -343,7 +338,6 @@ class RatingOnPushComponent extends RatingTest {
 @Component({
     template: `<nx-rating [(ngModel)]="ngModelValue"></nx-rating>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class TemplateDrivenOnPushComponent extends RatingTest {
@@ -352,7 +346,6 @@ class TemplateDrivenOnPushComponent extends RatingTest {
 
 @Component({
     template: `<nx-rating [size]="size"></nx-rating>`,
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class SizeRatingComponent extends RatingTest {

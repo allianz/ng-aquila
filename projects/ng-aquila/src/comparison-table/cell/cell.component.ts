@@ -13,7 +13,6 @@ let nextId = 0;
     selector: 'nx-comparison-table-cell',
     styleUrls: ['./cell.component.scss'],
     templateUrl: './cell.component.html',
-    standalone: true,
     imports: [NgTemplateOutlet],
 })
 export class NxComparisonTableCell {

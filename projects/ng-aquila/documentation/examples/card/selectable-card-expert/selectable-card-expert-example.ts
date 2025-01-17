@@ -17,7 +17,6 @@ import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
     selector: 'selectable-card-expert-example',
     templateUrl: './selectable-card-expert-example.html',
     styleUrls: ['./selectable-card-expert-example.css'],
-    standalone: true,
     imports: [
         NxSelectableCardComponent,
         NxHeadlineComponent,

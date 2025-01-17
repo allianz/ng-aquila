@@ -689,7 +689,6 @@ describe('NxNumberStepperComponent', () => {
 
 @Component({
     template: `<nx-number-stepper [label]="label"></nx-number-stepper>`,
-    standalone: true,
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class BasicStepper extends NumberStepperTest {
@@ -698,14 +697,12 @@ class BasicStepper extends NumberStepperTest {
 
 @Component({
     template: `<nx-number-stepper [(value)]="value"></nx-number-stepper>`,
-    standalone: true,
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleBindingStepper extends NumberStepperTest {}
 
 @Component({
     template: `<nx-number-stepper max="10000000" step="1000000" [(value)]="value" resize="true"></nx-number-stepper>`,
-    standalone: true,
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class ResizeOnInitTest extends NumberStepperTest {
@@ -715,7 +712,6 @@ class ResizeOnInitTest extends NumberStepperTest {
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `<nx-number-stepper [(value)]="value" [resize]="true"></nx-number-stepper>`,
-    standalone: true,
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class ResizeOnInitTestOnPush extends NumberStepperTest {
@@ -724,7 +720,6 @@ class ResizeOnInitTestOnPush extends NumberStepperTest {
 
 @Component({
     template: `<nx-number-stepper [(ngModel)]="value"></nx-number-stepper>`,
-    standalone: true,
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class NgModelStepper extends NumberStepperTest {}
@@ -743,14 +738,12 @@ class NgModelStepper extends NumberStepperTest {}
             [readonly]="readonlyInput"
         ></nx-number-stepper>
     `,
-    standalone: true,
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class ConfigurableStepper extends NumberStepperTest {}
 
 @Component({
     template: `<nx-number-stepper [disabled]="disabled" [min]="-10"></nx-number-stepper>`,
-    standalone: true,
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class DisableableStepper extends NumberStepperTest {}
@@ -758,7 +751,6 @@ class DisableableStepper extends NumberStepperTest {}
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `<nx-number-stepper [negative]="negative"></nx-number-stepper>`,
-    standalone: true,
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class StepperOnPush extends NumberStepperTest {}
@@ -771,7 +763,6 @@ class StepperOnPush extends NumberStepperTest {}
             <nx-number-stepper-suffix>suffix</nx-number-stepper-suffix>
         </nx-number-stepper>
     `,
-    standalone: true,
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class DirectivesStepper extends NumberStepperTest {}
@@ -783,7 +774,6 @@ class DirectivesStepper extends NumberStepperTest {}
             <button id="submit-button">Submit</button>
         </form>
     `,
-    standalone: true,
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveFormStepper extends NumberStepperTest {}
@@ -795,7 +785,6 @@ class ReactiveFormStepper extends NumberStepperTest {}
             <button id="submit-button">Submit</button>
         </form>
     `,
-    standalone: true,
     providers: [{ provide: LOCALE_ID, useValue: 'de-DE' }],
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
@@ -808,7 +797,6 @@ class LocaleStepper extends NumberStepperTest {}
             <button id="submit-button">Submit</button>
         </form>
     `,
-    standalone: true,
     providers: [{ provide: LOCALE_ID, useValue: 'en-US' }],
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
@@ -820,7 +808,6 @@ class LocaleUsStepper extends NumberStepperTest {}
             <nx-number-stepper formControlName="count"></nx-number-stepper>
         </form>
     `,
-    standalone: true,
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveFormOnBlurStepper extends NumberStepperTest {

@@ -42,7 +42,6 @@ describe('NxTabComponent', () => {
 
 @Component({
     template: `<nx-tab>Some content</nx-tab>`,
-    standalone: true,
     imports: [NxTabsModule],
 })
 class NoGroupTest extends TabTest {}
@@ -53,7 +52,6 @@ class NoGroupTest extends TabTest {}
             <nx-tab><ng-template nxTabLabel>Label</ng-template>Some content</nx-tab>
         </nx-tab-group>
     `,
-    standalone: true,
     imports: [NxTabsModule],
 })
 class WithGroup extends TabTest {}

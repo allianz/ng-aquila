@@ -39,7 +39,6 @@ import { myCustomConfig } from '../file-uploader-auto/file-uploader-auto-example
     templateUrl: './file-uploader-disable-common-validators-example.html',
     styleUrls: ['./file-uploader-disable-common-validators-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

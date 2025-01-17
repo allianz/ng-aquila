@@ -16,7 +16,6 @@ import { NxActionIconDirective } from './action-icon.directive';
         class: 'nx-action',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxActionComponent implements OnDestroy, AfterViewInit {

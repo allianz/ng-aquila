@@ -19,7 +19,6 @@ import {
     selector: 'radio-toggle-reactive-example',
     templateUrl: './radio-toggle-reactive-example.html',
     styleUrls: ['./radio-toggle-reactive-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

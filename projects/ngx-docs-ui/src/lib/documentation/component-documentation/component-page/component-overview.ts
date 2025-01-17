@@ -10,7 +10,6 @@ import { NxvTableOfContentsComponent } from '../../table-of-contents/table-of-co
     selector: 'nxv-component-overview',
     templateUrl: 'component-overview.html',
     styleUrls: ['component-overview.scss'],
-    standalone: true,
     imports: [ExampleLoaderComponent, NxvTableOfContentsComponent, AsyncPipe],
 })
 export class ComponentOverview {

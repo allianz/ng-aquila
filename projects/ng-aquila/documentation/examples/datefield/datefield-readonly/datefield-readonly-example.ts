@@ -14,7 +14,6 @@ import { NxInputModule } from '@aposin/ng-aquila/input';
  */
 @Component({
     selector: 'datefield-readonly-example',
-    standalone: true,
     templateUrl: './datefield-readonly-example.html',
     styleUrls: ['./datefield-readonly-example.css'],
     imports: [

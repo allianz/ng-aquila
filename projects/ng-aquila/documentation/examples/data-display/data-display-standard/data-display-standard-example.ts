@@ -18,7 +18,6 @@ import { NxListComponent } from '@aposin/ng-aquila/list';
     selector: 'data-display-standard-example',
     templateUrl: './data-display-standard-example.html',
     styleUrls: ['./data-display-standard-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

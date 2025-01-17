@@ -12,7 +12,6 @@ import { NxSidepanelComponent } from './sidepanel';
         '(click)': '_toggle()',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxSidepanelCloseButtonComponent implements OnDestroy, AfterViewInit {

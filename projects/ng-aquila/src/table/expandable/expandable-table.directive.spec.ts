@@ -168,7 +168,6 @@ describe(NxTableComponent.name, () => {
         </tbody>
     </table>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxTableModule],
 })
 class ExpandableTableComponent extends TableTest {}

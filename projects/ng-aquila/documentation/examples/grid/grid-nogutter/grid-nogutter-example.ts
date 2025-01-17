@@ -12,7 +12,6 @@ import {
     selector: 'grid-nogutter-example',
     templateUrl: './grid-nogutter-example.html',
     styleUrls: ['./grid-nogutter-example.css'],
-    standalone: true,
     imports: [NxLayoutComponent, NxRowComponent, NxColComponent],
 })
 export class GridNogutterExampleComponent {}

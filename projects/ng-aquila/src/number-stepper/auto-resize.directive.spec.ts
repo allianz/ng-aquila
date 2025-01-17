@@ -148,7 +148,6 @@ describe('NxAutoResizeDirective', () => {
 @Component({
     template: `<input [nxAutoResize] class="testinput" />`,
     styles: ['.testinput { width: 22px; }'],
-    standalone: true,
     imports: [FormsModule, NxNumberStepperModule],
 })
 class DefaultResize extends ResizeTest {}
@@ -156,7 +155,6 @@ class DefaultResize extends ResizeTest {}
 @Component({
     template: `<input [nxAutoResize] class="testinput" [(value)]="value" />`,
     styles: ['.testinput { width: 22px; }'],
-    standalone: true,
     imports: [FormsModule, NxNumberStepperModule],
 })
 class InitTest extends ResizeTest {}
@@ -165,7 +163,6 @@ class InitTest extends ResizeTest {}
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `<input [nxAutoResize] class="testinput" [(value)]="value" />`,
     styles: ['.testinput { width: 22px; }'],
-    standalone: true,
     imports: [FormsModule, NxNumberStepperModule],
 })
 class InitOnPushTest extends ResizeTest {}
@@ -173,7 +170,6 @@ class InitOnPushTest extends ResizeTest {}
 @Component({
     template: `<input [nxAutoResize]="false" class="testinput" />`,
     styles: ['.testinput { width: 22px; }'],
-    standalone: true,
     imports: [FormsModule, NxNumberStepperModule],
 })
 class DisabledResize extends ResizeTest {}
@@ -181,7 +177,6 @@ class DisabledResize extends ResizeTest {}
 @Component({
     template: `<input [nxAutoResize] class="testinput" />`,
     styles: ['.testinput { width: 22px; min-width: 22px; }'],
-    standalone: true,
     imports: [FormsModule, NxNumberStepperModule],
 })
 class MinWidthResize extends ResizeTest {}
@@ -189,7 +184,6 @@ class MinWidthResize extends ResizeTest {}
 @Component({
     template: `<input [nxAutoResize] class="testinput" />`,
     styles: ['.testinput { width: 22px; padding: 1px; border: 1px solid black}'],
-    standalone: true,
     imports: [FormsModule, NxNumberStepperModule],
 })
 class BorderPaddingResize extends ResizeTest {}

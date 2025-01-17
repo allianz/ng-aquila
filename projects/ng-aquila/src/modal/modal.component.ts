@@ -55,7 +55,6 @@ export class NxModalContentDirective {}
             <nx-status-icon [type]="status" class="nx-modal__status"></nx-status-icon>
         }
         <ng-content></ng-content>`,
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxModalTitleComponent {
@@ -83,7 +82,6 @@ export class NxModalTitleComponent {
         '[@fadeInOut]': '',
         '[class.nx-modal--fixed-width]': 'size === "fixed"',
     },
-    standalone: true,
     imports: [CdkTrapFocus, NxIconModule, CdkScrollable, NgTemplateOutlet],
 })
 export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {

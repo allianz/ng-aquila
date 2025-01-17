@@ -22,7 +22,6 @@ import {
     selector: 'notification-panel-mixed-example',
     templateUrl: './notification-panel-mixed-example.html',
     styleUrls: ['./notification-panel-mixed-example.css'],
-    standalone: true,
     imports: [
         NxIconButtonComponent,
         NxNotificationPanelTriggerDirective,

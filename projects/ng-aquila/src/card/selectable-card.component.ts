@@ -60,7 +60,6 @@ export const SELECTABLE_CARD_DEFAULT_OPTIONS = new InjectionToken<SelectableCard
         '[class.has-error]': 'errorState',
     },
     styleUrls: ['./selectable-card-group.scss'],
-    standalone: true,
     imports: [],
 })
 export class NxSelectableCardGroupComponent implements ControlValueAccessor, AfterContentInit, DoCheck {
@@ -174,7 +173,6 @@ export class NxSelectableCardGroupComponent implements ControlValueAccessor, Aft
         '[class.has-error]': '_errorState',
         '[class.is-highlight]': 'highlight',
     },
-    standalone: true,
     imports: [NgTemplateOutlet, NxIconModule],
 })
 export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck, AfterContentInit, OnDestroy, AfterViewInit {

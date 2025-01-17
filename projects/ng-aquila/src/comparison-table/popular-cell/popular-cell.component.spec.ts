@@ -153,7 +153,6 @@ describe('NxComparisonTablePopularCell', () => {
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class PopularCellComponent extends PopularCellTest {}

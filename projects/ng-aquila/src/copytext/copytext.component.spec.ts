@@ -72,7 +72,6 @@ describe('NxCopytextDirective', () => {
 
 @Component({
     template: `<p [nxCopytext]="size">Hello Text</p>`,
-    standalone: true,
     imports: [NxCopytextModule],
 })
 class BasicCopytext extends CopytextTest {}

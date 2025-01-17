@@ -17,7 +17,6 @@ import {
     selector: 'slider-appendix-example',
     templateUrl: './slider-appendix-example.html',
     styleUrls: ['./slider-appendix-example.css'],
-    standalone: true,
     imports: [
         NxSliderComponent,
         NxPlainButtonComponent,

@@ -24,7 +24,6 @@ export interface DocItem {
     selector: 'nxv-single-component',
     templateUrl: 'component-page.html',
     styleUrls: ['component-page.scss'],
-    standalone: true,
     imports: [NxMessageModule, NxBadgeModule, NxTabsModule, RouterLinkActive, RouterLink, RouterOutlet, AsyncPipe],
 })
 export class NxvComponentPage implements OnDestroy {

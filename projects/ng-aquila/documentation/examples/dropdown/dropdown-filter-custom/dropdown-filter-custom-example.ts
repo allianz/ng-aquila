@@ -17,7 +17,6 @@ import {
     selector: 'dropdown-filter-custom-example',
     templateUrl: './dropdown-filter-custom-example.html',
     styleUrls: ['./dropdown-filter-custom-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

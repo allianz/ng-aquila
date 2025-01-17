@@ -156,7 +156,6 @@ describe('NxOverlayService', () => {
     template: `<button #button nxButton="tertiary small">Trigger</button>
 
         <ng-template let-data let-overlayRef="overlayRef"> Hello {{ localValue }} {{ data?.value }}{{ setDialogRef(overlayRef) }}</ng-template>`,
-    standalone: true,
     imports: [NxButtonComponent_1],
 })
 class ComponentWithTemplateRef {
@@ -187,7 +186,6 @@ class OverlayTestModule {}
 
 @Component({
     template: `<button #button>Trigger</button> <router-outlet></router-outlet>`,
-    standalone: true,
     imports: [NxOverlayModule, NxButtonModule, RouterTestingModule],
 })
 export class TestRootComponent {

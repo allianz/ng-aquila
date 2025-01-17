@@ -11,7 +11,6 @@ let nextId = 0;
     selector: 'nx-comparison-table-popular-cell',
     styleUrls: ['./popular-cell.component.scss'],
     templateUrl: './popular-cell.component.html',
-    standalone: true,
     imports: [NgTemplateOutlet],
 })
 export class NxComparisonTablePopularCell {

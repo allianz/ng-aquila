@@ -261,7 +261,6 @@ describe('Scrollable TabNavBar', () => {
             }
         </nx-tab-group>
     `,
-    standalone: true,
     imports: [NxTabsModule],
 })
 class NotScrollableTabGroupTest extends TabHeaderScrollableTest {
@@ -284,7 +283,6 @@ class NotScrollableTabGroupTest extends TabHeaderScrollableTest {
             </nx-tab-group>
         </div>
     `,
-    standalone: true,
     imports: [NxTabsModule],
 })
 class ScrollableTabGroupTest extends TabHeaderScrollableTest {
@@ -307,7 +305,6 @@ class ScrollableTabGroupTest extends TabHeaderScrollableTest {
             }
         </nx-tab-nav-bar>
     `,
-    standalone: true,
     imports: [NxTabsModule],
 })
 class NotScrollableTabNavBarTest extends TabNavBarScrollableTest {
@@ -330,7 +327,6 @@ class NotScrollableTabNavBarTest extends TabNavBarScrollableTest {
             </nx-tab-nav-bar>
         </div>
     `,
-    standalone: true,
     imports: [NxTabsModule],
 })
 class ScrollableTabNavBarTest extends TabNavBarScrollableTest {

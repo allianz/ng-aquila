@@ -36,7 +36,6 @@ export const myCustomConfig: NxMessageToastConfig = {
     selector: 'file-uploader-reactive-example',
     templateUrl: './file-uploader-reactive-example.html',
     styleUrls: ['./file-uploader-reactive-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

@@ -80,7 +80,6 @@ describe(NxToggleButtonComponent.name, () => {
 @Component({
     template: `<nx-toggle-button [target]="target" ariaLabel="toggle all rows"></nx-toggle-button>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxTableModule],
 })
 class BasicToggleButtonComponent extends ToggleButtonTest {

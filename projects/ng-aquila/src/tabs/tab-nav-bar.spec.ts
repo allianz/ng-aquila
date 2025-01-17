@@ -176,7 +176,6 @@ describe('NxTabBarNavComponent', () => {
             }
         </nx-tab-nav-bar>
     `,
-    standalone: true,
     imports: [NxTabsModule],
 })
 class SimpleTabNavBar extends TabNavBarTest {
@@ -196,7 +195,6 @@ class SimpleTabNavBar extends TabNavBarTest {
             }
         </nx-tab-nav-bar>
     `,
-    standalone: true,
     imports: [NxTabsModule],
 })
 class ConfigurableTabNavBar extends TabNavBarTest {
@@ -217,7 +215,6 @@ class ConfigurableTabNavBar extends TabNavBarTest {
         </nx-tab-nav-bar>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxTabsModule],
 })
 class TabNavBarOnPush extends TabNavBarTest {

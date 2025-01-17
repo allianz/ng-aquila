@@ -10,7 +10,6 @@ import { STATUS_TYPE } from '../../../core/manifest';
     host: {
         '[class.checkmark]': 'iconName === "check"',
     },
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxvStatusDotComponent {

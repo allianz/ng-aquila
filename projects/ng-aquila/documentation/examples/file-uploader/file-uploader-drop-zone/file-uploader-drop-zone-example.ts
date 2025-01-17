@@ -31,7 +31,6 @@ export const myCustomConfig: NxMessageToastConfig = {
     selector: 'file-uploader-drop-zone-example',
     templateUrl: './file-uploader-drop-zone-example.html',
     styleUrls: ['./file-uploader-drop-zone-example.css'],
-    standalone: true,
     imports: [
         NxFileUploaderComponent,
         NxLabelComponent,

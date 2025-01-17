@@ -1,4 +1,5 @@
 import { Directionality } from '@angular/cdk/bidi';
+import { CdkStepper } from '@angular/cdk/stepper';
 import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, Optional } from '@angular/core';
 import { NxProgressbarModule } from '@aposin/ng-aquila/progressbar';
@@ -9,9 +10,11 @@ import { NxProgressStepperDirective } from '../progress-stepper.component';
     selector: 'nx-single-stepper',
     templateUrl: './single-step.component.html',
     styleUrls: ['../progress-stepper.component.scss', './single-step.component.scss'],
-    providers: [{ provide: NxProgressStepperDirective, useExisting: NxSingleStepperComponent }],
+    providers: [
+        { provide: NxProgressStepperDirective, useExisting: NxSingleStepperComponent },
+        { provide: CdkStepper, useExisting: NxProgressStepperDirective },
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxProgressbarModule, NgTemplateOutlet],
 })
 export class NxSingleStepperComponent extends NxProgressStepperDirective {

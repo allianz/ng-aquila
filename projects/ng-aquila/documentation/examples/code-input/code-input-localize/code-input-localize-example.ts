@@ -27,7 +27,6 @@ export class MyIntl extends NxCodeInputIntl {
     templateUrl: 'code-input-localize-example.html',
     styleUrls: ['code-input-localize-example.css'],
     providers: [{ provide: NxCodeInputIntl, useClass: MyIntl }],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

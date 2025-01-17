@@ -13,7 +13,6 @@ import {
     selector: 'checkbox-negative-example',
     templateUrl: './checkbox-negative-example.html',
     styleUrls: ['./checkbox-negative-example.css'],
-    standalone: true,
     imports: [
         NxCheckboxComponent,
         NxCheckboxGroupComponent,

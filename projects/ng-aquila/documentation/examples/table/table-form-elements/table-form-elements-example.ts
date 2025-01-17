@@ -50,7 +50,6 @@ import moment from 'moment';
             useValue: { toggleIconTabindex: -1 },
         },
     ],
-    standalone: true,
     imports: [
         NxTableComponent,
         NxTableRowComponent,

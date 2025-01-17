@@ -9,7 +9,6 @@ import { NxSpinnerComponent } from '@aposin/ng-aquila/spinner';
     selector: 'spinner-negative-example',
     templateUrl: './spinner-negative-example.html',
     styleUrls: ['./spinner-negative-example.css'],
-    standalone: true,
     imports: [NxSpinnerComponent, NxHeadlineComponent],
 })
 export class SpinnerNegativeExampleComponent {}

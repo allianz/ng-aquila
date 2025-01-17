@@ -16,7 +16,6 @@ import { getFileExtension } from '../file-uploader.validations';
         </span>
         <span class="nx-margin-left-2xs">{{ name }}</span>
     `,
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxFileUploaderItemName implements OnInit {

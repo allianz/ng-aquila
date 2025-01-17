@@ -8,7 +8,6 @@ import { NxNumberStepperComponent } from '@aposin/ng-aquila/number-stepper';
     selector: 'number-stepper-standalone-example',
     templateUrl: './number-stepper-standalone-example.html',
     styleUrls: ['./number-stepper-standalone-example.css'],
-    standalone: true,
     imports: [NxNumberStepperComponent],
 })
 export class NumberStepperStandaloneExampleComponent {}

@@ -23,7 +23,6 @@ import { NxDataDisplayLabelComponent } from '../data-display-label/data-display-
         '[class.nx-data-display__label-columns-8]': 'labelColumns === 8',
         '[class.nx-data-display__label-columns-9]': 'labelColumns === 9',
     },
-    standalone: true,
     imports: [NxDataDisplayLabelComponent],
 })
 export class NxDataDisplayComponent {

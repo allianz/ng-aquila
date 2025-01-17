@@ -112,7 +112,6 @@ describe(NxMenuComponent.name, () => {
             <div nxMenuItem>content</div>
         </nx-menu>
     `,
-    standalone: true,
     imports: [NxMenuModule],
 })
 class BasicMenu extends MenuTest {}

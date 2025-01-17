@@ -40,7 +40,6 @@ const datepickerExpertOptions: DatepickerDefaultOptions = {
             useValue: datepickerExpertOptions,
         },
     ],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

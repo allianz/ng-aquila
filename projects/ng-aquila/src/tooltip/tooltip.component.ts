@@ -26,7 +26,6 @@ type TooltipVisibility = 'initial' | 'visible' | 'hidden';
         '(body:click)': 'this._handleBodyInteraction()',
         'aria-hidden': 'true',
     },
-    standalone: true,
     imports: [NgClass, NgStyle],
 })
 export class NxTooltipComponent implements OnDestroy {

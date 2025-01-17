@@ -88,7 +88,6 @@ describe('NxAvatarComponent', () => {
 
 @Component({
     template: `<div nxAvatar>SM</div>`,
-    standalone: true,
     imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarWithText extends AvatarTest {}
@@ -99,7 +98,6 @@ class AvatarWithText extends AvatarTest {}
             <nx-icon name="user-o"></nx-icon>
         </div>
     `,
-    standalone: true,
     imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarWithIcon extends AvatarTest {}
@@ -112,21 +110,18 @@ class AvatarWithIcon extends AvatarTest {}
             </figure>
         </div>
     `,
-    standalone: true,
     imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarWithImage extends AvatarTest {}
 
 @Component({
     template: `<button nxAvatar>SM</button>`,
-    standalone: true,
     imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarButton extends AvatarTest {}
 
 @Component({
     template: `<div nxAvatar [size]="size">SM</div>`,
-    standalone: true,
     imports: [NxAvatarModule, NxIconModule],
 })
 class ConfigurableAvatar extends AvatarTest {}

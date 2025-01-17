@@ -23,7 +23,6 @@ import {
     selector: 'formfield-error-example',
     templateUrl: './formfield-error-example.html',
     styleUrls: ['./formfield-error-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

@@ -81,14 +81,12 @@ describe('NxPlainButtonComponent', () => {
 
 @Component({
     template: `<button [nxPlainButton]="classNames" #button>Hello Button</button>`,
-    standalone: true,
     imports: [NxButtonModule],
 })
 class BasicButton extends ButtonTest {}
 
 @Component({
     template: `<button [nxPlainButton]="classNames" [size]="size" [variant]="variant" [critical]="critical" #button>Hello Button</button>`,
-    standalone: true,
     imports: [NxButtonModule],
 })
 class ButtonBindings extends ButtonTest {

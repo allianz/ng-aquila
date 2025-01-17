@@ -10,7 +10,6 @@ import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
     templateUrl: 'swipebar.component.html',
     styleUrls: ['swipebar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxCopytextModule],
 })
 export class NxSwipebarComponent implements AfterViewInit {

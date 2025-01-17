@@ -17,7 +17,6 @@ import {
     selector: 'dropdown-placeholder-example',
     templateUrl: './dropdown-placeholder-example.html',
     styleUrls: ['./dropdown-placeholder-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

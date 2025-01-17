@@ -9,7 +9,6 @@ import { NxCheckboxComponent } from '@aposin/ng-aquila/checkbox';
     selector: 'checkbox-label-size-example',
     templateUrl: './checkbox-label-size-example.html',
     styleUrls: ['./checkbox-label-size-example.css'],
-    standalone: true,
     imports: [FormsModule, NxCheckboxComponent],
 })
 export class CheckboxLabelSizeExampleComponent {}

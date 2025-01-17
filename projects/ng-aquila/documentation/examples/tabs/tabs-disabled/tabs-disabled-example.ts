@@ -9,7 +9,6 @@ import { NxTabComponent, NxTabGroupComponent } from '@aposin/ng-aquila/tabs';
     selector: 'tabs-disabled-example',
     templateUrl: './tabs-disabled-example.html',
     styleUrls: ['./tabs-disabled-example.css'],
-    standalone: true,
     imports: [NxHeadlineComponent, NxTabGroupComponent, NxTabComponent],
 })
 export class TabsDisabledExampleComponent {}

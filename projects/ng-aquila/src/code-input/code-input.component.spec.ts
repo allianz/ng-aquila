@@ -431,7 +431,6 @@ describe('NxCodeInputComponent', () => {
             <nx-code-input [length]="4" convertTo="upper" formControlName="keyCode"></nx-code-input>
         </form>
     `,
-    standalone: true,
     imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class CodeInputTest1 extends CodeInputTest {
@@ -450,7 +449,6 @@ class CodeInputTest1 extends CodeInputTest {
             <nx-code-input formControlName="keyCode2"></nx-code-input>
         </form>
     `,
-    standalone: true,
     imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class CodeInputTest2 extends CodeInputTest {
@@ -472,7 +470,6 @@ class CodeInputTest2 extends CodeInputTest {
         </form>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class CodeInputTest3 extends CodeInputTest {
@@ -488,14 +485,12 @@ class CodeInputTest3 extends CodeInputTest {
 @Component({
     template: `<nx-code-input [length]="4" type="number"></nx-code-input>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class NumberCodeInput extends CodeInputTest {}
 
 @Component({
     template: `<nx-code-input [negative]="negative" [disabled]="disabled" [length]="4" [tabindex]="tabindex" [type]="type"> </nx-code-input>`,
-    standalone: true,
     imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class ConfigurableCodeInput extends CodeInputTest {}
@@ -503,7 +498,6 @@ class ConfigurableCodeInput extends CodeInputTest {}
 @Component({
     template: `<nx-code-input [length]="4"></nx-code-input>`,
     providers: [{ provide: NxCodeInputIntl, useClass: MyIntl }],
-    standalone: true,
     imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class OverrideDefaultLabelsCodeInput extends CodeInputTest {}
@@ -511,7 +505,6 @@ class OverrideDefaultLabelsCodeInput extends CodeInputTest {}
 @Component({
     template: `<nx-code-input [length]="4" type="number"><nx-error>error</nx-error></nx-code-input>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule, NxErrorComponent],
 })
 class CodeInputWithError extends CodeInputTest {

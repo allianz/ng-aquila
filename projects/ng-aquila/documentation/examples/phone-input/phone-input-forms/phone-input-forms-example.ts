@@ -20,7 +20,6 @@ import { NxPhoneInputComponent } from '@aposin/ng-aquila/phone-input';
     selector: 'phone-input-forms-example',
     templateUrl: 'phone-input-forms-example.html',
     styleUrls: ['./phone-input-forms-example.css'],
-    standalone: true,
     imports: [
         NxHeadlineComponent,
         NxFormfieldComponent,

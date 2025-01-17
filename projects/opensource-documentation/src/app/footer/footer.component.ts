@@ -6,7 +6,6 @@ import { NxFooterComponent, NxFooterLinkDirective, NxFooterNavigationDirective }
     selector: 'doc-footer',
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.css'],
-    standalone: true,
     imports: [NxFooterComponent, NxFooterNavigationDirective, NxFooterLinkDirective],
 })
 export class FooterComponent {}

@@ -8,7 +8,6 @@ import { NxListComponent } from '@aposin/ng-aquila/list';
     selector: 'list-unordered-example',
     templateUrl: './list-unordered-example.html',
     styleUrls: ['./list-unordered-example.css'],
-    standalone: true,
     imports: [NxListComponent],
 })
 export class ListUnorderedExampleComponent {}

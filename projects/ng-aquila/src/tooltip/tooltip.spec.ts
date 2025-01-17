@@ -957,7 +957,6 @@ describe('NxTooltipComponent', () => {
     template: `@if (showButton) {
         <button #button [nxTooltip]="message" [nxTooltipPosition]="position">Button</button>
     }`,
-    standalone: true,
     imports: [NxTooltipModule, OverlayModule],
 })
 class BasicTooltipDemo {
@@ -982,7 +981,6 @@ class BasicTooltipDemo {
             <button style="margin-bottom: 600px" [nxTooltip]="message" [nxTooltipPosition]="position">Button</button>
         }
     </div>`,
-    standalone: true,
     imports: [NxTooltipModule, OverlayModule],
 })
 class ScrollableTooltipDemo {
@@ -1007,7 +1005,6 @@ class ScrollableTooltipDemo {
     selector: 'nx-app',
     template: `<button [nxTooltip]="message" [nxTooltipPosition]="position">Button</button>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxTooltipModule, OverlayModule],
 })
 class OnPushTooltipDemo {
@@ -1020,7 +1017,6 @@ class OnPushTooltipDemo {
     template: `@for (tooltip of tooltips; track tooltip) {
         <button [nxTooltip]="tooltip">Button {{ tooltip }}</button>
     }`,
-    standalone: true,
     imports: [NxTooltipModule, OverlayModule],
 })
 class DynamicTooltipsDemo {
@@ -1039,7 +1035,6 @@ class DynamicTooltipsDemo {
 
         <textarea #textarea nxTooltip="Another thing"></textarea>
     `,
-    standalone: true,
     imports: [NxTooltipModule, OverlayModule],
 })
 class TooltipOnTextFields {
@@ -1048,7 +1043,6 @@ class TooltipOnTextFields {
 }
 
 @Component({
-    standalone: true,
     selector: 'nx-app',
     template: `<button #button [nxTooltip]="message">Button</button>`,
     imports: [NxTooltipModule],
@@ -1064,7 +1058,6 @@ class TooltipDemoWithoutPositionBinding {
     template: `<button nxButton [nxTooltipShowDelay]="1000" [nxTooltipHideDelay]="1500" nxTooltip="This message appears after 1 second" type="button" #hover>
         Delayed tooltip
     </button>`,
-    standalone: true,
     imports: [NxTooltipModule, OverlayModule],
 })
 class TooltipDispose {
@@ -1080,7 +1073,6 @@ class TooltipDispose {
 
         <textarea #textarea [nxTooltipSelectable]="selectable" nxTooltip="Another thing"></textarea>
     `,
-    standalone: true,
     imports: [NxTooltipModule, OverlayModule],
 })
 class SelectableTooltip {

@@ -14,7 +14,6 @@ import {
     selector: 'hidden-classes-example',
     templateUrl: './hidden-classes-example.html',
     styleUrls: ['./hidden-classes-example.css'],
-    standalone: true,
     imports: [
         NxTableComponent,
         NxTableRowComponent,

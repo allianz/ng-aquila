@@ -630,23 +630,23 @@ describe('NxRadioComponent', () => {
 });
 
 @Component({
-    template: `<nx-radio>Label</nx-radio>`,
     standalone: true,
+    template: `<nx-radio>Label</nx-radio>`,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class BasicRadio extends RadioTest {}
 
 @Component({
+    standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `<nx-radio>Label</nx-radio>`,
-    standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class BasicRadioOnPush extends RadioTest {}
 
 @Component({
-    template: `<nx-radio [negative]="negative">Label</nx-radio>`,
     standalone: true,
+    template: `<nx-radio [negative]="negative">Label</nx-radio>`,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class ConfigurableRadio extends RadioTest {
@@ -654,13 +654,14 @@ class ConfigurableRadio extends RadioTest {
 }
 
 @Component({
-    template: `<nx-radio></nx-radio>`,
     standalone: true,
+    template: `<nx-radio></nx-radio>`,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class LabellessRadio extends RadioTest {}
 
 @Component({
+    standalone: true,
     template: `
         <nx-radio-group [name]="name" [(ngModel)]="templateModel">
             @for (fruit of data; track fruit) {
@@ -669,7 +670,6 @@ class LabellessRadio extends RadioTest {}
             <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
-    standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class DynamicRadio extends RadioTest {
@@ -678,25 +678,25 @@ class DynamicRadio extends RadioTest {
 }
 
 @Component({
+    standalone: true,
     template: `
         <nx-radio-group name="groupTest">
             <nx-radio value="0">0</nx-radio>
             <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
-    standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class BasicRadioGroup extends RadioTest {}
 
 @Component({
+    standalone: true,
     template: `
         <nx-radio-group name="groupTest" [(value)]="templateModel" [negative]="groupNegative">
             <nx-radio value="0" [negative]="radioNegative">0</nx-radio>
             <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
-    standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class MultipleRadio extends RadioTest {
@@ -705,6 +705,7 @@ class MultipleRadio extends RadioTest {
 }
 
 @Component({
+    standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
         <nx-radio-group name="groupTest" #radioGroup>
@@ -712,7 +713,6 @@ class MultipleRadio extends RadioTest {
             <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
-    standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class MultipleRadioOnPush extends RadioTest {
@@ -720,13 +720,13 @@ class MultipleRadioOnPush extends RadioTest {
 }
 
 @Component({
+    standalone: true,
     template: `
         <nx-radio-group name="groupTest" [disabled]="disabled">
             <nx-radio value="0">0</nx-radio>
             <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
-    standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class MultipleRadioDisabled extends RadioTest {
@@ -734,6 +734,7 @@ class MultipleRadioDisabled extends RadioTest {
 }
 
 @Component({
+    standalone: true,
     template: `
         <form [formGroup]="testForm">
             <nx-radio-group name="reactiveTest" formControlName="radioTestReactive">
@@ -744,7 +745,6 @@ class MultipleRadioDisabled extends RadioTest {
             <p>Form status: {{ testForm.status | json }}</p>
         </form>
     `,
-    standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule, JsonPipe],
 })
 class ReactiveRadio extends RadioTest {
@@ -761,18 +761,19 @@ class ReactiveRadio extends RadioTest {
     }
 }
 @Component({
+    standalone: true,
     template: `
         <nx-radio-group name="groupTest" [(ngModel)]="templateModel">
             <nx-radio value="0">0</nx-radio>
             <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
-    standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class GroupWithNgModel extends RadioTest {}
 
 @Component({
+    standalone: true,
     template: `
         <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
             <nx-radio-group name="reactiveTest" formControlName="radioTestReactive" [required]="true">
@@ -786,7 +787,6 @@ class GroupWithNgModel extends RadioTest {}
             <button type="submit" nxButton="primary">Submit</button>
         </form>
     `,
-    standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class RadioGroupValidation extends RadioTest {
@@ -812,6 +812,7 @@ class RadioGroupValidation extends RadioTest {
 }
 
 @Component({
+    standalone: true,
     template: `
         <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
             <nx-radio-group name="reactiveTest" formControlName="radioTestReactive" [required]="true">
@@ -825,7 +826,6 @@ class RadioGroupValidation extends RadioTest {
             <button type="submit" nxButton="primary">Submit</button>
         </form>
     `,
-    standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class RadioGroupValidationTouched extends RadioTest {
@@ -854,6 +854,7 @@ class RadioGroupValidationTouched extends RadioTest {
 }
 
 @Component({
+    standalone: true,
     template: `
         <nx-radio-group name="radioGroupTest" [readonly]="readonly">
             <nx-label>What do you prefer?</nx-label>
@@ -861,7 +862,6 @@ class RadioGroupValidationTouched extends RadioTest {
             <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
-    standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class RadioGroupTest extends RadioTest {
@@ -869,6 +869,7 @@ class RadioGroupTest extends RadioTest {
 }
 
 @Component({
+    standalone: true,
     template: `
         <nx-radio-group name="radioGroupTest">
             <nx-label>What do you prefer?</nx-label>
@@ -876,7 +877,6 @@ class RadioGroupTest extends RadioTest {
             <nx-radio value="1">1</nx-radio>
         </nx-radio-group>
     `,
-    standalone: true,
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class RadioA11y extends RadioTest {

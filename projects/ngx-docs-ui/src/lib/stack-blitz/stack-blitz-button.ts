@@ -12,7 +12,6 @@ import { StackBlitzWriter } from './stack-blitz-writer';
     selector: 'nxv-stack-blitz-button',
     templateUrl: './stack-blitz-button.html',
     providers: [StackBlitzWriter],
-    standalone: true,
     imports: [NxButtonModule, NxTooltipModule, NxIconModule],
 })
 export class StackBlitzButton {

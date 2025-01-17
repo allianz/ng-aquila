@@ -13,7 +13,6 @@ import {
     selector: 'timefield-with-timepicker-global-example',
     templateUrl: './timefield-with-timepicker-global-example.html',
     styleUrls: ['./timefield-with-timepicker-global-example.css'],
-    standalone: true,
     imports: [NxTimefieldModule, NxErrorModule, ReactiveFormsModule],
     providers: [
         {

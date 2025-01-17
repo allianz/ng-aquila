@@ -12,7 +12,6 @@ import { NxFigureComponent } from '@aposin/ng-aquila/image';
     selector: 'avatar-button-example',
     templateUrl: './avatar-button-example.html',
     styleUrls: ['./avatar-button-example.css'],
-    standalone: true,
     imports: [
         NxAvatarButtonDirective,
         NxAvatarComponent,

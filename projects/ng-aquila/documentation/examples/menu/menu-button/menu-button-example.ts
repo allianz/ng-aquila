@@ -12,7 +12,6 @@ import {
     selector: 'menu-button-example',
     templateUrl: 'menu-button-example.html',
     styleUrls: ['menu-button-example.css'],
-    standalone: true,
     imports: [
         NxMenuButtonComponent,
         NxIconComponent,

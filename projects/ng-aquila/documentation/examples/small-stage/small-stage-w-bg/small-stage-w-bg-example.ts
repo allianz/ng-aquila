@@ -15,7 +15,6 @@ import {
     selector: 'small-stage-w-bg-example',
     templateUrl: './small-stage-w-bg-example.html',
     styleUrls: ['./small-stage-w-bg-example.css'],
-    standalone: true,
     imports: [
         NxSmallStageComponent,
         NxHeadlineComponent,

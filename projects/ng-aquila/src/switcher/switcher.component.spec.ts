@@ -363,7 +363,6 @@ describe('NxSwitcherComponent', () => {
 
 @Component({
     template: `<nx-switcher [(checked)]="checked" id="testSwitcher">basicLabel</nx-switcher>`,
-    standalone: true,
     imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class BasicSwitcher extends SwitcherTest {}
@@ -371,14 +370,12 @@ class BasicSwitcher extends SwitcherTest {}
 @Component({
     template: `<nx-switcher [(checked)]="checked" id="testSwitcher">basicLabel</nx-switcher>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class BasicSwitcherOnPush extends SwitcherTest {}
 
 @Component({
     template: `<nx-switcher [(ngModel)]="checked" [required]="required">templateLabel</nx-switcher>`,
-    standalone: true,
     imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class SwitcherTemplateDriven extends SwitcherTest {
@@ -391,7 +388,6 @@ class SwitcherTemplateDriven extends SwitcherTest {
             <nx-switcher #switcher formControlName="reactiveSwitcher" [readonly]="readonly"> switcher </nx-switcher>
         </form>
     `,
-    standalone: true,
     imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class SwitcherReactiveForm extends SwitcherTest {
@@ -405,14 +401,12 @@ class SwitcherReactiveForm extends SwitcherTest {
 
 @Component({
     template: `<nx-switcher [labelSize]="labelSize" id="testSwitcher">basicLabel</nx-switcher>`,
-    standalone: true,
     imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class LabelSizeSwitcher extends SwitcherTest {}
 
 @Component({
     template: `<nx-switcher [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy">basicLabel</nx-switcher>`,
-    standalone: true,
     imports: [NxSwitcherModule],
 })
 class SwitcherA11y extends SwitcherTest {
@@ -426,7 +420,6 @@ class SwitcherA11y extends SwitcherTest {
             <nx-switcher formControlName="switcherValidationTestReactive"> switcher <nx-error>required</nx-error> </nx-switcher>
         </form>
     `,
-    standalone: true,
     imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class ValidationSwitcherForm extends SwitcherTest {
@@ -446,7 +439,6 @@ class ValidationSwitcherForm extends SwitcherTest {
 
 @Component({
     template: `<nx-switcher [(checked)]="checked" id="testSwitcher"></nx-switcher>`,
-    standalone: true,
     imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class LabellessSwitcher extends SwitcherTest {}

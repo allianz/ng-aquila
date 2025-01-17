@@ -289,7 +289,6 @@ describe('NxComparisonTableRowGroupDirective using injection token', () => {
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class BasicComponent extends RowGroupTest {}
@@ -328,7 +327,6 @@ class BasicComponent extends RowGroupTest {}
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class ConfigurableComponent extends RowGroupTest {}
@@ -358,7 +356,6 @@ class ConfigurableComponent extends RowGroupTest {}
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class ToggleSectionComponent extends RowGroupTest {}

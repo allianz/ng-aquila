@@ -19,7 +19,6 @@ export const myCustomConfig: NxMessageToastConfig = {
     selector: 'message-toast-custom-settings-example',
     templateUrl: './message-toast-custom-settings-example.html',
     styleUrls: ['./message-toast-custom-settings-example.css'],
-    standalone: true,
     providers: [NxMessageToastService],
     imports: [NxButtonComponent],
 })

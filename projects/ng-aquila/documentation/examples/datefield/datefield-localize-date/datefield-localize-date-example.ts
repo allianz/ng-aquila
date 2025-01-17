@@ -30,7 +30,6 @@ import { takeUntil } from 'rxjs/operators';
     selector: 'datefield-localize-date-example',
     templateUrl: './datefield-localize-date-example.html',
     styleUrls: ['./datefield-localize-date-example.css'],
-    standalone: true,
     imports: [
         NxMessageComponent,
         FormsModule,

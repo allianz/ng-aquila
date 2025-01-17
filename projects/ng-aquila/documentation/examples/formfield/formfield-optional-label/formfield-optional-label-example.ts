@@ -25,7 +25,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'formfield-optional-label-example',
     templateUrl: './formfield-optional-label-example.html',
     styleUrls: ['./formfield-optional-label-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

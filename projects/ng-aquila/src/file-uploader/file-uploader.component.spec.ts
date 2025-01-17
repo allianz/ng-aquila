@@ -794,7 +794,6 @@ describe('NxFileUploaderComponent', () => {
             </nx-file-uploader>
         </form>
     `,
-    standalone: true,
     imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
 })
 class BasicFileUpload extends FileUploaderTest {
@@ -824,7 +823,6 @@ class BasicFileUpload extends FileUploaderTest {
             </nx-file-uploader>
         </form>
     `,
-    standalone: true,
     imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
     providers: [{ provide: NxFileUploaderIntl, useClass: CustomIntl }],
 })
@@ -877,7 +875,6 @@ class IntlOverrideFileUpload extends FileUploaderTest {
             <button nxButton="primary" type="submit" id="submit-button">Upload files</button>
         </form>
     `,
-    standalone: true,
     imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule, JsonPipe],
 })
 class ReactiveFileUpload extends FileUploaderTest {
@@ -908,7 +905,6 @@ class ReactiveFileUpload extends FileUploaderTest {
             </button>
         </nx-file-uploader>
     `,
-    standalone: true,
     imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
 })
 class DynamicFileUpload extends FileUploaderTest {
@@ -955,7 +951,6 @@ class DynamicFileUpload extends FileUploaderTest {
             </section>
         </ng-template>
     `,
-    standalone: true,
     imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
 })
 class CustomItemTemplateFileUpload extends FileUploaderTest {
@@ -985,7 +980,6 @@ class CustomItemTemplateFileUpload extends FileUploaderTest {
             <button id="upload-trigger" [nxFileUploadTriggerFor]="documentUpload" type="button">Upload files</button>
         </form>
     `,
-    standalone: true,
     imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
 })
 class UploadFail extends FileUploaderTest {

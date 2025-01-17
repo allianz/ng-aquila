@@ -62,7 +62,6 @@ export function throwNxDialogContentAlreadyAttachedError() {
         '(@slideInOut.start)': '_onAnimationStart($event)',
         '(@slideInOut.done)': '_onAnimationDone($event)',
     },
-    standalone: true,
     imports: [NxIconModule, CdkPortalOutlet],
 })
 export class NxModalContainer extends BasePortalOutlet implements AfterViewInit, OnDestroy, OnInit {

@@ -20,7 +20,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'autocomplete-outline-example',
     templateUrl: './autocomplete-outline-example.html',
     styleUrls: ['./autocomplete-outline-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

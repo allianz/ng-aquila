@@ -27,7 +27,6 @@ export interface NxExpandable {
     templateUrl: './toggle-button.component.html',
     styleUrls: ['./toggle-button.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {

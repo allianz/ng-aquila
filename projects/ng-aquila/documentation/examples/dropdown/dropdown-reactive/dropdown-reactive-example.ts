@@ -30,7 +30,6 @@ import {
     selector: 'dropdown-reactive-example',
     templateUrl: './dropdown-reactive-example.html',
     styleUrls: ['./dropdown-reactive-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

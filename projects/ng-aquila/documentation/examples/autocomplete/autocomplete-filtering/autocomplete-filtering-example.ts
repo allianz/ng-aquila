@@ -12,7 +12,6 @@ import {
     selector: 'autocomplete-filtering-example',
     templateUrl: './autocomplete-filtering-example.html',
     styleUrls: ['./autocomplete-filtering-example.css'],
-    standalone: true,
     imports: [
         NxAutocompleteTriggerDirective,
         NxAutocompleteComponent,

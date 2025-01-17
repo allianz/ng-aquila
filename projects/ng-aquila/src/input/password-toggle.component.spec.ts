@@ -97,7 +97,6 @@ describe('NxPasswordToggleComponent', () => {
             </span>
         </nx-formfield>
     `,
-    standalone: true,
     imports: [NxInputModule, FormsModule],
 })
 class BasicPasswordToggle extends PasswordToggleTest {
@@ -114,7 +113,6 @@ class BasicPasswordToggle extends PasswordToggleTest {
         </nx-formfield>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxInputModule, FormsModule],
 })
 class BasicPasswordToggleOnPush extends PasswordToggleTest {
@@ -123,7 +121,6 @@ class BasicPasswordToggleOnPush extends PasswordToggleTest {
 
 @Component({
     template: `<nx-password-toggle></nx-password-toggle>`,
-    standalone: true,
     imports: [NxInputModule, FormsModule],
 })
 class NoControlToggle extends PasswordToggleTest {}

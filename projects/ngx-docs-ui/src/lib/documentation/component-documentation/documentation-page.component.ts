@@ -14,7 +14,6 @@ import { NavigationComponent } from './navigation/navigation.component';
     selector: 'nxv-documentation',
     templateUrl: 'documentation-page.component.html',
     styleUrls: ['./documentation-page.component.scss'],
-    standalone: true,
     imports: [NxSidebarModule, NavigationComponent, CdkScrollable, NxGridModule, RouterOutlet, NxvFooterComponent],
 })
 export class NxvDocumentationComponent implements OnDestroy {

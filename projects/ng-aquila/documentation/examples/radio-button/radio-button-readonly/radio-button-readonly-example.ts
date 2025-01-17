@@ -17,7 +17,6 @@ import {
  */
 @Component({
     selector: 'radio-button-readonly-example',
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

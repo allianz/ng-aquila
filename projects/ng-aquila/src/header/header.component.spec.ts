@@ -126,7 +126,6 @@ describe(NxHeaderComponent.name, () => {
             <nx-header-actions> Example action </nx-header-actions>
         </nx-header>
     `,
-    standalone: true,
     imports: [NxHeaderModule],
 })
 class BasicHeader extends HeaderTest {}
@@ -138,7 +137,6 @@ class BasicHeader extends HeaderTest {}
             <nx-header-row> </nx-header-row>
         </nx-header>
     `,
-    standalone: true,
     imports: [NxHeaderModule],
 })
 class MultiRowHeader extends HeaderTest {}
@@ -159,7 +157,6 @@ class MultiRowHeader extends HeaderTest {}
             <nx-header-row> </nx-header-row>
         </nx-header>
     `,
-    standalone: true,
     imports: [NxHeaderModule],
 })
 class CobrandingHeader extends HeaderTest {

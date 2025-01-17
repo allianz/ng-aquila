@@ -33,7 +33,6 @@ export const RESIZE_STEP_SIZE = 20;
         '[class.is-closed]': '!open',
         '[style.width.px]': `_sidebarElementWidth`,
     },
-    standalone: true,
     imports: [],
 })
 export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {

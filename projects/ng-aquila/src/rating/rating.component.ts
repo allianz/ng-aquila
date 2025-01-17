@@ -37,7 +37,6 @@ let nextId = 0;
         '[class.nx-rating--disabled]': 'disabled',
         '[style.--iconColor]': 'iconColor',
     },
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {

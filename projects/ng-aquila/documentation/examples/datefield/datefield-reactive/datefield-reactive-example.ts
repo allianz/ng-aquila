@@ -27,7 +27,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'datefield-reactive-example',
     templateUrl: './datefield-reactive-example.html',
     styleUrls: ['./datefield-reactive-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

@@ -23,7 +23,6 @@ import {
     selector: 'small-stage-content-variation-example',
     templateUrl: './small-stage-content-variation-example.html',
     styleUrls: ['./small-stage-content-variation-example.css'],
-    standalone: true,
     imports: [
         NxSmallStageComponent,
         NxLinkComponent,

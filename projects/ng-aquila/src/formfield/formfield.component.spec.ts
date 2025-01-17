@@ -479,13 +479,11 @@ describe('NxFormfieldComponent', () => {
             <input nxInput [disabled]="disabled" [readonly]="readonly" />
         </nx-formfield>
     `,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class BasicFormfield extends FormfieldTest {}
 @Component({
     template: `<nx-formfield></nx-formfield>`,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class NoInputFormfield extends FormfieldTest {}
@@ -497,7 +495,6 @@ class NoInputFormfield extends FormfieldTest {}
             <input nxInput />
         </nx-formfield>
     `,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class CustomLabelFormfield extends FormfieldTest {}
@@ -515,7 +512,6 @@ class CustomLabelFormfield extends FormfieldTest {}
             <span nxFormfieldAppendix>content-appendix</span>
         </nx-formfield>
     `,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class DirectivesFormfield extends FormfieldTest {}
@@ -528,7 +524,6 @@ class DirectivesFormfield extends FormfieldTest {}
             <span nxFormfieldError>content-error</span>
         </nx-formfield>
     `,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class ErrorFormfield extends FormfieldTest {}
@@ -541,7 +536,6 @@ class ErrorFormfield extends FormfieldTest {}
             <span nxFormfieldError>content-error</span>
         </nx-formfield>
     `,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class NoChangeDetectionFormfield extends FormfieldTest {}
@@ -553,7 +547,6 @@ class NoChangeDetectionFormfield extends FormfieldTest {}
             <span nxFormfieldNote>content-note</span>
         </nx-formfield>
     `,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class NoteFormfield extends FormfieldTest {}
@@ -563,7 +556,6 @@ class NoteFormfield extends FormfieldTest {}
             <input nxInput [(ngModel)]="currentValue" />
         </nx-formfield>
     `,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class NgModelFormfield extends FormfieldTest {}
@@ -574,7 +566,6 @@ class NgModelFormfield extends FormfieldTest {}
             <input nxInput [(ngModel)]="currentValue" />
         </nx-formfield>
     `,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class FloatingFormfield extends FormfieldTest {}
@@ -590,7 +581,6 @@ class FloatingFormfield extends FormfieldTest {}
             </select>
         </nx-formfield>
     `,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class NativeSelectFormfield extends FormfieldTest {}
@@ -602,7 +592,6 @@ class NativeSelectFormfield extends FormfieldTest {}
             <input nxInput />
         </nx-formfield>
     `,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class CustomLabelAndInputFormfield extends FormfieldTest {}
@@ -613,7 +602,6 @@ class CustomLabelAndInputFormfield extends FormfieldTest {}
             <input nxInput />
         </nx-formfield>
     `,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class OutlineFormfield extends FormfieldTest {}
@@ -623,7 +611,6 @@ class OutlineFormfield extends FormfieldTest {}
         <input nxInput />
     </nx-formfield>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class OnPushFormfield extends FormfieldTest {}
@@ -635,7 +622,6 @@ class OnPushFormfield extends FormfieldTest {}
         }
         <span nxFormfieldHint>my hint</span>
     </nx-formfield>`,
-    standalone: true,
     imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class ConditionalInputComponent extends FormfieldTest {}

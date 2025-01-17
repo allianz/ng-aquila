@@ -216,7 +216,6 @@ describe('NxComparisonTableSelectButton', () => {
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class BasicComponent extends ToggleTest {}
@@ -278,7 +277,6 @@ class BasicComponent extends ToggleTest {}
             </ng-container>
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class ConfigurableComponent extends ToggleTest {}
@@ -326,7 +324,6 @@ class ConfigurableComponent extends ToggleTest {}
             }
         </nx-comparison-table>
     `,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class DynamicComponent extends ToggleTest {

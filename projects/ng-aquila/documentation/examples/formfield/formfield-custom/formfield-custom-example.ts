@@ -10,7 +10,6 @@ import { FormfieldCustomTelInputExampleComponent } from '../formfield-custom-tel
     selector: 'formfield-custom-example',
     templateUrl: './formfield-custom-example.html',
     styleUrls: ['./formfield-custom-example.css'],
-    standalone: true,
     imports: [NxFormfieldComponent, FormfieldCustomTelInputExampleComponent],
 })
 export class FormfieldCustomExampleComponent {}

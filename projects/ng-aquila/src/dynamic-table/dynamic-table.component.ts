@@ -21,7 +21,6 @@ import { NxDynamicTableColumnDefinition, NxDynamicTableDataSource } from './dyna
     templateUrl: './dynamic-table.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./dynamic-table.component.scss'],
-    standalone: true,
     imports: [CdkTable, CdkColumnDef, CdkHeaderCellDef, CdkHeaderCell, NgClass, NgStyle, CdkCellDef, CdkCell, CdkHeaderRowDef, CdkHeaderRow, CdkRowDef, CdkRow],
 })
 export class NxDynamicTableComponent implements OnInit {

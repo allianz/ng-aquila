@@ -160,7 +160,6 @@ describe('NxTagComponent', () => {
 
 @Component({
     template: `<nx-tag value="foo"></nx-tag>`,
-    standalone: true,
     imports: [NxTaglistModule],
 })
 class BasicTag extends TagTest {}
@@ -172,7 +171,6 @@ class MyIntl extends NxTagIntl {
 
 @Component({
     template: `<nx-tag value="foo" removable="true"></nx-tag>`,
-    standalone: true,
     imports: [NxTaglistModule],
     providers: [
         {
@@ -185,7 +183,6 @@ class IntlTag extends TagTest {}
 
 @Component({
     template: `<nx-tag value="bar" removable="true" [deleteAriaLabel]="deleteAriaLabel"></nx-tag>`,
-    standalone: true,
     imports: [NxTaglistModule],
 })
 class RemovableTag extends TagTest {

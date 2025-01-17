@@ -10,7 +10,6 @@ import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
     selector: 'nxv-search',
     templateUrl: './search-input.component.html',
     styleUrls: ['./search-input.component.scss'],
-    standalone: true,
     imports: [NxFormfieldModule, NxInputModule, FormsModule],
 })
 export class NxvSearchInputComponent implements OnInit {

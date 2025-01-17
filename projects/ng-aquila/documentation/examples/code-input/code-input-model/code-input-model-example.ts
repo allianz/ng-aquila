@@ -19,7 +19,6 @@ import { takeUntil } from 'rxjs/operators';
     selector: 'code-input-model-example',
     templateUrl: 'code-input-model-example.html',
     styleUrls: ['code-input-model-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

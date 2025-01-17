@@ -263,21 +263,18 @@ describe('NxTaglistComponent', () => {
 
 @Component({
     template: `<nx-taglist [tags]="tags">empty</nx-taglist>`,
-    standalone: true,
     imports: [NxTaglistModule],
 })
 class BasicTaglist extends TaglistTest {}
 
 @Component({
     template: `<nx-taglist [tags]="tags" [allowTagDeletion]="false"></nx-taglist>`,
-    standalone: true,
     imports: [NxTaglistModule],
 })
 class TaglistNoDelete extends TaglistTest {}
 
 @Component({
     template: `<nx-taglist [tags]="tags" labelProperty="testLabelProp"></nx-taglist>`,
-    standalone: true,
     imports: [NxTaglistModule],
 })
 class TaglistObjects extends TaglistTest {
@@ -286,7 +283,6 @@ class TaglistObjects extends TaglistTest {
 
 @Component({
     template: `<nx-taglist [tags]="tags" [valueFormatter]="myFormatter">empty</nx-taglist>`,
-    standalone: true,
     imports: [NxTaglistModule],
 })
 class TaglistWithFormatter extends TaglistTest {
@@ -296,7 +292,6 @@ class TaglistWithFormatter extends TaglistTest {
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `<nx-taglist [tags]="tags">empty</nx-taglist>`,
-    standalone: true,
     imports: [NxTaglistModule],
 })
 class TaglistOnPush extends TaglistTest {}
@@ -307,7 +302,6 @@ class TaglistOnPush extends TaglistTest {}
         <h5 id="taglist-headline2">Other label</h5>
         <nx-taglist [tags]="tags" [aria-labelledby]="labelledBy"></nx-taglist>
     `,
-    standalone: true,
     imports: [NxTaglistModule],
 })
 class AriaLabelledByTaglist extends TaglistTest {

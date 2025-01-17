@@ -72,20 +72,17 @@ describe('NxProgressbarComponent', () => {
 
 @Component({
     template: `<nx-progressbar></nx-progressbar>`,
-    standalone: true,
     imports: [NxProgressbarModule, FormsModule],
 })
 class ProgressBarBasicComponent extends ProgressBarTest {}
 
 @Component({
     template: `<nx-progressbar value="0.5"></nx-progressbar>`,
-    standalone: true,
     imports: [NxProgressbarModule, FormsModule],
 })
 class ProgressBarValueComponent extends ProgressBarTest {}
 @Component({
     template: `<nx-progressbar value="15" min="12" max="33"></nx-progressbar>`,
-    standalone: true,
     imports: [NxProgressbarModule, FormsModule],
 })
 class ProgressBarCustomRangeComponent extends ProgressBarTest {}

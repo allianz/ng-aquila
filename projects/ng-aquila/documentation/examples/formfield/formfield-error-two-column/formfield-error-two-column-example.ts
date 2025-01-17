@@ -23,7 +23,6 @@ import {
     selector: 'formfield-error-two-column-example',
     templateUrl: './formfield-error-two-column-example.html',
     styleUrls: ['./formfield-error-two-column-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

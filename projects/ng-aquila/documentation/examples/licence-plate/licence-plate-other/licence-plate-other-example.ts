@@ -20,7 +20,6 @@ import { NxLicencePlateValidatorDirective } from '@aposin/ng-aquila/licence-plat
     selector: 'licence-plate-other-example',
     templateUrl: 'licence-plate-other-example.html',
     styleUrls: ['licence-plate-other-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

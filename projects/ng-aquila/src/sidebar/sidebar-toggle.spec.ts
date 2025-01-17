@@ -47,7 +47,6 @@ describe('NxSidebarToggleButton', () => {
             </nx-sidebar-footer>
         </nx-sidebar>
     `,
-    standalone: true,
     imports: [NxButtonModule, NxSidebarModule],
 })
 class BasicSidebarToggleComponent extends ToggleTest {}

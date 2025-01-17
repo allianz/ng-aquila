@@ -9,7 +9,6 @@ import { NxProgressbarComponent } from '@aposin/ng-aquila/progressbar';
     templateUrl: './progressbar-custom-range-example.html',
     styleUrls: ['./progressbar-custom-range-example.css'],
     imports: [NxProgressbarComponent],
-    standalone: true,
 })
 export class ProgressbarCustomRangeExampleComponent implements OnInit {
     value = 15;

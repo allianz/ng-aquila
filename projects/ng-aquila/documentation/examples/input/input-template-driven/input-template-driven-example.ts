@@ -11,7 +11,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'input-template-driven-example',
     templateUrl: './input-template-driven-example.html',
     styleUrls: ['./input-template-driven-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxInputDirective,

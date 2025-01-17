@@ -8,7 +8,6 @@ import { NxVideoComponent } from '@aposin/ng-aquila/video';
     selector: 'video-example',
     templateUrl: './video-example.html',
     styleUrls: ['./video-example.css'],
-    standalone: true,
     imports: [NxVideoComponent],
 })
 export class VideoExampleComponent {}

@@ -28,7 +28,6 @@ import {
     selector: 'licence-plate-expert-states-example',
     templateUrl: 'licence-plate-expert-states-example.html',
     styleUrls: ['licence-plate-expert-states-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

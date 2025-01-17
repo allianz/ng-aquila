@@ -9,7 +9,6 @@ import { Theme } from './theme-switcher.service';
     selector: 'nxv-theme-switch',
     templateUrl: 'theme-switcher.component.html',
     styleUrls: ['theme-switcher.component.scss'],
-    standalone: true,
     imports: [NxButtonModule, NxContextMenuModule, NxIconModule],
 })
 export class NxvThemeSwitcherComponent {

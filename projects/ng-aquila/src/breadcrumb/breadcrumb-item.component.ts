@@ -10,7 +10,6 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
     host: {
         class: 'nx-breadcrumb-item',
     },
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxBreadcrumbItemComponent implements OnDestroy, AfterViewInit {

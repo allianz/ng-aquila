@@ -19,7 +19,6 @@ import { NxComparisonTableBase } from '../comparison-table-base';
         '(click)': '_selectCell()',
         '[attr.aria-pressed]': '_ariaPressed',
     },
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxComparisonTableSelectButton extends NxButtonBase implements OnDestroy {

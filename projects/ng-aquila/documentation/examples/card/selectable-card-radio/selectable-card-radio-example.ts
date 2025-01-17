@@ -22,7 +22,6 @@ import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
     templateUrl: './selectable-card-radio-example.html',
     styleUrls: ['./selectable-card-radio-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

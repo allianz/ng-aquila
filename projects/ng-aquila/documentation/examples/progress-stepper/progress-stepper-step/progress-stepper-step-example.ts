@@ -15,7 +15,6 @@ import { NxSliderComponent } from '@aposin/ng-aquila/slider';
     selector: 'progress-stepper-step-example',
     templateUrl: './progress-stepper-step-example.html',
     styleUrls: ['./progress-stepper-step-example.css'],
-    standalone: true,
     imports: [
         NxProgressStepperComponent,
         NxStepComponent,

@@ -73,7 +73,6 @@ let nextId = 0;
         '[class.nx-circle-toggle-group]': 'true',
         role: 'radiogroup',
     },
-    standalone: true,
     imports: [],
 })
 export class NxCircleToggleGroupComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck, NxAbstractControl {

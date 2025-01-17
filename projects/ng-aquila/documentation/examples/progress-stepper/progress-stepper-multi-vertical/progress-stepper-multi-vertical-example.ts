@@ -55,7 +55,6 @@ interface Animal {
     host: {
         '[class.is-vertical]': 'direction === "vertical"',
     },
-    standalone: true,
     imports: [
         NxMultiStepperComponent_1,
         NxStepComponent,

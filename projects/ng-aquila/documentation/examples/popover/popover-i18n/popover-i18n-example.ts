@@ -22,7 +22,6 @@ export class MyPopoverIntl extends NxPopoverIntl {
             useClass: MyPopoverIntl,
         },
     ],
-    standalone: true,
     imports: [NxButtonComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverI18nExampleComponent {}

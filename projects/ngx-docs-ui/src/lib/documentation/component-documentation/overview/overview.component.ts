@@ -16,7 +16,6 @@ import { NxvStatusDotComponent } from './status-dot.component';
     selector: 'nxv-overview',
     templateUrl: 'overview.component.html',
     styleUrls: ['overview.component.scss'],
-    standalone: true,
     imports: [NxGridModule, NxvStatusDotComponent, NxHeadlineModule, NxTableModule, RouterLink, NxBadgeModule],
 })
 export class NxvOverviewComponent implements OnDestroy {

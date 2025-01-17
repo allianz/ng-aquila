@@ -24,7 +24,6 @@ function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
             deps: [Overlay],
         },
     ],
-    standalone: true,
     imports: [NxBadgeComponent, NxTooltipDirective],
 })
 export class TooltipScrollStrategyProviderExampleComponent {}

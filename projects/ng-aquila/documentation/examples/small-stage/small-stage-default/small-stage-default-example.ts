@@ -21,7 +21,6 @@ import {
     selector: 'small-stage-default-example',
     templateUrl: './small-stage-default-example.html',
     styleUrls: ['./small-stage-default-example.css'],
-    standalone: true,
     imports: [
         NxSmallStageComponent,
         NxSmallStageHeaderDirective,

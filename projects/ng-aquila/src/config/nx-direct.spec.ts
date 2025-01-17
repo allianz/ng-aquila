@@ -47,7 +47,6 @@ describe('NxDirectPreset', () => {
             <input nxInput />
         </nx-formfield>
     `,
-    standalone: true,
     imports: [NxDirectModule, NxInputModule],
 })
 class FormfieldPresetComponent extends PresetTest {}

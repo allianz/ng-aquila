@@ -23,7 +23,6 @@ import {
     selector: 'notification-panel-actions-example',
     templateUrl: './notification-panel-actions-example.html',
     styleUrls: ['./notification-panel-actions-example.css'],
-    standalone: true,
     imports: [
         NxIconButtonComponent,
         NxNotificationPanelTriggerDirective,

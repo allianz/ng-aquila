@@ -50,7 +50,6 @@ import { Subject } from 'rxjs';
         </div>
     `,
     styleUrls: ['./context-menu-item.component.scss'],
-    standalone: true,
     imports: [NxIconModule],
 })
 export class NxContextMenuItemComponent implements OnDestroy, AfterViewInit {

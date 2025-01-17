@@ -9,7 +9,6 @@ import { NxvTableOfContentsComponent } from '../../table-of-contents/table-of-co
     selector: 'nxv-component-api',
     templateUrl: 'component-api.html',
     styleUrls: ['./component-api.scss'],
-    standalone: true,
     imports: [DocViewerComponent, NxvTableOfContentsComponent, AsyncPipe],
 })
 export class ComponentApi {

@@ -78,14 +78,12 @@ describe('NxLabelComponent', () => {
 
 @Component({
     template: `<nx-label>I am a label</nx-label>`,
-    standalone: true,
     imports: [NxLabelModule],
 })
 class BasicLabel extends LabelTest {}
 
 @Component({
     template: `<nx-label [size]="size">I am a label</nx-label>`,
-    standalone: true,
     imports: [NxLabelModule],
 })
 class ConfigurableLabel extends LabelTest {}

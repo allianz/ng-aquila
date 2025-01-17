@@ -40,7 +40,6 @@ import {
             useValue: { appearance: 'outline', nxFloatLabel: 'always' },
         },
     ],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

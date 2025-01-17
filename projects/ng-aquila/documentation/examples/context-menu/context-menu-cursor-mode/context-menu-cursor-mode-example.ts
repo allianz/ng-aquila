@@ -16,7 +16,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     selector: 'context-menu-cursor-mode-example',
     templateUrl: './context-menu-cursor-mode-example.html',
     styleUrls: ['./context-menu-cursor-mode-example.css'],
-    standalone: true,
     imports: [
         NxContextMenuComponent,
         NxContextMenuItemComponent,

@@ -14,7 +14,6 @@ import { FuseSearchService } from '../../service/fuse-search.service';
     selector: 'nxv-search-results',
     templateUrl: './search-results.component.html',
     styleUrls: ['./search-results.component.scss'],
-    standalone: true,
     imports: [CdkScrollable, NxGridModule, NxLinkModule, NxBadgeModule, AsyncPipe],
 })
 export class NxvSearchResultsComponent implements OnInit, OnDestroy {

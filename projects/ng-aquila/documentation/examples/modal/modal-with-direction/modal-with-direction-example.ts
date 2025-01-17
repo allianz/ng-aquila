@@ -12,7 +12,6 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
     selector: 'modal-with-direction-example',
     templateUrl: './modal-with-direction-example.html',
     styleUrls: ['./modal-with-direction-example.css'],
-    standalone: true,
     imports: [NxButtonComponent, NxHeadlineComponent, NxCopytextComponent],
 })
 export class ModalWithDirectionExampleComponent {

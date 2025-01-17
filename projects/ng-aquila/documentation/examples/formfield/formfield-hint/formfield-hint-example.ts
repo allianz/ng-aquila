@@ -19,7 +19,6 @@ import {
     selector: 'formfield-hint-example',
     templateUrl: './formfield-hint-example.html',
     styleUrls: ['./formfield-hint-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxInputDirective,

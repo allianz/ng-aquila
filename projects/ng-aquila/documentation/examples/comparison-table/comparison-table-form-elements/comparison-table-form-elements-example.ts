@@ -19,7 +19,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     selector: 'comparison-table-form-elements-example',
     templateUrl: './comparison-table-form-elements-example.html',
     styleUrls: ['./comparison-table-form-elements-example.css'],
-    standalone: true,
     imports: [
         NxSwipebarComponent,
         NxComparisonTableComponent,

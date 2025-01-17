@@ -121,7 +121,6 @@ describe(NxExpandableTableRowComponent.name, () => {
         example content
     </tr>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxTableModule],
 })
 class BasicExpandableTableRowComponent extends ExpandableTableRowTest {}
@@ -131,7 +130,6 @@ class BasicExpandableTableRowComponent extends ExpandableTableRowTest {}
         example content
     </tr>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxTableModule],
 })
 class ConfigurableExpandableTableRowComponent extends ExpandableTableRowTest {}

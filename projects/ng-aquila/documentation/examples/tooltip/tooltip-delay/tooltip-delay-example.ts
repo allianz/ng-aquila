@@ -9,7 +9,6 @@ import { NxTooltipDirective } from '@aposin/ng-aquila/tooltip';
     selector: 'tooltip-delay-example',
     templateUrl: './tooltip-delay-example.html',
     styleUrls: ['./tooltip-delay-example.css'],
-    standalone: true,
     imports: [NxButtonComponent, NxTooltipDirective],
 })
 export class TooltipDelayExampleComponent {}

@@ -37,7 +37,6 @@ import {
     selector: 'formfield-appearance-example',
     templateUrl: './formfield-appearance-example.html',
     styleUrls: ['./formfield-appearance-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

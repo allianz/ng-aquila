@@ -97,7 +97,6 @@ describe('NxListComponent', () => {
             <li>2</li>
         </ul>
     `,
-    standalone: true,
     imports: [NxListModule],
 })
 class BasicList extends ListTest {}
@@ -109,7 +108,6 @@ class BasicList extends ListTest {}
             <li>2</li>
         </ul>
     `,
-    standalone: true,
     imports: [NxListModule],
 })
 class ListWithModifier extends ListTest {}
@@ -121,7 +119,6 @@ class ListWithModifier extends ListTest {}
             <li nxListIcon="product-cross">2</li>
         </ul>
     `,
-    standalone: true,
     imports: [NxListModule],
 })
 class ListWithIcons extends ListTest {}
@@ -133,7 +130,6 @@ class ListWithIcons extends ListTest {}
             <li>2</li>
         </ul>
     `,
-    standalone: true,
     imports: [NxListModule],
 })
 class ConfigurableList extends ListTest {

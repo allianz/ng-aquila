@@ -12,7 +12,6 @@ import {
     selector: 'grid-maxwidth-example',
     templateUrl: './grid-maxwidth-example.html',
     styleUrls: ['./grid-maxwidth-example.css'],
-    standalone: true,
     imports: [NxLayoutComponent, NxRowComponent, NxColComponent],
 })
 export class GridMaxwidthExampleComponent {}

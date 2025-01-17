@@ -192,7 +192,6 @@ describe('NxTabHeaderComponent', () => {
             }
         </nx-tab-header>
     `,
-    standalone: true,
     imports: [NxTabsModule, FormsModule, ReactiveFormsModule],
 })
 class BasicHeader extends TabHeaderTest {
@@ -214,7 +213,6 @@ class BasicHeader extends TabHeaderTest {
             }
         </nx-tab-header>
     `,
-    standalone: true,
     imports: [NxTabsModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleHeader extends TabHeaderTest {

@@ -123,7 +123,6 @@ describe('NxFileUploaderComponent', () => {
             <button nxButton="primary" type="submit" id="submit-button">Upload files</button>
         </form>
     `,
-    standalone: true,
     imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule],
 })
 class DropZoneFileUpload extends FileUploaderTest {

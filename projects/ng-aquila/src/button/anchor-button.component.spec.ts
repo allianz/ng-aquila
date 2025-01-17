@@ -11,7 +11,6 @@ abstract class AnchorButtonTest {
 
 @Component({
     template: `<a nxButton #button href="#" class="some-arbitrary-class-name">Hello Anchor Button</a>`,
-    standalone: true,
     imports: [NxButtonModule],
 })
 class TestInstance extends AnchorButtonTest {

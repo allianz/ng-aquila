@@ -12,7 +12,6 @@ import {
     selector: 'checkbox-group-label-size-example',
     templateUrl: './checkbox-group-label-size-example.html',
     styleUrls: ['./checkbox-group-label-size-example.css'],
-    standalone: true,
     imports: [NxCheckboxGroupComponent, NxLabelComponent, NxCheckboxComponent],
 })
 export class CheckboxGroupLabelSizeExampleComponent {}

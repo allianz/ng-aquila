@@ -321,7 +321,6 @@ describe('NxMonthView', () => {
 
 @Component({
     template: `<nx-month-view [(activeDate)]="activeDate" [(selected)]="selected"></nx-month-view>`,
-    standalone: true,
     imports: [NxNativeDateModule, NxMonthViewComponent],
 })
 class StandardMonthView {
@@ -332,7 +331,6 @@ class StandardMonthView {
 
 @Component({
     template: `<nx-month-view [activeDate]="activeDate" [dateFilter]="dateFilter"></nx-month-view>`,
-    standalone: true,
     imports: [NxNativeDateModule, NxMonthViewComponent],
 })
 class MonthViewWithDateFilter {

@@ -15,7 +15,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     selector: 'comparison-table-row-group-example',
     templateUrl: './comparison-table-row-group-example.html',
     styleUrls: ['./comparison-table-row-group-example.css'],
-    standalone: true,
     imports: [
         NxSwipebarComponent,
         NxComparisonTableComponent,

@@ -53,7 +53,6 @@ describe(NxMenuLinkDirective.name, () => {
 
 @Component({
     template: `<a nxMenuLink>Link</a>`,
-    standalone: true,
     imports: [NxMenuModule],
 })
 class BasicMenuLink extends MenuLinkTest {}

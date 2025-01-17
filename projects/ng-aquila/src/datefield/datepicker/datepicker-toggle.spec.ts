@@ -160,7 +160,6 @@ describe('NxDatepickerToggleComponent using injection token', () => {
         <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker1></nx-datepicker>
     `,
-    standalone: true,
     imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule],
 })
 class BasicToggleDateComponent extends DatepickerToggleTest {}
@@ -171,7 +170,6 @@ class BasicToggleDateComponent extends DatepickerToggleTest {}
         <nx-datepicker-toggle [for]="myDatepicker1" [tabindex]="tabindex" nxFormfieldSuffix></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker1></nx-datepicker>
     `,
-    standalone: true,
     imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule],
 })
 class ConfigurableToggleDateComponent extends DatepickerToggleTest {}
@@ -183,7 +181,6 @@ class ConfigurableToggleDateComponent extends DatepickerToggleTest {}
         <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker1></nx-datepicker>
     `,
-    standalone: true,
     imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule],
 })
 class DoubleToggleErrorComponent extends DatepickerToggleTest {}
@@ -194,7 +191,6 @@ class DoubleToggleErrorComponent extends DatepickerToggleTest {}
         <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker1></nx-datepicker>
     `,
-    standalone: true,
     imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule],
 })
 class ReadonlyDatefield extends DatepickerToggleTest {}

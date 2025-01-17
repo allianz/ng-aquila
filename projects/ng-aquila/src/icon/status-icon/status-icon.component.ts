@@ -12,7 +12,6 @@ export type NxStatusIconSize = 'auto' | 's' | 'm' | 'l' | 'xl';
     templateUrl: './status-icon.component.html',
     styleUrls: ['./status-icon.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxIconComponent, NgClass],
 })
 export class NxStatusIconComponent {

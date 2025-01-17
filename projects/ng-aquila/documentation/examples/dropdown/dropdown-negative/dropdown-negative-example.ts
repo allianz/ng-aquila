@@ -17,7 +17,6 @@ import {
     selector: 'dropdown-negative-example',
     templateUrl: './dropdown-negative-example.html',
     styleUrls: ['./dropdown-negative-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

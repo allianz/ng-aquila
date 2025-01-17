@@ -9,7 +9,6 @@ import { NxTooltipDirective, TooltipPosition } from '@aposin/ng-aquila/tooltip';
     selector: 'tooltip-positions-example',
     templateUrl: './tooltip-positions-example.html',
     styleUrls: ['./tooltip-positions-example.css'],
-    standalone: true,
     imports: [NxBadgeComponent, NxTooltipDirective],
 })
 export class TooltipPositionsExampleComponent {

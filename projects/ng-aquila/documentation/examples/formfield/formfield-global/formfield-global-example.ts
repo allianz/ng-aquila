@@ -45,7 +45,6 @@ const myErrorOptions: ErrorDefaultOptions = {
         { provide: FORMFIELD_DEFAULT_OPTIONS, useValue: myDefaultOptions },
         { provide: ERROR_DEFAULT_OPTIONS, useValue: myErrorOptions },
     ],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxInputDirective_1,

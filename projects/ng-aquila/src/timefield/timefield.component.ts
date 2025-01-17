@@ -151,7 +151,6 @@ export class NxTimefieldControl implements NxFormfieldControl<string> {
             multi: true,
         },
     ],
-    standalone: true,
     imports: [NgClass, NxRadioModule, FormsModule, NxTimefieldControl, NxTimefieldOption, NxFormfieldModule, NxIconModule, NxRadioToggleModule, OverlayModule],
 })
 export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck, OnInit, OnChanges, Validator {

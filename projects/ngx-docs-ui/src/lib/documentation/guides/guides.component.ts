@@ -15,7 +15,6 @@ import { DocumentationFrameComponent } from '../documentation-frame.component';
     selector: 'nxv-guides',
     templateUrl: 'guides.component.html',
     styleUrls: ['guides.component.scss'],
-    standalone: true,
     imports: [NxSidebarModule, NxActionModule, RouterLinkActive, RouterLink, NxGridModule, RouterOutlet, NxvFooterComponent],
 })
 export class NxvGuidesComponent implements OnDestroy {

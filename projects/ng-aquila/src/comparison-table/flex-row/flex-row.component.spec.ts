@@ -91,7 +91,6 @@ describe('ComparisonTableFlexRow', () => {
 
 @Component({
     template: BASIC_COMPARISON_TABLE_TEMPLATE,
-    standalone: true,
     imports: [NxComparisonTableModule],
 })
 class BasicComponent extends FlexRowTest {

@@ -30,7 +30,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     templateUrl: './comparison-table-example.html',
     styleUrls: ['./comparison-table-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         NxSpinnerComponent,
         NxSwipebarComponent,

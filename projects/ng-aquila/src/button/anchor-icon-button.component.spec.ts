@@ -12,7 +12,6 @@ abstract class AnchorButtonTest {
 
 @Component({
     template: `<a nxIconButton #button href="#" class="some-arbitrary-class-name" aria-label="Link Text"><nx-icon name="info"></nx-icon></a>`,
-    standalone: true,
     imports: [NxIconModule, NxButtonModule],
 })
 class TestInstance extends AnchorButtonTest {

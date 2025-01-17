@@ -36,7 +36,6 @@ import { NxContextMenuItemComponent, NxContextMenuItemWrapComponent } from './co
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: 'nxContextMenu',
     animations: [nxContextMenuAnimations.transformContextMenu],
-    standalone: true,
     imports: [NgClass],
 })
 export class NxContextMenuComponent implements AfterContentInit, OnDestroy {

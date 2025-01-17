@@ -20,7 +20,6 @@ import {
     selector: 'checkbox-group-validation-example',
     templateUrl: './checkbox-group-validation-example.html',
     styleUrls: ['./checkbox-group-validation-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

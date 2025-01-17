@@ -1086,10 +1086,10 @@ abstract class DropdownTest {
 }
 
 @Component({
+    standalone: true,
     template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options"></nx-multi-select>
     </nx-formfield>`,
-    standalone: true,
     imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class BasicMultiSelectComponent extends DropdownTest {
@@ -1097,10 +1097,10 @@ class BasicMultiSelectComponent extends DropdownTest {
 }
 
 @Component({
+    standalone: true,
     template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options"></nx-multi-select>
     </nx-formfield>`,
-    standalone: true,
     imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
     providers: [{ provide: NxDropdownIntl, useClass: CustomIntl }],
 })
@@ -1113,10 +1113,10 @@ class IntlOverrideMultiSelect extends DropdownTest {
 }
 
 @Component({
+    standalone: true,
     template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options" [panelGrow]="panelGrow" [panelMaxWidth]="panelMaxWidth"></nx-multi-select>
     </nx-formfield>`,
-    standalone: true,
     imports: [NxDropdownModule, NxFormfieldModule],
 })
 class LongOptionLabelComponent extends DropdownTest {
@@ -1135,10 +1135,10 @@ interface ComplexOption {
 }
 
 @Component({
+    standalone: true,
     template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [selectLabel]="selectLabel" [selectValue]="selectValue" [(ngModel)]="model" [filter]="filter" [options]="options"></nx-multi-select>
     </nx-formfield>`,
-    standalone: true,
     imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class ComplexMultiSelectComponent extends DropdownTest {
@@ -1165,10 +1165,10 @@ class ComplexMultiSelectComponent extends DropdownTest {
 }
 
 @Component({
+    standalone: true,
     template: `<form [formGroup]="testForm">
         <nx-formfield> <nx-multi-select formControlName="testControl" [options]="options"></nx-multi-select> </nx-formfield>
     </form>`,
-    standalone: true,
     imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class ReactiveMultiSelectComponent extends DropdownTest {
@@ -1180,13 +1180,13 @@ class ReactiveMultiSelectComponent extends DropdownTest {
 }
 
 @Component({
+    standalone: true,
     template: `<form [formGroup]="testForm">
         <nx-formfield>
             <nx-multi-select formControlName="testControl" [options]="options"></nx-multi-select>
             <nx-error nxFormfieldError> this is error </nx-error>
         </nx-formfield>
     </form>`,
-    standalone: true,
     imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule, NxErrorComponent, NxFormfieldErrorDirective],
 })
 class ErrorMultiSelectComponent extends DropdownTest {
@@ -1200,10 +1200,10 @@ class ErrorMultiSelectComponent extends DropdownTest {
 }
 
 @Component({
+    standalone: true,
     template: `<nx-formfield>
         <nx-multi-select [options]="options" filter (filterInput)="test($event)"></nx-multi-select>
     </nx-formfield>`,
-    standalone: true,
     imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class MultiSelectWithFilterComponent extends DropdownTest {

@@ -11,7 +11,6 @@ import { NxGridModule } from '@aposin/ng-aquila/grid';
     host: {
         '[attr.role]': '"search"',
     },
-    standalone: true,
     imports: [NxGridModule, NxButtonModule],
 })
 export class NxPageSearchComponent {

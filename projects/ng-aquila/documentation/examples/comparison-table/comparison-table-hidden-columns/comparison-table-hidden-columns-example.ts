@@ -28,7 +28,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     selector: 'nx-comparison-table-hidden-columns-example',
     templateUrl: './comparison-table-hidden-columns-example.html',
     styleUrls: ['./comparison-table-hidden-columns-example.css'],
-    standalone: true,
     imports: [
         NxIconButtonComponent,
         NxContextMenuTriggerDirective,

@@ -14,7 +14,6 @@ import {
     selector: 'checkbox-group-reactive-example',
     templateUrl: './checkbox-group-reactive-example.html',
     styleUrls: ['./checkbox-group-reactive-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,
