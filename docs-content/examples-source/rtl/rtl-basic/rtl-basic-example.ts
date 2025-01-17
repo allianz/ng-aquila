@@ -11,7 +11,6 @@ import { NxSliderComponent } from '@aposin/ng-aquila/slider';
     selector: 'rtl-basic-example',
     templateUrl: './rtl-basic-example.html',
     styleUrls: ['./rtl-basic-example.css'],
-    standalone: true,
     imports: [Dir, NxHeadlineComponent, NxCopytextComponent, NxSliderComponent],
 })
 export class RtlBasicExampleComponent {

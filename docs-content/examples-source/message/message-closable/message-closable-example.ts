@@ -9,7 +9,6 @@ import { NxMessageComponent } from '@aposin/ng-aquila/message';
     selector: 'message-closable-example',
     templateUrl: './message-closable-example.html',
     styleUrls: ['./message-closable-example.css'],
-    standalone: true,
     imports: [NxMessageComponent, NxButtonComponent],
 })
 export class MessageClosableExampleComponent {

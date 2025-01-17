@@ -29,7 +29,6 @@ import { takeUntil } from 'rxjs/operators';
     selector: 'datefield-parsing-example',
     templateUrl: './datefield-parsing-example.html',
     styleUrls: ['./datefield-parsing-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

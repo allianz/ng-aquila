@@ -10,7 +10,6 @@ import { NxTabComponent, NxTabGroupComponent } from '@aposin/ng-aquila/tabs';
     selector: 'tabs-basic-example',
     templateUrl: './tabs-basic-example.html',
     styleUrls: ['./tabs-basic-example.css'],
-    standalone: true,
     imports: [
         NxTabGroupComponent,
         NxTabComponent,

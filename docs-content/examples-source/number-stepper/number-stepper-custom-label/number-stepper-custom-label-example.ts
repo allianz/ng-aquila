@@ -14,7 +14,6 @@ import {
     selector: 'number-stepper-custom-label-example',
     templateUrl: './number-stepper-custom-label-example.html',
     styleUrls: ['./number-stepper-custom-label-example.css'],
-    standalone: true,
     imports: [
         NxNumberStepperComponent,
         NxIconComponent,

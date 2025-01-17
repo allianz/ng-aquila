@@ -19,7 +19,6 @@ import {
     selector: 'sidebar-footer-example',
     styleUrls: ['sidebar-footer-example.css'],
     templateUrl: './sidebar-footer-example.html',
-    standalone: true,
     imports: [
         NxSidebarComponent,
         NxActionComponent,

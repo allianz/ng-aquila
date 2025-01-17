@@ -16,7 +16,6 @@ import { NxSliderComponent } from '@aposin/ng-aquila/slider';
     selector: 'slider-tick-example',
     templateUrl: './slider-tick-example.html',
     styleUrls: ['./slider-tick-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

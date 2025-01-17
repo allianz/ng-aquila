@@ -13,7 +13,6 @@ import {
     selector: 'tabs-template-example',
     templateUrl: './tabs-template-example.html',
     styleUrls: ['./tabs-template-example.css'],
-    standalone: true,
     imports: [
         NxTabGroupComponent,
         NxTabComponent,

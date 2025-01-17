@@ -30,7 +30,6 @@ import { NxMaskDirective } from '@aposin/ng-aquila/mask';
     selector: 'mask-validation-example',
     templateUrl: './mask-validation-example.html',
     styleUrls: ['./mask-validation-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

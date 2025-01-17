@@ -16,7 +16,6 @@ import {
     selector: 'table-zebra-example',
     templateUrl: './table-zebra-example.html',
     styleUrls: ['./table-zebra-example.css'],
-    standalone: true,
     imports: [
         NxTableComponent,
         NxTableRowComponent,

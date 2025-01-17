@@ -22,7 +22,6 @@ import { NxTimefieldModule } from '@aposin/ng-aquila/timefield';
             useValue: { appearance: 'outline' },
         },
     ],
-    standalone: true,
     imports: [
         NxTimefieldModule,
         ReactiveFormsModule,

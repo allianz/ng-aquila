@@ -57,7 +57,6 @@ export class WikipediaService {
     templateUrl: './page-search-autocomplete-example.html',
     styleUrls: ['./page-search-autocomplete-example.css'],
     providers: [WikipediaService],
-    standalone: true,
     imports: [
         NxPageSearchComponent,
         NxLayoutComponent,

@@ -18,7 +18,6 @@ import {
     selector: 'dropdown-simple-binding-example',
     templateUrl: './dropdown-simple-binding-example.html',
     styleUrls: ['./dropdown-simple-binding-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

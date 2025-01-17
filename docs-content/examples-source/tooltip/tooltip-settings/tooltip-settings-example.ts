@@ -23,7 +23,6 @@ const myDefaultOptions: NxTooltipDefaultOptions = {
     providers: [
         { provide: NX_TOOLTIP_DEFAULT_OPTIONS, useValue: myDefaultOptions },
     ],
-    standalone: true,
     imports: [NxBadgeComponent, NxTooltipDirective],
 })
 export class TooltipSettingsExampleComponent {}

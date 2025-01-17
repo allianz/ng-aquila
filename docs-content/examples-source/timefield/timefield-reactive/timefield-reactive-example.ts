@@ -16,7 +16,6 @@ import { NxTimefieldComponent } from '@aposin/ng-aquila/timefield';
     selector: 'timefield-reactive-example',
     templateUrl: './timefield-reactive-example.html',
     styleUrls: ['./timefield-reactive-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

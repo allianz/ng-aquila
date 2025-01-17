@@ -30,7 +30,6 @@ function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
             deps: [Overlay],
         },
     ],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

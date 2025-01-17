@@ -19,7 +19,6 @@ import {
     selector: 'progress-stepper-multi-groups-example',
     templateUrl: './progress-stepper-multi-groups-example.html',
     styleUrls: ['./progress-stepper-multi-groups-example.css'],
-    standalone: true,
     imports: [
         NxProgressStepperModule,
         FormsModule,

@@ -10,7 +10,6 @@ import { NxMessageComponent } from '@aposin/ng-aquila/message';
     selector: 'message-error-example',
     templateUrl: './message-error-example.html',
     styleUrls: ['./message-error-example.css'],
-    standalone: true,
     imports: [NxHeadlineComponent, NxMessageComponent, NxErrorComponent],
 })
 export class MessageErrorExampleComponent {}

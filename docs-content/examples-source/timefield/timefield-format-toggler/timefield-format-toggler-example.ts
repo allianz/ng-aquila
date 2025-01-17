@@ -9,7 +9,6 @@ import { NxTimefieldComponent } from '@aposin/ng-aquila/timefield';
     selector: 'timefield-format-toggler-example',
     templateUrl: './timefield-format-toggler-example.html',
     styleUrls: ['./timefield-format-toggler-example.css'],
-    standalone: true,
     imports: [FormsModule, NxTimefieldComponent, NxErrorComponent],
 })
 export class TimefieldFormatTogglerExampleComponent {

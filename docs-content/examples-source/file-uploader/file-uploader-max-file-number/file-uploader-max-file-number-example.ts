@@ -38,7 +38,6 @@ const myCustomConfig: NxMessageToastConfig = {
     selector: 'file-uploader-max-file-number-example',
     templateUrl: './file-uploader-max-file-number-example.html',
     styleUrls: ['./file-uploader-max-file-number-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

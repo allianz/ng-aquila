@@ -48,7 +48,6 @@ interface MyFlatTreeNode extends NxFlatTreeNode {
     selector: 'sidebar-outputs-example',
     templateUrl: './sidebar-outputs-example.html',
     styleUrls: ['sidebar-outputs-example.css'],
-    standalone: true,
     imports: [
         NxSidebarComponent,
         NxTreeComponent,

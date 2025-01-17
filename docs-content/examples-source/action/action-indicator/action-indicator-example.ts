@@ -20,7 +20,6 @@ interface Action {
     selector: 'action-indicator-example',
     styleUrls: ['./action-indicator-example.css'],
     templateUrl: './action-indicator-example.html',
-    standalone: true,
     imports: [
         NxActionComponent,
         NxIconComponent,

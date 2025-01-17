@@ -8,7 +8,6 @@ import { NxCircleToggleComponent } from '@aposin/ng-aquila/circle-toggle';
     selector: 'circle-toggle-standalone-example',
     templateUrl: './circle-toggle-standalone-example.html',
     styleUrls: ['./circle-toggle-standalone-example.css'],
-    standalone: true,
     imports: [NxCircleToggleComponent],
 })
 export class CircleToggleStandaloneExampleComponent {}

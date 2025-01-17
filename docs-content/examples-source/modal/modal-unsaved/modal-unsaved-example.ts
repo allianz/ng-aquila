@@ -38,7 +38,6 @@ type MyDialogResult = 'proceed' | 'cancel';
     templateUrl: './modal-unsaved-example.html',
     styleUrls: ['./modal-unsaved-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         NxButtonComponent,
         FormsModule,

@@ -24,7 +24,6 @@ interface TelephonePrefixData {
     selector: 'dropdown-custom-label-example',
     templateUrl: './dropdown-custom-label-example.html',
     styleUrls: ['./dropdown-custom-label-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

@@ -11,7 +11,6 @@ import {
     selector: 'tooltip-fallbacks-table-example',
     templateUrl: './tooltip-fallbacks-table-example.html',
     styleUrls: ['./tooltip-fallbacks-table-example.css'],
-    standalone: true,
     imports: [NxDynamicTableComponent],
 })
 export class TooltipFallbacksTableExampleComponent {

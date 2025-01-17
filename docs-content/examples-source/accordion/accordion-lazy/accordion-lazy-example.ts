@@ -15,7 +15,6 @@ import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
     selector: 'accordion-lazy-example',
     templateUrl: './accordion-lazy-example.html',
     styleUrls: ['./accordion-lazy-example.css'],
-    standalone: true,
     imports: [
         NxAccordionDirective,
         NxExpansionPanelComponent,

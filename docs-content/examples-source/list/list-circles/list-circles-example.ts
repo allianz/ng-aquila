@@ -8,7 +8,6 @@ import { NxListComponent } from '@aposin/ng-aquila/list';
     selector: 'list-circles-example',
     templateUrl: './list-circles-example.html',
     styleUrls: ['./list-circles-example.css'],
-    standalone: true,
     imports: [NxListComponent],
 })
 export class ListCirclesExampleComponent {}

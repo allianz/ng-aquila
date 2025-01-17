@@ -35,7 +35,6 @@ export const MY_FORMATS = {
     templateUrl: './datefield-format-injection-example.html',
     styleUrls: ['./datefield-format-injection-example.css'],
     providers: [{ provide: NX_DATE_FORMATS, useValue: MY_FORMATS }],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxDatefieldDirective,

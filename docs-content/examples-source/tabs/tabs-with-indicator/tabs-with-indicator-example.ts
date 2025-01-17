@@ -13,7 +13,6 @@ import {
     selector: 'tabs-with-indicator-example',
     templateUrl: './tabs-with-indicator-example.html',
     styleUrls: ['./tabs-with-indicator-example.css'],
-    standalone: true,
     imports: [
         NxTabGroupComponent,
         NxTabComponent,

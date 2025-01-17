@@ -9,7 +9,6 @@ import { NxLinkComponent } from '@aposin/ng-aquila/link';
     selector: 'headline-links-example',
     templateUrl: './headline-links-example.html',
     styleUrls: ['./headline-links-example.css'],
-    standalone: true,
     imports: [NxHeadlineComponent, NxLinkComponent],
 })
 export class HeadlineLinksExampleComponent {}

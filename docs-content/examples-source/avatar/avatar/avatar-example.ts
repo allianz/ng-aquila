@@ -9,7 +9,6 @@ import { NxFigureComponent } from '@aposin/ng-aquila/image';
     selector: 'avatar-example',
     templateUrl: './avatar-example.html',
     styleUrls: ['./avatar-example.css'],
-    standalone: true,
     imports: [NxAvatarComponent, NxIconComponent, NxFigureComponent],
 })
 export class AvatarExampleComponent {}

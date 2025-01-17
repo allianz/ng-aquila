@@ -140,13 +140,13 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'readonly'</span>) </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">readonlyInput</span>:
+                <span class="docs-api-property__name">readonly</span>:
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Whether the user can directly interact with the input value via input field. Default: false</p>
+        <p>Whether the user can directly interact with the input field and buttons. Default: false</p>
 </td>
 </tr>
    
@@ -307,6 +307,23 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
+                <span class="docs-api-property__name">inputFieldReadonly</span>:
+                <span class="docs-api-property__type">input(false, {
+    transform: booleanAttribute,
+    alias: 'inputFieldReadonly'
+})</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the user can directly interact with the input value via input field. Default: false</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
                 <span class="docs-api-property__name">label</span>:
                 <span class="docs-api-property__type">input<string | null>(null)</span>
             </code>
@@ -344,7 +361,17 @@
   
 </table> 
 
+<h5 class="docs-api-method-header">Methods</h5>
  
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">disabledButton()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
   <h3 id="directives" class="docs-header-link docs-api-h3">
         <span header-link="directives"></span>
         Directives

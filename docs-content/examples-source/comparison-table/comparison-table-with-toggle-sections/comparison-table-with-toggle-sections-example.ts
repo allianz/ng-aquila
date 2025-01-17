@@ -16,7 +16,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     selector: 'comparison-table-with-toggle-sections-example',
     templateUrl: './comparison-table-with-toggle-sections-example.html',
     styleUrls: ['./comparison-table-with-toggle-sections-example.css'],
-    standalone: true,
     imports: [
         NxSwipebarComponent,
         NxComparisonTableComponent,

@@ -17,7 +17,6 @@ import {
     selector: 'breadcrumb-context-menu-example',
     templateUrl: './breadcrumb-context-menu-example.html',
     styleUrls: ['./breadcrumb-context-menu-example.css'],
-    standalone: true,
     imports: [
         NxBreadcrumbComponent,
         NxBreadcrumbItemComponent,

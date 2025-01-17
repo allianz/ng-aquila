@@ -8,7 +8,6 @@ import { NxListComponent } from '@aposin/ng-aquila/list';
     selector: 'list-copytext-example',
     templateUrl: './list-copytext-example.html',
     styleUrls: ['./list-copytext-example.css'],
-    standalone: true,
     imports: [NxListComponent],
 })
 export class ListCopytextExampleComponent {}

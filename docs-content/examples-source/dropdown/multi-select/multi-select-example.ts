@@ -103,7 +103,6 @@ function getLongOptions(): MyOption[] {
     selector: 'multi-select-example',
     templateUrl: './multi-select-example.html',
     styleUrls: ['./multi-select-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxMultiSelectComponent,

@@ -11,7 +11,6 @@ class MyIntl extends NxTagIntl {
  */
 @Component({
     selector: 'taglist-intl-example',
-    standalone: true,
     imports: [NxTaglistComponent],
     templateUrl: './taglist-intl-example.html',
     styleUrl: './taglist-intl-example.css',

@@ -11,7 +11,6 @@ import {
     selector: 'dynamic-table-example',
     templateUrl: './dynamic-table-example.html',
     styleUrls: ['./dynamic-table-example.css'],
-    standalone: true,
     imports: [NxDynamicTableComponent],
 })
 export class DynamicTableExampleComponent {

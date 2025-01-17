@@ -40,7 +40,6 @@ interface Contract {
     selector: 'table-selecting-example',
     templateUrl: './table-selecting-example.html',
     styleUrls: ['./table-selecting-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         NxCopytextComponent,

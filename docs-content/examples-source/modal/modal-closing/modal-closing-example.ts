@@ -24,7 +24,6 @@ type MyDialogResult = 'proceed' | 'cancel';
     selector: 'modal-closing-example',
     templateUrl: './modal-closing-example.html',
     styleUrls: ['./modal-closing-example.css'],
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxModalContentDirective,

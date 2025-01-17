@@ -15,7 +15,6 @@ import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
     selector: 'accordion-scroll-smooth-example',
     templateUrl: './accordion-scroll-smooth-example.html',
     styleUrls: ['./accordion-scroll-smooth-example.css'],
-    standalone: true,
     imports: [
         NxAccordionDirective,
         NxExpansionPanelComponent,

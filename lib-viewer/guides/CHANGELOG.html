@@ -1,7 +1,18 @@
 <h1 class="docs-markdown--h1" id="changelog" tabindex="-1">Changelog</h1>
 <p class="docs-markdown--p">All notable changes to this project will be documented in this file. See <a href="https://github.com/conventional-changelog/standard-version">standard-version</a> for commit guidelines.</p>
-<h2 class="docs-markdown--h2" id="18.7.0-(2025-01-17)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v18.6.1...v18.7.0">18.7.0</a> (2025-01-17)</h2>
+<h2 class="docs-markdown--h2" id="19.0.0-(2025-01-17)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v18.7.0...v19.0.0">19.0.0</a> (2025-01-17)</h2>
+<h3 class="docs-markdown--h3" id="%E2%9A%A0-breaking-changes" tabindex="-1">⚠ BREAKING CHANGES</h3>
+<p class="docs-markdown--p">Please run <code>ng update @aposin/ng-aquila</code> to migrate the breaking changes automatically.</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>number-stepper:</strong> the <code>readonly</code> input got renamed to <code>inputFieldReadonly</code>. the <code>readonly</code> property before this change only set the input field to readonly but left the number stepper operational via the buttons. this was not properly named and was changed now to make room for a proper readonly state that got added.</li>
+</ul>
 <h3 class="docs-markdown--h3" id="features-%E2%9C%A8" tabindex="-1">Features ✨</h3>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>number-stepper:</strong> add readonly state and rename former readonly to inputFieldReadonly (<a href="https://github.com/allianz/ng-aquila/commit/1665a04e00c6ae3c8f169614f8f1efc072b44668">1665a04</a>)</li>
+<li class="docs-markdown--li">update to Angular 19 (<a href="https://github.com/allianz/ng-aquila/commit/d36aba5e97d30a60da32d1582cac004828907953">d36aba5</a>)</li>
+</ul>
+<h2 class="docs-markdown--h2" id="18.7.0-(2025-01-17)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v18.6.1...v18.7.0">18.7.0</a> (2025-01-17)</h2>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-1" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>number-stepper:</strong> link error messages to input for assistive tools (<a href="https://github.com/allianz/ng-aquila/commit/1824f2b17a839c9084fa8929ac4cee87b0b4735d">1824f2b</a>)</li>
 </ul>
@@ -49,7 +60,7 @@
 <h2 class="docs-markdown--h2" id="18.6.0-(2024-10-31)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v18.5.1...v18.6.0">18.6.0</a> (2024-10-31)</h2>
 <h3 class="docs-markdown--h3" id="timefield-built-in-validator" tabindex="-1">Timefield built in validator</h3>
 <p class="docs-markdown--p">The timefield component now has a built in validator to check if the entered time is valid. The feature can be enabled by an opt-in setting <code>enableTimeValidation</code>.</p>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-1" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-2" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>modal:</strong> add more autofocus options (<a href="https://github.com/allianz/ng-aquila/commit/a2eb5162fa137b35c042dd4597903091c3c9f452">a2eb516</a>)</li>
 <li class="docs-markdown--li"><strong>switcher:</strong> always show tickmark when checked (<a href="https://github.com/allianz/ng-aquila/commit/6f3f5a213cb34db0166fc2c5934ea6018b732bde">6f3f5a2</a>)</li>
@@ -90,7 +101,7 @@
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>radio-button, circle-toggle:</strong> add tabindex=&quot;-1&quot; to label element in radio groups (<a href="https://github.com/allianz/ng-aquila/commit/e3ada6b3f60a8564bf71e1d307afd74f2193c877">e3ada6b</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-2" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-3" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>radio toggle:</strong> link error message to radio toggle by aria-describedby (<a href="https://github.com/allianz/ng-aquila/commit/50249cf52bfa4ef8b77cbe13aa4d094fcf0aa614">50249cf</a>)</li>
 <li class="docs-markdown--li"><strong>spinner:</strong> add ariaPoliteness input (<a href="https://github.com/allianz/ng-aquila/commit/0aa0483889e04317291a94fded6df0838eb8b6b0">0aa0483</a>)</li>
@@ -113,7 +124,7 @@
 <li class="docs-markdown--li"><strong>table:</strong> add :host to ::ng-deep for block-scoped styles (<a href="https://github.com/allianz/ng-aquila/commit/d1014e3e63b01468f7c84e05836b32603d4b08e7">d1014e3</a>)</li>
 <li class="docs-markdown--li"><strong>table:</strong> spacing issues with ndbx-base-integrated styles (<a href="https://github.com/allianz/ng-aquila/commit/4d4dc1cf9725126aa349eee1d0fdd54e61686bc8">4d4dc1c</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-3" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-4" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>formfield-harness:</strong> add isReadonly query and filter (<a href="https://github.com/allianz/ng-aquila/commit/93c1149ded8b85dbe74da1c27361866f3f60b47b">93c1149</a>)</li>
 <li class="docs-markdown--li"><strong>formfield:</strong> add example of customizing spacing with theming tokens (<a href="https://github.com/allianz/ng-aquila/commit/6b25bacfdb5ffd5e534ece77c843d008405455b0">6b25bac</a>)</li>
@@ -123,7 +134,7 @@
 <h3 class="docs-markdown--h3" id="readonly-states-for-radio--and-checkbox-style-components" tabindex="-1">Readonly states for radio- and checkbox-style components</h3>
 <p class="docs-markdown--p">With this release we added a readonly state to the circle toggle, radio button, checkbox, switcher and toggle button components. The number stepper has to be delayed until the next major version because of a necessary breaking change.
 Please note: the readonly states on these elements is only approved for internal (expert) applications because of accessibility constraints.</p>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-4" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-5" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>accordion:</strong> add flush alignment option (<a href="https://github.com/allianz/ng-aquila/commit/28a37fd1dfb2b288790e5a6ff755b99fd7d9da4b">28a37fd</a>)</li>
 <li class="docs-markdown--li"><strong>circle-toggle:</strong> add readonly state (<a href="https://github.com/allianz/ng-aquila/commit/c2abe678743f9048771aab840ac8fc1b062416a9">c2abe67</a>)</li>
@@ -147,7 +158,7 @@ Please note: the readonly states on these elements is only approved for internal
 <li class="docs-markdown--li"><strong>accordion:</strong> add aria-hidden to error icons (<a href="https://github.com/allianz/ng-aquila/commit/74c9106eb620f6c34d2c59b50cbc9ff921d48c46">74c9106</a>)</li>
 </ul>
 <h2 class="docs-markdown--h2" id="18.2.0-(2024-08-26)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v18.1.0...v18.2.0">18.2.0</a> (2024-08-26)</h2>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-5" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-6" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>checkbox:</strong> add readonly state (<a href="https://github.com/allianz/ng-aquila/commit/96e717c0e80f344fd1c8bf546c48f3f7fbe50214">96e717c</a>)</li>
 </ul>
@@ -171,7 +182,7 @@ Please note: the readonly states on these elements is only approved for internal
 <h2 class="docs-markdown--h2" id="18.1.0-(2024-08-08)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v18.0.0...v18.1.0">18.1.0</a> (2024-08-08)</h2>
 <h3 class="docs-markdown--h3" id="emphasis-button-update" tabindex="-1">Emphasis button update</h3>
 <p class="docs-markdown--p">The emphasis button was deprecated in 18.0.0 because there was no plan to make the colors accessibility compliant. This decision was changed and now the orange colors got updated to fulfill WCAG contrast requirements. The emphasis button is not deprecated anymore and can be used again.</p>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-6" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-7" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>dropdown:</strong> align dropdown checkmark (<a href="https://github.com/allianz/ng-aquila/commit/5fed95ddd5cba2ee510600a9c3f6f5850559b09c">5fed95d</a>)</li>
 <li class="docs-markdown--li"><strong>natural-language-form:</strong> enable <code>aria-describedby</code> for words  (<a href="https://github.com/allianz/ng-aquila/commit/d418a6584bf0a6b98526e98a7016871bf37620ac">d418a65</a>)</li>
@@ -214,7 +225,7 @@ Please note: the readonly states on these elements is only approved for internal
 <p class="docs-markdown--p">The library has been migrated to the Angular standalone APIs. This change should not affect you and everything should work the same and you can import and use the modules as before. But the components and directives are now standalone and you can make use of new Angular features like host directives, import only components/directives instead of a module or find better solutions for mocking in tests.</p>
 <h3 class="docs-markdown--h3" id="library-migration-to-new-control-flow-syntax" tabindex="-1">Library migration to new control flow syntax</h3>
 <p class="docs-markdown--p">The templates of components use the new control flow syntax from Angular. This should have no negative effect on your application or changes needed as everything should work as before.</p>
-<h3 class="docs-markdown--h3" id="%E2%9A%A0-breaking-changes" tabindex="-1">⚠ BREAKING CHANGES</h3>
+<h3 class="docs-markdown--h3" id="%E2%9A%A0-breaking-changes-1" tabindex="-1">⚠ BREAKING CHANGES</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>iso-date-adapter:</strong> The iso date adapter was loading the requested locales from dayjs lazily by a built in feature.
 This doesn't work with the new vite based build system from Angular anymore so we remove it.
@@ -247,7 +258,7 @@ now: margin: top: 12 (xs), left: 16 (s), right: 16 (s), bottom: 24 (m)</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>swipebar:</strong> deprecate swipebar component (<a href="https://github.com/allianz/ng-aquila/commit/88f71273fd1ad99c7c73e78a60e71fd53960b057">88f7127</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-7" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-8" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>button:</strong> add attention button and deprecate emphasis button (<a href="https://github.com/allianz/ng-aquila/commit/b043927f44bde4d8e396d1d1aaea23ff449a3414">b043927</a>)</li>
 <li class="docs-markdown--li">migrate library to standalone (<a href="https://github.com/allianz/ng-aquila/commit/0a9b4eeda7deec1036d7cff15a796b2ff7b75b87">0a9b4ee</a>)</li>
@@ -295,14 +306,14 @@ now: margin: top: 12 (xs), left: 16 (s), right: 16 (s), bottom: 24 (m)</p>
 <li class="docs-markdown--li"><strong>circle-toggle:</strong> setting group control value reflect on child view (<a href="https://github.com/allianz/ng-aquila/commit/302b511a9b9d31d553fe499bd915190611d069d7">302b511</a>)</li>
 <li class="docs-markdown--li"><strong>schematics:</strong> schematics and tests for standalone (<a href="https://github.com/allianz/ng-aquila/commit/7b2037c766ed14698bce63c7ca43e6db0ea8d675">7b2037c</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-8" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-9" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>popover:</strong> enable setting tabindex for manual trigger (<a href="https://github.com/allianz/ng-aquila/commit/d729998eb9a917e8bce4ef2243ad9aa0b23fc94c">d729998</a>)</li>
 <li class="docs-markdown--li"><strong>timefield:</strong> add timepicker dropdown (<a href="https://github.com/allianz/ng-aquila/commit/f912ec7557858bdebc3a3d0cd02e40511539c73b">f912ec7</a>)</li>
 <li class="docs-markdown--li"><strong>toggle-button:</strong> enable setting aria-label for the inner radio input (<a href="https://github.com/allianz/ng-aquila/commit/e74335d63b1781277999d9a5bd0d956189436372">e74335d</a>)</li>
 </ul>
 <h2 class="docs-markdown--h2" id="17.8.0-(2024-06-18)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v17.7.0...v17.8.0">17.8.0</a> (2024-06-18)</h2>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-9" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-10" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>checkbox-harness:</strong> add isDisabled (<a href="https://github.com/allianz/ng-aquila/commit/5e3a96f9413fa836b5bad327be49fe09c9344382">5e3a96f</a>)</li>
 </ul>
@@ -336,7 +347,7 @@ now: margin: top: 12 (xs), left: 16 (s), right: 16 (s), bottom: 24 (m)</p>
 <li class="docs-markdown--li"><strong>selectable-card:</strong> visual design enhancement (<a href="https://github.com/allianz/ng-aquila/commit/318f6edb64eaff39fa3ef04bc166f2aec6a220db">318f6ed</a>)</li>
 <li class="docs-markdown--li"><strong>table:</strong> change sorted arial label and move myintl to docs (<a href="https://github.com/allianz/ng-aquila/commit/072cac07d17eae823848ade69e1333714fea6482">072cac0</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-10" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-11" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>dropdown, multi-select:</strong> let overlay scroll out of viewport (<a href="https://github.com/allianz/ng-aquila/commit/61cfed2534305cba7da7efb30e2cbf98af890400">61cfed2</a>)</li>
 <li class="docs-markdown--li"><strong>dropdown, multi-select:</strong> remove ellipsis and add new api for overlaywidth (<a href="https://github.developer.allianz.io/ilt/ng-aquila/commit/b09e8764c9093f9418c0f1746d3dfd187efca542">b09e876</a>)</li>
@@ -354,7 +365,7 @@ now: margin: top: 12 (xs), left: 16 (s), right: 16 (s), bottom: 24 (m)</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>modal:</strong> showcase correct button size for expert (<a href="https://github.com/allianz/ng-aquila/commit/9d1e8c11d39850ca0a8bae6d8f6afcfa67d96437">9d1e8c1</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-11" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-12" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>context-menu:</strong> selection menu styling(<a href="https://github.com/allianz/ng-aquila/commit/d03bec4fbb68332efad7c931f816b7caeef32dec">d03bec4</a>)</li>
 <li class="docs-markdown--li"><strong>switcher, radio, checkbox:</strong> add ariaLabel (<a href="https://github.com/allianz/ng-aquila/commit/c85820f5e03f28003779f6c1f06291b3b12640b9">c85820f</a>)</li>
@@ -378,7 +389,7 @@ now: margin: top: 12 (xs), left: 16 (s), right: 16 (s), bottom: 24 (m)</p>
 <li class="docs-markdown--li"><strong>date:</strong> correct appearance (<a href="https://github.com/allianz/ng-aquila/commit/494095cade74d25b2be7bc0dc9c760c4e658cd84">494095c</a>)</li>
 <li class="docs-markdown--li"><strong>table:</strong> add showcase of filter+selecting table (<a href="https://github.com/allianz/ng-aquila/commit/9e80f60e065e059d886065c30f8a957339d83f61">9e80f60</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-12" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-13" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>card:</strong> add clickable card (<a href="https://github.com/allianz/ng-aquila/commit/685999363098622eb66e28f57278600c5e3f48cb">6859993</a>)</li>
 </ul>

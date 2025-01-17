@@ -9,7 +9,6 @@ import { NxTooltipDirective } from '@aposin/ng-aquila/tooltip';
     selector: 'tooltip-disabled-example',
     templateUrl: './tooltip-disabled-example.html',
     styleUrls: ['./tooltip-disabled-example.css'],
-    standalone: true,
     imports: [NxButtonComponent, NxTooltipDirective],
 })
 export class TooltipDisabledExampleComponent {

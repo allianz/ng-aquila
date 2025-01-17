@@ -18,7 +18,6 @@ import {
     selector: 'number-stepper-disabled-implicit-example',
     templateUrl: './number-stepper-disabled-implicit-example.html',
     styleUrls: ['./number-stepper-disabled-implicit-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

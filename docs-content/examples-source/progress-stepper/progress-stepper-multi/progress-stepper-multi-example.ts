@@ -14,7 +14,6 @@ import {
     selector: 'progress-stepper-multi-example',
     templateUrl: './progress-stepper-multi-example.html',
     styleUrls: ['./progress-stepper-multi-example.css'],
-    standalone: true,
     imports: [
         NxMultiStepperComponent,
         NxStepComponent,

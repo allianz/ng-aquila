@@ -18,7 +18,6 @@ import { NxCodeInputComponent } from '@aposin/ng-aquila/code-input';
     templateUrl: 'code-input-six-char-example.html',
     styleUrls: ['code-input-six-char-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

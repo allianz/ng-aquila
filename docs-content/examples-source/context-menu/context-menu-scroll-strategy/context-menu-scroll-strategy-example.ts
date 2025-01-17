@@ -14,7 +14,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     selector: 'context-menu-scroll-strategy-example',
     templateUrl: './context-menu-scroll-strategy-example.html',
     styleUrls: ['./context-menu-scroll-strategy-example.css'],
-    standalone: true,
     imports: [
         NxContextMenuComponent,
         NxContextMenuItemComponent,

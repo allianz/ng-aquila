@@ -18,7 +18,6 @@ import { NxMaskDirective } from '@aposin/ng-aquila/mask';
     selector: 'mask-separators-example',
     templateUrl: './mask-separators-example.html',
     styleUrls: ['./mask-separators-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

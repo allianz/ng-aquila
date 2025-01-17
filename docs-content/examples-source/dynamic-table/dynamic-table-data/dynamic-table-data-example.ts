@@ -8,7 +8,6 @@ import { NxDynamicTableComponent } from '@aposin/ng-aquila/dynamic-table';
     selector: 'dynamic-table-data-example',
     templateUrl: './dynamic-table-data-example.html',
     styleUrls: ['./dynamic-table-data-example.css'],
-    standalone: true,
     imports: [NxDynamicTableComponent],
 })
 export class DynamicTableDataExampleComponent {

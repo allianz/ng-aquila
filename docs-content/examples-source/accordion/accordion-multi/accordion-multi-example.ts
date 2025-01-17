@@ -15,7 +15,6 @@ import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
     selector: 'accordion-multi-example',
     templateUrl: './accordion-multi-example.html',
     styleUrls: ['./accordion-multi-example.css'],
-    standalone: true,
     imports: [
         NxAccordionDirective,
         NxExpansionPanelComponent,

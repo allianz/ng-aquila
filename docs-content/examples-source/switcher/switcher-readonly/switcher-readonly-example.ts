@@ -6,7 +6,6 @@ import { NxSwitcherComponent } from '@aposin/ng-aquila/switcher';
 /** @title Switcher readonly */
 @Component({
     selector: 'switcher-readonly-example',
-    standalone: true,
     templateUrl: './switcher-readonly-example.html',
     styleUrl: './switcher-readonly-example.css',
     changeDetection: ChangeDetectionStrategy.OnPush,

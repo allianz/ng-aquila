@@ -7,7 +7,6 @@ import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
     selector: 'badge-character-example',
     templateUrl: './badge-character-example.html',
     styleUrls: ['./badge-character-example.css'],
-    standalone: true,
     imports: [NxBadgeComponent],
 })
 export class BadgeCharacterExampleComponent {}

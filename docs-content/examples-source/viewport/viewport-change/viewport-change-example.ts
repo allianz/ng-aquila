@@ -20,7 +20,6 @@ import { takeUntil } from 'rxjs/operators';
     selector: 'viewport-change-example',
     templateUrl: './viewport-change-example.html',
     styleUrls: ['./viewport-change-example.css'],
-    standalone: true,
     imports: [
         NxSidebarComponent_1,
         NxActionComponent,

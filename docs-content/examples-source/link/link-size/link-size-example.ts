@@ -9,7 +9,6 @@ import { NxLinkComponent } from '@aposin/ng-aquila/link';
     selector: 'link-size-example',
     templateUrl: './link-size-example.html',
     styleUrls: ['./link-size-example.css'],
-    standalone: true,
     imports: [NxLinkComponent, RouterLink],
 })
 export class LinkSizeExampleComponent {}

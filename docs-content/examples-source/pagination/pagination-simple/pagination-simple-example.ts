@@ -8,7 +8,6 @@ import { NxPaginationComponent } from '@aposin/ng-aquila/pagination';
     selector: 'pagination-simple-example',
     templateUrl: './pagination-simple-example.html',
     styleUrls: ['./pagination-simple-example.css'],
-    standalone: true,
     imports: [NxPaginationComponent],
 })
 export class PaginationSimpleExampleComponent {

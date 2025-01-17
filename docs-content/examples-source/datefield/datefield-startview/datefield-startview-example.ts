@@ -19,7 +19,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'datefield-startview-example',
     templateUrl: './datefield-startview-example.html',
     styleUrls: ['./datefield-startview-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxInputDirective,

@@ -10,7 +10,6 @@ import { NxLinkComponent } from '@aposin/ng-aquila/link';
     selector: 'link-icons-example',
     templateUrl: './link-icons-example.html',
     styleUrls: ['./link-icons-example.css'],
-    standalone: true,
     imports: [NxLinkComponent, RouterLink, NxIconComponent],
 })
 export class LinkIconsExampleComponent {}

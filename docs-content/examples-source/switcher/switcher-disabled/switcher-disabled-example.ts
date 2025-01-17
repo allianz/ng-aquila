@@ -13,7 +13,6 @@ import { NxSwitcherComponent } from '@aposin/ng-aquila/switcher';
     selector: 'switcher-disabled-example',
     templateUrl: './switcher-disabled-example.html',
     styleUrls: ['./switcher-disabled-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

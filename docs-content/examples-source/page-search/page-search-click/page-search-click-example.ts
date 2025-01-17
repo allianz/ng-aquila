@@ -20,7 +20,6 @@ import { NxPageSearchComponent } from '@aposin/ng-aquila/page-search';
     selector: 'page-search-click-example',
     templateUrl: './page-search-click-example.html',
     styleUrls: ['./page-search-click-example.css'],
-    standalone: true,
     imports: [
         NxPageSearchComponent,
         NxLayoutComponent,

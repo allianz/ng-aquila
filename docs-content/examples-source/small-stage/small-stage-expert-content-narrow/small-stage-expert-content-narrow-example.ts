@@ -14,7 +14,6 @@ import {
     selector: 'small-stage-expert-content-narrow-example',
     templateUrl: './small-stage-expert-content-narrow-example.html',
     styleUrls: ['./small-stage-expert-content-narrow-example.css'],
-    standalone: true,
     imports: [
         NxSmallStageComponent,
         NxSmallStageImageDirective,

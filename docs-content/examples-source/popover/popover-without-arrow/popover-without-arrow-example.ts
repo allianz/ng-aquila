@@ -15,7 +15,6 @@ import {
     selector: 'popover-without-arrow-example',
     templateUrl: './popover-without-arrow-example.html',
     styleUrls: ['./popover-without-arrow-example.css'],
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxPopoverTriggerDirective,

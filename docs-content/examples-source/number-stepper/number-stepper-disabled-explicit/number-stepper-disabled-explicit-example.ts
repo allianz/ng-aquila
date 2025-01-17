@@ -12,7 +12,6 @@ import {
     selector: 'number-stepper-disabled-explicit-example',
     templateUrl: './number-stepper-disabled-explicit-example.html',
     styleUrls: ['./number-stepper-disabled-explicit-example.css'],
-    standalone: true,
     imports: [
         NxNumberStepperComponent,
         NxNumberStepperSuffixDirective,

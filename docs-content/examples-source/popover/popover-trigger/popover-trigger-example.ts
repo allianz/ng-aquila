@@ -21,7 +21,6 @@ import {
     selector: 'popover-trigger-example',
     templateUrl: './popover-trigger-example.html',
     styleUrls: ['./popover-trigger-example.css'],
-    standalone: true,
     imports: [
         NxIconButtonComponent,
         NxPopoverTriggerDirective,

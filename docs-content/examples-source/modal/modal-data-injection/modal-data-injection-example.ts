@@ -15,7 +15,6 @@ interface MyDialogData {
     selector: 'modal-data-injection-example',
     templateUrl: './modal-data-injection-example.html',
     styleUrls: ['./modal-data-injection-example.css'],
-    standalone: true,
     imports: [NxButtonComponent, NxHeadlineComponent, NxCopytextComponent],
 })
 export class ModalDataInjectionExampleComponent {

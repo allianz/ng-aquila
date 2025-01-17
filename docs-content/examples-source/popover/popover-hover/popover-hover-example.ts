@@ -19,7 +19,6 @@ import {
     selector: 'popover-hover-example',
     templateUrl: './popover-hover-example.html',
     styleUrls: ['./popover-hover-example.css'],
-    standalone: true,
     imports: [NxIconComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverHoverExampleComponent implements AfterViewInit, OnDestroy {

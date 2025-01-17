@@ -12,7 +12,6 @@ import { NxPhoneInputComponent } from '@aposin/ng-aquila/phone-input';
     selector: 'phone-input-focus-out-example',
     templateUrl: 'phone-input-focus-out-example.html',
     styleUrls: ['./phone-input-focus-out-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxFormfieldLabelDirective,

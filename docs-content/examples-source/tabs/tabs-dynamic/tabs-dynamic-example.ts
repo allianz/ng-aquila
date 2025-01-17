@@ -9,7 +9,6 @@ import { NxTabComponent, NxTabGroupComponent } from '@aposin/ng-aquila/tabs';
     selector: 'tabs-dynamic-example',
     templateUrl: './tabs-dynamic-example.html',
     styleUrls: ['./tabs-dynamic-example.css'],
-    standalone: true,
     imports: [NxTabGroupComponent, NxTabComponent, NxButtonComponent],
 })
 export class TabsDynamicExampleComponent {

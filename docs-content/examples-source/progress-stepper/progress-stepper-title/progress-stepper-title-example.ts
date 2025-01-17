@@ -15,7 +15,6 @@ import {
     selector: 'progress-stepper-title-example',
     templateUrl: './progress-stepper-title-example.html',
     styleUrls: ['./progress-stepper-title-example.css'],
-    standalone: true,
     imports: [
         NxSingleStepperComponent,
         NxLabelComponent,

@@ -6,7 +6,6 @@ import { NxSwitcherComponent } from '@aposin/ng-aquila/switcher';
     selector: 'switcher-label-small-example',
     templateUrl: './switcher-label-small-example.html',
     styleUrls: ['./switcher-label-small-example.css'],
-    standalone: true,
     imports: [NxSwitcherComponent],
 })
 export class SwitcherLabelSmallExampleComponent {}

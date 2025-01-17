@@ -13,7 +13,6 @@ import {
     selector: 'tabs-output-events-example',
     templateUrl: './tabs-output-events-example.html',
     styleUrls: ['./tabs-output-events-example.css'],
-    standalone: true,
     imports: [NxTabGroupComponent, NxTabComponent, NxHeadlineComponent],
 })
 export class TabsOutputEventsExampleComponent {

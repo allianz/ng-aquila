@@ -12,7 +12,6 @@ import {
     selector: 'radio-button-group-label-size-example',
     templateUrl: './radio-button-group-label-size-example.html',
     styleUrls: ['./radio-button-group-label-size-example.css'],
-    standalone: true,
     imports: [NxRadioGroupComponent, NxLabelComponent, NxRadioComponent],
 })
 export class RadioButtonGroupLabelSizeExampleComponent {}

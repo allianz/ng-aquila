@@ -12,7 +12,6 @@ import {
     selector: 'radio-button-event-example',
     templateUrl: './radio-button-event-example.html',
     styleUrls: ['./radio-button-event-example.css'],
-    standalone: true,
     imports: [NxRadioGroupComponent, NxLabelComponent, NxRadioComponent],
 })
 export class RadioButtonEventExampleComponent {

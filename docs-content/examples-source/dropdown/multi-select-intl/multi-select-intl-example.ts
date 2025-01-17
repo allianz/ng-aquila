@@ -22,7 +22,6 @@ class MyDropdownIntl extends NxDropdownIntl {
     templateUrl: './multi-select-intl-example.html',
     styleUrls: ['./multi-select-intl-example.css'],
     providers: [{ provide: NxDropdownIntl, useClass: MyDropdownIntl }],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

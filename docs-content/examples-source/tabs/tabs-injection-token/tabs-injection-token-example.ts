@@ -20,7 +20,6 @@ const myDefaultOptions: TabGroupDefaultOptions = {
     providers: [
         { provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: myDefaultOptions },
     ],
-    standalone: true,
     imports: [NxTabGroupComponent, NxTabComponent],
 })
 export class TabsInjectionTokenExampleComponent {

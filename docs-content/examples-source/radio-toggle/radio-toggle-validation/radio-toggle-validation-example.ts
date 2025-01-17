@@ -20,7 +20,6 @@ import {
     selector: 'radio-toggle-validation-example',
     templateUrl: './radio-toggle-validation-example.html',
     styleUrls: ['./radio-toggle-validation-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

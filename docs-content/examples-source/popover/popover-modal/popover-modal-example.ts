@@ -12,7 +12,6 @@ import {
     selector: 'popover-modal-example',
     templateUrl: './popover-modal-example.html',
     styleUrls: ['./popover-modal-example.css'],
-    standalone: true,
     imports: [NxButtonComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverModalExampleComponent {}

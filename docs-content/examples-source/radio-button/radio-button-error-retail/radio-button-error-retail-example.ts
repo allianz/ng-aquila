@@ -8,7 +8,6 @@ import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
  * @title Radio error message retail
  */
 @Component({
-    standalone: true,
     selector: 'radio-button-error-retail-example',
     templateUrl: './radio-button-error-retail-example.html',
     styleUrl: './radio-button-error-retail-example.css',

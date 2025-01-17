@@ -8,7 +8,6 @@ import { NxTaglistComponent } from '@aposin/ng-aquila/taglist';
     selector: 'taglist-delete-example',
     templateUrl: './taglist-delete-example.html',
     styleUrls: ['./taglist-delete-example.css'],
-    standalone: true,
     imports: [NxTaglistComponent],
 })
 export class TaglistDeleteExampleComponent {

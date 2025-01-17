@@ -9,7 +9,6 @@ import { NxLinkComponent } from '@aposin/ng-aquila/link';
     selector: 'link-black-example',
     templateUrl: './link-black-example.html',
     styleUrls: ['./link-black-example.css'],
-    standalone: true,
     imports: [NxLinkComponent, RouterLink],
 })
 export class LinkBlackExampleComponent {}

@@ -18,7 +18,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'input-reactive-example',
     templateUrl: './input-reactive-example.html',
     styleUrls: ['./input-reactive-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

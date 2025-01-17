@@ -13,7 +13,6 @@ import { NxGridModule } from '@aposin/ng-aquila/grid';
     selector: 'checkbox-group-layout-example',
     templateUrl: './checkbox-group-layout-example.html',
     styleUrls: ['./checkbox-group-layout-example.css'],
-    standalone: true,
     imports: [
         NxCheckboxGroupComponent,
         FormsModule,

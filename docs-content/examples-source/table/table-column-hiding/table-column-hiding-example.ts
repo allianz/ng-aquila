@@ -18,7 +18,6 @@ import { NxTableModule } from '@aposin/ng-aquila/table';
     selector: 'table-column-hiding-example',
     templateUrl: './table-column-hiding-example.html',
     styleUrls: ['./table-column-hiding-example.css'],
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxCheckboxGroupComponent,

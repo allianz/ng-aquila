@@ -12,7 +12,6 @@ import {
     selector: 'grid-in-grid-example',
     templateUrl: './grid-in-grid-example.html',
     styleUrls: ['./grid-in-grid-example.css'],
-    standalone: true,
     imports: [NxLayoutComponent, NxRowComponent, NxColComponent],
 })
 export class GridInGridExampleComponent {}

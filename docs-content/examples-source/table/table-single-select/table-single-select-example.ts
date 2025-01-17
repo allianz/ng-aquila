@@ -29,7 +29,6 @@ interface Contract {
     selector: 'table-single-select-example',
     templateUrl: './table-single-select-example.html',
     styleUrls: ['./table-single-select-example.css'],
-    standalone: true,
     imports: [
         NxTableComponent,
         NxTableRowComponent,

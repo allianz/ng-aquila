@@ -5,7 +5,6 @@ import { NxNumberStepperComponent } from '@aposin/ng-aquila/number-stepper';
     selector: 'number-stepper-readonly-input-example',
     templateUrl: './number-stepper-readonly-input-example.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxNumberStepperComponent],
 })
 export class NumberStepperReadonlyInputExampleComponent {}

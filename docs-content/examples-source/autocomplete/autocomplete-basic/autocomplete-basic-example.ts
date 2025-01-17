@@ -12,7 +12,6 @@ import {
     selector: 'autocomplete-basic-example',
     templateUrl: './autocomplete-basic-example.html',
     styleUrls: ['./autocomplete-basic-example.css'],
-    standalone: true,
     imports: [
         NxAutocompleteTriggerDirective,
         NxAutocompleteComponent,

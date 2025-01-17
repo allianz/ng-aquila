@@ -11,7 +11,6 @@ import {
     selector: 'popover-table-example',
     templateUrl: './popover-table-example.html',
     styleUrls: ['./popover-table-example.css'],
-    standalone: true,
     imports: [NxDynamicTableComponent],
 })
 export class PopoverTableExampleComponent {

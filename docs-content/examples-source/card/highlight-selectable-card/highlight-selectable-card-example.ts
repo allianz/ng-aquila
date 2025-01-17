@@ -9,7 +9,6 @@ import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
     selector: 'highlight-selectable-card-example',
     templateUrl: './highlight-selectable-card-example.html',
     styleUrls: ['./highlight-selectable-card-example.css'],
-    standalone: true,
     imports: [NxSelectableCardComponent, NxCopytextComponent],
 })
 export class HighlightSelectableCardExampleComponent {}

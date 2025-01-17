@@ -31,7 +31,6 @@ interface Contract {
     selector: 'table-sorting-example',
     templateUrl: './table-sorting-example.html',
     styleUrls: ['table-sorting-example.css'],
-    standalone: true,
     imports: [
         NxTableComponent,
         NxSortDirective,

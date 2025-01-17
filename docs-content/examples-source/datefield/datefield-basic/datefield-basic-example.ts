@@ -24,7 +24,6 @@ import { Moment } from 'moment';
     selector: 'datefield-basic-example',
     templateUrl: './datefield-basic-example.html',
     styleUrls: ['./datefield-basic-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxDatefieldDirective,

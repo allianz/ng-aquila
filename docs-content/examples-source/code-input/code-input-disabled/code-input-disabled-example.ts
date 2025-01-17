@@ -17,7 +17,6 @@ import { NxCodeInputComponent } from '@aposin/ng-aquila/code-input';
     selector: 'code-input-disabled-example',
     templateUrl: 'code-input-disabled-example.html',
     styleUrls: ['code-input-disabled-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

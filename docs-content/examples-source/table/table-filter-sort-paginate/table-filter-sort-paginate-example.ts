@@ -44,7 +44,6 @@ export class MyIntl extends NxSortHeaderIntl {
     templateUrl: './table-filter-sort-paginate-example.html',
     styleUrls: ['./table-filter-sort-paginate-example.css'],
     providers: [{ provide: NxSortHeaderIntl, useClass: MyIntl }],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxInputDirective,

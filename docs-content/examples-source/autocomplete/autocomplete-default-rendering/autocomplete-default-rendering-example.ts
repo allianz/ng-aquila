@@ -43,7 +43,6 @@ export class WikipediaService {
     templateUrl: './autocomplete-default-rendering-example.html',
     styleUrls: ['./autocomplete-default-rendering-example.css'],
     providers: [WikipediaService],
-    standalone: true,
     imports: [NxAutocompleteTriggerDirective, NxAutocompleteComponent],
 })
 export class AutocompleteDefaultRenderingExampleComponent {

@@ -10,7 +10,6 @@ import { NxCardModule } from '@aposin/ng-aquila/card';
     templateUrl: './clickable-card-disabled-example.html',
     styleUrl: './clickable-card-disabled-example.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxCardModule, RouterModule],
 })
 export class ClickableCardDisabledExampleComponent {

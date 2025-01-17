@@ -12,7 +12,6 @@ import {
     selector: 'tabs-nav-bar-example',
     templateUrl: './tabs-nav-bar-example.html',
     styleUrls: ['./tabs-nav-bar-example.css'],
-    standalone: true,
     imports: [NxTabNavBarComponent, NxTabLinkDirective, RouterLink],
 })
 export class TabsNavBarExampleComponent {

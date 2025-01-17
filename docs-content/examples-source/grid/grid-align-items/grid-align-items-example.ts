@@ -12,7 +12,6 @@ import {
     selector: 'grid-align-items-example',
     templateUrl: './grid-align-items-example.html',
     styleUrls: ['./grid-align-items-example.css'],
-    standalone: true,
     imports: [NxLayoutComponent, NxRowComponent, NxColComponent],
 })
 export class GridAlignItemsExampleComponent {}

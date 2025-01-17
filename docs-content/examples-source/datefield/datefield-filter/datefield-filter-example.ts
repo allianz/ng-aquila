@@ -22,7 +22,6 @@ import { Moment } from 'moment';
     selector: 'datefield-filter-example',
     templateUrl: './datefield-filter-example.html',
     styleUrls: ['./datefield-filter-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         FormsModule,

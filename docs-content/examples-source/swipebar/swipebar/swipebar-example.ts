@@ -9,7 +9,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     selector: 'swipebar-example',
     templateUrl: './swipebar-example.html',
     styleUrls: ['swipebar-example.css'],
-    standalone: true,
     imports: [NxSwipebarComponent, NxCopytextComponent],
 })
 export class SwipebarExampleComponent {}

@@ -7,7 +7,6 @@ import { NxSignalButtonComponent } from '@aposin/ng-aquila/signal-button';
     selector: 'signal-button-disabled',
     templateUrl: './signal-button-disabled-example.html',
     styleUrls: ['./signal-button-disabled-example.css'],
-    standalone: true,
     imports: [NxSignalButtonComponent],
 })
 export class SignalButtonDisabledExampleComponent {}

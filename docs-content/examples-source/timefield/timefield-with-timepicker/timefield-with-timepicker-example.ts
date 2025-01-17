@@ -10,7 +10,6 @@ import { NxTimefieldModule } from '@aposin/ng-aquila/timefield';
     selector: 'timefield-with-timepicker-example',
     templateUrl: './timefield-with-timepicker-example.html',
     styleUrls: ['./timefield-with-timepicker-example.css'],
-    standalone: true,
     imports: [NxTimefieldModule, NxErrorModule, ReactiveFormsModule],
 })
 export class TimefieldWithTimepickerExampleComponent {}

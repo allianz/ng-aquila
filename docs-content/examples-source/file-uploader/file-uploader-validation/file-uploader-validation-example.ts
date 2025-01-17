@@ -42,7 +42,6 @@ const myCustomConfig: NxMessageToastConfig = {
     selector: 'file-uploader-validation-example',
     templateUrl: './file-uploader-validation-example.html',
     styleUrls: ['./file-uploader-validation-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

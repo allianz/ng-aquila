@@ -18,7 +18,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'datefield-disabled-example',
     templateUrl: './datefield-disabled-example.html',
     styleUrls: ['./datefield-disabled-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxDatefieldDirective,

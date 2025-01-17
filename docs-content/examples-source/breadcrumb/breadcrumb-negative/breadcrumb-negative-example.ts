@@ -12,7 +12,6 @@ import {
     selector: 'breadcrumb-negative-example',
     templateUrl: './breadcrumb-negative-example.html',
     styleUrls: ['./breadcrumb-negative-example.css'],
-    standalone: true,
     imports: [NxBreadcrumbComponent, NxBreadcrumbItemComponent, RouterLink],
 })
 export class BreadcrumbNegativeExampleComponent {

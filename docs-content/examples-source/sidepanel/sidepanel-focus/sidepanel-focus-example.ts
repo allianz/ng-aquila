@@ -24,7 +24,6 @@ import { skip, takeUntil } from 'rxjs/operators';
     selector: 'sidepanel-focus-example',
     templateUrl: './sidepanel-focus-example.html',
     styleUrls: ['sidepanel-focus-example.css'],
-    standalone: true,
     imports: [
         NxRadioToggleComponent,
         FormsModule,

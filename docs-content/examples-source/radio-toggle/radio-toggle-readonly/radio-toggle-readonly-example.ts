@@ -9,7 +9,6 @@ import {
  */
 @Component({
     selector: 'radio-toggle-readonly-example',
-    standalone: true,
     imports: [NxRadioToggleButtonComponent, NxRadioToggleComponent],
     templateUrl: './radio-toggle-readonly-example.html',
     styleUrl: './radio-toggle-readonly-example.scss',

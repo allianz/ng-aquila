@@ -28,7 +28,6 @@ import {
     selector: 'licence-plate-disabled-example',
     templateUrl: 'licence-plate-disabled-example.html',
     styleUrls: ['licence-plate-disabled-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

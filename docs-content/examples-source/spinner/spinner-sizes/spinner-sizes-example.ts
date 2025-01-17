@@ -9,7 +9,6 @@ import { NxSpinnerComponent } from '@aposin/ng-aquila/spinner';
     selector: 'spinner-sizes-example',
     templateUrl: './spinner-sizes-example.html',
     styleUrls: ['./spinner-sizes-example.css'],
-    standalone: true,
     imports: [NxSpinnerComponent, NxHeadlineComponent],
 })
 export class SpinnerSizesExampleComponent {}

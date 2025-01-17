@@ -27,7 +27,6 @@ import {
     selector: 'licence-plate-ngmodel-example',
     templateUrl: 'licence-plate-ngmodel-example.html',
     styleUrls: ['licence-plate-ngmodel-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

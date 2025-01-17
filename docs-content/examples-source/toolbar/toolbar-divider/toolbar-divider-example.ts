@@ -22,7 +22,6 @@ import {
     selector: 'toolbar-divider-example',
     templateUrl: './toolbar-divider-example.html',
     styleUrls: ['./toolbar-divider-example.css'],
-    standalone: true,
     imports: [
         NxToolbarComponent,
         NxPlainButtonComponent,

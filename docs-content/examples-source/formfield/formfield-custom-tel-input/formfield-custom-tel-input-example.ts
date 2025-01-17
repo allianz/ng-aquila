@@ -51,7 +51,6 @@ export class MyTel {
         '[id]': 'id',
         '[attr.aria-describedby]': 'describedBy',
     },
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule],
 })
 export class FormfieldCustomTelInputExampleComponent

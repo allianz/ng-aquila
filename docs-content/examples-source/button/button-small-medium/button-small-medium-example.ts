@@ -8,7 +8,6 @@ import { NxButtonComponent } from '@aposin/ng-aquila/button';
     selector: 'button-small-medium-example',
     templateUrl: './button-small-medium-example.html',
     styleUrls: ['./button-small-medium-example.css'],
-    standalone: true,
     imports: [NxButtonComponent],
 })
 export class ButtonSmallMediumExampleComponent {}

@@ -22,7 +22,6 @@ import { takeUntil } from 'rxjs/operators';
     selector: 'sidepanel-floating-example',
     templateUrl: './sidepanel-floating-example.html',
     styleUrls: ['sidepanel-floating-example.css'],
-    standalone: true,
     imports: [
         NxSidepanelOuterContainerComponent,
         NxRadioToggleComponent,

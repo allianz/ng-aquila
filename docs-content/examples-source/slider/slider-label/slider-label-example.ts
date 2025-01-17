@@ -8,7 +8,6 @@ import { NxSliderComponent } from '@aposin/ng-aquila/slider';
     selector: 'slider-label-example',
     templateUrl: './slider-label-example.html',
     styleUrls: ['./slider-label-example.css'],
-    standalone: true,
     imports: [NxSliderComponent],
 })
 export class SliderLabelExampleComponent {

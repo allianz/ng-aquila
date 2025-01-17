@@ -13,7 +13,6 @@ import {
     selector: 'table-sticky-header-example',
     templateUrl: './table-sticky-header-example.html',
     styleUrls: ['./table-sticky-header-example.css'],
-    standalone: true,
     imports: [
         NxTableComponent,
         NxTableRowComponent,

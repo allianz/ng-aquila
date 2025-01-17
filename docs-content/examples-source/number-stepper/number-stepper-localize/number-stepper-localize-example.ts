@@ -18,7 +18,6 @@ export class MyIntl extends NxNumberStepperIntl {
     templateUrl: './number-stepper-localize-example.html',
     styleUrls: ['./number-stepper-localize-example.css'],
     providers: [{ provide: NxNumberStepperIntl, useClass: MyIntl }],
-    standalone: true,
     imports: [NxNumberStepperComponent],
 })
 export class NumberStepperLocalizeExampleComponent {}

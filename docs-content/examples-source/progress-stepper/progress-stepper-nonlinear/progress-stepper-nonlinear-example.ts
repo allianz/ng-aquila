@@ -14,7 +14,6 @@ import {
     selector: 'progress-stepper-nonlinear-example',
     templateUrl: './progress-stepper-nonlinear-example.html',
     styleUrls: ['./progress-stepper-nonlinear-example.css'],
-    standalone: true,
     imports: [
         NxMultiStepperComponent,
         NxStepComponent,

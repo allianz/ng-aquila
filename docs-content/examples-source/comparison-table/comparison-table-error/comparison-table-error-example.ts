@@ -21,7 +21,6 @@ import {
     templateUrl: './comparison-table-error-example.html',
     styleUrls: ['./comparison-table-error-example.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         NxComparisonTableComponent,
         NxComparisonTableRowDirective,

@@ -19,7 +19,6 @@ type MyDialogResult = 'agree' | 'disagree';
     selector: 'modal-content-actions-example',
     templateUrl: './modal-content-actions-example.html',
     styleUrls: ['./modal-content-actions-example.css'],
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxModalContentDirective,

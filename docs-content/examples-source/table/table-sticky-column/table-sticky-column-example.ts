@@ -22,7 +22,6 @@ import {
     selector: 'table-sticky-column-example',
     templateUrl: './table-sticky-column-example.html',
     styleUrls: ['./table-sticky-column-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         NxCopytextComponent,

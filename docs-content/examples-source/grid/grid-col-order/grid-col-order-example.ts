@@ -12,7 +12,6 @@ import {
     selector: 'grid-col-order-example',
     templateUrl: './grid-col-order-example.html',
     styleUrls: ['./grid-col-order-example.css'],
-    standalone: true,
     imports: [NxLayoutComponent, NxRowComponent, NxColComponent],
 })
 export class GridColOrderExampleComponent {}

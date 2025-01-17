@@ -10,7 +10,6 @@ import { NxGridModule } from '@aposin/ng-aquila/grid';
     selector: 'dropdown-panelgrow-example',
     templateUrl: './dropdown-panelgrow-example.html',
     styleUrls: ['./dropdown-panelgrow-example.css'],
-    standalone: true,
     imports: [NxGridModule, NxFormfieldModule, NxDropdownModule],
 })
 export class DropdownPanelgrowExampleComponent {

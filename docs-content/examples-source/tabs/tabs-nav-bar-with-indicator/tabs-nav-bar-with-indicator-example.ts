@@ -13,7 +13,6 @@ import {
     selector: 'tabs-nav-bar-with-indicator-example',
     templateUrl: './tabs-nav-bar-with-indicator-example.html',
     styleUrls: ['./tabs-nav-bar-with-indicator-example.css'],
-    standalone: true,
     imports: [
         NxTabNavBarComponent,
         NxTabLinkDirective,

@@ -20,7 +20,6 @@ import { NxTabComponent, NxTabGroupComponent } from '@aposin/ng-aquila/tabs';
     selector: 'sidepanel-with-tabs-example',
     templateUrl: './sidepanel-with-tabs-example.html',
     styleUrls: ['sidepanel-with-tabs-example.css'],
-    standalone: true,
     imports: [
         NxSidepanelOuterContainerComponent,
         NxRadioToggleComponent,

@@ -11,7 +11,6 @@ import { NxStatusIconComponent } from '@aposin/ng-aquila/icon';
     templateUrl: './status-icon-example.html',
     styleUrls: ['./status-icon-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NxHeadlineComponent, NxStatusIconComponent],
 })
 export class StatusIconExampleComponent {}

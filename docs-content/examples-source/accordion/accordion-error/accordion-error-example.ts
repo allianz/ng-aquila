@@ -32,7 +32,6 @@ import { NxMessageComponent } from '@aposin/ng-aquila/message';
     selector: 'accordion-error-example',
     templateUrl: './accordion-error-example.html',
     styleUrls: ['./accordion-error-example.css'],
-    standalone: true,
     imports: [
         NxAccordionDirective,
         NxExpansionPanelComponent,

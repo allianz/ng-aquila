@@ -14,7 +14,6 @@ import { NxSidebarComponent } from '@aposin/ng-aquila/sidebar';
     selector: 'sidebar-example',
     styleUrls: ['sidebar-example.css'],
     templateUrl: './sidebar-example.html',
-    standalone: true,
     imports: [
         NxSidebarComponent,
         NxActionComponent,

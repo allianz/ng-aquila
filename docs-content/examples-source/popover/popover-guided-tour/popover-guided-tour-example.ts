@@ -14,7 +14,6 @@ import {
     selector: 'popover-guided-tour-example',
     templateUrl: './popover-guided-tour-example.html',
     styleUrls: ['./popover-guided-tour-example.css'],
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxPopoverTriggerDirective,

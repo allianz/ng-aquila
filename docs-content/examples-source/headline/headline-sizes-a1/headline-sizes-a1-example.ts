@@ -8,7 +8,6 @@ import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
     selector: 'headline-sizes-a1-example',
     templateUrl: './headline-sizes-a1-example.html',
     styleUrls: ['./headline-sizes-a1-example.css'],
-    standalone: true,
     imports: [NxHeadlineComponent],
 })
 export class HeadlineSizesA1ExampleComponent {}

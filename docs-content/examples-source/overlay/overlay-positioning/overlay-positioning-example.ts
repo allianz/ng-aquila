@@ -15,7 +15,6 @@ import {
     selector: 'overlay-positioning-example',
     templateUrl: './overlay-positioning-example.html',
     styleUrls: ['./overlay-positioning-example.css'],
-    standalone: true,
     imports: [NxButtonComponent, CdkOverlayOrigin, NxCopytextComponent],
 })
 export class OverlayPositioningExampleComponent {

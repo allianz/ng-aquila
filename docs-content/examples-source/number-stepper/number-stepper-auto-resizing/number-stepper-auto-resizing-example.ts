@@ -9,7 +9,6 @@ import { NxNumberStepperComponent } from '@aposin/ng-aquila/number-stepper';
     selector: 'number-stepper-auto-resizing-example',
     templateUrl: './number-stepper-auto-resizing-example.html',
     styleUrls: ['./number-stepper-auto-resizing-example.css'],
-    standalone: true,
     imports: [NxNumberStepperComponent, FormsModule],
 })
 export class NumberStepperAutoResizingExampleComponent {

@@ -19,7 +19,6 @@ import {
     selector: 'circle-toggle-reactive-example',
     templateUrl: './circle-toggle-reactive-example.html',
     styleUrls: ['./circle-toggle-reactive-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

@@ -18,7 +18,6 @@ import {
     selector: 'dropdown-group-example',
     templateUrl: './dropdown-group-example.html',
     styleUrls: ['./dropdown-group-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

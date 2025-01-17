@@ -12,7 +12,6 @@ import {
     selector: 'natural-language-form-negative-example',
     templateUrl: './natural-language-form-negative-example.html',
     styleUrls: ['./natural-language-form-negative-example.css'],
-    standalone: true,
     imports: [
         NxNaturalLanguageFormComponent,
         NxWordComponent,

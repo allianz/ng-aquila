@@ -16,7 +16,6 @@ import { NxSelectableCardComponent } from '@aposin/ng-aquila/card';
     selector: 'selectable-card-reactive-example',
     templateUrl: './selectable-card-reactive-example.html',
     styleUrls: ['./selectable-card-reactive-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

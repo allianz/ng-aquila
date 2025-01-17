@@ -19,7 +19,6 @@ import {
     selector: 'sidepanel-static-example',
     templateUrl: './sidepanel-static-example.html',
     styleUrls: ['sidepanel-static-example.css'],
-    standalone: true,
     imports: [
         NxSidepanelOuterContainerComponent,
         NxRadioToggleComponent,

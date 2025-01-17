@@ -14,7 +14,6 @@ import {
     selector: 'margin-sizes-example',
     templateUrl: './margin-sizes-example.html',
     styleUrls: ['./margin-sizes-example.css'],
-    standalone: true,
     imports: [
         NxTableComponent,
         NxTableRowComponent,

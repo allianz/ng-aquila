@@ -21,7 +21,6 @@ import { NxListComponent, NxListIconComponent } from '@aposin/ng-aquila/list';
     templateUrl: './recommendation-table-example.html',
     styleUrls: ['./recommendation-table-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

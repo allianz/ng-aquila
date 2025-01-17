@@ -13,7 +13,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'input-mode-example',
     templateUrl: './input-mode-example.html',
     styleUrls: ['./input-mode-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxDropdownComponent,

@@ -20,7 +20,6 @@ import {
     selector: 'dropdown-template-driven-example',
     templateUrl: './dropdown-template-driven-example.html',
     styleUrls: ['./dropdown-template-driven-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

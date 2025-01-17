@@ -14,7 +14,6 @@ import { NxFigureComponent } from '@aposin/ng-aquila/image';
     selector: 'image-default-example',
     templateUrl: './image-default-example.html',
     styleUrls: ['./image-default-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

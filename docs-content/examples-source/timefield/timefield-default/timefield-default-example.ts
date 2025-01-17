@@ -10,7 +10,6 @@ import { NxTimefieldModule } from '@aposin/ng-aquila/timefield';
     selector: 'timefield-default-example',
     templateUrl: './timefield-default-example.html',
     styleUrls: ['./timefield-default-example.css'],
-    standalone: true,
     imports: [NxTimefieldModule, NxErrorModule, ReactiveFormsModule],
 })
 export class TimefieldDefaultExampleComponent {

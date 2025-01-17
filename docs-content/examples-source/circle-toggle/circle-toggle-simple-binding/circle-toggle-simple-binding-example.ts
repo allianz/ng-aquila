@@ -12,7 +12,6 @@ import {
     selector: 'circle-toggle-simple-binding-example',
     templateUrl: './circle-toggle-simple-binding-example.html',
     styleUrls: ['./circle-toggle-simple-binding-example.css'],
-    standalone: true,
     imports: [
         NxCircleToggleGroupComponent,
         NxCircleToggleComponent,

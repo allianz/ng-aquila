@@ -33,7 +33,6 @@ import {
     selector: 'licence-plate-expert-example',
     templateUrl: 'licence-plate-expert-example.html',
     styleUrls: ['licence-plate-expert-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

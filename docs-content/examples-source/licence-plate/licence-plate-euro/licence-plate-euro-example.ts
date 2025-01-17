@@ -28,7 +28,6 @@ import {
     selector: 'licence-plate-euro-example',
     templateUrl: 'licence-plate-euro-example.html',
     styleUrls: ['licence-plate-euro-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

@@ -23,7 +23,6 @@ interface MyOption {
     selector: 'dropdown-disabled-items-example',
     templateUrl: './dropdown-disabled-items-example.html',
     styleUrls: ['./dropdown-disabled-items-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

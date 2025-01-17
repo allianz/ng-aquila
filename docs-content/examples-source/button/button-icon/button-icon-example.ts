@@ -9,7 +9,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     selector: 'button-icon-example',
     templateUrl: './button-icon-example.html',
     styleUrls: ['./button-icon-example.css'],
-    standalone: true,
     imports: [NxIconButtonComponent, NxIconComponent],
 })
 export class ButtonIconExampleComponent {}

@@ -20,7 +20,6 @@ import {
     selector: 'checkbox-group-dynamic-example',
     templateUrl: './checkbox-group-dynamic-example.html',
     styleUrls: ['./checkbox-group-dynamic-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

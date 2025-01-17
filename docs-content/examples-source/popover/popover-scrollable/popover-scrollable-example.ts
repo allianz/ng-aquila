@@ -13,7 +13,6 @@ import {
     selector: 'popover-scrollable-example',
     templateUrl: './popover-scrollable-example.html',
     styleUrls: ['./popover-scrollable-example.css'],
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxPopoverTriggerDirective,

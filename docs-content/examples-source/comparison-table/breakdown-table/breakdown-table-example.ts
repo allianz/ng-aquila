@@ -22,7 +22,6 @@ import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
     templateUrl: './breakdown-table-example.html',
     styleUrls: ['./breakdown-table-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

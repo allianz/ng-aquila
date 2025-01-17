@@ -8,7 +8,6 @@ import { NxSliderComponent } from '@aposin/ng-aquila/slider';
     selector: 'slider-inverted-example',
     templateUrl: './slider-inverted-example.html',
     styleUrls: ['./slider-inverted-example.css'],
-    standalone: true,
     imports: [NxSliderComponent],
 })
 export class SliderInvertedExampleComponent {}

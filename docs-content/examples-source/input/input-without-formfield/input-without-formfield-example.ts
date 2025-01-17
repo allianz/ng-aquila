@@ -8,7 +8,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'input-without-formfield-example',
     templateUrl: './input-without-formfield-example.html',
     styleUrls: ['./input-without-formfield-example.css'],
-    standalone: true,
     imports: [NxInputDirective],
 })
 export class InputWithoutFormfieldExampleComponent {}

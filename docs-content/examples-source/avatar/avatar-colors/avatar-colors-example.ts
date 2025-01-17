@@ -8,7 +8,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     selector: 'avatar-colors-example',
     templateUrl: './avatar-colors-example.html',
     styleUrls: ['./avatar-colors-example.css'],
-    standalone: true,
     imports: [NxAvatarComponent, NxIconComponent],
 })
 export class AvatarColorsExampleComponent {}

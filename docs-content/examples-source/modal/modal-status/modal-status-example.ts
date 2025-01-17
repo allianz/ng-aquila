@@ -19,7 +19,6 @@ import {
     templateUrl: './modal-status-example.html',
     styleUrls: ['./modal-status-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxModalTitleComponent,

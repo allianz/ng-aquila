@@ -15,7 +15,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'formfield-custom-label-example',
     templateUrl: './formfield-custom-label-example.html',
     styleUrls: ['./formfield-custom-label-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxFormfieldLabelDirective,

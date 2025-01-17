@@ -28,7 +28,6 @@ import { Moment } from 'moment';
     selector: 'datefield-toggle-focus-example',
     templateUrl: './datefield-toggle-focus-example.html',
     styleUrls: ['./datefield-toggle-focus-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

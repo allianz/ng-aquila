@@ -23,7 +23,6 @@ import {
     selector: 'formfield-expert-error-example',
     templateUrl: './formfield-expert-error-example.html',
     styleUrls: ['./formfield-expert-error-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

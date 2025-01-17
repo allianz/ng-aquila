@@ -29,7 +29,6 @@ const selectBothValidator: ValidatorFn = (ctrl: AbstractControl) => {
     selector: 'circle-toggle-validation-example',
     templateUrl: './circle-toggle-validation-example.html',
     styleUrls: ['./circle-toggle-validation-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

@@ -12,7 +12,6 @@ import {
     selector: 'grid-multi-inputs-2-example',
     templateUrl: './grid-multi-inputs-2-example.html',
     styleUrls: ['./grid-multi-inputs-2-example.css'],
-    standalone: true,
     imports: [NxLayoutComponent, NxRowComponent, NxColComponent],
 })
 export class GridMultiInputs2ExampleComponent {}

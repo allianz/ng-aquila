@@ -16,7 +16,6 @@ import {
     selector: 'modal-fullscreen-example',
     templateUrl: './modal-fullscreen-example.html',
     styleUrls: ['./modal-fullscreen-example.css'],
-    standalone: true,
     imports: [
         NxButtonComponent,
         NxModalContentDirective,

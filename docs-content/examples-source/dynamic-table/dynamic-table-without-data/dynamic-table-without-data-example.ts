@@ -8,7 +8,6 @@ import { NxDynamicTableComponent } from '@aposin/ng-aquila/dynamic-table';
     selector: 'dynamic-table-without-data-example',
     templateUrl: './dynamic-table-without-data-example.html',
     styleUrls: ['./dynamic-table-without-data-example.css'],
-    standalone: true,
     imports: [NxDynamicTableComponent],
 })
 export class DynamicTableWithoutDataExampleComponent {}

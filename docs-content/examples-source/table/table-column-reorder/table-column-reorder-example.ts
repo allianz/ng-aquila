@@ -21,7 +21,6 @@ import {
     templateUrl: './table-column-reorder-example.html',
     styleUrls: ['./table-column-reorder-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         NxTableComponent,
         NxTableRowComponent,

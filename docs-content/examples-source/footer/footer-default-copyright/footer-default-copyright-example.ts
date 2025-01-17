@@ -13,7 +13,6 @@ import {
     selector: 'footer-default-copyright-example',
     templateUrl: './footer-default-copyright-example.html',
     styleUrls: ['footer-default-copyright-example.css'],
-    standalone: true,
     imports: [
         NxFooterComponent,
         NxFooterNavigationDirective,

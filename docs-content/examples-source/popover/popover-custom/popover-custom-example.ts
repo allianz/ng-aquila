@@ -12,7 +12,6 @@ import {
     selector: 'popover-custom-example',
     templateUrl: './popover-custom-example.html',
     styleUrls: ['./popover-custom-example.css'],
-    standalone: true,
     imports: [NxButtonComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverCustomExampleComponent {

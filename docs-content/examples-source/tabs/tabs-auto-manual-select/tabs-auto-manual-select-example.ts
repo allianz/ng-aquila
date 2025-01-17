@@ -10,7 +10,6 @@ import { NxTabComponent, NxTabGroupComponent } from '@aposin/ng-aquila/tabs';
     selector: 'tabs-auto-manual-select-example',
     templateUrl: './tabs-auto-manual-select-example.html',
     styleUrls: ['./tabs-auto-manual-select-example.css'],
-    standalone: true,
     imports: [
         NxTabGroupComponent,
         NxTabComponent,

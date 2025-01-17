@@ -25,7 +25,6 @@ import {
     selector: 'licence-plate-standard-example',
     templateUrl: 'licence-plate-standard-example.html',
     styleUrls: ['licence-plate-standard-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

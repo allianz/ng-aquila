@@ -15,7 +15,6 @@ import { NxModalComponent } from '@aposin/ng-aquila/modal';
     selector: 'dynamic-table-event-example',
     templateUrl: './dynamic-table-event-example.html',
     styleUrls: ['./dynamic-table-event-example.css'],
-    standalone: true,
     imports: [
         NxDynamicTableComponent,
         NxHeadlineComponent,

@@ -13,7 +13,6 @@ import { NxMessageComponent } from '@aposin/ng-aquila/message';
     selector: 'accessibility-high-contrast-svg-example',
     templateUrl: './accessibility-high-contrast-svg-example.html',
     styleUrls: ['./accessibility-high-contrast-svg-example.css'],
-    standalone: true,
     imports: [
         NxMessageComponent,
         NxLayoutComponent,

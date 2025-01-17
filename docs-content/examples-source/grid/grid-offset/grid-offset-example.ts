@@ -12,7 +12,6 @@ import {
     selector: 'grid-offset-example',
     templateUrl: './grid-offset-example.html',
     styleUrls: ['./grid-offset-example.css'],
-    standalone: true,
     imports: [NxLayoutComponent, NxRowComponent, NxColComponent],
 })
 export class GridOffsetExampleComponent {}

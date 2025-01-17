@@ -25,7 +25,6 @@ interface MenuItem {
     selector: 'menu-item-with-icons-example',
     templateUrl: 'menu-item-with-icons-example.html',
     styleUrls: ['menu-item-with-icons-example.css'],
-    standalone: true,
     imports: [
         NxMenuButtonComponent,
         NxMenuItemDirective,

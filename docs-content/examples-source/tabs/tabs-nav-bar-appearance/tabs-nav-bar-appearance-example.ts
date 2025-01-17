@@ -18,7 +18,6 @@ interface Link {
     selector: 'tabs-nav-bar-appearance-example',
     templateUrl: './tabs-nav-bar-appearance-example.html',
     styleUrls: ['./tabs-nav-bar-appearance-example.css'],
-    standalone: true,
     imports: [NxTabNavBarComponent, NxTabLinkDirective, RouterLink],
 })
 export class TabsNavBarAppearanceExampleComponent {

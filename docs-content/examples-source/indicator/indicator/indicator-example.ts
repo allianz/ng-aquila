@@ -7,7 +7,6 @@ import { NxIndicatorComponent } from '@aposin/ng-aquila/indicator';
     selector: 'indicator-example',
     templateUrl: './indicator-example.html',
     styleUrls: ['./indicator-example.css'],
-    standalone: true,
     imports: [NxIndicatorComponent],
 })
 export class IndicatorExampleComponent {}

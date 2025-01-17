@@ -10,7 +10,6 @@ import { NxNumberStepperComponent } from '@aposin/ng-aquila/number-stepper';
     selector: 'number-stepper-reactive-example',
     templateUrl: './number-stepper-reactive-example.html',
     styleUrls: ['./number-stepper-reactive-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

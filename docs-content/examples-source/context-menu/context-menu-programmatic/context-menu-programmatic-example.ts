@@ -19,7 +19,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     host: {
         '(document:keydown.control.p)': 'openContextMenu($event)',
     },
-    standalone: true,
     imports: [
         NxCopytextComponent,
         NxContextMenuComponent,

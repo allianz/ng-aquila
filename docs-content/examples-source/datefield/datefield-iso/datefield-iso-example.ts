@@ -16,7 +16,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'datefield-iso-example',
     templateUrl: './datefield-iso-example.html',
     styleUrls: ['./datefield-iso-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxDatefieldDirective,

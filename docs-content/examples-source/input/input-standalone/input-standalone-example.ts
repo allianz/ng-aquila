@@ -9,7 +9,6 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     selector: 'input-standalone-example',
     templateUrl: './input-standalone-example.html',
     styleUrls: ['./input-standalone-example.css'],
-    standalone: true,
     imports: [NxFormfieldComponent, NxInputDirective],
 })
 export class InputStandaloneExampleComponent {}

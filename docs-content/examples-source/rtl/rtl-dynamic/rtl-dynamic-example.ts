@@ -13,7 +13,6 @@ import { NxSliderComponent } from '@aposin/ng-aquila/slider';
     selector: 'rtl-dynamic-example',
     templateUrl: './rtl-dynamic-example.html',
     styleUrls: ['./rtl-dynamic-example.css'],
-    standalone: true,
     imports: [
         Dir,
         NxHeadlineComponent,

@@ -15,7 +15,6 @@ import { NxSwitcherComponent } from '@aposin/ng-aquila/switcher';
     selector: 'switcher-reactive-form-example',
     templateUrl: './switcher-reactive-form-example.html',
     styleUrls: ['./switcher-reactive-form-example.css'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

@@ -10,7 +10,6 @@ import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
     selector: 'highlight-card-example',
     templateUrl: './highlight-card-example.html',
     styleUrls: ['./highlight-card-example.css'],
-    standalone: true,
     imports: [
         NxCardComponent,
         NxCardHeaderComponent,

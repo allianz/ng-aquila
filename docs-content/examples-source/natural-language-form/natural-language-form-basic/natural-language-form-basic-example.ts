@@ -14,7 +14,6 @@ import {
     selector: 'natural-language-form-basic-example',
     templateUrl: './natural-language-form-basic-example.html',
     styleUrls: ['./natural-language-form-basic-example.css'],
-    standalone: true,
     imports: [
         NxNaturalLanguageFormComponent,
         NxWordComponent,

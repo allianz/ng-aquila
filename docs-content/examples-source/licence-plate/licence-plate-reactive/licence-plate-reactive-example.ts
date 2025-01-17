@@ -32,7 +32,6 @@ import {
     selector: 'licence-plate-reactive-example',
     templateUrl: 'licence-plate-reactive-example.html',
     styleUrls: ['licence-plate-reactive-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

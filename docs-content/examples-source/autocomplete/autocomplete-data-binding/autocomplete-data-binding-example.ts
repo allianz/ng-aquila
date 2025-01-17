@@ -60,7 +60,6 @@ export class WikipediaService {
     templateUrl: './autocomplete-data-binding-example.html',
     styleUrls: ['./autocomplete-data-binding-example.css'],
     providers: [WikipediaService],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxInputDirective,

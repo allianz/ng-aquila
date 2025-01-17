@@ -8,7 +8,6 @@ import { NxToolbarComponent } from '@aposin/ng-aquila/toolbar';
     selector: 'toolbar-example',
     templateUrl: './toolbar-example.html',
     styleUrls: ['./toolbar-example.css'],
-    standalone: true,
     imports: [NxToolbarComponent],
 })
 export class ToolbarExampleComponent {}

@@ -12,7 +12,6 @@ import {
     selector: 'grid-one-input-example',
     templateUrl: './grid-one-input-example.html',
     styleUrls: ['./grid-one-input-example.css'],
-    standalone: true,
     imports: [NxLayoutComponent, NxRowComponent, NxColComponent],
 })
 export class GridOneInputExampleComponent {}

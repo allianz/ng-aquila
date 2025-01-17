@@ -8,7 +8,6 @@ import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
     selector: 'headline-sizes-deprecated-example',
     templateUrl: './headline-sizes-deprecated-example.html',
     styleUrls: ['./headline-sizes-deprecated-example.css'],
-    standalone: true,
     imports: [NxHeadlineComponent],
 })
 export class HeadlineSizesDeprecatedExampleComponent {}

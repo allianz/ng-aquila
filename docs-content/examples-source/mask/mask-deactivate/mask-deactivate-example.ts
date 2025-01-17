@@ -25,7 +25,6 @@ import {
     selector: 'mask-deactivate-example',
     templateUrl: './mask-deactivate-example.html',
     styleUrls: ['./mask-deactivate-example.css'],
-    standalone: true,
     imports: [
         NxLayoutComponent,
         NxRowComponent,

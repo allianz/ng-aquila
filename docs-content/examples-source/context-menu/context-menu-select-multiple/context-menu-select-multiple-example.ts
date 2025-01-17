@@ -15,7 +15,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     selector: 'context-menu-selecti-multiple-example',
     templateUrl: './context-menu-select-multiple-example.html',
     styleUrls: ['./context-menu-select-multiple-example.css'],
-    standalone: true,
     imports: [
         NxCheckboxGroupComponent,
         FormsModule,

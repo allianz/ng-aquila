@@ -8,7 +8,6 @@ import { NxMenuLinkDirective } from '@aposin/ng-aquila/menu';
     selector: 'menu-link-example',
     templateUrl: 'menu-link-example.html',
     styleUrls: ['menu-link-example.css'],
-    standalone: true,
     imports: [NxMenuLinkDirective],
 })
 export class MenuLinkExampleComponent {}

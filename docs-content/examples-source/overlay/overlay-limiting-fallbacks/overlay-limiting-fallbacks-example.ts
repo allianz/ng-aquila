@@ -15,7 +15,6 @@ import {
     selector: 'overlay-limiting-fallbacks-example',
     templateUrl: './overlay-limiting-fallbacks-example.html',
     styleUrls: ['./overlay-limiting-fallbacks-example.css'],
-    standalone: true,
     imports: [NxButtonComponent, CdkOverlayOrigin],
 })
 export class OverlayLimitingFallbacksExampleComponent {

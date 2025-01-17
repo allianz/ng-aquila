@@ -8,7 +8,6 @@ import { NxRatingComponent } from '@aposin/ng-aquila/rating';
     selector: 'rating-negative-example',
     templateUrl: './rating-negative-example.html',
     styleUrls: ['./rating-negative-example.css'],
-    standalone: true,
     imports: [NxRatingComponent],
 })
 export class RatingNegativeExampleComponent {}

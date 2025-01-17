@@ -7,7 +7,6 @@ import { NxSwitcherComponent } from '@aposin/ng-aquila/switcher';
     selector: 'switcher-template-driven-example',
     templateUrl: './switcher-template-driven-example.html',
     styleUrls: ['./switcher-template-driven-example.css'],
-    standalone: true,
     imports: [FormsModule, NxSwitcherComponent],
 })
 export class SwitcherTemplateDrivenExampleComponent {

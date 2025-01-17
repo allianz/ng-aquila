@@ -18,7 +18,6 @@ import {
     selector: 'formfield-password-visibility-example',
     templateUrl: './formfield-password-visibility-example.html',
     styleUrls: ['./formfield-password-visibility-example.css'],
-    standalone: true,
     imports: [
         NxFormfieldComponent,
         NxInputDirective,

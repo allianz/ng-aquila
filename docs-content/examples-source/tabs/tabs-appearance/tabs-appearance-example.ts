@@ -8,7 +8,6 @@ import { NxTabComponent, NxTabGroupComponent } from '@aposin/ng-aquila/tabs';
     selector: 'tabs-appearance-example',
     templateUrl: './tabs-appearance-example.html',
     styleUrls: ['./tabs-appearance-example.css'],
-    standalone: true,
     imports: [NxTabGroupComponent, NxTabComponent],
 })
 export class TabsAppearanceExampleComponent {

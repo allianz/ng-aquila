@@ -31,7 +31,6 @@ export const myCustomConfig: NxMessageToastConfig = {
     selector: 'file-uploader-auto-example',
     templateUrl: './file-uploader-auto-example.html',
     styleUrls: ['./file-uploader-auto-example.css'],
-    standalone: true,
     imports: [
         NxFileUploaderComponent_1,
         FormsModule,
