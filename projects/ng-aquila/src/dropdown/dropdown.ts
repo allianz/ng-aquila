@@ -998,7 +998,6 @@ export class NxDropdownComponent
         }
 
         const activeItem = this._keyManager.activeItem.containerElement.nativeElement;
-        this.liveAnnouncer.announce(activeItem.textContent); // force screen reader to speak active option
         activeItem.scrollIntoView({ block: 'nearest' });
     }
 

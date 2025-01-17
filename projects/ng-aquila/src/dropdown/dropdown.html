@@ -51,9 +51,13 @@
         <div class="nx-dropdown__filter">
             <input
                 class="nx-dropdown__filter-input"
+                [attr.aria-controls]="modalId"
+                [attr.aria-label]="label"
+                [attr.aria-activedescendant]="_getAriaActiveDescendant()"
                 [class.is-filled]="!isFilterEmpty"
                 #filterInput
                 [type]="filterInputType"
+                role="combobox"
                 (input)="_onFilter($event)"
                 [placeholder]="filterPlaceholder"
             />
@@ -65,15 +69,15 @@
         </div>
         }
 
-        <div
+        <ul
             class="nx-dropdown__panel-body"
             tabindex="-1"
             role="listbox"
             [id]="modalId"
             [class.keyboard-focused]="openedByKeyboard"
             #panelBody
-            [attr.aria-activedescendant]="_getAriaActiveDescendant()"
             [attr.aria-multiselectable]="isMultiSelect"
+            [attr.aria-activedescendant]="_getAriaActiveDescendant()"
         >
             <ng-content></ng-content>
             @for (option of options; track option) {
@@ -81,6 +85,6 @@
                 >{{ _getLabel(option) }}</nx-dropdown-item
             >
             }
-        </div>
+        </ul>
     </div>
 </ng-template>
