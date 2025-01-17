@@ -1,4 +1,4 @@
-import { Highlightable, LiveAnnouncer } from '@angular/cdk/a11y';
+import { Highlightable, ListKeyManagerOption, LiveAnnouncer } from '@angular/cdk/a11y';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 
@@ -22,7 +22,7 @@ let nextId = 0;
     standalone: true,
     imports: [NxCheckboxModule],
 })
-export class NxMultiSelectAllComponent<T> implements Highlightable {
+export class NxMultiSelectAllComponent<T> implements Highlightable, ListKeyManagerOption {
     private _active = false;
 
     id = `nx-multi-select-all-${nextId++}`;
@@ -111,5 +111,9 @@ export class NxMultiSelectAllComponent<T> implements Highlightable {
     selectViaInteraction() {
         this._onSelect();
         this._cdr.markForCheck();
+    }
+
+    getLabel() {
+        return this.label;
     }
 }

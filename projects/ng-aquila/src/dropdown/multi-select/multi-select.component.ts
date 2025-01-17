@@ -512,8 +512,13 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         }
         const altKey = $event.altKey;
         const key = $event.key;
+        const isCharacterKey = key.length === 1;
 
         const isArrowKey = key === 'ArrowDown' || key === 'ArrowUp' || key === 'ArrowLeft' || key === 'ArrowRight';
+
+        if (this._filterInput && $event.target === this._filterInput.nativeElement && isCharacterKey) {
+            return;
+        }
 
         if (!this._isOpen) {
             if ((altKey && isArrowKey) || isArrowKey || key === 'Home') {
@@ -527,6 +532,16 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
                     this._cdr.markForCheck();
                 });
                 $event.preventDefault();
+            }
+            if (isCharacterKey) {
+                this._open($event, 'keyboard');
+
+                if (this.filter) {
+                    this._filterValue = key;
+                    this._onFilterChange(key);
+                } else {
+                    this._keyManager.onKeydown($event);
+                }
             }
         } else {
             if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'Home' || key === 'End') {
@@ -547,6 +562,9 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             if (key === 'Enter' || (this._filterValue.trim() === '' && key === ' ')) {
                 this._keyManager.activeItem?.selectViaInteraction();
                 $event.preventDefault();
+            }
+            if (isCharacterKey) {
+                this._keyManager.onKeydown($event);
             }
         }
     }
@@ -740,11 +758,16 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     private _initKeyManager() {
         this._keyManager = new ActiveDescendantKeyManager<NxMultiSelectAllComponent<T> | NxMultiSelectOptionComponent<T>>(this._options)
+            .withTypeAhead(500)
             .withHomeAndEnd()
             .withVerticalOrientation()
             .withHorizontalOrientation('ltr')
             .skipPredicate(item => item?.disabled);
 
         this._keyManager.tabOut.pipe(takeUntil(this._destroyed)).subscribe(() => this._close());
+
+        this._keyManager.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
+            this._scrollActiveOptionIntoView();
+        });
     }
 }

@@ -38,11 +38,12 @@ import {
     Output,
     QueryList,
     Self,
+    signal,
     TemplateRef,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormGroupDirective, FormsModule, NgControl, NgForm } from '@angular/forms';
 import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxAbstractControl } from '@aposin/ng-aquila/shared';
@@ -181,7 +182,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         '(click)': 'openedByKeyboard = false; openPanel($event)',
     },
     standalone: true,
-    imports: [CdkOverlayOrigin, NgTemplateOutlet, NxIconModule, CdkConnectedOverlay, Dir, NxDropdownItemComponent, NxTooltipModule],
+    imports: [FormsModule, CdkOverlayOrigin, NgTemplateOutlet, NxIconModule, CdkConnectedOverlay, Dir, NxDropdownItemComponent, NxTooltipModule],
 })
 export class NxDropdownComponent
     implements NxAbstractControl, NxDropdownControl, ControlValueAccessor, OnInit, AfterViewInit, AfterContentInit, OnDestroy, DoCheck
@@ -249,9 +250,6 @@ export class NxDropdownComponent
 
     /** @docs-private */
     ariaDescribedby?: string;
-
-    /** @docs-private */
-    currentFilter = '';
 
     /**
      * Array of options for the dropdown.
@@ -440,6 +438,9 @@ export class NxDropdownComponent
     /** @docs-private */
     @ViewChild('filterInput') filterInput?: ElementRef;
 
+    /** @docs-private */
+    filterValue = '';
+
     /**
      * Overlay pane containing the options.
      * @docs-private
@@ -601,6 +602,8 @@ export class NxDropdownComponent
         return this._dir && this._dir.value === 'rtl' ? 'rtl' : 'ltr';
     }
 
+    activeId = signal<string | null>(null);
+
     constructor(
         private readonly _cdr: ChangeDetectorRef,
         private readonly _elementRef: ElementRef,
@@ -717,6 +720,7 @@ export class NxDropdownComponent
             } else if (!this._panelOpen && !this.isMultiSelect && this._keyManager.activeItem) {
                 this._keyManager.activeItem._selectViaInteraction();
             }
+            this.activeId.set(this._keyManager.activeItem?.id || null);
         });
     }
 
@@ -1150,6 +1154,7 @@ export class NxDropdownComponent
 
         // TODO use event.code after removing IE11 support
         const keyCode = event.keyCode;
+        const isCharacterKey = event.key.length === 1;
         const isArrowKey = keyCode === DOWN_ARROW || keyCode === UP_ARROW || keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW;
         const isOpenKey = keyCode === ENTER || keyCode === SPACE;
 
@@ -1182,7 +1187,18 @@ export class NxDropdownComponent
                     event.preventDefault();
                     break;
                 default:
-                    this._keyManager.onKeydown(event);
+                    if (isCharacterKey) {
+                        this.openPanel(event);
+
+                        setTimeout(() => {
+                            if (this.showFilter) {
+                                this.filterValue = event.key;
+                                this._onFilter(event.key);
+                            } else {
+                                this._keyManager.onKeydown(event);
+                            }
+                        });
+                    }
             }
         }
     }
@@ -1243,10 +1259,8 @@ export class NxDropdownComponent
     }
 
     /** Called when the user types in the filter input */
-    _onFilter(event: Event) {
-        event.preventDefault();
-        this.currentFilter = (event.target as HTMLInputElement).value;
-        this.filterChanges.next((event.target as HTMLInputElement).value);
+    _onFilter(query: string) {
+        this.filterChanges.next(query);
         const allHidden = this.dropdownItems.toArray().every(option => option._hidden);
         if (allHidden) {
             // @ts-expect-error: not possible according to TS, but has been working already
@@ -1330,15 +1344,14 @@ export class NxDropdownComponent
 
     /** @docs-private */
     get isFilterEmpty() {
-        return this.currentFilter.length === 0;
+        return this.filterValue.length === 0;
     }
 
     _clearFilter() {
         if (!this.filterInput) {
             return;
         }
-        this.filterInput.nativeElement.value = '';
-        this.currentFilter = '';
+        this.filterValue = '';
         this.filterChanges.next('');
     }
 

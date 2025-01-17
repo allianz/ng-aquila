@@ -1059,6 +1059,17 @@ describe('NxMultiSelectComponent', () => {
             expect((testInstance as MultiSelectWithFilterComponent).filterInput).toBe('');
         });
     });
+
+    describe('a11y', () => {
+        it('should open and focus option when type character', async () => {
+            await createTestComponent(BasicMultiSelectComponent);
+            await multiSelectHarness.pressKey('A');
+
+            const options = await multiSelectHarness.getOptions();
+            expect(await options[0].isActive()).toBeTrue();
+            expect(await options[0].getLabelText()).toBe('Audi');
+        });
+    });
 });
 
 @Directive({ standalone: true })

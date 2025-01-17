@@ -53,12 +53,14 @@
                 class="nx-dropdown__filter-input"
                 [attr.aria-controls]="modalId"
                 [attr.aria-label]="label"
-                [attr.aria-activedescendant]="_getAriaActiveDescendant()"
+                [attr.aria-activedescendant]="activeId()"
                 [class.is-filled]="!isFilterEmpty"
                 #filterInput
                 [type]="filterInputType"
+                (input)="$event.preventDefault()"
+                [(ngModel)]="filterValue"
+                (ngModelChange)="_onFilter($event)"
                 role="combobox"
-                (input)="_onFilter($event)"
                 [placeholder]="filterPlaceholder"
             />
             @if (!isFilterEmpty) {
@@ -76,8 +78,8 @@
             [id]="modalId"
             [class.keyboard-focused]="openedByKeyboard"
             #panelBody
+            [attr.aria-activedescendant]="activeId()"
             [attr.aria-multiselectable]="isMultiSelect"
-            [attr.aria-activedescendant]="_getAriaActiveDescendant()"
         >
             <ng-content></ng-content>
             @for (option of options; track option) {

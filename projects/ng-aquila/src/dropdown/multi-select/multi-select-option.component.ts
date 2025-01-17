@@ -1,4 +1,4 @@
-import { Highlightable, LiveAnnouncer } from '@angular/cdk/a11y';
+import { Highlightable, ListKeyManagerOption, LiveAnnouncer } from '@angular/cdk/a11y';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { AppearanceType } from '@aposin/ng-aquila/formfield';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
@@ -24,7 +24,7 @@ let optionId = 0;
     standalone: true,
     imports: [NxIconModule],
 })
-export class NxMultiSelectOptionComponent<T> implements Highlightable {
+export class NxMultiSelectOptionComponent<T> implements Highlightable, ListKeyManagerOption {
     private _active = false;
 
     id = `nx-multi-select-option-${optionId++}`;
@@ -97,5 +97,9 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable {
     selectViaInteraction() {
         this._onClick();
         this._cdr.markForCheck();
+    }
+
+    getLabel() {
+        return this.label;
     }
 }

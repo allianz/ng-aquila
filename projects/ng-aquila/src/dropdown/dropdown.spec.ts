@@ -1,6 +1,8 @@
 import { B, D, DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE, TAB, UP_ARROW, V } from '@angular/cdk/keycodes';
 import { MutationObserverFactory } from '@angular/cdk/observers';
 import { OverlayContainer, OverlayModule, ScrollStrategy } from '@angular/cdk/overlay';
+import { ComponentHarness, LocatorFactory } from '@angular/cdk/testing';
+import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Directive, Inject, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
@@ -20,6 +22,19 @@ import { NxDropdownItemComponent } from './item/dropdown-item';
 class CustomIntl extends NxDropdownIntl {
     selectAll = 'Test select all';
     clearAll = 'Test clear all';
+}
+
+class DropdownHarness extends ComponentHarness {
+    static hostSelector = 'nx-dropdown';
+
+    private readonly documentRootLocator: LocatorFactory = this.documentRootLocatorFactory();
+
+    getOptions = this.documentRootLocator.locatorForAll('nx-dropdown-item');
+
+    async pressKey(key: string, keyCode?: number, altKey?: boolean) {
+        const dropdown = await this.host();
+        dropdown.dispatchEvent('keydown', { key, keyCode, altKey });
+    }
 }
 
 describe('NxDropdownComponent', () => {
@@ -1317,20 +1332,6 @@ describe('NxDropdownComponent', () => {
             configureNxDropdownTestingModule([SimpleDropdownComponent, FilterDropdownComponent, MultiSelectDropdownComponent]);
         }));
 
-        it('should auto select value, when dropdown is close + focused then typing keyboard', fakeAsync(() => {
-            createTestComponent(SimpleDropdownComponent);
-
-            const hostElement: HTMLElement = fixture.nativeElement.querySelector('nx-dropdown');
-            hostElement.focus();
-            dispatchKeyboardEvent(hostElement, 'keydown', B);
-            fixture.detectChanges();
-            tick(500);
-            flush();
-
-            expectDropdownClose();
-            expect(dropdownInstance.value).toBe('BMW');
-        }));
-
         it('should close the dropdown on TAB if opened', fakeAsync(() => {
             createTestComponent(SimpleDropdownComponent);
             openDropdownByClick();
@@ -1683,6 +1684,33 @@ describe('NxDropdownComponent', () => {
             fixture.detectChanges();
             flush();
             expect(renderedResult.textContent).toBe('DE');
+        }));
+
+        it('should open and jump to an item when typing on closed dropdown', async () => {
+            createTestComponent(DropdownCustomLabelComponent);
+            const loader = TestbedHarnessEnvironment.loader(fixture);
+            const dropdownHarness = await loader.getHarness(DropdownHarness);
+            await dropdownHarness.host();
+            await dropdownHarness.pressKey('D');
+            const options = await dropdownHarness.getOptions();
+
+            expect(await options[1].hasClass('nx-dropdown-item--active')).toBeTrue();
+        });
+
+        it('should open and jump to item when type consecutive character on closed dropdown', fakeAsync(async () => {
+            createTestComponent(DropdownLazy);
+            const loader = TestbedHarnessEnvironment.loader(fixture);
+            const dropdownHarness = await loader.getHarness(DropdownHarness);
+
+            const dropdown = await dropdownHarness.host();
+            dropdown.dispatchEvent('keydown', { key: 't' });
+            dropdown.dispatchEvent('keydown', { key: 'h' });
+            fixture.detectChanges();
+            tick(1000);
+            flush();
+
+            const options = await dropdownHarness.getOptions();
+            expect(await options[2].hasClass('nx-dropdown-item--active')).toBeTrue();
         }));
     });
 
