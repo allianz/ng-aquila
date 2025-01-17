@@ -1,4 +1,4 @@
-import { Component, effect, OnDestroy, signal } from '@angular/core';
+import { Component, OnDestroy, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NxActionModule } from '@aposin/ng-aquila/action';
 import { NxFlatTreeControl, NxFlatTreeNode, NxTreeFlatDataSource, NxTreeModule } from '@aposin/ng-aquila/tree';
@@ -43,11 +43,6 @@ export class NavigationComponent implements OnDestroy {
         this._dataSource = new NxTreeFlatDataSource(this._treeControl);
 
         manifestService.manifest.subscribe(() => {
-            this._dataSource.data = this.manifestService.groupedComponents();
-            this._treeControl.expandAll();
-        });
-
-        effect(() => {
             this._dataSource.data = this.manifestService.groupedComponents();
             this._treeControl.expandAll();
         });

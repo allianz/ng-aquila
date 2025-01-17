@@ -1,6 +1,6 @@
-import { FocusableOption, FocusMonitor } from '@angular/cdk/a11y';
+import { FocusMonitor } from '@angular/cdk/a11y';
 import { CdkTree, CdkTreeNode, CdkTreeNodeDef } from '@angular/cdk/tree';
-import { AfterViewInit, Component, ContentChild, Directive, ElementRef, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, computed, contentChild, Directive, ElementRef, Input, OnDestroy } from '@angular/core';
 
 import { NxTreeNodeActionItem } from './action-item.directive';
 import { NxTreeComponent } from './tree.component';
@@ -13,11 +13,13 @@ import { NxTreeComponent } from './tree.component';
     exportAs: 'nxTreeNode',
     inputs: ['disabled', 'tabIndex'],
     host: {
-        '[attr.aria-level]': 'actionItem ? null : level + 1',
-        '[attr.role]': 'actionItem ? "group" : "treeitem"',
         class: 'nx-tree__node',
         '[class.is-expanded]': 'isExpanded',
         '[attr.tabindex]': '-1',
+        '[attr.aria-level]': 'ariaLevel()',
+        '[attr.aria-posinset]': 'ariaPosInSet()',
+        '[attr.aria-setsize]': 'ariaSetSize()',
+        '[attr.role]': 'ariaRole()',
     },
     providers: [{ provide: CdkTreeNode, useExisting: NxTreeNodeComponent }],
     templateUrl: './node.html',
@@ -32,7 +34,13 @@ export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy,
         super(_elementRef, _tree);
     }
 
-    @ContentChild(NxTreeNodeActionItem) actionItem!: FocusableOption;
+    private actionItem = contentChild(NxTreeNodeActionItem);
+
+    /** if NxTreeNodeActionItem is present, returns  */
+    readonly ariaLevel = computed(() => (this.actionItem() ? null : this.level + 1));
+    readonly ariaPosInSet = computed(() => (this.actionItem() ? null : this._getPositionInSet()));
+    readonly ariaSetSize = computed(() => (this.actionItem() ? null : this._getSetSize()));
+    readonly ariaRole = computed(() => (this.actionItem() ? null : 'treeitem'));
 
     ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elementRef.nativeElement);
@@ -49,8 +57,8 @@ export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy,
     }
 
     focus(): void {
-        if (this.actionItem) {
-            this.actionItem.focus?.();
+        if (this.actionItem()) {
+            this.actionItem()!.focus?.();
         } else {
             this._elementRef.nativeElement.focus();
         }

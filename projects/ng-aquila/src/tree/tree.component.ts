@@ -425,7 +425,6 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
 
         if (CdkTreeNode.mostRecentTreeNode) {
             this.insertToA11yNodeTracking(index, nodeData, CdkTreeNode.mostRecentTreeNode as CdkTreeNode<T>, parentData);
-            CdkTreeNode.mostRecentTreeNode.focus();
         }
     }
 

@@ -6,6 +6,26 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxFlatTreeControl, NxTreeComponent, NxTreeFlatDataSource, NxTreeModule } from './public-api';
 
+/**
+ * check the node and its children for absent tree aria attributes
+ * @param node The node and its children to check
+ */
+function checkChildrenIsTreeAriaAttributesAbsent(node: Node | null) {
+    if (!node || node.nodeType !== Node.ELEMENT_NODE) {
+        return;
+    }
+
+    const element = node as Element;
+
+    expect(element.getAttribute('role')).not.toBe('treeitem');
+    expect(element.getAttribute('aria-level')).toBeNull();
+    expect(element.getAttribute('aria-posinset')).toBeNull();
+    expect(element.getAttribute('aria-setsize')).toBeNull();
+    element.childNodes.forEach(child => {
+        checkChildrenIsTreeAriaAttributesAbsent(child);
+    });
+}
+
 describe(NxTreeComponent.name, () => {
     /** Represents an indent for expectNestedTreeToNxch */
     const _ = {};
@@ -88,9 +108,16 @@ describe(NxTreeComponent.name, () => {
 
                 fixture.detectChanges();
 
-                getNodes(treeElement).forEach(node => {
-                    expect(node.getAttribute('role')).toBe('group');
-                });
+                const nodes = getNodes(treeElement);
+                for (let index = 0; index < nodes.length; index++) {
+                    const node = nodes[index];
+                    const button = node.querySelector('button');
+                    expect(button).toBeDefined();
+                    expect(button!.getAttribute('role')).toBe('treeitem');
+                    expect(button!.getAttribute('aria-level')).toBe(`1`);
+                    expect(button!.getAttribute('aria-posinset')).toBe(`${index + 1}`);
+                    expect(button!.getAttribute('aria-setsize')).toBe(`3`);
+                }
             });
         });
 
@@ -405,6 +432,53 @@ describe(NxTreeComponent.name, () => {
                         level: 2,
                     },
                 ]);
+            });
+
+            it('should assign aria attributes to tree nodes when no NxTreeNodeActionItems are present', () => {
+                // Focus first item
+                dispatchKeyboardEvent(treeElement, 'keydown', DOWN_ARROW);
+                expect(component.tree.focusedData.pizzaTopping).toBe('topping_1');
+                fixture.detectChanges();
+
+                // Expand the node
+                dispatchKeyboardEvent(treeElement, 'keydown', RIGHT_ARROW);
+                fixture.detectChanges();
+
+                treeElement = fixture.nativeElement.querySelector('nx-tree');
+
+                fixture.detectChanges();
+
+                const nodes = getNodes(treeElement);
+                expect(nodes.length).toBe(3);
+                nodes.forEach((node: any, index: number) => {
+                    expect(node.getAttribute('aria-level')).toBe(`1`);
+                    expect(node.getAttribute('aria-posinset')).toBe(`${index + 1}`);
+                    expect(node.getAttribute('aria-setsize')).toBe(`3`);
+                    expect(node.getAttribute('role')).toBe(`treeitem`);
+                });
+            });
+
+            it('should not assign aria tree attributes to child elements', () => {
+                // Focus first item
+                dispatchKeyboardEvent(treeElement, 'keydown', DOWN_ARROW);
+                expect(component.tree.focusedData.pizzaTopping).toBe('topping_1');
+                fixture.detectChanges();
+
+                // Expand the node
+                dispatchKeyboardEvent(treeElement, 'keydown', RIGHT_ARROW);
+                fixture.detectChanges();
+
+                treeElement = fixture.nativeElement.querySelector('nx-tree');
+
+                fixture.detectChanges();
+
+                const nodes = treeElement.querySelectorAll('.nx-tree__node');
+                expect(nodes.length).toBe(3);
+                nodes.forEach((node, index: number) => {
+                    node.childNodes.forEach(child => {
+                        checkChildrenIsTreeAriaAttributesAbsent(child);
+                    });
+                });
             });
         });
     });
