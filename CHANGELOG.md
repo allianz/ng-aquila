@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.7.0](https://github.com/allianz/ng-aquila/compare/v18.6.1...v18.7.0) (2025-01-17)
+
+
+### Features ✨
+
+* **number-stepper:** link error messages to input for assistive tools ([1824f2b](https://github.com/allianz/ng-aquila/commit/1824f2b17a839c9084fa8929ac4cee87b0b4735d))
+
+
+### Bug Fixes 🐛
+
+* **badge:** make single character circle ([a121099](https://github.com/allianz/ng-aquila/commit/a121099041c66dfa0348e9d0cd69f74dd40a6a80))
+* **dropdown:** add aria-controls to filter input ([05f2928](https://github.com/allianz/ng-aquila/commit/05f29283f0c6e06dd7e8d8bb323b879ae12a0f3f))
+* **dropdown:** add group role to make screenreader read correctly ([6b4abb7](https://github.com/allianz/ng-aquila/commit/6b4abb7db65490c3c81204733ddd51ef2e6b2abd))
+* **dropdown:** open flyout and focus item when characters are typed ([5df221a](https://github.com/allianz/ng-aquila/commit/5df221a1180cce903a26cc7bd4a24be32b164536))
+* **multi-select:** prevent close emit twice ([8a75b24](https://github.com/allianz/ng-aquila/commit/8a75b24aedf3b1025a383ff26434bbb204a92326))
+* **radio-button:** mark control as touched only when leave group ([831c04e](https://github.com/allianz/ng-aquila/commit/831c04e9c292df5814fd4dcf348647f240e3b22d))
+* **selectable-card:** prevent overflow style cut out ([2f93b23](https://github.com/allianz/ng-aquila/commit/2f93b23323a61e2ad877cd25bc583e378608a612))
+* **table:** add selector for multiple expandable rows ([1fe4c3a](https://github.com/allianz/ng-aquila/commit/1fe4c3a813b4710c2b35471aadfedef88506a791))
+* **table:** prevent resize column break sticky column ([1ebc90a](https://github.com/allianz/ng-aquila/commit/1ebc90a2535b126483a333ae733c84b2686e3ce3))
+* **timefield:** update errorState handling to use signal ([158bed2](https://github.com/allianz/ng-aquila/commit/158bed21337aba713806937b1ef346d9c3ebde8c))
+* **tree:** role treeitem for nodes to be counted correctly ([b5a7023](https://github.com/allianz/ng-aquila/commit/b5a7023c0fe00389a626b885ca6c105030b11e4f))
+
 ### [18.6.1](https://github.com/allianz/ng-aquila/compare/v18.6.0...v18.6.1) (2024-12-05)
 
 
