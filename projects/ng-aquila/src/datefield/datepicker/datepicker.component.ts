@@ -14,7 +14,6 @@ import { ComponentPortal } from '@angular/cdk/portal';
 import { DOCUMENT, NgClass } from '@angular/common';
 import {
     afterNextRender,
-    AfterRenderPhase,
     AfterViewInit,
     ChangeDetectionStrategy,
     Component,
@@ -112,14 +111,11 @@ export const DATEPICKER_DEFAULT_OPTIONS = new InjectionToken<DatepickerDefaultOp
 export class NxDatepickerContentComponent<D> implements AfterViewInit, OnDestroy {
     datepicker!: NxDatepickerComponent<D>;
 
-    private _afterNextRenderInitial = afterNextRender(
-        () => {
+    private _afterNextRenderInitial = afterNextRender({
+        read: () => {
             this.elementRef.nativeElement.querySelector('.nx-calendar-body-active').focus();
         },
-        {
-            phase: AfterRenderPhase.Read,
-        },
-    );
+    });
 
     @ViewChild(NxCalendarComponent, { static: true }) _calendar!: NxCalendarComponent<D>;
     @ViewChild('closeButton') _closeButton!: ElementRef<HTMLElement>;
@@ -445,13 +441,12 @@ export class NxDatepickerComponent<D> implements OnDestroy {
             this._popupComponentRef.instance.datepicker = this;
 
             afterNextRender(
-                () => {
-                    this._popupRef!.updatePosition();
-                },
                 {
-                    injector: this._injector,
-                    phase: AfterRenderPhase.Write,
+                    write: () => {
+                        this._popupRef!.updatePosition();
+                    },
                 },
+                { injector: this._injector },
             );
         }
     }

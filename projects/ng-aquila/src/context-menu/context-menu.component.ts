@@ -6,7 +6,6 @@ import { NgClass } from '@angular/common';
 import {
     AfterContentInit,
     afterNextRender,
-    AfterRenderPhase,
     AfterRenderRef,
     ChangeDetectionStrategy,
     Component,
@@ -160,14 +159,13 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
         // When the content is rendered lazily, it takes a bit before the items are inside the DOM.
         this._firstItemFocusRef?.destroy();
         this._firstItemFocusRef = afterNextRender(
-            () => {
-                this._keyManager.setActiveItem(0); // always select the very first item since even disabled items are focusable
-                this._keyManager.activeItem?.focus(origin);
-            },
             {
-                injector: this._injector,
-                phase: AfterRenderPhase.Read,
+                read: () => {
+                    this._keyManager.setActiveItem(0); // always select the very first item since even disabled items are focusable
+                    this._keyManager.activeItem?.focus(origin);
+                },
             },
+            { injector: this._injector },
         );
     }
 

@@ -18,7 +18,6 @@ import { ComponentPortal } from '@angular/cdk/portal';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import {
     afterNextRender,
-    AfterRenderPhase,
     AfterViewInit,
     ComponentRef,
     Directive,
@@ -629,15 +628,14 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
             this._tooltipInstance.message = this.message;
 
             afterNextRender(
-                () => {
-                    if (this._tooltipInstance && this._overlayRef) {
-                        this._overlayRef.updatePosition();
-                    }
-                },
                 {
-                    injector: this._injector,
-                    phase: AfterRenderPhase.Write,
+                    write: () => {
+                        if (this._tooltipInstance && this._overlayRef) {
+                            this._overlayRef.updatePosition();
+                        }
+                    },
                 },
+                { injector: this._injector },
             );
         }
     }

@@ -9,7 +9,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
     afterNextRender,
-    AfterRenderPhase,
     AfterViewChecked,
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -187,13 +186,12 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy, AfterV
     /** Focuses the active cell after the microtask queue is empty. */
     _focusActiveCell() {
         afterNextRender(
-            () => {
-                this._elementRef.nativeElement.querySelector('.nx-calendar-body-active').focus();
-            },
             {
-                injector: this._injector,
-                phase: AfterRenderPhase.Read,
+                read: () => {
+                    this._elementRef.nativeElement.querySelector('.nx-calendar-body-active').focus();
+                },
             },
+            { injector: this._injector },
         );
     }
 
