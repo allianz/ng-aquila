@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [19.0.0](https://github.com/allianz/ng-aquila/compare/v18.7.0...v19.0.0) (2025-01-17)
+
+
+### ⚠ BREAKING CHANGES
+
+Please run `ng update @aposin/ng-aquila` to migrate the breaking changes automatically.
+
+* **number-stepper:** the `readonly` input got renamed to `inputFieldReadonly`. the `readonly` property before this change only set the input field to readonly but left the number stepper operational via the buttons. this was not properly named and was changed now to make room for a proper readonly state that got added.
+
+### Features ✨
+
+* **number-stepper:** add readonly state and rename former readonly to inputFieldReadonly ([1665a04](https://github.com/allianz/ng-aquila/commit/1665a04e00c6ae3c8f169614f8f1efc072b44668))
+* update to Angular 19 ([d36aba5](https://github.com/allianz/ng-aquila/commit/d36aba5e97d30a60da32d1582cac004828907953))
+
 ## [18.7.0](https://github.com/allianz/ng-aquila/compare/v18.6.1...v18.7.0) (2025-01-17)
 
 

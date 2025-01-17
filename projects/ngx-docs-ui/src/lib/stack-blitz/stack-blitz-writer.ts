@@ -36,8 +36,8 @@ const TEST_TEMPLATE_FILES = [
 
 const TAGS: string[] = ['allianz', 'aquila', 'example'];
 
-const angularVersion = '^18.0.0';
-const aquilaVersion = '^18.0.0';
+const angularVersion = '^19.0.0';
+const aquilaVersion = '^19.0.0';
 
 const dependencies = {
     '@angular/animations': angularVersion,
@@ -58,8 +58,8 @@ const dependencies = {
     iban: '^0.0.14',
     moment: '^2.29.4',
     rxjs: '~6.6.7',
-    tslib: '^2.3.0',
-    'zone.js': '~0.14.2',
+    tslib: '^2.8.1',
+    'zone.js': '^0.15.0',
 };
 
 const testDependencies = {
@@ -80,8 +80,8 @@ const testDependencies = {
     'jasmine-spec-reporter': '^7.0.0',
     moment: '^2.29.4',
     rxjs: '~6.6.7',
-    tslib: '^2.3.0',
-    'zone.js': '~0.14.2',
+    tslib: '^2.8.1',
+    'zone.js': '^0.15.0',
 };
 
 /**
