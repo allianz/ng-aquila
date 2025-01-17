@@ -3,18 +3,21 @@
     [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;number&quot;</span>
     #<span class="hljs-attr">stepperValidModel</span>=<span class="hljs-string">&quot;ngModel&quot;</span>
     <span class="hljs-attr">step</span>=<span class="hljs-string">&quot;2&quot;</span>
-    <span class="hljs-attr">inputAriaLabel</span>=<span class="hljs-string">&quot;Number of travellers&quot;</span>
-&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-number-stepper</span>&gt;</span>
+    <span class="hljs-attr">ariaDescribedBy</span>=<span class="hljs-string">&quot;customHint&quot;</span>
+&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>&gt;</span>Custom Label<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+    @if (stepperValidModel.errors &amp;&amp;
+    stepperValidModel.errors.nxNumberStepperStepError) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> That&#x27;s not a valid step <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    } @if (stepperValidModel.errors &amp;&amp;
+    stepperValidModel.errors.nxNumberStepperFormatError) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> That&#x27;s not a valid number <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-number-stepper</span>&gt;</span>
 
 @if (!stepperValidModel.errors) {
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span> <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;info&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-xs&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span> <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;info&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;customHint&quot;</span>&gt;</span>
     This is a hint. This message will disappear once you get an error from
     parsing or when the input is missing altogether.
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-message</span>&gt;</span>
-} @if (stepperValidModel.errors &amp;&amp;
-stepperValidModel.errors.nxNumberStepperStepError) {
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-xs&quot;</span>&gt;</span> That&#x27;s not a valid step <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-} @if (stepperValidModel.errors &amp;&amp;
-stepperValidModel.errors.nxNumberStepperFormatError) {
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-xs&quot;</span>&gt;</span> That&#x27;s not a valid number <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
 }

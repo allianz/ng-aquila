@@ -4,7 +4,8 @@
 <h4 id="standalone" tabindex="-1" class="docs-markdown--h4">Standalone</h4>
 <div nx-docs-example="number-stepper-standalone" config="{}">exampleID: number-stepper-standalone</div>
 <h4 id="custom-label" tabindex="-1" class="docs-markdown--h4">Custom label</h4>
-<p class="docs-markdown--p">You can use custom markup by omiting the nxLabel attribute and provide your markup inside the element, e.g. to show a tooltip. If nxLabel is set the custom content will not be rendered!</p>
+<p class="docs-markdown--p">You can use custom markup by omitting the <code>label</code> attribute and provide your markup inside the element, e.g. to show a tooltip. If <code>label</code> is set the custom content will not be rendered.
+Use a <code>&lt;nx-label&gt;</code> or <code>&lt;label&gt;</code> inside your custom markup. That way the label will be automatically connected to the input field via <code>for</code> to improve accessibility.</p>
 <div nx-docs-example="number-stepper-custom-label" config="{}">exampleID: number-stepper-custom-label</div>
 <h4 id="leading-zero-(number-formatting)" tabindex="-1" class="docs-markdown--h4">Leading Zero (Number Formatting)</h4>
 <p class="docs-markdown--p">By default, numbers have a preceeding zero. You can disable this by setting the <code>leadingZero</code> property to false as shown in the example below.</p>

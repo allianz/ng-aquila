@@ -31,8 +31,48 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">actionItem</span>:
-                <span class="docs-api-property__type">FocusableOption</span>
+                <span class="docs-api-property__name">ariaLevel</span>:
+                <span class="docs-api-property__type">computed(() => (this.actionItem() ? null : this.level + 1))</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>if NxTreeNodeActionItem is present, returns</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">ariaPosInSet</span>:
+                <span class="docs-api-property__type">computed(() => (this.actionItem() ? null : this._getPositionInSet()))</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">ariaRole</span>:
+                <span class="docs-api-property__type">computed(() => (this.actionItem() ? null : 'treeitem'))</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">ariaSetSize</span>:
+                <span class="docs-api-property__type">computed(() => (this.actionItem() ? null : this._getSetSize()))</span>
             </code>
         </p>
     </td>
@@ -431,7 +471,8 @@ Adds some extra method calls to update the a11y node tracking.</p>
 
 <h4 id="NxTreeNodeActionItem" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxTreeNodeActionItem"></span>
-    <code>NxTreeNodeActionItem</code></h4> 
+    <code>NxTreeNodeActionItem</code></h4><p class="docs-api-class-description"><p>Handles focussing of the tree action item and adds the necessary attributes for a11y</p>
+</p> 
 
 <h5 class="docs-api-method-header">Methods</h5>
  

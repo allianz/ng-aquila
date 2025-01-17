@@ -80,36 +80,6 @@
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
             <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">inputAriaLabel</span>:
-                <span class="docs-api-property__type">string</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Sets the aria-label for the input of the number stepper.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">label</span>:
-                <span class="docs-api-property__type">string</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Defines the the label shown above the stepper input.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
                 <span class="docs-api-property__name">leadingZero</span>:
                 <span class="docs-api-property__type">boolean</span>
             </code>
@@ -243,8 +213,128 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
+                <span class="docs-api-property__name">ariaDescribedBy</span>:
+                <span class="docs-api-property__type">input<string | null>(null)</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">ariaDescribedByComputed</span>:
+                <span class="docs-api-property__type">computed<string | null>(() => {
+    const hasProjectedLabelWithoutHtmlLabel = this.projectedLabelWrapper() && !this.projectedLabel();
+    const hasDescribedBy = !!this.ariaDescribedBy() || this.errorMessages().length > 0;
+    if (!hasDescribedBy && !hasProjectedLabelWithoutHtmlLabel) {
+        return null;
+    }
+    const describedByIds = [...this.errorMessages().map(item => item.id), this.ariaDescribedBy()];
+    if (hasProjectedLabelWithoutHtmlLabel) {
+        describedByIds.push(this.labelId);
+    }
+    return describedByIds.join(' ');
+})</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">ariaLabelledByComputed</span>:
+                <span class="docs-api-property__type">computed(() => {
+    const hasLabelValue = !!this.label();
+    const hasProjectedLabel = this.projectedLabelWrapper()?.nativeElement?.children?.length > 0;
+    return hasLabelValue || hasProjectedLabel ? this.labelId : null;
+})</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
                 <span class="docs-api-property__name">decimalSeperator</span>:
                 <span class="docs-api-property__type">'.'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">errorMessages</span>:
+                <span class="docs-api-property__type">contentChildren(NxErrorComponent)</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">inputAriaLabel</span>:
+                <span class="docs-api-property__type">input<string | null>(null)</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the aria-label for the input of the number stepper.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">label</span>:
+                <span class="docs-api-property__type">input<string | null>(null)</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">projectedLabel</span>:
+                <span class="docs-api-property__type">viewChild(HTMLLabelElement)</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">projectedLabelElement</span>:
+                <span class="docs-api-property__type">computed(() => this.projectedLabelWrapper()?.nativeElement.querySelector('label'))</span>
             </code>
         </p>
     </td>

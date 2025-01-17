@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { NxBadgeModule } from '@aposin/ng-aquila/badge';
 
 import { BadgeExampleComponent } from './badge/badge-example';
+import { BadgeCharacterExampleComponent } from './badge-character/badge-character-example';
 import { BadgeVibrantExampleComponent } from './badge-vibrant/badge-vibrant-example';
 
 const EXAMPLES = [BadgeExampleComponent, BadgeVibrantExampleComponent];
@@ -15,6 +16,7 @@ export class BadgeExamplesModule {
         return {
             badge: BadgeExampleComponent,
             'badge-vibrant': BadgeVibrantExampleComponent,
+            'badge-character': BadgeCharacterExampleComponent,
         };
     }
 }
