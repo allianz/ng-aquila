@@ -1086,7 +1086,6 @@ abstract class DropdownTest {
 }
 
 @Component({
-    standalone: true,
     template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options"></nx-multi-select>
     </nx-formfield>`,
@@ -1097,7 +1096,6 @@ class BasicMultiSelectComponent extends DropdownTest {
 }
 
 @Component({
-    standalone: true,
     template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options"></nx-multi-select>
     </nx-formfield>`,
@@ -1113,7 +1111,6 @@ class IntlOverrideMultiSelect extends DropdownTest {
 }
 
 @Component({
-    standalone: true,
     template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options" [panelGrow]="panelGrow" [panelMaxWidth]="panelMaxWidth"></nx-multi-select>
     </nx-formfield>`,
@@ -1135,7 +1132,6 @@ interface ComplexOption {
 }
 
 @Component({
-    standalone: true,
     template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [selectLabel]="selectLabel" [selectValue]="selectValue" [(ngModel)]="model" [filter]="filter" [options]="options"></nx-multi-select>
     </nx-formfield>`,
@@ -1165,7 +1161,6 @@ class ComplexMultiSelectComponent extends DropdownTest {
 }
 
 @Component({
-    standalone: true,
     template: `<form [formGroup]="testForm">
         <nx-formfield> <nx-multi-select formControlName="testControl" [options]="options"></nx-multi-select> </nx-formfield>
     </form>`,
@@ -1180,7 +1175,6 @@ class ReactiveMultiSelectComponent extends DropdownTest {
 }
 
 @Component({
-    standalone: true,
     template: `<form [formGroup]="testForm">
         <nx-formfield>
             <nx-multi-select formControlName="testControl" [options]="options"></nx-multi-select>
@@ -1200,7 +1194,6 @@ class ErrorMultiSelectComponent extends DropdownTest {
 }
 
 @Component({
-    standalone: true,
     template: `<nx-formfield>
         <nx-multi-select [options]="options" filter (filterInput)="test($event)"></nx-multi-select>
     </nx-formfield>`,

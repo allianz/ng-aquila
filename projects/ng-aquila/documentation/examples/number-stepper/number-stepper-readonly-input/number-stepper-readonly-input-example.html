@@ -1,6 +1,12 @@
 <nx-number-stepper
     size="big"
-    inputAriaLabel="Number of travellers"
     step="20"
     [readonly]="true"
-></nx-number-stepper>
+    class="nx-margin-bottom-m"
+>
+    <label>Readonly</label>
+</nx-number-stepper>
+
+<nx-number-stepper size="big" step="20" [inputFieldReadonly]="true">
+    <label>Readonly input field</label>
+</nx-number-stepper>

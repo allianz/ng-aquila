@@ -181,7 +181,6 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         '(blur)': '_onBlur()',
         '(click)': 'openedByKeyboard = false; openPanel($event)',
     },
-    standalone: true,
     imports: [FormsModule, CdkOverlayOrigin, NgTemplateOutlet, NxIconModule, CdkConnectedOverlay, Dir, NxDropdownItemComponent, NxTooltipModule],
 })
 export class NxDropdownComponent

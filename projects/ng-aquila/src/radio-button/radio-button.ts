@@ -45,7 +45,6 @@ export type LabelSize = 'small' | 'big';
 let nextId = 0;
 
 @Component({
-    standalone: true,
     selector: 'nx-radio-group',
     templateUrl: './radio-group.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -276,7 +275,6 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
 }
 
 @Component({
-    standalone: true,
     selector: 'nx-radio',
     templateUrl: 'radio-button.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

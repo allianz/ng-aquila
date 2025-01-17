@@ -105,5 +105,6 @@ The example below shows the usage of the above mentioned `aria-label` inputs.
 <!-- example(number-stepper-localize) -->
 
  ### Readonly input field
- You can use the `[readonly]` attribute to prevent manual input of values in an input field.
- <!-- example(number-stepper-readonly-input) -->
+You can use the `[inputFieldReadonly]` attribute to prevent manual input of values in the input field. Use `[readonly]` to prevent input on both the buttons and the input field.
+
+<!-- example(number-stepper-readonly-input) -->

@@ -25,7 +25,8 @@ abstract class NumberStepperTest {
     inputAriaLabel = 'input label';
     incrementAriaLabel = 'increase number';
     decrementAriaLabel = 'decrease number';
-    readonlyInput = false;
+    readonly = false;
+    inputFieldReadonly = false;
     testForm: FormGroup = new FormBuilder().group({ stepper: 3 });
     @ViewChild(NxNumberStepperComponent) stepperInstance!: NxNumberStepperComponent;
 
@@ -616,7 +617,7 @@ describe('NxNumberStepperComponent', () => {
         });
     });
 
-    describe('nxReadonly Input', () => {
+    describe('readonly', () => {
         it('should not be readonly input field by default', () => {
             createTestComponent(ConfigurableStepper);
             expect(inputElement.getAttribute('readonly')).toBeNull();
@@ -624,10 +625,50 @@ describe('NxNumberStepperComponent', () => {
 
         it('should be readonly input field when set readonlyInput', () => {
             createTestComponent(ConfigurableStepper);
-            testInstance.readonlyInput = true;
+            testInstance.readonly = true;
             fixture.detectChanges();
 
             expect(inputElement.getAttribute('readonly')).not.toBeNull();
+        });
+
+        it('should disable buttons when set readonly', () => {
+            createTestComponent(ConfigurableStepper);
+            testInstance.readonly = true;
+            fixture.detectChanges();
+
+            expect(upButton.disabled).toBeTrue();
+            expect(downButton.disabled).toBeTrue();
+        });
+    });
+
+    describe('inputFieldReadonly', () => {
+        it('should not be readonly input field by default', () => {
+            createTestComponent(ConfigurableStepper);
+            expect(inputElement.getAttribute('readonly')).toBeNull();
+        });
+
+        it('should be readonly input field when set inputFieldReadonly', () => {
+            createTestComponent(ConfigurableStepper);
+            testInstance.inputFieldReadonly = true;
+            testInstance.readonly = false;
+
+            fixture.detectChanges();
+
+            expect(inputElement.getAttribute('readonly')).not.toBeNull();
+        });
+
+        it('should not disabled buttons when set inputFieldReadonly', () => {
+            createTestComponent(ConfigurableStepper);
+            inputElement.value = '1';
+            inputElement.dispatchEvent(new Event('input'));
+            testInstance.inputFieldReadonly = true;
+            testInstance.readonly = false;
+            testInstance.disabled = false;
+
+            fixture.detectChanges();
+
+            expect(upButton.disabled).toBeFalse();
+            expect(downButton.disabled).toBeFalse();
         });
     });
 
@@ -735,7 +776,8 @@ class NgModelStepper extends NumberStepperTest {}
             [inputAriaLabel]="inputAriaLabel"
             [incrementAriaLabel]="incrementAriaLabel"
             [decrementAriaLabel]="decrementAriaLabel"
-            [readonly]="readonlyInput"
+            [readonly]="readonly"
+            [inputFieldReadonly]="inputFieldReadonly"
         ></nx-number-stepper>
     `,
     imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],

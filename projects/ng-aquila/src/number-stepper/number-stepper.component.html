@@ -16,7 +16,8 @@
         [nxButton]="_buttonType"
         class="nx-stepper__down nx-stepper__control"
         (click)="decrementOnClick()"
-        [disabled]="disabled || (value || 0) <= min"
+        [disabled]="disabledButton() || (value || 0) <= min"
+        [attr.aria-disabled]="disabledButton()"
         type="button"
     >
         <nx-icon name="minus" size="s" aria-hidden="true"></nx-icon>
@@ -35,7 +36,7 @@
                 #nativeInput
                 spellcheck="false"
                 [disabled]="disabled"
-                [readonly]="readonlyInput"
+                [readonly]="readonly || inputFieldReadonly()"
                 [attr.aria-invalid]="errorMessages().length > 0 || null"
                 [attr.aria-describedby]="ariaDescribedByComputed()"
                 [attr.aria-label]="inputAriaLabel()"
@@ -54,8 +55,9 @@
         [nxButton]="_buttonType"
         class="nx-stepper__up nx-stepper__control"
         (click)="incrementOnClick()"
-        [disabled]="disabled || (value || 0) >= max"
         type="button"
+        [disabled]="disabledButton() || (value || 0) >= max"
+        [attr.aria-disabled]="disabledButton()"
     >
         <nx-icon name="plus" size="s" aria-hidden="true"></nx-icon>
     </button>

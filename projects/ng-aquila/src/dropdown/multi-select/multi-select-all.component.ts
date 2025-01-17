@@ -9,7 +9,6 @@ let nextId = 0;
  * @docs-private
  */
 @Component({
-    standalone: true,
     selector: 'nx-multi-select-all',
     styleUrls: ['./multi-select-all.component.scss'],
     templateUrl: './multi-select-all.component.html',

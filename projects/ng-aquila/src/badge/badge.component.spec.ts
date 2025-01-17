@@ -74,7 +74,6 @@ describe('NxBadgeComponent', () => {
     });
 });
 @Component({
-    standalone: true,
     template: `<nx-badge>Active</nx-badge>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [NxBadgeModule],
@@ -82,7 +81,6 @@ describe('NxBadgeComponent', () => {
 class BasicBadgeComponent extends BadgeTest {}
 
 @Component({
-    standalone: true,
     template: `<nx-badge [type]="type">Active</nx-badge>`,
     imports: [NxBadgeModule],
 })
@@ -90,13 +88,11 @@ class DefaultBadgeComponent extends BadgeTest {}
 
 @Component({
     template: `<nx-badge [type]="type">A</nx-badge>`,
-    standalone: true,
     imports: [NxBadgeModule],
 })
 class SingleLetterComponent extends BadgeTest {}
 
 @Component({
-    standalone: true,
     template: '<nx-badge vibrant></nx-badge>',
     imports: [NxBadgeModule],
 })

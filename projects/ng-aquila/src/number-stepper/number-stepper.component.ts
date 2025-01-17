@@ -2,6 +2,7 @@ import { BooleanInput, coerceBooleanProperty, NumberInput } from '@angular/cdk/c
 import { NgClass } from '@angular/common';
 import {
     AfterViewInit,
+    booleanAttribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -260,14 +261,20 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     }
     private _disabled = false;
 
+    /** Whether the user can directly interact with the input field and buttons. Default: false */
+    @Input('readonly') set readonly(value: BooleanInput) {
+        this._readonly = coerceBooleanProperty(value);
+    }
+    get readonly(): boolean {
+        return this._readonly;
+    }
+    private _readonly = false;
+
     /** Whether the user can directly interact with the input value via input field. Default: false */
-    @Input('readonly') set readonlyInput(value: BooleanInput) {
-        this._readonlyInput = coerceBooleanProperty(value);
-    }
-    get readonlyInput(): boolean {
-        return this._readonlyInput;
-    }
-    private _readonlyInput = false;
+    inputFieldReadonly = input(false, {
+        transform: booleanAttribute,
+        alias: 'inputFieldReadonly',
+    });
 
     private readonly _destroyed = new Subject<void>();
 
@@ -318,6 +325,13 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         setTimeout(() => {
             this.triggerResize();
         });
+    }
+
+    disabledButton() {
+        if (this.readonly || this.disabled) {
+            return true;
+        }
+        return null;
     }
 
     /* ControlValueAccessor Implementations */

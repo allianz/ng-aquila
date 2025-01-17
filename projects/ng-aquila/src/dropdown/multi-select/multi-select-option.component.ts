@@ -10,7 +10,6 @@ let optionId = 0;
  * @docs-private
  */
 @Component({
-    standalone: true,
     selector: 'nx-multi-select-option',
     styleUrls: ['./multi-select-option.component.scss'],
     templateUrl: './multi-select-option.component.html',

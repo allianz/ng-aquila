@@ -23,7 +23,6 @@ class MyFlatTreeNode {
 }
 
 @Component({
-    standalone: true,
     selector: 'nxv-navigation',
     templateUrl: 'navigation.component.html',
     styleUrls: ['./navigation.component.scss'],
