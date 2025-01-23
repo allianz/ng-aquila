@@ -1,8 +1,10 @@
+@use 'sass:color';
+
 @import '../../../../../ng-aquila/src/shared-styles/theming/themes/aposin';
 
 $nx-theme-documentation: (
     documentation-expert-container-background: #1c7997,
-    documentation-markdown-code-background-color: darken(#0f2a3d, 20%),
+    documentation-markdown-code-background-color: color.adjust(#0f2a3d, $lightness: -20%, $space: hsl),
     documentation-header-background: ui-02,
     documentation-welcome-questions-background: ui-02,
     documentation-welcome-set-up-background: ui-02,
@@ -45,20 +47,20 @@ $nx-theme-documentation: (
     documentation-grid-2xlarge-color: #db4c40,
     documentation-grid-3xlarge-color: #8d6a9f,
     documentation-grid-examples-dotted-border-color: #e5e7e6,
-    documentation-grid-tiny-color-01: darken(#dbd3d8, 20%),
-    documentation-grid-small-color-01: darken(#fac748, 20%),
-    documentation-grid-medium-color-01: darken(#87d68d, 20%),
-    documentation-grid-large-color-01: darken(#27abd6, 20%),
-    documentation-grid-xlarge-color-01: darken(#e18335, 20%),
-    documentation-grid-2xlarge-color-01: darken(#db4c40, 20%),
-    documentation-grid-3xlarge-color-01: darken(#8d6a9f, 20%),
-    documentation-grid-tiny-color-02: darken(#dbd3d8, 40%),
-    documentation-grid-small-color-02: darken(#fac748, 40%),
-    documentation-grid-medium-color-02: darken(#87d68d, 40%),
-    documentation-grid-large-color-02: darken(#27abd6, 30%),
-    documentation-grid-xlarge-color-02: darken(#e18335, 30%),
-    documentation-grid-2xlarge-color-02: darken(#db4c40, 40%),
-    documentation-grid-3xlarge-color-02: darken(#8d6a9f, 40%),
+    documentation-grid-tiny-color-01: color.adjust(#dbd3d8, $lightness: -20%, $space: hsl),
+    documentation-grid-small-color-01: color.adjust(#fac748, $lightness: -20%, $space: hsl),
+    documentation-grid-medium-color-01: color.adjust(#87d68d, $lightness: -20%, $space: hsl),
+    documentation-grid-large-color-01: color.adjust(#27abd6, $lightness: -20%, $space: hsl),
+    documentation-grid-xlarge-color-01: color.adjust(#e18335, $lightness: -20%, $space: hsl),
+    documentation-grid-2xlarge-color-01: color.adjust(#db4c40, $lightness: -20%, $space: hsl),
+    documentation-grid-3xlarge-color-01: color.adjust(#8d6a9f, $lightness: -20%, $space: hsl),
+    documentation-grid-tiny-color-02: color.adjust(#dbd3d8, $lightness: -40%, $space: hsl),
+    documentation-grid-small-color-02: color.adjust(#fac748, $lightness: -40%, $space: hsl),
+    documentation-grid-medium-color-02: color.adjust(#87d68d, $lightness: -40%, $space: hsl),
+    documentation-grid-large-color-02: color.adjust(#27abd6, $lightness: -30%, $space: hsl),
+    documentation-grid-xlarge-color-02: color.adjust(#e18335, $lightness: -30%, $space: hsl),
+    documentation-grid-2xlarge-color-02: color.adjust(#db4c40, $lightness: -40%, $space: hsl),
+    documentation-grid-3xlarge-color-02: color.adjust(#8d6a9f, $lightness: -40%, $space: hsl),
 );
 
 $nx-themes: nx-register-theme($nx-theme-documentation, docs-theme, aposin);

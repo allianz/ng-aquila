@@ -1,3 +1,4 @@
+@use 'sass:map';
 // Border size
 $borders: (
     xs: 1px,
@@ -73,18 +74,18 @@ $sizes: (
 );
 
 $margins: (
-    3xs: map-get($sizes, 3xs),
-    2xs: map-get($sizes, 2xs),
-    xs: map-get($sizes, xs),
-    s: map-get($sizes, s),
-    m: map-get($sizes, m),
-    2m: map-get($sizes, 2m),
-    3m: map-get($sizes, 3m),
-    4m: map-get($sizes, 4m),
-    l: map-get($sizes, l),
-    xl: map-get($sizes, xl),
-    2xl: map-get($sizes, 2xl),
-    3xl: map-get($sizes, 3xl),
-    4xl: map-get($sizes, 4xl),
-    5xl: map-get($sizes, 5xl),
+    3xs: map.get($sizes, 3xs),
+    2xs: map.get($sizes, 2xs),
+    xs: map.get($sizes, xs),
+    s: map.get($sizes, s),
+    m: map.get($sizes, m),
+    2m: map.get($sizes, 2m),
+    3m: map.get($sizes, 3m),
+    4m: map.get($sizes, 4m),
+    l: map.get($sizes, l),
+    xl: map.get($sizes, xl),
+    2xl: map.get($sizes, 2xl),
+    3xl: map.get($sizes, 3xl),
+    4xl: map.get($sizes, 4xl),
+    5xl: map.get($sizes, 5xl),
 );

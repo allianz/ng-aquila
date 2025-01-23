@@ -1,10 +1,12 @@
+@use 'sass:list';
+@use 'sass:map';
 // Breakpoint viewport sizes and media queries.
 
 @import './grid';
 
-@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
-    $n: index($breakpoint-names, $name);
-    @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map.keys($breakpoints)) {
+    $n: list.index($breakpoint-names, $name);
+    @return if($n < list.length($breakpoint-names), list.nth($breakpoint-names, $n + 1), null);
 }
 
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
@@ -12,7 +14,7 @@
 //    >> breakpoint-min(sm, (xs: 0, sm: 376px, md: 768px))
 //    376px
 @function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
-    $min: map-get($breakpoints, $name);
+    $min: map.get($breakpoints, $name);
     @return if($min != 0, $min, null);
 }
 

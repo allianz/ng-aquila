@@ -1,5 +1,6 @@
+@use 'sass:string';
 $nx-theme: (
-    'font-family': unquote("'Public Sans Latin', sans-serif !important"),
+    'font-family': string.unquote("'Public Sans Latin', sans-serif !important"),
     // we have some components with transparent background: checkbox, formfield, code-input, circle-toggle, radio-button e.g
     // right now they all have a hardcoded transparent background; consider using ui-background or a new ui-variable for that in future
     ui-background: #0f2a3d,

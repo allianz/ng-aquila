@@ -1,3 +1,4 @@
+@use 'sass:map';
 $grid-columns: 12;
 $grid-gutter-width-base: 32px;
 $grid-gutter-width-mobile: 16px;
@@ -24,11 +25,11 @@ $grid-breakpoints: (
 );
 
 $grid-breakpoints-short: (
-    xs: map-get($grid-breakpoints, xsmall),
-    s: map-get($grid-breakpoints, small),
-    m: map-get($grid-breakpoints, medium),
-    l: map-get($grid-breakpoints, large),
-    xl: map-get($grid-breakpoints, xlarge),
-    2xl: map-get($grid-breakpoints, 2xlarge),
-    3xl: map-get($grid-breakpoints, 3xlarge),
+    xs: map.get($grid-breakpoints, xsmall),
+    s: map.get($grid-breakpoints, small),
+    m: map.get($grid-breakpoints, medium),
+    l: map.get($grid-breakpoints, large),
+    xl: map.get($grid-breakpoints, xlarge),
+    2xl: map.get($grid-breakpoints, 2xlarge),
+    3xl: map.get($grid-breakpoints, 3xlarge),
 );
