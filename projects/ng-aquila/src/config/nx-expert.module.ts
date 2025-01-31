@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { ERROR_DEFAULT_OPTIONS, ErrorDefaultOptions, LABEL_DEFAULT_OPTIONS, LabelDefaultOptions } from '@aposin/ng-aquila/base';
 import { SELECTABLE_CARD_DEFAULT_OPTIONS, SelectableCardDefaultOptions } from '@aposin/ng-aquila/card';
-import { CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS, CircleToggleGroupDefaultOptions } from '@aposin/ng-aquila/circle-toggle';
+import {
+    CIRCLE_TOGGLE_DEFAULT_OPTIONS,
+    CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS,
+    CircleToggleDefaultOptions,
+    CircleToggleGroupDefaultOptions,
+} from '@aposin/ng-aquila/circle-toggle';
 import { COMPARISON_TABLE_DEFAULT_OPTIONS, ComparisonTableDefaultOptions } from '@aposin/ng-aquila/comparison-table';
 import { DATA_DISPLAY_DEFAULT_OPTIONS, DataDisplayDefaultOptions } from '@aposin/ng-aquila/data-display';
 import { DATEPICKER_DEFAULT_OPTIONS, DatepickerDefaultOptions } from '@aposin/ng-aquila/datefield';
@@ -23,6 +28,7 @@ const tabNavBarOptions: TabNavBarDefaultOptions = { appearance: 'expert' };
 const selectableCardOptions: SelectableCardDefaultOptions = { appearance: 'expert' };
 const smallStageOptions: SmallStageDefaultOptions = { appearance: 'expert' };
 const circleToggleGroupOptions: CircleToggleGroupDefaultOptions = { appearance: 'expert' };
+const circleToggleOptions: CircleToggleDefaultOptions = { appearance: 'expert' };
 const dataDisplayOptions: DataDisplayDefaultOptions = { size: 'medium' };
 
 @NgModule({
@@ -37,6 +43,7 @@ const dataDisplayOptions: DataDisplayDefaultOptions = { size: 'medium' };
         { provide: SELECTABLE_CARD_DEFAULT_OPTIONS, useValue: selectableCardOptions },
         { provide: SMALL_STAGE_DEFAULT_OPTIONS, useValue: smallStageOptions },
         { provide: CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS, useValue: circleToggleGroupOptions },
+        { provide: CIRCLE_TOGGLE_DEFAULT_OPTIONS, useValue: circleToggleOptions },
         { provide: DATA_DISPLAY_DEFAULT_OPTIONS, useValue: dataDisplayOptions },
     ],
 })

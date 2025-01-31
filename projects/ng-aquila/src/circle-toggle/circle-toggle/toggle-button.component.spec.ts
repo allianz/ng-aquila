@@ -49,6 +49,7 @@ describe('NxCircleToggle', () => {
                 CircleToggleButtonOnPushComponent,
                 TextCircleToggleButtonComponent,
                 ReadonlyToggleButtonComponent,
+                ExpertCircleToggleComponent,
             ],
         }).compileComponents();
     }));
@@ -369,6 +370,21 @@ describe('NxCircleToggle', () => {
         });
     });
 
+    describe('appearance', () => {
+        it('has default appearance', () => {
+            createTestComponent(ExpertCircleToggleComponent);
+            expect(toggleComponent.appearance).toBe('default');
+        });
+
+        it('has expert appearance', () => {
+            createTestComponent(ExpertCircleToggleComponent);
+            toggleComponent.appearance = 'expert';
+            fixture.detectChanges();
+            expect(toggleComponent.appearance).toBe('expert');
+            expect(nativeToggleComponent).toHaveClass('is-expert');
+        });
+    });
+
     describe('a11y', () => {
         it('has no accessibility violations', async () => {
             createTestComponent(SimpleCircleToggleButtonComponent);
@@ -472,4 +488,13 @@ class ReactiveToggleButtonComponent extends AbstractButtonToggleComponent {
             },
         ),
     });
+}
+
+@Component({
+    template: ` <nx-circle-toggle value="A" icon="product-heart" hint="info1" label="text1" [appearance]="appearance"></nx-circle-toggle> `,
+    standalone: true,
+    imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
+})
+class ExpertCircleToggleComponent extends AbstractButtonToggleComponent {
+    appearance = 'default';
 }

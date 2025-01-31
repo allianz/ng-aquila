@@ -4,6 +4,7 @@ import { NxCircleToggleModule } from '@aposin/ng-aquila/circle-toggle';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { CircleToggleExpertExampleComponent } from './circle-toggle-expert/circle-toggle-expert-example';
 import { CircleToggleGroupExampleComponent } from './circle-toggle-group/circle-toggle-group-example';
 import { CircleToggleGroupExpertExampleComponent } from './circle-toggle-group-expert/circle-toggle-group-expert-example';
 import { CircleToggleNegativeExampleComponent } from './circle-toggle-negative/circle-toggle-negative-example';
@@ -30,6 +31,7 @@ const EXAMPLES = [
     CircleToggleGroupExpertExampleComponent,
     CircleToggleValidationExampleComponent,
     CircleToggleReadonlyExampleComponent,
+    CircleToggleExpertExampleComponent,
 ];
 
 @NgModule({
@@ -61,6 +63,7 @@ export class CircleExamplesModule {
                 CircleToggleGroupExpertExampleComponent,
             'circle-toggle-validation': CircleToggleValidationExampleComponent,
             'circle-toggle-readonly': CircleToggleReadonlyExampleComponent,
+            'circle-toggle-expert': CircleToggleExpertExampleComponent,
         };
     }
 }

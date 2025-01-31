@@ -13,7 +13,10 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
+    HostBinding,
     HostListener,
+    Inject,
+    InjectionToken,
     Input,
     input,
     OnDestroy,
@@ -33,6 +36,24 @@ import { NxCircleToggleGroupComponent } from '../circle-toggle-group/circle-togg
 import { NxIconToggleButtonComponent } from '../icon-toggle-button/icon-toggle-button.component';
 import { NxMobileToggleButtonComponent } from '../mobile-toggle-button/mobile-toggle-button.component';
 import { ToggleButton } from './toggle-button';
+
+/**
+ * Appearance options for the circle toggle component.
+ */
+export type NxCircleToggleAppearance = 'default' | 'expert';
+
+/**
+ * Represents the default options for the circle toggle.
+ * It can be configured using the `CIRCLE_TOGGLE_DEFAULT_OPTIONS` injection token.
+ */
+export interface CircleToggleDefaultOptions {
+    /**
+     * Sets the default appearance (optional).
+     */
+    appearance?: NxCircleToggleAppearance;
+}
+
+export const CIRCLE_TOGGLE_DEFAULT_OPTIONS = new InjectionToken<CircleToggleDefaultOptions>('CIRCLE_TOGGLE_DEFAULT_OPTIONS');
 
 export class ToggleChangeEvent {
     constructor(
@@ -243,6 +264,9 @@ export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, 
         this._cdr.markForCheck();
     }
     get responsive(): boolean {
+        if (this._isExpert) {
+            return false;
+        }
         return this._responsive || !!this.toggleGroup?.responsive;
     }
     private _responsive = false;
@@ -270,6 +294,28 @@ export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, 
         return this.toggleGroup?.readonly ?? this._readonly;
     }
     private _readonly = false;
+
+    /**
+     * **Expert option**
+     *
+     * Sets the appearance of the circle toggle.
+     *
+     * Default: `'default'`.
+     */
+    @Input() set appearance(value: NxCircleToggleAppearance) {
+        if (this._appearance !== value) {
+            this._appearance = value;
+            this._cdr.markForCheck();
+        }
+    }
+    get appearance(): NxCircleToggleAppearance {
+        return this._appearance || this._defaultOptions?.appearance || 'default';
+    }
+    private _appearance?: NxCircleToggleAppearance;
+
+    @HostBinding('class.is-expert') get _isExpert(): boolean {
+        return this.appearance === 'expert';
+    }
 
     get required() {
         const selfRequired = this.ngControl?.control?.hasValidator(Validators.required) || this.ngControl?.control?.hasValidator(Validators.requiredTrue);
@@ -315,6 +361,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnDestroy, 
         private readonly _cdr: ChangeDetectorRef,
         private readonly _focusMonitor: FocusMonitor,
         @Optional() @Self() readonly ngControl: NgControl | null,
+        @Optional() @Inject(CIRCLE_TOGGLE_DEFAULT_OPTIONS) private readonly _defaultOptions: CircleToggleDefaultOptions | null,
     ) {
         super();
 

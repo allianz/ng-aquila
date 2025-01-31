@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ErrorDefaultOptions, LabelDefaultOptions } from '@aposin/ng-aquila/base';
 import { SelectableCardDefaultOptions } from '@aposin/ng-aquila/card';
-import { CircleToggleGroupDefaultOptions } from '@aposin/ng-aquila/circle-toggle';
+import { CircleToggleDefaultOptions, CircleToggleGroupDefaultOptions } from '@aposin/ng-aquila/circle-toggle';
 import { DataDisplayDefaultOptions } from '@aposin/ng-aquila/data-display';
 import { DatepickerDefaultOptions } from '@aposin/ng-aquila/datefield';
 import { FormfieldDefaultOptions } from '@aposin/ng-aquila/formfield';
@@ -18,6 +18,7 @@ export const tabNavBarOptions: TabNavBarDefaultOptions = {};
 export const selectableCardOptions: SelectableCardDefaultOptions = {};
 export const smallStageOptions: SmallStageDefaultOptions = {};
 export const circleToggleGroupOptions: CircleToggleGroupDefaultOptions = {};
+export const circleToggleOptions: CircleToggleDefaultOptions = {};
 export const dataDisplayOptions: DataDisplayDefaultOptions = {};
 
 /**
@@ -40,6 +41,7 @@ export class NxConfigurationService {
         delete selectableCardOptions.appearance;
         delete smallStageOptions.appearance;
         delete circleToggleGroupOptions.appearance;
+        delete circleToggleOptions.appearance;
         delete dataDisplayOptions.size;
     }
 
@@ -56,6 +58,7 @@ export class NxConfigurationService {
         selectableCardOptions.appearance = 'expert';
         smallStageOptions.appearance = 'expert';
         circleToggleGroupOptions.appearance = 'expert';
+        circleToggleOptions.appearance = 'expert';
         dataDisplayOptions.size = 'medium';
     }
 
@@ -72,6 +75,7 @@ export class NxConfigurationService {
         selectableCardOptions.appearance = 'default';
         smallStageOptions.appearance = 'default';
         circleToggleGroupOptions.appearance = 'default';
+        circleToggleOptions.appearance = 'default';
         dataDisplayOptions.size = 'large';
     }
 }

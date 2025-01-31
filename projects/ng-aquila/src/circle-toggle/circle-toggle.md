@@ -56,6 +56,8 @@ Please note that this is an **Expert option**. This means that it is only intend
 
 <!-- example(circle-toggle-group-expert)-->
 
+<!-- example(circle-toggle-expert)-->
+
 </div>
 
 ### Simple binding
