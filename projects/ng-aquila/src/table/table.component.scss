@@ -57,10 +57,6 @@ $sticky-shadow-size: nx-spacer(3xs);
     }
 }
 
-:host ::ng-deep .nx-table-row {
-    background: v(table-row-background-color);
-}
-
 :host ::ng-deep .nx-table-cell {
     @include type-style(table-cell);
     color: v(table-cell-color);
@@ -88,14 +84,6 @@ $sticky-shadow-size: nx-spacer(3xs);
             padding-right: $horizontal-padding;
             padding-left: $horizontal-padding-edges;
         }
-    }
-
-    :host(.nx-table--zebra) & {
-        border-top: $cell-border-width solid v(zebra-table-cell-border-top-color);
-    }
-
-    :host(.nx-table--zebra) &--expandable {
-        border-top: 0;
     }
 }
 
@@ -172,7 +160,7 @@ $sticky-shadow-size: nx-spacer(3xs);
     }
 
     .nx-table-row {
-        &:nth-child(2n) {
+        &:nth-child(2n):not(.is-selected) {
             background: v(zebra-table-even-row-background-color);
         }
 
@@ -190,9 +178,33 @@ $sticky-shadow-size: nx-spacer(3xs);
             background: v(selectable-table-row-selected-hover-background-color);
         }
     }
+
+    .nx-table-cell {
+        border-top: $cell-border-width solid v(zebra-table-cell-border-top-color);
+    }
+}
+
+:host(.nx-table--sticky-first),
+:host(.nx-table--sticky-last) {
+    ::ng-deep .nx-table-row--sticky {
+        .nx-header-cell {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: v(ui-01); //since `table-header-cell-background-color` is currently transparent in all themes
+
+            &:first-child,
+            &:last-child {
+                // case sticky header row AND sticky first column
+                z-index: 3;
+            }
+        }
+    }
 }
 
 :host ::ng-deep .nx-table-row {
+    background: v(table-row-background-color);
+
     &:first-child .nx-table-cell {
         border-top: 0;
     }
@@ -224,8 +236,7 @@ $sticky-shadow-size: nx-spacer(3xs);
         background: v(selectable-table-row-selected-hover-background-color);
     }
 
-    &.is-selected,
-    :host(.nx-table--zebra) &.is-selected {
+    &.is-selected {
         background: v(zebra-table-row-selected-background-color);
 
         + .nx-expandable-table-row {
@@ -333,7 +344,7 @@ $sticky-shadow-size: nx-spacer(3xs);
         }
 
         // add the zebra color to the sticky column
-        ::ng-deep .nx-table-row:nth-child(2n) & {
+        ::ng-deep .nx-table-row:nth-child(2n):not(.is-selected) & {
             :host(.nx-table--sticky-first.nx-table--zebra) &:first-child,
             :host(.nx-table--sticky-last.nx-table--zebra) &:last-child {
                 background: v(zebra-table-even-row-background-color);
@@ -368,7 +379,7 @@ $sticky-shadow-size: nx-spacer(3xs);
         ::ng-deep .nx-table-row--selectable.is-selected:hover & {
             :host(.nx-table--sticky-first) &:first-child,
             :host(.nx-table--sticky-last) &:last-child {
-                background: v(zebra-table-even-row-background-color);
+                background: v(selectable-table-row-selected-hover-background-color);
             }
         }
 
