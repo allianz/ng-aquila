@@ -3,7 +3,7 @@ import { DOWN_ARROW, END, ENTER, ESCAPE, HOME, LEFT_ARROW, RIGHT_ARROW, TAB } fr
 import { OverlayContainer, ScrollStrategy } from '@angular/cdk/overlay';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, EventEmitter, Inject, QueryList, Type, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Inject, NgZone, QueryList, Type, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -542,23 +542,20 @@ describe('nxContextMenu', () => {
             flush();
         }));
 
-        it('should focus the first menu item when opening a lazy menu via keyboard', fakeAsync(() => {
+        it('should focus the first menu item when opening a lazy menu via keyboard', async () => {
             const fixture = createComponent(SimpleLazyMenu);
-            fixture.detectChanges();
 
-            // A click without a mousedown before it is considered a keyboard open.
-            fixture.componentInstance.triggerEl.nativeElement.click();
-
-            fixture.detectChanges();
-            tick(500);
-
-            // Flush due to the additional tick that is necessary for the FocusMonitor.
-            flush();
+            // Workaround for issue with afterNextRender: https://github.com/angular/angular/issues/57858
+            TestBed.inject(NgZone).run(() => {
+                // A click without a mousedown before it is considered a keyboard open.
+                fixture.componentInstance.triggerEl.nativeElement.click();
+                fixture.detectChanges();
+            });
 
             const item = document.querySelector('.nx-context-menu [nxContextMenuItem]');
 
             expect(document.activeElement).withContext('Expected first item to be focused').toBe(item);
-        }));
+        });
 
         it('should be able to open the same menu with a different context', fakeAsync(() => {
             const fixture = createComponent(LazyMenuWithContext);
