@@ -6,10 +6,11 @@ import {
     Validators,
 } from '@angular/forms';
 import {
+    CIRCLE_TOGGLE_DEFAULT_OPTIONS,
+    CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS,
     NxCircleToggleComponent,
     NxCircleToggleGroupComponent,
 } from '@aposin/ng-aquila/circle-toggle';
-import { NxExpertModule } from '@aposin/ng-aquila/config';
 
 /**
  * @title Reactive disabled example
@@ -23,7 +24,20 @@ import { NxExpertModule } from '@aposin/ng-aquila/config';
         ReactiveFormsModule,
         NxCircleToggleGroupComponent,
         NxCircleToggleComponent,
-        NxExpertModule,
+    ],
+    providers: [
+        {
+            // This is usually coming from the NxExpertModule or other providers.
+            // We use this here just for the demo purposes.
+            provide: CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS,
+            useValue: { appearance: 'expert' },
+        },
+        {
+            // This is usually coming from the NxExpertModule or other providers.
+            // We use this here just for the demo purposes.
+            provide: CIRCLE_TOGGLE_DEFAULT_OPTIONS,
+            useValue: { appearance: 'expert' },
+        },
     ],
 })
 export class CircleToggleReadonlyExampleComponent {

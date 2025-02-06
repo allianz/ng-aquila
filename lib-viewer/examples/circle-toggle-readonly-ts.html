@@ -6,10 +6,11 @@
     <span class="hljs-title class_">Validators</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 <span class="hljs-keyword">import</span> {
+    <span class="hljs-variable constant_">CIRCLE_TOGGLE_DEFAULT_OPTIONS</span>,
+    <span class="hljs-variable constant_">CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS</span>,
     <span class="hljs-title class_">NxCircleToggleComponent</span>,
     <span class="hljs-title class_">NxCircleToggleGroupComponent</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/circle-toggle&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxExpertModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/config&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Reactive disabled example
@@ -23,7 +24,20 @@
         <span class="hljs-title class_">ReactiveFormsModule</span>,
         <span class="hljs-title class_">NxCircleToggleGroupComponent</span>,
         <span class="hljs-title class_">NxCircleToggleComponent</span>,
-        <span class="hljs-title class_">NxExpertModule</span>,
+    ],
+    <span class="hljs-attr">providers</span>: [
+        {
+            <span class="hljs-comment">// This is usually coming from the NxExpertModule or other providers.</span>
+            <span class="hljs-comment">// We use this here just for the demo purposes.</span>
+            <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS</span>,
+            <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;expert&#x27;</span> },
+        },
+        {
+            <span class="hljs-comment">// This is usually coming from the NxExpertModule or other providers.</span>
+            <span class="hljs-comment">// We use this here just for the demo purposes.</span>
+            <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">CIRCLE_TOGGLE_DEFAULT_OPTIONS</span>,
+            <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;expert&#x27;</span> },
+        },
     ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CircleToggleReadonlyExampleComponent</span> {

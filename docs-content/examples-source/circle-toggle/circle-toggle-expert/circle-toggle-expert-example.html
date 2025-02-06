@@ -1,0 +1,11 @@
+@for (item of sampleValues; track item) {
+<nx-circle-toggle
+    appearance="expert"
+    [value]="item.value"
+    [icon]="item.icon"
+    [hint]="item.hint"
+    [label]="item.label"
+    [checked]="item.selected"
+>
+</nx-circle-toggle>
+}

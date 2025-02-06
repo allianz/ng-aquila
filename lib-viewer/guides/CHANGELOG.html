@@ -1,22 +1,39 @@
 <h1 class="docs-markdown--h1" id="changelog" tabindex="-1">Changelog</h1>
 <p class="docs-markdown--p">All notable changes to this project will be documented in this file. See <a href="https://github.com/conventional-changelog/standard-version">standard-version</a> for commit guidelines.</p>
+<h2 class="docs-markdown--h2" id="19.1.0-(2025-02-06)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v19.0.0...v19.1.0">19.1.0</a> (2025-02-06)</h2>
+<h3 class="docs-markdown--h3" id="radio-button-and-checkbox-design-update" tabindex="-1">Radio button and checkbox design update</h3>
+<p class="docs-markdown--p">The radio button and checkbox components got a design update to align them with Allianz One and make the transition easier.
+For the checkbox the indeterminate state was updated. The radio button got an overall design update.</p>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8" tabindex="-1">Features ✨</h3>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>button:</strong> add secondary plain button variant for a1 (<a href="https://github.com/allianz/ng-aquila/commit/8adf5cd7e123eca1dba749e0d4378e2ac462d37a">8adf5cd</a>)</li>
+<li class="docs-markdown--li"><strong>checkbox, radio:</strong> update design (<a href="https://github.com/allianz/ng-aquila/commit/84109c26aef7b6637d33d06538494ac001837318">84109c2</a>)</li>
+<li class="docs-markdown--li"><strong>circle toggle:</strong> expert for circle toggles (<a href="https://github.com/allianz/ng-aquila/commit/0ba7e700c2ccbf5e7154cb8585bbb77aacc601e0">0ba7e70</a>)</li>
+</ul>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B" tabindex="-1">Bug Fixes 🐛</h3>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>context-menu:</strong> remove setTimeout for focusing first item (<a href="https://github.com/allianz/ng-aquila/commit/54024c1ddc74499d7a015750353d91ec3992a3ad">54024c1</a>)</li>
+<li class="docs-markdown--li"><strong>dropdown:</strong> prevent keyboard shortcuts from opening dropdown (<a href="https://github.com/allianz/ng-aquila/commit/5c7aaa18ac96f90186bd6941cf82a1c5e69dded4">5c7aaa1</a>)</li>
+<li class="docs-markdown--li"><strong>formfield:</strong> set aria-hidden to formfield hint when disabled (<a href="https://github.com/allianz/ng-aquila/commit/fe4c6b44a6fee569d85e7ab0176d2bd46cc55488">fe4c6b4</a>)</li>
+<li class="docs-markdown--li"><strong>table:</strong> fix css issues caused by host inside host (<a href="https://github.com/allianz/ng-aquila/commit/4c9f030322fa11eb20660da3a0c77c223f1edcc4">4c9f030</a>)</li>
+</ul>
 <h2 class="docs-markdown--h2" id="19.0.0-(2025-01-17)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v18.7.0...v19.0.0">19.0.0</a> (2025-01-17)</h2>
 <h3 class="docs-markdown--h3" id="%E2%9A%A0-breaking-changes" tabindex="-1">⚠ BREAKING CHANGES</h3>
 <p class="docs-markdown--p">Please run <code>ng update @aposin/ng-aquila</code> to migrate the breaking changes automatically.</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>number-stepper:</strong> the <code>readonly</code> input got renamed to <code>inputFieldReadonly</code>. the <code>readonly</code> property before this change only set the input field to readonly but left the number stepper operational via the buttons. this was not properly named and was changed now to make room for a proper readonly state that got added.</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-1" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>number-stepper:</strong> add readonly state and rename former readonly to inputFieldReadonly (<a href="https://github.com/allianz/ng-aquila/commit/1665a04e00c6ae3c8f169614f8f1efc072b44668">1665a04</a>)</li>
 <li class="docs-markdown--li">update to Angular 19 (<a href="https://github.com/allianz/ng-aquila/commit/d36aba5e97d30a60da32d1582cac004828907953">d36aba5</a>)</li>
 </ul>
 <h2 class="docs-markdown--h2" id="18.7.0-(2025-01-17)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v18.6.1...v18.7.0">18.7.0</a> (2025-01-17)</h2>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-1" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-2" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>number-stepper:</strong> link error messages to input for assistive tools (<a href="https://github.com/allianz/ng-aquila/commit/1824f2b17a839c9084fa8929ac4cee87b0b4735d">1824f2b</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-1" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>badge:</strong> make single character circle (<a href="https://github.com/allianz/ng-aquila/commit/a121099041c66dfa0348e9d0cd69f74dd40a6a80">a121099</a>)</li>
 <li class="docs-markdown--li"><strong>dropdown:</strong> add aria-controls to filter input (<a href="https://github.com/allianz/ng-aquila/commit/05f29283f0c6e06dd7e8d8bb323b879ae12a0f3f">05f2928</a>)</li>
@@ -35,7 +52,7 @@
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">activate a1 for all components (<a href="https://github.com/allianz/ng-aquila/commit/ba59316f0130294f320838b32811558741a82855">ba59316</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-1" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-2" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>breadcrumb:</strong> make nxBreadcrumbItem more lenient and add example with context menu and buttons (<a href="https://github.com/allianz/ng-aquila/commit/e4a24ad3682e7bd5cafb722ffd8a0529744d065b">e4a24ad</a>)</li>
 <li class="docs-markdown--li"><strong>circle toggle:</strong> link error message to controls (<a href="https://github.com/allianz/ng-aquila/commit/56ad612b00fb85bcb5a94ad71659b02f194197fe">56ad612</a>)</li>
@@ -60,13 +77,13 @@
 <h2 class="docs-markdown--h2" id="18.6.0-(2024-10-31)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v18.5.1...v18.6.0">18.6.0</a> (2024-10-31)</h2>
 <h3 class="docs-markdown--h3" id="timefield-built-in-validator" tabindex="-1">Timefield built in validator</h3>
 <p class="docs-markdown--p">The timefield component now has a built in validator to check if the entered time is valid. The feature can be enabled by an opt-in setting <code>enableTimeValidation</code>.</p>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-2" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-3" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>modal:</strong> add more autofocus options (<a href="https://github.com/allianz/ng-aquila/commit/a2eb5162fa137b35c042dd4597903091c3c9f452">a2eb516</a>)</li>
 <li class="docs-markdown--li"><strong>switcher:</strong> always show tickmark when checked (<a href="https://github.com/allianz/ng-aquila/commit/6f3f5a213cb34db0166fc2c5934ea6018b732bde">6f3f5a2</a>)</li>
 <li class="docs-markdown--li"><strong>timefield:</strong> add custom validator for invalid time (<a href="https://github.com/allianz/ng-aquila/commit/ce55e710c1d8259b885aa8b6ef86e9b022dfb267">ce55e71</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-2" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-3" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>checkbox:</strong> active and error hover/active styles (<a href="https://github.com/allianz/ng-aquila/commit/b3dbac782d15e5cf00fd43617fdd1a514900c231">b3dbac7</a>)</li>
 <li class="docs-markdown--li"><strong>circle-toggle:</strong> allow any value (<a href="https://github.com/allianz/ng-aquila/commit/5866d47115076029039312021f6deeb47d762375">5866d47</a>)</li>
@@ -80,7 +97,7 @@
 <li class="docs-markdown--li"><strong>tooltip:</strong> replace onMicrotaskEmpty with afterNextRender for zoneless compatability (<a href="https://github.com/allianz/ng-aquila/commit/7357258a582fbb5890db2669a8a70997e9b1196c">7357258</a>)</li>
 </ul>
 <h3 class="docs-markdown--h3" id="18.5.1-(2024-10-11)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v18.5.0...v18.5.1">18.5.1</a> (2024-10-11)</h3>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-3" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-4" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>autocomplete:</strong> replace onStable to make it zoneless compatible (<a href="https://github.com/allianz/ng-aquila/commit/5fcc2ecaac535d292a83e15299a290d9223e870f">5fcc2ec</a>)</li>
 <li class="docs-markdown--li"><strong>checkbox:</strong> link aria-describedby with projected nx-error (<a href="https://github.com/allianz/ng-aquila/commit/32bbdde3ede04acbc5afc9068000178ac89ebfab">32bbdde</a>)</li>
@@ -97,11 +114,11 @@
 <li class="docs-markdown--li"><strong>file-uploader:</strong> make screenreader read error message (<a href="https://github.com/allianz/ng-aquila/commit/7a5ac749d8cb8ac10823953a68f3fa7279f296c5">7a5ac74</a>)</li>
 <li class="docs-markdown--li">only show implemented components for A1 themes (<a href="https://github.com/allianz/ng-aquila/commit/9d190ed302ed44d05b26685eb0fa8f2df4f85936">9d190ed</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-4" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-5" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>radio-button, circle-toggle:</strong> add tabindex=&quot;-1&quot; to label element in radio groups (<a href="https://github.com/allianz/ng-aquila/commit/e3ada6b3f60a8564bf71e1d307afd74f2193c877">e3ada6b</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-3" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-4" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>radio toggle:</strong> link error message to radio toggle by aria-describedby (<a href="https://github.com/allianz/ng-aquila/commit/50249cf52bfa4ef8b77cbe13aa4d094fcf0aa614">50249cf</a>)</li>
 <li class="docs-markdown--li"><strong>spinner:</strong> add ariaPoliteness input (<a href="https://github.com/allianz/ng-aquila/commit/0aa0483889e04317291a94fded6df0838eb8b6b0">0aa0483</a>)</li>
@@ -114,7 +131,7 @@
 <li class="docs-markdown--li">update safari just to most recent (<a href="https://github.com/allianz/ng-aquila/commit/6193c658c2cca374f24fb0a9b7ed709c4b0c776f">6193c65</a>)</li>
 <li class="docs-markdown--li">update screenreader support page (<a href="https://github.com/allianz/ng-aquila/commit/feaae27f9b84ecd433d4abfe4d37d212bb32ce85">feaae27</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-5" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-6" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>checkbox:</strong> link checkbox group aria-labelledby with projected nx-error (<a href="https://github.com/allianz/ng-aquila/commit/1793088a10734af02d93ad84a77a29f7adcd02e9">1793088</a>)</li>
 <li class="docs-markdown--li"><strong>datefield:</strong> make the datepicker zoneless ready (<a href="https://github.com/allianz/ng-aquila/commit/e64213da6ad6b47ddd285a4aee7f05eacd5f73e5">e64213d</a>)</li>
@@ -124,7 +141,7 @@
 <li class="docs-markdown--li"><strong>table:</strong> add :host to ::ng-deep for block-scoped styles (<a href="https://github.com/allianz/ng-aquila/commit/d1014e3e63b01468f7c84e05836b32603d4b08e7">d1014e3</a>)</li>
 <li class="docs-markdown--li"><strong>table:</strong> spacing issues with ndbx-base-integrated styles (<a href="https://github.com/allianz/ng-aquila/commit/4d4dc1cf9725126aa349eee1d0fdd54e61686bc8">4d4dc1c</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-4" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-5" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>formfield-harness:</strong> add isReadonly query and filter (<a href="https://github.com/allianz/ng-aquila/commit/93c1149ded8b85dbe74da1c27361866f3f60b47b">93c1149</a>)</li>
 <li class="docs-markdown--li"><strong>formfield:</strong> add example of customizing spacing with theming tokens (<a href="https://github.com/allianz/ng-aquila/commit/6b25bacfdb5ffd5e534ece77c843d008405455b0">6b25bac</a>)</li>
@@ -134,7 +151,7 @@
 <h3 class="docs-markdown--h3" id="readonly-states-for-radio--and-checkbox-style-components" tabindex="-1">Readonly states for radio- and checkbox-style components</h3>
 <p class="docs-markdown--p">With this release we added a readonly state to the circle toggle, radio button, checkbox, switcher and toggle button components. The number stepper has to be delayed until the next major version because of a necessary breaking change.
 Please note: the readonly states on these elements is only approved for internal (expert) applications because of accessibility constraints.</p>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-5" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-6" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>accordion:</strong> add flush alignment option (<a href="https://github.com/allianz/ng-aquila/commit/28a37fd1dfb2b288790e5a6ff755b99fd7d9da4b">28a37fd</a>)</li>
 <li class="docs-markdown--li"><strong>circle-toggle:</strong> add readonly state (<a href="https://github.com/allianz/ng-aquila/commit/c2abe678743f9048771aab840ac8fc1b062416a9">c2abe67</a>)</li>
@@ -143,7 +160,7 @@ Please note: the readonly states on these elements is only approved for internal
 <li class="docs-markdown--li"><strong>switcher:</strong> add readonly state (<a href="https://github.com/allianz/ng-aquila/commit/a72712a0ab4036cdf175b82ea101057d208acb72">a72712a</a>)</li>
 <li class="docs-markdown--li"><strong>toggle-button:</strong> add readonly state (<a href="https://github.com/allianz/ng-aquila/commit/571e1df916779ee42a91299a6c3bf025e0d261c4">571e1df</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-6" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-7" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>circle-toggle:</strong> invalid aria-required attributes in radio group (<a href="https://github.com/allianz/ng-aquila/commit/79e18ce252076f0a153ffa347cac5e2e97d461b9">79e18ce</a>)</li>
 <li class="docs-markdown--li"><strong>datefield:</strong> to use plain buttons and update cell font-weight (<a href="https://github.com/allianz/ng-aquila/commit/ea29b77f2360122328056babba084bd03c4571ac">ea29b77</a>)</li>
@@ -158,11 +175,11 @@ Please note: the readonly states on these elements is only approved for internal
 <li class="docs-markdown--li"><strong>accordion:</strong> add aria-hidden to error icons (<a href="https://github.com/allianz/ng-aquila/commit/74c9106eb620f6c34d2c59b50cbc9ff921d48c46">74c9106</a>)</li>
 </ul>
 <h2 class="docs-markdown--h2" id="18.2.0-(2024-08-26)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v18.1.0...v18.2.0">18.2.0</a> (2024-08-26)</h2>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-6" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-7" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>checkbox:</strong> add readonly state (<a href="https://github.com/allianz/ng-aquila/commit/96e717c0e80f344fd1c8bf546c48f3f7fbe50214">96e717c</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-7" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-8" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>code-input:</strong> link error message with  aria-describedby (<a href="https://github.com/allianz/ng-aquila/commit/ce2c995a6852d1ba5b8e98607c21f490e6fb5e32">ce2c995</a>)</li>
 <li class="docs-markdown--li"><strong>comparision-table:</strong> track expression warning (<a href="https://github.com/allianz/ng-aquila/commit/f400dd8ed1f444bcdad9a462899053efe0b6e539">f400dd8</a>)</li>
@@ -182,13 +199,13 @@ Please note: the readonly states on these elements is only approved for internal
 <h2 class="docs-markdown--h2" id="18.1.0-(2024-08-08)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v18.0.0...v18.1.0">18.1.0</a> (2024-08-08)</h2>
 <h3 class="docs-markdown--h3" id="emphasis-button-update" tabindex="-1">Emphasis button update</h3>
 <p class="docs-markdown--p">The emphasis button was deprecated in 18.0.0 because there was no plan to make the colors accessibility compliant. This decision was changed and now the orange colors got updated to fulfill WCAG contrast requirements. The emphasis button is not deprecated anymore and can be used again.</p>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-7" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-8" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>dropdown:</strong> align dropdown checkmark (<a href="https://github.com/allianz/ng-aquila/commit/5fed95ddd5cba2ee510600a9c3f6f5850559b09c">5fed95d</a>)</li>
 <li class="docs-markdown--li"><strong>natural-language-form:</strong> enable <code>aria-describedby</code> for words  (<a href="https://github.com/allianz/ng-aquila/commit/d418a6584bf0a6b98526e98a7016871bf37620ac">d418a65</a>)</li>
 <li class="docs-markdown--li"><strong>tag:</strong> add nxTagIntl provider for i18n (<a href="https://github.com/allianz/ng-aquila/commit/a4b9ffd38982784a949707eeea060602544b987d">a4b9ffd</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-8" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-9" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>action:</strong> use new line instead of ellipsis for narrow space (<a href="https://github.com/allianz/ng-aquila/commit/aa76f08f223227f1c84f4a36599c750d3accf696">aa76f08</a>)</li>
 <li class="docs-markdown--li"><strong>context-menu:</strong> adjust header styles to selection menu designs (<a href="https://github.com/allianz/ng-aquila/commit/adb40ee210f4f5d2de70049607819606d92c34c5">adb40ee</a>)</li>
@@ -258,14 +275,14 @@ now: margin: top: 12 (xs), left: 16 (s), right: 16 (s), bottom: 24 (m)</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>swipebar:</strong> deprecate swipebar component (<a href="https://github.com/allianz/ng-aquila/commit/88f71273fd1ad99c7c73e78a60e71fd53960b057">88f7127</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-8" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-9" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>button:</strong> add attention button and deprecate emphasis button (<a href="https://github.com/allianz/ng-aquila/commit/b043927f44bde4d8e396d1d1aaea23ff449a3414">b043927</a>)</li>
 <li class="docs-markdown--li">migrate library to standalone (<a href="https://github.com/allianz/ng-aquila/commit/0a9b4eeda7deec1036d7cff15a796b2ff7b75b87">0a9b4ee</a>)</li>
 <li class="docs-markdown--li"><strong>progress-bar:</strong> set aria attributes and allow custom ranges (<a href="https://github.com/allianz/ng-aquila/commit/e7fa3829d51875b8bce3842db582106b7eca1b37">e7fa382</a>)</li>
 <li class="docs-markdown--li">update to Angular 18 (<a href="https://github.com/allianz/ng-aquila/commit/717db8bd6c2620dc19070cfba16fe39922ed8c95">717db8b</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-9" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-10" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>avatar:</strong> add role image in examples (<a href="https://github.com/allianz/ng-aquila/commit/120915193a23a5c8d4a845fb286d89a81a6a9baa">1209151</a>)</li>
 <li class="docs-markdown--li"><strong>datefield:</strong> propagate readonly state to all directives and components (<a href="https://github.com/allianz/ng-aquila/commit/8ca1e899ec0b9447a10e266a9eb0c1959248a247">8ca1e89</a>)</li>
@@ -284,7 +301,7 @@ now: margin: top: 12 (xs), left: 16 (s), right: 16 (s), bottom: 24 (m)</p>
 <li class="docs-markdown--li"><strong>formfield:</strong> correct count remaining example (<a href="https://github.com/allianz/ng-aquila/commit/b3065a43ddd78dfd45574ae8f2d9a7f6f1fdb875">b3065a4</a>)</li>
 <li class="docs-markdown--li"><strong>rating:</strong> add more info for assistive technology (<a href="https://github.com/allianz/ng-aquila/commit/671d72954bb21c95c438979028d24e0a2eb0c321">671d729</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-10" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-11" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>context-menu:</strong> correct high contrast color (<a href="https://github.com/allianz/ng-aquila/commit/b7ddf40753c25de446b718664d6ab3b310a41089">b7ddf40</a>)</li>
 <li class="docs-markdown--li"><strong>context:</strong> keyboard selection (<a href="https://github.com/allianz/ng-aquila/commit/f2c7342d3f1bb2f3a1f9d0014966af54a479d4c2">f2c7342</a>)</li>
@@ -301,19 +318,19 @@ now: margin: top: 12 (xs), left: 16 (s), right: 16 (s), bottom: 24 (m)</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>avatar:</strong> add aria-label in examples (<a href="https://github.com/allianz/ng-aquila/commit/bb20e9d664f99df5ce8b2e9f5d8e11974381cdb3">bb20e9d</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-11" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-12" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>circle-toggle:</strong> setting group control value reflect on child view (<a href="https://github.com/allianz/ng-aquila/commit/302b511a9b9d31d553fe499bd915190611d069d7">302b511</a>)</li>
 <li class="docs-markdown--li"><strong>schematics:</strong> schematics and tests for standalone (<a href="https://github.com/allianz/ng-aquila/commit/7b2037c766ed14698bce63c7ca43e6db0ea8d675">7b2037c</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-9" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-10" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>popover:</strong> enable setting tabindex for manual trigger (<a href="https://github.com/allianz/ng-aquila/commit/d729998eb9a917e8bce4ef2243ad9aa0b23fc94c">d729998</a>)</li>
 <li class="docs-markdown--li"><strong>timefield:</strong> add timepicker dropdown (<a href="https://github.com/allianz/ng-aquila/commit/f912ec7557858bdebc3a3d0cd02e40511539c73b">f912ec7</a>)</li>
 <li class="docs-markdown--li"><strong>toggle-button:</strong> enable setting aria-label for the inner radio input (<a href="https://github.com/allianz/ng-aquila/commit/e74335d63b1781277999d9a5bd0d956189436372">e74335d</a>)</li>
 </ul>
 <h2 class="docs-markdown--h2" id="17.8.0-(2024-06-18)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v17.7.0...v17.8.0">17.8.0</a> (2024-06-18)</h2>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-10" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-11" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>checkbox-harness:</strong> add isDisabled (<a href="https://github.com/allianz/ng-aquila/commit/5e3a96f9413fa836b5bad327be49fe09c9344382">5e3a96f</a>)</li>
 </ul>
@@ -327,7 +344,7 @@ now: margin: top: 12 (xs), left: 16 (s), right: 16 (s), bottom: 24 (m)</p>
 <li class="docs-markdown--li"><strong>tooltip:</strong> show focusable non-interactive tooltip (<a href="https://github.com/allianz/ng-aquila/commit/92d09d5bd7a3341c00bda67ed40c14cdef63196b">92d09d5</a>)</li>
 <li class="docs-markdown--li">update allianz-icons version (<a href="https://github.com/allianz/ng-aquila/commit/216c5b8d8c22193a5a2c3a33824de6cd3bff393a">216c5b8</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-12" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-13" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>autocomplete:</strong> prevent early error (<a href="https://github.com/allianz/ng-aquila/commit/9fe622f15f06f58b248430305c9a1e7b0c411730">9fe622f</a>)</li>
 <li class="docs-markdown--li"><strong>circle-toggle:</strong> addition check error state from group (<a href="https://github.com/allianz/ng-aquila/commit/01e518fe6b1faa315aaf1a1cc7d81edbbb316fa3">01e518f</a>)</li>
@@ -342,12 +359,12 @@ now: margin: top: 12 (xs), left: 16 (s), right: 16 (s), bottom: 24 (m)</p>
 <h2 class="docs-markdown--h2" id="17.7.0-(2024-05-16)" tabindex="-1"><a href="https://github.com/allianz/ng-aquila/compare/v17.6.0...v17.7.0">17.7.0</a> (2024-05-16)</h2>
 <h3 class="docs-markdown--h3" id="dropdown-and-multiselect-flyout-changes" tabindex="-1">Dropdown and multiselect flyout changes</h3>
 <p class="docs-markdown--p">The label options inside the dropdown where limited to a certain character length and then cut off. This has been revised and long labels will now line break again. In addition the dropdown overlay size will now always be the size of the dropdown trigger element. As that can sometimes mean the overlay would be very narrow we introduced a new API that lets the overlay grow past the trigger element width if needed. In addition you can also set a max-width that the overlay doesn't get too long.</p>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-13" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-14" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>selectable-card:</strong> visual design enhancement (<a href="https://github.com/allianz/ng-aquila/commit/318f6edb64eaff39fa3ef04bc166f2aec6a220db">318f6ed</a>)</li>
 <li class="docs-markdown--li"><strong>table:</strong> change sorted arial label and move myintl to docs (<a href="https://github.com/allianz/ng-aquila/commit/072cac07d17eae823848ade69e1333714fea6482">072cac0</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-11" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-12" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>dropdown, multi-select:</strong> let overlay scroll out of viewport (<a href="https://github.com/allianz/ng-aquila/commit/61cfed2534305cba7da7efb30e2cbf98af890400">61cfed2</a>)</li>
 <li class="docs-markdown--li"><strong>dropdown, multi-select:</strong> remove ellipsis and add new api for overlaywidth (<a href="https://github.developer.allianz.io/ilt/ng-aquila/commit/b09e8764c9093f9418c0f1746d3dfd187efca542">b09e876</a>)</li>
@@ -365,12 +382,12 @@ now: margin: top: 12 (xs), left: 16 (s), right: 16 (s), bottom: 24 (m)</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>modal:</strong> showcase correct button size for expert (<a href="https://github.com/allianz/ng-aquila/commit/9d1e8c11d39850ca0a8bae6d8f6afcfa67d96437">9d1e8c1</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-12" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-13" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>context-menu:</strong> selection menu styling(<a href="https://github.com/allianz/ng-aquila/commit/d03bec4fbb68332efad7c931f816b7caeef32dec">d03bec4</a>)</li>
 <li class="docs-markdown--li"><strong>switcher, radio, checkbox:</strong> add ariaLabel (<a href="https://github.com/allianz/ng-aquila/commit/c85820f5e03f28003779f6c1f06291b3b12640b9">c85820f</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-14" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-15" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>checkbox:</strong> solve circular dependency (<a href="https://github.com/allianz/ng-aquila/commit/072b664669f69250136790f2c8778dcd8dbcb2d0">072b664</a>)</li>
 <li class="docs-markdown--li"><strong>circle-toggle:</strong> change cursor for disabled flipped circle toggle (<a href="https://github.com/allianz/ng-aquila/commit/4a4ad4896800dc2cbda0e611253c5a376b58833c">4a4ad48</a>)</li>
@@ -389,11 +406,11 @@ now: margin: top: 12 (xs), left: 16 (s), right: 16 (s), bottom: 24 (m)</p>
 <li class="docs-markdown--li"><strong>date:</strong> correct appearance (<a href="https://github.com/allianz/ng-aquila/commit/494095cade74d25b2be7bc0dc9c760c4e658cd84">494095c</a>)</li>
 <li class="docs-markdown--li"><strong>table:</strong> add showcase of filter+selecting table (<a href="https://github.com/allianz/ng-aquila/commit/9e80f60e065e059d886065c30f8a957339d83f61">9e80f60</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-13" tabindex="-1">Features ✨</h3>
+<h3 class="docs-markdown--h3" id="features-%E2%9C%A8-14" tabindex="-1">Features ✨</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>card:</strong> add clickable card (<a href="https://github.com/allianz/ng-aquila/commit/685999363098622eb66e28f57278600c5e3f48cb">6859993</a>)</li>
 </ul>
-<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-15" tabindex="-1">Bug Fixes 🐛</h3>
+<h3 class="docs-markdown--h3" id="bug-fixes-%F0%9F%90%9B-16" tabindex="-1">Bug Fixes 🐛</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><strong>context-menu:</strong> position icon (<a href="https://github.com/allianz/ng-aquila/commit/5ad6feb02ed4fbe76ec677eaa7f0214ef083a8d1">5ad6feb</a>)</li>
 <li class="docs-markdown--li"><strong>dropdown, multiselect:</strong> Add tooltip only if label overflows (<a href="https://github.com/allianz/ng-aquila/commit/bd84f4c9ed230a7c7f970eee166b9ac4d1f71530">bd84f4c</a>)</li>
