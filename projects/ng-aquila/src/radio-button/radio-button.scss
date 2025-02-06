@@ -146,7 +146,6 @@ $radio-border-radius: 50%;
     }
 
     .nx-radio__circle {
-        background-color: v(radio-button-readonly-background-color);
         border-color: v(radio-button-readonly-border-color);
     }
 
@@ -162,19 +161,6 @@ $radio-border-radius: 50%;
     }
 }
 
-// error style
-:host.has-error {
-    .nx-radio__input + .nx-radio__label {
-        .nx-radio__circle {
-            border-color: v(danger);
-        }
-
-        .nx-radio__dot {
-            background-color: v(danger);
-        }
-    }
-}
-
 // focus style
 .nx-radio__input.cdk-keyboard-focused + .nx-radio__label .nx-radio__circle {
     @include focus-style;
@@ -186,6 +172,11 @@ $radio-border-radius: 50%;
         border-color: v(radio-button-hover-circle-color);
     }
 
+    &:checked + .nx-radio__label:hover .nx-radio__circle {
+        border-color: v(radio-button-hover-circle-color);
+        background-color: v(radio-button-hover-circle-color);
+    }
+
     &:checked + .nx-radio__label:hover .nx-radio__dot {
         background-color: v(radio-button-hover-dot-color);
     }
@@ -194,7 +185,12 @@ $radio-border-radius: 50%;
 // active styling
 :host:not(.nx-radio--negative):not(.has-error):not(.is-readonly) .nx-radio__input:not(:disabled) {
     & + .nx-radio__label:active .nx-radio__circle {
-        border-color: v(radio-button-hover-circle-color);
+        border-color: v(radio-button-active-circle-color);
+    }
+
+    &:checked + .nx-radio__label:active .nx-radio__circle {
+        border-color: v(radio-button-active-circle-color);
+        background-color: v(radio-button-active-circle-color);
     }
 
     &:checked + .nx-radio__label:active .nx-radio__dot {
@@ -202,6 +198,46 @@ $radio-border-radius: 50%;
     }
 }
 
+// error style
+:host.has-error {
+    .nx-radio__input + .nx-radio__label {
+        .nx-radio__circle {
+            border-color: v(danger);
+        }
+    }
+    .nx-radio__input:checked + .nx-radio__label {
+        .nx-radio__circle {
+            background-color: v(danger);
+        }
+    }
+
+    // error hover, active
+    .nx-radio__input {
+        & + .nx-radio__label:hover .nx-radio__circle {
+            border-color: v(radio-button-error-hover-circle-color);
+        }
+        & + .nx-radio__label:active .nx-radio__circle {
+            border-color: v(radio-button-error-active-circle-color);
+        }
+    }
+
+    // error checked hover, active
+    .nx-radio__input:checked {
+        & + .nx-radio__label:hover {
+            .nx-radio__circle {
+                background-color: v(radio-button-error-hover-circle-color);
+                border-color: v(radio-button-error-hover-circle-color);
+            }
+        }
+
+        & + .nx-radio__label:active {
+            .nx-radio__circle {
+                background-color: v(radio-button-error-active-circle-color);
+                border-color: v(radio-button-error-active-circle-color);
+            }
+        }
+    }
+}
 @media screen and (forced-colors: active) {
     :host {
         .nx-radio__label {

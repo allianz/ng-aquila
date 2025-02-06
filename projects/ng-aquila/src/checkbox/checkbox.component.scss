@@ -22,11 +22,8 @@
         border-color: v(danger);
     }
 
-    .nx-checkbox__indeterminate-indicator {
-        color: v(danger);
-    }
-
-    &:has(input:checked) {
+    &:has(input:checked),
+    &:has(.nx-checkbox__indeterminate-indicator) {
         .nx-checkbox__control {
             background-color: v(danger);
             border-color: v(danger);
@@ -38,11 +35,8 @@
             border-color: v(danger-hover);
         }
 
-        .nx-checkbox__indeterminate-indicator {
-            color: v(danger-hover);
-        }
-
-        &:has(input:checked) {
+        &:has(input:checked),
+        &:has(.nx-checkbox__indeterminate-indicator) {
             .nx-checkbox__control {
                 background-color: v(danger-hover);
                 border-color: v(danger-hover);
@@ -55,11 +49,8 @@
             border-color: v(danger-active);
         }
 
-        .nx-checkbox__indeterminate-indicator {
-            color: v(danger-active);
-        }
-
-        &:has(input:checked) {
+        &:has(input:checked),
+        &:has(.nx-checkbox__indeterminate-indicator) {
             .nx-checkbox__control {
                 background-color: v(danger-active);
                 border-color: v(danger-active);
@@ -138,8 +129,7 @@
 }
 
 .nx-checkbox__indeterminate-indicator {
-    color: v(checkbox-indeterminate-color);
-    background-color: v(checkbox-indeterminate-color);
+    color: v(checkbox-icon-color);
     box-sizing: content-box;
     height: 0;
     width: nx-spacer(2xs);
@@ -147,7 +137,8 @@
     border-radius: nx-spacer(4xs);
 }
 
-:host:has(input:checked) {
+:host:has(input:checked),
+:host:has(.nx-checkbox__indeterminate-indicator) {
     .nx-checkbox__control {
         background-color: v(checkbox-selected-background-color);
         border-color: v(checkbox-selected-border-color);
@@ -174,8 +165,7 @@
     }
 
     .nx-checkbox__indeterminate-indicator {
-        color: v(checkbox-disabled-border-color);
-        background-color: v(checkbox-disabled-border-color);
+        color: v(checkbox-disabled-icon-color);
     }
 }
 
@@ -188,12 +178,8 @@
         color: v(checkbox-readonly-icon-color);
     }
 
-    .nx-checkbox__indeterminate-indicator {
-        color: v(checkbox-readonly-indeterminate-color);
-        background-color: v(checkbox-readonly-indeterminate-color);
-    }
-
-    &:has(input:checked) {
+    &:has(input:checked),
+    &:has(.nx-checkbox__indeterminate-indicator) {
         .nx-checkbox__control {
             background-color: v(checkbox-readonly-selected-background-color);
             border-color: v(checkbox-readonly-selected-border-color);
@@ -207,11 +193,8 @@
         border-color: v(checkbox-hover-border-color);
     }
 
-    .nx-checkbox__indeterminate-indicator {
-        color: v(checkbox-hover-background-color);
-    }
-
-    &:has(input:checked) {
+    &:has(input:checked),
+    &:has(.nx-checkbox__indeterminate-indicator) {
         .nx-checkbox__control {
             background-color: v(checkbox-hover-background-color);
         }
@@ -223,12 +206,8 @@
     .nx-checkbox__control {
         border-color: v(checkbox-active-border-color);
     }
-
-    .nx-checkbox__indeterminate-indicator {
-        color: v(checkbox-active-background-color);
-    }
-
-    &:has(input:checked) {
+    &:has(input:checked),
+    &:has(.nx-checkbox__indeterminate-indicator) {
         .nx-checkbox__control {
             background-color: v(checkbox-active-background-color);
         }
