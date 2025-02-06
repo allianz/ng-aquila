@@ -65,7 +65,7 @@ We are building the following structure.
             </div>
             <!-- Space to render the hints below the textfield -->
             @if (_hintChildren.length) {
-                <div class="nx-formfield__hints">
+                <div class="nx-formfield__hints" [attr.aria-hidden]="_control.disabled">
                     <ng-content select="[nxFormfieldHint]"></ng-content>
                 </div>
             }

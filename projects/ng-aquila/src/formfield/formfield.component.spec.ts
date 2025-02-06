@@ -328,6 +328,18 @@ describe('NxFormfieldComponent', () => {
                 expect(ariaDescribedBy).toContain(testInstance.formfieldHint.id);
             }));
 
+            it('adds aria-hidden=true to formfield hint when formfield is disabled', fakeAsync(() => {
+                createTestComponent(DirectivesFormfield);
+                testInstance.disabled = true;
+                tick();
+                fixture.detectChanges();
+
+                const hintElement = fixture.nativeElement.querySelector('.nx-formfield__hints');
+                const ariaHidden = hintElement.attributes.getNamedItem('aria-hidden')!.value;
+
+                expect(ariaHidden).toContain('true');
+            }));
+
             it('updates described by with the error id', fakeAsync(() => {
                 let ariaDescribedBy;
 
@@ -502,7 +514,7 @@ class CustomLabelFormfield extends FormfieldTest {}
 @Component({
     template: `
         <nx-formfield>
-            <input nxInput />
+            <input nxInput [disabled]="disabled" />
 
             <span nxFormfieldPrefix>content-prefix</span>
             <span nxFormfieldSuffix>content-suffix</span>
