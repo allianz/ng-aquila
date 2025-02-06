@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [19.1.0](https://github.com/allianz/ng-aquila/compare/v19.0.0...v19.1.0) (2025-02-06)
+
+
+### Radio button and checkbox design update
+The radio button and checkbox components got a design update to align them with Allianz One and make the transition easier.
+For the checkbox the indeterminate state was updated. The radio button got an overall design update.
+
+
+### Features ✨
+
+* **button:** add secondary plain button variant for a1 ([8adf5cd](https://github.com/allianz/ng-aquila/commit/8adf5cd7e123eca1dba749e0d4378e2ac462d37a))
+* **checkbox, radio:** update design ([84109c2](https://github.com/allianz/ng-aquila/commit/84109c26aef7b6637d33d06538494ac001837318))
+* **circle toggle:** expert for circle toggles ([0ba7e70](https://github.com/allianz/ng-aquila/commit/0ba7e700c2ccbf5e7154cb8585bbb77aacc601e0))
+
+
+### Bug Fixes 🐛
+
+* **context-menu:** remove setTimeout for focusing first item ([54024c1](https://github.com/allianz/ng-aquila/commit/54024c1ddc74499d7a015750353d91ec3992a3ad))
+* **dropdown:** prevent keyboard shortcuts from opening dropdown ([5c7aaa1](https://github.com/allianz/ng-aquila/commit/5c7aaa18ac96f90186bd6941cf82a1c5e69dded4))
+* **formfield:** set aria-hidden to formfield hint when disabled ([fe4c6b4](https://github.com/allianz/ng-aquila/commit/fe4c6b44a6fee569d85e7ab0176d2bd46cc55488))
+* **table:** fix css issues caused by host inside host ([4c9f030](https://github.com/allianz/ng-aquila/commit/4c9f030322fa11eb20660da3a0c77c223f1edcc4))
+
 ## [19.0.0](https://github.com/allianz/ng-aquila/compare/v18.7.0...v19.0.0) (2025-01-17)
 
 
