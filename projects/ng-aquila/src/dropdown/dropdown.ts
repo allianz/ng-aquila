@@ -1153,7 +1153,7 @@ export class NxDropdownComponent
 
         // TODO use event.code after removing IE11 support
         const keyCode = event.keyCode;
-        const isCharacterKey = event.key.length === 1;
+        const isCharacterKey = event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey;
         const isArrowKey = keyCode === DOWN_ARROW || keyCode === UP_ARROW || keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW;
         const isOpenKey = keyCode === ENTER || keyCode === SPACE;
 

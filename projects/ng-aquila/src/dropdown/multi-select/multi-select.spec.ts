@@ -624,6 +624,16 @@ describe('NxMultiSelectComponent', () => {
                     });
                 });
             });
+
+            describe('and opening using keyboard shortcut', () => {
+                beforeEach(async () => {
+                    await multiSelectHarness.pressKey('c', undefined, true);
+                });
+
+                it('should not open', async () => {
+                    expect(await multiSelectHarness.isOpen()).toBeFalse();
+                });
+            });
         });
 
         describe('when navigating using keyboard', () => {

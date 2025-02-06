@@ -1,4 +1,4 @@
-import { B, D, DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE, TAB, UP_ARROW, V } from '@angular/cdk/keycodes';
+import { B, C, D, DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE, TAB, UP_ARROW, V } from '@angular/cdk/keycodes';
 import { MutationObserverFactory } from '@angular/cdk/observers';
 import { OverlayContainer, OverlayModule, ScrollStrategy } from '@angular/cdk/overlay';
 import { ComponentHarness, LocatorFactory } from '@angular/cdk/testing';
@@ -1504,6 +1504,14 @@ describe('NxDropdownComponent', () => {
             flush();
             expectDropdownOpen();
             expect(testInstance?.dropdownItems?.get(0)?.active).toBe(true);
+        }));
+
+        it('should not open the dropdown via keyboard shortcut', fakeAsync(() => {
+            createTestComponent(SimpleBindingDropdownComponent);
+            dispatchKeyboardEvent(dropdownElement, 'keydown', C, undefined, { control: true });
+            fixture.detectChanges();
+            flush();
+            expectDropdownClose();
         }));
 
         it('should highlight the first item after opening when no value is selected', fakeAsync(() => {

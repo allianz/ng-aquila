@@ -510,9 +510,10 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             return;
         }
         const altKey = $event.altKey;
+        const ctrlKey = $event.ctrlKey;
+        const metaKey = $event.metaKey;
         const key = $event.key;
-        const isCharacterKey = key.length === 1;
-
+        const isCharacterKey = key.length === 1 && !ctrlKey && !metaKey && !altKey;
         const isArrowKey = key === 'ArrowDown' || key === 'ArrowUp' || key === 'ArrowLeft' || key === 'ArrowRight';
 
         if (this._filterInput && $event.target === this._filterInput.nativeElement && isCharacterKey) {
