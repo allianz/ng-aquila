@@ -57,13 +57,14 @@ nx-checkbox {
 }
 
 .nx-dropdown-results__option-checkicon {
+    display: inline-flex;
+    align-items: center;
     opacity: 0;
     margin-right: nx-spacer(2xs);
     height: v(dropdown-item-line-height);
     color: v(dropdown-item-checkmark-color);
 
     nx-icon {
-        line-height: v(dropdown-item-line-height);
         font-size: nx-font-size(xs);
 
         ::ng-deep .nx-dropdown__panel--in-outline-field & {
