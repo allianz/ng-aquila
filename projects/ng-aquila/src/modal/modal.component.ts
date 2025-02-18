@@ -18,6 +18,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule, NxStatusIconType } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -82,7 +83,7 @@ export class NxModalTitleComponent {
         '[@fadeInOut]': '',
         '[class.nx-modal--fixed-width]': 'size === "fixed"',
     },
-    imports: [CdkTrapFocus, NxIconModule, CdkScrollable, NgTemplateOutlet],
+    imports: [CdkTrapFocus, NxIconModule, CdkScrollable, NgTemplateOutlet, NxButtonModule],
 })
 export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
     private _closeButtonLabel = 'Close dialog';

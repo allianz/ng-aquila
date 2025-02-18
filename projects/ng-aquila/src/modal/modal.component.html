@@ -10,7 +10,7 @@
                     }
                 </div>
                 @if (showCloseIcon) {
-                    <button #closeButton (click)="closeButtonClick()" [attr.aria-label]="closeButtonLabel" class="nx-modal__close" type="button">
+                    <button nxPlainButton #closeButton (click)="closeButtonClick()" [attr.aria-label]="closeButtonLabel" class="nx-modal__close" type="button">
                         <nx-icon name="close" aria-hidden="true"></nx-icon>
                     </button>
                 }

@@ -38,36 +38,15 @@ $padding-content: nx-spacer(2m) - $popover-border-size;
 }
 
 .nx-popover__close-icon {
-    display: flex;
     position: absolute;
     top: nx-spacer(s);
     right: nx-spacer(s);
-    cursor: pointer;
     font-size: v(popover-close-icon-size);
-    color: v(popover-close-icon-color);
-
-    border-radius: 2px;
 
     [dir='rtl'] & {
         right: auto;
         left: nx-spacer(3xs);
     }
-
-    &:focus {
-        outline: none;
-    }
-    // don't show inner dotted border on firefox
-    &::-moz-focus-inner {
-        border: 0;
-    }
-
-    @media screen and (forced-colors: active) {
-        color: buttonText;
-    }
-}
-
-.nx-popover__close-icon.cdk-keyboard-focused {
-    @include focus-style;
 }
 
 .nx-popover__arrow {

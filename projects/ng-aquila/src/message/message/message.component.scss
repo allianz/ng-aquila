@@ -89,8 +89,3 @@ $border-size: nx-border-size(xs);
 .nx-message__close-icon {
     @include message__close-icon;
 }
-
-.nx-message__close-icon.cdk-keyboard-focused {
-    @include focus-style;
-    border-radius: nx-border-radius(s);
-}

@@ -13,6 +13,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 /** The contextual type of a message. */
@@ -31,7 +32,7 @@ const ICONS: { [k: string]: string } = {
     styleUrls: ['./message.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: 'nxMessage',
-    imports: [NxIconModule],
+    imports: [NxIconModule, NxButtonModule],
 })
 export class NxMessageComponent implements AfterViewInit, OnDestroy {
     @HostBinding('class.context-info') get _isInfo() {

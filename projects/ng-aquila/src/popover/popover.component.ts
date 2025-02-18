@@ -12,6 +12,7 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -26,7 +27,7 @@ import { PopoverTriggerType } from './popover-trigger.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./popover.component.scss'],
     exportAs: 'nxPopover',
-    imports: [NgClass, NgStyle, NxIconModule, NgTemplateOutlet],
+    imports: [NgClass, NgStyle, NxIconModule, NgTemplateOutlet, NxButtonModule],
 })
 export class NxPopoverComponent implements OnDestroy, OnInit {
     /** @docs-private */

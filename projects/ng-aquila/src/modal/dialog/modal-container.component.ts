@@ -19,6 +19,7 @@ import {
     Optional,
     ViewChild,
 } from '@angular/core';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxModalAnimations } from './modal-animations';
@@ -62,7 +63,7 @@ export function throwNxDialogContentAlreadyAttachedError() {
         '(@slideInOut.start)': '_onAnimationStart($event)',
         '(@slideInOut.done)': '_onAnimationDone($event)',
     },
-    imports: [NxIconModule, CdkPortalOutlet],
+    imports: [NxIconModule, CdkPortalOutlet, NxButtonModule],
 })
 export class NxModalContainer extends BasePortalOutlet implements AfterViewInit, OnDestroy, OnInit {
     /** The portal outlet inside of this container into which the modal content will be loaded. */

@@ -1,6 +1,6 @@
 <ng-template cdkPortalOutlet></ng-template>
 @if (_config.showCloseIcon) {
-    <button #closeButton [attr.aria-label]="_config.closeIconButtonLabel" (click)="_closeButtonClick()" class="nx-modal__close" type="button">
+    <button nxPlainButton #closeButton [attr.aria-label]="_config.closeIconButtonLabel" (click)="_closeButtonClick()" class="nx-modal__close" type="button">
         <nx-icon name="close" aria-hidden="true"></nx-icon>
     </button>
 }

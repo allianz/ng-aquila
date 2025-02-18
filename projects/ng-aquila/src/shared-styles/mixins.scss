@@ -255,17 +255,6 @@ $border-size: nx-border-size(xs);
     position: absolute;
     top: nx-spacer(s);
     right: nx-spacer(s);
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    padding: 0;
-    display: flex;
-    align-items: center;
-
-    nx-icon {
-        color: v(message-close-icon-color);
-    }
 
     :host-context([dir='rtl']) & {
         right: auto;

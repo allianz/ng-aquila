@@ -5,17 +5,18 @@
                 <div class="nx-popover__arrow" [ngStyle]="arrowStyle"></div>
             }
             @if (showCloseButton) {
-                <span
-                    [attr.aria-label]="_intl.closeIconLabel"
+                <button
+                    nxPlainButton
                     tabindex="0"
-                    role="button"
+                    type="button"
+                    [attr.aria-label]="_intl.closeIconLabel"
                     class="nx-popover__close-icon"
                     (click)="emitCloseButtonClick()"
                     (keyup)="_onCloseKeyup($event)"
                     (keydown)="_onCloseKeydown($event)"
                 >
-                    <nx-icon aria-hidden="true" name="close"></nx-icon>
-                </span>
+                    <nx-icon name="close" aria-hidden="true"></nx-icon>
+                </button>
             }
 
             <span [id]="id">

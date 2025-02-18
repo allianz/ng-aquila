@@ -149,16 +149,10 @@ $action-bar-height: nx-spacer(2xl);
 }
 
 .nx-modal__close {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
     position: absolute;
     top: nx-spacer(s);
     right: nx-spacer(s);
     height: nx-spacer(m);
-    outline: none;
-    padding: 0;
-    color: v(modal-close-icon-color);
 
     nx-icon {
         font-size: nx-font-size(s);
@@ -168,14 +162,4 @@ $action-bar-height: nx-spacer(2xl);
         right: auto;
         left: nx-spacer(s);
     }
-
-    // don't show inner dotted border on firefox
-    &::-moz-focus-inner {
-        border: 0;
-    }
-}
-
-.nx-modal__close.cdk-keyboard-focused {
-    @include focus-style;
-    border-radius: nx-border-radius(s);
 }

@@ -3,7 +3,15 @@
 }
 
 @if (closable) {
-    <button #closeButton (click)="_emitCloseEvent()" [attr.aria-label]="closeButtonLabel" tabindex="0" class="nx-message__close-icon" type="button">
+    <button
+        nxPlainButton
+        #closeButton
+        (click)="_emitCloseEvent()"
+        [attr.aria-label]="closeButtonLabel"
+        tabindex="0"
+        class="nx-message__close-icon"
+        type="button"
+    >
         <nx-icon name="close" size="s" aria-hidden="true"> </nx-icon>
     </button>
 }
