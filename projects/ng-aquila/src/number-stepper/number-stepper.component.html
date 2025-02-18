@@ -31,6 +31,7 @@
                 [nxAutoResize]="resize"
                 [id]="inputId"
                 [ngClass]="inputClassNames"
+                [value]="viewValue()"
                 (input)="onInputChange($event)"
                 (blur)="onTouchedCallback()"
                 #nativeInput

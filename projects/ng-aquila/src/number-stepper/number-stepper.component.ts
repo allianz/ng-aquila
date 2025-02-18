@@ -1,6 +1,7 @@
 import { BooleanInput, coerceBooleanProperty, NumberInput } from '@angular/cdk/coercion';
 import { NgClass } from '@angular/common';
 import {
+    afterNextRender,
     AfterViewInit,
     booleanAttribute,
     ChangeDetectionStrategy,
@@ -13,14 +14,18 @@ import {
     EventEmitter,
     forwardRef,
     Inject,
+    inject,
+    Injector,
     Input,
     input,
     LOCALE_ID,
     OnDestroy,
     Output,
     Renderer2,
+    signal,
     ViewChild,
     viewChild,
+    WritableSignal,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
@@ -204,20 +209,68 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     }
     private _max = 100;
 
+    _value: WritableSignal<number | null> = signal(0);
+    private inputValue: number | null | string = '';
+
     /** Sets the value of the number-stepper. */
     @Input() set value(value: number | null) {
-        this._value = value!;
-        if (this._value) {
-            this.setInputValue(this._value);
-        } else {
-            this.setInputValue(0);
-        }
-        this._cdr.markForCheck();
+        this._value.set(value);
+        this.inputValue = value;
     }
     get value(): number | null {
-        return this._value;
+        return this._value();
     }
-    private _value: number | null = 0;
+
+    /** @docs-private */
+    viewValue = computed(() => {
+        let value = this._value() === null ? '' : this._value();
+
+        const isInputChange = this._value() !== this.inputValue;
+        if (isInputChange && this.nativeInput?.nativeElement?.value) {
+            value = this.nativeInput?.nativeElement?.value || '';
+        }
+
+        // remove front zero
+        let viewValue = this.removeFrontZero(value!.toString());
+
+        // padding format
+        viewValue = this.leadingZero() ? pad(viewValue!.toString(), 2) : viewValue!.toString();
+
+        // decimal format
+        viewValue = viewValue.replace(/[,.]/g, this.decimalSeperator);
+        return viewValue;
+    });
+
+    private removeFrontZero(str: string) {
+        const isNegative = str[0] === '-';
+        const numStr = isNegative ? str.slice(1) : str;
+
+        const [intPart, decPart] = numStr.split('.');
+
+        const cleanIntPart = intPart.replace(/^0+(?=\d)/, '');
+
+        const result = decPart !== undefined ? `${cleanIntPart}.${decPart}` : cleanIntPart;
+
+        return isNegative ? `-${result}` : result;
+    }
+
+    /** @docs-private */
+    onInputChange(event: Event) {
+        const inputValue = (event.target as HTMLInputElement).value;
+        this.inputValue = inputValue;
+
+        let newValue;
+        if (this.validateUserInput(inputValue)) {
+            const formattedValue = inputValue.replace(/[,.]/g, '.');
+            newValue = Number(formattedValue);
+            this._value.set(newValue);
+        } else {
+            newValue = null;
+            this._value.set(null);
+        }
+        this.valueChange.emit(newValue!);
+        this.onChangeCallback(newValue);
+    }
 
     /** Whether the negative set of styling should be used. */
     @Input() set negative(value: BooleanInput) {
@@ -236,17 +289,9 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
      *
      * Default: `true`.
      */
-    @Input() set leadingZero(value: BooleanInput) {
-        if (this._leadingZero !== value) {
-            this._leadingZero = coerceBooleanProperty(value);
-            this.setInputValue(this.value);
-            this._cdr.markForCheck();
-        }
-    }
-    get leadingZero(): boolean {
-        return this._leadingZero;
-    }
-    private _leadingZero = true;
+    leadingZero = input(true, {
+        transform: booleanAttribute,
+    });
 
     /**
      * Whether the user input in the number stepper should be disabled.
@@ -278,6 +323,8 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     private readonly _destroyed = new Subject<void>();
 
+    private injector = inject(Injector);
+
     constructor(
         private readonly _cdr: ChangeDetectorRef,
         _renderer: Renderer2,
@@ -292,39 +339,28 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         this.decimalSeperator = this.getDecimalSeparator(this.localeId);
 
         effect(() => {
+            if (this.viewValue()) {
+                afterNextRender(
+                    () => {
+                        this.triggerResize();
+                    },
+                    {
+                        injector: this.injector,
+                    },
+                );
+            }
+
             if (this.projectedLabelElement()) {
                 this.projectedLabelElement()!.setAttribute('for', this.inputId);
             }
         });
     }
 
-    ngAfterViewInit(): void {
-        this.setInputValue(this._value);
-    }
+    ngAfterViewInit(): void {}
 
     ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
-    }
-
-    /** @docs-private */
-    setInputValue(value: number | null | string) {
-        const parsedValue = value ? value : 0;
-        if (this.leadingZero) {
-            this.numberInputValue = pad(parsedValue.toString(), 2);
-        } else {
-            this.numberInputValue = parsedValue.toString();
-        }
-
-        if (this.nativeInput) {
-            // update the native input value with the transformed value.
-            this.nativeInput.nativeElement.value = this.numberInputValue;
-        }
-
-        // use timeout to get the current value of numberInputValue
-        setTimeout(() => {
-            this.triggerResize();
-        });
     }
 
     disabledButton() {
@@ -361,34 +397,6 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         this._cdr.markForCheck();
     }
 
-    /** @docs-private */
-    onInputChange(event: Event) {
-        // value could be '2,01' , '2.02' depend on locale'
-        const rawValue = (event.target as HTMLInputElement).value;
-
-        const sanitizedValue = rawValue.replace(/[,.]/g, '.');
-        if (this.validateUserInput((event.target as HTMLInputElement).value)) {
-            this._value = Number(sanitizedValue);
-        } else {
-            this._value = null;
-        }
-
-        // setInputValue() should be called so that numberInputValue is updated with the user input
-        if (this._value !== null) {
-            const decimalPoint = this.getDecimalPoint(sanitizedValue);
-
-            // remove leading zero from value like '00.14', '04', '-02.12' case,
-            // and preserve .0 case in input view.
-            let viewValue = parseFloat(sanitizedValue).toFixed(decimalPoint);
-            viewValue = viewValue.replace('.', this.decimalSeperator);
-
-            this.setInputValue(viewValue);
-        }
-
-        this.valueChange.emit(this._value!);
-        this.onChangeCallback(this._value);
-    }
-
     private getDecimalSeparator(locale: string) {
         const sampleDecimalNumber = 1.1;
         const seperator =
@@ -401,13 +409,6 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     /** @docs-private */
     validateUserInput(input: string) {
         return !!input.match(ALLOWED_CHARACTERS);
-    }
-
-    private getDecimalPoint(value: string) {
-        if (value.includes('.')) {
-            return value.split('.')[1].length;
-        }
-        return 0;
     }
 
     /** @docs-private */
@@ -425,16 +426,15 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     /** @docs-private */
     _increment() {
         let newValue;
-        if (this.isBetweenLimits(this._value || 0)) {
-            newValue = this.getNextGreaterValue(this._value || 0);
+        if (this.isBetweenLimits(this.value || 0)) {
+            newValue = this.getNextGreaterValue(this.value || 0);
         } else {
-            newValue = this.enforceLimits(this._value || 0);
+            newValue = this.enforceLimits(this.value || 0);
         }
 
         this.value = newValue;
-        this.setInputValue(this.value);
-        this.valueChange.emit(this._value!);
-        this.onChangeCallback(this._value);
+        this.valueChange.emit(newValue!);
+        this.onChangeCallback(newValue);
     }
 
     /** @docs-private */
@@ -460,16 +460,15 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     /** @docs-private */
     _decrement() {
         let newValue;
-        if (this.isBetweenLimits(this._value || 0)) {
-            newValue = this.getNextLowerValue(this._value || 0);
+        if (this.isBetweenLimits(this.value || 0)) {
+            newValue = this.getNextLowerValue(this.value || 0);
         } else {
-            newValue = this.enforceLimits(this._value || 0);
+            newValue = this.enforceLimits(this.value || 0);
         }
 
         this.value = newValue;
-        this.setInputValue(this.value);
-        this.valueChange.emit(this._value!);
-        this.onChangeCallback(this._value);
+        this.valueChange.emit(newValue!);
+        this.onChangeCallback(newValue);
     }
 
     /** @docs-private */
@@ -522,12 +521,12 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     /** @docs-private */
     isMinimum() {
-        return this._value === this._min;
+        return this.value === this._min;
     }
 
     /** @docs-private */
     isMaximum() {
-        return this._value === this._max;
+        return this.value === this._max;
     }
 
     /** @docs-private */
@@ -552,9 +551,9 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     _validateFn() {
         // the manual user input must match min + n * step, e.g. minimum 1 step 2: 1, 3, 5, 7 etc.
-        if (!this.isValidStep(this._value)) {
+        if (!this.isValidStep(this.value)) {
             return { nxNumberStepperStepError: 'Value is not a valid step' };
-        } else if (this._value === null) {
+        } else if (this.value === null) {
             return { nxNumberStepperFormatError: 'Not a valid number' };
         }
         return null;

@@ -99,13 +99,12 @@ describe('NxNumberStepperComponent', () => {
 
     function assertInputAndValue(userInput: string, viewValue: string, modelValue: number | null) {
         inputElement.value = userInput;
+
         inputElement.dispatchEvent(new Event('input'));
         fixture.detectChanges();
-        tick();
 
         expect(inputElement.value).toBe(viewValue);
         expect(testInstance.stepperInstance.value).toBe(modelValue);
-        tick();
     }
 
     describe('basic number stepper', () => {
@@ -325,21 +324,24 @@ describe('NxNumberStepperComponent', () => {
     });
 
     describe('ngModel', () => {
-        it('should set the ngModel value to null on wrong input', fakeAsync(() => {
+        it('should set the ngModel value to null on wrong input', async () => {
             createTestComponent(NgModelStepper);
             inputElement.value = '0.33aa';
             inputElement.dispatchEvent(new Event('input'));
             fixture.detectChanges();
             expect(testInstance.value).toBeNull();
-            clickUp();
-            expect(testInstance.value).toBe(1);
-        }));
+            upButton.click();
+            fixture.detectChanges();
 
-        it('should reflect ngModel value in input', fakeAsync(() => {
-            createTestComponent(NgModelStepper);
-            clickUp();
             expect(testInstance.value).toBe(1);
-        }));
+        });
+
+        it('should reflect ngModel value in input', async () => {
+            createTestComponent(NgModelStepper);
+            upButton.click();
+            fixture.detectChanges();
+            expect(testInstance.value).toBe(1);
+        });
     });
 
     describe('simple binding', () => {
@@ -400,7 +402,7 @@ describe('NxNumberStepperComponent', () => {
             fixture.detectChanges();
             clickUp();
             assertInputValue('02');
-            testInstance.stepperInstance.leadingZero = false;
+            fixture.componentInstance.leadingZero = false;
             clickDown();
             assertInputValue('1');
         }));
@@ -410,7 +412,7 @@ describe('NxNumberStepperComponent', () => {
             testInstance.stepperInstance.value = 2;
             fixture.detectChanges();
             assertInputValue('02');
-            testInstance.stepperInstance.leadingZero = false;
+            fixture.componentInstance.leadingZero = false;
             fixture.detectChanges();
             flush();
             assertInputValue('2');
@@ -453,26 +455,26 @@ describe('NxNumberStepperComponent', () => {
             flush();
         }));
 
-        it('correctly display format in view and value', fakeAsync(() => {
+        it('correctly display format in view and value', async () => {
             createTestComponent(LocaleUsStepper);
             // common
             assertInputAndValue('00', '00', 0);
             assertInputAndValue('12', '12', 12);
             assertInputAndValue('-10', '-10', -10);
 
-            // decimal
+            // // decimal
             assertInputAndValue('0.0', '0.0', 0);
-            assertInputAndValue('00.00', '0.00', 0);
             assertInputAndValue('0.1', '0.1', 0.1);
+            assertInputAndValue('00.00', '0.00', 0);
+            assertInputAndValue('00.01', '0.01', 0.01);
+            assertInputAndValue('-00.10', '-0.10', -0.1);
+            assertInputAndValue('000.01', '0.01', 0.01);
             assertInputAndValue('0.10', '0.10', 0.1);
             assertInputAndValue('1.00', '1.00', 1);
             assertInputAndValue('0.010', '0.010', 0.01);
-            assertInputAndValue('00.01', '0.01', 0.01);
-            assertInputAndValue('000.01', '0.01', 0.01);
             assertInputAndValue('-0.1', '-0.1', -0.1);
-            assertInputAndValue('-00.10', '-0.10', -0.1);
 
-            // invalid
+            // // invalid
             assertInputAndValue('.09', '.09', null);
             assertInputAndValue('04.', '04.', null);
             assertInputAndValue('02,', '02,', null);
@@ -481,7 +483,7 @@ describe('NxNumberStepperComponent', () => {
             assertInputAndValue('0.01.01', '0.01.01', null);
             assertInputAndValue('x1', 'x1', null);
             assertInputAndValue('-01x', '-01x', null);
-        }));
+        });
 
         it('be able to use comma as decimal seperator', fakeAsync(() => {
             createTestComponent(LocaleUsStepper);
@@ -497,7 +499,6 @@ describe('NxNumberStepperComponent', () => {
             assertInputAndValue('7.70', '7,70', 7.7);
             assertInputAndValue('8,08', '8,08', 8.08);
             flush();
-            // dsd
         }));
     });
 
