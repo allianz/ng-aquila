@@ -163,12 +163,13 @@
         &.nx-expansion-panel--light:not(.nx-expansion-panel--negative) {
             ::ng-deep .nx-expansion-panel__header-content {
                 box-shadow: inset 0 1px 0 0 CanvasText;
+                border-top: 1px solid CanvasText;
             }
 
             &:last-child,
             &:only-child {
                 box-shadow: 0 1px 0 0 CanvasText; // IE11
-                border-bottom: 1px solid CanvasText; // Chromium Edge
+                border-bottom: 1px solid CanvasText;
             }
         }
     }
