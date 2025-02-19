@@ -315,6 +315,7 @@ $sticky-shadow-size: nx-spacer(3xs);
 // sticky columns
 @include media-breakpoint-up(medium) {
     ::ng-deep .nx-header-cell,
+    ::ng-deep .nx-expandable-table-cell,
     ::ng-deep .nx-table-cell {
         :host(.nx-table--sticky-first) &:first-child,
         :host(.nx-table--sticky-last) &:last-child {
