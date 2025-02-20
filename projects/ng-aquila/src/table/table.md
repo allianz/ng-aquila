@@ -67,7 +67,7 @@ For **localization** please use the provider `NxHeaderSortIntl` which contains s
 ```ts
 @Injectable()
 export class MyIntl extends NxSortHeaderIntl {
-    sortAscendingAriaLabel = 'klick, um absteigend zu sortieren';
+    sortAscendingAriaLabel = 'klick, um aufsteigend zu sortieren';
     sortDescendingAriaLabel = 'klick, um absteigend zu sortieren';
     sortedAscendingAriaLabel = 'aufsteigend sortiert nach';
     sortedDescendingAriaLabel = 'absteigend sortiert nach';
