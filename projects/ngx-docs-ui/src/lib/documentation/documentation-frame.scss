@@ -29,7 +29,7 @@ $toc-width: 200px;
     width: 100%;
     font-size: 1rem;
     line-height: 1.5rem;
-    z-index: 2;
+    z-index: 20;
 
     .nx-header__brand {
         margin-right: 32px;
@@ -138,7 +138,7 @@ nx-header-navigation ::ng-deep .nx-header__link {
 
     &.mobile-sidebar--visible {
         position: absolute;
-        z-index: 1;
+        z-index: 10;
     }
 
     &:not(.mobile-sidebar--visible) {
