@@ -3,6 +3,7 @@
 
 $cell-border-width: nx-border-size(xs);
 $border-bottom-width: nx-border-size(m);
+$border-top-width: nx-border-size(s);
 $vertical-padding: nx-spacer(s);
 $condensed-vertical-padding: nx-spacer(2xs);
 $horizontal-padding: nx-spacer(s);
@@ -25,6 +26,7 @@ $sticky-shadow-size: nx-spacer(3xs);
     color: v(table-header-cell-color);
     background: v(table-header-cell-background-color);
     border-bottom: $border-bottom-width solid v(table-header-border-bottom-color);
+    border-top: $border-top-width solid v(table-header-border-top-color);
     padding-top: $vertical-padding - $cell-border-width;
     padding-bottom: $vertical-padding - $border-bottom-width;
     padding-left: $horizontal-padding;
