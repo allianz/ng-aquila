@@ -90,10 +90,12 @@ describe('NxColDirective', () => {
         expect(getClassesCreated(BasicTestNxColOneInputs, '.nx-grid__column-10')).not.toBeNull();
     });
 
-    it('should test with empty input cols', () => {
-        expect(() => {
-            TestBed.createComponent(BasicTestNxColEmptyInputs).detectChanges();
-        }).toThrow();
+    it('should grow if nxCol value is empty', () => {
+        createTestComponent(BasicTestNxColEmptyInputs);
+        const col = getColumn();
+        const style = getComputedStyle(col);
+
+        expect(style.flexGrow).toBe('1');
     });
 
     it('should test with class="test"', () => {

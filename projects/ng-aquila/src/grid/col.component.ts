@@ -78,10 +78,6 @@ export class NxColComponent {
      */
     @Input('nxCol') set col(value: string) {
         this._columnClasses = this._mapTiers(value, [], MAPPING, ['0']);
-
-        if (this._columnClasses.length === 0) {
-            this.generateError('Exception: NxColDirective. Empty nxCol attribute.');
-        }
     }
 
     private _columnClasses = '';

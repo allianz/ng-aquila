@@ -125,6 +125,11 @@ Use the `nxRow` directive on a div element to specify if it's a row:
     <div nxRow> [...] </div>
 </div>
 ```
+#### nxCol
+Use the `nxCol` directive on a div element to specify if it's a column.
+An empty `nxCol` will automatically take up all the remaining space of the row.
+
+<!-- example(grid-col-blank) -->
 
 #### nxCol: Auto-sized (one input)
 
