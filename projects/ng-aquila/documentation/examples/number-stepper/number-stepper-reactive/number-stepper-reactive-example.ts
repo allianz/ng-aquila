@@ -1,6 +1,7 @@
 import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxNumberStepperComponent } from '@aposin/ng-aquila/number-stepper';
 
 /**
@@ -15,6 +16,7 @@ import { NxNumberStepperComponent } from '@aposin/ng-aquila/number-stepper';
         ReactiveFormsModule,
         NxNumberStepperComponent,
         JsonPipe,
+        NxErrorComponent,
     ],
 })
 export class NumberStepperReactiveExampleComponent {

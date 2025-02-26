@@ -180,6 +180,21 @@ $margin-default: nx-spacer(s);
     }
 }
 
+:host.is-error {
+    .nx-stepper__input {
+        color: v(danger);
+    }
+
+    ::ng-deep .nx-stepper__prefix,
+    ::ng-deep .nx-stepper__suffix {
+        color: v(danger);
+    }
+
+    .nx-stepper__input-underline {
+        background: v(danger);
+    }
+}
+
 // high contrast fix
 @media screen and (forced-colors: active) {
     button.nx-stepper__control:disabled {

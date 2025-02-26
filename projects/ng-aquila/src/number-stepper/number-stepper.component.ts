@@ -77,6 +77,7 @@ let nextUniqueId = 0;
     host: {
         '[class.is-negative]': 'negative',
         '[class.is-disabled]': 'disabled',
+        '[class.is-error]': 'errorMessages().length > 0',
     },
     providers: [CUSTOM_VALUE_ACCESSOR, CUSTOM_VALIDATOR],
     imports: [NxButtonModule, NxIconModule, NxAutoResizeDirective, NgClass],

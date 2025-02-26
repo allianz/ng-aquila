@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, DebugElement, Directive, Injectable
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 
 import { NxNumberStepperComponent } from './number-stepper.component';
 import { NxNumberStepperModule } from './number-stepper.module';
@@ -392,6 +393,13 @@ describe('NxNumberStepperComponent', () => {
             fixture.detectChanges();
             expect(stepperInstance.negative).toBeFalse();
             expect(stepperNativeElement).not.toHaveClass('is-negative');
+        });
+    });
+
+    describe('error styling', () => {
+        it('should show error styling when has error messages', () => {
+            createTestComponent(ErrorStepper);
+            expect(stepperNativeElement).toHaveClass('is-error');
         });
     });
 
@@ -863,4 +871,16 @@ class ReactiveFormOnBlurStepper extends NumberStepperTest {
             { updateOn: 'blur' },
         );
     }
+}
+
+@Component({
+    template: `
+        <nx-number-stepper>
+            <nx-error>error</nx-error>
+        </nx-number-stepper>
+    `,
+    imports: [NxNumberStepperModule, NxErrorComponent],
+})
+class ErrorStepper extends NumberStepperTest {
+    @ViewChild(NxErrorComponent) error!: NxErrorComponent;
 }
