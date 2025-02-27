@@ -59,6 +59,7 @@ describe('NxAutocompleteComponent:', () => {
                 NoopAnimationsModule,
                 NxModalModule.forRoot(),
                 BasicAutocompleteComponent,
+                LongContentComponent,
                 ShadowAutoCompleteComponent,
                 CustomAutocompleteComponent,
                 ComplexDataAutocompleteComponent,
@@ -339,6 +340,52 @@ describe('NxAutocompleteComponent:', () => {
             expect((triggerInstance as any)._overlayRef.updatePositionStrategy).toHaveBeenCalledTimes(1);
         }));
     });
+
+    describe('panelWidth and panelMaxWidth', () => {
+        it('should have panel width longer than input trigger when panelGrow is true', fakeAsync(() => {
+            createTestComponent(LongContentComponent);
+            flush();
+            typeInput('A');
+            flush();
+
+            const panel = getAutocompletePanel();
+            const inputWidth = input.getBoundingClientRect().width;
+            const panelWidth = panel.getBoundingClientRect().width;
+            expect(panelWidth).toBeGreaterThan(inputWidth);
+        }));
+
+        it('should not have panel width longer than input trigger when panelGrow is false', fakeAsync(() => {
+            createTestComponent(LongContentComponent);
+            const component = testInstance as LongContentComponent;
+            component.panelGrow = false;
+
+            flush();
+            typeInput('A');
+            flush();
+
+            const panel = getAutocompletePanel();
+            const inputWidth = input.getBoundingClientRect().width;
+            const panelWidth = panel.getBoundingClientRect().width;
+
+            expect(panelWidth).toEqual(inputWidth);
+        }));
+
+        it('should not have panel width longer than maxPanelWidth when panelMaxWidth is set', fakeAsync(() => {
+            createTestComponent(LongContentComponent);
+            const component = testInstance as LongContentComponent;
+            component.panelGrow = true;
+            component.panelMaxWidth = 400;
+
+            flush();
+            typeInput('A');
+            flush();
+
+            const panel = getAutocompletePanel();
+            const panelWidth = panel.getBoundingClientRect().width;
+
+            expect(panelWidth).toBeLessThanOrEqual(400);
+        }));
+    });
 });
 
 const DATA = ['A', 'AA', 'B', 'C'];
@@ -387,6 +434,23 @@ class AutocompleteComponent {
     imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class BasicAutocompleteComponent extends AutocompleteComponent {}
+
+@Component({
+    template: `
+        <div style="width: 100px">
+            <input type="text" [panelMaxWidth]="panelMaxWidth" [panelGrow]="panelGrow" [nxAutocomplete]="auto1" aria-label="atcmpl" />
+        </div>
+        <nx-autocomplete #auto1>
+            <nx-autocomplete-option [value]="option"> A very long autocomplete option that exceeds the input width </nx-autocomplete-option>
+        </nx-autocomplete>
+    `,
+    standalone: true,
+    imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
+})
+class LongContentComponent extends AutocompleteComponent {
+    panelGrow = true;
+    panelMaxWidth: number | null = null;
+}
 
 @Component({
     template: `

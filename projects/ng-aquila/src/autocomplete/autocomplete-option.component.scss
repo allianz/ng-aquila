@@ -15,6 +15,7 @@
 :host .nx-autocomplete-option {
     @include dropdown-overlay__option;
     padding-left: nx-spacer(2m);
+    text-wrap: auto;
 
     // keyboard focus styling
     &.nx-active {

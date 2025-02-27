@@ -48,6 +48,19 @@ All options that apply to the data binding can be used. For details look at the 
 
 <!-- example(autocomplete-data-binding) -->
 
+### PanelGrow and PanelMaxWidth
+
+With `panelGrow` set to `true` the overlay can grow larger than the trigger and grows with the longest label. 
+
+With `panelGrow` set to `false` the overlay won't grow larger than trigger.(this is default value)
+
+With `panelMaxWidth` a max-width can be set, `panelMaxWidth` accepts a number for pixel values or a string for any css value.
+( Note that: `panelMaxWidth` have more priority than `panelGrow`)
+
+Note: minimum overlay width will be size of trigger.
+
+<!-- example(autocomplete-panel-grow) -->
+
 <div class="docs-expert-container">
 
 #### Expert: Autocomplete with outline

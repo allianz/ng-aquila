@@ -1,7 +1,16 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { DOWN_ARROW, ENTER, ESCAPE, TAB, UP_ARROW } from '@angular/cdk/keycodes';
-import { FlexibleConnectedPositionStrategy, Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy, ViewportRuler } from '@angular/cdk/overlay';
+import {
+    FlexibleConnectedPositionStrategy,
+    Overlay,
+    OverlayConfig,
+    OverlayRef,
+    OverlaySizeConfig,
+    PositionStrategy,
+    ScrollStrategy,
+    ViewportRuler,
+} from '@angular/cdk/overlay';
 import { _getEventTarget } from '@angular/cdk/platform';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { AutofillMonitor } from '@angular/cdk/text-field';
@@ -38,11 +47,7 @@ import { NxAutocompleteOptionComponent, NxAutocompleteOptionSelected } from './a
  * Provider that allows the autocomplete to register as a ControlValueAccessor.
  * @docs-private
  */
-export const NX_AUTOCOMPLETE_VALUE_ACCESSOR: any = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => NxAutocompleteTriggerDirective),
-    multi: true,
-};
+export const NX_AUTOCOMPLETE_VALUE_ACCESSOR: any = { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NxAutocompleteTriggerDirective), multi: true };
 
 /** Injection token that determines the scroll handling while an autocomplete is open. */
 export const NX_AUTOCOMPLETE_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-autocomplete-scroll-strategy', {
@@ -182,6 +187,11 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         return this._autocompleteDisabled;
     }
     private _autocompleteDisabled = false;
+
+    /* Whether the flyout is allowed to grow longer than the input element. */
+    @Input() panelGrow: boolean = false;
+    /* Sets the maximum width of the flyout. Accepts a number for pixel values or a string for any css value */
+    @Input() panelMaxWidth: string | number = '';
 
     /** Whether or not the autocomplete panel is open. */
     get panelOpen(): boolean {
@@ -661,18 +671,21 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         if (!this.autocomplete) {
             throw getNxAutocompleteMissingPanelError();
         }
+        const size: OverlaySizeConfig = {};
+        size.minWidth = this._getHostWidth();
+        size.maxWidth = this.panelGrow ? this.panelMaxWidth : size.minWidth;
 
         if (this._overlayRef) {
             /** Update the panel width, in case the host width has changed */
-            this._overlayRef.updateSize({ minWidth: this._getHostWidth() });
+            this._overlayRef.updateSize(size);
         } else {
             this._portal = new TemplatePortal(this.autocomplete.template, this._viewContainerRef);
-            this._overlayRef = this._overlay.create(this._getOverlayConfig());
+            this._overlayRef = this._overlay.create(this._getOverlayConfig(size));
 
             if (this._viewportRuler) {
                 this._viewportSubscription = this._viewportRuler.change().subscribe(() => {
                     if (this.panelOpen && this._overlayRef) {
-                        this._overlayRef.updateSize({ minWidth: this._getHostWidth() });
+                        this._overlayRef.updateSize(size);
                     }
                 });
             }
@@ -695,12 +708,13 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         }
     }
 
-    private _getOverlayConfig(): OverlayConfig {
+    private _getOverlayConfig(config?: OverlayConfig): OverlayConfig {
         return new OverlayConfig({
             positionStrategy: this._getOverlayPosition(),
             scrollStrategy: this._scrollStrategyFactory(),
             minWidth: this._getHostWidth(),
             direction: this._dir?.value || 'ltr',
+            ...config,
         });
     }
 
@@ -719,18 +733,8 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
             // in the overlay only being 16px in height. this change disabled this code path for now
             .withGrowAfterOpen(true)
             .withPositions([
-                {
-                    originX: 'start',
-                    originY: 'bottom',
-                    overlayX: 'start',
-                    overlayY: 'top',
-                },
-                {
-                    originX: 'start',
-                    originY: 'top',
-                    overlayX: 'start',
-                    overlayY: 'bottom',
-                },
+                { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' },
+                { originX: 'start', originY: 'top', overlayX: 'start', overlayY: 'bottom' },
             ]);
 
         return this._positionStrategy;

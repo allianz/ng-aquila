@@ -44,9 +44,7 @@ export class NxAutocompleteSelectedEvent {
     styleUrls: ['autocomplete.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: 'nxAutocomplete',
-    host: {
-        class: 'nx-autocomplete',
-    },
+    host: { class: 'nx-autocomplete' },
     imports: [NgClass, NxAutocompleteOptionComponent],
 })
 export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
