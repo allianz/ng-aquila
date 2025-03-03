@@ -30,7 +30,7 @@
         <ng-content></ng-content>
     </div>
 </label>
-@if (_controlInvalid()) {
+@if (_controlInvalid() && !checkboxGroup) {
     <div class="nx-margin-top-xs">
         <ng-content select="nx-error"></ng-content>
     </div>
