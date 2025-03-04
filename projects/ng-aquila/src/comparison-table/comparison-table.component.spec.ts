@@ -206,6 +206,7 @@ describe('NxComparisonTableComponent', () => {
 
             const rowsInToggleSections = toggleSectionElements[0].queryAll(By.css('.nx-comparison-table__row'));
             expect(rowsInToggleSections).toHaveSize(2);
+            flush();
         }));
     });
 
@@ -234,6 +235,7 @@ describe('NxComparisonTableComponent', () => {
             tick(THROTTLE_TIME);
             fixture.detectChanges();
             expect(tableInstance.viewType).toBe('tablet');
+            flush();
         }));
 
         it('should display the correct number of rows and toggle sections (tablet)', fakeAsync(() => {
@@ -253,6 +255,7 @@ describe('NxComparisonTableComponent', () => {
 
             const rowsInToggleSections = toggleSectionElements[0].queryAll(By.css('.nx-comparison-table__row'));
             expect(rowsInToggleSections).toHaveSize(4);
+            flush();
         }));
 
         it('should display the correct number of rows and toggle sections (mobile)', fakeAsync(() => {
@@ -267,6 +270,7 @@ describe('NxComparisonTableComponent', () => {
 
             expect(rows[0].queryAll(By.css('.nx-comparison-table__mobile-toggle-section-header'))).toHaveSize(1);
             expect(rows[1].queryAll(By.css('.nx-comparison-table__description-cell'))).toHaveSize(3);
+            flush();
         }));
 
         it('should display the placeholders correctly', fakeAsync(() => {
@@ -292,6 +296,7 @@ describe('NxComparisonTableComponent', () => {
 
             expect(rows[3].queryAll(By.css('td'))).toHaveSize(6);
             expect(rows[3].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveSize(2);
+            flush();
         }));
 
         it('should display all the rows when no footer (mobile)', fakeAsync(() => {
@@ -318,6 +323,7 @@ describe('NxComparisonTableComponent', () => {
 
             expect(rows[3].queryAll(By.css('td'))).toHaveSize(3);
             expect(rows[3].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveSize(1);
+            flush();
         }));
 
         it('should update when parent is onPush', fakeAsync(() => {
@@ -329,6 +335,7 @@ describe('NxComparisonTableComponent', () => {
             fixture.detectChanges();
 
             expect(fixture.nativeElement.querySelector('.nx-comparison-table__description-row')).toBeTruthy();
+            flush();
         }));
 
         afterEach(() => {
@@ -392,6 +399,7 @@ describe('NxComparisonTableComponent', () => {
             expect(tableInstance.selectedIndex).toBe(1);
             expect(spy).toHaveBeenCalledTimes(1);
             expect(testInstance.selected).toBe(1);
+            flush();
         }));
     });
 
@@ -489,6 +497,7 @@ describe('NxComparisonTableComponent', () => {
             expect(mobileContentRows[1].nativeElement).toHaveClass('is-disabled');
             expect(mobileContentRows[2].nativeElement).toHaveClass('is-disabled');
             viewport.reset();
+            flush();
         }));
     });
 
@@ -505,6 +514,7 @@ describe('NxComparisonTableComponent', () => {
             createTestComponent(BasicComponent);
             tick(THROTTLE_TIME);
             expect(tableInstance.viewType).toBe('tablet');
+            flush();
         }));
 
         it('should have the correct view type on page load (mobile)', fakeAsync(() => {
@@ -515,6 +525,7 @@ describe('NxComparisonTableComponent', () => {
             tick(THROTTLE_TIME);
 
             expect(tableInstance.viewType).toBe('mobile');
+            flush();
         }));
 
         it('should update the viewType correctly', fakeAsync(() => {
@@ -535,6 +546,7 @@ describe('NxComparisonTableComponent', () => {
             window.dispatchEvent(new Event('resize'));
             tick(THROTTLE_TIME);
             expect(tableInstance.viewType).toBe('desktop');
+            flush();
         }));
 
         it('emits a viewType change', fakeAsync(() => {
@@ -544,6 +556,7 @@ describe('NxComparisonTableComponent', () => {
             window.dispatchEvent(new Event('resize'));
             tick(THROTTLE_TIME);
             expect(tableInstance.viewTypeChange.emit).toHaveBeenCalledWith('mobile');
+            flush();
         }));
 
         afterEach(() => {
@@ -553,6 +566,8 @@ describe('NxComparisonTableComponent', () => {
 
     describe('sticky behaviour', () => {
         it('should not cut a top clipping-path on desktop by default', fakeAsync(() => {
+            viewport.set('desktop');
+
             createTestComponent(BasicComponent);
             tick(THROTTLE_TIME);
             flush();
@@ -560,10 +575,14 @@ describe('NxComparisonTableComponent', () => {
             const tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
             const regex = /^inset\((.*)px -12px -1px\)$/;
             expect(parseInt(regex.exec(tableBody.styles['clip-path'] as string)![1], 10)).toBeLessThanOrEqual(0);
+            flush();
         }));
 
         it('should update top clipping-path when scrolled (desktop)', fakeAsync(() => {
+            viewport.set('desktop');
+
             createTestComponent(LongPageWithTableComponent);
+
             tick(THROTTLE_TIME);
 
             const wrapperDiv = fixture.debugElement.query(By.css('div'));
@@ -580,6 +599,7 @@ describe('NxComparisonTableComponent', () => {
             tick();
             fixture.detectChanges();
             expect(parseInt(regex.exec(tableBody.styles['clip-path'] as string)![1], 10)).toBeLessThanOrEqual(0);
+            flush();
         }));
 
         it('should not cut a left clipping-path by default on mobile', fakeAsync(() => {
@@ -596,6 +616,7 @@ describe('NxComparisonTableComponent', () => {
             const descriptionCell = tableElement.query(By.css('.nx-comparison-table__description-row')).query(By.css('.nx-comparison-table__description-cell'));
             expect(descriptionCell.styles['clip-path']).toMatch(/^inset\((0|0px)\)$/);
             expect(toggleSectionHeaderCell.styles['clip-path']).toMatch(/^inset\((0|0px)\)$/);
+            flush();
         }));
 
         it('should update top clipping-path when scrolled (mobile)', fakeAsync(() => {
@@ -625,9 +646,12 @@ describe('NxComparisonTableComponent', () => {
             fixture.detectChanges();
             expect(parseInt(regex.exec(descriptionCell.styles['clip-path'] as string)![1], 10)).toBeGreaterThan(0);
             expect(parseInt(regex.exec(toggleSectionHeaderCell.styles['clip-path'] as string)![1], 10)).toBeGreaterThan(0);
+            flush();
         }));
 
         it('should mark as sticky when parent is onPush', fakeAsync(() => {
+            viewport.set('desktop');
+
             createTestComponent(BasicOnPushComponent);
             tick(THROTTLE_TIME);
 
@@ -645,9 +669,12 @@ describe('NxComparisonTableComponent', () => {
             fixture.detectChanges();
             tick();
             expect(parseInt(regex.exec(tableBody.styles['clip-path'] as string)![1], 10)).toBeLessThanOrEqual(0);
+            flush();
         }));
 
         it('should update clipping-path when header row requests it', fakeAsync(() => {
+            viewport.set('desktop');
+
             createTestComponent(LongPageWithTableComponent);
             tick(THROTTLE_TIME);
 
@@ -665,11 +692,8 @@ describe('NxComparisonTableComponent', () => {
             tick();
             fixture.detectChanges();
             expect(parseInt(regex.exec(tableBody.styles['clip-path'] as string)![1], 10)).toBeLessThanOrEqual(0);
+            flush();
         }));
-
-        afterEach(() => {
-            viewport.reset();
-        });
     });
 
     describe('a11y', () => {

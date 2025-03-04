@@ -19,6 +19,6 @@ export const processManifestData = manifestFile =>
             }, {});
 
             const content = JSON.stringify(procssedValue, null, 2);
-            return fileWriter$(manifestFile, content);
+            return fileWriter$(manifestFile, content, {});
         }),
     );

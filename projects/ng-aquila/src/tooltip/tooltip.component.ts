@@ -90,7 +90,7 @@ export class NxTooltipComponent implements OnDestroy {
     private _closeOnInteraction = false;
 
     /** Subject for notifying that the tooltip has been hidden from the view */
-    private readonly _onHide = new Subject<any>();
+    private readonly _onHide = new Subject<void>();
 
     constructor(
         private readonly _cdr: ChangeDetectorRef,

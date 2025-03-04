@@ -18,7 +18,7 @@ const outputFile$ = bindNodeCallback(fs.outputFile);
 const findAllFiles = sourceFolder => {
     const mdSearchGlob = path.join(sourceFolder, '**/!(README).md');
 
-    return mdFiles$(mdSearchGlob);
+    return mdFiles$(mdSearchGlob, {});
 };
 
 const readFileStream = pipe(
@@ -32,7 +32,7 @@ const save = folder =>
         mergeMap((file: MarkdownFile) => {
             const title = path.basename(file.filename, path.extname(file.filename));
             const targetFile = path.join(folder, title + '.html');
-            return outputFile$(targetFile, file.content).pipe(map(() => file)); // return file, not output result
+            return outputFile$(targetFile, file.content, {}).pipe(map(() => file)); // return file, not output result
         }),
     );
 

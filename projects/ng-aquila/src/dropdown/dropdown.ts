@@ -245,7 +245,7 @@ export class NxDropdownComponent
      * Emits when internal state changes to inform formfield about it.
      * @docs-private
      */
-    readonly stateChanges = new Subject<any>();
+    readonly stateChanges = new Subject<void>();
 
     /** @docs-private */
     ariaDescribedby?: string;

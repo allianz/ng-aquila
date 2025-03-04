@@ -81,7 +81,7 @@ export class NxvComponentPage implements OnDestroy {
             .subscribe(component => {
                 const apiTab = this.tabs.find(tab => tab.label === 'api');
                 if (apiTab) {
-                    apiTab.show = !component.noApi;
+                    apiTab.show = !component?.noApi;
                 }
             });
     }

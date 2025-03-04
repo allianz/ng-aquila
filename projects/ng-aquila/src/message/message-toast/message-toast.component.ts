@@ -31,10 +31,10 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
     @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet!: CdkPortalOutlet;
 
     /** Subject for notifying that the message toast has exited from view. */
-    readonly _onExit = new Subject<any>();
+    readonly _onExit = new Subject<void>();
 
     /** Subject for notifying that the message toast has finished entering the view. */
-    readonly _onEnter = new Subject<any>();
+    readonly _onEnter = new Subject<void>();
 
     /** The state of the message toast animations. */
     _animationState = 'void';

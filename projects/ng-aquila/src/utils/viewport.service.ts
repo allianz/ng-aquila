@@ -38,7 +38,7 @@ export class NxViewportService {
 
         return this.viewportChange$.pipe(
             startWith(window.innerWidth),
-            throttleTime(throttleTimeMs, asyncScheduler, { trailing: true }),
+            throttleTime(throttleTimeMs, asyncScheduler, { leading: true, trailing: true }),
             map(windowInnerWidth => windowInnerWidth >= minSize),
         );
     }
@@ -51,7 +51,7 @@ export class NxViewportService {
 
         return this.viewportChange$.pipe(
             startWith(window.innerWidth),
-            throttleTime(throttleTimeMs, asyncScheduler, { trailing: true }),
+            throttleTime(throttleTimeMs, asyncScheduler, { leading: true, trailing: true }),
             map(windowInnerWidth => windowInnerWidth < maxSize),
         );
     }
@@ -64,7 +64,7 @@ export class NxViewportService {
 
         return this.viewportChange$.pipe(
             startWith(window.innerWidth),
-            throttleTime(throttleTimeMs, asyncScheduler, { trailing: true }),
+            throttleTime(throttleTimeMs, asyncScheduler, { leading: true, trailing: true }),
             map(windowInnerWidth => windowInnerWidth >= minSize && windowInnerWidth < maxSize),
         );
     }

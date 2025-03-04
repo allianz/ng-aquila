@@ -271,7 +271,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     _comboboxId = `${this.id}-combobox`;
 
-    readonly stateChanges = new Subject<any>();
+    readonly stateChanges = new Subject<void>();
 
     _keyManager!: ActiveDescendantKeyManager<NxMultiSelectOptionComponent<T> | NxMultiSelectAllComponent<T>>;
 

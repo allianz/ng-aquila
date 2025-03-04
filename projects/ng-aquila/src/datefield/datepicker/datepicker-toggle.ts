@@ -139,9 +139,9 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
     }
 
     private _watchStateChanges() {
-        const datepickerDisabled = this.datepicker ? this.datepicker._disabledChange : observableOf();
-        const inputDisabled = this.datepicker?._datepickerInput ? this.datepicker._datepickerInput._disabledChange : observableOf();
-        const inputReadonly = this.datepicker?._datepickerInput ? this.datepicker._datepickerInput._readonlyChange : observableOf();
+        const datepickerDisabled = this.datepicker ? this.datepicker._disabledChange.asObservable() : observableOf();
+        const inputDisabled = this.datepicker?._datepickerInput ? this.datepicker._datepickerInput._disabledChange.asObservable() : observableOf();
+        const inputReadonly = this.datepicker?._datepickerInput ? this.datepicker._datepickerInput._readonlyChange.asObservable() : observableOf();
         const datepickerToggled = this.datepicker ? merge(this.datepicker.openedStream, this.datepicker.closedStream) : observableOf();
 
         this._stateChanges.unsubscribe();

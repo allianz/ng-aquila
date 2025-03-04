@@ -253,7 +253,7 @@ describe('nxContextMenu', () => {
     }));
 
     it('should close the menu when using the close scroll strategy', fakeAsync(() => {
-        const scrolledSubject = new Subject();
+        const scrolledSubject = new Subject<void>();
         const fixture = createComponent(SimpleMenu, [
             {
                 provide: ScrollDispatcher,
@@ -277,7 +277,7 @@ describe('nxContextMenu', () => {
     }));
 
     it('should not close the menu when using the reposition scroll strategy', fakeAsync(() => {
-        const scrolledSubject = new Subject();
+        const scrolledSubject = new Subject<void>();
         const fixture = createComponent(SimpleMenu, [
             {
                 provide: ScrollDispatcher,

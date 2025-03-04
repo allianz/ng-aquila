@@ -1,5 +1,5 @@
 import { PLATFORM_ID } from '@angular/core';
-import { fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
+import { fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { EMPTY, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
@@ -15,13 +15,17 @@ describe('NxViewportService', () => {
         subscriptions.push(observable.subscribe(callback));
     }
 
+    function unsubscribeAll() {
+        subscriptions.forEach(s => (s ? s.unsubscribe() : null));
+    }
+
     beforeEach(inject([NxViewportService], (vs: NxViewportService) => {
         viewportService = vs;
     }));
 
     afterEach(() => {
         viewport.reset();
-        subscriptions.forEach(s => (s ? s.unsubscribe() : null));
+        unsubscribeAll();
     });
 
     function changeViewport(viewportType: string) {
@@ -40,6 +44,8 @@ describe('NxViewportService', () => {
             withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_SMALL).pipe(take(1)), (value: any) => expect(value).toBeTrue());
             withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XSMALL).pipe(take(1)), (value: any) => expect(value).toBeTrue());
             tick(200);
+            flush();
+            unsubscribeAll();
         }));
 
         it('Correctly returns a viewport match on MOBILE viewport change', fakeAsync(() => {
@@ -69,6 +75,7 @@ describe('NxViewportService', () => {
             expect(isMinXLarge).toBeFalse();
             expect(isMin2XLarge).toBeFalse();
             expect(isMin3XLarge).toBeFalse();
+            flush();
         }));
 
         it('Correctly returns a viewport match on TABLET viewport change', fakeAsync(() => {
@@ -98,6 +105,7 @@ describe('NxViewportService', () => {
             expect(isMinXLarge).toBeFalse();
             expect(isMin2XLarge).toBeFalse();
             expect(isMin3XLarge).toBeFalse();
+            flush();
         }));
 
         it('Correctly returns a viewport match on DESKTOP viewport change', fakeAsync(() => {
@@ -127,6 +135,8 @@ describe('NxViewportService', () => {
             expect(isMinXLarge).toBeFalse();
             expect(isMin2XLarge).toBeFalse();
             expect(isMin3XLarge).toBeFalse();
+            flush();
+            unsubscribeAll();
         }));
 
         it('Emits a correct initial viewport value', fakeAsync(() => {
@@ -157,6 +167,7 @@ describe('NxViewportService', () => {
             expect(isMinXLarge).toBeFalse();
             expect(isMin2XLarge).toBeFalse();
             expect(isMin3XLarge).toBeFalse();
+            flush();
         }));
     });
 
@@ -172,6 +183,7 @@ describe('NxViewportService', () => {
             withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XSMALL).pipe(take(1)), (value: any) => expect(value).toBeFalse());
             // needed to clean timer queue
             tick(200);
+            flush();
         }));
 
         it('Correctly returns a viewport match on MOBILE viewport change', fakeAsync(() => {
@@ -230,6 +242,8 @@ describe('NxViewportService', () => {
             expect(isMaxXLarge).toBeTrue();
             expect(isMax2XLarge).toBeTrue();
             expect(isMax3XLarge).toBeTrue();
+            flush();
+            unsubscribeAll();
         }));
 
         it('Correctly returns a viewport match on DESKTOP viewport change', fakeAsync(() => {
@@ -259,6 +273,8 @@ describe('NxViewportService', () => {
             expect(isMaxXLarge).toBeTrue();
             expect(isMax2XLarge).toBeTrue();
             expect(isMax3XLarge).toBeTrue();
+            flush();
+            unsubscribeAll();
         }));
 
         it('Emits a correct initial viewport value', fakeAsync(() => {
@@ -289,6 +305,8 @@ describe('NxViewportService', () => {
             expect(isMaxXLarge).toBeTrue();
             expect(isMax2XLarge).toBeTrue();
             expect(isMax3XLarge).toBeTrue();
+            flush();
+            unsubscribeAll();
         }));
     });
 
@@ -307,6 +325,8 @@ describe('NxViewportService', () => {
 
             expect(isMobile).toBeTrue();
             expect(isMobilePlus).toBeFalse();
+            flush();
+            unsubscribeAll();
         }));
 
         it('correctly returns a match for a tablet viewport: 704px - 991px', fakeAsync(() => {
@@ -329,6 +349,8 @@ describe('NxViewportService', () => {
             expect(isTablet).toBeTrue();
             expect(isLargerThanTablet).toBeFalse();
             expect(isSmallerThanTablet).toBeFalse();
+            flush();
+            unsubscribeAll();
         }));
 
         it('correctly returns a match for a desktop viewport: 992px - 1471px', fakeAsync(() => {
@@ -352,6 +374,8 @@ describe('NxViewportService', () => {
             expect(isDesktop).toBeTrue();
             expect(isLargerThanDesktop).toBeFalse();
             expect(isSmallerThanDesktop).toBeFalse();
+            flush();
+            unsubscribeAll();
         }));
 
         it('Emits a correct initial viewport value', fakeAsync(() => {
@@ -369,6 +393,8 @@ describe('NxViewportService', () => {
 
             expect(isMobile).toBeTrue();
             expect(isMobilePlus).toBeFalse();
+            flush();
+            unsubscribeAll();
         }));
     });
 
@@ -380,33 +406,38 @@ describe('NxViewportService', () => {
 
             changeViewport('tablet');
             tick(200);
-            expect(isMaxLarge).toBeUndefined();
+            expect(isMaxLarge).toBeFalsy();
             tick(300);
             expect(isMaxLarge).toBeTrue();
+            flush();
         }));
 
         it('min returns a viewport change in 700ms', fakeAsync(() => {
             let isMinMedium;
 
-            withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM, 700), (value: any) => (isMinMedium = value));
-
+            withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM, 700), (value: any) => {
+                isMinMedium = value;
+            });
             changeViewport('tablet');
-            tick(699);
-            expect(isMinMedium).toBeUndefined();
-            tick(1);
+            tick(700);
             expect(isMinMedium).toBeTrue();
+            flush();
         }));
 
         it('between returns a viewport change in 50ms', fakeAsync(() => {
             let isTablet;
 
-            withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_LARGE, 50), (value: any) => (isTablet = value));
+            withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_LARGE, 50), (value: any) => {
+                console.log('change', value);
+                isTablet = value;
+            });
 
             changeViewport('tablet');
             tick(25);
-            expect(isTablet).toBeUndefined();
-            tick(25);
+            expect(isTablet).toBeFalsy();
+            tick(26);
             expect(isTablet).toBeTrue();
+            flush();
         }));
     });
 

@@ -24,7 +24,7 @@ export class NxvDocumentationComponent implements OnDestroy {
     ) {}
 
     ngOnDestroy(): void {
-        this.componentService.current.next();
+        this.componentService.current.next(null);
     }
 
     mainContentClicked() {

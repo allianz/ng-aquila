@@ -31,7 +31,7 @@ const findAllFiles = filePaths => {
     }
     // glob with path to the md folder (default)
     const mdSearchGlob = path.join(filePaths, '**/*.md');
-    return mdFiles$(mdSearchGlob).pipe(take(1));
+    return mdFiles$(mdSearchGlob, {}).pipe(take(1));
 };
 
 const save = folder =>
@@ -39,7 +39,7 @@ const save = folder =>
         mergeMap((file: MarkdownFile) => {
             const title = path.basename(file.filename, path.extname(file.filename));
             const targetFile = path.join(folder, title + '.html');
-            return outputFile$(targetFile, file.content).pipe(map(() => file)); // return file, not output result
+            return outputFile$(targetFile, file.content, {}).pipe(map(() => file)); // return file, not output result
         }),
     );
 

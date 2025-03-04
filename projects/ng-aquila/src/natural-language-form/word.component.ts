@@ -48,7 +48,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     private measureCanvas!: HTMLCanvasElement;
 
     /** @docs-private */
-    readonly inputChanges = new Subject<any>();
+    readonly inputChanges = new Subject<void>();
 
     _hasErrors = false;
     private _overlayRef!: OverlayRef;

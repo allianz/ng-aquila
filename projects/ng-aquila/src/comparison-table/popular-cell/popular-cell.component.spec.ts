@@ -1,5 +1,5 @@
 import { Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { NxComparisonTableModule } from '../comparison-table.module';
@@ -93,6 +93,7 @@ describe('NxComparisonTablePopularCell', () => {
         const popularCell = fixture.debugElement.query(By.css('.nx-comparison-table__mobile-popular-cell'));
         expect(popularCell).toBeDefined();
         expect(popularCell.nativeElement.textContent).toBe('Popular cell');
+        flush();
     }));
 
     it('should have the correct number of placeholder cells in the popular cell row (mobile)', fakeAsync(() => {

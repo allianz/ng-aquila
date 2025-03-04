@@ -42,7 +42,7 @@ describe('NxDialog', () => {
     let dialog: NxDialogService;
     let overlayContainer: OverlayContainer;
     let overlayContainerElement: HTMLElement;
-    const scrolledSubject = new Subject();
+    const scrolledSubject = new Subject<void>();
 
     let testViewContainerRef: ViewContainerRef;
     let viewContainerFixture: ComponentFixture<ComponentWithChildViewContainer>;

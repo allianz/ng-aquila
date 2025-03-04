@@ -492,7 +492,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
             detachments = this._overlayRef.detachments();
         }
 
-        const parentClose = this._parentMenu ? this._parentMenu.closed : observableOf();
+        const parentClose = this._parentMenu ? (this._parentMenu.closed as Observable<void | 'click' | 'keydown' | 'tab'>) : observableOf();
 
         const hover = this._parentMenu
             ? this._parentMenu._hovered().pipe(

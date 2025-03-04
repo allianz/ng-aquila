@@ -10,7 +10,7 @@ const MAX_TIMEOUT = 2 ** 31 - 1;
 
 export class NxMessageToastRef {
     /** Subject for notifying the user that the message toast has been dismissed. */
-    private readonly _afterDismissed = new Subject<any>();
+    private readonly _afterDismissed = new Subject<void>();
 
     /** Subject for notifying the user that the message toast has opened and appeared. */
     private readonly _afterOpened = new Subject<void>();

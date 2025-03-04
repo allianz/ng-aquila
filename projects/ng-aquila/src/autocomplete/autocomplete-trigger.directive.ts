@@ -151,7 +151,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     /** Value changes */
     private readonly _valueChanges = new Subject<any>();
 
-    private _initialized = new Subject();
+    private _initialized = new Subject<void>();
 
     /** Strategy factory that will be used to handle scrolling while the autocomplete panel is open. */
     private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;
@@ -582,7 +582,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         const initialRender = new Observable(subscriber => {
             afterNextRender(
                 () => {
-                    subscriber.next();
+                    subscriber.next(null);
                 },
                 { injector: this._injector },
             );

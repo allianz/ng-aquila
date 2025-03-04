@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, OnDestroy, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
-import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NxAccordionDirective } from '@aposin/ng-aquila/accordion';
@@ -123,6 +123,7 @@ describe('NxTabGroupComponent', () => {
                 fixture.detectChanges();
                 tick();
                 expect((testInstance as BindingTabs).selectedIndex).toBe(0);
+                flush();
             }));
 
             it('emit selectedTabChange event when tab is changed', fakeAsync(() => {
@@ -136,6 +137,7 @@ describe('NxTabGroupComponent', () => {
                 tick();
                 expect(eventTestInstance.tabChanged).toHaveBeenCalledTimes(1);
                 expect(eventTestInstance.tabChangeEvent.index).toBe(1);
+                flush();
             }));
 
             describe('autoselect', () => {
@@ -171,6 +173,7 @@ describe('NxTabGroupComponent', () => {
 
                 const child = fixture.debugElement.query(By.css('.child'))!;
                 expect(child.nativeElement).toBeDefined();
+                flush();
             }));
         });
 
@@ -235,6 +238,7 @@ describe('NxTabGroupComponent', () => {
                 fixture.detectChanges();
                 tick();
                 expect(tabGroupInstance.tabBodyChildren.toArray()[3].active).toBeTrue();
+                flush();
             }));
 
             it('should update selected index if the first tab is removed while selected', fakeAsync(() => {
@@ -251,6 +255,7 @@ describe('NxTabGroupComponent', () => {
 
                 expect(tabGroupInstance.selectedIndex).toBe(0);
                 expect(fixture.nativeElement.querySelector('.nx-tab__body--active').textContent).toMatch('Content 2');
+                flush();
             }));
 
             it('should update selected index if the last tab is removed while selected', fakeAsync(() => {
@@ -268,6 +273,7 @@ describe('NxTabGroupComponent', () => {
 
                 expect(tabGroupInstance.selectedIndex).toBe(numberOfTabs - 2);
                 expect(fixture.nativeElement.querySelector('.nx-tab__body--active').textContent).toMatch('Content 2');
+                flush();
             }));
 
             it('should maintain the selected tab if a new tab is added', fakeAsync(() => {
@@ -285,6 +291,7 @@ describe('NxTabGroupComponent', () => {
 
                 expect(tabGroupInstance.selectedIndex).toBe(2);
                 expect(tabGroupInstance.tabBodyChildren.toArray()[2].active).toBeTrue();
+                flush();
             }));
 
             it('should maintain the selected tab if a tab is removed', fakeAsync(() => {
@@ -302,6 +309,7 @@ describe('NxTabGroupComponent', () => {
 
                 expect(tabGroupInstance.selectedIndex).toBe(0);
                 expect(tabGroupInstance.tabBodyChildren.toArray()[0].active).toBeTrue();
+                flush();
             }));
 
             it('should not fire `selectedTabChange` when the amount of tabs changes', fakeAsync(() => {
@@ -320,6 +328,7 @@ describe('NxTabGroupComponent', () => {
                 fixture.detectChanges();
 
                 expect(dynamicTest.handleSelection).not.toHaveBeenCalled();
+                flush();
             }));
         });
 
@@ -364,6 +373,7 @@ describe('NxTabGroupComponent', () => {
                 tick(THROTTLE_TIME);
                 fixture.detectChanges();
                 expect(fixture.nativeElement.querySelector('nx-accordion')).toBeTruthy();
+                flush();
             }));
 
             it('should not show accordion if mobileAccordion is false', fakeAsync(() => {
@@ -375,6 +385,7 @@ describe('NxTabGroupComponent', () => {
                 fixture.detectChanges();
                 tick(THROTTLE_TIME);
                 expect(fixture.nativeElement.querySelector('nx-accordion')).toBeFalsy();
+                flush();
             }));
 
             it('should switch to accordion on init', fakeAsync(() => {
@@ -382,6 +393,7 @@ describe('NxTabGroupComponent', () => {
                 createTestComponent(BasicTabs);
                 window.dispatchEvent(new Event('resize'));
                 tick(THROTTLE_TIME);
+                flush();
                 fixture.detectChanges();
                 expect(fixture.nativeElement.querySelector('nx-accordion')).toBeTruthy();
             }));
@@ -394,6 +406,7 @@ describe('NxTabGroupComponent', () => {
                 fixture.detectChanges();
                 tick(THROTTLE_TIME);
                 expect((testInstance as CustomElementTest).customElement.ngOnDestroy).not.toHaveBeenCalled();
+                flush();
             }));
 
             it('should not destroy contents of ngTabContent on switch', fakeAsync(() => {
@@ -411,6 +424,7 @@ describe('NxTabGroupComponent', () => {
                 fixture.detectChanges();
                 tick(THROTTLE_TIME);
                 expect(element.ngOnDestroy).not.toHaveBeenCalled();
+                flush();
             }));
 
             it('should not destroy nxTabLabel contents on switch', fakeAsync(() => {
@@ -425,6 +439,7 @@ describe('NxTabGroupComponent', () => {
                 fixture.detectChanges();
                 tick(THROTTLE_TIME);
                 expect(elementInHeader.ngOnDestroy).not.toHaveBeenCalled();
+                flush();
             }));
 
             it('should mirror negative property on the accordion', fakeAsync(() => {
@@ -435,6 +450,7 @@ describe('NxTabGroupComponent', () => {
                 tick(THROTTLE_TIME);
                 fixture.detectChanges();
                 expect(tabGroupInstance.accordion.negative).toBeTruthy();
+                flush();
             }));
 
             it('should mirror output events', fakeAsync(() => {
@@ -453,6 +469,7 @@ describe('NxTabGroupComponent', () => {
                 tick();
                 expect((testInstance as DynamicTabTest).handleSelection).toHaveBeenCalled();
                 expect((testInstance as DynamicTabTest).onIndexChange).toHaveBeenCalled();
+                flush();
             }));
 
             it('Should keep disabled tabs state in mobile', fakeAsync(() => {
@@ -471,6 +488,7 @@ describe('NxTabGroupComponent', () => {
                 tick();
                 expect(expansionPanelHeaders[0]).toHaveClass('is-disabled');
                 expect(expansionPanelHeaders[1]).toHaveClass('is-disabled');
+                flush();
             }));
 
             it('should only emit `_appearanceChange` when the change happens', fakeAsync(() => {
@@ -498,6 +516,7 @@ describe('NxTabGroupComponent', () => {
                 expect(spy).toHaveBeenCalled();
                 spy.calls.reset();
                 subscription.unsubscribe();
+                flush();
             }));
 
             afterEach(() => {

@@ -57,7 +57,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
 
     _describedBy = '';
 
-    readonly stateChanges = new Subject<any>();
+    readonly stateChanges = new Subject<void>();
 
     get empty() {
         return !!this._inputValue;
