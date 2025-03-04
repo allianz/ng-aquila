@@ -5,7 +5,9 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChild,
+    Directive,
     EventEmitter,
+    input,
     OnDestroy,
     OnInit,
     Output,
@@ -20,6 +22,39 @@ import { takeUntil } from 'rxjs/operators';
 import { NxPopoverContentDirective } from './popover-content';
 import { NxPopoverIntl } from './popover-intl';
 import { PopoverTriggerType } from './popover-trigger.directive';
+
+/** Container for the header of a popover. */
+@Directive({
+    selector: '[nxPopoverTitle]',
+    host: {
+        '[class.nx-popover__title]': 'true',
+    },
+    standalone: true,
+})
+export class NxPopoverTitleDirective {}
+
+/** Scrollable container for the content of a popover. */
+@Directive({
+    selector: '[nxPopoverMainContent]',
+    host: {
+        '[class.nx-popover__main-content]': 'true',
+    },
+    standalone: true,
+})
+export class NxPopoverMainContentDirective {}
+
+/** Container for the action buttons in a popover. Has a fixed position at the bottom of the popover on scroll. */
+@Directive({
+    selector: '[nxPopoverActions]',
+    host: {
+        '[class.nx--popover__actions]': 'true',
+        '[style.justify-content]': 'alignment()',
+    },
+    standalone: true,
+})
+export class NxPopoverActionsDirective {
+    alignment = input<'left' | 'center' | 'right'>('left');
+}
 
 @Component({
     selector: 'nx-popover',

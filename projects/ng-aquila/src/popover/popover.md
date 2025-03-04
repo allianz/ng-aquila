@@ -19,6 +19,12 @@ If a certain popover should have another styling, you can overwrite the global d
 
 If you're building an Expert (internal B2B/B2E) application, you can use both the Popover and the [Tooltip component](./documentation/tooltip/overview#ux-guidelines). If you only need to display a short contextual hint (button hint, info icon, etc.) please consider if the simpler [Tooltip element is better for your use case](./documentation/tooltip/overview#ux-guidelines).
 
+### Popover content
+
+You can separate the content in a popover into sections using the following directives: `nxPopoverTitle`, `nxPopoverMainContent`, `nxPopoverActions`
+
+<!-- example(popover-slot) -->
+
 ### Trigger types
 
 It is possible to open the popover by hover, click event or manually. To adjust the trigger type accordingly, set the `nxPopoverTrigger` attribute to click/hover/manual.
@@ -54,12 +60,6 @@ The following table explains the fallback strategy of the popover.
 The popover can carry custom content.
 
 <!-- example(popover-custom) -->
-
-### Extended popover
-
-The popover can be extended with a header and a footer, consisting of a headline and buttons.
-
-<!-- example(popover-extended) -->
 
 The popover can be used for a guided tour
 

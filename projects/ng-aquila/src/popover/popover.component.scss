@@ -27,6 +27,14 @@ $padding-content: nx-spacer(2m) - $popover-border-size;
         padding: nx-spacer(m) nx-spacer(4m) nx-spacer(m) nx-spacer(2m);
     }
 
+    &:has(.nx-popover__main-content) {
+        ::ng-deep .nx-popover__title {
+            margin-right: nx-spacer(s);
+        }
+
+        padding: nx-spacer(m) nx-spacer(2m);
+    }
+
     &:focus {
         outline: none;
     }
@@ -35,6 +43,11 @@ $padding-content: nx-spacer(2m) - $popover-border-size;
     &::-moz-focus-inner {
         border: 0;
     }
+}
+
+::ng-deep .nx--popover__actions {
+    display: flex;
+    gap: v(popover-action-gap);
 }
 
 .nx-popover__close-icon {
