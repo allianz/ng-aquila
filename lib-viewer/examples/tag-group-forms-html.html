@@ -1,0 +1,25 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-switcher</span> [(<span class="hljs-attr">checked</span>)]=<span class="hljs-string">&quot;disabled&quot;</span>&gt;</span>Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">nx-switcher</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>with ngModel<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span>
+    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;value&quot;</span>
+    [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;disabled()&quot;</span>
+    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Filter fruits&quot;</span>
+&gt;</span>
+    @for (tag of tags; track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag.toLowerCase()&quot;</span>&gt;</span>{{ tag }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Value: {{ value() | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>with reactive forms<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;control&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Filter fruits&quot;</span>&gt;</span>
+    @for (tag of tags; track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag.toLowerCase()&quot;</span>&gt;</span>{{ tag }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Control Value: {{ control.value | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>

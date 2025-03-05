@@ -1,5 +1,6 @@
 .stage-bg {
-    background-image: url('../../../../../opensource-documentation/src/assets/images/small-stage-bg-start.png'),
+    background-image:
+        url('../../../../../opensource-documentation/src/assets/images/small-stage-bg-start.png'),
         url('../../../../../opensource-documentation/src/assets/images/small-stage-bg-end.png');
     background-repeat: no-repeat, no-repeat;
     background-position:

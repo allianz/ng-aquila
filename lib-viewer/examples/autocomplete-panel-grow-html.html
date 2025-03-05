@@ -1,0 +1,72 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Default Panel grow Example&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">nxInput</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+                    [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">&quot;auto0&quot;</span>
+                    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;modelBoundData&quot;</span>
+                /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto0</span>=<span class="hljs-string">&quot;nxAutocomplete&quot;</span>&gt;</span>
+                @for (item of simpleFilteredOptions(modelBoundData); track item)
+                {
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete-option</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>
+                    {{item | lowercase}}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete-option</span>&gt;</span>
+                }
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;9&quot;</span>&gt;</span>Default ( panelGrow = false )<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Panel Grow Example&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">nxInput</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+                    [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">&quot;auto1&quot;</span>
+                    [<span class="hljs-attr">panelGrow</span>]=<span class="hljs-string">&quot;true&quot;</span>
+                    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;modelBoundData&quot;</span>
+                /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto1</span>=<span class="hljs-string">&quot;nxAutocomplete&quot;</span>&gt;</span>
+                @for (item of simpleFilteredOptions(modelBoundData); track item)
+                {
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete-option</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>
+                    {{item | lowercase}}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete-option</span>&gt;</span>
+                }
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;9&quot;</span>&gt;</span>Panel Grow: {{ modelPanelGrow }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Panel Max Width Example&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">nxInput</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+                    [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">&quot;auto2&quot;</span>
+                    [<span class="hljs-attr">panelMaxWidth</span>]=<span class="hljs-string">&quot;modelPanelMaxWidth&quot;</span>
+                    [<span class="hljs-attr">panelGrow</span>]=<span class="hljs-string">&quot;true&quot;</span>
+                    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;modelBoundData2&quot;</span>
+                /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto2</span>=<span class="hljs-string">&quot;nxAutocomplete&quot;</span>&gt;</span>
+                @for (item of simpleFilteredOptions(modelBoundData2); track
+                item) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete-option</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>
+                    {{item | lowercase}}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete-option</span>&gt;</span>
+                }
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;9&quot;</span>&gt;</span>
+            Pabel Grow = true, Panel Max Width: {{ modelPanelMaxWidth }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

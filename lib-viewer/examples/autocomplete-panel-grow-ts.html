@@ -1,0 +1,78 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">LowerCasePipe</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FormBuilder</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">Validators</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxAutocompleteComponent</span>,
+    <span class="hljs-title class_">NxAutocompleteOptionComponent</span>,
+    <span class="hljs-title class_">NxAutocompleteTriggerDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/autocomplete&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxNaturalLanguageFormComponent</span>,
+    <span class="hljs-title class_">NxWordComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/natural-language-form&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Panel grow and Panel max width examples
+ */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;autocomplete-panel-grow-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./autocomplete-panel-grow-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./autocomplete-panel-grow-example.css&#x27;</span>],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxFormfieldComponent</span>,
+        <span class="hljs-title class_">NxInputDirective</span>,
+        <span class="hljs-title class_">NxAutocompleteTriggerDirective</span>,
+        <span class="hljs-title class_">FormsModule</span>,
+        <span class="hljs-title class_">NxAutocompleteComponent</span>,
+        <span class="hljs-title class_">NxAutocompleteOptionComponent</span>,
+        <span class="hljs-title class_">ReactiveFormsModule</span>,
+        <span class="hljs-title class_">NxNaturalLanguageFormComponent</span>,
+        <span class="hljs-title class_">NxWordComponent</span>,
+        <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+        <span class="hljs-title class_">LowerCasePipe</span>,
+        <span class="hljs-title class_">NxLayoutComponent</span>,
+        <span class="hljs-title class_">NxRowComponent</span>,
+        <span class="hljs-title class_">NxColComponent</span>,
+    ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AutocompletePanelGrowExampleComponent</span> {
+    modelBoundData = <span class="hljs-string">&#x27;a&#x27;</span>;
+    modelBoundData2 = <span class="hljs-string">&#x27;c&#x27;</span>;
+    modelPanelGrow = <span class="hljs-literal">true</span>;
+    modelPanelMaxWidth = <span class="hljs-number">400</span>;
+
+    testForm = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormBuilder</span>().<span class="hljs-title function_">group</span>({
+        <span class="hljs-attr">autocomplete</span>: [<span class="hljs-literal">null</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
+    });
+
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {}
+
+    <span class="hljs-title function_">simpleFilteredOptions</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span>[] {
+        <span class="hljs-keyword">if</span> (!value) {
+            <span class="hljs-keyword">return</span> [];
+        }
+        <span class="hljs-keyword">const</span> data = [
+            <span class="hljs-string">&#x27;apple banana cherry grape strawberry watermelon pineapple mango&#x27;</span>,
+            <span class="hljs-string">&#x27;audi bmw mercedes chevrolet ford toyota honda nissan volkswagen&#x27;</span>,
+            <span class="hljs-string">&#x27;cat dog bear elephant fish bee hippo kangaroo lion tiger&#x27;</span>,
+        ];
+
+        <span class="hljs-keyword">return</span> data.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-title function_">toLowerCase</span>().<span class="hljs-title function_">includes</span>(value.<span class="hljs-title function_">toLowerCase</span>()));
+    }
+}

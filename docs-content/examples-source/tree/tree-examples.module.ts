@@ -6,6 +6,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxTreeModule } from '@aposin/ng-aquila/tree';
 
 import { TreeExampleComponent } from './tree/tree-example';
+import { TreeWithCheckboxesExampleComponent } from './tree-with-checkboxes/tree-with-checkboxes-example';
 
 const EXAMPLES = [TreeExampleComponent];
 
@@ -24,6 +25,7 @@ export class TreeExamplesModule {
     static components() {
         return {
             tree: TreeExampleComponent,
+            'tree-with-checkboxes': TreeWithCheckboxesExampleComponent,
         };
     }
 }

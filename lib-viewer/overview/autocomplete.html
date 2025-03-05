@@ -19,6 +19,13 @@
 <h4 id="data-binding" tabindex="-1" class="docs-markdown--h4">Data binding</h4>
 <p class="docs-markdown--p">All options that apply to the data binding can be used. For details look at the examples with different bindings and different options generation below and also <code>nxInput</code>, <code>nxFormField</code> and <code>nxNaturalLanguageForm</code>.</p>
 <div nx-docs-example="autocomplete-data-binding" config="{}">exampleID: autocomplete-data-binding</div>
+<h3 id="panelgrow-and-panelmaxwidth" tabindex="-1" class="docs-markdown--h3">PanelGrow and PanelMaxWidth</h3>
+<p class="docs-markdown--p">With <code>panelGrow</code> set to <code>true</code> the overlay can grow larger than the trigger and grows with the longest label.</p>
+<p class="docs-markdown--p">With <code>panelGrow</code> set to <code>false</code> the overlay won't grow larger than trigger.(this is default value)</p>
+<p class="docs-markdown--p">With <code>panelMaxWidth</code> a max-width can be set, <code>panelMaxWidth</code> accepts a number for pixel values or a string for any css value.
+( Note that: <code>panelMaxWidth</code> have more priority than <code>panelGrow</code>)</p>
+<p class="docs-markdown--p">Note: minimum overlay width will be size of trigger.</p>
+<div nx-docs-example="autocomplete-panel-grow" config="{}">exampleID: autocomplete-panel-grow</div>
 <div class="docs-expert-container">
 <h4 id="expert%3A-autocomplete-with-outline" tabindex="-1" class="docs-markdown--h4">Expert: Autocomplete with outline</h4>
 <p class="docs-markdown--p">In a formfield with an outline the styling of the autocomplete will adjust accordingly.</p>

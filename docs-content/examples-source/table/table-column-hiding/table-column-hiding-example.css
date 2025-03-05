@@ -2,7 +2,3 @@
     overflow-x: auto;
     display: block;
 }
-
-.nx-header-cell {
-    border-top: 1px solid var(--table-header-border-top-color);
-}

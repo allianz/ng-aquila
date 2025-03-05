@@ -1,0 +1,10 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Filter fruits&quot;</span>&gt;</span>
+    @for (tag of tags; track tag; ; let idx = $index) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span>
+        [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag.toLowerCase()&quot;</span>
+        [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;idx === 1&quot;</span>
+        [<span class="hljs-attr">readonly</span>]=<span class="hljs-string">&quot;idx === 2&quot;</span>
+        &gt;</span>{{ tag }}&lt;/nx-tag
+    &gt;
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>

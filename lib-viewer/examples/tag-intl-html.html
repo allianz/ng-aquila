@@ -1,0 +1,11 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;reset()&quot;</span>&gt;</span>
+    Reset
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">removable</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Active filters&quot;</span>&gt;</span>
+    @for (tag of tags(); track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag.toLowerCase()&quot;</span> (<span class="hljs-attr">removed</span>)=<span class="hljs-string">&quot;removeTag(tag)&quot;</span>
+        &gt;</span>{{ tag }}&lt;/nx-tag
+    &gt;
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>

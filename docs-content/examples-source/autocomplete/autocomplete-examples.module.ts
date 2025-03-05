@@ -14,6 +14,7 @@ import { AutocompleteDataBindingExampleComponent } from './autocomplete-data-bin
 import { AutocompleteDefaultRenderingExampleComponent } from './autocomplete-default-rendering/autocomplete-default-rendering-example';
 import { AutocompleteFilteringExampleComponent } from './autocomplete-filtering/autocomplete-filtering-example';
 import { AutocompleteOutlineExampleComponent } from './autocomplete-outline/autocomplete-outline-example';
+import { AutocompletePanelGrowExampleComponent } from './autocomplete-panel-grow/autocomplete-panel-grow-example';
 import { AutocompleteScrollStrategyProviderExampleComponent } from './autocomplete-scroll-strategy-provider/autocomplete-scroll-strategy-provider-example';
 
 const EXAMPLES = [
@@ -50,6 +51,7 @@ export class AutocompleteExamplesModule {
             'autocomplete-outline': AutocompleteOutlineExampleComponent,
             'autocomplete-scroll-strategy-provider':
                 AutocompleteScrollStrategyProviderExampleComponent,
+            'autocomplete-panel-grow': AutocompletePanelGrowExampleComponent,
         };
     }
 }

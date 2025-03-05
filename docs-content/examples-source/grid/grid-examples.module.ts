@@ -7,6 +7,7 @@ import { NxSliderModule } from '@aposin/ng-aquila/slider';
 import { GridAlignContentExampleComponent } from './grid-align-content/grid-align-content-example';
 import { GridAlignItemsExampleComponent } from './grid-align-items/grid-align-items-example';
 import { GridAlignSelfExampleComponent } from './grid-align-self/grid-align-self-example';
+import { GridColBlankExampleComponent } from './grid-col-blank/grid-col-blank-example';
 import { GridColOrderExampleComponent } from './grid-col-order/grid-col-order-example';
 import { GridInGridExampleComponent } from './grid-in-grid/grid-in-grid-example';
 import { GridJustifyExampleComponent } from './grid-justify/grid-justify-example';
@@ -32,6 +33,7 @@ const EXAMPLES = [
     GridOneInputExampleComponent,
     GridInGridExampleComponent,
     GridQueryComparisonComponent,
+    GridColBlankExampleComponent,
 ];
 
 @NgModule({
@@ -60,6 +62,7 @@ export class GridExamplesModule {
             'grid-one-input': GridOneInputExampleComponent,
             'grid-in-grid': GridInGridExampleComponent,
             'grid-query-comparison': GridQueryComparisonComponent,
+            'grid-col-blank': GridColBlankExampleComponent,
         };
     }
 }

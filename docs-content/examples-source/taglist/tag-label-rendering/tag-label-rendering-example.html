@@ -1,0 +1,31 @@
+<button nxButton="small" class="nx-margin-bottom-m" (click)="reset()">
+    Reset removable tags
+</button>
+
+<p nxCopytext class="nx-margin-y-m">Renders value by default</p>
+
+<nx-tag-group aria-label="Filter by product" class="nx-margin-bottom-m">
+    @for (tag of tags(); track tag) {
+    <nx-tag [value]="tag"></nx-tag>
+    }
+</nx-tag-group>
+
+<nx-tag-group removable aria-label="Filter by product">
+    @for (tag of tags(); track tag) {
+    <nx-tag [value]="tag" (removed)="removeTag(tag)"></nx-tag>
+    }
+</nx-tag-group>
+
+<p nxCopytext class="nx-margin-y-m">Content projection</p>
+
+<nx-tag-group aria-label="Filter by product" class="nx-margin-bottom-m">
+    @for (tag of tags(); track tag) {
+    <nx-tag [value]="tag">{{ tag | titlecase }}</nx-tag>
+    }
+</nx-tag-group>
+
+<nx-tag-group removable aria-label="Filter by product">
+    @for (tag of tags(); track tag) {
+    <nx-tag (removed)="removeTag(tag)">{{ tag | titlecase }}</nx-tag>
+    }
+</nx-tag-group>

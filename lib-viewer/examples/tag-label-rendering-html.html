@@ -1,0 +1,31 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;reset()&quot;</span>&gt;</span>
+    Reset removable tags
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-m&quot;</span>&gt;</span>Renders value by default<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Filter by product&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>
+    @for (tag of tags(); track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">removable</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Filter by product&quot;</span>&gt;</span>
+    @for (tag of tags(); track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag&quot;</span> (<span class="hljs-attr">removed</span>)=<span class="hljs-string">&quot;removeTag(tag)&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-m&quot;</span>&gt;</span>Content projection<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Filter by product&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>
+    @for (tag of tags(); track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag&quot;</span>&gt;</span>{{ tag | titlecase }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">removable</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Filter by product&quot;</span>&gt;</span>
+    @for (tag of tags(); track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> (<span class="hljs-attr">removed</span>)=<span class="hljs-string">&quot;removeTag(tag)&quot;</span>&gt;</span>{{ tag | titlecase }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>

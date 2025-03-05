@@ -1,0 +1,55 @@
+<p nxCopytext class="nx-margin-y-m">Disabling the whole group</p>
+
+<nx-tag-group
+    class="nx-margin-bottom-m"
+    [disabled]="true"
+    [value]="['oranges', 'melons']"
+    aria-label="Filter fruits"
+>
+    @for (tag of tags; track tag) {
+    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+    }
+</nx-tag-group>
+
+<nx-tag-group removable [disabled]="true" aria-label="Active filters">
+    @for (tag of tags; track tag) {
+    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+    }
+</nx-tag-group>
+
+<p nxCopytext class="nx-margin-y-m">Disabling individual tags</p>
+
+<nx-tag-group
+    class="nx-margin-bottom-m"
+    [value]="['oranges', 'melons']"
+    aria-label="Filter fruits"
+>
+    @for (tag of tags; track tag) {
+    <nx-tag [value]="tag.toLowerCase()" [disabled]="tag === 'Bananas'"
+        >{{ tag }}</nx-tag
+    >
+    }
+</nx-tag-group>
+
+<nx-tag-group removable aria-label="Active filters">
+    @for (tag of tags; track tag) {
+    <nx-tag [value]="tag.toLowerCase()" [disabled]="tag === 'Bananas'"
+        >{{ tag }}</nx-tag
+    >
+    }
+</nx-tag-group>
+
+<p nxCopytext class="nx-margin-y-m">Disabling with reactive Forms</p>
+<button nxButton="small" class="nx-margin-bottom-s" (click)="toggleDisabled()">
+    Toggle disabled in control
+</button>
+<nx-tag-group
+    class="nx-margin-bottom-m"
+    [value]="['oranges', 'melons']"
+    aria-label="Filter fruits"
+    [formControl]="tagsControl"
+>
+    @for (tag of tags; track tag) {
+    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+    }
+</nx-tag-group>

@@ -7,6 +7,10 @@
 <div nx-docs-example="tree" config="{}">exampleID: tree</div>
 <h3 id="adding-expand%2Fcollapse" tabindex="-1" class="docs-markdown--h3">Adding expand/collapse</h3>
 <p class="docs-markdown--p">The <code>nxTreeNodeToggle</code> directive can be used to add expand/collapse feature to the tree node. It can be added to any place on the tree node. For better accessibility this directive should be added on a <code>button</code> element.</p>
+<h3 id="tree-with-checkboxes-using-the-cdk" tabindex="-1" class="docs-markdown--h3">Tree with checkboxes using the CDK</h3>
+<p class="docs-markdown--p">The tree component was initially designed mostly for navigation purposes and simple structured data. If you need a tree with checkboxes or other interactive elements, we suggest using the Angular CDK tree. For more information on the CDK tree, see the <a href="https://material.angular.io/cdk/tree/overview">Angular CDK documentation</a>.
+The following example shows how to use the CDK tree with checkboxes and how to style it according to design guidelines.</p>
+<div nx-docs-example="tree-with-checkboxes" config="{}">exampleID: tree-with-checkboxes</div>
 <h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">To provide an accessible tree, the expandable nodes need to contain a <code>button</code> element. Similar to this the leaf nodes need to contain a valid <code>a</code> or <code>button</code> element. The tree can then be traversed by keyboard. You can <code>TAB</code> into the tree and go through the individual nodes with <code>UP</code> and <code>DOWN</code> buttons. You can close/expand them by pressing <code>LEFT</code> and <code>RIGHT</code> buttons respectively or toggle with <code>ENTER</code> or <code>SPACE</code>.</p>
 <p class="docs-markdown--p">To enable better keyboard support any actionable element (<code>a</code>, <code>button</code>, etc.) within a node needs to have <code>nxTreeNodeActionItem</code> directive set on it. This way when navigating through the tree, the focus state is correctly passed to the actionable item.</p>

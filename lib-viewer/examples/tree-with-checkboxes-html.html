@@ -1,0 +1,60 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">cdk-tree</span> #<span class="hljs-attr">tree</span> [<span class="hljs-attr">dataSource</span>]=<span class="hljs-string">&quot;dataSource&quot;</span> [<span class="hljs-attr">levelAccessor</span>]=<span class="hljs-string">&quot;levelAccessor&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- This is the tree node template for leaf nodes --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cdk-tree-node</span>
+        *<span class="hljs-attr">cdkTreeNodeDef</span>=<span class="hljs-string">&quot;let node&quot;</span>
+        <span class="hljs-attr">cdkTreeNodePadding</span>
+        [<span class="hljs-attr">style.display</span>]=<span class="hljs-string">&quot;shouldRender(node) ? &#x27;flex&#x27; : &#x27;none&#x27;&quot;</span>
+        [<span class="hljs-attr">isDisabled</span>]=<span class="hljs-string">&quot;!shouldRender(node)&quot;</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-tree-node&quot;</span>
+        (<span class="hljs-attr">activation</span>)=<span class="hljs-string">&quot;toggleNode(node)&quot;</span>
+        [<span class="hljs-attr">attr.aria-checked</span>]=<span class="hljs-string">&quot;checklistSelection.isSelected(node)&quot;</span>
+    &gt;</span>
+        <span class="hljs-comment">&lt;!-- use a disabled button to provide padding for tree leaf --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">nxPlainButton</span>=<span class="hljs-string">&quot;small&quot;</span>
+            <span class="hljs-attr">disabled</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;custom-toggle-button empty&quot;</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span>
+            <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span>
+            [<span class="hljs-attr">treeCheckboxNode</span>]=<span class="hljs-string">&quot;node&quot;</span>
+            [<span class="hljs-attr">treeCheckboxParentNode</span>]=<span class="hljs-string">&quot;getParentNode(node)&quot;</span>
+            [<span class="hljs-attr">checked</span>]=<span class="hljs-string">&quot;checklistSelection.isSelected(node)&quot;</span>
+            (<span class="hljs-attr">checkedChange</span>)=<span class="hljs-string">&quot;toggleNode(node)&quot;</span>
+            &gt;</span>{{node.name}}&lt;/nx-checkbox
+        &gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">cdk-tree-node</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- This is the tree node template for expandable nodes --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cdk-tree-node</span>
+        *<span class="hljs-attr">cdkTreeNodeDef</span>=<span class="hljs-string">&quot;let node; when: hasChild&quot;</span>
+        <span class="hljs-attr">cdkTreeNodePadding</span>
+        [<span class="hljs-attr">cdkTreeNodeTypeaheadLabel</span>]=<span class="hljs-string">&quot;node.name&quot;</span>
+        [<span class="hljs-attr">style.display</span>]=<span class="hljs-string">&quot;shouldRender(node) ? &#x27;flex&#x27; : &#x27;none&#x27;&quot;</span>
+        [<span class="hljs-attr">isDisabled</span>]=<span class="hljs-string">&quot;!shouldRender(node)&quot;</span>
+        [<span class="hljs-attr">isExpandable</span>]=<span class="hljs-string">&quot;node.expandable&quot;</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-tree-node&quot;</span>
+        (<span class="hljs-attr">activation</span>)=<span class="hljs-string">&quot;toggleNode(node)&quot;</span>
+        [<span class="hljs-attr">attr.aria-checked</span>]=<span class="hljs-string">&quot;descendantsAllSelected(node) ? true : descendantsPartiallySelected(node) ? &#x27;mixed&#x27; : false&quot;</span>
+    &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">nxPlainButton</span>=<span class="hljs-string">&quot;small&quot;</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;custom-toggle-button&quot;</span>
+            <span class="hljs-attr">cdkTreeNodeToggle</span>
+            [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;&#x27;Toggle &#x27; + node.name&quot;</span>
+            [<span class="hljs-attr">style.visibility</span>]=<span class="hljs-string">&quot;node.expandable ? &#x27;visible&#x27; : &#x27;hidden&#x27;&quot;</span>
+        &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;{{tree.isExpanded(node) ? &#x27;chevron-down&#x27; : &#x27;chevron-right&#x27;}}&quot;</span>
+            &gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span>
+            (<span class="hljs-attr">checkedChange</span>)=<span class="hljs-string">&quot;toggleNode(node)&quot;</span>
+            [<span class="hljs-attr">treeCheckboxNode</span>]=<span class="hljs-string">&quot;node&quot;</span>
+            [<span class="hljs-attr">treeCheckboxParentNode</span>]=<span class="hljs-string">&quot;getParentNode(node)&quot;</span>
+            [<span class="hljs-attr">checked</span>]=<span class="hljs-string">&quot;descendantsAllSelected(node)&quot;</span>
+            [<span class="hljs-attr">indeterminate</span>]=<span class="hljs-string">&quot;descendantsPartiallySelected(node)&quot;</span>
+            &gt;</span>{{node.name}}&lt;/nx-checkbox
+        &gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">cdk-tree-node</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">cdk-tree</span>&gt;</span>

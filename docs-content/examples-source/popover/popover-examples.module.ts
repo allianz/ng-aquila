@@ -9,7 +9,6 @@ import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 import { PopoverClickOutsideExampleComponent } from './popover-click-outside/popover-click-outside-example';
 import { PopoverCustomExampleComponent } from './popover-custom/popover-custom-example';
-import { PopoverExtendedExampleComponent } from './popover-extended/popover-extended-example';
 import { PopoverGuidedTourExampleComponent } from './popover-guided-tour/popover-guided-tour-example';
 import { PopoverHoverExampleComponent } from './popover-hover/popover-hover-example';
 import { PopoverI18nExampleComponent } from './popover-i18n/popover-i18n-example';
@@ -19,6 +18,7 @@ import { PopoverPositioningExampleComponent } from './popover-positioning/popove
 import { PopoverScrollExampleComponent } from './popover-scroll/popover-scroll-example';
 import { PopoverScrollStrategyProviderExampleComponent } from './popover-scroll-strategy-provider/popover-scroll-strategy-provider-example';
 import { PopoverScrollableExampleComponent } from './popover-scrollable/popover-scrollable-example';
+import { PopoverSlotExampleComponent } from './popover-slot/popover-slot-example';
 import { PopoverTableExampleComponent } from './popover-table/popover-table-example';
 import { PopoverTriggerExampleComponent } from './popover-trigger/popover-trigger-example';
 import { PopoverWidthExampleComponent } from './popover-width/popover-width-example';
@@ -37,7 +37,7 @@ const EXAMPLES = [
     PopoverTriggerExampleComponent,
     PopoverI18nExampleComponent,
     PopoverScrollStrategyProviderExampleComponent,
-    PopoverExtendedExampleComponent,
+    PopoverSlotExampleComponent,
     PopoverWithoutArrowExampleComponent,
     PopoverGuidedTourExampleComponent,
     PopoverWidthExampleComponent,
@@ -72,7 +72,7 @@ export class PopoverExamplesModule {
             'popover-i18n': PopoverI18nExampleComponent,
             'popover-scroll-strategy-provider':
                 PopoverScrollStrategyProviderExampleComponent,
-            'popover-extended': PopoverExtendedExampleComponent,
+            'popover-slot': PopoverSlotExampleComponent,
             'popover-without-arrow': PopoverWithoutArrowExampleComponent,
             'popover-guided-tour': PopoverGuidedTourExampleComponent,
             'popover-width': PopoverWidthExampleComponent,

@@ -1,0 +1,55 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-m&quot;</span>&gt;</span>Disabling the whole group<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>
+    [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;true&quot;</span>
+    [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;[&#x27;oranges&#x27;, &#x27;melons&#x27;]&quot;</span>
+    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Filter fruits&quot;</span>
+&gt;</span>
+    @for (tag of tags; track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag.toLowerCase()&quot;</span>&gt;</span>{{ tag }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">removable</span> [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Active filters&quot;</span>&gt;</span>
+    @for (tag of tags; track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag.toLowerCase()&quot;</span>&gt;</span>{{ tag }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-m&quot;</span>&gt;</span>Disabling individual tags<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>
+    [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;[&#x27;oranges&#x27;, &#x27;melons&#x27;]&quot;</span>
+    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Filter fruits&quot;</span>
+&gt;</span>
+    @for (tag of tags; track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag.toLowerCase()&quot;</span> [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;tag === &#x27;Bananas&#x27;&quot;</span>
+        &gt;</span>{{ tag }}&lt;/nx-tag
+    &gt;
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">removable</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Active filters&quot;</span>&gt;</span>
+    @for (tag of tags; track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag.toLowerCase()&quot;</span> [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;tag === &#x27;Bananas&#x27;&quot;</span>
+        &gt;</span>{{ tag }}&lt;/nx-tag
+    &gt;
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-m&quot;</span>&gt;</span>Disabling with reactive Forms<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;toggleDisabled()&quot;</span>&gt;</span>
+    Toggle disabled in control
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>
+    [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;[&#x27;oranges&#x27;, &#x27;melons&#x27;]&quot;</span>
+    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Filter fruits&quot;</span>
+    [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;tagsControl&quot;</span>
+&gt;</span>
+    @for (tag of tags; track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag.toLowerCase()&quot;</span>&gt;</span>{{ tag }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>

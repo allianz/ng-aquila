@@ -1,0 +1,72 @@
+<div nxLayout="grid">
+    <div nxRow>
+        <div nxCol="3">
+            <nx-formfield label="Default Panel grow Example">
+                <input
+                    nxInput
+                    type="text"
+                    [nxAutocomplete]="auto0"
+                    [(ngModel)]="modelBoundData"
+                />
+            </nx-formfield>
+            <nx-autocomplete #auto0="nxAutocomplete">
+                @for (item of simpleFilteredOptions(modelBoundData); track item)
+                {
+                <nx-autocomplete-option [value]="item">
+                    {{item | lowercase}}
+                </nx-autocomplete-option>
+                }
+            </nx-autocomplete>
+        </div>
+        <div nxCol="9">Default ( panelGrow = false )</div>
+    </div>
+
+    <div nxRow>
+        <div nxCol="3">
+            <nx-formfield label="Panel Grow Example">
+                <input
+                    nxInput
+                    type="text"
+                    [nxAutocomplete]="auto1"
+                    [panelGrow]="true"
+                    [(ngModel)]="modelBoundData"
+                />
+            </nx-formfield>
+            <nx-autocomplete #auto1="nxAutocomplete">
+                @for (item of simpleFilteredOptions(modelBoundData); track item)
+                {
+                <nx-autocomplete-option [value]="item">
+                    {{item | lowercase}}
+                </nx-autocomplete-option>
+                }
+            </nx-autocomplete>
+        </div>
+        <div nxCol="9">Panel Grow: {{ modelPanelGrow }}</div>
+    </div>
+
+    <div nxRow>
+        <div nxCol="3">
+            <nx-formfield label="Panel Max Width Example">
+                <input
+                    nxInput
+                    type="text"
+                    [nxAutocomplete]="auto2"
+                    [panelMaxWidth]="modelPanelMaxWidth"
+                    [panelGrow]="true"
+                    [(ngModel)]="modelBoundData2"
+                />
+            </nx-formfield>
+            <nx-autocomplete #auto2="nxAutocomplete">
+                @for (item of simpleFilteredOptions(modelBoundData2); track
+                item) {
+                <nx-autocomplete-option [value]="item">
+                    {{item | lowercase}}
+                </nx-autocomplete-option>
+                }
+            </nx-autocomplete>
+        </div>
+        <div nxCol="9">
+            Pabel Grow = true, Panel Max Width: {{ modelPanelMaxWidth }}
+        </div>
+    </div>
+</div>

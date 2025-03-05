@@ -30,7 +30,7 @@
  * Validates phone numbers. International numbers are accepted if they contain a country code.
  * <span class="hljs-doctag">@param</span> type (optional) Type of number, can be `mobile` or `landline`
  */</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">phoneNumberValidator</span>(<span class="hljs-params"><span class="hljs-keyword">type</span>?: <span class="hljs-title class_">PhoneNumberType</span></span>): <span class="hljs-title class_">ValidatorFn</span> {
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">phoneNumberValidator</span>(<span class="hljs-params"><span class="hljs-attr">type</span>?: <span class="hljs-title class_">PhoneNumberType</span></span>): <span class="hljs-title class_">ValidatorFn</span> {
     <span class="hljs-keyword">return</span> (<span class="hljs-attr">control</span>: <span class="hljs-title class_">AbstractControl</span>): { [<span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> } | <span class="hljs-function"><span class="hljs-params">null</span> =&gt;</span> {
         <span class="hljs-keyword">let</span> valid = <span class="hljs-literal">false</span>;
         <span class="hljs-comment">// if the number is packed in an object, the entered value is the `original`field</span>

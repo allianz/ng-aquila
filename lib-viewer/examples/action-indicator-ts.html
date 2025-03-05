@@ -9,8 +9,8 @@
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Action</span> {
     <span class="hljs-attr">icon</span>: <span class="hljs-built_in">string</span>;
     <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
-    notification?: <span class="hljs-built_in">boolean</span>;
-    notificationCount?: <span class="hljs-built_in">number</span>;
+    <span class="hljs-attr">notification</span>?: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-attr">notificationCount</span>?: <span class="hljs-built_in">number</span>;
 }
 
 <span class="hljs-comment">/**
@@ -73,7 +73,7 @@
     <span class="hljs-title function_">getAriaLabel</span>(<span class="hljs-params">
         <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>,
         notificationCount = <span class="hljs-string">&#x27;&#x27;</span>,
-        hasNotification?: <span class="hljs-built_in">boolean</span>,
+        <span class="hljs-attr">hasNotification</span>?: <span class="hljs-built_in">boolean</span>,
     </span>) {
         <span class="hljs-keyword">if</span> (hasNotification) {
             <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${label}</span> <span class="hljs-subst">${notificationCount}</span> new notifications available`</span>;

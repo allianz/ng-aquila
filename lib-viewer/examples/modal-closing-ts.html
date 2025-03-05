@@ -36,9 +36,9 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ModalClosingExampleComponent</span> {
     <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template&#x27;</span>) templateRef!: <span class="hljs-title class_">TemplateRef</span>&lt;<span class="hljs-built_in">any</span>&gt;;
 
-    dialogRef?: <span class="hljs-title class_">NxModalRef</span>&lt;<span class="hljs-built_in">any</span>, <span class="hljs-title class_">MyDialogResult</span> | <span class="hljs-literal">undefined</span>&gt;; <span class="hljs-comment">// cancel and backdrop click return undefined</span>
+    <span class="hljs-attr">dialogRef</span>?: <span class="hljs-title class_">NxModalRef</span>&lt;<span class="hljs-built_in">any</span>, <span class="hljs-title class_">MyDialogResult</span> | <span class="hljs-literal">undefined</span>&gt;; <span class="hljs-comment">// cancel and backdrop click return undefined</span>
 
-    actionResult?: <span class="hljs-title class_">MyDialogResult</span>;
+    <span class="hljs-attr">actionResult</span>?: <span class="hljs-title class_">MyDialogResult</span>;
 
     <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
         <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">dialogService</span>: <span class="hljs-title class_">NxDialogService</span>,

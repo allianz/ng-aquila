@@ -4,6 +4,9 @@
 <p class="docs-markdown--p">If a certain popover should have another styling, you can overwrite the global default by explicitly defining the property in the template.</p>
 <h3 id="ux-guidelines" tabindex="-1" class="docs-markdown--h3">UX guidelines</h3>
 <p class="docs-markdown--p">If you're building an Expert (internal B2B/B2E) application, you can use both the Popover and the <a href="./documentation/tooltip/overview#ux-guidelines">Tooltip component</a>. If you only need to display a short contextual hint (button hint, info icon, etc.) please consider if the simpler <a href="./documentation/tooltip/overview#ux-guidelines">Tooltip element is better for your use case</a>.</p>
+<h3 id="popover-content" tabindex="-1" class="docs-markdown--h3">Popover content</h3>
+<p class="docs-markdown--p">You can separate the content in a popover into sections using the following directives: <code>nxPopoverTitle</code>, <code>nxPopoverMainContent</code>, <code>nxPopoverActions</code></p>
+<div nx-docs-example="popover-slot" config="{}">exampleID: popover-slot</div>
 <h3 id="trigger-types" tabindex="-1" class="docs-markdown--h3">Trigger types</h3>
 <p class="docs-markdown--p">It is possible to open the popover by hover, click event or manually. To adjust the trigger type accordingly, set the <code>nxPopoverTrigger</code> attribute to click/hover/manual.</p>
 <ul class="docs-markdown--ul">
@@ -26,9 +29,6 @@
 <h3 id="custom-content" tabindex="-1" class="docs-markdown--h3">Custom content</h3>
 <p class="docs-markdown--p">The popover can carry custom content.</p>
 <div nx-docs-example="popover-custom" config="{}">exampleID: popover-custom</div>
-<h3 id="extended-popover" tabindex="-1" class="docs-markdown--h3">Extended popover</h3>
-<p class="docs-markdown--p">The popover can be extended with a header and a footer, consisting of a headline and buttons.</p>
-<div nx-docs-example="popover-extended" config="{}">exampleID: popover-extended</div>
 <p class="docs-markdown--p">The popover can be used for a guided tour</p>
 <div nx-docs-example="popover-guided-tour" config="{}">exampleID: popover-guided-tour</div>
 <h3 id="popover-without-arrow" tabindex="-1" class="docs-markdown--h3">Popover without arrow</h3>

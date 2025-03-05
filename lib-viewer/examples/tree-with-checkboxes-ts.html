@@ -1,0 +1,236 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ArrayDataSource</span>, <span class="hljs-title class_">SelectionModel</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/collections&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">CdkTree</span>, <span class="hljs-title class_">CdkTreeModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/tree&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">CommonModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">AfterViewInit</span>,
+    <span class="hljs-title class_">Component</span>,
+    <span class="hljs-title class_">Directive</span>,
+    inject,
+    input,
+    <span class="hljs-title class_">ViewChild</span>,
+    viewChildren,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxCheckboxComponent</span>,
+    <span class="hljs-title class_">NxCheckboxModule</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/checkbox&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
+
+<span class="hljs-comment">/** Flat node with expandable and level information */</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">ExampleFlatNode</span> {
+    <span class="hljs-attr">expandable</span>: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">level</span>: <span class="hljs-built_in">number</span>;
+    <span class="hljs-attr">isExpanded</span>?: <span class="hljs-built_in">boolean</span>;
+}
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">TREE_DATA</span>: <span class="hljs-title class_">ExampleFlatNode</span>[] = [
+    {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Fruit&#x27;</span>,
+        <span class="hljs-attr">expandable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-number">0</span>,
+    },
+    {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Apple&#x27;</span>,
+        <span class="hljs-attr">expandable</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-number">1</span>,
+    },
+    {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Banana&#x27;</span>,
+        <span class="hljs-attr">expandable</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-number">1</span>,
+    },
+    {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Fruit loops&#x27;</span>,
+        <span class="hljs-attr">expandable</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-number">1</span>,
+    },
+    {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Vegetables&#x27;</span>,
+        <span class="hljs-attr">expandable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-number">0</span>,
+    },
+    {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Green&#x27;</span>,
+        <span class="hljs-attr">expandable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-number">1</span>,
+    },
+    {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Broccoli&#x27;</span>,
+        <span class="hljs-attr">expandable</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-number">2</span>,
+    },
+    {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Brussels sprouts&#x27;</span>,
+        <span class="hljs-attr">expandable</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-number">2</span>,
+    },
+    {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Orange&#x27;</span>,
+        <span class="hljs-attr">expandable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-number">1</span>,
+    },
+    {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Pumpkins&#x27;</span>,
+        <span class="hljs-attr">expandable</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-number">2</span>,
+    },
+    {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Carrots&#x27;</span>,
+        <span class="hljs-attr">expandable</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-number">2</span>,
+    },
+];
+
+<span class="hljs-comment">/** Helper because the new CDK Tree API does not expose a form of `getDescendants` anymore. */</span>
+<span class="hljs-meta">@Directive</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;[treeCheckboxNode]&#x27;</span>,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TreeCheckboxNode</span>&lt;T&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterViewInit</span> {
+    checkbox = <span class="hljs-title function_">inject</span>(<span class="hljs-title class_">NxCheckboxComponent</span>, { <span class="hljs-attr">self</span>: <span class="hljs-literal">true</span> });
+    node = input&lt;T | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>, { <span class="hljs-attr">alias</span>: <span class="hljs-string">&#x27;treeCheckboxNode&#x27;</span> });
+    parentNode = input&lt;T | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>, {
+        <span class="hljs-attr">alias</span>: <span class="hljs-string">&#x27;treeCheckboxParentNode&#x27;</span>,
+    });
+
+    <span class="hljs-title function_">ngAfterViewInit</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-comment">// currently it is not possible to set the tabindex of the checkbox with an input</span>
+        <span class="hljs-comment">// on the component, doing this little trick, because the focus and keyboard action should</span>
+        <span class="hljs-comment">// happen on the tree nodes</span>
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">checkbox</span>.<span class="hljs-property">_nativeInput</span>.<span class="hljs-property">nativeElement</span>.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;tabindex&#x27;</span>, <span class="hljs-string">&#x27;-1&#x27;</span>);
+    }
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Tree Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tree-with-checkboxes-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tree-with-checkboxes-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tree-with-checkboxes-example.css&#x27;</span>],
+    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">CdkTreeModule</span>,
+        <span class="hljs-title class_">CommonModule</span>,
+        <span class="hljs-title class_">NxCheckboxModule</span>,
+        <span class="hljs-title class_">NxButtonModule</span>,
+        <span class="hljs-title class_">NxIconComponent</span>,
+        <span class="hljs-title class_">TreeCheckboxNode</span>,
+    ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TreeWithCheckboxesExampleComponent</span> {
+    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-title class_">CdkTree</span>)
+    tree!: <span class="hljs-title class_">CdkTree</span>&lt;<span class="hljs-title class_">ExampleFlatNode</span>&gt;;
+
+    levelAccessor = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">dataNode</span>: <span class="hljs-title class_">ExampleFlatNode</span></span>) =&gt;</span> dataNode.<span class="hljs-property">level</span>;
+
+    dataSource = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDataSource</span>(<span class="hljs-variable constant_">TREE_DATA</span>);
+
+    checklistSelection = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SelectionModel</span>&lt;<span class="hljs-title class_">ExampleFlatNode</span>&gt;(
+        <span class="hljs-literal">true</span> <span class="hljs-comment">/* multiple */</span>,
+    );
+
+    treeCheckboxNodes = <span class="hljs-title function_">viewChildren</span>(<span class="hljs-title class_">TreeCheckboxNode</span>);
+
+    hasChild = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">_</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">node</span>: <span class="hljs-title class_">ExampleFlatNode</span></span>) =&gt;</span> node.<span class="hljs-property">expandable</span>;
+
+    <span class="hljs-title function_">getParentNode</span>(<span class="hljs-params"><span class="hljs-attr">node</span>: <span class="hljs-title class_">ExampleFlatNode</span></span>) {
+        <span class="hljs-keyword">const</span> nodeIndex = <span class="hljs-variable constant_">TREE_DATA</span>.<span class="hljs-title function_">indexOf</span>(node);
+
+        <span class="hljs-comment">// Determine the node&#x27;s parent by finding the first preceding node that&#x27;s</span>
+        <span class="hljs-comment">// one level shallower.</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = nodeIndex - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-variable constant_">TREE_DATA</span>[i].<span class="hljs-property">level</span> === node.<span class="hljs-property">level</span> - <span class="hljs-number">1</span>) {
+                <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">TREE_DATA</span>[i];
+            }
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+
+    <span class="hljs-title function_">shouldRender</span>(<span class="hljs-attr">node</span>: <span class="hljs-title class_">ExampleFlatNode</span>): <span class="hljs-built_in">boolean</span> {
+        <span class="hljs-comment">// This node should render if it is a root node or if all of its ancestors are expanded.</span>
+        <span class="hljs-keyword">const</span> parent = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getParentNode</span>(node);
+        <span class="hljs-keyword">return</span> (
+            !parent ||
+            (!!<span class="hljs-variable language_">this</span>.<span class="hljs-property">tree</span>?.<span class="hljs-title function_">isExpanded</span>(parent) &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">shouldRender</span>(parent))
+        );
+    }
+
+    <span class="hljs-title function_">toggleNode</span>(<span class="hljs-params"><span class="hljs-attr">node</span>: <span class="hljs-title class_">ExampleFlatNode</span></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">checklistSelection</span>.<span class="hljs-title function_">toggle</span>(node);
+        <span class="hljs-keyword">const</span> isSelected = <span class="hljs-variable language_">this</span>.<span class="hljs-property">checklistSelection</span>.<span class="hljs-title function_">isSelected</span>(node);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setDescendants</span>(node, isSelected);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">checkAllParentsSelection</span>(node);
+    }
+
+    <span class="hljs-title function_">setDescendants</span>(<span class="hljs-params"><span class="hljs-attr">parentNode</span>: <span class="hljs-title class_">ExampleFlatNode</span>, <span class="hljs-attr">isSelected</span>: <span class="hljs-built_in">boolean</span></span>) {
+        <span class="hljs-keyword">const</span> descendants = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getDescendants</span>(parentNode);
+
+        descendants.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> {
+            isSelected
+                ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">checklistSelection</span>.<span class="hljs-title function_">select</span>(item)
+                : <span class="hljs-variable language_">this</span>.<span class="hljs-property">checklistSelection</span>.<span class="hljs-title function_">deselect</span>(item);
+        });
+    }
+
+    <span class="hljs-comment">/* Checks all the parents when a leaf node is selected/unselected */</span>
+    <span class="hljs-title function_">checkAllParentsSelection</span>(<span class="hljs-attr">node</span>: <span class="hljs-title class_">ExampleFlatNode</span>): <span class="hljs-built_in">void</span> {
+        <span class="hljs-keyword">let</span> <span class="hljs-attr">parent</span>: <span class="hljs-title class_">ExampleFlatNode</span> | <span class="hljs-literal">null</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getParentNode</span>(node);
+        <span class="hljs-keyword">while</span> (parent) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">toggleRootNodeSelection</span>(parent);
+            parent = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getParentNode</span>(parent);
+        }
+    }
+
+    <span class="hljs-comment">/** Check root node checked state and change it accordingly */</span>
+    <span class="hljs-title function_">toggleRootNodeSelection</span>(<span class="hljs-attr">node</span>: <span class="hljs-title class_">ExampleFlatNode</span>): <span class="hljs-built_in">void</span> {
+        <span class="hljs-keyword">const</span> nodeSelected = <span class="hljs-variable language_">this</span>.<span class="hljs-property">checklistSelection</span>.<span class="hljs-title function_">isSelected</span>(node);
+        <span class="hljs-keyword">const</span> descAllSelected = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">descendantsAllSelected</span>(node);
+        <span class="hljs-keyword">if</span> (nodeSelected &amp;&amp; !descAllSelected) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">checklistSelection</span>.<span class="hljs-title function_">deselect</span>(node);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!nodeSelected &amp;&amp; descAllSelected) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">checklistSelection</span>.<span class="hljs-title function_">select</span>(node);
+        }
+    }
+
+    <span class="hljs-title function_">getDescendants</span>(<span class="hljs-params"><span class="hljs-attr">node</span>: <span class="hljs-title class_">ExampleFlatNode</span></span>) {
+        <span class="hljs-keyword">const</span> <span class="hljs-attr">descendants</span>: <span class="hljs-title class_">ExampleFlatNode</span>[] = [];
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_getDescendants</span>(descendants, node);
+        <span class="hljs-keyword">return</span> descendants.<span class="hljs-title function_">splice</span>(<span class="hljs-number">1</span>);
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-title function_">_getDescendants</span>(<span class="hljs-params">
+        <span class="hljs-attr">descendants</span>: <span class="hljs-title class_">ExampleFlatNode</span>[],
+        <span class="hljs-attr">node</span>: <span class="hljs-title class_">ExampleFlatNode</span>,
+    </span>) {
+        descendants.<span class="hljs-title function_">push</span>(node);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">treeCheckboxNodes</span>()
+            ?.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-title function_">parentNode</span>() === node)
+            .<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> {
+                descendants.<span class="hljs-title function_">push</span>(item.<span class="hljs-title function_">node</span>());
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_getDescendants</span>(descendants, item.<span class="hljs-title function_">node</span>());
+            });
+    }
+
+    <span class="hljs-comment">/** Whether all the descendants of the node are selected. */</span>
+    <span class="hljs-title function_">descendantsAllSelected</span>(<span class="hljs-attr">node</span>: <span class="hljs-title class_">ExampleFlatNode</span>): <span class="hljs-built_in">boolean</span> {
+        <span class="hljs-keyword">const</span> descendants = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getDescendants</span>(node);
+        <span class="hljs-keyword">const</span> descAllSelected =
+            descendants.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span> &amp;&amp;
+            descendants.<span class="hljs-title function_">every</span>(<span class="hljs-function"><span class="hljs-params">child</span> =&gt;</span>
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">checklistSelection</span>.<span class="hljs-title function_">isSelected</span>(child),
+            );
+        <span class="hljs-keyword">return</span> descAllSelected;
+    }
+
+    <span class="hljs-comment">// /** Whether part of the descendants are selected */</span>
+    <span class="hljs-title function_">descendantsPartiallySelected</span>(<span class="hljs-attr">node</span>: <span class="hljs-title class_">ExampleFlatNode</span>): <span class="hljs-built_in">boolean</span> {
+        <span class="hljs-keyword">const</span> descendants = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getDescendants</span>(node);
+        <span class="hljs-keyword">const</span> result = descendants.<span class="hljs-title function_">some</span>(<span class="hljs-function"><span class="hljs-params">child</span> =&gt;</span>
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">checklistSelection</span>.<span class="hljs-title function_">isSelected</span>(child),
+        );
+        <span class="hljs-keyword">return</span> result &amp;&amp; !<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">descendantsAllSelected</span>(node);
+    }
+}
