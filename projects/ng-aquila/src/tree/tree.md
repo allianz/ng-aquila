@@ -22,6 +22,13 @@ A `<nx-tree>` is a flat tree consisting of `<nx-tree-node>` nodes.
 
 The `nxTreeNodeToggle` directive can be used to add expand/collapse feature to the tree node. It can be added to any place on the tree node. For better accessibility this directive should be added on a `button` element.
 
+### Tree with checkboxes using the CDK
+
+The tree component was initially designed mostly for navigation purposes and simple structured data. If you need a tree with checkboxes or other interactive elements, we suggest using the Angular CDK tree. For more information on the CDK tree, see the [Angular CDK documentation](https://material.angular.io/cdk/tree/overview).
+The following example shows how to use the CDK tree with checkboxes and how to style it according to design guidelines.
+
+<!-- example(tree-with-checkboxes) -->
+
 ### Accessibility
 
 To provide an accessible tree, the expandable nodes need to contain a `button` element. Similar to this the leaf nodes need to contain a valid `a` or `button` element. The tree can then be traversed by keyboard. You can `TAB` into the tree and go through the individual nodes with `UP` and `DOWN` buttons. You can close/expand them by pressing `LEFT` and `RIGHT` buttons respectively or toggle with `ENTER` or `SPACE`.
