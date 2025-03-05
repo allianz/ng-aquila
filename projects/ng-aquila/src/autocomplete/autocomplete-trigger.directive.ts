@@ -554,24 +554,29 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         if (this.autocomplete.options.length === 0) {
             return;
         }
-        let optionOffset = 0;
-        let optionHeight = this.autocomplete.options.first.elementRef.nativeElement.offsetHeight;
+        afterNextRender(
+            () => {
+                let optionOffset = 0;
+                let optionHeight = this.autocomplete.options.first.elementRef.nativeElement.offsetHeight;
 
-        if (this.autocomplete._keyManager.activeItem) {
-            optionOffset = this.autocomplete._keyManager.activeItem.elementRef.nativeElement.offsetTop;
-            optionHeight = this.autocomplete._keyManager.activeItem.elementRef.nativeElement.offsetHeight;
-        }
+                if (this.autocomplete._keyManager.activeItem) {
+                    optionOffset = this.autocomplete._keyManager.activeItem.elementRef.nativeElement.offsetTop;
+                    optionHeight = this.autocomplete._keyManager.activeItem.elementRef.nativeElement.offsetHeight;
+                }
 
-        const panelOffsetTop = this.autocomplete.panel.nativeElement.offsetTop;
+                const panelOffsetTop = this.autocomplete.panel.nativeElement.offsetTop;
 
-        const newScrollPosition = _getOptionScrollPosition(
-            optionOffset,
-            optionHeight,
-            this.autocomplete._getScrollTop() + panelOffsetTop,
-            this.autocomplete.panel.nativeElement.offsetHeight,
+                const newScrollPosition = _getOptionScrollPosition(
+                    optionOffset,
+                    optionHeight,
+                    this.autocomplete._getScrollTop() + panelOffsetTop,
+                    this.autocomplete.panel.nativeElement.offsetHeight,
+                );
+
+                this.autocomplete._setScrollTop(newScrollPosition - panelOffsetTop);
+            },
+            { injector: this._injector },
         );
-
-        this.autocomplete._setScrollTop(newScrollPosition - panelOffsetTop);
     }
 
     /**
