@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [19.2.0](https://github.com/allianz/ng-aquila/compare/v19.1.0...v19.2.0) (2025-03-05)
+
+### Tags design and accessibility update
+The tags component got an update to also support checked and readonly states. The supported patterns for tags are now multi-select and removable tags. To support the new features and provide better accessibility a new `nx-tag-group` was introduced. The `nxTaglist` component has been deprecated. We recommend using the new `nx-tag-group` in the future especially to be accessibility compliant.
+
+### Grid: empty nxCol possible now
+Formerly it was not possible to use an empty `nxCol`, you had to set a column size. Now you can use an empty `nxCol` to let the grid automatically distribute the space for that column.
+
+### Popover content slots
+The popover provides optional content slots for header, content and footer now.
+
+### Advanced Pagination reacts to container queries
+The simple and advanced pagination variants automatically react in the same way they do to media queries to container queries now, changing the layout to a more compact version if inside a containment context.
+
+
+### Documentation 📚
+
+* disable resizable option for static example ([1687a93](https://github.com/allianz/ng-aquila/commit/1687a9392a830e1880b439130f3176cbf1267663))
+* edit localization example ([dcca46e](https://github.com/allianz/ng-aquila/commit/dcca46ed5260c0bc310ee1d6341064deceabf6ce))
+
+
+### Bug Fixes 🐛
+
+* **accordion:** a11y border is not visible in high contrast mode ([38ec80e](https://github.com/allianz/ng-aquila/commit/38ec80e8301983ff9195477bac50fabf3321c340))
+* **autocomplete:** defer scrollToOption with afterNextRender ([089eff9](https://github.com/allianz/ng-aquila/commit/089eff9de52ae02b49d92d9a6da04e3bab532a31))
+* **checkbox:** hide error container when inside group ([9f5cc83](https://github.com/allianz/ng-aquila/commit/9f5cc835e70231c4a1af1fd24bedddb17afb7ac2))
+* **dropdown:** center check icon vertically ([1f82eb3](https://github.com/allianz/ng-aquila/commit/1f82eb314a3beb208bde116ddb9a9d42f9598282))
+* **formfield:** focus border in high contrast mode ([7cf5819](https://github.com/allianz/ng-aquila/commit/7cf58198bf8debeedcc39177d4d21d511f32bd95))
+* **message,popover,modal:** set close icon as a plain button ([1e3d357](https://github.com/allianz/ng-aquila/commit/1e3d3571e18baf0a2dce99e2da9295979757f550))
+* **message:** add bottom spacing to toast messages ([baca28b](https://github.com/allianz/ng-aquila/commit/baca28b6824d3b37e1eac8d29f96fff8e8583b69))
+* **number-stepper:** handle decimals better with signals ([ca3dd8b](https://github.com/allianz/ng-aquila/commit/ca3dd8b384777fe14b2b873036b0496ac2782a8f))
+* **table:** add top border in table component and edit example ([0e91747](https://github.com/allianz/ng-aquila/commit/0e91747bf70f1bcd180430b1c87867156b917fe8))
+* **table:** enable sticky expanded columns ([b1fee27](https://github.com/allianz/ng-aquila/commit/b1fee2750a208f7b442e3a4ee4c2bb949d4d72f4))
+* **viewport-service:** update to rx7 and fix settings ([a90626f](https://github.com/allianz/ng-aquila/commit/a90626f6d6a191132b93258cc3ff36b99ccb2205))
+
+
+### Features ✨
+
+* **autocomplete:** enable panelGrow and introduce panelMaxWidth ([5b58c65](https://github.com/allianz/ng-aquila/commit/5b58c653591b506b901f259ddffa0fb05d5ef2c7))
+* **checkbox:** one Allianz styling ([0f89d14](https://github.com/allianz/ng-aquila/commit/0f89d14eacc2a2e489220143d75b44f184722975))
+* **grid:** blank nxcol will automatically take up the remaining space ([29d6e18](https://github.com/allianz/ng-aquila/commit/29d6e18a7d518d9f9fd92d1305567e94308ec570))
+* **number-stepper:** enhance error state visibility ([f8b25b2](https://github.com/allianz/ng-aquila/commit/f8b25b2fb198f88d476867eb64c9fadbda995bd9))
+* **pagination:** add containerQuery responsive ([0bd9da8](https://github.com/allianz/ng-aquila/commit/0bd9da8068a382a64b5df50a2da1c76b892f262c))
+* **popover:** add header, content and footer slots ([4851915](https://github.com/allianz/ng-aquila/commit/48519158e4f87a9720dd089a7250d0d60ec0d41c))
+* **tag:** add new nx-tag-group and improve a11y ([d3aaf82](https://github.com/allianz/ng-aquila/commit/d3aaf8278f5ab1135cef8b81fe88b689d63b30cd))
+* **tree:** add tree with checkboxes example ([54a0184](https://github.com/allianz/ng-aquila/commit/54a018432742f53353f7fdf426bd57f2e944c5da))
+
+### Deprecations
+* **taglist**: nxTaglist has been deprecated. Please use the new nx-tag-group instead.
+
+
 ## [19.1.0](https://github.com/allianz/ng-aquila/compare/v19.0.0...v19.1.0) (2025-02-06)
 
 
