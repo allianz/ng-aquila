@@ -75,11 +75,11 @@ export class ManifestService {
 
     groupedComponents = computed(() => {
         const groupedComponents = this.getGroupedComponents();
-        if (this.themingService.selectedTheme().name.includes('allianz-one')) {
-            return groupedComponents
-                .map(category => ({ ...category, children: category.children.filter((component: CategoryChild) => component.component.a1 || false) }))
-                .filter(category => category.label !== 'third-party');
-        }
+        // if (this.themingService.selectedTheme().name.includes('allianz-one')) {
+        //     return groupedComponents
+        //         .map(category => ({ ...category, children: category.children.filter((component: CategoryChild) => component.component.a1 || false) }))
+        //         .filter(category => category.label !== 'third-party');
+        // }
         return groupedComponents;
     });
 

@@ -14,7 +14,11 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { NxTagComponent } from './tag.component';
+import { NxTaglist, TAGLIST } from './taglist-interface';
 
+/**
+ * @deprecated Use `nx-tag` components standalone or `nx-tag-group` instead.
+ */
 @Component({
     selector: 'nx-taglist',
     templateUrl: 'taglist.component.html',
@@ -26,6 +30,10 @@ import { NxTagComponent } from './tag.component';
             useExisting: forwardRef(() => NxTaglistComponent),
             multi: true,
         },
+        {
+            provide: TAGLIST,
+            useExisting: forwardRef(() => NxTaglistComponent),
+        },
     ],
     host: {
         '[class.nx-taglist--keyword]': 'isKeywordList',
@@ -34,7 +42,7 @@ import { NxTagComponent } from './tag.component';
     },
     imports: [NxTagComponent],
 })
-export class NxTaglistComponent implements ControlValueAccessor {
+export class NxTaglistComponent implements NxTaglist, ControlValueAccessor {
     /** An event is dispatched each time when the list of tags changed. */
     @Output('tagsChange') readonly tagsChange = new EventEmitter<any[]>();
 
@@ -47,7 +55,6 @@ export class NxTaglistComponent implements ControlValueAccessor {
     /** Sets the list of tags. */
     @Input('tags') set tags(value: any[]) {
         this._tags = value;
-        this._cdr.markForCheck();
     }
     get tags(): any[] {
         return this._tags;
@@ -57,17 +64,15 @@ export class NxTaglistComponent implements ControlValueAccessor {
     /** Sets the tabindex of the contained tags. Default value: -1. */
     @Input() set tabindex(value: NumberInput) {
         this._tabindex = coerceNumberProperty(value);
-        this._cdr.markForCheck();
     }
     get tabindex(): number {
-        return this.allowTagDeletion ? 0 : this._tabindex;
+        return this._tabindex;
     }
     private _tabindex = -1;
 
     /** Whether the tags can be removed from the list. Default: true. */
     @Input() set allowTagDeletion(value: BooleanInput) {
         this._allowTagDeletion = coerceBooleanProperty(value);
-        this._cdr.markForCheck();
     }
     get allowTagDeletion(): boolean {
         return this._allowTagDeletion;
@@ -77,7 +82,6 @@ export class NxTaglistComponent implements ControlValueAccessor {
     /** Whether the tags can be styled as keywords. */
     @Input() set isKeywordList(value: BooleanInput) {
         this._isKeywordList = coerceBooleanProperty(value);
-        this._cdr.markForCheck();
     }
     get isKeywordList(): boolean {
         return this._isKeywordList;
@@ -88,7 +92,6 @@ export class NxTaglistComponent implements ControlValueAccessor {
     @Input() set labelProperty(value: string) {
         if (this._labelProperty !== value) {
             this._labelProperty = value;
-            this._cdr.markForCheck();
         }
     }
     get labelProperty(): string {
@@ -100,7 +103,6 @@ export class NxTaglistComponent implements ControlValueAccessor {
     @Input('aria-labelledby') set labelledby(value: string) {
         if (this._ariaLabelledBy !== value) {
             this._ariaLabelledBy = value;
-            this._cdr.markForCheck();
         }
     }
     get labelledby(): string {
@@ -111,7 +113,6 @@ export class NxTaglistComponent implements ControlValueAccessor {
     /** Sets the customization function for tag value.  */
     @Input() set valueFormatter(fn: (value: any) => string) {
         this._valueFormatterFn = fn;
-        this._cdr.markForCheck();
     }
     get valueFormatter(): (value: any) => string {
         return this._valueFormatterFn;
@@ -164,6 +165,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
         this.tags = [];
         this._onChange(this.tags);
         this.tagsChange.emit(this.tags);
+        this._cdr.markForCheck();
     }
 
     /** @docs-private */

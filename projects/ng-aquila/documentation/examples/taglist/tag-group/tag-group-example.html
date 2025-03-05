@@ -1,0 +1,10 @@
+<nx-tag-group aria-label="Filter fruits">
+    @for (tag of tags; track tag; ; let idx = $index) {
+    <nx-tag
+        [value]="tag.toLowerCase()"
+        [disabled]="idx === 1"
+        [readonly]="idx === 2"
+        >{{ tag }}</nx-tag
+    >
+    }
+</nx-tag-group>

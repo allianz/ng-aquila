@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -9,6 +9,7 @@ import { NxTaglistModule } from './taglist.module';
 abstract class TaglistTest {
     @ViewChild(NxTaglistComponent) taglistInstance!: NxTaglistComponent;
     tags: (string | object)[] = ['foo', 'bar'];
+    labelProperty = 'nxTaglistLabel';
 }
 
 describe('NxTaglistComponent', () => {
@@ -37,7 +38,16 @@ describe('NxTaglistComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxTaglistModule, BasicTaglist, TaglistNoDelete, TaglistObjects, TaglistWithFormatter, AriaLabelledByTaglist, TaglistOnPush],
+            imports: [
+                NxTaglistModule,
+                BasicTaglist,
+                TaglistNoDelete,
+                TaglistObjects,
+                TaglistWithFormatter,
+                AriaLabelledByTaglist,
+                KeywordTaglist,
+                LabelPropertyTaglist,
+            ],
         }).compileComponents();
     }));
 
@@ -141,6 +151,14 @@ describe('NxTaglistComponent', () => {
 
     it('shows content as empty state', () => {
         createTestComponent(BasicTaglist);
+        testInstance.tags = [];
+        fixture.detectChanges();
+        const taglistElement = fixture.debugElement.query(By.css('nx-taglist'));
+        expect(taglistElement.nativeElement.textContent.trim()).toBe('empty');
+    });
+
+    it('shows content as empty state when clearTags was called', () => {
+        createTestComponent(BasicTaglist);
         taglistInstance.clearTags();
         fixture.detectChanges();
         const taglistElement = fixture.debugElement.query(By.css('nx-taglist'));
@@ -180,56 +198,23 @@ describe('NxTaglistComponent', () => {
         expect(item1?.textContent?.trim()).toBe('my bar');
     });
 
-    describe('programmatic change', () => {
-        it('should update on tags change', () => {
-            createTestComponent(BasicTaglist);
-            testInstance.taglistInstance.tags = ['a', 'b', 'c'];
-            fixture.detectChanges();
-            tagElements = getTagElements();
-            expect(tagElements).toHaveSize(3);
-            expect(tagElements.item(0).textContent?.trim()).toBe('a');
-        });
+    it('should set keyword class', () => {
+        createTestComponent(KeywordTaglist);
+        testInstance.taglistInstance.isKeywordList = true;
+        fixture.detectChanges();
+        expect(fixture.nativeElement.querySelector('nx-taglist')).toHaveClass('nx-taglist--keyword');
+    });
 
-        it('should update on allowTagDeletion change', () => {
-            createTestComponent(BasicTaglist);
-            testInstance.taglistInstance.allowTagDeletion = false;
-            fixture.detectChanges();
-            expect(getCloseIcon(tagElements.item(0))).toBeFalsy();
-        });
-
-        it('should update on isKeywordList change', () => {
-            createTestComponent(TaglistOnPush);
-            testInstance.taglistInstance.isKeywordList = true;
-            fixture.detectChanges();
-            expect(fixture.nativeElement.querySelector('nx-taglist')).toHaveClass('nx-taglist--keyword');
-        });
-
-        it('should update on labelProp change', () => {
-            createTestComponent(BasicTaglist);
-            testInstance.taglistInstance.tags = [{ customLabelProp: 'a' }, { customLabelProp: 'b' }, { customLabelProp: 'c' }];
-            fixture.detectChanges();
-            tagElements = getTagElements();
-            expect(tagElements.item(0).textContent?.trim()).toBe('');
-            testInstance.taglistInstance.labelProperty = 'customLabelProp';
-            fixture.detectChanges();
-            tagElements = getTagElements();
-            expect(tagElements.item(0).textContent?.trim()).toBe('a');
-        });
-
-        it('should update on labelledby change', () => {
-            createTestComponent(AriaLabelledByTaglist);
-            testInstance.taglistInstance.labelledby = 'taglist-headline2';
-            fixture.detectChanges();
-            expect(fixture.nativeElement.querySelector('nx-taglist').getAttribute('aria-labelledby')).toBe('taglist-headline2');
-        });
-
-        it('should update on valueFormatter change', () => {
-            createTestComponent(AriaLabelledByTaglist);
-            testInstance.taglistInstance.valueFormatter = value => `=== ${value} ===`;
-            fixture.detectChanges();
-            tagElements = getTagElements();
-            expect(tagElements.item(0).textContent?.trim()).toBe('=== foo ===');
-        });
+    it('should update on labelProp change', () => {
+        createTestComponent(LabelPropertyTaglist);
+        testInstance.tags = [{ customLabelProp: 'a' }, { customLabelProp: 'b' }, { customLabelProp: 'c' }];
+        fixture.detectChanges();
+        tagElements = getTagElements();
+        expect(tagElements.item(0).textContent?.trim()).toBe('');
+        testInstance.labelProperty = 'customLabelProp';
+        fixture.detectChanges();
+        tagElements = getTagElements();
+        expect(tagElements.item(0).textContent?.trim()).toBe('a');
     });
 
     describe('a11y', () => {
@@ -258,6 +243,18 @@ describe('NxTaglistComponent', () => {
             createTestComponent(AriaLabelledByTaglist);
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
+
+        it('has role button in taglist when not removable', () => {
+            createTestComponent(TaglistNoDelete);
+            const tags = getTagElements();
+            expect(tags[0].getAttribute('role')).toBe('button');
+        });
+
+        it('does have role group in taglist when removable', () => {
+            createTestComponent(BasicTaglist);
+            const tags = getTagElements();
+            expect(tags[0].getAttribute('role')).toBe('group');
+        });
     });
 });
 
@@ -266,6 +263,12 @@ describe('NxTaglistComponent', () => {
     imports: [NxTaglistModule],
 })
 class BasicTaglist extends TaglistTest {}
+
+@Component({
+    template: `<nx-taglist [tags]="tags" [labelProperty]="labelProperty">empty</nx-taglist>`,
+    imports: [NxTaglistModule],
+})
+class LabelPropertyTaglist extends TaglistTest {}
 
 @Component({
     template: `<nx-taglist [tags]="tags" [allowTagDeletion]="false"></nx-taglist>`,
@@ -290,13 +293,6 @@ class TaglistWithFormatter extends TaglistTest {
 }
 
 @Component({
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `<nx-taglist [tags]="tags">empty</nx-taglist>`,
-    imports: [NxTaglistModule],
-})
-class TaglistOnPush extends TaglistTest {}
-
-@Component({
     template: `
         <h5 id="taglist-headline">Aria label</h5>
         <h5 id="taglist-headline2">Other label</h5>
@@ -307,3 +303,9 @@ class TaglistOnPush extends TaglistTest {}
 class AriaLabelledByTaglist extends TaglistTest {
     labelledBy = 'taglist-headline';
 }
+
+@Component({
+    template: ` <nx-taglist [tags]="tags" isKeywordList></nx-taglist> `,
+    imports: [NxTaglistModule],
+})
+class KeywordTaglist extends TaglistTest {}

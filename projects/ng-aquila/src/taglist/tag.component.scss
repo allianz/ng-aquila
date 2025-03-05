@@ -7,56 +7,176 @@ $border-size: nx-border-size(m);
 }
 
 :host {
-    @include type-style(taglist);
-    height: auto;
-    max-width: 100%;
-    color: v(taglist-color);
-    background-color: v(taglist-background-color);
-    padding: tag-padding(nx-spacer(2xs)) tag-padding(nx-spacer(s));
-    display: flex;
+    @include type-style(tag);
+    display: inline-block;
+    color: v(tag-color);
     align-items: center;
-    border: $border-size solid v(taglist-border-color);
-    border-radius: nx-border-radius(s);
-    user-select: none;
-    transition:
-        background-color 0.2s ease,
-        box-shadow 0.2s ease;
-    cursor: pointer;
-
-    &:hover {
-        border-color: v(taglist-hover-border-color);
-        color: v(taglist-hover-color);
-        background-color: v(taglist-hover-background-color);
-    }
+    background-color: v(tag-background-color);
 
     &:focus {
         outline: 2px solid transparent;
     }
 }
 
+// nx-tag-content is used to share styles for the different uses of the tag
+// it is put on the host element when the tag is not in a tag group or removable
+// for selectable tags inside a tag group it is put on the label element
+// so we need the :host.nx-tag-content, .nx-tag-content selector to target it on
+// the host element and inside the template
+// -> that is also important for backwards compatibility to the deprecated taglist
+// -> if we would create a wrapper inside the template it would break some styles
+// -> people applied over time
+:host.nx-tag-content,
+.nx-tag-content {
+    padding: v(tag-padding);
+    border: 2px solid v(tag-border-color);
+    border-radius: v(tag-border-radius);
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: v(tag-content-gap);
+    height: v(tag-height);
+}
+
+.nx-tag-checkmark {
+    font-size: 16px;
+}
+
+:host.can-hover {
+    .nx-tag-content:not(:has(input:disabled)),
+    &.nx-tag-content:not(.nx-tag--removable) {
+        &:hover {
+            border-color: v(tag-hover-border-color);
+            color: v(tag-hover-color);
+            background-color: v(tag-hover-background-color);
+        }
+
+        &:active {
+            color: v(tag-active-color);
+            border-color: v(tag-active-border-color);
+            background-color: v(tag-active-background-color);
+        }
+
+        &.nx-tag--selected:hover {
+            border-color: v(tag-selected-hover-border-color);
+            color: v(tag-selected-hover-color);
+            background-color: v(tag-selected-hover-background-color);
+        }
+
+        &.nx-tag--selected:active {
+            color: v(tag-selected-active-color);
+            border-color: v(tag-selected-active-border-color);
+            background-color: v(tag-selected-active-background-color);
+        }
+    }
+}
+
+:host.nx-tag--readonly {
+    cursor: initial;
+
+    label {
+        cursor: initial;
+    }
+
+    &.nx-tag-content,
+    .nx-tag-content {
+        color: v(tag-readonly-color);
+        border-color: v(tag-readonly-border-color);
+        background-color: v(tag-readonly-background-color);
+    }
+
+    .nx-tag-content.nx-tag--selected {
+        color: v(tag-selected-readonly-color);
+        border-color: v(tag-selected-readonly-border-color);
+        background-color: v(tag-selected-readonly-background-color);
+    }
+}
+
+:host.nx-tag--disabled {
+    &.nx-tag-content,
+    .nx-tag-content {
+        color: v(tag-disabled-color);
+        border-color: v(tag-disabled-border-color);
+        background-color: v(tag-disabled-background-color);
+    }
+
+    .nx-tag-content.nx-tag--selected {
+        color: v(tag-selected-disabled-color);
+        border-color: v(tag-selected-disabled-border-color);
+        background-color: v(tag-selected-disabled-background-color);
+    }
+}
+
+:host:has(label) {
+    padding: 0;
+    border: none;
+}
+
+label {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    user-select: none;
+
+    &.nx-tag--selected {
+        color: v(tag-selected-color);
+        border-color: v(tag-selected-border-color);
+        background-color: v(tag-selected-background-color);
+    }
+}
+
+input {
+    opacity: 0;
+    position: absolute;
+}
+
+:host:has(input:disabled) {
+    cursor: not-allowed;
+
+    label {
+        cursor: not-allowed;
+    }
+}
+
+// old focus styles
 :host.cdk-keyboard-focused {
     @include focus-style;
 }
 
-.nx-tag__close-icon {
-    outline: none;
-    display: block;
-    font-size: v(taglist-close-icon-size);
-    color: v(taglist-color);
+:host:has(.cdk-keyboard-focused) {
+    label.nx-tag-content {
+        @include focus-style;
+    }
 }
 
 .nx-tag__close {
-    margin-left: nx-spacer(2xs);
+    line-height: 1rem;
     padding: 0;
     min-height: unset;
     :host-context([dir='rtl']) & {
         margin-right: nx-spacer(2xs);
         margin-left: initial;
     }
+
+    nx-icon {
+        font-size: v(tag-close-icon-size);
+    }
 }
 
+// deprecated, remove once nxTaglist is removed
 :host-context(.nx-taglist--keyword) {
     padding: tag-padding(nx-spacer(s)) tag-padding(nx-spacer(m));
+}
+
+:host.nx-tag-keyword {
+    &.nx-tag-content,
+    .nx-tag-content {
+        padding: tag-padding(nx-spacer(s)) tag-padding(nx-spacer(m));
+    }
 }
 
 @media screen and (forced-colors: active) {
