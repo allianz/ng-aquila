@@ -15,30 +15,31 @@ Keep in mind that the content of `nx-radio` equals the button's label (in this c
 
 <!-- example(radio-button-sample) -->
 
-## Radio group
+### Radio group
 
 Just like standard `<input type="radio">` elements, these radio button components can be grouped. For this purpose you can use the `nx-radio-group` component. Just make sure to set the name property on the group, which will then take care of assigning the same name to each radio button within the group.
 
-### Basic usage
+#### Basic usage
 
 The radio group is a set of radio buttons grouped together under an optional group label.
 
 <!-- example(radio-button-group) -->
 
-### Horizontal usage
-
-<!-- example(radio-button-group-horizontal) -->
-
-### Template-driven with ngModel
+#### Template-driven with ngModel
 
 In case `nx-radio-group` is used, the value of the selected option is managed by the group. Consequently, `ngModel` is supposed to be used on the group rather than the contained `nx-radio` components.
 
 <!-- example(radio-button-form) -->
 
-### Reactive form
+#### Reactive form
 
 <!-- example(radio-button-reactive) -->
 
+### Layouting
+
+You are free to choose how you want to layout the radio buttons inside the group. You can for example use the grid component, your own css grid or css flexbox around it.
+
+<!-- example(radio-button-group-horizontal) -->
 ### Label Sizes
 
 <!-- example(radio-button-sizes) -->

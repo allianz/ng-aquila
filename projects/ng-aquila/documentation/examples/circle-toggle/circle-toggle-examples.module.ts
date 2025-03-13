@@ -7,6 +7,7 @@ import { ExamplesSharedModule } from '../examples-shared.module';
 import { CircleToggleExpertExampleComponent } from './circle-toggle-expert/circle-toggle-expert-example';
 import { CircleToggleGroupExampleComponent } from './circle-toggle-group/circle-toggle-group-example';
 import { CircleToggleGroupExpertExampleComponent } from './circle-toggle-group-expert/circle-toggle-group-expert-example';
+import { CircleToggleLayoutExampleComponent } from './circle-toggle-layout/circle-toggle-layout-example';
 import { CircleToggleNegativeExampleComponent } from './circle-toggle-negative/circle-toggle-negative-example';
 import { CircleToggleReactiveExampleComponent } from './circle-toggle-reactive/circle-toggle-reactive-example';
 import { CircleToggleReactiveDisabledExampleComponent } from './circle-toggle-reactive-disabled/circle-toggle-reactive-disabled-example';
@@ -20,6 +21,7 @@ import { CircleToggleValidationExampleComponent } from './circle-toggle-validati
 
 const EXAMPLES = [
     CircleToggleGroupExampleComponent,
+    CircleToggleLayoutExampleComponent,
     CircleToggleNegativeExampleComponent,
     CircleToggleReactiveExampleComponent,
     CircleToggleReactiveDisabledExampleComponent,
@@ -48,6 +50,7 @@ export class CircleExamplesModule {
     static components() {
         return {
             'circle-toggle-group': CircleToggleGroupExampleComponent,
+            'circle-toggle-layout': CircleToggleLayoutExampleComponent,
             'circle-toggle-negative': CircleToggleNegativeExampleComponent,
             'circle-toggle-reactive': CircleToggleReactiveExampleComponent,
             'circle-toggle-reactive-disabled':

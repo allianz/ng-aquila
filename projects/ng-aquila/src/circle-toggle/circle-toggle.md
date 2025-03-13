@@ -20,6 +20,8 @@ The component can be used as a standalone component with a checkbox role where y
 
 ### Circle Toggle Group (radio group role)
 
+#### Basic Usage
+
 The Circle Toggle component can also be wrapped in a circle toggle group, which gives the buttons in the group the behaviour of a radio group, where only one button can be selected at a time.
 
 <!-- example(circle-toggle-group) -->
@@ -59,6 +61,12 @@ Please note that this is an **Expert option**. This means that it is only intend
 <!-- example(circle-toggle-expert)-->
 
 </div>
+
+### Layouting
+
+You have the flexibility to structure the circle toggle within the group however you prefer.
+
+<!-- example(circle-toggle-layout) -->
 
 ### Simple binding
 

@@ -1,0 +1,10 @@
+.grid-wrapper {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: auto auto auto;
+}
+
+.flex-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+}

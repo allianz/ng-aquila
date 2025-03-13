@@ -59,15 +59,15 @@ Checkboxes can be grouped under one label and validated together. The checkbox g
 
 <!-- example(checkbox-group-basic) -->
 
-#### Layouting
-
-You are free to choose how you want to layout the checkboxes inside the group. You can for example use the grid component, your own css flexbox or css grid around it.
-
-<!-- example(checkbox-group-layout) -->
-
 #### Reactive form
 
 <!-- example(checkbox-group-reactive) -->
+
+### Layouting
+
+You are free to choose how you want to layout the checkboxes inside the group. You can for example use the grid component, your own css grid or css flexbox around it.
+
+<!-- example(checkbox-group-layout) -->
 
 <div class="docs-expert-container">
 
