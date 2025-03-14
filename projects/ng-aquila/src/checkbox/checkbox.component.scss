@@ -316,6 +316,16 @@
                 forced-color-adjust: none;
             }
         }
+        &:not(:has(input:disabled)):has(.nx-checkbox__indeterminate-indicator) {
+            .nx-checkbox__control {
+                background-color: highlight !important;
+                border-color: highlight !important;
+            }
+            .nx-checkbox__indeterminate-indicator {
+                color: window !important;
+                border-color: window !important;
+            }
+        }
 
         .nx-checkbox__indeterminate-indicator {
             color: buttonText !important;
