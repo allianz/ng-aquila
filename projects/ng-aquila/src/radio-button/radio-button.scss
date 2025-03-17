@@ -84,8 +84,9 @@ $radio-border-radius: 50%;
 .nx-radio__label {
     color: v(radio-button-label-color);
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     position: relative;
+    vertical-align: middle;
 }
 
 .nx-radio__circle {

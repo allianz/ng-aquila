@@ -14,7 +14,8 @@
     @include type-style(checkbox-small-label);
     color: v(checkbox-label-color);
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
+    vertical-align: middle;
 }
 
 :host(.has-error) {
