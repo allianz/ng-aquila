@@ -35,7 +35,6 @@ In some cases you want to have a header with two rows. In this case simply place
     <nx-header-row> Second row </nx-header-row>
 </header>
 ```
-
 <!-- example(header-two-rows) -->
 
 <div class="docs-expert-container">
@@ -56,3 +55,24 @@ A co-branding can be used in the header. It is positioned in the rightmost posit
 
 <!-- example(header-cobranding) -->
 </div>
+
+### Responsive
+
+You can make header responsive by using `NxViewportService` to detect the screen size. Here are some examples:
+
+#### Header Icons
+An example of a responsive header where multiple icons transform into a burger menu button on smaller screens. Click to view in fullscreen and resize the screen to see it in action.
+
+<!-- example(header-icons-responsive) -->
+
+#### Header two rows
+
+An example of a responsive two-row header that integrates with the `<nx-menu>` component. On smaller screens, the second row collapses into a single row, and header actions are moved into a burger menu button. Click to view in fullscreen and resize the screen to see it in action.
+
+<!-- example(header-two-rows-responsive) -->
+
+#### Header with Side Navigation
+
+An example of a header integrated with `<nx-sidebar>`, where its options move into the sidebar menu on smaller screens. Click to view in fullscreen and resize the screen to see it in action.
+
+<!-- example(header-with-side-navigation) -->

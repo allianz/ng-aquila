@@ -1,0 +1,27 @@
+nx-link a {
+    display: flex;
+    align-items: center;
+}
+
+figure {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    color: var(--text-01, #ffffff);
+    margin-left: 8px;
+}
+
+.content-wrapper {
+    display: flex;
+    height: 100%;
+}
+
+.sidebar-wrapper {
+    width: 280px;
+}
+
+.sidebar-wrapper.full-width {
+    width: 100% !important;
+}
