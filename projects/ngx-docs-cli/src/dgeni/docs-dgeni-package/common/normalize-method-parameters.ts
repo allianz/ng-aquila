@@ -23,7 +23,7 @@ export interface MethodParameterInfo {
 export function normalizeMethodParameters(method: NormalizedMethodMemberDoc) {
     if (method.parameters) {
         method.parameters.forEach(parameter => {
-            let [parameterName, parameterType] = parameter.split(':');
+            let [parameterName, parameterType] = splitType(parameter);
 
             // If the parameter is optional, the name here will contain a '?'. We store whether the
             // parameter is optional and remove the '?' for comparison.
@@ -56,4 +56,14 @@ export function normalizeMethodParameters(method: NormalizedMethodMemberDoc) {
             }
         });
     }
+}
+
+function splitType(params: string) {
+    const regex = /^([^:]+):(.*)/;
+    const match = params.match(regex);
+
+    const firstPart = match ? match[1] : '';
+    const secondPart = match ? match[2] : '';
+
+    return [firstPart, secondPart];
 }

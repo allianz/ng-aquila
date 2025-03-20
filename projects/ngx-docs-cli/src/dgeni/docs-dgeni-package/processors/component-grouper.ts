@@ -51,6 +51,15 @@ export class ComponentGroup {
     /** Additional type aliases that belong to the component group. */
     additionalTypeAliases: TypeAliasExportDoc[] = [];
 
+    /** List of test harnesses which are exported in the entry-point. */
+    testHarnesses: {
+        classes: CategorizedClassDoc[];
+        interfaces: InterfaceExportDoc[];
+    } = {
+        classes: [],
+        interfaces: [],
+    };
+
     /** NgModule that defines the current component group. */
     ngModule: CategorizedClassDoc | null = null;
 
@@ -92,9 +101,13 @@ export class ComponentGrouper implements Processor {
             group.moduleImportPath = moduleImportPath;
             group.packageName = packageName;
             group.packageDisplayName = packageDisplayName;
-
-            // Put this doc into the appropriate list in this group.
-            if (doc.isDirective) {
+            if (doc.isTestHarness) {
+                if (doc.docType === 'class') {
+                    group.testHarnesses.classes.push(doc);
+                } else if (doc.docType === 'interface') {
+                    group.testHarnesses.interfaces.push(doc);
+                }
+            } else if (doc.isDirective) {
                 group.directives.push(doc);
             } else if (doc.isComponent) {
                 group.components.push(doc);

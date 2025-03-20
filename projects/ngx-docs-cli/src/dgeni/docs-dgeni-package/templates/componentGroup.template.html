@@ -51,4 +51,31 @@ endmacro %} {% macro interface(interface) -%} {% include 'interface.template.htm
         Additional type aliases
     </h3>
     {% for item in doc.additionalTypeAliases %} {$ typeAlias(item) $} {% endfor %} {%- endif -%}
+
+
+        {%- if doc.testHarnesses.classes.length -%}
+            <h3 id="testing_class" class="docs-header-link docs-api-h3">
+                Testing Classes
+            </h3>
+            <p class="docs-api-module-import">
+                <code>
+                    <span class="docs-api-module-import__import-span">import</span>
+                    { {$ doc.testHarnesses.classes[0].name $} }
+                    <span class="docs-api-module-import__from-span">from</span>
+                    <span class="docs-api-module-import__path-span">'{$ doc.moduleImportPath $}/testing' </span>;
+                </code>
+            </p>
+            {% for item in doc.testHarnesses.classes %}
+                {$ class(item) $}
+            {% endfor %} 
+        {%- endif -%}
+
+        {%- if doc.testHarnesses.interfaces.length -%}
+            <h3 id="testing_interface" class="docs-header-link docs-api-h3">
+                Testing Interfaces
+            </h3>
+            {% for item in doc.testHarnesses.interfaces %}
+                {$ interface(item) $}
+            {% endfor %} 
+        {%- endif -%}
 </div>

@@ -31,13 +31,24 @@ export class Categorizer implements Processor {
      */
     private decorateClassLikeDoc(classLikeDoc: CategorizedClassLikeDoc) {
         // Resolve all methods and properties from the classDoc.
-        classLikeDoc.methods = classLikeDoc.members.filter(isMethod).filter(filterDuplicateMembers) as CategorizedMethodMemberDoc[];
+        // also list overloaded functions in the document.
+        classLikeDoc.methods = classLikeDoc.members
+            .filter(isMethod)
+            .filter(filterDuplicateMembers)
+            .map(member => member as CategorizedMethodMemberDoc)
+            .flatMap(method => [method, ...method.overloads]);
 
         classLikeDoc.properties = classLikeDoc.members.filter(isProperty).filter(filterDuplicateMembers) as CategorizedPropertyMemberDoc[];
 
         // Special decorations for real class documents that don't apply for interfaces.
         if (classLikeDoc.docType === 'class') {
             this.decorateClassDoc(classLikeDoc as CategorizedClassDoc);
+        }
+
+        if (classLikeDoc.docType === 'interface') {
+            if (this._isTestHarness(classLikeDoc as CategorizedClassDoc)) {
+                (classLikeDoc as CategorizedClassDoc).isTestHarness = true;
+            }
         }
 
         // Call decorate hooks that can modify the method and property docs.
@@ -64,7 +75,9 @@ export class Categorizer implements Processor {
         classDoc.directiveMetadata = getDirectiveMetadata(classDoc);
 
         // Categorize the current visited classDoc into its Angular type.
-        if (isDirective(classDoc) && classDoc.directiveMetadata) {
+        if (this._isTestHarness(classDoc)) {
+            classDoc.isTestHarness = true;
+        } else if (isDirective(classDoc) && classDoc.directiveMetadata) {
             classDoc.isDirective = true;
             classDoc.directiveExportAs = classDoc.directiveMetadata.get('exportAs');
             classDoc.directiveSelectors = getDirectiveSelectors(classDoc);
@@ -108,6 +121,10 @@ export class Categorizer implements Processor {
 
         propertyDoc.isDirectiveOutput = !!outputMetadata;
         propertyDoc.directiveOutputAlias = outputMetadata?.alias || '';
+    }
+
+    private _isTestHarness(doc: CategorizedClassDoc): boolean {
+        return doc.id.toLowerCase().includes('harness');
     }
 }
 

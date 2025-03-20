@@ -28,6 +28,8 @@ export interface CategorizedClassDoc extends ClassExportDoc, CategorizedClassLik
     isDirective: boolean;
     isService: boolean;
     isNgModule: boolean;
+    isTestHarness: boolean;
+
     directiveExportAs?: string | null;
     directiveSelectors?: string[];
     directiveMetadata: Map<string, any> | null;
