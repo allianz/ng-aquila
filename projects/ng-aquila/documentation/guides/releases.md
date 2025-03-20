@@ -14,13 +14,25 @@ We trigger minor or bug fix releases if they provide a meaningful delivery (fix 
 
 | Date           | Angular version | ng-aquila version | LTS end      |
 | -------------- | --------------- | ----------------- | ------------ |
-| May 2023       | 16              | 16                | Nov 2024     |
 | November 2023  | 17              | 17                | May 2025     |
 | July 2024      | 18              | 18                | Nov 2025     |
+| January 2025   | 19              | 19                | May 2026     |
 
-Aquila versions 15 and older are no longer supported.
+Aquila versions 16 and older are no longer supported.
 
 During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
+
+## Updating to version 19
+
+With Aquila 19, we are upgrading to Angular 19. This update brings exciting new features and improvements to the framework. This update includes advancements in server-side rendering, stabilization of some reactivity APIs, and new support for hot module replacement. Additionally, standalone components are now the default. For a comprehensive overview of all the changes and enhancements in Angular 19, check out the details on [Angular 19](https://blog.angular.dev/meet-angular-v19-7b29dfd05b84).
+
+For updating Angular to version 19, in most cases the following command should do the update for you:
+
+`ng update @angular/cli @angular/core`
+
+Then it should be easy to update Aquila with the following command:
+
+`ng update @aposin/ng-aquila --force`
 
 ## Updating to version 18
 
