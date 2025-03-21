@@ -1,4 +1,4 @@
-import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
+import { DOWN_ARROW, END, HOME, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -280,6 +280,28 @@ describe('NxSliderComponent', () => {
             testInstance.value = 3;
             fixture.detectChanges();
             expect(sliderInstance._isMinimum()).toBeFalse();
+        });
+
+        it('should set value to maximun when press end button', () => {
+            createTestComponent(ConfigurableSlider);
+            testInstance.min = 0;
+            testInstance.max = 100;
+            fixture.detectChanges();
+
+            const endButtonEvent = createKeyboardEvent(END);
+            sliderInstance._handleKeypress(endButtonEvent);
+            expect(sliderInstance.value).toBe(100);
+        });
+
+        it('should set value to minimun when press end button', () => {
+            createTestComponent(ConfigurableSlider);
+            testInstance.min = 0;
+            testInstance.max = 100;
+            fixture.detectChanges();
+
+            const homeButtonEvent = createKeyboardEvent(HOME);
+            sliderInstance._handleKeypress(homeButtonEvent);
+            expect(sliderInstance.value).toBe(0);
         });
     });
 

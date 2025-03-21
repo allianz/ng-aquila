@@ -1,7 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
-import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
+import { DOWN_ARROW, END, HOME, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { NgStyle } from '@angular/common';
 import {
     AfterViewInit,
@@ -329,6 +329,12 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
             this.value = toNumber;
         }
     }
+    _setValue(newValue: number) {
+        if (this.value !== newValue) {
+            this._onChange(newValue);
+            this.value = newValue;
+        }
+    }
 
     get _percentageValue(): number {
         let percentageValue = (((this.value || 0) - this.min) / (this.max - this.min)) * 100;
@@ -371,6 +377,10 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         if (this.disabled) {
             return;
         }
+        const keyActions = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'End', 'Home', 'Space'];
+        if (keyActions.includes(event.code)) {
+            event.preventDefault();
+        }
 
         // TODO return statement should not substitute break keyword
         switch (event.keyCode) {
@@ -381,6 +391,10 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
             case UP_ARROW:
             case this.inverted ? LEFT_ARROW : RIGHT_ARROW:
                 return this._changeValue(this.step);
+            case HOME:
+                return this._setValue(this.min);
+            case END:
+                return this._setValue(this.max);
         }
     }
 
