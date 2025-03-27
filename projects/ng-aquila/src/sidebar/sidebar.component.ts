@@ -31,6 +31,7 @@ export const RESIZE_STEP_SIZE = 20;
     host: {
         '[class.is-resizing]': '_resizing',
         '[class.is-closed]': '!open',
+        '[class.hide-label]': '_sidebarElementWidth === _defaultMinWidth',
         '[style.width.px]': `_sidebarElementWidth`,
     },
     imports: [],
@@ -134,6 +135,8 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     private _resizeStartX!: number;
 
     private _resizeStartWidth!: number;
+
+    private readonly _defaultMinWidth = MIN_WIDTH;
 
     private readonly _unsubscribeListeners: (() => void)[] = [];
 

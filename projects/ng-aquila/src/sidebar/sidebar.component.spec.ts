@@ -270,6 +270,10 @@ describe('NxSidebarComponent', () => {
             it('has the minimal width', () => {
                 expect(sidebarElement.nativeElement.style.width).toBe(`${MIN_WIDTH}px`);
             });
+
+            it('should hide the labels', () => {
+                expect(sidebarElement.nativeElement.classList.contains('hide-label')).toBeTrue();
+            });
         });
 
         describe('when opened', () => {
@@ -285,6 +289,10 @@ describe('NxSidebarComponent', () => {
 
             it('has the the default width', () => {
                 expect(sidebarElement.nativeElement.style.width).toBe(`${DEFAULT_WIDTH}px`);
+            });
+
+            it('should show the labels', () => {
+                expect(sidebarElement.nativeElement.classList.contains('hide-label')).toBeFalse();
             });
         });
 
@@ -339,6 +347,10 @@ describe('NxSidebarComponent', () => {
 
             it('has the minimal width', () => {
                 expect(sidebarElement.nativeElement.style.width).toBe('140px');
+            });
+
+            it('should not hide the labels', () => {
+                expect(sidebarElement.nativeElement.classList.contains('hide-label')).toBeFalse();
             });
         });
 

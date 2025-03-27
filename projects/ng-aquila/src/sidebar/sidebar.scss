@@ -38,6 +38,28 @@ $sidebar-width: 280px;
             flex-shrink: 1;
         }
     }
+
+    &.hide-label {
+        ::ng-deep .nx-action__wrapper {
+            justify-content: center;
+
+            &::before {
+                display: none;
+            }
+
+            .nx-action-icon__container {
+                padding-right: 0;
+            }
+
+            .nx-action__label {
+                display: none;
+            }
+        }
+
+        ::ng-deep .nx-action {
+            padding: nx-spacer(2xs) 0;
+        }
+    }
 }
 
 ::ng-deep .nx-sidebar__footer {
