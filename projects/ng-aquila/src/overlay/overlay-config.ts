@@ -113,4 +113,7 @@ export class NxOverlayConfig<D = any> {
     componentFactoryResolver?: ComponentFactoryResolver;
 
     triggerButton?: NxTriggerButton;
+
+    /** Margin between the overlay and the viewport edges. */
+    viewportMargin?: number = 0;
 }

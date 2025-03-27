@@ -92,6 +92,7 @@ export class NxOverlayPositionBuilder {
             .withFlexibleDimensions(true)
             .withLockedPosition()
             .withGrowAfterOpen()
+            .withViewportMargin(config.viewportMargin ?? 0)
             .withPositions([
                 {
                     ...origin,

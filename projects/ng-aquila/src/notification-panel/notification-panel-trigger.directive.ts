@@ -71,7 +71,13 @@ export class NxNotificationPanelTriggerDirective {
         if (this._overlayRef) {
             return;
         }
-        const config: NxOverlayConfig = { ...DEFAULT_CONFIG, scrollStrategy: this._scrollStrategyFactory(), triggerButton: this._triggerButton ?? undefined };
+        const config: NxOverlayConfig = {
+            ...DEFAULT_CONFIG,
+            scrollStrategy: this._scrollStrategyFactory(),
+            triggerButton: this._triggerButton ?? undefined,
+            width: 400,
+            viewportMargin: 16,
+        };
         this._overlayRef = this._nxOverlay.open(this._panelTemplate, this._element, config);
         this._overlayRef
             .afterClosed()
