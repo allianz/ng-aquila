@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { DOWN_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
@@ -14,6 +15,7 @@ import {
     ElementRef,
     EventEmitter,
     Input,
+    input,
     OnChanges,
     OnDestroy,
     OnInit,
@@ -143,6 +145,9 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     /** @docs-private */
     validatorFnArray: any[] = [];
+
+    /** aria-describedby ids that will be applied to the inner controls */
+    ariaDescribedBy = input<string | null>();
 
     /** Sets the id of the file uploader. */
     @Input() set id(value: string) {
@@ -502,7 +507,6 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
             } else {
                 this.setMaxFileNumberError(totalFilesNum);
             }
-            console.log(this.errors);
             this._subscribeToFileChanges();
         }
     }
@@ -602,6 +606,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         ids = this._hintChildren.map(hint => hint.id);
         ids = this._label ? [this._label.id, ...ids] : ids;
         ids = [...this._errorList.map(error => error.id), ...ids];
+        ids = this.ariaDescribedBy() ? [...ids, this.ariaDescribedBy()!] : ids;
         this.button?.setDescribedByIds(ids);
     }
 

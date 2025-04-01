@@ -1,7 +1,7 @@
 ---
 title: File uploader
 category: components
-b2c: false
+b2c: true
 expert: true
 stable: done
 a1: true
@@ -26,6 +26,12 @@ Most of the examples are using the `[nxFileUploadTriggerFor]` directive for trig
 ### Template driven form
 
 <!-- example(file-uploader-template-driven) -->
+
+### Multiple File Uploader
+
+It's possible to combine multiple file uploader to use different uploader configs or accommodate file categories
+
+<!-- example(file-uploader-categories) -->
 
 ### Validation
 
