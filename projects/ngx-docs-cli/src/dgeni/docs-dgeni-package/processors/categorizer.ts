@@ -1,5 +1,6 @@
 import { DocCollection, Processor } from 'dgeni';
 import { MethodMemberDoc } from 'dgeni-packages/typescript/api-doc-types/MethodMemberDoc';
+import { ParsedDecorator } from 'dgeni-packages/typescript/services/TsParser/getDecorators';
 
 import { decorateDeprecatedDoc, getDirectiveSelectors, isComponent, isDirective, isMethod, isNgModule, isProperty, isService } from '../common/decorators';
 import { CategorizedClassDoc, CategorizedClassLikeDoc, CategorizedMethodMemberDoc, CategorizedPropertyMemberDoc } from '../common/dgeni-definitions';
@@ -100,6 +101,12 @@ export class Categorizer implements Processor {
         normalizeMethodParameters(methodDoc as any);
         decorateDeprecatedDoc(methodDoc as any);
 
+        if (!methodDoc.type) {
+            const signature = methodDoc.typeChecker.getSignatureFromDeclaration(methodDoc.declaration);
+            const returnType = methodDoc.typeChecker.getReturnTypeOfSignature(signature);
+            methodDoc.type = methodDoc.typeChecker.typeToString(returnType);
+        }
+
         // Mark methods with a `void` return type so we can omit show the return type in the docs.
         methodDoc.showReturns = methodDoc.type ? methodDoc.type !== 'void' : false;
     }
@@ -116,11 +123,23 @@ export class Categorizer implements Processor {
         const inputMetadata = metadata ? getInputBindingData(propertyDoc, metadata) : null;
         const outputMetadata = metadata ? getOutputBindingData(propertyDoc, metadata) : null;
 
-        propertyDoc.isDirectiveInput = !!inputMetadata;
-        propertyDoc.directiveInputAlias = inputMetadata?.alias || '';
+        // use inferred type
+        const symbolType = propertyDoc.typeChecker.getTypeOfSymbolAtLocation(propertyDoc.symbol, propertyDoc.symbol.valueDeclaration);
+        const inferredType = propertyDoc.typeChecker.typeToString(symbolType);
 
-        propertyDoc.isDirectiveOutput = !!outputMetadata;
+        const isSignalInput = isInputSignal(inferredType);
+        const isSignalOutput = isOutputSignal(inferredType);
+
+        propertyDoc.hasDecorator = propertyDoc.decorators && propertyDoc.decorators.length > 0;
+        propertyDoc.isDirectiveInput = !!inputMetadata || isSignalInput;
+        propertyDoc.directiveInputAlias = inputMetadata?.alias || '';
+        propertyDoc.isDirectiveOutput = !!outputMetadata || isSignalOutput;
         propertyDoc.directiveOutputAlias = outputMetadata?.alias || '';
+
+        if (propertyDoc.isDirectiveInput || propertyDoc.isDirectiveOutput) {
+            propertyDoc.nameAlias = getAnnotationAlias(propertyDoc.decorators) || getsignalAlias(propertyDoc.type);
+        }
+        propertyDoc.type = inferredType;
     }
 
     private _isTestHarness(doc: CategorizedClassDoc): boolean {
@@ -128,7 +147,29 @@ export class Categorizer implements Processor {
     }
 }
 
-/** Filters any duplicate classDoc members from an array */
+function isInputSignal(type: string) {
+    const regex = /InputSignal|ModelSignal/;
+    return regex.test(type);
+}
+
+function isOutputSignal(type: string) {
+    return type.includes('OutputEmitterRef');
+}
+
+function getsignalAlias(type: string) {
+    const regex = /alias:\s*'([^']*)'/;
+    const match = type.match(regex);
+    return match ? match[1] : '';
+}
+
+function getAnnotationAlias(decorators: ParsedDecorator[]) {
+    if (!decorators || decorators.length === 0) {
+        return '';
+    }
+    const data = decorators[0].argumentInfo[0];
+    return typeof data === 'string' ? data.replace(/'/g, '') : '';
+}
+
 function filterDuplicateMembers(item: MethodMemberDoc, _index: number, array: MethodMemberDoc[]) {
     return array.filter(memberDoc => memberDoc.name === item.name)[0] === item;
 }

@@ -87,6 +87,14 @@ a {
     padding: 12px;
 }
 
+::ng-deep .docs-api__selector-container {
+    padding: 4px 8px;
+}
+
+::ng-deep .docs-api-class-extends-label {
+    opacity: 0.5;
+}
+
 ::ng-deep .docs-api table,
 ::ng-deep .docs-markdown--table {
     width: 100%;
@@ -155,14 +163,44 @@ a {
     color: v(documentation-api-code-types-text-color);
 }
 
+// marker
+::ng-deep code.docs-api-type-alias-value,
 ::ng-deep .docs-api-input__keyword,
 ::ng-deep .docs-api-output__keyword {
     color: v(documentation-api-code-keywords-text-color);
 }
 
+::ng-deep .docs-api-input-marker span,
+::ng-deep .docs-api-output-marker span {
+    display: inline-block;
+    white-space: nowrap;
+}
+
 ::ng-deep .docs-api-input-alias,
 ::ng-deep .docs-api-output-alias {
     color: v(documentation-api-code-alias-text-color);
+}
+
+::ng-deep .docs-api-input__badge,
+::ng-deep .docs-api-output__badge {
+    color: black;
+    border-radius: 6px;
+    padding: 0 6px;
+    font-size: 14px;
+    margin-right: 6px;
+}
+
+::ng-deep .docs-api-input__badge {
+    background-color: rgb(from var(--documentation-api-code-alias-text-color) r g b / 0.5);
+}
+
+::ng-deep .docs-api-output__badge {
+    background-color: rgb(from var(--documentation-api-code-types-text-color) r g b / 0.5);
+}
+
+::ng-deep .docs-api-deprecated-marker,
+::ng-deep .docs-api-class-deprecated-marker {
+    color: v(danger);
 }
 
 // Docs headings

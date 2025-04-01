@@ -41,8 +41,10 @@ export interface CategorizedPropertyMemberDoc extends PropertyMemberDoc, Depreca
     description: string;
     isDirectiveInput: boolean;
     isDirectiveOutput: boolean;
+    hasDecorator: boolean;
     directiveInputAlias: string;
     directiveOutputAlias: string;
+    nameAlias: string;
 }
 
 /** Extended Dgeni method-member document that simplifies logic for the Dgeni template. */

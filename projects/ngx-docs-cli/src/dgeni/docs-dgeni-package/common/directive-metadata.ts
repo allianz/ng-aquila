@@ -44,6 +44,7 @@ export function getDirectiveMetadata(classDoc: CategorizedClassDoc): Map<string,
 
     (objectExpression.properties as NodeArray<PropertyAssignment>).forEach(prop => {
         // Support ArrayLiteralExpression assignments in the directive metadata.
+
         if (prop.initializer.kind === SyntaxKind.ArrayLiteralExpression) {
             const arrayData = (prop.initializer as ArrayLiteralExpression).elements.map(literal => (literal as StringLiteral).text);
 
@@ -51,7 +52,11 @@ export function getDirectiveMetadata(classDoc: CategorizedClassDoc): Map<string,
         }
 
         // Support normal StringLiteral and NoSubstitutionTemplateLiteral assignments
-        if (prop.initializer.kind === SyntaxKind.StringLiteral || prop.initializer.kind === SyntaxKind.NoSubstitutionTemplateLiteral) {
+        if (
+            prop.initializer.kind === SyntaxKind.BigIntLiteral ||
+            prop.initializer.kind === SyntaxKind.StringLiteral ||
+            prop.initializer.kind === SyntaxKind.NoSubstitutionTemplateLiteral
+        ) {
             resultMetadata.set(prop.name.getText(), (prop.initializer as StringLiteral).text);
         }
     });

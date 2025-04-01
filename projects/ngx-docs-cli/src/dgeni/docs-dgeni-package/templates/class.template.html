@@ -17,24 +17,29 @@
 
 {%- if class.directiveSelectors -%}
 <p class="docs-api-directive-selectors">
-    <span class="docs-api-class-selector-label">Selector:</span>
-    <div class="docs-api__selector-container">
-        {% for selector in class.directiveSelectors %}
-        <span class="docs-api-class-selector-name">{$ selector $}</span>
-        {% endfor %}
-    </div>
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    {% for selector in class.directiveSelectors %}
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">{$ selector $}</span>
+        </code>
+    {% endfor %}
 </p>
 {%- endif -%}
 
 {%- if class.directiveExportAs -%}
+<p class="docs-api-directive-selectors">
 <span class="docs-api-class-export-label">Exported as:</span>
 <span class="docs-api-class-export-name">{$ class.directiveExportAs $}</span>
+</p>
 {%- endif -%}
 
 {%- if class.isDeprecated -%}
-<div class="docs-api-class-deprecated-marker" {$ macros.deprecationTitle(class) $}>
-    Deprecated
-</div>
+    <span class="docs-api-class-deprecated-marker" {$ macros.deprecationTitle(class) $}>
+        Deprecated
+    </span>
+    {%- if class.content -%}
+        {$ class.content $}
+    {%- endif -%}
 {%- endif -%}
 
 {$ propertyList(class.properties) $}
