@@ -41,7 +41,7 @@ let nextUniqueId = 0;
         '[attr.aria-invalid]': 'errorState',
         '[attr.aria-required]': 'required.toString()',
         '[attr.placeholder]': 'placeholder || null',
-        '(focusout)': '_focusChanged(false)',
+        '(blur)': '_focusChanged(false)',
         '(focus)': '_focusChanged(true)',
     },
     providers: [
