@@ -49,4 +49,10 @@ export class NxDatepickerIntl {
 
     /** A label for the 'switch to year view' button (used by screen readers). */
     switchToMultiYearViewLabel = 'Choose month and year';
+
+    /** Announcement message after start date was selected (used by screen readers) */
+    startDateSelectedAnnouncement = 'Start date selected. Please Select end date.';
+
+    /** Announcement message after date range selection is completed (used by screen readers) */
+    dateRangeSelectionCompleteAnnouncement = 'Date range selection complete.';
 }

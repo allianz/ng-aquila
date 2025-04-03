@@ -8,7 +8,22 @@
 
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { DOWN_ARROW } from '@angular/cdk/keycodes';
-import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, Inject, Input, OnDestroy, Optional, Output } from '@angular/core';
+import {
+    AfterContentInit,
+    Directive,
+    effect,
+    EffectRef,
+    ElementRef,
+    EventEmitter,
+    forwardRef,
+    Inject,
+    Input,
+    input,
+    model,
+    OnDestroy,
+    Optional,
+    Output,
+} from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { NX_INPUT_VALUE_ACCESSOR } from '@aposin/ng-aquila/input';
@@ -17,6 +32,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { NX_DATE_FORMATS, NX_DATE_STRICT, NxDateAdapter, NxDateFormats } from './adapter/index';
+import { NxDateRangeConnector } from './date-range/date-range-connect';
 import { NxDateValidators } from './date-validators';
 import { createMissingDateImplError } from './datefield.functions';
 import { NxDatepickerComponent } from './datepicker/datepicker.component';
@@ -65,12 +81,12 @@ export class NxDatepickerInputEvent<D> {
         { provide: NxAbstractControl, useExisting: NxDatefieldDirective },
     ],
     host: {
-        '[attr.aria-haspopup]': 'true',
+        '[attr.aria-haspopup]': '!!_datepicker || hasPopup() || null',
         '[attr.aria-owns]': '(_datepicker?.opened && _datepicker.id) || null',
         '[attr.min]': 'min ? _dateAdapter.toIso8601(min) : null',
         '[attr.max]': 'max ? _dateAdapter.toIso8601(max) : null',
         '[disabled]': 'disabled',
-        '[readonly]': 'readonly',
+        '[readonly]': 'readonly()',
         '(input)': '_onInput($event.target.value)',
         '(change)': '_onChange()',
         '(blur)': '_onBlur()',
@@ -86,11 +102,17 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     /** Whether the component has been initialized. */
     private _isInitialized?: boolean;
 
+    /**
+     * @docs-private
+     * To be able to set the hasPopup from the outside if the datepicker is not available in this directive like the date-range component
+     */
+    hasPopup = input(false);
+
     /** The datepicker that this input is associated with. */
     @Input() set datepicker(value: NxDatepickerComponent<D>) {
         this.registerDatepicker(value);
     }
-    _datepicker!: NxDatepickerComponent<D>;
+    _datepicker?: NxDatepickerComponent<D>;
 
     /** Function that can be used to filter out dates within the datepicker and invalidate values in the datefield. */
     @Input() set datefieldFilter(value: (date: D | null) => boolean) {
@@ -194,21 +216,12 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     private _disabled!: boolean;
 
     /** Whether the datefield is readonly. */
-    set readonly(value: BooleanInput) {
-        const newValue = coerceBooleanProperty(value);
+    readonly readonly = model<boolean>(false);
+    private readonly _readonlyStateChangeEffect: EffectRef;
 
-        if (this._readonly !== newValue) {
-            this._readonly = newValue;
-            this._readonlyChange.emit(newValue);
-        }
-    }
-    get readonly(): boolean {
-        return !!this._readonly;
-    }
-    private _readonly: boolean = false;
-
+    /** Whether the datefield is readonly. */
     setReadonly(value: boolean) {
-        this.readonly = value;
+        this.readonly.set(value);
     }
 
     /** Emits when a `change` event is fired on this `<input>`. */
@@ -240,11 +253,13 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     private _validatorOnChange = () => {};
 
     constructor(
-        private readonly _elementRef: ElementRef,
+        /** @docs-private */
+        readonly _elementRef: ElementRef,
         @Optional() _dateAdapter: NxDateAdapter<D> | null,
         @Optional() @Inject(NX_DATE_FORMATS) _dateFormats: NxDateFormats | null,
         @Optional() @Inject(NX_DATE_STRICT) _dateStrict: boolean | null,
         @Optional() private readonly _formField: NxFormfieldComponent | null,
+        @Optional() private readonly _dateRange: NxDateRangeConnector | null,
     ) {
         if (!_dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
@@ -263,12 +278,16 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
             const value = this.value;
             this.value = value; // invoke setter
         });
+
+        this._readonlyStateChangeEffect = effect(() => {
+            this._readonlyChange.emit(this.readonly());
+        });
     }
 
     ngAfterContentInit(): void {
         this._datepicker?.selectedChanged.pipe(takeUntil(this._destroyed)).subscribe((selected: D) => {
             this.value = selected;
-            this._cvaOnChange(selected);
+            this._cvaOnChange(this.value);
             this._onTouched();
             this.dateInput.emit(new NxDatepickerInputEvent(this, this._elementRef.nativeElement));
             this.dateChange.emit(new NxDatepickerInputEvent(this, this._elementRef.nativeElement));
@@ -282,6 +301,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
         this._valueChange.complete();
         this._disabledChange.complete();
         this._readonlyChange.complete();
+        this._readonlyStateChangeEffect.destroy();
     }
 
     /** @docs-private */
@@ -291,6 +311,11 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
 
     /** @docs-private */
     validate(c: AbstractControl): ValidationErrors | null {
+        if (this._dateRange) {
+            // if the datefield is part of a date range, the validation is handled by the date range.
+            return null;
+        }
+
         const validator = Validators.compose(this.getValidators());
         return validator ? validator(c) : null;
     }
@@ -328,7 +353,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
 
     _onKeydown(event: KeyboardEvent) {
         if (event.altKey && event.keyCode === DOWN_ARROW) {
-            this._datepicker.open();
+            this._datepicker?.open();
             event.preventDefault();
         }
     }

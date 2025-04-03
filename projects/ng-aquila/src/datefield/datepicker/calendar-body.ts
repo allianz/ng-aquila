@@ -18,6 +18,7 @@ import {
     inject,
     Injector,
     Input,
+    input,
     OnDestroy,
     Output,
     QueryList,
@@ -67,7 +68,10 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy, AfterV
     @Input() todayValue!: number;
 
     /** The value in the table that is currently selected. */
-    @Input() selectedValue!: number;
+    @Input() selectedValue: number | null = null;
+
+    selectedEndDate = input<number | null>(null);
+    betweenRange = input<number[]>([]);
 
     /** The number of columns in the table. */
     @Input() numCols = 7;
@@ -86,6 +90,7 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy, AfterV
 
     /** Emits when a new value out of rows is selected. */
     @Output() readonly selectedValueChange = new EventEmitter<number>();
+    @Output() readonly hoverValueChange = new EventEmitter<number>();
 
     /** Emits when a new value out of previousItems is selected. */
     @Output() readonly selectedValueChangeToPrevious = new EventEmitter<number>();
@@ -148,6 +153,10 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy, AfterV
             return;
         }
         this.selectedValueChange.emit(cell.value);
+    }
+
+    _cellFocused(cell: NxCalendarCell): void {
+        this.hoverValueChange.emit(cell.value);
     }
 
     _followingCellClicked(cell: NxCalendarCell): void {

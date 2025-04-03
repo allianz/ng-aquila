@@ -1,15 +1,42 @@
-<nx-formfield label="Date of accident (readonly)">
-    <input
-        nxDatefield
-        nxInput
-        [readonly]="true"
-        [datepicker]="myDatepicker"
-        [(ngModel)]="currentDate"
-    />
-    <span nxFormfieldHint>MM/DD/YYYY</span>
-    <nx-datepicker-toggle
-        [for]="myDatepicker"
-        nxFormfieldSuffix
-    ></nx-datepicker-toggle>
-    <nx-datepicker #myDatepicker></nx-datepicker>
-</nx-formfield>
+<div class="container">
+    <nx-switcher
+        [(ngModel)]="readOnlyAttribute"
+        name="templateTest"
+        class="nx-margin-bottom-2m"
+    >
+        readonly
+    </nx-switcher>
+
+    <nx-formfield label="Date of accident (readonly)">
+        <input
+            nxDatefield
+            nxInput
+            [readonly]="readOnlyAttribute"
+            [datepicker]="myDatepicker"
+            [(ngModel)]="currentDate"
+        />
+        <span nxFormfieldHint>MM/DD/YYYY</span>
+        <nx-datepicker-toggle
+            [for]="myDatepicker"
+            nxFormfieldSuffix
+        ></nx-datepicker-toggle>
+        <nx-datepicker #myDatepicker></nx-datepicker>
+    </nx-formfield>
+
+    <nx-formfield label="Date Range Component (readonly)">
+        <nx-date-range
+            [datepicker]="formRangeDatePicker"
+            [readonly]="readOnlyAttribute"
+            placeholder="mm/dd/yyyy"
+            [(ngModel)]="dateRange"
+        ></nx-date-range>
+        <nx-datepicker-toggle
+            [for]="formRangeDatePicker"
+            nxFormfieldSuffix
+        ></nx-datepicker-toggle>
+        <nx-datepicker #formRangeDatePicker [rangeMode]="true"></nx-datepicker>
+        <span aria-label="Please provide date in the US format" nxFormfieldHint
+            >MM/DD/YYYY - MM/DD/YYYY</span
+        >
+    </nx-formfield>
+</div>

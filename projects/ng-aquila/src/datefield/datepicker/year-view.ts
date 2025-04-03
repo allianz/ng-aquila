@@ -8,12 +8,14 @@ import {
     EventEmitter,
     Inject,
     Input,
+    input,
     Optional,
     Output,
     ViewChild,
 } from '@angular/core';
 
 import { NX_DATE_FORMATS, NxDateAdapter, NxDateFormats } from '../adapter/index';
+import { DateRange } from '../date-range/date-range.component';
 import { createMissingDateImplError } from '../datefield.functions';
 import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
 
@@ -38,6 +40,8 @@ import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
     imports: [NxCalendarBodyComponent],
 })
 export class NxYearViewComponent<D> implements AfterContentInit {
+    isRange = input(false);
+
     /** The date to display in this year view (everything other than the year is ignored). */
     @Input() set activeDate(value: D) {
         const oldActiveDate = this._activeDate;
@@ -53,14 +57,14 @@ export class NxYearViewComponent<D> implements AfterContentInit {
     private _activeDate: D;
 
     /** The currently selected date. */
-    @Input() set selected(value: D | null) {
+    @Input() set selected(value: D | DateRange<D> | null) {
         this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
         this._selectedMonth = this._getMonthInCurrentYear(this._selected);
     }
-    get selected(): D | null {
+    get selected(): D | DateRange<D> | null {
         return this._selected;
     }
-    private _selected!: D | null;
+    private _selected!: D | DateRange<D> | null;
 
     /** The minimum selectable date. */
     @Input() set minDate(value: D | null) {
@@ -205,7 +209,8 @@ export class NxYearViewComponent<D> implements AfterContentInit {
 
     /** Initializes this year view. */
     _init() {
-        this._selectedMonth = this._getMonthInCurrentYear(this.selected);
+        const initDate: D | null = this.selected && this.isRange() ? (this.selected as DateRange<D>).start : (this.selected as D);
+        this._selectedMonth = this._getMonthInCurrentYear(initDate);
         this._todayMonth = this._getMonthInCurrentYear(this._dateAdapter.today());
         this._yearLabel = this._dateAdapter.getYearName(this.activeDate);
 

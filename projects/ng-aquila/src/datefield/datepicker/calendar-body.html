@@ -10,16 +10,27 @@
     @if (rowIndex === 0) { @for (items of [].constructor(previousItems); track $index) {
     <td aria-hidden="true"></td>
     } } @for (item of row; track item; let colIndex = $index) {
-    <td role="gridcell" class="nx-calendar-body-cell" [style.width.%]="100 / numCols">
+    <td
+        role="gridcell"
+        class="nx-calendar-body-cell"
+        [style.width.%]="100 / numCols"
+        [class.range-start]="selectedValue === item.value && (betweenRange().length > 0 || selectedEndDate() === item.value+1)"
+        [class.range-end]="selectedEndDate() === item.value && (betweenRange().length > 0 || selectedValue === item.value-1)"
+        [class.in-range]="selectedValue !== item.value && selectedEndDate() !== item.value && betweenRange().includes(item.value)"
+        [class.range-row-start]="colIndex === 0 && betweenRange().includes(item.value)"
+        [class.range-row-end]="(colIndex === numCols - 1 || colIndex === row.length-1)  && betweenRange().includes(item.value) "
+    >
         <div
             class="nx-calendar-body-cell-content"
             [attr.aria-label]="item.ariaLabel"
             [attr.aria-disabled]="!item.enabled || null"
             (click)="_cellClicked(item)"
+            (focus)="_cellFocused(item)"
+            (mouseover)="_cellFocused(item)"
             [tabindex]="_isActiveCell(rowIndex, colIndex) ? 0 : -1"
             [class.nx-calendar-body-disabled]="!item.enabled"
             [class.nx-calendar-body-active]="_isActiveCell(rowIndex, colIndex)"
-            [class.nx-calendar-body-selected]="selectedValue === item.value"
+            [class.nx-calendar-body-selected]="selectedValue === item.value || selectedEndDate() === item.value"
             [class.nx-calendar-body-today]="todayValue === item.value"
             role="button"
             #cell

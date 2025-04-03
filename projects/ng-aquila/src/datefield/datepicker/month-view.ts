@@ -8,6 +8,8 @@ import {
     EventEmitter,
     Inject,
     Input,
+    input,
+    model,
     Optional,
     Output,
     ViewChild,
@@ -15,6 +17,7 @@ import {
 
 import { NX_DATE_FORMATS } from '../adapter/date-formats';
 import { NxDateAdapter, NxDateFormats } from '../adapter/index';
+import { DateRange } from '../date-range/date-range.component';
 import { createMissingDateImplError } from '../datefield.functions';
 import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
 
@@ -48,7 +51,7 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
     @Input() set activeDate(value: D) {
         const oldActiveDate = this._activeDate;
         const validDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value)) || this._dateAdapter.today();
-        this._activeDate = this._dateAdapter.clampDate(validDate, this.minDate, this.maxDate);
+        this._activeDate = this._dateAdapter.clampDate(validDate as D, this.minDate, this.maxDate);
         if (!this._hasSameMonthAndYear(oldActiveDate, this._activeDate)) {
             this._init();
         }
@@ -58,19 +61,25 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
     }
     private _activeDate: D;
 
+    isRange = input(false);
+
     /** The currently selected date. */
-    @Input() set selected(value: D | null) {
-        this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
-        this._selectedDate = this._getDateInCurrentMonth(this._selected);
+    @Input() set selected(value: D | DateRange<D> | null) {
+        this._selected = this._getValidDateOrNull(value);
+        this.selectedDateInMonth.set(this._getDateInCurrentMonth((value as DateRange<D>)?.start || (this._selected as D)));
+        if (this.isRange()) {
+            this.selectedEndDate.set(this._getDateInCurrentMonth((value as DateRange<D>)?.end || (this._selected as D)));
+            this.betweenRange.set(this.getRangeInMonth(value as DateRange<D>));
+        }
     }
-    get selected(): D | null {
+    get selected(): D | DateRange<D> | null {
         return this._selected;
     }
-    private _selected!: D | null;
+    private _selected!: D | DateRange<D> | null;
 
     /** The minimum selectable date. */
     @Input() set minDate(value: D | null) {
-        this._minDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
+        this._minDate = this._getValidSingleDateOrNull(this._dateAdapter.deserialize(value)) as D; // todo: fix this
     }
     get minDate(): D | null {
         return this._minDate;
@@ -79,7 +88,7 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
 
     /** The maximum selectable date. */
     @Input() set maxDate(value: D | null) {
-        this._maxDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
+        this._maxDate = this._getValidSingleDateOrNull(this._dateAdapter.deserialize(value)) as D; // todo: fix this
     }
     get maxDate(): D | null {
         return this._maxDate;
@@ -90,13 +99,16 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
     @Input() dateFilter!: (date: D) => boolean;
 
     /** Emits when a new date is selected. */
-    @Output() readonly selectedChange = new EventEmitter<D | null>();
+    @Output() readonly selectedChange = new EventEmitter<D | DateRange<D> | null>();
 
     /** Emits when any date is selected. */
     @Output() readonly _userSelection = new EventEmitter<void>();
 
     /** Emits when any date is activated. */
     @Output() readonly activeDateChange = new EventEmitter<D>();
+
+    /** Emits when user is hovering on date cell or navigating on date cells by keyboard */
+    @Output() readonly hoverDateChange = new EventEmitter<D>();
 
     /** The body of calendar table */
     @ViewChild(NxCalendarBodyComponent, { static: true }) _nxCalendarBody: any;
@@ -114,7 +126,15 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
      * The date of the month that the currently selected Date falls on.
      * Null if the currently selected Date is in another month.
      */
-    _selectedDate!: number | null;
+    protected readonly selectedDateInMonth = model<number | null>(null);
+
+    __selectedDate!: number | null;
+
+    /** The selected end date */
+    protected readonly selectedEndDate = model<number | null>(null);
+
+    /** The range between the selected start and end date */
+    protected readonly betweenRange = model<number[]>([]);
 
     /** The date of the month that today falls on. Null if today is in another month. */
     _todayDate!: number | null;
@@ -160,17 +180,30 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
         this._focusActiveCell();
     }
 
+    handleHoverChange(date: number, monthsToAdd = 0) {
+        const selectedYear = this._dateAdapter.getYear(this._dateAdapter.addCalendarMonths(this.activeDate, monthsToAdd));
+        const selectedMonth = this._dateAdapter.getMonth(this._dateAdapter.addCalendarMonths(this.activeDate, monthsToAdd));
+        const selectedDate = this._dateAdapter.createDate(selectedYear, selectedMonth, date);
+
+        this.hoverDateChange.emit(selectedDate);
+    }
+
+    private calcDate(date: number, monthsToAdd = 0): D {
+        const selectedYear = this._dateAdapter.getYear(this._dateAdapter.addCalendarMonths(this.activeDate, monthsToAdd));
+        const selectedMonth = this._dateAdapter.getMonth(this._dateAdapter.addCalendarMonths(this.activeDate, monthsToAdd));
+        const selectedDate = this._dateAdapter.createDate(selectedYear, selectedMonth, date);
+        return selectedDate;
+    }
+
     /** Handles when a new date is selected. */
     _dateSelected(date: number, monthsToAdd = 0) {
-        if (this._selectedDate !== date) {
-            const selectedYear = this._dateAdapter.getYear(this._dateAdapter.addCalendarMonths(this.activeDate, monthsToAdd));
-            const selectedMonth = this._dateAdapter.getMonth(this._dateAdapter.addCalendarMonths(this.activeDate, monthsToAdd));
-            const selectedDate = this._dateAdapter.createDate(selectedYear, selectedMonth, date);
-
-            this.selectedChange.emit(selectedDate);
+        if (!this.isRange() && this.selectedDateInMonth() !== date) {
+            this.selectedChange.emit(this.calcDate(date, monthsToAdd));
         }
 
-        this._userSelection.emit();
+        if (this.isRange()) {
+            this.selectedChange.emit(this.calcDate(date, monthsToAdd));
+        }
     }
 
     /** Handles keydown events on the calendar body when calendar is in month view. */
@@ -218,7 +251,12 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
             case SPACE:
                 if (!this.dateFilter || this.dateFilter(this._activeDate)) {
                     this._dateSelected(this._dateAdapter.getDate(this._activeDate));
-                    this._userSelection.emit();
+
+                    // Emit the selected date if the user selected a date. Range will be emitted in _dateSelected method if selection is complete
+                    if (!this.isRange()) {
+                        this._userSelection.emit();
+                    }
+
                     // Prevent unexpected default actions such as form submission.
                     event.preventDefault();
                 }
@@ -239,7 +277,12 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
 
     /** Initializes this month view. */
     _init() {
-        this._selectedDate = this._getDateInCurrentMonth(this.selected);
+        const initDateStart: D | null = this.selected && this.isRange() ? (this.selected as DateRange<D>).start : (this.selected as D);
+        this.selectedDateInMonth.set(this._getDateInCurrentMonth(initDateStart));
+        if (this.isRange() && this.selected) {
+            this.selectedEndDate.set(this._getDateInCurrentMonth((this.selected as DateRange<D>)?.end || (this.selected as D)));
+            this.betweenRange.set(this.getRangeInMonth(this.selected as DateRange<D>));
+        }
         this._todayDate = this._getDateInCurrentMonth(this._dateAdapter.today());
         this._monthLabel = this._dateAdapter.getMonthNames('short')[this._dateAdapter.getMonth(this.activeDate)].toLocaleUpperCase();
 
@@ -286,8 +329,70 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
      * Gets the date in this month that the given Date falls on.
      * Returns null if the given Date is in another month.
      */
-    private _getDateInCurrentMonth(date: D | null): number | null {
-        return date && this._hasSameMonthAndYear(date, this.activeDate) ? this._dateAdapter.getDate(date) : null;
+    private _getDateInCurrentMonth(date: D | DateRange<D> | null): number | null {
+        const startDate = this.getInitialSelectionDate(date);
+        const isInSameMonth = date && this._hasSameMonthAndYear(startDate, this.activeDate);
+        return date && isInSameMonth ? this._dateAdapter.getDate(startDate) : null;
+    }
+
+    /**
+     * Gets the range of dates in this month that the given DateRange falls on.
+     * Returns an empty array if the given DateRange is exclusively in another month.
+     * @param value The DateRange to check.
+     * @returns The range of dates in this month that the DateRange falls on.
+     */
+    private getRangeInMonth(value: DateRange<D>): number[] {
+        const range = (start: number, end: number) => Array.from({ length: end - start + 1 }, (_, i) => start + i);
+
+        const isCompleteRange = value.start && value.end && this._dateAdapter.isValid(value.start!) && this._dateAdapter.isValid(value.end!);
+        if (!isCompleteRange) {
+            return [];
+        }
+
+        const isValidRange = this._dateAdapter.compareDate(value.start!, value.end!) < 0;
+        if (!isValidRange) {
+            return [];
+        }
+
+        const intersectStart = this._hasSameMonthAndYear(value.start!, this.activeDate);
+        const intersectEnd = this._hasSameMonthAndYear(value.end!, this.activeDate);
+
+        if (intersectStart && intersectEnd) {
+            const start = this._dateAdapter.getDate(value.start!);
+            const end = this._dateAdapter.getDate(value.end!);
+            return range(start + 1, end - 1);
+        }
+
+        if (intersectStart && !intersectEnd) {
+            const start = this._dateAdapter.getDate(value.start!);
+            const end = 31;
+            return range(start + 1, end);
+        }
+
+        if (!intersectStart && intersectEnd) {
+            const start = 1;
+            const end = this._dateAdapter.getDate(value.end!);
+            return range(start, end - 1);
+        }
+
+        const currentMonthIsLaterThenStart = this._dateAdapter.compareDate(this.activeDate, value.start!) > 0;
+        const currentMonthIsEarlierThenEnd = this._dateAdapter.compareDate(this.activeDate, value.end!) < 0;
+        const isBetween = currentMonthIsLaterThenStart && currentMonthIsEarlierThenEnd;
+        if (isBetween) {
+            return range(1, 31);
+        }
+
+        return [];
+    }
+
+    /**
+     * Gets the date to mark as selected. If the given date is null, it returns today's date
+     */
+    private getInitialSelectionDate(date: D | DateRange<D> | null): D {
+        if (this._dateAdapter.isDateInstance(date)) {
+            return date as D;
+        }
+        return (date as DateRange<D>)?.start as D;
     }
 
     /** Checks whether the 2 dates are non-null and fall within the same month of the same year. */
@@ -304,7 +409,18 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
      * @param obj The object to check.
      * @returns The given object if it is both a date instance and valid, otherwise null.
      */
-    private _getValidDateOrNull(obj: any): D | null {
+    private _getValidDateOrNull(obj: any): D | DateRange<D> | null {
+        if (this.isRange() && !this._dateAdapter.isDateInstance(obj)) {
+            const dateRangeObject = obj as DateRange<D>;
+            return {
+                start: this._dateAdapter.isDateInstance(dateRangeObject?.start) && this._dateAdapter.isValid(dateRangeObject!.start!) ? obj.start : null,
+                end: this._dateAdapter.isDateInstance(dateRangeObject?.end) && this._dateAdapter.isValid(dateRangeObject!.end!) ? obj.end : null,
+            };
+        }
+        return this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj) ? obj : null;
+    }
+
+    private _getValidSingleDateOrNull(obj: any): D | null {
         return this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj) ? obj : null;
     }
 

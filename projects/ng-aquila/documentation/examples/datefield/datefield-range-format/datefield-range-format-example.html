@@ -1,0 +1,36 @@
+<div nxLayout="grid">
+    <div nxRow>
+        <div nxCol="12,12,6">
+            <form [formGroup]="formWithPicker">
+                <nx-formfield label="Date Range Component">
+                    <nx-date-range
+                        formControlName="range"
+                        [datepicker]="formRangeDatePicker"
+                        placeholder="mm/dd/yyyy"
+                        [parseFormat]="['MM/DD/YYYY', 'MM--DD-->YYYY', 'MMDDYYYY', 'MMMM DD, YYYY']"
+                        displayFormat="MMMM DD, YYYY"
+                    ></nx-date-range>
+                    <nx-datepicker-toggle
+                        [for]="formRangeDatePicker"
+                        nxFormfieldSuffix
+                    ></nx-datepicker-toggle>
+                    <nx-datepicker
+                        #formRangeDatePicker
+                        [rangeMode]="true"
+                    ></nx-datepicker>
+                    <nx-error nxFormfieldError>
+                        @if(formWithPicker.controls.range.errors?.nxDateRangeInvalid){
+                        Invalid: The end date can't be before the start date. }
+                        @else { Please enter a date range with a start and an
+                        end date. }
+                    </nx-error>
+                    <span
+                        aria-label="Please provide date in the US format"
+                        nxFormfieldHint
+                        >MM/DD/YYYY - MM/DD/YYYY</span
+                    >
+                </nx-formfield>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+@import '../../shared-styles/index';
+
+:host {
+    width: 100%;
+    max-width: 100%;
+
+    .start-date-input {
+        flex-shrink: 0; // Prevent shrinking
+    }
+
+    .date-range-container {
+        display: flex;
+        gap: nx-spacer(2xs);
+        width: 100%;
+        text-align: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        background: 0 0;
+        color: inherit;
+        border: none;
+        outline: 0;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        align-items: center;
+    }
+
+    input {
+        min-width: 100px;
+    }
+
+    .separator-icon-span {
+        display: flex;
+        align-items: center;
+    }
+}

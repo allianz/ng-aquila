@@ -1,4 +1,6 @@
 export * from './adapter/index';
+export * from './date-range/date-range.component';
+export * from './date-range/date-range.intl';
 export * from './date-validators';
 export * from './datefield.directive';
 export * from './datefield.module';

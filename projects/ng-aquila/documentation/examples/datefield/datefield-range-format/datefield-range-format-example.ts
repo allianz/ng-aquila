@@ -1,14 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, contentChildren, viewChild } from '@angular/core';
-import {
-    FormBuilder,
-    FormsModule,
-    ReactiveFormsModule,
-    Validators,
-} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import {
-    NxDatefieldDirective,
     NxDatepickerComponent,
     NxDatepickerToggleComponent,
     NxDateRangeComponent,
@@ -27,12 +21,12 @@ import {
 import moment from 'moment';
 
 /**
- * @title Date range example
+ * @title Date range format example
  */
 @Component({
     selector: 'datefield-range-example',
-    templateUrl: './datefield-range-example.html',
-    styleUrls: ['./datefield-range-example.css'],
+    templateUrl: './datefield-range-format-example.html',
+    styleUrls: ['./datefield-range-format-example.css'],
     imports: [
         NxLayoutComponent,
         NxRowComponent,
@@ -50,24 +44,13 @@ import moment from 'moment';
         NxFormfieldHintDirective,
     ],
 })
-export class DatefieldRangeExampleComponent {
-    dateDirectives = contentChildren(NxDatefieldDirective);
-    dateRangeComponent = viewChild(NxDateRangeComponent);
-
+export class DatefieldRangeFormatExampleComponent {
     dateRange = {
-        start: moment([2020, 2, 5]),
-        end: moment([2020, 5, 1]),
+        start: moment([2020, 2, 3]),
+        end: moment([2020, 2, 3]),
     };
-    dateRangeModel = {
-        start: moment([2020, 2, 5]),
-        end: moment([2020, 5, 1]),
-    };
-
-    dateRangeForm = new FormBuilder().group({
-        range: [this.dateRangeModel, Validators.required],
-    });
 
     formWithPicker = new FormBuilder().group({
-        range: [this.dateRange, Validators.required],
+        range: [this.dateRange],
     });
 }

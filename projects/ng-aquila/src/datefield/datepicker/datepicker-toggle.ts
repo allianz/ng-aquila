@@ -1,16 +1,18 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import {
     AfterContentInit,
     AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    computed,
     ContentChild,
     Directive,
     ElementRef,
     Inject,
     Input,
+    model,
     OnChanges,
     OnDestroy,
     Optional,
@@ -38,7 +40,7 @@ export class NxDatepickerToggleIconComponent {}
     host: {
         class: 'nx-datepicker-toggle',
         '[class.nx-datepicker-toggle-active]': 'datepicker && datepicker.opened',
-        '[class.nx-datepicker-toggle--disabled]': 'disabled',
+        '[class.nx-datepicker-toggle--disabled]': 'disabled()',
     },
     exportAs: 'nxDatepickerToggle',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -62,13 +64,13 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
     _datepicker!: NxDatepickerComponent<D>;
 
     /** Whether the toggle button is disabled. */
-    @Input() set disabled(value: BooleanInput) {
-        this._disabled = coerceBooleanProperty(value);
-    }
-    get disabled(): boolean {
-        return this._disabled === undefined ? this.datepicker.disabled : !!this._disabled;
-    }
-    private _disabled?: boolean;
+    readonly disabledInput = model<boolean | undefined>(undefined, { alias: 'disabled' });
+    readonly disabled = computed(() => {
+        if (this.disabledInput() !== undefined) {
+            return this.disabledInput();
+        }
+        return this.datepicker.disabled() || false;
+    });
 
     /** Sets the tabindex for the toggle button. Default: 0. */
     @Input() set tabindex(value: NumberInput) {
@@ -125,7 +127,8 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
     }
 
     _open(event: Event): void {
-        if (this.datepicker && !this.disabled) {
+        console.log(`toggle | _open`);
+        if (this.datepicker && !this.disabled()) {
             this.datepicker.open();
             event.stopPropagation();
         }
@@ -141,11 +144,10 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
     private _watchStateChanges() {
         const datepickerDisabled = this.datepicker ? this.datepicker._disabledChange.asObservable() : observableOf();
         const inputDisabled = this.datepicker?._datepickerInput ? this.datepicker._datepickerInput._disabledChange.asObservable() : observableOf();
-        const inputReadonly = this.datepicker?._datepickerInput ? this.datepicker._datepickerInput._readonlyChange.asObservable() : observableOf();
         const datepickerToggled = this.datepicker ? merge(this.datepicker.openedStream, this.datepicker.closedStream) : observableOf();
 
         this._stateChanges.unsubscribe();
-        this._stateChanges = merge(this._intl.changes, datepickerDisabled, inputDisabled, inputReadonly, datepickerToggled)
+        this._stateChanges = merge(this._intl.changes, datepickerDisabled, inputDisabled, datepickerToggled)
             .pipe(takeUntil(this._destroyed))
             .subscribe(() => this._cdr.markForCheck());
     }

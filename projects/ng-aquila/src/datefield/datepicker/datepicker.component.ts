@@ -7,7 +7,6 @@
  */
 import { CdkTrapFocus, FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ESCAPE } from '@angular/cdk/keycodes';
 import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
@@ -18,6 +17,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     ComponentRef,
+    computed,
     ElementRef,
     EventEmitter,
     Inject,
@@ -26,9 +26,12 @@ import {
     InjectionToken,
     Injector,
     Input,
+    input,
+    model,
     OnDestroy,
     Optional,
     Output,
+    signal,
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
@@ -38,6 +41,7 @@ import { merge, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
 import { NxDateAdapter } from '../adapter/date-adapter';
+import { DateRange } from '../date-range/date-range.component';
 import { NxDatefieldDirective } from '../datefield.directive';
 import { createMissingDateImplError } from '../datefield.functions';
 import { NxCalendarComponent } from './calendar';
@@ -111,6 +115,8 @@ export const DATEPICKER_DEFAULT_OPTIONS = new InjectionToken<DatepickerDefaultOp
 export class NxDatepickerContentComponent<D> implements AfterViewInit, OnDestroy {
     datepicker!: NxDatepickerComponent<D>;
 
+    isRange = computed<boolean>(() => this.datepicker.isRange());
+
     private _afterNextRenderInitial = afterNextRender({
         read: () => {
             this.elementRef.nativeElement.querySelector('.nx-calendar-body-active').focus();
@@ -147,6 +153,8 @@ export class NxDatepickerContentComponent<D> implements AfterViewInit, OnDestroy
 export class NxDatepickerComponent<D> implements OnDestroy {
     private _injector = inject(Injector);
 
+    isRange = computed<boolean>(() => this.rangeMode());
+
     /** The date to open the calendar initially. */
     @Input() set startAt(value: D | null) {
         this._startAt = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
@@ -154,7 +162,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     get startAt(): D | null {
         // If an explicit startAt is set we start there, otherwise we start at whatever the currently
         // selected value is.
-        return this._startAt || (this._datepickerInput ? this._datepickerInput.value : null);
+        return this.getStartAtDate();
     }
     private _startAt!: D | null;
 
@@ -165,33 +173,34 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * Whether the datepicker pop-up should be disabled.
      * The datepicker is also disabled if the belonging input is readonly.
      */
-    @Input() set disabled(value: BooleanInput) {
-        const newValue = coerceBooleanProperty(value);
-
-        if (newValue !== this._disabled) {
-            this._disabled = newValue;
-            this._disabledChange.next(newValue);
+    readonly disabledInput = model<boolean | undefined>(undefined, { alias: 'disabled' });
+    readonly disabled = computed(() => {
+        if (this.disabledInput() !== undefined) {
+            return this.disabledInput();
         }
-    }
-    get disabled(): boolean {
-        return this._disabled === undefined && this._datepickerInput ? this._datepickerInput.disabled || this._datepickerInput.readonly : !!this._disabled;
-    }
-    private _disabled!: boolean;
+        return this._datepickerInput?.readonly() || this._datepickerInputStartDate?.readonly() || false;
+    });
 
-    /** @docs-private */
-    readonly selectedChanged = new EventEmitter<D>();
+    /**
+     * Event emitter for selection changes.
+     *
+     * Emits <D> if the datepicker is in single date selection mode.
+     * Emits DateRange<D> if the datepicker is in range selection mode.
+     * Never emits any other type. `any` is used here to avoid breaking changes and will be removed in Angular NDBX v20 major release.
+     */
+    readonly selectedChanged = new EventEmitter<D | DateRange<D> | any>();
 
     /**
      * Emits selected year in multiyear view.
      * This doesn't imply a change on the selected date.
      */
-    @Output() readonly yearSelected = new EventEmitter<D>();
+    @Output() readonly yearSelected = new EventEmitter<D | DateRange<D>>();
 
     /**
      * Emits selected month in year view.
      * This doesn't imply a change on the selected date.
      */
-    @Output() readonly monthSelected = new EventEmitter<D>();
+    @Output() readonly monthSelected = new EventEmitter<D | DateRange<D>>();
 
     /** Classes to be passed to the date picker panel. Supports the same syntax as `ngClass`. */
     @Input() panelClass!: string | string[];
@@ -221,20 +230,23 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * The currently selected date.
      * @docs-private
      */
-    set selected(value: D | null) {
-        this._validSelected = value;
+    set selected(value: D | DateRange<D> | null) {
+        this._selected.set(value);
     }
-    get selected(): D | null {
-        return this._validSelected;
+    get selected(): D | DateRange<D> | null {
+        return this._selected();
     }
-    private _validSelected: D | null = null;
+    // private _validSelected: D | DateRange<D> | null = null;
+
+    _selected = signal<D | DateRange<D> | null>(null);
+    selectedComputed = computed<D | DateRange<D> | null>(() => this._selected());
 
     /**
      * The minimum selectable date.
      * @docs-private
      */
     get minDate(): D | null {
-        return this._datepickerInput?.min;
+        return this._datepickerInput?.min || this._datepickerInputStartDate?.min || null;
     }
 
     /**
@@ -242,13 +254,16 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * @docs-private
      */
     get maxDate(): D | null {
-        return this._datepickerInput?.max;
+        return this._datepickerInput?.max || this._datepickerInputEndDate?.max || null;
     }
 
-    /** @docs-private */
-    get dateFilter(): (date: D | null) => boolean {
-        return this._datepickerInput?._dateFilter;
+    set dateFilter(value: (date: D | null) => boolean) {
+        this._dateFilter = value;
     }
+    get dateFilter(): (date: D | null) => boolean {
+        return this._datepickerInput?._dateFilter || this._dateFilter;
+    }
+    private _dateFilter!: (date: D | null) => boolean;
 
     /** A reference to the overlay when the calendar is opened as a popup. */
     private _popupRef!: OverlayRef | null;
@@ -265,6 +280,9 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     /** The input element this datepicker is associated with. */
     _datepickerInput!: NxDatefieldDirective<D>;
 
+    _datepickerInputStartDate?: NxDatefieldDirective<D>;
+    _datepickerInputEndDate?: NxDatefieldDirective<D>;
+
     _toggleButton!: NxDatepickerToggleComponent<D>;
 
     /** Strategy factory that will be used to handle scrolling while the datepicker panel is open. */
@@ -276,6 +294,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     private readonly _dateAdapter: NxDateAdapter<D>;
 
     private readonly _destroyed = new Subject<void>();
+    rangeMode = input<boolean>(false);
 
     constructor(
         private readonly _overlay: Overlay,
@@ -312,11 +331,12 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * Selects the given date.
      * @docs-private
      */
-    select(date: D): void {
-        const oldValue = this.selected;
-        this.selected = date;
-        if (!this._dateAdapter.sameDate(oldValue, this.selected)) {
-            this.selectedChanged.emit(date);
+    select(date: D | DateRange<D> | null): void {
+        const oldValue = this._selected();
+        this._selected.set(date);
+
+        if (this.isRange() || (!this.isRange() && !this._dateAdapter.sameDate(oldValue as D, this.selected as D))) {
+            this.selectedChanged.emit(this._selected()!);
         }
     }
 
@@ -324,16 +344,16 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * Emits the selected year in multiyear view.
      * @docs-private
      */
-    selectYear(normalizedYear: D): void {
-        this.yearSelected.emit(normalizedYear);
+    selectYear(normalizedYear: D | DateRange<D> | null): void {
+        this.yearSelected.emit(normalizedYear || undefined);
     }
 
     /**
      * Emits selected month in year view.
      * @docs-private
      */
-    selectMonth(normalizedMonth: D): void {
-        this.monthSelected.emit(normalizedMonth);
+    selectMonth(normalizedMonth: D | DateRange<D> | null): void {
+        this.monthSelected.emit(normalizedMonth || undefined);
     }
 
     /**
@@ -341,12 +361,35 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * @param input The datepicker input to register with this datepicker.
      * @docs-private
      */
-    registerInput(input: NxDatefieldDirective<D>): void {
-        if (this._datepickerInput) {
+    registerInput(input: NxDatefieldDirective<D>, inputDateMode: string = 'single'): void {
+        if (this._datepickerInput && !this.isRange()) {
             throw Error('A NxDatepicker can only be associated with a single input.');
         }
-        this._datepickerInput = input;
-        this._datepickerInput._valueChange.pipe(takeUntil(this._destroyed)).subscribe((value: D | null) => (this.selected = value));
+
+        if (inputDateMode === 'start') {
+            this._datepickerInputStartDate = input;
+            this._datepickerInputStartDate._valueChange.pipe(takeUntil(this._destroyed)).subscribe((value: D | DateRange<D> | null) => {
+                // this._selected.set((value as DateRange<D>)?.start)
+                this._selected.set({
+                    start: value as D,
+                    end: (this._selected() as DateRange<D>)?.end as D,
+                });
+            });
+        } else if (inputDateMode === 'end') {
+            this._datepickerInputEndDate = input;
+            this._datepickerInputEndDate._valueChange.pipe(takeUntil(this._destroyed)).subscribe((value: D | DateRange<D> | null) => {
+                // this._selected.set((value as DateRange<D>)?.end)
+                this._selected.set({
+                    start: (this._selected() as DateRange<D>)?.start as D,
+                    end: value as D,
+                });
+            });
+        } else {
+            this._datepickerInput = input;
+            this._datepickerInput._valueChange.pipe(takeUntil(this._destroyed)).subscribe((value: D | DateRange<D> | null) => {
+                this._selected.set(value);
+            });
+        }
     }
 
     /**
@@ -365,10 +408,11 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * @docs-private
      */
     open(): void {
-        if (this._opened || this.disabled) {
+        console.log(`opening datepicker ${this.id}`);
+        if (this._opened || this.disabled()) {
             return;
         }
-        if (!this._datepickerInput) {
+        if ((!this.isRange() && !this._datepickerInput) || (this.isRange() && (!this._datepickerInputStartDate || !this._datepickerInputEndDate))) {
             throw Error('Attempted to open an NxDatepicker with no associated input.');
         }
         if (this._document) {
@@ -386,6 +430,14 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * @docs-private
      */
     close(): void {
+        const inRangeModeAndOnlyStartDateSelected = this.isRange() && (this.selected as DateRange<D>)?.start && !(this.selected as DateRange<D>)?.end;
+        if (inRangeModeAndOnlyStartDateSelected) {
+            this.select({
+                start: (this.selected as DateRange<D>)?.start as D,
+                end: (this.selected as DateRange<D>)?.start as D,
+            });
+        }
+
         if (!this._opened) {
             return;
         }
@@ -480,9 +532,10 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     /** Create the popup PositionStrategy. */
     private _createPopupPositionStrategy(): PositionStrategy {
+        const dateInputPositionAnchor: NxDatefieldDirective<D> = this.isRange() ? this._datepickerInputEndDate! : this._datepickerInput!;
         return this._overlay
             .position()
-            .flexibleConnectedTo(this._datepickerInput.getConnectedOverlayOrigin())
+            .flexibleConnectedTo(dateInputPositionAnchor.getConnectedOverlayOrigin())
             .withTransformOriginOn('.nx-datepicker-content')
             .withFlexibleDimensions(false)
             .withViewportMargin(8)
@@ -521,5 +574,15 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      */
     private _getValidDateOrNull(obj: any): D | null {
         return this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj) ? obj : null;
+    }
+
+    getStartAtDate() {
+        if (this._startAt) {
+            return this._startAt;
+        }
+        if (!this.isRange()) {
+            return this._datepickerInput.value;
+        }
+        return this._datepickerInputStartDate?.value as D;
     }
 }

@@ -11,6 +11,38 @@ $item-size: nx-spacer(3m);
     outline: none;
     vertical-align: text-bottom;
     cursor: pointer;
+    border-top: nx-border-size(m);
+    border-top-style: solid;
+    border-top-color: v(ui-background);
+    border-bottom: nx-border-size(m);
+    border-bottom-style: solid;
+    border-bottom-color: v(ui-background);
+
+    &.range-start {
+        background-color: v(datepicker-range-background-color);
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+    }
+
+    &.range-end {
+        background-color: v(datepicker-range-background-color);
+        border-bottom-right-radius: 50%;
+        border-top-right-radius: 50%;
+    }
+
+    &.in-range {
+        background-color: v(datepicker-range-background-color);
+    }
+
+    &.range-row-start {
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+    }
+
+    &.range-row-end {
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
 }
 
 .nx-calendar-body-disabled {
@@ -40,6 +72,12 @@ $item-size: nx-spacer(3m);
 
     @media screen and (forced-colors: active) {
         color: buttonText;
+    }
+
+    // Ensure focus ring is fully visible and elevated
+    &:focus {
+        z-index: 1;
+        position: relative;
     }
 
     &.nx-calendar-body-selected {
@@ -148,6 +186,9 @@ $item-size: nx-spacer(3m);
                 }
             }
         }
+        &.in-range > .nx-calendar-body-cell-content {
+            background-color: v(datepicker-range-hover-background-color);
+        }
     }
     &:active {
         & > .nx-calendar-body-cell-content {
@@ -168,6 +209,11 @@ $item-size: nx-spacer(3m);
                     }
                 }
             }
+        }
+
+        &.in-range > .nx-calendar-body-cell-content {
+            background-color: v(datepicker-range-active-background-color);
+            color: v(datefield-cell-selected-color);
         }
     }
 }

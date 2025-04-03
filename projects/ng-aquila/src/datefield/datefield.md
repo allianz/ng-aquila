@@ -97,11 +97,6 @@ Instead of using min/max you can use `nxDatefieldFilter` to create your own set 
 
 <!-- example(datefield-filter) -->
 
-#### Date Range
-
-To create a date range, you can open the datepicker for the end date automatically when a start date is selected.
-
-<!-- example(datefield-range) -->
 
 #### Reactive form
 
@@ -110,6 +105,36 @@ To create a date range, you can open the datepicker for the end date automatical
 #### Readonly
 
 <!-- example(datefield-readonly) -->
+
+### Date Range
+
+#### Plain and with Datepicker
+
+To create a date range, you can open the datepicker for the end date automatically when a start date is selected.
+
+<!-- example(datefield-range) -->
+
+#### Date Range validation
+
+It's possible to validate date ranges. As default the component will return
+- `nxDateRangeInvalid` if the start date is after the end date
+- `nxDateRangeIncomplete` if the date range is set only partially
+
+additionally the following validations can be configured
+- `min` will check if the start date is >= `min` date and will return `nxDatefieldMin` if does not match
+- `max` will check if the start date is <= `max` date and will return `nxDatefieldMax` if does not match
+- `filter` will check if the start and and date matches the filter and will return `nxDateRangeStartFilter` and `nxDateRangeEndFilter` respectively
+- `required` will check if a complete value is present, will return a `required` validation error otherwise
+
+<!-- example(datefield-range-validation) -->
+
+#### Range Parsing & Formatting
+
+You can make use of same functionality as with the regular [Datefield parsing & formatting](documentation/datefield/overview#parsing-%2526-formatting).
+This example will except and parse inputs of `MM/DD/YYYY | MM--DD-->YYYY | MMDDYYY | 'MMMM DD, YYYY'`. So <i>03032020</i> is a valid input.
+
+<!-- example(datefield-range-format) -->
+
 
 ### Parsing & Formatting
 

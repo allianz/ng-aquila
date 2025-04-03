@@ -1,4 +1,4 @@
-import { CdkMonitorFocus, FocusMonitor } from '@angular/cdk/a11y';
+import { CdkMonitorFocus, FocusMonitor, LiveAnnouncer } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import {
     AfterContentInit,
@@ -10,10 +10,12 @@ import {
     EventEmitter,
     Inject,
     Input,
+    input,
     OnChanges,
     OnDestroy,
     Optional,
     Output,
+    signal,
     SimpleChanges,
     ViewChild,
 } from '@angular/core';
@@ -23,6 +25,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { NX_DATE_FORMATS, NxDateAdapter, NxDateFormats } from '../adapter/index';
+import { DateRange } from '../date-range/date-range.component';
 import { createMissingDateImplError } from '../datefield.functions';
 import { NxDatepickerIntl } from './datepicker-intl';
 import { NxMonthViewComponent } from './month-view';
@@ -55,6 +58,9 @@ const yearsPerPage = 20;
     imports: [NxIconModule, CdkMonitorFocus, NxMonthViewComponent, NxYearViewComponent, NxMultiYearViewComponent, NxButtonModule],
 })
 export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, OnDestroy, OnChanges {
+    /** Whether the datepicker should be in date range selection mode */
+    isRange = input<boolean>(false);
+
     /** A date representing the period (month or year) to start the calendar in. */
     @Input() set startAt(value: D | null) {
         this._startAt = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
@@ -68,14 +74,22 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
     @Input() startView: 'month' | 'year' | 'multi-year' = 'month';
 
     /** The currently selected date. */
-    @Input() set selected(value: D | null) {
-        this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
+    @Input() set selected(value: D | DateRange<D> | null) {
+        if (this.isRange()) {
+            this._selected.set(this.getValidRangeOrNullDate(value));
+        } else {
+            this._selected.set(this._getValidDateOrNull(value));
+        }
     }
-    get selected(): D | null {
-        return this._selected;
+    get selected(): D | DateRange<D> | null {
+        return this._selected();
     }
-    private _selected!: D | null;
+    protected _selected = signal<D | DateRange<D> | null>(null);
 
+    /** Internal state for improved typesafety */
+    private _currentRange: DateRange<D> = { start: null, end: null };
+
+    private _inEndDateSelectionMode = false;
     /** The minimum selectable date. */
     @Input() set minDate(value: D | null) {
         this._minDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
@@ -98,7 +112,7 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
     @Input() dateFilter!: (date: D) => boolean;
 
     /** Emits when the currently selected date changes. */
-    @Output() readonly selectedChange = new EventEmitter<D>();
+    @Output() readonly selectedChange = new EventEmitter<D | DateRange<D>>();
 
     /**
      * Emits the year chosen in multiyear view.
@@ -193,6 +207,7 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
         @Optional() @Inject(NX_DATE_FORMATS) _dateFormats: NxDateFormats | null,
         _cdr: ChangeDetectorRef,
         private readonly _focusMonitor: FocusMonitor,
+        private readonly _liveAnnouncer: LiveAnnouncer,
     ) {
         if (!_dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
@@ -238,10 +253,67 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
         }
     }
 
+    _hoverDateChange(date: D) {
+        this._inEndDateSelectionMode = true;
+        if (this.isRange() && this._currentRange.start) {
+            this._currentRange = {
+                start: this._currentRange.start,
+                end: date,
+            };
+            this._selected.set(this._currentRange);
+        }
+    }
+
     /** Handles date selection in the month view. */
-    _dateSelected(date: D): void {
-        if (!this._dateAdapter.sameDate(date, this.selected)) {
+    _dateSelected(date: D | DateRange<D>): void {
+        if (!this.isRange() && !this._dateAdapter.sameDate(date as D, this.selected as D)) {
+            this.selected = date;
             this.selectedChange.emit(date);
+            this._userSelected();
+            return;
+        }
+        const selectedDate = this._getValidDateOrNull(date);
+        if (!selectedDate) {
+            return;
+        }
+
+        // first step for range selection - select start date
+        if (this.isRange() && !this._currentRange.start) {
+            this._currentRange = {
+                start: selectedDate,
+                end: null,
+            };
+            this._selected.set(this._currentRange);
+
+            this._liveAnnouncer.announce(this._intl.startDateSelectedAnnouncement);
+
+            this.selectedChange.emit(this.selected as DateRange<D>);
+            return;
+        }
+
+        // case start date is selected but the next date is before the start date -> reset start date
+        if (this.isRange() && this._currentRange.start && this._dateAdapter.compareDate(selectedDate, this._currentRange.start!) < 0) {
+            this._currentRange = {
+                start: selectedDate,
+                end: null,
+            };
+            this._selected.set(this._currentRange);
+
+            this.selectedChange.emit(this.selected as DateRange<D>);
+            return;
+        }
+
+        // final case - if start date is selected and the next date is after the start date -> select end date
+        if (this.isRange() && this._currentRange.start && (!this._currentRange.end || this._inEndDateSelectionMode)) {
+            this._currentRange = {
+                start: this._currentRange.start,
+                end: selectedDate,
+            };
+            this._selected.set(this._currentRange);
+
+            this._liveAnnouncer.announce(this._intl.dateRangeSelectionCompleteAnnouncement);
+            this.selectedChange.emit(this.selected as DateRange<D>);
+            this._userSelected();
         }
     }
 
@@ -256,7 +328,13 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
     }
 
     _userSelected(): void {
-        this._userSelection.emit();
+        if (!this.isRange()) {
+            this._userSelection.emit();
+        }
+        const range = this.selected as DateRange<D>;
+        if (this.isRange() && range.start && range.end) {
+            this._userSelection.emit();
+        }
     }
 
     /** Handles year/month selection in the multi-year/year views. */
@@ -318,6 +396,19 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
      * @returns The given object if it is both a date instance and valid, otherwise null.
      */
     private _getValidDateOrNull(obj: any): D | null {
-        return this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj) ? obj : null;
+        const returnDate = this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj as D) ? (obj as D) : null;
+        return returnDate;
+    }
+
+    private getValidRangeOrNullDate(newDate: D | DateRange<D> | null): DateRange<D> | null {
+        if (newDate === null) {
+            return { start: null, end: null };
+        }
+
+        const newDateRange = newDate as DateRange<D>;
+        const isStartValid = this._dateAdapter.isDateInstance(newDateRange?.start) && this._dateAdapter.isValid(newDateRange.start!);
+        const isEndValid = this._dateAdapter.isDateInstance(newDateRange?.end) && this._dateAdapter.isValid(newDateRange.end!);
+
+        return { start: isStartValid ? newDateRange.start : null, end: isEndValid ? newDateRange.end : null };
     }
 }

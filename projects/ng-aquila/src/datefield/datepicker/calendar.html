@@ -35,17 +35,20 @@
 <div class="nx-calendar-content" cdkMonitorSubtreeFocus tabindex="-1">
     @switch (_currentView) { @case ('month') {
     <nx-month-view
+        [isRange]="isRange()"
         [(activeDate)]="_activeDate"
-        [selected]="selected"
+        [selected]="_selected()"
         [dateFilter]="dateFilter"
         [maxDate]="maxDate"
         [minDate]="minDate"
+        (hoverDateChange)="_hoverDateChange($event)"
         (selectedChange)="_dateSelected($event!)"
         (_userSelection)="_userSelected()"
     >
     </nx-month-view>
     } @case ('year') {
     <nx-year-view
+        [isRange]="isRange()"
         [(activeDate)]="_activeDate"
         [selected]="selected"
         [dateFilter]="dateFilter"

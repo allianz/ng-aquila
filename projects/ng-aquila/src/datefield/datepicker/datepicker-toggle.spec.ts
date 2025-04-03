@@ -88,7 +88,7 @@ describe('NxDatepickerToggleComponent', () => {
 
     it('should disable the datepicker in a readonly datefield', () => {
         createTestComponent(ReadonlyDatefield);
-        expect(toggleInstance.disabled).toBeTrue();
+        expect(toggleInstance.disabled()).toBeTrue();
     });
 
     it('focuses input after closing datepicker (toggle non-focusable)', fakeAsync(() => {

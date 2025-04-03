@@ -16,11 +16,14 @@
         [followingItems]="_getFirstDaysOfFollowingMonth()"
         [todayValue]="_todayDate!"
         [numCols]="_numCols"
-        [selectedValue]="_selectedDate!"
+        [selectedValue]="selectedDateInMonth()"
+        [selectedEndDate]="selectedEndDate()"
+        [betweenRange]="betweenRange()"
         [activeCell]="_dateAdapter.getDate(activeDate) - 1"
         (selectedValueChange)="_dateSelected($event)"
         (selectedValueChangeToPrevious)="_dateSelected($event, -1)"
         (selectedValueChangeToFollowing)="_dateSelected($event, 1)"
         (keydown)="_handleCalendarBodyKeydown($event)"
+        (hoverValueChange)="handleHoverChange($event)"
     ></tbody>
 </table>

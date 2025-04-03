@@ -3,6 +3,7 @@ import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARR
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Optional, Output, ViewChild } from '@angular/core';
 
 import { NxDateAdapter } from '../adapter/index';
+import { DateRange } from '../date-range/date-range.component';
 import { createMissingDateImplError } from '../datefield.functions';
 import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
 
@@ -46,14 +47,14 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
     private _activeDate: D;
 
     /** The currently selected date. */
-    @Input() set selected(value: D | null) {
+    @Input() set selected(value: D | DateRange<D> | null) {
         this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
         this._selectedYear = this._selected && this._dateAdapter.getYear(this._selected);
     }
-    get selected(): D | null {
+    get selected(): D | DateRange<D> | null {
         return this._selected;
     }
-    private _selected!: D | null;
+    private _selected!: D | DateRange<D> | null;
 
     /** The minimum selectable date. */
     @Input() set minDate(value: D | null) {

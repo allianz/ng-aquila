@@ -19,6 +19,8 @@ import { DatefieldManualExampleComponent } from './datefield-manual/datefield-ma
 import { DatefieldMinMaxExampleComponent } from './datefield-min-max/datefield-min-max-example';
 import { DatefieldParsingExampleComponent } from './datefield-parsing/datefield-parsing-example';
 import { DatefieldRangeExampleComponent } from './datefield-range/datefield-range-example';
+import { DatefieldRangeFormatExampleComponent } from './datefield-range-format/datefield-range-format-example';
+import { DatefieldRangeValidationExampleComponent } from './datefield-range-validation/datefield-range-validation-example';
 import { DatefieldReactiveExampleComponent } from './datefield-reactive/datefield-reactive-example';
 import { DatefieldReadonlyExampleComponent } from './datefield-readonly/datefield-readonly-example';
 import { DatefieldScrollStrategyProviderExampleComponent } from './datefield-scroll-strategy-provider/datefield-scroll-strategy-provider-example';
@@ -39,11 +41,13 @@ const EXAMPLES = [
     DatefieldMinMaxExampleComponent,
     DatefieldParsingExampleComponent,
     DatefieldRangeExampleComponent,
+    DatefieldRangeValidationExampleComponent,
     DatefieldReactiveExampleComponent,
     DatefieldStartviewExampleComponent,
     DatefieldToggleFocusExampleComponent,
     DatefieldScrollStrategyProviderExampleComponent,
     DatefieldReadonlyExampleComponent,
+    DatefieldRangeFormatExampleComponent,
 ];
 
 @NgModule({
@@ -76,12 +80,15 @@ export class DatefieldExamplesModule {
             'datefield-min-max': DatefieldMinMaxExampleComponent,
             'datefield-parsing': DatefieldParsingExampleComponent,
             'datefield-range': DatefieldRangeExampleComponent,
+            'datefield-range-validation':
+                DatefieldRangeValidationExampleComponent,
             'datefield-reactive': DatefieldReactiveExampleComponent,
             'datefield-startview': DatefieldStartviewExampleComponent,
             'datefield-toggle-focus': DatefieldToggleFocusExampleComponent,
             'datefield-scroll-strategy-provider':
                 DatefieldScrollStrategyProviderExampleComponent,
             'datefield-readonly': DatefieldReadonlyExampleComponent,
+            'datefield-range-format': DatefieldRangeFormatExampleComponent,
         };
     }
 }

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {
     NxDatefieldDirective,
     NxDatepickerComponent,
     NxDatepickerToggleComponent,
+    NxDateRangeComponent,
 } from '@aposin/ng-aquila/datefield';
 import {
     NxFormfieldComponent,
@@ -10,6 +12,7 @@ import {
     NxFormfieldSuffixDirective,
 } from '@aposin/ng-aquila/formfield';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
+import { NxSwitcherComponent } from '@aposin/ng-aquila/switcher';
 
 /**
  * @title Disabled example
@@ -26,6 +29,11 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
         NxDatepickerToggleComponent,
         NxFormfieldSuffixDirective,
         NxDatepickerComponent,
+        NxDateRangeComponent,
+        NxSwitcherComponent,
+        FormsModule,
     ],
 })
-export class DatefieldDisabledExampleComponent {}
+export class DatefieldDisabledExampleComponent {
+    disabledAttribute = true;
+}

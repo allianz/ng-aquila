@@ -4,7 +4,7 @@
     [tabindex]="tabindex"
     type="button"
     [attr.aria-label]="_intl.openCalendarLabel"
-    [disabled]="disabled"
+    [disabled]="disabled()"
     (click)="_open($event)"
 >
     @if (!_customIcon) {

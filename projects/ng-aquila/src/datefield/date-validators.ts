@@ -29,6 +29,7 @@ export class NxDateValidators {
     static min<D>(dateAdapter: NxDateAdapter<D>, min: D): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
             const controlValue = getValidDateOrNull(dateAdapter, dateAdapter.deserialize(control.value));
+
             return !min || !controlValue || dateAdapter.compareDate(min, controlValue) <= 0 ? null : { nxDatefieldMin: { min, actual: controlValue } };
         };
     }
@@ -46,6 +47,90 @@ export class NxDateValidators {
         return (control: AbstractControl): ValidationErrors | null => {
             const controlValue = getValidDateOrNull(dateAdapter, dateAdapter.deserialize(control.value));
             return !dateFilter || !controlValue || dateFilter(controlValue) ? null : { nxDatefieldFilter: true };
+        };
+    }
+}
+
+export class NxDateRangeValidators {
+    static min<D>(dateAdapter: NxDateAdapter<D>, min: D): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const controlValue = getValidDateOrNull(dateAdapter, dateAdapter.deserialize(control.value?.start));
+
+            return !min || !controlValue || dateAdapter.compareDate(min, controlValue) <= 0 ? null : { nxDatefieldMin: { min, actual: controlValue } };
+        };
+    }
+
+    /** The form control validator for the max date. */
+    static max<D>(dateAdapter: NxDateAdapter<D>, max: D): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const controlValue = getValidDateOrNull(dateAdapter, dateAdapter.deserialize(control.value?.end));
+            return !max || !controlValue || dateAdapter.compareDate(max, controlValue) >= 0 ? null : { nxDatefieldMax: { max, actual: controlValue } };
+        };
+    }
+
+    /** The form control validator for the date filter. */
+    static filter<D>(dateAdapter: NxDateAdapter<D>, dateFilter: (date: D | null) => boolean | null): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            if (!dateFilter) {
+                return null;
+            }
+            const controlValueStart = getValidDateOrNull(dateAdapter, dateAdapter.deserialize(control.value?.start));
+            const controlValueEnd = getValidDateOrNull(dateAdapter, dateAdapter.deserialize(control.value?.end));
+
+            const startMismatchesFilter = !dateFilter(controlValueStart);
+            const endMismatchesFilter = !dateFilter(controlValueEnd);
+
+            const errors: ValidationErrors = {};
+            if (startMismatchesFilter) {
+                errors.nxDateRangeStartFilter = true;
+            }
+            if (endMismatchesFilter) {
+                errors.nxDateRangeEndFilter = true;
+            }
+
+            return startMismatchesFilter || endMismatchesFilter ? errors : null;
+        };
+    }
+
+    /** The form control validator to check that the start date is before end date. */
+    static range<D>(dateAdapter: NxDateAdapter<D>): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const controlValueStart = getValidDateOrNull(dateAdapter, dateAdapter.deserialize(control.value?.start));
+            const controlValueEnd = getValidDateOrNull(dateAdapter, dateAdapter.deserialize(control.value?.end));
+
+            if (controlValueStart && controlValueEnd && dateAdapter.compareDate(controlValueStart, controlValueEnd) > 0) {
+                return { nxDateRangeInvalid: true };
+            }
+
+            return null;
+        };
+    }
+
+    static complete<D>(dateAdapter: NxDateAdapter<D>): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const controlValueStart = getValidDateOrNull(dateAdapter, dateAdapter.deserialize(control.value?.start));
+            const controlValueEnd = getValidDateOrNull(dateAdapter, dateAdapter.deserialize(control.value?.end));
+
+            const partlyMissing = (controlValueStart && !controlValueEnd) || (!controlValueStart && controlValueEnd);
+            if (partlyMissing) {
+                return { nxDateRangeIncomplete: true };
+            }
+
+            return null;
+        };
+    }
+
+    static required<D>(dateAdapter: NxDateAdapter<D>): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const controlValueStart = getValidDateOrNull(dateAdapter, dateAdapter.deserialize(control.value?.start));
+            const controlValueEnd = getValidDateOrNull(dateAdapter, dateAdapter.deserialize(control.value?.end));
+
+            const rangePartsMissing = !controlValueStart && !controlValueEnd;
+            if (!control.value || rangePartsMissing) {
+                return { required: true };
+            }
+
+            return null;
         };
     }
 }
