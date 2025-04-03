@@ -28,8 +28,11 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">afterAllClosed</span>:
-                <span class="docs-api-property__type">Observable<void></span>
+                <span class="docs-api-property__name">
+                afterAllClosed: 
+                </span>
+                 
+                <span class="docs-api-property__type">Observable&lt;void&gt;</span>
             </code>
         </p>
     </td>
@@ -43,8 +46,11 @@ Will emit on subscribe if there are no open modals to begin with.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">afterOpened</span>:
-                <span class="docs-api-property__type">Subject<NxModalRef<any>></span>
+                <span class="docs-api-property__name">
+                afterOpened: 
+                </span>
+                 
+                <span class="docs-api-property__type">Subject&lt;NxModalRef&lt;any, any&gt;&gt;</span>
             </code>
         </p>
     </td>
@@ -57,8 +63,11 @@ Will emit on subscribe if there are no open modals to begin with.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">openModals</span>:
-                <span class="docs-api-property__type">NxModalRef<any>[]</span>
+                <span class="docs-api-property__name">
+                openModals: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxModalRef&lt;any, any&gt;[]</span>
             </code>
         </p>
     </td>
@@ -85,7 +94,12 @@ Will emit on subscribe if there are no open modals to begin with.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getModalById(id: <span class="docs-api-property__type">string</span>): <span class="docs-api-method-returns-type">NxModalRef<any> | undefined</span></span>
+            <span class="docs-api-method-name">getModalById(
+                            id:  
+                                <span class="docs-api-property__type">
+                                    string
+                                </span>
+                        ): <span class="docs-api-method-returns-type">NxModalRef&lt;any&gt; | undefined</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Finds an open modal by its id.</p>
@@ -106,7 +120,17 @@ Will emit on subscribe if there are no open modals to begin with.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">open(componentOrTemplateRef: <span class="docs-api-property__type">ComponentType<T> | TemplateRef<T></span>,config: <span class="docs-api-property__type">NxModalConfig<D></span>): <span class="docs-api-method-returns-type">NxModalRef<T, R></span></span>
+            <span class="docs-api-method-name">open(
+                            componentOrTemplateRef:  
+                                <span class="docs-api-property__type">
+                                    ComponentType<T> | TemplateRef<T>
+                                </span>,
+                        
+                            config?:  
+                                <span class="docs-api-property__type">
+                                    NxModalConfig<D>
+                                </span>
+                        ): <span class="docs-api-method-returns-type">NxModalRef&lt;T, R&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Opens a modal modal containing the given component.</p>
@@ -130,7 +154,7 @@ Will emit on subscribe if there are no open modals to begin with.</p>
         </div>
         
     </div><div class="docs-api-method-returns">
-        <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">NxModalRef<T, R></code></p>
+        <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">NxModalRef&lt;T, R&gt;</code></p>
         <p class="docs-api-method-returns-description"> <p>Reference to the newly-opened modal.</p>
  </p>
     </div></div>
@@ -144,6 +168,13 @@ Will emit on subscribe if there are no open modals to begin with.</p>
 <h4 id="NxModalTitleComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxModalTitleComponent"></span>
     <code>NxModalTitleComponent</code></h4><p class="docs-api-class-description"><p>Title of a modal.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">[nxModalTitle]</span>
+        </code>
+    
 </p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
@@ -154,9 +185,13 @@ Will emit on subscribe if there are no open modals to begin with.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">status</span>?:
+                <span class="docs-api-property__name">
+                status?: 
+                </span>
+                 
                 <span class="docs-api-property__type">NxStatusIconType</span>
             </code>
         </p>
@@ -174,7 +209,14 @@ Will emit on subscribe if there are no open modals to begin with.</p>
 
 <h4 id="NxModalComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxModalComponent"></span>
-    <code>NxModalComponent</code></h4><h5 class="docs-api-method-header">Properties</h5>
+    <code>NxModalComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-modal</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -183,10 +225,18 @@ Will emit on subscribe if there are no open modals to begin with.</p>
      
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'modalBody'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>modalBody</strong> }</span><span class="docs-api-input__keyword">
+                        @Input
+                        (<span class="docs-api-input-alias">'modalBody'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">body</span>:
-                <span class="docs-api-property__type">TemplateRef<any></span>
+                <span class="docs-api-property__name">
+                body: 
+                </span>
+                 
+                <span class="docs-api-property__type">TemplateRef&lt;any&gt;</span>
             </code>
         </p>
     </td>
@@ -199,9 +249,13 @@ which contains the content of the modal view.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">closeButtonLabel</span>:
+                <span class="docs-api-property__name">
+                closeButtonLabel: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -215,10 +269,14 @@ which contains the content of the modal view.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">hideOnClickOutside</span>:
-                <span class="docs-api-property__type">true</span>
+                <span class="docs-api-property__name">
+                hideOnClickOutside: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
     </td>
@@ -231,10 +289,14 @@ Default: <code>true</code>.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">hideOnEsc</span>:
-                <span class="docs-api-property__type">true</span>
+                <span class="docs-api-property__name">
+                hideOnEsc: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
     </td>
@@ -247,10 +309,14 @@ Default: <code>true</code>.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">showCloseIcon</span>:
-                <span class="docs-api-property__type">true</span>
+                <span class="docs-api-property__name">
+                showCloseIcon: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
     </td>
@@ -262,10 +328,18 @@ Default: <code>true</code>.</p>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'windowSize'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>windowSize</strong> }</span><span class="docs-api-input__keyword">
+                        @Input
+                        (<span class="docs-api-input-alias">'windowSize'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">size</span>:
-                <span class="docs-api-property__type">'fixed' | 'auto'</span>
+                <span class="docs-api-property__name">
+                size: 
+                </span>
+                 
+                <span class="docs-api-property__type">&quot;auto&quot; | &quot;fixed&quot;</span>
             </code>
         </p>
     </td>
@@ -278,10 +352,18 @@ on <code>fixed</code> the dialog gets a fixed width of 736px if the viewport is 
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'onModalClose'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+                <span class="docs-api-output__badge">Output{ alias:  <strong>onModalClose</strong> }</span><span class="docs-api-output__keyword">
+                        @Output
+                        (<span class="docs-api-output-alias">'onModalClose'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">closeEvent</span>:
-                <span class="docs-api-property__type">EventEmitter<void></span>
+                <span class="docs-api-property__name">
+                closeEvent: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;void&gt;</span>
             </code>
         </p>
     </td>
@@ -304,6 +386,13 @@ of a modal to close it when requested by the user.</p>
 <h4 id="NxModalCloseDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxModalCloseDirective"></span>
     <code>NxModalCloseDirective</code></h4><p class="docs-api-class-description"><p>Button that will close the current modal.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">[nxModalClose]</span>
+        </code>
+    
 </p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
@@ -313,9 +402,17 @@ of a modal to close it when requested by the user.</p>
      
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'aria-label'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>aria-label</strong> }</span><span class="docs-api-input__keyword">
+                        @Input
+                        (<span class="docs-api-input-alias">'aria-label'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">ariaLabel</span>:
+                <span class="docs-api-property__name">
+                ariaLabel: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -327,9 +424,17 @@ of a modal to close it when requested by the user.</p>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxModalClose'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>nxModalClose</strong> }</span><span class="docs-api-input__keyword">
+                        @Input
+                        (<span class="docs-api-input-alias">'nxModalClose'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">modalResult</span>:
+                <span class="docs-api-property__name">
+                modalResult: 
+                </span>
+                 
                 <span class="docs-api-property__type">any</span>
             </code>
         </p>
@@ -342,10 +447,14 @@ of a modal to close it when requested by the user.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">type</span>:
-                <span class="docs-api-property__type">'submit' | 'button' | 'reset'</span>
+                <span class="docs-api-property__name">
+                type: 
+                </span>
+                 
+                <span class="docs-api-property__type">&quot;button&quot; | &quot;submit&quot; | &quot;reset&quot;</span>
             </code>
         </p>
     </td>
@@ -358,8 +467,11 @@ of a modal to close it when requested by the user.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">modalRef</span>:
-                <span class="docs-api-property__type">NxModalRef<any> | null</span>
+                <span class="docs-api-property__name">
+                modalRef: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxModalRef&lt;any, any&gt;</span>
             </code>
         </p>
     </td>
@@ -375,6 +487,13 @@ of a modal to close it when requested by the user.</p>
 <h4 id="NxModalActionsDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxModalActionsDirective"></span>
     <code>NxModalActionsDirective</code></h4><p class="docs-api-class-description"><p>Container for the action buttons in a modal. Has a fixed position at the bottom of the modal on scroll.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">[nxModalActions]</span>
+        </code>
+    
 </p> 
 
  
@@ -383,6 +502,13 @@ of a modal to close it when requested by the user.</p>
 <h4 id="NxModalContentDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxModalContentDirective"></span>
     <code>NxModalContentDirective</code></h4><p class="docs-api-class-description"><p>Scrollable container for the content of a modal.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">[nxModalContent]</span>
+        </code>
+    
 </p> 
 
  
@@ -390,7 +516,14 @@ of a modal to close it when requested by the user.</p>
 
 <h4 id="NxOpenModalOnClickDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxOpenModalOnClickDirective"></span>
-    <code>NxOpenModalOnClickDirective</code></h4><h5 class="docs-api-method-header">Properties</h5>
+    <code>NxOpenModalOnClickDirective</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">[nxOpenModalOnClick]</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -400,9 +533,13 @@ of a modal to close it when requested by the user.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">nxOpenModalOnClick</span>:
+                <span class="docs-api-property__name">
+                nxOpenModalOnClick: 
+                </span>
+                 
                 <span class="docs-api-property__type">any</span>
             </code>
         </p>
@@ -437,7 +574,10 @@ which should trigger opening the modal on click.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">appearance</span>?:
+                <span class="docs-api-property__name">
+                appearance?: 
+                </span>
+                 
                 <span class="docs-api-property__type">NxModalAppearance</span>
             </code>
         </p>
@@ -452,8 +592,11 @@ which should trigger opening the modal on click.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">ariaDescribedBy</span>?:
-                <span class="docs-api-property__type">string | null</span>
+                <span class="docs-api-property__name">
+                ariaDescribedBy?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -466,8 +609,11 @@ which should trigger opening the modal on click.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">ariaLabel</span>?:
-                <span class="docs-api-property__type">string | null</span>
+                <span class="docs-api-property__name">
+                ariaLabel?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -480,8 +626,11 @@ which should trigger opening the modal on click.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">ariaLabelledBy</span>?:
-                <span class="docs-api-property__type">string | null</span>
+                <span class="docs-api-property__name">
+                ariaLabelledBy?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -494,8 +643,11 @@ which should trigger opening the modal on click.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">autoFocus</span>?:
-                <span class="docs-api-property__type">boolean | AutoFocusTarget | string</span>
+                <span class="docs-api-property__name">
+                autoFocus?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string | boolean</span>
             </code>
         </p>
     </td>
@@ -508,7 +660,10 @@ which should trigger opening the modal on click.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">backdropClass</span>?:
+                <span class="docs-api-property__name">
+                backdropClass?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -522,7 +677,10 @@ which should trigger opening the modal on click.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">closeIconButtonLabel</span>?:
+                <span class="docs-api-property__name">
+                closeIconButtonLabel?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -537,7 +695,10 @@ which should trigger opening the modal on click.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">closeOnNavigation</span>?:
+                <span class="docs-api-property__name">
+                closeOnNavigation?: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -553,8 +714,11 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">data</span>?:
-                <span class="docs-api-property__type">D | null</span>
+                <span class="docs-api-property__name">
+                data?: 
+                </span>
+                 
+                <span class="docs-api-property__type">D</span>
             </code>
         </p>
     </td>
@@ -567,7 +731,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">direction</span>?:
+                <span class="docs-api-property__name">
+                direction?: 
+                </span>
+                 
                 <span class="docs-api-property__type">Direction</span>
             </code>
         </p>
@@ -582,7 +749,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">disableClose</span>?:
+                <span class="docs-api-property__name">
+                disableClose?: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -596,7 +766,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">fullscreen</span>?:
+                <span class="docs-api-property__name">
+                fullscreen?: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -610,7 +783,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">hasBackdrop</span>?:
+                <span class="docs-api-property__name">
+                hasBackdrop?: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -624,7 +800,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">height</span>?:
+                <span class="docs-api-property__name">
+                height?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -638,7 +817,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">id</span>?:
+                <span class="docs-api-property__name">
+                id?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -652,8 +834,11 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">maxHeight</span>?:
-                <span class="docs-api-property__type">number | string</span>
+                <span class="docs-api-property__name">
+                maxHeight?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string | number</span>
             </code>
         </p>
     </td>
@@ -666,8 +851,11 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">maxWidth</span>?:
-                <span class="docs-api-property__type">number | string</span>
+                <span class="docs-api-property__name">
+                maxWidth?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string | number</span>
             </code>
         </p>
     </td>
@@ -680,8 +868,11 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">minHeight</span>?:
-                <span class="docs-api-property__type">number | string</span>
+                <span class="docs-api-property__name">
+                minHeight?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string | number</span>
             </code>
         </p>
     </td>
@@ -694,8 +885,11 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">minWidth</span>?:
-                <span class="docs-api-property__type">number | string</span>
+                <span class="docs-api-property__name">
+                minWidth?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string | number</span>
             </code>
         </p>
     </td>
@@ -708,7 +902,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">panelClass</span>?:
+                <span class="docs-api-property__name">
+                panelClass?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string | string[]</span>
             </code>
         </p>
@@ -722,7 +919,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">position</span>?:
+                <span class="docs-api-property__name">
+                position?: 
+                </span>
+                 
                 <span class="docs-api-property__type">NxDialogPosition</span>
             </code>
         </p>
@@ -736,7 +936,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">restoreFocus</span>?:
+                <span class="docs-api-property__name">
+                restoreFocus?: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -751,7 +954,10 @@ previously-focused element, after it&#39;s closed.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">role</span>?:
+                <span class="docs-api-property__name">
+                role?: 
+                </span>
+                 
                 <span class="docs-api-property__type">NxModalRole</span>
             </code>
         </p>
@@ -765,7 +971,10 @@ previously-focused element, after it&#39;s closed.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">scrollStrategy</span>?:
+                <span class="docs-api-property__name">
+                scrollStrategy?: 
+                </span>
+                 
                 <span class="docs-api-property__type">ScrollStrategy</span>
             </code>
         </p>
@@ -779,8 +988,11 @@ previously-focused element, after it&#39;s closed.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">shouldClose</span>?:
-                <span class="docs-api-property__type">(modalResult?: any) => boolean</span>
+                <span class="docs-api-property__name">
+                shouldClose?: 
+                </span>
+                 
+                <span class="docs-api-property__type">(modalResult?: any) =&gt; boolean</span>
             </code>
         </p>
     </td>
@@ -793,7 +1005,10 @@ previously-focused element, after it&#39;s closed.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">showCloseIcon</span>?:
+                <span class="docs-api-property__name">
+                showCloseIcon?: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -808,7 +1023,10 @@ previously-focused element, after it&#39;s closed.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">viewContainerRef</span>?:
+                <span class="docs-api-property__name">
+                viewContainerRef?: 
+                </span>
+                 
                 <span class="docs-api-property__type">ViewContainerRef</span>
             </code>
         </p>
@@ -825,7 +1043,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">width</span>?:
+                <span class="docs-api-property__name">
+                width?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -839,7 +1060,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">componentFactoryResolver</span>?:
+                <span class="docs-api-property__name">
+                componentFactoryResolver?: 
+                </span>
+                 
                 <span class="docs-api-property__type">ComponentFactoryResolver</span>
             </code>
         </p>
@@ -868,8 +1092,11 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">closeDenied</span>:
-                <span class="docs-api-property__type">Subject<void></span>
+                <span class="docs-api-property__name">
+                closeDenied: 
+                </span>
+                 
+                <span class="docs-api-property__type">Subject&lt;void&gt;</span>
             </code>
         </p>
     </td>
@@ -882,7 +1109,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">componentInstance</span>:
+                <span class="docs-api-property__name">
+                componentInstance: 
+                </span>
+                 
                 <span class="docs-api-property__type">T</span>
             </code>
         </p>
@@ -896,7 +1126,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">disableClose</span>?:
+                <span class="docs-api-property__name">
+                disableClose?: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -910,7 +1143,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">id</span>:
+                <span class="docs-api-property__name">
+                id: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -927,7 +1163,12 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">addPanelClass(classes: <span class="docs-api-property__type">string | string[]</span>): <span class="docs-api-method-returns-type">this</span></span>
+            <span class="docs-api-method-name">addPanelClass(
+                            classes:  
+                                <span class="docs-api-property__type">
+                                    string | string[]
+                                </span>
+                        ): <span class="docs-api-method-returns-type">this</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Add a CSS class or an array of classes to the overlay pane.</p>
@@ -947,7 +1188,7 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">afterClosed(): <span class="docs-api-method-returns-type">Observable<R | undefined></span></span>
+            <span class="docs-api-method-name">afterClosed(): <span class="docs-api-method-returns-type">Observable&lt;R | undefined&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets an observable that is notified when the modal is finished closing.</p>
@@ -957,7 +1198,7 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">afterOpened(): <span class="docs-api-method-returns-type">Observable<void></span></span>
+            <span class="docs-api-method-name">afterOpened(): <span class="docs-api-method-returns-type">Observable&lt;void&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets an observable that is notified when the modal is finished opening.</p>
@@ -967,7 +1208,7 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">backdropClick(): <span class="docs-api-method-returns-type">Observable<MouseEvent></span></span>
+            <span class="docs-api-method-name">backdropClick(): <span class="docs-api-method-returns-type">Observable&lt;MouseEvent&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets an observable that emits when the overlay&#39;s backdrop has been clicked.</p>
@@ -977,7 +1218,7 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">beforeClosed(): <span class="docs-api-method-returns-type">Observable<R | undefined></span></span>
+            <span class="docs-api-method-name">beforeClosed(): <span class="docs-api-method-returns-type">Observable&lt;R | undefined&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets an observable that is notified when the modal has started closing.</p>
@@ -987,7 +1228,12 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">close(modalResult: <span class="docs-api-property__type">R</span>)</span>
+            <span class="docs-api-method-name">close(
+                            modalResult?:  
+                                <span class="docs-api-property__type">
+                                    R
+                                </span>
+                        )</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Close the modal.</p>
@@ -1018,7 +1264,7 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">keydownEvents(): <span class="docs-api-method-returns-type">Observable<KeyboardEvent></span></span>
+            <span class="docs-api-method-name">keydownEvents(): <span class="docs-api-method-returns-type">Observable&lt;KeyboardEvent&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets an observable that emits when keydown events are targeted on the overlay.</p>
@@ -1028,7 +1274,12 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">removePanelClass(classes: <span class="docs-api-property__type">string | string[]</span>): <span class="docs-api-method-returns-type">this</span></span>
+            <span class="docs-api-method-name">removePanelClass(
+                            classes:  
+                                <span class="docs-api-property__type">
+                                    string | string[]
+                                </span>
+                        ): <span class="docs-api-method-returns-type">this</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Remove a CSS class or an array of classes from the overlay pane.</p>
@@ -1048,7 +1299,12 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">updatePosition(position: <span class="docs-api-property__type">NxDialogPosition</span>): <span class="docs-api-method-returns-type">this</span></span>
+            <span class="docs-api-method-name">updatePosition(
+                            position?:  
+                                <span class="docs-api-property__type">
+                                    NxDialogPosition
+                                </span>
+                        ): <span class="docs-api-method-returns-type">this</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Updates the modal&#39;s position.</p>
@@ -1069,7 +1325,17 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">updateSize(width: <span class="docs-api-property__type">string = ''</span>,height: <span class="docs-api-property__type">string = ''</span>): <span class="docs-api-method-returns-type">this</span></span>
+            <span class="docs-api-method-name">updateSize(
+                            width:  
+                                <span class="docs-api-property__type">
+                                    string = ''
+                                </span>,
+                        
+                            height:  
+                                <span class="docs-api-property__type">
+                                    string = ''
+                                </span>
+                        ): <span class="docs-api-method-returns-type">this</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Updates the modal&#39;s width and height.</p>
@@ -1115,7 +1381,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">bottom</span>?:
+                <span class="docs-api-property__name">
+                bottom?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -1129,7 +1398,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">left</span>?:
+                <span class="docs-api-property__name">
+                left?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -1143,7 +1415,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">right</span>?:
+                <span class="docs-api-property__name">
+                right?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -1157,7 +1432,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">top</span>?:
+                <span class="docs-api-property__name">
+                top?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>

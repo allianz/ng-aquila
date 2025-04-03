@@ -1,0 +1,109 @@
+<nx-label size="small" class="nx-margin-bottom-3xs" id="file-upload-label">
+    Upload your documents
+</nx-label>
+
+<span class="nx-margin-bottom-s" nxFileUploadHint id="file-upload-hint">
+    JPG, PNG or PDF • less than 1MB
+</span>
+
+@if (uploaderComponents()[0].errors.length > 0 ||
+uploaderComponents()[1].errors.length > 0 ||
+uploaderComponents()[2].errors.length > 0) {
+<nx-error id="file-upload-error">
+    <div class="nx-font-weight-bold">Error</div>
+    <ul>
+        @for (item of getFileErrors(); track $index) { @if(item.type ===
+        'fileSize') {
+        <li>File size of {{ item.filename }} exceeds limit of 1 MB</li>
+        } }
+    </ul>
+</nx-error>
+}
+
+<nx-file-uploader
+    #driverDocumentUpload
+    multiple
+    [uploader]="carDocumentsUploader"
+    maxFileSize="{{1 * 1024 * 1024}}"
+    ariaDescribedBy="file-upload-label file-upload-hint file-upload-error"
+>
+    <div class="uploader-row">
+        Driver Documents
+        <span>
+            <button
+                nxPlainButton
+                type="button"
+                nxFileUploadButton
+                aria-label="Add Driver Documents"
+            >
+                <nx-icon
+                    name="plus"
+                    nxIconPositionStart
+                    aria-hidden="true"
+                ></nx-icon>
+                Add File
+            </button>
+        </span>
+    </div>
+</nx-file-uploader>
+<nx-file-uploader
+    #carDocumentUpload
+    multiple
+    [uploader]="driverDocumentsUploader"
+    maxFileSize="{{1 * 1024 * 1024}}"
+    ariaDescribedBy="file-upload-label file-upload-hint file-upload-error"
+>
+    <div class="uploader-row">
+        Car Documents
+        <span>
+            <button
+                nxPlainButton
+                type="button"
+                nxFileUploadButton
+                aria-label="Add Car Documents"
+            >
+                <nx-icon
+                    name="plus"
+                    nxIconPositionStart
+                    aria-hidden="true"
+                ></nx-icon>
+                Add File
+            </button>
+        </span>
+    </div>
+</nx-file-uploader>
+<nx-file-uploader
+    #additionalDocumentUpload
+    multiple
+    [uploader]="additionalDocumentsUploader"
+    maxFileSize="{{1 * 1024 * 1024}}"
+    ariaDescribedBy="file-upload-label file-upload-hint file-upload-error"
+>
+    <div class="uploader-row">
+        Additional Documents
+        <span>
+            <button
+                nxPlainButton
+                type="button"
+                nxFileUploadButton
+                aria-label="Add Additional Documents"
+            >
+                <nx-icon
+                    name="plus"
+                    nxIconPositionStart
+                    aria-hidden="true"
+                ></nx-icon>
+                Add File
+            </button>
+        </span>
+    </div>
+</nx-file-uploader>
+
+<button
+    nxButton="secondary small"
+    (click)="triggerUpload()"
+    type="button"
+    class="nx-margin-top-s"
+>
+    Upload Documents
+</button>

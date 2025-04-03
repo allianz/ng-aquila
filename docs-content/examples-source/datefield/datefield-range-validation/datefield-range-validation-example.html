@@ -1,0 +1,73 @@
+<div nxLayout="grid">
+    <div nxRow>
+        <div nxCol="12,12,6">
+            <form [formGroup]="formWithPicker">
+                <nx-formfield label="Date Range Component">
+                    <nx-date-range
+                        #dateRange
+                        formControlName="range"
+                        [datepicker]="formRangeDatePicker"
+                        placeholder="mm/dd/yyyy"
+                        [minDate]="minDate"
+                        [maxDate]="maxDate"
+                        [dateFilter]="dateFilterWithFirstDay"
+                    ></nx-date-range>
+                    <nx-datepicker-toggle
+                        [for]="formRangeDatePicker"
+                        nxFormfieldSuffix
+                    ></nx-datepicker-toggle>
+                    <nx-datepicker
+                        #formRangeDatePicker
+                        [rangeMode]="true"
+                    ></nx-datepicker>
+                    <nx-error nxFormfieldError>
+                        Errors:
+                        <ul>
+                            @if(formWithPicker.controls.range.errors?.nxDatefieldMin){
+                            <li>The start date has to be after 03/31/2020.</li>
+                            }
+                            @if(formWithPicker.controls.range.errors?.nxDatefieldMax){
+                            <li>The end date has to be before 04/30/2020.</li>
+                            }
+                            @if(formWithPicker.controls.range.errors?.nxDateRangeStartFilter
+                            ||
+                            formWithPicker.controls.range.errors?.nxDateRangeEndFilter){
+                            <li>
+                                The start and end date have to be on a first of
+                                a month.
+                            </li>
+                            }
+                            @if(formWithPicker.controls.range.errors?.nxDateRangeIncomplete
+                            && formWithPicker.value.range!.start){
+                            <li>Please enter a end date.</li>
+                            }
+                            @if(formWithPicker.controls.range.errors?.nxDateRangeIncomplete
+                            && formWithPicker.value.range!.end){
+                            <li>Please enter a start date.</li>
+                            }
+                            @if(formWithPicker.controls.range.errors?.customSameMonthValidationError
+                            ){
+                            <li>
+                                Start and end date can't be in the same month.
+                            </li>
+                            }
+                        </ul>
+                    </nx-error>
+                    <span
+                        aria-label="Please provide date in the US format"
+                        nxFormfieldHint
+                        >MM/DD/YYYY - MM/DD/YYYY</span
+                    >
+                </nx-formfield>
+            </form>
+        </div>
+    </div>
+    <div nxRow>
+        <div nxCol="12">
+            Range Form Value: {{ formWithPicker.value | json }}
+        </div>
+        <div nxCol="12">
+            Range Form Error: {{ formWithPicker.controls.range.errors | json }}
+        </div>
+    </div>
+</div>

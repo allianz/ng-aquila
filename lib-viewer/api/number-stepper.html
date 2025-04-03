@@ -22,6 +22,13 @@
     </span></h4><p class="docs-api-class-description"><p><code>Input(&#39;size&#39;) classNames</code> defines the size of the number stepper.</p>
 <p>Values: <code>&#39;big&#39; | &#39;normal&#39;</code>.</p>
 <p>Default: <code>&#39;normal&#39;</code>.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-number-stepper</span>
+        </code>
+    
 </p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
@@ -32,9 +39,30 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">decrementAriaLabel</span>:
+                <span class="docs-api-property__name">
+                ariaDescribedBy: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                decrementAriaLabel: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -47,9 +75,13 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">disabled</span>:
+                <span class="docs-api-property__name">
+                disabled: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -63,9 +95,13 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">incrementAriaLabel</span>:
+                <span class="docs-api-property__name">
+                incrementAriaLabel: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -78,9 +114,85 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">max</span>:
+                <span class="docs-api-property__name">
+                inputAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the aria-label for the input of the number stepper.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>inputFieldReadonly</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inputFieldReadonly: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the user can directly interact with the input value via input field. Default: false</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                label: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                leadingZero: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the number stepper value should have a leading zero.</p>
+<p>Default: <code>true</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                max: 
+                </span>
+                 
                 <span class="docs-api-property__type">number</span>
             </code>
         </p>
@@ -93,9 +205,13 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">min</span>:
+                <span class="docs-api-property__name">
+                min: 
+                </span>
+                 
                 <span class="docs-api-property__type">number</span>
             </code>
         </p>
@@ -108,9 +224,13 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">negative</span>:
+                <span class="docs-api-property__name">
+                negative: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -122,9 +242,17 @@
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'readonly'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>readonly</strong> }</span><span class="docs-api-input__keyword">
+                        @Input
+                        (<span class="docs-api-input-alias">'readonly'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">readonly</span>:
+                <span class="docs-api-property__name">
+                readonly: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -137,9 +265,13 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">resize</span>:
+                <span class="docs-api-property__name">
+                resize: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -152,9 +284,13 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">step</span>:
+                <span class="docs-api-property__name">
+                step: 
+                </span>
+                 
                 <span class="docs-api-property__type">number</span>
             </code>
         </p>
@@ -167,10 +303,14 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">value</span>:
-                <span class="docs-api-property__type">number | null</span>
+                <span class="docs-api-property__name">
+                value: 
+                </span>
+                 
+                <span class="docs-api-property__type">number</span>
             </code>
         </p>
     </td>
@@ -181,10 +321,18 @@
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'valueChange'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+                <span class="docs-api-output__badge">Output{ alias:  <strong>valueChange</strong> }</span><span class="docs-api-output__keyword">
+                        @Output
+                        (<span class="docs-api-output-alias">'valueChange'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">valueChange</span>:
-                <span class="docs-api-property__type">EventEmitter<number></span>
+                <span class="docs-api-property__name">
+                valueChange: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;number&gt;</span>
             </code>
         </p>
     </td>
@@ -197,8 +345,11 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">ariaDescribedBy</span>:
-                <span class="docs-api-property__type">input<string | null>(null)</span>
+                <span class="docs-api-property__name">
+                ariaDescribedByComputed: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;string&gt;</span>
             </code>
         </p>
     </td>
@@ -210,19 +361,11 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">ariaDescribedByComputed</span>:
-                <span class="docs-api-property__type">computed<string | null>(() => {
-    const hasProjectedLabelWithoutHtmlLabel = this.projectedLabelWrapper() && !this.projectedLabel();
-    const hasDescribedBy = !!this.ariaDescribedBy() || this.errorMessages().length > 0;
-    if (!hasDescribedBy && !hasProjectedLabelWithoutHtmlLabel) {
-        return null;
-    }
-    const describedByIds = [...this.errorMessages().map(item => item.id), this.ariaDescribedBy()];
-    if (hasProjectedLabelWithoutHtmlLabel) {
-        describedByIds.push(this.labelId);
-    }
-    return describedByIds.join(' ');
-})</span>
+                <span class="docs-api-property__name">
+                ariaLabelledByComputed: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;string&gt;</span>
             </code>
         </p>
     </td>
@@ -234,12 +377,11 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">ariaLabelledByComputed</span>:
-                <span class="docs-api-property__type">computed(() => {
-    const hasLabelValue = !!this.label();
-    const hasProjectedLabel = this.projectedLabelWrapper()?.nativeElement?.children?.length > 0;
-    return hasLabelValue || hasProjectedLabel ? this.labelId : null;
-})</span>
+                <span class="docs-api-property__name">
+                decimalSeperator: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -251,8 +393,11 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">decimalSeperator</span>:
-                <span class="docs-api-property__type">'.'</span>
+                <span class="docs-api-property__name">
+                errorMessages: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;readonly unknown[]&gt;</span>
             </code>
         </p>
     </td>
@@ -264,8 +409,11 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">errorMessages</span>:
-                <span class="docs-api-property__type">contentChildren(NxErrorComponent)</span>
+                <span class="docs-api-property__name">
+                projectedLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;HTMLLabelElement&gt;</span>
             </code>
         </p>
     </td>
@@ -277,82 +425,11 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">inputAriaLabel</span>:
-                <span class="docs-api-property__type">input<string | null>(null)</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Sets the aria-label for the input of the number stepper.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">inputFieldReadonly</span>:
-                <span class="docs-api-property__type">input(false, {
-    transform: booleanAttribute,
-    alias: 'inputFieldReadonly'
-})</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Whether the user can directly interact with the input value via input field. Default: false</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">label</span>:
-                <span class="docs-api-property__type">input<string | null>(null)</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">leadingZero</span>:
-                <span class="docs-api-property__type">input(true, {
-    transform: booleanAttribute
-})</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Whether the number stepper value should have a leading zero.</p>
-<p>Default: <code>true</code>.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">projectedLabel</span>:
-                <span class="docs-api-property__type">viewChild(HTMLLabelElement)</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">projectedLabelElement</span>:
-                <span class="docs-api-property__type">computed(() => this.projectedLabelWrapper()?.nativeElement.querySelector('label'))</span>
+                <span class="docs-api-property__name">
+                projectedLabelElement: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;any&gt;</span>
             </code>
         </p>
     </td>
@@ -368,7 +445,7 @@
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">disabledButton()</span>
+            <span class="docs-api-method-name">disabledButton(): <span class="docs-api-method-returns-type">boolean</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"></div></div>
@@ -382,6 +459,13 @@
 <h4 id="NxNumberStepperPrefixDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxNumberStepperPrefixDirective"></span>
     <code>NxNumberStepperPrefixDirective</code></h4><p class="docs-api-class-description"><p>Directive used to pass a suffix to the number stepper.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-number-stepper-prefix</span>
+        </code>
+    
 </p> 
 
  
@@ -390,6 +474,13 @@
 <h4 id="NxNumberStepperSuffixDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxNumberStepperSuffixDirective"></span>
     <code>NxNumberStepperSuffixDirective</code></h4><p class="docs-api-class-description"><p>Directive used to pass a suffix to the number stepper.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-number-stepper-suffix</span>
+        </code>
+    
 </p> 
 
  
@@ -412,8 +503,11 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">changes</span>:
-                <span class="docs-api-property__type">Subject<void></span>
+                <span class="docs-api-property__name">
+                changes: 
+                </span>
+                 
+                <span class="docs-api-property__type">Subject&lt;void&gt;</span>
             </code>
         </p>
     </td>
@@ -427,8 +521,11 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">decrementAriaLabel</span>:
-                <span class="docs-api-property__type">'Decrement'</span>
+                <span class="docs-api-property__name">
+                decrementAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -441,8 +538,11 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">incrementAriaLabel</span>:
-                <span class="docs-api-property__type">'Increment'</span>
+                <span class="docs-api-property__name">
+                incrementAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>

@@ -14,9 +14,16 @@
     </h3>
      
 
-<h4 id="NxDatepickerToggleComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
-    <span header-link="NxDatepickerToggleComponent"></span>
-    <code>NxDatepickerToggleComponent</code></h4><h5 class="docs-api-method-header">Properties</h5>
+<h4 id="NxDateRangeComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxDateRangeComponent"></span>
+    <code>NxDateRangeComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-date-range</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -25,10 +32,796 @@
      
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'for'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>ariaDescribedBy</strong> }</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">datepicker</span>:
-                <span class="docs-api-property__type">NxDatepickerComponent<D></span>
+                <span class="docs-api-property__name">
+                ariaDescribedByInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The aria-describedby attribute on the input for improved accessibility.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                dateFilter: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;(date: D) =&gt; boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                datepicker: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxDatepickerComponent&lt;D&gt;&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The NxDatePicker this date range should connect to</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span><span class="docs-api-input__keyword">
+                        @Input
+                        (<span class="docs-api-input-alias">{ transform: booleanAttribute }</span>) 
+                    </span>
+                </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                disabled: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                displayFormat: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                endDate: 
+                </span>
+                 
+                <span class="docs-api-property__type">ModelSignal&lt;D&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Value of the end date input field</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>startDateAriaLabel</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                endDateAriaLabelInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                groupAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">ModelSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                maxDate: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;D&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The maximum date that can be selected. The date must be same or before the maximum date.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                minDate: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;D&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The minimum date that can be selected. The date must be same or after the minimum date.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                parseFormat: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string | string[]&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                placeholder: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span><span class="docs-api-input__keyword">
+                        @Input
+                        (<span class="docs-api-input-alias">{ transform: booleanAttribute }</span>) 
+                    </span>
+                </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                readonly: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span><span class="docs-api-input__keyword">
+                        @Input
+                        (<span class="docs-api-input-alias">{ transform: booleanAttribute }</span>) 
+                    </span>
+                </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                required: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                startDate: 
+                </span>
+                 
+                <span class="docs-api-property__type">ModelSignal&lt;D&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Value of the start date input field</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>startDateAriaLabel</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                startDateAriaLabelInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                startDateInputWidth: 
+                </span>
+                 
+                <span class="docs-api-property__type">ModelSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The width of the start date input field. This is set dynamically based on the content of the input field.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                strict: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                value: 
+                </span>
+                 
+                <span class="docs-api-property__type">DateRange&lt;D&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The date range value of type @type {DateRange<D>}</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                ariaDescribedBy: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                ariaDescribedByFormfield: 
+                </span>
+                 
+                <span class="docs-api-property__type">WritableSignal&lt;string[]&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The aria-describedby ids that will be set by the formfield</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                controlType?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                elementRef: 
+                </span>
+                 
+                <span class="docs-api-property__type">ElementRef&lt;any&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                empty: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                endDateAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                errorState: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Wether the component has an invalid value</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                focused: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                id: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                ngControl: 
+                </span>
+                 
+                <span class="docs-api-property__type">NgControl</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                onChange: 
+                </span>
+                 
+                <span class="docs-api-property__type">(_: any) =&gt; void</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Callback function that is called when the control&#39;s value changes in the UI.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                onTouched: 
+                </span>
+                 
+                <span class="docs-api-property__type">() =&gt; void</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Callback function that is called when the control&#39;s is touched.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                shouldLabelFloat: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                startDateAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                stateChanges: 
+                </span>
+                 
+                <span class="docs-api-property__type">Subject&lt;void&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>State changes subject to notifiy the Formfield of changes</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                updateOn?: 
+                </span>
+                 
+                <span class="docs-api-property__type">any</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getAriaLabelId(): <span class="docs-api-method-returns-type">string | null</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getValidators(): <span class="docs-api-method-returns-type">ValidatorFn[]</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">handleChange()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">registerOnValidatorChange(
+                            fn:  
+                                <span class="docs-api-property__type">
+                                    () => void
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                fn:
+                <span class="docs-api-method-parameter-type">() => void</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">setAriaLabel(
+                            value:  
+                                <span class="docs-api-property__type">
+                                    string
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                value:
+                <span class="docs-api-method-parameter-type">string</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">setDescribedByIds(
+                            ids:  
+                                <span class="docs-api-property__type">
+                                    string[]
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                ids:
+                <span class="docs-api-method-parameter-type">string[]</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">setReadonly(
+                            value:  
+                                <span class="docs-api-property__type">
+                                    boolean
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                value:
+                <span class="docs-api-method-parameter-type">boolean</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">validate(
+                            control:  
+                                <span class="docs-api-property__type">
+                                    AbstractControl<any, any>
+                                </span>
+                        ): <span class="docs-api-method-returns-type">ValidationErrors | null</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                control:
+                <span class="docs-api-method-parameter-type">AbstractControl<any, any></span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+   
+
+<h4 id="NxDatepickerToggleComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxDatepickerToggleComponent"></span>
+    <code>NxDatepickerToggleComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-datepicker-toggle</span>
+        </code>
+    
+</p><p class="docs-api-directive-selectors">
+<span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxDatepickerToggle</span>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>for</strong> }</span><span class="docs-api-input__keyword">
+                        @Input
+                        (<span class="docs-api-input-alias">'for'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                datepicker: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxDatepickerComponent&lt;D&gt;</span>
             </code>
         </p>
     </td>
@@ -40,10 +833,13 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>disabled</strong> }</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">disabled</span>:
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__name">
+                disabledInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">ModelSignal&lt;boolean&gt;</span>
             </code>
         </p>
     </td>
@@ -55,9 +851,13 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">tabindex</span>:
+                <span class="docs-api-property__name">
+                tabindex: 
+                </span>
+                 
                 <span class="docs-api-property__type">number</span>
             </code>
         </p>
@@ -65,6 +865,22 @@
     <td class="docs-api-property-description">
         <p>Sets the tabindex for the toggle button. Default: 0.</p>
 </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                disabled: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
 </tr>
   
 </table> 
@@ -75,6 +891,16 @@
 <h4 id="NxDatepickerComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxDatepickerComponent"></span>
     <code>NxDatepickerComponent</code></h4><p class="docs-api-class-description"><p>Component responsible for managing the datepicker popup/dialog.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-datepicker</span>
+        </code>
+    
+</p><p class="docs-api-directive-selectors">
+<span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxDatepicker</span>
 </p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
@@ -85,10 +911,13 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>disabled</strong> }</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">disabled</span>:
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__name">
+                disabledInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">ModelSignal&lt;boolean&gt;</span>
             </code>
         </p>
     </td>
@@ -101,9 +930,13 @@ The datepicker is also disabled if the belonging input is readonly.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">opened</span>:
+                <span class="docs-api-property__name">
+                opened: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -116,9 +949,13 @@ The datepicker is also disabled if the belonging input is readonly.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">panelClass</span>:
+                <span class="docs-api-property__name">
+                panelClass: 
+                </span>
+                 
                 <span class="docs-api-property__type">string | string[]</span>
             </code>
         </p>
@@ -131,10 +968,31 @@ The datepicker is also disabled if the belonging input is readonly.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">startAt</span>:
-                <span class="docs-api-property__type">D | null</span>
+                <span class="docs-api-property__name">
+                rangeMode: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                startAt: 
+                </span>
+                 
+                <span class="docs-api-property__type">D</span>
             </code>
         </p>
     </td>
@@ -146,10 +1004,14 @@ The datepicker is also disabled if the belonging input is readonly.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">startView</span>:
-                <span class="docs-api-property__type">'month' | 'year' | 'multi-year'</span>
+                <span class="docs-api-property__name">
+                startView: 
+                </span>
+                 
+                <span class="docs-api-property__type">&quot;month&quot; | &quot;year&quot; | &quot;multi-year&quot;</span>
             </code>
         </p>
     </td>
@@ -160,10 +1022,18 @@ The datepicker is also disabled if the belonging input is readonly.</p>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'closed'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+                <span class="docs-api-output__badge">Output{ alias:  <strong>closed</strong> }</span><span class="docs-api-output__keyword">
+                        @Output
+                        (<span class="docs-api-output-alias">'closed'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">closedStream</span>:
-                <span class="docs-api-property__type">EventEmitter<void></span>
+                <span class="docs-api-property__name">
+                closedStream: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;void&gt;</span>
             </code>
         </p>
     </td>
@@ -175,10 +1045,14 @@ The datepicker is also disabled if the belonging input is readonly.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
-            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+                <span class="docs-api-output__badge">Output</span>
+                    <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">monthSelected</span>:
-                <span class="docs-api-property__type">EventEmitter<D></span>
+                <span class="docs-api-property__name">
+                monthSelected: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;D | DateRange&lt;D&gt;&gt;</span>
             </code>
         </p>
     </td>
@@ -190,10 +1064,18 @@ This doesn&#39;t imply a change on the selected date.</p>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'opened'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+                <span class="docs-api-output__badge">Output{ alias:  <strong>opened</strong> }</span><span class="docs-api-output__keyword">
+                        @Output
+                        (<span class="docs-api-output-alias">'opened'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">openedStream</span>:
-                <span class="docs-api-property__type">EventEmitter<void></span>
+                <span class="docs-api-property__name">
+                openedStream: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;void&gt;</span>
             </code>
         </p>
     </td>
@@ -205,10 +1087,14 @@ This doesn&#39;t imply a change on the selected date.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
-            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+                <span class="docs-api-output__badge">Output</span>
+                    <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">yearSelected</span>:
-                <span class="docs-api-property__type">EventEmitter<D></span>
+                <span class="docs-api-property__name">
+                yearSelected: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;D | DateRange&lt;D&gt;&gt;</span>
             </code>
         </p>
     </td>
@@ -217,10 +1103,104 @@ This doesn&#39;t imply a change on the selected date.</p>
 This doesn&#39;t imply a change on the selected date.</p>
 </td>
 </tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                dateFilter: 
+                </span>
+                 
+                <span class="docs-api-property__type">(date: D) =&gt; boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                disabled: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                isRange: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                selectedChanged: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;any&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Event emitter for selection changes.</p>
+<p>Emits <D> if the datepicker is in single date selection mode.
+Emits DateRange<D> if the datepicker is in range selection mode.
+Never emits any other type. <code>any</code> is used here to avoid breaking changes and will be removed in Angular NDBX v20 major release.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                selectedComputed: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;D | DateRange&lt;D&gt;&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
   
 </table> 
 
+<h5 class="docs-api-method-header">Methods</h5>
  
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getStartAtDate(): <span class="docs-api-method-returns-type">D</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
   <h3 id="directives" class="docs-header-link docs-api-h3">
         <span header-link="directives"></span>
         Directives
@@ -230,6 +1210,16 @@ This doesn&#39;t imply a change on the selected date.</p>
 <h4 id="NxDatefieldDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxDatefieldDirective"></span>
     <code>NxDatefieldDirective</code></h4><p class="docs-api-class-description"><p>Directive used to provide date processing functionality to an input.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">input[nxDatefield]</span>
+        </code>
+    
+</p><p class="docs-api-directive-selectors">
+<span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxDatefield</span>
 </p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
@@ -240,10 +1230,14 @@ This doesn&#39;t imply a change on the selected date.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">datefieldFilter</span>:
-                <span class="docs-api-property__type">(date: D) => boolean</span>
+                <span class="docs-api-property__name">
+                datefieldFilter: 
+                </span>
+                 
+                <span class="docs-api-property__type">(date: D) =&gt; boolean</span>
             </code>
         </p>
     </td>
@@ -255,10 +1249,14 @@ This doesn&#39;t imply a change on the selected date.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">datepicker</span>:
-                <span class="docs-api-property__type">NxDatepickerComponent<D></span>
+                <span class="docs-api-property__name">
+                datepicker: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxDatepickerComponent&lt;D&gt;</span>
             </code>
         </p>
     </td>
@@ -270,9 +1268,13 @@ This doesn&#39;t imply a change on the selected date.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">disabled</span>:
+                <span class="docs-api-property__name">
+                disabled: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -285,9 +1287,13 @@ This doesn&#39;t imply a change on the selected date.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">displayFormat</span>:
+                <span class="docs-api-property__name">
+                displayFormat: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -300,10 +1306,14 @@ This doesn&#39;t imply a change on the selected date.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">max</span>:
-                <span class="docs-api-property__type">D | null</span>
+                <span class="docs-api-property__name">
+                max: 
+                </span>
+                 
+                <span class="docs-api-property__type">D</span>
             </code>
         </p>
     </td>
@@ -315,10 +1325,14 @@ This doesn&#39;t imply a change on the selected date.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">min</span>:
-                <span class="docs-api-property__type">D | null</span>
+                <span class="docs-api-property__name">
+                min: 
+                </span>
+                 
+                <span class="docs-api-property__type">D</span>
             </code>
         </p>
     </td>
@@ -330,9 +1344,13 @@ This doesn&#39;t imply a change on the selected date.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">parseFormat</span>:
+                <span class="docs-api-property__name">
+                parseFormat: 
+                </span>
+                 
                 <span class="docs-api-property__type">string | string[]</span>
             </code>
         </p>
@@ -346,9 +1364,31 @@ This doesn&#39;t imply a change on the selected date.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">strict</span>:
+                <span class="docs-api-property__name">
+                readonly: 
+                </span>
+                 
+                <span class="docs-api-property__type">ModelSignal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the datefield is readonly.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                strict: 
+                </span>
+                 
                 <span class="docs-api-property__type">any</span>
             </code>
         </p>
@@ -362,10 +1402,14 @@ This doesn&#39;t imply a change on the selected date.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">value</span>:
-                <span class="docs-api-property__type">D | null</span>
+                <span class="docs-api-property__name">
+                value: 
+                </span>
+                 
+                <span class="docs-api-property__type">D</span>
             </code>
         </p>
     </td>
@@ -377,10 +1421,14 @@ This doesn&#39;t imply a change on the selected date.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
-            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+                <span class="docs-api-output__badge">Output</span>
+                    <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">dateChange</span>:
-                <span class="docs-api-property__type">EventEmitter<NxDatepickerInputEvent<D>></span>
+                <span class="docs-api-property__name">
+                dateChange: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;NxDatepickerInputEvent&lt;D&gt;&gt;</span>
             </code>
         </p>
     </td>
@@ -392,29 +1440,19 @@ This doesn&#39;t imply a change on the selected date.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
-            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+                <span class="docs-api-output__badge">Output</span>
+                    <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">dateInput</span>:
-                <span class="docs-api-property__type">EventEmitter<NxDatepickerInputEvent<D>></span>
+                <span class="docs-api-property__name">
+                dateInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;NxDatepickerInputEvent&lt;D&gt;&gt;</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
         <p>Emits when an <code>input</code> event is fired on this <code>&lt;input&gt;</code>.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">readonly</span>:
-                <span class="docs-api-property__type">boolean</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Whether the datefield is readonly.</p>
 </td>
 </tr>
   
@@ -436,10 +1474,16 @@ This doesn&#39;t imply a change on the selected date.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">setReadonly(value: <span class="docs-api-property__type">boolean</span>)</span>
+            <span class="docs-api-method-name">setReadonly(
+                            value:  
+                                <span class="docs-api-property__type">
+                                    boolean
+                                </span>
+                        )</span>
         </code>
     </div>
-    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+    <div class="docs-api-method-description"><p>Whether the datefield is readonly.</p>
+</div><div class="docs-api-method-params">
         <p class="docs-api-method-param-title">Parameters:</p>
         
         <div class="docs-api-parameter-container">
@@ -456,6 +1500,13 @@ This doesn&#39;t imply a change on the selected date.</p>
 <h4 id="NxDatepickerToggleIconComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxDatepickerToggleIconComponent"></span>
     <code>NxDatepickerToggleIconComponent</code></h4><p class="docs-api-class-description"><p>Can be used to override the icon of a <code>nxDatepickerToggle</code>.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">[nxDatepickerToggleIcon]</span>
+        </code>
+    
 </p> 
 
  
@@ -479,8 +1530,11 @@ This doesn&#39;t imply a change on the selected date.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">locale</span>:
-                <span class="docs-api-property__type">'de-DE'</span>
+                <span class="docs-api-property__name">
+                locale: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -492,8 +1546,11 @@ This doesn&#39;t imply a change on the selected date.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">localeChanges</span>:
-                <span class="docs-api-property__type">Observable<string></span>
+                <span class="docs-api-property__name">
+                localeChanges: 
+                </span>
+                 
+                <span class="docs-api-property__type">Observable&lt;string&gt;</span>
             </code>
         </p>
     </td>
@@ -510,7 +1567,17 @@ This doesn&#39;t imply a change on the selected date.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">addCalendarDays(date: <span class="docs-api-property__type">D</span>,days: <span class="docs-api-property__type">number</span>): <span class="docs-api-method-returns-type">D</span></span>
+            <span class="docs-api-method-name">addCalendarDays(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>,
+                        
+                            days:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        ): <span class="docs-api-method-returns-type">D</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Adds the given number of days to the date.</p>
@@ -543,7 +1610,17 @@ This doesn&#39;t imply a change on the selected date.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">addCalendarMonths(date: <span class="docs-api-property__type">D</span>,months: <span class="docs-api-property__type">number</span>): <span class="docs-api-method-returns-type">D</span></span>
+            <span class="docs-api-method-name">addCalendarMonths(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>,
+                        
+                            months:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        ): <span class="docs-api-method-returns-type">D</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Adds the given number of months to the date.</p>
@@ -576,7 +1653,17 @@ This doesn&#39;t imply a change on the selected date.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">addCalendarYears(date: <span class="docs-api-property__type">D</span>,years: <span class="docs-api-property__type">number</span>): <span class="docs-api-method-returns-type">D</span></span>
+            <span class="docs-api-method-name">addCalendarYears(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>,
+                        
+                            years:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        ): <span class="docs-api-method-returns-type">D</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Adds the given number of years to the date.</p>
@@ -609,7 +1696,22 @@ This doesn&#39;t imply a change on the selected date.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">clampDate(date: <span class="docs-api-property__type">D</span>,min: <span class="docs-api-property__type">D</span>,max: <span class="docs-api-property__type">D</span>): <span class="docs-api-method-returns-type">D</span></span>
+            <span class="docs-api-method-name">clampDate(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>,
+                        
+                            min?:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>,
+                        
+                            max?:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>
+                        ): <span class="docs-api-method-returns-type">D</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Clamp the given date between min and max dates.</p>
@@ -651,7 +1753,12 @@ otherwise <code>date</code>.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">clone(date: <span class="docs-api-property__type">D</span>): <span class="docs-api-method-returns-type">D</span></span>
+            <span class="docs-api-method-name">clone(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>
+                        ): <span class="docs-api-method-returns-type">D</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Clones the given date.</p>
@@ -676,7 +1783,17 @@ otherwise <code>date</code>.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">compareDate(first: <span class="docs-api-property__type">D</span>,second: <span class="docs-api-property__type">D</span>): <span class="docs-api-method-returns-type">number</span></span>
+            <span class="docs-api-method-name">compareDate(
+                            first:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>,
+                        
+                            second:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>
+                        ): <span class="docs-api-method-returns-type">number</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Compares two dates.</p>
@@ -709,7 +1826,22 @@ otherwise <code>date</code>.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">createDate(year: <span class="docs-api-property__type">number</span>,month: <span class="docs-api-property__type">number</span>,date: <span class="docs-api-property__type">number</span>): <span class="docs-api-method-returns-type">D</span></span>
+            <span class="docs-api-method-name">createDate(
+                            year:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>,
+                        
+                            month:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>,
+                        
+                            date:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        ): <span class="docs-api-method-returns-type">D</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Creates a date with the given year, month, and date. Does not allow over/under-flow of the
@@ -751,7 +1883,12 @@ month and date.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">deserialize(value: <span class="docs-api-property__type">any</span>): <span class="docs-api-method-returns-type">D | null</span></span>
+            <span class="docs-api-method-name">deserialize(
+                            value:  
+                                <span class="docs-api-property__type">
+                                    any
+                                </span>
+                        ): <span class="docs-api-method-returns-type">D | null</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Attempts to deserialize a value to a valid date object. This is different from parsing in that
@@ -782,7 +1919,17 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">format(date: <span class="docs-api-property__type">D</span>,displayFormat: <span class="docs-api-property__type">any</span>): <span class="docs-api-method-returns-type">string</span></span>
+            <span class="docs-api-method-name">format(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>,
+                        
+                            displayFormat:  
+                                <span class="docs-api-property__type">
+                                    any
+                                </span>
+                        ): <span class="docs-api-method-returns-type">string</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Formats a date as a string according to the given format.</p>
@@ -815,7 +1962,12 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getDate(date: <span class="docs-api-property__type">D</span>): <span class="docs-api-method-returns-type">number</span></span>
+            <span class="docs-api-method-name">getDate(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>
+                        ): <span class="docs-api-method-returns-type">number</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets the date of the month component of the given date.</p>
@@ -854,7 +2006,12 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getDayOfWeek(date: <span class="docs-api-property__type">D</span>): <span class="docs-api-method-returns-type">number</span></span>
+            <span class="docs-api-method-name">getDayOfWeek(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>
+                        ): <span class="docs-api-method-returns-type">number</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets the day of the week component of the given date.</p>
@@ -879,7 +2036,12 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getDayOfWeekNames(style: <span class="docs-api-property__type">"long" | "short" | "narrow"</span>): <span class="docs-api-method-returns-type">string[]</span></span>
+            <span class="docs-api-method-name">getDayOfWeekNames(
+                            style:  
+                                <span class="docs-api-property__type">
+                                    "long" | "short" | "narrow"
+                                </span>
+                        ): <span class="docs-api-method-returns-type">string[]</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets a list of names for the days of the week.</p>
@@ -928,7 +2090,12 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getMonth(date: <span class="docs-api-property__type">D</span>): <span class="docs-api-method-returns-type">number</span></span>
+            <span class="docs-api-method-name">getMonth(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>
+                        ): <span class="docs-api-method-returns-type">number</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets the month component of the given date.</p>
@@ -953,7 +2120,12 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getMonthNames(style: <span class="docs-api-property__type">"long" | "short" | "narrow"</span>): <span class="docs-api-method-returns-type">string[]</span></span>
+            <span class="docs-api-method-name">getMonthNames(
+                            style:  
+                                <span class="docs-api-property__type">
+                                    "long" | "short" | "narrow"
+                                </span>
+                        ): <span class="docs-api-method-returns-type">string[]</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets a list of names for the months.</p>
@@ -978,7 +2150,12 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getNumDaysInMonth(date: <span class="docs-api-property__type">D</span>): <span class="docs-api-method-returns-type">number</span></span>
+            <span class="docs-api-method-name">getNumDaysInMonth(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>
+                        ): <span class="docs-api-method-returns-type">number</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets the number of days in the month of the given date.</p>
@@ -1003,7 +2180,12 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getYear(date: <span class="docs-api-property__type">D</span>): <span class="docs-api-method-returns-type">number</span></span>
+            <span class="docs-api-method-name">getYear(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>
+                        ): <span class="docs-api-method-returns-type">number</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets the year component of the given date.</p>
@@ -1028,7 +2210,12 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getYearName(date: <span class="docs-api-property__type">D</span>): <span class="docs-api-method-returns-type">string</span></span>
+            <span class="docs-api-method-name">getYearName(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>
+                        ): <span class="docs-api-method-returns-type">string</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets the name for the year of the given date.</p>
@@ -1053,7 +2240,9 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">invalid(date): <span class="docs-api-method-returns-type">D</span></span>
+            <span class="docs-api-method-name">invalid(
+                            date
+                        ): <span class="docs-api-method-returns-type">D</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Checks whether the given date is valid.</p>
@@ -1078,7 +2267,12 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">isDateInstance(obj: <span class="docs-api-property__type">any</span>): <span class="docs-api-method-returns-type">boolean</span></span>
+            <span class="docs-api-method-name">isDateInstance(
+                            obj:  
+                                <span class="docs-api-property__type">
+                                    any
+                                </span>
+                        ): <span class="docs-api-method-returns-type">boolean</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Checks whether the given object is considered a date instance by this DateAdapter.</p>
@@ -1103,7 +2297,12 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">isValid(date: <span class="docs-api-property__type">D</span>): <span class="docs-api-method-returns-type">boolean</span></span>
+            <span class="docs-api-method-name">isValid(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>
+                        ): <span class="docs-api-method-returns-type">boolean</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Checks whether the given date is valid.</p>
@@ -1128,7 +2327,22 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">parse(value: <span class="docs-api-property__type">any</span>,format: <span class="docs-api-property__type">string | string[]</span>,strict: <span class="docs-api-property__type">boolean</span>): <span class="docs-api-method-returns-type">D | null</span></span>
+            <span class="docs-api-method-name">parse(
+                            value:  
+                                <span class="docs-api-property__type">
+                                    any
+                                </span>,
+                        
+                            format:  
+                                <span class="docs-api-property__type">
+                                    string | string[]
+                                </span>,
+                        
+                            strict:  
+                                <span class="docs-api-property__type">
+                                    boolean
+                                </span>
+                        ): <span class="docs-api-method-returns-type">D | null</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Parses a date from a user-provided value.</p>
@@ -1169,7 +2383,17 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">sameDate(first: <span class="docs-api-property__type">D</span>,second: <span class="docs-api-property__type">D</span>): <span class="docs-api-method-returns-type">boolean</span></span>
+            <span class="docs-api-method-name">sameDate(
+                            first:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>,
+                        
+                            second:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>
+                        ): <span class="docs-api-method-returns-type">boolean</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Checks if two dates are equal.</p>
@@ -1202,7 +2426,12 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">setLocale(locale: <span class="docs-api-property__type">string</span>)</span>
+            <span class="docs-api-method-name">setLocale(
+                            locale:  
+                                <span class="docs-api-property__type">
+                                    string
+                                </span>
+                        )</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Sets the locale used for all dates.</p>
@@ -1223,7 +2452,12 @@ to also deserialize the format used by your backend.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">toIso8601(date: <span class="docs-api-property__type">D</span>): <span class="docs-api-method-returns-type">string</span></span>
+            <span class="docs-api-method-name">toIso8601(
+                            date:  
+                                <span class="docs-api-property__type">
+                                    D
+                                </span>
+                        ): <span class="docs-api-method-returns-type">string</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets the RFC 3339 compatible string (<a href="https://tools.ietf.org/html/rfc3339">https://tools.ietf.org/html/rfc3339</a>) for the given date.
@@ -1262,10 +2496,118 @@ such as the <code>min</code> or <code>max</code> attribute of an <code>&lt;input
    
    
 
+<h4 id="NxDateRangeConnector" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxDateRangeConnector"></span>
+    <code>NxDateRangeConnector</code></h4> 
+
+ 
+   
+
+<h4 id="DateRange" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="DateRange"></span>
+    <code>DateRange</code></h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                end: 
+                </span>
+                 
+                <span class="docs-api-property__type">T</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                start: 
+                </span>
+                 
+                <span class="docs-api-property__type">T</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table> 
+
+ 
+   
+
+<h4 id="NxDateRangeIntl" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxDateRangeIntl"></span>
+    <code>NxDateRangeIntl</code></h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                endDateAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">WritableSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>ARIA label for the end date input field (used by screen readers)</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                startDateAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">WritableSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>ARIA label for the start date input field (used by screen readers)</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
+   
+
 <h4 id="NxDateValidators" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxDateValidators"></span>
     <code>NxDateValidators</code></h4><p class="docs-api-class-description"><p>Provides a set of date validators that can be used by form controls.</p>
 </p> 
+
+ 
+   
+
+<h4 id="NxDateRangeValidators" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxDateRangeValidators"></span>
+    <code>NxDateRangeValidators</code></h4> 
 
  
    
@@ -1286,8 +2628,11 @@ calendar popup. For consistency, we always use NxDatepickerInputEvent instead.</
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">target</span>:
-                <span class="docs-api-property__type">NxDatefieldDirective<D></span>
+                <span class="docs-api-property__name">
+                target: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxDatefieldDirective&lt;D&gt;</span>
             </code>
         </p>
     </td>
@@ -1300,7 +2645,10 @@ calendar popup. For consistency, we always use NxDatepickerInputEvent instead.</
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">targetElement</span>:
+                <span class="docs-api-property__name">
+                targetElement: 
+                </span>
+                 
                 <span class="docs-api-property__type">HTMLElement</span>
             </code>
         </p>
@@ -1314,8 +2662,11 @@ calendar popup. For consistency, we always use NxDatepickerInputEvent instead.</
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">value</span>:
-                <span class="docs-api-property__type">D | null</span>
+                <span class="docs-api-property__name">
+                value: 
+                </span>
+                 
+                <span class="docs-api-property__type">D</span>
             </code>
         </p>
     </td>
@@ -1343,8 +2694,11 @@ calendar popup. For consistency, we always use NxDatepickerInputEvent instead.</
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">calendarLabel</span>:
-                <span class="docs-api-property__type">'Calendar'</span>
+                <span class="docs-api-property__name">
+                calendarLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -1357,8 +2711,11 @@ calendar popup. For consistency, we always use NxDatepickerInputEvent instead.</
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">changes</span>:
-                <span class="docs-api-property__type">Subject<void></span>
+                <span class="docs-api-property__name">
+                changes: 
+                </span>
+                 
+                <span class="docs-api-property__type">Subject&lt;void&gt;</span>
             </code>
         </p>
     </td>
@@ -1372,8 +2729,11 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">closeIconLabel</span>:
-                <span class="docs-api-property__type">'Close calendar'</span>
+                <span class="docs-api-property__name">
+                closeIconLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -1386,8 +2746,28 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">nextMonthLabel</span>:
-                <span class="docs-api-property__type">'Next month'</span>
+                <span class="docs-api-property__name">
+                dateRangeSelectionCompleteAnnouncement: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Announcement message after date range selection is completed (used by screen readers)</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                nextMonthLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -1400,8 +2780,11 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">nextMultiYearLabel</span>:
-                <span class="docs-api-property__type">'Next 20 years'</span>
+                <span class="docs-api-property__name">
+                nextMultiYearLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -1414,8 +2797,11 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">nextYearLabel</span>:
-                <span class="docs-api-property__type">'Next year'</span>
+                <span class="docs-api-property__name">
+                nextYearLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -1428,8 +2814,11 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">openCalendarLabel</span>:
-                <span class="docs-api-property__type">'Open calendar'</span>
+                <span class="docs-api-property__name">
+                openCalendarLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -1442,8 +2831,11 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">prevMonthLabel</span>:
-                <span class="docs-api-property__type">'Previous month'</span>
+                <span class="docs-api-property__name">
+                prevMonthLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -1456,8 +2848,11 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">prevMultiYearLabel</span>:
-                <span class="docs-api-property__type">'Previous 20 years'</span>
+                <span class="docs-api-property__name">
+                prevMultiYearLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -1470,8 +2865,11 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">prevYearLabel</span>:
-                <span class="docs-api-property__type">'Previous year'</span>
+                <span class="docs-api-property__name">
+                prevYearLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -1484,8 +2882,28 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">switchToMonthViewLabel</span>:
-                <span class="docs-api-property__type">'Choose date'</span>
+                <span class="docs-api-property__name">
+                startDateSelectedAnnouncement: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Announcement message after start date was selected (used by screen readers)</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                switchToMonthViewLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -1498,8 +2916,11 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">switchToMultiYearViewLabel</span>:
-                <span class="docs-api-property__type">'Choose month and year'</span>
+                <span class="docs-api-property__name">
+                switchToMultiYearViewLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -1526,8 +2947,11 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">changes</span>?:
-                <span class="docs-api-property__type">Subject<void></span>
+                <span class="docs-api-property__name">
+                changes?: 
+                </span>
+                 
+                <span class="docs-api-property__type">Subject&lt;void&gt;</span>
             </code>
         </p>
     </td>
@@ -1541,7 +2965,10 @@ components if the default options have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">toggleIconTabindex</span>?:
+                <span class="docs-api-property__name">
+                toggleIconTabindex?: 
+                </span>
+                 
                 <span class="docs-api-property__type">number</span>
             </code>
         </p>

@@ -1,0 +1,10 @@
+.toggle-item {
+    padding-bottom: 16px;
+    text-align: center;
+}
+
+.grid-wrapper {
+    display: grid;
+    gap: 64px;
+    grid-template-columns: auto auto auto;
+}

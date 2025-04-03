@@ -74,13 +74,32 @@
 <h4 id="date-filter" tabindex="-1" class="docs-markdown--h4">Date Filter</h4>
 <p class="docs-markdown--p">Instead of using min/max you can use <code>nxDatefieldFilter</code> to create your own set of valid dates. This example only allows the 6th day of each month. The datepicker disables all invalid dates. Validation will give you an error in the field <code>nxDatefieldFilter</code>.</p>
 <div nx-docs-example="datefield-filter" config="{}">exampleID: datefield-filter</div>
-<h4 id="date-range" tabindex="-1" class="docs-markdown--h4">Date Range</h4>
-<p class="docs-markdown--p">To create a date range, you can open the datepicker for the end date automatically when a start date is selected.</p>
-<div nx-docs-example="datefield-range" config="{}">exampleID: datefield-range</div>
 <h4 id="reactive-form" tabindex="-1" class="docs-markdown--h4">Reactive form</h4>
 <div nx-docs-example="datefield-reactive" config="{}">exampleID: datefield-reactive</div>
 <h4 id="readonly" tabindex="-1" class="docs-markdown--h4">Readonly</h4>
 <div nx-docs-example="datefield-readonly" config="{}">exampleID: datefield-readonly</div>
+<h3 id="date-range" tabindex="-1" class="docs-markdown--h3">Date Range</h3>
+<h4 id="plain-and-with-datepicker" tabindex="-1" class="docs-markdown--h4">Plain and with Datepicker</h4>
+<p class="docs-markdown--p">To create a date range, you can open the datepicker for the end date automatically when a start date is selected.</p>
+<div nx-docs-example="datefield-range" config="{}">exampleID: datefield-range</div>
+<h4 id="date-range-validation" tabindex="-1" class="docs-markdown--h4">Date Range validation</h4>
+<p class="docs-markdown--p">It's possible to validate date ranges. As default the component will return</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><code>nxDateRangeInvalid</code> if the start date is after the end date</li>
+<li class="docs-markdown--li"><code>nxDateRangeIncomplete</code> if the date range is set only partially</li>
+</ul>
+<p class="docs-markdown--p">additionally the following validations can be configured</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><code>min</code> will check if the start date is &gt;= <code>min</code> date and will return <code>nxDatefieldMin</code> if does not match</li>
+<li class="docs-markdown--li"><code>max</code> will check if the start date is &lt;= <code>max</code> date and will return <code>nxDatefieldMax</code> if does not match</li>
+<li class="docs-markdown--li"><code>filter</code> will check if the start and and date matches the filter and will return <code>nxDateRangeStartFilter</code> and <code>nxDateRangeEndFilter</code> respectively</li>
+<li class="docs-markdown--li"><code>required</code> will check if a complete value is present, will return a <code>required</code> validation error otherwise</li>
+</ul>
+<div nx-docs-example="datefield-range-validation" config="{}">exampleID: datefield-range-validation</div>
+<h4 id="range-parsing-%26-formatting" tabindex="-1" class="docs-markdown--h4">Range Parsing &amp; Formatting</h4>
+<p class="docs-markdown--p">You can make use of same functionality as with the regular <a href="documentation/datefield/overview#parsing-%2526-formatting">Datefield parsing &amp; formatting</a>.
+This example will except and parse inputs of <code>MM/DD/YYYY | MM--DD--&gt;YYYY | MMDDYYY | 'MMMM DD, YYYY'</code>. So <i>03032020</i> is a valid input.</p>
+<div nx-docs-example="datefield-range-format" config="{}">exampleID: datefield-range-format</div>
 <h3 id="parsing-%26-formatting" tabindex="-1" class="docs-markdown--h3">Parsing &amp; Formatting</h3>
 <p class="docs-markdown--p">Both parsing and formatting depend on the capabilities of the chosen DateAdapter. Every date adapter brings it's own defaults so you don't have to set anything by default. To do so anyway you inject the necessary patterns through the injection token <code>NX_DATE_FORMATS</code>:</p>
 <div nx-docs-example="datefield-format-injection" config="{}">exampleID: datefield-format-injection</div>

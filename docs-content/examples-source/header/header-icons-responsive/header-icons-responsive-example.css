@@ -1,0 +1,10 @@
+figure {
+    display: flex;
+    align-items: center;
+}
+
+:host {
+    ::ng-deep .nx-menu__wrapper {
+        position: static !important;
+    }
+}

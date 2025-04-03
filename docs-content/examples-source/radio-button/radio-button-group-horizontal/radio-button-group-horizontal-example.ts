@@ -24,4 +24,14 @@ import {
         NxRadioComponent,
     ],
 })
-export class RadioButtonGroupHorizontalExampleComponent {}
+export class RadioButtonGroupHorizontalExampleComponent {
+    data = [
+        'Espresso',
+        'Americano',
+        'Caramel Macchiato',
+        'Latte',
+        'Nitro Cold Brew',
+        'Iced Hazelnut Coffee',
+        'Mocha',
+    ];
+}

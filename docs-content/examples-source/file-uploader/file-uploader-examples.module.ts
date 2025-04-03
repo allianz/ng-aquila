@@ -11,6 +11,7 @@ import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { FileUploaderAutoExampleComponent } from './file-uploader-auto/file-uploader-auto-example';
 import { FileUploaderBasicExampleComponent } from './file-uploader-basic/file-uploader-basic-example';
+import { FileUploaderCategoriesExampleComponent } from './file-uploader-categories/file-uploader-categories-example';
 import { FileUploaderCustomItemExampleComponent } from './file-uploader-custom-item/file-uploader-custom-item-example';
 import { FileUploadernoBlockingValidatorsExampleComponent } from './file-uploader-disable-common-validators/file-uploader-disable-common-validators-example';
 import { FileUploaderDropZoneExampleComponent } from './file-uploader-drop-zone/file-uploader-drop-zone-example';
@@ -43,6 +44,7 @@ const EXAMPLES = [
     FileUploaderExpertExampleComponent,
     FileUploaderStrictTypeValidationExampleComponent,
     FileUploadernoBlockingValidatorsExampleComponent,
+    FileUploaderCategoriesExampleComponent,
 ];
 
 @NgModule({
@@ -86,6 +88,7 @@ export class FileExamplesModule {
                 FileUploaderStrictTypeValidationExampleComponent,
             'file-uploader-disable-common-validators':
                 FileUploadernoBlockingValidatorsExampleComponent,
+            'file-uploader-categories': FileUploaderCategoriesExampleComponent,
         };
     }
 }

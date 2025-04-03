@@ -1,0 +1,88 @@
+<header nx-header>
+    <nx-header-row>
+        <nx-header-brand>
+            <nx-link>
+                <a href="#">
+                    <figure nxFigure>
+                        <img
+                            src="assets/logos/aposin_logo.svg"
+                            alt="Brand Logo"
+                            role="none"
+                        />
+                    </figure>
+                    <span class="logo-text">AQUILA</span>
+                </a>
+            </nx-link>
+        </nx-header-brand>
+
+        @if (viewType === 'desktop'){
+        <nx-header-navigation>
+            @for (menu of menuData; track menu; let i = $index) {
+            <nx-header-navigation-item>
+                <a
+                    routerLink="./"
+                    [routerLinkActiveOptions]="{exact: true}"
+                    [queryParams]="i === 0 ? null: menu.query"
+                    routerLinkActive="is-active"
+                    nxHeaderLink
+                    >{{menu.label}}</a
+                >
+            </nx-header-navigation-item>
+            }
+        </nx-header-navigation>
+        }
+        <nx-header-actions>
+            <button nxPlainButton aria-label="open search bar" type="button">
+                <nx-icon name="search" aria-hidden="true"></nx-icon>
+            </button>
+            @if (viewType === 'mobile'){
+            <button
+                nxPlainButton
+                aria-label="open menu"
+                type="button"
+                class="nx-margin-left-s"
+                (click)="showSidebar = !showSidebar"
+            >
+                <nx-icon name="bars" aria-hidden="true"></nx-icon>
+            </button>
+            }
+        </nx-header-actions>
+    </nx-header-row>
+</header>
+
+@if(showSidebar) {
+<div class="content-wrapper">
+    <nx-sidebar
+        #sidebar
+        class="sidebar-wrapper"
+        [ngClass]="{'full-width': viewType=== 'mobile'}"
+    >
+        @if (viewType === 'tablet' || viewType === 'mobile') { @for (menu of
+        menuData; track menu) {
+        <a
+            nxAction
+            routerLink="./"
+            [queryParams]="menu.query"
+            routerLinkActive="is-selected"
+        >
+            {{menu.label}}
+        </a>
+        } } @for (action of actionData; track action) {
+        <a
+            nxAction
+            routerLink="./"
+            [queryParams]="action.query"
+            routerLinkActive="is-selected"
+        >
+            <nx-icon
+                nxActionIcon
+                [name]="action.icon"
+                aria-hidden="true"
+            ></nx-icon>
+            {{action.label}}
+        </a>
+        }
+    </nx-sidebar>
+</div>
+
+}

@@ -16,7 +16,14 @@
 
 <h4 id="NxTagGroupComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxTagGroupComponent"></span>
-    <code>NxTagGroupComponent</code></h4><h5 class="docs-api-method-header">Properties</h5>
+    <code>NxTagGroupComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-tag-group</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -25,23 +32,14 @@
      
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>disabled</strong> }</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">disabled</span>:
-                <span class="docs-api-property__type">Signal<boolean></span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">disabledInput</span>:
-                <span class="docs-api-property__type">input(false, { transform: booleanAttribute, alias: 'disabled' })</span>
+                <span class="docs-api-property__name">
+                disabledInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
             </code>
         </p>
     </td>
@@ -52,10 +50,85 @@
    
 
 <tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                readonly: 
+                </span>
+                 
+                <span class="docs-api-property__type">ModelSignal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the tags should be readonly.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                removable: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the tags should be removable.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                type: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxTagType&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Switches the appearance of the tags.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                value: 
+                </span>
+                 
+                <span class="docs-api-property__type">ModelSignal&lt;any[]&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The value of the tag group, can be used as alternative to ngModel or reactive forms.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">name</span>:
-                <span class="docs-api-property__type">`nx-tag-group-${groupId++}`</span>
+                <span class="docs-api-property__name">
+                disabled: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
             </code>
         </p>
     </td>
@@ -67,56 +140,16 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">readonly</span>:
-                <span class="docs-api-property__type">model(false)</span>
+                <span class="docs-api-property__name">
+                name: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Whether the tags should be readonly.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">removable</span>:
-                <span class="docs-api-property__type">input(false, { transform: booleanAttribute })</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Whether the tags should be removable.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">type</span>:
-                <span class="docs-api-property__type">input<NxTagType>('tag')</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Switches the appearance of the tags.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">value</span>:
-                <span class="docs-api-property__type">ModelSignal<any[]></span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>The value of the tag group, can be used as alternative to ngModel or reactive forms.</p>
-</td>
+        </td>
 </tr>
   
 </table> 
@@ -127,7 +160,12 @@
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">addValue(value: <span class="docs-api-property__type">any</span>)</span>
+            <span class="docs-api-method-name">addValue(
+                            value:  
+                                <span class="docs-api-property__type">
+                                    any
+                                </span>
+                        )</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div><div class="docs-api-method-params">
@@ -146,7 +184,12 @@
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">onBlur(event: <span class="docs-api-property__type">FocusEvent</span>)</span>
+            <span class="docs-api-method-name">onBlur(
+                            event:  
+                                <span class="docs-api-property__type">
+                                    FocusEvent
+                                </span>
+                        )</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div><div class="docs-api-method-params">
@@ -165,7 +208,12 @@
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">removeValue(value: <span class="docs-api-property__type">any</span>)</span>
+            <span class="docs-api-method-name">removeValue(
+                            value:  
+                                <span class="docs-api-property__type">
+                                    any
+                                </span>
+                        )</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div><div class="docs-api-method-params">
@@ -184,7 +232,12 @@
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">setReadonly(value: <span class="docs-api-property__type">boolean</span>)</span>
+            <span class="docs-api-method-name">setReadonly(
+                            value:  
+                                <span class="docs-api-property__type">
+                                    boolean
+                                </span>
+                        )</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div><div class="docs-api-method-params">
@@ -203,7 +256,14 @@
 
 <h4 id="NxTagComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxTagComponent"></span>
-    <code>NxTagComponent</code></h4><h5 class="docs-api-method-header">Properties</h5>
+    <code>NxTagComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-tag</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -212,38 +272,14 @@
      
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
-            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">removed</span>:
-                <span class="docs-api-property__type">EventEmitter<any></span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>An event dispatched when the tag should be deleted.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">canHover</span>:
-                <span class="docs-api-property__type">computed(() => !this.disabled() && !this.readonly() && !this.removable())</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">deleteAriaLabel</span>:
-                <span class="docs-api-property__type">input('')</span>
+                <span class="docs-api-property__name">
+                deleteAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
             </code>
         </p>
     </td>
@@ -254,23 +290,14 @@
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>disabled</strong> }</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">disabled</span>:
-                <span class="docs-api-property__type">computed(() => this.tagGroup?.disabled() || this.disabledInput())</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">disabledInput</span>:
-                <span class="docs-api-property__type">input(false, { transform: booleanAttribute, alias: 'disabled' })</span>
+                <span class="docs-api-property__name">
+                disabledInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
             </code>
         </p>
     </td>
@@ -281,49 +308,14 @@
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>readonly</strong> }</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">id</span>:
-                <span class="docs-api-property__type">`nx-tag-${tagId++}`</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">intl</span>:
-                <span class="docs-api-property__type">inject(NxTagIntl)</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">readonly</span>:
-                <span class="docs-api-property__type">computed(() => this.tagGroup?.readonly() || this.readonlyInput())</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">readonlyInput</span>:
-                <span class="docs-api-property__type">model(false, { alias: 'readonly' })</span>
+                <span class="docs-api-property__name">
+                readonlyInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">ModelSignal&lt;boolean&gt;</span>
             </code>
         </p>
     </td>
@@ -334,23 +326,14 @@
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>removable</strong> }</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">removable</span>:
-                <span class="docs-api-property__type">computed(() => this.tagGroup?.removable() || this.removableInput())</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">removableInput</span>:
-                <span class="docs-api-property__type">input(false, { alias: 'removable', transform: booleanAttribute })</span>
+                <span class="docs-api-property__name">
+                removableInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
             </code>
         </p>
     </td>
@@ -361,88 +344,14 @@
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>type</strong> }</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">role</span>:
-                <span class="docs-api-property__type">computed(() => {
-    if (this.removable()) {
-        return 'group';
-    }
-    if (this.tagList) {
-        return 'button';
-    }
-    return null;
-})</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">selected</span>:
-                <span class="docs-api-property__type">computed(() => {
-    if (this.tagGroup) {
-        return this.tagGroup.value().includes(this.value());
-    }
-    return false;
-})</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">tagGroup</span>:
-                <span class="docs-api-property__type">inject(NxTagGroupComponent, { optional: true })</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">tagList</span>:
-                <span class="docs-api-property__type">inject(TAGLIST, { optional: true })</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">type</span>:
-                <span class="docs-api-property__type">computed(() => this.tagGroup?.type() || this.typeInput())</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">typeInput</span>:
-                <span class="docs-api-property__type">input<NxTagType>('tag', { alias: 'type' })</span>
+                <span class="docs-api-property__name">
+                typeInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxTagType&gt;</span>
             </code>
         </p>
     </td>
@@ -453,10 +362,14 @@
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">value</span>:
-                <span class="docs-api-property__type">input<any>('')</span>
+                <span class="docs-api-property__name">
+                value: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;any&gt;</span>
             </code>
         </p>
     </td>
@@ -469,29 +382,232 @@ If no content projection is used this will be used as the visual label.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
-            <span class="docs-api-output__keyword">@Output</span>()</div><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
+                <span class="docs-api-output__badge">Output</span>
+                    <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">clicked</span>:
-                <span class="docs-api-property__type">EventEmitter<any></span>
+                <span class="docs-api-property__name">
+                removed: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;any&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>An event dispatched when the tag should be deleted.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                canHover: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                disabled: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                id: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                intl: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxTagIntl</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                readonly: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                removable: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                role: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;&quot;button&quot; | &quot;group&quot;&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                selected: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                tagGroup: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxTagGroupComponent</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                tagList: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxTaglist</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                type: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxTagType&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                tabindex: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;number, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+                <span class="docs-api-output__badge">Output</span>
+                    <span class="docs-api-output__keyword">@Output</span>()</div><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                clicked: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;any&gt;</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
         <p>An event is dispatched each time when the tag is clicked.</p>
 </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">tabindex</span>:
-                <span class="docs-api-property__type">input(-1, { transform: numberAttribute })</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
 </tr>
   
 </table> 
@@ -502,7 +618,12 @@ If no content projection is used this will be used as the visual label.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">handleInputClick(event: <span class="docs-api-property__type">Event</span>)</span>
+            <span class="docs-api-method-name">handleInputClick(
+                            event:  
+                                <span class="docs-api-property__type">
+                                    Event
+                                </span>
+                        )</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div><div class="docs-api-method-params">
@@ -521,7 +642,12 @@ If no content projection is used this will be used as the visual label.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">setReadonly(value: <span class="docs-api-property__type">boolean</span>)</span>
+            <span class="docs-api-method-name">setReadonly(
+                            value:  
+                                <span class="docs-api-property__type">
+                                    boolean
+                                </span>
+                        )</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div><div class="docs-api-method-params">
@@ -549,7 +675,12 @@ If no content projection is used this will be used as the visual label.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name"><div class="docs-api-deprecated-marker" > Deprecated </div>emitLegacyClicked(event: <span class="docs-api-property__type">Event</span>)</span>
+            <span class="docs-api-method-name"><div class="docs-api-deprecated-marker" > Deprecated </div>emitLegacyClicked(
+                            event:  
+                                <span class="docs-api-property__type">
+                                    Event
+                                </span>
+                        )</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div><div class="docs-api-method-params">
@@ -568,9 +699,16 @@ If no content projection is used this will be used as the visual label.</p>
 
 <h4 id="NxTaglistComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxTaglistComponent"></span>
-    <code>NxTaglistComponent</code></h4><div class="docs-api-class-deprecated-marker" >
-    Deprecated
-</div><h5 class="docs-api-method-header">Properties</h5>
+    <code>NxTaglistComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-taglist</span>
+        </code>
+    
+</p><span class="docs-api-class-deprecated-marker" >
+        Deprecated
+    </span>@deprecated Use `nx-tag` components standalone or `nx-tag-group` instead.<h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -580,9 +718,13 @@ If no content projection is used this will be used as the visual label.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">allowTagDeletion</span>:
+                <span class="docs-api-property__name">
+                allowTagDeletion: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -595,9 +737,13 @@ If no content projection is used this will be used as the visual label.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">isKeywordList</span>:
+                <span class="docs-api-property__name">
+                isKeywordList: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -610,9 +756,13 @@ If no content projection is used this will be used as the visual label.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">labelProperty</span>:
+                <span class="docs-api-property__name">
+                labelProperty: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -624,9 +774,17 @@ If no content projection is used this will be used as the visual label.</p>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'aria-labelledby'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>aria-labelledby</strong> }</span><span class="docs-api-input__keyword">
+                        @Input
+                        (<span class="docs-api-input-alias">'aria-labelledby'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">labelledby</span>:
+                <span class="docs-api-property__name">
+                labelledby: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -639,9 +797,13 @@ If no content projection is used this will be used as the visual label.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">tabindex</span>:
+                <span class="docs-api-property__name">
+                tabindex: 
+                </span>
+                 
                 <span class="docs-api-property__type">number</span>
             </code>
         </p>
@@ -653,9 +815,17 @@ If no content projection is used this will be used as the visual label.</p>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'tags'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>tags</strong> }</span><span class="docs-api-input__keyword">
+                        @Input
+                        (<span class="docs-api-input-alias">'tags'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">tags</span>:
+                <span class="docs-api-property__name">
+                tags: 
+                </span>
+                 
                 <span class="docs-api-property__type">any[]</span>
             </code>
         </p>
@@ -668,10 +838,14 @@ If no content projection is used this will be used as the visual label.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">valueFormatter</span>:
-                <span class="docs-api-property__type">(value: any) => string</span>
+                <span class="docs-api-property__name">
+                valueFormatter: 
+                </span>
+                 
+                <span class="docs-api-property__type">(value: any) =&gt; string</span>
             </code>
         </p>
     </td>
@@ -682,10 +856,18 @@ If no content projection is used this will be used as the visual label.</p>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'onTagClick'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+                <span class="docs-api-output__badge">Output{ alias:  <strong>onTagClick</strong> }</span><span class="docs-api-output__keyword">
+                        @Output
+                        (<span class="docs-api-output-alias">'onTagClick'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">tagClickEvent</span>:
-                <span class="docs-api-property__type">EventEmitter<any></span>
+                <span class="docs-api-property__name">
+                tagClickEvent: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;any&gt;</span>
             </code>
         </p>
     </td>
@@ -696,10 +878,18 @@ If no content projection is used this will be used as the visual label.</p>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'tagsChange'</span>) </div><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+                <span class="docs-api-output__badge">Output{ alias:  <strong>tagsChange</strong> }</span><span class="docs-api-output__keyword">
+                        @Output
+                        (<span class="docs-api-output-alias">'tagsChange'</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">tagsChange</span>:
-                <span class="docs-api-property__type">EventEmitter<any[]></span>
+                <span class="docs-api-property__name">
+                tagsChange: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;any[]&gt;</span>
             </code>
         </p>
     </td>
@@ -716,7 +906,12 @@ If no content projection is used this will be used as the visual label.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">addTag(tag: <span class="docs-api-property__type">any</span>)</span>
+            <span class="docs-api-method-name">addTag(
+                            tag:  
+                                <span class="docs-api-property__type">
+                                    any
+                                </span>
+                        )</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Allows to add a tag. Takes tag object as an input</p>
@@ -746,7 +941,17 @@ If no content projection is used this will be used as the visual label.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">delete(index: <span class="docs-api-property__type">number</span>,value: <span class="docs-api-property__type">any</span>)</span>
+            <span class="docs-api-method-name">delete(
+                            index:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>,
+                        
+                            value:  
+                                <span class="docs-api-property__type">
+                                    any
+                                </span>
+                        )</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Allows to delete a tag given index. Takes index of the tag to be deleted as a parameter</p>
@@ -788,8 +993,11 @@ If no content projection is used this will be used as the visual label.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">changes</span>:
-                <span class="docs-api-property__type">Subject<void></span>
+                <span class="docs-api-property__name">
+                changes: 
+                </span>
+                 
+                <span class="docs-api-property__type">Subject&lt;void&gt;</span>
             </code>
         </p>
     </td>
@@ -803,8 +1011,11 @@ components if the labels have changed after initialization.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">deleteAriaLabel</span>:
-                <span class="docs-api-property__type">'Delete tag'</span>
+                <span class="docs-api-property__name">
+                deleteAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>

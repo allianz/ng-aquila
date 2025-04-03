@@ -1,16 +1,33 @@
-<nx-checkbox-group [(ngModel)]="checkboxes">
-    <nx-label>Responsive horizontal layout with nx grid component</nx-label>
+<nx-checkbox-group>
+    <nx-label>With nx grid component</nx-label>
     <div nxLayout="nopadding">
-        <div nxRow style="row-gap: 16px">
-            <div nxCol="12,8,6,4">
-                <nx-checkbox value="checkbox 1">Checkbox 1</nx-checkbox>
+        <div nxRow>
+            @for (item of checkboxes; track item) {
+            <div nxCol="12,12,6,4" class="nx-margin-bottom-s">
+                <nx-checkbox [value]="item">{{item}}</nx-checkbox>
             </div>
-            <div nxCol="12,8,6,4">
-                <nx-checkbox value="checkbox 2">Checkbox 2</nx-checkbox>
-            </div>
-            <div nxCol="12,8,6,4">
-                <nx-checkbox value="checkbox 3">Checkbox 3</nx-checkbox>
-            </div>
+            }
         </div>
+    </div>
+</nx-checkbox-group>
+<br />
+<nx-checkbox-group>
+    <nx-label>With CSS Grid</nx-label>
+    <div class="grid-wrapper">
+        @for (item of checkboxes; track item) {
+        <nx-checkbox [value]="item">{{item}}</nx-checkbox>
+        }
+    </div>
+</nx-checkbox-group>
+<br />
+<br />
+<nx-checkbox-group>
+    <nx-label>With CSS Flexbox</nx-label>
+    <div class="flex-wrapper">
+        @for (item of checkboxes; track item) {
+        <nx-checkbox [value]="item" class="nx-margin-right-m nx-margin-bottom-s"
+            >{{item}}</nx-checkbox
+        >
+        }
     </div>
 </nx-checkbox-group>

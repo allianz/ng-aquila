@@ -1,0 +1,107 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">nx-header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-header-row</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-header-brand</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-link</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">nxFigure</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+                            <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/logos/aposin_logo.svg&quot;</span>
+                            <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Brand Logo&quot;</span>
+                            <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;none&quot;</span>
+                        /&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;logo-text&quot;</span>&gt;</span>AQUILA<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-link</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-header-brand</span>&gt;</span>
+
+        @if (viewType === &#x27;desktop&#x27;){
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-header-actions</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Login<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-header-actions</span>&gt;</span>
+        } @if (viewType === &#x27;tablet&#x27; || viewType === &#x27;mobile&#x27;){
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-header-actions</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxPlainButton</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;open search bar&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                <span class="hljs-attr">nxPlainButton</span>
+                <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;login&quot;</span>
+                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-s&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;user&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                <span class="hljs-attr">nxPlainButton</span>
+                (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;menu.toggle()&quot;</span>
+                <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;open menu&quot;</span>
+                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-s&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;bars&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-header-actions</span>&gt;</span>
+        }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-header-row</span>&gt;</span>
+    @if (viewType === &#x27;desktop&#x27;){
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-header-row</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-header-navigation</span>&gt;</span>
+            @for (item of menuData; track item; let i = $index) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-header-navigation-item</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
+                    <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&quot;./&quot;</span>
+                    [<span class="hljs-attr">routerLinkActiveOptions</span>]=<span class="hljs-string">&quot;{exact: true}&quot;</span>
+                    [<span class="hljs-attr">queryParams</span>]=<span class="hljs-string">&quot;i === 0 ? null : item.query&quot;</span>
+                    <span class="hljs-attr">routerLinkActive</span>=<span class="hljs-string">&quot;is-active&quot;</span>
+                    <span class="hljs-attr">nxHeaderLink</span>
+                    &gt;</span>{{item.label}}&lt;/a
+                &gt;
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-header-navigation-item</span>&gt;</span>
+            }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-header-navigation</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-header-actions</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxPlainButton</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;open search bar&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-header-actions</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-header-row</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-menu</span> #<span class="hljs-attr">menu</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;action-wrapper&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-link</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">nxFigure</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+                        <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/logos/aposin_logo.svg&quot;</span>
+                        <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Brand Logo&quot;</span>
+                        <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;none&quot;</span>
+                    /&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;logo-text&quot;</span>&gt;</span>AQUILA<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-link</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">nxPlainButton</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;close-menu&quot;</span>
+            (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;menu.toggle()&quot;</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;close menu&quot;</span>
+        &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;close&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    @for (item of menuData; track item) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-attr">nxMenuButton</span>
+        <span class="hljs-attr">menuButtonType</span>=<span class="hljs-string">&quot;root&quot;</span>
+        <span class="hljs-attr">nxMenuItem</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&quot;./&quot;</span>
+    &gt;</span>
+        {{item.label}}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-menu</span>&gt;</span>

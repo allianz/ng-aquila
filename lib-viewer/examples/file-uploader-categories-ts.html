@@ -1,0 +1,165 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">CommonModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">HttpClient</span>, <span class="hljs-title class_">HttpParams</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">Component</span>,
+    <span class="hljs-title class_">OnChanges</span>,
+    <span class="hljs-title class_">OnDestroy</span>,
+    <span class="hljs-title class_">SimpleChanges</span>,
+    viewChildren,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span>, <span class="hljs-title class_">NxLabelComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxButtonComponent</span>,
+    <span class="hljs-title class_">NxPlainButtonComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FileUploadError</span>,
+    <span class="hljs-title class_">NxFileUploadConfig</span>,
+    <span class="hljs-title class_">NxFileUploader</span>,
+    <span class="hljs-title class_">NxFileUploaderButtonDirective</span>,
+    <span class="hljs-title class_">NxFileUploaderComponent</span>,
+    <span class="hljs-title class_">NxFileUploaderHintDirective</span>,
+    <span class="hljs-title class_">NxFileUploadResult</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/file-uploader&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxMessageToastConfig</span>,
+    <span class="hljs-title class_">NxMessageToastService</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/message&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Subject</span>, zip } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
+<span class="hljs-keyword">import</span> { first } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">successToastConfig</span>: <span class="hljs-title class_">NxMessageToastConfig</span> = {
+    <span class="hljs-attr">duration</span>: <span class="hljs-number">3000</span>,
+    <span class="hljs-attr">context</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
+    <span class="hljs-attr">announcementMessage</span>: <span class="hljs-string">&#x27;File was uploaded successfully!&#x27;</span>,
+};
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">noFilesToastConfig</span>: <span class="hljs-title class_">NxMessageToastConfig</span> = {
+    <span class="hljs-attr">duration</span>: <span class="hljs-number">3000</span>,
+    <span class="hljs-attr">context</span>: <span class="hljs-string">&#x27;info&#x27;</span>,
+    <span class="hljs-attr">announcementMessage</span>: <span class="hljs-string">&#x27;Information: No files to upload.&#x27;</span>,
+};
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@title</span> Multiple file uploader combined example */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;file-uploader-categories-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./file-uploader-categories-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./file-uploader-categories-example.css&#x27;</span>],
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxFileUploaderComponent</span>,
+        <span class="hljs-title class_">NxLabelComponent</span>,
+        <span class="hljs-title class_">NxFileUploaderHintDirective</span>,
+        <span class="hljs-title class_">NxButtonComponent</span>,
+        <span class="hljs-title class_">NxFileUploaderButtonDirective</span>,
+        <span class="hljs-title class_">NxIconComponent</span>,
+        <span class="hljs-title class_">NxPlainButtonComponent</span>,
+        <span class="hljs-title class_">CommonModule</span>,
+        <span class="hljs-title class_">NxErrorComponent</span>,
+    ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FileUploaderCategoriesExampleComponent</span>
+    <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnDestroy</span>, <span class="hljs-title class_">OnChanges</span>
+{
+    <span class="hljs-keyword">readonly</span> <span class="hljs-attr">uploadConfig</span>: <span class="hljs-title class_">NxFileUploadConfig</span> = {
+        <span class="hljs-attr">requestUrl</span>: <span class="hljs-string">&#x27;file-upload&#x27;</span>,
+        <span class="hljs-attr">options</span>: {
+            <span class="hljs-attr">params</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">HttpParams</span>(),
+            <span class="hljs-attr">reportProgress</span>: <span class="hljs-literal">true</span>,
+        },
+        <span class="hljs-comment">// emitSuccessResultOnEmptyFileList: true,</span>
+    };
+
+    <span class="hljs-keyword">readonly</span> carDocumentsUploader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">NxFileUploader</span>(
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">uploadConfig</span>,
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">http</span>,
+    );
+    <span class="hljs-keyword">readonly</span> driverDocumentsUploader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">NxFileUploader</span>(
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">uploadConfig</span>,
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">http</span>,
+    );
+    <span class="hljs-keyword">readonly</span> additionalDocumentsUploader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">NxFileUploader</span>(
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">uploadConfig</span>,
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">http</span>,
+    );
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subject</span>&lt;<span class="hljs-built_in">void</span>&gt;();
+
+    uploaderComponents = <span class="hljs-title function_">viewChildren</span>(<span class="hljs-title class_">NxFileUploaderComponent</span>);
+
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">messageToastService</span>: <span class="hljs-title class_">NxMessageToastService</span>,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">http</span>: <span class="hljs-title class_">HttpClient</span>,
+    </span>) {}
+
+    <span class="hljs-title function_">ngOnChanges</span>(<span class="hljs-attr">changes</span>: <span class="hljs-title class_">SimpleChanges</span>): <span class="hljs-built_in">void</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(changes);
+    }
+
+    <span class="hljs-title function_">ngOnDestroy</span>(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">next</span>();
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">complete</span>();
+    }
+
+    <span class="hljs-title function_">triggerUpload</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-comment">// find all uploaders that have files to upload and ignore others</span>
+        <span class="hljs-keyword">const</span> uploadersWithFilesToUpload = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">uploaderComponents</span>().<span class="hljs-title function_">filter</span>(
+            <span class="hljs-function"><span class="hljs-params">uploaderComponent</span> =&gt;</span>
+                uploaderComponent.<span class="hljs-property">value</span>
+                    ? uploaderComponent.<span class="hljs-property">value</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> !item.<span class="hljs-property">isUploaded</span>)
+                          .<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>
+                    : <span class="hljs-literal">false</span>,
+        );
+
+        <span class="hljs-comment">// show toast if no files to upload</span>
+        <span class="hljs-keyword">if</span> (uploadersWithFilesToUpload.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">messageToastService</span>.<span class="hljs-title function_">open</span>(
+                <span class="hljs-string">&#x27;No files to upload!&#x27;</span>,
+                noFilesToastConfig,
+            );
+        }
+
+        <span class="hljs-keyword">if</span> (uploadersWithFilesToUpload.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">uploadFilesForUploaders</span>(uploadersWithFilesToUpload);
+        }
+    }
+
+    <span class="hljs-title function_">getFileErrors</span>(): <span class="hljs-title class_">FileUploadError</span>[] {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">uploaderComponents</span>()
+            .<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">uploader</span> =&gt;</span> uploader.<span class="hljs-property">errors</span> || [])
+            .<span class="hljs-title function_">flatMap</span>(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> error);
+    }
+
+    <span class="hljs-title function_">uploadFilesForUploaders</span>(<span class="hljs-params">
+        <span class="hljs-attr">uploadersWithFilesToUpload</span>: <span class="hljs-title class_">NxFileUploaderComponent</span>[],
+    </span>) {
+        <span class="hljs-comment">// wait for all uploaders with files to upload to finish uploading</span>
+        <span class="hljs-title function_">zip</span>(
+            uploadersWithFilesToUpload.<span class="hljs-title function_">map</span>(
+                <span class="hljs-function"><span class="hljs-params">uploaderComponent</span> =&gt;</span> uploaderComponent.<span class="hljs-property">uploader</span>.<span class="hljs-property">response</span>,
+            ),
+        )
+            .<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">first</span>())
+            .<span class="hljs-title function_">subscribe</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">results</span>: <span class="hljs-title class_">NxFileUploadResult</span>[]</span>) =&gt;</span> {
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`results`</span>, results);
+
+                <span class="hljs-keyword">const</span> allSucessful = results.<span class="hljs-title function_">every</span>(
+                    <span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> result.<span class="hljs-property">allSucessful</span>,
+                );
+
+                <span class="hljs-keyword">if</span> (allSucessful) {
+                    <span class="hljs-variable language_">this</span>.<span class="hljs-property">messageToastService</span>.<span class="hljs-title function_">open</span>(
+                        <span class="hljs-string">&#x27;All files were uploaded successfully!&#x27;</span>,
+                        successToastConfig,
+                    );
+                } <span class="hljs-keyword">else</span> {
+                    results.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result.<span class="hljs-property">error</span>));
+                }
+            });
+
+        <span class="hljs-comment">// start uploading files</span>
+        uploadersWithFilesToUpload.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">uploader</span> =&gt;</span> {
+            uploader.<span class="hljs-title function_">uploadFiles</span>();
+        });
+    }
+}

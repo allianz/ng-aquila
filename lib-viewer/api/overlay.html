@@ -27,7 +27,10 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">dir</span>:
+                <span class="docs-api-property__name">
+                dir: 
+                </span>
+                 
                 <span class="docs-api-property__type">Direction</span>
             </code>
         </p>
@@ -41,7 +44,10 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">isRtl</span>:
+                <span class="docs-api-property__name">
+                isRtl: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -54,8 +60,11 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">openOverlays</span>:
-                <span class="docs-api-property__type">NxOverlayRef<any>[]</span>
+                <span class="docs-api-property__name">
+                openOverlays: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxOverlayRef&lt;any, any&gt;[]</span>
             </code>
         </p>
     </td>
@@ -72,7 +81,12 @@
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getOverlayById(id: <span class="docs-api-property__type">string</span>): <span class="docs-api-method-returns-type">NxOverlayRef<any> | undefined</span></span>
+            <span class="docs-api-method-name">getOverlayById(
+                            id:  
+                                <span class="docs-api-property__type">
+                                    string
+                                </span>
+                        ): <span class="docs-api-method-returns-type">NxOverlayRef&lt;any&gt; | undefined</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Finds an open overlay by its id.</p>
@@ -93,7 +107,22 @@
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">open(componentOrTemplateRef: <span class="docs-api-property__type">ComponentType<T> | TemplateRef<T></span>,origin: <span class="docs-api-property__type">FlexibleConnectedPositionStrategyOrigin</span>,config: <span class="docs-api-property__type">NxOverlayConfig<D></span>): <span class="docs-api-method-returns-type">NxOverlayRef<T, R></span></span>
+            <span class="docs-api-method-name">open(
+                            componentOrTemplateRef:  
+                                <span class="docs-api-property__type">
+                                    ComponentType<T> | TemplateRef<T>
+                                </span>,
+                        
+                            origin:  
+                                <span class="docs-api-property__type">
+                                    FlexibleConnectedPositionStrategyOrigin
+                                </span>,
+                        
+                            config?:  
+                                <span class="docs-api-property__type">
+                                    NxOverlayConfig<D>
+                                </span>
+                        ): <span class="docs-api-method-returns-type">NxOverlayRef&lt;T, R&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Opens a panel containing the given component and attaches it to an element.</p>
@@ -125,7 +154,7 @@
         </div>
         
     </div><div class="docs-api-method-returns">
-        <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">NxOverlayRef<T, R></code></p>
+        <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">NxOverlayRef&lt;T, R&gt;</code></p>
         <p class="docs-api-method-returns-description"> <p>Reference to the newly-opened panel.</p>
  </p>
     </div></div>
@@ -142,6 +171,13 @@
         <span class="docs-api-class-extends-label">extends</span>
         <span class="docs-api-class-extends-type">BasePortalOutlet</span>
     </span></h4><p class="docs-api-class-description"><p>Internal component that wraps user-provided overlay content.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-overlay-container</span>
+        </code>
+    
 </p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
@@ -153,8 +189,11 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">elementRef</span>:
-                <span class="docs-api-property__type"></span>
+                <span class="docs-api-property__name">
+                elementRef: 
+                </span>
+                 
+                <span class="docs-api-property__type">ElementRef&lt;any&gt;</span>
             </code>
         </p>
     </td>
@@ -166,14 +205,11 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">attachDomPortal</span>:
-                <span class="docs-api-property__type">(portal: DomPortal) => {
-    if (this._portalOutlet.hasAttached()) {
-        throwNxOverlayContentAlreadyAttachedError();
-    }
-    this._savePreviouslyFocusedElement();
-    return this._portalOutlet.attachDomPortal(portal);
-}</span>
+                <span class="docs-api-property__name">
+                attachDomPortal: 
+                </span>
+                 
+                <span class="docs-api-property__type">(portal: DomPortal&lt;HTMLElement&gt;) =&gt; void</span>
             </code>
         </p>
     </td>
@@ -190,7 +226,12 @@
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">attachComponentPortal(portal: <span class="docs-api-property__type">ComponentPortal<T></span>): <span class="docs-api-method-returns-type">ComponentRef<T></span></span>
+            <span class="docs-api-method-name">attachComponentPortal(
+                            portal:  
+                                <span class="docs-api-property__type">
+                                    ComponentPortal<T>
+                                </span>
+                        ): <span class="docs-api-method-returns-type">ComponentRef&lt;T&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Attach a ComponentPortal as content to this overlay container.</p>
@@ -211,7 +252,12 @@
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">attachTemplatePortal(portal: <span class="docs-api-property__type">TemplatePortal<C></span>): <span class="docs-api-method-returns-type">EmbeddedViewRef<C></span></span>
+            <span class="docs-api-method-name">attachTemplatePortal(
+                            portal:  
+                                <span class="docs-api-property__type">
+                                    TemplatePortal<C>
+                                </span>
+                        ): <span class="docs-api-method-returns-type">EmbeddedViewRef&lt;C&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Attach a TemplatePortal as content to this overlay container.</p>
@@ -253,8 +299,11 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">trigger</span>:
-                <span class="docs-api-property__type">ElementRef</span>
+                <span class="docs-api-property__name">
+                trigger: 
+                </span>
+                 
+                <span class="docs-api-property__type">ElementRef&lt;any&gt;</span>
             </code>
         </p>
     </td>
@@ -319,8 +368,11 @@ an overlay is open.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">ariaDescribedBy</span>?:
-                <span class="docs-api-property__type">string | null</span>
+                <span class="docs-api-property__name">
+                ariaDescribedBy?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -333,8 +385,11 @@ an overlay is open.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">ariaLabel</span>?:
-                <span class="docs-api-property__type">string | null</span>
+                <span class="docs-api-property__name">
+                ariaLabel?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -347,8 +402,11 @@ an overlay is open.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">ariaLabelledBy</span>?:
-                <span class="docs-api-property__type">string | null</span>
+                <span class="docs-api-property__name">
+                ariaLabelledBy?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -361,7 +419,10 @@ an overlay is open.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">autoFocus</span>?:
+                <span class="docs-api-property__name">
+                autoFocus?: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -375,7 +436,10 @@ an overlay is open.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">backdropClass</span>?:
+                <span class="docs-api-property__name">
+                backdropClass?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -389,7 +453,10 @@ an overlay is open.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">closeOnClickOutside</span>?:
+                <span class="docs-api-property__name">
+                closeOnClickOutside?: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -403,7 +470,10 @@ an overlay is open.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">closeOnNavigation</span>?:
+                <span class="docs-api-property__name">
+                closeOnNavigation?: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -419,7 +489,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">direction</span>?:
+                <span class="docs-api-property__name">
+                direction?: 
+                </span>
+                 
                 <span class="docs-api-property__type">NxOverlayDirection</span>
             </code>
         </p>
@@ -433,7 +506,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">fallbackOrientation</span>?:
+                <span class="docs-api-property__name">
+                fallbackOrientation?: 
+                </span>
+                 
                 <span class="docs-api-property__type">NxOverlayFallbackOrientation</span>
             </code>
         </p>
@@ -447,7 +523,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">hasBackdrop</span>?:
+                <span class="docs-api-property__name">
+                hasBackdrop?: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -461,8 +540,11 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">height</span>?:
-                <span class="docs-api-property__type">number | string</span>
+                <span class="docs-api-property__name">
+                height?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string | number</span>
             </code>
         </p>
     </td>
@@ -475,7 +557,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">id</span>?:
+                <span class="docs-api-property__name">
+                id?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -489,8 +574,11 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">maxHeight</span>?:
-                <span class="docs-api-property__type">number | string</span>
+                <span class="docs-api-property__name">
+                maxHeight?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string | number</span>
             </code>
         </p>
     </td>
@@ -503,8 +591,11 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">maxWidth</span>?:
-                <span class="docs-api-property__type">number | string</span>
+                <span class="docs-api-property__name">
+                maxWidth?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string | number</span>
             </code>
         </p>
     </td>
@@ -517,8 +608,11 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">minHeight</span>?:
-                <span class="docs-api-property__type">number | string</span>
+                <span class="docs-api-property__name">
+                minHeight?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string | number</span>
             </code>
         </p>
     </td>
@@ -531,8 +625,11 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">minWidth</span>?:
-                <span class="docs-api-property__type">number | string</span>
+                <span class="docs-api-property__name">
+                minWidth?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string | number</span>
             </code>
         </p>
     </td>
@@ -545,7 +642,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">offset</span>?:
+                <span class="docs-api-property__name">
+                offset?: 
+                </span>
+                 
                 <span class="docs-api-property__type">number</span>
             </code>
         </p>
@@ -559,7 +659,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">panelClass</span>?:
+                <span class="docs-api-property__name">
+                panelClass?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string | string[]</span>
             </code>
         </p>
@@ -573,7 +676,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">positionStrategy</span>?:
+                <span class="docs-api-property__name">
+                positionStrategy?: 
+                </span>
+                 
                 <span class="docs-api-property__type">FlexibleConnectedPositionStrategy</span>
             </code>
         </p>
@@ -587,7 +693,10 @@ the <code>HashLocationStrategy</code>).</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">restoreFocus</span>?:
+                <span class="docs-api-property__name">
+                restoreFocus?: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -602,8 +711,11 @@ previously-focused element, after it&#39;s closed.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">role</span>?:
-                <span class="docs-api-property__type">NxOverlayRole | null</span>
+                <span class="docs-api-property__name">
+                role?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
@@ -616,7 +728,10 @@ previously-focused element, after it&#39;s closed.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">scrollStrategy</span>?:
+                <span class="docs-api-property__name">
+                scrollStrategy?: 
+                </span>
+                 
                 <span class="docs-api-property__type">ScrollStrategy</span>
             </code>
         </p>
@@ -630,7 +745,10 @@ previously-focused element, after it&#39;s closed.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">triggerButton</span>?:
+                <span class="docs-api-property__name">
+                triggerButton?: 
+                </span>
+                 
                 <span class="docs-api-property__type">NxTriggerButton</span>
             </code>
         </p>
@@ -643,7 +761,10 @@ previously-focused element, after it&#39;s closed.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">viewContainerRef</span>?:
+                <span class="docs-api-property__name">
+                viewContainerRef?: 
+                </span>
+                 
                 <span class="docs-api-property__type">ViewContainerRef</span>
             </code>
         </p>
@@ -660,8 +781,28 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">width</span>?:
-                <span class="docs-api-property__type">number | string</span>
+                <span class="docs-api-property__name">
+                viewportMargin?: 
+                </span>
+                 
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Margin between the overlay and the viewport edges.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                width?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string | number</span>
             </code>
         </p>
     </td>
@@ -674,7 +815,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">componentFactoryResolver</span>?:
+                <span class="docs-api-property__name">
+                componentFactoryResolver?: 
+                </span>
+                 
                 <span class="docs-api-property__type">ComponentFactoryResolver</span>
             </code>
         </p>
@@ -703,7 +847,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">closeOnClickOutside</span>?:
+                <span class="docs-api-property__name">
+                closeOnClickOutside?: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -717,7 +864,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">componentInstance</span>:
+                <span class="docs-api-property__name">
+                componentInstance: 
+                </span>
+                 
                 <span class="docs-api-property__type">T</span>
             </code>
         </p>
@@ -731,7 +881,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">id</span>:
+                <span class="docs-api-property__name">
+                id: 
+                </span>
+                 
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
@@ -744,7 +897,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">origin</span>:
+                <span class="docs-api-property__name">
+                origin: 
+                </span>
+                 
                 <span class="docs-api-property__type">FlexibleConnectedPositionStrategyOrigin</span>
             </code>
         </p>
@@ -761,7 +917,12 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">addPanelClass(classes: <span class="docs-api-property__type">string | string[]</span>): <span class="docs-api-method-returns-type">this</span></span>
+            <span class="docs-api-method-name">addPanelClass(
+                            classes:  
+                                <span class="docs-api-property__type">
+                                    string | string[]
+                                </span>
+                        ): <span class="docs-api-method-returns-type">this</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Add a CSS class or an array of classes to the overlay pane.</p>
@@ -781,7 +942,7 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">afterClosed(): <span class="docs-api-method-returns-type">Observable<R | undefined></span></span>
+            <span class="docs-api-method-name">afterClosed(): <span class="docs-api-method-returns-type">Observable&lt;R | undefined&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets an observable that is notified when the overlay is finished closing.</p>
@@ -791,7 +952,7 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">afterOpened(): <span class="docs-api-method-returns-type">Observable<void></span></span>
+            <span class="docs-api-method-name">afterOpened(): <span class="docs-api-method-returns-type">Observable&lt;void&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets an observable that is notified when the overlay is finished opening.</p>
@@ -801,7 +962,7 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">backdropClick(): <span class="docs-api-method-returns-type">Observable<MouseEvent></span></span>
+            <span class="docs-api-method-name">backdropClick(): <span class="docs-api-method-returns-type">Observable&lt;MouseEvent&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets an observable that emits when the overlay&#39;s backdrop has been clicked.</p>
@@ -811,7 +972,7 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">beforeClosed(): <span class="docs-api-method-returns-type">Observable<R | undefined></span></span>
+            <span class="docs-api-method-name">beforeClosed(): <span class="docs-api-method-returns-type">Observable&lt;R | undefined&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets an observable that is notified when the overlay has started closing.</p>
@@ -821,7 +982,12 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">close(overlayResult: <span class="docs-api-property__type">R</span>)</span>
+            <span class="docs-api-method-name">close(
+                            overlayResult?:  
+                                <span class="docs-api-property__type">
+                                    R
+                                </span>
+                        )</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Close the overlay.</p>
@@ -852,7 +1018,7 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">keydownEvents(): <span class="docs-api-method-returns-type">Observable<KeyboardEvent></span></span>
+            <span class="docs-api-method-name">keydownEvents(): <span class="docs-api-method-returns-type">Observable&lt;KeyboardEvent&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Gets an observable that emits when keydown events are targeted on the overlay.</p>
@@ -862,7 +1028,12 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">removePanelClass(classes: <span class="docs-api-property__type">string | string[]</span>): <span class="docs-api-method-returns-type">this</span></span>
+            <span class="docs-api-method-name">removePanelClass(
+                            classes:  
+                                <span class="docs-api-property__type">
+                                    string | string[]
+                                </span>
+                        ): <span class="docs-api-method-returns-type">this</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Remove a CSS class or an array of classes from the overlay pane.</p>
@@ -902,7 +1073,10 @@ content will be rendered.</p>
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">isRtl</span>:
+                <span class="docs-api-property__name">
+                isRtl: 
+                </span>
+                 
                 <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
@@ -919,7 +1093,17 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">createPositionStrategy(element: <span class="docs-api-property__type">FlexibleConnectedPositionStrategyOrigin</span>,config: <span class="docs-api-property__type">NxOverlayConfig<any></span>)</span>
+            <span class="docs-api-method-name">createPositionStrategy(
+                            element:  
+                                <span class="docs-api-property__type">
+                                    FlexibleConnectedPositionStrategyOrigin
+                                </span>,
+                        
+                            config:  
+                                <span class="docs-api-property__type">
+                                    NxOverlayConfig<any>
+                                </span>
+                        ): <span class="docs-api-method-returns-type">FlexibleConnectedPositionStrategy</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"></div><div class="docs-api-method-params">
@@ -945,7 +1129,17 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getOffset(direction: <span class="docs-api-property__type">NxOverlayDirection</span>,config: <span class="docs-api-property__type">NxOverlayConfig<any></span>)</span>
+            <span class="docs-api-method-name">getOffset(
+                            direction:  
+                                <span class="docs-api-property__type">
+                                    NxOverlayDirection
+                                </span>,
+                        
+                            config:  
+                                <span class="docs-api-property__type">
+                                    NxOverlayConfig<any>
+                                </span>
+                        ): <span class="docs-api-method-returns-type">{ offsetY: number; offsetX?: undefined; } | { offsetX: number; offsetY?: undefined; }</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Returns the overlay offset required by the user&#39;s direction preference</p>
@@ -972,7 +1166,12 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getOrigin(direction: <span class="docs-api-property__type">NxOverlayDirection</span>): <span class="docs-api-method-returns-type">OriginConnectionPosition</span></span>
+            <span class="docs-api-method-name">getOrigin(
+                            direction:  
+                                <span class="docs-api-property__type">
+                                    NxOverlayDirection
+                                </span>
+                        ): <span class="docs-api-method-returns-type">OriginConnectionPosition</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Returns the origin position based on the user&#39;s direction preference.</p>
@@ -992,7 +1191,12 @@ content will be rendered.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getOverlayPosition(direction: <span class="docs-api-property__type">NxOverlayDirection</span>): <span class="docs-api-method-returns-type">OverlayConnectionPosition</span></span>
+            <span class="docs-api-method-name">getOverlayPosition(
+                            direction:  
+                                <span class="docs-api-property__type">
+                                    NxOverlayDirection
+                                </span>
+                        ): <span class="docs-api-method-returns-type">OverlayConnectionPosition</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Returns the overlay position based on the user&#39;s direction preference</p>

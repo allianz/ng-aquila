@@ -21,6 +21,13 @@
         <span class="docs-api-class-extends-type">MappedStyles</span>
     </span></h4><p class="docs-api-class-description"><p><code>Input(&#39;nxStyle&#39;) classNames</code> sets the style of the link, thereby altering the visual appearance.
 You can use any combination of &#39;black&#39;, &#39;icon-right&#39;, &#39;icon-only&#39;, &#39;negative&#39; or &#39;text&#39;.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-link</span>
+        </code>
+    
 </p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
@@ -31,9 +38,13 @@ You can use any combination of &#39;black&#39;, &#39;icon-right&#39;, &#39;icon-
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">size</span>:
+                <span class="docs-api-property__name">
+                size: 
+                </span>
+                 
                 <span class="docs-api-property__type">NxLinkSize</span>
             </code>
         </p>
@@ -46,11 +57,33 @@ You can use any combination of &#39;black&#39;, &#39;icon-right&#39;, &#39;icon-
 </table> 
 
  
-  <h3 id="additional_classes" class="docs-header-link docs-api-h3">
-        <span header-link="additional_classes"></span>
-        Additional classes
+  <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+        <span header-link="additional_type_aliases"></span>
+        Additional type aliases
     </h3>
      
+
+<h4 id="NxLinkSize" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxLinkSize"></span>
+    <code>NxLinkSize</code>
+</h4><p class="docs-api-type-alias-description"><p>The size of the link.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'xsmall' | 'small' | 'large'</code>
+</p>
+  <h3 id="testing_class" class="docs-header-link docs-api-h3">
+                Testing Classes
+            </h3>
+            <p class="docs-api-module-import">
+                <code>
+                    <span class="docs-api-module-import__import-span">import</span>
+                    { NxLinkHarness }
+                    <span class="docs-api-module-import__from-span">from</span>
+                    <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/link/testing' </span>;
+                </code>
+            </p>
+            
+                
 
 <h4 id="NxLinkHarness" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxLinkHarness"></span>
@@ -65,7 +98,7 @@ You can use any combination of &#39;black&#39;, &#39;icon-right&#39;, &#39;icon-
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">click(): <span class="docs-api-method-returns-type">Promise<void></span></span>
+            <span class="docs-api-method-name">click(): <span class="docs-api-method-returns-type">Promise&lt;void&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"></div></div>
@@ -74,7 +107,7 @@ You can use any combination of &#39;black&#39;, &#39;icon-right&#39;, &#39;icon-
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getAnchor(): <span class="docs-api-method-returns-type">Promise<TestElement></span></span>
+            <span class="docs-api-method-name">getAnchor(): <span class="docs-api-method-returns-type">Promise&lt;TestElement&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"></div></div>
@@ -83,16 +116,17 @@ You can use any combination of &#39;black&#39;, &#39;icon-right&#39;, &#39;icon-
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getText(): <span class="docs-api-method-returns-type">Promise<string></span></span>
+            <span class="docs-api-method-name">getText(): <span class="docs-api-method-returns-type">Promise&lt;string&gt;</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"></div></div>
    
-  <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
-        <span header-link="additional_interfaces"></span>
-        Additional interfaces
-    </h3>
-     
+ 
+            <h3 id="testing_interface" class="docs-header-link docs-api-h3">
+                Testing Interfaces
+            </h3>
+            
+                
 
 <h4 id="NxLinkHarnessFilters" class="docs-header-link docs-api-h4 docs-api-interface-name">
     <span header-link="NxLinkHarnessFilters"></span>
@@ -108,7 +142,10 @@ You can use any combination of &#39;black&#39;, &#39;icon-right&#39;, &#39;icon-
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">text</span>?:
+                <span class="docs-api-property__name">
+                text?: 
+                </span>
+                 
                 <span class="docs-api-property__type">string | RegExp</span>
             </code>
         </p>
@@ -118,18 +155,5 @@ You can use any combination of &#39;black&#39;, &#39;icon-right&#39;, &#39;icon-
 </tr>
   
 </table>   
-  <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
-        <span header-link="additional_type_aliases"></span>
-        Additional type aliases
-    </h3>
-     
-
-<h4 id="NxLinkSize" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
-    <span header-link="NxLinkSize"></span>
-    <code>NxLinkSize</code>
-</h4><p class="docs-api-type-alias-description"><p>The size of the link.</p>
-</p><p class="docs-api-type-alias-value">
-    <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'xsmall' | 'small' | 'large'</code>
-</p>
-  </div>
+ 
+            </div>

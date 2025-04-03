@@ -1,11 +1,17 @@
-import { Component, ViewChild } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Component, contentChildren, viewChild } from '@angular/core';
+import {
+    FormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import {
     NxDatefieldDirective,
     NxDatepickerComponent,
-    NxDatepickerComponent as NxDatepickerComponent_1,
     NxDatepickerToggleComponent,
+    NxDateRangeComponent,
 } from '@aposin/ng-aquila/datefield';
 import {
     NxFormfieldComponent,
@@ -18,8 +24,7 @@ import {
     NxLayoutComponent,
     NxRowComponent,
 } from '@aposin/ng-aquila/grid';
-import { NxInputDirective } from '@aposin/ng-aquila/input';
-import { Moment } from 'moment';
+import moment from 'moment';
 
 /**
  * @title Date range example
@@ -33,26 +38,36 @@ import { Moment } from 'moment';
         NxRowComponent,
         NxColComponent,
         NxFormfieldComponent,
-        NxDatefieldDirective,
-        NxInputDirective,
         FormsModule,
-        NxFormfieldHintDirective,
+        ReactiveFormsModule,
         NxDatepickerToggleComponent,
         NxFormfieldSuffixDirective,
-        NxDatepickerComponent_1,
+        NxDatepickerComponent,
         NxErrorComponent,
         NxFormfieldErrorDirective,
+        NxDateRangeComponent,
+        CommonModule,
+        NxFormfieldHintDirective,
     ],
 })
 export class DatefieldRangeExampleComponent {
-    @ViewChild('endDatepicker', { static: true })
-    endDatepicker!: NxDatepickerComponent<Moment>;
+    dateDirectives = contentChildren(NxDatefieldDirective);
+    dateRangeComponent = viewChild(NxDateRangeComponent);
 
-    startDate: Moment | null = null;
-    endDate: Moment | null = null;
+    dateRange = {
+        start: moment([2020, 2, 5]),
+        end: moment([2020, 5, 1]),
+    };
+    dateRangeModel = {
+        start: moment([2020, 2, 5]),
+        end: moment([2020, 5, 1]),
+    };
 
-    updateEndDatepicker() {
-        this.endDate = this.startDate;
-        setTimeout(() => this.endDatepicker.open());
-    }
+    dateRangeForm = new FormBuilder().group({
+        range: [this.dateRangeModel, Validators.required],
+    });
+
+    formWithPicker = new FormBuilder().group({
+        range: [this.dateRange, Validators.required],
+    });
 }

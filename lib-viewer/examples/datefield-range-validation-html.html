@@ -1,0 +1,73 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;formWithPicker&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Date Range Component&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-date-range</span>
+                        #<span class="hljs-attr">dateRange</span>
+                        <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;range&quot;</span>
+                        [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;formRangeDatePicker&quot;</span>
+                        <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;mm/dd/yyyy&quot;</span>
+                        [<span class="hljs-attr">minDate</span>]=<span class="hljs-string">&quot;minDate&quot;</span>
+                        [<span class="hljs-attr">maxDate</span>]=<span class="hljs-string">&quot;maxDate&quot;</span>
+                        [<span class="hljs-attr">dateFilter</span>]=<span class="hljs-string">&quot;dateFilterWithFirstDay&quot;</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-date-range</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
+                        [<span class="hljs-attr">for</span>]=<span class="hljs-string">&quot;formRangeDatePicker&quot;</span>
+                        <span class="hljs-attr">nxFormfieldSuffix</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span>
+                        #<span class="hljs-attr">formRangeDatePicker</span>
+                        [<span class="hljs-attr">rangeMode</span>]=<span class="hljs-string">&quot;true&quot;</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+                        Errors:
+                        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                            @if(formWithPicker.controls.range.errors?.nxDatefieldMin){
+                            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The start date has to be after 03/31/2020.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            }
+                            @if(formWithPicker.controls.range.errors?.nxDatefieldMax){
+                            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The end date has to be before 04/30/2020.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            }
+                            @if(formWithPicker.controls.range.errors?.nxDateRangeStartFilter
+                            ||
+                            formWithPicker.controls.range.errors?.nxDateRangeEndFilter){
+                            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                                The start and end date have to be on a first of
+                                a month.
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            }
+                            @if(formWithPicker.controls.range.errors?.nxDateRangeIncomplete
+                            &amp;&amp; formWithPicker.value.range!.start){
+                            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Please enter a end date.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            }
+                            @if(formWithPicker.controls.range.errors?.nxDateRangeIncomplete
+                            &amp;&amp; formWithPicker.value.range!.end){
+                            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Please enter a start date.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            }
+                            @if(formWithPicker.controls.range.errors?.customSameMonthValidationError
+                            ){
+                            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                                Start and end date can&#x27;t be in the same month.
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            }
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
+                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Please provide date in the US format&quot;</span>
+                        <span class="hljs-attr">nxFormfieldHint</span>
+                        &gt;</span>MM/DD/YYYY - MM/DD/YYYY&lt;/span
+                    &gt;
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
+            Range Form Value: {{ formWithPicker.value | json }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
+            Range Form Error: {{ formWithPicker.controls.range.errors | json }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

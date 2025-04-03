@@ -14,12 +14,6 @@
 </thead>
 <tbody>
 <tr>
-<td>May 2023</td>
-<td>16</td>
-<td>16</td>
-<td>Nov 2024</td>
-</tr>
-<tr>
 <td>November 2023</td>
 <td>17</td>
 <td>17</td>
@@ -31,10 +25,22 @@
 <td>18</td>
 <td>Nov 2025</td>
 </tr>
+<tr>
+<td>January 2025</td>
+<td>19</td>
+<td>19</td>
+<td>May 2026</td>
+</tr>
 </tbody>
 </table>
-<p class="docs-markdown--p">Aquila versions 15 and older are no longer supported.</p>
+<p class="docs-markdown--p">Aquila versions 16 and older are no longer supported.</p>
 <p class="docs-markdown--p">During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.</p>
+<h2 class="docs-markdown--h2" id="updating-to-version-19" tabindex="-1">Updating to version 19</h2>
+<p class="docs-markdown--p">With Aquila 19, we are upgrading to Angular 19. This update brings exciting new features and improvements to the framework. This update includes advancements in server-side rendering, stabilization of some reactivity APIs, and new support for hot module replacement. Additionally, standalone components are now the default. For a comprehensive overview of all the changes and enhancements in Angular 19, check out the details on <a href="https://blog.angular.dev/meet-angular-v19-7b29dfd05b84">Angular 19</a>.</p>
+<p class="docs-markdown--p">For updating Angular to version 19, in most cases the following command should do the update for you:</p>
+<p class="docs-markdown--p"><code>ng update @angular/cli @angular/core</code></p>
+<p class="docs-markdown--p">Then it should be easy to update Aquila with the following command:</p>
+<p class="docs-markdown--p"><code>ng update @aposin/ng-aquila --force</code></p>
 <h2 class="docs-markdown--h2" id="updating-to-version-18" tabindex="-1">Updating to version 18</h2>
 <p class="docs-markdown--p">With Aquila 18, we are upgrading to Angular 18. This update marks control flow and deferrable views as stable. In addition, experimental support for zoneless change detection, Server-side rendering improvements and signal APIs in developer preview are shipped. Check out all the details of <a href="https://blog.angular.dev/angular-v18-is-now-available-e79d5ac0affe">Angular 18</a>.</p>
 <p class="docs-markdown--p">For updating Aquila to version 18, in most cases the following command should do the update for you:</p>

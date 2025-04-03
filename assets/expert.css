@@ -726,6 +726,9 @@ body,
   --datefield-panel-background-color: var(--ui-01);
   --datefield-panel-header-background-color: var(--ui-01);
   --datefield-panel-border-color: var(--ui-04);
+  --datepicker-range-background-color: #1d4f73;
+  --datepicker-range-hover-background-color: var(--info);
+  --datepicker-range-active-background-color: var(--active-primary);
   --dropdown-panel-background-color: var(--ui-02);
   --dropdown-panel-header-background-color: #27abd6;
   --dropdown-panel-text-color: var(--text-01);

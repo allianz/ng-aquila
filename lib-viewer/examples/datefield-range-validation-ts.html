@@ -1,0 +1,88 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">CommonModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">AbstractControl</span>,
+    <span class="hljs-title class_">FormBuilder</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">ValidatorFn</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">DateRange</span>,
+    <span class="hljs-title class_">NxDatepickerComponent</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">NxDatepickerComponent</span>_1,
+    <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
+    <span class="hljs-title class_">NxDateRangeComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+    <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+    <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> moment, { <span class="hljs-title class_">Moment</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">notSameMonthValidator</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">ValidatorFn</span> {
+    <span class="hljs-keyword">return</span> (<span class="hljs-attr">control</span>: <span class="hljs-title class_">AbstractControl</span>): { [<span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> } | <span class="hljs-function"><span class="hljs-params">null</span> =&gt;</span> {
+        <span class="hljs-keyword">if</span> (!control.<span class="hljs-property">value</span> || !control.<span class="hljs-property">value</span>.<span class="hljs-property">start</span> || !control.<span class="hljs-property">value</span>.<span class="hljs-property">end</span>) {
+            <span class="hljs-comment">// will be handled by nx-date-range-component itself</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+        }
+
+        <span class="hljs-keyword">const</span> dateRange = control.<span class="hljs-property">value</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">DateRange</span>&lt;<span class="hljs-title class_">Moment</span>&gt;;
+
+        <span class="hljs-keyword">if</span> (
+            dateRange.<span class="hljs-property">start</span>?.<span class="hljs-title function_">month</span>() === dateRange.<span class="hljs-property">end</span>?.<span class="hljs-title function_">month</span>() &amp;&amp;
+            dateRange.<span class="hljs-property">start</span>?.<span class="hljs-title function_">year</span>() === dateRange.<span class="hljs-property">end</span>?.<span class="hljs-title function_">year</span>()
+        ) {
+            <span class="hljs-keyword">return</span> { <span class="hljs-attr">customSameMonthValidationError</span>: <span class="hljs-literal">true</span> };
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    };
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Date range example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;datefield-range-validation-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./datefield-range-validation-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./datefield-range-validation-example.css&#x27;</span>],
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-title class_">NxLayoutComponent</span>,
+        <span class="hljs-title class_">NxRowComponent</span>,
+        <span class="hljs-title class_">NxColComponent</span>,
+        <span class="hljs-title class_">NxFormfieldComponent</span>,
+        <span class="hljs-title class_">FormsModule</span>,
+        <span class="hljs-title class_">ReactiveFormsModule</span>,
+        <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
+        <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+        <span class="hljs-title class_">NxDatepickerComponent</span>_1,
+        <span class="hljs-title class_">NxErrorComponent</span>,
+        <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+        <span class="hljs-title class_">NxDateRangeComponent</span>,
+        <span class="hljs-title class_">CommonModule</span>,
+        <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+    ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DatefieldRangeValidationExampleComponent</span> {
+    dateRange = {
+        <span class="hljs-attr">start</span>: <span class="hljs-title function_">moment</span>([<span class="hljs-number">2020</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>]),
+        <span class="hljs-attr">end</span>: <span class="hljs-title function_">moment</span>([<span class="hljs-number">2020</span>, <span class="hljs-number">5</span>, <span class="hljs-number">1</span>]),
+    };
+
+    formWithPicker = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormBuilder</span>().<span class="hljs-title function_">group</span>({
+        <span class="hljs-attr">range</span>: [<span class="hljs-variable language_">this</span>.<span class="hljs-property">dateRange</span>, <span class="hljs-title function_">notSameMonthValidator</span>()],
+    });
+
+    minDate = <span class="hljs-title function_">moment</span>([<span class="hljs-number">2020</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>]);
+    maxDate = <span class="hljs-title function_">moment</span>([<span class="hljs-number">2020</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>]);
+
+    dateFilterWithFirstDay = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">date</span>: <span class="hljs-title class_">Moment</span> | <span class="hljs-literal">null</span></span>) =&gt;</span> date?.<span class="hljs-title function_">date</span>() === <span class="hljs-number">1</span>;
+}
