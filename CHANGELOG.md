@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [19.3.0](https://github.com/allianz/ng-aquila/compare/v19.2.0...v19.3.0) (2025-04-03)
+
+
+### Documentation 📚
+
+* add header examples for responsiveness ([0af52c7](https://github.com/allianz/ng-aquila/commit/0af52c7cec9cbc55531077d76dfe85c3460b14bf))
+* add release guide for v19 ([c0594bc](https://github.com/allianz/ng-aquila/commit/c0594bc0561c91e1fa630731aebc724d79e28e3d))
+* **checkbox, radio, circle-toggle:** add layout example ([aee750b](https://github.com/allianz/ng-aquila/commit/aee750b63ccd4e1e41f080e42e5c78cb12b5eaff))
+
+
+### Bug Fixes 🐛
+
+* **checkbox:** clickable white space ([1e4bc42](https://github.com/allianz/ng-aquila/commit/1e4bc42dc365b99c12d75533a3634d0551018bed))
+* **checkbox:** correct background color for inderterminate in high contrast mode ([b433214](https://github.com/allianz/ng-aquila/commit/b433214305f0dc886917ec00cf31bfec2cd7ed15))
+* **input:** change focusout to blur ([a30a922](https://github.com/allianz/ng-aquila/commit/a30a9226387c33b0cc30fd7da521436dad92975c))
+* **phone-input:** Reactive form does not disable ([0a04bf5](https://github.com/allianz/ng-aquila/commit/0a04bf581c92b5e2df166a5f50ea01eb5d3753ad))
+* **side-navigation:** update sidebar labels visibility and center icon in collapse state ([1713afa](https://github.com/allianz/ng-aquila/commit/1713afaddcf3cf0944f77de9d24c8a699b4a234c))
+* **slider:** fix accessibility for slider ([4b73a95](https://github.com/allianz/ng-aquila/commit/4b73a95c0b93eecc34e25ddadc45efa3457be78b))
+
+
+### Features ✨
+
+* **date field:** date range component ([5664494](https://github.com/allianz/ng-aquila/commit/5664494fe3298b47f8f45b9fd9c5fee9403196dc))
+* **file-uploader:** enable multiple uploaders ([bd81fbc](https://github.com/allianz/ng-aquila/commit/bd81fbcce71dba0702d8d3905147c7a8a4bf5203))
+* **notification-panel:** make panel responsive ([faa268d](https://github.com/allianz/ng-aquila/commit/faa268d3012359f33506feb47949b530f50f3a66))
+* **overlay:** add viewportMargin function ([cd70b94](https://github.com/allianz/ng-aquila/commit/cd70b946329c6fe956600c5a3e57fbaa188cba2e))
+
 ## [19.2.0](https://github.com/allianz/ng-aquila/compare/v19.1.0...v19.2.0) (2025-03-05)
 
 ### Tags design and accessibility update
