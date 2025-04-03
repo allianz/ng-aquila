@@ -126,18 +126,20 @@ describe('PhoneInputComponent', () => {
         expect(container.querySelector('.readonly-input')).toBeFalsy();
     });
 
-    it('should disable from input', () => {
+    it('should disable from input', fakeAsync(() => {
         createTestComponent(ConfigurablePhoneInput);
         testInstance.disabled = true;
         fixture.detectChanges();
+        flush();
         const input = getInput()?.nativeElement;
         expect(dropdown.componentInstance.disabled).toBeTrue();
-        expect(input.getAttribute('disabled')).toBe('true');
+        expect(input.disabled).toBeTrue();
         testInstance.disabled = false;
         fixture.detectChanges();
+        flush();
         expect(dropdown.componentInstance.disabled).toBeFalse();
-        expect(input.getAttribute('disabled')).toBeNull();
-    });
+        expect(input.disabled).toBeFalse();
+    }));
 
     it('should update template after patchValue', fakeAsync(() => {
         createTestComponent(ReactiveFormsPhoneInput);
@@ -174,18 +176,20 @@ describe('PhoneInputComponent', () => {
         expect(dropdown.nativeElement.innerText).toContain('+33');
     }));
 
-    it('should disable from form control', () => {
+    it('should disable from form control', fakeAsync(() => {
         createTestComponent(ReactiveFormsPhoneInput);
         (testInstance as ReactiveFormsPhoneInput).formControl.disable();
         fixture.detectChanges();
+        flush();
         const input = getInput()?.nativeElement;
         expect(dropdown.componentInstance.disabled).toBeTrue();
-        expect(input.getAttribute('disabled')).toBe('true');
+        expect(input.disabled).toBeTrue();
         (testInstance as ReactiveFormsPhoneInput).formControl.enable();
         fixture.detectChanges();
+        flush();
         expect(dropdown.componentInstance.disabled).toBeFalse();
-        expect(input.getAttribute('disabled')).toBeNull();
-    });
+        expect(input.disabled).toBeFalse();
+    }));
 
     it('should remove leading zeros by default on blur', fakeAsync(() => {
         createTestComponent(DefaultPhoneInput);

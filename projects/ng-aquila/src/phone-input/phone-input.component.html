@@ -29,10 +29,10 @@
         (ngModelChange)="_onInput()"
         [attr.aria-describedby]="_describedBy"
         [attr.aria-label]="lineNumberLabel"
-        [attr.required]="required || null"
-        [attr.disabled]="disabled || null"
-        [attr.placeholder]="placeholder || null"
         [attr.aria-invalid]="errorState"
+        [attr.placeholder]="placeholder"
+        [required]="required"
+        [disabled]="disabled"
     />
 
     @if (readonly && !disabled) {
