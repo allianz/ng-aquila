@@ -98,10 +98,6 @@
 
                 .radio {
                     border-color: v(selectable-card-radio-border-hover-color);
-
-                    .check-dot {
-                        background-color: v(selectable-card-radio-dot-hover-color);
-                    }
                 }
             }
         }
@@ -180,6 +176,7 @@ input {
         }
 
         .radio {
+            background-color: v(checkbox-selected-background-color);
             border-color: v(checkbox-selected-border-color);
         }
     }
@@ -252,6 +249,10 @@ label {
             background-color: v(checkbox-disabled-selected-background-color);
             color: v(checkbox-disabled-icon-color);
         }
+        .radio {
+            background-color: v(radio-button-disabled-selected-background-color);
+            color: v(radio-button-disabled-text-color);
+        }
     }
 
     &.is-expert {
@@ -298,6 +299,9 @@ input.cdk-keyboard-focused + label {
         label:hover {
             border-color: buttonText;
         }
+        .radio {
+            border-color: buttonText !important;
+        }
 
         input:checked + label,
         input:checked + label:hover {
@@ -307,6 +311,12 @@ input.cdk-keyboard-focused + label {
             .nx-card-inner {
                 padding: nx-spacer(s) - nx-border-size(l) + nx-border-size(xs);
             }
+            .radio {
+                border-color: highlight !important;
+                .check-dot {
+                    background-color: highlight;
+                }
+            }
         }
     }
 
@@ -315,6 +325,12 @@ input.cdk-keyboard-focused + label {
         input:checked + label {
             border-color: GrayText;
             color: GrayText;
+        }
+        .radio {
+            border-color: GrayText !important;
+            .check-dot {
+                background-color: GrayText !important;
+            }
         }
     }
 }
