@@ -518,10 +518,6 @@ describe('NxTabGroupComponent', () => {
                 subscription.unsubscribe();
                 flush();
             }));
-
-            afterEach(() => {
-                viewport.reset();
-            });
         });
 
         describe('a11y', () => {

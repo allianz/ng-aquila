@@ -3,9 +3,7 @@ import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@ang
 import axe from 'axe-core';
 
 // First, initialize the Angular testing environment.
-getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting(), {
-    teardown: { destroyAfterEach: false },
-});
+getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
 
 const customMatchers: jasmine.CustomAsyncMatcherFactories = {
     toBeAccessible(): jasmine.CustomAsyncMatcher {
@@ -46,4 +44,9 @@ const customMatchers: jasmine.CustomAsyncMatcherFactories = {
 
 beforeAll(() => {
     jasmine.addAsyncMatchers(customMatchers);
+});
+
+afterEach(() => {
+    // vscode is lying! it should exist
+    viewport.reset();
 });

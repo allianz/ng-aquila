@@ -130,10 +130,6 @@ describe('ToggleSectionHeaderComponent', () => {
             expect(spy).not.toHaveBeenCalled();
             expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
         }));
-
-        afterEach(() => {
-            viewport.reset();
-        });
     });
 
     describe('a11y', () => {
@@ -196,10 +192,6 @@ describe('ToggleSectionHeaderComponent', () => {
             dispatchKeyboardEvent(wrapper, 'keydown', SPACE);
             fixture.detectChanges();
             expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
-        });
-
-        afterEach(() => {
-            viewport.reset();
         });
     });
 });

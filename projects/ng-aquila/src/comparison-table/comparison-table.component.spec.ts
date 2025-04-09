@@ -337,10 +337,6 @@ describe('NxComparisonTableComponent', () => {
             expect(fixture.nativeElement.querySelector('.nx-comparison-table__description-row')).toBeTruthy();
             flush();
         }));
-
-        afterEach(() => {
-            viewport.reset();
-        });
     });
 
     describe('selection', () => {
@@ -558,10 +554,6 @@ describe('NxComparisonTableComponent', () => {
             expect(tableInstance.viewTypeChange.emit).toHaveBeenCalledWith('mobile');
             flush();
         }));
-
-        afterEach(() => {
-            viewport.reset();
-        });
     });
 
     describe('sticky behaviour', () => {
@@ -732,10 +724,6 @@ describe('NxComparisonTableComponent', () => {
                     done();
                 },
             );
-        });
-
-        afterEach(() => {
-            viewport.reset();
         });
     });
 

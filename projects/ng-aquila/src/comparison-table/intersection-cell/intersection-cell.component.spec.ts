@@ -74,10 +74,6 @@ describe('NxComparisonTableIntersectionCell', () => {
             expect(intersectionCellElements[0].nativeElement.textContent).toBe('This is an intersection cell');
             expect(intersectionCellElements[1].nativeElement.textContent).toBe('This is a second intersection cell');
         }));
-
-        afterEach(() => {
-            viewport.reset();
-        });
     });
 
     describe('a11y', () => {
@@ -145,10 +141,6 @@ describe('NxComparisonTableIntersectionCell', () => {
                     done();
                 },
             );
-        });
-
-        afterEach(() => {
-            viewport.reset();
         });
     });
 });

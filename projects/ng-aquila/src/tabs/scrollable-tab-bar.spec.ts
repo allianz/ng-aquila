@@ -144,10 +144,6 @@ describe('Scrollable TabHeader', () => {
             expect(getStartScrollElement()).not.toHaveClass('is-mobile');
             expect(getStartScrollElement()).toHaveClass('is-desktop-button');
         }));
-
-        afterEach(fakeAsync(() => {
-            viewport.reset();
-        }));
     });
 });
 

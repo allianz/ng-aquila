@@ -24,7 +24,6 @@ describe('NxViewportService', () => {
     }));
 
     afterEach(() => {
-        viewport.reset();
         unsubscribeAll();
     });
 

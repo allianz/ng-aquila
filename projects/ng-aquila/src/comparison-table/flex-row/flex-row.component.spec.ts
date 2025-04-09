@@ -82,10 +82,6 @@ describe('ComparisonTableFlexRow', () => {
                 expect(placeholder).toHaveSize(0);
             });
         }));
-
-        afterEach(() => {
-            viewport.reset();
-        });
     });
 });
 

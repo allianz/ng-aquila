@@ -111,8 +111,6 @@ describe('NxComparisonTablePopularCell', () => {
         const emptyCells = popularRow.nativeElement.querySelectorAll('.nx-comparison-table__placeholder-with-border-cell');
         expect(emptyCells).toHaveSize(1);
     }));
-
-    afterEach(() => viewport.reset());
 });
 
 @Component({

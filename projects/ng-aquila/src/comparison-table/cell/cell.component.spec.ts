@@ -130,10 +130,6 @@ describe('NxComparisonTableCell', () => {
             cellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__cell'));
             expect(cellElements[0].nativeElement.id).toMatch(/^nx-comparison-table-cell-\d+$/);
         }));
-
-        afterEach(() => {
-            viewport.reset();
-        });
     });
 
     describe('a11y', () => {
@@ -234,10 +230,6 @@ describe('NxComparisonTableCell', () => {
                     done();
                 },
             );
-        });
-
-        afterEach(() => {
-            viewport.reset();
         });
     });
 });

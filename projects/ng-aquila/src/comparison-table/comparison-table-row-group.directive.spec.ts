@@ -177,10 +177,6 @@ describe('NxComparisonTableRowGroupDirective', () => {
                 expect(rowElements[1].queryAll(By.css('td'))).toHaveSize(12);
                 expect(rowElements[2].queryAll(By.css('td'))).toHaveSize(12);
             }));
-
-            afterEach(() => {
-                viewport.reset();
-            });
         });
 
         describe('a11y', () => {

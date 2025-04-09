@@ -116,10 +116,6 @@ describe('NxComparisonTableDescriptionCell', () => {
 
             expect(descriptionCellElements[0].nativeElement.id).toMatch(/^nx-comparison-table-description-cell-\d+$/);
         }));
-
-        afterEach(() => {
-            viewport.reset();
-        });
     });
 
     describe('a11y', () => {
@@ -191,10 +187,6 @@ describe('NxComparisonTableDescriptionCell', () => {
                     done();
                 },
             );
-        });
-
-        afterEach(() => {
-            viewport.reset();
         });
     });
 });
