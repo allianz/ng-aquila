@@ -1,5 +1,5 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
+import { Overlay, OverlayConfig, OverlayContainer, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, ComponentType, TemplatePortal } from '@angular/cdk/portal';
 import { ComponentRef, Inject, Injectable, InjectionToken, Injector, OnDestroy, Optional, SkipSelf, TemplateRef } from '@angular/core';
 
@@ -39,11 +39,29 @@ export class NxMessageToastService implements OnDestroy {
 
     constructor(
         private readonly _overlay: Overlay,
+        private readonly _overlayContainer: OverlayContainer,
         private readonly _injector: Injector,
         private readonly _live: LiveAnnouncer,
         @Optional() @SkipSelf() private readonly _parentMessageToastService: NxMessageToastService | null,
         @Optional() @Inject(NX_MESSAGE_TOAST_DEFAULT_CONFIG) private readonly _defaultConfig: NxMessageToastConfig | null,
-    ) {}
+    ) {
+        this._initializeWrapper();
+    }
+    /**
+     * Initializes the wrapper element for toast message in the overlay container.
+     * Create a wrapper with ARIA attributes for accessibility
+     */
+    private _initializeWrapper(): void {
+        const overlayContainer = this._overlayContainer.getContainerElement();
+
+        if (!overlayContainer.querySelector('#nx-toast-message-region')) {
+            const wrapperElement = document.createElement('div');
+            wrapperElement.setAttribute('aria-live', 'polite');
+            wrapperElement.setAttribute('aria-atomic', 'true');
+            wrapperElement.id = 'nx-toast-message-region';
+            overlayContainer.appendChild(wrapperElement);
+        }
+    }
 
     /**
      * Creates and dispatches a message toast with a custom text.
@@ -120,7 +138,17 @@ export class NxMessageToastService implements OnDestroy {
         positionStrategy.centerHorizontally();
         overlayConfig.positionStrategy = positionStrategy;
 
-        return this._overlay.create(overlayConfig);
+        const overlayRef = this._overlay.create(overlayConfig);
+        const overlayElement = overlayRef.overlayElement.parentElement;
+        const wrapper = this._overlayContainer.getContainerElement().querySelector('#nx-toast-message-region');
+        if (overlayElement) {
+            wrapper?.appendChild(overlayElement);
+        }
+        if (config.announcementMessage) {
+            // Hide element when announcement message is there
+            overlayElement?.setAttribute('aria-hidden', 'true');
+        }
+        return overlayRef;
     }
 
     /** Animates the old message toast out and the new one in. */
@@ -131,7 +159,6 @@ export class NxMessageToastService implements OnDestroy {
             if (this._oldToastMessageRef === toastRef) {
                 this._oldToastMessageRef = null;
             }
-
             if (config.announcementMessage) {
                 this._live.clear();
             }
@@ -153,7 +180,6 @@ export class NxMessageToastService implements OnDestroy {
         if (config.duration && config.duration > 0) {
             toastRef.afterOpened().subscribe(() => toastRef._dismissAfter(config.duration!));
         }
-
         if (config.announcementMessage) {
             this._live.announce(config.announcementMessage, config.politeness);
         }

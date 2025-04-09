@@ -63,7 +63,7 @@ describe('NxMessageToast', () => {
             fixture.detectChanges();
             flush();
 
-            expect(overlayContainerElement.childNodes).toHaveSize(0);
+            expect(overlayContainerElement.childNodes).toHaveSize(1);
         }));
 
         it('should remove past message toasts when opening new message toasts', fakeAsync(() => {
@@ -126,7 +126,7 @@ describe('NxMessageToast', () => {
             fixture.detectChanges();
             flush();
 
-            expect(overlayContainerElement.childNodes).toHaveSize(0);
+            expect(overlayContainerElement.childNodes).toHaveSize(1);
         }));
     });
 
@@ -158,7 +158,7 @@ describe('NxMessageToast', () => {
             fixture.detectChanges();
             flush();
 
-            expect(overlayContainerElement.childNodes).toHaveSize(0);
+            expect(overlayContainerElement.childNodes).toHaveSize(1);
         }));
     });
 
@@ -198,7 +198,7 @@ describe('NxMessageToast', () => {
         fixture.detectChanges();
         flush();
 
-        expect(overlayContainerElement.childElementCount).toBe(0);
+        expect(overlayContainerElement.childElementCount).toBe(1);
     }));
 
     it('should be able to get dismissed through the service', fakeAsync(() => {
@@ -210,7 +210,7 @@ describe('NxMessageToast', () => {
         fixture.detectChanges();
         flush();
 
-        expect(overlayContainerElement.childElementCount).toBe(0);
+        expect(overlayContainerElement.childElementCount).toBe(1);
     }));
 
     it('should set the animation state to visible on entry', () => {
@@ -233,6 +233,14 @@ describe('NxMessageToast', () => {
     });
 
     describe('a11y', () => {
+        it('should have the aria-live `polite` attach to wrapper class', () => {
+            messageToastService.open('test');
+            fixture.detectChanges();
+
+            const containerElement = overlayContainerElement.querySelector('#nx-toast-message-region')!;
+            expect(containerElement.getAttribute('aria-live')).toBe('polite');
+        });
+
         it('should have the role of `alert` with an `assertive` politeness if no announcement message is provided', () => {
             messageToastService.open('test', { announcementMessage: '', politeness: 'assertive' });
             fixture.detectChanges();
