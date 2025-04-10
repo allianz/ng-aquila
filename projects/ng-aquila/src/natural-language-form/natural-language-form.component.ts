@@ -5,14 +5,16 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ContentChildren,
+    computed,
+    contentChild,
+    contentChildren,
     HostListener,
     inject,
     Injector,
     Input,
     OnDestroy,
-    QueryList,
 } from '@angular/core';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { merge, Observable, Subject } from 'rxjs';
 import { delay, takeUntil, throttleTime } from 'rxjs/operators';
 
@@ -65,7 +67,30 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
     /** @docs-private */
     resizeObservable!: Observable<void>;
 
-    @ContentChildren(NxWordComponent) _words!: QueryList<NxWordComponent>;
+    protected readonly _errorComponent = contentChild<NxErrorComponent>(NxErrorComponent);
+
+    /**
+     * @docs-private
+     * The id of the error component. This is referenced by the word components in case of an error and no provided describedBy value
+     */
+    readonly _errorId = computed<string | undefined>(() => this._errorComponent()?.id);
+
+    /**
+     * All nx-word content children.
+     */
+    private readonly _wordsComponents = contentChildren<NxWordComponent>(NxWordComponent);
+
+    /**
+     * Readable Signal of collective nx-word error states
+     * @returns `true` if at least one word has an error. `false` if no word as an error.
+     */
+    protected readonly wordsErrorStates = computed<boolean>(() => {
+        if (!this._wordsComponents()) {
+            return false;
+        }
+
+        return this._wordsComponents().some(word => word._hasErrors());
+    });
 
     private readonly _destroyed = new Subject<void>();
 
@@ -90,7 +115,7 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
     ngAfterContentInit(): void {
         // Collect all words and listen for changes so we can update any open error popover
         // which would otherwise get wrongly positioned.
-        const subjects = this._words.map((word: NxWordComponent) => word.inputChanges);
+        const subjects = this._wordsComponents().map((word: NxWordComponent) => word.inputChanges);
         const source = merge(...subjects);
 
         source.pipe(takeUntil(this._destroyed)).subscribe(() => {
@@ -103,7 +128,7 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
 
     /** @docs-private */
     resizeWords() {
-        this._words.forEach((word: NxWordComponent) => {
+        this._wordsComponents().forEach((word: NxWordComponent) => {
             word.updateCurrentTextWidth();
         });
     }
@@ -115,8 +140,8 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
 
     /** @docs-private */
     updatePositionPopovers() {
-        if (this._words) {
-            this._words.forEach((word: NxWordComponent) => {
+        if (this._wordsComponents()) {
+            this._wordsComponents().forEach((word: NxWordComponent) => {
                 word.repositionError();
             });
         }

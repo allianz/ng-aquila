@@ -8,6 +8,11 @@ alias: text form, inline field
 a1: true
 ---
 
+<div class="docs-deprecation-warning">
+  <strong>Important: </strong>
+  Please note that the <strong>error message inside <code>nx-word</code>s</strong> is deprecated. Please use the error handling documented in the examples and check the <a href="./documentation/natural-language-form/overview#accessibility">notes on Accessibility</a>
+</div>
+
 ### Module
 
 We have a hard dependency on NxPopover (to display error messages) so make sure to import the OverlayModule and its css as described in [NxPopover](./documentation/popover/overview).
@@ -42,4 +47,9 @@ The default size of the Natural Language Form is `large`. You can change this vi
 
 ### Accessibility
 
-Don't forget to add a label to any word you are using. Otherwise you will hurt accessibility and people won't know which input is expected.
+It's important to provide a label for any `nx-word` to help users of assistive tools to understand what input is expected.
+
+#### Error Messages
+
+Error messages should be shown collectively end each individual input should refer to just the error message that is relevant for the specific input.
+Unfortunately, it is not possible to handle that in the component itself, so it must be handled during the implementation of your individual page.

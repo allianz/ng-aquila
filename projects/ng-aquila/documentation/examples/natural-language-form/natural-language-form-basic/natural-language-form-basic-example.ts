@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NxFormfieldErrorDirective } from '@aposin/ng-aquila/formfield';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
 import {
     NxNaturalLanguageFormComponent,
@@ -19,7 +19,7 @@ import {
         NxWordComponent,
         NxInputDirective,
         FormsModule,
-        NxFormfieldErrorDirective,
+        NxErrorComponent,
     ],
 })
 export class NaturalLanguageFormBasicExampleComponent {}

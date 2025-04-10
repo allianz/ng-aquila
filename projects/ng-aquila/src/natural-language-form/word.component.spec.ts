@@ -129,7 +129,7 @@ describe('NxNaturalLanguageFormComponent', () => {
         it('should throw an error if a word has no input', fakeAsync(() => {
             expect(() => {
                 createTestComponent(NaturalLanguageFormErrorComponent);
-            }).toThrowError('NxWordComponent requires an NxFormfieldControl compatible input.');
+            }).toThrowError('NG0951: Child query result is required but no value is available. Find more at https://angular.dev/errors/NG0951');
         }));
     });
 
@@ -227,6 +227,35 @@ describe('NxNaturalLanguageFormComponent', () => {
             expect(inputId).toBe(labelForId);
         }));
 
+        it('assigns aria-describedby to input element', fakeAsync(() => {
+            createTestComponent(NaturalLanguageFormErrorInNlfComponent);
+            tick();
+            fixture.detectChanges();
+
+            const wordInputElement = fixture.debugElement.query(By.css('nx-word>div>div>input'));
+
+            expect(wordInputElement.nativeElement.getAttribute('aria-describedby').trim()).toBe('some-id');
+        }));
+
+        it('uses nx-error as fallback for described by ', fakeAsync(() => {
+            createTestComponent(NaturalLanguageFormNoDescribedByComponent);
+            const formControl = testInstance.inputs.first.ngControl?.control as FormControl;
+            formControl.markAsTouched();
+
+            fixture.detectChanges();
+            tick();
+
+            tick();
+            fixture.detectChanges();
+
+            const wordInputElement = fixture.debugElement.query(By.css('nx-word>div>div>input'));
+            const ariaDescribedBy = wordInputElement.nativeElement.getAttribute('aria-describedby');
+
+            expect(ariaDescribedBy.trim().startsWith('nx-error-')).toBeTruthy();
+        }));
+    });
+
+    describe('deprecated errors in word popover', () => {
         it('assigns describedby to error components within the word component', fakeAsync(() => {
             createTestComponent(FormWithPreviousFormfieldComponent);
             tick();
@@ -237,7 +266,7 @@ describe('NxNaturalLanguageFormComponent', () => {
             expect(wordInputElement.nativeElement.getAttribute('aria-describedby')).toBeDefined();
 
             const ariaDescribedBy: string = wordInputElement.nativeElement.getAttribute('aria-describedby');
-            expect(ariaDescribedBy.startsWith('nx-formfield-error-')).toBeTruthy();
+            expect(ariaDescribedBy.trim().startsWith('nx-formfield-error-')).toBeTruthy();
         }));
 
         it('assigns aria-describedby to input element', fakeAsync(() => {
@@ -247,7 +276,7 @@ describe('NxNaturalLanguageFormComponent', () => {
 
             const wordInputElement = fixture.debugElement.query(By.css('nx-word>div>div>input'));
 
-            expect(wordInputElement.nativeElement.getAttribute('aria-describedby')).toBe('custom-error-id some-other-id');
+            expect(wordInputElement.nativeElement.getAttribute('aria-describedby').trim()).toBe('custom-error-id some-other-id');
         }));
     });
 
@@ -292,6 +321,31 @@ class NaturalLanguageFormBasicComponent extends NaturalLanguageFormTest {}
     imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormErrorComponent extends NaturalLanguageFormTest {}
+
+@Component({
+    template: `
+        <nx-natural-language-form>
+            <nx-word>
+                <input nxInput required ngModel />
+            </nx-word>
+            <nx-error>This field is required.</nx-error>
+        </nx-natural-language-form>
+    `,
+    imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
+})
+class NaturalLanguageFormNoDescribedByComponent extends NaturalLanguageFormTest {}
+@Component({
+    template: `
+        <nx-natural-language-form>
+            <nx-word describedBy="some-id">
+                <input nxInput required />
+            </nx-word>
+            <div nxError>This field is required.</div>
+        </nx-natural-language-form>
+    `,
+    imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
+})
+class NaturalLanguageFormErrorInNlfComponent extends NaturalLanguageFormTest {}
 
 @Component({
     template: `

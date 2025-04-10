@@ -5,16 +5,20 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    computed,
     ContentChild,
-    ContentChildren,
+    contentChild,
+    contentChildren,
+    effect,
     ElementRef,
     EmbeddedViewRef,
     HostBinding,
     Input,
+    input,
     OnDestroy,
     OnInit,
-    QueryList,
     Renderer2,
+    signal,
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
@@ -22,8 +26,10 @@ import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldControl, NxFormfieldErrorDirective } from '@aposin/ng-aquila/formfield';
 import { NxPopoverComponent, NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { getFontShorthand } from '@aposin/ng-aquila/utils';
-import { asapScheduler, Subject } from 'rxjs';
-import { observeOn, startWith, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { startWith, takeUntil } from 'rxjs/operators';
+
+import { NxNaturalLanguageFormComponent } from './natural-language-form.component';
 
 /** Type to determine the minimal width of a word. */
 export type SIZES = 'regular' | 'short' | 'long';
@@ -36,7 +42,7 @@ export type SIZES = 'regular' | 'short' | 'long';
         '[class.size-short]': 'size == "short"',
         '[class.size-regular]': 'size == "regular"',
         '[class.size-long]': 'size == "long"',
-        '[class.has-error]': '_hasErrors',
+        '[class.has-error]': '_hasErrors()',
         '[class.is-focused]': 'isFocused',
         '[class.is-filled]': 'isFilled',
         '[class.has-dropdown]': 'hasDropdown',
@@ -45,18 +51,47 @@ export type SIZES = 'regular' | 'short' | 'long';
     imports: [NxPopoverModule],
 })
 export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
+    private static _labelKey = 0;
+    protected labelId = `nx-word-label-${NxWordComponent._labelKey++}`;
     private measureCanvas!: HTMLCanvasElement;
 
     /** @docs-private */
     readonly inputChanges = new Subject<void>();
 
-    _hasErrors = false;
-    private _overlayRef!: OverlayRef;
-    private _embeddedViewRef!: EmbeddedViewRef<any>;
+    /** @docs-private */
+    readonly _hasErrors = signal(false);
+    private _overlayRef?: OverlayRef;
+    private _embeddedViewRef?: EmbeddedViewRef<any>;
     private _overlayState!: OverlayConfig;
 
+    /**
+     * @docs-private
+     * Used by the autocomplete and should be moved to signals entirely
+     */
     @ContentChild(NxFormfieldControl) _control!: NxFormfieldControl<any>;
-    @ContentChildren(NxFormfieldErrorDirective) _errorChildren!: QueryList<NxFormfieldErrorDirective>;
+    protected readonly control = contentChild.required(NxFormfieldControl);
+
+    /**
+     * @docs-private
+     * We should not set `for` and also use `aria-labelledby` at the same time.
+     * For some components that automatically render label and connect it to the input, this will cause issues otherwise.
+     * This is a workaround for the issue that we cannot set `aria-labelledby` on the input directly and to not introduce breaking changes.
+     */
+    private readonly _setAriaLabelledBy = effect(() => {
+        const control = this.control() as any;
+
+        // if aria-labelledby is set, add the word label to the list
+        if (control.ariaLabelledBy !== null && control.ariaLabelledBy !== undefined) {
+            control.ariaLabelledBy = `${this.labelId} ${control.ariaLabelledBy}`;
+        }
+
+        // if no aria-labelledby is set, we set it to the word label
+        if (control.ariaLabelledBy === null) {
+            control.ariaLabelledBy = this.labelId;
+        }
+    });
+
+    private readonly _errorChildren = contentChildren(NxFormfieldErrorDirective);
     @ViewChild('popover', { static: true }) _popover!: NxPopoverComponent;
     @ContentChild(NxDropdownComponent) _dropdown!: NxDropdownComponent;
 
@@ -76,12 +111,27 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
 
     /**
      * Sets the `aria-describedby` for the formfield.
-     * Will be automatically set for nxErrors within the `nx-word` component.
-     * Set if necessary for custom hint/error logic.
+     * Should be used to refer to the individual error message.
+     *
+     * If not set it will be set to the id of the entire error message or the error message inside the nx-word (deprecated)
      *
      * Should be space seperated list of `id`s.
      */
-    @Input('describedBy') describedBy = '';
+    describedByInput = input<string | undefined>(undefined, { alias: 'describedBy' });
+    describedBy = computed<string[]>(() => {
+        // fallback to nlfError if describedBy is not set
+        const useNaturalLanguageFormDescribedBy = this.describedByInput() === undefined && this._nlf._errorId() !== undefined;
+        const nlfError = useNaturalLanguageFormDescribedBy ? this._nlf._errorId() : undefined;
+
+        // fallback to the error children inside nx-word that is shown in the popover (deprecated)
+        const errorChildren = this._errorChildren()?.map(error => error.id);
+
+        // ignore any undefined and null values
+        return [nlfError, ...errorChildren, this.describedByInput()].filter((id): id is string => id != null);
+    });
+    describedByEffect = effect(() => {
+        this.control().setDescribedByIds(this.describedBy());
+    });
 
     private readonly _destroyed = new Subject<void>();
 
@@ -92,6 +142,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
         private readonly _overlay: Overlay,
         private readonly _viewContainerRef: ViewContainerRef,
         private readonly _overlayPositionBuilder: OverlayPositionBuilder,
+        private readonly _nlf: NxNaturalLanguageFormComponent,
     ) {}
 
     ngOnInit(): void {
@@ -99,27 +150,31 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     }
 
     ngAfterContentInit(): void {
-        this._validateControlChild();
-        this._control.stateChanges.pipe(startWith(null), takeUntil(this._destroyed)).subscribe(() => {
-            this._hasErrors = this._control.errorState;
-            this.updateErrorPopoverState();
-            this._cdr.markForCheck();
-        });
+        this.control()
+            .stateChanges.pipe(startWith(null), takeUntil(this._destroyed))
+            .subscribe(() => {
+                this._hasErrors.set(this.control().errorState);
+                this.updateErrorPopoverState();
+                this._cdr.markForCheck();
+            });
 
-        this._control.stateChanges.pipe(takeUntil(this._destroyed)).subscribe(value => {
-            this.updateCurrentTextWidth();
-            this.inputChanges.next();
-        });
-
-        this._errorChildren.changes.pipe(startWith(null), observeOn(asapScheduler), takeUntil(this._destroyed)).subscribe(() => {
-            // Update the aria-described by when the number of errors changes.
-            this._syncDescribedByIds();
-            this._cdr.markForCheck();
-            this.updateErrorPopoverState();
-        });
+        this.control()
+            .stateChanges.pipe(takeUntil(this._destroyed))
+            .subscribe(value => {
+                this.updateCurrentTextWidth();
+                this.inputChanges.next();
+            });
     }
 
+    private readonly _updatePopoverStateEffect = effect(() => {
+        this._errorChildren();
+        this.updateErrorPopoverState();
+    });
+
     ngOnDestroy(): void {
+        this._updatePopoverStateEffect.destroy();
+        this._setAriaLabelledBy.destroy();
+
         this._destroyed.next();
         this._destroyed.complete();
 
@@ -145,7 +200,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
             return;
         }
 
-        const inputRef = this._control.elementRef;
+        const inputRef = this.control().elementRef;
         const styles = window.getComputedStyle(inputRef.nativeElement);
         ctx!.font = getFontShorthand(styles);
 
@@ -165,22 +220,15 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
         // Limit to container width
         this.currentTextWidth = Math.min(this.currentTextWidth, parentMeasurement.width);
 
-        if (this._overlayRef.hasAttached()) {
+        if (this._overlayRef?.hasAttached()) {
             this._overlayState.positionStrategy!.apply();
         }
     }
 
     /** @docs-private */
     repositionError() {
-        if (this._overlayRef.hasAttached()) {
+        if (this._overlayRef?.hasAttached()) {
             this._overlayState.positionStrategy!.apply();
-        }
-    }
-
-    // Fail if the required control is missing.
-    protected _validateControlChild() {
-        if (!this._control) {
-            throw new Error('NxWordComponent requires an NxFormfieldControl compatible input.');
         }
     }
 
@@ -191,12 +239,12 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
 
     /** @docs-private */
     get isFocused(): boolean {
-        return this._control.focused;
+        return this.control().focused;
     }
 
     /** @docs-private */
     get isFilled(): boolean {
-        return !this._control.empty;
+        return !this.control().empty;
     }
 
     /** @docs-private */
@@ -205,7 +253,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     }
 
     updateErrorPopoverState() {
-        if (this._hasErrors && this._errorChildren.length > 0) {
+        if (this._hasErrors() && this._errorChildren().length > 0) {
             this.showPopover();
         } else {
             this.hidePopover();
@@ -258,37 +306,33 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     }
 
     private positionArrow(pair: ConnectionPositionPair) {
-        const parentElementPositionX = this.elementRef.nativeElement.getBoundingClientRect().left;
-        const parentElementWidth = this.elementRef.nativeElement.getBoundingClientRect().width / 2;
-        const parentElementLeftOffset = this._overlayRef.overlayElement.parentElement!.offsetLeft;
-        const overlayElementLeftOffset = this._overlayRef.overlayElement.offsetLeft;
+        if (this._overlayRef) {
+            const parentElementPositionX = this.elementRef.nativeElement.getBoundingClientRect().left;
+            const parentElementWidth = this.elementRef.nativeElement.getBoundingClientRect().width / 2;
+            const parentElementLeftOffset = this._overlayRef.overlayElement.parentElement!.offsetLeft;
+            const overlayElementLeftOffset = this._overlayRef.overlayElement.offsetLeft;
 
-        // calculation for x position of the parent element. In this case, overlay left offset is the one thing to consider.
-        const targetPosition = parentElementPositionX + parentElementWidth - (parentElementLeftOffset + overlayElementLeftOffset);
+            // calculation for x position of the parent element. In this case, overlay left offset is the one thing to consider.
+            const targetPosition = parentElementPositionX + parentElementWidth - (parentElementLeftOffset + overlayElementLeftOffset);
 
-        if (pair.originY === 'top' && pair.overlayY === 'bottom') {
-            this._popover.direction = 'top';
-        } else {
-            this._popover.direction = 'bottom';
+            if (pair.originY === 'top' && pair.overlayY === 'bottom') {
+                this._popover.direction = 'top';
+            } else {
+                this._popover.direction = 'bottom';
+            }
+
+            this._popover.arrowStyle = { left: targetPosition + 'px' };
         }
-
-        this._popover.arrowStyle = { left: targetPosition + 'px' };
     }
 
     showPopover() {
-        if (!this._overlayRef.hasAttached()) {
+        if (!this._overlayRef?.hasAttached()) {
             const tooltipPortal = new TemplatePortal(this._popover.templateRef, this._viewContainerRef);
-            this._embeddedViewRef = this._overlayRef.attach(tooltipPortal);
+            this._embeddedViewRef = this._overlayRef?.attach(tooltipPortal);
         }
     }
 
     hidePopover() {
-        this._overlayRef.detach();
-    }
-
-    private _syncDescribedByIds() {
-        let ids: string[] = this.describedBy.length > 0 ? [this.describedBy] : [];
-        ids = [...this._errorChildren.map(error => error.id), ...ids];
-        this._control.setDescribedByIds(ids);
+        this._overlayRef?.detach();
     }
 }
