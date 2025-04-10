@@ -1,39 +1,81 @@
-<nx-natural-language-form>
-    This is a large NLF
-    <nx-word label="Provide this required field">
-        <input nxInput ngModel required />
-        <div nxError>This field is required.</div>
-    </nx-word>
-    with
-    <nx-word size="long" label="Always a label">
-        <nx-dropdown required ngModel>
-            <nx-dropdown-item value="option1">Option 1</nx-dropdown-item>
-            <nx-dropdown-item value="option2">Option 2</nx-dropdown-item>
-            <nx-dropdown-item value="option3">Option 3</nx-dropdown-item>
-            <nx-dropdown-item value="option4">Option 4</nx-dropdown-item>
-            <nx-dropdown-item value="option5">Option 5</nx-dropdown-item>
-        </nx-dropdown>
-        <div nxError>Please select an option</div>
-    </nx-word>
-    .
-</nx-natural-language-form>
+<form>
+    <nx-natural-language-form [formGroup]="largeForm">
+        This is a large NLF: My profession is
+        <nx-word
+            label="Your Profession"
+            describedBy="error-profession-required"
+        >
+            <input formControlName="job" nxInput />
+        </nx-word>
+        and I want to insure my
+        <nx-word
+            size="long"
+            label="The object to insure"
+            describedBy="error-object-to-insure"
+        >
+            <nx-dropdown formControlName="what">
+                <nx-dropdown-item value="car">Car</nx-dropdown-item>
+                <nx-dropdown-item value="house">House</nx-dropdown-item>
+                <nx-dropdown-item value="boat">Boat</nx-dropdown-item>
+            </nx-dropdown>
+        </nx-word>
+        .
+        <nx-error>
+            <span id="error-headline"><b>Invalid or missing input:</b></span>
+            <ul class="nx-margin-left-m">
+                @if(largeForm.controls.job.hasError('required') &&
+                largeForm.controls.job.touched){
+                <li id="error-profession-required">Profession is required.</li>
+
+                } @if(largeForm.controls.what.hasError('required') &&
+                largeForm.controls.what.touched){
+                <li id="error-object-to-insure">
+                    The object to insure is required
+                </li>
+
+                }
+            </ul>
+        </nx-error>
+    </nx-natural-language-form>
+</form>
 
 <nx-natural-language-form size="small">
-    This is a small NLF
-    <nx-word label="Provide this required field">
-        <input nxInput ngModel required />
-        <div nxError>This field is required.</div>
+    This is a small NLF: My profession is
+    <nx-word
+        label="Your Profession"
+        describedBy="error-profession-required-small-nlf"
+    >
+        <input nxInput ngModel required #professionInput="ngModel" />
     </nx-word>
-    with
-    <nx-word size="long" label="Always a label">
-        <nx-dropdown required ngModel>
-            <nx-dropdown-item value="option1">Option 1</nx-dropdown-item>
-            <nx-dropdown-item value="option2">Option 2</nx-dropdown-item>
-            <nx-dropdown-item value="option3">Option 3</nx-dropdown-item>
-            <nx-dropdown-item value="option4">Option 4</nx-dropdown-item>
-            <nx-dropdown-item value="option5">Option 5</nx-dropdown-item>
+    and I want to insure my
+    <nx-word
+        size="long"
+        label="Always a label"
+        describedBy="error-object-to-insure-small-nlf"
+    >
+        <nx-dropdown required ngModel #objectToInsure="ngModel">
+            <nx-dropdown-item value="car">Car</nx-dropdown-item>
+            <nx-dropdown-item value="house">House</nx-dropdown-item>
+            <nx-dropdown-item value="boat">Boat</nx-dropdown-item>
         </nx-dropdown>
-        <div nxError>Please select an option</div>
     </nx-word>
     .
+    <nx-error>
+        <span id="error-headline"><b>Invalid or missing input:</b></span>
+        <ul class="nx-margin-left-m">
+            @if(professionInput.hasError('required') &&
+            professionInput.touched){
+            <li id="error-profession-required-small-nlf" #error>
+                Profession is required.
+            </li>
+
+            } @if(objectToInsure.hasError('required') &&
+            objectToInsure.touched){
+            <li id="error-object-to-insure-small-nlf">
+                The object to insure is required
+            </li>
+
+            }
+        </ul>
+    </nx-error>
 </nx-natural-language-form>

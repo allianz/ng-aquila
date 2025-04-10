@@ -7,12 +7,12 @@ import {
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import {
     NxDropdownComponent,
     NxDropdownItemComponent,
 } from '@aposin/ng-aquila/dropdown';
-import { NxFormfieldErrorDirective } from '@aposin/ng-aquila/formfield';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
 import {
     NxNaturalLanguageFormComponent,
@@ -33,10 +33,10 @@ import {
         NxWordComponent,
         NxDropdownComponent,
         NxDropdownItemComponent,
-        NxFormfieldErrorDirective,
         NxInputDirective,
         NxButtonComponent,
         JsonPipe,
+        NxErrorComponent,
     ],
 })
 export class NaturalLanguageFormExtendedExampleComponent {

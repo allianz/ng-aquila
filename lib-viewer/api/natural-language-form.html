@@ -70,6 +70,23 @@
         <p>Sets the size of the NLF. Default value: large.</p>
 </td>
 </tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                wordsErrorStates: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Readable Signal of collective nx-word error states</p>
+</td>
+</tr>
   
 </table> 
 
@@ -95,24 +112,20 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input{ alias:  <strong>describedBy</strong> }</span><span class="docs-api-input__keyword">
-                        @Input
-                        (<span class="docs-api-input-alias">'describedBy'</span>) 
-                    </span>
-                </div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>describedBy</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                describedBy: 
+                describedByInput: 
                 </span>
                  
-                <span class="docs-api-property__type">string</span>
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
         <p>Sets the <code>aria-describedby</code> for the formfield.
-Will be automatically set for nxErrors within the <code>nx-word</code> component.
-Set if necessary for custom hint/error logic.</p>
+Should be used to refer to the individual error message.</p>
+<p>If not set it will be set to the id of the entire error message or the error message inside the nx-word (deprecated)</p>
 <p>Should be space seperated list of <code>id</code>s.</p>
 </td>
 </tr>
@@ -158,6 +171,70 @@ It will be attached to the given input through <code>aria-label</code>.</p>
     <td class="docs-api-property-description">
         <p>Provide a hint for a minimal width. The actual size will be determined for inputs for each change.</p>
 </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                control: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                describedBy: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;string[]&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                describedByEffect: 
+                </span>
+                 
+                <span class="docs-api-property__type">EffectRef</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                labelId: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
 </tr>
   
 </table> 

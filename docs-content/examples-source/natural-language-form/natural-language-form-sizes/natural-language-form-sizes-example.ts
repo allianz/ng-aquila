@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {
+    FormBuilder,
+    FormControl,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import {
     NxDropdownComponent,
     NxDropdownItemComponent,
@@ -23,9 +30,18 @@ import {
         NxWordComponent,
         NxInputDirective,
         FormsModule,
+        ReactiveFormsModule,
         NxFormfieldErrorDirective,
         NxDropdownComponent,
         NxDropdownItemComponent,
+        NxErrorComponent,
     ],
 })
-export class NaturalLanguageFormSizesExampleComponent {}
+export class NaturalLanguageFormSizesExampleComponent {
+    readonly largeForm = this.fb.group({
+        job: new FormControl('', [Validators.required]),
+        what: new FormControl('', [Validators.required]),
+    });
+
+    constructor(private readonly fb: FormBuilder) {}
+}
