@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [19.3.1](https://github.com/allianz/ng-aquila/compare/v19.3.0...v19.3.1) (2025-04-10)
+
+
+### Bug Fixes 🐛
+
+* **cards:** radio button color ([2a9d008](https://github.com/allianz/ng-aquila/commit/2a9d008bd1b1c9ba47b22f483793cbab7a19ba94))
+* **datepicker:** no modal cutoff on small screens ([ce541c7](https://github.com/allianz/ng-aquila/commit/ce541c7ba6d1786525746234a7068c1bdacde395))
+* **dropdown:** remove cursor style for readonly ([86fa9f8](https://github.com/allianz/ng-aquila/commit/86fa9f8d830fd5cdcb1d19e15ca03e0fc8e91cba))
+* **natural-language-form:** improved error messages ([2945d4d](https://github.com/allianz/ng-aquila/commit/2945d4dfddcf1979bf2784bdaeb205d5b0f18d20))
+* **signal-button:** align icon vertically ([f083974](https://github.com/allianz/ng-aquila/commit/f0839745c9539ebdd81289ccd80451a7c84c334b))
+* **toast:** a11y message does not announce ([1acb1a4](https://github.com/allianz/ng-aquila/commit/1acb1a43535b4531171a5580f6403b2d44a5b6d1))
+
+
+### Deprecations
+* **natural-language-form:** showing the error messages in a popover has been deprecated. Please use a combined error message instead. See the natural language form documentation for more details.
+
+
 ## [19.3.0](https://github.com/allianz/ng-aquila/compare/v19.2.0...v19.3.0) (2025-04-03)
 
 
