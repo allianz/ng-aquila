@@ -4,7 +4,7 @@ import { NxSignalButtonComponent } from '@aposin/ng-aquila/signal-button';
  * @title Signal Button example
  */
 @Component({
-    selector: 'signal-button-context',
+    selector: 'signal-button-context-example',
     templateUrl: './signal-button-context-example.html',
     styleUrls: ['./signal-button-context-example.css'],
     imports: [NxSignalButtonComponent],

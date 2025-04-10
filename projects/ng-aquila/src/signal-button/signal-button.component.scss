@@ -1,7 +1,13 @@
 @import '../shared-styles/index';
 
 :host {
+    display: inline-flex;
+    vertical-align: middle;
+
     .nx-signal-button__button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         width: v(signal-button-width);
         height: v(signal-button-height);
         font-size: v(signal-button-font-size);
