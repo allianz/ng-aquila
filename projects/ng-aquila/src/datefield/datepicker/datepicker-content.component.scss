@@ -36,6 +36,8 @@ $calendar-width-mobile: calc(7 * #{$item-size} + 2 * #{$spacing-sides-calendar-m
 .nx-calendar-focus-trap {
     display: flex;
     flex-flow: column nowrap;
+    max-height: 95vh;
+    overflow-y: auto;
 }
 
 .nx-datepicker-header {
