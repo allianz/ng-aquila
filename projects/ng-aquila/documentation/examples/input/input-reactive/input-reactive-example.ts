@@ -8,7 +8,10 @@ import {
     Validators,
 } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
-import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
+import {
+    NxFormfieldComponent,
+    NxFormfieldErrorDirective,
+} from '@aposin/ng-aquila/formfield';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
 
 /**
@@ -22,6 +25,7 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
         FormsModule,
         ReactiveFormsModule,
         NxFormfieldComponent,
+        NxFormfieldErrorDirective,
         NxInputDirective,
         JsonPipe,
         NxErrorComponent,
