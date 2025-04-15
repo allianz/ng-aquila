@@ -127,7 +127,6 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
     }
 
     _open(event: Event): void {
-        console.log(`toggle | _open`);
         if (this.datepicker && !this.disabled()) {
             this.datepicker.open();
             event.stopPropagation();

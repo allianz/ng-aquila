@@ -408,7 +408,6 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * @docs-private
      */
     open(): void {
-        console.log(`opening datepicker ${this.id}`);
         if (this._opened || this.disabled()) {
             return;
         }
