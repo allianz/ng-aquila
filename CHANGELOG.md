@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [19.3.2](https://github.com/allianz/ng-aquila/compare/v19.3.1...v19.3.2) (2025-04-16)
+
+
+### Documentation 📚
+
+* **input:** reactive error example ([1ddbc81](https://github.com/allianz/ng-aquila/commit/1ddbc8161fba390602ff13364dd155baf972a353))
+
+
+### Bug Fixes 🐛
+
+* **date-field:** remove console logging ([e6d6ce4](https://github.com/allianz/ng-aquila/commit/e6d6ce4aab1ed0577d08a6deee6234f17f6f7fd8))
+* **natural-language-form:** access before initalization error ([08f4519](https://github.com/allianz/ng-aquila/commit/08f451982fab6ff75b8b4aca4e4bbeac5826c374))
+
 ### [19.3.1](https://github.com/allianz/ng-aquila/compare/v19.3.0...v19.3.1) (2025-04-10)
 
 
