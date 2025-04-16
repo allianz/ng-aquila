@@ -8,6 +8,7 @@ import {
     computed,
     contentChild,
     contentChildren,
+    forwardRef,
     HostListener,
     inject,
     Injector,
@@ -18,6 +19,7 @@ import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { merge, Observable, Subject } from 'rxjs';
 import { delay, takeUntil, throttleTime } from 'rxjs/operators';
 
+import { NaturalLanguageFormErrorWrapper } from './natural-language-form-error-wrapper';
 import { NxWordComponent } from './word.component';
 
 /** Size of the NLF. */
@@ -35,9 +37,15 @@ const DEFAULT_SIZE = 'large';
         '[class.nx-natural-language-form--small]': 'size === "small"',
         '[class.nx-natural-language-form--large]': 'size === "large"',
     },
+    providers: [
+        {
+            provide: NaturalLanguageFormErrorWrapper,
+            useExisting: forwardRef(() => NxNaturalLanguageFormComponent),
+        },
+    ],
     standalone: true,
 })
-export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestroy {
+export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestroy, NaturalLanguageFormErrorWrapper {
     /** Whether the negative set of stylings should be used. */
     @Input('negativeStyles') set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);

@@ -29,7 +29,7 @@ import { getFontShorthand } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { startWith, takeUntil } from 'rxjs/operators';
 
-import { NxNaturalLanguageFormComponent } from './natural-language-form.component';
+import { NaturalLanguageFormErrorWrapper } from './natural-language-form-error-wrapper';
 
 /** Type to determine the minimal width of a word. */
 export type SIZES = 'regular' | 'short' | 'long';
@@ -120,8 +120,8 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     describedByInput = input<string | undefined>(undefined, { alias: 'describedBy' });
     describedBy = computed<string[]>(() => {
         // fallback to nlfError if describedBy is not set
-        const useNaturalLanguageFormDescribedBy = this.describedByInput() === undefined && this._nlf._errorId() !== undefined;
-        const nlfError = useNaturalLanguageFormDescribedBy ? this._nlf._errorId() : undefined;
+        const useNaturalLanguageFormDescribedBy = this.describedByInput() === undefined && this._nlfErrorWrapper._errorId() !== undefined;
+        const nlfError = useNaturalLanguageFormDescribedBy ? this._nlfErrorWrapper._errorId() : undefined;
 
         // fallback to the error children inside nx-word that is shown in the popover (deprecated)
         const errorChildren = this._errorChildren()?.map(error => error.id);
@@ -142,7 +142,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
         private readonly _overlay: Overlay,
         private readonly _viewContainerRef: ViewContainerRef,
         private readonly _overlayPositionBuilder: OverlayPositionBuilder,
-        private readonly _nlf: NxNaturalLanguageFormComponent,
+        private readonly _nlfErrorWrapper: NaturalLanguageFormErrorWrapper,
     ) {}
 
     ngOnInit(): void {
