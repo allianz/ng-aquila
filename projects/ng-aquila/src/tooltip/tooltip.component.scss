@@ -18,7 +18,7 @@ $tooltip-arrow-offset: -$tooltip-arrow-size * 0.5;
     border-radius: v(tooltip-border-radius);
     max-width: $tooltip-max-width;
     padding: 4px 8px;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .nx-tooltip__arrow {
