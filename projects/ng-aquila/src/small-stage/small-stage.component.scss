@@ -211,6 +211,10 @@
             -ms-grid-columns: 8fr 4fr;
             grid-template-columns: 8fr 4fr;
         }
+        .content {
+            margin-top: 0;
+            margin-bottom: v(small-stage-expert-tablet-content-margin-bottom);
+        }
 
         ::ng-deep [nxSmallStageImageEnd] {
             background-position: bottom center;
@@ -221,11 +225,6 @@
         .container {
             -ms-grid-columns: 1fr;
             grid-template-columns: 1fr;
-        }
-
-        .content {
-            margin-top: 0;
-            margin-bottom: v(small-stage-expert-mobile-content-margin-bottom);
         }
 
         .header {
