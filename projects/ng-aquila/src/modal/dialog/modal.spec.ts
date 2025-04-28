@@ -13,6 +13,7 @@ import {
     Inject,
     Injector,
     NgModule,
+    OnInit,
     TemplateRef,
     ViewChild,
     ViewContainerRef,
@@ -31,7 +32,7 @@ import {
     NxModalState,
 } from '@aposin/ng-aquila/modal';
 import { fakeScrollStrategyFunction } from '@aposin/ng-aquila/utils';
-import { Subject } from 'rxjs';
+import { firstValueFrom, Subject, timer } from 'rxjs';
 
 import { createKeyboardEvent, dispatchKeyboardEvent } from '../../cdk-test-utils';
 import { NxModalActionsDirective, NxModalContentDirective, NxModalTitleComponent } from '../modal.component';
@@ -1491,7 +1492,10 @@ describe('NxDialog with a parent NxDialog', () => {
                 {
                     provide: OverlayContainer,
                     useFactory: () => {
-                        overlayContainerElement = document.createElement('div');
+                        const parent = document.createElement('div');
+                        const child = document.createElement('div');
+                        parent.append(child);
+                        overlayContainerElement = child;
                         return { getContainerElement: () => overlayContainerElement };
                     },
                 },
@@ -1513,6 +1517,27 @@ describe('NxDialog with a parent NxDialog', () => {
     afterEach(() => {
         overlayContainerElement.innerHTML = '';
     });
+
+    it('should toggle `aria-hidden` on the overlay container siblings', fakeAsync(() => {
+        const sibling = document.createElement('div');
+        overlayContainerElement.parentNode!.appendChild(sibling);
+
+        parentDialog.open(OpenerBComponent);
+        fixture.detectChanges();
+
+        expect(sibling.getAttribute('inert')).withContext('Expected sibling to be hidden').toBe('true');
+        expect(sibling.getAttribute('aria-hidden')).withContext('Expected sibling to be hidden').toBe('true');
+
+        tick(2000);
+        flush();
+
+        childDialog.closeAll();
+        fixture.detectChanges();
+        flush();
+
+        expect(sibling.hasAttribute('inert')).withContext('Expected sibling to no longer be inert.').toBeFalse();
+        expect(sibling.hasAttribute('aria-hidden')).withContext('Expected sibling to no longer be hidden.').toBeFalse();
+    }));
 
     it('should close dialogs opened by a parent when calling closeAll on a child NxDialog', fakeAsync(() => {
         parentDialog.open(PizzaMsg);
@@ -1795,6 +1820,38 @@ class DialogWithoutFocusableElements {}
 })
 class ShadowDomComponent {}
 
+@Component({
+    selector: 'opener-b',
+    template: 'Hi, please wait',
+    providers: [NxDialogService],
+})
+class OpenerBComponent implements OnInit {
+    constructor(
+        private dialog: NxDialogService,
+        private ref: NxModalRef<any, any>,
+    ) {}
+
+    async ngOnInit() {
+        await firstValueFrom(timer(1000));
+        this.dialog.open(Closer);
+
+        await firstValueFrom(timer(600));
+        this.ref.close(); // close a
+    }
+}
+
+@Component({
+    template: 'Closing in a Second',
+})
+class Closer implements OnInit {
+    constructor(private ref: NxModalRef<any, any>) {}
+
+    async ngOnInit() {
+        await firstValueFrom(timer(1000));
+        this.ref.close(); // close B
+    }
+}
+
 // Create a real (non-test) NgModule as a workaround for
 // https://github.com/angular/angular/issues/10760
 const TEST_DIRECTIVES = [
@@ -1809,6 +1866,8 @@ const TEST_DIRECTIVES = [
     ComponentWithContentElementTemplateRef,
     ShadowDomComponent,
     TitleStatusDialog,
+    OpenerBComponent,
+    Closer,
 ];
 
 @NgModule({

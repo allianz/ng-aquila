@@ -54,6 +54,11 @@ export class NxDialogService implements OnDestroy {
         return this._parentDialogService ? this._parentDialogService.openModals : this._openModalsAtThisLevel;
     }
 
+    /** Keeps track of the currently aria-hidden elements. */
+    get ariaHiddenElements(): Map<Element, string | null> {
+        return this._parentDialogService ? this._parentDialogService.ariaHiddenElements : this._ariaHiddenElements;
+    }
+
     /** Stream that emits when a modal has been opened. */
     get afterOpened(): Subject<NxModalRef<any>> {
         return this._parentDialogService ? this._parentDialogService.afterOpened : this._afterOpenedAtThisLevel;
@@ -282,27 +287,32 @@ export class NxDialogService implements OnDestroy {
      * @param modalRef Modal to be removed.
      */
     private _removeOpenModal(modalRef: NxModalRef<any>) {
-        const index = this.openModals.indexOf(modalRef);
-        if (index > -1) {
-            this.openModals.splice(index, 1);
-
-            // If all the modals were closed, remove/restore the `aria-hidden` and `inert`
-            // to a the siblings and emit to the `afterAllClosed` stream.
-            if (!this.openModals.length) {
-                this._ariaHiddenElements.forEach((previousValue, element) => {
-                    if (previousValue) {
-                        element.setAttribute('aria-hidden', previousValue);
-                        element.setAttribute('inert', previousValue);
-                    } else {
-                        element.removeAttribute('aria-hidden');
-                        element.removeAttribute('inert');
-                    }
-                });
-
-                this._ariaHiddenElements.clear();
-                this._afterAllClosed.next();
-            }
+        const modalIndex = this.openModals.indexOf(modalRef);
+        if (modalIndex === -1) {
+            return;
         }
+
+        this.openModals.splice(modalIndex, 1);
+
+        // If all the modals were closed, remove/restore the `aria-hidden` and `inert`
+        // to a the siblings and emit to the `afterAllClosed` stream.
+        if (this.openModals.length) {
+            return;
+        }
+
+        // Restore `aria-hidden` and `inert` attributes to siblings and emit `afterAllClosed`.
+        this.ariaHiddenElements.forEach((previousValue, element) => {
+            if (previousValue) {
+                element.setAttribute('aria-hidden', previousValue);
+                element.setAttribute('inert', previousValue);
+            } else {
+                element.removeAttribute('aria-hidden');
+                element.removeAttribute('inert');
+            }
+        });
+
+        this.ariaHiddenElements.clear();
+        this._afterAllClosed.next();
     }
 
     /**
@@ -312,20 +322,22 @@ export class NxDialogService implements OnDestroy {
         const overlayContainer = this._overlayContainer.getContainerElement();
 
         // Ensure that the overlay container is attached to the DOM.
-        if (overlayContainer.parentElement) {
-            const siblings = overlayContainer.parentElement.children;
-
-            for (let i = siblings.length - 1; i > -1; i--) {
-                const sibling = siblings[i];
-
-                if (sibling !== overlayContainer && sibling.nodeName !== 'SCRIPT' && sibling.nodeName !== 'STYLE' && !sibling.hasAttribute('aria-live')) {
-                    this._ariaHiddenElements.set(sibling, sibling.getAttribute('aria-hidden'));
-                    this._ariaHiddenElements.set(sibling, sibling.getAttribute('inert'));
-                    sibling.setAttribute('aria-hidden', 'true');
-                    sibling.setAttribute('inert', 'true');
-                }
-            }
+        if (!overlayContainer.parentElement) {
+            return;
         }
+
+        Array.from(overlayContainer.parentElement.children).forEach(sibling => {
+            if (sibling !== overlayContainer && sibling.nodeName !== 'SCRIPT' && sibling.nodeName !== 'STYLE' && !sibling.hasAttribute('aria-live')) {
+                const ariaHidden = sibling.getAttribute('aria-hidden');
+                const inert = sibling.getAttribute('inert');
+
+                this.ariaHiddenElements.set(sibling, ariaHidden);
+                this.ariaHiddenElements.set(sibling, inert);
+
+                sibling.setAttribute('aria-hidden', 'true');
+                sibling.setAttribute('inert', 'true');
+            }
+        });
     }
 
     /** Closes all of the modals in an array. */
