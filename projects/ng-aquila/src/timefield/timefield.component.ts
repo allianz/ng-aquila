@@ -74,7 +74,7 @@ export const DEFAULT_START_TIME = '00:00';
 export const DEFAULT_TIME_SPAN = 30;
 
 export type TimepickerOption = { value: string; label: string };
-
+export type InputModeType = 'decimal' | 'numeric' | 'tel' | 'text';
 export function TIMEFIELD_DEFAULT_OPTIONS_FACTORY(): TimefieldDefaultOptions {
     return {
         withTimepicker: false,
@@ -172,6 +172,8 @@ export class NxTimefieldComponent implements ControlValueAccessor, AfterViewInit
     @Input() hint = '';
     /* The optional label for the formfield. */
     @Input() optionalLabel: string = '';
+    /** The inputmode for the formfield. */
+    @Input() inputMode: InputModeType = 'decimal';
 
     private _withTimepicker = false;
     /* Whether to show the timepicker. Not enabled by default. */

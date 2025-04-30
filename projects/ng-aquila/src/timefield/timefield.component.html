@@ -32,6 +32,7 @@
                 [attr.aria-controls]="isOpen ? idOptionList : null"
                 [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
                 [attr.aria-describedby]="error?.id"
+                [attr.inputmode]="inputMode"
             />
             <span class="nx-timefield-hours-separator" aria-hidden="true">:</span>
             <input
@@ -57,6 +58,7 @@
                 [attr.aria-controls]="isOpen ? idOptionList : null"
                 [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
                 [attr.aria-describedby]="error?.id"
+                [attr.inputmode]="inputMode"
             />
             @if (withTimepicker) {
                 <button

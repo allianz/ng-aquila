@@ -10,6 +10,7 @@ import { TimefieldNegativeExampleComponent } from './timefield-negative/timefiel
 import { TimefieldOptionsIntervalExampleComponent } from './timefield-options-interval/timefield-options-interval-example';
 import { TimefieldReactiveExampleComponent } from './timefield-reactive/timefield-reactive-example';
 import { TimefieldTemplateDrivenExampleComponent } from './timefield-template-driven/timefield-template-driven-example';
+import { TimefieldWithInputmode } from './timefield-with-inputmode/timefield-with-inputmode-example';
 import { TimefieldWithTimepickerExampleComponent } from './timefield-with-timepicker/timefield-with-timepicker-example';
 import { TimefieldWithTimepickerGlobalExampleComponent } from './timefield-with-timepicker-global/timefield-with-timepicker-global-example';
 
@@ -49,6 +50,7 @@ export class TimefieldExamplesModule {
                 TimefieldWithTimepickerGlobalExampleComponent,
             'timefield-custom-validation':
                 TimefieldCustomValidationExampleComponent,
+            'timefield-with-inputmode': TimefieldWithInputmode,
         };
     }
 }

@@ -33,6 +33,10 @@ You can enable the timepicker globally by providing the `TimefieldDefaultOptions
 
 <!-- example(timefield-with-timepicker-global) -->
 
+### Configuring Inputmode
+The timefield component supports different input modes to control the virtual keyboard display in browsers. By default, the input mode is set to 'decimal'. You can configure the input mode using the `inputMode` property
+<!-- example(timefield-with-inputmode) -->
+
 ### Enable time validation
 You can use `enableTimeValidation` to use the validator for invalid times. This validator adds a `timefieldValueError` error to the form control if the time is invalid, e.g. if the one of the inputs is not set or the numbers are not in the correct range.
 

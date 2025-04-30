@@ -21,6 +21,7 @@ abstract class TimefieldTest {
     time = '';
     twelveHourFormat = false;
     withTimepicker = false;
+    inputMode = '';
 }
 
 @Injectable()
@@ -133,6 +134,30 @@ describe('NxTimefieldComponent', () => {
         createTestComponent(SimpleTimefield);
         expect(timefieldInstance._toggleAMPM).toBeFalsy();
     });
+
+    it('should have default inputmode="decimal"', () => {
+        createTestComponent(SimpleTimefield);
+        expect(inputElementHours.getAttribute('inputmode')).toBe('decimal');
+        expect(inputElementMinutes.getAttribute('inputmode')).toBe('decimal');
+    });
+
+    it('should be able to set inputmode', fakeAsync(() => {
+        createTestComponent(InputModeTimefield);
+        const templateInstance = testInstance as InputModeTimefield;
+        fixture.detectChanges();
+        flush();
+        templateInstance.inputMode = 'numeric';
+        fixture.detectChanges();
+        flush();
+        expect(inputElementHours.getAttribute('inputmode')).toBe('numeric');
+        expect(inputElementMinutes.getAttribute('inputmode')).toBe('numeric');
+
+        templateInstance.inputMode = 'text';
+        fixture.detectChanges();
+        flush();
+        expect(inputElementHours.getAttribute('inputmode')).toBe('text');
+        expect(inputElementMinutes.getAttribute('inputmode')).toBe('text');
+    }));
 
     it('should prevent setting time if timeformat is not in ISO 24h format', fakeAsync(() => {
         createTestComponent(TemplateDrivenTimefield);
@@ -861,4 +886,11 @@ class CustomValidationTimefield extends TimefieldTest {
             today: [''],
         });
     }
+}
+@Component({
+    template: `<nx-timefield label="Time" [inputMode]="inputMode"></nx-timefield>`,
+    imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
+})
+class InputModeTimefield extends TimefieldTest {
+    inputMode: string = 'decimal';
 }
