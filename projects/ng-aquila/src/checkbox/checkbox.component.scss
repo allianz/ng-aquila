@@ -155,6 +155,7 @@
     &:has(input:disabled) {
         .nx-checkbox__control {
             background-color: v(checkbox-disabled-selected-background-color);
+            border-color: v(checkbox-disabled-selected-border-color);
         }
     }
 }
