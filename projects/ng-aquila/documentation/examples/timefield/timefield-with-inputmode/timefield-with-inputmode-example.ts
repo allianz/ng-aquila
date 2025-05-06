@@ -8,6 +8,6 @@ import { NxTimefieldComponent } from '@aposin/ng-aquila/timefield';
     selector: 'timefield-with-inputmode',
     imports: [FormsModule, NxTimefieldComponent],
     templateUrl: './timefield-with-inputmode-example.html',
-    styleUrl: './timefield-with-inputmode-example.scss',
+    styleUrl: './timefield-with-inputmode-example.css',
 })
 export class TimefieldWithInputmode {}
