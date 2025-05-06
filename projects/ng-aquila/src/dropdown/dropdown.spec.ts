@@ -18,6 +18,7 @@ import { createFakeEvent, dispatchFakeEvent, dispatchKeyboardEvent } from '../cd
 import { NX_DROPDOWN_SCROLL_STRATEGY, NxDropdownComponent, NxDropdownIntl } from './dropdown';
 import { NxDropdownModule } from './dropdown.module';
 import { NxDropdownItemComponent } from './item/dropdown-item';
+import { SelectOnFocusDirective } from './select-on-focus.directive';
 
 class CustomIntl extends NxDropdownIntl {
     selectAll = 'Test select all';
@@ -1327,6 +1328,28 @@ describe('NxDropdownComponent', () => {
         }));
     });
 
+    describe('utils', () => {
+        beforeEach(fakeAsync(() => {
+            configureNxDropdownTestingModule([TestSelectOnFocus]);
+        }));
+
+        it('should select text when focused', fakeAsync(() => {
+            createTestComponent(TestSelectOnFocus);
+            const mockRange = jasmine.createSpyObj('Range', ['selectNodeContents']);
+            const mockSelection = jasmine.createSpyObj('Selection', ['removeAllRanges', 'addRange']);
+            spyOn(document, 'createRange').and.returnValue(mockRange);
+            spyOn(window, 'getSelection').and.returnValue(mockSelection);
+
+            Object.defineProperty(dropdownElement, 'select', { value: undefined });
+            dropdownElement.dispatchEvent(new FocusEvent('focusin'));
+            dropdownElement.focus();
+
+            expect(mockRange.selectNodeContents).toHaveBeenCalledWith(dropdownElement);
+            expect(mockSelection.removeAllRanges).toHaveBeenCalled();
+            expect(mockSelection.addRange).toHaveBeenCalledWith(mockRange);
+        }));
+    });
+
     describe('keyboard support', () => {
         beforeEach(fakeAsync(() => {
             configureNxDropdownTestingModule([SimpleDropdownComponent, FilterDropdownComponent, MultiSelectDropdownComponent]);
@@ -2306,3 +2329,13 @@ class DropdownLazy extends DropdownTest {
 class VerticalAlignCheckmarkComponent extends DropdownTest {
     verticalAlignCheckmark = 'top';
 }
+
+@Component({
+    template: `
+        <nx-dropdown selectOnFocus>
+            <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
+        </nx-dropdown>
+    `,
+    imports: [NxDropdownModule, SelectOnFocusDirective],
+})
+class TestSelectOnFocus extends DropdownTest {}

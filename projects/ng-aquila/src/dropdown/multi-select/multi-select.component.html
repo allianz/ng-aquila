@@ -1,5 +1,6 @@
 <div
     [nxTooltip]="_tooltipText"
+    [nxTooltipSelectable]="true"
     class="value"
     (click)="_open($event, 'mouse')"
     (keydown.enter)="_open($event, 'keyboard')"

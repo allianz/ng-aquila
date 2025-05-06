@@ -1,5 +1,5 @@
 <!-- input and stuff-->
-<div cdkOverlayOrigin #fallbackOrigin="cdkOverlayOrigin" class="nx-dropdown__container" #trigger [nxTooltip]="_tooltipText">
+<div cdkOverlayOrigin #fallbackOrigin="cdkOverlayOrigin" class="nx-dropdown__container" #trigger [nxTooltip]="_tooltipText" [nxTooltipSelectable]="true">
     <div class="nx-dropdown__rendered" [id]="renderedValueId">
         @if (empty && placeholder) {
         <span>{{ placeholder }}</span>
