@@ -1,4 +1,4 @@
-@for (key of _keyCode; track _trackByKeyCode(i, key); let i = $index) {
+@for (key of _keyCode; track _trackByKeyCode(i, key); let i = $index, first = $first) {
     <input
         class="nx-code-input__field"
         [ngModel]="_keyCode[i]"
@@ -12,7 +12,7 @@
         (keydown)="_keydownAction($event)"
         [attr.tabindex]="tabindex"
         [disabled]="disabled ? true : false"
-        autocomplete="one-time-code"
+        [attr.autocomplete]="first ? 'one-time-code' : null"
     />
 }
 @if (errorState) {
