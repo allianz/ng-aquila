@@ -71,3 +71,18 @@
     </nx-multi-year-view>
     } }
 </div>
+@if (showTodayButton) {
+<div class="nx-calendar-footer">
+    <button
+        #todayButton
+        nxPlainButton
+        type="button"
+        (click)="todayButtonHandler()"
+        (keydown)="todayButtonKeydownHandler($event)"
+        [disabled]="_disableTodayButton"
+        [attr.aria-label]="_intl.todayButtonAriaLabel"
+    >
+        {{_intl.todayButtonLabel}}
+    </button>
+</div>
+}

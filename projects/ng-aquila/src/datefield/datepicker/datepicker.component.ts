@@ -169,6 +169,9 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     /** The view that the calendar should start in. */
     @Input() startView: 'month' | 'year' | 'multi-year' = 'month';
 
+    /** Determines whether the today button is displayed in the calendar. */
+    @Input() showTodayButton: boolean = false;
+
     /**
      * Whether the datepicker pop-up should be disabled.
      * The datepicker is also disabled if the belonging input is readonly.
@@ -210,6 +213,12 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     /** Emits when the datepicker has been closed. */
     @Output('closed') readonly closedStream = new EventEmitter<void>();
+
+    /**
+     * Emits when the Today button is clicked.
+     * This doesn't imply a change on the selected date.
+     */
+    @Output() readonly todayButtonClick = new EventEmitter<void>();
 
     /** Whether the calendar is open. */
     @Input() set opened(value: boolean) {
@@ -583,5 +592,9 @@ export class NxDatepickerComponent<D> implements OnDestroy {
             return this._datepickerInput.value;
         }
         return this._datepickerInputStartDate?.value as D;
+    }
+
+    handleTodayButtonClick() {
+        this.todayButtonClick.emit();
     }
 }

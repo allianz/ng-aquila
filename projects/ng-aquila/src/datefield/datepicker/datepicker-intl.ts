@@ -50,6 +50,12 @@ export class NxDatepickerIntl {
     /** A label for the 'switch to year view' button (used by screen readers). */
     switchToMultiYearViewLabel = 'Choose month and year';
 
+    /** A label for the today button (used by screen readers). */
+    todayButtonLabel = 'Today';
+
+    /** A label for describe the today button (used by screen readers). */
+    todayButtonAriaLabel = 'Navigate to today';
+
     /** Announcement message after start date was selected (used by screen readers) */
     startDateSelectedAnnouncement = 'Start date selected. Please Select end date.';
 

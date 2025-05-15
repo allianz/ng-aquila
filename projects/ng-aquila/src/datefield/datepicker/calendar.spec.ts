@@ -512,6 +512,103 @@ describe('NxCalendarComponent', () => {
             });
         });
     });
+
+    describe('calendar with today button', () => {
+        let fixture: ComponentFixture<CalendarWithTodayButton>;
+        let calendarElement: HTMLElement;
+        let calendarInstance: NxCalendarComponent<Date>;
+        let nextButton: HTMLElement;
+        let todayButton: HTMLElement;
+
+        beforeEach(() => {
+            fixture = TestBed.createComponent(CalendarWithTodayButton);
+            fixture.detectChanges();
+            const calendarDebugElement = fixture.debugElement.query(By.directive(NxCalendarComponent));
+            calendarElement = calendarDebugElement.nativeElement;
+            calendarInstance = calendarDebugElement.componentInstance;
+            nextButton = calendarElement.querySelector('.nx-calendar-next-button') as HTMLElement;
+            todayButton = calendarElement.querySelector('[aria-label="Navigate to today"]') as HTMLElement;
+        });
+
+        it('should show today button', () => {
+            expect(todayButton).toBeTruthy();
+        });
+
+        it('should navigate to current month when click today button', () => {
+            expect(calendarInstance._activeDate).toEqual(new Date(2025, JAN, 31));
+
+            nextButton.click();
+            fixture.detectChanges();
+
+            expect(calendarInstance._activeDate).toEqual(new Date(2025, FEB, 28));
+
+            const today = new Date(2025, JAN, 9);
+
+            spyOn(calendarInstance['_dateAdapter'], 'today').and.returnValue(today);
+
+            todayButton.click();
+            fixture.detectChanges();
+
+            expect(calendarInstance._activeDate).toEqual(new Date(2025, JAN, 9));
+            expect(calendarInstance._currentView).toBe('month');
+        });
+
+        it('should disable today button if already in current month and view is "month"', () => {
+            const today = new Date(2025, JAN, 9);
+            spyOn(calendarInstance['_dateAdapter'], 'today').and.returnValue(today);
+
+            calendarInstance._currentView = 'month';
+            calendarInstance._activeDate = new Date(2025, JAN, 1);
+
+            expect(calendarInstance._disableTodayButton).toBeTrue();
+        });
+
+        it('should not disable today button if in a different month', () => {
+            const today = new Date(2025, JAN, 9);
+            spyOn(calendarInstance['_dateAdapter'], 'today').and.returnValue(today);
+
+            calendarInstance._currentView = 'month';
+            calendarInstance._activeDate = new Date(2025, FEB, 28);
+
+            expect(calendarInstance._disableTodayButton).toBeFalse();
+        });
+
+        it('should not disable today button if not in "month" view', () => {
+            const today = new Date(2025, JAN, 9);
+            spyOn(calendarInstance['_dateAdapter'], 'today').and.returnValue(today);
+
+            calendarInstance._currentView = 'year';
+
+            expect(calendarInstance._disableTodayButton).toBeFalse();
+        });
+
+        describe('a11y', () => {
+            beforeEach(() => {
+                fixture = TestBed.createComponent(CalendarWithTodayButton);
+                fixture.detectChanges();
+                const calendarDebugElement = fixture.debugElement.query(By.directive(NxCalendarComponent));
+                calendarElement = calendarDebugElement.nativeElement;
+                calendarInstance = calendarDebugElement.componentInstance;
+                nextButton = calendarElement.querySelector('.nx-calendar-next-button') as HTMLElement;
+                todayButton = calendarElement.querySelector('[aria-label="Navigate to today"]') as HTMLElement;
+            });
+
+            it('should navigate to current date when press Today button by keyboard', () => {
+                nextButton.click();
+                fixture.detectChanges();
+                expect(calendarInstance._activeDate).toEqual(new Date(2025, FEB, 28));
+
+                const today = new Date(2025, JAN, 9);
+                spyOn(calendarInstance['_dateAdapter'], 'today').and.returnValue(today);
+                dispatchKeyboardEvent(todayButton, 'keydown', ENTER, 'Enter');
+                fixture.detectChanges();
+                expect(calendarInstance._activeDate).toEqual(new Date(2025, JAN, 9));
+
+                const currentDateElement = calendarElement.querySelector('.nx-calendar-body-today') as HTMLElement;
+                expect(currentDateElement).toBeTruthy();
+            });
+        });
+    });
 });
 
 @Component({
@@ -524,6 +621,15 @@ class StandardCalendar {
     selectedYear!: Date;
     selectedMonth!: Date;
     startDate = new Date(2017, JAN, 31);
+}
+
+@Component({
+    template: ` <nx-calendar [startAt]="startDate" [showTodayButton]="true" [(selected)]="selected"> </nx-calendar> `,
+    imports: [NxNativeDateModule, NxCalendarComponent],
+})
+class CalendarWithTodayButton {
+    selected!: Date;
+    startDate = new Date(2025, JAN, 31);
 }
 
 @Component({

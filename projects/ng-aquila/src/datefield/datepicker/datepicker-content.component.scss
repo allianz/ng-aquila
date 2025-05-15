@@ -14,9 +14,9 @@ $spacing-beneath-calendar-mobile: nx-spacer(s);
 $spacing-sides-calendar: nx-spacer(2m);
 $spacing-sides-calendar-mobile: nx-spacer(xs);
 
-$calendar-height: calc(#{$controls-height} + #{$spacing-above-calendar} + 7 * #{$item-size} + #{$spacing-beneath-calendar} - #{$datepicker-border-width});
+$calendar-min-height: calc(#{$controls-height} + #{$spacing-above-calendar} + 7 * #{$item-size} + #{$spacing-beneath-calendar} - #{$datepicker-border-width});
 
-$calendar-height-mobile: calc(
+$calendar-min-height-mobile: calc(
     #{$controls-height} + #{$spacing-above-calendar} + 7 * #{$item-size} + #{$spacing-beneath-calendar-mobile} - #{$datepicker-border-width}
 );
 
@@ -68,10 +68,10 @@ $calendar-width-mobile: calc(7 * #{$item-size} + 2 * #{$spacing-sides-calendar-m
 
 nx-calendar {
     width: $calendar-width;
-    height: $calendar-height;
+    min-height: $calendar-min-height;
 
     @include media-breakpoint-response(mobile) {
         width: $calendar-width-mobile;
-        height: $calendar-height-mobile;
+        min-height: $calendar-min-height-mobile;
     }
 }

@@ -2,13 +2,17 @@ import { CdkMonitorFocus, FocusMonitor, LiveAnnouncer } from '@angular/cdk/a11y'
 import { Directionality } from '@angular/cdk/bidi';
 import {
     AfterContentInit,
+    afterNextRender,
     AfterViewInit,
+    booleanAttribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ElementRef,
     EventEmitter,
     Inject,
+    inject,
+    Injector,
     Input,
     input,
     OnChanges,
@@ -111,6 +115,9 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
     /** A function used to filter which dates are selectable. */
     @Input() dateFilter!: (date: D) => boolean;
 
+    /** Determines whether the today button is displayed in the calendar. */
+    @Input({ transform: booleanAttribute }) showTodayButton: boolean = false;
+
     /** Emits when the currently selected date changes. */
     @Output() readonly selectedChange = new EventEmitter<D | DateRange<D>>();
 
@@ -129,6 +136,12 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
     /** Emits when any date is selected. */
     @Output() readonly _userSelection = new EventEmitter<void>();
 
+    /**
+     * Emits when the Today button is clicked.
+     * This doesn't imply a change on the selected date.
+     */
+    @Output() readonly todayButtonClick = new EventEmitter<void>();
+
     /** Reference to the current month view component. */
     @ViewChild(NxMonthViewComponent) monthView!: NxMonthViewComponent<D>;
     /** Reference to the current year view component. */
@@ -140,6 +153,10 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
     @ViewChild('previousButton') _previousButton!: ElementRef<HTMLElement>;
     @ViewChild('nextButton') _nextButton!: ElementRef<HTMLElement>;
     @ViewChild('changeViewButton') _changeViewButton!: ElementRef<HTMLElement>;
+    @ViewChild('todayButton') _todayButton!: ElementRef<HTMLElement>;
+
+    private _injector = inject(Injector);
+
     /**
      * The current active date. This determines which time period is shown and which date is
      * highlighted when using keyboard navigation.
@@ -195,19 +212,30 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
         return this._dir?.value === 'rtl';
     }
 
+    /** Check whether today button should disable or not */
+    get _disableTodayButton(): boolean {
+        const today = this._dateAdapter.today();
+        return (
+            this._currentView === 'month' &&
+            this._dateAdapter.getMonth(this._activeDate) === this._dateAdapter.getMonth(today) &&
+            this._dateAdapter.getYear(this._activeDate) === this._dateAdapter.getYear(today)
+        );
+    }
+
     private readonly _dateAdapter: NxDateAdapter<D>;
     private readonly _dateFormats: NxDateFormats;
 
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private readonly _intl: NxDatepickerIntl,
+        protected readonly _intl: NxDatepickerIntl,
         @Optional() _dateAdapter: NxDateAdapter<D> | null,
         @Optional() private readonly _dir: Directionality | null,
         @Optional() @Inject(NX_DATE_FORMATS) _dateFormats: NxDateFormats | null,
         _cdr: ChangeDetectorRef,
         private readonly _focusMonitor: FocusMonitor,
         private readonly _liveAnnouncer: LiveAnnouncer,
+        private readonly _elementRef: ElementRef,
     ) {
         if (!_dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
@@ -231,6 +259,9 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
         this._focusMonitor.monitor(this._previousButton);
         this._focusMonitor.monitor(this._nextButton);
         this._focusMonitor.monitor(this._changeViewButton);
+        if (this._todayButton) {
+            this._focusMonitor.monitor(this._todayButton);
+        }
     }
 
     ngOnDestroy(): void {
@@ -239,6 +270,9 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
         this._focusMonitor.stopMonitoring(this._previousButton);
         this._focusMonitor.stopMonitoring(this._nextButton);
         this._focusMonitor.stopMonitoring(this._changeViewButton);
+        if (this._todayButton) {
+            this._focusMonitor.stopMonitoring(this._todayButton);
+        }
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -410,5 +444,34 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
         const isEndValid = this._dateAdapter.isDateInstance(newDateRange?.end) && this._dateAdapter.isValid(newDateRange.end!);
 
         return { start: isStartValid ? newDateRange.start : null, end: isEndValid ? newDateRange.end : null };
+    }
+
+    /** Handles event on the today button */
+    protected todayButtonHandler(): void {
+        this._activeDate = this._dateAdapter.today();
+        if (this._currentView !== 'month') {
+            this._currentView = 'month';
+        }
+
+        afterNextRender(
+            {
+                read: () => {
+                    const currentDateElement = this._elementRef.nativeElement.querySelector('.nx-calendar-body-today');
+                    if (currentDateElement) {
+                        currentDateElement.focus();
+                    }
+                },
+            },
+            { injector: this._injector },
+        );
+
+        this.todayButtonClick.emit();
+    }
+
+    protected todayButtonKeydownHandler(event: KeyboardEvent): void {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            this.todayButtonHandler();
+        }
     }
 }

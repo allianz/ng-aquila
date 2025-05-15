@@ -22,10 +22,12 @@
         [maxDate]="datepicker.maxDate"
         [dateFilter]="datepicker.dateFilter"
         [selected]="datepicker.selectedComputed()"
+        [showTodayButton]="datepicker.showTodayButton"
         (selectedChange)="datepicker.select($event)"
         (yearSelected)="datepicker.selectYear($event)"
         (monthSelected)="datepicker.selectMonth($event)"
         (_userSelection)="datepicker.close()"
+        (todayButtonClick)="datepicker.handleTodayButtonClick()"
     >
     </nx-calendar>
 </div>

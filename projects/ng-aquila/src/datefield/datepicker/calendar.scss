@@ -2,10 +2,13 @@
 
 $item-size: nx-spacer(3m);
 $calendar-content-width: 7 * $item-size;
+$datepicker-border-width: nx-border-size(xs);
+$calendar-content-height: calc(#{$item-size} + 6 * (#{$item-size} + 2 * #{$datepicker-border-width}));
 
 .nx-calendar-content {
     width: $calendar-content-width;
     margin: nx-spacer(s) auto 0 auto;
+    height: $calendar-content-height;
 }
 
 .nx-calendar-previous-button,
@@ -50,4 +53,8 @@ $calendar-content-width: 7 * $item-size;
 // don't show inner dotted border on firefox
 button::-moz-focus-inner {
     border: 0;
+}
+.nx-calendar-footer {
+    text-align: center;
+    margin: nx-spacer(s) 0 nx-spacer(2m) 0;
 }

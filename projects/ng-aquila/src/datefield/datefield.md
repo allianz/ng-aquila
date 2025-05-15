@@ -97,6 +97,12 @@ Instead of using min/max you can use `nxDatefieldFilter` to create your own set 
 
 <!-- example(datefield-filter) -->
 
+#### Today Button
+
+You can enable the Today button by setting `showTodayButton` to `true`. Clicking this button will navigate the calendar to the current month, but it won’t select the current date. 
+We suggest not showing the Today button when today’s date cannot be displayed on the screen (e.g. due to minDate, maxDate, or dateFilter), as it may cause confusion.
+
+<!-- example(datefield-today-button) -->
 
 #### Reactive form
 

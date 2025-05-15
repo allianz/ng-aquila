@@ -25,6 +25,7 @@ import { DatefieldReactiveExampleComponent } from './datefield-reactive/datefiel
 import { DatefieldReadonlyExampleComponent } from './datefield-readonly/datefield-readonly-example';
 import { DatefieldScrollStrategyProviderExampleComponent } from './datefield-scroll-strategy-provider/datefield-scroll-strategy-provider-example';
 import { DatefieldStartviewExampleComponent } from './datefield-startview/datefield-startview-example';
+import { DatefieldTodayButtonExampleComponent } from './datefield-today-button/datefield-today-button-example';
 import { DatefieldToggleFocusExampleComponent } from './datefield-toggle-focus/datefield-toggle-focus-example';
 
 const EXAMPLES = [
@@ -44,6 +45,7 @@ const EXAMPLES = [
     DatefieldRangeValidationExampleComponent,
     DatefieldReactiveExampleComponent,
     DatefieldStartviewExampleComponent,
+    DatefieldTodayButtonExampleComponent,
     DatefieldToggleFocusExampleComponent,
     DatefieldScrollStrategyProviderExampleComponent,
     DatefieldReadonlyExampleComponent,
@@ -84,6 +86,7 @@ export class DatefieldExamplesModule {
                 DatefieldRangeValidationExampleComponent,
             'datefield-reactive': DatefieldReactiveExampleComponent,
             'datefield-startview': DatefieldStartviewExampleComponent,
+            'datefield-today-button': DatefieldTodayButtonExampleComponent,
             'datefield-toggle-focus': DatefieldToggleFocusExampleComponent,
             'datefield-scroll-strategy-provider':
                 DatefieldScrollStrategyProviderExampleComponent,
