@@ -989,6 +989,25 @@ The datepicker is also disabled if the belonging input is readonly.</p>
                     <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
+                showTodayButton: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Determines whether the today button is displayed in the calendar.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
                 startAt: 
                 </span>
                  
@@ -1081,6 +1100,26 @@ This doesn&#39;t imply a change on the selected date.</p>
     </td>
     <td class="docs-api-property-description">
         <p>Emits when the datepicker has been opened.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+                <span class="docs-api-output__badge">Output</span>
+                    <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                todayButtonClick: 
+                </span>
+                 
+                <span class="docs-api-property__type">EventEmitter&lt;void&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Emits when the Today button is clicked.
+This doesn&#39;t imply a change on the selected date.</p>
 </td>
 </tr>
    
@@ -1197,6 +1236,15 @@ Never emits any other type. <code>any</code> is used here to avoid breaking chan
     <div class="docs-api-method-card-header">
         <code>
             <span class="docs-api-method-name">getStartAtDate(): <span class="docs-api-method-returns-type">D</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">handleTodayButtonClick()</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div></div>
@@ -2926,6 +2974,40 @@ components if the labels have changed after initialization.</p>
     </td>
     <td class="docs-api-property-description">
         <p>A label for the &#39;switch to year view&#39; button (used by screen readers).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                todayButtonAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for describe the today button (used by screen readers).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                todayButtonLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the today button (used by screen readers).</p>
 </td>
 </tr>
   

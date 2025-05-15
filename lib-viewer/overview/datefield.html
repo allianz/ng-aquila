@@ -74,6 +74,10 @@
 <h4 id="date-filter" tabindex="-1" class="docs-markdown--h4">Date Filter</h4>
 <p class="docs-markdown--p">Instead of using min/max you can use <code>nxDatefieldFilter</code> to create your own set of valid dates. This example only allows the 6th day of each month. The datepicker disables all invalid dates. Validation will give you an error in the field <code>nxDatefieldFilter</code>.</p>
 <div nx-docs-example="datefield-filter" config="{}">exampleID: datefield-filter</div>
+<h4 id="today-button" tabindex="-1" class="docs-markdown--h4">Today Button</h4>
+<p class="docs-markdown--p">You can enable the Today button by setting <code>showTodayButton</code> to <code>true</code>. Clicking this button will navigate the calendar to the current month, but it won’t select the current date.
+We suggest not showing the Today button when today’s date cannot be displayed on the screen (e.g. due to minDate, maxDate, or dateFilter), as it may cause confusion.</p>
+<div nx-docs-example="datefield-today-button" config="{}">exampleID: datefield-today-button</div>
 <h4 id="reactive-form" tabindex="-1" class="docs-markdown--h4">Reactive form</h4>
 <div nx-docs-example="datefield-reactive" config="{}">exampleID: datefield-reactive</div>
 <h4 id="readonly" tabindex="-1" class="docs-markdown--h4">Readonly</h4>

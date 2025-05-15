@@ -25,10 +25,6 @@
     margin: 0;
 }
 
-.minus-icon {
-    color: var(--documentation-comparison-table-example-minus-color);
-}
-
 .check-icon {
     color: var(--success);
 }

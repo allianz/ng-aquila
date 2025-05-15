@@ -48,10 +48,6 @@
     margin: 0;
 }
 
-.minus-icon {
-    color: var(--documentation-comparison-table-example-minus-color, #ada8a8);
-}
-
 .check-icon {
     color: var(--success, #26ae31);
 }

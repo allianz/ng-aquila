@@ -598,6 +598,7 @@ body,
   --checkbox-selected-hover-background-color: var(--hover-primary);
   --checkbox-disabled-border-color: var(--disabled-01);
   --checkbox-disabled-background-color: var(--disabled-04);
+  --checkbox-disabled-selected-border-color: var(--disabled-01);
   --checkbox-disabled-selected-background-color: var(--disabled-01);
   --checkbox-disabled-icon-color: var(--text-02);
   --checkbox-readonly-background-color: var(--readonly-surface-color);
