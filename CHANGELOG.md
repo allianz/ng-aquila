@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [19.4.0](https://github.com/allianz/ng-aquila/compare/v19.3.2...v19.4.0) (2025-05-15)
+
+
+### Documentation 📚
+
+* **comparison-table:** fix color contrast for minus icon ([75462d0](https://github.com/allianz/ng-aquila/commit/75462d0c828e845447c4dac198b90f75bed7df9d))
+
+
+### Bug Fixes 🐛
+
+* **code-input:** prevent code suggestion emit twice on safari ([9943285](https://github.com/allianz/ng-aquila/commit/99432859db584ad7522b607f4de5a6b801ff72bf))
+* **dropdown:** make dropdown highlightable ([f62d835](https://github.com/allianz/ng-aquila/commit/f62d83576ea6176f5728c27edd488166c35548ae))
+* **modal:** prevent aria-hidden elements state loss with nested dialogs ([89ecb31](https://github.com/allianz/ng-aquila/commit/89ecb31547c99739201640deb4a4e4781bc02dbe))
+* **small-stage:** expert layout and header example font size ([3b0ea69](https://github.com/allianz/ng-aquila/commit/3b0ea69cd8bae8ff23fa5ce1ccf20ef2f38cfd7c))
+* **timefield:** fix typo ([e3ef3b2](https://github.com/allianz/ng-aquila/commit/e3ef3b263f0d61a0dd73f76048427e333a4920e9))
+* **timefield:** hint not properly projected ([dcde71a](https://github.com/allianz/ng-aquila/commit/dcde71a037e84cade9bca3ea7410fb4dbc8d9d0a))
+* **tooltip:** change word-break property to improve text wrapping ([d25b827](https://github.com/allianz/ng-aquila/commit/d25b827c887687fdc4c60e2046c2d40f188a9710))
+
+
+### Features ✨
+
+* **checkbox:** update token for a1 ([b1f4058](https://github.com/allianz/ng-aquila/commit/b1f4058e701b868c251ac6e28f543a5b0fa749ad))
+* **datefield:** add today button ([1025db6](https://github.com/allianz/ng-aquila/commit/1025db6701f45bb317fde43a9611600127d3b9e9))
+* **timefield:** add inputmode and inputmode example ([61b3eb8](https://github.com/allianz/ng-aquila/commit/61b3eb878934156f6b6ad29591d6f3552c31db04))
+
 ### [19.3.2](https://github.com/allianz/ng-aquila/compare/v19.3.1...v19.3.2) (2025-04-16)
 
 
