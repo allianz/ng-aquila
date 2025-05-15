@@ -87,10 +87,10 @@
                 [value]="time"
                 [focused]="hasFocus"
             />
-            @if (hint) {
-                <span nxFormfieldHint> {{ hint }} </span>
-            }
         </div>
+        @if (hint) {
+            <span nxFormfieldHint> {{ hint }} </span>
+        }
     </nx-formfield>
 
     @if (twelveHourFormat) {
