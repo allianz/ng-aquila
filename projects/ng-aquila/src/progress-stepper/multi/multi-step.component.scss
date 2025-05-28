@@ -36,7 +36,7 @@
 
             transform: none;
             border-left: $border-size solid transparent;
-            margin-bottom: nx-spacer(s);
+            padding-bottom: nx-spacer(s);
             margin-left: $margin-start;
             padding-left: $padding-start;
 
@@ -49,16 +49,15 @@
         }
 
         .nx-multi-stepper__group:nth-child(n + 2) .nx-multi-stepper__group-label {
-            padding-top: nx-spacer(s);
-            margin-top: nx-spacer(s);
+            padding-top: nx-spacer(2m);
             border-left-style: dotted;
             border-left-color: v(multi-stepper-line-color);
 
             &.is-active {
                 padding-top: nx-spacer(2m) + nx-spacer(3xs);
                 padding-bottom: nx-spacer(s) + nx-spacer(3xs);
-                margin-top: -nx-spacer(3xs);
-                margin-bottom: -nx-spacer(3xs);
+                margin-top: - nx-spacer(3xs);
+                margin-bottom: - nx-spacer(3xs);
                 border-left-style: solid;
                 border-left-color: v(multi-stepper-line-filled-color);
             }
