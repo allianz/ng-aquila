@@ -526,7 +526,9 @@ $margin-to-message: nx-spacer(3xs);
 // Provide the disabled behavior
 .nx-formfield.is-disabled {
     color: v(formfield-disabled-text-color);
-    -webkit-text-fill-color: v(formfield-disabled-text-color);
+    .nx-formfield__label {
+        color: v(formfield-disabled-text-color);
+    }
     cursor: not-allowed;
 
     .nx-formfield__hints {
