@@ -24,6 +24,7 @@ $border-size: nx-border-size(xs);
 
 @mixin formfield-outline-focus-styles {
     box-shadow: v(formfield-outline-focus-box-shadow);
+    background-color: v(formfield-outline-focus-background-color);
 
     @media screen and (forced-colors: active) {
         box-shadow: 0 0 0 2px highlight;
