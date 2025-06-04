@@ -147,11 +147,24 @@ function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
     useFactory: scrollStrategyFactory,
     deps: [Overlay],
   }],
-}
+})
 export class AppModule {}
 ```
 
 Alternatively, the `NX_MODAL_SCROLL_STRATEGY` injection token can be provided by importing `NxScrollStrategyModule.withConfig({ ... })` into your application or feature module, after your other aquila imports.
+
+If you want to allow exceptions for setting inert attribute, you can use the `INERT_EXCEPTION_SELECTORS` injection token with a provider.
+
+```ts
+@NgModule({
+  /* ... */
+  providers: [{
+    provide: INERT_EXCEPTION_SELECTORS,
+    useValue : ['#onetrust-consent-sdk','#your-id-selector','.your-class-selector']
+  }],
+})
+export class AppModule {}
+```
 
 ### Directionality
 

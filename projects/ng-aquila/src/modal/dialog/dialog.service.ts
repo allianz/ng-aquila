@@ -22,7 +22,10 @@ export const NX_MODAL_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>
         return () => overlay.scrollStrategies.block();
     },
 });
-
+export const INERT_EXCEPTION_SELECTORS = new InjectionToken<string[]>('Selector for element that should be exept from inert', {
+    providedIn: 'root',
+    factory: () => ['#onetrust-consent-sdk'],
+});
 /**
  * @docs-private
  */
@@ -89,6 +92,7 @@ export class NxDialogService implements OnDestroy {
         @Optional() @SkipSelf() private readonly _parentDialogService: NxDialogService | null,
         private readonly _overlayContainer: OverlayContainer,
         @Inject(NX_MODAL_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
+        @Inject(INERT_EXCEPTION_SELECTORS) private readonly _inertSelectors: string[],
     ) {}
 
     /**
@@ -327,7 +331,15 @@ export class NxDialogService implements OnDestroy {
         }
 
         Array.from(overlayContainer.parentElement.children).forEach(sibling => {
-            if (sibling !== overlayContainer && sibling.nodeName !== 'SCRIPT' && sibling.nodeName !== 'STYLE' && !sibling.hasAttribute('aria-live')) {
+            // Exclude setting inert for siblings that can be select by a selector from INERT_EXCEPTION_SELECTORS
+            const isException = this._inertSelectors.some(selector => sibling.matches(selector));
+            if (
+                sibling !== overlayContainer &&
+                sibling.nodeName !== 'SCRIPT' &&
+                sibling.nodeName !== 'STYLE' &&
+                !sibling.hasAttribute('aria-live') &&
+                !isException
+            ) {
                 const ariaHidden = sibling.getAttribute('aria-hidden');
                 const inert = sibling.getAttribute('inert');
 

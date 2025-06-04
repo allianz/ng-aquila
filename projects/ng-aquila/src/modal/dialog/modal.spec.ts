@@ -23,6 +23,7 @@ import { ComponentFixture, fakeAsync, flush, flushMicrotasks, inject, TestBed, t
 import { By } from '@angular/platform-browser';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import {
+    INERT_EXCEPTION_SELECTORS,
     NX_MODAL_DATA,
     NX_MODAL_DEFAULT_OPTIONS,
     NX_MODAL_SCROLL_STRATEGY,
@@ -59,6 +60,10 @@ describe('NxDialog', () => {
                     useFactory: () => ({
                         scrolled: () => scrolledSubject.asObservable(),
                     }),
+                },
+                {
+                    provide: INERT_EXCEPTION_SELECTORS,
+                    useValue: ['#inert-exception', '.inert-class-exception'],
                 },
             ],
         });
@@ -956,6 +961,39 @@ describe('NxDialog', () => {
         expect(sibling.hasAttribute('aria-hidden')).withContext('Expected live element not to be hidden.').toBeFalse();
         sibling.parentNode!.removeChild(sibling);
     }));
+
+    it('should not set inert for exception list', () => {
+        const sibling = document.createElement('div');
+        overlayContainerElement.parentNode!.appendChild(sibling);
+
+        const inertException = document.createElement('div');
+        inertException.id = 'inert-exception';
+        overlayContainerElement.parentNode!.appendChild(inertException);
+
+        const inertClassException = document.createElement('div');
+        inertClassException.className = 'inert-class-exception';
+        overlayContainerElement.parentNode!.appendChild(inertClassException);
+
+        TestBed.resetTestingModule()
+            .configureTestingModule({
+                imports: [NxModalModule, DialogTestModule],
+                providers: [
+                    {
+                        provide: INERT_EXCEPTION_SELECTORS,
+                        useValue: ['#inert-exception', '.inert-class-exception'],
+                    },
+                ],
+            })
+            .compileComponents();
+
+        const dialog = TestBed.inject(NxDialogService);
+        dialog.open(PizzaMsg);
+        viewContainerFixture.detectChanges();
+
+        expect(sibling.hasAttribute('inert')).withContext('Expected live element to be inert.').toBeTruthy();
+        expect(inertException.hasAttribute('inert')).withContext('Expected live element not to be inert.').toBeFalse();
+        expect(inertClassException.hasAttribute('inert')).withContext('Expected live element not to be inert.').toBeFalse();
+    });
 
     it('should add and remove classes while open', () => {
         const dialogRef = dialog.open(PizzaMsg, {
