@@ -1,7 +1,5 @@
 @import '../shared-styles/index';
 
-$switcher-border-radius: nx-border-radius(m);
-
 :host {
     position: relative;
 
@@ -10,10 +8,10 @@ $switcher-border-radius: nx-border-radius(m);
         justify-content: flex-end;
 
         &.has-label .nx-switcher__toggle {
-            margin-left: nx-spacer(xs);
+            margin-left: v(switcher-label-gap);
 
             [dir='rtl'] & {
-                margin-right: nx-spacer(xs);
+                margin-right: v(switcher-label-gap);
                 margin-left: initial;
             }
         }
@@ -46,36 +44,46 @@ $switcher-border-radius: nx-border-radius(m);
 .nx-switcher__toggle {
     position: relative;
     display: inline-block;
-    width: nx-spacer(4m);
-    min-width: nx-spacer(4m); // fix for IE11
-    height: nx-spacer(m);
+    width: v(switcher-width);
+    height: v(switcher-height);
+    margin-top: auto;
+    margin-bottom: auto;
     background-color: v(switcher-unchecked-background-color);
-    border-radius: $switcher-border-radius;
+    border-radius: v(switcher-border-radius);
     transition: background-color 0.2s ease;
+    border: v(switcher-border-default) solid v(switcher-default-border-color);
+    &:hover:not(.is-disabled) {
+        background-color: v(switcher-default-hover-color);
+    }
+    &:active:not(.is-disabled) {
+        background-color: v(switcher-default-active-color);
+    }
 }
 
 :host(:not(.is-swapped)) .has-label .nx-switcher__toggle {
-    margin-right: nx-spacer(xs);
+    margin-right: v(switcher-label-gap);
 
     [dir='rtl'] & {
         margin-right: initial;
-        margin-left: nx-spacer(xs);
+        margin-left: v(switcher-label-gap);
     }
 }
 
 .nx-switcher__dot {
     position: absolute;
-    height: nx-spacer(m) - nx-spacer(3xs);
-    width: nx-spacer(m) - nx-spacer(3xs);
-    left: nx-spacer(4xs);
-    bottom: nx-spacer(4xs);
+    height: v(switcher-dot-size);
+    width: v(switcher-dot-size);
+    left: v(switcher-dot-padding);
+    bottom: v(switcher-dot-padding);
     background-color: v(switcher-dot-background-color);
-    border-radius: $switcher-border-radius;
+    border-radius: v(switcher-border-radius);
     transform: translate(0);
-    transition: transform 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
 
     :host-context([dir='rtl']) & {
-        right: nx-spacer(4xs);
+        right: v(switcher-dot-padding);
         left: auto;
     }
 }
@@ -83,19 +91,30 @@ $switcher-border-radius: nx-border-radius(m);
 // CHECKED STYLES
 :host(.is-checked) {
     .nx-switcher__dot {
-        transform: translate(nx-spacer(m));
-
+        transform: translate(v(switcher-translate));
+        background-color: v(switcher-dot-default-color);
         [dir='rtl'] & {
-            transform: translate(nx-spacer(m) * -1);
+            transform: translate(-v(switcher-translate));
         }
     }
 
     .nx-switcher__toggle {
+        border: v(switcher-border-default) solid v(switcher-checked-background-color);
         background-color: v(switcher-checked-background-color);
+    }
+    &:not(.is-readonly):not(.is-disabled):not(.has-error) .nx-switcher__toggle {
+        &:hover {
+            border: v(switcher-border-default) solid v(switcher-checked-hover-color);
+            background-color: v(switcher-checked-hover-color);
+        }
+        &:active {
+            border: v(switcher-border-default) solid v(switcher-checked-active-color);
+            background-color: v(switcher-checked-active-color);
+        }
     }
 
     nx-icon {
-        opacity: 1;
+        opacity: v(switcher-icon-opacity);
         transition: opacity 0.2s ease;
     }
 }
@@ -121,22 +140,21 @@ nx-icon {
 // BIG
 :host(.is-big) {
     .nx-switcher__toggle {
-        width: nx-spacer(l);
-        min-width: nx-spacer(l); // fix for IE11
-        height: nx-spacer(2m);
-        border-radius: nx-spacer(2m);
+        width: v(switcher-large-width);
+        height: v(switcher-large-height);
+        border-radius: v(switcher-large-height);
     }
 
     .nx-switcher__dot {
-        height: nx-spacer(m) + nx-spacer(3xs);
-        width: nx-spacer(m) + nx-spacer(3xs);
+        height: v(switcher-dot-size-large);
+        width: v(switcher-dot-size-large);
     }
 
     nx-icon {
         font-size: nx-font-size(s);
 
         [dir='rtl'] & {
-            right: nx-spacer(4xs);
+            right: v(switcher-dot-padding-large);
             left: auto;
         }
     }
@@ -144,11 +162,13 @@ nx-icon {
     &.nx-switcher--large-label {
         .has-label {
             .nx-switcher__label-text {
-                margin-top: v(switcher-big-large-label-text-margin-top);
+                margin-top: auto;
+                margin-bottom: auto;
             }
 
             .nx-switcher__toggle {
-                margin-top: v(switcher-big-large-label-control-margin-top);
+                margin-top: auto;
+                margin-bottom: auto;
             }
         }
     }
@@ -156,42 +176,14 @@ nx-icon {
     &.nx-switcher--small-label {
         .has-label {
             .nx-switcher__label-text {
-                margin-top: v(switcher-big-small-label-text-margin-top);
+                margin-top: auto;
+                margin-bottom: auto;
             }
 
             .nx-switcher__toggle {
-                margin-top: v(switcher-big-small-label-control-margin-top);
+                margin-top: auto;
+                margin-bottom: auto;
             }
-        }
-    }
-}
-
-// large FONT
-:host(.nx-switcher--large-label) {
-    .has-label {
-        .nx-switcher__label-text {
-            margin-top: v(switcher-large-label-text-margin-top);
-        }
-
-        .nx-switcher__toggle {
-            margin-top: v(switcher-large-label-control-margin-top);
-        }
-    }
-}
-
-// SMALL FONT
-:host(.nx-switcher--small-label) {
-    .nx-switcher__label-text {
-        @include type-style(switcher-small);
-    }
-
-    .has-label {
-        .nx-switcher__label-text {
-            margin-top: v(switcher-small-label-text-margin-top);
-        }
-
-        .nx-switcher__toggle {
-            margin-top: v(switcher-small-label-control-margin-top);
         }
     }
 }
@@ -208,6 +200,7 @@ nx-icon {
 
     .nx-switcher__toggle {
         background-color: v(negative-dimmed);
+        border: v(switcher-border-default) solid v(negative-background);
     }
 
     nx-icon {
@@ -222,8 +215,18 @@ nx-icon {
 
 // DISABLED
 :host(.is-disabled) {
+    &.is-checked {
+        .nx-switcher__toggle {
+            background-color: v(switcher-checked-disabled-background-color);
+            border: v(switcher-border-default) solid v(switcher-checked-disabled-background-color);
+        }
+        .nx-switcher__dot {
+            background-color: v(switcher-dot-checked-disabled-color);
+        }
+    }
     .nx-switcher__toggle {
         background-color: v(switcher-disabled-background-color);
+        border: v(switcher-border-default) solid v(switcher-disabled-border-color);
     }
 
     .nx-switcher__dot {
@@ -245,11 +248,17 @@ nx-icon {
         background-color: v(switcher-readonly-background-color);
         border: 1px solid v(switcher-readonly-border-color);
     }
+    &.is-checked {
+        .nx-switcher__toggle {
+            background-color: v(switcher-readonly-checked-background-color);
+            border: 1px solid v(switcher-readonly-checked-background-color);
+        }
+    }
 
     .nx-switcher__dot {
         background-color: v(switcher-readonly-dot-background-color);
-        left: 1px;
-        bottom: 1px;
+        left: v(switcher-dot-readonly-padding);
+        bottom: v(switcher-dot-readonly-padding);
         nx-icon {
             color: v(switcher-readonly-icon-color);
         }
@@ -263,8 +272,27 @@ nx-icon {
 
 // ERROR
 :host(.has-error) {
-    .nx-switcher__toggle {
+    &.is-checked .nx-switcher__toggle {
         background-color: v(danger);
+        &:hover {
+            background-color: v(danger-hover);
+            border: v(switcher-border-default) solid v(danger-hover);
+        }
+        &:active {
+            background-color: v(danger-active);
+            border: v(switcher-border-default) solid v(danger-active);
+        }
+    }
+    .nx-switcher__toggle {
+        border: v(switcher-border-default) solid v(danger);
+        &:hover {
+            background-color: v(switcher-default-hover-color);
+            border: v(switcher-border-default) solid v(danger-hover);
+        }
+        &:active {
+            background-color: v(switcher-default-active-color);
+            border: v(switcher-border-default) solid v(danger-active);
+        }
     }
 
     nx-icon {
