@@ -1705,7 +1705,7 @@ class NestedMenu {
             <button nxContextMenuItem>Two</button>
         </nx-context-menu>
     `,
-    imports: [NxContextMenuModule, NxButtonComponent],
+    imports: [NxContextMenuModule],
 })
 class NestedMenuCustomElevation {
     @ViewChild('rootTrigger') rootTrigger!: NxContextMenuTriggerDirective;
@@ -1726,7 +1726,7 @@ class NestedMenuCustomElevation {
             <button nxContextMenuItem>Five</button>
         </nx-context-menu>
     `,
-    imports: [NxContextMenuModule, NxButtonComponent],
+    imports: [NxContextMenuModule],
 })
 class NestedMenuRepeater {
     @ViewChild('rootTriggerEl') rootTriggerEl!: ElementRef<HTMLElement>;
@@ -1747,7 +1747,7 @@ class NestedMenuRepeater {
             </nx-context-menu>
         </nx-context-menu>
     `,
-    imports: [NxContextMenuModule, NxButtonComponent],
+    imports: [NxContextMenuModule],
 })
 class SubmenuDeclaredInsideParentMenu {
     @ViewChild('rootTriggerEl') rootTriggerEl!: ElementRef;
@@ -1764,7 +1764,7 @@ class SubmenuDeclaredInsideParentMenu {
             </ng-template>
         </nx-context-menu>
     `,
-    imports: [NxContextMenuModule, NxButtonComponent],
+    imports: [NxContextMenuModule],
 })
 class SimpleLazyMenu {
     @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
@@ -1784,7 +1784,7 @@ class SimpleLazyMenu {
             </ng-template>
         </nx-context-menu>
     `,
-    imports: [NxContextMenuModule, NxButtonComponent],
+    imports: [NxContextMenuModule],
 })
 class LazyMenuWithContext {
     @ViewChild('triggerOne') triggerOne!: NxContextMenuTriggerDirective;
@@ -1802,7 +1802,7 @@ class LazyMenuWithContext {
             <button nxContextMenuItem>Two</button>
         </nx-context-menu>
     `,
-    imports: [NxContextMenuModule, NxButtonComponent],
+    imports: [NxContextMenuModule],
 })
 class DynamicPanelMenu {
     @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
@@ -1817,7 +1817,7 @@ class DynamicPanelMenu {
             <button nxContextMenuItem>Item</button>
         </nx-context-menu>
     `,
-    imports: [NxContextMenuModule, NxButtonComponent],
+    imports: [NxContextMenuModule],
 })
 class RightClickMenu {
     @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;

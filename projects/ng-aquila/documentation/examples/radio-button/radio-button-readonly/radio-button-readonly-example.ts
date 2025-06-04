@@ -1,4 +1,3 @@
-import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
     FormBuilder,
@@ -23,7 +22,6 @@ import {
         NxRadioGroupComponent,
         NxLabelComponent,
         NxRadioComponent,
-        JsonPipe,
     ],
     templateUrl: './radio-button-readonly-example.html',
     styleUrl: './radio-button-readonly-example.css',

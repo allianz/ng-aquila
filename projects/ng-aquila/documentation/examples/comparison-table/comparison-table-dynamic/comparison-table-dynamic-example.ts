@@ -15,7 +15,6 @@ import {
     NxPopoverComponent,
     NxPopoverTriggerDirective,
 } from '@aposin/ng-aquila/popover';
-import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
 
 interface ContentCell {
     type: NxComparisonTableRowType;
@@ -35,7 +34,6 @@ type TableData = (ContentCell | ToggleSection)[];
     templateUrl: './comparison-table-dynamic-example.html',
     styleUrls: ['./comparison-table-dynamic-example.css'],
     imports: [
-        NxSwipebarComponent,
         NxComparisonTableComponent,
         NxComparisonTableRowDirective,
         NxComparisonTableCell,

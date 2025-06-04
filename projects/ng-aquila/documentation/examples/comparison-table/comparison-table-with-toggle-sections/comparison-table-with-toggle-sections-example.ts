@@ -9,7 +9,6 @@ import {
     NxToggleSectionHeaderComponent,
 } from '@aposin/ng-aquila/comparison-table';
 import { NxIconComponent } from '@aposin/ng-aquila/icon';
-import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
 
 /** @title Toggle section example */
 @Component({
@@ -17,7 +16,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     templateUrl: './comparison-table-with-toggle-sections-example.html',
     styleUrls: ['./comparison-table-with-toggle-sections-example.css'],
     imports: [
-        NxSwipebarComponent,
         NxComparisonTableComponent,
         NxComparisonTableRowDirective,
         NxComparisonTableCell,

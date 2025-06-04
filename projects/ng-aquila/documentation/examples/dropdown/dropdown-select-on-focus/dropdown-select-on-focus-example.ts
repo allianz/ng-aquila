@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
-    NxDropdownClosedLabelDirective,
     NxDropdownComponent,
     NxDropdownItemComponent,
     NxMultiSelectComponent,
@@ -33,7 +32,6 @@ interface TelephonePrefixData {
         NxFormfieldComponent,
         NxDropdownComponent,
         FormsModule,
-        NxDropdownClosedLabelDirective,
         NxDropdownItemComponent,
         SelectOnFocusDirective,
         NxMultiSelectComponent,

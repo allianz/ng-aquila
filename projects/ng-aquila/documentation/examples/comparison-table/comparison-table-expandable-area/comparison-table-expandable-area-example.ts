@@ -8,7 +8,6 @@ import {
     NxComparisonTableSelectButton,
 } from '@aposin/ng-aquila/comparison-table';
 import { NxIconComponent } from '@aposin/ng-aquila/icon';
-import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
 
 /** @title Expert: Use full row for Expandable area */
 @Component({
@@ -16,7 +15,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     templateUrl: './comparison-table-expandable-area-example.html',
     styleUrls: ['./comparison-table-expandable-area-example.css'],
     imports: [
-        NxSwipebarComponent,
         NxComparisonTableComponent,
         NxComparisonTableRowDirective,
         NxComparisonTableCell,

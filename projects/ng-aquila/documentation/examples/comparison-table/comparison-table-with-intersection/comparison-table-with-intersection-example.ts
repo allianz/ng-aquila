@@ -22,7 +22,6 @@ import {
     NxPopoverComponent,
     NxPopoverTriggerDirective,
 } from '@aposin/ng-aquila/popover';
-import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -37,7 +36,6 @@ import { takeUntil } from 'rxjs/operators';
         NxExpansionPanelHeaderComponent,
         NxExpansionPanelTitleDirective,
         NgTemplateOutlet,
-        NxSwipebarComponent,
         NxComparisonTableComponent,
         NxComparisonTableRowDirective,
         NxComparisonTablePopularCell,

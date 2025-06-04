@@ -11,7 +11,6 @@ import {
     NxDropdownComponent,
     NxDropdownItemComponent,
 } from '@aposin/ng-aquila/dropdown';
-import { NxFormfieldErrorDirective } from '@aposin/ng-aquila/formfield';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
 import {
     NxNaturalLanguageFormComponent,
@@ -31,7 +30,6 @@ import {
         NxInputDirective,
         FormsModule,
         ReactiveFormsModule,
-        NxFormfieldErrorDirective,
         NxDropdownComponent,
         NxDropdownItemComponent,
         NxErrorComponent,

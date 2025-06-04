@@ -5,7 +5,6 @@ import { NxLinkComponent } from '@aposin/ng-aquila/link';
 import {
     NxHeaderCellDirective,
     NxHeaderResizeDirective,
-    NxTableCellClipDirective,
     NxTableCellComponent,
     NxTableComponent,
     NxTableRowComponent,
@@ -18,7 +17,6 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         NxTableComponent,
-        NxTableCellClipDirective,
         NxTableRowComponent,
         NxHeaderCellDirective,
         NxHeaderResizeDirective,
