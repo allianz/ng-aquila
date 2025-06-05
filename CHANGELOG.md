@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [19.5.0](https://github.com/allianz/ng-aquila/compare/v19.4.0...v19.5.0) (2025-06-05)
+
+
+### Documentation 📚
+
+* remove unused imports ([5d446f4](https://github.com/allianz/ng-aquila/commit/5d446f42c69c0d614d72b0ee45623139a722351b))
+
+
+### Features ✨
+
+* **formfield:** update token ([094d004](https://github.com/allianz/ng-aquila/commit/094d00437df4ec368f34a41067395b8fba7a6932))
+* **modal:** add global provider for inert exception list ([abbef68](https://github.com/allianz/ng-aquila/commit/abbef688f3940335fe8135c16996d58ba03aff72))
+* **switcher:** add tokens for a1 light styling ([1537c90](https://github.com/allianz/ng-aquila/commit/1537c90c666b1577e4db46227e93b80c7a1dce02))
+
+
+### Bug Fixes 🐛
+
+* **circle-toggle:** add empty alt to image ([ba9c160](https://github.com/allianz/ng-aquila/commit/ba9c16031d63c59b9af304baafcca0d71f20d704))
+* **formfield:** fix text color ([e5abe1c](https://github.com/allianz/ng-aquila/commit/e5abe1caf826f50887850f8ea2370a799e4ee035))
+* **progress-stepper:** adjust vertical line spacing ([659b926](https://github.com/allianz/ng-aquila/commit/659b92633e651a842f5da8dc8c4f524f0a8d53c6))
+* **tabs:** remove first and last items padding ([888b042](https://github.com/allianz/ng-aquila/commit/888b042055430d534e1f01fa5042119be2e16a94))
+
 ## [19.4.0](https://github.com/allianz/ng-aquila/compare/v19.3.2...v19.4.0) (2025-05-15)
 
 
