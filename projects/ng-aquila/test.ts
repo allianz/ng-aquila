@@ -3,7 +3,10 @@ import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@ang
 import axe from 'axe-core';
 
 // First, initialize the Angular testing environment.
-getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
+getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting(), {
+    errorOnUnknownElements: true,
+    errorOnUnknownProperties: true,
+});
 
 const customMatchers: jasmine.CustomAsyncMatcherFactories = {
     toBeAccessible(): jasmine.CustomAsyncMatcher {

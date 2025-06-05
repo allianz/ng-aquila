@@ -64,6 +64,9 @@ class MultiSelectHarness extends ComponentHarness {
 
     async setFilter(query: string) {
         const filter = await this.getFilter();
+        if (!filter) {
+            throw Error('Filter input not found');
+        }
         await filter?.setInputValue(query);
         await filter?.dispatchEvent('input');
     }
@@ -798,9 +801,9 @@ describe('NxMultiSelectComponent', () => {
 
                     const options = await multiSelectHarness.getOptions();
 
-                    ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes'].forEach(async (label, i) => {
-                        expect(await options[i].getLabelText()).toBe(label);
-                    });
+                    await Promise.all(
+                        ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes'].map(async (label, i) => expect(await options[i].getLabelText()).toBe(label)),
+                    );
                 });
             });
 
@@ -851,9 +854,7 @@ describe('NxMultiSelectComponent', () => {
             const options = await multiSelectHarness.getOptions();
             expect(options).toHaveSize(3);
 
-            ['Apple', 'Orange', 'Cherry'].forEach(async (label, i) => {
-                expect(await options[i].getLabelText()).toBe(label);
-            });
+            await Promise.all(['Apple', 'Orange', 'Cherry'].map(async (label, i) => expect(await options[i].getLabelText()).toBe(label)));
         });
 
         describe('and selecting options', () => {
@@ -932,9 +933,7 @@ describe('NxMultiSelectComponent', () => {
                 const options = await multiSelectHarness.getOptions();
                 expect(options).toHaveSize(3);
 
-                ['A', 'O', 'C'].forEach(async (label, i) => {
-                    expect(await options[i].getLabelText()).toBe(label);
-                });
+                await Promise.all(['A', 'O', 'C'].map(async (label, i) => expect(await options[i].getLabelText()).toBe(label)));
             });
         });
     });
@@ -1124,7 +1123,7 @@ class IntlOverrideMultiSelect extends DropdownTest {
     template: `<nx-formfield label="Car brand" [appearance]="appearance">
         <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options" [panelGrow]="panelGrow" [panelMaxWidth]="panelMaxWidth"></nx-multi-select>
     </nx-formfield>`,
-    imports: [NxDropdownModule, NxFormfieldModule],
+    imports: [NxDropdownModule, NxFormfieldModule, FormsModule],
 })
 class LongOptionLabelComponent extends DropdownTest {
     options = [
