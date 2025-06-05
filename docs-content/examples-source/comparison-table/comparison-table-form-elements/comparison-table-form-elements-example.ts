@@ -12,7 +12,6 @@ import {
 } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { NxIconComponent } from '@aposin/ng-aquila/icon';
-import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
 
 /** @title Add custom form elements to the table */
 @Component({
@@ -20,7 +19,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     templateUrl: './comparison-table-form-elements-example.html',
     styleUrls: ['./comparison-table-form-elements-example.css'],
     imports: [
-        NxSwipebarComponent,
         NxComparisonTableComponent,
         NxComparisonTableRowDirective,
         NxComparisonTableCell,

@@ -21,7 +21,6 @@ import {
     NxPopoverComponent,
     NxPopoverTriggerDirective,
 } from '@aposin/ng-aquila/popover';
-import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
 
 /** @title Hidden Columns */
 @Component({
@@ -34,7 +33,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
         NxIconComponent,
         NxContextMenuComponent,
         NxContextMenuItemComponent,
-        NxSwipebarComponent,
         NxComparisonTableComponent,
         NxComparisonTableRowDirective,
         NxComparisonTablePopularCell,

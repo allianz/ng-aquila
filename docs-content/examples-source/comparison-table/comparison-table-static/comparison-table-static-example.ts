@@ -17,7 +17,6 @@ import {
     NxPopoverComponent,
     NxPopoverTriggerDirective,
 } from '@aposin/ng-aquila/popover';
-import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
 
 /** @title Static layout example */
 @Component({
@@ -27,7 +26,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         NxButtonComponent,
-        NxSwipebarComponent,
         NxComparisonTableComponent,
         NxComparisonTableRowDirective,
         NxComparisonTablePopularCell,

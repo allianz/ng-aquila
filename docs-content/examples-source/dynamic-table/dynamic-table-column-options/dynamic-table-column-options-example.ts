@@ -10,7 +10,6 @@ import {
     NxDynamicTableColumnDefinition,
     NxDynamicTableComponent,
 } from '@aposin/ng-aquila/dynamic-table';
-import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 /**
  * @title Table Column Options Example
@@ -23,7 +22,6 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
         NxButtonComponent,
         NxCheckboxGroupComponent,
         FormsModule,
-        NxIconComponent,
         NxCheckboxComponent,
         NxDynamicTableComponent,
         NxContextMenuModule,

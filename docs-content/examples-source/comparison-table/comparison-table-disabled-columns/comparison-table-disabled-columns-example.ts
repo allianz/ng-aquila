@@ -21,7 +21,6 @@ import {
     NxPopoverComponent,
     NxPopoverTriggerDirective,
 } from '@aposin/ng-aquila/popover';
-import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
 
 /** @title Disabled Columns example */
 @Component({
@@ -29,7 +28,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     templateUrl: './comparison-table-disabled-columns-example.html',
     styleUrls: ['./comparison-table-disabled-columns-example.css'],
     imports: [
-        NxSwipebarComponent,
         NxComparisonTableComponent,
         NxComparisonTableRowDirective,
         NxComparisonTableCell,

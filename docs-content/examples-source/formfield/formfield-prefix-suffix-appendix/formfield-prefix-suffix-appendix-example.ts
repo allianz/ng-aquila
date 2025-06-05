@@ -3,7 +3,6 @@ import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
 import {
     NxFormfieldAppendixDirective,
     NxFormfieldComponent,
-    NxFormfieldPrefixDirective,
     NxFormfieldSuffixDirective,
 } from '@aposin/ng-aquila/formfield';
 import { NxIconComponent } from '@aposin/ng-aquila/icon';
@@ -23,7 +22,6 @@ import {
     imports: [
         NxFormfieldComponent,
         NxInputDirective,
-        NxFormfieldPrefixDirective,
         NxFormfieldSuffixDirective,
         NxFormfieldAppendixDirective,
         NxPopoverTriggerDirective,

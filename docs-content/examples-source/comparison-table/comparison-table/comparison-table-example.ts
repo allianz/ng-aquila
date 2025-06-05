@@ -22,7 +22,6 @@ import {
     NxPopoverTriggerDirective,
 } from '@aposin/ng-aquila/popover';
 import { NxSpinnerComponent } from '@aposin/ng-aquila/spinner';
-import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
 
 /** @title Basic example */
 @Component({
@@ -32,7 +31,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         NxSpinnerComponent,
-        NxSwipebarComponent,
         NxComparisonTableComponent,
         NxComparisonTableRowDirective,
         NxComparisonTablePopularCell,

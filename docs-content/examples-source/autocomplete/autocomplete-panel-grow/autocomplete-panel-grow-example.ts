@@ -11,20 +11,13 @@ import {
     NxAutocompleteOptionComponent,
     NxAutocompleteTriggerDirective,
 } from '@aposin/ng-aquila/autocomplete';
-import {
-    NxFormfieldComponent,
-    NxFormfieldErrorDirective,
-} from '@aposin/ng-aquila/formfield';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import {
     NxColComponent,
     NxLayoutComponent,
     NxRowComponent,
 } from '@aposin/ng-aquila/grid';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
-import {
-    NxNaturalLanguageFormComponent,
-    NxWordComponent,
-} from '@aposin/ng-aquila/natural-language-form';
 
 /**
  * @title Panel grow and Panel max width examples
@@ -42,9 +35,6 @@ import {
         NxAutocompleteComponent,
         NxAutocompleteOptionComponent,
         ReactiveFormsModule,
-        NxNaturalLanguageFormComponent,
-        NxWordComponent,
-        NxFormfieldErrorDirective,
         LowerCasePipe,
         NxLayoutComponent,
         NxRowComponent,

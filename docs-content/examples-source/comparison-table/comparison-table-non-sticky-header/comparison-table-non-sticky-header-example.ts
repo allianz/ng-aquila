@@ -13,7 +13,6 @@ import {
     NxPopoverComponent,
     NxPopoverTriggerDirective,
 } from '@aposin/ng-aquila/popover';
-import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
 
 /** @title Non-sticky Header example */
 @Component({
@@ -22,7 +21,6 @@ import { NxSwipebarComponent } from '@aposin/ng-aquila/swipebar';
     styleUrls: ['./comparison-table-non-sticky-header-example.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        NxSwipebarComponent,
         NxComparisonTableComponent,
         NxComparisonTableRowDirective,
         NxComparisonTablePopularCell,
