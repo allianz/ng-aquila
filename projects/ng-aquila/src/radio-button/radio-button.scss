@@ -1,7 +1,5 @@
 @import '../shared-styles/index';
 
-$radio-border-radius: 50%;
-
 :host {
     display: block;
     position: relative;
@@ -15,17 +13,10 @@ $radio-border-radius: 50%;
 :host(.nx-radio-button--small-label) {
     .nx-radio__label {
         @include type-style(radio-button-small-label);
-
-        &.has-label {
-            .nx-radio__circle {
-                margin-top: v(radio-button-small-circle-margin-top);
-            }
-        }
     }
 
     .nx-radio__label--text:not(:empty) {
         margin-left: v(radio-button-small-label-margin-left);
-        margin-top: v(radio-button-small-label-margin-top);
 
         [dir='rtl'] & {
             margin-right: v(radio-button-small-label-margin-left);
@@ -39,15 +30,16 @@ $radio-border-radius: 50%;
         @include type-style(radio-button-large-label);
 
         &.has-label {
-            .nx-radio__circle {
-                margin-top: v(radio-button-large-circle-margin-top);
+            .nx-radio__circle-wrapper {
+                display: inline-flex;
+                align-items: center;
+                height: v(radio-button-large-label-line-height);
             }
         }
     }
 
     .nx-radio__label--text:not(:empty) {
         margin-left: v(radio-button-large-label-margin-left);
-        margin-top: v(radio-button-large-label-margin-top);
 
         [dir='rtl'] & {
             margin-right: v(radio-button-large-label-margin-left);
@@ -90,27 +82,37 @@ $radio-border-radius: 50%;
 }
 
 .nx-radio__circle {
-    border-width: nx-border-size(m);
+    border-width: v(radio-button-border-width);
     border-style: solid;
     border-color: v(radio-button-circle-color);
-    border-radius: $radio-border-radius;
-    width: nx-spacer(m);
-    min-width: nx-spacer(m);
-    height: nx-spacer(m);
+    background-color: v(radio-button-background-color);
+    border-radius: v(radio-button-border-radius);
+    width: v(radio-button-circle-size);
+    min-width: v(radio-button-circle-size);
+    height: v(radio-button-circle-size);
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.2s ease;
 }
 
 .nx-radio__dot {
     width: v(radio-button-dot-size);
     height: v(radio-button-dot-size);
     background-color: v(radio-button-dot-background-color);
-    border-radius: $radio-border-radius;
+    border-radius: v(radio-button-border-radius);
     transition: background-color 0.2s ease;
 }
 
+// unchecked state
+.nx-radio__input:not(:checked) + .nx-radio__label {
+    .nx-radio__dot {
+        display: none;
+    }
+}
+
+// checked state
 .nx-radio__input:checked + .nx-radio__label {
     .nx-radio__circle {
         border-color: v(radio-button-selected-circle-color);
@@ -122,17 +124,21 @@ $radio-border-radius: 50%;
     }
 }
 
+// disabled unchecked state
 .nx-radio__input:disabled + .nx-radio__label {
     cursor: not-allowed;
     color: v(radio-button-disabled-text-color);
 
     .nx-radio__circle {
         border-color: v(radio-button-disabled-border-color);
+        background-color: v(radio-button-disabled-background-color);
     }
 }
 
+// disabled checked state
 .nx-radio__input:checked:disabled + .nx-radio__label {
     .nx-radio__circle {
+        border-color: v(radio-button-disabled-selected-background-color);
         background-color: v(radio-button-disabled-selected-background-color);
     }
 
@@ -141,19 +147,21 @@ $radio-border-radius: 50%;
     }
 }
 
+// readonly state
 :host(.is-readonly) {
     .nx-radio__label:hover {
         cursor: not-allowed;
     }
 
     .nx-radio__circle {
+        background-color: v(radio-button-readonly-background-color);
         border-color: v(radio-button-readonly-border-color);
     }
 
     .nx-radio__input:checked + .nx-radio__label {
         .nx-radio__circle {
-            background-color: v(radio-button-readonly-background-color);
-            border-color: v(radio-button-readonly-border-color);
+            background-color: v(radio-button-readonly-selected-background-color);
+            border-color: v(radio-button-readonly-selected-background-color);
         }
 
         .nx-radio__dot {
@@ -171,11 +179,12 @@ $radio-border-radius: 50%;
 :host:not(.nx-radio--negative):not(.has-error):not(.is-readonly) .nx-radio__input:not(:disabled) {
     & + .nx-radio__label:hover .nx-radio__circle {
         border-color: v(radio-button-hover-circle-color);
+        background-color: v(radio-button-hover-unselected-background-color);
     }
 
     &:checked + .nx-radio__label:hover .nx-radio__circle {
-        border-color: v(radio-button-hover-circle-color);
-        background-color: v(radio-button-hover-circle-color);
+        border-color: v(radio-button-hover-selected-circle-color);
+        background-color: v(radio-button-hover-selected-circle-color);
     }
 
     &:checked + .nx-radio__label:hover .nx-radio__dot {
@@ -187,11 +196,12 @@ $radio-border-radius: 50%;
 :host:not(.nx-radio--negative):not(.has-error):not(.is-readonly) .nx-radio__input:not(:disabled) {
     & + .nx-radio__label:active .nx-radio__circle {
         border-color: v(radio-button-active-circle-color);
+        background-color: v(radio-button-active-unselected-background-color);
     }
 
     &:checked + .nx-radio__label:active .nx-radio__circle {
-        border-color: v(radio-button-active-circle-color);
-        background-color: v(radio-button-active-circle-color);
+        border-color: v(radio-button-active-selected-circle-color);
+        background-color: v(radio-button-active-selected-circle-color);
     }
 
     &:checked + .nx-radio__label:active .nx-radio__dot {
@@ -216,9 +226,12 @@ $radio-border-radius: 50%;
     .nx-radio__input {
         & + .nx-radio__label:hover .nx-radio__circle {
             border-color: v(radio-button-error-hover-circle-color);
+            background-color: v(radio-button-hover-unselected-background-color);
         }
+
         & + .nx-radio__label:active .nx-radio__circle {
             border-color: v(radio-button-error-active-circle-color);
+            background-color: v(radio-button-active-unselected-background-color);
         }
     }
 

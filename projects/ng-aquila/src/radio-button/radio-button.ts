@@ -1,5 +1,6 @@
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import { CdkObserveContent } from '@angular/cdk/observers';
 import {
     AfterContentInit,
@@ -452,13 +453,17 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
 
     private readonly _destroyed = new Subject<void>();
 
+    _removeUniqueSelectionListener: () => void = () => {};
+
     constructor(
         @Optional() readonly radioGroup: NxRadioGroupComponent | null,
         private readonly _cdr: ChangeDetectorRef,
         private readonly _focusMonitor: FocusMonitor,
+        private readonly _checkedDispatcher: UniqueSelectionDispatcher,
     ) {}
 
     ngOnInit(): void {
+        this.attachListenerForName();
         if (this.radioGroup) {
             this.name = this.radioGroup.name;
             // when relevant properties of the parent like name and disabled change
@@ -466,7 +471,6 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
             this.radioGroup._stateChanges.pipe(takeUntil(this._destroyed)).subscribe(() => {
                 this._cdr.markForCheck();
             });
-
             if (this.radioGroup.value === this._value) {
                 this._checked = true;
             }
@@ -481,6 +485,16 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
         this._destroyed.next();
         this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._nativeInput);
+        this._removeUniqueSelectionListener();
+    }
+
+    /** @docs-private */
+    attachListenerForName() {
+        this._removeUniqueSelectionListener = this._checkedDispatcher.listen((name: string, radioId: string) => {
+            if (this.id !== radioId && name === this.name) {
+                this.checked = false;
+            }
+        });
     }
 
     /**
@@ -537,7 +551,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
         this._checked = true;
         this.valueChange.emit(new NxRadioChange(this, this._value));
         this.onChangeCallback(this.value);
-
+        this._checkedDispatcher.notify(this.name, this.id);
         if (this.radioGroup && this.value !== this.radioGroup.value) {
             this.radioGroup.change(this.value);
         }

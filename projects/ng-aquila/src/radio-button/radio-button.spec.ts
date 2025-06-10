@@ -153,6 +153,18 @@ describe('NxRadioComponent', () => {
             expect(radioElement).not.toHaveClass('nx-radio--negative');
             expect(radioInstances.toArray()[0].negative).toBeFalse();
         });
+
+        it('only one radio button with the same name can be selected at a time', () => {
+            createTestComponent(BasicRadioWithSameName);
+
+            labelElements.item(0).click();
+            fixture.detectChanges();
+            expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveSize(1);
+
+            labelElements.item(1).click();
+            fixture.detectChanges();
+            expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveSize(1);
+        });
     });
 
     describe('inside radio group', () => {
@@ -655,6 +667,15 @@ class ConfigurableRadio extends RadioTest {
     imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class LabellessRadio extends RadioTest {}
+
+@Component({
+    template: `
+        <nx-radio name="standaloneTest">1</nx-radio>
+        <nx-radio name="standaloneTest">2</nx-radio>
+    `,
+    imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
+})
+class BasicRadioWithSameName extends RadioTest {}
 
 @Component({
     template: `
