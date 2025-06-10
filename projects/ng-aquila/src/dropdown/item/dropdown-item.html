@@ -1,25 +1,23 @@
-<li>
-    <div #container class="nx-dropdown-results__option" [ngClass]="{'nx-dropdown-results__option--selected': selected}">
-        @if (multiselect) {
-        <nx-checkbox [checked]="selected" [disabled]="disabled">
-            <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-        </nx-checkbox>
-        } @if (!multiselect) {
-        <span class="nx-dropdown-results__option-checkicon">
-            <nx-icon name="check" aria-hidden="true"></nx-icon>
-        </span>
-        } @if (!multiselect) {
+<div #container class="nx-dropdown-results__option" [ngClass]="{'nx-dropdown-results__option--selected': selected}">
+    @if (multiselect) {
+    <nx-checkbox [checked]="selected" [disabled]="disabled">
         <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-        }
-    </div>
+    </nx-checkbox>
+    } @if (!multiselect) {
+    <span class="nx-dropdown-results__option-checkicon">
+        <nx-icon name="check" aria-hidden="true"></nx-icon>
+    </span>
+    } @if (!multiselect) {
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    }
+</div>
 
-    <ng-template #contentTemplate>
-        <div class="nx-dropdown-results__option-label">
-            <div #content (cdkObserveContent)="_onLabelChange()">
-                <ng-content></ng-content>
-            </div>
-
-            <div>@if (_isContentEmpty(content)) { {{_formattedValue }} }</div>
+<ng-template #contentTemplate>
+    <div class="nx-dropdown-results__option-label">
+        <div #content (cdkObserveContent)="_onLabelChange()">
+            <ng-content></ng-content>
         </div>
-    </ng-template>
-</li>
+
+        <div>@if (_isContentEmpty(content)) { {{_formattedValue }} }</div>
+    </div>
+</ng-template>

@@ -1623,6 +1623,17 @@ describe('NxDropdownComponent', () => {
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
 
+        it('has no accessibility violations when in opened state', fakeAsync(async () => {
+            createTestComponent(SimpleDropdownComponent);
+
+            openDropdownByClick();
+            const panel = getDropdown();
+            fixture.detectChanges();
+            tick();
+
+            await expectAsync(panel).toBeAccessible();
+        }));
+
         it('sets aria-labelledby to label if formfiled label is set', () => {
             createTestComponent(SimpleDropdownComponent);
 
