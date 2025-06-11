@@ -3,18 +3,23 @@
 :host {
     display: flex;
     width: 100%;
-    padding: 8px 0;
+    padding: v(multi-select-item-padding-vertical) v(multi-select-item-padding-horizon);
+
+    &:hover {
+        background-color: v(dropdown-item-hover-background-color);
+    }
+    &:active {
+        background-color: v(dropdown-item-active-background-color);
+    }
 
     &.is-outline {
-        padding: 8px 0;
-
         .nx-checkbox {
             @include type-style(checkbox-small-label);
         }
     }
 
     &.divider {
-        border-bottom: 1px solid v(dropdown-item-divider);
+        border-bottom: 1px solid v(dropdown-group-divider);
         margin-bottom: 16px;
         padding-bottom: 21px;
 

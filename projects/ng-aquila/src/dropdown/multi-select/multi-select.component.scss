@@ -8,9 +8,8 @@
 
 .panel {
     width: 100%;
-    border-radius: 4px;
-    box-shadow: v(shadow-small);
-    border-radius: nx-border-radius(s);
+    box-shadow: v(dropdown-panel-shadow);
+    border-radius: v(dropdown-panel-border-radius);
     background: v(ui-01);
 
     .filter {
@@ -68,6 +67,9 @@
     .value {
         cursor: not-allowed;
     }
+    .value-text {
+        color: v(formfield-readonly-text-color);
+    }
 }
 
 .value-text {
@@ -94,6 +96,8 @@
 }
 
 .indicator {
+    font-size: v(dropdown-chevron-size);
+
     transform: rotateZ(0deg);
 
     :host(.is-open) & {
@@ -106,7 +110,7 @@
     max-height: 272px;
     overflow-y: auto;
     position: relative;
-    padding: 12px 32px;
+    padding: v(multi-select-panel-padding) 0;
 }
 
 .filter-wrapper {
@@ -132,10 +136,10 @@
     display: flex;
     justify-content: space-between;
     white-space: nowrap;
-    padding: 16px 32px;
+    padding: v(multi-select-action-padding-vertical) v(multi-select-item-padding-horizon);
 }
 .select-all {
-    border-bottom: 1px solid v(dropdown-item-divider);
+    border-bottom: 1px solid v(dropdown-group-divider);
 }
 
 .hidden {

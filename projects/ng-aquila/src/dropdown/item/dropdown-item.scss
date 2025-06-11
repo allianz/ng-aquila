@@ -26,6 +26,17 @@ nx-checkbox {
     @include dropdown-overlay__option;
 }
 
+:host(:not(.nx-dropdown-item--disabled)) {
+    .nx-dropdown-results__option {
+        &:hover {
+            background-color: v(dropdown-item-hover-background-color);
+        }
+        &:active {
+            background-color: v(dropdown-item-active-background-color);
+        }
+    }
+}
+
 .nx-dropdown-results__option-label {
     @include dropdown-overlay__option-label;
     white-space: pre-line;

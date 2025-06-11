@@ -48,26 +48,28 @@
         @if (label) {
         <div class="nx-dropdown__panel-header">{{ label }}</div>
         } @if (showFilter) {
-        <div class="nx-dropdown__filter">
-            <input
-                class="nx-dropdown__filter-input"
-                [attr.aria-controls]="modalId"
-                [attr.aria-label]="label"
-                [attr.aria-activedescendant]="activeId()"
-                [class.is-filled]="!isFilterEmpty"
-                #filterInput
-                [type]="filterInputType"
-                (input)="$event.preventDefault()"
-                [(ngModel)]="filterValue"
-                (ngModelChange)="_onFilter($event)"
-                role="combobox"
-                [placeholder]="filterPlaceholder"
-            />
-            @if (!isFilterEmpty) {
-            <span class="nx-dropdown__filter-icon" (click)="_clearFilter()">
-                <nx-icon name="close"></nx-icon>
-            </span>
-            }
+        <div class="nx-dropdown__filter-wrap">
+            <div class="nx-dropdown__filter">
+                <input
+                    class="nx-dropdown__filter-input"
+                    [attr.aria-controls]="modalId"
+                    [attr.aria-label]="label"
+                    [attr.aria-activedescendant]="activeId()"
+                    [class.is-filled]="!isFilterEmpty"
+                    #filterInput
+                    [type]="filterInputType"
+                    (input)="$event.preventDefault()"
+                    [(ngModel)]="filterValue"
+                    (ngModelChange)="_onFilter($event)"
+                    role="combobox"
+                    [placeholder]="filterPlaceholder"
+                />
+                @if (!isFilterEmpty) {
+                <span class="nx-dropdown__filter-icon" (click)="_clearFilter()">
+                    <nx-icon name="close"></nx-icon>
+                </span>
+                }
+            </div>
         </div>
         }
 

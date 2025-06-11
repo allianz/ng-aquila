@@ -541,6 +541,7 @@ $margin-to-message: nx-spacer(3xs);
 
     &.has-outline .nx-formfield__input-container {
         border-color: v(formfield-disabled-border-color);
+        background-color: v(formfield-disabled-background-color);
     }
 
     &.has-outline {
