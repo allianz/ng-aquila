@@ -134,6 +134,7 @@
     align-items: center;
     z-index: 0;
     cursor: pointer;
+    transition: v(checkbox-transition);
 }
 
 .nx-checkbox__indeterminate-indicator {

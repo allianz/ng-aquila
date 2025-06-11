@@ -600,6 +600,7 @@ $nx-theme: (
     checkbox-border-width: 2px,
     checkbox-border-radius: 4px,
     checkbox-control-size: 24px,
+    checkbox-transition: none,
     // IE has problems using 24px because of the border
     // it just doesn't want to align the icon into the remaining 20x20
     // space, despite all other browsers just do it correctly
