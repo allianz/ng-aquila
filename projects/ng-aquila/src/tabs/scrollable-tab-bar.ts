@@ -174,10 +174,11 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
 
         const scrollRight = Math.round(Math.abs(scrollListElement.scrollLeft) + scrollListElement.getBoundingClientRect().width);
 
-        if (scrollRight === scrollListElement.scrollWidth && !this._isScrolledToEnd) {
+        // Add `- 1` to avoid the potential floating-point precision issues
+        if (scrollRight >= scrollListElement.scrollWidth - 1 && !this._isScrolledToEnd) {
             this._isScrolledToEnd = true;
             this._cdr.markForCheck();
-        } else if (scrollRight !== scrollListElement.scrollWidth && this._isScrolledToEnd) {
+        } else if (scrollRight < scrollListElement.scrollWidth - 1 && this._isScrolledToEnd) {
             this._isScrolledToEnd = false;
             this._cdr.markForCheck();
         }

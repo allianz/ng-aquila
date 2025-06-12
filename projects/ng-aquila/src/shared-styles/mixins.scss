@@ -164,8 +164,8 @@ $border-size: nx-border-size(xs);
     border: none;
     background: transparent;
     color: v(tab-item-color);
-    padding: nx-spacer(3xs) 0 nx-spacer(xs) 0;
-    margin: nx-spacer(3xs) nx-spacer(s) 0 nx-spacer(s);
+    padding: v(tab-item-padding);
+    margin: v(tab-item-margin);
     outline: none;
     position: relative;
     cursor: pointer;
@@ -187,8 +187,8 @@ $border-size: nx-border-size(xs);
 }
 
 @mixin tab__item--active {
-    border-width: nx-border-size(xl);
-    font-weight: nx-font-weight(bold);
+    border-width: v(tab-item-active-border-width);
+    font-weight: v(tab-item-active-font-weight);
     border-bottom-style: solid;
     border-color: v(tab-item-active-border-color);
     padding-bottom: 8px;

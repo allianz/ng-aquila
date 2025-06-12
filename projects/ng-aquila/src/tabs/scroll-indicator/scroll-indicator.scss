@@ -1,19 +1,27 @@
 @import '../../shared-styles/index';
 
 :host {
-    position: relative;
-    border-color: v(tab-item-border-color);
-    border-bottom-width: nx-border-size(xs);
+    border-color: v(tab-item-scroll-color);
+    border-bottom-width: v(tab-item-border-width);
     border-bottom-style: solid;
     flex: 0 0 auto;
-    height: 44px;
+    height: 100%;
+    z-index: 1;
+    background-color: v(ui-01);
 
     .nx-tab-scroll-indicator__divider {
         width: 1px;
         height: 32px;
-        background: v(tab-item-border-color);
+        background: v(tab-item-scroll-color);
         position: absolute;
         top: 4px;
+    }
+
+    button {
+        display: flex;
+        align-items: v(tab-scroll-indicator-align);
+        justify-content: center;
+        width: 100%;
     }
 
     &.start-button.is-scrolled-to-start,
@@ -27,9 +35,63 @@
         }
     }
 
+    &.start-button.is-scrolled-to-start {
+        display: none;
+    }
+
+    &.start-button {
+        position: absolute;
+        display: flex;
+        top: 0;
+        left: 0;
+        .nx-tab-scroll-indicator__divider {
+            right: 0;
+
+            [dir='rtl'] & {
+                right: initial;
+                left: 0;
+            }
+        }
+
+        &::after {
+            content: '';
+            display: v(tab-header-indicator-display);
+            width: v(tab-scroll-indicator-fade-width);
+            position: absolute;
+            right: calc(0px - v(tab-scroll-indicator-fade-width));
+            height: 100%;
+            background: linear-gradient(to left, transparent 0%, v(ui-01) 100%);
+        }
+    }
+
+    &.end-button {
+        position: absolute;
+        display: flex;
+        top: 0;
+        right: 0;
+        .nx-tab-scroll-indicator__divider {
+            left: 0;
+
+            [dir='rtl'] & {
+                left: initial;
+                right: 0;
+            }
+        }
+
+        &::before {
+            content: '';
+            display: v(tab-header-indicator-display);
+            width: v(tab-scroll-indicator-fade-width);
+            position: absolute;
+            left: calc(0px - v(tab-scroll-indicator-fade-width));
+            height: 100%;
+            background: linear-gradient(to right, transparent 0%, v(ui-01) 100%);
+        }
+    }
+
     // mobile
     @include media-breakpoint-down(medium) {
-        width: 16px;
+        width: v(tab-scroll-indicator-width-small-screen);
 
         &.start-button:not(.is-scrolled-to-start) {
             .nx-tab-scroll-indicator__divider {
@@ -53,47 +115,17 @@
             }
         }
         button {
-            display: none;
+            display: v(tab-header-indicator-display);
         }
     }
 
     // desktop
     @include media-breakpoint-up(medium) {
-        padding: 8px 8px 10px 8px;
-        width: 40px;
-
-        &.start-button.is-scrolled-to-start {
-            display: none;
-        }
+        display: flex;
+        width: v(tab-scroll-indicator-width);
 
         button {
-            vertical-align: bottom;
-        }
-
-        &.start-button {
-            .nx-tab-scroll-indicator__divider {
-                right: 0;
-
-                [dir='rtl'] & {
-                    right: initial;
-                    left: 0;
-                }
-            }
-        }
-
-        &.end-button {
-            .nx-tab-scroll-indicator__divider {
-                left: 0;
-
-                [dir='rtl'] & {
-                    left: initial;
-                    right: 0;
-                }
-            }
-        }
-
-        button {
-            display: block;
+            display: flex;
         }
     }
 }

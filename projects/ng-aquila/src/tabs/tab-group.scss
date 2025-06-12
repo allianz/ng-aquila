@@ -42,7 +42,7 @@
     content: '';
     position: absolute;
     width: calc(100% + #{nx-spacer(xl)});
-    height: 1px;
+    height: v(tab-item-border-width);
     bottom: 0;
     left: -(nx-spacer(2m));
     background-color: v(tab-item-border-color);
@@ -141,7 +141,7 @@
 
         &:hover,
         &:active {
-            font-weight: nx-font-weight(bold);
+            font-weight: v(tab-item-active-font-weight);
         }
     }
 
