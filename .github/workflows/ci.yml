@@ -17,6 +17,8 @@ jobs:
             - uses: actions/setup-node@v4
               with:
                   node-version: '18'
+            - uses: browser-actions/setup-chrome@v1
+              id: setup-chrome
             - name: Checkout
               uses: actions/checkout@v3
 
@@ -36,8 +38,10 @@ jobs:
               run: COMPACT_TEST_RESULTS=true npm run test:docs-ui:coverage
 
             - name: Test ng-aquila
-              run: COMPACT_TEST_RESULTS=true npm run test:lib:coverage
-
+              run: |
+                  export CHROME_BIN=${{ steps.setup-chrome.outputs.chrome-path }}
+                  echo "$CHROME_BIN"
+                  COMPACT_TEST_RESULTS=true npm run test:lib:coverage
             - name: Test ng-aquila/schematics
               run: npm run test:schematics
 
