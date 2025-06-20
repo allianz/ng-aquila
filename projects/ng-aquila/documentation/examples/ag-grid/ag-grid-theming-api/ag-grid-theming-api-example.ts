@@ -5,8 +5,12 @@ import {
     Component,
     ElementRef,
     ViewChild,
-    ViewEncapsulation,
 } from '@angular/core';
+import {
+    themeAllianz,
+    themeAquilaDenseParams,
+    themeAquilaZebraParams,
+} from '@aposin/ng-aquila/ag-grid';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
 import {
@@ -24,16 +28,16 @@ import { Observable } from 'rxjs';
 
 ModuleRegistry.registerModules([ClientSideRowModelModule, AllCommunityModule]);
 /**
- * @title Ag-grid example
+ * @title Ag-grid Theming API example
  */
 @Component({
-    selector: 'ag-grid-example',
-    templateUrl: './ag-grid-example.html',
-    styleUrls: ['./ag-grid-example.css'],
+    selector: 'ag-grid-theming-api-example',
+    templateUrl: './ag-grid-theming-api-example.html',
+    styleUrls: ['./ag-grid-theming-api-example.css'],
     imports: [NxButtonComponent, AgGridModule, AsyncPipe],
-    encapsulation: ViewEncapsulation.ShadowDom,
 })
-export class AgGridExampleComponent {
+export class AgGridThemingAPIExampleComponent {
+    theme = themeAllianz;
     rowSelection: MultiRowSelectionOptions = {
         mode: 'multiRow',
         headerCheckbox: true,
@@ -139,13 +143,26 @@ export class AgGridExampleComponent {
         this.agGrid.api.deselectAll();
     }
 
-    dense = false;
+    isDense = false;
     toggleDense() {
-        this.dense = !this.dense;
+        this.isDense = !this.isDense;
+        this.updateTheme();
     }
-    zebra = false;
+
+    isZebra = false;
     toggleZebra() {
-        this.zebra = !this.zebra;
+        this.isZebra = !this.isZebra;
+        this.updateTheme();
+    }
+
+    updateTheme() {
+        const newTheme = {
+            ...(this.isDense ? themeAquilaDenseParams : {}),
+            ...(this.isZebra ? themeAquilaZebraParams : {}),
+        };
+
+        this.theme = themeAllianz.withParams(newTheme);
+        this._cdr.detectChanges();
     }
 
     toggleCheckboxSelection() {

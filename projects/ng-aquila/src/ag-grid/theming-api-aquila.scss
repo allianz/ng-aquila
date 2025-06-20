@@ -1,86 +1,14 @@
 @use 'sass:map';
 @use 'sass:list';
 
-$icon-mapping: (
-    filter: '\ea41',
-    asc: '\e900',
-    desc: '\e901',
-    excel: '\ea11',
-    last: '\e952',
-    none: '\ea62',
-    right: '\e903',
-    small-right: '\ea31',
-    tree-indeterminate: '\e954',
-    arrows: '\ec11',
-    cross: '\e913',
-    first: '\e951',
-    left: '\e902',
-    menu: '\e928',
-    save: '\e917',
-    eye-slash: '\ea52',
-    tick: '\e911',
-    copy: '\ea35',
-    eye: '\ea54',
-    small-left: '\ea28',
-    small-down: '\e90a',
-);
-
-// ICONS where we already want to use the allianz icon font
-// we override this for each icon separately until we have the full set
-.ag-theme-allianz-icons .ag-icon {
-    @each $icon-name, $character in $icon-mapping {
-        --ag-icon-font-code-#{$icon-name}: '#{$character}';
-    }
-
-    $icon-selectors: ();
-    @each $icon-name, $character in $icon-mapping {
-        $icon-selectors: map.set($icon-selectors, unquote('&.ag-icon-#{$icon-name}'), $character);
-    }
-    $joined: list.join(map.keys($icon-selectors), (), comma);
-    #{$joined} {
-        --ag-icon-font-family: Allianz-Icons;
-    }
-}
-
-.ag-theme-aquila {
-    --ag-card-radius: 4px;
-    --ag-background-color: var(--ui-01);
-    --ag-modal-overlay-background-color: var(--ui-01);
-    --ag-control-panel-background-color: var(--ui-01);
-    --ag-popup-shadow: var(--shadow-small);
-    --ag-card-shadow: var(--shadow-large);
-    --ag-font-family: var(--font-family);
-    --ag-header-background-color: var(--table-header-cell-background-color);
-    --ag-font-size: var(--table-header-cell-font-size);
-    --ag-odd-row-background-color: var(--table-row-background-color);
-    --ag-row-border-color: var(--table-cell-border-top-color);
-    --ag-row-height: 56px;
-    --ag-input-focus-box-shadow: var(--formfield-outline-focus-box-shadow);
-    --ag-input-focus-border-color: var(--formfield-outline-active-border-color);
-    --ag-checkbox-unchecked-color: var(--checkbox-border-color);
-    --ag-checkbox-checked-color: var(--checkbox-selected-background-color);
-    --ag-row-hover-color: var(--selectable-table-row-hover-background-color);
-    --ag-selected-row-background-color: var(--zebra-table-row-selected-background-color);
-    --ag-header-column-resize-handle-color: var(--table-resize-handle-color);
-    --ag-header-column-separator-color: var(--table-resize-handle-color);
-    --ag-header-column-resize-handle-height: 50%;
-    --ag-border-radius: 4px;
-    --ag-widget-vertical-spacing: 12px;
-    --ag-cell-horizontal-padding: 16px;
-    --ag-border-color: var(--ui-04);
-    --ag-foreground-color: var(--text-01);
-    --ag-disabled-foreground-color: var(--disabled-01);
-    --ag-input-disabled-background-color: var(--formfield-background-color);
-    --ag-input-disabled-border-color: var(--formfield-disabled-border-color);
-    // that might need adjustment don't know where that is used
-    --ag-chip-background-color: var(--ui-01);
-    --ag-input-border-color: var(--formfield-outline-border-color);
-    --ag-range-selection-border-color: var(--selectable-table-row-selected-border-color);
-    --ag-header-height: 44px;
-
+.theming-api-aquila {
     // creates the spacing of the group header border to the resize handles
     // by hiding parts of the border with the properly positioned pseudo elements
     // a bit hacky but works :)
+
+    :where(.ag-ltr) .ag-header-cell:after {
+        border-right: none;
+    }
 
     .ag-header-cell {
         gap: 0;
@@ -91,14 +19,15 @@ $icon-mapping: (
 
         &:before,
         &:after {
-            content: ' ' !important;
-            width: 8px !important;
-            position: absolute !important;
-            height: 100% !important;
-            background-color: var(--ag-background-color) !important;
-            top: 50% !important;
-            z-index: 2 !important;
-            display: block !important;
+            content: ' ';
+            width: 8px;
+            position: absolute;
+            height: 100%;
+            background-color: var(--ag-background-color);
+            top: 50%;
+            z-index: 2;
+            display: block;
+            border-right: none;
         }
 
         &:before {
@@ -106,7 +35,7 @@ $icon-mapping: (
         }
 
         &::after {
-            right: 3px;
+            right: 2px;
         }
     }
 
@@ -124,6 +53,7 @@ $icon-mapping: (
 
         .ag-header-cell-resize::after {
             top: 12px;
+            left: 3px;
         }
 
         .ag-header-cell.ag-header-span-height {
@@ -135,7 +65,8 @@ $icon-mapping: (
 
     .ag-header-row-column-group:has(+ .ag-header-row) {
         .ag-header-cell-resize::after {
-            height: calc(200% - var(--ag-grid-size) * 4);
+            height: calc(200% - var(--ag-spacing) * 4);
+            left: 3px;
         }
     }
 
@@ -168,7 +99,7 @@ $icon-mapping: (
         display: flex;
         align-items: center;
         justify-content: center;
-        border: var(--ag-borders-input) var(--ag-input-border-color);
+        border: var(--ag-input-border);
         border-radius: var(--ag-border-radius);
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
@@ -178,7 +109,7 @@ $icon-mapping: (
         border-right: none;
 
         &:focus {
-            border-right: var(--ag-borders-input) var(--ag-input-border-color);
+            border-right: var(--ag-input-border);
         }
     }
 
@@ -224,7 +155,7 @@ $icon-mapping: (
 
     .ag-select .ag-picker-field-wrapper {
         min-height: 32px;
-        border: var(--ag-borders-input) var(--ag-input-border-color);
+        border: var(--ag-input-border);
         border-radius: var(--ag-border-radius);
 
         & .ag-picker-field-icon {
@@ -250,21 +181,17 @@ $icon-mapping: (
         }
     }
 
+    .ag-paging-number,
+    .ag-paging-row-summary-panel-number {
+        font-weight: 700;
+    }
+
     // hide the "1 to 100 of xxxxx" on mobile that the pagination doesn't line break
     @media (max-width: 475px) {
         .ag-paging-row-summary-panel {
             display: none;
         }
     }
-}
-
-.ag-theme-aquila-dense {
-    --ag-row-height: 40px;
-}
-
-.ag-theme-aquila-zebra {
-    --ag-odd-row-background-color: var(--zebra-table-even-row-background-color);
-    --ag-row-border-style: none;
 }
 
 .ag-dnd-ghost {

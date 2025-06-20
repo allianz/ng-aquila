@@ -5,10 +5,6 @@
     padding-bottom: 24px;
 }
 
-:host *:not(.ag-icon):not([class*='ag-icon']):not(.ag-checkbox-input-wrapper) {
-    font-family: 'Allianz Neo', sans-serif !important;
-}
-
 .buttons {
     display: flex;
     gap: 8px;

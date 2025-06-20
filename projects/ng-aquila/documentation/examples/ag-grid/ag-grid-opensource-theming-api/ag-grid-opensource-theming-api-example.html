@@ -2,10 +2,10 @@
 <div class="buttons">
     <button nxButton="small" (click)="clearSelection()">Clear Selection</button>
     <button nxButton="small" (click)="toggleDense()">
-        Toggle dense ({{ dense ? "on" : "off" }})
+        Toggle dense ({{ isDense ? "on" : "off" }})
     </button>
     <button nxButton="small" (click)="toggleZebra()">
-        Toggle zebra ({{ zebra ? "on" : "off" }})
+        Toggle zebra ({{ isZebra ? "on" : "off" }})
     </button>
     <button nxButton="small" (click)="toggleCheckboxSelection()">
         Checkbox selection
@@ -17,14 +17,12 @@
 <!-- AG Grid Angular Component -->
 <ag-grid-angular
     style="width: 100%; height: 100%"
-    class="ag-theme-alpine ag-theme-aquila"
-    [class.ag-theme-aquila-dense]="dense"
-    [class.ag-theme-aquila-zebra]="zebra"
+    class="theming-api-aquila"
     [columnDefs]="columnsWithGroup"
     [defaultColDef]="defaultColDef"
     [rowData]="rowData$ | async"
     (gridReady)="onGridReady($event)"
     [pagination]="true"
     [rowSelection]="rowSelection"
-    [theme]="'legacy'"
+    [theme]="theme"
 ></ag-grid-angular>

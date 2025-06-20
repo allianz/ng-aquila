@@ -26,12 +26,11 @@ function compileAgGridTheme() {
     if (fs.existsSync('../node_modules/ag-grid-community')) {
         nodeModulesPath = '../node_modules';
     }
-    execSync(
-        `sass --no-source-map --load-path=${nodeModulesPath} projects/ng-aquila/src/ag-grid/ag-theme-aquila.scss dist/ng-aquila/themes/ag-theme-aquila.css`,
-        {
+    ['ag-theme-aquila', 'theming-api-aquila'].forEach(file => {
+        execSync(`sass --no-source-map --load-path=${nodeModulesPath} projects/ng-aquila/src/ag-grid/${file}.scss dist/ng-aquila/themes/${file}.css`, {
             stdio: 'inherit',
-        },
-    );
+        });
+    });
 }
 
 function globCopy(sourcePath, destinationPath, globPath) {

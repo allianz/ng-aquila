@@ -5,6 +5,7 @@ import {
     Component,
     ElementRef,
     ViewChild,
+    ViewEncapsulation,
 } from '@angular/core';
 import { NxButtonComponent } from '@aposin/ng-aquila/button';
 import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
@@ -14,7 +15,9 @@ import {
     ColGroupDef,
     GridApi,
     GridReadyEvent,
+    provideGlobalGridOptions,
 } from 'ag-grid-community';
+import { MultiRowSelectionOptions } from 'ag-grid-community/dist/types/src/entities/gridOptions';
 import { Observable } from 'rxjs';
 
 /**
@@ -25,17 +28,21 @@ import { Observable } from 'rxjs';
     templateUrl: './ag-grid-opensource-example.html',
     styleUrls: ['./ag-grid-opensource-example.css'],
     imports: [NxButtonComponent, AgGridModule, AsyncPipe],
+    encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class AgGridOpensourceExampleComponent {
+    rowSelection: MultiRowSelectionOptions = {
+        mode: 'multiRow',
+        headerCheckbox: true,
+        checkboxes: true,
+    };
+
     columnsNoGroup: ColDef[] = [
         {
             colId: 'make',
             field: 'make',
             filter: 'agTextColumnFilter',
             floatingFilter: true,
-            headerCheckboxSelection: true,
-            checkboxSelection: true,
-            showDisabledCheckboxes: true,
             resizable: true,
         },
         {
@@ -60,9 +67,6 @@ export class AgGridOpensourceExampleComponent {
             field: 'make',
             filter: 'agTextColumnFilter',
             floatingFilter: true,
-            headerCheckboxSelection: true,
-            checkboxSelection: true,
-            showDisabledCheckboxes: true,
             resizable: true,
         },
         {
@@ -118,7 +122,9 @@ export class AgGridOpensourceExampleComponent {
     constructor(
         private readonly http: HttpClient,
         private readonly _cdr: ChangeDetectorRef,
-    ) {}
+    ) {
+        provideGlobalGridOptions({ theme: 'legacy' });
+    }
 
     // Example load data from server
     onGridReady(params: GridReadyEvent) {
@@ -153,32 +159,26 @@ export class AgGridOpensourceExampleComponent {
         if (!columnDefs) {
             return;
         }
-        const firstColumnDef = columnDefs[0] as ColDef;
-        firstColumnDef.checkboxSelection = !firstColumnDef.checkboxSelection;
-        firstColumnDef.headerCheckboxSelection =
-            !firstColumnDef.headerCheckboxSelection;
-        this.gridApi.setColumnDefs([]); // needed for a dynamic update, not necessarily the best solution
-        this.gridApi.setColumnDefs(columnDefs);
+        const currentSelection = this.gridApi.getGridOption(
+            'rowSelection',
+        ) as MultiRowSelectionOptions;
+        const currentCheckboxes = currentSelection?.checkboxes ?? false;
+        this.gridApi.setGridOption('rowSelection', {
+            ...this.rowSelection,
+            headerCheckbox: !currentCheckboxes,
+            checkboxes: !currentCheckboxes,
+        });
+        this.gridApi.setGridOption('columnDefs', []);
+        this.gridApi.setGridOption('columnDefs', columnDefs);
         this.gridApi.sizeColumnsToFit();
     }
 
     toggleGroup() {
         this.showGroup = !this.showGroup;
-        this.gridApi.setColumnDefs(
+        this.gridApi.setGridOption(
+            'columnDefs',
             this.showGroup ? this.columnsWithGroup : this.columnsNoGroup,
         );
         this.gridApi.sizeColumnsToFit();
     }
-
-    columnDefsTest: ColDef[] = [
-        { field: 'make' },
-        { field: 'model' },
-        { field: 'price' },
-    ];
-
-    rowData = [
-        { make: 'Toyota', model: 'Celica', price: 35000 },
-        { make: 'Ford', model: 'Mondeo', price: 32000 },
-        { make: 'Porsche', model: 'Boxster', price: 72000 },
-    ];
 }

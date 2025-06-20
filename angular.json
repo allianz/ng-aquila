@@ -145,9 +145,8 @@
                             "projects/ngx-docs-ui/src/lib/styles/viewer-styles.scss",
                             "node_modules/highlight.js/styles/tomorrow-night-blue.css",
                             "node_modules/@fortawesome/fontawesome-free/css/all.css",
-                            "node_modules/ag-grid-community/styles/ag-grid.css",
                             "node_modules/ag-grid-community/styles/ag-theme-alpine.css",
-                            "projects/ng-aquila/src/ag-grid/ag-theme-aquila.scss"
+                            "projects/ng-aquila/src/ag-grid/theming-api-aquila.scss"
                         ]
                     },
                     "configurations": {
