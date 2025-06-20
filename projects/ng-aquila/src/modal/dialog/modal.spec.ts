@@ -1,7 +1,7 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { A, ESCAPE } from '@angular/cdk/keycodes';
 import { Overlay, OverlayContainer, ScrollStrategy } from '@angular/cdk/overlay';
-import { _supportsShadowDom } from '@angular/cdk/platform';
+import { _getFocusedElementPierceShadowDom, _supportsShadowDom } from '@angular/cdk/platform';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { Location } from '@angular/common';
 import { SpyLocation } from '@angular/common/testing';
@@ -1162,7 +1162,9 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
             flushMicrotasks();
 
-            expect(document.activeElement!.tagName).withContext('Expected first tabbable element (input) in the dialog to be focused.').toBe('INPUT');
+            expect(_getFocusedElementPierceShadowDom()!.tagName)
+                .withContext('Expected first tabbable element (input) in the dialog to be focused.')
+                .toBe('INPUT');
         }));
 
         it('should focus the first tabbable element of the dialog on open', fakeAsync(() => {
@@ -1174,7 +1176,9 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
             flushMicrotasks();
 
-            expect(document.activeElement!.tagName).withContext('Expected first tabbable element (input) in the dialog to be focused.').toBe('INPUT');
+            expect(_getFocusedElementPierceShadowDom()!.tagName)
+                .withContext('Expected first tabbable element (input) in the dialog to be focused.')
+                .toBe('INPUT');
         }));
 
         it('should allow disabling focus of the first tabbable element', fakeAsync(() => {
@@ -1186,7 +1190,7 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
             flushMicrotasks();
 
-            expect(document.activeElement!.tagName).not.toBe('INPUT');
+            expect(_getFocusedElementPierceShadowDom()!.tagName).not.toBe('INPUT');
         }));
 
         it('should focus dialog when set autofocus to dialog ', fakeAsync(() => {
@@ -1198,7 +1202,9 @@ describe('NxDialog', () => {
 
             viewContainerFixture.detectChanges();
             flushMicrotasks();
-            expect(document.activeElement).withContext('Expected dialog to be focused.').toBe(container);
+            expect(_getFocusedElementPierceShadowDom())
+                .withContext('Expected dialog to be focused.')
+                .toBe(container as HTMLElement);
         }));
 
         it('should focus the first heading element of the dialog on open', fakeAsync(() => {
@@ -1212,7 +1218,7 @@ describe('NxDialog', () => {
 
             const firstHeader = overlayContainerElement.querySelector('h1') as HTMLInputElement;
 
-            expect(document.activeElement).withContext('Expected first heading element in the dialog to be focused.').toBe(firstHeader);
+            expect(_getFocusedElementPierceShadowDom()).withContext('Expected first heading element in the dialog to be focused.').toBe(firstHeader);
         }));
 
         it('should focus the custom element of the dialog on open', fakeAsync(() => {
@@ -1226,7 +1232,7 @@ describe('NxDialog', () => {
 
             const customElement = overlayContainerElement.querySelector('.custom') as HTMLInputElement;
 
-            expect(document.activeElement).withContext('Expected custom element in the dialog to be focused.').toBe(customElement);
+            expect(_getFocusedElementPierceShadowDom()).withContext('Expected custom element in the dialog to be focused.').toBe(customElement);
         }));
 
         it('should re-focus trigger element when dialog closes', fakeAsync(() => {
@@ -1242,16 +1248,20 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
             flushMicrotasks();
 
-            expect(document.activeElement!.id).withContext('Expected the focus to change when dialog was opened.').not.toBe('dialog-trigger');
+            expect(_getFocusedElementPierceShadowDom()!.id).withContext('Expected the focus to change when dialog was opened.').not.toBe('dialog-trigger');
 
             dialogRef.close();
-            expect(document.activeElement!.id).withContext('Expcted the focus not to have changed before the animation finishes.').not.toBe('dialog-trigger');
+            expect(_getFocusedElementPierceShadowDom()!.id)
+                .withContext('Expcted the focus not to have changed before the animation finishes.')
+                .not.toBe('dialog-trigger');
 
             flushMicrotasks();
             viewContainerFixture.detectChanges();
             tick(500);
 
-            expect(document.activeElement!.id).withContext('Expected that the trigger was refocused after the dialog is closed.').toBe('dialog-trigger');
+            expect(_getFocusedElementPierceShadowDom()!.id)
+                .withContext('Expected that the trigger was refocused after the dialog is closed.')
+                .toBe('dialog-trigger');
 
             document.body.removeChild(button);
         }));
@@ -1306,7 +1316,9 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
             flushMicrotasks();
 
-            expect(document.activeElement!.id).withContext('Expected that the trigger was refocused after the dialog is closed.').toBe('input-to-be-focused');
+            expect(_getFocusedElementPierceShadowDom()!.id)
+                .withContext('Expected that the trigger was refocused after the dialog is closed.')
+                .toBe('input-to-be-focused');
 
             document.body.removeChild(button);
             document.body.removeChild(input);
@@ -1319,7 +1331,7 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
             flushMicrotasks();
 
-            expect(document.activeElement!.tagName).withContext('Expected dialog container to be focused.').toBe('NX-MODAL-CONTAINER');
+            expect(_getFocusedElementPierceShadowDom()!.tagName).withContext('Expected dialog container to be focused.').toBe('NX-MODAL-CONTAINER');
         }));
 
         it('should be able to disable focus restoration', fakeAsync(() => {
@@ -1338,14 +1350,14 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
             flushMicrotasks();
 
-            expect(document.activeElement!.id).withContext('Expected the focus to change when dialog was opened.').not.toBe('dialog-trigger');
+            expect(_getFocusedElementPierceShadowDom()!.id).withContext('Expected the focus to change when dialog was opened.').not.toBe('dialog-trigger');
 
             dialogRef.close();
             flushMicrotasks();
             viewContainerFixture.detectChanges();
             tick(500);
 
-            expect(document.activeElement!.id).withContext('Expected focus not to have been restored.').not.toBe('dialog-trigger');
+            expect(_getFocusedElementPierceShadowDom()!.id).withContext('Expected focus not to have been restored.').not.toBe('dialog-trigger');
 
             document.body.removeChild(button);
         }));
@@ -1685,7 +1697,7 @@ describe('NxDialog with default options', () => {
         dispatchKeyboardEvent(document.body, 'keydown', ESCAPE);
         expect(overlayContainerElement.querySelector('nx-modal-container')).toBeTruthy();
 
-        expect(document.activeElement!.tagName).not.toBe('INPUT');
+        expect(_getFocusedElementPierceShadowDom()!.tagName).not.toBe('INPUT');
 
         const overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
         expect(overlayPane.style.width).toBe('100px');

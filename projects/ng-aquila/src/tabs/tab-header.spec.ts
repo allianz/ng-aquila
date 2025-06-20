@@ -1,4 +1,5 @@
 import { END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE, TAB } from '@angular/cdk/keycodes';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -109,7 +110,7 @@ describe('NxTabHeaderComponent', () => {
                 dispatchKeyboardEvent(tabListContainer, 'keydown', TAB);
                 fixture.detectChanges();
                 const navigationButton = tabHeaderNativeElement.querySelector('.end-button button');
-                expect(document.activeElement).not.toBe(navigationButton);
+                expect(_getFocusedElementPierceShadowDom()).not.toBe(navigationButton as HTMLElement);
             });
         });
 

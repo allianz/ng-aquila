@@ -1,6 +1,7 @@
 import { B, C, D, DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE, TAB, UP_ARROW, V } from '@angular/cdk/keycodes';
 import { MutationObserverFactory } from '@angular/cdk/observers';
 import { OverlayContainer, OverlayModule, ScrollStrategy } from '@angular/cdk/overlay';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { ComponentHarness, LocatorFactory } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { AsyncPipe, CommonModule } from '@angular/common';
@@ -240,7 +241,7 @@ describe('NxDropdownComponent', () => {
             openDropdownByClick();
             clickOnBackdrop();
             const dropdown = fixture.debugElement.nativeElement.querySelector('nx-dropdown');
-            expect(document.activeElement).withContext('Expected host element to be focused.').toBe(dropdown);
+            expect(_getFocusedElementPierceShadowDom()).withContext('Expected host element to be focused.').toBe(dropdown);
         }));
 
         it('should float label on opening overlay', fakeAsync(() => {
@@ -909,7 +910,7 @@ describe('NxDropdownComponent', () => {
             createTestComponent(FilterDropdownComponent);
             openDropdownByClick();
             const filterInput = getFilterInput();
-            expect(document.activeElement).toBe(filterInput);
+            expect(_getFocusedElementPierceShadowDom()).toBe(filterInput);
         }));
 
         it('should not throw when selected value is hidden by filter', fakeAsync(() => {
@@ -933,7 +934,7 @@ describe('NxDropdownComponent', () => {
             const instance = testInstance as FilterDropdownComponent;
             spyOn(instance, 'filterResultChanged');
             const filterInput = getFilterInput();
-            expect(document.activeElement).toBe(filterInput);
+            expect(_getFocusedElementPierceShadowDom()).toBe(filterInput);
             filterInput.value = 'i';
             dispatchFakeEvent(filterInput, 'input');
             fixture.detectChanges();

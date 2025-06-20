@@ -2,6 +2,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { Direction } from '@angular/cdk/bidi';
 import { ENTER, ESCAPE, SPACE, TAB } from '@angular/cdk/keycodes';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { Component, Directive, Inject, signal, Type, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -221,7 +222,7 @@ describe('NxPopoverTriggerDirective', () => {
         it('popover should not have focus', fakeAsync(() => {
             createTestComponent(PopoverShowClose);
             hover();
-            expect(overlayContainer.getContainerElement().contains(document.activeElement)).toBeFalse();
+            expect(overlayContainer.getContainerElement().contains(_getFocusedElementPierceShadowDom())).toBeFalse();
         }));
 
         it('should support display to left', fakeAsync(() => {

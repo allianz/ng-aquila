@@ -1,4 +1,5 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { Component, Directive, Type } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -68,7 +69,7 @@ describe('NxLinkComponent', () => {
         button.click();
         fixture.detectChanges();
         flush();
-        expect(document.activeElement).toBe(overlayContainerElement.querySelector('button[nxplainbutton]'));
+        expect(_getFocusedElementPierceShadowDom()).toBe(overlayContainerElement.querySelector('button[nxplainbutton]') as HTMLElement);
     }));
 
     describe('a11y', () => {

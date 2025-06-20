@@ -1,3 +1,4 @@
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -252,7 +253,7 @@ describe('NxCheckboxComponent', () => {
     it('focuses the checkbox when calling focus()', () => {
         createTestComponent(BasicCheckbox);
         checkboxInstance.focus();
-        expect(checkboxNativeElement.querySelector('.nx-checkbox__input')).toEqual(document.activeElement);
+        expect(checkboxNativeElement.querySelector('.nx-checkbox__input')).toEqual(_getFocusedElementPierceShadowDom());
     });
 
     describe('ngModel support', () => {

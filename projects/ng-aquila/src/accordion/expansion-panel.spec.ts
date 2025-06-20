@@ -1,4 +1,5 @@
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -163,7 +164,7 @@ describe('NxExpansionPanelComponent', () => {
         const button = fixture.debugElement.query(By.css('#test-button')).nativeElement;
 
         button.focus();
-        expect(document.activeElement).withContext('Expected button to start off focusable.').toBe(button);
+        expect(_getFocusedElementPierceShadowDom()).withContext('Expected button to start off focusable.').toBe(button);
 
         button.blur();
         fixture.componentInstance.expanded = false;
@@ -171,7 +172,7 @@ describe('NxExpansionPanelComponent', () => {
         tick(250);
 
         button.focus();
-        expect(document.activeElement).withContext('Expected button to no longer be focusable.').not.toBe(button);
+        expect(_getFocusedElementPierceShadowDom()).withContext('Expected button to no longer be focusable.').not.toBe(button);
     }));
 
     it('should update the indicator rotation when the expanded state is toggled programmatically', fakeAsync(() => {

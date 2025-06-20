@@ -1,4 +1,5 @@
 import { DOWN_ARROW, END, HOME, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -621,7 +622,7 @@ describe('NxSliderComponent', () => {
             const label = fixture.nativeElement.querySelector('.nx-slider__label');
             label.click();
             const handle = fixture.nativeElement.querySelector('.nx-slider__handle');
-            expect(document.activeElement).toBe(handle);
+            expect(_getFocusedElementPierceShadowDom()).toBe(handle);
         });
 
         it('has no accessibility violations', async () => {

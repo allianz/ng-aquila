@@ -1,3 +1,4 @@
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -85,7 +86,7 @@ describe('NxTaglistComponent', () => {
         fixture.detectChanges();
 
         expect(taglistInstance.tags).toHaveSize(1);
-        expect(document.activeElement).toEqual(tagElements.item(1));
+        expect(_getFocusedElementPierceShadowDom()).toEqual(tagElements.item(1));
     });
 
     it('deletes tags on delete button click and focuses the previous one', () => {
@@ -96,7 +97,7 @@ describe('NxTaglistComponent', () => {
         fixture.detectChanges();
 
         expect(taglistInstance.tags).toHaveSize(1);
-        expect(document.activeElement).toEqual(tagElements.item(tagElements.length - 2));
+        expect(_getFocusedElementPierceShadowDom()).toEqual(tagElements.item(tagElements.length - 2));
     });
 
     it('emits event on click', () => {

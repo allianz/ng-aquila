@@ -9,6 +9,7 @@ import { CdkTrapFocus, FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { ESCAPE } from '@angular/cdk/keycodes';
 import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { DOCUMENT, NgClass } from '@angular/common';
 import {
@@ -424,7 +425,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
             throw Error('Attempted to open an NxDatepicker with no associated input.');
         }
         if (this._document) {
-            this._focusedElementBeforeOpen = this._document.activeElement as HTMLElement | null;
+            this._focusedElementBeforeOpen = _getFocusedElementPierceShadowDom() as HTMLElement | null;
         }
 
         this._openAsPopup();

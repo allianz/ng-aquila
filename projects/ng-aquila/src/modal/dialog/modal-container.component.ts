@@ -173,7 +173,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
             this._focusTrap = this._focusTrapFactory.create(dialog);
         }
 
-        const activeElement = this._document?.activeElement;
+        const activeElement = _getFocusedElementPierceShadowDom();
 
         switch (this._config.autoFocus) {
             // Otherwise ensure that focus is on the modal container. It's possible that a different
@@ -209,7 +209,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
         }
 
         // fallback, if no tabbable nor selector then focus on dialog.
-        const hasTabbable = dialog.contains(document.activeElement);
+        const hasTabbable = dialog.contains(_getFocusedElementPierceShadowDom());
         if (!hasTabbable) {
             dialog.focus();
         }

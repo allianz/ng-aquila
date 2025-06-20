@@ -1,6 +1,7 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { DOWN_ARROW, END, ENTER, ESCAPE, HOME, LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
 import { OverlayContainer, ScrollStrategy } from '@angular/cdk/overlay';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Inject, NgZone, QueryList, Type, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
@@ -154,7 +155,7 @@ describe('nxContextMenu', () => {
         fixture.detectChanges();
         tick(500);
 
-        expect(document.activeElement).toBe(triggerEl);
+        expect(_getFocusedElementPierceShadowDom()).toBe(triggerEl);
         flush();
     }));
 
@@ -554,7 +555,9 @@ describe('nxContextMenu', () => {
 
             const item = document.querySelector('.nx-context-menu [nxContextMenuItem]');
 
-            expect(document.activeElement).withContext('Expected first item to be focused').toBe(item);
+            expect(_getFocusedElementPierceShadowDom())
+                .withContext('Expected first item to be focused')
+                .toBe(item as HTMLElement);
         });
 
         it('should be able to open the same menu with a different context', fakeAsync(() => {
@@ -692,7 +695,9 @@ describe('nxContextMenu', () => {
 
             const item = document.querySelector('.nx-context-menu [nxContextMenuItem]');
 
-            expect(document.activeElement).withContext('Expected first item to be focused').toBe(item);
+            expect(_getFocusedElementPierceShadowDom())
+                .withContext('Expected first item to be focused')
+                .toBe(item as HTMLElement);
         }));
 
         it("should focus the second on ARROW_DOWN element even if it's disabled", fakeAsync(() => {
@@ -711,7 +716,7 @@ describe('nxContextMenu', () => {
             // Flush due to the additional tick that is necessary for the FocusMonitor.
             flush();
 
-            expect(document.activeElement).withContext('Expected first item to be focused').toBe(items[1]);
+            expect(_getFocusedElementPierceShadowDom()).withContext('Expected first item to be focused').toBe(items[1]);
         }));
 
         it('should not call (click) handler if item is disabled', fakeAsync(() => {
@@ -727,7 +732,9 @@ describe('nxContextMenu', () => {
 
             const item = document.querySelector('.nx-context-menu [nxContextMenuItem]');
 
-            expect(document.activeElement).withContext('Expected first item to be focused').toBe(item);
+            expect(_getFocusedElementPierceShadowDom())
+                .withContext('Expected first item to be focused')
+                .toBe(item as HTMLElement);
 
             item?.dispatchEvent(new MouseEvent('click'));
             expect(fixture.componentInstance.doSomethingItem).not.toHaveBeenCalled();
@@ -1066,7 +1073,7 @@ describe('nxContextMenu', () => {
                 tick(500);
                 fixture.detectChanges();
 
-                expect(overlay.querySelector('.nx-context-menu')!.contains(document.activeElement))
+                expect(overlay.querySelector('.nx-context-menu')!.contains(_getFocusedElementPierceShadowDom()))
                     .withContext('Expected focus to be inside the root menu')
                     .toBeTrue();
 
@@ -1074,7 +1081,7 @@ describe('nxContextMenu', () => {
                 tick(500);
                 fixture.detectChanges();
 
-                expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement))
+                expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(_getFocusedElementPierceShadowDom()))
                     .withContext('Expected focus to be inside the first nested menu')
                     .toBeTrue();
 
@@ -1082,7 +1089,7 @@ describe('nxContextMenu', () => {
                 tick(500);
                 fixture.detectChanges();
 
-                expect(overlay.querySelectorAll('.nx-context-menu')[2].contains(document.activeElement))
+                expect(overlay.querySelectorAll('.nx-context-menu')[2].contains(_getFocusedElementPierceShadowDom()))
                     .withContext('Expected focus to be inside the second nested menu')
                     .toBeTrue();
 
@@ -1090,14 +1097,14 @@ describe('nxContextMenu', () => {
                 tick(500);
                 fixture.detectChanges();
 
-                expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement))
+                expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(_getFocusedElementPierceShadowDom()))
                     .withContext('Expected focus to be back inside the first nested menu')
                     .toBeTrue();
                 instance.levelOneTrigger.closeContextMenu();
                 tick(500);
                 fixture.detectChanges();
 
-                expect(overlay.querySelector('.nx-context-menu')!.contains(document.activeElement))
+                expect(overlay.querySelector('.nx-context-menu')!.contains(_getFocusedElementPierceShadowDom()))
                     .withContext('Expected focus to be back inside the root menu')
                     .toBeTrue();
                 flush();

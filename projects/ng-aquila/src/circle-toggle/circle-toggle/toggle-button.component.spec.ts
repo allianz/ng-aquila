@@ -1,4 +1,5 @@
 import { SPACE } from '@angular/cdk/keycodes';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild, viewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -184,7 +185,7 @@ describe('NxCircleToggle', () => {
     it('focuses the toggle button when calling focus()', () => {
         createTestComponent(SimpleCircleToggleButtonComponent);
         toggleComponent.focus();
-        expect(nativeToggleComponent.querySelector('.nx-circle-toggle__input')).toEqual(document.activeElement);
+        expect(nativeToggleComponent.querySelector('.nx-circle-toggle__input')).toEqual(_getFocusedElementPierceShadowDom());
     });
 
     it('should go into errorState when control invalid', fakeAsync(() => {

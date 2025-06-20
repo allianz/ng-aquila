@@ -1,12 +1,14 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, EventEmitter, ViewChild } from '@angular/core';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
+import { Component, EventEmitter, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NxDatefieldDirective } from '@aposin/ng-aquila/datefield';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
 
 import { JAN } from '../../cdk-test-utils';
 import { NxNativeDateModule } from '../adapter/index';
@@ -109,6 +111,27 @@ describe('NxDatepicker', () => {
     });
 });
 
+describe('NxDatepicker with ShadowDom encapsulation', () => {
+    let fixture: ComponentFixture<ShadowDomDatefield>;
+
+    it('should restore focus to the toggle button after closing the datepicker with keyboard', fakeAsync(() => {
+        fixture = TestBed.createComponent(ShadowDomDatefield);
+        fixture.detectChanges();
+        const shadowRoot = fixture.nativeElement.shadowRoot;
+        const toggleButton = shadowRoot.querySelector('nx-datepicker-toggle button') as HTMLButtonElement;
+
+        toggleButton.focus();
+        toggleButton.click();
+        fixture.detectChanges();
+
+        const datepicker = document.body.querySelector('nx-datepicker-content') as HTMLElement;
+        datepicker.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+        fixture.detectChanges();
+
+        expect(_getFocusedElementPierceShadowDom()).toBe(toggleButton);
+    }));
+});
+
 @Component({
     template: `
         <input nxDatefield [datepicker]="d" [value]="date" />
@@ -124,3 +147,18 @@ class StandardDatepicker {
     @ViewChild('d') datepicker!: NxDatepickerComponent<Date>;
     @ViewChild(NxDatefieldDirective) datepickerInput!: NxDatefieldDirective<Date>;
 }
+
+@Component({
+    imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
+    template: `
+        <nx-formfield label="Birthday">
+            <input nxDatefield nxInput [readonly]="isReadonly" [datepicker]="myDatepicker" [(ngModel)]="currentDate" />
+            <span nxFormfieldHint>MM/DD/YYYY</span>
+
+            <nx-datepicker-toggle [for]="myDatepicker" nxFormfieldSuffix></nx-datepicker-toggle>
+            <nx-datepicker #myDatepicker></nx-datepicker>
+        </nx-formfield>
+    `,
+    encapsulation: ViewEncapsulation.ShadowDom,
+})
+class ShadowDomDatefield {}

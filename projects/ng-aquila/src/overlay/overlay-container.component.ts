@@ -1,4 +1,5 @@
 import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory } from '@angular/cdk/a11y';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, DomPortal, TemplatePortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ComponentRef, ElementRef, EmbeddedViewRef, Inject, Optional, ViewChild } from '@angular/core';
@@ -119,7 +120,7 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
         if (this._config.autoFocus) {
             this._focusTrap.focusInitialElementWhenReady();
         } else {
-            const activeElement = this._document?.activeElement;
+            const activeElement = _getFocusedElementPierceShadowDom();
 
             // Otherwise ensure that focus is on the overlay container. It's possible that a different
             // component tried to move focus while the open animation was running. See:
@@ -138,7 +139,7 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
 
         // We need the extra check, because IE can set the `activeElement` to null in some cases.
         if (this._config.restoreFocus && toFocus && typeof toFocus.focus === 'function') {
-            const activeElement = this._document?.activeElement;
+            const activeElement = _getFocusedElementPierceShadowDom();
             const element = this._elementRef.nativeElement;
 
             // Make sure that focus is still inside the overlay or is on the body (usually because a
@@ -160,7 +161,7 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
         if (!this._document) {
             return;
         }
-        this._elementFocusedBeforeDialogWasOpened = this._document.activeElement as HTMLElement;
+        this._elementFocusedBeforeDialogWasOpened = _getFocusedElementPierceShadowDom() as HTMLElement;
 
         // Note that there is no focus method when rendering on the server.
         if (this._elementRef.nativeElement.focus) {

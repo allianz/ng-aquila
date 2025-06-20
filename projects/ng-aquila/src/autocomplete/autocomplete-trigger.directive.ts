@@ -11,7 +11,7 @@ import {
     ScrollStrategy,
     ViewportRuler,
 } from '@angular/cdk/overlay';
-import { _getEventTarget } from '@angular/cdk/platform';
+import { _getEventTarget, _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { DOCUMENT } from '@angular/common';
@@ -252,7 +252,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         // If the user blurred the window while the autocomplete is focused, it means that it'll be
         // refocused when they come back. In this case we want to skip the first focus event, if the
         // pane was closed, in order to avoid reopening it unintentionally.
-        this._canOpenOnNextFocus = document.activeElement !== this._element.nativeElement || this.panelOpen;
+        this._canOpenOnNextFocus = _getFocusedElementPierceShadowDom() !== this._element.nativeElement || this.panelOpen;
     };
 
     /** `View -> model callback called when value changes` */
@@ -501,15 +501,11 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         // filter out all of the extra events, we save the value on focus and between
         // `input` events, and we check whether it changed.
         // See: https://connect.microsoft.com/IE/feedback/details/885747/
-        if (this._isFieldEnabled() && this._previousValue !== value && this._rootElement().activeElement === event.target) {
+        if (this._isFieldEnabled() && this._previousValue !== value && _getFocusedElementPierceShadowDom() === event.target) {
             this._previousValue = value;
             this._onChange(value);
             this.openPanel();
         }
-    }
-
-    private _rootElement(): Document {
-        return this._element.nativeElement.getRootNode();
     }
 
     _handleFocus(): void {

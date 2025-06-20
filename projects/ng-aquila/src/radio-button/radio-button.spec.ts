@@ -1,3 +1,4 @@
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, waitForAsync } from '@angular/core/testing';
@@ -320,7 +321,7 @@ describe('NxRadioComponent', () => {
         it('focuses the radio when calling focus()', () => {
             createTestComponent(BasicRadio);
             radioInstances.toArray()[0].focus();
-            expect(fixture.nativeElement.querySelector('.nx-radio__input')).toEqual(document.activeElement);
+            expect(fixture.nativeElement.querySelector('.nx-radio__input')).toEqual(_getFocusedElementPierceShadowDom());
         });
 
         it('should not trigger touch when moving focus within radio group', () => {

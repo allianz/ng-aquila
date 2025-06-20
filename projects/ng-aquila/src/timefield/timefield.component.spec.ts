@@ -1,5 +1,6 @@
 import { DOWN_ARROW, ENTER, UP_ARROW } from '@angular/cdk/keycodes';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -397,7 +398,7 @@ describe('NxTimefieldComponent', () => {
             inputElementHours.dispatchEvent(new Event('input'));
             inputElementHours.focus();
             fixture.detectChanges();
-            expect(document.activeElement).toEqual(inputElementHours);
+            expect(_getFocusedElementPierceShadowDom()).toEqual(inputElementHours);
             expect(inputElementHours.value).toBe('0');
             inputElementHours.blur();
             fixture.detectChanges();
@@ -411,7 +412,7 @@ describe('NxTimefieldComponent', () => {
             inputElementMinutes.dispatchEvent(new Event('input'));
             inputElementMinutes.focus();
             fixture.detectChanges();
-            expect(document.activeElement).toEqual(inputElementMinutes);
+            expect(_getFocusedElementPierceShadowDom()).toEqual(inputElementMinutes);
             expect(inputElementMinutes.value).toBe('0');
             inputElementMinutes.blur();
             fixture.detectChanges();
@@ -425,12 +426,12 @@ describe('NxTimefieldComponent', () => {
             inputElementHours.dispatchEvent(new Event('input'));
             inputElementHours.focus();
             fixture.detectChanges();
-            expect(document.activeElement).toEqual(inputElementHours);
+            expect(_getFocusedElementPierceShadowDom()).toEqual(inputElementHours);
             expect(inputElementHours.value).toBe('0');
 
             inputElementMinutes.focus();
             fixture.detectChanges();
-            expect(document.activeElement).toEqual(inputElementMinutes);
+            expect(_getFocusedElementPierceShadowDom()).toEqual(inputElementMinutes);
             expect(timefieldInstance.hours).toBe('00');
             expect(inputElementHours.value).toBe('00');
         });
@@ -478,7 +479,7 @@ describe('NxTimefieldComponent', () => {
             const options = getPickerOptions();
             options[0].click();
             fixture.detectChanges();
-            expect(document.activeElement).toEqual(inputElementHours);
+            expect(_getFocusedElementPierceShadowDom()).toEqual(inputElementHours);
         });
 
         it('should keep focus on toggle button when an option was clicked', () => {
@@ -489,11 +490,11 @@ describe('NxTimefieldComponent', () => {
             toggleButton.click();
             toggleButton.focus();
             fixture.detectChanges();
-            expect(document.activeElement).toEqual(toggleButton);
+            expect(_getFocusedElementPierceShadowDom()).toEqual(toggleButton);
             const options = getPickerOptions();
             options[0].click();
             fixture.detectChanges();
-            expect(document.activeElement).toEqual(toggleButton);
+            expect(_getFocusedElementPierceShadowDom()).toEqual(toggleButton);
         });
 
         it('should close overlay when backdrop is clicked', () => {
@@ -519,7 +520,7 @@ describe('NxTimefieldComponent', () => {
             toggleButton.click();
             toggleButton.focus();
             fixture.detectChanges();
-            expect(document.activeElement).toEqual(toggleButton);
+            expect(_getFocusedElementPierceShadowDom()).toEqual(toggleButton);
             expect(getPickerListElement()).toBeTruthy();
             toggleButton.blur();
             fixture.detectChanges();

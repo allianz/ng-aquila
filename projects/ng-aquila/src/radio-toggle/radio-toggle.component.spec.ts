@@ -1,3 +1,4 @@
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { JsonPipe } from '@angular/common';
 import { Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
@@ -417,7 +418,7 @@ describe('NxRadioToggleComponent', () => {
             radioBtnElm.focus();
             fixture.detectChanges();
 
-            expect(document.activeElement).toEqual(fixture.nativeElement.querySelector('input'));
+            expect(_getFocusedElementPierceShadowDom()).toEqual(fixture.nativeElement.querySelector('input'));
         });
     });
 

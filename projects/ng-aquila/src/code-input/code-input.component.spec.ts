@@ -1,4 +1,5 @@
 import { CONTROL, DOWN_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -132,7 +133,7 @@ describe('NxCodeInputComponent', () => {
         tick();
         fixture.detectChanges();
 
-        expect(document.activeElement).toEqual(codeInputElement.querySelector('input:nth-child(2)'));
+        expect(_getFocusedElementPierceShadowDom()).toEqual(codeInputElement.querySelector('input:nth-child(2)') as HTMLElement);
     }));
 
     it('should give code-input element has-error class on blur (with onPush)', fakeAsync(() => {

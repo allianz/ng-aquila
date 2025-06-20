@@ -1,5 +1,6 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -138,7 +139,7 @@ export class NxSidepanelComponent {
         }
         this._openState = opened ? 'open' : 'closed';
         if (opened) {
-            this.triggerElem = document.activeElement as HTMLElement;
+            this.triggerElem = _getFocusedElementPierceShadowDom() as HTMLElement;
         }
     }
 
