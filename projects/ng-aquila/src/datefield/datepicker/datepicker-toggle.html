@@ -6,6 +6,7 @@
     [attr.aria-label]="_intl.openCalendarLabel"
     [disabled]="disabled()"
     (click)="_open($event)"
+    (keydown)="keydownHandler($event)"
 >
     @if (!_customIcon) {
     <nx-icon name="calendar" aria-hidden="true"></nx-icon>

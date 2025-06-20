@@ -150,4 +150,10 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
             .pipe(takeUntil(this._destroyed))
             .subscribe(() => this._cdr.markForCheck());
     }
+
+    protected keydownHandler(event: KeyboardEvent): void {
+        if (event.key === 'Enter' || event.key === ' ') {
+            this._open(event);
+        }
+    }
 }

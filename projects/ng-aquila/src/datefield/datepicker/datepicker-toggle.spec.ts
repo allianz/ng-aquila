@@ -109,6 +109,23 @@ describe('NxDatepickerToggleComponent', () => {
         expect(datepickerInstance.opened).toBeFalse();
         expect(spy).toHaveBeenCalledTimes(1);
     }));
+
+    it('should open datepicker on Enter keydown and focus on active date', fakeAsync(() => {
+        createTestComponent(BasicToggleDateComponent);
+        const toggleButton = fixture.nativeElement.querySelector('.nx-datepicker-toggle-button') as HTMLButtonElement;
+
+        const focusSpy = spyOn(HTMLElement.prototype, 'focus').and.callThrough();
+
+        toggleButton.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+        fixture.detectChanges();
+        flush();
+
+        const activeDateElement = document.body.querySelector('.nx-calendar-body-active') as HTMLElement;
+        expect(activeDateElement).toBeTruthy();
+
+        const wasCalledOnActiveDate = focusSpy.calls.all().some(call => call.object === activeDateElement);
+        expect(wasCalledOnActiveDate).toBeTrue();
+    }));
 });
 
 describe('NxDatepickerToggleComponent using injection token', () => {
