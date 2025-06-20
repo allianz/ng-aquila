@@ -10,7 +10,7 @@ import { NxModalContainer } from './modal-container.component';
 let nexId = 0;
 
 /** Possible states of the lifecycle of a modal. */
-export const enum NxModalState {
+export enum NxModalState {
     OPEN,
     CLOSING,
     CLOSED,

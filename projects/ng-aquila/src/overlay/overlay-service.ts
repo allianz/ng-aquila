@@ -32,7 +32,7 @@ export const NX_OVERLAY_SCROLL_STRATEGY_PROVIDER = {
 };
 
 /** Possible states of the lifecycle of a overlay. */
-export const enum NxOverlayState {
+export enum NxOverlayState {
     OPEN,
     CLOSED,
 }
