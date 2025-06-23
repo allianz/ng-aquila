@@ -26,7 +26,8 @@
                             "node_modules/@aposin/ng-aquila/css/normalize.css",
                             "node_modules/@aposin/ng-aquila/css/utilities.css",
                             "node_modules/@aposin/ng-aquila/themes/aposin.css",
-                            "node_modules/@aposin/ng-aquila/themes/ag-theme-aquila.css"
+                            "node_modules/@aposin/ng-aquila/themes/ag-theme-aquila.css",
+                            "node_modules/@aposin/ng-aquila/themes/theming-api-aquila.css"
                         ],
                         "scripts": [],
                         "outputHashing": "all"

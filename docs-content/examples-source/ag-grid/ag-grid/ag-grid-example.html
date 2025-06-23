@@ -28,5 +28,6 @@
     [rowData]="rowData$ | async"
     (gridReady)="onGridReady($event)"
     [pagination]="true"
-    rowSelection="multiple"
+    [rowSelection]="rowSelection"
+    [theme]="'legacy'"
 ></ag-grid-angular>

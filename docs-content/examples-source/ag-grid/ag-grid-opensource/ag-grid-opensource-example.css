@@ -5,6 +5,10 @@
     padding-bottom: 24px;
 }
 
+:host *:not(.ag-icon):not([class*='ag-icon']):not(.ag-checkbox-input-wrapper) {
+    font-family: 'Public Sans Latin', sans-serif !important;
+}
+
 .buttons {
     display: flex;
     gap: 8px;

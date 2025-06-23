@@ -1,0 +1,145 @@
+.theming-api-aquila :where(.ag-ltr) .ag-header-cell:after {
+  border-right: none;
+}
+.theming-api-aquila .ag-header-cell {
+  gap: 0;
+}
+.theming-api-aquila .ag-header-group-cell {
+  contain: none;
+}
+.theming-api-aquila .ag-header-group-cell:before, .theming-api-aquila .ag-header-group-cell:after {
+  content: " ";
+  width: 8px;
+  position: absolute;
+  height: 100%;
+  background-color: var(--ag-background-color);
+  top: 50%;
+  z-index: 2;
+  display: block;
+  border-right: none;
+}
+.theming-api-aquila .ag-header-group-cell:before {
+  left: 0;
+}
+.theming-api-aquila .ag-header-group-cell::after {
+  right: 2px;
+}
+.theming-api-aquila .ag-header-row-column-group {
+  z-index: 1;
+}
+.theming-api-aquila .ag-header-row:has(+ .ag-header-row-column-filter) {
+  --ag-header-column-resize-handle-height: 67px;
+}
+.theming-api-aquila .ag-header-row:has(+ .ag-header-row-column-filter) .ag-header-cell {
+  overflow: visible !important;
+}
+.theming-api-aquila .ag-header-row:has(+ .ag-header-row-column-filter) .ag-header-cell-resize::after {
+  top: 12px;
+  left: 3px;
+}
+.theming-api-aquila .ag-header-row:has(+ .ag-header-row-column-filter) .ag-header-cell.ag-header-span-height .ag-header-cell-resize::after {
+  height: 112px;
+}
+.theming-api-aquila .ag-header-row-column-group:has(+ .ag-header-row) .ag-header-cell-resize::after {
+  height: calc(200% - var(--ag-spacing) * 4);
+  left: 3px;
+}
+.theming-api-aquila .ag-cell-focus:not(.ag-cell-range-selected):focus-within {
+  border-left-width: 2px;
+  border-right-width: 2px;
+}
+.theming-api-aquila .ag-floating-filter-button-button {
+  color: var(--interactive-text);
+}
+.theming-api-aquila .ag-floating-filter-input input {
+  color: var(--formfield-input-color);
+  font-weight: var(--formfield-outline-control-font-weight);
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.theming-api-aquila .ag-input-field-input:focus {
+  color: var(--formfield-active-color);
+}
+.theming-api-aquila .ag-floating-filter-button {
+  margin-left: 0;
+  width: calc(var(--ag-icon-size) + 14px);
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--ag-input-border);
+  border-radius: var(--ag-border-radius);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.theming-api-aquila .ag-floating-filter-input input {
+  border-right: none;
+}
+.theming-api-aquila .ag-floating-filter-input input:focus {
+  border-right: var(--ag-input-border);
+}
+.theming-api-aquila .ag-floating-filter-input .ag-disabled input:disabled {
+  border-right: none;
+  color: var(--formfield-disabled-text-color);
+}
+.theming-api-aquila .ag-selection-checkbox {
+  margin-right: 16px;
+}
+.theming-api-aquila .ag-popup-child {
+  margin-top: 8px;
+}
+.theming-api-aquila .ag-header-row {
+  font-weight: 600;
+}
+.theming-api-aquila .ag-header {
+  border-bottom: 2px solid var(--table-header-border-bottom-color);
+}
+.theming-api-aquila .ag-root-wrapper {
+  border: none;
+  border-bottom: 2px solid var(--table-border-bottom-color);
+}
+.theming-api-aquila .ag-row {
+  font-size: var(--ag-font-size);
+}
+.theming-api-aquila .ag-cell {
+  -webkit-font-smoothing: antialiased;
+}
+.theming-api-aquila input[class^=ag-][type=text] {
+  min-height: 32px;
+}
+.theming-api-aquila .ag-select .ag-picker-field-wrapper {
+  min-height: 32px;
+  border: var(--ag-input-border);
+  border-radius: var(--ag-border-radius);
+}
+.theming-api-aquila .ag-select .ag-picker-field-wrapper .ag-picker-field-icon {
+  margin-right: 8px;
+}
+.theming-api-aquila .ag-floating-filter {
+  border-top: none !important;
+}
+.theming-api-aquila .ag-row-hover.ag-row-selected::before {
+  background-color: var(--selectable-table-row-selected-hover-background-color);
+  background-image: none;
+}
+.theming-api-aquila .ag-paging-button {
+  color: var(--pagination-link-color);
+}
+.theming-api-aquila .ag-paging-button.ag-disabled {
+  color: var(--pagination-link-disabled-color);
+  cursor: not-allowed;
+}
+.theming-api-aquila .ag-paging-number,
+.theming-api-aquila .ag-paging-row-summary-panel-number {
+  font-weight: 700;
+}
+@media (max-width: 475px) {
+  .theming-api-aquila .ag-paging-row-summary-panel {
+    display: none;
+  }
+}
+
+.ag-dnd-ghost {
+  box-shadow: 0 0 24px 0 rgba(65, 65, 65, 0.35);
+  border: 0;
+}

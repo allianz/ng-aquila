@@ -1,18 +1,102 @@
 <div class="docs-deprecation-warning">
-    <strong>Beta/Experimental version: </strong> please note that this is a first version for teams to jump  in early and provide feedback.
-    There might be features of ag-grid that do not work well with the theme yet. We are happy to hear your feedback.
+  <strong>Important:</strong>
+  Please note that the <strong>legacy CSS-based themes</strong> will be deprecated soon.
+  We recommend migrating to the <strong>Theming API</strong> introduced in AG Grid v33+.
 </div>
-<p class="docs-markdown--p">For complex data tables (data grids) we suggest using the <a href="https://www.ag-grid.com/">ag-grid</a> library. We are providing an <code>ag-theme-aquila</code> theme for the ag-grid-angular component which is based on the Alpine theme from ag-grid. You can also choose from additional modifiers on top of the base theme:</p>
+<p class="docs-markdown--p">For complex data tables (data grids) we suggest using the <a href="https://www.ag-grid.com/">ag-grid</a> library.</p>
+<p class="docs-markdown--p">With the major update in <code>ag-grid-angular</code> v33, AG Grid introduced the <strong>Theming API</strong>, where themes are imported as JavaScript objects and passed via the <code>[theme]</code> input.<br>
+We provide <code>themeAquila</code> (for open-source) and <code>themeAllianz</code> (for internal Allianz projects), both built on top of AG Grid’s Alpine theme. These support our custom styling via the <code>theming-api-aquila</code> class and optional param sets:</p>
 <ul class="docs-markdown--ul">
-<li class="docs-markdown--li"><code>ag-theme-aquila-dense</code> for more compact rows</li>
-<li class="docs-markdown--li"><code>ag-theme-aquila-zebra</code> for zebra striped rows</li>
+<li class="docs-markdown--li"><code>themeAquilaDenseParams</code> for more compact rows</li>
+<li class="docs-markdown--li"><code>themeAquilaZebraParams</code> for zebra striped rows</li>
 </ul>
-<h3 id="compatibility" tabindex="-1" class="docs-markdown--h3">Compatibility</h3>
+<h3 id="how-to-use-theming-api-in-v33%2B" tabindex="-1" class="docs-markdown--h3">How to use Theming API in v33+</h3>
+<p class="docs-markdown--p">If you're new to AG Grid or already using version 33+, you can skip to the <strong>Necessary CSS Imports</strong> section and follow the steps to apply our custom themes.</p>
+<p class="docs-markdown--p">If you're upgrading from a version older than v33, see the next section: <strong>Migrate from Pre-v33</strong> for important migration details.</p>
+<h4 id="migrate-from-pre-v33" tabindex="-1" class="docs-markdown--h4">Migrate from Pre-v33</h4>
+<p class="docs-markdown--p">You can refer to the official migration guide here: <a href="https://www.ag-grid.com/archive/33.1.1/angular-data-grid/theming-migration/">Migrating to the Theming API</a></p>
+<p class="docs-markdown--p">To avoid styling conflicts between legacy CSS themes and the Theming API, make sure to remove globally imported legacy style.</p>
+<p class="docs-markdown--p">Remove this:</p>
+<pre><code class="language-json"><span class="hljs-attr">&quot;styles&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-string">&quot;node_modules/ag-grid-community/styles/ag-grid.css&quot;</span>
+<span class="hljs-punctuation">]</span>
+</code></pre>
+<h4 id="necessary-css-imports" tabindex="-1" class="docs-markdown--h4">Necessary CSS Imports</h4>
+<p class="docs-markdown--p">Import the provided file from <code>@aposin/ng-aquila/themes/theming-api-aquila.css</code>.
+You can choose any of the typical ways in an angular application, e.g. in the angular.json file or in your main styles file.</p>
+<p class="docs-markdown--p">Angular.json example:</p>
+<pre><code class="language-json"><span class="hljs-attr">&quot;styles&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-string">&quot;node_modules/@aposin/ng-aquila/themes/theming-api-aquila.css&quot;</span><span class="hljs-punctuation">,</span>
+<span class="hljs-punctuation">]</span>
+</code></pre>
+<h4 id="import-and-apply-our-theme" tabindex="-1" class="docs-markdown--h4">Import and apply our theme</h4>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">Use the <code>themeAquila</code> by importing and applying it to <code>[theme]</code> input, along with our custom class <code>theming-api-aquila</code>.</li>
+</ul>
+<p class="docs-markdown--p">In .ts file:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { themeAquila } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/ag-grid&#x27;</span>;
+</code></pre>
+<p class="docs-markdown--p">In .html file</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ag-grid-angular</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;theming-api-aquila&quot;</span>
+    [<span class="hljs-attr">theme</span>]=<span class="hljs-string">&quot;themeAquila&quot;</span>
+&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ag-grid-angular</span>&gt;</span>
+</code></pre>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>Allianz internal projects</strong>: use <code>themeAllianz</code>, which builds on Alpine and applies the Allianz icon set via the Theming API.</li>
+</ul>
+<p class="docs-markdown--p">In .ts file:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { themeAllianz } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/ag-grid&#x27;</span>;
+</code></pre>
+<p class="docs-markdown--p">In .html file</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ag-grid-angular</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;theming-api-aquila&quot;</span>
+    [<span class="hljs-attr">theme</span>]=<span class="hljs-string">&quot;themeAllianz&quot;</span>
+&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ag-grid-angular</span>&gt;</span>
+</code></pre>
+<h4 id="optional%3A-add-modifiers" tabindex="-1" class="docs-markdown--h4">Optional: add modifiers</h4>
+<p class="docs-markdown--p">Add one or multiple of the modifier params <code>themeAquilaDense</code> or <code>themeAquilaZebra</code> to the ag-grid-angular element as well. You can combine them and add or remove them dynamically with ag-grid function <code>withParams</code>.</p>
+<p class="docs-markdown--p">Apply a single modifier:</p>
+<pre><code class="language-ts"><span class="hljs-variable language_">this</span>.<span class="hljs-property">theme</span> = themeAquila.<span class="hljs-title function_">withParams</span>(themeAquilaDenseParams);
+<span class="hljs-variable language_">this</span>.<span class="hljs-property">theme</span> = themeAquila.<span class="hljs-title function_">withParams</span>(themeAquilaZebraParams);
+</code></pre>
+<p class="docs-markdown--p">Apply both:</p>
+<pre><code class="language-ts"><span class="hljs-variable language_">this</span>.<span class="hljs-property">theme</span> = themeAquila.<span class="hljs-title function_">withParams</span>({
+    ...themeAquilaDenseParams,
+    ...themeAquilaZebraParams,
+});
+</code></pre>
+<h4 id="theming-api-example" tabindex="-1" class="docs-markdown--h4">Theming API Example</h4>
+<div class="docs-public">
+<div nx-docs-example="ag-grid-opensource-theming-api" config="{}">exampleID: ag-grid-opensource-theming-api</div>
+</div>
+<div class="docs-private">
+<div nx-docs-example="ag-grid-theming-api" config="{}">exampleID: ag-grid-theming-api</div>
+</div>
+<h3 id="legacy-compatibility-in-v33%2B" tabindex="-1" class="docs-markdown--h3">Legacy Compatibility in v33+</h3>
+<p class="docs-markdown--p">If you're upgrading to AG Grid v33+ but want to continue using the legacy CSS-based themes, you can do so by setting <code>[theme]=&quot;'legacy'&quot;</code>. Then follow the steps outlined in the <strong>Deprecated</strong> section below.</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ag-grid-angular</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ag-theme-alpine ag-theme-aquila&quot;</span>
+    [<span class="hljs-attr">theme</span>]=<span class="hljs-string">&quot;&#x27;legacy&#x27;&quot;</span>
+&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ag-grid-angular</span>&gt;</span>
+</code></pre>
+<p class="docs-markdown--p">You can find code examples for the legacy version here:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><a href="https://github.com/allianz/ng-aquila/tree/main/projects/ng-aquila/documentation/examples/ag-grid/ag-grid-opensource">Open-source example</a></li>
+<li class="docs-markdown--li"><a href="https://github.com/allianz/ng-aquila/tree/main/projects/ng-aquila/documentation/examples/ag-grid/ag-grid">Allianz internal projects example</a></li>
+</ul>
+<h3 id="deprecated%3A-legacy-theme-setup-(pre-v33)" tabindex="-1" class="docs-markdown--h3">Deprecated: Legacy Theme Setup (Pre-v33)</h3>
+<p class="docs-markdown--p">If you're using ag-grid-angular prior to v33, or have not yet migrated to the Theming API, we continue to provide an <code>ag-theme-aquila</code> theme for the ag-grid-angular component which is based on the Alpine theme from ag-grid. You can still use it by following this legacy setup.</p>
+<div class="docs-deprecation-warning">
+  <strong>Deprecation Warning:</strong>
+  Legacy themes (ag-grid.css, SCSS, and theme classnames) are deprecated and will be removed in a future AG Grid major release. We recommend migrating to the Theming API by switching to the [theme] input and removing legacy CSS imports.
+</div>
+<h4 id="compatibility" tabindex="-1" class="docs-markdown--h4">Compatibility</h4>
 <p class="docs-markdown--p">The theme was initially built with ag-grid-angular version <code>30.0.0</code>. In general it should continue to work in later minor versions, but ag-grid does not give any guarantee that things do not change between minor versions. They try to keep their CSS classes as stable as possible, but we cannot test every update of ag-grid. So please let us know if you encounter any issues.</p>
 <p class="docs-markdown--p">Please also note that for some design features the theme makes use of the <code>:has</code> css selector which is currently still in development in Firefox, as such we are not supporting Firefox at the moment. Firefox 121 will ship the <code>:has</code> selector and the theme will look the same as on other browsers then.</p>
-<h3 id="how-to-use" tabindex="-1" class="docs-markdown--h3">How to use</h3>
+<h4 id="how-to-use-legacy-theme" tabindex="-1" class="docs-markdown--h4">How to use legacy theme</h4>
 <p class="docs-markdown--p">The ag-grid theme assumes that one of the library themes is already imported to use css variables from there.</p>
-<h4 id="necessary-css-imports" tabindex="-1" class="docs-markdown--h4">Necessary CSS Imports</h4>
+<h4 id="necessary-css-imports-1" tabindex="-1" class="docs-markdown--h4">Necessary CSS Imports</h4>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">Import the base ag-grid styles and the Alpine theme</li>
 <li class="docs-markdown--li">Import the provided file from <code>@aposin/ng-aquila/themes/ag-theme-aquila.css</code></li>
@@ -20,10 +104,9 @@
 <p class="docs-markdown--p">You can choose any of the typical ways in an angular application, e.g. in the angular.json file or in your main styles.(s)css file.
 Angular.json example:</p>
 <pre><code class="language-json"><span class="hljs-attr">&quot;styles&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
-  <span class="hljs-string">&quot;node_modules/ag-grid-community/styles/ag-grid.css&quot;</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-string">&quot;node_modules/ag-grid-community/styles/ag-theme-alpine.css&quot;</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-string">&quot;node_modules/@aposin/ng-aquila/themes/ag-theme-aquila.css&quot;</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-string">&quot;src/styles.scss&quot;</span>
+    <span class="hljs-string">&quot;node_modules/ag-grid-community/styles/ag-grid.css&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-string">&quot;node_modules/ag-grid-community/styles/ag-theme-alpine.css&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-string">&quot;node_modules/@aposin/ng-aquila/themes/ag-theme-aquila.css&quot;</span><span class="hljs-punctuation">,</span>
 <span class="hljs-punctuation">]</span>
 </code></pre>
 <h4 id="add-theme-to-the-ag-grid-element" tabindex="-1" class="docs-markdown--h4">Add theme to the ag-grid element</h4>
@@ -37,14 +120,7 @@ Angular.json example:</p>
 </ul>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ag-grid-angular</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ag-theme-alpine ag-theme-aquila ag-theme-allianz-icons&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ag-grid-angular</span>&gt;</span>
 </code></pre>
-<h4 id="optional%3A-add-modifiers" tabindex="-1" class="docs-markdown--h4">Optional: add modifiers</h4>
+<h4 id="optional%3A-add-modifiers-1" tabindex="-1" class="docs-markdown--h4">Optional: add modifiers</h4>
 <p class="docs-markdown--p">Add one or multiple of the modifier classes <code>ag-theme-aquila-dense</code> or <code>ag-theme-aquila-zebra</code> to the ag-grid-angular element as well. You can combine them and add or remove them dynamically.</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ag-grid-angular</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ag-theme-aquila ag-theme-aquila ag-theme-aquila-dense&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ag-grid-angular</span>&gt;</span>
 </code></pre>
-<h3 id="example" tabindex="-1" class="docs-markdown--h3">Example</h3>
-<div class="docs-public">
-<div nx-docs-example="ag-grid-opensource" config="{}">exampleID: ag-grid-opensource</div>
-</div>
-<div class="docs-private">
-<div nx-docs-example="ag-grid" config="{}">exampleID: ag-grid</div>
-</div>
