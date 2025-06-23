@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [19.6.0](https://github.com/allianz/ng-aquila/compare/v19.5.0...v19.6.0) (2025-06-23)
+
+
+### Features ✨
+
+* **ag-grid:** migrate to the new Theming API ([bee2ca4](https://github.com/allianz/ng-aquila/commit/bee2ca4e7504abe82d5556aad4b869f6ce15f2b9))
+* **checkbox:** add transition token ([1ac8d67](https://github.com/allianz/ng-aquila/commit/1ac8d673471658e426b1bd3b9dfc8fc3295f5e34))
+* **dropdown:** update token ([4464f8f](https://github.com/allianz/ng-aquila/commit/4464f8fa2dd763f299ce14aee7c4f766f81253f8))
+* **radio-button:** add a1 light styling ([35cf44b](https://github.com/allianz/ng-aquila/commit/35cf44b3ebee3474cbf39447400f7693a7da4e93))
+* **tabs:** add a1 light styling ([12f0057](https://github.com/allianz/ng-aquila/commit/12f0057e0f376466830ef9914b34b83c24e12556))
+
+
+### Bug Fixes 🐛
+
+* **datefield:** handle focus when datepicker is opened with spacebar ([2d31fea](https://github.com/allianz/ng-aquila/commit/2d31fea1de294da044f7ba8d16b7932484e37541))
+* **dropdown:** remove ul for improved a11y ([7d4c576](https://github.com/allianz/ng-aquila/commit/7d4c576becf51a14d82b2c0faebf2bef3c043c78))
+* **multi-select:** options overlap input ([5c9770a](https://github.com/allianz/ng-aquila/commit/5c9770a17c0dc1c535f8a325bc622aec3212002e))
+* **overlay:** remove const from enum ([e839e47](https://github.com/allianz/ng-aquila/commit/e839e47d0c893e663a993f321576c8a2be8d5795))
+* pierce shadow dom for activeElement ([17d5f01](https://github.com/allianz/ng-aquila/commit/17d5f01c52755aa17d005926ab1dc20fca9167d6))
+* **radio-toggle:** radio toggle is too large on small screens ([47e0a77](https://github.com/allianz/ng-aquila/commit/47e0a773ac564aead57737cd594b260023b85bd5))
+
 ## [19.5.0](https://github.com/allianz/ng-aquila/compare/v19.4.0...v19.5.0) (2025-06-05)
 
 
