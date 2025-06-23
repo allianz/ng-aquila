@@ -161,15 +161,6 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
             }
         }
     }
-
-    :host-context(.nx-radio-toggle--small) {
-        .nx-radio-toggle__label-container {
-            @include media-breakpoint-down('small') {
-                @include type-style(toggle-button-large);
-                padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
-            }
-        }
-    }
 }
 
 .nx-radio-toggle__label-container.nx-radio-toggle__label-container--first {
