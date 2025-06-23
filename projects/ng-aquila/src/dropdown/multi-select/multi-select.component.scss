@@ -11,6 +11,8 @@
     box-shadow: v(dropdown-panel-shadow);
     border-radius: v(dropdown-panel-border-radius);
     background: v(ui-01);
+    display: flex;
+    flex-direction: column;
 
     .filter {
         --formfield-label-height: 6px;
