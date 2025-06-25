@@ -530,6 +530,20 @@ describe('NxFileUploaderComponent', () => {
             expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBeFalse();
         });
 
+        it('valid when file ending is allowed case-insensitive', () => {
+            createTestComponent(ReactiveFileUpload);
+            testInstance.accept = '.png, .JPG, .TxT';
+            fixture.detectChanges();
+
+            createAndAddFile('test.PNG', 'some type');
+            createAndAddFile('test.pNG', 'some type');
+            createAndAddFile('test.jpg', 'some type');
+            createAndAddFile('test.TXt', 'some type');
+
+            fixture.detectChanges();
+            expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBeFalse();
+        });
+
         it('invalid when file ending is not allowed', () => {
             createTestComponent(ReactiveFileUpload);
             testInstance.accept = '.jpg';

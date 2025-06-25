@@ -16,7 +16,7 @@ export function isFileTypeValid(file: File, accept: string, strict: boolean): bo
             .split(',')
             .filter(acc => {
                 const testExp = new RegExp(acc);
-                return testExp.test(file.type) || acc === fileExtension;
+                return testExp.test(file.type) || acc.toLowerCase() === fileExtension.toLowerCase();
             }).length > 0
     );
 }
