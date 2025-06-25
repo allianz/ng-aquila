@@ -8,9 +8,9 @@ import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testi
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
-import { NxDropdownIntl } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldComponent, NxFormfieldErrorDirective, NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 
+import { NxDropdownIntl } from '../dropdown';
 import { NxDropdownModule } from '../dropdown.module';
 import { NxMultiSelectComponent } from './multi-select.component';
 import { MultiSelectOptionHarness } from './multi-select-option.spec';

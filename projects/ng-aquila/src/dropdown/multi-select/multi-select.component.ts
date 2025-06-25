@@ -454,7 +454,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         }
 
         // If the multi select takes upp 100% of the width of the window, don't add margin
-        if (this._formFieldComponent!.elementRef.nativeElement.getBoundingClientRect().width === window.innerWidth) {
+        if (this._formFieldComponent?.elementRef.nativeElement.getBoundingClientRect().width === window.innerWidth) {
             this._overlayViewportMargin = 0;
         }
 
@@ -627,8 +627,11 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             positionStrategy.withPositions(this._positions);
             overlayRef.updatePosition();
 
-            this._filterInput?.nativeElement.focus();
-            this._panelContent?.nativeElement.focus();
+            if (this.filter) {
+                this._filterInput?.nativeElement.focus();
+            } else {
+                this._panelContent?.nativeElement.focus();
+            }
 
             if (this._selectAll && this.selectedItems.size > 0) {
                 this._keyManager.setActiveItem(1);
