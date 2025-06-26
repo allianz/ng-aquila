@@ -206,6 +206,11 @@ $nx-theme: (
     accordion-body-line-height: paragraph-03-line-height,
     accordion-body-font-weight: paragraph-03-font-weight,
     accordion-body-letter-spacing: paragraph-03-letter-spacing,
+
+    accordion-extra-light-body-letter-spacing: accordion-body-letter-spacing,
+    accordion-extra-light-body-font-size: accordion-body-font-size,
+    accordion-extra-light-body-line-height: accordion-body-line-height,
+
     accordion-chevron-size: 24px,
     accordion-regular-chevron-color: interactive-text,
     accordion-regular-hover-chevron-color: interactive-text,
@@ -214,6 +219,9 @@ $nx-theme: (
     accordion-regular-header-text-color: text-01,
     accordion-regular-header-hover-text-color: text-01,
     accordion-regular-header-top-margin: 16px,
+    accordion-regular-header-active-font-weight: heading-04-font-weight,
+    accordion-light-header-active-font-weight: paragraph-01-font-weight,
+
     accordion-regular-border-color: transparent,
     accordion-regular-mobile-border-color: ui-04,
     accordion-regular-mobile-separator-color: ui-04,
@@ -230,6 +238,7 @@ $nx-theme: (
     accordion-light-body-padding: 0 32px 32px,
     accordion-light-mobile-body-padding: 0 0 24px,
     accordion-light-border-color: ui-04,
+    accordion-light-body-font-size: paragraph-03-font-size,
     accordion-extra-light-header-top-margin: 16px,
     accordion-extra-light-chevron-color: interactive-text,
     accordion-extra-light-header-text-color: interactive-text,
@@ -238,6 +247,7 @@ $nx-theme: (
     accordion-extra-light-line-height: 1.5rem,
     accordion-extra-light-font-weight: 600,
     accordion-extra-light-letter-spacing: 0.0625rem,
+    accordion-extra-light-header-active-font-weight: 600,
     action-font-size: paragraph-03-font-size,
     action-line-height: paragraph-03-line-height,
     action-font-weight: paragraph-03-font-weight,

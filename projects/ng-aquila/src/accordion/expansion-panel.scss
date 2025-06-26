@@ -73,6 +73,7 @@
 :host(.nx-expansion-panel--light) {
     .nx-expansion-panel__body {
         padding: v(accordion-light-body-padding);
+        font-size: v(accordion-light-body-font-size);
 
         &.flush-alignment {
             padding-left: 0;
@@ -140,6 +141,9 @@
 
     .nx-expansion-panel__body {
         padding: v(accordion-extra-light-body-padding);
+        font-size: v(accordion-extra-light-body-font-size);
+        letter-spacing: v(accordion-extra-light-body-letter-spacing);
+        line-height: v(accordion-extra-light-body-line-height);
     }
 }
 

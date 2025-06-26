@@ -62,6 +62,10 @@ $header-title-small-screen-margin-after: nx-spacer(s);
     }
 }
 
+:host(.nx-expanded) ::ng-deep .nx-expansion-panel__header-title {
+    font-weight: v(accordion-regular-header-active-font-weight);
+}
+
 :host .nx-expansion-panel__chevron {
     pointer-events: none;
     font-size: v(accordion-chevron-size);
@@ -124,6 +128,16 @@ $header-title-small-screen-margin-after: nx-spacer(s);
     .nx-expansion-panel__chevron {
         color: v(negative);
     }
+}
+
+:host(.nx-expanded) ::ng-deep .nx-expansion-panel__header-title {
+    font-weight: v(accordion-regular-header-active-font-weight);
+}
+:host-context(.nx-expansion-panel--light.nx-expanded) ::ng-deep .nx-expansion-panel__header-title {
+    font-weight: v(accordion-light-header-active-font-weight);
+}
+:host-context(.nx-expansion-panel--extra-light.nx-expanded) ::ng-deep .nx-expansion-panel__header-title {
+    font-weight: v(accordion-extra-light-header-active-font-weight);
 }
 
 // extra light

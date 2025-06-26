@@ -109,7 +109,8 @@ describe('NxMaskDirective', () => {
 
         assertInputValue(nativeElement, '1abc', '1');
         assertInputValue(nativeElement, 'aLD', '');
-        assertInputValue(nativeElement, '12-34', '1234'), assertInputValue(nativeElement, '12-34-', '1234');
+        assertInputValue(nativeElement, '12-34', '1234');
+        assertInputValue(nativeElement, '12-34-', '1234');
     });
 
     it('accepts only letters', () => {
