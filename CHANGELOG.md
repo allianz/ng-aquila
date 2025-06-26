@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [19.7.0](https://github.com/allianz/ng-aquila/compare/v19.6.0...v19.7.0) (2025-06-26)
+
+
+### Features ✨
+
+* **accordion:** update  mapping ([3fc03fe](https://github.com/allianz/ng-aquila/commit/3fc03fe50e4497dea6b0f3896705cf230fc0424d))
+* **toggle-button:** add a1 styling ([b26357a](https://github.com/allianz/ng-aquila/commit/b26357a99c01d6c98beb9d14be5bde026f5b5878))
+
+
+### Bug Fixes 🐛
+
+* **file-uploader:** validation of file extension case-insensitive ([b540a59](https://github.com/allianz/ng-aquila/commit/b540a59d65072a15d74e8aac348f2ef942d327a7))
+* **multi-select:** move aria attributes to correct elements ([f2c6e82](https://github.com/allianz/ng-aquila/commit/f2c6e82793b5c457bdcf87adbaf8e7eaf3b64673))
+* **multi-select:** prevent formfield access if it doesn't exist ([f541484](https://github.com/allianz/ng-aquila/commit/f5414844c469c76dc9a9216cfb572d862ec9109f))
+* **switcher:** missing readonly border color ([e710980](https://github.com/allianz/ng-aquila/commit/e71098048a01c208bacecfcefbacda9ccc52ccae))
+
+
+### Documentation 📚
+
+* **patterns:** show patterns docs page ([86c1b4f](https://github.com/allianz/ng-aquila/commit/86c1b4feeaa78c8c385b79285f3db2c4df922b50))
+
 ## [19.6.0](https://github.com/allianz/ng-aquila/compare/v19.5.0...v19.6.0) (2025-06-23)
 
 
