@@ -1,0 +1,93 @@
+<p class="docs-markdown--p">Welcome to our dedicated space for showcasing the implementation of Allianz Design System Patterns, sharing insightful How-Tos, and exploring intriguing topics that aren't linked to specific components. Here, we aim to provide exemplary code, patterns, and ideas.</p>
+<p class="docs-markdown--p"><strong>While we strive for perfection in our examples, please note that this area is primarily a platform for sharing and will be updated sporadically to manage maintenance efforts effectively.</strong></p>
+<h2 id="soft-character-limit" tabindex="-1" class="docs-markdown--h2">Soft Character Limit</h2>
+<div class="tag-list"> <div class="tag approved-tag">NDBX Approved</div> <div class="tag active-tag">a11y checked</div></div>
+<p class="docs-markdown--p">Sometimes it might be required to allow users to input or paste more text then a the input or text area allows before they submut a form. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/maxlength">The standard <code>maxlength</code></a> will cut of any text that extends the permitted length.
+A soft character limit enables a user to paste any text and cleanup the text before submitting. In this example the Text Area takes care of</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">showing remaining / exceeded characters</li>
+<li class="docs-markdown--li">announcing number of remaining / exceeded by screen reader</li>
+<li class="docs-markdown--li">validading input length</li>
+<li class="docs-markdown--li">showing an error message if expected format is not met after edit</li>
+</ul>
+
+<h2 id="ai-suggestions-for-input-fields" tabindex="-1" class="docs-markdown--h2">AI suggestions for Input fields</h2>
+<div class="tag-list">  <div class="tag approved-tag">NDBX Approved</div> </div>
+
+<h2 id="bypass-blocks" tabindex="-1" class="docs-markdown--h2">Bypass Blocks</h2>
+<div class="tag-list"> <div class="tag active-tag">a11y example</div> </div>
+<p class="docs-markdown--p">🧪 To test this example properly,  <nx-link><a href="examples/a11y-skip-to-data-description">please test in full screen</a></nx-link> and then TAB from the start of the page 🧪</p>
+<p class="docs-markdown--p"><a href="https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks">Bypass Blocks</a> can help keyboard users and users of assistive tools to navigate to relevant content quickly and skip repetitive elements like headers, navigation etc.</p>
+<p class="docs-markdown--p">There are different ways to achieve that like anchor links (e.g. <code>&lt;a href=&quot;#id-of-html-element&quot;&gt;</code>). This example uses Angulars fragmented routing.</p>
+
+<h2 id="fetch-items-on-filter-input" tabindex="-1" class="docs-markdown--h2">Fetch Items on filter input</h2>
+<div class="tag-list"> <div class="tag active-tag">technical example ⚙️</div> </div>
+
+<style>
+    body{
+        --grid-max-width: 1337px;
+    }
+    .component-overview__header {
+        font-size: 3rem;
+        font-weight: 600;
+        background: linear-gradient(45deg, #00807D, #003781);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text; /* For Firefox */
+        color: transparent;
+        margin-bottom: 42px;
+    }
+
+    .component-overview__navigation {
+        display: none;
+    }
+
+    .docs-markdown--h2{
+        background: linear-gradient(45deg, #00807D, #003781);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text; /* For Firefox */
+        color: transparent;
+        display: inline-block;
+    }
+
+    .emphasis-text {
+        font-weight: 600;
+        color: #122b54;
+    }
+
+    .tag {
+        font-size: var(--badge-font-size);
+        line-height: var(--badge-line-height);
+        font-weight: var(--badge-font-weight);
+        letter-spacing: var(--badge-letter-spacing);
+        display: inline-block;
+        padding: 0 8px;
+        white-space: nowrap;
+        border-radius: 12px;
+        min-width: 24px;
+        -webkit-text-fill-color: var(--text-01);
+        color: var(--text-01);
+        position: relative;
+        bottom: 7px;
+        margin-left: 8px;
+    }
+
+    .tag-list {
+        display: inline-block;
+        margin-left: 8px;
+    }
+
+    .approved-tag {
+        background-color: var(--badge-positive-background-color);   
+    }
+
+    .active-tag {
+        background-color: var(--badge-active-background-color);
+    }
+
+    ..nxv-example-viewer__header {
+        background-color: 
+    }
+
+</style>
