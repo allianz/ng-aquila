@@ -251,7 +251,7 @@ nx-icon {
     &.is-checked {
         .nx-switcher__toggle {
             background-color: v(switcher-readonly-checked-background-color);
-            border: 1px solid v(switcher-readonly-checked-background-color);
+            border: 1px solid v(switcher-readonly-border-color);
         }
     }
 
