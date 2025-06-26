@@ -24,6 +24,7 @@ import { CssVarSidebarModule } from './css-vars-sandbox/css-var-sandbox.module';
 import { DocumentationFrameComponent } from './documentation-frame.component';
 import { NxvGuideViewModule } from './guides/guide-view/guide-view.module';
 import { NxvGuidesModule } from './guides/guides.module';
+import { DropdownFetchInterceptor } from './http-interceptors/dropdown-fetch.interceptor';
 import { UploadInterceptor } from './http-interceptors/upload-interceptor';
 import { createViewerRoutes } from './routes';
 import { NxvSearchInputModule } from './search-input/search-input.module';
@@ -74,6 +75,11 @@ class DestroyComponentPageRouteReuseStrategy extends BaseRouteReuseStrategy {
         {
             provide: HTTP_INTERCEPTORS,
             useClass: UploadInterceptor,
+            multi: true,
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: DropdownFetchInterceptor,
             multi: true,
         },
     ],
