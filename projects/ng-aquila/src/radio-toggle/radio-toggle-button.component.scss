@@ -21,16 +21,18 @@ $border-radius: nx-border-radius(s);
             border-color: v(danger);
             background-color: v(danger);
         }
+        .nx-radio-toggle__input:checked + .nx-radio-toggle__label-container:hover {
+            border-color: v(toggle-button-error-selected-hover);
+            background-color: v(toggle-button-error-selected-hover);
+        }
+        .nx-radio-toggle__input:checked + .nx-radio-toggle__label-container:active {
+            border-color: v(toggle-button-error-selected-active);
+            background-color: v(toggle-button-error-selected-active);
+        }
 
         .nx-radio-toggle__label-container {
             border-color: v(danger);
             color: v(danger);
-        }
-
-        &:hover {
-            .nx-radio-toggle__label-container {
-                color: v(toggle-button-hover-text-color);
-            }
         }
     }
 }
@@ -49,6 +51,16 @@ $border-radius: nx-border-radius(s);
         background-color: v(toggle-button-disabled-selected-background-color);
         border-color: v(toggle-button-disabled-selected-border-color);
         color: v(toggle-button-disabled-selected-text-color);
+    }
+    &:checked:not(:disabled) + .nx-radio-toggle__label-container:hover {
+        background-color: v(toggle-button-hover-checked-background-color);
+        border-color: v(toggle-button-hover-checked-border-color);
+        color: v(toggle-button-hover-checked-text-color);
+    }
+    &:checked:not(:disabled) + .nx-radio-toggle__label-container:active {
+        background-color: v(toggle-button-active-checked-background-color);
+        border-color: v(toggle-button-active-checked-border-color);
+        color: v(toggle-button-active-checked-text-color);
     }
 
     &:disabled + .nx-radio-toggle__label-container {
@@ -75,7 +87,8 @@ $border-radius: nx-border-radius(s);
         cursor: not-allowed;
     }
 
-    &:checked.is-readonly + .nx-radio-toggle__label-container {
+    &:checked.is-readonly + .nx-radio-toggle__label-container,
+    &:checked.is-readonly + .nx-radio-toggle__label-container:hover {
         background-color: v(toggle-button-readonly-selected-background-color);
         border-color: v(toggle-button-readonly-selected-border-color);
         color: v(toggle-button-readonly-selected-text-color);
@@ -109,9 +122,20 @@ $border-radius: nx-border-radius(s);
 :host-context(.nx-radio-toggle--small) {
     .nx-radio-toggle__label-container {
         @include type-style(toggle-button-small);
-        min-height: nx-spacer(s);
-        padding: button-padding(nx-spacer(2xs));
+        min-height: v(toggle-button-small-min-height);
+        padding: v(toggle-button-small-padding);
         text-transform: none;
+        border-radius: v(toggle-button-small-border-radius);
+    }
+
+    .nx-radio-toggle__label-container--first {
+        border-radius: v(toggle-button-small-rounded-border-on-the-left-radius);
+    }
+    .nx-radio-toggle__label-container--last {
+        border-radius: v(toggle-button-small-rounded-border-on-the-right-radius);
+        &.nx-radio-toggle__label-container--first {
+            border-radius: v(toggle-radio-radius);
+        }
     }
 }
 
@@ -133,17 +157,19 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
         @include media-breakpoint-down('small') {
             border-width: nx-border-size(xs) nx-border-size(m);
             padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
-
+            &.nx-radio-toggle__label-container {
+                border-radius: v(toggle-button-rounded-mobile);
+            }
             &.nx-radio-toggle__label-container--first {
                 border-width: $border-width;
                 border-bottom-width: nx-border-size(xs);
-                border-radius: $border-rounded-on-the-top;
+                border-radius: v(toggle-button-rounded-on-the-top);
             }
 
             &.nx-radio-toggle__label-container--last {
                 border-width: $border-width;
                 border-top-width: nx-border-size(xs);
-                border-radius: $border-rounded-on-the-bottom;
+                border-radius: v(toggle-button-rounded-on-the-bottom);
 
                 // prevent style changes if there is only one toggle option
                 &.nx-radio-toggle__label-container--first {
@@ -164,15 +190,15 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
 }
 
 .nx-radio-toggle__label-container.nx-radio-toggle__label-container--first {
-    border-radius: $border-rounded-on-the-left;
-    border-width: $border-width 0 $border-width $border-width;
+    border-radius: v(toggle-radio-button-rounded-on-the-left);
+    border-width: v(toggle-border-without-right);
 
     :host-context([dir='rtl']) & {
-        border-radius: $border-rounded-on-the-right;
-        border-width: $bordered-without-left;
+        border-radius: v(toggle-radio-button-rounded-on-the-right);
+        border-width: v(toggle-border-without-left);
 
         @include media-breakpoint-down('small') {
-            border-width: $border-width;
+            border-width: v(toggle-border-width);
             border-bottom-width: nx-border-size(xs);
             border-radius: $border-rounded-on-the-top;
         }
@@ -180,20 +206,20 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
 }
 
 .nx-radio-toggle__label-container.nx-radio-toggle__label-container--last {
-    border-radius: $border-rounded-on-the-right;
-    border-width: $border-width;
+    border-radius: v(toggle-radio-button-rounded-on-the-right);
+    border-width: v(toggle-border-width);
 
     :host-context([dir='rtl']) & {
-        border-radius: $border-rounded-on-the-left;
-        border-width: $border-width;
+        border-radius: v(toggle-radio-button-rounded-on-the-left);
+        border-width: v(toggle-border-width);
     }
 
     :host-context([dir='rtl']) & {
-        border-radius: $border-rounded-on-the-left;
-        border-width: $border-width;
+        border-radius: v(toggle-radio-button-rounded-on-the-left);
+        border-width: v(toggle-border-width);
 
         @include media-breakpoint-down('small') {
-            border-width: $border-width;
+            border-width: v(toggle-border-width);
             border-top-width: nx-border-size(xs);
             border-radius: $border-rounded-on-the-bottom;
         }
@@ -202,13 +228,13 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
 
 .nx-radio-toggle__label-container {
     @include type-style(toggle-button-large);
-    padding: button-padding(nx-spacer(xs)) button-padding(nx-spacer(2m));
+    padding: v(toggle-button-vertical-padding) v(toggle-button-horizontal-padding);
     color: v(toggle-button-unselected-text-color);
     background-color: v(toggle-button-unselected-background-color);
     border-color: v(toggle-button-unselected-border-color);
-    border-style: solid;
-    border-radius: 0;
-    border-width: $bordered-without-right;
+    border-style: v(toggle-button-style);
+    border-radius: v(toggle-radio-button-radius);
+    border-width: v(toggle-border-without-right);
     cursor: pointer;
     flex-grow: 1;
     text-align: center;
@@ -238,6 +264,11 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
         background-color: v(toggle-button-hover-background-color);
         border-color: v(toggle-button-hover-border-color);
         color: v(toggle-button-hover-text-color);
+    }
+    &:active {
+        background-color: v(toggle-button-active-background-color);
+        border-color: v(toggle-button-active-border-color);
+        color: v(toggle-button-active-text-color);
     }
 }
 
@@ -276,6 +307,7 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
     }
 
     .nx-radio-toggle__label-container {
+        background-color: transparent;
         border-color: v(negative);
         color: v(negative);
     }
