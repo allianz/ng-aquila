@@ -188,12 +188,9 @@ describe('NxMultiSelectComponent', () => {
                 value.getAttribute('aria-labelledby'),
             ]);
 
-            expect(role).toBe('combobox');
             expect(id).toMatch(/^nx-multi-select-\d+$/);
             expect(ariaControls).toBe(`${multiSelectInstance.id}-combobox`);
             expect(ariaHaspopup).toBe('listbox');
-            expect(ariaExpanded).toBe('false');
-            expect(ariaLabelledBy).toBe(`${multiSelectInstance.id} ${testInstance.formField.labelId}`);
         });
 
         describe('when clicking the multi select', () => {
@@ -291,11 +288,16 @@ describe('NxMultiSelectComponent', () => {
                 }
             });
 
-            it('has the aria attributes', async () => {
-                const label = await multiSelectHarness.getValue();
-                const ariaExpanded = await label.getAttribute('aria-expanded');
-
+            it('has the aria attributes on the input filter', async () => {
+                const filter = (await multiSelectHarness.getFilter()) as TestElement;
+                const [role, ariaExpanded, ariaLabelledBy] = await parallel(() => [
+                    filter.getAttribute('role'),
+                    filter.getAttribute('aria-expanded'),
+                    filter.getAttribute('aria-labelledby'),
+                ]);
                 expect(ariaExpanded).toBe('true');
+                expect(role).toBe('combobox');
+                expect(ariaLabelledBy).toBe(`${multiSelectInstance.id} ${testInstance.formField.labelId}`);
             });
 
             it('has the aria attributes on the panel', async () => {
@@ -307,9 +309,7 @@ describe('NxMultiSelectComponent', () => {
                     panel.getAttribute('aria-labelledby'),
                 ]);
 
-                expect(role).toBe('combobox');
                 expect(ariaOwns).toBe(`${multiSelectInstance.id}-combobox`);
-                expect(ariaExpanded).toBe('true');
                 expect(ariaLabelledBy).toBe(`${multiSelectInstance.id} ${testInstance.formField.labelId}`);
             });
 
@@ -944,6 +944,12 @@ describe('NxMultiSelectComponent', () => {
         });
 
         it('has no accessibility violations', async () => {
+            await expectAsync(fixture.nativeElement).toBeAccessible();
+        });
+
+        it('panel has no accessibility violation', async () => {
+            await multiSelectHarness.click();
+            fixture.detectChanges();
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
     });
