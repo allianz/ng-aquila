@@ -36,8 +36,8 @@ const TEST_TEMPLATE_FILES = [
 
 const TAGS: string[] = ['allianz', 'aquila', 'example'];
 
-const angularVersion = '^19.0.0';
-const aquilaVersion = '^19.0.0';
+const angularVersion = '^20.0.0';
+const aquilaVersion = '^20.0.0';
 
 const dependencies = {
     '@angular/animations': angularVersion,
@@ -50,8 +50,8 @@ const dependencies = {
     '@angular/platform-browser-dynamic': angularVersion,
     '@angular/router': angularVersion,
     '@aposin/ng-aquila': aquilaVersion,
-    'ag-grid-angular': '^30.1.0',
-    'ag-grid-community': '^30.1.0',
+    'ag-grid-angular': '^33.1.1',
+    'ag-grid-community': '^33.1.1',
     dayjs: '^1.11.5',
     'decimal.js': '^10.4.2',
     'i18n-iso-countries': '^7.5.0',

@@ -1,16 +1,16 @@
 {
     "name": "@aposin/ng-aquila",
-    "version": "19.7.0",
+    "version": "20.0.0-next.0",
     "repository": {
         "type": "git",
         "url": "https://www.github.com/allianz/ng-aquila.git"
     },
     "license": "MIT",
     "peerDependencies": {
-        "@angular/animations": "^19.0.0",
-        "@angular/cdk": "^19.0.0",
-        "@angular/common": "^19.0.0",
-        "@angular/core": "^19.0.0",
+        "@angular/animations": "^20.0.0",
+        "@angular/cdk": "^20.0.0",
+        "@angular/common": "^20.0.0",
+        "@angular/core": "^20.0.0",
         "i18n-iso-countries": "^6.8.0||^7.5.0",
         "iban": "^0.0.14",
         "moment": "^2.29.1",

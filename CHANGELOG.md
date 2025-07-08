@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.0.0-next.0](https://github.com/allianz/ng-aquila/compare/v19.7.0...v20.0.0-next.0) (2025-07-08)
+
+This release is the preparation for the next major version. It includes only the Angular v20 update and no other changes.
+You can use this version already to move your applications to Angular v20. More changes including breaking changes will follow.
+
 ## [19.7.0](https://github.com/allianz/ng-aquila/compare/v19.6.0...v19.7.0) (2025-06-26)
 
 

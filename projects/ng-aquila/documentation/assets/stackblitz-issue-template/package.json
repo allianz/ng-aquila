@@ -28,7 +28,7 @@
         "@angular/platform-browser": "^20.0.4",
         "@angular/platform-browser-dynamic": "^20.0.4",
         "@angular/router": "^20.0.4",
-        "@aposin/ng-aquila": "^19.0.0",
+        "@aposin/ng-aquila": "^20.0.0",
         "dayjs": "^1.11.7",
         "decimal.js": "^10.4.3",
         "i18n-iso-countries": "^7.6.0",
