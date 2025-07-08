@@ -1,6 +1,5 @@
 import { DomPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { DOCUMENT } from '@angular/common';
-import { ApplicationRef, ComponentFactoryResolver, Directive, Inject, Injector, OnDestroy, TemplateRef, ViewContainerRef } from '@angular/core';
+import { ApplicationRef, Directive, DOCUMENT, Inject, Injector, OnDestroy, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Subject } from 'rxjs';
 
 /**
@@ -19,7 +18,6 @@ export class NxContextMenuContentDirective implements OnDestroy {
 
     constructor(
         private readonly _template: TemplateRef<any>,
-        private readonly _componentFactoryResolver: ComponentFactoryResolver,
         private readonly _appRef: ApplicationRef,
         private readonly _injector: Injector,
         private readonly _viewContainerRef: ViewContainerRef,
@@ -38,7 +36,7 @@ export class NxContextMenuContentDirective implements OnDestroy {
         this.detach();
 
         if (!this._outlet) {
-            this._outlet = new DomPortalOutlet(this._document.createElement('div'), this._componentFactoryResolver, this._appRef, this._injector);
+            this._outlet = new DomPortalOutlet(this._document.createElement('div'), this._appRef, this._injector);
         }
 
         const element: HTMLElement = this._template.elementRef.nativeElement;

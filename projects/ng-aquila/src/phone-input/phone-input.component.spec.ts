@@ -1,5 +1,5 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, DebugElement, Directive, Injectable, Type, ViewChild } from '@angular/core';
+import { Component, DebugElement, Directive, Injectable, provideNgReflectAttributes, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -59,7 +59,7 @@ describe('PhoneInputComponent', () => {
                 CustomFormatter,
                 PhoneInputA11y,
             ],
-            providers: [NxPhoneInputIntl],
+            providers: [NxPhoneInputIntl, provideNgReflectAttributes()],
         }).compileComponents();
 
         inject([OverlayContainer], (oc: OverlayContainer) => {

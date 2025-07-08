@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { Component, Directive, provideNgReflectAttributes, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxAutocompleteModule } from '../autocomplete/autocomplete.module';
@@ -78,6 +78,7 @@ describe('NxPageSearchComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [NxPageSearchModule, NxAutocompleteModule, PageSearchSimpleComponent, PageSearchHideButtonComponent],
+            providers: [provideNgReflectAttributes()],
         }).compileComponents();
     }));
 });

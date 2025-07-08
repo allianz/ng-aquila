@@ -1,7 +1,6 @@
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ENTER } from '@angular/cdk/keycodes';
-import { DOCUMENT } from '@angular/common';
 import {
     AfterViewInit,
     booleanAttribute,
@@ -11,6 +10,7 @@ import {
     ContentChild,
     ContentChildren,
     Directive,
+    DOCUMENT,
     ElementRef,
     Inject,
     Input,

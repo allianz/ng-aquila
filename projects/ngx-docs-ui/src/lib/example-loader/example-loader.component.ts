@@ -1,18 +1,5 @@
 import { ComponentPortal, DomPortalOutlet } from '@angular/cdk/portal';
-import { DOCUMENT } from '@angular/common';
-import {
-    ApplicationRef,
-    Component,
-    ComponentFactoryResolver,
-    ElementRef,
-    EventEmitter,
-    Inject,
-    Injector,
-    Input,
-    Optional,
-    Output,
-    ViewContainerRef,
-} from '@angular/core';
+import { ApplicationRef, Component, DOCUMENT, ElementRef, EventEmitter, Inject, Injector, Input, Optional, Output, ViewContainerRef } from '@angular/core';
 
 import { DocViewerComponent } from '../doc-viewer/doc-viewer.component';
 import { ExampleViewerComponent } from '../example-viewer/example-viewer.component';
@@ -33,7 +20,6 @@ export class ExampleLoaderComponent {
     constructor(
         private readonly _appRef: ApplicationRef,
         private readonly _elementRef: ElementRef,
-        private readonly _componentFactoryResolver: ComponentFactoryResolver,
         private readonly _viewContainerRef: ViewContainerRef,
         private readonly _injector: Injector,
         @Optional() @Inject(DOCUMENT) private readonly _document: Document | null,
@@ -50,7 +36,7 @@ export class ExampleLoaderComponent {
         Array.prototype.slice.call(exampleElements).forEach((exampleElement: Element) => {
             exampleElement.innerHTML = '';
             const example = exampleElement.getAttribute(EXAMPLE_SELECTOR);
-            const portalHost = new DomPortalOutlet(exampleElement, this._componentFactoryResolver, this._appRef, this._injector, this._document ?? undefined);
+            const portalHost = new DomPortalOutlet(exampleElement, this._appRef, this._injector);
             const examplePortal = new ComponentPortal(ExampleViewerComponent, this._viewContainerRef);
             const exampleViewer = portalHost.attach(examplePortal);
             exampleViewer.instance.example = example!;

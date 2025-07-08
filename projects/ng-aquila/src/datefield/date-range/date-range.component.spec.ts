@@ -395,13 +395,13 @@ abstract class DateRangeTestBase {
         </nx-formfield>
     `,
     imports: [
+        CommonModule,
         NxFormfieldComponent,
         NxDateRangeComponent,
         NxMomentDateModule,
         NxInputModule,
         FormsModule,
         ReactiveFormsModule,
-        CommonModule,
         NxDatepickerComponent,
         NxDatepickerToggleComponent,
     ],
@@ -419,7 +419,7 @@ class BasicDateRangeField implements DateRangeTestBase {
             <nx-date-range [(ngModel)]="dateRangeModel"></nx-date-range>
         </nx-formfield>
     `,
-    imports: [NxFormfieldComponent, NxDateRangeComponent, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule, CommonModule],
+    imports: [CommonModule, NxFormfieldComponent, NxDateRangeComponent, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class DateRangeWithNull implements DateRangeTestBase {
     dateRangeComponent = viewChild.required(NxDateRangeComponent<Moment>);
@@ -481,8 +481,8 @@ class DateRangeReactiveForm implements DateRangeTestBase {
         NxMomentDateModule,
         NxInputModule,
         FormsModule,
-        ReactiveFormsModule,
         CommonModule,
+        ReactiveFormsModule,
         NxDatepickerComponent,
         NxDatepickerToggleComponent,
         NxFormfieldSuffixDirective,
@@ -512,9 +512,9 @@ class DateRangeDisabledTestComponent implements DateRangeTestBase {
         NxDateRangeComponent,
         NxMomentDateModule,
         NxInputModule,
+        CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        CommonModule,
         NxDatepickerComponent,
         NxDatepickerToggleComponent,
         NxFormfieldSuffixDirective,

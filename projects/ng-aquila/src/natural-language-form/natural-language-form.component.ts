@@ -1,7 +1,7 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     AfterContentInit,
-    afterRender,
+    afterEveryRender,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -103,7 +103,7 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
     private readonly _destroyed = new Subject<void>();
 
     constructor(private readonly _cdr: ChangeDetectorRef) {
-        afterRender(
+        afterEveryRender(
             {
                 write: () => {
                     this.updatePositionPopovers();

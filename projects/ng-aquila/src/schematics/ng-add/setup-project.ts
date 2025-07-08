@@ -1,4 +1,4 @@
-import { getProjectFromWorkspace, getProjectStyleFile, getProjectTargetOptions, isStandaloneApp } from '@angular/cdk/schematics';
+import { findModuleFromOptions, getProjectFromWorkspace, getProjectStyleFile, getProjectTargetOptions, isStandaloneApp } from '@angular/cdk/schematics';
 import { apply, chain, MergeStrategy, mergeWith, move, noop, Rule, SchematicsException, url } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { addRootImport, addRootProvider, readWorkspace, updateWorkspace } from '@schematics/angular/utility';
@@ -12,7 +12,7 @@ export default function (options: Schema): Rule {
     return (tree, context) => {
         context.addTask(new NodePackageInstallTask());
         return chain([
-            options?.starter ? addStarterApp(options) : noop(),
+            // options?.starter ? addStarterApp(options) : noop(),
             options?.type === 'b2b' ? addExpertModule(options) : noop(),
             options.noTheme ? noop() : addAposinTheme(options),
             addCdkStyles(options),
@@ -61,13 +61,20 @@ function addStarterApp(options: Schema): Rule {
                 throw new SchematicsException('Incompatible project: main.ts does not bootstrapp AppModule');
             }
 
-            const moduleBuffer = tree.read(`${projectAppPath}/app.module.ts`);
+            const modPath =
+                (await findModuleFromOptions(tree, {
+                    name: options.project,
+                    project: options.project,
+                })) || '';
+
+            const moduleBuffer = tree.read(modPath);
             if (!moduleBuffer) {
                 throw new SchematicsException(`Incompatible project: ${projectAppPath}/app.module.ts does not exist`);
             }
-            if (!moduleBuffer.toString().includes('AppComponent')) {
-                throw new SchematicsException(`Incompatible project: ${projectAppPath}/app.module.ts does not import AppComponent`);
-            }
+            // AppComponent not exist
+            // if (!moduleBuffer.toString().includes('AppComponent')) {
+            //     throw new SchematicsException(`Incompatible project: ${projectAppPath}/app.module.ts does not import AppComponent`);
+            // }
         }
 
         return chain([mergeWith(apply(url(files), [move(projectAppPath)]), MergeStrategy.Overwrite), rewriteCopyrightYear(projectAppPath, projectRoot)]);

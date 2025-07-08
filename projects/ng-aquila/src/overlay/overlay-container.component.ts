@@ -1,8 +1,7 @@
 import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory } from '@angular/cdk/a11y';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, DomPortal, TemplatePortal } from '@angular/cdk/portal';
-import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ComponentRef, ElementRef, EmbeddedViewRef, Inject, Optional, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ComponentRef, DOCUMENT, ElementRef, EmbeddedViewRef, Inject, Optional, ViewChild } from '@angular/core';
 
 import { NxOverlayConfig } from './overlay-config';
 

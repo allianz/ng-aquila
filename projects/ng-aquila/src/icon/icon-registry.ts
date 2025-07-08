@@ -1,6 +1,5 @@
-import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Inject, inject, Injectable, InjectionToken, OnDestroy, Optional } from '@angular/core';
+import { DOCUMENT, Inject, inject, Injectable, InjectionToken, OnDestroy, Optional } from '@angular/core';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 
 import { DEFAULT_ICONS } from './default-icons';

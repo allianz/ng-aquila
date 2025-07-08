@@ -1,8 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { DOWN_ARROW } from '@angular/cdk/keycodes';
-import { CommonModule } from '@angular/common';
 import {
-    afterRender,
+    afterEveryRender,
     AfterRenderRef,
     AfterViewInit,
     booleanAttribute,
@@ -61,7 +60,7 @@ export class DateRange<T> {
 
 @Component({
     selector: 'nx-date-range',
-    imports: [NxDatefieldDirective, FormsModule, CommonModule],
+    imports: [NxDatefieldDirective, FormsModule],
     templateUrl: './date-range.component.html',
     styleUrl: './date-range.component.scss',
     providers: [
@@ -281,7 +280,7 @@ export class NxDateRangeComponent<D>
         }
 
         // Since we need to use the window object we need to call it in the afterRender hook to be SSR compatible.
-        this._dynamicStartDateWidthHook = afterRender(() => {
+        this._dynamicStartDateWidthHook = afterEveryRender(() => {
             let measuredWidth = 0;
 
             if (!this._measureCanvas) {

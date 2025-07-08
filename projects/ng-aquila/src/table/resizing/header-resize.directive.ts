@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { Directive, ElementRef, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Directive, DOCUMENT, ElementRef, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { fromEvent, merge, Subject } from 'rxjs';
 import { distinctUntilChanged, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 

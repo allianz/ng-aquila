@@ -14,12 +14,12 @@ import {
 import { _getEventTarget, _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { AutofillMonitor } from '@angular/cdk/text-field';
-import { DOCUMENT } from '@angular/common';
 import {
     afterNextRender,
     AfterViewInit,
     ChangeDetectorRef,
     Directive,
+    DOCUMENT,
     ElementRef,
     forwardRef,
     Host,

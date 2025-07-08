@@ -11,7 +11,7 @@ import { ESCAPE } from '@angular/cdk/keycodes';
 import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { DOCUMENT, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
     afterNextRender,
     AfterViewInit,
@@ -19,6 +19,7 @@ import {
     Component,
     ComponentRef,
     computed,
+    DOCUMENT,
     ElementRef,
     EventEmitter,
     Inject,

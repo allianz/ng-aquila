@@ -49,7 +49,7 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
     /** The top level abstract control of the step. */
     stepControl: any;
 
-    private _interacted!: boolean;
+    private isInteracted!: boolean;
 
     readonly _destroyed = new Subject<void>();
 
@@ -91,8 +91,8 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
             }
         }
 
-        if (this.interacted !== this._interacted) {
-            this._interacted = this.interacted;
+        if (this.interacted !== this.isInteracted) {
+            this.isInteracted = this.interacted;
             if (this.stepper) {
                 this.stepper._stateChanged();
             }

@@ -2,13 +2,13 @@ import { AnimationEvent } from '@angular/animations';
 import { FocusMonitor, FocusTrap, FocusTrapFactory, InteractivityChecker } from '@angular/cdk/a11y';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, DomPortal, TemplatePortal } from '@angular/cdk/portal';
-import { DOCUMENT } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ComponentRef,
+    DOCUMENT,
     ElementRef,
     EmbeddedViewRef,
     EventEmitter,

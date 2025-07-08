@@ -1,4 +1,4 @@
-import { importProvidersFrom, provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { importProvidersFrom, provideZonelessChangeDetection } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -92,6 +92,6 @@ bootstrapApplication(AppComponent, {
         { provide: BaseLazyLoadingService, useExisting: LazyLoadingService },
         provideRouter(ROUTES),
         provideAnimations(),
-        provideExperimentalZonelessChangeDetection(),
+        provideZonelessChangeDetection(),
     ],
 }).catch(err => console.error(err));

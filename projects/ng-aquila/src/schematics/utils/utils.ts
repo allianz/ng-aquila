@@ -13,6 +13,7 @@ const ALLOWED_BUILDERS = [
     '@angular-builders/custom-webpack:browser',
     '@angular-devkit/build-angular:application',
     '@angular-devkit/build-angular:browser-esbuild',
+    '@angular/build:application',
 ];
 
 export function isAngularApplicationProject(project: ProjectDefinition): boolean {

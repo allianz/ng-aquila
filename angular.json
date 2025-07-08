@@ -24,7 +24,7 @@
             },
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "builder": "@angular/build:ng-packagr",
                     "options": {
                         "project": "projects/ng-aquila/src/ng-package.json"
                     },
@@ -63,7 +63,7 @@
             "prefix": "nxv",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "builder": "@angular/build:ng-packagr",
                     "options": {
                         "project": "projects/ngx-docs-ui/ng-package.json"
                     },
@@ -78,7 +78,7 @@
                     "defaultConfiguration": "production"
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@angular/build:karma",
                     "options": {
                         "polyfills": ["zone.js", "zone.js/testing"],
                         "tsConfig": "projects/ngx-docs-ui/tsconfig.spec.json",
@@ -100,7 +100,7 @@
             "prefix": "doc",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:application",
+                    "builder": "@angular/build:application",
                     "options": {
                         "allowedCommonJsDependencies": ["parse-color", "decimal.js", "iban", "moment", "i18n-iso-countries"],
                         "outputPath": "dist/opensource-documentation",
@@ -170,7 +170,7 @@
                     "defaultConfiguration": "production"
                 },
                 "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "builder": "@angular/build:dev-server",
                     "configurations": {
                         "production": {
                             "buildTarget": "opensource-documentation:build:production"
@@ -182,7 +182,7 @@
                     "defaultConfiguration": "development"
                 },
                 "extract-i18n": {
-                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "builder": "@angular/build:extract-i18n",
                     "options": {
                         "buildTarget": "opensource-documentation:build"
                     }
@@ -200,28 +200,36 @@
         "@schematics/angular:component": {
             "skipTests": true,
             "changeDetection": "OnPush",
-            "style": "scss"
+            "style": "scss",
+            "type": "component"
         },
         "@schematics/angular:directive": {
-            "skipTests": true
+            "skipTests": true,
+            "type": "directive"
         },
         "@schematics/angular:pipe": {
-            "skipTests": true
+            "skipTests": true,
+            "typeSeparator": "."
         },
         "@schematics/angular:service": {
-            "skipTests": true
+            "skipTests": true,
+            "type": "service"
         },
         "@schematics/angular:interceptor": {
-            "skipTests": true
+            "skipTests": true,
+            "typeSeparator": "."
         },
         "@schematics/angular:resolver": {
-            "skipTests": true
+            "skipTests": true,
+            "typeSeparator": "."
         },
         "@schematics/angular:guard": {
-            "skipTests": true
+            "skipTests": true,
+            "typeSeparator": "."
         },
         "@schematics/angular:module": {
-            "skipTests": true
+            "skipTests": true,
+            "typeSeparator": "."
         },
         "@schematics/angular:application": {
             "skipTests": true,

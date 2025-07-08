@@ -168,7 +168,7 @@ export class NxOverlayService implements OnDestroy {
             providers: [{ provide: NxOverlayConfig, useValue: config }],
         });
 
-        const containerPortal = new ComponentPortal(NxOverlayContainerComponent, config.viewContainerRef, injector, config.componentFactoryResolver);
+        const containerPortal = new ComponentPortal(NxOverlayContainerComponent, config.viewContainerRef, injector);
         const containerRef = cdkOverlay.attach<NxOverlayContainerComponent>(containerPortal);
 
         return containerRef.instance;

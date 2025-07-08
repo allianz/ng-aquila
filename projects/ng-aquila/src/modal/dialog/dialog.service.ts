@@ -205,7 +205,7 @@ export class NxDialogService implements OnDestroy {
             providers: [{ provide: NxModalConfig, useValue: config }],
         });
 
-        const containerPortal = new ComponentPortal(NxModalContainer, config.viewContainerRef, injector, config.componentFactoryResolver);
+        const containerPortal = new ComponentPortal(NxModalContainer, config.viewContainerRef, injector);
         const containerRef = overlay.attach<NxModalContainer>(containerPortal);
 
         return containerRef.instance;

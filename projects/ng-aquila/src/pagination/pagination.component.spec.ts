@@ -1,5 +1,5 @@
 import { BidiModule, Direction } from '@angular/cdk/bidi';
-import { Component, DebugElement, Directive, ElementRef, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
+import { Component, DebugElement, Directive, ElementRef, provideNgReflectAttributes, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -88,7 +88,7 @@ describe('NxPaginationComponent', () => {
                 SliderPagination,
                 SliderPaginationBeginat6,
             ],
-            providers: [NxPaginationUtils],
+            providers: [NxPaginationUtils, provideNgReflectAttributes()],
         }).compileComponents();
     }));
 
