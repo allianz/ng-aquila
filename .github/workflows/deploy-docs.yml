@@ -1,7 +1,7 @@
 name: Deploy documentation app to github pages
 on: workflow_dispatch
 env:
-    NODE_VERSION: '18.x'
+    NODE_VERSION: '22'
 jobs:
     deploy:
         runs-on: ubuntu-latest
@@ -13,7 +13,7 @@ jobs:
                   persist-credentials: false
 
             - name: Setup Node.js
-              uses: actions/setup-node@v3
+              uses: actions/setup-node@v4
               with:
                   node-version: ${{ env.NODE_VERSION }}
                   cache: 'npm'
