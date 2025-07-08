@@ -1,0 +1,1 @@
+import{Qa as e}from"./chunk-KDTJWZU4.js";function c(r,n=0){return t(r)?Number(r):arguments.length===2?n:0}function t(r){return!isNaN(parseFloat(r))&&!isNaN(Number(r))}function a(r){return r instanceof e?r.nativeElement:r}function s(r){return Array.isArray(r)?r:[r]}export{c as a,a as b,s as c};
