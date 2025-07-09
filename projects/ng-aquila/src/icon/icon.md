@@ -13,7 +13,7 @@ a1: true
 
 The icons are comprised of two general types: **functional** and **product icons**. **Functional icons** are used to indicate important actions and functions like search, close or links. In most cases, functional icons will have a size of 24x24px (**s**). **Product icons** are a visual expression of aspects of our products. They are, for instance, used to select product options or in claims use cases. To make both icons distinguishable, the name of all product icons starts with `product-*`. The outline and fill options should only be used in combination with **product** icons.
 
-The general functionality of the icons is provided with the `NxIconModule` of `ng-aquila`. The Allianz Icons are provided with the additional `NdbxIconModule` of `@allianz/ngx-ndbx` for usage in modules or component imports or with `provideNdbxIcons()` as a global provider for standalone app configs.
+The general functionality of the icons is provided with the `NxIconModule` of `ng-aquila`. The Allianz Icons are provided with the additional `AllianzIconModule` of `@allianz/ngx-brand-kit` for usage in modules or component imports or with `provideAllianzIcons()` as a global provider for standalone app configs.
 
 Current icon version: **2.29.0** --- from [Global Allianz Icons](https://github.developer.allianz.io/oneMarketing/allianz-icons)
 
@@ -24,12 +24,12 @@ Please note that `provideNdbxIcons()` has to be used on the root level, so in th
 
 ```ts
 import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { provideNdbxIcons } from '@allianz/ngx-ndbx/icon';
+import { provideAllianzIcons } from '@allianz/ngx-brand-kit/icon';
 
 // in app.config.ts
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideNdbxIcons()
+    provideAllianzIcons()
   ],
 };
 ```
@@ -37,12 +37,12 @@ export const appConfig: ApplicationConfig = {
 
 #### Module import usage
 
-Instead of the global provider you can continue to use the `NdbxIconModule` and import it anywhere in your modules or standalone component imports, but it is recommended to do this at the root level of your application and not in sub components or routes.
+Instead of the global provider you can continue to use the `AllianzIconModule` and import it anywhere in your modules or standalone component imports, but it is recommended to do this at the root level of your application and not in sub components or routes.
 
 
 ```ts
 import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NdbxIconModule } from '@allianz/ngx-ndbx/icon';
+import { AllianzIconModule } from '@allianz/ngx-brand-kit/icon';
 
 @NgModule({
     declarations: [
@@ -51,7 +51,7 @@ import { NdbxIconModule } from '@allianz/ngx-ndbx/icon';
     imports: [
         // ...
         NxIconModule,
-        NdbxIconModule,
+        AllianzIconModule,
     ],
     // ...
 })

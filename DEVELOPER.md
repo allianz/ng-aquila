@@ -260,7 +260,7 @@ Please use as little code as possible. The examples should contain the minimal c
 
 #### Private examples
 
-Examples which contain sensitive information (e.g. HEX-values of NDBX colors) should not be published with `ng-aquila`. These examples can be placed in `projects/ngx-ndbx/documentation/examples` as private examples. This means that they are placed in the `ngx-ndbx` repository and therefor not published publicly with `ng-aquila`.
+Examples which contain sensitive information (e.g. HEX-values of NDBX colors) should not be published with `ng-aquila`. These examples can be placed in `projects/ngx-brand-kit/documentation/examples` as private examples. This means that they are placed in the `ngx-ndbx` repository and therefor not published publicly with `ng-aquila`.
 
 This path is specified in the generation of the documentation with the `--private-examples` flag:
 
