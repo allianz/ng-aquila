@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.0.0-rc.0](https://github.com/allianz/ng-aquila/compare/v20.0.0-next.0...v20.0.0-rc.0) (2025-07-10)
+
+
+### Documentation 📚
+
+* update icon provider name ([484213a](https://github.com/allianz/ng-aquila/commit/484213aa1b25b53addd53b5b6605adf5e6275a8e))
+
+
+### Features ✨
+
+* **package:** add migration to change org to [@allianz](https://github.com/allianz) ([03db417](https://github.com/allianz/ng-aquila/commit/03db4174225c7a4899e474df40e892cc074d1abd))
+* **radio-button/testing:** add convenience functions to RadioGroupHarness ([4894374](https://github.com/allianz/ng-aquila/commit/489437435ada0e62dacfa9c1bfe920c90efd22ce))
+
 ## [20.0.0-next.0](https://github.com/allianz/ng-aquila/compare/v19.7.0...v20.0.0-next.0) (2025-07-08)
 
 This release is the preparation for the next major version. It includes only the Angular v20 update and no other changes.
