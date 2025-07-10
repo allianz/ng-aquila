@@ -56,6 +56,7 @@ let nextId = 0;
         '[class.nx-radio-group--negative]': 'negative',
         '[attr.aria-labelledby]': 'this._label?.id  || null',
         '[attr.aria-nx-radio-group]': 'ariaDescribedBy',
+        '[attr.data-nx-disabled]': 'disabled || null',
     },
     styleUrls: ['radio-button-group.scss'],
     imports: [],
