@@ -1,6 +1,7 @@
-import { createMigrationSchematicRule, TargetVersion, UpgradeData } from '@angular/cdk/schematics';
+import { createMigrationSchematicRule, NullableDevkitMigration, TargetVersion, UpgradeData } from '@angular/cdk/schematics';
 import { Rule, SchematicContext } from '@angular-devkit/schematics';
 
+import { PackageImportMigration } from './custom-update-tool-migrations/package-import-migration';
 import {
     attributeSelectors,
     classNames,
@@ -31,8 +32,10 @@ export const upgradeData: UpgradeData = {
     cssTokens: {},
 };
 
+export const customMigrations: NullableDevkitMigration[] = [PackageImportMigration];
+
 export default function (): Rule {
-    return createMigrationSchematicRule(TargetVersion.V20, [], upgradeData, onMigrationComplete);
+    return createMigrationSchematicRule(TargetVersion.V20, customMigrations, upgradeData, onMigrationComplete);
 }
 
 /** Function that will be called when the migration completed. */
