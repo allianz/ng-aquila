@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.0.0-rc.1](https://github.com/allianz/ng-aquila/compare/v20.0.0-next.0...v20.0.0-rc.1) (2025-07-11)
+
+### Bug Fixes 🐛
+
+* **schematics:** handle objects in angular.json properly ([6a058e6](https://github.com/allianz/ng-aquila/commit/6a058e6d07437a84f131cbc6d833ae92cacd62f4))
+
 ## [20.0.0-rc.0](https://github.com/allianz/ng-aquila/compare/v20.0.0-next.0...v20.0.0-rc.0) (2025-07-10)
 
 
