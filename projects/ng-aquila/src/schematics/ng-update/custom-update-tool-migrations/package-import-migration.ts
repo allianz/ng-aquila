@@ -21,7 +21,6 @@ export class PackageImportMigration extends Migration<null> {
         if (!module.includes(OLD_APOSIN_MODULE)) {
             return;
         }
-        this.logger.info('visit import declaration: ' + module);
         this._updateImport(node.moduleSpecifier as StringLiteral);
     }
 

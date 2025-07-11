@@ -54,10 +54,9 @@ function updateAngularJsonImports(): Rule {
                                 if (typeof style === 'string') {
                                     stylesOrAssets[index] = style.replace('@aposin/ng-aquila', '@allianz/ng-aquila');
                                 } else if (style && typeof style === 'object' && (style as any).input) {
-                                    (stylesOrAssets[index]! as { input: string }).input = (style as any).input.replace(
-                                        '@aposin/ng-aquila',
-                                        '@allianz/ng-aquila',
-                                    );
+                                    const styleCopy = { ...style };
+                                    (styleCopy as any).input = (style as any).input.replace('@aposin/ng-aquila', '@allianz/ng-aquila');
+                                    stylesOrAssets[index] = styleCopy;
                                 }
                             });
                         }
