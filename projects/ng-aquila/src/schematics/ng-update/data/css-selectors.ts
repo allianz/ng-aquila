@@ -1,4 +1,4 @@
-import { VersionChanges } from '@angular/cdk/schematics';
+import { TargetVersion, VersionChanges } from '@angular/cdk/schematics';
 
 export interface AquilaCssSelectorData {
     /** The CSS selector to replace. */
@@ -19,4 +19,21 @@ export interface AquilaCssSelectorData {
     };
 }
 
-export const cssSelectors: VersionChanges<AquilaCssSelectorData> = {};
+export const cssSelectors: VersionChanges<AquilaCssSelectorData> = {
+    [TargetVersion.V20]: [
+        {
+            pr: '',
+            changes: [
+                {
+                    replace: 'aposin',
+                    replaceWith: 'aquila',
+                    replaceIn: {
+                        stylesheet: true,
+                        html: true,
+                        tsStringLiterals: true,
+                    },
+                },
+            ],
+        },
+    ],
+};
