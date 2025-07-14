@@ -2,29 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [20.0.0-rc.1](https://github.com/allianz/ng-aquila/compare/v20.0.0-next.0...v20.0.0-rc.1) (2025-07-11)
+## [20.0.0](https://github.com/allianz/ng-aquila/compare/v19.7.0...v20.0.0) (2025-07-14)
 
-### Bug Fixes 🐛
+### Moving ng-aquila from @aposin to @allianz organization
 
-* **schematics:** handle objects in angular.json properly ([6a058e6](https://github.com/allianz/ng-aquila/commit/6a058e6d07437a84f131cbc6d833ae92cacd62f4))
+The aposin organization has been decommisioned for a while now and we are moving the ng-aquila package to the Allianz npm organization.
+The package has been renamed from `@aposin/ng-aquila` to `@allianz/ng-aquila`. This update will be done automatically by using ng update.
 
-## [20.0.0-rc.0](https://github.com/allianz/ng-aquila/compare/v20.0.0-next.0...v20.0.0-rc.0) (2025-07-10)
+Run:
+```bash
+ng update @aposin/ng-aquila
+```
 
+### ⚠ BREAKING CHANGES
+
+* **datefield:** - the `text` property in `nxDatefieldParse` error object now provides the value of the input element instead of the reference to the whole input element.
+* **button:** The 'danger' string option has been removed from the plain button component.
+Use the critical property ('critical="true"') instead.
 
 ### Documentation 📚
 
-* update icon provider name ([484213a](https://github.com/allianz/ng-aquila/commit/484213aa1b25b53addd53b5b6605adf5e6275a8e))
+* update icon provider name ([#1545](https://github.com/allianz/ng-aquila/issues/1545)) ([484213a](https://github.com/allianz/ng-aquila/commit/484213aa1b25b53addd53b5b6605adf5e6275a8e))
 
 
 ### Features ✨
 
-* **package:** add migration to change org to [@allianz](https://github.com/allianz) ([03db417](https://github.com/allianz/ng-aquila/commit/03db4174225c7a4899e474df40e892cc074d1abd))
-* **radio-button/testing:** add convenience functions to RadioGroupHarness ([4894374](https://github.com/allianz/ng-aquila/commit/489437435ada0e62dacfa9c1bfe920c90efd22ce))
+* **button:** remove deprecated 'danger' property from plain button ([#1539](https://github.com/allianz/ng-aquila/issues/1539)) ([6a73a4d](https://github.com/allianz/ng-aquila/commit/6a73a4d35ad7eca0de0608e1c750efdfdcddb399))
+* **package:** add migration to change org to [@allianz](https://github.com/allianz) ([#1544](https://github.com/allianz/ng-aquila/issues/1544)) ([03db417](https://github.com/allianz/ng-aquila/commit/03db4174225c7a4899e474df40e892cc074d1abd))
+* **radio-button/testing:** add convenience functions to RadioGroupHarness ([#1536](https://github.com/allianz/ng-aquila/issues/1536)) ([4894374](https://github.com/allianz/ng-aquila/commit/489437435ada0e62dacfa9c1bfe920c90efd22ce))
+* **schematics:** add schematic to rename aposin theme ([#1553](https://github.com/allianz/ng-aquila/issues/1553)) ([878da08](https://github.com/allianz/ng-aquila/commit/878da0848d76d9c9696176841bd1aa0b889a13b6))
 
-## [20.0.0-next.0](https://github.com/allianz/ng-aquila/compare/v19.7.0...v20.0.0-next.0) (2025-07-08)
 
-This release is the preparation for the next major version. It includes only the Angular v20 update and no other changes.
-You can use this version already to move your applications to Angular v20. More changes including breaking changes will follow.
+### Bug Fixes 🐛
+
+* **datefield:** update `nxDatefieldParse` validator error content ([#1552](https://github.com/allianz/ng-aquila/issues/1552)) ([82dde71](https://github.com/allianz/ng-aquila/commit/82dde717a1fefa01cc7a4bce5ac708c601abac61))
+* **schematics:** handle objects in angular.json properly ([#1550](https://github.com/allianz/ng-aquila/issues/1550)) ([6a058e6](https://github.com/allianz/ng-aquila/commit/6a058e6d07437a84f131cbc6d833ae92cacd62f4))
+
 
 ## [19.7.0](https://github.com/allianz/ng-aquila/compare/v19.6.0...v19.7.0) (2025-06-26)
 
