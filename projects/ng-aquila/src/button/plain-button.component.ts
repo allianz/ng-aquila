@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Input, isDevMode, OnDestroy } from '@angular/core';
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 
 /** Please note: small is only for meant for the One Allianz Design */
@@ -44,7 +44,7 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy, After
         this._critical = coerceBooleanProperty(value);
     }
     get critical() {
-        return this._critical || this.danger;
+        return this._critical;
     }
     private _critical = false;
 
@@ -59,17 +59,12 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy, After
 
     private _classNames = '';
 
-    danger = false;
-
-    /** @deprecated Use the `critical` input for the danger/critical appearance */
     set classNames(value: string) {
         if (this._classNames === value) {
             return;
         }
         this._classNames = value;
 
-        // TODO kick null safe-guards after setter value or any calling input values are properly coerced as string
-        this.danger = !!this._classNames?.includes('danger');
         this._cdr.markForCheck();
     }
 
@@ -85,6 +80,12 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy, After
 
     ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._elementRef);
+
+        if (isDevMode()) {
+            if (this._classNames?.includes('danger')) {
+                console.warn('The danger property has been removed from the plain button component, Use critical instead');
+            }
+        }
     }
 
     @HostBinding('class.nx-button--active') active = false;

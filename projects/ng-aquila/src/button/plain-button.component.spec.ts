@@ -38,7 +38,7 @@ describe('NxPlainButtonComponent', () => {
 
     it('creates a non-danger button', () => {
         createTestComponent(BasicButton);
-        expect(testInstance.buttonInstance.danger).toBeFalse();
+        expect(testInstance.buttonInstance.critical).toBeFalse();
         expect(buttonElement).not.toHaveClass('nx-plain-button--danger');
     });
 
@@ -60,13 +60,13 @@ describe('NxPlainButtonComponent', () => {
         it('displays a danger button', () => {
             createTestComponent(BasicButton);
             fixture.componentInstance.classNames = 'danger';
+            testInstance.buttonInstance.critical = true;
+
             fixture.detectChanges();
-            expect(testInstance.buttonInstance.danger).toBeTrue();
             expect(buttonElement).toHaveClass('nx-plain-button--danger');
 
-            fixture.componentInstance.classNames = '';
+            testInstance.buttonInstance.critical = false;
             fixture.detectChanges();
-            expect(testInstance.buttonInstance.danger).toBeFalse();
             expect(buttonElement).not.toHaveClass('nx-plain-button--danger');
         });
 
