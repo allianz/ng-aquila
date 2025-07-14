@@ -18,15 +18,17 @@ export type NxDataDisplaySize = 'small' | 'medium' | 'large';
  * Default options for the NxDataDisplayComponent.
  */
 export interface DataDisplayDefaultOptions {
-    /**
-     * Size of the data display.
-     *
-     * Default: `'large'`.
-     */
-    size?: NxDataDisplaySize;
+  /**
+   * Size of the data display.
+   *
+   * Default: `'large'`.
+   */
+  size?: NxDataDisplaySize;
 }
 
 /**
  * Injection token for the default options of the NxDataDisplayComponent.
  */
-export const DATA_DISPLAY_DEFAULT_OPTIONS = new InjectionToken<DataDisplayDefaultOptions>('DATA_DISPLAY_DEFAULT_OPTIONS');
+export const DATA_DISPLAY_DEFAULT_OPTIONS = new InjectionToken<DataDisplayDefaultOptions>(
+  'DATA_DISPLAY_DEFAULT_OPTIONS',
+);

@@ -4,7 +4,7 @@
  * @docs-private
  */
 export function getNxDropdownDynamicMultipleError(): Error {
-    return Error('Cannot change `multiselect` mode of select after initialization.');
+  return Error('Cannot change `multiselect` mode of select after initialization.');
 }
 
 /**
@@ -14,5 +14,5 @@ export function getNxDropdownDynamicMultipleError(): Error {
  * @docs-private
  */
 export function getNxDropdownNonArrayValueError(): Error {
-    return Error('Value must be an array in multiselect mode.');
+  return Error('Value must be an array in multiselect mode.');
 }

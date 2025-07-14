@@ -6,240 +6,240 @@ $margin-big: nx-spacer(m);
 $margin-default: nx-spacer(s);
 
 :host {
-    display: block;
-    /* Chrome, Safari, Edge */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
+  display: block;
+  /* Chrome, Safari, Edge */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+    &:invalid {
+      box-shadow: none;
     }
-    /* Firefox */
-    input[type='number'] {
-        -moz-appearance: textfield;
-        &:invalid {
-            box-shadow: none;
-        }
-    }
+  }
 
-    label:not(:empty) + .nx-stepper__input-container,
-    .nx-stepper__label:not(:empty) + .nx-stepper__input-container {
-        margin-top: nx-spacer(xs);
-    }
+  label:not(:empty) + .nx-stepper__input-container,
+  .nx-stepper__label:not(:empty) + .nx-stepper__input-container {
+    margin-top: nx-spacer(xs);
+  }
 }
 
 :host input {
-    padding: 0;
+  padding: 0;
 }
 
 .nx-stepper__input-container {
-    align-items: flex-end;
-    display: flex;
+  align-items: flex-end;
+  display: flex;
 }
 
 .nx-stepper__label {
-    display: flex;
-    @include type-style(number-stepper-label);
+  display: flex;
+  @include type-style(number-stepper-label);
 }
 
 .nx-stepper__control {
-    width: nx-spacer(2m);
-    height: nx-spacer(2m);
-    min-height: nx-spacer(2m);
-    font-size: nx-font-size(s);
-    margin: 0;
-    padding: 0;
+  width: nx-spacer(2m);
+  height: nx-spacer(2m);
+  min-height: nx-spacer(2m);
+  font-size: nx-font-size(s);
+  margin: 0;
+  padding: 0;
 }
 
 .nx-stepper__input {
-    width: nx-spacer(l);
-    min-width: nx-spacer(l);
+  width: nx-spacer(l);
+  min-width: nx-spacer(l);
 
-    &:disabled {
-        color: v(number-stepper-disabled-color);
-        -webkit-text-fill-color: v(number-stepper-disabled-color);
-        cursor: not-allowed;
-    }
+  &:disabled {
+    color: v(number-stepper-disabled-color);
+    -webkit-text-fill-color: v(number-stepper-disabled-color);
+    cursor: not-allowed;
+  }
 
-    &:read-only {
-        cursor: default;
-    }
+  &:read-only {
+    cursor: default;
+  }
 }
 
 .nx-stepper__input,
 ::ng-deep .nx-stepper__prefix,
 ::ng-deep .nx-stepper__suffix {
-    @include type-style(number-stepper-small);
-    color: v(number-stepper-color);
-    background: 0 0;
-    outline: 0;
-    border: 0;
-    text-align: center;
+  @include type-style(number-stepper-small);
+  color: v(number-stepper-color);
+  background: 0 0;
+  outline: 0;
+  border: 0;
+  text-align: center;
 }
 
 ::ng-deep .nx-stepper__suffix {
-    margin-left: nx-spacer(3xs);
+  margin-left: nx-spacer(3xs);
 
-    :host-context([dir='rtl']) & {
-        margin-left: initial;
-        margin-right: nx-spacer(3xs);
-    }
+  :host-context([dir='rtl']) & {
+    margin-left: initial;
+    margin-right: nx-spacer(3xs);
+  }
 }
 
 ::ng-deep .nx-stepper__prefix {
-    margin-right: nx-spacer(3xs);
+  margin-right: nx-spacer(3xs);
 
-    :host-context([dir='rtl']) & {
-        margin-right: initial;
-        margin-left: nx-spacer(3xs);
-    }
+  :host-context([dir='rtl']) & {
+    margin-right: initial;
+    margin-left: nx-spacer(3xs);
+  }
 }
 
 .nx-stepper__input-wrapper {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin: 0 $margin-default;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 $margin-default;
 }
 
 .nx-stepper__inner-wrapper {
-    // IE11 height fix
-    height: nx-line-height(xs);
-    display: flex;
-    align-items: baseline;
+  // IE11 height fix
+  height: nx-line-height(xs);
+  display: flex;
+  align-items: baseline;
 }
 
 .nx-stepper__input-underline {
-    width: 100%;
-    margin-top: nx-spacer(4xs);
-    height: $border-size;
-    background: v(number-stepper-underline-color);
+  width: 100%;
+  margin-top: nx-spacer(4xs);
+  height: $border-size;
+  background: v(number-stepper-underline-color);
 
-    &--disabled {
-        background: v(number-stepper-disabled-underline-color);
-    }
+  &--disabled {
+    background: v(number-stepper-disabled-underline-color);
+  }
 }
 
 :host.nx-stepper--big {
-    .nx-stepper__control {
-        width: nx-spacer(2xl);
-        min-height: nx-spacer(4m);
-        margin-bottom: 0;
-    }
+  .nx-stepper__control {
+    width: nx-spacer(2xl);
+    min-height: nx-spacer(4m);
+    margin-bottom: 0;
+  }
 
-    .nx-stepper__input {
-        width: nx-spacer(2xl);
-        min-width: nx-spacer(2xl);
-    }
+  .nx-stepper__input {
+    width: nx-spacer(2xl);
+    min-width: nx-spacer(2xl);
+  }
 
-    .nx-stepper__input,
-    ::ng-deep .nx-stepper__prefix,
-    ::ng-deep .nx-stepper__suffix {
-        @include type-style(number-stepper-large);
-        height: nx-line-height(l);
-        padding: 0;
-        margin-bottom: 0;
-    }
+  .nx-stepper__input,
+  ::ng-deep .nx-stepper__prefix,
+  ::ng-deep .nx-stepper__suffix {
+    @include type-style(number-stepper-large);
+    height: nx-line-height(l);
+    padding: 0;
+    margin-bottom: 0;
+  }
 
-    .nx-stepper__input-wrapper {
-        margin: 0 $margin-big;
-    }
+  .nx-stepper__input-wrapper {
+    margin: 0 $margin-big;
+  }
 
-    .nx-stepper__input-underline {
-        margin-top: -nx-spacer(4xs);
-    }
+  .nx-stepper__input-underline {
+    margin-top: -nx-spacer(4xs);
+  }
 
-    .nx-stepper__inner-wrapper {
-        // IE11 height fix
-        height: nx-line-height(l);
-    }
+  .nx-stepper__inner-wrapper {
+    // IE11 height fix
+    height: nx-line-height(l);
+  }
 }
 
 :host.is-negative {
-    .nx-stepper__label,
-    ::ng-deep .nx-stepper__prefix,
-    ::ng-deep .nx-stepper__suffix {
-        color: v(negative);
-    }
+  .nx-stepper__label,
+  ::ng-deep .nx-stepper__prefix,
+  ::ng-deep .nx-stepper__suffix {
+    color: v(negative);
+  }
 
-    .nx-stepper__input {
-        color: v(negative);
-    }
+  .nx-stepper__input {
+    color: v(negative);
+  }
 
-    .nx-stepper__input-underline {
-        background: v(negative);
-    }
+  .nx-stepper__input-underline {
+    background: v(negative);
+  }
 }
 
 :host.is-disabled {
-    .nx-stepper__input-underline {
-        background: v(number-stepper-disabled-underline-color);
-    }
-    ::ng-deep .nx-stepper__prefix,
-    ::ng-deep .nx-stepper__suffix {
-        color: v(number-stepper-disabled-color);
-    }
+  .nx-stepper__input-underline {
+    background: v(number-stepper-disabled-underline-color);
+  }
+  ::ng-deep .nx-stepper__prefix,
+  ::ng-deep .nx-stepper__suffix {
+    color: v(number-stepper-disabled-color);
+  }
 }
 
 :host.is-error {
-    .nx-stepper__input {
-        color: v(danger);
-    }
+  .nx-stepper__input {
+    color: v(danger);
+  }
 
-    ::ng-deep .nx-stepper__prefix,
-    ::ng-deep .nx-stepper__suffix {
-        color: v(danger);
-    }
+  ::ng-deep .nx-stepper__prefix,
+  ::ng-deep .nx-stepper__suffix {
+    color: v(danger);
+  }
 
-    .nx-stepper__input-underline {
-        background: v(danger);
-    }
+  .nx-stepper__input-underline {
+    background: v(danger);
+  }
 }
 
 // high contrast fix
 @media screen and (forced-colors: active) {
-    button.nx-stepper__control:disabled {
-        border-color: GrayText;
-        color: GrayText;
-        opacity: 1;
+  button.nx-stepper__control:disabled {
+    border-color: GrayText;
+    color: GrayText;
+    opacity: 1;
+  }
+
+  .nx-stepper__input {
+    color: buttonText;
+
+    &:disabled {
+      color: GrayText;
+      -webkit-text-fill-color: GrayText;
     }
+  }
 
-    .nx-stepper__input {
-        color: buttonText;
+  ::ng-deep .nx-stepper__prefix,
+  ::ng-deep .nx-stepper__suffix,
+  :host.nx-stepper--big ::ng-deep .nx-stepper__prefix,
+  :host.nx-stepper--big ::ng-deep .nx-stepper__suffix {
+    forced-colors-adjust: none;
+    color: CanvasText;
+  }
 
-        &:disabled {
-            color: GrayText;
-            -webkit-text-fill-color: GrayText;
-        }
+  .nx-stepper__inner-wrapper {
+    background: buttonFace;
+  }
+
+  .nx-stepper__input-underline,
+  :host.is-negative .nx-stepper__input-underline {
+    background: buttonText;
+  }
+
+  :host.is-disabled {
+    .nx-stepper__input-underline {
+      background: GrayText;
     }
-
     ::ng-deep .nx-stepper__prefix,
-    ::ng-deep .nx-stepper__suffix,
-    :host.nx-stepper--big ::ng-deep .nx-stepper__prefix,
-    :host.nx-stepper--big ::ng-deep .nx-stepper__suffix {
-        forced-colors-adjust: none;
-        color: CanvasText;
+    ::ng-deep .nx-stepper__suffix {
+      color: GrayText;
     }
-
-    .nx-stepper__inner-wrapper {
-        background: buttonFace;
-    }
-
-    .nx-stepper__input-underline,
-    :host.is-negative .nx-stepper__input-underline {
-        background: buttonText;
-    }
-
-    :host.is-disabled {
-        .nx-stepper__input-underline {
-            background: GrayText;
-        }
-        ::ng-deep .nx-stepper__prefix,
-        ::ng-deep .nx-stepper__suffix {
-            color: GrayText;
-        }
-    }
+  }
 }
 
 .error-spacing {
-    margin-bottom: nx-spacer(s);
+  margin-bottom: nx-spacer(s);
 }

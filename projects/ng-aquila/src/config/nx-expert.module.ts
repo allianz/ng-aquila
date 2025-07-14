@@ -1,24 +1,48 @@
-import { NgModule } from '@angular/core';
-import { ERROR_DEFAULT_OPTIONS, ErrorDefaultOptions, LABEL_DEFAULT_OPTIONS, LabelDefaultOptions } from '@aposin/ng-aquila/base';
-import { SELECTABLE_CARD_DEFAULT_OPTIONS, SelectableCardDefaultOptions } from '@aposin/ng-aquila/card';
 import {
-    CIRCLE_TOGGLE_DEFAULT_OPTIONS,
-    CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS,
-    CircleToggleDefaultOptions,
-    CircleToggleGroupDefaultOptions,
-} from '@aposin/ng-aquila/circle-toggle';
-import { COMPARISON_TABLE_DEFAULT_OPTIONS, ComparisonTableDefaultOptions } from '@aposin/ng-aquila/comparison-table';
-import { DATA_DISPLAY_DEFAULT_OPTIONS, DataDisplayDefaultOptions } from '@aposin/ng-aquila/data-display';
-import { DATEPICKER_DEFAULT_OPTIONS, DatepickerDefaultOptions } from '@aposin/ng-aquila/datefield';
-import { FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions } from '@aposin/ng-aquila/formfield';
-import { SMALL_STAGE_DEFAULT_OPTIONS, SmallStageDefaultOptions } from '@aposin/ng-aquila/small-stage';
-import { TAB_GROUP_DEFAULT_OPTIONS, TAB_NAV_BAR_DEFAULT_OPTIONS, TabGroupDefaultOptions, TabNavBarDefaultOptions } from '@aposin/ng-aquila/tabs';
+  ERROR_DEFAULT_OPTIONS,
+  ErrorDefaultOptions,
+  LABEL_DEFAULT_OPTIONS,
+  LabelDefaultOptions,
+} from '@allianz/ng-aquila/base';
+import {
+  SELECTABLE_CARD_DEFAULT_OPTIONS,
+  SelectableCardDefaultOptions,
+} from '@allianz/ng-aquila/card';
+import {
+  CIRCLE_TOGGLE_DEFAULT_OPTIONS,
+  CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS,
+  CircleToggleDefaultOptions,
+  CircleToggleGroupDefaultOptions,
+} from '@allianz/ng-aquila/circle-toggle';
+import {
+  COMPARISON_TABLE_DEFAULT_OPTIONS,
+  ComparisonTableDefaultOptions,
+} from '@allianz/ng-aquila/comparison-table';
+import {
+  DATA_DISPLAY_DEFAULT_OPTIONS,
+  DataDisplayDefaultOptions,
+} from '@allianz/ng-aquila/data-display';
+import { DATEPICKER_DEFAULT_OPTIONS, DatepickerDefaultOptions } from '@allianz/ng-aquila/datefield';
+import { FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions } from '@allianz/ng-aquila/formfield';
+import {
+  SMALL_STAGE_DEFAULT_OPTIONS,
+  SmallStageDefaultOptions,
+} from '@allianz/ng-aquila/small-stage';
+import {
+  TAB_GROUP_DEFAULT_OPTIONS,
+  TAB_NAV_BAR_DEFAULT_OPTIONS,
+  TabGroupDefaultOptions,
+  TabNavBarDefaultOptions,
+} from '@allianz/ng-aquila/tabs';
+import { NgModule } from '@angular/core';
 
 // expert presets
-const comparisonTableExpertOptions: ComparisonTableDefaultOptions = { useFullRowForExpandableArea: true };
+const comparisonTableExpertOptions: ComparisonTableDefaultOptions = {
+  useFullRowForExpandableArea: true,
+};
 const formfieldExpertOptions: FormfieldDefaultOptions = {
-    appearance: 'outline',
-    nxFloatLabel: 'always',
+  appearance: 'outline',
+  nxFloatLabel: 'always',
 };
 const errorExpertOptions: ErrorDefaultOptions = { appearance: 'text' };
 const labelExpertOptions: LabelDefaultOptions = { size: 'small' };
@@ -32,20 +56,20 @@ const circleToggleOptions: CircleToggleDefaultOptions = { appearance: 'expert' }
 const dataDisplayOptions: DataDisplayDefaultOptions = { size: 'medium' };
 
 @NgModule({
-    providers: [
-        { provide: COMPARISON_TABLE_DEFAULT_OPTIONS, useValue: comparisonTableExpertOptions },
-        { provide: FORMFIELD_DEFAULT_OPTIONS, useValue: formfieldExpertOptions },
-        { provide: LABEL_DEFAULT_OPTIONS, useValue: labelExpertOptions },
-        { provide: DATEPICKER_DEFAULT_OPTIONS, useValue: datepickerExpertOptions },
-        { provide: ERROR_DEFAULT_OPTIONS, useValue: errorExpertOptions },
-        { provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: tabGroupOptions },
-        { provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: tabNavBarOptions },
-        { provide: SELECTABLE_CARD_DEFAULT_OPTIONS, useValue: selectableCardOptions },
-        { provide: SMALL_STAGE_DEFAULT_OPTIONS, useValue: smallStageOptions },
-        { provide: CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS, useValue: circleToggleGroupOptions },
-        { provide: CIRCLE_TOGGLE_DEFAULT_OPTIONS, useValue: circleToggleOptions },
-        { provide: DATA_DISPLAY_DEFAULT_OPTIONS, useValue: dataDisplayOptions },
-    ],
+  providers: [
+    { provide: COMPARISON_TABLE_DEFAULT_OPTIONS, useValue: comparisonTableExpertOptions },
+    { provide: FORMFIELD_DEFAULT_OPTIONS, useValue: formfieldExpertOptions },
+    { provide: LABEL_DEFAULT_OPTIONS, useValue: labelExpertOptions },
+    { provide: DATEPICKER_DEFAULT_OPTIONS, useValue: datepickerExpertOptions },
+    { provide: ERROR_DEFAULT_OPTIONS, useValue: errorExpertOptions },
+    { provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: tabGroupOptions },
+    { provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: tabNavBarOptions },
+    { provide: SELECTABLE_CARD_DEFAULT_OPTIONS, useValue: selectableCardOptions },
+    { provide: SMALL_STAGE_DEFAULT_OPTIONS, useValue: smallStageOptions },
+    { provide: CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS, useValue: circleToggleGroupOptions },
+    { provide: CIRCLE_TOGGLE_DEFAULT_OPTIONS, useValue: circleToggleOptions },
+    { provide: DATA_DISPLAY_DEFAULT_OPTIONS, useValue: dataDisplayOptions },
+  ],
 })
 
 // should not be a singleton since different tokens can be used in separate modules

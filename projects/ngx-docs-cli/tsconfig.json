@@ -1,12 +1,12 @@
 {
-    "compilerOptions": {
-        "outDir": "../../dist/ngx-docs-cli",
-        "module": "commonjs",
-        "target": "es5",
-        "lib": ["es2017", "es2019"],
-        "sourceMap": true
-    },
-    "files": ["src/main.ts"],
-    "include": ["src/**/*.ts"],
-    "exclude": ["**/*.spec.ts"]
+  "compilerOptions": {
+    "outDir": "../../dist/ngx-docs-cli",
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es2017", "es2019"],
+    "sourceMap": true
+  },
+  "files": ["src/main.ts"],
+  "include": ["src/**/*.ts"],
+  "exclude": ["**/*.spec.ts"]
 }

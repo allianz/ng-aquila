@@ -1,47 +1,47 @@
 {
-    "name": "aquila-docs-example",
-    "version": "0.0.0",
-    "scripts": {
-        "ng": "ng",
-        "start": "ng serve",
-        "build": "ng build",
-        "test": "ng test"
-    },
-    "private": true,
-    "browserslist": [
-        "last 1 Chrome version",
-        "last 1 Firefox version",
-        "last 2 Edge major versions",
-        "last 2 Safari major versions",
-        "last 2 iOS major versions",
-        "Firefox ESR",
-        "last 2 ChromeAndroid versions",
-        "last 2 FirefoxAndroid versions"
-    ],
-    "dependencies": {
-        "@angular/animations": "^20.0.4",
-        "@angular/cdk": "^20.0.3",
-        "@angular/common": "^20.0.4",
-        "@angular/compiler": "^20.0.4",
-        "@angular/core": "^20.0.4",
-        "@angular/forms": "^20.0.4",
-        "@angular/platform-browser": "^20.0.4",
-        "@angular/platform-browser-dynamic": "^20.0.4",
-        "@angular/router": "^20.0.4",
-        "@aposin/ng-aquila": "^20.0.0",
-        "dayjs": "^1.11.7",
-        "decimal.js": "^10.4.3",
-        "i18n-iso-countries": "^7.6.0",
-        "iban": "^0.0.14",
-        "moment": "^2.29.4",
-        "rxjs": "^7.8.1",
-        "tslib": "^2.5.2",
-        "zone.js": "^0.14.10"
-    },
-    "devDependencies": {
-        "@angular-devkit/build-angular": "^20.0.3",
-        "@angular/cli": "^20.0.2",
-        "@angular/compiler-cli": "^20.0.4",
-        "typescript": "~5.7.3"
-    }
+  "name": "aquila-docs-example",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test"
+  },
+  "private": true,
+  "browserslist": [
+    "last 1 Chrome version",
+    "last 1 Firefox version",
+    "last 2 Edge major versions",
+    "last 2 Safari major versions",
+    "last 2 iOS major versions",
+    "Firefox ESR",
+    "last 2 ChromeAndroid versions",
+    "last 2 FirefoxAndroid versions"
+  ],
+  "dependencies": {
+    "@angular/animations": "^20.0.4",
+    "@angular/cdk": "^20.0.3",
+    "@angular/common": "^20.0.4",
+    "@angular/compiler": "^20.0.4",
+    "@angular/core": "^20.0.4",
+    "@angular/forms": "^20.0.4",
+    "@angular/platform-browser": "^20.0.4",
+    "@angular/platform-browser-dynamic": "^20.0.4",
+    "@angular/router": "^20.0.4",
+    "@allianz/ng-aquila": "^20.0.0",
+    "dayjs": "^1.11.7",
+    "decimal.js": "^10.4.3",
+    "i18n-iso-countries": "^7.6.0",
+    "iban": "^0.0.14",
+    "moment": "^2.29.4",
+    "rxjs": "^7.8.1",
+    "tslib": "^2.5.2",
+    "zone.js": "^0.14.10"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^20.0.3",
+    "@angular/cli": "^20.0.2",
+    "@angular/compiler-cli": "^20.0.4",
+    "typescript": "~5.7.3"
+  }
 }

@@ -1,42 +1,42 @@
 @if (tagGroup && !removable()) {
-    <label [attr.for]="id" [class.nx-tag--selected]="selected()" [class.nx-tag-content]="tagGroup">
-        @if (selected()) {
-            <nx-icon name="check" class="nx-tag-checkmark" aria-hidden="true"></nx-icon>
-        }
-        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-    </label>
-    <input
-        #input
-        [id]="id"
-        type="checkbox"
-        [attr.name]="tagGroup.name"
-        [checked]="selected()"
-        [disabled]="disabled()"
-        [attr.aria-disabled]="readonly() || null"
-        (click)="handleInputClick($event)"
-    />
-} @else {
-    <span class="nx-tag-text-wrapper" [id]="id">
-        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-    </span>
-
-    @if (removable()) {
-        <button
-            (keydown.enter)="$event.stopPropagation()"
-            nxPlainButton
-            variant="secondary"
-            size="small"
-            type="button"
-            [attr.aria-label]="deleteAriaLabel() || intl.deleteAriaLabel"
-            class="nx-tag__close"
-            (click)="removeHandler($event)"
-            [disabled]="disabled() || readonly()"
-        >
-            <nx-icon name="close" aria-hidden="true"></nx-icon>
-        </button>
+  <label [attr.for]="id" [class.nx-tag--selected]="selected()" [class.nx-tag-content]="tagGroup">
+    @if (selected()) {
+      <nx-icon name="check" class="nx-tag-checkmark" aria-hidden="true"></nx-icon>
     }
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  </label>
+  <input
+    #input
+    [id]="id"
+    type="checkbox"
+    [attr.name]="tagGroup.name"
+    [checked]="selected()"
+    [disabled]="disabled()"
+    [attr.aria-disabled]="readonly() || null"
+    (click)="handleInputClick($event)"
+  />
+} @else {
+  <span class="nx-tag-text-wrapper" [id]="id">
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  </span>
+
+  @if (removable()) {
+    <button
+      (keydown.enter)="$event.stopPropagation()"
+      nxPlainButton
+      variant="secondary"
+      size="small"
+      type="button"
+      [attr.aria-label]="deleteAriaLabel() || intl.deleteAriaLabel"
+      class="nx-tag__close"
+      (click)="removeHandler($event)"
+      [disabled]="disabled() || readonly()"
+    >
+      <nx-icon name="close" aria-hidden="true"></nx-icon>
+    </button>
+  }
 }
 
 <ng-template #contentTemplate>
-    <ng-content>{{ value() }}</ng-content>
+  <ng-content>{{ value() }}</ng-content>
 </ng-template>

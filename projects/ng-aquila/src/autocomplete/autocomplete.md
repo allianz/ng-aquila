@@ -20,8 +20,8 @@ import { OverlayModule } from '@angular/cdk/overlay';`
 Autocomplete can be used with input only, but usually you'll wan't to use it within formfield or natural language form. For this you'll need these additional imports.
 
 ```ts
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { NxNaturalLanguageFormModule } from '@aposin/ng-aquila/natural-language-form';
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { NxNaturalLanguageFormModule } from '@allianz/ng-aquila/natural-language-form';
 ```
 
 ### Examples

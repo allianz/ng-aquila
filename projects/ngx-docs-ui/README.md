@@ -2,7 +2,7 @@
 
 ## Installation
 
-`npm install @aposin/ngx-docs-ui`
+`npm install @allianz/ngx-docs-ui`
 
 ## Import the module in your application
 
@@ -11,8 +11,8 @@ The `NxvDocumentationModule` is used in a regular angular application.
 In the app.module.ts add these imports
 
 ```ts
-import { NXV_MANIFEST_TOKEN, NxvDocumentationModule } from '@aposin/ngx-docs-ui';
-import * as NX_MANIFEST from '@aposin/ng-aquila/documentation/manifest.json';
+import { NXV_MANIFEST_TOKEN, NxvDocumentationModule } from '@allianz/ngx-docs-ui';
+import * as NX_MANIFEST from '@allianz/ng-aquila/documentation/manifest.json';
 import { RouterModule } from '@angular/router';
 
 const ROUTES = [

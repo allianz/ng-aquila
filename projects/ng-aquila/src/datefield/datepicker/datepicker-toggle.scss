@@ -3,53 +3,53 @@
 $icon-size: nx-spacer(m);
 
 :host {
-    position: relative;
-    display: flex;
+  position: relative;
+  display: flex;
 
-    // don't show inner dotted border on firefox
-    &:active {
-        outline: none;
-    }
+  // don't show inner dotted border on firefox
+  &:active {
+    outline: none;
+  }
 
-    &:hover {
-        color: v(hover-primary);
-    }
+  &:hover {
+    color: v(hover-primary);
+  }
 }
 
 .nx-datepicker-toggle-button {
-    border: none;
-    background-color: transparent;
-    color: inherit;
-    outline: none;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
 
-    // don't show inner dotted border on firefox
-    &::-moz-focus-inner {
-        border: 0;
-    }
+  // don't show inner dotted border on firefox
+  &::-moz-focus-inner {
+    border: 0;
+  }
 
-    @media screen and (forced-colors: active) {
-        color: ButtonText;
-    }
+  @media screen and (forced-colors: active) {
+    color: ButtonText;
+  }
 }
 
 .default-icon {
-    display: block;
-    height: v(datefield-toggle-icon-size);
-    width: v(datefield-toggle-icon-size);
+  display: block;
+  height: v(datefield-toggle-icon-size);
+  width: v(datefield-toggle-icon-size);
 }
 
 :host(.nx-datepicker-toggle--disabled) .nx-datepicker-toggle-button {
-    cursor: not-allowed;
+  cursor: not-allowed;
 
-    @media screen and (forced-colors: active) {
-        color: GrayText;
-    }
+  @media screen and (forced-colors: active) {
+    color: GrayText;
+  }
 }
 
 .nx-datepicker-toggle-button.cdk-keyboard-focused {
-    border-radius: nx-border-radius(s);
-    @include focus-style;
+  border-radius: nx-border-radius(s);
+  @include focus-style;
 }

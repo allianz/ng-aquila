@@ -20,24 +20,24 @@ import { OverlayRef, ScrollStrategy } from '@angular/cdk/overlay';
  *
  */
 export class FakeScrollStrategy implements ScrollStrategy {
-    isEnabled = false;
-    overlayRef!: OverlayRef;
+  isEnabled = false;
+  overlayRef!: OverlayRef;
 
-    attach(overlayRef: OverlayRef) {
-        this.overlayRef = overlayRef;
-    }
+  attach(overlayRef: OverlayRef) {
+    this.overlayRef = overlayRef;
+  }
 
-    enable() {
-        this.isEnabled = true;
-    }
+  enable() {
+    this.isEnabled = true;
+  }
 
-    disable() {
-        this.isEnabled = false;
-    }
+  disable() {
+    this.isEnabled = false;
+  }
 
-    detach() {
-        this.overlayRef = null!;
-    }
+  detach() {
+    this.overlayRef = null!;
+  }
 }
 
 /** See usage at FakeScrollStrategy */

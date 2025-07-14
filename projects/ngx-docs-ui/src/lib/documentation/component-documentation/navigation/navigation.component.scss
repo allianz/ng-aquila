@@ -1,12 +1,12 @@
 :host {
-    display: block;
+  display: block;
 }
 
 button.docs-action {
-    font-size: 0.875rem;
-    padding: 4px 8px;
+  font-size: 0.875rem;
+  padding: 4px 8px;
 
-    ::ng-deep .nx-action__label {
-        line-height: 1.5rem;
-    }
+  ::ng-deep .nx-action__label {
+    line-height: 1.5rem;
+  }
 }

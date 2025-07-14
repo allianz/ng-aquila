@@ -1,29 +1,29 @@
 <table class="nx-calendar-table">
-    <thead class="nx-calendar-table-head">
-        <tr>
-            @for (day of _weekdays; track day) {
-            <th class="nx-calendar-table-header" [attr.aria-label]="day.long">{{day.narrow}}</th>
-            }
-        </tr>
-        <tr></tr>
-    </thead>
+  <thead class="nx-calendar-table-head">
+    <tr>
+      @for (day of _weekdays; track day) {
+      <th class="nx-calendar-table-header" [attr.aria-label]="day.long">{{day.narrow}}</th>
+      }
+    </tr>
+    <tr></tr>
+  </thead>
 
-    <tbody
-        nx-calendar-body
-        [label]="_monthLabel"
-        [rows]="_weeks"
-        [previousItems]="_firstWeekOffset"
-        [followingItems]="_getFirstDaysOfFollowingMonth()"
-        [todayValue]="_todayDate!"
-        [numCols]="_numCols"
-        [selectedValue]="selectedDateInMonth()"
-        [selectedEndDate]="selectedEndDate()"
-        [betweenRange]="betweenRange()"
-        [activeCell]="_dateAdapter.getDate(activeDate) - 1"
-        (selectedValueChange)="_dateSelected($event)"
-        (selectedValueChangeToPrevious)="_dateSelected($event, -1)"
-        (selectedValueChangeToFollowing)="_dateSelected($event, 1)"
-        (keydown)="_handleCalendarBodyKeydown($event)"
-        (hoverValueChange)="handleHoverChange($event)"
-    ></tbody>
+  <tbody
+    nx-calendar-body
+    [label]="_monthLabel"
+    [rows]="_weeks"
+    [previousItems]="_firstWeekOffset"
+    [followingItems]="_getFirstDaysOfFollowingMonth()"
+    [todayValue]="_todayDate!"
+    [numCols]="_numCols"
+    [selectedValue]="selectedDateInMonth()"
+    [selectedEndDate]="selectedEndDate()"
+    [betweenRange]="betweenRange()"
+    [activeCell]="_dateAdapter.getDate(activeDate) - 1"
+    (selectedValueChange)="_dateSelected($event)"
+    (selectedValueChangeToPrevious)="_dateSelected($event, -1)"
+    (selectedValueChangeToFollowing)="_dateSelected($event, 1)"
+    (keydown)="_handleCalendarBodyKeydown($event)"
+    (hoverValueChange)="handleHoverChange($event)"
+  ></tbody>
 </table>

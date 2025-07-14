@@ -1,105 +1,105 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { ColorPickerModule } from 'ngx-color-picker';
 import parseColor from 'parse-color';
 
 @Component({
-    selector: 'nxv-css-var-sidebar',
-    templateUrl: 'css-var-sidebar.component.html',
-    styleUrls: ['css-var-sidebar.component.scss'],
-    host: {
-        '[class.sidebar-hidden]': '!shown',
-    },
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NxButtonModule, NxIconModule, FormsModule, ColorPickerModule],
+  selector: 'nxv-css-var-sidebar',
+  templateUrl: 'css-var-sidebar.component.html',
+  styleUrls: ['css-var-sidebar.component.scss'],
+  host: {
+    '[class.sidebar-hidden]': '!shown',
+  },
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NxButtonModule, NxIconModule, FormsModule, ColorPickerModule],
 })
 export class CssVarSidebarComponent {
-    shown = true;
+  shown = true;
 
-    properties!: any[];
-    displayedProperties: any;
-    filterValue = '';
+  properties!: any[];
+  displayedProperties: any;
+  filterValue = '';
 
-    constructor(private readonly _cdr: ChangeDetectorRef) {}
+  constructor(private readonly _cdr: ChangeDetectorRef) {}
 
-    getCustomProperties() {
-        return Array.from(document.styleSheets).reduce((rules, styleSheet: CSSStyleSheet, currIdx) => {
-            if (styleSheet.cssRules) {
-                Array.from(styleSheet.cssRules).reduce((innerRules: string[], cssRule: any) => {
-                    if (cssRule.selectorText?.includes(':root')) {
-                        let css = cssRule.cssText.split('{');
-                        css = css[1].replace('}', '').split(';');
-                        for (let i = 0; i < css.length; i++) {
-                            const prop = css[i].split(':');
-                            if (prop.length === 2 && prop[0].indexOf('--') === 1) {
-                                innerRules.push(prop[0].trim());
-                            }
-                        }
-                    }
-                    return innerRules;
-                }, rules);
+  getCustomProperties() {
+    return Array.from(document.styleSheets).reduce((rules, styleSheet: CSSStyleSheet, currIdx) => {
+      if (styleSheet.cssRules) {
+        Array.from(styleSheet.cssRules).reduce((innerRules: string[], cssRule: any) => {
+          if (cssRule.selectorText?.includes(':root')) {
+            let css = cssRule.cssText.split('{');
+            css = css[1].replace('}', '').split(';');
+            for (let i = 0; i < css.length; i++) {
+              const prop = css[i].split(':');
+              if (prop.length === 2 && prop[0].indexOf('--') === 1) {
+                innerRules.push(prop[0].trim());
+              }
             }
-            return rules;
-        }, []);
-    }
+          }
+          return innerRules;
+        }, rules);
+      }
+      return rules;
+    }, []);
+  }
 
-    parseProperties(props: string[]) {
-        const styles = getComputedStyle(document.documentElement);
-        const values = props.map((name: string) => {
-            const cssVarValue = styles.getPropertyValue(name).trim();
+  parseProperties(props: string[]) {
+    const styles = getComputedStyle(document.documentElement);
+    const values = props.map((name: string) => {
+      const cssVarValue = styles.getPropertyValue(name).trim();
 
-            const parsed = parseColor(cssVarValue);
-            let type = '';
-            let value = '';
+      const parsed = parseColor(cssVarValue);
+      let type = '';
+      let value = '';
 
-            if (parsed.keyword === 'transparent') {
-                type = 'color';
-                value = 'rgba(0, 0, 0, 0)';
-            } else if (parsed.rgba) {
-                type = 'color';
-                value = 'rgba(' + parsed.rgba.join(',') + ')';
-            } else {
-                type = 'text';
-                value = cssVarValue;
-            }
-            return { type, value, name };
-        });
+      if (parsed.keyword === 'transparent') {
+        type = 'color';
+        value = 'rgba(0, 0, 0, 0)';
+      } else if (parsed.rgba) {
+        type = 'color';
+        value = 'rgba(' + parsed.rgba.join(',') + ')';
+      } else {
+        type = 'text';
+        value = cssVarValue;
+      }
+      return { type, value, name };
+    });
 
-        return values;
-    }
+    return values;
+  }
 
-    updateProperty(newValue: string | null, prop: { name: string }) {
-        document.documentElement.style.setProperty(prop.name, newValue);
-    }
+  updateProperty(newValue: string | null, prop: { name: string }) {
+    document.documentElement.style.setProperty(prop.name, newValue);
+  }
 
-    toggle() {
-        this.shown = !this.shown;
-    }
+  toggle() {
+    this.shown = !this.shown;
+  }
 
-    filterProperties() {
-        this.displayedProperties = this.properties.filter(
-            (prop: { name: string; value: string }) =>
-                prop.name.toLocaleLowerCase().includes(this.filterValue.toLocaleLowerCase()) ||
-                prop.value.toLocaleLowerCase().includes(this.filterValue.toLocaleLowerCase()),
-        );
-    }
+  filterProperties() {
+    this.displayedProperties = this.properties.filter(
+      (prop: { name: string; value: string }) =>
+        prop.name.toLocaleLowerCase().includes(this.filterValue.toLocaleLowerCase()) ||
+        prop.value.toLocaleLowerCase().includes(this.filterValue.toLocaleLowerCase()),
+    );
+  }
 
-    showAllProperties() {
-        this.filterValue = '';
-        this.displayedProperties = this.properties;
-    }
+  showAllProperties() {
+    this.filterValue = '';
+    this.displayedProperties = this.properties;
+  }
 
-    reset() {
-        const properties = this.getCustomProperties();
-        properties.forEach(p => document.documentElement.style.removeProperty(p));
-        this.properties = this.parseProperties(properties);
-        this.filterProperties();
-        this._cdr.markForCheck();
-    }
+  reset() {
+    const properties = this.getCustomProperties();
+    properties.forEach((p) => document.documentElement.style.removeProperty(p));
+    this.properties = this.parseProperties(properties);
+    this.filterProperties();
+    this._cdr.markForCheck();
+  }
 
-    trackProperties(index: unknown, element: HTMLInputElement) {
-        return element.name;
-    }
+  trackProperties(index: unknown, element: HTMLInputElement) {
+    return element.name;
+  }
 }

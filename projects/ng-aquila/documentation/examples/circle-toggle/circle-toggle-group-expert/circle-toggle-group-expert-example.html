@@ -1,12 +1,12 @@
 <nx-circle-toggle-group class="nx-margin-bottom-m" appearance="expert">
-    @for (item of sampleValues; track item) {
-    <nx-circle-toggle
-        [value]="item.value"
-        [icon]="item.icon"
-        [hint]="item.hint"
-        [label]="item.label"
-        [checked]="item.selected"
-    >
-    </nx-circle-toggle>
-    }
+  @for (item of sampleValues; track item) {
+  <nx-circle-toggle
+    [value]="item.value"
+    [icon]="item.icon"
+    [hint]="item.hint"
+    [label]="item.label"
+    [checked]="item.selected"
+  >
+  </nx-circle-toggle>
+  }
 </nx-circle-toggle-group>

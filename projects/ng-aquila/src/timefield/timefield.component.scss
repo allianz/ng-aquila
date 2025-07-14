@@ -4,266 +4,266 @@ $default-box-shadow: 0 -1px 0 0;
 $selected-box-shadow: 0 -2px 0 0;
 
 :host {
-    display: inline-block;
+  display: inline-block;
 }
 
 .nx-timefield__wrapper {
-    display: flex;
-    &:focus {
-        outline: none;
-    }
+  display: flex;
+  &:focus {
+    outline: none;
+  }
 }
 
 .nx-timefield-input__field__hours,
 .nx-timefield-input__field__minutes,
 .nx-timefield-hours-separator {
-    text-align: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    color: inherit;
-    text-align: left;
-    border: 0;
-    outline: 0;
-    border-radius: 0;
-    padding: 0;
-    margin: 0;
-    background: transparent;
-    box-sizing: border-box;
+  text-align: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-align: left;
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  box-sizing: border-box;
 }
 .nx-timefield-input__field {
-    &__hours,
-    &__minutes {
-        width: 2ch;
-        padding: 0;
-        margin: 0;
-    }
-    &__minutes {
-        width: 32px;
-    }
+  &__hours,
+  &__minutes {
+    width: 2ch;
+    padding: 0;
+    margin: 0;
+  }
+  &__minutes {
+    width: 32px;
+  }
 }
 
 :host-context(.has-timepicker) {
-    .nx-timefield-input__field__minutes {
-        margin-right: 18px;
-    }
+  .nx-timefield-input__field__minutes {
+    margin-right: 18px;
+  }
 }
 
 .nx-timefield-hours-separator {
-    margin: 0 4px;
+  margin: 0 4px;
 }
 
 nx-timepicker {
-    display: block;
-    height: 24px;
-    align-self: center;
+  display: block;
+  height: 24px;
+  align-self: center;
 }
 nx-radio-toggle {
-    margin-left: nx-spacer(m);
-    height: max-content;
-    margin-top: var(--formfield-label-height);
+  margin-left: nx-spacer(m);
+  height: max-content;
+  margin-top: var(--formfield-label-height);
 }
 
 :host ::ng-deep {
-    .nx-formfield__wrapper {
-        padding-bottom: 2px;
-    }
-    .nx-formfield__input-container:focus-within {
-        border-color: v(timefield-active-color);
-    }
+  .nx-formfield__wrapper {
+    padding-bottom: 2px;
+  }
+  .nx-formfield__input-container:focus-within {
+    border-color: v(timefield-active-color);
+  }
 }
 
 .has-outline {
-    nx-radio-toggle {
-        padding-top: 4px;
-        margin-bottom: 4px;
-        margin-left: nx-spacer(s);
-        margin-top: var(--formfield-outline-label-height);
+  nx-radio-toggle {
+    padding-top: 4px;
+    margin-bottom: 4px;
+    margin-left: nx-spacer(s);
+    margin-top: var(--formfield-outline-label-height);
+  }
+
+  ::ng-deep {
+    // .nx-formfield__input-container:focus-within {
+    //     @include formfield-outline-focus-styles;
+    // }
+
+    .nx-timefield-input__field {
+      &__hours,
+      &__minutes {
+        margin: 0;
+        font-weight: 400;
+        line-height: 1.5rem;
+        padding: 0;
+      }
+      &__hours {
+        width: 18px;
+      }
+      &__minutes {
+        max-width: 58px;
+      }
     }
 
-    ::ng-deep {
-        // .nx-formfield__input-container:focus-within {
-        //     @include formfield-outline-focus-styles;
-        // }
-
-        .nx-timefield-input__field {
-            &__hours,
-            &__minutes {
-                margin: 0;
-                font-weight: 400;
-                line-height: 1.5rem;
-                padding: 0;
-            }
-            &__hours {
-                width: 18px;
-            }
-            &__minutes {
-                max-width: 58px;
-            }
-        }
-
-        .nx-timefield-hours-separator {
-            margin: 0 2px;
-            align-self: center;
-        }
-
-        .nx-formfield__input {
-            padding: 2px 8px;
-        }
+    .nx-timefield-hours-separator {
+      margin: 0 2px;
+      align-self: center;
     }
+
+    .nx-formfield__input {
+      padding: 2px 8px;
+    }
+  }
 }
 
 :host:focus {
-    // This will ensure there is no second focus style shown in high contrast mode
-    outline: none;
+  // This will ensure there is no second focus style shown in high contrast mode
+  outline: none;
 }
 
 // negative styles
 :host.is-negative {
-    .nx-timefield__label,
-    .nx-timefield-input__field__hours,
-    .nx-timefield-input__field__minutes,
-    .nx-timefield-hours-separator,
-    .nx-timefield-input__container {
-        color: v(negative);
+  .nx-timefield__label,
+  .nx-timefield-input__field__hours,
+  .nx-timefield-input__field__minutes,
+  .nx-timefield-hours-separator,
+  .nx-timefield-input__container {
+    color: v(negative);
+  }
+  ::ng-deep {
+    .nx-formfield__input-container:focus-within {
+      border-color: v(negative) !important;
     }
-    ::ng-deep {
-        .nx-formfield__input-container:focus-within {
-            border-color: v(negative) !important;
-        }
-    }
+  }
 }
 
 :host.is-disabled.is-negative {
+  cursor: not-allowed;
+
+  .nx-timefield__label,
+  .nx-timefield-input__field__hours,
+  .nx-timefield-input__field__minutes,
+  .nx-timefield-hours-separator,
+  .nx-timefield-input__container {
     cursor: not-allowed;
+    color: v(timefield-disabled-color);
+  }
 
-    .nx-timefield__label,
-    .nx-timefield-input__field__hours,
-    .nx-timefield-input__field__minutes,
-    .nx-timefield-hours-separator,
-    .nx-timefield-input__container {
-        cursor: not-allowed;
-        color: v(timefield-disabled-color);
-    }
-
-    .nx-timefield-input__container {
-        box-shadow: inset $default-box-shadow v(timefield-disabled-color);
-        box-shadow: inset $default-box-shadow v(timefield-disabled-color);
-    }
+  .nx-timefield-input__container {
+    box-shadow: inset $default-box-shadow v(timefield-disabled-color);
+    box-shadow: inset $default-box-shadow v(timefield-disabled-color);
+  }
 }
 
 :host(.is-negative) {
+  .nx-timepicker-toggle-button {
+    color: v(negative);
+  }
+  :host(.has-outline) {
     .nx-timepicker-toggle-button {
-        color: v(negative);
+      color: inherit;
     }
-    :host(.has-outline) {
-        .nx-timepicker-toggle-button {
-            color: inherit;
-        }
-    }
+  }
 }
 
 .time-group {
-    display: inherit;
+  display: inherit;
 }
 
 .nx-timepicker-toggle-button {
-    border: none;
-    background-color: transparent;
-    color: inherit;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: v(hover-primary);
+  }
+
+  &.nx-timepicker-toggle--disabled,
+  &.nx-timepicker-toggle--disabled:hover {
+    cursor: not-allowed;
+    color: v(timefield-disabled-color);
+  }
+
+  // don't show inner dotted border on firefox
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  // don't show inner dotted border on firefox
+  &:active {
     outline: none;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
+  }
 
-    &:hover {
-        color: v(hover-primary);
-    }
+  @media screen and (forced-colors: active) {
+    color: ButtonText;
+  }
 
-    &.nx-timepicker-toggle--disabled,
-    &.nx-timepicker-toggle--disabled:hover {
-        cursor: not-allowed;
-        color: v(timefield-disabled-color);
-    }
-
-    // don't show inner dotted border on firefox
-    &::-moz-focus-inner {
-        border: 0;
-    }
-
-    // don't show inner dotted border on firefox
-    &:active {
-        outline: none;
-    }
-
-    @media screen and (forced-colors: active) {
-        color: ButtonText;
-    }
-
-    &.cdk-keyboard-focused {
-        border-radius: nx-border-radius(s);
-        @include focus-style;
-    }
+  &.cdk-keyboard-focused {
+    border-radius: nx-border-radius(s);
+    @include focus-style;
+  }
 }
 
 // timepicker
 section {
-    width: 100%;
+  width: 100%;
 }
 
 .option-list {
-    outline: none;
-    height: 252px;
-    background: v(timepicker-layout-background-color);
-    text-align: center;
-    padding: 8px 0;
-    margin: 6px 0;
-    overflow-y: scroll;
-    color: v(timepicker-label-color);
-    font-weight: nx-font-weight(regular);
-    box-shadow: 0px 2px 4px rgba(65, 65, 65, 0.5);
-    border-radius: 4px;
-    width: 100%;
+  outline: none;
+  height: 252px;
+  background: v(timepicker-layout-background-color);
+  text-align: center;
+  padding: 8px 0;
+  margin: 6px 0;
+  overflow-y: scroll;
+  color: v(timepicker-label-color);
+  font-weight: nx-font-weight(regular);
+  box-shadow: 0px 2px 4px rgba(65, 65, 65, 0.5);
+  border-radius: 4px;
+  width: 100%;
 }
 
 .option-list > li {
-    list-style-type: none;
-    width: 100%;
-    outline: none;
-    align-content: center;
-    font-size: nx-font-size(xs);
-    line-height: 1.75rem;
-    outline: none;
-    padding: 8px 32px;
+  list-style-type: none;
+  width: 100%;
+  outline: none;
+  align-content: center;
+  font-size: nx-font-size(xs);
+  line-height: 1.75rem;
+  outline: none;
+  padding: 8px 32px;
 
-    &:hover {
-        color: v(timepicker-label-hover-color);
-        cursor: pointer;
-    }
+  &:hover {
+    color: v(timepicker-label-hover-color);
+    cursor: pointer;
+  }
 
-    &.is-active {
-        .option-label {
-            color: v(timefield-active-color);
-            border-radius: 4px;
-            box-shadow: var(--focus-box-shadow);
-        }
+  &.is-active {
+    .option-label {
+      color: v(timefield-active-color);
+      border-radius: 4px;
+      box-shadow: var(--focus-box-shadow);
     }
+  }
 }
 
 .has-outline {
-    .option-list > li {
-        font-size: nx-font-size(3xs);
-        line-height: 1.5rem;
-    }
+  .option-list > li {
+    font-size: nx-font-size(3xs);
+    line-height: 1.5rem;
+  }
 }
 
 .twelve-hour-format {
-    .option-list > li {
-        text-align: end;
-    }
+  .option-list > li {
+    text-align: end;
+  }
 }
 
 .option-list > li:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }

@@ -1,13 +1,13 @@
 <nx-tab-nav-bar>
-    @for (link of links; track link) {
-    <a
-        nxTabLink
-        (click)="setActiveLink(link)"
-        [active]="currentLink.label === link.label"
-        [disabled]="link.disabled"
-        [routerLink]="link.path"
-    >
-        {{link.label}}
-    </a>
-    }
+  @for (link of links; track link) {
+  <a
+    nxTabLink
+    (click)="setActiveLink(link)"
+    [active]="currentLink.label === link.label"
+    [disabled]="link.disabled"
+    [routerLink]="link.path"
+  >
+    {{link.label}}
+  </a>
+  }
 </nx-tab-nav-bar>

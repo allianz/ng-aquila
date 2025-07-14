@@ -28,7 +28,7 @@ When imported, this module sets the injection tokens for a bunch of components. 
 If you use this module, you don't need to set these configurations explicitly for every component in your template anymore. This means instead of using the expert properties for the component `<nx-formfield nxFloatLabel="always" appearance="outline">` you only need to write `<nx-formfield>...</nx-formfield>` and `nxFloatLabel`, `appearance` are set for you automatically.
 
 ```ts
-import { NxExpertModule } from '@aposin/ng-aquila/config';
+import { NxExpertModule } from '@allianz/ng-aquila/config';
 ```
 
 ```ts
@@ -53,12 +53,12 @@ You have to import the expert CSS theme into your `angular.json` file:
 
 ```ts
 "styles": [
-  "node_modules/@aposin/ng-aquila/themes/expert.css"
+  "node_modules/@allianz/ng-aquila/themes/expert.css"
 ]
 ```
 
 If you don't use the Angular CLI or just prefer another place you can use this CSS import instead:
 
 ```css
-@import '@aposin/ng-aquila/themes/expert.css';
+@import '@allianz/ng-aquila/themes/expert.css';
 ```

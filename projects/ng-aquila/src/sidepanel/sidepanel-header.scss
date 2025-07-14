@@ -1,6 +1,6 @@
 @import '../shared-styles/index';
 
 :host {
-    display: block;
-    @include type-style(sidepanel-header);
+  display: block;
+  @include type-style(sidepanel-header);
 }

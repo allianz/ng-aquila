@@ -1,16 +1,16 @@
 {
-    "extends": "../../tsconfig.build.json",
-    "compilerOptions": {
-        "outDir": "../../out-tsc/lib",
-        "declaration": true,
-        "declarationMap": true,
-        "inlineSources": true,
-        "types": []
-    },
-    "angularCompilerOptions": {
-        "skipTemplateCodegen": true,
-        "strictMetadataEmit": true,
-        "enableResourceInlining": true
-    },
-    "exclude": ["test.ts", "**/*.spec.ts", "documentation/**/*"]
+  "extends": "../../tsconfig.build.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/lib",
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "types": []
+  },
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "enableResourceInlining": true
+  },
+  "exclude": ["test.ts", "**/*.spec.ts", "documentation/**/*"]
 }

@@ -1,19 +1,19 @@
 <div [dir]="direction">
-    <h3 nxHeadline="subsection-medium">Dynamic direction switching</h3>
-    <p nxCopytext="small">
-        Some copy text in {{direction | uppercase}} container.
-    </p>
-    <div class="nx-margin-bottom-m">
-        <nx-slider
-            [min]="10"
-            [max]="110"
-            [step]="2"
-            label="Slider Test Label"
-            [(value)]="sliderDemoValue"
-        >
-        </nx-slider>
-    </div>
-    <button nxButton (click)="toggleDirection()">
-        Switch container direction
-    </button>
+  <h3 nxHeadline="subsection-medium">Dynamic direction switching</h3>
+  <p nxCopytext="small">
+    Some copy text in {{direction | uppercase}} container.
+  </p>
+  <div class="nx-margin-bottom-m">
+    <nx-slider
+      [min]="10"
+      [max]="110"
+      [step]="2"
+      label="Slider Test Label"
+      [(value)]="sliderDemoValue"
+    >
+    </nx-slider>
+  </div>
+  <button nxButton (click)="toggleDirection()">
+    Switch container direction
+  </button>
 </div>

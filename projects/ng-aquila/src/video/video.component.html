@@ -1,21 +1,48 @@
 <div class="nx-video">
-    <div class="nx-video__iframe">
-        @if (!showPlayer) {
-            <div>
-                <button #playButton class="nx-video__play-button" (click)="select()" [attr.aria-label]="playButtonAriaLabel" (keydown.enter)="select()">
-                    <nx-icon class="nx-video__high-contrast-icon" name="play" size="s" aria-hidden="true"></nx-icon>
-                </button>
-                <img [src]="imgSrc" class="nx-video__thumbnail" [alt]="altText" (click)="select()" (keydown.enter)="select()" />
-            </div>
+  <div class="nx-video__iframe">
+    @if (!showPlayer) {
+      <div>
+        <button
+          #playButton
+          class="nx-video__play-button"
+          (click)="select()"
+          [attr.aria-label]="playButtonAriaLabel"
+          (keydown.enter)="select()"
+        >
+          <nx-icon
+            class="nx-video__high-contrast-icon"
+            name="play"
+            size="s"
+            aria-hidden="true"
+          ></nx-icon>
+        </button>
+        <img
+          [src]="imgSrc"
+          class="nx-video__thumbnail"
+          [alt]="altText"
+          (click)="select()"
+          (keydown.enter)="select()"
+        />
+      </div>
+    }
+    @if (videoId && showPlayer) {
+      <div>
+        @if (allowFullScreen) {
+          <iframe
+            title="video"
+            class="nx-video__iframe"
+            allowFullscreen="true"
+            [src]="videoSrc"
+          ></iframe>
+        } @else {
+          <iframe
+            title="video"
+            class="nx-video__iframe"
+            allowFullscreen="false"
+            [src]="videoSrc"
+          ></iframe>
         }
-        @if (videoId && showPlayer) {
-            <div>
-                @if (allowFullScreen) {
-                    <iframe title="video" class="nx-video__iframe" allowFullscreen="true" [src]="videoSrc"></iframe>
-                } @else {
-                    <iframe title="video" class="nx-video__iframe" allowFullscreen="false" [src]="videoSrc"></iframe>
-                }
-            </div>
-        }
-    </div>
+      </div>
+    }
+  </div>
 </div>

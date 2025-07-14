@@ -1,11 +1,11 @@
 <form [formGroup]="testForm">
-    <nx-timefield
-        label="Time"
-        formControlName="timefieldReactive"
-        enableTimeValidation
-    >
-        <nx-error> Invalid time input. </nx-error>
-    </nx-timefield>
+  <nx-timefield
+    label="Time"
+    formControlName="timefieldReactive"
+    enableTimeValidation
+  >
+    <nx-error> Invalid time input. </nx-error>
+  </nx-timefield>
 </form>
 
 <p>Errors: {{ testForm.controls.timefieldReactive.errors | json}}</p>

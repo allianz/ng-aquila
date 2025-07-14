@@ -1,9 +1,9 @@
 .nx-popover__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .nx-popover__steps {
-    color: #767676;
+  color: #767676;
 }

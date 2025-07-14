@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NxCodeInputComponent } from './code-input.component';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, ReactiveFormsModule, NxCodeInputComponent],
-    exports: [NxCodeInputComponent],
-    providers: [],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NxCodeInputComponent],
+  exports: [NxCodeInputComponent],
+  providers: [],
 })
 export class NxCodeInputModule {}

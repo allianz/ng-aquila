@@ -7,8 +7,14 @@ import { NxvTableOfContentsModule } from '../../table-of-contents/table-of-conte
 import { NxvGuideViewComponent } from './guide-view.component';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, DocViewerModule, NxvTableOfContentsModule, NxvGuideViewComponent],
-    exports: [],
-    providers: [],
+  imports: [
+    CommonModule,
+    RouterModule,
+    DocViewerModule,
+    NxvTableOfContentsModule,
+    NxvGuideViewComponent,
+  ],
+  exports: [],
+  providers: [],
 })
 export class NxvGuideViewModule {}

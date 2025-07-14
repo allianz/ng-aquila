@@ -1,97 +1,108 @@
 :host {
-    position: fixed;
-    right: 0;
-    height: calc(100vh - 60px);
-    background-color: var(--ui-03);
-    z-index: 800;
-    width: 300px;
-    top: 60px;
-    padding: 0 16px;
-    overflow: visible;
-    transition: width 0.2s ease-in-out;
+  position: fixed;
+  right: 0;
+  height: calc(100vh - 60px);
+  background-color: var(--ui-03);
+  z-index: 800;
+  width: 300px;
+  top: 60px;
+  padding: 0 16px;
+  overflow: visible;
+  transition: width 0.2s ease-in-out;
 }
 
 .handle-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible;
 }
 
 .options-container {
-    margin-bottom: 16px;
-    margin-top: 16px;
-    display: flex;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  display: flex;
 }
 
 .property-container {
-    overflow-y: scroll;
-    height: calc(100vh - 124px); // 60px (docs-header) + 64px (options-container)
-    padding-right: 24px;
+  overflow-y: scroll;
+  height: calc(100vh - 124px); // 60px (docs-header) + 64px (options-container)
+  padding-right: 24px;
 }
 
 :host(.sidebar-hidden) {
-    width: 0;
-    right: -16px; // width = 0 does not work with border-box and padding
+  width: 0;
+  right: -16px; // width = 0 does not work with border-box and padding
 }
 
 .options-container .filter-input {
-    height: 32px;
-    width: 100%;
-    margin-right: 8px;
-    margin-left: 8px;
+  height: 32px;
+  width: 100%;
+  margin-right: 8px;
+  margin-left: 8px;
 }
 
 .property-container .property-title {
-    margin: 0;
-    font-weight: 600;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .property-container .picker-container {
-    // this is a background pattern for the color picker inputs,
-    // to see the opacity of the selected rgba color.
-    background-image:
-        linear-gradient(90deg, transparent 50%, rgba(230, 230, 230, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%),
-        linear-gradient(0deg, transparent 50%, rgba(230, 230, 230, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%), linear-gradient(#ffffff, #ffffff);
-    background-size: 12px 12px;
-    width: 96px;
-    height: 24px;
+  // this is a background pattern for the color picker inputs,
+  // to see the opacity of the selected rgba color.
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent 50%,
+      rgba(230, 230, 230, 0.5) 50%,
+      rgba(150, 150, 150, 0.5) 50%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 50%,
+      rgba(230, 230, 230, 0.5) 50%,
+      rgba(150, 150, 150, 0.5) 50%
+    ),
+    linear-gradient(#ffffff, #ffffff);
+  background-size: 12px 12px;
+  width: 96px;
+  height: 24px;
 }
 
 .property-container .text-input,
 .property-container .picker {
-    border: none;
-    margin-bottom: 8px;
+  border: none;
+  margin-bottom: 8px;
 }
 
 .property-container .text-input {
-    border-bottom: 1px solid #414141;
-    font-size: 1rem;
-    height: 32px;
+  border-bottom: 1px solid #414141;
+  font-size: 1rem;
+  height: 32px;
 }
 
 .property-container .picker {
-    width: 96px;
-    height: 24px;
+  width: 96px;
+  height: 24px;
 }
 
 .handle {
-    position: absolute;
-    top: 16px;
-    left: -48px;
-    cursor: pointer;
+  position: absolute;
+  top: 16px;
+  left: -48px;
+  cursor: pointer;
 }
 
 .handle__icons-container {
-    display: flex;
+  display: flex;
 
-    nx-icon {
-        font-size: nx-font-size(s);
-    }
+  nx-icon {
+    font-size: nx-font-size(s);
+  }
 
-    nx-icon:last-child {
-        margin-left: -24px;
-    }
+  nx-icon:last-child {
+    margin-left: -24px;
+  }
 }

@@ -7,33 +7,33 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
  * Can contain any content, but usually [nxMenuLink], [nxMenuGroup] and [nxAction].
  */
 @Component({
-    selector: 'nx-menu',
-    templateUrl: 'menu.html',
-    styleUrls: ['menu.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[attr.aria-expanded]': 'open',
-    },
-    imports: [],
+  selector: 'nx-menu',
+  templateUrl: 'menu.html',
+  styleUrls: ['menu.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[attr.aria-expanded]': 'open',
+  },
+  imports: [],
 })
 export class NxMenuComponent {
-    /** Whether the menu is open or closed. */
-    @Input() set open(value: BooleanInput) {
-        const open = coerceBooleanProperty(value);
-        if (open !== this._open) {
-            this._open = open;
-            this._cdr.markForCheck();
-        }
+  /** Whether the menu is open or closed. */
+  @Input() set open(value: BooleanInput) {
+    const open = coerceBooleanProperty(value);
+    if (open !== this._open) {
+      this._open = open;
+      this._cdr.markForCheck();
     }
-    get open(): boolean {
-        return this._open;
-    }
-    private _open = false;
+  }
+  get open(): boolean {
+    return this._open;
+  }
+  private _open = false;
 
-    constructor(private readonly _cdr: ChangeDetectorRef) {}
+  constructor(private readonly _cdr: ChangeDetectorRef) {}
 
-    /* Toggles the open state of the menu. */
-    toggle() {
-        this.open = !this.open;
-    }
+  /* Toggles the open state of the menu. */
+  toggle() {
+    this.open = !this.open;
+  }
 }

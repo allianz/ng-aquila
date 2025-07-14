@@ -7,111 +7,111 @@ import { NxMenuModule } from './menu.module';
 
 @Directive({ standalone: true })
 abstract class MenuTest {
-    open = false;
-    @ViewChild(NxMenuComponent) menuInstance!: NxMenuComponent;
+  open = false;
+  @ViewChild(NxMenuComponent) menuInstance!: NxMenuComponent;
 }
 
 describe(NxMenuComponent.name, () => {
-    let fixture: ComponentFixture<MenuTest>;
-    let testInstance: MenuTest;
-    let menuInstance: NxMenuComponent;
-    let menuNativeElement: HTMLElement;
+  let fixture: ComponentFixture<MenuTest>;
+  let testInstance: MenuTest;
+  let menuInstance: NxMenuComponent;
+  let menuNativeElement: HTMLElement;
 
-    function createTestComponent(component: Type<MenuTest>) {
-        fixture = TestBed.createComponent(component);
-        fixture.detectChanges();
-        testInstance = fixture.componentInstance;
-        menuInstance = testInstance.menuInstance;
-        menuNativeElement = fixture.nativeElement.querySelector('nx-menu') as HTMLElement;
-    }
+  function createTestComponent(component: Type<MenuTest>) {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
+    menuInstance = testInstance.menuInstance;
+    menuNativeElement = fixture.nativeElement.querySelector('nx-menu') as HTMLElement;
+  }
 
-    function getMenuWrapper() {
-        return menuNativeElement.querySelector('.nx-menu__wrapper');
-    }
+  function getMenuWrapper() {
+    return menuNativeElement.querySelector('.nx-menu__wrapper');
+  }
 
-    function expectOpenMenu(open: boolean) {
-        expect(menuInstance.open).toBe(open);
-        expect(!!getMenuWrapper()).toBe(open);
-    }
+  function expectOpenMenu(open: boolean) {
+    expect(menuInstance.open).toBe(open);
+    expect(!!getMenuWrapper()).toBe(open);
+  }
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            imports: [NoopAnimationsModule, NxMenuModule, BasicMenu],
-        }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [NoopAnimationsModule, NxMenuModule, BasicMenu],
+    }).compileComponents();
+  }));
+
+  describe('basic menu', () => {
+    beforeEach(() => {
+      createTestComponent(BasicMenu);
+    });
+
+    it('creates the menu', waitForAsync(() => {
+      expect(menuInstance).toBeTruthy();
     }));
 
-    describe('basic menu', () => {
-        beforeEach(() => {
-            createTestComponent(BasicMenu);
-        });
-
-        it('creates the menu', waitForAsync(() => {
-            expect(menuInstance).toBeTruthy();
-        }));
-
-        it('menu is closed', () => {
-            expectOpenMenu(false);
-        });
-
-        describe('when opened', () => {
-            beforeEach(() => {
-                testInstance.open = true;
-                fixture.detectChanges();
-            });
-
-            it('menu is open', () => {
-                expectOpenMenu(true);
-            });
-
-            it('contains the content', () => {
-                expect(getMenuWrapper()?.textContent?.trim()).toBe('examplecontent');
-            });
-        });
+    it('menu is closed', () => {
+      expectOpenMenu(false);
     });
 
-    describe('programatic tests', () => {
-        beforeEach(() => {
-            createTestComponent(BasicMenu);
-        });
+    describe('when opened', () => {
+      beforeEach(() => {
+        testInstance.open = true;
+        fixture.detectChanges();
+      });
 
-        describe('when opened', () => {
-            beforeEach(() => {
-                menuInstance.open = true;
-                fixture.detectChanges();
-            });
+      it('menu is open', () => {
+        expectOpenMenu(true);
+      });
 
-            it('menu is open', () => {
-                expectOpenMenu(true);
-            });
-        });
+      it('contains the content', () => {
+        expect(getMenuWrapper()?.textContent?.trim()).toBe('examplecontent');
+      });
+    });
+  });
 
-        describe('when toggled', () => {
-            beforeEach(() => {
-                menuInstance.toggle();
-                fixture.detectChanges();
-            });
-
-            it('menu is open', () => {
-                expectOpenMenu(true);
-            });
-        });
+  describe('programatic tests', () => {
+    beforeEach(() => {
+      createTestComponent(BasicMenu);
     });
 
-    describe('a11y', () => {
-        it('has no accessibility violations', async () => {
-            createTestComponent(BasicMenu);
-            await expectAsync(fixture.nativeElement).toBeAccessible();
-        });
+    describe('when opened', () => {
+      beforeEach(() => {
+        menuInstance.open = true;
+        fixture.detectChanges();
+      });
+
+      it('menu is open', () => {
+        expectOpenMenu(true);
+      });
     });
+
+    describe('when toggled', () => {
+      beforeEach(() => {
+        menuInstance.toggle();
+        fixture.detectChanges();
+      });
+
+      it('menu is open', () => {
+        expectOpenMenu(true);
+      });
+    });
+  });
+
+  describe('a11y', () => {
+    it('has no accessibility violations', async () => {
+      createTestComponent(BasicMenu);
+      await expectAsync(fixture.nativeElement).toBeAccessible();
+    });
+  });
 });
 
 @Component({
-    template: `
-        <nx-menu [open]="open">
-            <div nxMenuItem>example</div>
-            <div nxMenuItem>content</div>
-        </nx-menu>
-    `,
-    imports: [NxMenuModule],
+  template: `
+    <nx-menu [open]="open">
+      <div nxMenuItem>example</div>
+      <div nxMenuItem>content</div>
+    </nx-menu>
+  `,
+  imports: [NxMenuModule],
 })
 class BasicMenu extends MenuTest {}

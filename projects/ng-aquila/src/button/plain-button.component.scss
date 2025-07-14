@@ -1,156 +1,156 @@
 @import '../shared-styles/index';
 
 :host {
-    color: v(plain-button-color);
-    display: inline-block;
-    cursor: pointer;
-    user-select: none;
-    width: auto;
-    hyphens: none;
-    vertical-align: middle;
-    background: transparent;
-    border: none;
-    padding: 0;
-    @include type-style(plain-button);
+  color: v(plain-button-color);
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  width: auto;
+  hyphens: none;
+  vertical-align: middle;
+  background: transparent;
+  border: none;
+  padding: 0;
+  @include type-style(plain-button);
 
-    .nx-plain-button__content {
-        text-decoration: v(button-tertiary-text-decoration);
-    }
+  .nx-plain-button__content {
+    text-decoration: v(button-tertiary-text-decoration);
+  }
 
-    // hides the content wrapper if empty for the case when a single nx-icon is projected next to it
-    // that we don't get the flexbox gap
-    .nx-plain-button__content:empty {
-        display: none;
-    }
+  // hides the content wrapper if empty for the case when a single nx-icon is projected next to it
+  // that we don't get the flexbox gap
+  .nx-plain-button__content:empty {
+    display: none;
+  }
 
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 
+  &:hover {
+    color: v(plain-button-hover-color);
+  }
+
+  // reset hover styles for devices that don't support hover
+  @media (hover: none) {
     &:hover {
-        color: v(plain-button-hover-color);
+      color: v(plain-button-color);
     }
+  }
 
-    // reset hover styles for devices that don't support hover
-    @media (hover: none) {
-        &:hover {
-            color: v(plain-button-color);
-        }
-    }
+  &:active,
+  &.nx-button--active {
+    color: v(plain-button-active-color);
+  }
 
-    &:active,
-    &.nx-button--active {
-        color: v(plain-button-active-color);
-    }
+  &[disabled] {
+    color: v(plain-button-disabled-color);
+    cursor: not-allowed;
+  }
 
-    &[disabled] {
-        color: v(plain-button-disabled-color);
-        cursor: not-allowed;
+  // in A1 only the resting state is supposed to have text-decoration
+  &:active:not([disabled]),
+  &:hover:not([disabled]) {
+    .nx-plain-button__content.nx-plain-button__content {
+      text-decoration: none;
     }
+  }
 
-    // in A1 only the resting state is supposed to have text-decoration
-    &:active:not([disabled]),
-    &:hover:not([disabled]) {
-        .nx-plain-button__content.nx-plain-button__content {
-            text-decoration: none;
-        }
-    }
+  .nx-plain-button__content-wrapper,
+  .nx-plain-button__content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: bottom;
+  }
 
-    .nx-plain-button__content-wrapper,
-    .nx-plain-button__content {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        vertical-align: bottom;
-    }
-
-    .nx-plain-button__content-wrapper {
-        gap: v(plain-button-gap);
-    }
+  .nx-plain-button__content-wrapper {
+    gap: v(plain-button-gap);
+  }
 }
 
 :host(.nx-plain-button) {
-    ::ng-deep nx-icon {
-        font-size: v(plain-button-icon-size);
-    }
+  ::ng-deep nx-icon {
+    font-size: v(plain-button-icon-size);
+  }
 }
 
 :host.nx-plain-button--small {
-    @include type-style(plain-button-small);
+  @include type-style(plain-button-small);
 
-    ::ng-deep nx-icon {
-        font-size: v(plain-button-small-icon-size);
-    }
+  ::ng-deep nx-icon {
+    font-size: v(plain-button-small-icon-size);
+  }
 }
 
 :host.nx-plain-button--secondary {
-    color: v(plain-button-secondary-color);
+  color: v(plain-button-secondary-color);
 
+  &:hover {
+    color: v(plain-button-secondary-hover-color);
+  }
+
+  // reset hover styles for devices that don't support hover
+  @media (hover: none) {
     &:hover {
-        color: v(plain-button-secondary-hover-color);
+      color: v(plain-button-secondary-color);
     }
+  }
 
-    // reset hover styles for devices that don't support hover
-    @media (hover: none) {
-        &:hover {
-            color: v(plain-button-secondary-color);
-        }
-    }
+  &:active,
+  &.nx-button--active {
+    color: v(plain-button-secondary-active-color);
+  }
 
-    &:active,
-    &.nx-button--active {
-        color: v(plain-button-secondary-active-color);
-    }
-
-    &[disabled] {
-        color: v(plain-button-secondary-disabled-color);
-        cursor: not-allowed;
-    }
+  &[disabled] {
+    color: v(plain-button-secondary-disabled-color);
+    cursor: not-allowed;
+  }
 }
 
 :host.nx-plain-button--danger {
-    color: v(plain-button-danger-color);
+  color: v(plain-button-danger-color);
 
+  &:hover {
+    color: v(plain-button-danger-hover-color);
+  }
+
+  // reset hover styles for devices that don't support hover
+  @media (hover: none) {
     &:hover {
-        color: v(plain-button-danger-hover-color);
+      color: v(plain-button-danger-color);
     }
+  }
 
-    // reset hover styles for devices that don't support hover
-    @media (hover: none) {
-        &:hover {
-            color: v(plain-button-danger-color);
-        }
-    }
+  &:active,
+  &.nx-button--active {
+    color: v(plain-button-danger-active-color);
+  }
 
-    &:active,
-    &.nx-button--active {
-        color: v(plain-button-danger-active-color);
-    }
-
-    &[disabled] {
-        color: v(plain-button-danger-disabled-color);
-    }
+  &[disabled] {
+    color: v(plain-button-danger-disabled-color);
+  }
 }
 
 // focus styling
 :host.cdk-keyboard-focused {
-    border-radius: nx-border-radius(s);
-    outline: 0;
-    @include focus-style;
+  border-radius: nx-border-radius(s);
+  outline: 0;
+  @include focus-style;
 }
 
 :host(a) {
-    height: fit-content;
-    text-align: center;
-    text-decoration: none;
+  height: fit-content;
+  text-align: center;
+  text-decoration: none;
 }
 
 @media screen and (forced-colors: active) {
-    :host {
-        color: buttonText !important;
-    }
+  :host {
+    color: buttonText !important;
+  }
 
-    :host[disabled] {
-        color: GrayText !important;
-    }
+  :host[disabled] {
+    color: GrayText !important;
+  }
 }

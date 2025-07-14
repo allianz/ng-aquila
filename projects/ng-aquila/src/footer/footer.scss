@@ -1,77 +1,79 @@
 @import '../shared-styles/index';
 
 :host(.nx-footer) {
-    @include type-style(footer);
-    color: v(footer-color);
-    display: flex;
-    flex-direction: row;
-    background: transparent;
-    padding: v(footer-padding-top) $grid-gutter-width-base v(footer-padding-bottom) $grid-gutter-width-base;
+  @include type-style(footer);
+  color: v(footer-color);
+  display: flex;
+  flex-direction: row;
+  background: transparent;
+  padding: v(footer-padding-top) $grid-gutter-width-base v(footer-padding-bottom)
+    $grid-gutter-width-base;
 
-    @include media-breakpoint-response(mobile) {
-        flex-direction: column-reverse;
-        padding: v(footer-mobile-padding-top) $grid-gutter-width-mobile v(footer-mobile-padding-bottom) $grid-gutter-width-mobile;
-    }
+  @include media-breakpoint-response(mobile) {
+    flex-direction: column-reverse;
+    padding: v(footer-mobile-padding-top) $grid-gutter-width-mobile v(footer-mobile-padding-bottom)
+      $grid-gutter-width-mobile;
+  }
 }
 
 ::ng-deep a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 ::ng-deep .nx-footer__copyright {
-    font-weight: v(footer-copyright-font-weight);
-    align-self: flex-end;
-    font-size: inherit;
-    line-height: inherit;
-    color: inherit;
+  font-weight: v(footer-copyright-font-weight);
+  align-self: flex-end;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
 
-    @include media-breakpoint-response(mobile) {
-        align-self: center;
-        text-align: center;
-    }
+  @include media-breakpoint-response(mobile) {
+    align-self: center;
+    text-align: center;
+  }
 }
 
 ::ng-deep .nx-footer__navigation {
-    display: flex;
-    align-self: flex-end;
+  display: flex;
+  align-self: flex-end;
 
+  @include media-breakpoint-response(mobile) {
+    text-align: center;
+    align-self: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  & .nx-footer__link {
     @include media-breakpoint-response(mobile) {
-        text-align: center;
-        align-self: center;
-        flex-direction: column;
-        align-items: center;
-    }
+      padding-left: 0;
+      padding-bottom: nx-spacer(s);
 
-    & .nx-footer__link {
-        @include media-breakpoint-response(mobile) {
-            padding-left: 0;
-            padding-bottom: nx-spacer(s);
-
-            :host-context([dir='rtl']) & {
-                padding-right: 0;
-            }
-        }
+      :host-context([dir='rtl']) & {
+        padding-right: 0;
+      }
     }
+  }
 }
 
 ::ng-deep .nx-footer__link {
-    font-size: inherit;
-    color: inherit;
-    line-height: inherit;
-    padding-left: nx-spacer(2m);
+  font-size: inherit;
+  color: inherit;
+  line-height: inherit;
+  padding-left: nx-spacer(2m);
 
-    :host-context([dir='rtl']) & {
-        padding-right: nx-spacer(2m);
-        padding-left: initial;
-    }
+  :host-context([dir='rtl']) & {
+    padding-right: nx-spacer(2m);
+    padding-left: initial;
+  }
 
-    a {
-        display: flex; // get icons aligned with text
-        align-items: flex-start; // align with the top
-    }
+  a {
+    display: flex; // get icons aligned with text
+    align-items: flex-start; // align with the top
+  }
 
-    &.cdk-keyboard-focused a {
-        border-radius: nx-border-radius(s);
-        @include focus-style;
-    }
+  &.cdk-keyboard-focused a {
+    border-radius: nx-border-radius(s);
+    @include focus-style;
+  }
 }

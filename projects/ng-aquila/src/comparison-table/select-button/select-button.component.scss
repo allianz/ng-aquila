@@ -1,26 +1,26 @@
 @import '../../shared-styles/index';
 
 :host {
-    .nx-comparison-table__select-button-icon ::ng-deep {
-        background: v(button-primary-text-color);
-        color: v(button-primary-background-color);
-        width: 16px;
-        height: 16px;
+  .nx-comparison-table__select-button-icon ::ng-deep {
+    background: v(button-primary-text-color);
+    color: v(button-primary-background-color);
+    width: 16px;
+    height: 16px;
 
-        vertical-align: bottom;
+    vertical-align: bottom;
 
-        [dir='ltr'] & {
-            margin-right: 4px;
-        }
-
-        [dir='rtl'] & {
-            margin-left: 4px;
-        }
-
-        @media screen and (forced-colors: active) {
-            background: buttonFace;
-            border: 1px solid buttonText;
-            border-radius: 50%;
-        }
+    [dir='ltr'] & {
+      margin-right: 4px;
     }
+
+    [dir='rtl'] & {
+      margin-left: 4px;
+    }
+
+    @media screen and (forced-colors: active) {
+      background: buttonFace;
+      border: 1px solid buttonText;
+      border-radius: 50%;
+    }
+  }
 }

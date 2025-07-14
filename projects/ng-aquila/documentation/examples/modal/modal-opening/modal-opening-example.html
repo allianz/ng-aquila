@@ -1,25 +1,25 @@
 <button nxButton class="nx-margin-right-xs" (click)="openFromTemplate()">
-    open from template
+  open from template
 </button>
 <button nxButton (click)="openFromComponent()">open from component</button>
 
 <ng-template #template>
-    <div class="centered-content">
-        <h3 nxHeadline="subsection-medium" class="nx-modal-margin-bottom">
-            Modal from a template
-        </h3>
-        <p nxCopytext="small" class="nx-modal-margin-bottom">
-            This content is placed within the <code>nx-modal-container</code>
-        </p>
-        <div class="two-button-container">
-            <button
-                nxButton="secondary"
-                (click)="closeTemplateDialog()"
-                class="nx-margin-right-s"
-            >
-                Cancel
-            </button>
-            <button nxButton (click)="closeTemplateDialog()">Proceed</button>
-        </div>
+  <div class="centered-content">
+    <h3 nxHeadline="subsection-medium" class="nx-modal-margin-bottom">
+      Modal from a template
+    </h3>
+    <p nxCopytext="small" class="nx-modal-margin-bottom">
+      This content is placed within the <code>nx-modal-container</code>
+    </p>
+    <div class="two-button-container">
+      <button
+        nxButton="secondary"
+        (click)="closeTemplateDialog()"
+        class="nx-margin-right-s"
+      >
+        Cancel
+      </button>
+      <button nxButton (click)="closeTemplateDialog()">Proceed</button>
     </div>
+  </div>
 </ng-template>

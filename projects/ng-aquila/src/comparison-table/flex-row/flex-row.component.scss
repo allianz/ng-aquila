@@ -1,16 +1,16 @@
 :host {
-    display: block;
+  display: block;
 
-    &.is-sticky-row {
-        position: sticky;
-        top: 0;
+  &.is-sticky-row {
+    position: sticky;
+    top: 0;
 
-        // z-index needed because otherwise the toggle section icon
-        // would be on top of sticky header row
-        z-index: 1;
-    }
+    // z-index needed because otherwise the toggle section icon
+    // would be on top of sticky header row
+    z-index: 1;
+  }
 }
 
 .is-hidden {
-    display: none;
+  display: none;
 }

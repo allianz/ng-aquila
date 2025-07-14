@@ -1,6 +1,6 @@
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableComponent } from './comparison-table.component';
@@ -16,35 +16,35 @@ import { NxToggleSectionDirective } from './toggle-section/toggle-section.direct
 import { NxToggleSectionHeaderComponent } from './toggle-section/toggle-section-header.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        NxIconModule,
-        NxComparisonTableComponent,
-        NxComparisonTableCell,
-        NxComparisonTableDescriptionCell,
-        NxComparisonTableIntersectionCell,
-        NxToggleSectionDirective,
-        NxToggleSectionHeaderComponent,
-        NxComparisonTableRowDirective,
-        NxComparisonTableSelectButton,
-        NxComparisonTableFlexRow,
-        NxComparisonTableRowGroupDirective,
-        NxComparisonTableDesktopGroup,
-        NxComparisonTablePopularCell,
-    ],
-    exports: [
-        NxComparisonTableComponent,
-        NxComparisonTableCell,
-        NxComparisonTableDescriptionCell,
-        NxComparisonTableIntersectionCell,
-        NxToggleSectionDirective,
-        NxToggleSectionHeaderComponent,
-        NxComparisonTableRowDirective,
-        NxComparisonTableSelectButton,
-        NxComparisonTableFlexRow,
-        NxComparisonTableRowGroupDirective,
-        NxComparisonTableDesktopGroup,
-        NxComparisonTablePopularCell,
-    ],
+  imports: [
+    CommonModule,
+    NxIconModule,
+    NxComparisonTableComponent,
+    NxComparisonTableCell,
+    NxComparisonTableDescriptionCell,
+    NxComparisonTableIntersectionCell,
+    NxToggleSectionDirective,
+    NxToggleSectionHeaderComponent,
+    NxComparisonTableRowDirective,
+    NxComparisonTableSelectButton,
+    NxComparisonTableFlexRow,
+    NxComparisonTableRowGroupDirective,
+    NxComparisonTableDesktopGroup,
+    NxComparisonTablePopularCell,
+  ],
+  exports: [
+    NxComparisonTableComponent,
+    NxComparisonTableCell,
+    NxComparisonTableDescriptionCell,
+    NxComparisonTableIntersectionCell,
+    NxToggleSectionDirective,
+    NxToggleSectionHeaderComponent,
+    NxComparisonTableRowDirective,
+    NxComparisonTableSelectButton,
+    NxComparisonTableFlexRow,
+    NxComparisonTableRowGroupDirective,
+    NxComparisonTableDesktopGroup,
+    NxComparisonTablePopularCell,
+  ],
 })
 export class NxComparisonTableModule {}

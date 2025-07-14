@@ -4,25 +4,25 @@ import { Directive, ElementRef, Input } from '@angular/core';
 
 /** @docs-private */
 @Directive({
-    selector: '[nxTabLabelWrapper]',
-    standalone: true,
+  selector: '[nxTabLabelWrapper]',
+  standalone: true,
 })
 export class NxTabLabelWrapperDirective implements FocusableOption {
-    /** Whether the tab group is disabled. Default: false. */
-    @Input() set disabled(value: BooleanInput) {
-        const newValue = coerceBooleanProperty(value);
-        if (this.disabled !== newValue) {
-            this._disabled = newValue;
-        }
+  /** Whether the tab group is disabled. Default: false. */
+  @Input() set disabled(value: BooleanInput) {
+    const newValue = coerceBooleanProperty(value);
+    if (this.disabled !== newValue) {
+      this._disabled = newValue;
     }
-    get disabled(): boolean {
-        return this._disabled;
-    }
-    private _disabled = false;
+  }
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  private _disabled = false;
 
-    constructor(readonly elementRef: ElementRef) {}
+  constructor(readonly elementRef: ElementRef) {}
 
-    focus(): void {
-        this.elementRef.nativeElement.focus();
-    }
+  focus(): void {
+    this.elementRef.nativeElement.focus();
+  }
 }

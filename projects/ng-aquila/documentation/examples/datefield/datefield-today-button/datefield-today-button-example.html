@@ -1,16 +1,16 @@
 <nx-formfield label="Birthday">
-    <input
-        nxDatefield
-        nxInput
-        [datepicker]="myDatepicker"
-        [(ngModel)]="currentDate"
-    />
-    <span nxFormfieldHint>MM/DD/YYYY</span>
-    <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+  <input
+    nxDatefield
+    nxInput
+    [datepicker]="myDatepicker"
+    [(ngModel)]="currentDate"
+  />
+  <span nxFormfieldHint>MM/DD/YYYY</span>
+  <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
 
-    <nx-datepicker-toggle
-        [for]="myDatepicker"
-        nxFormfieldSuffix
-    ></nx-datepicker-toggle>
-    <nx-datepicker [showTodayButton]="true" #myDatepicker></nx-datepicker>
+  <nx-datepicker-toggle
+    [for]="myDatepicker"
+    nxFormfieldSuffix
+  ></nx-datepicker-toggle>
+  <nx-datepicker [showTodayButton]="true" #myDatepicker></nx-datepicker>
 </nx-formfield>

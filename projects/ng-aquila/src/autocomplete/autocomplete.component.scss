@@ -3,40 +3,40 @@
 $max-height: 280px;
 
 :host ::ng-deep {
-    .c-input::-ms-clear {
-        width: 0;
-        height: 0;
-    }
+  .c-input::-ms-clear {
+    width: 0;
+    height: 0;
+  }
 }
 
 .nx-autocomplete-panel {
-    // the autocomplete should have the same look as the dropdown, so using the dropdown token here
-    background-color: v(dropdown-panel-background-color);
-    box-shadow: v(shadow-small);
-    overflow-y: auto;
-    overflow-x: hidden;
-    max-height: $max-height;
-    width: 100%;
-    border-radius: nx-border-radius(s);
+  // the autocomplete should have the same look as the dropdown, so using the dropdown token here
+  background-color: v(dropdown-panel-background-color);
+  box-shadow: v(shadow-small);
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: $max-height;
+  width: 100%;
+  border-radius: nx-border-radius(s);
 
-    &.nx-autocomplete-visible {
-        visibility: visible;
-    }
+  &.nx-autocomplete-visible {
+    visibility: visible;
+  }
 
-    &.nx-autocomplete-hidden {
-        visibility: hidden;
-    }
+  &.nx-autocomplete-hidden {
+    visibility: hidden;
+  }
 
-    &--in-outline-field {
-        ::ng-deep nx-autocomplete-option {
-            .nx-autocomplete-option,
-            .nx-autocomplete-option__label {
-                @include dropdown-overlay__option--outline;
-            }
-        }
+  &--in-outline-field {
+    ::ng-deep nx-autocomplete-option {
+      .nx-autocomplete-option,
+      .nx-autocomplete-option__label {
+        @include dropdown-overlay__option--outline;
+      }
     }
+  }
 
-    @media screen and (forced-colors: active) {
-        box-shadow: 0 0 0 nx-border-size(xs) CanvasText;
-    }
+  @media screen and (forced-colors: active) {
+    box-shadow: 0 0 0 nx-border-size(xs) CanvasText;
+  }
 }

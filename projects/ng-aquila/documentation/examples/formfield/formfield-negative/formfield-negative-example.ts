@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
 import {
-    NxFormfieldComponent,
-    NxFormfieldHintDirective,
-} from '@aposin/ng-aquila/formfield';
-import { NxInputDirective } from '@aposin/ng-aquila/input';
+  NxFormfieldComponent,
+  NxFormfieldHintDirective,
+} from '@allianz/ng-aquila/formfield';
+import { NxInputDirective } from '@allianz/ng-aquila/input';
+import { Component } from '@angular/core';
 
 /**
  * @title Negative styling example
  */
 @Component({
-    selector: 'formfield-negative-example',
-    templateUrl: './formfield-negative-example.html',
-    styleUrls: ['./formfield-negative-example.css'],
-    imports: [NxFormfieldComponent, NxInputDirective, NxFormfieldHintDirective],
+  selector: 'formfield-negative-example',
+  templateUrl: './formfield-negative-example.html',
+  styleUrls: ['./formfield-negative-example.css'],
+  imports: [NxFormfieldComponent, NxInputDirective, NxFormfieldHintDirective],
 })
 export class FormfieldNegativeExampleComponent {}

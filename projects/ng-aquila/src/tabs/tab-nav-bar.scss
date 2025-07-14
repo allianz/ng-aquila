@@ -1,227 +1,227 @@
 @import '../shared-styles/index';
 
 :host {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 
-    &.is-expert {
-        justify-content: flex-start;
-        border-bottom-width: nx-border-size(xs);
-        border-bottom-style: solid;
-        border-bottom-color: v(tab-expert-bottom-border-color);
-
-        .nx-tab-nav-bar {
-            width: 100%;
-        }
-    }
+  &.is-expert {
+    justify-content: flex-start;
+    border-bottom-width: nx-border-size(xs);
+    border-bottom-style: solid;
+    border-bottom-color: v(tab-expert-bottom-border-color);
 
     .nx-tab-nav-bar {
-        display: flex;
-        position: relative;
-        overflow-x: scroll;
-        outline: none;
-        -ms-overflow-style: none; // hide scrollbar on IE
-        scrollbar-width: none; // hide scrollbar on firefox
-
-        // hide scrollbar on chrome, edge, safari
-        &::-webkit-scrollbar {
-            display: none;
-        }
+      width: 100%;
     }
+  }
 
-    &.at-start {
-        .nx-tab-nav-bar {
-            margin-left: -8px;
-            padding-left: 8px;
+  .nx-tab-nav-bar {
+    display: flex;
+    position: relative;
+    overflow-x: scroll;
+    outline: none;
+    -ms-overflow-style: none; // hide scrollbar on IE
+    scrollbar-width: none; // hide scrollbar on firefox
 
-            [dir='rtl'] & {
-                margin-left: 0;
-                padding-left: 0;
-                margin-right: -8px;
-                padding-right: 8px;
-            }
-        }
+    // hide scrollbar on chrome, edge, safari
+    &::-webkit-scrollbar {
+      display: none;
     }
+  }
 
-    &:not(.scrollable) {
-        .nx-tab-nav-bar {
-            margin-right: -8px;
-            padding-right: 8px;
+  &.at-start {
+    .nx-tab-nav-bar {
+      margin-left: -8px;
+      padding-left: 8px;
 
-            [dir='rtl'] & {
-                margin-right: 0;
-                padding-right: 0;
-                margin-left: -8px;
-                padding-left: 8px;
-            }
-        }
+      [dir='rtl'] & {
+        margin-left: 0;
+        padding-left: 0;
+        margin-right: -8px;
+        padding-right: 8px;
+      }
     }
+  }
+
+  &:not(.scrollable) {
+    .nx-tab-nav-bar {
+      margin-right: -8px;
+      padding-right: 8px;
+
+      [dir='rtl'] & {
+        margin-right: 0;
+        padding-right: 0;
+        margin-left: -8px;
+        padding-left: 8px;
+      }
+    }
+  }
 }
 
 :host ::ng-deep a.nx-tab-link {
-    @include tab__item;
-    white-space: nowrap;
+  @include tab__item;
+  white-space: nowrap;
 }
 
 :host ::ng-deep a.nx-tab-link.is-active {
-    @include tab__item--active;
+  @include tab__item--active;
 }
 
 :host:not(.is-expert) ::ng-deep {
-    a.nx-tab-link:not(.is-active)::before {
-        content: '';
-        position: absolute;
-        width: calc(100% + 64px);
-        height: 1px;
-        background-color: v(tab-item-border-color);
-        bottom: 0;
-        left: -32px;
+  a.nx-tab-link:not(.is-active)::before {
+    content: '';
+    position: absolute;
+    width: calc(100% + 64px);
+    height: 1px;
+    background-color: v(tab-item-border-color);
+    bottom: 0;
+    left: -32px;
+  }
+
+  a.nx-tab-link:first-child::before {
+    left: 0px;
+    width: calc(100% + 32px);
+
+    [dir='rtl'] & {
+      left: initial;
+      right: 0;
     }
+  }
 
-    a.nx-tab-link:first-child::before {
-        left: 0px;
-        width: calc(100% + 32px);
+  a.nx-tab-link:last-child::before {
+    width: calc(100% + 32px);
 
-        [dir='rtl'] & {
-            left: initial;
-            right: 0;
-        }
+    [dir='rtl'] & {
+      left: initial;
+      right: -32px;
     }
-
-    a.nx-tab-link:last-child::before {
-        width: calc(100% + 32px);
-
-        [dir='rtl'] & {
-            left: initial;
-            right: -32px;
-        }
-    }
+  }
 }
 
 :host ::ng-deep {
-    a.nx-tab-link:first-child {
-        margin-left: 0;
+  a.nx-tab-link:first-child {
+    margin-left: 0;
 
-        [dir='rtl'] & {
-            margin-right: 0;
-            margin-left: nx-spacer(s);
-        }
+    [dir='rtl'] & {
+      margin-right: 0;
+      margin-left: nx-spacer(s);
     }
+  }
 
-    a.nx-tab-link:last-child {
-        margin-right: 0;
+  a.nx-tab-link:last-child {
+    margin-right: 0;
 
-        [dir='rtl'] & {
-            margin-right: nx-spacer(s);
-            margin-left: 0;
-        }
+    [dir='rtl'] & {
+      margin-right: nx-spacer(s);
+      margin-left: 0;
     }
+  }
 }
 
 :host.is-expert ::ng-deep {
-    a.nx-tab-link {
-        padding: 4px 0;
-    }
+  a.nx-tab-link {
+    padding: 4px 0;
+  }
 
-    a.nx-tab-link.is-disabled:not(.is-active) {
-        border-bottom-color: transparent;
-        color: v(tab-expert-item-disabled-color);
-    }
+  a.nx-tab-link.is-disabled:not(.is-active) {
+    border-bottom-color: transparent;
+    color: v(tab-expert-item-disabled-color);
+  }
 }
 
 :host.is-expert:not(.is-negative) ::ng-deep {
-    a.nx-tab-link:not(.is-disabled):not(.is-active) {
-        color: v(tab-expert-color);
+  a.nx-tab-link:not(.is-disabled):not(.is-active) {
+    color: v(tab-expert-color);
 
-        @media screen and (forced-colors: active) {
-            color: buttonText;
-        }
+    @media screen and (forced-colors: active) {
+      color: buttonText;
     }
+  }
 
-    a.nx-tab-link.is-active {
-        border-color: v(tab-item-active-border-color);
-    }
+  a.nx-tab-link.is-active {
+    border-color: v(tab-item-active-border-color);
+  }
 }
 
 :host(.is-negative) {
+  color: v(negative);
+
+  ::ng-deep a.nx-tab-link {
     color: v(negative);
+    border-bottom-color: v(negative);
+  }
 
-    ::ng-deep a.nx-tab-link {
-        color: v(negative);
-        border-bottom-color: v(negative);
-    }
+  ::ng-deep a.nx-tab-link.is-disabled {
+    color: v(tab-item-disabled-negative-color);
+    border-color: v(tab-item-disabled-negative-color);
+  }
 
-    ::ng-deep a.nx-tab-link.is-disabled {
-        color: v(tab-item-disabled-negative-color);
-        border-color: v(tab-item-disabled-negative-color);
+  @media screen and (forced-colors: active) {
+    ::ng-deep a.nx-tab-link.is-active {
+      background-color: highlight;
+      color: highlightText;
+      border-color: windowFrame;
+      forced-color-adjust: none;
     }
-
-    @media screen and (forced-colors: active) {
-        ::ng-deep a.nx-tab-link.is-active {
-            background-color: highlight;
-            color: highlightText;
-            border-color: windowFrame;
-            forced-color-adjust: none;
-        }
-    }
+  }
 }
 
 :host.is-expert.is-negative {
-    ::ng-deep a.nx-tab-link:not(.is-active) {
-        border-bottom-color: transparent;
-    }
+  ::ng-deep a.nx-tab-link:not(.is-active) {
+    border-bottom-color: transparent;
+  }
 }
 
 :host ::ng-deep a.nx-tab-link.is-disabled {
-    @include tab__item--disabled;
+  @include tab__item--disabled;
 }
 
 :host(.is-disabled) {
-    cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 :host(.is-disabled.is-negative) {
-    ::ng-deep a.nx-tab-link {
-        color: v(tab-item-disabled-negative-color);
-        border-color: v(tab-item-disabled-negative-color);
-    }
+  ::ng-deep a.nx-tab-link {
+    color: v(tab-item-disabled-negative-color);
+    border-color: v(tab-item-disabled-negative-color);
+  }
 }
 
 // Focus Styles
 // not:(.is-disabled) is needed because if you click on a disabled link and then press an arrow key the disabled tab gets focused.
 :host ::ng-deep .nx-tab-link:not(.is-disabled).cdk-keyboard-focused {
-    &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        height: v(tab-item-line-height);
-        width: 100%;
-        top: 4px;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: v(tab-item-line-height);
+    width: 100%;
+    top: 4px;
 
-        @include focus-style;
-        border-radius: nx-border-radius(s);
-    }
+    @include focus-style;
+    border-radius: nx-border-radius(s);
+  }
 }
 
 @media screen and (forced-colors: active) {
-    :host(.is-negative) {
-        color: buttonText;
+  :host(.is-negative) {
+    color: buttonText;
 
-        ::ng-deep a.nx-tab-link {
-            color: buttonText;
-            border-bottom-color: buttonText;
-        }
-
-        ::ng-deep a.nx-tab-link.is-active {
-            background-color: highlight;
-            color: highlight;
-            border-color: highlight;
-        }
-
-        ::ng-deep a.nx-tab-link.is-disabled {
-            color: GrayText;
-            border-bottom-color: GrayText;
-        }
+    ::ng-deep a.nx-tab-link {
+      color: buttonText;
+      border-bottom-color: buttonText;
     }
+
+    ::ng-deep a.nx-tab-link.is-active {
+      background-color: highlight;
+      color: highlight;
+      border-color: highlight;
+    }
+
+    ::ng-deep a.nx-tab-link.is-disabled {
+      color: GrayText;
+      border-bottom-color: GrayText;
+    }
+  }
 }

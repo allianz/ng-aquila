@@ -1,41 +1,41 @@
 <p>
-    <button
-        nxIconButton="tertiary small"
-        [nxPopoverTriggerFor]="popoverClick"
-        nxPopoverTrigger="click"
-        type="button"
-        #clickTriggerIcon
-        aria-label="trigger by click"
-        class="nx-popover__button nx-margin-right-3xs"
-    >
-        <nx-icon name="info-circle-o" size="s" aria-hidden="true"> </nx-icon>
-    </button>
-    Triggered by click
+  <button
+    nxIconButton="tertiary small"
+    [nxPopoverTriggerFor]="popoverClick"
+    nxPopoverTrigger="click"
+    type="button"
+    #clickTriggerIcon
+    aria-label="trigger by click"
+    class="nx-popover__button nx-margin-right-3xs"
+  >
+    <nx-icon name="info-circle-o" size="s" aria-hidden="true"> </nx-icon>
+  </button>
+  Triggered by click
 </p>
 <nx-popover #popoverClick>
-    <span class="nx-popover__text">Trigger by click</span>
+  <span class="nx-popover__text">Trigger by click</span>
 </nx-popover>
 
 <p>
-    <button
-        nxIconButton="tertiary small"
-        type="button"
-        #manualTriggerIcon
-        #popoverTrigger="nxPopoverTrigger"
-        [nxPopoverTriggerFor]="popoverManual"
-        [(nxPopoverShow)]="popoverManualOpenFlag"
-        nxPopoverDirection="top"
-        (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
-        (keydown)="handleKeydown($event)"
-        nxPopoverTrigger="manual"
-        aria-label="trigger manually"
-        class="nx-popover__button nx-margin-right-3xs"
-    >
-        <nx-icon name="info-circle-o" size="s" aria-hidden="true"> </nx-icon>
-    </button>
-    Triggered manually
+  <button
+    nxIconButton="tertiary small"
+    type="button"
+    #manualTriggerIcon
+    #popoverTrigger="nxPopoverTrigger"
+    [nxPopoverTriggerFor]="popoverManual"
+    [(nxPopoverShow)]="popoverManualOpenFlag"
+    nxPopoverDirection="top"
+    (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
+    (keydown)="handleKeydown($event)"
+    nxPopoverTrigger="manual"
+    aria-label="trigger manually"
+    class="nx-popover__button nx-margin-right-3xs"
+  >
+    <nx-icon name="info-circle-o" size="s" aria-hidden="true"> </nx-icon>
+  </button>
+  Triggered manually
 </p>
 
 <nx-popover #popoverManual>
-    <span>Trigger manually</span>
+  <span>Trigger manually</span>
 </nx-popover>

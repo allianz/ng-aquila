@@ -1,13 +1,20 @@
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxPopoverModule } from '@allianz/ng-aquila/popover';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 import { NxNaturalLanguageFormComponent } from './natural-language-form.component';
 import { NxWordComponent } from './word.component';
 
 @NgModule({
-    imports: [CommonModule, NxInputModule, NxPopoverModule, NxNaturalLanguageFormComponent, NxWordComponent, NxWordComponent],
-    exports: [NxNaturalLanguageFormComponent, NxWordComponent],
+  imports: [
+    CommonModule,
+    NxInputModule,
+    NxPopoverModule,
+    NxNaturalLanguageFormComponent,
+    NxWordComponent,
+    NxWordComponent,
+  ],
+  exports: [NxNaturalLanguageFormComponent, NxWordComponent],
 })
 export class NxNaturalLanguageFormModule {}

@@ -9,64 +9,64 @@ import { NxSidepanelCloseButtonComponent } from './sidepanel-close-button';
 
 @Directive({ standalone: true })
 abstract class SidepanelCloseButtonTest {
-    @ViewChild(NxSidepanelComponent) sidebarInstance!: NxSidepanelComponent;
-    @ViewChild(NxSidepanelCloseButtonComponent) buttonInstance!: NxSidepanelCloseButtonComponent;
+  @ViewChild(NxSidepanelComponent) sidebarInstance!: NxSidepanelComponent;
+  @ViewChild(NxSidepanelCloseButtonComponent) buttonInstance!: NxSidepanelCloseButtonComponent;
 }
 
 describe('NxSidepanelCloseButtonComponent', () => {
-    let fixture: ComponentFixture<SidepanelCloseButtonTest>;
-    let testInstance: SidepanelCloseButtonTest;
-    let sidepanelInstance: NxSidepanelComponent;
-    let sidepanelElement: DebugElement;
-    let buttonElement: HTMLButtonElement;
+  let fixture: ComponentFixture<SidepanelCloseButtonTest>;
+  let testInstance: SidepanelCloseButtonTest;
+  let sidepanelInstance: NxSidepanelComponent;
+  let sidepanelElement: DebugElement;
+  let buttonElement: HTMLButtonElement;
 
-    function createTestComponent(component: Type<SidepanelCloseButtonTest>) {
-        fixture = TestBed.createComponent(component);
-        fixture.detectChanges();
-        testInstance = fixture.componentInstance;
-        sidepanelInstance = testInstance.sidebarInstance;
-        sidepanelElement = fixture.debugElement.query(By.css('nx-sidepanel'));
-        buttonElement = fixture.nativeElement.querySelector('button') as HTMLButtonElement;
-    }
+  function createTestComponent(component: Type<SidepanelCloseButtonTest>) {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
+    sidepanelInstance = testInstance.sidebarInstance;
+    sidepanelElement = fixture.debugElement.query(By.css('nx-sidepanel'));
+    buttonElement = fixture.nativeElement.querySelector('button') as HTMLButtonElement;
+  }
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            imports: [BrowserAnimationsModule, NxSidepanelModule, BasicSidepanel],
-        }).compileComponents();
-    }));
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [BrowserAnimationsModule, NxSidepanelModule, BasicSidepanel],
+    }).compileComponents();
+  }));
 
-    describe('basic', () => {
-        beforeEach(() => {
-            createTestComponent(BasicSidepanel);
-        });
-
-        it('creates the sidepanel', () => {
-            expect(sidepanelInstance).toBeTruthy();
-        });
-
-        it('closes the panel on button click', () => {
-            buttonElement.click();
-            fixture.detectChanges();
-            expect(sidepanelInstance.opened).toBeFalse();
-            expect(sidepanelElement.nativeElement).toHaveClass('is-closed');
-        });
+  describe('basic', () => {
+    beforeEach(() => {
+      createTestComponent(BasicSidepanel);
     });
 
-    describe('a11y', () => {
-        it('has no accessibility violations', async () => {
-            createTestComponent(BasicSidepanel);
-            await expectAsync(fixture.nativeElement).toBeAccessible();
-        });
+    it('creates the sidepanel', () => {
+      expect(sidepanelInstance).toBeTruthy();
     });
+
+    it('closes the panel on button click', () => {
+      buttonElement.click();
+      fixture.detectChanges();
+      expect(sidepanelInstance.opened).toBeFalse();
+      expect(sidepanelElement.nativeElement).toHaveClass('is-closed');
+    });
+  });
+
+  describe('a11y', () => {
+    it('has no accessibility violations', async () => {
+      createTestComponent(BasicSidepanel);
+      await expectAsync(fixture.nativeElement).toBeAccessible();
+    });
+  });
 });
 
 @Component({
-    template: `
-        <nx-sidepanel>
-            Hello Sidepanel
-            <button nxSidepanelCloseButton aria-label="Close Sidepanel"></button>
-        </nx-sidepanel>
-    `,
-    imports: [NxSidepanelModule],
+  template: `
+    <nx-sidepanel>
+      Hello Sidepanel
+      <button nxSidepanelCloseButton aria-label="Close Sidepanel"></button>
+    </nx-sidepanel>
+  `,
+  imports: [NxSidepanelModule],
 })
 class BasicSidepanel extends SidepanelCloseButtonTest {}

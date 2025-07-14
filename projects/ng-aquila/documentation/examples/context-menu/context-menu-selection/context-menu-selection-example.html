@@ -1,33 +1,33 @@
 <nx-context-menu #menu2="nxContextMenu">
-    <nx-context-menu-header> Language </nx-context-menu-header>
-    @for (o of options; track o) {
-    <button
-        nxContextMenuItem
-        selectable
-        type="button"
-        (click)="selectedLanguage = o.value"
-        role="menuitemradio"
-        [attr.aria-checked]="selectedLanguage === o.value ? 'true' : 'false'"
-    >
-        @if (selectedLanguage === o.value) {
-        <nx-icon aria-hidden="true" name="check" nxIconPositionStart></nx-icon>
-        } {{o.label}}
-    </button>
-    }
+  <nx-context-menu-header> Language </nx-context-menu-header>
+  @for (o of options; track o) {
+  <button
+    nxContextMenuItem
+    selectable
+    type="button"
+    (click)="selectedLanguage = o.value"
+    role="menuitemradio"
+    [attr.aria-checked]="selectedLanguage === o.value ? 'true' : 'false'"
+  >
+    @if (selectedLanguage === o.value) {
+    <nx-icon aria-hidden="true" name="check" nxIconPositionStart></nx-icon>
+    } {{o.label}}
+  </button>
+  }
 </nx-context-menu>
 
 <button
-    nxButton="primary small"
-    class="uppercase"
-    [nxContextMenuTriggerFor]="menu2"
-    aria-label="Open menu"
-    type="button"
+  nxButton="primary small"
+  class="uppercase"
+  [nxContextMenuTriggerFor]="menu2"
+  aria-label="Open menu"
+  type="button"
 >
-    <nx-icon
-        aria-hidden="true"
-        size="s"
-        name="globe"
-        class="nx-margin-right-xs"
-    ></nx-icon>
-    {{ selectedLanguage }}
+  <nx-icon
+    aria-hidden="true"
+    size="s"
+    name="globe"
+    class="nx-margin-right-xs"
+  ></nx-icon>
+  {{ selectedLanguage }}
 </button>

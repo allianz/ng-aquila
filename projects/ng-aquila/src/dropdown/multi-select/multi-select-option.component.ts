@@ -1,7 +1,16 @@
+import { AppearanceType } from '@allianz/ng-aquila/formfield';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { Highlightable, ListKeyManagerOption, LiveAnnouncer } from '@angular/cdk/a11y';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { AppearanceType } from '@aposin/ng-aquila/formfield';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 
 let optionId = 0;
 
@@ -10,95 +19,95 @@ let optionId = 0;
  * @docs-private
  */
 @Component({
-    selector: 'nx-multi-select-option',
-    styleUrls: ['./multi-select-option.component.scss'],
-    templateUrl: './multi-select-option.component.html',
-    host: {
-        role: 'option',
-        '[id]': 'id',
-        '[attr.aria-selected]': 'selected || null',
-        '[attr.aria-disabled]': 'disabled || null',
-        '[class.is-outline]': 'appearance === "outline"',
-    },
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NxIconModule],
+  selector: 'nx-multi-select-option',
+  styleUrls: ['./multi-select-option.component.scss'],
+  templateUrl: './multi-select-option.component.html',
+  host: {
+    role: 'option',
+    '[id]': 'id',
+    '[attr.aria-selected]': 'selected || null',
+    '[attr.aria-disabled]': 'disabled || null',
+    '[class.is-outline]': 'appearance === "outline"',
+  },
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NxIconModule],
 })
 export class NxMultiSelectOptionComponent<T> implements Highlightable, ListKeyManagerOption {
-    private _active = false;
+  private _active = false;
 
-    id = `nx-multi-select-option-${optionId++}`;
+  id = `nx-multi-select-option-${optionId++}`;
 
-    @Input() appearance: AppearanceType = 'auto';
+  @Input() appearance: AppearanceType = 'auto';
 
-    /**
-     * Value of this option.
-     */
-    @Input() value?: T;
+  /**
+   * Value of this option.
+   */
+  @Input() value?: T;
 
-    /**
-     * Label of this option.
-     */
-    @Input() label = '';
+  /**
+   * Label of this option.
+   */
+  @Input() label = '';
 
-    /**
-     * Whether this option is selected.
-     */
-    @Input() selected = false;
+  /**
+   * Whether this option is selected.
+   */
+  @Input() selected = false;
 
-    /**
-     * Whether thisoption is disabled.
-     */
-    @Input() disabled = false;
+  /**
+   * Whether thisoption is disabled.
+   */
+  @Input() disabled = false;
 
-    /**
-     * Emits an event when this option is selected or unselected by the user.
-     */
-    @Output() readonly selectedChange = new EventEmitter<boolean>();
+  /**
+   * Emits an event when this option is selected or unselected by the user.
+   */
+  @Output() readonly selectedChange = new EventEmitter<boolean>();
 
-    /**
-     * Sets this option active highlighting it to the user.
-     */
-    set active(value: boolean) {
-        this._active = value;
-        this._cdr.markForCheck();
+  /**
+   * Sets this option active highlighting it to the user.
+   */
+  set active(value: boolean) {
+    this._active = value;
+    this._cdr.markForCheck();
+  }
+
+  get active() {
+    return this._active;
+  }
+
+  constructor(
+    private readonly _cdr: ChangeDetectorRef,
+    readonly elementRef: ElementRef,
+    private liveAnnouncer: LiveAnnouncer,
+  ) {}
+
+  setActiveStyles(): void {
+    this.active = true;
+  }
+
+  setInactiveStyles(): void {
+    this.active = false;
+  }
+
+  @HostListener('click')
+  _onClick() {
+    if (!this.disabled) {
+      this.selected = !this.selected;
+      this.selectedChange.emit(this.selected);
+      this.liveAnnouncer.announce(`${this.label} ${this.selected ? 'selected' : 'unselected'}`);
     }
+  }
 
-    get active() {
-        return this._active;
-    }
+  /**
+   * Selects this option as if the user clicked on it.
+   */
+  selectViaInteraction() {
+    this._onClick();
+    this._cdr.markForCheck();
+  }
 
-    constructor(
-        private readonly _cdr: ChangeDetectorRef,
-        readonly elementRef: ElementRef,
-        private liveAnnouncer: LiveAnnouncer,
-    ) {}
-
-    setActiveStyles(): void {
-        this.active = true;
-    }
-
-    setInactiveStyles(): void {
-        this.active = false;
-    }
-
-    @HostListener('click')
-    _onClick() {
-        if (!this.disabled) {
-            this.selected = !this.selected;
-            this.selectedChange.emit(this.selected);
-            this.liveAnnouncer.announce(`${this.label} ${this.selected ? 'selected' : 'unselected'}`);
-        }
-    }
-
-    /**
-     * Selects this option as if the user clicked on it.
-     */
-    selectViaInteraction() {
-        this._onClick();
-        this._cdr.markForCheck();
-    }
-
-    getLabel() {
-        return this.label;
-    }
+  getLabel() {
+    return this.label;
+  }
 }

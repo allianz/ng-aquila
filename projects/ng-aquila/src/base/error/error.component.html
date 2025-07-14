@@ -1,24 +1,24 @@
 <!-- b2b (expert) error notification -->
 @if (appearance === 'text') {
-    @if (showIcon) {
-        <nx-icon class="nx-error__icon" [name]="'exclamation-triangle'" aria-hidden="true"> </nx-icon>
-    }
-    <div class="nx-error__content-wrapper">
-        <div class="nx-error__content" [attr.id]="id">
-            <ng-container [ngTemplateOutlet]="errorContent"></ng-container>
-        </div>
+  @if (showIcon) {
+    <nx-icon class="nx-error__icon" [name]="'exclamation-triangle'" aria-hidden="true"> </nx-icon>
+  }
+  <div class="nx-error__content-wrapper">
+    <div class="nx-error__content" [attr.id]="id">
+      <ng-container [ngTemplateOutlet]="errorContent"></ng-container>
     </div>
+  </div>
 }
 
 <!-- b2c error notification -->
 @if (appearance === 'message') {
-    <nx-message context="error">
-        <div class="nx-error__content" [attr.id]="id">
-            <ng-container [ngTemplateOutlet]="errorContent"></ng-container>
-        </div>
-    </nx-message>
+  <nx-message context="error">
+    <div class="nx-error__content" [attr.id]="id">
+      <ng-container [ngTemplateOutlet]="errorContent"></ng-container>
+    </div>
+  </nx-message>
 }
 
 <ng-template #errorContent>
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 </ng-template>

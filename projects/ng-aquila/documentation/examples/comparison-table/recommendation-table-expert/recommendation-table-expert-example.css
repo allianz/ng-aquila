@@ -1,56 +1,56 @@
 .breakdown-table {
-    padding-top: 24px;
-    padding-left: 32px;
-    padding-right: 32px;
-    background-color: var(--ui-01);
-    border: solid 1px var(--ui-04);
+  padding-top: 24px;
+  padding-left: 32px;
+  padding-right: 32px;
+  background-color: var(--ui-01);
+  border: solid 1px var(--ui-04);
 }
 
 @media (max-width: 704px) {
-    .breakdown-table {
-        padding-left: 16px;
-        padding-right: 16px;
-        padding-bottom: 24px;
-    }
+  .breakdown-table {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 24px;
+  }
 }
 
 .breakdown-table__background {
-    background-color: var(--ui-02);
+  background-color: var(--ui-02);
 }
 
 .breakdown-table ::ng-deep .nx-expansion-panel--light {
-    box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 .breakdown-table ::ng-deep .nx-expansion-panel__header-title {
-    font-size: 1rem !important;
-    font-weight: bold !important;
+  font-size: 1rem !important;
+  font-weight: bold !important;
 }
 
 .breakdown-table ::ng-deep .nx-expansion-panel__header-content {
-    padding-top: 16px !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+  padding-top: 16px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .breakdown-table ::ng-deep .nx-expansion-panel__body {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    padding-bottom: 24px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 24px !important;
 }
 
 .breakdown-table li {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 .breakdown-table li:not(:last-child) {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .breakdown-table ul:last-child {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .breakdown-table li[nxListIcon='close'] ::ng-deep nx-icon {
-    color: #ff6161;
+  color: #ff6161;
 }

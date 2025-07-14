@@ -1,67 +1,62 @@
 <nx-toolbar class="nx-margin-bottom-s">
-    <button
-        nxPlainButton
-        type="button"
-        aria-label="a useful label"
-        class="back"
-    >
-        <nx-icon name="arrow-left" aria-hidden="true"></nx-icon>
-    </button>
+  <button nxPlainButton type="button" aria-label="a useful label" class="back">
+    <nx-icon name="arrow-left" aria-hidden="true"></nx-icon>
+  </button>
 
-    <nx-toolbar-divider></nx-toolbar-divider>
+  <nx-toolbar-divider></nx-toolbar-divider>
 
-    <div class="nx-toolbar-description">
-        <span class="nx-margin-right-2xs">Max Mustermann</span>
-        <span class="dot">ID: FRG4567890</span>
-    </div>
+  <div class="nx-toolbar-description">
+    <span class="nx-margin-right-2xs">Max Mustermann</span>
+    <span class="dot">ID: FRG4567890</span>
+  </div>
 
-    <button
-        nxIconButton="tertiary small"
-        aria-label="a useful label"
-        type="button"
-        class="nx-margin-right-2xs nx-margin-bottom-0"
-    >
-        <nx-icon name="speech-bubble-o" aria-hidden="true"></nx-icon>
-    </button>
-    <button
-        nxIconButton="tertiary small"
-        aria-label="a useful label"
-        type="button"
-        class="nx-margin-right-2xs nx-margin-bottom-0"
-    >
-        <nx-icon name="close" aria-hidden="true"></nx-icon>
-    </button>
-    <button
-        nxIconButton="tertiary small"
-        aria-label="a useful label"
-        type="button"
-        class="nx-margin-right-2xs nx-margin-bottom-0"
-    >
-        <nx-icon name="refresh" aria-hidden="true"></nx-icon>
-    </button>
+  <button
+    nxIconButton="tertiary small"
+    aria-label="a useful label"
+    type="button"
+    class="nx-margin-right-2xs nx-margin-bottom-0"
+  >
+    <nx-icon name="speech-bubble-o" aria-hidden="true"></nx-icon>
+  </button>
+  <button
+    nxIconButton="tertiary small"
+    aria-label="a useful label"
+    type="button"
+    class="nx-margin-right-2xs nx-margin-bottom-0"
+  >
+    <nx-icon name="close" aria-hidden="true"></nx-icon>
+  </button>
+  <button
+    nxIconButton="tertiary small"
+    aria-label="a useful label"
+    type="button"
+    class="nx-margin-right-2xs nx-margin-bottom-0"
+  >
+    <nx-icon name="refresh" aria-hidden="true"></nx-icon>
+  </button>
 
-    <button
-        nxIconButton="tertiary small"
-        [nxContextMenuTriggerFor]="menu"
-        aria-label="Open menu"
-        type="button"
-        class="nx-margin-right-2xs nx-margin-bottom-0"
-    >
-        <nx-icon name="ellipsis-h" aria-hidden="true"></nx-icon>
-    </button>
+  <button
+    nxIconButton="tertiary small"
+    [nxContextMenuTriggerFor]="menu"
+    aria-label="Open menu"
+    type="button"
+    class="nx-margin-right-2xs nx-margin-bottom-0"
+  >
+    <nx-icon name="ellipsis-h" aria-hidden="true"></nx-icon>
+  </button>
 
-    <button nxButton="primary small" type="button">
-        <nx-icon
-            name="save-o"
-            class="nx-margin-right-2xs"
-            aria-hidden="true"
-        ></nx-icon
-        >Primary
-    </button>
+  <button nxButton="primary small" type="button">
+    <nx-icon
+      name="save-o"
+      class="nx-margin-right-2xs"
+      aria-hidden="true"
+    ></nx-icon
+    >Primary
+  </button>
 </nx-toolbar>
 
 <nx-context-menu #menu="nxContextMenu">
-    <button nxContextMenuItem type="button">Settings</button>
-    <button nxContextMenuItem type="button">Download</button>
-    <button nxContextMenuItem type="button">Help</button>
+  <button nxContextMenuItem type="button">Settings</button>
+  <button nxContextMenuItem type="button">Download</button>
+  <button nxContextMenuItem type="button">Help</button>
 </nx-context-menu>

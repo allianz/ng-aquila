@@ -1,70 +1,70 @@
 @import '../../shared-styles/index';
 
 :host {
-    display: flex;
-    flex-direction: column;
-    background-color: v(notification-panel-item-unread-background-color);
-    padding: 16px 24px;
-    margin: 0 -24px;
+  display: flex;
+  flex-direction: column;
+  background-color: v(notification-panel-item-unread-background-color);
+  padding: 16px 24px;
+  margin: 0 -24px;
 
-    &.nx-notification-item--read {
-        background-color: v(notification-panel-item-read-background-color);
-    }
+  &.nx-notification-item--read {
+    background-color: v(notification-panel-item-read-background-color);
+  }
 
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 
-    &.cdk-keyboard-focused {
-        @include focus-style-inset;
-    }
+  &.cdk-keyboard-focused {
+    @include focus-style-inset;
+  }
 }
 
 ::ng-deep {
-    nx-notification-item-metadata {
-        font-size: 0.875rem;
-        font-weight: 400;
-        line-height: 1.25rem;
-        letter-spacing: 0.0125rem;
-        margin-bottom: 4px;
-        display: flex;
-        align-items: center;
-    }
+  nx-notification-item-metadata {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    letter-spacing: 0.0125rem;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+  }
 
-    nx-notification-item-content {
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 1.5rem;
-    }
+  nx-notification-item-content {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+  }
 
-    nx-notification-item-actions {
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        padding-top: 8px;
-    }
+  nx-notification-item-actions {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+  }
 }
 
 // Hover and active styles for clickable item
 :host(.nx-notification-item--clickable) {
-    cursor: pointer;
+  cursor: pointer;
+  &:hover {
+    background-color: v(notification-panel-item-unread-hover-background-color);
+  }
+
+  &:active {
+    background-color: v(notification-panel-item-unread-active-background-color);
+  }
+
+  &.nx-notification-item--read {
     &:hover {
-        background-color: v(notification-panel-item-unread-hover-background-color);
+      background-color: v(notification-panel-item-read-hover-background-color);
     }
 
     &:active {
-        background-color: v(notification-panel-item-unread-active-background-color);
+      background-color: var(-notification-panel-item-read-active-background-color);
     }
-
-    &.nx-notification-item--read {
-        &:hover {
-            background-color: v(notification-panel-item-read-hover-background-color);
-        }
-
-        &:active {
-            background-color: var(-notification-panel-item-read-active-background-color);
-        }
-    }
+  }
 }

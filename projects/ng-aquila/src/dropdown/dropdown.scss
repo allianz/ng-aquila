@@ -4,240 +4,243 @@ $dropdown-border-radius: nx-border-radius(s);
 $dropdown-border-size: nx-border-size(xs);
 
 @function dropdown-field-padding($padding) {
-    @return $padding - $dropdown-border-size;
+  @return $padding - $dropdown-border-size;
 }
 
 :host {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 :host:focus {
-    outline: none;
+  outline: none;
 }
 
 :host(.nx-dropdown--negative):focus {
-    font-weight: nx-font-weight(semibold);
+  font-weight: nx-font-weight(semibold);
 }
 
 :host(.nx-dropdown--negative) {
-    color: v(negative);
+  color: v(negative);
 }
 
 :host([aria-expanded='true']) {
-    .nx-dropdown__chevron {
-        transform: rotateZ(180deg);
-    }
+  .nx-dropdown__chevron {
+    transform: rotateZ(180deg);
+  }
 }
 
 .nx-dropdown__container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 100%;
-    cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
 }
 
 :host(.nx-dropdown--disabled) .nx-dropdown__container {
-    cursor: not-allowed;
-    @media screen and (forced-colors: active) {
-        .nx-dropdown__icon {
-            color: GrayText !important;
-        }
+  cursor: not-allowed;
+  @media screen and (forced-colors: active) {
+    .nx-dropdown__icon {
+      color: GrayText !important;
     }
+  }
 }
 
 .nx-dropdown__rendered {
-    flex: 1 1 auto;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .nx-dropdown__panel {
-    box-shadow: v(dropdown-panel-shadow);
-    border-radius: v(dropdown-panel-border-radius);
-    overflow: hidden;
-    min-width: 100%;
+  box-shadow: v(dropdown-panel-shadow);
+  border-radius: v(dropdown-panel-border-radius);
+  overflow: hidden;
+  min-width: 100%;
 
-    ::ng-deep .nx-checkbox__label {
-        @include type-style(dropdown-item);
-        display: flex;
+  ::ng-deep .nx-checkbox__label {
+    @include type-style(dropdown-item);
+    display: flex;
+    align-items: center;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.centered-checkmark {
+    ::ng-deep nx-dropdown-item {
+      .nx-dropdown-results__option {
         align-items: center;
+      }
+    }
+  }
+
+  &--in-outline-field {
+    .nx-dropdown__panel-body {
+      // (6 * line-height of item + padding of item) + 16px for top and bottom padding of first and last element
+      max-height: calc(6 * (#{v(dropdown-item-outline-line-height)} + 16px) + 16px);
     }
 
-    &:focus {
-        outline: none;
+    ::ng-deep .nx-dropdown-results__group-label {
+      @include type-style(formfield-outline-label);
+      font-style: normal;
+      font-weight: v(dropdown-group-label-font-weight);
     }
 
-    &.centered-checkmark {
-        ::ng-deep nx-dropdown-item {
-            .nx-dropdown-results__option {
-                align-items: center;
-            }
-        }
+    ::ng-deep nx-dropdown-item {
+      .nx-dropdown-results__option,
+      .nx-dropdown-results__option-label {
+        @include dropdown-overlay__option--outline;
+      }
+      .nx-dropdown-results__option-checkicon {
+        height: v(dropdown-item-outline-line-height);
+      }
     }
 
-    &--in-outline-field {
-        .nx-dropdown__panel-body {
-            // (6 * line-height of item + padding of item) + 16px for top and bottom padding of first and last element
-            max-height: calc(6 * (#{v(dropdown-item-outline-line-height)} + 16px) + 16px);
-        }
+    ::ng-deep .nx-dropdown__filter-input {
+      @include type-style(formfield-outline-control);
 
-        ::ng-deep .nx-dropdown-results__group-label {
-            @include type-style(formfield-outline-label);
-            font-style: normal;
-            font-weight: v(dropdown-group-label-font-weight);
-        }
-
-        ::ng-deep nx-dropdown-item {
-            .nx-dropdown-results__option,
-            .nx-dropdown-results__option-label {
-                @include dropdown-overlay__option--outline;
-            }
-            .nx-dropdown-results__option-checkicon {
-                height: v(dropdown-item-outline-line-height);
-            }
-        }
-
-        ::ng-deep .nx-dropdown__filter-input {
-            @include type-style(formfield-outline-control);
-
-            &:empty {
-                font-weight: nx-font-weight(light);
-            }
-        }
+      &:empty {
+        font-weight: nx-font-weight(light);
+      }
     }
+  }
 }
 
 .nx-dropdown__icon {
-    font-size: v(dropdown-chevron-size);
-    line-height: 0;
+  font-size: v(dropdown-chevron-size);
+  line-height: 0;
 }
 
 .nx-dropdown__chevron {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .nx-dropdown__panel-header {
-    @include type-style(formfield-label);
-    color: v(dropdown-panel-header-text-color);
-    background-color: v(dropdown-panel-header-background-color);
-    padding: nx-spacer(2xs) nx-spacer(2m);
-    border-top-left-radius: $dropdown-border-radius;
-    border-top-right-radius: $dropdown-border-radius;
-    z-index: 1;
+  @include type-style(formfield-label);
+  color: v(dropdown-panel-header-text-color);
+  background-color: v(dropdown-panel-header-background-color);
+  padding: nx-spacer(2xs) nx-spacer(2m);
+  border-top-left-radius: $dropdown-border-radius;
+  border-top-right-radius: $dropdown-border-radius;
+  z-index: 1;
 }
 
 .nx-dropdown__panel-body {
-    background-color: v(dropdown-panel-background-color);
-    // (6 * line-height of item + padding of item) + 16px for top and bottom padding of first and last element
-    max-height: calc(6 * (#{v(dropdown-item-line-height)} + 16px) + 16px);
-    overflow-y: auto;
-    outline: none;
-    padding-top: v(dropdown-panel-padding-top);
-    padding-bottom: v(dropdown-panel-padding-bottom);
+  background-color: v(dropdown-panel-background-color);
+  // (6 * line-height of item + padding of item) + 16px for top and bottom padding of first and last element
+  max-height: calc(6 * (#{v(dropdown-item-line-height)} + 16px) + 16px);
+  overflow-y: auto;
+  outline: none;
+  padding-top: v(dropdown-panel-padding-top);
+  padding-bottom: v(dropdown-panel-padding-bottom);
 }
 
 .nx-dropdown__filter-wrap {
-    padding-top: v(dropdown-filter-wrap-padding-vertical);
-    padding-bottom: v(dropdown-filter-wrap-padding-vertical);
-    padding-left: v(dropdown-filter-wrap-padding-horizontal);
-    padding-right: v(dropdown-filter-wrap-padding-horizontal);
-    background-color: v(dropdown-panel-background-color);
+  padding-top: v(dropdown-filter-wrap-padding-vertical);
+  padding-bottom: v(dropdown-filter-wrap-padding-vertical);
+  padding-left: v(dropdown-filter-wrap-padding-horizontal);
+  padding-right: v(dropdown-filter-wrap-padding-horizontal);
+  background-color: v(dropdown-panel-background-color);
 }
 
 .nx-dropdown__filter {
-    $dropdown-filter-padding: nx-spacer(s) nx-spacer(2m) nx-spacer(xs) nx-spacer(2m);
-    padding-top: v(dropdown-filter-input-padding-vertical);
-    padding-right: v(dropdown-filter-input-padding-horizon);
-    padding-bottom: v(dropdown-filter-input-padding-vertical);
-    padding-left: v(dropdown-filter-input-padding-horizon);
+  $dropdown-filter-padding: nx-spacer(s) nx-spacer(2m) nx-spacer(xs) nx-spacer(2m);
+  padding-top: v(dropdown-filter-input-padding-vertical);
+  padding-right: v(dropdown-filter-input-padding-horizon);
+  padding-bottom: v(dropdown-filter-input-padding-vertical);
+  padding-left: v(dropdown-filter-input-padding-horizon);
 
-    border-radius: v(dropdown-panel-border-radius);
-    border: 1px solid v(dropdown-panel-filter-border-color);
-    display: flex;
-    align-items: center;
+  border-radius: v(dropdown-panel-border-radius);
+  border: 1px solid v(dropdown-panel-filter-border-color);
+  display: flex;
+  align-items: center;
 
-    [dir='rtl'] & {
-        padding: nx-flip-for-rtl($dropdown-filter-padding);
-    }
+  [dir='rtl'] & {
+    padding: nx-flip-for-rtl($dropdown-filter-padding);
+  }
 }
 
 .nx-dropdown__filter-input {
-    $dropdown-filter-input-padding: 0 nx-spacer(m) dropdown-field-padding(nx-spacer(3xs)) 0;
+  $dropdown-filter-input-padding: 0 nx-spacer(m) dropdown-field-padding(nx-spacer(3xs)) 0;
 
-    flex-grow: 1;
-    margin-right: v(dropdown-filter-gap);
-    background-color: transparent;
-    border: 0;
-    border-bottom: $dropdown-border-size solid v(dropdown-filter-input-border-color);
-    @include type-style(dropdown-item);
-    color: v(dropdown-filter-input-text-color);
-    outline: none;
-    width: 100%;
+  flex-grow: 1;
+  margin-right: v(dropdown-filter-gap);
+  background-color: transparent;
+  border: 0;
+  border-bottom: $dropdown-border-size solid v(dropdown-filter-input-border-color);
+  @include type-style(dropdown-item);
+  color: v(dropdown-filter-input-text-color);
+  outline: none;
+  width: 100%;
 
-    /* IE10+ Fix to remove the clear button that appears on input */
-    &::-ms-clear {
-        display: none;
+  /* IE10+ Fix to remove the clear button that appears on input */
+  &::-ms-clear {
+    display: none;
+  }
+
+  &.is-filled:focus {
+    color: v(dropdown-filter-input-active-text-color);
+
+    & + .nx-dropdown__filter-icon {
+      color: v(dropdown-filter-input-active-text-color);
     }
+  }
+  &:focus {
+    border-color: v(dropdown-filter-input-active-border-color);
+  }
 
-    &.is-filled:focus {
-        color: v(dropdown-filter-input-active-text-color);
-
-        & + .nx-dropdown__filter-icon {
-            color: v(dropdown-filter-input-active-text-color);
-        }
-    }
-    &:focus {
-        border-color: v(dropdown-filter-input-active-border-color);
-    }
-
-    [dir='rtl'] & {
-        padding: nx-flip-for-rtl($dropdown-filter-input-padding);
-    }
+  [dir='rtl'] & {
+    padding: nx-flip-for-rtl($dropdown-filter-input-padding);
+  }
 }
 
 .nx-dropdown__filter-icon {
-    height: nx-font-size(s);
-    [dir='rtl'] & {
-        left: nx-spacer(2m);
-        right: auto;
-    }
+  height: nx-font-size(s);
+  [dir='rtl'] & {
+    left: nx-spacer(2m);
+    right: auto;
+  }
 }
 
 .nx-dropdown__filter-icon nx-icon {
-    font-size: nx-font-size(s);
+  font-size: nx-font-size(s);
 }
 
-.nx-dropdown__panel.has-filter ::ng-deep nx-dropdown-item:first-of-type .nx-dropdown-results__option {
-    padding-top: nx-spacer(2xs);
+.nx-dropdown__panel.has-filter
+  ::ng-deep
+  nx-dropdown-item:first-of-type
+  .nx-dropdown-results__option {
+  padding-top: nx-spacer(2xs);
 }
 
 :host(.is-readonly) {
-    .nx-dropdown__icon {
-        color: v(formfield-disabled-text-color);
-        @media screen and (forced-colors: active) {
-            color: GrayText !important;
-        }
+  .nx-dropdown__icon {
+    color: v(formfield-disabled-text-color);
+    @media screen and (forced-colors: active) {
+      color: GrayText !important;
     }
-    .nx-dropdown__container {
-        cursor: default;
-        color: v(formfield-readonly-text-color);
-    }
+  }
+  .nx-dropdown__container {
+    cursor: default;
+    color: v(formfield-readonly-text-color);
+  }
 }
 
 @media screen and (forced-colors: active) {
-    .nx-dropdown__panel {
-        box-shadow: 0 0 0 nx-border-size(xs) CanvasText;
-        border: 1px solid CanvasText; // Chromium Edge
-    }
+  .nx-dropdown__panel {
+    box-shadow: 0 0 0 nx-border-size(xs) CanvasText;
+    border: 1px solid CanvasText; // Chromium Edge
+  }
 
-    .nx-dropdown__panel-header {
-        border-bottom: nx-border-size(xs) solid CanvasText;
-    }
+  .nx-dropdown__panel-header {
+    border-bottom: nx-border-size(xs) solid CanvasText;
+  }
 
-    .nx-dropdown__filter-input {
-        border-bottom-color: buttonText;
-    }
+  .nx-dropdown__filter-input {
+    border-bottom-color: buttonText;
+  }
 }

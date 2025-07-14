@@ -11,24 +11,26 @@ import supportedLocales from 'dayjs/locale.json';
  * @returns A "language-range" that is supported by dayjs.
  */
 export function convertToDayjsLocale(localeId: string): string {
-    let dayjsLocale = supportedLocales.find(locale => locale.key === localeId.toLowerCase());
+  let dayjsLocale = supportedLocales.find((locale) => locale.key === localeId.toLowerCase());
 
-    if (!dayjsLocale && localeId.includes('-')) {
-        let localeParts = localeId.toLowerCase().split('-');
-        while (localeParts.length > 0) {
-            dayjsLocale = supportedLocales.find(locale => locale.key === localeParts.join('-'));
-            if (dayjsLocale) {
-                console.warn(`The locale '${localeId}' is not known to dayjs. Using closest match '${dayjsLocale.key}' instead.`);
-                break;
-            }
-            localeParts = localeParts.slice(0, localeParts.length - 1);
-        }
+  if (!dayjsLocale && localeId.includes('-')) {
+    let localeParts = localeId.toLowerCase().split('-');
+    while (localeParts.length > 0) {
+      dayjsLocale = supportedLocales.find((locale) => locale.key === localeParts.join('-'));
+      if (dayjsLocale) {
+        console.warn(
+          `The locale '${localeId}' is not known to dayjs. Using closest match '${dayjsLocale.key}' instead.`,
+        );
+        break;
+      }
+      localeParts = localeParts.slice(0, localeParts.length - 1);
     }
+  }
 
-    if (!dayjsLocale) {
-        console.warn(`The locale '${localeId}' is not known to dayjs. Using the default 'en'.`);
-        dayjsLocale = { key: 'en', name: '' };
-    }
+  if (!dayjsLocale) {
+    console.warn(`The locale '${localeId}' is not known to dayjs. Using the default 'en'.`);
+    dayjsLocale = { key: 'en', name: '' };
+  }
 
-    return dayjsLocale.key;
+  return dayjsLocale.key;
 }

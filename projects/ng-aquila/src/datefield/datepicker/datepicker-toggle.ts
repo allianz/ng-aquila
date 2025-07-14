@@ -1,159 +1,178 @@
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import {
-    AfterContentInit,
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    computed,
-    ContentChild,
-    Directive,
-    ElementRef,
-    Inject,
-    Input,
-    model,
-    OnChanges,
-    OnDestroy,
-    Optional,
-    SimpleChanges,
-    ViewChild,
+  AfterContentInit,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  computed,
+  ContentChild,
+  Directive,
+  ElementRef,
+  Inject,
+  Input,
+  model,
+  OnChanges,
+  OnDestroy,
+  Optional,
+  SimpleChanges,
+  ViewChild,
 } from '@angular/core';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { merge, of as observableOf, Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { DATEPICKER_DEFAULT_OPTIONS, DatepickerDefaultOptions, NxDatepickerComponent } from './datepicker.component';
+import {
+  DATEPICKER_DEFAULT_OPTIONS,
+  DatepickerDefaultOptions,
+  NxDatepickerComponent,
+} from './datepicker.component';
 import { NxDatepickerIntl } from './datepicker-intl';
 
 /** Can be used to override the icon of a `nxDatepickerToggle`. */
 @Directive({
-    selector: '[nxDatepickerToggleIcon]',
-    standalone: true,
+  selector: '[nxDatepickerToggleIcon]',
+  standalone: true,
 })
 export class NxDatepickerToggleIconComponent {}
 
 @Component({
-    selector: 'nx-datepicker-toggle',
-    templateUrl: 'datepicker-toggle.html',
-    styleUrls: ['datepicker-toggle.scss'],
-    host: {
-        class: 'nx-datepicker-toggle',
-        '[class.nx-datepicker-toggle-active]': 'datepicker && datepicker.opened',
-        '[class.nx-datepicker-toggle--disabled]': 'disabled()',
-    },
-    exportAs: 'nxDatepickerToggle',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NxIconModule],
+  selector: 'nx-datepicker-toggle',
+  templateUrl: 'datepicker-toggle.html',
+  styleUrls: ['datepicker-toggle.scss'],
+  host: {
+    class: 'nx-datepicker-toggle',
+    '[class.nx-datepicker-toggle-active]': 'datepicker && datepicker.opened',
+    '[class.nx-datepicker-toggle--disabled]': 'disabled()',
+  },
+  exportAs: 'nxDatepickerToggle',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NxIconModule],
 })
-export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterViewInit, OnChanges, OnDestroy {
-    private _stateChanges = Subscription.EMPTY;
+export class NxDatepickerToggleComponent<D>
+  implements AfterContentInit, AfterViewInit, OnChanges, OnDestroy
+{
+  private _stateChanges = Subscription.EMPTY;
 
-    /** Custom icon set by the consumer. */
-    @ContentChild(NxDatepickerToggleIconComponent) _customIcon!: NxDatepickerToggleIconComponent;
+  /** Custom icon set by the consumer. */
+  @ContentChild(NxDatepickerToggleIconComponent) _customIcon!: NxDatepickerToggleIconComponent;
 
-    @ViewChild('toggleButton') _toggleButton!: ElementRef<HTMLElement>;
+  @ViewChild('toggleButton') _toggleButton!: ElementRef<HTMLElement>;
 
-    /** Datepicker instance that the button will toggle. */
-    @Input('for') set datepicker(value: NxDatepickerComponent<D>) {
-        this.registerDatepicker(value);
+  /** Datepicker instance that the button will toggle. */
+  @Input('for') set datepicker(value: NxDatepickerComponent<D>) {
+    this.registerDatepicker(value);
+  }
+  get datepicker(): NxDatepickerComponent<D> {
+    return this._datepicker;
+  }
+  _datepicker!: NxDatepickerComponent<D>;
+
+  /** Whether the toggle button is disabled. */
+  readonly disabledInput = model<boolean | undefined>(undefined, { alias: 'disabled' });
+  readonly disabled = computed(() => {
+    if (this.disabledInput() !== undefined) {
+      return this.disabledInput();
     }
-    get datepicker(): NxDatepickerComponent<D> {
-        return this._datepicker;
+    return this.datepicker.disabled() || false;
+  });
+
+  /** Sets the tabindex for the toggle button. Default: 0. */
+  @Input() set tabindex(value: NumberInput) {
+    const newValue = coerceNumberProperty(value);
+    if (this._tabindex !== newValue) {
+      this._tabindex = newValue;
     }
-    _datepicker!: NxDatepickerComponent<D>;
-
-    /** Whether the toggle button is disabled. */
-    readonly disabledInput = model<boolean | undefined>(undefined, { alias: 'disabled' });
-    readonly disabled = computed(() => {
-        if (this.disabledInput() !== undefined) {
-            return this.disabledInput();
-        }
-        return this.datepicker.disabled() || false;
-    });
-
-    /** Sets the tabindex for the toggle button. Default: 0. */
-    @Input() set tabindex(value: NumberInput) {
-        const newValue = coerceNumberProperty(value);
-        if (this._tabindex !== newValue) {
-            this._tabindex = newValue;
-        }
+  }
+  get tabindex(): number {
+    if (this._tabindex !== undefined) {
+      return this._tabindex;
     }
-    get tabindex(): number {
-        if (this._tabindex !== undefined) {
-            return this._tabindex;
-        }
-        if (this._defaultOptions?.toggleIconTabindex !== undefined) {
-            return this._defaultOptions.toggleIconTabindex;
-        }
-        return 0;
+    if (this._defaultOptions?.toggleIconTabindex !== undefined) {
+      return this._defaultOptions.toggleIconTabindex;
     }
-    private _tabindex?: number;
+    return 0;
+  }
+  private _tabindex?: number;
 
-    private readonly _destroyed = new Subject<void>();
+  private readonly _destroyed = new Subject<void>();
 
-    constructor(
-        readonly _intl: NxDatepickerIntl,
-        private readonly _cdr: ChangeDetectorRef,
-        @Optional() @Inject(DATEPICKER_DEFAULT_OPTIONS) private readonly _defaultOptions: DatepickerDefaultOptions | null,
-        private readonly _focusMonitor: FocusMonitor,
-    ) {
-        if (this._defaultOptions?.changes) {
-            this._defaultOptions.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
-                this._cdr.markForCheck();
-            });
-        }
+  constructor(
+    readonly _intl: NxDatepickerIntl,
+    private readonly _cdr: ChangeDetectorRef,
+    @Optional()
+    @Inject(DATEPICKER_DEFAULT_OPTIONS)
+    private readonly _defaultOptions: DatepickerDefaultOptions | null,
+    private readonly _focusMonitor: FocusMonitor,
+  ) {
+    if (this._defaultOptions?.changes) {
+      this._defaultOptions.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
+        this._cdr.markForCheck();
+      });
     }
+  }
 
-    ngAfterViewInit(): void {
-        this._focusMonitor.monitor(this._toggleButton);
+  ngAfterViewInit(): void {
+    this._focusMonitor.monitor(this._toggleButton);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.datepicker) {
+      this._watchStateChanges();
     }
+  }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes.datepicker) {
-            this._watchStateChanges();
-        }
+  ngOnDestroy(): void {
+    this._destroyed.next();
+    this._destroyed.complete();
+    this._stateChanges.unsubscribe();
+    this._focusMonitor.stopMonitoring(this._toggleButton);
+  }
+
+  ngAfterContentInit(): void {
+    this._watchStateChanges();
+  }
+
+  _open(event: Event): void {
+    if (this.datepicker && !this.disabled()) {
+      this.datepicker.open();
+      event.stopPropagation();
     }
+  }
 
-    ngOnDestroy(): void {
-        this._destroyed.next();
-        this._destroyed.complete();
-        this._stateChanges.unsubscribe();
-        this._focusMonitor.stopMonitoring(this._toggleButton);
+  private registerDatepicker(value: NxDatepickerComponent<D>) {
+    if (value) {
+      this._datepicker = value;
+      this._datepicker.registerToggle(this);
     }
+  }
 
-    ngAfterContentInit(): void {
-        this._watchStateChanges();
+  private _watchStateChanges() {
+    const datepickerDisabled = this.datepicker
+      ? this.datepicker._disabledChange.asObservable()
+      : observableOf();
+    const inputDisabled = this.datepicker?._datepickerInput
+      ? this.datepicker._datepickerInput._disabledChange.asObservable()
+      : observableOf();
+    const datepickerToggled = this.datepicker
+      ? merge(this.datepicker.openedStream, this.datepicker.closedStream)
+      : observableOf();
+
+    this._stateChanges.unsubscribe();
+    this._stateChanges = merge(
+      this._intl.changes,
+      datepickerDisabled,
+      inputDisabled,
+      datepickerToggled,
+    )
+      .pipe(takeUntil(this._destroyed))
+      .subscribe(() => this._cdr.markForCheck());
+  }
+
+  protected keydownHandler(event: KeyboardEvent): void {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this._open(event);
     }
-
-    _open(event: Event): void {
-        if (this.datepicker && !this.disabled()) {
-            this.datepicker.open();
-            event.stopPropagation();
-        }
-    }
-
-    private registerDatepicker(value: NxDatepickerComponent<D>) {
-        if (value) {
-            this._datepicker = value;
-            this._datepicker.registerToggle(this);
-        }
-    }
-
-    private _watchStateChanges() {
-        const datepickerDisabled = this.datepicker ? this.datepicker._disabledChange.asObservable() : observableOf();
-        const inputDisabled = this.datepicker?._datepickerInput ? this.datepicker._datepickerInput._disabledChange.asObservable() : observableOf();
-        const datepickerToggled = this.datepicker ? merge(this.datepicker.openedStream, this.datepicker.closedStream) : observableOf();
-
-        this._stateChanges.unsubscribe();
-        this._stateChanges = merge(this._intl.changes, datepickerDisabled, inputDisabled, datepickerToggled)
-            .pipe(takeUntil(this._destroyed))
-            .subscribe(() => this._cdr.markForCheck());
-    }
-
-    protected keydownHandler(event: KeyboardEvent): void {
-        if (event.key === 'Enter' || event.key === ' ') {
-            this._open(event);
-        }
-    }
+  }
 }

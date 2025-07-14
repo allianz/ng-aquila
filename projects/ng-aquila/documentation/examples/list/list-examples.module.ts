@@ -11,33 +11,33 @@ import { ListOrderedExampleComponent } from './list-ordered/list-ordered-example
 import { ListUnorderedExampleComponent } from './list-unordered/list-unordered-example';
 
 const EXAMPLES = [
-    ListCirclesExampleComponent,
-    ListCopytextExampleComponent,
-    ListCustomColorExampleComponent,
-    ListIconsExampleComponent,
-    ListNegativeExampleComponent,
-    ListNestingExampleComponent,
-    ListOrderedExampleComponent,
-    ListUnorderedExampleComponent,
-    ListCondensedExampleComponent,
+  ListCirclesExampleComponent,
+  ListCopytextExampleComponent,
+  ListCustomColorExampleComponent,
+  ListIconsExampleComponent,
+  ListNegativeExampleComponent,
+  ListNestingExampleComponent,
+  ListOrderedExampleComponent,
+  ListUnorderedExampleComponent,
+  ListCondensedExampleComponent,
 ];
 
 @NgModule({
-    imports: [EXAMPLES],
-    exports: [EXAMPLES],
+  imports: [EXAMPLES],
+  exports: [EXAMPLES],
 })
 export class ListExamplesModule {
-    static components() {
-        return {
-            'list-circles': ListCirclesExampleComponent,
-            'list-copytext': ListCopytextExampleComponent,
-            'list-custom-color': ListCustomColorExampleComponent,
-            'list-icons': ListIconsExampleComponent,
-            'list-negative': ListNegativeExampleComponent,
-            'list-nesting': ListNestingExampleComponent,
-            'list-ordered': ListOrderedExampleComponent,
-            'list-unordered': ListUnorderedExampleComponent,
-            'list-condensed': ListCondensedExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'list-circles': ListCirclesExampleComponent,
+      'list-copytext': ListCopytextExampleComponent,
+      'list-custom-color': ListCustomColorExampleComponent,
+      'list-icons': ListIconsExampleComponent,
+      'list-negative': ListNegativeExampleComponent,
+      'list-nesting': ListNestingExampleComponent,
+      'list-ordered': ListOrderedExampleComponent,
+      'list-unordered': ListUnorderedExampleComponent,
+      'list-condensed': ListCondensedExampleComponent,
+    };
+  }
 }

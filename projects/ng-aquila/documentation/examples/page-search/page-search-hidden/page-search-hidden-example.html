@@ -1,29 +1,25 @@
 <nx-page-search
-    buttonLabel="Search"
-    [hideSearchButton]="true"
-    aria-label="Search hidden example"
+  buttonLabel="Search"
+  [hideSearchButton]="true"
+  aria-label="Search hidden example"
 >
-    <div nxLayout="grid nopadding">
-        <div nxRow>
-            <div nxCol="12">
-                <nx-formfield>
-                    <input
-                        nxInput
-                        placeholder="Enter Keyword"
-                        [(ngModel)]="searchTerm"
-                        type="search"
-                    />
-                    @if (searchTerm) {
-                    <span
-                        nxFormfieldSuffix
-                        aria-hidden="true"
-                        (click)="searchTerm=''"
-                    >
-                        <nx-icon name="close" size="s"></nx-icon>
-                    </span>
-                    }
-                </nx-formfield>
-            </div>
-        </div>
+  <div nxLayout="grid nopadding">
+    <div nxRow>
+      <div nxCol="12">
+        <nx-formfield>
+          <input
+            nxInput
+            placeholder="Enter Keyword"
+            [(ngModel)]="searchTerm"
+            type="search"
+          />
+          @if (searchTerm) {
+          <span nxFormfieldSuffix aria-hidden="true" (click)="searchTerm=''">
+            <nx-icon name="close" size="s"></nx-icon>
+          </span>
+          }
+        </nx-formfield>
+      </div>
     </div>
+  </div>
 </nx-page-search>

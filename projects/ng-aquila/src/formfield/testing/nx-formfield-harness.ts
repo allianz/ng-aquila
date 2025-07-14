@@ -1,125 +1,141 @@
+import { NxDropdownHarness } from '@allianz/ng-aquila/dropdown/testing';
+import { type NxFormfieldControlHarness } from '@allianz/ng-aquila/formfield/testing/control';
+import { NxInputHarness } from '@allianz/ng-aquila/input/testing';
 import {
-    type BaseHarnessFilters,
-    type ComponentHarnessConstructor,
-    ContentContainerComponentHarness,
-    HarnessPredicate,
-    type HarnessQuery,
-    parallel,
-    type TestElement,
+  type BaseHarnessFilters,
+  type ComponentHarnessConstructor,
+  ContentContainerComponentHarness,
+  HarnessPredicate,
+  type HarnessQuery,
+  parallel,
+  type TestElement,
 } from '@angular/cdk/testing';
-import { NxDropdownHarness } from '@aposin/ng-aquila/dropdown/testing';
-import { type NxFormfieldControlHarness } from '@aposin/ng-aquila/formfield/testing/control';
-import { NxInputHarness } from '@aposin/ng-aquila/input/testing';
 
-import { NxFormfieldErrorHarness, NxFormfieldErrorHarnessFilters } from './nx-formfield-error-harness';
+import {
+  NxFormfieldErrorHarness,
+  NxFormfieldErrorHarnessFilters,
+} from './nx-formfield-error-harness';
 import { NxFormfieldNoteHarness, NxFormfieldNoteHarnessFilters } from './nx-formfield-note-harness';
 
 export interface NxFormfieldFilters extends BaseHarnessFilters {
-    label?: string | RegExp;
-    hasErrors?: boolean;
-    readonly?: boolean;
+  label?: string | RegExp;
+  hasErrors?: boolean;
+  readonly?: boolean;
 }
 
 export type FormfieldControlHarness = NxInputHarness | NxDropdownHarness;
 
 export class NxFormfieldHarness extends ContentContainerComponentHarness {
-    static hostSelector = 'nx-formfield';
+  static hostSelector = 'nx-formfield';
 
-    static with(options: NxFormfieldFilters = {}): HarnessPredicate<NxFormfieldHarness> {
-        return new HarnessPredicate<NxFormfieldHarness>(NxFormfieldHarness, options)
-            .addOption('label', options.label, (harness, label) => HarnessPredicate.stringMatches(harness.getLabel(), label))
-            .addOption('hasErrors', options.hasErrors, async (harness, hasErrors) => (await harness.hasErrors()) === hasErrors)
-            .addOption('readonly', options.readonly, async (harness, readonly) => (await harness.isReadonly()) === readonly);
-    }
+  static with(options: NxFormfieldFilters = {}): HarnessPredicate<NxFormfieldHarness> {
+    return new HarnessPredicate<NxFormfieldHarness>(NxFormfieldHarness, options)
+      .addOption('label', options.label, (harness, label) =>
+        HarnessPredicate.stringMatches(harness.getLabel(), label),
+      )
+      .addOption(
+        'hasErrors',
+        options.hasErrors,
+        async (harness, hasErrors) => (await harness.hasErrors()) === hasErrors,
+      )
+      .addOption(
+        'readonly',
+        options.readonly,
+        async (harness, readonly) => (await harness.isReadonly()) === readonly,
+      );
+  }
 
-    private _label = this.locatorFor('label.nx-formfield__label');
-    private _prefix = this.locatorForOptional('.nx-formfield__prefix');
-    private _suffix = this.locatorForOptional('.nx-formfield__suffix');
-    private _appendix = this.locatorForOptional('.nx-formfield__appendix');
-    private _hint = this.locatorForOptional('.nx-formfield__hints');
-    private _inputControl = this.locatorForOptional(NxInputHarness);
-    private _dropdownControl = this.locatorForOptional(NxDropdownHarness);
+  private _label = this.locatorFor('label.nx-formfield__label');
+  private _prefix = this.locatorForOptional('.nx-formfield__prefix');
+  private _suffix = this.locatorForOptional('.nx-formfield__suffix');
+  private _appendix = this.locatorForOptional('.nx-formfield__appendix');
+  private _hint = this.locatorForOptional('.nx-formfield__hints');
+  private _inputControl = this.locatorForOptional(NxInputHarness);
+  private _dropdownControl = this.locatorForOptional(NxDropdownHarness);
 
-    /**
-     * Gets the control inside the form-field, matching the query
-     */
-    async getControl<T extends NxFormfieldControlHarness>(type: HarnessQuery<T>): Promise<T>;
+  /**
+   * Gets the control inside the form-field, matching the query
+   */
+  // eslint-disable-next-line @typescript-eslint/unified-signatures
+  async getControl<T extends NxFormfieldControlHarness>(type: HarnessQuery<T>): Promise<T>;
 
-    /**
-     * Gets the control inside the form-field, matching the provided control harness
-     */
+  /**
+   * Gets the control inside the form-field, matching the provided control harness
+   */
+  async getControl<T extends NxFormfieldControlHarness>(
     // eslint-disable-next-line @typescript-eslint/unified-signatures
-    async getControl<T extends NxFormfieldControlHarness>(type: ComponentHarnessConstructor<T>): Promise<T>;
+    type: ComponentHarnessConstructor<T>,
+  ): Promise<T>;
 
-    /**
-     * Gets the control inside the form field, only supporting default controls (input, dropdown, etc.)
-     */
-    async getControl(): Promise<FormfieldControlHarness | null>;
-    async getControl<T extends NxFormfieldControlHarness>(type?: HarnessQuery<T>) {
-        if (type) {
-            return this.locatorFor(type)();
-        }
-        const [input, dropdown] = await parallel(() => [this._inputControl(), this._dropdownControl()]);
-
-        return input || dropdown;
+  /**
+   * Gets the control inside the form field, only supporting default controls (input, dropdown, etc.)
+   */
+  async getControl(): Promise<FormfieldControlHarness | null>;
+  async getControl<T extends NxFormfieldControlHarness>(type?: HarnessQuery<T>) {
+    if (type) {
+      return this.locatorFor(type)();
     }
+    const [input, dropdown] = await parallel(() => [this._inputControl(), this._dropdownControl()]);
 
-    async getLabel(): Promise<string> {
-        return (await this._label()).text();
-    }
+    return input || dropdown;
+  }
 
-    async getPrefix(): Promise<TestElement | null> {
-        return this._prefix();
-    }
+  async getLabel(): Promise<string> {
+    return (await this._label()).text();
+  }
 
-    async getSuffix(): Promise<TestElement | null> {
-        return this._suffix();
-    }
+  async getPrefix(): Promise<TestElement | null> {
+    return this._prefix();
+  }
 
-    async getAppendix(): Promise<TestElement | null> {
-        return this._appendix();
-    }
+  async getSuffix(): Promise<TestElement | null> {
+    return this._suffix();
+  }
 
-    async getHint(): Promise<TestElement | null> {
-        return this._hint();
-    }
+  async getAppendix(): Promise<TestElement | null> {
+    return this._appendix();
+  }
 
-    async getHintText(): Promise<string> {
-        return (await this.getHint())?.text() ?? '';
-    }
+  async getHint(): Promise<TestElement | null> {
+    return this._hint();
+  }
 
-    async getErrors(filter: NxFormfieldErrorHarnessFilters = {}): Promise<NxFormfieldErrorHarness[]> {
-        return this.locatorForAll(NxFormfieldErrorHarness.with(filter))();
-    }
+  async getHintText(): Promise<string> {
+    return (await this.getHint())?.text() ?? '';
+  }
 
-    async getErrorTexts(filter: NxFormfieldErrorHarnessFilters = {}): Promise<string[]> {
-        const errors = await this.getErrors(filter);
-        return parallel(() => errors.map(error => error.getText()));
-    }
+  async getErrors(filter: NxFormfieldErrorHarnessFilters = {}): Promise<NxFormfieldErrorHarness[]> {
+    return this.locatorForAll(NxFormfieldErrorHarness.with(filter))();
+  }
 
-    async hasErrors(filter: NxFormfieldErrorHarnessFilters = {}): Promise<boolean> {
-        return (await this.getErrors(filter)).length > 0;
-    }
+  async getErrorTexts(filter: NxFormfieldErrorHarnessFilters = {}): Promise<string[]> {
+    const errors = await this.getErrors(filter);
+    return parallel(() => errors.map((error) => error.getText()));
+  }
 
-    async getNotes(filter: NxFormfieldNoteHarnessFilters = {}): Promise<NxFormfieldNoteHarness[]> {
-        return this.locatorForAll(NxFormfieldNoteHarness.with(filter))();
-    }
+  async hasErrors(filter: NxFormfieldErrorHarnessFilters = {}): Promise<boolean> {
+    return (await this.getErrors(filter)).length > 0;
+  }
 
-    async getNoteTexts(filter: NxFormfieldNoteHarnessFilters = {}): Promise<string[]> {
-        const notes = await this.getNotes(filter);
-        return parallel(() => notes.map(hint => hint.getText()));
-    }
+  async getNotes(filter: NxFormfieldNoteHarnessFilters = {}): Promise<NxFormfieldNoteHarness[]> {
+    return this.locatorForAll(NxFormfieldNoteHarness.with(filter))();
+  }
 
-    async hasNotes(filter: NxFormfieldNoteHarnessFilters = {}): Promise<boolean> {
-        return (await this.getNotes(filter)).length > 0;
-    }
+  async getNoteTexts(filter: NxFormfieldNoteHarnessFilters = {}): Promise<string[]> {
+    const notes = await this.getNotes(filter);
+    return parallel(() => notes.map((hint) => hint.getText()));
+  }
 
-    async isValid(): Promise<boolean> {
-        const host = await this.host();
-        return host.hasClass('has-error').then(result => !result);
-    }
+  async hasNotes(filter: NxFormfieldNoteHarnessFilters = {}): Promise<boolean> {
+    return (await this.getNotes(filter)).length > 0;
+  }
 
-    async isReadonly(): Promise<boolean> {
-        return (await this.host()).hasClass('is-readonly');
-    }
+  async isValid(): Promise<boolean> {
+    const host = await this.host();
+    return host.hasClass('has-error').then((result) => !result);
+  }
+
+  async isReadonly(): Promise<boolean> {
+    return (await this.host()).hasClass('is-readonly');
+  }
 }

@@ -1,31 +1,31 @@
 .custom-toggle-button {
-    --plain-button-color: var(--text-01);
-    --plain-button-hover-color: var(--plain-button-color);
-    --plain-button-active-color: var(--plain-button-color);
-    --plain-button-icon-size: 16px;
-    width: 32px;
-    height: 24px;
+  --plain-button-color: var(--text-01);
+  --plain-button-hover-color: var(--plain-button-color);
+  --plain-button-active-color: var(--plain-button-color);
+  --plain-button-icon-size: 16px;
+  width: 32px;
+  height: 24px;
 }
 
 .custom-toggle-button[disabled] {
-    cursor: initial;
+  cursor: initial;
 }
 
 :host ::ng-deep .nx-plain-button__content-wrapper {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 cdk-tree-node {
-    margin-bottom: 16px;
-    align-items: center;
+  margin-bottom: 16px;
+  align-items: center;
 }
 
 cdk-tree-node:focus-visible {
-    outline: none;
+  outline: none;
 
-    nx-checkbox {
-        border-radius: var(--checkbox-border-radius);
-        box-shadow: var(--focus-box-shadow);
-    }
+  nx-checkbox {
+    border-radius: var(--checkbox-border-radius);
+    box-shadow: var(--focus-box-shadow);
+  }
 }

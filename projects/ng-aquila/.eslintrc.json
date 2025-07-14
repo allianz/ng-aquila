@@ -1,32 +1,35 @@
 {
-    "extends": "../../.eslintrc.json",
-    "ignorePatterns": ["!**/*", "src/schematics/**/*", "documentation/examples/**/*"],
-    "overrides": [
-        {
-            "files": ["*.ts"],
-            "parserOptions": {
-                "project": ["projects/ng-aquila/tsconfig.lib.json", "projects/ng-aquila/tsconfig.spec.json"],
-                "createDefaultProgram": true
-            },
-            "rules": {
-                "@typescript-eslint/prefer-readonly": "off",
-                "@angular-eslint/no-conflicting-lifecycle": "warn",
-                "@angular-eslint/no-output-on-prefix": "warn"
-            }
-        },
-        {
-            "files": ["*.spec.ts"],
-            "rules": {
-                "jasmine/no-suite-dupes": "off",
-                "jasmine/no-spec-dupes": "off"
-            }
-        },
-        {
-            "files": ["*.html"],
-            "rules": {
-                "@angular-eslint/template/click-events-have-key-events": "off",
-                "@angular-eslint/template/no-duplicate-attributes": "warn"
-            }
-        }
-    ]
+  "extends": "../../.eslintrc.json",
+  "ignorePatterns": ["!**/*", "src/schematics/**/*", "documentation/examples/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": [
+          "projects/ng-aquila/tsconfig.lib.json",
+          "projects/ng-aquila/tsconfig.spec.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "rules": {
+        "@typescript-eslint/prefer-readonly": "off",
+        "@angular-eslint/no-conflicting-lifecycle": "warn",
+        "@angular-eslint/no-output-on-prefix": "warn"
+      }
+    },
+    {
+      "files": ["*.spec.ts"],
+      "rules": {
+        "jasmine/no-suite-dupes": "off",
+        "jasmine/no-spec-dupes": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "rules": {
+        "@angular-eslint/template/click-events-have-key-events": "off",
+        "@angular-eslint/template/no-duplicate-attributes": "warn"
+      }
+    }
+  ]
 }

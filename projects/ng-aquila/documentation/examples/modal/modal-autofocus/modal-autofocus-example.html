@@ -1,59 +1,59 @@
 <button
-    nxButton="small"
-    class="nx-margin-right-xs"
-    (click)="openFromTemplate('dialog')"
+  nxButton="small"
+  class="nx-margin-right-xs"
+  (click)="openFromTemplate('dialog')"
 >
-    dialog (false)
+  dialog (false)
 </button>
 <button
-    nxButton="small"
-    class="nx-margin-right-xs"
-    (click)="openFromTemplate('first-tabbable')"
+  nxButton="small"
+  class="nx-margin-right-xs"
+  (click)="openFromTemplate('first-tabbable')"
 >
-    first-tabbable (true) - default
+  first-tabbable (true) - default
 </button>
 <button
-    nxButton="small"
-    class="nx-margin-right-xs"
-    (click)="openFromTemplate('first-heading')"
+  nxButton="small"
+  class="nx-margin-right-xs"
+  (click)="openFromTemplate('first-heading')"
 >
-    first-heading
+  first-heading
 </button>
 <button
-    nxButton="small"
-    class="nx-margin-right-xs"
-    (click)="openFromTemplate('.custom-content')"
+  nxButton="small"
+  class="nx-margin-right-xs"
+  (click)="openFromTemplate('.custom-content')"
 >
-    custom selector
+  custom selector
 </button>
 
 <ng-template #template>
-    <div nxModalContent>
-        <h3 nxHeadline="subsection-medium" class="nx-modal-margin-bottom">
-            Autofocus when the modal is opened
-        </h3>
-        <p nxCopytext="small" class="nx-modal-margin-bottom">
-            Elements inside this modal will receive focus based on the value of
-            the autofocus property.
-        </p>
-        <p class="custom-content">Custom selector</p>
-    </div>
-    <div nxModalActions>
-        <button
-            nxModalClose
-            class="nx-margin-bottom-0 nx-margin-right-xs"
-            nxButton="small secondary"
-            type="button"
-        >
-            Cancel
-        </button>
-        <button
-            nxModalClose
-            class="nx-margin-bottom-0"
-            nxButton="small"
-            type="button"
-        >
-            Proceed
-        </button>
-    </div>
+  <div nxModalContent>
+    <h3 nxHeadline="subsection-medium" class="nx-modal-margin-bottom">
+      Autofocus when the modal is opened
+    </h3>
+    <p nxCopytext="small" class="nx-modal-margin-bottom">
+      Elements inside this modal will receive focus based on the value of the
+      autofocus property.
+    </p>
+    <p class="custom-content">Custom selector</p>
+  </div>
+  <div nxModalActions>
+    <button
+      nxModalClose
+      class="nx-margin-bottom-0 nx-margin-right-xs"
+      nxButton="small secondary"
+      type="button"
+    >
+      Cancel
+    </button>
+    <button
+      nxModalClose
+      class="nx-margin-bottom-0"
+      nxButton="small"
+      type="button"
+    >
+      Proceed
+    </button>
+  </div>
 </ng-template>

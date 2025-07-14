@@ -1,22 +1,22 @@
 <form [formGroup]="testForm">
-    <nx-formfield label="Birthday">
-        <input
-            nxDatefield
-            nxInput
-            [datepicker]="myDatepicker"
-            formControlName="date"
-        />
-        <span nxFormfieldHint>MM/DD/YYYY</span>
+  <nx-formfield label="Birthday">
+    <input
+      nxDatefield
+      nxInput
+      [datepicker]="myDatepicker"
+      formControlName="date"
+    />
+    <span nxFormfieldHint>MM/DD/YYYY</span>
 
-        <nx-datepicker-toggle
-            [for]="myDatepicker"
-            nxFormfieldSuffix
-        ></nx-datepicker-toggle>
-        <nx-datepicker #myDatepicker></nx-datepicker>
-        @if( testForm.get('date')?.hasError('required')) {
-        <nx-error nxFormfieldError> This field is required </nx-error>
-        } @if ( testForm.get('date')?.hasError('nxDatefieldParse')) {
-        <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
-        }
-    </nx-formfield>
+    <nx-datepicker-toggle
+      [for]="myDatepicker"
+      nxFormfieldSuffix
+    ></nx-datepicker-toggle>
+    <nx-datepicker #myDatepicker></nx-datepicker>
+    @if( testForm.get('date')?.hasError('required')) {
+    <nx-error nxFormfieldError> This field is required </nx-error>
+    } @if ( testForm.get('date')?.hasError('nxDatefieldParse')) {
+    <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+    }
+  </nx-formfield>
 </form>

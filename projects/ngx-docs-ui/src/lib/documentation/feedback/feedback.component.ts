@@ -1,63 +1,72 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxPopoverModule } from '@allianz/ng-aquila/popover';
+import { NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, ElementRef, Inject, Input, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxPopoverModule } from '@aposin/ng-aquila/popover';
-import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  Optional,
+  ViewChild,
+} from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { NXV_FEEDBACK_LINKS } from './../../core/tokens';
 
 @Component({
-    selector: 'nxv-feedback',
-    templateUrl: './feedback.component.html',
-    styleUrls: ['./feedback.component.scss'],
-    host: {
-        '[class.is-mobile]': 'showMobileView',
-        '[class.is-desktop]': '!showMobileView',
-    },
-    imports: [NgTemplateOutlet, NxPopoverModule, NxIconModule, NxButtonModule],
+  selector: 'nxv-feedback',
+  templateUrl: './feedback.component.html',
+  styleUrls: ['./feedback.component.scss'],
+  host: {
+    '[class.is-mobile]': 'showMobileView',
+    '[class.is-desktop]': '!showMobileView',
+  },
+  imports: [NgTemplateOutlet, NxPopoverModule, NxIconModule, NxButtonModule],
 })
 export class NxvFeedbackComponent implements OnInit, OnDestroy {
-    @ViewChild('mobileButton') mobileButton!: ElementRef;
+  @ViewChild('mobileButton') mobileButton!: ElementRef;
 
-    @Input() page!: string;
+  @Input() page!: string;
 
-    showMobileView = false;
+  showMobileView = false;
 
-    feedbackLinkPositive!: string;
-    feedbackLinkNegative!: string;
+  feedbackLinkPositive!: string;
+  feedbackLinkNegative!: string;
 
-    private readonly _destroyed = new Subject<void>();
+  private readonly _destroyed = new Subject<void>();
 
-    constructor(
-        @Optional() @Inject(NXV_FEEDBACK_LINKS) private readonly _feedbackLinks: any | null,
-        private readonly viewportService: NxViewportService,
-        private readonly focusMonitor: FocusMonitor,
-    ) {
-        this.viewportService
-            .min(NxBreakpoints.BREAKPOINT_LARGE)
-            .pipe(takeUntil(this._destroyed))
-            .subscribe(isGreaterThanMedium => {
-                if (isGreaterThanMedium && this.showMobileView) {
-                    this.showMobileView = false;
-                    this.focusMonitor.stopMonitoring(this.mobileButton);
-                } else if (!isGreaterThanMedium && !this.showMobileView) {
-                    this.showMobileView = true;
-                    setTimeout(() => this.focusMonitor.monitor(this.mobileButton));
-                }
-            });
-    }
+  constructor(
+    @Optional() @Inject(NXV_FEEDBACK_LINKS) private readonly _feedbackLinks: any | null,
+    private readonly viewportService: NxViewportService,
+    private readonly focusMonitor: FocusMonitor,
+  ) {
+    this.viewportService
+      .min(NxBreakpoints.BREAKPOINT_LARGE)
+      .pipe(takeUntil(this._destroyed))
+      .subscribe((isGreaterThanMedium) => {
+        if (isGreaterThanMedium && this.showMobileView) {
+          this.showMobileView = false;
+          this.focusMonitor.stopMonitoring(this.mobileButton);
+        } else if (!isGreaterThanMedium && !this.showMobileView) {
+          this.showMobileView = true;
+          setTimeout(() => this.focusMonitor.monitor(this.mobileButton));
+        }
+      });
+  }
 
-    ngOnInit(): void {
-        this.feedbackLinkPositive = this._feedbackLinks[this.page].positivePreset;
-        this.feedbackLinkNegative = this._feedbackLinks[this.page].negativePreset;
-    }
+  ngOnInit(): void {
+    this.feedbackLinkPositive = this._feedbackLinks[this.page].positivePreset;
+    this.feedbackLinkNegative = this._feedbackLinks[this.page].negativePreset;
+  }
 
-    ngOnDestroy(): void {
-        this._destroyed.next();
-        this._destroyed.complete();
-    }
+  ngOnDestroy(): void {
+    this._destroyed.next();
+    this._destroyed.complete();
+  }
 }

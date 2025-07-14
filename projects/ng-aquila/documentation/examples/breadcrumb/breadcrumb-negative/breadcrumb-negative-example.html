@@ -1,14 +1,11 @@
 <div class="docs-inverse-container">
-    <nav aria-label="Breadcrumb">
-        <ol nxBreadcrumb negative="true">
-            @for (item of items; track item; let i = $index; let isLast = $last)
-            {
-            <li>
-                <a nxBreadcrumbItem [routerLink]="isLast ? null : '#'">
-                    {{ item }}
-                </a>
-            </li>
-            }
-        </ol>
-    </nav>
+  <nav aria-label="Breadcrumb">
+    <ol nxBreadcrumb negative="true">
+      @for (item of items; track item; let i = $index; let isLast = $last) {
+      <li>
+        <a nxBreadcrumbItem [routerLink]="isLast ? null : '#'"> {{ item }} </a>
+      </li>
+      }
+    </ol>
+  </nav>
 </div>

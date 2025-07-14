@@ -1,8 +1,8 @@
 export function lazyServiceTemplate(modules: any[]): string {
-    const resolvedImports = modules.map(m => buildImportForModule(m));
+  const resolvedImports = modules.map((m) => buildImportForModule(m));
 
-    return `import { Injectable, Compiler, Injector } from '@angular/core';
-import { BaseLazyLoadingService } from '@aposin/ngx-docs-ui';
+  return `import { Injectable, Compiler, Injector } from '@angular/core';
+import { BaseLazyLoadingService } from '@allianz/ngx-docs-ui';
 
 @Injectable({ providedIn: 'root' })
 export class LazyLoadingService implements BaseLazyLoadingService {
@@ -32,7 +32,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
 }
 
 function buildImportForModule(module: any): string {
-    const imports = module.relativeImportPath.replace('.ts', '').split('\\').join('/');
+  const imports = module.relativeImportPath.replace('.ts', '').split('\\').join('/');
 
-    return `            case '${module.name}': return import('${imports}').then(m => m.${module.className});`;
+  return `            case '${module.name}': return import('${imports}').then(m => m.${module.className});`;
 }

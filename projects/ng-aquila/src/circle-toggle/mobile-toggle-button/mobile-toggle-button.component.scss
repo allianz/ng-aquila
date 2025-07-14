@@ -1,186 +1,186 @@
 @import '../../shared-styles/index';
 
 :host {
-    display: none;
-    position: relative;
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease;
-    flex-direction: row;
-    border-width: nx-border-size(xs) nx-border-size(m);
-    border-color: v(circle-toggle-border-color);
-    border-style: solid;
-    padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  display: none;
+  position: relative;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+  flex-direction: row;
+  border-width: nx-border-size(xs) nx-border-size(m);
+  border-color: v(circle-toggle-border-color);
+  border-style: solid;
+  padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 :host:not(.is-flipped):not(.is-disabled):not(.is-readonly):hover {
-    background-color: v(circle-toggle-hover-background-color);
-    border-color: v(circle-toggle-hover-border-color);
+  background-color: v(circle-toggle-hover-background-color);
+  border-color: v(circle-toggle-hover-border-color);
 
-    .nx-toggle-button__label-hint,
-    .nx-toggle-button__label-text {
-        color: v(circle-toggle-hover-icon-color);
-    }
+  .nx-toggle-button__label-hint,
+  .nx-toggle-button__label-text {
+    color: v(circle-toggle-hover-icon-color);
+  }
 }
 
 :host-context(.is-responsive) {
-    @include media-breakpoint-down('small') {
-        display: flex;
-    }
+  @include media-breakpoint-down('small') {
+    display: flex;
+  }
 }
 
 .nx-toggle-button__label-hint {
-    color: v(circle-toggle-icon-color);
-    @include type-style(circle-toggle-hint-mobile);
+  color: v(circle-toggle-icon-color);
+  @include type-style(circle-toggle-hint-mobile);
 }
 
 .nx-toggle-button__label-text {
-    color: v(circle-toggle-icon-color);
-    @include type-style(circle-toggle-label-mobile);
-    padding-top: 0;
-    padding-right: nx-spacer(3xs);
-    // hardcode for now, as in design the mobile toggle button doesn't exist anymore
-    font-weight: nx-font-weight(semibold);
+  color: v(circle-toggle-icon-color);
+  @include type-style(circle-toggle-label-mobile);
+  padding-top: 0;
+  padding-right: nx-spacer(3xs);
+  // hardcode for now, as in design the mobile toggle button doesn't exist anymore
+  font-weight: nx-font-weight(semibold);
 
-    :host-context([dir='rtl']) & {
-        padding-right: initial;
-        padding-left: nx-spacer(3xs);
-    }
+  :host-context([dir='rtl']) & {
+    padding-right: initial;
+    padding-left: nx-spacer(3xs);
+  }
 }
 
 .nx-toggle-button__mobile-check {
-    font-size: nx-font-size(s);
-    height: nx-spacer(m);
-    display: inline-block;
-    opacity: 0;
-    margin-right: nx-spacer(2xs);
-    color: v(circle-toggle-checkmark-color);
+  font-size: nx-font-size(s);
+  height: nx-spacer(m);
+  display: inline-block;
+  opacity: 0;
+  margin-right: nx-spacer(2xs);
+  color: v(circle-toggle-checkmark-color);
 
-    :host-context([dir='rtl']) & {
-        margin-right: initial;
-        margin-left: nx-spacer(2xs);
-    }
+  :host-context([dir='rtl']) & {
+    margin-right: initial;
+    margin-left: nx-spacer(2xs);
+  }
 }
 
 :host(.is-first) {
-    border-top-width: nx-border-size(m);
-    border-radius: nx-border-radius(s) nx-border-radius(s) 0 0;
+  border-top-width: nx-border-size(m);
+  border-radius: nx-border-radius(s) nx-border-radius(s) 0 0;
 }
 
 :host(.is-last) {
-    border-bottom-width: nx-border-size(m);
-    border-radius: 0 0 nx-border-radius(s) nx-border-radius(s);
+  border-bottom-width: nx-border-size(m);
+  border-radius: 0 0 nx-border-radius(s) nx-border-radius(s);
 }
 
 :host(.is-flipped) {
-    background-color: v(circle-toggle-selected-background-color);
+  background-color: v(circle-toggle-selected-background-color);
 
-    .nx-toggle-button__label-hint,
-    .nx-toggle-button__label-text {
-        color: v(circle-toggle-selected-icon-color);
-    }
+  .nx-toggle-button__label-hint,
+  .nx-toggle-button__label-text {
+    color: v(circle-toggle-selected-icon-color);
+  }
 
-    .nx-toggle-button__mobile-check {
-        opacity: 1;
-    }
+  .nx-toggle-button__mobile-check {
+    opacity: 1;
+  }
 }
 
 :host(.is-negative) {
-    border-color: v(negative);
+  border-color: v(negative);
+
+  .nx-toggle-button__label-hint,
+  .nx-toggle-button__label-text,
+  .nx-toggle-button__mobile-check {
+    color: v(negative);
+  }
+
+  &:not(.is-flipped):not(.is-disabled):hover {
+    background-color: v(negative-01);
+    border-color: v(negative-01);
 
     .nx-toggle-button__label-hint,
-    .nx-toggle-button__label-text,
-    .nx-toggle-button__mobile-check {
-        color: v(negative);
+    .nx-toggle-button__label-text {
+      color: v(negative-accent);
     }
-
-    &:not(.is-flipped):not(.is-disabled):hover {
-        background-color: v(negative-01);
-        border-color: v(negative-01);
-
-        .nx-toggle-button__label-hint,
-        .nx-toggle-button__label-text {
-            color: v(negative-accent);
-        }
-    }
+  }
 }
 
 :host(.is-negative.is-flipped) {
-    background-color: v(negative);
+  background-color: v(negative);
 
-    .nx-toggle-button__label-hint,
-    .nx-toggle-button__label-text,
-    .nx-toggle-button__mobile-check {
-        color: v(negative-accent);
-    }
+  .nx-toggle-button__label-hint,
+  .nx-toggle-button__label-text,
+  .nx-toggle-button__mobile-check {
+    color: v(negative-accent);
+  }
 }
 
 :host(.is-disabled) {
-    opacity: 0.4;
-    cursor: not-allowed;
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 :host(.is-readonly) {
-    border-color: v(circle-toggle-readonly-border-color);
-    background-color: v(circle-toggle-readonly-background-color);
-    color: v(circle-toggle-readonly-icon-color);
+  border-color: v(circle-toggle-readonly-border-color);
+  background-color: v(circle-toggle-readonly-background-color);
+  color: v(circle-toggle-readonly-icon-color);
 
-    &.is-flipped {
-        background-color: v(circle-toggle-readonly-selected-background-color);
-        color: v(circle-toggle-readonly-selected-icon-color);
-
-        .nx-toggle-button__label-text,
-        .nx-toggle-button__label-hint,
-        .nx-toggle-button__mobile-check {
-            color: v(circle-toggle-readonly-selected-icon-color);
-        }
-    }
+  &.is-flipped {
+    background-color: v(circle-toggle-readonly-selected-background-color);
+    color: v(circle-toggle-readonly-selected-icon-color);
 
     .nx-toggle-button__label-text,
     .nx-toggle-button__label-hint,
     .nx-toggle-button__mobile-check {
-        color: v(circle-toggle-readonly-icon-color);
+      color: v(circle-toggle-readonly-selected-icon-color);
     }
+  }
+
+  .nx-toggle-button__label-text,
+  .nx-toggle-button__label-hint,
+  .nx-toggle-button__mobile-check {
+    color: v(circle-toggle-readonly-icon-color);
+  }
 }
 
 @media screen and (forced-colors: active) {
-    :host {
-        forced-color-adjust: none;
-        background-color: buttonFace !important;
-        border-color: buttonText !important;
-        color: buttonText !important;
+  :host {
+    forced-color-adjust: none;
+    background-color: buttonFace !important;
+    border-color: buttonText !important;
+    color: buttonText !important;
 
-        .nx-toggle-button__label-text,
-        .nx-toggle-button__label-hint {
-            color: buttonText !important;
-        }
+    .nx-toggle-button__label-text,
+    .nx-toggle-button__label-hint {
+      color: buttonText !important;
     }
+  }
 
-    :host.is-flipped {
-        forced-color-adjust: none;
-        background-color: highlight !important;
-        color: highlightText !important;
+  :host.is-flipped {
+    forced-color-adjust: none;
+    background-color: highlight !important;
+    color: highlightText !important;
 
-        .nx-toggle-button__label-text,
-        .nx-toggle-button__label-hint {
-            color: highlightText !important;
-        }
+    .nx-toggle-button__label-text,
+    .nx-toggle-button__label-hint {
+      color: highlightText !important;
     }
+  }
 
-    :host.is-disabled {
-        opacity: 1;
-        border-color: GrayText !important;
-        color: GrayText !important;
-        background-color: buttonFace !important;
+  :host.is-disabled {
+    opacity: 1;
+    border-color: GrayText !important;
+    color: GrayText !important;
+    background-color: buttonFace !important;
 
-        .nx-toggle-button__label-text,
-        .nx-toggle-button__label-hint {
-            color: GrayText !important;
-        }
+    .nx-toggle-button__label-text,
+    .nx-toggle-button__label-hint {
+      color: GrayText !important;
     }
+  }
 }

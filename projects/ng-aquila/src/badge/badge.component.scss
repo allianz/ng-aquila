@@ -1,54 +1,54 @@
 @import '../shared-styles/index';
 :host {
-    @include type-style(badge);
-    display: inline-block;
-    padding: 0 nx-spacer(2xs);
-    white-space: nowrap;
-    border-radius: nx-border-radius(s) * 3;
-    min-width: nx-spacer(m);
+  @include type-style(badge);
+  display: inline-block;
+  padding: 0 nx-spacer(2xs);
+  white-space: nowrap;
+  border-radius: nx-border-radius(s) * 3;
+  min-width: nx-spacer(m);
 
-    @media screen and (forced-colors: active) {
-        border: nx-border-size(xs) solid CanvasText;
-    }
+  @media screen and (forced-colors: active) {
+    border: nx-border-size(xs) solid CanvasText;
+  }
 
-    &.single-letter {
-        padding: 0;
-        text-align: center;
-        min-width: v(badge-line-height);
-    }
+  &.single-letter {
+    padding: 0;
+    text-align: center;
+    min-width: v(badge-line-height);
+  }
 }
 
 @mixin badge-variant($variation: '') {
-    $prefix: 'badge-';
-    @if ($variation != '') {
-        $prefix: 'badge-#{$variation}-';
-    }
+  $prefix: 'badge-';
+  @if ($variation != '') {
+    $prefix: 'badge-#{$variation}-';
+  }
 
-    color: v($prefix + color);
-    background-color: v($prefix + 'background-color');
+  color: v($prefix + color);
+  background-color: v($prefix + 'background-color');
 
-    &.nx-badge--active {
-        background-color: v($prefix + active-background-color);
-        color: v($prefix + active-color);
-    }
-    &.nx-badge--positive {
-        background-color: v($prefix + positive-background-color);
-        color: v($prefix + positive-color);
-    }
-    &.nx-badge--critical {
-        background-color: v($prefix + critical-background-color);
-        color: v($prefix + critical-color);
-    }
-    &.nx-badge--negative {
-        background-color: v($prefix + negative-background-color);
-        color: v($prefix + negative-color);
-    }
+  &.nx-badge--active {
+    background-color: v($prefix + active-background-color);
+    color: v($prefix + active-color);
+  }
+  &.nx-badge--positive {
+    background-color: v($prefix + positive-background-color);
+    color: v($prefix + positive-color);
+  }
+  &.nx-badge--critical {
+    background-color: v($prefix + critical-background-color);
+    color: v($prefix + critical-color);
+  }
+  &.nx-badge--negative {
+    background-color: v($prefix + negative-background-color);
+    color: v($prefix + negative-color);
+  }
 }
 
 :host {
-    @include badge-variant();
+  @include badge-variant();
 }
 
 :host.nx-badge--vibrant {
-    @include badge-variant('vibrant');
+  @include badge-variant('vibrant');
 }

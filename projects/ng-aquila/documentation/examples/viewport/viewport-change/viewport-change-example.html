@@ -3,16 +3,16 @@ and expanded according to the viewport:
 <br />
 <br />
 <nx-sidebar class="my-sidebar" resizeable #sidebar>
-    @for (action of actions; track action) {
-    <button
-        nxAction
-        routerLink="./"
-        [queryParams]="action.query"
-        routerLinkActive="is-selected"
-        type="button"
-    >
-        <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
-        {{action.label}}
-    </button>
-    }
+  @for (action of actions; track action) {
+  <button
+    nxAction
+    routerLink="./"
+    [queryParams]="action.query"
+    routerLinkActive="is-selected"
+    type="button"
+  >
+    <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
+    {{action.label}}
+  </button>
+  }
 </nx-sidebar>

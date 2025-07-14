@@ -1,13 +1,13 @@
+import { NxMessageComponent } from '@allianz/ng-aquila/message';
 import { Component } from '@angular/core';
-import { NxMessageComponent } from '@aposin/ng-aquila/message';
 
 /**
  * @title Success context example
  */
 @Component({
-    selector: 'message-success-example',
-    templateUrl: './message-success-example.html',
-    styleUrls: ['./message-success-example.css'],
-    imports: [NxMessageComponent],
+  selector: 'message-success-example',
+  templateUrl: './message-success-example.html',
+  styleUrls: ['./message-success-example.css'],
+  imports: [NxMessageComponent],
 })
 export class MessageSuccessExampleComponent {}

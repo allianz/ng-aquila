@@ -1,48 +1,48 @@
 <input
-    #input
-    [type]="inputType"
-    [checked]="checked"
-    [value]="value || null"
-    [attr.disabled]="disabled || null"
-    (change)="_onInteractionEvent($event)"
-    (blur)="onTouchedCallback($event)"
-    [attr.id]="id"
-    [attr.name]="name"
-    (click)="_onInputClick($event)"
-    [required]="required"
-    [attr.aria-required]="required"
-    [attr.tabindex]="tabindex"
-    [attr.aria-invalid]="_errorState"
-    [attr.aria-describedby]="_errorListIds || null"
+  #input
+  [type]="inputType"
+  [checked]="checked"
+  [value]="value || null"
+  [attr.disabled]="disabled || null"
+  (change)="_onInteractionEvent($event)"
+  (blur)="onTouchedCallback($event)"
+  [attr.id]="id"
+  [attr.name]="name"
+  (click)="_onInputClick($event)"
+  [required]="required"
+  [attr.aria-required]="required"
+  [attr.tabindex]="tabindex"
+  [attr.aria-invalid]="_errorState"
+  [attr.aria-describedby]="_errorListIds || null"
 />
 <label [attr.for]="id">
-    @if (highlight) {
-        <div class="nx-card-highlight">
-            <ng-content select="[nxHighlightHeader]"></ng-content>
-        </div>
-    }
-    <div class="nx-card-inner">
-        <ng-container *ngTemplateOutlet="indicatorElement"></ng-container>
-
-        <div class="content">
-            <ng-content select="nx-card-header"></ng-content>
-            <ng-content></ng-content>
-            <ng-content select="nx-card-footer"></ng-content>
-        </div>
+  @if (highlight) {
+    <div class="nx-card-highlight">
+      <ng-content select="[nxHighlightHeader]"></ng-content>
     </div>
+  }
+  <div class="nx-card-inner">
+    <ng-container *ngTemplateOutlet="indicatorElement"></ng-container>
+
+    <div class="content">
+      <ng-content select="nx-card-header"></ng-content>
+      <ng-content></ng-content>
+      <ng-content select="nx-card-footer"></ng-content>
+    </div>
+  </div>
 </label>
 
 @if (_errorState) {
-    <ng-content select="nx-error"></ng-content>
+  <ng-content select="nx-error"></ng-content>
 }
 
 <ng-template #indicatorElement>
-    <span [class]="['indicator-element', inputType]">
-        @if (checked && inputType === 'checkbox') {
-            <nx-icon name="check" aria-hidden="true"></nx-icon>
-        }
-        @if (checked && inputType === 'radio') {
-            <div class="check-dot"></div>
-        }
-    </span>
+  <span [class]="['indicator-element', inputType]">
+    @if (checked && inputType === 'checkbox') {
+      <nx-icon name="check" aria-hidden="true"></nx-icon>
+    }
+    @if (checked && inputType === 'radio') {
+      <div class="check-dot"></div>
+    }
+  </span>
 </ng-template>

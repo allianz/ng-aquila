@@ -1,23 +1,23 @@
 @import '../shared-styles/index';
 
 :host {
-    height: 48px;
-    border-bottom: nx-border-size(xs) solid;
-    border-bottom-color: v(toolbar-border-bottom-color);
-    background: v(toolbar-background);
-    display: flex;
-    box-sizing: border-box;
-    padding: 0 nx-spacer(2m);
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    white-space: nowrap;
+  height: 48px;
+  border-bottom: nx-border-size(xs) solid;
+  border-bottom-color: v(toolbar-border-bottom-color);
+  background: v(toolbar-background);
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 nx-spacer(2m);
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
 
-    @media screen and (forced-colors: active) {
-        border: 1px solid CanvasText;
-    }
+  @media screen and (forced-colors: active) {
+    border: 1px solid CanvasText;
+  }
 
-    @media screen and (max-width: 703px) {
-        padding: 0 nx-spacer(s);
-    }
+  @media screen and (max-width: 703px) {
+    padding: 0 nx-spacer(s);
+  }
 }

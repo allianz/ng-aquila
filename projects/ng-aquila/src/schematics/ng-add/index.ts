@@ -14,11 +14,11 @@ import { Schema } from './schema';
 import { aquilaVersion } from './version-names';
 
 export default function (options: Schema): Rule {
-    return (tree, context) => {
-        addPackageToPackageJson(tree, '@aposin/ng-aquila', `^${aquilaVersion}`);
-        // the angular cli just adds `@aposin/ng-aquila` to the package.json but it is not installed
-        // yet so we run the install first before we install the peer dependencies
-        const installTaskId = context.addTask(new NodePackageInstallTask());
-        context.addTask(new RunSchematicTask('ng-add-peer-dependencies', options), [installTaskId]);
-    };
+  return (tree, context) => {
+    addPackageToPackageJson(tree, '@allianz/ng-aquila', `^${aquilaVersion}`);
+    // the angular cli just adds `@allianz/ng-aquila` to the package.json but it is not installed
+    // yet so we run the install first before we install the peer dependencies
+    const installTaskId = context.addTask(new NodePackageInstallTask());
+    context.addTask(new RunSchematicTask('ng-add-peer-dependencies', options), [installTaskId]);
+  };
 }

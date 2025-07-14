@@ -1,188 +1,188 @@
 @import '../shared-styles/index';
 
 :host {
-    display: block;
+  display: block;
 }
 
 .nx-tab-header__item {
-    @include tab__item;
-    flex: 0 0 auto;
+  @include tab__item;
+  flex: 0 0 auto;
 
-    // don't show inner dotted border on firefox
-    &::-moz-focus-inner {
-        border: 0;
-    }
+  // don't show inner dotted border on firefox
+  &::-moz-focus-inner {
+    border: 0;
+  }
 }
 
 :host {
-    .nx-tab-header__item {
-        overflow: visible; // fix for IE, which cuts off the box-shadow of the focus style
+  .nx-tab-header__item {
+    overflow: visible; // fix for IE, which cuts off the box-shadow of the focus style
+  }
+
+  .nx-tab-header__item:first-child {
+    margin-left: 0;
+
+    [dir='rtl'] & {
+      margin-right: 0;
+      margin-left: nx-spacer(s);
     }
+  }
 
-    .nx-tab-header__item:first-child {
-        margin-left: 0;
+  .nx-tab-header__item:last-child {
+    margin-right: 0;
 
-        [dir='rtl'] & {
-            margin-right: 0;
-            margin-left: nx-spacer(s);
-        }
+    [dir='rtl'] & {
+      margin-right: nx-spacer(s);
+      margin-left: 0;
     }
-
-    .nx-tab-header__item:last-child {
-        margin-right: 0;
-
-        [dir='rtl'] & {
-            margin-right: nx-spacer(s);
-            margin-left: 0;
-        }
-    }
+  }
 }
 
 .nx-tab-header__item::before {
-    content: '';
-    position: absolute;
-    width: calc(100% + #{nx-spacer(xl)});
-    height: v(tab-item-border-width);
-    bottom: 0;
-    left: -(nx-spacer(2m));
-    background-color: v(tab-item-border-color);
+  content: '';
+  position: absolute;
+  width: calc(100% + #{nx-spacer(xl)});
+  height: v(tab-item-border-width);
+  bottom: 0;
+  left: -(nx-spacer(2m));
+  background-color: v(tab-item-border-color);
 }
 
 .nx-tab-header__item:first-child::before {
-    left: 0;
-    width: calc(100% + #{nx-spacer(2m)});
+  left: 0;
+  width: calc(100% + #{nx-spacer(2m)});
 
-    [dir='rtl'] & {
-        left: initial;
-        right: 0;
-    }
+  [dir='rtl'] & {
+    left: initial;
+    right: 0;
+  }
 }
 
 .nx-tab-header__item:last-child::before {
-    width: calc(100% + #{nx-spacer(2m)});
+  width: calc(100% + #{nx-spacer(2m)});
 
-    [dir='rtl'] & {
-        left: initial;
-        right: -(nx-spacer(2m));
-    }
+  [dir='rtl'] & {
+    left: initial;
+    right: -(nx-spacer(2m));
+  }
 }
 
 :host(.is-expert) {
-    .nx-tab-header__item::before {
-        display: none;
-    }
+  .nx-tab-header__item::before {
+    display: none;
+  }
 
-    .nx-tab-header__item:not(.nx-tab-header__item--active) {
-        border-color: transparent;
-    }
+  .nx-tab-header__item:not(.nx-tab-header__item--active) {
+    border-color: transparent;
+  }
 
-    .nx-tab-header__item {
-        padding-bottom: nx-spacer(2xs);
-    }
+  .nx-tab-header__item {
+    padding-bottom: nx-spacer(2xs);
+  }
 
-    .nx-tab-header__item.nx-tab-header__item--active {
-        padding-bottom: nx-spacer(3xs);
-    }
+  .nx-tab-header__item.nx-tab-header__item--active {
+    padding-bottom: nx-spacer(3xs);
+  }
 }
 
 :host(.is-expert):not(.is-negative) {
-    .nx-tab-header__item:not(.nx-tab-header__item--active):not(.nx-tab-header__item--disabled) {
-        color: v(tab-expert-color);
+  .nx-tab-header__item:not(.nx-tab-header__item--active):not(.nx-tab-header__item--disabled) {
+    color: v(tab-expert-color);
 
-        &:hover {
-            color: v(tab-item-hover-color);
-        }
-
-        &:active {
-            color: v(tab-item-active-color);
-        }
-
-        @media screen and (forced-colors: active) {
-            color: buttonText;
-        }
+    &:hover {
+      color: v(tab-item-hover-color);
     }
-    .nx-tab-header__item--disabled {
-        color: v(tab-expert-item-disabled-color);
-        border-color: v(tab-expert-item-disabled-color);
+
+    &:active {
+      color: v(tab-item-active-color);
     }
+
+    @media screen and (forced-colors: active) {
+      color: buttonText;
+    }
+  }
+  .nx-tab-header__item--disabled {
+    color: v(tab-expert-item-disabled-color);
+    border-color: v(tab-expert-item-disabled-color);
+  }
 }
 
 .nx-tab-header__item--active {
-    @include tab__item--active;
+  @include tab__item--active;
 
-    &::before {
-        display: none;
-    }
+  &::before {
+    display: none;
+  }
 }
 
 .nx-tab-header__item--disabled {
-    @include tab__item--disabled;
+  @include tab__item--disabled;
 }
 
 .nx-tab-label__content {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    white-space: nowrap;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
 }
 
 // Focus styles
 .nx-tab-header__item.cdk-keyboard-focused .nx-tab-label__content {
-    @include focus-style;
-    border-radius: nx-border-radius(s);
+  @include focus-style;
+  border-radius: nx-border-radius(s);
 }
 
 :host(.is-negative) {
+  color: v(negative);
+
+  .nx-tab-header__item {
     color: v(negative);
+    border-bottom-color: v(negative);
 
-    .nx-tab-header__item {
-        color: v(negative);
-        border-bottom-color: v(negative);
-
-        &:hover,
-        &:active {
-            font-weight: v(tab-item-active-font-weight);
-        }
+    &:hover,
+    &:active {
+      font-weight: v(tab-item-active-font-weight);
     }
+  }
 
-    .nx-tab-header__item.nx-tab-header__item--disabled {
-        @include tab__item--disabled;
-        color: v(tab-item-disabled-negative-color);
-        border-color: v(tab-item-disabled-negative-color);
-    }
+  .nx-tab-header__item.nx-tab-header__item--disabled {
+    @include tab__item--disabled;
+    color: v(tab-item-disabled-negative-color);
+    border-color: v(tab-item-disabled-negative-color);
+  }
 }
 
 :host(.is-negative.is-expert) {
-    .nx-tab-header__item.nx-tab-header__item--disabled:not(.nx-tab-header__item--active) {
-        border-bottom-color: transparent;
-    }
+  .nx-tab-header__item.nx-tab-header__item--disabled:not(.nx-tab-header__item--active) {
+    border-bottom-color: transparent;
+  }
 }
 
 :host(.is-disabled) {
-    cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 :host(.is-disabled.is-negative) {
-    .nx-tab-header__item {
-        color: v(tab-item-disabled-negative-color);
-        border-color: v(tab-item-disabled-negative-color);
-    }
+  .nx-tab-header__item {
+    color: v(tab-item-disabled-negative-color);
+    border-color: v(tab-item-disabled-negative-color);
+  }
 }
 
 @media screen and (forced-colors: active) {
-    :host(.is-negative) {
-        color: buttonText;
+  :host(.is-negative) {
+    color: buttonText;
 
-        .nx-tab-header__item {
-            color: buttonText;
-            border-bottom-color: buttonText;
-        }
+    .nx-tab-header__item {
+      color: buttonText;
+      border-bottom-color: buttonText;
     }
+  }
 
-    :host(.is-disabled.is-negative) {
-        .nx-tab-header__item {
-            color: GrayText;
-            border-bottom-color: GrayText;
-        }
+  :host(.is-disabled.is-negative) {
+    .nx-tab-header__item {
+      color: GrayText;
+      border-bottom-color: GrayText;
     }
+  }
 }

@@ -1,33 +1,33 @@
 <nx-progress-stepper [progress]="progress" currentStepLabel="Step">
-    @for (step of testStepsData; track step) {
-    <nx-step [label]="step">
-        <div class="nx-margin-top-s">
-            <div>
-                <nx-slider
-                    [min]="0"
-                    [max]="1"
-                    [step]="0.01"
-                    label="Change the progress value"
-                    [(value)]="progress"
-                ></nx-slider>
-            </div>
-            <button
-                nxButton="secondary small"
-                nxStepperPrevious
-                class="nx-margin-right-2xs nx-margin-top-s"
-                type="button"
-            >
-                Previous
-            </button>
-            <button
-                nxButton="primary small"
-                nxStepperNext
-                class="nx-margin-top-s"
-                type="button"
-            >
-                Next
-            </button>
-        </div>
-    </nx-step>
-    }
+  @for (step of testStepsData; track step) {
+  <nx-step [label]="step">
+    <div class="nx-margin-top-s">
+      <div>
+        <nx-slider
+          [min]="0"
+          [max]="1"
+          [step]="0.01"
+          label="Change the progress value"
+          [(value)]="progress"
+        ></nx-slider>
+      </div>
+      <button
+        nxButton="secondary small"
+        nxStepperPrevious
+        class="nx-margin-right-2xs nx-margin-top-s"
+        type="button"
+      >
+        Previous
+      </button>
+      <button
+        nxButton="primary small"
+        nxStepperNext
+        class="nx-margin-top-s"
+        type="button"
+      >
+        Next
+      </button>
+    </div>
+  </nx-step>
+  }
 </nx-progress-stepper>

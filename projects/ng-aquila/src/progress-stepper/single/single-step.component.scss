@@ -3,38 +3,38 @@
 $margin-bottom: nx-spacer(2xs);
 
 :host {
-    display: block;
+  display: block;
 }
 
 .nx-single-step__infos {
-    display: flex;
-    @include type-style(single-stepper-step);
-    color: v(single-stepper-step-color);
-    margin-top: nx-spacer(2xs);
+  display: flex;
+  @include type-style(single-stepper-step);
+  color: v(single-stepper-step-color);
+  margin-top: nx-spacer(2xs);
 }
 
 // We will show those parts only on larger screens
 nx-progressbar {
-    margin-bottom: $margin-bottom;
-    display: block;
+  margin-bottom: $margin-bottom;
+  display: block;
 }
 
 @include media-breakpoint-down(small) {
-    nx-progressbar,
-    .nx-single-step__infos {
-        display: none;
-    }
+  nx-progressbar,
+  .nx-single-step__infos {
+    display: none;
+  }
 }
 
 .nx-single-step__next {
-    margin-left: auto;
+  margin-left: auto;
 
-    :host-context([dir='rtl']) & {
-        margin-right: auto;
-        margin-left: initial;
-    }
+  :host-context([dir='rtl']) & {
+    margin-right: auto;
+    margin-left: initial;
+  }
 
-    @include media-breakpoint-down(small) {
-        display: none;
-    }
+  @include media-breakpoint-down(small) {
+    display: none;
+  }
 }

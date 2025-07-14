@@ -8,21 +8,21 @@ import { NxIconButtonComponent } from './icon-button.component';
 import { NxPlainButtonComponent } from './plain-button.component';
 
 @NgModule({
-    imports: [
-        NxButtonComponent,
-        NxIconButtonComponent,
-        NxPlainButtonComponent,
-        NxAnchorButtonComponent,
-        NxAnchorIconButtonComponent,
-        NxAnchorPlainButtonComponent,
-    ],
-    exports: [
-        NxButtonComponent,
-        NxIconButtonComponent,
-        NxPlainButtonComponent,
-        NxAnchorButtonComponent,
-        NxAnchorIconButtonComponent,
-        NxAnchorPlainButtonComponent,
-    ],
+  imports: [
+    NxButtonComponent,
+    NxIconButtonComponent,
+    NxPlainButtonComponent,
+    NxAnchorButtonComponent,
+    NxAnchorIconButtonComponent,
+    NxAnchorPlainButtonComponent,
+  ],
+  exports: [
+    NxButtonComponent,
+    NxIconButtonComponent,
+    NxPlainButtonComponent,
+    NxAnchorButtonComponent,
+    NxAnchorIconButtonComponent,
+    NxAnchorPlainButtonComponent,
+  ],
 })
 export class NxButtonModule {}

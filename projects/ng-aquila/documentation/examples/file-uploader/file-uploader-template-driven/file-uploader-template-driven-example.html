@@ -1,31 +1,31 @@
 <nx-file-uploader #documentUpload [(ngModel)]="myFiles" [uploader]="uploader">
-    <nx-label size="small" class="nx-margin-bottom-3xs"
-        >Please upload a file</nx-label
-    >
-    <span class="nx-margin-bottom-s" nxFileUploadHint
-        >Only one file is allowed.</span
-    >
+  <nx-label size="small" class="nx-margin-bottom-3xs"
+    >Please upload a file</nx-label
+  >
+  <span class="nx-margin-bottom-s" nxFileUploadHint
+    >Only one file is allowed.</span
+  >
 
-    <button
-        nxButton="primary"
-        type="button"
-        class="nx-margin-bottom-s"
-        nxFileUploadButton
-    >
-        <nx-icon
-            name="plus"
-            class="nx-margin-right-2xs"
-            aria-hidden="true"
-        ></nx-icon>
-        Add File
-    </button>
+  <button
+    nxButton="primary"
+    type="button"
+    class="nx-margin-bottom-s"
+    nxFileUploadButton
+  >
+    <nx-icon
+      name="plus"
+      class="nx-margin-right-2xs"
+      aria-hidden="true"
+    ></nx-icon>
+    Add File
+  </button>
 </nx-file-uploader>
 
 <button
-    nxButton="secondary small"
-    type="button"
-    [nxFileUploadTriggerFor]="documentUpload"
-    [disabled]="documentUpload.value && !documentUpload.value.length"
+  nxButton="secondary small"
+  type="button"
+  [nxFileUploadTriggerFor]="documentUpload"
+  [disabled]="documentUpload.value && !documentUpload.value.length"
 >
-    Upload files
+  Upload files
 </button>

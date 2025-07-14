@@ -1,65 +1,69 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import {
+  NxContextMenuModule,
+  NxContextMenuTriggerDirective,
+} from '@allianz/ng-aquila/context-menu';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { Component, Inject, Input, Optional, ViewChild } from '@angular/core';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxContextMenuModule, NxContextMenuTriggerDirective } from '@aposin/ng-aquila/context-menu';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NX_DOC_VERSIONS } from '../../../core/tokens';
 import { DocVersionChannel, DocVersions } from './../../../core/types';
 
 @Component({
-    selector: 'nxv-version-select',
-    templateUrl: 'version-select.component.html',
-    styleUrls: ['version-select.component.scss'],
-    imports: [NxButtonModule, NxContextMenuModule, NxIconModule],
+  selector: 'nxv-version-select',
+  templateUrl: 'version-select.component.html',
+  styleUrls: ['version-select.component.scss'],
+  imports: [NxButtonModule, NxContextMenuModule, NxIconModule],
 })
 export class NxVersionSelectComponent {
-    _selected = '';
-    _versionSelectIsOpened = false;
+  _selected = '';
+  _versionSelectIsOpened = false;
 
-    @Input() set versions(value: DocVersions) {
-        this._versions = value;
-        this._selected = value.currentChannel;
+  @Input() set versions(value: DocVersions) {
+    this._versions = value;
+    this._selected = value.currentChannel;
+  }
+  get versions(): DocVersions {
+    return this._versions!;
+  }
+  private _versions: DocVersions | null = null;
+
+  @ViewChild(NxContextMenuTriggerDirective, { static: true })
+  contextMenuTrigger!: NxContextMenuTriggerDirective;
+
+  constructor(@Optional() @Inject(NX_DOC_VERSIONS) _versions: DocVersions | null) {
+    if (_versions) {
+      this.versions = _versions;
     }
-    get versions(): DocVersions {
-        return this._versions!;
-    }
-    private _versions: DocVersions | null = null;
+    // bind it to our component otherwise it's in the context of the dropdown
+    this.formatVersion = this.formatVersion.bind(this);
+  }
 
-    @ViewChild(NxContextMenuTriggerDirective, { static: true }) contextMenuTrigger!: NxContextMenuTriggerDirective;
-
-    constructor(@Optional() @Inject(NX_DOC_VERSIONS) _versions: DocVersions | null) {
-        if (_versions) {
-            this.versions = _versions;
-        }
-        // bind it to our component otherwise it's in the context of the dropdown
-        this.formatVersion = this.formatVersion.bind(this);
-    }
-
-    formatVersion(channel: string) {
-        // Only show the version when the current one is selected.
-        // We won't know the opposite version, as we don't maintain them
-        // in both directions
-        if (this.versions && this.versions.currentChannel === channel) {
-            return `${channel} (${this.versions.currentVersion})`;
-        }
-
-        return `${channel}`;
+  formatVersion(channel: string) {
+    // Only show the version when the current one is selected.
+    // We won't know the opposite version, as we don't maintain them
+    // in both directions
+    if (this.versions && this.versions.currentChannel === channel) {
+      return `${channel} (${this.versions.currentVersion})`;
     }
 
-    mobileFormatVersion(channel: string) {
-        // Only show the version when the current one is selected.
-        // We won't know the opposite version, as we don't maintain them
-        // in both directions
-        if (this.versions && this.versions.currentChannel === channel) {
-            return `${this.versions.currentVersion}`;
-        }
+    return `${channel}`;
+  }
 
-        return `${channel}`;
+  mobileFormatVersion(channel: string) {
+    // Only show the version when the current one is selected.
+    // We won't know the opposite version, as we don't maintain them
+    // in both directions
+    if (this.versions && this.versions.currentChannel === channel) {
+      return `${this.versions.currentVersion}`;
     }
 
-    changeVersion(channel: DocVersionChannel) {
-        if (channel?.url && window.top) {
-            window.top.location.href = channel?.url;
-        }
+    return `${channel}`;
+  }
+
+  changeVersion(channel: DocVersionChannel) {
+    if (channel?.url && window.top) {
+      window.top.location.href = channel?.url;
     }
+  }
 }

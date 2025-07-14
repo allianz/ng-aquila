@@ -1,43 +1,43 @@
 @import '../../shared-styles/index';
 
 .nx-comparison-table__mobile-toggle-section-header {
-    @include type-style(comparison-table-mobile-section-header);
+  @include type-style(comparison-table-mobile-section-header);
 
-    background-color: v(comparison-table-toggle-section-header-background-color);
-    padding: 8px 16px;
+  background-color: v(comparison-table-toggle-section-header-background-color);
+  padding: 8px 16px;
 
-    border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+  border-top: nx-border-size(xs) solid v(comparison-table-border-color);
 }
 
 .nx-comparison-table-toggle-section__header-wrapper {
-    display: block;
-    width: 100%;
-    cursor: pointer;
+  display: block;
+  width: 100%;
+  cursor: pointer;
 }
 
 .nx-comparison-table-toggle-section__header-wrapper:focus {
-    // don't show inner dotted border on firefox
-    outline: 0;
+  // don't show inner dotted border on firefox
+  outline: 0;
 }
 
 .nx-comparison-table-toggle-section__header-content {
-    @include type-style(comparison-table-toggle-section-header);
-    border: nx-border-size(xs) solid v(comparison-table-border-color);
-    background-color: v(comparison-table-toggle-section-header-background-color);
+  @include type-style(comparison-table-toggle-section-header);
+  border: nx-border-size(xs) solid v(comparison-table-border-color);
+  background-color: v(comparison-table-toggle-section-header-background-color);
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    @media screen and (forced-colors: active) {
-        border-color: buttonText;
-        background-color: buttonFace;
-        color: buttonText;
-    }
+  @media screen and (forced-colors: active) {
+    border-color: buttonText;
+    background-color: buttonFace;
+    color: buttonText;
+  }
 }
 
 .nx-expansion-panel__chevron {
-    pointer-events: none;
-    font-size: v(comparison-table-toggle-section-chevron-size);
-    color: v(comparison-table-toggle-section-chevron-color);
+  pointer-events: none;
+  font-size: v(comparison-table-toggle-section-chevron-size);
+  color: v(comparison-table-toggle-section-chevron-color);
 }

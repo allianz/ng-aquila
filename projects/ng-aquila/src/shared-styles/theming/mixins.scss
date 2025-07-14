@@ -6,43 +6,43 @@
 /// @param {String} $theme - the token map of the theme
 /// @param {String} $name - the name of the new theme
 /// @param {String} $base - the theme used as a token base for the new theme
-/// @example - @include($my-tokens, testTheme, aposin);
+/// @example - @include($my-tokens, testTheme, aquila);
 @function nx-register-theme($theme, $name, $base: null) {
-    @if ($base == null) {
-        $nx-theme: map.merge($nx-theme, $theme) !global;
-    } @else {
-        $parent-theme: map.get($nx-themes, $base);
-        @if ($parent-theme == null) {
-            @error 'Theme: parent theme is not defined.';
-        }
-        // overwrite the already existing tokens by merging:
-        // new tokens + overwritten base theme tokens + base theme tokens
-        // global is needed to change a variable value from a local scope
-        $nx-theme: map.merge($parent-theme, $theme) !global;
+  @if ($base == null) {
+    $nx-theme: map.merge($nx-theme, $theme) !global;
+  } @else {
+    $parent-theme: map.get($nx-themes, $base);
+    @if ($parent-theme == null) {
+      @error 'Theme: parent theme is not defined.';
     }
+    // overwrite the already existing tokens by merging:
+    // new tokens + overwritten base theme tokens + base theme tokens
+    // global is needed to change a variable value from a local scope
+    $nx-theme: map.merge($parent-theme, $theme) !global;
+  }
 
-    $nx-themes: add-theme($nx-themes, $name, $nx-theme) !global;
-    @return $nx-themes;
+  $nx-themes: add-theme($nx-themes, $name, $nx-theme) !global;
+  @return $nx-themes;
 }
 
 // Compile theme tokens to css
 /// @access public
 /// @returns injected into the :root scope css variable declarations
 /// @param {String} $theme-name - the name of theme to build
-/// @example -  @include nx-build-theme(aposin)
-@mixin nx-build-theme($theme-name: aposin) {
-    $theme: map.get($nx-themes, $theme-name);
+/// @example -  @include nx-build-theme(aquila)
+@mixin nx-build-theme($theme-name: aquila) {
+  $theme: map.get($nx-themes, $theme-name);
 
-    :root,
-    :host {
-        @each $name, $value in $theme {
-            $parentValue: map.get($theme, $value);
-            @if ($parentValue != null) {
-                $value: var(--#{$value});
-            }
-            @include _css-var($name, $value);
-        }
+  :root,
+  :host {
+    @each $name, $value in $theme {
+      $parentValue: map.get($theme, $value);
+      @if ($parentValue != null) {
+        $value: var(--#{$value});
+      }
+      @include _css-var($name, $value);
     }
+  }
 }
 
 /// @access public
@@ -50,28 +50,28 @@
 /// @param {String} $name - the name of the token to get the styles for
 /// @example -  @include type-style('body-short-01');
 @mixin type-style($name) {
-    font-size: v(#{$name}-font-size);
-    line-height: v(#{$name}-line-height);
-    font-weight: v(#{$name}-font-weight);
-    letter-spacing: v(#{$name}-letter-spacing);
+  font-size: v(#{$name}-font-size);
+  line-height: v(#{$name}-line-height);
+  font-weight: v(#{$name}-font-weight);
+  letter-spacing: v(#{$name}-letter-spacing);
 }
 
 // Create a custom property declaration
 /// @access private
 @mixin _css-var($name, $value) {
-    #{"--"+$name}: #{$value};
+  #{"--"+$name}: #{$value};
 }
 
 // Retired helper to get css var with a fallback value
 // Now basically a wrapper for css var function.
 @function v($token) {
-    $value: _nx-deep-find-value($nx-theme, $token, map.get($nx-theme, $token));
+  $value: _nx-deep-find-value($nx-theme, $token, map.get($nx-theme, $token));
 
-    @if ($value == null) {
-        @error 'Theme: cannot find value for key `' + $token + '`';
-    }
+  @if ($value == null) {
+    @error 'Theme: cannot find value for key `' + $token + '`';
+  }
 
-    @return var(--#{$token});
+  @return var(--#{$token});
 }
 
 /// Gets a css variable with a fallback value
@@ -80,7 +80,7 @@
 /// @returns var(--<$token>, <fallback-value>
 /// @example - background: nx-theme(primary-action)
 @function nx-theme($token) {
-    @return v($token);
+  @return v($token);
 }
 
 // Helper function to make it possible to reuse keys from the same map.
@@ -94,19 +94,19 @@
 // these references
 /// @access private
 @function _nx-deep-find-value($theme, $key, $value) {
-    $parent-value: map.get($theme, $value);
+  $parent-value: map.get($theme, $value);
 
-    @if ($parent-value != null) {
-        @return _nx-deep-find-value($theme, $value, $parent-value);
-    }
+  @if ($parent-value != null) {
+    @return _nx-deep-find-value($theme, $value, $parent-value);
+  }
 
-    @return $value;
+  @return $value;
 }
 
 // Adds a new theme to the list of available themes
 @function add-theme($nx-themes, $key, $value: null) {
-    $new-theme: (
-        $key: $value,
-    );
-    @return map.merge($nx-themes, $new-theme);
+  $new-theme: (
+    $key: $value,
+  );
+  @return map.merge($nx-themes, $new-theme);
 }

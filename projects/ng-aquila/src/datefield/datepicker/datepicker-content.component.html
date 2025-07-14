@@ -1,33 +1,33 @@
 <div class="nx-calendar-focus-trap" cdkTrapFocus>
-    <div class="nx-datepicker-header">
-        <button
-            (click)="datepicker.close()"
-            nxPlainButton
-            class="nx-datepicker-close"
-            type="button"
-            #closeButton
-            [attr.aria-label]="_intl.closeIconLabel || 'Close calendar'"
-        >
-            <nx-icon name="close" aria-hidden="true"></nx-icon>
-        </button>
-    </div>
-
-    <nx-calendar
-        [id]="datepicker.id"
-        [ngClass]="datepicker.panelClass"
-        [startAt]="datepicker.startAt"
-        [startView]="datepicker.startView"
-        [isRange]="isRange()"
-        [minDate]="datepicker.minDate"
-        [maxDate]="datepicker.maxDate"
-        [dateFilter]="datepicker.dateFilter"
-        [selected]="datepicker.selectedComputed()"
-        [showTodayButton]="datepicker.showTodayButton"
-        (selectedChange)="datepicker.select($event)"
-        (yearSelected)="datepicker.selectYear($event)"
-        (monthSelected)="datepicker.selectMonth($event)"
-        (_userSelection)="datepicker.close()"
-        (todayButtonClick)="datepicker.handleTodayButtonClick()"
+  <div class="nx-datepicker-header">
+    <button
+      (click)="datepicker.close()"
+      nxPlainButton
+      class="nx-datepicker-close"
+      type="button"
+      #closeButton
+      [attr.aria-label]="_intl.closeIconLabel || 'Close calendar'"
     >
-    </nx-calendar>
+      <nx-icon name="close" aria-hidden="true"></nx-icon>
+    </button>
+  </div>
+
+  <nx-calendar
+    [id]="datepicker.id"
+    [ngClass]="datepicker.panelClass"
+    [startAt]="datepicker.startAt"
+    [startView]="datepicker.startView"
+    [isRange]="isRange()"
+    [minDate]="datepicker.minDate"
+    [maxDate]="datepicker.maxDate"
+    [dateFilter]="datepicker.dateFilter"
+    [selected]="datepicker.selectedComputed()"
+    [showTodayButton]="datepicker.showTodayButton"
+    (selectedChange)="datepicker.select($event)"
+    (yearSelected)="datepicker.selectYear($event)"
+    (monthSelected)="datepicker.selectMonth($event)"
+    (_userSelection)="datepicker.close()"
+    (todayButtonClick)="datepicker.handleTodayButtonClick()"
+  >
+  </nx-calendar>
 </div>

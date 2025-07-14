@@ -1,10 +1,10 @@
 .docs-inverse-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -4px;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -4px;
+  width: 100%;
 }
 
 button {
-    margin: 0 4px 16px;
+  margin: 0 4px 16px;
 }

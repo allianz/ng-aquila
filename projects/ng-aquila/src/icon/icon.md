@@ -23,7 +23,7 @@ Please note that `provideNdbxIcons()` has to be used on the root level, so in th
 
 
 ```ts
-import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { provideAllianzIcons } from '@allianz/ngx-brand-kit/icon';
 
 // in app.config.ts
@@ -41,7 +41,7 @@ Instead of the global provider you can continue to use the `AllianzIconModule` a
 
 
 ```ts
-import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { AllianzIconModule } from '@allianz/ngx-brand-kit/icon';
 
 @NgModule({
@@ -69,7 +69,7 @@ For all open source users: internally the projects use an icon font we unfortuna
 So if you copy any code example that is including an icon and want to see how it looks you can use that same module, for that please install font awesome `npm i @fortawesome/fontawesome-free` use this import:
 
 ```ts
-import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
+import { NxDocumentationIconModule } from '@allianz/ng-aquila/documentation-icons';
 ```
 
 add it to your AppModule and include the `node_modules/@fortawesome/fontawesome-free/css/all.css` to your project. Alternatively you can of course use any other icon fonts or svgs and register them with the icon registry.

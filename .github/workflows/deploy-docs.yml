@@ -1,37 +1,37 @@
 name: Deploy documentation app to github pages
 on: workflow_dispatch
 env:
-    NODE_VERSION: '22'
+  NODE_VERSION: '22'
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
-              with:
-                  persist-credentials: false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ env.NODE_VERSION }}
-                  cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
 
-            - name: Install
-              run: npm ci
+      - name: Install
+        run: npm ci
 
-            - name: Build documentation
-              run: |
-                  npm run build:lib
-                  npm run library:generate:docs
-                  npm run build:docs -- --base-href=/ng-aquila/ --no-progress
-                  cp projects/opensource-documentation/src/404.html dist/opensource-documentation/browser
+      - name: Build documentation
+        run: |
+          npm run build:lib
+          npm run library:generate:docs
+          npm run build:docs -- --base-href=/ng-aquila/ --no-progress
+          cp projects/opensource-documentation/src/404.html dist/opensource-documentation/browser
 
-            - name: Deploy 🚀
-              uses: JamesIves/github-pages-deploy-action@3.7.1
-              with:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  BRANCH: gh-pages
-                  FOLDER: dist/opensource-documentation/browser
-                  CLEAN: true
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist/opensource-documentation/browser
+          CLEAN: true

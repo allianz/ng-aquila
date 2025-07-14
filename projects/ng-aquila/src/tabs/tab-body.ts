@@ -1,17 +1,17 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    Input,
-    OnChanges,
-    OnDestroy,
-    OnInit,
-    SimpleChanges,
-    ViewChild,
-    ViewContainerRef,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -21,68 +21,68 @@ import { NxTabGroupBase } from './tab-group-base';
 
 /** @docs-private */
 @Component({
-    selector: 'nx-tab-body',
-    templateUrl: 'tab-body.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    styleUrls: ['./tab-body.scss'],
-    standalone: true,
+  selector: 'nx-tab-body',
+  templateUrl: 'tab-body.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./tab-body.scss'],
+  standalone: true,
 })
 export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
-    @ViewChild('outlet', { static: true, read: ViewContainerRef }) _outlet!: ViewContainerRef;
+  @ViewChild('outlet', { static: true, read: ViewContainerRef }) _outlet!: ViewContainerRef;
 
-    @Input() tab!: NxTabComponent;
+  @Input() tab!: NxTabComponent;
 
-    @Input() set active(value: BooleanInput) {
-        this._active = coerceBooleanProperty(value);
+  @Input() set active(value: BooleanInput) {
+    this._active = coerceBooleanProperty(value);
+  }
+  get active(): boolean {
+    return this._active;
+  }
+  private _active = false;
+
+  private readonly _destroyed = new Subject<void>();
+
+  constructor(
+    private readonly _tabGroup: NxTabGroupBase,
+    private readonly _focusMonitor: FocusMonitor,
+    private readonly _elementRef: ElementRef,
+  ) {}
+
+  ngOnInit(): void {
+    this._tabGroup._appearanceChange.pipe(takeUntil(this._destroyed)).subscribe(() => {
+      this.detach();
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this._focusMonitor.monitor(this._elementRef);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('active' in changes) {
+      const change = changes.active;
+      if (change.currentValue) {
+        this.attach();
+      } else {
+        this.detach();
+      }
     }
-    get active(): boolean {
-        return this._active;
+  }
+
+  ngOnDestroy(): void {
+    this._destroyed.next();
+    this._destroyed.complete();
+    this._focusMonitor.stopMonitoring(this._elementRef);
+  }
+
+  attach() {
+    this._outlet.insert(this.tab.contentViewRef);
+  }
+
+  detach() {
+    const index = this._outlet.indexOf(this.tab.contentViewRef);
+    if (index !== -1) {
+      this._outlet.detach(index);
     }
-    private _active = false;
-
-    private readonly _destroyed = new Subject<void>();
-
-    constructor(
-        private readonly _tabGroup: NxTabGroupBase,
-        private readonly _focusMonitor: FocusMonitor,
-        private readonly _elementRef: ElementRef,
-    ) {}
-
-    ngOnInit(): void {
-        this._tabGroup._appearanceChange.pipe(takeUntil(this._destroyed)).subscribe(() => {
-            this.detach();
-        });
-    }
-
-    ngAfterViewInit(): void {
-        this._focusMonitor.monitor(this._elementRef);
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
-        if ('active' in changes) {
-            const change = changes.active;
-            if (change.currentValue) {
-                this.attach();
-            } else {
-                this.detach();
-            }
-        }
-    }
-
-    ngOnDestroy(): void {
-        this._destroyed.next();
-        this._destroyed.complete();
-        this._focusMonitor.stopMonitoring(this._elementRef);
-    }
-
-    attach() {
-        this._outlet.insert(this.tab.contentViewRef);
-    }
-
-    detach() {
-        const index = this._outlet.indexOf(this.tab.contentViewRef);
-        if (index !== -1) {
-            this._outlet.detach(index);
-        }
-    }
+  }
 }

@@ -1,9 +1,9 @@
+import { NxDatefieldModule } from '@allianz/ng-aquila/datefield';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxMessageModule } from '@allianz/ng-aquila/message';
+import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
+import { NxSwitcherModule } from '@allianz/ng-aquila/switcher';
 import { NgModule } from '@angular/core';
-import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxMessageModule } from '@aposin/ng-aquila/message';
-import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
-import { NxSwitcherModule } from '@aposin/ng-aquila/switcher';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { DatefieldBasicExampleComponent } from './datefield-basic/datefield-basic-example';
@@ -29,69 +29,66 @@ import { DatefieldTodayButtonExampleComponent } from './datefield-today-button/d
 import { DatefieldToggleFocusExampleComponent } from './datefield-toggle-focus/datefield-toggle-focus-example';
 
 const EXAMPLES = [
-    DatefieldBasicExampleComponent,
-    DatefieldDisabledExampleComponent,
-    DatefieldFilterExampleComponent,
-    DatefieldFormatInjectionExampleComponent,
-    DatefieldFormattingExampleComponent,
-    DatefieldInjectionTokenExampleComponent,
-    DatefieldIsoExampleComponent,
-    DatefieldLocalizeDateExampleComponent,
-    DatefieldLocalizeTextsExampleComponent,
-    DatefieldManualExampleComponent,
-    DatefieldMinMaxExampleComponent,
-    DatefieldParsingExampleComponent,
-    DatefieldRangeExampleComponent,
-    DatefieldRangeValidationExampleComponent,
-    DatefieldReactiveExampleComponent,
-    DatefieldStartviewExampleComponent,
-    DatefieldTodayButtonExampleComponent,
-    DatefieldToggleFocusExampleComponent,
-    DatefieldScrollStrategyProviderExampleComponent,
-    DatefieldReadonlyExampleComponent,
-    DatefieldRangeFormatExampleComponent,
+  DatefieldBasicExampleComponent,
+  DatefieldDisabledExampleComponent,
+  DatefieldFilterExampleComponent,
+  DatefieldFormatInjectionExampleComponent,
+  DatefieldFormattingExampleComponent,
+  DatefieldInjectionTokenExampleComponent,
+  DatefieldIsoExampleComponent,
+  DatefieldLocalizeDateExampleComponent,
+  DatefieldLocalizeTextsExampleComponent,
+  DatefieldManualExampleComponent,
+  DatefieldMinMaxExampleComponent,
+  DatefieldParsingExampleComponent,
+  DatefieldRangeExampleComponent,
+  DatefieldRangeValidationExampleComponent,
+  DatefieldReactiveExampleComponent,
+  DatefieldStartviewExampleComponent,
+  DatefieldTodayButtonExampleComponent,
+  DatefieldToggleFocusExampleComponent,
+  DatefieldScrollStrategyProviderExampleComponent,
+  DatefieldReadonlyExampleComponent,
+  DatefieldRangeFormatExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxDatefieldModule,
-        NxMomentDateModule,
-        NxInputModule,
-        NxSwitcherModule,
-        NxMessageModule,
-        ExamplesSharedModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxDatefieldModule,
+    NxMomentDateModule,
+    NxInputModule,
+    NxSwitcherModule,
+    NxMessageModule,
+    ExamplesSharedModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class DatefieldExamplesModule {
-    static components() {
-        return {
-            'datefield-basic': DatefieldBasicExampleComponent,
-            'datefield-disabled': DatefieldDisabledExampleComponent,
-            'datefield-filter': DatefieldFilterExampleComponent,
-            'datefield-format-injection':
-                DatefieldFormatInjectionExampleComponent,
-            'datefield-formatting': DatefieldFormattingExampleComponent,
-            'datefield-injection-token':
-                DatefieldInjectionTokenExampleComponent,
-            'datefield-iso': DatefieldIsoExampleComponent,
-            'datefield-localize-date': DatefieldLocalizeDateExampleComponent,
-            'datefield-localize-texts': DatefieldLocalizeTextsExampleComponent,
-            'datefield-manual': DatefieldManualExampleComponent,
-            'datefield-min-max': DatefieldMinMaxExampleComponent,
-            'datefield-parsing': DatefieldParsingExampleComponent,
-            'datefield-range': DatefieldRangeExampleComponent,
-            'datefield-range-validation':
-                DatefieldRangeValidationExampleComponent,
-            'datefield-reactive': DatefieldReactiveExampleComponent,
-            'datefield-startview': DatefieldStartviewExampleComponent,
-            'datefield-today-button': DatefieldTodayButtonExampleComponent,
-            'datefield-toggle-focus': DatefieldToggleFocusExampleComponent,
-            'datefield-scroll-strategy-provider':
-                DatefieldScrollStrategyProviderExampleComponent,
-            'datefield-readonly': DatefieldReadonlyExampleComponent,
-            'datefield-range-format': DatefieldRangeFormatExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'datefield-basic': DatefieldBasicExampleComponent,
+      'datefield-disabled': DatefieldDisabledExampleComponent,
+      'datefield-filter': DatefieldFilterExampleComponent,
+      'datefield-format-injection': DatefieldFormatInjectionExampleComponent,
+      'datefield-formatting': DatefieldFormattingExampleComponent,
+      'datefield-injection-token': DatefieldInjectionTokenExampleComponent,
+      'datefield-iso': DatefieldIsoExampleComponent,
+      'datefield-localize-date': DatefieldLocalizeDateExampleComponent,
+      'datefield-localize-texts': DatefieldLocalizeTextsExampleComponent,
+      'datefield-manual': DatefieldManualExampleComponent,
+      'datefield-min-max': DatefieldMinMaxExampleComponent,
+      'datefield-parsing': DatefieldParsingExampleComponent,
+      'datefield-range': DatefieldRangeExampleComponent,
+      'datefield-range-validation': DatefieldRangeValidationExampleComponent,
+      'datefield-reactive': DatefieldReactiveExampleComponent,
+      'datefield-startview': DatefieldStartviewExampleComponent,
+      'datefield-today-button': DatefieldTodayButtonExampleComponent,
+      'datefield-toggle-focus': DatefieldToggleFocusExampleComponent,
+      'datefield-scroll-strategy-provider':
+        DatefieldScrollStrategyProviderExampleComponent,
+      'datefield-readonly': DatefieldReadonlyExampleComponent,
+      'datefield-range-format': DatefieldRangeFormatExampleComponent,
+    };
+  }
 }

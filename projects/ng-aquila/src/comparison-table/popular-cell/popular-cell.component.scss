@@ -1,15 +1,15 @@
 .nx-comparison-table__popular-cell.is-hidden,
 ::ng-deep td.nx-comparison-table__mobile-popular-cell.is-hidden div {
-    display: none;
+  display: none;
 }
 
 td.nx-comparison-table__mobile-popular-cell.is-hidden {
-    padding: 0;
+  padding: 0;
 }
 
 .nx-comparison-table__mobile-popular-cell {
-    &.is-error {
-        border-left: 1px solid var(--danger) !important;
-        border-right: 1px solid var(--danger) !important;
-    }
+  &.is-error {
+    border-left: 1px solid var(--danger) !important;
+    border-right: 1px solid var(--danger) !important;
+  }
 }

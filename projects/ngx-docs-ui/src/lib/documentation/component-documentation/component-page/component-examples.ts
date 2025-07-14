@@ -5,10 +5,10 @@ import { ExampleViewerComponent } from '../../../example-viewer/example-viewer.c
 import { ComponentService } from '../../../service/component.service';
 
 @Component({
-    selector: 'nxv-component-examples',
-    templateUrl: 'component-examples.html',
-    imports: [ExampleViewerComponent, AsyncPipe],
+  selector: 'nxv-component-examples',
+  templateUrl: 'component-examples.html',
+  imports: [ExampleViewerComponent, AsyncPipe],
 })
 export class ComponentExamples {
-    constructor(readonly componentService: ComponentService) {}
+  constructor(readonly componentService: ComponentService) {}
 }

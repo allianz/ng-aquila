@@ -1,12 +1,12 @@
 section {
-    display: flex;
-    align-items: flex-end;
-    font-size: 1rem;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    text-align: center;
+  display: flex;
+  align-items: flex-end;
+  font-size: 1rem;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  text-align: center;
 }
 
 section div {
-    flex: 1;
+  flex: 1;
 }

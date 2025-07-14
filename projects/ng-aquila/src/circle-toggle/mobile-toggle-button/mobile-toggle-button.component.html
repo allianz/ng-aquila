@@ -1,12 +1,12 @@
 <nx-icon class="nx-toggle-button__mobile-check" name="check" aria-hidden="true"></nx-icon>
 <!-- If there is no label defined, use the circleText instead -->
 <span class="nx-toggle-button__label-text">
-    @if (label) {
-        {{ label }}
-    } @else {
-        {{ circleText }}
-    }
+  @if (label) {
+    {{ label }}
+  } @else {
+    {{ circleText }}
+  }
 </span>
 @if (hint) {
-    <span class="nx-toggle-button__label-hint">({{ hint }})</span>
+  <span class="nx-toggle-button__label-hint">({{ hint }})</span>
 }

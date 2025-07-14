@@ -1,11 +1,11 @@
 :host {
-    display: flex;
-    margin: 0 -16px;
-    align-items: flex-start;
-    flex-wrap: wrap;
+  display: flex;
+  margin: 0 -16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 nx-badge {
-    margin: 16px;
-    flex-shrink: 0;
+  margin: 16px;
+  flex-shrink: 0;
 }

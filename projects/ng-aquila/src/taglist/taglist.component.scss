@@ -1,36 +1,36 @@
 @import '../shared-styles/index';
 
 :host {
-    position: relative;
-    min-height: nx-spacer(2m);
-    display: flex;
-    justify-content: space-between;
+  position: relative;
+  min-height: nx-spacer(2m);
+  display: flex;
+  justify-content: space-between;
 
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 }
 
 .nx-taglist {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .nx-taglist__list-item {
-    list-style: none;
-    margin-right: nx-spacer(xs);
-    margin-bottom: nx-spacer(xs);
-    flex-wrap: wrap;
-    display: flex;
+  list-style: none;
+  margin-right: nx-spacer(xs);
+  margin-bottom: nx-spacer(xs);
+  flex-wrap: wrap;
+  display: flex;
 
-    :host-context([dir='rtl']) & {
-        margin-right: initial;
-        margin-left: nx-spacer(xs);
-    }
+  :host-context([dir='rtl']) & {
+    margin-right: initial;
+    margin-left: nx-spacer(xs);
+  }
 }
 
 .nx-taglist--keyword {
-    @include media-breakpoint-response(mobile) {
-        justify-content: center;
-    }
+  @include media-breakpoint-response(mobile) {
+    justify-content: center;
+  }
 }

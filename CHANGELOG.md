@@ -263,7 +263,7 @@ For the checkbox the indeterminate state was updated. The radio button got an ov
 
 ### ⚠ BREAKING CHANGES
 
-Please run `ng update @aposin/ng-aquila` to migrate the breaking changes automatically.
+Please run `ng update @allianz/ng-aquila` to migrate the breaking changes automatically.
 
 * **number-stepper:** the `readonly` input got renamed to `inputFieldReadonly`. the `readonly` property before this change only set the input field to readonly but left the number stepper operational via the buttons. this was not properly named and was changed now to make room for a proper readonly state that got added.
 
@@ -854,7 +854,7 @@ In short:
 "styles": [
   "node_modules/ag-grid-community/styles/ag-grid.css",
   "node_modules/ag-grid-community/styles/ag-theme-alpine.css",
-  "node_modules/@aposin/ng-aquila/themes/ag-theme-aquila.css",
+  "node_modules/@allianz/ng-aquila/themes/ag-theme-aquila.css",
   "src/styles.scss"
 ]
 ```
@@ -1195,7 +1195,7 @@ In the `Breaking Changes` section of [the Changelog](./guides/CHANGELOG) you can
 The formfield formerly reserved space at the bottom for a possible hint. This space also served as the spacing between formfields and the hint would render in this reserved space. This leads to situations where you don't have sufficient space between the hint and the next row.
 From now on if a hint is present there will be additional space after the hint.
 
-If this somehow affects your application in a negative way you can temporarily use a compatibility CSS file which provides the previous styles. For that import the file `@aposin/ng-aquila/css/compatibility/formfield-padding.css` in the angular.json
+If this somehow affects your application in a negative way you can temporarily use a compatibility CSS file which provides the previous styles. For that import the file `@allianz/ng-aquila/css/compatibility/formfield-padding.css` in the angular.json
 
 ### `nxMask` validation prevented optional controls
 The `nxMask` internal validator always validated empty strings, resulting in a `nxMaskLengthError`. This makes it impossible to have a control as optional. We fixed this bug which is technically a breaking change. If you relied on getting the `nxMaskLengthError` for empty strings as a replacement for a required validator please add the `required` validator now.
@@ -1639,7 +1639,7 @@ The new `nx-data-display` provides a description component that consists of a la
 
 # [13.0.0-next.0](https://github.com/aposin/ng-aquila/compare/v12.2.2...v13.0.0-next.0) (2021-12-17)
 
-To install this version, run `npm install @aposin/ng-aquila@next`.
+To install this version, run `npm install @allianz/ng-aquila@next`.
 
 ### Features
 
@@ -1725,7 +1725,7 @@ We are officially releasing version 12 that is based on Angular12. For updating 
 
 # [12.0.0-next.0](https://github.com/aposin/ng-aquila/compare/v11.7.3...v12.0.0-next.0) (2021-08-09)
 
-To install this version, run `npm install @aposin/ng-aquila@next`.
+To install this version, run `npm install @allianz/ng-aquila@next`.
 
 ### Features
 
@@ -1961,7 +1961,7 @@ The small stage was extended to be used in both expert and retail scenarios. It 
   </nx-single-stepper>
 ```
 
--   The outer margins of components were removed. For an easier upgrade path we provide a `compatibility.css` file that restores the margins prior to this change. To use this add "node_modules/@aposin/ng-aquila/css/compatibility.css" to your styles in `angular.json`.
+-   The outer margins of components were removed. For an easier upgrade path we provide a `compatibility.css` file that restores the margins prior to this change. To use this add "node_modules/@allianz/ng-aquila/css/compatibility.css" to your styles in `angular.json`.
 
     The exact changes are:
 

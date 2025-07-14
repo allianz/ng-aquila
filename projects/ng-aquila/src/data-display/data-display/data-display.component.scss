@@ -1,65 +1,65 @@
 @import '../../shared-styles/index';
 
 :host {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    &.is-horizontal {
-        flex-direction: row;
+  &.is-horizontal {
+    flex-direction: row;
 
-        > .nx-data-display__value {
-            flex-grow: 1;
-        }
+    > .nx-data-display__value {
+      flex-grow: 1;
+    }
+  }
+
+  &.is-horizontal-columns {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    > .nx-data-display__value {
+      grid-column-end: span 6;
     }
 
-    &.is-horizontal-columns {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
+    ::ng-deep > .nx-data-display__label {
+      grid-column-end: span 6;
+    }
+  }
 
-        > .nx-data-display__value {
-            grid-column-end: span 6;
-        }
+  &.is-horizontal,
+  &.is-horizontal-columns {
+    ::ng-deep > .nx-data-display__label {
+      padding-right: 4px;
 
-        ::ng-deep > .nx-data-display__label {
-            grid-column-end: span 6;
-        }
+      &:after {
+        display: inline;
+        content: ':';
+      }
     }
 
-    &.is-horizontal,
-    &.is-horizontal-columns {
-        ::ng-deep > .nx-data-display__label {
-            padding-right: 4px;
+    @each $col in 3, 4, 8, 9 {
+      &.nx-data-display__label-columns-#{$col} > ::ng-deep .nx-data-display__label {
+        grid-column-end: span $col;
+      }
 
-            &:after {
-                display: inline;
-                content: ':';
-            }
-        }
-
-        @each $col in 3, 4, 8, 9 {
-            &.nx-data-display__label-columns-#{$col} > ::ng-deep .nx-data-display__label {
-                grid-column-end: span $col;
-            }
-
-            &.nx-data-display__label-columns-#{$col} > .nx-data-display__value {
-                grid-column-end: span (12 - $col);
-            }
-        }
+      &.nx-data-display__label-columns-#{$col} > .nx-data-display__value {
+        grid-column-end: span (12 - $col);
+      }
     }
+  }
 
-    &.is-small {
-        @include type-style(data-display-small);
+  &.is-small {
+    @include type-style(data-display-small);
+  }
+
+  &.is-medium {
+    @include type-style(data-display-medium);
+  }
+
+  &.is-large {
+    @include type-style(data-display-large);
+
+    @include media-breakpoint-response(mobile) {
+      @include type-style(data-display-large-mobile);
     }
-
-    &.is-medium {
-        @include type-style(data-display-medium);
-    }
-
-    &.is-large {
-        @include type-style(data-display-large);
-
-        @include media-breakpoint-response(mobile) {
-            @include type-style(data-display-large-mobile);
-        }
-    }
+  }
 }

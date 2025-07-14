@@ -1,23 +1,21 @@
 <nx-radio-group
-    name="singleRadioOutputTest"
-    (groupValueChange)="log('groupValueChange occured: '+$event.value)"
+  name="singleRadioOutputTest"
+  (groupValueChange)="log('groupValueChange occured: '+$event.value)"
 >
-    <nx-label class="nx-margin-bottom-m"
-        >This is a nx-radio-group label</nx-label
-    >
-    <nx-radio
-        value="option1"
-        class="nx-margin-bottom-m"
-        (valueChange)="log('nxValueChange occured: '+$event.value)"
-    >
-        Option 1
-    </nx-radio>
-    <nx-radio
-        value="option2"
-        (valueChange)="log('nxValueChange occured: '+$event.value)"
-    >
-        Option 2
-    </nx-radio>
+  <nx-label class="nx-margin-bottom-m">This is a nx-radio-group label</nx-label>
+  <nx-radio
+    value="option1"
+    class="nx-margin-bottom-m"
+    (valueChange)="log('nxValueChange occured: '+$event.value)"
+  >
+    Option 1
+  </nx-radio>
+  <nx-radio
+    value="option2"
+    (valueChange)="log('nxValueChange occured: '+$event.value)"
+  >
+    Option 2
+  </nx-radio>
 </nx-radio-group>
 <br />
 @if (logMessage) {

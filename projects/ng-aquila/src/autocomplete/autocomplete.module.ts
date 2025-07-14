@@ -8,8 +8,15 @@ import { NxAutocompleteOptionComponent } from './autocomplete-option.component';
 import { NxAutocompleteTriggerDirective } from './autocomplete-trigger.directive';
 
 @NgModule({
-    exports: [NxAutocompleteComponent, NxAutocompleteOptionComponent, NxAutocompleteTriggerDirective],
-    imports: [CommonModule, OverlayModule, A11yModule, NxAutocompleteComponent, NxAutocompleteOptionComponent, NxAutocompleteTriggerDirective],
-    providers: [],
+  exports: [NxAutocompleteComponent, NxAutocompleteOptionComponent, NxAutocompleteTriggerDirective],
+  imports: [
+    CommonModule,
+    OverlayModule,
+    A11yModule,
+    NxAutocompleteComponent,
+    NxAutocompleteOptionComponent,
+    NxAutocompleteTriggerDirective,
+  ],
+  providers: [],
 })
 export class NxAutocompleteModule {}

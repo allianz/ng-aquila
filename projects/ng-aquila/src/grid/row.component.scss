@@ -1,13 +1,13 @@
 @import './mixins.scss';
 
 :host(.nx-grid__row--container-query) {
-    @include make-row-by-container-query();
-    @include make-row-variations-by-container-query();
+  @include make-row-by-container-query();
+  @include make-row-variations-by-container-query();
 }
 
 :host(.nx-grid__row--media-query) {
-    @include make-row();
-    @include make-row-variations();
+  @include make-row();
+  @include make-row-variations();
 }
 
 /**

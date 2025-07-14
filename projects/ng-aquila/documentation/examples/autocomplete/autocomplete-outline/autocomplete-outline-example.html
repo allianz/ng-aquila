@@ -1,29 +1,25 @@
 <div nxLayout="grid">
-    <div nxRow>
-        <div nxCol="12">
-            <h4 nxHeadline="subsection-xsmall" class="nx-margin-bottom-m">
-                Autocomplete with appearance outline
-            </h4>
-            <nx-formfield
-                label="Animals"
-                appearance="outline"
-                floatLabel="always"
-            >
-                <input
-                    nxInput
-                    type="text"
-                    #animalInput
-                    [nxAutocomplete]="animal1"
-                    (input)="filter(animalInput.value)"
-                />
-                <nx-autocomplete #animal1="nxAutocomplete">
-                    @for (option of filteredOptions; track option) {
-                    <nx-autocomplete-option [value]="option">
-                        {{ option }}
-                    </nx-autocomplete-option>
-                    }
-                </nx-autocomplete>
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="12">
+      <h4 nxHeadline="subsection-xsmall" class="nx-margin-bottom-m">
+        Autocomplete with appearance outline
+      </h4>
+      <nx-formfield label="Animals" appearance="outline" floatLabel="always">
+        <input
+          nxInput
+          type="text"
+          #animalInput
+          [nxAutocomplete]="animal1"
+          (input)="filter(animalInput.value)"
+        />
+        <nx-autocomplete #animal1="nxAutocomplete">
+          @for (option of filteredOptions; track option) {
+          <nx-autocomplete-option [value]="option">
+            {{ option }}
+          </nx-autocomplete-option>
+          }
+        </nx-autocomplete>
+      </nx-formfield>
     </div>
+  </div>
 </div>

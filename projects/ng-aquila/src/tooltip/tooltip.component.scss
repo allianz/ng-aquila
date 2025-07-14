@@ -5,68 +5,68 @@ $tooltip-arrow-size: nx-spacer(2xs);
 $tooltip-arrow-offset: -$tooltip-arrow-size * 0.5;
 
 ::ng-deep .nx-tooltip-panel {
-    // The overlay reference updates the pointer-events style property directly on the HTMLElement
-    // depending on the state of the overlay. For tooltips the overlay panel should never enable
-    // pointer events. To overwrite the inline CSS from the overlay reference `!important` is needed.
-    pointer-events: none !important;
+  // The overlay reference updates the pointer-events style property directly on the HTMLElement
+  // depending on the state of the overlay. For tooltips the overlay panel should never enable
+  // pointer events. To overwrite the inline CSS from the overlay reference `!important` is needed.
+  pointer-events: none !important;
 }
 
 .nx-tooltip {
-    @include type-style(tooltip);
-    color: v(tooltip-text-color);
-    background-color: v(tooltip-background-color);
-    border-radius: v(tooltip-border-radius);
-    max-width: $tooltip-max-width;
-    padding: 4px 8px;
-    word-break: break-word;
+  @include type-style(tooltip);
+  color: v(tooltip-text-color);
+  background-color: v(tooltip-background-color);
+  border-radius: v(tooltip-border-radius);
+  max-width: $tooltip-max-width;
+  padding: 4px 8px;
+  word-break: break-word;
 }
 
 .nx-tooltip__arrow {
-    position: absolute;
-    width: $tooltip-arrow-size;
-    height: $tooltip-arrow-size;
-    background-color: inherit;
-    z-index: -1;
-    opacity: inherit; //IE FIX
+  position: absolute;
+  width: $tooltip-arrow-size;
+  height: $tooltip-arrow-size;
+  background-color: inherit;
+  z-index: -1;
+  opacity: inherit; //IE FIX
 
-    &--top {
-        transform: translate(-50%, 0) rotate(45deg);
-        bottom: $tooltip-arrow-offset;
+  &--top {
+    transform: translate(-50%, 0) rotate(45deg);
+    bottom: $tooltip-arrow-offset;
+  }
+
+  &--right {
+    transform: translate(0, -50%) rotate(45deg);
+    left: $tooltip-arrow-offset;
+
+    :host-context([dir='rtl']) & {
+      right: $tooltip-arrow-offset;
+      left: auto;
     }
+  }
 
-    &--right {
-        transform: translate(0, -50%) rotate(45deg);
-        left: $tooltip-arrow-offset;
+  &--bottom {
+    transform: translate(-50%, 0) rotate(45deg);
+    top: $tooltip-arrow-offset;
+  }
 
-        :host-context([dir='rtl']) & {
-            right: $tooltip-arrow-offset;
-            left: auto;
-        }
+  &--left {
+    transform: translate(0, -50%) rotate(45deg);
+    right: $tooltip-arrow-offset;
+
+    :host-context([dir='rtl']) & {
+      right: auto;
+      left: $tooltip-arrow-offset;
     }
-
-    &--bottom {
-        transform: translate(-50%, 0) rotate(45deg);
-        top: $tooltip-arrow-offset;
-    }
-
-    &--left {
-        transform: translate(0, -50%) rotate(45deg);
-        right: $tooltip-arrow-offset;
-
-        :host-context([dir='rtl']) & {
-            right: auto;
-            left: $tooltip-arrow-offset;
-        }
-    }
+  }
 }
 
 @media screen and (forced-colors: active) {
-    .nx-tooltip__arrow {
-        border: nx-border-size(xs) solid CanvasText;
-    }
+  .nx-tooltip__arrow {
+    border: nx-border-size(xs) solid CanvasText;
+  }
 
-    .nx-tooltip {
-        border: nx-border-size(xs) solid CanvasText;
-        border-radius: nx-border-radius(s);
-    }
+  .nx-tooltip {
+    border: nx-border-size(xs) solid CanvasText;
+    border-radius: nx-border-radius(s);
+  }
 }

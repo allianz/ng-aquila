@@ -1,15 +1,20 @@
 <div>
-    <label class="cdk-visually-hidden" [attr.for]="hasDropdown ? '' : control().id" [attr.id]="labelId">{{ label }}</label>
-    <!-- We only allow formfield controls here -->
-    @if (!hasDropdown) {
-        <div class="nx-word__inner-wrapper">
-            <ng-content select="[nxInput]"></ng-content>
-        </div>
-    }
-    <ng-content select="nx-dropdown"></ng-content>
+  <label
+    class="cdk-visually-hidden"
+    [attr.for]="hasDropdown ? '' : control().id"
+    [attr.id]="labelId"
+    >{{ label }}</label
+  >
+  <!-- We only allow formfield controls here -->
+  @if (!hasDropdown) {
+    <div class="nx-word__inner-wrapper">
+      <ng-content select="[nxInput]"></ng-content>
+    </div>
+  }
+  <ng-content select="nx-dropdown"></ng-content>
 </div>
 
 <!-- deprecated: please refer to natural language form examples for improved and more user friendly error messages -->
 <nx-popover #popover>
-    <ng-content select="[nxError]"></ng-content>
+  <ng-content select="[nxError]"></ng-content>
 </nx-popover>

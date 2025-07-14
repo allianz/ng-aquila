@@ -1,39 +1,41 @@
 @for (row of group.rows; track row; let i = $index) {
-    @if (i < group.visibleRows || _expanded) {
-        <nx-comparison-table-flex-row [row]="row"> </nx-comparison-table-flex-row>
-    }
+  @if (i < group.visibleRows || _expanded) {
+    <nx-comparison-table-flex-row [row]="row"> </nx-comparison-table-flex-row>
+  }
 }
 
 @if (group.rows.length > group.visibleRows) {
-    <div class="nx-comparison-table__row" role="row">
-        @if (_table.viewType === 'desktop' && !useFullRowForExpandableArea) {
-            <div class="nx-comparison-table__placeholder-cell" role="cell">
-                <div class="nx-comparison-table__cell-content"></div>
-            </div>
-        }
-        <div
-            #expansionCell
-            class="nx-comparison-table__intersection-cell nx-comparison-table__group-expansion-cell"
-            [class.full-width]="_table.viewType === 'desktop' && useFullRowForExpandableArea"
-            role="cell"
-            [attr.aria-colspan]="_expandedAreaColspan"
-            [style.flex-grow]="_expandedAreaColspan"
-            (click)="toggleGroup()"
-            [attr.aria-expanded]="_expanded"
-            tabindex="0"
-            (keydown)="_onKeydown($event)"
+  <div class="nx-comparison-table__row" role="row">
+    @if (_table.viewType === 'desktop' && !useFullRowForExpandableArea) {
+      <div class="nx-comparison-table__placeholder-cell" role="cell">
+        <div class="nx-comparison-table__cell-content"></div>
+      </div>
+    }
+    <div
+      #expansionCell
+      class="nx-comparison-table__intersection-cell nx-comparison-table__group-expansion-cell"
+      [class.full-width]="_table.viewType === 'desktop' && useFullRowForExpandableArea"
+      role="cell"
+      [attr.aria-colspan]="_expandedAreaColspan"
+      [style.flex-grow]="_expandedAreaColspan"
+      (click)="toggleGroup()"
+      [attr.aria-expanded]="_expanded"
+      tabindex="0"
+      (keydown)="_onKeydown($event)"
+    >
+      <div class="nx-comparison-table__cell-content">
+        <span class="group-label">{{
+          _expanded ? group.labelExpanded : group.labelCollapsed
+        }}</span>
+        <nx-icon
+          [name]="_expanded ? 'chevron-up' : 'chevron-down'"
+          aria-hidden="true"
+          size="s"
+          [class.nx-margin-left-2xs]="dir === 'ltr'"
+          [class.nx-margin-right-2xs]="dir === 'rtl'"
         >
-            <div class="nx-comparison-table__cell-content">
-                <span class="group-label">{{ _expanded ? group.labelExpanded : group.labelCollapsed }}</span>
-                <nx-icon
-                    [name]="_expanded ? 'chevron-up' : 'chevron-down'"
-                    aria-hidden="true"
-                    size="s"
-                    [class.nx-margin-left-2xs]="dir === 'ltr'"
-                    [class.nx-margin-right-2xs]="dir === 'rtl'"
-                >
-                </nx-icon>
-            </div>
-        </div>
+        </nx-icon>
+      </div>
     </div>
+  </div>
 }

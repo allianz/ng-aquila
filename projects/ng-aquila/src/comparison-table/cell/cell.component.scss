@@ -2,46 +2,46 @@
 
 .nx-comparison-table__mobile-header-cell.is-selected,
 .nx-comparison-table__cell.is-selected {
-    background-color: v(comparison-table-selected-column-background-color);
-    color: v(comparison-table-selected-column-text-color);
+  background-color: v(comparison-table-selected-column-background-color);
+  color: v(comparison-table-selected-column-text-color);
 }
 
 .nx-comparison-table__mobile-header-cell.is-hidden,
 .nx-comparison-table__cell.is-hidden {
-    display: none;
+  display: none;
 }
 
 //  Error state : desktop
 .nx-comparison-table__footer-cell,
 .nx-comparison-table__header-cell {
-    &.is-error {
-        .nx-comparison-table__cell-content {
-            border-top: 1px solid var(--danger);
-            border-bottom: 1px solid var(--danger);
-        }
+  &.is-error {
+    .nx-comparison-table__cell-content {
+      border-top: 1px solid var(--danger);
+      border-bottom: 1px solid var(--danger);
     }
-    &.first.is-error {
-        .nx-comparison-table__cell-content {
-            border-left: 1px solid var(--danger);
-        }
+  }
+  &.first.is-error {
+    .nx-comparison-table__cell-content {
+      border-left: 1px solid var(--danger);
     }
-    &.last.is-error {
-        .nx-comparison-table__cell-content {
-            border-right: 1px solid var(--danger);
-        }
+  }
+  &.last.is-error {
+    .nx-comparison-table__cell-content {
+      border-right: 1px solid var(--danger);
     }
+  }
 }
 
 //  Error state : mobile
 .nx-comparison-table__mobile-header-cell {
-    &.is-error {
-        border-left: 1px solid var(--danger) !important;
-        border-right: 1px solid var(--danger) !important;
-    }
-    &.first.is-error {
-        border-top: 1px solid var(--danger) !important;
-    }
-    &.last.is-error {
-        border-bottom: 1px solid var(--danger) !important;
-    }
+  &.is-error {
+    border-left: 1px solid var(--danger) !important;
+    border-right: 1px solid var(--danger) !important;
+  }
+  &.first.is-error {
+    border-top: 1px solid var(--danger) !important;
+  }
+  &.last.is-error {
+    border-bottom: 1px solid var(--danger) !important;
+  }
 }

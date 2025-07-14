@@ -3,89 +3,89 @@
 $border-size: nx-border-size(xs);
 
 @function message-padding($padding) {
-    @return $padding - $border-size;
+  @return $padding - $border-size;
 }
 
 :host {
-    @include message-layout();
+  @include message-layout();
 }
 
 :host,
 :host(.context-regular) {
-    border-color: v(message-regular-border-color);
-    background-color: v(message-regular-background-color);
+  border-color: v(message-regular-border-color);
+  background-color: v(message-regular-background-color);
 }
 
 :host(.context-info) {
-    border-color: v(message-info-border-color);
-    background-color: v(message-info-background-color);
+  border-color: v(message-info-border-color);
+  background-color: v(message-info-background-color);
 
-    .nx-message__icon {
-        color: v(message-info-icon-color);
-    }
+  .nx-message__icon {
+    color: v(message-info-icon-color);
+  }
 }
 
 :host(.context-error) {
-    border-color: v(message-error-border-color);
-    background-color: v(message-error-background-color);
+  border-color: v(message-error-border-color);
+  background-color: v(message-error-background-color);
 
-    .nx-message__icon {
-        color: v(message-error-icon-color);
-    }
+  .nx-message__icon {
+    color: v(message-error-icon-color);
+  }
 }
 
 :host(.context-success) {
-    border-color: v(message-success-border-color);
-    background-color: v(message-success-background-color);
+  border-color: v(message-success-border-color);
+  background-color: v(message-success-background-color);
 
-    .nx-message__icon {
-        color: v(message-success-icon-color);
-    }
+  .nx-message__icon {
+    color: v(message-success-icon-color);
+  }
 }
 
 :host(.context-warning) {
-    border-color: v(message-warning-border-color);
-    background-color: v(message-warning-background-color);
+  border-color: v(message-warning-border-color);
+  background-color: v(message-warning-background-color);
 
-    .nx-message__icon {
-        color: v(message-warning-icon-color);
-    }
+  .nx-message__icon {
+    color: v(message-warning-icon-color);
+  }
 }
 
 @media screen and (forced-colors: active) {
-    .nx-message__icon {
-        color: CanvasText;
-    }
+  .nx-message__icon {
+    color: CanvasText;
+  }
 }
 
 .nx-message__icon {
-    margin-right: nx-spacer(s);
+  margin-right: nx-spacer(s);
+
+  @include media-breakpoint-response(mobile) {
+    float: left;
+    margin-right: nx-spacer(2xs);
+  }
+
+  :host-context([dir='rtl']) & {
+    float: right;
+    margin-right: initial;
+    margin-left: nx-spacer(s);
 
     @include media-breakpoint-response(mobile) {
-        float: left;
-        margin-right: nx-spacer(2xs);
+      margin-left: nx-spacer(2xs);
     }
-
-    :host-context([dir='rtl']) & {
-        float: right;
-        margin-right: initial;
-        margin-left: nx-spacer(s);
-
-        @include media-breakpoint-response(mobile) {
-            margin-left: nx-spacer(2xs);
-        }
-    }
+  }
 }
 
 :host(.nx-message--closable) {
-    padding-right: message-padding(nx-spacer(4m));
+  padding-right: message-padding(nx-spacer(4m));
 
-    [dir='rtl'] & {
-        padding-right: message-padding(nx-spacer(m));
-        padding-left: message-padding(nx-spacer(4m));
-    }
+  [dir='rtl'] & {
+    padding-right: message-padding(nx-spacer(m));
+    padding-left: message-padding(nx-spacer(4m));
+  }
 }
 
 .nx-message__close-icon {
-    @include message__close-icon;
+  @include message__close-icon;
 }

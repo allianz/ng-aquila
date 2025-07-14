@@ -1,22 +1,20 @@
 <div nxLayout="grid">
-    <div nxRow>
-        <div nxCol="6">
-            <nx-formfield label="Birthday">
-                <input
-                    nxDatefield
-                    nxInput
-                    [datepicker]="myDatepicker"
-                    [(ngModel)]="currentDate"
-                />
-                <nx-datepicker-toggle
-                    [for]="myDatepicker"
-                    nxFormfieldSuffix
-                ></nx-datepicker-toggle>
-                <nx-datepicker #myDatepicker></nx-datepicker>
-                <nx-error nxFormfieldError>
-                    Please enter a valid date.
-                </nx-error>
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="6">
+      <nx-formfield label="Birthday">
+        <input
+          nxDatefield
+          nxInput
+          [datepicker]="myDatepicker"
+          [(ngModel)]="currentDate"
+        />
+        <nx-datepicker-toggle
+          [for]="myDatepicker"
+          nxFormfieldSuffix
+        ></nx-datepicker-toggle>
+        <nx-datepicker #myDatepicker></nx-datepicker>
+        <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+      </nx-formfield>
     </div>
+  </div>
 </div>

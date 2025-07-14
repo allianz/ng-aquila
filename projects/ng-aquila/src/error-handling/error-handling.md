@@ -19,7 +19,7 @@ Import it with
     <span class="docs-api-module-import__import-span">import</span>
     { NxErrorModule }
     <span class="docs-api-module-import__from-span">from</span>
-    <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/base'</span>;
+    <span class="docs-api-module-import__path-span">'@allianz/ng-aquila/base'</span>;
   </code>
 </p>
 
@@ -69,7 +69,7 @@ You can import the `ErrorStateMatcher` with:
     <span class="docs-api-module-import__import-span">import</span>
     { ErrorStateMatcher }
     <span class="docs-api-module-import__from-span">from</span>
-    <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/utils'</span>;
+    <span class="docs-api-module-import__path-span">'@allianz/ng-aquila/utils'</span>;
   </code>
 </p>
 

@@ -1,27 +1,27 @@
-import { Component } from '@angular/core';
 import {
-    NxTabComponent,
-    NxTabGroupComponent,
-    TAB_GROUP_DEFAULT_OPTIONS,
-    TabGroupDefaultOptions,
-} from '@aposin/ng-aquila/tabs';
+  NxTabComponent,
+  NxTabGroupComponent,
+  TAB_GROUP_DEFAULT_OPTIONS,
+  TabGroupDefaultOptions,
+} from '@allianz/ng-aquila/tabs';
+import { Component } from '@angular/core';
 
 const myDefaultOptions: TabGroupDefaultOptions = {
-    appearance: 'expert',
+  appearance: 'expert',
 };
 
 /**
  * @title Injection token for tab group
  */
 @Component({
-    selector: 'tabs-injection-token-example',
-    templateUrl: './tabs-injection-token-example.html',
-    styleUrls: ['./tabs-injection-token-example.css'],
-    providers: [
-        { provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: myDefaultOptions },
-    ],
-    imports: [NxTabGroupComponent, NxTabComponent],
+  selector: 'tabs-injection-token-example',
+  templateUrl: './tabs-injection-token-example.html',
+  styleUrls: ['./tabs-injection-token-example.css'],
+  providers: [
+    { provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: myDefaultOptions },
+  ],
+  imports: [NxTabGroupComponent, NxTabComponent],
 })
 export class TabsInjectionTokenExampleComponent {
-    currentIndex = 0;
+  currentIndex = 0;
 }

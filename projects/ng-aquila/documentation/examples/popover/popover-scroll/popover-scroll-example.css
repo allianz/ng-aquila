@@ -1,11 +1,11 @@
 .popover-demo__scroll-panel {
-    border: 1px solid;
-    overflow: scroll;
-    width: 200px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    margin-right: 20px;
+  border: 1px solid;
+  overflow: scroll;
+  width: 200px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-right: 20px;
 }

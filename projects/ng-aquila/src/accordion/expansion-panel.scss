@@ -1,180 +1,180 @@
 @import '../shared-styles/index';
 
 :host {
-    display: block;
+  display: block;
 }
 
 :host(.nx-expansion-panel--negative) ::ng-deep {
-    div.nx-expansion-panel__body * {
-        color: v(negative);
-    }
+  div.nx-expansion-panel__body * {
+    color: v(negative);
+  }
 }
 
 .nx-expansion-panel__content {
-    overflow: hidden;
-    display: block;
+  overflow: hidden;
+  display: block;
 }
 
 .nx-expansion-panel__body {
-    padding: v(accordion-regular-body-padding);
+  padding: v(accordion-regular-body-padding);
 
-    &.flush-alignment {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    @include type-style(accordion-body);
+  &.flush-alignment {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @include type-style(accordion-body);
 
-    @include media-breakpoint-down(small) {
-        padding: v(accordion-regular-mobile-body-padding);
-    }
+  @include media-breakpoint-down(small) {
+    padding: v(accordion-regular-mobile-body-padding);
+  }
 }
 
 :host(.nx-expansion-panel--regular) {
+  &:not(:first-child) {
+    margin-top: v(accordion-regular-header-top-margin);
+  }
+
+  ::ng-deep .nx-expansion-panel__header-content {
+    box-shadow: inset 0 1px 0 0 v(accordion-regular-border-color);
+  }
+
+  &:last-child,
+  &:only-child {
+    box-shadow: 0 1px 0 0 v(accordion-regular-border-color);
+  }
+
+  @include media-breakpoint-down(small) {
     &:not(:first-child) {
-        margin-top: v(accordion-regular-header-top-margin);
+      margin-top: 0;
     }
 
     ::ng-deep .nx-expansion-panel__header-content {
-        box-shadow: inset 0 1px 0 0 v(accordion-regular-border-color);
+      box-shadow: inset 0 1px 0 0 v(accordion-regular-mobile-border-color);
     }
 
     &:last-child,
     &:only-child {
-        box-shadow: 0 1px 0 0 v(accordion-regular-border-color);
+      ::ng-deep .nx-expansion-panel__header-content {
+        box-shadow:
+          inset 0 1px 0 0 v(accordion-regular-mobile-border-color),
+          inset 0 -1px 0 0 v(accordion-regular-mobile-separator-color);
+      }
     }
 
-    @include media-breakpoint-down(small) {
-        &:not(:first-child) {
-            margin-top: 0;
-        }
-
-        ::ng-deep .nx-expansion-panel__header-content {
-            box-shadow: inset 0 1px 0 0 v(accordion-regular-mobile-border-color);
-        }
-
-        &:last-child,
-        &:only-child {
-            ::ng-deep .nx-expansion-panel__header-content {
-                box-shadow:
-                    inset 0 1px 0 0 v(accordion-regular-mobile-border-color),
-                    inset 0 -1px 0 0 v(accordion-regular-mobile-separator-color);
-            }
-        }
-
-        &.nx-expanded ::ng-deep .nx-expansion-panel__header-content {
-            box-shadow:
-                inset 0 1px 0 0 v(accordion-regular-mobile-border-color),
-                inset 0 -1px 0 0 v(accordion-regular-mobile-separator-color);
-        }
+    &.nx-expanded ::ng-deep .nx-expansion-panel__header-content {
+      box-shadow:
+        inset 0 1px 0 0 v(accordion-regular-mobile-border-color),
+        inset 0 -1px 0 0 v(accordion-regular-mobile-separator-color);
     }
+  }
 }
 
 // Styles of the light version
 :host(.nx-expansion-panel--light) {
-    .nx-expansion-panel__body {
-        padding: v(accordion-light-body-padding);
-        font-size: v(accordion-light-body-font-size);
+  .nx-expansion-panel__body {
+    padding: v(accordion-light-body-padding);
+    font-size: v(accordion-light-body-font-size);
 
-        &.flush-alignment {
-            padding-left: 0;
-            padding-right: 0;
-        }
-
-        @include media-breakpoint-down(small) {
-            padding: v(accordion-light-mobile-body-padding);
-        }
+    &.flush-alignment {
+      padding-left: 0;
+      padding-right: 0;
     }
+
+    @include media-breakpoint-down(small) {
+      padding: v(accordion-light-mobile-body-padding);
+    }
+  }
 }
 
 :host(.nx-expansion-panel--light):not(.nx-expansion-panel--negative) {
-    ::ng-deep .nx-expansion-panel__header-content {
-        box-shadow: inset 0 1px 0 0 v(accordion-light-border-color);
-    }
+  ::ng-deep .nx-expansion-panel__header-content {
+    box-shadow: inset 0 1px 0 0 v(accordion-light-border-color);
+  }
 
-    &:last-child,
-    &:only-child {
-        box-shadow: 0 1px 0 0 v(accordion-light-border-color);
-    }
+  &:last-child,
+  &:only-child {
+    box-shadow: 0 1px 0 0 v(accordion-light-border-color);
+  }
 }
 
 // negative styles
 :host(.nx-expansion-panel--regular.nx-expansion-panel--negative) {
-    @include media-breakpoint-down(small) {
-        ::ng-deep .nx-expansion-panel__header-content {
-            box-shadow: inset 0 1px 0 0 v(negative-01);
-        }
-
-        &:last-child,
-        &:only-child {
-            ::ng-deep .nx-expansion-panel__header-content {
-                box-shadow:
-                    inset 0 1px 0 0 v(negative-01),
-                    inset 0 -1px 0 0 v(negative-01);
-            }
-        }
-
-        &.nx-expanded ::ng-deep .nx-expansion-panel__header-content {
-            box-shadow:
-                inset 0 1px 0 0 v(negative-01),
-                inset 0 -1px 0 0 v(negative-01);
-        }
-    }
-}
-
-:host(.nx-expansion-panel--light.nx-expansion-panel--negative) {
-    color: v(negative);
-
+  @include media-breakpoint-down(small) {
     ::ng-deep .nx-expansion-panel__header-content {
-        box-shadow: inset 0 1px 0 0 v(negative);
+      box-shadow: inset 0 1px 0 0 v(negative-01);
     }
 
     &:last-child,
     &:only-child {
-        box-shadow: 0 1px 0 0 v(negative);
+      ::ng-deep .nx-expansion-panel__header-content {
+        box-shadow:
+          inset 0 1px 0 0 v(negative-01),
+          inset 0 -1px 0 0 v(negative-01);
+      }
     }
+
+    &.nx-expanded ::ng-deep .nx-expansion-panel__header-content {
+      box-shadow:
+        inset 0 1px 0 0 v(negative-01),
+        inset 0 -1px 0 0 v(negative-01);
+    }
+  }
+}
+
+:host(.nx-expansion-panel--light.nx-expansion-panel--negative) {
+  color: v(negative);
+
+  ::ng-deep .nx-expansion-panel__header-content {
+    box-shadow: inset 0 1px 0 0 v(negative);
+  }
+
+  &:last-child,
+  &:only-child {
+    box-shadow: 0 1px 0 0 v(negative);
+  }
 }
 
 :host(.nx-expansion-panel--extra-light) {
-    &:not(:first-child) {
-        margin-top: v(accordion-extra-light-header-top-margin);
-    }
+  &:not(:first-child) {
+    margin-top: v(accordion-extra-light-header-top-margin);
+  }
 
-    .nx-expansion-panel__body {
-        padding: v(accordion-extra-light-body-padding);
-        font-size: v(accordion-extra-light-body-font-size);
-        letter-spacing: v(accordion-extra-light-body-letter-spacing);
-        line-height: v(accordion-extra-light-body-line-height);
-    }
+  .nx-expansion-panel__body {
+    padding: v(accordion-extra-light-body-padding);
+    font-size: v(accordion-extra-light-body-font-size);
+    letter-spacing: v(accordion-extra-light-body-letter-spacing);
+    line-height: v(accordion-extra-light-body-line-height);
+  }
 }
 
 @media screen and (forced-colors: active) {
-    :host {
-        border-color: CanvasText;
+  :host {
+    border-color: CanvasText;
 
-        ::ng-deep .nx-expansion-panel__header-content {
-            color: buttonText;
-        }
-
-        &.nx-expansion-panel--regular ::ng-deep .nx-expansion-panel__header-content {
-            border: nx-border-size(xs) solid buttonText;
-        }
-
-        &.is-disabled ::ng-deep .nx-expansion-panel__header-content {
-            border-color: GrayText;
-        }
-
-        &.nx-expansion-panel--light.nx-expansion-panel--negative,
-        &.nx-expansion-panel--light:not(.nx-expansion-panel--negative) {
-            ::ng-deep .nx-expansion-panel__header-content {
-                box-shadow: inset 0 1px 0 0 CanvasText;
-                border-top: 1px solid CanvasText;
-            }
-
-            &:last-child,
-            &:only-child {
-                box-shadow: 0 1px 0 0 CanvasText; // IE11
-                border-bottom: 1px solid CanvasText;
-            }
-        }
+    ::ng-deep .nx-expansion-panel__header-content {
+      color: buttonText;
     }
+
+    &.nx-expansion-panel--regular ::ng-deep .nx-expansion-panel__header-content {
+      border: nx-border-size(xs) solid buttonText;
+    }
+
+    &.is-disabled ::ng-deep .nx-expansion-panel__header-content {
+      border-color: GrayText;
+    }
+
+    &.nx-expansion-panel--light.nx-expansion-panel--negative,
+    &.nx-expansion-panel--light:not(.nx-expansion-panel--negative) {
+      ::ng-deep .nx-expansion-panel__header-content {
+        box-shadow: inset 0 1px 0 0 CanvasText;
+        border-top: 1px solid CanvasText;
+      }
+
+      &:last-child,
+      &:only-child {
+        box-shadow: 0 1px 0 0 CanvasText; // IE11
+        border-bottom: 1px solid CanvasText;
+      }
+    }
+  }
 }

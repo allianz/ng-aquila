@@ -1,29 +1,39 @@
 <input
-    #input
-    type="radio"
-    [id]="inputId"
-    [attr.name]="name"
-    [disabled]="disabled"
-    (blur)="touch($event)"
-    (change)="_onInputChange($event)"
-    (click)="_onInputClick($event)"
-    [checked]="checked"
-    [attr.aria-describedby]="ariaDescribedBy"
-    [attr.aria-labelledby]="ariaLabelledBy"
-    [attr.aria-label]="ariaLabel"
-    [attr.aria-invalid]="_controlInvalid() || null"
-    [attr.aria-disabled]="disabled || readonly || null"
-    class="nx-radio__input"
+  #input
+  type="radio"
+  [id]="inputId"
+  [attr.name]="name"
+  [disabled]="disabled"
+  (blur)="touch($event)"
+  (change)="_onInputChange($event)"
+  (click)="_onInputClick($event)"
+  [checked]="checked"
+  [attr.aria-describedby]="ariaDescribedBy"
+  [attr.aria-labelledby]="ariaLabelledBy"
+  [attr.aria-label]="ariaLabel"
+  [attr.aria-invalid]="_controlInvalid() || null"
+  [attr.aria-disabled]="disabled || readonly || null"
+  class="nx-radio__input"
 />
-<label [id]="labelId" [attr.for]="inputId" tabindex="-1" class="nx-radio__label" [class.has-label]="labelHasContent">
-    <div class="nx-radio__circle-wrapper">
-        <div class="nx-radio__circle">
-            @if (checked) {
-            <div class="nx-radio__dot"></div>
-            }
-        </div>
+<label
+  [id]="labelId"
+  [attr.for]="inputId"
+  tabindex="-1"
+  class="nx-radio__label"
+  [class.has-label]="labelHasContent"
+>
+  <div class="nx-radio__circle-wrapper">
+    <div class="nx-radio__circle">
+      @if (checked) {
+      <div class="nx-radio__dot"></div>
+      }
     </div>
-    <span class="nx-radio__label--text" #radioLabelWrapper (cdkObserveContent)="labelContentChanged()">
-        <ng-content></ng-content>
-    </span>
+  </div>
+  <span
+    class="nx-radio__label--text"
+    #radioLabelWrapper
+    (cdkObserveContent)="labelContentChanged()"
+  >
+    <ng-content></ng-content>
+  </span>
 </label>

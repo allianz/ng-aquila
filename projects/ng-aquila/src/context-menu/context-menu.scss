@@ -1,33 +1,33 @@
 @import '../shared-styles/index.scss';
 
 .nx-context-menu {
-    border-radius: nx-border-radius(s);
-    background: v(context-menu-background-color);
+  border-radius: nx-border-radius(s);
+  background: v(context-menu-background-color);
 
-    @media screen and (forced-colors: active) {
-        border: nx-border-size(xs) solid CanvasText;
-    }
+  @media screen and (forced-colors: active) {
+    border: nx-border-size(xs) solid CanvasText;
+  }
 
-    // Give the menu a minimum height so that the user can't
-    // collapse it to zero when they scroll away.
-    min-height: 56px;
-    box-shadow: v(shadow-small);
-    outline: none;
-    overflow-y: auto;
+  // Give the menu a minimum height so that the user can't
+  // collapse it to zero when they scroll away.
+  min-height: 56px;
+  box-shadow: v(shadow-small);
+  outline: none;
+  overflow-y: auto;
 
-    &.ng-animating {
-        pointer-events: none;
-    }
+  &.ng-animating {
+    pointer-events: none;
+  }
 }
 
 // `:not(:empty)` allows for the menu to collapse to 0x0 when it doesn't have content.
 .nx-context-menu__content:not(:empty) {
-    padding-top: nx-spacer(2xs);
-    padding-bottom: nx-spacer(2xs);
-    display: flex;
-    flex-direction: column;
+  padding-top: nx-spacer(2xs);
+  padding-bottom: nx-spacer(2xs);
+  display: flex;
+  flex-direction: column;
 
-    @media screen and (forced-colors: active) {
-        background-color: buttonFace;
-    }
+  @media screen and (forced-colors: active) {
+    background-color: buttonFace;
+  }
 }

@@ -6,187 +6,187 @@ $toc-hidden-breakpoint: 1280px;
 $toc-width: 200px;
 
 :host {
-    display: block;
-    font-size: 1rem;
-    height: 100vh;
-    line-height: 1.5rem;
-    background: v(ui-background);
-    color: v(text-01);
-    padding-top: 60px;
+  display: block;
+  font-size: 1rem;
+  height: 100vh;
+  line-height: 1.5rem;
+  background: v(ui-background);
+  color: v(text-01);
+  padding-top: 60px;
 
-    @media (max-width: $sidebar-hidden-breakpoint) {
-        padding-top: 120px;
-    }
+  @media (max-width: $sidebar-hidden-breakpoint) {
+    padding-top: 120px;
+  }
 }
 
 :host(.hide-nav) {
-    padding-top: 0;
+  padding-top: 0;
 }
 
 .nx-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    z-index: 20;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  z-index: 20;
 
-    .nx-header__brand {
-        margin-right: 32px;
-
-        img {
-            filter: v(documentation-svg-filter);
-        }
-
-        @media (max-width: 703px) {
-            margin-right: 16px;
-        }
-    }
-
-    figure {
-        display: flex;
-        align-items: center;
-    }
+  .nx-header__brand {
+    margin-right: 32px;
 
     img {
-        height: 31px;
+      filter: v(documentation-svg-filter);
     }
 
-    ul {
-        list-style-type: none;
-        display: flex;
+    @media (max-width: 703px) {
+      margin-right: 16px;
     }
+  }
+
+  figure {
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    height: 31px;
+  }
+
+  ul {
+    list-style-type: none;
+    display: flex;
+  }
 }
 
 // quickfix: vertically center header links
 nx-header-navigation ::ng-deep .nx-header__link {
-    line-height: 1.6875rem;
+  line-height: 1.6875rem;
 }
 
 .hidden-with-sidebar {
-    @media (max-width: $sidebar-hidden-breakpoint) {
-        display: none;
-    }
+  @media (max-width: $sidebar-hidden-breakpoint) {
+    display: none;
+  }
 }
 
 .nx-header__row {
-    @media (max-width: 703px) {
-        padding: 1px 16px 0 16px;
-    }
+  @media (max-width: 703px) {
+    padding: 1px 16px 0 16px;
+  }
 }
 
 .nx-mobile-navigation {
-    @media (min-width: $sidebar-hidden-breakpoint) {
-        display: none;
+  @media (min-width: $sidebar-hidden-breakpoint) {
+    display: none;
+  }
+
+  @media (max-width: $sidebar-hidden-breakpoint) {
+    ul,
+    li {
+      display: flex;
+      flex: 1;
     }
 
-    @media (max-width: $sidebar-hidden-breakpoint) {
-        ul,
-        li {
-            display: flex;
-            flex: 1;
-        }
+    li {
+      justify-content: center;
 
-        li {
-            justify-content: center;
+      a {
+        margin-left: 3px;
+        margin-right: 3px;
+      }
 
-            a {
-                margin-left: 3px;
-                margin-right: 3px;
-            }
+      &:first-child a {
+        margin-left: 0;
+      }
 
-            &:first-child a {
-                margin-left: 0;
-            }
-
-            &:last-child a {
-                margin-right: 0;
-            }
-        }
+      &:last-child a {
+        margin-right: 0;
+      }
     }
+  }
 }
 
 .toc {
-    position: relative;
-    width: $toc-width;
+  position: relative;
+  width: $toc-width;
 
-    nxv-table-of-contents {
-        position: sticky;
-        top: 24px;
-
-        @media (max-width: 785px) {
-            display: none;
-        }
-    }
+  nxv-table-of-contents {
+    position: sticky;
+    top: 24px;
 
     @media (max-width: 785px) {
-        display: none;
+      display: none;
     }
+  }
+
+  @media (max-width: 785px) {
+    display: none;
+  }
 }
 
 .documentation-header__github-logo {
-    margin: 4px;
-    vertical-align: middle;
+  margin: 4px;
+  vertical-align: middle;
 }
 
 ::ng-deep nx-sidebar.docs-sidebar {
-    width: 240px;
+  width: 240px;
 
-    .nx-sidebar__toggle-button {
-        display: none;
-    }
+  .nx-sidebar__toggle-button {
+    display: none;
+  }
 
-    &.mobile-sidebar--visible {
-        position: absolute;
-        z-index: 10;
-    }
+  &.mobile-sidebar--visible {
+    position: absolute;
+    z-index: 10;
+  }
 
-    &:not(.mobile-sidebar--visible) {
-        @media (max-width: $sidebar-hidden-breakpoint) {
-            display: none !important;
-        }
+  &:not(.mobile-sidebar--visible) {
+    @media (max-width: $sidebar-hidden-breakpoint) {
+      display: none !important;
     }
+  }
 }
 
 ::ng-deep .docs-toc {
-    position: relative;
+  position: relative;
+  width: $toc-width;
+  margin-left: 16px;
+
+  nxv-table-of-contents {
+    position: sticky;
+    display: inline-flex;
+    top: 24px;
     width: $toc-width;
-    margin-left: 16px;
-
-    nxv-table-of-contents {
-        position: sticky;
-        display: inline-flex;
-        top: 24px;
-        width: $toc-width;
-        height: calc(100vh - 84px);
-        overflow-y: auto;
-
-        @media (max-width: $toc-hidden-breakpoint) {
-            display: none;
-        }
-    }
+    height: calc(100vh - 84px);
+    overflow-y: auto;
 
     @media (max-width: $toc-hidden-breakpoint) {
-        display: none;
+      display: none;
     }
+  }
+
+  @media (max-width: $toc-hidden-breakpoint) {
+    display: none;
+  }
 }
 
 @media screen and (forced-colors: active) {
-    .documentation-header__main-logo,
-    .documentation-header__github-logo {
-        g {
-            fill: buttonText;
-        }
+  .documentation-header__main-logo,
+  .documentation-header__github-logo {
+    g {
+      fill: buttonText;
     }
+  }
 }
 
 nx-header-actions > :not(:first-child) {
-    margin-left: 4px;
+  margin-left: 4px;
 }
 
 // hide search on very small screens due to space constrains, especially with a wide logo
 nxv-search {
-    @media (max-width: 592px) {
-        display: none;
-    }
+  @media (max-width: 592px) {
+    display: none;
+  }
 }

@@ -1,7 +1,13 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
-import { getScrollStrategyDefaultProviders, getScrollStrategyFactoryProviders } from './nx-scroll-strategy.helpers';
-import { NxScrollStrategyDefaultConfig, NxScrollStrategyFactoryConfig } from './nx-scroll-strategy.models';
+import {
+  getScrollStrategyDefaultProviders,
+  getScrollStrategyFactoryProviders,
+} from './nx-scroll-strategy.helpers';
+import {
+  NxScrollStrategyDefaultConfig,
+  NxScrollStrategyFactoryConfig,
+} from './nx-scroll-strategy.models';
 
 /**
  * Provide a specific scroll strategy for a select collection of overlay-based components:
@@ -30,17 +36,21 @@ import { NxScrollStrategyDefaultConfig, NxScrollStrategyFactoryConfig } from './
  */
 @NgModule()
 export class NxScrollStrategyModule {
-    static withConfig(config: NxScrollStrategyDefaultConfig): ModuleWithProviders<NxScrollStrategyModule> {
-        return {
-            ngModule: NxScrollStrategyModule,
-            providers: getScrollStrategyDefaultProviders(config),
-        };
-    }
+  static withConfig(
+    config: NxScrollStrategyDefaultConfig,
+  ): ModuleWithProviders<NxScrollStrategyModule> {
+    return {
+      ngModule: NxScrollStrategyModule,
+      providers: getScrollStrategyDefaultProviders(config),
+    };
+  }
 
-    static withFactory(config: NxScrollStrategyFactoryConfig): ModuleWithProviders<NxScrollStrategyModule> {
-        return {
-            ngModule: NxScrollStrategyModule,
-            providers: getScrollStrategyFactoryProviders(config),
-        };
-    }
+  static withFactory(
+    config: NxScrollStrategyFactoryConfig,
+  ): ModuleWithProviders<NxScrollStrategyModule> {
+    return {
+      ngModule: NxScrollStrategyModule,
+      providers: getScrollStrategyFactoryProviders(config),
+    };
+  }
 }

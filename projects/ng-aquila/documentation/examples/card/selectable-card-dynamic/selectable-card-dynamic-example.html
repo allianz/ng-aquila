@@ -1,39 +1,30 @@
 <div nxLayout="grid">
-    <div nxRow class="nx-margin-bottom-s">
-        <div nxCol="12,12,3">
-            <button
-                (click)="addNewCard()"
-                nxButton="primary small"
-                type="button"
-            >
-                Add new card
-            </button>
-        </div>
-        <div nxCol="12,12,3">
-            <button
-                (click)="removeFirstCard()"
-                nxButton="secondary small"
-                type="button"
-            >
-                Remove first card
-            </button>
-        </div>
+  <div nxRow class="nx-margin-bottom-s">
+    <div nxCol="12,12,3">
+      <button (click)="addNewCard()" nxButton="primary small" type="button">
+        Add new card
+      </button>
     </div>
-    <form [formGroup]="myFormGroup">
-        <div nxRow formArrayName="cards">
-            @for (card of cards.controls; track card; let i = $index) {
-            <div nxCol="12,12,12,4">
-                <nx-selectable-card
-                    [formControlName]="i"
-                    class="nx-margin-bottom-xs"
-                >
-                    <h3 nxCopytext class="nx-margin-bottom-2m">
-                        Card headline
-                    </h3>
-                </nx-selectable-card>
-            </div>
-            }
-        </div>
-        <p>Form value: {{ myFormGroup.value | json }}</p>
-    </form>
+    <div nxCol="12,12,3">
+      <button
+        (click)="removeFirstCard()"
+        nxButton="secondary small"
+        type="button"
+      >
+        Remove first card
+      </button>
+    </div>
+  </div>
+  <form [formGroup]="myFormGroup">
+    <div nxRow formArrayName="cards">
+      @for (card of cards.controls; track card; let i = $index) {
+      <div nxCol="12,12,12,4">
+        <nx-selectable-card [formControlName]="i" class="nx-margin-bottom-xs">
+          <h3 nxCopytext class="nx-margin-bottom-2m">Card headline</h3>
+        </nx-selectable-card>
+      </div>
+      }
+    </div>
+    <p>Form value: {{ myFormGroup.value | json }}</p>
+  </form>
 </div>

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { NxLabelComponent } from './label.component';
 
 @NgModule({
-    imports: [CommonModule, NxLabelComponent],
-    exports: [NxLabelComponent],
+  imports: [CommonModule, NxLabelComponent],
+  exports: [NxLabelComponent],
 })
 export class NxLabelModule {}

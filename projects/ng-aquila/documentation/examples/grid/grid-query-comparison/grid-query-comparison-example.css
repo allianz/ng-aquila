@@ -1,75 +1,75 @@
 body {
-    background: #0f2a3d;
-    font-family: 'Public Sans', sans-serif;
-    padding: 24px;
+  background: #0f2a3d;
+  font-family: 'Public Sans', sans-serif;
+  padding: 24px;
 }
 
 .docs-outer-grid {
-    margin-left: 0 !important;
-    margin-top: 32px !important;
-    padding: 0 !important;
-    border-style: dotted;
+  margin-left: 0 !important;
+  margin-top: 32px !important;
+  padding: 0 !important;
+  border-style: dotted;
 }
 
 .docs-inverse-container {
-    background: #e5e7e6;
-    padding: 24px;
+  background: #e5e7e6;
+  padding: 24px;
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        color: #0f2a3d;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #0f2a3d;
+  }
 }
 
 /* not required for container queries -> just for coloring the example */
 .docs-container-inline-size {
-    container-type: inline-size;
-    margin-top: 16px;
+  container-type: inline-size;
+  margin-top: 16px;
 }
 
 /* GRID STYLES */
 @container (min-width: 0) and (max-width: 319px) {
-    .docs-grid-colored-grid-container {
-        background-color: #7c6674;
-    }
+  .docs-grid-colored-grid-container {
+    background-color: #7c6674;
+  }
 }
 
 @container (min-width: 320px) and (max-width: 703px) {
-    .docs-grid-colored-grid-container {
-        background-color: #735304;
-    }
+  .docs-grid-colored-grid-container {
+    background-color: #735304;
+  }
 }
 
 @container (min-width: 704px) and (max-width: 991px) {
-    .docs-grid-colored-grid-container {
-        background-color: #26722e;
-    }
+  .docs-grid-colored-grid-container {
+    background-color: #26722e;
+  }
 }
 
 @container (min-width: 992px) and (max-width: 1279px) {
-    .docs-grid-colored-grid-container {
-        background-color: #104455;
-    }
+  .docs-grid-colored-grid-container {
+    background-color: #104455;
+  }
 }
 
 @container (min-width: 1280px) and (max-width: 1471px) {
-    .docs-grid-colored-grid-container {
-        background-color: #735304;
-    }
+  .docs-grid-colored-grid-container {
+    background-color: #735304;
+  }
 }
 
 @container (min-width: 1472px) and (max-width: 1759px) {
-    .docs-grid-colored-grid-container {
-        background-color: #6d3a10;
-    }
+  .docs-grid-colored-grid-container {
+    background-color: #6d3a10;
+  }
 }
 
 @container (min-width: 1760px) {
-    .docs-grid-colored-grid-container {
-        background-color: #221825;
-    }
+  .docs-grid-colored-grid-container {
+    background-color: #221825;
+  }
 }

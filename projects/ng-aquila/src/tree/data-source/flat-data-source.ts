@@ -40,86 +40,86 @@ import { NxFlatTreeNode, NxTreeNode } from './tree-node';
  * and the output flattened type is `F extends NxFlatTreeNode` with additional information.
  */
 class NxTreeFlattener<T extends NxTreeNode, F extends NxFlatTreeNode> {
-    transformFunction(node: NxTreeNode, level: number): F {
-        const { children, ...rest } = node;
-        return {
-            ...rest,
-            level,
-            expandable: Array.isArray(children) && children.length > 0,
-        } as F;
-    }
+  transformFunction(node: NxTreeNode, level: number): F {
+    const { children, ...rest } = node;
+    return {
+      ...rest,
+      level,
+      expandable: Array.isArray(children) && children.length > 0,
+    } as F;
+  }
 
-    getLevel(node: F): number {
-        return node.level;
-    }
+  getLevel(node: F): number {
+    return node.level;
+  }
 
-    isExpandable(node: F): boolean {
-        return node.expandable;
-    }
+  isExpandable(node: F): boolean {
+    return node.expandable;
+  }
 
-    getChildren(node: T): Observable<T[]> | T[] {
-        return node.children as T[];
-    }
+  getChildren(node: T): Observable<T[]> | T[] {
+    return node.children as T[];
+  }
 
-    _flattenNode(node: T, level: number, resultNodes: F[], parentMap: boolean[]): F[] {
-        const flatNode = this.transformFunction(node, level);
-        resultNodes.push(flatNode);
+  _flattenNode(node: T, level: number, resultNodes: F[], parentMap: boolean[]): F[] {
+    const flatNode = this.transformFunction(node, level);
+    resultNodes.push(flatNode);
 
-        if (this.isExpandable(flatNode)) {
-            const childrenNodes = this.getChildren(node);
-            if (Array.isArray(childrenNodes)) {
-                this._flattenChildren(childrenNodes, level, resultNodes, parentMap);
-            } else {
-                childrenNodes.pipe(take(1)).subscribe(children => {
-                    this._flattenChildren(children, level, resultNodes, parentMap);
-                });
-            }
-        }
-        return resultNodes;
-    }
-
-    _flattenChildren(children: T[], level: number, resultNodes: F[], parentMap: boolean[]): void {
-        children.forEach((child, index) => {
-            const childParentMap: boolean[] = parentMap.slice();
-            childParentMap.push(index !== children.length - 1);
-            this._flattenNode(child, level + 1, resultNodes, childParentMap);
+    if (this.isExpandable(flatNode)) {
+      const childrenNodes = this.getChildren(node);
+      if (Array.isArray(childrenNodes)) {
+        this._flattenChildren(childrenNodes, level, resultNodes, parentMap);
+      } else {
+        childrenNodes.pipe(take(1)).subscribe((children) => {
+          this._flattenChildren(children, level, resultNodes, parentMap);
         });
+      }
     }
+    return resultNodes;
+  }
 
-    /**
-     * Flatten a list of node type T to flattened version of node F.
-     * Please note that type T may be nested, and the length of `structuredData` may be different
-     * from that of returned list `F[]`.
-     */
-    flattenNodes(structuredData: T[]): F[] {
-        const resultNodes: F[] = [];
-        structuredData.forEach(node => this._flattenNode(node, 0, resultNodes, []));
-        return resultNodes;
-    }
+  _flattenChildren(children: T[], level: number, resultNodes: F[], parentMap: boolean[]): void {
+    children.forEach((child, index) => {
+      const childParentMap: boolean[] = parentMap.slice();
+      childParentMap.push(index !== children.length - 1);
+      this._flattenNode(child, level + 1, resultNodes, childParentMap);
+    });
+  }
 
-    /**
-     * Expand flattened node with current expansion status.
-     * The returned list may have different length.
-     */
-    expandFlattenedNodes(nodes: F[], treeControl: TreeControl<F>): F[] {
-        const results: F[] = [];
-        const currentExpand: boolean[] = [];
-        currentExpand[0] = true;
+  /**
+   * Flatten a list of node type T to flattened version of node F.
+   * Please note that type T may be nested, and the length of `structuredData` may be different
+   * from that of returned list `F[]`.
+   */
+  flattenNodes(structuredData: T[]): F[] {
+    const resultNodes: F[] = [];
+    structuredData.forEach((node) => this._flattenNode(node, 0, resultNodes, []));
+    return resultNodes;
+  }
 
-        nodes.forEach(node => {
-            let expand = true;
-            for (let i = 0; i <= this.getLevel(node); i++) {
-                expand = expand && currentExpand[i];
-            }
-            if (expand) {
-                results.push(node);
-            }
-            if (this.isExpandable(node)) {
-                currentExpand[this.getLevel(node) + 1] = treeControl.isExpanded(node);
-            }
-        });
-        return results;
-    }
+  /**
+   * Expand flattened node with current expansion status.
+   * The returned list may have different length.
+   */
+  expandFlattenedNodes(nodes: F[], treeControl: TreeControl<F>): F[] {
+    const results: F[] = [];
+    const currentExpand: boolean[] = [];
+    currentExpand[0] = true;
+
+    nodes.forEach((node) => {
+      let expand = true;
+      for (let i = 0; i <= this.getLevel(node); i++) {
+        expand = expand && currentExpand[i];
+      }
+      if (expand) {
+        results.push(node);
+      }
+      if (this.isExpandable(node)) {
+        currentExpand[this.getLevel(node) + 1] = treeControl.isExpanded(node);
+      }
+    });
+    return results;
+  }
 }
 
 /**
@@ -129,44 +129,53 @@ class NxTreeFlattener<T extends NxTreeNode, F extends NxFlatTreeNode> {
  * The nested tree nodes of type `T extends NxTreeNode` are flattened through `NxTreeFlattener`, and converted
  * to type `F extends NxFlatTreeNode` for `NxTree` to consume.
  */
-export class NxTreeFlatDataSource<T extends NxTreeNode, F extends NxFlatTreeNode> extends DataSource<F> {
-    _treeFlattener: NxTreeFlattener<T, F>;
+export class NxTreeFlatDataSource<
+  T extends NxTreeNode,
+  F extends NxFlatTreeNode,
+> extends DataSource<F> {
+  _treeFlattener: NxTreeFlattener<T, F>;
 
-    readonly _flattenedData = new BehaviorSubject<F[]>([]);
+  readonly _flattenedData = new BehaviorSubject<F[]>([]);
 
-    readonly _expandedData = new BehaviorSubject<F[]>([]);
+  readonly _expandedData = new BehaviorSubject<F[]>([]);
 
-    readonly _data = new BehaviorSubject<T[]>([]);
+  readonly _data = new BehaviorSubject<T[]>([]);
 
-    set data(value: T[]) {
-        this._data.next(value);
-        this._flattenedData.next(this._treeFlattener.flattenNodes(this.data));
-        this.treeControl.dataNodes = this._flattenedData.value;
-    }
-    get data() {
-        return this._data.value;
-    }
+  set data(value: T[]) {
+    this._data.next(value);
+    this._flattenedData.next(this._treeFlattener.flattenNodes(this.data));
+    this.treeControl.dataNodes = this._flattenedData.value;
+  }
+  get data() {
+    return this._data.value;
+  }
 
-    constructor(
-        private readonly treeControl: FlatTreeControl<F>,
-        initialData: T[] = [],
-    ) {
-        super();
-        this._treeFlattener = new NxTreeFlattener();
-        this.data = initialData;
-    }
+  constructor(
+    private readonly treeControl: FlatTreeControl<F>,
+    initialData: T[] = [],
+  ) {
+    super();
+    this._treeFlattener = new NxTreeFlattener();
+    this.data = initialData;
+  }
 
-    connect(collectionViewer: CollectionViewer): Observable<F[]> {
-        const changes = [collectionViewer.viewChange, this.treeControl.expansionModel.changed.asObservable(), this._flattenedData.asObservable()];
-        return merge(...changes).pipe(
-            map(() => {
-                this._expandedData.next(this._treeFlattener.expandFlattenedNodes(this._flattenedData.value, this.treeControl));
-                return this._expandedData.value;
-            }),
+  connect(collectionViewer: CollectionViewer): Observable<F[]> {
+    const changes = [
+      collectionViewer.viewChange,
+      this.treeControl.expansionModel.changed.asObservable(),
+      this._flattenedData.asObservable(),
+    ];
+    return merge(...changes).pipe(
+      map(() => {
+        this._expandedData.next(
+          this._treeFlattener.expandFlattenedNodes(this._flattenedData.value, this.treeControl),
         );
-    }
+        return this._expandedData.value;
+      }),
+    );
+  }
 
-    disconnect() {
-        // no op
-    }
+  disconnect() {
+    // no op
+  }
 }

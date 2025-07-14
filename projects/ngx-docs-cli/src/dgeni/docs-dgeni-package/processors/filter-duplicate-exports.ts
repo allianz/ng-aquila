@@ -20,42 +20,42 @@ import { ExportDoc } from 'dgeni-packages/typescript/api-doc-types/ExportDoc';
  * re-exported with a different name (for deprecation), or from a different secondary entry-point.
  */
 export class FilterDuplicateExports implements Processor {
-    name = 'filter-duplicate-exports';
-    $runBefore = ['categorizer'];
+  name = 'filter-duplicate-exports';
+  $runBefore = ['categorizer'];
 
-    $process(docs: DocCollection) {
-        const duplicateDocs = this.findDuplicateExports(docs);
-        return docs.filter(d => !duplicateDocs.has(d));
-    }
+  $process(docs: DocCollection) {
+    const duplicateDocs = this.findDuplicateExports(docs);
+    return docs.filter((d) => !duplicateDocs.has(d));
+  }
 
-    findDuplicateExports(docs: DocCollection) {
-        const duplicates = new Set<ExportDoc>();
+  findDuplicateExports(docs: DocCollection) {
+    const duplicates = new Set<ExportDoc>();
 
-        docs.forEach(doc => {
-            if (!(doc instanceof ExportDoc)) {
-                return;
-            }
+    docs.forEach((doc) => {
+      if (!(doc instanceof ExportDoc)) {
+        return;
+      }
 
-            // Check for Dgeni documents that refer to the same TypeScript symbol. Those can be
-            // considered as duplicates of the current document.
-            const similarDocs = docs.filter(d => d.symbol === doc.symbol);
+      // Check for Dgeni documents that refer to the same TypeScript symbol. Those can be
+      // considered as duplicates of the current document.
+      const similarDocs = docs.filter((d) => d.symbol === doc.symbol);
 
-            if (similarDocs.length > 1) {
-                // If there are multiple docs that refer to the same TypeScript symbol, but have a
-                // different name than the resolved symbol, we can remove those documents, since they
-                // are just aliasing an already existing export.
-                similarDocs.filter(d => d.symbol.name !== d.name).forEach(d => duplicates.add(d));
+      if (similarDocs.length > 1) {
+        // If there are multiple docs that refer to the same TypeScript symbol, but have a
+        // different name than the resolved symbol, we can remove those documents, since they
+        // are just aliasing an already existing export.
+        similarDocs.filter((d) => d.symbol.name !== d.name).forEach((d) => duplicates.add(d));
 
-                const docsWithSameName = similarDocs.filter(d => d.symbol.name === d.name);
+        const docsWithSameName = similarDocs.filter((d) => d.symbol.name === d.name);
 
-                // If there are multiple docs that refer to the same TypeScript symbol and have
-                // the same name, we need to remove all of those duplicates except one.
-                if (docsWithSameName.length > 1) {
-                    docsWithSameName.slice(1).forEach(d => duplicates.add(d));
-                }
-            }
-        });
+        // If there are multiple docs that refer to the same TypeScript symbol and have
+        // the same name, we need to remove all of those duplicates except one.
+        if (docsWithSameName.length > 1) {
+          docsWithSameName.slice(1).forEach((d) => duplicates.add(d));
+        }
+      }
+    });
 
-        return duplicates;
-    }
+    return duplicates;
+  }
 }

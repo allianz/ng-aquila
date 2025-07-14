@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
-import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxButtonComponent } from '@allianz/ng-aquila/button';
 import {
-    NxPopoverComponent,
-    NxPopoverTriggerDirective,
-} from '@aposin/ng-aquila/popover';
+  NxPopoverComponent,
+  NxPopoverTriggerDirective,
+} from '@allianz/ng-aquila/popover';
+import { Component } from '@angular/core';
 
 /**
  * @title Modal Popover Example
  */
 @Component({
-    selector: 'popover-modal-example',
-    templateUrl: './popover-modal-example.html',
-    styleUrls: ['./popover-modal-example.css'],
-    imports: [NxButtonComponent, NxPopoverTriggerDirective, NxPopoverComponent],
+  selector: 'popover-modal-example',
+  templateUrl: './popover-modal-example.html',
+  styleUrls: ['./popover-modal-example.css'],
+  imports: [NxButtonComponent, NxPopoverTriggerDirective, NxPopoverComponent],
 })
 export class PopoverModalExampleComponent {}

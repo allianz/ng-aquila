@@ -1,14 +1,20 @@
+import { NxErrorModule } from '@allianz/ng-aquila/base';
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxHeaderModule } from '@allianz/ng-aquila/header';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxLinkModule } from '@allianz/ng-aquila/link';
+import { NxMessageModule } from '@allianz/ng-aquila/message';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRouteSnapshot, BaseRouteReuseStrategy, RouteReuseStrategy, RouterModule, ROUTES } from '@angular/router';
-import { NxErrorModule } from '@aposin/ng-aquila/base';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxHeaderModule } from '@aposin/ng-aquila/header';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxLinkModule } from '@aposin/ng-aquila/link';
-import { NxMessageModule } from '@aposin/ng-aquila/message';
+import {
+  ActivatedRouteSnapshot,
+  BaseRouteReuseStrategy,
+  RouteReuseStrategy,
+  RouterModule,
+  ROUTES,
+} from '@angular/router';
 
 import { ExampleFullScreenModule } from '../example-full-screen/example-full-screen.module';
 import { ComponentService } from '../service/component.service';
@@ -32,69 +38,69 @@ import { NxvTableOfContentsModule } from './table-of-contents/table-of-contents.
 import { NxvThemeSwitcherModule } from './theme-switcher/theme-switcher.module';
 
 class DestroyComponentPageRouteReuseStrategy extends BaseRouteReuseStrategy {
-    shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {
-        // the default router settings reuse a component if the route config doesn't change
-        // meaning if e.g. only the path param like our component name changes angular is reusing
-        // the component behind it and doesn't destroy it. this has the effect on us that all the
-        // dynamically injected example components are also not destroyed.
-        // so if the route is using the component page we don't want the router to reuse it but instead
-        // destroy it properly on every route change.
-        if (future.component === NxvComponentPage) {
-            return false;
-        }
-        return super.shouldReuseRoute(future, curr);
+  shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {
+    // the default router settings reuse a component if the route config doesn't change
+    // meaning if e.g. only the path param like our component name changes angular is reusing
+    // the component behind it and doesn't destroy it. this has the effect on us that all the
+    // dynamically injected example components are also not destroyed.
+    // so if the route is using the component page we don't want the router to reuse it but instead
+    // destroy it properly on every route change.
+    if (future.component === NxvComponentPage) {
+      return false;
     }
+    return super.shouldReuseRoute(future, curr);
+  }
 }
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RouterModule,
-        ComponentPageModule,
-        NxvGuidesModule,
-        NxvGuideViewModule,
-        NxvTableOfContentsModule,
-        NxvOverviewModule,
-        NxvDocumentationPageModule,
-        NxHeaderModule,
-        NxIconModule,
-        NxButtonModule,
-        NxLinkModule,
-        FormsModule,
-        NxvVersionSelectModule,
-        NxvThemeSwitcherModule,
-        CssVarSidebarModule,
-        ExampleFullScreenModule,
-        NxvSearchInputModule,
-        NxMessageModule,
-        NxErrorModule,
-        DocumentationFrameComponent,
-    ],
-    exports: [RouterModule],
-    providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: UploadInterceptor,
-            multi: true,
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: DropdownFetchInterceptor,
-            multi: true,
-        },
-    ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ComponentPageModule,
+    NxvGuidesModule,
+    NxvGuideViewModule,
+    NxvTableOfContentsModule,
+    NxvOverviewModule,
+    NxvDocumentationPageModule,
+    NxHeaderModule,
+    NxIconModule,
+    NxButtonModule,
+    NxLinkModule,
+    FormsModule,
+    NxvVersionSelectModule,
+    NxvThemeSwitcherModule,
+    CssVarSidebarModule,
+    ExampleFullScreenModule,
+    NxvSearchInputModule,
+    NxMessageModule,
+    NxErrorModule,
+    DocumentationFrameComponent,
+  ],
+  exports: [RouterModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UploadInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: DropdownFetchInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class NxvDocumentationModule {
-    static forRoot(args: NxvDocumentationConfig): ModuleWithProviders<NxvDocumentationModule> {
-        return {
-            ngModule: NxvDocumentationModule,
-            providers: [
-                ManifestService,
-                ComponentService,
-                { provide: RouteReuseStrategy, useClass: DestroyComponentPageRouteReuseStrategy },
-                { provide: ROUTES, useValue: createViewerRoutes(args), multi: true },
-                { provide: NXV_FOOTER, useValue: args.footerComponent },
-            ],
-        };
-    }
+  static forRoot(args: NxvDocumentationConfig): ModuleWithProviders<NxvDocumentationModule> {
+    return {
+      ngModule: NxvDocumentationModule,
+      providers: [
+        ManifestService,
+        ComponentService,
+        { provide: RouteReuseStrategy, useClass: DestroyComponentPageRouteReuseStrategy },
+        { provide: ROUTES, useValue: createViewerRoutes(args), multi: true },
+        { provide: NXV_FOOTER, useValue: args.footerComponent },
+      ],
+    };
+  }
 }

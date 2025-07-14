@@ -7,319 +7,320 @@ $arrow-size: 1.5 * nx-spacer(3xs);
 $value-border: nx-border-size(xs) solid;
 $value-top: -($value-height + nx-spacer(s));
 $background-height: nx-spacer(3xs);
-$wrapper-padding-top: (($handle-diameter - $background-height) * 0.5) + $value-height + 2 * nx-spacer(s);
+$wrapper-padding-top: (($handle-diameter - $background-height) * 0.5) + $value-height + 2 *
+  nx-spacer(s);
 $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-spacer(2xs);
 
 :host {
-    display: block;
+  display: block;
 }
 
 .nx-slider__label {
-    @include type-style(slider-label);
-    color: v(slider-label-color);
+  @include type-style(slider-label);
+  color: v(slider-label-color);
 }
 
 .nx-slider__wrapper {
-    display: flex;
-    padding-top: $wrapper-padding-top;
-    padding-bottom: 36px;
+  display: flex;
+  padding-top: $wrapper-padding-top;
+  padding-bottom: 36px;
 }
 
 .nx-slider__slide {
-    position: relative;
-    flex: auto;
-    min-width: 0;
-    display: flex;
-    align-items: center;
+  position: relative;
+  flex: auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
 }
 
 .nx-slider__background {
-    position: relative;
-    background-color: v(slider-background-color);
-    display: block;
-    height: nx-spacer(3xs);
-    border-radius: nx-border-radius(xs);
-    white-space: nowrap;
-    cursor: pointer;
-    width: 100%;
+  position: relative;
+  background-color: v(slider-background-color);
+  display: block;
+  height: nx-spacer(3xs);
+  border-radius: nx-border-radius(xs);
+  white-space: nowrap;
+  cursor: pointer;
+  width: 100%;
 }
 
 .nx-slider__tick-container {
-    margin-top: 13px;
-    display: flex;
-    border-left: 1px solid v(slider-tick-color);
-    border-right: 1px solid v(slider-tick-color);
-    height: 9px;
-    align-items: center;
-    overflow: hidden;
+  margin-top: 13px;
+  display: flex;
+  border-left: 1px solid v(slider-tick-color);
+  border-right: 1px solid v(slider-tick-color);
+  height: 9px;
+  align-items: center;
+  overflow: hidden;
 }
 
 .nx-slider__tick {
-    height: 5px;
-    display: flex;
-    border-right: 1px solid v(slider-tick-color);
+  height: 5px;
+  display: flex;
+  border-right: 1px solid v(slider-tick-color);
 
-    &.nx-slider__tick-primary {
-        height: 9px;
-    }
-    &.nx-slider__tick-hidden {
-        border: none;
-    }
+  &.nx-slider__tick-primary {
+    height: 9px;
+  }
+  &.nx-slider__tick-hidden {
+    border: none;
+  }
 }
 
 .nx-slider__filler {
-    display: inline-block;
-    height: $background-height;
-    border-radius: nx-border-radius(xs);
-    background-color: v(slider-indicator-color);
-    float: left;
-    position: relative;
+  display: inline-block;
+  height: $background-height;
+  border-radius: nx-border-radius(xs);
+  background-color: v(slider-indicator-color);
+  float: left;
+  position: relative;
 
-    :host-context([dir='rtl']) & {
-        float: right;
-    }
+  :host-context([dir='rtl']) & {
+    float: right;
+  }
 }
 
 .nx-slider__handle {
-    position: absolute;
-    width: $handle-diameter;
-    height: $handle-diameter;
-    right: 0;
-    transform: translateX(50%);
-    border-radius: 50%;
-    box-shadow: v(shadow-small);
-    border-style: solid;
-    border-width: nx-border-size(xs);
-    border-color: v(slider-handle-border-color);
-    background: v(slider-handle-background-color);
-    box-sizing: border-box;
-    top: -(($handle-diameter - $background-height) * 0.5);
-    z-index: 2;
-    cursor: grab;
+  position: absolute;
+  width: $handle-diameter;
+  height: $handle-diameter;
+  right: 0;
+  transform: translateX(50%);
+  border-radius: 50%;
+  box-shadow: v(shadow-small);
+  border-style: solid;
+  border-width: nx-border-size(xs);
+  border-color: v(slider-handle-border-color);
+  background: v(slider-handle-background-color);
+  box-sizing: border-box;
+  top: -(($handle-diameter - $background-height) * 0.5);
+  z-index: 2;
+  cursor: grab;
 
-    :host-context([dir='rtl']) & {
-        left: 0;
-        right: auto;
-        transform: translateX(-50%);
-    }
+  :host-context([dir='rtl']) & {
+    left: 0;
+    right: auto;
+    transform: translateX(-50%);
+  }
 
-    &:focus {
-        outline: none;
-        border-color: v(slider-handle-focus-border-color);
-    }
+  &:focus {
+    outline: none;
+    border-color: v(slider-handle-focus-border-color);
+  }
 
-    &:active {
-        box-shadow:
-            v(shadow-small),
-            inset 0 0 0 4px v(slider-handle-background-color),
-            inset 0 0 0 $handle-diameter v(slider-handle-active-inset-color);
-        cursor: grabbing;
-    }
+  &:active {
+    box-shadow:
+      v(shadow-small),
+      inset 0 0 0 4px v(slider-handle-background-color),
+      inset 0 0 0 $handle-diameter v(slider-handle-active-inset-color);
+    cursor: grabbing;
+  }
 
-    &.cdk-keyboard-focused {
-        border-color: v(slider-handle-focus-border-color);
-        @include focus-style;
-    }
+  &.cdk-keyboard-focused {
+    border-color: v(slider-handle-focus-border-color);
+    @include focus-style;
+  }
 }
 
 .nx-slider__value {
-    display: block;
-    position: absolute;
-    @include type-style(slider-handle-value);
-    color: v(slider-handle-value-color);
-    border: $value-border;
-    border-color: v(slider-handle-border-color);
-    border-radius: nx-border-radius(s);
-    box-shadow: v(shadow-small);
-    cursor: grab;
-    height: $value-height;
-    min-width: $value-width;
-    text-align: center;
-    $padding-top-bottom: (nx-spacer(3xs) - nx-border-size(xs));
-    padding: $padding-top-bottom nx-spacer(2xs);
-    top: $value-top;
-    background: v(slider-value-background-color);
-    left: calc(#{$handle-diameter} / 2);
-    transform: translateX(-50%);
+  display: block;
+  position: absolute;
+  @include type-style(slider-handle-value);
+  color: v(slider-handle-value-color);
+  border: $value-border;
+  border-color: v(slider-handle-border-color);
+  border-radius: nx-border-radius(s);
+  box-shadow: v(shadow-small);
+  cursor: grab;
+  height: $value-height;
+  min-width: $value-width;
+  text-align: center;
+  $padding-top-bottom: (nx-spacer(3xs) - nx-border-size(xs));
+  padding: $padding-top-bottom nx-spacer(2xs);
+  top: $value-top;
+  background: v(slider-value-background-color);
+  left: calc(#{$handle-diameter} / 2);
+  transform: translateX(-50%);
 
-    &:active {
-        cursor: grabbing;
-    }
+  &:active {
+    cursor: grabbing;
+  }
 }
 
 .nx-slider__arrow {
-    width: $arrow-size;
-    height: $arrow-size;
-    border-right: $value-border;
-    border-bottom: $value-border;
-    left: 50%;
-    top: $value-top + $value-height - $arrow-size;
-    transform: translate(-50%, 3px) rotate(45deg);
-    position: absolute;
-    box-shadow:
-        -2px -2px 1px 1px v(slider-value-background-color),
-        2px 2px 4px v(shadow-small-color);
-    background: v(slider-value-background-color);
-    border-color: v(slider-handle-border-color);
+  width: $arrow-size;
+  height: $arrow-size;
+  border-right: $value-border;
+  border-bottom: $value-border;
+  left: 50%;
+  top: $value-top + $value-height - $arrow-size;
+  transform: translate(-50%, 3px) rotate(45deg);
+  position: absolute;
+  box-shadow:
+    -2px -2px 1px 1px v(slider-value-background-color),
+    2px 2px 4px v(shadow-small-color);
+  background: v(slider-value-background-color);
+  border-color: v(slider-handle-border-color);
 }
 
 .nx-slider__label-container {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    @include type-style(slider-value-label);
-    color: v(slider-value-label-color);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  @include type-style(slider-value-label);
+  color: v(slider-value-label-color);
 
-    .nx-slider__has-ticks & {
-        margin-top: 16px;
-    }
+  .nx-slider__has-ticks & {
+    margin-top: 16px;
+  }
 }
 
 .nx-slider__max-value-label {
-    text-align: right;
+  text-align: right;
 }
 
 :host(.nx-slider--disabled) {
+  cursor: not-allowed;
+
+  .nx-slider__filler,
+  .nx-slider__value,
+  .nx-slider__value-label,
+  .nx-slider__handle,
+  .nx-slider__background {
+    pointer-events: none;
     cursor: not-allowed;
+  }
 
-    .nx-slider__filler,
-    .nx-slider__value,
-    .nx-slider__value-label,
-    .nx-slider__handle,
-    .nx-slider__background {
-        pointer-events: none;
-        cursor: not-allowed;
-    }
+  .nx-slider__value,
+  .nx-slider__handle {
+    background-color: v(slider-value-disabled-background-color);
+  }
 
-    .nx-slider__value,
-    .nx-slider__handle {
-        background-color: v(slider-value-disabled-background-color);
-    }
+  .nx-slider__filler {
+    background-color: v(slider-indicator-disabled-color);
+  }
 
-    .nx-slider__filler {
-        background-color: v(slider-indicator-disabled-color);
-    }
+  .nx-slider__value {
+    color: v(slider-handle-value-disabled-color);
+  }
 
-    .nx-slider__value {
-        color: v(slider-handle-value-disabled-color);
-    }
+  .nx-slider__label-container {
+    color: v(slider-value-label-disabled-color);
+  }
 
-    .nx-slider__label-container {
-        color: v(slider-value-label-disabled-color);
-    }
+  .nx-slider__arrow {
+    background: v(slider-value-disabled-background-color);
+    box-shadow:
+      -2px -2px 1px 1px v(slider-value-disabled-background-color),
+      nx-spacer(4xs) nx-spacer(4xs) nx-spacer(3xs) rgba(65, 65, 65, 0.5);
+  }
 
-    .nx-slider__arrow {
-        background: v(slider-value-disabled-background-color);
-        box-shadow:
-            -2px -2px 1px 1px v(slider-value-disabled-background-color),
-            nx-spacer(4xs) nx-spacer(4xs) nx-spacer(3xs) rgba(65, 65, 65, 0.5);
-    }
-
-    .nx-slider__background {
-        background: v(slider-disabled-background-color);
-    }
+  .nx-slider__background {
+    background: v(slider-disabled-background-color);
+  }
 }
 
 // negative styles
 :host(.nx-slider--negative) {
-    .nx-slider__label,
-    .nx-slider__value-label {
-        color: v(negative);
-    }
+  .nx-slider__label,
+  .nx-slider__value-label {
+    color: v(negative);
+  }
 
-    .nx-slider__filler {
-        background-color: v(negative);
-    }
+  .nx-slider__filler {
+    background-color: v(negative);
+  }
 
-    .nx-slider__background {
-        background-color: v(slider-negative-background-color);
-    }
+  .nx-slider__background {
+    background-color: v(slider-negative-background-color);
+  }
 }
 
 // negative disabled styles
 :host(.nx-slider--negative.nx-slider--disabled) {
-    .nx-slider__label,
-    .nx-slider__value-label {
-        color: v(negative-01);
-    }
+  .nx-slider__label,
+  .nx-slider__value-label {
+    color: v(negative-01);
+  }
 
-    .nx-slider__filler {
-        background-color: v(negative-01);
-    }
+  .nx-slider__filler {
+    background-color: v(negative-01);
+  }
 }
 
 @media screen and (forced-colors: active) {
-    .nx-slider__background {
-        background-color: buttonFace;
-        border: nx-border-size(xs) solid buttonText;
+  .nx-slider__background {
+    background-color: buttonFace;
+    border: nx-border-size(xs) solid buttonText;
+  }
+  .nx-slider__filler {
+    background-color: highlight;
+  }
+
+  .nx-slider__handle {
+    background-color: buttonFace;
+    border-color: buttonText;
+
+    &:hover,
+    &:focus {
+      background-color: highlight;
     }
+
+    &:active {
+      background-color: buttonText;
+    }
+  }
+
+  .nx-slider__value {
+    border-color: buttonText;
+    color: buttonText;
+  }
+
+  :host(.nx-slider--disabled) {
+    .nx-slider__background {
+      background-color: Canvas;
+      border: nx-border-size(xs) solid GrayText;
+    }
+
     .nx-slider__filler {
-        background-color: highlight;
+      background-color: GrayText;
     }
 
     .nx-slider__handle {
-        background-color: buttonFace;
-        border-color: buttonText;
-
-        &:hover,
-        &:focus {
-            background-color: highlight;
-        }
-
-        &:active {
-            background-color: buttonText;
-        }
+      background-color: GrayText;
     }
 
     .nx-slider__value {
-        border-color: buttonText;
-        color: buttonText;
+      border-color: GrayText;
+      color: GrayText;
     }
 
-    :host(.nx-slider--disabled) {
-        .nx-slider__background {
-            background-color: Canvas;
-            border: nx-border-size(xs) solid GrayText;
-        }
-
-        .nx-slider__filler {
-            background-color: GrayText;
-        }
-
-        .nx-slider__handle {
-            background-color: GrayText;
-        }
-
-        .nx-slider__value {
-            border-color: GrayText;
-            color: GrayText;
-        }
-
-        .nx-slider__arrow {
-            border-color: GrayText;
-        }
+    .nx-slider__arrow {
+      border-color: GrayText;
     }
+  }
 
-    :host.nx-slider--negative.nx-slider--disabled {
-        .nx-slider__filler {
-            background-color: GrayText;
-        }
+  :host.nx-slider--negative.nx-slider--disabled {
+    .nx-slider__filler {
+      background-color: GrayText;
     }
+  }
 }
 
 .nx-slider__appendix {
-    align-items: center;
-    white-space: nowrap;
-    margin-left: nx-spacer(s);
-    display: flex;
-    height: 0;
+  align-items: center;
+  white-space: nowrap;
+  margin-left: nx-spacer(s);
+  display: flex;
+  height: 0;
 
-    // ensure auto sized icons get 24px and don't inherit 20px from the base font size of this component
-    ::ng-deep nx-icon.nx-icon--auto {
-        font-size: v(slider-icon-size);
-    }
+  // ensure auto sized icons get 24px and don't inherit 20px from the base font size of this component
+  ::ng-deep nx-icon.nx-icon--auto {
+    font-size: v(slider-icon-size);
+  }
 
-    ::ng-deep nx-icon {
-        display: block;
-    }
+  ::ng-deep nx-icon {
+    display: block;
+  }
 }

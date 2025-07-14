@@ -6,9 +6,9 @@ title: Releases and updating
 
 ## Release plan
 
-Our release strategy is naturally synchronized with [Angular's](https://angular.io/guide/releases). The main reason for this is to minimize the frequency of breaking changes. The Angular team releases a major version every six months, whenever we update to this version we expect breaking changes. Thus, we will release any breaking change along with the major release of Angular. Consequently, you can expect breaking changes (major update) about every six months. 
+Our release strategy is naturally synchronized with [Angular's](https://angular.io/guide/releases). The main reason for this is to minimize the frequency of breaking changes. The Angular team releases a major version every six months, whenever we update to this version we expect breaking changes. Thus, we will release any breaking change along with the major release of Angular. Consequently, you can expect breaking changes (major update) about every six months.
 
-As the Angular team now provides release dates down to a week, we are able to prepare in advance and provide more specific release terms. Our ambition is release a major version during a 6-week period after any major Angular release. 
+As the Angular team now provides release dates down to a week, we are able to prepare in advance and provide more specific release terms. Our ambition is release a major version during a 6-week period after any major Angular release.
 
 We trigger minor or bug fix releases if they provide a meaningful delivery (fix or feature). This is usually decided in our weekly refinement meeting.
 
@@ -22,6 +22,30 @@ Aquila versions 16 and older are no longer supported.
 
 During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
 
+# Updating to version 20
+
+With version 20 we are moving ng-aquila from the @aposin organization to the @allianz organization.
+
+- **Migration of ng-aquila from `@aposin` to `@allianz`:**
+    - The `ng-aquila` library is now published under the `@allianz` scope.
+    - The update will be handled automatically by the `ng update` command.
+
+For updating Angular to version 20, in most cases the following command should do the update for you:
+
+`ng update @angular/cli @angular/core @angular/cdk --force`
+
+Then update the ng-aquila with the following command:
+
+`ng update @aposin/ng-aquila --force`
+
+**Note:** The ng update command will handle the following tasks automatically:
+
+- Updates the package name in the package.json.
+- Update all imports in your codebase from `@aposin/ng-aquila` to `@allianz/ng-aquila`.
+- Update changed names:
+    - `aposin.css` was renamed to `aquila.css`.
+    - the `aposin` theme was renamed to `aquila`.
+
 ## Updating to version 19
 
 With Aquila 19, we are upgrading to Angular 19. This update brings exciting new features and improvements to the framework. This update includes advancements in server-side rendering, stabilization of some reactivity APIs, and new support for hot module replacement. Additionally, standalone components are now the default. For a comprehensive overview of all the changes and enhancements in Angular 19, check out the details on [Angular 19](https://blog.angular.dev/meet-angular-v19-7b29dfd05b84).
@@ -32,7 +56,7 @@ For updating Angular to version 19, in most cases the following command should d
 
 Then it should be easy to update Aquila with the following command:
 
-`ng update @aposin/ng-aquila --force`
+`ng update @allianz/ng-aquila --force`
 
 ## Updating to version 18
 
@@ -44,7 +68,7 @@ For updating Aquila to version 18, in most cases the following command should do
 
 Then it should be easy to update Aquila with the following command:
 
-`ng update @aposin/ng-aquila --force`
+`ng update @allianz/ng-aquila --force`
 
 ## Updating to version 17
 
@@ -56,7 +80,7 @@ For updating Aquila to version 17, in most cases the following command should do
 
 Then it should be easy to update Aquila with the following command:
 
-`ng update @aposin/ng-aquila --force`
+`ng update @allianz/ng-aquila --force`
 
 ## Updating to version 16
 
@@ -68,7 +92,7 @@ Updating Aquila to version 16 should be simple, though. In most cases the follow
 
 Then it should be easy to update Aquila with the following command:
 
-`ng update @aposin/ng-aquila --force`
+`ng update @allianz/ng-aquila --force`
 
 #### Breaking Changes
 
@@ -80,7 +104,7 @@ In the `Breaking Changes` section of [the Changelog](./guides/CHANGELOG) you can
 The formfield formerly reserved space at the bottom for a possible hint. This space also served as the spacing between formfields and the hint would render in this reserved space. This leads to situations where you don't have sufficient space between the hint and the next row.
 From now on if a hint is present there will be additional space after the hint.
 
-If this somehow affects your application in a negative way you can temporarily use a compatibility CSS file which provides the previous styles. For that import the file `@aposin/ng-aquila/css/compatibility/formfield-padding.css` in the angular.json
+If this somehow affects your application in a negative way you can temporarily use a compatibility CSS file which provides the previous styles. For that import the file `@allianz/ng-aquila/css/compatibility/formfield-padding.css` in the angular.json
 
 #### `nxMask` validation prevented optional controls
 The `nxMask` internal validator always validated empty strings, resulting in a `nxMaskLengthError`. This makes it impossible to have a control as optional. We fixed this bug which is technically a breaking change. If you relied on getting the `nxMaskLengthError` for empty strings as a replacement for a required validator please add the `required` validator now.
@@ -95,7 +119,7 @@ With v15, we are upgrading to [Angular 15](https://blog.angular.io/angular-v15-i
 
 Then it should be easy to update Aquila with the following command:
 
-`ng update @aposin/ng-aquila --force`
+`ng update @allianz/ng-aquila --force`
 
 **Important:**
 
@@ -117,7 +141,7 @@ With v14, we are upgrading to [Angular 14](https://blog.angular.io/angular-v14-i
 
 Then it should be easy to update Aquila with the following command:
 
-`ng update @aposin/ng-aquila --force`
+`ng update @allianz/ng-aquila --force`
 
 #### Breaking Changes
 
@@ -133,7 +157,7 @@ With v13, we are upgrading to [Angular 13](https://blog.angular.io/angular-v13-i
 
 Then it should be easy to update Aquila with the following command:
 
-`ng update @aposin/ng-aquila --force`
+`ng update @allianz/ng-aquila --force`
 
 **Important:**
 
@@ -163,7 +187,7 @@ Things to consider for the Angular version 12 update:
 
 It should be easy to update with the following command:
 
-`ng update @aposin/ng-aquila --force`
+`ng update @allianz/ng-aquila --force`
 
 **Important:** The visual padding of the Accordion component changes with this update in accordance with the design guidelines. **We are not providing an automatic update for this breaking change.**
 
@@ -189,7 +213,7 @@ With v11 there are some breaking changes:
           // ...
           "styles": [
             // ...
-            "node_modules/@aposin/ng-aquila/css/compatibility.css",
+            "node_modules/@allianz/ng-aquila/css/compatibility.css",
           ]
         }
       }
@@ -259,7 +283,7 @@ We want to make the update as seamless as possible for you with the use of Angul
 ```
 ng update @angular/cli @angular/core --force
 ng update @angular/cdk --force
-ng update @aposin/ng-aquila --force
+ng update @allianz/ng-aquila --force
 ```
 
 You can use the Angular CLI's `--allowDirty` flag if you don't want to commit between these steps.

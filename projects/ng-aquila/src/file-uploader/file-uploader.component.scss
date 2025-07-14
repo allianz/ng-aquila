@@ -1,113 +1,113 @@
 @import '../shared-styles/index';
 
 :host {
-    display: block;
+  display: block;
 
-    ::ng-deep nx-error.nx-error--message {
-        margin: nx-spacer(xs) 0;
+  ::ng-deep nx-error.nx-error--message {
+    margin: nx-spacer(xs) 0;
 
-        ul {
-            margin-left: 28px;
-            margin-top: 6px;
-        }
-        li {
-            line-height: nx-spacer(m);
-        }
+    ul {
+      margin-left: 28px;
+      margin-top: 6px;
     }
+    li {
+      line-height: nx-spacer(m);
+    }
+  }
 }
 
 .nx-file-uploader--file-list {
-    max-height: 400px;
-    overflow-y: auto;
+  max-height: 400px;
+  overflow-y: auto;
 }
 .nx-file-uploader--file-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    border-bottom-width: nx-border-size(xs);
-    border-bottom-style: solid;
-    padding: nx-spacer(2xs) nx-spacer(xs);
-    border-bottom-color: v(file-uploader-file-row-border-bottom-color);
-    color: v(file-uploader-file-row-text-color);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom-width: nx-border-size(xs);
+  border-bottom-style: solid;
+  padding: nx-spacer(2xs) nx-spacer(xs);
+  border-bottom-color: v(file-uploader-file-row-border-bottom-color);
+  color: v(file-uploader-file-row-text-color);
 
-    &:hover {
-        background-color: v(file-uploader-file-row-hover-background-color);
+  &:hover {
+    background-color: v(file-uploader-file-row-hover-background-color);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  ::ng-deep {
+    .nx-file-uploader--file-row-actions {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 120px;
+      flex: none;
+
+      :host-context([dir='rtl']) & {
+        margin-left: initial;
+        margin-right: auto;
+      }
+    }
+  }
+
+  &.nx-file-uploader--default-template {
+    nx-file-upload-name {
+      flex: none;
+      max-width: 65%;
+      overflow-wrap: break-word;
+      line-height: nx-line-height(xs);
+
+      @include media-breakpoint-down('small') {
+        flex: 100%;
+        max-width: 100%;
+      }
     }
 
-    &:focus {
-        outline: none;
+    nx-file-upload-size {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+
+      @include media-breakpoint-down('small') {
+        justify-content: flex-start;
+      }
     }
 
-    ::ng-deep {
-        .nx-file-uploader--file-row-actions {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            min-width: 120px;
-            flex: none;
-
-            :host-context([dir='rtl']) & {
-                margin-left: initial;
-                margin-right: auto;
-            }
-        }
+    nx-file-upload-status {
+      flex: 0 1 auto;
+      padding: 0 nx-spacer(s);
     }
 
-    &.nx-file-uploader--default-template {
-        nx-file-upload-name {
-            flex: none;
-            max-width: 65%;
-            overflow-wrap: break-word;
-            line-height: nx-line-height(xs);
-
-            @include media-breakpoint-down('small') {
-                flex: 100%;
-                max-width: 100%;
-            }
-        }
-
-        nx-file-upload-size {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-
-            @include media-breakpoint-down('small') {
-                justify-content: flex-start;
-            }
-        }
-
-        nx-file-upload-status {
-            flex: 0 1 auto;
-            padding: 0 nx-spacer(s);
-        }
-
-        nx-file-upload-delete {
-            flex: 0 1 auto;
-        }
+    nx-file-upload-delete {
+      flex: 0 1 auto;
     }
+  }
 
-    &.nx-file-uploader--file-state-uploading {
-        .file-name {
-            color: v(file-uploader-file-row-uploading-file-name-color);
-        }
+  &.nx-file-uploader--file-state-uploading {
+    .file-name {
+      color: v(file-uploader-file-row-uploading-file-name-color);
     }
+  }
 }
 
 ::ng-deep input[type='file'] {
-    display: none;
+  display: none;
 }
 
 ::ng-deep .nx-file-upload-button {
-    display: block;
+  display: block;
 }
 
 ::ng-deep .nx-file-upload-hint {
-    @include type-style(file-uploader-hint);
+  @include type-style(file-uploader-hint);
 
-    display: block;
+  display: block;
 }
 
 .nx-file-uploader--file-row.cdk-keyboard-focused {
-    @include focus-style;
+  @include focus-style;
 }

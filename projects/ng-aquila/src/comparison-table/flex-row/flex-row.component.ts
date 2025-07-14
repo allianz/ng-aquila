@@ -14,47 +14,47 @@ import { NxComparisonTableRowDirective } from '../comparison-table-row.directive
  * @docs-private
  */
 @Component({
-    selector: 'nx-comparison-table-flex-row',
-    templateUrl: './flex-row.component.html',
-    styleUrls: ['./flex-row.component.scss'],
-    host: {
-        '[class.is-header-row]': 'row.type === "header"',
-        '[class.is-sticky-row]': 'row.type === "header" && row.mayStick',
-        '[class.is-footer-row]': 'row.type === "footer"',
-        '[class.is-content-row]': 'row.type === "content"',
-        '[class.has-intersection]': 'row.intersectionCell',
-    },
-    imports: [NgTemplateOutlet],
+  selector: 'nx-comparison-table-flex-row',
+  templateUrl: './flex-row.component.html',
+  styleUrls: ['./flex-row.component.scss'],
+  host: {
+    '[class.is-header-row]': 'row.type === "header"',
+    '[class.is-sticky-row]': 'row.type === "header" && row.mayStick',
+    '[class.is-footer-row]': 'row.type === "footer"',
+    '[class.is-content-row]': 'row.type === "content"',
+    '[class.has-intersection]': 'row.intersectionCell',
+  },
+  imports: [NgTemplateOutlet],
 })
 export class NxComparisonTableFlexRow implements OnDestroy, AfterViewInit {
-    @Input() row!: NxComparisonTableRowDirective;
+  @Input() row!: NxComparisonTableRowDirective;
 
-    private readonly _destroyed = new Subject<void>();
+  private readonly _destroyed = new Subject<void>();
 
-    constructor(
-        readonly _table: NxComparisonTableBase,
-        private readonly _elementRef: ElementRef,
-        private readonly _focusMonitor: FocusMonitor,
-    ) {}
+  constructor(
+    readonly _table: NxComparisonTableBase,
+    private readonly _elementRef: ElementRef,
+    private readonly _focusMonitor: FocusMonitor,
+  ) {}
 
-    ngAfterViewInit(): void {
-        this._focusMonitor
-            .monitor(this._elementRef, true)
-            .pipe(takeUntil(this._destroyed))
-            .subscribe(origin => {
-                if (this.row.type !== 'header' && origin === 'keyboard') {
-                    this._table._scrollElementIntoView(this._elementRef);
-                }
-            });
-    }
+  ngAfterViewInit(): void {
+    this._focusMonitor
+      .monitor(this._elementRef, true)
+      .pipe(takeUntil(this._destroyed))
+      .subscribe((origin) => {
+        if (this.row.type !== 'header' && origin === 'keyboard') {
+          this._table._scrollElementIntoView(this._elementRef);
+        }
+      });
+  }
 
-    ngOnDestroy(): void {
-        this._destroyed.next();
-        this._destroyed.complete();
-        this._focusMonitor.stopMonitoring(this._elementRef);
-    }
+  ngOnDestroy(): void {
+    this._destroyed.next();
+    this._destroyed.complete();
+    this._focusMonitor.stopMonitoring(this._elementRef);
+  }
 
-    get elementRef(): ElementRef {
-        return this._elementRef;
-    }
+  get elementRef(): ElementRef {
+    return this._elementRef;
+  }
 }

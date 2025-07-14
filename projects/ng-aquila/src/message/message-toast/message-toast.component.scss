@@ -1,11 +1,11 @@
 @import '../../shared-styles/index';
 
 nx-message {
-    box-shadow: v(message-box-shadow);
-    max-width: 352px;
-    margin-bottom: nx-spacer(s);
+  box-shadow: v(message-box-shadow);
+  max-width: 352px;
+  margin-bottom: nx-spacer(s);
 
-    @include media-breakpoint-down(small) {
-        max-width: calc(100vw - #{nx-spacer(s)});
-    }
+  @include media-breakpoint-down(small) {
+    max-width: calc(100vw - #{nx-spacer(s)});
+  }
 }

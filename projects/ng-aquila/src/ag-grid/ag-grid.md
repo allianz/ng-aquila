@@ -40,13 +40,13 @@ Remove this:
 ```
 
 #### Necessary CSS Imports
-Import the provided file from `@aposin/ng-aquila/themes/theming-api-aquila.css`.
+Import the provided file from `@allianz/ng-aquila/themes/theming-api-aquila.css`.
 You can choose any of the typical ways in an angular application, e.g. in the angular.json file or in your main styles file.
 
 Angular.json example:
 ```json
 "styles": [
-    "node_modules/@aposin/ng-aquila/themes/theming-api-aquila.css",
+    "node_modules/@allianz/ng-aquila/themes/theming-api-aquila.css",
 ]
 ```
 
@@ -55,7 +55,7 @@ Angular.json example:
 
 In .ts file:
 ```ts 
-import { themeAquila } from '@aposin/ng-aquila/ag-grid';
+import { themeAquila } from '@allianz/ng-aquila/ag-grid';
 ```
 In .html file
 ```html
@@ -69,7 +69,7 @@ In .html file
 
 In .ts file:
 ```ts
-import { themeAllianz } from '@aposin/ng-aquila/ag-grid';
+import { themeAllianz } from '@allianz/ng-aquila/ag-grid';
 ```
 In .html file
 ```html
@@ -138,7 +138,7 @@ The ag-grid theme assumes that one of the library themes is already imported to 
 
 #### Necessary CSS Imports
 - Import the base ag-grid styles and the Alpine theme
-- Import the provided file from `@aposin/ng-aquila/themes/ag-theme-aquila.css`
+- Import the provided file from `@allianz/ng-aquila/themes/ag-theme-aquila.css`
 
 You can choose any of the typical ways in an angular application, e.g. in the angular.json file or in your main styles.(s)css file.
 Angular.json example:
@@ -146,7 +146,7 @@ Angular.json example:
 "styles": [
     "node_modules/ag-grid-community/styles/ag-grid.css",
     "node_modules/ag-grid-community/styles/ag-theme-alpine.css",
-    "node_modules/@aposin/ng-aquila/themes/ag-theme-aquila.css",
+    "node_modules/@allianz/ng-aquila/themes/ag-theme-aquila.css",
 ]
 ```
 

@@ -1,3 +1,8 @@
 {
-    "recommendations": ["angular.ng-template", "dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "eamodio.gitlens"]
+  "recommendations": [
+    "angular.ng-template",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens"
+  ]
 }

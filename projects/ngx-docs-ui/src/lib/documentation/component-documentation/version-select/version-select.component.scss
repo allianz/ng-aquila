@@ -1,35 +1,35 @@
 $text-hidden-breakpoint: 704px;
 
 :host {
-    nx-icon {
-        transform: rotateZ(0);
-        transition: transform 200ms ease-out;
+  nx-icon {
+    transform: rotateZ(0);
+    transition: transform 200ms ease-out;
 
-        &.icon-rotated {
-            transform: rotate(-180deg);
-        }
+    &.icon-rotated {
+      transform: rotate(-180deg);
     }
+  }
 
-    button {
-        @media (max-width: 703px) {
-            padding-left: 6px;
-            padding-right: 6px;
-        }
+  button {
+    @media (max-width: 703px) {
+      padding-left: 6px;
+      padding-right: 6px;
     }
+  }
 
-    .desktop-label {
-        display: inline;
+  .desktop-label {
+    display: inline;
 
-        @media (max-width: $text-hidden-breakpoint) {
-            display: none;
-        }
+    @media (max-width: $text-hidden-breakpoint) {
+      display: none;
     }
+  }
 
-    .mobile-label {
-        display: none;
+  .mobile-label {
+    display: none;
 
-        @media (max-width: $text-hidden-breakpoint) {
-            display: inline;
-        }
+    @media (max-width: $text-hidden-breakpoint) {
+      display: inline;
     }
+  }
 }

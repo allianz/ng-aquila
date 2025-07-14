@@ -1,20 +1,20 @@
 <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
-    <nx-switcher
-        name="reactiveTest"
-        formControlName="switcherTestReactive"
-        [labelPosition]="'left'"
-    >
-        switcher label
-        <nx-error>This is required</nx-error>
-    </nx-switcher>
+  <nx-switcher
+    name="reactiveTest"
+    formControlName="switcherTestReactive"
+    [labelPosition]="'left'"
+  >
+    switcher label
+    <nx-error>This is required</nx-error>
+  </nx-switcher>
 
-    <button nxButton="primary small" type="submit" class="nx-margin-top-m">
-        submit
-    </button>
-    <p class="nx-margin-bottom-0">Form value: {{ testForm.value | json }}</p>
-    <p class="nx-margin-y-0">Form status: {{ testForm.status | json }}</p>
-    <p class="nx-margin-y-0">
-        Form is {{ isSubmitted ? '' : ' not ' }} submitted
-    </p>
-    <p class="nx-margin-y-0">Switcher hasError {{switcher?.errorState}}</p>
+  <button nxButton="primary small" type="submit" class="nx-margin-top-m">
+    submit
+  </button>
+  <p class="nx-margin-bottom-0">Form value: {{ testForm.value | json }}</p>
+  <p class="nx-margin-y-0">Form status: {{ testForm.status | json }}</p>
+  <p class="nx-margin-y-0">
+    Form is {{ isSubmitted ? '' : ' not ' }} submitted
+  </p>
+  <p class="nx-margin-y-0">Switcher hasError {{switcher?.errorState}}</p>
 </form>

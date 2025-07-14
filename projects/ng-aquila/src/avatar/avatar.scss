@@ -1,135 +1,135 @@
 @import '../shared-styles/index';
 
 @mixin avatar-size($size) {
-    height: v(avatar-#{$size}-size);
-    width: v(avatar-#{$size}-size);
-    min-width: v(avatar-#{$size}-size);
-    @include type-style(avatar-#{$size});
+  height: v(avatar-#{$size}-size);
+  width: v(avatar-#{$size}-size);
+  min-width: v(avatar-#{$size}-size);
+  @include type-style(avatar-#{$size});
 
-    ::ng-deep nx-icon {
-        font-size: v(avatar-#{$size}-icon-size);
-    }
+  ::ng-deep nx-icon {
+    font-size: v(avatar-#{$size}-icon-size);
+  }
 }
 
 :host {
-    background: v(avatar-background-color);
-    color: v(avatar-color);
-    border-radius: 50%;
-    text-align: center;
+  background: v(avatar-background-color);
+  color: v(avatar-color);
+  border-radius: 50%;
+  text-align: center;
 
-    .nx-avatar__content-wrapper {
-        display: flex;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-    }
+  .nx-avatar__content-wrapper {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
 
-    ::ng-deep figure {
-        width: 100%;
-    }
+  ::ng-deep figure {
+    width: 100%;
+  }
 }
 
 // Sizes
 :host.nx-avatar--xsmall {
-    @include avatar-size(xsmall);
+  @include avatar-size(xsmall);
 }
 
 :host.nx-avatar--small {
-    @include avatar-size(small);
+  @include avatar-size(small);
 }
 
 :host.nx-avatar--small-medium {
-    @include avatar-size(small-medium);
+  @include avatar-size(small-medium);
 }
 
 :host.nx-avatar--medium {
-    @include avatar-size(medium);
+  @include avatar-size(medium);
 }
 
 :host.nx-avatar--large {
-    @include avatar-size(large);
+  @include avatar-size(large);
 }
 
 :host.nx-avatar--xlarge {
-    @include avatar-size(xlarge);
+  @include avatar-size(xlarge);
 }
 
 // Additional button styles
 :host.is-button {
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    position: relative;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
 
-    &:before,
+  &:before,
+  ::ng-deep .nx-image:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+  }
+
+  &:hover:not(:disabled) {
+    // for text and icons
+    &:before {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    // for images
     ::ng-deep .nx-image:after {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        border-radius: 50%;
-        top: 0;
-        left: 0;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &:active:not(:disabled) {
+    // for text and icons
+    &:before {
+      background-color: rgba(0, 0, 0, 0.2);
     }
 
-    &:hover:not(:disabled) {
-        // for text and icons
-        &:before {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-
-        // for images
-        ::ng-deep .nx-image:after {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
+    // for images
+    ::ng-deep .nx-image:after {
+      background-color: rgba(0, 0, 0, 0.2);
     }
+  }
 
-    &:active:not(:disabled) {
-        // for text and icons
-        &:before {
-            background-color: rgba(0, 0, 0, 0.2);
-        }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: v(avatar-disabled-opacity);
+  }
 
-        // for images
-        ::ng-deep .nx-image:after {
-            background-color: rgba(0, 0, 0, 0.2);
-        }
-    }
+  &:focus {
+    // don't show native focus style
+    outline: none;
+  }
 
-    &:disabled {
-        cursor: not-allowed;
-        opacity: v(avatar-disabled-opacity);
-    }
+  // don't show inner dotted border on firefox
+  &::-moz-focus-inner {
+    border: 0;
+  }
 
-    &:focus {
-        // don't show native focus style
-        outline: none;
-    }
-
-    // don't show inner dotted border on firefox
-    &::-moz-focus-inner {
-        border: 0;
-    }
-
-    &.cdk-keyboard-focused {
-        @include focus-style();
-    }
+  &.cdk-keyboard-focused {
+    @include focus-style();
+  }
 }
 
 @media screen and (forced-colors: active) {
-    :host {
-        border: 2px solid CanvasText;
-    }
+  :host {
+    border: 2px solid CanvasText;
+  }
 
-    :host.is-button {
-        border: 2px solid buttonText;
-        background-color: buttonFace;
-    }
+  :host.is-button {
+    border: 2px solid buttonText;
+    background-color: buttonFace;
+  }
 
-    :host.is-button:disabled {
-        opacity: 1;
-        border-color: GrayText;
-        color: GrayText;
-    }
+  :host.is-button:disabled {
+    opacity: 1;
+    border-color: GrayText;
+    color: GrayText;
+  }
 }

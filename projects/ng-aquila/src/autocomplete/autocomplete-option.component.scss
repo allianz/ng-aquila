@@ -1,72 +1,72 @@
 @import '../shared-styles/index';
 
 :host:focus {
-    outline: none;
+  outline: none;
 }
 
 :host:first-child .nx-autocomplete-option {
-    padding-top: nx-spacer(s);
+  padding-top: nx-spacer(s);
 }
 
 :host:last-child .nx-autocomplete-option {
-    padding-bottom: nx-spacer(s);
+  padding-bottom: nx-spacer(s);
 }
 
 :host .nx-autocomplete-option {
-    @include dropdown-overlay__option;
-    padding-left: nx-spacer(2m);
-    text-wrap: auto;
+  @include dropdown-overlay__option;
+  padding-left: nx-spacer(2m);
+  text-wrap: auto;
 
-    // keyboard focus styling
-    &.nx-active {
-        .nx-autocomplete-option__label {
-            border-radius: nx-border-radius(s);
-            @include focus-style;
-        }
+  // keyboard focus styling
+  &.nx-active {
+    .nx-autocomplete-option__label {
+      border-radius: nx-border-radius(s);
+      @include focus-style;
     }
+  }
 
-    :host-context([dir='rtl']) & {
-        padding-right: nx-spacer(2m);
-    }
+  :host-context([dir='rtl']) & {
+    padding-right: nx-spacer(2m);
+  }
 }
 
 :host .nx-autocomplete-option__label {
-    @include dropdown-overlay__option-label;
+  @include dropdown-overlay__option-label;
 }
 
 :host:not(.nx-disabled) .nx-autocomplete-option {
-    &:hover,
-    &.nx-active {
-        .nx-autocomplete-option__label {
-            // the autocomplete should have the same look as the dropdown, so using the dropdown token here
-            color: v(dropdown-item-hover-color);
-        }
-
-        @media screen and (forced-colors: active) {
-            .nx-autocomplete-option__label {
-                color: highlightText;
-                background-color: highlight;
-                border-radius: nx-border-radius(s);
-                forced-color-adjust: none;
-            }
-        }
+  &:hover,
+  &.nx-active {
+    .nx-autocomplete-option__label {
+      // the autocomplete should have the same look as the dropdown, so using the dropdown token here
+      color: v(dropdown-item-hover-color);
     }
+
+    @media screen and (forced-colors: active) {
+      .nx-autocomplete-option__label {
+        color: highlightText;
+        background-color: highlight;
+        border-radius: nx-border-radius(s);
+        forced-color-adjust: none;
+      }
+    }
+  }
 }
 
 @media screen and (forced-colors: active) {
-    :host(.nx-disabled) {
-        .nx-autocomplete-option__label {
-            color: GrayText;
-        }
+  :host(.nx-disabled) {
+    .nx-autocomplete-option__label {
+      color: GrayText;
     }
+  }
 }
 
 :host(.nx-disabled) {
-    .nx-autocomplete-option {
-        cursor: not-allowed;
-    }
+  .nx-autocomplete-option {
+    cursor: not-allowed;
+  }
 
-    .nx-autocomplete-option__label {
-        color: v(dropdown-item-text-color-disabled);
-    }
+  .nx-autocomplete-option__label {
+    color: v(dropdown-item-text-color-disabled);
+  }
 }

@@ -6,8 +6,8 @@ import { ExampleViewerModule } from '../example-viewer/example-viewer.module';
 import { ExampleLoaderComponent } from './example-loader.component';
 
 @NgModule({
-    imports: [DocViewerModule, PortalModule, ExampleViewerModule, ExampleLoaderComponent],
-    exports: [ExampleLoaderComponent, ExampleViewerModule],
-    providers: [],
+  imports: [DocViewerModule, PortalModule, ExampleViewerModule, ExampleLoaderComponent],
+  exports: [ExampleLoaderComponent, ExampleViewerModule],
+  providers: [],
 })
 export class ExampleLoaderModule {}

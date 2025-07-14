@@ -1,86 +1,90 @@
 @if (direction === 'horizontal') {
-    <span class="nx-progress-stepper__title">
-        <ng-content select="nx-label"></ng-content>
-    </span>
+  <span class="nx-progress-stepper__title">
+    <ng-content select="nx-label"></ng-content>
+  </span>
 }
 
 <div class="nx-multi-stepper__items" role="tablist">
-    @if (groups.length === 0 || direction === 'horizontal') {
-        @for (step of steps; track step; let i = $index; let isLast = $last; let isFirst = $first) {
+  @if (groups.length === 0 || direction === 'horizontal') {
+    @for (step of steps; track step; let i = $index; let isLast = $last; let isFirst = $first) {
+      <nx-multi-step-item
+        (click)="!_stepDisabled(i) && step.select()"
+        (keydown)="_onKeydown($event)"
+        [last]="isLast"
+        [tabindex]="_getFocusIndex() === i ? 0 : -1"
+        [label]="step.stepLabel || step.label"
+        [completed]="step.completed || step.wasCompleted"
+        [selected]="selectedIndex === i"
+        [active]="selectedIndex > i"
+        [disabled]="_stepDisabled(i)"
+        [direction]="direction"
+        [ariaControls]="_getStepContentId(i)"
+        [wasCompleted]="step.wasCompleted"
+      >
+      </nx-multi-step-item>
+    }
+  } @else {
+    @for (group of groups; track group; let i = $index) {
+      <div class="nx-multi-stepper__group">
+        <div
+          class="nx-multi-stepper__group-label"
+          [class.is-active]="_isGroupActive(i)"
+          [class.is-disabled]="_isGroupDisabled(i)"
+        >
+          {{ group.label }}
+        </div>
+        <div class="nx-multi-stepper__group-items">
+          @for (step of group.steps; track step; let isLast = $last) {
             <nx-multi-step-item
-                (click)="!_stepDisabled(i) && step.select()"
-                (keydown)="_onKeydown($event)"
-                [last]="isLast"
-                [tabindex]="_getFocusIndex() === i ? 0 : -1"
-                [label]="step.stepLabel || step.label"
-                [completed]="step.completed || step.wasCompleted"
-                [selected]="selectedIndex === i"
-                [active]="selectedIndex > i"
-                [disabled]="_stepDisabled(i)"
-                [direction]="direction"
-                [ariaControls]="_getStepContentId(i)"
-                [wasCompleted]="step.wasCompleted"
+              (click)="!_stepDisabled(_getIndex(step)) && step.select()"
+              (keydown)="_onKeydown($event)"
+              [tabindex]="_getFocusIndex() === _getIndex(step) ? 0 : -1"
+              [last]="isLast"
+              [label]="step.stepLabel || step.label"
+              [completed]="step.completed || step.wasCompleted"
+              [selected]="selectedIndex === _getIndex(step)"
+              [active]="selectedIndex > _getIndex(step)"
+              [disabled]="_stepDisabled(_getIndex(step))"
+              [direction]="direction"
+              [wasCompleted]="step.wasCompleted"
+              [ariaControls]="_getStepContentId(i)"
             >
             </nx-multi-step-item>
-        }
-    } @else {
-        @for (group of groups; track group; let i = $index) {
-            <div class="nx-multi-stepper__group">
-                <div class="nx-multi-stepper__group-label" [class.is-active]="_isGroupActive(i)" [class.is-disabled]="_isGroupDisabled(i)">
-                    {{ group.label }}
-                </div>
-                <div class="nx-multi-stepper__group-items">
-                    @for (step of group.steps; track step; let isLast = $last) {
-                        <nx-multi-step-item
-                            (click)="!_stepDisabled(_getIndex(step)) && step.select()"
-                            (keydown)="_onKeydown($event)"
-                            [tabindex]="_getFocusIndex() === _getIndex(step) ? 0 : -1"
-                            [last]="isLast"
-                            [label]="step.stepLabel || step.label"
-                            [completed]="step.completed || step.wasCompleted"
-                            [selected]="selectedIndex === _getIndex(step)"
-                            [active]="selectedIndex > _getIndex(step)"
-                            [disabled]="_stepDisabled(_getIndex(step))"
-                            [direction]="direction"
-                            [wasCompleted]="step.wasCompleted"
-                            [ariaControls]="_getStepContentId(i)"
-                        >
-                        </nx-multi-step-item>
-                    }
-                </div>
-            </div>
-        }
+          }
+        </div>
+      </div>
     }
+  }
 </div>
 
 @if (direction === 'horizontal') {
-    <div class="labels-container">
-        @for (step of steps; track step; let i = $index) {
-            <div
-                class="label"
-                tabindex="-1"
-                [attr.aria-controls]="_getStepContentId(i)"
-                [ngClass]="{ 'is-disabled': _stepDisabled(i), 'is-selected': selectedIndex === i }"
-                (click)="!_stepDisabled(i) && step.select()"
-            >
-                <span>{{ step.label }}</span>
-            </div>
-        }
-    </div>
+  <div class="labels-container">
+    @for (step of steps; track step; let i = $index) {
+      <div
+        class="label"
+        tabindex="-1"
+        [attr.aria-controls]="_getStepContentId(i)"
+        [ngClass]="{ 'is-disabled': _stepDisabled(i), 'is-selected': selectedIndex === i }"
+        (click)="!_stepDisabled(i) && step.select()"
+      >
+        <span>{{ step.label }}</span>
+      </div>
+    }
+  </div>
 }
 
 <div class="nx-progress-stepper__mobile-label">
-    {{ currentLabel }}
+  {{ currentLabel }}
 </div>
 
 @for (step of steps; track step; let i = $index) {
-    <div
-        class="nx-progress-stepper__content"
-        role="tabpanel"
-        [id]="_getStepContentId(i)"
-        [attr.aria-label]="currentLabel"
-        [attr.aria-expanded]="selectedIndex === i"
-    >
-        <ng-container [ngTemplateOutlet]="step.content"></ng-container>
-    </div>
+  <div
+    class="nx-progress-stepper__content"
+    role="tabpanel"
+    [id]="_getStepContentId(i)"
+    [attr.aria-label]="currentLabel"
+    [attr.aria-expanded]="selectedIndex === i"
+  >
+    <ng-container [ngTemplateOutlet]="step.content"></ng-container>
+  </div>
 }

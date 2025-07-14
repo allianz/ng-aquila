@@ -1,93 +1,93 @@
 @import '../../shared-styles/index';
 
 :host {
-    display: flex;
-    width: 100%;
-    padding: v(multi-select-item-padding-vertical) v(multi-select-item-padding-horizon);
+  display: flex;
+  width: 100%;
+  padding: v(multi-select-item-padding-vertical) v(multi-select-item-padding-horizon);
 
-    &:hover {
-        background-color: v(dropdown-item-hover-background-color);
+  &:hover {
+    background-color: v(dropdown-item-hover-background-color);
+  }
+  &:active {
+    background-color: v(dropdown-item-active-background-color);
+  }
+
+  &.is-outline {
+    .nx-checkbox {
+      @include type-style(checkbox-small-label);
     }
-    &:active {
-        background-color: v(dropdown-item-active-background-color);
-    }
+  }
+
+  &.divider {
+    border-bottom: 1px solid v(dropdown-group-divider);
+    margin-bottom: 16px;
+    padding-bottom: 21px;
 
     &.is-outline {
-        .nx-checkbox {
-            @include type-style(checkbox-small-label);
-        }
+      margin-bottom: 7px;
+      padding-bottom: 16px;
     }
-
-    &.divider {
-        border-bottom: 1px solid v(dropdown-group-divider);
-        margin-bottom: 16px;
-        padding-bottom: 21px;
-
-        &.is-outline {
-            margin-bottom: 7px;
-            padding-bottom: 16px;
-        }
-    }
+  }
 }
 
 .nx-checkbox {
-    @include type-style(checkbox-large-label);
-    color: v(checkbox-label-color);
-    cursor: pointer;
-    display: flex;
-    align-items: flex-start;
+  @include type-style(checkbox-large-label);
+  color: v(checkbox-label-color);
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
 
-    &.is-active {
-        @include focus-style;
-        border-radius: 4px;
+  &.is-active {
+    @include focus-style;
+    border-radius: 4px;
+  }
+
+  &.is-disabled {
+    cursor: not-allowed;
+
+    .nx-checkbox__control {
+      background-color: v(checkbox-disabled-background-color);
+      border-color: v(checkbox-disabled-border-color);
+      color: v(checkbox-disabled-icon-color);
     }
-
-    &.is-disabled {
-        cursor: not-allowed;
-
-        .nx-checkbox__control {
-            background-color: v(checkbox-disabled-background-color);
-            border-color: v(checkbox-disabled-border-color);
-            color: v(checkbox-disabled-icon-color);
-        }
-        .nx-checkbox__label {
-            color: v(checkbox-label-disabled-color);
-        }
+    .nx-checkbox__label {
+      color: v(checkbox-label-disabled-color);
     }
+  }
 
-    &.is-selected {
-        .nx-checkbox__control {
-            background-color: v(checkbox-selected-background-color);
-            border-color: v(checkbox-selected-border-color);
-        }
+  &.is-selected {
+    .nx-checkbox__control {
+      background-color: v(checkbox-selected-background-color);
+      border-color: v(checkbox-selected-border-color);
     }
+  }
 }
 
 .nx-checkbox__control {
-    background-color: v(checkbox-background-color);
-    border-style: solid;
-    border-width: v(checkbox-border-width);
-    border-color: v(checkbox-border-color);
-    border-radius: v(checkbox-border-radius);
-    color: v(checkbox-icon-color);
-    font-size: v(checkbox-icon-size);
-    height: v(checkbox-control-size);
-    width: v(checkbox-control-size);
-    min-width: v(checkbox-control-size);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    z-index: 0;
+  background-color: v(checkbox-background-color);
+  border-style: solid;
+  border-width: v(checkbox-border-width);
+  border-color: v(checkbox-border-color);
+  border-radius: v(checkbox-border-radius);
+  color: v(checkbox-icon-color);
+  font-size: v(checkbox-icon-size);
+  height: v(checkbox-control-size);
+  width: v(checkbox-control-size);
+  min-width: v(checkbox-control-size);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 0;
 }
 
 .nx-checkbox__label {
-    padding: 0;
-    margin-left: v(checkbox-small-label-text-margin-left);
-    word-break: break-word;
-    hyphens: auto;
+  padding: 0;
+  margin-left: v(checkbox-small-label-text-margin-left);
+  word-break: break-word;
+  hyphens: auto;
 
-    :host-context([dir='rtl']) & {
-        margin-left: initial;
-        margin-right: v(checkbox-small-label-text-margin-left);
-    }
+  :host-context([dir='rtl']) & {
+    margin-left: initial;
+    margin-right: v(checkbox-small-label-text-margin-left);
+  }
 }

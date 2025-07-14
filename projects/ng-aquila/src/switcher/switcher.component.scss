@@ -1,392 +1,392 @@
 @import '../shared-styles/index';
 
 :host {
-    position: relative;
+  position: relative;
 
-    &.is-swapped .nx-switcher__label {
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-
-        &.has-label .nx-switcher__toggle {
-            margin-left: v(switcher-label-gap);
-
-            [dir='rtl'] & {
-                margin-right: v(switcher-label-gap);
-                margin-left: initial;
-            }
-        }
-    }
-}
-
-.nx-switcher__input {
-    opacity: 0;
-    position: absolute;
-}
-
-.nx-switcher__control {
-    cursor: pointer;
-    display: flex;
-    position: relative;
-}
-:host(.is-swapped) .nx-switcher__control {
+  &.is-swapped .nx-switcher__label {
     flex-direction: row-reverse;
     justify-content: flex-end;
 
-    .nx-switcher__label-text {
-        margin-right: nx-spacer(xs);
+    &.has-label .nx-switcher__toggle {
+      margin-left: v(switcher-label-gap);
+
+      [dir='rtl'] & {
+        margin-right: v(switcher-label-gap);
+        margin-left: initial;
+      }
     }
+  }
+}
+
+.nx-switcher__input {
+  opacity: 0;
+  position: absolute;
+}
+
+.nx-switcher__control {
+  cursor: pointer;
+  display: flex;
+  position: relative;
+}
+:host(.is-swapped) .nx-switcher__control {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+
+  .nx-switcher__label-text {
+    margin-right: nx-spacer(xs);
+  }
 }
 
 .nx-switcher__label-text {
-    @include type-style(switcher-large);
+  @include type-style(switcher-large);
 }
 
 .nx-switcher__toggle {
-    position: relative;
-    display: inline-block;
-    width: v(switcher-width);
-    height: v(switcher-height);
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: v(switcher-unchecked-background-color);
-    border-radius: v(switcher-border-radius);
-    transition: background-color 0.2s ease;
-    border: v(switcher-border-default) solid v(switcher-default-border-color);
-    &:hover:not(.is-disabled) {
-        background-color: v(switcher-default-hover-color);
-    }
-    &:active:not(.is-disabled) {
-        background-color: v(switcher-default-active-color);
-    }
+  position: relative;
+  display: inline-block;
+  width: v(switcher-width);
+  height: v(switcher-height);
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: v(switcher-unchecked-background-color);
+  border-radius: v(switcher-border-radius);
+  transition: background-color 0.2s ease;
+  border: v(switcher-border-default) solid v(switcher-default-border-color);
+  &:hover:not(.is-disabled) {
+    background-color: v(switcher-default-hover-color);
+  }
+  &:active:not(.is-disabled) {
+    background-color: v(switcher-default-active-color);
+  }
 }
 
 :host(:not(.is-swapped)) .has-label .nx-switcher__toggle {
-    margin-right: v(switcher-label-gap);
+  margin-right: v(switcher-label-gap);
 
-    [dir='rtl'] & {
-        margin-right: initial;
-        margin-left: v(switcher-label-gap);
-    }
+  [dir='rtl'] & {
+    margin-right: initial;
+    margin-left: v(switcher-label-gap);
+  }
 }
 
 .nx-switcher__dot {
-    position: absolute;
-    height: v(switcher-dot-size);
-    width: v(switcher-dot-size);
-    left: v(switcher-dot-padding);
-    bottom: v(switcher-dot-padding);
-    background-color: v(switcher-dot-background-color);
-    border-radius: v(switcher-border-radius);
-    transform: translate(0);
-    transition:
-        transform 0.2s ease,
-        background-color 0.2s ease;
+  position: absolute;
+  height: v(switcher-dot-size);
+  width: v(switcher-dot-size);
+  left: v(switcher-dot-padding);
+  bottom: v(switcher-dot-padding);
+  background-color: v(switcher-dot-background-color);
+  border-radius: v(switcher-border-radius);
+  transform: translate(0);
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
 
-    :host-context([dir='rtl']) & {
-        right: v(switcher-dot-padding);
-        left: auto;
-    }
+  :host-context([dir='rtl']) & {
+    right: v(switcher-dot-padding);
+    left: auto;
+  }
 }
 
 // CHECKED STYLES
 :host(.is-checked) {
-    .nx-switcher__dot {
-        transform: translate(v(switcher-translate));
-        background-color: v(switcher-dot-default-color);
-        [dir='rtl'] & {
-            transform: translate(-v(switcher-translate));
-        }
+  .nx-switcher__dot {
+    transform: translate(v(switcher-translate));
+    background-color: v(switcher-dot-default-color);
+    [dir='rtl'] & {
+      transform: translate(-v(switcher-translate));
     }
+  }
 
-    .nx-switcher__toggle {
-        border: v(switcher-border-default) solid v(switcher-checked-background-color);
-        background-color: v(switcher-checked-background-color);
+  .nx-switcher__toggle {
+    border: v(switcher-border-default) solid v(switcher-checked-background-color);
+    background-color: v(switcher-checked-background-color);
+  }
+  &:not(.is-readonly):not(.is-disabled):not(.has-error) .nx-switcher__toggle {
+    &:hover {
+      border: v(switcher-border-default) solid v(switcher-checked-hover-color);
+      background-color: v(switcher-checked-hover-color);
     }
-    &:not(.is-readonly):not(.is-disabled):not(.has-error) .nx-switcher__toggle {
-        &:hover {
-            border: v(switcher-border-default) solid v(switcher-checked-hover-color);
-            background-color: v(switcher-checked-hover-color);
-        }
-        &:active {
-            border: v(switcher-border-default) solid v(switcher-checked-active-color);
-            background-color: v(switcher-checked-active-color);
-        }
+    &:active {
+      border: v(switcher-border-default) solid v(switcher-checked-active-color);
+      background-color: v(switcher-checked-active-color);
     }
+  }
 
-    nx-icon {
-        opacity: v(switcher-icon-opacity);
-        transition: opacity 0.2s ease;
-    }
+  nx-icon {
+    opacity: v(switcher-icon-opacity);
+    transition: opacity 0.2s ease;
+  }
 }
 
 :host(.is-checked.is-negative) {
-    .nx-switcher__toggle {
-        background-color: v(negative-dimmed);
-    }
+  .nx-switcher__toggle {
+    background-color: v(negative-dimmed);
+  }
 }
 
 :host(.check-icon-small) {
-    font-size: nx-font-size(3xs); // required to override `font-size: auto;` of the nx-icon component
+  font-size: nx-font-size(3xs); // required to override `font-size: auto;` of the nx-icon component
 }
 
 nx-icon {
-    position: absolute;
-    top: nx-spacer(4xs);
-    left: nx-spacer(4xs);
-    opacity: 0;
-    color: v(switcher-checked-icon-color);
+  position: absolute;
+  top: nx-spacer(4xs);
+  left: nx-spacer(4xs);
+  opacity: 0;
+  color: v(switcher-checked-icon-color);
 }
 
 // BIG
 :host(.is-big) {
-    .nx-switcher__toggle {
-        width: v(switcher-large-width);
-        height: v(switcher-large-height);
-        border-radius: v(switcher-large-height);
+  .nx-switcher__toggle {
+    width: v(switcher-large-width);
+    height: v(switcher-large-height);
+    border-radius: v(switcher-large-height);
+  }
+
+  .nx-switcher__dot {
+    height: v(switcher-dot-size-large);
+    width: v(switcher-dot-size-large);
+  }
+
+  nx-icon {
+    font-size: nx-font-size(s);
+
+    [dir='rtl'] & {
+      right: v(switcher-dot-padding-large);
+      left: auto;
     }
+  }
 
-    .nx-switcher__dot {
-        height: v(switcher-dot-size-large);
-        width: v(switcher-dot-size-large);
+  &.nx-switcher--large-label {
+    .has-label {
+      .nx-switcher__label-text {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+
+      .nx-switcher__toggle {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
     }
+  }
 
-    nx-icon {
-        font-size: nx-font-size(s);
+  &.nx-switcher--small-label {
+    .has-label {
+      .nx-switcher__label-text {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
 
-        [dir='rtl'] & {
-            right: v(switcher-dot-padding-large);
-            left: auto;
-        }
+      .nx-switcher__toggle {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
     }
-
-    &.nx-switcher--large-label {
-        .has-label {
-            .nx-switcher__label-text {
-                margin-top: auto;
-                margin-bottom: auto;
-            }
-
-            .nx-switcher__toggle {
-                margin-top: auto;
-                margin-bottom: auto;
-            }
-        }
-    }
-
-    &.nx-switcher--small-label {
-        .has-label {
-            .nx-switcher__label-text {
-                margin-top: auto;
-                margin-bottom: auto;
-            }
-
-            .nx-switcher__toggle {
-                margin-top: auto;
-                margin-bottom: auto;
-            }
-        }
-    }
+  }
 }
 
 // NEGATIVE
 :host(.is-negative) {
-    .nx-switcher__control {
-        color: v(negative);
-    }
+  .nx-switcher__control {
+    color: v(negative);
+  }
 
-    .nx-switcher__dot {
-        background-color: v(negative);
-    }
+  .nx-switcher__dot {
+    background-color: v(negative);
+  }
 
-    .nx-switcher__toggle {
-        background-color: v(negative-dimmed);
-        border: v(switcher-border-default) solid v(negative-background);
-    }
+  .nx-switcher__toggle {
+    background-color: v(negative-dimmed);
+    border: v(switcher-border-default) solid v(negative-background);
+  }
 
-    nx-icon {
-        color: v(negative-background);
-    }
+  nx-icon {
+    color: v(negative-background);
+  }
 }
 
 // ARIA
 :host .nx-switcher__input.cdk-keyboard-focused + .nx-switcher__control .nx-switcher__toggle {
-    @include focus-style;
+  @include focus-style;
 }
 
 // DISABLED
 :host(.is-disabled) {
-    &.is-checked {
-        .nx-switcher__toggle {
-            background-color: v(switcher-checked-disabled-background-color);
-            border: v(switcher-border-default) solid v(switcher-checked-disabled-background-color);
-        }
-        .nx-switcher__dot {
-            background-color: v(switcher-dot-checked-disabled-color);
-        }
-    }
+  &.is-checked {
     .nx-switcher__toggle {
-        background-color: v(switcher-disabled-background-color);
-        border: v(switcher-border-default) solid v(switcher-disabled-border-color);
+      background-color: v(switcher-checked-disabled-background-color);
+      border: v(switcher-border-default) solid v(switcher-checked-disabled-background-color);
     }
-
     .nx-switcher__dot {
-        background-color: v(switcher-disabled-dot-background-color);
+      background-color: v(switcher-dot-checked-disabled-color);
     }
+  }
+  .nx-switcher__toggle {
+    background-color: v(switcher-disabled-background-color);
+    border: v(switcher-border-default) solid v(switcher-disabled-border-color);
+  }
 
-    .nx-switcher__control {
-        cursor: not-allowed;
-        color: v(switcher-disabled-text-color);
-    }
+  .nx-switcher__dot {
+    background-color: v(switcher-disabled-dot-background-color);
+  }
 
-    nx-icon {
-        color: v(switcher-disabled-icon-color);
-    }
+  .nx-switcher__control {
+    cursor: not-allowed;
+    color: v(switcher-disabled-text-color);
+  }
+
+  nx-icon {
+    color: v(switcher-disabled-icon-color);
+  }
 }
 
 :host(.is-readonly) {
+  .nx-switcher__toggle {
+    background-color: v(switcher-readonly-background-color);
+    border: 1px solid v(switcher-readonly-border-color);
+  }
+  &.is-checked {
     .nx-switcher__toggle {
-        background-color: v(switcher-readonly-background-color);
-        border: 1px solid v(switcher-readonly-border-color);
+      background-color: v(switcher-readonly-checked-background-color);
+      border: 1px solid v(switcher-readonly-border-color);
     }
-    &.is-checked {
-        .nx-switcher__toggle {
-            background-color: v(switcher-readonly-checked-background-color);
-            border: 1px solid v(switcher-readonly-border-color);
-        }
-    }
+  }
 
-    .nx-switcher__dot {
-        background-color: v(switcher-readonly-dot-background-color);
-        left: v(switcher-dot-readonly-padding);
-        bottom: v(switcher-dot-readonly-padding);
-        nx-icon {
-            color: v(switcher-readonly-icon-color);
-        }
+  .nx-switcher__dot {
+    background-color: v(switcher-readonly-dot-background-color);
+    left: v(switcher-dot-readonly-padding);
+    bottom: v(switcher-dot-readonly-padding);
+    nx-icon {
+      color: v(switcher-readonly-icon-color);
     }
+  }
 
-    .nx-switcher__control {
-        cursor: not-allowed;
-        color: v(switcher-readonly-text-color);
-    }
+  .nx-switcher__control {
+    cursor: not-allowed;
+    color: v(switcher-readonly-text-color);
+  }
 }
 
 // ERROR
 :host(.has-error) {
-    &.is-checked .nx-switcher__toggle {
-        background-color: v(danger);
-        &:hover {
-            background-color: v(danger-hover);
-            border: v(switcher-border-default) solid v(danger-hover);
-        }
-        &:active {
-            background-color: v(danger-active);
-            border: v(switcher-border-default) solid v(danger-active);
-        }
+  &.is-checked .nx-switcher__toggle {
+    background-color: v(danger);
+    &:hover {
+      background-color: v(danger-hover);
+      border: v(switcher-border-default) solid v(danger-hover);
     }
-    .nx-switcher__toggle {
-        border: v(switcher-border-default) solid v(danger);
-        &:hover {
-            background-color: v(switcher-default-hover-color);
-            border: v(switcher-border-default) solid v(danger-hover);
-        }
-        &:active {
-            background-color: v(switcher-default-active-color);
-            border: v(switcher-border-default) solid v(danger-active);
-        }
+    &:active {
+      background-color: v(danger-active);
+      border: v(switcher-border-default) solid v(danger-active);
     }
+  }
+  .nx-switcher__toggle {
+    border: v(switcher-border-default) solid v(danger);
+    &:hover {
+      background-color: v(switcher-default-hover-color);
+      border: v(switcher-border-default) solid v(danger-hover);
+    }
+    &:active {
+      background-color: v(switcher-default-active-color);
+      border: v(switcher-border-default) solid v(danger-active);
+    }
+  }
 
-    nx-icon {
-        color: v(danger);
-    }
+  nx-icon {
+    color: v(danger);
+  }
 }
 
 // high contrast
 @media screen and (forced-colors: active) {
-    :host,
-    :host(.is-negative) {
-        .nx-switcher__control {
-            color: buttonText;
-        }
-
-        .nx-switcher__toggle {
-            forced-color-adjust: none;
-            color: highlightText;
-            background-color: highlight;
-        }
-
-        &:not(.is-checked) {
-            .nx-switcher__toggle {
-                background-color: buttonFace;
-                border: nx-border-size(m) solid buttonText;
-                color: buttonText;
-            }
-
-            .nx-switcher__dot {
-                left: 0;
-                bottom: 0;
-                box-shadow: 0 0 0 nx-border-size(m) buttonText;
-                background-color: buttonText;
-            }
-        }
-
-        &.is-checked {
-            .nx-switcher__toggle {
-                background-color: highlight;
-            }
-
-            .nx-switcher__dot {
-                background-color: highlightText;
-                color: buttonText;
-            }
-
-            .nx-switcher__dot nx-icon {
-                color: highlight;
-            }
-        }
-
-        // disabled
-        &.is-disabled {
-            .nx-switcher__control {
-                color: GrayText;
-            }
-
-            .nx-switcher__toggle {
-                color: GrayText;
-            }
-
-            .nx-switcher__dot {
-                opacity: 1;
-                background-color: GrayText;
-            }
-        }
-
-        &.is-disabled:not(.is-checked) {
-            .nx-switcher__toggle {
-                border: nx-border-size(m) solid GrayText;
-            }
-
-            .nx-switcher__dot {
-                box-shadow: 0 0 0 nx-border-size(m) GrayText;
-            }
-        }
-
-        &.is-disabled.is-checked {
-            .nx-switcher__toggle {
-                background-color: GrayText;
-            }
-
-            .nx-switcher__dot {
-                background-color: Canvas;
-            }
-
-            .nx-switcher__dot nx-icon {
-                color: GrayText;
-            }
-        }
+  :host,
+  :host(.is-negative) {
+    .nx-switcher__control {
+      color: buttonText;
     }
+
+    .nx-switcher__toggle {
+      forced-color-adjust: none;
+      color: highlightText;
+      background-color: highlight;
+    }
+
+    &:not(.is-checked) {
+      .nx-switcher__toggle {
+        background-color: buttonFace;
+        border: nx-border-size(m) solid buttonText;
+        color: buttonText;
+      }
+
+      .nx-switcher__dot {
+        left: 0;
+        bottom: 0;
+        box-shadow: 0 0 0 nx-border-size(m) buttonText;
+        background-color: buttonText;
+      }
+    }
+
+    &.is-checked {
+      .nx-switcher__toggle {
+        background-color: highlight;
+      }
+
+      .nx-switcher__dot {
+        background-color: highlightText;
+        color: buttonText;
+      }
+
+      .nx-switcher__dot nx-icon {
+        color: highlight;
+      }
+    }
+
+    // disabled
+    &.is-disabled {
+      .nx-switcher__control {
+        color: GrayText;
+      }
+
+      .nx-switcher__toggle {
+        color: GrayText;
+      }
+
+      .nx-switcher__dot {
+        opacity: 1;
+        background-color: GrayText;
+      }
+    }
+
+    &.is-disabled:not(.is-checked) {
+      .nx-switcher__toggle {
+        border: nx-border-size(m) solid GrayText;
+      }
+
+      .nx-switcher__dot {
+        box-shadow: 0 0 0 nx-border-size(m) GrayText;
+      }
+    }
+
+    &.is-disabled.is-checked {
+      .nx-switcher__toggle {
+        background-color: GrayText;
+      }
+
+      .nx-switcher__dot {
+        background-color: Canvas;
+      }
+
+      .nx-switcher__dot nx-icon {
+        color: GrayText;
+      }
+    }
+  }
 }
 
 // Error
 .nx-switcher-error {
-    margin-top: v(switcher-stack);
+  margin-top: v(switcher-stack);
 }

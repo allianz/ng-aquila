@@ -1,5 +1,12 @@
 import { Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
-import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  flush,
+  TestBed,
+  tick,
+  waitForAsync,
+} from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { NxComparisonTableModule } from '../comparison-table.module';
@@ -11,147 +18,170 @@ const THROTTLE_TIME = 200;
 
 @Directive({ standalone: true })
 abstract class PopularCellTest {
-    @ViewChild(NxComparisonTablePopularCell) popularCellInstance!: NxComparisonTablePopularCell;
-    @ViewChildren(NxComparisonTableRowDirective) rowInstances!: QueryList<NxComparisonTableRowDirective>;
+  @ViewChild(NxComparisonTablePopularCell) popularCellInstance!: NxComparisonTablePopularCell;
+  @ViewChildren(NxComparisonTableRowDirective)
+  rowInstances!: QueryList<NxComparisonTableRowDirective>;
 
-    popularCellId = 'popular-cell';
+  popularCellId = 'popular-cell';
 }
 
 describe('NxComparisonTablePopularCell', () => {
-    let fixture: ComponentFixture<PopularCellTest>;
-    let testInstance: PopularCellTest;
-    let popularCellInstance: NxComparisonTablePopularCell;
-    let popularCellElement: HTMLElement;
+  let fixture: ComponentFixture<PopularCellTest>;
+  let testInstance: PopularCellTest;
+  let popularCellInstance: NxComparisonTablePopularCell;
+  let popularCellElement: HTMLElement;
 
-    function createTestComponent(component: Type<PopularCellTest>) {
-        fixture = TestBed.createComponent(component);
-        fixture.detectChanges();
-        testInstance = fixture.componentInstance;
-        popularCellInstance = testInstance.popularCellInstance;
-        popularCellElement = fixture.nativeElement.querySelector('.nx-comparison-table__popular-cell');
-    }
+  function createTestComponent(component: Type<PopularCellTest>) {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
+    popularCellInstance = testInstance.popularCellInstance;
+    popularCellElement = fixture.nativeElement.querySelector('.nx-comparison-table__popular-cell');
+  }
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            imports: [NxComparisonTableModule, PopularCellComponent],
-        });
-        TestBed.compileComponents();
-    }));
-
-    it('renders the content correctly', () => {
-        createTestComponent(PopularCellComponent);
-        expect(popularCellInstance).toBeDefined();
-        expect(popularCellElement.textContent).toBe('Popular cell');
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [NxComparisonTableModule, PopularCellComponent],
     });
+    TestBed.compileComponents();
+  }));
 
-    it('sets the id correctly', () => {
-        createTestComponent(PopularCellComponent);
-        expect(popularCellElement.id).toBe('popular-cell');
-    });
+  it('renders the content correctly', () => {
+    createTestComponent(PopularCellComponent);
+    expect(popularCellInstance).toBeDefined();
+    expect(popularCellElement.textContent).toBe('Popular cell');
+  });
 
-    it('places the popular cell above the correct column', () => {
-        createTestComponent(PopularCellComponent);
+  it('sets the id correctly', () => {
+    createTestComponent(PopularCellComponent);
+    expect(popularCellElement.id).toBe('popular-cell');
+  });
 
-        const popularCellColumn = popularCellInstance.forColumn + 1; // +1 for the row header
-        const popularCell = fixture.nativeElement.querySelector(`.nx-comparison-table__popular-cell:nth-child(${popularCellColumn})`);
-        // make sure the placeholder cells are not the popular cell
-        const placeholder1 = fixture.nativeElement.querySelector('.nx-comparison-table__popular-cell:nth-child(1)');
-        const placeholder2 = fixture.nativeElement.querySelector('.nx-comparison-table__popular-cell:nth-child(2)');
-        const placeholder4 = fixture.nativeElement.querySelector('.nx-comparison-table__popular-cell:nth-child(4)');
+  it('places the popular cell above the correct column', () => {
+    createTestComponent(PopularCellComponent);
 
-        expect(popularCell).toBeDefined();
-        expect(placeholder1).toBeNull();
-        expect(placeholder2).toBeNull();
-        expect(placeholder4).toBeNull();
-    });
+    const popularCellColumn = popularCellInstance.forColumn + 1; // +1 for the row header
+    const popularCell = fixture.nativeElement.querySelector(
+      `.nx-comparison-table__popular-cell:nth-child(${popularCellColumn})`,
+    );
+    // make sure the placeholder cells are not the popular cell
+    const placeholder1 = fixture.nativeElement.querySelector(
+      '.nx-comparison-table__popular-cell:nth-child(1)',
+    );
+    const placeholder2 = fixture.nativeElement.querySelector(
+      '.nx-comparison-table__popular-cell:nth-child(2)',
+    );
+    const placeholder4 = fixture.nativeElement.querySelector(
+      '.nx-comparison-table__popular-cell:nth-child(4)',
+    );
 
-    it('should have the correct number of placeholder cells in the popular cell row (desktop)', () => {
-        createTestComponent(PopularCellComponent);
-        const placeholderCells = fixture.nativeElement.querySelectorAll('.nx-comparison-table__placeholder-cell.is-popular-placeholder-cell');
-        expect(placeholderCells).toHaveSize(3);
-    });
+    expect(popularCell).toBeDefined();
+    expect(placeholder1).toBeNull();
+    expect(placeholder2).toBeNull();
+    expect(placeholder4).toBeNull();
+  });
 
-    it('should have the correct number of placeholder cells in the popular cell row (tablet)', fakeAsync(() => {
-        viewport.set('tablet');
-        window.dispatchEvent(new Event('resize'));
+  it('should have the correct number of placeholder cells in the popular cell row (desktop)', () => {
+    createTestComponent(PopularCellComponent);
+    const placeholderCells = fixture.nativeElement.querySelectorAll(
+      '.nx-comparison-table__placeholder-cell.is-popular-placeholder-cell',
+    );
+    expect(placeholderCells).toHaveSize(3);
+  });
 
-        createTestComponent(PopularCellComponent);
-        tick(THROTTLE_TIME);
-        fixture.detectChanges();
+  it('should have the correct number of placeholder cells in the popular cell row (tablet)', fakeAsync(() => {
+    viewport.set('tablet');
+    window.dispatchEvent(new Event('resize'));
 
-        const placeholderCells = fixture.nativeElement.querySelectorAll('.nx-comparison-table__placeholder-cell.is-popular-placeholder-cell');
-        expect(placeholderCells).toHaveSize(2);
-    }));
+    createTestComponent(PopularCellComponent);
+    tick(THROTTLE_TIME);
+    fixture.detectChanges();
 
-    it('should display cell on mobile', fakeAsync(() => {
-        createTestComponent(PopularCellComponent);
-        viewport.set('mobile');
-        window.dispatchEvent(new Event('resize'));
-        tick(THROTTLE_TIME);
-        fixture.detectChanges();
+    const placeholderCells = fixture.nativeElement.querySelectorAll(
+      '.nx-comparison-table__placeholder-cell.is-popular-placeholder-cell',
+    );
+    expect(placeholderCells).toHaveSize(2);
+  }));
 
-        const popularCell = fixture.debugElement.query(By.css('.nx-comparison-table__mobile-popular-cell'));
-        expect(popularCell).toBeDefined();
-        expect(popularCell.nativeElement.textContent).toBe('Popular cell');
-        flush();
-    }));
+  it('should display cell on mobile', fakeAsync(() => {
+    createTestComponent(PopularCellComponent);
+    viewport.set('mobile');
+    window.dispatchEvent(new Event('resize'));
+    tick(THROTTLE_TIME);
+    fixture.detectChanges();
 
-    it('should have the correct number of placeholder cells in the popular cell row (mobile)', fakeAsync(() => {
-        createTestComponent(PopularCellComponent);
-        viewport.set('mobile');
-        window.dispatchEvent(new Event('resize'));
-        tick(THROTTLE_TIME);
-        fixture.detectChanges();
+    const popularCell = fixture.debugElement.query(
+      By.css('.nx-comparison-table__mobile-popular-cell'),
+    );
+    expect(popularCell).toBeDefined();
+    expect(popularCell.nativeElement.textContent).toBe('Popular cell');
+    flush();
+  }));
 
-        const popularRow = fixture.debugElement.query(By.css('.nx-comparison-table__popular-row'));
-        expect(popularRow).toBeDefined();
+  it('should have the correct number of placeholder cells in the popular cell row (mobile)', fakeAsync(() => {
+    createTestComponent(PopularCellComponent);
+    viewport.set('mobile');
+    window.dispatchEvent(new Event('resize'));
+    tick(THROTTLE_TIME);
+    fixture.detectChanges();
 
-        const placeholderCells = popularRow.nativeElement.querySelectorAll('.nx-comparison-table__placeholder-cell');
-        expect(placeholderCells).toHaveSize(1);
-        const emptyCells = popularRow.nativeElement.querySelectorAll('.nx-comparison-table__placeholder-with-border-cell');
-        expect(emptyCells).toHaveSize(1);
-    }));
+    const popularRow = fixture.debugElement.query(By.css('.nx-comparison-table__popular-row'));
+    expect(popularRow).toBeDefined();
+
+    const placeholderCells = popularRow.nativeElement.querySelectorAll(
+      '.nx-comparison-table__placeholder-cell',
+    );
+    expect(placeholderCells).toHaveSize(1);
+    const emptyCells = popularRow.nativeElement.querySelectorAll(
+      '.nx-comparison-table__placeholder-with-border-cell',
+    );
+    expect(emptyCells).toHaveSize(1);
+  }));
 });
 
 @Component({
-    template: `
-        <nx-comparison-table selectedIndex="1">
-            <ng-container nxComparisonTableRow type="header">
-                <nx-comparison-table-popular-cell [id]="popularCellId" forColumn="2">Popular cell</nx-comparison-table-popular-cell>
-                <nx-comparison-table-cell type="header">
-                    <p class="product-title">Product 1</p>
-                    <p class="product-price">105,99 €</p>
-                </nx-comparison-table-cell>
-                <nx-comparison-table-cell type="header">
-                    <p class="product-title">Product 2</p>
-                    <p class="product-price">110,99 €</p>
-                </nx-comparison-table-cell>
-                <nx-comparison-table-cell type="header">
-                    <p class="product-title">Product 3</p>
-                    <p class="product-price">115,99 €</p>
-                </nx-comparison-table-cell>
-            </ng-container>
+  template: `
+    <nx-comparison-table selectedIndex="1">
+      <ng-container nxComparisonTableRow type="header">
+        <nx-comparison-table-popular-cell [id]="popularCellId" forColumn="2"
+          >Popular cell</nx-comparison-table-popular-cell
+        >
+        <nx-comparison-table-cell type="header">
+          <p class="product-title">Product 1</p>
+          <p class="product-price">105,99 €</p>
+        </nx-comparison-table-cell>
+        <nx-comparison-table-cell type="header">
+          <p class="product-title">Product 2</p>
+          <p class="product-price">110,99 €</p>
+        </nx-comparison-table-cell>
+        <nx-comparison-table-cell type="header">
+          <p class="product-title">Product 3</p>
+          <p class="product-price">115,99 €</p>
+        </nx-comparison-table-cell>
+      </ng-container>
 
-            <ng-container nxComparisonTableRow>
-                <nx-comparison-table-description-cell>Service headline</nx-comparison-table-description-cell>
-                <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
-                <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
-                <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
-            </ng-container>
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell
+          >Service headline</nx-comparison-table-description-cell
+        >
+        <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
+        <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
+        <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
+      </ng-container>
 
-            <ng-container nxComparisonTableRow type="footer">
-                <nx-comparison-table-cell>
-                    <p class="product-underline">Some short information</p>
-                </nx-comparison-table-cell>
-                <nx-comparison-table-cell>
-                    <p class="product-underline">Some short information</p>
-                </nx-comparison-table-cell>
-                <nx-comparison-table-cell>
-                    <p class="product-underline">Some short information</p>
-                </nx-comparison-table-cell>
-            </ng-container>
-        </nx-comparison-table>
-    `,
-    imports: [NxComparisonTableModule],
+      <ng-container nxComparisonTableRow type="footer">
+        <nx-comparison-table-cell>
+          <p class="product-underline">Some short information</p>
+        </nx-comparison-table-cell>
+        <nx-comparison-table-cell>
+          <p class="product-underline">Some short information</p>
+        </nx-comparison-table-cell>
+        <nx-comparison-table-cell>
+          <p class="product-underline">Some short information</p>
+        </nx-comparison-table-cell>
+      </ng-container>
+    </nx-comparison-table>
+  `,
+  imports: [NxComparisonTableModule],
 })
 class PopularCellComponent extends PopularCellTest {}

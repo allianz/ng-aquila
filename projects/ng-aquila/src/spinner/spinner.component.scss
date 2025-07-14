@@ -6,104 +6,105 @@ $diameter-large: nx-spacer(3m);
 $edge-margin: 4%;
 
 @keyframes spin {
-    0% {
-        transform: rotate(45deg);
-    }
-    100% {
-        transform: rotate(405deg);
-    }
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(405deg);
+  }
 }
 
 :host {
-    position: relative;
-    display: block;
+  position: relative;
+  display: block;
 }
 
 :host(.nx-spinner--small) {
-    width: $diameter-small;
-    height: $diameter-small;
+  width: $diameter-small;
+  height: $diameter-small;
 }
 
 :host(.nx-spinner--medium) {
-    width: $diameter-medium;
-    height: $diameter-medium;
+  width: $diameter-medium;
+  height: $diameter-medium;
 }
 
 :host(.nx-spinner--large) {
-    width: $diameter-large;
-    height: $diameter-large;
+  width: $diameter-large;
+  height: $diameter-large;
 }
 
 .nx-spinner__spin-block {
-    width: 100%;
-    height: 100%;
-    transform: rotate(45deg);
-    border-style: solid;
-    border-radius: 50%;
-    border-color: v(spinner-indicator-color) v(spinner-background-color) v(spinner-background-color) v(spinner-background-color);
-    animation-name: spin;
-    animation-duration: 0.8s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+  border-style: solid;
+  border-radius: 50%;
+  border-color: v(spinner-indicator-color) v(spinner-background-color) v(spinner-background-color)
+    v(spinner-background-color);
+  animation-name: spin;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 :host(.nx-spinner--small) .nx-spinner__spin-block {
-    border-width: calc(#{0.1 * $diameter-small});
+  border-width: calc(#{0.1 * $diameter-small});
 }
 
 :host(.nx-spinner--medium) .nx-spinner__spin-block {
-    border-width: calc(#{0.1 * $diameter-medium});
+  border-width: calc(#{0.1 * $diameter-medium});
 }
 
 :host(.nx-spinner--large) .nx-spinner__spin-block {
-    border-width: calc(#{0.1 * $diameter-large});
+  border-width: calc(#{0.1 * $diameter-large});
 }
 
 .nx-spinner__edge-left,
 .nx-spinner__edge-right {
-    width: 12%;
-    height: 12%;
-    border-radius: 50%;
-    background-color: v(spinner-indicator-color);
-    position: absolute;
-    top: $edge-margin;
+  width: 12%;
+  height: 12%;
+  border-radius: 50%;
+  background-color: v(spinner-indicator-color);
+  position: absolute;
+  top: $edge-margin;
 }
 
 // correct the size of the bobbles for small, because otherwise they look off
 :host(.nx-spinner--small) {
-    .nx-spinner__edge-left,
-    .nx-spinner__edge-right {
-        width: 10%;
-        height: 10%;
-    }
+  .nx-spinner__edge-left,
+  .nx-spinner__edge-right {
+    width: 10%;
+    height: 10%;
+  }
 }
 
 .nx-spinner__edge-left {
-    left: $edge-margin;
+  left: $edge-margin;
 }
 
 .nx-spinner__edge-right {
-    right: $edge-margin;
+  right: $edge-margin;
 }
 
 // negative styles
 :host(.nx-spinner--negative) {
-    .nx-spinner__spin-block {
-        border-color: v(spinner-negative-indicator-color) v(spinner-negative-background-color) v(spinner-negative-background-color)
-            v(spinner-negative-background-color);
-    }
+  .nx-spinner__spin-block {
+    border-color: v(spinner-negative-indicator-color) v(spinner-negative-background-color)
+      v(spinner-negative-background-color) v(spinner-negative-background-color);
+  }
 
-    .nx-spinner__edge-left,
-    .nx-spinner__edge-right {
-        background-color: v(spinner-negative-indicator-color);
-    }
+  .nx-spinner__edge-left,
+  .nx-spinner__edge-right {
+    background-color: v(spinner-negative-indicator-color);
+  }
 }
 
 @media screen and (forced-colors: active) {
-    :host,
-    :host.nx-spinner--negative {
-        .nx-spinner__spin-block {
-            border-color: Canvas highlight highlight highlight;
-        }
+  :host,
+  :host.nx-spinner--negative {
+    .nx-spinner__spin-block {
+      border-color: Canvas highlight highlight highlight;
     }
+  }
 }

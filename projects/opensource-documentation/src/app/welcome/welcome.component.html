@@ -1,32 +1,36 @@
 <main>
-    <div nxLayout="grid maxwidth" class="nxv-info-panel">
-        <div nxRow class="nxv-grey-row">
-            <div nxCol="12">
-                <div class="nxv-welcome__container">
-                    <h1 nxHeadline="section">Aquila Components</h1>
+  <div nxLayout="grid maxwidth" class="nxv-info-panel">
+    <div nxRow class="nxv-grey-row">
+      <div nxCol="12">
+        <div class="nxv-welcome__container">
+          <h1 nxHeadline="section">Aquila Components</h1>
 
-                    <p class="nxv-welcome__text">User Interface (UI) library by Allianz</p>
-                    <p class="nxv-welcome__subtext">powered by Allianz GDF</p>
+          <p class="nxv-welcome__text">User Interface (UI) library by Allianz</p>
+          <p class="nxv-welcome__subtext">powered by Allianz GDF</p>
 
-                    <div class="nxv-welcome__buttons">
-                        <button nxButton="secondary" [routerLink]="['/guides']" type="button">Get Started</button>
-                        <button nxButton="primary" [routerLink]="['/documentation']" type="button">Components</button>
-                    </div>
-                </div>
-            </div>
+          <div class="nxv-welcome__buttons">
+            <button nxButton="secondary" [routerLink]="['/guides']" type="button">
+              Get Started
+            </button>
+            <button nxButton="primary" [routerLink]="['/documentation']" type="button">
+              Components
+            </button>
+          </div>
         </div>
-
-        <div nxRow class="nxv-grey-row">
-            <div nxCol="12">
-                <h2>Try it out</h2>
-                <iframe
-                    src="https://stackblitz.com/edit/angular-aquila-starter-app?embed=1&file=src/app/starter-app.ts&hideNavigation=1"
-                    class="nxv-stackblitz-frame"
-                    tabindex="-1"
-                ></iframe>
-            </div>
-        </div>
+      </div>
     </div>
 
-    <doc-footer></doc-footer>
+    <div nxRow class="nxv-grey-row">
+      <div nxCol="12">
+        <h2>Try it out</h2>
+        <iframe
+          src="https://stackblitz.com/edit/angular-aquila-starter-app?embed=1&file=src/app/starter-app.ts&hideNavigation=1"
+          class="nxv-stackblitz-frame"
+          tabindex="-1"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <doc-footer></doc-footer>
 </main>

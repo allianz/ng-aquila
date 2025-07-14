@@ -1,24 +1,28 @@
 <ng-template #content>
-    @if (_table.viewType === 'desktop' || _table.viewType === 'tablet') {
-        <div
-            class="nx-comparison-table__intersection-cell"
-            role="cell"
-            [attr.aria-colspan]="_table._infoColumnCount()"
-            [style.flex-grow]="_table._infoColumnCount()"
-            [attr.headers]="_getHeaderIds()"
-        >
-            <div class="nx-comparison-table__cell-content">
-                <ng-container *ngTemplateOutlet="ngContent"></ng-container>
-            </div>
-        </div>
-    }
-    @if (_table.viewType === 'mobile') {
-        <td class="nx-comparison-table__intersection-cell" [attr.rowspan]="_getMobileRowspan()" [attr.headers]="_getHeaderIds()">
-            <ng-container *ngTemplateOutlet="ngContent"></ng-container>
-        </td>
-    }
+  @if (_table.viewType === 'desktop' || _table.viewType === 'tablet') {
+    <div
+      class="nx-comparison-table__intersection-cell"
+      role="cell"
+      [attr.aria-colspan]="_table._infoColumnCount()"
+      [style.flex-grow]="_table._infoColumnCount()"
+      [attr.headers]="_getHeaderIds()"
+    >
+      <div class="nx-comparison-table__cell-content">
+        <ng-container *ngTemplateOutlet="ngContent"></ng-container>
+      </div>
+    </div>
+  }
+  @if (_table.viewType === 'mobile') {
+    <td
+      class="nx-comparison-table__intersection-cell"
+      [attr.rowspan]="_getMobileRowspan()"
+      [attr.headers]="_getHeaderIds()"
+    >
+      <ng-container *ngTemplateOutlet="ngContent"></ng-container>
+    </td>
+  }
 </ng-template>
 
 <ng-template #ngContent>
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 </ng-template>

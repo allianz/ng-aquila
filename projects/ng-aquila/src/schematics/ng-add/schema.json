@@ -1,46 +1,46 @@
 {
-    "$schema": "http://json-schema.org/schema",
-    "$id": "angular-ng-aquila-ng-add",
-    "title": "Angular ng-aquila ng-add schematic",
-    "type": "object",
-    "properties": {
-        "project": {
-            "type": "string",
-            "description": "Name of the project.",
-            "$default": {
-                "$source": "projectName"
-            }
-        },
-        "type": {
-            "description": "Use case of the application.",
-            "type": "string",
-            "default": "b2c",
-            "x-prompt": {
-                "message": "Please choose your use case:",
-                "type": "list",
-                "items": [
-                    {
-                        "value": "b2c",
-                        "label": "Customer facing application (B2C)"
-                    },
-                    {
-                        "value": "b2b",
-                        "label": "Internal application (B2B)"
-                    }
-                ]
-            }
-        },
-        "noTheme": {
-            "description": "Option that no theme is added",
-            "type": "boolean",
-            "default": false
-        },
-        "starter": {
-            "description": "Option that creates the Starter App",
-            "type": "boolean",
-            "default": false,
-            "x-prompt": "Do you want to update your project with the Aquila Starter App? (WARNING: this will replace existing project files!)"
-        }
+  "$schema": "http://json-schema.org/schema",
+  "$id": "angular-ng-aquila-ng-add",
+  "title": "Angular ng-aquila ng-add schematic",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
     },
-    "required": []
+    "type": {
+      "description": "Use case of the application.",
+      "type": "string",
+      "default": "b2c",
+      "x-prompt": {
+        "message": "Please choose your use case:",
+        "type": "list",
+        "items": [
+          {
+            "value": "b2c",
+            "label": "Customer facing application (B2C)"
+          },
+          {
+            "value": "b2b",
+            "label": "Internal application (B2B)"
+          }
+        ]
+      }
+    },
+    "noTheme": {
+      "description": "Option that no theme is added",
+      "type": "boolean",
+      "default": false
+    },
+    "starter": {
+      "description": "Option that creates the Starter App",
+      "type": "boolean",
+      "default": false,
+      "x-prompt": "Do you want to update your project with the Aquila Starter App? (WARNING: this will replace existing project files!)"
+    }
+  },
+  "required": []
 }

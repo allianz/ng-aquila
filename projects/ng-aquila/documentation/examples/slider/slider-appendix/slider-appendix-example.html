@@ -1,29 +1,29 @@
 <nx-slider
-    [min]="min"
-    [max]="max"
-    [step]="step"
-    [tickInterval]="interval"
-    label="Slider with appendix"
-    [(value)]="sliderDemoValue"
-    [longTicks]="longTicks"
+  [min]="min"
+  [max]="max"
+  [step]="step"
+  [tickInterval]="interval"
+  label="Slider with appendix"
+  [(value)]="sliderDemoValue"
+  [longTicks]="longTicks"
 >
-    <button
-        nxSliderAppendix
-        nxPlainButton
-        [nxPopoverTriggerFor]="sliderAppendixExample"
-        nxPopoverDirection="top"
-        [nxPopoverMaxWidth]="popoverMaxWidth"
-        aria-label="More information"
-    >
-        <nx-icon name="info-circle-o" aria-hidden="true"></nx-icon>
-    </button>
+  <button
+    nxSliderAppendix
+    nxPlainButton
+    [nxPopoverTriggerFor]="sliderAppendixExample"
+    nxPopoverDirection="top"
+    [nxPopoverMaxWidth]="popoverMaxWidth"
+    aria-label="More information"
+  >
+    <nx-icon name="info-circle-o" aria-hidden="true"></nx-icon>
+  </button>
 </nx-slider>
 
 <div class="nx-margin-top-s">Slider value: {{ sliderDemoValue }}</div>
 
 <nx-popover #sliderAppendixExample>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nostrum.
-    Obcaecati cupiditate numquam, fugit illo incidunt molestiae ipsam
-    perferendis officia accusamus. Enim magnam recusandae velit accusamus ipsa.
-    Nemo, eius exercitationem?
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nostrum.
+  Obcaecati cupiditate numquam, fugit illo incidunt molestiae ipsam perferendis
+  officia accusamus. Enim magnam recusandae velit accusamus ipsa. Nemo, eius
+  exercitationem?
 </nx-popover>

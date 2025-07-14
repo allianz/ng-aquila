@@ -1,14 +1,16 @@
 <div class="nx-pagesearch">
-    <div nxLayout="grid">
-        <div nxRow>
-            <div [nxCol]="contentLayout" class="nx-pagesearch--content">
-                <ng-content></ng-content>
-            </div>
-            @if (!hideSearchButton) {
-                <div [nxCol]="buttonLayout" class="nx-pagesearch__actions">
-                    <button nxButton="primary medium" (click)="onButtonClick()" type="button">{{ buttonLabel }}</button>
-                </div>
-            }
+  <div nxLayout="grid">
+    <div nxRow>
+      <div [nxCol]="contentLayout" class="nx-pagesearch--content">
+        <ng-content></ng-content>
+      </div>
+      @if (!hideSearchButton) {
+        <div [nxCol]="buttonLayout" class="nx-pagesearch__actions">
+          <button nxButton="primary medium" (click)="onButtonClick()" type="button">
+            {{ buttonLabel }}
+          </button>
         </div>
+      }
     </div>
+  </div>
 </div>

@@ -1,50 +1,50 @@
 <div class="nx-phone-input___wrapper">
-    <nx-dropdown
-        [class.hide]="readonly && !disabled"
-        [value]="countryCode"
-        #dropdown
-        [showFilter]="true"
-        [disabled]="disabled"
-        [overlayLabel]="areaCodeLabel"
-        (valueChange)="_onCountryChange($event)"
-        [options]="_sortedCountries"
-        [overlayFallbackOrigin]="dropdown"
-        (focusOut)="_onInputBlur()"
-        (focus)="_onInputFocus()"
-        [panelGrow]="true"
-        [attr.aria-label]="areaCodeLabel"
-        ariaLabelledBy=""
-    >
-        <span *nxClosedLabel>+{{ _getCallingCode(dropdown.value) }}</span>
-    </nx-dropdown>
+  <nx-dropdown
+    [class.hide]="readonly && !disabled"
+    [value]="countryCode"
+    #dropdown
+    [showFilter]="true"
+    [disabled]="disabled"
+    [overlayLabel]="areaCodeLabel"
+    (valueChange)="_onCountryChange($event)"
+    [options]="_sortedCountries"
+    [overlayFallbackOrigin]="dropdown"
+    (focusOut)="_onInputBlur()"
+    (focus)="_onInputFocus()"
+    [panelGrow]="true"
+    [attr.aria-label]="areaCodeLabel"
+    ariaLabelledBy=""
+  >
+    <span *nxClosedLabel>+{{ _getCallingCode(dropdown.value) }}</span>
+  </nx-dropdown>
 
-    <!-- adding c-input for the styles and to not get the overhead of the nxInput directive -->
+  <!-- adding c-input for the styles and to not get the overhead of the nxInput directive -->
+  <input
+    class="c-input"
+    [class.hide]="readonly && !disabled"
+    type="tel"
+    (blur)="_onInputBlur()"
+    (focus)="_onInputFocus()"
+    [(ngModel)]="_inputValue"
+    (ngModelChange)="_onInput()"
+    [attr.aria-describedby]="_describedBy"
+    [attr.aria-label]="lineNumberLabel"
+    [attr.aria-invalid]="errorState"
+    [attr.placeholder]="placeholder"
+    [required]="required"
+    [disabled]="disabled"
+  />
+
+  @if (readonly && !disabled) {
     <input
-        class="c-input"
-        [class.hide]="readonly && !disabled"
-        type="tel"
-        (blur)="_onInputBlur()"
-        (focus)="_onInputFocus()"
-        [(ngModel)]="_inputValue"
-        (ngModelChange)="_onInput()"
-        [attr.aria-describedby]="_describedBy"
-        [attr.aria-label]="lineNumberLabel"
-        [attr.aria-invalid]="errorState"
-        [attr.placeholder]="placeholder"
-        [required]="required"
-        [disabled]="disabled"
+      class="c-input readonly-input"
+      type="tel"
+      [attr.readonly]="readonly || null"
+      [attr.aria-readonly]="readonly || null"
+      [value]="_getReadonlyValue()"
+      [attr.aria-describedby]="_describedBy"
+      [attr.aria-label]="lineNumberLabel"
+      [attr.aria-invalid]="errorState"
     />
-
-    @if (readonly && !disabled) {
-        <input
-            class="c-input readonly-input"
-            type="tel"
-            [attr.readonly]="readonly || null"
-            [attr.aria-readonly]="readonly || null"
-            [value]="_getReadonlyValue()"
-            [attr.aria-describedby]="_describedBy"
-            [attr.aria-label]="lineNumberLabel"
-            [attr.aria-invalid]="errorState"
-        />
-    }
+  }
 </div>

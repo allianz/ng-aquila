@@ -3,17 +3,17 @@
 @import '../shared-styles/index';
 
 @mixin make-container-by-container-query($gutters: $grid-gutter-widths) {
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
 
-    @include container-breakpoint-up(xsmall) {
-        padding-right: $grid-gutter-width-mobile;
-        padding-left: $grid-gutter-width-mobile;
-    }
+  @include container-breakpoint-up(xsmall) {
+    padding-right: $grid-gutter-width-mobile;
+    padding-left: $grid-gutter-width-mobile;
+  }
 
-    @include container-breakpoint-up(medium) {
-        padding-right: $grid-gutter-width-base;
-        padding-left: $grid-gutter-width-base;
-    }
+  @include container-breakpoint-up(medium) {
+    padding-right: $grid-gutter-width-base;
+    padding-left: $grid-gutter-width-base;
+  }
 }

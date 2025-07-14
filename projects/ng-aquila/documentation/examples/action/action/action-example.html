@@ -1,10 +1,10 @@
 @for (action of actions; track action) {
 <button
-    nxAction
-    (click)="onSelect(action)"
-    [selected]="action === selectedAction"
+  nxAction
+  (click)="onSelect(action)"
+  [selected]="action === selectedAction"
 >
-    <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
-    {{action.label}}
+  <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
+  {{action.label}}
 </button>
 }

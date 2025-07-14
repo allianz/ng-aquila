@@ -1,85 +1,97 @@
+import { NxErrorModule } from '@allianz/ng-aquila/base';
 import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NxErrorModule } from '@aposin/ng-aquila/base';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 import { NxCardModule } from './card.module';
 import { NxSelectableCardComponent } from './selectable-card.component';
 
 @Directive({ standalone: true })
 abstract class SelectableCardTest {
-    @ViewChildren(NxSelectableCardComponent) cardList!: QueryList<NxSelectableCardComponent>;
+  @ViewChildren(NxSelectableCardComponent) cardList!: QueryList<NxSelectableCardComponent>;
 
-    formGroup!: FormGroup;
+  formGroup!: FormGroup;
 }
 
 describe('NxSelectableCardGroupComponent', () => {
-    let fixture: ComponentFixture<SelectableCardTest>;
-    let testInstance: SelectableCardTest;
-    let fixtureElement: HTMLElement;
+  let fixture: ComponentFixture<SelectableCardTest>;
+  let testInstance: SelectableCardTest;
+  let fixtureElement: HTMLElement;
 
-    function createTestComponent(component: Type<SelectableCardTest>) {
-        fixture = TestBed.createComponent(component);
-        fixture.detectChanges();
-        testInstance = fixture.componentInstance;
-        fixtureElement = fixture.nativeElement;
-    }
+  function createTestComponent(component: Type<SelectableCardTest>) {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
+    fixtureElement = fixture.nativeElement;
+  }
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule, BasicSelectableCardGroup],
-        }).compileComponents();
-    }));
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        NxCardModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NxErrorModule,
+        BasicSelectableCardGroup,
+      ],
+    }).compileComponents();
+  }));
 
-    it('Should select only one card', () => {
-        createTestComponent(BasicSelectableCardGroup);
-        testInstance.formGroup.setValue({
-            radio: 'a',
-        });
-        fixture.detectChanges();
-        testInstance.formGroup.setValue({
-            radio: 'b',
-        });
-        fixture.detectChanges();
-
-        expect(testInstance.cardList.filter(c => c.checked).length).toBe(1);
-        expect(testInstance.cardList.get(1)?.checked).toBeTrue();
+  it('Should select only one card', () => {
+    createTestComponent(BasicSelectableCardGroup);
+    testInstance.formGroup.setValue({
+      radio: 'a',
     });
+    fixture.detectChanges();
+    testInstance.formGroup.setValue({
+      radio: 'b',
+    });
+    fixture.detectChanges();
 
-    it('toggles error states accordingly when in a reactive form', fakeAsync(() => {
-        createTestComponent(BasicSelectableCardGroup);
-        expect(fixtureElement.querySelector('.nx-error--message')).not.toBeTruthy();
-        testInstance.formGroup.markAllAsTouched();
+    expect(testInstance.cardList.filter((c) => c.checked).length).toBe(1);
+    expect(testInstance.cardList.get(1)?.checked).toBeTrue();
+  });
 
-        fixture.detectChanges();
-        tick();
-        expect(fixtureElement.querySelector('.nx-error--message')).toBeTruthy();
-    }));
+  it('toggles error states accordingly when in a reactive form', fakeAsync(() => {
+    createTestComponent(BasicSelectableCardGroup);
+    expect(fixtureElement.querySelector('.nx-error--message')).not.toBeTruthy();
+    testInstance.formGroup.markAllAsTouched();
+
+    fixture.detectChanges();
+    tick();
+    expect(fixtureElement.querySelector('.nx-error--message')).toBeTruthy();
+  }));
 });
 
 @Component({
-    template: `
-        <form [formGroup]="formGroup">
-            <nx-selectable-card-group formControlName="radio" name="radio-group">
-                @for (card of cards; track card; let i = $index) {
-                    <div>
-                        <nx-selectable-card [value]="card">
-                            {{ card.title }}
-                        </nx-selectable-card>
-                    </div>
-                }
-                <nx-error> This card must be selected. </nx-error>
-            </nx-selectable-card-group>
-        </form>
-    `,
-    imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
+  template: `
+    <form [formGroup]="formGroup">
+      <nx-selectable-card-group formControlName="radio" name="radio-group">
+        @for (card of cards; track card; let i = $index) {
+          <div>
+            <nx-selectable-card [value]="card">
+              {{ card.title }}
+            </nx-selectable-card>
+          </div>
+        }
+        <nx-error> This card must be selected. </nx-error>
+      </nx-selectable-card-group>
+    </form>
+  `,
+  imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class BasicSelectableCardGroup extends SelectableCardTest {
-    cards = ['a', 'b', 'c'];
+  cards = ['a', 'b', 'c'];
 
-    fb = new FormBuilder();
+  fb = new FormBuilder();
 
-    readonly formGroup = this.fb.group({
-        radio: [null, Validators.required],
-    });
+  readonly formGroup = this.fb.group({
+    radio: [null, Validators.required],
+  });
 }

@@ -1,20 +1,29 @@
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
 export interface NxExpandable {
-    /** Indicates if this expandable instance is open or not.  */
-    expanded: BehaviorSubject<boolean>;
+  /** Indicates if this expandable instance is open or not.  */
+  expanded: BehaviorSubject<boolean>;
 
-    /** Toggles the open state. */
-    toggle(): void;
+  /** Toggles the open state. */
+  toggle(): void;
 
-    /** Expands this component. */
-    expand(): void;
+  /** Expands this component. */
+  expand(): void;
 
-    /** Closes this component. */
-    close(): void;
+  /** Closes this component. */
+  close(): void;
 }
 
 /**
@@ -23,61 +32,61 @@ export interface NxExpandable {
  * E.g. it can toggle a expandable table row or anything else that implements the `NxExpandable` interface.
  */
 @Component({
-    selector: 'nx-toggle-button',
-    templateUrl: './toggle-button.component.html',
-    styleUrls: ['./toggle-button.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NxIconModule],
+  selector: 'nx-toggle-button',
+  templateUrl: './toggle-button.component.html',
+  styleUrls: ['./toggle-button.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NxIconModule],
 })
 export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
-    _expanded = false;
+  _expanded = false;
 
-    @ViewChild('button') _buttonElement!: ElementRef;
+  @ViewChild('button') _buttonElement!: ElementRef;
 
-    /**
-     * This is the expandable target that will be toggled when the user clicks the button.
-     */
-    @Input() set target(value: NxExpandable) {
-        this._target = value;
+  /**
+   * This is the expandable target that will be toggled when the user clicks the button.
+   */
+  @Input() set target(value: NxExpandable) {
+    this._target = value;
 
-        this._subscription?.unsubscribe();
+    this._subscription?.unsubscribe();
 
-        if (this._target) {
-            this._subscription = this._target.expanded.subscribe(expanded => {
-                this._expanded = expanded;
-                setTimeout(() => {
-                    this._cdr.markForCheck();
-                });
-            });
-        }
+    if (this._target) {
+      this._subscription = this._target.expanded.subscribe((expanded) => {
+        this._expanded = expanded;
+        setTimeout(() => {
+          this._cdr.markForCheck();
+        });
+      });
     }
-    _target!: NxExpandable;
+  }
+  _target!: NxExpandable;
 
-    @Input() set ariaLabel(value: string) {
-        this._ariaLabel = value;
-        this._cdr.markForCheck();
+  @Input() set ariaLabel(value: string) {
+    this._ariaLabel = value;
+    this._cdr.markForCheck();
+  }
+  _ariaLabel = '';
+
+  private _subscription = Subscription.EMPTY;
+
+  constructor(
+    private readonly _cdr: ChangeDetectorRef,
+    private readonly _focusMonitor: FocusMonitor,
+  ) {}
+
+  ngAfterViewInit(): void {
+    this._focusMonitor.monitor(this._buttonElement);
+  }
+
+  _onClick() {
+    if (this._target) {
+      this._target.toggle();
     }
-    _ariaLabel = '';
+  }
 
-    private _subscription = Subscription.EMPTY;
-
-    constructor(
-        private readonly _cdr: ChangeDetectorRef,
-        private readonly _focusMonitor: FocusMonitor,
-    ) {}
-
-    ngAfterViewInit(): void {
-        this._focusMonitor.monitor(this._buttonElement);
-    }
-
-    _onClick() {
-        if (this._target) {
-            this._target.toggle();
-        }
-    }
-
-    ngOnDestroy(): void {
-        this._subscription?.unsubscribe();
-        this._focusMonitor.stopMonitoring(this._buttonElement);
-    }
+  ngOnDestroy(): void {
+    this._subscription?.unsubscribe();
+    this._focusMonitor.stopMonitoring(this._buttonElement);
+  }
 }

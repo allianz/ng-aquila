@@ -1,11 +1,11 @@
+import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { Component } from '@angular/core';
-import { NxErrorComponent } from '@aposin/ng-aquila/base';
 
 /** @title Error example */
 @Component({
-    selector: 'error-example',
-    templateUrl: './error-example.html',
-    styleUrls: ['./error-example.css'],
-    imports: [NxErrorComponent],
+  selector: 'error-example',
+  templateUrl: './error-example.html',
+  styleUrls: ['./error-example.css'],
+  imports: [NxErrorComponent],
 })
 export class ErrorExampleComponent {}

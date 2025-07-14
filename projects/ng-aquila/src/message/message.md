@@ -83,7 +83,7 @@ If using `openFromComponent` you can access data from the component by injecting
 
 ```ts
 import { Component, Inject } from '@angular/core';
-import { NX_MESSAGE_TOAST_COMPONENT_DATA } from '@aposin/ng-aquila/message-toast';
+import { NX_MESSAGE_TOAST_COMPONENT_DATA } from '@allianz/ng-aquila/message-toast';
 
 @Component({
     selector: 'your-message-toast',

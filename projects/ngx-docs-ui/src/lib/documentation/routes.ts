@@ -11,63 +11,64 @@ import { DocumentationFrameComponent } from './documentation-frame.component';
 import { NxvGuideViewComponent } from './guides/guide-view/guide-view.component';
 import { NxvGuidesComponent } from './guides/guides.component';
 
-export const createViewerRoutes: (args: any) => Routes = args => [
-    {
-        path: 'my-viewer',
-        redirectTo: '',
-    },
-    {
+export const createViewerRoutes: (args: any) => Routes = (args) => [
+  {
+    path: 'my-viewer',
+    redirectTo: '',
+  },
+  {
+    path: '',
+    component: DocumentationFrameComponent,
+    children: [
+      {
         path: '',
-        component: DocumentationFrameComponent,
+        pathMatch: 'full',
+        redirectTo: 'welcome',
+      },
+      {
+        path: 'search',
+        loadChildren: () =>
+          import('./search-results/search-results.module').then((m) => m.SearchResultsModule),
+      },
+      {
+        path: 'welcome',
+        component: args.welcomeComponent,
+      },
+      {
+        path: 'guides',
+        component: NxvGuidesComponent,
         children: [
-            {
-                path: '',
-                pathMatch: 'full',
-                redirectTo: 'welcome',
-            },
-            {
-                path: 'search',
-                loadChildren: () => import('./search-results/search-results.module').then(m => m.SearchResultsModule),
-            },
-            {
-                path: 'welcome',
-                component: args.welcomeComponent,
-            },
-            {
-                path: 'guides',
-                component: NxvGuidesComponent,
-                children: [
-                    {
-                        path: ':id',
-                        component: NxvGuideViewComponent,
-                    },
-                ],
-            },
-            {
-                path: 'documentation',
-                component: NxvDocumentationComponent,
-                children: [
-                    {
-                        path: '',
-                        component: NxvOverviewComponent,
-                    },
-                    {
-                        path: ':id',
-                        component: NxvComponentPage,
-                        children: [
-                            { path: '', redirectTo: 'overview', pathMatch: 'full' },
-                            { path: 'overview', component: ComponentOverview, pathMatch: 'full' },
-                            { path: 'api', component: ComponentApi, pathMatch: 'full' },
-                            { path: 'examples', component: ComponentExamples, pathMatch: 'full' },
-                            { path: '**', redirectTo: 'overview' },
-                        ],
-                    },
-                ],
-            },
+          {
+            path: ':id',
+            component: NxvGuideViewComponent,
+          },
         ],
-    },
-    {
-        path: 'examples/:id',
-        component: ExampleFullScreenComponent,
-    },
+      },
+      {
+        path: 'documentation',
+        component: NxvDocumentationComponent,
+        children: [
+          {
+            path: '',
+            component: NxvOverviewComponent,
+          },
+          {
+            path: ':id',
+            component: NxvComponentPage,
+            children: [
+              { path: '', redirectTo: 'overview', pathMatch: 'full' },
+              { path: 'overview', component: ComponentOverview, pathMatch: 'full' },
+              { path: 'api', component: ComponentApi, pathMatch: 'full' },
+              { path: 'examples', component: ComponentExamples, pathMatch: 'full' },
+              { path: '**', redirectTo: 'overview' },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: 'examples/:id',
+    component: ExampleFullScreenComponent,
+  },
 ];

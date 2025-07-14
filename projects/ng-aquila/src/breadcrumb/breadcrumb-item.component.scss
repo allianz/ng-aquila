@@ -1,36 +1,36 @@
 @import '../shared-styles/index';
 
 :host {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    cursor: auto;
-    color: v(breadcrumb-color);
-    @include type-style(breadcrumb);
-    outline: none;
-    background: none;
-    border: 0;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  cursor: auto;
+  color: v(breadcrumb-color);
+  @include type-style(breadcrumb);
+  outline: none;
+  background: none;
+  border: 0;
 }
 
 .nx-breadcrumb-item__chevron {
-    margin-left: nx-spacer(3xs);
+  margin-left: nx-spacer(3xs);
 
-    :host-context([dir='rtl']) & {
-        margin-left: initial;
-        margin-right: nx-spacer(3xs);
-        transform: rotateZ(180deg);
-    }
+  :host-context([dir='rtl']) & {
+    margin-left: initial;
+    margin-right: nx-spacer(3xs);
+    transform: rotateZ(180deg);
+  }
 }
 
 :host:not([href]):not(button) .nx-breadcrumb-item__text {
-    cursor: auto;
+  cursor: auto;
 }
 
 .nx-breadcrumb-item__text {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 :host.cdk-keyboard-focused .nx-breadcrumb-item__text {
-    @include focus-style();
-    border-radius: nx-border-radius(s);
+  @include focus-style();
+  border-radius: nx-border-radius(s);
 }

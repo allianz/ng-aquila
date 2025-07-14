@@ -1,149 +1,149 @@
 @import '../../shared-styles/index';
 
 :host {
-    display: block;
-    width: 100%;
-    height: 100%;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .panel {
-    width: 100%;
-    box-shadow: v(dropdown-panel-shadow);
-    border-radius: v(dropdown-panel-border-radius);
-    background: v(ui-01);
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  box-shadow: v(dropdown-panel-shadow);
+  border-radius: v(dropdown-panel-border-radius);
+  background: v(ui-01);
+  display: flex;
+  flex-direction: column;
 
+  .filter {
+    --formfield-label-height: 6px;
+    --formfield-bottom-padding: 4px;
+  }
+
+  &.is-outline {
     .filter {
-        --formfield-label-height: 6px;
-        --formfield-bottom-padding: 4px;
+      --formfield-label-height: 8px;
+      --formfield-bottom-padding: 3px;
     }
 
-    &.is-outline {
-        .filter {
-            --formfield-label-height: 8px;
-            --formfield-bottom-padding: 3px;
-        }
-
-        .items {
-            padding-bottom: 8px;
-            max-height: 200px;
-        }
+    .items {
+      padding-bottom: 8px;
+      max-height: 200px;
     }
+  }
 
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 }
 
 .value {
-    display: grid;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    grid-template-columns: auto min-content min-content;
-    cursor: pointer;
-    &:focus {
-        outline: none;
-    }
+  display: grid;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  grid-template-columns: auto min-content min-content;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 
-    &::-moz-focus-inner {
-        border: 0;
-    }
+  &::-moz-focus-inner {
+    border: 0;
+  }
 }
 
 :host-context(.nx-formfield.is-disabled) {
-    .value {
-        cursor: not-allowed;
-    }
+  .value {
+    cursor: not-allowed;
+  }
 }
 
 :host(.is-readonly) {
-    .indicator {
-        color: v(formfield-disabled-text-color);
-        @media screen and (forced-colors: active) {
-            color: GrayText !important;
-        }
+  .indicator {
+    color: v(formfield-disabled-text-color);
+    @media screen and (forced-colors: active) {
+      color: GrayText !important;
     }
-    .value {
-        cursor: not-allowed;
-    }
-    .value-text {
-        color: v(formfield-readonly-text-color);
-    }
+  }
+  .value {
+    cursor: not-allowed;
+  }
+  .value-text {
+    color: v(formfield-readonly-text-color);
+  }
 }
 
 .value-text {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    padding-right: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 8px;
 }
 
 .panel-header {
-    @include type-style(formfield-label);
-    color: v(dropdown-panel-header-text-color);
-    background-color: v(dropdown-panel-header-background-color);
-    padding: 8px 32px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+  @include type-style(formfield-label);
+  color: v(dropdown-panel-header-text-color);
+  background-color: v(dropdown-panel-header-background-color);
+  padding: 8px 32px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 .label span:nth-child(2) {
-    font-weight: 600;
-    margin-left: auto;
-    padding-right: 12px;
-    flex: 0 0 auto;
+  font-weight: 600;
+  margin-left: auto;
+  padding-right: 12px;
+  flex: 0 0 auto;
 }
 
 .indicator {
-    font-size: v(dropdown-chevron-size);
+  font-size: v(dropdown-chevron-size);
 
-    transform: rotateZ(0deg);
+  transform: rotateZ(0deg);
 
-    :host(.is-open) & {
-        transform: rotateZ(180deg);
-    }
+  :host(.is-open) & {
+    transform: rotateZ(180deg);
+  }
 }
 
 .items {
-    list-style: none;
-    max-height: 272px;
-    overflow-y: auto;
-    position: relative;
-    padding: v(multi-select-panel-padding) 0;
+  list-style: none;
+  max-height: 272px;
+  overflow-y: auto;
+  position: relative;
+  padding: v(multi-select-panel-padding) 0;
 }
 
 .filter-wrapper {
-    padding: 8px 32px 0 32px;
+  padding: 8px 32px 0 32px;
 }
 
 .filter {
-    width: 100%;
+  width: 100%;
 }
 
 .border {
-    padding-top: 8px;
-    margin-top: 8px;
-    border-top: 1px solid lightgrey;
+  padding-top: 8px;
+  margin-top: 8px;
+  border-top: 1px solid lightgrey;
 }
 
 .toggle {
-    width: 100%;
-    display: block;
+  width: 100%;
+  display: block;
 }
 
 .actions {
-    display: flex;
-    justify-content: space-between;
-    white-space: nowrap;
-    padding: v(multi-select-action-padding-vertical) v(multi-select-item-padding-horizon);
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+  padding: v(multi-select-action-padding-vertical) v(multi-select-item-padding-horizon);
 }
 .select-all {
-    border-bottom: 1px solid v(dropdown-group-divider);
+  border-bottom: 1px solid v(dropdown-group-divider);
 }
 
 .hidden {
-    display: none;
+  display: none;
 }

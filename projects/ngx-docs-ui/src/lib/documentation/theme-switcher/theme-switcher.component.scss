@@ -1,29 +1,29 @@
 :host {
-    display: inline-block;
+  display: inline-block;
 
-    nx-icon {
-        transform: rotateZ(0);
-        transition: transform 200ms ease-out;
+  nx-icon {
+    transform: rotateZ(0);
+    transition: transform 200ms ease-out;
 
-        &.icon-rotated {
-            transform: rotate(-180deg);
-        }
+    &.icon-rotated {
+      transform: rotate(-180deg);
     }
+  }
 
-    @media (max-width: 703px) {
-        button {
-            padding-left: 6px;
-            padding-right: 6px;
-        }
+  @media (max-width: 703px) {
+    button {
+      padding-left: 6px;
+      padding-right: 6px;
     }
+  }
 
-    @media (max-width: 991px) {
-        .label-text {
-            display: none;
-        }
+  @media (max-width: 991px) {
+    .label-text {
+      display: none;
     }
+  }
 }
 
 .label-text {
-    margin-left: 4px;
+  margin-left: 4px;
 }

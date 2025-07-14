@@ -1,13 +1,13 @@
 {
-    "extends": "../../../../.eslintrc.json",
-    "ignorePatterns": ["!**/*"],
-    "overrides": [
-        {
-            "files": ["*.ts"],
-            "rules": {
-                "no-console": "off",
-                "@typescript-eslint/no-var-requires": "off"
-            }
-        }
-    ]
+  "extends": "../../../../.eslintrc.json",
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "no-console": "off",
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
 }

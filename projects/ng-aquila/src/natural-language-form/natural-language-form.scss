@@ -1,53 +1,53 @@
 @import '../shared-styles/index';
 
 :host {
-    display: block;
-    @include type-style(natural-language-form-large);
-    color: v(natural-language-form-text-color);
-    padding-top: nx-spacer(2xl);
-    padding-bottom: nx-spacer(3xl);
+  display: block;
+  @include type-style(natural-language-form-large);
+  color: v(natural-language-form-text-color);
+  padding-top: nx-spacer(2xl);
+  padding-bottom: nx-spacer(3xl);
 
-    ::ng-deep .c-input {
-        font-size: inherit;
-        line-height: inherit;
+  ::ng-deep .c-input {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  ::ng-deep nx-word + nx-word {
+    margin-left: nx-spacer(4xs);
+
+    [dir='rtl'] & {
+      margin-right: nx-spacer(4xs);
+      margin-left: initial;
     }
+  }
 
-    ::ng-deep nx-word + nx-word {
-        margin-left: nx-spacer(4xs);
+  &.is-negative {
+    color: v(negative);
+  }
 
-        [dir='rtl'] & {
-            margin-right: nx-spacer(4xs);
-            margin-left: initial;
-        }
-    }
-
-    &.is-negative {
-        color: v(negative);
-    }
-
-    @include media-breakpoint-down('medium') {
-        @include type-style(natural-language-form-small);
-    }
+  @include media-breakpoint-down('medium') {
+    @include type-style(natural-language-form-small);
+  }
 }
 
 .nx-natural-language-form__wrapper {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .nx-natural-language-form__wrapper > ::ng-deep * {
-    margin-bottom: nx-spacer(2xs);
+  margin-bottom: nx-spacer(2xs);
 }
 
 :host(.nx-natural-language-form--small) {
-    @include type-style(natural-language-form-small);
+  @include type-style(natural-language-form-small);
 
-    ::ng-deep .c-input {
-        font-size: inherit;
-        line-height: inherit;
-    }
+  ::ng-deep .c-input {
+    font-size: inherit;
+    line-height: inherit;
+  }
 }
 
 .nx-natural-language-form__error-wrapper {
-    margin-top: nx-spacer(m);
+  margin-top: nx-spacer(m);
 }

@@ -1,18 +1,18 @@
 @import '../../shared-styles/index';
 
 :host {
-    display: inline-flex;
+  display: inline-flex;
 }
 
 .nx-status-icon--error {
-    color: v(danger);
+  color: v(danger);
 }
 .nx-status-icon--warning {
-    color: v(warning);
+  color: v(warning);
 }
 .nx-status-icon--info {
-    color: v(info);
+  color: v(info);
 }
 .nx-status-icon--success {
-    color: v(success);
+  color: v(success);
 }

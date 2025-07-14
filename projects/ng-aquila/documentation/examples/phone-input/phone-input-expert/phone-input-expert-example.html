@@ -1,16 +1,16 @@
 <div class="controls">
-    <nx-checkbox [(checked)]="readonly">Readonly</nx-checkbox>
-    <nx-checkbox [(checked)]="disabled">Disabled</nx-checkbox>
+  <nx-checkbox [(checked)]="readonly">Readonly</nx-checkbox>
+  <nx-checkbox [(checked)]="disabled">Disabled</nx-checkbox>
 </div>
 
 <nx-formfield appearance="outline" floatLabel="always">
-    <nx-formfield-label>Phone number</nx-formfield-label>
-    <nx-phone-input
-        [countryCode]="countryCode"
-        [(ngModel)]="tel"
-        [disabled]="disabled"
-        [readonly]="readonly"
-        placeholder="123 45678"
-    >
-    </nx-phone-input>
+  <nx-formfield-label>Phone number</nx-formfield-label>
+  <nx-phone-input
+    [countryCode]="countryCode"
+    [(ngModel)]="tel"
+    [disabled]="disabled"
+    [readonly]="readonly"
+    placeholder="123 45678"
+  >
+  </nx-phone-input>
 </nx-formfield>

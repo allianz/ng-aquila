@@ -1,47 +1,43 @@
 <form [formGroup]="form">
-    <div nxLayout="grid">
-        <div nxRow>
-            <div nxCol="12,12,6">
-                <nx-formfield label="Car brand">
-                    <nx-dropdown formControlName="dropdown">
-                        <nx-dropdown-item>CLEAR VALUE</nx-dropdown-item>
-                        <nx-dropdown-item value="BMW"></nx-dropdown-item>
-                        <nx-dropdown-item value="Audi"></nx-dropdown-item>
-                        <nx-dropdown-item value="Volvo"></nx-dropdown-item>
-                        <nx-dropdown-item value="Mini"></nx-dropdown-item>
-                    </nx-dropdown>
-                    <nx-error nxFormfieldError>
-                        Please select a value
-                    </nx-error>
-                    <nx-message context="info" nxFormfieldNote>
-                        This field is required
-                    </nx-message>
-                </nx-formfield>
-            </div>
-        </div>
-
-        <div nxRow>
-            <div nxCol="12">
-                <p class="nx-margin-y-0">Form value: {{ form.value | json }}</p>
-                <p class="nx-margin-y-0">
-                    Form status: {{ form.status | json }}
-                </p>
-
-                <p class="nx-margin-top-0">
-                    Try to set the value to BMW, Audi, Volvo or Mini.
-                </p>
-                <div class="update-container">
-                    <input #reactiveInput type="text" />
-                    <button
-                        nxButton="primary small"
-                        class="nx-margin-bottom-0"
-                        (click)="patch(reactiveInput.value)"
-                        type="button"
-                    >
-                        Update
-                    </button>
-                </div>
-            </div>
-        </div>
+  <div nxLayout="grid">
+    <div nxRow>
+      <div nxCol="12,12,6">
+        <nx-formfield label="Car brand">
+          <nx-dropdown formControlName="dropdown">
+            <nx-dropdown-item>CLEAR VALUE</nx-dropdown-item>
+            <nx-dropdown-item value="BMW"></nx-dropdown-item>
+            <nx-dropdown-item value="Audi"></nx-dropdown-item>
+            <nx-dropdown-item value="Volvo"></nx-dropdown-item>
+            <nx-dropdown-item value="Mini"></nx-dropdown-item>
+          </nx-dropdown>
+          <nx-error nxFormfieldError> Please select a value </nx-error>
+          <nx-message context="info" nxFormfieldNote>
+            This field is required
+          </nx-message>
+        </nx-formfield>
+      </div>
     </div>
+
+    <div nxRow>
+      <div nxCol="12">
+        <p class="nx-margin-y-0">Form value: {{ form.value | json }}</p>
+        <p class="nx-margin-y-0">Form status: {{ form.status | json }}</p>
+
+        <p class="nx-margin-top-0">
+          Try to set the value to BMW, Audi, Volvo or Mini.
+        </p>
+        <div class="update-container">
+          <input #reactiveInput type="text" />
+          <button
+            nxButton="primary small"
+            class="nx-margin-bottom-0"
+            (click)="patch(reactiveInput.value)"
+            type="button"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>

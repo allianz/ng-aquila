@@ -1,63 +1,62 @@
 <form [formGroup]="testForm">
-    <nx-file-uploader
-        #documentUpload
-        multiple
-        formControlName="documents"
-        (fileDeleted)="onDelete($event)"
-        (valueChange)="onChange($event)"
-        [uploader]="uploader"
-        maxFileNumber="3"
+  <nx-file-uploader
+    #documentUpload
+    multiple
+    formControlName="documents"
+    (fileDeleted)="onDelete($event)"
+    (valueChange)="onChange($event)"
+    [uploader]="uploader"
+    maxFileNumber="3"
+  >
+    <nx-label size="small" class="nx-margin-bottom-3xs"
+      >Required file to upload</nx-label
     >
-        <nx-label size="small" class="nx-margin-bottom-3xs"
-            >Required file to upload</nx-label
-        >
-        <span class="nx-margin-bottom-s" nxFileUploadHint
-            >Maximum number of 3 files</span
-        >
+    <span class="nx-margin-bottom-s" nxFileUploadHint
+      >Maximum number of 3 files</span
+    >
 
-        <button
-            nxButton="primary"
-            type="button"
-            class="nx-margin-bottom-s"
-            nxFileUploadButton
-        >
-            <nx-icon
-                name="plus"
-                class="nx-margin-right-2xs"
-                aria-hidden="true"
-            ></nx-icon>
-            Add File
-        </button>
+    <button
+      nxButton="primary"
+      type="button"
+      class="nx-margin-bottom-s"
+      nxFileUploadButton
+    >
+      <nx-icon
+        name="plus"
+        class="nx-margin-right-2xs"
+        aria-hidden="true"
+      ></nx-icon>
+      Add File
+    </button>
 
-        @if (testForm.controls['documents']?.errors) {
-        <nx-error>
-            <div class="nx-font-weight-bold">Error</div>
-            <ul>
-                @if (testForm.controls['documents'].hasError('required')) {
-                <li>Required!</li>
-                } @if
-                (testForm.controls['documents'].hasError('NxFileUploadMaxFileNumber'))
-                {
-                <li>
-                    There were
-                    {{testForm.controls['documents'].getError('NxFileUploadMaxFileNumber').actual
-                    | json}} files added, but the maximum is
-                    {{testForm.controls['documents'].getError('NxFileUploadMaxFileNumber').max
-                    | json}}
-                </li>
-                }
-            </ul>
-        </nx-error>
+    @if (testForm.controls['documents']?.errors) {
+    <nx-error>
+      <div class="nx-font-weight-bold">Error</div>
+      <ul>
+        @if (testForm.controls['documents'].hasError('required')) {
+        <li>Required!</li>
+        } @if
+        (testForm.controls['documents'].hasError('NxFileUploadMaxFileNumber')) {
+        <li>
+          There were
+          {{testForm.controls['documents'].getError('NxFileUploadMaxFileNumber').actual
+          | json}} files added, but the maximum is
+          {{testForm.controls['documents'].getError('NxFileUploadMaxFileNumber').max
+          | json}}
+        </li>
         }
-    </nx-file-uploader>
+      </ul>
+    </nx-error>
+    }
+  </nx-file-uploader>
 </form>
 
 <button
-    nxButton="secondary small"
-    type="button"
-    [disabled]="!testForm.valid"
-    [nxFileUploadTriggerFor]="documentUpload"
-    (click)="testForm.controls['documents'].setErrors({ 'serverError': false });"
+  nxButton="secondary small"
+  type="button"
+  [disabled]="!testForm.valid"
+  [nxFileUploadTriggerFor]="documentUpload"
+  (click)="testForm.controls['documents'].setErrors({ 'serverError': false });"
 >
-    Upload files
+  Upload files
 </button>

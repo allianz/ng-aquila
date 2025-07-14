@@ -49,192 +49,227 @@ Mobile: table is flipped diagonally (with no footer cells!):
 -->
 
 @if (viewType === 'desktop' || viewType === 'tablet') {
-    <ng-container *ngTemplateOutlet="desktopView"></ng-container>
+  <ng-container *ngTemplateOutlet="desktopView"></ng-container>
 }
 
 @if (viewType === 'mobile') {
-    <ng-container *ngTemplateOutlet="mobileTable"></ng-container>
+  <ng-container *ngTemplateOutlet="mobileTable"></ng-container>
 }
 
 <!-- desktop + tablet template ---------------------------------->
 
 <ng-template #desktopView>
-    <div role="table">
-        <nx-comparison-table-flex-row #headerRow [row]="_getHeaderRow()"></nx-comparison-table-flex-row>
+  <div role="table">
+    <nx-comparison-table-flex-row #headerRow [row]="_getHeaderRow()"></nx-comparison-table-flex-row>
 
-        <div #desktopContent class="nx-comparison-table__table-body" [ngStyle]="{ 'clip-path': 'inset(' + _desktopContentClip + 'px -12px -1px)' }">
-            @for (element of elements; track element; let i = $index) {
-                @if (_isRow(element) && element.type !== 'header' && !element._isPartOfToggleSection() && !element._isPartOfRowGroup()) {
-                    <nx-comparison-table-flex-row [row]="element"></nx-comparison-table-flex-row>
+    <div
+      #desktopContent
+      class="nx-comparison-table__table-body"
+      [ngStyle]="{ 'clip-path': 'inset(' + _desktopContentClip + 'px -12px -1px)' }"
+    >
+      @for (element of elements; track element; let i = $index) {
+        @if (
+          _isRow(element) &&
+          element.type !== 'header' &&
+          !element._isPartOfToggleSection() &&
+          !element._isPartOfRowGroup()
+        ) {
+          <nx-comparison-table-flex-row [row]="element"></nx-comparison-table-flex-row>
+        }
+        @if (_isRowGroup(element) && !element._isPartOfToggleSection()) {
+          <nx-comparison-table-desktop-group
+            [group]="element"
+            [isExpanded]="element.isExpanded"
+            [useFullRowForExpandableArea]="element.useFullRowForExpandableArea"
+            (isExpandedChange)="element._handleIsExpandedChange($event)"
+          >
+          </nx-comparison-table-desktop-group>
+        }
+        @if (_isToggleSection(element)) {
+          <div class="nx-comparison-table__toggle-section">
+            <div class="nx-comparison-table__toggle-section-header" role="row">
+              <div>
+                <ng-container
+                  *ngTemplateOutlet="element.toggleSectionHeader._content"
+                ></ng-container>
+              </div>
+            </div>
+            <div
+              class="nx-comparison-table__toggle-section-body"
+              [@bodyExpansion]="element.getOpenState()"
+              role="rowgroup"
+            >
+              @for (elementOfSection of element.rows; track elementOfSection) {
+                @if (_isRow(elementOfSection) && !elementOfSection._isPartOfRowGroup()) {
+                  <nx-comparison-table-flex-row
+                    [row]="elementOfSection"
+                  ></nx-comparison-table-flex-row>
                 }
-                @if (_isRowGroup(element) && !element._isPartOfToggleSection()) {
-                    <nx-comparison-table-desktop-group
-                        [group]="element"
-                        [isExpanded]="element.isExpanded"
-                        [useFullRowForExpandableArea]="element.useFullRowForExpandableArea"
-                        (isExpandedChange)="element._handleIsExpandedChange($event)"
-                    >
-                    </nx-comparison-table-desktop-group>
+                @if (_isRowGroup(elementOfSection)) {
+                  <nx-comparison-table-desktop-group
+                    [group]="elementOfSection"
+                    [isExpanded]="elementOfSection.isExpanded"
+                    [useFullRowForExpandableArea]="elementOfSection.useFullRowForExpandableArea"
+                    (isExpandedChange)="elementOfSection._handleIsExpandedChange($event)"
+                  >
+                  </nx-comparison-table-desktop-group>
                 }
-                @if (_isToggleSection(element)) {
-                    <div class="nx-comparison-table__toggle-section">
-                        <div class="nx-comparison-table__toggle-section-header" role="row">
-                            <div>
-                                <ng-container *ngTemplateOutlet="element.toggleSectionHeader._content"></ng-container>
-                            </div>
-                        </div>
-                        <div class="nx-comparison-table__toggle-section-body" [@bodyExpansion]="element.getOpenState()" role="rowgroup">
-                            @for (elementOfSection of element.rows; track elementOfSection) {
-                                @if (_isRow(elementOfSection) && !elementOfSection._isPartOfRowGroup()) {
-                                    <nx-comparison-table-flex-row [row]="elementOfSection"></nx-comparison-table-flex-row>
-                                }
-                                @if (_isRowGroup(elementOfSection)) {
-                                    <nx-comparison-table-desktop-group
-                                        [group]="elementOfSection"
-                                        [isExpanded]="elementOfSection.isExpanded"
-                                        [useFullRowForExpandableArea]="elementOfSection.useFullRowForExpandableArea"
-                                        (isExpandedChange)="elementOfSection._handleIsExpandedChange($event)"
-                                    >
-                                    </nx-comparison-table-desktop-group>
-                                }
-                            }
-                        </div>
-                    </div>
-                }
-            }
-        </div>
+              }
+            </div>
+          </div>
+        }
+      }
     </div>
+  </div>
 </ng-template>
 
 <!-- mobile template ------------------------------------------->
 
 <ng-template #mobileTable>
-    <table class="nx-comparison-table__mobile-view">
-        <!-- row for toggle section headers -->
-        @if (_containsToggleSection()) {
-            <tr class="nx-comparison-table__toggle-section-header-row">
-                <th class="nx-comparison-table__placeholder-cell"></th>
-                @for (element of elements; track element; let i = $index) {
-                    <!-- TODO split up in header row and content rows -->
-                    @if (i !== 0 && i < _getMobileColumnCount()) {
-                        @if (_isRow(element) && !element._isPartOfToggleSection()) {
-                            <!-- placeholder cell if this is a new block of info rows -->
-                            @if (_isFirstInfoOfBlock(i)) {
-                                <th class="nx-comparison-table__placeholder-cell" aria-hidden="true"></th>
-                            }
-                            <th class="nx-comparison-table__placeholder-cell"></th>
-                        }
-                        @if (_isToggleSection(element)) {
-                            <th class="nx-comparison-table__placeholder-cell needs-clipping" aria-hidden="true"></th>
-                            <ng-container *ngTemplateOutlet="element.toggleSectionHeader._content"></ng-container>
-                        }
-                    }
-                }
-            </tr>
-        }
-
-        <!-- rows for all description cells -->
-        <tr class="nx-comparison-table__description-row">
-            <th #stickyMobileCell class="nx-comparison-table__placeholder-cell" scope="col"></th>
-            @for (element of elements; track element; let headerIndex = $index) {
-                @if (_isRow(element) && !element._isPartOfToggleSection()) {
-                    <!-- we need the extra ng-container or VE will fail because of the _isRow method -->
-                    @if (headerIndex > 0 && headerIndex < _getMobileColumnCount()) {
-                        <!-- placeholder cell if this is a new block of info rows -->
-                        @if (_isFirstInfoOfBlock(headerIndex)) {
-                            <th class="nx-comparison-table__placeholder-cell" aria-hidden="true"></th>
-                        }
-                        <ng-container *ngTemplateOutlet="element?.descriptionCell?._content ?? null"> </ng-container>
-                    }
-                }
-                @if (_isToggleSection(element)) {
-                    <th class="nx-comparison-table__placeholder-cell needs-clipping" aria-hidden="true"></th>
-                    @for (row of element.rows; track row) {
-                        @if (_isRow(row)) {
-                            <ng-container *ngTemplateOutlet="row.descriptionCell?._content ?? null"></ng-container>
-                        }
-                    }
-                }
+  <table class="nx-comparison-table__mobile-view">
+    <!-- row for toggle section headers -->
+    @if (_containsToggleSection()) {
+      <tr class="nx-comparison-table__toggle-section-header-row">
+        <th class="nx-comparison-table__placeholder-cell"></th>
+        @for (element of elements; track element; let i = $index) {
+          <!-- TODO split up in header row and content rows -->
+          @if (i !== 0 && i < _getMobileColumnCount()) {
+            @if (_isRow(element) && !element._isPartOfToggleSection()) {
+              <!-- placeholder cell if this is a new block of info rows -->
+              @if (_isFirstInfoOfBlock(i)) {
+                <th class="nx-comparison-table__placeholder-cell" aria-hidden="true"></th>
+              }
+              <th class="nx-comparison-table__placeholder-cell"></th>
             }
+            @if (_isToggleSection(element)) {
+              <th
+                class="nx-comparison-table__placeholder-cell needs-clipping"
+                aria-hidden="true"
+              ></th>
+              <ng-container *ngTemplateOutlet="element.toggleSectionHeader._content"></ng-container>
+            }
+          }
+        }
+      </tr>
+    }
+
+    <!-- rows for all description cells -->
+    <tr class="nx-comparison-table__description-row">
+      <th #stickyMobileCell class="nx-comparison-table__placeholder-cell" scope="col"></th>
+      @for (element of elements; track element; let headerIndex = $index) {
+        @if (_isRow(element) && !element._isPartOfToggleSection()) {
+          <!-- we need the extra ng-container or VE will fail because of the _isRow method -->
+          @if (headerIndex > 0 && headerIndex < _getMobileColumnCount()) {
+            <!-- placeholder cell if this is a new block of info rows -->
+            @if (_isFirstInfoOfBlock(headerIndex)) {
+              <th class="nx-comparison-table__placeholder-cell" aria-hidden="true"></th>
+            }
+            <ng-container *ngTemplateOutlet="element?.descriptionCell?._content ?? null">
+            </ng-container>
+          }
+        }
+        @if (_isToggleSection(element)) {
+          <th class="nx-comparison-table__placeholder-cell needs-clipping" aria-hidden="true"></th>
+          @for (row of element.rows; track row) {
+            @if (_isRow(row)) {
+              <ng-container
+                *ngTemplateOutlet="row.descriptionCell?._content ?? null"
+              ></ng-container>
+            }
+          }
+        }
+      }
+    </tr>
+
+    <!-- row for every product -->
+    <!-- intersection cells have to be placed in first row -->
+    @for (headerCell of _getHeaderCells(); track headerCell; let headerIndex = $index) {
+      @if (_getPopularCell() && _getPopularCell().forColumn === headerIndex + 1) {
+        <tr class="nx-comparison-table__popular-row">
+          <ng-container *ngTemplateOutlet="_getPopularCell()._content"></ng-container>
+          @for (element of elements; track element; let infoIndex = $index) {
+            @if (_isRow(element) && !element._isPartOfToggleSection()) {
+              <!-- we need the extra ng-container or VE will fail because of the _isRow method -->
+              @if (infoIndex > 0 && infoIndex < _getMobileColumnCount()) {
+                <!-- placeholder cell if this is a new block of info rows -->
+                @if (_isFirstInfoOfBlock(infoIndex)) {
+                  <td class="nx-comparison-table__placeholder-cell" aria-hidden="true"></td>
+                }
+                <!-- if there is an intersection cell, we need a marker so that we know we have to place a left border to the next cell -->
+                @if (element.intersectionCell) {
+                  <div class="nx-comparison-table__intersection-cell-marker"></div>
+                }
+                <!-- placeholder cell for every cell of the row, except intersection cells -->
+                @if (element.cells.length > 0) {
+                  <td
+                    class="nx-comparison-table__placeholder-with-border-cell"
+                    aria-hidden="true"
+                  ></td>
+                }
+              }
+            }
+            @if (_isToggleSection(element)) {
+              <td class="nx-comparison-table__placeholder-cell" aria-hidden="true"></td>
+              @for (row of element.rows; track row) {
+                @if (_isRow(row)) {
+                  <!-- if there is an intersection cell, we need a marker so that we know we have to place a left border to the next cell -->
+                  @if (row.intersectionCell) {
+                    <div class="nx-comparison-table__intersection-cell-marker"></div>
+                  }
+                  <!-- placeholder cell for every cell of the row, except intersection cells -->
+                  @if (row.cells.length > 0) {
+                    <td
+                      class="nx-comparison-table__placeholder-with-border-cell"
+                      aria-hidden="true"
+                    ></td>
+                  }
+                }
+              }
+            }
+          }
         </tr>
-
-        <!-- row for every product -->
-        <!-- intersection cells have to be placed in first row -->
-        @for (headerCell of _getHeaderCells(); track headerCell; let headerIndex = $index) {
-            @if (_getPopularCell() && _getPopularCell().forColumn === headerIndex + 1) {
-                <tr class="nx-comparison-table__popular-row">
-                    <ng-container *ngTemplateOutlet="_getPopularCell()._content"></ng-container>
-                    @for (element of elements; track element; let infoIndex = $index) {
-                        @if (_isRow(element) && !element._isPartOfToggleSection()) {
-                            <!-- we need the extra ng-container or VE will fail because of the _isRow method -->
-                            @if (infoIndex > 0 && infoIndex < _getMobileColumnCount()) {
-                                <!-- placeholder cell if this is a new block of info rows -->
-                                @if (_isFirstInfoOfBlock(infoIndex)) {
-                                    <td class="nx-comparison-table__placeholder-cell" aria-hidden="true"></td>
-                                }
-                                <!-- if there is an intersection cell, we need a marker so that we know we have to place a left border to the next cell -->
-                                @if (element.intersectionCell) {
-                                    <div class="nx-comparison-table__intersection-cell-marker"></div>
-                                }
-                                <!-- placeholder cell for every cell of the row, except intersection cells -->
-                                @if (element.cells.length > 0) {
-                                    <td class="nx-comparison-table__placeholder-with-border-cell" aria-hidden="true"></td>
-                                }
-                            }
-                        }
-                        @if (_isToggleSection(element)) {
-                            <td class="nx-comparison-table__placeholder-cell" aria-hidden="true"></td>
-                            @for (row of element.rows; track row) {
-                                @if (_isRow(row)) {
-                                    <!-- if there is an intersection cell, we need a marker so that we know we have to place a left border to the next cell -->
-                                    @if (row.intersectionCell) {
-                                        <div class="nx-comparison-table__intersection-cell-marker"></div>
-                                    }
-                                    <!-- placeholder cell for every cell of the row, except intersection cells -->
-                                    @if (row.cells.length > 0) {
-                                        <td class="nx-comparison-table__placeholder-with-border-cell" aria-hidden="true"></td>
-                                    }
-                                }
-                            }
-                        }
-                    }
-                </tr>
+      }
+      <tr [class.is-disabled]="_isMobileRowDisabled(headerIndex)">
+        <ng-container *ngTemplateOutlet="headerCell._content"></ng-container>
+        @for (element of elements; track element; let infoIndex = $index) {
+          @if (_isRow(element) && !element._isPartOfToggleSection()) {
+            <!-- we need the extra ng-container or VE will fail because of the _isRow method -->
+            @if (infoIndex > 0 && infoIndex < _getMobileColumnCount()) {
+              <!-- placeholder cell if this is a new block of info rows -->
+              @if (_isFirstInfoOfBlock(infoIndex)) {
+                <td class="nx-comparison-table__placeholder-cell" aria-hidden="true"></td>
+              }
+              <!-- if first mobile row: show intersection cells -->
+              @if (headerIndex === 0 && element.intersectionCell) {
+                <ng-container
+                  *ngTemplateOutlet="(element?.intersectionCell)!._content"
+                ></ng-container>
+              }
+              @if (element.cells.length > 0) {
+                <ng-container
+                  *ngTemplateOutlet="element.cells.toArray()[headerIndex]!._content"
+                ></ng-container>
+              }
             }
-            <tr [class.is-disabled]="_isMobileRowDisabled(headerIndex)">
-                <ng-container *ngTemplateOutlet="headerCell._content"></ng-container>
-                @for (element of elements; track element; let infoIndex = $index) {
-                    @if (_isRow(element) && !element._isPartOfToggleSection()) {
-                        <!-- we need the extra ng-container or VE will fail because of the _isRow method -->
-                        @if (infoIndex > 0 && infoIndex < _getMobileColumnCount()) {
-                            <!-- placeholder cell if this is a new block of info rows -->
-                            @if (_isFirstInfoOfBlock(infoIndex)) {
-                                <td class="nx-comparison-table__placeholder-cell" aria-hidden="true"></td>
-                            }
-                            <!-- if first mobile row: show intersection cells -->
-                            @if (headerIndex === 0 && element.intersectionCell) {
-                                <ng-container *ngTemplateOutlet="(element?.intersectionCell)!._content"></ng-container>
-                            }
-                            @if (element.cells.length > 0) {
-                                <ng-container *ngTemplateOutlet="element.cells.toArray()[headerIndex]!._content"></ng-container>
-                            }
-                        }
-                    }
-                    @if (_isToggleSection(element)) {
-                        <td class="nx-comparison-table__placeholder-cell" aria-hidden="true"></td>
-                        @for (row of element.rows; track row) {
-                            @if (_isRow(row)) {
-                                <!-- if first mobile row: show intersection cells -->
-                                @if (headerIndex === 0 && row.intersectionCell) {
-                                    <ng-container *ngTemplateOutlet="row.intersectionCell._content"> </ng-container>
-                                }
-                                @if (row.cells.length > 0) {
-                                    <ng-container *ngTemplateOutlet="row.cells.toArray()[headerIndex]._content"></ng-container>
-                                }
-                            }
-                        }
-                    }
+          }
+          @if (_isToggleSection(element)) {
+            <td class="nx-comparison-table__placeholder-cell" aria-hidden="true"></td>
+            @for (row of element.rows; track row) {
+              @if (_isRow(row)) {
+                <!-- if first mobile row: show intersection cells -->
+                @if (headerIndex === 0 && row.intersectionCell) {
+                  <ng-container *ngTemplateOutlet="row.intersectionCell._content"> </ng-container>
                 }
-            </tr>
+                @if (row.cells.length > 0) {
+                  <ng-container
+                    *ngTemplateOutlet="row.cells.toArray()[headerIndex]._content"
+                  ></ng-container>
+                }
+              }
+            }
+          }
         }
-    </table>
+      </tr>
+    }
+  </table>
 </ng-template>

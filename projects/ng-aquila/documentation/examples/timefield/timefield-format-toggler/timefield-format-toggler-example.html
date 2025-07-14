@@ -1,12 +1,12 @@
 <form>
-    <nx-timefield
-        required
-        [(ngModel)]="templateModel"
-        name="templateTest"
-        label="Time"
-        twelveHourFormat
-    >
-        <nx-error> Invalid time input. </nx-error>
-    </nx-timefield>
-    <p>Model Value (24h format): {{templateModel}}</p>
+  <nx-timefield
+    required
+    [(ngModel)]="templateModel"
+    name="templateTest"
+    label="Time"
+    twelveHourFormat
+  >
+    <nx-error> Invalid time input. </nx-error>
+  </nx-timefield>
+  <p>Model Value (24h format): {{templateModel}}</p>
 </form>

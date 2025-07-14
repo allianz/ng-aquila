@@ -1,20 +1,29 @@
 @if (themeSwitcherService.selectedTheme().name.includes('allianz-one')) {
 <nx-message-banner class="sticky-banner" closable="false" context="error">
-    <span class="nx-font-weight-bold">Allianz One is experimental!</span><br />
-    Allianz one is in early development and not ready for production. This is a sneak peek, but if not otherwise instructed please do not use it. We will
-    provide more information once it is ready.
+  <span class="nx-font-weight-bold">Allianz One is experimental!</span><br />
+  Allianz one is in early development and not ready for production. This is a sneak peek, but if not
+  otherwise instructed please do not use it. We will provide more information once it is ready.
 </nx-message-banner>
 }
 
 <div class="component-overview__header-container">
-    <h1 class="component-overview__header">{{(componentService.current | async)?.title}}</h1>
-    @if ((componentService.current | async)?.expert === true && (componentService.current | async)?.b2c === false) {
-    <nx-badge type="active"> expert component </nx-badge>
-    }
+  <h1 class="component-overview__header">{{(componentService.current | async)?.title}}</h1>
+  @if ((componentService.current | async)?.expert === true && (componentService.current |
+  async)?.b2c === false) {
+  <nx-badge type="active"> expert component </nx-badge>
+  }
 </div>
 <nx-tab-nav-bar class="component-overview__navigation" appearance="expert">
-    @for (tab of activeTabs; track tab) {
-    <a nxTabLink [routerLink]="tab.path" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive"> {{tab.label}} </a>
-    }
+  @for (tab of activeTabs; track tab) {
+  <a
+    nxTabLink
+    [routerLink]="tab.path"
+    routerLinkActive
+    #rla="routerLinkActive"
+    [active]="rla.isActive"
+  >
+    {{tab.label}}
+  </a>
+  }
 </nx-tab-nav-bar>
 <router-outlet></router-outlet>

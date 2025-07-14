@@ -1,17 +1,17 @@
 :host {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .top {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .my-sidebar {
-    height: 300px;
+  height: 300px;
 }
 
 button {
-    margin-left: 40px;
+  margin-left: 40px;
 }

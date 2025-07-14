@@ -8,12 +8,12 @@ import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.compon
 /** @docs-private */
 @Directive({ standalone: true })
 export abstract class NxComparisonTableRowBase {
-    cells!: QueryList<NxComparisonTableCell>;
-    descriptionCell!: NxComparisonTableDescriptionCell;
-    popularCell?: NxComparisonTablePopularCell;
-    abstract type: NxComparisonTableRowType;
-    abstract mayStick: boolean;
-    abstract _isPartOfToggleSection(): boolean;
-    abstract _isPartOfRowGroup(): boolean;
-    abstract _isIntersectionRow(): boolean;
+  cells!: QueryList<NxComparisonTableCell>;
+  descriptionCell!: NxComparisonTableDescriptionCell;
+  popularCell?: NxComparisonTablePopularCell;
+  abstract type: NxComparisonTableRowType;
+  abstract mayStick: boolean;
+  abstract _isPartOfToggleSection(): boolean;
+  abstract _isPartOfRowGroup(): boolean;
+  abstract _isIntersectionRow(): boolean;
 }

@@ -1,53 +1,57 @@
-<label class="nx-slider__label" [id]="id + '-label'" (click)="_focusHandleElement()">{{ label }}</label>
+<label class="nx-slider__label" [id]="id + '-label'" (click)="_focusHandleElement()">{{
+  label
+}}</label>
 
 <div class="nx-slider__wrapper" [class.nx-slider__has-ticks]="!tickInterval">
-    <div class="nx-slider__slide" (click)="_sliderClick($event)">
-        <div class="nx-slider__background">
-            <div class="nx-slider__filler" [style.width.%]="_percentageValue">
-                <div
-                    class="nx-slider__handle"
-                    [id]="id + '-handle'"
-                    [attr.tabindex]="tabindex"
-                    [attr.aria-labelledby]="id + '-label'"
-                    role="slider"
-                    [attr.aria-valuemin]="min"
-                    [attr.aria-valuemax]="max"
-                    [attr.aria-valuetext]="_formatValue(value)"
-                    [attr.aria-valuenow]="value"
-                    (mousedown)="_dragStart()"
-                    (touchstart)="_dragStart()"
-                    (selectstart)="_selectStart()"
-                    #handle
-                >
-                    @if (thumbLabel) {
-                        <span [style.transform]="_labelPosition" class="nx-slider__value">{{ _formatValue(value) }} </span>
-                        <div class="nx-slider__arrow"></div>
-                    }
-                </div>
-            </div>
-            @if (tickInterval) {
-                <div class="nx-slider__tick-container">
-                    @for (t of ticks; track t) {
-                        <div
-                            class="nx-slider__tick"
-                            [class.nx-slider__tick-primary]="t.isLongTick"
-                            [class.nx-slider__tick-hidden]="t.hideTick"
-                            [ngStyle]="{ width: t.gapSize + '%' }"
-                        ></div>
-                    }
-                </div>
-            }
-            @if (!hideLabels) {
-                <div class="nx-slider__label-container">
-                    <span class="nx-slider__value-label">{{ _formatLabelLeft() }}</span>
-                    <span class="nx-slider__value-label">{{ _formatLabelRight() }}</span>
-                </div>
-            }
+  <div class="nx-slider__slide" (click)="_sliderClick($event)">
+    <div class="nx-slider__background">
+      <div class="nx-slider__filler" [style.width.%]="_percentageValue">
+        <div
+          class="nx-slider__handle"
+          [id]="id + '-handle'"
+          [attr.tabindex]="tabindex"
+          [attr.aria-labelledby]="id + '-label'"
+          role="slider"
+          [attr.aria-valuemin]="min"
+          [attr.aria-valuemax]="max"
+          [attr.aria-valuetext]="_formatValue(value)"
+          [attr.aria-valuenow]="value"
+          (mousedown)="_dragStart()"
+          (touchstart)="_dragStart()"
+          (selectstart)="_selectStart()"
+          #handle
+        >
+          @if (thumbLabel) {
+            <span [style.transform]="_labelPosition" class="nx-slider__value"
+              >{{ _formatValue(value) }}
+            </span>
+            <div class="nx-slider__arrow"></div>
+          }
         </div>
+      </div>
+      @if (tickInterval) {
+        <div class="nx-slider__tick-container">
+          @for (t of ticks; track t) {
+            <div
+              class="nx-slider__tick"
+              [class.nx-slider__tick-primary]="t.isLongTick"
+              [class.nx-slider__tick-hidden]="t.hideTick"
+              [ngStyle]="{ width: t.gapSize + '%' }"
+            ></div>
+          }
+        </div>
+      }
+      @if (!hideLabels) {
+        <div class="nx-slider__label-container">
+          <span class="nx-slider__value-label">{{ _formatLabelLeft() }}</span>
+          <span class="nx-slider__value-label">{{ _formatLabelRight() }}</span>
+        </div>
+      }
     </div>
-    @if (_appendixChildren.length) {
-        <div class="nx-slider__appendix">
-            <ng-content select="[nxSliderAppendix]"></ng-content>
-        </div>
-    }
+  </div>
+  @if (_appendixChildren.length) {
+    <div class="nx-slider__appendix">
+      <ng-content select="[nxSliderAppendix]"></ng-content>
+    </div>
+  }
 </div>

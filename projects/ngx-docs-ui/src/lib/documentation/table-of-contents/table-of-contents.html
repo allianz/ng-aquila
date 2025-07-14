@@ -1,19 +1,19 @@
 @if (links?.length) {
 <div class="docs-toc-container">
-    <div class="docs-toc-heading">Content</div>
-    <nav>
-        @for (link of links; track link; let i = $index) {
-        <a
-            [routerLink]="_rootUrl"
-            [fragment]="link.id"
-            class="docs-level-{{link.type}} docs-link"
-            [class.docs-private]="link.private"
-            [class.docs-public]="link.public"
-            (click)="scrollIntoview(link.id)"
-        >
-            {{link.name}}
-        </a>
-        }
-    </nav>
+  <div class="docs-toc-heading">Content</div>
+  <nav>
+    @for (link of links; track link; let i = $index) {
+    <a
+      [routerLink]="_rootUrl"
+      [fragment]="link.id"
+      class="docs-level-{{link.type}} docs-link"
+      [class.docs-private]="link.private"
+      [class.docs-public]="link.public"
+      (click)="scrollIntoview(link.id)"
+    >
+      {{link.name}}
+    </a>
+    }
+  </nav>
 </div>
 }

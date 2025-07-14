@@ -7,15 +7,15 @@
  */
 
 export interface Schema {
-    /** Name of the project. */
-    project: string;
+  /** Name of the project. */
+  project: string;
 
-    /** Type of the project */
-    type: 'b2b' | 'b2c';
+  /** Type of the project */
+  type: 'b2b' | 'b2c';
 
-    /** Whether no theme should be added. */
-    noTheme: boolean;
+  /** Whether no theme should be added. */
+  noTheme: boolean;
 
-    /** Whether the Starter App should be added. */
-    starter: boolean;
+  /** Whether the Starter App should be added. */
+  starter: boolean;
 }

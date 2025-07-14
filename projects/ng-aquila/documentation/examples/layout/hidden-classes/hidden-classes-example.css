@@ -1,15 +1,15 @@
 th {
-    color: var(--documentation-grid-text-color);
+  color: var(--documentation-grid-text-color);
 }
 
 th:first-child {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 td:nth-child(n + 2) {
-    text-align: center;
+  text-align: center;
 }
 
 .visible {
-    color: var(--disabled-01);
+  color: var(--disabled-01);
 }

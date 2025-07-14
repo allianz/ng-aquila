@@ -1,15 +1,15 @@
 <nx-formfield label="With virtual keyboard">
-    <nx-dropdown [(value)]="inputMode" placeholder="Select input mode">
-        <nx-dropdown-item value="text"></nx-dropdown-item>
-        <nx-dropdown-item value="decimal"></nx-dropdown-item>
-        <nx-dropdown-item value="tel"></nx-dropdown-item>
-        <nx-dropdown-item value="search"></nx-dropdown-item>
-        <nx-dropdown-item value="email"></nx-dropdown-item>
-        <nx-dropdown-item value="url"></nx-dropdown-item>
-        <nx-dropdown-item value="none"></nx-dropdown-item>
-    </nx-dropdown>
+  <nx-dropdown [(value)]="inputMode" placeholder="Select input mode">
+    <nx-dropdown-item value="text"></nx-dropdown-item>
+    <nx-dropdown-item value="decimal"></nx-dropdown-item>
+    <nx-dropdown-item value="tel"></nx-dropdown-item>
+    <nx-dropdown-item value="search"></nx-dropdown-item>
+    <nx-dropdown-item value="email"></nx-dropdown-item>
+    <nx-dropdown-item value="url"></nx-dropdown-item>
+    <nx-dropdown-item value="none"></nx-dropdown-item>
+  </nx-dropdown>
 </nx-formfield>
 
 <nx-formfield [label]="inputMode">
-    <input nxInput type="text" [attr.inputmode]="inputMode" />
+  <input nxInput type="text" [attr.inputmode]="inputMode" />
 </nx-formfield>

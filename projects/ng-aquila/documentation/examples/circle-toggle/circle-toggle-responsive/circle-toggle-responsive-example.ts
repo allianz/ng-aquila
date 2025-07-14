@@ -1,44 +1,44 @@
-import { Component } from '@angular/core';
 import {
-    NxCircleToggleComponent,
-    NxCircleToggleGroupComponent,
-} from '@aposin/ng-aquila/circle-toggle';
+  NxCircleToggleComponent,
+  NxCircleToggleGroupComponent,
+} from '@allianz/ng-aquila/circle-toggle';
+import { Component } from '@angular/core';
 
 /**
  * @title Disable responsive example
  */
 @Component({
-    selector: 'circle-toggle-responsive-example',
-    templateUrl: './circle-toggle-responsive-example.html',
-    styleUrls: ['./circle-toggle-responsive-example.css'],
-    imports: [NxCircleToggleGroupComponent, NxCircleToggleComponent],
+  selector: 'circle-toggle-responsive-example',
+  templateUrl: './circle-toggle-responsive-example.html',
+  styleUrls: ['./circle-toggle-responsive-example.css'],
+  imports: [NxCircleToggleGroupComponent, NxCircleToggleComponent],
 })
 export class CircleToggleResponsiveExampleComponent {
-    sampleValues = [
-        {
-            value: 'A',
-            icon: 'product-heart',
-            hint: 'Hint A',
-            label: 'Label A',
-            selected: false,
-        },
-        {
-            value: 'B',
-            icon: 'product-car',
-            hint: 'Hint B',
-            label: 'Label B',
-            selected: true,
-        },
-        {
-            value: 'C',
-            icon: 'product-plane',
-            hint: 'Hint C',
-            label: 'Label C',
-            selected: false,
-        },
-    ];
+  sampleValues = [
+    {
+      value: 'A',
+      icon: 'product-heart',
+      hint: 'Hint A',
+      label: 'Label A',
+      selected: false,
+    },
+    {
+      value: 'B',
+      icon: 'product-car',
+      hint: 'Hint B',
+      label: 'Label B',
+      selected: true,
+    },
+    {
+      value: 'C',
+      icon: 'product-plane',
+      hint: 'Hint C',
+      label: 'Label C',
+      selected: false,
+    },
+  ];
 
-    logMessage(event: Event) {
-        console.log(`toggle-circle changed to value: ` + event);
-    }
+  logMessage(event: Event) {
+    console.log(`toggle-circle changed to value: ` + event);
+  }
 }

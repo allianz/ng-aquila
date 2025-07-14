@@ -1,23 +1,23 @@
 .search-input {
-    display: inline-block;
-    position: relative;
-    margin-right: 16px;
+  display: inline-block;
+  position: relative;
+  margin-right: 16px;
+  width: 100%;
+  input {
     width: 100%;
-    input {
-        width: 100%;
-    }
-    // vertically center the formfield within the header (retail appearence)
-    ::ng-deep .nx-formfield__wrapper {
-        padding-top: 4px;
-        padding-bottom: 0;
-    }
+  }
+  // vertically center the formfield within the header (retail appearence)
+  ::ng-deep .nx-formfield__wrapper {
+    padding-top: 4px;
+    padding-bottom: 0;
+  }
 }
 .search-input__clear {
-    position: absolute;
-    right: 0px;
-    top: 5px;
-    cursor: pointer;
-    line-height: 1rem;
-    font-size: 1.375rem;
-    padding: 0 5px;
+  position: absolute;
+  right: 0px;
+  top: 5px;
+  cursor: pointer;
+  line-height: 1rem;
+  font-size: 1.375rem;
+  padding: 0 5px;
 }

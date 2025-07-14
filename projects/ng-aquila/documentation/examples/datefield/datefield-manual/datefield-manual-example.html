@@ -1,9 +1,9 @@
 <nx-formfield label="Date of damage">
-    <input nxInput nxDatefield [datepicker]="picker2" ngModel />
-    <nx-datepicker #picker2></nx-datepicker>
-    <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+  <input nxInput nxDatefield [datepicker]="picker2" ngModel />
+  <nx-datepicker #picker2></nx-datepicker>
+  <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
 </nx-formfield>
 
 <button nxButton="primary small" (click)="picker2.open()" type="button">
-    open / close
+  open / close
 </button>

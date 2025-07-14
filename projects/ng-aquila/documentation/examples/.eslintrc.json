@@ -1,15 +1,15 @@
 {
-    "extends": "../../../../.eslintrc.json",
-    "ignorePatterns": ["!**/*"],
-    "overrides": [
-        {
-            "files": ["*.ts"],
-            "rules": {
-                "no-console": "off"
-            }
-        },
-        {
-            "files": ["*.html"]
-        }
-    ]
+  "extends": "../../../../.eslintrc.json",
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "no-console": "off"
+      }
+    },
+    {
+      "files": ["*.html"]
+    }
+  ]
 }

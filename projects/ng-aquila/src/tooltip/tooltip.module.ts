@@ -7,8 +7,8 @@ import { NxTooltipComponent } from './tooltip.component';
 import { NxTooltipDirective } from './tooltip.directive';
 
 @NgModule({
-    imports: [A11yModule, CommonModule, OverlayModule, NxTooltipDirective, NxTooltipComponent],
-    exports: [NxTooltipDirective, NxTooltipComponent],
-    providers: [],
+  imports: [A11yModule, CommonModule, OverlayModule, NxTooltipDirective, NxTooltipComponent],
+  exports: [NxTooltipDirective, NxTooltipComponent],
+  providers: [],
 })
 export class NxTooltipModule {}

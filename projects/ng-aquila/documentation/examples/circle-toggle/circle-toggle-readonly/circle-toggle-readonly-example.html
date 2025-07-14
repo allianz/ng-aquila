@@ -1,45 +1,41 @@
 <p>How to set a group to readonly:</p>
 
 <form novalidate [formGroup]="testForm">
-    <nx-circle-toggle-group readonly formControlName="reactiveToggle">
-        @for (item of sampleValues; track item) {
-        <nx-circle-toggle
-            [value]="item.value"
-            [icon]="item.icon"
-            [hint]="item.hint"
-            [label]="item.label"
-        ></nx-circle-toggle>
-        }
-    </nx-circle-toggle-group>
+  <nx-circle-toggle-group readonly formControlName="reactiveToggle">
+    @for (item of sampleValues; track item) {
+    <nx-circle-toggle
+      [value]="item.value"
+      [icon]="item.icon"
+      [hint]="item.hint"
+      [label]="item.label"
+    ></nx-circle-toggle>
+    }
+  </nx-circle-toggle-group>
 </form>
 
 <p>How to set an individual circle toggle to readonly:</p>
 
 <div class="nx-margin-bottom-m toggle-wrapper">
-    <nx-circle-toggle
-        icon="product-heart"
-        label="Label"
-        readonly
-    ></nx-circle-toggle>
-    <nx-circle-toggle
-        icon="product-heart"
-        label="Label"
-        readonly
-        checked
-    ></nx-circle-toggle>
-    <div></div>
+  <nx-circle-toggle
+    icon="product-heart"
+    label="Label"
+    readonly
+  ></nx-circle-toggle>
+  <nx-circle-toggle
+    icon="product-heart"
+    label="Label"
+    readonly
+    checked
+  ></nx-circle-toggle>
+  <div></div>
 </div>
 <div class="nx-margin-bottom-m toggle-wrapper">
-    <nx-circle-toggle
-        circleText="Yes"
-        label="Label"
-        readonly
-    ></nx-circle-toggle>
-    <nx-circle-toggle
-        circleText="Yes"
-        label="Label"
-        readonly
-        checked
-    ></nx-circle-toggle>
-    <div></div>
+  <nx-circle-toggle circleText="Yes" label="Label" readonly></nx-circle-toggle>
+  <nx-circle-toggle
+    circleText="Yes"
+    label="Label"
+    readonly
+    checked
+  ></nx-circle-toggle>
+  <div></div>
 </div>

@@ -1,22 +1,25 @@
 {
-    "extends": "../../.eslintrc.json",
-    "ignorePatterns": ["!**/*"],
-    "overrides": [
-        {
-            "files": ["*.ts"],
-            "parserOptions": {
-                "project": ["projects/ngx-docs-ui/tsconfig.lib.json", "projects/ngx-docs-ui/tsconfig.spec.json"],
-                "createDefaultProgram": true
-            },
-            "rules": {}
-        },
-        {
-            "files": ["*.spec.ts"],
-            "rules": {}
-        },
-        {
-            "files": ["*.html"],
-            "rules": {}
-        }
-    ]
+  "extends": "../../.eslintrc.json",
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": [
+          "projects/ngx-docs-ui/tsconfig.lib.json",
+          "projects/ngx-docs-ui/tsconfig.spec.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "rules": {}
+    },
+    {
+      "files": ["*.spec.ts"],
+      "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "rules": {}
+    }
+  ]
 }

@@ -1,16 +1,16 @@
 <nx-context-menu #menu="nxContextMenu">
-    <ng-template nxContextMenuContent>
-        <button nxContextMenuItem type="button">Settings</button>
-        <button nxContextMenuItem type="button">Download</button>
-        <button nxContextMenuItem type="button">Help</button>
-    </ng-template>
+  <ng-template nxContextMenuContent>
+    <button nxContextMenuItem type="button">Settings</button>
+    <button nxContextMenuItem type="button">Download</button>
+    <button nxContextMenuItem type="button">Help</button>
+  </ng-template>
 </nx-context-menu>
 
 <button
-    nxIconButton="tertiary small"
-    type="button"
-    [nxContextMenuTriggerFor]="menu"
-    aria-label="Open menu"
+  nxIconButton="tertiary small"
+  type="button"
+  [nxContextMenuTriggerFor]="menu"
+  aria-label="Open menu"
 >
-    <nx-icon aria-hidden="true" name="ellipsis-h"></nx-icon>
+  <nx-icon aria-hidden="true" name="ellipsis-h"></nx-icon>
 </button>

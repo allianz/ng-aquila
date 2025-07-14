@@ -2,39 +2,39 @@ $toc-hidden-breakpoint: 1280px;
 $toc-width: 200px;
 
 :host {
-    display: block;
+  display: block;
 }
 
 ::ng-deep .docs-component-page-content {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    width: calc(100% - #{$toc-width});
+  font-size: 1rem;
+  line-height: 1.5rem;
+  width: calc(100% - #{$toc-width});
 
-    // Remove this when the sidebar issues on mobile are solved.
-    @media (max-width: $toc-hidden-breakpoint) {
-        width: 100%;
-    }
+  // Remove this when the sidebar issues on mobile are solved.
+  @media (max-width: $toc-hidden-breakpoint) {
+    width: 100%;
+  }
 }
 
 .component-overview__navigation {
-    padding: 0;
-    margin-bottom: 24px;
-    justify-content: flex-start;
+  padding: 0;
+  margin-bottom: 24px;
+  justify-content: flex-start;
 }
 
 .component-overview__header-container {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 
-    nx-badge {
-        top: -6px;
-        position: relative;
-    }
+  nx-badge {
+    top: -6px;
+    position: relative;
+  }
 }
 
 .sticky-banner {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }

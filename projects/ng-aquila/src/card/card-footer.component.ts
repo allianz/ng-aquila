@@ -5,9 +5,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
  * @deletion-target 13.0.0
  */
 @Component({
-    selector: 'nx-card-footer',
-    templateUrl: './card-footer.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
+  selector: 'nx-card-footer',
+  templateUrl: './card-footer.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class NxCardFooterComponent {}

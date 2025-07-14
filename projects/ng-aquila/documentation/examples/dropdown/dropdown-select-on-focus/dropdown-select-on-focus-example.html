@@ -1,32 +1,32 @@
 <div nxLayout="grid">
-    <div nxRow>
-        <div nxCol="12, 12, 6">
-            <nx-formfield label="Car brand">
-                <nx-dropdown selectOnFocus>
-                    <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
-                    <nx-dropdown-item value="Audi">Audi</nx-dropdown-item>
-                    <nx-dropdown-item value="Volvo">Volvo</nx-dropdown-item>
-                    <nx-dropdown-item value="Mini">Mini</nx-dropdown-item>
-                </nx-dropdown>
-            </nx-formfield>
-        </div>
-        <div nxCol="12, 12, 6">
-            <nx-formfield
-                appearance="outline"
-                floatLabel="always"
-                label="Multi select"
-            >
-                <nx-multi-select
-                    selectOnFocus
-                    filter
-                    placeholder="Choose options"
-                    [(ngModel)]="selectedModel"
-                    [options]="options"
-                    selectValue="id"
-                    selectLabel="label"
-                    #multiselect
-                ></nx-multi-select>
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="12, 12, 6">
+      <nx-formfield label="Car brand">
+        <nx-dropdown selectOnFocus>
+          <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
+          <nx-dropdown-item value="Audi">Audi</nx-dropdown-item>
+          <nx-dropdown-item value="Volvo">Volvo</nx-dropdown-item>
+          <nx-dropdown-item value="Mini">Mini</nx-dropdown-item>
+        </nx-dropdown>
+      </nx-formfield>
     </div>
+    <div nxCol="12, 12, 6">
+      <nx-formfield
+        appearance="outline"
+        floatLabel="always"
+        label="Multi select"
+      >
+        <nx-multi-select
+          selectOnFocus
+          filter
+          placeholder="Choose options"
+          [(ngModel)]="selectedModel"
+          [options]="options"
+          selectValue="id"
+          selectLabel="label"
+          #multiselect
+        ></nx-multi-select>
+      </nx-formfield>
+    </div>
+  </div>
 </div>

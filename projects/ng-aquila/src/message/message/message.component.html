@@ -1,21 +1,21 @@
 @if (_iconName) {
-    <nx-icon class="nx-message__icon" [name]="_iconName" size="s" aria-hidden="true"> </nx-icon>
+  <nx-icon class="nx-message__icon" [name]="_iconName" size="s" aria-hidden="true"> </nx-icon>
 }
 
 @if (closable) {
-    <button
-        nxPlainButton
-        #closeButton
-        (click)="_emitCloseEvent()"
-        [attr.aria-label]="closeButtonLabel"
-        tabindex="0"
-        class="nx-message__close-icon"
-        type="button"
-    >
-        <nx-icon name="close" size="s" aria-hidden="true"> </nx-icon>
-    </button>
+  <button
+    nxPlainButton
+    #closeButton
+    (click)="_emitCloseEvent()"
+    [attr.aria-label]="closeButtonLabel"
+    tabindex="0"
+    class="nx-message__close-icon"
+    type="button"
+  >
+    <nx-icon name="close" size="s" aria-hidden="true"> </nx-icon>
+  </button>
 }
 
 <div class="nx-message__content">
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 </div>

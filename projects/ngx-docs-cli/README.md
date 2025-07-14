@@ -2,7 +2,7 @@ The ngx-docs-cli package provides tooling to create the documentation for your y
 
 ## Installation
 
-`npm install @aposin/ngx-docs-cli`
+`npm install @allianz/ngx-docs-cli`
 
 ## Run doc generation
 

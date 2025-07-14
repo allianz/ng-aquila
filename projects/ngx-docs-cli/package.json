@@ -1,17 +1,17 @@
 {
-    "name": "@aposin/ngx-doc-cli",
-    "version": "1.0.0-beta.0",
-    "private": true,
-    "bin": {
-        "ngx-docs": "main.js"
-    },
-    "files": [
-        "src",
-        "lib"
-    ],
-    "scripts": {
-        "prepublish": "tsc",
-        "release": ""
-    },
-    "sideEffects": false
+  "name": "@allianz/ngx-doc-cli",
+  "version": "1.0.0-beta.0",
+  "private": true,
+  "bin": {
+    "ngx-docs": "main.js"
+  },
+  "files": [
+    "src",
+    "lib"
+  ],
+  "scripts": {
+    "prepublish": "tsc",
+    "release": ""
+  },
+  "sideEffects": false
 }

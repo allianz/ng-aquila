@@ -1,9 +1,9 @@
 import { Directive, TemplateRef } from '@angular/core';
 
 @Directive({
-    selector: '[nxExpansionPanelBody]',
-    standalone: true,
+  selector: '[nxExpansionPanelBody]',
+  standalone: true,
 })
 export class NxExpansionPanelBodyDirective {
-    constructor(readonly _template: TemplateRef<any>) {}
+  constructor(readonly _template: TemplateRef<any>) {}
 }

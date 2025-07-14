@@ -1,45 +1,45 @@
 <div nxLayout="grid maxwidth">
-    <div nxRow>
-        <div nxCol="12,12,10,6" colOffset="0,0,1,3">
-            <nx-formfield label="Start date">
-                <nx-dropdown [(value)]="startMonth">
-                    @for (date of monthsOfYearList; track date) {
-                    <nx-dropdown-item [value]="date.month">
-                        {{date.monthName}}
-                    </nx-dropdown-item>
-                    }
-                </nx-dropdown>
-            </nx-formfield>
-            <nx-formfield label="End date">
-                <nx-dropdown [(value)]="endMonth">
-                    @for (date of monthsOfYearList; track date) {
-                    <nx-dropdown-item [value]="date.month">
-                        {{date.monthName}}
-                    </nx-dropdown-item>
-                    }
-                </nx-dropdown>
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="12,12,10,6" colOffset="0,0,1,3">
+      <nx-formfield label="Start date">
+        <nx-dropdown [(value)]="startMonth">
+          @for (date of monthsOfYearList; track date) {
+          <nx-dropdown-item [value]="date.month">
+            {{date.monthName}}
+          </nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
+      <nx-formfield label="End date">
+        <nx-dropdown [(value)]="endMonth">
+          @for (date of monthsOfYearList; track date) {
+          <nx-dropdown-item [value]="date.month">
+            {{date.monthName}}
+          </nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
     </div>
+  </div>
 
-    <div nxRow>
-        <div nxCol="12,12,10,6" colOffset="0,0,1,3">
-            <nx-formfield label="License Plate">
-                <nx-licence-plate-euro-prefix nxFormfieldPrefix
-                    >D</nx-licence-plate-euro-prefix
-                >
-                <input nxInput nxLicensePlate="de_season" [(ngModel)]="value" />
-                <nx-licence-plate-season-suffix
-                    nxFormfieldSuffix
-                    [startMonth]="startMonth"
-                    [endMonth]="endMonth"
-                ></nx-licence-plate-season-suffix>
-                <span nxFormfieldHint>Format: M-AA 1234</span>
-                <nx-error nxFormfieldError
-                    >Please enter a license plate number in the format "M-AA
-                    1234".</nx-error
-                >
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="12,12,10,6" colOffset="0,0,1,3">
+      <nx-formfield label="License Plate">
+        <nx-licence-plate-euro-prefix nxFormfieldPrefix
+          >D</nx-licence-plate-euro-prefix
+        >
+        <input nxInput nxLicensePlate="de_season" [(ngModel)]="value" />
+        <nx-licence-plate-season-suffix
+          nxFormfieldSuffix
+          [startMonth]="startMonth"
+          [endMonth]="endMonth"
+        ></nx-licence-plate-season-suffix>
+        <span nxFormfieldHint>Format: M-AA 1234</span>
+        <nx-error nxFormfieldError
+          >Please enter a license plate number in the format "M-AA
+          1234".</nx-error
+        >
+      </nx-formfield>
     </div>
+  </div>
 </div>

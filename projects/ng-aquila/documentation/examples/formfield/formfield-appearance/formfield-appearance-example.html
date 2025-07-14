@@ -1,133 +1,119 @@
 <div nxLayout="grid">
-    <div nxRow>
-        <div nxCol="6">
-            <nx-formfield
-                appearance="outline"
-                label="Prefilled field"
-                floatLabel="always"
-            >
-                <input nxInput value="prefilled" />
-            </nx-formfield>
-        </div>
-        <div nxCol="6">
-            <nx-formfield
-                label="Readonly field"
-                appearance="outline"
-                floatLabel="always"
-            >
-                <span nxFormfieldPrefix>$</span>
-                <input nxInput readonly value="500" />
-                <button
-                    nxFormfieldAppendix
-                    nxIconButton="tertiary small"
-                    nxPopoverDirection="top"
-                    [nxPopoverTriggerFor]="popoverAppearanceExample"
-                    nxPopoverTrigger="click"
-                    type="button"
-                    aria-label="More information"
-                >
-                    <nx-icon name="info-circle-o" size="s" aria-hidden="true">
-                    </nx-icon>
-                </button>
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="6">
+      <nx-formfield
+        appearance="outline"
+        label="Prefilled field"
+        floatLabel="always"
+      >
+        <input nxInput value="prefilled" />
+      </nx-formfield>
+    </div>
+    <div nxCol="6">
+      <nx-formfield
+        label="Readonly field"
+        appearance="outline"
+        floatLabel="always"
+      >
+        <span nxFormfieldPrefix>$</span>
+        <input nxInput readonly value="500" />
+        <button
+          nxFormfieldAppendix
+          nxIconButton="tertiary small"
+          nxPopoverDirection="top"
+          [nxPopoverTriggerFor]="popoverAppearanceExample"
+          nxPopoverTrigger="click"
+          type="button"
+          aria-label="More information"
+        >
+          <nx-icon name="info-circle-o" size="s" aria-hidden="true"> </nx-icon>
+        </button>
+      </nx-formfield>
+    </div>
+  </div>
+
+  <div nxRow>
+    <div nxCol="6">
+      <nx-formfield
+        label="Dropdown Label"
+        appearance="outline"
+        floatLabel="always"
+      >
+        <nx-dropdown>
+          <nx-dropdown-item value="BMW"></nx-dropdown-item>
+          <nx-dropdown-item value="Audi"></nx-dropdown-item>
+          <nx-dropdown-item value="Volvo"></nx-dropdown-item>
+          <nx-dropdown-item value="Mini"></nx-dropdown-item>
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+    <div nxCol="6">
+      <nx-formfield label="Label" appearance="outline" floatLabel="always">
+        <input nxInput disabled value="Disabled input" />
+      </nx-formfield>
+    </div>
+  </div>
+
+  <div nxRow>
+    <div nxCol="6">
+      <nx-formfield label="Birthday" appearance="outline" floatLabel="always">
+        <input
+          nxDatefield
+          nxInput
+          [datepicker]="myDatepicker"
+          [(ngModel)]="currentDate"
+          nxAriaLabel="Enter the date of your Birthday"
+        />
+        <nx-datepicker-toggle
+          [for]="myDatepicker"
+          nxFormfieldSuffix
+        ></nx-datepicker-toggle>
+        <nx-datepicker #myDatepicker></nx-datepicker>
+        <span nxFormfieldHint> mm/dd/yyyy </span>
+        <nx-error nxFormfieldError>
+          <strong>Error: </strong>Please type in a valid Date in the Format
+          mm/dd/yyyy or use the calendar to select a Date.
+        </nx-error>
+      </nx-formfield>
     </div>
 
-    <div nxRow>
-        <div nxCol="6">
-            <nx-formfield
-                label="Dropdown Label"
-                appearance="outline"
-                floatLabel="always"
-            >
-                <nx-dropdown>
-                    <nx-dropdown-item value="BMW"></nx-dropdown-item>
-                    <nx-dropdown-item value="Audi"></nx-dropdown-item>
-                    <nx-dropdown-item value="Volvo"></nx-dropdown-item>
-                    <nx-dropdown-item value="Mini"></nx-dropdown-item>
-                </nx-dropdown>
-            </nx-formfield>
-        </div>
-        <div nxCol="6">
-            <nx-formfield
-                label="Label"
-                appearance="outline"
-                floatLabel="always"
-            >
-                <input nxInput disabled value="Disabled input" />
-            </nx-formfield>
-        </div>
+    <div nxCol="6">
+      <nx-formfield
+        appearance="outline"
+        floatLabel="always"
+        label="Textarea Label"
+        optionalLabel="Optional"
+      >
+        <textarea nxInput type="text"></textarea>
+      </nx-formfield>
     </div>
+  </div>
 
-    <div nxRow>
-        <div nxCol="6">
-            <nx-formfield
-                label="Birthday"
-                appearance="outline"
-                floatLabel="always"
-            >
-                <input
-                    nxDatefield
-                    nxInput
-                    [datepicker]="myDatepicker"
-                    [(ngModel)]="currentDate"
-                    nxAriaLabel="Enter the date of your Birthday"
-                />
-                <nx-datepicker-toggle
-                    [for]="myDatepicker"
-                    nxFormfieldSuffix
-                ></nx-datepicker-toggle>
-                <nx-datepicker #myDatepicker></nx-datepicker>
-                <span nxFormfieldHint> mm/dd/yyyy </span>
-                <nx-error nxFormfieldError>
-                    <strong>Error: </strong>Please type in a valid Date in the
-                    Format mm/dd/yyyy or use the calendar to select a Date.
-                </nx-error>
-            </nx-formfield>
-        </div>
-
-        <div nxCol="6">
-            <nx-formfield
-                appearance="outline"
-                floatLabel="always"
-                label="Textarea Label"
-                optionalLabel="Optional"
-            >
-                <textarea nxInput type="text"></textarea>
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="6">
+      <nx-formfield
+        label="Character count"
+        appearance="outline"
+        floatLabel="always"
+      >
+        <input nxInput #inputToCount maxlength="15" (input)="onInput()" />
+        <span nxFormfieldHint>
+          @if (count === 0) {
+          <span> max. 15 characters </span>
+          } @if (count > 0) {
+          <span> {{15 - count }} characters remaining </span>
+          }
+        </span>
+      </nx-formfield>
     </div>
-
-    <div nxRow>
-        <div nxCol="6">
-            <nx-formfield
-                label="Character count"
-                appearance="outline"
-                floatLabel="always"
-            >
-                <input
-                    nxInput
-                    #inputToCount
-                    maxlength="15"
-                    (input)="onInput()"
-                />
-                <span nxFormfieldHint>
-                    @if (count === 0) {
-                    <span> max. 15 characters </span>
-                    } @if (count > 0) {
-                    <span> {{15 - count }} characters remaining </span>
-                    }
-                </span>
-            </nx-formfield>
-        </div>
-    </div>
+  </div>
 </div>
 
 <nx-popover #popoverAppearanceExample>
-    <div style="max-width: 300px">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni,
-        nostrum. Obcaecati cupiditate numquam, fugit illo incidunt molestiae
-        ipsam perferendis officia accusamus. Enim magnam recusandae velit
-        accusamus ipsa. Nemo, eius exercitationem?
-    </div>
+  <div style="max-width: 300px">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nostrum.
+    Obcaecati cupiditate numquam, fugit illo incidunt molestiae ipsam
+    perferendis officia accusamus. Enim magnam recusandae velit accusamus ipsa.
+    Nemo, eius exercitationem?
+  </div>
 </nx-popover>

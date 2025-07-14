@@ -9,7 +9,7 @@ Aquila is an open-source component library provided by the Allianz Global Digita
 Add the library to your project with the Angular CLI:
 
 ```
-ng add @aposin/ng-aquila
+ng add @allianz/ng-aquila
 ```
 
 ## Documentation :books:

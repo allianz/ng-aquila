@@ -1,15 +1,15 @@
+import { NxPlainButtonComponent } from '@allianz/ng-aquila/button';
+import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
+import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { Component } from '@angular/core';
-import { NxPlainButtonComponent } from '@aposin/ng-aquila/button';
-import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
-import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 /**
  * @title Plain Button One Allianz additions
  */
 @Component({
-    selector: 'button-plain-a1-example',
-    templateUrl: './button-plain-a1-example.html',
-    styleUrls: ['./button-plain-a1-example.css'],
-    imports: [NxHeadlineComponent, NxPlainButtonComponent, NxIconComponent],
+  selector: 'button-plain-a1-example',
+  templateUrl: './button-plain-a1-example.html',
+  styleUrls: ['./button-plain-a1-example.css'],
+  imports: [NxHeadlineComponent, NxPlainButtonComponent, NxIconComponent],
 })
 export class ButtonPlainA1ExampleComponent {}

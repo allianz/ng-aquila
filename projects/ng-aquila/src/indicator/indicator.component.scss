@@ -1,100 +1,100 @@
 @import '../shared-styles/index';
 
 :host {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    border-radius: nx-border-radius(s) * 3;
-    padding-left: 3px;
-    padding-right: 3px;
-    height: 16px;
-    @include type-style(indicator);
-    color: v(indicator-color);
-    background-color: v(indicator-background-color);
-    border: 1px solid v(indicator-border-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: nx-border-radius(s) * 3;
+  padding-left: 3px;
+  padding-right: 3px;
+  height: 16px;
+  @include type-style(indicator);
+  color: v(indicator-color);
+  background-color: v(indicator-background-color);
+  border: 1px solid v(indicator-border-color);
 
-    &:empty {
-        height: 10px;
-        width: 10px;
-    }
+  &:empty {
+    height: 10px;
+    width: 10px;
+  }
+
+  &:not(:empty) {
+    min-width: 16px;
+  }
+
+  @media screen and (forced-colors: active) {
+    border: nx-border-size(xs) solid CanvasText;
+    color: CanvasText;
+    background-color: Canvas;
+  }
+
+  &.nx-indicator--over-text {
+    position: absolute;
+    top: 0;
+    left: 100%;
 
     &:not(:empty) {
-        min-width: 16px;
+      top: -4px;
     }
 
-    @media screen and (forced-colors: active) {
-        border: nx-border-size(xs) solid CanvasText;
-        color: CanvasText;
-        background-color: Canvas;
+    [dir='rtl'] & {
+      left: auto;
+      right: 100%;
+    }
+  }
+
+  &.nx-indicator--with-overlap {
+    position: absolute;
+
+    &:not(:empty) {
+      left: calc(100% - 4px);
+
+      [dir='rtl'] & {
+        left: auto;
+        right: calc(100% - 4px);
+      }
+    }
+  }
+
+  &.nx-indicator--after-text {
+    vertical-align: top;
+    margin-left: 4px;
+
+    [dir='rtl'] & {
+      margin-left: initial;
+      margin-right: 4px;
+    }
+  }
+
+  &.nx-indicator--over-icon {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+
+    &:empty {
+      left: calc(50% + 2px);
+      bottom: calc(50% + 2px);
     }
 
-    &.nx-indicator--over-text {
-        position: absolute;
-        top: 0;
-        left: 100%;
+    [dir='rtl'] & {
+      left: auto;
+      right: 50%;
 
-        &:not(:empty) {
-            top: -4px;
-        }
-
-        [dir='rtl'] & {
-            left: auto;
-            right: 100%;
-        }
+      &:empty {
+        left: auto;
+        right: calc(50% + 2px);
+      }
     }
-
-    &.nx-indicator--with-overlap {
-        position: absolute;
-
-        &:not(:empty) {
-            left: calc(100% - 4px);
-
-            [dir='rtl'] & {
-                left: auto;
-                right: calc(100% - 4px);
-            }
-        }
-    }
-
-    &.nx-indicator--after-text {
-        vertical-align: top;
-        margin-left: 4px;
-
-        [dir='rtl'] & {
-            margin-left: initial;
-            margin-right: 4px;
-        }
-    }
-
-    &.nx-indicator--over-icon {
-        position: absolute;
-        left: 50%;
-        bottom: 50%;
-
-        &:empty {
-            left: calc(50% + 2px);
-            bottom: calc(50% + 2px);
-        }
-
-        [dir='rtl'] & {
-            left: auto;
-            right: 50%;
-
-            &:empty {
-                left: auto;
-                right: calc(50% + 2px);
-            }
-        }
-    }
+  }
 }
 
 // Targeting IE11 inline-flex and absolute position troubles
 :host-context(_:-ms-fullscreen, :root) {
-    &.nx-indicator--over-icon,
-    &.nx-indicator--over-text {
-        display: block;
-        padding-top: 1px;
-        text-align: center;
-    }
+  &.nx-indicator--over-icon,
+  &.nx-indicator--over-text {
+    display: block;
+    padding-top: 1px;
+    text-align: center;
+  }
 }

@@ -3,58 +3,60 @@
 $item-size: nx-spacer(3m);
 $calendar-content-width: 7 * $item-size;
 $datepicker-border-width: nx-border-size(xs);
-$calendar-content-height: calc(#{$item-size} + 6 * (#{$item-size} + 2 * #{$datepicker-border-width}));
+$calendar-content-height: calc(
+  #{$item-size} + 6 * (#{$item-size} + 2 * #{$datepicker-border-width})
+);
 
 .nx-calendar-content {
-    width: $calendar-content-width;
-    margin: nx-spacer(s) auto 0 auto;
-    height: $calendar-content-height;
+  width: $calendar-content-width;
+  margin: nx-spacer(s) auto 0 auto;
+  height: $calendar-content-height;
 }
 
 .nx-calendar-previous-button,
 .nx-calendar-next-button {
-    &[disabled] {
-        cursor: not-allowed;
-        nx-icon {
-            color: v(disabled-01);
-        }
+  &[disabled] {
+    cursor: not-allowed;
+    nx-icon {
+      color: v(disabled-01);
     }
+  }
 }
 
 .nx-calendar-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
 }
 
 .nx-calendar-period-label {
-    @include type-style(datefield-period-label);
-    color: v(datefield-period-label-color);
-    text-align: center;
+  @include type-style(datefield-period-label);
+  color: v(datefield-period-label-color);
+  text-align: center;
 }
 
 .nx-calendar-view-controls {
-    text-align: center;
-    height: nx-spacer(m);
+  text-align: center;
+  height: nx-spacer(m);
 }
 
 .nx-calendar-change-view-button {
-    margin: nx-spacer(2xs) 0 0 0;
+  margin: nx-spacer(2xs) 0 0 0;
 }
 
 .nx-calendar-change-view-button.cdk-keyboard-focused,
 .nx-calendar-previous-button.cdk-keyboard-focused,
 .nx-calendar-next-button.cdk-keyboard-focused {
-    @include focus-style;
-    border-radius: nx-border-radius(s);
+  @include focus-style;
+  border-radius: nx-border-radius(s);
 }
 
 // don't show inner dotted border on firefox
 button::-moz-focus-inner {
-    border: 0;
+  border: 0;
 }
 .nx-calendar-footer {
-    text-align: center;
-    margin: nx-spacer(s) 0 nx-spacer(2m) 0;
+  text-align: center;
+  margin: nx-spacer(s) 0 nx-spacer(2m) 0;
 }

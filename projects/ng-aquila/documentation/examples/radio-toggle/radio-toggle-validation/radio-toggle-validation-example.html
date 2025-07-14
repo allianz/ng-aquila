@@ -1,20 +1,20 @@
 <form [formGroup]="testForm" (ngSubmit)="onsubmit()">
-    <nx-label id="toggle-label">Favorite Letter</nx-label>
-    <nx-radio-toggle ariaLabelledBy="toggle-label" formControlName="testToggle">
-        @for (item of data; track item) {
-        <nx-radio-toggle-button [value]="item">{{item}}</nx-radio-toggle-button>
-        }
-        <nx-error> Please select "B" </nx-error>
-    </nx-radio-toggle>
+  <nx-label id="toggle-label">Favorite Letter</nx-label>
+  <nx-radio-toggle ariaLabelledBy="toggle-label" formControlName="testToggle">
+    @for (item of data; track item) {
+    <nx-radio-toggle-button [value]="item">{{item}}</nx-radio-toggle-button>
+    }
+    <nx-error> Please select "B" </nx-error>
+  </nx-radio-toggle>
 
-    <button nxButton="primary small" class="nx-margin-top-s" type="submit">
-        submit
-    </button>
+  <button nxButton="primary small" class="nx-margin-top-s" type="submit">
+    submit
+  </button>
 
-    <p class="nx-margin-bottom-0">
-        Form value: {{ testForm.value | json }}<br />
-        Form status: {{ testForm.status | json }}<br />
-        Form is touched: {{ testForm.touched | json }}<br />
-        Form is submitted: {{ isSubmitted | json }}
-    </p>
+  <p class="nx-margin-bottom-0">
+    Form value: {{ testForm.value | json }}<br />
+    Form status: {{ testForm.status | json }}<br />
+    Form is touched: {{ testForm.touched | json }}<br />
+    Form is submitted: {{ isSubmitted | json }}
+  </p>
 </form>

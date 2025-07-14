@@ -1,36 +1,40 @@
 <input
-    #input
-    type="checkbox"
-    [id]="id"
-    [attr.name]="name"
-    [disabled]="disabled"
-    [checked]="checked"
-    (click)="toggle($event)"
-    (blur)="touch()"
-    role="switch"
-    [attr.aria-checked]="checked"
-    [attr.aria-labelledby]="ariaLabelledBy"
-    [attr.aria-describedby]="ariaDescribedBy"
-    [attr.aria-label]="ariaLabel"
-    [attr.aria-invalid]="errorState"
-    [attr.aria-required]="required"
-    [attr.aria-disabled]="readonly || null"
-    [attr.required]="required || null"
-    class="nx-switcher__input"
+  #input
+  type="checkbox"
+  [id]="id"
+  [attr.name]="name"
+  [disabled]="disabled"
+  [checked]="checked"
+  (click)="toggle($event)"
+  (blur)="touch()"
+  role="switch"
+  [attr.aria-checked]="checked"
+  [attr.aria-labelledby]="ariaLabelledBy"
+  [attr.aria-describedby]="ariaDescribedBy"
+  [attr.aria-label]="ariaLabel"
+  [attr.aria-invalid]="errorState"
+  [attr.aria-required]="required"
+  [attr.aria-disabled]="readonly || null"
+  [attr.required]="required || null"
+  class="nx-switcher__input"
 />
 <label [attr.for]="id" class="nx-switcher__control" [class.has-label]="labelHasContent">
-    <div class="nx-switcher__toggle">
-        <div class="nx-switcher__dot">
-            <nx-icon name="check" aria-hidden="true"></nx-icon>
-        </div>
+  <div class="nx-switcher__toggle">
+    <div class="nx-switcher__dot">
+      <nx-icon name="check" aria-hidden="true"></nx-icon>
     </div>
-    <div class="nx-switcher__label-text" #switcherLabelWrapper (cdkObserveContent)="labelContentChanged()">
-        <ng-content></ng-content>
-    </div>
+  </div>
+  <div
+    class="nx-switcher__label-text"
+    #switcherLabelWrapper
+    (cdkObserveContent)="labelContentChanged()"
+  >
+    <ng-content></ng-content>
+  </div>
 </label>
 
 @if (errorState) {
-    <div class="nx-switcher-error">
-        <ng-content select="nx-error"></ng-content>
-    </div>
+  <div class="nx-switcher-error">
+    <ng-content select="nx-error"></ng-content>
+  </div>
 }

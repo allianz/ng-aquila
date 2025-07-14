@@ -1,59 +1,58 @@
 <h4>Properties</h4>
 <form [formGroup]="optionsForm">
-    <nx-checkbox formControlName="isNegative" class="nx-margin-bottom-s"
-        >Toggle negative</nx-checkbox
-    >
-    <nx-checkbox
-        formControlName="isRequired"
-        (checkedChange)="toggleRequired()"
-        class="nx-margin-bottom-s"
-        >Toggle required</nx-checkbox
-    >
-    <nx-checkbox
-        formControlName="isDisabled"
-        (checkedChange)="toggleDisabled()"
-        class="nx-margin-bottom-s"
-        >Toggle disabled</nx-checkbox
-    >
-    <nx-checkbox formControlName="isLarge" class="nx-margin-bottom-s"
-        >Toggle checkbox label size</nx-checkbox
-    >
-    <nx-checkbox formControlName="isLabelExpert"
-        >Toggle checkbox group label size (Expert)</nx-checkbox
-    >
+  <nx-checkbox formControlName="isNegative" class="nx-margin-bottom-s"
+    >Toggle negative</nx-checkbox
+  >
+  <nx-checkbox
+    formControlName="isRequired"
+    (checkedChange)="toggleRequired()"
+    class="nx-margin-bottom-s"
+    >Toggle required</nx-checkbox
+  >
+  <nx-checkbox
+    formControlName="isDisabled"
+    (checkedChange)="toggleDisabled()"
+    class="nx-margin-bottom-s"
+    >Toggle disabled</nx-checkbox
+  >
+  <nx-checkbox formControlName="isLarge" class="nx-margin-bottom-s"
+    >Toggle checkbox label size</nx-checkbox
+  >
+  <nx-checkbox formControlName="isLabelExpert"
+    >Toggle checkbox group label size (Expert)</nx-checkbox
+  >
 </form>
 <hr />
 <h4>Result</h4>
 <form [formGroup]="myFormGroup">
-    <div [ngClass]="{'docs-inverse-container': optionsForm.value.isNegative}">
-        <nx-checkbox-group
-            name="terms"
-            formControlName="terms"
-            [negative]="optionsForm.value.isNegative"
-            [labelSize]="optionsForm.value.isLarge ? 'large' : 'small'"
-        >
-            <nx-label
-                [size]="optionsForm.value.isLabelExpert ? 'small' : 'large' "
-                >Select your choices</nx-label
-            >
-            <nx-error appearance="text">
-                Please select at least one checkbox.
-            </nx-error>
-            <nx-checkbox value="Term 1" class="nx-margin-bottom-s"
-                >Checkbox 1</nx-checkbox
-            >
-            <nx-checkbox value="Term 2" class="nx-margin-bottom-s"
-                >Checkbox 2</nx-checkbox
-            >
-            <nx-checkbox value="Term 3" class="nx-margin-bottom-s"
-                >Checkbox 3</nx-checkbox
-            >
-            <nx-checkbox value="Term 4" class="nx-margin-bottom-s"
-                >Checkbox 4</nx-checkbox
-            >
-            <nx-checkbox value="Term 5">Checkbox 5</nx-checkbox>
-        </nx-checkbox-group>
-    </div>
-    <p>Form value: {{ optionsForm.value | json }}</p>
-    <p>Form status: {{ myFormGroup.status | json }}</p>
+  <div [ngClass]="{'docs-inverse-container': optionsForm.value.isNegative}">
+    <nx-checkbox-group
+      name="terms"
+      formControlName="terms"
+      [negative]="optionsForm.value.isNegative"
+      [labelSize]="optionsForm.value.isLarge ? 'large' : 'small'"
+    >
+      <nx-label [size]="optionsForm.value.isLabelExpert ? 'small' : 'large' "
+        >Select your choices</nx-label
+      >
+      <nx-error appearance="text">
+        Please select at least one checkbox.
+      </nx-error>
+      <nx-checkbox value="Term 1" class="nx-margin-bottom-s"
+        >Checkbox 1</nx-checkbox
+      >
+      <nx-checkbox value="Term 2" class="nx-margin-bottom-s"
+        >Checkbox 2</nx-checkbox
+      >
+      <nx-checkbox value="Term 3" class="nx-margin-bottom-s"
+        >Checkbox 3</nx-checkbox
+      >
+      <nx-checkbox value="Term 4" class="nx-margin-bottom-s"
+        >Checkbox 4</nx-checkbox
+      >
+      <nx-checkbox value="Term 5">Checkbox 5</nx-checkbox>
+    </nx-checkbox-group>
+  </div>
+  <p>Form value: {{ optionsForm.value | json }}</p>
+  <p>Form status: {{ myFormGroup.status | json }}</p>
 </form>

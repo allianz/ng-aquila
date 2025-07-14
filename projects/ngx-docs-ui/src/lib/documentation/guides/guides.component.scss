@@ -1,26 +1,26 @@
 main {
-    overflow: auto;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
-    padding-top: 40px;
+  padding-top: 40px;
 }
 
 .guide__wrapper {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 :host {
-    display: flex;
-    height: 100%;
+  display: flex;
+  height: 100%;
 }
 
 .guide__content {
-    width: 100%;
-    height: 100%;
-    padding-top: 32px;
+  width: 100%;
+  height: 100%;
+  padding-top: 32px;
 }

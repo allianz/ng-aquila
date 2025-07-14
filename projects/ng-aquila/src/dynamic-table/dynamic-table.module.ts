@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { NxDynamicTableComponent } from './dynamic-table.component';
 
 @NgModule({
-    exports: [NxDynamicTableComponent],
-    imports: [CommonModule, CdkTableModule, ScrollingModule, NxDynamicTableComponent],
+  exports: [NxDynamicTableComponent],
+  imports: [CommonModule, CdkTableModule, ScrollingModule, NxDynamicTableComponent],
 })
 export class NxDynamicTableModule {}

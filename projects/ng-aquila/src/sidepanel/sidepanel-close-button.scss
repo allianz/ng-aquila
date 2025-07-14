@@ -1,24 +1,24 @@
 @import '../shared-styles/index';
 
 :host {
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    padding: 0;
-    display: flex;
-    align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
 
-    nx-icon {
-        color: v(sidepanel-close-icon-color);
+  nx-icon {
+    color: v(sidepanel-close-icon-color);
 
-        @media screen and (forced-colors: active) {
-            color: buttonText;
-        }
+    @media screen and (forced-colors: active) {
+      color: buttonText;
     }
+  }
 
-    &.cdk-keyboard-focused nx-icon {
-        @include focus-style;
-        border-radius: nx-border-radius(s);
-    }
+  &.cdk-keyboard-focused nx-icon {
+    @include focus-style;
+    border-radius: nx-border-radius(s);
+  }
 }

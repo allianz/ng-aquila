@@ -1,9 +1,9 @@
+import { NxCardModule } from '@allianz/ng-aquila/card';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxLinkModule } from '@allianz/ng-aquila/link';
+import { NxPopoverModule } from '@allianz/ng-aquila/popover';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxCardModule } from '@aposin/ng-aquila/card';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxLinkModule } from '@aposin/ng-aquila/link';
-import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { CardExampleComponent } from './card/card-example';
@@ -21,51 +21,50 @@ import { SelectableCardReactiveExampleComponent } from './selectable-card-reacti
 import { SelectableCardStatesExampleComponent } from './selectable-card-states/selectable-card-states-example';
 
 const EXAMPLES = [
-    ClickableCardExampleComponent,
-    SelectableCardRadioExampleComponent,
-    CardExampleComponent,
-    HighlightCardExampleComponent,
-    HighlightSelectableCardExampleComponent,
-    SelectableCardBasicExampleComponent,
-    SelectableCardDynamicExampleComponent,
-    SelectableCardReactiveExampleComponent,
-    SelectableCardStatesExampleComponent,
-    SelectableCardProductExampleComponent,
-    SelectableCardExpertExampleComponent,
-    ClickableCardRaisedContentExampleComponent,
-    ClickableCardDisabledExampleComponent,
+  ClickableCardExampleComponent,
+  SelectableCardRadioExampleComponent,
+  CardExampleComponent,
+  HighlightCardExampleComponent,
+  HighlightSelectableCardExampleComponent,
+  SelectableCardBasicExampleComponent,
+  SelectableCardDynamicExampleComponent,
+  SelectableCardReactiveExampleComponent,
+  SelectableCardStatesExampleComponent,
+  SelectableCardProductExampleComponent,
+  SelectableCardExpertExampleComponent,
+  ClickableCardRaisedContentExampleComponent,
+  ClickableCardDisabledExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxCardModule,
-        NxIconModule,
-        NxLinkModule,
-        NxPopoverModule,
-        ExamplesSharedModule,
-        RouterModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxCardModule,
+    NxIconModule,
+    NxLinkModule,
+    NxPopoverModule,
+    ExamplesSharedModule,
+    RouterModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class CardExamplesModule {
-    static components() {
-        return {
-            'clickable-card': ClickableCardExampleComponent,
-            'clickable-card-raised-content':
-                ClickableCardRaisedContentExampleComponent,
-            'clickable-card-disabled': ClickableCardDisabledExampleComponent,
-            'selectable-card-radio': SelectableCardRadioExampleComponent,
-            card: CardExampleComponent,
-            'highlight-card': HighlightCardExampleComponent,
-            'selectable-card-basic': SelectableCardBasicExampleComponent,
-            'selectable-card-dynamic': SelectableCardDynamicExampleComponent,
-            'selectable-card-reactive': SelectableCardReactiveExampleComponent,
-            'selectable-card-states': SelectableCardStatesExampleComponent,
-            'highlight-selectable-card':
-                HighlightSelectableCardExampleComponent,
-            'selectable-card-product': SelectableCardProductExampleComponent,
-            'selectable-card-expert': SelectableCardExpertExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'clickable-card': ClickableCardExampleComponent,
+      'clickable-card-raised-content':
+        ClickableCardRaisedContentExampleComponent,
+      'clickable-card-disabled': ClickableCardDisabledExampleComponent,
+      'selectable-card-radio': SelectableCardRadioExampleComponent,
+      card: CardExampleComponent,
+      'highlight-card': HighlightCardExampleComponent,
+      'selectable-card-basic': SelectableCardBasicExampleComponent,
+      'selectable-card-dynamic': SelectableCardDynamicExampleComponent,
+      'selectable-card-reactive': SelectableCardReactiveExampleComponent,
+      'selectable-card-states': SelectableCardStatesExampleComponent,
+      'highlight-selectable-card': HighlightSelectableCardExampleComponent,
+      'selectable-card-product': SelectableCardProductExampleComponent,
+      'selectable-card-expert': SelectableCardExpertExampleComponent,
+    };
+  }
 }

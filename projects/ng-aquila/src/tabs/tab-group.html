@@ -1,65 +1,69 @@
 @if (!_showAccordion) {
 <nx-tab-header
-    #tabHeader
-    [selectedIndex]="selectedIndex"
-    (selectFocusedIndex)="selectedIndex = $event"
-    (indexFocused)="focusChanged($event)"
-    [autoselect]="autoselect"
+  #tabHeader
+  [selectedIndex]="selectedIndex"
+  (selectFocusedIndex)="selectedIndex = $event"
+  (indexFocused)="focusChanged($event)"
+  [autoselect]="autoselect"
 >
-    @for (tab of tabs; track tab; let i = $index) {
-    <button
-        #tabButton
-        type="button"
-        nxTabLabelWrapper
-        role="tab"
-        (click)="handleClick(i)"
-        class="nx-tab-header__item"
-        [id]="_getTabLabelId(i)"
-        [attr.aria-controls]="_getTabContentId(i)"
-        [attr.aria-selected]="selectedIndex === i"
-        [attr.tabindex]="getTabIndex(tab, i)"
-        [disabled]="tab.disabled"
-        [class.nx-tab-header__item--disabled]="tab.disabled"
-        [class.nx-tab-header__item--active]="selectedIndex === i"
-    >
-        <div class="nx-tab-label__content">
-            @if (tab.templateLabel) {
-            <nx-tab-header-outlet [content]="tab.headerViewRef"></nx-tab-header-outlet>
-            } @if (!tab.templateLabel) { {{tab.label}} }
-        </div>
-    </button>
-    }
+  @for (tab of tabs; track tab; let i = $index) {
+  <button
+    #tabButton
+    type="button"
+    nxTabLabelWrapper
+    role="tab"
+    (click)="handleClick(i)"
+    class="nx-tab-header__item"
+    [id]="_getTabLabelId(i)"
+    [attr.aria-controls]="_getTabContentId(i)"
+    [attr.aria-selected]="selectedIndex === i"
+    [attr.tabindex]="getTabIndex(tab, i)"
+    [disabled]="tab.disabled"
+    [class.nx-tab-header__item--disabled]="tab.disabled"
+    [class.nx-tab-header__item--active]="selectedIndex === i"
+  >
+    <div class="nx-tab-label__content">
+      @if (tab.templateLabel) {
+      <nx-tab-header-outlet [content]="tab.headerViewRef"></nx-tab-header-outlet>
+      } @if (!tab.templateLabel) { {{tab.label}} }
+    </div>
+  </button>
+  }
 </nx-tab-header>
 <div class="nx-tab-body__container">
-    @for (tab of tabs; track tab; let i = $index) {
-    <nx-tab-body
-        [id]="_getTabContentId(i)"
-        role="tabpanel"
-        class="nx-tab__body"
-        [attr.aria-labelledby]="_getTabContentId(i)"
-        [class.nx-tab__body--active]="selectedIndex === i"
-        [tab]="tab"
-        [active]="selectedIndex === i"
-    ></nx-tab-body>
-    }
+  @for (tab of tabs; track tab; let i = $index) {
+  <nx-tab-body
+    [id]="_getTabContentId(i)"
+    role="tabpanel"
+    class="nx-tab__body"
+    [attr.aria-labelledby]="_getTabContentId(i)"
+    [class.nx-tab__body--active]="selectedIndex === i"
+    [tab]="tab"
+    [active]="selectedIndex === i"
+  ></nx-tab-body>
+  }
 </div>
 } @if (_showAccordion) {
 <nx-accordion #accordion [negative]="negative">
-    @for (tab of tabs; track tab; let i = $index) {
-    <nx-expansion-panel [expanded]="selectedIndex === i" (opened)="_panelOpened(i)" [disabled]="tab.disabled">
-        <nx-expansion-panel-header>
-            <nx-expansion-panel-title>
-                @if (tab.templateLabel) {
-                <nx-tab-header-outlet [content]="tab.headerViewRef"></nx-tab-header-outlet>
-                } @if (!tab.templateLabel) { {{tab.label}} }
-            </nx-expansion-panel-title>
-        </nx-expansion-panel-header>
-        <!-- this is not lazy loading this is a trick because the portal gets added here -->
-        <!-- so we could rewrite the tab-body component that it takes care of "lazy loading" and the
+  @for (tab of tabs; track tab; let i = $index) {
+  <nx-expansion-panel
+    [expanded]="selectedIndex === i"
+    (opened)="_panelOpened(i)"
+    [disabled]="tab.disabled"
+  >
+    <nx-expansion-panel-header>
+      <nx-expansion-panel-title>
+        @if (tab.templateLabel) {
+        <nx-tab-header-outlet [content]="tab.headerViewRef"></nx-tab-header-outlet>
+        } @if (!tab.templateLabel) { {{tab.label}} }
+      </nx-expansion-panel-title>
+    </nx-expansion-panel-header>
+    <!-- this is not lazy loading this is a trick because the portal gets added here -->
+    <!-- so we could rewrite the tab-body component that it takes care of "lazy loading" and the
         accordion wouldn't know about it -->
-        <!-- active=true is a trick because we want to keep the content attached for better user experience along with expansion panel animation.  -->
-        <nx-tab-body [active]="true" [tab]="tab"></nx-tab-body>
-    </nx-expansion-panel>
-    }
+    <!-- active=true is a trick because we want to keep the content attached for better user experience along with expansion panel animation.  -->
+    <nx-tab-body [active]="true" [tab]="tab"></nx-tab-body>
+  </nx-expansion-panel>
+  }
 </nx-accordion>
 }

@@ -5,9 +5,9 @@ import { Directive, TemplateRef } from '@angular/core';
  * after the popover is opened for the first time.
  */
 @Directive({
-    selector: 'ng-template[nxPopoverContent]',
-    standalone: true,
+  selector: 'ng-template[nxPopoverContent]',
+  standalone: true,
 })
 export class NxPopoverContentDirective {
-    constructor(readonly _template: TemplateRef<any>) {}
+  constructor(readonly _template: TemplateRef<any>) {}
 }

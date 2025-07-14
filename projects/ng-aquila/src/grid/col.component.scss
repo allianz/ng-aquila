@@ -1,13 +1,13 @@
 @import './mixins.scss';
 
 :host(.nx-grid__column--media-query) {
-    @include make-grid-columns-bem-style();
-    @include make-col-variations();
+  @include make-grid-columns-bem-style();
+  @include make-col-variations();
 }
 
 :host(.nx-grid__column--container-query) {
-    @include make-grid-columns-bem-style-by-container-query();
-    @include make-col-variations-by-container-query();
+  @include make-grid-columns-bem-style-by-container-query();
+  @include make-col-variations-by-container-query();
 }
 
 /**

@@ -1,49 +1,49 @@
 <input
-    #input
-    [id]="id + '-input'"
-    class="nx-circle-toggle__input"
-    [attr.aria-labelledby]="id + '-label'"
-    [type]="type"
-    [attr.name]="name"
-    (blur)="touch()"
-    [checked]="checked"
-    [disabled]="disabled"
-    [attr.aria-checked]="checked"
-    [attr.aria-invalid]="toggleGroup ? toggleGroup.errorState() : errorState()"
-    [attr.aria-required]="toggleGroup ? null : required"
-    [attr.aria-disabled]="readonly || null"
-    [attr.aria-describedby]="ariaDescribedByComputed()"
-    (keydown.enter)="handleEnterKey($event)"
-    (click)="toggle($event)"
+  #input
+  [id]="id + '-input'"
+  class="nx-circle-toggle__input"
+  [attr.aria-labelledby]="id + '-label'"
+  [type]="type"
+  [attr.name]="name"
+  (blur)="touch()"
+  [checked]="checked"
+  [disabled]="disabled"
+  [attr.aria-checked]="checked"
+  [attr.aria-invalid]="toggleGroup ? toggleGroup.errorState() : errorState()"
+  [attr.aria-required]="toggleGroup ? null : required"
+  [attr.aria-disabled]="readonly || null"
+  [attr.aria-describedby]="ariaDescribedByComputed()"
+  (keydown.enter)="handleEnterKey($event)"
+  (click)="toggle($event)"
 />
 <label class="nx-circle-toggle__label" [for]="id + '-input'" [id]="id + '-label'" tabindex="-1">
-    <nx-icon-toggle-button
-        [label]="label"
-        [hint]="hint"
-        [checked]="checked"
-        [icon]="iconName"
-        [negative]="negative"
-        [svg]="svgUrl"
-        [disabled]="disabled"
-        [readonly]="readonly"
-        [inGroup]="inGroup"
-        [touched]="_touched"
-        [circleText]="circleText"
-    >
-    </nx-icon-toggle-button>
-    <!-- The mobile toggle button is needed for the responsive mobile version of the component.
+  <nx-icon-toggle-button
+    [label]="label"
+    [hint]="hint"
+    [checked]="checked"
+    [icon]="iconName"
+    [negative]="negative"
+    [svg]="svgUrl"
+    [disabled]="disabled"
+    [readonly]="readonly"
+    [inGroup]="inGroup"
+    [touched]="_touched"
+    [circleText]="circleText"
+  >
+  </nx-icon-toggle-button>
+  <!-- The mobile toggle button is needed for the responsive mobile version of the component.
   The display swtich is handled in the css. -->
-    <nx-mobile-toggle-button
-        [label]="label"
-        [hint]="hint"
-        [checked]="checked"
-        [negative]="negative"
-        [disabled]="disabled"
-        [readonly]="readonly"
-        [circleText]="circleText"
-    >
-    </nx-mobile-toggle-button>
+  <nx-mobile-toggle-button
+    [label]="label"
+    [hint]="hint"
+    [checked]="checked"
+    [negative]="negative"
+    [disabled]="disabled"
+    [readonly]="readonly"
+    [circleText]="circleText"
+  >
+  </nx-mobile-toggle-button>
 </label>
 @if (errorState()) {
-    <ng-content select="nx-error"></ng-content>
+  <ng-content select="nx-error"></ng-content>
 }

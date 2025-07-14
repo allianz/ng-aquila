@@ -1,34 +1,34 @@
 <span class="popover-demo__scroll-panel" cdkScrollable>
-    <p>
-        sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua.
-    </p>
-    <div>
-        <button
-            nxButton="primary small"
-            [nxPopoverTriggerFor]="popoverStrategyClose"
-            nxPopoverScrollStrategy="close"
-            nxPopoverTrigger="click"
-            type="button"
-            class="nx-margin-bottom-s"
-        >
-            Click
-        </button>
-        <nx-popover #popoverStrategyClose>
-            <span class="nx-popover__text">Close</span>
-        </nx-popover>
-        <br />
-        <button
-            nxButton="primary small"
-            [nxPopoverTriggerFor]="popoverStrategyReposition"
-            nxPopoverScrollStrategy="reposition"
-            nxPopoverTrigger="click"
-            type="button"
-        >
-            Click
-        </button>
-        <nx-popover #popoverStrategyReposition>
-            <span class="nx-popover__text">Reposition</span>
-        </nx-popover>
-    </div>
+  <p>
+    sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua.
+  </p>
+  <div>
+    <button
+      nxButton="primary small"
+      [nxPopoverTriggerFor]="popoverStrategyClose"
+      nxPopoverScrollStrategy="close"
+      nxPopoverTrigger="click"
+      type="button"
+      class="nx-margin-bottom-s"
+    >
+      Click
+    </button>
+    <nx-popover #popoverStrategyClose>
+      <span class="nx-popover__text">Close</span>
+    </nx-popover>
+    <br />
+    <button
+      nxButton="primary small"
+      [nxPopoverTriggerFor]="popoverStrategyReposition"
+      nxPopoverScrollStrategy="reposition"
+      nxPopoverTrigger="click"
+      type="button"
+    >
+      Click
+    </button>
+    <nx-popover #popoverStrategyReposition>
+      <span class="nx-popover__text">Reposition</span>
+    </nx-popover>
+  </div>
 </span>

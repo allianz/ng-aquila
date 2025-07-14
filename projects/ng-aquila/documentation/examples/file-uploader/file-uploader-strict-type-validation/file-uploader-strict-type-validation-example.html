@@ -1,67 +1,66 @@
 <button nxButton="primary small" (click)="toggleAcceptValidation()">
-    Toggle strict validation
+  Toggle strict validation
 </button>
 <p>
-    Strict validation is:
-    <strong>{{stricterAcceptValidation ? 'on' : 'off'}}</strong>
+  Strict validation is:
+  <strong>{{stricterAcceptValidation ? 'on' : 'off'}}</strong>
 </p>
 
 <form [formGroup]="testForm">
-    <nx-file-uploader
-        formControlName="documents"
-        [strictAcceptValidation]="stricterAcceptValidation"
-        (valueChange)="onChange($event)"
-        (fileDeleted)="onDelete($event)"
-        #documentUpload
-        multiple
-        accept="image/png"
-        [uploader]="uploader"
+  <nx-file-uploader
+    formControlName="documents"
+    [strictAcceptValidation]="stricterAcceptValidation"
+    (valueChange)="onChange($event)"
+    (fileDeleted)="onDelete($event)"
+    #documentUpload
+    multiple
+    accept="image/png"
+    [uploader]="uploader"
+  >
+    <nx-label size="small" class="nx-margin-bottom-3xs"
+      >Required file to upload</nx-label
     >
-        <nx-label size="small" class="nx-margin-bottom-3xs"
-            >Required file to upload</nx-label
-        >
-        <span class="nx-margin-bottom-s" nxFileUploadHint
-            >Only *.png files are allowed</span
-        >
+    <span class="nx-margin-bottom-s" nxFileUploadHint
+      >Only *.png files are allowed</span
+    >
 
-        <nx-file-uploader-drop-zone class="nx-margin-bottom-m">
-            <button nxButton="primary" type="button" nxFileUploadButton>
-                <nx-icon
-                    name="plus"
-                    class="nx-margin-right-2xs"
-                    aria-hidden="true"
-                ></nx-icon>
-                Add File
-            </button>
-        </nx-file-uploader-drop-zone>
+    <nx-file-uploader-drop-zone class="nx-margin-bottom-m">
+      <button nxButton="primary" type="button" nxFileUploadButton>
+        <nx-icon
+          name="plus"
+          class="nx-margin-right-2xs"
+          aria-hidden="true"
+        ></nx-icon>
+        Add File
+      </button>
+    </nx-file-uploader-drop-zone>
 
-        @if (testForm.controls['documents']?.errors) {
-        <nx-error>
-            <div class="nx-font-weight-bold">Error</div>
-            <ul>
-                @if (testForm.controls['documents'].hasError('required')) {
-                <li>Required!</li>
-                } @if
-                (testForm.controls['documents'].hasError('NxFileUploadFileTypeNotAccepted'))
-                {
-                <li>
-                    File
-                    {{testForm.controls['documents'].getError('NxFileUploadFileTypeNotAccepted').fileName
-                    | json}} can not be uploaded. This file type is not
-                    supported!
-                </li>
-                }
-            </ul>
-        </nx-error>
+    @if (testForm.controls['documents']?.errors) {
+    <nx-error>
+      <div class="nx-font-weight-bold">Error</div>
+      <ul>
+        @if (testForm.controls['documents'].hasError('required')) {
+        <li>Required!</li>
+        } @if
+        (testForm.controls['documents'].hasError('NxFileUploadFileTypeNotAccepted'))
+        {
+        <li>
+          File
+          {{testForm.controls['documents'].getError('NxFileUploadFileTypeNotAccepted').fileName
+          | json}} can not be uploaded. This file type is not supported!
+        </li>
         }
-    </nx-file-uploader>
+      </ul>
+    </nx-error>
+    }
+  </nx-file-uploader>
 
-    <button
-        nxButton="secondary small"
-        [nxFileUploadTriggerFor]="documentUpload"
-        type="button"
-        [disabled]="!testForm.valid"
-    >
-        Upload files
-    </button>
+  <button
+    nxButton="secondary small"
+    [nxFileUploadTriggerFor]="documentUpload"
+    type="button"
+    [disabled]="!testForm.valid"
+  >
+    Upload files
+  </button>
 </form>

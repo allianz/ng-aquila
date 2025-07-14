@@ -1,70 +1,81 @@
 <h1 class="general-overview__header">Component Overview</h1>
 
 <div nxRow>
-    <div nxCol="12,12,12,9">
-        <div class="nxv-status__container">
-            <div class="nxv-status">
-                <nxv-status-dot class="nxv-status-icon" status="done"></nxv-status-dot>
-                <span class="nxv-status-text">Done</span>
-            </div>
-            <div class="nxv-status">
-                <nxv-status-dot class="nxv-status-icon" status="progress"></nxv-status-dot>
-                <span class="nxv-status-text">In progress</span>
-            </div>
-            <div class="nxv-status">
-                <nxv-status-dot class="nxv-status-icon" status="na"></nxv-status-dot>
-                <span class="nxv-status-text">n/a</span>
-            </div>
-            <div class="nxv-status-deprecated">
-                <div class="nxv-status-deprecated-color"></div>
-                <span class="nxv-status-text">deprecated</span>
-            </div>
-        </div>
+  <div nxCol="12,12,12,9">
+    <div class="nxv-status__container">
+      <div class="nxv-status">
+        <nxv-status-dot class="nxv-status-icon" status="done"></nxv-status-dot>
+        <span class="nxv-status-text">Done</span>
+      </div>
+      <div class="nxv-status">
+        <nxv-status-dot class="nxv-status-icon" status="progress"></nxv-status-dot>
+        <span class="nxv-status-text">In progress</span>
+      </div>
+      <div class="nxv-status">
+        <nxv-status-dot class="nxv-status-icon" status="na"></nxv-status-dot>
+        <span class="nxv-status-text">n/a</span>
+      </div>
+      <div class="nxv-status-deprecated">
+        <div class="nxv-status-deprecated-color"></div>
+        <span class="nxv-status-text">deprecated</span>
+      </div>
     </div>
+  </div>
 </div>
 @for (componentCategory of components; track componentCategory) {
-    <div nxRow class="nxv-component-category__container">
-        <div nxCol="12,12,12,9">
-            <h2 nxHeadline="subsection-medium" class="nx-margin-bottom-m">{{ componentCategory.label }}</h2>
-            <table nxTable class="nxv-components-table">
-                <thead>
-                    <tr nxTableRow>
-                        <th nxHeaderCell>Item</th>
-                        <th nxHeaderCell class="nxv-components-table__status-header" colspan="2">Scope</th>
-                        <th nxHeaderCell class="nxv-components-table__status-header">stable</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (component of componentCategory.children; track component) {
-                        <tr
-                            nxTableRow
-                            [routerLink]="['/documentation', component.component.id]"
-                            (keydown.ENTER)="navigateToComponent(component)"
-                            (keydown.SPACE)="navigateToComponent(component)"
-                            class="nxv-components-table__component-row"
-                            [class.is-deprecated]="component.component.deprecated"
-                        >
-                            <td nxCell class="nxv-components-table__component-label">
-                                <a [routerLink]="['/documentation', component.component.id]">{{ component.label }}</a>
-                            </td>
-                            <td nxCell class="nxv-components-table__support-cell hide-if-empty">
-                                @if (component.component.b2c) {
-                                    <nx-badge class="nxv-components-table__status-badge" vibrant type="active"> b2c </nx-badge>
-                                }
-                            </td>
-                            <td nxCell class="nxv-components-table__support-cell hide-if-empty">
-                                @if (component.component.expert) {
-                                    <nx-badge class="nxv-components-table__status-badge" type="positive"> expert </nx-badge>
-                                }
-                            </td>
-                            <td nxCell class="nxv-components-table__status-cell">
-                                <nxv-status-dot [status]="component.component.stable"></nxv-status-dot>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+  <div nxRow class="nxv-component-category__container">
+    <div nxCol="12,12,12,9">
+      <h2 nxHeadline="subsection-medium" class="nx-margin-bottom-m">
+        {{ componentCategory.label }}
+      </h2>
+      <table nxTable class="nxv-components-table">
+        <thead>
+          <tr nxTableRow>
+            <th nxHeaderCell>Item</th>
+            <th nxHeaderCell class="nxv-components-table__status-header" colspan="2">Scope</th>
+            <th nxHeaderCell class="nxv-components-table__status-header">stable</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (component of componentCategory.children; track component) {
+            <tr
+              nxTableRow
+              [routerLink]="['/documentation', component.component.id]"
+              (keydown.ENTER)="navigateToComponent(component)"
+              (keydown.SPACE)="navigateToComponent(component)"
+              class="nxv-components-table__component-row"
+              [class.is-deprecated]="component.component.deprecated"
+            >
+              <td nxCell class="nxv-components-table__component-label">
+                <a [routerLink]="['/documentation', component.component.id]">{{
+                  component.label
+                }}</a>
+              </td>
+              <td nxCell class="nxv-components-table__support-cell hide-if-empty">
+                @if (component.component.b2c) {
+                  <nx-badge class="nxv-components-table__status-badge" vibrant type="active">
+                    b2c
+                  </nx-badge>
+                }
+              </td>
+              <td nxCell class="nxv-components-table__support-cell hide-if-empty">
+                @if (component.component.expert) {
+                  <nx-badge class="nxv-components-table__status-badge" type="positive">
+                    expert
+                  </nx-badge>
+                }
+              </td>
+              <td nxCell class="nxv-components-table__status-cell">
+                <nxv-status-dot [status]="component.component.stable"></nxv-status-dot>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
     </div>
+  </div>
 }
-<p>If a component you need is not listed here, <a class="docs-link" [href]="issueBoardLink">file a GitHub issue</a>.</p>
+<p>
+  If a component you need is not listed here,
+  <a class="docs-link" [href]="issueBoardLink">file a GitHub issue</a>.
+</p>

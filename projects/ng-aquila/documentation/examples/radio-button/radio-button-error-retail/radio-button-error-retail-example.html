@@ -1,29 +1,29 @@
 <form [formGroup]="testForm">
-    <nx-radio-group
-        name="reactiveTest"
-        formControlName="radioTestReactive"
-        [required]="true"
+  <nx-radio-group
+    name="reactiveTest"
+    formControlName="radioTestReactive"
+    [required]="true"
+  >
+    <nx-label [size]="'small'" class="nx-margin-bottom-s"
+      >What do you prefer?</nx-label
     >
-        <nx-label [size]="'small'" class="nx-margin-bottom-s"
-            >What do you prefer?</nx-label
-        >
-        <nx-error class="nx-margin-top-s"> Please make a choice. </nx-error>
-        <nx-radio
-            value="coffee"
-            [labelSize]="'small'"
-            class="radio-item nx-margin-bottom-s"
-            >Coffee</nx-radio
-        >
-        <nx-radio
-            value="tea"
-            [labelSize]="'small'"
-            class="radio-item nx-margin-bottom-s"
-            >Tea</nx-radio
-        >
-        <nx-radio value="water" [labelSize]="'small'" class="radio-item"
-            >Water</nx-radio
-        >
-    </nx-radio-group>
-    <br />
-    <button type="submit" nxButton="primary small">Submit</button>
+    <nx-error class="nx-margin-top-s"> Please make a choice. </nx-error>
+    <nx-radio
+      value="coffee"
+      [labelSize]="'small'"
+      class="radio-item nx-margin-bottom-s"
+      >Coffee</nx-radio
+    >
+    <nx-radio
+      value="tea"
+      [labelSize]="'small'"
+      class="radio-item nx-margin-bottom-s"
+      >Tea</nx-radio
+    >
+    <nx-radio value="water" [labelSize]="'small'" class="radio-item"
+      >Water</nx-radio
+    >
+  </nx-radio-group>
+  <br />
+  <button type="submit" nxButton="primary small">Submit</button>
 </form>

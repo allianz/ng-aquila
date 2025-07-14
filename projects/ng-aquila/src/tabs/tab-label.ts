@@ -3,7 +3,7 @@ import { Directive } from '@angular/core';
 
 /** @docs-private */
 @Directive({
-    selector: '[nxTabLabel]',
-    standalone: true,
+  selector: '[nxTabLabel]',
+  standalone: true,
 })
 export class NxTabLabelDirective extends CdkPortal {}

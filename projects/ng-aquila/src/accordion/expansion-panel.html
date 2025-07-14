@@ -1,15 +1,18 @@
 <ng-content select="nx-expansion-panel-header"></ng-content>
 
 <div
-    class="nx-expansion-panel__content"
-    role="region"
-    [@bodyExpansion]="getOpenState()"
-    (@bodyExpansion.done)="scrollIntoViewActive && bodyExpansionDone($event)"
-    [attr.aria-labelledby]="_headerId"
-    [id]="id"
+  class="nx-expansion-panel__content"
+  role="region"
+  [@bodyExpansion]="getOpenState()"
+  (@bodyExpansion.done)="scrollIntoViewActive && bodyExpansionDone($event)"
+  [attr.aria-labelledby]="_headerId"
+  [id]="id"
 >
-    <div [ngClass]="{'nx-expansion-panel__body': true, 'flush-alignment': flushAlignment}" class="nx-expansion-panel__body">
-        <ng-content></ng-content>
-        <ng-template [cdkPortalOutlet]="portal"></ng-template>
-    </div>
+  <div
+    [ngClass]="{'nx-expansion-panel__body': true, 'flush-alignment': flushAlignment}"
+    class="nx-expansion-panel__body"
+  >
+    <ng-content></ng-content>
+    <ng-template [cdkPortalOutlet]="portal"></ng-template>
+  </div>
 </div>

@@ -1,88 +1,94 @@
 <div class="nx-calendar-header">
-    <div class="nx-calendar-controls">
-        <button
-            #previousButton
-            nxPlainButton
-            class="nx-calendar-previous-button"
-            [disabled]="!_previousEnabled()"
-            (click)="_previousClicked()"
-            [attr.aria-label]="_prevButtonLabel"
-        >
-            <nx-icon [name]="this._isRtl ? 'chevron-right' : 'chevron-left'" aria-hidden="true"></nx-icon>
-        </button>
+  <div class="nx-calendar-controls">
+    <button
+      #previousButton
+      nxPlainButton
+      class="nx-calendar-previous-button"
+      [disabled]="!_previousEnabled()"
+      (click)="_previousClicked()"
+      [attr.aria-label]="_prevButtonLabel"
+    >
+      <nx-icon [name]="this._isRtl ? 'chevron-right' : 'chevron-left'" aria-hidden="true"></nx-icon>
+    </button>
 
-        <span class="nx-calendar-period-label"> {{_periodButtonText}} </span>
+    <span class="nx-calendar-period-label"> {{_periodButtonText}} </span>
 
-        <button
-            #nextButton
-            nxPlainButton
-            class="nx-calendar-next-button"
-            [disabled]="!_nextEnabled()"
-            (click)="_nextClicked()"
-            [attr.aria-label]="_nextButtonLabel"
-        >
-            <nx-icon [name]="this._isRtl ? 'chevron-left' : 'chevron-right'" aria-hidden="true"></nx-icon>
-        </button>
-    </div>
+    <button
+      #nextButton
+      nxPlainButton
+      class="nx-calendar-next-button"
+      [disabled]="!_nextEnabled()"
+      (click)="_nextClicked()"
+      [attr.aria-label]="_nextButtonLabel"
+    >
+      <nx-icon [name]="this._isRtl ? 'chevron-left' : 'chevron-right'" aria-hidden="true"></nx-icon>
+    </button>
+  </div>
 
-    <div class="nx-calendar-view-controls">
-        <button #changeViewButton nxPlainButton class="nx-calendar-change-view-button" (click)="_changeViewClicked()" [attr.aria-label]="_periodButtonLabel">
-            {{_periodButtonLabel}}
-        </button>
-    </div>
+  <div class="nx-calendar-view-controls">
+    <button
+      #changeViewButton
+      nxPlainButton
+      class="nx-calendar-change-view-button"
+      (click)="_changeViewClicked()"
+      [attr.aria-label]="_periodButtonLabel"
+    >
+      {{_periodButtonLabel}}
+    </button>
+  </div>
 </div>
 
 <div class="nx-calendar-content" cdkMonitorSubtreeFocus tabindex="-1">
-    @switch (_currentView) { @case ('month') {
-    <nx-month-view
-        [isRange]="isRange()"
-        [(activeDate)]="_activeDate"
-        [selected]="_selected()"
-        [dateFilter]="dateFilter"
-        [maxDate]="maxDate"
-        [minDate]="minDate"
-        (hoverDateChange)="_hoverDateChange($event)"
-        (selectedChange)="_dateSelected($event!)"
-        (_userSelection)="_userSelected()"
-    >
-    </nx-month-view>
-    } @case ('year') {
-    <nx-year-view
-        [isRange]="isRange()"
-        [(activeDate)]="_activeDate"
-        [selected]="selected"
-        [dateFilter]="dateFilter"
-        [maxDate]="maxDate"
-        [minDate]="minDate"
-        (monthSelected)="_monthSelectedInYearView($event)"
-        (selectedChange)="_goToDateInView($event, 'month')"
-    >
-    </nx-year-view>
-    } @case ('multi-year') {
-    <nx-multi-year-view
-        [(activeDate)]="_activeDate"
-        [selected]="selected"
-        [dateFilter]="dateFilter"
-        [maxDate]="maxDate"
-        [minDate]="minDate"
-        (yearSelected)="_yearSelectedInMultiYearView($event)"
-        (selectedChange)="_goToDateInView($event, 'year')"
-    >
-    </nx-multi-year-view>
-    } }
+  @switch (_currentView) { @case ('month') {
+  <nx-month-view
+    [isRange]="isRange()"
+    [(activeDate)]="_activeDate"
+    [selected]="_selected()"
+    [dateFilter]="dateFilter"
+    [maxDate]="maxDate"
+    [minDate]="minDate"
+    (hoverDateChange)="_hoverDateChange($event)"
+    (selectedChange)="_dateSelected($event!)"
+    (_userSelection)="_userSelected()"
+  >
+  </nx-month-view>
+  } @case ('year') {
+  <nx-year-view
+    [isRange]="isRange()"
+    [(activeDate)]="_activeDate"
+    [selected]="selected"
+    [dateFilter]="dateFilter"
+    [maxDate]="maxDate"
+    [minDate]="minDate"
+    (monthSelected)="_monthSelectedInYearView($event)"
+    (selectedChange)="_goToDateInView($event, 'month')"
+  >
+  </nx-year-view>
+  } @case ('multi-year') {
+  <nx-multi-year-view
+    [(activeDate)]="_activeDate"
+    [selected]="selected"
+    [dateFilter]="dateFilter"
+    [maxDate]="maxDate"
+    [minDate]="minDate"
+    (yearSelected)="_yearSelectedInMultiYearView($event)"
+    (selectedChange)="_goToDateInView($event, 'year')"
+  >
+  </nx-multi-year-view>
+  } }
 </div>
 @if (showTodayButton) {
 <div class="nx-calendar-footer">
-    <button
-        #todayButton
-        nxPlainButton
-        type="button"
-        (click)="todayButtonHandler()"
-        (keydown)="todayButtonKeydownHandler($event)"
-        [disabled]="_disableTodayButton"
-        [attr.aria-label]="_intl.todayButtonAriaLabel"
-    >
-        {{_intl.todayButtonLabel}}
-    </button>
+  <button
+    #todayButton
+    nxPlainButton
+    type="button"
+    (click)="todayButtonHandler()"
+    (keydown)="todayButtonKeydownHandler($event)"
+    [disabled]="_disableTodayButton"
+    [attr.aria-label]="_intl.todayButtonAriaLabel"
+  >
+    {{_intl.todayButtonLabel}}
+  </button>
 </div>
 }

@@ -1,9 +1,9 @@
+import { NxErrorModule } from '@allianz/ng-aquila/base';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxMessageModule } from '@allianz/ng-aquila/message';
+import { NxNumberStepperModule } from '@allianz/ng-aquila/number-stepper';
+import { NxPopoverModule } from '@allianz/ng-aquila/popover';
 import { NgModule } from '@angular/core';
-import { NxErrorModule } from '@aposin/ng-aquila/base';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxMessageModule } from '@aposin/ng-aquila/message';
-import { NxNumberStepperModule } from '@aposin/ng-aquila/number-stepper';
-import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { NumberStepperAccessibilityExampleComponent } from './number-stepper-a11y/number-stepper-a11y-example';
@@ -25,68 +25,63 @@ import { NumberStepperTemplateDrivenExampleComponent } from './number-stepper-te
 import { NumberStepperValidationExampleComponent } from './number-stepper-validation/number-stepper-validation-example';
 
 const EXAMPLES = [
-    NumberStepperReadonlyInputExampleComponent,
-    NumberStepperAccessibilityExampleComponent,
-    NumberStepperAdditionsExampleComponent,
-    NumberStepperAutoResizingExampleComponent,
-    NumberStepperCustomLabelExampleComponent,
-    NumberStepperDisabledExplicitExampleComponent,
-    NumberStepperDisabledImplicitExampleComponent,
-    NumberStepperFloatingPointExampleComponent,
-    NumberStepperFormattingExampleComponent,
-    NumberStepperLocalizeExampleComponent,
-    NumberStepperNegativeExampleComponent,
-    NumberStepperReactiveExampleComponent,
-    NumberStepperSimpleBindingExampleComponent,
-    NumberStepperSizesExampleComponent,
-    NumberStepperStandaloneExampleComponent,
-    NumberStepperTemplateDrivenExampleComponent,
-    NumberStepperValidationExampleComponent,
+  NumberStepperReadonlyInputExampleComponent,
+  NumberStepperAccessibilityExampleComponent,
+  NumberStepperAdditionsExampleComponent,
+  NumberStepperAutoResizingExampleComponent,
+  NumberStepperCustomLabelExampleComponent,
+  NumberStepperDisabledExplicitExampleComponent,
+  NumberStepperDisabledImplicitExampleComponent,
+  NumberStepperFloatingPointExampleComponent,
+  NumberStepperFormattingExampleComponent,
+  NumberStepperLocalizeExampleComponent,
+  NumberStepperNegativeExampleComponent,
+  NumberStepperReactiveExampleComponent,
+  NumberStepperSimpleBindingExampleComponent,
+  NumberStepperSizesExampleComponent,
+  NumberStepperStandaloneExampleComponent,
+  NumberStepperTemplateDrivenExampleComponent,
+  NumberStepperValidationExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxNumberStepperModule,
-        NxIconModule,
-        NxPopoverModule,
-        NxErrorModule,
-        NxMessageModule,
-        ExamplesSharedModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxNumberStepperModule,
+    NxIconModule,
+    NxPopoverModule,
+    NxErrorModule,
+    NxMessageModule,
+    ExamplesSharedModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class NumberExamplesModule {
-    static components() {
-        return {
-            'number-stepper-readonly-input':
-                NumberStepperReadonlyInputExampleComponent,
-            'number-stepper-a11y': NumberStepperAccessibilityExampleComponent,
-            'number-stepper-additions': NumberStepperAdditionsExampleComponent,
-            'number-stepper-auto-resizing':
-                NumberStepperAutoResizingExampleComponent,
-            'number-stepper-custom-label':
-                NumberStepperCustomLabelExampleComponent,
-            'number-stepper-disabled-explicit':
-                NumberStepperDisabledExplicitExampleComponent,
-            'number-stepper-disabled-implicit':
-                NumberStepperDisabledImplicitExampleComponent,
-            'number-stepper-floating-point':
-                NumberStepperFloatingPointExampleComponent,
-            'number-stepper-formatting':
-                NumberStepperFormattingExampleComponent,
-            'number-stepper-localize': NumberStepperLocalizeExampleComponent,
-            'number-stepper-negative': NumberStepperNegativeExampleComponent,
-            'number-stepper-reactive': NumberStepperReactiveExampleComponent,
-            'number-stepper-simple-binding':
-                NumberStepperSimpleBindingExampleComponent,
-            'number-stepper-sizes': NumberStepperSizesExampleComponent,
-            'number-stepper-standalone':
-                NumberStepperStandaloneExampleComponent,
-            'number-stepper-template-driven':
-                NumberStepperTemplateDrivenExampleComponent,
-            'number-stepper-validation':
-                NumberStepperValidationExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'number-stepper-readonly-input':
+        NumberStepperReadonlyInputExampleComponent,
+      'number-stepper-a11y': NumberStepperAccessibilityExampleComponent,
+      'number-stepper-additions': NumberStepperAdditionsExampleComponent,
+      'number-stepper-auto-resizing': NumberStepperAutoResizingExampleComponent,
+      'number-stepper-custom-label': NumberStepperCustomLabelExampleComponent,
+      'number-stepper-disabled-explicit':
+        NumberStepperDisabledExplicitExampleComponent,
+      'number-stepper-disabled-implicit':
+        NumberStepperDisabledImplicitExampleComponent,
+      'number-stepper-floating-point':
+        NumberStepperFloatingPointExampleComponent,
+      'number-stepper-formatting': NumberStepperFormattingExampleComponent,
+      'number-stepper-localize': NumberStepperLocalizeExampleComponent,
+      'number-stepper-negative': NumberStepperNegativeExampleComponent,
+      'number-stepper-reactive': NumberStepperReactiveExampleComponent,
+      'number-stepper-simple-binding':
+        NumberStepperSimpleBindingExampleComponent,
+      'number-stepper-sizes': NumberStepperSizesExampleComponent,
+      'number-stepper-standalone': NumberStepperStandaloneExampleComponent,
+      'number-stepper-template-driven':
+        NumberStepperTemplateDrivenExampleComponent,
+      'number-stepper-validation': NumberStepperValidationExampleComponent,
+    };
+  }
 }

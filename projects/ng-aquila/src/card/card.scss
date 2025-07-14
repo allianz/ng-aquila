@@ -1,83 +1,83 @@
 @import '../shared-styles/index';
 
 :host {
-    background: v(card-background-color);
-    border-color: v(card-border-color);
-    border-width: v(card-border-width);
-    border-style: solid;
-    border-radius: v(card-border-radius);
-    box-shadow: none;
-    display: inline-block;
-    transition:
-        background-color 0.2s ease,
-        box-shadow 0.2s ease;
+  background: v(card-background-color);
+  border-color: v(card-border-color);
+  border-width: v(card-border-width);
+  border-style: solid;
+  border-radius: v(card-border-radius);
+  box-shadow: none;
+  display: inline-block;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 
-    .nx-card-inner {
-        padding: nx-spacer(m) - nx-border-size(xs);
+  .nx-card-inner {
+    padding: nx-spacer(m) - nx-border-size(xs);
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+
+  &.is-clickable {
+    position: relative;
+  }
+
+  &.is-clickable:not(.is-disabled) {
+    &:hover {
+      background-color: v(clickable-card-hover-background-color);
+      border-color: v(clickable-card-hover-border-color);
+    }
+    &:active {
+      background-color: v(clickable-card-active-background-color);
+      border-color: v(clickable-card-active-border-color);
     }
 
-    &:hover,
-    &:focus {
-        outline: none;
+    &:focus-within:has(.nx-card-main-link:focus) {
+      @include focus-style;
+    }
+  }
+
+  &.is-disabled {
+    border-color: v(clickable-card-disabled-border-color);
+    pointer-events: none;
+  }
+
+  ::ng-deep {
+    .nx-card-main-link {
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        content: ' ';
+      }
     }
 
-    &.is-clickable {
-        position: relative;
+    .nx-card-secondary-info {
+      position: relative;
+      z-index: 2;
     }
-
-    &.is-clickable:not(.is-disabled) {
-        &:hover {
-            background-color: v(clickable-card-hover-background-color);
-            border-color: v(clickable-card-hover-border-color);
-        }
-        &:active {
-            background-color: v(clickable-card-active-background-color);
-            border-color: v(clickable-card-active-border-color);
-        }
-
-        &:focus-within:has(.nx-card-main-link:focus) {
-            @include focus-style;
-        }
-    }
-
-    &.is-disabled {
-        border-color: v(clickable-card-disabled-border-color);
-        pointer-events: none;
-    }
-
-    ::ng-deep {
-        .nx-card-main-link {
-            &::after {
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                content: ' ';
-            }
-        }
-
-        .nx-card-secondary-info {
-            position: relative;
-            z-index: 2;
-        }
-    }
+  }
 }
 
 :host.cdk-keyboard-focused {
-    @include focus-style;
+  @include focus-style;
 }
 
 .nx-card-highlight {
-    padding: 0 nx-spacer(m) - nx-border-size(xs);
-    border-radius: v(selectable-card-border-radius) v(selectable-card-border-radius) 0 0;
-    background: v(card-highlight-background-color);
-    color: v(card-highlight-text-color);
-    line-height: nx-line-height(xs);
-    font-size: nx-font-size(4xs);
-    text-align: center;
+  padding: 0 nx-spacer(m) - nx-border-size(xs);
+  border-radius: v(selectable-card-border-radius) v(selectable-card-border-radius) 0 0;
+  background: v(card-highlight-background-color);
+  color: v(card-highlight-text-color);
+  line-height: nx-line-height(xs);
+  font-size: nx-font-size(4xs);
+  text-align: center;
 }
 
 .is-expert .nx-card-highlight {
-    text-align: left;
+  text-align: left;
 }

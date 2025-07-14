@@ -1,63 +1,63 @@
 @import '../shared-styles/index';
 
 .nx-pagesearch {
-    padding: nx-spacer(2m) 0;
-    background: v(page-search-background-color);
-    box-shadow: v(page-search-box-shadow);
+  padding: nx-spacer(2m) 0;
+  background: v(page-search-background-color);
+  box-shadow: v(page-search-box-shadow);
 
-    ::ng-deep {
-        .nx-formfield__wrapper {
-            padding-bottom: 0;
-        }
-
-        .has-outline {
-            .nx-formfield__wrapper {
-                padding-top: 4px;
-            }
-        }
-
-        .c-input {
-            height: auto;
-            @include type-style(page-search);
-
-            &.is-filled {
-                font-weight: nx-font-weight(semibold);
-            }
-
-            &::placeholder {
-                font-weight: nx-font-weight(light);
-            }
-        }
-
-        .nx-formfield__input-container {
-            align-items: center;
-        }
-
-        .nx-formfield__prefix,
-        .nx-formfield__suffix {
-            color: v(page-search-icon-color);
-        }
-
-        .nx-formfield__suffix {
-            cursor: pointer;
-        }
-
-        button {
-            margin: 0;
-        }
-
-        .nx-icon--auto {
-            font-size: nx-font-size(s);
-        }
+  ::ng-deep {
+    .nx-formfield__wrapper {
+      padding-bottom: 0;
     }
 
-    .nx-pagesearch__actions {
-        display: flex;
-        align-items: center;
-        margin-top: nx-spacer(5xs);
-
-        @include media-breakpoint-down(medium) {
-            margin-top: nx-spacer(s);
-        }
+    .has-outline {
+      .nx-formfield__wrapper {
+        padding-top: 4px;
+      }
     }
+
+    .c-input {
+      height: auto;
+      @include type-style(page-search);
+
+      &.is-filled {
+        font-weight: nx-font-weight(semibold);
+      }
+
+      &::placeholder {
+        font-weight: nx-font-weight(light);
+      }
+    }
+
+    .nx-formfield__input-container {
+      align-items: center;
+    }
+
+    .nx-formfield__prefix,
+    .nx-formfield__suffix {
+      color: v(page-search-icon-color);
+    }
+
+    .nx-formfield__suffix {
+      cursor: pointer;
+    }
+
+    button {
+      margin: 0;
+    }
+
+    .nx-icon--auto {
+      font-size: nx-font-size(s);
+    }
+  }
+
+  .nx-pagesearch__actions {
+    display: flex;
+    align-items: center;
+    margin-top: nx-spacer(5xs);
+
+    @include media-breakpoint-down(medium) {
+      margin-top: nx-spacer(s);
+    }
+  }
 }

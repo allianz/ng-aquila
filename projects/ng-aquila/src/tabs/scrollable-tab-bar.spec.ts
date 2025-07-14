@@ -13,324 +13,339 @@ const THROTTLE_TIME = 200;
 
 @Directive({ standalone: true })
 abstract class TabHeaderScrollableTest {
-    direction: any;
-    tabs: any;
+  direction: any;
+  tabs: any;
 
-    @ViewChild(NxTabGroupComponent) tabGroupInstance!: NxTabGroupComponent;
-    @ViewChild(NxTabNavBarComponent) tabNavBarInstance!: NxTabNavBarComponent;
+  @ViewChild(NxTabGroupComponent) tabGroupInstance!: NxTabGroupComponent;
+  @ViewChild(NxTabNavBarComponent) tabNavBarInstance!: NxTabNavBarComponent;
 }
 
 describe('Scrollable TabHeader', () => {
-    let fixture: ComponentFixture<TabHeaderScrollableTest>;
-    let testInstance: TabHeaderScrollableTest;
-    let tabHeaderNativeElement: HTMLElement;
+  let fixture: ComponentFixture<TabHeaderScrollableTest>;
+  let testInstance: TabHeaderScrollableTest;
+  let tabHeaderNativeElement: HTMLElement;
 
-    const createTestComponent = (component: Type<TabHeaderScrollableTest>) => {
-        fixture = TestBed.createComponent(component);
-        fixture.detectChanges();
-        testInstance = fixture.componentInstance;
-        tabHeaderNativeElement = fixture.debugElement.nativeElement.querySelector('nx-tab-header');
-    };
+  const createTestComponent = (component: Type<TabHeaderScrollableTest>) => {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
+    tabHeaderNativeElement = fixture.debugElement.nativeElement.querySelector('nx-tab-header');
+  };
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            imports: [NxTabsModule, BrowserAnimationsModule, NotScrollableTabGroupTest, ScrollableTabGroupTest],
-        }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        NxTabsModule,
+        BrowserAnimationsModule,
+        NotScrollableTabGroupTest,
+        ScrollableTabGroupTest,
+      ],
+    }).compileComponents();
+  }));
+
+  function getStartScrollElement(): HTMLElement {
+    return fixture.debugElement.nativeElement.querySelector('nx-tab-scroll-indicator.start-button');
+  }
+
+  function getEndScrollElement(): HTMLElement {
+    return fixture.debugElement.nativeElement.querySelector('nx-tab-scroll-indicator.end-button');
+  }
+
+  it('does not show scroll buttons if not scrollable', fakeAsync(() => {
+    createTestComponent(NotScrollableTabGroupTest);
+    fixture.detectChanges();
+    tick(THROTTLE_TIME);
+    expect(tabHeaderNativeElement).not.toHaveClass('scrollable');
+    expect(getStartScrollElement()).toBeNull();
+    expect(getEndScrollElement()).toBeNull();
+  }));
+
+  describe('scrollable', () => {
+    beforeEach(fakeAsync(() => {
+      createTestComponent(ScrollableTabGroupTest);
+      fixture.detectChanges();
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+      tick(THROTTLE_TIME);
     }));
 
-    function getStartScrollElement(): HTMLElement {
-        return fixture.debugElement.nativeElement.querySelector('nx-tab-scroll-indicator.start-button');
-    }
-
-    function getEndScrollElement(): HTMLElement {
-        return fixture.debugElement.nativeElement.querySelector('nx-tab-scroll-indicator.end-button');
-    }
-
-    it('does not show scroll buttons if not scrollable', fakeAsync(() => {
-        createTestComponent(NotScrollableTabGroupTest);
-        fixture.detectChanges();
-        tick(THROTTLE_TIME);
-        expect(tabHeaderNativeElement).not.toHaveClass('scrollable');
-        expect(getStartScrollElement()).toBeNull();
-        expect(getEndScrollElement()).toBeNull();
+    it('shows scroll buttons if scrollable', fakeAsync(() => {
+      expect(tabHeaderNativeElement).toHaveClass('scrollable');
+      expect(getStartScrollElement()).toBeTruthy();
+      expect(getEndScrollElement()).toBeTruthy();
     }));
 
-    describe('scrollable', () => {
-        beforeEach(fakeAsync(() => {
-            createTestComponent(ScrollableTabGroupTest);
-            fixture.detectChanges();
-            tick(THROTTLE_TIME);
-            fixture.detectChanges();
-            tick(THROTTLE_TIME);
-        }));
+    it('updates scrollable on tabs change', fakeAsync(() => {
+      testInstance.tabs = [
+        { label: 'Tab Label 1', content: 'Content 1' },
+        { label: 'Tab Label 2', content: 'Content 2' },
+        { label: 'Tab Label 3', content: 'Content 3' },
+      ];
+      fixture.detectChanges();
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+      tick(THROTTLE_TIME);
+      expect(tabHeaderNativeElement).not.toHaveClass('scrollable');
+    }));
 
-        it('shows scroll buttons if scrollable', fakeAsync(() => {
-            expect(tabHeaderNativeElement).toHaveClass('scrollable');
-            expect(getStartScrollElement()).toBeTruthy();
-            expect(getEndScrollElement()).toBeTruthy();
-        }));
+    it('hides scroll-to-start indicator', fakeAsync(() => {
+      expect(tabHeaderNativeElement.querySelector('.nx-tab-header')?.scrollLeft).toBe(0);
+      expect(getStartScrollElement()).toHaveClass('is-scrolled-to-start');
+    }));
 
-        it('updates scrollable on tabs change', fakeAsync(() => {
-            testInstance.tabs = [
-                { label: 'Tab Label 1', content: 'Content 1' },
-                { label: 'Tab Label 2', content: 'Content 2' },
-                { label: 'Tab Label 3', content: 'Content 3' },
-            ];
-            fixture.detectChanges();
-            tick(THROTTLE_TIME);
-            fixture.detectChanges();
-            tick(THROTTLE_TIME);
-            expect(tabHeaderNativeElement).not.toHaveClass('scrollable');
-        }));
+    it('shows scroll-to-start indicator when scrolled', fakeAsync(() => {
+      const scrollableContainer = tabHeaderNativeElement.querySelector('.nx-tab-header');
+      scrollableContainer!.scrollTo({ left: 50 });
+      dispatchFakeEvent(scrollableContainer as Node, 'scroll');
+      fixture.detectChanges();
+      expect(getStartScrollElement()).not.toHaveClass('is-scrolled-to-start');
+    }));
 
-        it('hides scroll-to-start indicator', fakeAsync(() => {
-            expect(tabHeaderNativeElement.querySelector('.nx-tab-header')?.scrollLeft).toBe(0);
-            expect(getStartScrollElement()).toHaveClass('is-scrolled-to-start');
-        }));
+    it('shows scroll-to-end indicator', fakeAsync(() => {
+      expect(getEndScrollElement()).not.toHaveClass('is-scrolled-to-end');
+    }));
 
-        it('shows scroll-to-start indicator when scrolled', fakeAsync(() => {
-            const scrollableContainer = tabHeaderNativeElement.querySelector('.nx-tab-header');
-            scrollableContainer!.scrollTo({ left: 50 });
-            dispatchFakeEvent(scrollableContainer as Node, 'scroll');
-            fixture.detectChanges();
-            expect(getStartScrollElement()).not.toHaveClass('is-scrolled-to-start');
-        }));
+    it('hides scroll-to-end indicator when at end', fakeAsync(() => {
+      const scrollableContainer = tabHeaderNativeElement.querySelector('.nx-tab-header');
+      expect(getEndScrollElement()).not.toHaveClass('is-scrolled-to-end');
 
-        it('shows scroll-to-end indicator', fakeAsync(() => {
-            expect(getEndScrollElement()).not.toHaveClass('is-scrolled-to-end');
-        }));
+      scrollableContainer!.scrollTo({ left: 1000 });
+      dispatchFakeEvent(scrollableContainer as Node, 'scroll');
+      fixture.detectChanges();
+      expect(getEndScrollElement()).toBeNull();
+    }));
+  });
 
-        it('hides scroll-to-end indicator when at end', fakeAsync(() => {
-            const scrollableContainer = tabHeaderNativeElement.querySelector('.nx-tab-header');
-            expect(getEndScrollElement()).not.toHaveClass('is-scrolled-to-end');
+  describe('responsive', () => {
+    beforeEach(fakeAsync(() => {
+      viewport.set('mobile');
+      createTestComponent(ScrollableTabGroupTest);
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+    }));
 
-            scrollableContainer!.scrollTo({ left: 1000 });
-            dispatchFakeEvent(scrollableContainer as Node, 'scroll');
-            fixture.detectChanges();
-            expect(getEndScrollElement()).toBeNull();
-        }));
-    });
+    it('should update scroll button when viewport size change', fakeAsync(() => {
+      const spy = spyOn(
+        testInstance.tabGroupInstance.tabHeader,
+        '_updateScrollButtons',
+      ).and.callThrough();
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
 
-    describe('responsive', () => {
-        beforeEach(fakeAsync(() => {
-            viewport.set('mobile');
-            createTestComponent(ScrollableTabGroupTest);
-            tick(THROTTLE_TIME);
-            fixture.detectChanges();
-            tick(THROTTLE_TIME);
-            fixture.detectChanges();
-        }));
+      expect(spy).toHaveBeenCalledTimes(1);
+    }));
 
-        it('should update scroll button when viewport size change', fakeAsync(() => {
-            const spy = spyOn(testInstance.tabGroupInstance.tabHeader, '_updateScrollButtons').and.callThrough();
-            viewport.set('desktop');
-            window.dispatchEvent(new Event('resize'));
-            tick(THROTTLE_TIME);
-            fixture.detectChanges();
+    it('marks scrollButtons as mobile', fakeAsync(() => {
+      expect(getStartScrollElement()).toHaveClass('is-mobile');
+      expect(getStartScrollElement()).not.toHaveClass('is-desktop-button');
+    }));
 
-            expect(spy).toHaveBeenCalledTimes(1);
-        }));
-
-        it('marks scrollButtons as mobile', fakeAsync(() => {
-            expect(getStartScrollElement()).toHaveClass('is-mobile');
-            expect(getStartScrollElement()).not.toHaveClass('is-desktop-button');
-        }));
-
-        it('switches from mobile to desktop', fakeAsync(() => {
-            viewport.set('desktop');
-            window.dispatchEvent(new Event('resize'));
-            tick(THROTTLE_TIME);
-            fixture.detectChanges();
-            expect(getStartScrollElement()).not.toHaveClass('is-mobile');
-            expect(getStartScrollElement()).toHaveClass('is-desktop-button');
-        }));
-    });
+    it('switches from mobile to desktop', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+      expect(getStartScrollElement()).not.toHaveClass('is-mobile');
+      expect(getStartScrollElement()).toHaveClass('is-desktop-button');
+    }));
+  });
 });
 
 @Directive({ standalone: true })
 abstract class TabNavBarScrollableTest {
-    direction: any;
-    links: any;
+  direction: any;
+  links: any;
 
-    @ViewChild(NxTabNavBarComponent) tabNavBarInstance!: NxTabNavBarComponent;
+  @ViewChild(NxTabNavBarComponent) tabNavBarInstance!: NxTabNavBarComponent;
 }
 
 describe('Scrollable TabNavBar', () => {
-    let fixture: ComponentFixture<TabNavBarScrollableTest>;
-    let testInstance: TabNavBarScrollableTest;
-    let tabNavBarNativeElement: HTMLElement;
+  let fixture: ComponentFixture<TabNavBarScrollableTest>;
+  let testInstance: TabNavBarScrollableTest;
+  let tabNavBarNativeElement: HTMLElement;
 
-    const createTestComponent = (component: Type<TabNavBarScrollableTest>) => {
-        fixture = TestBed.createComponent(component);
-        fixture.detectChanges();
-        testInstance = fixture.componentInstance;
-        tabNavBarNativeElement = fixture.debugElement.query(By.directive(NxTabNavBarComponent)).nativeElement;
-    };
+  const createTestComponent = (component: Type<TabNavBarScrollableTest>) => {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
+    tabNavBarNativeElement = fixture.debugElement.query(
+      By.directive(NxTabNavBarComponent),
+    ).nativeElement;
+  };
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            imports: [NxTabsModule, BrowserAnimationsModule, NotScrollableTabNavBarTest, ScrollableTabNavBarTest],
-        }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        NxTabsModule,
+        BrowserAnimationsModule,
+        NotScrollableTabNavBarTest,
+        ScrollableTabNavBarTest,
+      ],
+    }).compileComponents();
+  }));
+
+  function getStartScrollElement(): HTMLElement {
+    return fixture.debugElement.nativeElement.querySelector('nx-tab-scroll-indicator.start-button');
+  }
+
+  function getEndScrollElement(): HTMLElement {
+    return fixture.debugElement.nativeElement.querySelector('nx-tab-scroll-indicator.end-button');
+  }
+
+  it('does not show scroll buttons if not scrollable', fakeAsync(() => {
+    createTestComponent(NotScrollableTabNavBarTest);
+    fixture.detectChanges();
+    tick(THROTTLE_TIME);
+    expect(tabNavBarNativeElement).not.toHaveClass('scrollable');
+    expect(getStartScrollElement()).toBeNull();
+    expect(getEndScrollElement()).toBeNull();
+  }));
+
+  describe('scrollable', () => {
+    beforeEach(fakeAsync(() => {
+      createTestComponent(ScrollableTabNavBarTest);
+      fixture.detectChanges();
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+      tick(THROTTLE_TIME);
     }));
 
-    function getStartScrollElement(): HTMLElement {
-        return fixture.debugElement.nativeElement.querySelector('nx-tab-scroll-indicator.start-button');
-    }
-
-    function getEndScrollElement(): HTMLElement {
-        return fixture.debugElement.nativeElement.querySelector('nx-tab-scroll-indicator.end-button');
-    }
-
-    it('does not show scroll buttons if not scrollable', fakeAsync(() => {
-        createTestComponent(NotScrollableTabNavBarTest);
-        fixture.detectChanges();
-        tick(THROTTLE_TIME);
-        expect(tabNavBarNativeElement).not.toHaveClass('scrollable');
-        expect(getStartScrollElement()).toBeNull();
-        expect(getEndScrollElement()).toBeNull();
+    it('shows scroll buttons if scrollable', fakeAsync(() => {
+      expect(tabNavBarNativeElement).toHaveClass('scrollable');
+      expect(getStartScrollElement()).toBeTruthy();
+      expect(getEndScrollElement()).toBeTruthy();
+      tick(THROTTLE_TIME);
     }));
 
-    describe('scrollable', () => {
-        beforeEach(fakeAsync(() => {
-            createTestComponent(ScrollableTabNavBarTest);
-            fixture.detectChanges();
-            tick(THROTTLE_TIME);
-            fixture.detectChanges();
-            tick(THROTTLE_TIME);
-        }));
+    it('updates scrollable on tabs change', fakeAsync(() => {
+      testInstance.links = [
+        { label: 'Tab Label 1', active: true },
+        { label: 'Tab Label 2', active: false },
+        { label: 'Tab Label 3', active: false },
+      ];
+      fixture.detectChanges();
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+      tick(THROTTLE_TIME);
+      expect(tabNavBarNativeElement).not.toHaveClass('scrollable');
+    }));
 
-        it('shows scroll buttons if scrollable', fakeAsync(() => {
-            expect(tabNavBarNativeElement).toHaveClass('scrollable');
-            expect(getStartScrollElement()).toBeTruthy();
-            expect(getEndScrollElement()).toBeTruthy();
-            tick(THROTTLE_TIME);
-        }));
+    it('hides scroll-to-start indicator', fakeAsync(() => {
+      expect(tabNavBarNativeElement.querySelector('.nx-tab-nav-bar')!.scrollLeft).toBe(0);
+      expect(getStartScrollElement()).toHaveClass('is-scrolled-to-start');
+    }));
 
-        it('updates scrollable on tabs change', fakeAsync(() => {
-            testInstance.links = [
-                { label: 'Tab Label 1', active: true },
-                { label: 'Tab Label 2', active: false },
-                { label: 'Tab Label 3', active: false },
-            ];
-            fixture.detectChanges();
-            tick(THROTTLE_TIME);
-            fixture.detectChanges();
-            tick(THROTTLE_TIME);
-            expect(tabNavBarNativeElement).not.toHaveClass('scrollable');
-        }));
+    it('shows scroll-to-start indicator when scrolled', fakeAsync(() => {
+      const scrollableContainer = tabNavBarNativeElement.querySelector('.nx-tab-nav-bar');
+      scrollableContainer!.scrollTo({ left: 50 });
+      dispatchFakeEvent(scrollableContainer!, 'scroll');
+      fixture.detectChanges();
+      expect(scrollableContainer!.scrollLeft).toBe(50);
+      expect(getStartScrollElement()).not.toHaveClass('is-scrolled-to-start');
+    }));
 
-        it('hides scroll-to-start indicator', fakeAsync(() => {
-            expect(tabNavBarNativeElement.querySelector('.nx-tab-nav-bar')!.scrollLeft).toBe(0);
-            expect(getStartScrollElement()).toHaveClass('is-scrolled-to-start');
-        }));
+    it('shows scroll-to-end indicator', fakeAsync(() => {
+      expect(getEndScrollElement()).not.toHaveClass('is-scrolled-to-end');
+    }));
 
-        it('shows scroll-to-start indicator when scrolled', fakeAsync(() => {
-            const scrollableContainer = tabNavBarNativeElement.querySelector('.nx-tab-nav-bar');
-            scrollableContainer!.scrollTo({ left: 50 });
-            dispatchFakeEvent(scrollableContainer!, 'scroll');
-            fixture.detectChanges();
-            expect(scrollableContainer!.scrollLeft).toBe(50);
-            expect(getStartScrollElement()).not.toHaveClass('is-scrolled-to-start');
-        }));
-
-        it('shows scroll-to-end indicator', fakeAsync(() => {
-            expect(getEndScrollElement()).not.toHaveClass('is-scrolled-to-end');
-        }));
-
-        it('hides scroll-to-end indicator when at end', fakeAsync(() => {
-            const scrollableContainer = tabNavBarNativeElement.querySelector('.nx-tab-nav-bar');
-            scrollableContainer!.scrollTo({ left: 1000 });
-            dispatchFakeEvent(scrollableContainer!, 'scroll');
-            fixture.detectChanges();
-            expect(getEndScrollElement()).toHaveClass('is-scrolled-to-end');
-        }));
-    });
+    it('hides scroll-to-end indicator when at end', fakeAsync(() => {
+      const scrollableContainer = tabNavBarNativeElement.querySelector('.nx-tab-nav-bar');
+      scrollableContainer!.scrollTo({ left: 1000 });
+      dispatchFakeEvent(scrollableContainer!, 'scroll');
+      fixture.detectChanges();
+      expect(getEndScrollElement()).toHaveClass('is-scrolled-to-end');
+    }));
+  });
 });
 
 @Component({
-    template: `
-        <nx-tab-group mobileAccordion="false">
-            @for (tab of tabs; track tab) {
-                <nx-tab [label]="tab.label">
-                    {{ tab.content }}
-                </nx-tab>
-            }
-        </nx-tab-group>
-    `,
-    imports: [NxTabsModule],
+  template: `
+    <nx-tab-group mobileAccordion="false">
+      @for (tab of tabs; track tab) {
+        <nx-tab [label]="tab.label">
+          {{ tab.content }}
+        </nx-tab>
+      }
+    </nx-tab-group>
+  `,
+  imports: [NxTabsModule],
 })
 class NotScrollableTabGroupTest extends TabHeaderScrollableTest {
-    tabs = [
-        { label: 'Tab Label 1', content: 'Content 1' },
-        { label: 'Tab Label 2', content: 'Content 2' },
-        { label: 'Tab Label 3', content: 'Content 3' },
-    ];
+  tabs = [
+    { label: 'Tab Label 1', content: 'Content 1' },
+    { label: 'Tab Label 2', content: 'Content 2' },
+    { label: 'Tab Label 3', content: 'Content 3' },
+  ];
 }
 
 @Component({
-    template: `
-        <div style="max-width: 400px" [dir]="direction">
-            <nx-tab-group mobileAccordion="false">
-                @for (tab of tabs; track tab) {
-                    <nx-tab [label]="tab.label">
-                        {{ tab.content }}
-                    </nx-tab>
-                }
-            </nx-tab-group>
-        </div>
-    `,
-    imports: [NxTabsModule],
+  template: `
+    <div style="max-width: 400px" [dir]="direction">
+      <nx-tab-group mobileAccordion="false">
+        @for (tab of tabs; track tab) {
+          <nx-tab [label]="tab.label">
+            {{ tab.content }}
+          </nx-tab>
+        }
+      </nx-tab-group>
+    </div>
+  `,
+  imports: [NxTabsModule],
 })
 class ScrollableTabGroupTest extends TabHeaderScrollableTest {
-    tabs = [
-        { label: 'Tab Label 1', content: 'Content 1' },
-        { label: 'Tab Label 2', content: 'Content 2' },
-        { label: 'Tab Label 3', content: 'Content 3' },
-        { label: 'Tab Label 4', content: 'Content 4' },
-        { label: 'Tab Label 5', content: 'Content 5' },
-    ];
+  tabs = [
+    { label: 'Tab Label 1', content: 'Content 1' },
+    { label: 'Tab Label 2', content: 'Content 2' },
+    { label: 'Tab Label 3', content: 'Content 3' },
+    { label: 'Tab Label 4', content: 'Content 4' },
+    { label: 'Tab Label 5', content: 'Content 5' },
+  ];
 }
 
 @Component({
-    template: `
-        <nx-tab-nav-bar>
-            @for (link of links; track link) {
-                <a nxTabLink [active]="link.active">
-                    {{ link.label }}
-                </a>
-            }
-        </nx-tab-nav-bar>
-    `,
-    imports: [NxTabsModule],
+  template: `
+    <nx-tab-nav-bar>
+      @for (link of links; track link) {
+        <a nxTabLink [active]="link.active">
+          {{ link.label }}
+        </a>
+      }
+    </nx-tab-nav-bar>
+  `,
+  imports: [NxTabsModule],
 })
 class NotScrollableTabNavBarTest extends TabNavBarScrollableTest {
-    links = [
-        { label: 'Tab Label 1', active: true },
-        { label: 'Tab Label 2', active: false },
-        { label: 'Tab Label 3', active: false },
-    ];
+  links = [
+    { label: 'Tab Label 1', active: true },
+    { label: 'Tab Label 2', active: false },
+    { label: 'Tab Label 3', active: false },
+  ];
 }
 
 @Component({
-    template: `
-        <div style="max-width: 400px" [dir]="direction">
-            <nx-tab-nav-bar>
-                @for (link of links; track link) {
-                    <a nxTabLink [active]="link.active">
-                        {{ link.label }}
-                    </a>
-                }
-            </nx-tab-nav-bar>
-        </div>
-    `,
-    imports: [NxTabsModule],
+  template: `
+    <div style="max-width: 400px" [dir]="direction">
+      <nx-tab-nav-bar>
+        @for (link of links; track link) {
+          <a nxTabLink [active]="link.active">
+            {{ link.label }}
+          </a>
+        }
+      </nx-tab-nav-bar>
+    </div>
+  `,
+  imports: [NxTabsModule],
 })
 class ScrollableTabNavBarTest extends TabNavBarScrollableTest {
-    links = [
-        { label: 'Tab Label 1', active: true },
-        { label: 'Tab Label 2', active: false },
-        { label: 'Tab Label 3', active: false },
-        { label: 'Tab Label 4', active: false },
-        { label: 'Tab Label 5', active: false },
-    ];
+  links = [
+    { label: 'Tab Label 1', active: true },
+    { label: 'Tab Label 2', active: false },
+    { label: 'Tab Label 3', active: false },
+    { label: 'Tab Label 4', active: false },
+    { label: 'Tab Label 5', active: false },
+  ];
 }

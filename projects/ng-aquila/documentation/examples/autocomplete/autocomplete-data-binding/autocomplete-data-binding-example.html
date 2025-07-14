@@ -1,47 +1,47 @@
 <nx-formfield label="Template bound">
-    <input
-        nxInput
-        type="text"
-        [nxAutocomplete]="auto3"
-        nxAutocompleteDebounce="0"
-        [(ngModel)]="modelBoundData"
-    />
+  <input
+    nxInput
+    type="text"
+    [nxAutocomplete]="auto3"
+    nxAutocompleteDebounce="0"
+    [(ngModel)]="modelBoundData"
+  />
 </nx-formfield>
 <nx-autocomplete #auto3="nxAutocomplete">
-    @for (item of simpleFilteredOptions(modelBoundData); track item) {
-    <nx-autocomplete-option [value]="item">
-        {{item | lowercase}}
-    </nx-autocomplete-option>
-    }
+  @for (item of simpleFilteredOptions(modelBoundData); track item) {
+  <nx-autocomplete-option [value]="item">
+    {{item | lowercase}}
+  </nx-autocomplete-option>
+  }
 </nx-autocomplete>
 Template bound: {{ modelBoundData }}
 
 <form [formGroup]="testForm">
-    <nx-formfield label="Reactive bound">
-        <input
-            nxInput
-            type="text"
-            [nxAutocomplete]="auto4"
-            [nxAutocompleteItems]="dynamicBackendOptions"
-            formControlName="autocomplete"
-        />
-        <nx-autocomplete #auto4></nx-autocomplete>
-    </nx-formfield>
+  <nx-formfield label="Reactive bound">
+    <input
+      nxInput
+      type="text"
+      [nxAutocomplete]="auto4"
+      [nxAutocompleteItems]="dynamicBackendOptions"
+      formControlName="autocomplete"
+    />
+    <nx-autocomplete #auto4></nx-autocomplete>
+  </nx-formfield>
 </form>
 Reactive form: {{ testForm.controls.autocomplete.value }}
 
 <nx-natural-language-form>
-    Here is a word
-    <nx-word label="Provide this required field">
-        <input
-            nxInput
-            ngModel
-            required
-            [nxAutocomplete]="auto5"
-            [nxAutocompleteItems]="dynamicBackendOptions"
-        />
-        <div nxError>This field is required.</div>
-        <nx-autocomplete #auto5="nxAutocomplete"></nx-autocomplete>
-    </nx-word>
-    with some following copy.
+  Here is a word
+  <nx-word label="Provide this required field">
+    <input
+      nxInput
+      ngModel
+      required
+      [nxAutocomplete]="auto5"
+      [nxAutocompleteItems]="dynamicBackendOptions"
+    />
+    <div nxError>This field is required.</div>
+    <nx-autocomplete #auto5="nxAutocomplete"></nx-autocomplete>
+  </nx-word>
+  with some following copy.
 </nx-natural-language-form>

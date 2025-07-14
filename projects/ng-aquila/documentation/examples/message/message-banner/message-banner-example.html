@@ -1,39 +1,39 @@
 @if (infoBanner) {
 <nx-message-banner
-    closeButtonLabel="Close info message banner"
-    (close)="infoBanner = false"
-    class="nx-margin-bottom-xs"
+  closeButtonLabel="Close info message banner"
+  (close)="infoBanner = false"
+  class="nx-margin-bottom-xs"
 >
-    <span class="nx-font-weight-bold">Notification title:</span><br />
-    You are logged in as Max Mustermann.
+  <span class="nx-font-weight-bold">Notification title:</span><br />
+  You are logged in as Max Mustermann.
 </nx-message-banner>
 } @if (warningBanner) {
 <nx-message-banner
-    context="warning"
-    closeButtonLabel="Close warning message banner"
-    (close)="warningBanner = false"
-    class="nx-margin-bottom-xs"
+  context="warning"
+  closeButtonLabel="Close warning message banner"
+  (close)="warningBanner = false"
+  class="nx-margin-bottom-xs"
 >
-    <span class="nx-font-weight-bold">Notification title:</span><br />
-    Your password expires in three days!
+  <span class="nx-font-weight-bold">Notification title:</span><br />
+  Your password expires in three days!
 </nx-message-banner>
 } @if (errorBanner) {
 <nx-message-banner
-    context="error"
-    closeButtonLabel="Close error message banner"
-    (close)="errorBanner = false"
-    class="nx-margin-bottom-xs"
+  context="error"
+  closeButtonLabel="Close error message banner"
+  (close)="errorBanner = false"
+  class="nx-margin-bottom-xs"
 >
-    <span class="nx-font-weight-bold">Notification title:</span><br />
-    The object could not be found.
+  <span class="nx-font-weight-bold">Notification title:</span><br />
+  The object could not be found.
 </nx-message-banner>
 }
 
 <button
-    [disabled]="infoBanner && warningBanner && errorBanner"
-    nxButton
-    type="button"
-    (click)="showAllBanners()"
+  [disabled]="infoBanner && warningBanner && errorBanner"
+  nxButton
+  type="button"
+  (click)="showAllBanners()"
 >
-    Show all message banners
+  Show all message banners
 </button>

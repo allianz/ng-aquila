@@ -9,21 +9,21 @@
 import { ProjectDefinition } from '@schematics/angular/utility';
 
 const ALLOWED_BUILDERS = [
-    '@angular-devkit/build-angular:browser',
-    '@angular-builders/custom-webpack:browser',
-    '@angular-devkit/build-angular:application',
-    '@angular-devkit/build-angular:browser-esbuild',
-    '@angular/build:application',
+  '@angular-devkit/build-angular:browser',
+  '@angular-builders/custom-webpack:browser',
+  '@angular-devkit/build-angular:application',
+  '@angular-devkit/build-angular:browser-esbuild',
+  '@angular/build:application',
 ];
 
 export function isAngularApplicationProject(project: ProjectDefinition): boolean {
-    if (project.extensions.projectType !== 'application') {
-        return false;
-    }
-
-    const builder = project.targets?.get('build')?.builder.toString();
-    if (builder && ALLOWED_BUILDERS.includes(builder)) {
-        return true;
-    }
+  if (project.extensions.projectType !== 'application') {
     return false;
+  }
+
+  const builder = project.targets?.get('build')?.builder.toString();
+  if (builder && ALLOWED_BUILDERS.includes(builder)) {
+    return true;
+  }
+  return false;
 }

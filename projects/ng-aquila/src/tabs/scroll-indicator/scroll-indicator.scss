@@ -1,149 +1,149 @@
 @import '../../shared-styles/index';
 
 :host {
-    border-color: v(tab-item-scroll-color);
-    border-bottom-width: v(tab-item-border-width);
-    border-bottom-style: solid;
-    flex: 0 0 auto;
-    height: 100%;
-    z-index: 1;
-    background-color: v(ui-01);
+  border-color: v(tab-item-scroll-color);
+  border-bottom-width: v(tab-item-border-width);
+  border-bottom-style: solid;
+  flex: 0 0 auto;
+  height: 100%;
+  z-index: 1;
+  background-color: v(ui-01);
 
+  .nx-tab-scroll-indicator__divider {
+    width: 1px;
+    height: 32px;
+    background: v(tab-item-scroll-color);
+    position: absolute;
+    top: 4px;
+  }
+
+  button {
+    display: flex;
+    align-items: v(tab-scroll-indicator-align);
+    justify-content: center;
+    width: 100%;
+  }
+
+  &.start-button.is-scrolled-to-start,
+  &.end-button.is-scrolled-to-end {
     .nx-tab-scroll-indicator__divider {
-        width: 1px;
-        height: 32px;
-        background: v(tab-item-scroll-color);
-        position: absolute;
-        top: 4px;
+      display: none;
     }
 
     button {
-        display: flex;
-        align-items: v(tab-scroll-indicator-align);
-        justify-content: center;
-        width: 100%;
+      display: none;
     }
+  }
 
-    &.start-button.is-scrolled-to-start,
-    &.end-button.is-scrolled-to-end {
-        .nx-tab-scroll-indicator__divider {
-            display: none;
-        }
+  &.start-button.is-scrolled-to-start {
+    display: none;
+  }
 
-        button {
-            display: none;
-        }
-    }
+  &.start-button {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    .nx-tab-scroll-indicator__divider {
+      right: 0;
 
-    &.start-button.is-scrolled-to-start {
-        display: none;
-    }
-
-    &.start-button {
-        position: absolute;
-        display: flex;
-        top: 0;
+      [dir='rtl'] & {
+        right: initial;
         left: 0;
-        .nx-tab-scroll-indicator__divider {
-            right: 0;
-
-            [dir='rtl'] & {
-                right: initial;
-                left: 0;
-            }
-        }
-
-        &::after {
-            content: '';
-            display: v(tab-header-indicator-display);
-            width: v(tab-scroll-indicator-fade-width);
-            position: absolute;
-            right: calc(0px - v(tab-scroll-indicator-fade-width));
-            height: 100%;
-            background: linear-gradient(to left, transparent 0%, v(ui-01) 100%);
-        }
+      }
     }
 
-    &.end-button {
-        position: absolute;
-        display: flex;
-        top: 0;
+    &::after {
+      content: '';
+      display: v(tab-header-indicator-display);
+      width: v(tab-scroll-indicator-fade-width);
+      position: absolute;
+      right: calc(0px - v(tab-scroll-indicator-fade-width));
+      height: 100%;
+      background: linear-gradient(to left, transparent 0%, v(ui-01) 100%);
+    }
+  }
+
+  &.end-button {
+    position: absolute;
+    display: flex;
+    top: 0;
+    right: 0;
+    .nx-tab-scroll-indicator__divider {
+      left: 0;
+
+      [dir='rtl'] & {
+        left: initial;
         right: 0;
-        .nx-tab-scroll-indicator__divider {
-            left: 0;
-
-            [dir='rtl'] & {
-                left: initial;
-                right: 0;
-            }
-        }
-
-        &::before {
-            content: '';
-            display: v(tab-header-indicator-display);
-            width: v(tab-scroll-indicator-fade-width);
-            position: absolute;
-            left: calc(0px - v(tab-scroll-indicator-fade-width));
-            height: 100%;
-            background: linear-gradient(to right, transparent 0%, v(ui-01) 100%);
-        }
+      }
     }
 
-    // mobile
-    @include media-breakpoint-down(medium) {
-        width: v(tab-scroll-indicator-width-small-screen);
+    &::before {
+      content: '';
+      display: v(tab-header-indicator-display);
+      width: v(tab-scroll-indicator-fade-width);
+      position: absolute;
+      left: calc(0px - v(tab-scroll-indicator-fade-width));
+      height: 100%;
+      background: linear-gradient(to right, transparent 0%, v(ui-01) 100%);
+    }
+  }
 
-        &.start-button:not(.is-scrolled-to-start) {
-            .nx-tab-scroll-indicator__divider {
-                right: 0;
+  // mobile
+  @include media-breakpoint-down(medium) {
+    width: v(tab-scroll-indicator-width-small-screen);
 
-                [dir='rtl'] & {
-                    right: initial;
-                    left: 0;
-                }
-            }
+    &.start-button:not(.is-scrolled-to-start) {
+      .nx-tab-scroll-indicator__divider {
+        right: 0;
+
+        [dir='rtl'] & {
+          right: initial;
+          left: 0;
         }
-
-        &.end-button:not(.is-scrolled-to-end) {
-            .nx-tab-scroll-indicator__divider {
-                left: 0;
-
-                [dir='rtl'] & {
-                    left: initial;
-                    right: 0;
-                }
-            }
-        }
-        button {
-            display: v(tab-header-indicator-display);
-        }
+      }
     }
 
-    // desktop
-    @include media-breakpoint-up(medium) {
-        display: flex;
-        width: v(tab-scroll-indicator-width);
+    &.end-button:not(.is-scrolled-to-end) {
+      .nx-tab-scroll-indicator__divider {
+        left: 0;
 
-        button {
-            display: flex;
+        [dir='rtl'] & {
+          left: initial;
+          right: 0;
         }
+      }
     }
+    button {
+      display: v(tab-header-indicator-display);
+    }
+  }
+
+  // desktop
+  @include media-breakpoint-up(medium) {
+    display: flex;
+    width: v(tab-scroll-indicator-width);
+
+    button {
+      display: flex;
+    }
+  }
 }
 
 :host-context(nx-tab-group.is-expert),
 :host-context(nx-tab-nav-bar.is-expert) {
-    border-bottom: none;
-    height: 40px;
+  border-bottom: none;
+  height: 40px;
 
-    .nx-tab-scroll-indicator__divider {
-        height: 24px;
-        top: 8px;
-    }
+  .nx-tab-scroll-indicator__divider {
+    height: 24px;
+    top: 8px;
+  }
 }
 
 :host-context(nx-tab-group.is-negative),
 :host-context(nx-tab-nav-bar.is-negative) {
-    button {
-        color: v(negative);
-    }
+  button {
+    color: v(negative);
+  }
 }

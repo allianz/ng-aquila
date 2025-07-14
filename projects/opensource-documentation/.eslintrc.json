@@ -1,18 +1,18 @@
 {
-    "extends": "../../.eslintrc.json",
-    "ignorePatterns": ["!**/*"],
-    "overrides": [
-        {
-            "files": ["*.ts"],
-            "parserOptions": {
-                "project": ["projects/opensource-documentation/tsconfig.app.json"],
-                "createDefaultProgram": true
-            },
-            "rules": {}
-        },
-        {
-            "files": ["*.html"],
-            "rules": {}
-        }
-    ]
+  "extends": "../../.eslintrc.json",
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["projects/opensource-documentation/tsconfig.app.json"],
+        "createDefaultProgram": true
+      },
+      "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "rules": {}
+    }
+  ]
 }

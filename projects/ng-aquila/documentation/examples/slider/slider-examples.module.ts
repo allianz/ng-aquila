@@ -1,8 +1,8 @@
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxPopoverModule } from '@allianz/ng-aquila/popover';
+import { NxSliderModule } from '@allianz/ng-aquila/slider';
 import { NgModule } from '@angular/core';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxPopoverModule } from '@aposin/ng-aquila/popover';
-import { NxSliderModule } from '@aposin/ng-aquila/slider';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { SliderAppendixExampleComponent } from './slider-appendix/slider-appendix-example';
@@ -21,50 +21,50 @@ import { SliderThumbExampleComponent } from './slider-thumb/slider-thumb-example
 import { SliderTickExampleComponent } from './slider-tick/slider-tick-example';
 
 const EXAMPLES = [
-    SliderTickExampleComponent,
-    SliderAppendixExampleComponent,
-    SliderBasicExampleComponent,
-    SliderDecimalExampleComponent,
-    SliderDefaultExampleComponent,
-    SliderDisabledExampleComponent,
-    SliderInvertedExampleComponent,
-    SliderLabelExampleComponent,
-    SliderNegativeExampleComponent,
-    SliderReactiveExampleComponent,
-    SliderTemplateExampleComponent,
-    SliderTextualExampleComponent,
-    SliderThumbExampleComponent,
-    SliderLabelsExampleComponent,
+  SliderTickExampleComponent,
+  SliderAppendixExampleComponent,
+  SliderBasicExampleComponent,
+  SliderDecimalExampleComponent,
+  SliderDefaultExampleComponent,
+  SliderDisabledExampleComponent,
+  SliderInvertedExampleComponent,
+  SliderLabelExampleComponent,
+  SliderNegativeExampleComponent,
+  SliderReactiveExampleComponent,
+  SliderTemplateExampleComponent,
+  SliderTextualExampleComponent,
+  SliderThumbExampleComponent,
+  SliderLabelsExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxSliderModule,
-        NxInputModule,
-        ExamplesSharedModule,
-        NxPopoverModule,
-        NxIconModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxSliderModule,
+    NxInputModule,
+    ExamplesSharedModule,
+    NxPopoverModule,
+    NxIconModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class SliderExamplesModule {
-    static components() {
-        return {
-            'slider-appendix': SliderAppendixExampleComponent,
-            'slider-tick': SliderTickExampleComponent,
-            'slider-basic': SliderBasicExampleComponent,
-            'slider-decimal': SliderDecimalExampleComponent,
-            'slider-default': SliderDefaultExampleComponent,
-            'slider-disabled': SliderDisabledExampleComponent,
-            'slider-inverted': SliderInvertedExampleComponent,
-            'slider-label': SliderLabelExampleComponent,
-            'slider-negative': SliderNegativeExampleComponent,
-            'slider-reactive': SliderReactiveExampleComponent,
-            'slider-template': SliderTemplateExampleComponent,
-            'slider-textual': SliderTextualExampleComponent,
-            'slider-thumb': SliderThumbExampleComponent,
-            'slider-labels': SliderLabelsExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'slider-appendix': SliderAppendixExampleComponent,
+      'slider-tick': SliderTickExampleComponent,
+      'slider-basic': SliderBasicExampleComponent,
+      'slider-decimal': SliderDecimalExampleComponent,
+      'slider-default': SliderDefaultExampleComponent,
+      'slider-disabled': SliderDisabledExampleComponent,
+      'slider-inverted': SliderInvertedExampleComponent,
+      'slider-label': SliderLabelExampleComponent,
+      'slider-negative': SliderNegativeExampleComponent,
+      'slider-reactive': SliderReactiveExampleComponent,
+      'slider-template': SliderTemplateExampleComponent,
+      'slider-textual': SliderTextualExampleComponent,
+      'slider-thumb': SliderThumbExampleComponent,
+      'slider-labels': SliderLabelsExampleComponent,
+    };
+  }
 }

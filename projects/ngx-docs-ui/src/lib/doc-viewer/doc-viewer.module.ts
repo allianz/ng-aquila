@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { DocViewerComponent } from './doc-viewer.component';
 
 @NgModule({
-    imports: [PortalModule, CommonModule, DocViewerComponent],
-    exports: [DocViewerComponent],
+  imports: [PortalModule, CommonModule, DocViewerComponent],
+  exports: [DocViewerComponent],
 })
 export class DocViewerModule {}

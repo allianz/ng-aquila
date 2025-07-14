@@ -1,20 +1,24 @@
-<nx-sidebar class="docs-sidebar" minWidth="240" [class.mobile-sidebar--visible]="documentationFrame.mobileSidebar">
-    @for (guide of availableGuides; track guide) {
-        <button nxAction routerLink="{{ guide.id }}" routerLinkActive="is-selected" type="button">
-            {{ guide.title }}
-        </button>
-    }
+<nx-sidebar
+  class="docs-sidebar"
+  minWidth="240"
+  [class.mobile-sidebar--visible]="documentationFrame.mobileSidebar"
+>
+  @for (guide of availableGuides; track guide) {
+    <button nxAction routerLink="{{ guide.id }}" routerLinkActive="is-selected" type="button">
+      {{ guide.title }}
+    </button>
+  }
 </nx-sidebar>
 
 <main (click)="mainContentClicked()">
-    <div nxLayout="grid maxwidth" class="guide__wrapper">
-        <div nxRow>
-            <div nxCol="12">
-                <div class="guide__content">
-                    <router-outlet></router-outlet>
-                </div>
-            </div>
+  <div nxLayout="grid maxwidth" class="guide__wrapper">
+    <div nxRow>
+      <div nxCol="12">
+        <div class="guide__content">
+          <router-outlet></router-outlet>
         </div>
+      </div>
     </div>
-    <nxv-footer></nxv-footer>
+  </div>
+  <nxv-footer></nxv-footer>
 </main>

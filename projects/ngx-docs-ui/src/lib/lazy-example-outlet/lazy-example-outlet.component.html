@@ -1,9 +1,12 @@
 <div [dir]="directionQuery">
-    @if (exampleComponent) {
-        <ng-template [ngComponentOutlet]="exampleComponent?.componentType" [ngComponentOutletNgModuleFactory]="exampleModuleFactory"></ng-template>
-    } @else {
-        <div style="display: flex; align-items: center; justify-content: center">
-            <nx-spinner size="large"></nx-spinner>
-        </div>
-    }
+  @if (exampleComponent) {
+    <ng-template
+      [ngComponentOutlet]="exampleComponent?.componentType"
+      [ngComponentOutletNgModuleFactory]="exampleModuleFactory"
+    ></ng-template>
+  } @else {
+    <div style="display: flex; align-items: center; justify-content: center">
+      <nx-spinner size="large"></nx-spinner>
+    </div>
+  }
 </div>

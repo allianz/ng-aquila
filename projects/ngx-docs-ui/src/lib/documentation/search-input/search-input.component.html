@@ -1,8 +1,8 @@
 <div class="search-input">
-    <nx-formfield>
-        <input placeholder="Search" nxInput (keyup)="onSearchKeyUp($event)" [(ngModel)]="searchTerm" />
-        @if (searchTerm) {
-            <a class="search-input__clear" (click)="resetSearchInput()">&#215;</a>
-        }
-    </nx-formfield>
+  <nx-formfield>
+    <input placeholder="Search" nxInput (keyup)="onSearchKeyUp($event)" [(ngModel)]="searchTerm" />
+    @if (searchTerm) {
+      <a class="search-input__clear" (click)="resetSearchInput()">&#215;</a>
+    }
+  </nx-formfield>
 </div>

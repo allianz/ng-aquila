@@ -1,21 +1,21 @@
 :host {
-    display: flex;
-    flex-direction: column;
-    height: 800px;
-    padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+  padding-bottom: 24px;
 }
 
 :host *:not(.ag-icon):not([class*='ag-icon']):not(.ag-checkbox-input-wrapper) {
-    font-family: 'Public Sans Latin', sans-serif !important;
+  font-family: 'Public Sans Latin', sans-serif !important;
 }
 
 .buttons {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 
 .buttons button {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }

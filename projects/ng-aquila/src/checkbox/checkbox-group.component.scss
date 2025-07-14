@@ -1,24 +1,24 @@
 @import '../shared-styles/index';
 
 :host {
+  ::ng-deep {
+    nx-error {
+      margin-bottom: nx-spacer(2xs);
+    }
+
+    nx-label {
+      margin-bottom: nx-spacer(s);
+      display: block;
+    }
+  }
+
+  &.nx-checkbox-group--negative {
     ::ng-deep {
-        nx-error {
-            margin-bottom: nx-spacer(2xs);
-        }
-
-        nx-label {
-            margin-bottom: nx-spacer(s);
-            display: block;
-        }
+      nx-error,
+      nx-label,
+      nx-icon.nx-error__icon {
+        color: v(negative);
+      }
     }
-
-    &.nx-checkbox-group--negative {
-        ::ng-deep {
-            nx-error,
-            nx-label,
-            nx-icon.nx-error__icon {
-                color: v(negative);
-            }
-        }
-    }
+  }
 }

@@ -7,13 +7,13 @@ import { ComponentService } from '../../../service/component.service';
 import { NxvTableOfContentsComponent } from '../../table-of-contents/table-of-contents';
 
 @Component({
-    selector: 'nxv-component-overview',
-    templateUrl: 'component-overview.html',
-    styleUrls: ['component-overview.scss'],
-    imports: [ExampleLoaderComponent, NxvTableOfContentsComponent, AsyncPipe],
+  selector: 'nxv-component-overview',
+  templateUrl: 'component-overview.html',
+  styleUrls: ['component-overview.scss'],
+  imports: [ExampleLoaderComponent, NxvTableOfContentsComponent, AsyncPipe],
 })
 export class ComponentOverview {
-    componentDescriptor!: ComponentDescriptor;
+  componentDescriptor!: ComponentDescriptor;
 
-    constructor(readonly componentService: ComponentService) {}
+  constructor(readonly componentService: ComponentService) {}
 }

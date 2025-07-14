@@ -1,37 +1,46 @@
 <input
-    #input
-    type="checkbox"
-    [id]="id"
-    [name]="name"
-    [checked]="checked"
-    [indeterminate]="indeterminate"
-    [disabled]="disabled"
-    (blur)="touch()"
-    [attr.aria-labelledby]="ariaLabelledBy"
-    [attr.aria-label]="ariaLabel"
-    [attr.aria-describedby]="error?.id || null"
-    [attr.aria-disabled]="readonly || null"
-    (click)="_onInputClick($event)"
-    class="nx-checkbox__input"
-    [class.is-readonly]="readonly"
-    [value]="value"
+  #input
+  type="checkbox"
+  [id]="id"
+  [name]="name"
+  [checked]="checked"
+  [indeterminate]="indeterminate"
+  [disabled]="disabled"
+  (blur)="touch()"
+  [attr.aria-labelledby]="ariaLabelledBy"
+  [attr.aria-label]="ariaLabel"
+  [attr.aria-describedby]="error?.id || null"
+  [attr.aria-disabled]="readonly || null"
+  (click)="_onInputClick($event)"
+  class="nx-checkbox__input"
+  [class.is-readonly]="readonly"
+  [value]="value"
 />
 
-<label [id]="id + '-label'" [attr.for]="id" class="nx-checkbox__label" [class.has-label]="labelHasContent">
-    <span class="nx-checkbox__control">
-        @if (checked) {
-            <nx-icon name="check" aria-hidden="true"></nx-icon>
-        }
-        @if (indeterminate) {
-            <div class="nx-checkbox__indeterminate-indicator"></div>
-        }
-    </span>
-    <div class="nx-checkbox__label-text" #checkboxLabelWrapper (cdkObserveContent)="labelContentChanged()">
-        <ng-content></ng-content>
-    </div>
+<label
+  [id]="id + '-label'"
+  [attr.for]="id"
+  class="nx-checkbox__label"
+  [class.has-label]="labelHasContent"
+>
+  <span class="nx-checkbox__control">
+    @if (checked) {
+      <nx-icon name="check" aria-hidden="true"></nx-icon>
+    }
+    @if (indeterminate) {
+      <div class="nx-checkbox__indeterminate-indicator"></div>
+    }
+  </span>
+  <div
+    class="nx-checkbox__label-text"
+    #checkboxLabelWrapper
+    (cdkObserveContent)="labelContentChanged()"
+  >
+    <ng-content></ng-content>
+  </div>
 </label>
 @if (_controlInvalid() && !checkboxGroup) {
-    <div class="nx-margin-top-xs">
-        <ng-content select="nx-error"></ng-content>
-    </div>
+  <div class="nx-margin-top-xs">
+    <ng-content select="nx-error"></ng-content>
+  </div>
 }

@@ -1,18 +1,18 @@
+import { NxLabelModule } from '@allianz/ng-aquila/base';
 import { NgModule } from '@angular/core';
-import { NxLabelModule } from '@aposin/ng-aquila/base';
 
 import { LabelExampleComponent } from './label/label-example';
 
 const EXAMPLES = [LabelExampleComponent];
 
 @NgModule({
-    imports: [NxLabelModule, EXAMPLES],
-    exports: [EXAMPLES],
+  imports: [NxLabelModule, EXAMPLES],
+  exports: [EXAMPLES],
 })
 export class LabelExamplesModule {
-    static components() {
-        return {
-            label: LabelExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      label: LabelExampleComponent,
+    };
+  }
 }

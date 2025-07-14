@@ -1,11 +1,11 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxDynamicTableModule } from '@allianz/ng-aquila/dynamic-table';
+import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxLinkModule } from '@allianz/ng-aquila/link';
+import { NxPopoverModule } from '@allianz/ng-aquila/popover';
 import { CdkScrollableModule } from '@angular/cdk/scrolling';
 import { NgModule } from '@angular/core';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxDynamicTableModule } from '@aposin/ng-aquila/dynamic-table';
-import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxLinkModule } from '@aposin/ng-aquila/link';
-import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 import { PopoverClickOutsideExampleComponent } from './popover-click-outside/popover-click-outside-example';
 import { PopoverCustomExampleComponent } from './popover-custom/popover-custom-example';
@@ -25,57 +25,57 @@ import { PopoverWidthExampleComponent } from './popover-width/popover-width-exam
 import { PopoverWithoutArrowExampleComponent } from './popover-without-arrow/popover-without-arrow-example';
 
 const EXAMPLES = [
-    PopoverClickOutsideExampleComponent,
-    PopoverCustomExampleComponent,
-    PopoverHoverExampleComponent,
-    PopoverLazyloadExampleComponent,
-    PopoverModalExampleComponent,
-    PopoverPositioningExampleComponent,
-    PopoverScrollExampleComponent,
-    PopoverScrollableExampleComponent,
-    PopoverTableExampleComponent,
-    PopoverTriggerExampleComponent,
-    PopoverI18nExampleComponent,
-    PopoverScrollStrategyProviderExampleComponent,
-    PopoverSlotExampleComponent,
-    PopoverWithoutArrowExampleComponent,
-    PopoverGuidedTourExampleComponent,
-    PopoverWidthExampleComponent,
+  PopoverClickOutsideExampleComponent,
+  PopoverCustomExampleComponent,
+  PopoverHoverExampleComponent,
+  PopoverLazyloadExampleComponent,
+  PopoverModalExampleComponent,
+  PopoverPositioningExampleComponent,
+  PopoverScrollExampleComponent,
+  PopoverScrollableExampleComponent,
+  PopoverTableExampleComponent,
+  PopoverTriggerExampleComponent,
+  PopoverI18nExampleComponent,
+  PopoverScrollStrategyProviderExampleComponent,
+  PopoverSlotExampleComponent,
+  PopoverWithoutArrowExampleComponent,
+  PopoverGuidedTourExampleComponent,
+  PopoverWidthExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxPopoverModule,
-        NxButtonModule,
-        NxIconModule,
-        NxDynamicTableModule,
-        CdkScrollableModule,
-        NxHeadlineModule,
-        NxLinkModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxPopoverModule,
+    NxButtonModule,
+    NxIconModule,
+    NxDynamicTableModule,
+    CdkScrollableModule,
+    NxHeadlineModule,
+    NxLinkModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class PopoverExamplesModule {
-    static components() {
-        return {
-            'popover-click-outside': PopoverClickOutsideExampleComponent,
-            'popover-custom': PopoverCustomExampleComponent,
-            'popover-hover': PopoverHoverExampleComponent,
-            'popover-lazyload': PopoverLazyloadExampleComponent,
-            'popover-modal': PopoverModalExampleComponent,
-            'popover-positioning': PopoverPositioningExampleComponent,
-            'popover-scroll': PopoverScrollExampleComponent,
-            'popover-scrollable': PopoverScrollableExampleComponent,
-            'popover-table': PopoverTableExampleComponent,
-            'popover-trigger': PopoverTriggerExampleComponent,
-            'popover-i18n': PopoverI18nExampleComponent,
-            'popover-scroll-strategy-provider':
-                PopoverScrollStrategyProviderExampleComponent,
-            'popover-slot': PopoverSlotExampleComponent,
-            'popover-without-arrow': PopoverWithoutArrowExampleComponent,
-            'popover-guided-tour': PopoverGuidedTourExampleComponent,
-            'popover-width': PopoverWidthExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'popover-click-outside': PopoverClickOutsideExampleComponent,
+      'popover-custom': PopoverCustomExampleComponent,
+      'popover-hover': PopoverHoverExampleComponent,
+      'popover-lazyload': PopoverLazyloadExampleComponent,
+      'popover-modal': PopoverModalExampleComponent,
+      'popover-positioning': PopoverPositioningExampleComponent,
+      'popover-scroll': PopoverScrollExampleComponent,
+      'popover-scrollable': PopoverScrollableExampleComponent,
+      'popover-table': PopoverTableExampleComponent,
+      'popover-trigger': PopoverTriggerExampleComponent,
+      'popover-i18n': PopoverI18nExampleComponent,
+      'popover-scroll-strategy-provider':
+        PopoverScrollStrategyProviderExampleComponent,
+      'popover-slot': PopoverSlotExampleComponent,
+      'popover-without-arrow': PopoverWithoutArrowExampleComponent,
+      'popover-guided-tour': PopoverGuidedTourExampleComponent,
+      'popover-width': PopoverWidthExampleComponent,
+    };
+  }
 }

@@ -1,60 +1,52 @@
 <div nxLayout="grid">
-    <div nxRow>
-        <div nxCol="12, 12, 4">
-            <nx-formfield label="Car brand">
-                <nx-dropdown
-                    [valueFormatter]="toText"
-                    verticalAlignCheckmark="center"
-                    [(ngModel)]="value"
-                >
-                    <ng-template nxClosedLabel>
-                        <span>{{ value?.brand }}</span>
-                    </ng-template>
-                    @for (car of demoData; track car.id) {
-                    <nx-dropdown-item [value]="car">
-                        <div style="display: flex; align-items: center">
-                            <div
-                                nxAvatar
-                                size="small"
-                                class="nx-margin-right-m"
-                            >
-                                {{ car.avatar }}
-                            </div>
+  <div nxRow>
+    <div nxCol="12, 12, 4">
+      <nx-formfield label="Car brand">
+        <nx-dropdown
+          [valueFormatter]="toText"
+          verticalAlignCheckmark="center"
+          [(ngModel)]="value"
+        >
+          <ng-template nxClosedLabel>
+            <span>{{ value?.brand }}</span>
+          </ng-template>
+          @for (car of demoData; track car.id) {
+          <nx-dropdown-item [value]="car">
+            <div style="display: flex; align-items: center">
+              <div nxAvatar size="small" class="nx-margin-right-m">
+                {{ car.avatar }}
+              </div>
 
-                            <div style="display: flex; flex-direction: column">
-                                <span class="nx-font-weight-semibold">
-                                    {{ car.brand }}
-                                </span>
-                                <span class="nx-font-weight-light">
-                                    {{ car.year }}
-                                </span>
-                            </div>
-                        </div>
-                    </nx-dropdown-item>
-                    }
-                </nx-dropdown>
-            </nx-formfield>
-        </div>
-        <div nxCol="12, 12, 4">
-            <nx-formfield label="Car brand">
-                <nx-dropdown>
-                    <nx-dropdown-item value="BMW">B</nx-dropdown-item>
-                    <nx-dropdown-item value="Audi">A</nx-dropdown-item>
-                    <nx-dropdown-item value="Volvo">V</nx-dropdown-item>
-                    <nx-dropdown-item value="Mini">M</nx-dropdown-item>
-                </nx-dropdown>
-            </nx-formfield>
-        </div>
-
-        <div nxCol="12, 12, 4">
-            <nx-formfield label="Car brand">
-                <nx-dropdown>
-                    <nx-dropdown-item value="BMW"></nx-dropdown-item>
-                    <nx-dropdown-item value="Audi"></nx-dropdown-item>
-                    <nx-dropdown-item value="Volvo"></nx-dropdown-item>
-                    <nx-dropdown-item value="Mini"></nx-dropdown-item>
-                </nx-dropdown>
-            </nx-formfield>
-        </div>
+              <div style="display: flex; flex-direction: column">
+                <span class="nx-font-weight-semibold"> {{ car.brand }} </span>
+                <span class="nx-font-weight-light"> {{ car.year }} </span>
+              </div>
+            </div>
+          </nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
     </div>
+    <div nxCol="12, 12, 4">
+      <nx-formfield label="Car brand">
+        <nx-dropdown>
+          <nx-dropdown-item value="BMW">B</nx-dropdown-item>
+          <nx-dropdown-item value="Audi">A</nx-dropdown-item>
+          <nx-dropdown-item value="Volvo">V</nx-dropdown-item>
+          <nx-dropdown-item value="Mini">M</nx-dropdown-item>
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+
+    <div nxCol="12, 12, 4">
+      <nx-formfield label="Car brand">
+        <nx-dropdown>
+          <nx-dropdown-item value="BMW"></nx-dropdown-item>
+          <nx-dropdown-item value="Audi"></nx-dropdown-item>
+          <nx-dropdown-item value="Volvo"></nx-dropdown-item>
+          <nx-dropdown-item value="Mini"></nx-dropdown-item>
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+  </div>
 </div>

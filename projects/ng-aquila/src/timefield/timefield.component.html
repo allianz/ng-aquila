@@ -1,151 +1,155 @@
 <div class="nx-timefield__wrapper" [ngClass]="{ 'has-outline': appearance === 'outline' }">
-    <nx-formfield
-        cdkOverlayOrigin
-        #overlayOrigin="cdkOverlayOrigin"
-        [label]="label"
-        [optionalLabel]="optionalLabel"
-        [appearance]="appearance"
-        floatLabel="always"
-        [negative]="negative ? 'negative' : ''"
-    >
-        <div role="group" [attr.aria-labelledby]="getLabelledBy()" class="time-group">
-            <input
-                [id]="idHours"
-                #inputHours
-                [value]="hours || null"
-                class="nx-timefield-input__field__hours"
-                type="text"
-                maxlength="2"
-                autocomplete="off"
-                role="combobox"
-                (input)="_onInput($event, 'hours')"
-                (keydown)="handleKeyDown($event)"
-                (focus)="_onFocus()"
-                (blur)="_onInputBlur('hours')"
-                [required]="required"
-                [disabled]="disabled"
-                [placeholder]="placeholderHours"
-                aria-autocomplete="list"
-                [attr.aria-required]="required"
-                [attr.aria-label]="_getAriaLabel('hours')"
-                [attr.aria-expanded]="isOpen.toString()"
-                [attr.aria-controls]="isOpen ? idOptionList : null"
-                [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
-                [attr.aria-describedby]="error?.id"
-                [attr.inputmode]="inputMode"
-            />
-            <span class="nx-timefield-hours-separator" aria-hidden="true">:</span>
-            <input
-                [id]="idMinutes"
-                #inputMinutes
-                [value]="minutes || null"
-                class="nx-timefield-input__field__minutes"
-                type="text"
-                maxlength="2"
-                autocomplete="off"
-                role="combobox"
-                (input)="_onInput($event, 'minutes')"
-                (focus)="_onFocus()"
-                (blur)="_onInputBlur('minutes')"
-                (keydown)="handleKeyDown($event)"
-                [required]="required"
-                [disabled]="disabled"
-                [placeholder]="placeholderMinutes"
-                aria-autocomplete="list"
-                [attr.aria-required]="required"
-                [attr.aria-label]="_getAriaLabel('minutes')"
-                [attr.aria-expanded]="isOpen.toString()"
-                [attr.aria-controls]="isOpen ? idOptionList : null"
-                [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
-                [attr.aria-describedby]="error?.id"
-                [attr.inputmode]="inputMode"
-            />
-            @if (withTimepicker) {
-                <button
-                    nxFormfieldSuffix
-                    #toggleButton
-                    [ngClass]="{ 'nx-timepicker-toggle--disabled': disabled }"
-                    (click)="!disabled && toggleButtonClick()"
-                    (focus)="_onFocus()"
-                    class="nx-timepicker-toggle-button"
-                    type="button"
-                    [disabled]="disabled"
-                    [attr.aria-label]="intl.buttonOpenTimepickerAriaLabel"
-                    [attr.aria-expanded]="isOpen.toString()"
-                    [attr.aria-controls]="isOpen ? idOptionList : null"
-                    [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
-                    (keydown)="handleKeyDown($event)"
-                >
-                    <nx-icon name="clock-o" aria-hidden="true" size="s"></nx-icon>
-                </button>
-            }
-            <nx-timefield-control
-                style="display: none"
-                [errorState]="errorState()"
-                [disabled]="disabled"
-                [required]="required"
-                [value]="time"
-                [focused]="hasFocus"
-            />
-        </div>
-        @if (hint) {
-            <span nxFormfieldHint> {{ hint }} </span>
-        }
-    </nx-formfield>
-
-    @if (twelveHourFormat) {
-        <nx-radio-toggle
-            [name]="idRadioGroup"
-            [(ngModel)]="_toggleAMPM"
-            (ngModelChange)="_updateTime()"
-            (click)="_updateTime()"
-            [disabled]="disabled"
-            [variant]="negative ? 'small negative' : 'small'"
-            disableMobile
+  <nx-formfield
+    cdkOverlayOrigin
+    #overlayOrigin="cdkOverlayOrigin"
+    [label]="label"
+    [optionalLabel]="optionalLabel"
+    [appearance]="appearance"
+    floatLabel="always"
+    [negative]="negative ? 'negative' : ''"
+  >
+    <div role="group" [attr.aria-labelledby]="getLabelledBy()" class="time-group">
+      <input
+        [id]="idHours"
+        #inputHours
+        [value]="hours || null"
+        class="nx-timefield-input__field__hours"
+        type="text"
+        maxlength="2"
+        autocomplete="off"
+        role="combobox"
+        (input)="_onInput($event, 'hours')"
+        (keydown)="handleKeyDown($event)"
+        (focus)="_onFocus()"
+        (blur)="_onInputBlur('hours')"
+        [required]="required"
+        [disabled]="disabled"
+        [placeholder]="placeholderHours"
+        aria-autocomplete="list"
+        [attr.aria-required]="required"
+        [attr.aria-label]="_getAriaLabel('hours')"
+        [attr.aria-expanded]="isOpen.toString()"
+        [attr.aria-controls]="isOpen ? idOptionList : null"
+        [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+        [attr.aria-describedby]="error?.id"
+        [attr.inputmode]="inputMode"
+      />
+      <span class="nx-timefield-hours-separator" aria-hidden="true">:</span>
+      <input
+        [id]="idMinutes"
+        #inputMinutes
+        [value]="minutes || null"
+        class="nx-timefield-input__field__minutes"
+        type="text"
+        maxlength="2"
+        autocomplete="off"
+        role="combobox"
+        (input)="_onInput($event, 'minutes')"
+        (focus)="_onFocus()"
+        (blur)="_onInputBlur('minutes')"
+        (keydown)="handleKeyDown($event)"
+        [required]="required"
+        [disabled]="disabled"
+        [placeholder]="placeholderMinutes"
+        aria-autocomplete="list"
+        [attr.aria-required]="required"
+        [attr.aria-label]="_getAriaLabel('minutes')"
+        [attr.aria-expanded]="isOpen.toString()"
+        [attr.aria-controls]="isOpen ? idOptionList : null"
+        [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+        [attr.aria-describedby]="error?.id"
+        [attr.inputmode]="inputMode"
+      />
+      @if (withTimepicker) {
+        <button
+          nxFormfieldSuffix
+          #toggleButton
+          [ngClass]="{ 'nx-timepicker-toggle--disabled': disabled }"
+          (click)="!disabled && toggleButtonClick()"
+          (focus)="_onFocus()"
+          class="nx-timepicker-toggle-button"
+          type="button"
+          [disabled]="disabled"
+          [attr.aria-label]="intl.buttonOpenTimepickerAriaLabel"
+          [attr.aria-expanded]="isOpen.toString()"
+          [attr.aria-controls]="isOpen ? idOptionList : null"
+          [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+          (keydown)="handleKeyDown($event)"
         >
-            <nx-radio-toggle-button disableMobile value="AM">{{ labelAM }}</nx-radio-toggle-button>
-            <nx-radio-toggle-button disableMobile value="PM">{{ labelPM }}</nx-radio-toggle-button>
-        </nx-radio-toggle>
+          <nx-icon name="clock-o" aria-hidden="true" size="s"></nx-icon>
+        </button>
+      }
+      <nx-timefield-control
+        style="display: none"
+        [errorState]="errorState()"
+        [disabled]="disabled"
+        [required]="required"
+        [value]="time"
+        [focused]="hasFocus"
+      />
+    </div>
+    @if (hint) {
+      <span nxFormfieldHint> {{ hint }} </span>
     }
+  </nx-formfield>
+
+  @if (twelveHourFormat) {
+    <nx-radio-toggle
+      [name]="idRadioGroup"
+      [(ngModel)]="_toggleAMPM"
+      (ngModelChange)="_updateTime()"
+      (click)="_updateTime()"
+      [disabled]="disabled"
+      [variant]="negative ? 'small negative' : 'small'"
+      disableMobile
+    >
+      <nx-radio-toggle-button disableMobile value="AM">{{ labelAM }}</nx-radio-toggle-button>
+      <nx-radio-toggle-button disableMobile value="PM">{{ labelPM }}</nx-radio-toggle-button>
+    </nx-radio-toggle>
+  }
 </div>
 @if (errorState()) {
-    <div class="nx-margin-top-xs">
-        <ng-content select="nx-error"></ng-content>
-    </div>
+  <div class="nx-margin-top-xs">
+    <ng-content select="nx-error"></ng-content>
+  </div>
 }
 
 <ng-template
-    cdkConnectedOverlay
-    [cdkConnectedOverlayOpen]="isOpen"
-    [cdkConnectedOverlayHasBackdrop]="true"
-    [cdkConnectedOverlayOrigin]="overlayOrigin"
-    [cdkConnectedOverlayMinWidth]="_overlayWidth"
-    [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
-    (backdropClick)="closeOverlay()"
-    (detach)="closeOverlay()"
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOpen]="isOpen"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  [cdkConnectedOverlayOrigin]="overlayOrigin"
+  [cdkConnectedOverlayMinWidth]="_overlayWidth"
+  [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
+  (backdropClick)="closeOverlay()"
+  (detach)="closeOverlay()"
 >
-    <section
-        role="dialog"
-        aria-modal="true"
-        [ngClass]="{
-            'has-outline': appearance === 'outline',
-            'twelve-hour-format': twelveHourFormat,
-        }"
+  <section
+    role="dialog"
+    aria-modal="true"
+    [ngClass]="{
+      'has-outline': appearance === 'outline',
+      'twelve-hour-format': twelveHourFormat,
+    }"
+  >
+    <ul
+      #list
+      role="listbox"
+      [id]="idOptionList"
+      tabindex="0"
+      class="option-list"
+      [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+      (keydown)="handleKeyDown($event)"
     >
-        <ul
-            #list
-            role="listbox"
-            [id]="idOptionList"
-            tabindex="0"
-            class="option-list"
-            [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
-            (keydown)="handleKeyDown($event)"
+      @for (item of timeList; track item.value; let i = $index) {
+        <li
+          [nxTimefieldOption]="item.value"
+          (mousedown)="preventFocus($event)"
+          (click)="selectOption(item.value)"
         >
-            @for (item of timeList; track item.value; let i = $index) {
-                <li [nxTimefieldOption]="item.value" (mousedown)="preventFocus($event)" (click)="selectOption(item.value)">
-                    <div class="option-label">{{ item.label }}</div>
-                </li>
-            }
-        </ul>
-    </section>
+          <div class="option-label">{{ item.label }}</div>
+        </li>
+      }
+    </ul>
+  </section>
 </ng-template>

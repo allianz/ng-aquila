@@ -2,194 +2,194 @@
 
 // General style
 :host {
-    color: v(link-color);
-    display: inline-block;
-    cursor: pointer;
-    position: relative;
-    text-decoration: none;
-    transition:
-        color 0.2s ease,
-        box-shadow 0.2s ease;
-    hyphens: none;
+  color: v(link-color);
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+  hyphens: none;
 
-    &:hover {
-        color: v(link-hover-color);
-    }
+  &:hover {
+    color: v(link-hover-color);
+  }
 
-    &::ng-deep a:active {
-        color: v(link-active-color);
-    }
+  &::ng-deep a:active {
+    color: v(link-active-color);
+  }
 
-    &::ng-deep a {
-        display: flex; // get icons aligned with text
-        align-items: flex-start; // align with the top
-    }
+  &::ng-deep a {
+    display: flex; // get icons aligned with text
+    align-items: flex-start; // align with the top
+  }
 }
 
 :host.nx-link--xsmall {
-    @include type-style(link-xsmall);
+  @include type-style(link-xsmall);
 }
 
 :host.nx-link--small {
-    @include type-style(link-small);
+  @include type-style(link-small);
 }
 
 :host.nx-link--large {
-    @include type-style(link-large);
+  @include type-style(link-large);
 }
 
 // focus styling
 :host.cdk-keyboard-focused ::ng-deep a {
-    border-radius: nx-border-radius(s);
-    outline: 0;
-    @include focus-style;
+  border-radius: nx-border-radius(s);
+  outline: 0;
+  @include focus-style;
 }
 
 // negative
 :host(.nx-link--negative) {
-    color: v(negative);
+  color: v(negative);
 
-    &:hover {
-        color: v(negative-01);
-    }
+  &:hover {
+    color: v(negative-01);
+  }
 
-    &::ng-deep a:active {
-        color: v(negative-02);
-    }
+  &::ng-deep a:active {
+    color: v(negative-02);
+  }
 
-    &::ng-deep a[disabled],
-    &::ng-deep a[aria-disabled] {
-        color: v(negative-dimmed);
-    }
+  &::ng-deep a[disabled],
+  &::ng-deep a[aria-disabled] {
+    color: v(negative-dimmed);
+  }
 }
 
 // black
 :host(.nx-link--black) {
-    color: v(link-black-color);
+  color: v(link-black-color);
 
-    &:hover {
-        color: v(link-black-hover-color);
-    }
+  &:hover {
+    color: v(link-black-hover-color);
+  }
 
-    &::ng-deep a:active {
-        color: v(link-black-active-color);
-    }
+  &::ng-deep a:active {
+    color: v(link-black-active-color);
+  }
 
-    &::ng-deep a[disabled],
-    &::ng-deep a[aria-disabled] {
-        color: v(link-black-disabled-color);
-    }
+  &::ng-deep a[disabled],
+  &::ng-deep a[aria-disabled] {
+    color: v(link-black-disabled-color);
+  }
 }
 
 // link within text
 :host.nx-link--text {
-    font-weight: nx-font-weight(bold);
-    text-transform: none;
-    letter-spacing: normal;
-    border-radius: nx-border-radius(s);
-    font-size: inherit;
-    line-height: inherit;
+  font-weight: nx-font-weight(bold);
+  text-transform: none;
+  letter-spacing: normal;
+  border-radius: nx-border-radius(s);
+  font-size: inherit;
+  line-height: inherit;
+  display: inline;
+
+  // fix text - link alignment in IE11
+  ::ng-deep a {
     display: inline;
+  }
 
-    // fix text - link alignment in IE11
-    ::ng-deep a {
-        display: inline;
-    }
-
-    ::ng-deep nx-icon.nx-link__icon {
-        vertical-align: bottom;
-    }
+  ::ng-deep nx-icon.nx-link__icon {
+    vertical-align: bottom;
+  }
 }
 
 // link with icons
 :host::ng-deep {
-    .c-icon::before,
-    nx-icon.nx-link__icon::before {
-        line-height: inherit;
-        font-size: inherit;
-    }
+  .c-icon::before,
+  nx-icon.nx-link__icon::before {
+    line-height: inherit;
+    font-size: inherit;
+  }
 }
 
 :host.nx-link--xsmall ::ng-deep {
-    .c-icon,
-    nx-icon.nx-link__icon {
-        font-size: v(link-xsmall-icon-size);
-    }
+  .c-icon,
+  nx-icon.nx-link__icon {
+    font-size: v(link-xsmall-icon-size);
+  }
 }
 
 :host.nx-link--small ::ng-deep {
-    .c-icon,
-    nx-icon.nx-link__icon {
-        font-size: v(link-small-icon-size);
-    }
+  .c-icon,
+  nx-icon.nx-link__icon {
+    font-size: v(link-small-icon-size);
+  }
 }
 
 :host.nx-link--large ::ng-deep {
-    .c-icon,
-    nx-icon.nx-link__icon {
-        font-size: v(link-large-icon-size);
-    }
+  .c-icon,
+  nx-icon.nx-link__icon {
+    font-size: v(link-large-icon-size);
+  }
 }
 
 // space between icon and text
 :host:not(.nx-link--text) ::ng-deep {
-    .c-icon,
-    nx-icon.nx-link__icon {
-        $link-icon-margin: 0 nx-spacer(2xs) 0 0;
-        margin: $link-icon-margin;
+  .c-icon,
+  nx-icon.nx-link__icon {
+    $link-icon-margin: 0 nx-spacer(2xs) 0 0;
+    margin: $link-icon-margin;
 
-        [dir='rtl'] & {
-            margin: nx-flip-for-rtl($link-icon-margin);
-        }
+    [dir='rtl'] & {
+      margin: nx-flip-for-rtl($link-icon-margin);
     }
+  }
 }
 
 // variation: icon on the right
 :host:not(.nx-link--text).nx-link--icon-right ::ng-deep {
-    .c-icon,
-    nx-icon.nx-link__icon {
-        $link-icon-right-margin: 0 0 0 nx-spacer(2xs);
-        order: 2;
-        margin: $link-icon-right-margin;
+  .c-icon,
+  nx-icon.nx-link__icon {
+    $link-icon-right-margin: 0 0 0 nx-spacer(2xs);
+    order: 2;
+    margin: $link-icon-right-margin;
 
-        [dir='rtl'] & {
-            margin: nx-flip-for-rtl($link-icon-right-margin);
-        }
+    [dir='rtl'] & {
+      margin: nx-flip-for-rtl($link-icon-right-margin);
     }
+  }
 }
 
 :host.nx-link--icon-only ::ng-deep {
-    .c-icon,
-    nx-icon.nx-link__icon {
-        margin-right: 0;
+  .c-icon,
+  nx-icon.nx-link__icon {
+    margin-right: 0;
 
-        [dir='rtl'] & {
-            margin-left: 0;
-        }
+    [dir='rtl'] & {
+      margin-left: 0;
     }
+  }
 }
 
 // disabled
 :host::ng-deep a[disabled],
 :host::ng-deep a[aria-disabled] {
-    cursor: not-allowed;
-    color: v(link-disabled-color);
+  cursor: not-allowed;
+  color: v(link-disabled-color);
 
-    &:focus {
-        outline: none;
-        box-shadow: none;
-    }
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 }
 
 @media screen and (forced-colors: active) {
-    :host {
-        color: LinkText !important;
-    }
+  :host {
+    color: LinkText !important;
+  }
 }
 
 @media screen and (forced-colors: active) {
-    :host::ng-deep a[disabled],
-    :host::ng-deep a[aria-disabled] {
-        color: GrayText !important;
-    }
+  :host::ng-deep a[disabled],
+  :host::ng-deep a[aria-disabled] {
+    color: GrayText !important;
+  }
 }

@@ -1,15 +1,15 @@
 <div
-    class="nx-radio-toggle {{ additionalClasses }}"
-    [ngClass]="{ 'disable-mobile': disableMobile }"
-    role="radiogroup"
-    [attr.aria-label]="ariaLabel"
-    [attr.aria-labelledby]="ariaLabelledBy"
-    [attr.aria-readonly]="readonly"
+  class="nx-radio-toggle {{ additionalClasses }}"
+  [ngClass]="{ 'disable-mobile': disableMobile }"
+  role="radiogroup"
+  [attr.aria-label]="ariaLabel"
+  [attr.aria-labelledby]="ariaLabelledBy"
+  [attr.aria-readonly]="readonly"
 >
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 </div>
 @if (errorState()) {
-    <div class="error-container">
-        <ng-content select="nx-error"></ng-content>
-    </div>
+  <div class="error-container">
+    <ng-content select="nx-error"></ng-content>
+  </div>
 }

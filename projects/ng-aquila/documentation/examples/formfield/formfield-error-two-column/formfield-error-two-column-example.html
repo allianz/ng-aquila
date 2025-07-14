@@ -1,47 +1,47 @@
 <div nxLayout="grid">
-    <div nxRow>
-        <div nxCol="12,12,6,6">
-            <nx-formfield label="Label" class="nx-margin-bottom-m">
-                <input required nxInput />
-            </nx-formfield>
-        </div>
-        <div nxCol="12,12,6,6">
-            <nx-formfield label="Label" class="nx-margin-bottom-m">
-                <input
-                    required
-                    nxInput
-                    [(ngModel)]="valueSupplementErrorHint"
-                    #exampleErrorNgModelHint="nxInput"
-                />
-                <span nxFormfieldHint> some additional information </span>
-                <nx-error nxFormfieldError>
-                    <strong> Please note: </strong> you have to fill out this
-                    field to continue.
-                </nx-error>
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="12,12,6,6">
+      <nx-formfield label="Label" class="nx-margin-bottom-m">
+        <input required nxInput />
+      </nx-formfield>
     </div>
+    <div nxCol="12,12,6,6">
+      <nx-formfield label="Label" class="nx-margin-bottom-m">
+        <input
+          required
+          nxInput
+          [(ngModel)]="valueSupplementErrorHint"
+          #exampleErrorNgModelHint="nxInput"
+        />
+        <span nxFormfieldHint> some additional information </span>
+        <nx-error nxFormfieldError>
+          <strong> Please note: </strong> you have to fill out this field to
+          continue.
+        </nx-error>
+      </nx-formfield>
+    </div>
+  </div>
 
-    <div nxRow>
-        <div nxCol="12,12,6,6">
-            <nx-formfield label="Label" class="nx-margin-bottom-m">
-                <input
-                    required
-                    nxInput
-                    [(ngModel)]="valueSupplementError"
-                    #exampleErrorNgModel="nxInput"
-                />
-                <nx-error nxFormfieldError>
-                    <strong> Please note: </strong> you have to fill out this
-                    field to continue.
-                </nx-error>
-            </nx-formfield>
-        </div>
-        <div nxCol="12,12,6,6">
-            <nx-formfield label="Label" class="nx-margin-bottom-m">
-                <input required nxInput />
-                <span nxFormfieldHint> some additional information </span>
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="12,12,6,6">
+      <nx-formfield label="Label" class="nx-margin-bottom-m">
+        <input
+          required
+          nxInput
+          [(ngModel)]="valueSupplementError"
+          #exampleErrorNgModel="nxInput"
+        />
+        <nx-error nxFormfieldError>
+          <strong> Please note: </strong> you have to fill out this field to
+          continue.
+        </nx-error>
+      </nx-formfield>
     </div>
+    <div nxCol="12,12,6,6">
+      <nx-formfield label="Label" class="nx-margin-bottom-m">
+        <input required nxInput />
+        <span nxFormfieldHint> some additional information </span>
+      </nx-formfield>
+    </div>
+  </div>
 </div>

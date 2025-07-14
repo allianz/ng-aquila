@@ -1,10 +1,10 @@
 figure {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 :host {
-    ::ng-deep .nx-menu__wrapper {
-        position: static !important;
-    }
+  ::ng-deep .nx-menu__wrapper {
+    position: static !important;
+  }
 }

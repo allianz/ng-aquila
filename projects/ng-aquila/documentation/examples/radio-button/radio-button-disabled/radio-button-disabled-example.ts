@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
-import { NxLabelComponent } from '@aposin/ng-aquila/base';
+import { NxLabelComponent } from '@allianz/ng-aquila/base';
 import {
-    NxRadioComponent,
-    NxRadioGroupComponent,
-} from '@aposin/ng-aquila/radio-button';
+  NxRadioComponent,
+  NxRadioGroupComponent,
+} from '@allianz/ng-aquila/radio-button';
+import { Component } from '@angular/core';
 
 /**
  * @title Disabled Example
  */
 @Component({
-    selector: 'radio-button-disabled-example',
-    templateUrl: './radio-button-disabled-example.html',
-    styleUrls: ['./radio-button-disabled-example.css'],
-    imports: [NxRadioGroupComponent, NxLabelComponent, NxRadioComponent],
+  selector: 'radio-button-disabled-example',
+  templateUrl: './radio-button-disabled-example.html',
+  styleUrls: ['./radio-button-disabled-example.css'],
+  imports: [NxRadioGroupComponent, NxLabelComponent, NxRadioComponent],
 })
 export class RadioButtonDisabledExampleComponent {}

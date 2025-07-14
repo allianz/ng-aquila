@@ -5,7 +5,7 @@ import { NxSliderAppendixDirective } from './appendix.directive';
 import { NxSliderComponent } from './slider.component';
 
 @NgModule({
-    imports: [CommonModule, NxSliderComponent, NxSliderAppendixDirective],
-    exports: [NxSliderComponent, NxSliderAppendixDirective],
+  imports: [CommonModule, NxSliderComponent, NxSliderAppendixDirective],
+  exports: [NxSliderComponent, NxSliderAppendixDirective],
 })
 export class NxSliderModule {}

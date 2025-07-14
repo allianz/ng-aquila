@@ -16,80 +16,80 @@ We are building the following structure.
 -->
 
 <div class="nx-formfield__wrapper">
-    <!-- Give a flex context to properly align suffix, input & postfix -->
-    <div class="nx-formfield__row">
-        <div class="nx-formfield__flexfield">
-            <div class="nx-formfield__input-container" #connectionContainer>
-                @if (_prefixChildren.length) {
-                    <div class="nx-formfield__prefix">
-                        <ng-content select="[nxFormfieldPrefix]"></ng-content>
-                    </div>
+  <!-- Give a flex context to properly align suffix, input & postfix -->
+  <div class="nx-formfield__row">
+    <div class="nx-formfield__flexfield">
+      <div class="nx-formfield__input-container" #connectionContainer>
+        @if (_prefixChildren.length) {
+          <div class="nx-formfield__prefix">
+            <ng-content select="[nxFormfieldPrefix]"></ng-content>
+          </div>
+        }
+
+        <div class="nx-formfield__input">
+          <!-- This handles the floating whole behavior -->
+          <span class="nx-formfield__label-holder">
+            <label class="nx-formfield__label" [id]="labelId" [attr.for]="_control.id">
+              @if (!_labelChild) {
+                @if (optional) {
+                  <span class="optional">
+                    <span>{{ optional }}</span>
+                  </span>
                 }
+                <span>{{ label }}</span>
+              }
+              <ng-content select="nx-formfield-label"></ng-content>
+            </label>
+          </span>
 
-                <div class="nx-formfield__input">
-                    <!-- This handles the floating whole behavior -->
-                    <span class="nx-formfield__label-holder">
-                        <label class="nx-formfield__label" [id]="labelId" [attr.for]="_control.id">
-                            @if (!_labelChild) {
-                                @if (optional) {
-                                    <span class="optional">
-                                        <span>{{ optional }}</span>
-                                    </span>
-                                }
-                                <span>{{ label }}</span>
-                            }
-                            <ng-content select="nx-formfield-label"></ng-content>
-                        </label>
-                    </span>
-
-                    @if (_isNxInput()) {
-                        <div
-                            class="nx-formfield__tooltip"
-                            #input
-                            #tooltip="nxTooltip"
-                            [nxTooltip]="_isEllipsisActive() ? inputValueText : null"
-                            (click)="tooltip.hide()"
-                        >
-                            <ng-content select="input[nxInput]"></ng-content>
-                        </div>
-                    }
-
-                    <ng-content></ng-content>
-                </div>
-
-                @if (_suffixChildren.length) {
-                    <div class="nx-formfield__suffix">
-                        <ng-content select="[nxFormfieldSuffix]"></ng-content>
-                    </div>
-                }
+          @if (_isNxInput()) {
+            <div
+              class="nx-formfield__tooltip"
+              #input
+              #tooltip="nxTooltip"
+              [nxTooltip]="_isEllipsisActive() ? inputValueText : null"
+              (click)="tooltip.hide()"
+            >
+              <ng-content select="input[nxInput]"></ng-content>
             </div>
-            <!-- Space to render the hints below the textfield -->
-            @if (_hintChildren.length) {
-                <div class="nx-formfield__hints" [attr.aria-hidden]="_control.disabled">
-                    <ng-content select="[nxFormfieldHint]"></ng-content>
-                </div>
-            }
+          }
+
+          <ng-content></ng-content>
         </div>
 
-        <!-- Appendix is similar to a suffix but visibly outside of the input  -->
-        @if (_appendixChildren.length) {
-            <div class="nx-formfield__appendix">
-                <ng-content select="[nxFormfieldAppendix]"></ng-content>
-            </div>
+        @if (_suffixChildren.length) {
+          <div class="nx-formfield__suffix">
+            <ng-content select="[nxFormfieldSuffix]"></ng-content>
+          </div>
         }
+      </div>
+      <!-- Space to render the hints below the textfield -->
+      @if (_hintChildren.length) {
+        <div class="nx-formfield__hints" [attr.aria-hidden]="_control.disabled">
+          <ng-content select="[nxFormfieldHint]"></ng-content>
+        </div>
+      }
     </div>
 
-    <!-- In case we got some additional information we render them below the given input -->
-    @switch (getDisplayedMessage()) {
-        @case ('error') {
-            <div class="nx-formfield__message">
-                <ng-content select="[nxFormfieldError]"></ng-content>
-            </div>
-        }
-        @case ('note') {
-            <div class="nx-formfield__message">
-                <ng-content select="[nxFormfieldNote]"></ng-content>
-            </div>
-        }
+    <!-- Appendix is similar to a suffix but visibly outside of the input  -->
+    @if (_appendixChildren.length) {
+      <div class="nx-formfield__appendix">
+        <ng-content select="[nxFormfieldAppendix]"></ng-content>
+      </div>
     }
+  </div>
+
+  <!-- In case we got some additional information we render them below the given input -->
+  @switch (getDisplayedMessage()) {
+    @case ('error') {
+      <div class="nx-formfield__message">
+        <ng-content select="[nxFormfieldError]"></ng-content>
+      </div>
+    }
+    @case ('note') {
+      <div class="nx-formfield__message">
+        <ng-content select="[nxFormfieldNote]"></ng-content>
+      </div>
+    }
+  }
 </div>

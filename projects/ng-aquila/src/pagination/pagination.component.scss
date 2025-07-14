@@ -1,166 +1,166 @@
 @import '../shared-styles/index';
 
 :host {
-    display: block;
+  display: block;
 
-    button:focus {
-        outline: none;
-    }
+  button:focus {
+    outline: none;
+  }
 
-    // don't show inner dotted border on firefox
-    button::-moz-focus-inner {
-        border: 0;
-    }
+  // don't show inner dotted border on firefox
+  button::-moz-focus-inner {
+    border: 0;
+  }
 }
 
 .nx-pagination__container {
-    display: flex;
-    @include type-style(pagination);
-    padding: 0;
+  display: flex;
+  @include type-style(pagination);
+  padding: 0;
 }
 
 .nx-pagination__item {
-    margin: 0 nx-spacer(s);
-    list-style: none;
-    font-weight: v(pagination-item-font-weight);
+  margin: 0 nx-spacer(s);
+  list-style: none;
+  font-weight: v(pagination-item-font-weight);
 }
 
 .nx-pagination__item:first-child {
-    margin: 0;
+  margin: 0;
 }
 
 .nx-pagination__item:last-child {
-    margin: 0;
+  margin: 0;
 }
 
 .nx-pagination__item.is-ellipsis {
-    color: v(pagination-text-color);
+  color: v(pagination-text-color);
 }
 
 .nx-pagination__item--expanded-view {
-    display: block;
+  display: block;
 }
 
 .nx-pagination__link {
-    color: v(pagination-link-color);
-    padding: 0;
-    text-decoration: none;
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-    font: inherit;
+  color: v(pagination-link-color);
+  padding: 0;
+  text-decoration: none;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
 }
 
 .nx-pagination__link.is-active {
-    color: v(pagination-text-color);
-    font-weight: nx-font-weight(bold);
+  color: v(pagination-text-color);
+  font-weight: nx-font-weight(bold);
 
-    @media screen and (forced-colors: active) {
-        border-bottom: nx-border-size(xl) solid CanvasText;
-    }
+  @media screen and (forced-colors: active) {
+    border-bottom: nx-border-size(xl) solid CanvasText;
+  }
 }
 
 nx-icon.nx-pagination__arrow,
 nx-icon.nx-pagination__arrow {
-    font-size: v(pagination-icon-size);
+  font-size: v(pagination-icon-size);
 }
 
 .nx-pagination-compact {
-    display: flex;
-    @include type-style(pagination);
-    padding: 0;
+  display: flex;
+  @include type-style(pagination);
+  padding: 0;
 }
 
 .nx-pagination-compact__display {
-    color: v(pagination-text-color);
-    display: flex;
+  color: v(pagination-text-color);
+  display: flex;
 }
 
 .nx-pagination-compact__current-page {
-    font-weight: nx-font-weight(bold);
-    margin-right: nx-spacer(2xs);
+  font-weight: nx-font-weight(bold);
+  margin-right: nx-spacer(2xs);
 
-    :host-context([dir='rtl']) & {
-        margin-right: initial;
-        margin-left: nx-spacer(2xs);
-    }
+  :host-context([dir='rtl']) & {
+    margin-right: initial;
+    margin-left: nx-spacer(2xs);
+  }
 }
 
 .nx-pagination-compact__total-pages {
-    margin-left: nx-spacer(2xs);
+  margin-left: nx-spacer(2xs);
 
-    :host-context([dir='rtl']) & {
-        margin-right: nx-spacer(2xs);
-        margin-left: initial;
-    }
+  :host-context([dir='rtl']) & {
+    margin-right: nx-spacer(2xs);
+    margin-left: initial;
+  }
 }
 
 .nx-pagination-compact__next,
 .nx-pagination-compact__previous,
 .nx-pagination__arrow-last,
 .nx-pagination__arrow-first {
-    color: v(pagination-link-color);
-    font-weight: v(pagination-icon-font-weight);
-    text-decoration: none;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    background-color: transparent;
-    cursor: pointer;
-    border: 0;
+  color: v(pagination-link-color);
+  font-weight: v(pagination-icon-font-weight);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
 }
 
 .nx-pagination-compact__previous {
-    margin-right: nx-spacer(2m);
+  margin-right: nx-spacer(2m);
 
-    :host-context([dir='rtl']) & {
-        margin-right: initial;
-        margin-left: nx-spacer(2m);
-    }
+  :host-context([dir='rtl']) & {
+    margin-right: initial;
+    margin-left: nx-spacer(2m);
+  }
 }
 
 .nx-pagination-compact__next {
-    margin-left: nx-spacer(2m);
+  margin-left: nx-spacer(2m);
 
-    :host-context([dir='rtl']) & {
-        margin-right: nx-spacer(2m);
-        margin-left: initial;
-    }
+  :host-context([dir='rtl']) & {
+    margin-right: nx-spacer(2m);
+    margin-left: initial;
+  }
 }
 
 .nx-pagination-compact__direction-label {
-    display: block;
-    @include type-style(pagination-compact-direction);
+  display: block;
+  @include type-style(pagination-compact-direction);
 }
 
 .nx-pagination-compact__direction-label:first-child {
-    margin-right: nx-spacer(2xs);
+  margin-right: nx-spacer(2xs);
 
-    :host-context([dir='rtl']) & {
-        margin-right: initial;
-        margin-left: nx-spacer(2xs);
-    }
+  :host-context([dir='rtl']) & {
+    margin-right: initial;
+    margin-left: nx-spacer(2xs);
+  }
 }
 
 .nx-pagination-compact__direction-label:last-child {
-    margin-left: nx-spacer(2xs);
+  margin-left: nx-spacer(2xs);
 
-    :host-context([dir='rtl']) & {
-        margin-right: nx-spacer(2xs);
-        margin-left: initial;
-    }
+  :host-context([dir='rtl']) & {
+    margin-right: nx-spacer(2xs);
+    margin-left: initial;
+  }
 }
 
 .nx-pagination-compact__previous.is-disabled,
 .nx-pagination-compact__next.is-disabled,
 .nx-pagination__link.is-disabled {
-    color: v(pagination-link-disabled-color);
-    cursor: not-allowed;
+  color: v(pagination-link-disabled-color);
+  cursor: not-allowed;
 
-    @media screen and (forced-colors: active) {
-        color: GrayText;
-    }
+  @media screen and (forced-colors: active) {
+    color: GrayText;
+  }
 }
 
 // ARIA styles
@@ -169,80 +169,80 @@ nx-icon.nx-pagination__arrow {
 .nx-pagination__link.cdk-keyboard-focused,
 .nx-pagination--icon.cdk-keyboard-focused,
 .nx-pagination--number.cdk-keyboard-focused {
-    @include focus-style;
-    border-radius: nx-border-radius(s);
+  @include focus-style;
+  border-radius: nx-border-radius(s);
 }
 
 .nx-pagination__link--next,
 .nx-pagination__link--previous,
 .nx-pagination__link--first,
 .nx-pagination__link--last {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .nx-pagination__item-next {
-    margin-right: nx-spacer(2xs);
+  margin-right: nx-spacer(2xs);
 
-    :host-context([dir='rtl']) & {
-        margin-right: initial;
-        margin-left: nx-spacer(2xs);
-    }
+  :host-context([dir='rtl']) & {
+    margin-right: initial;
+    margin-left: nx-spacer(2xs);
+  }
 }
 
 .nx-pagination__item-previous {
-    margin-left: nx-spacer(2xs);
+  margin-left: nx-spacer(2xs);
 
-    :host-context([dir='rtl']) & {
-        margin-right: nx-spacer(2xs);
-        margin-left: initial;
-    }
+  :host-context([dir='rtl']) & {
+    margin-right: nx-spacer(2xs);
+    margin-left: initial;
+  }
 }
 
 .nx-pagination-compact__direction-label,
 .nx-pagination__link--first,
 .nx-pagination__link--last,
 .nx-pagination__item--desktop {
-    display: flex;
+  display: flex;
 
-    @include container-breakpoint-down(small) {
-        display: none;
-    }
+  @include container-breakpoint-down(small) {
+    display: none;
+  }
 
-    @include media-breakpoint-down(small) {
-        display: none;
-    }
+  @include media-breakpoint-down(small) {
+    display: none;
+  }
 }
 
 .nx-pagination__item--mobile {
-    display: none;
+  display: none;
 
-    @include container-breakpoint-down(small) {
-        display: block;
-    }
+  @include container-breakpoint-down(small) {
+    display: block;
+  }
 
-    @include media-breakpoint-down(small) {
-        display: block;
-    }
+  @include media-breakpoint-down(small) {
+    display: block;
+  }
 }
 
 .nx-pagination-slider {
-    .nx-pagination__item {
-        display: flex;
-        align-items: center;
-        margin: 0 nx-spacer(s);
-    }
-    .nx-pagination--icon {
-        width: v(pagination-slider-icon-width);
-        height: v(pagination-slider-icon-height);
-        border: 1px solid v(pagination-slider-icon-border-color);
-        border-radius: 50%;
-        padding: 0;
-        background: none;
-        cursor: pointer;
-    }
-    .nx-pagination--icon.is-active {
-        background-color: v(pagination-slider-icon-active-color);
-        cursor: auto;
-    }
+  .nx-pagination__item {
+    display: flex;
+    align-items: center;
+    margin: 0 nx-spacer(s);
+  }
+  .nx-pagination--icon {
+    width: v(pagination-slider-icon-width);
+    height: v(pagination-slider-icon-height);
+    border: 1px solid v(pagination-slider-icon-border-color);
+    border-radius: 50%;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+  }
+  .nx-pagination--icon.is-active {
+    background-color: v(pagination-slider-icon-active-color);
+    cursor: auto;
+  }
 }

@@ -1,105 +1,108 @@
 @import '../shared-styles/index.scss';
 
 :host {
-    @include type-style(context-menu);
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
-    appearance: none;
-    border: none;
-    outline: none;
-    background: transparent;
-    position: relative;
-    padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2m);
-    color: v(context-menu-item-text-color);
+  @include type-style(context-menu);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  position: relative;
+  padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2m);
+  color: v(context-menu-item-text-color);
 
-    [dir='rtl'] & {
-        padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2m);
+  [dir='rtl'] & {
+    padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2m);
+  }
+
+  @media screen and (forced-colors: active) {
+    forced-color-adjust: none;
+    background-color: buttonFace;
+    color: buttonText;
+  }
+
+  &:not(.is-disabled) {
+    &:hover,
+    &:active,
+    &.is-highlighted {
+      color: v(context-menu-item-active-color);
+
+      @media screen and (forced-colors: active) {
+        forced-color-adjust: none;
+        background-color: highlight;
+        color: highlightText;
+      }
     }
+  }
+
+  &.is-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: v(context-menu-item-disabled-color);
 
     @media screen and (forced-colors: active) {
-        forced-color-adjust: none;
-        background-color: buttonFace;
-        color: buttonText;
+      color: GrayText;
     }
+  }
 
-    &:not(.is-disabled) {
-        &:hover,
-        &:active,
-        &.is-highlighted {
-            color: v(context-menu-item-active-color);
+  // don't show inner dotted border on firefox
+  &::-moz-focus-inner {
+    border: 0;
+  }
 
-            @media screen and (forced-colors: active) {
-                forced-color-adjust: none;
-                background-color: highlight;
-                color: highlightText;
-            }
-        }
+  .nx-context-menu-item__content-wrapper {
+    display: flex;
+    align-items: center;
+
+    &.has-submenu {
+      width: 100%;
     }
+  }
 
-    &.is-disabled {
-        cursor: not-allowed;
-        pointer-events: none;
-        color: v(context-menu-item-disabled-color);
+  .nx-context-menu-item__content-wrapper ::ng-deep > nx-icon:not(.nx-context-menu-item__expand) {
+    margin-right: nx-spacer(2xs);
+    font-size: v(context-menu-item-icon-size);
 
-        @media screen and (forced-colors: active) {
-            color: GrayText;
-        }
+    [dir='rtl'] & {
+      margin-right: initial;
+      margin-left: nx-spacer(2xs);
     }
+  }
 
-    // don't show inner dotted border on firefox
-    &::-moz-focus-inner {
-        border: 0;
+  &.is-selectable
+    .nx-context-menu-item__content-wrapper
+    ::ng-deep
+    > nx-icon:not(.nx-context-menu-item__expand) {
+    position: absolute;
+    left: 8px;
+
+    [dir='rtl'] & {
+      left: initial;
+      right: 8px;
     }
+  }
 
-    .nx-context-menu-item__content-wrapper {
-        display: flex;
-        align-items: center;
+  .nx-context-menu-item__expand {
+    font-size: v(context-menu-item-expand-icon-size);
+    padding-left: nx-spacer(2xs);
+    margin-left: auto;
+    margin-right: 0;
+    width: 1em;
 
-        &.has-submenu {
-            width: 100%;
-        }
+    [dir='rtl'] & {
+      margin-right: auto;
+      margin-left: 0;
+      transform: rotateZ(180deg);
     }
+  }
 
-    .nx-context-menu-item__content-wrapper ::ng-deep > nx-icon:not(.nx-context-menu-item__expand) {
-        margin-right: nx-spacer(2xs);
-        font-size: v(context-menu-item-icon-size);
-
-        [dir='rtl'] & {
-            margin-right: initial;
-            margin-left: nx-spacer(2xs);
-        }
-    }
-
-    &.is-selectable .nx-context-menu-item__content-wrapper ::ng-deep > nx-icon:not(.nx-context-menu-item__expand) {
-        position: absolute;
-        left: 8px;
-
-        [dir='rtl'] & {
-            left: initial;
-            right: 8px;
-        }
-    }
-
-    .nx-context-menu-item__expand {
-        font-size: v(context-menu-item-expand-icon-size);
-        padding-left: nx-spacer(2xs);
-        margin-left: auto;
-        margin-right: 0;
-        width: 1em;
-
-        [dir='rtl'] & {
-            margin-right: auto;
-            margin-left: 0;
-            transform: rotateZ(180deg);
-        }
-    }
-
-    &.cdk-keyboard-focused:focus .nx-context-menu-item__content-wrapper {
-        border-radius: nx-border-radius(s);
-        outline: 0;
-        @include focus-style;
-    }
+  &.cdk-keyboard-focused:focus .nx-context-menu-item__content-wrapper {
+    border-radius: nx-border-radius(s);
+    outline: 0;
+    @include focus-style;
+  }
 }

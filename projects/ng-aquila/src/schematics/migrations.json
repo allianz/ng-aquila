@@ -1,17 +1,17 @@
 {
-    "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
-    "schematics": {
-        "migration-v20": {
-            "version": "20.0.0-0",
-            "description": "Updates ng-aquila to v20",
-            "factory": "./ng-update/index",
-            "cli": "ng"
-        },
-        "migrate-package-name": {
-            "version": "20.0.0-0",
-            "description": "Updates package name to @allianz/ng-aquila",
-            "factory": "./ng-update/package-name-migration/package-name-migration",
-            "cli": "ng"
-        }
+  "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "migration-v20": {
+      "version": "20.0.0-0",
+      "description": "Updates ng-aquila to v20",
+      "factory": "./ng-update/index",
+      "cli": "ng"
+    },
+    "migrate-package-name": {
+      "version": "20.0.0-0",
+      "description": "Updates package name to @allianz/ng-aquila",
+      "factory": "./ng-update/package-name-migration/package-name-migration",
+      "cli": "ng"
     }
+  }
 }

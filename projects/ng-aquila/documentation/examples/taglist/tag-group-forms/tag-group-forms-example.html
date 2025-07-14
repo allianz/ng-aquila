@@ -3,13 +3,13 @@
 <p>with ngModel</p>
 
 <nx-tag-group
-    [(ngModel)]="value"
-    [disabled]="disabled()"
-    aria-label="Filter fruits"
+  [(ngModel)]="value"
+  [disabled]="disabled()"
+  aria-label="Filter fruits"
 >
-    @for (tag of tags; track tag) {
-    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
-    }
+  @for (tag of tags; track tag) {
+  <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+  }
 </nx-tag-group>
 
 <p>Value: {{ value() | json }}</p>
@@ -17,9 +17,9 @@
 <p>with reactive forms</p>
 
 <nx-tag-group [formControl]="control" aria-label="Filter fruits">
-    @for (tag of tags; track tag) {
-    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
-    }
+  @for (tag of tags; track tag) {
+  <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+  }
 </nx-tag-group>
 
 <p>Control Value: {{ control.value | json }}</p>

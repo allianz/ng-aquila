@@ -1,24 +1,24 @@
 <form [formGroup]="form">
-    <div nxLayout="grid">
-        <div nxRow>
-            <div nxCol="12,12,6">
-                <nx-formfield label="Car brand">
-                    <nx-dropdown
-                        formControlName="dropdown"
-                        (focusOut)="onFocusOut()"
-                        (focus)="onFocus()"
-                    >
-                        <nx-dropdown-item>CLEAR VALUE</nx-dropdown-item>
-                        <nx-dropdown-item value="BMW"></nx-dropdown-item>
-                        <nx-dropdown-item value="Audi"></nx-dropdown-item>
-                        <nx-dropdown-item value="Volvo"></nx-dropdown-item>
-                        <nx-dropdown-item value="Mini"></nx-dropdown-item>
-                    </nx-dropdown>
-                    <nx-message context="info" nxFormfieldNote>
-                        Focusing: {{focusing}}
-                    </nx-message>
-                </nx-formfield>
-            </div>
-        </div>
+  <div nxLayout="grid">
+    <div nxRow>
+      <div nxCol="12,12,6">
+        <nx-formfield label="Car brand">
+          <nx-dropdown
+            formControlName="dropdown"
+            (focusOut)="onFocusOut()"
+            (focus)="onFocus()"
+          >
+            <nx-dropdown-item>CLEAR VALUE</nx-dropdown-item>
+            <nx-dropdown-item value="BMW"></nx-dropdown-item>
+            <nx-dropdown-item value="Audi"></nx-dropdown-item>
+            <nx-dropdown-item value="Volvo"></nx-dropdown-item>
+            <nx-dropdown-item value="Mini"></nx-dropdown-item>
+          </nx-dropdown>
+          <nx-message context="info" nxFormfieldNote>
+            Focusing: {{focusing}}
+          </nx-message>
+        </nx-formfield>
+      </div>
     </div>
+  </div>
 </form>

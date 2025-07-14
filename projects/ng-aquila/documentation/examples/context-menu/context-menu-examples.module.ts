@@ -1,12 +1,12 @@
+import { NxBadgeModule } from '@allianz/ng-aquila/badge';
+import { NxCardModule } from '@allianz/ng-aquila/card';
+import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
+import { NxContextMenuModule } from '@allianz/ng-aquila/context-menu';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxIndicatorModule } from '@allianz/ng-aquila/indicator';
+import { NxTableModule } from '@allianz/ng-aquila/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
-import { NxBadgeModule } from '@aposin/ng-aquila/badge';
-import { NxCardModule } from '@aposin/ng-aquila/card';
-import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
-import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
-import { NxTableModule } from '@aposin/ng-aquila/table';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { ContextMenuBasicExampleComponent } from './context-menu-basic/context-menu-basic-example';
@@ -24,56 +24,53 @@ import { ContextMenuSelectMultipleExampleComponent } from './context-menu-select
 import { ContextMenuSelectionExampleComponent } from './context-menu-selection/context-menu-selection-example';
 
 const EXAMPLES = [
-    ContextMenuBasicExampleComponent,
-    ContextMenuDataExampleComponent,
-    ContextMenuDisabledExampleComponent,
-    ContextMenuIconsExampleComponent,
-    ContextMenuLazyExampleComponent,
-    ContextMenuNestedExampleComponent,
-    ContextMenuProgrammaticExampleComponent,
-    ContextMenuScrollStrategyExampleComponent,
-    ContextMenuIndicatorExampleComponent,
-    ContextMenuCursorModeExampleComponent,
-    ContextMenuScrollStrategyProviderExampleComponent,
-    ContextMenuSelectionExampleComponent,
-    ContextMenuSelectMultipleExampleComponent,
+  ContextMenuBasicExampleComponent,
+  ContextMenuDataExampleComponent,
+  ContextMenuDisabledExampleComponent,
+  ContextMenuIconsExampleComponent,
+  ContextMenuLazyExampleComponent,
+  ContextMenuNestedExampleComponent,
+  ContextMenuProgrammaticExampleComponent,
+  ContextMenuScrollStrategyExampleComponent,
+  ContextMenuIndicatorExampleComponent,
+  ContextMenuCursorModeExampleComponent,
+  ContextMenuScrollStrategyProviderExampleComponent,
+  ContextMenuSelectionExampleComponent,
+  ContextMenuSelectMultipleExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxContextMenuModule,
-        NxIconModule,
-        NxBadgeModule,
-        NxIndicatorModule,
-        NxTableModule,
-        NxCardModule,
-        ExamplesSharedModule,
-        DragDropModule,
-        NxCheckboxModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxContextMenuModule,
+    NxIconModule,
+    NxBadgeModule,
+    NxIndicatorModule,
+    NxTableModule,
+    NxCardModule,
+    ExamplesSharedModule,
+    DragDropModule,
+    NxCheckboxModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class ContextExamplesModule {
-    static components() {
-        return {
-            'context-menu-basic': ContextMenuBasicExampleComponent,
-            'context-menu-data': ContextMenuDataExampleComponent,
-            'context-menu-disabled': ContextMenuDisabledExampleComponent,
-            'context-menu-icons': ContextMenuIconsExampleComponent,
-            'context-menu-lazy': ContextMenuLazyExampleComponent,
-            'context-menu-nested': ContextMenuNestedExampleComponent,
-            'context-menu-programmatic':
-                ContextMenuProgrammaticExampleComponent,
-            'context-menu-scroll-strategy':
-                ContextMenuScrollStrategyExampleComponent,
-            'context-menu-scroll-strategy-provider':
-                ContextMenuScrollStrategyProviderExampleComponent,
-            'context-menu-indicator': ContextMenuIndicatorExampleComponent,
-            'context-menu-cursor-mode': ContextMenuCursorModeExampleComponent,
-            'context-menu-selection': ContextMenuSelectionExampleComponent,
-            'context-menu-select-multiple':
-                ContextMenuSelectMultipleExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'context-menu-basic': ContextMenuBasicExampleComponent,
+      'context-menu-data': ContextMenuDataExampleComponent,
+      'context-menu-disabled': ContextMenuDisabledExampleComponent,
+      'context-menu-icons': ContextMenuIconsExampleComponent,
+      'context-menu-lazy': ContextMenuLazyExampleComponent,
+      'context-menu-nested': ContextMenuNestedExampleComponent,
+      'context-menu-programmatic': ContextMenuProgrammaticExampleComponent,
+      'context-menu-scroll-strategy': ContextMenuScrollStrategyExampleComponent,
+      'context-menu-scroll-strategy-provider':
+        ContextMenuScrollStrategyProviderExampleComponent,
+      'context-menu-indicator': ContextMenuIndicatorExampleComponent,
+      'context-menu-cursor-mode': ContextMenuCursorModeExampleComponent,
+      'context-menu-selection': ContextMenuSelectionExampleComponent,
+      'context-menu-select-multiple': ContextMenuSelectMultipleExampleComponent,
+    };
+  }
 }

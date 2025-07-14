@@ -1,35 +1,35 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig and https://www.typescriptlang.org/tsconfig. */
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "baseUrl": "./",
-        "outDir": "./out-tsc",
-        "forceConsistentCasingInFileNames": true,
-        "sourceMap": true,
-        "esModuleInterop": true,
-        "declaration": false,
-        "experimentalDecorators": true,
-        "moduleResolution": "node",
-        "importHelpers": true,
-        "resolveJsonModule": true,
-        "target": "es2022",
-        "module": "es2020",
-        "lib": ["es2020", "dom"],
-        "paths": {
-            "@aposin/ng-aquila": ["projects/ng-aquila/src/public-api.ts"],
-            "@aposin/ng-aquila/*": ["projects/ng-aquila/src/*/public-api.ts"],
-            "@aposin/ngx-docs-ui": ["projects/ngx-docs-ui/src/public-api.ts"],
-            "@aposin/ng-aquila/documentation/*": ["projects/ng-aquila/documentation/generated/*"]
-        },
-        "useDefineForClassFields": false,
-        "noFallthroughCasesInSwitch": true,
-        "noImplicitReturns": true,
-        "strict": true
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "resolveJsonModule": true,
+    "target": "es2022",
+    "module": "es2020",
+    "lib": ["es2020", "dom"],
+    "paths": {
+      "@allianz/ng-aquila": ["projects/ng-aquila/src/public-api.ts"],
+      "@allianz/ng-aquila/*": ["projects/ng-aquila/src/*/public-api.ts"],
+      "@allianz/ngx-docs-ui": ["projects/ngx-docs-ui/src/public-api.ts"],
+      "@allianz/ng-aquila/documentation/*": ["projects/ng-aquila/documentation/generated/*"]
     },
-    "angularCompilerOptions": {
-        "enableI18nLegacyMessageIdFormat": false,
-        "strictInjectionParameters": true,
-        "strictInputAccessModifiers": true,
-        "strictTemplates": true
-    }
+    "useDefineForClassFields": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "strict": true
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
 }

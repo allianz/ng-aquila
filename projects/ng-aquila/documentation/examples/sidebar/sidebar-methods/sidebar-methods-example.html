@@ -1,56 +1,56 @@
 <nx-sidebar resizeHandleAriaLabel="Toggle sidebar width" #sidebar resizeable>
-    @for (action of actions; track action) {
-    <button
-        nxAction
-        routerLink="./"
-        [queryParams]="action.query"
-        routerLinkActive="is-selected"
-        type="button"
-    >
-        <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
-        {{action.label}}
-    </button>
-    }
+  @for (action of actions; track action) {
+  <button
+    nxAction
+    routerLink="./"
+    [queryParams]="action.query"
+    routerLinkActive="is-selected"
+    type="button"
+  >
+    <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
+    {{action.label}}
+  </button>
+  }
 </nx-sidebar>
 <main>
+  <button
+    nxButton="small"
+    (click)="sidebar.toggle()"
+    class="nx-margin-bottom-s"
+    type="button"
+  >
+    toggle
+  </button>
+  <button
+    nxButton="small"
+    (click)="sidebar.expand()"
+    [attr.disabled]="sidebar.open || null"
+    class="nx-margin-bottom-s"
+    type="button"
+  >
+    expand
+  </button>
+  <button
+    nxButton="small"
+    (click)="sidebar.close()"
+    [attr.disabled]="!sidebar.open || null"
+    type="button"
+  >
+    close
+  </button>
+  <p class="nx-font-weight-bold nx-margin-bottom-2xs">
+    Advanced: Expanded width
+  </p>
+  <div class="resize-container">
+    <nx-formfield label="Width in px" class="nx-margin-right-xs">
+      <input nxInput [(ngModel)]="expandedWidth" />
+    </nx-formfield>
     <button
-        nxButton="small"
-        (click)="sidebar.toggle()"
-        class="nx-margin-bottom-s"
-        type="button"
+      nxButton="small"
+      (click)="sidebar.width = expandedWidth"
+      class="nx-margin-bottom-m"
     >
-        toggle
+      resize
     </button>
-    <button
-        nxButton="small"
-        (click)="sidebar.expand()"
-        [attr.disabled]="sidebar.open || null"
-        class="nx-margin-bottom-s"
-        type="button"
-    >
-        expand
-    </button>
-    <button
-        nxButton="small"
-        (click)="sidebar.close()"
-        [attr.disabled]="!sidebar.open || null"
-        type="button"
-    >
-        close
-    </button>
-    <p class="nx-font-weight-bold nx-margin-bottom-2xs">
-        Advanced: Expanded width
-    </p>
-    <div class="resize-container">
-        <nx-formfield label="Width in px" class="nx-margin-right-xs">
-            <input nxInput [(ngModel)]="expandedWidth" />
-        </nx-formfield>
-        <button
-            nxButton="small"
-            (click)="sidebar.width = expandedWidth"
-            class="nx-margin-bottom-m"
-        >
-            resize
-        </button>
-    </div>
+  </div>
 </main>

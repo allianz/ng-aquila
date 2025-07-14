@@ -1,11 +1,16 @@
-<div class="nx-checkbox" [class.is-active]="active" [class.is-selected]="selected" [class.is-disabled]="disabled">
-    <span class="nx-checkbox__control">
-        @if (selected) {
-            <nx-icon name="check" aria-hidden="true"></nx-icon>
-        }
-    </span>
+<div
+  class="nx-checkbox"
+  [class.is-active]="active"
+  [class.is-selected]="selected"
+  [class.is-disabled]="disabled"
+>
+  <span class="nx-checkbox__control">
+    @if (selected) {
+      <nx-icon name="check" aria-hidden="true"></nx-icon>
+    }
+  </span>
 
-    <span class="nx-checkbox__label">
-        {{ label }}
-    </span>
+  <span class="nx-checkbox__label">
+    {{ label }}
+  </span>
 </div>

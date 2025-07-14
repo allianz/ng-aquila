@@ -1,32 +1,32 @@
 @import '../../shared-styles/index';
 
 :host {
-    @include type-style(base-error-simple);
-    color: v(base-error-color);
-    width: 100%;
-    display: flex;
-    text-align: left;
+  @include type-style(base-error-simple);
+  color: v(base-error-color);
+  width: 100%;
+  display: flex;
+  text-align: left;
+
+  .nx-error__icon {
+    font-size: v(base-error-simple-icon-size);
+    line-height: v(base-error-simple-line-height);
+    margin-right: nx-spacer(2xs);
+
+    @media screen and (forced-colors: active) {
+      color: CanvasText;
+    }
+  }
+
+  .nx-error__content-wrapper {
+    max-width: 100%; // needed by IE, so that the text does not overlap the icon
+  }
+
+  [dir='rtl'] & {
+    text-align: right;
 
     .nx-error__icon {
-        font-size: v(base-error-simple-icon-size);
-        line-height: v(base-error-simple-line-height);
-        margin-right: nx-spacer(2xs);
-
-        @media screen and (forced-colors: active) {
-            color: CanvasText;
-        }
+      margin-right: initial;
+      margin-left: nx-spacer(2xs);
     }
-
-    .nx-error__content-wrapper {
-        max-width: 100%; // needed by IE, so that the text does not overlap the icon
-    }
-
-    [dir='rtl'] & {
-        text-align: right;
-
-        .nx-error__icon {
-            margin-right: initial;
-            margin-left: nx-spacer(2xs);
-        }
-    }
+  }
 }

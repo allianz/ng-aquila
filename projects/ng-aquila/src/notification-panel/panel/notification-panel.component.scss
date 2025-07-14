@@ -1,25 +1,25 @@
 @import '../../shared-styles/index';
 :host {
-    padding: 16px 24px;
-    display: flex;
-    flex-direction: column;
-    background-color: v(notification-panel-background-color);
-    max-height: 740px;
-    height: 100%;
-    width: 100%;
-    overflow-y: auto;
-    box-shadow: v(shadow-large);
-    border-radius: 8px;
-    &:focus {
-        outline: none;
-    }
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  background-color: v(notification-panel-background-color);
+  max-height: 740px;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  box-shadow: v(shadow-large);
+  border-radius: 8px;
+  &:focus {
+    outline: none;
+  }
 }
 
 ::ng-deep nx-notification-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px 0 8px;
-    &:first-child {
-        padding-top: 0;
-    }
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0 8px;
+  &:first-child {
+    padding-top: 0;
+  }
 }

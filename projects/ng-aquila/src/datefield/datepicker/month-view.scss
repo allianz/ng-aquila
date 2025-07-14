@@ -1,15 +1,15 @@
 @import '../../shared-styles/index';
 
 .nx-calendar-table {
-    border-spacing: 0;
-    border-collapse: collapse;
-    width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 .nx-calendar-table-header {
-    @include type-style(datefield-cell);
-    color: v(datefield-header-cell-color);
-    text-align: center;
-    height: nx-spacer(3m);
-    font-weight: v(datefield-header-cell-font-weight);
+  @include type-style(datefield-cell);
+  color: v(datefield-header-cell-color);
+  text-align: center;
+  height: nx-spacer(3m);
+  font-weight: v(datefield-header-cell-font-weight);
 }

@@ -1,33 +1,33 @@
 <nx-checkbox-group>
-    <nx-label>With nx grid component</nx-label>
-    <div nxLayout="nopadding">
-        <div nxRow>
-            @for (item of checkboxes; track item) {
-            <div nxCol="12,12,6,4" class="nx-margin-bottom-s">
-                <nx-checkbox [value]="item">{{item}}</nx-checkbox>
-            </div>
-            }
-        </div>
-    </div>
-</nx-checkbox-group>
-<br />
-<nx-checkbox-group>
-    <nx-label>With CSS Grid</nx-label>
-    <div class="grid-wrapper">
-        @for (item of checkboxes; track item) {
+  <nx-label>With nx grid component</nx-label>
+  <div nxLayout="nopadding">
+    <div nxRow>
+      @for (item of checkboxes; track item) {
+      <div nxCol="12,12,6,4" class="nx-margin-bottom-s">
         <nx-checkbox [value]="item">{{item}}</nx-checkbox>
-        }
+      </div>
+      }
     </div>
+  </div>
+</nx-checkbox-group>
+<br />
+<nx-checkbox-group>
+  <nx-label>With CSS Grid</nx-label>
+  <div class="grid-wrapper">
+    @for (item of checkboxes; track item) {
+    <nx-checkbox [value]="item">{{item}}</nx-checkbox>
+    }
+  </div>
 </nx-checkbox-group>
 <br />
 <br />
 <nx-checkbox-group>
-    <nx-label>With CSS Flexbox</nx-label>
-    <div class="flex-wrapper">
-        @for (item of checkboxes; track item) {
-        <nx-checkbox [value]="item" class="nx-margin-right-m nx-margin-bottom-s"
-            >{{item}}</nx-checkbox
-        >
-        }
-    </div>
+  <nx-label>With CSS Flexbox</nx-label>
+  <div class="flex-wrapper">
+    @for (item of checkboxes; track item) {
+    <nx-checkbox [value]="item" class="nx-margin-right-m nx-margin-bottom-s"
+      >{{item}}</nx-checkbox
+    >
+    }
+  </div>
 </nx-checkbox-group>

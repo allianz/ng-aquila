@@ -14,13 +14,22 @@ import { AquilaModule } from './app/aquila.module';
 import { AquilaDocsExample } from './app/aquila-docs-example';
 
 @NgModule({
-    bootstrap: [AquilaDocsExample],
-    declarations: [AquilaDocsExample],
-    imports: [BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot([]), AquilaModule, NgOptimizedImage, AgGridModule],
-    providers: [provideHttpClient(withInterceptorsFromDi(), withJsonpSupport())],
+  bootstrap: [AquilaDocsExample],
+  declarations: [AquilaDocsExample],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot([]),
+    AquilaModule,
+    NgOptimizedImage,
+    AgGridModule,
+  ],
+  providers: [provideHttpClient(withInterceptorsFromDi(), withJsonpSupport())],
 })
 export class AppModule {}
 
 platformBrowserDynamic()
-    .bootstrapModule(AppModule)
-    .catch(err => console.error(err));
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));

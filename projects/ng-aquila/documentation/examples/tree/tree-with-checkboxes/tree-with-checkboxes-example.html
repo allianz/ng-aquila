@@ -1,60 +1,60 @@
 <cdk-tree #tree [dataSource]="dataSource" [levelAccessor]="levelAccessor">
-    <!-- This is the tree node template for leaf nodes -->
-    <cdk-tree-node
-        *cdkTreeNodeDef="let node"
-        cdkTreeNodePadding
-        [style.display]="shouldRender(node) ? 'flex' : 'none'"
-        [isDisabled]="!shouldRender(node)"
-        class="example-tree-node"
-        (activation)="toggleNode(node)"
-        [attr.aria-checked]="checklistSelection.isSelected(node)"
+  <!-- This is the tree node template for leaf nodes -->
+  <cdk-tree-node
+    *cdkTreeNodeDef="let node"
+    cdkTreeNodePadding
+    [style.display]="shouldRender(node) ? 'flex' : 'none'"
+    [isDisabled]="!shouldRender(node)"
+    class="example-tree-node"
+    (activation)="toggleNode(node)"
+    [attr.aria-checked]="checklistSelection.isSelected(node)"
+  >
+    <!-- use a disabled button to provide padding for tree leaf -->
+    <button
+      nxPlainButton="small"
+      disabled
+      class="custom-toggle-button empty"
+    ></button>
+    <nx-checkbox
+      tabindex="-1"
+      [treeCheckboxNode]="node"
+      [treeCheckboxParentNode]="getParentNode(node)"
+      [checked]="checklistSelection.isSelected(node)"
+      (checkedChange)="toggleNode(node)"
+      >{{node.name}}</nx-checkbox
     >
-        <!-- use a disabled button to provide padding for tree leaf -->
-        <button
-            nxPlainButton="small"
-            disabled
-            class="custom-toggle-button empty"
-        ></button>
-        <nx-checkbox
-            tabindex="-1"
-            [treeCheckboxNode]="node"
-            [treeCheckboxParentNode]="getParentNode(node)"
-            [checked]="checklistSelection.isSelected(node)"
-            (checkedChange)="toggleNode(node)"
-            >{{node.name}}</nx-checkbox
-        >
-    </cdk-tree-node>
-    <!-- This is the tree node template for expandable nodes -->
-    <cdk-tree-node
-        *cdkTreeNodeDef="let node; when: hasChild"
-        cdkTreeNodePadding
-        [cdkTreeNodeTypeaheadLabel]="node.name"
-        [style.display]="shouldRender(node) ? 'flex' : 'none'"
-        [isDisabled]="!shouldRender(node)"
-        [isExpandable]="node.expandable"
-        class="example-tree-node"
-        (activation)="toggleNode(node)"
-        [attr.aria-checked]="descendantsAllSelected(node) ? true : descendantsPartiallySelected(node) ? 'mixed' : false"
+  </cdk-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <cdk-tree-node
+    *cdkTreeNodeDef="let node; when: hasChild"
+    cdkTreeNodePadding
+    [cdkTreeNodeTypeaheadLabel]="node.name"
+    [style.display]="shouldRender(node) ? 'flex' : 'none'"
+    [isDisabled]="!shouldRender(node)"
+    [isExpandable]="node.expandable"
+    class="example-tree-node"
+    (activation)="toggleNode(node)"
+    [attr.aria-checked]="descendantsAllSelected(node) ? true : descendantsPartiallySelected(node) ? 'mixed' : false"
+  >
+    <button
+      nxPlainButton="small"
+      class="custom-toggle-button"
+      cdkTreeNodeToggle
+      [attr.aria-label]="'Toggle ' + node.name"
+      [style.visibility]="node.expandable ? 'visible' : 'hidden'"
     >
-        <button
-            nxPlainButton="small"
-            class="custom-toggle-button"
-            cdkTreeNodeToggle
-            [attr.aria-label]="'Toggle ' + node.name"
-            [style.visibility]="node.expandable ? 'visible' : 'hidden'"
-        >
-            <nx-icon
-                name="{{tree.isExpanded(node) ? 'chevron-down' : 'chevron-right'}}"
-            >
-            </nx-icon>
-        </button>
-        <nx-checkbox
-            (checkedChange)="toggleNode(node)"
-            [treeCheckboxNode]="node"
-            [treeCheckboxParentNode]="getParentNode(node)"
-            [checked]="descendantsAllSelected(node)"
-            [indeterminate]="descendantsPartiallySelected(node)"
-            >{{node.name}}</nx-checkbox
-        >
-    </cdk-tree-node>
+      <nx-icon
+        name="{{tree.isExpanded(node) ? 'chevron-down' : 'chevron-right'}}"
+      >
+      </nx-icon>
+    </button>
+    <nx-checkbox
+      (checkedChange)="toggleNode(node)"
+      [treeCheckboxNode]="node"
+      [treeCheckboxParentNode]="getParentNode(node)"
+      [checked]="descendantsAllSelected(node)"
+      [indeterminate]="descendantsPartiallySelected(node)"
+      >{{node.name}}</nx-checkbox
+    >
+  </cdk-tree-node>
 </cdk-tree>

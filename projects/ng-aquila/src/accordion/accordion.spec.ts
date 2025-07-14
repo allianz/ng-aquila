@@ -6,143 +6,143 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NxAccordionDirective, NxAccordionModule, NxExpansionPanelComponent } from './index';
 
 describe('NxAccordion', () => {
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            imports: [BrowserAnimationsModule, NxAccordionModule, NestedPanel, SetOfItems],
-        });
-        TestBed.compileComponents();
-    }));
-
-    it('should ensure only one item is expanded at a time', () => {
-        const fixture = TestBed.createComponent(SetOfItems);
-        const items = fixture.debugElement.queryAll(By.css('nx-expansion-panel'));
-
-        fixture.componentInstance.firstPanelExpanded = true;
-        fixture.detectChanges();
-        expect(items[0].classes['nx-expanded']).toBeTruthy();
-        expect(items[1].classes['nx-expanded']).toBeFalsy();
-
-        fixture.componentInstance.secondPanelExpanded = true;
-        fixture.detectChanges();
-        expect(items[0].classes['nx-expanded']).toBeFalsy();
-        expect(items[1].classes['nx-expanded']).toBeTruthy();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [BrowserAnimationsModule, NxAccordionModule, NestedPanel, SetOfItems],
     });
+    TestBed.compileComponents();
+  }));
 
-    it('should allow multiple items to be expanded simultaneously', () => {
-        const fixture = TestBed.createComponent(SetOfItems);
-        const panels = fixture.debugElement.queryAll(By.css('nx-expansion-panel'));
+  it('should ensure only one item is expanded at a time', () => {
+    const fixture = TestBed.createComponent(SetOfItems);
+    const items = fixture.debugElement.queryAll(By.css('nx-expansion-panel'));
 
-        fixture.componentInstance.multi = true;
-        fixture.componentInstance.firstPanelExpanded = true;
-        fixture.componentInstance.secondPanelExpanded = true;
-        fixture.detectChanges();
-        expect(panels[0].classes['nx-expanded']).toBeTruthy();
-        expect(panels[1].classes['nx-expanded']).toBeTruthy();
-    });
+    fixture.componentInstance.firstPanelExpanded = true;
+    fixture.detectChanges();
+    expect(items[0].classes['nx-expanded']).toBeTruthy();
+    expect(items[1].classes['nx-expanded']).toBeFalsy();
 
-    it('should expand or collapse all enabled items', () => {
-        const fixture = TestBed.createComponent(SetOfItems);
-        const panels = fixture.debugElement.queryAll(By.css('nx-expansion-panel'));
+    fixture.componentInstance.secondPanelExpanded = true;
+    fixture.detectChanges();
+    expect(items[0].classes['nx-expanded']).toBeFalsy();
+    expect(items[1].classes['nx-expanded']).toBeTruthy();
+  });
 
-        fixture.componentInstance.multi = true;
-        fixture.componentInstance.secondPanelExpanded = true;
-        fixture.detectChanges();
-        expect(panels[0].classes['nx-expanded']).toBeFalsy();
-        expect(panels[1].classes['nx-expanded']).toBeTruthy();
+  it('should allow multiple items to be expanded simultaneously', () => {
+    const fixture = TestBed.createComponent(SetOfItems);
+    const panels = fixture.debugElement.queryAll(By.css('nx-expansion-panel'));
 
-        fixture.componentInstance.accordion.openAll();
-        fixture.detectChanges();
-        expect(panels[0].classes['nx-expanded']).toBeTruthy();
-        expect(panels[1].classes['nx-expanded']).toBeTruthy();
+    fixture.componentInstance.multi = true;
+    fixture.componentInstance.firstPanelExpanded = true;
+    fixture.componentInstance.secondPanelExpanded = true;
+    fixture.detectChanges();
+    expect(panels[0].classes['nx-expanded']).toBeTruthy();
+    expect(panels[1].classes['nx-expanded']).toBeTruthy();
+  });
 
-        fixture.componentInstance.accordion.closeAll();
-        fixture.detectChanges();
-        expect(panels[0].classes['nx-expanded']).toBeFalsy();
-        expect(panels[1].classes['nx-expanded']).toBeFalsy();
-    });
+  it('should expand or collapse all enabled items', () => {
+    const fixture = TestBed.createComponent(SetOfItems);
+    const panels = fixture.debugElement.queryAll(By.css('nx-expansion-panel'));
 
-    it('should not expand or collapse disabled items', () => {
-        const fixture = TestBed.createComponent(SetOfItems);
-        const panels = fixture.debugElement.queryAll(By.css('nx-expansion-panel'));
+    fixture.componentInstance.multi = true;
+    fixture.componentInstance.secondPanelExpanded = true;
+    fixture.detectChanges();
+    expect(panels[0].classes['nx-expanded']).toBeFalsy();
+    expect(panels[1].classes['nx-expanded']).toBeTruthy();
 
-        fixture.componentInstance.multi = true;
-        fixture.componentInstance.secondPanelDisabled = true;
-        fixture.detectChanges();
-        fixture.componentInstance.accordion.openAll();
-        fixture.detectChanges();
-        expect(panels[0].classes['nx-expanded']).toBeTruthy();
-        expect(panels[1].classes['nx-expanded']).toBeFalsy();
+    fixture.componentInstance.accordion.openAll();
+    fixture.detectChanges();
+    expect(panels[0].classes['nx-expanded']).toBeTruthy();
+    expect(panels[1].classes['nx-expanded']).toBeTruthy();
 
-        fixture.componentInstance.accordion.closeAll();
-        fixture.detectChanges();
-        expect(panels[0].classes['nx-expanded']).toBeFalsy();
-        expect(panels[1].classes['nx-expanded']).toBeFalsy();
-    });
+    fixture.componentInstance.accordion.closeAll();
+    fixture.detectChanges();
+    expect(panels[0].classes['nx-expanded']).toBeFalsy();
+    expect(panels[1].classes['nx-expanded']).toBeFalsy();
+  });
 
-    it('should not register nested panels to the same accordion', () => {
-        const fixture = TestBed.createComponent(NestedPanel);
-        const innerPanel = fixture.componentInstance.innerPanel;
-        const outerPanel = fixture.componentInstance.outerPanel;
+  it('should not expand or collapse disabled items', () => {
+    const fixture = TestBed.createComponent(SetOfItems);
+    const panels = fixture.debugElement.queryAll(By.css('nx-expansion-panel'));
 
-        expect(innerPanel.accordion).not.toBe(outerPanel.accordion);
-    });
+    fixture.componentInstance.multi = true;
+    fixture.componentInstance.secondPanelDisabled = true;
+    fixture.detectChanges();
+    fixture.componentInstance.accordion.openAll();
+    fixture.detectChanges();
+    expect(panels[0].classes['nx-expanded']).toBeTruthy();
+    expect(panels[1].classes['nx-expanded']).toBeFalsy();
 
-    it('should propagate flush alignment value to panel and header', () => {
-        const fixture = TestBed.createComponent(FlushAccordion);
+    fixture.componentInstance.accordion.closeAll();
+    fixture.detectChanges();
+    expect(panels[0].classes['nx-expanded']).toBeFalsy();
+    expect(panels[1].classes['nx-expanded']).toBeFalsy();
+  });
 
-        const panel = fixture.componentInstance.panel;
+  it('should not register nested panels to the same accordion', () => {
+    const fixture = TestBed.createComponent(NestedPanel);
+    const innerPanel = fixture.componentInstance.innerPanel;
+    const outerPanel = fixture.componentInstance.outerPanel;
 
-        expect(panel.flushAlignment).toBeTruthy();
-    });
+    expect(innerPanel.accordion).not.toBe(outerPanel.accordion);
+  });
+
+  it('should propagate flush alignment value to panel and header', () => {
+    const fixture = TestBed.createComponent(FlushAccordion);
+
+    const panel = fixture.componentInstance.panel;
+
+    expect(panel.flushAlignment).toBeTruthy();
+  });
 });
 
 @Component({
-    template: `<nx-accordion [multi]="multi">
-        <nx-expansion-panel [expanded]="firstPanelExpanded">
-            <nx-expansion-panel-header>Summary</nx-expansion-panel-header>
-            <p>Content</p>
-        </nx-expansion-panel>
-        <nx-expansion-panel [expanded]="secondPanelExpanded" [disabled]="secondPanelDisabled">
-            <nx-expansion-panel-header>Summary</nx-expansion-panel-header>
-            <p>Content</p>
-        </nx-expansion-panel>
-    </nx-accordion>`,
-    imports: [NxAccordionModule],
+  template: `<nx-accordion [multi]="multi">
+    <nx-expansion-panel [expanded]="firstPanelExpanded">
+      <nx-expansion-panel-header>Summary</nx-expansion-panel-header>
+      <p>Content</p>
+    </nx-expansion-panel>
+    <nx-expansion-panel [expanded]="secondPanelExpanded" [disabled]="secondPanelDisabled">
+      <nx-expansion-panel-header>Summary</nx-expansion-panel-header>
+      <p>Content</p>
+    </nx-expansion-panel>
+  </nx-accordion>`,
+  imports: [NxAccordionModule],
 })
 class SetOfItems {
-    @ViewChild(NxAccordionDirective) accordion!: NxAccordionDirective;
+  @ViewChild(NxAccordionDirective) accordion!: NxAccordionDirective;
 
-    multi = false;
-    firstPanelExpanded = false;
-    secondPanelExpanded = false;
-    secondPanelDisabled = false;
+  multi = false;
+  firstPanelExpanded = false;
+  secondPanelExpanded = false;
+  secondPanelDisabled = false;
 }
 
 @Component({
-    template: `<nx-accordion>
-        <nx-expansion-panel #outerPanel="NxExpansionPanelComponent">
-            <nx-expansion-panel-header>Outer Panel</nx-expansion-panel-header>
-            <nx-expansion-panel #innerPanel="NxExpansionPanelComponent">
-                <nx-expansion-panel-header>Inner Panel</nx-expansion-panel-header>
-                <p>Content</p>
-            </nx-expansion-panel>
-        </nx-expansion-panel>
-    </nx-accordion>`,
-    imports: [NxAccordionModule],
+  template: `<nx-accordion>
+    <nx-expansion-panel #outerPanel="NxExpansionPanelComponent">
+      <nx-expansion-panel-header>Outer Panel</nx-expansion-panel-header>
+      <nx-expansion-panel #innerPanel="NxExpansionPanelComponent">
+        <nx-expansion-panel-header>Inner Panel</nx-expansion-panel-header>
+        <p>Content</p>
+      </nx-expansion-panel>
+    </nx-expansion-panel>
+  </nx-accordion>`,
+  imports: [NxAccordionModule],
 })
 class NestedPanel {
-    @ViewChild('outerPanel', { static: true }) outerPanel!: NxExpansionPanelComponent;
-    @ViewChild('innerPanel', { static: true }) innerPanel!: NxExpansionPanelComponent;
+  @ViewChild('outerPanel', { static: true }) outerPanel!: NxExpansionPanelComponent;
+  @ViewChild('innerPanel', { static: true }) innerPanel!: NxExpansionPanelComponent;
 }
 @Component({
-    template: `<nx-accordion flushAlignment="true">
-        <nx-expansion-panel #panel="NxExpansionPanelComponent">
-            <nx-expansion-panel-header>Outer Panel</nx-expansion-panel-header>
-            Some Content
-        </nx-expansion-panel>
-    </nx-accordion>`,
-    imports: [NxAccordionModule],
+  template: `<nx-accordion flushAlignment="true">
+    <nx-expansion-panel #panel="NxExpansionPanelComponent">
+      <nx-expansion-panel-header>Outer Panel</nx-expansion-panel-header>
+      Some Content
+    </nx-expansion-panel>
+  </nx-accordion>`,
+  imports: [NxAccordionModule],
 })
 class FlushAccordion {
-    @ViewChild('panel', { static: true }) panel!: NxExpansionPanelComponent;
+  @ViewChild('panel', { static: true }) panel!: NxExpansionPanelComponent;
 }

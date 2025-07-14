@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+  Directive,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
@@ -8,91 +15,91 @@ import { NxExpandable, NxToggleButtonComponent } from './toggle-button.component
 
 @Directive({ standalone: true })
 abstract class ToggleButtonTest {
-    @ViewChild(NxToggleButtonComponent) toggleButtonInstance!: NxToggleButtonComponent;
-    target!: NxExpandable;
+  @ViewChild(NxToggleButtonComponent) toggleButtonInstance!: NxToggleButtonComponent;
+  target!: NxExpandable;
 }
 
 describe(NxToggleButtonComponent.name, () => {
-    let fixture: ComponentFixture<ToggleButtonTest>;
-    let testInstance: ToggleButtonTest;
-    let toggleButtonInstance: NxToggleButtonComponent;
-    let toggleButtonElement: DebugElement;
+  let fixture: ComponentFixture<ToggleButtonTest>;
+  let testInstance: ToggleButtonTest;
+  let toggleButtonInstance: NxToggleButtonComponent;
+  let toggleButtonElement: DebugElement;
 
-    function createTestComponent(component: Type<ToggleButtonTest>) {
-        fixture = TestBed.createComponent(component);
+  function createTestComponent(component: Type<ToggleButtonTest>) {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
+    toggleButtonInstance = testInstance.toggleButtonInstance;
+    toggleButtonElement = fixture.debugElement.query(By.css('.nx-toggle-button'));
+  }
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [NxTableModule, BasicToggleButtonComponent],
+    }).compileComponents();
+  }));
+
+  describe('basic', () => {
+    beforeEach(() => {
+      createTestComponent(BasicToggleButtonComponent);
+    });
+
+    it('creates the component', () => {
+      expect(toggleButtonInstance).toBeTruthy();
+    });
+
+    it("doesn't have the expanded state", () => {
+      expect(toggleButtonElement.nativeElement).not.toHaveClass('is-expanded');
+    });
+
+    describe('when clicking the button', () => {
+      beforeEach(() => {
+        toggleButtonElement.triggerEventHandler('click', {});
         fixture.detectChanges();
-        testInstance = fixture.componentInstance;
-        toggleButtonInstance = testInstance.toggleButtonInstance;
-        toggleButtonElement = fixture.debugElement.query(By.css('.nx-toggle-button'));
-    }
+      });
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            imports: [NxTableModule, BasicToggleButtonComponent],
-        }).compileComponents();
-    }));
+      it('toggled the target', () => {
+        expect(testInstance.target.toggle).toHaveBeenCalled();
+      });
 
-    describe('basic', () => {
+      it('has the expanded state', () => {
+        expect(toggleButtonElement.nativeElement).toHaveClass('is-expanded');
+      });
+
+      describe('and clicking the button again', () => {
         beforeEach(() => {
-            createTestComponent(BasicToggleButtonComponent);
+          toggleButtonElement.triggerEventHandler('click', {});
+          fixture.detectChanges();
         });
 
-        it('creates the component', () => {
-            expect(toggleButtonInstance).toBeTruthy();
+        it('toggled the target', () => {
+          expect(testInstance.target.toggle).toHaveBeenCalled();
         });
 
         it("doesn't have the expanded state", () => {
-            expect(toggleButtonElement.nativeElement).not.toHaveClass('is-expanded');
+          expect(toggleButtonElement.nativeElement).not.toHaveClass('is-expanded');
         });
-
-        describe('when clicking the button', () => {
-            beforeEach(() => {
-                toggleButtonElement.triggerEventHandler('click', {});
-                fixture.detectChanges();
-            });
-
-            it('toggled the target', () => {
-                expect(testInstance.target.toggle).toHaveBeenCalled();
-            });
-
-            it('has the expanded state', () => {
-                expect(toggleButtonElement.nativeElement).toHaveClass('is-expanded');
-            });
-
-            describe('and clicking the button again', () => {
-                beforeEach(() => {
-                    toggleButtonElement.triggerEventHandler('click', {});
-                    fixture.detectChanges();
-                });
-
-                it('toggled the target', () => {
-                    expect(testInstance.target.toggle).toHaveBeenCalled();
-                });
-
-                it("doesn't have the expanded state", () => {
-                    expect(toggleButtonElement.nativeElement).not.toHaveClass('is-expanded');
-                });
-            });
-        });
+      });
     });
+  });
 });
 
 @Component({
-    template: `<nx-toggle-button [target]="target" ariaLabel="toggle all rows"></nx-toggle-button>`,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NxTableModule],
+  template: `<nx-toggle-button [target]="target" ariaLabel="toggle all rows"></nx-toggle-button>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NxTableModule],
 })
 class BasicToggleButtonComponent extends ToggleButtonTest {
-    target: NxExpandable;
+  target: NxExpandable;
 
-    constructor() {
-        super();
-        const expanded = new BehaviorSubject(false);
-        this.target = {
-            expanded,
-            toggle: jasmine.createSpy('toggle').and.callFake(() => expanded.next(!expanded.value)),
-            expand: jasmine.createSpy('expand'),
-            close: jasmine.createSpy('close'),
-        };
-    }
+  constructor() {
+    super();
+    const expanded = new BehaviorSubject(false);
+    this.target = {
+      expanded,
+      toggle: jasmine.createSpy('toggle').and.callFake(() => expanded.next(!expanded.value)),
+      expand: jasmine.createSpy('expand'),
+      close: jasmine.createSpy('close'),
+    };
+  }
 }

@@ -1,60 +1,60 @@
 @import '../../shared-styles/index';
 
 :host {
-    display: inline-block;
-    vertical-align: top;
-    position: relative;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
 
-    &:not(.is-responsive) {
-        opacity: 0.9999; // trick that focus-ring of check-icon can shine through
-    }
+  &:not(.is-responsive) {
+    opacity: 0.9999; // trick that focus-ring of check-icon can shine through
+  }
 
-    .nx-circle-toggle__input {
-        opacity: 0;
-        position: absolute;
-    }
+  .nx-circle-toggle__input {
+    opacity: 0;
+    position: absolute;
+  }
 }
 
 :host:not(.in-group) {
-    margin-right: nx-spacer(xl);
+  margin-right: nx-spacer(xl);
+
+  @include media-breakpoint-down('small') {
+    margin-right: nx-spacer(4m);
+  }
+
+  [dir='rtl'] & {
+    margin-right: initial;
+    margin-left: nx-spacer(xl);
 
     @include media-breakpoint-down('small') {
-        margin-right: nx-spacer(4m);
+      margin-right: initial;
+      margin-left: nx-spacer(4m);
     }
-
-    [dir='rtl'] & {
-        margin-right: initial;
-        margin-left: nx-spacer(xl);
-
-        @include media-breakpoint-down('small') {
-            margin-right: initial;
-            margin-left: nx-spacer(4m);
-        }
-    }
+  }
 }
 
 // ARIA
 :host .nx-circle-toggle__input.cdk-keyboard-focused + .nx-circle-toggle__label {
-    ::ng-deep .nx-toggle-circle__icon-wrapper,
-    ::ng-deep .nx-toggle-circle__check-focus {
-        @include focus-style;
-    }
+  ::ng-deep .nx-toggle-circle__icon-wrapper,
+  ::ng-deep .nx-toggle-circle__check-focus {
+    @include focus-style;
+  }
 
-    ::ng-deep nx-mobile-toggle-button {
-        @include focus-style;
-        z-index: 1;
-    }
+  ::ng-deep nx-mobile-toggle-button {
+    @include focus-style;
+    z-index: 1;
+  }
 }
 
 :host(.has-error) {
-    ::ng-deep {
-        .is-flipped .nx-toggle-circle__check-icon,
-        .is-flipped .nx-toggle-circle__icon-wrapper {
-            background-color: v(danger) !important;
-        }
-
-        .nx-toggle-circle__icon-wrapper {
-            border-color: v(danger) !important;
-        }
+  ::ng-deep {
+    .is-flipped .nx-toggle-circle__check-icon,
+    .is-flipped .nx-toggle-circle__icon-wrapper {
+      background-color: v(danger) !important;
     }
+
+    .nx-toggle-circle__icon-wrapper {
+      border-color: v(danger) !important;
+    }
+  }
 }

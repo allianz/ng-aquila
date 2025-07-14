@@ -6,49 +6,49 @@ import { NxActionIconDirective } from './action-icon.directive';
 
 @Directive({ standalone: true })
 abstract class ActionIconTest {
-    @ViewChild(NxActionIconDirective) actionIconInstance!: NxActionIconDirective;
+  @ViewChild(NxActionIconDirective) actionIconInstance!: NxActionIconDirective;
 }
 
 describe(NxActionIconDirective.name, () => {
-    let fixture: ComponentFixture<ActionIconTest>;
-    let testInstance: ActionIconTest;
-    let actionIconInstance: NxActionIconDirective;
-    let actionIconElement: HTMLElement;
+  let fixture: ComponentFixture<ActionIconTest>;
+  let testInstance: ActionIconTest;
+  let actionIconInstance: NxActionIconDirective;
+  let actionIconElement: HTMLElement;
 
-    function createTestComponent(component: Type<ActionIconTest>) {
-        fixture = TestBed.createComponent(component);
-        fixture.detectChanges();
-        testInstance = fixture.componentInstance;
-        actionIconInstance = testInstance.actionIconInstance;
-        actionIconElement = fixture.nativeElement.querySelector('[nxActionIcon]');
-    }
+  function createTestComponent(component: Type<ActionIconTest>) {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
+    actionIconInstance = testInstance.actionIconInstance;
+    actionIconElement = fixture.nativeElement.querySelector('[nxActionIcon]');
+  }
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            imports: [NxActionModule, BasicActionIcon],
-        }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [NxActionModule, BasicActionIcon],
+    }).compileComponents();
+  }));
+
+  describe('basic', () => {
+    beforeEach(() => {
+      createTestComponent(BasicActionIcon);
+    });
+
+    it('default action icon includes the bem block element', waitForAsync(() => {
+      expect(actionIconElement).toHaveClass('nx-action__icon');
     }));
+  });
 
-    describe('basic', () => {
-        beforeEach(() => {
-            createTestComponent(BasicActionIcon);
-        });
-
-        it('default action icon includes the bem block element', waitForAsync(() => {
-            expect(actionIconElement).toHaveClass('nx-action__icon');
-        }));
+  describe('a11y', () => {
+    it('has no accessibility violations', async () => {
+      createTestComponent(BasicActionIcon);
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
-
-    describe('a11y', () => {
-        it('has no accessibility violations', async () => {
-            createTestComponent(BasicActionIcon);
-            await expectAsync(fixture.nativeElement).toBeAccessible();
-        });
-    });
+  });
 });
 
 @Component({
-    template: `<span nxActionIcon></span>`,
-    imports: [NxActionModule],
+  template: `<span nxActionIcon></span>`,
+  imports: [NxActionModule],
 })
 class BasicActionIcon extends ActionIconTest {}

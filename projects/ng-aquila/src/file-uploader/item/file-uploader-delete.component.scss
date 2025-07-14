@@ -1,10 +1,10 @@
 @import '../../shared-styles/index';
 
 :host {
-    display: block;
+  display: block;
 
-    > button {
-        margin-bottom: 0;
-        white-space: nowrap;
-    }
+  > button {
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
 }

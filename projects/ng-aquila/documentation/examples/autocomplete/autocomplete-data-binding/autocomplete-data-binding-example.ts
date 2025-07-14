@@ -1,106 +1,104 @@
+import {
+  NxAutocompleteComponent,
+  NxAutocompleteOptionComponent,
+  NxAutocompleteTriggerDirective,
+} from '@allianz/ng-aquila/autocomplete';
+import {
+  NxFormfieldComponent,
+  NxFormfieldErrorDirective,
+} from '@allianz/ng-aquila/formfield';
+import { NxInputDirective } from '@allianz/ng-aquila/input';
+import {
+  NxNaturalLanguageFormComponent,
+  NxWordComponent,
+} from '@allianz/ng-aquila/natural-language-form';
 import { LowerCasePipe } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, Injectable } from '@angular/core';
 import {
-    FormBuilder,
-    FormsModule,
-    ReactiveFormsModule,
-    Validators,
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
-import {
-    NxAutocompleteComponent,
-    NxAutocompleteOptionComponent,
-    NxAutocompleteTriggerDirective,
-} from '@aposin/ng-aquila/autocomplete';
-import {
-    NxFormfieldComponent,
-    NxFormfieldErrorDirective,
-} from '@aposin/ng-aquila/formfield';
-import { NxInputDirective } from '@aposin/ng-aquila/input';
-import {
-    NxNaturalLanguageFormComponent,
-    NxWordComponent,
-} from '@aposin/ng-aquila/natural-language-form';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class WikipediaService {
-    private readonly WIKIPEDIA_URL = 'https://en.wikipedia.org/w/api.php';
+  private readonly WIKIPEDIA_URL = 'https://en.wikipedia.org/w/api.php';
 
-    constructor(private readonly client: HttpClient) {}
+  constructor(private readonly client: HttpClient) {}
 
-    search(term: string): Observable<any[]> {
-        const url = searchUrl(term, this.WIKIPEDIA_URL);
-        return this.client
-            .jsonp(url, 'callback')
-            .pipe(
-                map((response: any) =>
-                    response[1].map((item: any) => ({ value: item })),
-                ),
-            );
+  search(term: string): Observable<any[]> {
+    const url = searchUrl(term, this.WIKIPEDIA_URL);
+    return this.client
+      .jsonp(url, 'callback')
+      .pipe(
+        map((response: any) =>
+          response[1].map((item: any) => ({ value: item })),
+        ),
+      );
 
-        function searchUrl(searchTeam: string, base: string) {
-            const params = new HttpParams()
-                .append('action', 'opensearch')
-                .append('search', encodeURIComponent(searchTeam))
-                .append('format', 'json');
-            return `${base}?${params.toString()}`;
-        }
+    function searchUrl(searchTeam: string, base: string) {
+      const params = new HttpParams()
+        .append('action', 'opensearch')
+        .append('search', encodeURIComponent(searchTeam))
+        .append('format', 'json');
+      return `${base}?${params.toString()}`;
     }
+  }
 }
 
 /**
  * @title Data binding examples
  */
 @Component({
-    selector: 'autocomplete-data-binding-example',
-    templateUrl: './autocomplete-data-binding-example.html',
-    styleUrls: ['./autocomplete-data-binding-example.css'],
-    providers: [WikipediaService],
-    imports: [
-        NxFormfieldComponent,
-        NxInputDirective,
-        NxAutocompleteTriggerDirective,
-        FormsModule,
-        NxAutocompleteComponent,
-        NxAutocompleteOptionComponent,
-        ReactiveFormsModule,
-        NxNaturalLanguageFormComponent,
-        NxWordComponent,
-        NxFormfieldErrorDirective,
-        LowerCasePipe,
-    ],
+  selector: 'autocomplete-data-binding-example',
+  templateUrl: './autocomplete-data-binding-example.html',
+  styleUrls: ['./autocomplete-data-binding-example.css'],
+  providers: [WikipediaService],
+  imports: [
+    NxFormfieldComponent,
+    NxInputDirective,
+    NxAutocompleteTriggerDirective,
+    FormsModule,
+    NxAutocompleteComponent,
+    NxAutocompleteOptionComponent,
+    ReactiveFormsModule,
+    NxNaturalLanguageFormComponent,
+    NxWordComponent,
+    NxFormfieldErrorDirective,
+    LowerCasePipe,
+  ],
 })
 export class AutocompleteDataBindingExampleComponent {
-    modelBoundData = 'asdf';
+  modelBoundData = 'asdf';
 
-    testForm = new FormBuilder().group({
-        autocomplete: [null, Validators.required],
-    });
+  testForm = new FormBuilder().group({
+    autocomplete: [null, Validators.required],
+  });
 
-    dynamicBackendOptions: (term: string) => Observable<string[]>;
+  dynamicBackendOptions: (term: string) => Observable<string[]>;
 
-    constructor(readonly wikipediaService: WikipediaService) {
-        this.dynamicBackendOptions = (term: string) =>
-            wikipediaService
-                .search(term)
-                .pipe(
-                    map((items: any) => items.map((item: any) => item.value)),
-                );
+  constructor(readonly wikipediaService: WikipediaService) {
+    this.dynamicBackendOptions = (term: string) =>
+      wikipediaService
+        .search(term)
+        .pipe(map((items: any) => items.map((item: any) => item.value)));
+  }
+
+  simpleFilteredOptions(value: string): string[] {
+    if (!value) {
+      return [];
     }
-
-    simpleFilteredOptions(value: string): string[] {
-        if (!value) {
-            return [];
-        }
-        const data = (
-            'Chimpanzee,Chinchilla,Chipmunk,Coati,Cicada,Clam,' +
-            'Clownfish,Cobra,Cockroach,Cod,Condor,Constrictor,Coral,Cougar,Cow,' +
-            'Coyote,Coypu,Crab,Crane,Crane fly,Crawdad,Crayfish,Cricket,Crocodile,Crow'
-        ).split(',');
-        return data.filter(d => d.toLowerCase().includes(value.toLowerCase()));
-    }
+    const data = (
+      'Chimpanzee,Chinchilla,Chipmunk,Coati,Cicada,Clam,' +
+      'Clownfish,Cobra,Cockroach,Cod,Condor,Constrictor,Coral,Cougar,Cow,' +
+      'Coyote,Coypu,Crab,Crane,Crane fly,Crawdad,Crayfish,Cricket,Crocodile,Crow'
+    ).split(',');
+    return data.filter((d) => d.toLowerCase().includes(value.toLowerCase()));
+  }
 }

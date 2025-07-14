@@ -1,114 +1,114 @@
 @import '../shared-styles/index';
 
 :host {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .nx-phone-input___wrapper {
-    display: flex;
-    height: 100%;
-    align-items: center;
+  display: flex;
+  height: 100%;
+  align-items: center;
 }
 
 .hide {
-    display: none;
-    visibility: hidden;
+  display: none;
+  visibility: hidden;
 }
 
 input {
-    flex: 1;
+  flex: 1;
 }
 
 .readonly-input {
-    margin-left: 7px;
+  margin-left: 7px;
 }
 
 nx-dropdown {
-    width: auto;
-    margin-right: 8px;
+  width: auto;
+  margin-right: 8px;
 
-    &.cdk-keyboard-focused {
-        @include focus-style();
-        border-radius: 4px;
+  &.cdk-keyboard-focused {
+    @include focus-style();
+    border-radius: 4px;
+  }
+
+  // Overrides of input and dropdown necessary
+  // the formfield brings some styles assuming that dropdown and input are used
+  // standalone, so e.g. both have a padding left and right of 7px to bring some space
+  // to the formfield container. for the phone input we need to override these things
+  ::ng-deep {
+    .nx-dropdown__container {
+      padding-right: 0;
     }
 
-    // Overrides of input and dropdown necessary
-    // the formfield brings some styles assuming that dropdown and input are used
-    // standalone, so e.g. both have a padding left and right of 7px to bring some space
-    // to the formfield container. for the phone input we need to override these things
-    ::ng-deep {
-        .nx-dropdown__container {
-            padding-right: 0;
-        }
-
-        .nx-dropdown__icon {
-            margin-left: 8px;
-        }
-
-        .nx-dropdown__rendered {
-            font-size: 1rem;
-            line-height: 1.5rem;
-        }
+    .nx-dropdown__icon {
+      margin-left: 8px;
     }
+
+    .nx-dropdown__rendered {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+  }
 }
 
 :host-context(.nx-formfield.has-outline) {
-    nx-dropdown {
-        margin-left: 7px;
-    }
+  nx-dropdown {
+    margin-left: 7px;
+  }
 
-    input {
-        padding-left: 0;
-    }
+  input {
+    padding-left: 0;
+  }
 
-    ::ng-deep {
-        .nx-dropdown__container {
-            padding: 0;
-        }
+  ::ng-deep {
+    .nx-dropdown__container {
+      padding: 0;
     }
+  }
 }
 
 :host-context(.is-disabled) {
-    input {
-        cursor: not-allowed;
-    }
+  input {
+    cursor: not-allowed;
+  }
 }
 
 input {
-    text-align: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    background: 0 0;
-    color: inherit;
-    border: none;
-    outline: 0;
-    padding: 0;
-    margin: 0;
+  text-align: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  background: 0 0;
+  color: inherit;
+  border: none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
 }
 
 :host-context([dir='rtl']) {
+  nx-dropdown {
+    margin-right: 0;
+    margin-left: 8px;
+
+    ::ng-deep {
+      .nx-dropdown__icon {
+        margin-right: 8px;
+        margin-left: 0;
+      }
+    }
+  }
+
+  &:host-context(.nx-formfield.has-outline) {
     nx-dropdown {
-        margin-right: 0;
-        margin-left: 8px;
-
-        ::ng-deep {
-            .nx-dropdown__icon {
-                margin-right: 8px;
-                margin-left: 0;
-            }
-        }
+      margin-right: 7px;
+      margin-left: 8px;
     }
 
-    &:host-context(.nx-formfield.has-outline) {
-        nx-dropdown {
-            margin-right: 7px;
-            margin-left: 8px;
-        }
-
-        input {
-            padding-left: 7px;
-            padding-right: 0;
-        }
+    input {
+      padding-left: 7px;
+      padding-right: 0;
     }
+  }
 }

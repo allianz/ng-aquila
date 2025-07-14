@@ -5,7 +5,7 @@ $message-border-width: 1px;
 
 /* Global styles */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 h1,
@@ -14,130 +14,130 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0;
-    margin-bottom: 1em;
+  margin: 0;
+  margin-bottom: 1em;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 /* Code/markdown styles */
 .docs-deprecation-warning {
-    border-width: $message-border-width;
-    border-style: solid;
-    border-color: v(message-warning-border-color);
-    padding: 24px - $message-border-width;
-    border-radius: v(message-border-radius);
-    background-color: v(documentation-message-warning-background-color);
-    margin-bottom: 16px;
+  border-width: $message-border-width;
+  border-style: solid;
+  border-color: v(message-warning-border-color);
+  padding: 24px - $message-border-width;
+  border-radius: v(message-border-radius);
+  background-color: v(documentation-message-warning-background-color);
+  margin-bottom: 16px;
 }
 
 .docs-danger-text {
-    color: v(danger);
+  color: v(danger);
 }
 
 .docs-inverse-container {
-    background: v(documentation-inverse-container-background);
-    padding: 24px;
+  background: v(documentation-inverse-container-background);
+  padding: 24px;
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        color: v(negative);
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: v(negative);
+  }
 }
 
 .docs-expert-container {
-    background: v(documentation-expert-container-background);
-    padding: 24px;
+  background: v(documentation-expert-container-background);
+  padding: 24px;
 }
 
 ::ng-deep .docs-markdown--ul {
-    margin-left: 24px;
-    margin-bottom: 24px;
+  margin-left: 24px;
+  margin-bottom: 24px;
 }
 
 ::ng-deep .docs-markdown--li {
-    list-style: square;
+  list-style: square;
 }
 
 ::ng-deep .docs-api {
-    font-size: 1rem;
-    line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 ::ng-deep .docs-api-property {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    margin: 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin: 0;
 }
 
 ::ng-deep .docs-api-module-import,
 ::ng-deep .docs-api__selector-container {
-    border-width: 1px;
-    border-style: solid;
-    border-color: v(documentation-api-codebox-border-color);
-    border-radius: 5px;
-    letter-spacing: 0.0125rem;
-    padding: 12px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: v(documentation-api-codebox-border-color);
+  border-radius: 5px;
+  letter-spacing: 0.0125rem;
+  padding: 12px;
 }
 
 ::ng-deep .docs-api__selector-container {
-    padding: 4px 8px;
+  padding: 4px 8px;
 }
 
 ::ng-deep .docs-api-class-extends-label {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 ::ng-deep .docs-api table,
 ::ng-deep .docs-markdown--table {
-    width: 100%;
-    border-top-width: 1px;
-    border-top-style: solid;
-    border-top-color: v(table-header-border-top-color);
-    border-collapse: collapse;
-    font-size: 1rem;
-    line-height: 1.5rem;
+  width: 100%;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: v(table-header-border-top-color);
+  border-collapse: collapse;
+  font-size: 1rem;
+  line-height: 1.5rem;
 
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 
-    p {
-        margin: 0;
-    }
+  p {
+    margin: 0;
+  }
 
-    th,
-    td {
-        padding: 12px;
-        text-align: left;
-    }
+  th,
+  td {
+    padding: 12px;
+    text-align: left;
+  }
 
-    th,
-    tr:last-child td {
-        border-bottom-width: 2px;
-        border-bottom-style: solid;
-        border-bottom-color: v(table-border-bottom-color);
-    }
+  th,
+  tr:last-child td {
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: v(table-border-bottom-color);
+  }
 
-    tr td {
-        border-bottom-color: v(table-cell-border-top-color);
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
-    }
+  tr td {
+    border-bottom-color: v(table-cell-border-top-color);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
 }
 
 ::ng-deep .docs-api-module-import__import-span,
 ::ng-deep .docs-api-module-import__from-span {
-    color: v(documentation-api-code-import-text-color);
+  color: v(documentation-api-code-import-text-color);
 }
 
 ::ng-deep .docs-api-module-import__path-span {
-    color: v(documentation-api-code-path-text-color);
+  color: v(documentation-api-code-path-text-color);
 }
 
 ::ng-deep .docs-link,
@@ -145,633 +145,685 @@ a {
 ::ng-deep .docs-markdown--li a,
 ::ng-deep .docs-markdown--table a,
 ::ng-deep .docs-deprecation-warning a {
-    color: v(interactive-text);
-    font-weight: 600;
+  color: v(interactive-text);
+  font-weight: 600;
 
-    &:hover {
-        color: v(hover-link);
-    }
+  &:hover {
+    color: v(hover-link);
+  }
 
-    &:active {
-        color: v(active-primary);
-    }
+  &:active {
+    color: v(active-primary);
+  }
 }
 
 ::ng-deep .docs-api-property__type,
 ::ng-deep .docs-api-method-parameter-type,
 ::ng-deep .docs-api-method-returns-type {
-    color: v(documentation-api-code-types-text-color);
+  color: v(documentation-api-code-types-text-color);
 }
 
 // marker
 ::ng-deep code.docs-api-type-alias-value,
 ::ng-deep .docs-api-input__keyword,
 ::ng-deep .docs-api-output__keyword {
-    color: v(documentation-api-code-keywords-text-color);
+  color: v(documentation-api-code-keywords-text-color);
 }
 
 ::ng-deep .docs-api-input-marker span,
 ::ng-deep .docs-api-output-marker span {
-    display: inline-block;
-    white-space: nowrap;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 ::ng-deep .docs-api-input-alias,
 ::ng-deep .docs-api-output-alias {
-    color: v(documentation-api-code-alias-text-color);
+  color: v(documentation-api-code-alias-text-color);
 }
 
 ::ng-deep .docs-api-input__badge,
 ::ng-deep .docs-api-output__badge {
-    color: black;
-    border-radius: 6px;
-    padding: 0 6px;
-    font-size: 14px;
-    margin-right: 6px;
+  color: black;
+  border-radius: 6px;
+  padding: 0 6px;
+  font-size: 14px;
+  margin-right: 6px;
 }
 
 ::ng-deep .docs-api-input__badge {
-    background-color: rgb(from var(--documentation-api-code-alias-text-color) r g b / 0.5);
+  background-color: rgb(from var(--documentation-api-code-alias-text-color) r g b / 0.5);
 }
 
 ::ng-deep .docs-api-output__badge {
-    background-color: rgb(from var(--documentation-api-code-types-text-color) r g b / 0.5);
+  background-color: rgb(from var(--documentation-api-code-types-text-color) r g b / 0.5);
 }
 
 ::ng-deep .docs-api-deprecated-marker,
 ::ng-deep .docs-api-class-deprecated-marker {
-    color: v(danger);
+  color: v(danger);
 }
 
 // Docs headings
 ::ng-deep .docs-markdown--h4,
 ::ng-deep .docs-api-h4 {
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-weight: 400;
-    margin: 16px 0;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 400;
+  margin: 16px 0;
 }
 
 ::ng-deep .docs-markdown--h3,
 ::ng-deep .docs-api-h3 {
-    font-size: 1.625rem;
-    line-height: 2rem;
-    font-weight: 400;
-    margin-top: 32px;
-    margin-bottom: 16px;
+  font-size: 1.625rem;
+  line-height: 2rem;
+  font-weight: 400;
+  margin-top: 32px;
+  margin-bottom: 16px;
 }
 
 ::ng-deep .component-api__header,
 ::ng-deep .component-examples__header,
 ::ng-deep .docs-markdown--h2,
 ::ng-deep .docs-api-h2 {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-    font-weight: 400;
-    margin-bottom: 16px;
-    margin-top: 0;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 400;
+  margin-bottom: 16px;
+  margin-top: 0;
 }
 
 ::ng-deep .docs-markdown--h2,
 ::ng-deep .docs-api-h2 {
-    margin-top: 32px;
+  margin-top: 32px;
 }
 
 ::ng-deep .component-overview__header,
 ::ng-deep .general-overview__header,
 ::ng-deep .docs-markdown--h1,
 ::ng-deep .docs-api-h1 {
-    font-size: 2.5rem;
-    line-height: 3rem;
-    font-weight: 400;
-    margin-top: 32px;
-    margin-bottom: 16px;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  font-weight: 400;
+  margin-top: 32px;
+  margin-bottom: 16px;
 }
 
 ::ng-deep ol {
-    padding-left: 16px;
+  padding-left: 16px;
 
-    .docs-markdown--li {
-        list-style: decimal;
-    }
+  .docs-markdown--li {
+    list-style: decimal;
+  }
 }
 
 ::ng-deep pre {
-    background: v(documentation-codeblock-background-color);
-    padding: 16px;
-    border-radius: 2px;
-    display: inline-block;
-    margin-top: 4px;
-    margin-bottom: 16px;
-    width: 100%;
+  background: v(documentation-codeblock-background-color);
+  padding: 16px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  width: 100%;
 
-    @media screen and (forced-colors: active) {
-        border: 1px solid CanvasText;
-    }
+  @media screen and (forced-colors: active) {
+    border: 1px solid CanvasText;
+  }
 }
 
 ::ng-deep .docs-markdown--p code,
 ::ng-deep .docs-deprecation-warning code,
 ::ng-deep .docs-markdown--li > code,
 ::ng-deep .docs-markdown--table code {
-    padding: 2px;
-    margin: 0;
-    background-color: v(documentation-markdown-code-background-color);
-    border-radius: 4px;
+  padding: 2px;
+  margin: 0;
+  background-color: v(documentation-markdown-code-background-color);
+  border-radius: 4px;
 }
 
 ::ng-deep p.docs-markdown--p {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 ::ng-deep .docs-markdown--h3:first-child,
 ::ng-deep .docs-markdown--h2:first-child,
 ::ng-deep .docs-markdown--h1:first-child {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 ::ng-deep .docs-api-method-card {
-    border-width: 1px;
-    border-style: solid;
-    border-color: v(documentation-api-methodbox-border-color);
-    width: 100%;
-    border-radius: 4px;
-    margin-bottom: 24px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: v(documentation-api-methodbox-border-color);
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 24px;
 }
 
 ::ng-deep .docs-api-method-name {
-    font-weight: 600;
-    margin-bottom: 0;
+  font-weight: 600;
+  margin-bottom: 0;
 }
 
 ::ng-deep .docs-api-method-card-header {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: v(documentation-api-methodbox-border-color);
-    padding: 12px;
-    background-color: v(documentation-api-methodbox-header-background-color);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: v(documentation-api-methodbox-border-color);
+  padding: 12px;
+  background-color: v(documentation-api-methodbox-header-background-color);
 }
 
 ::ng-deep .docs-api-method-description {
-    padding: 12px;
+  padding: 12px;
 
-    p {
-        margin: 0;
-    }
+  p {
+    margin: 0;
+  }
 
-    p:not(:last-child) {
-        margin-bottom: 8px;
-    }
+  p:not(:last-child) {
+    margin-bottom: 8px;
+  }
 }
 
 ::ng-deep .docs-api-method-params,
 ::ng-deep .docs-api-method-returns {
-    border-top-width: 1px;
-    border-top-style: solid;
-    border-top-color: v(documentation-api-methodbox-border-color);
-    padding: 12px;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: v(documentation-api-methodbox-border-color);
+  padding: 12px;
 }
 
 ::ng-deep .docs-api-method-returns p {
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 ::ng-deep .docs-api-method-params .docs-api-parameter-container:not(:last-child) {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: v(documentation-api-methodbox-border-color);
-    padding-bottom: 8px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: v(documentation-api-methodbox-border-color);
+  padding-bottom: 8px;
 }
 
 ::ng-deep .docs-api-method-param-title,
 ::ng-deep .docs-api-method-returns-title {
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 8px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 
 ::ng-deep .docs-api-parameter-container {
-    margin-top: 8px;
+  margin-top: 8px;
 }
 
 ::ng-deep .docs-api-parameter-name {
-    margin-top: 8px;
-    display: block;
+  margin-top: 8px;
+  display: block;
 }
 
 ::ng-deep .docs-api-method-parameter-description {
-    margin: 0;
+  margin: 0;
 }
 
 // GRID EXAMPLE STYLES
 // The grid styles are also added in projects/ng-aquila/documentation/assets/stack-blitz/src/styles.scss
 // to make the grid examples work in Stackblitz.
 .grid-tiers-example__container {
-    height: 64px;
-    width: 25%;
-    text-align: center;
-    position: relative;
-    margin-bottom: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 64px;
+  width: 25%;
+  text-align: center;
+  position: relative;
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    &.tier-tiny {
-        background: v(documentation-grid-tiny-color);
-    }
+  &.tier-tiny {
+    background: v(documentation-grid-tiny-color);
+  }
 
-    &.tier-small {
-        background: v(documentation-grid-small-color);
-    }
+  &.tier-small {
+    background: v(documentation-grid-small-color);
+  }
 
-    &.tier-medium {
-        background: v(documentation-grid-medium-color);
-    }
+  &.tier-medium {
+    background: v(documentation-grid-medium-color);
+  }
 
-    &.tier-large {
-        background: v(documentation-grid-large-color);
-    }
+  &.tier-large {
+    background: v(documentation-grid-large-color);
+  }
 
-    &.tier-xlarge {
-        background: v(documentation-grid-xlarge-color);
-    }
+  &.tier-xlarge {
+    background: v(documentation-grid-xlarge-color);
+  }
 
-    &.tier-2xlarge {
-        background: v(documentation-grid-2xlarge-color);
-    }
+  &.tier-2xlarge {
+    background: v(documentation-grid-2xlarge-color);
+  }
 
-    &.tier-3xlarge {
-        background: v(documentation-grid-3xlarge-color);
-    }
+  &.tier-3xlarge {
+    background: v(documentation-grid-3xlarge-color);
+  }
 }
 
 .grid-tiers-example__label {
-    color: v(documentation-grid-text-color);
-    font-weight: 600;
+  color: v(documentation-grid-text-color);
+  font-weight: 600;
 }
 
 .grid-tiers-example__pixel-value {
-    position: absolute;
-    display: block;
-    color: v(text-01);
-    width: 64px;
-    top: 64px;
-    left: -32px;
+  position: absolute;
+  display: block;
+  color: v(text-01);
+  width: 64px;
+  top: 64px;
+  left: -32px;
 }
 
 .grid-component__current-grid-tier {
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-    z-index: 1;
-    color: v(documentation-grid-text-color);
-    padding: 8px;
-    text-align: center;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: 600;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1;
+  color: v(documentation-grid-text-color);
+  padding: 8px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
 
+  @media only screen and (min-width: 0) and (max-width: 319px) {
+    background-color: v(documentation-grid-tiny-color);
+  }
+
+  @media only screen and (min-width: 320px) and (max-width: 703px) {
+    background-color: v(documentation-grid-small-color);
+  }
+
+  @media only screen and (min-width: 704px) and (max-width: 991px) {
+    background-color: v(documentation-grid-medium-color);
+  }
+
+  @media only screen and (min-width: 992px) and (max-width: 1279px) {
+    background-color: v(documentation-grid-large-color);
+  }
+
+  @media only screen and (min-width: 1280px) and (max-width: 1471px) {
+    background-color: v(documentation-grid-xlarge-color);
+  }
+
+  @media only screen and (min-width: 1472px) and (max-width: 1759px) {
+    background-color: v(documentation-grid-2xlarge-color);
+  }
+
+  @media only screen and (min-width: 1760px) {
+    background-color: v(documentation-grid-3xlarge-color);
+  }
+
+  .current-grid__tier {
+    display: none;
+  }
+
+  .current-grid__tier-tiny {
     @media only screen and (min-width: 0) and (max-width: 319px) {
-        background-color: v(documentation-grid-tiny-color);
+      display: inline-block;
     }
+  }
 
+  .current-grid__tier-small {
     @media only screen and (min-width: 320px) and (max-width: 703px) {
-        background-color: v(documentation-grid-small-color);
+      display: inline-block;
     }
+  }
 
+  .current-grid__tier-medium {
     @media only screen and (min-width: 704px) and (max-width: 991px) {
-        background-color: v(documentation-grid-medium-color);
+      display: inline-block;
     }
+  }
 
+  .current-grid__tier-large {
     @media only screen and (min-width: 992px) and (max-width: 1279px) {
-        background-color: v(documentation-grid-large-color);
+      display: inline-block;
     }
+  }
 
+  .current-grid__tier-xlarge {
     @media only screen and (min-width: 1280px) and (max-width: 1471px) {
-        background-color: v(documentation-grid-xlarge-color);
+      display: inline-block;
     }
+  }
 
+  .current-grid__tier-2xlarge {
     @media only screen and (min-width: 1472px) and (max-width: 1759px) {
-        background-color: v(documentation-grid-2xlarge-color);
+      display: inline-block;
     }
+  }
 
+  .current-grid__tier-3xlarge {
     @media only screen and (min-width: 1760px) {
-        background-color: v(documentation-grid-3xlarge-color);
+      display: inline-block;
     }
+  }
 
-    .current-grid__tier {
-        display: none;
-    }
-
-    .current-grid__tier-tiny {
-        @media only screen and (min-width: 0) and (max-width: 319px) {
-            display: inline-block;
-        }
-    }
-
-    .current-grid__tier-small {
-        @media only screen and (min-width: 320px) and (max-width: 703px) {
-            display: inline-block;
-        }
-    }
-
-    .current-grid__tier-medium {
-        @media only screen and (min-width: 704px) and (max-width: 991px) {
-            display: inline-block;
-        }
-    }
-
-    .current-grid__tier-large {
-        @media only screen and (min-width: 992px) and (max-width: 1279px) {
-            display: inline-block;
-        }
-    }
-
-    .current-grid__tier-xlarge {
-        @media only screen and (min-width: 1280px) and (max-width: 1471px) {
-            display: inline-block;
-        }
-    }
-
-    .current-grid__tier-2xlarge {
-        @media only screen and (min-width: 1472px) and (max-width: 1759px) {
-            display: inline-block;
-        }
-    }
-
-    .current-grid__tier-3xlarge {
-        @media only screen and (min-width: 1760px) {
-            display: inline-block;
-        }
-    }
-
-    @media screen and (forced-colors: active) {
-        background-color: highlight;
-        color: highlightText;
-        forced-color-adjust: none;
-    }
+  @media screen and (forced-colors: active) {
+    background-color: highlight;
+    color: highlightText;
+    forced-color-adjust: none;
+  }
 }
 
 .grid-component__current-grid-tier-container {
-    color: v(documentation-grid-text-color);
-    text-align: center;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: 600;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 45px;
-    z-index: 1;
+  color: v(documentation-grid-text-color);
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 45px;
+  z-index: 1;
 
+  @container (min-width: 0) and (max-width: 319px) {
+    background-color: cyan;
+  }
+
+  @container (min-width: 320px) and (max-width: 703px) {
+    background-color: #b0050c;
+  }
+
+  @container (min-width: 704px) and (max-width: 991px) {
+    background-color: olivedrab;
+  }
+
+  @container (min-width: 992px) and (max-width: 1279px) {
+  }
+
+  @container (min-width: 1280px) and (max-width: 1471px) {
+    background-color: v(documentation-grid-xlarge-color);
+  }
+
+  @container (min-width: 1472px) and (max-width: 1759px) {
+    background-color: v(documentation-grid-2xlarge-color);
+  }
+
+  @container (min-width: 1760px) {
+    background-color: v(documentation-grid-3xlarge-color);
+  }
+
+  .current-grid__tier {
+    padding: 8px;
+    height: 100%;
+    width: 100%;
+    display: none;
+  }
+
+  .current-grid__tier-tiny {
     @container (min-width: 0) and (max-width: 319px) {
-        background-color: cyan;
+      background-color: v(documentation-grid-tiny-color);
+      display: inline-block;
     }
+  }
 
+  .current-grid__tier-small {
     @container (min-width: 320px) and (max-width: 703px) {
-        background-color: #b0050c;
+      background-color: v(documentation-grid-small-color);
+      display: inline-block;
     }
+  }
 
+  .current-grid__tier-medium {
     @container (min-width: 704px) and (max-width: 991px) {
-        background-color: olivedrab;
+      background-color: v(documentation-grid-medium-color);
+      display: inline-block;
     }
+  }
 
+  .current-grid__tier-large {
     @container (min-width: 992px) and (max-width: 1279px) {
+      background-color: v(documentation-grid-large-color);
+      display: inline-block;
     }
+  }
 
+  .current-grid__tier-xlarge {
     @container (min-width: 1280px) and (max-width: 1471px) {
-        background-color: v(documentation-grid-xlarge-color);
+      display: inline-block;
     }
+  }
 
+  .current-grid__tier-2xlarge {
     @container (min-width: 1472px) and (max-width: 1759px) {
-        background-color: v(documentation-grid-2xlarge-color);
+      display: inline-block;
     }
+  }
 
+  .current-grid__tier-3xlarge {
     @container (min-width: 1760px) {
-        background-color: v(documentation-grid-3xlarge-color);
+      display: inline-block;
     }
+  }
 
-    .current-grid__tier {
-        padding: 8px;
-        height: 100%;
-        width: 100%;
-        display: none;
-    }
-
-    .current-grid__tier-tiny {
-        @container (min-width: 0) and (max-width: 319px) {
-            background-color: v(documentation-grid-tiny-color);
-            display: inline-block;
-        }
-    }
-
-    .current-grid__tier-small {
-        @container (min-width: 320px) and (max-width: 703px) {
-            background-color: v(documentation-grid-small-color);
-            display: inline-block;
-        }
-    }
-
-    .current-grid__tier-medium {
-        @container (min-width: 704px) and (max-width: 991px) {
-            background-color: v(documentation-grid-medium-color);
-            display: inline-block;
-        }
-    }
-
-    .current-grid__tier-large {
-        @container (min-width: 992px) and (max-width: 1279px) {
-            background-color: v(documentation-grid-large-color);
-            display: inline-block;
-        }
-    }
-
-    .current-grid__tier-xlarge {
-        @container (min-width: 1280px) and (max-width: 1471px) {
-            display: inline-block;
-        }
-    }
-
-    .current-grid__tier-2xlarge {
-        @container (min-width: 1472px) and (max-width: 1759px) {
-            display: inline-block;
-        }
-    }
-
-    .current-grid__tier-3xlarge {
-        @container (min-width: 1760px) {
-            display: inline-block;
-        }
-    }
-
-    //@media screen and (forced-colors: active) {
-    //    background-color: highlight;
-    //    color: highlightText;
-    //    forced-color-adjust: none;
-    //}
+  //@media screen and (forced-colors: active) {
+  //    background-color: highlight;
+  //    color: highlightText;
+  //    forced-color-adjust: none;
+  //}
 }
 
 .docs-grid-colored-grid {
-    @media only screen and (min-width: 0) and (max-width: 319px) {
-        background-color: v(documentation-grid-tiny-color-02);
-    }
+  @media only screen and (min-width: 0) and (max-width: 319px) {
+    background-color: v(documentation-grid-tiny-color-02);
+  }
 
-    @media only screen and (min-width: 320px) and (max-width: 703px) {
-        background-color: v(documentation-grid-small-color-02);
-    }
+  @media only screen and (min-width: 320px) and (max-width: 703px) {
+    background-color: v(documentation-grid-small-color-02);
+  }
 
-    @media only screen and (min-width: 704px) and (max-width: 991px) {
-        background-color: v(documentation-grid-medium-color-02);
-    }
+  @media only screen and (min-width: 704px) and (max-width: 991px) {
+    background-color: v(documentation-grid-medium-color-02);
+  }
 
-    @media only screen and (min-width: 992px) and (max-width: 1279px) {
-        background-color: v(documentation-grid-large-color-02);
-    }
+  @media only screen and (min-width: 992px) and (max-width: 1279px) {
+    background-color: v(documentation-grid-large-color-02);
+  }
 
-    @media only screen and (min-width: 1280px) and (max-width: 1471px) {
-        background-color: v(documentation-grid-xlarge-color-02);
-    }
+  @media only screen and (min-width: 1280px) and (max-width: 1471px) {
+    background-color: v(documentation-grid-xlarge-color-02);
+  }
 
-    @media only screen and (min-width: 1472px) and (max-width: 1759px) {
-        background-color: v(documentation-grid-2xlarge-color-02);
-    }
+  @media only screen and (min-width: 1472px) and (max-width: 1759px) {
+    background-color: v(documentation-grid-2xlarge-color-02);
+  }
 
-    @media only screen and (min-width: 1760px) {
-        background-color: v(documentation-grid-3xlarge-color-02);
-    }
+  @media only screen and (min-width: 1760px) {
+    background-color: v(documentation-grid-3xlarge-color-02);
+  }
 }
 
 .docs-grid-colored-col {
-    font-weight: 600;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
-    @media only screen and (min-width: 0) and (max-width: 319px) {
-        background-image:
-            linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
-            linear-gradient(to bottom, v(documentation-grid-tiny-color) 0%, v(documentation-grid-tiny-color) 100%);
-        background-clip: content-box, padding-box;
-        outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
-    }
+  @media only screen and (min-width: 0) and (max-width: 319px) {
+    background-image:
+      linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+      linear-gradient(
+        to bottom,
+        v(documentation-grid-tiny-color) 0%,
+        v(documentation-grid-tiny-color) 100%
+      );
+    background-clip: content-box, padding-box;
+    outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
+  }
 
-    @media only screen and (min-width: 320px) and (max-width: 703px) {
-        background-image:
-            linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
-            linear-gradient(to bottom, v(documentation-grid-small-color) 0%, v(documentation-grid-small-color) 100%);
-        background-clip: content-box, padding-box;
-        outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
-    }
+  @media only screen and (min-width: 320px) and (max-width: 703px) {
+    background-image:
+      linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+      linear-gradient(
+        to bottom,
+        v(documentation-grid-small-color) 0%,
+        v(documentation-grid-small-color) 100%
+      );
+    background-clip: content-box, padding-box;
+    outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
+  }
 
-    @media only screen and (min-width: 704px) and (max-width: 991px) {
-        background-image:
-            linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
-            linear-gradient(to bottom, v(documentation-grid-medium-color) 0%, v(documentation-grid-medium-color) 100%);
-        background-clip: content-box, padding-box;
-        outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
-    }
+  @media only screen and (min-width: 704px) and (max-width: 991px) {
+    background-image:
+      linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+      linear-gradient(
+        to bottom,
+        v(documentation-grid-medium-color) 0%,
+        v(documentation-grid-medium-color) 100%
+      );
+    background-clip: content-box, padding-box;
+    outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
+  }
 
-    @media only screen and (min-width: 992px) and (max-width: 1279px) {
-        background-image:
-            linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
-            linear-gradient(to bottom, v(documentation-grid-large-color) 0%, v(documentation-grid-large-color) 100%);
-        background-clip: content-box, padding-box;
-        outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
-    }
+  @media only screen and (min-width: 992px) and (max-width: 1279px) {
+    background-image:
+      linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+      linear-gradient(
+        to bottom,
+        v(documentation-grid-large-color) 0%,
+        v(documentation-grid-large-color) 100%
+      );
+    background-clip: content-box, padding-box;
+    outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
+  }
 
-    @media only screen and (min-width: 1280px) and (max-width: 1471px) {
-        background-image:
-            linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
-            linear-gradient(to bottom, v(documentation-grid-xlarge-color) 0%, v(documentation-grid-xlarge-color) 100%);
-        background-clip: content-box, padding-box;
-        outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
-    }
+  @media only screen and (min-width: 1280px) and (max-width: 1471px) {
+    background-image:
+      linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+      linear-gradient(
+        to bottom,
+        v(documentation-grid-xlarge-color) 0%,
+        v(documentation-grid-xlarge-color) 100%
+      );
+    background-clip: content-box, padding-box;
+    outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
+  }
 
-    @media only screen and (min-width: 1472px) and (max-width: 1759px) {
-        background-image:
-            linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
-            linear-gradient(to bottom, v(documentation-grid-2xlarge-color) 0%, v(documentation-grid-2xlarge-color) 100%);
-        background-clip: content-box, padding-box;
-        outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
-    }
+  @media only screen and (min-width: 1472px) and (max-width: 1759px) {
+    background-image:
+      linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+      linear-gradient(
+        to bottom,
+        v(documentation-grid-2xlarge-color) 0%,
+        v(documentation-grid-2xlarge-color) 100%
+      );
+    background-clip: content-box, padding-box;
+    outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
+  }
 
-    @media only screen and (min-width: 1760px) {
-        background-image:
-            linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
-            linear-gradient(to bottom, v(documentation-grid-3xlarge-color) 0%, v(documentation-grid-3xlarge-color) 100%);
-        background-clip: content-box, padding-box;
-        outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
-    }
+  @media only screen and (min-width: 1760px) {
+    background-image:
+      linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+      linear-gradient(
+        to bottom,
+        v(documentation-grid-3xlarge-color) 0%,
+        v(documentation-grid-3xlarge-color) 100%
+      );
+    background-clip: content-box, padding-box;
+    outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
+  }
 
-    outline-offset: -1px;
+  outline-offset: -1px;
 }
 
 .docs-grid-colored-offset {
-    @media only screen and (min-width: 0) and (max-width: 319px) {
-        background: linear-gradient(to right, v(documentation-grid-tiny-color-01) 50%, transparent 50%);
-    }
+  @media only screen and (min-width: 0) and (max-width: 319px) {
+    background: linear-gradient(to right, v(documentation-grid-tiny-color-01) 50%, transparent 50%);
+  }
 
-    @media only screen and (min-width: 320px) and (max-width: 703px) {
-        background: linear-gradient(to right, v(documentation-grid-small-color-01) 50%, transparent 50%);
-    }
+  @media only screen and (min-width: 320px) and (max-width: 703px) {
+    background: linear-gradient(
+      to right,
+      v(documentation-grid-small-color-01) 50%,
+      transparent 50%
+    );
+  }
 
-    @media only screen and (min-width: 704px) and (max-width: 991px) {
-        background: linear-gradient(to right, v(documentation-grid-medium-color-01) 50%, transparent 50%);
-    }
+  @media only screen and (min-width: 704px) and (max-width: 991px) {
+    background: linear-gradient(
+      to right,
+      v(documentation-grid-medium-color-01) 50%,
+      transparent 50%
+    );
+  }
 
-    @media only screen and (min-width: 992px) and (max-width: 1279px) {
-        background: linear-gradient(to right, v(documentation-grid-large-color-01) 50%, transparent 50%);
-    }
+  @media only screen and (min-width: 992px) and (max-width: 1279px) {
+    background: linear-gradient(
+      to right,
+      v(documentation-grid-large-color-01) 50%,
+      transparent 50%
+    );
+  }
 
-    @media only screen and (min-width: 1280px) and (max-width: 1471px) {
-        background: linear-gradient(to right, v(documentation-grid-xlarge-color-01) 50%, transparent 50%);
-    }
+  @media only screen and (min-width: 1280px) and (max-width: 1471px) {
+    background: linear-gradient(
+      to right,
+      v(documentation-grid-xlarge-color-01) 50%,
+      transparent 50%
+    );
+  }
 
-    @media only screen and (min-width: 1472px) and (max-width: 1759px) {
-        background: linear-gradient(to right, v(documentation-grid-2xlarge-color-01) 50%, transparent 50%);
-    }
+  @media only screen and (min-width: 1472px) and (max-width: 1759px) {
+    background: linear-gradient(
+      to right,
+      v(documentation-grid-2xlarge-color-01) 50%,
+      transparent 50%
+    );
+  }
 
-    @media only screen and (min-width: 1760px) {
-        background: linear-gradient(to right, v(documentation-grid-3xlarge-color-01) 50%, transparent 50%);
-    }
+  @media only screen and (min-width: 1760px) {
+    background: linear-gradient(
+      to right,
+      v(documentation-grid-3xlarge-color-01) 50%,
+      transparent 50%
+    );
+  }
 }
 
 .docs-grid-text-tiny {
-    font-weight: 700;
-    color: v(documentation-grid-tiny-color);
+  font-weight: 700;
+  color: v(documentation-grid-tiny-color);
 }
 
 .docs-grid-text-small {
-    font-weight: 700;
-    color: v(documentation-grid-small-color);
+  font-weight: 700;
+  color: v(documentation-grid-small-color);
 }
 
 .docs-grid-text-medium {
-    font-weight: 700;
-    color: v(documentation-grid-medium-color);
+  font-weight: 700;
+  color: v(documentation-grid-medium-color);
 }
 
 .docs-grid-text-large {
-    font-weight: 700;
-    color: v(documentation-grid-large-color);
+  font-weight: 700;
+  color: v(documentation-grid-large-color);
 }
 
 .docs-grid-text-xlarge {
-    font-weight: 700;
-    color: v(documentation-grid-xlarge-color);
+  font-weight: 700;
+  color: v(documentation-grid-xlarge-color);
 }
 
 .docs-grid-text-2xlarge {
-    font-weight: 700;
-    color: v(documentation-grid-2xlarge-color);
+  font-weight: 700;
+  color: v(documentation-grid-2xlarge-color);
 }
 
 .docs-grid-text-3xlarge {
-    font-weight: 700;
-    color: v(documentation-grid-3xlarge-color);
+  font-weight: 700;
+  color: v(documentation-grid-3xlarge-color);
 }
 
 summary {
-    color: v(accordion-extra-light-header-text-color);
-    @include type-style(accordion-extra-light);
-    cursor: pointer;
+  color: v(accordion-extra-light-header-text-color);
+  @include type-style(accordion-extra-light);
+  cursor: pointer;
 }

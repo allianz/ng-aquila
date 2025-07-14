@@ -3,14 +3,14 @@ import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NxNumberStepperIntl {
-    /**
-     * Stream that emits whenever the labels here are changed. Use this to notify
-     * components if the labels have changed after initialization.
-     */
-    readonly changes = new Subject<void>();
+  /**
+   * Stream that emits whenever the labels here are changed. Use this to notify
+   * components if the labels have changed after initialization.
+   */
+  readonly changes = new Subject<void>();
 
-    /** The aria label for the decrement '-' button */
-    decrementAriaLabel = 'Decrement';
-    /** The aria label for the increment '+' button */
-    incrementAriaLabel = 'Increment';
+  /** The aria label for the decrement '-' button */
+  decrementAriaLabel = 'Decrement';
+  /** The aria label for the increment '+' button */
+  incrementAriaLabel = 'Increment';
 }

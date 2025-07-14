@@ -1,20 +1,20 @@
 .cobranding {
-    font-size: 1rem;
-    font-weight: normal;
-    white-space: nowrap;
-    margin-right: 16px;
-    margin-left: auto;
+  font-size: 1rem;
+  font-weight: normal;
+  white-space: nowrap;
+  margin-right: 16px;
+  margin-left: auto;
 }
 
 nx-header-brand .logo-with-title {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 .logo-text {
-    color: var(--text-01, #ffffff);
+  color: var(--text-01, #ffffff);
 }
 
 figure {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }

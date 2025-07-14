@@ -1,46 +1,46 @@
 @import '../shared-styles/index';
 
 :host {
-    display: block;
+  display: block;
 }
 
 .label {
-    margin-bottom: nx-spacer(xs);
+  margin-bottom: nx-spacer(xs);
 }
 
 .scrollable {
-    overflow: auto;
-    padding: v(swipebar-padding);
-    scrollbar-width: none;
+  overflow: auto;
+  padding: v(swipebar-padding);
+  scrollbar-width: none;
 
-    &::-webkit-scrollbar {
-        display: none;
-    }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .bar {
-    background: v(swipebar-background-color);
+  background: v(swipebar-background-color);
 }
 
 .indicator {
-    position: relative;
-    height: nx-spacer(2xs);
-    background: v(swipebar-color);
-    cursor: grab;
-    transform: translateX(0);
+  position: relative;
+  height: nx-spacer(2xs);
+  background: v(swipebar-color);
+  cursor: grab;
+  transform: translateX(0);
 
-    &:active {
-        cursor: grabbing;
-    }
+  &:active {
+    cursor: grabbing;
+  }
 
-    // larger click area
-    &::before {
-        content: '';
-        position: absolute;
-        display: block;
-        top: nx-spacer(2xs) * -1;
-        bottom: nx-spacer(2xs) * -1;
-        left: 0;
-        right: 0;
-    }
+  // larger click area
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: nx-spacer(2xs) * -1;
+    bottom: nx-spacer(2xs) * -1;
+    left: 0;
+    right: 0;
+  }
 }

@@ -1,32 +1,30 @@
 <div class="scroll-container">
-    <table nxTable class="nx-table--scrollable">
-        <thead>
-            <tr nxTableRow>
-                <th nxHeaderCell>Product</th>
-                <th nxHeaderCell>Contract Number</th>
-                <th nxHeaderCell>Description</th>
-                <th nxHeaderCell>Website</th>
-                <th nxHeaderCell>Ending At</th>
-                <th nxHeaderCell>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (item of tableElements; track item) {
-            <tr nxTableRow>
-                <td nxTableCell>{{item.product}}</td>
-                <td nxTableCell>{{item.contractNumber}}</td>
-                <td nxTableCell>{{item.desc}}</td>
-                <td nxTableCell>
-                    <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
-                </td>
-                <td nxTableCell>{{item.endingAt}}</td>
-                <td nxTableCell>
-                    <nx-badge [type]="item.status"
-                        >{{item.statusText}}</nx-badge
-                    >
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
+  <table nxTable class="nx-table--scrollable">
+    <thead>
+      <tr nxTableRow>
+        <th nxHeaderCell>Product</th>
+        <th nxHeaderCell>Contract Number</th>
+        <th nxHeaderCell>Description</th>
+        <th nxHeaderCell>Website</th>
+        <th nxHeaderCell>Ending At</th>
+        <th nxHeaderCell>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of tableElements; track item) {
+      <tr nxTableRow>
+        <td nxTableCell>{{item.product}}</td>
+        <td nxTableCell>{{item.contractNumber}}</td>
+        <td nxTableCell>{{item.desc}}</td>
+        <td nxTableCell>
+          <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
+        </td>
+        <td nxTableCell>{{item.endingAt}}</td>
+        <td nxTableCell>
+          <nx-badge [type]="item.status">{{item.statusText}}</nx-badge>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
 </div>

@@ -1,42 +1,42 @@
 <div class="nx-rating__container" role="radiogroup" [attr.aria-label]="ariaRatingGroupLabel">
-    @for (rating of [1, 2, 3, 4, 5]; track rating) {
-        <input
-            #input
-            [id]="getRadioInputId(rating)"
-            [name]="radioGroupName"
-            type="radio"
-            [disabled]="disabled"
-            (click)="setSelection(rating)"
-            [checked]="isSelected(rating)"
-            [attr.aria-label]="getAriaLabel(rating)"
-            [attr.aria-disabled]="disabled || null"
-            class="nx-rating__input"
-            (keyup)="handleKeyUp($event, rating)"
-            (change)="handleChange(rating)"
-        />
-        <label
-            class="rating-label"
-            [class.margin-s]="size === 's'"
-            [class.margin-m]="size === 'm'"
-            [class.margin-l]="size === 'l'"
-            [attr.for]="getRadioInputId(rating)"
-            tabindex="-1"
-        >
-            <nx-icon
-                class="nx-rating__icon"
-                [class.nx-rating__icon--selected]="isVisuallyChecked(rating)"
-                [size]="size"
-                [name]="getIconName(rating)"
-                (mouseenter)="setHover(rating)"
-                (mouseleave)="setHover(0)"
-            >
-            </nx-icon>
-        </label>
-    }
+  @for (rating of [1, 2, 3, 4, 5]; track rating) {
+    <input
+      #input
+      [id]="getRadioInputId(rating)"
+      [name]="radioGroupName"
+      type="radio"
+      [disabled]="disabled"
+      (click)="setSelection(rating)"
+      [checked]="isSelected(rating)"
+      [attr.aria-label]="getAriaLabel(rating)"
+      [attr.aria-disabled]="disabled || null"
+      class="nx-rating__input"
+      (keyup)="handleKeyUp($event, rating)"
+      (change)="handleChange(rating)"
+    />
+    <label
+      class="rating-label"
+      [class.margin-s]="size === 's'"
+      [class.margin-m]="size === 'm'"
+      [class.margin-l]="size === 'l'"
+      [attr.for]="getRadioInputId(rating)"
+      tabindex="-1"
+    >
+      <nx-icon
+        class="nx-rating__icon"
+        [class.nx-rating__icon--selected]="isVisuallyChecked(rating)"
+        [size]="size"
+        [name]="getIconName(rating)"
+        (mouseenter)="setHover(rating)"
+        (mouseleave)="setHover(0)"
+      >
+      </nx-icon>
+    </label>
+  }
 </div>
 @if (startLabel || endLabel) {
-    <div class="nx-rating__label" aria-hidden="true">
-        <span class="nx-rating__label--start">{{ startLabel }}</span>
-        <span class="nx-rating__label--end">{{ endLabel }}</span>
-    </div>
+  <div class="nx-rating__label" aria-hidden="true">
+    <span class="nx-rating__label--start">{{ startLabel }}</span>
+    <span class="nx-rating__label--end">{{ endLabel }}</span>
+  </div>
 }

@@ -1,5 +1,5 @@
 .remove-formfield-spacing {
-    --formfield-bottom-padding: 0;
-    --formfield-outline-bottom-padding: 0;
-    --formfield-mobile-bottom-padding: 0;
+  --formfield-bottom-padding: 0;
+  --formfield-outline-bottom-padding: 0;
+  --formfield-mobile-bottom-padding: 0;
 }

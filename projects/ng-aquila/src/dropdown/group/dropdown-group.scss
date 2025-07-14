@@ -1,26 +1,26 @@
 @import '../../shared-styles/index';
 
 :host {
-    display: block;
+  display: block;
 }
 
 :host:not(:last-child) .nx-dropdown-results__group {
-    position: relative;
+  position: relative;
 
-    &::after {
-        content: '';
-        position: absolute;
-        width: calc(100% - nx-spacer(xl));
-        height: 1px;
-        margin: 0 nx-spacer(2m);
-        background-color: v(dropdown-group-divider);
-        bottom: 0;
-        left: 0;
-    }
+  &::after {
+    content: '';
+    position: absolute;
+    width: calc(100% - nx-spacer(xl));
+    height: 1px;
+    margin: 0 nx-spacer(2m);
+    background-color: v(dropdown-group-divider);
+    bottom: 0;
+    left: 0;
+  }
 }
 
 .nx-dropdown-results__group-label {
-    @include type-style(dropdown-group-label);
-    padding: nx-spacer(m) nx-spacer(2m) nx-spacer(2xs);
-    color: v(dropdown-group-label-color);
+  @include type-style(dropdown-group-label);
+  padding: nx-spacer(m) nx-spacer(2m) nx-spacer(2xs);
+  color: v(dropdown-group-label-color);
 }

@@ -3,114 +3,114 @@
 @import './index';
 
 .nx-expansion-panel--regular {
-    margin-top: v(accordion-regular-header-top-margin);
+  margin-top: v(accordion-regular-header-top-margin);
 
-    @include media-breakpoint-down(small) {
-        margin-top: 0;
-    }
+  @include media-breakpoint-down(small) {
+    margin-top: 0;
+  }
 }
 
 button[class*='nx-button--'] {
-    margin: 0 0 24px;
+  margin: 0 0 24px;
 }
 
 [nxSidebarToggle] {
-    margin: 0;
+  margin: 0;
 }
 
 .nx-card {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 nx-selectable-card label {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .nx-checkbox {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .nx-copy.nx-copy {
-    margin: 0 0 32px;
+  margin: 0 0 32px;
 }
 
 // dynamic table
 .nx-table__container {
-    margin: 32px 0;
+  margin: 32px 0;
 }
 
 // nx-error: see notifications
 
 .nx-heading--page.nx-heading--page {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .nx-heading--section.nx-heading--section {
-    margin-bottom: 48px;
+  margin-bottom: 48px;
 }
 
 .nx-heading--subsection-large.nx-heading--subsection-large {
-    margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 .nx-heading--subsection-medium.nx-heading--subsection-medium {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .nx-heading--subsection-small.nx-heading--subsection-small {
-    margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 .nx-heading--subsection-xsmall.nx-heading--subsection-xsmall {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .nx-heading--page-bold-caps.nx-heading--page-bold-caps {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 ul[class*='nx-list--'],
 ol[class*='nx-list--'] {
-    margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 nx-message,
 nx-message-banner {
-    margin: 12px 0;
+  margin: 12px 0;
 }
 
 .nx-error--message {
-    margin: 12px 0;
+  margin: 12px 0;
 
-    nx-message {
-        margin: 0;
-    }
+  nx-message {
+    margin: 0;
+  }
 }
 
 .nx-stepper__input-container {
-    margin-top: 12px;
+  margin-top: 12px;
 }
 
 .nx-pagination__container {
-    margin: 8px 0;
+  margin: 8px 0;
 }
 
 @include respond-to('medium') {
-    .nx-pagination__container {
-        margin: 8px 0 40px 0;
-    }
+  .nx-pagination__container {
+    margin: 8px 0 40px 0;
+  }
 }
 
 .nx-pagination-compact {
-    margin: 16px 0;
+  margin: 16px 0;
 }
 
 @include respond-to('medium') {
-    .nx-pagination-compact {
-        margin: 40px 0;
-    }
+  .nx-pagination-compact {
+    margin: 40px 0;
+  }
 }
 
 nx-taglist {
-    margin-bottom: 32px;
+  margin-bottom: 32px;
 }

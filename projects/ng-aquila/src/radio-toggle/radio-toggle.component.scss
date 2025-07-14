@@ -1,44 +1,44 @@
 @import '../shared-styles/index';
 
 :host {
-    display: block;
+  display: block;
 }
 
 .nx-radio-toggle {
-    display: flex;
-    height: 100%;
-    gap: v(toggle-gap);
-    border: v(toggle-button-border);
-    width: v(toggle-button-width);
-    padding: v(toggle-button-padding);
-    border-radius: v(toggle-button-border-radius);
+  display: flex;
+  height: 100%;
+  gap: v(toggle-gap);
+  border: v(toggle-button-border);
+  width: v(toggle-button-width);
+  padding: v(toggle-button-padding);
+  border-radius: v(toggle-button-border-radius);
 }
 .nx-radio-toggle.nx-radio-toggle--small {
-    gap: v(toggle-button-small-gap);
+  gap: v(toggle-button-small-gap);
 }
 
 .nx-radio-toggle:has(.has-error) {
-    border-color: v(danger);
+  border-color: v(danger);
 }
 
 .nx-radio-toggle:not(.disable-mobile) {
-    @include media-breakpoint-down('small') {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-    }
+  @include media-breakpoint-down('small') {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
 }
 :host([disabled]) .nx-radio-toggle:not(.nx-radio-toggle--negative) {
-    background-color: v(toggle-button-disabled-background-color);
-    border: v(toggle-button-disabled-border);
+  background-color: v(toggle-button-disabled-background-color);
+  border: v(toggle-button-disabled-border);
 }
 :host([readonly]) .nx-radio-toggle:not(.nx-radio-toggle--negative) {
-    background-color: v(toggle-button-disabled-background-color);
-    border: v(toggle-button-readonly-border);
+  background-color: v(toggle-button-disabled-background-color);
+  border: v(toggle-button-readonly-border);
 }
 
 .error-container {
-    margin-top: v(radio-toggle-stack);
+  margin-top: v(radio-toggle-stack);
 }

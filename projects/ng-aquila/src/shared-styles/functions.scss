@@ -3,40 +3,41 @@
 // Helper functions to access the measurement maps
 // in a more semantic and readable way
 @function nx-spacer($key) {
-    @return map.get($sizes, $key);
+  @return map.get($sizes, $key);
 }
 
 @function nx-line-height($key) {
-    @return map.get($line-heights, $key);
+  @return map.get($line-heights, $key);
 }
 
 @function nx-font-size($key) {
-    @return map.get($font-sizes, $key);
+  @return map.get($font-sizes, $key);
 }
 
 @function nx-border-size($key) {
-    @return map.get($borders, $key);
+  @return map.get($borders, $key);
 }
 
 @function nx-border-radius($key) {
-    @return map.get($border-radius, $key);
+  @return map.get($border-radius, $key);
 }
 
 @function nx-letter-spacing($key) {
-    @return map.get($letter-spacings, $key);
+  @return map.get($letter-spacings, $key);
 }
 
 @function nx-font-weight($key) {
-    @return map.get($font-weight, $key);
+  @return map.get($font-weight, $key);
 }
 
 // Helper for adjusting values for rtl
 // Should be used with shorthand properties accepting multiple values, i.e. margin, padding.
 // When passed a list of 4 values, returnes a list with values for right and left interchanged.
 @function nx-flip-for-rtl($value-list) {
-    @if list.length($value-list) != 4 {
-        @return $value-list;
-    }
+  @if list.length($value-list) != 4 {
+    @return $value-list;
+  }
 
-    @return #{list.nth($value-list, 1) list.nth($value-list, 4) list.nth($value-list, 3) list.nth($value-list, 2)};
+  @return #{list.nth($value-list, 1) list.nth($value-list, 4) list.nth($value-list, 3)
+    list.nth($value-list, 2)};
 }

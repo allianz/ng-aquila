@@ -1,45 +1,45 @@
 <nx-circle-toggle-group>
-    @for (item of sampleValues; track item) {
-    <nx-circle-toggle
-        [value]="item.value"
-        [icon]="item.icon"
-        [hint]="item.hint"
-        [label]="item.label"
-        [checked]="item.selected"
-    >
-    </nx-circle-toggle>
-    }
+  @for (item of sampleValues; track item) {
+  <nx-circle-toggle
+    [value]="item.value"
+    [icon]="item.icon"
+    [hint]="item.hint"
+    [label]="item.label"
+    [checked]="item.selected"
+  >
+  </nx-circle-toggle>
+  }
 </nx-circle-toggle-group>
 
 <p nxCopytext="large" class="nx-margin-y-m">You can disable the whole group:</p>
 
 <nx-circle-toggle-group disabled>
-    @for (item of sampleValues; track item) {
-    <nx-circle-toggle
-        [value]="item.value"
-        [icon]="item.icon"
-        [hint]="item.hint"
-        [label]="item.label"
-        [checked]="item.selected"
-    >
-    </nx-circle-toggle>
-    }
+  @for (item of sampleValues; track item) {
+  <nx-circle-toggle
+    [value]="item.value"
+    [icon]="item.icon"
+    [hint]="item.hint"
+    [label]="item.label"
+    [checked]="item.selected"
+  >
+  </nx-circle-toggle>
+  }
 </nx-circle-toggle-group>
 
 <p nxCopytext="large" class="nx-margin-y-m">
-    And you can disable individual circle toggles in a group:
+  And you can disable individual circle toggles in a group:
 </p>
 
 <nx-circle-toggle-group>
-    @for (item of sampleValues; track item) {
-    <nx-circle-toggle
-        [value]="item.value"
-        [icon]="item.icon"
-        [hint]="item.hint"
-        [label]="item.label"
-        [checked]="item.selected"
-        [disabled]="item.value === 'A'"
-    >
-    </nx-circle-toggle>
-    }
+  @for (item of sampleValues; track item) {
+  <nx-circle-toggle
+    [value]="item.value"
+    [icon]="item.icon"
+    [hint]="item.hint"
+    [label]="item.label"
+    [checked]="item.selected"
+    [disabled]="item.value === 'A'"
+  >
+  </nx-circle-toggle>
+  }
 </nx-circle-toggle-group>

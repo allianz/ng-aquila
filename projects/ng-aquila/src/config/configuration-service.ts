@@ -1,12 +1,15 @@
+import { ErrorDefaultOptions, LabelDefaultOptions } from '@allianz/ng-aquila/base';
+import { SelectableCardDefaultOptions } from '@allianz/ng-aquila/card';
+import {
+  CircleToggleDefaultOptions,
+  CircleToggleGroupDefaultOptions,
+} from '@allianz/ng-aquila/circle-toggle';
+import { DataDisplayDefaultOptions } from '@allianz/ng-aquila/data-display';
+import { DatepickerDefaultOptions } from '@allianz/ng-aquila/datefield';
+import { FormfieldDefaultOptions } from '@allianz/ng-aquila/formfield';
+import { SmallStageDefaultOptions } from '@allianz/ng-aquila/small-stage';
+import { TabGroupDefaultOptions, TabNavBarDefaultOptions } from '@allianz/ng-aquila/tabs';
 import { Injectable } from '@angular/core';
-import { ErrorDefaultOptions, LabelDefaultOptions } from '@aposin/ng-aquila/base';
-import { SelectableCardDefaultOptions } from '@aposin/ng-aquila/card';
-import { CircleToggleDefaultOptions, CircleToggleGroupDefaultOptions } from '@aposin/ng-aquila/circle-toggle';
-import { DataDisplayDefaultOptions } from '@aposin/ng-aquila/data-display';
-import { DatepickerDefaultOptions } from '@aposin/ng-aquila/datefield';
-import { FormfieldDefaultOptions } from '@aposin/ng-aquila/formfield';
-import { SmallStageDefaultOptions } from '@aposin/ng-aquila/small-stage';
-import { TabGroupDefaultOptions, TabNavBarDefaultOptions } from '@aposin/ng-aquila/tabs';
 import { Subject } from 'rxjs';
 
 export const datepickerOptions: DatepickerDefaultOptions = { changes: new Subject<void>() };
@@ -28,54 +31,54 @@ export const dataDisplayOptions: DataDisplayDefaultOptions = {};
  */
 @Injectable({ providedIn: 'root' })
 export class NxConfigurationService {
-    clearOptions() {
-        delete datepickerOptions.toggleIconTabindex;
-        datepickerOptions.changes!.next();
-        delete errorOptions.appearance;
-        errorOptions.changes!.next();
-        delete formfieldOptions.appearance;
-        delete formfieldOptions.nxFloatLabel;
-        delete labelOptions.size;
-        delete tabGroupOptions.appearance;
-        delete tabNavBarOptions.appearance;
-        delete selectableCardOptions.appearance;
-        delete smallStageOptions.appearance;
-        delete circleToggleGroupOptions.appearance;
-        delete circleToggleOptions.appearance;
-        delete dataDisplayOptions.size;
-    }
+  clearOptions() {
+    delete datepickerOptions.toggleIconTabindex;
+    datepickerOptions.changes!.next();
+    delete errorOptions.appearance;
+    errorOptions.changes!.next();
+    delete formfieldOptions.appearance;
+    delete formfieldOptions.nxFloatLabel;
+    delete labelOptions.size;
+    delete tabGroupOptions.appearance;
+    delete tabNavBarOptions.appearance;
+    delete selectableCardOptions.appearance;
+    delete smallStageOptions.appearance;
+    delete circleToggleGroupOptions.appearance;
+    delete circleToggleOptions.appearance;
+    delete dataDisplayOptions.size;
+  }
 
-    switchToExpert() {
-        datepickerOptions.toggleIconTabindex = -1;
-        datepickerOptions.changes!.next();
-        errorOptions.appearance = 'text';
-        errorOptions.changes!.next();
-        formfieldOptions.appearance = 'outline';
-        formfieldOptions.nxFloatLabel = 'always';
-        labelOptions.size = 'small';
-        tabGroupOptions.appearance = 'expert';
-        tabNavBarOptions.appearance = 'expert';
-        selectableCardOptions.appearance = 'expert';
-        smallStageOptions.appearance = 'expert';
-        circleToggleGroupOptions.appearance = 'expert';
-        circleToggleOptions.appearance = 'expert';
-        dataDisplayOptions.size = 'medium';
-    }
+  switchToExpert() {
+    datepickerOptions.toggleIconTabindex = -1;
+    datepickerOptions.changes!.next();
+    errorOptions.appearance = 'text';
+    errorOptions.changes!.next();
+    formfieldOptions.appearance = 'outline';
+    formfieldOptions.nxFloatLabel = 'always';
+    labelOptions.size = 'small';
+    tabGroupOptions.appearance = 'expert';
+    tabNavBarOptions.appearance = 'expert';
+    selectableCardOptions.appearance = 'expert';
+    smallStageOptions.appearance = 'expert';
+    circleToggleGroupOptions.appearance = 'expert';
+    circleToggleOptions.appearance = 'expert';
+    dataDisplayOptions.size = 'medium';
+  }
 
-    switchToRetail() {
-        datepickerOptions.toggleIconTabindex = 0;
-        datepickerOptions.changes!.next();
-        errorOptions.appearance = 'message';
-        errorOptions.changes!.next();
-        formfieldOptions.appearance = 'auto';
-        formfieldOptions.nxFloatLabel = 'auto';
-        labelOptions.size = 'large';
-        tabGroupOptions.appearance = 'default';
-        tabNavBarOptions.appearance = 'default';
-        selectableCardOptions.appearance = 'default';
-        smallStageOptions.appearance = 'default';
-        circleToggleGroupOptions.appearance = 'default';
-        circleToggleOptions.appearance = 'default';
-        dataDisplayOptions.size = 'large';
-    }
+  switchToRetail() {
+    datepickerOptions.toggleIconTabindex = 0;
+    datepickerOptions.changes!.next();
+    errorOptions.appearance = 'message';
+    errorOptions.changes!.next();
+    formfieldOptions.appearance = 'auto';
+    formfieldOptions.nxFloatLabel = 'auto';
+    labelOptions.size = 'large';
+    tabGroupOptions.appearance = 'default';
+    tabNavBarOptions.appearance = 'default';
+    selectableCardOptions.appearance = 'default';
+    smallStageOptions.appearance = 'default';
+    circleToggleGroupOptions.appearance = 'default';
+    circleToggleOptions.appearance = 'default';
+    dataDisplayOptions.size = 'large';
+  }
 }

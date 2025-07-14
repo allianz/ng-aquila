@@ -1,13 +1,13 @@
 <div class="nx-action__wrapper">
-    @if (expandable) {
-        <nx-icon class="nx-action__expand-icon" name="chevron-right" aria-hidden="true"></nx-icon>
-    }
-    @if (_iconChild) {
-        <span class="nx-action-icon__container">
-            <ng-content select="[nxActionIcon]"></ng-content>
-        </span>
-    }
-    <span class="nx-action__label">
-        <ng-content></ng-content>
+  @if (expandable) {
+    <nx-icon class="nx-action__expand-icon" name="chevron-right" aria-hidden="true"></nx-icon>
+  }
+  @if (_iconChild) {
+    <span class="nx-action-icon__container">
+      <ng-content select="[nxActionIcon]"></ng-content>
     </span>
+  }
+  <span class="nx-action__label">
+    <ng-content></ng-content>
+  </span>
 </div>

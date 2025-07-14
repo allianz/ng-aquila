@@ -1,336 +1,336 @@
 @import '../shared-styles/index';
 
 :host {
-    display: block;
+  display: block;
 
-    ::ng-deep nx-error {
-        margin-top: nx-spacer(2xs);
+  ::ng-deep nx-error {
+    margin-top: nx-spacer(2xs);
 
-        &.nx-error--message {
-            margin-top: nx-spacer(xs);
-        }
+    &.nx-error--message {
+      margin-top: nx-spacer(xs);
     }
+  }
 }
 
 ::ng-deep nx-card-footer,
 ::ng-deep nx-card-content,
 ::ng-deep nx-card-header {
-    display: block;
+  display: block;
 }
 
 .indicator-element {
-    float: left;
-    color: v(checkbox-icon-color);
-    font-size: v(checkbox-icon-size);
-    height: v(checkbox-control-size);
-    width: v(checkbox-control-size);
-    min-width: v(checkbox-control-size);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 0;
+  float: left;
+  color: v(checkbox-icon-color);
+  font-size: v(checkbox-icon-size);
+  height: v(checkbox-control-size);
+  width: v(checkbox-control-size);
+  min-width: v(checkbox-control-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
 
-    :host-context([dir='rtl']) & {
-        float: right;
-    }
+  :host-context([dir='rtl']) & {
+    float: right;
+  }
 }
 
 .checkbox {
-    background-color: v(checkbox-background-color);
-    border-style: solid;
-    border-width: v(checkbox-border-width);
-    border-color: v(checkbox-border-color);
-    border-radius: v(checkbox-border-radius);
+  background-color: v(checkbox-background-color);
+  border-style: solid;
+  border-width: v(checkbox-border-width);
+  border-color: v(checkbox-border-color);
+  border-radius: v(checkbox-border-radius);
 }
 
 .radio {
-    border-style: solid;
-    border-width: nx-border-size(m);
-    border-color: v(radio-button-circle-color);
-    border-radius: 50%;
+  border-style: solid;
+  border-width: nx-border-size(m);
+  border-color: v(radio-button-circle-color);
+  border-radius: 50%;
 }
 
 .check-dot {
-    width: v(radio-button-dot-size);
-    height: v(radio-button-dot-size);
-    border-radius: 50%;
-    transition: background-color 0.2s ease;
-    background-color: v(radio-button-selected-dot-color);
+  width: v(radio-button-dot-size);
+  height: v(radio-button-dot-size);
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+  background-color: v(radio-button-selected-dot-color);
 }
 
 :host(:not(.is-expert)) {
-    .content {
-        display: flow-root;
-        padding-left: nx-spacer(s);
+  .content {
+    display: flow-root;
+    padding-left: nx-spacer(s);
 
-        :host-context([dir='rtl']) & {
-            padding-left: 0;
-            padding-right: nx-spacer(s);
-        }
-
-        @include media-breakpoint-down(small) {
-            padding-left: nx-spacer(2xs);
-
-            :host-context([dir='rtl']) & {
-                padding-right: nx-spacer(2xs);
-            }
-        }
+    :host-context([dir='rtl']) & {
+      padding-left: 0;
+      padding-right: nx-spacer(s);
     }
 
-    input:not(:disabled) {
-        + label {
-            &:hover {
-                .checkbox {
-                    border-color: v(selectable-card-checkbox-border-hover-color);
-                }
+    @include media-breakpoint-down(small) {
+      padding-left: nx-spacer(2xs);
 
-                .radio {
-                    border-color: v(selectable-card-radio-border-hover-color);
-                }
-            }
-        }
-        &:checked + label {
-            &:hover {
-                .checkbox {
-                    background-color: v(selectable-card-checkbox-selected-background-hover-color);
-                    border-color: v(selectable-card-checkbox-selected-border-hover-color);
-                }
-
-                .radio {
-                    border-color: v(selectable-card-radio-border-hover-color);
-                }
-            }
-        }
+      :host-context([dir='rtl']) & {
+        padding-right: nx-spacer(2xs);
+      }
     }
+  }
 
-    &.has-error {
-        input:not(:disabled) {
-            + label {
-                .checkbox {
-                    border-color: v(selectable-card-checkbox-error-border-color);
-                }
-
-                .radio {
-                    border-color: v(selectable-card-radio-error-border-color);
-                }
-            }
-            &:checked + label {
-                .checkbox {
-                    background-color: v(selectable-card-checkbox-error-background-color);
-                    border-color: v(selectable-card-checkbox-error-border-color);
-                }
-
-                .radio {
-                    border-color: v(selectable-card-radio-error-border-color);
-
-                    .check-dot {
-                        background-color: v(selectable-card-radio-error-dot-color);
-                    }
-                }
-            }
-        }
-    }
-}
-
-:host(.is-expert) {
-    label:hover {
-        background: v(selectable-card-expert-background-hover-color);
-    }
-
-    input:checked + label {
-        background: v(selectable-card-expert-background-selected-color);
-
-        &:hover {
-            background: v(selectable-card-expert-background-selected-hover-color);
-        }
-    }
-
-    .indicator-element {
-        float: right;
-        position: relative;
-
-        :host-context([dir='rtl']) & {
-            float: left;
-        }
-    }
-}
-
-input {
-    position: absolute;
-    height: 0;
-    width: 0;
-    overflow: hidden;
-    opacity: 0;
-
-    &:checked + label {
-        background: v(selectable-card-background-selected-color);
-        border-color: v(selectable-card-border-selected-color);
-
-        &:hover {
-            background: v(selectable-card-background-selected-hover-color);
-        }
-
+  input:not(:disabled) {
+    + label {
+      &:hover {
         .checkbox {
-            background-color: v(checkbox-selected-background-color);
-            border-color: v(checkbox-selected-border-color);
+          border-color: v(selectable-card-checkbox-border-hover-color);
         }
 
         .radio {
-            background-color: v(checkbox-selected-background-color);
-            border-color: v(checkbox-selected-border-color);
+          border-color: v(selectable-card-radio-border-hover-color);
         }
+      }
     }
+    &:checked + label {
+      &:hover {
+        .checkbox {
+          background-color: v(selectable-card-checkbox-selected-background-hover-color);
+          border-color: v(selectable-card-checkbox-selected-border-hover-color);
+        }
+
+        .radio {
+          border-color: v(selectable-card-radio-border-hover-color);
+        }
+      }
+    }
+  }
+
+  &.has-error {
+    input:not(:disabled) {
+      + label {
+        .checkbox {
+          border-color: v(selectable-card-checkbox-error-border-color);
+        }
+
+        .radio {
+          border-color: v(selectable-card-radio-error-border-color);
+        }
+      }
+      &:checked + label {
+        .checkbox {
+          background-color: v(selectable-card-checkbox-error-background-color);
+          border-color: v(selectable-card-checkbox-error-border-color);
+        }
+
+        .radio {
+          border-color: v(selectable-card-radio-error-border-color);
+
+          .check-dot {
+            background-color: v(selectable-card-radio-error-dot-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+:host(.is-expert) {
+  label:hover {
+    background: v(selectable-card-expert-background-hover-color);
+  }
+
+  input:checked + label {
+    background: v(selectable-card-expert-background-selected-color);
+
+    &:hover {
+      background: v(selectable-card-expert-background-selected-hover-color);
+    }
+  }
+
+  .indicator-element {
+    float: right;
+    position: relative;
+
+    :host-context([dir='rtl']) & {
+      float: left;
+    }
+  }
+}
+
+input {
+  position: absolute;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+
+  &:checked + label {
+    background: v(selectable-card-background-selected-color);
+    border-color: v(selectable-card-border-selected-color);
+
+    &:hover {
+      background: v(selectable-card-background-selected-hover-color);
+    }
+
+    .checkbox {
+      background-color: v(checkbox-selected-background-color);
+      border-color: v(checkbox-selected-border-color);
+    }
+
+    .radio {
+      background-color: v(checkbox-selected-background-color);
+      border-color: v(checkbox-selected-border-color);
+    }
+  }
 }
 
 label {
-    border: var(--selectable-card-border-width) solid v(selectable-card-border-color);
-    display: block;
-    position: relative;
-    cursor: pointer;
-    width: 100%;
-    min-height: nx-spacer(l);
-    border-radius: v(selectable-card-border-radius);
-    background: v(selectable-card-background-color);
+  border: var(--selectable-card-border-width) solid v(selectable-card-border-color);
+  display: block;
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  min-height: nx-spacer(l);
+  border-radius: v(selectable-card-border-radius);
+  background: v(selectable-card-background-color);
 
-    .nx-card-inner {
-        padding: nx-spacer(s);
-    }
+  .nx-card-inner {
+    padding: nx-spacer(s);
+  }
 
-    &:hover {
-        background: v(selectable-card-background-hover-color);
-        border-color: v(selectable-card-border-hover-color);
-    }
+  &:hover {
+    background: v(selectable-card-background-hover-color);
+    border-color: v(selectable-card-border-hover-color);
+  }
 }
 
 .nx-card-highlight {
-    padding: 0 nx-spacer(s);
-    border-radius: v(selectable-card-border-radius) v(selectable-card-border-radius) 0 0;
-    background: v(card-highlight-background-color);
-    color: v(card-highlight-text-color);
-    line-height: nx-line-height(xs);
-    font-size: nx-font-size(4xs);
+  padding: 0 nx-spacer(s);
+  border-radius: v(selectable-card-border-radius) v(selectable-card-border-radius) 0 0;
+  background: v(card-highlight-background-color);
+  color: v(card-highlight-text-color);
+  line-height: nx-line-height(xs);
+  font-size: nx-font-size(4xs);
 }
 
 // reset hover styles for devices that don't support hover
 @media (hover: none) {
-    label:hover {
-        background: v(selectable-card-background-color);
-        border-color: v(selectable-card-border-color);
-    }
+  label:hover {
+    background: v(selectable-card-background-color);
+    border-color: v(selectable-card-border-color);
+  }
 
-    input:checked + label:hover {
-        background: v(selectable-card-background-selected-color);
-    }
+  input:checked + label:hover {
+    background: v(selectable-card-background-selected-color);
+  }
 }
 
 :host(.is-disabled) {
-    label {
-        border-color: v(selectable-card-border-disabled-color);
-        cursor: not-allowed;
-    }
+  label {
+    border-color: v(selectable-card-border-disabled-color);
+    cursor: not-allowed;
+  }
 
-    .nx-card-highlight {
-        opacity: 40%;
-    }
+  .nx-card-highlight {
+    opacity: 40%;
+  }
 
-    label:hover {
-        background: v(selectable-card-background-disabled-color);
-    }
+  label:hover {
+    background: v(selectable-card-background-disabled-color);
+  }
 
-    input:checked + label {
-        background: v(selectable-card-background-disabled-selected-color);
-        border-color: v(selectable-card-border-disabled-selected-color);
+  input:checked + label {
+    background: v(selectable-card-background-disabled-selected-color);
+    border-color: v(selectable-card-border-disabled-selected-color);
 
-        .indicator-element {
-            border-color: v(checkbox-disabled-border-color);
-        }
-
-        .checkbox {
-            background-color: v(checkbox-disabled-selected-background-color);
-            color: v(checkbox-disabled-icon-color);
-        }
-        .radio {
-            background-color: v(radio-button-disabled-selected-background-color);
-            color: v(radio-button-disabled-text-color);
-        }
-    }
-
-    &.is-expert {
-        input:checked + label {
-            background: v(selectable-card-expert-background-disabled-selected-color);
-        }
+    .indicator-element {
+      border-color: v(checkbox-disabled-border-color);
     }
 
     .checkbox {
-        background-color: v(checkbox-disabled-background-color);
-        border-color: v(checkbox-disabled-border-color);
-        color: v(checkbox-disabled-icon-color);
+      background-color: v(checkbox-disabled-selected-background-color);
+      color: v(checkbox-disabled-icon-color);
     }
-
     .radio {
-        cursor: not-allowed;
-        color: v(radio-button-disabled-text-color);
-        border-color: v(radio-button-disabled-border-color);
+      background-color: v(radio-button-disabled-selected-background-color);
+      color: v(radio-button-disabled-text-color);
     }
+  }
 
-    .check-dot {
-        border-color: v(radio-button-disabled-border-color);
-        background-color: v(radio-button-disabled-selected-dot-color);
+  &.is-expert {
+    input:checked + label {
+      background: v(selectable-card-expert-background-disabled-selected-color);
     }
+  }
+
+  .checkbox {
+    background-color: v(checkbox-disabled-background-color);
+    border-color: v(checkbox-disabled-border-color);
+    color: v(checkbox-disabled-icon-color);
+  }
+
+  .radio {
+    cursor: not-allowed;
+    color: v(radio-button-disabled-text-color);
+    border-color: v(radio-button-disabled-border-color);
+  }
+
+  .check-dot {
+    border-color: v(radio-button-disabled-border-color);
+    background-color: v(radio-button-disabled-selected-dot-color);
+  }
 }
 
 :host(.has-error) {
-    label,
-    label:hover,
-    input:checked + label,
-    input:checked + label:hover {
-        border-color: v(selectable-card-border-error-color);
-    }
+  label,
+  label:hover,
+  input:checked + label,
+  input:checked + label:hover {
+    border-color: v(selectable-card-border-error-color);
+  }
 }
 
 input.cdk-keyboard-focused + label {
-    @include focus-style;
+  @include focus-style;
 }
 
 @media screen and (forced-colors: active) {
-    :host,
-    :host(.has-error) {
-        label,
-        label:hover {
-            border-color: buttonText;
-        }
-        .radio {
-            border-color: buttonText !important;
-        }
-
-        input:checked + label,
-        input:checked + label:hover {
-            border-width: nx-border-size(l);
-            border-color: highlight;
-
-            .nx-card-inner {
-                padding: nx-spacer(s) - nx-border-size(l) + nx-border-size(xs);
-            }
-            .radio {
-                border-color: highlight !important;
-                .check-dot {
-                    background-color: highlight;
-                }
-            }
-        }
+  :host,
+  :host(.has-error) {
+    label,
+    label:hover {
+      border-color: buttonText;
+    }
+    .radio {
+      border-color: buttonText !important;
     }
 
-    :host(.is-disabled) {
-        label,
-        input:checked + label {
-            border-color: GrayText;
-            color: GrayText;
+    input:checked + label,
+    input:checked + label:hover {
+      border-width: nx-border-size(l);
+      border-color: highlight;
+
+      .nx-card-inner {
+        padding: nx-spacer(s) - nx-border-size(l) + nx-border-size(xs);
+      }
+      .radio {
+        border-color: highlight !important;
+        .check-dot {
+          background-color: highlight;
         }
-        .radio {
-            border-color: GrayText !important;
-            .check-dot {
-                background-color: GrayText !important;
-            }
-        }
+      }
     }
+  }
+
+  :host(.is-disabled) {
+    label,
+    input:checked + label {
+      border-color: GrayText;
+      color: GrayText;
+    }
+    .radio {
+      border-color: GrayText !important;
+      .check-dot {
+        background-color: GrayText !important;
+      }
+    }
+  }
 }

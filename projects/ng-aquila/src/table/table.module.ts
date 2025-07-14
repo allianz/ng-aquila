@@ -1,8 +1,8 @@
+import { NxCopytextModule } from '@allianz/ng-aquila/copytext';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxSwipebarModule } from '@allianz/ng-aquila/swipebar';
 import { CommonModule } from '@angular/common';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxSwipebarModule } from '@aposin/ng-aquila/swipebar';
 
 import { NxExpandableTableDirective } from './expandable/expandable-table.directive';
 import { NxExpandableTableCellComponent } from './expandable/expandable-table-cell.component';
@@ -19,19 +19,19 @@ import { NxTableCellComponent } from './table-cell.component';
 import { NxTableRowComponent } from './table-row.component';
 
 const EXPORTED_DECLARED_ELEMENTS = [
-    NxHeaderCellDirective,
-    NxTableComponent,
-    NxTableCellComponent,
-    NxTableComponent,
-    NxTableRowComponent,
-    NxToggleButtonComponent,
-    NxExpandableTableDirective,
-    NxExpandableTableRowComponent,
-    NxExpandableTableCellComponent,
-    NxSortHeaderComponent,
-    NxSortDirective,
-    NxHeaderResizeDirective,
-    NxTableCellClipDirective,
+  NxHeaderCellDirective,
+  NxTableComponent,
+  NxTableCellComponent,
+  NxTableComponent,
+  NxTableRowComponent,
+  NxToggleButtonComponent,
+  NxExpandableTableDirective,
+  NxExpandableTableRowComponent,
+  NxExpandableTableCellComponent,
+  NxSortHeaderComponent,
+  NxSortDirective,
+  NxHeaderResizeDirective,
+  NxTableCellClipDirective,
 ];
 
 /**
@@ -40,7 +40,7 @@ const EXPORTED_DECLARED_ELEMENTS = [
  * @deletion-target 18.0.0
  */
 export function NX_SORT_HEADER_INTL_PROVIDER_FACTORY(parentIntl: NxSortHeaderIntl) {
-    return parentIntl || new NxSortHeaderIntl();
+  return parentIntl || new NxSortHeaderIntl();
 }
 
 /**
@@ -49,14 +49,20 @@ export function NX_SORT_HEADER_INTL_PROVIDER_FACTORY(parentIntl: NxSortHeaderInt
  * @deletion-target 18.0.0
  */
 export const NX_SORT_HEADER_INTL_PROVIDER = {
-    provide: NxSortHeaderIntl,
-    deps: [[new Optional(), new SkipSelf(), NxSortHeaderIntl]],
-    useFactory: NX_SORT_HEADER_INTL_PROVIDER_FACTORY,
+  provide: NxSortHeaderIntl,
+  deps: [[new Optional(), new SkipSelf(), NxSortHeaderIntl]],
+  useFactory: NX_SORT_HEADER_INTL_PROVIDER_FACTORY,
 };
 
 @NgModule({
-    exports: [...EXPORTED_DECLARED_ELEMENTS, NxSwipebarModule],
-    imports: [CommonModule, NxIconModule, NxCopytextModule, NxSwipebarModule, ...EXPORTED_DECLARED_ELEMENTS],
-    providers: [],
+  exports: [...EXPORTED_DECLARED_ELEMENTS, NxSwipebarModule],
+  imports: [
+    CommonModule,
+    NxIconModule,
+    NxCopytextModule,
+    NxSwipebarModule,
+    ...EXPORTED_DECLARED_ELEMENTS,
+  ],
+  providers: [],
 })
 export class NxTableModule {}

@@ -1,42 +1,46 @@
 <span class="nx-progress-stepper__title">
-    <ng-content select="nx-label"></ng-content>
+  <ng-content select="nx-label"></ng-content>
 </span>
 
 <div class="nx-subprogress__items">
-    @for (step of steps; track step; let i = $index) {
-        <div
-            [class.nx-subprogress__item--inactive]="selectedIndex !== i && !step.completed"
-            [attr.aria-disabled]="selectedIndex !== i && !step.completed"
-            [class.nx-subprogress__item--selected]="selectedIndex === i"
-            class="nx-subprogress__item"
-        >
-            <div class="nx-subprogress__counter">
-                <div class="nx-subprogress__number">
-                    {{ i + 1 }}
-                </div>
-            </div>
-            <div class="nx-subprogress__label">{{ step.stepLabel || step.label }}</div>
-            @if (selectedIndex === i) {
-                <div class="nx-subprogress__progress">
-                    <nx-progressbar [value]="progress" [ariaLabel]="progressbarAriaLabel" [ariaLabelledBy]="progressbarAriaLabeledBy"></nx-progressbar>
-                </div>
-            }
+  @for (step of steps; track step; let i = $index) {
+    <div
+      [class.nx-subprogress__item--inactive]="selectedIndex !== i && !step.completed"
+      [attr.aria-disabled]="selectedIndex !== i && !step.completed"
+      [class.nx-subprogress__item--selected]="selectedIndex === i"
+      class="nx-subprogress__item"
+    >
+      <div class="nx-subprogress__counter">
+        <div class="nx-subprogress__number">
+          {{ i + 1 }}
         </div>
-    }
+      </div>
+      <div class="nx-subprogress__label">{{ step.stepLabel || step.label }}</div>
+      @if (selectedIndex === i) {
+        <div class="nx-subprogress__progress">
+          <nx-progressbar
+            [value]="progress"
+            [ariaLabel]="progressbarAriaLabel"
+            [ariaLabelledBy]="progressbarAriaLabeledBy"
+          ></nx-progressbar>
+        </div>
+      }
+    </div>
+  }
 </div>
 
 <div class="nx-progress-stepper__mobile-label">
-    {{ currentLabel }}
+  {{ currentLabel }}
 </div>
 
 @for (step of steps; track step; let i = $index) {
-    <div
-        class="nx-progress-stepper__content"
-        role="tabpanel"
-        [id]="_getStepContentId(i)"
-        [attr.aria-label]="currentLabel"
-        [attr.aria-expanded]="selectedIndex === i"
-    >
-        <ng-container [ngTemplateOutlet]="step.content"></ng-container>
-    </div>
+  <div
+    class="nx-progress-stepper__content"
+    role="tabpanel"
+    [id]="_getStepContentId(i)"
+    [attr.aria-label]="currentLabel"
+    [attr.aria-expanded]="selectedIndex === i"
+  >
+    <ng-container [ngTemplateOutlet]="step.content"></ng-container>
+  </div>
 }

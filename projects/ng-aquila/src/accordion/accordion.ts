@@ -7,44 +7,44 @@ import { AccordionStyle } from './expansion-panel';
 const DEFAULT_TYPE: AccordionStyle = 'regular';
 
 @Directive({
-    selector: 'nx-accordion',
-    host: {
-        '[class.nx-accordion]': 'true',
-        role: 'presentation',
-    },
-    standalone: true,
+  selector: 'nx-accordion',
+  host: {
+    '[class.nx-accordion]': 'true',
+    role: 'presentation',
+  },
+  standalone: true,
 })
 export class NxAccordionDirective extends CdkAccordion {
-    /**
-     * Value for the styling that should be chosen.
-     *
-     * Default: `'regular'`.
-     */
-    @Input('variant') set style(value: AccordionStyle) {
-        value = value ? value : DEFAULT_TYPE;
+  /**
+   * Value for the styling that should be chosen.
+   *
+   * Default: `'regular'`.
+   */
+  @Input('variant') set style(value: AccordionStyle) {
+    value = value ? value : DEFAULT_TYPE;
 
-        const [newValue] = value.match(/regular|light|extra-light/) || [DEFAULT_TYPE];
-        this._style = newValue as AccordionStyle;
-    }
-    get style(): AccordionStyle {
-        return this._style;
-    }
-    private _style: AccordionStyle = 'regular';
+    const [newValue] = value.match(/regular|light|extra-light/) || [DEFAULT_TYPE];
+    this._style = newValue as AccordionStyle;
+  }
+  get style(): AccordionStyle {
+    return this._style;
+  }
+  private _style: AccordionStyle = 'regular';
 
-    /** Whether the negative set of styles should be used. */
-    @Input() set negative(value: BooleanInput) {
-        this._negative = coerceBooleanProperty(value);
-    }
-    get negative(): boolean {
-        return !!this._negative;
-    }
-    private _negative?: boolean;
+  /** Whether the negative set of styles should be used. */
+  @Input() set negative(value: BooleanInput) {
+    this._negative = coerceBooleanProperty(value);
+  }
+  get negative(): boolean {
+    return !!this._negative;
+  }
+  private _negative?: boolean;
 
-    @Input({ transform: booleanAttribute }) set flushAlignment(flushAligned: boolean) {
-        this.flushAlignmentSignal.set(flushAligned);
-    }
-    get flushAlignment(): boolean {
-        return this.flushAlignmentSignal();
-    }
-    readonly flushAlignmentSignal = signal(false);
+  @Input({ transform: booleanAttribute }) set flushAlignment(flushAligned: boolean) {
+    this.flushAlignmentSignal.set(flushAligned);
+  }
+  get flushAlignment(): boolean {
+    return this.flushAlignmentSignal();
+  }
+  readonly flushAlignmentSignal = signal(false);
 }

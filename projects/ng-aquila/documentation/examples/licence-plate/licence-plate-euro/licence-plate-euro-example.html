@@ -1,29 +1,29 @@
 <div nxLayout="grid maxwidth">
-    <div nxRow>
-        <div nxCol="12,12,10,6" colOffset="0,0,1,3">
-            <nx-formfield label="Country">
-                <nx-dropdown [(value)]="country">
-                    @for (country of countriesList; track country) {
-                    <nx-dropdown-item [value]="country.country">
-                        {{country.countryName}}
-                    </nx-dropdown-item>
-                    }
-                </nx-dropdown>
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="12,12,10,6" colOffset="0,0,1,3">
+      <nx-formfield label="Country">
+        <nx-dropdown [(value)]="country">
+          @for (country of countriesList; track country) {
+          <nx-dropdown-item [value]="country.country">
+            {{country.countryName}}
+          </nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
     </div>
+  </div>
 
-    <div nxRow>
-        <div nxCol="12,12,10,6" colOffset="0,0,1,3">
-            <nx-formfield label="License Plate">
-                <nx-licence-plate-euro-prefix nxFormfieldPrefix
-                    >{{ country }}</nx-licence-plate-euro-prefix
-                >
-                <input nxInput nxLicensePlate="euro" [(ngModel)]="value" />
-                <nx-error nxFormfieldError
-                    >Please enter a valid license plate number.</nx-error
-                >
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="12,12,10,6" colOffset="0,0,1,3">
+      <nx-formfield label="License Plate">
+        <nx-licence-plate-euro-prefix nxFormfieldPrefix
+          >{{ country }}</nx-licence-plate-euro-prefix
+        >
+        <input nxInput nxLicensePlate="euro" [(ngModel)]="value" />
+        <nx-error nxFormfieldError
+          >Please enter a valid license plate number.</nx-error
+        >
+      </nx-formfield>
     </div>
+  </div>
 </div>

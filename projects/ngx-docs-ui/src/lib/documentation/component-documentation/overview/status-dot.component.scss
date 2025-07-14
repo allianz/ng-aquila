@@ -2,19 +2,19 @@
 @import '../../../styles/themes/docs-theme';
 
 :host {
-    height: 24px;
-    display: inline-block;
-    vertical-align: bottom;
+  height: 24px;
+  display: inline-block;
+  vertical-align: bottom;
 
-    &.checkmark {
-        color: v(success);
-    }
+  &.checkmark {
+    color: v(success);
+  }
 
-    nx-icon.fa-hourglass-half {
-        color: v(interactive-primary);
-    }
+  nx-icon.fa-hourglass-half {
+    color: v(interactive-primary);
+  }
 
-    nx-icon.fa-minus {
-        color: v(disabled-01);
-    }
+  nx-icon.fa-minus {
+    color: v(disabled-01);
+  }
 }

@@ -1,11 +1,11 @@
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxRatingComponent } from './rating.component';
 
 @NgModule({
-    imports: [CommonModule, NxIconModule, NxRatingComponent],
-    exports: [NxRatingComponent],
+  imports: [CommonModule, NxIconModule, NxRatingComponent],
+  exports: [NxRatingComponent],
 })
 export class NxRatingModule {}

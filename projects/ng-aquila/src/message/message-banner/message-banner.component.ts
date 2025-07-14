@@ -1,40 +1,40 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { CONTEXT, NxMessageComponent } from '../message/message.component';
 
 export type BANNER_CONTEXT = 'info' | 'error' | 'warning';
 
 @Component({
-    selector: 'nx-message-banner',
-    templateUrl: '../message/message.component.html',
-    styleUrls: ['../message/message.component.scss', './message-banner.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    exportAs: 'nxMessageBanner',
-    imports: [NgIf, NxIconModule, NxButtonModule],
+  selector: 'nx-message-banner',
+  templateUrl: '../message/message.component.html',
+  styleUrls: ['../message/message.component.scss', './message-banner.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  exportAs: 'nxMessageBanner',
+  imports: [NgIf, NxIconModule, NxButtonModule],
 })
 export class NxMessageBannerComponent extends NxMessageComponent {
-    /**
-     * Sets the context of the message banner. The message box will color accordingly.
-     *
-     * Default: `'info'`.
-     */
-    @Input() set context(value: BANNER_CONTEXT) {
-        this._updateContext(value);
-    }
-    get context(): BANNER_CONTEXT {
-        return this._context as BANNER_CONTEXT;
-    }
-    _context: CONTEXT = 'info';
+  /**
+   * Sets the context of the message banner. The message box will color accordingly.
+   *
+   * Default: `'info'`.
+   */
+  @Input() set context(value: BANNER_CONTEXT) {
+    this._updateContext(value);
+  }
+  get context(): BANNER_CONTEXT {
+    return this._context as BANNER_CONTEXT;
+  }
+  _context: CONTEXT = 'info';
 
-    _closable = true;
+  _closable = true;
 
-    _allowedContexts: CONTEXT[] = ['info', 'error', 'warning'];
+  _allowedContexts: CONTEXT[] = ['info', 'error', 'warning'];
 
-    constructor(_cdr: ChangeDetectorRef, _fm: FocusMonitor) {
-        super(_cdr, _fm);
-    }
+  constructor(_cdr: ChangeDetectorRef, _fm: FocusMonitor) {
+    super(_cdr, _fm);
+  }
 }

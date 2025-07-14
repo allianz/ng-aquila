@@ -10,25 +10,25 @@ import { NxTreeNodeToggleDirective } from './toggle';
 import { NxTreeComponent } from './tree.component';
 
 @NgModule({
-    imports: [
-        CdkTreeModule,
-        CommonModule,
-        NxTreeComponent,
-        NxTreeNodeComponent,
-        NxTreeNodeDefDirective,
-        NxTreeNodePaddingDirective,
-        NxTreeNodeToggleDirective,
-        NxTreeNodeOutletDirective,
-        NxTreeNodeActionItem,
-    ],
-    exports: [
-        NxTreeComponent,
-        NxTreeNodeComponent,
-        NxTreeNodeDefDirective,
-        NxTreeNodePaddingDirective,
-        NxTreeNodeToggleDirective,
-        NxTreeNodeOutletDirective,
-        NxTreeNodeActionItem,
-    ],
+  imports: [
+    CdkTreeModule,
+    CommonModule,
+    NxTreeComponent,
+    NxTreeNodeComponent,
+    NxTreeNodeDefDirective,
+    NxTreeNodePaddingDirective,
+    NxTreeNodeToggleDirective,
+    NxTreeNodeOutletDirective,
+    NxTreeNodeActionItem,
+  ],
+  exports: [
+    NxTreeComponent,
+    NxTreeNodeComponent,
+    NxTreeNodeDefDirective,
+    NxTreeNodePaddingDirective,
+    NxTreeNodeToggleDirective,
+    NxTreeNodeOutletDirective,
+    NxTreeNodeActionItem,
+  ],
 })
 export class NxTreeModule {}

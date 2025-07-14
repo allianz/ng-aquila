@@ -1,55 +1,55 @@
 @import '../shared-styles/index';
 
 :host {
-    display: flex;
-    list-style: none;
-    height: 24px;
-    padding: 0;
+  display: flex;
+  list-style: none;
+  height: 24px;
+  padding: 0;
 }
 
 :host(.is-link) {
-    ::ng-deep .nx-breadcrumb-item {
-        color: v(breadcrumb-link-color);
+  ::ng-deep .nx-breadcrumb-item {
+    color: v(breadcrumb-link-color);
+  }
+  ::ng-deep .nx-breadcrumb-item__text {
+    &:active {
+      color: v(breadcrumb-link-active-color);
     }
-    ::ng-deep .nx-breadcrumb-item__text {
-        &:active {
-            color: v(breadcrumb-link-active-color);
-        }
-    }
+  }
 }
 
 ::ng-deep li:not(:last-child) .nx-breadcrumb-item__text {
-    &:hover {
-        color: v(breadcrumb-link-hover-color);
-    }
+  &:hover {
+    color: v(breadcrumb-link-hover-color);
+  }
 }
 
 ::ng-deep li:last-child .nx-breadcrumb-item {
-    font-weight: nx-font-weight(semibold);
-    cursor: auto;
+  font-weight: nx-font-weight(semibold);
+  cursor: auto;
 }
 
 ::ng-deep li:last-child .nx-breadcrumb-item__chevron {
-    display: none;
+  display: none;
 }
 
 ::ng-deep li + li .nx-breadcrumb-item {
-    margin-left: nx-spacer(3xs);
+  margin-left: nx-spacer(3xs);
 
-    :host-context([dir='rtl']) & {
-        margin-left: initial;
-        margin-right: nx-spacer(3xs);
-    }
+  :host-context([dir='rtl']) & {
+    margin-left: initial;
+    margin-right: nx-spacer(3xs);
+  }
 }
 
 :host(.is-negative) {
-    ::ng-deep .nx-breadcrumb-item {
-        color: v(negative);
-    }
+  ::ng-deep .nx-breadcrumb-item {
+    color: v(negative);
+  }
 }
 
 @media screen and (forced-colors: active) {
-    ::ng-deep .nx-breadcrumb-item__chevron {
-        color: CanvasText;
-    }
+  ::ng-deep .nx-breadcrumb-item__chevron {
+    color: CanvasText;
+  }
 }
