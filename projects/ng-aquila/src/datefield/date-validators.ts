@@ -21,7 +21,7 @@ export class NxDateValidators {
             }
             const parsedValue = dateAdapter.parse(input.value, customParseFormat || dateFormats.parse.dateInput, strict);
             const valid = parsedValue && dateAdapter.isValid(parsedValue);
-            return valid ? null : { nxDatefieldParse: { text: input } };
+            return valid ? null : { nxDatefieldParse: { text: input.value } };
         };
     }
 

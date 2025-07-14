@@ -463,7 +463,7 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
         nativeElement.dispatchEvent(new Event('input'));
         fixture.detectChanges();
         expect(datefield!.valid).toBeFalse();
-        expect(datefield!.errors!.nxDatefieldParse).toBeTruthy();
+        expect(datefield!.errors!.nxDatefieldParse).toEqual({ text: 'this is no date' });
     });
 
     it('has no error if input is empty', () => {
