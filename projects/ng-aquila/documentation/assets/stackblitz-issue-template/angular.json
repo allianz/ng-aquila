@@ -27,7 +27,14 @@
                                 "input": "public"
                             }
                         ],
-                        "styles": ["src/styles.scss"]
+                        "styles": [
+                            "node_modules/@angular/cdk/a11y-prebuilt.css",
+                            "node_modules/@angular/cdk/overlay-prebuilt.css",
+                            "src/styles.scss",
+                            "node_modules/@allianz/ng-aquila/css/normalize.css",
+                            "node_modules/@allianz/ng-aquila/css/utilities.css",
+                            "node_modules/@allianz/ng-aquila/themes/aquila.css"
+                        ]
                     },
                     "configurations": {
                         "production": {
