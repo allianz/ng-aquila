@@ -1,105 +1,97 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid maxwidth&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,10,4&quot;</span> <span class="hljs-attr">colOffset</span>=<span class="hljs-string">&quot;0,0,1,4&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Licence plate types&quot;</span>
-                <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span>
-                    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose a type&quot;</span>
-                    [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;licencePlateModel.type&quot;</span>
-                &gt;</span>
-                    @for (type of licencePlateTypes; track type) {
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;type.type&quot;</span>
-                        &gt;</span>{{type.typeName}}&lt;/nx-dropdown-item
-                    &gt;
-                    }
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,10,4&quot;</span> <span class="hljs-attr">colOffset</span>=<span class="hljs-string">&quot;0,0,1,4&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Licence plate types&quot;</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span>
+          <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose a type&quot;</span>
+          [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;licencePlateModel.type&quot;</span>
+        &gt;</span>
+          @for (type of licencePlateTypes; track type) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;type.type&quot;</span>
+            &gt;</span>{{type.typeName}}&lt;/nx-dropdown-item
+          &gt;
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 
-            @if (licencePlateModel.type === &#x27;de_season&#x27;) {
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                    <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Start date&quot;</span>
-                    <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                    <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-                &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;licencePlateModel.startDate&quot;</span>&gt;</span>
-                        @for (date of monthsOfYearList; track date) {
-                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;date.month&quot;</span>&gt;</span>
-                            {{date.monthName}}
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-                        }
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                    <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;End date&quot;</span>
-                    <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                    <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-                &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;licencePlateModel.endDate&quot;</span>&gt;</span>
-                        @for (date of monthsOfYearList; track date) {
-                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;date.month&quot;</span>&gt;</span>
-                            {{date.monthName}}
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-                        }
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            } @if (licencePlateModel.type === &#x27;euro&#x27;) {
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                    <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Country&quot;</span>
-                    <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                    <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-                &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;licencePlateModel.country&quot;</span>&gt;</span>
-                        @for (country of countriesList; track country) {
-                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;country.country&quot;</span>&gt;</span>
-                            {{country.countryName}}
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-                        }
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      @if (licencePlateModel.type === &#x27;de_season&#x27;) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+          <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Start date&quot;</span>
+          <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+          <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+        &gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;licencePlateModel.startDate&quot;</span>&gt;</span>
+            @for (date of monthsOfYearList; track date) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;date.month&quot;</span>&gt;</span>
+              {{date.monthName}}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
             }
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;End date&quot;</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;licencePlateModel.endDate&quot;</span>&gt;</span>
+            @for (date of monthsOfYearList; track date) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;date.month&quot;</span>&gt;</span>
+              {{date.monthName}}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            }
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      } @if (licencePlateModel.type === &#x27;euro&#x27;) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Country&quot;</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;licencePlateModel.country&quot;</span>&gt;</span>
+            @for (country of countriesList; track country) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;country.country&quot;</span>&gt;</span>
+              {{country.countryName}}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            }
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      }
 
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;License Plate&quot;</span>
-                <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-            &gt;</span>
-                @if (licencePlateModel.type !== &#x27;other&#x27;) {
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-licence-plate-euro-prefix</span> <span class="hljs-attr">nxFormfieldPrefix</span>&gt;</span>
-                    {{ licencePlateModel.country }}
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-licence-plate-euro-prefix</span>&gt;</span>
-                }
-                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-                    <span class="hljs-attr">nxInput</span>
-                    [<span class="hljs-attr">nxLicensePlate</span>]=<span class="hljs-string">&quot;licencePlateModel.type&quot;</span>
-                    [<span class="hljs-attr">ngModel</span>]=<span class="hljs-string">&quot;licencePlateModel.value&quot;</span>
-                /&gt;</span>
-                @if (licencePlateModel.type === &#x27;de_season&#x27;) {
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-licence-plate-season-suffix</span>
-                    <span class="hljs-attr">nxFormfieldSuffix</span>
-                    [<span class="hljs-attr">startMonth</span>]=<span class="hljs-string">&quot;licencePlateModel.startDate&quot;</span>
-                    [<span class="hljs-attr">endMonth</span>]=<span class="hljs-string">&quot;licencePlateModel.endDate&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-licence-plate-season-suffix</span>&gt;</span>
-                }
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>Format: M-AA 1234<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>
-                    &gt;</span>Please enter a license plate number in the format &quot;M-AA
-                    1234&quot;.&lt;/nx-error
-                &gt;
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;License Plate&quot;</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+      &gt;</span>
+        @if (licencePlateModel.type !== &#x27;other&#x27;) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-licence-plate-euro-prefix</span> <span class="hljs-attr">nxFormfieldPrefix</span>&gt;</span>
+          {{ licencePlateModel.country }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-licence-plate-euro-prefix</span>&gt;</span>
+        }
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+          <span class="hljs-attr">nxInput</span>
+          [<span class="hljs-attr">nxLicensePlate</span>]=<span class="hljs-string">&quot;licencePlateModel.type&quot;</span>
+          [<span class="hljs-attr">ngModel</span>]=<span class="hljs-string">&quot;licencePlateModel.value&quot;</span>
+        /&gt;</span>
+        @if (licencePlateModel.type === &#x27;de_season&#x27;) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-licence-plate-season-suffix</span>
+          <span class="hljs-attr">nxFormfieldSuffix</span>
+          [<span class="hljs-attr">startMonth</span>]=<span class="hljs-string">&quot;licencePlateModel.startDate&quot;</span>
+          [<span class="hljs-attr">endMonth</span>]=<span class="hljs-string">&quot;licencePlateModel.endDate&quot;</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-licence-plate-season-suffix</span>&gt;</span>
+        }
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>Format: M-AA 1234<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>
+          &gt;</span>Please enter a license plate number in the format &quot;M-AA
+          1234&quot;.&lt;/nx-error
+        &gt;
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid maxwidth&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-controls&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,10,4&quot;</span> <span class="hljs-attr">colOffset</span>=<span class="hljs-string">&quot;0,0,1,4&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Licence plate model value: {{ licencePlateModel | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-controls&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,10,4&quot;</span> <span class="hljs-attr">colOffset</span>=<span class="hljs-string">&quot;0,0,1,4&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Licence plate model value: {{ licencePlateModel | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

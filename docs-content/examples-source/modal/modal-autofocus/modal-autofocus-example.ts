@@ -1,46 +1,46 @@
+import { NxButtonComponent } from '@allianz/ng-aquila/button';
+import { NxCopytextComponent } from '@allianz/ng-aquila/copytext';
+import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
 import {
-    ChangeDetectionStrategy,
-    Component,
-    TemplateRef,
-    ViewChild,
+  AutoFocusTarget,
+  NxDialogService,
+  NxModalActionsDirective,
+  NxModalCloseDirective,
+  NxModalContentDirective,
+} from '@allianz/ng-aquila/modal';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  TemplateRef,
+  ViewChild,
 } from '@angular/core';
-import { NxButtonComponent } from '@aposin/ng-aquila/button';
-import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
-import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
-import {
-    AutoFocusTarget,
-    NxDialogService,
-    NxModalActionsDirective,
-    NxModalCloseDirective,
-    NxModalContentDirective,
-} from '@aposin/ng-aquila/modal';
 
 /**
  * @title Modal autofocus Example
  */
 @Component({
-    selector: 'modal-autofocus-example',
-    imports: [
-        NxButtonComponent,
-        NxModalContentDirective,
-        NxHeadlineComponent,
-        NxCopytextComponent,
-        NxModalActionsDirective,
-        NxModalCloseDirective,
-    ],
-    templateUrl: './modal-autofocus-example.html',
-    styleUrl: './modal-autofocus-example.css',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'modal-autofocus-example',
+  imports: [
+    NxButtonComponent,
+    NxModalContentDirective,
+    NxHeadlineComponent,
+    NxCopytextComponent,
+    NxModalActionsDirective,
+    NxModalCloseDirective,
+  ],
+  templateUrl: './modal-autofocus-example.html',
+  styleUrl: './modal-autofocus-example.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalAutofocusExampleComponent {
-    @ViewChild('template') templateRef!: TemplateRef<any>;
+  @ViewChild('template') templateRef!: TemplateRef<any>;
 
-    constructor(private readonly dialogService: NxDialogService) {}
+  constructor(private readonly dialogService: NxDialogService) {}
 
-    openFromTemplate(focus: AutoFocusTarget | string): void {
-        this.dialogService.open(this.templateRef, {
-            autoFocus: focus,
-            showCloseIcon: true,
-        });
-    }
+  openFromTemplate(focus: AutoFocusTarget | string): void {
+    this.dialogService.open(this.templateRef, {
+      autoFocus: focus,
+      showCloseIcon: true,
+    });
+  }
 }

@@ -1,10 +1,10 @@
+import { NxActionModule } from '@allianz/ng-aquila/action';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxSidebarModule } from '@allianz/ng-aquila/sidebar';
+import { NxTreeModule } from '@allianz/ng-aquila/tree';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxActionModule } from '@aposin/ng-aquila/action';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
-import { NxTreeModule } from '@aposin/ng-aquila/tree';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { SidebarExampleComponent } from './sidebar/sidebar-example';
@@ -14,34 +14,34 @@ import { SidebarOutputsExampleComponent } from './sidebar-outputs/sidebar-output
 import { SidebarResizeableExampleComponent } from './sidebar-resizeable/sidebar-resizeable-example';
 
 const EXAMPLES = [
-    SidebarExampleComponent,
-    SidebarFooterExampleComponent,
-    SidebarMethodsExampleComponent,
-    SidebarOutputsExampleComponent,
-    SidebarResizeableExampleComponent,
+  SidebarExampleComponent,
+  SidebarFooterExampleComponent,
+  SidebarMethodsExampleComponent,
+  SidebarOutputsExampleComponent,
+  SidebarResizeableExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxSidebarModule,
-        NxTreeModule,
-        NxInputModule,
-        NxIconModule,
-        RouterModule,
-        NxActionModule,
-        ExamplesSharedModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxSidebarModule,
+    NxTreeModule,
+    NxInputModule,
+    NxIconModule,
+    RouterModule,
+    NxActionModule,
+    ExamplesSharedModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class SidebarExamplesModule {
-    static components() {
-        return {
-            sidebar: SidebarExampleComponent,
-            'sidebar-footer': SidebarFooterExampleComponent,
-            'sidebar-methods': SidebarMethodsExampleComponent,
-            'sidebar-outputs': SidebarOutputsExampleComponent,
-            'sidebar-resizeable': SidebarResizeableExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      sidebar: SidebarExampleComponent,
+      'sidebar-footer': SidebarFooterExampleComponent,
+      'sidebar-methods': SidebarMethodsExampleComponent,
+      'sidebar-outputs': SidebarOutputsExampleComponent,
+      'sidebar-resizeable': SidebarResizeableExampleComponent,
+    };
+  }
 }

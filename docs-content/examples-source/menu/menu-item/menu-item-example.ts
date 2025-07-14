@@ -1,67 +1,67 @@
-import { Component } from '@angular/core';
 import {
-    NxMenuButtonComponent,
-    NxMenuItemDirective,
-    NxMenuLinkDirective,
-} from '@aposin/ng-aquila/menu';
+  NxMenuButtonComponent,
+  NxMenuItemDirective,
+  NxMenuLinkDirective,
+} from '@allianz/ng-aquila/menu';
+import { Component } from '@angular/core';
 
 interface MenuChild {
-    label: string;
+  label: string;
 }
 
 interface MenuItem {
-    label: string;
-    expanded?: boolean;
-    children?: MenuChild[];
+  label: string;
+  expanded?: boolean;
+  children?: MenuChild[];
 }
 
 /**
  * @title Menu item
  */
 @Component({
-    selector: 'menu-item-example',
-    templateUrl: 'menu-item-example.html',
-    styleUrls: ['menu-item-example.css'],
-    imports: [NxMenuButtonComponent, NxMenuItemDirective, NxMenuLinkDirective],
+  selector: 'menu-item-example',
+  templateUrl: 'menu-item-example.html',
+  styleUrls: ['menu-item-example.css'],
+  imports: [NxMenuButtonComponent, NxMenuItemDirective, NxMenuLinkDirective],
 })
 export class MenuItemExampleComponent {
-    menuData: MenuItem[] = [
+  menuData: MenuItem[] = [
+    {
+      label: 'Option 1',
+      expanded: false,
+      children: [
         {
-            label: 'Option 1',
-            expanded: false,
-            children: [
-                {
-                    label: 'Option 1.1',
-                },
-                {
-                    label: 'Option 1.2',
-                },
-                {
-                    label: 'Option 1.3',
-                },
-            ],
+          label: 'Option 1.1',
         },
         {
-            label: 'Option 2',
-            expanded: false,
-            children: [
-                {
-                    label: 'Option 2.1',
-                },
-                {
-                    label: 'Option 2.2',
-                },
-                {
-                    label: 'Option 2.3',
-                },
-            ],
+          label: 'Option 1.2',
         },
         {
-            label: 'Option 3',
+          label: 'Option 1.3',
         },
-    ];
+      ],
+    },
+    {
+      label: 'Option 2',
+      expanded: false,
+      children: [
+        {
+          label: 'Option 2.1',
+        },
+        {
+          label: 'Option 2.2',
+        },
+        {
+          label: 'Option 2.3',
+        },
+      ],
+    },
+    {
+      label: 'Option 3',
+    },
+  ];
 
-    onClick(item: any) {
-        item.expanded = !item.expanded;
-    }
+  onClick(item: any) {
+    item.expanded = !item.expanded;
+  }
 }

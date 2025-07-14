@@ -1,84 +1,84 @@
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxActionComponent</span>,
-    <span class="hljs-title class_">NxActionIconDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/action&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIndicatorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/indicator&#x27;</span>;
+  <span class="hljs-title class_">NxActionComponent</span>,
+  <span class="hljs-title class_">NxActionIconDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/action&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIndicatorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/indicator&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Action</span> {
-    <span class="hljs-attr">icon</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">notification</span>?: <span class="hljs-built_in">boolean</span>;
-    <span class="hljs-attr">notificationCount</span>?: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">icon</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">notification</span>?: <span class="hljs-built_in">boolean</span>;
+  <span class="hljs-attr">notificationCount</span>?: <span class="hljs-built_in">number</span>;
 }
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Indicator Example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;action-indicator-example&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./action-indicator-example.css&#x27;</span>],
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./action-indicator-example.html&#x27;</span>,
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxActionComponent</span>,
-        <span class="hljs-title class_">NxIconComponent</span>,
-        <span class="hljs-title class_">NxActionIconDirective</span>,
-        <span class="hljs-title class_">NxIndicatorComponent</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;action-indicator-example&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./action-indicator-example.css&#x27;</span>],
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./action-indicator-example.html&#x27;</span>,
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxActionComponent</span>,
+    <span class="hljs-title class_">NxIconComponent</span>,
+    <span class="hljs-title class_">NxActionIconDirective</span>,
+    <span class="hljs-title class_">NxIndicatorComponent</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ActionIndicatorExampleComponent</span> {
-    <span class="hljs-attr">actions</span>: <span class="hljs-title class_">Action</span>[] = [
-        {
-            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file-text&#x27;</span>,
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;All Files&#x27;</span>,
-            <span class="hljs-attr">notification</span>: <span class="hljs-literal">false</span>,
-        },
-        {
-            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;calendar&#x27;</span>,
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Calendar&#x27;</span>,
-            <span class="hljs-attr">notification</span>: <span class="hljs-literal">true</span>,
-        },
-        {
-            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;mail-o&#x27;</span>,
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Email&#x27;</span>,
-            <span class="hljs-attr">notification</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">notificationCount</span>: <span class="hljs-number">105</span>,
-        },
-        {
-            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;user-o&#x27;</span>,
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;My Profile&#x27;</span>,
-            <span class="hljs-attr">notification</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">notificationCount</span>: <span class="hljs-number">4</span>,
-        },
-        {
-            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file&#x27;</span>,
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Recent Downloads&#x27;</span>,
-        },
-    ];
+  <span class="hljs-attr">actions</span>: <span class="hljs-title class_">Action</span>[] = [
+    {
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file-text&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;All Files&#x27;</span>,
+      <span class="hljs-attr">notification</span>: <span class="hljs-literal">false</span>,
+    },
+    {
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;calendar&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Calendar&#x27;</span>,
+      <span class="hljs-attr">notification</span>: <span class="hljs-literal">true</span>,
+    },
+    {
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;mail-o&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Email&#x27;</span>,
+      <span class="hljs-attr">notification</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">notificationCount</span>: <span class="hljs-number">105</span>,
+    },
+    {
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;user-o&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;My Profile&#x27;</span>,
+      <span class="hljs-attr">notification</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">notificationCount</span>: <span class="hljs-number">4</span>,
+    },
+    {
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Recent Downloads&#x27;</span>,
+    },
+  ];
 
-    <span class="hljs-attr">selectedAction</span>: <span class="hljs-title class_">Action</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">actions</span>[<span class="hljs-number">0</span>];
+  <span class="hljs-attr">selectedAction</span>: <span class="hljs-title class_">Action</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">actions</span>[<span class="hljs-number">0</span>];
 
-    <span class="hljs-title function_">onSelect</span>(<span class="hljs-params"><span class="hljs-attr">action</span>: <span class="hljs-title class_">Action</span></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedAction</span> = action;
+  <span class="hljs-title function_">onSelect</span>(<span class="hljs-params"><span class="hljs-attr">action</span>: <span class="hljs-title class_">Action</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedAction</span> = action;
+  }
+
+  <span class="hljs-title function_">getIndicatorText</span>(<span class="hljs-params"><span class="hljs-attr">notificationCount</span>: <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-keyword">if</span> (!notificationCount) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;
+    }
+    <span class="hljs-keyword">return</span> notificationCount &gt; <span class="hljs-number">99</span> ? <span class="hljs-string">&#x27;99+&#x27;</span> : notificationCount;
+  }
+
+  <span class="hljs-title function_">getAriaLabel</span>(<span class="hljs-params">
+    <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>,
+    notificationCount = <span class="hljs-string">&#x27;&#x27;</span>,
+    <span class="hljs-attr">hasNotification</span>?: <span class="hljs-built_in">boolean</span>,
+  </span>) {
+    <span class="hljs-keyword">if</span> (hasNotification) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${label}</span> <span class="hljs-subst">${notificationCount}</span> new notifications available`</span>;
     }
 
-    <span class="hljs-title function_">getIndicatorText</span>(<span class="hljs-params"><span class="hljs-attr">notificationCount</span>: <span class="hljs-built_in">number</span></span>) {
-        <span class="hljs-keyword">if</span> (!notificationCount) {
-            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;
-        }
-        <span class="hljs-keyword">return</span> notificationCount &gt; <span class="hljs-number">99</span> ? <span class="hljs-string">&#x27;99+&#x27;</span> : notificationCount;
-    }
-
-    <span class="hljs-title function_">getAriaLabel</span>(<span class="hljs-params">
-        <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>,
-        notificationCount = <span class="hljs-string">&#x27;&#x27;</span>,
-        <span class="hljs-attr">hasNotification</span>?: <span class="hljs-built_in">boolean</span>,
-    </span>) {
-        <span class="hljs-keyword">if</span> (hasNotification) {
-            <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${label}</span> <span class="hljs-subst">${notificationCount}</span> new notifications available`</span>;
-        }
-
-        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${label}</span>`</span>;
-    }
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${label}</span>`</span>;
+  }
 }

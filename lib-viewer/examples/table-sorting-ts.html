@@ -1,117 +1,113 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBadgeComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/badge&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLinkComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/link&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxHeaderCellDirective</span>,
+  <span class="hljs-title class_">NxSortDirective</span>,
+  <span class="hljs-title class_">NxSortHeaderComponent</span>,
+  <span class="hljs-title class_">NxTableCellComponent</span>,
+  <span class="hljs-title class_">NxTableComponent</span>,
+  <span class="hljs-title class_">NxTableRowComponent</span>,
+  <span class="hljs-title class_">SortDirection</span>,
+  <span class="hljs-title class_">SortEvent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/table&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">DatePipe</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">RouterLink</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/router&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBadgeComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/badge&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLinkComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/link&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxHeaderCellDirective</span>,
-    <span class="hljs-title class_">NxSortDirective</span>,
-    <span class="hljs-title class_">NxSortHeaderComponent</span>,
-    <span class="hljs-title class_">NxTableCellComponent</span>,
-    <span class="hljs-title class_">NxTableComponent</span>,
-    <span class="hljs-title class_">NxTableRowComponent</span>,
-    <span class="hljs-title class_">SortDirection</span>,
-    <span class="hljs-title class_">SortEvent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/table&#x27;</span>;
 
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Contract</span> {
-    <span class="hljs-attr">product</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">contractNumber</span>: <span class="hljs-built_in">number</span>;
-    <span class="hljs-attr">desc</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">website</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">endingAt</span>: <span class="hljs-title class_">Date</span>;
-    <span class="hljs-attr">status</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">statusText</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">product</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">contractNumber</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">desc</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">website</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">endingAt</span>: <span class="hljs-title class_">Date</span>;
+  <span class="hljs-attr">status</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">statusText</span>: <span class="hljs-built_in">string</span>;
 }
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Sorting example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;table-sorting-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./table-sorting-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;table-sorting-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxTableComponent</span>,
-        <span class="hljs-title class_">NxSortDirective</span>,
-        <span class="hljs-title class_">NxTableRowComponent</span>,
-        <span class="hljs-title class_">NxSortHeaderComponent</span>,
-        <span class="hljs-title class_">NxHeaderCellDirective</span>,
-        <span class="hljs-title class_">NxTableCellComponent</span>,
-        <span class="hljs-title class_">NxLinkComponent</span>,
-        <span class="hljs-title class_">RouterLink</span>,
-        <span class="hljs-title class_">NxBadgeComponent</span>,
-        <span class="hljs-title class_">DatePipe</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;table-sorting-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./table-sorting-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;table-sorting-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxTableComponent</span>,
+    <span class="hljs-title class_">NxSortDirective</span>,
+    <span class="hljs-title class_">NxTableRowComponent</span>,
+    <span class="hljs-title class_">NxSortHeaderComponent</span>,
+    <span class="hljs-title class_">NxHeaderCellDirective</span>,
+    <span class="hljs-title class_">NxTableCellComponent</span>,
+    <span class="hljs-title class_">NxLinkComponent</span>,
+    <span class="hljs-title class_">RouterLink</span>,
+    <span class="hljs-title class_">NxBadgeComponent</span>,
+    <span class="hljs-title class_">DatePipe</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TableSortingExampleComponent</span> {
-    <span class="hljs-attr">tableElements</span>: <span class="hljs-title class_">Contract</span>[] = [
-        {
-            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
-            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1234</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
-            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
-            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&#x27;1/3/2020&#x27;</span>),
-            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
-            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>,
-        },
-        {
-            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Health&#x27;</span>,
-            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">2423</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is another contract&#x27;</span>,
-            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.allianz.com&#x27;</span>,
-            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&#x27;4/2/2020&#x27;</span>),
-            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;active&#x27;</span>,
-            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;processing&#x27;</span>,
-        },
-        {
-            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
-            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">353455</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;Lorem ipsum dolor sit amet, csis libero. &#x27;</span>,
-            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
-            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&#x27;6/2/2020&#x27;</span>),
-            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;positive&#x27;</span>,
-            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;accepted&#x27;</span>,
-        },
-        {
-            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Home&#x27;</span>,
-            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">22344</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a description of a contract&#x27;</span>,
-            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.org&#x27;</span>,
-            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&#x27;1/20/2027&#x27;</span>),
-            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;critical&#x27;</span>,
-            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;rejected&#x27;</span>,
-        },
-    ];
+  <span class="hljs-attr">tableElements</span>: <span class="hljs-title class_">Contract</span>[] = [
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
+      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1234</span>,
+      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
+      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
+      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&#x27;1/3/2020&#x27;</span>),
+      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
+      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>,
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Health&#x27;</span>,
+      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">2423</span>,
+      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is another contract&#x27;</span>,
+      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.allianz.com&#x27;</span>,
+      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&#x27;4/2/2020&#x27;</span>),
+      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;active&#x27;</span>,
+      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;processing&#x27;</span>,
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
+      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">353455</span>,
+      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;Lorem ipsum dolor sit amet, csis libero. &#x27;</span>,
+      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
+      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&#x27;6/2/2020&#x27;</span>),
+      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;positive&#x27;</span>,
+      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;accepted&#x27;</span>,
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Home&#x27;</span>,
+      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">22344</span>,
+      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a description of a contract&#x27;</span>,
+      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.org&#x27;</span>,
+      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&#x27;1/20/2027&#x27;</span>),
+      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;critical&#x27;</span>,
+      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;rejected&#x27;</span>,
+    },
+  ];
 
-    <span class="hljs-comment">/**
-     * Sorts the table data by a certain category.
-     */</span>
-    <span class="hljs-title function_">sortTable</span>(<span class="hljs-params"><span class="hljs-attr">sort</span>: <span class="hljs-title class_">SortEvent</span></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">tableElements</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">tableElements</span>.<span class="hljs-title function_">sort</span>(
-            <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">a</span>: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> }, <span class="hljs-attr">b</span>: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> }</span>) =&gt;</span> {
-                <span class="hljs-keyword">if</span> (sort.<span class="hljs-property">active</span> <span class="hljs-keyword">in</span> a &amp;&amp; sort.<span class="hljs-property">active</span> <span class="hljs-keyword">in</span> b) {
-                    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">compare</span>(
-                        a[sort.<span class="hljs-property">active</span>],
-                        b[sort.<span class="hljs-property">active</span>],
-                        sort.<span class="hljs-property">direction</span>,
-                    );
-                }
-                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-            },
-        );
-    }
-
-    <span class="hljs-title function_">compare</span>(<span class="hljs-params">
-        <span class="hljs-attr">a</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Date</span>,
-        <span class="hljs-attr">b</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Date</span>,
-        <span class="hljs-attr">direction</span>: <span class="hljs-title class_">SortDirection</span>,
-    </span>) {
-        <span class="hljs-keyword">if</span> (a &lt; b) {
-            <span class="hljs-keyword">return</span> direction === <span class="hljs-string">&#x27;asc&#x27;</span> ? -<span class="hljs-number">1</span> : <span class="hljs-number">1</span>;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a &gt; b) {
-            <span class="hljs-keyword">return</span> direction === <span class="hljs-string">&#x27;asc&#x27;</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;
+  <span class="hljs-comment">/**
+   * Sorts the table data by a certain category.
+   */</span>
+  <span class="hljs-title function_">sortTable</span>(<span class="hljs-params"><span class="hljs-attr">sort</span>: <span class="hljs-title class_">SortEvent</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">tableElements</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">tableElements</span>.<span class="hljs-title function_">sort</span>(
+      <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">a</span>: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> }, <span class="hljs-attr">b</span>: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> }</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (sort.<span class="hljs-property">active</span> <span class="hljs-keyword">in</span> a &amp;&amp; sort.<span class="hljs-property">active</span> <span class="hljs-keyword">in</span> b) {
+          <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">compare</span>(a[sort.<span class="hljs-property">active</span>], b[sort.<span class="hljs-property">active</span>], sort.<span class="hljs-property">direction</span>);
         }
         <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+      },
+    );
+  }
+
+  <span class="hljs-title function_">compare</span>(<span class="hljs-params">
+    <span class="hljs-attr">a</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Date</span>,
+    <span class="hljs-attr">b</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Date</span>,
+    <span class="hljs-attr">direction</span>: <span class="hljs-title class_">SortDirection</span>,
+  </span>) {
+    <span class="hljs-keyword">if</span> (a &lt; b) {
+      <span class="hljs-keyword">return</span> direction === <span class="hljs-string">&#x27;asc&#x27;</span> ? -<span class="hljs-number">1</span> : <span class="hljs-number">1</span>;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a &gt; b) {
+      <span class="hljs-keyword">return</span> direction === <span class="hljs-string">&#x27;asc&#x27;</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;
     }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+  }
 }

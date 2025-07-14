@@ -1,26 +1,23 @@
 <div nxLayout="grid">
-    <div nxRow>
-        <div nxCol="12,12,6">
-            <nx-formfield label="Car brand">
-                <nx-dropdown
-                    [showFilter]="true"
-                    filterPlaceholder="Type to search car"
-                >
-                    @for (brand of options; track brand) {
-                    <nx-dropdown-item [value]="brand"></nx-dropdown-item>
-                    }
-                </nx-dropdown>
-            </nx-formfield>
-        </div>
-        <div nxCol="12,12,6">
-            <nx-formfield label="Car brand">
-                <nx-multi-select
-                    filter
-                    filterPlaceholder="Type to search car"
-                    [options]="options"
-                >
-                </nx-multi-select>
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <nx-formfield label="Car brand">
+        <nx-dropdown [showFilter]="true" filterPlaceholder="Type to search car">
+          @for (brand of options; track brand) {
+          <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
     </div>
+    <div nxCol="12,12,6">
+      <nx-formfield label="Car brand">
+        <nx-multi-select
+          filter
+          filterPlaceholder="Type to search car"
+          [options]="options"
+        >
+        </nx-multi-select>
+      </nx-formfield>
+    </div>
+  </div>
 </div>

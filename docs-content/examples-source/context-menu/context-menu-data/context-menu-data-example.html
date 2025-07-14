@@ -1,69 +1,67 @@
 <nx-context-menu #menu="nxContextMenu">
-    <ng-template nxContextMenuContent let-contract="contract">
-        <button nxContextMenuItem type="button">
-            <nx-icon aria-hidden="true" name="user-o"></nx-icon>
-            User: {{ contract.user }}
-        </button>
-        <button nxContextMenuItem type="button">
-            <nx-icon aria-hidden="true" name="bookmark-o"></nx-icon>
-            Bookmark
-        </button>
-        <button nxContextMenuItem type="button">
-            <nx-icon aria-hidden="true" name="pen"></nx-icon>
-            Edit
-        </button>
-        <button
-            nxContextMenuItem
-            [nxContextMenuTriggerFor]="documentsSubmenu"
-            [nxContextMenuTriggerData]="{ documents: contract.documents }"
-            type="button"
-        >
-            <nx-icon aria-hidden="true" name="file"></nx-icon>
-            Documents
-        </button>
-    </ng-template>
+  <ng-template nxContextMenuContent let-contract="contract">
+    <button nxContextMenuItem type="button">
+      <nx-icon aria-hidden="true" name="user-o"></nx-icon>
+      User: {{ contract.user }}
+    </button>
+    <button nxContextMenuItem type="button">
+      <nx-icon aria-hidden="true" name="bookmark-o"></nx-icon>
+      Bookmark
+    </button>
+    <button nxContextMenuItem type="button">
+      <nx-icon aria-hidden="true" name="pen"></nx-icon>
+      Edit
+    </button>
+    <button
+      nxContextMenuItem
+      [nxContextMenuTriggerFor]="documentsSubmenu"
+      [nxContextMenuTriggerData]="{ documents: contract.documents }"
+      type="button"
+    >
+      <nx-icon aria-hidden="true" name="file"></nx-icon>
+      Documents
+    </button>
+  </ng-template>
 </nx-context-menu>
 
 <nx-context-menu #documentsSubmenu="nxContextMenu">
-    <ng-template nxContextMenuContent let-documents="documents">
-        @for (document of documents; track document) {
-        <button nxContextMenuItem type="button">
-            <nx-icon aria-hidden="true" name="pdf"></nx-icon>
-            {{ document }}
-        </button>
-        }
-    </ng-template>
+  <ng-template nxContextMenuContent let-documents="documents">
+    @for (document of documents; track document) {
+    <button nxContextMenuItem type="button">
+      <nx-icon aria-hidden="true" name="pdf"></nx-icon>
+      {{ document }}
+    </button>
+    }
+  </ng-template>
 </nx-context-menu>
 
 <table nxTable condensed>
-    <thead>
-        <tr nxTableRow>
-            <th nxHeaderCell>Contract Id</th>
-            <th nxHeaderCell>Status</th>
-            <th nxHeaderCell aria-label="Context menu"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (contract of contracts; track contract) {
-        <tr nxTableRow>
-            <td nxTableCell>{{ contract.id }}</td>
-            <td nxTableCell>
-                <nx-badge [type]="contract.status"
-                    >{{ contract.status }}</nx-badge
-                >
-            </td>
-            <td nxTableCell>
-                <button
-                    nxIconButton="tertiary small"
-                    [nxContextMenuTriggerFor]="menu"
-                    [nxContextMenuTriggerData]="{ contract: contract }"
-                    aria-label="Open menu"
-                    type="button"
-                >
-                    <nx-icon aria-hidden="true" name="ellipsis-h"></nx-icon>
-                </button>
-            </td>
-        </tr>
-        }
-    </tbody>
+  <thead>
+    <tr nxTableRow>
+      <th nxHeaderCell>Contract Id</th>
+      <th nxHeaderCell>Status</th>
+      <th nxHeaderCell aria-label="Context menu"></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (contract of contracts; track contract) {
+    <tr nxTableRow>
+      <td nxTableCell>{{ contract.id }}</td>
+      <td nxTableCell>
+        <nx-badge [type]="contract.status">{{ contract.status }}</nx-badge>
+      </td>
+      <td nxTableCell>
+        <button
+          nxIconButton="tertiary small"
+          [nxContextMenuTriggerFor]="menu"
+          [nxContextMenuTriggerData]="{ contract: contract }"
+          aria-label="Open menu"
+          type="button"
+        >
+          <nx-icon aria-hidden="true" name="ellipsis-h"></nx-icon>
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
 </table>

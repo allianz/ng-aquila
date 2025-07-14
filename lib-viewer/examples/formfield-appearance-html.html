@@ -1,133 +1,119 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Prefilled field&quot;</span>
-                <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;prefilled&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Readonly field&quot;</span>
-                <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldPrefix</span>&gt;</span>$<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">readonly</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;500&quot;</span> /&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxFormfieldAppendix</span>
-                    <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">&quot;tertiary small&quot;</span>
-                    <span class="hljs-attr">nxPopoverDirection</span>=<span class="hljs-string">&quot;top&quot;</span>
-                    [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverAppearanceExample&quot;</span>
-                    <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;More information&quot;</span>
-                &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Prefilled field&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;prefilled&quot;</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Readonly field&quot;</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldPrefix</span>&gt;</span>$<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">readonly</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;500&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+          <span class="hljs-attr">nxFormfieldAppendix</span>
+          <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">&quot;tertiary small&quot;</span>
+          <span class="hljs-attr">nxPopoverDirection</span>=<span class="hljs-string">&quot;top&quot;</span>
+          [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverAppearanceExample&quot;</span>
+          <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+          <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;More information&quot;</span>
+        &gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Dropdown Label&quot;</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;BMW&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Audi&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Volvo&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Mini&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Label&quot;</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Disabled input&quot;</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Birthday&quot;</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+          <span class="hljs-attr">nxDatefield</span>
+          <span class="hljs-attr">nxInput</span>
+          [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
+          [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;currentDate&quot;</span>
+          <span class="hljs-attr">nxAriaLabel</span>=<span class="hljs-string">&quot;Enter the date of your Birthday&quot;</span>
+        /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
+          [<span class="hljs-attr">for</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
+          <span class="hljs-attr">nxFormfieldSuffix</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">myDatepicker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span> mm/dd/yyyy <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Error: <span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>Please type in a valid Date in the Format
+          mm/dd/yyyy or use the calendar to select a Date.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Dropdown Label&quot;</span>
-                <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;BMW&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Audi&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Volvo&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Mini&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Label&quot;</span>
-                <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Disabled input&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Textarea Label&quot;</span>
+        <span class="hljs-attr">optionalLabel</span>=<span class="hljs-string">&quot;Optional&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Birthday&quot;</span>
-                <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-                    <span class="hljs-attr">nxDatefield</span>
-                    <span class="hljs-attr">nxInput</span>
-                    [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
-                    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;currentDate&quot;</span>
-                    <span class="hljs-attr">nxAriaLabel</span>=<span class="hljs-string">&quot;Enter the date of your Birthday&quot;</span>
-                /&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
-                    [<span class="hljs-attr">for</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
-                    <span class="hljs-attr">nxFormfieldSuffix</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">myDatepicker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span> mm/dd/yyyy <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Error: <span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>Please type in a valid Date in the
-                    Format mm/dd/yyyy or use the calendar to select a Date.
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-                <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Textarea Label&quot;</span>
-                <span class="hljs-attr">optionalLabel</span>=<span class="hljs-string">&quot;Optional&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Character count&quot;</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> #<span class="hljs-attr">inputToCount</span> <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;15&quot;</span> (<span class="hljs-attr">input</span>)=<span class="hljs-string">&quot;onInput()&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>
+          @if (count === 0) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> max. 15 characters <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          } @if (count &gt; 0) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> {{15 - count }} characters remaining <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Character count&quot;</span>
-                <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-                    <span class="hljs-attr">nxInput</span>
-                    #<span class="hljs-attr">inputToCount</span>
-                    <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;15&quot;</span>
-                    (<span class="hljs-attr">input</span>)=<span class="hljs-string">&quot;onInput()&quot;</span>
-                /&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>
-                    @if (count === 0) {
-                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> max. 15 characters <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                    } @if (count &gt; 0) {
-                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> {{15 - count }} characters remaining <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                    }
-                <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverAppearanceExample</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;max-width: 300px&quot;</span>&gt;</span>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni,
-        nostrum. Obcaecati cupiditate numquam, fugit illo incidunt molestiae
-        ipsam perferendis officia accusamus. Enim magnam recusandae velit
-        accusamus ipsa. Nemo, eius exercitationem?
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;max-width: 300px&quot;</span>&gt;</span>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nostrum.
+    Obcaecati cupiditate numquam, fugit illo incidunt molestiae ipsam
+    perferendis officia accusamus. Enim magnam recusandae velit accusamus ipsa.
+    Nemo, eius exercitationem?
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>

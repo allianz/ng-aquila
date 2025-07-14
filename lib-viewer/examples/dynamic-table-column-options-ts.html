@@ -1,95 +1,95 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxCheckboxComponent</span>,
+  <span class="hljs-title class_">NxCheckboxGroupComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/checkbox&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxContextMenuModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/context-menu&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDynamicTableColumnDefinition</span>,
+  <span class="hljs-title class_">NxDynamicTableComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dynamic-table&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxCheckboxComponent</span>,
-    <span class="hljs-title class_">NxCheckboxGroupComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/checkbox&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxContextMenuModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/context-menu&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxDynamicTableColumnDefinition</span>,
-    <span class="hljs-title class_">NxDynamicTableComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dynamic-table&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Table Column Options Example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dynamic-table-column-options-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dynamic-table-column-options-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dynamic-table-column-options-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxButtonComponent</span>,
-        <span class="hljs-title class_">NxCheckboxGroupComponent</span>,
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">NxCheckboxComponent</span>,
-        <span class="hljs-title class_">NxDynamicTableComponent</span>,
-        <span class="hljs-title class_">NxContextMenuModule</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dynamic-table-column-options-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dynamic-table-column-options-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dynamic-table-column-options-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxButtonComponent</span>,
+    <span class="hljs-title class_">NxCheckboxGroupComponent</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">NxCheckboxComponent</span>,
+    <span class="hljs-title class_">NxDynamicTableComponent</span>,
+    <span class="hljs-title class_">NxContextMenuModule</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DynamicTableColumnOptionsExampleComponent</span> {
-    data = [
-        {
-            <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AAC &#x27;</span>,
-            <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Honda&#x27;</span>,
-            <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$1.38 &#x27;</span>,
-            <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-0.01 &#x27;</span>,
-            <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;-0.36% &#x27;</span>,
-            <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
-            <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab lreom &#x27;</span>,
-        },
-        {
-            <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AAD &#x27;</span>,
-            <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Abacus&#x27;</span>,
-            <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$1.15 &#x27;</span>,
-            <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;+2.01 &#x27;</span>,
-            <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;+45.00% &#x27;</span>,
-            <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
-            <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab ipsum &#x27;</span>,
-        },
-        {
-            <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AAC &#x27;</span>,
-            <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Aditya&#x27;</span>,
-            <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$2.22 &#x27;</span>,
-            <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-1.21 &#x27;</span>,
-            <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;+5.00% &#x27;</span>,
-            <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
-            <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab tyuy &#x27;</span>,
-        },
-        {
-            <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;ABC &#x27;</span>,
-            <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Acrux Limited&#x27;</span>,
-            <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$1.50 &#x27;</span>,
-            <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-0.01 &#x27;</span>,
-            <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;±0% &#x27;</span>,
-            <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
-            <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;mad&lt;br&gt;abdi &#x27;</span>,
-        },
-        {
-            <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AGK &#x27;</span>,
-            <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Adamus&#x27;</span>,
-            <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$3.12 &#x27;</span>,
-            <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-0.01 &#x27;</span>,
-            <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;-1.00% &#x27;</span>,
-            <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
-            <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab tyuy &#x27;</span>,
-        },
-    ];
+  data = [
+    {
+      <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AAC &#x27;</span>,
+      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Honda&#x27;</span>,
+      <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$1.38 &#x27;</span>,
+      <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-0.01 &#x27;</span>,
+      <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;-0.36% &#x27;</span>,
+      <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
+      <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab lreom &#x27;</span>,
+    },
+    {
+      <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AAD &#x27;</span>,
+      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Abacus&#x27;</span>,
+      <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$1.15 &#x27;</span>,
+      <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;+2.01 &#x27;</span>,
+      <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;+45.00% &#x27;</span>,
+      <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
+      <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab ipsum &#x27;</span>,
+    },
+    {
+      <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AAC &#x27;</span>,
+      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Aditya&#x27;</span>,
+      <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$2.22 &#x27;</span>,
+      <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-1.21 &#x27;</span>,
+      <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;+5.00% &#x27;</span>,
+      <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
+      <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab tyuy &#x27;</span>,
+    },
+    {
+      <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;ABC &#x27;</span>,
+      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Acrux Limited&#x27;</span>,
+      <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$1.50 &#x27;</span>,
+      <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-0.01 &#x27;</span>,
+      <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;±0% &#x27;</span>,
+      <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
+      <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;mad&lt;br&gt;abdi &#x27;</span>,
+    },
+    {
+      <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AGK &#x27;</span>,
+      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Adamus&#x27;</span>,
+      <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$3.12 &#x27;</span>,
+      <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-0.01 &#x27;</span>,
+      <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;-1.00% &#x27;</span>,
+      <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
+      <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab tyuy &#x27;</span>,
+    },
+  ];
 
-    <span class="hljs-attr">columns</span>: <span class="hljs-title class_">NxDynamicTableColumnDefinition</span>[] = [
-        { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Code&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;code&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
-        { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Company&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;company&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
-        { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Price&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;price&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
-        { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Change Percent&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;changePercent&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
-        { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Change&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;change&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
-        { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Lorem Ipsum&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;lorem&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
-    ];
+  <span class="hljs-attr">columns</span>: <span class="hljs-title class_">NxDynamicTableColumnDefinition</span>[] = [
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Code&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;code&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Company&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;company&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Price&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;price&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Change Percent&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;changePercent&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Change&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;change&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Lorem Ipsum&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;lorem&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+  ];
 
-    selected = [<span class="hljs-string">&#x27;code&#x27;</span>, <span class="hljs-string">&#x27;company&#x27;</span>, <span class="hljs-string">&#x27;price&#x27;</span>, <span class="hljs-string">&#x27;changePercent&#x27;</span>, <span class="hljs-string">&#x27;change&#x27;</span>, <span class="hljs-string">&#x27;lorem&#x27;</span>];
+  selected = [<span class="hljs-string">&#x27;code&#x27;</span>, <span class="hljs-string">&#x27;company&#x27;</span>, <span class="hljs-string">&#x27;price&#x27;</span>, <span class="hljs-string">&#x27;changePercent&#x27;</span>, <span class="hljs-string">&#x27;change&#x27;</span>, <span class="hljs-string">&#x27;lorem&#x27;</span>];
 
-    <span class="hljs-keyword">get</span> <span class="hljs-title function_">displayedColumns</span>() {
-        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">columns</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">column</span> =&gt;</span>
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span>.<span class="hljs-title function_">some</span>(<span class="hljs-function"><span class="hljs-params">selected</span> =&gt;</span> column.<span class="hljs-property">key</span> === selected),
-        );
-    }
+  <span class="hljs-keyword">get</span> <span class="hljs-title function_">displayedColumns</span>() {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">columns</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">column</span>) =&gt;</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span>.<span class="hljs-title function_">some</span>(<span class="hljs-function">(<span class="hljs-params">selected</span>) =&gt;</span> column.<span class="hljs-property">key</span> === selected),
+    );
+  }
 }

@@ -1,49 +1,49 @@
 <h3>Use default global settings</h3>
 
 <nx-formfield label="Label">
-    <input nxInput value="prefilled" />
+  <input nxInput value="prefilled" />
 </nx-formfield>
 
 <nx-formfield label="Label">
-    <span nxFormfieldPrefix>$</span>
-    <input nxInput nxAriaLabel="Enter dollar amount" />
-    <button
-        nxFormfieldAppendix
-        nxIconButton="tertiary small"
-        nxPopoverDirection="top"
-        [nxPopoverTriggerFor]="popoverGlobalExample"
-        nxPopoverTrigger="click"
-        type="button"
-        aria-label="More information"
-    >
-        <nx-icon name="info-circle-o" size="s" aria-hidden="true"> </nx-icon>
-    </button>
+  <span nxFormfieldPrefix>$</span>
+  <input nxInput nxAriaLabel="Enter dollar amount" />
+  <button
+    nxFormfieldAppendix
+    nxIconButton="tertiary small"
+    nxPopoverDirection="top"
+    [nxPopoverTriggerFor]="popoverGlobalExample"
+    nxPopoverTrigger="click"
+    type="button"
+    aria-label="More information"
+  >
+    <nx-icon name="info-circle-o" size="s" aria-hidden="true"> </nx-icon>
+  </button>
 </nx-formfield>
 
 <nx-formfield label="Formfield with error">
-    <input nxInput required [(ngModel)]="modelValue" #errorNgModel="nxInput" />
-    <nx-error nxFormfieldError> This is a mandatory field </nx-error>
+  <input nxInput required [(ngModel)]="modelValue" #errorNgModel="nxInput" />
+  <nx-error nxFormfieldError> This is a mandatory field </nx-error>
 </nx-formfield>
 
 <h3>Override default global settings</h3>
 
 <nx-formfield label="Override appearance" appearance="auto">
-    <input nxInput />
+  <input nxInput />
 </nx-formfield>
 
 <nx-formfield
-    label="Override appearance and nxFloatLabel"
-    appearance="auto"
-    floatLabel="auto"
+  label="Override appearance and nxFloatLabel"
+  appearance="auto"
+  floatLabel="auto"
 >
-    <input nxInput />
+  <input nxInput />
 </nx-formfield>
 
 <nx-popover #popoverGlobalExample>
-    <div style="max-width: 300px">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni,
-        nostrum. Obcaecati cupiditate numquam, fugit illo incidunt molestiae
-        ipsam perferendis officia accusamus. Enim magnam recusandae velit
-        accusamus ipsa. Nemo, eius exercitationem?
-    </div>
+  <div style="max-width: 300px">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nostrum.
+    Obcaecati cupiditate numquam, fugit illo incidunt molestiae ipsam
+    perferendis officia accusamus. Enim magnam recusandae velit accusamus ipsa.
+    Nemo, eius exercitationem?
+  </div>
 </nx-popover>

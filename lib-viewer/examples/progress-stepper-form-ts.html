@@ -1,49 +1,49 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/input&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxMultiStepperComponent</span>,
+  <span class="hljs-title class_">NxStepComponent</span>,
+  <span class="hljs-title class_">NxStepperNextDirective</span>,
+  <span class="hljs-title class_">NxStepperPreviousDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/progress-stepper&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FormBuilder</span>,
-    <span class="hljs-title class_">FormsModule</span>,
-    <span class="hljs-title class_">ReactiveFormsModule</span>,
-    <span class="hljs-title class_">Validators</span>,
+  <span class="hljs-title class_">FormBuilder</span>,
+  <span class="hljs-title class_">FormsModule</span>,
+  <span class="hljs-title class_">ReactiveFormsModule</span>,
+  <span class="hljs-title class_">Validators</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxMultiStepperComponent</span>,
-    <span class="hljs-title class_">NxStepComponent</span>,
-    <span class="hljs-title class_">NxStepperNextDirective</span>,
-    <span class="hljs-title class_">NxStepperPreviousDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/progress-stepper&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Progress Indicator multi manual step completion example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;progress-stepper-form-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./progress-stepper-form-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./progress-stepper-form-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxMultiStepperComponent</span>,
-        <span class="hljs-title class_">NxStepComponent</span>,
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">ReactiveFormsModule</span>,
-        <span class="hljs-title class_">NxFormfieldComponent</span>,
-        <span class="hljs-title class_">NxInputDirective</span>,
-        <span class="hljs-title class_">NxButtonComponent</span>,
-        <span class="hljs-title class_">NxStepperPreviousDirective</span>,
-        <span class="hljs-title class_">NxStepperNextDirective</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;progress-stepper-form-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./progress-stepper-form-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./progress-stepper-form-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxMultiStepperComponent</span>,
+    <span class="hljs-title class_">NxStepComponent</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxInputDirective</span>,
+    <span class="hljs-title class_">NxButtonComponent</span>,
+    <span class="hljs-title class_">NxStepperPreviousDirective</span>,
+    <span class="hljs-title class_">NxStepperNextDirective</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProgressStepperFormExampleComponent</span> {
-    lastStepCompleted = <span class="hljs-literal">false</span>;
+  lastStepCompleted = <span class="hljs-literal">false</span>;
 
-    <span class="hljs-keyword">readonly</span> manualCompletionForm = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
-        <span class="hljs-attr">name</span>: [<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
-    });
+  <span class="hljs-keyword">readonly</span> manualCompletionForm = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
+    <span class="hljs-attr">name</span>: [<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
+  });
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">fb</span>: <span class="hljs-title class_">FormBuilder</span></span>) {}
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">fb</span>: <span class="hljs-title class_">FormBuilder</span></span>) {}
 
-    <span class="hljs-title function_">completeLastStep</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">lastStepCompleted</span> = <span class="hljs-literal">true</span>;
-    }
+  <span class="hljs-title function_">completeLastStep</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">lastStepCompleted</span> = <span class="hljs-literal">true</span>;
+  }
 }

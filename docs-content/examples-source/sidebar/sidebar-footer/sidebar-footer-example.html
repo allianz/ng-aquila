@@ -1,35 +1,31 @@
 <nx-sidebar
-    resizeHandleAriaLabel="Toggle sidebar width"
-    class="my-sidebar"
-    resizeable
-    #sidebar
+  resizeHandleAriaLabel="Toggle sidebar width"
+  class="my-sidebar"
+  resizeable
+  #sidebar
 >
-    @for (action of actions; track action) {
-    <a
-        nxAction
-        routerLink="./"
-        [queryParams]="action.query"
-        routerLinkActive="is-selected"
-    >
-        <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
-        {{action.label}}
-    </a>
-    }
+  @for (action of actions; track action) {
+  <a
+    nxAction
+    routerLink="./"
+    [queryParams]="action.query"
+    routerLinkActive="is-selected"
+  >
+    <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
+    {{action.label}}
+  </a>
+  }
 
-    <nx-sidebar-footer>
-        <button
-            nxIconButton="tertiary small-medium"
-            aria-label="Open settings"
-            nxTooltip="Open settings"
-            class="nx-margin-0"
-            type="button"
-        >
-            <nx-icon name="setting" aria-hidden="true"></nx-icon>
-        </button>
-        <button
-            nxSidebarToggle
-            aria-label="Toggle sidebar"
-            type="button"
-        ></button>
-    </nx-sidebar-footer>
+  <nx-sidebar-footer>
+    <button
+      nxIconButton="tertiary small-medium"
+      aria-label="Open settings"
+      nxTooltip="Open settings"
+      class="nx-margin-0"
+      type="button"
+    >
+      <nx-icon name="setting" aria-hidden="true"></nx-icon>
+    </button>
+    <button nxSidebarToggle aria-label="Toggle sidebar" type="button"></button>
+  </nx-sidebar-footer>
 </nx-sidebar>

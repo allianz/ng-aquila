@@ -1,77 +1,77 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-    <span class="hljs-attr">nxButton</span>
-    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-xs nx-margin-bottom-m&quot;</span>
-    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;openModal()&quot;</span>
+  <span class="hljs-attr">nxButton</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-xs nx-margin-bottom-m&quot;</span>
+  (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;openModal()&quot;</span>
 &gt;</span>
-    open modal
+  open modal
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> #<span class="hljs-attr">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;formGroup&quot;</span> (<span class="hljs-attr">ngSubmit</span>)=<span class="hljs-string">&quot;onSubmit()&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxModalContent</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-medium&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-modal-margin-bottom&quot;</span>&gt;</span>
-                Form in a modal
-            <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Text&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;text&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;formGroup&quot;</span> (<span class="hljs-attr">ngSubmit</span>)=<span class="hljs-string">&quot;onSubmit()&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxModalContent</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-medium&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-modal-margin-bottom&quot;</span>&gt;</span>
+        Form in a modal
+      <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Text&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;text&quot;</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxModalActions</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-0 nx-margin-right-xs&quot;</span>
-                <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small secondary&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                #<span class="hljs-attr">cancelButton</span>
-                (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;dialogRef?.close()&quot;</span>
-                [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;cancelPopover&quot;</span>
-                [(<span class="hljs-attr">nxPopoverShow</span>)]=<span class="hljs-string">&quot;showPopoverFlag&quot;</span>
-                <span class="hljs-attr">nxPopoverDirection</span>=<span class="hljs-string">&quot;top&quot;</span>
-                <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;manual&quot;</span>
-                <span class="hljs-attr">closeOnClickOutside</span>=<span class="hljs-string">&quot;true&quot;</span>
-                <span class="hljs-attr">nxPopoverModal</span>=<span class="hljs-string">&quot;true&quot;</span>
-            &gt;</span>
-                Cancel
-            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                <span class="hljs-attr">nxModalClose</span>=<span class="hljs-string">&quot;proceed&quot;</span>
-                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-0&quot;</span>
-                <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
-            &gt;</span>
-                Save
-            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxModalActions</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-0 nx-margin-right-xs&quot;</span>
+        <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small secondary&quot;</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        #<span class="hljs-attr">cancelButton</span>
+        (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;dialogRef?.close()&quot;</span>
+        [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;cancelPopover&quot;</span>
+        [(<span class="hljs-attr">nxPopoverShow</span>)]=<span class="hljs-string">&quot;showPopoverFlag&quot;</span>
+        <span class="hljs-attr">nxPopoverDirection</span>=<span class="hljs-string">&quot;top&quot;</span>
+        <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;manual&quot;</span>
+        <span class="hljs-attr">closeOnClickOutside</span>=<span class="hljs-string">&quot;true&quot;</span>
+        <span class="hljs-attr">nxPopoverModal</span>=<span class="hljs-string">&quot;true&quot;</span>
+      &gt;</span>
+        Cancel
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-attr">nxModalClose</span>=<span class="hljs-string">&quot;proceed&quot;</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-0&quot;</span>
+        <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
+      &gt;</span>
+        Save
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">cancelPopover</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-semibold&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;exclamation-circle&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Unsaved changes<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-2m&quot;</span>&gt;</span>
-                Are you sure you want to discard your changes?
-            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">cancelPopover</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-semibold&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+          <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;exclamation-circle&quot;</span>
+          <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Unsaved changes<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-2m&quot;</span>&gt;</span>
+        Are you sure you want to discard your changes?
+      <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;action-buttons nx-margin-top-3m&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary danger small-medium&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-s&quot;</span>
-                    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;discard()&quot;</span>
-                &gt;</span>
-                    Discard
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small-medium&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;closePopover()&quot;</span>
-                &gt;</span>
-                    Keep editing
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;action-buttons nx-margin-top-3m&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+          <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary danger small-medium&quot;</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+          <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-s&quot;</span>
+          (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;discard()&quot;</span>
+        &gt;</span>
+          Discard
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+          <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small-medium&quot;</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+          (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;closePopover()&quot;</span>
+        &gt;</span>
+          Keep editing
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>

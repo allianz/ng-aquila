@@ -1,19 +1,19 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxFormfieldComponent</span>,
+  <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+  <span class="hljs-title class_">NxFormfieldLabelDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPhoneInputComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/phone-input&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">AbstractControl</span>,
-    <span class="hljs-title class_">FormControl</span>,
-    <span class="hljs-title class_">FormsModule</span>,
-    <span class="hljs-title class_">ReactiveFormsModule</span>,
-    <span class="hljs-title class_">ValidatorFn</span>,
-    <span class="hljs-title class_">Validators</span>,
+  <span class="hljs-title class_">AbstractControl</span>,
+  <span class="hljs-title class_">FormControl</span>,
+  <span class="hljs-title class_">FormsModule</span>,
+  <span class="hljs-title class_">ReactiveFormsModule</span>,
+  <span class="hljs-title class_">ValidatorFn</span>,
+  <span class="hljs-title class_">Validators</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxFormfieldComponent</span>,
-    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
-    <span class="hljs-title class_">NxFormfieldLabelDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPhoneInputComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/phone-input&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">NumberType</span>, parsePhoneNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;libphonenumber-js/max&#x27;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">PhoneNumberType</span> = <span class="hljs-string">&#x27;landline&#x27;</span> | <span class="hljs-string">&#x27;mobile&#x27;</span>;
@@ -21,9 +21,9 @@
 <span class="hljs-keyword">const</span> <span class="hljs-attr">MOBILE_TYPES</span>: <span class="hljs-title class_">NumberType</span>[] = [<span class="hljs-string">&#x27;MOBILE&#x27;</span>, <span class="hljs-string">&#x27;FIXED_LINE_OR_MOBILE&#x27;</span>];
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">LANDLINE_TYPES</span>: <span class="hljs-title class_">NumberType</span>[] = [
-    <span class="hljs-string">&#x27;FIXED_LINE&#x27;</span>,
-    <span class="hljs-string">&#x27;FIXED_LINE_OR_MOBILE&#x27;</span>,
-    <span class="hljs-string">&#x27;PERSONAL_NUMBER&#x27;</span>,
+  <span class="hljs-string">&#x27;FIXED_LINE&#x27;</span>,
+  <span class="hljs-string">&#x27;FIXED_LINE_OR_MOBILE&#x27;</span>,
+  <span class="hljs-string">&#x27;PERSONAL_NUMBER&#x27;</span>,
 ];
 
 <span class="hljs-comment">/**
@@ -31,60 +31,60 @@
  * <span class="hljs-doctag">@param</span> type (optional) Type of number, can be `mobile` or `landline`
  */</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">phoneNumberValidator</span>(<span class="hljs-params"><span class="hljs-attr">type</span>?: <span class="hljs-title class_">PhoneNumberType</span></span>): <span class="hljs-title class_">ValidatorFn</span> {
-    <span class="hljs-keyword">return</span> (<span class="hljs-attr">control</span>: <span class="hljs-title class_">AbstractControl</span>): { [<span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> } | <span class="hljs-function"><span class="hljs-params">null</span> =&gt;</span> {
-        <span class="hljs-keyword">let</span> valid = <span class="hljs-literal">false</span>;
-        <span class="hljs-comment">// if the number is packed in an object, the entered value is the `original`field</span>
-        <span class="hljs-keyword">const</span> value =
-            <span class="hljs-keyword">typeof</span> control.<span class="hljs-property">value</span> === <span class="hljs-string">&#x27;object&#x27;</span>
-                ? control.<span class="hljs-property">value</span>.<span class="hljs-property">original</span>
-                : control.<span class="hljs-property">value</span>;
-        <span class="hljs-keyword">let</span> typeValid = <span class="hljs-literal">true</span>;
+  <span class="hljs-keyword">return</span> (<span class="hljs-attr">control</span>: <span class="hljs-title class_">AbstractControl</span>): { [<span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> } | <span class="hljs-function"><span class="hljs-params">null</span> =&gt;</span> {
+    <span class="hljs-keyword">let</span> valid = <span class="hljs-literal">false</span>;
+    <span class="hljs-comment">// if the number is packed in an object, the entered value is the `original`field</span>
+    <span class="hljs-keyword">const</span> value =
+      <span class="hljs-keyword">typeof</span> control.<span class="hljs-property">value</span> === <span class="hljs-string">&#x27;object&#x27;</span>
+        ? control.<span class="hljs-property">value</span>.<span class="hljs-property">original</span>
+        : control.<span class="hljs-property">value</span>;
+    <span class="hljs-keyword">let</span> typeValid = <span class="hljs-literal">true</span>;
 
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-keyword">if</span> (value != <span class="hljs-literal">null</span>) {
-                <span class="hljs-keyword">const</span> parsed = <span class="hljs-title function_">parsePhoneNumber</span>(value);
-                <span class="hljs-keyword">const</span> parsedType = parsed.<span class="hljs-title function_">getType</span>();
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">if</span> (value != <span class="hljs-literal">null</span>) {
+        <span class="hljs-keyword">const</span> parsed = <span class="hljs-title function_">parsePhoneNumber</span>(value);
+        <span class="hljs-keyword">const</span> parsedType = parsed.<span class="hljs-title function_">getType</span>();
 
-                <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">&#x27;mobile&#x27;</span>) {
-                    typeValid = <span class="hljs-variable constant_">MOBILE_TYPES</span>.<span class="hljs-title function_">includes</span>(parsedType);
-                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">&#x27;landline&#x27;</span>) {
-                    typeValid = <span class="hljs-variable constant_">LANDLINE_TYPES</span>.<span class="hljs-title function_">includes</span>(parsedType);
-                }
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">&#x27;mobile&#x27;</span>) {
+          typeValid = <span class="hljs-variable constant_">MOBILE_TYPES</span>.<span class="hljs-title function_">includes</span>(parsedType);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">&#x27;landline&#x27;</span>) {
+          typeValid = <span class="hljs-variable constant_">LANDLINE_TYPES</span>.<span class="hljs-title function_">includes</span>(parsedType);
+        }
 
-                valid = parsed.<span class="hljs-title function_">isValid</span>() &amp;&amp; typeValid;
-            }
-        } <span class="hljs-keyword">catch</span> (e) {}
+        valid = parsed.<span class="hljs-title function_">isValid</span>() &amp;&amp; typeValid;
+      }
+    } <span class="hljs-keyword">catch</span> (e) {}
 
-        <span class="hljs-keyword">return</span> valid
-            ? <span class="hljs-literal">null</span>
-            : {
-                  <span class="hljs-attr">phoneNumber</span>: { value, typeValid },
-              };
-    };
+    <span class="hljs-keyword">return</span> valid
+      ? <span class="hljs-literal">null</span>
+      : {
+          <span class="hljs-attr">phoneNumber</span>: { value, typeValid },
+        };
+  };
 }
 
 <span class="hljs-comment">/** <span class="hljs-doctag">@title</span> Phone input validation */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;phone-input-validation-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;phone-input-validation-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./phone-input-validation-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxFormfieldComponent</span>,
-        <span class="hljs-title class_">NxFormfieldLabelDirective</span>,
-        <span class="hljs-title class_">NxPhoneInputComponent</span>,
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">ReactiveFormsModule</span>,
-        <span class="hljs-title class_">NxErrorComponent</span>,
-        <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;phone-input-validation-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;phone-input-validation-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./phone-input-validation-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxFormfieldLabelDirective</span>,
+    <span class="hljs-title class_">NxPhoneInputComponent</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
+    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PhoneInputValidationExampleComponent</span> {
-    phoneControl = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, [
-        <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>,
-        <span class="hljs-title function_">phoneNumberValidator</span>(<span class="hljs-string">&#x27;landline&#x27;</span>),
-    ]);
-    mobilePhoneControl = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, [
-        <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>,
-        <span class="hljs-title function_">phoneNumberValidator</span>(<span class="hljs-string">&#x27;mobile&#x27;</span>),
-    ]);
+  phoneControl = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, [
+    <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>,
+    <span class="hljs-title function_">phoneNumberValidator</span>(<span class="hljs-string">&#x27;landline&#x27;</span>),
+  ]);
+  mobilePhoneControl = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, [
+    <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>,
+    <span class="hljs-title function_">phoneNumberValidator</span>(<span class="hljs-string">&#x27;mobile&#x27;</span>),
+  ]);
 }

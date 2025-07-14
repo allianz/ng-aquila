@@ -5,22 +5,21 @@ import { SpinnerNegativeExampleComponent } from './spinner-negative/spinner-nega
 import { SpinnerSizesExampleComponent } from './spinner-sizes/spinner-sizes-example';
 
 const EXAMPLES = [
-    SpinnerNegativeExampleComponent,
-    SpinnerSizesExampleComponent,
-    SpinnerAriaAnnouncementExampleComponent,
+  SpinnerNegativeExampleComponent,
+  SpinnerSizesExampleComponent,
+  SpinnerAriaAnnouncementExampleComponent,
 ];
 
 @NgModule({
-    imports: [EXAMPLES],
-    exports: [EXAMPLES],
+  imports: [EXAMPLES],
+  exports: [EXAMPLES],
 })
 export class SpinnerExamplesModule {
-    static components() {
-        return {
-            'spinner-negative': SpinnerNegativeExampleComponent,
-            'spinner-sizes': SpinnerSizesExampleComponent,
-            'spinner-aria-announcement':
-                SpinnerAriaAnnouncementExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'spinner-negative': SpinnerNegativeExampleComponent,
+      'spinner-sizes': SpinnerSizesExampleComponent,
+      'spinner-aria-announcement': SpinnerAriaAnnouncementExampleComponent,
+    };
+  }
 }

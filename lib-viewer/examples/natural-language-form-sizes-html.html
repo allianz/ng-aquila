@@ -1,81 +1,74 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-natural-language-form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;largeForm&quot;</span>&gt;</span>
-        This is a large NLF: My profession is
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span>
-            <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Your Profession&quot;</span>
-            <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;error-profession-required&quot;</span>
-        &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;job&quot;</span> <span class="hljs-attr">nxInput</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
-        and I want to insure my
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span>
-            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;long&quot;</span>
-            <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;The object to insure&quot;</span>
-            <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;error-object-to-insure&quot;</span>
-        &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;what&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;car&quot;</span>&gt;</span>Car<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;house&quot;</span>&gt;</span>House<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;boat&quot;</span>&gt;</span>Boat<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
-        .
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-headline&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Invalid or missing input:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-m&quot;</span>&gt;</span>
-                @if(largeForm.controls.job.hasError(&#x27;required&#x27;) &amp;&amp;
-                largeForm.controls.job.touched){
-                <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-profession-required&quot;</span>&gt;</span>Profession is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-                } @if(largeForm.controls.what.hasError(&#x27;required&#x27;) &amp;&amp;
-                largeForm.controls.what.touched){
-                <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-object-to-insure&quot;</span>&gt;</span>
-                    The object to insure is required
-                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-                }
-            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-natural-language-form</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-natural-language-form</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span>&gt;</span>
-    This is a small NLF: My profession is
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span>
-        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Your Profession&quot;</span>
-        <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;error-profession-required-small-nlf&quot;</span>
-    &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">ngModel</span> <span class="hljs-attr">required</span> #<span class="hljs-attr">professionInput</span>=<span class="hljs-string">&quot;ngModel&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-natural-language-form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;largeForm&quot;</span>&gt;</span>
+    This is a large NLF: My profession is
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Your Profession&quot;</span> <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;error-profession-required&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;job&quot;</span> <span class="hljs-attr">nxInput</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
     and I want to insure my
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span>
-        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;long&quot;</span>
-        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Always a label&quot;</span>
-        <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;error-object-to-insure-small-nlf&quot;</span>
+      <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;long&quot;</span>
+      <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;The object to insure&quot;</span>
+      <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;error-object-to-insure&quot;</span>
     &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">required</span> <span class="hljs-attr">ngModel</span> #<span class="hljs-attr">objectToInsure</span>=<span class="hljs-string">&quot;ngModel&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;car&quot;</span>&gt;</span>Car<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;house&quot;</span>&gt;</span>House<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;boat&quot;</span>&gt;</span>Boat<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;what&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;car&quot;</span>&gt;</span>Car<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;house&quot;</span>&gt;</span>House<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;boat&quot;</span>&gt;</span>Boat<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
     .
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-headline&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Invalid or missing input:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-m&quot;</span>&gt;</span>
-            @if(professionInput.hasError(&#x27;required&#x27;) &amp;&amp;
-            professionInput.touched){
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-profession-required-small-nlf&quot;</span> #<span class="hljs-attr">error</span>&gt;</span>
-                Profession is required.
-            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-headline&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Invalid or missing input:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-m&quot;</span>&gt;</span>
+        @if(largeForm.controls.job.hasError(&#x27;required&#x27;) &amp;&amp;
+        largeForm.controls.job.touched){
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-profession-required&quot;</span>&gt;</span>Profession is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 
-            } @if(objectToInsure.hasError(&#x27;required&#x27;) &amp;&amp;
-            objectToInsure.touched){
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-object-to-insure-small-nlf&quot;</span>&gt;</span>
-                The object to insure is required
-            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        } @if(largeForm.controls.what.hasError(&#x27;required&#x27;) &amp;&amp;
+        largeForm.controls.what.touched){
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-object-to-insure&quot;</span>&gt;</span>The object to insure is required<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 
-            }
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-natural-language-form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-natural-language-form</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span>&gt;</span>
+  This is a small NLF: My profession is
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span>
+    <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Your Profession&quot;</span>
+    <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;error-profession-required-small-nlf&quot;</span>
+  &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">ngModel</span> <span class="hljs-attr">required</span> #<span class="hljs-attr">professionInput</span>=<span class="hljs-string">&quot;ngModel&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
+  and I want to insure my
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span>
+    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;long&quot;</span>
+    <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Always a label&quot;</span>
+    <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;error-object-to-insure-small-nlf&quot;</span>
+  &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">required</span> <span class="hljs-attr">ngModel</span> #<span class="hljs-attr">objectToInsure</span>=<span class="hljs-string">&quot;ngModel&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;car&quot;</span>&gt;</span>Car<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;house&quot;</span>&gt;</span>House<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;boat&quot;</span>&gt;</span>Boat<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
+  .
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-headline&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Invalid or missing input:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-m&quot;</span>&gt;</span>
+      @if(professionInput.hasError(&#x27;required&#x27;) &amp;&amp; professionInput.touched){
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-profession-required-small-nlf&quot;</span> #<span class="hljs-attr">error</span>&gt;</span>
+        Profession is required.
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+      } @if(objectToInsure.hasError(&#x27;required&#x27;) &amp;&amp; objectToInsure.touched){
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-object-to-insure-small-nlf&quot;</span>&gt;</span>
+        The object to insure is required
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-natural-language-form</span>&gt;</span>

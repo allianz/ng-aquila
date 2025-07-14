@@ -1,18 +1,18 @@
+import { NxAccordionModule } from '@allianz/ng-aquila/accordion';
+import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
+import { NxComparisonTableModule } from '@allianz/ng-aquila/comparison-table';
+import { NxContextMenuModule } from '@allianz/ng-aquila/context-menu';
+import { NxDataDisplayModule } from '@allianz/ng-aquila/data-display';
+import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxListModule } from '@allianz/ng-aquila/list';
+import { NxPopoverModule } from '@allianz/ng-aquila/popover';
+import { NxRadioToggleModule } from '@allianz/ng-aquila/radio-toggle';
+import { NxSpinnerModule } from '@allianz/ng-aquila/spinner';
+import { NxSwipebarModule } from '@allianz/ng-aquila/swipebar';
 import { NgModule } from '@angular/core';
-import { NxAccordionModule } from '@aposin/ng-aquila/accordion';
-import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
-import { NxComparisonTableModule } from '@aposin/ng-aquila/comparison-table';
-import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
-import { NxDataDisplayModule } from '@aposin/ng-aquila/data-display';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxListModule } from '@aposin/ng-aquila/list';
-import { NxPopoverModule } from '@aposin/ng-aquila/popover';
-import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
-import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
-import { NxSwipebarModule } from '@aposin/ng-aquila/swipebar';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { BreakdownTableExampleComponent } from './breakdown-table/breakdown-table-example';
@@ -33,73 +33,71 @@ import { RecommendationTableExampleComponent } from './recommendation-table/reco
 import { RecommendationTableExpertExampleComponent } from './recommendation-table-expert/recommendation-table-expert-example';
 
 const EXAMPLES = [
-    ComparisonTableErrorExampleComponent,
-    ComparisonTableExampleComponent,
-    ComparisonTableStaticExampleComponent,
-    ComparisonTableDisabledColumnsExampleComponent,
-    ComparisonTableDynamicExampleComponent,
-    ComparisonTableFormElementsExampleComponent,
-    ComparisonTableRowGroupExampleComponent,
-    ComparisonTableWithIntersectionExampleComponent,
-    ComparisonTableWithToggleSectionsExampleComponent,
-    ComparisonTableExpandableAreaExampleComponent,
-    ComparisonTableHiddenColumnsExampleComponent,
-    ComparisonTableNonStickyHeaderExampleComponent,
-    BreakdownTableExampleComponent,
-    BreakdownTableExpertExampleComponent,
-    RecommendationTableExampleComponent,
-    RecommendationTableExpertExampleComponent,
+  ComparisonTableErrorExampleComponent,
+  ComparisonTableExampleComponent,
+  ComparisonTableStaticExampleComponent,
+  ComparisonTableDisabledColumnsExampleComponent,
+  ComparisonTableDynamicExampleComponent,
+  ComparisonTableFormElementsExampleComponent,
+  ComparisonTableRowGroupExampleComponent,
+  ComparisonTableWithIntersectionExampleComponent,
+  ComparisonTableWithToggleSectionsExampleComponent,
+  ComparisonTableExpandableAreaExampleComponent,
+  ComparisonTableHiddenColumnsExampleComponent,
+  ComparisonTableNonStickyHeaderExampleComponent,
+  BreakdownTableExampleComponent,
+  BreakdownTableExpertExampleComponent,
+  RecommendationTableExampleComponent,
+  RecommendationTableExpertExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxComparisonTableModule,
-        NxIconModule,
-        NxInputModule,
-        NxCheckboxModule,
-        NxPopoverModule,
-        NxRadioToggleModule,
-        NxDropdownModule,
-        NxFormfieldModule,
-        NxListModule,
-        NxAccordionModule,
-        NxContextMenuModule,
-        NxDataDisplayModule,
-        NxSpinnerModule,
-        NxSwipebarModule,
-        ExamplesSharedModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxComparisonTableModule,
+    NxIconModule,
+    NxInputModule,
+    NxCheckboxModule,
+    NxPopoverModule,
+    NxRadioToggleModule,
+    NxDropdownModule,
+    NxFormfieldModule,
+    NxListModule,
+    NxAccordionModule,
+    NxContextMenuModule,
+    NxDataDisplayModule,
+    NxSpinnerModule,
+    NxSwipebarModule,
+    ExamplesSharedModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class ComparisonExamplesModule {
-    static components() {
-        return {
-            'comparison-table-error': ComparisonTableErrorExampleComponent,
-            'comparison-table': ComparisonTableExampleComponent,
-            'comparison-table-static': ComparisonTableStaticExampleComponent,
-            'comparison-table-disabled-columns':
-                ComparisonTableDisabledColumnsExampleComponent,
-            'comparison-table-dynamic': ComparisonTableDynamicExampleComponent,
-            'comparison-table-form-elements':
-                ComparisonTableFormElementsExampleComponent,
-            'comparison-table-row-group':
-                ComparisonTableRowGroupExampleComponent,
-            'comparison-table-with-intersection':
-                ComparisonTableWithIntersectionExampleComponent,
-            'comparison-table-with-toggle-sections':
-                ComparisonTableWithToggleSectionsExampleComponent,
-            'comparison-table-expandable-area':
-                ComparisonTableExpandableAreaExampleComponent,
-            'comparison-table-hidden-columns':
-                ComparisonTableHiddenColumnsExampleComponent,
-            'comparison-table-non-sticky-header':
-                ComparisonTableNonStickyHeaderExampleComponent,
-            'breakdown-table': BreakdownTableExampleComponent,
-            'breakdown-table-expert': BreakdownTableExpertExampleComponent,
-            'recommendation-table': RecommendationTableExampleComponent,
-            'recommendation-table-expert':
-                RecommendationTableExpertExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'comparison-table-error': ComparisonTableErrorExampleComponent,
+      'comparison-table': ComparisonTableExampleComponent,
+      'comparison-table-static': ComparisonTableStaticExampleComponent,
+      'comparison-table-disabled-columns':
+        ComparisonTableDisabledColumnsExampleComponent,
+      'comparison-table-dynamic': ComparisonTableDynamicExampleComponent,
+      'comparison-table-form-elements':
+        ComparisonTableFormElementsExampleComponent,
+      'comparison-table-row-group': ComparisonTableRowGroupExampleComponent,
+      'comparison-table-with-intersection':
+        ComparisonTableWithIntersectionExampleComponent,
+      'comparison-table-with-toggle-sections':
+        ComparisonTableWithToggleSectionsExampleComponent,
+      'comparison-table-expandable-area':
+        ComparisonTableExpandableAreaExampleComponent,
+      'comparison-table-hidden-columns':
+        ComparisonTableHiddenColumnsExampleComponent,
+      'comparison-table-non-sticky-header':
+        ComparisonTableNonStickyHeaderExampleComponent,
+      'breakdown-table': BreakdownTableExampleComponent,
+      'breakdown-table-expert': BreakdownTableExpertExampleComponent,
+      'recommendation-table': RecommendationTableExampleComponent,
+      'recommendation-table-expert': RecommendationTableExpertExampleComponent,
+    };
+  }
 }

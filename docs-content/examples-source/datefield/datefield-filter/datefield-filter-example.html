@@ -1,23 +1,23 @@
 <nx-formfield label="Date of damage">
-    <input
-        [datefieldFilter]="onlyDaysWith6"
-        ngModel
-        #dateFilterModel="ngModel"
-        nxDatefield
-        nxInput
-        [datepicker]="picker3"
-    />
-    <span nxFormfieldHint>MM/DD/YYYY</span>
-    <nx-datepicker-toggle
-        [for]="picker3"
-        nxFormfieldSuffix
-    ></nx-datepicker-toggle>
-    <nx-datepicker #picker3></nx-datepicker>
+  <input
+    [datefieldFilter]="onlyDaysWith6"
+    ngModel
+    #dateFilterModel="ngModel"
+    nxDatefield
+    nxInput
+    [datepicker]="picker3"
+  />
+  <span nxFormfieldHint>MM/DD/YYYY</span>
+  <nx-datepicker-toggle
+    [for]="picker3"
+    nxFormfieldSuffix
+  ></nx-datepicker-toggle>
+  <nx-datepicker #picker3></nx-datepicker>
 
-    @if (dateFilterModel.errors && dateFilterModel.errors.nxDatefieldFilter) {
-    <nx-error nxFormfieldError> That's not the 6th of a month. </nx-error>
-    } @if (dateFilterModel.errors && dateFilterModel.errors.nxDatefieldParse) {
-    <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+  @if (dateFilterModel.errors && dateFilterModel.errors.nxDatefieldFilter) {
+  <nx-error nxFormfieldError> That's not the 6th of a month. </nx-error>
+  } @if (dateFilterModel.errors && dateFilterModel.errors.nxDatefieldParse) {
+  <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
 
-    }
+  }
 </nx-formfield>

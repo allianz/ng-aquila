@@ -1,37 +1,37 @@
 <form [formGroup]="testForm">
-    <div nxLayout="grid">
-        <div nxRow>
-            <div nxCol="12,12,4">
-                <nx-timefield
-                    label="Time"
-                    formControlName="timefieldReactive"
-                    appearance="outline"
-                >
-                    <nx-error> Invalid time input. </nx-error>
-                </nx-timefield>
-            </div>
-            <div nxCol="12,12,4">
-                <nx-timefield
-                    label="Time"
-                    formControlName="timefieldPickerReactive"
-                    appearance="outline"
-                    withTimepicker
-                >
-                    <nx-error> Invalid time input. </nx-error>
-                </nx-timefield>
-            </div>
-            <div nxCol="12,12,4">
-                <nx-timefield
-                    label="Time"
-                    formControlName="timefield12Reactive"
-                    twelveHourFormat
-                    appearance="outline"
-                >
-                    <nx-error> Invalid time input. </nx-error>
-                </nx-timefield>
-            </div>
-        </div>
+  <div nxLayout="grid">
+    <div nxRow>
+      <div nxCol="12,12,4">
+        <nx-timefield
+          label="Time"
+          formControlName="timefieldReactive"
+          appearance="outline"
+        >
+          <nx-error> Invalid time input. </nx-error>
+        </nx-timefield>
+      </div>
+      <div nxCol="12,12,4">
+        <nx-timefield
+          label="Time"
+          formControlName="timefieldPickerReactive"
+          appearance="outline"
+          withTimepicker
+        >
+          <nx-error> Invalid time input. </nx-error>
+        </nx-timefield>
+      </div>
+      <div nxCol="12,12,4">
+        <nx-timefield
+          label="Time"
+          formControlName="timefield12Reactive"
+          twelveHourFormat
+          appearance="outline"
+        >
+          <nx-error> Invalid time input. </nx-error>
+        </nx-timefield>
+      </div>
     </div>
+  </div>
 </form>
 
 <p class="nx-margin-bottom-0">Form value: {{ testForm.value | json }}</p>

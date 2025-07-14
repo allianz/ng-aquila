@@ -1,37 +1,37 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCopytextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/copytext&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxDialogService</span>, <span class="hljs-title class_">NxModalRef</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/modal&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Directionality</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/bidi&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">TemplateRef</span>, <span class="hljs-title class_">ViewChild</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCopytextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/copytext&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/headline&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxDialogService</span>, <span class="hljs-title class_">NxModalRef</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/modal&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Modal with direction example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;modal-with-direction-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./modal-with-direction-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./modal-with-direction-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxButtonComponent</span>, <span class="hljs-title class_">NxHeadlineComponent</span>, <span class="hljs-title class_">NxCopytextComponent</span>],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;modal-with-direction-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./modal-with-direction-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./modal-with-direction-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxButtonComponent</span>, <span class="hljs-title class_">NxHeadlineComponent</span>, <span class="hljs-title class_">NxCopytextComponent</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ModalWithDirectionExampleComponent</span> {
-    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template&#x27;</span>) templateRef!: <span class="hljs-title class_">TemplateRef</span>&lt;<span class="hljs-built_in">any</span>&gt;;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template&#x27;</span>) templateRef!: <span class="hljs-title class_">TemplateRef</span>&lt;<span class="hljs-built_in">any</span>&gt;;
 
-    <span class="hljs-attr">templateDialogRef</span>?: <span class="hljs-title class_">NxModalRef</span>&lt;<span class="hljs-built_in">any</span>&gt;;
+  <span class="hljs-attr">templateDialogRef</span>?: <span class="hljs-title class_">NxModalRef</span>&lt;<span class="hljs-built_in">any</span>&gt;;
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">dialogService</span>: <span class="hljs-title class_">NxDialogService</span>,
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">dir</span>: <span class="hljs-title class_">Directionality</span>,
-    </span>) {}
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">dialogService</span>: <span class="hljs-title class_">NxDialogService</span>,
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">dir</span>: <span class="hljs-title class_">Directionality</span>,
+  </span>) {}
 
-    <span class="hljs-title function_">openFromTemplate</span>(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">templateDialogRef</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">dialogService</span>.<span class="hljs-title function_">open</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">templateRef</span>, {
-            <span class="hljs-attr">ariaLabel</span>: <span class="hljs-string">&#x27;Dialog with direction&#x27;</span>,
-            <span class="hljs-attr">direction</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">dir</span>.<span class="hljs-property">value</span>,
-        });
-    }
+  <span class="hljs-title function_">openFromTemplate</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">templateDialogRef</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">dialogService</span>.<span class="hljs-title function_">open</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">templateRef</span>, {
+      <span class="hljs-attr">ariaLabel</span>: <span class="hljs-string">&#x27;Dialog with direction&#x27;</span>,
+      <span class="hljs-attr">direction</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">dir</span>.<span class="hljs-property">value</span>,
+    });
+  }
 
-    <span class="hljs-title function_">closeTemplateDialog</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">templateDialogRef</span>?.<span class="hljs-title function_">close</span>();
-    }
+  <span class="hljs-title function_">closeTemplateDialog</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">templateDialogRef</span>?.<span class="hljs-title function_">close</span>();
+  }
 }

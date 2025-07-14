@@ -1,70 +1,66 @@
 <form>
-    <nx-natural-language-form [formGroup]="naturalForm">
-        <span>I want to be</span>
-        <nx-word
-            size="long"
-            label="Your profession"
-            describedBy="profession-error-required"
-        >
-            <nx-dropdown formControlName="who">
-                <nx-dropdown-item value="student">a Student</nx-dropdown-item>
-                <nx-dropdown-item value="philosopher"
-                    >a Philosopher</nx-dropdown-item
-                >
-                <nx-dropdown-item value="sailor">a Sailor</nx-dropdown-item>
-            </nx-dropdown>
-        </nx-word>
+  <nx-natural-language-form [formGroup]="naturalForm">
+    <span>I want to be</span>
+    <nx-word
+      size="long"
+      label="Your profession"
+      describedBy="profession-error-required"
+    >
+      <nx-dropdown formControlName="who">
+        <nx-dropdown-item value="student">a Student</nx-dropdown-item>
+        <nx-dropdown-item value="philosopher">a Philosopher</nx-dropdown-item>
+        <nx-dropdown-item value="sailor">a Sailor</nx-dropdown-item>
+      </nx-dropdown>
+    </nx-word>
 
-        <span>and visit the city of</span>
+    <span>and visit the city of</span>
 
-        <nx-word
-            size="short"
-            label="City to visit"
-            describedBy="city-error-required"
-        >
-            <input nxInput formControlName="city" />
-        </nx-word>
-        <span>and see</span>
-        <nx-word
-            size="regular"
-            label="Number of spots to visit"
-            describedBy="error-headline spots-error-required spots-error-pattern"
-        >
-            <input nxInput formControlName="spots" />
-        </nx-word>
-        <span> nice spots.</span>
-        <nx-error>
-            <span id="error-headline"><b>Invalid or missing input:</b></span>
-            <ul class="nx-margin-left-m">
-                @if(naturalForm.controls.who.hasError('required') &&
-                naturalForm.controls.who.touched){
-                <li id="profession-error-required">Profession is required.</li>
+    <nx-word
+      size="short"
+      label="City to visit"
+      describedBy="city-error-required"
+    >
+      <input nxInput formControlName="city" />
+    </nx-word>
+    <span>and see</span>
+    <nx-word
+      size="regular"
+      label="Number of spots to visit"
+      describedBy="error-headline spots-error-required spots-error-pattern"
+    >
+      <input nxInput formControlName="spots" />
+    </nx-word>
+    <span> nice spots.</span>
+    <nx-error>
+      <span id="error-headline"><b>Invalid or missing input:</b></span>
+      <ul class="nx-margin-left-m">
+        @if(naturalForm.controls.who.hasError('required') &&
+        naturalForm.controls.who.touched){
+        <li id="profession-error-required">Profession is required.</li>
 
-                } @if(naturalForm.controls.city.hasError('required') &&
-                naturalForm.controls.city.touched){
-                <li id="city-error-required">The city is required.</li>
+        } @if(naturalForm.controls.city.hasError('required') &&
+        naturalForm.controls.city.touched){
+        <li id="city-error-required">The city is required.</li>
 
-                } @if(naturalForm.controls.spots.hasError('required') &&
-                naturalForm.controls.spots.touched){
-                <li id="spots-error-required">
-                    Number of Spots to visit is required.
-                </li>
+        } @if(naturalForm.controls.spots.hasError('required') &&
+        naturalForm.controls.spots.touched){
+        <li id="spots-error-required">Number of Spots to visit is required.</li>
 
-                } @if(naturalForm.controls.spots.hasError('pattern') &&
-                naturalForm.controls.spots.touched){
-                <li id="spots-error-pattern">
-                    Number of Spots to visit has to be a number.
-                </li>
+        } @if(naturalForm.controls.spots.hasError('pattern') &&
+        naturalForm.controls.spots.touched){
+        <li id="spots-error-pattern">
+          Number of Spots to visit has to be a number.
+        </li>
 
-                }
-            </ul>
-        </nx-error>
-    </nx-natural-language-form>
+        }
+      </ul>
+    </nx-error>
+  </nx-natural-language-form>
 
-    <button nxButton (click)="validate()" type="submit">submit</button>
+  <button nxButton (click)="validate()" type="submit">submit</button>
 </form>
 
 <p>
-    Form value: {{ naturalForm.value | json }}<br />
-    Form status: {{ naturalForm.status | json }}
+  Form value: {{ naturalForm.value | json }}<br />
+  Form status: {{ naturalForm.status | json }}
 </p>

@@ -1,29 +1,29 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "baseUrl": "./",
-        "outDir": "./out-tsc",
-        "forceConsistentCasingInFileNames": true,
-        "sourceMap": true,
-        "declaration": false,
-        "downlevelIteration": true,
-        "experimentalDecorators": true,
-        "module": "es2020",
-        "target": "es2022",
-        "lib": ["es2020", "dom"],
-        "moduleResolution": "node",
-        "importHelpers": true,
-        "resolveJsonModule": true,
-        "allowSyntheticDefaultImports": true,
-        "useDefineForClassFields": false,
-        "noImplicitReturns": true,
-        "strict": true
-    },
-    "exclude": ["src/assets", "dist"],
-    "angularCompilerOptions": {
-        "enableI18nLegacyMessageIdFormat": false,
-        "strictInjectionParameters": true,
-        "strictInputAccessModifiers": true,
-        "strictTemplates": true
-    }
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "es2020",
+    "target": "es2022",
+    "lib": ["es2020", "dom"],
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": false,
+    "noImplicitReturns": true,
+    "strict": true
+  },
+  "exclude": ["src/assets", "dist"],
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
 }

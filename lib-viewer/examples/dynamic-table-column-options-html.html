@@ -1,35 +1,29 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: end&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-        <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span>
-        [<span class="hljs-attr">nxContextMenuTriggerFor</span>]=<span class="hljs-string">&quot;menu&quot;</span>
-        <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-bottom: 24px&quot;</span>
-    &gt;</span>
-        Column Settings
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span>
+    [<span class="hljs-attr">nxContextMenuTriggerFor</span>]=<span class="hljs-string">&quot;menu&quot;</span>
+    <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-bottom: 24px&quot;</span>
+  &gt;</span>
+    Column Settings
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu</span> #<span class="hljs-attr">menu</span>=<span class="hljs-string">&quot;nxContextMenu&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu-header</span>&gt;</span> Column Settings <span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu-header</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox-group</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;selected&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu-item-wrap</span>&gt;</span>
-            @for (column of columns; track column) {
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
-                <span class="hljs-attr">nxContextMenuItem</span>
-                <span class="hljs-attr">nxContextMenuItemCheckbox</span>
-                <span class="hljs-attr">disableCloseOnSelect</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;column.key&quot;</span>&gt;</span>
-                    {{column.title}}
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
-                <span class="hljs-comment">&lt;!-- TODO keyboard selection not working --&gt;</span>
-                <span class="hljs-comment">&lt;!-- TODO item span not full length, icon cannot be at the end --&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            }
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu-item-wrap</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu-header</span>&gt;</span> Column Settings <span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu-header</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox-group</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;selected&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu-item-wrap</span>&gt;</span>
+      @for (column of columns; track column) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxContextMenuItem</span> <span class="hljs-attr">nxContextMenuItemCheckbox</span> <span class="hljs-attr">disableCloseOnSelect</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;column.key&quot;</span>&gt;</span> {{column.title}} <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- TODO keyboard selection not working --&gt;</span>
+        <span class="hljs-comment">&lt;!-- TODO item span not full length, icon cannot be at the end --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu-item-wrap</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox-group</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-dynamic-table</span>
-    [<span class="hljs-attr">data</span>]=<span class="hljs-string">&quot;data&quot;</span>
-    [<span class="hljs-attr">displayedColumns</span>]=<span class="hljs-string">&quot;displayedColumns&quot;</span>
+  [<span class="hljs-attr">data</span>]=<span class="hljs-string">&quot;data&quot;</span>
+  [<span class="hljs-attr">displayedColumns</span>]=<span class="hljs-string">&quot;displayedColumns&quot;</span>
 &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dynamic-table</span>&gt;</span>

@@ -1,20 +1,20 @@
+import { NxBadgeModule } from '@allianz/ng-aquila/badge';
+import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
+import { NxContextMenuModule } from '@allianz/ng-aquila/context-menu';
+import { NxDatefieldModule } from '@allianz/ng-aquila/datefield';
+import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxLinkModule } from '@allianz/ng-aquila/link';
+import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
+import { NxPaginationModule } from '@allianz/ng-aquila/pagination';
+import { NxRadioModule } from '@allianz/ng-aquila/radio-button';
+import { NxRadioToggleModule } from '@allianz/ng-aquila/radio-toggle';
+import { NxSwitcherModule } from '@allianz/ng-aquila/switcher';
+import { NxTableModule } from '@allianz/ng-aquila/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxBadgeModule } from '@aposin/ng-aquila/badge';
-import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
-import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
-import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxLinkModule } from '@aposin/ng-aquila/link';
-import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
-import { NxPaginationModule } from '@aposin/ng-aquila/pagination';
-import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
-import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
-import { NxSwitcherModule } from '@aposin/ng-aquila/switcher';
-import { NxTableModule } from '@aposin/ng-aquila/table';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { TableExampleComponent } from './table/table-example';
@@ -33,63 +33,62 @@ import { TableStickyHeaderExampleComponent } from './table-sticky-header/table-s
 import { TableZebraExampleComponent } from './table-zebra/table-zebra-example';
 
 const EXAMPLES = [
-    TableColumnResizeExampleComponent,
-    TableColumnReorderExampleComponent,
-    TableExampleComponent,
-    TableCondensedExampleComponent,
-    TableExpandableExampleComponent,
-    TableFilterSortPaginateExampleComponent,
-    TableSelectingExampleComponent,
-    TableSingleSelectExampleComponent,
-    TableSortingExampleComponent,
-    TableZebraExampleComponent,
-    TableFormElementsExampleComponent,
-    TableStickyColumnExampleComponent,
-    TableStickyHeaderExampleComponent,
-    TableColumnHidingExampleComponent,
+  TableColumnResizeExampleComponent,
+  TableColumnReorderExampleComponent,
+  TableExampleComponent,
+  TableCondensedExampleComponent,
+  TableExpandableExampleComponent,
+  TableFilterSortPaginateExampleComponent,
+  TableSelectingExampleComponent,
+  TableSingleSelectExampleComponent,
+  TableSortingExampleComponent,
+  TableZebraExampleComponent,
+  TableFormElementsExampleComponent,
+  TableStickyColumnExampleComponent,
+  TableStickyHeaderExampleComponent,
+  TableColumnHidingExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxTableModule,
-        NxSwitcherModule,
-        NxCheckboxModule,
-        NxContextMenuModule,
-        NxPaginationModule,
-        NxDropdownModule,
-        NxDatefieldModule,
-        NxMomentDateModule,
-        NxInputModule,
-        NxBadgeModule,
-        NxLinkModule,
-        NxRadioModule,
-        NxIconModule,
-        NxRadioToggleModule,
-        ExamplesSharedModule,
-        RouterModule,
-        DragDropModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxTableModule,
+    NxSwitcherModule,
+    NxCheckboxModule,
+    NxContextMenuModule,
+    NxPaginationModule,
+    NxDropdownModule,
+    NxDatefieldModule,
+    NxMomentDateModule,
+    NxInputModule,
+    NxBadgeModule,
+    NxLinkModule,
+    NxRadioModule,
+    NxIconModule,
+    NxRadioToggleModule,
+    ExamplesSharedModule,
+    RouterModule,
+    DragDropModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class TableExamplesModule {
-    static components() {
-        return {
-            'table-column-resize': TableColumnResizeExampleComponent,
-            'table-column-reorder': TableColumnReorderExampleComponent,
-            table: TableExampleComponent,
-            'table-condensed': TableCondensedExampleComponent,
-            'table-expandable': TableExpandableExampleComponent,
-            'table-filter-sort-paginate':
-                TableFilterSortPaginateExampleComponent,
-            'table-selecting': TableSelectingExampleComponent,
-            'table-single-select': TableSingleSelectExampleComponent,
-            'table-sorting': TableSortingExampleComponent,
-            'table-zebra': TableZebraExampleComponent,
-            'table-form-elements': TableFormElementsExampleComponent,
-            'table-sticky-column': TableStickyColumnExampleComponent,
-            'table-sticky-header': TableStickyHeaderExampleComponent,
-            'table-column-hiding': TableColumnHidingExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'table-column-resize': TableColumnResizeExampleComponent,
+      'table-column-reorder': TableColumnReorderExampleComponent,
+      table: TableExampleComponent,
+      'table-condensed': TableCondensedExampleComponent,
+      'table-expandable': TableExpandableExampleComponent,
+      'table-filter-sort-paginate': TableFilterSortPaginateExampleComponent,
+      'table-selecting': TableSelectingExampleComponent,
+      'table-single-select': TableSingleSelectExampleComponent,
+      'table-sorting': TableSortingExampleComponent,
+      'table-zebra': TableZebraExampleComponent,
+      'table-form-elements': TableFormElementsExampleComponent,
+      'table-sticky-column': TableStickyColumnExampleComponent,
+      'table-sticky-header': TableStickyHeaderExampleComponent,
+      'table-column-hiding': TableColumnHidingExampleComponent,
+    };
+  }
 }

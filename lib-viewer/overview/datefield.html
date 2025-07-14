@@ -1,7 +1,7 @@
 <h3 id="module" tabindex="-1" class="docs-markdown--h3">Module</h3>
 <p class="docs-markdown--p">Ensure that you provide a date implementation in addition to the required module:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxDatefieldModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxNativeDateModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxDatefieldModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/datefield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxNativeDateModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/datefield&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">The date field requires the Angular CDK (incl. CSS). Learn <a href="./documentation/overlay/overview#angular-cdk">how to enable Angular CDK styles</a>.</p>
 <h3 id="choose-your-dateadapter" tabindex="-1" class="docs-markdown--h3">Choose your DateAdapter</h3>
@@ -22,35 +22,35 @@
 <td><code>Date</code></td>
 <td>en-US</td>
 <td>None</td>
-<td><code>@aposin/ng-aquila/datefield</code></td>
+<td><code>@allianz/ng-aquila/datefield</code></td>
 </tr>
 <tr>
 <td><code>NxMomentDateModule</code></td>
 <td><code>Moment</code></td>
 <td><a href="https://github.com/moment/moment/tree/develop/src/locale">See moment project</a></td>
 <td><a href="https://momentjs.com/">Moment.js</a></td>
-<td><code>@aposin/ng-aquila/moment-date-adapter</code></td>
+<td><code>@allianz/ng-aquila/moment-date-adapter</code></td>
 </tr>
 <tr>
 <td><code>NxIsoDateModule</code></td>
 <td><code>string</code> in ISO format YYYY-MM-DD</td>
 <td><a href="https://github.com/iamkun/dayjs/tree/dev/src/locale">See dayjs project</a></td>
 <td><a href="https://day.js.org/">dayjs</a></td>
-<td><code>@aposin/ng-aquila/iso-date-adapter</code></td>
+<td><code>@allianz/ng-aquila/iso-date-adapter</code></td>
 </tr>
 </tbody>
 </table>
 <p class="docs-markdown--p">Momentjs ships with every locale thus significantly increasing the bundle size. The iso date adapter uses dayjs where you have to import the locales you want to support manually. So you are under control and have huge potential bundle size savings. With en and de locales you save around 300KB (pre gzip).</p>
 <h4 id="iso-date-adapter" tabindex="-1" class="docs-markdown--h4">ISO Date Adapter</h4>
 <p class="docs-markdown--p">The ISO date adapter works solely with YYYY-MM-DD strings. Under the hood it uses dayjs to support formatting, parsing and localization. With this adapter you don't have to create a proper Date, Dayjs or Moment Object first to bind it with ngModel or reactive forms.</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIsoDateModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/iso-date-adapter&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIsoDateModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/iso-date-adapter&#x27;</span>;
 </code></pre>
 <h4 id="native-date" tabindex="-1" class="docs-markdown--h4">Native Date</h4>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxNativeDateModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxNativeDateModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/datefield&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">That's an implementation on top of the native Date object in the browser. You have no dependencies but you won't be able to change the parse format. To repeat this: You won't be able to change the parsing, that's why for most use cases you should use the ISO or moment adapter.</p>
 <h4 id="moment.js" tabindex="-1" class="docs-markdown--h4">Moment.js</h4>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxMomentDateModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/moment-date-adapter&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxMomentDateModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/moment-date-adapter&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">If you choose to use the moment implementation you have to fulfill the Moment.js peerDependency and import the NxMomentDateModule instead of the NativeDateAdapter.</p>
 <h4 id="custom" tabindex="-1" class="docs-markdown--h4">Custom</h4>

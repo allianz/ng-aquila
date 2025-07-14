@@ -1,55 +1,55 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxAvatarModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/avatar&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDropdownClosedLabelDirective</span>,
+  <span class="hljs-title class_">NxDropdownComponent</span>,
+  <span class="hljs-title class_">NxDropdownItemComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxAvatarModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/avatar&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxDropdownClosedLabelDirective</span>,
-    <span class="hljs-title class_">NxDropdownComponent</span>,
-    <span class="hljs-title class_">NxDropdownItemComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dropdown&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxColComponent</span>,
-    <span class="hljs-title class_">NxLayoutComponent</span>,
-    <span class="hljs-title class_">NxRowComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Examples for rendering items
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-rendering-items-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-rendering-items-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-rendering-items-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxLayoutComponent</span>,
-        <span class="hljs-title class_">NxRowComponent</span>,
-        <span class="hljs-title class_">NxColComponent</span>,
-        <span class="hljs-title class_">NxFormfieldComponent</span>,
-        <span class="hljs-title class_">NxDropdownComponent</span>,
-        <span class="hljs-title class_">NxDropdownItemComponent</span>,
-        <span class="hljs-title class_">NxAvatarModule</span>,
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">NxDropdownClosedLabelDirective</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-rendering-items-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-rendering-items-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-rendering-items-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxDropdownComponent</span>,
+    <span class="hljs-title class_">NxDropdownItemComponent</span>,
+    <span class="hljs-title class_">NxAvatarModule</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">NxDropdownClosedLabelDirective</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DropdownRenderingItemsExampleComponent</span> {
-    <span class="hljs-attr">value</span>: <span class="hljs-built_in">any</span>;
+  <span class="hljs-attr">value</span>: <span class="hljs-built_in">any</span>;
 
-    demoData = [
-        { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;BMW&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;1983&#x27;</span> },
-        { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Audi&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2009&#x27;</span> },
-        { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;V&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;VW&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2024&#x27;</span> },
-        { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;T&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Tesla&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2004&#x27;</span> },
-        { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;5&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;L&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Lada&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2005&#x27;</span> },
-        { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;6&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;O&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Opel&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2013&#x27;</span> },
-        { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;7&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;F&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Fiat&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2017&#x27;</span> },
-        { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;8&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;F&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Ford&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;1979&#x27;</span> },
-        { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;K&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Kia&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2000&#x27;</span> },
-        { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;10&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;T&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Toyota&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2021&#x27;</span> },
-        { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;11&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;F&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Ferrari&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2023&#x27;</span> },
-    ];
+  demoData = [
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;BMW&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;1983&#x27;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Audi&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2009&#x27;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;V&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;VW&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2024&#x27;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;T&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Tesla&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2004&#x27;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;5&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;L&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Lada&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2005&#x27;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;6&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;O&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Opel&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2013&#x27;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;7&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;F&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Fiat&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2017&#x27;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;8&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;F&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Ford&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;1979&#x27;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;K&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Kia&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2000&#x27;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;10&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;T&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Toyota&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2021&#x27;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;11&#x27;</span>, <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;F&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Ferrari&#x27;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&#x27;2023&#x27;</span> },
+  ];
 
-    <span class="hljs-title function_">toText</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> {
-        <span class="hljs-keyword">return</span> value ? value.<span class="hljs-title function_">toUpperCase</span>() : <span class="hljs-literal">null</span>;
-    }
+  <span class="hljs-title function_">toText</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> {
+    <span class="hljs-keyword">return</span> value ? value.<span class="hljs-title function_">toUpperCase</span>() : <span class="hljs-literal">null</span>;
+  }
 }

@@ -1,86 +1,86 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>With filter<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Multi select&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
-        <span class="hljs-attr">filter</span>
-        <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose options&quot;</span>
-        [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;modelWithFilter&quot;</span>
-        [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;options&quot;</span>
-        <span class="hljs-attr">selectValue</span>=<span class="hljs-string">&quot;id&quot;</span>
-        <span class="hljs-attr">selectLabel</span>=<span class="hljs-string">&quot;label&quot;</span>
-    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
+    <span class="hljs-attr">filter</span>
+    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose options&quot;</span>
+    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;modelWithFilter&quot;</span>
+    [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;options&quot;</span>
+    <span class="hljs-attr">selectValue</span>=<span class="hljs-string">&quot;id&quot;</span>
+    <span class="hljs-attr">selectLabel</span>=<span class="hljs-string">&quot;label&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-    Selected options:
-    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>[{{ modelWithFilter.join(&#x27;, &#x27;) }}]<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+  Selected options:
+  <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>[{{ modelWithFilter.join(&#x27;, &#x27;) }}]<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Without filter<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Multi select&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
-        <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose options&quot;</span>
-        [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;model&quot;</span>
-        [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;options&quot;</span>
-        [<span class="hljs-attr">selectLabel</span>]=<span class="hljs-string">&quot;selectLabel&quot;</span>
-        [<span class="hljs-attr">selectValue</span>]=<span class="hljs-string">&quot;selectValue&quot;</span>
-    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
+    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose options&quot;</span>
+    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;model&quot;</span>
+    [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;options&quot;</span>
+    [<span class="hljs-attr">selectLabel</span>]=<span class="hljs-string">&quot;selectLabel&quot;</span>
+    [<span class="hljs-attr">selectValue</span>]=<span class="hljs-string">&quot;selectValue&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-    Selected options:
-    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>[{{ model.join(&#x27;, &#x27;) }}]<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+  Selected options:
+  <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>[{{ model.join(&#x27;, &#x27;) }}]<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Reactive forms validation<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Multi select with validation&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
-        <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose options&quot;</span>
-        [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;control&quot;</span>
-        [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;options&quot;</span>
-        [<span class="hljs-attr">selectLabel</span>]=<span class="hljs-string">&quot;selectLabel&quot;</span>
-        [<span class="hljs-attr">selectValue</span>]=<span class="hljs-string">&quot;selectValue&quot;</span>
-    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>Error {{ control.errors | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
+    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose options&quot;</span>
+    [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;control&quot;</span>
+    [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;options&quot;</span>
+    [<span class="hljs-attr">selectLabel</span>]=<span class="hljs-string">&quot;selectLabel&quot;</span>
+    [<span class="hljs-attr">selectValue</span>]=<span class="hljs-string">&quot;selectValue&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>Error {{ control.errors | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-    Selected options:
-    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>[{{ control.value?.join(&#x27;, &#x27;) }}]<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+  Selected options:
+  <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>[{{ control.value?.join(&#x27;, &#x27;) }}]<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Readonly<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Multi select&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
-        <span class="hljs-attr">filter</span>
-        <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose options&quot;</span>
-        [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;options&quot;</span>
-        <span class="hljs-attr">selectValue</span>=<span class="hljs-string">&quot;i&#x27;&quot;</span>
-        <span class="hljs-attr">selectLabel</span>=<span class="hljs-string">&quot;label&quot;</span>
-        <span class="hljs-attr">readonly</span>
-    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
+    <span class="hljs-attr">filter</span>
+    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose options&quot;</span>
+    [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;options&quot;</span>
+    <span class="hljs-attr">selectValue</span>=<span class="hljs-string">&quot;i&#x27;&quot;</span>
+    <span class="hljs-attr">selectLabel</span>=<span class="hljs-string">&quot;label&quot;</span>
+    <span class="hljs-attr">readonly</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>With panelGrow<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Multi select&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
-        <span class="hljs-attr">filter</span>
-        <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose options&quot;</span>
-        [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;longOptions&quot;</span>
-        <span class="hljs-attr">selectValue</span>=<span class="hljs-string">&quot;id&quot;</span>
-        <span class="hljs-attr">selectLabel</span>=<span class="hljs-string">&quot;label&quot;</span>
-        <span class="hljs-attr">panelGrow</span>=<span class="hljs-string">&quot;true&quot;</span>
-    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
+    <span class="hljs-attr">filter</span>
+    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose options&quot;</span>
+    [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;longOptions&quot;</span>
+    <span class="hljs-attr">selectValue</span>=<span class="hljs-string">&quot;id&quot;</span>
+    <span class="hljs-attr">selectLabel</span>=<span class="hljs-string">&quot;label&quot;</span>
+    <span class="hljs-attr">panelGrow</span>=<span class="hljs-string">&quot;true&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>With panelMaxWidth<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Multi select&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
-        <span class="hljs-attr">filter</span>
-        <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose options&quot;</span>
-        [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;longOptions&quot;</span>
-        <span class="hljs-attr">selectValue</span>=<span class="hljs-string">&quot;id&quot;</span>
-        <span class="hljs-attr">selectLabel</span>=<span class="hljs-string">&quot;label&quot;</span>
-        <span class="hljs-attr">panelGrow</span>=<span class="hljs-string">&quot;true&quot;</span>
-        [<span class="hljs-attr">panelMaxWidth</span>]=<span class="hljs-string">&quot;800&quot;</span>
-    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
+    <span class="hljs-attr">filter</span>
+    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose options&quot;</span>
+    [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;longOptions&quot;</span>
+    <span class="hljs-attr">selectValue</span>=<span class="hljs-string">&quot;id&quot;</span>
+    <span class="hljs-attr">selectLabel</span>=<span class="hljs-string">&quot;label&quot;</span>
+    <span class="hljs-attr">panelGrow</span>=<span class="hljs-string">&quot;true&quot;</span>
+    [<span class="hljs-attr">panelMaxWidth</span>]=<span class="hljs-string">&quot;800&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>

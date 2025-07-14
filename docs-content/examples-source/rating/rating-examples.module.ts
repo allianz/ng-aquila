@@ -1,7 +1,7 @@
+import { NxRatingModule } from '@allianz/ng-aquila/rating';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NxRatingModule } from '@aposin/ng-aquila/rating';
 
 import { RatingAccessibilityExampleComponent } from './rating-accessibility/rating-accessibility-example';
 import { RatingBasicExampleComponent } from './rating-basic/rating-basic-example';
@@ -13,37 +13,37 @@ import { RatingSizesExampleComponent } from './rating-sizes/rating-sizes-example
 import { RatingTemplateExampleComponent } from './rating-template/rating-template-example';
 
 const EXAMPLES = [
-    RatingAccessibilityExampleComponent,
-    RatingBasicExampleComponent,
-    RatingDisabledExampleComponent,
-    RatingNegativeExampleComponent,
-    RatingReactiveExampleComponent,
-    RatingSimpleExampleComponent,
-    RatingTemplateExampleComponent,
-    RatingSizesExampleComponent,
+  RatingAccessibilityExampleComponent,
+  RatingBasicExampleComponent,
+  RatingDisabledExampleComponent,
+  RatingNegativeExampleComponent,
+  RatingReactiveExampleComponent,
+  RatingSimpleExampleComponent,
+  RatingTemplateExampleComponent,
+  RatingSizesExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxRatingModule,
-        ReactiveFormsModule,
-        FormsModule,
-        CommonModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxRatingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    CommonModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class RatingExamplesModule {
-    static components() {
-        return {
-            'rating-accessibility': RatingAccessibilityExampleComponent,
-            'rating-basic': RatingBasicExampleComponent,
-            'rating-disabled': RatingDisabledExampleComponent,
-            'rating-negative': RatingNegativeExampleComponent,
-            'rating-reactive': RatingReactiveExampleComponent,
-            'rating-simple': RatingSimpleExampleComponent,
-            'rating-template': RatingTemplateExampleComponent,
-            'rating-sizes': RatingSizesExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'rating-accessibility': RatingAccessibilityExampleComponent,
+      'rating-basic': RatingBasicExampleComponent,
+      'rating-disabled': RatingDisabledExampleComponent,
+      'rating-negative': RatingNegativeExampleComponent,
+      'rating-reactive': RatingReactiveExampleComponent,
+      'rating-simple': RatingSimpleExampleComponent,
+      'rating-template': RatingTemplateExampleComponent,
+      'rating-sizes': RatingSizesExampleComponent,
+    };
+  }
 }

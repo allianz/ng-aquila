@@ -1,17 +1,17 @@
 <nx-checkbox
-    #checkboxTest
-    class="nx-margin-bottom-s"
-    (checkboxChange)="log('checkbox change occured')"
-    (checkedChange)="log('checked change occured')"
-    (indeterminateChange)="log('indeterminate change occured')"
-    >Check me.</nx-checkbox
+  #checkboxTest
+  class="nx-margin-bottom-s"
+  (checkboxChange)="log('checkbox change occured')"
+  (checkedChange)="log('checked change occured')"
+  (indeterminateChange)="log('indeterminate change occured')"
+  >Check me.</nx-checkbox
 >
 <button
-    nxButton="small"
-    (click)="checkboxTest.indeterminate = !checkboxTest.indeterminate"
-    type="button"
+  nxButton="small"
+  (click)="checkboxTest.indeterminate = !checkboxTest.indeterminate"
+  type="button"
 >
-    Toggle Indeterminate
+  Toggle Indeterminate
 </button>
 <br />
 @if (logMessage) {

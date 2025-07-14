@@ -1,33 +1,33 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-group</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>&gt;</span>With nx grid component<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;nopadding&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-            @for (item of data; track item) {
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6,4&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>{{item}}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            }
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-group</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-group</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>&gt;</span>With CSS Grid<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;grid-wrapper&quot;</span>&gt;</span>
-        @for (item of data; track item) {
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>&gt;</span>With nx grid component<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;nopadding&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+      @for (item of data; track item) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6,4&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>{{item}}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio</span>&gt;</span>
-        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      }
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-group</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>&gt;</span>With CSS Grid<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;grid-wrapper&quot;</span>&gt;</span>
+    @for (item of data; track item) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>{{item}}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio</span>&gt;</span>
+    }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-group</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-group</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>&gt;</span>With CSS Flexbox<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flex-wrapper&quot;</span>&gt;</span>
-        @for (item of data; track item) {
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-m nx-margin-bottom-s&quot;</span>
-            &gt;</span>{{item}}&lt;/nx-radio
-        &gt;
-        }
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>&gt;</span>With CSS Flexbox<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flex-wrapper&quot;</span>&gt;</span>
+    @for (item of data; track item) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-m nx-margin-bottom-s&quot;</span>
+      &gt;</span>{{item}}&lt;/nx-radio
+    &gt;
+    }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-group</span>&gt;</span>

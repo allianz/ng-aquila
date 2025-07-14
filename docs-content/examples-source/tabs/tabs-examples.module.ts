@@ -1,8 +1,8 @@
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxIndicatorModule } from '@allianz/ng-aquila/indicator';
+import { NxTabsModule } from '@allianz/ng-aquila/tabs';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
-import { NxTabsModule } from '@aposin/ng-aquila/tabs';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { TabsAppearanceExampleComponent } from './tabs-appearance/tabs-appearance-example';
@@ -24,58 +24,56 @@ import { TabsTemplateExampleComponent } from './tabs-template/tabs-template-exam
 import { TabsWithIndicatorExampleComponent } from './tabs-with-indicator/tabs-with-indicator-example';
 
 const EXAMPLES = [
-    TabsAppearanceExampleComponent,
-    TabsAutoManualSelectExampleComponent,
-    TabsBasicExampleComponent,
-    TabsDisabledExampleComponent,
-    TabsDynamicExampleComponent,
-    TabsInjectionTokenExampleComponent,
-    TabsLazyExampleComponent,
-    TabsNavBarExampleComponent,
-    TabsNavBarAppearanceExampleComponent,
-    TabsNavBarInjectionTokenExampleComponent,
-    TabsNegativeExampleComponent,
-    TabsOutputEventsExampleComponent,
-    TabsResponsiveExampleComponent,
-    TabsStylingExampleComponent,
-    TabsTemplateExampleComponent,
-    TabsWithIndicatorExampleComponent,
-    TabsNavBarWithIndicatorExampleComponent,
+  TabsAppearanceExampleComponent,
+  TabsAutoManualSelectExampleComponent,
+  TabsBasicExampleComponent,
+  TabsDisabledExampleComponent,
+  TabsDynamicExampleComponent,
+  TabsInjectionTokenExampleComponent,
+  TabsLazyExampleComponent,
+  TabsNavBarExampleComponent,
+  TabsNavBarAppearanceExampleComponent,
+  TabsNavBarInjectionTokenExampleComponent,
+  TabsNegativeExampleComponent,
+  TabsOutputEventsExampleComponent,
+  TabsResponsiveExampleComponent,
+  TabsStylingExampleComponent,
+  TabsTemplateExampleComponent,
+  TabsWithIndicatorExampleComponent,
+  TabsNavBarWithIndicatorExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxTabsModule,
-        RouterModule,
-        NxIconModule,
-        NxIndicatorModule,
-        ExamplesSharedModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxTabsModule,
+    RouterModule,
+    NxIconModule,
+    NxIndicatorModule,
+    ExamplesSharedModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class TabsExamplesModule {
-    static components() {
-        return {
-            'tabs-appearance': TabsAppearanceExampleComponent,
-            'tabs-auto-manual-select': TabsAutoManualSelectExampleComponent,
-            'tabs-basic': TabsBasicExampleComponent,
-            'tabs-disabled': TabsDisabledExampleComponent,
-            'tabs-dynamic': TabsDynamicExampleComponent,
-            'tabs-injection-token': TabsInjectionTokenExampleComponent,
-            'tabs-lazy': TabsLazyExampleComponent,
-            'tabs-nav-bar': TabsNavBarExampleComponent,
-            'tabs-nav-bar-appearance': TabsNavBarAppearanceExampleComponent,
-            'tabs-nav-bar-injection-token':
-                TabsNavBarInjectionTokenExampleComponent,
-            'tabs-negative': TabsNegativeExampleComponent,
-            'tabs-output-events': TabsOutputEventsExampleComponent,
-            'tabs-responsive': TabsResponsiveExampleComponent,
-            'tabs-styling': TabsStylingExampleComponent,
-            'tabs-template': TabsTemplateExampleComponent,
-            'tabs-with-indicator': TabsWithIndicatorExampleComponent,
-            'tabs-nav-bar-with-indicator':
-                TabsNavBarWithIndicatorExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'tabs-appearance': TabsAppearanceExampleComponent,
+      'tabs-auto-manual-select': TabsAutoManualSelectExampleComponent,
+      'tabs-basic': TabsBasicExampleComponent,
+      'tabs-disabled': TabsDisabledExampleComponent,
+      'tabs-dynamic': TabsDynamicExampleComponent,
+      'tabs-injection-token': TabsInjectionTokenExampleComponent,
+      'tabs-lazy': TabsLazyExampleComponent,
+      'tabs-nav-bar': TabsNavBarExampleComponent,
+      'tabs-nav-bar-appearance': TabsNavBarAppearanceExampleComponent,
+      'tabs-nav-bar-injection-token': TabsNavBarInjectionTokenExampleComponent,
+      'tabs-negative': TabsNegativeExampleComponent,
+      'tabs-output-events': TabsOutputEventsExampleComponent,
+      'tabs-responsive': TabsResponsiveExampleComponent,
+      'tabs-styling': TabsStylingExampleComponent,
+      'tabs-template': TabsTemplateExampleComponent,
+      'tabs-with-indicator': TabsWithIndicatorExampleComponent,
+      'tabs-nav-bar-with-indicator': TabsNavBarWithIndicatorExampleComponent,
+    };
+  }
 }

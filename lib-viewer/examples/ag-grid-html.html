@@ -1,33 +1,31 @@
 <span class="hljs-comment">&lt;!-- Buttons to play with features --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;buttons&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;clearSelection()&quot;</span>&gt;</span>Clear Selection<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;toggleDense()&quot;</span>&gt;</span>
-        Toggle dense ({{ dense ? &quot;on&quot; : &quot;off&quot; }})
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;toggleZebra()&quot;</span>&gt;</span>
-        Toggle zebra ({{ zebra ? &quot;on&quot; : &quot;off&quot; }})
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;toggleCheckboxSelection()&quot;</span>&gt;</span>
-        Checkbox selection
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;toggleGroup()&quot;</span>&gt;</span>
-        Toggle group header
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;toggleFloatingFilter()&quot;</span>&gt;</span>
-        Toggle floating filter
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;clearSelection()&quot;</span>&gt;</span>Clear Selection<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;toggleDense()&quot;</span>&gt;</span>
+    Toggle dense ({{ dense ? &quot;on&quot; : &quot;off&quot; }})
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;toggleZebra()&quot;</span>&gt;</span>
+    Toggle zebra ({{ zebra ? &quot;on&quot; : &quot;off&quot; }})
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;toggleCheckboxSelection()&quot;</span>&gt;</span>
+    Checkbox selection
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;toggleGroup()&quot;</span>&gt;</span>Toggle group header<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;toggleFloatingFilter()&quot;</span>&gt;</span>
+    Toggle floating filter
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- AG Grid Angular Component --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">ag-grid-angular</span>
-    <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; height: 100%&quot;</span>
-    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ag-theme-alpine ag-theme-aquila ag-theme-allianz-icons&quot;</span>
-    [<span class="hljs-attr">class.ag-theme-aquila-dense</span>]=<span class="hljs-string">&quot;dense&quot;</span>
-    [<span class="hljs-attr">class.ag-theme-aquila-zebra</span>]=<span class="hljs-string">&quot;zebra&quot;</span>
-    [<span class="hljs-attr">columnDefs</span>]=<span class="hljs-string">&quot;columnsWithGroup&quot;</span>
-    [<span class="hljs-attr">defaultColDef</span>]=<span class="hljs-string">&quot;defaultColDef&quot;</span>
-    [<span class="hljs-attr">rowData</span>]=<span class="hljs-string">&quot;rowData$ | async&quot;</span>
-    (<span class="hljs-attr">gridReady</span>)=<span class="hljs-string">&quot;onGridReady($event)&quot;</span>
-    [<span class="hljs-attr">pagination</span>]=<span class="hljs-string">&quot;true&quot;</span>
-    [<span class="hljs-attr">rowSelection</span>]=<span class="hljs-string">&quot;rowSelection&quot;</span>
-    [<span class="hljs-attr">theme</span>]=<span class="hljs-string">&quot;&#x27;legacy&#x27;&quot;</span>
+  <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; height: 100%&quot;</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ag-theme-alpine ag-theme-aquila ag-theme-allianz-icons&quot;</span>
+  [<span class="hljs-attr">class.ag-theme-aquila-dense</span>]=<span class="hljs-string">&quot;dense&quot;</span>
+  [<span class="hljs-attr">class.ag-theme-aquila-zebra</span>]=<span class="hljs-string">&quot;zebra&quot;</span>
+  [<span class="hljs-attr">columnDefs</span>]=<span class="hljs-string">&quot;columnsWithGroup&quot;</span>
+  [<span class="hljs-attr">defaultColDef</span>]=<span class="hljs-string">&quot;defaultColDef&quot;</span>
+  [<span class="hljs-attr">rowData</span>]=<span class="hljs-string">&quot;rowData$ | async&quot;</span>
+  (<span class="hljs-attr">gridReady</span>)=<span class="hljs-string">&quot;onGridReady($event)&quot;</span>
+  [<span class="hljs-attr">pagination</span>]=<span class="hljs-string">&quot;true&quot;</span>
+  [<span class="hljs-attr">rowSelection</span>]=<span class="hljs-string">&quot;rowSelection&quot;</span>
+  [<span class="hljs-attr">theme</span>]=<span class="hljs-string">&quot;&#x27;legacy&#x27;&quot;</span>
 &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ag-grid-angular</span>&gt;</span>

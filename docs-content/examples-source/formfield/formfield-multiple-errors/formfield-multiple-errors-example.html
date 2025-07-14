@@ -1,12 +1,10 @@
 <form>
-    <nx-formfield label="Email">
-        <input nxInput [formControl]="emailFormControl" />
-        @if (emailFormControl.hasError('required')) {
-        <nx-error nxFormfieldError> This field is required. </nx-error>
-        } @if (emailFormControl.hasError('email')) {
-        <nx-error nxFormfieldError>
-            Please enter a valid email address.
-        </nx-error>
-        }
-    </nx-formfield>
+  <nx-formfield label="Email">
+    <input nxInput [formControl]="emailFormControl" />
+    @if (emailFormControl.hasError('required')) {
+    <nx-error nxFormfieldError> This field is required. </nx-error>
+    } @if (emailFormControl.hasError('email')) {
+    <nx-error nxFormfieldError> Please enter a valid email address. </nx-error>
+    }
+  </nx-formfield>
 </form>

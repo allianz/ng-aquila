@@ -1,19 +1,19 @@
 <nx-formfield label="Date of damage">
-    <input
-        #formatDatefield="nxDatefield"
-        [parseFormat]="['MM/DD/YYYY', 'MM--DD-->YYYY']"
-        displayFormat="MM--DD-->YYYY"
-        ngModel
-        nxDatefield
-        nxInput
-        [datepicker]="myDatepicker"
-    />
+  <input
+    #formatDatefield="nxDatefield"
+    [parseFormat]="['MM/DD/YYYY', 'MM--DD-->YYYY']"
+    displayFormat="MM--DD-->YYYY"
+    ngModel
+    nxDatefield
+    nxInput
+    [datepicker]="myDatepicker"
+  />
 
-    <span nxFormfieldHint> MM/DD/YYYY </span>
-    <nx-datepicker-toggle
-        [for]="myDatepicker"
-        nxFormfieldSuffix
-    ></nx-datepicker-toggle>
-    <nx-datepicker #myDatepicker></nx-datepicker>
-    <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+  <span nxFormfieldHint> MM/DD/YYYY </span>
+  <nx-datepicker-toggle
+    [for]="myDatepicker"
+    nxFormfieldSuffix
+  ></nx-datepicker-toggle>
+  <nx-datepicker #myDatepicker></nx-datepicker>
+  <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
 </nx-formfield>

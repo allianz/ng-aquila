@@ -1,8 +1,8 @@
 <input type="text" [nxAutocomplete]="auto1" />
 <nx-autocomplete #auto1="nxAutocomplete">
-    @for (option of options; track option) {
-    <nx-autocomplete-option [value]="option">
-        {{ option }}
-    </nx-autocomplete-option>
-    }
+  @for (option of options; track option) {
+  <nx-autocomplete-option [value]="option">
+    {{ option }}
+  </nx-autocomplete-option>
+  }
 </nx-autocomplete>

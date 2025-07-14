@@ -1,9 +1,9 @@
 <form [formGroup]="testForm">
-    <nx-selectable-card formControlName="selectableCardTestReactive">
-        <div class="content"></div>
-        <nx-error> This card must be selected. </nx-error>
-    </nx-selectable-card>
+  <nx-selectable-card formControlName="selectableCardTestReactive">
+    <div class="content"></div>
+    <nx-error> This card must be selected. </nx-error>
+  </nx-selectable-card>
 
-    <p>Form value: {{ testForm.value | json }}</p>
-    <p>Form status: {{ testForm.status | json }}</p>
+  <p>Form value: {{ testForm.value | json }}</p>
+  <p>Form status: {{ testForm.status | json }}</p>
 </form>

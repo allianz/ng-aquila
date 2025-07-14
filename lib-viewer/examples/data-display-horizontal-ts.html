@@ -1,45 +1,45 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-variable constant_">DATA_DISPLAY_DEFAULT_OPTIONS</span>,
+  <span class="hljs-title class_">DataDisplayDefaultOptions</span>,
+  <span class="hljs-title class_">NxDataDisplayComponent</span>,
+  <span class="hljs-title class_">NxDataDisplayLabelComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/data-display&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLinkComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/link&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxListComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/list&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-variable constant_">DATA_DISPLAY_DEFAULT_OPTIONS</span>,
-    <span class="hljs-title class_">DataDisplayDefaultOptions</span>,
-    <span class="hljs-title class_">NxDataDisplayComponent</span>,
-    <span class="hljs-title class_">NxDataDisplayLabelComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/data-display&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxColComponent</span>,
-    <span class="hljs-title class_">NxLayoutComponent</span>,
-    <span class="hljs-title class_">NxRowComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/headline&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLinkComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/link&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxListComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/list&#x27;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">options</span>: <span class="hljs-title class_">DataDisplayDefaultOptions</span> = {
-    <span class="hljs-attr">size</span>: <span class="hljs-string">&#x27;medium&#x27;</span>, <span class="hljs-comment">// expert mode default size</span>
+  <span class="hljs-attr">size</span>: <span class="hljs-string">&#x27;medium&#x27;</span>, <span class="hljs-comment">// expert mode default size</span>
 };
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Horizontal data display example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;data-display-horizontal-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./data-display-horizontal-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./data-display-horizontal-example.css&#x27;</span>],
-    <span class="hljs-attr">providers</span>: [
-        {
-            <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">DATA_DISPLAY_DEFAULT_OPTIONS</span>,
-            <span class="hljs-attr">useValue</span>: options,
-        },
-    ],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxLayoutComponent</span>,
-        <span class="hljs-title class_">NxRowComponent</span>,
-        <span class="hljs-title class_">NxColComponent</span>,
-        <span class="hljs-title class_">NxHeadlineComponent</span>,
-        <span class="hljs-title class_">NxDataDisplayComponent</span>,
-        <span class="hljs-title class_">NxDataDisplayLabelComponent</span>,
-        <span class="hljs-title class_">NxLinkComponent</span>,
-        <span class="hljs-title class_">NxListComponent</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;data-display-horizontal-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./data-display-horizontal-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./data-display-horizontal-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [
+    {
+      <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">DATA_DISPLAY_DEFAULT_OPTIONS</span>,
+      <span class="hljs-attr">useValue</span>: options,
+    },
+  ],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxHeadlineComponent</span>,
+    <span class="hljs-title class_">NxDataDisplayComponent</span>,
+    <span class="hljs-title class_">NxDataDisplayLabelComponent</span>,
+    <span class="hljs-title class_">NxLinkComponent</span>,
+    <span class="hljs-title class_">NxListComponent</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DataDisplayHorizontalExampleComponent</span> {}

@@ -1,49 +1,49 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxFormfieldComponent</span>,
+  <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+  <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+  <span class="hljs-title class_">NxFormfieldPrefixDirective</span>,
+  <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/input&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxLicencePlateEuroPrefixComponent</span>,
+  <span class="hljs-title class_">NxLicencePlateSeasonSuffixComponent</span>,
+  <span class="hljs-title class_">NxLicencePlateValidatorDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/licence-plate&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxFormfieldComponent</span>,
-    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
-    <span class="hljs-title class_">NxFormfieldHintDirective</span>,
-    <span class="hljs-title class_">NxFormfieldPrefixDirective</span>,
-    <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxColComponent</span>,
-    <span class="hljs-title class_">NxLayoutComponent</span>,
-    <span class="hljs-title class_">NxRowComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxLicencePlateEuroPrefixComponent</span>,
-    <span class="hljs-title class_">NxLicencePlateSeasonSuffixComponent</span>,
-    <span class="hljs-title class_">NxLicencePlateValidatorDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/licence-plate&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Licence plate ngModel
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;licence-plate-ngmodel-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;licence-plate-ngmodel-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;licence-plate-ngmodel-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxLayoutComponent</span>,
-        <span class="hljs-title class_">NxRowComponent</span>,
-        <span class="hljs-title class_">NxColComponent</span>,
-        <span class="hljs-title class_">NxFormfieldComponent</span>,
-        <span class="hljs-title class_">NxLicencePlateEuroPrefixComponent</span>,
-        <span class="hljs-title class_">NxFormfieldPrefixDirective</span>,
-        <span class="hljs-title class_">NxInputDirective</span>,
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">NxLicencePlateValidatorDirective</span>,
-        <span class="hljs-title class_">NxLicencePlateSeasonSuffixComponent</span>,
-        <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
-        <span class="hljs-title class_">NxFormfieldHintDirective</span>,
-        <span class="hljs-title class_">NxErrorComponent</span>,
-        <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;licence-plate-ngmodel-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;licence-plate-ngmodel-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;licence-plate-ngmodel-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxLicencePlateEuroPrefixComponent</span>,
+    <span class="hljs-title class_">NxFormfieldPrefixDirective</span>,
+    <span class="hljs-title class_">NxInputDirective</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">NxLicencePlateValidatorDirective</span>,
+    <span class="hljs-title class_">NxLicencePlateSeasonSuffixComponent</span>,
+    <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+    <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
+    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LicencePlateNgmodelExampleComponent</span> {
-    model = <span class="hljs-string">&#x27;&#x27;</span>;
+  model = <span class="hljs-string">&#x27;&#x27;</span>;
 }

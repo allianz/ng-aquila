@@ -1,5 +1,5 @@
+import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
 import { NgModule } from '@angular/core';
-import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { CheckboxGroupBasicExampleComponent } from './checkbox-group-basic/checkbox-group-basic-example';
@@ -19,47 +19,45 @@ import { CheckboxStatesExampleComponent } from './checkbox-states/checkbox-state
 import { CheckboxTemplateDrivenExampleComponent } from './checkbox-template-driven/checkbox-template-driven-example';
 
 const EXAMPLES = [
-    CheckboxGroupBasicExampleComponent,
-    CheckboxGroupDynamicExampleComponent,
-    CheckboxGroupLayoutExampleComponent,
-    CheckboxGroupInheritanceExampleComponent,
-    CheckboxGroupLabelSizeExampleComponent,
-    CheckboxGroupReactiveExampleComponent,
-    CheckboxGroupValidationExampleComponent,
-    CheckboxLabelSizeExampleComponent,
-    CheckboxNegativeExampleComponent,
-    CheckboxOutputsExampleComponent,
-    CheckboxReactiveExampleComponent,
-    CheckboxSimpleBindingExampleComponent,
-    CheckboxStatesExampleComponent,
-    CheckboxTemplateDrivenExampleComponent,
-    CheckboxReadonlyExampleComponent,
+  CheckboxGroupBasicExampleComponent,
+  CheckboxGroupDynamicExampleComponent,
+  CheckboxGroupLayoutExampleComponent,
+  CheckboxGroupInheritanceExampleComponent,
+  CheckboxGroupLabelSizeExampleComponent,
+  CheckboxGroupReactiveExampleComponent,
+  CheckboxGroupValidationExampleComponent,
+  CheckboxLabelSizeExampleComponent,
+  CheckboxNegativeExampleComponent,
+  CheckboxOutputsExampleComponent,
+  CheckboxReactiveExampleComponent,
+  CheckboxSimpleBindingExampleComponent,
+  CheckboxStatesExampleComponent,
+  CheckboxTemplateDrivenExampleComponent,
+  CheckboxReadonlyExampleComponent,
 ];
 
 @NgModule({
-    imports: [NxCheckboxModule, ExamplesSharedModule, EXAMPLES],
-    exports: [EXAMPLES],
+  imports: [NxCheckboxModule, ExamplesSharedModule, EXAMPLES],
+  exports: [EXAMPLES],
 })
 export class CheckboxExamplesModule {
-    static components() {
-        return {
-            'checkbox-group-basic': CheckboxGroupBasicExampleComponent,
-            'checkbox-group-dynamic': CheckboxGroupDynamicExampleComponent,
-            'checkbox-group-layout': CheckboxGroupLayoutExampleComponent,
-            'checkbox-group-inheritance':
-                CheckboxGroupInheritanceExampleComponent,
-            'checkbox-group-label-size': CheckboxGroupLabelSizeExampleComponent,
-            'checkbox-group-reactive': CheckboxGroupReactiveExampleComponent,
-            'checkbox-group-validation':
-                CheckboxGroupValidationExampleComponent,
-            'checkbox-label-size': CheckboxLabelSizeExampleComponent,
-            'checkbox-negative': CheckboxNegativeExampleComponent,
-            'checkbox-outputs': CheckboxOutputsExampleComponent,
-            'checkbox-reactive': CheckboxReactiveExampleComponent,
-            'checkbox-simple-binding': CheckboxSimpleBindingExampleComponent,
-            'checkbox-states': CheckboxStatesExampleComponent,
-            'checkbox-template-driven': CheckboxTemplateDrivenExampleComponent,
-            'checkbox-readonly': CheckboxReadonlyExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'checkbox-group-basic': CheckboxGroupBasicExampleComponent,
+      'checkbox-group-dynamic': CheckboxGroupDynamicExampleComponent,
+      'checkbox-group-layout': CheckboxGroupLayoutExampleComponent,
+      'checkbox-group-inheritance': CheckboxGroupInheritanceExampleComponent,
+      'checkbox-group-label-size': CheckboxGroupLabelSizeExampleComponent,
+      'checkbox-group-reactive': CheckboxGroupReactiveExampleComponent,
+      'checkbox-group-validation': CheckboxGroupValidationExampleComponent,
+      'checkbox-label-size': CheckboxLabelSizeExampleComponent,
+      'checkbox-negative': CheckboxNegativeExampleComponent,
+      'checkbox-outputs': CheckboxOutputsExampleComponent,
+      'checkbox-reactive': CheckboxReactiveExampleComponent,
+      'checkbox-simple-binding': CheckboxSimpleBindingExampleComponent,
+      'checkbox-states': CheckboxStatesExampleComponent,
+      'checkbox-template-driven': CheckboxTemplateDrivenExampleComponent,
+      'checkbox-readonly': CheckboxReadonlyExampleComponent,
+    };
+  }
 }

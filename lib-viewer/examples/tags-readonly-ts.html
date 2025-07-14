@@ -1,30 +1,33 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCopytextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/copytext&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxTagComponent</span>,
+  <span class="hljs-title class_">NxTagGroupComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/taglist&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ReactiveFormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCopytextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/copytext&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTagComponent</span>, <span class="hljs-title class_">NxTagGroupComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/taglist&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Tag Group Readonly Example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tags-readonly-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tags-readonly-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tags-readonly-example.css&#x27;</span>],
-    <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxTagGroupComponent</span>,
-        <span class="hljs-title class_">NxTagComponent</span>,
-        <span class="hljs-title class_">ReactiveFormsModule</span>,
-        <span class="hljs-title class_">NxCopytextComponent</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tags-readonly-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tags-readonly-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tags-readonly-example.css&#x27;</span>],
+  <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxTagGroupComponent</span>,
+    <span class="hljs-title class_">NxTagComponent</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">NxCopytextComponent</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TagsReadonlyExampleComponent</span> {
-    <span class="hljs-attr">tags</span>: <span class="hljs-built_in">string</span>[] = [
-        <span class="hljs-string">&#x27;Apples&#x27;</span>,
-        <span class="hljs-string">&#x27;Oranges&#x27;</span>,
-        <span class="hljs-string">&#x27;Bananas&#x27;</span>,
-        <span class="hljs-string">&#x27;Strawberries&#x27;</span>,
-        <span class="hljs-string">&#x27;Melons&#x27;</span>,
-        <span class="hljs-string">&#x27;Lemons&#x27;</span>,
-    ];
+  <span class="hljs-attr">tags</span>: <span class="hljs-built_in">string</span>[] = [
+    <span class="hljs-string">&#x27;Apples&#x27;</span>,
+    <span class="hljs-string">&#x27;Oranges&#x27;</span>,
+    <span class="hljs-string">&#x27;Bananas&#x27;</span>,
+    <span class="hljs-string">&#x27;Strawberries&#x27;</span>,
+    <span class="hljs-string">&#x27;Melons&#x27;</span>,
+    <span class="hljs-string">&#x27;Lemons&#x27;</span>,
+  ];
 }

@@ -1,46 +1,46 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span>, <span class="hljs-title class_">NxLabelComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxCheckboxComponent</span>,
+  <span class="hljs-title class_">NxCheckboxGroupComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/checkbox&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">JsonPipe</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">AbstractControl</span>,
-    <span class="hljs-title class_">FormBuilder</span>,
-    <span class="hljs-title class_">FormsModule</span>,
-    <span class="hljs-title class_">ReactiveFormsModule</span>,
-    <span class="hljs-title class_">Validators</span>,
+  <span class="hljs-title class_">AbstractControl</span>,
+  <span class="hljs-title class_">FormBuilder</span>,
+  <span class="hljs-title class_">FormsModule</span>,
+  <span class="hljs-title class_">ReactiveFormsModule</span>,
+  <span class="hljs-title class_">Validators</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span>, <span class="hljs-title class_">NxLabelComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxCheckboxComponent</span>,
-    <span class="hljs-title class_">NxCheckboxGroupComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/checkbox&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Checkbox group validation example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;checkbox-group-validation-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./checkbox-group-validation-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./checkbox-group-validation-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">ReactiveFormsModule</span>,
-        <span class="hljs-title class_">NxCheckboxGroupComponent</span>,
-        <span class="hljs-title class_">NxLabelComponent</span>,
-        <span class="hljs-title class_">NxErrorComponent</span>,
-        <span class="hljs-title class_">NxCheckboxComponent</span>,
-        <span class="hljs-title class_">JsonPipe</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;checkbox-group-validation-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./checkbox-group-validation-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./checkbox-group-validation-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">NxCheckboxGroupComponent</span>,
+    <span class="hljs-title class_">NxLabelComponent</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
+    <span class="hljs-title class_">NxCheckboxComponent</span>,
+    <span class="hljs-title class_">JsonPipe</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CheckboxGroupValidationExampleComponent</span> {
-    <span class="hljs-keyword">readonly</span> myFormGroup = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
-        <span class="hljs-attr">terms</span>: [[], [<span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">validateCheckboxes</span>]],
-    });
+  <span class="hljs-keyword">readonly</span> myFormGroup = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
+    <span class="hljs-attr">terms</span>: [[], [<span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">validateCheckboxes</span>]],
+  });
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">fb</span>: <span class="hljs-title class_">FormBuilder</span></span>) {}
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">fb</span>: <span class="hljs-title class_">FormBuilder</span></span>) {}
 
-    <span class="hljs-keyword">private</span> <span class="hljs-title function_">validateCheckboxes</span>(<span class="hljs-params"><span class="hljs-attr">control</span>: <span class="hljs-title class_">AbstractControl</span></span>) {
-        <span class="hljs-keyword">if</span> (control.<span class="hljs-property">value</span>.<span class="hljs-property">length</span> &lt;= <span class="hljs-number">2</span>) {
-            <span class="hljs-keyword">return</span> { <span class="hljs-attr">min</span>: <span class="hljs-literal">false</span> };
-        }
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">validateCheckboxes</span>(<span class="hljs-params"><span class="hljs-attr">control</span>: <span class="hljs-title class_">AbstractControl</span></span>) {
+    <span class="hljs-keyword">if</span> (control.<span class="hljs-property">value</span>.<span class="hljs-property">length</span> &lt;= <span class="hljs-number">2</span>) {
+      <span class="hljs-keyword">return</span> { <span class="hljs-attr">min</span>: <span class="hljs-literal">false</span> };
     }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  }
 }

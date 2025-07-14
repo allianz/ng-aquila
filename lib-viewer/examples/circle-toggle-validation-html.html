@@ -1,28 +1,25 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Radio group<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">novalidate</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;testForm&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle-group</span>
-            <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;reactiveToggle&quot;</span>
-            <span class="hljs-attr">responsive</span>=<span class="hljs-string">&quot;false&quot;</span>
-        &gt;</span>
-            @for (item of sampleValues; track item) {
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle</span>
-                    [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item.value&quot;</span>
-                    [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;item.icon&quot;</span>
-                    [<span class="hljs-attr">hint</span>]=<span class="hljs-string">&quot;item.hint&quot;</span>
-                    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;item.label&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            }
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;message&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-xs&quot;</span>&gt;</span>
-                Please make a choice.
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle-group</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small-medium&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-xs&quot;</span>&gt;</span>
-            Submit
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">novalidate</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;testForm&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle-group</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;reactiveToggle&quot;</span> <span class="hljs-attr">responsive</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
+      @for (item of sampleValues; track item) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle</span>
+          [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item.value&quot;</span>
+          [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;item.icon&quot;</span>
+          [<span class="hljs-attr">hint</span>]=<span class="hljs-string">&quot;item.hint&quot;</span>
+          [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;item.label&quot;</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      }
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;message&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-xs&quot;</span>&gt;</span>
+        Please make a choice.
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle-group</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small-medium&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-xs&quot;</span>&gt;</span>
+      Submit
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form value: {{ testForm.value | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form status: {{ testForm.status | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
@@ -30,44 +27,44 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">hr</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">novalidate</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;testForm2&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle</span>
-        <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;heart&quot;</span>
-        <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;product-heart&quot;</span>
-        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Heart&quot;</span>
-        #<span class="hljs-attr">heart</span>
-    &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span> This is required. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle</span>
+    <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;heart&quot;</span>
+    <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;product-heart&quot;</span>
+    <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Heart&quot;</span>
+    #<span class="hljs-attr">heart</span>
+  &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span> This is required. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">hr</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Cross field validation Checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">novalidate</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;testForm3&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle</span>
-        <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;heart&quot;</span>
-        <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;product-heart&quot;</span>
-        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Heart&quot;</span>
-        [<span class="hljs-attr">class.has-error</span>]=<span class="hljs-string">&quot;testForm3.invalid&quot;</span>
-        <span class="hljs-attr">ariaDescribedby</span>=<span class="hljs-string">&quot;customError&quot;</span>
-        #<span class="hljs-attr">heart</span>
-    &gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle</span>
-        <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;car&quot;</span>
-        <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;product-car&quot;</span>
-        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Car&quot;</span>
-        [<span class="hljs-attr">class.has-error</span>]=<span class="hljs-string">&quot;testForm3.invalid&quot;</span>
-        <span class="hljs-attr">ariaDescribedby</span>=<span class="hljs-string">&quot;customError&quot;</span>
-    &gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
-    @if (testForm3.invalid) {
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;customError&quot;</span>&gt;</span>
-            Need to select 2 options
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    }
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle</span>
+    <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;heart&quot;</span>
+    <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;product-heart&quot;</span>
+    <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Heart&quot;</span>
+    [<span class="hljs-attr">class.has-error</span>]=<span class="hljs-string">&quot;testForm3.invalid&quot;</span>
+    <span class="hljs-attr">ariaDescribedby</span>=<span class="hljs-string">&quot;customError&quot;</span>
+    #<span class="hljs-attr">heart</span>
+  &gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle</span>
+    <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;car&quot;</span>
+    <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;product-car&quot;</span>
+    <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Car&quot;</span>
+    [<span class="hljs-attr">class.has-error</span>]=<span class="hljs-string">&quot;testForm3.invalid&quot;</span>
+    <span class="hljs-attr">ariaDescribedby</span>=<span class="hljs-string">&quot;customError&quot;</span>
+  &gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
+  @if (testForm3.invalid) {
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;customError&quot;</span>&gt;</span>
+      Need to select 2 options
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  }
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form value: {{ testForm3.value | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form status: {{ testForm3.status | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>

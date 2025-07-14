@@ -1,17 +1,17 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxRadioToggleButtonComponent</span>,
+  <span class="hljs-title class_">NxRadioToggleComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/radio-toggle&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxSidepanelCloseButtonComponent</span>,
+  <span class="hljs-title class_">NxSidepanelComponent</span>,
+  <span class="hljs-title class_">NxSidepanelContentComponent</span>,
+  <span class="hljs-title class_">NxSidepanelHeaderComponent</span>,
+  <span class="hljs-title class_">NxSidepanelOuterContainerComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/sidepanel&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBreakpoints</span>, <span class="hljs-title class_">NxViewportService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/utils&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ChangeDetectorRef</span>, <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">OnDestroy</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxRadioToggleButtonComponent</span>,
-    <span class="hljs-title class_">NxRadioToggleComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/radio-toggle&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxSidepanelCloseButtonComponent</span>,
-    <span class="hljs-title class_">NxSidepanelComponent</span>,
-    <span class="hljs-title class_">NxSidepanelContentComponent</span>,
-    <span class="hljs-title class_">NxSidepanelHeaderComponent</span>,
-    <span class="hljs-title class_">NxSidepanelOuterContainerComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/sidepanel&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBreakpoints</span>, <span class="hljs-title class_">NxViewportService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/utils&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Subject</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 <span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
 
@@ -19,49 +19,49 @@
  * <span class="hljs-doctag">@title</span> Floating sidepanel example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;sidepanel-floating-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./sidepanel-floating-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;sidepanel-floating-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxSidepanelOuterContainerComponent</span>,
-        <span class="hljs-title class_">NxRadioToggleComponent</span>,
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">NxRadioToggleButtonComponent</span>,
-        <span class="hljs-title class_">NxSidepanelComponent</span>,
-        <span class="hljs-title class_">NxSidepanelHeaderComponent</span>,
-        <span class="hljs-title class_">NxSidepanelCloseButtonComponent</span>,
-        <span class="hljs-title class_">NxSidepanelContentComponent</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;sidepanel-floating-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./sidepanel-floating-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;sidepanel-floating-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxSidepanelOuterContainerComponent</span>,
+    <span class="hljs-title class_">NxRadioToggleComponent</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">NxRadioToggleButtonComponent</span>,
+    <span class="hljs-title class_">NxSidepanelComponent</span>,
+    <span class="hljs-title class_">NxSidepanelHeaderComponent</span>,
+    <span class="hljs-title class_">NxSidepanelCloseButtonComponent</span>,
+    <span class="hljs-title class_">NxSidepanelContentComponent</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SidepanelFloatingExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnDestroy</span> {
-    opened = <span class="hljs-literal">true</span>;
-    isGreaterThanSmall = <span class="hljs-literal">true</span>;
+  opened = <span class="hljs-literal">true</span>;
+  isGreaterThanSmall = <span class="hljs-literal">true</span>;
 
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subject</span>&lt;<span class="hljs-built_in">void</span>&gt;();
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subject</span>&lt;<span class="hljs-built_in">void</span>&gt;();
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">readonly</span> <span class="hljs-attr">viewportService</span>: <span class="hljs-title class_">NxViewportService</span>,
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_cdr</span>: <span class="hljs-title class_">ChangeDetectorRef</span>,
-    </span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewportService</span>
-            .<span class="hljs-title function_">min</span>(<span class="hljs-title class_">NxBreakpoints</span>.<span class="hljs-property">BREAKPOINT_SMALL</span>)
-            .<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">takeUntil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>))
-            .<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">isGreaterThanSmall</span> =&gt;</span> {
-                <span class="hljs-comment">// only do something if the width has changed between small and bigger</span>
-                <span class="hljs-keyword">if</span> (isGreaterThanSmall !== <span class="hljs-variable language_">this</span>.<span class="hljs-property">isGreaterThanSmall</span>) {
-                    <span class="hljs-variable language_">this</span>.<span class="hljs-property">isGreaterThanSmall</span> = isGreaterThanSmall;
-                    <span class="hljs-keyword">if</span> (isGreaterThanSmall &amp;&amp; !<span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span>) {
-                        <span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span> = <span class="hljs-literal">true</span>;
-                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!isGreaterThanSmall &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span>) {
-                        <span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span> = <span class="hljs-literal">false</span>;
-                    }
-                    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cdr</span>.<span class="hljs-title function_">detectChanges</span>();
-                }
-            });
-    }
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
+    <span class="hljs-keyword">readonly</span> <span class="hljs-attr">viewportService</span>: <span class="hljs-title class_">NxViewportService</span>,
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_cdr</span>: <span class="hljs-title class_">ChangeDetectorRef</span>,
+  </span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewportService</span>
+      .<span class="hljs-title function_">min</span>(<span class="hljs-title class_">NxBreakpoints</span>.<span class="hljs-property">BREAKPOINT_SMALL</span>)
+      .<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">takeUntil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>))
+      .<span class="hljs-title function_">subscribe</span>(<span class="hljs-function">(<span class="hljs-params">isGreaterThanSmall</span>) =&gt;</span> {
+        <span class="hljs-comment">// only do something if the width has changed between small and bigger</span>
+        <span class="hljs-keyword">if</span> (isGreaterThanSmall !== <span class="hljs-variable language_">this</span>.<span class="hljs-property">isGreaterThanSmall</span>) {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">isGreaterThanSmall</span> = isGreaterThanSmall;
+          <span class="hljs-keyword">if</span> (isGreaterThanSmall &amp;&amp; !<span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span> = <span class="hljs-literal">true</span>;
+          } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!isGreaterThanSmall &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span> = <span class="hljs-literal">false</span>;
+          }
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cdr</span>.<span class="hljs-title function_">detectChanges</span>();
+        }
+      });
+  }
 
-    <span class="hljs-title function_">ngOnDestroy</span>(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">next</span>();
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">complete</span>();
-    }
+  <span class="hljs-title function_">ngOnDestroy</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">next</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">complete</span>();
+  }
 }

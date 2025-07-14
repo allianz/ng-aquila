@@ -1,31 +1,31 @@
 <button nxMenuButton menuButtonType="root" type="button">
-    <nx-icon name="file" size="s" nxMenuButtonIcon aria-hidden="true"></nx-icon>
-    Option 1 (root level)
+  <nx-icon name="file" size="s" nxMenuButtonIcon aria-hidden="true"></nx-icon>
+  Option 1 (root level)
 </button>
 
 <button
-    nxMenuButton
-    menuButtonType="root"
-    expandable
-    [expanded]="primaryExpanded"
-    (click)="primaryExpanded=!primaryExpanded"
-    type="button"
+  nxMenuButton
+  menuButtonType="root"
+  expandable
+  [expanded]="primaryExpanded"
+  (click)="primaryExpanded=!primaryExpanded"
+  type="button"
 >
-    <nx-icon name="file" size="s" nxMenuButtonIcon aria-hidden="true"></nx-icon>
-    Option 2 (root level, expandable)
+  <nx-icon name="file" size="s" nxMenuButtonIcon aria-hidden="true"></nx-icon>
+  Option 2 (root level, expandable)
 </button>
 
 <button nxMenuButton menuButtonType="nested" type="button">
-    Option 2.1 (nested level)
+  Option 2.1 (nested level)
 </button>
 
 <button
-    nxMenuButton
-    menuButtonType="nested"
-    expandable
-    [expanded]="secondaryExpanded"
-    (click)="secondaryExpanded=!secondaryExpanded"
-    type="button"
+  nxMenuButton
+  menuButtonType="nested"
+  expandable
+  [expanded]="secondaryExpanded"
+  (click)="secondaryExpanded=!secondaryExpanded"
+  type="button"
 >
-    Option 2.2 (nested level, expandable)
+  Option 2.2 (nested level, expandable)
 </button>

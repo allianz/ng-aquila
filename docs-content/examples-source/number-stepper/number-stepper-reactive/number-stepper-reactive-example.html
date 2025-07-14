@@ -1,26 +1,25 @@
 <form [formGroup]="testForm">
-    <nx-number-stepper
-        label="Number of travellers"
-        size="big"
-        formControlName="stepperTestReactive"
-        [step]="1"
-        [min]="-3"
-        [max]="20"
-    >
-        @if (testForm.controls['stepperTestReactive'].errors &&
-        testForm.controls['stepperTestReactive'].errors.nxNumberStepperStepError)
-        {
-        <nx-error> Value is not a valid step </nx-error>
-        } @if (testForm.controls['stepperTestReactive'].errors &&
-        testForm.controls['stepperTestReactive'].errors.nxNumberStepperFormatError)
-        {
-        <nx-error> Not a valid number </nx-error>
-        }
-    </nx-number-stepper>
+  <nx-number-stepper
+    label="Number of travellers"
+    size="big"
+    formControlName="stepperTestReactive"
+    [step]="1"
+    [min]="-3"
+    [max]="20"
+  >
+    @if (testForm.controls['stepperTestReactive'].errors &&
+    testForm.controls['stepperTestReactive'].errors.nxNumberStepperStepError) {
+    <nx-error> Value is not a valid step </nx-error>
+    } @if (testForm.controls['stepperTestReactive'].errors &&
+    testForm.controls['stepperTestReactive'].errors.nxNumberStepperFormatError)
+    {
+    <nx-error> Not a valid number </nx-error>
+    }
+  </nx-number-stepper>
 
-    <p>Form value: {{ testForm.value | json }}</p>
-    <p>Form status: {{ testForm.status }}</p>
-    <p>
-        Form errors: {{ testForm.controls['stepperTestReactive'].errors | json}}
-    </p>
+  <p>Form value: {{ testForm.value | json }}</p>
+  <p>Form status: {{ testForm.status }}</p>
+  <p>
+    Form errors: {{ testForm.controls['stepperTestReactive'].errors | json}}
+  </p>
 </form>

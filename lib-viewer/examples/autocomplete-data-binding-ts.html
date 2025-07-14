@@ -1,106 +1,104 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxAutocompleteComponent</span>,
+  <span class="hljs-title class_">NxAutocompleteOptionComponent</span>,
+  <span class="hljs-title class_">NxAutocompleteTriggerDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/autocomplete&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxFormfieldComponent</span>,
+  <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/input&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxNaturalLanguageFormComponent</span>,
+  <span class="hljs-title class_">NxWordComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/natural-language-form&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">LowerCasePipe</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">HttpClient</span>, <span class="hljs-title class_">HttpParams</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Injectable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FormBuilder</span>,
-    <span class="hljs-title class_">FormsModule</span>,
-    <span class="hljs-title class_">ReactiveFormsModule</span>,
-    <span class="hljs-title class_">Validators</span>,
+  <span class="hljs-title class_">FormBuilder</span>,
+  <span class="hljs-title class_">FormsModule</span>,
+  <span class="hljs-title class_">ReactiveFormsModule</span>,
+  <span class="hljs-title class_">Validators</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxAutocompleteComponent</span>,
-    <span class="hljs-title class_">NxAutocompleteOptionComponent</span>,
-    <span class="hljs-title class_">NxAutocompleteTriggerDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/autocomplete&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxFormfieldComponent</span>,
-    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxNaturalLanguageFormComponent</span>,
-    <span class="hljs-title class_">NxWordComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/natural-language-form&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Observable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 <span class="hljs-keyword">import</span> { map } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
 
 <span class="hljs-meta">@Injectable</span>({
-    <span class="hljs-attr">providedIn</span>: <span class="hljs-string">&#x27;root&#x27;</span>,
+  <span class="hljs-attr">providedIn</span>: <span class="hljs-string">&#x27;root&#x27;</span>,
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WikipediaService</span> {
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-variable constant_">WIKIPEDIA_URL</span> = <span class="hljs-string">&#x27;https://en.wikipedia.org/w/api.php&#x27;</span>;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-variable constant_">WIKIPEDIA_URL</span> = <span class="hljs-string">&#x27;https://en.wikipedia.org/w/api.php&#x27;</span>;
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">client</span>: <span class="hljs-title class_">HttpClient</span></span>) {}
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">client</span>: <span class="hljs-title class_">HttpClient</span></span>) {}
 
-    <span class="hljs-title function_">search</span>(<span class="hljs-attr">term</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Observable</span>&lt;<span class="hljs-built_in">any</span>[]&gt; {
-        <span class="hljs-keyword">const</span> url = <span class="hljs-title function_">searchUrl</span>(term, <span class="hljs-variable language_">this</span>.<span class="hljs-property">WIKIPEDIA_URL</span>);
-        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">client</span>
-            .<span class="hljs-title function_">jsonp</span>(url, <span class="hljs-string">&#x27;callback&#x27;</span>)
-            .<span class="hljs-title function_">pipe</span>(
-                <span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">response</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span>
-                    response[<span class="hljs-number">1</span>].<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">item</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span> ({ <span class="hljs-attr">value</span>: item })),
-                ),
-            );
+  <span class="hljs-title function_">search</span>(<span class="hljs-attr">term</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Observable</span>&lt;<span class="hljs-built_in">any</span>[]&gt; {
+    <span class="hljs-keyword">const</span> url = <span class="hljs-title function_">searchUrl</span>(term, <span class="hljs-variable language_">this</span>.<span class="hljs-property">WIKIPEDIA_URL</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">client</span>
+      .<span class="hljs-title function_">jsonp</span>(url, <span class="hljs-string">&#x27;callback&#x27;</span>)
+      .<span class="hljs-title function_">pipe</span>(
+        <span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">response</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span>
+          response[<span class="hljs-number">1</span>].<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">item</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span> ({ <span class="hljs-attr">value</span>: item })),
+        ),
+      );
 
-        <span class="hljs-keyword">function</span> <span class="hljs-title function_">searchUrl</span>(<span class="hljs-params"><span class="hljs-attr">searchTeam</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">base</span>: <span class="hljs-built_in">string</span></span>) {
-            <span class="hljs-keyword">const</span> params = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HttpParams</span>()
-                .<span class="hljs-title function_">append</span>(<span class="hljs-string">&#x27;action&#x27;</span>, <span class="hljs-string">&#x27;opensearch&#x27;</span>)
-                .<span class="hljs-title function_">append</span>(<span class="hljs-string">&#x27;search&#x27;</span>, <span class="hljs-built_in">encodeURIComponent</span>(searchTeam))
-                .<span class="hljs-title function_">append</span>(<span class="hljs-string">&#x27;format&#x27;</span>, <span class="hljs-string">&#x27;json&#x27;</span>);
-            <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${base}</span>?<span class="hljs-subst">${params.toString()}</span>`</span>;
-        }
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">searchUrl</span>(<span class="hljs-params"><span class="hljs-attr">searchTeam</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">base</span>: <span class="hljs-built_in">string</span></span>) {
+      <span class="hljs-keyword">const</span> params = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HttpParams</span>()
+        .<span class="hljs-title function_">append</span>(<span class="hljs-string">&#x27;action&#x27;</span>, <span class="hljs-string">&#x27;opensearch&#x27;</span>)
+        .<span class="hljs-title function_">append</span>(<span class="hljs-string">&#x27;search&#x27;</span>, <span class="hljs-built_in">encodeURIComponent</span>(searchTeam))
+        .<span class="hljs-title function_">append</span>(<span class="hljs-string">&#x27;format&#x27;</span>, <span class="hljs-string">&#x27;json&#x27;</span>);
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${base}</span>?<span class="hljs-subst">${params.toString()}</span>`</span>;
     }
+  }
 }
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Data binding examples
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;autocomplete-data-binding-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./autocomplete-data-binding-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./autocomplete-data-binding-example.css&#x27;</span>],
-    <span class="hljs-attr">providers</span>: [<span class="hljs-title class_">WikipediaService</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxFormfieldComponent</span>,
-        <span class="hljs-title class_">NxInputDirective</span>,
-        <span class="hljs-title class_">NxAutocompleteTriggerDirective</span>,
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">NxAutocompleteComponent</span>,
-        <span class="hljs-title class_">NxAutocompleteOptionComponent</span>,
-        <span class="hljs-title class_">ReactiveFormsModule</span>,
-        <span class="hljs-title class_">NxNaturalLanguageFormComponent</span>,
-        <span class="hljs-title class_">NxWordComponent</span>,
-        <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
-        <span class="hljs-title class_">LowerCasePipe</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;autocomplete-data-binding-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./autocomplete-data-binding-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./autocomplete-data-binding-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [<span class="hljs-title class_">WikipediaService</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxInputDirective</span>,
+    <span class="hljs-title class_">NxAutocompleteTriggerDirective</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">NxAutocompleteComponent</span>,
+    <span class="hljs-title class_">NxAutocompleteOptionComponent</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">NxNaturalLanguageFormComponent</span>,
+    <span class="hljs-title class_">NxWordComponent</span>,
+    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+    <span class="hljs-title class_">LowerCasePipe</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AutocompleteDataBindingExampleComponent</span> {
-    modelBoundData = <span class="hljs-string">&#x27;asdf&#x27;</span>;
+  modelBoundData = <span class="hljs-string">&#x27;asdf&#x27;</span>;
 
-    testForm = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormBuilder</span>().<span class="hljs-title function_">group</span>({
-        <span class="hljs-attr">autocomplete</span>: [<span class="hljs-literal">null</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
-    });
+  testForm = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormBuilder</span>().<span class="hljs-title function_">group</span>({
+    <span class="hljs-attr">autocomplete</span>: [<span class="hljs-literal">null</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
+  });
 
-    <span class="hljs-attr">dynamicBackendOptions</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">term</span>: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-title class_">Observable</span>&lt;<span class="hljs-built_in">string</span>[]&gt;;
+  <span class="hljs-attr">dynamicBackendOptions</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">term</span>: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-title class_">Observable</span>&lt;<span class="hljs-built_in">string</span>[]&gt;;
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">readonly</span> <span class="hljs-attr">wikipediaService</span>: <span class="hljs-title class_">WikipediaService</span></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">dynamicBackendOptions</span> = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">term</span>: <span class="hljs-built_in">string</span></span>) =&gt;</span>
-            wikipediaService
-                .<span class="hljs-title function_">search</span>(term)
-                .<span class="hljs-title function_">pipe</span>(
-                    <span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">items</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span> items.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">item</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span> item.<span class="hljs-property">value</span>)),
-                );
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">readonly</span> <span class="hljs-attr">wikipediaService</span>: <span class="hljs-title class_">WikipediaService</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dynamicBackendOptions</span> = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">term</span>: <span class="hljs-built_in">string</span></span>) =&gt;</span>
+      wikipediaService
+        .<span class="hljs-title function_">search</span>(term)
+        .<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">items</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span> items.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">item</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span> item.<span class="hljs-property">value</span>)));
+  }
+
+  <span class="hljs-title function_">simpleFilteredOptions</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span>[] {
+    <span class="hljs-keyword">if</span> (!value) {
+      <span class="hljs-keyword">return</span> [];
     }
-
-    <span class="hljs-title function_">simpleFilteredOptions</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span>[] {
-        <span class="hljs-keyword">if</span> (!value) {
-            <span class="hljs-keyword">return</span> [];
-        }
-        <span class="hljs-keyword">const</span> data = (
-            <span class="hljs-string">&#x27;Chimpanzee,Chinchilla,Chipmunk,Coati,Cicada,Clam,&#x27;</span> +
-            <span class="hljs-string">&#x27;Clownfish,Cobra,Cockroach,Cod,Condor,Constrictor,Coral,Cougar,Cow,&#x27;</span> +
-            <span class="hljs-string">&#x27;Coyote,Coypu,Crab,Crane,Crane fly,Crawdad,Crayfish,Cricket,Crocodile,Crow&#x27;</span>
-        ).<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;,&#x27;</span>);
-        <span class="hljs-keyword">return</span> data.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-title function_">toLowerCase</span>().<span class="hljs-title function_">includes</span>(value.<span class="hljs-title function_">toLowerCase</span>()));
-    }
+    <span class="hljs-keyword">const</span> data = (
+      <span class="hljs-string">&#x27;Chimpanzee,Chinchilla,Chipmunk,Coati,Cicada,Clam,&#x27;</span> +
+      <span class="hljs-string">&#x27;Clownfish,Cobra,Cockroach,Cod,Condor,Constrictor,Coral,Cougar,Cow,&#x27;</span> +
+      <span class="hljs-string">&#x27;Coyote,Coypu,Crab,Crane,Crane fly,Crawdad,Crayfish,Cricket,Crocodile,Crow&#x27;</span>
+    ).<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;,&#x27;</span>);
+    <span class="hljs-keyword">return</span> data.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">d</span>) =&gt;</span> d.<span class="hljs-title function_">toLowerCase</span>().<span class="hljs-title function_">includes</span>(value.<span class="hljs-title function_">toLowerCase</span>()));
+  }
 }

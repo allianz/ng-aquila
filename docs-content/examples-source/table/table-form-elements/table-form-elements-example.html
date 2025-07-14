@@ -1,89 +1,74 @@
 <div class="scroll-container">
-    <table nxTable condensed class="nx-margin-bottom-xs">
-        <thead>
-            <tr nxTableRow>
-                <th nxHeaderCell>
-                    <span id="assign">Assignment/Case ID</span>
-                </th>
-                <th nxHeaderCell><span id="amount">Gross Amount</span></th>
-                <th nxHeaderCell><span id="ending">Ending At</span></th>
-                <th nxHeaderCell><span id="status">Status</span></th>
-                <th nxHeaderCell></th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (control of formArray.controls; track control; let i = $index)
-            {
-            <tr nxTableRow [formGroup]="getFormGroup(i)">
-                <td nxTableCell>
-                    <nx-formfield>
-                        <input
-                            nxInput
-                            formControlName="id"
-                            [attr.aria-labelledby]="'assign'"
-                        />
-                    </nx-formfield>
-                </td>
-                <td nxTableCell>
-                    <nx-formfield>
-                        <input
-                            nxInput
-                            formControlName="amount"
-                            [attr.aria-labelledby]="'amount'"
-                        />
-                    </nx-formfield>
-                </td>
-                <td nxTableCell class="date-cell">
-                    <nx-formfield>
-                        <input
-                            nxDatefield
-                            nxInput
-                            [datepicker]="myDatepicker"
-                            formControlName="endingAt"
-                            [attr.aria-labelledby]="'ending'"
-                        />
-                        <nx-datepicker-toggle
-                            [for]="myDatepicker"
-                            nxFormfieldSuffix
-                        ></nx-datepicker-toggle>
-                        <nx-datepicker #myDatepicker></nx-datepicker>
-                    </nx-formfield>
-                </td>
-                <td nxTableCell class="status-cell">
-                    <nx-formfield>
-                        <nx-dropdown
-                            formControlName="status"
-                            ariaLabelledBy="status"
-                        >
-                            <nx-dropdown-item value="open"></nx-dropdown-item>
-                            <nx-dropdown-item
-                                value="processing"
-                            ></nx-dropdown-item>
-                            <nx-dropdown-item
-                                value="accepted"
-                            ></nx-dropdown-item>
-                            <nx-dropdown-item
-                                value="rejected"
-                            ></nx-dropdown-item>
-                        </nx-dropdown>
-                    </nx-formfield>
-                </td>
-                <td nxTableCell>
-                    <button
-                        nxPlainButton
-                        (click)="removeRow(i)"
-                        aria-label="Remove row"
-                    >
-                        <nx-icon name="trash-o" aria-hidden="true"></nx-icon>
-                    </button>
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
+  <table nxTable condensed class="nx-margin-bottom-xs">
+    <thead>
+      <tr nxTableRow>
+        <th nxHeaderCell>
+          <span id="assign">Assignment/Case ID</span>
+        </th>
+        <th nxHeaderCell><span id="amount">Gross Amount</span></th>
+        <th nxHeaderCell><span id="ending">Ending At</span></th>
+        <th nxHeaderCell><span id="status">Status</span></th>
+        <th nxHeaderCell></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (control of formArray.controls; track control; let i = $index) {
+      <tr nxTableRow [formGroup]="getFormGroup(i)">
+        <td nxTableCell>
+          <nx-formfield>
+            <input
+              nxInput
+              formControlName="id"
+              [attr.aria-labelledby]="'assign'"
+            />
+          </nx-formfield>
+        </td>
+        <td nxTableCell>
+          <nx-formfield>
+            <input
+              nxInput
+              formControlName="amount"
+              [attr.aria-labelledby]="'amount'"
+            />
+          </nx-formfield>
+        </td>
+        <td nxTableCell class="date-cell">
+          <nx-formfield>
+            <input
+              nxDatefield
+              nxInput
+              [datepicker]="myDatepicker"
+              formControlName="endingAt"
+              [attr.aria-labelledby]="'ending'"
+            />
+            <nx-datepicker-toggle
+              [for]="myDatepicker"
+              nxFormfieldSuffix
+            ></nx-datepicker-toggle>
+            <nx-datepicker #myDatepicker></nx-datepicker>
+          </nx-formfield>
+        </td>
+        <td nxTableCell class="status-cell">
+          <nx-formfield>
+            <nx-dropdown formControlName="status" ariaLabelledBy="status">
+              <nx-dropdown-item value="open"></nx-dropdown-item>
+              <nx-dropdown-item value="processing"></nx-dropdown-item>
+              <nx-dropdown-item value="accepted"></nx-dropdown-item>
+              <nx-dropdown-item value="rejected"></nx-dropdown-item>
+            </nx-dropdown>
+          </nx-formfield>
+        </td>
+        <td nxTableCell>
+          <button nxPlainButton (click)="removeRow(i)" aria-label="Remove row">
+            <nx-icon name="trash-o" aria-hidden="true"></nx-icon>
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
 </div>
 
 <button nxPlainButton (click)="addRow()">
-    <nx-icon name="plus" nxIconPositionStart aria-hidden="true"></nx-icon>Add
-    row
+  <nx-icon name="plus" nxIconPositionStart aria-hidden="true"></nx-icon>Add row
 </button>

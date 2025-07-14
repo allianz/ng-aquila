@@ -1,28 +1,26 @@
 <!-- Buttons to play with features -->
 <div class="buttons">
-    <button nxButton="small" (click)="clearSelection()">Clear Selection</button>
-    <button nxButton="small" (click)="toggleDense()">
-        Toggle dense ({{ isDense ? "on" : "off" }})
-    </button>
-    <button nxButton="small" (click)="toggleZebra()">
-        Toggle zebra ({{ isZebra ? "on" : "off" }})
-    </button>
-    <button nxButton="small" (click)="toggleCheckboxSelection()">
-        Checkbox selection
-    </button>
-    <button nxButton="small" (click)="toggleGroup()">
-        Toggle group header
-    </button>
+  <button nxButton="small" (click)="clearSelection()">Clear Selection</button>
+  <button nxButton="small" (click)="toggleDense()">
+    Toggle dense ({{ isDense ? "on" : "off" }})
+  </button>
+  <button nxButton="small" (click)="toggleZebra()">
+    Toggle zebra ({{ isZebra ? "on" : "off" }})
+  </button>
+  <button nxButton="small" (click)="toggleCheckboxSelection()">
+    Checkbox selection
+  </button>
+  <button nxButton="small" (click)="toggleGroup()">Toggle group header</button>
 </div>
 <!-- AG Grid Angular Component -->
 <ag-grid-angular
-    style="width: 100%; height: 100%"
-    class="theming-api-aquila"
-    [columnDefs]="columnsWithGroup"
-    [defaultColDef]="defaultColDef"
-    [rowData]="rowData$ | async"
-    (gridReady)="onGridReady($event)"
-    [pagination]="true"
-    [rowSelection]="rowSelection"
-    [theme]="theme"
+  style="width: 100%; height: 100%"
+  class="theming-api-aquila"
+  [columnDefs]="columnsWithGroup"
+  [defaultColDef]="defaultColDef"
+  [rowData]="rowData$ | async"
+  (gridReady)="onGridReady($event)"
+  [pagination]="true"
+  [rowSelection]="rowSelection"
+  [theme]="theme"
 ></ag-grid-angular>

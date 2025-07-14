@@ -1,33 +1,31 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxProgressbarComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/progressbar&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">OnInit</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxProgressbarComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/progressbar&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Progress Bar Example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;progressbar-custom-range-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./progressbar-custom-range-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./progressbar-custom-range-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxProgressbarComponent</span>],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;progressbar-custom-range-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./progressbar-custom-range-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./progressbar-custom-range-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxProgressbarComponent</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProgressbarCustomRangeExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnInit</span> {
-    value = <span class="hljs-number">15</span>;
-    min = <span class="hljs-number">5</span>;
-    max = <span class="hljs-number">80</span>;
+  value = <span class="hljs-number">15</span>;
+  min = <span class="hljs-number">5</span>;
+  max = <span class="hljs-number">80</span>;
 
-    <span class="hljs-title function_">ngOnInit</span>(): <span class="hljs-built_in">void</span> {
-        (<span class="hljs-title function_">async</span> () =&gt; {
-            <span class="hljs-keyword">while</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> !== <span class="hljs-number">80</span>) {
-                <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">2000</span>));
+  <span class="hljs-title function_">ngOnInit</span>(): <span class="hljs-built_in">void</span> {
+    (<span class="hljs-title function_">async</span> () =&gt; {
+      <span class="hljs-keyword">while</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> !== <span class="hljs-number">80</span>) {
+        <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">2000</span>));
 
-                <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> = (<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> + <span class="hljs-number">10</span>) % <span class="hljs-variable language_">this</span>.<span class="hljs-property">max</span>;
-            }
-        })();
-    }
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> = (<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> + <span class="hljs-number">10</span>) % <span class="hljs-variable language_">this</span>.<span class="hljs-property">max</span>;
+      }
+    })();
+  }
 
-    <span class="hljs-title function_">getCompletedPercentage</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(
-            ((<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-property">min</span>) / (<span class="hljs-variable language_">this</span>.<span class="hljs-property">max</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-property">min</span>)) * <span class="hljs-number">100</span>,
-        );
-    }
+  <span class="hljs-title function_">getCompletedPercentage</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(((<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-property">min</span>) / (<span class="hljs-variable language_">this</span>.<span class="hljs-property">max</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-property">min</span>)) * <span class="hljs-number">100</span>);
+  }
 }

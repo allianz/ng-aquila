@@ -1,39 +1,31 @@
 <nx-multi-stepper currentStepLabel="Step" direction="vertical" #stepper linear>
-    @for (group of groups; track group) {
-    <nx-step-group [label]="group.label">
-        @for (step of group.steps; track step) {
-        <nx-step [label]="step.label" [stepControl]="form">
-            <form #form="ngForm">
-                <nx-formfield
-                    [label]="'Input ' + step.label"
-                    floatLabel="always"
-                    appearance="outline"
-                >
-                    <input
-                        [name]="step.label"
-                        nxInput
-                        required
-                        ngModel
-                        type="text"
-                    />
-                    <nx-error appearance="text" nxFormfieldError>
-                        Please fill out the field!
-                    </nx-error>
-                </nx-formfield>
-            </form>
-            <button
-                nxButton="secondary small"
-                type="button"
-                class="nx-margin-right-2xs"
-                nxStepperPrevious
-            >
-                Previous
-            </button>
-            <button nxButton="primary small" type="button" nxStepperNext>
-                Next
-            </button>
-        </nx-step>
-        }
-    </nx-step-group>
+  @for (group of groups; track group) {
+  <nx-step-group [label]="group.label">
+    @for (step of group.steps; track step) {
+    <nx-step [label]="step.label" [stepControl]="form">
+      <form #form="ngForm">
+        <nx-formfield
+          [label]="'Input ' + step.label"
+          floatLabel="always"
+          appearance="outline"
+        >
+          <input [name]="step.label" nxInput required ngModel type="text" />
+          <nx-error appearance="text" nxFormfieldError>
+            Please fill out the field!
+          </nx-error>
+        </nx-formfield>
+      </form>
+      <button
+        nxButton="secondary small"
+        type="button"
+        class="nx-margin-right-2xs"
+        nxStepperPrevious
+      >
+        Previous
+      </button>
+      <button nxButton="primary small" type="button" nxStepperNext>Next</button>
+    </nx-step>
     }
+  </nx-step-group>
+  }
 </nx-multi-stepper>

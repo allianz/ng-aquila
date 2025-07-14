@@ -1,11 +1,11 @@
+import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
+import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxLicencePlateModule } from '@allianz/ng-aquila/licence-plate';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxLicencePlateModule } from '@aposin/ng-aquila/licence-plate';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { LicencePlateDisabledExampleComponent } from './licence-plate-disabled/licence-plate-disabled-example';
@@ -20,47 +20,46 @@ import { LicencePlateSpecialExampleComponent } from './licence-plate-special/lic
 import { LicencePlateStandardExampleComponent } from './licence-plate-standard/licence-plate-standard-example';
 
 const EXAMPLES = [
-    LicencePlateStandardExampleComponent,
-    LicencePlateSeasonalExampleComponent,
-    LicencePlateSpecialExampleComponent,
-    LicencePlateOtherExampleComponent,
-    LicencePlateEuroExampleComponent,
-    LicencePlateNgmodelExampleComponent,
-    LicencePlateReactiveExampleComponent,
-    LicencePlateExpertStatesExampleComponent,
-    LicencePlateDisabledExampleComponent,
-    LicencePlateExpertExampleComponent,
+  LicencePlateStandardExampleComponent,
+  LicencePlateSeasonalExampleComponent,
+  LicencePlateSpecialExampleComponent,
+  LicencePlateOtherExampleComponent,
+  LicencePlateEuroExampleComponent,
+  LicencePlateNgmodelExampleComponent,
+  LicencePlateReactiveExampleComponent,
+  LicencePlateExpertStatesExampleComponent,
+  LicencePlateDisabledExampleComponent,
+  LicencePlateExpertExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxLicencePlateModule,
-        ExamplesSharedModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NxHeadlineModule,
-        NxCheckboxModule,
-        NxDropdownModule,
-        NxFormfieldModule,
-        NxInputModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxLicencePlateModule,
+    ExamplesSharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NxHeadlineModule,
+    NxCheckboxModule,
+    NxDropdownModule,
+    NxFormfieldModule,
+    NxInputModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class LicencePlateExamplesModule {
-    static components() {
-        return {
-            'licence-plate-standard': LicencePlateStandardExampleComponent,
-            'licence-plate-seasonal': LicencePlateSeasonalExampleComponent,
-            'licence-plate-special': LicencePlateSpecialExampleComponent,
-            'licence-plate-other': LicencePlateOtherExampleComponent,
-            'licence-plate-euro': LicencePlateEuroExampleComponent,
-            'licence-plate-ngmodel': LicencePlateNgmodelExampleComponent,
-            'licence-plate-reactive': LicencePlateReactiveExampleComponent,
-            'licence-plate-expert': LicencePlateExpertExampleComponent,
-            'licence-plate-expert-states':
-                LicencePlateExpertStatesExampleComponent,
-            'licence-plate-disabled': LicencePlateDisabledExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'licence-plate-standard': LicencePlateStandardExampleComponent,
+      'licence-plate-seasonal': LicencePlateSeasonalExampleComponent,
+      'licence-plate-special': LicencePlateSpecialExampleComponent,
+      'licence-plate-other': LicencePlateOtherExampleComponent,
+      'licence-plate-euro': LicencePlateEuroExampleComponent,
+      'licence-plate-ngmodel': LicencePlateNgmodelExampleComponent,
+      'licence-plate-reactive': LicencePlateReactiveExampleComponent,
+      'licence-plate-expert': LicencePlateExpertExampleComponent,
+      'licence-plate-expert-states': LicencePlateExpertStatesExampleComponent,
+      'licence-plate-disabled': LicencePlateDisabledExampleComponent,
+    };
+  }
 }

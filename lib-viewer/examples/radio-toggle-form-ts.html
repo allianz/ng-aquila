@@ -1,23 +1,19 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxRadioToggleButtonComponent</span>,
+  <span class="hljs-title class_">NxRadioToggleComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/radio-toggle&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxRadioToggleButtonComponent</span>,
-    <span class="hljs-title class_">NxRadioToggleComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/radio-toggle&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Template Driven Form Example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;radio-toggle-form-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./radio-toggle-form-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./radio-toggle-form-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">NxRadioToggleComponent</span>,
-        <span class="hljs-title class_">NxRadioToggleButtonComponent</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;radio-toggle-form-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./radio-toggle-form-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./radio-toggle-form-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">FormsModule</span>, <span class="hljs-title class_">NxRadioToggleComponent</span>, <span class="hljs-title class_">NxRadioToggleButtonComponent</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RadioToggleFormExampleComponent</span> {
-    testSelect = <span class="hljs-string">&#x27;B&#x27;</span>;
+  testSelect = <span class="hljs-string">&#x27;B&#x27;</span>;
 }

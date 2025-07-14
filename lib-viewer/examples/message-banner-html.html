@@ -1,39 +1,39 @@
 @if (infoBanner) {
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-message-banner</span>
-    <span class="hljs-attr">closeButtonLabel</span>=<span class="hljs-string">&quot;Close info message banner&quot;</span>
-    (<span class="hljs-attr">close</span>)=<span class="hljs-string">&quot;infoBanner = false&quot;</span>
-    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>
+  <span class="hljs-attr">closeButtonLabel</span>=<span class="hljs-string">&quot;Close info message banner&quot;</span>
+  (<span class="hljs-attr">close</span>)=<span class="hljs-string">&quot;infoBanner = false&quot;</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>
 &gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-bold&quot;</span>&gt;</span>Notification title:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-    You are logged in as Max Mustermann.
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-bold&quot;</span>&gt;</span>Notification title:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  You are logged in as Max Mustermann.
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-message-banner</span>&gt;</span>
 } @if (warningBanner) {
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-message-banner</span>
-    <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;warning&quot;</span>
-    <span class="hljs-attr">closeButtonLabel</span>=<span class="hljs-string">&quot;Close warning message banner&quot;</span>
-    (<span class="hljs-attr">close</span>)=<span class="hljs-string">&quot;warningBanner = false&quot;</span>
-    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>
+  <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;warning&quot;</span>
+  <span class="hljs-attr">closeButtonLabel</span>=<span class="hljs-string">&quot;Close warning message banner&quot;</span>
+  (<span class="hljs-attr">close</span>)=<span class="hljs-string">&quot;warningBanner = false&quot;</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>
 &gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-bold&quot;</span>&gt;</span>Notification title:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-    Your password expires in three days!
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-bold&quot;</span>&gt;</span>Notification title:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  Your password expires in three days!
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-message-banner</span>&gt;</span>
 } @if (errorBanner) {
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-message-banner</span>
-    <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;error&quot;</span>
-    <span class="hljs-attr">closeButtonLabel</span>=<span class="hljs-string">&quot;Close error message banner&quot;</span>
-    (<span class="hljs-attr">close</span>)=<span class="hljs-string">&quot;errorBanner = false&quot;</span>
-    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>
+  <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;error&quot;</span>
+  <span class="hljs-attr">closeButtonLabel</span>=<span class="hljs-string">&quot;Close error message banner&quot;</span>
+  (<span class="hljs-attr">close</span>)=<span class="hljs-string">&quot;errorBanner = false&quot;</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>
 &gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-bold&quot;</span>&gt;</span>Notification title:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-    The object could not be found.
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-bold&quot;</span>&gt;</span>Notification title:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  The object could not be found.
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-message-banner</span>&gt;</span>
 }
 
 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-    [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;infoBanner &amp;&amp; warningBanner &amp;&amp; errorBanner&quot;</span>
-    <span class="hljs-attr">nxButton</span>
-    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;showAllBanners()&quot;</span>
+  [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;infoBanner &amp;&amp; warningBanner &amp;&amp; errorBanner&quot;</span>
+  <span class="hljs-attr">nxButton</span>
+  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+  (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;showAllBanners()&quot;</span>
 &gt;</span>
-    Show all message banners
+  Show all message banners
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

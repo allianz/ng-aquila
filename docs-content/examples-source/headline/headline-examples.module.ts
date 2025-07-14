@@ -1,7 +1,7 @@
+import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
+import { NxLinkModule } from '@allianz/ng-aquila/link';
+import { NxTableModule } from '@allianz/ng-aquila/table';
 import { NgModule } from '@angular/core';
-import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
-import { NxLinkModule } from '@aposin/ng-aquila/link';
-import { NxTableModule } from '@aposin/ng-aquila/table';
 
 import { HeadlineFontWeightsExampleComponent } from './headline-font-weights/headline-font-weights-example';
 import { HeadlineLinksExampleComponent } from './headline-links/headline-links-example';
@@ -11,28 +11,27 @@ import { HeadlineSizesDeprecatedExampleComponent } from './headline-sizes-deprec
 import { HeadlineSizesMappingExampleComponent } from './headline-sizes-mapping/headline-sizes-mapping-example';
 
 const EXAMPLES = [
-    HeadlineFontWeightsExampleComponent,
-    HeadlineLinksExampleComponent,
-    HeadlineNegativeExampleComponent,
-    HeadlineSizesDeprecatedExampleComponent,
-    HeadlineSizesA1ExampleComponent,
-    HeadlineSizesMappingExampleComponent,
+  HeadlineFontWeightsExampleComponent,
+  HeadlineLinksExampleComponent,
+  HeadlineNegativeExampleComponent,
+  HeadlineSizesDeprecatedExampleComponent,
+  HeadlineSizesA1ExampleComponent,
+  HeadlineSizesMappingExampleComponent,
 ];
 
 @NgModule({
-    imports: [NxHeadlineModule, NxLinkModule, NxTableModule, EXAMPLES],
-    exports: [EXAMPLES],
+  imports: [NxHeadlineModule, NxLinkModule, NxTableModule, EXAMPLES],
+  exports: [EXAMPLES],
 })
 export class HeadlineExamplesModule {
-    static components() {
-        return {
-            'headline-font-weights': HeadlineFontWeightsExampleComponent,
-            'headline-links': HeadlineLinksExampleComponent,
-            'headline-negative': HeadlineNegativeExampleComponent,
-            'headline-sizes-deprecated':
-                HeadlineSizesDeprecatedExampleComponent,
-            'headline-sizes-a1': HeadlineSizesA1ExampleComponent,
-            'headline-sizes-mapping': HeadlineSizesMappingExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'headline-font-weights': HeadlineFontWeightsExampleComponent,
+      'headline-links': HeadlineLinksExampleComponent,
+      'headline-negative': HeadlineNegativeExampleComponent,
+      'headline-sizes-deprecated': HeadlineSizesDeprecatedExampleComponent,
+      'headline-sizes-a1': HeadlineSizesA1ExampleComponent,
+      'headline-sizes-mapping': HeadlineSizesMappingExampleComponent,
+    };
+  }
 }

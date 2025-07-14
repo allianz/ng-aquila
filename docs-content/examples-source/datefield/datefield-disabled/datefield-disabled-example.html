@@ -1,36 +1,36 @@
 <nx-switcher [(ngModel)]="disabledAttribute" name="templateTest">
-    disabled
+  disabled
 </nx-switcher>
 
 <nx-formfield label="Date of damage">
-    <input
-        [disabled]="disabledAttribute"
-        nxDatefield
-        nxInput
-        [datepicker]="picker1"
-    />
+  <input
+    [disabled]="disabledAttribute"
+    nxDatefield
+    nxInput
+    [datepicker]="picker1"
+  />
 
-    <span nxFormfieldHint>MM/DD/YYYY</span>
-    <nx-datepicker-toggle
-        [for]="picker1"
-        nxFormfieldSuffix
-    ></nx-datepicker-toggle>
-    <nx-datepicker #picker1></nx-datepicker>
+  <span nxFormfieldHint>MM/DD/YYYY</span>
+  <nx-datepicker-toggle
+    [for]="picker1"
+    nxFormfieldSuffix
+  ></nx-datepicker-toggle>
+  <nx-datepicker #picker1></nx-datepicker>
 </nx-formfield>
 
 <nx-formfield label="Disabled Date Range Component">
-    <nx-date-range
-        [datepicker]="formRangeDatePicker"
-        [disabled]="disabledAttribute"
-        placeholder="mm/dd/yyyy"
-    ></nx-date-range>
-    <nx-datepicker-toggle
-        [for]="formRangeDatePicker"
-        [disabled]="disabledAttribute"
-        nxFormfieldSuffix
-    ></nx-datepicker-toggle>
-    <nx-datepicker #formRangeDatePicker [rangeMode]="true"></nx-datepicker>
-    <span aria-label="Please provide date in the US format" nxFormfieldHint
-        >MM/DD/YYYY - MM/DD/YYYY</span
-    >
+  <nx-date-range
+    [datepicker]="formRangeDatePicker"
+    [disabled]="disabledAttribute"
+    placeholder="mm/dd/yyyy"
+  ></nx-date-range>
+  <nx-datepicker-toggle
+    [for]="formRangeDatePicker"
+    [disabled]="disabledAttribute"
+    nxFormfieldSuffix
+  ></nx-datepicker-toggle>
+  <nx-datepicker #formRangeDatePicker [rangeMode]="true"></nx-datepicker>
+  <span aria-label="Please provide date in the US format" nxFormfieldHint
+    >MM/DD/YYYY - MM/DD/YYYY</span
+  >
 </nx-formfield>

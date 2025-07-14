@@ -1,14 +1,14 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxCopytextModule } from '@allianz/ng-aquila/copytext';
+import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxModalModule } from '@allianz/ng-aquila/modal';
+import { NxPopoverModule } from '@allianz/ng-aquila/popover';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxModalModule } from '@aposin/ng-aquila/modal';
-import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 import { ModalAutofocusExampleComponent } from './modal-autofocus/modal-autofocus-example';
 import { ModalBasicExampleComponent } from './modal-basic/modal-basic-example';
@@ -24,51 +24,51 @@ import { ModalUnsavedExampleComponent } from './modal-unsaved/modal-unsaved-exam
 import { ModalWithDirectionExampleComponent } from './modal-with-direction/modal-with-direction-example';
 
 const EXAMPLES = [
-    ModalAutofocusExampleComponent,
-    ModalStatusExampleComponent,
-    ModalUnsavedExampleComponent,
-    ModalBasicExampleComponent,
-    ModalClosingExampleComponent,
-    ModalClosingBehaviourExampleComponent,
-    ModalContentActionsExampleComponent,
-    ModalDataInjectionExampleComponent,
-    ModalFixedWidthExampleComponent,
-    ModalOpeningExampleComponent,
-    ModalWithDirectionExampleComponent,
-    ModalFullscreenExampleComponent,
+  ModalAutofocusExampleComponent,
+  ModalStatusExampleComponent,
+  ModalUnsavedExampleComponent,
+  ModalBasicExampleComponent,
+  ModalClosingExampleComponent,
+  ModalClosingBehaviourExampleComponent,
+  ModalContentActionsExampleComponent,
+  ModalDataInjectionExampleComponent,
+  ModalFixedWidthExampleComponent,
+  ModalOpeningExampleComponent,
+  ModalWithDirectionExampleComponent,
+  ModalFullscreenExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxModalModule.forRoot(),
-        NxDropdownModule,
-        NxInputModule,
-        NxButtonModule,
-        NxCopytextModule,
-        NxHeadlineModule,
-        NxPopoverModule,
-        NxIconModule,
-        NxFormfieldModule,
-        ReactiveFormsModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxModalModule.forRoot(),
+    NxDropdownModule,
+    NxInputModule,
+    NxButtonModule,
+    NxCopytextModule,
+    NxHeadlineModule,
+    NxPopoverModule,
+    NxIconModule,
+    NxFormfieldModule,
+    ReactiveFormsModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class ModalExamplesModule {
-    static components() {
-        return {
-            'modal-autofocus': ModalAutofocusExampleComponent,
-            'modal-status': ModalStatusExampleComponent,
-            'modal-unsaved': ModalUnsavedExampleComponent,
-            'modal-basic': ModalBasicExampleComponent,
-            'modal-closing': ModalClosingExampleComponent,
-            'modal-closing-behaviour': ModalClosingBehaviourExampleComponent,
-            'modal-content-actions': ModalContentActionsExampleComponent,
-            'modal-data-injection': ModalDataInjectionExampleComponent,
-            'modal-fixed-width': ModalFixedWidthExampleComponent,
-            'modal-fullscreen': ModalFullscreenExampleComponent,
-            'modal-opening': ModalOpeningExampleComponent,
-            'modal-with-direction': ModalWithDirectionExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'modal-autofocus': ModalAutofocusExampleComponent,
+      'modal-status': ModalStatusExampleComponent,
+      'modal-unsaved': ModalUnsavedExampleComponent,
+      'modal-basic': ModalBasicExampleComponent,
+      'modal-closing': ModalClosingExampleComponent,
+      'modal-closing-behaviour': ModalClosingBehaviourExampleComponent,
+      'modal-content-actions': ModalContentActionsExampleComponent,
+      'modal-data-injection': ModalDataInjectionExampleComponent,
+      'modal-fixed-width': ModalFixedWidthExampleComponent,
+      'modal-fullscreen': ModalFullscreenExampleComponent,
+      'modal-opening': ModalOpeningExampleComponent,
+      'modal-with-direction': ModalWithDirectionExampleComponent,
+    };
+  }
 }

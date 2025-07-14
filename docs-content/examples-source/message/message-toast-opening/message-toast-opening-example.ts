@@ -1,16 +1,16 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxButtonComponent } from '@allianz/ng-aquila/button';
 import {
-    NxMessageToastRef,
-    NxMessageToastService,
-} from '@aposin/ng-aquila/message';
+  NxMessageToastRef,
+  NxMessageToastService,
+} from '@allianz/ng-aquila/message';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
-    standalone: true,
-    template: `<div class="u-text-center">
-        <h3>Message from a component</h3>
-        <p>This text comes from the SimpleMessageToastComponent.</p>
-    </div>`,
+  standalone: true,
+  template: `<div class="u-text-center">
+    <h3>Message from a component</h3>
+    <p>This text comes from the SimpleMessageToastComponent.</p>
+  </div>`,
 })
 export class SimpleMessageToastComponent {}
 
@@ -18,42 +18,41 @@ export class SimpleMessageToastComponent {}
  * @title Opening example
  */
 @Component({
-    selector: 'message-toast-opening-example',
-    templateUrl: './message-toast-opening-example.html',
-    styleUrls: ['./message-toast-opening-example.css'],
-    providers: [NxMessageToastService],
-    imports: [NxButtonComponent],
+  selector: 'message-toast-opening-example',
+  templateUrl: './message-toast-opening-example.html',
+  styleUrls: ['./message-toast-opening-example.css'],
+  providers: [NxMessageToastService],
+  imports: [NxButtonComponent],
 })
 export class MessageToastOpeningExampleComponent {
-    readonly toastText = 'A success message toast with a custom text.';
+  readonly toastText = 'A success message toast with a custom text.';
 
-    @ViewChild('template') templateRef!: TemplateRef<any>;
+  @ViewChild('template') templateRef!: TemplateRef<any>;
 
-    componentMessageToastRef?: NxMessageToastRef;
+  componentMessageToastRef?: NxMessageToastRef;
 
-    constructor(private readonly messageToastService: NxMessageToastService) {}
+  constructor(private readonly messageToastService: NxMessageToastService) {}
 
-    openFromText() {
-        this.messageToastService.open(this.toastText, {
-            context: 'success',
-            duration: 5000,
-        });
-    }
+  openFromText() {
+    this.messageToastService.open(this.toastText, {
+      context: 'success',
+      duration: 5000,
+    });
+  }
 
-    openFromTemplate() {
-        this.messageToastService.openFromTemplate(this.templateRef, {
-            announcementMessage:
-                'You see an info message. It will disappear in 3000 ms.',
-        });
-    }
+  openFromTemplate() {
+    this.messageToastService.openFromTemplate(this.templateRef, {
+      announcementMessage:
+        'You see an info message. It will disappear in 3000 ms.',
+    });
+  }
 
-    openFromComponent(): void {
-        this.componentMessageToastRef =
-            this.messageToastService.openFromComponent(
-                SimpleMessageToastComponent,
-                {
-                    duration: 5000,
-                },
-            );
-    }
+  openFromComponent(): void {
+    this.componentMessageToastRef = this.messageToastService.openFromComponent(
+      SimpleMessageToastComponent,
+      {
+        duration: 5000,
+      },
+    );
+  }
 }

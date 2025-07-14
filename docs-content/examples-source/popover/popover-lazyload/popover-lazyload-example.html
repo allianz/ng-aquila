@@ -1,20 +1,20 @@
 <button
-    nxButton="primary small"
-    [nxPopoverTriggerFor]="popoverCustomLazyloadedContent"
-    nxPopoverDirection="right"
-    nxPopoverTrigger="click"
-    type="button"
-    [nxPopoverWidth]="popoverWidth"
+  nxButton="primary small"
+  [nxPopoverTriggerFor]="popoverCustomLazyloadedContent"
+  nxPopoverDirection="right"
+  nxPopoverTrigger="click"
+  type="button"
+  [nxPopoverWidth]="popoverWidth"
 >
-    click
+  click
 </button>
 
 <nx-popover #popoverCustomLazyloadedContent>
-    <ng-template nxPopoverContent>
-        <img
-            src="docs-assets/images/adli-wahid-eagle-unsplash-large.jpg"
-            alt="An eagle sitting on a branch and thinking. Photo made by Adli Wahid"
-            class="popover-demo__img"
-        />
-    </ng-template>
+  <ng-template nxPopoverContent>
+    <img
+      src="docs-assets/images/adli-wahid-eagle-unsplash-large.jpg"
+      alt="An eagle sitting on a branch and thinking. Photo made by Adli Wahid"
+      class="popover-demo__img"
+    />
+  </ng-template>
 </nx-popover>

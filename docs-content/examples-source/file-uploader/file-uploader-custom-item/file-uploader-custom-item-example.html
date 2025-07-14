@@ -1,95 +1,91 @@
 <nx-file-uploader
-    #documentUpload
-    #ngModel="ngModel"
-    multiple
-    [(ngModel)]="myFiles"
-    [itemTemplate]="myItemTemplate"
+  #documentUpload
+  #ngModel="ngModel"
+  multiple
+  [(ngModel)]="myFiles"
+  [itemTemplate]="myItemTemplate"
 >
-    <nx-label size="small" class="nx-margin-bottom-3xs"
-        >Please upload a file</nx-label
-    >
+  <nx-label size="small" class="nx-margin-bottom-3xs"
+    >Please upload a file</nx-label
+  >
 
-    <button
-        nxButton="primary"
-        type="button"
-        class="nx-margin-bottom-s"
-        nxFileUploadButton
-    >
-        <nx-icon
-            name="plus"
-            class="nx-margin-right-2xs"
-            aria-hidden="true"
-        ></nx-icon>
-        Add File
-    </button>
+  <button
+    nxButton="primary"
+    type="button"
+    class="nx-margin-bottom-s"
+    nxFileUploadButton
+  >
+    <nx-icon
+      name="plus"
+      class="nx-margin-right-2xs"
+      aria-hidden="true"
+    ></nx-icon>
+    Add File
+  </button>
 </nx-file-uploader>
 
 @if (showUploadError) {
 <nx-error>
-    <div class="nx-font-weight-bold">Error</div>
-    <ul>
-        <li>An error occured while uploading.</li>
-        @if (ngModel.control.hasError('required')) {
-        <li>Required!</li>
-        }
-    </ul>
+  <div class="nx-font-weight-bold">Error</div>
+  <ul>
+    <li>An error occured while uploading.</li>
+    @if (ngModel.control.hasError('required')) {
+    <li>Required!</li>
+    }
+  </ul>
 </nx-error>
 }
 <button
-    nxButton="secondary small"
-    type="button"
-    [disabled]="!documentUpload.value?.length"
-    (click)="upload('file-upload')"
+  nxButton="secondary small"
+  type="button"
+  [disabled]="!documentUpload.value?.length"
+  (click)="upload('file-upload')"
 >
-    Upload files
+  Upload files
 </button>
 
 <ng-template
-    #myItemTemplate
-    let-templateContext="templateContext"
-    let-file="file"
+  #myItemTemplate
+  let-templateContext="templateContext"
+  let-file="file"
 >
-    <nx-file-upload-name [name]="file?.name"></nx-file-upload-name>
+  <nx-file-upload-name [name]="file?.name"></nx-file-upload-name>
 
-    <nx-file-upload-size
-        [size]="file?.size"
-        [isUploading]="file.isUploading"
-        [uploadingLabel]="templateContext.uploadingLabel"
-    ></nx-file-upload-size>
+  <nx-file-upload-size
+    [size]="file?.size"
+    [isUploading]="file.isUploading"
+    [uploadingLabel]="templateContext.uploadingLabel"
+  ></nx-file-upload-size>
 
-    <div class="nx-file-uploader--file-row-actions">
-        <nx-file-upload-status
-            [isUploading]="file.isUploading"
-            [isUploaded]="file.isUploaded"
-            [uploadedLabel]="templateContext.uploadedLabel"
-        ></nx-file-upload-status>
+  <div class="nx-file-uploader--file-row-actions">
+    <nx-file-upload-status
+      [isUploading]="file.isUploading"
+      [isUploaded]="file.isUploaded"
+      [uploadedLabel]="templateContext.uploadedLabel"
+    ></nx-file-upload-status>
 
-        <nx-file-upload-delete
-            [deleteLabel]="templateContext.deleteLabel"
-            [isUploading]="file.isUploading"
-            (click)="templateContext.removeFile(file)"
-        ></nx-file-upload-delete>
-    </div>
+    <nx-file-upload-delete
+      [deleteLabel]="templateContext.deleteLabel"
+      [isUploading]="file.isUploading"
+      (click)="templateContext.removeFile(file)"
+    ></nx-file-upload-delete>
+  </div>
 
-    <form>
-        <nx-radio-group
-            [disabled]="file.isUploading || file.isUploaded"
-            [(ngModel)]="file.formData"
-            name="pictureRights"
+  <form>
+    <nx-radio-group
+      [disabled]="file.isUploading || file.isUploaded"
+      [(ngModel)]="file.formData"
+      name="pictureRights"
+    >
+      <nx-label class="nx-margin-bottom-m"
+        >Do you own all rights to this picture?</nx-label
+      >
+      <div class="horizontal-buttons">
+        <nx-radio [value]="true" class="nx-margin-bottom-m">Yes</nx-radio>
+        <nx-radio [value]="false" class="nx-margin-left-s nx-margin-bottom-m"
+          >No</nx-radio
         >
-            <nx-label class="nx-margin-bottom-m"
-                >Do you own all rights to this picture?</nx-label
-            >
-            <div class="horizontal-buttons">
-                <nx-radio [value]="true" class="nx-margin-bottom-m"
-                    >Yes</nx-radio
-                >
-                <nx-radio
-                    [value]="false"
-                    class="nx-margin-left-s nx-margin-bottom-m"
-                    >No</nx-radio
-                >
-            </div>
-        </nx-radio-group>
-    </form>
+      </div>
+    </nx-radio-group>
+  </form>
 </ng-template>

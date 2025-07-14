@@ -1,18 +1,18 @@
 <div nxLayout="grid">
-    <div nxRow>
-        <div nxCol="12, 12, 4">
-            <nx-formfield label="Country Code">
-                <nx-dropdown [(ngModel)]="customLabelDropdownValue">
-                    <ng-template nxClosedLabel>
-                        <span>{{ customLabelDropdownValue?.prefix }}</span>
-                    </ng-template>
-                    @for (item of telPrefixDemoData; track item) {
-                    <nx-dropdown-item [value]="item">
-                        {{ item.prefix }} ({{ item.countryId }})
-                    </nx-dropdown-item>
-                    }
-                </nx-dropdown>
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="12, 12, 4">
+      <nx-formfield label="Country Code">
+        <nx-dropdown [(ngModel)]="customLabelDropdownValue">
+          <ng-template nxClosedLabel>
+            <span>{{ customLabelDropdownValue?.prefix }}</span>
+          </ng-template>
+          @for (item of telPrefixDemoData; track item) {
+          <nx-dropdown-item [value]="item">
+            {{ item.prefix }} ({{ item.countryId }})
+          </nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
     </div>
+  </div>
 </div>

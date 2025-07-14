@@ -1,71 +1,71 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span> <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;warning&quot;</span>&gt;</span>
-    This example intends to show how to set explicit
-    <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>ariaLabels<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> when you have multiple paginations, try it with a
-    screenreader or look at the html code how the <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>ariaLabel<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> inputs
-    are set. The example is not supposed to show how to have a working
-    pagination on a table.
+  This example intends to show how to set explicit
+  <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>ariaLabels<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> when you have multiple paginations, try it with a
+  screenreader or look at the html code how the <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>ariaLabel<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> inputs
+  are set. The example is not supposed to show how to have a working pagination
+  on a table.
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-message</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-    The following pagination gets the aria label set to &quot;Cars table pagination&quot;
+  The following pagination gets the aria label set to &quot;Cars table pagination&quot;
 <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">nxTable</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;table-layout: fixed&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Car<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Price<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>Porsche<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>72500<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Car<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Price<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>Porsche<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>72500<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pagination nx-margin-top-s&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-pagination</span>
-        [<span class="hljs-attr">count</span>]=<span class="hljs-string">&quot;count&quot;</span>
-        [<span class="hljs-attr">page</span>]=<span class="hljs-string">&quot;page&quot;</span>
-        [<span class="hljs-attr">perPage</span>]=<span class="hljs-string">&quot;perPage&quot;</span>
-        (<span class="hljs-attr">goPrev</span>)=<span class="hljs-string">&quot;prevPage()&quot;</span>
-        (<span class="hljs-attr">goNext</span>)=<span class="hljs-string">&quot;nextPage()&quot;</span>
-        (<span class="hljs-attr">goPage</span>)=<span class="hljs-string">&quot;goToPage($event)&quot;</span>
-        <span class="hljs-attr">ariaLabel</span>=<span class="hljs-string">&quot;Cars table pagination&quot;</span>
-    &gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-pagination</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-pagination</span>
+    [<span class="hljs-attr">count</span>]=<span class="hljs-string">&quot;count&quot;</span>
+    [<span class="hljs-attr">page</span>]=<span class="hljs-string">&quot;page&quot;</span>
+    [<span class="hljs-attr">perPage</span>]=<span class="hljs-string">&quot;perPage&quot;</span>
+    (<span class="hljs-attr">goPrev</span>)=<span class="hljs-string">&quot;prevPage()&quot;</span>
+    (<span class="hljs-attr">goNext</span>)=<span class="hljs-string">&quot;nextPage()&quot;</span>
+    (<span class="hljs-attr">goPage</span>)=<span class="hljs-string">&quot;goToPage($event)&quot;</span>
+    <span class="hljs-attr">ariaLabel</span>=<span class="hljs-string">&quot;Cars table pagination&quot;</span>
+  &gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-pagination</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-    The following pagination gets the aria label set to &quot;Customers table
-    pagination&quot;
+  The following pagination gets the aria label set to &quot;Customers table
+  pagination&quot;
 <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">nxTable</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-m&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;table-layout: fixed&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>ID<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>Max Mustermann<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>12345<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>ID<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>Max Mustermann<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>12345<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pagination nx-margin-top-s&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-pagination</span>
-        [<span class="hljs-attr">count</span>]=<span class="hljs-string">&quot;count&quot;</span>
-        [<span class="hljs-attr">page</span>]=<span class="hljs-string">&quot;page&quot;</span>
-        [<span class="hljs-attr">perPage</span>]=<span class="hljs-string">&quot;perPage&quot;</span>
-        (<span class="hljs-attr">goPrev</span>)=<span class="hljs-string">&quot;prevPage()&quot;</span>
-        (<span class="hljs-attr">goNext</span>)=<span class="hljs-string">&quot;nextPage()&quot;</span>
-        (<span class="hljs-attr">goPage</span>)=<span class="hljs-string">&quot;goToPage($event)&quot;</span>
-        <span class="hljs-attr">ariaLabel</span>=<span class="hljs-string">&quot;Customers table pagination&quot;</span>
-    &gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-pagination</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-pagination</span>
+    [<span class="hljs-attr">count</span>]=<span class="hljs-string">&quot;count&quot;</span>
+    [<span class="hljs-attr">page</span>]=<span class="hljs-string">&quot;page&quot;</span>
+    [<span class="hljs-attr">perPage</span>]=<span class="hljs-string">&quot;perPage&quot;</span>
+    (<span class="hljs-attr">goPrev</span>)=<span class="hljs-string">&quot;prevPage()&quot;</span>
+    (<span class="hljs-attr">goNext</span>)=<span class="hljs-string">&quot;nextPage()&quot;</span>
+    (<span class="hljs-attr">goPage</span>)=<span class="hljs-string">&quot;goToPage($event)&quot;</span>
+    <span class="hljs-attr">ariaLabel</span>=<span class="hljs-string">&quot;Customers table pagination&quot;</span>
+  &gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-pagination</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

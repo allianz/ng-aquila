@@ -1,41 +1,41 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDatefieldDirective</span>,
+  <span class="hljs-title class_">NxDatepickerComponent</span>,
+  <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/datefield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxFormfieldComponent</span>,
+  <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+  <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+  <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/input&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxDatefieldDirective</span>,
-    <span class="hljs-title class_">NxDatepickerComponent</span>,
-    <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxFormfieldComponent</span>,
-    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
-    <span class="hljs-title class_">NxFormfieldHintDirective</span>,
-    <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
 <span class="hljs-keyword">import</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Example of setting min and max values
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;datefield-min-max-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./datefield-min-max-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./datefield-min-max-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxFormfieldComponent</span>,
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">NxDatefieldDirective</span>,
-        <span class="hljs-title class_">NxInputDirective</span>,
-        <span class="hljs-title class_">NxFormfieldHintDirective</span>,
-        <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
-        <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
-        <span class="hljs-title class_">NxDatepickerComponent</span>,
-        <span class="hljs-title class_">NxErrorComponent</span>,
-        <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;datefield-min-max-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./datefield-min-max-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./datefield-min-max-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">NxDatefieldDirective</span>,
+    <span class="hljs-title class_">NxInputDirective</span>,
+    <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+    <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
+    <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+    <span class="hljs-title class_">NxDatepickerComponent</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
+    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DatefieldMinMaxExampleComponent</span> {
-    minDate = <span class="hljs-title function_">moment</span>([<span class="hljs-number">2010</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>]);
-    maxDate = <span class="hljs-title function_">moment</span>([<span class="hljs-number">2020</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>]);
+  minDate = <span class="hljs-title function_">moment</span>([<span class="hljs-number">2010</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>]);
+  maxDate = <span class="hljs-title function_">moment</span>([<span class="hljs-number">2020</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>]);
 }

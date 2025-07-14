@@ -1,39 +1,35 @@
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxTabChangeEvent</span>,
-    <span class="hljs-title class_">NxTabComponent</span>,
-    <span class="hljs-title class_">NxTabGroupComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tabs&#x27;</span>;
+  <span class="hljs-title class_">NxTabChangeEvent</span>,
+  <span class="hljs-title class_">NxTabComponent</span>,
+  <span class="hljs-title class_">NxTabGroupComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/tabs&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Output events
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tabs-output-events-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-output-events-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tabs-output-events-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxTabGroupComponent</span>, <span class="hljs-title class_">NxTabComponent</span>, <span class="hljs-title class_">NxHeadlineComponent</span>],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tabs-output-events-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-output-events-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tabs-output-events-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxTabGroupComponent</span>, <span class="hljs-title class_">NxTabComponent</span>, <span class="hljs-title class_">NxHeadlineComponent</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TabsOutputEventsExampleComponent</span> {
-    <span class="hljs-attr">messages</span>: <span class="hljs-built_in">any</span>[] = [];
-    logMessage = <span class="hljs-string">&#x27;&#x27;</span>;
+  <span class="hljs-attr">messages</span>: <span class="hljs-built_in">any</span>[] = [];
+  logMessage = <span class="hljs-string">&#x27;&#x27;</span>;
 
-    <span class="hljs-title function_">tabChanged</span>(<span class="hljs-params"><span class="hljs-attr">$event</span>: <span class="hljs-title class_">NxTabChangeEvent</span></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">push</span>(
-            <span class="hljs-string">`Selected Index: <span class="hljs-subst">${$event.index}</span> Label: <span class="hljs-subst">${$event.tab.label}</span>`</span>,
-        );
-        <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(
-            <span class="hljs-function">() =&gt;</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">logMessage</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;\n&#x27;</span>)),
-        );
-    }
+  <span class="hljs-title function_">tabChanged</span>(<span class="hljs-params"><span class="hljs-attr">$event</span>: <span class="hljs-title class_">NxTabChangeEvent</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">push</span>(
+      <span class="hljs-string">`Selected Index: <span class="hljs-subst">${$event.index}</span> Label: <span class="hljs-subst">${$event.tab.label}</span>`</span>,
+    );
+    <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">logMessage</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;\n&#x27;</span>)));
+  }
 
-    <span class="hljs-title function_">tabFocused</span>(<span class="hljs-params"><span class="hljs-attr">$event</span>: <span class="hljs-title class_">NxTabChangeEvent</span></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">push</span>(
-            <span class="hljs-string">`Focused Index: <span class="hljs-subst">${$event.index}</span> Label: <span class="hljs-subst">${$event.tab.label}</span>`</span>,
-        );
-        <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(
-            <span class="hljs-function">() =&gt;</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">logMessage</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;\n&#x27;</span>)),
-        );
-    }
+  <span class="hljs-title function_">tabFocused</span>(<span class="hljs-params"><span class="hljs-attr">$event</span>: <span class="hljs-title class_">NxTabChangeEvent</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">push</span>(
+      <span class="hljs-string">`Focused Index: <span class="hljs-subst">${$event.index}</span> Label: <span class="hljs-subst">${$event.tab.label}</span>`</span>,
+    );
+    <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">logMessage</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;\n&#x27;</span>)));
+  }
 }

@@ -1,8 +1,8 @@
+import { NxErrorModule } from '@allianz/ng-aquila/base';
+import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NgModule } from '@angular/core';
-import { NxErrorModule } from '@aposin/ng-aquila/base';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { DropdownCustomLabelExampleComponent } from './dropdown-custom-label/dropdown-custom-label-example';
@@ -28,65 +28,65 @@ import { MultiSelectExampleComponent } from './multi-select/multi-select-example
 import { MultiSelectIntlExampleComponent } from './multi-select-intl/multi-select-intl-example';
 
 const EXAMPLES = [
-    DropdownCustomLabelExampleComponent,
-    DropdownDisabledItemsExampleComponent,
-    DropdownFilterExampleComponent,
-    DropdownFilterCustomExampleComponent,
-    DropdownGroupExampleComponent,
-    DropdownMultiSelectExampleComponent,
-    DropdownNegativeExampleComponent,
-    DropdownOutlineExampleComponent,
-    DropdownPlaceholderExampleComponent,
-    DropdownReactiveExampleComponent,
-    DropdownRenderingItemsExampleComponent,
-    DropdownSimpleBindingExampleComponent,
-    DropdownStandardExampleComponent,
-    DropdownTemplateDrivenExampleComponent,
-    DropdownLazyExampleComponent,
-    DropdownScrollStrategyProviderExampleComponent,
-    DropdownFocusOutExampleComponent,
-    MultiSelectExampleComponent,
-    MultiSelectIntlExampleComponent,
-    DropdownPanelgrowExampleComponent,
-    DropdownSelectOnFocusExampleComponent,
+  DropdownCustomLabelExampleComponent,
+  DropdownDisabledItemsExampleComponent,
+  DropdownFilterExampleComponent,
+  DropdownFilterCustomExampleComponent,
+  DropdownGroupExampleComponent,
+  DropdownMultiSelectExampleComponent,
+  DropdownNegativeExampleComponent,
+  DropdownOutlineExampleComponent,
+  DropdownPlaceholderExampleComponent,
+  DropdownReactiveExampleComponent,
+  DropdownRenderingItemsExampleComponent,
+  DropdownSimpleBindingExampleComponent,
+  DropdownStandardExampleComponent,
+  DropdownTemplateDrivenExampleComponent,
+  DropdownLazyExampleComponent,
+  DropdownScrollStrategyProviderExampleComponent,
+  DropdownFocusOutExampleComponent,
+  MultiSelectExampleComponent,
+  MultiSelectIntlExampleComponent,
+  DropdownPanelgrowExampleComponent,
+  DropdownSelectOnFocusExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxDropdownModule,
-        NxFormfieldModule,
-        ExamplesSharedModule,
-        NxIconModule,
-        NxErrorModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxDropdownModule,
+    NxFormfieldModule,
+    ExamplesSharedModule,
+    NxIconModule,
+    NxErrorModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class DropdownExamplesModule {
-    static components() {
-        return {
-            'dropdown-custom-label': DropdownCustomLabelExampleComponent,
-            'dropdown-disabled-items': DropdownDisabledItemsExampleComponent,
-            'dropdown-filter': DropdownFilterExampleComponent,
-            'dropdown-filter-custom': DropdownFilterCustomExampleComponent,
-            'dropdown-group': DropdownGroupExampleComponent,
-            'dropdown-multi-select': DropdownMultiSelectExampleComponent,
-            'dropdown-negative': DropdownNegativeExampleComponent,
-            'dropdown-outline': DropdownOutlineExampleComponent,
-            'dropdown-placeholder': DropdownPlaceholderExampleComponent,
-            'dropdown-reactive': DropdownReactiveExampleComponent,
-            'dropdown-rendering-items': DropdownRenderingItemsExampleComponent,
-            'dropdown-simple-binding': DropdownSimpleBindingExampleComponent,
-            'dropdown-standard': DropdownStandardExampleComponent,
-            'dropdown-template-driven': DropdownTemplateDrivenExampleComponent,
-            'dropdown-lazy': DropdownLazyExampleComponent,
-            'dropdown-focus-out': DropdownFocusOutExampleComponent,
-            'dropdown-scroll-strategy-provider':
-                DropdownScrollStrategyProviderExampleComponent,
-            'multi-select': MultiSelectExampleComponent,
-            'multi-select-intl': MultiSelectIntlExampleComponent,
-            'dropdown-panelgrow': DropdownPanelgrowExampleComponent,
-            'dropdown-select-on-focus': DropdownSelectOnFocusExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'dropdown-custom-label': DropdownCustomLabelExampleComponent,
+      'dropdown-disabled-items': DropdownDisabledItemsExampleComponent,
+      'dropdown-filter': DropdownFilterExampleComponent,
+      'dropdown-filter-custom': DropdownFilterCustomExampleComponent,
+      'dropdown-group': DropdownGroupExampleComponent,
+      'dropdown-multi-select': DropdownMultiSelectExampleComponent,
+      'dropdown-negative': DropdownNegativeExampleComponent,
+      'dropdown-outline': DropdownOutlineExampleComponent,
+      'dropdown-placeholder': DropdownPlaceholderExampleComponent,
+      'dropdown-reactive': DropdownReactiveExampleComponent,
+      'dropdown-rendering-items': DropdownRenderingItemsExampleComponent,
+      'dropdown-simple-binding': DropdownSimpleBindingExampleComponent,
+      'dropdown-standard': DropdownStandardExampleComponent,
+      'dropdown-template-driven': DropdownTemplateDrivenExampleComponent,
+      'dropdown-lazy': DropdownLazyExampleComponent,
+      'dropdown-focus-out': DropdownFocusOutExampleComponent,
+      'dropdown-scroll-strategy-provider':
+        DropdownScrollStrategyProviderExampleComponent,
+      'multi-select': MultiSelectExampleComponent,
+      'multi-select-intl': MultiSelectIntlExampleComponent,
+      'dropdown-panelgrow': DropdownPanelgrowExampleComponent,
+      'dropdown-select-on-focus': DropdownSelectOnFocusExampleComponent,
+    };
+  }
 }

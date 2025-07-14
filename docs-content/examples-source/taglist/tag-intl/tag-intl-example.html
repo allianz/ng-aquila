@@ -1,11 +1,11 @@
 <button nxButton="small" class="nx-margin-bottom-m" (click)="reset()">
-    Reset
+  Reset
 </button>
 
 <nx-tag-group removable aria-label="Active filters">
-    @for (tag of tags(); track tag) {
-    <nx-tag [value]="tag.toLowerCase()" (removed)="removeTag(tag)"
-        >{{ tag }}</nx-tag
-    >
-    }
+  @for (tag of tags(); track tag) {
+  <nx-tag [value]="tag.toLowerCase()" (removed)="removeTag(tag)"
+    >{{ tag }}</nx-tag
+  >
+  }
 </nx-tag-group>

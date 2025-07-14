@@ -1,11 +1,9 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Breadcrumb&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">nxBreadcrumb</span>&gt;</span>
-        @for (item of items; track item; let i = $index; let isLast = $last) {
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">nxBreadcrumbItem</span> [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;isLast ? null : &#x27;#&#x27;&quot;</span>&gt;</span>
-                {{ item }}
-            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        }
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">nxBreadcrumb</span>&gt;</span>
+    @for (item of items; track item; let i = $index; let isLast = $last) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">nxBreadcrumbItem</span> [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;isLast ? null : &#x27;#&#x27;&quot;</span>&gt;</span> {{ item }} <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>

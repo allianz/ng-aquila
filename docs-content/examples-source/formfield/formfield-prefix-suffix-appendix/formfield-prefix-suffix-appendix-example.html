@@ -1,35 +1,35 @@
 <nx-formfield label="Your share (Suffix)">
-    <input
-        nxInput
-        nxAriaLabel="Enter percents"
-        min="0"
-        max="100"
-        type="number"
-        value="85"
-    />
-    <span nxFormfieldSuffix>%</span>
+  <input
+    nxInput
+    nxAriaLabel="Enter percents"
+    min="0"
+    max="100"
+    type="number"
+    value="85"
+  />
+  <span nxFormfieldSuffix>%</span>
 </nx-formfield>
 
 <nx-formfield label="Your name (Appendix)">
-    <input nxInput />
-    <button
-        nxFormfieldAppendix
-        nxIconButton="tertiary small"
-        nxPopoverDirection="top"
-        [nxPopoverTriggerFor]="popoverAppendixExample"
-        nxPopoverTrigger="click"
-        type="button"
-        aria-label="More information"
-    >
-        <nx-icon name="info-circle-o" size="s" aria-hidden="true"> </nx-icon>
-    </button>
+  <input nxInput />
+  <button
+    nxFormfieldAppendix
+    nxIconButton="tertiary small"
+    nxPopoverDirection="top"
+    [nxPopoverTriggerFor]="popoverAppendixExample"
+    nxPopoverTrigger="click"
+    type="button"
+    aria-label="More information"
+  >
+    <nx-icon name="info-circle-o" size="s" aria-hidden="true"> </nx-icon>
+  </button>
 </nx-formfield>
 
 <nx-popover #popoverAppendixExample>
-    <div style="max-width: 300px">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni,
-        nostrum. Obcaecati cupiditate numquam, fugit illo incidunt molestiae
-        ipsam perferendis officia accusamus. Enim magnam recusandae velit
-        accusamus ipsa. Nemo, eius exercitationem?
-    </div>
+  <div style="max-width: 300px">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nostrum.
+    Obcaecati cupiditate numquam, fugit illo incidunt molestiae ipsam
+    perferendis officia accusamus. Enim magnam recusandae velit accusamus ipsa.
+    Nemo, eius exercitationem?
+  </div>
 </nx-popover>

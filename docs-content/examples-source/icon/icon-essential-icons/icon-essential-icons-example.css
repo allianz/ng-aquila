@@ -1,20 +1,20 @@
 :host {
-    display: block;
+  display: block;
 }
 
 .iconlist {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-flow: row wrap;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .iconlist__item {
-    flex: 1 1 25%;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    margin-bottom: 20px;
-    text-align: center;
+  flex: 1 1 25%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
 }

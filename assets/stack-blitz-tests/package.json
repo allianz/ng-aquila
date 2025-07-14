@@ -1,53 +1,53 @@
 {
-    "name": "aquila-docs-example",
-    "version": "0.0.0",
-    "scripts": {
-        "ng": "ng",
-        "start": "ng serve",
-        "build": "ng build",
-        "test": "ng test"
-    },
-    "private": true,
-    "browserslist": [
-        "last 2 Chrome version",
-        "last 1 Firefox version",
-        "last 2 Edge major versions",
-        "last 2 Safari major versions",
-        "last 2 iOS major versions",
-        "Firefox ESR"
-    ],
-    "dependencies": {
-        "@angular/animations": "^16.0.0",
-        "@angular/cdk": "^16.0.0",
-        "@angular/common": "^16.0.0",
-        "@angular/compiler": "^16.0.0",
-        "@angular/core": "^16.0.0",
-        "@angular/forms": "^16.0.0",
-        "@angular/platform-browser": "^16.0.0",
-        "@angular/platform-browser-dynamic": "^16.0.0",
-        "@angular/router": "^16.0.0",
-        "i18n-iso-countries": "^7.5.0",
-        "iban": "^0.0.14",
-        "moment": "^2.29.1",
-        "rxjs": "^6.6.7",
-        "tslib": "^2.3.0",
-        "zone.js": "~0.13.0"
-    },
-    "devDependencies": {
-        "@angular-devkit/build-angular": "^16.0.0",
-        "@angular/cli": "^16.0.0",
-        "@angular/compiler-cli": "^16.0.0",
-        "@types/jasmine": "^3.10.2",
-        "@types/node": "^17.0.2",
-        "jasmine": "^3.10.0",
-        "jasmine-core": "^3.10.1",
-        "jasmine-spec-reporter": "^7.0.0",
-        "karma": "^6.3.9",
-        "karma-chrome-launcher": "~3.1.0",
-        "karma-coverage": "^2.1.0",
-        "karma-jasmine": "~4.0.0",
-        "karma-jasmine-html-reporter": "^1.7.0",
-        "ts-node": "^9.1.1",
-        "typescript": "~5.0.4"
-    }
+  "name": "aquila-docs-example",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test"
+  },
+  "private": true,
+  "browserslist": [
+    "last 2 Chrome version",
+    "last 1 Firefox version",
+    "last 2 Edge major versions",
+    "last 2 Safari major versions",
+    "last 2 iOS major versions",
+    "Firefox ESR"
+  ],
+  "dependencies": {
+    "@angular/animations": "^16.0.0",
+    "@angular/cdk": "^16.0.0",
+    "@angular/common": "^16.0.0",
+    "@angular/compiler": "^16.0.0",
+    "@angular/core": "^16.0.0",
+    "@angular/forms": "^16.0.0",
+    "@angular/platform-browser": "^16.0.0",
+    "@angular/platform-browser-dynamic": "^16.0.0",
+    "@angular/router": "^16.0.0",
+    "i18n-iso-countries": "^7.5.0",
+    "iban": "^0.0.14",
+    "moment": "^2.29.1",
+    "rxjs": "^6.6.7",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.13.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^16.0.0",
+    "@angular/cli": "^16.0.0",
+    "@angular/compiler-cli": "^16.0.0",
+    "@types/jasmine": "^3.10.2",
+    "@types/node": "^17.0.2",
+    "jasmine": "^3.10.0",
+    "jasmine-core": "^3.10.1",
+    "jasmine-spec-reporter": "^7.0.0",
+    "karma": "^6.3.9",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "^2.1.0",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.7.0",
+    "ts-node": "^9.1.1",
+    "typescript": "~5.0.4"
+  }
 }

@@ -1,112 +1,112 @@
 <div>Default</div>
 <button
-    nxButton
-    class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('success', 'default', template)"
+  nxButton
+  class="nx-margin-right-xs nx-margin-bottom-m"
+  (click)="open('success', 'default', template)"
 >
-    success
+  success
 </button>
 <button
-    nxButton
-    class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('info', 'default', template)"
+  nxButton
+  class="nx-margin-right-xs nx-margin-bottom-m"
+  (click)="open('info', 'default', template)"
 >
-    info
+  info
 </button>
 <button
-    nxButton
-    class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('error', 'default', template)"
+  nxButton
+  class="nx-margin-right-xs nx-margin-bottom-m"
+  (click)="open('error', 'default', template)"
 >
-    error
+  error
 </button>
 <button
-    nxButton
-    class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('warning', 'default', template)"
+  nxButton
+  class="nx-margin-right-xs nx-margin-bottom-m"
+  (click)="open('warning', 'default', template)"
 >
-    warning
+  warning
 </button>
 <div>Expert</div>
 <button
-    nxButton
-    class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('success', 'expert', expertTemplate)"
+  nxButton
+  class="nx-margin-right-xs nx-margin-bottom-m"
+  (click)="open('success', 'expert', expertTemplate)"
 >
-    success
+  success
 </button>
 <button
-    nxButton
-    class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('info', 'expert', expertTemplate)"
+  nxButton
+  class="nx-margin-right-xs nx-margin-bottom-m"
+  (click)="open('info', 'expert', expertTemplate)"
 >
-    info
+  info
 </button>
 <button
-    nxButton
-    class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('error', 'expert', expertTemplate)"
+  nxButton
+  class="nx-margin-right-xs nx-margin-bottom-m"
+  (click)="open('error', 'expert', expertTemplate)"
 >
-    error
+  error
 </button>
 <button
-    nxButton
-    class="nx-margin-right-xs nx-margin-bottom-m"
-    (click)="open('warning', 'expert', expertTemplate)"
+  nxButton
+  class="nx-margin-right-xs nx-margin-bottom-m"
+  (click)="open('warning', 'expert', expertTemplate)"
 >
-    warning
+  warning
 </button>
 
 <ng-template #template>
-    <h2 nxModalTitle [status]="status">Modal heading</h2>
-    <div nxModalContent>
-        <p nxCopytext="small" class="nx-modal-margin-bottom">
-            This content is placed within the <code>nx-modal-container</code>
-        </p>
-    </div>
-    <div nxModalActions class="status-action">
-        <button
-            (click)="dialogRef?.close()"
-            class="nx-margin-bottom-0 nx-margin-right-xs"
-            nxButton="small secondary"
-            type="button"
-        >
-            Cancel
-        </button>
-        <button
-            class="nx-margin-bottom-0"
-            nxButton="small"
-            type="button"
-            (click)="dialogRef?.close()"
-        >
-            Proceed
-        </button>
-    </div>
+  <h2 nxModalTitle [status]="status">Modal heading</h2>
+  <div nxModalContent>
+    <p nxCopytext="small" class="nx-modal-margin-bottom">
+      This content is placed within the <code>nx-modal-container</code>
+    </p>
+  </div>
+  <div nxModalActions class="status-action">
+    <button
+      (click)="dialogRef?.close()"
+      class="nx-margin-bottom-0 nx-margin-right-xs"
+      nxButton="small secondary"
+      type="button"
+    >
+      Cancel
+    </button>
+    <button
+      class="nx-margin-bottom-0"
+      nxButton="small"
+      type="button"
+      (click)="dialogRef?.close()"
+    >
+      Proceed
+    </button>
+  </div>
 </ng-template>
 
 <ng-template #expertTemplate>
-    <h2 nxModalTitle [status]="status">Modal heading</h2>
-    <div nxModalContent>
-        <p nxCopytext="small" class="nx-modal-margin-bottom">
-            This content is placed within the <code>nx-modal-container</code>
-        </p>
-    </div>
-    <div nxModalActions class="status-action">
-        <button
-            (click)="dialogRef?.close()"
-            class="nx-margin-bottom-0 nx-margin-right-xs"
-            nxButton="small-medium secondary"
-            type="button"
-        >
-            Cancel
-        </button>
-        <button
-            class="nx-margin-bottom-0"
-            nxButton="small-medium"
-            type="button"
-            (click)="dialogRef?.close()"
-        >
-            Proceed
-        </button>
-    </div>
+  <h2 nxModalTitle [status]="status">Modal heading</h2>
+  <div nxModalContent>
+    <p nxCopytext="small" class="nx-modal-margin-bottom">
+      This content is placed within the <code>nx-modal-container</code>
+    </p>
+  </div>
+  <div nxModalActions class="status-action">
+    <button
+      (click)="dialogRef?.close()"
+      class="nx-margin-bottom-0 nx-margin-right-xs"
+      nxButton="small-medium secondary"
+      type="button"
+    >
+      Cancel
+    </button>
+    <button
+      class="nx-margin-bottom-0"
+      nxButton="small-medium"
+      type="button"
+      (click)="dialogRef?.close()"
+    >
+      Proceed
+    </button>
+  </div>
 </ng-template>

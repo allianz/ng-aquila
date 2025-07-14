@@ -1,22 +1,22 @@
 <div nxLayout="grid">
-    <div nxRow style="align-items: flex-end">
-        <div nxCol="12, 12, 6">
-            <nx-formfield label="Car brand">
-                <nx-dropdown placeholder="Choose a car brand">
-                    @for (brand of demoData; track brand) {
-                    <nx-dropdown-item [value]="brand"></nx-dropdown-item>
-                    }
-                </nx-dropdown>
-            </nx-formfield>
-        </div>
-        <div nxCol="12, 12, 6">
-            <nx-formfield label="Car brand" appearance="outline">
-                <nx-dropdown placeholder="Choose a car brand">
-                    @for (brand of demoData; track brand) {
-                    <nx-dropdown-item [value]="brand"></nx-dropdown-item>
-                    }
-                </nx-dropdown>
-            </nx-formfield>
-        </div>
+  <div nxRow style="align-items: flex-end">
+    <div nxCol="12, 12, 6">
+      <nx-formfield label="Car brand">
+        <nx-dropdown placeholder="Choose a car brand">
+          @for (brand of demoData; track brand) {
+          <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
     </div>
+    <div nxCol="12, 12, 6">
+      <nx-formfield label="Car brand" appearance="outline">
+        <nx-dropdown placeholder="Choose a car brand">
+          @for (brand of demoData; track brand) {
+          <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+  </div>
 </div>

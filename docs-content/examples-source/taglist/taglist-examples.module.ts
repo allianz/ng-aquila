@@ -1,6 +1,6 @@
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxTaglistModule } from '@allianz/ng-aquila/taglist';
 import { NgModule } from '@angular/core';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxTaglistModule } from '@aposin/ng-aquila/taglist';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { DeletableTagsExampleComponent } from './deletable-tags/deletable-tags-example';
@@ -23,44 +23,44 @@ import { TagsDisabledExampleComponent } from './tags-disabled/tags-disabled-exam
 import { TagsReadonlyExampleComponent } from './tags-readonly/tags-readonly-example';
 
 const EXAMPLES = [
-    TaglistIntlExampleComponent,
-    TaglistExampleComponent,
-    TaglistA11yExampleComponent,
-    TaglistBasicExampleComponent,
-    TaglistDeleteExampleComponent,
-    TaglistFormatterExampleComponent,
-    TaglistKeywordExampleComponent,
-    TaglistObjectsExampleComponent,
-    TaglistOutputExampleComponent,
-    TaglistReactiveExampleComponent,
-    TaglistTemplatedrivenExampleComponent,
+  TaglistIntlExampleComponent,
+  TaglistExampleComponent,
+  TaglistA11yExampleComponent,
+  TaglistBasicExampleComponent,
+  TaglistDeleteExampleComponent,
+  TaglistFormatterExampleComponent,
+  TaglistKeywordExampleComponent,
+  TaglistObjectsExampleComponent,
+  TaglistOutputExampleComponent,
+  TaglistReactiveExampleComponent,
+  TaglistTemplatedrivenExampleComponent,
 ];
 
 @NgModule({
-    imports: [NxTaglistModule, NxInputModule, ExamplesSharedModule, EXAMPLES],
-    exports: [EXAMPLES],
+  imports: [NxTaglistModule, NxInputModule, ExamplesSharedModule, EXAMPLES],
+  exports: [EXAMPLES],
 })
 export class TaglistExamplesModule {
-    static components() {
-        return {
-            'taglist-intl': TaglistIntlExampleComponent,
-            taglist: TaglistExampleComponent,
-            'taglist-a11y': TaglistA11yExampleComponent,
-            'taglist-basic': TaglistBasicExampleComponent,
-            'taglist-delete': TaglistDeleteExampleComponent,
-            'taglist-formatter': TaglistFormatterExampleComponent,
-            'taglist-keyword': TaglistKeywordExampleComponent,
-            'taglist-objects': TaglistObjectsExampleComponent,
-            'taglist-output': TaglistOutputExampleComponent,
-            'taglist-reactive': TaglistReactiveExampleComponent,
-            'taglist-templatedriven': TaglistTemplatedrivenExampleComponent,
-            'tag-group': TagGroupExampleComponent,
-            'deletable-tags': DeletableTagsExampleComponent,
-            'tag-label-rendering': TagLabelRenderingExampleComponent,
-            'tag-group-forms': TagGroupFormsExampleComponent,
-            'tag-intl': TagIntlExampleComponent,
-            'tags-readonly': TagsReadonlyExampleComponent,
-            'tags-disabled': TagsDisabledExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'taglist-intl': TaglistIntlExampleComponent,
+      taglist: TaglistExampleComponent,
+      'taglist-a11y': TaglistA11yExampleComponent,
+      'taglist-basic': TaglistBasicExampleComponent,
+      'taglist-delete': TaglistDeleteExampleComponent,
+      'taglist-formatter': TaglistFormatterExampleComponent,
+      'taglist-keyword': TaglistKeywordExampleComponent,
+      'taglist-objects': TaglistObjectsExampleComponent,
+      'taglist-output': TaglistOutputExampleComponent,
+      'taglist-reactive': TaglistReactiveExampleComponent,
+      'taglist-templatedriven': TaglistTemplatedrivenExampleComponent,
+      'tag-group': TagGroupExampleComponent,
+      'deletable-tags': DeletableTagsExampleComponent,
+      'tag-label-rendering': TagLabelRenderingExampleComponent,
+      'tag-group-forms': TagGroupFormsExampleComponent,
+      'tag-intl': TagIntlExampleComponent,
+      'tags-readonly': TagsReadonlyExampleComponent,
+      'tags-disabled': TagsDisabledExampleComponent,
+    };
+  }
 }

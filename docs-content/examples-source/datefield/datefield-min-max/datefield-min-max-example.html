@@ -1,26 +1,26 @@
 <nx-formfield label="Date of damage">
-    <input
-        [min]="minDate"
-        [max]="maxDate"
-        ngModel
-        #dateMinMaxModel="ngModel"
-        nxDatefield
-        nxInput
-        [datepicker]="picker2"
-    />
+  <input
+    [min]="minDate"
+    [max]="maxDate"
+    ngModel
+    #dateMinMaxModel="ngModel"
+    nxDatefield
+    nxInput
+    [datepicker]="picker2"
+  />
 
-    <span nxFormfieldHint>MM/DD/YYYY</span>
-    <nx-datepicker-toggle
-        [for]="picker2"
-        nxFormfieldSuffix
-    ></nx-datepicker-toggle>
-    <nx-datepicker #picker2></nx-datepicker>
+  <span nxFormfieldHint>MM/DD/YYYY</span>
+  <nx-datepicker-toggle
+    [for]="picker2"
+    nxFormfieldSuffix
+  ></nx-datepicker-toggle>
+  <nx-datepicker #picker2></nx-datepicker>
 
-    @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMax) {
-    <nx-error nxFormfieldError> The date is too far in the future </nx-error>
-    } @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMin) {
-    <nx-error nxFormfieldError> The date is too far in the past </nx-error>
-    } @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldParse) {
-    <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
-    }
+  @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMax) {
+  <nx-error nxFormfieldError> The date is too far in the future </nx-error>
+  } @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMin) {
+  <nx-error nxFormfieldError> The date is too far in the past </nx-error>
+  } @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldParse) {
+  <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+  }
 </nx-formfield>

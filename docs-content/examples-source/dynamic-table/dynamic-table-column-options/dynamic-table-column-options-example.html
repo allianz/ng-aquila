@@ -1,35 +1,29 @@
 <div style="text-align: end">
-    <button
-        nxButton="small"
-        [nxContextMenuTriggerFor]="menu"
-        style="margin-bottom: 24px"
-    >
-        Column Settings
-    </button>
+  <button
+    nxButton="small"
+    [nxContextMenuTriggerFor]="menu"
+    style="margin-bottom: 24px"
+  >
+    Column Settings
+  </button>
 </div>
 
 <nx-context-menu #menu="nxContextMenu">
-    <nx-context-menu-header> Column Settings </nx-context-menu-header>
-    <nx-checkbox-group [(ngModel)]="selected">
-        <nx-context-menu-item-wrap>
-            @for (column of columns; track column) {
-            <div
-                nxContextMenuItem
-                nxContextMenuItemCheckbox
-                disableCloseOnSelect
-            >
-                <nx-checkbox [value]="column.key">
-                    {{column.title}}
-                </nx-checkbox>
-                <!-- TODO keyboard selection not working -->
-                <!-- TODO item span not full length, icon cannot be at the end -->
-            </div>
-            }
-        </nx-context-menu-item-wrap>
-    </nx-checkbox-group>
+  <nx-context-menu-header> Column Settings </nx-context-menu-header>
+  <nx-checkbox-group [(ngModel)]="selected">
+    <nx-context-menu-item-wrap>
+      @for (column of columns; track column) {
+      <div nxContextMenuItem nxContextMenuItemCheckbox disableCloseOnSelect>
+        <nx-checkbox [value]="column.key"> {{column.title}} </nx-checkbox>
+        <!-- TODO keyboard selection not working -->
+        <!-- TODO item span not full length, icon cannot be at the end -->
+      </div>
+      }
+    </nx-context-menu-item-wrap>
+  </nx-checkbox-group>
 </nx-context-menu>
 
 <nx-dynamic-table
-    [data]="data"
-    [displayedColumns]="displayedColumns"
+  [data]="data"
+  [displayedColumns]="displayedColumns"
 ></nx-dynamic-table>

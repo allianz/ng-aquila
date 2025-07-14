@@ -1,50 +1,50 @@
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxHeaderCellDirective</span>,
-    <span class="hljs-title class_">NxTableCellComponent</span>,
-    <span class="hljs-title class_">NxTableComponent</span>,
-    <span class="hljs-title class_">NxTableRowComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/table&#x27;</span>;
+  <span class="hljs-title class_">NxHeaderCellDirective</span>,
+  <span class="hljs-title class_">NxTableCellComponent</span>,
+  <span class="hljs-title class_">NxTableComponent</span>,
+  <span class="hljs-title class_">NxTableRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/table&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Sticky Header Table
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;table-sticky-header-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./table-sticky-header-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./table-sticky-header-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxTableComponent</span>,
-        <span class="hljs-title class_">NxTableRowComponent</span>,
-        <span class="hljs-title class_">NxHeaderCellDirective</span>,
-        <span class="hljs-title class_">NxTableCellComponent</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;table-sticky-header-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./table-sticky-header-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./table-sticky-header-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxTableComponent</span>,
+    <span class="hljs-title class_">NxTableRowComponent</span>,
+    <span class="hljs-title class_">NxHeaderCellDirective</span>,
+    <span class="hljs-title class_">NxTableCellComponent</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TableStickyHeaderExampleComponent</span> {
-    tableElements = [
-        {
-            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
-            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1234</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
-            <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;1/3/2020&#x27;</span>,
-        },
-        {
-            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Health&#x27;</span>,
-            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">2423</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is another contract&#x27;</span>,
-            <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;4/2/2020&#x27;</span>,
-        },
-        {
-            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Liability&#x27;</span>,
-            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">353455</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;Lorem ipsum dolor sit amet, csis libero. &#x27;</span>,
-            <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;6/2/2020&#x27;</span>,
-        },
-        {
-            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Pension&#x27;</span>,
-            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">22344</span>,
-            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a description of a contract&#x27;</span>,
-            <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;7/2/2027&#x27;</span>,
-        },
-    ];
+  tableElements = [
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
+      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1234</span>,
+      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a contract&#x27;</span>,
+      <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;1/3/2020&#x27;</span>,
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Health&#x27;</span>,
+      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">2423</span>,
+      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is another contract&#x27;</span>,
+      <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;4/2/2020&#x27;</span>,
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Liability&#x27;</span>,
+      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">353455</span>,
+      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;Lorem ipsum dolor sit amet, csis libero. &#x27;</span>,
+      <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;6/2/2020&#x27;</span>,
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Pension&#x27;</span>,
+      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">22344</span>,
+      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;This is a description of a contract&#x27;</span>,
+      <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;7/2/2027&#x27;</span>,
+    },
+  ];
 }

@@ -1,16 +1,16 @@
 .uploader-row {
-    border: none;
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--file-uploader-file-row-border-bottom-color);
-    padding: 16px 8px;
-    gap: 16px;
-    font-weight: var(--paragraph-04-font-weight);
+  border: none;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--file-uploader-file-row-border-bottom-color);
+  padding: 16px 8px;
+  gap: 16px;
+  font-weight: var(--paragraph-04-font-weight);
 
-    span {
-        display: flex;
-        align-items: center;
-    }
+  span {
+    display: flex;
+    align-items: center;
+  }
 }

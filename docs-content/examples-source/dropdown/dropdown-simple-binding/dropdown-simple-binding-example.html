@@ -1,36 +1,34 @@
 <div nxLayout="grid">
-    <div nxRow>
-        <div nxCol="12,12,6">
-            <nx-formfield label="Car brand">
-                <nx-dropdown #simpleDropdown [(value)]="simpleBinding">
-                    <nx-dropdown-item value="BMW"></nx-dropdown-item>
-                    <nx-dropdown-item value="Audi"></nx-dropdown-item>
-                    <nx-dropdown-item value="Volvo"></nx-dropdown-item>
-                    <nx-dropdown-item value="Mini"></nx-dropdown-item>
-                </nx-dropdown>
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <nx-formfield label="Car brand">
+        <nx-dropdown #simpleDropdown [(value)]="simpleBinding">
+          <nx-dropdown-item value="BMW"></nx-dropdown-item>
+          <nx-dropdown-item value="Audi"></nx-dropdown-item>
+          <nx-dropdown-item value="Volvo"></nx-dropdown-item>
+          <nx-dropdown-item value="Mini"></nx-dropdown-item>
+        </nx-dropdown>
+      </nx-formfield>
     </div>
+  </div>
 
-    <div nxRow>
-        <div nxCol="12">
-            <p class="nx-margin-y-0">
-                Model value is: {{simpleDropdown.value}}
-            </p>
-            <p class="nx-margin-top-0">
-                Try to set the value to BMW, Audi, Volvo or Mini.
-            </p>
-            <div class="update-container">
-                <input #simpleInput type="text" />
-                <button
-                    nxButton="primary small"
-                    class="nx-margin-bottom-0"
-                    (click)="simpleBinding = simpleInput.value"
-                    type="button"
-                >
-                    Update
-                </button>
-            </div>
-        </div>
+  <div nxRow>
+    <div nxCol="12">
+      <p class="nx-margin-y-0">Model value is: {{simpleDropdown.value}}</p>
+      <p class="nx-margin-top-0">
+        Try to set the value to BMW, Audi, Volvo or Mini.
+      </p>
+      <div class="update-container">
+        <input #simpleInput type="text" />
+        <button
+          nxButton="primary small"
+          class="nx-margin-bottom-0"
+          (click)="simpleBinding = simpleInput.value"
+          type="button"
+        >
+          Update
+        </button>
+      </div>
     </div>
+  </div>
 </div>

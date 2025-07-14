@@ -1,164 +1,160 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxActionComponent</span>,
+  <span class="hljs-title class_">NxActionIconDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/action&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPlainButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxHeaderActionsDirective</span>,
+  <span class="hljs-title class_">NxHeaderBrandDirective</span>,
+  <span class="hljs-title class_">NxHeaderComponent</span>,
+  <span class="hljs-title class_">NxHeaderLinkComponent</span>,
+  <span class="hljs-title class_">NxHeaderNavigationComponent</span>,
+  <span class="hljs-title class_">NxHeaderNavigationItemDirective</span>,
+  <span class="hljs-title class_">NxHeaderRowDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/header&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLinkComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/link&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSidebarComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/sidebar&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBreakpoints</span>, <span class="hljs-title class_">NxViewportService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/utils&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">NgClass</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ChangeDetectorRef</span>, <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">OnDestroy</span>, <span class="hljs-title class_">OnInit</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">RouterLink</span>, <span class="hljs-title class_">RouterLinkActive</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/router&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxActionComponent</span>,
-    <span class="hljs-title class_">NxActionIconDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/action&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPlainButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxHeaderActionsDirective</span>,
-    <span class="hljs-title class_">NxHeaderBrandDirective</span>,
-    <span class="hljs-title class_">NxHeaderComponent</span>,
-    <span class="hljs-title class_">NxHeaderLinkComponent</span>,
-    <span class="hljs-title class_">NxHeaderNavigationComponent</span>,
-    <span class="hljs-title class_">NxHeaderNavigationItemDirective</span>,
-    <span class="hljs-title class_">NxHeaderRowDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/header&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLinkComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/link&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSidebarComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/sidebar&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBreakpoints</span>, <span class="hljs-title class_">NxViewportService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/utils&#x27;</span>;
 <span class="hljs-keyword">import</span> { merge, <span class="hljs-title class_">Subject</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 <span class="hljs-keyword">import</span> { distinctUntilChanged, filter, map, takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
 
 <span class="hljs-keyword">type</span> <span class="hljs-title class_">ViewType</span> = <span class="hljs-string">&#x27;mobile&#x27;</span> | <span class="hljs-string">&#x27;tablet&#x27;</span> | <span class="hljs-string">&#x27;desktop&#x27;</span>;
 
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">MenuItem</span> {
-    <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">query</span>: {
-        <span class="hljs-attr">s</span>: <span class="hljs-built_in">number</span>;
-    };
+  <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">query</span>: {
+    <span class="hljs-attr">s</span>: <span class="hljs-built_in">number</span>;
+  };
 }
 
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ActionItem</span> {
-    <span class="hljs-attr">icon</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">query</span>: <span class="hljs-built_in">object</span>;
+  <span class="hljs-attr">icon</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">query</span>: <span class="hljs-built_in">object</span>;
 }
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Header with side navigation example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;header-with-side-navigation-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./header-with-side-navigation-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./header-with-side-navigation-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxHeaderComponent</span>,
-        <span class="hljs-title class_">NxHeaderBrandDirective</span>,
-        <span class="hljs-title class_">NxHeaderRowDirective</span>,
-        <span class="hljs-title class_">NxLinkComponent</span>,
-        <span class="hljs-title class_">NxHeaderNavigationComponent</span>,
-        <span class="hljs-title class_">NxHeaderNavigationItemDirective</span>,
-        <span class="hljs-title class_">NxHeaderLinkComponent</span>,
-        <span class="hljs-title class_">RouterLink</span>,
-        <span class="hljs-title class_">RouterLinkActive</span>,
-        <span class="hljs-title class_">NxHeaderActionsDirective</span>,
-        <span class="hljs-title class_">NxSidebarComponent</span>,
-        <span class="hljs-title class_">NxPlainButtonComponent</span>,
-        <span class="hljs-title class_">NxActionComponent</span>,
-        <span class="hljs-title class_">NxIconComponent</span>,
-        <span class="hljs-title class_">NxActionIconDirective</span>,
-        <span class="hljs-title class_">NgClass</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;header-with-side-navigation-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./header-with-side-navigation-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./header-with-side-navigation-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxHeaderComponent</span>,
+    <span class="hljs-title class_">NxHeaderBrandDirective</span>,
+    <span class="hljs-title class_">NxHeaderRowDirective</span>,
+    <span class="hljs-title class_">NxLinkComponent</span>,
+    <span class="hljs-title class_">NxHeaderNavigationComponent</span>,
+    <span class="hljs-title class_">NxHeaderNavigationItemDirective</span>,
+    <span class="hljs-title class_">NxHeaderLinkComponent</span>,
+    <span class="hljs-title class_">RouterLink</span>,
+    <span class="hljs-title class_">RouterLinkActive</span>,
+    <span class="hljs-title class_">NxHeaderActionsDirective</span>,
+    <span class="hljs-title class_">NxSidebarComponent</span>,
+    <span class="hljs-title class_">NxPlainButtonComponent</span>,
+    <span class="hljs-title class_">NxActionComponent</span>,
+    <span class="hljs-title class_">NxIconComponent</span>,
+    <span class="hljs-title class_">NxActionIconDirective</span>,
+    <span class="hljs-title class_">NgClass</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HeaderWithSideNavigationExampleComponent</span>
-    <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnInit</span>, <span class="hljs-title class_">OnDestroy</span>
+  <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnInit</span>, <span class="hljs-title class_">OnDestroy</span>
 {
-    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subject</span>&lt;<span class="hljs-built_in">void</span>&gt;();
-    <span class="hljs-attr">viewType</span>: <span class="hljs-title class_">ViewType</span> = <span class="hljs-string">&#x27;desktop&#x27;</span>;
+  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subject</span>&lt;<span class="hljs-built_in">void</span>&gt;();
+  <span class="hljs-attr">viewType</span>: <span class="hljs-title class_">ViewType</span> = <span class="hljs-string">&#x27;desktop&#x27;</span>;
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">viewportService</span>: <span class="hljs-title class_">NxViewportService</span>,
-        <span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_cdr</span>: <span class="hljs-title class_">ChangeDetectorRef</span>,
-    </span>) {}
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">viewportService</span>: <span class="hljs-title class_">NxViewportService</span>,
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_cdr</span>: <span class="hljs-title class_">ChangeDetectorRef</span>,
+  </span>) {}
 
-    <span class="hljs-attr">showSidebar</span>: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+  <span class="hljs-attr">showSidebar</span>: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
 
-    <span class="hljs-attr">menuData</span>: <span class="hljs-title class_">MenuItem</span>[] = [
-        {
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 1&#x27;</span>,
-            <span class="hljs-attr">query</span>: { <span class="hljs-attr">s</span>: <span class="hljs-number">1</span> },
-        },
-        {
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 2&#x27;</span>,
-            <span class="hljs-attr">query</span>: { <span class="hljs-attr">s</span>: <span class="hljs-number">2</span> },
-        },
-        {
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 3&#x27;</span>,
-            <span class="hljs-attr">query</span>: { <span class="hljs-attr">s</span>: <span class="hljs-number">3</span> },
-        },
-    ];
+  <span class="hljs-attr">menuData</span>: <span class="hljs-title class_">MenuItem</span>[] = [
+    {
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 1&#x27;</span>,
+      <span class="hljs-attr">query</span>: { <span class="hljs-attr">s</span>: <span class="hljs-number">1</span> },
+    },
+    {
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 2&#x27;</span>,
+      <span class="hljs-attr">query</span>: { <span class="hljs-attr">s</span>: <span class="hljs-number">2</span> },
+    },
+    {
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 3&#x27;</span>,
+      <span class="hljs-attr">query</span>: { <span class="hljs-attr">s</span>: <span class="hljs-number">3</span> },
+    },
+  ];
 
-    <span class="hljs-attr">actionData</span>: <span class="hljs-title class_">ActionItem</span>[] = [
-        {
-            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file-text&#x27;</span>,
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Action 1&#x27;</span>,
-            <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> },
-        },
-        {
-            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;calendar&#x27;</span>,
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Action 2&#x27;</span>,
-            <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">2</span> },
-        },
-        {
-            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;mail-o&#x27;</span>,
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Action 3&#x27;</span>,
-            <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">3</span> },
-        },
-        {
-            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;user-o&#x27;</span>,
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Action 4&#x27;</span>,
-            <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">4</span> },
-        },
-        {
-            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file&#x27;</span>,
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Action 5&#x27;</span>,
-            <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">5</span> },
-        },
-    ];
+  <span class="hljs-attr">actionData</span>: <span class="hljs-title class_">ActionItem</span>[] = [
+    {
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file-text&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Action 1&#x27;</span>,
+      <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> },
+    },
+    {
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;calendar&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Action 2&#x27;</span>,
+      <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">2</span> },
+    },
+    {
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;mail-o&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Action 3&#x27;</span>,
+      <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">3</span> },
+    },
+    {
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;user-o&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Action 4&#x27;</span>,
+      <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">4</span> },
+    },
+    {
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Action 5&#x27;</span>,
+      <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">5</span> },
+    },
+  ];
 
-    <span class="hljs-title function_">ngOnInit</span>(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">detectScreenSize</span>();
-    }
+  <span class="hljs-title function_">ngOnInit</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">detectScreenSize</span>();
+  }
 
-    <span class="hljs-title function_">detectScreenSize</span>(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-keyword">const</span> mobile$ = <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewportService</span>.<span class="hljs-title function_">max</span>(
-            <span class="hljs-title class_">NxBreakpoints</span>.<span class="hljs-property">BREAKPOINT_MEDIUM</span>,
-        );
-        <span class="hljs-keyword">const</span> tablet$ = <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewportService</span>.<span class="hljs-title function_">between</span>(
-            <span class="hljs-title class_">NxBreakpoints</span>.<span class="hljs-property">BREAKPOINT_MEDIUM</span>,
-            <span class="hljs-title class_">NxBreakpoints</span>.<span class="hljs-property">BREAKPOINT_LARGE</span>,
-        );
-        <span class="hljs-keyword">const</span> desktop$ = <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewportService</span>.<span class="hljs-title function_">min</span>(
-            <span class="hljs-title class_">NxBreakpoints</span>.<span class="hljs-property">BREAKPOINT_LARGE</span>,
-        );
+  <span class="hljs-title function_">detectScreenSize</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> mobile$ = <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewportService</span>.<span class="hljs-title function_">max</span>(<span class="hljs-title class_">NxBreakpoints</span>.<span class="hljs-property">BREAKPOINT_MEDIUM</span>);
+    <span class="hljs-keyword">const</span> tablet$ = <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewportService</span>.<span class="hljs-title function_">between</span>(
+      <span class="hljs-title class_">NxBreakpoints</span>.<span class="hljs-property">BREAKPOINT_MEDIUM</span>,
+      <span class="hljs-title class_">NxBreakpoints</span>.<span class="hljs-property">BREAKPOINT_LARGE</span>,
+    );
+    <span class="hljs-keyword">const</span> desktop$ = <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewportService</span>.<span class="hljs-title function_">min</span>(<span class="hljs-title class_">NxBreakpoints</span>.<span class="hljs-property">BREAKPOINT_LARGE</span>);
 
-        <span class="hljs-title function_">merge</span>(
-            mobile$.<span class="hljs-title function_">pipe</span>(
-                <span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> value),
-                <span class="hljs-title function_">map</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;mobile&#x27;</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">ViewType</span>),
-            ),
-            tablet$.<span class="hljs-title function_">pipe</span>(
-                <span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> value),
-                <span class="hljs-title function_">map</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;tablet&#x27;</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">ViewType</span>),
-            ),
-            desktop$.<span class="hljs-title function_">pipe</span>(
-                <span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> value),
-                <span class="hljs-title function_">map</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;desktop&#x27;</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">ViewType</span>),
-            ),
-        )
-            .<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">distinctUntilChanged</span>(), <span class="hljs-title function_">takeUntil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>))
-            .<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">viewType</span> =&gt;</span> {
-                <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewType</span> = viewType;
-                <span class="hljs-variable language_">this</span>.<span class="hljs-property">showSidebar</span> = viewType !== <span class="hljs-string">&#x27;mobile&#x27;</span>;
-                <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cdr</span>.<span class="hljs-title function_">markForCheck</span>();
-            });
-    }
+    <span class="hljs-title function_">merge</span>(
+      mobile$.<span class="hljs-title function_">pipe</span>(
+        <span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> value),
+        <span class="hljs-title function_">map</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;mobile&#x27;</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">ViewType</span>),
+      ),
+      tablet$.<span class="hljs-title function_">pipe</span>(
+        <span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> value),
+        <span class="hljs-title function_">map</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;tablet&#x27;</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">ViewType</span>),
+      ),
+      desktop$.<span class="hljs-title function_">pipe</span>(
+        <span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> value),
+        <span class="hljs-title function_">map</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;desktop&#x27;</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">ViewType</span>),
+      ),
+    )
+      .<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">distinctUntilChanged</span>(), <span class="hljs-title function_">takeUntil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>))
+      .<span class="hljs-title function_">subscribe</span>(<span class="hljs-function">(<span class="hljs-params">viewType</span>) =&gt;</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewType</span> = viewType;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">showSidebar</span> = viewType !== <span class="hljs-string">&#x27;mobile&#x27;</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cdr</span>.<span class="hljs-title function_">markForCheck</span>();
+      });
+  }
 
-    <span class="hljs-title function_">ngOnDestroy</span>(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">next</span>();
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">complete</span>();
-    }
+  <span class="hljs-title function_">ngOnDestroy</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">next</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_destroyed</span>.<span class="hljs-title function_">complete</span>();
+  }
 }

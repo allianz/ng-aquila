@@ -1,5 +1,5 @@
 import { Injectable, Compiler, Injector } from '@angular/core';
-import { BaseLazyLoadingService } from '@aposin/ngx-docs-ui';
+import { BaseLazyLoadingService } from '@allianz/ngx-docs-ui';
 
 @Injectable({ providedIn: 'root' })
 export class LazyLoadingService implements BaseLazyLoadingService {

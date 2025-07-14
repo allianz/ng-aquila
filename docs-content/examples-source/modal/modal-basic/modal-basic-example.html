@@ -1,38 +1,38 @@
 <button #basicModalButton nxButton="primary" type="button">Show Modal</button>
 
 <ng-template #basicModalBody>
-    <div class="u-text-center">
-        <h3 nxHeadline="subsection-medium" class="nx-modal-margin-bottom">
-            Basic Modal Dialog
-        </h3>
-        <p nxCopytext="small" class="nx-modal-margin-bottom">
-            Any content can be included in a modal view and styled as necessary.
-            This example shows some arbitrary components
-            (<code>nxHeadline</code>, <code>nxCopytext</code> and
-            <code>nx-formfield</code>) and styling (<code>u-text-center</code>).
-        </p>
-        <nx-formfield label="First Name">
-            <input nxInput />
-        </nx-formfield>
+  <div class="u-text-center">
+    <h3 nxHeadline="subsection-medium" class="nx-modal-margin-bottom">
+      Basic Modal Dialog
+    </h3>
+    <p nxCopytext="small" class="nx-modal-margin-bottom">
+      Any content can be included in a modal view and styled as necessary. This
+      example shows some arbitrary components (<code>nxHeadline</code>,
+      <code>nxCopytext</code> and <code>nx-formfield</code>) and styling
+      (<code>u-text-center</code>).
+    </p>
+    <nx-formfield label="First Name">
+      <input nxInput />
+    </nx-formfield>
 
-        <nx-formfield label="Last Name">
-            <input nxInput />
-        </nx-formfield>
+    <nx-formfield label="Last Name">
+      <input nxInput />
+    </nx-formfield>
 
-        <nx-formfield label="Car brand">
-            <nx-dropdown>
-                <nx-dropdown-item value="BMW"></nx-dropdown-item>
-                <nx-dropdown-item value="Audi"></nx-dropdown-item>
-                <nx-dropdown-item value="Volvo"></nx-dropdown-item>
-                <nx-dropdown-item value="Mini"></nx-dropdown-item>
-            </nx-dropdown>
-        </nx-formfield>
-    </div>
+    <nx-formfield label="Car brand">
+      <nx-dropdown>
+        <nx-dropdown-item value="BMW"></nx-dropdown-item>
+        <nx-dropdown-item value="Audi"></nx-dropdown-item>
+        <nx-dropdown-item value="Volvo"></nx-dropdown-item>
+        <nx-dropdown-item value="Mini"></nx-dropdown-item>
+      </nx-dropdown>
+    </nx-formfield>
+  </div>
 </ng-template>
 
 <nx-modal
-    #basicModal
-    [modalBody]="basicModalBody"
-    *nxOpenModalOnClick="basicModalButton"
+  #basicModal
+  [modalBody]="basicModalBody"
+  *nxOpenModalOnClick="basicModalButton"
 >
 </nx-modal>

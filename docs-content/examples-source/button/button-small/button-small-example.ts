@@ -1,13 +1,13 @@
+import { NxButtonComponent } from '@allianz/ng-aquila/button';
 import { Component } from '@angular/core';
-import { NxButtonComponent } from '@aposin/ng-aquila/button';
 
 /**
  * @title Small Size Example
  */
 @Component({
-    selector: 'button-small-example',
-    templateUrl: './button-small-example.html',
-    styleUrls: ['./button-small-example.css'],
-    imports: [NxButtonComponent],
+  selector: 'button-small-example',
+  templateUrl: './button-small-example.html',
+  styleUrls: ['./button-small-example.css'],
+  imports: [NxButtonComponent],
 })
 export class ButtonSmallExampleComponent {}

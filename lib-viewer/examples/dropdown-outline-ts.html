@@ -1,102 +1,102 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDropdownComponent</span>,
+  <span class="hljs-title class_">NxDropdownComponent</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">NxDropdownComponent</span>_1,
+  <span class="hljs-title class_">NxDropdownGroupComponent</span>,
+  <span class="hljs-title class_">NxDropdownItemComponent</span>,
+  <span class="hljs-title class_">NxMultiSelectComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span>,
+  <span class="hljs-title class_">NxFormfieldAppendixDirective</span>,
+  <span class="hljs-title class_">NxFormfieldComponent</span>,
+  <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxPopoverComponent</span>,
+  <span class="hljs-title class_">NxPopoverTriggerDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/popover&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">AfterContentInit</span>, <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">ViewChild</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxDropdownComponent</span>,
-    <span class="hljs-title class_">NxDropdownComponent</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">NxDropdownComponent</span>_1,
-    <span class="hljs-title class_">NxDropdownGroupComponent</span>,
-    <span class="hljs-title class_">NxDropdownItemComponent</span>,
-    <span class="hljs-title class_">NxMultiSelectComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dropdown&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span>,
-    <span class="hljs-title class_">NxFormfieldAppendixDirective</span>,
-    <span class="hljs-title class_">NxFormfieldComponent</span>,
-    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxColComponent</span>,
-    <span class="hljs-title class_">NxLayoutComponent</span>,
-    <span class="hljs-title class_">NxRowComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/headline&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxPopoverComponent</span>,
-    <span class="hljs-title class_">NxPopoverTriggerDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/popover&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Outline formfield example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-outline-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-outline-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-outline-example.css&#x27;</span>],
-    <span class="hljs-attr">providers</span>: [
-        {
-            <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span>,
-            <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;outline&#x27;</span>, <span class="hljs-attr">nxFloatLabel</span>: <span class="hljs-string">&#x27;always&#x27;</span> },
-        },
-    ],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxLayoutComponent</span>,
-        <span class="hljs-title class_">NxRowComponent</span>,
-        <span class="hljs-title class_">NxColComponent</span>,
-        <span class="hljs-title class_">NxHeadlineComponent</span>,
-        <span class="hljs-title class_">NxFormfieldComponent</span>,
-        <span class="hljs-title class_">NxDropdownComponent</span>_1,
-        <span class="hljs-title class_">NxDropdownItemComponent</span>,
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">NxErrorComponent</span>,
-        <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
-        <span class="hljs-title class_">NxIconComponent</span>,
-        <span class="hljs-title class_">NxFormfieldAppendixDirective</span>,
-        <span class="hljs-title class_">NxDropdownGroupComponent</span>,
-        <span class="hljs-title class_">NxMultiSelectComponent</span>,
-        <span class="hljs-title class_">NxIconButtonComponent</span>,
-        <span class="hljs-title class_">NxPopoverComponent</span>,
-        <span class="hljs-title class_">NxPopoverTriggerDirective</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-outline-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-outline-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-outline-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [
+    {
+      <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span>,
+      <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;outline&#x27;</span>, <span class="hljs-attr">nxFloatLabel</span>: <span class="hljs-string">&#x27;always&#x27;</span> },
+    },
+  ],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxHeadlineComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxDropdownComponent</span>_1,
+    <span class="hljs-title class_">NxDropdownItemComponent</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
+    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+    <span class="hljs-title class_">NxIconComponent</span>,
+    <span class="hljs-title class_">NxFormfieldAppendixDirective</span>,
+    <span class="hljs-title class_">NxDropdownGroupComponent</span>,
+    <span class="hljs-title class_">NxMultiSelectComponent</span>,
+    <span class="hljs-title class_">NxIconButtonComponent</span>,
+    <span class="hljs-title class_">NxPopoverComponent</span>,
+    <span class="hljs-title class_">NxPopoverTriggerDirective</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DropdownOutlineExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterContentInit</span> {
-    <span class="hljs-attr">options</span>: <span class="hljs-built_in">string</span>[] = [
-        <span class="hljs-string">&#x27;BMW&#x27;</span>,
-        <span class="hljs-string">&#x27;Audi&#x27;</span>,
-        <span class="hljs-string">&#x27;VW&#x27;</span>,
-        <span class="hljs-string">&#x27;Mercedes&#x27;</span>,
-        <span class="hljs-string">&#x27;Porsche&#x27;</span>,
-        <span class="hljs-string">&#x27;Tesla&#x27;</span>,
-        <span class="hljs-string">&#x27;Lada&#x27;</span>,
-        <span class="hljs-string">&#x27;Opel&#x27;</span>,
-        <span class="hljs-string">&#x27;Fiat&#x27;</span>,
-        <span class="hljs-string">&#x27;Ford&#x27;</span>,
-        <span class="hljs-string">&#x27;Kia&#x27;</span>,
-        <span class="hljs-string">&#x27;Toyota&#x27;</span>,
-        <span class="hljs-string">&#x27;Ferrari&#x27;</span>,
-    ];
+  <span class="hljs-attr">options</span>: <span class="hljs-built_in">string</span>[] = [
+    <span class="hljs-string">&#x27;BMW&#x27;</span>,
+    <span class="hljs-string">&#x27;Audi&#x27;</span>,
+    <span class="hljs-string">&#x27;VW&#x27;</span>,
+    <span class="hljs-string">&#x27;Mercedes&#x27;</span>,
+    <span class="hljs-string">&#x27;Porsche&#x27;</span>,
+    <span class="hljs-string">&#x27;Tesla&#x27;</span>,
+    <span class="hljs-string">&#x27;Lada&#x27;</span>,
+    <span class="hljs-string">&#x27;Opel&#x27;</span>,
+    <span class="hljs-string">&#x27;Fiat&#x27;</span>,
+    <span class="hljs-string">&#x27;Ford&#x27;</span>,
+    <span class="hljs-string">&#x27;Kia&#x27;</span>,
+    <span class="hljs-string">&#x27;Toyota&#x27;</span>,
+    <span class="hljs-string">&#x27;Ferrari&#x27;</span>,
+  ];
 
-    groups = [
-        {
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Birds&#x27;</span>,
-            <span class="hljs-attr">items</span>: [<span class="hljs-string">&#x27;Parrot&#x27;</span>, <span class="hljs-string">&#x27;Pidgin&#x27;</span>, <span class="hljs-string">&#x27;Swallow&#x27;</span>],
-        },
-        {
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Fish&#x27;</span>,
-            <span class="hljs-attr">items</span>: [<span class="hljs-string">&#x27;Salmon&#x27;</span>, <span class="hljs-string">&#x27;Mackerel&#x27;</span>, <span class="hljs-string">&#x27;Catfish&#x27;</span>],
-        },
-    ];
+  groups = [
+    {
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Birds&#x27;</span>,
+      <span class="hljs-attr">items</span>: [<span class="hljs-string">&#x27;Parrot&#x27;</span>, <span class="hljs-string">&#x27;Pidgin&#x27;</span>, <span class="hljs-string">&#x27;Swallow&#x27;</span>],
+    },
+    {
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Fish&#x27;</span>,
+      <span class="hljs-attr">items</span>: [<span class="hljs-string">&#x27;Salmon&#x27;</span>, <span class="hljs-string">&#x27;Mackerel&#x27;</span>, <span class="hljs-string">&#x27;Catfish&#x27;</span>],
+    },
+  ];
 
-    model = <span class="hljs-string">&#x27;Catfish&#x27;</span>;
-    modelBlank!: <span class="hljs-string">&#x27;&#x27;</span>;
+  model = <span class="hljs-string">&#x27;Catfish&#x27;</span>;
+  modelBlank!: <span class="hljs-string">&#x27;&#x27;</span>;
 
-    <span class="hljs-attr">brands</span>: <span class="hljs-built_in">string</span>[] = [];
+  <span class="hljs-attr">brands</span>: <span class="hljs-built_in">string</span>[] = [];
 
-    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;exampleErrorNgModel&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> })
-    exampleErrorNgModel!: <span class="hljs-title class_">NxDropdownComponent</span>;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;exampleErrorNgModel&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> })
+  exampleErrorNgModel!: <span class="hljs-title class_">NxDropdownComponent</span>;
 
-    <span class="hljs-title function_">ngAfterContentInit</span>(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">exampleErrorNgModel</span>.<span class="hljs-property">ngControl</span>?.<span class="hljs-property">control</span>?.<span class="hljs-title function_">markAsTouched</span>();
-    }
+  <span class="hljs-title function_">ngAfterContentInit</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">exampleErrorNgModel</span>.<span class="hljs-property">ngControl</span>?.<span class="hljs-property">control</span>?.<span class="hljs-title function_">markAsTouched</span>();
+  }
 }

@@ -1,31 +1,31 @@
-import { Component } from '@angular/core';
-import { NxButtonComponent } from '@aposin/ng-aquila/button';
-import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
+import { NxButtonComponent } from '@allianz/ng-aquila/button';
+import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
 import {
-    NxPopoverComponent,
-    NxPopoverTriggerDirective,
-} from '@aposin/ng-aquila/popover';
+  NxPopoverComponent,
+  NxPopoverTriggerDirective,
+} from '@allianz/ng-aquila/popover';
+import { Component } from '@angular/core';
 
 /**
  * @title Popover Guide Tour Example
  */
 
 @Component({
-    selector: 'popover-guided-tour-example',
-    templateUrl: './popover-guided-tour-example.html',
-    styleUrls: ['./popover-guided-tour-example.css'],
-    imports: [
-        NxButtonComponent,
-        NxPopoverTriggerDirective,
-        NxPopoverComponent,
-        NxHeadlineComponent,
-    ],
+  selector: 'popover-guided-tour-example',
+  templateUrl: './popover-guided-tour-example.html',
+  styleUrls: ['./popover-guided-tour-example.css'],
+  imports: [
+    NxButtonComponent,
+    NxPopoverTriggerDirective,
+    NxPopoverComponent,
+    NxHeadlineComponent,
+  ],
 })
 export class PopoverGuidedTourExampleComponent {
-    popoverWidth = '500px';
-    popoverManualOpenFlag = false;
+  popoverWidth = '500px';
+  popoverManualOpenFlag = false;
 
-    cancelPopover() {
-        this.popoverManualOpenFlag = !this.popoverManualOpenFlag;
-    }
+  cancelPopover() {
+    this.popoverManualOpenFlag = !this.popoverManualOpenFlag;
+  }
 }

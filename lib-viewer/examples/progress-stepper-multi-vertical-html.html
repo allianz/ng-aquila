@@ -1,177 +1,158 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-stepper</span> <span class="hljs-attr">currentStepLabel</span>=<span class="hljs-string">&quot;Step&quot;</span> [<span class="hljs-attr">direction</span>]=<span class="hljs-string">&quot;direction&quot;</span> <span class="hljs-attr">linear</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span>
-            [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;animalTypeForm.label&quot;</span>
-            [<span class="hljs-attr">stepControl</span>]=<span class="hljs-string">&quot;animalTypeForm.form&quot;</span>
-        &gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-stepper</span> <span class="hljs-attr">currentStepLabel</span>=<span class="hljs-string">&quot;Step&quot;</span> [<span class="hljs-attr">direction</span>]=<span class="hljs-string">&quot;direction&quot;</span> <span class="hljs-attr">linear</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;animalTypeForm.label&quot;</span> [<span class="hljs-attr">stepControl</span>]=<span class="hljs-string">&quot;animalTypeForm.form&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;nameForm.label&quot;</span> [<span class="hljs-attr">stepControl</span>]=<span class="hljs-string">&quot;nameForm.form&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;nameForm.label&quot;</span> [<span class="hljs-attr">stepControl</span>]=<span class="hljs-string">&quot;nameForm.form&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;breedForm.label&quot;</span> [<span class="hljs-attr">stepControl</span>]=<span class="hljs-string">&quot;breedForm.form&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;breedForm.label&quot;</span> [<span class="hljs-attr">stepControl</span>]=<span class="hljs-string">&quot;breedForm.form&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;ageForm.label&quot;</span> [<span class="hljs-attr">stepControl</span>]=<span class="hljs-string">&quot;ageForm.form&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-stepper</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;ageForm.label&quot;</span> [<span class="hljs-attr">stepControl</span>]=<span class="hljs-string">&quot;ageForm.form&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-stepper</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid maxwidth&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
-            @switch (stepper.selectedIndex) { @case (0) {
-            <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;animalTypeForm.form&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;animalTypeForm.label&quot;</span>
-                    <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-                    <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;animalType&quot;</span>&gt;</span>
-                        @for (animalType of animalTypes; track animalType) {
-                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span>
-                            [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;animalType&quot;</span>
-                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-                        }
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
-                        Please choose an animal species!
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
-                    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;stepper.next()&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                &gt;</span>
-                    Next
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-            } @case (1) {
-            <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;nameForm.form&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;nameForm.label&quot;</span>
-                    <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-                    <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> /&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
-                        Please enter a name!
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
-                    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;stepper.previous()&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                &gt;</span>
-                    Previous
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
-                    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;stepper.next()&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                &gt;</span>
-                    Next
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-            } @case (2) {
-            <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;breedForm.form&quot;</span>&gt;</span>
-                @if (breedForm.form.get(&#x27;dogBreed&#x27;)) {
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;breedForm.label&quot;</span>
-                    <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-                    <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;dogBreed&quot;</span>&gt;</span>
-                        @for (breed of dogBreeds; track breed) {
-                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;breed&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-                        }
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
-                        Please select a breed!
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-                } @if (breedForm.form.get(&#x27;catBreed&#x27;)) {
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;breedForm.label&quot;</span>
-                    <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-                    <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;catBreed&quot;</span>&gt;</span>
-                        @for (breed of catBreeds; track breed) {
-                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;breed&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-                        }
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
-                        Please select a breed!
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-                }
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
-                    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;stepper.previous()&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                &gt;</span>
-                    Previous
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
-                    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;stepper.next()&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                &gt;</span>
-                    Next
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-            } @case (3) {
-            <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;ageForm.form&quot;</span> (<span class="hljs-attr">submit</span>)=<span class="hljs-string">&quot;onSubmit()&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
-                    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;ageForm.label&quot;</span>
-                    <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
-                    <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
-                &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;age&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> /&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
-                        Please enter an age!
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
-                    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;stepper.previous()&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                &gt;</span>
-                    Previous
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
-                    [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;ageForm.form.invalid&quot;</span>
-                &gt;</span>
-                    Submit
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-            } }
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
+      @switch (stepper.selectedIndex) { @case (0) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;animalTypeForm.form&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+          [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;animalTypeForm.label&quot;</span>
+          <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+          <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        &gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;animalType&quot;</span>&gt;</span>
+            @for (animalType of animalTypes; track animalType) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;animalType&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            }
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+            Please choose an animal species!
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;stepper.next()&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
+          Next
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+      } @case (1) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;nameForm.form&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+          [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;nameForm.label&quot;</span>
+          <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+          <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        &gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+            Please enter a name!
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+          <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
+          (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;stepper.previous()&quot;</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        &gt;</span>
+          Previous
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;stepper.next()&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
+          Next
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+      } @case (2) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;breedForm.form&quot;</span>&gt;</span>
+        @if (breedForm.form.get(&#x27;dogBreed&#x27;)) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+          [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;breedForm.label&quot;</span>
+          <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+          <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        &gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;dogBreed&quot;</span>&gt;</span>
+            @for (breed of dogBreeds; track breed) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;breed&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            }
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+            Please select a breed!
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        } @if (breedForm.form.get(&#x27;catBreed&#x27;)) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+          [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;breedForm.label&quot;</span>
+          <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+          <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        &gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;catBreed&quot;</span>&gt;</span>
+            @for (breed of catBreeds; track breed) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;breed&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            }
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+            Please select a breed!
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        }
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+          <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
+          (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;stepper.previous()&quot;</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        &gt;</span>
+          Previous
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;stepper.next()&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
+          Next
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+      } @case (3) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;ageForm.form&quot;</span> (<span class="hljs-attr">submit</span>)=<span class="hljs-string">&quot;onSubmit()&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+          [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;ageForm.label&quot;</span>
+          <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+          <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        &gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;age&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+            Please enter an age!
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+          <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
+          (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;stepper.previous()&quot;</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        &gt;</span>
+          Previous
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+          <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
+          [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;ageForm.form.invalid&quot;</span>
+        &gt;</span>
+          Submit
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+      } }
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span> {{ value| json }} <span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span> {{ value| json }} <span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-l&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;action-container&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;reset()&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
-                Reset
-            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-l&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;action-container&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;reset()&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
+        Reset
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;direction&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;small&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;vertical&quot;</span>
-                    &gt;</span>Vertical&lt;/nx-radio-toggle-button
-                &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;horizontal&quot;</span>
-                    &gt;</span>Horizontal&lt;/nx-radio-toggle-button
-                &gt;
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-toggle</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;direction&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;small&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;vertical&quot;</span>
+          &gt;</span>Vertical&lt;/nx-radio-toggle-button
+        &gt;
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;horizontal&quot;</span>
+          &gt;</span>Horizontal&lt;/nx-radio-toggle-button
+        &gt;
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-toggle</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>

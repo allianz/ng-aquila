@@ -1,20 +1,23 @@
+import { NxBadgeComponent } from '@allianz/ng-aquila/badge';
+import {
+  NxTooltipDirective,
+  TooltipPosition,
+} from '@allianz/ng-aquila/tooltip';
 import { Component } from '@angular/core';
-import { NxBadgeComponent } from '@aposin/ng-aquila/badge';
-import { NxTooltipDirective, TooltipPosition } from '@aposin/ng-aquila/tooltip';
 
 /**
  * @title Tooltip positions
  */
 @Component({
-    selector: 'tooltip-positions-example',
-    templateUrl: './tooltip-positions-example.html',
-    styleUrls: ['./tooltip-positions-example.css'],
-    imports: [NxBadgeComponent, NxTooltipDirective],
+  selector: 'tooltip-positions-example',
+  templateUrl: './tooltip-positions-example.html',
+  styleUrls: ['./tooltip-positions-example.css'],
+  imports: [NxBadgeComponent, NxTooltipDirective],
 })
 export class TooltipPositionsExampleComponent {
-    positions: TooltipPosition[];
+  positions: TooltipPosition[];
 
-    constructor() {
-        this.positions = ['top', 'right', 'bottom', 'left'];
-    }
+  constructor() {
+    this.positions = ['top', 'right', 'bottom', 'left'];
+  }
 }

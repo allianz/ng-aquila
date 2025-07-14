@@ -1,24 +1,24 @@
 @media (min-width: 704px) {
-    :host(.is-vertical) {
-        display: flex;
-        padding: 24px 0;
-    }
+  :host(.is-vertical) {
+    display: flex;
+    padding: 24px 0;
+  }
 
-    :host(.is-vertical) aside {
-        padding-left: 32px;
-    }
+  :host(.is-vertical) aside {
+    padding-left: 32px;
+  }
 }
 
 form button {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 nx-radio-toggle {
-    display: block;
+  display: block;
 }
 
 .action-container > * {
-    display: inline-block;
-    margin: 0 8px 8px 0;
-    float: left;
+  display: inline-block;
+  margin: 0 8px 8px 0;
+  float: left;
 }

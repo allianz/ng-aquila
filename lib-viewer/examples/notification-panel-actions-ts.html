@@ -1,41 +1,41 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxIconButtonComponent</span>,
+  <span class="hljs-title class_">NxPlainButtonComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCopytextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/copytext&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLinkComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/link&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxNotificationItemActionsDirective</span>,
+  <span class="hljs-title class_">NxNotificationItemContentDirective</span>,
+  <span class="hljs-title class_">NxNotificationItemHeaderDirective</span>,
+  <span class="hljs-title class_">NxNotificationItemMetadataDirective</span>,
+  <span class="hljs-title class_">NxNotificationPanelComponent</span>,
+  <span class="hljs-title class_">NxNotificationPanelItemComponent</span>,
+  <span class="hljs-title class_">NxNotificationPanelTriggerDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/notification-panel&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxIconButtonComponent</span>,
-    <span class="hljs-title class_">NxPlainButtonComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCopytextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/copytext&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLinkComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/link&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxNotificationItemActionsDirective</span>,
-    <span class="hljs-title class_">NxNotificationItemContentDirective</span>,
-    <span class="hljs-title class_">NxNotificationItemHeaderDirective</span>,
-    <span class="hljs-title class_">NxNotificationItemMetadataDirective</span>,
-    <span class="hljs-title class_">NxNotificationPanelComponent</span>,
-    <span class="hljs-title class_">NxNotificationPanelItemComponent</span>,
-    <span class="hljs-title class_">NxNotificationPanelTriggerDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/notification-panel&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Notification Panel
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;notification-panel-actions-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./notification-panel-actions-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./notification-panel-actions-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxIconButtonComponent</span>,
-        <span class="hljs-title class_">NxNotificationPanelTriggerDirective</span>,
-        <span class="hljs-title class_">NxIconComponent</span>,
-        <span class="hljs-title class_">NxNotificationPanelComponent</span>,
-        <span class="hljs-title class_">NxNotificationItemHeaderDirective</span>,
-        <span class="hljs-title class_">NxCopytextComponent</span>,
-        <span class="hljs-title class_">NxPlainButtonComponent</span>,
-        <span class="hljs-title class_">NxNotificationPanelItemComponent</span>,
-        <span class="hljs-title class_">NxNotificationItemMetadataDirective</span>,
-        <span class="hljs-title class_">NxNotificationItemContentDirective</span>,
-        <span class="hljs-title class_">NxNotificationItemActionsDirective</span>,
-        <span class="hljs-title class_">NxLinkComponent</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;notification-panel-actions-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./notification-panel-actions-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./notification-panel-actions-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxIconButtonComponent</span>,
+    <span class="hljs-title class_">NxNotificationPanelTriggerDirective</span>,
+    <span class="hljs-title class_">NxIconComponent</span>,
+    <span class="hljs-title class_">NxNotificationPanelComponent</span>,
+    <span class="hljs-title class_">NxNotificationItemHeaderDirective</span>,
+    <span class="hljs-title class_">NxCopytextComponent</span>,
+    <span class="hljs-title class_">NxPlainButtonComponent</span>,
+    <span class="hljs-title class_">NxNotificationPanelItemComponent</span>,
+    <span class="hljs-title class_">NxNotificationItemMetadataDirective</span>,
+    <span class="hljs-title class_">NxNotificationItemContentDirective</span>,
+    <span class="hljs-title class_">NxNotificationItemActionsDirective</span>,
+    <span class="hljs-title class_">NxLinkComponent</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NotificationPanelActionsExampleComponent</span> {}

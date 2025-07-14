@@ -1,74 +1,74 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxAutocompleteComponent</span>,
+  <span class="hljs-title class_">NxAutocompleteOptionComponent</span>,
+  <span class="hljs-title class_">NxAutocompleteTriggerDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/autocomplete&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/input&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxAutocompleteComponent</span>,
-    <span class="hljs-title class_">NxAutocompleteOptionComponent</span>,
-    <span class="hljs-title class_">NxAutocompleteTriggerDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/autocomplete&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxColComponent</span>,
-    <span class="hljs-title class_">NxLayoutComponent</span>,
-    <span class="hljs-title class_">NxRowComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/headline&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Autocomplete with formfield example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;autocomplete-outline-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./autocomplete-outline-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./autocomplete-outline-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxLayoutComponent</span>,
-        <span class="hljs-title class_">NxRowComponent</span>,
-        <span class="hljs-title class_">NxColComponent</span>,
-        <span class="hljs-title class_">NxHeadlineComponent</span>,
-        <span class="hljs-title class_">NxFormfieldComponent</span>,
-        <span class="hljs-title class_">NxInputDirective</span>,
-        <span class="hljs-title class_">NxAutocompleteTriggerDirective</span>,
-        <span class="hljs-title class_">NxAutocompleteComponent</span>,
-        <span class="hljs-title class_">NxAutocompleteOptionComponent</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;autocomplete-outline-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./autocomplete-outline-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./autocomplete-outline-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxHeadlineComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxInputDirective</span>,
+    <span class="hljs-title class_">NxAutocompleteTriggerDirective</span>,
+    <span class="hljs-title class_">NxAutocompleteComponent</span>,
+    <span class="hljs-title class_">NxAutocompleteOptionComponent</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AutocompleteOutlineExampleComponent</span> {
-    <span class="hljs-attr">filteredOptions</span>: <span class="hljs-built_in">string</span>[];
-    options = [
-        <span class="hljs-string">&#x27;Chimpanzee&#x27;</span>,
-        <span class="hljs-string">&#x27;Chinchilla&#x27;</span>,
-        <span class="hljs-string">&#x27;Chipmunk&#x27;</span>,
-        <span class="hljs-string">&#x27;Coati&#x27;</span>,
-        <span class="hljs-string">&#x27;Cicada&#x27;</span>,
-        <span class="hljs-string">&#x27;Clam&#x27;</span>,
-        <span class="hljs-string">&#x27;Clownfish&#x27;</span>,
-        <span class="hljs-string">&#x27;Cobra&#x27;</span>,
-        <span class="hljs-string">&#x27;Cockroach&#x27;</span>,
-        <span class="hljs-string">&#x27;Cod&#x27;</span>,
-        <span class="hljs-string">&#x27;Condor&#x27;</span>,
-        <span class="hljs-string">&#x27;Constrictor&#x27;</span>,
-        <span class="hljs-string">&#x27;Coral&#x27;</span>,
-        <span class="hljs-string">&#x27;Cougar&#x27;</span>,
-        <span class="hljs-string">&#x27;Cow&#x27;</span>,
-        <span class="hljs-string">&#x27;Coyote&#x27;</span>,
-        <span class="hljs-string">&#x27;Coypu&#x27;</span>,
-        <span class="hljs-string">&#x27;Crab&#x27;</span>,
-        <span class="hljs-string">&#x27;Crane&#x27;</span>,
-        <span class="hljs-string">&#x27;Crane fly&#x27;</span>,
-        <span class="hljs-string">&#x27;Crawdad&#x27;</span>,
-        <span class="hljs-string">&#x27;Crayfish&#x27;</span>,
-        <span class="hljs-string">&#x27;Cricket&#x27;</span>,
-        <span class="hljs-string">&#x27;Crocodile&#x27;</span>,
-        <span class="hljs-string">&#x27;Crow&#x27;</span>,
-    ];
+  <span class="hljs-attr">filteredOptions</span>: <span class="hljs-built_in">string</span>[];
+  options = [
+    <span class="hljs-string">&#x27;Chimpanzee&#x27;</span>,
+    <span class="hljs-string">&#x27;Chinchilla&#x27;</span>,
+    <span class="hljs-string">&#x27;Chipmunk&#x27;</span>,
+    <span class="hljs-string">&#x27;Coati&#x27;</span>,
+    <span class="hljs-string">&#x27;Cicada&#x27;</span>,
+    <span class="hljs-string">&#x27;Clam&#x27;</span>,
+    <span class="hljs-string">&#x27;Clownfish&#x27;</span>,
+    <span class="hljs-string">&#x27;Cobra&#x27;</span>,
+    <span class="hljs-string">&#x27;Cockroach&#x27;</span>,
+    <span class="hljs-string">&#x27;Cod&#x27;</span>,
+    <span class="hljs-string">&#x27;Condor&#x27;</span>,
+    <span class="hljs-string">&#x27;Constrictor&#x27;</span>,
+    <span class="hljs-string">&#x27;Coral&#x27;</span>,
+    <span class="hljs-string">&#x27;Cougar&#x27;</span>,
+    <span class="hljs-string">&#x27;Cow&#x27;</span>,
+    <span class="hljs-string">&#x27;Coyote&#x27;</span>,
+    <span class="hljs-string">&#x27;Coypu&#x27;</span>,
+    <span class="hljs-string">&#x27;Crab&#x27;</span>,
+    <span class="hljs-string">&#x27;Crane&#x27;</span>,
+    <span class="hljs-string">&#x27;Crane fly&#x27;</span>,
+    <span class="hljs-string">&#x27;Crawdad&#x27;</span>,
+    <span class="hljs-string">&#x27;Crayfish&#x27;</span>,
+    <span class="hljs-string">&#x27;Cricket&#x27;</span>,
+    <span class="hljs-string">&#x27;Crocodile&#x27;</span>,
+    <span class="hljs-string">&#x27;Crow&#x27;</span>,
+  ];
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">filteredOptions</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>.<span class="hljs-title function_">slice</span>();
-    }
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">filteredOptions</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>.<span class="hljs-title function_">slice</span>();
+  }
 
-    <span class="hljs-title function_">filter</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">any</span></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">filteredOptions</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span>
-            <span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(value, <span class="hljs-string">&#x27;gi&#x27;</span>).<span class="hljs-title function_">test</span>(s),
-        );
-    }
+  <span class="hljs-title function_">filter</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">any</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">filteredOptions</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">s</span>) =&gt;</span>
+      <span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(value, <span class="hljs-string">&#x27;gi&#x27;</span>).<span class="hljs-title function_">test</span>(s),
+    );
+  }
 }

@@ -1,33 +1,33 @@
 .container {
-    background: var(
-        --documentation-comparison-table-example-background-color,
-        #0f2a3d
-    );
-    padding: 12px;
+  background: var(
+    --documentation-comparison-table-example-background-color,
+    #0f2a3d
+  );
+  padding: 12px;
 }
 
 .has-popover {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .info-icon {
-    margin-left: auto;
-    align-self: flex-start;
+  margin-left: auto;
+  align-self: flex-start;
 }
 
 @media only screen and (max-width: 703px) {
-    .has-popover {
-        text-align: left;
-    }
+  .has-popover {
+    text-align: left;
+  }
 }
 
 @media only screen and (min-width: 704px) and (max-width: 991px) {
-    .info-icon {
-        margin-left: 8px;
-    }
+  .info-icon {
+    margin-left: 8px;
+  }
 
-    .has-popover {
-        align-items: center;
-    }
+  .has-popover {
+    align-items: center;
+  }
 }

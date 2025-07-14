@@ -1,79 +1,76 @@
 <form [formGroup]="testForm">
-    <nx-file-uploader
-        #documentUpload
-        multiple
-        formControlName="documents"
-        maxFileSize="{{2 * 1024 * 1024}}"
-        (fileDeleted)="onDelete($event)"
-        (valueChange)="onChange($event)"
-        [uploader]="uploader"
+  <nx-file-uploader
+    #documentUpload
+    multiple
+    formControlName="documents"
+    maxFileSize="{{2 * 1024 * 1024}}"
+    (fileDeleted)="onDelete($event)"
+    (valueChange)="onChange($event)"
+    [uploader]="uploader"
+  >
+    <nx-label size="small" class="nx-margin-bottom-3xs"
+      >Required file to upload</nx-label
     >
-        <nx-label size="small" class="nx-margin-bottom-3xs"
-            >Required file to upload</nx-label
-        >
-        <span class="nx-margin-bottom-s" nxFileUploadHint
-            >Maximum file size 2MB</span
-        >
+    <span class="nx-margin-bottom-s" nxFileUploadHint
+      >Maximum file size 2MB</span
+    >
 
-        <button
-            nxButton="primary"
-            type="button"
-            class="nx-margin-bottom-s"
-            nxFileUploadButton
-        >
-            <nx-icon
-                name="plus"
-                class="nx-margin-right-2xs"
-                aria-hidden="true"
-            ></nx-icon>
-            Add File
-        </button>
+    <button
+      nxButton="primary"
+      type="button"
+      class="nx-margin-bottom-s"
+      nxFileUploadButton
+    >
+      <nx-icon
+        name="plus"
+        class="nx-margin-right-2xs"
+        aria-hidden="true"
+      ></nx-icon>
+      Add File
+    </button>
 
-        @if (testForm.controls['documents'].errors) {
-        <nx-error>
-            <div class="nx-font-weight-bold">Error</div>
-            <ul>
-                @if (testForm.controls['documents'].hasError('required')) {
-                <li>Required!</li>
-                } @if (testForm.controls['documents'].hasError('serverError')) {
-                <li>An error occured while uploading.</li>
-                } @if
-                (testForm.controls['documents'].hasError('NxFileUploadMaxFileSize'))
-                {
-                <li>
-                    File
-                    {{testForm.controls['documents'].getError('NxFileUploadMaxFileSize').fileName
-                    | json}} can not be uploaded. File size exceeds size limit!
-                </li>
-                }
-            </ul>
-        </nx-error>
+    @if (testForm.controls['documents'].errors) {
+    <nx-error>
+      <div class="nx-font-weight-bold">Error</div>
+      <ul>
+        @if (testForm.controls['documents'].hasError('required')) {
+        <li>Required!</li>
+        } @if (testForm.controls['documents'].hasError('serverError')) {
+        <li>An error occured while uploading.</li>
+        } @if
+        (testForm.controls['documents'].hasError('NxFileUploadMaxFileSize')) {
+        <li>
+          File
+          {{testForm.controls['documents'].getError('NxFileUploadMaxFileSize').fileName
+          | json}} can not be uploaded. File size exceeds size limit!
+        </li>
         }
-    </nx-file-uploader>
+      </ul>
+    </nx-error>
+    }
+  </nx-file-uploader>
 </form>
 
 <p>
-    Set url for testing the upload: {{ uploadConfig['requestUrl'] ===
-    'file-upload' ? 'Valid url' : 'Invalid url' }}
+  Set url for testing the upload: {{ uploadConfig['requestUrl'] ===
+  'file-upload' ? 'Valid url' : 'Invalid url' }}
 </p>
 
 <nx-radio-toggle variant="small" [(ngModel)]="uploadConfig['requestUrl']">
-    <nx-radio-toggle-button value="file-upload"
-        >Valid url</nx-radio-toggle-button
-    >
-    <nx-radio-toggle-button value="file-upload-error"
-        >Invalid url</nx-radio-toggle-button
-    >
+  <nx-radio-toggle-button value="file-upload">Valid url</nx-radio-toggle-button>
+  <nx-radio-toggle-button value="file-upload-error"
+    >Invalid url</nx-radio-toggle-button
+  >
 </nx-radio-toggle>
 
 <br />
 
 <button
-    nxButton="secondary small"
-    type="button"
-    [disabled]="!testForm.valid"
-    [nxFileUploadTriggerFor]="documentUpload"
-    (click)="testForm.controls['documents'].setErrors({ 'serverError': false });"
+  nxButton="secondary small"
+  type="button"
+  [disabled]="!testForm.valid"
+  [nxFileUploadTriggerFor]="documentUpload"
+  (click)="testForm.controls['documents'].setErrors({ 'serverError': false });"
 >
-    Upload files
+  Upload files
 </button>

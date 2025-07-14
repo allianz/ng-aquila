@@ -1,72 +1,72 @@
 <div nxLayout="grid">
-    <div nxRow>
-        <div nxCol="12"><h5>Date Range</h5></div>
-    </div>
-    <div nxRow>
-        <div nxCol="12,12,6">
-            <form [formGroup]="dateRangeForm">
-                <nx-formfield label="Date Range Component" appearance="outline">
-                    <nx-date-range
-                        formControlName="range"
-                        placeholder="mm/dd/yyyy"
-                    ></nx-date-range>
+  <div nxRow>
+    <div nxCol="12"><h5>Date Range</h5></div>
+  </div>
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <form [formGroup]="dateRangeForm">
+        <nx-formfield label="Date Range Component" appearance="outline">
+          <nx-date-range
+            formControlName="range"
+            placeholder="mm/dd/yyyy"
+          ></nx-date-range>
 
-                    <nx-error nxFormfieldError appearance="text">
-                        @if(dateRangeForm.controls.range.errors?.required){
-                        Required: Please enter a date range. }
-                        @if(dateRangeForm.controls.range.errors?.nxDateRangeInvalid){
-                        Invalid: The end date can't be before the start date. }
-                        @if(dateRangeForm.controls.range.errors?.nxDateRangeIncomplete
-                        ){ Please enter a start and an end date. }
-                    </nx-error>
-                    <span
-                        aria-label="Please provide date in the US format"
-                        nxFormfieldHint
-                        >MM/DD/YYYY - MM/DD/YYYY</span
-                    >
-                </nx-formfield>
-            </form>
-        </div>
+          <nx-error nxFormfieldError appearance="text">
+            @if(dateRangeForm.controls.range.errors?.required){ Required: Please
+            enter a date range. }
+            @if(dateRangeForm.controls.range.errors?.nxDateRangeInvalid){
+            Invalid: The end date can't be before the start date. }
+            @if(dateRangeForm.controls.range.errors?.nxDateRangeIncomplete ){
+            Please enter a start and an end date. }
+          </nx-error>
+          <span
+            aria-label="Please provide date in the US format"
+            nxFormfieldHint
+            >MM/DD/YYYY - MM/DD/YYYY</span
+          >
+        </nx-formfield>
+      </form>
     </div>
-    <div nxRow>
-        <div nxCol="12">{{ dateRangeForm.value | json }}</div>
+  </div>
+  <div nxRow>
+    <div nxCol="12">{{ dateRangeForm.value | json }}</div>
+  </div>
+  <div nxRow>
+    <div nxCol="12" class="nx-margin-top-l">
+      <h5>Date Range with date picker</h5>
     </div>
-    <div nxRow>
-        <div nxCol="12" class="nx-margin-top-l">
-            <h5>Date Range with date picker</h5>
-        </div>
+  </div>
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <form [formGroup]="formWithPicker">
+        <nx-formfield label="Date Range Component">
+          <nx-date-range
+            formControlName="range"
+            [datepicker]="formRangeDatePicker"
+            placeholder="mm/dd/yyyy"
+          ></nx-date-range>
+          <nx-datepicker-toggle
+            [for]="formRangeDatePicker"
+            nxFormfieldSuffix
+          ></nx-datepicker-toggle>
+          <nx-datepicker
+            #formRangeDatePicker
+            [rangeMode]="true"
+            [showTodayButton]="true"
+          ></nx-datepicker>
+          <nx-error nxFormfieldError>
+            Please enter a date range with a start and end date.
+          </nx-error>
+          <span
+            aria-label="Please provide date in the US format"
+            nxFormfieldHint
+            >MM/DD/YYYY - MM/DD/YYYY</span
+          >
+        </nx-formfield>
+      </form>
     </div>
-    <div nxRow>
-        <div nxCol="12,12,6">
-            <form [formGroup]="formWithPicker">
-                <nx-formfield label="Date Range Component">
-                    <nx-date-range
-                        formControlName="range"
-                        [datepicker]="formRangeDatePicker"
-                        placeholder="mm/dd/yyyy"
-                    ></nx-date-range>
-                    <nx-datepicker-toggle
-                        [for]="formRangeDatePicker"
-                        nxFormfieldSuffix
-                    ></nx-datepicker-toggle>
-                    <nx-datepicker
-                        #formRangeDatePicker
-                        [rangeMode]="true"
-                        [showTodayButton]="true"
-                    ></nx-datepicker>
-                    <nx-error nxFormfieldError>
-                        Please enter a date range with a start and end date.
-                    </nx-error>
-                    <span
-                        aria-label="Please provide date in the US format"
-                        nxFormfieldHint
-                        >MM/DD/YYYY - MM/DD/YYYY</span
-                    >
-                </nx-formfield>
-            </form>
-        </div>
-    </div>
-    <div nxRow>
-        <div nxCol="12">{{ formWithPicker.value | json }}</div>
-    </div>
+  </div>
+  <div nxRow>
+    <div nxCol="12">{{ formWithPicker.value | json }}</div>
+  </div>
 </div>

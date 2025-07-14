@@ -1,89 +1,85 @@
 <div nxLayout="grid">
-    <div nxRow>
-        <div nxCol="12">
-            <h6 nxHeadline="subsection-xsmall">Strict parsing:</h6>
-        </div>
+  <div nxRow>
+    <div nxCol="12">
+      <h6 nxHeadline="subsection-xsmall">Strict parsing:</h6>
+    </div>
+  </div>
+
+  <div nxRow>
+    <div nxCol="6">
+      <nx-formfield label="Date of damage">
+        <input
+          nxDatefield
+          nxInput
+          strict="true"
+          [parseFormat]="parseFormat"
+          [(ngModel)]="strictDate"
+          #strictDatefield="nxDatefield"
+        />
+        <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+      </nx-formfield>
     </div>
 
-    <div nxRow>
-        <div nxCol="6">
-            <nx-formfield label="Date of damage">
-                <input
-                    nxDatefield
-                    nxInput
-                    strict="true"
-                    [parseFormat]="parseFormat"
-                    [(ngModel)]="strictDate"
-                    #strictDatefield="nxDatefield"
-                />
-                <nx-error nxFormfieldError>
-                    Please enter a valid date.
-                </nx-error>
-            </nx-formfield>
-        </div>
+    <div nxCol="6">
+      <nx-switcher [(checked)]="openedStrict" class="debug-switcher"
+        >Debug date</nx-switcher
+      >
+    </div>
+  </div>
 
-        <div nxCol="6">
-            <nx-switcher [(checked)]="openedStrict" class="debug-switcher"
-                >Debug date</nx-switcher
-            >
-        </div>
+  @if (openedStrict) {
+  <div nxRow>
+    <div nxCol="12" class="debug-container">
+      Current Locale: {{ currentLocale }} <br />
+      Formatted value: {{ strictDatefield.currentFormattedDate }} <br />
+      Moment Object: {{ strictDatefield.value }} <br />
+    </div>
+  </div>
+  }
+
+  <div nxRow>
+    <div nxCol="12">
+      <h6 nxHeadline="subsection-xsmall">Non-strict parsing:</h6>
+    </div>
+  </div>
+
+  <div nxRow>
+    <div nxCol="6">
+      <nx-formfield label="Date of damage">
+        <input
+          nxDatefield
+          nxInput
+          strict="false"
+          [parseFormat]="parseFormat"
+          [(ngModel)]="nonStrictDate"
+          #nonStrictDatefield="nxDatefield"
+        />
+        <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+      </nx-formfield>
     </div>
 
-    @if (openedStrict) {
-    <div nxRow>
-        <div nxCol="12" class="debug-container">
-            Current Locale: {{ currentLocale }} <br />
-            Formatted value: {{ strictDatefield.currentFormattedDate }} <br />
-            Moment Object: {{ strictDatefield.value }} <br />
-        </div>
+    <div nxCol="6">
+      <nx-switcher [(checked)]="openedNonStrict" class="debug-switcher"
+        >Debug date</nx-switcher
+      >
     </div>
-    }
+  </div>
 
-    <div nxRow>
-        <div nxCol="12">
-            <h6 nxHeadline="subsection-xsmall">Non-strict parsing:</h6>
-        </div>
+  @if (openedNonStrict) {
+  <div nxRow>
+    <div nxCol="12" class="debug-container">
+      Current Locale: {{ currentLocale }} <br />
+      Formatted value: {{ nonStrictDatefield.currentFormattedDate }}<br />
+      Moment Object: {{ nonStrictDatefield.value }} <br />
     </div>
+  </div>
+  }
 
-    <div nxRow>
-        <div nxCol="6">
-            <nx-formfield label="Date of damage">
-                <input
-                    nxDatefield
-                    nxInput
-                    strict="false"
-                    [parseFormat]="parseFormat"
-                    [(ngModel)]="nonStrictDate"
-                    #nonStrictDatefield="nxDatefield"
-                />
-                <nx-error nxFormfieldError>
-                    Please enter a valid date.
-                </nx-error>
-            </nx-formfield>
-        </div>
-
-        <div nxCol="6">
-            <nx-switcher [(checked)]="openedNonStrict" class="debug-switcher"
-                >Debug date</nx-switcher
-            >
-        </div>
+  <div nxRow>
+    <div nxCol="12">
+      <nx-formfield label="Parse Pattern">
+        <input nxInput [(ngModel)]="parseFormat" />
+      </nx-formfield>
     </div>
-
-    @if (openedNonStrict) {
-    <div nxRow>
-        <div nxCol="12" class="debug-container">
-            Current Locale: {{ currentLocale }} <br />
-            Formatted value: {{ nonStrictDatefield.currentFormattedDate }}<br />
-            Moment Object: {{ nonStrictDatefield.value }} <br />
-        </div>
-    </div>
-    }
-
-    <div nxRow>
-        <div nxCol="12">
-            <nx-formfield label="Parse Pattern">
-                <input nxInput [(ngModel)]="parseFormat" />
-            </nx-formfield>
-        </div>
-    </div>
+  </div>
 </div>

@@ -1,23 +1,23 @@
 <nx-number-stepper
-    size="big"
-    [(ngModel)]="number"
-    #stepperValidModel="ngModel"
-    step="2"
-    ariaDescribedBy="customHint"
+  size="big"
+  [(ngModel)]="number"
+  #stepperValidModel="ngModel"
+  step="2"
+  ariaDescribedBy="customHint"
 >
-    <nx-label>Custom Label</nx-label>
-    @if (stepperValidModel.errors &&
-    stepperValidModel.errors.nxNumberStepperStepError) {
-    <nx-error> That's not a valid step </nx-error>
-    } @if (stepperValidModel.errors &&
-    stepperValidModel.errors.nxNumberStepperFormatError) {
-    <nx-error> That's not a valid number </nx-error>
-    }
+  <nx-label>Custom Label</nx-label>
+  @if (stepperValidModel.errors &&
+  stepperValidModel.errors.nxNumberStepperStepError) {
+  <nx-error> That's not a valid step </nx-error>
+  } @if (stepperValidModel.errors &&
+  stepperValidModel.errors.nxNumberStepperFormatError) {
+  <nx-error> That's not a valid number </nx-error>
+  }
 </nx-number-stepper>
 
 @if (!stepperValidModel.errors) {
 <nx-message context="info" class="nx-margin-top-s" id="customHint">
-    This is a hint. This message will disappear once you get an error from
-    parsing or when the input is missing altogether.
+  This is a hint. This message will disappear once you get an error from parsing
+  or when the input is missing altogether.
 </nx-message>
 }

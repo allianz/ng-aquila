@@ -1,34 +1,34 @@
-import { Component } from '@angular/core';
-import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxButtonComponent } from '@allianz/ng-aquila/button';
 import {
-    NxFormfieldComponent,
-    NxFormfieldHintDirective,
-} from '@aposin/ng-aquila/formfield';
-import { NxInputDirective } from '@aposin/ng-aquila/input';
-import { NxTaglistComponent } from '@aposin/ng-aquila/taglist';
+  NxFormfieldComponent,
+  NxFormfieldHintDirective,
+} from '@allianz/ng-aquila/formfield';
+import { NxInputDirective } from '@allianz/ng-aquila/input';
+import { NxTaglistComponent } from '@allianz/ng-aquila/taglist';
+import { Component } from '@angular/core';
 
 /**
  * @title Tag Basic Example
  */
 @Component({
-    selector: 'taglist-basic-example',
-    templateUrl: './taglist-basic-example.html',
-    styleUrls: ['./taglist-basic-example.css'],
-    imports: [
-        NxTaglistComponent,
-        NxFormfieldComponent,
-        NxInputDirective,
-        NxFormfieldHintDirective,
-        NxButtonComponent,
-    ],
+  selector: 'taglist-basic-example',
+  templateUrl: './taglist-basic-example.html',
+  styleUrls: ['./taglist-basic-example.css'],
+  imports: [
+    NxTaglistComponent,
+    NxFormfieldComponent,
+    NxInputDirective,
+    NxFormfieldHintDirective,
+    NxButtonComponent,
+  ],
 })
 export class TaglistBasicExampleComponent {
-    tags: string[] = [
-        'Apples',
-        'Oranges',
-        'Bananas',
-        'Strawberries',
-        'Melons',
-        'Lemons',
-    ];
+  tags: string[] = [
+    'Apples',
+    'Oranges',
+    'Bananas',
+    'Strawberries',
+    'Melons',
+    'Lemons',
+  ];
 }

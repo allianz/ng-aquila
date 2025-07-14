@@ -1,45 +1,45 @@
 .container {
-    background: var(--documentation-comparison-table-example-background-color);
-    padding: 12px;
+  background: var(--documentation-comparison-table-example-background-color);
+  padding: 12px;
 }
 
 .product-title {
-    font-weight: 600;
-    margin: 0 0 12px 0;
+  font-weight: 600;
+  margin: 0 0 12px 0;
 }
 
 .product-price {
-    font-weight: 600;
-    font-size: 1.5rem;
-    line-height: 2rem;
-    letter-spacing: 0.0125rem;
-    margin-top: auto;
-    margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: 0.0125rem;
+  margin-top: auto;
+  margin-bottom: 16px;
 }
 
 .product-underline {
-    font-size: 0.875rem;
-    line-height: 1rem;
-    letter-spacing: 0.0125rem;
-    font-weight: 400;
-    margin: 0;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  letter-spacing: 0.0125rem;
+  font-weight: 400;
+  margin: 0;
 }
 
 .check-icon {
-    color: var(--success);
+  color: var(--success);
 }
 
 ::ng-deep .is-selected .check-icon {
-    color: var(--success-02, --success);
+  color: var(--success-02, --success);
 }
 
 .header-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .header-container button {
-    margin: 0 auto;
+  margin: 0 auto;
 }

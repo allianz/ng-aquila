@@ -1,45 +1,45 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDropdownComponent</span>,
+  <span class="hljs-title class_">NxDropdownItemComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxDropdownComponent</span>,
-    <span class="hljs-title class_">NxDropdownItemComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dropdown&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxColComponent</span>,
-    <span class="hljs-title class_">NxLayoutComponent</span>,
-    <span class="hljs-title class_">NxRowComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Dropdown with placeholder example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-placeholder-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-placeholder-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-placeholder-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxLayoutComponent</span>,
-        <span class="hljs-title class_">NxRowComponent</span>,
-        <span class="hljs-title class_">NxColComponent</span>,
-        <span class="hljs-title class_">NxFormfieldComponent</span>,
-        <span class="hljs-title class_">NxDropdownComponent</span>,
-        <span class="hljs-title class_">NxDropdownItemComponent</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-placeholder-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-placeholder-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-placeholder-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxDropdownComponent</span>,
+    <span class="hljs-title class_">NxDropdownItemComponent</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DropdownPlaceholderExampleComponent</span> {
-    demoData = [
-        <span class="hljs-string">&#x27;BMW&#x27;</span>,
-        <span class="hljs-string">&#x27;Audi&#x27;</span>,
-        <span class="hljs-string">&#x27;VW&#x27;</span>,
-        <span class="hljs-string">&#x27;Mercedes&#x27;</span>,
-        <span class="hljs-string">&#x27;Porsche&#x27;</span>,
-        <span class="hljs-string">&#x27;Tesla&#x27;</span>,
-        <span class="hljs-string">&#x27;Lada&#x27;</span>,
-        <span class="hljs-string">&#x27;Opel&#x27;</span>,
-        <span class="hljs-string">&#x27;Fiat&#x27;</span>,
-        <span class="hljs-string">&#x27;Ford&#x27;</span>,
-        <span class="hljs-string">&#x27;Kia&#x27;</span>,
-        <span class="hljs-string">&#x27;Toyota&#x27;</span>,
-        <span class="hljs-string">&#x27;Ferrari&#x27;</span>,
-    ];
+  demoData = [
+    <span class="hljs-string">&#x27;BMW&#x27;</span>,
+    <span class="hljs-string">&#x27;Audi&#x27;</span>,
+    <span class="hljs-string">&#x27;VW&#x27;</span>,
+    <span class="hljs-string">&#x27;Mercedes&#x27;</span>,
+    <span class="hljs-string">&#x27;Porsche&#x27;</span>,
+    <span class="hljs-string">&#x27;Tesla&#x27;</span>,
+    <span class="hljs-string">&#x27;Lada&#x27;</span>,
+    <span class="hljs-string">&#x27;Opel&#x27;</span>,
+    <span class="hljs-string">&#x27;Fiat&#x27;</span>,
+    <span class="hljs-string">&#x27;Ford&#x27;</span>,
+    <span class="hljs-string">&#x27;Kia&#x27;</span>,
+    <span class="hljs-string">&#x27;Toyota&#x27;</span>,
+    <span class="hljs-string">&#x27;Ferrari&#x27;</span>,
+  ];
 }

@@ -1,189 +1,172 @@
 @if (control.value === null) {
 <nx-error>
-    <p id="error-message">Please choose a product from the table.</p>
+  <p id="error-message">Please choose a product from the table.</p>
 </nx-error>
 }
 <div class="container">
-    <nx-comparison-table
-        (selectedIndexChange)="select($event)"
-        [isError]="control.value === null"
-    >
-        <ng-container nxComparisonTableRow type="header">
-            <nx-comparison-table-popular-cell forColumn="2">
-                <div class="popular-cell__content-wrapper">
-                    <p class="popular-cell__title">Most popular</p>
-                    <button
-                        nxPlainButton
-                        class="popular-info-icon"
-                        #popoverTrigger="nxPopoverTrigger"
-                        [nxPopoverTriggerFor]="popover"
-                        nxPopoverTrigger="click"
-                        aria-label="More information"
-                        type="button"
-                    >
-                        <nx-icon
-                            name="info-circle-o"
-                            aria-hidden="true"
-                        ></nx-icon>
-                    </button>
-                    <nx-popover #popover>
-                        <span
-                            >This product was chosen by most of the users</span
-                        >
-                    </nx-popover>
-                </div>
-            </nx-comparison-table-popular-cell>
-            <nx-comparison-table-cell type="header">
-                <div class="header-container">
-                    <p class="product-title">Product One</p>
-                    <p class="product-price-dynamic">105,99 €</p>
-                    <button
-                        nxComparisonTableSelectButton
-                        unselectedLabel="Select"
-                        selectedLabel="Selected"
-                        aria-describedby="error-message"
-                        type="button"
-                    ></button>
-                </div>
-            </nx-comparison-table-cell>
-            <nx-comparison-table-cell type="header">
-                <div class="header-container">
-                    <p class="product-title">
-                        Product Two with a very long name
-                    </p>
-                    <p class="product-price-dynamic">110,99 €</p>
-                    <button
-                        nxComparisonTableSelectButton
-                        unselectedLabel="Select"
-                        selectedLabel="Selected"
-                        aria-describedby="error-message"
-                        type="button"
-                    ></button>
-                </div>
-            </nx-comparison-table-cell>
-            <nx-comparison-table-cell type="header">
-                <div class="header-container">
-                    <p class="product-title">Product Three</p>
-                    <p class="product-price-dynamic">115,99 €</p>
-                    <button
-                        nxComparisonTableSelectButton
-                        unselectedLabel="Select"
-                        selectedLabel="Selected"
-                        aria-describedby="error-message"
-                        type="button"
-                    ></button>
-                </div>
-            </nx-comparison-table-cell>
-        </ng-container>
+  <nx-comparison-table
+    (selectedIndexChange)="select($event)"
+    [isError]="control.value === null"
+  >
+    <ng-container nxComparisonTableRow type="header">
+      <nx-comparison-table-popular-cell forColumn="2">
+        <div class="popular-cell__content-wrapper">
+          <p class="popular-cell__title">Most popular</p>
+          <button
+            nxPlainButton
+            class="popular-info-icon"
+            #popoverTrigger="nxPopoverTrigger"
+            [nxPopoverTriggerFor]="popover"
+            nxPopoverTrigger="click"
+            aria-label="More information"
+            type="button"
+          >
+            <nx-icon name="info-circle-o" aria-hidden="true"></nx-icon>
+          </button>
+          <nx-popover #popover>
+            <span>This product was chosen by most of the users</span>
+          </nx-popover>
+        </div>
+      </nx-comparison-table-popular-cell>
+      <nx-comparison-table-cell type="header">
+        <div class="header-container">
+          <p class="product-title">Product One</p>
+          <p class="product-price-dynamic">105,99 €</p>
+          <button
+            nxComparisonTableSelectButton
+            unselectedLabel="Select"
+            selectedLabel="Selected"
+            aria-describedby="error-message"
+            type="button"
+          ></button>
+        </div>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell type="header">
+        <div class="header-container">
+          <p class="product-title">Product Two with a very long name</p>
+          <p class="product-price-dynamic">110,99 €</p>
+          <button
+            nxComparisonTableSelectButton
+            unselectedLabel="Select"
+            selectedLabel="Selected"
+            aria-describedby="error-message"
+            type="button"
+          ></button>
+        </div>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell type="header">
+        <div class="header-container">
+          <p class="product-title">Product Three</p>
+          <p class="product-price-dynamic">115,99 €</p>
+          <button
+            nxComparisonTableSelectButton
+            unselectedLabel="Select"
+            selectedLabel="Selected"
+            aria-describedby="error-message"
+            type="button"
+          ></button>
+        </div>
+      </nx-comparison-table-cell>
+    </ng-container>
 
-        <ng-container nxComparisonTableRow>
-            <nx-comparison-table-description-cell>
-                <div class="has-popover">
-                    <span>Service headline</span>
-                    <button
-                        nxPlainButton
-                        class="info-icon"
-                        aria-label="More information"
-                        [nxPopoverTriggerFor]="popoverContent1"
-                        nxPopoverTrigger="click"
-                        type="button"
-                    >
-                        <nx-icon
-                            name="info-circle-o"
-                            aria-hidden="true"
-                        ></nx-icon>
-                    </button>
-                    <nx-popover #popoverContent1>
-                        <span>Service headline popover content</span>
-                    </nx-popover>
-                </div>
-            </nx-comparison-table-description-cell>
-            <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
-            <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
-            <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
-        </ng-container>
+    <ng-container nxComparisonTableRow>
+      <nx-comparison-table-description-cell>
+        <div class="has-popover">
+          <span>Service headline</span>
+          <button
+            nxPlainButton
+            class="info-icon"
+            aria-label="More information"
+            [nxPopoverTriggerFor]="popoverContent1"
+            nxPopoverTrigger="click"
+            type="button"
+          >
+            <nx-icon name="info-circle-o" aria-hidden="true"></nx-icon>
+          </button>
+          <nx-popover #popoverContent1>
+            <span>Service headline popover content</span>
+          </nx-popover>
+        </div>
+      </nx-comparison-table-description-cell>
+      <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
+      <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
+      <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
+    </ng-container>
 
-        <ng-container nxComparisonTableRow>
-            <nx-comparison-table-description-cell>
-                <div class="has-popover">
-                    <span>Service headline</span>
-                    <button
-                        nxPlainButton
-                        class="info-icon"
-                        aria-label="More information"
-                        [nxPopoverTriggerFor]="popoverContent2"
-                        nxPopoverTrigger="click"
-                        type="button"
-                    >
-                        <nx-icon
-                            name="info-circle-o"
-                            aria-hidden="true"
-                        ></nx-icon>
-                    </button>
-                    <nx-popover #popoverContent2>
-                        <span>Service headline popover content</span>
-                    </nx-popover>
-                </div>
-            </nx-comparison-table-description-cell>
-            <nx-comparison-table-cell>
-                <nx-icon
-                    name="minus"
-                    size="s"
-                    aria-label="Not included"
-                ></nx-icon>
-            </nx-comparison-table-cell>
-            <nx-comparison-table-cell>
-                <nx-icon
-                    name="check"
-                    size="s"
-                    aria-label="Included"
-                    class="check-icon"
-                ></nx-icon>
-            </nx-comparison-table-cell>
-            <nx-comparison-table-cell>
-                <nx-icon
-                    name="check"
-                    size="s"
-                    aria-label="Included"
-                    class="check-icon"
-                ></nx-icon>
-            </nx-comparison-table-cell>
-        </ng-container>
+    <ng-container nxComparisonTableRow>
+      <nx-comparison-table-description-cell>
+        <div class="has-popover">
+          <span>Service headline</span>
+          <button
+            nxPlainButton
+            class="info-icon"
+            aria-label="More information"
+            [nxPopoverTriggerFor]="popoverContent2"
+            nxPopoverTrigger="click"
+            type="button"
+          >
+            <nx-icon name="info-circle-o" aria-hidden="true"></nx-icon>
+          </button>
+          <nx-popover #popoverContent2>
+            <span>Service headline popover content</span>
+          </nx-popover>
+        </div>
+      </nx-comparison-table-description-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon
+          name="check"
+          size="s"
+          aria-label="Included"
+          class="check-icon"
+        ></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon
+          name="check"
+          size="s"
+          aria-label="Included"
+          class="check-icon"
+        ></nx-icon>
+      </nx-comparison-table-cell>
+    </ng-container>
 
-        <ng-container nxComparisonTableRow type="footer">
-            <nx-comparison-table-cell type="footer">
-                <button
-                    nxComparisonTableSelectButton
-                    unselectedLabel="Select"
-                    selectedLabel="Selected"
-                    class="nx-margin-bottom-s"
-                    type="button"
-                    aria-describedby="error-message"
-                ></button>
-                <p class="product-underline">Some short information</p>
-            </nx-comparison-table-cell>
-            <nx-comparison-table-cell type="footer">
-                <button
-                    nxComparisonTableSelectButton
-                    unselectedLabel="Select"
-                    selectedLabel="Selected"
-                    class="nx-margin-bottom-s"
-                    type="button"
-                    aria-describedby="error-message"
-                ></button>
-                <p class="product-underline">Some short information</p>
-            </nx-comparison-table-cell>
-            <nx-comparison-table-cell type="footer">
-                <button
-                    nxComparisonTableSelectButton
-                    unselectedLabel="Select"
-                    selectedLabel="Selected"
-                    class="nx-margin-bottom-s"
-                    type="button"
-                    aria-describedby="error-message"
-                ></button>
-                <p class="product-underline">Some short information</p>
-            </nx-comparison-table-cell>
-        </ng-container>
-    </nx-comparison-table>
+    <ng-container nxComparisonTableRow type="footer">
+      <nx-comparison-table-cell type="footer">
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          class="nx-margin-bottom-s"
+          type="button"
+          aria-describedby="error-message"
+        ></button>
+        <p class="product-underline">Some short information</p>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell type="footer">
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          class="nx-margin-bottom-s"
+          type="button"
+          aria-describedby="error-message"
+        ></button>
+        <p class="product-underline">Some short information</p>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell type="footer">
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          class="nx-margin-bottom-s"
+          type="button"
+          aria-describedby="error-message"
+        ></button>
+        <p class="product-underline">Some short information</p>
+      </nx-comparison-table-cell>
+    </ng-container>
+  </nx-comparison-table>
 </div>

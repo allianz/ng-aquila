@@ -1,9 +1,9 @@
+import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxProgressStepperModule } from '@allianz/ng-aquila/progress-stepper';
+import { NxRadioToggleModule } from '@allianz/ng-aquila/radio-toggle';
+import { NxSliderModule } from '@allianz/ng-aquila/slider';
 import { NgModule } from '@angular/core';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxProgressStepperModule } from '@aposin/ng-aquila/progress-stepper';
-import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
-import { NxSliderModule } from '@aposin/ng-aquila/slider';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { ProgressStepperExampleComponent } from './progress-stepper/progress-stepper-example';
@@ -20,53 +20,51 @@ import { ProgressStepperStepExampleComponent } from './progress-stepper-step/pro
 import { ProgressStepperTitleExampleComponent } from './progress-stepper-title/progress-stepper-title-example';
 
 const EXAMPLES = [
-    ProgressStepperExampleComponent,
-    ProgressStepperCustomExampleComponent,
-    ProgressStepperFormExampleComponent,
-    ProgressStepperMultiExampleComponent,
-    ProgressStepperMultiGroupsExampleComponent,
-    ProgressStepperMultiVerticalExampleComponent,
-    ProgressStepperNonlinearExampleComponent,
-    ProgressStepperProgressExampleComponent,
-    ProgressStepperReactivemultiExampleComponent,
-    ProgressStepperReactivesingleExampleComponent,
-    ProgressStepperStepExampleComponent,
-    ProgressStepperTitleExampleComponent,
+  ProgressStepperExampleComponent,
+  ProgressStepperCustomExampleComponent,
+  ProgressStepperFormExampleComponent,
+  ProgressStepperMultiExampleComponent,
+  ProgressStepperMultiGroupsExampleComponent,
+  ProgressStepperMultiVerticalExampleComponent,
+  ProgressStepperNonlinearExampleComponent,
+  ProgressStepperProgressExampleComponent,
+  ProgressStepperReactivemultiExampleComponent,
+  ProgressStepperReactivesingleExampleComponent,
+  ProgressStepperStepExampleComponent,
+  ProgressStepperTitleExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxProgressStepperModule,
-        NxInputModule,
-        NxRadioToggleModule,
-        NxSliderModule,
-        NxDropdownModule,
-        ExamplesSharedModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxProgressStepperModule,
+    NxInputModule,
+    NxRadioToggleModule,
+    NxSliderModule,
+    NxDropdownModule,
+    ExamplesSharedModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class ProgressExamplesModule {
-    static components() {
-        return {
-            'progress-stepper': ProgressStepperExampleComponent,
-            'progress-stepper-custom': ProgressStepperCustomExampleComponent,
-            'progress-stepper-form': ProgressStepperFormExampleComponent,
-            'progress-stepper-multi': ProgressStepperMultiExampleComponent,
-            'progress-stepper-multi-groups':
-                ProgressStepperMultiGroupsExampleComponent,
-            'progress-stepper-multi-vertical':
-                ProgressStepperMultiVerticalExampleComponent,
-            'progress-stepper-nonlinear':
-                ProgressStepperNonlinearExampleComponent,
-            'progress-stepper-progress':
-                ProgressStepperProgressExampleComponent,
-            'progress-stepper-reactivemulti':
-                ProgressStepperReactivemultiExampleComponent,
-            'progress-stepper-reactivesingle':
-                ProgressStepperReactivesingleExampleComponent,
-            'progress-stepper-step': ProgressStepperStepExampleComponent,
-            'progress-stepper-title': ProgressStepperTitleExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'progress-stepper': ProgressStepperExampleComponent,
+      'progress-stepper-custom': ProgressStepperCustomExampleComponent,
+      'progress-stepper-form': ProgressStepperFormExampleComponent,
+      'progress-stepper-multi': ProgressStepperMultiExampleComponent,
+      'progress-stepper-multi-groups':
+        ProgressStepperMultiGroupsExampleComponent,
+      'progress-stepper-multi-vertical':
+        ProgressStepperMultiVerticalExampleComponent,
+      'progress-stepper-nonlinear': ProgressStepperNonlinearExampleComponent,
+      'progress-stepper-progress': ProgressStepperProgressExampleComponent,
+      'progress-stepper-reactivemulti':
+        ProgressStepperReactivemultiExampleComponent,
+      'progress-stepper-reactivesingle':
+        ProgressStepperReactivesingleExampleComponent,
+      'progress-stepper-step': ProgressStepperStepExampleComponent,
+      'progress-stepper-title': ProgressStepperTitleExampleComponent,
+    };
+  }
 }

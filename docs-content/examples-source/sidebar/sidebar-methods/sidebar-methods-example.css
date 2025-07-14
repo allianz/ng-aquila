@@ -1,22 +1,22 @@
 :host {
-    display: block;
-    height: 300px;
-    display: flex;
+  display: block;
+  height: 300px;
+  display: flex;
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
 }
 
 .resize-container {
-    display: flex;
-    align-items: flex-end;
+  display: flex;
+  align-items: flex-end;
 }
 
 nx-formfield {
-    width: 100px;
+  width: 100px;
 }

@@ -1,43 +1,39 @@
 <form [formGroup]="formGroup" nxLayout="grid">
-    <div nxRow>
-        <div nxCol="12,12,6,6">
-            <nx-selectable-card class="nx-margin-bottom-2m">
-                <h3 nxCopytext class="content">Default selectable card</h3>
-            </nx-selectable-card>
-        </div>
-        <div nxCol="12,12,6,6">
-            <nx-selectable-card checked class="nx-margin-bottom-2m">
-                <h3 nxCopytext class="content">Checked selectable card</h3>
-            </nx-selectable-card>
-        </div>
-        <div nxCol="12,12,6,6">
-            <nx-selectable-card disabled class="nx-margin-bottom-2m">
-                <h3 nxCopytext class="content">Disabled selectable card</h3>
-            </nx-selectable-card>
-        </div>
-        <div nxCol="12,12,6,6">
-            <nx-selectable-card disabled checked class="nx-margin-bottom-2m">
-                <h3 nxCopytext class="content">
-                    Disabled and checked selectable card
-                </h3>
-            </nx-selectable-card>
-        </div>
-        <div nxCol="12,12,6,6">
-            <nx-selectable-card
-                formControlName="errorCard"
-                class="nx-margin-bottom-2m"
-            >
-                <h3 nxCopytext class="content">Selectable card with error</h3>
-                <nx-error> This card must be selected. </nx-error>
-            </nx-selectable-card>
-        </div>
-        <div nxCol="12,12,6,6">
-            <nx-selectable-card formControlName="errorCard2">
-                <h3 nxCopytext class="content">
-                    This card must not be selected.
-                </h3>
-                <nx-error> This card must not be selected. </nx-error>
-            </nx-selectable-card>
-        </div>
+  <div nxRow>
+    <div nxCol="12,12,6,6">
+      <nx-selectable-card class="nx-margin-bottom-2m">
+        <h3 nxCopytext class="content">Default selectable card</h3>
+      </nx-selectable-card>
     </div>
+    <div nxCol="12,12,6,6">
+      <nx-selectable-card checked class="nx-margin-bottom-2m">
+        <h3 nxCopytext class="content">Checked selectable card</h3>
+      </nx-selectable-card>
+    </div>
+    <div nxCol="12,12,6,6">
+      <nx-selectable-card disabled class="nx-margin-bottom-2m">
+        <h3 nxCopytext class="content">Disabled selectable card</h3>
+      </nx-selectable-card>
+    </div>
+    <div nxCol="12,12,6,6">
+      <nx-selectable-card disabled checked class="nx-margin-bottom-2m">
+        <h3 nxCopytext class="content">Disabled and checked selectable card</h3>
+      </nx-selectable-card>
+    </div>
+    <div nxCol="12,12,6,6">
+      <nx-selectable-card
+        formControlName="errorCard"
+        class="nx-margin-bottom-2m"
+      >
+        <h3 nxCopytext class="content">Selectable card with error</h3>
+        <nx-error> This card must be selected. </nx-error>
+      </nx-selectable-card>
+    </div>
+    <div nxCol="12,12,6,6">
+      <nx-selectable-card formControlName="errorCard2">
+        <h3 nxCopytext class="content">This card must not be selected.</h3>
+        <nx-error> This card must not be selected. </nx-error>
+      </nx-selectable-card>
+    </div>
+  </div>
 </form>

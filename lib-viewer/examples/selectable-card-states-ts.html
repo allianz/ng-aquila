@@ -1,49 +1,49 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSelectableCardComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/card&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCopytextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/copytext&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">AbstractControl</span>,
-    <span class="hljs-title class_">FormBuilder</span>,
-    <span class="hljs-title class_">FormsModule</span>,
-    <span class="hljs-title class_">ReactiveFormsModule</span>,
-    <span class="hljs-title class_">Validators</span>,
+  <span class="hljs-title class_">AbstractControl</span>,
+  <span class="hljs-title class_">FormBuilder</span>,
+  <span class="hljs-title class_">FormsModule</span>,
+  <span class="hljs-title class_">ReactiveFormsModule</span>,
+  <span class="hljs-title class_">Validators</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSelectableCardComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/card&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCopytextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/copytext&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxColComponent</span>,
-    <span class="hljs-title class_">NxLayoutComponent</span>,
-    <span class="hljs-title class_">NxRowComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Selectable cards states example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;selectable-card-states-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./selectable-card-states-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./selectable-card-states-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">NxLayoutComponent</span>,
-        <span class="hljs-title class_">ReactiveFormsModule</span>,
-        <span class="hljs-title class_">NxRowComponent</span>,
-        <span class="hljs-title class_">NxColComponent</span>,
-        <span class="hljs-title class_">NxSelectableCardComponent</span>,
-        <span class="hljs-title class_">NxCopytextComponent</span>,
-        <span class="hljs-title class_">NxErrorComponent</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;selectable-card-states-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./selectable-card-states-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./selectable-card-states-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxSelectableCardComponent</span>,
+    <span class="hljs-title class_">NxCopytextComponent</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SelectableCardStatesExampleComponent</span> {
-    <span class="hljs-keyword">readonly</span> formGroup = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
-        <span class="hljs-attr">errorCard</span>: [<span class="hljs-literal">false</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">requiredTrue</span>],
-        <span class="hljs-attr">errorCard2</span>: [<span class="hljs-literal">true</span>, validateSecondCard],
-    });
+  <span class="hljs-keyword">readonly</span> formGroup = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
+    <span class="hljs-attr">errorCard</span>: [<span class="hljs-literal">false</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">requiredTrue</span>],
+    <span class="hljs-attr">errorCard2</span>: [<span class="hljs-literal">true</span>, validateSecondCard],
+  });
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">fb</span>: <span class="hljs-title class_">FormBuilder</span></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">formGroup</span>.<span class="hljs-title function_">markAllAsTouched</span>();
-    }
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">fb</span>: <span class="hljs-title class_">FormBuilder</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">formGroup</span>.<span class="hljs-title function_">markAllAsTouched</span>();
+  }
 }
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">validateSecondCard</span>(<span class="hljs-params"><span class="hljs-attr">control</span>: <span class="hljs-title class_">AbstractControl</span></span>) {
-    <span class="hljs-keyword">return</span> control.<span class="hljs-property">value</span> ? { <span class="hljs-attr">invalid</span>: <span class="hljs-literal">true</span> } : <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">return</span> control.<span class="hljs-property">value</span> ? { <span class="hljs-attr">invalid</span>: <span class="hljs-literal">true</span> } : <span class="hljs-literal">null</span>;
 }

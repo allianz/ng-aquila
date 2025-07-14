@@ -1,12 +1,12 @@
 <button nxButton class="nx-margin-right-xs" (click)="openFromTemplate()">
-    open modal with injected data
+  open modal with injected data
 </button>
 
 <ng-template #template let-data>
-    <div>
-        <h3 nxHeadline="subsection-medium" class="nx-modal-margin-bottom">
-            Modal with injected data
-        </h3>
-        <p nxCopytext>Injected data: {{data.name}}</p>
-    </div>
+  <div>
+    <h3 nxHeadline="subsection-medium" class="nx-modal-margin-bottom">
+      Modal with injected data
+    </h3>
+    <p nxCopytext>Injected data: {{data.name}}</p>
+  </div>
 </ng-template>

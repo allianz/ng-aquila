@@ -1,27 +1,27 @@
+<span class="hljs-keyword">import</span> {
+  themeAllianz,
+  themeAquilaDenseParams,
+  themeAquilaZebraParams,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/ag-grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">AsyncPipe</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">HttpClient</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">ChangeDetectorRef</span>,
-    <span class="hljs-title class_">Component</span>,
-    <span class="hljs-title class_">ElementRef</span>,
-    <span class="hljs-title class_">ViewChild</span>,
+  <span class="hljs-title class_">ChangeDetectorRef</span>,
+  <span class="hljs-title class_">Component</span>,
+  <span class="hljs-title class_">ElementRef</span>,
+  <span class="hljs-title class_">ViewChild</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    themeAllianz,
-    themeAquilaDenseParams,
-    themeAquilaZebraParams,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/ag-grid&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">AgGridAngular</span>, <span class="hljs-title class_">AgGridModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;ag-grid-angular&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">AllCommunityModule</span>,
-    <span class="hljs-title class_">CellClickedEvent</span>,
-    <span class="hljs-title class_">ClientSideRowModelModule</span>,
-    <span class="hljs-title class_">ColDef</span>,
-    <span class="hljs-title class_">ColGroupDef</span>,
-    <span class="hljs-title class_">GridApi</span>,
-    <span class="hljs-title class_">GridReadyEvent</span>,
-    <span class="hljs-title class_">ModuleRegistry</span>,
+  <span class="hljs-title class_">AllCommunityModule</span>,
+  <span class="hljs-title class_">CellClickedEvent</span>,
+  <span class="hljs-title class_">ClientSideRowModelModule</span>,
+  <span class="hljs-title class_">ColDef</span>,
+  <span class="hljs-title class_">ColGroupDef</span>,
+  <span class="hljs-title class_">GridApi</span>,
+  <span class="hljs-title class_">GridReadyEvent</span>,
+  <span class="hljs-title class_">ModuleRegistry</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;ag-grid-community&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">MultiRowSelectionOptions</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;ag-grid-community/dist/types/src/entities/gridOptions&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Observable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
@@ -31,173 +31,173 @@
  * <span class="hljs-doctag">@title</span> <span class="hljs-variable">Ag</span>-grid Theming API example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;ag-grid-theming-api-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./ag-grid-theming-api-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./ag-grid-theming-api-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxButtonComponent</span>, <span class="hljs-title class_">AgGridModule</span>, <span class="hljs-title class_">AsyncPipe</span>],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;ag-grid-theming-api-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./ag-grid-theming-api-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./ag-grid-theming-api-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxButtonComponent</span>, <span class="hljs-title class_">AgGridModule</span>, <span class="hljs-title class_">AsyncPipe</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AgGridThemingAPIExampleComponent</span> {
-    theme = themeAllianz;
-    <span class="hljs-attr">rowSelection</span>: <span class="hljs-title class_">MultiRowSelectionOptions</span> = {
-        <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;multiRow&#x27;</span>,
-        <span class="hljs-attr">headerCheckbox</span>: <span class="hljs-literal">true</span>,
-        <span class="hljs-attr">checkboxes</span>: <span class="hljs-literal">true</span>,
+  theme = themeAllianz;
+  <span class="hljs-attr">rowSelection</span>: <span class="hljs-title class_">MultiRowSelectionOptions</span> = {
+    <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;multiRow&#x27;</span>,
+    <span class="hljs-attr">headerCheckbox</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">checkboxes</span>: <span class="hljs-literal">true</span>,
+  };
+  floatingFilter = <span class="hljs-literal">true</span>;
+  <span class="hljs-attr">columnsNoGroup</span>: <span class="hljs-title class_">ColDef</span>[] = [
+    {
+      <span class="hljs-attr">colId</span>: <span class="hljs-string">&#x27;make&#x27;</span>,
+      <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;make&#x27;</span>,
+      <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
+      <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
+    },
+    {
+      <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;model&#x27;</span>,
+      <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
+      <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
+    },
+    {
+      <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;price&#x27;</span>,
+      <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
+      <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
+    },
+  ];
+
+  showGroup = <span class="hljs-literal">true</span>;
+  <span class="hljs-comment">// Each Column Definition results in one Column.</span>
+  <span class="hljs-attr">columnsWithGroup</span>: (<span class="hljs-title class_">ColDef</span> | <span class="hljs-title class_">ColGroupDef</span>)[] = [
+    {
+      <span class="hljs-attr">colId</span>: <span class="hljs-string">&#x27;make&#x27;</span>,
+      <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;make&#x27;</span>,
+      <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
+      <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
+    },
+    {
+      <span class="hljs-attr">headerName</span>: <span class="hljs-string">&#x27;Group 1&#x27;</span>,
+      <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">initialHide</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">showRowGroup</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">children</span>: [
+        {
+          <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;model&#x27;</span>,
+          <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
+          <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
+        },
+        {
+          <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;price&#x27;</span>,
+          <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
+          <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
+        },
+      ],
+    },
+    {
+      <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;model&#x27;</span>,
+      <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
+      <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
+    },
+    {
+      <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;price&#x27;</span>,
+      <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
+      <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
+    },
+  ];
+
+  <span class="hljs-comment">// DefaultColDef sets props common to all Columns</span>
+  <span class="hljs-attr">defaultColDef</span>: <span class="hljs-title class_">ColDef</span> = {
+    <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">sortable</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">filter</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">floatingFilter</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">floatingFilter</span>,
+  };
+
+  <span class="hljs-comment">// Data that gets displayed in the grid</span>
+  rowData$!: <span class="hljs-title class_">Observable</span>&lt;<span class="hljs-built_in">any</span>[]&gt;;
+
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-title class_">AgGridAngular</span>, { <span class="hljs-attr">read</span>: <span class="hljs-title class_">ElementRef</span> }) agGridElement!: <span class="hljs-title class_">ElementRef</span>;
+  <span class="hljs-comment">// For accessing the Grid&#x27;s API</span>
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-title class_">AgGridAngular</span>) agGrid!: <span class="hljs-title class_">AgGridAngular</span>;
+  <span class="hljs-keyword">private</span> gridApi!: <span class="hljs-title class_">GridApi</span>;
+
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">http</span>: <span class="hljs-title class_">HttpClient</span>,
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_cdr</span>: <span class="hljs-title class_">ChangeDetectorRef</span>,
+  </span>) {}
+
+  <span class="hljs-comment">// Example load data from server</span>
+  <span class="hljs-title function_">onGridReady</span>(<span class="hljs-params"><span class="hljs-attr">params</span>: <span class="hljs-title class_">GridReadyEvent</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span> = params.<span class="hljs-property">api</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">rowData$</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">http</span>.<span class="hljs-property">get</span>&lt;<span class="hljs-built_in">any</span>[]&gt;(
+      <span class="hljs-string">&#x27;https://www.ag-grid.com/example-assets/row-data.json&#x27;</span>,
+    );
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">sizeColumnsToFit</span>();
+  }
+
+  <span class="hljs-comment">// Example of consuming Grid Event</span>
+  <span class="hljs-title function_">onCellClicked</span>(<span class="hljs-attr">e</span>: <span class="hljs-title class_">CellClickedEvent</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;cellClicked&#x27;</span>, e);
+  }
+
+  <span class="hljs-comment">// Example using Grid&#x27;s API</span>
+  <span class="hljs-title function_">clearSelection</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">agGrid</span>.<span class="hljs-property">api</span>.<span class="hljs-title function_">deselectAll</span>();
+  }
+
+  isDense = <span class="hljs-literal">false</span>;
+  <span class="hljs-title function_">toggleDense</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">isDense</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">isDense</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateTheme</span>();
+  }
+
+  isZebra = <span class="hljs-literal">false</span>;
+  <span class="hljs-title function_">toggleZebra</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">isZebra</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">isZebra</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateTheme</span>();
+  }
+
+  <span class="hljs-title function_">updateTheme</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> newTheme = {
+      ...(<span class="hljs-variable language_">this</span>.<span class="hljs-property">isDense</span> ? themeAquilaDenseParams : {}),
+      ...(<span class="hljs-variable language_">this</span>.<span class="hljs-property">isZebra</span> ? themeAquilaZebraParams : {}),
     };
-    floatingFilter = <span class="hljs-literal">true</span>;
-    <span class="hljs-attr">columnsNoGroup</span>: <span class="hljs-title class_">ColDef</span>[] = [
-        {
-            <span class="hljs-attr">colId</span>: <span class="hljs-string">&#x27;make&#x27;</span>,
-            <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;make&#x27;</span>,
-            <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
-            <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
-        },
-        {
-            <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;model&#x27;</span>,
-            <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
-            <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
-        },
-        {
-            <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;price&#x27;</span>,
-            <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
-            <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
-        },
-    ];
 
-    showGroup = <span class="hljs-literal">true</span>;
-    <span class="hljs-comment">// Each Column Definition results in one Column.</span>
-    <span class="hljs-attr">columnsWithGroup</span>: (<span class="hljs-title class_">ColDef</span> | <span class="hljs-title class_">ColGroupDef</span>)[] = [
-        {
-            <span class="hljs-attr">colId</span>: <span class="hljs-string">&#x27;make&#x27;</span>,
-            <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;make&#x27;</span>,
-            <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
-            <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
-        },
-        {
-            <span class="hljs-attr">headerName</span>: <span class="hljs-string">&#x27;Group 1&#x27;</span>,
-            <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">initialHide</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">showRowGroup</span>: <span class="hljs-literal">false</span>,
-            <span class="hljs-attr">children</span>: [
-                {
-                    <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;model&#x27;</span>,
-                    <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
-                    <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
-                },
-                {
-                    <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;price&#x27;</span>,
-                    <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
-                    <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
-                },
-            ],
-        },
-        {
-            <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;model&#x27;</span>,
-            <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
-            <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
-        },
-        {
-            <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;price&#x27;</span>,
-            <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;agTextColumnFilter&#x27;</span>,
-            <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
-        },
-    ];
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">theme</span> = themeAllianz.<span class="hljs-title function_">withParams</span>(newTheme);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cdr</span>.<span class="hljs-title function_">detectChanges</span>();
+  }
 
-    <span class="hljs-comment">// DefaultColDef sets props common to all Columns</span>
-    <span class="hljs-attr">defaultColDef</span>: <span class="hljs-title class_">ColDef</span> = {
-        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
-        <span class="hljs-attr">sortable</span>: <span class="hljs-literal">true</span>,
-        <span class="hljs-attr">filter</span>: <span class="hljs-literal">true</span>,
-        <span class="hljs-attr">resizable</span>: <span class="hljs-literal">true</span>,
-        <span class="hljs-attr">floatingFilter</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">floatingFilter</span>,
+  <span class="hljs-title function_">toggleCheckboxSelection</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> columnDefs = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">getColumnDefs</span>();
+    <span class="hljs-keyword">if</span> (!columnDefs) {
+      <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-keyword">const</span> currentSelection = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">getGridOption</span>(
+      <span class="hljs-string">&#x27;rowSelection&#x27;</span>,
+    ) <span class="hljs-keyword">as</span> <span class="hljs-title class_">MultiRowSelectionOptions</span>;
+    <span class="hljs-keyword">const</span> currentCheckboxes = currentSelection?.<span class="hljs-property">checkboxes</span> ?? <span class="hljs-literal">false</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">setGridOption</span>(<span class="hljs-string">&#x27;rowSelection&#x27;</span>, {
+      ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">rowSelection</span>,
+      <span class="hljs-attr">headerCheckbox</span>: !currentCheckboxes,
+      <span class="hljs-attr">checkboxes</span>: !currentCheckboxes,
+    });
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">setGridOption</span>(<span class="hljs-string">&#x27;columnDefs&#x27;</span>, []);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">setGridOption</span>(<span class="hljs-string">&#x27;columnDefs&#x27;</span>, columnDefs);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">sizeColumnsToFit</span>();
+  }
+
+  <span class="hljs-title function_">toggleGroup</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">showGroup</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">showGroup</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">setGridOption</span>(
+      <span class="hljs-string">&#x27;columnDefs&#x27;</span>,
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">showGroup</span> ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">columnsWithGroup</span> : <span class="hljs-variable language_">this</span>.<span class="hljs-property">columnsNoGroup</span>,
+    );
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">sizeColumnsToFit</span>();
+  }
+
+  <span class="hljs-title function_">toggleFloatingFilter</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">floatingFilter</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">floatingFilter</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">defaultColDef</span> = {
+      ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">defaultColDef</span>,
+      <span class="hljs-attr">floatingFilter</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">floatingFilter</span>,
     };
-
-    <span class="hljs-comment">// Data that gets displayed in the grid</span>
-    rowData$!: <span class="hljs-title class_">Observable</span>&lt;<span class="hljs-built_in">any</span>[]&gt;;
-
-    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-title class_">AgGridAngular</span>, { <span class="hljs-attr">read</span>: <span class="hljs-title class_">ElementRef</span> }) agGridElement!: <span class="hljs-title class_">ElementRef</span>;
-    <span class="hljs-comment">// For accessing the Grid&#x27;s API</span>
-    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-title class_">AgGridAngular</span>) agGrid!: <span class="hljs-title class_">AgGridAngular</span>;
-    <span class="hljs-keyword">private</span> gridApi!: <span class="hljs-title class_">GridApi</span>;
-
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">http</span>: <span class="hljs-title class_">HttpClient</span>,
-        <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_cdr</span>: <span class="hljs-title class_">ChangeDetectorRef</span>,
-    </span>) {}
-
-    <span class="hljs-comment">// Example load data from server</span>
-    <span class="hljs-title function_">onGridReady</span>(<span class="hljs-params"><span class="hljs-attr">params</span>: <span class="hljs-title class_">GridReadyEvent</span></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span> = params.<span class="hljs-property">api</span>;
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">rowData$</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">http</span>.<span class="hljs-property">get</span>&lt;<span class="hljs-built_in">any</span>[]&gt;(
-            <span class="hljs-string">&#x27;https://www.ag-grid.com/example-assets/row-data.json&#x27;</span>,
-        );
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">sizeColumnsToFit</span>();
-    }
-
-    <span class="hljs-comment">// Example of consuming Grid Event</span>
-    <span class="hljs-title function_">onCellClicked</span>(<span class="hljs-attr">e</span>: <span class="hljs-title class_">CellClickedEvent</span>): <span class="hljs-built_in">void</span> {
-        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;cellClicked&#x27;</span>, e);
-    }
-
-    <span class="hljs-comment">// Example using Grid&#x27;s API</span>
-    <span class="hljs-title function_">clearSelection</span>(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">agGrid</span>.<span class="hljs-property">api</span>.<span class="hljs-title function_">deselectAll</span>();
-    }
-
-    isDense = <span class="hljs-literal">false</span>;
-    <span class="hljs-title function_">toggleDense</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">isDense</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">isDense</span>;
-        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateTheme</span>();
-    }
-
-    isZebra = <span class="hljs-literal">false</span>;
-    <span class="hljs-title function_">toggleZebra</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">isZebra</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">isZebra</span>;
-        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateTheme</span>();
-    }
-
-    <span class="hljs-title function_">updateTheme</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">const</span> newTheme = {
-            ...(<span class="hljs-variable language_">this</span>.<span class="hljs-property">isDense</span> ? themeAquilaDenseParams : {}),
-            ...(<span class="hljs-variable language_">this</span>.<span class="hljs-property">isZebra</span> ? themeAquilaZebraParams : {}),
-        };
-
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">theme</span> = themeAllianz.<span class="hljs-title function_">withParams</span>(newTheme);
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cdr</span>.<span class="hljs-title function_">detectChanges</span>();
-    }
-
-    <span class="hljs-title function_">toggleCheckboxSelection</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">const</span> columnDefs = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">getColumnDefs</span>();
-        <span class="hljs-keyword">if</span> (!columnDefs) {
-            <span class="hljs-keyword">return</span>;
-        }
-        <span class="hljs-keyword">const</span> currentSelection = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">getGridOption</span>(
-            <span class="hljs-string">&#x27;rowSelection&#x27;</span>,
-        ) <span class="hljs-keyword">as</span> <span class="hljs-title class_">MultiRowSelectionOptions</span>;
-        <span class="hljs-keyword">const</span> currentCheckboxes = currentSelection?.<span class="hljs-property">checkboxes</span> ?? <span class="hljs-literal">false</span>;
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">setGridOption</span>(<span class="hljs-string">&#x27;rowSelection&#x27;</span>, {
-            ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">rowSelection</span>,
-            <span class="hljs-attr">headerCheckbox</span>: !currentCheckboxes,
-            <span class="hljs-attr">checkboxes</span>: !currentCheckboxes,
-        });
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">setGridOption</span>(<span class="hljs-string">&#x27;columnDefs&#x27;</span>, []);
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">setGridOption</span>(<span class="hljs-string">&#x27;columnDefs&#x27;</span>, columnDefs);
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">sizeColumnsToFit</span>();
-    }
-
-    <span class="hljs-title function_">toggleGroup</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">showGroup</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">showGroup</span>;
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">setGridOption</span>(
-            <span class="hljs-string">&#x27;columnDefs&#x27;</span>,
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">showGroup</span> ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">columnsWithGroup</span> : <span class="hljs-variable language_">this</span>.<span class="hljs-property">columnsNoGroup</span>,
-        );
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">sizeColumnsToFit</span>();
-    }
-
-    <span class="hljs-title function_">toggleFloatingFilter</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">floatingFilter</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">floatingFilter</span>;
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">defaultColDef</span> = {
-            ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">defaultColDef</span>,
-            <span class="hljs-attr">floatingFilter</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">floatingFilter</span>,
-        };
-    }
+  }
 }

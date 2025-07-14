@@ -1,27 +1,27 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTagIntl</span>, <span class="hljs-title class_">NxTaglistComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/taglist&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ChangeDetectionStrategy</span>, <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Injectable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTagIntl</span>, <span class="hljs-title class_">NxTaglistComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/taglist&#x27;</span>;
 
 <span class="hljs-meta">@Injectable</span>()
 <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">NxTagIntl</span> {
-    deleteAriaLabel = <span class="hljs-string">&#x27;Tag löschen&#x27;</span>;
+  deleteAriaLabel = <span class="hljs-string">&#x27;Tag löschen&#x27;</span>;
 }
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Tag Internationalization Example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;taglist-intl-example&#x27;</span>,
-    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxTaglistComponent</span>],
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./taglist-intl-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrl</span>: <span class="hljs-string">&#x27;./taglist-intl-example.css&#x27;</span>,
-    <span class="hljs-attr">changeDetection</span>: <span class="hljs-title class_">ChangeDetectionStrategy</span>.<span class="hljs-property">OnPush</span>,
-    <span class="hljs-attr">providers</span>: [
-        {
-            <span class="hljs-attr">provide</span>: <span class="hljs-title class_">NxTagIntl</span>,
-            <span class="hljs-attr">useClass</span>: <span class="hljs-title class_">MyIntl</span>,
-        },
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;taglist-intl-example&#x27;</span>,
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxTaglistComponent</span>],
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./taglist-intl-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrl</span>: <span class="hljs-string">&#x27;./taglist-intl-example.css&#x27;</span>,
+  <span class="hljs-attr">changeDetection</span>: <span class="hljs-title class_">ChangeDetectionStrategy</span>.<span class="hljs-property">OnPush</span>,
+  <span class="hljs-attr">providers</span>: [
+    {
+      <span class="hljs-attr">provide</span>: <span class="hljs-title class_">NxTagIntl</span>,
+      <span class="hljs-attr">useClass</span>: <span class="hljs-title class_">MyIntl</span>,
+    },
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TaglistIntlExampleComponent</span> {
-    tags = [<span class="hljs-string">&#x27;Apples&#x27;</span>, <span class="hljs-string">&#x27;Oranges&#x27;</span>, <span class="hljs-string">&#x27;Bananas&#x27;</span>, <span class="hljs-string">&#x27;Strawberries&#x27;</span>, <span class="hljs-string">&#x27;Melons&#x27;</span>, <span class="hljs-string">&#x27;Lemons&#x27;</span>];
+  tags = [<span class="hljs-string">&#x27;Apples&#x27;</span>, <span class="hljs-string">&#x27;Oranges&#x27;</span>, <span class="hljs-string">&#x27;Bananas&#x27;</span>, <span class="hljs-string">&#x27;Strawberries&#x27;</span>, <span class="hljs-string">&#x27;Melons&#x27;</span>, <span class="hljs-string">&#x27;Lemons&#x27;</span>];
 }

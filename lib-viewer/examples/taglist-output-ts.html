@@ -1,22 +1,22 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTaglistComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/taglist&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTaglistComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/taglist&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Tag Output Example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;taglist-output-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./taglist-output-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./taglist-output-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxTaglistComponent</span>],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;taglist-output-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./taglist-output-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./taglist-output-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxTaglistComponent</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TaglistOutputExampleComponent</span> {
-    tags = [<span class="hljs-string">&#x27;Apples&#x27;</span>, <span class="hljs-string">&#x27;Oranges&#x27;</span>];
-    <span class="hljs-attr">messages</span>: <span class="hljs-built_in">any</span>[] = [];
-    logMessage = <span class="hljs-string">&#x27;&#x27;</span>;
+  tags = [<span class="hljs-string">&#x27;Apples&#x27;</span>, <span class="hljs-string">&#x27;Oranges&#x27;</span>];
+  <span class="hljs-attr">messages</span>: <span class="hljs-built_in">any</span>[] = [];
+  logMessage = <span class="hljs-string">&#x27;&#x27;</span>;
 
-    <span class="hljs-title function_">log</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-title class_">Event</span></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">push</span>(value);
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">logMessage</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;\n&#x27;</span>);
-    }
+  <span class="hljs-title function_">log</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-title class_">Event</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">push</span>(value);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">logMessage</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">messages</span>.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;\n&#x27;</span>);
+  }
 }

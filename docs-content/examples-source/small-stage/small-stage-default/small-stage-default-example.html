@@ -1,35 +1,31 @@
 <nx-small-stage>
-    <nav aria-label="Breadcrumb" nxSmallStageHeader>
-        <ol nxBreadcrumb>
-            @for (item of dynamicItems; track item; let i = $index) {
-            <li>
-                <a
-                    nxBreadcrumbItem
-                    (click)="goToItem(i)"
-                    href="javascript:void(0)"
-                >
-                    {{ item }}
-                </a>
-            </li>
-            }
-        </ol>
-    </nav>
-    <nx-small-stage-image
-        nxSmallStageImageStart
-        src="assets/images/small-stage-image-start.svg"
-        fill
-    ></nx-small-stage-image>
-    <nx-small-stage-image
-        nxSmallStageImageEnd
-        src="assets/images/small-stage-image-end.svg"
-        fill
-    ></nx-small-stage-image>
-    <nx-small-stage-image
-        nxSmallStageImageBottom
-        src="assets/images/small-stage-image-narrow-screen.svg"
-        fill
-    ></nx-small-stage-image>
+  <nav aria-label="Breadcrumb" nxSmallStageHeader>
+    <ol nxBreadcrumb>
+      @for (item of dynamicItems; track item; let i = $index) {
+      <li>
+        <a nxBreadcrumbItem (click)="goToItem(i)" href="javascript:void(0)">
+          {{ item }}
+        </a>
+      </li>
+      }
+    </ol>
+  </nav>
+  <nx-small-stage-image
+    nxSmallStageImageStart
+    src="assets/images/small-stage-image-start.svg"
+    fill
+  ></nx-small-stage-image>
+  <nx-small-stage-image
+    nxSmallStageImageEnd
+    src="assets/images/small-stage-image-end.svg"
+    fill
+  ></nx-small-stage-image>
+  <nx-small-stage-image
+    nxSmallStageImageBottom
+    src="assets/images/small-stage-image-narrow-screen.svg"
+    fill
+  ></nx-small-stage-image>
 
-    <h2 nxHeadline="page" class="nx-margin-bottom-s">Headline text</h2>
-    <p nxCopytext="large">Subline text</p>
+  <h2 nxHeadline="page" class="nx-margin-bottom-s">Headline text</h2>
+  <p nxCopytext="large">Subline text</p>
 </nx-small-stage>

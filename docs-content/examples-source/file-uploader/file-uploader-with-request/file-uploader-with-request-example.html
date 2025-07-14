@@ -1,24 +1,24 @@
 <nx-file-uploader #documentUpload multiple>
-    <nx-label size="small" class="nx-margin-bottom-3xs"
-        >Select a file to upload</nx-label
-    >
-    <span class="nx-margin-bottom-s" nxFileUploadHint
-        >Multiple files can be selected</span
-    >
+  <nx-label size="small" class="nx-margin-bottom-3xs"
+    >Select a file to upload</nx-label
+  >
+  <span class="nx-margin-bottom-s" nxFileUploadHint
+    >Multiple files can be selected</span
+  >
 
-    <button
-        nxButton="primary"
-        type="button"
-        class="nx-margin-bottom-s"
-        nxFileUploadButton
-    >
-        <nx-icon
-            name="plus"
-            class="nx-margin-right-2xs"
-            aria-hidden="true"
-        ></nx-icon>
-        Add File
-    </button>
+  <button
+    nxButton="primary"
+    type="button"
+    class="nx-margin-bottom-s"
+    nxFileUploadButton
+  >
+    <nx-icon
+      name="plus"
+      class="nx-margin-right-2xs"
+      aria-hidden="true"
+    ></nx-icon>
+    Add File
+  </button>
 </nx-file-uploader>
 
 @if (showUploadError) {
@@ -26,20 +26,20 @@
 }
 
 <button
-    nxButton="secondary small"
-    type="button"
-    [disabled]="!documentUpload.value?.length"
-    (click)="upload('file-upload')"
-    class="nx-margin-right-2xs"
+  nxButton="secondary small"
+  type="button"
+  [disabled]="!documentUpload.value?.length"
+  (click)="upload('file-upload')"
+  class="nx-margin-right-2xs"
 >
-    Upload files
+  Upload files
 </button>
 
 <button
-    nxButton="secondary small"
-    type="button"
-    [disabled]="!documentUpload.value?.length"
-    (click)="upload('file-upload-error')"
+  nxButton="secondary small"
+  type="button"
+  [disabled]="!documentUpload.value?.length"
+  (click)="upload('file-upload-error')"
 >
-    Upload files (and get an error)
+  Upload files (and get an error)
 </button>

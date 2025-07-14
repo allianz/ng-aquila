@@ -1,43 +1,43 @@
 .breakdown-table {
-    padding-top: 16px;
-    padding-left: 24px;
-    padding-right: 24px;
-    background-color: var(--selectable-card-background-hover-color);
-    border: solid 1px var(--ui-04);
+  padding-top: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
+  background-color: var(--selectable-card-background-hover-color);
+  border: solid 1px var(--ui-04);
 }
 
 .breakdown-table__content {
-    text-align: center;
+  text-align: center;
 }
 
 .breakdown-table ::ng-deep .nx-expansion-panel--light {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .breakdown-table ::ng-deep .nx-expansion-panel__header-title {
-    font-size: 1rem !important;
-    font-weight: bold !important;
+  font-size: 1rem !important;
+  font-weight: bold !important;
 }
 
 .breakdown-table ::ng-deep .nx-expansion-panel__header-content {
-    padding-top: 16px !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+  padding-top: 16px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .breakdown-table ::ng-deep .nx-expansion-panel__body {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .breakdown-table nx-data-display:not(:last-child) {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .breakdown-table ::ng-deep .nx-data-display__label {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 .breakdown-table ::ng-deep .nx-data-display__value {
-    text-align: end;
+  text-align: end;
 }

@@ -1,29 +1,29 @@
 <form [formGroup]="myFormGroup">
-    @if (data) {
-    <nx-checkbox-group name="terms" formControlName="terms" required>
-        <nx-label [size]="'small'">Select your choices</nx-label>
-        <nx-error appearance="text">
-            Please select at least one checkbox.
-        </nx-error>
-        @for (key of data; track key) {
-        <nx-checkbox [value]="key" checked class="nx-margin-bottom-s"
-            >{{key}}</nx-checkbox
-        >
-        }
-    </nx-checkbox-group>
+  @if (data) {
+  <nx-checkbox-group name="terms" formControlName="terms" required>
+    <nx-label [size]="'small'">Select your choices</nx-label>
+    <nx-error appearance="text">
+      Please select at least one checkbox.
+    </nx-error>
+    @for (key of data; track key) {
+    <nx-checkbox [value]="key" checked class="nx-margin-bottom-s"
+      >{{key}}</nx-checkbox
+    >
     }
-    <p>Form value: {{ myFormGroup.value | json }}</p>
-    <p>Form status: {{ myFormGroup.status | json }}</p>
+  </nx-checkbox-group>
+  }
+  <p>Form value: {{ myFormGroup.value | json }}</p>
+  <p>Form status: {{ myFormGroup.status | json }}</p>
 </form>
 
 <button
-    (click)="addNewCb()"
-    nxButton="primary small"
-    type="button"
-    class="nx-margin-right-3xs"
+  (click)="addNewCb()"
+  nxButton="primary small"
+  type="button"
+  class="nx-margin-right-3xs"
 >
-    Add new checkbox
+  Add new checkbox
 </button>
 <button (click)="removeCB()" nxButton="primary small" type="button">
-    Remove first checkbox
+  Remove first checkbox
 </button>

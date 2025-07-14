@@ -1,58 +1,58 @@
 <div class="flex">
+  <div>
+    <h3>Aria live example</h3>
+    <div aria-live="assertive">
+      @if (calculationInProgress) {
+      <div>
+        <h3>Calculating Price. This can take a minute.</h3>
+        <nx-spinner size="large" class="margin-auto"></nx-spinner>
+      </div>
+      } @if (!calculationInProgress) {
+      <div>
+        <h3 nxHeadline="subsection-small">Awesome Product</h3>
+        <nx-data-display label="Price" class="margin-top-small">
+          123,45 €
+        </nx-data-display>
+      </div>
+      }
+    </div>
+    <button
+      nxButton="primary small"
+      class="margin-top"
+      type="button"
+      (click)="calculationInProgress = !calculationInProgress"
+    >
+      toggle calculation
+    </button>
+  </div>
+  <div class="margin-auto">
+    <h3>Spinner build in example</h3>
     <div>
-        <h3>Aria live example</h3>
-        <div aria-live="assertive">
-            @if (calculationInProgress) {
-            <div>
-                <h3>Calculating Price. This can take a minute.</h3>
-                <nx-spinner size="large" class="margin-auto"></nx-spinner>
-            </div>
-            } @if (!calculationInProgress) {
-            <div>
-                <h3 nxHeadline="subsection-small">Awesome Product</h3>
-                <nx-data-display label="Price" class="margin-top-small">
-                    123,45 €
-                </nx-data-display>
-            </div>
-            }
-        </div>
-        <button
-            nxButton="primary small"
-            class="margin-top"
-            type="button"
-            (click)="calculationInProgress = !calculationInProgress"
+      @if (buildInProgress) {
+      <div>
+        <h3>Calculating Price. This can take a minute.</h3>
+        <nx-spinner
+          size="large"
+          class="margin-auto"
+          [activationAnnouncement]="'Calculating, please wait.'"
+          [completionAnnouncement]="'Calculation complete.'"
         >
-            toggle calculation
-        </button>
+        </nx-spinner>
+      </div>
+      } @if (!buildInProgress) {
+      <div>
+        <h3 nxHeadline="subsection-small">Awesome Product</h3>
+        <nx-data-display label="Price"> 123,45 € </nx-data-display>
+      </div>
+      }
     </div>
-    <div class="margin-auto">
-        <h3>Spinner build in example</h3>
-        <div>
-            @if (buildInProgress) {
-            <div>
-                <h3>Calculating Price. This can take a minute.</h3>
-                <nx-spinner
-                    size="large"
-                    class="margin-auto"
-                    [activationAnnouncement]="'Calculating, please wait.'"
-                    [completionAnnouncement]="'Calculation complete.'"
-                >
-                </nx-spinner>
-            </div>
-            } @if (!buildInProgress) {
-            <div>
-                <h3 nxHeadline="subsection-small">Awesome Product</h3>
-                <nx-data-display label="Price"> 123,45 € </nx-data-display>
-            </div>
-            }
-        </div>
-        <button
-            nxButton="primary small"
-            class="margin-top"
-            type="button"
-            (click)="buildInProgress = !buildInProgress"
-        >
-            toggle calculation
-        </button>
-    </div>
+    <button
+      nxButton="primary small"
+      class="margin-top"
+      type="button"
+      (click)="buildInProgress = !buildInProgress"
+    >
+      toggle calculation
+    </button>
+  </div>
 </div>

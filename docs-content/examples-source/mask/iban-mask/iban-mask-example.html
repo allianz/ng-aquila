@@ -1,11 +1,11 @@
 <form [formGroup]="validatedMaskForm">
-    <nx-formfield label="IBAN">
-        <input nxInput nxMask nxIbanMask formControlName="maskInput" />
-        <nx-error nxFormfieldError> Error: Invalid format. </nx-error>
-    </nx-formfield>
-    <button nxButton="primary small" type="submit" class="nx-margin-bottom-s">
-        submit
-    </button>
+  <nx-formfield label="IBAN">
+    <input nxInput nxMask nxIbanMask formControlName="maskInput" />
+    <nx-error nxFormfieldError> Error: Invalid format. </nx-error>
+  </nx-formfield>
+  <button nxButton="primary small" type="submit" class="nx-margin-bottom-s">
+    submit
+  </button>
 </form>
 
 Form value: {{ validatedMaskForm.value | json }}<br />
@@ -14,7 +14,7 @@ Validation errors: {{ validatedMaskForm.get('maskInput')?.errors | json }}<br />
 
 <p><strong>Try to enter some test IBANs:</strong></p>
 <p>
-    <strong>Germany:</strong> DE89 3704 0044 0532 0130 00<br />
-    <strong>Norway:</strong> NO93 8601 1117 947<br />
-    <strong>Malta:</strong> MT84 MALT 0110 0001 2345 MTLC AST0 01S
+  <strong>Germany:</strong> DE89 3704 0044 0532 0130 00<br />
+  <strong>Norway:</strong> NO93 8601 1117 947<br />
+  <strong>Malta:</strong> MT84 MALT 0110 0001 2345 MTLC AST0 01S
 </p>

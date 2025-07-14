@@ -1,8 +1,8 @@
+import { NxAccordionModule } from '@allianz/ng-aquila/accordion';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxMessageModule } from '@allianz/ng-aquila/message';
 import { NgModule } from '@angular/core';
-import { NxAccordionModule } from '@aposin/ng-aquila/accordion';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxMessageModule } from '@aposin/ng-aquila/message';
 
 import { ExamplesSharedModule } from './../examples-shared.module';
 import { AccordionExampleComponent } from './accordion/accordion-example';
@@ -19,46 +19,46 @@ import { AccordionScrollSmoothExampleComponent } from './accordion-scroll-smooth
 import { AccordionStandaloneExampleComponent } from './accordion-standalone/accordion-standalone-example';
 
 const EXAMPLES = [
-    AccordionExampleComponent,
-    AccordionErrorExampleComponent,
-    AccordionExtraLightExampleComponent,
-    AccordionExtraLightNegativeExampleComponent,
-    AccordionLazyExampleComponent,
-    AccordionLightExampleComponent,
-    AccordionLightNegativeExampleComponent,
-    AccordionMultiExampleComponent,
-    AccordionNegativeExampleComponent,
-    AccordionStandaloneExampleComponent,
-    AccordionScrollSmoothExampleComponent,
+  AccordionExampleComponent,
+  AccordionErrorExampleComponent,
+  AccordionExtraLightExampleComponent,
+  AccordionExtraLightNegativeExampleComponent,
+  AccordionLazyExampleComponent,
+  AccordionLightExampleComponent,
+  AccordionLightNegativeExampleComponent,
+  AccordionMultiExampleComponent,
+  AccordionNegativeExampleComponent,
+  AccordionStandaloneExampleComponent,
+  AccordionScrollSmoothExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxAccordionModule,
-        NxInputModule,
-        NxIconModule,
-        NxMessageModule,
-        ExamplesSharedModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxAccordionModule,
+    NxInputModule,
+    NxIconModule,
+    NxMessageModule,
+    ExamplesSharedModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class AccordionExamplesModule {
-    static components() {
-        return {
-            accordion: AccordionExampleComponent,
-            'accordion-error': AccordionErrorExampleComponent,
-            'accordion-extra-light': AccordionExtraLightExampleComponent,
-            'accordion-extra-light-negative':
-                AccordionExtraLightNegativeExampleComponent,
-            'accordion-lazy': AccordionLazyExampleComponent,
-            'accordion-light': AccordionLightExampleComponent,
-            'accordion-light-negative': AccordionLightNegativeExampleComponent,
-            'accordion-multi': AccordionMultiExampleComponent,
-            'accordion-negative': AccordionNegativeExampleComponent,
-            'accordion-standalone': AccordionStandaloneExampleComponent,
-            'accordion-scroll-smooth': AccordionScrollSmoothExampleComponent,
-            'accordion-flush': AccordionFlushExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      accordion: AccordionExampleComponent,
+      'accordion-error': AccordionErrorExampleComponent,
+      'accordion-extra-light': AccordionExtraLightExampleComponent,
+      'accordion-extra-light-negative':
+        AccordionExtraLightNegativeExampleComponent,
+      'accordion-lazy': AccordionLazyExampleComponent,
+      'accordion-light': AccordionLightExampleComponent,
+      'accordion-light-negative': AccordionLightNegativeExampleComponent,
+      'accordion-multi': AccordionMultiExampleComponent,
+      'accordion-negative': AccordionNegativeExampleComponent,
+      'accordion-standalone': AccordionStandaloneExampleComponent,
+      'accordion-scroll-smooth': AccordionScrollSmoothExampleComponent,
+      'accordion-flush': AccordionFlushExampleComponent,
+    };
+  }
 }

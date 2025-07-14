@@ -1,22 +1,20 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-single-stepper</span>
-    <span class="hljs-attr">currentStepLabel</span>=<span class="hljs-string">&quot;Left label&quot;</span>
-    <span class="hljs-attr">nextLabel</span>=<span class="hljs-string">&quot;Right label&quot;</span>
-    [<span class="hljs-attr">progressbarAriaLabel</span>]=<span class="hljs-string">&quot;&#x27;Progress towards your new coverage&#x27;&quot;</span>
+  <span class="hljs-attr">currentStepLabel</span>=<span class="hljs-string">&quot;Left label&quot;</span>
+  <span class="hljs-attr">nextLabel</span>=<span class="hljs-string">&quot;Right label&quot;</span>
+  [<span class="hljs-attr">progressbarAriaLabel</span>]=<span class="hljs-string">&quot;&#x27;Progress towards your new coverage&#x27;&quot;</span>
 &gt;</span>
-    @for (step of testStepsData; track step) {
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;step&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-s&quot;</span>&gt;</span>content for {{step}}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
-            <span class="hljs-attr">nxStepperPrevious</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-        &gt;</span>
-            Previous
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> <span class="hljs-attr">nxStepperNext</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
-            Next
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
-    }
+  @for (step of testStepsData; track step) {
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;step&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-s&quot;</span>&gt;</span>content for {{step}}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+      <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
+      <span class="hljs-attr">nxStepperPrevious</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    &gt;</span>
+      Previous
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> <span class="hljs-attr">nxStepperNext</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Next<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
+  }
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-single-stepper</span>&gt;</span>

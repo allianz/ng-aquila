@@ -1,17 +1,15 @@
+import { NxButtonComponent } from '@allianz/ng-aquila/button';
+import { NxCopytextComponent } from '@allianz/ng-aquila/copytext';
+import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
+import { NxDialogService, NxModalRef } from '@allianz/ng-aquila/modal';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { NxButtonComponent } from '@aposin/ng-aquila/button';
-import { NxCopytextComponent } from '@aposin/ng-aquila/copytext';
-import { NxHeadlineComponent } from '@aposin/ng-aquila/headline';
-import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 @Component({
-    standalone: true,
-    template: `<div class="u-text-center">
-        <h3>Modal Dialog from a component</h3>
-        <p>
-            Any content can be included in a modal view and styled as necessary.
-        </p>
-    </div>`,
+  standalone: true,
+  template: `<div class="u-text-center">
+    <h3>Modal Dialog from a component</h3>
+    <p>Any content can be included in a modal view and styled as necessary.</p>
+  </div>`,
 })
 export class SimpleModalComponent {}
 
@@ -19,37 +17,34 @@ export class SimpleModalComponent {}
  * @title Modal opening example
  */
 @Component({
-    selector: 'modal-opening-example',
-    templateUrl: './modal-opening-example.html',
-    styleUrls: ['./modal-opening-example.css'],
-    imports: [NxButtonComponent, NxHeadlineComponent, NxCopytextComponent],
+  selector: 'modal-opening-example',
+  templateUrl: './modal-opening-example.html',
+  styleUrls: ['./modal-opening-example.css'],
+  imports: [NxButtonComponent, NxHeadlineComponent, NxCopytextComponent],
 })
 export class ModalOpeningExampleComponent {
-    @ViewChild('template') templateRef!: TemplateRef<any>;
-    @ViewChild('template2') templateRef2!: TemplateRef<any>;
+  @ViewChild('template') templateRef!: TemplateRef<any>;
+  @ViewChild('template2') templateRef2!: TemplateRef<any>;
 
-    templateDialogRef?: NxModalRef<any>;
-    componentDialogRef?: NxModalRef<SimpleModalComponent>;
+  templateDialogRef?: NxModalRef<any>;
+  componentDialogRef?: NxModalRef<SimpleModalComponent>;
 
-    constructor(private readonly dialogService: NxDialogService) {}
+  constructor(private readonly dialogService: NxDialogService) {}
 
-    openFromTemplate(): void {
-        this.templateDialogRef = this.dialogService.open(this.templateRef, {
-            ariaLabel: 'A simple dialog',
-        });
-    }
+  openFromTemplate(): void {
+    this.templateDialogRef = this.dialogService.open(this.templateRef, {
+      ariaLabel: 'A simple dialog',
+    });
+  }
 
-    openFromComponent(): void {
-        this.componentDialogRef = this.dialogService.open(
-            SimpleModalComponent,
-            {
-                ariaLabel: 'A simple dialog',
-                showCloseIcon: true,
-            },
-        );
-    }
+  openFromComponent(): void {
+    this.componentDialogRef = this.dialogService.open(SimpleModalComponent, {
+      ariaLabel: 'A simple dialog',
+      showCloseIcon: true,
+    });
+  }
 
-    closeTemplateDialog() {
-        this.templateDialogRef?.close();
-    }
+  closeTemplateDialog() {
+    this.templateDialogRef?.close();
+  }
 }

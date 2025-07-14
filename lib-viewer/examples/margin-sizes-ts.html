@@ -1,47 +1,47 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxHeaderCellDirective</span>,
+  <span class="hljs-title class_">NxTableCellComponent</span>,
+  <span class="hljs-title class_">NxTableComponent</span>,
+  <span class="hljs-title class_">NxTableRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/table&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">KeyValuePipe</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxHeaderCellDirective</span>,
-    <span class="hljs-title class_">NxTableCellComponent</span>,
-    <span class="hljs-title class_">NxTableComponent</span>,
-    <span class="hljs-title class_">NxTableRowComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/table&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Margin sizes
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;margin-sizes-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./margin-sizes-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./margin-sizes-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxTableComponent</span>,
-        <span class="hljs-title class_">NxTableRowComponent</span>,
-        <span class="hljs-title class_">NxHeaderCellDirective</span>,
-        <span class="hljs-title class_">NxTableCellComponent</span>,
-        <span class="hljs-title class_">KeyValuePipe</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;margin-sizes-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./margin-sizes-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./margin-sizes-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxTableComponent</span>,
+    <span class="hljs-title class_">NxTableRowComponent</span>,
+    <span class="hljs-title class_">NxHeaderCellDirective</span>,
+    <span class="hljs-title class_">NxTableCellComponent</span>,
+    <span class="hljs-title class_">KeyValuePipe</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MarginSizesExampleComponent</span> {
-    marginSizes = {
-        <span class="hljs-string">&#x27;0&#x27;</span>: <span class="hljs-number">0</span>,
-        <span class="hljs-string">&#x27;3xs&#x27;</span>: <span class="hljs-number">4</span>,
-        <span class="hljs-string">&#x27;2xs&#x27;</span>: <span class="hljs-number">8</span>,
-        <span class="hljs-attr">xs</span>: <span class="hljs-number">12</span>,
-        <span class="hljs-attr">s</span>: <span class="hljs-number">16</span>,
-        <span class="hljs-attr">m</span>: <span class="hljs-number">24</span>,
-        <span class="hljs-string">&#x27;2m&#x27;</span>: <span class="hljs-number">32</span>,
-        <span class="hljs-string">&#x27;3m&#x27;</span>: <span class="hljs-number">40</span>,
-        <span class="hljs-string">&#x27;4m&#x27;</span>: <span class="hljs-number">48</span>,
-        <span class="hljs-attr">l</span>: <span class="hljs-number">56</span>,
-        <span class="hljs-attr">xl</span>: <span class="hljs-number">64</span>,
-        <span class="hljs-string">&#x27;2xl&#x27;</span>: <span class="hljs-number">72</span>,
-        <span class="hljs-string">&#x27;3xl&#x27;</span>: <span class="hljs-number">80</span>,
-        <span class="hljs-string">&#x27;4xl&#x27;</span>: <span class="hljs-number">88</span>,
-        <span class="hljs-string">&#x27;5xl&#x27;</span>: <span class="hljs-number">96</span>,
-    };
+  marginSizes = {
+    <span class="hljs-string">&#x27;0&#x27;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-string">&#x27;3xs&#x27;</span>: <span class="hljs-number">4</span>,
+    <span class="hljs-string">&#x27;2xs&#x27;</span>: <span class="hljs-number">8</span>,
+    <span class="hljs-attr">xs</span>: <span class="hljs-number">12</span>,
+    <span class="hljs-attr">s</span>: <span class="hljs-number">16</span>,
+    <span class="hljs-attr">m</span>: <span class="hljs-number">24</span>,
+    <span class="hljs-string">&#x27;2m&#x27;</span>: <span class="hljs-number">32</span>,
+    <span class="hljs-string">&#x27;3m&#x27;</span>: <span class="hljs-number">40</span>,
+    <span class="hljs-string">&#x27;4m&#x27;</span>: <span class="hljs-number">48</span>,
+    <span class="hljs-attr">l</span>: <span class="hljs-number">56</span>,
+    <span class="hljs-attr">xl</span>: <span class="hljs-number">64</span>,
+    <span class="hljs-string">&#x27;2xl&#x27;</span>: <span class="hljs-number">72</span>,
+    <span class="hljs-string">&#x27;3xl&#x27;</span>: <span class="hljs-number">80</span>,
+    <span class="hljs-string">&#x27;4xl&#x27;</span>: <span class="hljs-number">88</span>,
+    <span class="hljs-string">&#x27;5xl&#x27;</span>: <span class="hljs-number">96</span>,
+  };
 
-    <span class="hljs-title function_">returnZero</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-    }
+  <span class="hljs-title function_">returnZero</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+  }
 }

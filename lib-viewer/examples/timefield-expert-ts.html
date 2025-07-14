@@ -1,41 +1,41 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxGridModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTimefieldModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/timefield&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">JsonPipe</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ChangeDetectionStrategy</span>, <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormBuilder</span>, <span class="hljs-title class_">ReactiveFormsModule</span>, <span class="hljs-title class_">Validators</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxGridModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTimefieldModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/timefield&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Timefield Expert example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;timefield-expert-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./timefield-expert-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrl</span>: <span class="hljs-string">&#x27;./timefield-expert-example.css&#x27;</span>,
-    <span class="hljs-attr">changeDetection</span>: <span class="hljs-title class_">ChangeDetectionStrategy</span>.<span class="hljs-property">OnPush</span>,
-    <span class="hljs-attr">providers</span>: [
-        {
-            <span class="hljs-comment">// This is usually coming from the NxExpertModule or other providers.</span>
-            <span class="hljs-comment">// We use this here just for the demo purposes.</span>
-            <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span>,
-            <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;outline&#x27;</span> },
-        },
-    ],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxTimefieldModule</span>,
-        <span class="hljs-title class_">ReactiveFormsModule</span>,
-        <span class="hljs-title class_">NxGridModule</span>,
-        <span class="hljs-title class_">JsonPipe</span>,
-        <span class="hljs-title class_">NxErrorComponent</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;timefield-expert-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./timefield-expert-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrl</span>: <span class="hljs-string">&#x27;./timefield-expert-example.css&#x27;</span>,
+  <span class="hljs-attr">changeDetection</span>: <span class="hljs-title class_">ChangeDetectionStrategy</span>.<span class="hljs-property">OnPush</span>,
+  <span class="hljs-attr">providers</span>: [
+    {
+      <span class="hljs-comment">// This is usually coming from the NxExpertModule or other providers.</span>
+      <span class="hljs-comment">// We use this here just for the demo purposes.</span>
+      <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span>,
+      <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;outline&#x27;</span> },
+    },
+  ],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxTimefieldModule</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">NxGridModule</span>,
+    <span class="hljs-title class_">JsonPipe</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TimefieldExpertExampleComponent</span> {
-    <span class="hljs-keyword">readonly</span> testForm = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
-        <span class="hljs-attr">timefieldReactive</span>: [<span class="hljs-string">&#x27;22:54&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
-        <span class="hljs-attr">timefieldPickerReactive</span>: [<span class="hljs-string">&#x27;20:15&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
-        <span class="hljs-attr">timefield12Reactive</span>: [<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
-    });
+  <span class="hljs-keyword">readonly</span> testForm = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
+    <span class="hljs-attr">timefieldReactive</span>: [<span class="hljs-string">&#x27;22:54&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
+    <span class="hljs-attr">timefieldPickerReactive</span>: [<span class="hljs-string">&#x27;20:15&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
+    <span class="hljs-attr">timefield12Reactive</span>: [<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
+  });
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">fb</span>: <span class="hljs-title class_">FormBuilder</span></span>) {}
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">fb</span>: <span class="hljs-title class_">FormBuilder</span></span>) {}
 }

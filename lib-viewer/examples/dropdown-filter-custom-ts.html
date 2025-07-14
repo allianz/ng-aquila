@@ -1,49 +1,49 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDropdownComponent</span>,
+  <span class="hljs-title class_">NxDropdownItemComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxDropdownComponent</span>,
-    <span class="hljs-title class_">NxDropdownItemComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dropdown&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxColComponent</span>,
-    <span class="hljs-title class_">NxLayoutComponent</span>,
-    <span class="hljs-title class_">NxRowComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Custom Filter Example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-filter-custom-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-filter-custom-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-filter-custom-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxLayoutComponent</span>,
-        <span class="hljs-title class_">NxRowComponent</span>,
-        <span class="hljs-title class_">NxColComponent</span>,
-        <span class="hljs-title class_">NxFormfieldComponent</span>,
-        <span class="hljs-title class_">NxDropdownComponent</span>,
-        <span class="hljs-title class_">NxDropdownItemComponent</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-filter-custom-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-filter-custom-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-filter-custom-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxDropdownComponent</span>,
+    <span class="hljs-title class_">NxDropdownItemComponent</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DropdownFilterCustomExampleComponent</span> {
-    demoData = [
-        <span class="hljs-string">&#x27;BMW&#x27;</span>,
-        <span class="hljs-string">&#x27;Audi&#x27;</span>,
-        <span class="hljs-string">&#x27;VW&#x27;</span>,
-        <span class="hljs-string">&#x27;Mercedes&#x27;</span>,
-        <span class="hljs-string">&#x27;Porsche&#x27;</span>,
-        <span class="hljs-string">&#x27;Tesla&#x27;</span>,
-        <span class="hljs-string">&#x27;Lada&#x27;</span>,
-        <span class="hljs-string">&#x27;Opel&#x27;</span>,
-        <span class="hljs-string">&#x27;Fiat&#x27;</span>,
-        <span class="hljs-string">&#x27;Ford&#x27;</span>,
-        <span class="hljs-string">&#x27;Kia&#x27;</span>,
-        <span class="hljs-string">&#x27;Toyota&#x27;</span>,
-        <span class="hljs-string">&#x27;Ferrari&#x27;</span>,
-    ];
+  demoData = [
+    <span class="hljs-string">&#x27;BMW&#x27;</span>,
+    <span class="hljs-string">&#x27;Audi&#x27;</span>,
+    <span class="hljs-string">&#x27;VW&#x27;</span>,
+    <span class="hljs-string">&#x27;Mercedes&#x27;</span>,
+    <span class="hljs-string">&#x27;Porsche&#x27;</span>,
+    <span class="hljs-string">&#x27;Tesla&#x27;</span>,
+    <span class="hljs-string">&#x27;Lada&#x27;</span>,
+    <span class="hljs-string">&#x27;Opel&#x27;</span>,
+    <span class="hljs-string">&#x27;Fiat&#x27;</span>,
+    <span class="hljs-string">&#x27;Ford&#x27;</span>,
+    <span class="hljs-string">&#x27;Kia&#x27;</span>,
+    <span class="hljs-string">&#x27;Toyota&#x27;</span>,
+    <span class="hljs-string">&#x27;Ferrari&#x27;</span>,
+  ];
 
-    <span class="hljs-title function_">myFilter</span>(<span class="hljs-params"><span class="hljs-attr">search</span>: <span class="hljs-built_in">any</span>, <span class="hljs-attr">itemValue</span>: <span class="hljs-built_in">any</span></span>) {
-        <span class="hljs-keyword">return</span> itemValue.<span class="hljs-title function_">match</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(<span class="hljs-string">&#x27;^&#x27;</span> + search, <span class="hljs-string">&#x27;g&#x27;</span>)) !== <span class="hljs-literal">null</span>;
-    }
+  <span class="hljs-title function_">myFilter</span>(<span class="hljs-params"><span class="hljs-attr">search</span>: <span class="hljs-built_in">any</span>, <span class="hljs-attr">itemValue</span>: <span class="hljs-built_in">any</span></span>) {
+    <span class="hljs-keyword">return</span> itemValue.<span class="hljs-title function_">match</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(<span class="hljs-string">&#x27;^&#x27;</span> + search, <span class="hljs-string">&#x27;g&#x27;</span>)) !== <span class="hljs-literal">null</span>;
+  }
 }

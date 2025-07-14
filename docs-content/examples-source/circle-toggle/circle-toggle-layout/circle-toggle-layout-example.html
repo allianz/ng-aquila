@@ -1,60 +1,60 @@
 <p nxCopytext="large" class="nx-margin-y-m">
-    The circle toggle group uses CSS Flexbox as its default layout and is
-    inherently responsive, adjusting automatically for mobile screens. Resize
-    the screen to see its behavior.
+  The circle toggle group uses CSS Flexbox as its default layout and is
+  inherently responsive, adjusting automatically for mobile screens. Resize the
+  screen to see its behavior.
 </p>
 <nx-circle-toggle-group>
+  @for (item of sampleValues; track item) {
+  <nx-circle-toggle
+    [value]="item.value"
+    [circleText]="item.circleText"
+    [hint]="item.hint"
+    [label]="item.label"
+    [checked]="item.selected"
+  >
+  </nx-circle-toggle>
+  }
+</nx-circle-toggle-group>
+<br />
+<p nxCopytext="large" class="nx-margin-y-m">
+  You can customize the layout using the nx grid component. However, with this
+  approach, you need to disable the responsive setting to prevent layout issues
+  on mobile screens.
+</p>
+<nx-circle-toggle-group responsive="false">
+  <div nxLayout="maxwidth">
+    <div nxRow>
+      @for (item of sampleValues; track item) {
+      <div nxCol="12,6,4,4" class="toggle-item">
+        <nx-circle-toggle
+          [value]="item.value"
+          [circleText]="item.circleText"
+          [hint]="item.hint"
+          [label]="item.label"
+          [checked]="item.selected"
+        >
+        </nx-circle-toggle>
+      </div>
+      }
+    </div>
+  </div>
+</nx-circle-toggle-group>
+<br />
+<p nxCopytext="large" class="nx-margin-y-m">
+  You can also customize the layout using CSS Grid, allowing you to set custom
+  gaps between each item for better spacing control.
+</p>
+<nx-circle-toggle-group responsive="false">
+  <div class="grid-wrapper">
     @for (item of sampleValues; track item) {
     <nx-circle-toggle
-        [value]="item.value"
-        [circleText]="item.circleText"
-        [hint]="item.hint"
-        [label]="item.label"
-        [checked]="item.selected"
+      [value]="item.value"
+      [circleText]="item.circleText"
+      [hint]="item.hint"
+      [label]="item.label"
+      [checked]="item.selected"
     >
     </nx-circle-toggle>
     }
-</nx-circle-toggle-group>
-<br />
-<p nxCopytext="large" class="nx-margin-y-m">
-    You can customize the layout using the nx grid component. However, with this
-    approach, you need to disable the responsive setting to prevent layout
-    issues on mobile screens.
-</p>
-<nx-circle-toggle-group responsive="false">
-    <div nxLayout="maxwidth">
-        <div nxRow>
-            @for (item of sampleValues; track item) {
-            <div nxCol="12,6,4,4" class="toggle-item">
-                <nx-circle-toggle
-                    [value]="item.value"
-                    [circleText]="item.circleText"
-                    [hint]="item.hint"
-                    [label]="item.label"
-                    [checked]="item.selected"
-                >
-                </nx-circle-toggle>
-            </div>
-            }
-        </div>
-    </div>
-</nx-circle-toggle-group>
-<br />
-<p nxCopytext="large" class="nx-margin-y-m">
-    You can also customize the layout using CSS Grid, allowing you to set custom
-    gaps between each item for better spacing control.
-</p>
-<nx-circle-toggle-group responsive="false">
-    <div class="grid-wrapper">
-        @for (item of sampleValues; track item) {
-        <nx-circle-toggle
-            [value]="item.value"
-            [circleText]="item.circleText"
-            [hint]="item.hint"
-            [label]="item.label"
-            [checked]="item.selected"
-        >
-        </nx-circle-toggle>
-        }
-    </div>
+  </div>
 </nx-circle-toggle-group>

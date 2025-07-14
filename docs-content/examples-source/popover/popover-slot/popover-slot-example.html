@@ -1,42 +1,40 @@
 <button
-    nxButton="primary small"
-    [nxPopoverTriggerFor]="popoverExtendedContent"
-    nxPopoverDirection="right"
-    nxPopoverTrigger="click"
-    type="button"
-    [(nxPopoverShow)]="popoverManualOpenFlag"
-    [nxPopoverWidth]="popoverWidth"
+  nxButton="primary small"
+  [nxPopoverTriggerFor]="popoverExtendedContent"
+  nxPopoverDirection="right"
+  nxPopoverTrigger="click"
+  type="button"
+  [(nxPopoverShow)]="popoverManualOpenFlag"
+  [nxPopoverWidth]="popoverWidth"
 >
-    Click
+  Click
 </button>
 
 <nx-popover #popoverExtendedContent>
-    <div nxPopoverTitle>
-        <h3 nxHeadline="subsection-small" class="nx-margin-bottom-s">
-            Popover
-        </h3>
-    </div>
+  <div nxPopoverTitle>
+    <h3 nxHeadline="subsection-small" class="nx-margin-bottom-s">Popover</h3>
+  </div>
 
-    <div nxPopoverMainContent>
-        <p nxCopytext="normal" class="nx-margin-bottom-m">
-            I am an extended popover with a headline and buttons.
-        </p>
-    </div>
+  <div nxPopoverMainContent>
+    <p nxCopytext="normal" class="nx-margin-bottom-m">
+      I am an extended popover with a headline and buttons.
+    </p>
+  </div>
 
-    <div nxPopoverActions alignment="right">
-        <button
-            nxButton="small secondary"
-            type="button"
-            (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
-        >
-            Cancel
-        </button>
-        <button
-            nxButton="small"
-            type="button"
-            (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
-        >
-            Proceed
-        </button>
-    </div>
+  <div nxPopoverActions alignment="right">
+    <button
+      nxButton="small secondary"
+      type="button"
+      (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
+    >
+      Cancel
+    </button>
+    <button
+      nxButton="small"
+      type="button"
+      (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
+    >
+      Proceed
+    </button>
+  </div>
 </nx-popover>

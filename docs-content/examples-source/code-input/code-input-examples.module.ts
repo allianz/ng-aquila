@@ -1,6 +1,6 @@
+import { NxErrorModule } from '@allianz/ng-aquila/base';
+import { NxCodeInputModule } from '@allianz/ng-aquila/code-input';
 import { NgModule } from '@angular/core';
-import { NxErrorModule } from '@aposin/ng-aquila/base';
-import { NxCodeInputModule } from '@aposin/ng-aquila/code-input';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { CodeInputDisabledExampleComponent } from './code-input-disabled/code-input-disabled-example';
@@ -13,31 +13,31 @@ import { CodeInputSixCharExampleComponent } from './code-input-six-char/code-inp
 import { CodeInputTypeExampleComponent } from './code-input-type/code-input-type-example';
 
 const EXAMPLES = [
-    CodeInputDisabledExampleComponent,
-    CodeInputFourCharExampleComponent,
-    CodeInputLocalizeExampleComponent,
-    CodeInputModelExampleComponent,
-    CodeInputNegativeExampleComponent,
-    CodeInputSevenCharExampleComponent,
-    CodeInputSixCharExampleComponent,
-    CodeInputTypeExampleComponent,
+  CodeInputDisabledExampleComponent,
+  CodeInputFourCharExampleComponent,
+  CodeInputLocalizeExampleComponent,
+  CodeInputModelExampleComponent,
+  CodeInputNegativeExampleComponent,
+  CodeInputSevenCharExampleComponent,
+  CodeInputSixCharExampleComponent,
+  CodeInputTypeExampleComponent,
 ];
 
 @NgModule({
-    imports: [NxCodeInputModule, NxErrorModule, ExamplesSharedModule, EXAMPLES],
-    exports: [EXAMPLES],
+  imports: [NxCodeInputModule, NxErrorModule, ExamplesSharedModule, EXAMPLES],
+  exports: [EXAMPLES],
 })
 export class CodeExamplesModule {
-    static components() {
-        return {
-            'code-input-disabled': CodeInputDisabledExampleComponent,
-            'code-input-four-char': CodeInputFourCharExampleComponent,
-            'code-input-localize': CodeInputLocalizeExampleComponent,
-            'code-input-model': CodeInputModelExampleComponent,
-            'code-input-negative': CodeInputNegativeExampleComponent,
-            'code-input-seven-char': CodeInputSevenCharExampleComponent,
-            'code-input-six-char': CodeInputSixCharExampleComponent,
-            'code-input-type': CodeInputTypeExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'code-input-disabled': CodeInputDisabledExampleComponent,
+      'code-input-four-char': CodeInputFourCharExampleComponent,
+      'code-input-localize': CodeInputLocalizeExampleComponent,
+      'code-input-model': CodeInputModelExampleComponent,
+      'code-input-negative': CodeInputNegativeExampleComponent,
+      'code-input-seven-char': CodeInputSevenCharExampleComponent,
+      'code-input-six-char': CodeInputSixCharExampleComponent,
+      'code-input-type': CodeInputTypeExampleComponent,
+    };
+  }
 }

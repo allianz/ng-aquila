@@ -1,136 +1,138 @@
+import { NxErrorComponent } from '@allianz/ng-aquila/base';
+import { NxMultiSelectComponent } from '@allianz/ng-aquila/dropdown';
+import {
+  NxFormfieldComponent,
+  NxFormfieldErrorDirective,
+} from '@allianz/ng-aquila/formfield';
 import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
-    FormControl,
-    FormsModule,
-    ReactiveFormsModule,
-    Validators,
+  FormControl,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
-import { NxErrorComponent } from '@aposin/ng-aquila/base';
-import { NxMultiSelectComponent } from '@aposin/ng-aquila/dropdown';
-import {
-    NxFormfieldComponent,
-    NxFormfieldErrorDirective,
-} from '@aposin/ng-aquila/formfield';
 
 interface MyOption {
-    label: string;
-    id: number;
+  label: string;
+  id: number;
 }
 
 function getOptions(): MyOption[] {
-    return [
-        {
-            label: 'Apple',
-            id: 1,
-        },
-        {
-            label: 'Banana',
-            id: 2,
-        },
-        {
-            label: 'Strawberry',
-            id: 3,
-        },
-        {
-            label: 'Orange',
-            id: 4,
-        },
-        {
-            label: 'Lemon',
-            id: 5,
-        },
-        {
-            label: 'Grapefruit',
-            id: 6,
-        },
-        {
-            label: 'Mango',
-            id: 7,
-        },
-        {
-            label: 'Pineapple',
-            id: 8,
-        },
-        {
-            label: 'Kiwi',
-            id: 9,
-        },
-        {
-            label: 'Cherry',
-            id: 10,
-        },
-        {
-            label: 'Blueberry',
-            id: 11,
-        },
-        {
-            label: 'Avocado',
-            id: 12,
-        },
-        {
-            label: 'Watermelon',
-            id: 13,
-        },
-        {
-            label: 'Raspberry',
-            id: 14,
-        },
-        {
-            label: 'Papaya',
-            id: 15,
-        },
-    ];
+  return [
+    {
+      label: 'Apple',
+      id: 1,
+    },
+    {
+      label: 'Banana',
+      id: 2,
+    },
+    {
+      label: 'Strawberry',
+      id: 3,
+    },
+    {
+      label: 'Orange',
+      id: 4,
+    },
+    {
+      label: 'Lemon',
+      id: 5,
+    },
+    {
+      label: 'Grapefruit',
+      id: 6,
+    },
+    {
+      label: 'Mango',
+      id: 7,
+    },
+    {
+      label: 'Pineapple',
+      id: 8,
+    },
+    {
+      label: 'Kiwi',
+      id: 9,
+    },
+    {
+      label: 'Cherry',
+      id: 10,
+    },
+    {
+      label: 'Blueberry',
+      id: 11,
+    },
+    {
+      label: 'Avocado',
+      id: 12,
+    },
+    {
+      label: 'Watermelon',
+      id: 13,
+    },
+    {
+      label: 'Raspberry',
+      id: 14,
+    },
+    {
+      label: 'Papaya',
+      id: 15,
+    },
+  ];
 }
 
 function getLongOptions(): MyOption[] {
-    return [
-        {
-            label: 'Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut.',
-            id: 1,
-        },
-        {
-            label: 'Sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut.',
-            id: 2,
-        },
-    ];
+  return [
+    {
+      label:
+        'Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut.',
+      id: 1,
+    },
+    {
+      label:
+        'Sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut.',
+      id: 2,
+    },
+  ];
 }
 
 /**
  * @title Basic multi select example
  */
 @Component({
-    selector: 'multi-select-example',
-    templateUrl: './multi-select-example.html',
-    styleUrls: ['./multi-select-example.css'],
-    imports: [
-        NxFormfieldComponent,
-        NxMultiSelectComponent,
-        FormsModule,
-        ReactiveFormsModule,
-        NxErrorComponent,
-        NxFormfieldErrorDirective,
-        JsonPipe,
-    ],
+  selector: 'multi-select-example',
+  templateUrl: './multi-select-example.html',
+  styleUrls: ['./multi-select-example.css'],
+  imports: [
+    NxFormfieldComponent,
+    NxMultiSelectComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    NxErrorComponent,
+    NxFormfieldErrorDirective,
+    JsonPipe,
+  ],
 })
 export class MultiSelectExampleComponent {
-    model: number[] = [3];
+  model: number[] = [3];
 
-    modelWithFilter: number[] = [];
+  modelWithFilter: number[] = [];
 
-    options: MyOption[] = getOptions();
+  options: MyOption[] = getOptions();
 
-    longOptions: MyOption[] = getLongOptions();
+  longOptions: MyOption[] = getLongOptions();
 
-    control = new FormControl([], {
-        validators: Validators.minLength(3),
-    });
+  control = new FormControl([], {
+    validators: Validators.minLength(3),
+  });
 
-    selectLabel(option: MyOption) {
-        return option.label;
-    }
+  selectLabel(option: MyOption) {
+    return option.label;
+  }
 
-    selectValue(option: MyOption) {
-        return option.id;
-    }
+  selectValue(option: MyOption) {
+    return option.id;
+  }
 }

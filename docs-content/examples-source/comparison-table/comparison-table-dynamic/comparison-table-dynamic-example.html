@@ -1,104 +1,97 @@
 <div class="container">
-    <nx-comparison-table>
-        @for (element of data; track element) {
-        <!-- header row -->
-        @if (element['type'] === 'header') {
-        <ng-container nxComparisonTableRow type="header">
-            @for (cell of element['cells']; track $index;) {
-            <nx-comparison-table-cell type="header">
-                {{ cell }}<br />
-                <button
-                    nxComparisonTableSelectButton
-                    type="button"
-                    class="nx-margin-top-s nx-margin-bottom-0"
-                ></button>
-            </nx-comparison-table-cell>
-            }
-        </ng-container>
-        }
-        <!-- content rows -->
-        @if (element['type'] === 'content') {
-        <ng-container nxComparisonTableRow>
-            @if (element['description']) {
-            <nx-comparison-table-description-cell>
-                <div class="has-popover">
-                    <span>{{ element['description'] }}</span>
-                    <button
-                        nxPlainButton
-                        class="info-icon"
-                        [attr.aria-label]="element['description']"
-                        [nxPopoverTriggerFor]="popoverContent"
-                        nxPopoverTrigger="click"
-                        type="button"
-                    >
-                        <nx-icon
-                            name="info-circle-o"
-                            aria-hidden="true"
-                        ></nx-icon>
-                    </button>
-                    <nx-popover #popoverContent>
-                        <span>{{ element['description'] }}</span>
-                    </nx-popover>
-                </div>
-            </nx-comparison-table-description-cell>
-            } @for (cell of element['cells']; track $index;) {
-            <nx-comparison-table-cell> {{ cell }} </nx-comparison-table-cell>
-            }
-        </ng-container>
-        }
-        <!-- footer row -->
-        @if (element['type'] === 'footer') {
-        <ng-container nxComparisonTableRow type="footer">
-            @for (cell of element['cells']; track $index;) {
-            <nx-comparison-table-cell type="footer">
-                <button
-                    nxComparisonTableSelectButton
-                    type="button"
-                    class="nx-margin-bottom-s"
-                ></button
-                ><br />
-                {{ cell }}
-            </nx-comparison-table-cell>
-            }
-        </ng-container>
-        }
-        <!-- toggle section -->
-        @if (element['type'] === 'toggleSection') {
-        <ng-container nxComparisonTableToggleSection>
-            <nx-comparison-table-toggle-section-header
-                >{{ element['header']
-                }}</nx-comparison-table-toggle-section-header
+  <nx-comparison-table>
+    @for (element of data; track element) {
+    <!-- header row -->
+    @if (element['type'] === 'header') {
+    <ng-container nxComparisonTableRow type="header">
+      @for (cell of element['cells']; track $index;) {
+      <nx-comparison-table-cell type="header">
+        {{ cell }}<br />
+        <button
+          nxComparisonTableSelectButton
+          type="button"
+          class="nx-margin-top-s nx-margin-bottom-0"
+        ></button>
+      </nx-comparison-table-cell>
+      }
+    </ng-container>
+    }
+    <!-- content rows -->
+    @if (element['type'] === 'content') {
+    <ng-container nxComparisonTableRow>
+      @if (element['description']) {
+      <nx-comparison-table-description-cell>
+        <div class="has-popover">
+          <span>{{ element['description'] }}</span>
+          <button
+            nxPlainButton
+            class="info-icon"
+            [attr.aria-label]="element['description']"
+            [nxPopoverTriggerFor]="popoverContent"
+            nxPopoverTrigger="click"
+            type="button"
+          >
+            <nx-icon name="info-circle-o" aria-hidden="true"></nx-icon>
+          </button>
+          <nx-popover #popoverContent>
+            <span>{{ element['description'] }}</span>
+          </nx-popover>
+        </div>
+      </nx-comparison-table-description-cell>
+      } @for (cell of element['cells']; track $index;) {
+      <nx-comparison-table-cell> {{ cell }} </nx-comparison-table-cell>
+      }
+    </ng-container>
+    }
+    <!-- footer row -->
+    @if (element['type'] === 'footer') {
+    <ng-container nxComparisonTableRow type="footer">
+      @for (cell of element['cells']; track $index;) {
+      <nx-comparison-table-cell type="footer">
+        <button
+          nxComparisonTableSelectButton
+          type="button"
+          class="nx-margin-bottom-s"
+        ></button
+        ><br />
+        {{ cell }}
+      </nx-comparison-table-cell>
+      }
+    </ng-container>
+    }
+    <!-- toggle section -->
+    @if (element['type'] === 'toggleSection') {
+    <ng-container nxComparisonTableToggleSection>
+      <nx-comparison-table-toggle-section-header
+        >{{ element['header'] }}</nx-comparison-table-toggle-section-header
+      >
+      @for (row of element['content']; track row) {
+      <ng-container nxComparisonTableRow>
+        @if (row['description']) {
+        <nx-comparison-table-description-cell>
+          <div class="has-popover">
+            <span>{{ row['description'] }}</span>
+            <button
+              nxPlainButton
+              class="info-icon"
+              [attr.aria-label]="row['description']"
+              [nxPopoverTriggerFor]="popoverContent"
+              nxPopoverTrigger="click"
+              type="button"
             >
-            @for (row of element['content']; track row) {
-            <ng-container nxComparisonTableRow>
-                @if (row['description']) {
-                <nx-comparison-table-description-cell>
-                    <div class="has-popover">
-                        <span>{{ row['description'] }}</span>
-                        <button
-                            nxPlainButton
-                            class="info-icon"
-                            [attr.aria-label]="row['description']"
-                            [nxPopoverTriggerFor]="popoverContent"
-                            nxPopoverTrigger="click"
-                            type="button"
-                        >
-                            <nx-icon
-                                name="info-circle-o"
-                                aria-hidden="true"
-                            ></nx-icon>
-                        </button>
-                        <nx-popover #popoverContent>
-                            <span>{{row['description']}}</span>
-                        </nx-popover>
-                    </div>
-                </nx-comparison-table-description-cell>
-                }> @for (cell of row['cells']; track $index;) {
-                <nx-comparison-table-cell>{{ cell }}</nx-comparison-table-cell>
-                }
-            </ng-container>
-            }
-        </ng-container>
-        } }
-    </nx-comparison-table>
+              <nx-icon name="info-circle-o" aria-hidden="true"></nx-icon>
+            </button>
+            <nx-popover #popoverContent>
+              <span>{{row['description']}}</span>
+            </nx-popover>
+          </div>
+        </nx-comparison-table-description-cell>
+        }> @for (cell of row['cells']; track $index;) {
+        <nx-comparison-table-cell>{{ cell }}</nx-comparison-table-cell>
+        }
+      </ng-container>
+      }
+    </ng-container>
+    } }
+  </nx-comparison-table>
 </div>

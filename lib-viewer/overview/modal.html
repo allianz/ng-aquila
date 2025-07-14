@@ -55,7 +55,7 @@ myDialogRef.<span class="hljs-title function_">close</span>(<span class="hljs-st
 </code></pre>
 <p class="docs-markdown--p">In your dialog you can access this data by injecting the <code>NX_MODAL_DATA</code> token:</p>
 <pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Inject</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">NX_MODAL_DATA</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/modal&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">NX_MODAL_DATA</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/modal&#x27;</span>;
 
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;your-dialog&#x27;</span>,
@@ -135,7 +135,7 @@ myDialogRef.<span class="hljs-title function_">close</span>(<span class="hljs-st
 <h3 id="deprecated-modal-component" tabindex="-1" class="docs-markdown--h3">Deprecated Modal Component</h3>
 <p class="docs-markdown--p">The example below shows the previous implementation of the modal dialog, which is already deprecated and should not be used.</p>
 <p class="docs-markdown--p">For using it you have to import the <code>NxModalModule</code> as follows:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxModalModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/modal&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxModalModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/modal&#x27;</span>;
 
 <span class="hljs-meta">@NgModule</span>({
     <span class="hljs-attr">imports</span>: [

@@ -1,8 +1,8 @@
+import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
+import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
+import { NxPhoneInputModule } from '@allianz/ng-aquila/phone-input';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
-import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
-import { NxPhoneInputModule } from '@aposin/ng-aquila/phone-input';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { PhoneInputCountryCodeExampleComponent } from './phone-input-country-code/phone-input-country-code-example';
@@ -16,41 +16,41 @@ import { PhoneInputRetailExampleComponent } from './phone-input-retail/phone-inp
 import { PhoneInputValidationExampleComponent } from './phone-input-validation/phone-input-validation-example';
 
 const EXAMPLES = [
-    PhoneInputRetailExampleComponent,
-    PhoneInputExpertExampleComponent,
-    PhoneInputDisabledExampleComponent,
-    PhoneInputI18nExampleComponent,
-    PhoneInputValidationExampleComponent,
-    PhoneInputFormattingExampleComponent,
-    PhoneInputFormsExampleComponent,
-    PhoneInputCountryCodeExampleComponent,
-    PhoneInputFocusOutExampleComponent,
+  PhoneInputRetailExampleComponent,
+  PhoneInputExpertExampleComponent,
+  PhoneInputDisabledExampleComponent,
+  PhoneInputI18nExampleComponent,
+  PhoneInputValidationExampleComponent,
+  PhoneInputFormattingExampleComponent,
+  PhoneInputFormsExampleComponent,
+  PhoneInputCountryCodeExampleComponent,
+  PhoneInputFocusOutExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxPhoneInputModule,
-        ExamplesSharedModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NxHeadlineModule,
-        NxCheckboxModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxPhoneInputModule,
+    ExamplesSharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NxHeadlineModule,
+    NxCheckboxModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class PhoneInputExamplesModule {
-    static components() {
-        return {
-            'phone-input-retail': PhoneInputRetailExampleComponent,
-            'phone-input-expert': PhoneInputExpertExampleComponent,
-            'phone-input-disabled': PhoneInputDisabledExampleComponent,
-            'phone-input-i18n': PhoneInputI18nExampleComponent,
-            'phone-input-validation': PhoneInputValidationExampleComponent,
-            'phone-input-formatting': PhoneInputFormattingExampleComponent,
-            'phone-input-forms': PhoneInputFormsExampleComponent,
-            'phone-input-country-code': PhoneInputCountryCodeExampleComponent,
-            'phone-input-focus-out': PhoneInputFocusOutExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'phone-input-retail': PhoneInputRetailExampleComponent,
+      'phone-input-expert': PhoneInputExpertExampleComponent,
+      'phone-input-disabled': PhoneInputDisabledExampleComponent,
+      'phone-input-i18n': PhoneInputI18nExampleComponent,
+      'phone-input-validation': PhoneInputValidationExampleComponent,
+      'phone-input-formatting': PhoneInputFormattingExampleComponent,
+      'phone-input-forms': PhoneInputFormsExampleComponent,
+      'phone-input-country-code': PhoneInputCountryCodeExampleComponent,
+      'phone-input-focus-out': PhoneInputFocusOutExampleComponent,
+    };
+  }
 }

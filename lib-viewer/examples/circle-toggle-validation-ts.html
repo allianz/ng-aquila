@@ -1,90 +1,90 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxCircleToggleComponent</span>,
+  <span class="hljs-title class_">NxCircleToggleGroupComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/circle-toggle&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">JsonPipe</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">AbstractControl</span>,
-    <span class="hljs-title class_">FormBuilder</span>,
-    <span class="hljs-title class_">FormsModule</span>,
-    <span class="hljs-title class_">ReactiveFormsModule</span>,
-    <span class="hljs-title class_">ValidatorFn</span>,
-    <span class="hljs-title class_">Validators</span>,
+  <span class="hljs-title class_">AbstractControl</span>,
+  <span class="hljs-title class_">FormBuilder</span>,
+  <span class="hljs-title class_">FormsModule</span>,
+  <span class="hljs-title class_">ReactiveFormsModule</span>,
+  <span class="hljs-title class_">ValidatorFn</span>,
+  <span class="hljs-title class_">Validators</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxCircleToggleComponent</span>,
-    <span class="hljs-title class_">NxCircleToggleGroupComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/circle-toggle&#x27;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">selectBothValidator</span>: <span class="hljs-title class_">ValidatorFn</span> = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">ctrl</span>: <span class="hljs-title class_">AbstractControl</span></span>) =&gt;</span> {
-    <span class="hljs-keyword">const</span> heart = ctrl.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;heart&#x27;</span>)?.<span class="hljs-property">value</span>;
-    <span class="hljs-keyword">const</span> car = ctrl.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;car&#x27;</span>)?.<span class="hljs-property">value</span>;
-    <span class="hljs-keyword">const</span> isSelectBoth = heart &amp;&amp; car;
-    <span class="hljs-keyword">return</span> isSelectBoth ? <span class="hljs-literal">null</span> : { <span class="hljs-attr">selectBoth</span>: heart &amp;&amp; car };
+  <span class="hljs-keyword">const</span> heart = ctrl.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;heart&#x27;</span>)?.<span class="hljs-property">value</span>;
+  <span class="hljs-keyword">const</span> car = ctrl.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;car&#x27;</span>)?.<span class="hljs-property">value</span>;
+  <span class="hljs-keyword">const</span> isSelectBoth = heart &amp;&amp; car;
+  <span class="hljs-keyword">return</span> isSelectBoth ? <span class="hljs-literal">null</span> : { <span class="hljs-attr">selectBoth</span>: heart &amp;&amp; car };
 };
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Validation example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;circle-toggle-validation-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./circle-toggle-validation-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./circle-toggle-validation-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">ReactiveFormsModule</span>,
-        <span class="hljs-title class_">NxCircleToggleGroupComponent</span>,
-        <span class="hljs-title class_">NxCircleToggleComponent</span>,
-        <span class="hljs-title class_">NxErrorComponent</span>,
-        <span class="hljs-title class_">NxButtonComponent</span>,
-        <span class="hljs-title class_">JsonPipe</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;circle-toggle-validation-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./circle-toggle-validation-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./circle-toggle-validation-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">NxCircleToggleGroupComponent</span>,
+    <span class="hljs-title class_">NxCircleToggleComponent</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
+    <span class="hljs-title class_">NxButtonComponent</span>,
+    <span class="hljs-title class_">JsonPipe</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CircleToggleValidationExampleComponent</span> {
-    formBuilder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormBuilder</span>();
+  formBuilder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormBuilder</span>();
 
-    testForm = <span class="hljs-variable language_">this</span>.<span class="hljs-property">formBuilder</span>.<span class="hljs-title function_">group</span>({
-        <span class="hljs-attr">reactiveToggle</span>: [<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
-    });
+  testForm = <span class="hljs-variable language_">this</span>.<span class="hljs-property">formBuilder</span>.<span class="hljs-title function_">group</span>({
+    <span class="hljs-attr">reactiveToggle</span>: [<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
+  });
 
-    testForm2 = <span class="hljs-variable language_">this</span>.<span class="hljs-property">formBuilder</span>.<span class="hljs-title function_">group</span>({
-        <span class="hljs-attr">heart</span>: [<span class="hljs-literal">false</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">requiredTrue</span>],
-    });
+  testForm2 = <span class="hljs-variable language_">this</span>.<span class="hljs-property">formBuilder</span>.<span class="hljs-title function_">group</span>({
+    <span class="hljs-attr">heart</span>: [<span class="hljs-literal">false</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">requiredTrue</span>],
+  });
 
-    testForm3 = <span class="hljs-variable language_">this</span>.<span class="hljs-property">formBuilder</span>.<span class="hljs-title function_">group</span>(
-        {
-            <span class="hljs-attr">heart</span>: [<span class="hljs-literal">false</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">requiredTrue</span>],
-            <span class="hljs-attr">car</span>: [<span class="hljs-literal">false</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">requiredTrue</span>],
-        },
-        { <span class="hljs-attr">validators</span>: [selectBothValidator] },
-    );
+  testForm3 = <span class="hljs-variable language_">this</span>.<span class="hljs-property">formBuilder</span>.<span class="hljs-title function_">group</span>(
+    {
+      <span class="hljs-attr">heart</span>: [<span class="hljs-literal">false</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">requiredTrue</span>],
+      <span class="hljs-attr">car</span>: [<span class="hljs-literal">false</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">requiredTrue</span>],
+    },
+    { <span class="hljs-attr">validators</span>: [selectBothValidator] },
+  );
 
-    single = <span class="hljs-literal">false</span>;
+  single = <span class="hljs-literal">false</span>;
 
-    sampleValues = [
-        {
-            <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;A&#x27;</span>,
-            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-heart&#x27;</span>,
-            <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint A&#x27;</span>,
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label A&#x27;</span>,
-            <span class="hljs-attr">selected</span>: <span class="hljs-literal">false</span>,
-        },
-        {
-            <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;B&#x27;</span>,
-            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-car&#x27;</span>,
-            <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint B&#x27;</span>,
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label B&#x27;</span>,
-            <span class="hljs-attr">selected</span>: <span class="hljs-literal">true</span>,
-        },
-        {
-            <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;C&#x27;</span>,
-            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-plane&#x27;</span>,
-            <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint C&#x27;</span>,
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label C&#x27;</span>,
-            <span class="hljs-attr">selected</span>: <span class="hljs-literal">false</span>,
-        },
-    ];
+  sampleValues = [
+    {
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;A&#x27;</span>,
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-heart&#x27;</span>,
+      <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint A&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label A&#x27;</span>,
+      <span class="hljs-attr">selected</span>: <span class="hljs-literal">false</span>,
+    },
+    {
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;B&#x27;</span>,
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-car&#x27;</span>,
+      <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint B&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label B&#x27;</span>,
+      <span class="hljs-attr">selected</span>: <span class="hljs-literal">true</span>,
+    },
+    {
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;C&#x27;</span>,
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-plane&#x27;</span>,
+      <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint C&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label C&#x27;</span>,
+      <span class="hljs-attr">selected</span>: <span class="hljs-literal">false</span>,
+    },
+  ];
 
-    <span class="hljs-title function_">patch</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span> {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">testForm</span>.<span class="hljs-title function_">patchValue</span>({ <span class="hljs-attr">reactiveToggle</span>: value });
-    }
+  <span class="hljs-title function_">patch</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">testForm</span>.<span class="hljs-title function_">patchValue</span>({ <span class="hljs-attr">reactiveToggle</span>: value });
+  }
 }

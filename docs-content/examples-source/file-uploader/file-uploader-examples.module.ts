@@ -1,12 +1,12 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxFileUploaderModule } from '@allianz/ng-aquila/file-uploader';
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxMessageModule } from '@allianz/ng-aquila/message';
+import { NxRadioModule } from '@allianz/ng-aquila/radio-button';
+import { NxRadioToggleModule } from '@allianz/ng-aquila/radio-toggle';
 import { NgModule } from '@angular/core';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxFileUploaderModule } from '@aposin/ng-aquila/file-uploader';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxMessageModule } from '@aposin/ng-aquila/message';
-import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
-import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { FileUploaderAutoExampleComponent } from './file-uploader-auto/file-uploader-auto-example';
@@ -28,67 +28,66 @@ import { FileUploaderValidationExampleComponent } from './file-uploader-validati
 import { FileUploaderWithRequestExampleComponent } from './file-uploader-with-request/file-uploader-with-request-example';
 
 const EXAMPLES = [
-    FileUploaderErrorListExampleComponent,
-    FileUploaderAutoExampleComponent,
-    FileUploaderBasicExampleComponent,
-    FileUploaderDropZoneExampleComponent,
-    FileUploaderIntlExampleComponent,
-    FileUploaderReactiveExampleComponent,
-    FileUploaderSeparateRequestsExampleComponent,
-    FileUploaderTemplateDrivenExampleComponent,
-    FileUploaderTypeValidationExampleComponent,
-    FileUploaderValidationExampleComponent,
-    FileUploaderWithRequestExampleComponent,
-    FileUploaderMaxFileNumberExampleComponent,
-    FileUploaderCustomItemExampleComponent,
-    FileUploaderExpertExampleComponent,
-    FileUploaderStrictTypeValidationExampleComponent,
-    FileUploadernoBlockingValidatorsExampleComponent,
-    FileUploaderCategoriesExampleComponent,
+  FileUploaderErrorListExampleComponent,
+  FileUploaderAutoExampleComponent,
+  FileUploaderBasicExampleComponent,
+  FileUploaderDropZoneExampleComponent,
+  FileUploaderIntlExampleComponent,
+  FileUploaderReactiveExampleComponent,
+  FileUploaderSeparateRequestsExampleComponent,
+  FileUploaderTemplateDrivenExampleComponent,
+  FileUploaderTypeValidationExampleComponent,
+  FileUploaderValidationExampleComponent,
+  FileUploaderWithRequestExampleComponent,
+  FileUploaderMaxFileNumberExampleComponent,
+  FileUploaderCustomItemExampleComponent,
+  FileUploaderExpertExampleComponent,
+  FileUploaderStrictTypeValidationExampleComponent,
+  FileUploadernoBlockingValidatorsExampleComponent,
+  FileUploaderCategoriesExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxFileUploaderModule,
-        NxIconModule,
-        NxRadioModule,
-        NxButtonModule,
-        NxRadioToggleModule,
-        ExamplesSharedModule,
-        NxFormfieldModule,
-        NxInputModule,
-        NxMessageModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxFileUploaderModule,
+    NxIconModule,
+    NxRadioModule,
+    NxButtonModule,
+    NxRadioToggleModule,
+    ExamplesSharedModule,
+    NxFormfieldModule,
+    NxInputModule,
+    NxMessageModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class FileExamplesModule {
-    static components() {
-        return {
-            'file-uploader-error-list': FileUploaderErrorListExampleComponent,
-            'file-uploader-auto': FileUploaderAutoExampleComponent,
-            'file-uploader-basic': FileUploaderBasicExampleComponent,
-            'file-uploader-drop-zone': FileUploaderDropZoneExampleComponent,
-            'file-uploader-intl': FileUploaderIntlExampleComponent,
-            'file-uploader-reactive': FileUploaderReactiveExampleComponent,
-            'file-uploader-separate-requests':
-                FileUploaderSeparateRequestsExampleComponent,
-            'file-uploader-template-driven':
-                FileUploaderTemplateDrivenExampleComponent,
-            'file-uploader-type-validation':
-                FileUploaderTypeValidationExampleComponent,
-            'file-uploader-validation': FileUploaderValidationExampleComponent,
-            'file-uploader-with-request':
-                FileUploaderWithRequestExampleComponent,
-            'file-uploader-max-file-number':
-                FileUploaderMaxFileNumberExampleComponent,
-            'file-uploader-custom-item': FileUploaderCustomItemExampleComponent,
-            'file-uploader-expert': FileUploaderExpertExampleComponent,
-            'file-uploader-strict-type-validation':
-                FileUploaderStrictTypeValidationExampleComponent,
-            'file-uploader-disable-common-validators':
-                FileUploadernoBlockingValidatorsExampleComponent,
-            'file-uploader-categories': FileUploaderCategoriesExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'file-uploader-error-list': FileUploaderErrorListExampleComponent,
+      'file-uploader-auto': FileUploaderAutoExampleComponent,
+      'file-uploader-basic': FileUploaderBasicExampleComponent,
+      'file-uploader-drop-zone': FileUploaderDropZoneExampleComponent,
+      'file-uploader-intl': FileUploaderIntlExampleComponent,
+      'file-uploader-reactive': FileUploaderReactiveExampleComponent,
+      'file-uploader-separate-requests':
+        FileUploaderSeparateRequestsExampleComponent,
+      'file-uploader-template-driven':
+        FileUploaderTemplateDrivenExampleComponent,
+      'file-uploader-type-validation':
+        FileUploaderTypeValidationExampleComponent,
+      'file-uploader-validation': FileUploaderValidationExampleComponent,
+      'file-uploader-with-request': FileUploaderWithRequestExampleComponent,
+      'file-uploader-max-file-number':
+        FileUploaderMaxFileNumberExampleComponent,
+      'file-uploader-custom-item': FileUploaderCustomItemExampleComponent,
+      'file-uploader-expert': FileUploaderExpertExampleComponent,
+      'file-uploader-strict-type-validation':
+        FileUploaderStrictTypeValidationExampleComponent,
+      'file-uploader-disable-common-validators':
+        FileUploadernoBlockingValidatorsExampleComponent,
+      'file-uploader-categories': FileUploaderCategoriesExampleComponent,
+    };
+  }
 }

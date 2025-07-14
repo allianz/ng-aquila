@@ -1,70 +1,66 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-natural-language-form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;naturalForm&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>I want to be<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span>
-            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;long&quot;</span>
-            <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Your profession&quot;</span>
-            <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;profession-error-required&quot;</span>
-        &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;who&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;student&quot;</span>&gt;</span>a Student<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;philosopher&quot;</span>
-                    &gt;</span>a Philosopher&lt;/nx-dropdown-item
-                &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;sailor&quot;</span>&gt;</span>a Sailor<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-natural-language-form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;naturalForm&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>I want to be<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span>
+      <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;long&quot;</span>
+      <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Your profession&quot;</span>
+      <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;profession-error-required&quot;</span>
+    &gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;who&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;student&quot;</span>&gt;</span>a Student<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;philosopher&quot;</span>&gt;</span>a Philosopher<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;sailor&quot;</span>&gt;</span>a Sailor<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>and visit the city of<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>and visit the city of<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span>
-            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;short&quot;</span>
-            <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;City to visit&quot;</span>
-            <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;city-error-required&quot;</span>
-        &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;city&quot;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>and see<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span>
-            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;regular&quot;</span>
-            <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Number of spots to visit&quot;</span>
-            <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;error-headline spots-error-required spots-error-pattern&quot;</span>
-        &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;spots&quot;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> nice spots.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-headline&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Invalid or missing input:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-m&quot;</span>&gt;</span>
-                @if(naturalForm.controls.who.hasError(&#x27;required&#x27;) &amp;&amp;
-                naturalForm.controls.who.touched){
-                <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;profession-error-required&quot;</span>&gt;</span>Profession is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span>
+      <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;short&quot;</span>
+      <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;City to visit&quot;</span>
+      <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;city-error-required&quot;</span>
+    &gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;city&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>and see<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span>
+      <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;regular&quot;</span>
+      <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Number of spots to visit&quot;</span>
+      <span class="hljs-attr">describedBy</span>=<span class="hljs-string">&quot;error-headline spots-error-required spots-error-pattern&quot;</span>
+    &gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;spots&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> nice spots.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-headline&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Invalid or missing input:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-m&quot;</span>&gt;</span>
+        @if(naturalForm.controls.who.hasError(&#x27;required&#x27;) &amp;&amp;
+        naturalForm.controls.who.touched){
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;profession-error-required&quot;</span>&gt;</span>Profession is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 
-                } @if(naturalForm.controls.city.hasError(&#x27;required&#x27;) &amp;&amp;
-                naturalForm.controls.city.touched){
-                <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;city-error-required&quot;</span>&gt;</span>The city is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        } @if(naturalForm.controls.city.hasError(&#x27;required&#x27;) &amp;&amp;
+        naturalForm.controls.city.touched){
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;city-error-required&quot;</span>&gt;</span>The city is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 
-                } @if(naturalForm.controls.spots.hasError(&#x27;required&#x27;) &amp;&amp;
-                naturalForm.controls.spots.touched){
-                <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;spots-error-required&quot;</span>&gt;</span>
-                    Number of Spots to visit is required.
-                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        } @if(naturalForm.controls.spots.hasError(&#x27;required&#x27;) &amp;&amp;
+        naturalForm.controls.spots.touched){
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;spots-error-required&quot;</span>&gt;</span>Number of Spots to visit is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 
-                } @if(naturalForm.controls.spots.hasError(&#x27;pattern&#x27;) &amp;&amp;
-                naturalForm.controls.spots.touched){
-                <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;spots-error-pattern&quot;</span>&gt;</span>
-                    Number of Spots to visit has to be a number.
-                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        } @if(naturalForm.controls.spots.hasError(&#x27;pattern&#x27;) &amp;&amp;
+        naturalForm.controls.spots.touched){
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;spots-error-pattern&quot;</span>&gt;</span>
+          Number of Spots to visit has to be a number.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 
-                }
-            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-natural-language-form</span>&gt;</span>
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-natural-language-form</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;validate()&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;validate()&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-    Form value: {{ naturalForm.value | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-    Form status: {{ naturalForm.status | json }}
+  Form value: {{ naturalForm.value | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  Form status: {{ naturalForm.status | json }}
 <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>

@@ -1,25 +1,25 @@
-import { Component } from '@angular/core';
-import { NxButtonComponent } from '@aposin/ng-aquila/button';
+import { NxButtonComponent } from '@allianz/ng-aquila/button';
 import {
-    NxPopoverComponent,
-    NxPopoverContentDirective,
-    NxPopoverTriggerDirective,
-} from '@aposin/ng-aquila/popover';
+  NxPopoverComponent,
+  NxPopoverContentDirective,
+  NxPopoverTriggerDirective,
+} from '@allianz/ng-aquila/popover';
+import { Component } from '@angular/core';
 
 /**
  * @title Popover lazyload Example
  */
 @Component({
-    selector: 'popover-lazyload-example',
-    templateUrl: './popover-lazyload-example.html',
-    styleUrls: ['./popover-lazyload-example.css'],
-    imports: [
-        NxButtonComponent,
-        NxPopoverTriggerDirective,
-        NxPopoverComponent,
-        NxPopoverContentDirective,
-    ],
+  selector: 'popover-lazyload-example',
+  templateUrl: './popover-lazyload-example.html',
+  styleUrls: ['./popover-lazyload-example.css'],
+  imports: [
+    NxButtonComponent,
+    NxPopoverTriggerDirective,
+    NxPopoverComponent,
+    NxPopoverContentDirective,
+  ],
 })
 export class PopoverLazyloadExampleComponent {
-    popoverWidth = '400px';
+  popoverWidth = '400px';
 }

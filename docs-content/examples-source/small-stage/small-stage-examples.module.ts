@@ -1,9 +1,9 @@
+import { NxBreadcrumbModule } from '@allianz/ng-aquila/breadcrumb';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxLinkModule } from '@allianz/ng-aquila/link';
+import { NxSmallStageModule } from '@allianz/ng-aquila/small-stage';
 import { NgOptimizedImage } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NxBreadcrumbModule } from '@aposin/ng-aquila/breadcrumb';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxLinkModule } from '@aposin/ng-aquila/link';
-import { NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { SmallStageContentVariationExampleComponent } from './small-stage-content-variation/small-stage-content-variation-example';
@@ -13,36 +13,35 @@ import { SmallStageExpertDefaultExampleComponent } from './small-stage-expert-de
 import { SmallStageWithBackgroundExampleComponent } from './small-stage-w-bg/small-stage-w-bg-example';
 
 const EXAMPLES = [
-    SmallStageContentVariationExampleComponent,
-    SmallStageDefaultExampleComponent,
-    SmallStageExpertContentNarrowExampleComponent,
-    SmallStageWithBackgroundExampleComponent,
-    SmallStageExpertDefaultExampleComponent,
+  SmallStageContentVariationExampleComponent,
+  SmallStageDefaultExampleComponent,
+  SmallStageExpertContentNarrowExampleComponent,
+  SmallStageWithBackgroundExampleComponent,
+  SmallStageExpertDefaultExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxSmallStageModule,
-        NxBreadcrumbModule,
-        ExamplesSharedModule,
-        NxLinkModule,
-        NxIconModule,
-        NgOptimizedImage,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxSmallStageModule,
+    NxBreadcrumbModule,
+    ExamplesSharedModule,
+    NxLinkModule,
+    NxIconModule,
+    NgOptimizedImage,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class SmallExamplesModule {
-    static components() {
-        return {
-            'small-stage-default': SmallStageDefaultExampleComponent,
-            'small-stage-content-variation':
-                SmallStageContentVariationExampleComponent,
-            'small-stage-w-bg': SmallStageWithBackgroundExampleComponent,
-            'small-stage-expert-default':
-                SmallStageExpertDefaultExampleComponent,
-            'small-stage-expert-content-narrow':
-                SmallStageExpertContentNarrowExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'small-stage-default': SmallStageDefaultExampleComponent,
+      'small-stage-content-variation':
+        SmallStageContentVariationExampleComponent,
+      'small-stage-w-bg': SmallStageWithBackgroundExampleComponent,
+      'small-stage-expert-default': SmallStageExpertDefaultExampleComponent,
+      'small-stage-expert-content-narrow':
+        SmallStageExpertContentNarrowExampleComponent,
+    };
+  }
 }

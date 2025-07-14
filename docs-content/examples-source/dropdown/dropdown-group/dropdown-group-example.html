@@ -1,24 +1,21 @@
 <div nxLayout="grid">
-    <div nxRow>
-        <div nxCol="12,12,6">
-            <nx-formfield label="Animals">
-                <nx-dropdown [(value)]="testBind">
-                    <nx-dropdown-group label="Birds">
-                        <nx-dropdown-item
-                            disabled="true"
-                            value="Parrot"
-                        ></nx-dropdown-item>
-                        <nx-dropdown-item value="Pidgin"></nx-dropdown-item>
-                        <nx-dropdown-item value="Swallow"></nx-dropdown-item>
-                    </nx-dropdown-group>
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <nx-formfield label="Animals">
+        <nx-dropdown [(value)]="testBind">
+          <nx-dropdown-group label="Birds">
+            <nx-dropdown-item disabled="true" value="Parrot"></nx-dropdown-item>
+            <nx-dropdown-item value="Pidgin"></nx-dropdown-item>
+            <nx-dropdown-item value="Swallow"></nx-dropdown-item>
+          </nx-dropdown-group>
 
-                    <nx-dropdown-group label="Fish">
-                        <nx-dropdown-item value="Salmon"></nx-dropdown-item>
-                        <nx-dropdown-item value="Mackerel"></nx-dropdown-item>
-                        <nx-dropdown-item value="Catfish"></nx-dropdown-item>
-                    </nx-dropdown-group>
-                </nx-dropdown>
-            </nx-formfield>
-        </div>
+          <nx-dropdown-group label="Fish">
+            <nx-dropdown-item value="Salmon"></nx-dropdown-item>
+            <nx-dropdown-item value="Mackerel"></nx-dropdown-item>
+            <nx-dropdown-item value="Catfish"></nx-dropdown-item>
+          </nx-dropdown-group>
+        </nx-dropdown>
+      </nx-formfield>
     </div>
+  </div>
 </div>

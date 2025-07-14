@@ -1,33 +1,33 @@
 <nx-radio-group>
-    <nx-label>With nx grid component</nx-label>
-    <div nxLayout="nopadding">
-        <div nxRow>
-            @for (item of data; track item) {
-            <div nxCol="12,12,6,4" class="nx-margin-bottom-s">
-                <nx-radio [value]="item">{{item}}</nx-radio>
-            </div>
-            }
-        </div>
-    </div>
-</nx-radio-group>
-<br />
-<nx-radio-group>
-    <nx-label>With CSS Grid</nx-label>
-    <div class="grid-wrapper">
-        @for (item of data; track item) {
+  <nx-label>With nx grid component</nx-label>
+  <div nxLayout="nopadding">
+    <div nxRow>
+      @for (item of data; track item) {
+      <div nxCol="12,12,6,4" class="nx-margin-bottom-s">
         <nx-radio [value]="item">{{item}}</nx-radio>
-        }
+      </div>
+      }
     </div>
+  </div>
+</nx-radio-group>
+<br />
+<nx-radio-group>
+  <nx-label>With CSS Grid</nx-label>
+  <div class="grid-wrapper">
+    @for (item of data; track item) {
+    <nx-radio [value]="item">{{item}}</nx-radio>
+    }
+  </div>
 </nx-radio-group>
 <br />
 <br />
 <nx-radio-group>
-    <nx-label>With CSS Flexbox</nx-label>
-    <div class="flex-wrapper">
-        @for (item of data; track item) {
-        <nx-radio [value]="item" class="nx-margin-right-m nx-margin-bottom-s"
-            >{{item}}</nx-radio
-        >
-        }
-    </div>
+  <nx-label>With CSS Flexbox</nx-label>
+  <div class="flex-wrapper">
+    @for (item of data; track item) {
+    <nx-radio [value]="item" class="nx-margin-right-m nx-margin-bottom-s"
+      >{{item}}</nx-radio
+    >
+    }
+  </div>
 </nx-radio-group>

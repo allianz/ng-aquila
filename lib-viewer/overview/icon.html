@@ -1,24 +1,24 @@
 <div class="docs-private">
 <h3 id="general-usage-of-ndbx-icons" tabindex="-1" class="docs-markdown--h3">General usage of NDBX icons</h3>
 <p class="docs-markdown--p">The icons are comprised of two general types: <strong>functional</strong> and <strong>product icons</strong>. <strong>Functional icons</strong> are used to indicate important actions and functions like search, close or links. In most cases, functional icons will have a size of 24x24px (<strong>s</strong>). <strong>Product icons</strong> are a visual expression of aspects of our products. They are, for instance, used to select product options or in claims use cases. To make both icons distinguishable, the name of all product icons starts with <code>product-*</code>. The outline and fill options should only be used in combination with <strong>product</strong> icons.</p>
-<p class="docs-markdown--p">The general functionality of the icons is provided with the <code>NxIconModule</code> of <code>ng-aquila</code>. The Allianz Icons are provided with the additional <code>NdbxIconModule</code> of <code>@allianz/ngx-ndbx</code> for usage in modules or component imports or with <code>provideNdbxIcons()</code> as a global provider for standalone app configs.</p>
+<p class="docs-markdown--p">The general functionality of the icons is provided with the <code>NxIconModule</code> of <code>ng-aquila</code>. The Allianz Icons are provided with the additional <code>AllianzIconModule</code> of <code>@allianz/ngx-brand-kit</code> for usage in modules or component imports or with <code>provideAllianzIcons()</code> as a global provider for standalone app configs.</p>
 <p class="docs-markdown--p">Current icon version: <strong>2.29.0</strong> --- from <a href="https://github.developer.allianz.io/oneMarketing/allianz-icons">Global Allianz Icons</a></p>
 <h4 id="standalone-projects" tabindex="-1" class="docs-markdown--h4">Standalone projects</h4>
 <p class="docs-markdown--p">Please note that <code>provideNdbxIcons()</code> has to be used on the root level, so in the <code>bootstrapApplication</code> call.</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
-<span class="hljs-keyword">import</span> { provideNdbxIcons } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ngx-ndbx/icon&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { provideAllianzIcons } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ngx-brand-kit/icon&#x27;</span>;
 
 <span class="hljs-comment">// in app.config.ts</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">appConfig</span>: <span class="hljs-title class_">ApplicationConfig</span> = {
   <span class="hljs-attr">providers</span>: [
-    <span class="hljs-title function_">provideNdbxIcons</span>()
+    <span class="hljs-title function_">provideAllianzIcons</span>()
   ],
 };
 </code></pre>
 <h4 id="module-import-usage" tabindex="-1" class="docs-markdown--h4">Module import usage</h4>
-<p class="docs-markdown--p">Instead of the global provider you can continue to use the <code>NdbxIconModule</code> and import it anywhere in your modules or standalone component imports, but it is recommended to do this at the root level of your application and not in sub components or routes.</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NdbxIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ngx-ndbx/icon&#x27;</span>;
+<p class="docs-markdown--p">Instead of the global provider you can continue to use the <code>AllianzIconModule</code> and import it anywhere in your modules or standalone component imports, but it is recommended to do this at the root level of your application and not in sub components or routes.</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">AllianzIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ngx-brand-kit/icon&#x27;</span>;
 
 <span class="hljs-meta">@NgModule</span>({
     <span class="hljs-attr">declarations</span>: [
@@ -27,7 +27,7 @@
     <span class="hljs-attr">imports</span>: [
         <span class="hljs-comment">// ...</span>
         <span class="hljs-title class_">NxIconModule</span>,
-        <span class="hljs-title class_">NdbxIconModule</span>,
+        <span class="hljs-title class_">AllianzIconModule</span>,
     ],
     <span class="hljs-comment">// ...</span>
 })
@@ -38,7 +38,7 @@
 <h3 id="open-source-icons-%2F-icons-not-working%3F" tabindex="-1" class="docs-markdown--h3">Open source icons / icons not working?</h3>
 <p class="docs-markdown--p">For all open source users: internally the projects use an icon font we unfortunately couldn't open source. We are using a special module for the documentation that maps internal icon names to icons from font awesome that the code examples still work.</p>
 <p class="docs-markdown--p">So if you copy any code example that is including an icon and want to see how it looks you can use that same module, for that please install font awesome <code>npm i @fortawesome/fontawesome-free</code> use this import:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxDocumentationIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/documentation-icons&#x27;</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxDocumentationIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/documentation-icons&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">add it to your AppModule and include the <code>node_modules/@fortawesome/fontawesome-free/css/all.css</code> to your project. Alternatively you can of course use any other icon fonts or svgs and register them with the icon registry.</p>
 </div>

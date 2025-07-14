@@ -1,7 +1,7 @@
+import { NxErrorModule } from '@allianz/ng-aquila/base';
+import { NxCircleToggleModule } from '@allianz/ng-aquila/circle-toggle';
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NgModule } from '@angular/core';
-import { NxErrorModule } from '@aposin/ng-aquila/base';
-import { NxCircleToggleModule } from '@aposin/ng-aquila/circle-toggle';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { CircleToggleExpertExampleComponent } from './circle-toggle-expert/circle-toggle-expert-example';
@@ -20,53 +20,51 @@ import { CircleToggleTextExampleComponent } from './circle-toggle-text/circle-to
 import { CircleToggleValidationExampleComponent } from './circle-toggle-validation/circle-toggle-validation-example';
 
 const EXAMPLES = [
-    CircleToggleGroupExampleComponent,
-    CircleToggleLayoutExampleComponent,
-    CircleToggleNegativeExampleComponent,
-    CircleToggleReactiveExampleComponent,
-    CircleToggleReactiveDisabledExampleComponent,
-    CircleToggleResponsiveExampleComponent,
-    CircleToggleSimpleBindingExampleComponent,
-    CircleToggleStandaloneExampleComponent,
-    CircleToggleTemplateDrivenExampleComponent,
-    CircleToggleTextExampleComponent,
-    CircleToggleGroupExpertExampleComponent,
-    CircleToggleValidationExampleComponent,
-    CircleToggleReadonlyExampleComponent,
-    CircleToggleExpertExampleComponent,
+  CircleToggleGroupExampleComponent,
+  CircleToggleLayoutExampleComponent,
+  CircleToggleNegativeExampleComponent,
+  CircleToggleReactiveExampleComponent,
+  CircleToggleReactiveDisabledExampleComponent,
+  CircleToggleResponsiveExampleComponent,
+  CircleToggleSimpleBindingExampleComponent,
+  CircleToggleStandaloneExampleComponent,
+  CircleToggleTemplateDrivenExampleComponent,
+  CircleToggleTextExampleComponent,
+  CircleToggleGroupExpertExampleComponent,
+  CircleToggleValidationExampleComponent,
+  CircleToggleReadonlyExampleComponent,
+  CircleToggleExpertExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxCircleToggleModule,
-        ExamplesSharedModule,
-        NxErrorModule,
-        NxFormfieldModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxCircleToggleModule,
+    ExamplesSharedModule,
+    NxErrorModule,
+    NxFormfieldModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class CircleExamplesModule {
-    static components() {
-        return {
-            'circle-toggle-group': CircleToggleGroupExampleComponent,
-            'circle-toggle-layout': CircleToggleLayoutExampleComponent,
-            'circle-toggle-negative': CircleToggleNegativeExampleComponent,
-            'circle-toggle-reactive': CircleToggleReactiveExampleComponent,
-            'circle-toggle-reactive-disabled':
-                CircleToggleReactiveDisabledExampleComponent,
-            'circle-toggle-responsive': CircleToggleResponsiveExampleComponent,
-            'circle-toggle-simple-binding':
-                CircleToggleSimpleBindingExampleComponent,
-            'circle-toggle-standalone': CircleToggleStandaloneExampleComponent,
-            'circle-toggle-template-driven':
-                CircleToggleTemplateDrivenExampleComponent,
-            'circle-toggle-text': CircleToggleTextExampleComponent,
-            'circle-toggle-group-expert':
-                CircleToggleGroupExpertExampleComponent,
-            'circle-toggle-validation': CircleToggleValidationExampleComponent,
-            'circle-toggle-readonly': CircleToggleReadonlyExampleComponent,
-            'circle-toggle-expert': CircleToggleExpertExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      'circle-toggle-group': CircleToggleGroupExampleComponent,
+      'circle-toggle-layout': CircleToggleLayoutExampleComponent,
+      'circle-toggle-negative': CircleToggleNegativeExampleComponent,
+      'circle-toggle-reactive': CircleToggleReactiveExampleComponent,
+      'circle-toggle-reactive-disabled':
+        CircleToggleReactiveDisabledExampleComponent,
+      'circle-toggle-responsive': CircleToggleResponsiveExampleComponent,
+      'circle-toggle-simple-binding': CircleToggleSimpleBindingExampleComponent,
+      'circle-toggle-standalone': CircleToggleStandaloneExampleComponent,
+      'circle-toggle-template-driven':
+        CircleToggleTemplateDrivenExampleComponent,
+      'circle-toggle-text': CircleToggleTextExampleComponent,
+      'circle-toggle-group-expert': CircleToggleGroupExpertExampleComponent,
+      'circle-toggle-validation': CircleToggleValidationExampleComponent,
+      'circle-toggle-readonly': CircleToggleReadonlyExampleComponent,
+      'circle-toggle-expert': CircleToggleExpertExampleComponent,
+    };
+  }
 }

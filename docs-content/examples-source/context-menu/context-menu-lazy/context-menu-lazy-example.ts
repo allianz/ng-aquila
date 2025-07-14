@@ -1,27 +1,27 @@
-import { Component } from '@angular/core';
-import { NxIconButtonComponent } from '@aposin/ng-aquila/button';
+import { NxIconButtonComponent } from '@allianz/ng-aquila/button';
 import {
-    NxContextMenuComponent,
-    NxContextMenuContentDirective,
-    NxContextMenuItemComponent,
-    NxContextMenuTriggerDirective,
-} from '@aposin/ng-aquila/context-menu';
-import { NxIconComponent } from '@aposin/ng-aquila/icon';
+  NxContextMenuComponent,
+  NxContextMenuContentDirective,
+  NxContextMenuItemComponent,
+  NxContextMenuTriggerDirective,
+} from '@allianz/ng-aquila/context-menu';
+import { NxIconComponent } from '@allianz/ng-aquila/icon';
+import { Component } from '@angular/core';
 
 /**
  * @title Lazy Context Menu Example
  */
 @Component({
-    selector: 'context-menu-lazy-example',
-    templateUrl: './context-menu-lazy-example.html',
-    styleUrls: ['./context-menu-lazy-example.css'],
-    imports: [
-        NxContextMenuComponent,
-        NxContextMenuContentDirective,
-        NxContextMenuItemComponent,
-        NxIconButtonComponent,
-        NxContextMenuTriggerDirective,
-        NxIconComponent,
-    ],
+  selector: 'context-menu-lazy-example',
+  templateUrl: './context-menu-lazy-example.html',
+  styleUrls: ['./context-menu-lazy-example.css'],
+  imports: [
+    NxContextMenuComponent,
+    NxContextMenuContentDirective,
+    NxContextMenuItemComponent,
+    NxIconButtonComponent,
+    NxContextMenuTriggerDirective,
+    NxIconComponent,
+  ],
 })
 export class ContextMenuLazyExampleComponent {}

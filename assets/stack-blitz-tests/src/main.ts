@@ -5,12 +5,12 @@ import './test.ts';
 import './test/jasmine-setup';
 
 (function bootstrap() {
-    if ((window as any).jasmineRef) {
-        location.reload();
+  if ((window as any).jasmineRef) {
+    location.reload();
 
-        return;
-    }
+    return;
+  }
 
-    window.onload!(new Event('anything'));
-    (window as any).jasmineRef = jasmine.getEnv();
+  window.onload!(new Event('anything'));
+  (window as any).jasmineRef = jasmine.getEnv();
 })();

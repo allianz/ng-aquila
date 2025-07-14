@@ -1,44 +1,44 @@
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">TemplateRef</span>, <span class="hljs-title class_">ViewChild</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxMessageToastConfig</span>,
-    <span class="hljs-title class_">NxMessageToastRef</span>,
-    <span class="hljs-title class_">NxMessageToastService</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/message&#x27;</span>;
+  <span class="hljs-title class_">NxMessageToastConfig</span>,
+  <span class="hljs-title class_">NxMessageToastRef</span>,
+  <span class="hljs-title class_">NxMessageToastService</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/message&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">TemplateRef</span>, <span class="hljs-title class_">ViewChild</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">myCustomConfig</span>: <span class="hljs-title class_">NxMessageToastConfig</span> = {
-    <span class="hljs-attr">duration</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">context</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
-    <span class="hljs-attr">announcementMessage</span>: <span class="hljs-string">&#x27;Yay, you see a success message toast&#x27;</span>,
+  <span class="hljs-attr">duration</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">context</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
+  <span class="hljs-attr">announcementMessage</span>: <span class="hljs-string">&#x27;Yay, you see a success message toast&#x27;</span>,
 };
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Custom Settings example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;message-toast-custom-settings-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./message-toast-custom-settings-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./message-toast-custom-settings-example.css&#x27;</span>],
-    <span class="hljs-attr">providers</span>: [<span class="hljs-title class_">NxMessageToastService</span>],
-    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxButtonComponent</span>],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;message-toast-custom-settings-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./message-toast-custom-settings-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./message-toast-custom-settings-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [<span class="hljs-title class_">NxMessageToastService</span>],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxButtonComponent</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MessageToastCustomSettingsExampleComponent</span> {
-    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template&#x27;</span>) templateRef!: <span class="hljs-title class_">TemplateRef</span>&lt;<span class="hljs-built_in">any</span>&gt;;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template&#x27;</span>) templateRef!: <span class="hljs-title class_">TemplateRef</span>&lt;<span class="hljs-built_in">any</span>&gt;;
 
-    toastRef!: <span class="hljs-title class_">NxMessageToastRef</span>;
+  toastRef!: <span class="hljs-title class_">NxMessageToastRef</span>;
 
-    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">messageToastService</span>: <span class="hljs-title class_">NxMessageToastService</span></span>) {}
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">messageToastService</span>: <span class="hljs-title class_">NxMessageToastService</span></span>) {}
 
-    <span class="hljs-title function_">open</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-variable language_">this</span>.<span class="hljs-property">toastRef</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">messageToastService</span>.<span class="hljs-title function_">openFromTemplate</span>(
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">templateRef</span>,
-            myCustomConfig,
-        );
+  <span class="hljs-title function_">open</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">toastRef</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">messageToastService</span>.<span class="hljs-title function_">openFromTemplate</span>(
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">templateRef</span>,
+      myCustomConfig,
+    );
+  }
+
+  <span class="hljs-title function_">close</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">toastRef</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">toastRef</span>.<span class="hljs-title function_">dismiss</span>();
     }
-
-    <span class="hljs-title function_">close</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">toastRef</span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">toastRef</span>.<span class="hljs-title function_">dismiss</span>();
-        }
-    }
+  }
 }

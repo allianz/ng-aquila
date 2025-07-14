@@ -15,42 +15,38 @@ import { TimefieldWithTimepickerExampleComponent } from './timefield-with-timepi
 import { TimefieldWithTimepickerGlobalExampleComponent } from './timefield-with-timepicker-global/timefield-with-timepicker-global-example';
 
 const EXAMPLES = [
-    TimefieldExpertExampleComponent,
-    TimefieldDisabledExampleComponent,
-    TimefieldFormatTogglerExampleComponent,
-    TimefieldLocalizeExampleComponent,
-    TimefieldNegativeExampleComponent,
-    TimefieldReactiveExampleComponent,
-    TimefieldTemplateDrivenExampleComponent,
-    TimefieldOptionsIntervalExampleComponent,
-    TimefieldCustomValidationExampleComponent,
+  TimefieldExpertExampleComponent,
+  TimefieldDisabledExampleComponent,
+  TimefieldFormatTogglerExampleComponent,
+  TimefieldLocalizeExampleComponent,
+  TimefieldNegativeExampleComponent,
+  TimefieldReactiveExampleComponent,
+  TimefieldTemplateDrivenExampleComponent,
+  TimefieldOptionsIntervalExampleComponent,
+  TimefieldCustomValidationExampleComponent,
 ];
 
 @NgModule({
-    imports: [EXAMPLES],
-    exports: [EXAMPLES],
+  imports: [EXAMPLES],
+  exports: [EXAMPLES],
 })
 export class TimefieldExamplesModule {
-    static components() {
-        return {
-            'timefield-expert': TimefieldExpertExampleComponent,
-            'timefield-disabled': TimefieldDisabledExampleComponent,
-            'timefield-format-toggler': TimefieldFormatTogglerExampleComponent,
-            'timefield-localize': TimefieldLocalizeExampleComponent,
-            'timefield-negative': TimefieldNegativeExampleComponent,
-            'timefield-reactive': TimefieldReactiveExampleComponent,
-            'timefield-template-driven':
-                TimefieldTemplateDrivenExampleComponent,
-            'timefield-options-interval':
-                TimefieldOptionsIntervalExampleComponent,
-            'timefield-default': TimefieldDefaultExampleComponent,
-            'timefield-with-timepicker':
-                TimefieldWithTimepickerExampleComponent,
-            'timefield-with-timepicker-global':
-                TimefieldWithTimepickerGlobalExampleComponent,
-            'timefield-custom-validation':
-                TimefieldCustomValidationExampleComponent,
-            'timefield-with-inputmode': TimefieldWithInputmode,
-        };
-    }
+  static components() {
+    return {
+      'timefield-expert': TimefieldExpertExampleComponent,
+      'timefield-disabled': TimefieldDisabledExampleComponent,
+      'timefield-format-toggler': TimefieldFormatTogglerExampleComponent,
+      'timefield-localize': TimefieldLocalizeExampleComponent,
+      'timefield-negative': TimefieldNegativeExampleComponent,
+      'timefield-reactive': TimefieldReactiveExampleComponent,
+      'timefield-template-driven': TimefieldTemplateDrivenExampleComponent,
+      'timefield-options-interval': TimefieldOptionsIntervalExampleComponent,
+      'timefield-default': TimefieldDefaultExampleComponent,
+      'timefield-with-timepicker': TimefieldWithTimepickerExampleComponent,
+      'timefield-with-timepicker-global':
+        TimefieldWithTimepickerGlobalExampleComponent,
+      'timefield-custom-validation': TimefieldCustomValidationExampleComponent,
+      'timefield-with-inputmode': TimefieldWithInputmode,
+    };
+  }
 }

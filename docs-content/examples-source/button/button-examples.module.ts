@@ -1,9 +1,9 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxIndicatorModule } from '@allianz/ng-aquila/indicator';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
 
 import { AnchorButtonExampleComponent } from './anchor-button/anchor-button-example';
 import { ButtonExampleComponent } from './button/button-example';
@@ -21,50 +21,50 @@ import { ButtonSmallMediumExampleComponent } from './button-small-medium/button-
 import { ButtonWithIconExampleComponent } from './button-with-icon/button-with-icon-example';
 
 const EXAMPLES = [
-    ButtonExampleComponent,
-    ButtonBlockExampleComponent,
-    ButtonDangerExampleComponent,
-    ButtonIconExampleComponent,
-    ButtonLargeExampleComponent,
-    ButtonMediumExampleComponent,
-    ButtonNegativeExampleComponent,
-    ButtonPlainExampleComponent,
-    ButtonSmallExampleComponent,
-    ButtonSmallMediumExampleComponent,
-    ButtonWithIconExampleComponent,
-    ButtonIconIndicatorExampleComponent,
-    AnchorButtonExampleComponent,
-    ButtonPlainA1ExampleComponent,
+  ButtonExampleComponent,
+  ButtonBlockExampleComponent,
+  ButtonDangerExampleComponent,
+  ButtonIconExampleComponent,
+  ButtonLargeExampleComponent,
+  ButtonMediumExampleComponent,
+  ButtonNegativeExampleComponent,
+  ButtonPlainExampleComponent,
+  ButtonSmallExampleComponent,
+  ButtonSmallMediumExampleComponent,
+  ButtonWithIconExampleComponent,
+  ButtonIconIndicatorExampleComponent,
+  AnchorButtonExampleComponent,
+  ButtonPlainA1ExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxButtonModule,
-        CommonModule,
-        NxIconModule,
-        NxIndicatorModule,
-        NxHeadlineModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxButtonModule,
+    CommonModule,
+    NxIconModule,
+    NxIndicatorModule,
+    NxHeadlineModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class ButtonExamplesModule {
-    static components() {
-        return {
-            button: ButtonExampleComponent,
-            'button-block': ButtonBlockExampleComponent,
-            'button-danger': ButtonDangerExampleComponent,
-            'button-icon': ButtonIconExampleComponent,
-            'button-large': ButtonLargeExampleComponent,
-            'button-medium': ButtonMediumExampleComponent,
-            'button-negative': ButtonNegativeExampleComponent,
-            'button-plain': ButtonPlainExampleComponent,
-            'button-small': ButtonSmallExampleComponent,
-            'button-small-medium': ButtonSmallMediumExampleComponent,
-            'button-with-icon': ButtonWithIconExampleComponent,
-            'button-icon-indicator': ButtonIconIndicatorExampleComponent,
-            'anchor-button': AnchorButtonExampleComponent,
-            'button-plain-a1': ButtonPlainA1ExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      button: ButtonExampleComponent,
+      'button-block': ButtonBlockExampleComponent,
+      'button-danger': ButtonDangerExampleComponent,
+      'button-icon': ButtonIconExampleComponent,
+      'button-large': ButtonLargeExampleComponent,
+      'button-medium': ButtonMediumExampleComponent,
+      'button-negative': ButtonNegativeExampleComponent,
+      'button-plain': ButtonPlainExampleComponent,
+      'button-small': ButtonSmallExampleComponent,
+      'button-small-medium': ButtonSmallMediumExampleComponent,
+      'button-with-icon': ButtonWithIconExampleComponent,
+      'button-icon-indicator': ButtonIconIndicatorExampleComponent,
+      'anchor-button': AnchorButtonExampleComponent,
+      'button-plain-a1': ButtonPlainA1ExampleComponent,
+    };
+  }
 }

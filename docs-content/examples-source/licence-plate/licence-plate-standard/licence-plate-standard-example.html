@@ -1,21 +1,17 @@
 <div nxLayout="grid maxwidth">
-    <div nxRow>
-        <div nxCol="12,12,10,6" colOffset="0,0,1,3">
-            <nx-formfield label="License Plate">
-                <nx-licence-plate-euro-prefix nxFormfieldPrefix
-                    >D</nx-licence-plate-euro-prefix
-                >
-                <input
-                    nxInput
-                    nxLicensePlate="de_standard"
-                    [(ngModel)]="value"
-                />
-                <span nxFormfieldHint>Format: M-AA 1234</span>
-                <nx-error nxFormfieldError
-                    >Please enter a license plate number in the format "M-AA
-                    1234".</nx-error
-                >
-            </nx-formfield>
-        </div>
+  <div nxRow>
+    <div nxCol="12,12,10,6" colOffset="0,0,1,3">
+      <nx-formfield label="License Plate">
+        <nx-licence-plate-euro-prefix nxFormfieldPrefix
+          >D</nx-licence-plate-euro-prefix
+        >
+        <input nxInput nxLicensePlate="de_standard" [(ngModel)]="value" />
+        <span nxFormfieldHint>Format: M-AA 1234</span>
+        <nx-error nxFormfieldError
+          >Please enter a license plate number in the format "M-AA
+          1234".</nx-error
+        >
+      </nx-formfield>
     </div>
+  </div>
 </div>

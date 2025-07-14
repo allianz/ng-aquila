@@ -1,60 +1,60 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDropdownComponent</span>,
+  <span class="hljs-title class_">NxDropdownItemComponent</span>,
+  <span class="hljs-title class_">NxMultiSelectComponent</span>,
+  <span class="hljs-title class_">SelectOnFocusDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxDropdownComponent</span>,
-    <span class="hljs-title class_">NxDropdownItemComponent</span>,
-    <span class="hljs-title class_">NxMultiSelectComponent</span>,
-    <span class="hljs-title class_">SelectOnFocusDirective</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dropdown&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxColComponent</span>,
-    <span class="hljs-title class_">NxLayoutComponent</span>,
-    <span class="hljs-title class_">NxRowComponent</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/grid&#x27;</span>;
 
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">TelephonePrefixData</span> {
-    <span class="hljs-attr">prefix</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">countryId</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">prefix</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">countryId</span>: <span class="hljs-built_in">string</span>;
 }
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Dropdown copy directive example
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-select-on-focus-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-select-on-focus-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-select-on-focus-example.css&#x27;</span>],
-    <span class="hljs-attr">imports</span>: [
-        <span class="hljs-title class_">NxLayoutComponent</span>,
-        <span class="hljs-title class_">NxRowComponent</span>,
-        <span class="hljs-title class_">NxColComponent</span>,
-        <span class="hljs-title class_">NxFormfieldComponent</span>,
-        <span class="hljs-title class_">NxDropdownComponent</span>,
-        <span class="hljs-title class_">FormsModule</span>,
-        <span class="hljs-title class_">NxDropdownItemComponent</span>,
-        <span class="hljs-title class_">SelectOnFocusDirective</span>,
-        <span class="hljs-title class_">NxMultiSelectComponent</span>,
-    ],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-select-on-focus-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-select-on-focus-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-select-on-focus-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxDropdownComponent</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">NxDropdownItemComponent</span>,
+    <span class="hljs-title class_">SelectOnFocusDirective</span>,
+    <span class="hljs-title class_">NxMultiSelectComponent</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DropdownSelectOnFocusExampleComponent</span> {
-    selectedModel = <span class="hljs-string">&#x27;&#x27;</span>;
-    options = [
-        {
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Apple&#x27;</span>,
-            <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
-        },
-        {
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Banana&#x27;</span>,
-            <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
-        },
-        {
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Strawberry&#x27;</span>,
-            <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>,
-        },
-        {
-            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Orange&#x27;</span>,
-            <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>,
-        },
-    ];
+  selectedModel = <span class="hljs-string">&#x27;&#x27;</span>;
+  options = [
+    {
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Apple&#x27;</span>,
+      <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    },
+    {
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Banana&#x27;</span>,
+      <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+    },
+    {
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Strawberry&#x27;</span>,
+      <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>,
+    },
+    {
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Orange&#x27;</span>,
+      <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>,
+    },
+  ];
 }

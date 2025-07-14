@@ -1,7 +1,7 @@
+import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NxMaskModule } from '@allianz/ng-aquila/mask';
+import { NxRadioModule } from '@allianz/ng-aquila/radio-button';
 import { NgModule } from '@angular/core';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxMaskModule } from '@aposin/ng-aquila/mask';
-import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { IbanMaskExampleComponent } from './iban-mask/iban-mask-example';
@@ -13,35 +13,35 @@ import { MaskSeparatorsExampleComponent } from './mask-separators/mask-separator
 import { MaskValidationExampleComponent } from './mask-validation/mask-validation-example';
 
 const EXAMPLES = [
-    MaskExampleComponent,
-    MaskCaseExampleComponent,
-    MaskDeactivateExampleComponent,
-    MaskDropCharactersExampleComponent,
-    MaskSeparatorsExampleComponent,
-    MaskValidationExampleComponent,
-    IbanMaskExampleComponent,
+  MaskExampleComponent,
+  MaskCaseExampleComponent,
+  MaskDeactivateExampleComponent,
+  MaskDropCharactersExampleComponent,
+  MaskSeparatorsExampleComponent,
+  MaskValidationExampleComponent,
+  IbanMaskExampleComponent,
 ];
 
 @NgModule({
-    imports: [
-        NxMaskModule,
-        NxRadioModule,
-        NxInputModule,
-        ExamplesSharedModule,
-        EXAMPLES,
-    ],
-    exports: [EXAMPLES],
+  imports: [
+    NxMaskModule,
+    NxRadioModule,
+    NxInputModule,
+    ExamplesSharedModule,
+    EXAMPLES,
+  ],
+  exports: [EXAMPLES],
 })
 export class MaskExamplesModule {
-    static components() {
-        return {
-            mask: MaskExampleComponent,
-            'mask-case': MaskCaseExampleComponent,
-            'mask-deactivate': MaskDeactivateExampleComponent,
-            'mask-drop-characters': MaskDropCharactersExampleComponent,
-            'mask-separators': MaskSeparatorsExampleComponent,
-            'mask-validation': MaskValidationExampleComponent,
-            'iban-mask': IbanMaskExampleComponent,
-        };
-    }
+  static components() {
+    return {
+      mask: MaskExampleComponent,
+      'mask-case': MaskCaseExampleComponent,
+      'mask-deactivate': MaskDeactivateExampleComponent,
+      'mask-drop-characters': MaskDropCharactersExampleComponent,
+      'mask-separators': MaskSeparatorsExampleComponent,
+      'mask-validation': MaskValidationExampleComponent,
+      'iban-mask': IbanMaskExampleComponent,
+    };
+  }
 }

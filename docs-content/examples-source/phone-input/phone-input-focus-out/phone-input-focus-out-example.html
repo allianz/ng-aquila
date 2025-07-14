@@ -1,12 +1,12 @@
 <nx-formfield>
-    <nx-formfield-label>Phone number</nx-formfield-label>
-    <nx-phone-input
-        [(ngModel)]="value"
-        placeholder="89 123456"
-        (focusOut)="onFocusOut()"
-        (focusIn)="onFocusIn()"
-    ></nx-phone-input>
-    <nx-message context="info" nxFormfieldNote>
-        Focusing: {{focusing}}
-    </nx-message>
+  <nx-formfield-label>Phone number</nx-formfield-label>
+  <nx-phone-input
+    [(ngModel)]="value"
+    placeholder="89 123456"
+    (focusOut)="onFocusOut()"
+    (focusIn)="onFocusIn()"
+  ></nx-phone-input>
+  <nx-message context="info" nxFormfieldNote>
+    Focusing: {{focusing}}
+  </nx-message>
 </nx-formfield>

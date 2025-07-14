@@ -1,27 +1,27 @@
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">NxTabComponent</span>,
-    <span class="hljs-title class_">NxTabGroupComponent</span>,
-    <span class="hljs-variable constant_">TAB_GROUP_DEFAULT_OPTIONS</span>,
-    <span class="hljs-title class_">TabGroupDefaultOptions</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tabs&#x27;</span>;
+  <span class="hljs-title class_">NxTabComponent</span>,
+  <span class="hljs-title class_">NxTabGroupComponent</span>,
+  <span class="hljs-variable constant_">TAB_GROUP_DEFAULT_OPTIONS</span>,
+  <span class="hljs-title class_">TabGroupDefaultOptions</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/tabs&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">myDefaultOptions</span>: <span class="hljs-title class_">TabGroupDefaultOptions</span> = {
-    <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;expert&#x27;</span>,
+  <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;expert&#x27;</span>,
 };
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Injection token for tab group
  */</span>
 <span class="hljs-meta">@Component</span>({
-    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tabs-injection-token-example&#x27;</span>,
-    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-injection-token-example.html&#x27;</span>,
-    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tabs-injection-token-example.css&#x27;</span>],
-    <span class="hljs-attr">providers</span>: [
-        { <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">TAB_GROUP_DEFAULT_OPTIONS</span>, <span class="hljs-attr">useValue</span>: myDefaultOptions },
-    ],
-    <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxTabGroupComponent</span>, <span class="hljs-title class_">NxTabComponent</span>],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tabs-injection-token-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-injection-token-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tabs-injection-token-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [
+    { <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">TAB_GROUP_DEFAULT_OPTIONS</span>, <span class="hljs-attr">useValue</span>: myDefaultOptions },
+  ],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxTabGroupComponent</span>, <span class="hljs-title class_">NxTabComponent</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TabsInjectionTokenExampleComponent</span> {
-    currentIndex = <span class="hljs-number">0</span>;
+  currentIndex = <span class="hljs-number">0</span>;
 }
