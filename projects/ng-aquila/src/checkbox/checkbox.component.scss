@@ -162,16 +162,16 @@
 }
 
 :host:has(input:disabled) {
-  cursor: not-allowed;
-
   .nx-checkbox__control {
     background-color: v(checkbox-disabled-background-color);
     border-color: v(checkbox-disabled-border-color);
     color: v(checkbox-disabled-icon-color);
+    cursor: not-allowed;
   }
 
   .nx-checkbox__label {
     color: v(checkbox-label-disabled-color);
+    cursor: not-allowed;
   }
 
   .nx-checkbox__indeterminate-indicator {
@@ -180,8 +180,6 @@
 }
 
 :host(.is-readonly) {
-  cursor: not-allowed;
-
   .nx-checkbox__control {
     background-color: v(checkbox-readonly-background-color);
     border-color: v(checkbox-readonly-border-color);
