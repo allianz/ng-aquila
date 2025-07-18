@@ -1,8 +1,14 @@
 @if (themeSwitcherService.selectedTheme().name.includes('allianz-one')) {
-<nx-message-banner class="sticky-banner" closable="false" context="error">
-  <span class="nx-font-weight-bold">Allianz One is experimental!</span><br />
-  Allianz one is in early development and not ready for production. This is a sneak peek, but if not
-  otherwise instructed please do not use it. We will provide more information once it is ready.
+<nx-message-banner class="sticky-banner" closable="false" context="info">
+  <span class="nx-font-weight-bold">One Allianz is ready for early adopters</span><br />
+  Allianz one is still in development, so new features of components might not be available yet. The
+  Allianz one themes are ready to be used in production already though. Check out the
+  <nx-link nxStyle="text"
+    ><a href="https://ngx-ndbx.frameworks.allianz.io/guides/a1"
+      >documentation for more information</a
+    ></nx-link
+  >
+  how to migrate.
 </nx-message-banner>
 }
 

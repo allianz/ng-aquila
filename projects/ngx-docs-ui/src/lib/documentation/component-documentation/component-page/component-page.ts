@@ -1,4 +1,5 @@
 import { NxBadgeModule } from '@allianz/ng-aquila/badge';
+import { NxLinkComponent } from '@allianz/ng-aquila/link';
 import { NxMessageModule } from '@allianz/ng-aquila/message';
 import { NxTabsModule } from '@allianz/ng-aquila/tabs';
 import { ThemeSwitcherService } from '@allianz/ngx-docs-ui';
@@ -38,6 +39,7 @@ export interface DocItem {
     RouterLink,
     RouterOutlet,
     AsyncPipe,
+    NxLinkComponent,
   ],
 })
 export class NxvComponentPage implements OnDestroy {
