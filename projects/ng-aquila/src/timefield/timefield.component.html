@@ -9,57 +9,59 @@
     [negative]="negative ? 'negative' : ''"
   >
     <div role="group" [attr.aria-labelledby]="getLabelledBy()" class="time-group">
-      <input
-        [id]="idHours"
-        #inputHours
-        [value]="hours || null"
-        class="nx-timefield-input__field__hours"
-        type="text"
-        maxlength="2"
-        autocomplete="off"
-        role="combobox"
-        (input)="_onInput($event, 'hours')"
-        (keydown)="handleKeyDown($event)"
-        (focus)="_onFocus()"
-        (blur)="_onInputBlur('hours')"
-        [required]="required"
-        [disabled]="disabled"
-        [placeholder]="placeholderHours"
-        aria-autocomplete="list"
-        [attr.aria-required]="required"
-        [attr.aria-label]="_getAriaLabel('hours')"
-        [attr.aria-expanded]="isOpen.toString()"
-        [attr.aria-controls]="isOpen ? idOptionList : null"
-        [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
-        [attr.aria-describedby]="error?.id"
-        [attr.inputmode]="inputMode"
-      />
-      <span class="nx-timefield-hours-separator" aria-hidden="true">:</span>
-      <input
-        [id]="idMinutes"
-        #inputMinutes
-        [value]="minutes || null"
-        class="nx-timefield-input__field__minutes"
-        type="text"
-        maxlength="2"
-        autocomplete="off"
-        role="combobox"
-        (input)="_onInput($event, 'minutes')"
-        (focus)="_onFocus()"
-        (blur)="_onInputBlur('minutes')"
-        (keydown)="handleKeyDown($event)"
-        [required]="required"
-        [disabled]="disabled"
-        [placeholder]="placeholderMinutes"
-        aria-autocomplete="list"
-        [attr.aria-required]="required"
-        [attr.aria-label]="_getAriaLabel('minutes')"
-        [attr.aria-expanded]="isOpen.toString()"
-        [attr.aria-controls]="isOpen ? idOptionList : null"
-        [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
-        [attr.aria-describedby]="error?.id"
-        [attr.inputmode]="inputMode"
-      />
+      <div class="time-input">
+        <input
+          [id]="idHours"
+          #inputHours
+          [value]="hours || null"
+          class="nx-timefield-input__field__hours"
+          type="text"
+          maxlength="2"
+          autocomplete="off"
+          role="combobox"
+          (input)="_onInput($event, 'hours')"
+          (keydown)="handleKeyDown($event)"
+          (focus)="_onFocus()"
+          (blur)="_onInputBlur('hours')"
+          [required]="required"
+          [disabled]="disabled"
+          [placeholder]="placeholderHours"
+          aria-autocomplete="list"
+          [attr.aria-required]="required"
+          [attr.aria-label]="_getAriaLabel('hours')"
+          [attr.aria-expanded]="isOpen.toString()"
+          [attr.aria-controls]="isOpen ? idOptionList : null"
+          [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+          [attr.aria-describedby]="error?.id"
+          [attr.inputmode]="inputMode"
+        />
+        <span class="nx-timefield-hours-separator" aria-hidden="true">:</span>
+        <input
+          [id]="idMinutes"
+          #inputMinutes
+          [value]="minutes || null"
+          class="nx-timefield-input__field__minutes"
+          type="text"
+          maxlength="2"
+          autocomplete="off"
+          role="combobox"
+          (input)="_onInput($event, 'minutes')"
+          (focus)="_onFocus()"
+          (blur)="_onInputBlur('minutes')"
+          (keydown)="handleKeyDown($event)"
+          [required]="required"
+          [disabled]="disabled"
+          [placeholder]="placeholderMinutes"
+          aria-autocomplete="list"
+          [attr.aria-required]="required"
+          [attr.aria-label]="_getAriaLabel('minutes')"
+          [attr.aria-expanded]="isOpen.toString()"
+          [attr.aria-controls]="isOpen ? idOptionList : null"
+          [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+          [attr.aria-describedby]="error?.id"
+          [attr.inputmode]="inputMode"
+        />
+      </div>
       @if (withTimepicker) {
         <button
           nxFormfieldSuffix

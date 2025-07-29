@@ -5,6 +5,7 @@ $selected-box-shadow: 0 -2px 0 0;
 
 :host {
   display: inline-block;
+  width: 100%;
 }
 
 .nx-timefield__wrapper {
@@ -38,13 +39,7 @@ $selected-box-shadow: 0 -2px 0 0;
     margin: 0;
   }
   &__minutes {
-    width: 32px;
-  }
-}
-
-:host-context(.has-timepicker) {
-  .nx-timefield-input__field__minutes {
-    margin-right: 18px;
+    width: 100%;
   }
 }
 
@@ -64,6 +59,9 @@ nx-radio-toggle {
 }
 
 :host ::ng-deep {
+  .nx-formfield {
+    width: 100%;
+  }
   .nx-formfield__wrapper {
     padding-bottom: 2px;
   }
@@ -163,7 +161,14 @@ nx-radio-toggle {
 }
 
 .time-group {
-  display: inherit;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.time-input {
+  display: flex;
+  width: 100%;
 }
 
 .nx-timepicker-toggle-button {
@@ -216,7 +221,7 @@ section {
   outline: none;
   height: 252px;
   background: v(timepicker-layout-background-color);
-  text-align: center;
+  text-align: left;
   padding: 8px 0;
   margin: 6px 0;
   overflow-y: scroll;
