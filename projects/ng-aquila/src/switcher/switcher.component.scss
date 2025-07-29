@@ -16,6 +16,21 @@
       }
     }
   }
+
+  &.nx-switcher--small-label {
+    .has-label {
+      .nx-switcher__label-text {
+        @include type-style(switcher-small);
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+
+      .nx-switcher__toggle {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
+  }
 }
 
 .nx-switcher__input {
@@ -28,6 +43,7 @@
   display: flex;
   position: relative;
 }
+
 :host(.is-swapped) .nx-switcher__control {
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -44,6 +60,7 @@
 .nx-switcher__toggle {
   position: relative;
   display: inline-block;
+  flex-shrink: 0;
   width: v(switcher-width);
   height: v(switcher-height);
   margin-top: auto;
@@ -160,20 +177,6 @@ nx-icon {
   }
 
   &.nx-switcher--large-label {
-    .has-label {
-      .nx-switcher__label-text {
-        margin-top: auto;
-        margin-bottom: auto;
-      }
-
-      .nx-switcher__toggle {
-        margin-top: auto;
-        margin-bottom: auto;
-      }
-    }
-  }
-
-  &.nx-switcher--small-label {
     .has-label {
       .nx-switcher__label-text {
         margin-top: auto;
