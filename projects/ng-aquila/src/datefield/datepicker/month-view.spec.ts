@@ -84,7 +84,9 @@ describe('NxMonthView', () => {
     });
 
     it('shows selected date if in same month', () => {
-      const selectedEl = monthViewNativeElement.querySelector('.nx-calendar-body-selected');
+      const selectedEl = monthViewNativeElement.querySelector(
+        '.nx-calendar-body-selected .nx-calendar-body-cell-content',
+      );
       expect(selectedEl!.innerHTML.trim()).toBe('10');
     });
 
@@ -101,7 +103,9 @@ describe('NxMonthView', () => {
       (cellEls[cellEls.length - 1] as HTMLElement).click();
       fixture.detectChanges();
 
-      const selectedEl = monthViewNativeElement.querySelector('.nx-calendar-body-selected');
+      const selectedEl = monthViewNativeElement.querySelector(
+        '.nx-calendar-body-selected .nx-calendar-body-cell-content',
+      );
       expect(selectedEl!.innerHTML.trim()).toBe('31');
     });
 

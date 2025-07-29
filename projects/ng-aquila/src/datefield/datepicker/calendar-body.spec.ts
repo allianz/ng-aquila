@@ -56,7 +56,9 @@ describe('NxCalendarBodyComponent', () => {
     });
 
     it('highlights selected', () => {
-      const selectedCell = calendarBodyNativeElement.querySelector('.nx-calendar-body-selected');
+      const selectedCell = calendarBodyNativeElement.querySelector(
+        '.nx-calendar-body-selected .nx-calendar-body-cell-content',
+      );
       expect(selectedCell).not.toBeNull();
       expect(selectedCell!.innerHTML.trim()).toBe('4');
     });

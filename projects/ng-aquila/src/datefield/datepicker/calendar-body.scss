@@ -43,6 +43,10 @@ $item-size: nx-spacer(3m);
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
   }
+
+  &.cdk-keyboard-focused > .nx-calendar-body-cell-content {
+    @include focus-style;
+  }
 }
 
 .nx-calendar-body-disabled {

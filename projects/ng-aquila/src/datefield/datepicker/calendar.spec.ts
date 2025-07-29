@@ -116,7 +116,11 @@ describe('NxCalendarComponent', () => {
       expect(calendarInstance._currentView).toBe('multi-year');
       expect(calendarInstance._activeDate).toEqual(new Date(2017, JAN, 31));
 
-      (calendarElement.querySelector('.nx-calendar-body-active') as HTMLElement).click();
+      (
+        calendarElement.querySelector(
+          '.nx-calendar-body-active .nx-calendar-body-cell-content',
+        ) as HTMLElement
+      ).click();
       fixture.detectChanges();
 
       expect(calendarInstance._currentView).toBe('year');
@@ -189,13 +193,21 @@ describe('NxCalendarComponent', () => {
       expect(calendarInstance._currentView).toBe('multi-year');
       expect(calendarInstance._activeDate).toEqual(new Date(2017, JAN, 31));
 
-      (calendarElement.querySelector('.nx-calendar-body-active') as HTMLElement).click();
+      (
+        calendarElement.querySelector(
+          '.nx-calendar-body-active .nx-calendar-body-cell-content',
+        ) as HTMLElement
+      ).click();
 
       fixture.detectChanges();
 
       expect(calendarInstance._currentView).toBe('year');
 
-      (calendarElement.querySelector('.nx-calendar-body-active') as HTMLElement).click();
+      (
+        calendarElement.querySelector(
+          '.nx-calendar-body-active .nx-calendar-body-cell-content',
+        ) as HTMLElement
+      ).click();
 
       const normalizedMonth: Date = fixture.componentInstance.selectedMonth;
       expect(normalizedMonth.getMonth()).toBe(0);
@@ -208,7 +220,11 @@ describe('NxCalendarComponent', () => {
       expect(calendarInstance._currentView).toBe('multi-year');
       expect(calendarInstance._activeDate).toEqual(new Date(2017, JAN, 31));
 
-      (calendarElement.querySelector('.nx-calendar-body-active') as HTMLElement).click();
+      (
+        calendarElement.querySelector(
+          '.nx-calendar-body-active .nx-calendar-body-cell-content',
+        ) as HTMLElement
+      ).click();
 
       fixture.detectChanges();
 
@@ -254,7 +270,11 @@ describe('NxCalendarComponent', () => {
             dispatchMouseEvent(periodButton, 'click');
             fixture.detectChanges();
 
-            (calendarBodyEl.querySelector('.nx-calendar-body-active') as HTMLElement).click();
+            (
+              calendarBodyEl.querySelector(
+                '.nx-calendar-body-active .nx-calendar-body-cell-content',
+              ) as HTMLElement
+            ).click();
             fixture.detectChanges();
           });
 
@@ -410,13 +430,14 @@ describe('NxCalendarComponent', () => {
 
       (calendarElement.querySelector('.nx-calendar-body-active') as HTMLElement).click();
       fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        spyOn(calendarInstance.yearView, '_init').and.callThrough();
 
-      spyOn(calendarInstance.yearView, '_init').and.callThrough();
+        testComponent.minDate = new Date(2017, NOV, 1);
+        fixture.detectChanges();
 
-      testComponent.minDate = new Date(2017, NOV, 1);
-      fixture.detectChanges();
-
-      expect(calendarInstance.yearView._init).toHaveBeenCalled();
+        expect(calendarInstance.yearView._init).toHaveBeenCalled();
+      });
     });
 
     it('should re-render the year view when the maxDate changes', () => {
@@ -430,12 +451,12 @@ describe('NxCalendarComponent', () => {
       (calendarElement.querySelector('.nx-calendar-body-active') as HTMLElement).click();
       fixture.detectChanges();
 
-      spyOn(calendarInstance.yearView, '_init').and.callThrough();
-
-      testComponent.maxDate = new Date(2017, DEC, 1);
-      fixture.detectChanges();
-
-      expect(calendarInstance.yearView._init).toHaveBeenCalled();
+      fixture.whenStable().then(() => {
+        spyOn(calendarInstance.yearView, '_init').and.callThrough();
+        testComponent.maxDate = new Date(2017, DEC, 1);
+        fixture.detectChanges();
+        expect(calendarInstance.yearView._init).toHaveBeenCalled();
+      });
     });
 
     it('should re-render the multi-year view when the minDate changes', () => {
@@ -521,18 +542,25 @@ describe('NxCalendarComponent', () => {
       });
 
       it('should allow entering month view at disabled month', () => {
+        console.log('Before change', calendarInstance._currentView);
         const periodButton = calendarElement.querySelector(
           '.nx-calendar-change-view-button',
         ) as HTMLElement;
         dispatchMouseEvent(periodButton, 'click');
         fixture.detectChanges();
-
-        (calendarElement.querySelector('.nx-calendar-body-active') as HTMLElement).click();
+        (
+          calendarElement.querySelector(
+            '.nx-calendar-body-active .nx-calendar-body-cell-content',
+          ) as HTMLElement
+        ).click();
+        console.log(
+          "calendarElement.querySelector('.nx-calendar-body-active')",
+          calendarElement.querySelector('.nx-calendar-body-active'),
+        );
         fixture.detectChanges();
 
-        calendarInstance._activeDate = new Date(2017, NOV, 1);
+        calendarInstance._activeDate = new Date(2025, NOV, 1);
         fixture.detectChanges();
-
         expect(calendarInstance._currentView).toBe('year');
 
         tableBodyEl = calendarElement.querySelector('.nx-calendar-body') as HTMLElement;

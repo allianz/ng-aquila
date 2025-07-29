@@ -50,7 +50,7 @@ export class NxCalendarCell {
   styleUrls: ['calendar-body.scss'],
   host: {
     class: 'nx-calendar-body',
-    role: 'grid',
+    role: 'rowgroup',
     'attr.aria-readonly': 'true',
   },
   exportAs: 'nxCalendarBody',

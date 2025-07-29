@@ -74,7 +74,9 @@ describe('NxYearView', () => {
     });
 
     it('shows selected month if in same year', () => {
-      const selectedEl = yearViewNativeElement.querySelector('.nx-calendar-body-selected');
+      const selectedEl = yearViewNativeElement.querySelector(
+        '.nx-calendar-body-selected .nx-calendar-body-cell-content',
+      ) as HTMLElement;
       expect(selectedEl!.innerHTML.trim()).toBe('Mar');
     });
 
@@ -91,8 +93,10 @@ describe('NxYearView', () => {
       (cellEls[cellEls.length - 1] as HTMLElement).click();
       fixture.detectChanges();
 
-      const selectedEl = yearViewNativeElement.querySelector('.nx-calendar-body-selected');
-      expect(selectedEl!.innerHTML.trim()).toBe('Dec');
+      const selectedEl = yearViewNativeElement.querySelector(
+        '.nx-calendar-body-selected',
+      ) as HTMLElement;
+      expect(selectedEl!.innerText.trim()).toBe('Dec');
     });
 
     it('should emit the selected month on cell clicked', () => {

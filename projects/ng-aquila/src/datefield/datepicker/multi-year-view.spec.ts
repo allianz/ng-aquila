@@ -71,7 +71,9 @@ describe('NxMultiYearView', () => {
       (cellEls[cellEls.length - 1] as HTMLElement).click();
       fixture.detectChanges();
 
-      const selectedEl = multiYearViewNativeElement.querySelector('.nx-calendar-body-selected');
+      const selectedEl = multiYearViewNativeElement.querySelector(
+        '.nx-calendar-body-selected  .nx-calendar-body-cell-content',
+      );
       expect(selectedEl!.innerHTML.trim()).toBe('2019');
     });
 

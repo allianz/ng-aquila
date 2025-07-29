@@ -1,11 +1,10 @@
-<table class="nx-calendar-table">
+<table class="nx-calendar-table" role="grid">
   <thead class="nx-calendar-table-head">
     <tr>
       @for (day of _weekdays; track day) {
       <th class="nx-calendar-table-header" [attr.aria-label]="day.long">{{day.narrow}}</th>
       }
     </tr>
-    <tr></tr>
   </thead>
 
   <tbody
