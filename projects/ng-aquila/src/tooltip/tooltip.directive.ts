@@ -27,6 +27,7 @@ import {
   InjectionToken,
   Injector,
   Input,
+  input,
   NgZone,
   OnDestroy,
   OnInit,
@@ -264,7 +265,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
     // first tap from firing its click event or can cause the tooltip to open for clicks.
     if (!platform.IOS && !platform.ANDROID) {
       this._manualListeners
-        .set('mouseenter', () => this.show())
+        .set('mouseenter', () => (this.manualTrigger() ? null : this.show()))
         .set('mouseleave', () => this.hide());
     } else {
       // Fall back to showing on `touchstart`, otherwise
@@ -278,6 +279,12 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
       this.position = _defaultOptions.position;
     }
   }
+
+  /**
+   * Whether the tooltip should only be shown or hidden manually.
+   * If true, tooltip will not respond to mouse or focus events.
+   */
+  manualTrigger = input(false);
 
   ngOnInit(): void {
     this._updateSelectabilityStyles();

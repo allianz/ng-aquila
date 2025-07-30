@@ -1151,6 +1151,18 @@ class SelectableTooltip {
   @ViewChild('textarea') textarea!: ElementRef<HTMLTextAreaElement>;
 }
 
+@Component({
+  template: `<button #button [nxTooltip]="'Tooltip'" [manualTrigger]="manualTrigger">
+    Button
+  </button>`,
+  imports: [NxTooltipModule],
+})
+class ManualTriggerTooltipTestComponent {
+  manualTrigger = false;
+  @ViewChild('button') button!: ElementRef<HTMLButtonElement>;
+  @ViewChild(NxTooltipDirective) tooltip!: NxTooltipDirective;
+}
+
 /** Asserts whether a tooltip directive has a tooltip instance. */
 function assertTooltipInstance(tooltip: NxTooltipDirective, shouldExist: boolean): void {
   // Note that we have to cast this to a boolean, because Jasmine will go into an infinite loop
@@ -1158,3 +1170,43 @@ function assertTooltipInstance(tooltip: NxTooltipDirective, shouldExist: boolean
   // happens due to the `_tooltipInstance` having a circular structure.
   expect(!!tooltip._tooltipInstance).toBe(shouldExist);
 }
+
+describe('manualTrigger input', () => {
+  let fixture: ComponentFixture<ManualTriggerTooltipTestComponent>;
+  let component: ManualTriggerTooltipTestComponent;
+  let buttonElement: HTMLButtonElement;
+  let tooltipDirective: NxTooltipDirective;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [NoopAnimationsModule, ManualTriggerTooltipTestComponent],
+    }).compileComponents();
+    fixture = TestBed.createComponent(ManualTriggerTooltipTestComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    buttonElement = component.button.nativeElement;
+    tooltipDirective = component.tooltip;
+  });
+
+  it('should not show or hide the tooltip automatically when manualTrigger is true', fakeAsync(() => {
+    component.manualTrigger = true;
+    fixture.detectChanges();
+
+    buttonElement.dispatchEvent(new Event('mouseenter'));
+    fixture.detectChanges();
+    tick(200);
+    expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+
+    buttonElement.dispatchEvent(new Event('mouseleave'));
+    fixture.detectChanges();
+    tick(200);
+    expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+
+    component.manualTrigger = false;
+    fixture.detectChanges();
+    buttonElement.dispatchEvent(new Event('mouseenter'));
+    fixture.detectChanges();
+    tick(200);
+    expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+  }));
+});

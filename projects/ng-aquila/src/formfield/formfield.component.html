@@ -47,7 +47,10 @@ We are building the following structure.
               class="nx-formfield__tooltip"
               #input
               #tooltip="nxTooltip"
-              [nxTooltip]="_isEllipsisActive() ? inputValueText : null"
+              [nxTooltip]="inputValueText"
+              [manualTrigger]="true"
+              (mouseenter)="this._isEllipsisActive() && tooltip.show()"
+              (focusin)="this._isEllipsisActive() && tooltip.show()"
               (click)="tooltip.hide()"
             >
               <ng-content select="input[nxInput]"></ng-content>
