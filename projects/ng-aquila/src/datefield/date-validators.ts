@@ -10,6 +10,62 @@ export class NxDateValidators {
   /** The form control validator for whether the input parses. */
   static parse<D>(
     dateAdapter: NxDateAdapter<D>,
+    format: string,
+    dateString: string,
+    strict: boolean,
+  ): ValidatorFn;
+  static parse<D>(
+    dateAdapter: NxDateAdapter<D>,
+    dateFormats: NxDateFormats,
+    input: HTMLInputElement,
+    strict: boolean,
+    customParseFormat: string | string[],
+  ): ValidatorFn;
+  static parse<D>(
+    dateAdapter: NxDateAdapter<D>,
+    dateFormats: NxDateFormats | string,
+    inputOrDateString: HTMLInputElement | string,
+    strict: boolean,
+    customParseFormat: string | string[] | null = null,
+  ): ValidatorFn {
+    if (typeof inputOrDateString !== 'string') {
+      return NxDateValidators.parseBySingleHtmlInput(
+        dateAdapter,
+        dateFormats as NxDateFormats,
+        inputOrDateString as HTMLInputElement,
+        strict,
+        customParseFormat as string | string[],
+      );
+    }
+
+    return NxDateValidators.parseByStrings(
+      dateAdapter,
+      dateFormats as string,
+      inputOrDateString as string,
+      strict,
+    );
+  }
+
+  static parseByStrings<D>(
+    dateAdapter: NxDateAdapter<D>,
+    format: string,
+    dateString: string,
+    strict: boolean,
+  ): ValidatorFn {
+    return (): ValidationErrors | null => {
+      if (!dateString) {
+        return null;
+      }
+
+      const parsedDate = dateAdapter.parse(dateString, format, strict);
+      const isValid = parsedDate && dateAdapter.isValid(parsedDate);
+
+      return isValid ? null : { nxDatefieldParse: { text: dateString, format, strict } };
+    };
+  }
+
+  static parseBySingleHtmlInput<D>(
+    dateAdapter: NxDateAdapter<D>,
     dateFormats: NxDateFormats,
     input: HTMLInputElement,
     strict: boolean,

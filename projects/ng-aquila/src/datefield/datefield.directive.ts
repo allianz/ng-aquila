@@ -45,6 +45,7 @@ import { NxDateRangeConnector } from './date-range/date-range-connect';
 import { NxDateValidators } from './date-validators';
 import { createMissingDateImplError } from './datefield.functions';
 import { NxDatepickerComponent } from './datepicker/datepicker.component';
+import { NxDatepickerInputInterface } from './datepicker/datepicker-input.directive';
 
 export const NX_DATEFIELD_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -95,7 +96,7 @@ export class NxDatepickerInputEvent<D> {
     '[attr.min]': 'min ? _dateAdapter.toIso8601(min) : null',
     '[attr.max]': 'max ? _dateAdapter.toIso8601(max) : null',
     '[disabled]': 'disabled',
-    '[readonly]': 'readonly()',
+    '[readonly]': 'readonlyState()',
     '(input)': '_onInput($event.target.value)',
     '(change)': '_onChange()',
     '(blur)': '_onBlur()',
@@ -105,7 +106,12 @@ export class NxDatepickerInputEvent<D> {
   standalone: true,
 })
 export class NxDatefieldDirective<D>
-  implements AfterContentInit, ControlValueAccessor, OnDestroy, Validator
+  implements
+    AfterContentInit,
+    ControlValueAccessor,
+    OnDestroy,
+    Validator,
+    NxDatepickerInputInterface<D>
 {
   /** @docs-private */
   currentFormattedDate: string | null = null;
@@ -125,10 +131,22 @@ export class NxDatefieldDirective<D>
   }
   _datepicker?: NxDatepickerComponent<D>;
 
+  /**
+   * @deprecated
+   */
   /** Function that can be used to filter out dates within the datepicker and invalidate values in the datefield. */
   @Input() set datefieldFilter(value: (date: D | null) => boolean) {
     this._dateFilter = value;
     this._validatorOnChange();
+  }
+
+  @Input() set dateFilter(value: (date: D | null) => boolean) {
+    this._dateFilter = value;
+    this._validatorOnChange();
+  }
+
+  get dateFilter(): ((date: D | null) => boolean) | undefined {
+    return this._dateFilter;
   }
 
   /** Provide or read the current date. It's type <D> depends on the chosen date implementation */
@@ -227,12 +245,12 @@ export class NxDatefieldDirective<D>
   private _disabled!: boolean;
 
   /** Whether the datefield is readonly. */
-  readonly readonly = model<boolean>(false);
+  readonly readonlyState = model<boolean>(false, { alias: 'readonly' });
   private readonly _readonlyStateChangeEffect: EffectRef;
 
   /** Whether the datefield is readonly. */
   setReadonly(value: boolean) {
-    this.readonly.set(value);
+    this.readonlyState.set(value);
   }
 
   /** Emits when a `change` event is fired on this `<input>`. */
@@ -253,7 +271,7 @@ export class NxDatefieldDirective<D>
   readonly _dateAdapter: NxDateAdapter<D>;
   private readonly _dateFormats: NxDateFormats;
 
-  private readonly _destroyed = new Subject<void>();
+  protected readonly _destroyed = new Subject<void>();
 
   _dateFilter!: (date: D | null) => boolean;
 
@@ -291,7 +309,7 @@ export class NxDatefieldDirective<D>
     });
 
     this._readonlyStateChangeEffect = effect(() => {
-      this._readonlyChange.emit(this.readonly());
+      this._readonlyChange.emit(this.readonlyState());
     });
   }
 

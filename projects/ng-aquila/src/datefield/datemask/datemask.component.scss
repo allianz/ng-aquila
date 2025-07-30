@@ -1,0 +1,77 @@
+@import '../../shared-styles/index';
+
+:host {
+  /* Disable arrow buttons for number inputs for Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Disable arrow buttons for number inputs for Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  width: 100%;
+  max-width: 100%;
+
+  .datemask-container {
+    display: flex;
+    gap: nx-spacer(4xs);
+    width: 100%;
+    text-align: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    background: 0 0;
+    color: inherit;
+    border: none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    align-items: center;
+  }
+
+  input {
+    flex-shrink: 0;
+    min-width: 2ch;
+    width: 2ch;
+    text-align: left;
+
+    &:last-of-type {
+      padding-right: var(--formfield-outline-spacing);
+      flex-grow: 1;
+      width: auto;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &:placeholder-shown {
+      text-overflow: unset;
+    }
+  }
+
+  .year-input {
+    width: 4ch;
+  }
+
+  .month-input:placeholder-shown {
+    width: 3ch;
+  }
+}
+
+// making the spacing between inputs and seperators look "natural"
+::ng-deep {
+  .nx-formfield.has-outline {
+    input {
+      padding: 0;
+
+      &:first-of-type {
+        // replicate the space between outline formfield border and first input
+        margin-left: var(--formfield-outline-spacing);
+      }
+    }
+  }
+}

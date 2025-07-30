@@ -141,6 +141,19 @@ This example will except and parse inputs of `MM/DD/YYYY | MM--DD-->YYYY | MMDDY
 
 <!-- example(datefield-range-format) -->
 
+### Datemask
+
+The Datemask supports full dates with numeric inputs (e.g. _DD.MM.YYYY_ or _YYYY-MM-DD_). 
+
+<!-- example(datemask-basic) -->
+
+#### Formats 
+
+<!-- example(datemask-format) -->
+
+#### Reactive Forms 
+
+<!-- example(datemask-reactive-form) -->
 
 ### Parsing & Formatting
 

@@ -1,0 +1,72 @@
+<div
+  class="datemask-container"
+  #datemaskContainer
+  role="group"
+  [attr.aria-labelledby]="datemaskGroupAriaLabelledBy()"
+  [attr.aria-label]="ariaLabel()"
+>
+  @for (i of _inputOrder(); track i; let lastInput = $last, index = $index) {
+    @switch (i) {
+      @case ('d') {
+        <input
+          class="c-input"
+          (keydown)="keyPress($event)"
+          (paste)="handlePaste($event)"
+          (input)="_focusNextInput($event)"
+          [(ngModel)]="_dayValue"
+          (ngModelChange)="handleChange()"
+          (blur)="dayBlur()"
+          nxDatemaskDay
+          nxDatemaskInput
+          maxlength="2"
+          [readonly]="readonly"
+          [disabled]="disabled"
+          [attr.aria-label]="datemaskIntl?.dayInputAriaLabel() || 'Day'"
+          [attr.placeholder]="datemaskIntl?.dayInputPlaceholder() || 'dd'"
+          [attr.aria-describedby]="ariaDescribedBy()"
+        />
+      }
+      @case ('m') {
+        <input
+          class="c-input month-input"
+          (keydown)="keyPress($event)"
+          (paste)="handlePaste($event)"
+          (input)="_focusNextInput($event)"
+          [(ngModel)]="_monthValue"
+          (ngModelChange)="handleChange()"
+          (blur)="monthBlur()"
+          nxDatemaskMonth
+          nxDatemaskInput
+          maxlength="2"
+          [readonly]="readonly"
+          [disabled]="disabled"
+          [attr.aria-label]="datemaskIntl?.monthInputAriaLabel() || 'Month'"
+          [attr.placeholder]="datemaskIntl?.monthInputPlaceholder() || 'mm'"
+          [attr.aria-describedby]="ariaDescribedBy()"
+        />
+      }
+      @case ('y') {
+        <input
+          (keydown)="keyPress($event)"
+          (paste)="handlePaste($event)"
+          (input)="_focusNextInput($event)"
+          [(ngModel)]="_yearValue"
+          (ngModelChange)="handleChange()"
+          (blur)="yearBlur()"
+          class="c-input year-input"
+          nxDatemaskYear
+          nxDatemaskInput
+          maxlength="4"
+          [readonly]="readonly"
+          [disabled]="disabled"
+          [attr.aria-label]="datemaskIntl?.yearInputAriaLabel() || 'Year'"
+          [attr.placeholder]="datemaskIntl?.yearInputPlaceholder() || 'yyyy'"
+          [attr.aria-describedby]="ariaDescribedBy()"
+        />
+      }
+    }
+    @if (!lastInput) {
+      {{ separator() }}
+    }
+  }
+</div>

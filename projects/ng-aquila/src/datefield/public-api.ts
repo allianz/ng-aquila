@@ -4,6 +4,8 @@ export * from './date-range/date-range.intl';
 export * from './date-validators';
 export * from './datefield.directive';
 export * from './datefield.module';
+export * from './datemask/datemask.component';
+export * from './datemask/datemask.intl';
 export * from './datepicker/calendar';
 export * from './datepicker/calendar-body';
 export * from './datepicker/datepicker.component';

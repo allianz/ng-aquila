@@ -1,0 +1,60 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="12"><h5>Date Mask Formats</h5></div>
+  </div>
+  <div nxRow>
+    <div nxCol="12,12,5">
+      <nx-formfield label="Date Format">
+        <nx-dropdown [(ngModel)]="format">
+          <nx-dropdown-item value="DD.MM.YYYY"
+            ><strong>Common</strong> - DD.MM.YYYY</nx-dropdown-item
+          >
+          <nx-dropdown-item value="YYYY-MM-DD"
+            ><strong>ISO</strong> - YYYY-MM-DD</nx-dropdown-item
+          >
+          <nx-dropdown-item value="MM/DD/YYYY"
+            ><strong>US</strong> - MM/DD/YYYY</nx-dropdown-item
+          >
+          <nx-dropdown-item value="MM#YYYY#DD"
+            ><strong>😵‍💫</strong> - MM#YYYY#DD</nx-dropdown-item
+          >
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+  </div>
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <nx-formfield label="Birthday">
+        <nx-datemask
+          [(ngModel)]="date"
+          [datepicker]="myDatepicker"
+          [format]="format"
+          #dateMinMaxModel="ngModel"
+        ></nx-datemask>
+        <span nxFormfieldHint>{{format}}</span>
+        @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMax) {
+        <nx-error nxFormfieldError>
+          The date is too far in the future
+        </nx-error>
+        } @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMin)
+        {
+        <nx-error nxFormfieldError> The date is too far in the past </nx-error>
+        } @if (dateMinMaxModel.errors &&
+        dateMinMaxModel.errors.nxDatefieldParse) {
+        <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+        }
+
+        <nx-message context="info" nxFormfieldNote>
+          Provide your birthday date. Match the format or use the date picker.
+        </nx-message>
+
+        <nx-datepicker-toggle
+          [for]="myDatepicker"
+          nxFormfieldSuffix
+        ></nx-datepicker-toggle>
+        <nx-datepicker #myDatepicker></nx-datepicker>
+      </nx-formfield>
+      Date: {{date}}
+    </div>
+  </div>
+</div>

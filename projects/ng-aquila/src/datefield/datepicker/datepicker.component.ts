@@ -50,9 +50,9 @@ import { filter, takeUntil } from 'rxjs/operators';
 
 import { NxDateAdapter } from '../adapter/date-adapter';
 import { DateRange } from '../date-range/date-range.component';
-import { NxDatefieldDirective } from '../datefield.directive';
 import { createMissingDateImplError } from '../datefield.functions';
 import { NxCalendarComponent } from './calendar';
+import { NxDatepickerInputInterface } from './datepicker-input.directive';
 import { NxDatepickerIntl } from './datepicker-intl';
 import { NxDatepickerToggleComponent } from './datepicker-toggle';
 
@@ -196,7 +196,11 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     if (this.disabledInput() !== undefined) {
       return this.disabledInput();
     }
-    return this._datepickerInput?.readonly() || this._datepickerInputStartDate?.readonly() || false;
+    return (
+      this._datepickerInput?.readonlyState() ||
+      this._datepickerInputStartDate?.readonlyState() ||
+      false
+    );
   });
 
   /**
@@ -285,7 +289,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     this._dateFilter = value;
   }
   get dateFilter(): (date: D | null) => boolean {
-    return this._datepickerInput?._dateFilter || this._dateFilter;
+    return this._datepickerInput?.dateFilter || this._dateFilter;
   }
   private _dateFilter!: (date: D | null) => boolean;
 
@@ -302,10 +306,10 @@ export class NxDatepickerComponent<D> implements OnDestroy {
   private _focusedElementBeforeOpen: HTMLElement | null = null;
 
   /** The input element this datepicker is associated with. */
-  _datepickerInput!: NxDatefieldDirective<D>;
+  _datepickerInput!: NxDatepickerInputInterface<D>;
 
-  _datepickerInputStartDate?: NxDatefieldDirective<D>;
-  _datepickerInputEndDate?: NxDatefieldDirective<D>;
+  _datepickerInputStartDate?: NxDatepickerInputInterface<D>;
+  _datepickerInputEndDate?: NxDatepickerInputInterface<D>;
 
   _toggleButton!: NxDatepickerToggleComponent<D>;
 
@@ -389,7 +393,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
    * @param input The datepicker input to register with this datepicker.
    * @docs-private
    */
-  registerInput(input: NxDatefieldDirective<D>, inputDateMode: string = 'single'): void {
+  registerInput(input: NxDatepickerInputInterface<D>, inputDateMode: string = 'single'): void {
     if (this._datepickerInput && !this.isRange()) {
       throw Error('A NxDatepicker can only be associated with a single input.');
     }
@@ -580,7 +584,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
   /** Create the popup PositionStrategy. */
   private _createPopupPositionStrategy(): PositionStrategy {
-    const dateInputPositionAnchor: NxDatefieldDirective<D> = this.isRange()
+    const dateInputPositionAnchor: NxDatepickerInputInterface<D> = this.isRange()
       ? this._datepickerInputEndDate!
       : this._datepickerInput!;
     return this._overlay

@@ -290,7 +290,7 @@ describe('NxDatefieldDirective with Moment', () => {
 
       const test = fixture.componentRef.instance as ReadonlyDatefield;
 
-      expect(test.datefieldDirective.readonly()).toBeTruthy();
+      expect(test.datefieldDirective.readonlyState()).toBeTruthy();
       expect(test.inputDirective.readonly).toBeTruthy();
       expect(test.datepickerComponent.disabled()).toBeTruthy();
       expect(test.datepickerToggleComponent.disabled()).toBeTruthy();
@@ -314,7 +314,7 @@ describe('NxDatefieldDirective with Moment', () => {
 
       fixture.detectChanges();
 
-      expect(test.datefieldDirective.readonly()).toBeFalsy();
+      expect(test.datefieldDirective.readonlyState()).toBeFalsy();
       expect(test.inputDirective.readonly).toBeFalsy();
       expect(test.datepickerComponent.disabled()).toBeFalsy();
       expect(test.datepickerToggleComponent.disabled()).toBeFalsy();
@@ -333,7 +333,7 @@ describe('NxDatefieldDirective with Moment', () => {
       // test if setReadonly(true) on nxInput directive is working
       test.inputDirective.setReadonly(true);
       fixture.detectChanges();
-      expect(test.datefieldDirective.readonly()).toBeTruthy();
+      expect(test.datefieldDirective.readonlyState()).toBeTruthy();
       expect(test.inputDirective.readonly).toBeTruthy();
       expect(test.datepickerComponent.disabled()).toBeTruthy();
       expect(test.datepickerToggleComponent.disabled()).toBeTruthy();
@@ -341,7 +341,7 @@ describe('NxDatefieldDirective with Moment', () => {
       // test if setReadonly(false) on nxInput directive is working
       test.inputDirective.setReadonly(false);
       fixture.detectChanges();
-      expect(test.datefieldDirective.readonly()).toBeFalsy();
+      expect(test.datefieldDirective.readonlyState()).toBeFalsy();
       expect(test.inputDirective.readonly).toBeFalsy();
       expect(test.datepickerComponent.disabled()).toBeFalsy();
       expect(test.datepickerToggleComponent.disabled()).toBeFalsy();
@@ -349,7 +349,7 @@ describe('NxDatefieldDirective with Moment', () => {
       // test if setReadonly(false) on NxAbstractControl is working
       test.abstractControl.setReadonly(true);
       fixture.detectChanges();
-      expect(test.datefieldDirective.readonly()).toBeTruthy();
+      expect(test.datefieldDirective.readonlyState()).toBeTruthy();
       expect(test.inputDirective.readonly).toBeTruthy();
       expect(test.datepickerComponent.disabled()).toBeTruthy();
       expect(test.datepickerToggleComponent.disabled()).toBeTruthy();
@@ -527,12 +527,12 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
     createTestComponent(ReactiveIsoDatefield);
     const nativeElement = fixture.nativeElement.querySelector('input');
 
-    datefieldInstance.readonly.set(true);
+    datefieldInstance.readonlyState.set(true);
     fixture.detectChanges();
 
     expect(nativeElement.readOnly).toBeTruthy();
 
-    datefieldInstance.readonly.set(false);
+    datefieldInstance.readonlyState.set(false);
     fixture.detectChanges();
     expect(nativeElement.readOnly).toBeFalse();
   });
