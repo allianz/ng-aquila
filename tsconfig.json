@@ -9,11 +9,10 @@
     "esModuleInterop": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
     "importHelpers": true,
     "resolveJsonModule": true,
     "target": "es2022",
-    "module": "es2020",
+    "module": "preserve",
     "lib": ["es2020", "dom"],
     "paths": {
       "@allianz/ng-aquila": ["projects/ng-aquila/src/public-api.ts"],

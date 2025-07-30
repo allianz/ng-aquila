@@ -16,8 +16,8 @@ import {
   GridApi,
   GridReadyEvent,
   provideGlobalGridOptions,
+  RowSelectionOptions,
 } from 'ag-grid-community';
-import { MultiRowSelectionOptions } from 'ag-grid-community/dist/types/src/entities/gridOptions';
 import { Observable } from 'rxjs';
 
 /**
@@ -31,7 +31,7 @@ import { Observable } from 'rxjs';
   encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class AgGridOpensourceExampleComponent {
-  rowSelection: MultiRowSelectionOptions = {
+  rowSelection: RowSelectionOptions = {
     mode: 'multiRow',
     headerCheckbox: true,
     checkboxes: true,
@@ -161,10 +161,11 @@ export class AgGridOpensourceExampleComponent {
     }
     const currentSelection = this.gridApi.getGridOption(
       'rowSelection',
-    ) as MultiRowSelectionOptions;
+    ) as RowSelectionOptions;
     const currentCheckboxes = currentSelection?.checkboxes ?? false;
     this.gridApi.setGridOption('rowSelection', {
       ...this.rowSelection,
+      mode: 'multiRow',
       headerCheckbox: !currentCheckboxes,
       checkboxes: !currentCheckboxes,
     });

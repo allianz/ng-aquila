@@ -22,8 +22,8 @@ import {
   GridApi,
   GridReadyEvent,
   ModuleRegistry,
+  RowSelectionOptions,
 } from 'ag-grid-community';
-import { MultiRowSelectionOptions } from 'ag-grid-community/dist/types/src/entities/gridOptions';
 import { Observable } from 'rxjs';
 
 ModuleRegistry.registerModules([ClientSideRowModelModule, AllCommunityModule]);
@@ -39,7 +39,7 @@ ModuleRegistry.registerModules([ClientSideRowModelModule, AllCommunityModule]);
 })
 export class AgGridOpensourceThemingAPIExampleComponent {
   theme = themeAquila;
-  rowSelection: MultiRowSelectionOptions = {
+  rowSelection: RowSelectionOptions = {
     mode: 'multiRow',
     headerCheckbox: true,
     checkboxes: true,
@@ -179,10 +179,11 @@ export class AgGridOpensourceThemingAPIExampleComponent {
     }
     const currentSelection = this.gridApi.getGridOption(
       'rowSelection',
-    ) as MultiRowSelectionOptions;
+    ) as RowSelectionOptions;
     const currentCheckboxes = currentSelection?.checkboxes ?? false;
     this.gridApi.setGridOption('rowSelection', {
       ...this.rowSelection,
+      mode: 'multiRow',
       headerCheckbox: !currentCheckboxes,
       checkboxes: !currentCheckboxes,
     });
