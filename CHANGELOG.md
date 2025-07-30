@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.1.0](https://github.com/allianz/ng-aquila/compare/v20.0.0...v20.1.0) (2025-07-30)
+
+
+### Features ✨
+
+* **datemask:** introduce new datemask component  ([4e5b89b](https://github.com/allianz/ng-aquila/commit/4e5b89b0eb07dba34d384bb742f50ec53ec98248))
+
+
+### Bug Fixes 🐛
+
+* **build:** prevent wrong module resolution ([49d3ca8](https://github.com/allianz/ng-aquila/commit/49d3ca82bcf369e5d7afce83bcbddcf767413f03))
+* **checkbox:** cursor style for disabled states ([5f72761](https://github.com/allianz/ng-aquila/commit/5f7276112b2cf714c7ce3cef2cb2a3d1835fbf63))
+* **datepicker:** NVDA not going into focus mode ([755473c](https://github.com/allianz/ng-aquila/commit/755473c038dd192e06aa7454f05e5104a2db4a2a))
+* **formfield:** evaluate tooltip visibility on mouseenter to improve performance ([4007801](https://github.com/allianz/ng-aquila/commit/4007801fc03fd4f4f20919ddb2a58bb5f64caab0))
+* **switcher:** small label font size ([dad63ee](https://github.com/allianz/ng-aquila/commit/dad63ee335540913187975fce9925e913fbaab45))
+* **timefield:** input does not grow with container ([82ceeec](https://github.com/allianz/ng-aquila/commit/82ceeecd0c63a0943a49fa6a8c6bc3b8e9083c32))
+
 ## [20.0.0](https://github.com/allianz/ng-aquila/compare/v19.7.0...v20.0.0) (2025-07-14)
 
 ### Moving ng-aquila from @aposin to @allianz organization
