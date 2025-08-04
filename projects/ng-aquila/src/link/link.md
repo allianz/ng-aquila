@@ -43,7 +43,7 @@ With the `[size]` property you can apply different sizes.
 
 As mentioned earlier, multiple modifiers can be combined.
 
-Here's an example of a negative link written in block letters:
+Here's an example of a negative link with icon on the right side:
 
 <!-- example(link-multiple) -->
 
