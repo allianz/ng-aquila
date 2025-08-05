@@ -9,7 +9,14 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  flush,
+  TestBed,
+  tick,
+  waitForAsync,
+} from '@angular/core/testing';
 import {
   FormBuilder,
   FormGroup,
@@ -162,6 +169,22 @@ describe('NxCheckboxGroupComponent', () => {
     errors = fixture.nativeElement.querySelectorAll('nx-error') as NodeListOf<HTMLInputElement>;
     expect(errors).toHaveSize(0);
     expect(checkboxGroupInstance.errorState).toBeFalsy();
+  }));
+
+  it('should display error message on submit', fakeAsync(() => {
+    createTestComponent(CheckboxGroupValidationNoInitialSelect);
+
+    const submitButton = fixture.nativeElement.querySelector('button') as HTMLButtonElement;
+
+    submitButton.click();
+    tick();
+    fixture.detectChanges();
+    flush();
+
+    const errorElement = fixture.nativeElement.querySelector('nx-error');
+
+    expect(errorElement).toBeDefined();
+    expect(errorElement.textContent).toBe(' Please accept all our terms and conditions ');
   }));
 
   it('should mark as checked the passed values', fakeAsync(() => {
@@ -326,6 +349,38 @@ class CheckboxGroupValidation extends CheckboxGroupTest {
   myFormGroup!: FormGroup;
 
   checkboxGroupCheckedValues = ['Term 2', 'Term 3'];
+
+  constructor(private readonly fb: FormBuilder) {
+    super();
+    this.createForm();
+  }
+
+  createForm() {
+    this.myFormGroup = this.fb.group({
+      terms: [this.checkboxGroupCheckedValues, Validators.required],
+    });
+  }
+}
+
+@Component({
+  template: `
+    <form [formGroup]="myFormGroup">
+      <nx-checkbox-group name="terms" formControlName="terms" required>
+        <nx-label>Accept terms</nx-label>
+        <nx-checkbox value="Term 1">Term 1</nx-checkbox>
+        <nx-checkbox value="Term 2">Term 2</nx-checkbox>
+        <nx-checkbox value="Term 3">Term 3</nx-checkbox>
+        <nx-error appearance="text"> Please accept all our terms and conditions </nx-error>
+      </nx-checkbox-group>
+      <button type="submit">submit</button>
+    </form>
+  `,
+  imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
+})
+class CheckboxGroupValidationNoInitialSelect extends CheckboxGroupTest {
+  myFormGroup!: FormGroup;
+
+  checkboxGroupCheckedValues = [];
 
   constructor(private readonly fb: FormBuilder) {
     super();

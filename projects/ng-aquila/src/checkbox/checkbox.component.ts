@@ -26,6 +26,7 @@ import {
   Output,
   QueryList,
   Self,
+  signal,
   ViewChild,
 } from '@angular/core';
 import {
@@ -319,9 +320,9 @@ export class NxCheckboxGroupComponent
     '[class.nx-checkbox--label-large]': 'labelSize === "large"',
     '[class.nx-checkbox--label-small]': 'labelSize === "small"',
     '[class.nx-checkbox--negative]': 'negative',
-    '[class.has-error]': '_controlInvalid() || null',
+    '[class.has-error]': 'errorState() || null',
     '[attr.required]': 'required',
-    '[attr.aria-invalid]': '_controlInvalid() || null',
+    '[attr.aria-invalid]': 'errorState() || null',
     '[class.is-readonly]': 'checkboxGroup?.readonly || readonly',
     '[class.can-hover]': '!readonly && !disabled && !negative',
   },
@@ -344,7 +345,14 @@ export class NxCheckboxGroupComponent
   imports: [NxIconModule, CdkObserveContent],
 })
 export class NxCheckboxComponent
-  implements ControlValueAccessor, OnDestroy, OnInit, AfterViewInit, Validator, NxAbstractControl
+  implements
+    ControlValueAccessor,
+    OnDestroy,
+    OnInit,
+    AfterViewInit,
+    Validator,
+    NxAbstractControl,
+    DoCheck
 {
   /** @docs-private */
   @ViewChild('checkboxLabelWrapper', { static: true }) _checkboxLabelWrapper!: ElementRef;
@@ -517,6 +525,8 @@ export class NxCheckboxComponent
   _parentForm: NgForm | null = null;
   _parentFormGroup: FormGroupDirective | null = null;
 
+  protected errorState = signal<boolean>(false);
+
   constructor(
     private readonly _cdr: ChangeDetectorRef,
     private readonly _errorStateMatcher: ErrorStateMatcher,
@@ -524,6 +534,12 @@ export class NxCheckboxComponent
     private readonly _focusMonitor: FocusMonitor,
     private injector: Injector,
   ) {}
+
+  ngDoCheck(): void {
+    if (this.ngControl || this.checkboxGroup) {
+      this.updateErrorState();
+    }
+  }
 
   setReadonly(value: boolean): void {
     this.readonly = value;
@@ -534,17 +550,10 @@ export class NxCheckboxComponent
     return this.required && control.value !== true ? { required: true } : null;
   }
 
-  /** @docs-private */
-  _controlInvalid(): boolean {
+  private updateErrorState() {
     const parent = this._parentFormGroup || this._parentForm;
-    let control: FormControl | NgControl | null = null; // TODO this doesn't seem correct
-
-    if (this.checkboxGroup?.ngControl) {
-      control = this.checkboxGroup.ngControl;
-    } else {
-      control = this.ngControl ? (this.ngControl.control as FormControl) : null;
-    }
-    return this._errorStateMatcher.isErrorState(control as FormControl, parent);
+    const control = this.checkboxGroup?.ngControl || this.ngControl;
+    this.errorState.set(this._errorStateMatcher.isErrorState(control, parent));
   }
 
   ngOnInit(): void {

@@ -374,6 +374,23 @@ describe('NxCheckboxComponent', () => {
         .withContext('Expected control to be dirty.')
         .toBeTrue();
     }));
+
+    it('should show error messages on submit', fakeAsync(() => {
+      createTestComponent(ReactiveCheckbox);
+      const submitButton = fixture.nativeElement.querySelector(
+        '#submit-button',
+      ) as HTMLButtonElement;
+
+      submitButton.click();
+      tick();
+      fixture.detectChanges();
+      flush();
+
+      const errorElement = fixture.nativeElement.querySelector('nx-error');
+
+      expect(errorElement).toBeDefined();
+      expect(errorElement.textContent).toBe('This is error');
+    }));
   });
 
   describe('a11y', () => {
