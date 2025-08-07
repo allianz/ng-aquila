@@ -15,7 +15,6 @@ import {
   NxLayoutComponent,
   NxRowComponent,
 } from '@allianz/ng-aquila/grid';
-import { NxMessageComponent } from '@allianz/ng-aquila/message';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -37,7 +36,6 @@ import moment from 'moment';
     NxRowComponent,
     NxColComponent,
     NxErrorComponent,
-    NxMessageComponent,
     NxDatepickerToggleComponent,
     NxDatepickerComponent,
     NxFormfieldHintDirective,

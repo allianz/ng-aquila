@@ -45,7 +45,13 @@
           [(ngModel)]="customDateExpert"
           format="DD.MM.YYYY"
           #dateExpertModel="ngModel"
+          [datepicker]="outlineDatepicker"
         ></nx-datemask>
+        <nx-datepicker-toggle
+          [for]="outlineDatepicker"
+          nxFormfieldSuffix
+        ></nx-datepicker-toggle>
+        <nx-datepicker #outlineDatepicker></nx-datepicker>
         <span nxFormfieldHint>DD.MM.YYYY</span>
         @if (dateExpertModel.errors && dateExpertModel.errors.nxDatefieldParse)
         {

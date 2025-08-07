@@ -144,6 +144,7 @@ This example will except and parse inputs of `MM/DD/YYYY | MM--DD-->YYYY | MMDDY
 ### Datemask
 
 The Datemask supports full dates with numeric inputs (e.g. _DD.MM.YYYY_ or _YYYY-MM-DD_). 
+The Datemask can be used with and without the datepicker.
 
 <!-- example(datemask-basic) -->
 
