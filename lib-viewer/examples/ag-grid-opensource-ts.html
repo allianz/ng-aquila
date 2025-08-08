@@ -16,8 +16,8 @@
   <span class="hljs-title class_">GridApi</span>,
   <span class="hljs-title class_">GridReadyEvent</span>,
   provideGlobalGridOptions,
+  <span class="hljs-title class_">RowSelectionOptions</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;ag-grid-community&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">MultiRowSelectionOptions</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;ag-grid-community/dist/types/src/entities/gridOptions&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Observable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 
 <span class="hljs-comment">/**
@@ -31,7 +31,7 @@
   <span class="hljs-attr">encapsulation</span>: <span class="hljs-title class_">ViewEncapsulation</span>.<span class="hljs-property">ShadowDom</span>,
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AgGridOpensourceExampleComponent</span> {
-  <span class="hljs-attr">rowSelection</span>: <span class="hljs-title class_">MultiRowSelectionOptions</span> = {
+  <span class="hljs-attr">rowSelection</span>: <span class="hljs-title class_">RowSelectionOptions</span> = {
     <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;multiRow&#x27;</span>,
     <span class="hljs-attr">headerCheckbox</span>: <span class="hljs-literal">true</span>,
     <span class="hljs-attr">checkboxes</span>: <span class="hljs-literal">true</span>,
@@ -161,10 +161,11 @@
     }
     <span class="hljs-keyword">const</span> currentSelection = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">getGridOption</span>(
       <span class="hljs-string">&#x27;rowSelection&#x27;</span>,
-    ) <span class="hljs-keyword">as</span> <span class="hljs-title class_">MultiRowSelectionOptions</span>;
+    ) <span class="hljs-keyword">as</span> <span class="hljs-title class_">RowSelectionOptions</span>;
     <span class="hljs-keyword">const</span> currentCheckboxes = currentSelection?.<span class="hljs-property">checkboxes</span> ?? <span class="hljs-literal">false</span>;
     <span class="hljs-variable language_">this</span>.<span class="hljs-property">gridApi</span>.<span class="hljs-title function_">setGridOption</span>(<span class="hljs-string">&#x27;rowSelection&#x27;</span>, {
       ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">rowSelection</span>,
+      <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;multiRow&#x27;</span>,
       <span class="hljs-attr">headerCheckbox</span>: !currentCheckboxes,
       <span class="hljs-attr">checkboxes</span>: !currentCheckboxes,
     });

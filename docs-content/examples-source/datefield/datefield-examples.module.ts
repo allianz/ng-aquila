@@ -27,6 +27,9 @@ import { DatefieldScrollStrategyProviderExampleComponent } from './datefield-scr
 import { DatefieldStartviewExampleComponent } from './datefield-startview/datefield-startview-example';
 import { DatefieldTodayButtonExampleComponent } from './datefield-today-button/datefield-today-button-example';
 import { DatefieldToggleFocusExampleComponent } from './datefield-toggle-focus/datefield-toggle-focus-example';
+import { DatemaskBasicExampleComponent } from './datemask-basic/datemask-basic-example';
+import { DatemaskFormatExampleComponent } from './datemask-format/datemask-format-example';
+import { DatemaskReactiveFormExampleComponent } from './datemask-reactive-form/datemask-reactive-form-example';
 
 const EXAMPLES = [
   DatefieldBasicExampleComponent,
@@ -89,6 +92,9 @@ export class DatefieldExamplesModule {
         DatefieldScrollStrategyProviderExampleComponent,
       'datefield-readonly': DatefieldReadonlyExampleComponent,
       'datefield-range-format': DatefieldRangeFormatExampleComponent,
+      'datemask-basic': DatemaskBasicExampleComponent,
+      'datemask-format': DatemaskFormatExampleComponent,
+      'datemask-reactive-form': DatemaskReactiveFormExampleComponent,
     };
   }
 }

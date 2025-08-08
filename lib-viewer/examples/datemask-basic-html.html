@@ -1,0 +1,66 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h5</span>&gt;</span>Date Mask<span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Birthday&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-datemask</span>
+          [<span class="hljs-attr">min</span>]=<span class="hljs-string">&quot;minDate&quot;</span>
+          [<span class="hljs-attr">max</span>]=<span class="hljs-string">&quot;maxDate&quot;</span>
+          [<span class="hljs-attr">dateFilter</span>]=<span class="hljs-string">&quot;dateFilter&quot;</span>
+          [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;customDate&quot;</span>
+          [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
+          <span class="hljs-attr">format</span>=<span class="hljs-string">&quot;DD.MM.YYYY&quot;</span>
+          [<span class="hljs-attr">required</span>]=<span class="hljs-string">&quot;true&quot;</span>
+          #<span class="hljs-attr">dateMinMaxModel</span>=<span class="hljs-string">&quot;ngModel&quot;</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datemask</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>DD.MM.YYYY<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        @if (dateMinMaxModel.errors &amp;&amp; dateMinMaxModel.errors.nxDatefieldMax) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+          The date is too far in the future
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        } @if (dateMinMaxModel.errors &amp;&amp; dateMinMaxModel.errors.nxDatefieldMin)
+        {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> The date is too far in the past <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        } @if (dateMinMaxModel.errors &amp;&amp;
+        dateMinMaxModel.errors.nxDatefieldParse) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> Please enter a valid date. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        }@if (dateMinMaxModel.errors &amp;&amp; dateMinMaxModel.errors.required) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> Birthday is required.<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        }
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
+          [<span class="hljs-attr">for</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
+          <span class="hljs-attr">nxFormfieldSuffix</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">myDatepicker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+      Date: {{customDate}}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Birthday&quot;</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-datemask</span>
+          <span class="hljs-attr">visualSeperator</span>=<span class="hljs-string">&quot;/&quot;</span>
+          [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;customDateExpert&quot;</span>
+          <span class="hljs-attr">format</span>=<span class="hljs-string">&quot;DD.MM.YYYY&quot;</span>
+          #<span class="hljs-attr">dateExpertModel</span>=<span class="hljs-string">&quot;ngModel&quot;</span>
+          [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;outlineDatepicker&quot;</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datemask</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
+          [<span class="hljs-attr">for</span>]=<span class="hljs-string">&quot;outlineDatepicker&quot;</span>
+          <span class="hljs-attr">nxFormfieldSuffix</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">outlineDatepicker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>DD.MM.YYYY<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        @if (dateExpertModel.errors &amp;&amp; dateExpertModel.errors.nxDatefieldParse)
+        {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+          Please enter a valid date.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+      Date: {{customDateExpert}}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

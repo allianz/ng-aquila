@@ -1,0 +1,66 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="12"><h5>Date Mask</h5></div>
+  </div>
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <nx-formfield label="Birthday">
+        <nx-datemask
+          [min]="minDate"
+          [max]="maxDate"
+          [dateFilter]="dateFilter"
+          [(ngModel)]="customDate"
+          [datepicker]="myDatepicker"
+          format="DD.MM.YYYY"
+          [required]="true"
+          #dateMinMaxModel="ngModel"
+        ></nx-datemask>
+        <span nxFormfieldHint>DD.MM.YYYY</span>
+        @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMax) {
+        <nx-error nxFormfieldError>
+          The date is too far in the future
+        </nx-error>
+        } @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMin)
+        {
+        <nx-error nxFormfieldError> The date is too far in the past </nx-error>
+        } @if (dateMinMaxModel.errors &&
+        dateMinMaxModel.errors.nxDatefieldParse) {
+        <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+        }@if (dateMinMaxModel.errors && dateMinMaxModel.errors.required) {
+        <nx-error nxFormfieldError> Birthday is required.</nx-error>
+        }
+
+        <nx-datepicker-toggle
+          [for]="myDatepicker"
+          nxFormfieldSuffix
+        ></nx-datepicker-toggle>
+        <nx-datepicker #myDatepicker></nx-datepicker>
+      </nx-formfield>
+      Date: {{customDate}}<br />
+    </div>
+    <div nxCol="12,12,6">
+      <nx-formfield label="Birthday" appearance="outline">
+        <nx-datemask
+          visualSeperator="/"
+          [(ngModel)]="customDateExpert"
+          format="DD.MM.YYYY"
+          #dateExpertModel="ngModel"
+          [datepicker]="outlineDatepicker"
+        ></nx-datemask>
+        <nx-datepicker-toggle
+          [for]="outlineDatepicker"
+          nxFormfieldSuffix
+        ></nx-datepicker-toggle>
+        <nx-datepicker #outlineDatepicker></nx-datepicker>
+        <span nxFormfieldHint>DD.MM.YYYY</span>
+        @if (dateExpertModel.errors && dateExpertModel.errors.nxDatefieldParse)
+        {
+        <nx-error nxFormfieldError appearance="text">
+          Please enter a valid date.
+        </nx-error>
+        }
+      </nx-formfield>
+      Date: {{customDateExpert}}
+    </div>
+  </div>
+</div>

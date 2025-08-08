@@ -1,0 +1,40 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h5</span>&gt;</span>Date Mask<span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;datemaskForm&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Birthday&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-datemask</span>
+            <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;date&quot;</span>
+            [<span class="hljs-attr">min</span>]=<span class="hljs-string">&quot;minDate&quot;</span>
+            [<span class="hljs-attr">max</span>]=<span class="hljs-string">&quot;maxDate&quot;</span>
+            [<span class="hljs-attr">dateFilter</span>]=<span class="hljs-string">&quot;dateFilter&quot;</span>
+            [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
+            <span class="hljs-attr">format</span>=<span class="hljs-string">&quot;DD.MM.YYYY&quot;</span>
+          &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datemask</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>DD.MM.YYYY<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+            @if (datemaskForm.controls.date.errors &amp;&amp;
+            datemaskForm.controls.date.errors.nxDatefieldMax) { The date is too
+            far in the future } @if (datemaskForm.controls.date.errors &amp;&amp;
+            datemaskForm.controls.date.errors.nxDatefieldMin) { The date is too
+            far in the past } @if (datemaskForm.controls.date.errors &amp;&amp;
+            datemaskForm.controls.date.errors.nxDatefieldParse) { Please enter a
+            valid date. }@if (datemaskForm.controls.date.errors &amp;&amp;
+            datemaskForm.controls.date.errors.required) { Birthday is required.
+            }
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
+            [<span class="hljs-attr">for</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
+            <span class="hljs-attr">nxFormfieldSuffix</span>
+          &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">myDatepicker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+      Date: {{datemaskForm.controls.date.value | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

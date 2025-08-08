@@ -1,0 +1,40 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="12"><h5>Date Mask</h5></div>
+  </div>
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <form [formGroup]="datemaskForm">
+        <nx-formfield label="Birthday">
+          <nx-datemask
+            formControlName="date"
+            [min]="minDate"
+            [max]="maxDate"
+            [dateFilter]="dateFilter"
+            [datepicker]="myDatepicker"
+            format="DD.MM.YYYY"
+          ></nx-datemask>
+          <span nxFormfieldHint>DD.MM.YYYY</span>
+          <nx-error nxFormfieldError>
+            @if (datemaskForm.controls.date.errors &&
+            datemaskForm.controls.date.errors.nxDatefieldMax) { The date is too
+            far in the future } @if (datemaskForm.controls.date.errors &&
+            datemaskForm.controls.date.errors.nxDatefieldMin) { The date is too
+            far in the past } @if (datemaskForm.controls.date.errors &&
+            datemaskForm.controls.date.errors.nxDatefieldParse) { Please enter a
+            valid date. }@if (datemaskForm.controls.date.errors &&
+            datemaskForm.controls.date.errors.required) { Birthday is required.
+            }
+          </nx-error>
+
+          <nx-datepicker-toggle
+            [for]="myDatepicker"
+            nxFormfieldSuffix
+          ></nx-datepicker-toggle>
+          <nx-datepicker #myDatepicker></nx-datepicker>
+        </nx-formfield>
+      </form>
+      Date: {{datemaskForm.controls.date.value | json }}<br />
+    </div>
+  </div>
+</div>
