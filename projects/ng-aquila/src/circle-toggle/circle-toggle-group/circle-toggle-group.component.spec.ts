@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   Directive,
+  signal,
   Type,
   ViewChild,
   viewChild,
@@ -55,6 +56,10 @@ describe('NxToggleButtonGroup', () => {
   function click(index: number) {
     toggleInputs.item(index).click();
     fixture.detectChanges();
+  }
+
+  function getIconToggleButtons() {
+    return Array.from(toggleButtons).map((toggle) => toggle.querySelector('nx-icon-toggle-button'));
   }
 
   beforeEach(waitForAsync(() => {
@@ -197,7 +202,18 @@ describe('NxToggleButtonGroup', () => {
   it('can be set to readonly and child toggles inherit the state', () => {
     createTestComponent(ReadonlyCircleToggleGroupComponent);
     expect(toggleNativeElement.getAttribute('aria-disabled')).toBe('true');
-    toggleButtons.forEach((toggle) => expect(toggle).toHaveClass('is-readonly'));
+    // we have to look into the icon toggle buttons, to catch potential CD problems where the
+    // is-readonly class is on the main circle-toggle element but CD of the circle toggle hasn't run
+    // and the icon toggle is still showing an active state
+    const iconToggles = getIconToggleButtons();
+    iconToggles.forEach((toggleButton) => expect(toggleButton).toHaveClass('is-readonly'));
+    // also test if changing it triggers change detection
+    (testInstance as ReadonlyCircleToggleGroupComponent).readonly.set(false);
+    fixture.detectChanges();
+    iconToggles.forEach((toggleButton) => expect(toggleButton).not.toHaveClass('is-readonly'));
+    (testInstance as ReadonlyCircleToggleGroupComponent).readonly.set(true);
+    fixture.detectChanges();
+    iconToggles.forEach((toggleButton) => expect(toggleButton).toHaveClass('is-readonly'));
   });
 
   it('implements NxAbstractControl', () => {
@@ -217,9 +233,7 @@ describe('NxToggleButtonGroup', () => {
     createTestComponent(SimpleCircleToggleGroupComponent);
     toggleComponent.negative = true;
     fixture.detectChanges();
-    const iconToggles = Array.from(toggleButtons).map((toggle) =>
-      toggle.querySelector('nx-icon-toggle-button'),
-    );
+    const iconToggles = getIconToggleButtons();
     iconToggles.forEach((toggle) => expect(toggle).toHaveClass('is-negative'));
   });
 
@@ -586,7 +600,7 @@ class DisabledCircleToggleGroupComponent extends ButtonToggleGroupTest {}
 
 @Component({
   template: `
-    <nx-circle-toggle-group #group readonly>
+    <nx-circle-toggle-group #group [readonly]="readonly()">
       <nx-circle-toggle
         value="A"
         icon="product-heart"
@@ -601,6 +615,7 @@ class DisabledCircleToggleGroupComponent extends ButtonToggleGroupTest {}
 })
 class ReadonlyCircleToggleGroupComponent extends ButtonToggleGroupTest {
   abstractControl = viewChild.required('group', { read: NxAbstractControl });
+  readonly = signal(true);
 }
 
 @Component({

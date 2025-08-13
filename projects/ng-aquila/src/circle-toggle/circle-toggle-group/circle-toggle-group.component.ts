@@ -152,7 +152,18 @@ export class NxCircleToggleGroupComponent
   }
   private _disabled = false;
 
-  @Input({ transform: booleanAttribute }) readonly = false;
+  private _readonly = false;
+
+  @Input({ transform: booleanAttribute })
+  set readonly(value: boolean) {
+    if (this._readonly !== value) {
+      this._readonly = value;
+      this._stateChanges.next();
+    }
+  }
+  get readonly(): boolean {
+    return this._readonly;
+  }
 
   /** Whether the circle toggle group uses the negative styling. */
   @Input() set negative(value: BooleanInput) {
