@@ -18,9 +18,7 @@ jobs:
         with:
           node-version: '22'
           
-      - uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: 141.0.7345.0
+      - uses: browser-actions/setup-chrome@v2
         id: setup-chrome
       
       - name: Checkout
