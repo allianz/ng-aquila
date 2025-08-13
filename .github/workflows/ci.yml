@@ -17,8 +17,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          
       - uses: browser-actions/setup-chrome@v1
+        with:
+          install-dependencies: true
         id: setup-chrome
+      
       - name: Checkout
         uses: actions/checkout@v3
 
