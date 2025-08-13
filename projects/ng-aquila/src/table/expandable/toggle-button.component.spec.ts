@@ -48,6 +48,10 @@ describe(NxToggleButtonComponent.name, () => {
       expect(toggleButtonInstance).toBeTruthy();
     });
 
+    it('has correct button type property', () => {
+      expect(toggleButtonElement.nativeElement.getAttribute('type')).toBe('button');
+    });
+
     it("doesn't have the expanded state", () => {
       expect(toggleButtonElement.nativeElement).not.toHaveClass('is-expanded');
     });
