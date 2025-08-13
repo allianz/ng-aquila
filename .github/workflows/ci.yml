@@ -20,7 +20,7 @@ jobs:
           
       - uses: browser-actions/setup-chrome@v1
         with:
-          install-dependencies: true
+          chrome-version: 141.0.7345.0
         id: setup-chrome
       
       - name: Checkout
