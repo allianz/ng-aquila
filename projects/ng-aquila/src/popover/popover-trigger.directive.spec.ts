@@ -188,7 +188,7 @@ describe('NxPopoverTriggerDirective', () => {
 
       popoverInstance.tabIndex = 42;
       click();
-      expect(getPopoverContent().getAttribute('tabindex')).toEqual('0');
+      expect(getPopoverContent().getAttribute('tabindex')).toEqual('-1');
     }));
 
     it('should set tabIndex for triggerType "manual"', fakeAsync(() => {
@@ -205,7 +205,7 @@ describe('NxPopoverTriggerDirective', () => {
       spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit');
       click();
 
-      expect(getPopoverContent().getAttribute('tabindex')).toEqual('0');
+      expect(getPopoverContent().getAttribute('tabindex')).toEqual('-1');
     }));
 
     it('should set active state for triggerType "manual" with implemented NxTriggerButton', fakeAsync(() => {

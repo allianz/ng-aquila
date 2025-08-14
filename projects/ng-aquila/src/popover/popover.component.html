@@ -6,7 +6,7 @@
     aria-hidden="false"
     (click)="_onClick($event)"
   >
-    <div class="nx-popover__content" [attr.tabindex]="tabIndex">
+    <div class="nx-popover__content" [attr.tabindex]="tabIndex" cdkFocusInitial>
       @if (!hidePopoverArrow) {
         <div class="nx-popover__arrow" [ngStyle]="arrowStyle"></div>
       }

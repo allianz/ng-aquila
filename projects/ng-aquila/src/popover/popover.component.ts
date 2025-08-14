@@ -101,16 +101,16 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
   /**
    * gets the tabindex for the popover
    * if triggerType='hover' -> null
-   * if triggerType='click' -> 0
+   * if triggerType='click' -> -1
    * if triggerType='manual' -> whatever is set on tabIndex. Defaults to 0 on 'manual'
    */
   get tabIndex(): number | null {
     if (this.triggerType === 'manual') {
       return this._tabIndex;
     }
-    return this.triggerType === 'hover' ? null : 0;
+    return this.triggerType === 'hover' ? null : -1;
   }
-  private _tabIndex: number | null = 0;
+  private _tabIndex: number | null = -1;
 
   /** @docs-private */
   arrowStyle = {};
