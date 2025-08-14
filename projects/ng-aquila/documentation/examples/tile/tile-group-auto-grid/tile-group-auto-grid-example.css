@@ -1,0 +1,46 @@
+.auto-grid-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.auto-grid-controls ::ng-deep .nx-slider__wrapper {
+  padding-top: 16px !important;
+}
+
+.resize-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 20px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.resizable-container {
+  position: relative;
+  resize: horizontal;
+  overflow: auto;
+  min-width: 200px;
+  min-height: 200px;
+  max-width: 100%;
+  max-height: 90vh;
+  border: 1px solid var(--ui-04);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: var(--ui-02);
+  box-sizing: border-box;
+}
+
+.auto-grid-example {
+  width: 100%;
+  max-width: var(--grid-max-width, 900px);
+  margin: 0 auto;
+}
+
+.tile-icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}

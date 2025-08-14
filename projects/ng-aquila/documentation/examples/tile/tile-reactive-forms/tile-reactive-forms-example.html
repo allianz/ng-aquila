@@ -1,0 +1,16 @@
+<form [formGroup]="form">
+  <nx-tile-group formControlName="tileGroup">
+    <nx-tile
+      [label]="'Car Insurance'"
+      [icon]="'product-car'"
+      value="car"
+    ></nx-tile>
+    <nx-tile
+      [label]="'Care Insurance'"
+      [icon]="'product-care-insurance'"
+      value="care"
+    ></nx-tile>
+    <nx-tile [label]="'Heart'" [icon]="'product-heart'" value="heart"></nx-tile>
+  </nx-tile-group>
+</form>
+<p>Selected: {{ form.get('tileGroup')?.value }}</p>

@@ -1,0 +1,12 @@
+<nx-tile-group selectionMode="multi" [(value)]="selectedValues">
+  <nx-label>Choose options</nx-label>
+  @for (tile of tiles(); track tile.value) {
+  <nx-tile
+    [label]="tile.label"
+    [hint]="tile.hint"
+    [icon]="tile.icon"
+    [value]="tile.value"
+  ></nx-tile>
+  }
+</nx-tile-group>
+<p>Selected Values: {{ selectedValues.join(', ') }}</p>

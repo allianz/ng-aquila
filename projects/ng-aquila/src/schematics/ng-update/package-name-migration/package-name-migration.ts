@@ -34,8 +34,8 @@ function removeOldPackage(): Rule {
       return tree;
     }
     const pkg = JSON.parse(pkgBuffer.toString());
-    if (pkg.dependencies && pkg.dependencies['@aposin/ng-aquila']) {
-      delete pkg.dependencies['@aposin/ng-aquila'];
+    if (pkg.dependencies && pkg.dependencies['@allianz/ng-aquila']) {
+      delete pkg.dependencies['@allianz/ng-aquila'];
     }
     tree.overwrite(pkgPath, JSON.stringify(pkg, null, 2));
     return tree;
@@ -52,11 +52,11 @@ function updateAngularJsonImports(): Rule {
             if (Array.isArray(stylesOrAssets)) {
               stylesOrAssets.forEach((style, index: number) => {
                 if (typeof style === 'string') {
-                  stylesOrAssets[index] = style.replace('@aposin/ng-aquila', '@allianz/ng-aquila');
+                  stylesOrAssets[index] = style.replace('@allianz/ng-aquila', '@allianz/ng-aquila');
                 } else if (style && typeof style === 'object' && (style as any).input) {
                   const styleCopy = { ...style };
                   (styleCopy as any).input = (style as any).input.replace(
-                    '@aposin/ng-aquila',
+                    '@allianz/ng-aquila',
                     '@allianz/ng-aquila',
                   );
                   stylesOrAssets[index] = styleCopy;

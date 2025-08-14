@@ -1,0 +1,160 @@
+@import '../shared-styles/index';
+
+@property --nx-radio-cutout-radius {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0;
+}
+
+:host {
+  --outer-circle-color: transparent;
+  --dot-color: transparent;
+  --outer-circle-border-color: #{v(radio-button-circle-color)};
+}
+
+.nx-radio__control {
+  position: relative;
+  // TODO border-width needs to be variable
+  border-width: var(--radio-button-border-width);
+  border-style: solid;
+  border-color: var(--outer-circle-border-color);
+  border-radius: 50%;
+  width: var(--radio-button-circle-size);
+  min-width: var(--radio-button-circle-size);
+  height: var(--radio-button-circle-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --nx-radio-cutout-radius: calc(var(--radio-button-circle-size) / 2);
+  background: radial-gradient(
+    circle at center center,
+    var(--dot-color),
+    var(--dot-color) var(--nx-radio-cutout-radius),
+    var(--outer-circle-color) var(--nx-radio-cutout-radius),
+    var(--outer-circle-color)
+  );
+  transition: --nx-radio-cutout-radius 0.3s ease;
+}
+
+:host.no-animation {
+  .nx-radio__control {
+    transition: unset;
+  }
+}
+
+:host.checked {
+  .nx-radio__control {
+    --nx-radio-cutout-radius: calc(var(--radio-button-dot-size) / 2);
+  }
+}
+
+:host {
+  &.checked {
+    --outer-circle-color: #{v(radio-button-selected-background-color)};
+    --outer-circle-border-color: var(--outer-circle-color);
+    --dot-color: #{v(radio-button-selected-dot-color)};
+  }
+
+  // disabled state
+  &.disabled {
+    --outer-circle-border-color: #{v(radio-button-disabled-border-color)};
+
+    &.checked {
+      --outer-circle-color: #{v(radio-button-disabled-selected-background-color)};
+      --dot-color: #{v(radio-button-disabled-selected-dot-color)};
+      --outer-circle-border-color: var(--outer-circle-color);
+    }
+  }
+
+  // readonly state
+  &.readonly {
+    --outer-circle-border-color: #{v(radio-button-readonly-border-color)};
+
+    &.checked {
+      --outer-circle-color: #{v(radio-button-readonly-selected-background-color)};
+      --dot-color: #{v(radio-button-readonly-selected-dot-color)};
+    }
+  }
+
+  // critical state
+  &.critical {
+    --outer-circle-border-color: #{v(danger)};
+
+    &.checked {
+      --outer-circle-color: #{v(danger)};
+    }
+  }
+
+  // high contrast mode
+  @media screen and (forced-colors: active) {
+    .nx-radio__control {
+      forced-color-adjust: none;
+      border-color: buttonText !important;
+      background-color: buttonFace !important;
+    }
+
+    &.checked {
+      .nx-radio__control {
+        border-color: highlight !important;
+      }
+
+      .nx-radio__dot {
+        background-color: highlight !important;
+      }
+    }
+
+    &.disabled {
+      .nx-radio__control {
+        border-color: GrayText !important;
+      }
+
+      &.checked {
+        .nx-radio__dot {
+          background-color: GrayText !important;
+        }
+      }
+    }
+  }
+}
+
+:host.on-selection {
+  --outer-circle-border-color: var(--radio-button-on-selection-border-color);
+
+  &.checked {
+    --outer-circle-color: var(--radio-button-on-selection-selected-border-color);
+    --outer-circle-border-color: var(--outer-circle-color);
+    --dot-color: var(--radio-button-on-selection-selected-dot-color);
+  }
+
+  // disabled state
+  &.disabled {
+    --outer-circle-border-color: var(--radio-button-on-selection-disabled-border-color);
+
+    &.checked {
+      --outer-circle-color: var(--radio-button-on-selection-disabled-selected-border-color);
+      --dot-color: var(--radio-button-on-selection-disabled-selected-dot-color);
+      --outer-circle-border-color: var(--outer-circle-color);
+    }
+  }
+
+  // readonly state
+  &.readonly {
+    --outer-circle-border-color: var(--radio-button-on-selection-readonly-border-color);
+
+    &.checked {
+      --outer-circle-border-color: var(--outer-circle-color);
+      --outer-circle-color: var(--radio-button-on-selection-readonly-selected-border-color);
+      --dot-color: var(--radio-button-on-selection-readonly-selected-dot-color);
+    }
+  }
+
+  // critical state
+  &.critical {
+    --outer-circle-border-color: #{v(danger)};
+
+    &.checked {
+      --outer-circle-color: #{v(radio-button-on-selection-critical-background-color)};
+      --outer-circle-border-color: #{v(radio-button-on-selection-critical-border-color)};
+    }
+  }
+}

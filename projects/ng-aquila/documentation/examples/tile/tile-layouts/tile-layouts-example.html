@@ -1,0 +1,81 @@
+<p>Vertical Layout (with icons):</p>
+<nx-tile-group [tileLayout]="'vertical'" selectionMode="single">
+  <nx-tile
+    [label]="'Car Insurance'"
+    [hint]="'Product car'"
+    [icon]="'product-car'"
+    value="car-vertical"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Care Insurance'"
+    [hint]="'Product care insurance'"
+    [icon]="'product-care-insurance'"
+    value="care-vertical"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Heart'"
+    [hint]="'Product heart'"
+    [icon]="'product-heart'"
+    value="heart-vertical"
+  ></nx-tile>
+</nx-tile-group>
+
+<p>Vertical Layout (without icons):</p>
+<nx-tile-group selectionMode="single" [tileLayout]="'vertical'">
+  <nx-tile
+    [label]="'Car Insurance'"
+    [hint]="'Product car'"
+    value="car-vertical"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Care Insurance'"
+    [hint]="'Product care insurance'"
+    value="care-vertical"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Heart'"
+    [hint]="'Product heart'"
+    value="heart-vertical"
+  ></nx-tile>
+</nx-tile-group>
+
+<p>Horizontal Layout (with icons):</p>
+<nx-tile-group [tileLayout]="'horizontal'" selectionMode="multi">
+  <nx-tile
+    [label]="'Plane'"
+    [hint]="'Product plane'"
+    [icon]="'product-plane'"
+    value="plane-horizontal"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Search'"
+    [hint]="'Product search'"
+    [icon]="'product-search'"
+    value="search-horizontal"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Car Insurance'"
+    [hint]="'Product car'"
+    [icon]="'product-car'"
+    value="car-horizontal"
+  ></nx-tile>
+</nx-tile-group>
+
+<p>Horizontal Layout (without icons):</p>
+<nx-tile-group [tileLayout]="'horizontal'" selectionMode="multi">
+  <nx-tile
+    [label]="'Option 1'"
+    [hint]="'Hint 1'"
+    value="option1-horizontal"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Option 2'"
+    [hint]="'Hint 2'"
+    value="option2-horizontal"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Option 3'"
+    [hint]="'Hint 3'"
+    value="option3-horizontal"
+  ></nx-tile>
+</nx-tile-group>

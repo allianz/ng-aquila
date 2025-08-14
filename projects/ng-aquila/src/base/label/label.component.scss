@@ -2,7 +2,7 @@
 
 :host {
   display: block;
-  color: v(text-01);
+  color: v(base-label-color);
 
   &.nx-label--small {
     @include type-style(base-label-small);

@@ -1,0 +1,41 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tile-group-spacing, 16px);
+}
+
+.nx-tile-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+
+  &.is-single-select {
+    .nx-tile {
+      cursor: pointer;
+    }
+  }
+
+  &.is-multi-select {
+    .nx-tile {
+      cursor: pointer;
+    }
+  }
+}
+
+.nx-tile-group__tiles {
+  display: grid;
+  gap: 1rem;
+
+  &.auto-grid {
+    // TODO: the css var definitions need to come from outside
+    --auto-grid-min-size: calc(24px * 6);
+    --auto-grid-gap: 1rem;
+    display: grid;
+    --max-column-width: 100% /
+      var(--nx-auto-grid-max-columns, infinity) - var(--auto-grid-gap, 1rem);
+    --column-width: max(var(--max-column-width), min(var(--auto-grid-min-size, 10rem), 100%));
+    gap: var(--auto-grid-gap-vertical, var(--auto-grid-gap, 1rem)) var(--auto-grid-gap, 1rem);
+    grid-template-columns: repeat(auto-fit, minmax(var(--column-width), 1fr));
+  }
+}

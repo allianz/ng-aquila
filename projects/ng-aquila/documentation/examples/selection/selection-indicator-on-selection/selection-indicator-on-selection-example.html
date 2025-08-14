@@ -1,0 +1,177 @@
+<!-- Non-checked states (no colored background) -->
+<div class="indicator-table-wrapper">
+  <div class="indicator-table">
+    <div class="indicator-table-header">
+      <div></div>
+      <div>Checkbox Indicator</div>
+      <div>Radio Indicator</div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Default</div>
+      <div>
+        <nx-checkbox-indicator
+          appearance="on-selection"
+        ></nx-checkbox-indicator>
+      </div>
+      <div>
+        <nx-radio-indicator appearance="on-selection"></nx-radio-indicator>
+      </div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Disabled</div>
+      <div>
+        <nx-checkbox-indicator
+          appearance="on-selection"
+          [disabled]="true"
+        ></nx-checkbox-indicator>
+      </div>
+      <div>
+        <nx-radio-indicator
+          appearance="on-selection"
+          [disabled]="true"
+        ></nx-radio-indicator>
+      </div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Readonly</div>
+      <div>
+        <nx-checkbox-indicator
+          appearance="on-selection"
+          [readonly]="true"
+        ></nx-checkbox-indicator>
+      </div>
+      <div>
+        <nx-radio-indicator
+          appearance="on-selection"
+          [readonly]="true"
+        ></nx-radio-indicator>
+      </div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Critical</div>
+      <div>
+        <nx-checkbox-indicator
+          appearance="on-selection"
+          [critical]="true"
+        ></nx-checkbox-indicator>
+      </div>
+      <div>
+        <nx-radio-indicator
+          appearance="on-selection"
+          [critical]="true"
+        ></nx-radio-indicator>
+      </div>
+    </div>
+    <!-- (indeterminate states moved to checked grid below) -->
+  </div>
+</div>
+
+<!-- Checked states (individual cell backgrounds) -->
+<div class="indicator-table-wrapper">
+  <div class="indicator-table">
+    <div class="indicator-table-header">
+      <div></div>
+      <div>Checkbox Indicator</div>
+      <div>Radio Indicator</div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Checked</div>
+      <div class="cell-bg-checked">
+        <nx-checkbox-indicator
+          appearance="on-selection"
+          [checked]="true"
+        ></nx-checkbox-indicator>
+      </div>
+      <div class="cell-bg-checked">
+        <nx-radio-indicator
+          appearance="on-selection"
+          [checked]="true"
+        ></nx-radio-indicator>
+      </div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Disabled + Checked</div>
+      <div class="cell-bg-disabled">
+        <nx-checkbox-indicator
+          appearance="on-selection"
+          [checked]="true"
+          [disabled]="true"
+        ></nx-checkbox-indicator>
+      </div>
+      <div class="cell-bg-disabled">
+        <nx-radio-indicator
+          appearance="on-selection"
+          [checked]="true"
+          [disabled]="true"
+        ></nx-radio-indicator>
+      </div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Readonly + Checked</div>
+      <div class="cell-bg-readonly">
+        <nx-checkbox-indicator
+          appearance="on-selection"
+          [checked]="true"
+          [readonly]="true"
+        ></nx-checkbox-indicator>
+      </div>
+      <div class="cell-bg-readonly">
+        <nx-radio-indicator
+          appearance="on-selection"
+          [checked]="true"
+          [readonly]="true"
+        ></nx-radio-indicator>
+      </div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Critical + Checked</div>
+      <div class="cell-bg-critical">
+        <nx-checkbox-indicator
+          appearance="on-selection"
+          [checked]="true"
+          [critical]="true"
+        ></nx-checkbox-indicator>
+      </div>
+      <div class="cell-bg-critical">
+        <nx-radio-indicator
+          appearance="on-selection"
+          [checked]="true"
+          [critical]="true"
+        ></nx-radio-indicator>
+      </div>
+    </div>
+    <!-- Indeterminate states at the end -->
+    <div class="indicator-table-row">
+      <div class="indicator-label">Indeterminate</div>
+      <div class="cell-bg-checked">
+        <nx-checkbox-indicator
+          appearance="on-selection"
+          [indeterminate]="true"
+        ></nx-checkbox-indicator>
+      </div>
+      <div></div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Disabled + Indeterminate</div>
+      <div class="cell-bg-disabled">
+        <nx-checkbox-indicator
+          appearance="on-selection"
+          [indeterminate]="true"
+          [disabled]="true"
+        ></nx-checkbox-indicator>
+      </div>
+      <div></div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Readonly + Indeterminate</div>
+      <div class="cell-bg-readonly">
+        <nx-checkbox-indicator
+          appearance="on-selection"
+          [indeterminate]="true"
+          [readonly]="true"
+        ></nx-checkbox-indicator>
+      </div>
+      <div></div>
+    </div>
+  </div>
+</div>

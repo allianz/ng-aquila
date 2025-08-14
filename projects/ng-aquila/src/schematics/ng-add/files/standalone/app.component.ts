@@ -14,7 +14,6 @@ import { NxDialogService, NxModalModule, NxModalRef } from '@allianz/ng-aquila/m
 import { NxOverlayModule } from '@allianz/ng-aquila/overlay';
 import { NxPopoverModule } from '@allianz/ng-aquila/popover';
 import { NxSmallStageModule } from '@allianz/ng-aquila/small-stage';
-import {} from '@angular/common/http';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import {
   FormBuilder,

@@ -1,0 +1,9 @@
+.error-message {
+  color: var(--nx-color-error, #d32f2f);
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.nx-tile-group.nx-tile-group--error .nx-tile {
+  border-color: var(--nx-color-error, #d32f2f);
+}

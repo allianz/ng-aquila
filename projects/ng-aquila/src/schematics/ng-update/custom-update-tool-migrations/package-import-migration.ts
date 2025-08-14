@@ -10,7 +10,7 @@ import {
 } from '@angular/cdk/schematics';
 import { ImportDeclaration, isImportDeclaration, Node, StringLiteral } from 'typescript';
 
-export const OLD_APOSIN_MODULE = '@aposin/ng-aquila';
+export const OLD_APOSIN_MODULE = '@allianz/ng-aquila';
 export const NEW_AQUILA_MODULE = '@allianz/ng-aquila';
 
 export class PackageImportMigration extends Migration<null> {

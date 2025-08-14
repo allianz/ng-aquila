@@ -1,0 +1,55 @@
+.indicator-table {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) minmax(120px, 1fr) minmax(
+      120px,
+      1fr
+    );
+  gap: 8px 24px;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.indicator-table-header {
+  display: contents;
+}
+
+.indicator-table-header > div {
+  font-weight: bold;
+  padding-bottom: 4px;
+}
+
+.indicator-table-row {
+  display: contents;
+}
+
+.indicator-label {
+  font-size: 0.95em;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .indicator-table {
+    grid-template-columns: 1fr;
+  }
+  .indicator-table-header > div,
+  .indicator-table-row > div {
+    padding-bottom: 8px;
+  }
+}
+.indicator-row {
+  display: flex;
+  align-items: center;
+}
+
+.nx-margin-bottom-s {
+  margin-bottom: 16px;
+}
+
+.nx-margin-bottom-2xs {
+  margin-bottom: 4px;
+}
+
+.nx-margin-left-xs {
+  margin-left: 8px;
+}

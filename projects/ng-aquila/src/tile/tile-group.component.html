@@ -1,0 +1,10 @@
+<ng-content select="nx-label"></ng-content>
+<div class="nx-tile-group__tiles" [class.auto-grid]="autoGrid()">
+  <ng-content></ng-content>
+</div>
+
+@if (_errorState()) {
+  <div>
+    <ng-content select="nx-error"></ng-content>
+  </div>
+}

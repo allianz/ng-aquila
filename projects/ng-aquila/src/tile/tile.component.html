@@ -1,0 +1,52 @@
+<input
+  #tileInput
+  [type]="selectionMode() === 'multi' ? 'checkbox' : 'radio'"
+  [id]="id"
+  class="nx-tile__input"
+  [name]="tileGroup.id"
+  [checked]="selected()"
+  [disabled]="disabled()"
+  [readonly]="readonly()"
+  [value]="value()"
+  [attr.aria-describedby]="ariaDescribedBy() || null"
+  [attr.aria-invalid]="errorState() || null"
+  [attr.aria-disabled]="readonly() || disabled() || null"
+  (click)="toggleSelection($event)"
+  (blur)="touch()"
+/>
+
+<label [for]="id" class="nx-tile__content-wrapper">
+  @if (icon()) {
+    <div class="nx-tile__icon">
+      <nx-icon aria-hidden="true" [name]="icon()"></nx-icon>
+    </div>
+  }
+  <div class="nx-tile__content">
+    @if (label()) {
+      <div [id]="id + '-label'" class="nx-tile__label">{{ label() }}</div>
+    }
+    @if (hint()) {
+      <div [id]="id + '-hint'" class="nx-tile__hint">{{ hint() }}</div>
+    }
+  </div>
+  @if (selectionMode() === 'multi') {
+    <nx-checkbox-indicator
+      class="nx-tile__indicator"
+      [checked]="selected()"
+      [disabled]="disabled()"
+      [readonly]="readonly()"
+      [critical]="errorState()"
+      appearance="on-selection"
+    ></nx-checkbox-indicator>
+  } @else if (selectionMode() === 'single') {
+    <nx-radio-indicator
+      class="nx-tile__indicator"
+      [animations]="false"
+      [checked]="selected()"
+      [disabled]="disabled()"
+      [readonly]="readonly()"
+      [critical]="errorState()"
+      appearance="on-selection"
+    ></nx-radio-indicator>
+  }
+</label>

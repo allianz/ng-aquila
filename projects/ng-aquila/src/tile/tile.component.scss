@@ -1,0 +1,259 @@
+@import '../shared-styles/index';
+
+// Color theme variables
+$tile-blue-bg: #e6f0fa;
+$tile-blue-border: #003a7a;
+$tile-blue-selected-bg: #003a7a;
+$tile-blue-selected-color: #fff;
+$tile-red-bg: #fae6e9;
+$tile-red-border: #a80036;
+$tile-red-selected-bg: #a80036;
+$tile-red-selected-color: #fff;
+$tile-gray-bg: #f4f4f4;
+$tile-gray-border: #b3b3b3;
+$tile-gray-selected-bg: #b3b3b3;
+$tile-gray-selected-color: #fff;
+
+:host {
+  display: flex;
+  align-items: stretch; // Changed from center to stretch
+  background: var(--tile-background-color);
+  border: var(--tile-border-width) solid var(--tile-border-color);
+  color: var(--tile-text-color);
+  border-radius: var(--tile-border-radius);
+  box-sizing: border-box;
+  font-size: var(--tile-font-size);
+  line-height: var(--tile-line-height);
+  font-weight: var(--tile-font-weight);
+  letter-spacing: var(--tile-letter-spacing);
+  font-family: inherit;
+  position: relative;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+
+  .nx-tile__indicator {
+    position: static;
+    margin-inline-start: auto;
+  }
+
+  &.cdk-keyboard-focused {
+    @include focus-style;
+  }
+
+  &.layout-vertical.has-icon {
+    .nx-tile__indicator {
+      position: absolute;
+      top: var(--tile-indicator-top);
+      right: var(--tile-indicator-right);
+    }
+  }
+
+  &.layout-vertical {
+    &.has-icon {
+      .nx-tile__content-wrapper {
+        padding: var(--tile-vertical-with-icon-padding);
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+    }
+    .nx-tile__content-wrapper {
+      align-items: flex-start;
+      padding: var(--tile-vertical-padding);
+    }
+  }
+
+  &.layout-horizontal {
+    .nx-tile__content-wrapper {
+      flex-direction: row;
+      padding: var(--tile-horizontal-padding);
+      justify-content: space-between;
+    }
+  }
+
+  &:hover:not(.is-disabled):not(.is-readonly) {
+    background: var(--tile-hover-background-color);
+    border-color: var(--tile-hover-border-color);
+    color: var(--tile-hover-text-color);
+
+    .nx-tile__hint {
+      color: var(--tile-hover-hint-color);
+    }
+  }
+
+  &:active:not(.is-disabled):not(.is-readonly) {
+    background: var(--tile-active-background-color);
+    border-color: var(--tile-active-border-color);
+    color: var(--tile-active-text-color);
+
+    .nx-tile__hint {
+      color: var(--tile-active-hint-color);
+    }
+  }
+
+  &.is-selected {
+    color: var(--tile-selected-color);
+    border-color: var(--tile-selected-border-color);
+    background: var(--tile-selected-background-color);
+
+    .nx-tile__icon {
+      color: var(--tile-selected-icon-color);
+    }
+
+    .nx-tile__hint {
+      color: var(--tile-selected-hint-color);
+    }
+
+    &:hover:not(.is-disabled):not(.is-readonly) {
+      color: var(--tile-selected-color);
+      border-color: var(--tile-selected-hover-background-color);
+      background: var(--tile-selected-hover-background-color);
+
+      .nx-tile__hint {
+        color: var(--tile-selected-hint-color);
+      }
+    }
+
+    &:active:not(.is-disabled):not(.is-readonly) {
+      color: var(--tile-selected-color);
+      border-color: var(--tile-selected-active-background-color);
+      background: var(--tile-selected-active-background-color);
+
+      .nx-tile__hint {
+        color: var(--tile-selected-hint-color);
+      }
+    }
+  }
+
+  &.is-disabled {
+    opacity: var(--tile-disabled-opacity);
+    cursor: not-allowed;
+    background: var(--tile-disabled-background-color);
+    color: var(--tile-disabled-text-color);
+    border-color: var(--tile-disabled-border-color);
+
+    .nx-tile__hint {
+      color: var(--tile-disabled-hint-color);
+    }
+
+    &.is-selected {
+      background: var(--tile-disabled-selected-background-color);
+      color: var(--tile-disabled-selected-text-color);
+      border-color: var(--tile-disabled-selected-border-color);
+
+      .nx-tile__hint {
+        color: var(--tile-disabled-selected-hint-color);
+      }
+    }
+  }
+
+  &.is-readonly {
+    cursor: default;
+    background: var(--tile-readonly-background-color);
+    color: var(--tile-readonly-text-color);
+    border-color: var(--tile-readonly-border-color);
+    .nx-tile__hint {
+      color: var(--tile-readonly-hint-color);
+    }
+    &.is-selected {
+      background: var(--tile-readonly-selected-background-color);
+      color: var(--tile-readonly-selected-text-color);
+      border-color: var(--tile-readonly-selected-border-color);
+
+      .nx-tile__hint {
+        color: var(--tile-readonly-selected-hint-color);
+      }
+    }
+  }
+
+  &.has-error {
+    border-color: var(--tile-error-border-color);
+
+    &:hover:not(.is-disabled):not(.is-readonly) {
+      border-color: var(--tile-error-hover-border-color);
+    }
+
+    &:active:not(.is-disabled):not(.is-readonly) {
+      border-color: var(--tile-error-active-border-color);
+    }
+
+    &.is-selected {
+      background: var(--tile-error-selected-background-color);
+
+      &:hover:not(.is-disabled):not(.is-readonly) {
+        background: var(--tile-error-selected-hover-background-color);
+      }
+
+      &:active:not(.is-disabled):not(.is-readonly) {
+        background: var(--tile-error-selected-active-background-color);
+      }
+    }
+  }
+
+  // Hidden input styling
+  .nx-tile__input {
+    position: absolute;
+    opacity: 0;
+    margin: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .nx-tile__content-wrapper {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: var(--tile-spacing);
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    position: relative;
+    padding: var(--tile-padding);
+    height: 100%;
+    width: 100%;
+    cursor: inherit;
+  }
+
+  .nx-tile__content {
+    word-break: break-word;
+  }
+
+  .nx-tile__icon {
+    font-size: var(--tile-icon-size);
+    color: var(--tile-icon-color);
+
+    .is-disabled & {
+      color: var(--tile-icon-disabled-color);
+    }
+  }
+
+  .nx-tile__label {
+    font-weight: var(--tile-label-font-weight);
+  }
+
+  .nx-tile__hint {
+    font-size: var(--tile-hint-font-size);
+    line-height: var(--tile-hint-line-height);
+    font-weight: var(--tile-hint-font-weight);
+    letter-spacing: var(--tile-hint-letter-spacing);
+    color: var(--tile-hint-color);
+  }
+
+  // High contrast mode styles
+  @media screen and (forced-colors: active) {
+    border-width: var(--tile-hcm-border-width);
+
+    // TODO: thats from copilot
+    &:focus-within {
+      border-width: var(--tile-hcm-focus-border-width);
+      outline-offset: var(--tile-hcm-focus-outline-offset);
+    }
+  }
+}

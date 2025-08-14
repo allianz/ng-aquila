@@ -1,0 +1,22 @@
+<div class="auto-grid-controls">
+  <nx-slider
+    id="maxColumnsSlider"
+    [label]="'Max columns: ' + maxColumns()"
+    [min]="1"
+    [max]="8"
+    [step]="1"
+    [value]="maxColumns()"
+    (valueChange)="maxColumns.set($event)"
+    [thumbLabel]="false"
+    style="width: 160px; margin-left: 1rem; align-self: center"
+  ></nx-slider>
+</div>
+<div class="resizable-container">
+  <nx-badge class="resize-badge">Resize me</nx-badge>
+  <nx-tile-group [maxColumns]="maxColumns()">
+    <nx-label>Choose an option</nx-label>
+    @for (tile of tiles(); track tile.value) {
+    <nx-tile [value]="tile.value" [label]="tile.label" [icon]="tile.icon" />
+    }
+  </nx-tile-group>
+</div>
