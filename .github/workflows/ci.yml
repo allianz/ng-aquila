@@ -20,8 +20,6 @@ jobs:
           
       - uses: browser-actions/setup-chrome@v2
         with:
-          chrome-version: latest
-          install-dependencies: true
           no-sudo: true
         id: setup-chrome
       
