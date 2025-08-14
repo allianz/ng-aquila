@@ -1,7 +1,6 @@
 name: CI
 
 on:
-  workflow_dispatch: # Temporary - to trigger manual runs
   push:
     branches: [main]
   pull_request:
@@ -18,12 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          
-      - uses: browser-actions/setup-chrome@v2
-        with:
-          no-sudo: true
-        id: setup-chrome
-      
+
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -44,9 +38,10 @@ jobs:
 
       - name: Test ng-aquila
         run: |
-          export CHROME_BIN=${{ steps.setup-chrome.outputs.chrome-path }}
-          echo "$CHROME_BIN"
+          export CHROME_BIN=$(command -v google-chrome || command -v chromium)
+          echo "Using browser: $CHROME_BIN"
           COMPACT_TEST_RESULTS=true npm run test:lib:coverage
+
       - name: Test ng-aquila/schematics
         run: npm run test:schematics
 
