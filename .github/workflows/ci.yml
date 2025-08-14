@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  workflow_dispatch: # Temporary - to trigger manual runs
   push:
     branches: [main]
   pull_request:
