@@ -9,7 +9,7 @@
   #trigger
   #origin="cdkOverlayOrigin"
   role="combobox"
-  tabindex="0"
+  [attr.tabindex]="tabIndex"
   aria-haspopup="listbox"
   [attr.aria-controls]="_comboboxId"
   (blur)="_onTriggerBlur(); _inputFocused = false"
@@ -18,6 +18,8 @@
   [attr.aria-describedby]="_ariaDescribedby || null"
   [attr.aria-invalid]="errorState"
   [id]="id"
+  [attr.disabled]="disabled || null"
+  [attr.aria-disabled]="disabled || readonly"
   (focus)="disabled ? null : (_inputFocused = true)"
   (keydown)="_onKeydown($event)"
 >

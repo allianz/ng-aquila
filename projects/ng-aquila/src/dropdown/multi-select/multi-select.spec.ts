@@ -216,6 +216,16 @@ describe('NxMultiSelectComponent', () => {
       expect(ariaHaspopup).toBe('listbox');
     });
 
+    it('should set the tabindex of the select to -1 if disabled', fakeAsync(() => {
+      createTestComponent(TabIndexMultiSelectComponent);
+      const multiSelectElement = fixture.nativeElement.querySelector('nx-multi-select .value');
+      expect(multiSelectElement.getAttribute('tabindex')).toBe('0');
+
+      (fixture.componentInstance as TabIndexMultiSelectComponent).disabled = true;
+      fixture.detectChanges();
+      expect(multiSelectElement.getAttribute('tabindex')).toBe('-1');
+    }));
+
     describe('when clicking the multi select', () => {
       beforeEach(async () => {
         await multiSelectHarness.click();
@@ -1291,4 +1301,20 @@ class MultiSelectWithFilterComponent extends DropdownTest {
   test(query: string) {
     this.filterInput = query;
   }
+}
+
+@Component({
+  template: `<nx-formfield>
+    <nx-multi-select
+      [options]="options"
+      [tabIndex]="tabIndex"
+      [disabled]="disabled"
+    ></nx-multi-select>
+  </nx-formfield>`,
+  imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
+})
+class TabIndexMultiSelectComponent extends DropdownTest {
+  options = ['BMW', 'Audi', 'Volvo', 'Mini'];
+  tabIndex = 0;
+  disabled = false;
 }
