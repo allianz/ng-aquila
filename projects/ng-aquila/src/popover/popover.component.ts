@@ -1,5 +1,6 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { A11yModule, FocusOrigin } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { NgClass, NgStyle, NgTemplateOutlet } from '@angular/common';
 import {
@@ -13,6 +14,7 @@ import {
   OnDestroy,
   OnInit,
   Output,
+  signal,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
@@ -22,7 +24,6 @@ import { takeUntil } from 'rxjs/operators';
 import { NxPopoverContentDirective } from './popover-content';
 import { NxPopoverIntl } from './popover-intl';
 import { PopoverTriggerType } from './popover-trigger.directive';
-
 /** Container for the header of a popover. */
 @Directive({
   selector: '[nxPopoverTitle]',
@@ -62,7 +63,7 @@ export class NxPopoverActionsDirective {
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./popover.component.scss'],
   exportAs: 'nxPopover',
-  imports: [NgClass, NgStyle, NxIconModule, NgTemplateOutlet, NxButtonModule],
+  imports: [NgClass, NgStyle, NxIconModule, NgTemplateOutlet, NxButtonModule, A11yModule],
 })
 export class NxPopoverComponent implements OnDestroy, OnInit {
   /** @docs-private */
@@ -76,6 +77,9 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
 
   /** @docs-private */
   readonly closeButtonClick = new Subject<void>();
+
+  /** @docs-private */
+  readonly _lastFocusOrigin = signal<FocusOrigin | null>(null);
 
   /** @docs-private */
   id!: string;
@@ -153,8 +157,13 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
   /** @docs-private */
   _onCloseKeydown($event: KeyboardEvent) {
     if ($event.keyCode === SPACE) {
+      this.emitCloseButtonClick();
       $event.preventDefault();
     }
+  }
+
+  protected _onFocusChange(event: FocusOrigin | null) {
+    this._lastFocusOrigin.set(event);
   }
 
   /** @docs-private */

@@ -464,7 +464,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
         this._elementFocusedBeforePopoverWasOpened = this.elementRef.nativeElement;
         this._focusMonitor.monitor(element.querySelector('.nx-popover__content')!);
         const closeIcon: HTMLElement = element.querySelector('.nx-popover__close-icon')!;
-
         if (closeIcon) {
           this._focusMonitor.monitor(closeIcon);
         }
@@ -626,6 +625,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
       )
       .subscribe((event) => {
         if (this.isOpen) {
+          this.popover?._lastFocusOrigin.set('keyboard');
           this.show = false;
         }
       });
@@ -707,7 +707,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
     const toFocus = this._elementFocusedBeforePopoverWasOpened;
     // We need the extra check, because IE can set the `activeElement` to null in some cases.
     if (toFocus && typeof toFocus.focus === 'function') {
-      toFocus.focus();
+      this._focusMonitor.focusVia(toFocus, this.popover?._lastFocusOrigin() ?? null);
     }
   }
 

@@ -5,6 +5,8 @@
     role="dialog"
     aria-hidden="false"
     (click)="_onClick($event)"
+    cdkMonitorSubtreeFocus
+    (cdkFocusChange)="_onFocusChange($event)"
   >
     <div class="nx-popover__content" [attr.tabindex]="tabIndex" cdkFocusInitial>
       @if (!hidePopoverArrow) {
