@@ -30,7 +30,7 @@ import {
   viewChild,
   viewChildren,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -153,7 +153,7 @@ export class NxDatemaskComponent<D>
   @ViewChild('connectionContainer', { static: true }) _connectionContainerRef!: ElementRef;
   /** @docs-private */
   _disabledChange = new Subject<boolean>();
-
+  readonly disabledSignal = toSignal(this._disabledChange);
   /** The NxDatepicker that should be connected to this datemask */
   datepicker = input<NxDatepickerComponent<D> | null>(null);
 
@@ -407,6 +407,7 @@ export class NxDatemaskComponent<D>
   @Input({ transform: booleanAttribute }) set disabled(value: boolean) {
     if (this._disabled !== value) {
       this._disabled = value;
+      this._disabledChange.next(value);
       this.stateChanges.next();
     }
   }

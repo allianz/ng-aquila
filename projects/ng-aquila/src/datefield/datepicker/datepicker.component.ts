@@ -186,21 +186,21 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
   /** Determines whether the today button is displayed in the calendar. */
   @Input() showTodayButton: boolean = false;
-
   /**
    * Whether the datepicker pop-up should be disabled.
    * The datepicker is also disabled if the belonging input is readonly.
    */
   readonly disabledInput = model<boolean | undefined>(undefined, { alias: 'disabled' });
+  // Save inputs that get registered in a signal
+  private _registeredInputs = signal<NxDatepickerInputInterface<D>[]>([]);
   readonly disabled = computed(() => {
     if (this.disabledInput() !== undefined) {
       return this.disabledInput();
     }
-    return (
-      this._datepickerInput?.readonlyState() ||
-      this._datepickerInputStartDate?.readonlyState() ||
-      false
+    const inputsDisabled = this._registeredInputs().some(
+      (input) => input.disabledSignal() || input.readonlyState(),
     );
+    return inputsDisabled || false;
   });
 
   /**
@@ -428,6 +428,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
           this._selected.set(value);
         });
     }
+    this._registeredInputs.update((inputs) => [...inputs, input]);
   }
 
   /**

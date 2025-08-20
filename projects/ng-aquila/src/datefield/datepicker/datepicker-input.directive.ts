@@ -1,4 +1,4 @@
-import { ElementRef, EventEmitter } from '@angular/core';
+import { ElementRef, EventEmitter, Signal } from '@angular/core';
 import { Subject } from 'rxjs';
 
 export interface NxDatepickerInputInterface<D> {
@@ -17,4 +17,5 @@ export interface NxDatepickerInputInterface<D> {
   dateFilter: ((date: D | null) => boolean) | undefined;
 
   _focus(): void;
+  disabledSignal: Signal<boolean | undefined>;
 }

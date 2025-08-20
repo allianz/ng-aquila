@@ -156,6 +156,10 @@ The Datemask can be used with and without the datepicker.
 
 <!-- example(datemask-reactive-form) -->
 
+#### Disabled
+
+<!-- example(datemask-disabled) -->
+
 ### Parsing & Formatting
 
 Both parsing and formatting depend on the capabilities of the chosen DateAdapter. Every date adapter brings it's own defaults so you don't have to set anything by default. To do so anyway you inject the necessary patterns through the injection token `NX_DATE_FORMATS`:

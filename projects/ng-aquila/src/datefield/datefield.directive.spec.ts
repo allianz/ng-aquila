@@ -355,6 +355,23 @@ describe('NxDatefieldDirective with Moment', () => {
       expect(test.datepickerToggleComponent.disabled()).toBeTruthy();
     }));
   });
+
+  describe('disable state', () => {
+    it('should disable input, datepicker, and toggle when disabled is true', fakeAsync(() => {
+      createTestComponent(ReadonlyDatefield);
+      const test = fixture.componentRef.instance as ReadonlyDatefield;
+      test.disabled = true;
+      fixture.detectChanges();
+      tick();
+      const input = fixture.nativeElement.querySelector('input');
+      expect(input.disabled).toBeTrue();
+      expect(test.datepickerComponent.disabled()).toBeTrue();
+      expect(test.datepickerToggleComponent.disabled()).toBeTrue();
+
+      const toggle = fixture.nativeElement.querySelector('nx-datepicker-toggle');
+      expect(toggle.classList.contains('nx-datepicker-toggle--disabled')).toBeTrue();
+    }));
+  });
 });
 
 @Component({
@@ -384,6 +401,7 @@ class BasicDatefield extends DatefieldTest {}
         [readonly]="isReadonly"
         [datepicker]="myDatepicker"
         [(ngModel)]="currentDate"
+        [disabled]="disabled"
       />
       <span nxFormfieldHint>MM/DD/YYYY</span>
 
@@ -395,7 +413,7 @@ class BasicDatefield extends DatefieldTest {}
 class ReadonlyDatefield extends DatefieldTest {
   adapter = inject(NxDateAdapter);
   currentDate = this.adapter.today();
-
+  disabled = false;
   isReadonly = true;
 
   @ViewChild(NxInputDirective)

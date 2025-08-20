@@ -27,6 +27,7 @@ import {
   Optional,
   Output,
 } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -264,6 +265,7 @@ export class NxDatefieldDirective<D>
 
   /** Emits when the disabled state has changed. */
   readonly _disabledChange = new EventEmitter<boolean>();
+  readonly disabledSignal = toSignal(this._disabledChange);
 
   /** Emits when the readonly state has changed. */
   readonly _readonlyChange = new EventEmitter<boolean>();

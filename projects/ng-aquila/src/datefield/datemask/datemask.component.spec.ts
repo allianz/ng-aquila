@@ -1,11 +1,14 @@
+import { NxDatepickerComponent, NxDatepickerToggleComponent } from '@allianz/ng-aquila/datefield';
 import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
 import { CommonModule } from '@angular/common';
-import { Component, Directive, Signal, viewChild } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Directive, Signal, ViewChild, viewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import moment, { Moment } from 'moment';
 
+import { NxFormfieldModule } from '../../formfield';
+import { NxDatefieldModule } from '../datefield.module';
 import { NxDatemaskComponent } from './datemask.component';
 
 describe('DatemaskComponent', () => {
@@ -176,7 +179,6 @@ describe('DatemaskComponent', () => {
 
       //   'Sun May 30 1999 00:00:00 GMT+0000'
       expect(datemaskFormComponent.datemaskForm.controls.date.errors).not.toBeNull();
-      console.log(`test`, datemaskFormComponent.datemaskForm.controls.date.errors);
       expect(datemaskFormComponent.datemaskForm.controls.date.errors!.nxDatefieldMin).toBeDefined();
 
       yearInput.value = '2030';
@@ -279,11 +281,48 @@ describe('DatemaskComponent', () => {
       expect(document.activeElement).toBe(nativeInputs[0]);
     });
   });
+
+  describe('DatemaskWithDatePicker', () => {
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        imports: [DatemaskWithDatePicker],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(DatemaskWithDatePicker);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+      nativeInputs = fixture.nativeElement.querySelectorAll('input');
+    });
+
+    it('should disable all input fields and datepicker toggle when disabled is true', fakeAsync(() => {
+      const test = fixture.componentRef.instance as DatemaskWithDatePicker;
+
+      test.disabled = true;
+      fixture.detectChanges();
+      tick();
+
+      const updatedInputs = fixture.nativeElement.querySelectorAll('input');
+      updatedInputs.forEach((input: HTMLInputElement) => {
+        expect(input.disabled).toBeTrue();
+      });
+      expect(test.datepickerComponent.disabled()).toBeTrue();
+      expect(test.datepickerToggleComponent.disabled()).toBeTrue();
+
+      const toggle = fixture.nativeElement.querySelector('.nx-datepicker-toggle');
+      expect(toggle).withContext('nx-datepicker-toggle').not.toBeNull();
+      expect(toggle.classList.contains('nx-datepicker-toggle--disabled')).toBeTrue();
+    }));
+  });
 });
 
 @Directive({ standalone: true })
 abstract class DateRangeTestBase {
   abstract readonly datemaskComponent: Signal<NxDatemaskComponent<Moment>>;
+
+  @ViewChild(NxDatepickerComponent)
+  datepickerComponent!: NxDatepickerComponent<any>;
+  @ViewChild(NxDatepickerToggleComponent)
+  datepickerToggleComponent!: NxDatepickerToggleComponent<any>;
 }
 
 @Component({
@@ -368,4 +407,37 @@ export class DatemaskTestFormat extends DateRangeTestBase {
   datemaskComponent = viewChild.required(NxDatemaskComponent<Moment>);
   datemaskModel = moment([2022, 5, 20]);
   format = 'YYYY-MM-DD';
+}
+
+@Component({
+  template: `
+    <nx-formfield>
+      <nx-datemask
+        [(ngModel)]="datemaskModel"
+        [datepicker]="myDatepicker"
+        [format]="format"
+        [disabled]="disabled"
+      ></nx-datemask>
+      <nx-datepicker-toggle [for]="myDatepicker" nxFormfieldSuffix></nx-datepicker-toggle>
+      <nx-datepicker #myDatepicker></nx-datepicker>
+    </nx-formfield>
+  `,
+  imports: [
+    CommonModule,
+    NxFormfieldComponent,
+    NxMomentDateModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NxDatemaskComponent,
+    NxDatepickerToggleComponent,
+    NxDatepickerComponent,
+    NxFormfieldModule,
+    NxDatefieldModule,
+  ],
+})
+export class DatemaskWithDatePicker extends DateRangeTestBase {
+  datemaskComponent = viewChild.required(NxDatemaskComponent<Moment>);
+  datemaskModel = moment([2022, 5, 20]);
+  format = 'YYYY-MM-DD';
+  disabled = false;
 }
