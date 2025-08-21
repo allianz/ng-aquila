@@ -81,7 +81,7 @@ export class NxInputDirective
 {
   protected _uid = `nx-input-${nextUniqueId++}`;
   protected _previousNativeValue: any;
-  private _inputValueAccessor: NxInputValueAccessor;
+  private readonly _inputValueAccessor: NxInputValueAccessor;
   _ariaDescribedby!: string;
 
   @Input('nxAriaLabel') _ariaLabel!: string;
@@ -223,7 +223,7 @@ export class NxInputDirective
     @Optional()
     @Self()
     @Inject(NX_INPUT_VALUE_ACCESSOR)
-    private inputValueAccessor: NxInputValueAccessor | null,
+    private readonly inputValueAccessor: NxInputValueAccessor | null,
     private readonly _autofillMonitor: AutofillMonitor,
   ) {
     const id = this.id;

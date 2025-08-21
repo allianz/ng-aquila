@@ -7,7 +7,7 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
   selector: '[selectOnFocus]',
 })
 export class SelectOnFocusDirective {
-  constructor(private elementRef: ElementRef) {}
+  constructor(private readonly elementRef: ElementRef) {}
 
   @HostListener('focusin')
   handleFocus(): void {

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import chalk = require('chalk');
 import { Command } from '@commander-js/extra-typings';
+import chalk from 'chalk';
 import * as path from 'path';
 import { concat } from 'rxjs';
 import { auditTime, filter, switchMap, take, tap, toArray } from 'rxjs/operators';
@@ -13,9 +13,9 @@ import overview from './overview/overview';
 import { RxWatchData, rxWatcher } from './rx-watcher';
 import { buildSearchIndex } from './shared/search-indexer';
 
-const program = new Command();
+import fs = require('fs');
 
-const fs = require('fs');
+const program = new Command();
 
 const parsePath = (value) => path.resolve(value);
 
@@ -23,10 +23,10 @@ const pathCompiled = path.join(__dirname, './package.json');
 let packageJson;
 
 if (fs.existsSync(pathCompiled)) {
-  packageJson = JSON.parse(fs.readFileSync(pathCompiled));
+  packageJson = JSON.parse(fs.readFileSync(pathCompiled).toString());
 } else {
   // package is located one level higher during development
-  packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json')));
+  packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json')).toString());
 }
 
 program
@@ -93,7 +93,7 @@ program
       }
 
       const rawdata = fs.readFileSync(cmd.config);
-      const guideConfig = JSON.parse(rawdata);
+      const guideConfig = JSON.parse(rawdata.toString());
       // TODO check if guides exists
       guideFiles = guideConfig.guides;
 

@@ -236,10 +236,10 @@ export class NxMultiSelectComponent<S, T>
     );
   }
 
-  @ViewChildren('selectAllCheckbox,option') private _options!: QueryList<
+  @ViewChildren('selectAllCheckbox,option') private readonly _options!: QueryList<
     NxMultiSelectAllComponent<T> | NxMultiSelectOptionComponent<T>
   >;
-  @ViewChild('selectAllCheckbox') private _selectAll!: NxMultiSelectAllComponent<T>;
+  @ViewChild('selectAllCheckbox') private readonly _selectAll!: NxMultiSelectAllComponent<T>;
 
   /** Event emitted when the select panel has been toggled. */
   @Output() readonly openedChange = new EventEmitter<boolean>();
@@ -261,13 +261,14 @@ export class NxMultiSelectComponent<S, T>
   /** @docs-private */
   _divider = 0;
 
-  @ViewChild('trigger') private _trigger?: ElementRef;
-  @ViewChild('filterInput') private _filterInput?: ElementRef;
-  @ViewChild('itemsList') private _optionsList?: ElementRef;
-  @ViewChild('panelHeader') private _panelHeader?: ElementRef;
-  @ViewChild('panelContent') private _panelContent?: ElementRef;
+  @ViewChild('trigger') private readonly _trigger?: ElementRef;
+  @ViewChild('filterInput') private readonly _filterInput?: ElementRef;
+  @ViewChild('itemsList') private readonly _optionsList?: ElementRef;
+  @ViewChild('panelHeader') private readonly _panelHeader?: ElementRef;
+  @ViewChild('panelContent') private readonly _panelContent?: ElementRef;
 
-  @ViewChild(CdkConnectedOverlay, { static: true }) private _overlayDir?: CdkConnectedOverlay;
+  @ViewChild(CdkConnectedOverlay, { static: true })
+  private readonly _overlayDir?: CdkConnectedOverlay;
 
   /** Event emitted when the selected value has been changed. */
   @Output() readonly selectionChange = new EventEmitter<T[]>();
@@ -402,7 +403,7 @@ export class NxMultiSelectComponent<S, T>
 
   private _onTouched: () => void = () => {};
 
-  private sortSelectedToTop = (a: S, b: S) => {
+  private readonly sortSelectedToTop = (a: S, b: S) => {
     const aSelected = this.selectedItems.has(a);
     const bSelected = this.selectedItems.has(b);
     if (aSelected && !bSelected) {

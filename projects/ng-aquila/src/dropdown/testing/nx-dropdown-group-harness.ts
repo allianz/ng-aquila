@@ -17,7 +17,7 @@ export class NxDropdownGroupHarness extends ComponentHarness {
     );
   }
 
-  private _label = this.locatorFor('.nx-dropdown-results__group-label');
+  private readonly _label = this.locatorFor('.nx-dropdown-results__group-label');
 
   async getLabel(): Promise<string> {
     return (await this._label()).text();

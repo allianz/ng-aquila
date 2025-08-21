@@ -32,7 +32,7 @@ export const NX_ICON_INITIALIZER = new InjectionToken<Array<(registry: NxIconReg
 export class NxIconRegistry implements OnDestroy {
   private readonly _icons = new Map<string, NxSvgIcon | NxFontIcon>();
   private readonly _fonts = new Map<string, NxIconFontDefinition>();
-  private initializers = inject(NX_ICON_INITIALIZER, { optional: true }) ?? [];
+  private readonly initializers = inject(NX_ICON_INITIALIZER, { optional: true }) ?? [];
 
   private _defaultFont?: NxIconFontDefinition;
 

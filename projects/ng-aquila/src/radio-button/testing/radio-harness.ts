@@ -9,9 +9,9 @@ export interface NxRadioHarnessFilters extends BaseHarnessFilters {
 export class NxRadioHarness extends ComponentHarness {
   static hostSelector = 'nx-radio';
 
-  private _input = this.locatorFor('input');
-  private _label = this.locatorFor('label');
-  private _dot = this.locatorForOptional('label .nx-radio__dot');
+  private readonly _input = this.locatorFor('input');
+  private readonly _label = this.locatorFor('label');
+  private readonly _dot = this.locatorForOptional('label .nx-radio__dot');
 
   static with(options: NxRadioHarnessFilters = {}): HarnessPredicate<NxRadioHarness> {
     return new HarnessPredicate(NxRadioHarness, options)

@@ -31,7 +31,10 @@ export type IconSize = 'auto' | 's' | 'm' | 'l' | 'xl';
 })
 export class NxIconComponent implements OnChanges {
   /** Keeps track of the elements and attributes that we've prefixed with the current path. */
-  private _elementsWithExternalReferences?: Map<Element, { name: string; value: string }[]>;
+  private readonly _elementsWithExternalReferences?: Map<
+    Element,
+    { name: string; value: string }[]
+  >;
   private _previousFontClasses: string[] = [];
 
   /** Sets the name for specifying the icon.*/

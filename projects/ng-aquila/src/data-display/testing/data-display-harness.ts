@@ -12,8 +12,8 @@ export interface NxDataDisplayHarnessFilters extends BaseHarnessFilters {
 export class NxDataDisplayHarness extends ContentContainerComponentHarness {
   static hostSelector = 'nx-data-display';
 
-  private _getLabel = this.locatorFor('nx-data-display-label');
-  private _getValue = this.locatorFor('.nx-data-display__value');
+  private readonly _getLabel = this.locatorFor('nx-data-display-label');
+  private readonly _getValue = this.locatorFor('.nx-data-display__value');
 
   static with(options: NxDataDisplayHarnessFilters = {}) {
     return new HarnessPredicate(NxDataDisplayHarness, options)

@@ -186,7 +186,6 @@ describe('NxSidebarComponent', () => {
 
     describe('when dragging handle', () => {
       it('markForCheck is called twice', () => {
-        // eslint-disable-next-line @typescript-eslint/dot-notation
         const markForCheckSpy = spyOn(sidebarInstance['_cdr'], 'markForCheck'); // workaround: accessing private class member
         mouseDrag(sidebarHandleElement, 0, 100);
         // HINT: called once on resize, and once when setting new width.

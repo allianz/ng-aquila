@@ -117,7 +117,7 @@ export class NxRadioToggleButtonComponent
   private readonly _destroyed = new Subject<void>();
 
   /** Unregister function for _expansionDispatcher. */
-  private _removeUniqueSelectionListener: () => void = () => {};
+  private readonly _removeUniqueSelectionListener: () => void = () => {};
 
   errorMessageId = computed(() => this.radioToggle?.errorMessageId() || null);
 

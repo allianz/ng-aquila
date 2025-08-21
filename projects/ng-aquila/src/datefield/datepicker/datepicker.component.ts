@@ -132,7 +132,7 @@ export class NxDatepickerContentComponent<D> implements AfterViewInit, OnDestroy
 
   isRange = computed<boolean>(() => this.datepicker.isRange());
 
-  private _afterNextRenderInitial = afterNextRender({
+  private readonly _afterNextRenderInitial = afterNextRender({
     read: () => {
       this.elementRef.nativeElement.querySelector('.nx-calendar-body-active').focus();
     },
@@ -166,7 +166,7 @@ export class NxDatepickerContentComponent<D> implements AfterViewInit, OnDestroy
   standalone: true,
 })
 export class NxDatepickerComponent<D> implements OnDestroy {
-  private _injector = inject(Injector);
+  private readonly _injector = inject(Injector);
 
   isRange = computed<boolean>(() => this.rangeMode());
 

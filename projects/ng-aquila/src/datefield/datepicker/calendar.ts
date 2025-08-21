@@ -164,7 +164,7 @@ export class NxCalendarComponent<D>
   @ViewChild('changeViewButton') _changeViewButton!: ElementRef<HTMLElement>;
   @ViewChild('todayButton') _todayButton!: ElementRef<HTMLElement>;
 
-  private _injector = inject(Injector);
+  private readonly _injector = inject(Injector);
 
   /**
    * The current active date. This determines which time period is shown and which date is

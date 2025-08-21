@@ -1,4 +1,4 @@
-import chalk = require('chalk');
+import chalk from 'chalk';
 import { Dgeni } from 'dgeni';
 import { defer } from 'rxjs';
 import { catchError, concatAll, filter, map, toArray } from 'rxjs/operators';

@@ -167,7 +167,7 @@ export class NxAutocompleteTriggerDirective
    */
   private _canOpenOnNextFocus = true;
 
-  private _injector = inject(Injector);
+  private readonly _injector = inject(Injector);
 
   /** Stream of keyboard events that can close the panel. */
   private readonly _closeKeyEventStream = new Subject<void>();
@@ -175,7 +175,7 @@ export class NxAutocompleteTriggerDirective
   /** Value changes */
   private readonly _valueChanges = new Subject<any>();
 
-  private _initialized = new Subject<void>();
+  private readonly _initialized = new Subject<void>();
 
   /** Strategy factory that will be used to handle scrolling while the autocomplete panel is open. */
   private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;
@@ -277,7 +277,7 @@ export class NxAutocompleteTriggerDirective
    * Event handler for when the window is blurred. Needs to be an
    * arrow function in order to preserve the context.
    */
-  private _windowBlurHandler = () => {
+  private readonly _windowBlurHandler = () => {
     // If the user blurred the window while the autocomplete is focused, it means that it'll be
     // refocused when they come back. In this case we want to skip the first focus event, if the
     // pane was closed, in order to avoid reopening it unintentionally.

@@ -151,7 +151,7 @@ export class NxComparisonTableComponent
     this.scrollDispatch.deregister(this._scrollableArea);
   }
 
-  private _scrollHandler = (event: Event): void => {
+  private readonly _scrollHandler = (event: Event): void => {
     this._updateCellClipping();
   };
 

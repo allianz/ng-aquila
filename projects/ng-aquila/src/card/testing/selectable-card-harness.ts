@@ -14,10 +14,10 @@ export interface NxSelectableCardHarnessFilters extends NxCardHarnessFilters {
 export class NxSelectableCardHarness extends NxCardHarness {
   static hostSelector = 'nx-selectable-card';
 
-  private _indicatorFilled = this.locatorForOptional(
+  private readonly _indicatorFilled = this.locatorForOptional(
     '.indicator-element .check-dot, .indicator-element nx-icon[name="check"]',
   );
-  private _label = this.locatorFor('label');
+  private readonly _label = this.locatorFor('label');
 
   static with(options: NxSelectableCardHarnessFilters = {}) {
     return new HarnessPredicate(NxSelectableCardHarness, options)

@@ -41,8 +41,8 @@ export class NxButtonHarness extends ContentContainerComponentHarness {
       );
   }
 
-  private _basicButtonContent = this.locatorFor('span.nx-button__content');
-  private _plainButtonContent = this.locatorFor('span.nx-plain-button__content');
+  private readonly _basicButtonContent = this.locatorFor('span.nx-button__content');
+  private readonly _plainButtonContent = this.locatorFor('span.nx-plain-button__content');
 
   /**
    * Clicks the button at the given position relative to its top-left.
@@ -73,7 +73,7 @@ export class NxButtonHarness extends ContentContainerComponentHarness {
     }
   }
 
-  private _criticalClasses = ['nx-plain-button--danger', 'nx-button--danger'] as const;
+  private readonly _criticalClasses = ['nx-plain-button--danger', 'nx-button--danger'] as const;
   async isCritical(): Promise<boolean> {
     const host = await this.host();
     return (await parallel(() => this._criticalClasses.map((clazz) => host.hasClass(clazz)))).some(
@@ -83,13 +83,11 @@ export class NxButtonHarness extends ContentContainerComponentHarness {
 
   async getType(): Promise<Type> {
     const host = await this.host();
-    // eslint-disable-next-line eqeqeq
+
     if (await host.hasClass('nx-button')) {
       return 'basic';
-      // eslint-disable-next-line eqeqeq
     } else if (await host.hasClass('nx-icon-button')) {
       return 'icon';
-      // eslint-disable-next-line eqeqeq
     } else if (await host.hasClass('nx-plain-button')) {
       return 'plain';
     }

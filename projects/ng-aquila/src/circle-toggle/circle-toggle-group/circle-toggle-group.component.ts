@@ -102,7 +102,7 @@ export class NxCircleToggleGroupComponent
   }
   private _id = `nx-circle-toggle-group-${nextId++}`;
 
-  private errorChildren = contentChildren(NxErrorComponent);
+  private readonly errorChildren = contentChildren(NxErrorComponent);
   ariaDescribedBy: Signal<string | null> = computed(() => {
     if (this.errorState() && this.errorChildren().length > 0) {
       return this.errorChildren()
@@ -220,7 +220,8 @@ export class NxCircleToggleGroupComponent
     return this._buttons;
   }
 
-  @ContentChildren(ToggleButton, { descendants: true }) private _buttons!: QueryList<ToggleButton>;
+  @ContentChildren(ToggleButton, { descendants: true })
+  private readonly _buttons!: QueryList<ToggleButton>;
 
   /** An event emitted when the selection changes. Outputs the value of the currently selected button. */
   @Output() readonly valueChange = new EventEmitter<any>();

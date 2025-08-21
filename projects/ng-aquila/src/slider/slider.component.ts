@@ -87,7 +87,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
 
   ticks: TickItem[] = [];
 
-  @ViewChild('handle', { static: true }) private _handleElement!: ElementRef;
+  @ViewChild('handle', { static: true }) private readonly _handleElement!: ElementRef;
   @ContentChildren(NxSliderAppendixDirective)
   _appendixChildren!: QueryList<NxSliderAppendixDirective>;
 

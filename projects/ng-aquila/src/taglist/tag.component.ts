@@ -49,7 +49,7 @@ export type NxTagType = 'tag' | 'keyword';
 })
 export class NxTagGroupComponent implements ControlValueAccessor, NxAbstractControl {
   readonly name = `nx-tag-group-${groupId++}`;
-  private _elementRef = inject(ElementRef);
+  private readonly _elementRef = inject(ElementRef);
 
   /** The value of the tag group, can be used as alternative to ngModel or reactive forms. */
   readonly value: ModelSignal<any[]> = model<any[]>([]);
@@ -136,7 +136,7 @@ export class NxTagComponent implements OnDestroy, NxAbstractControl {
   readonly tagGroup = inject(NxTagGroupComponent, { optional: true });
   readonly tagList = inject(TAGLIST, { optional: true });
   readonly id = `nx-tag-${tagId++}`;
-  private _input = viewChild<ElementRef>('input');
+  private readonly _input = viewChild<ElementRef>('input');
   private _lastInputNativeElement: HTMLElement | undefined = undefined;
 
   /** Whether the tag should be readonly. */

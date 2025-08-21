@@ -31,7 +31,7 @@ export class NxRadioGroupHarness extends ComponentHarness {
       );
   }
 
-  private _selectedRadio = this.locatorForOptional(NxRadioHarness.with({ checked: true }));
+  private readonly _selectedRadio = this.locatorForOptional(NxRadioHarness.with({ checked: true }));
 
   async getRadioButtons(filter?: NxRadioHarnessFilters): Promise<NxRadioHarness[]> {
     return this.locatorForAll(NxRadioHarness.with(filter))();

@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-const chokidar = require('chokidar');
+import chokidar = require('chokidar');
 
 export interface RxWatchData {
   event: string;
@@ -17,9 +17,11 @@ export function rxWatcher(pattern, options) {
         name: name.replace(/\\/g, '/'),
       } as RxWatchData);
 
-    ['add', 'change', 'unlink', 'addDir', 'unlinkDir'].forEach((event) => {
-      watcher.on(event, nextItem(event));
-    });
+    ['add', 'change', 'unlink', 'addDir', 'unlinkDir'].forEach(
+      (event: 'add' | 'change' | 'unlink' | 'addDir' | 'unlinkDir') => {
+        watcher.on(event, nextItem(event));
+      },
+    );
 
     watcher.on('error', (err) => {
       observer.error(err);

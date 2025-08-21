@@ -177,7 +177,7 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy, AfterViewInit {
 @Directive({ standalone: true })
 export class NxAnchorButtonBase extends NxButtonBase implements OnDestroy {
   constructor(
-    private _ngZone: NgZone,
+    private readonly _ngZone: NgZone,
     _cdr: ChangeDetectorRef,
     elementRef: ElementRef,
     focusMonitor: FocusMonitor,
@@ -200,7 +200,7 @@ export class NxAnchorButtonBase extends NxButtonBase implements OnDestroy {
   }
 
   /** @docs-private */
-  private _checkEventsDisabled = (event: Event) => {
+  private readonly _checkEventsDisabled = (event: Event) => {
     if (this.disabled) {
       event.preventDefault();
       event.stopImmediatePropagation();

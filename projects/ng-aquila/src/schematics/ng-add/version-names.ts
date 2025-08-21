@@ -7,6 +7,7 @@ export const aquilaVersion = loadPackageVersionGracefully('@allianz/ng-aquila');
 // fetch the version defined in modules
 function loadPackageVersionGracefully(packageName: string): string | null {
   try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     return require(`${packageName}/package.json`).version;
   } catch {
     return null;
@@ -16,6 +17,7 @@ function loadPackageVersionGracefully(packageName: string): string | null {
 export function installAllPeerDependencies(tree: Tree): void {
   // key/value pair: package name/version
   try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const peerDependencies = require(`@allianz/ng-aquila/package.json`).peerDependencies;
     for (const packageName in peerDependencies) {
       if ({}.hasOwnProperty.call(peerDependencies, packageName)) {

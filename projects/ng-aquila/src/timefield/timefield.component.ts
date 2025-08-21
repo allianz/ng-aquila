@@ -218,7 +218,7 @@ export class NxTimefieldComponent
   @ViewChild(CdkConnectedOverlay) overlay?: CdkConnectedOverlay;
   @ViewChildren(NxTimefieldOption) timepickerOptions!: QueryList<NxTimefieldOption>;
 
-  private destroyRef = inject(DestroyRef);
+  private readonly destroyRef = inject(DestroyRef);
 
   timeList: TimepickerOption[] = [];
   pickerValue: any;
@@ -472,7 +472,7 @@ export class NxTimefieldComponent
     @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
     readonly _intl: NxTimefieldIntl,
     private readonly _elementRef: ElementRef,
-    private injector: Injector,
+    private readonly injector: Injector,
 
     @Optional()
     @Inject(FORMFIELD_DEFAULT_OPTIONS)

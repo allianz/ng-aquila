@@ -279,7 +279,7 @@ export class NxDateRangeComponent<D>
   ngControl: NgControl | null = null;
 
   constructor(
-    private _elementReference: ElementRef,
+    private readonly _elementReference: ElementRef,
     private readonly _focusMonitor: FocusMonitor,
     private readonly _renderer: Renderer2,
     private readonly _injector: Injector,

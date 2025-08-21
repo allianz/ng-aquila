@@ -100,7 +100,7 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy, AfterV
 
   @ViewChildren('cell') _cells!: QueryList<ElementRef<HTMLElement>>;
 
-  private _injector = inject(Injector);
+  private readonly _injector = inject(Injector);
 
   /** Preserves the current value of the _cells ViewChildren in case _cells changes. */
   private _cellsPrevious!: QueryList<ElementRef<HTMLElement>>;

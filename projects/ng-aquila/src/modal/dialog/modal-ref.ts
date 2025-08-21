@@ -27,7 +27,7 @@ export class NxModalRef<T, R = any> {
   disableClose?: boolean = this._containerInstance._config.disableClose;
 
   /** Define custom function to determine whether a modal can be closed  */
-  private shouldClose = this._containerInstance._config.shouldClose;
+  private readonly shouldClose = this._containerInstance._config.shouldClose;
 
   /** Stream that emits when closing modal has been denied */
   readonly closeDenied = new Subject<void>();

@@ -247,7 +247,7 @@ export class NxDatemaskComponent<D>
     this.onChange(this.date());
   });
 
-  private _injector = inject(Injector);
+  private readonly _injector = inject(Injector);
 
   /**
    * @docs-private
@@ -306,7 +306,7 @@ export class NxDatemaskComponent<D>
   format = input<string>('DD.MM.YYYY');
 
   /** @docs-private */
-  private _formatCheckEffect = effect(() => {
+  private readonly _formatCheckEffect = effect(() => {
     const daysOccurances = [...this.format().matchAll(/(?=(D{2}))/g)];
     const monthOccurances = [...this.format().matchAll(/M{2}/g)];
     const yearOccurances = [...this.format().matchAll(/Y{4}/g)];
@@ -442,11 +442,11 @@ export class NxDatemaskComponent<D>
    */
   @Input() dateFilter!: (date: D | null) => boolean;
 
-  private _elementReference: ElementRef = inject(ElementRef);
-  private _focusMonitor: FocusMonitor = inject(FocusMonitor);
+  private readonly _elementReference: ElementRef = inject(ElementRef);
+  private readonly _focusMonitor: FocusMonitor = inject(FocusMonitor);
   private readonly _dateAdapter: NxDateAdapter<D> = inject(NxDateAdapter<D>);
   private readonly _errorStateMatcher: ErrorStateMatcher = inject(ErrorStateMatcher);
-  private _dateStrict: boolean | null = inject(NX_DATE_STRICT, { optional: true });
+  private readonly _dateStrict: boolean | null = inject(NX_DATE_STRICT, { optional: true });
   private readonly _formFieldComponent: NxFormfieldComponent | null = inject(NxFormfieldComponent, {
     optional: true,
   });

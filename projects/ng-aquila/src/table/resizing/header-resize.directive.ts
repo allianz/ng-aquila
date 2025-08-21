@@ -20,14 +20,14 @@ import { NxHeaderCellDirective } from '../header-cell.directive';
   standalone: true,
 })
 export class NxHeaderResizeDirective implements OnInit, OnDestroy {
-  private mousedown = fromEvent(this.elementRef.nativeElement, 'mousedown');
-  private touchstart = fromEvent(this.elementRef.nativeElement, 'touchstart');
+  private readonly mousedown = fromEvent(this.elementRef.nativeElement, 'mousedown');
+  private readonly touchstart = fromEvent(this.elementRef.nativeElement, 'touchstart');
 
-  private mousemove = fromEvent<MouseEvent>(this.documentRef, 'mousemove');
-  private touchmove = fromEvent<TouchEvent>(this.documentRef, 'touchmove');
+  private readonly mousemove = fromEvent<MouseEvent>(this.documentRef, 'mousemove');
+  private readonly touchmove = fromEvent<TouchEvent>(this.documentRef, 'touchmove');
 
-  private mouseup = fromEvent(this.documentRef, 'mouseup');
-  private touchend = fromEvent(this.documentRef, 'touchend');
+  private readonly mouseup = fromEvent(this.documentRef, 'mouseup');
+  private readonly touchend = fromEvent(this.documentRef, 'touchend');
   readonly resizable = merge(this.mousedown, this.touchstart).pipe(
     tap((e) => e.stopPropagation()),
     tap((e) => e.preventDefault()),
@@ -59,7 +59,7 @@ export class NxHeaderResizeDirective implements OnInit, OnDestroy {
     @Inject(ElementRef)
     private readonly elementRef: ElementRef<HTMLElement>,
     private readonly header: NxHeaderCellDirective,
-    private renderer: Renderer2,
+    private readonly renderer: Renderer2,
   ) {}
 
   ngOnInit() {

@@ -22,9 +22,9 @@ import {
   imports: [NxCopytextModule],
 })
 export class NxSwipebarComponent implements AfterViewInit {
-  @ViewChild('element') private _element!: ElementRef;
-  @ViewChild('scrollable') private _scrollable!: ElementRef;
-  @ViewChild('indicator') private _indicator!: ElementRef;
+  @ViewChild('element') private readonly _element!: ElementRef;
+  @ViewChild('scrollable') private readonly _scrollable!: ElementRef;
+  @ViewChild('indicator') private readonly _indicator!: ElementRef;
 
   private _barLength = 0;
 

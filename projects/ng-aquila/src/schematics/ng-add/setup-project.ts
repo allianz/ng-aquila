@@ -24,7 +24,7 @@ import {
   updateWorkspace,
 } from '@schematics/angular/utility';
 import { buildDefaultPath } from '@schematics/angular/utility/workspace';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 
 import { isAngularApplicationProject } from '../utils/utils';
 import { Schema } from './schema';

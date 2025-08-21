@@ -88,7 +88,7 @@ export class NxMultiSelectAllComponent<T> implements Highlightable, ListKeyManag
   constructor(
     private readonly _cdr: ChangeDetectorRef,
     readonly elementRef: ElementRef,
-    private liveAnnouncer: LiveAnnouncer,
+    private readonly liveAnnouncer: LiveAnnouncer,
   ) {}
 
   setActiveStyles(): void {

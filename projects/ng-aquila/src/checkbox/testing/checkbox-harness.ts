@@ -9,8 +9,8 @@ export interface NxCheckboxHarnessFilters extends BaseHarnessFilters {
 export class NxCheckboxHarness extends ComponentHarness {
   static hostSelector = 'nx-checkbox';
 
-  private _input = this.locatorFor('input');
-  private _getCheckmark = this.locatorForOptional('label nx-icon[name=check]');
+  private readonly _input = this.locatorFor('input');
+  private readonly _getCheckmark = this.locatorForOptional('label nx-icon[name=check]');
 
   static with(options: NxCheckboxHarnessFilters = {}) {
     return new HarnessPredicate(NxCheckboxHarness, options)

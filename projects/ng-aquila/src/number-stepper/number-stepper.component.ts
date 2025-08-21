@@ -336,7 +336,7 @@ export class NxNumberStepperComponent
 
   private readonly _destroyed = new Subject<void>();
 
-  private injector = inject(Injector);
+  private readonly injector = inject(Injector);
 
   constructor(
     private readonly _cdr: ChangeDetectorRef,

@@ -45,18 +45,18 @@ export class NxFormfieldHarness extends ContentContainerComponentHarness {
       );
   }
 
-  private _label = this.locatorFor('label.nx-formfield__label');
-  private _prefix = this.locatorForOptional('.nx-formfield__prefix');
-  private _suffix = this.locatorForOptional('.nx-formfield__suffix');
-  private _appendix = this.locatorForOptional('.nx-formfield__appendix');
-  private _hint = this.locatorForOptional('.nx-formfield__hints');
-  private _inputControl = this.locatorForOptional(NxInputHarness);
-  private _dropdownControl = this.locatorForOptional(NxDropdownHarness);
+  private readonly _label = this.locatorFor('label.nx-formfield__label');
+  private readonly _prefix = this.locatorForOptional('.nx-formfield__prefix');
+  private readonly _suffix = this.locatorForOptional('.nx-formfield__suffix');
+  private readonly _appendix = this.locatorForOptional('.nx-formfield__appendix');
+  private readonly _hint = this.locatorForOptional('.nx-formfield__hints');
+  private readonly _inputControl = this.locatorForOptional(NxInputHarness);
+  private readonly _dropdownControl = this.locatorForOptional(NxDropdownHarness);
 
   /**
    * Gets the control inside the form-field, matching the query
    */
-  // eslint-disable-next-line @typescript-eslint/unified-signatures
+
   async getControl<T extends NxFormfieldControlHarness>(type: HarnessQuery<T>): Promise<T>;
 
   /**

@@ -46,12 +46,12 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
       });
   }
 
-  private _setCountryCodeFromInputValue = (event: Event) => {
+  private readonly _setCountryCodeFromInputValue = (event: Event) => {
     const input = event.target as HTMLInputElement;
     this._setCountryCode(input.value.substr(0, 2));
   };
 
-  private _beforePasteHook = (event: ClipboardEvent) => {
+  private readonly _beforePasteHook = (event: ClipboardEvent) => {
     // change the country code here if necessary
     const input: HTMLInputElement = event.target as HTMLInputElement;
     const pastedData = (event.clipboardData || (window as any).clipboardData).getData('text');

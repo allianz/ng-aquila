@@ -31,7 +31,7 @@ export class NxTimefieldOption implements Highlightable {
     this._id = value;
   }
   private _id = '';
-  private _generatedId = `nx-timefield-option-${nextId++}`;
+  private readonly _generatedId = `nx-timefield-option-${nextId++}`;
 
   /** The option's host element */
   readonly element: HTMLElement = inject(ElementRef).nativeElement;

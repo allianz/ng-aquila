@@ -145,7 +145,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
   _overlayRef!: OverlayRef | null;
   _tooltipInstance!: NxTooltipComponent | null;
 
-  private _injector = inject(Injector);
+  private readonly _injector = inject(Injector);
 
   private _portal!: ComponentPortal<NxTooltipComponent>;
   private _embeddedViewRef!: ComponentRef<NxTooltipComponent>;

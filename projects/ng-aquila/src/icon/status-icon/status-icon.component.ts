@@ -30,7 +30,7 @@ export class NxStatusIconComponent {
   }
   private _size: NxStatusIconSize = 'auto';
 
-  private statusList: { [key in NxStatusIconType]: any } = {
+  private readonly statusList: { [key in NxStatusIconType]: any } = {
     error: { icon: 'exclamation-triangle' },
     warning: { icon: 'exclamation-circle-warning' },
     success: { icon: 'check-circle' },

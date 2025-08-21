@@ -36,7 +36,7 @@ type TooltipVisibility = 'initial' | 'visible' | 'hidden';
   imports: [NgClass, NgStyle],
 })
 export class NxTooltipComponent implements OnDestroy {
-  private _liveAnnouncer = inject(LiveAnnouncer);
+  private readonly _liveAnnouncer = inject(LiveAnnouncer);
 
   /** The timeout ID of any current timer set to show the tooltip */
   private _showTimeoutId: number | null = null;

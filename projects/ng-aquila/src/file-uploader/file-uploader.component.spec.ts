@@ -1161,7 +1161,7 @@ class UploadFail extends FileUploaderTest {
 
   constructor(
     private readonly http: HttpClient,
-    private cdr: ChangeDetectorRef,
+    private readonly cdr: ChangeDetectorRef,
   ) {
     super();
     this.uploader.response.pipe(takeUntilDestroyed()).subscribe((result) => {

@@ -25,7 +25,7 @@ export class NxCheckboxGroupHarness extends ComponentHarness {
     );
   }
 
-  private _checked = this.locatorForAll(NxCheckboxHarness.with({ checked: true }));
+  private readonly _checked = this.locatorForAll(NxCheckboxHarness.with({ checked: true }));
 
   async getCheckboxes(filter?: NxCheckboxHarnessFilters): Promise<NxCheckboxHarness[]> {
     return this.locatorForAll(NxCheckboxHarness.with(filter))();

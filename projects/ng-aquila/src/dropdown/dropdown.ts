@@ -508,7 +508,7 @@ export class NxDropdownComponent
   _customClosedDropdownLabel!: NxDropdownClosedLabelDirective;
 
   @ViewChild('defaultClosedDropdownLabel', { static: true })
-  private _defaultClosedDropdownLabel!: TemplateRef<any>;
+  private readonly _defaultClosedDropdownLabel!: TemplateRef<any>;
 
   @ViewChildren(NxDropdownItemComponent) _lazyDropdownItems!: QueryList<NxDropdownItemComponent>;
 

@@ -33,7 +33,7 @@ export class NxSignalButtonComponent {
 
   private _ariaLabel = 'signal button';
   private _ariaLabelledby = '';
-  private _allowedContexts: NxSignalButtonContext[] = ['success', 'warning', 'error'];
+  private readonly _allowedContexts: NxSignalButtonContext[] = ['success', 'warning', 'error'];
 
   /** The event emitter for open. */
   @Output() opened = new EventEmitter<boolean>();

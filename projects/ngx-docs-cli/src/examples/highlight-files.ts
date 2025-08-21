@@ -1,4 +1,4 @@
-import chalk = require('chalk');
+import chalk from 'chalk';
 import path = require('path');
 import glob = require('glob');
 import fs = require('fs-extra');

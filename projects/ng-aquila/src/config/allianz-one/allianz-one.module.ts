@@ -1,16 +1,16 @@
 import { FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions } from '@allianz/ng-aquila/formfield';
 import { InjectionToken, NgModule } from '@angular/core';
 
-export interface AllianzOneOptions {}
+// export interface AllianzOneOptions {}
 
-export const ALLIANZ_ONE = new InjectionToken<AllianzOneOptions>('ALLIANZ_ONE');
+export const ALLIANZ_ONE = new InjectionToken<object>('ALLIANZ_ONE');
 
 const formfieldDefaultOptions: FormfieldDefaultOptions = {
   nxFloatLabel: 'always',
   appearance: 'outline',
 };
 
-const allianzOneOptions: AllianzOneOptions = {};
+const allianzOneOptions: object = {};
 
 @NgModule({
   providers: [

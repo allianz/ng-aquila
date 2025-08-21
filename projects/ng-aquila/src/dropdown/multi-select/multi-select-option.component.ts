@@ -79,7 +79,7 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable, ListKeyMa
   constructor(
     private readonly _cdr: ChangeDetectorRef,
     readonly elementRef: ElementRef,
-    private liveAnnouncer: LiveAnnouncer,
+    private readonly liveAnnouncer: LiveAnnouncer,
   ) {}
 
   setActiveStyles(): void {

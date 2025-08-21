@@ -234,7 +234,7 @@ export class NxSwitcherComponent
     return this.required && control.value !== true ? { required: true } : null;
   }
 
-  private injector = inject(Injector);
+  private readonly injector = inject(Injector);
 
   ngOnInit(): void {
     this.ngControl = this.injector.get(NgControl, null);

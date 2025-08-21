@@ -451,7 +451,7 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
    */
   renderNodeChanges(
     data: T[],
-    // eslint-disable-next-line @typescript-eslint/dot-notation
+
     dataDiffer: IterableDiffer<T> = this['_dataDiffer'], // accessing private super class member
     viewContainer: ViewContainerRef = this._nodeOutlet.viewContainer,
     parentData?: T,

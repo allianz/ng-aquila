@@ -57,7 +57,7 @@ export class NxNaturalLanguageFormComponent
   }
   private _negative = false;
 
-  private _injector = inject(Injector);
+  private readonly _injector = inject(Injector);
   /**
    * Sets the size of the NLF. Default value: large.
    */

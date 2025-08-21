@@ -5,7 +5,7 @@ import { NxSelectableCardHarness, NxSelectableCardHarnessFilters } from './selec
 export class NxSelectableCardGroupHarness extends ComponentHarness {
   static hostSelector = 'nx-selectable-card-group';
 
-  private _error = this.locatorForOptional('nx-error');
+  private readonly _error = this.locatorForOptional('nx-error');
 
   async getCards(filter?: NxSelectableCardHarnessFilters): Promise<NxSelectableCardHarness[]> {
     return this.locatorForAll(NxSelectableCardHarness.with(filter))();

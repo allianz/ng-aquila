@@ -1991,8 +1991,8 @@ class ShadowDomComponent {}
 })
 class OpenerBComponent implements OnInit {
   constructor(
-    private dialog: NxDialogService,
-    private ref: NxModalRef<any, any>,
+    private readonly dialog: NxDialogService,
+    private readonly ref: NxModalRef<any, any>,
   ) {}
 
   async ngOnInit() {
@@ -2008,7 +2008,7 @@ class OpenerBComponent implements OnInit {
   template: 'Closing in a Second',
 })
 class Closer implements OnInit {
-  constructor(private ref: NxModalRef<any, any>) {}
+  constructor(private readonly ref: NxModalRef<any, any>) {}
 
   async ngOnInit() {
     await firstValueFrom(timer(1000));

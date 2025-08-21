@@ -26,7 +26,7 @@ const DEFAULT_THROTTLE_TIME = 200;
   providedIn: 'root',
 })
 export class NxViewportService {
-  private _platform = inject(Platform);
+  private readonly _platform = inject(Platform);
 
   readonly viewportChange$: Observable<number> = this._platform.isBrowser
     ? fromEvent(window, 'resize').pipe(map(() => window.innerWidth))

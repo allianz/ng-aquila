@@ -14,7 +14,7 @@ export const DEFAULT_MASK_CONFIG: Omit<NxMaskConfig, 'mask'> = {
  * Standalone mask implementation that is not tied to Angular.
  */
 export class NxMask {
-  private eventHandlers = new Map<keyof HTMLElementEventMap, (event: any) => void>();
+  private readonly eventHandlers = new Map<keyof HTMLElementEventMap, (event: any) => void>();
   /**
    * _cursor is a helper for saving a position or a selectionRange (selectionStart + selectionEnd)
    * and then apply it later on (in onInput()).

@@ -31,11 +31,11 @@ export class NxDropdownHarness extends NxFormfieldControlHarness {
       );
   }
 
-  private documentRootLocator = this.documentRootLocatorFactory();
-  private _panelBodyQuery = `.nx-dropdown__panel-body`;
-  private _valueText = this.locatorFor('.nx-dropdown__rendered');
-  private _trigger = this.locatorFor('.nx-dropdown__container');
-  private _filter = this.documentRootLocator.locatorFor(`.nx-dropdown__filter-input`);
+  private readonly documentRootLocator = this.documentRootLocatorFactory();
+  private readonly _panelBodyQuery = `.nx-dropdown__panel-body`;
+  private readonly _valueText = this.locatorFor('.nx-dropdown__rendered');
+  private readonly _trigger = this.locatorFor('.nx-dropdown__container');
+  private readonly _filter = this.documentRootLocator.locatorFor(`.nx-dropdown__filter-input`);
 
   /** Get the current value text when dropdown is not empty */
   async getValueText(): Promise<string> {

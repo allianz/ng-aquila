@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import * as glob from 'glob';
 import * as path from 'path';
@@ -9,8 +10,6 @@ import { MarkdownFile } from '../shared/markdown-file';
 import { readMarkdownFileStream } from '../shared/read-markdown-file';
 import { manifest } from './manifest';
 import { transform } from './transform';
-
-import chalk = require('chalk');
 
 const mdFiles$ = bindNodeCallback(glob);
 const outputFile$ = bindNodeCallback(fs.outputFile);

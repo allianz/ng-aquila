@@ -43,7 +43,7 @@ export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy,
     super(_elementRef, _tree);
   }
 
-  private actionItem = contentChild(NxTreeNodeActionItem);
+  private readonly actionItem = contentChild(NxTreeNodeActionItem);
 
   /** if NxTreeNodeActionItem is present, returns  */
   readonly ariaLevel = computed(() => (this.actionItem() ? null : this.level + 1));

@@ -12,7 +12,7 @@ export interface NxLinkHarnessFilters extends BaseHarnessFilters {
 export class NxLinkHarness extends ComponentHarness {
   static hostSelector = 'nx-link';
 
-  private _anchor = this.locatorFor('a');
+  private readonly _anchor = this.locatorFor('a');
 
   static with(options: NxLinkHarnessFilters = {}) {
     return new HarnessPredicate(NxLinkHarness, options).addOption(

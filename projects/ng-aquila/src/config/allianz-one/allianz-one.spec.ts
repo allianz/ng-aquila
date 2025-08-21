@@ -2,7 +2,7 @@ import { FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions } from '@allianz/ng-
 import { Component, Inject, Optional, Type } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { ALLIANZ_ONE, AllianzOneOptions, NxAllianzOneModule } from './allianz-one.module';
+import { ALLIANZ_ONE, NxAllianzOneModule } from './allianz-one.module';
 
 @Component({
   template: ` <p>Doesn't matter</p> `,
@@ -10,7 +10,7 @@ import { ALLIANZ_ONE, AllianzOneOptions, NxAllianzOneModule } from './allianz-on
 })
 class AllianzOnePresetTest {
   constructor(
-    @Optional() @Inject(ALLIANZ_ONE) readonly allianzOne: AllianzOneOptions,
+    @Optional() @Inject(ALLIANZ_ONE) readonly allianzOne: object,
     @Optional()
     @Inject(FORMFIELD_DEFAULT_OPTIONS)
     readonly formfieldOptions: FormfieldDefaultOptions,
@@ -23,7 +23,7 @@ class AllianzOnePresetTest {
 })
 class AllianzOneWithoutModuleImportPresetTest {
   constructor(
-    @Optional() @Inject(ALLIANZ_ONE) readonly allianzOne: AllianzOneOptions,
+    @Optional() @Inject(ALLIANZ_ONE) readonly allianzOne: object,
     @Optional()
     @Inject(FORMFIELD_DEFAULT_OPTIONS)
     readonly formfieldOptions: FormfieldDefaultOptions,

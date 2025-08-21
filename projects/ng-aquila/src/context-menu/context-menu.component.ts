@@ -46,11 +46,12 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
   @ContentChildren(NxContextMenuItemComponent)
   private _items!: QueryList<NxContextMenuItemComponent>;
 
-  @ContentChild(NxContextMenuItemWrapComponent) private _wrap!: NxContextMenuItemWrapComponent;
+  @ContentChild(NxContextMenuItemWrapComponent)
+  private readonly _wrap!: NxContextMenuItemWrapComponent;
 
   private readonly _init = new ReplaySubject<void>(1);
 
-  private _injector = inject(Injector);
+  private readonly _injector = inject(Injector);
   private _firstItemFocusRef?: AfterRenderRef;
 
   /** Config object to be passed into the menu's ngClass */

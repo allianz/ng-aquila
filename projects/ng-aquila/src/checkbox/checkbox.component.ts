@@ -532,7 +532,7 @@ export class NxCheckboxComponent
     private readonly _errorStateMatcher: ErrorStateMatcher,
     @Optional() readonly checkboxGroup: NxCheckboxGroupComponent | null,
     private readonly _focusMonitor: FocusMonitor,
-    private injector: Injector,
+    private readonly injector: Injector,
   ) {}
 
   ngDoCheck(): void {
