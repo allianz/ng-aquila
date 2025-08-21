@@ -1,0 +1,23 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTileComponent</span>, <span class="hljs-title class_">NxTileGroupComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/tile&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormBuilder</span>, <span class="hljs-title class_">FormGroup</span>, <span class="hljs-title class_">ReactiveFormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Tile Reactive Forms Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tile-reactive-forms-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tile-reactive-forms-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tile-reactive-forms-example.css&#x27;</span>],
+  <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxTileComponent</span>, <span class="hljs-title class_">NxTileGroupComponent</span>, <span class="hljs-title class_">ReactiveFormsModule</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TileReactiveFormsExampleComponent</span> {
+  <span class="hljs-attr">form</span>: <span class="hljs-title class_">FormGroup</span>;
+
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">fb</span>: <span class="hljs-title class_">FormBuilder</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({
+      <span class="hljs-attr">tileGroup</span>: [<span class="hljs-string">&#x27;car&#x27;</span>],
+    });
+  }
+}

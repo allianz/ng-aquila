@@ -1,0 +1,80 @@
+<span class="hljs-selector-class">.cell-bg-checked</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">var</span>(--tile-selected-background-color, <span class="hljs-number">#e6f0fa</span>);
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--tile-selected-color, <span class="hljs-number">#005fa3</span>);
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">justify-content</span>: flex-start;
+}
+<span class="hljs-selector-class">.cell-bg-disabled</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgb</span>(
+    from <span class="hljs-built_in">var</span>(--tile-disabled-selected-background-color, <span class="hljs-number">#e0e0e0</span>) r g b /
+      <span class="hljs-built_in">var</span>(--tile-disabled-opacity, <span class="hljs-number">0.4</span>)
+  );
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--tile-disabled-text-color, <span class="hljs-number">#888</span>);
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">justify-content</span>: flex-start;
+}
+<span class="hljs-selector-class">.cell-bg-readonly</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">var</span>(--tile-readonly-selected-background-color, <span class="hljs-number">#f5f5f5</span>);
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--tile-readonly-text-color, <span class="hljs-number">#666</span>);
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">justify-content</span>: flex-start;
+}
+<span class="hljs-selector-class">.cell-bg-critical</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">var</span>(--tile-error-border-color, <span class="hljs-number">#d32f2f</span>);
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--tile-selected-color, <span class="hljs-number">#fff</span>);
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">justify-content</span>: flex-start;
+}
+<span class="hljs-selector-class">.indicator-table-wrapper</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">700px</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
+}
+
+<span class="hljs-selector-class">.indicator-table</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(<span class="hljs-number">120px</span>, <span class="hljs-number">1</span>fr) <span class="hljs-built_in">minmax</span>(<span class="hljs-number">120px</span>, <span class="hljs-number">1</span>fr) <span class="hljs-built_in">minmax</span>(
+      <span class="hljs-number">120px</span>,
+      <span class="hljs-number">1</span>fr
+    );
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">8px</span> <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.indicator-table-header</span> {
+  <span class="hljs-attribute">display</span>: contents;
+}
+
+<span class="hljs-selector-class">.indicator-table-header</span> &gt; <span class="hljs-selector-tag">div</span> {
+  <span class="hljs-attribute">font-weight</span>: bold;
+  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">4px</span>;
+}
+
+<span class="hljs-selector-class">.indicator-table-row</span> {
+  <span class="hljs-attribute">display</span>: contents;
+}
+
+<span class="hljs-selector-class">.indicator-label</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.95em</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+}
+
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">700px</span>) {
+  <span class="hljs-selector-class">.indicator-table</span> {
+    <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-number">1</span>fr;
+  }
+  <span class="hljs-selector-class">.indicator-table-header</span> &gt; <span class="hljs-selector-tag">div</span>,
+  <span class="hljs-selector-class">.indicator-table-row</span> &gt; <span class="hljs-selector-tag">div</span> {
+    <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">8px</span>;
+  }
+}
+
+<span class="hljs-selector-attr">[class*=<span class="hljs-string">&#x27;cell-bg-&#x27;</span>]</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span> -<span class="hljs-number">12px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">12px</span>;
+}

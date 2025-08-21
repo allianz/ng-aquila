@@ -1,0 +1,22 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;auto-grid-controls&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-slider</span>
+    <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;maxColumnsSlider&quot;</span>
+    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;&#x27;Max columns: &#x27; + maxColumns()&quot;</span>
+    [<span class="hljs-attr">min</span>]=<span class="hljs-string">&quot;1&quot;</span>
+    [<span class="hljs-attr">max</span>]=<span class="hljs-string">&quot;8&quot;</span>
+    [<span class="hljs-attr">step</span>]=<span class="hljs-string">&quot;1&quot;</span>
+    [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;maxColumns()&quot;</span>
+    (<span class="hljs-attr">valueChange</span>)=<span class="hljs-string">&quot;maxColumns.set($event)&quot;</span>
+    [<span class="hljs-attr">thumbLabel</span>]=<span class="hljs-string">&quot;false&quot;</span>
+    <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 160px; margin-left: 1rem; align-self: center&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-slider</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;resizable-container&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-badge</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;resize-badge&quot;</span>&gt;</span>Resize me<span class="hljs-tag">&lt;/<span class="hljs-name">nx-badge</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile-group</span> [<span class="hljs-attr">maxColumns</span>]=<span class="hljs-string">&quot;maxColumns()&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>&gt;</span>Choose an option<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+    @for (tile of tiles(); track tile.value) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tile.value&quot;</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;tile.label&quot;</span> [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;tile.icon&quot;</span> /&gt;</span>
+    }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile-group</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

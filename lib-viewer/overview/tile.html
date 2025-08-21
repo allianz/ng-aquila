@@ -1,0 +1,31 @@
+<p class="docs-markdown--p">The Tile component is a new component from the One Allianz Design System with a backwards compatible theme for NDBX projects. It is an alternative to the circle toggle component. We suggest not to mix both of them on the same page.
+The Tile component is a versatile UI element that can display an icon, label, and hint text. It supports selectable, readonly, and disabled states, and can be used in both single-select and multi-select groups.</p>
+<h3 id="layouts" tabindex="-1" class="docs-markdown--h3">Layouts</h3>
+<h4 id="auto-grid" tabindex="-1" class="docs-markdown--h4">Auto grid</h4>
+<p class="docs-markdown--p">The Tile group automatically arranges the tiles in a grid layout depending on the available space. The maximum number of columns can be adjusted with the <code>maxColumns</code> input. The grid layout is responsive and adapts to the size of the outer container. No media queries or container queries are needed for the grid itself. But you can use media or container queries to adjust the size that is available for the tile group.
+<strong>Important:</strong> The <code>maxColumns</code> is the maximum columns the grid can have. The actual number of columns is determined by the available space and the size of the tiles. If there is not enough space for the maximum number of columns, fewer columns will be displayed. The tiles also have a minimum width that they won't become too small.</p>
+<div nx-docs-example="tile-group-auto-grid" config="{}">exampleID: tile-group-auto-grid</div>
+<h4 id="custom-grid-or-other-layouts" tabindex="-1" class="docs-markdown--h4">Custom grid or other layouts</h4>
+<p class="docs-markdown--p">You can also use the tile group with a custom grid layout or any other layout like a flexbox. You can set the <code>autoGrid</code> input to <code>false</code> to disable the automatic grid layout and use your own layout by either changing the CSS grid settings of the <code>.nx-tile-group__tiles</code> class or by using a container around the tiles and then style it to your needs.</p>
+<p class="docs-markdown--p">In this example it shows how you can use CSS to set the CSS grid properties and also use media queries.</p>
+<div nx-docs-example="tile-group-custom-grid" config="{}">exampleID: tile-group-custom-grid</div>
+<h4 id="tile-layout-variants" tabindex="-1" class="docs-markdown--h4">Tile layout variants</h4>
+<p class="docs-markdown--p">The individual Tile component support two different layout variants: vertical and horizontal. The layout can be set with the <code>layout</code> input. The default is vertical.</p>
+<div nx-docs-example="tile-layouts" config="{}">exampleID: tile-layouts</div>
+<h3 id="single-select" tabindex="-1" class="docs-markdown--h3">Single Select</h3>
+<div nx-docs-example="tile-group-single-select" config="{}">exampleID: tile-group-single-select</div>
+<h3 id="multi-select" tabindex="-1" class="docs-markdown--h3">Multi Select</h3>
+<div nx-docs-example="tile-group-multi-select" config="{}">exampleID: tile-group-multi-select</div>
+<h3 id="readonly-and-disabled-states" tabindex="-1" class="docs-markdown--h3">Readonly and Disabled States</h3>
+<p class="docs-markdown--p">Tiles can be set to readonly or disabled states.
+<strong>Readonly</strong> tiles should only be used in internal applications because of accessibility restrictions.</p>
+<div nx-docs-example="tile-readonly-disabled" config="{}">exampleID: tile-readonly-disabled</div>
+<h3 id="forms" tabindex="-1" class="docs-markdown--h3">Forms</h3>
+<p class="docs-markdown--p">The tile component supports both the FormsModule and ReactiveFormsModule of Angular.</p>
+<h4 id="template-driven-forms" tabindex="-1" class="docs-markdown--h4">Template-driven Forms</h4>
+<div nx-docs-example="tile-template-driven" config="{}">exampleID: tile-template-driven</div>
+<h4 id="reactive-forms" tabindex="-1" class="docs-markdown--h4">Reactive Forms</h4>
+<div nx-docs-example="tile-reactive-forms" config="{}">exampleID: tile-reactive-forms</div>
+<h4 id="validation-%2F-error-state" tabindex="-1" class="docs-markdown--h4">Validation / Error State</h4>
+<p class="docs-markdown--p">The tile group is compatible with Angular's form validation. The error state will be shown when the form control is invalid and touched.</p>
+<div nx-docs-example="tile-validation-error-state" config="{}">exampleID: tile-validation-error-state</div>

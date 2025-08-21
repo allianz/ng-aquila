@@ -1,0 +1,28 @@
+<nx-tile-group selectionMode="single" [(value)]="selectedValue">
+  <nx-tile
+    [label]="'Car Insurance'"
+    [icon]="'product-car'"
+    [value]="'car'"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Care Insurance'"
+    [icon]="'product-care-insurance'"
+    [value]="'care'"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Heart'"
+    [icon]="'product-heart'"
+    [value]="'heart'"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Plane'"
+    [icon]="'product-plane'"
+    [value]="'plane'"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Search'"
+    [icon]="'product-search'"
+    [value]="'search'"
+  ></nx-tile>
+</nx-tile-group>
+<p>Selected Value: {{ selectedValue }}</p>

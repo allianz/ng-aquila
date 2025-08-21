@@ -1,0 +1,12 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tile-group</span> <span class="hljs-attr">selectionMode</span>=<span class="hljs-string">&quot;multi&quot;</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;selectedValues&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>&gt;</span>Choose options<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+  @for (tile of tiles(); track tile.value) {
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span>
+    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;tile.label&quot;</span>
+    [<span class="hljs-attr">hint</span>]=<span class="hljs-string">&quot;tile.hint&quot;</span>
+    [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;tile.icon&quot;</span>
+    [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tile.value&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile</span>&gt;</span>
+  }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile-group</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Selected Values: {{ selectedValues.join(&#x27;, &#x27;) }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>

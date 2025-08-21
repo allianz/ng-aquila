@@ -1,0 +1,41 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tile-group</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;selectionMode&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;max-width: 400px&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>&gt;</span>Selection mode<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Single&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;single&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Multi&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;multi&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Readonly Tiles:<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tile-group</span> [<span class="hljs-attr">selectionMode</span>]=<span class="hljs-string">&quot;selectionMode()&quot;</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;&#x27;care&#x27;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span>
+    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;&#x27;Car Insurance&#x27;&quot;</span>
+    [<span class="hljs-attr">hint</span>]=<span class="hljs-string">&quot;&#x27;Product car&#x27;&quot;</span>
+    [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;&#x27;product-car&#x27;&quot;</span>
+    [<span class="hljs-attr">readonly</span>]=<span class="hljs-string">&quot;true&quot;</span>
+    <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;car&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span>
+    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;&#x27;Care Insurance&#x27;&quot;</span>
+    [<span class="hljs-attr">hint</span>]=<span class="hljs-string">&quot;&#x27;Product care insurance&#x27;&quot;</span>
+    [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;&#x27;product-care-insurance&#x27;&quot;</span>
+    [<span class="hljs-attr">readonly</span>]=<span class="hljs-string">&quot;true&quot;</span>
+    <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;care&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Disabled Tiles:<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tile-group</span> [<span class="hljs-attr">selectionMode</span>]=<span class="hljs-string">&quot;selectionMode()&quot;</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;&#x27;plane&#x27;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span>
+    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;&#x27;Heart&#x27;&quot;</span>
+    [<span class="hljs-attr">hint</span>]=<span class="hljs-string">&quot;&#x27;Product heart&#x27;&quot;</span>
+    [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;&#x27;product-heart&#x27;&quot;</span>
+    [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;true&quot;</span>
+    <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;heart&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span>
+    [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;&#x27;Plane&#x27;&quot;</span>
+    [<span class="hljs-attr">hint</span>]=<span class="hljs-string">&quot;&#x27;Product plane&#x27;&quot;</span>
+    [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;&#x27;product-plane&#x27;&quot;</span>
+    [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;true&quot;</span>
+    <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;plane&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile-group</span>&gt;</span>

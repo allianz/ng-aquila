@@ -1,0 +1,6 @@
+<nx-tile-group [autoGrid]="false" class="custom-grid">
+  <nx-label>Choose an option</nx-label>
+  @for (tile of tiles(); track tile.value) {
+  <nx-tile [value]="tile.value" [label]="tile.label" [icon]="tile.icon" />
+  }
+</nx-tile-group>

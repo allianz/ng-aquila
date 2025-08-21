@@ -1,0 +1,16 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;form&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile-group</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;tileGroup&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span>
+      [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;&#x27;Car Insurance&#x27;&quot;</span>
+      [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;&#x27;product-car&#x27;&quot;</span>
+      <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;car&quot;</span>
+    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span>
+      [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;&#x27;Care Insurance&#x27;&quot;</span>
+      [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;&#x27;product-care-insurance&#x27;&quot;</span>
+      <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;care&quot;</span>
+    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;&#x27;Heart&#x27;&quot;</span> [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;&#x27;product-heart&#x27;&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;heart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile-group</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Selected: {{ form.get(&#x27;tileGroup&#x27;)?.value }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>

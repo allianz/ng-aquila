@@ -74,6 +74,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'radio-toggle': return import('../examples/radio-toggle/radio-toggle-examples.module').then(m => m.RadioToggleExamplesModule);
             case 'rating': return import('../examples/rating/rating-examples.module').then(m => m.RatingExamplesModule);
             case 'rtl': return import('../examples/rtl/rtl-examples.module').then(m => m.RtlExamplesModule);
+            case 'selection': return import('../examples/selection/selection-examples.module').then(m => m.SelectionExamplesModule);
             case 'sidebar': return import('../examples/sidebar/sidebar-examples.module').then(m => m.SidebarExamplesModule);
             case 'sidepanel': return import('../examples/sidepanel/sidepanel-examples.module').then(m => m.SidepanelExamplesModule);
             case 'signal-button': return import('../examples/signal-button/signal-button-examples.module').then(m => m.SignalButtonExamplesModule);
@@ -85,6 +86,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'table': return import('../examples/table/table-examples.module').then(m => m.TableExamplesModule);
             case 'tabs': return import('../examples/tabs/tabs-examples.module').then(m => m.TabsExamplesModule);
             case 'taglist': return import('../examples/taglist/taglist-examples.module').then(m => m.TaglistExamplesModule);
+            case 'tile': return import('../examples/tile/tile-examples.module').then(m => m.TileExamplesModule);
             case 'timefield': return import('../examples/timefield/timefield-examples.module').then(m => m.TimefieldExamplesModule);
             case 'toolbar': return import('../examples/toolbar/toolbar-examples.module').then(m => m.ToolbarExamplesModule);
             case 'tooltip': return import('../examples/tooltip/tooltip-examples.module').then(m => m.TooltipExamplesModule);

@@ -1,0 +1,10 @@
+<span class="hljs-selector-class">.custom-grid</span> ::ng-deep .nx-tile-group__tiles {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>fr);
+}
+
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">992px</span>) {
+  <span class="hljs-selector-class">.custom-grid</span> ::ng-deep .nx-tile-group__tiles {
+    <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>fr);
+  }
+}

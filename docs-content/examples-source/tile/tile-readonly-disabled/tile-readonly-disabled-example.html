@@ -1,0 +1,41 @@
+<nx-tile-group [(ngModel)]="selectionMode" style="max-width: 400px">
+  <nx-label>Selection mode</nx-label>
+  <nx-tile label="Single" value="single" />
+  <nx-tile label="Multi" value="multi" />
+</nx-tile-group>
+
+<p>Readonly Tiles:</p>
+<nx-tile-group [selectionMode]="selectionMode()" [value]="'care'">
+  <nx-tile
+    [label]="'Car Insurance'"
+    [hint]="'Product car'"
+    [icon]="'product-car'"
+    [readonly]="true"
+    value="car"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Care Insurance'"
+    [hint]="'Product care insurance'"
+    [icon]="'product-care-insurance'"
+    [readonly]="true"
+    value="care"
+  ></nx-tile>
+</nx-tile-group>
+
+<p>Disabled Tiles:</p>
+<nx-tile-group [selectionMode]="selectionMode()" [value]="'plane'">
+  <nx-tile
+    [label]="'Heart'"
+    [hint]="'Product heart'"
+    [icon]="'product-heart'"
+    [disabled]="true"
+    value="heart"
+  ></nx-tile>
+  <nx-tile
+    [label]="'Plane'"
+    [hint]="'Product plane'"
+    [icon]="'product-plane'"
+    [disabled]="true"
+    value="plane"
+  ></nx-tile>
+</nx-tile-group>

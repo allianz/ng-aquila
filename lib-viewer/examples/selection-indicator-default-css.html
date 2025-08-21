@@ -1,0 +1,55 @@
+<span class="hljs-selector-class">.indicator-table</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(<span class="hljs-number">120px</span>, <span class="hljs-number">1</span>fr) <span class="hljs-built_in">minmax</span>(<span class="hljs-number">120px</span>, <span class="hljs-number">1</span>fr) <span class="hljs-built_in">minmax</span>(
+      <span class="hljs-number">120px</span>,
+      <span class="hljs-number">1</span>fr
+    );
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">8px</span> <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">600px</span>;
+}
+
+<span class="hljs-selector-class">.indicator-table-header</span> {
+  <span class="hljs-attribute">display</span>: contents;
+}
+
+<span class="hljs-selector-class">.indicator-table-header</span> &gt; <span class="hljs-selector-tag">div</span> {
+  <span class="hljs-attribute">font-weight</span>: bold;
+  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">4px</span>;
+}
+
+<span class="hljs-selector-class">.indicator-table-row</span> {
+  <span class="hljs-attribute">display</span>: contents;
+}
+
+<span class="hljs-selector-class">.indicator-label</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.95em</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+}
+
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">600px</span>) {
+  <span class="hljs-selector-class">.indicator-table</span> {
+    <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-number">1</span>fr;
+  }
+  <span class="hljs-selector-class">.indicator-table-header</span> &gt; <span class="hljs-selector-tag">div</span>,
+  <span class="hljs-selector-class">.indicator-table-row</span> &gt; <span class="hljs-selector-tag">div</span> {
+    <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">8px</span>;
+  }
+}
+<span class="hljs-selector-class">.indicator-row</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">align-items</span>: center;
+}
+
+<span class="hljs-selector-class">.nx-margin-bottom-s</span> {
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">16px</span>;
+}
+
+<span class="hljs-selector-class">.nx-margin-bottom-2xs</span> {
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">4px</span>;
+}
+
+<span class="hljs-selector-class">.nx-margin-left-xs</span> {
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
+}

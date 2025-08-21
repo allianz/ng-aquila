@@ -1,0 +1,10 @@
+.custom-grid ::ng-deep .nx-tile-group__tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 992px) {
+  .custom-grid ::ng-deep .nx-tile-group__tiles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

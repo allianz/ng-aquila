@@ -1,0 +1,37 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBadgeComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/badge&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLabelComponent</span>, <span class="hljs-title class_">NxLabelModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSliderComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/slider&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTileComponent</span>, <span class="hljs-title class_">NxTileGroupComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/tile&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">CommonModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, signal } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Tile Group Auto Grid Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tile-group-auto-grid-example&#x27;</span>,
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">CommonModule</span>,
+    <span class="hljs-title class_">NxTileGroupComponent</span>,
+    <span class="hljs-title class_">NxTileComponent</span>,
+    <span class="hljs-title class_">NxIconModule</span>,
+    <span class="hljs-title class_">NxBadgeComponent</span>,
+    <span class="hljs-title class_">NxSliderComponent</span>,
+    <span class="hljs-title class_">NxLabelModule</span>,
+    <span class="hljs-title class_">NxLabelComponent</span>,
+  ],
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tile-group-auto-grid-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tile-group-auto-grid-example.css&#x27;</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TileGroupAutoGridExampleComponent</span> {
+  tiles = <span class="hljs-title function_">signal</span>([
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Standard&#x27;</span>, <span class="hljs-attr">value</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-car&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Premium&#x27;</span>, <span class="hljs-attr">value</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-heart&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Family&#x27;</span>, <span class="hljs-attr">value</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-plane&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Business&#x27;</span>, <span class="hljs-attr">value</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-care-insurance&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Student&#x27;</span>, <span class="hljs-attr">value</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Senior&#x27;</span>, <span class="hljs-attr">value</span>: <span class="hljs-number">6</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;globe&#x27;</span> },
+  ]);
+  maxColumns = <span class="hljs-title function_">signal</span>(<span class="hljs-number">4</span>);
+}

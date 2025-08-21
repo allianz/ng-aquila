@@ -1,0 +1,45 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxErrorComponent</span>,
+  <span class="hljs-title class_">NxLabelComponent</span>,
+  <span class="hljs-title class_">NxLabelModule</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTileComponent</span>, <span class="hljs-title class_">NxTileGroupComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/tile&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">AfterViewInit</span>, <span class="hljs-title class_">Component</span>, viewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormControl</span>, <span class="hljs-title class_">ReactiveFormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Tile Validation Error State Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tile-validation-error-state-example&#x27;</span>,
+  <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tile-validation-error-state-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tile-validation-error-state-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">NxTileComponent</span>,
+    <span class="hljs-title class_">NxTileGroupComponent</span>,
+    <span class="hljs-title class_">NxIconModule</span>,
+    <span class="hljs-title class_">NxButtonModule</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
+    <span class="hljs-title class_">NxLabelModule</span>,
+    <span class="hljs-title class_">NxLabelComponent</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TileValidationErrorStateExample</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterViewInit</span> {
+  tileControl = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;car&#x27;</span>);
+  tiles = [
+    { <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;standard&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Standard&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-car&#x27;</span> },
+    { <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;premium&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Premium&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-heart&#x27;</span> },
+    { <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;family&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Family&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-plane&#x27;</span> },
+  ];
+  group = <span class="hljs-title function_">viewChild</span>(<span class="hljs-title class_">NxTileGroupComponent</span>);
+
+  <span class="hljs-title function_">ngAfterViewInit</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">tileControl</span>.<span class="hljs-title function_">markAsTouched</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">tileControl</span>.<span class="hljs-title function_">updateValueAndValidity</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">tileControl</span>.<span class="hljs-title function_">setErrors</span>({ <span class="hljs-attr">someError</span>: <span class="hljs-literal">true</span> }, { <span class="hljs-attr">emitEvent</span>: <span class="hljs-literal">true</span> });
+  }
+}

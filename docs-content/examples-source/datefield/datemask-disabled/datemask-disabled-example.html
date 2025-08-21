@@ -1,0 +1,30 @@
+<div nxLayout="grid">
+  <nx-switcher [(ngModel)]="disabledAttribute" name="templateTest">
+    disabled
+  </nx-switcher>
+  <div nxRow>
+    <div nxCol="12"><h5>Date Mask disabled</h5></div>
+  </div>
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <nx-formfield label="Birthday">
+        <nx-datemask
+          [(ngModel)]="customDate"
+          [datepicker]="myDatepicker"
+          format="DD.MM.YYYY"
+          [required]="true"
+          #dateMinMaxModel="ngModel"
+          [disabled]="disabledAttribute"
+        ></nx-datemask>
+        <span nxFormfieldHint>DD.MM.YYYY</span>
+
+        <nx-datepicker-toggle
+          [for]="myDatepicker"
+          nxFormfieldSuffix
+        ></nx-datepicker-toggle>
+        <nx-datepicker #myDatepicker></nx-datepicker>
+      </nx-formfield>
+      Date: {{customDate}}<br />
+    </div>
+  </div>
+</div>
