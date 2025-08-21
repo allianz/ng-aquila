@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.2.0](https://github.com/allianz/ng-aquila/compare/v20.1.0...v20.2.0) (2025-08-21)
+
+
+### Documentation 📚
+
+* **datemask:** fix no-unused-imports error and improve example ([99f8dd5](https://github.com/allianz/ng-aquila/commit/99f8dd54fb156b7ded7be8569a82b686bd08d7bc))
+* remove nxStyle="block" from the docs ([bd1c7e9](https://github.com/allianz/ng-aquila/commit/bd1c7e98ca758999efc59ce66e5a200d525db1e2))
+
+
+### Features ✨
+
+* **tile:** add new tile component ([4b16d41](https://github.com/allianz/ng-aquila/commit/4b16d418f891851f19d8a1d1c31d69ac6dbb0502))
+
+
+### Bug Fixes 🐛
+
+* **checkbox:** change detection on form submit ([b109e6b](https://github.com/allianz/ng-aquila/commit/b109e6b13c56fd0ad3963b2f1c8aa1a6269d132d))
+* **circle-toggle:** readonly group change not updating in tiles ([afe0147](https://github.com/allianz/ng-aquila/commit/afe0147f1d308d6c3ce0e29640874ec7b4e7bb38))
+* **datepicker:** toggle button reflect input disable state ([7eef109](https://github.com/allianz/ng-aquila/commit/7eef109420372af1fd0cebe966523f96f64be3a1))
+* **multi-select:** make disabled state can't be focus ([428942a](https://github.com/allianz/ng-aquila/commit/428942aadfb481363b42426fa3707ab720dd5804))
+* **popover:** keyboard navigation not focused when click space button ([43f3c63](https://github.com/allianz/ng-aquila/commit/43f3c6382d0469634fd72b00adce47031f339ef6))
+* **popover:** tabbing stuck at container ([5e74441](https://github.com/allianz/ng-aquila/commit/5e7444136a2744bd17ef648fbd51103159f2603f))
+* **table:** expandable toggle button submitting forms ([5ab098b](https://github.com/allianz/ng-aquila/commit/5ab098b7e3b20135c106e2ddda94996ddb053eac))
+
 ## [20.1.0](https://github.com/allianz/ng-aquila/compare/v20.0.0...v20.1.0) (2025-07-30)
 
 
