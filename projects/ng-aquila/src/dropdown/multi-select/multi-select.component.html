@@ -109,7 +109,7 @@
           (selectedChange)="_onSelect(option, $event)"
           [value]="_selectValue(option)"
           [label]="_selectLabel(option)"
-          [selected]="this.selectedItems.has(option)"
+          [selected]="_isOptionSelected(option)"
           [disabled]="this._isDisabled(option)"
           [appearance]="_appearance"
           #option

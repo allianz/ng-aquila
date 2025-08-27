@@ -87,7 +87,7 @@ The default filter function is comparing the lower case dropdown label with the 
 
 ### Multi select dropdown
 
-The multi select is a separate component from the dropdown. It supports selection on multiple items as well as filtering. Instead of a single value the model is an array of options. Options are passed into the component via the `options` input. In the simplest case you can pass in a list of strings. That way the selected values and the displayed labels are the same. If you need labels that are different to the values you can also pass in arbitrary complex objects as options. In that case the value and label can be selected by specifying `selectValue` and `selectLabel`. The optional filter can be enabled via the `filter` input.
+The multi select is a separate component from the dropdown. It supports selection on multiple items as well as filtering. Instead of a single value the model is an array of options. Options are passed into the component via the `options` input. In the simplest case you can pass in a list of strings. That way the selected values and the displayed labels are the same. If you need labels that are different to the values you can also pass in arbitrary complex objects as options. In that case it is recommended to set `selectValue` to specify a unique identifier for each option and `selectLabel` to select the option's label. If `selectValue` is empty, the whole object is used for selection, which may cause issues if object references change. The optional filter can be enabled via the `filter` input.
 
 <!-- example(dropdown-multi-select) -->
 

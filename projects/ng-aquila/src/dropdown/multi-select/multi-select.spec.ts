@@ -1,5 +1,6 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import {
+  AppearanceType,
   NxFormfieldComponent,
   NxFormfieldErrorDirective,
   NxFormfieldModule,
@@ -147,7 +148,7 @@ class MultiSelectHarness extends ComponentHarness {
 describe('NxMultiSelectComponent', () => {
   let fixture: ComponentFixture<DropdownTest>;
   let testInstance: DropdownTest;
-  let multiSelectInstance: NxMultiSelectComponent<string, string>;
+  let multiSelectInstance: NxMultiSelectComponent<any, any>;
   let loader: HarnessLoader;
   let multiSelectHarness: MultiSelectHarness;
 
@@ -959,6 +960,25 @@ describe('NxMultiSelectComponent', () => {
       it('updates the model', () => {
         expect(testInstance.model).toEqual([1, 3]);
       });
+
+      it('retains selection when options object references change and using selectValue with a string', () => {
+        const optionsBefore = testInstance.options;
+        const selectionBefore = [optionsBefore[0].id, optionsBefore[2].id];
+        expect(testInstance.model).toEqual(selectionBefore);
+
+        testInstance.options = [
+          { label: 'Apple', id: 1, otherLabel: 'A' },
+          { label: 'Orange', id: 2, otherLabel: 'B' },
+          { label: 'Cherry', id: 3, otherLabel: 'C' },
+        ];
+        fixture.detectChanges();
+
+        // proof object references have changed...
+        expect(optionsBefore[0]).not.toBe(testInstance.options[0]);
+        // ...but selection remains the same
+        expect(testInstance.model).toEqual(selectionBefore);
+        expect(multiSelectInstance.value).toEqual(selectionBefore);
+      });
     });
 
     describe('and using selectValue with a function', () => {
@@ -969,6 +989,25 @@ describe('NxMultiSelectComponent', () => {
 
       it('updates the model', () => {
         expect(testInstance.model).toEqual([1, 3]);
+      });
+
+      it('retains selection when options object references change and using selectValue with a function', () => {
+        const optionsBefore = testInstance.options;
+        const selectionBefore = [optionsBefore[0].id, optionsBefore[2].id];
+        expect(testInstance.model).toEqual(selectionBefore);
+
+        testInstance.options = [
+          { label: 'Apple', id: 1, otherLabel: 'A' },
+          { label: 'Orange', id: 2, otherLabel: 'B' },
+          { label: 'Cherry', id: 3, otherLabel: 'C' },
+        ];
+        fixture.detectChanges();
+
+        // proof object references have changed...
+        expect(optionsBefore[0]).not.toBe(testInstance.options[0]);
+        // ...but selection remains the same
+        expect(testInstance.model).toEqual(selectionBefore);
+        expect(multiSelectInstance.value).toEqual(selectionBefore);
       });
     });
 
@@ -1147,13 +1186,13 @@ describe('NxMultiSelectComponent', () => {
 
 @Directive({ standalone: true })
 abstract class DropdownTest {
-  @ViewChild(NxMultiSelectComponent) multiSelect!: NxMultiSelectComponent<string, string>;
+  @ViewChild(NxMultiSelectComponent) multiSelect!: NxMultiSelectComponent<any, any>;
   @ViewChild(NxFormfieldComponent) formField!: NxFormfieldComponent;
 
   abstract options: any[];
   filter = true;
   model: any[] = [];
-  appearance = 'outline';
+  appearance = 'outline' as AppearanceType;
   panelGrow = false;
   panelMaxWidth = '';
 }

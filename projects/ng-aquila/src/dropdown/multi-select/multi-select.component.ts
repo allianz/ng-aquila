@@ -92,7 +92,7 @@ export class NxMultiSelectComponent<S, T>
 {
   get value(): T[] {
     return this.options
-      .filter((option) => this.selectedItems.has(option))
+      .filter((option) => this._isOptionSelected(option))
       .map((option) => this._selectValue(option));
   }
 
@@ -303,7 +303,7 @@ export class NxMultiSelectComponent<S, T>
 
   listItems: S[] = [];
 
-  selectedItems = new Set<S>();
+  selectedItems = new Set<T>();
 
   id = `nx-multi-select-${id++}`;
 
@@ -338,7 +338,7 @@ export class NxMultiSelectComponent<S, T>
   /**
    * Selector to get the value of an option.
    * Can be either a property name or a selector function.
-   * When empty the whole option is treated as the value.
+   * When providing objects as options, it is recommended to set selectValue to specify a unique identifier for each option. If selectValue is empty, the whole object is used for selection, which may cause issues if object references change.
    */
   @Input() selectValue: string | ((option: S) => T) = '';
 
@@ -404,8 +404,8 @@ export class NxMultiSelectComponent<S, T>
   private _onTouched: () => void = () => {};
 
   private readonly sortSelectedToTop = (a: S, b: S) => {
-    const aSelected = this.selectedItems.has(a);
-    const bSelected = this.selectedItems.has(b);
+    const aSelected = this._isOptionSelected(a);
+    const bSelected = this._isOptionSelected(b);
     if (aSelected && !bSelected) {
       return -1;
     } else if (!aSelected && bSelected) {
@@ -541,11 +541,11 @@ export class NxMultiSelectComponent<S, T>
     this._trigger?.nativeElement.focus();
   }
 
-  _onSelect(item: S, selected: boolean) {
+  _onSelect(option: S, selected: boolean) {
     if (selected) {
-      this.selectedItems.add(item);
+      this._addOptionToSelection(option);
     } else {
-      this.selectedItems.delete(item);
+      this._removeOptionFromSelection(option);
     }
     this._onChange(this.value);
     this.selectionChange.emit(this.value);
@@ -651,7 +651,7 @@ export class NxMultiSelectComponent<S, T>
       this.listItems = [...this.options].sort(this.sortSelectedToTop).slice();
     }
 
-    this._divider = this.listItems.filter((element) => this.selectedItems.has(element)).length - 1;
+    this._divider = this.listItems.filter((element) => this._isOptionSelected(element)).length - 1;
 
     if (this._isActiveItemFiltered) {
       setTimeout(() => {
@@ -664,7 +664,7 @@ export class NxMultiSelectComponent<S, T>
 
   _getValueText() {
     return this.options
-      .filter((option) => this.selectedItems.has(option))
+      .filter((option) => this._isOptionSelected(option))
       .map((option) => this._selectLabel(option))
       .join(', ');
   }
@@ -704,18 +704,18 @@ export class NxMultiSelectComponent<S, T>
   _onSelectAll() {
     if (this._filterValue) {
       const filterList = this.listItems.filter((option) => !this._isDisabled(option));
-      const isSelectAll = filterList.every((option) => this.selectedItems.has(option));
+      const isSelectAll = filterList.every((option) => this._isOptionSelected(option));
       if (isSelectAll) {
-        filterList.forEach((option) => this.selectedItems.delete(option));
+        filterList.forEach((option) => this._removeOptionFromSelection(option));
       } else {
-        filterList.forEach((option) => this.selectedItems.add(option));
+        filterList.forEach((option) => this._addOptionToSelection(option));
       }
     } else if (this._allSelected) {
       this.selectedItems.clear();
     } else {
       this.listItems
         .filter((option) => !this._isDisabled(option))
-        .forEach((option) => this.selectedItems.add(option));
+        .forEach((option) => this._addOptionToSelection(option));
     }
     this._onChange(this.value);
     this.selectionChange.emit(this.value);
@@ -738,9 +738,11 @@ export class NxMultiSelectComponent<S, T>
 
       if (Array.isArray(value)) {
         for (const item of value) {
-          const selectedItem = this.options.find((option) => this._selectValue(option) === item);
-          if (selectedItem) {
-            this.selectedItems.add(selectedItem);
+          const optionToBeSelected = this.options.find(
+            (option) => this._selectValue(option) === item,
+          );
+          if (optionToBeSelected) {
+            this._addOptionToSelection(optionToBeSelected);
           } else {
             console.warn(
               'NxMultiSelect: Model contains value that does not exist in given options',
@@ -835,5 +837,17 @@ export class NxMultiSelectComponent<S, T>
     this._keyManager.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
       this._scrollActiveOptionIntoView();
     });
+  }
+
+  private _addOptionToSelection(option: S): void {
+    this.selectedItems.add(this._selectValue(option));
+  }
+
+  private _removeOptionFromSelection(option: S): void {
+    this.selectedItems.delete(this._selectValue(option));
+  }
+
+  protected _isOptionSelected(option: S): boolean {
+    return this.selectedItems.has(this._selectValue(option));
   }
 }
