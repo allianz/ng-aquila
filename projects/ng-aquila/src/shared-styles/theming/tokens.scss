@@ -1088,6 +1088,11 @@ $nx-theme: (
   link-black-hover-color: #9a9a9a,
   link-black-active-color: #5c5c5c,
   link-black-disabled-color: disabled-01,
+  link-transition-duration: 0.2,
+  link-transition-timing-function: ease,
+  link-active-transform: none,
+  link-icon-gap: 8px,
+
   list-text-color: text-01,
   list-circle-text-color: text-02,
   list-icon-color: white,

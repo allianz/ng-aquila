@@ -7,9 +7,9 @@
   cursor: pointer;
   position: relative;
   text-decoration: none;
-  transition:
-    color 0.2s ease,
-    box-shadow 0.2s ease;
+  transition-property: color, box-shadow;
+  transition-duration: v(link-transition-duration);
+  transition-timing-function: v(link-transition-timing-function);
   hyphens: none;
 
   &:hover {
@@ -18,6 +18,7 @@
 
   &::ng-deep a:active {
     color: v(link-active-color);
+    transform: v(link-active-transform);
   }
 
   &::ng-deep a {
@@ -108,6 +109,24 @@
     line-height: inherit;
     font-size: inherit;
   }
+
+  nx-icon {
+    margin-inline-end: v(link-icon-gap);
+  }
+}
+
+:host.nx-link--icon-right ::ng-deep nx-icon {
+  order: 2;
+  margin-inline-end: 0;
+  margin-inline-start: v(link-icon-gap);
+}
+
+:host.nx-link--icon-only ::ng-deep {
+  .c-icon,
+  nx-icon {
+    margin-inline-end: 0;
+    margin-inline-start: 0;
+  }
 }
 
 :host.nx-link--xsmall ::ng-deep {
@@ -128,44 +147,6 @@
   .c-icon,
   nx-icon.nx-link__icon {
     font-size: v(link-large-icon-size);
-  }
-}
-
-// space between icon and text
-:host:not(.nx-link--text) ::ng-deep {
-  .c-icon,
-  nx-icon.nx-link__icon {
-    $link-icon-margin: 0 nx-spacer(2xs) 0 0;
-    margin: $link-icon-margin;
-
-    [dir='rtl'] & {
-      margin: nx-flip-for-rtl($link-icon-margin);
-    }
-  }
-}
-
-// variation: icon on the right
-:host:not(.nx-link--text).nx-link--icon-right ::ng-deep {
-  .c-icon,
-  nx-icon.nx-link__icon {
-    $link-icon-right-margin: 0 0 0 nx-spacer(2xs);
-    order: 2;
-    margin: $link-icon-right-margin;
-
-    [dir='rtl'] & {
-      margin: nx-flip-for-rtl($link-icon-right-margin);
-    }
-  }
-}
-
-:host.nx-link--icon-only ::ng-deep {
-  .c-icon,
-  nx-icon.nx-link__icon {
-    margin-right: 0;
-
-    [dir='rtl'] & {
-      margin-left: 0;
-    }
   }
 }
 
