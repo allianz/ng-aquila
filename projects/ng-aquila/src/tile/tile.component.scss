@@ -70,6 +70,10 @@ $tile-gray-selected-color: #fff;
       padding: var(--tile-horizontal-padding);
       justify-content: space-between;
     }
+
+    .nx-tile__icon {
+      font-size: var(--tile-layout-horizontal-icon-size);
+    }
   }
 
   &:hover:not(.is-disabled):not(.is-readonly) {
