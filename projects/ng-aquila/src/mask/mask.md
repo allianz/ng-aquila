@@ -7,7 +7,7 @@ stable: done
 a1: true
 ---
 
-### Mask
+### Overview
 
 Input masks can be used to provide guidance to users when inputing long strings or numbers. Masks are often used for inputs like dates, long numbers and IBAN. The mask can be applied through `nxMask`.
 

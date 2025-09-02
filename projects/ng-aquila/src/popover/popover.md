@@ -19,7 +19,7 @@ If a certain popover should have another styling, you can overwrite the global d
 
 If you're building an Expert (internal B2B/B2E) application, you can use both the Popover and the [Tooltip component](./documentation/tooltip/overview#ux-guidelines). If you only need to display a short contextual hint (button hint, info icon, etc.) please consider if the simpler [Tooltip element is better for your use case](./documentation/tooltip/overview#ux-guidelines).
 
-### Popover content
+### Basic Popover content
 
 You can separate the content in a popover into sections using the following directives: `nxPopoverTitle`, `nxPopoverMainContent`, `nxPopoverActions`
 

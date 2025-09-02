@@ -61,3 +61,6 @@ Thumbs.db
 
 # component-specific
 /projects/ng-aquila/src/phone-input/metadata.json
+
+# MCP
+/projects/ng-aquila/mcp/generated

@@ -4,6 +4,15 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef } fro
 
 import { NxButtonBase } from './button-base';
 
+/**
+ * Accepts multiple tokens via the `nxButton` attribute:
+ *
+ * - type (required):       'primary' | 'secondary' | 'tertiary' | 'cta' | 'emphasis' | 'attention'
+ * - size (optional):       'small' | 'small-medium' | 'medium' | 'large'
+ * - variant (optional):    'negative' | 'block' | 'danger'
+ *
+ * Examples: <button nxButton="{type} {size} {variant}"/>
+ */
 @Component({
   templateUrl: './button.html',
   styleUrls: ['button.scss'],

@@ -6,6 +6,10 @@
     "url": "https://www.github.com/allianz/ng-aquila.git"
   },
   "license": "MIT",
+  "bin": {
+    "ng-aquila-mcp": "mcp/src/index.js",
+    "ng-aquila-add-mcp-server": "mcp/src/add-mcp-server.js"
+  },
   "peerDependencies": {
     "@angular/animations": "^20.0.0",
     "@angular/cdk": "^20.0.0",
@@ -15,8 +19,13 @@
     "iban": "^0.0.14",
     "moment": "^2.29.1",
     "dayjs": "^1.11.5",
-    "decimal.js": "^10.3.1",
-    "tslib": "^2.8.1"
+    "decimal.js": "^10.3.1"
+  },
+  "dependencies": {
+    "tslib": "^2.8.1",
+    "@modelcontextprotocol/sdk": "^1.11.4",
+    "zod": "^3.24.4",
+    "fuse.js": "^7.1.0"
   },
   "schematics": "./schematics/collection.json",
   "ng-update": {

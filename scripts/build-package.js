@@ -1,9 +1,10 @@
-const { execSync } = require('child_process');
-const path = require('path');
-const fs = require('fs-extra');
-const { rimrafSync } = require('rimraf');
-const { opensourceThemes } = require('./themes.js');
-const glob = require('glob');
+import { execSync } from 'child_process';
+import path from 'path';
+import fs from 'fs-extra';
+import { rimrafSync } from 'rimraf';
+import { themes } from './themes.js';
+import glob from 'glob';
+import chalk from 'chalk';
 
 /**
  * Script to build and copy all necessary files for the
@@ -12,6 +13,7 @@ const glob = require('glob');
  * + build schematics + copy the files
  * + build css
  * + copy scss sources
+ * + build mcp
  */
 
 function compileTheme(theme) {
@@ -58,7 +60,7 @@ function compileSchematics() {
 
 console.log('============================');
 console.log('  Building themes');
-opensourceThemes.forEach((theme) => {
+themes.opensourceThemes.forEach((theme) => {
   compileTheme(theme);
 });
 console.log('  Building ag-grid theme');
@@ -105,4 +107,12 @@ fs.copy('LICENSE', 'dist/ng-aquila/LICENSE');
 globCopy('./projects/ng-aquila/src/schematics', './dist/ng-aquila/schematics', '/*/files/**');
 
 console.log('============================');
+console.log('  Building MCP (generate resources, compile typescript and copying resources)');
+try {
+  execSync('npm run mcp:init', { stdio: 'inherit' });
+} catch (err) {
+  console.error(chalk.bold.red('Error during MCP build process.'));
+  console.error(chalk.red(err));
+  process.exit(1);
+}
 console.log('');

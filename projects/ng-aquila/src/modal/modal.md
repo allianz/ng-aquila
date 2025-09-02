@@ -6,7 +6,16 @@ expert: true
 stable: done
 alias: dialog
 a1: true
+
+desc: |
+    this require adding cdk style to angular.json
+
+    "styles": [
+    ...,
+    "node_modules/@angular/cdk/overlay-prebuilt.css"
+    ]
 ---
+
 
 The `NxDialogService` can be used to open modals from components or predefined templates.
 

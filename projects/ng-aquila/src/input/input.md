@@ -7,7 +7,7 @@ stable: done
 a1: true
 ---
 
-### Module
+### Overview
 
 **Important:** You will almost never use the `nxInput` directive without a [formfield](./documentation/formfield/overview) as you won't get any chrome or labels.
 

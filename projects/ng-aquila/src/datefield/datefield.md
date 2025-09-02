@@ -4,8 +4,16 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: datepicker
+alias: datepicker, calendar
 a1: true
+desc: |
+    This component requires a date adapter module. Choose one:
+
+    | Module               | Date Type                   | Locale Support                          | Dependency | Import From                             |
+    | -------------------- | --------------------------- | --------------------------------------- | ---------- | --------------------------------------- |
+    | `NxNativeDateModule` | `Date`                      | `en-US` only                            | None       | `@aposin/ng-aquila/datefield`           |
+    | `NxMomentDateModule` | `Moment`                    | [Moment locales](https://momentjs.com/) | Moment.js  | `@aposin/ng-aquila/moment-date-adapter` |
+    | `NxIsoDateModule`    | ISO `string` (`YYYY-MM-DD`) | [dayjs locales](https://day.js.org/)    | dayjs      | `@aposin/ng-aquila/iso-date-adapter`    |
 ---
 
 ### Module
@@ -70,7 +78,6 @@ Depending on the DateAdapter being used, the datepicker may automatically deseri
 ### Manipulating dates
 
 The adapter interface defines some methods to directly manipulate a date value like `addCalendarDays`, `addCalendarMonths` and `addCalendarYears`. That way you don't need to know how the underlying date object works and especially helps for the Iso Date Adapter to manipulate your date. See the [API](./documentation/datefield/overview) for a list of methods.
-
 ### Examples
 
 This is a full example showing the capabilities of this component. It integrates into `nx-formfield` so you have access to floating labels, hints and error messages. Optionally you can provide a Datepicker.
@@ -78,7 +85,6 @@ This is a full example showing the capabilities of this component. It integrates
 You need to add the Directives `nxInput` to make the input accessible to the `nx-formfield` and `nxDatefield` to gain access to the actual date handling. The datepicker is provided by creating the `nx-datepicker` component together with a `nx-datepicker-toggle`. You have to tell the date field about the datepicker by connecting it with the `[nxDatepicker]` Input.
 
 <!-- example(datefield-basic) -->
-
 #### Disabled
 
 You can disable the input as usually. The datepicker toggle will be disabled too.
@@ -99,7 +105,7 @@ Instead of using min/max you can use `nxDatefieldFilter` to create your own set 
 
 #### Today Button
 
-You can enable the Today button by setting `showTodayButton` to `true`. Clicking this button will navigate the calendar to the current month, but it won’t select the current date. 
+You can enable the Today button by setting `showTodayButton` to `true`. Clicking this button will navigate the calendar to the current month, but it won’t select the current date.
 We suggest not showing the Today button when today’s date cannot be displayed on the screen (e.g. due to minDate, maxDate, or dateFilter), as it may cause confusion.
 
 <!-- example(datefield-today-button) -->

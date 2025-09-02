@@ -81,7 +81,13 @@ export class NxColComponent {
   @Input() class!: string;
 
   /**
-   * Number of columns used.
+   * The `nxCol` attribute accepts up to seven comma-separated values for responsive layout
+   * Order of the used inputs correspond with tiers: nxCol="<tiny>, <small>, <medium>, <large>, <xlarge>, <2xlarge>, <3xlarge>"
+   *
+   * - Use one input it will be used for all tiers.
+   * - If fewer than 7 values are provided, the last one repeats for the remaining breakpoints(tiers).
+   * - Use two inputs: nxCol="12,8" => nxCol="12,8,8,8,8,8,8"
+   * - Use three  inputs: nxCol="12,8,6" => nxCol="12,8,6,6,6,6,6"
    *
    * Values: 1 - 12, default value: 12.
    */
@@ -93,6 +99,10 @@ export class NxColComponent {
 
   /**
    * The number of columns the column should be offset.
+   * accepts up to seven comma-separated values for responsive layout
+   * Order of the used inputs correspond with tiers: nxCol="<tiny>, <small>, <medium>, <large>, <xlarge>, <2xlarge>, <3xlarge>
+   * Use one input it will be used for all tiers.
+   * If fewer than 7 values are provided, the last one repeats for the remaining breakpoints(tiers).
    *
    * Values: 1 - 12, default value: 12.
    */
