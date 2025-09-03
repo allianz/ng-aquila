@@ -22,7 +22,7 @@
     role="list"
     [attr.aria-label]="_templateContext.uploadedListLabel"
   >
-    @for (file of value; track file) {
+    @for (file of value; track file.id) {
       <div
         #fileRowElement
         class="nx-file-uploader--file-row"

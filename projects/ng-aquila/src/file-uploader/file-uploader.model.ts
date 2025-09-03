@@ -12,6 +12,7 @@ export class FileItem {
 
   private readonly _size: number;
   private readonly _type: string;
+  private readonly _id: string;
 
   /** Whether the file is being uploaded at the moment. */
   isUploading = false;
@@ -36,6 +37,7 @@ export class FileItem {
     this._size = file.size;
     this._type = file.type;
     this.index = index;
+    this._id = `${file.name}_${file.size}_${Date.now()}`;
   }
 
   /** Returns the file size in bytes */
@@ -46,6 +48,11 @@ export class FileItem {
   /** Returns the file type */
   get type(): string {
     return this._type;
+  }
+
+  /** Returns the file's unique identifier. */
+  get id(): string {
+    return this._id;
   }
 
   /**
