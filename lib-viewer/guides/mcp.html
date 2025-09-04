@@ -1,0 +1,33 @@
+<h1 class="docs-markdown--h1" id="mcp" tabindex="-1">MCP</h1>
+<h3 class="docs-markdown--h3" id="why-mcp%3F" tabindex="-1">Why MCP?</h3>
+<p class="docs-markdown--p">We use the Model Context Protocol (MCP) to provide context that makes it possible for Large Language Models (LLMs) to fully understand and correctly use our library components. Without MCP, LLMs often lack the necessary context and generate incomplete or incorrect code. With MCP in place, the LLM knows our components — enabling accurate and helpful code completions.</p>
+<h3 class="docs-markdown--h3" id="how-are-we-shipping-it%3F" tabindex="-1">How are we shipping it?</h3>
+<p class="docs-markdown--p">We are now (starting from version 20.2.0) shipping a local MCP server alongside our library. It runs within the IDE (e.g. Visual Studio Code) and uses GitHub Copilot as the MCP client to interact with the MCP server. This setup provides the LLM with the context it needs to work effectively with our components.</p>
+<h3 class="docs-markdown--h3" id="mcp-versions" tabindex="-1">MCP versions</h3>
+<p class="docs-markdown--p">Each library version comes with its own MCP definition, ensuring the context always matches the version of the library you’re using — just like we do for our documentation.</p>
+<h3 class="docs-markdown--h3" id="developer-preview" tabindex="-1">Developer preview</h3>
+<p class="docs-markdown--p">This is a developer preview, and we’d love your feedback. It will help us improve the experience and make MCP even more valuable for your development workflow.</p>
+<h2 class="docs-markdown--h2" id="mcp-installation" tabindex="-1">MCP Installation</h2>
+<h3 class="docs-markdown--h3" id="automatic-setup-with-vs-code" tabindex="-1">Automatic setup with VS Code</h3>
+<p class="docs-markdown--p">Run the following command in your terminal:</p>
+<pre><code class="language-bash">npx --no-install ng-aquila-add-mcp-server
+</code></pre>
+<p class="docs-markdown--p">This automatically creates or updates the <code>.vscode/mcp.json</code> file in your project root, adding the necessary MCP server configuration.</p>
+<p class="docs-markdown--p"><strong>Note:</strong>
+The <code>--no-install</code> flag ensures that <code>npx</code> only runs the locally installed `ng-aquila-add-mcp-server script from your project's dependencies, rather than downloading it from the npm registry.</p>
+<h3 class="docs-markdown--h3" id="manual-setup" tabindex="-1">Manual setup</h3>
+<p class="docs-markdown--p">You can also configure MCP manually in VS Code.</p>
+<ol>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>Edit <code>mcp.json</code> in <code>./vscode/</code> and add:</strong></p>
+<pre><code class="language-json"><span class="hljs-attr">&quot;servers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;ng-aquila-mcp-server&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npx&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+            <span class="hljs-string">&quot;ng-aquila-mcp&quot;</span>
+        <span class="hljs-punctuation">]</span>
+    <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+</li>
+</ol>

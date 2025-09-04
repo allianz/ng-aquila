@@ -48,7 +48,14 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Number of columns used.</p>
+        <p>The <code>nxCol</code> attribute accepts up to seven comma-separated values for responsive layout
+Order of the used inputs correspond with tiers: nxCol=&quot;<tiny>, <small>, <medium>, <large>, <xlarge>, &lt;2xlarge&gt;, &lt;3xlarge&gt;&quot;</p>
+<ul>
+<li>Use one input it will be used for all tiers.</li>
+<li>If fewer than 7 values are provided, the last one repeats for the remaining breakpoints(tiers).</li>
+<li>Use two inputs: nxCol=&quot;12,8&quot; =&gt; nxCol=&quot;12,8,8,8,8,8,8&quot;</li>
+<li>Use three  inputs: nxCol=&quot;12,8,6&quot; =&gt; nxCol=&quot;12,8,6,6,6,6,6&quot;</li>
+</ul>
 <p>Values: 1 - 12, default value: 12.</p>
 </td>
 </tr>
@@ -93,7 +100,11 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>The number of columns the column should be offset.</p>
+        <p>The number of columns the column should be offset.
+accepts up to seven comma-separated values for responsive layout
+Order of the used inputs correspond with tiers: nxCol=&quot;<tiny>, <small>, <medium>, <large>, <xlarge>, &lt;2xlarge&gt;, &lt;3xlarge&gt;
+Use one input it will be used for all tiers.
+If fewer than 7 values are provided, the last one repeats for the remaining breakpoints(tiers).</p>
 <p>Values: 1 - 12, default value: 12.</p>
 </td>
 </tr>

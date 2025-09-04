@@ -717,6 +717,7 @@ body,
   --tile-error-selected-hover-background-color: var(--danger-hover);
   --tile-error-selected-active-background-color: var(--danger-active);
   --tile-icon-size: 40px;
+  --tile-layout-horizontal-icon-size: 32px;
   --tile-label-font-weight: 600;
   --tile-hint-color: var(--text-01);
   --tile-hint-font-size: var(--paragraph-04-font-size);
@@ -1019,6 +1020,10 @@ body,
   --link-black-hover-color: #9a9a9a;
   --link-black-active-color: #5c5c5c;
   --link-black-disabled-color: var(--disabled-01);
+  --link-transition-duration: 0.2;
+  --link-transition-timing-function: ease;
+  --link-active-transform: none;
+  --link-icon-gap: 8px;
   --list-text-color: var(--text-01);
   --list-circle-text-color: var(--text-02);
   --list-icon-color: white;

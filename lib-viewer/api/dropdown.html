@@ -1278,7 +1278,7 @@ When empty the whole option is treated as the label.</p>
     <td class="docs-api-property-description">
         <p>Selector to get the value of an option.
 Can be either a property name or a selector function.
-When empty the whole option is treated as the value.</p>
+When providing objects as options, it is recommended to set selectValue to specify a unique identifier for each option. If selectValue is empty, the whole object is used for selection, which may cause issues if object references change.</p>
 </td>
 </tr>
    
@@ -1450,7 +1450,7 @@ When empty the whole option is treated as the value.</p>
                 selectedItems: 
                 </span>
                  
-                <span class="docs-api-property__type">Set&lt;S&gt;</span>
+                <span class="docs-api-property__type">Set&lt;T&gt;</span>
             </code>
         </p>
     </td>
