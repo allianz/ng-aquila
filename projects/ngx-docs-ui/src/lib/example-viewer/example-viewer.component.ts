@@ -89,10 +89,10 @@ export class ExampleViewerComponent {
   }
 
   copySourceCode() {
-    const currentTab = this.tabGroup.tabs.toArray()[this.tabGroup.selectedIndex].label;
+    const currentTabType = this.exampleDescriptorTypes[this.tabGroup.selectedIndex].type;
     const currentContent = this.docViewers
       .toArray()
-      .filter((viewer) => viewer.id === currentTab)
+      .filter((viewer) => viewer.id === currentTabType)
       .pop()?.content;
     this.copyButtonText = 'copied!';
 
