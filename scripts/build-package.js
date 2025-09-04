@@ -6,6 +6,12 @@ import { themes } from './themes.js';
 import glob from 'glob';
 import chalk from 'chalk';
 
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 /**
  * Script to build and copy all necessary files for the
  * library dist package that is outside of the Angular CLI Build
@@ -89,6 +95,7 @@ try {
   // suppress error if the optional compatibility folder does not exist
   if (e.code !== 'ENOENT') {
     console.error(e);
+    throw e;
   }
 }
 

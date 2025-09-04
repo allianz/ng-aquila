@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.3.0](https://github.com/allianz/ng-aquila/compare/v20.2.0...v20.3.0) (2025-09-04)
+
+### New: MCP Support (Developer Preview)
+Starting with v20.3.0, our library ships with a local Model Context Protocol (MCP) server. It runs inside your IDE (e.g. VS Code) and has been tested with GitHub Copilot to provide LLMs with the context they need. This makes code completions for our components more accurate and helpful.
+Each library version comes with its own MCP definition, so completions always match the version you’re using.
+
+This is a developer preview — we’d love your feedback to make MCP even more valuable for your workflow. You can find more information in the [MCP documentation](https://allianz.github.io/ng-aquila/guides/mcp).
+
+### Features ✨
+
+* add mcp server ([e0dfaa4](https://github.com/allianz/ng-aquila/commit/e0dfaa4e1b338badc8fc3939be3ae00a7d7be4b7)), closes [#1558](https://github.com/allianz/ng-aquila/issues/1558) [#1565](https://github.com/allianz/ng-aquila/issues/1565) [#1567](https://github.com/allianz/ng-aquila/issues/1567)
+* **link:** a1 light mapping ([a693bf0](https://github.com/allianz/ng-aquila/commit/a693bf00ebbdda945435144c1015116649e93451))
+
+
+### Bug Fixes 🐛
+
+* **file-uploader:** use unique trackBy for file items to fix warnings ([bb8ef9d](https://github.com/allianz/ng-aquila/commit/bb8ef9d426022658fe79ff55dab654107f638f04))
+* **multi-select:** use dropdown option VALUE to check for selected ([22e6673](https://github.com/allianz/ng-aquila/commit/22e66736e084d7b6030f162c7035fe33297d4c66))
+* **tile:** add token for horizontal layout icon size ([77658c3](https://github.com/allianz/ng-aquila/commit/77658c3f8a01433accf06ca3595d61e29b0052b7))
+
 ## [20.2.0](https://github.com/allianz/ng-aquila/compare/v20.1.0...v20.2.0) (2025-08-21)
 
 
