@@ -2,24 +2,14 @@
 
 // General style
 :host {
-  color: v(link-color);
   display: inline-block;
   cursor: pointer;
   position: relative;
   text-decoration: none;
-  transition-property: color, box-shadow;
+  transition-property: color, box-shadow, transform;
   transition-duration: v(link-transition-duration);
   transition-timing-function: v(link-transition-timing-function);
   hyphens: none;
-
-  &:hover {
-    color: v(link-hover-color);
-  }
-
-  &::ng-deep a:active {
-    color: v(link-active-color);
-    transform: v(link-active-transform);
-  }
 
   &::ng-deep a {
     display: flex; // get icons aligned with text
@@ -37,6 +27,40 @@
 
 :host.nx-link--large {
   @include type-style(link-large);
+}
+
+:host.nx-link--primary {
+  color: v(link-color);
+
+  &:hover {
+    color: v(link-hover-color);
+  }
+
+  &:active {
+    color: v(link-active-color);
+  }
+
+  &::ng-deep a[disabled],
+  &::ng-deep a[aria-disabled] {
+    color: v(link-disabled-color);
+  }
+}
+
+:host.nx-link--secondary {
+  color: v(link-secondary-color);
+
+  &:hover {
+    color: v(link-secondary-hover-color);
+  }
+
+  &:active {
+    color: v(link-secondary-active-color);
+  }
+
+  &::ng-deep a[disabled],
+  &::ng-deep a[aria-disabled] {
+    color: v(link-secondary-disabled-color);
+  }
 }
 
 // focus styling
@@ -150,11 +174,17 @@
   }
 }
 
+// active
+:host.nx-link {
+  &:active::ng-deep a:not([disabled]):not([aria-disabled]) {
+    transform: v(link-active-transform);
+  }
+}
+
 // disabled
 :host::ng-deep a[disabled],
 :host::ng-deep a[aria-disabled] {
   cursor: not-allowed;
-  color: v(link-disabled-color);
 
   &:focus {
     outline: none;

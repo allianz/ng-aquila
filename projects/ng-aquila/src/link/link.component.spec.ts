@@ -4,20 +4,22 @@ import {
   Component,
   DebugElement,
   Directive,
+  signal,
   Type,
   ViewChild,
 } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { NxLinkComponent, NxLinkSize } from './link.component';
+import { NxLinkComponent, NxLinkSize, NxLinkType } from './link.component';
 import { NxLinkModule } from './link.module';
 
 @Directive({ standalone: true })
 abstract class LinkTest {
   @ViewChild(NxLinkComponent) linkInstance!: NxLinkComponent;
 
-  size: NxLinkSize = 'large';
+  size = signal<NxLinkSize>('large');
+  type = signal<NxLinkType>('primary');
 }
 
 describe('NxLinkComponent', () => {
@@ -65,37 +67,57 @@ describe('NxLinkComponent', () => {
 
   it('should have small size on default', () => {
     createTestComponent(BasicLink);
-    expect(linkInstance.size).toBe('small');
+    expect(linkInstance.size()).toBe('small');
     expect(linkDebugElement.nativeElement).toHaveClass('nx-link--small');
     expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--large');
   });
 
   it('should change the link size', () => {
     createTestComponent(DynamicLink);
-    expect(linkInstance.size).toBe('large');
+    expect(linkInstance.size()).toBe('large');
     expect(linkDebugElement.nativeElement).toHaveClass('nx-link--large');
     expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--small');
 
-    testInstance.size = 'small';
+    testInstance.size.set('small');
     fixture.detectChanges();
-    expect(linkInstance.size).toBe('small');
+    expect(linkInstance.size()).toBe('small');
     expect(linkDebugElement.nativeElement).toHaveClass('nx-link--small');
     expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--large');
   });
 
   it('should update size on programmatic change', () => {
     createTestComponent(OnPushLink);
-    expect(linkInstance.size).toBe('large');
+    expect(linkInstance.size()).toBe('large');
 
-    linkInstance.size = 'small';
+    testInstance.size.set('small');
     fixture.detectChanges();
     expect(linkDebugElement.nativeElement).toHaveClass('nx-link--small');
     expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--large');
 
-    linkInstance.size = 'large';
+    testInstance.size.set('large');
     fixture.detectChanges();
     expect(linkDebugElement.nativeElement).toHaveClass('nx-link--large');
     expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--small');
+  });
+
+  it('should have primary type on default', () => {
+    createTestComponent(BasicLink);
+    expect(linkInstance.type()).toBe('primary');
+    expect(linkDebugElement.nativeElement).toHaveClass('nx-link--primary');
+    expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--secondary');
+  });
+
+  it('should change the link type to secondary', () => {
+    createTestComponent(DynamicLink);
+    expect(linkInstance.type()).toBe('primary');
+    expect(linkDebugElement.nativeElement).toHaveClass('nx-link--primary');
+    expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--secondary');
+
+    testInstance.type.set('secondary');
+    fixture.detectChanges();
+    expect(linkInstance.type()).toBe('secondary');
+    expect(linkDebugElement.nativeElement).toHaveClass('nx-link--secondary');
+    expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--primary');
   });
 
   describe('a11y', () => {
@@ -118,7 +140,7 @@ class BasicLink extends LinkTest {}
 
 @Component({
   template: `
-    <nx-link [nxStyle]="style" [size]="size">
+    <nx-link [nxStyle]="style" [size]="size()" [type]="type()">
       <a>link</a>
     </nx-link>
   `,
@@ -142,7 +164,7 @@ class IconLink extends LinkTest {
 
 @Component({
   template: `
-    <nx-link [nxStyle]="style" [size]="size">
+    <nx-link [nxStyle]="style" [size]="size()">
       <a>link</a>
     </nx-link>
   `,

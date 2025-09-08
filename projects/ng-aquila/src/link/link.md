@@ -27,6 +27,16 @@ With the `[size]` property you can apply different sizes.
 
 <!-- example(link-size) -->
 
+<div class="docs-a1">
+
+### Types
+
+For One Allianz, you can select the color type via the `[type]` property.
+
+<!-- example(link-type) -->
+
+</div>
+
 ### With Icons
 
 <!-- example(link-icons) -->

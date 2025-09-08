@@ -9,10 +9,13 @@ import {
   Component,
   ContentChild,
   ElementRef,
-  Input,
+  input,
   OnDestroy,
   Renderer2,
 } from '@angular/core';
+
+/** The type of the link. */
+export type NxLinkType = 'primary' | 'secondary';
 
 /** The size of the link. */
 export type NxLinkSize = 'xsmall' | 'small' | 'large';
@@ -38,9 +41,11 @@ const DEFAULT_CLASSES = ['nx-link'];
   template: '<ng-content></ng-content>',
   inputs: ['classNames: nxStyle'],
   host: {
-    '[class.nx-link--xsmall]': 'this.size === "xsmall"',
-    '[class.nx-link--small]': 'this.size === "small"',
-    '[class.nx-link--large]': 'this.size === "large"',
+    '[class.nx-link--xsmall]': 'size() === "xsmall"',
+    '[class.nx-link--small]': 'size() === "small"',
+    '[class.nx-link--large]': 'size() === "large"',
+    '[class.nx-link--primary]': 'type() === "primary"',
+    '[class.nx-link--secondary]': 'type() === "secondary"',
   },
   standalone: true,
 })
@@ -52,16 +57,10 @@ export class NxLinkComponent
   @ContentChild(NxIconComponent) icon!: NxIconComponent;
 
   /** Sets the size of the link. Default: 'small'. */
-  @Input() set size(value: NxLinkSize) {
-    if (this._size !== value) {
-      this._size = value;
-      this._cdr.markForCheck();
-    }
-  }
-  get size(): NxLinkSize {
-    return this._size;
-  }
-  private _size: NxLinkSize = 'small';
+  readonly size = input<NxLinkSize>('small');
+
+  /** Sets the type of the link. Default: 'primary'. */
+  readonly type = input<NxLinkType>('primary');
 
   constructor(
     _elementRef: ElementRef,

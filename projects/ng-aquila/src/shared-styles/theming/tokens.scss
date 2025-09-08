@@ -1093,7 +1093,10 @@ $nx-theme: (
   link-transition-timing-function: ease,
   link-active-transform: none,
   link-icon-gap: 8px,
-
+  link-secondary-color: interactive-text,
+  link-secondary-hover-color: hover-link,
+  link-secondary-active-color: active-primary,
+  link-secondary-disabled-color: disabled-04,
   list-text-color: text-01,
   list-circle-text-color: text-02,
   list-icon-color: white,

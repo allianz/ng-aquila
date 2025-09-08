@@ -10,6 +10,7 @@ import { LinkIconsExampleComponent } from './link-icons/link-icons-example';
 import { LinkMultipleExampleComponent } from './link-multiple/link-multiple-example';
 import { LinkNegativeExampleComponent } from './link-negative/link-negative-example';
 import { LinkSizeExampleComponent } from './link-size/link-size-example';
+import { LinkTypeExampleComponent } from './link-type/link-type-example';
 import { LinkWithinTextExampleComponent } from './link-within-text/link-within-text-example';
 
 const EXAMPLES = [
@@ -19,6 +20,7 @@ const EXAMPLES = [
   LinkMultipleExampleComponent,
   LinkNegativeExampleComponent,
   LinkSizeExampleComponent,
+  LinkTypeExampleComponent,
   LinkWithinTextExampleComponent,
 ];
 
@@ -41,6 +43,7 @@ export class LinkExamplesModule {
       'link-multiple': LinkMultipleExampleComponent,
       'link-negative': LinkNegativeExampleComponent,
       'link-size': LinkSizeExampleComponent,
+      'link-type': LinkTypeExampleComponent,
       'link-within-text': LinkWithinTextExampleComponent,
     };
   }
