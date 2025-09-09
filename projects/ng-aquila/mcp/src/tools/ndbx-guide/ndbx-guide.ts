@@ -10,14 +10,14 @@ const inputSchema = z.object({
   query: z
     .string()
     .describe(
-      `A single keyword or topic to search for in the NDBX and Aquila general documentation. Example: 'setup', 'version', 'best practices'.`,
+      `A single keyword or topic to search for in the ngx-brand-kit, NDBX and Aquila general documentation. Example: 'setup', 'version', 'best practices'.`,
     ),
 });
 
 export const ndbxGuideToolConfig = {
   name: 'ndbx-guide',
   title: 'NDBX Guide',
-  description: `Search for general information about the NDBX and Aquila library, such as setup instructions, latest version, or best practices. Provide a single keyword or topic per query.`,
+  description: `Search for general information about the ngx-brand-kit, NDBX and Aquila library, such as setup instructions, latest version, or best practices. Provide a single keyword or topic per query.`,
   inputSchema,
   annotations: { idempotentHint: true, readOnlyHint: true },
   cb: async (args: z.infer<typeof inputSchema>) => Promise.resolve(getNdbxGuide(args.query)) as any,

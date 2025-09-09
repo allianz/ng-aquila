@@ -6,11 +6,10 @@ import { z } from 'zod';
 import { SectionDoc } from '../models';
 
 const inputSchema = z.object({
-  componentName: z
-    .string()
-    .describe(
-      `The name of the Angular UI component from NDBX, Aquila, or an Allianz Component Library to search for. Example: 'datefield', 'button', 'dropdown'. Only one component per query.`,
-    ),
+  componentName: z.string().describe(
+    `The name of the Angular UI component from ngx-brand-kit, NDBX, Aquila, or an Allianz Component Library to search for.
+                  Example: 'datefield', 'button', 'dropdown'. Only one component per query.`,
+  ),
   usage: z
     .string()
     .optional()
@@ -22,7 +21,9 @@ const inputSchema = z.object({
 export const searchNdbxComponentsToolConfig = {
   name: 'search-ndbx-components',
   title: 'Search NDBX Components',
-  description: `Search for documentation and usage examples for a single Angular UI component from NDBX, Aquila, or an Allianz Component Library. Provide the component name (e.g., 'datefield', 'button', 'dropdown') and optionally a specific usage (e.g., 'parsing', 'localization'). Returns structured information, API, and code examples for the requested component.`,
+  description: `Search for documentation and usage examples for a single Angular UI component from ngx-brand-kit, NDBX, Aquila, or an Allianz Component Library.
+                Provide the component name (e.g., 'datefield', 'button', 'dropdown') and optionally a specific usage (e.g., 'parsing', 'localization').
+                Returns structured information, API, and code examples for the requested component.`,
   inputSchema,
   annotations: { idempotentHint: true, readOnlyHint: true },
   cb: async (args: z.infer<typeof inputSchema>) =>
