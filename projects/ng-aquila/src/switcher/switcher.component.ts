@@ -1,7 +1,7 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
-import { ErrorStateMatcher, randomString } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkObserveContent } from '@angular/cdk/observers';
@@ -42,7 +42,6 @@ import {
 import { asapScheduler, Subject } from 'rxjs';
 import { observeOn, startWith, takeUntil } from 'rxjs/operators';
 
-let nextId = 0;
 /** Options for placement of the label */
 export type POSITION = 'left' | 'right';
 /** Options for sizing of the label */
@@ -129,7 +128,7 @@ export class NxSwitcherComponent
   get id(): string {
     return this._id;
   }
-  private _id = `nx-switcher-${nextId++}-${randomString()}`;
+  private _id: string;
 
   /** Specifies the placement of the label */
   @Input() set labelPosition(value: POSITION) {
@@ -229,7 +228,10 @@ export class NxSwitcherComponent
     @Optional() private readonly _parentForm: NgForm | null,
     @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
     private readonly _focusMonitor: FocusMonitor,
-  ) {}
+  ) {
+    const idGenerationService = inject(IdGenerationService);
+    this._id = idGenerationService.nextId('nx-switcher');
+  }
   validate(control: AbstractControl): ValidationErrors | null {
     return this.required && control.value !== true ? { required: true } : null;
   }

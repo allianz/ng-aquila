@@ -212,7 +212,7 @@ describe('NxMultiSelectComponent', () => {
         ],
       );
 
-      expect(id).toMatch(/^nx-multi-select-\d+$/);
+      expect(id).toMatch(/nx-multi-select-\d+$/);
       expect(ariaControls).toBe(`${multiSelectInstance.id}-combobox`);
       expect(ariaHaspopup).toBe('listbox');
     });

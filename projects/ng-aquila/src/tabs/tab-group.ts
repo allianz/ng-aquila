@@ -3,7 +3,7 @@ import {
   NxAccordionModule,
   NxExpansionPanelComponent,
 } from '@allianz/ng-aquila/accordion';
-import { NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
+import { IdGenerationService, NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   BooleanInput,
@@ -22,6 +22,7 @@ import {
   ElementRef,
   EventEmitter,
   Inject,
+  inject,
   Input,
   OnDestroy,
   Optional,
@@ -49,8 +50,6 @@ export class NxTabChangeEvent {
   tab!: NxTabComponent;
 }
 
-let nextId = 0;
-
 @Component({
   selector: 'nx-tab-group',
   templateUrl: 'tab-group.html',
@@ -73,7 +72,6 @@ let nextId = 0;
 export class NxTabGroupComponent
   implements NxTabGroupBase, OnDestroy, AfterViewInit, AfterContentInit, AfterContentChecked
 {
-  private readonly _groupId: number;
   private _indexToSelect: number | null = 0;
   _showAccordion = false;
 
@@ -186,6 +184,8 @@ export class NxTabGroupComponent
 
   private readonly _destroyed = new Subject<void>();
 
+  private readonly _groupId = inject(IdGenerationService).nextId('');
+
   constructor(
     readonly viewportService: NxViewportService,
     private readonly _cdr: ChangeDetectorRef,
@@ -193,9 +193,7 @@ export class NxTabGroupComponent
     @Inject(TAB_GROUP_DEFAULT_OPTIONS)
     private readonly _defaultOptions: TabGroupDefaultOptions | null,
     private readonly _focusMonitor: FocusMonitor,
-  ) {
-    this._groupId = nextId++;
-  }
+  ) {}
 
   ngAfterContentInit(): void {
     this._subscribeToTabLabels();

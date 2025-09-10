@@ -1,6 +1,6 @@
-import { Directive, Input } from '@angular/core';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
+import { Directive, inject, Input } from '@angular/core';
 
-let nextId = 0;
 // This Directive solely purpose is to mark given ng-content and project it into the required destination.
 @Directive({
   selector: '[nxFileUploadHint]',
@@ -12,5 +12,5 @@ let nextId = 0;
 })
 export class NxFileUploaderHintDirective {
   /** Sets the id of the file upload hint. */
-  @Input() id = `nx-formfield-hint-${nextId++}`;
+  @Input() id = inject(IdGenerationService).nextId('nx-formfield-hint');
 }

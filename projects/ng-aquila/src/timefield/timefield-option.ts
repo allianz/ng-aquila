@@ -1,8 +1,6 @@
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { Highlightable } from '@angular/cdk/a11y';
 import { ChangeDetectorRef, Directive, ElementRef, inject, Input } from '@angular/core';
-
-/** The next id to use for creating unique DOM IDs. */
-let nextId = 0;
 
 @Directive({
   selector: '[nxTimefieldOption]',
@@ -31,8 +29,7 @@ export class NxTimefieldOption implements Highlightable {
     this._id = value;
   }
   private _id = '';
-  private readonly _generatedId = `nx-timefield-option-${nextId++}`;
-
+  private _generatedId = inject(IdGenerationService).nextId('nx-timefield-option');
   /** The option's host element */
   readonly element: HTMLElement = inject(ElementRef).nativeElement;
 

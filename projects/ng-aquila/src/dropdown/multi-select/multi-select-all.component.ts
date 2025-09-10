@@ -1,4 +1,5 @@
 import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { Highlightable, ListKeyManagerOption, LiveAnnouncer } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
@@ -7,11 +8,10 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  inject,
   Input,
   Output,
 } from '@angular/core';
-
-let nextId = 0;
 
 /**
  * A single option witin the multi select.
@@ -33,8 +33,7 @@ let nextId = 0;
 export class NxMultiSelectAllComponent<T> implements Highlightable, ListKeyManagerOption {
   private _active = false;
 
-  id = `nx-multi-select-all-${nextId++}`;
-
+  id = inject(IdGenerationService).nextId('nx-multi-select-all');
   /**
    * Value of this option.
    */

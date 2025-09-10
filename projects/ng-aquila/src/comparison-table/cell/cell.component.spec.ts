@@ -83,10 +83,10 @@ describe('NxComparisonTableCell', () => {
     it('should set ids correctly', () => {
       createTestComponent(BasicCellComponent);
       cellInstances.forEach((cell) => {
-        expect(cell.id).toMatch(/^nx-comparison-table-cell-\d+$/);
+        expect(cell.id).toMatch(/nx-comparison-table-cell-\d+$/);
       });
       cellElements.forEach((cell) => {
-        expect(cell.nativeElement.id).toMatch(/^nx-comparison-table-cell-\d+$/);
+        expect(cell.nativeElement.id).toMatch(/nx-comparison-table-cell-\d+$/);
       });
     });
 
@@ -154,7 +154,7 @@ describe('NxComparisonTableCell', () => {
       );
       expect(mobileHeaderCell.nativeElement.id).toBe('header-cell-0');
       cellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__cell'));
-      expect(cellElements[0].nativeElement.id).toMatch(/^nx-comparison-table-cell-\d+$/);
+      expect(cellElements[0].nativeElement.id).toMatch(/nx-comparison-table-cell-\d+$/);
     }));
   });
 

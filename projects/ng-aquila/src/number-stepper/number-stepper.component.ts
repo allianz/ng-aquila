@@ -2,7 +2,7 @@ import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { MappedStyles } from '@allianz/ng-aquila/core';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { mapClassNames, pad } from '@allianz/ng-aquila/utils';
+import { IdGenerationService, mapClassNames, pad } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty, NumberInput } from '@angular/cdk/coercion';
 import { NgClass } from '@angular/common';
 import {
@@ -65,8 +65,6 @@ const CUSTOM_VALIDATOR = {
   multi: true,
 };
 
-let nextUniqueId = 0;
-
 /**
  * `Input('size') classNames` defines the size of the number stepper.
  *
@@ -101,12 +99,10 @@ export class NxNumberStepperComponent
   inputClassNames: string = mapClassNames('regular', INPUT_CLASSES);
 
   /** @docs-private */
-  private readonly _componentId = nextUniqueId++;
-  /** @docs-private */
-  readonly inputId = `nx-number-stepper-${this._componentId}`;
+  readonly inputId = inject(IdGenerationService).nextId('nx-number-stepper');
 
   /** @docs-private */
-  readonly labelId = `nx-number-stepper-label-${this._componentId}`;
+  readonly labelId = inject(IdGenerationService).nextId('nx-number-stepper-label');
 
   projectedLabel = viewChild(HTMLLabelElement);
 

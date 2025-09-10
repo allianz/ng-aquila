@@ -1,3 +1,4 @@
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { AnimationEvent } from '@angular/animations';
 import { CdkAccordionItem } from '@angular/cdk/accordion';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -13,6 +14,7 @@ import {
   computed,
   ContentChild,
   Inject,
+  inject,
   InjectionToken,
   Input,
   OnChanges,
@@ -29,8 +31,6 @@ import { filter, startWith, take } from 'rxjs/operators';
 import { NxAccordionDirective } from './accordion';
 import { nxAccordionAnimations } from './accordion-animations';
 import { NxExpansionPanelBodyDirective } from './expansion-panel-body';
-
-let nextId = 0;
 
 /** The styling of the accordion. */
 export type AccordionStyle = 'regular' | 'light' | 'extra-light';
@@ -142,7 +142,8 @@ export class NxExpansionPanelComponent
     return this._portal;
   }
 
-  _headerId = `nx-expansion-panel-header-${nextId++}`;
+  private readonly _idGenerationService = inject(IdGenerationService);
+  _headerId = this._idGenerationService.nextId('nx-expansion-panel-header');
 
   /** Stream that emits for changes in `@Input` properties. */
   readonly _inputChanges = new Subject<SimpleChanges>();

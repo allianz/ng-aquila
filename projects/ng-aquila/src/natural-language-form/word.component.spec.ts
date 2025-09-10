@@ -284,7 +284,7 @@ describe('NxNaturalLanguageFormComponent', () => {
       const wordInputElement = fixture.debugElement.query(By.css('nx-word>div>div>input'));
       const ariaDescribedBy = wordInputElement.nativeElement.getAttribute('aria-describedby');
 
-      expect(ariaDescribedBy.trim().startsWith('nx-error-')).toBeTruthy();
+      expect(ariaDescribedBy).toMatch(/nx-error-\d+$/);
     }));
   });
 
@@ -300,7 +300,7 @@ describe('NxNaturalLanguageFormComponent', () => {
 
       const ariaDescribedBy: string =
         wordInputElement.nativeElement.getAttribute('aria-describedby');
-      expect(ariaDescribedBy.trim().startsWith('nx-formfield-error-')).toBeTruthy();
+      expect(ariaDescribedBy).toMatch(/nx-formfield-error-\d+$/);
     }));
 
     it('assigns aria-describedby to input element', fakeAsync(() => {

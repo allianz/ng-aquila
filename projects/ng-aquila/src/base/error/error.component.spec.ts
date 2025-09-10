@@ -65,7 +65,7 @@ describe('NxErrorComponent', () => {
       createTestComponent(BasicError);
       const content = fixture.nativeElement.querySelector('.nx-error__content') as HTMLElement;
 
-      expect(content.id).toMatch('^nx-error-[0-9]');
+      expect(content.id).toMatch('nx-error-[0-9]');
     });
 
     it('creates the nx-error with a custom id', () => {

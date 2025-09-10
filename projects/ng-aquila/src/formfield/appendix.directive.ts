@@ -1,6 +1,5 @@
-import { Directive, Input } from '@angular/core';
-
-let uniqueId = 0;
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
+import { Directive, inject, Input } from '@angular/core';
 
 // This Directive solely purpose is to mark given ng-content and project it into the required destination.
 @Directive({
@@ -12,5 +11,5 @@ let uniqueId = 0;
 })
 export class NxFormfieldAppendixDirective {
   /** Sets the id of the formfield appendix. */
-  @Input() id = `nx-formfield-appendix-${uniqueId++}`;
+  @Input() id = inject(IdGenerationService).nextId('nx-formfield-appendix');
 }

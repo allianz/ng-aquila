@@ -1,4 +1,4 @@
-import { clamp } from '@allianz/ng-aquila/utils';
+import { clamp, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import {
@@ -18,6 +18,7 @@ import {
   ElementRef,
   EventEmitter,
   forwardRef,
+  inject,
   Input,
   NgZone,
   OnDestroy,
@@ -37,8 +38,6 @@ interface TickItem {
   hideTick: boolean;
   isLongTick: boolean;
 }
-
-let nextId = 0;
 
 const DEFAULT_MIN = 0;
 const DEFAULT_MAX = 100;
@@ -103,7 +102,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
   get id(): string {
     return this._id;
   }
-  private _id = `nx-slider-${nextId++}`;
+  private _id = inject(IdGenerationService).nextId('nx-slider');
 
   /** Sets the tabindex of the slider. */
   @Input() set tabindex(value: NumberInput) {

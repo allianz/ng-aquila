@@ -1,6 +1,6 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NgTemplateOutlet } from '@angular/common';
@@ -17,6 +17,7 @@ import {
   forwardRef,
   HostBinding,
   Inject,
+  inject,
   InjectionToken,
   Input,
   OnDestroy,
@@ -37,8 +38,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { NxSelectableCardChangeEvent } from './selectable-card-change-event';
-
-let nextId = 0;
 
 export type NxSelectableCardAppearance = 'expert' | 'default';
 
@@ -235,7 +234,7 @@ export class NxSelectableCardComponent
   get id() {
     return this._id;
   }
-  private _id = `nx-selectable-card-${nextId++}`;
+  private _id = inject(IdGenerationService).nextId('nx-selectable-card');
 
   /** Whether the selectable card  is checked. */
   @Input() set checked(value: BooleanInput) {

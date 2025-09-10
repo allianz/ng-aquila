@@ -65,10 +65,10 @@ describe('NxComparisonTableDescriptionCell', () => {
     it('should set ids correctly', () => {
       createTestComponent(DescriptionCellComponent);
       descriptionCellInstances.forEach((cell) => {
-        expect(cell.id).toMatch(/^nx-comparison-table-description-cell-\d+$/);
+        expect(cell.id).toMatch(/nx-comparison-table-description-cell-\d+$/);
       });
       descriptionCellElements.forEach((cell) => {
-        expect(cell.nativeElement.id).toMatch(/^nx-comparison-table-description-cell-\d+$/);
+        expect(cell.nativeElement.id).toMatch(/nx-comparison-table-description-cell-\d+$/);
       });
     });
 
@@ -133,7 +133,7 @@ describe('NxComparisonTableDescriptionCell', () => {
       fixture.detectChanges();
 
       expect(descriptionCellElements[0].nativeElement.id).toMatch(
-        /^nx-comparison-table-description-cell-\d+$/,
+        /nx-comparison-table-description-cell-\d+$/,
       );
     }));
   });

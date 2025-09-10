@@ -1,5 +1,6 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
@@ -18,6 +19,7 @@ import {
   HostBinding,
   HostListener,
   Inject,
+  inject,
   InjectionToken,
   Input,
   input,
@@ -66,8 +68,6 @@ export class ToggleChangeEvent {
   ) {}
 }
 
-let nextId = 0;
-
 @Component({
   selector: 'nx-circle-toggle',
   templateUrl: 'circle-toggle.component.html',
@@ -98,7 +98,7 @@ export class NxCircleToggleComponent
   extends ToggleButton
   implements OnDestroy, AfterViewInit, ControlValueAccessor, DoCheck, NxAbstractControl
 {
-  private _id = `toggle-button-${nextId++}`;
+  private _id = inject(IdGenerationService).nextId('toggle-button');
 
   @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
@@ -374,11 +374,10 @@ export class NxCircleToggleComponent
     private readonly _defaultOptions: CircleToggleDefaultOptions | null,
   ) {
     super();
-
     if (this.toggleGroup) {
       this.inGroup = true;
       this.name = this.toggleGroup.name;
-      this.id = this.toggleGroup.id + `-button-${nextId++}`;
+      this.id = this.toggleGroup.id + inject(IdGenerationService).nextId('button');
     }
     if (this.ngControl) {
       // Note: we provide the value accessor through here, instead of

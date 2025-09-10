@@ -1,4 +1,5 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { isPlatformBrowser, NgStyle, NgTemplateOutlet } from '@angular/common';
@@ -7,6 +8,7 @@ import {
   Component,
   ElementRef,
   Inject,
+  inject,
   Input,
   NgZone,
   OnDestroy,
@@ -20,8 +22,6 @@ import { takeUntil } from 'rxjs/operators';
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxToggleSectionAnimations } from './toggle-section-animations';
 import { NxToggleSectionBase } from './toggle-section-base';
-
-let nextId = 0;
 
 @Component({
   selector: 'nx-comparison-table-toggle-section-header',
@@ -48,7 +48,7 @@ export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy 
   get id(): string {
     return this._id;
   }
-  private _id = `nx-comparison-table-toggle-section-header-${nextId++}`;
+  private _id = inject(IdGenerationService).nextId('nx-comparison-table-toggle-section-header');
 
   private readonly _destroyed = new Subject<void>();
 

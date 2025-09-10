@@ -1,11 +1,10 @@
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { Component, inject, Input, TemplateRef, ViewChild } from '@angular/core';
 
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
-
-let nextId = 0;
 
 @Component({
   selector: 'nx-comparison-table-popular-cell',
@@ -25,8 +24,7 @@ export class NxComparisonTablePopularCell {
   get id(): string {
     return this._id;
   }
-  private _id = `nx-comparison-table-popular-cell-${nextId++}`;
-
+  private _id = inject(IdGenerationService).nextId('nx-comparison-table-popular-cell');
   /**
    * Sets the id of the column above which the popular cell should be displayed.
    *

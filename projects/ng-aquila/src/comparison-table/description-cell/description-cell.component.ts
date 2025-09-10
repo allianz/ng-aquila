@@ -1,10 +1,9 @@
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { NgStyle, NgTemplateOutlet } from '@angular/common';
-import { Component, ElementRef, Input, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, Input, TemplateRef, ViewChild } from '@angular/core';
 
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
-
-let nextId = 0;
 
 @Component({
   selector: 'nx-comparison-table-description-cell',
@@ -24,7 +23,7 @@ export class NxComparisonTableDescriptionCell {
   get id(): string {
     return this._id;
   }
-  private _id = `nx-comparison-table-description-cell-${nextId++}`;
+  private _id = inject(IdGenerationService).nextId('nx-comparison-table-description-cell');
 
   constructor(
     readonly _table: NxComparisonTableBase,

@@ -1,6 +1,6 @@
 import { NxFormfieldControl, NxFormfieldUpdateEventType } from '@allianz/ng-aquila/formfield';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
-import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { getSupportedInputTypes, Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
@@ -9,6 +9,7 @@ import {
   DoCheck,
   ElementRef,
   Inject,
+  inject,
   InjectionToken,
   Input,
   OnChanges,
@@ -46,8 +47,6 @@ const NEVER_EMPTY = ['date', 'datetime', 'datetime-local', 'month', 'time', 'wee
   getSupportedInputTypes().has(t),
 );
 
-let nextUniqueId = 0;
-
 @Directive({
   selector: 'input[nxInput], textarea[nxInput], select[nxInput]',
   exportAs: 'nxInput',
@@ -79,7 +78,8 @@ let nextUniqueId = 0;
 export class NxInputDirective
   implements OnInit, DoCheck, OnChanges, OnDestroy, NxFormfieldControl<any>, NxAbstractControl
 {
-  protected _uid = `nx-input-${nextUniqueId++}`;
+  protected _uid = inject(IdGenerationService).nextId('nx-input');
+
   protected _previousNativeValue: any;
   private readonly _inputValueAccessor: NxInputValueAccessor;
   _ariaDescribedby!: string;

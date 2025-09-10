@@ -1,5 +1,6 @@
 import { AppearanceType } from '@allianz/ng-aquila/formfield';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { Highlightable, ListKeyManagerOption, LiveAnnouncer } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
@@ -8,11 +9,10 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  inject,
   Input,
   Output,
 } from '@angular/core';
-
-let optionId = 0;
 
 /**
  * A single option witin the multi select.
@@ -35,7 +35,7 @@ let optionId = 0;
 export class NxMultiSelectOptionComponent<T> implements Highlightable, ListKeyManagerOption {
   private _active = false;
 
-  id = `nx-multi-select-option-${optionId++}`;
+  id = inject(IdGenerationService).nextId('nx-multi-select-option');
 
   @Input() appearance: AppearanceType = 'auto';
 

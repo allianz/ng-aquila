@@ -1,6 +1,6 @@
 /* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 import { ERROR_DEFAULT_OPTIONS, NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
-import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   BooleanInput,
@@ -21,6 +21,7 @@ import {
   DoCheck,
   ElementRef,
   EventEmitter,
+  inject,
   Input,
   input,
   OnChanges,
@@ -65,8 +66,6 @@ import { NxFileUploaderItemDelete } from './item/file-uploader-delete.component'
 import { NxFileUploaderItemName } from './item/file-uploader-name.component';
 import { NxFileUploaderItemSize } from './item/file-uploader-size.component';
 import { NxFileUploaderItemStatus } from './item/file-uploader-status.component';
-
-let nextId = 0;
 
 @Component({
   selector: 'nx-file-uploader',
@@ -189,7 +188,7 @@ export class NxFileUploaderComponent
   get id(): string {
     return this._id;
   }
-  private _id = `nx-file-uploader-${nextId++}`;
+  private _id = inject(IdGenerationService).nextId('nx-file-uploader');
   _inputId = `${this.id}-input`;
   _labelId = `${this.id}-label`;
 

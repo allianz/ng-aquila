@@ -1,16 +1,16 @@
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   Inject,
+  inject,
   InjectionToken,
   Input,
   Optional,
 } from '@angular/core';
 import { Subject } from 'rxjs';
-
-let nextId = 0;
 
 export interface LabelDefaultOptions {
   /** Sets the default appearance. (optional) */
@@ -67,7 +67,7 @@ export class NxLabelComponent {
   get id(): string {
     return this._id;
   }
-  private _id = `nx-label-${nextId++}`;
+  private _id = inject(IdGenerationService).nextId('nx-label');
 
   /**
    * **Expert option**

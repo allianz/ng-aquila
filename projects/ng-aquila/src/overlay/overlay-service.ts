@@ -1,3 +1,4 @@
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import {
   FlexibleConnectedPositionStrategyOrigin,
@@ -67,6 +68,7 @@ export class NxOverlayService implements OnDestroy {
 
   /** Strategy factory that will be used to handle scrolling while an overlay panel is open. */
   private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;
+  private readonly idService = inject(IdGenerationService);
 
   constructor(
     private readonly _overlay: Overlay,
@@ -111,6 +113,7 @@ export class NxOverlayService implements OnDestroy {
 
     const cdkOverlayRef = this._createOverlay(config, origin);
     const overlayContainer = this._attachOverlayContainer(cdkOverlayRef, config);
+
     const overlayRef = this._attachOverlayContent<T, R>(
       componentOrTemplateRef,
       overlayContainer,
@@ -242,7 +245,7 @@ export class NxOverlayService implements OnDestroy {
       overlayContainer,
       origin,
       this._router,
-      config.id,
+      config.id ?? this.idService.nextId('nx-overlay'),
     );
 
     if (componentOrTemplateRef instanceof TemplateRef) {

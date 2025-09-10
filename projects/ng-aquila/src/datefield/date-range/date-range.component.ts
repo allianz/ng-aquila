@@ -4,7 +4,7 @@ import {
   NxFormfieldUpdateEventType,
 } from '@allianz/ng-aquila/formfield';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
-import { getFontShorthand } from '@allianz/ng-aquila/utils';
+import { getFontShorthand, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { DOWN_ARROW } from '@angular/cdk/keycodes';
 import {
@@ -19,6 +19,7 @@ import {
   effect,
   ElementRef,
   forwardRef,
+  inject,
   Injector,
   Input,
   input,
@@ -111,7 +112,6 @@ export class NxDateRangeComponent<D>
     OnInit,
     NxDateRangeConnector
 {
-  protected static nextId = 0;
   private readonly _destroyed = new Subject<void>();
 
   /** The start input field. We need this to connect to the datepicker */
@@ -191,7 +191,7 @@ export class NxDateRangeComponent<D>
   /** State changes subject to notifiy the Formfield of changes */
   stateChanges = new Subject<void>();
   empty: boolean = false;
-  id: string = `nx-date-range-${NxDateRangeComponent.nextId++}`;
+  id: string = inject(IdGenerationService).nextId('nx-date-range');
   focused: boolean = false;
   @Input({ transform: booleanAttribute }) set required(value: boolean) {
     this._required = value;

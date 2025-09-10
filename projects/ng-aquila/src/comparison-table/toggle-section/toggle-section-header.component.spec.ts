@@ -63,12 +63,12 @@ describe('ToggleSectionHeaderComponent', () => {
     it('should set ids correctly', () => {
       createTestComponent(BasicComponent);
       expect(headerInstances.toArray()[0].id).toMatch(
-        /^nx-comparison-table-toggle-section-header-\d+$/,
+        /nx-comparison-table-toggle-section-header-\d+$/,
       );
       const wrapper = headerElements[0].nativeElement.querySelector(
         '.nx-comparison-table-toggle-section__header-wrapper',
       );
-      expect(wrapper.id).toMatch(/^nx-comparison-table-toggle-section-header-\d+$/);
+      expect(wrapper.id).toMatch(/nx-comparison-table-toggle-section-header-\d+$/);
     });
 
     it('should set id on input change', () => {
@@ -136,7 +136,7 @@ describe('ToggleSectionHeaderComponent', () => {
         By.css('.nx-comparison-table__mobile-toggle-section-header'),
       );
       expect(mobileHeaderElements[0].nativeElement.id).toMatch(
-        /^nx-comparison-table-toggle-section-header-\d+$/,
+        /nx-comparison-table-toggle-section-header-\d+$/,
       );
     }));
 

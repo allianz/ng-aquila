@@ -111,7 +111,7 @@ describe('NxMultiSelectAllComponent', () => {
       ]);
 
       expect(role).toBe('option');
-      expect(id).toMatch(/^nx-multi-select-all-\d+$/);
+      expect(id).toMatch(/nx-multi-select-all-\d+$/);
       expect(ariaSelected).toBeNull();
       expect(ariaDisabled).toBeNull();
     });

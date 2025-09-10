@@ -1,4 +1,5 @@
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import {
   AfterContentChecked,
   AfterContentInit,
@@ -9,6 +10,7 @@ import {
   ContentChildren,
   ElementRef,
   Inject,
+  inject,
   InjectionToken,
   Input,
   OnDestroy,
@@ -30,8 +32,6 @@ import { NxFormfieldLabelDirective } from './label.directive';
 import { NxFormfieldNoteDirective } from './note.directive';
 import { NxFormfieldPrefixDirective } from './prefix.directive';
 import { NxFormfieldSuffixDirective } from './suffix.directive';
-
-let nextUniqueId = 0;
 
 /**
  * Represents the default options for the form field that can be configured
@@ -87,8 +87,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
   private _styles = '';
 
   /** Html id of the formfield label */
-  readonly labelId: string = `nx-formfield-label-${nextUniqueId++}`;
-
+  readonly labelId: string = inject(IdGenerationService).nextId('nx-formfield-label');
   @ContentChild(NxFormfieldControl) _control!: NxFormfieldControl<any>;
 
   /**

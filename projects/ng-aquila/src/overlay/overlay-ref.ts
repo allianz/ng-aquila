@@ -7,9 +7,6 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 import { NxOverlayContainerComponent } from './overlay-container.component';
 import { NxOverlayState } from './overlay-service';
 
-// Id counter
-let nextId = 0;
-
 /**
  * Reference to a overlay opened via the NxDialogService.
  */
@@ -42,7 +39,7 @@ export class NxOverlayRef<T, R = any> {
     readonly _containerInstance: NxOverlayContainerComponent,
     readonly origin: FlexibleConnectedPositionStrategyOrigin,
     private readonly _router: Router,
-    readonly id: string = `nx-overlay-${nextId++}`,
+    readonly id: string = '',
   ) {
     this._documentClickObservable = fromEvent<MouseEvent>(document, 'click');
     _overlayRef

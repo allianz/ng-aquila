@@ -3,6 +3,7 @@ import {
   NxCheckboxIndicatorComponent,
   NxRadioIndicatorComponent,
 } from '@allianz/ng-aquila/selection';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   Component,
@@ -47,9 +48,8 @@ export type NxTileLayout = 'horizontal' | 'vertical';
 export class NxTileComponent implements OnInit, OnDestroy {
   protected readonly inputElement = viewChild.required<HTMLInputElement>('tileInput');
 
-  private static nextId = 0;
   /** Unique ID for the tile. */
-  readonly id = `nx-tile-${NxTileComponent.nextId++}`;
+  readonly id = inject(IdGenerationService).nextId('nx-tile');
 
   /** Icon to display in the tile. */
   readonly icon = input<string>('');

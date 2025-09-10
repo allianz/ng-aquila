@@ -1,3 +1,4 @@
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import {
   Overlay,
   OverlayConfig,
@@ -257,6 +258,8 @@ export class NxDialogService implements OnDestroy {
     return containerRef.instance;
   }
 
+  private readonly idService = inject(IdGenerationService);
+
   /**
    * Attaches the user-provided component to the already-created NxModalContainer.
    * @param componentOrTemplateRef The type of component being loaded into the dialog, or a TemplateRef to instantiate as the content.
@@ -273,7 +276,12 @@ export class NxDialogService implements OnDestroy {
   ): NxModalRef<T, R> {
     // Create a reference to the modal we're creating in order to give the user a handle
     // to modify and close it.
-    const modalRef = new NxModalRef<T, R>(overlayRef, modalContainer, config.id);
+
+    const modalRef = new NxModalRef<T, R>(
+      overlayRef,
+      modalContainer,
+      config.id ?? this.idService.nextId('nx-modal'),
+    );
 
     // If fullscreen is set to true, set the width and height to be the the fullscreen with and height
     // Add a class for styling the fullscreen modal

@@ -7,7 +7,7 @@ import {
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
-import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { ActiveDescendantKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
@@ -26,6 +26,7 @@ import {
   ElementRef,
   EventEmitter,
   HostBinding,
+  inject,
   Input,
   OnDestroy,
   Optional,
@@ -50,8 +51,6 @@ import { NxDropdownIntl } from '../dropdown';
 import { getPositionOffset, getPositions } from '../dropdown-position';
 import { NxMultiSelectAllComponent } from './multi-select-all.component';
 import { NxMultiSelectOptionComponent } from './multi-select-option.component';
-
-let id = 0;
 
 const OVERLAY_MIN_WIDTH = 260;
 
@@ -305,7 +304,7 @@ export class NxMultiSelectComponent<S, T>
 
   selectedItems = new Set<T>();
 
-  id = `nx-multi-select-${id++}`;
+  id = inject(IdGenerationService).nextId('nx-multi-select');
 
   _comboboxId = `${this.id}-combobox`;
 

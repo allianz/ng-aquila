@@ -1,8 +1,10 @@
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NgTemplateOutlet } from '@angular/common';
 import {
   Component,
   EventEmitter,
+  inject,
   Input,
   Optional,
   Output,
@@ -14,8 +16,6 @@ import { NxComparisonTableRowType } from '../comparison-table.models';
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
 import { NxToggleSectionBase } from '../toggle-section/toggle-section-base';
-
-let nextId = 0;
 
 @Component({
   selector: 'nx-comparison-table-cell',
@@ -76,7 +76,7 @@ export class NxComparisonTableCell {
   get id(): string {
     return this._id;
   }
-  private _id = `nx-comparison-table-cell-${nextId++}`;
+  private _id = inject(IdGenerationService).nextId('nx-comparison-table-cell');
 
   /** Sets the type of the cell. Default: 'content'. */
   @Input() set type(value: NxComparisonTableRowType) {

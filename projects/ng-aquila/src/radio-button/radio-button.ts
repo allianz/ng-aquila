@@ -1,6 +1,6 @@
 import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
-import { ErrorStateMatcher, randomString } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
@@ -18,6 +18,7 @@ import {
   ElementRef,
   EventEmitter,
   forwardRef,
+  inject,
   Input,
   OnDestroy,
   OnInit,
@@ -49,8 +50,6 @@ export class NxRadioChange {
 
 /** Label Size Types */
 export type LabelSize = 'small' | 'big';
-
-let nextId = 0;
 
 @Component({
   selector: 'nx-radio-group',
@@ -109,7 +108,7 @@ export class NxRadioGroupComponent
   get id(): string {
     return this._id;
   }
-  private _id = `nx-radio-group-${nextId++}`;
+  private _id = inject(IdGenerationService).nextId('nx-radio-group');
 
   /** Whether every radio button in this group should be disabled. */
   @Input() set disabled(value: BooleanInput) {
@@ -157,7 +156,7 @@ export class NxRadioGroupComponent
   get name(): string {
     return this._name;
   }
-  private _name = `nx-radio-group-${nextId++}`;
+  private _name = inject(IdGenerationService).nextId('nx-radio-group');
 
   /** Sets the value of the selected radion button in this group (Default: null). */
   @Input() set value(newValue: any) {
@@ -349,8 +348,7 @@ export class NxRadioComponent
     return this._id;
   }
 
-  private _id = `nx-radio-${nextId++}-${randomString()}`;
-
+  private _id = inject(IdGenerationService).nextId('nx-radio');
   /** @docs-private */
   get inputId(): string {
     return `${this.id}-input`;

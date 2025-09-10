@@ -1,5 +1,5 @@
 import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
-import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import {
   Component,
   computed,
@@ -44,8 +44,7 @@ export class NxTileGroupComponent implements ControlValueAccessor, DoCheck, OnDe
   readonly errors = contentChildren(NxErrorComponent, { descendants: true });
   readonly tiles = contentChildren<NxTileComponent>(forwardRef(() => NxTileComponent));
 
-  private static nextId = 0;
-  readonly id = `nx-tile-group-${NxTileGroupComponent.nextId++}`;
+  readonly id = inject(IdGenerationService).nextId('nx-tile-group');
 
   /** Whether to enable automatic grid layout for the tiles. Default is true. */
   readonly autoGrid = input(true);

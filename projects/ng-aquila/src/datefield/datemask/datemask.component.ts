@@ -1,6 +1,6 @@
 import { NxFormfieldComponent, NxFormfieldControl } from '@allianz/ng-aquila/formfield';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
-import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { CommonModule } from '@angular/common';
 import {
@@ -391,8 +391,7 @@ export class NxDatemaskComponent<D>
     }
     return false;
   }
-  static idNumber = 0;
-  readonly id: string = `nx-datemask-${NxDatemaskComponent.idNumber++}`;
+  readonly id: string = inject(IdGenerationService).nextId('nx-datemask');
 
   focused: boolean = false;
 

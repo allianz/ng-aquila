@@ -1,3 +1,4 @@
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import {
@@ -6,6 +7,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  inject,
   Input,
   Output,
 } from '@angular/core';
@@ -19,12 +21,6 @@ export class NxAutocompleteOptionSelected {
     readonly isUserInput = false,
   ) {}
 }
-
-/**
- * Option IDs need to be unique across components, so this counter exists outside of
- * the component definition.
- */
-let _uniqueIdCounter = 0;
 
 @Component({
   selector: 'nx-autocomplete-option',
@@ -51,7 +47,8 @@ export class NxAutocompleteOptionComponent {
   get id(): string {
     return this._id;
   }
-  private readonly _id = `nx-autocomplete-option-${_uniqueIdCounter++}`;
+
+  private readonly _id = inject(IdGenerationService).nextId('nx-autocomplete-option');
 
   /** Whether or not the option is currently selected. */
   get selected(): boolean {

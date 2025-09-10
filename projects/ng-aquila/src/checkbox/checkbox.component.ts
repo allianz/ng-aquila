@@ -1,7 +1,7 @@
 import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
-import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkObserveContent } from '@angular/cdk/observers';
@@ -18,6 +18,7 @@ import {
   ElementRef,
   EventEmitter,
   forwardRef,
+  inject,
   Injector,
   Input,
   OnDestroy,
@@ -43,8 +44,6 @@ import {
 } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
-let nextId = 0;
 
 export class NxCheckboxChangeEvent {
   constructor(
@@ -118,7 +117,8 @@ export class NxCheckboxGroupComponent
   get id(): string {
     return this._id;
   }
-  private _id = `nx-checkbox-group-${nextId++}`;
+
+  private _id = inject(IdGenerationService).nextId('nx-checkbox-group');
 
   /** Sets the name of the checkboxes inside the nx-checkbox-group. */
   @Input() set name(value: string) {
@@ -375,9 +375,10 @@ export class NxCheckboxComponent
     }
   }
   get id(): string {
-    return `nx-checkbox-${this._id}`;
+    return this._id;
   }
-  private _id: string = (nextId++).toString();
+
+  private _id: string = inject(IdGenerationService).nextId('nx-checkbox');
 
   /** Name of the checkbox. */
   @Input() set name(name: string) {

@@ -1,6 +1,7 @@
 import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { Highlightable } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkObserveContent } from '@angular/cdk/observers';
@@ -13,6 +14,7 @@ import {
   ElementRef,
   EventEmitter,
   Inject,
+  inject,
   Input,
   OnDestroy,
   Optional,
@@ -33,9 +35,6 @@ export class NxDropdownItemChange {
     readonly isUserInput = false,
   ) {}
 }
-
-/** The unique id counter */
-let nextId = 0;
 
 @Component({
   selector: 'nx-dropdown-item',
@@ -69,7 +68,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
 
   private _mostRecentViewValue = '';
 
-  private readonly _id = `nx-dropdown-item-${nextId++}`;
+  private readonly _id: string = inject(IdGenerationService).nextId('nx-dropdown-item');
 
   /**
    * The value of the dropdown item.

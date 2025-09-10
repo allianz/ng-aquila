@@ -1,6 +1,6 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
-import { ErrorStateMatcher, mapClassNames } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService, mapClassNames } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NgClass } from '@angular/common';
 import {
@@ -14,6 +14,7 @@ import {
   ContentChildren,
   DoCheck,
   forwardRef,
+  inject,
   Input,
   OnDestroy,
   Optional,
@@ -38,8 +39,6 @@ import {
 } from './radio-toggle-button.component';
 import { NxRadioToggleButtonBaseComponent } from './radio-toggle-button-base.component';
 
-let nextId = 0;
-
 const MAPPING = {
   negative: 'nx-radio-toggle--negative',
   small: 'nx-radio-toggle--small',
@@ -63,7 +62,7 @@ export const RESET_VALUES = [null, undefined, ''];
 export class NxRadioToggleComponent
   implements ControlValueAccessor, OnDestroy, AfterContentInit, DoCheck
 {
-  private readonly _toggleId: string = (nextId++).toString();
+  private readonly _toggleId: string = inject(IdGenerationService).nextId('nx-radio-toggle');
   @ContentChild(NxErrorComponent) errorChild?: NxErrorComponent;
 
   /** Whether the component should switch to vertical buttons on mobile viewports. */

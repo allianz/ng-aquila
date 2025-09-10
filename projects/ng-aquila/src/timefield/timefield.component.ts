@@ -12,7 +12,7 @@ import {
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxRadioModule } from '@allianz/ng-aquila/radio-button';
 import { NxRadioToggleModule } from '@allianz/ng-aquila/radio-toggle';
-import { ErrorStateMatcher, pad } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService, pad } from '@allianz/ng-aquila/utils';
 import { ActiveDescendantKeyManager, FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkConnectedOverlay, CdkOverlayOrigin, OverlayModule } from '@angular/cdk/overlay';
@@ -66,8 +66,6 @@ import { Subject } from 'rxjs';
 import { NxTimefieldIntl } from './timefield-intl';
 import { NxTimefieldOption } from './timefield-option';
 import { getClosestTime, getTimeArray } from './utils';
-
-let nextId = 0;
 
 export const DEFAULT_END_TIME = '24:00';
 export const DEFAULT_START_TIME = '00:00';
@@ -259,25 +257,25 @@ export class NxTimefieldComponent
     }
   }
 
-  private readonly _idMinutes = `nx-timefield__minutes-${nextId++}`;
+  private readonly _idMinutes = inject(IdGenerationService).nextId('nx-timefield__minutes');
   /** The id of the minutes input field. */
   get idMinutes(): string {
     return this._idMinutes;
   }
 
-  private readonly _idHours = `nx-timefield__hours-${nextId++}`;
+  private readonly _idHours = inject(IdGenerationService).nextId('nx-timefield__hours');
   /** The id of the hours input field. */
   get idHours(): string {
     return this._idHours;
   }
 
-  private readonly _idRadioGroup = `nx-timefield__radio-group-${nextId++}`;
+  private readonly _idRadioGroup = inject(IdGenerationService).nextId('nx-timefield__radio-group');
   /** The id of the am/pm selection. */
   get idRadioGroup(): string {
     return this._idRadioGroup;
   }
 
-  private readonly _idOptionList = `nx-timefield__list-${nextId++}`;
+  private readonly _idOptionList = inject(IdGenerationService).nextId('nx-timefield__list');
   /** The id of option list in the timepicker overlay. */
   get idOptionList(): string {
     return this._idOptionList;

@@ -1,6 +1,7 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { NgTemplateOutlet } from '@angular/common';
 import {
@@ -30,9 +31,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NxTagIntl } from './tag-intl';
 import { TAGLIST } from './taglist-interface';
 
-let groupId = 0;
-let tagId = 0;
-
 export type NxTagType = 'tag' | 'keyword';
 
 @Component({
@@ -48,7 +46,8 @@ export type NxTagType = 'tag' | 'keyword';
   host: { role: 'group', '(focusout)': 'onBlur($event)' },
 })
 export class NxTagGroupComponent implements ControlValueAccessor, NxAbstractControl {
-  readonly name = `nx-tag-group-${groupId++}`;
+  readonly name = inject(IdGenerationService).nextId('nx-tag-group');
+
   private readonly _elementRef = inject(ElementRef);
 
   /** The value of the tag group, can be used as alternative to ngModel or reactive forms. */
@@ -135,7 +134,7 @@ export class NxTagComponent implements OnDestroy, NxAbstractControl {
   intl = inject(NxTagIntl);
   readonly tagGroup = inject(NxTagGroupComponent, { optional: true });
   readonly tagList = inject(TAGLIST, { optional: true });
-  readonly id = `nx-tag-${tagId++}`;
+  readonly id = inject(IdGenerationService).nextId('nx-tag');
   private readonly _input = viewChild<ElementRef>('input');
   private _lastInputNativeElement: HTMLElement | undefined = undefined;
 

@@ -1,7 +1,7 @@
 import { NxDropdownComponent } from '@allianz/ng-aquila/dropdown';
 import { NxFormfieldControl, NxFormfieldErrorDirective } from '@allianz/ng-aquila/formfield';
 import { NxPopoverComponent, NxPopoverModule } from '@allianz/ng-aquila/popover';
-import { getFontShorthand } from '@allianz/ng-aquila/utils';
+import { getFontShorthand, IdGenerationService } from '@allianz/ng-aquila/utils';
 import {
   ConnectionPositionPair,
   FlexibleConnectedPositionStrategy,
@@ -24,6 +24,7 @@ import {
   ElementRef,
   EmbeddedViewRef,
   HostBinding,
+  inject,
   Input,
   input,
   OnDestroy,
@@ -58,8 +59,8 @@ export type SIZES = 'regular' | 'short' | 'long';
   imports: [NxPopoverModule],
 })
 export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
-  private static _labelKey = 0;
-  protected labelId = `nx-word-label-${NxWordComponent._labelKey++}`;
+  protected labelId = inject(IdGenerationService).nextId('nx-word-label');
+
   private measureCanvas!: HTMLCanvasElement;
 
   /** @docs-private */

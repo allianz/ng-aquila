@@ -7,6 +7,7 @@
  */
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { CdkTrapFocus, FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { ESCAPE } from '@angular/cdk/keycodes';
@@ -55,9 +56,6 @@ import { NxCalendarComponent } from './calendar';
 import { NxDatepickerInputInterface } from './datepicker-input.directive';
 import { NxDatepickerIntl } from './datepicker-intl';
 import { NxDatepickerToggleComponent } from './datepicker-toggle';
-
-/** Used to generate a unique ID for each datepicker instance. */
-let datepickerUid = 0;
 
 /** Injection token that determines the scroll handling while the calendar is open. */
 export const NX_DATEPICKER_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>(
@@ -192,7 +190,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
    */
   readonly disabledInput = model<boolean | undefined>(undefined, { alias: 'disabled' });
   // Save inputs that get registered in a signal
-  private _registeredInputs = signal<NxDatepickerInputInterface<D>[]>([]);
+  private readonly _registeredInputs = signal<NxDatepickerInputInterface<D>[]>([]);
   readonly disabled = computed(() => {
     if (this.disabledInput() !== undefined) {
       return this.disabledInput();
@@ -252,7 +250,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
    * The id for the datepicker calendar.
    * @docs-private
    */
-  id = `nx-datepicker-${datepickerUid++}`;
+  id = inject(IdGenerationService).nextId('nx-datepicker');
 
   /**
    * The currently selected date.

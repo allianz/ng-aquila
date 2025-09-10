@@ -2,7 +2,7 @@ import { NxFormfieldComponent, NxFormfieldControl } from '@allianz/ng-aquila/for
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
-import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { ActiveDescendantKeyManager, LiveAnnouncer } from '@angular/cdk/a11y';
 import { Dir, Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -76,8 +76,6 @@ import { getNxDropdownNonArrayValueError } from './dropdown-errors';
 import { getPositionOffset, getPositions } from './dropdown-position';
 import { NxDropdownGroupComponent } from './group/dropdown-group';
 import { NxDropdownItemComponent } from './item/dropdown-item';
-
-let nextUniqueId = 0;
 
 /**
  * An option of the dropdown.
@@ -258,8 +256,8 @@ export class NxDropdownComponent
   private _selectionModel!: SelectionModel<NxDropdownOption>;
 
   /** The ID of rendered dropdown html element. */
-  readonly renderedValueId: string = `nx-dropdown-rendered-${nextUniqueId++}`;
-  readonly modalId: string = `nx-dropdown-modal-${nextUniqueId++}`;
+  readonly renderedValueId: string = inject(IdGenerationService).nextId('nx-dropdown-rendered');
+  readonly modalId: string = inject(IdGenerationService).nextId('nx-dropdown-modal');
 
   private _focused = false;
 

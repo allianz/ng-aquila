@@ -1,4 +1,5 @@
 import { NxTriggerButton } from '@allianz/ng-aquila/overlay';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import {
   ConfigurableFocusTrap,
   ConfigurableFocusTrapFactory,
@@ -52,7 +53,6 @@ export declare type PopoverDirection = PopoverHorizontalDirection | PopoverVerti
 export declare type PopoverTriggerType = 'click' | 'hover' | 'manual';
 export declare type PopoverTriggerScrollStrategy = 'close' | 'reposition';
 
-let nextId = 0;
 const BASE_OFFSET = 16;
 
 /** Injection token that determines the scroll handling while a popover is open. */
@@ -168,7 +168,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
       : undefined;
 
   /** @docs-private */
-  id = 'nx-popover-' + nextId++;
+  id = inject(IdGenerationService).nextId('nx-popover');
 
   /** An event is emitted if the visibility status of the popover changes. */
   @Output('nxPopoverShowChange') readonly changeShow = new EventEmitter<boolean>();

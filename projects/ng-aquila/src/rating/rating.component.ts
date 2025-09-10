@@ -1,4 +1,5 @@
 import { IconSize, NxIconModule } from '@allianz/ng-aquila/icon';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   BooleanInput,
@@ -15,6 +16,7 @@ import {
   ElementRef,
   EventEmitter,
   forwardRef,
+  inject,
   Input,
   OnDestroy,
   Output,
@@ -22,8 +24,6 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
-let nextId = 0;
 
 @Component({
   selector: 'nx-rating',
@@ -46,7 +46,7 @@ let nextId = 0;
 })
 export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
   /** @docs-private */
-  readonly radioGroupName = `nx-rating-${nextId++}`;
+  readonly radioGroupName = inject(IdGenerationService).nextId('nx-rating');
 
   getRadioInputId(index: number) {
     return this.radioInputIds[index - 1];

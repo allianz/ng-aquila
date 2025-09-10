@@ -6,9 +6,6 @@ import { filter, take } from 'rxjs/operators';
 import { NxDialogPosition } from './modal-config';
 import { NxModalContainer } from './modal-container.component';
 
-// Id counter
-let nexId = 0;
-
 /** Possible states of the lifecycle of a modal. */
 export enum NxModalState {
   OPEN,
@@ -53,7 +50,7 @@ export class NxModalRef<T, R = any> {
   constructor(
     private readonly _overlayRef: OverlayRef,
     readonly _containerInstance: NxModalContainer,
-    readonly id: string = `nx-modal-${nexId++}`,
+    readonly id: string = '',
   ) {
     // Pass the id along to the container.
     _containerInstance._id = id;

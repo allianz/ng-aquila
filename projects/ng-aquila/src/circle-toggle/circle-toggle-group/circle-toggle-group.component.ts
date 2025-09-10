@@ -1,6 +1,6 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
-import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterViewInit,
@@ -16,6 +16,7 @@ import {
   forwardRef,
   HostBinding,
   Inject,
+  inject,
   InjectionToken,
   Input,
   OnDestroy,
@@ -58,8 +59,6 @@ export interface CircleToggleGroupDefaultOptions {
 export const CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS =
   new InjectionToken<CircleToggleGroupDefaultOptions>('CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS');
 
-let nextId = 0;
-
 @Component({
   selector: 'nx-circle-toggle-group',
   template: `<ng-content></ng-content>
@@ -100,7 +99,7 @@ export class NxCircleToggleGroupComponent
   get id(): string {
     return this._id;
   }
-  private _id = `nx-circle-toggle-group-${nextId++}`;
+  private _id = inject(IdGenerationService).nextId('nx-circle-toggle-group');
 
   private readonly errorChildren = contentChildren(NxErrorComponent);
   ariaDescribedBy: Signal<string | null> = computed(() => {
@@ -136,8 +135,7 @@ export class NxCircleToggleGroupComponent
   get name(): string {
     return this._name;
   }
-  private _name = `toggle-group-${nextId++}`;
-
+  private _name = inject(IdGenerationService).nextId('toggle-group');
   /** Whether the circle toggle group is disabled. */
   @Input() set disabled(value: BooleanInput) {
     const newValue = coerceBooleanProperty(value);

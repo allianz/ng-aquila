@@ -1,5 +1,6 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxMessageModule } from '@allianz/ng-aquila/message';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NgTemplateOutlet } from '@angular/common';
 import {
@@ -7,6 +8,7 @@ import {
   ChangeDetectorRef,
   Component,
   Inject,
+  inject,
   Injectable,
   InjectionToken,
   Input,
@@ -18,8 +20,6 @@ import { takeUntil } from 'rxjs/operators';
 
 /* Types of error notification styles */
 export type ErrorStyleType = 'message' | 'text';
-
-let nextId = 0;
 
 /**
  * Represents the default options for the error notification that can be configured
@@ -77,8 +77,7 @@ export class NxErrorComponent implements OnDestroy {
   get id(): string {
     return this._id;
   }
-  private _id = `nx-error-${nextId++}`;
-
+  private _id = inject(IdGenerationService).nextId('nx-error');
   /**
    * Whether the error should have message or text styling.
    *

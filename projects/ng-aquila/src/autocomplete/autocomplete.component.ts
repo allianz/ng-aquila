@@ -1,4 +1,5 @@
 import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { NgClass } from '@angular/common';
 import {
@@ -9,6 +10,7 @@ import {
   ContentChildren,
   ElementRef,
   EventEmitter,
+  inject,
   Input,
   OnDestroy,
   Optional,
@@ -21,12 +23,6 @@ import {
 import { Observable, Subject, Subscription } from 'rxjs';
 
 import { NxAutocompleteOptionComponent } from './autocomplete-option.component';
-
-/**
- * Autocomplete IDs need to be unique across components, so this counter exists outside of
- * the component definition.
- */
-let _uniqueAutocompleteIdCounter = 0;
 
 /** Event object that is emitted when an autocomplete option is selected. */
 export class NxAutocompleteSelectedEvent {
@@ -140,7 +136,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
   _classList: { [key: string]: boolean } = {};
 
   /** Unique ID to be used by autocomplete trigger's "aria-owns" property. */
-  id = `nx-autocomplete-${_uniqueAutocompleteIdCounter++}`;
+  id = inject(IdGenerationService).nextId('nx-autocomplete');
 
   private readonly _destroyed = new Subject<void>();
 
