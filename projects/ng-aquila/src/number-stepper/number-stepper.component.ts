@@ -232,7 +232,10 @@ export class NxNumberStepperComponent
 
   /** @docs-private */
   viewValue = computed(() => {
-    let value = this._value() === null ? '' : this._value();
+    if (this._value() === null && (this.inputValue === '' || this.inputValue === this._value())) {
+      return '';
+    }
+    let value = this._value() || '';
 
     const isInputChange = this._value() !== this.inputValue;
     if (isInputChange && this.nativeInput?.nativeElement?.value) {
@@ -265,18 +268,20 @@ export class NxNumberStepperComponent
 
   /** @docs-private */
   onInputChange(event: Event) {
-    const inputValue = (event.target as HTMLInputElement).value;
+    const inputValue = (event.target as HTMLInputElement).value.trim();
+    // Apply trimmed value to input
+    (event.target as HTMLInputElement).value = inputValue;
     this.inputValue = inputValue;
 
     let newValue;
-    if (this.validateUserInput(inputValue)) {
+    if (inputValue === '' || !this.validateUserInput(inputValue)) {
+      newValue = null;
+    } else {
       const formattedValue = inputValue.replace(/[,.]/g, '.');
       newValue = Number(formattedValue);
-      this._value.set(newValue);
-    } else {
-      newValue = null;
-      this._value.set(null);
     }
+
+    this._value.set(newValue);
     this.valueChange.emit(newValue!);
     this.onChangeCallback(newValue);
   }
@@ -561,11 +566,16 @@ export class NxNumberStepperComponent
   }
 
   _validateFn() {
-    // the manual user input must match min + n * step, e.g. minimum 1 step 2: 1, 3, 5, 7 etc.
-    if (!this.isValidStep(this.value)) {
+    if (this.value === null || !this.validateUserInput(String(this.value))) {
+      if (this.inputValue === '') {
+        return null;
+      } else if (!this.validateUserInput(String(this.inputValue))) {
+        return { nxNumberStepperFormatError: 'Not a valid number' };
+      }
+      return null;
+    } else if (!this.isValidStep(this.value)) {
+      // the manual user input must match min + n * step, e.g. minimum 1 step 2: 1, 3, 5, 7 etc.
       return { nxNumberStepperStepError: 'Value is not a valid step' };
-    } else if (this.value === null) {
-      return { nxNumberStepperFormatError: 'Not a valid number' };
     }
     return null;
   }

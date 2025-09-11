@@ -18,7 +18,13 @@ import {
   tick,
   waitForAsync,
 } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NxNumberStepperComponent } from './number-stepper.component';
@@ -562,6 +568,46 @@ describe('NxNumberStepperComponent', () => {
         .withContext('Expected value to change once control is blurred.')
         .toBe(2);
     });
+
+    it('should set correct errors on the form control for all validation cases', fakeAsync(() => {
+      createTestComponent(ReactiveFormStepper);
+      const formControl = testInstance.testForm.get('stepper')!;
+
+      inputElement.value = 'abc'; // invalid number
+      inputElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      expect(formControl.errors).toEqual({ nxNumberStepperFormatError: 'Not a valid number' });
+
+      inputElement.value = '4.2'; // not an integer
+      inputElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      expect(formControl.errors).toEqual({ nxNumberStepperStepError: 'Value is not a valid step' });
+
+      inputElement.value = ''; // cleared input
+      inputElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      expect(formControl.errors).toBeNull();
+
+      testInstance.stepperInstance.value = null; // set programmatically null
+      fixture.detectChanges();
+      expect(formControl.errors).toBeNull();
+
+      formControl.setValidators([Validators.required]);
+      formControl.updateValueAndValidity();
+
+      inputElement.value = ''; // empty input, should trigger required error
+      inputElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      expect(formControl.errors).toEqual({ required: true });
+    }));
+
+    it('should empty input when value is set null programmatically', fakeAsync(() => {
+      createTestComponent(ReactiveFormStepper);
+
+      testInstance.stepperInstance.value = null; // set programmatically null
+      fixture.detectChanges();
+      expect(inputElement.value).toBe('');
+    }));
   });
 
   describe('with onPush', () => {
@@ -860,7 +906,7 @@ class DirectivesStepper extends NumberStepperTest {}
 @Component({
   template: `
     <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
-      <nx-number-stepper></nx-number-stepper>
+      <nx-number-stepper formControlName="stepper"></nx-number-stepper>
       <button id="submit-button">Submit</button>
     </form>
   `,

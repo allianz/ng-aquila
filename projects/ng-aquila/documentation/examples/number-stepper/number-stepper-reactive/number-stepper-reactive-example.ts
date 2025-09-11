@@ -2,7 +2,12 @@ import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxNumberStepperComponent } from '@allianz/ng-aquila/number-stepper';
 import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 /**
  * @title Reactive example
@@ -22,6 +27,12 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class NumberStepperReactiveExampleComponent {
   readonly testForm = this.fb.group({
     stepperTestReactive: 3,
+  });
+  readonly testFormRequired = this.fb.group({
+    stepperTestReactive: [
+      3,
+      { nonNullable: true, validators: [Validators.required] },
+    ],
   });
 
   constructor(private readonly fb: FormBuilder) {}

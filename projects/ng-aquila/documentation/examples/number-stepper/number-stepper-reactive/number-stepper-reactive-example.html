@@ -23,3 +23,34 @@
     Form errors: {{ testForm.controls['stepperTestReactive'].errors | json}}
   </p>
 </form>
+
+<form [formGroup]="testFormRequired" class="nx-margin-top-l">
+  <nx-number-stepper
+    label="Number of travellers (required)"
+    size="big"
+    formControlName="stepperTestReactive"
+    [step]="1"
+    [min]="-3"
+    [max]="20"
+  >
+    @if (testFormRequired.controls['stepperTestReactive'].errors &&
+    testFormRequired.controls['stepperTestReactive'].errors.nxNumberStepperStepError)
+    {
+    <nx-error> Value is not a valid step </nx-error>
+    } @if (testFormRequired.controls['stepperTestReactive'].errors &&
+    testFormRequired.controls['stepperTestReactive'].errors.nxNumberStepperFormatError)
+    {
+    <nx-error> Not a valid number </nx-error>
+    } @if (testFormRequired.controls['stepperTestReactive'].errors &&
+    testFormRequired.controls['stepperTestReactive'].errors.required) {
+    <nx-error> Number of travellers is required. </nx-error>
+    }
+  </nx-number-stepper>
+
+  <p>Form value: {{ testFormRequired.value | json }}</p>
+  <p>Form status: {{ testFormRequired.status }}</p>
+  <p>
+    Form errors: {{ testFormRequired.controls['stepperTestReactive'].errors |
+    json}}
+  </p>
+</form>
