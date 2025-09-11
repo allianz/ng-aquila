@@ -9,6 +9,7 @@ import { HeadlineNegativeExampleComponent } from './headline-negative/headline-n
 import { HeadlineSizesA1ExampleComponent } from './headline-sizes-a1/headline-sizes-a1-example';
 import { HeadlineSizesDeprecatedExampleComponent } from './headline-sizes-deprecated/headline-sizes-deprecated-example';
 import { HeadlineSizesMappingExampleComponent } from './headline-sizes-mapping/headline-sizes-mapping-example';
+import { HeadlineTypeExampleComponent } from './headline-type/headline-type-example';
 
 const EXAMPLES = [
   HeadlineFontWeightsExampleComponent,
@@ -32,6 +33,7 @@ export class HeadlineExamplesModule {
       'headline-sizes-deprecated': HeadlineSizesDeprecatedExampleComponent,
       'headline-sizes-a1': HeadlineSizesA1ExampleComponent,
       'headline-sizes-mapping': HeadlineSizesMappingExampleComponent,
+      'headline-type': HeadlineTypeExampleComponent,
     };
   }
 }

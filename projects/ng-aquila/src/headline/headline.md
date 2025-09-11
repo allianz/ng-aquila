@@ -62,6 +62,16 @@ You can change the font-weight of any headline by using the font-weight utility 
 #### Size input
 <!-- example(headline-sizes-a1) -->
 
+<div class="docs-a1">
+
+You can set the headline style using the existing `type` input. Choose either `primary` or `secondary` to apply the color scheme.
+
+#### Type
+
+<!-- example(headline-type) -->
+</div>
+
+
 #### Mappings
 This table shows you how the old names will translate to in the new design.
 

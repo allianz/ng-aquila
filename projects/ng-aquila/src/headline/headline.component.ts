@@ -1,5 +1,5 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, Input } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 
 /** Types of headlines */
 export type HeadlineType =
@@ -10,9 +10,19 @@ export type HeadlineType =
   | 'subsection-medium'
   | 'subsection-small'
   | 'subsection-xsmall';
+export type NxHeadlineType = 'primary' | 'secondary';
 /** The headline sizes */
-export type NxHeadlineSize = 's' | 'm' | 'l' | 'xl' | '2xl' | '3xl' | '4xl' | undefined;
-
+export type NxHeadlineSize =
+  | 's'
+  | 'm'
+  | 'l'
+  | 'xl'
+  | '2xl'
+  | '3xl'
+  | '4xl'
+  | '5xl'
+  | '6xl'
+  | undefined;
 const DEFAULT_TYPE = 'section';
 
 @Component({
@@ -20,13 +30,13 @@ const DEFAULT_TYPE = 'section';
   template: `<ng-content></ng-content>`,
   styleUrls: ['headline.component.scss'],
   host: {
-    '[class.nx-heading--page]': 'type === "page"',
-    '[class.nx-heading--page-bold-caps]': 'type === "page-bold-caps"',
-    '[class.nx-heading--section]': 'type === "section"',
-    '[class.nx-heading--subsection-large]': 'type === "subsection-large"',
-    '[class.nx-heading--subsection-medium]': 'type === "subsection-medium"',
-    '[class.nx-heading--subsection-small]': 'type === "subsection-small"',
-    '[class.nx-heading--subsection-xsmall]': 'type === "subsection-xsmall"',
+    '[class.nx-heading--page]': 'legacytype === "page"',
+    '[class.nx-heading--page-bold-caps]': 'legacytype === "page-bold-caps"',
+    '[class.nx-heading--section]': 'legacytype === "section"',
+    '[class.nx-heading--subsection-large]': 'legacytype === "subsection-large"',
+    '[class.nx-heading--subsection-medium]': 'legacytype === "subsection-medium"',
+    '[class.nx-heading--subsection-small]': 'legacytype === "subsection-small"',
+    '[class.nx-heading--subsection-xsmall]': 'legacytype === "subsection-xsmall"',
     '[class.nx-heading--new-api]': 'size !== undefined',
     '[class.nx-heading--s]': 'size === "s"',
     '[class.nx-heading--m]': 'size === "m"',
@@ -35,7 +45,11 @@ const DEFAULT_TYPE = 'section';
     '[class.nx-heading--2xl]': 'size === "2xl"',
     '[class.nx-heading--3xl]': 'size === "3xl"',
     '[class.nx-heading--4xl]': 'size === "4xl"',
+    '[class.nx-heading--5xl]': 'size === "5xl"',
+    '[class.nx-heading--6xl]': 'size === "6xl"',
     '[class.nx-heading--negative]': 'negative',
+    '[class.nx-heading--primary]': 'type() === "primary"',
+    '[class.nx-heading--secondary]': 'type() === "secondary"',
   },
   standalone: true,
 })
@@ -55,7 +69,7 @@ export class NxHeadlineComponent {
     const typeRegex =
       /page-bold-caps|page|section|subsection-large|subsection-medium|subsection-small|subsection-xsmall/;
     const [type = null] = this._classNames?.match(typeRegex) || [DEFAULT_TYPE];
-    this.type = type as any;
+    this.legacytype = type as any;
 
     this._negative = !!this._classNames?.match(/negative/);
   }
@@ -72,7 +86,8 @@ export class NxHeadlineComponent {
     return this._negative;
   }
   private _negative = false;
+  readonly type = input<NxHeadlineType>('primary');
 
   /** @docs-private */
-  type: HeadlineType = DEFAULT_TYPE;
+  legacytype: HeadlineType = DEFAULT_TYPE;
 }

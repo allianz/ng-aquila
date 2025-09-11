@@ -48,6 +48,12 @@
 }
 
 :host(.nx-heading--new-api) {
+  &.nx-heading--6xl {
+    @include headline-typography('heading-6xl');
+  }
+  &.nx-heading--5xl {
+    @include headline-typography('heading-5xl');
+  }
   &.nx-heading--4xl {
     @include headline-typography('heading-00');
   }
@@ -70,12 +76,27 @@
     @include headline-typography('heading-06');
   }
 }
+:host(.nx-heading--secondary) {
+  color: v(headline-secondary-color);
+
+  ::ng-deep a {
+    color: v(headline-secondary-color);
+  }
+}
 
 :host(.nx-heading--negative) {
   color: v(negative);
 
   ::ng-deep a {
     color: v(negative);
+  }
+}
+
+:host(.nx-heading--secondary.nx-heading--negative) {
+  color: v(headline-negative-secondary-color);
+
+  ::ng-deep a {
+    color: v(headline-negative-secondary-color);
   }
 }
 
