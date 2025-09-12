@@ -20,6 +20,9 @@ export type NxLinkType = 'primary' | 'secondary';
 /** The size of the link. */
 export type NxLinkSize = 'xsmall' | 'small' | 'large';
 
+/** The prominence of the link. */
+export type NxLinkProminence = 'default' | 'subtle';
+
 const MAPPING = {
   black: 'nx-link--black',
   negative: 'nx-link--negative',
@@ -46,6 +49,7 @@ const DEFAULT_CLASSES = ['nx-link'];
     '[class.nx-link--large]': 'size() === "large"',
     '[class.nx-link--primary]': 'type() === "primary"',
     '[class.nx-link--secondary]': 'type() === "secondary"',
+    '[class.nx-link--subtle]': 'prominence() === "subtle"',
   },
   standalone: true,
 })
@@ -61,6 +65,9 @@ export class NxLinkComponent
 
   /** Sets the type of the link. Default: 'primary'. */
   readonly type = input<NxLinkType>('primary');
+
+  /** Sets the prominence of the link. Default: 'default'. */
+  readonly prominence = input<NxLinkProminence>('default');
 
   constructor(
     _elementRef: ElementRef,

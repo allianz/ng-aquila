@@ -11,7 +11,7 @@ import {
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { NxLinkComponent, NxLinkSize, NxLinkType } from './link.component';
+import { NxLinkComponent, NxLinkProminence, NxLinkSize, NxLinkType } from './link.component';
 import { NxLinkModule } from './link.module';
 
 @Directive({ standalone: true })
@@ -20,6 +20,7 @@ abstract class LinkTest {
 
   size = signal<NxLinkSize>('large');
   type = signal<NxLinkType>('primary');
+  prominence = signal<NxLinkProminence>('default');
 }
 
 describe('NxLinkComponent', () => {
@@ -120,6 +121,23 @@ describe('NxLinkComponent', () => {
     expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--primary');
   });
 
+  it('should have default prominence on default', () => {
+    createTestComponent(BasicLink);
+    expect(linkInstance.prominence()).toBe('default');
+    expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--subtle');
+  });
+
+  it('should change the link type to secondary', () => {
+    createTestComponent(DynamicLink);
+    expect(linkInstance.prominence()).toBe('default');
+    expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--subtle');
+
+    testInstance.prominence.set('subtle');
+    fixture.detectChanges();
+    expect(linkInstance.prominence()).toBe('subtle');
+    expect(linkDebugElement.nativeElement).toHaveClass('nx-link--subtle');
+  });
+
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicLink);
@@ -140,7 +158,7 @@ class BasicLink extends LinkTest {}
 
 @Component({
   template: `
-    <nx-link [nxStyle]="style" [size]="size()" [type]="type()">
+    <nx-link [nxStyle]="style" [size]="size()" [type]="type()" [prominence]="prominence()">
       <a>link</a>
     </nx-link>
   `,

@@ -35,6 +35,12 @@ For One Allianz, you can select the color type via the `[type]` property.
 
 <!-- example(link-type) -->
 
+### Prominence
+
+You can set the prominence of the link by selecting the `[prominence]` property.
+
+<!-- example(link-prominence) -->
+
 </div>
 
 ### With Icons

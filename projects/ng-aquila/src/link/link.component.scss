@@ -5,7 +5,7 @@
   display: inline-block;
   cursor: pointer;
   position: relative;
-  text-decoration: none;
+  text-decoration: underline;
   transition-property: color, box-shadow, transform;
   transition-duration: v(link-transition-duration);
   transition-timing-function: v(link-transition-timing-function);
@@ -14,6 +14,24 @@
   &::ng-deep a {
     display: flex; // get icons aligned with text
     align-items: flex-start; // align with the top
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+    text-decoration: none;
+
+    ::ng-deep a:not([disabled]):not([aria-disabled]) {
+      transform: v(link-active-transform);
+    }
+  }
+
+  &:has(a[disabled]),
+  &:has(a[aria-disabled]) {
+    text-decoration: underline;
+    text-decoration-color: v(link-disabled-color);
   }
 }
 
@@ -60,6 +78,19 @@
   &::ng-deep a[disabled],
   &::ng-deep a[aria-disabled] {
     color: v(link-secondary-disabled-color);
+  }
+}
+
+:host.nx-link--subtle {
+  text-decoration: none;
+  font-weight: v(link-subtle-font-weight);
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    text-decoration: underline;
   }
 }
 
@@ -132,10 +163,12 @@
   nx-icon.nx-link__icon::before {
     line-height: inherit;
     font-size: inherit;
+    display: inline-block;
   }
 
   nx-icon {
     margin-inline-end: v(link-icon-gap);
+    display: inline-block;
   }
 }
 
@@ -171,13 +204,6 @@
   .c-icon,
   nx-icon.nx-link__icon {
     font-size: v(link-large-icon-size);
-  }
-}
-
-// active
-:host.nx-link {
-  &:active::ng-deep a:not([disabled]):not([aria-disabled]) {
-    transform: v(link-active-transform);
   }
 }
 
