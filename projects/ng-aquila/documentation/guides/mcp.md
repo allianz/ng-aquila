@@ -8,7 +8,7 @@ title: MCP
 We use the Model Context Protocol (MCP) to provide context that makes it possible for Large Language Models (LLMs) to fully understand and correctly use our library components. Without MCP, LLMs often lack the necessary context and generate incomplete or incorrect code. With MCP in place, the LLM knows our components — enabling accurate and helpful code completions.
 
 ### How are we shipping it?
-We are now (starting from version 20.2.0) shipping a local MCP server alongside our library. It runs within the IDE (e.g. Visual Studio Code) and uses GitHub Copilot as the MCP client to interact with the MCP server. This setup provides the LLM with the context it needs to work effectively with our components.
+We are now (starting from version 20.3.0) shipping a local MCP server alongside our library. It runs within the IDE (e.g. Visual Studio Code) and uses GitHub Copilot as the MCP client to interact with the MCP server. This setup provides the LLM with the context it needs to work effectively with our components.
 
 ### MCP versions
 Each library version comes with its own MCP definition, ensuring the context always matches the version of the library you’re using — just like we do for our documentation.
