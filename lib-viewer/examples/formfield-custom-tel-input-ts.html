@@ -1,10 +1,12 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldControl</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">IdGenerationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/utils&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FocusMonitor</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/a11y&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">BooleanInput</span>, coerceBooleanProperty } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/coercion&#x27;</span>;
 <span class="hljs-keyword">import</span> {
   <span class="hljs-title class_">AfterViewInit</span>,
   <span class="hljs-title class_">Component</span>,
   <span class="hljs-title class_">ElementRef</span>,
+  inject,
   <span class="hljs-title class_">Input</span>,
   <span class="hljs-title class_">OnDestroy</span>,
   <span class="hljs-title class_">Optional</span>,
@@ -60,15 +62,13 @@
     <span class="hljs-title class_">OnDestroy</span>,
     <span class="hljs-title class_">AfterViewInit</span>
 {
-  <span class="hljs-keyword">static</span> nextId = <span class="hljs-number">0</span>;
-
   <span class="hljs-keyword">readonly</span> <span class="hljs-attr">parts</span>: <span class="hljs-title class_">FormGroup</span>;
   <span class="hljs-keyword">readonly</span>!: <span class="hljs-built_in">boolean</span>;
   <span class="hljs-keyword">readonly</span> stateChanges = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subject</span>&lt;<span class="hljs-built_in">void</span>&gt;();
   focused = <span class="hljs-literal">false</span>;
   errorState = <span class="hljs-literal">false</span>;
   controlType = <span class="hljs-string">&#x27;example-tel-input&#x27;</span>;
-  id = <span class="hljs-string">`example-tel-input-<span class="hljs-subst">${FormfieldCustomTelInputExampleComponent.nextId++}</span>`</span>;
+  id = <span class="hljs-title function_">inject</span>(<span class="hljs-title class_">IdGenerationService</span>).<span class="hljs-title function_">nextId</span>(<span class="hljs-string">&#x27;example-tel-input&#x27;</span>);
   describedBy = <span class="hljs-string">&#x27;&#x27;</span>;
 
   <span class="hljs-keyword">get</span> <span class="hljs-title function_">empty</span>() {

@@ -39,7 +39,7 @@
         @if (testForm.controls[&#x27;documents&#x27;].hasError(&#x27;required&#x27;)) {
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Required!<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         } @if (testForm.controls[&#x27;documents&#x27;].hasError(&#x27;serverError&#x27;)) {
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>An error occured while uploading.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>An error occurred while uploading.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         } @if (documentUpload?.errors?.length) { @for (error of
         documentUpload?.errors; track error) {
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>

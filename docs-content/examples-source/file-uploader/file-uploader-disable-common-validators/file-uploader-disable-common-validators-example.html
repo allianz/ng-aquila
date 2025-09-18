@@ -39,7 +39,7 @@
         @if (testForm.controls['documents'].hasError('required')) {
         <li>File is Required!</li>
         } @if (testForm.controls['documents'].hasError('serverError')) {
-        <li>An error occured while uploading.</li>
+        <li>An error occurred while uploading.</li>
         } @if (documentUpload?.errors?.length) { @for (error of
         documentUpload?.errors; track error) {
         <li>

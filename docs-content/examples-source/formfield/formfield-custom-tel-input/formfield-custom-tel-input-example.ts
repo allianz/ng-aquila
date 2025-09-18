@@ -1,10 +1,12 @@
 import { NxFormfieldControl } from '@allianz/ng-aquila/formfield';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterViewInit,
   Component,
   ElementRef,
+  inject,
   Input,
   OnDestroy,
   Optional,
@@ -60,15 +62,13 @@ export class FormfieldCustomTelInputExampleComponent
     OnDestroy,
     AfterViewInit
 {
-  static nextId = 0;
-
   readonly parts: FormGroup;
   readonly!: boolean;
   readonly stateChanges = new Subject<void>();
   focused = false;
   errorState = false;
   controlType = 'example-tel-input';
-  id = `example-tel-input-${FormfieldCustomTelInputExampleComponent.nextId++}`;
+  id = inject(IdGenerationService).nextId('example-tel-input');
   describedBy = '';
 
   get empty() {

@@ -14,6 +14,47 @@
     </h3>
      
 
+<h4 id="IdGenerationService" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="IdGenerationService"></span>
+    <code>IdGenerationService</code></h4><p class="docs-api-class-description"><p>Service to generate unique IDs using the Angular APP_ID as a namespace.
+If the APP_ID is the default &#39;ng&#39;, a random string is used instead.
+This helps prevent ID collisions in micro frontend scenarios.</p>
+</p> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">nextId(
+                            prefix:  
+                                <span class="docs-api-property__type">
+                                    string
+                                </span>
+                        ): <span class="docs-api-method-returns-type">string</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Generates a unique ID with the given prefix.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                prefix:
+                <span class="docs-api-method-parameter-type">string</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> The prefix for the ID (e.g., component name) </p>
+        </div>
+        
+    </div><div class="docs-api-method-returns">
+        <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">string</code></p>
+        <p class="docs-api-method-returns-description"> <p>A unique ID string</p>
+ </p>
+    </div></div>
+   
+   
+
 <h4 id="NxViewportService" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxViewportService"></span>
     <code>NxViewportService</code></h4><p class="docs-api-class-description"><p>Service subscribing to window resize events and providing breakpoint matching functions.</p>
