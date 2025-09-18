@@ -55,7 +55,7 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable, ListKeyMa
   @Input() selected = false;
 
   /**
-   * Whether thisoption is disabled.
+   * Whether this option is disabled.
    */
   @Input() disabled = false;
 

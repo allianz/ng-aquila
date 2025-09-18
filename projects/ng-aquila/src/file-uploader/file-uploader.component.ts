@@ -458,7 +458,7 @@ export class NxFileUploaderComponent
     });
 
     focusButton$.pipe(takeUntil(this._destroyed)).subscribe(() => {
-      // file picker dialog dont have closed event, so using combination of focus + opend to check instead.
+      // file picker dialog does not have closed event, so using combination of focus + opened to check instead.
       if (opened) {
         opened = false;
         this.openedChange.emit(opened);
@@ -587,7 +587,7 @@ export class NxFileUploaderComponent
         const errorFiles = res.error?.files.filter((file) => !file.isUploaded && file.isError);
         if (errorFiles?.length) {
           errorFiles?.forEach((file) =>
-            this.setFileUploadError(file, 'An error occured while uploading'),
+            this.setFileUploadError(file, 'An error occurred while uploading'),
           );
         }
         this.value = successFiles;
@@ -744,7 +744,7 @@ export class NxFileUploaderComponent
     });
   }
 
-  /** weather all files is uplaoded */
+  /** weather all files is uploaded */
   get allFilesUploaded(): boolean {
     return this.value?.every((f) => f.isUploaded) || false;
   }

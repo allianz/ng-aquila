@@ -10,7 +10,7 @@ import { Component, Input } from '@angular/core';
       nxIconButton="tertiary small-medium"
       [attr.aria-label]="deleteLabel || null"
       type="button"
-      [attr.disabled]="isUploading || null"
+      [attr.disabled]="disabled || isUploading || null"
     >
       <nx-icon name="trash-o" [attr.aria-hidden]="true"></nx-icon>
     </button>
@@ -20,7 +20,10 @@ import { Component, Input } from '@angular/core';
 })
 export class NxFileUploaderItemDelete {
   /** Whether the file is uploading at the moment. If true, the button is disabled. Default: false.*/
-  @Input() isUploading!: boolean;
+  @Input() isUploading = false;
+
+  /** Whether this button is disabled. The button is additionally disabled while uploading. Default: false. */
+  @Input() disabled = false;
 
   /** The label that is used for the delete button (used by screen readers). */
   @Input() deleteLabel!: string;

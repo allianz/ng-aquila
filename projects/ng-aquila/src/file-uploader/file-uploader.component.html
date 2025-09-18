@@ -61,6 +61,7 @@
     <nx-file-upload-delete
       [deleteLabel]="templateContext.deleteLabel"
       [isUploading]="file.isUploading"
+      [disabled]="disabled"
       (click)="removeFile(file)"
     ></nx-file-upload-delete>
   </div>

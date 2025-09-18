@@ -20,7 +20,7 @@ export class FileItem {
   /** Whether the file was successfully uploaded. */
   isUploaded = false;
 
-  /** Whether an error occured when uploading the file. */
+  /** Whether an error occurred when uploading the file. */
   isError = false;
 
   /** Sets the index of the file. */

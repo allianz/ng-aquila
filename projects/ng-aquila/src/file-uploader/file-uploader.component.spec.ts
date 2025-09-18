@@ -272,8 +272,21 @@ describe('NxFileUploaderComponent', () => {
 
     it('should be able to disable in reactive form', () => {
       createTestComponent(ReactiveFileUpload);
+
+      let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
+      fakeFile = Object.defineProperty(fakeFile, 'size', { value: 1024, writable: false });
+      testInstance.form.patchValue({ documents: [new FileItem(fakeFile)] });
+      fixture.detectChanges();
+
       testInstance.form.controls.documents.disable();
+      fixture.detectChanges();
+
       expect(fileUploaderInstance.disabled).toBe(true);
+
+      const deleteAction = fixture.nativeElement.querySelector(
+        '.nx-file-uploader--file-row-actions button',
+      ) as HTMLElement;
+      expect(deleteAction.hasAttribute('disabled')).toBeTrue();
     });
   });
 
@@ -1131,7 +1144,7 @@ class CustomItemTemplateFileUpload extends FileUploaderTest {
         <button type="button" nxFileUploadButton>Add Files</button>
       </nx-file-uploader>
       @if (form.controls['documents'].hasError('serverError')) {
-        <nx-error class="error-message"> An error occured while uploading. </nx-error>
+        <nx-error class="error-message"> An error occurred while uploading. </nx-error>
       }
       <button id="upload-trigger" [nxFileUploadTriggerFor]="documentUpload" type="button">
         Upload files
