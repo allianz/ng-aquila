@@ -166,7 +166,7 @@ export class NxMomentDateAdapter extends NxDateAdapter<Moment> {
   }
 
   today(): Moment {
-    return moment.utc().locale(this.locale);
+    return moment().utc(true).locale(this.locale);
   }
 
   addCalendarMonths(date: Moment, months: number): Moment {

@@ -44,6 +44,15 @@ describe('NxMomentDateAdapter', () => {
     adapter.setLocale('en');
   }));
 
+  beforeEach(() => {
+    adapter = new NxMomentDateAdapter('en');
+    jasmine.clock().install();
+  });
+
+  afterEach(() => {
+    jasmine.clock().uninstall();
+  });
+
   it('should get year', () => {
     expect(adapter.getYear(moment([2017, JAN, 1]))).toBe(2017);
   });
@@ -122,5 +131,47 @@ describe('NxMomentDateAdapter', () => {
   it('should format date according to given format', () => {
     expect(adapter.format(moment([2017, JAN, 2]), 'MM/DD/YYYY')).toBe('01/02/2017');
     expect(adapter.format(moment([2017, JAN, 2]), 'DD/MM/YYYY')).toBe('02/01/2017');
+  });
+
+  it('should return correct local date in today() when local and UTC dates differ', () => {
+    jasmine.clock().mockDate(new Date('2024-08-22T01:00:00Z'));
+    // Overide timezone offset actual UTC date is still 2024-08-21
+    spyOn(Date.prototype, 'getTimezoneOffset').and.returnValue(+420);
+    const today = adapter.today();
+    expect(today.date()).toBe(21);
+    expect(today.month()).toBe(7);
+    expect(today.year()).toBe(2024);
+
+    expect(today.format('YYYY-MM-DD HH:mm:ss')).toBe('2024-08-21 18:00:00');
+  });
+
+  it('should handle month boundary correctly in today()', () => {
+    jasmine.clock().mockDate(new Date('2024-09-01T01:00:00Z'));
+    // Overide timezone offset actual UTC date is still on 2024-08-31
+    spyOn(Date.prototype, 'getTimezoneOffset').and.returnValue(+420);
+    const today = adapter.today();
+    expect(today.date()).toBe(31);
+    expect(today.month()).toBe(7);
+    expect(today.year()).toBe(2024);
+  });
+
+  it('should handle year boundary correctly in today()', () => {
+    jasmine.clock().mockDate(new Date('2025-01-01T01:00:00Z'));
+    spyOn(Date.prototype, 'getTimezoneOffset').and.returnValue(+420);
+    const today = adapter.today();
+    expect(today.date()).toBe(31);
+    expect(today.month()).toBe(11);
+    expect(today.year()).toBe(2024);
+  });
+
+  it('should return local date for negative timezone offset', () => {
+    // Mock 11 PM on Dec 31st in UTC-5 (which is Jan 1st 04:00 UTC)
+    jasmine.clock().mockDate(new Date('2024-12-31T22:00:00Z'));
+    // Shift timezone UTC-5
+    spyOn(Date.prototype, 'getTimezoneOffset').and.returnValue(-300);
+    const today = adapter.today();
+    expect(today.date()).toBe(1);
+    expect(today.month()).toBe(0);
+    expect(today.year()).toBe(2025);
   });
 });

@@ -163,6 +163,18 @@ describe('NxMonthView', () => {
       assertAdjacentCells(row, [29, 30, 31, 1, 2]);
     });
 
+    it('should use current system date for today', () => {
+      jasmine.clock().install();
+      // Mock system time to August 5, 2025 (using local date constructor)
+      jasmine.clock().mockDate(new Date('2025-08-05T01:15:00Z'));
+      monthViewInstance.activeDate = new Date(2025, 7, 1);
+      fixture.detectChanges();
+      // Native adapter uses new Date() directly, so it should match the mocked date
+      expect(monthViewInstance._todayDate).toBe(5);
+
+      jasmine.clock().uninstall();
+    });
+
     describe('a11y', () => {
       describe('calendar body', () => {
         let calendarBodyEl: HTMLElement;

@@ -210,7 +210,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
   }
 
   today(): string {
-    return dayjs().format(ISO_STRING_FORMAT);
+    return dayjs().utc(true).format(ISO_STRING_FORMAT);
   }
 
   addCalendarMonths(date: string, months: number): string {
