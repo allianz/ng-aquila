@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.4.0](https://github.com/allianz/ng-aquila/compare/v20.3.0...v20.4.0) (2025-09-18)
+
+### Documentation 📚
+
+* **mcp:** Update initial MCP version ([b48df4d](https://github.com/allianz/ng-aquila/commit/b48df4d9b0954bc558baeb8d7bfccba819737ea0))
+
+
+### Features ✨
+
+* **datemask:** improve mouse and keyboard behavior ([96a049a](https://github.com/allianz/ng-aquila/commit/96a049a06a315b77ef06d400032d91584cbfffb7))
+* **headline:** a1 size and color type ([a95d720](https://github.com/allianz/ng-aquila/commit/a95d720905bb4cc7ef54fd50f6f633e33dc235c7))
+* **link:** add primary and secondary link for A1 ([083dfea](https://github.com/allianz/ng-aquila/commit/083dfea330c03ac47e6611ca795ebdb9c721d95c))
+* **link:** add underline style and prominence option ([3f4a790](https://github.com/allianz/ng-aquila/commit/3f4a7909686ecf174d1b6942e08c40118c064217))
+* **mcp:** add 'ngx-brand-kit' to MCP tool descriptions ([a44e73c](https://github.com/allianz/ng-aquila/commit/a44e73ce4d88ce1444d25c22511e455a9eb8a28c))
+
+
+### Bug Fixes 🐛
+
+*  add IdGenerationService for unique ID and prevent id collide ([a9f2e00](https://github.com/allianz/ng-aquila/commit/a9f2e002e705a29038e9b2054499db79519dab5d))
+* **accordion:** add top padding ([9dfdfb2](https://github.com/allianz/ng-aquila/commit/9dfdfb2902fe88a515b5b2bcd1556c45e4aadb48))
+* **datepicker:** wrong current date because of timezone ([278a4fe](https://github.com/allianz/ng-aquila/commit/278a4fee8d5b9ad78d2a12d5c5effc0bb91b0eab))
+* **file-uploader:** disable delete button when form is disabled ([a3970df](https://github.com/allianz/ng-aquila/commit/a3970df1cd380313154156221e938b319e944024))
+* **number-stepper:** refine invalid value handling ([e90a1e1](https://github.com/allianz/ng-aquila/commit/e90a1e1008ef48319d0b57e0ded2e434bd2f127b))
+
 ## [20.3.0](https://github.com/allianz/ng-aquila/compare/v20.2.0...v20.3.0) (2025-09-04)
 
 ### New: MCP Support (Developer Preview)
