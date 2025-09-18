@@ -261,16 +261,15 @@ export class NxDatemaskComponent<D>
     return null;
   });
 
-  /** @docs-private  */
-  protected inputs = viewChildren(NxDatemaskInput);
-  /** @docs-private  */
-  protected dayInput = viewChild(NxDatemaskDayInput);
-  /** @docs-private  */
-  protected monthInput = viewChild(NxDateMaskMonthInput);
-  /** @docs-private  */
-  protected yearInput = viewChild(NxDatemaskYearInput);
-  /** @docs-private  */
-  protected datemaskContainer = viewChild<ElementRef>('datemaskContainer');
+  private readonly _inputs = viewChildren(NxDatemaskInput);
+
+  private readonly _dayInput = viewChild.required(NxDatemaskDayInput);
+
+  private readonly _monthInput = viewChild.required(NxDateMaskMonthInput);
+
+  private readonly _yearInput = viewChild.required(NxDatemaskYearInput);
+
+  private readonly _datemaskContainer = viewChild<ElementRef>('datemaskContainer');
 
   /**
    * The separator that will be shown in Browser.
@@ -394,6 +393,12 @@ export class NxDatemaskComponent<D>
   readonly id: string = inject(IdGenerationService).nextId('nx-datemask');
 
   focused: boolean = false;
+  protected _focusedState = signal(false);
+  private readonly _focusedStateEffect = effect(() => {
+    if (this._focusedState() === true) {
+      this._focusFirstEmptyInput();
+    }
+  });
 
   /**
    * Whether the Datemask is required
@@ -494,9 +499,23 @@ export class NxDatemaskComponent<D>
             this.onTouched();
           }
           this.focused = !!origin;
+          this._focusedState.set(this.focused);
           this.stateChanges.next();
         });
     });
+  }
+  private _focusFirstEmptyInput() {
+    for (const input of this._inputs()) {
+      const nativeElement = input.elementRef?.nativeElement as HTMLInputElement;
+      if (nativeElement && (!nativeElement.value || nativeElement.value.length === 0)) {
+        this._focusMonitor.focusVia(nativeElement, 'keyboard');
+        setTimeout(() => nativeElement.select(), 0);
+        return;
+      }
+    }
+
+    // If all inputs have values, focus the first input
+    this.moveFocus(this._inputs()[0]);
   }
 
   writeValue(obj: any): void {
@@ -588,14 +607,65 @@ export class NxDatemaskComponent<D>
   }
 
   selectContainer() {
-    const container = this.datemaskContainer()?.nativeElement;
+    const container = this._datemaskContainer()?.nativeElement;
     if (container) {
       const selection = window.getSelection();
       const range = document.createRange();
       range.selectNodeContents(container);
       selection?.removeAllRanges();
       selection?.addRange(range);
+      container.focus();
     }
+  }
+
+  containerKeydown(event: KeyboardEvent) {
+    if (event.target !== this._datemaskContainer()?.nativeElement) {
+      // as the event bubbles up from the inputs, we only want to handle it once
+      return;
+    }
+
+    if (event.key === 'Delete' || event.key === 'Backspace') {
+      event.preventDefault();
+      this._dayValue.set(null);
+      this._monthValue.set(null);
+      this._yearValue.set(null);
+      this.moveFocus(this._inputs()[0], 'start');
+    }
+
+    if (event.key.length === 1 && event.key.match(/\d/g)) {
+      const firstInputValueSignal = this.getValueSignalOfFirstInput();
+      event.preventDefault();
+      this._dayValue.set(null);
+      this._monthValue.set(null);
+      this._yearValue.set(null);
+      this._inputs()[0].elementRef.nativeElement.value = event.key;
+      firstInputValueSignal.set(event.key);
+      this.moveFocus(this._inputs()[0], 'none');
+
+      const isFirstInputDay =
+        this._inputs()[0].elementRef.nativeElement === this._dayInput().elementRef.nativeElement;
+      const isFirstInputMonth =
+        this._inputs()[0].elementRef.nativeElement === this._monthInput().elementRef.nativeElement;
+
+      const autoAdvanceFocusThreshold = isFirstInputDay ? 3 : isFirstInputMonth ? 1 : 9999;
+
+      this._updateFocus(
+        { ...event, target: this._inputs()[0].elementRef.nativeElement },
+        autoAdvanceFocusThreshold,
+        0,
+      );
+    }
+  }
+
+  private getValueSignalOfFirstInput(): ModelSignal<string | null> {
+    const firstInputHtmlElement = this._inputs()[0].elementRef.nativeElement as HTMLInputElement;
+    if (firstInputHtmlElement === this._yearInput().elementRef.nativeElement) {
+      return this._yearValue;
+    }
+    if (firstInputHtmlElement === this._monthInput().elementRef.nativeElement) {
+      return this._monthValue;
+    }
+    return this._dayValue;
   }
 
   registerDatepicker(): void {
@@ -605,25 +675,104 @@ export class NxDatemaskComponent<D>
   dayBlur() {
     if (this._dayValue() && this._dayValue()!.length < 2) {
       this._dayValue.set(`0${this._dayValue()}`);
+
+      if (this._dayInput().elementRef.nativeElement.value !== this._dayValue()) {
+        // fall back as signal and input value are out of sync
+        this._dayInput().elementRef.nativeElement.value = this._dayValue();
+      }
     }
   }
 
   monthBlur() {
     if (this._monthValue() && this._monthValue()!.length < 2) {
       this._monthValue.set(`0${this._monthValue()}`);
+
+      if (this._monthInput().elementRef.nativeElement.value !== this._monthValue()) {
+        // fall back as signal and input value are out of sync
+        this._monthInput().elementRef.nativeElement.value = this._monthValue();
+      }
     }
   }
 
   yearBlur() {
     if (this.date() && this._dateAdapter.isValid(this.date()!)) {
       this._yearValue.set(`${this._dateAdapter.getYear(this.date()!)}`);
+
+      if (this._yearInput().elementRef.nativeElement.value !== this._yearValue()) {
+        // fall back as signal and input value are out of sync
+        this._yearInput().elementRef.nativeElement.value = this._yearValue();
+      }
     }
   }
 
-  keyPress(event: KeyboardEvent) {
+  keyPress(event: KeyboardEvent, inputIndex: number) {
+    this.handleSeparatorInput(event, inputIndex);
     this.handleSelectAllInput(event);
-    this.handleArrowKeyInput(event);
-    this.handleBackspaceInput(event);
+    this.handleArrowKeyInput(event, inputIndex);
+    this.handleBackspaceInput(event, inputIndex);
+    this.handleDeleteInput(event, inputIndex);
+    this.handleInputBeyondMaxLength(event, inputIndex);
+  }
+
+  private handleInputBeyondMaxLength(event: KeyboardEvent, inputIndex: number) {
+    const targetInput: HTMLInputElement = event.target as HTMLInputElement;
+    if (
+      inputIndex < this._inputs().length - 1 &&
+      inputIndex >= 0 &&
+      targetInput &&
+      event.key.match(/\d/g) &&
+      targetInput.maxLength === targetInput.selectionStart &&
+      targetInput.selectionStart === targetInput.selectionEnd &&
+      this._inputs()[inputIndex + 1]?.elementRef?.nativeElement.value.length === 0
+    ) {
+      this.moveFocus(this._inputs()[inputIndex + 1], 'end');
+    }
+  }
+
+  /**
+   * Handles inputs of the Separator character and therefore
+   * - does not add the separator charactar to the input fields
+   * - ignores the separator char, if typed in an empty input
+   * - moves focus to the next input, if typed in a non emtpy input
+   * That results in typing e.g. "3.3.2020" as 03.03.2020 in the UI
+   * @param event the keyboard input event fired by the browser
+   */
+  private handleSeparatorInput(event: KeyboardEvent, inputIndex: number) {
+    if (event.key === this.separator()) {
+      event.preventDefault();
+
+      if (
+        inputIndex !== -1 &&
+        inputIndex < this._inputs().length - 1 &&
+        !!(event.target as HTMLInputElement).value
+      ) {
+        this.moveFocus(this._inputs()[inputIndex + 1]);
+      }
+    }
+  }
+
+  private moveFocus(
+    maskInputToFocus: NxDatemaskInput,
+    cursorPosition: 'none' | 'start' | 'end' | 'selectContent' = 'selectContent',
+  ) {
+    const nextInput = maskInputToFocus.elementRef.nativeElement;
+    if (nextInput) {
+      this._focusMonitor.focusVia(nextInput, 'keyboard');
+      if (cursorPosition !== 'none') {
+        setTimeout(() => {
+          switch (cursorPosition) {
+            case 'start':
+              nextInput.setSelectionRange(0, 0);
+              break;
+            case 'end':
+              nextInput.setSelectionRange(nextInput.value.length, nextInput.value.length);
+              break;
+            case 'selectContent':
+              nextInput.select();
+          }
+        }, 0);
+      }
+    }
   }
 
   private handleSelectAllInput(event: KeyboardEvent) {
@@ -634,60 +783,81 @@ export class NxDatemaskComponent<D>
     }
   }
 
-  private handleBackspaceInput(event: KeyboardEvent) {
+  private handleBackspaceInput(event: KeyboardEvent, inputIndex: number) {
     if (event.key !== 'Backspace') {
       return;
     }
 
     const target = event.target as HTMLInputElement;
+    const isCursorAtStart =
+      target.selectionStart === target.selectionEnd && target.selectionStart === 0;
 
     // If input is empty and backspace is pressed, focus previous input
-    if (target.value.length === 0) {
-      const inputIndex = this.inputs().findIndex(
-        (input) => input.elementRef?.nativeElement === target,
-      );
-
-      if (inputIndex > 0) {
-        event.preventDefault();
-        const previousInput = this.inputs()[inputIndex - 1]?.elementRef?.nativeElement;
-        if (previousInput) {
-          this._focusMonitor.focusVia(previousInput, 'keyboard');
-          setTimeout(() => previousInput.select(), 0);
-        }
-      }
+    if (isCursorAtStart && inputIndex > 0) {
+      event.preventDefault();
+      this.moveFocus(this._inputs()[inputIndex - 1], 'end');
     }
   }
 
-  private handleArrowKeyInput(event: KeyboardEvent) {
+  private handleDeleteInput(event: KeyboardEvent, inputIndex: number) {
+    if (event.key !== 'Delete') {
+      return;
+    }
+
+    const target = event.target as HTMLInputElement;
+    const isCursorAtEnd =
+      target.selectionStart === target.selectionEnd && target.selectionEnd === target.value.length;
+
+    // If cursor is at the end of current input or current input is empty and delete is pressed, focus next input
+    if (isCursorAtEnd && inputIndex < this._inputs().length - 1) {
+      event.preventDefault();
+      this.moveFocus(this._inputs()[inputIndex + 1], 'start');
+    }
+  }
+
+  private handleArrowKeyInput(event: KeyboardEvent, inputIndex: number) {
     if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') {
       return;
     }
-    // Find the index of the input that triggered the event
-    const inputIndex = this.inputs().findIndex(
-      (input) => input.elementRef?.nativeElement === event.target,
-    );
 
     if (inputIndex === -1) {
       return; // Event didn't come from any of our date mask inputs
     }
 
     let inputToSelect: HTMLInputElement;
+    const target = event.target as HTMLInputElement;
+    const currentPosition = target.selectionStart || 0;
+    const inputLength = target.value.length;
 
-    if (event.key === 'ArrowRight' && inputIndex < this.inputs().length - 1) {
-      inputToSelect = this.inputs()[inputIndex + 1]?.elementRef.nativeElement;
+    // Only move to next input if cursor is at the end of current input
+    if (
+      event.key === 'ArrowRight' &&
+      currentPosition === inputLength &&
+      inputIndex < this._inputs().length - 1
+    ) {
+      event.preventDefault();
+      inputToSelect = this._inputs()[inputIndex + 1]?.elementRef.nativeElement;
       this._focusMonitor.focusVia(inputToSelect!, 'keyboard');
-      setTimeout(() => inputToSelect?.select(), 0);
+      setTimeout(() => {
+        inputToSelect.setSelectionRange(0, 0);
+      }, 0);
+      event.preventDefault();
     }
 
-    if (event.key === 'ArrowLeft' && inputIndex > 0) {
-      inputToSelect = this.inputs()[inputIndex - 1]?.elementRef.nativeElement;
+    // Only move to previous input if cursor is at the start of current input
+    if (event.key === 'ArrowLeft' && currentPosition === 0 && inputIndex > 0) {
+      event.preventDefault();
+      inputToSelect = this._inputs()[inputIndex - 1]?.elementRef.nativeElement;
       this._focusMonitor.focusVia(inputToSelect!, 'keyboard');
-      setTimeout(() => inputToSelect?.select(), 0);
+      setTimeout(() => {
+        const length = inputToSelect.value.length;
+        inputToSelect.setSelectionRange(length, length);
+      }, 0);
+      event.preventDefault();
     }
-    event.preventDefault();
   }
 
-  handlePaste(event: ClipboardEvent) {
+  handlePaste(event: ClipboardEvent, inputIndex: number) {
     event.preventDefault();
 
     const pastedText = event.clipboardData?.getData('text') || '';
@@ -701,11 +871,6 @@ export class NxDatemaskComponent<D>
       return;
     }
 
-    // Find the index of the input that triggered the paste event
-    const inputIndex = this.inputs().findIndex(
-      (input) => input.elementRef?.nativeElement === event.target,
-    );
-
     if (inputIndex === -1) {
       return;
     }
@@ -717,8 +882,8 @@ export class NxDatemaskComponent<D>
     let remainingText = text;
     let currentIndex = startIndex;
 
-    while (remainingText && currentIndex < this.inputs().length) {
-      const currentInput = this.inputs()[currentIndex]?.elementRef
+    while (remainingText && currentIndex < this._inputs().length) {
+      const currentInput = this._inputs()[currentIndex]?.elementRef
         ?.nativeElement as HTMLInputElement;
       if (!currentInput) {
         break;
@@ -736,36 +901,76 @@ export class NxDatemaskComponent<D>
     }
 
     // Focus the last input that received text or the next available input
-    const lastInputIndex = Math.min(currentIndex - 1, this.inputs().length - 1);
+    const lastInputIndex = Math.min(currentIndex - 1, this._inputs().length - 1);
     if (lastInputIndex >= 0) {
-      const lastInput = this.inputs()[lastInputIndex]?.elementRef?.nativeElement;
+      const lastInput = this._inputs()[lastInputIndex]?.elementRef?.nativeElement;
       this._focusMonitor.focusVia(lastInput!, 'keyboard');
     }
   }
 
-  protected _focusNextInput(event: InputEvent | Event) {
+  /**
+   * Checks if the next input element should be focussed based on the value of the currently focussed input.
+   * If the current input is filled to its max length or the value exceeds the threshold, the next input will be focussed.
+   * @param event The Input event fired by the browser
+   * @param autoAdvanceThreshold The threshold after which value the next input should be focussed
+   */
+  protected _updateFocus(
+    event: InputEvent | Event,
+    autoAdvanceThreshold: 1 | 3 | 9999 = 9999, // typing a number >1 as initial into month will move focus the next input and format the month input etc.
+    inputIndex: number,
+  ) {
     const inputEvent = event as InputEvent;
 
     if (inputEvent.isTrusted && inputEvent.data! < '0' && inputEvent.data! > '9') {
       return; // Ignore up/down arrow keys for focusing next input
     }
 
-    const target = event.target as HTMLInputElement;
-    const maxLength = parseInt(target.getAttribute('maxlength') || '0', 10);
+    const targetInput = event.target as HTMLInputElement;
+    const value = parseInt(targetInput.value, 10);
+    const isCursorOnEndPosition =
+      targetInput.selectionStart === targetInput.selectionEnd &&
+      targetInput.selectionEnd === targetInput.value.length;
 
-    // If current input is filled to max length, focus next input
-    if (target.value.length === maxLength) {
-      const inputIndex = this.inputs().findIndex(
-        (input) => input.elementRef?.nativeElement === target,
-      );
+    // If current input is filled to max length or exceeds threshold for day|month value, focus next input
+    if (
+      (targetInput.value.length === targetInput.maxLength ||
+        (!Number.isNaN(value) && value > autoAdvanceThreshold)) &&
+      isCursorOnEndPosition
+    ) {
+      if (inputIndex !== -1 && inputIndex < this._inputs().length - 1) {
+        this.moveFocus(this._inputs()[inputIndex + 1]);
+      }
 
-      if (inputIndex !== -1 && inputIndex < this.inputs().length - 1) {
-        const nextInput = this.inputs()[inputIndex + 1]?.elementRef?.nativeElement;
-        if (nextInput) {
-          this._focusMonitor.focusVia(nextInput, 'keyboard');
-          setTimeout(() => nextInput.select(), 0);
+      // if last input is filled use internal blur for auto formatting as native target.blur() will cause lost focus
+      if (inputIndex === this._inputs().length - 1) {
+        if (targetInput.hasAttribute(`nxDatemaskDay`)) {
+          this.dayBlur();
+        }
+        if (targetInput.hasAttribute(`nxDatemaskMonth`)) {
+          this.monthBlur();
         }
       }
     }
+  }
+
+  protected shouldSeparatorBeGrayed(separatorIndex: number): boolean {
+    // input elements can be undefined while component is constructing
+    const preceedingNativeInput: HTMLInputElement | undefined =
+      this._inputs()[separatorIndex]?.elementRef.nativeElement;
+    const proceedingNativeInput: HTMLInputElement | undefined =
+      this._inputs()[separatorIndex + 1]?.elementRef.nativeElement;
+
+    const isPreceedingEmpty = !preceedingNativeInput?.value;
+    const isProceedingEmpty = !proceedingNativeInput?.value;
+
+    const focussedInput = document.activeElement;
+    if (
+      (isPreceedingEmpty && isProceedingEmpty) ||
+      (!isPreceedingEmpty && isProceedingEmpty && proceedingNativeInput !== focussedInput)
+    ) {
+      return true;
+    }
+
+    return false;
   }
 }

@@ -4,15 +4,17 @@
   role="group"
   [attr.aria-labelledby]="datemaskGroupAriaLabelledBy()"
   [attr.aria-label]="ariaLabel()"
+  (keydown)="containerKeydown($event)"
+  tabindex="-1"
 >
   @for (i of _inputOrder(); track i; let lastInput = $last, index = $index) {
     @switch (i) {
       @case ('d') {
         <input
           class="c-input"
-          (keydown)="keyPress($event)"
-          (paste)="handlePaste($event)"
-          (input)="_focusNextInput($event)"
+          (keydown)="keyPress($event, index)"
+          (paste)="handlePaste($event, index)"
+          (input)="_updateFocus($event, 3, index)"
           [(ngModel)]="_dayValue"
           (ngModelChange)="handleChange()"
           (blur)="dayBlur()"
@@ -24,14 +26,15 @@
           [attr.aria-label]="datemaskIntl?.dayInputAriaLabel() || 'Day'"
           [attr.placeholder]="datemaskIntl?.dayInputPlaceholder() || 'dd'"
           [attr.aria-describedby]="ariaDescribedBy()"
+          [tabindex]="_focusedState() ? -1 : 0"
         />
       }
       @case ('m') {
         <input
           class="c-input month-input"
-          (keydown)="keyPress($event)"
-          (paste)="handlePaste($event)"
-          (input)="_focusNextInput($event)"
+          (keydown)="keyPress($event, index)"
+          (paste)="handlePaste($event, index)"
+          (input)="_updateFocus($event, 1, index)"
           [(ngModel)]="_monthValue"
           (ngModelChange)="handleChange()"
           (blur)="monthBlur()"
@@ -43,13 +46,14 @@
           [attr.aria-label]="datemaskIntl?.monthInputAriaLabel() || 'Month'"
           [attr.placeholder]="datemaskIntl?.monthInputPlaceholder() || 'mm'"
           [attr.aria-describedby]="ariaDescribedBy()"
+          [tabindex]="_focusedState() ? -1 : 0"
         />
       }
       @case ('y') {
         <input
-          (keydown)="keyPress($event)"
-          (paste)="handlePaste($event)"
-          (input)="_focusNextInput($event)"
+          (keydown)="keyPress($event, index)"
+          (paste)="handlePaste($event, index)"
+          (input)="_updateFocus($event, 9999, index)"
           [(ngModel)]="_yearValue"
           (ngModelChange)="handleChange()"
           (blur)="yearBlur()"
@@ -62,11 +66,14 @@
           [attr.aria-label]="datemaskIntl?.yearInputAriaLabel() || 'Year'"
           [attr.placeholder]="datemaskIntl?.yearInputPlaceholder() || 'yyyy'"
           [attr.aria-describedby]="ariaDescribedBy()"
+          [tabindex]="_focusedState() ? -1 : 0"
         />
       }
     }
     @if (!lastInput) {
-      {{ separator() }}
+      <div [class.separator-as-placeholder]="shouldSeparatorBeGrayed(index)">
+        {{ separator() }}
+      </div>
     }
   }
 </div>

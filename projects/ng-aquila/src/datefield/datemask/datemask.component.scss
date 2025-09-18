@@ -62,7 +62,11 @@
   }
 }
 
-// making the spacing between inputs and seperators look "natural"
+.separator-as-placeholder {
+  color: v(formfield-input-native-placeholder-color);
+}
+
+// making the spacing between inputs and separators look "natural"
 ::ng-deep {
   .nx-formfield.has-outline {
     input {

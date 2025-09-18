@@ -36,15 +36,15 @@ describe('DatemaskComponent', () => {
       expect(component.datemaskComponent().format()).toBe(`DD.MM.YYYY`);
 
       const untypedComponent: any = component.datemaskComponent();
-      expect(untypedComponent.inputs().length).toBe(3);
-      expect(untypedComponent.dayInput().elementRef.nativeElement).toBe(
-        untypedComponent.inputs()[0].elementRef.nativeElement,
+      expect(untypedComponent._inputs().length).toBe(3);
+      expect(untypedComponent._dayInput().elementRef.nativeElement).toBe(
+        untypedComponent._inputs()[0].elementRef.nativeElement,
       );
-      expect(untypedComponent.monthInput().elementRef.nativeElement).toBe(
-        untypedComponent.inputs()[1].elementRef.nativeElement,
+      expect(untypedComponent._monthInput().elementRef.nativeElement).toBe(
+        untypedComponent._inputs()[1].elementRef.nativeElement,
       );
-      expect(untypedComponent.yearInput().elementRef.nativeElement).toBe(
-        untypedComponent.inputs()[2].elementRef.nativeElement,
+      expect(untypedComponent._yearInput().elementRef.nativeElement).toBe(
+        untypedComponent._inputs()[2].elementRef.nativeElement,
       );
 
       expect(component.datemaskComponent().separator()).toBe('.');
@@ -66,16 +66,16 @@ describe('DatemaskComponent', () => {
       expect(component.datemaskComponent().format()).toBe(`YYYY-MM-DD`);
 
       const untypedComponent: any = component.datemaskComponent();
-      expect(untypedComponent.inputs().length).toBe(3);
+      expect(untypedComponent._inputs().length).toBe(3);
 
-      expect(untypedComponent.yearInput().elementRef.nativeElement).toBe(
-        untypedComponent.inputs()[0].elementRef.nativeElement,
+      expect(untypedComponent._yearInput().elementRef.nativeElement).toBe(
+        untypedComponent._inputs()[0].elementRef.nativeElement,
       );
-      expect(untypedComponent.monthInput().elementRef.nativeElement).toBe(
-        untypedComponent.inputs()[1].elementRef.nativeElement,
+      expect(untypedComponent._monthInput().elementRef.nativeElement).toBe(
+        untypedComponent._inputs()[1].elementRef.nativeElement,
       );
-      expect(untypedComponent.dayInput().elementRef.nativeElement).toBe(
-        untypedComponent.inputs()[2].elementRef.nativeElement,
+      expect(untypedComponent._dayInput().elementRef.nativeElement).toBe(
+        untypedComponent._inputs()[2].elementRef.nativeElement,
       );
 
       expect(component.datemaskComponent().separator()).toBe('-');
@@ -92,15 +92,15 @@ describe('DatemaskComponent', () => {
 
       expect(component.datemaskComponent().format()).toBe(`DD.MM.YYYY`);
       const untypedComponent: any = component.datemaskComponent();
-      expect(untypedComponent.inputs().length).toBe(3);
-      expect(untypedComponent.dayInput().elementRef.nativeElement).toBe(
-        untypedComponent.inputs()[0].elementRef.nativeElement,
+      expect(untypedComponent._inputs().length).toBe(3);
+      expect(untypedComponent._dayInput().elementRef.nativeElement).toBe(
+        untypedComponent._inputs()[0].elementRef.nativeElement,
       );
-      expect(untypedComponent.monthInput().elementRef.nativeElement).toBe(
-        untypedComponent.inputs()[1].elementRef.nativeElement,
+      expect(untypedComponent._monthInput().elementRef.nativeElement).toBe(
+        untypedComponent._inputs()[1].elementRef.nativeElement,
       );
-      expect(untypedComponent.yearInput().elementRef.nativeElement).toBe(
-        untypedComponent.inputs()[2].elementRef.nativeElement,
+      expect(untypedComponent._yearInput().elementRef.nativeElement).toBe(
+        untypedComponent._inputs()[2].elementRef.nativeElement,
       );
 
       expect(component.datemaskComponent().separator()).toBe('.');
