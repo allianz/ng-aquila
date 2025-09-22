@@ -39,7 +39,7 @@ const regexPatterns = {
   docsDeprecationWarningBlock: /<div class="docs-deprecation-warning">[\s\S]*?<\/div>/g,
   aiBlock: /<!--\s*\/\/ai[\s\S]*?-->/g,
   heading: /(^|\n)#+\s/,
-  apiTags: /\{\{(module|component|directive)\(([^)]+)\)\}\}/g,
+  apiTags: /#\{\{(module|component|directive)\(([^)]+)\)\}\}/g,
   doubleQuotes: /"/g,
   newLine: /\n/g,
   specialCharacters: /[$()*+.?[\\\]^{|}]/g,
@@ -166,9 +166,11 @@ function formatComponentOrDirective(componentOrDirective: AngularComponentOrDire
 
   // Input props
   if (Array.isArray(componentOrDirective.props) && componentOrDirective.props.length > 0) {
-    // Only include props with @Input decorator and filter out name 'id'
+    // Only include props with @Input decorator (excluding name 'id') or with input type 'InputSignal'
     const filteredInputProps = componentOrDirective.props.filter(
-      (input) => input.decorator && input.decorator.includes('@Input') && input.name !== 'id',
+      (input) =>
+        (input.decorator && input.decorator.includes('@Input') && input.name !== 'id') ||
+        input.type.includes('InputSignal'),
     );
 
     // If there are eligible input props
@@ -322,7 +324,7 @@ function convertFileNameToCamelCase(filename: string) {
 function addModulePlaceholder(markdownFile: { name: string; content: string }) {
   const filteredFrontmatter = markdownFile.content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
 
-  const moduleName = `{{module(Nx${convertFileNameToCamelCase(markdownFile.name)}Module)}}`;
+  const moduleName = `#{{module(Nx${convertFileNameToCamelCase(markdownFile.name)}Module)}}`;
   if (filteredFrontmatter) {
     return `--- \n${filteredFrontmatter[1]}\n\n${moduleName}\n\n---`;
   }

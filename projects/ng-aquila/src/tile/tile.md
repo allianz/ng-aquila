@@ -5,6 +5,10 @@ b2c: true
 expert: true
 stable: done
 a1: true
+
+components: 
+#{{component(NxTileGroupComponent)}}
+#{{component(NxTileComponent)}}
 ---
 
 The Tile component is a new component from the One Allianz Design System with a backwards compatible theme for NDBX projects. It is an alternative to the circle toggle component. We suggest not to mix both of them on the same page.
