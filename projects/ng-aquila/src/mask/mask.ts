@@ -260,7 +260,7 @@ export class NxMask {
       // (here the separator would be added again)
       this.updateValue(currentValue.substring(0, currentValue.length - 1));
       event.preventDefault();
-    } else if (this.isSeparator(lastCharacter)) {
+    } else if (!this.maskConfig.deactivateMask && this.isSeparator(lastCharacter)) {
       // do not delete a separator, only set cursor position
       input.setSelectionRange(
         input.selectionStart! - backspaceShift,

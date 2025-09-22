@@ -457,6 +457,30 @@ describe('NxMaskDirective', () => {
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
+    it('updates ngModel on delete of space character for deactivated mask', () => {
+      createTestComponent(PresetDeactiveMaskComponent);
+      setMask('');
+      assertInputValue(nativeElement, '123 a', '123 a');
+      expect(testInstance.modelVal).toBe('123 a');
+
+      nativeElement.setSelectionRange(4, 4);
+      const keydownEvent = createKeyboardEvent('keydown', BACKSPACE);
+      const preventDefaultSpy = spyOn(keydownEvent, 'preventDefault');
+      nativeElement.dispatchEvent(keydownEvent);
+      fixture.detectChanges();
+
+      // preventDefault should not be called -> onInput will be called via input event listener and
+      // space will be removed
+      expect(preventDefaultSpy).toHaveBeenCalledTimes(0);
+
+      nativeElement.value = '123a';
+      nativeElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+
+      expect(nativeElement.value).toBe('123a');
+      expect(testInstance.modelVal).toBe('123a');
+    });
+
     it('updates a ngModel value with mask value', fakeAsync(() => {
       createTestComponent(ConfigurableMaskComponent);
       setMask('00:00:00');
@@ -1184,11 +1208,22 @@ class ConfigurableMaskComponent extends MaskTest {}
 class ValidationMaskComponent extends MaskTest {}
 
 @Component({
-  template: ` <input [nxMask]="mask" [(ngModel)]="modelVal" [deactivateMask]="true" /> `,
+  template: `
+    <input
+      [nxMask]="mask"
+      (ngModelChange)="modelChanged($event)"
+      [ngModel]="modelVal"
+      [deactivateMask]="true"
+    />
+  `,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class PresetDeactiveMaskComponent extends MaskTest {
   modelVal = 'AAAA';
+
+  modelChanged(modelValue: string) {
+    this.modelVal = modelValue;
+  }
 }
 
 @Component({
