@@ -18,7 +18,7 @@ This is a developer preview, and we’d love your feedback. It will help us impr
 
 ## MCP Installation
 
-### Automatic setup with VS Code
+### Visual Studio Code: Automatic setup
 
 Run the following command in your terminal:
 
@@ -31,7 +31,7 @@ This automatically creates or updates the `.vscode/mcp.json` file in your projec
 **Note:**
 The `--no-install` flag ensures that `npx` only runs the locally installed `ng-aquila-add-mcp-server script from your project's dependencies, rather than downloading it from the npm registry.
 
-### Manual setup
+### Visual Studio Code: Manual setup
 
 You can also configure MCP manually in VS Code.
 
@@ -47,3 +47,6 @@ You can also configure MCP manually in VS Code.
         }
     }
     ```
+
+### Claude code:
+Run the following command in your terminal: `claude mcp add ng-aquila-mcp-server -- npx ng-aquila-mcp --scope project`
