@@ -7,6 +7,7 @@ import {
   ElementRef,
   EventEmitter,
   Input,
+  OnDestroy,
   Output,
 } from '@angular/core';
 
@@ -28,7 +29,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class NxTableRowComponent {
+export class NxTableRowComponent implements OnDestroy {
   /** Whether this table row is selectable */
   @Input() set selectable(value: BooleanInput) {
     this._selectable = coerceBooleanProperty(value);
@@ -64,7 +65,12 @@ export class NxTableRowComponent {
   constructor(
     protected readonly _cdr: ChangeDetectorRef,
     private readonly _elementRef: ElementRef,
-  ) {}
+  ) {
+    this._elementRef.nativeElement.addEventListener('select', this._stopSelectEvent);
+  }
+  ngOnDestroy() {
+    this._elementRef.nativeElement.removeEventListener('select', this._stopSelectEvent);
+  }
 
   _onSelect($event: KeyboardEvent) {
     if (!this._selectable || this.isSelectionPrevented($event)) {
@@ -100,5 +106,8 @@ export class NxTableRowComponent {
     }
 
     return false;
+  }
+  private _stopSelectEvent(event: Event) {
+    event.stopImmediatePropagation();
   }
 }
