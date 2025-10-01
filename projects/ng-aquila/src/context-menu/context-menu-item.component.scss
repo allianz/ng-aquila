@@ -12,11 +12,11 @@
   outline: none;
   background: transparent;
   position: relative;
-  padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2m);
+  padding: v(context-menu-item-vertical-padding) v(context-menu-item-horizontal-padding);
   color: v(context-menu-item-text-color);
 
   [dir='rtl'] & {
-    padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2m);
+    padding: v(context-menu-item-vertical-padding) v(context-menu-item-horizontal-padding);
   }
 
   @media screen and (forced-colors: active) {

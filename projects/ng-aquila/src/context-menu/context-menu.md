@@ -13,7 +13,7 @@ a1: true
   Please note that this is an Expert component. This means that it is intended for internal applications (B2B/B2E) and not for applications that are client facing (B2C).
 </div>
 
-The `<nx-context-menu>` is a floating panel containing a list of options.
+The `<nx-context-menu>` is a floating panel containing a list of options. You can visually separate options using the `<nx-divider>` element.
 
 <!-- example(context-menu-basic) -->
 

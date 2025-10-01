@@ -1,3 +1,4 @@
+import { NxDividerModule } from '@allianz/ng-aquila/divider';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
@@ -21,6 +22,7 @@ const EXPORTED_MODULES = [
   NxContextMenuTriggerDirective,
   NxContextMenuHeaderComponent,
   NxContextMenuItemCheckboxDirective,
+  NxDividerModule,
 ];
 
 @NgModule({

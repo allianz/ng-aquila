@@ -1,5 +1,8 @@
 @import '../shared-styles/index.scss';
 
+$divider-horizontal-margin: v(context-menu-item-horizontal-padding);
+$divider-vertical-margin: v(context-menu-item-vertical-padding);
+
 .nx-context-menu {
   border-radius: nx-border-radius(s);
   background: v(context-menu-background-color);
@@ -17,6 +20,11 @@
 
   &.ng-animating {
     pointer-events: none;
+  }
+
+  .nx-context-menu__content ::ng-deep nx-divider {
+    width: calc(100% - 2 * $divider-horizontal-margin);
+    margin: $divider-vertical-margin $divider-horizontal-margin;
   }
 }
 
