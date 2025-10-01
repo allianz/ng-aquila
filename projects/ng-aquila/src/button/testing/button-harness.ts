@@ -15,6 +15,7 @@ interface NxButtonHarnessFilters extends BaseHarnessFilters {
   variant?: NxButtonType;
   critical?: boolean;
   text?: string | RegExp;
+  loading?: boolean;
 }
 
 export class NxButtonHarness extends ContentContainerComponentHarness {
@@ -38,6 +39,11 @@ export class NxButtonHarness extends ContentContainerComponentHarness {
       )
       .addOption('text', options.text, async (harness, text) =>
         HarnessPredicate.stringMatches(await harness.getText(), text),
+      )
+      .addOption(
+        'loading',
+        options.loading,
+        async (harness, loading) => (await harness.isLoading()) === loading,
       );
   }
 
@@ -118,11 +124,16 @@ export class NxButtonHarness extends ContentContainerComponentHarness {
     return 'primary';
   }
 
-  async isDisabled() {
+  async isDisabled(): Promise<boolean> {
     const host = await this.host();
     const disabled = await host.getAttribute('disabled');
     const ariaDisabled = await host.getAttribute('aria-disabled');
 
     return coerceBooleanProperty(disabled) || coerceBooleanProperty(ariaDisabled);
+  }
+
+  async isLoading(): Promise<boolean> {
+    const host = await this.host();
+    return host.hasClass('nx-button--loading');
   }
 }

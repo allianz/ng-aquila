@@ -1,0 +1,13 @@
+:host .button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+
+  nx-switcher {
+    flex: 1 0 100%;
+  }
+
+  nx-dropdown {
+    flex: 0 0 240px;
+  }
+}

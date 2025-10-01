@@ -20,7 +20,7 @@ describe('NxButtonHarness', () => {
 
   it('should load all buttons', async () => {
     const buttons = await loader.getAllHarnesses(NxButtonHarness);
-    expect(buttons.length).toBe(31);
+    expect(buttons.length).toBe(40);
   });
 
   it('should get button text', async () => {
@@ -39,9 +39,9 @@ describe('NxButtonHarness', () => {
     expect(fixture.componentInstance.clicked).toBe(true);
   });
 
-  it('should get href', async () => {
-    const button = await loader.getHarness(NxButtonHarness.with({ selector: 'a[href]' }));
-    expect(await button.getHref()).toBe('/some-path');
+  it('should find by text', async () => {
+    const buttons = await loader.getAllHarnesses(NxButtonHarness.with({ text: /Button Text/ }));
+    expect(buttons.length).toBe(2);
   });
 
   it('should get button type', async () => {
@@ -64,6 +64,12 @@ describe('NxButtonHarness', () => {
     expect(disabled).toEqual([true, true, true, false, false, false, false, false, false]);
   });
 
+  it('should get whether button is disabled', async () => {
+    const buttons = await loader.getAllHarnesses(NxButtonHarness.with({ ancestor: '#loading' }));
+    const disabled = await parallel(() => buttons.map((button) => button.isLoading()));
+    expect(disabled).toEqual([true, true, true, false, false, false, false, false, false]);
+  });
+
   it('should get whether button is critical', async () => {
     const buttons = await loader.getAllHarnesses(NxButtonHarness.with({ ancestor: '#critical' }));
     const danger = await parallel(() => buttons.map((button) => button.isCritical()));
@@ -80,7 +86,7 @@ describe('NxButtonHarness', () => {
   describe('filters', () => {
     it('should find by type', async () => {
       const buttons = await loader.getAllHarnesses(NxButtonHarness.with({ type: 'basic' }));
-      expect(buttons.length).toBe(15);
+      expect(buttons.length).toBe(18);
     });
 
     it('should find by text', async () => {
@@ -95,6 +101,11 @@ describe('NxButtonHarness', () => {
 
     it('should find by critical', async () => {
       const buttons = await loader.getAllHarnesses(NxButtonHarness.with({ critical: true }));
+      expect(buttons.length).toBe(3);
+    });
+
+    it('should find by loading', async () => {
+      const buttons = await loader.getAllHarnesses(NxButtonHarness.with({ loading: true }));
       expect(buttons.length).toBe(3);
     });
   });
@@ -116,6 +127,19 @@ describe('NxButtonHarness', () => {
       <a nxButton [disabled]="false"></a>
       <a nxPlainButton [disabled]="false"></a>
       <a nxIconButton [disabled]="false"></a>
+      <!-- there should be no difference between omitting, and explicitly setting to false -->
+      <a nxButton></a>
+      <a nxPlainButton></a>
+      <a nxIconButton></a>
+    </div>
+
+    <div id="loading">
+      <button nxButton loading></button>
+      <button nxPlainButton loading></button>
+      <button nxIconButton loading></button>
+      <a nxButton [loading]="false"></a>
+      <a nxPlainButton [loading]="false"></a>
+      <a nxIconButton [loading]="false"></a>
       <!-- there should be no difference between omitting, and explicitly setting to false -->
       <a nxButton></a>
       <a nxPlainButton></a>

@@ -1,6 +1,7 @@
 import {
-  NxAnchorButtonComponent,
-  NxAnchorIconButtonComponent,
+  NxButtonComponent,
+  NxIconButtonComponent,
+  NxPlainButtonComponent,
 } from '@allianz/ng-aquila/button';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { Component } from '@angular/core';
@@ -13,9 +14,10 @@ import { Component } from '@angular/core';
   templateUrl: './anchor-button-example.html',
   styleUrls: ['./anchor-button-example.css'],
   imports: [
-    NxAnchorButtonComponent,
+    NxButtonComponent,
+    NxIconButtonComponent,
+    NxPlainButtonComponent,
     NxIconComponent,
-    NxAnchorIconButtonComponent,
   ],
 })
 export class AnchorButtonExampleComponent {}

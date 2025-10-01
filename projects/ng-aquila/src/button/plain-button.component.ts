@@ -1,16 +1,23 @@
 import { NxTriggerButton } from '@allianz/ng-aquila/overlay';
+import { NxSpinnerComponent } from '@allianz/ng-aquila/spinner';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  DestroyRef,
   ElementRef,
   HostBinding,
+  inject,
   Input,
+  input,
   isDevMode,
-  OnDestroy,
+  NgZone,
+  numberAttribute,
+  Renderer2,
 } from '@angular/core';
 
 /** Please note: small is only for meant for the One Allianz Design */
@@ -19,7 +26,7 @@ export type NxPlainButtonSize = 'medium' | 'small';
 export type NxPlainButtonVariant = 'primary' | 'secondary';
 
 @Component({
-  selector: 'button[nxPlainButton]',
+  selector: 'button[nxPlainButton], a[nxPlainButton]',
   templateUrl: './plain-button.component.html',
   styleUrls: ['plain-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,18 +36,32 @@ export type NxPlainButtonVariant = 'primary' | 'secondary';
     '[class.nx-plain-button--danger]': 'critical',
     '[class.nx-plain-button--secondary]': 'variant === "secondary"',
     '[class.nx-plain-button--small]': 'size === "small"',
+    '[class.nx-button--loading]': 'loading()',
+    '[attr.disabled]': 'disabled || null',
+    '[attr.aria-disabled]': '_ariaDisabled',
+    '[attr.tabindex]': '_tabIndex',
   },
   providers: [{ provide: NxTriggerButton, useExisting: NxPlainButtonComponent }],
   standalone: true,
+  imports: [NxSpinnerComponent],
 })
-export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy, AfterViewInit {
-  /** @docs-private */
-  @HostBinding('attr.disabled') get isDisabled(): boolean | null {
-    return this.disabled || null;
+export class NxPlainButtonComponent implements NxTriggerButton, AfterViewInit {
+  private readonly _cdr = inject(ChangeDetectorRef);
+  private readonly _elementRef = inject(ElementRef);
+  private readonly _focusMonitor = inject(FocusMonitor);
+  private readonly _renderer = inject(Renderer2);
+  private readonly _ngZone = inject(NgZone);
+  private readonly _destroyRef = inject(DestroyRef);
+
+  protected _isAnchor = this._elementRef.nativeElement.tagName === 'A';
+  protected get _ariaDisabled() {
+    return (this._isAnchor && this.disabled) || this.loading() ? true : null;
   }
-  /** @docs-private */
-  @HostBinding('attr.aria-disabled') get isAriaDisabled(): string {
-    return this.disabled.toString();
+  protected get _tabIndex() {
+    if (this._isAnchor && this.disabled) {
+      return -1;
+    }
+    return this.tabIndex ?? this._tabindexAttribute ?? undefined;
   }
 
   /** The plain button size. Please only use it for the One Allianz Design. */
@@ -67,6 +88,19 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy, After
   }
   private _disabled = false;
 
+  @Input({ transform: tabIndexAttribute }) tabIndex: number | undefined;
+
+  /**
+   * Use 'tabindex' to handle existing usages of `[tabindex]` bindings on button elements
+   * @docs-private
+   */
+  @Input({ alias: 'tabindex', transform: tabIndexAttribute }) _tabindexAttribute:
+    | number
+    | undefined;
+
+  /** Whether the button should be in a loading state. */
+  loading = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
+
   private _classNames = '';
 
   set classNames(value: string) {
@@ -82,14 +116,12 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy, After
     return this._classNames;
   }
 
-  constructor(
-    private readonly _cdr: ChangeDetectorRef,
-    private readonly _elementRef: ElementRef,
-    private readonly _focusMonitor: FocusMonitor,
-  ) {}
+  constructor() {
+    this.setupHaltDisabledEvents();
+  }
 
   ngAfterViewInit(): void {
-    this._focusMonitor.monitor(this._elementRef);
+    this.setupFocusMonitor();
 
     if (isDevMode()) {
       if (this._classNames?.includes('danger')) {
@@ -115,7 +147,26 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy, After
     }
   }
 
-  ngOnDestroy(): void {
-    this._focusMonitor.stopMonitoring(this._elementRef);
+  private setupFocusMonitor() {
+    this._focusMonitor.monitor(this._elementRef, true);
+    this._destroyRef.onDestroy(() => this._focusMonitor.stopMonitoring(this._elementRef));
+  }
+
+  private setupHaltDisabledEvents() {
+    const cleanUp = this._ngZone.runOutsideAngular(() =>
+      this._renderer.listen(this._elementRef.nativeElement, 'click', (event: Event) => {
+        if ((this._isAnchor && this.disabled) || this.loading()) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      }),
+    );
+    this._destroyRef.onDestroy(cleanUp);
   }
 }
+
+function tabIndexAttribute(value: unknown): number | undefined {
+  return value == null ? undefined : numberAttribute(value);
+}
+
+export { NxPlainButtonComponent as NxAnchorPlainButtonComponent };

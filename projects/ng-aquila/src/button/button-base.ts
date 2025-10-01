@@ -3,13 +3,18 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectorRef,
+  DestroyRef,
   Directive,
   ElementRef,
   HostBinding,
+  inject,
   Input,
+  input,
   NgZone,
-  OnDestroy,
+  numberAttribute,
+  Renderer2,
 } from '@angular/core';
 
 /** Type of a button. */
@@ -22,8 +27,34 @@ const DEFAULT_SIZE = 'medium';
 const DEFAULT_TYPE = 'primary';
 
 /** @docs-private */
-@Directive({ standalone: true })
-export class NxButtonBase implements NxTriggerButton, OnDestroy, AfterViewInit {
+@Directive({
+  standalone: true,
+  host: {
+    '[class.nx-button--loading]': 'loading()',
+    '[attr.disabled]': 'disabled || null',
+    '[attr.aria-disabled]': '_ariaDisabled',
+    '[attr.tabindex]': '_tabIndex',
+  },
+})
+export class NxButtonBase implements NxTriggerButton, AfterViewInit {
+  private readonly _cdr = inject(ChangeDetectorRef);
+  private readonly _elementRef = inject(ElementRef);
+  private readonly _focusMonitor = inject(FocusMonitor);
+  private readonly _destroyRef = inject(DestroyRef);
+  private readonly _renderer = inject(Renderer2);
+  private readonly _ngZone = inject(NgZone);
+
+  protected _isAnchor = this._elementRef.nativeElement.tagName === 'A';
+  protected get _ariaDisabled() {
+    return (this._isAnchor && this.disabled) || this.loading() ? true : null;
+  }
+  protected get _tabIndex() {
+    if (this._isAnchor && this.disabled) {
+      return -1;
+    }
+    return this.tabIndex ?? this._tabindexAttributeBinding ?? undefined;
+  }
+
   private _classNames = '';
 
   /** @docs-private */
@@ -80,14 +111,6 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy, AfterViewInit {
   @HostBinding('class.nx-button--negative') get isNegative(): boolean {
     return this.negative;
   }
-  /** @docs-private */
-  @HostBinding('attr.disabled') get isDisabled(): boolean | null {
-    return this.disabled || null;
-  }
-  /** @docs-private */
-  @HostBinding('attr.aria-disabled') get isAriaDisabled(): string {
-    return this.disabled.toString();
-  }
 
   /** @docs-private */
   type: NxButtonType = DEFAULT_TYPE;
@@ -108,6 +131,27 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy, AfterViewInit {
     return this._disabled;
   }
   private _disabled = false;
+
+  @Input({ transform: tabIndexAttribute }) tabIndex: number | undefined;
+
+  /**
+   * Use 'tabindex' to handle existing usages of `[tabindex]` bindings on button elements
+   * @docs-private
+   */
+  @Input({ alias: 'tabindex', transform: tabIndexAttribute }) _tabindexAttributeBinding:
+    | number
+    | undefined;
+
+  /** Whether the button should be in a loading state. */
+  loading = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
+
+  get spinnerNegative() {
+    if (this.type === 'emphasis' || this.type === 'cta' || this.type === 'attention') {
+      return true;
+    }
+    const isFilled = this.type === 'primary';
+    return this.negative ? !isFilled : isFilled;
+  }
 
   set classNames(value: string) {
     if (this._classNames === value) {
@@ -148,18 +192,12 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy, AfterViewInit {
     return this._elementRef;
   }
 
-  constructor(
-    private readonly _cdr: ChangeDetectorRef,
-    private readonly _elementRef: ElementRef,
-    private readonly _focusMonitor: FocusMonitor,
-  ) {}
-
-  ngAfterViewInit(): void {
-    this._focusMonitor.monitor(this._elementRef);
+  constructor(...args: unknown[]) {
+    this.setupHaltDisabledEvents();
   }
 
-  ngOnDestroy(): void {
-    this._focusMonitor.stopMonitoring(this._elementRef);
+  ngAfterViewInit(): void {
+    this.setupFocusMonitor();
   }
 
   setTriggerActive() {
@@ -171,39 +209,27 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy, AfterViewInit {
     this.active = false;
     this._cdr.markForCheck();
   }
-}
 
-/** @docs-private **/
-@Directive({ standalone: true })
-export class NxAnchorButtonBase extends NxButtonBase implements OnDestroy {
-  constructor(
-    private readonly _ngZone: NgZone,
-    _cdr: ChangeDetectorRef,
-    elementRef: ElementRef,
-    focusMonitor: FocusMonitor,
-  ) {
-    super(_cdr, elementRef, focusMonitor);
-    this._ngZone.runOutsideAngular(() => {
-      (this.elementRef.nativeElement as HTMLAnchorElement).addEventListener(
-        'click',
-        this._checkEventsDisabled,
-      );
-    });
+  private setupFocusMonitor() {
+    this._focusMonitor.monitor(this._elementRef, true);
+    this._destroyRef.onDestroy(() => this._focusMonitor.stopMonitoring(this._elementRef));
   }
 
-  override ngOnDestroy() {
-    super.ngOnDestroy();
-    (this.elementRef.nativeElement as HTMLAnchorElement).removeEventListener(
-      'click',
-      this._checkEventsDisabled,
+  private setupHaltDisabledEvents() {
+    const cleanUp = this._ngZone.runOutsideAngular(() =>
+      this._renderer.listen(this._elementRef.nativeElement, 'click', (event: Event) => {
+        if ((this._isAnchor && this.disabled) || this.loading()) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      }),
     );
+    this._destroyRef.onDestroy(cleanUp);
   }
-
-  /** @docs-private */
-  private readonly _checkEventsDisabled = (event: Event) => {
-    if (this.disabled) {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-    }
-  };
 }
+
+function tabIndexAttribute(value: unknown): number | undefined {
+  return value == null ? undefined : numberAttribute(value);
+}
+
+export { NxButtonBase as NxAnchorButtonBase };

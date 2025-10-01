@@ -3,3 +3,9 @@
   <span class="nx-button__content"><ng-content></ng-content></span>
   <ng-content select="[nxIconPositionEnd]"></ng-content>
 </span>
+
+@if (loading()) {
+<div inert class="nx-button__spinner-wrapper">
+  <nx-spinner size="medium" [negative]="spinnerNegative" />
+</div>
+}

@@ -13,6 +13,9 @@
   padding: 0;
   @include type-style(plain-button);
 
+  // Enables absolute positioning of loading spinner
+  position: relative;
+
   .nx-plain-button__content {
     text-decoration: v(button-tertiary-text-decoration);
   }
@@ -129,6 +132,19 @@
 
   &[disabled] {
     color: v(plain-button-danger-disabled-color);
+  }
+}
+
+:host(.nx-button--loading) {
+  .nx-plain-button__content-wrapper {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .nx-plain-button__spinner-wrapper {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
   }
 }
 

@@ -1,11 +1,11 @@
 import { NxTriggerButton } from '@allianz/ng-aquila/overlay';
-import { FocusMonitor } from '@angular/cdk/a11y';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef } from '@angular/core';
+import { NxSpinnerComponent } from '@allianz/ng-aquila/spinner';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { NxButtonBase } from './button-base';
 
 @Component({
-  selector: 'button[nxIconButton]',
+  selector: 'button[nxIconButton], a[nxIconButton]',
   templateUrl: './button.html',
   styleUrls: ['button.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -15,9 +15,12 @@ import { NxButtonBase } from './button-base';
     class: 'nx-icon-button',
   },
   standalone: true,
+  imports: [NxSpinnerComponent],
 })
 export class NxIconButtonComponent extends NxButtonBase {
-  constructor(_cdr: ChangeDetectorRef, elementRef: ElementRef, focusMonitor: FocusMonitor) {
-    super(_cdr, elementRef, focusMonitor);
+  constructor() {
+    super();
   }
 }
+
+export { NxIconButtonComponent as NxAnchorIconButtonComponent };

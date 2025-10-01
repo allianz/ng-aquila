@@ -80,3 +80,13 @@ For One Allianz the plain button supports new API options `size` and `variant`.
 You can use an `<a>` instead of a `<button>` element, in case you want to have an anchor styled like a button.
 
 <!-- example(anchor-button) -->
+
+### Loading Button
+
+You can use the input `loading` to show a loading spinner inside the button.
+The spinner will be shown instead of the button label, and the button will not trigger click events while `loading` is `true`.
+
+To reduce layout shifts, the label is visibly hidden but still present in the DOM.
+For accessibility, adding an aria-label describing the loading state is recommended.
+
+<!-- example(button-loading) -->

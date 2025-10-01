@@ -61,6 +61,9 @@
   hyphens: none;
   vertical-align: middle;
 
+  // Enables absolute positioning of loading spinner
+  position: relative;
+
   // TODO use tokens in proper implementation
   &:has([nxiconpositionstart]) {
     padding-left: v(button-medium-icon-start-padding);
@@ -362,6 +365,20 @@
       border-color: GrayText !important;
       color: GrayText !important;
     }
+  }
+}
+
+:host(.nx-button--loading) {
+  .nx-button__content-wrapper {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nx-button__spinner-wrapper {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
   }
 }
 
