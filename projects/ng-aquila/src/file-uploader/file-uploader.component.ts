@@ -334,7 +334,7 @@ export class NxFileUploaderComponent
   }
 
   ngOnInit(): void {
-    if (this.ngControl?.control) {
+    if (!this.noBlockingValidators && this.ngControl?.control) {
       // we need to save the control validators.
       this._controlValidators = this.ngControl.control.validator;
     }
@@ -412,24 +412,26 @@ export class NxFileUploaderComponent
   }
 
   _resetValidators(clear = false) {
-    if (this.ngControl?.control) {
-      if (clear) {
-        this.ngControl.control.clearValidators();
-      }
-
-      const validators = [];
-
-      if (this._controlValidators) {
-        validators.unshift(this._controlValidators);
-      }
-
-      if (this.validatorFnArray) {
-        validators.push(...this.validatorFnArray);
-      }
-
-      this.ngControl.control.setValidators(validators);
-      this.ngControl.control.updateValueAndValidity();
+    if (this.noBlockingValidators || !this.ngControl?.control) {
+      return;
     }
+
+    if (clear) {
+      this.ngControl.control.clearValidators();
+    }
+
+    const validators = [];
+
+    if (this._controlValidators) {
+      validators.unshift(this._controlValidators);
+    }
+
+    if (this.validatorFnArray) {
+      validators.push(...this.validatorFnArray);
+    }
+
+    this.ngControl.control.setValidators(validators);
+    this.ngControl.control.updateValueAndValidity();
   }
 
   ngAfterContentInit(): void {

@@ -4,15 +4,23 @@ import { JsonPipe } from '@angular/common';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import {
-  ChangeDetectorRef,
   Component,
   Directive,
   Injectable,
+  Input,
+  inputBinding,
   Type,
   ViewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  TestComponentOptions,
+  tick,
+  waitForAsync,
+} from '@angular/core/testing';
 import {
   FormBuilder,
   FormControl,
@@ -63,8 +71,8 @@ describe('NxFileUploaderComponent', () => {
   let labelElm: HTMLInputElement;
   let httpTestingController: HttpTestingController;
 
-  function createTestComponent(component: Type<FileUploaderTest>) {
-    fixture = TestBed.createComponent(component);
+  function createTestComponent(component: Type<FileUploaderTest>, options?: TestComponentOptions) {
+    fixture = TestBed.createComponent(component, options);
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     fileUploaderInstance = testInstance.fileUploaderInstance;
@@ -790,9 +798,10 @@ describe('NxFileUploaderComponent', () => {
     });
 
     describe('no blocking validators', () => {
-      it('should has require validation error even if noBlockingValidators is true', () => {
-        createTestComponent(ReactiveFileUpload);
-        fixture.componentInstance.noBlockingValidators = true;
+      it('should have require validation error even if noBlockingValidators is true', () => {
+        createTestComponent(ReactiveFileUpload, {
+          bindings: [inputBinding('noBlockingValidators', () => true)],
+        });
 
         const submitButton = fixture.nativeElement.querySelector(
           '#submit-button',
@@ -804,10 +813,11 @@ describe('NxFileUploaderComponent', () => {
         expect(testInstance.form.controls.documents.hasError('required')).toBeTrue();
       });
 
-      it('should not has max fileNumber validator error if noBlockingValidators is true', () => {
-        createTestComponent(ReactiveFileUpload);
+      it('should not have max fileNumber validator error if noBlockingValidators is true', () => {
+        createTestComponent(ReactiveFileUpload, {
+          bindings: [inputBinding('noBlockingValidators', () => true)],
+        });
         testInstance.maxFileNumber = 2;
-        fixture.componentInstance.noBlockingValidators = true;
         fixture.detectChanges();
 
         createAndAddFile('test.png', 'some type');
@@ -819,9 +829,10 @@ describe('NxFileUploaderComponent', () => {
         ).toBeFalse();
       });
 
-      it('should not has file type validator error if noBlockingValidators is true', () => {
-        createTestComponent(ReactiveFileUpload);
-        fixture.componentInstance.noBlockingValidators = true;
+      it('should not have file type validator error if noBlockingValidators is true', () => {
+        createTestComponent(ReactiveFileUpload, {
+          bindings: [inputBinding('noBlockingValidators', () => true)],
+        });
 
         testInstance.accept = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
         fixture.detectChanges();
@@ -832,9 +843,10 @@ describe('NxFileUploaderComponent', () => {
         ).toBeFalse();
       });
 
-      it('should not has file size validator error if noBlockingValidators is true', () => {
-        createTestComponent(ReactiveFileUpload);
-        fixture.componentInstance.noBlockingValidators = true;
+      it('should not have file size validator error if noBlockingValidators is true', () => {
+        createTestComponent(ReactiveFileUpload, {
+          bindings: [inputBinding('noBlockingValidators', () => true)],
+        });
         testInstance.maxFileSize = 1024;
         fixture.detectChanges();
 
@@ -858,6 +870,14 @@ describe('NxFileUploaderComponent', () => {
           testInstance.form.controls.documents.hasError('NxFileUploadMaxFileSize'),
         ).toBeFalse();
       });
+    });
+
+    it('should retain external validators if noBlockingValidators is true', () => {
+      createTestComponent(ReactiveFileUpload, {
+        bindings: [inputBinding('noBlockingValidators', () => true)],
+      });
+
+      expect(testInstance.form.controls.documents.hasValidator(Validators.required)).toBeTrue();
     });
   });
 
@@ -1038,7 +1058,7 @@ class ReactiveFileUpload extends FileUploaderTest {
   maxFileSize: any;
   queueList: any;
   maxFileNumber: any;
-  noBlockingValidators = false;
+  @Input() noBlockingValidators = false;
 
   constructor() {
     super();
@@ -1172,10 +1192,7 @@ class UploadFail extends FileUploaderTest {
   };
   uploader = new NxFileUploader(this.uploadConfig, this.http);
 
-  constructor(
-    private readonly http: HttpClient,
-    private readonly cdr: ChangeDetectorRef,
-  ) {
+  constructor(private readonly http: HttpClient) {
     super();
     this.uploader.response.pipe(takeUntilDestroyed()).subscribe((result) => {
       if (result.error) {

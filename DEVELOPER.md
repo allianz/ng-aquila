@@ -338,7 +338,7 @@ The library supports different use cases with different style philosophies that'
 
 We call our variable definitions `tokens` and generally split them up in `global` and `component` tokens.
 
-Global tokens are semanticly named variables that should propose their generic usage. E.g. `interactive-primary` is similar to what often is called the `brand` color but in our case mainly used for interactive elements. Component tokens are the themable parts of components which typically reuse global tokens. We provide base themes with specific mappings, e.g. the primary button uses the `interactive-primary` token for the background:
+Global tokens are semantically named variables that should propose their generic usage. E.g. `interactive-primary` is similar to what often is called the `brand` color but in our case mainly used for interactive elements. Component tokens are the themable parts of components which typically reuse global tokens. We provide base themes with specific mappings, e.g. the primary button uses the `interactive-primary` token for the background:
 
 ```css
 --button-primary-background-color: interactive-primary;
