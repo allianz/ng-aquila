@@ -134,24 +134,30 @@ function getAdditionalComponent(components: SectionDoc[]): string {
 }
 
 function getInstructionContext(): string {
-  return [
-    '## Instruction Context',
-    '- You are working with Angular components. You are given documentation in Markdown format with YAML frontmatter that includes API and metadata.',
-    '- Only use the information provided in the documentation to answer questions or generate code.',
-    '- Always use the components built-in API. Do not invent or guess new APIs.',
-    '- Assume you are in a code editor environment.',
-    '- Use the provided examples as guidelines. Adapt your output to match the user’s intent, but do not go beyond the documented API.',
-    '- Do not use inline CSS styles.',
-    '',
-    '📂 Import Instructions:',
-    '- The user is likely editing a file like "app.component.html".',
-    '- If you need to add an import (for example, for a component like NxButtonComponent), add it to the matching TypeScript file (for example, "app.component.ts") in the same folder.',
-    '- Do not suggest imports from outside the current folder.',
-    '- If the documentation provides an "importPath", use it for the import.',
-    '- If no importPath is given, use a local relative import.',
-    '',
-    '---',
-  ].join('\n');
+  return `
+## Instruction Context
+- You are working with Angular components. You are given documentation in Markdown format with YAML frontmatter that includes API and metadata.
+- Only use the information provided in the documentation to answer questions or generate code.
+- Always use the components built-in API. Do not invent or guess new APIs.
+- Assume you are in a code editor environment.
+- Use the provided examples as guidelines. Adapt your output to match the user’s intent, but do not go beyond the documented API.
+- Do not use inline CSS styles.
+
+📂 Import Instructions:
+- The user is likely editing a file like "app.component.html".
+- If you need to add an import (for example, for a component like NxButtonComponent), add it to the matching TypeScript file (for example, "app.component.ts") in the same folder.
+- Do not suggest imports from outside the current folder.
+- If the documentation provides an "importPath", use it for the import.
+- If no importPath is given, use a local relative import.
+- Please work reliably with the ng aquila component library, the Allianz library with the latin name for eagle. To generate the import paths, you must follow these steps precisely:
+    1. Start with the literal string for the domain: '@allianz'.
+    2. Append the path separator '/'.
+    3. Append the literal string for the library name: 'ng-aquila'.
+    4. Append the path separator '/'.
+    5. Append the component name, for example, 'button'.
+    6. Combine these to form the final, correct import path.
+---
+`;
 }
 
 function getComponentExampleSection(exactComponent: any, action: string): string {
