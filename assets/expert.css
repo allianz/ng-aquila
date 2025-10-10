@@ -807,6 +807,9 @@ body,
   --context-menu-item-disabled-color: var(--disabled-01);
   --context-menu-item-icon-size: 20px;
   --context-menu-item-expand-icon-size: 20px;
+  --context-menu-item-horizontal-padding: 32px;
+  --context-menu-item-vertical-padding: 8px;
+  --divider-background-color: #d9d9d9;
   --datefield-toggle-icon-size: var(--formfield-icon-size);
   --datefield-change-view-font-size: var(--small-label-font-size);
   --datefield-change-view-line-height: 1;

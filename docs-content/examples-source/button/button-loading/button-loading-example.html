@@ -1,0 +1,105 @@
+<div class="button-container">
+  <nx-switcher [(ngModel)]="loading"
+    >{{ loading() ? 'Unset loading' : 'Set loading' }}
+  </nx-switcher>
+  <nx-switcher [(ngModel)]="negative"
+    >{{ negative() ? 'Unset negative' : 'Set negative' }}
+  </nx-switcher>
+  <nx-formfield label="Size">
+    <nx-dropdown [(ngModel)]="size" [options]="sizeOptions"></nx-dropdown>
+  </nx-formfield>
+</div>
+
+@let loadingLabel = "Saving Form";
+<div class="button-container" [class.docs-inverse-container]="negative()">
+  <button
+    [nxButton]="`primary ${size()} ${negative()}`"
+    type="button"
+    [loading]="loading()"
+    [attr.aria-label]="loading() ? loadingLabel : null"
+  >
+    Primary
+  </button>
+  <button
+    [nxButton]="`secondary ${size()} ${negative()}`"
+    type="button"
+    [loading]="loading()"
+    [attr.aria-label]="loading() ? loadingLabel : null"
+  >
+    Secondary
+  </button>
+  <button
+    [nxButton]="`tertiary ${size()} ${negative()}`"
+    type="button"
+    [loading]="loading()"
+    [attr.aria-label]="loading() ? loadingLabel : null"
+  >
+    Tertiary
+  </button>
+  <button
+    [nxButton]="`emphasis ${size()} ${negative()}`"
+    type="button"
+    [loading]="loading()"
+    [attr.aria-label]="loading() ? loadingLabel : null"
+  >
+    Emphasis
+  </button>
+  <button
+    [nxButton]="`attention ${size()} ${negative()}`"
+    type="button"
+    [loading]="loading()"
+    [attr.aria-label]="loading() ? loadingLabel : null"
+  >
+    Attention
+  </button>
+  <button
+    [nxButton]="`cta ${size()} ${negative()}`"
+    type="button"
+    [loading]="loading()"
+    [attr.aria-label]="loading() ? loadingLabel : null"
+  >
+    Call To Action
+  </button>
+
+  <button
+    [nxIconButton]="`${size()} ${negative()}`"
+    type="button"
+    [loading]="loading()"
+    [attr.aria-label]="loading() ? loadingLabel : 'Icon Button'"
+  >
+    <nx-icon name="plus"></nx-icon>
+  </button>
+
+  <button
+    nxPlainButton
+    [loading]="loading()"
+    [attr.aria-label]="loading() ? loadingLabel : null"
+  >
+    Plain
+  </button>
+
+  <button
+    type="button"
+    [nxButton]="`primary danger ${size()} ${negative()}`"
+    [loading]="loading()"
+    [attr.aria-label]="loading() ? loadingLabel : null"
+  >
+    Primary Danger
+  </button>
+  <button
+    type="button"
+    [nxButton]="`secondary danger ${size()} ${negative()}`"
+    [loading]="loading()"
+    [attr.aria-label]="loading() ? loadingLabel : null"
+  >
+    Secondary Danger
+  </button>
+  <button
+    type="button"
+    [nxButton]="`tertiary danger ${size()} ${negative()}`"
+    [loading]="loading()"
+    [attr.aria-label]="loading() ? loadingLabel : null"
+  >
+    Tertiary Danger
+  </button>
+</div>

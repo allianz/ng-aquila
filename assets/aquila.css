@@ -227,7 +227,7 @@ body,
   --accordion-light-header-padding: 24px 32px;
   --accordion-light-mobile-header-padding: 16px 0;
   --accordion-light-body-padding: 16px 32px 32px;
-  --accordion-light-mobile-body-padding: 0 0 24px;
+  --accordion-light-mobile-body-padding: 16px 0 24px;
   --accordion-light-border-color: var(--ui-04);
   --accordion-light-body-font-size: var(--paragraph-03-font-size);
   --accordion-extra-light-header-top-margin: 16px;
@@ -801,6 +801,9 @@ body,
   --context-menu-item-disabled-color: var(--disabled-01);
   --context-menu-item-icon-size: 20px;
   --context-menu-item-expand-icon-size: 20px;
+  --context-menu-item-horizontal-padding: 32px;
+  --context-menu-item-vertical-padding: 8px;
+  --divider-background-color: #d9d9d9;
   --datefield-toggle-icon-size: var(--formfield-icon-size);
   --datefield-change-view-font-size: var(--small-label-font-size);
   --datefield-change-view-line-height: 1;

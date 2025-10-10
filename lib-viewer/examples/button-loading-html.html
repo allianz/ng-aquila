@@ -1,0 +1,105 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-container&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-switcher</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;loading&quot;</span>
+    &gt;</span>{{ loading() ? &#x27;Unset loading&#x27; : &#x27;Set loading&#x27; }}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-switcher</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-switcher</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;negative&quot;</span>
+    &gt;</span>{{ negative() ? &#x27;Unset negative&#x27; : &#x27;Set negative&#x27; }}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-switcher</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Size&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;size&quot;</span> [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;sizeOptions&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+@let loadingLabel = &quot;Saving Form&quot;;
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-container&quot;</span> [<span class="hljs-attr">class.docs-inverse-container</span>]=<span class="hljs-string">&quot;negative()&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;`primary ${size()} ${negative()}`&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    [<span class="hljs-attr">loading</span>]=<span class="hljs-string">&quot;loading()&quot;</span>
+    [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;loading() ? loadingLabel : null&quot;</span>
+  &gt;</span>
+    Primary
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;`secondary ${size()} ${negative()}`&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    [<span class="hljs-attr">loading</span>]=<span class="hljs-string">&quot;loading()&quot;</span>
+    [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;loading() ? loadingLabel : null&quot;</span>
+  &gt;</span>
+    Secondary
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;`tertiary ${size()} ${negative()}`&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    [<span class="hljs-attr">loading</span>]=<span class="hljs-string">&quot;loading()&quot;</span>
+    [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;loading() ? loadingLabel : null&quot;</span>
+  &gt;</span>
+    Tertiary
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;`emphasis ${size()} ${negative()}`&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    [<span class="hljs-attr">loading</span>]=<span class="hljs-string">&quot;loading()&quot;</span>
+    [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;loading() ? loadingLabel : null&quot;</span>
+  &gt;</span>
+    Emphasis
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;`attention ${size()} ${negative()}`&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    [<span class="hljs-attr">loading</span>]=<span class="hljs-string">&quot;loading()&quot;</span>
+    [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;loading() ? loadingLabel : null&quot;</span>
+  &gt;</span>
+    Attention
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;`cta ${size()} ${negative()}`&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    [<span class="hljs-attr">loading</span>]=<span class="hljs-string">&quot;loading()&quot;</span>
+    [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;loading() ? loadingLabel : null&quot;</span>
+  &gt;</span>
+    Call To Action
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    [<span class="hljs-attr">nxIconButton</span>]=<span class="hljs-string">&quot;`${size()} ${negative()}`&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    [<span class="hljs-attr">loading</span>]=<span class="hljs-string">&quot;loading()&quot;</span>
+    [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;loading() ? loadingLabel : &#x27;Icon Button&#x27;&quot;</span>
+  &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plus&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxPlainButton</span>
+    [<span class="hljs-attr">loading</span>]=<span class="hljs-string">&quot;loading()&quot;</span>
+    [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;loading() ? loadingLabel : null&quot;</span>
+  &gt;</span>
+    Plain
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;`primary danger ${size()} ${negative()}`&quot;</span>
+    [<span class="hljs-attr">loading</span>]=<span class="hljs-string">&quot;loading()&quot;</span>
+    [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;loading() ? loadingLabel : null&quot;</span>
+  &gt;</span>
+    Primary Danger
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;`secondary danger ${size()} ${negative()}`&quot;</span>
+    [<span class="hljs-attr">loading</span>]=<span class="hljs-string">&quot;loading()&quot;</span>
+    [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;loading() ? loadingLabel : null&quot;</span>
+  &gt;</span>
+    Secondary Danger
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;`tertiary danger ${size()} ${negative()}`&quot;</span>
+    [<span class="hljs-attr">loading</span>]=<span class="hljs-string">&quot;loading()&quot;</span>
+    [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;loading() ? loadingLabel : null&quot;</span>
+  &gt;</span>
+    Tertiary Danger
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

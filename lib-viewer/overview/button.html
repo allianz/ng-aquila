@@ -36,3 +36,9 @@ For One Allianz the plain button supports new API options `size` and `variant`.
 <h3 id="anchor-button" tabindex="-1" class="docs-markdown--h3">Anchor Button</h3>
 <p class="docs-markdown--p">You can use an <code>&lt;a&gt;</code> instead of a <code>&lt;button&gt;</code> element, in case you want to have an anchor styled like a button.</p>
 <div nx-docs-example="anchor-button" config="{}">exampleID: anchor-button</div>
+<h3 id="loading-button" tabindex="-1" class="docs-markdown--h3">Loading Button</h3>
+<p class="docs-markdown--p">You can use the input <code>loading</code> to show a loading spinner inside the button.
+The spinner will be shown instead of the button label, and the button will not trigger click events while <code>loading</code> is <code>true</code>.</p>
+<p class="docs-markdown--p">To reduce layout shifts, the label is visibly hidden but still present in the DOM.
+For accessibility, adding an aria-label describing the loading state is recommended.</p>
+<div nx-docs-example="button-loading" config="{}">exampleID: button-loading</div>

@@ -38,6 +38,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'copytext': return import('../examples/copytext/copytext-examples.module').then(m => m.CopytextExamplesModule);
             case 'data-display': return import('../examples/data-display/data-display-examples.module').then(m => m.DataDisplayExamplesModule);
             case 'datefield': return import('../examples/datefield/datefield-examples.module').then(m => m.DatefieldExamplesModule);
+            case 'divider': return import('../examples/divider/divider-examples.module').then(m => m.DividerExamplesModule);
             case 'dropdown': return import('../examples/dropdown/dropdown-examples.module').then(m => m.DropdownExamplesModule);
             case 'dynamic-table': return import('../examples/dynamic-table/dynamic-table-examples.module').then(m => m.DynamicExamplesModule);
             case 'error': return import('../examples/error/error-examples.module').then(m => m.ErrorExamplesModule);
