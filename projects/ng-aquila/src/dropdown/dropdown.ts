@@ -267,7 +267,7 @@ export class NxDropdownComponent
   /** @docs-private */
   errorState = false;
 
-  _tooltipText = '';
+  _tooltipText = signal<string>('');
 
   /** Width of the overlay panel. */
   _overlayWidth: string | number = '';
@@ -692,6 +692,8 @@ export class NxDropdownComponent
 
   ngAfterViewInit(): void {
     this._initKeyManager();
+    // initial tooltip evaluation after first render
+    this._scheduleTooltipUpdate();
   }
 
   ngAfterContentInit(): void {
@@ -727,6 +729,10 @@ export class NxDropdownComponent
   }
 
   ngOnDestroy(): void {
+    if (this._tooltipUpdateTimeoutId) {
+      clearTimeout(this._tooltipUpdateTimeoutId);
+      this._tooltipUpdateTimeoutId = null;
+    }
     this._destroyed.next();
     this._destroyed.complete();
   }
@@ -755,10 +761,15 @@ export class NxDropdownComponent
       parseInt(paddingLeft, 10) -
       parseInt(paddingRight, 10);
 
+    let newTooltipText: string;
     if (triggerContentWidth - icon.offsetWidth < label.scrollWidth) {
-      this._tooltipText = this.triggerValue;
+      newTooltipText = this.triggerValue;
     } else {
-      this._tooltipText = '';
+      newTooltipText = '';
+    }
+
+    if (this._tooltipText() !== newTooltipText) {
+      this._tooltipText.set(newTooltipText);
     }
   }
 
@@ -861,10 +872,8 @@ export class NxDropdownComponent
     if (wasSelected !== isSelected) {
       this._propagateChanges();
 
-      this._tooltipText = '';
-      setTimeout(() => {
-        this._updateTooltipText();
-      });
+      this._tooltipText.set('');
+      this._scheduleTooltipUpdate();
     }
 
     this.stateChanges.next();
@@ -905,6 +914,7 @@ export class NxDropdownComponent
     }
 
     this._cdr.markForCheck();
+    this._scheduleTooltipUpdate();
   }
 
   /**
@@ -1477,5 +1487,20 @@ export class NxDropdownComponent
     }
 
     return null;
+  }
+
+  private _tooltipUpdateTimeoutId: any;
+
+  private _scheduleTooltipUpdate() {
+    if (this._tooltipUpdateTimeoutId) {
+      clearTimeout(this._tooltipUpdateTimeoutId);
+    }
+    this._tooltipUpdateTimeoutId = setTimeout(() => {
+      this._tooltipUpdateTimeoutId = null;
+      if (this._destroyed.closed) {
+        return;
+      }
+      this._updateTooltipText();
+    }, 0);
   }
 }

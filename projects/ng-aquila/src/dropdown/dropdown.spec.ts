@@ -31,7 +31,15 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  flush,
+  flushMicrotasks,
+  inject,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 import {
   FormBuilder,
   FormsModule,
@@ -1891,6 +1899,44 @@ describe('NxDropdownComponent', () => {
       expect(getDropdown()).toHaveClass('centered-checkmark');
     }));
   });
+
+  describe('tooltip programmatic updates', () => {
+    beforeEach(fakeAsync(() => {
+      configureNxDropdownTestingModule([TooltipProgrammaticUpdateComponent]);
+    }));
+
+    it('updates and clears tooltip after programmatic value changes', fakeAsync(() => {
+      createTestComponent(TooltipProgrammaticUpdateComponent);
+      const formControl = (testInstance as TooltipProgrammaticUpdateComponent).form.controls['car'];
+      trigger.style.width = '90px'; // force truncate for long label
+      fixture.detectChanges();
+      tick();
+
+      expect(dropdownInstance.triggerValue).toBe('BMW');
+      expect(dropdownInstance._tooltipText())
+        .withContext('short initial value should not set tooltip')
+        .toBe('');
+
+      const setValueAndProcess = (value: string) => {
+        formControl.setValue(value);
+        flushMicrotasks();
+        fixture.detectChanges();
+        tick();
+      };
+
+      setValueAndProcess('LONG');
+      expect(dropdownInstance.triggerValue.startsWith('A very very')).toBeTrue();
+      expect(dropdownInstance._tooltipText())
+        .withContext('long value should produce tooltip')
+        .toBe(dropdownInstance.triggerValue);
+
+      setValueAndProcess('BMW');
+      expect(dropdownInstance.triggerValue).toBe('BMW');
+      expect(dropdownInstance._tooltipText())
+        .withContext('tooltip should clear after reverting to short value')
+        .toBe('');
+    }));
+  });
 });
 
 interface DropdownTestItem {
@@ -2544,3 +2590,18 @@ class VerticalAlignCheckmarkComponent extends DropdownTest {
   imports: [NxDropdownModule, SelectOnFocusDirective],
 })
 class TestSelectOnFocus extends DropdownTest {}
+
+@Component({
+  template: `<form [formGroup]="form">
+    <nx-dropdown nxLabel="Car brand" formControlName="car">
+      <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
+      <nx-dropdown-item value="LONG"
+        >A very very very long car brand label that will overflow</nx-dropdown-item
+      >
+    </nx-dropdown>
+  </form>`,
+  imports: [NxDropdownModule, ReactiveFormsModule],
+})
+class TooltipProgrammaticUpdateComponent extends DropdownTest {
+  form = new FormBuilder().group({ car: ['BMW'] });
+}

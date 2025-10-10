@@ -4,7 +4,7 @@
   #fallbackOrigin="cdkOverlayOrigin"
   class="nx-dropdown__container"
   #trigger
-  [nxTooltip]="_tooltipText"
+  [nxTooltip]="_tooltipText()"
   [nxTooltipSelectable]="true"
 >
   <div class="nx-dropdown__rendered" [id]="renderedValueId">
