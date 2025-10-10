@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.5.0](https://github.com/allianz/ng-aquila/compare/v20.4.0...v20.5.0) (2025-10-10)
+
+
+### Documentation 📚
+
+* update mcp generation ([71d6925](https://github.com/allianz/ng-aquila/commit/71d6925028445734b106994c23ab60a8b2c3ebf3))
+* update mcp guide for claude code ([48a1cdb](https://github.com/allianz/ng-aquila/commit/48a1cdb779fa4980339c638c934be630e3d3a1ee))
+
+
+### Features ✨
+
+* **button:** add loading state ([6ef19ce](https://github.com/allianz/ng-aquila/commit/6ef19ce37ca23950629a0ffa6a305f9d1d4bd86a))
+* **divider:** introduce divider base component & context menu specific adaption ([eb76516](https://github.com/allianz/ng-aquila/commit/eb765162da4a1d3c26d2f65e69f041e6e9ea8cb5))
+
+
+### Bug Fixes 🐛
+
+* **accordion:** add padding for mobile light styling ([2eb389a](https://github.com/allianz/ng-aquila/commit/2eb389ab26fbc35cbe508705b2a3fad1bd86f112))
+* add COT to prevent token glitch in claude ([e8c95b6](https://github.com/allianz/ng-aquila/commit/e8c95b6dd3bbb7c65756062d568f5ca67f61c6f0))
+* **dropdown:** update tooltip on initial and programmatic value changes ([431805e](https://github.com/allianz/ng-aquila/commit/431805ed22dec4b4eacc5cd98cea01e949a1e0ef))
+* **file-uploader:** long file names can wrap to new line ([2998c84](https://github.com/allianz/ng-aquila/commit/2998c844cd4b6974c6e1cf8f9e5f7adb34a82d9b))
+* **file-uploader:** retain external validators for noBlockingValidators ([d5488f9](https://github.com/allianz/ng-aquila/commit/d5488f9e93199b1a0b028feeffa1b1a0d8363bc2))
+* **mask:** delete spaces should work for deactivated masks ([ab71653](https://github.com/allianz/ng-aquila/commit/ab71653e9e60d5a7397ffabcf2f761ea0bf0c55e))
+* **table:** stop propagation of native select event ([61e2d7f](https://github.com/allianz/ng-aquila/commit/61e2d7ffec7999d016c06292b69e9d093d140212))
+
 ## [20.4.0](https://github.com/allianz/ng-aquila/compare/v20.3.0...v20.4.0) (2025-09-18)
 
 ### Documentation 📚
