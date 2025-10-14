@@ -37,6 +37,12 @@ Using the [`<nx-indicator>`](./documentation/indicator/overview), certain entrie
 
 <!-- example(context-menu-indicator) -->
 
+### Grouped context menu
+
+The context menu supports grouping items together, allowing you to visually organize related options. You can optionally add a group header using the `label` property of the `nxContextMenuGroup` component to provide extra context for each group within the menu.
+
+<!-- example(context-menu-group) -->
+
 ### Nested context menu
 
 The context menu has the ability to open a sub-menu. To do so, you have to define your root menu and sub-menus, in addition to setting the `nxContextMenuTriggerFor` on the `nxContextMenuItem` that should trigger the sub-menu:

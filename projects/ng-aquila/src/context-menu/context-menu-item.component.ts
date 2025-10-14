@@ -21,6 +21,9 @@ import {
   QueryList,
 } from '@angular/core';
 import { Subject } from 'rxjs';
+
+import { NxContextMenuComponent } from './context-menu.component';
+
 /**
  * This directive is intended to be used inside an nx-context-menu tag.
  * It exists mostly to set the role attribute, disabled state and styling.
@@ -63,7 +66,7 @@ export class NxContextMenuItemComponent implements OnDestroy, AfterViewInit {
   get selectable(): boolean {
     return this._selectable;
   }
-  private _selectable = false;
+  protected _selectable = false;
 
   /** Whether the context menu item is disabled. */
   @Input() set disabled(value: BooleanInput) {
@@ -96,6 +99,7 @@ export class NxContextMenuItemComponent implements OnDestroy, AfterViewInit {
     @Optional() @Inject(DOCUMENT) private readonly _document: Document | null,
     private readonly _cdr: ChangeDetectorRef,
     private readonly _focusMonitor: FocusMonitor,
+    @Optional() private readonly _parentMenu: NxContextMenuComponent | null,
   ) {
     // register a click event listener that can block if this element is disabled
     this._elementRef.nativeElement.addEventListener(
@@ -178,6 +182,10 @@ export class NxContextMenuItemComponent implements OnDestroy, AfterViewInit {
     }
 
     return output.trim();
+  }
+
+  get parentMenu(): NxContextMenuComponent | null {
+    return this._parentMenu;
   }
 }
 

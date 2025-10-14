@@ -43,7 +43,7 @@ import {
 export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
   private _keyManager!: FocusKeyManager<NxContextMenuItemComponent>;
 
-  @ContentChildren(NxContextMenuItemComponent)
+  @ContentChildren(NxContextMenuItemComponent, { descendants: true })
   private _items!: QueryList<NxContextMenuItemComponent>;
 
   @ContentChild(NxContextMenuItemWrapComponent)
@@ -102,7 +102,7 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
       .withWrap()
       .withTypeAhead()
       .setFocusOrigin('keyboard')
-      .skipPredicate(() => false);
+      .skipPredicate((item) => item.parentMenu !== this);
     this._keyManager.tabOut
       .pipe(takeUntil(this._destroyed))
       .subscribe(() => this.closed.emit('tab'));
@@ -121,7 +121,7 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     return this._init.pipe(
       switchMap(() => this._items.changes.pipe(startWith(this._items))),
       switchMap((items: QueryList<NxContextMenuItemComponent>) =>
-        merge(...items.map((item) => item._hovered)),
+        merge(...items.filter((item) => item.parentMenu === this).map((item) => item._hovered)),
       ),
     );
   }

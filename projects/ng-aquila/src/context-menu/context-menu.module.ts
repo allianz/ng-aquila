@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 
 import { NxContextMenuComponent } from './context-menu.component';
 import { NxContextMenuContentDirective } from './context-menu-content.directive';
+import { NxContextMenuGroupComponent } from './context-menu-group.component';
 import { NxContextMenuHeaderComponent } from './context-menu-header.component';
 import {
   NxContextMenuItemCheckboxDirective,
@@ -22,6 +23,7 @@ const EXPORTED_MODULES = [
   NxContextMenuTriggerDirective,
   NxContextMenuHeaderComponent,
   NxContextMenuItemCheckboxDirective,
+  NxContextMenuGroupComponent,
   NxDividerModule,
 ];
 

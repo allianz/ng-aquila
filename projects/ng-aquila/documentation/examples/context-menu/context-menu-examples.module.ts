@@ -13,6 +13,7 @@ import { ContextMenuBasicExampleComponent } from './context-menu-basic/context-m
 import { ContextMenuCursorModeExampleComponent } from './context-menu-cursor-mode/context-menu-cursor-mode-example';
 import { ContextMenuDataExampleComponent } from './context-menu-data/context-menu-data-example';
 import { ContextMenuDisabledExampleComponent } from './context-menu-disabled/context-menu-disabled-example';
+import { ContextMenuGroupExampleComponent } from './context-menu-group/context-menu-group-example';
 import { ContextMenuIconsExampleComponent } from './context-menu-icons/context-menu-icons-example';
 import { ContextMenuIndicatorExampleComponent } from './context-menu-indicator/context-menu-indicator-example';
 import { ContextMenuLazyExampleComponent } from './context-menu-lazy/context-menu-lazy-example';
@@ -37,6 +38,7 @@ const EXAMPLES = [
   ContextMenuScrollStrategyProviderExampleComponent,
   ContextMenuSelectionExampleComponent,
   ContextMenuSelectMultipleExampleComponent,
+  ContextMenuGroupExampleComponent,
 ];
 
 @NgModule({
@@ -71,6 +73,7 @@ export class ContextExamplesModule {
       'context-menu-cursor-mode': ContextMenuCursorModeExampleComponent,
       'context-menu-selection': ContextMenuSelectionExampleComponent,
       'context-menu-select-multiple': ContextMenuSelectMultipleExampleComponent,
+      'context-menu-group': ContextMenuGroupExampleComponent,
     };
   }
 }

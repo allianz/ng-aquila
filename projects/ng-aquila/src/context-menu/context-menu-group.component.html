@@ -1,0 +1,10 @@
+@if (label()) {
+  <div id="{{ labelId }}" class="nx-context-menu-group__label">{{ label() }}</div>
+}
+<div
+  class="nx-context-menu-group__items"
+  [attr.role]="'group'"
+  [attr.aria-labelledby]="label() ? labelId : null"
+>
+  <ng-content></ng-content>
+</div>

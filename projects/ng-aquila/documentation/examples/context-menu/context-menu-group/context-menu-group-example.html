@@ -1,0 +1,29 @@
+<nx-context-menu #menuWithProvider="nxContextMenu">
+  <nx-context-menu-group label="Actions">
+    <button nxContextMenuItem type="button">Settings</button>
+    <button nxContextMenuItem type="button">Download</button>
+  </nx-context-menu-group>
+  <nx-divider />
+  <nx-context-menu-group label="More Options">
+    <button nxContextMenuItem type="button">Share</button>
+    <button nxContextMenuItem type="button">Archive</button>
+  </nx-context-menu-group>
+  <nx-divider />
+  <nx-context-menu-group>
+    <button nxContextMenuItem type="button">No Label Item 1</button>
+    <button nxContextMenuItem type="button">No Label Item 2</button>
+  </nx-context-menu-group>
+  <nx-divider />
+  <nx-context-menu-group label="Support">
+    <button nxContextMenuItem type="button">Help</button>
+  </nx-context-menu-group>
+</nx-context-menu>
+
+<button
+  nxIconButton="tertiary small"
+  [nxContextMenuTriggerFor]="menuWithProvider"
+  aria-label="Open menu"
+  type="button"
+>
+  <nx-icon aria-hidden="true" name="ellipsis-h"></nx-icon>
+</button>

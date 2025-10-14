@@ -1,0 +1,6 @@
+@import '../shared-styles/index.scss';
+
+.nx-context-menu-group__label {
+  font-weight: v(context-menu-group-header-font-weight);
+  padding: nx-spacer(2xs) nx-spacer(2m);
+}
