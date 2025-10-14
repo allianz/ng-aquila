@@ -117,7 +117,6 @@ export function getNxAutocompleteMissingPanelError(): Error {
     role: 'combobox',
     autocomplete: 'off',
     'aria-autocomplete': 'list',
-    '[attr.aria-activedescendant]': 'activeOption?.id',
     '[attr.aria-expanded]': 'panelOpen.toString()',
     '[attr.aria-owns]': 'this.panelOpen ? autocomplete?.id : null',
     // Note: we use `focusin`, as opposed to `focus`, in order to open the panel
@@ -507,6 +506,8 @@ export class NxAutocompleteTriggerDirective
       }
 
       if (isArrowKey || this.autocomplete._keyManager.activeItem !== prevActiveItem) {
+        this._element.nativeElement.ariaActiveDescendantElement =
+          this.activeOption?.elementRef.nativeElement;
         this._scrollToOption();
       }
     }

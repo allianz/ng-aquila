@@ -1,5 +1,6 @@
 import { NxModalModule } from '@allianz/ng-aquila/modal';
 import { fakeScrollStrategyFunction } from '@allianz/ng-aquila/utils';
+import { DOWN_ARROW } from '@angular/cdk/keycodes';
 import { OverlayContainer, OverlayModule, ScrollStrategy } from '@angular/cdk/overlay';
 import { CommonModule, JsonPipe, LowerCasePipe } from '@angular/common';
 import {
@@ -29,7 +30,7 @@ import {
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable, of } from 'rxjs';
 
-import { dispatchFakeEvent } from '../cdk-test-utils';
+import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxInputModule } from '../input';
 import {
   NX_AUTOCOMPLETE_SCROLL_STRATEGY,
@@ -420,6 +421,23 @@ describe('NxAutocompleteComponent:', () => {
       const panelWidth = panel.getBoundingClientRect().width;
 
       expect(panelWidth).toBeLessThanOrEqual(400);
+    }));
+  });
+
+  describe('ariaActiveDescendantElement behavior', () => {
+    it('should set ariaActiveDescendantElement to active option on arrow key navigation', fakeAsync(() => {
+      createTestComponent(BasicAutocompleteComponent);
+      typeInput('A');
+      flush();
+
+      expect((input as any).ariaActiveDescendantElement == null).toBeTrue();
+
+      dispatchKeyboardEvent(input, 'keydown', DOWN_ARROW, 'ArrowDown');
+      flush();
+
+      const activeEl = triggerInstance.activeOption?.elementRef.nativeElement;
+      expect(activeEl).toBeTruthy();
+      expect((input as any).ariaActiveDescendantElement).toBe(activeEl);
     }));
   });
 });
