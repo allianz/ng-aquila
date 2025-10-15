@@ -1246,7 +1246,21 @@ $nx-theme: (
   popover-background-color: ui-01,
   popover-border-color: ui-04,
   popover-close-icon-color: ui-04,
+  popover-border-radius: 4px,
+  // nx-border-radius(s)
+  popover-box-shadow: shadow-small,
+  popover-content-padding: 24px 32px,
+  // nx-spacer(m) nx-spacer(2m)
+  popover-content-padding-close: 24px 48px 24px 32px,
+  popover-close-icon-top: 16px,
+  popover-close-icon-right: 16px,
+  popover-title-font-size: unset,
+
   popover-action-gap: 16px,
+  popover-action-small-screen-direction: row,
+  popover-arrow-size: 12px,
+  popover-arrow-scale: 1,
+  popover-arrow-shadow: -2px -2px -4px v(shadow-small-color),
   progressbar-background-color: ui-03,
   progressbar-indicator-color: interactive-primary,
   // ----- progress-indicator components ----- //

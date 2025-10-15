@@ -1,12 +1,11 @@
 @import '../shared-styles/index';
 
-$popover-arrow-size: nx-spacer(xs);
-$popover-arrow-offset: -#{$popover-arrow-size * 0.5 - nx-border-size(xs)};
-$popover-border-radius: nx-border-radius(s);
+$popover-arrow-size: v(popover-arrow-size);
+
+$popover-arrow-offset: calc((#{$popover-arrow-size} * 0.5 - nx-border-size(xs)) * -1);
+
 $popover-border-size: nx-border-size(xs);
-
-$arrow-shadow: -2px -2px -4px v(shadow-small-color);
-
+$arrow-shadow: v(popover-arrow-shadow);
 $padding-content: nx-spacer(2m) - $popover-border-size;
 
 .nx-popover {
@@ -18,21 +17,20 @@ $padding-content: nx-spacer(2m) - $popover-border-size;
   background-color: v(popover-background-color);
   color: v(popover-text-color);
   border: $popover-border-size solid v(popover-border-color);
-  border-radius: $popover-border-radius;
-  box-shadow: v(shadow-small);
-  padding: nx-spacer(m) nx-spacer(2m);
+  border-radius: v(popover-border-radius);
+  box-shadow: v(popover-box-shadow);
+  padding: v(popover-content-padding);
   display: block;
 
   &:has(.nx-popover__close-icon) {
-    padding: nx-spacer(m) nx-spacer(4m) nx-spacer(m) nx-spacer(2m);
+    padding: v(popover-content-padding-close);
   }
 
   &:has(.nx-popover__main-content) {
     ::ng-deep .nx-popover__title {
       margin-right: nx-spacer(s);
+      font-size: v(popover-title-font-size);
     }
-
-    padding: nx-spacer(m) nx-spacer(2m);
   }
 
   &:focus {
@@ -48,12 +46,16 @@ $padding-content: nx-spacer(2m) - $popover-border-size;
 ::ng-deep .nx--popover__actions {
   display: flex;
   gap: v(popover-action-gap);
+  @media (max-width: 320px) {
+    flex-direction: v(popover-action-small-screen-direction);
+  }
 }
 
 .nx-popover__close-icon {
   position: absolute;
-  top: nx-spacer(s);
-  right: nx-spacer(s);
+  top: v(popover-close-icon-top);
+  right: v(popover-close-icon-right);
+  color: v(popover-text-color);
   font-size: v(popover-close-icon-size);
 
   [dir='rtl'] & {
@@ -73,7 +75,7 @@ $padding-content: nx-spacer(2m) - $popover-border-size;
 }
 
 .nx-popover--top .nx-popover__arrow {
-  transform: translate(-50%, 0) rotate(225deg);
+  transform: translate(-50%, 0) rotate(225deg) scale(v(popover-arrow-scale));
   bottom: $popover-arrow-offset;
   box-shadow:
     2px 2px 1px 1px v(popover-background-color),
@@ -81,16 +83,25 @@ $padding-content: nx-spacer(2m) - $popover-border-size;
 }
 
 .nx-popover--right .nx-popover__arrow {
-  transform: translate(0, -50%) rotate(-45deg);
+  transform: translate(0, -50%) rotate(-45deg) scale(v(popover-arrow-scale));
   left: $popover-arrow-offset;
+  box-shadow:
+    2px 2px 1px 1px v(popover-background-color),
+    $arrow-shadow;
 }
 
 .nx-popover--bottom .nx-popover__arrow {
-  transform: translate(-50%, 0) rotate(45deg);
+  transform: translate(-50%, 0) rotate(45deg) scale(v(popover-arrow-scale));
   top: $popover-arrow-offset;
+  box-shadow:
+    2px 2px 1px 1px v(popover-background-color),
+    $arrow-shadow;
 }
 
 .nx-popover--left .nx-popover__arrow {
-  transform: translate(0, -50%) rotate(135deg);
+  transform: translate(0, -50%) rotate(135deg) scale(v(popover-arrow-scale));
   right: $popover-arrow-offset;
+  box-shadow:
+    2px 2px 1px 1px v(popover-background-color),
+    $arrow-shadow;
 }
