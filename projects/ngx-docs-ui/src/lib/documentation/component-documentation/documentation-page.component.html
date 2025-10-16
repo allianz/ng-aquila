@@ -11,7 +11,8 @@
 <main
   cdkScrollable
   (click)="mainContentClicked()"
-  [class.show-a1]="themeSwitcherService.selectedTheme()?.name?.includes('allianz-one')"
+  [class.theme-a1]="themeSwitcherService.selectedTheme()?.name?.includes('allianz-one')"
+  [class.theme-ndbx]="themeSwitcherService.selectedTheme()?.name?.includes('ndbx')"
 >
   <div nxLayout="grid maxwidth" class="documentation__wrapper">
     <div nxRow>

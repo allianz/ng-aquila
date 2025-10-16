@@ -1,0 +1,4 @@
+:host .wrapper {
+  display: flex;
+  flex-direction: column;
+}
