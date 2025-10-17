@@ -35,6 +35,16 @@ You can change the font-weight of any headline by using the font-weight utility 
 
 <!-- example(headline-links) -->
 
+<div class="docs-hide-ndbx">
+
+### Attention text
+
+To draw more attention to parts of a headline, use [`[nx-attention-color]`](./documentation/text/overview#attention-color).
+
+<!-- example(headline-attention-text) -->
+
+</div>
+
 ### Negative
 <div class="docs-deprecation-warning">
   <strong><code>nxHeadline="negative"</code></strong> is deprecated. Use the boolean <code>negative</code> input instead.
