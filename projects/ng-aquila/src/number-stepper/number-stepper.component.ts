@@ -2,7 +2,12 @@ import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { MappedStyles } from '@allianz/ng-aquila/core';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { IdGenerationService, mapClassNames, pad } from '@allianz/ng-aquila/utils';
+import {
+  ErrorStateMatcher,
+  IdGenerationService,
+  mapClassNames,
+  pad,
+} from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty, NumberInput } from '@angular/cdk/coercion';
 import { NgClass } from '@angular/common';
 import {
@@ -14,6 +19,7 @@ import {
   Component,
   computed,
   contentChildren,
+  DoCheck,
   effect,
   ElementRef,
   EventEmitter,
@@ -35,8 +41,11 @@ import {
 import {
   ControlValueAccessor,
   FormControl,
+  FormGroupDirective,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
+  NgControl,
+  NgForm,
   Validator,
 } from '@angular/forms';
 import { Decimal } from 'decimal.js';
@@ -81,14 +90,14 @@ const CUSTOM_VALIDATOR = {
   host: {
     '[class.is-negative]': 'negative',
     '[class.is-disabled]': 'disabled',
-    '[class.is-error]': 'errorMessages().length > 0',
+    '[class.is-error]': '_isError()',
   },
   providers: [CUSTOM_VALUE_ACCESSOR, CUSTOM_VALIDATOR],
   imports: [NxButtonModule, NxIconModule, NxAutoResizeDirective, NgClass],
 })
 export class NxNumberStepperComponent
   extends MappedStyles
-  implements AfterViewInit, ControlValueAccessor, Validator, OnDestroy
+  implements ControlValueAccessor, Validator, OnDestroy, AfterViewInit, DoCheck
 {
   /** @docs-private */
   numberInputValue!: string;
@@ -112,18 +121,21 @@ export class NxNumberStepperComponent
   ariaDescribedBy = input<string | null>(null);
 
   ariaDescribedByComputed = computed<string | null>(() => {
+    this._errorState();
     // This is a workaround to not cause a breaking change for projected labels that are not wrapped in a label element.
     // if there is a projected label without a html label, we don't want to add the label id to the described by
     // should be removed with the next major version
     const hasProjectedLabelWithoutHtmlLabel =
       this.projectedLabelWrapper() && !this.projectedLabel();
-
-    const hasDescribedBy = !!this.ariaDescribedBy() || this.errorMessages().length > 0;
+    const hasDescribedBy = !!this.ariaDescribedBy() || this._isError();
     if (!hasDescribedBy && !hasProjectedLabelWithoutHtmlLabel) {
       return null;
     }
 
-    const describedByIds = [...this.errorMessages().map((item) => item.id), this.ariaDescribedBy()];
+    const describedByIds = [
+      ...(this._isError() ? this.errorMessages().map((e) => e.id) : []),
+      this.ariaDescribedBy(),
+    ];
 
     // Still the workaround for the projected label without html label
     // should be removed with the next major version
@@ -272,13 +284,11 @@ export class NxNumberStepperComponent
     // Apply trimmed value to input
     (event.target as HTMLInputElement).value = inputValue;
     this.inputValue = inputValue;
-
     let newValue;
     if (inputValue === '' || !this.validateUserInput(inputValue)) {
       newValue = null;
     } else {
-      const formattedValue = inputValue.replace(/[,.]/g, '.');
-      newValue = Number(formattedValue);
+      newValue = Number(inputValue.replace(/[,.]/g, '.'));
     }
 
     this._value.set(newValue);
@@ -339,6 +349,15 @@ export class NxNumberStepperComponent
 
   private readonly injector = inject(Injector);
 
+  protected _errorState = signal(false);
+  private readonly _errorStateMatcher = inject(ErrorStateMatcher);
+  private readonly _parentForm = inject(NgForm, { optional: true });
+  private readonly _parentFormGroup = inject(FormGroupDirective, { optional: true });
+  protected _ngControl = signal<NgControl | null>(null);
+  protected _isError = computed(() =>
+    this._ngControl() ? this._errorState() : this.errorMessages().length > 0,
+  );
+
   constructor(
     private readonly _cdr: ChangeDetectorRef,
     _renderer: Renderer2,
@@ -370,11 +389,29 @@ export class NxNumberStepperComponent
     });
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    this._ngControl.set(this.injector.get(NgControl, null));
+  }
+
+  ngDoCheck(): void {
+    const control = this._ngControl()?.control as FormControl | null;
+    if (!control) return;
+    this._updateErrorState();
+  }
 
   ngOnDestroy(): void {
     this._destroyed.next();
     this._destroyed.complete();
+  }
+
+  private _updateErrorState() {
+    const oldState = this._errorState(),
+      parent = this._parentFormGroup || this._parentForm,
+      control = this._ngControl() ? (this._ngControl()?.control as FormControl) : null,
+      newState = this._errorStateMatcher.isErrorState(control, parent);
+    if (newState !== oldState) {
+      this._errorState.set(newState);
+    }
   }
 
   disabledButton() {
@@ -413,11 +450,11 @@ export class NxNumberStepperComponent
 
   private getDecimalSeparator(locale: string) {
     const sampleDecimalNumber = 1.1;
-    const seperator =
+    return (
       Intl.NumberFormat(locale)
         .formatToParts(sampleDecimalNumber)
-        .find((part) => part.type === 'decimal')?.value || '.';
-    return seperator;
+        .find((part) => part.type === 'decimal')?.value || '.'
+    );
   }
 
   /** @docs-private */
@@ -578,6 +615,10 @@ export class NxNumberStepperComponent
       return { nxNumberStepperStepError: 'Value is not a valid step' };
     }
     return null;
+  }
+
+  handleBlur() {
+    this.onTouchedCallback();
   }
 
   /** @docs-private */

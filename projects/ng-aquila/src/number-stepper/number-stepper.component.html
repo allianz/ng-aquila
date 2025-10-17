@@ -10,7 +10,7 @@
     <ng-content></ng-content>
   </div>
 }
-<div class="nx-stepper__input-container" [class.error-spacing]="errorMessages()">
+<div class="nx-stepper__input-container" [class.error-spacing]="_isError()">
   <button
     [attr.aria-label]="decrementAriaLabel || _intl.decrementAriaLabel"
     [nxButton]="_buttonType"
@@ -33,12 +33,12 @@
         [ngClass]="inputClassNames"
         [value]="viewValue()"
         (input)="onInputChange($event)"
-        (blur)="onTouchedCallback()"
+        (blur)="handleBlur()"
         #nativeInput
         spellcheck="false"
         [disabled]="disabled"
         [readonly]="readonly || inputFieldReadonly()"
-        [attr.aria-invalid]="errorMessages().length > 0 || null"
+        [attr.aria-invalid]="_isError() || null"
         [attr.aria-describedby]="ariaDescribedByComputed()"
         [attr.aria-label]="inputAriaLabel()"
         [attr.aria-labelledby]="ariaLabelledByComputed()"
@@ -64,4 +64,7 @@
   </button>
 </div>
 
-<ng-content select="nx-error"></ng-content>
+<!-- Eventhough error state is only set after blur, we need to hold off content-projected errors that are coming from the form control (e.g. 'required') -->
+@if (!_ngControl || _errorState()) {
+  <ng-content select="nx-error"></ng-content>
+}

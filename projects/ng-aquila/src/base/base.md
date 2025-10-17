@@ -27,6 +27,8 @@ The module is auto-imported when you use the [formfield](./documentation/formfie
 
 <!-- example(error) -->
 
+If you want to use a custom HTML element for error messages and have it picked up by a component's content projection (e.g. number stepper), you can add `ngProjectAs="nx-error"` to your element. This allows the component to recognize and project your custom error element as if it were an `<nx-error>`.
+
 ### Label
 
 The `<nx-label>` is a base component to display a styled label.

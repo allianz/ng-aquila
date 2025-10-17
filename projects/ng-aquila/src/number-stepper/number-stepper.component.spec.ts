@@ -102,6 +102,8 @@ describe('NxNumberStepperComponent', () => {
         LocaleUsStepper,
         ReactiveFormOnBlurStepper,
         DisableableStepper,
+        ErrorStepper,
+        ReactiveInvalidStepOnInit,
       ],
       providers: [{ provide: NxNumberStepperIntl, useClass: MyIntl }],
     }).compileComponents();
@@ -426,6 +428,27 @@ describe('NxNumberStepperComponent', () => {
       createTestComponent(ErrorStepper);
       expect(stepperNativeElement).toHaveClass('is-error');
     });
+
+    it('should defer showing errors until blur for reactive form control', fakeAsync(() => {
+      createTestComponent(ReactiveInvalidStepOnInit);
+
+      expect(stepperNativeElement).not.toHaveClass('is-error');
+      expect(fixture.nativeElement.querySelector('nx-error')).toBeNull();
+
+      const input = fixture.nativeElement.querySelector('input') as HTMLInputElement;
+      input.value = '1'; // invalid step
+      input.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      expect(stepperNativeElement).not.toHaveClass('is-error');
+      expect(fixture.nativeElement.querySelector('nx-error')).toBeNull();
+      input.dispatchEvent(new Event('blur'));
+      fixture.detectChanges();
+      tick();
+      fixture.detectChanges();
+
+      expect(stepperNativeElement).toHaveClass('is-error');
+      expect(fixture.nativeElement.querySelector('nx-error')).not.toBeNull();
+    }));
   });
 
   describe('number formatting', () => {
@@ -575,21 +598,28 @@ describe('NxNumberStepperComponent', () => {
 
       inputElement.value = 'abc'; // invalid number
       inputElement.dispatchEvent(new Event('input'));
+      inputElement.dispatchEvent(new Event('blur'));
       fixture.detectChanges();
+      tick();
       expect(formControl.errors).toEqual({ nxNumberStepperFormatError: 'Not a valid number' });
 
       inputElement.value = '4.2'; // not an integer
       inputElement.dispatchEvent(new Event('input'));
+      inputElement.dispatchEvent(new Event('blur'));
       fixture.detectChanges();
+      tick();
       expect(formControl.errors).toEqual({ nxNumberStepperStepError: 'Value is not a valid step' });
 
       inputElement.value = ''; // cleared input
       inputElement.dispatchEvent(new Event('input'));
+      inputElement.dispatchEvent(new Event('blur'));
       fixture.detectChanges();
+      tick();
       expect(formControl.errors).toBeNull();
 
       testInstance.stepperInstance.value = null; // set programmatically null
       fixture.detectChanges();
+      tick();
       expect(formControl.errors).toBeNull();
 
       formControl.setValidators([Validators.required]);
@@ -597,7 +627,9 @@ describe('NxNumberStepperComponent', () => {
 
       inputElement.value = ''; // empty input, should trigger required error
       inputElement.dispatchEvent(new Event('input'));
+      inputElement.dispatchEvent(new Event('blur'));
       fixture.detectChanges();
+      tick();
       expect(formControl.errors).toEqual({ required: true });
     }));
 
@@ -968,4 +1000,24 @@ class ReactiveFormOnBlurStepper extends NumberStepperTest {
 })
 class ErrorStepper extends NumberStepperTest {
   @ViewChild(NxErrorComponent) error!: NxErrorComponent;
+}
+
+@Component({
+  template: `
+    <form [formGroup]="testForm">
+      <nx-number-stepper formControlName="count" [step]="2" [min]="0" [max]="10">
+        <nx-error>Invalid step</nx-error>
+      </nx-number-stepper>
+    </form>
+  `,
+  imports: [NxNumberStepperModule, ReactiveFormsModule, NxErrorComponent],
+})
+class ReactiveInvalidStepOnInit extends NumberStepperTest {
+  testForm: FormGroup;
+  constructor(private readonly fb: FormBuilder) {
+    super();
+    this.testForm = this.fb.group({
+      count: 2, // valid (step=2, min=0)
+    });
+  }
 }
