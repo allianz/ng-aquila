@@ -50,6 +50,10 @@ Application developers can implement custom column behavior, such as column hidi
 
  ### Column reorder with drag & drop
  To allow users to reorder columns by drag and drop, you can use [CDKdrag](https://material.angular.io/cdk/drag-drop) from the Angular Material CDK library. To get started, you need to import `DragDropModule` from `@angular/cdk/drag-drop` and add the cdkDrag directive. Here's a simple example:
+
+<div class="docs-deprecation-warning">
+  <strong>Note:</strong> This is a technical demo for column reordering and is not a fully supported component. Additional implementation is required to ensure proper accessibility, UX, and design before using it in production.
+</div>
  <!-- example(table-column-reorder) -->
 
  ### Column resize
