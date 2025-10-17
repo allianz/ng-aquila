@@ -546,12 +546,10 @@ $margin-to-message: nx-spacer(3xs);
     background-color: v(formfield-disabled-background-color);
   }
 
-  &.has-outline {
-    input,
-    textarea {
-      @include input-placeholder {
-        color: v(formfield-input-native-placeholder-disabled-color);
-      }
+  input,
+  textarea {
+    @include input-placeholder {
+      color: v(formfield-input-native-placeholder-disabled-color);
     }
   }
 

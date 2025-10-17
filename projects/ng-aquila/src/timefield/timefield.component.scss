@@ -37,6 +37,7 @@ $selected-box-shadow: 0 -2px 0 0;
     width: 2ch;
     padding: 0;
     margin: 0;
+    text-overflow: unset !important;
   }
   &__minutes {
     width: 100%;
