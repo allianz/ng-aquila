@@ -48,9 +48,7 @@
     [class.is-outline]="_isOutline"
     (keydown)="_onKeydown($event)"
     [attr.aria-owns]="_isOpen ? _comboboxId : null"
-    aria-expanded="true"
     (focusin)="_onFocusWithinOverlay($event)"
-    [attr.aria-activedescendant]="_getAriaActiveDescendant()"
     tabindex="-1"
     [attr.aria-labelledby]="_getAriaLabelledBy()"
     #panelContent
@@ -62,7 +60,7 @@
     }
 
     @if (_isOutline && !disableSelectAll) {
-      <div class="item actions select-all">
+      <div class="item actions select-all" role="listbox" [attr.aria-label]="_intl.selectAll">
         <nx-multi-select-all
           (selectedAllChange)="_onSelectAll()"
           [label]="_intl.selectAll"

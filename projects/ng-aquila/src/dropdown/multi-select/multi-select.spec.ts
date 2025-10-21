@@ -697,15 +697,6 @@ describe('NxMultiSelectComponent', () => {
           expect(await options[1].isActive()).toBeTrue();
         });
 
-        it('sets the aria activedecenant', async () => {
-          const panel = (await multiSelectHarness.getPanel()) as TestElement;
-          const options = await multiSelectHarness.getOptions();
-          const ariaActivedescendant = await panel.getAttribute('aria-activedescendant');
-          const expectedId = await options[1].getId();
-
-          expect(ariaActivedescendant).toBe(expectedId);
-        });
-
         describe('and navigate to the next option', () => {
           beforeEach(async () => {
             await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
@@ -714,15 +705,6 @@ describe('NxMultiSelectComponent', () => {
           it('sets the third option active', async () => {
             const options = await multiSelectHarness.getOptions();
             expect(await options[2].isActive()).toBeTrue();
-          });
-
-          it('sets the aria activedecenant', async () => {
-            const panel = (await multiSelectHarness.getPanel()) as TestElement;
-            const options = await multiSelectHarness.getOptions();
-            const ariaActivedescendant = await panel.getAttribute('aria-activedescendant');
-            const expectedId = await options[2].getId();
-
-            expect(ariaActivedescendant).toBe(expectedId);
           });
 
           describe('navigate to previous option', () => {
