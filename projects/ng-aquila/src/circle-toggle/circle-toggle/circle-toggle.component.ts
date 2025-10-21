@@ -458,10 +458,10 @@ export class NxCircleToggleComponent
 
   /** @docs-private */
   toggle(event: Event) {
-    event.preventDefault();
     event.stopPropagation();
 
     if (this.disabled || this.readonly || (this.toggleGroup && this.checked)) {
+      event.preventDefault();
       return;
     }
 
