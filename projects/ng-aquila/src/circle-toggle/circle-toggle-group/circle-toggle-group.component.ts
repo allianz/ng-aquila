@@ -76,7 +76,7 @@ export const CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS =
     '[attr.aria-disabled]': 'disabled || readonly || false',
     '[attr.aria-labelledby]': 'name',
     '[attr.aria-required]': 'required',
-    '[class.has-error]': 'errorState',
+    '[class.has-error]': 'errorState()',
     '[attr.name]': 'name',
     '[attr.id]': 'id',
     '[class.nx-circle-toggle-group]': 'true',
