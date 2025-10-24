@@ -123,6 +123,10 @@ $sticky-shadow-size: nx-spacer(3xs);
     padding: nx-spacer(s);
   }
 
+  &--indented {
+    padding-left: v(table-expandable-cell-indent);
+  }
+
   &:first-child .nx-cell__wrapper {
     padding-left: nx-spacer(2xs);
 

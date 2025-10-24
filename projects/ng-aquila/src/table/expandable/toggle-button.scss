@@ -16,14 +16,14 @@
   height: nx-line-height(2xs);
 
   .nx-toggle-button__icon {
-    transform: rotateZ(0);
+    transform: rotate(0);
     transition: transform 200ms ease;
     color: v(expandable-table-arrow-icon-color);
   }
 
   &.is-expanded {
     .nx-toggle-button__icon {
-      transform: rotateZ(-180deg);
+      transform: rotate(90deg);
     }
   }
 
