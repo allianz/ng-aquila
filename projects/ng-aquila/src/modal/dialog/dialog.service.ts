@@ -210,10 +210,18 @@ export class NxDialogService implements OnDestroy {
    * @returns The overlay configuration.
    */
   private _getOverlayConfig(modalConfig: NxModalConfig): OverlayConfig {
+    // Add horizontal margin class to modal panel by default
+    let panelClasses: string[] = ['nx-modal--x-margin'];
+    if (modalConfig.panelClass) {
+      panelClasses = Array.isArray(modalConfig.panelClass)
+        ? [...panelClasses, ...modalConfig.panelClass]
+        : [...panelClasses, modalConfig.panelClass];
+    }
+
     const state = new OverlayConfig({
       positionStrategy: this._overlay.position().global(),
       scrollStrategy: modalConfig.scrollStrategy || this._scrollStrategyFactory(),
-      panelClass: modalConfig.panelClass,
+      panelClass: panelClasses,
       hasBackdrop: modalConfig.hasBackdrop,
       minWidth: modalConfig.minWidth,
       minHeight: modalConfig.minHeight,

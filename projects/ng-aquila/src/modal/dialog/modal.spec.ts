@@ -540,6 +540,19 @@ describe('NxDialog', () => {
     expect(overlayPane.style.height).toBe('100px');
   });
 
+  it('should have horizontal margin panel class by default', () => {
+    dialog.open(PizzaMsg, {
+      viewContainerRef: testViewContainerRef,
+    });
+
+    viewContainerFixture.detectChanges();
+
+    const overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
+    expect(overlayPane.classList)
+      .withContext('Expected default horizontal margin class')
+      .toContain('nx-modal--x-margin');
+  });
+
   it('should override the min-width of the overlay pane', () => {
     dialog.open(PizzaMsg, {
       minWidth: '500px',
