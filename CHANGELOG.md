@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.6.0](https://github.com/allianz/ng-aquila/compare/v20.5.0...v20.6.0) (2025-10-24)
+
+
+### Documentation 📚
+
+* change starter stackblitz app in welcome page to github ([10802cf](https://github.com/allianz/ng-aquila/commit/10802cf3fd703541ee3d708eecd79dbe9bf03cbe))
+* **contained-list:** add a contained list pattern example ([73746db](https://github.com/allianz/ng-aquila/commit/73746db615a8b220d7f85a95cb6e451cb5fb890f))
+* **headline:** add example for headline with attention text ([40041cc](https://github.com/allianz/ng-aquila/commit/40041cc967ca442e80a9d2d94518cdb44a7dc900))
+* **table:** mask drag&drop column as technical demo ([0de183c](https://github.com/allianz/ng-aquila/commit/0de183c7a4acc800b0bdc556c8a5cd8b3989ac97))
+
+
+### Features ✨
+
+* **attention-color:** a1 attention color ([901607d](https://github.com/allianz/ng-aquila/commit/901607d05bf90d470f4b2f9c996a05b47c0faad2))
+* **avatar:** A1 accent color for avatar ([862796e](https://github.com/allianz/ng-aquila/commit/862796ec55248996abb3290a4f6cf7177d386bd9))
+* **context-menu:** add NxContextMenuGroupComponent for grouping menu items ([154e63e](https://github.com/allianz/ng-aquila/commit/154e63e931124860ccb87d83ae98e2097f6a4467))
+* **number-stepper:** defer error display until input blur ([dc3ab91](https://github.com/allianz/ng-aquila/commit/dc3ab9172689303b5c87f951347cf52f32b8eab5))
+* **popover:** update style token ([49d5615](https://github.com/allianz/ng-aquila/commit/49d5615ad058b288dcbfa098dd13f06031fc0942))
+* **table:** add indent option to expandable cell ([417f750](https://github.com/allianz/ng-aquila/commit/417f7509cc566ab05eb8c4506de10894c1d187c0))
+
+
+### Bug Fixes 🐛
+
+* **autocomplete:** a11y in shadowDom ([7b1cd89](https://github.com/allianz/ng-aquila/commit/7b1cd8930fdce09a27c34a2f3101ba216665cc84))
+* **circle-toggle:** has-error class host binding ([2b7f4b2](https://github.com/allianz/ng-aquila/commit/2b7f4b25c5dd7df348753a16bb87907d79bf6845))
+* **circle-toggle:** make dom state sync correctly ([dbc11d9](https://github.com/allianz/ng-aquila/commit/dbc11d9181f08bc4faeb43ebd4f1c673ea1bdb18))
+* **modal:** update horizontal margin ([a70421b](https://github.com/allianz/ng-aquila/commit/a70421b0fcb0f058acb75a5b2c2a83350059697c))
+* **multi-select:** fix a11y issues shown in axe DevTools  ([c5c3f0b](https://github.com/allianz/ng-aquila/commit/c5c3f0b6973ab0f5afdcfb9fb8188f0ddf1d7b4d))
+* **timefield:** prevent formfield ellipsis styles bleeding into timefield inputs ([fafaafe](https://github.com/allianz/ng-aquila/commit/fafaafeedff44ae6e2ca35bc15e0df583458d95e))
+
 ## [20.5.0](https://github.com/allianz/ng-aquila/compare/v20.4.0...v20.5.0) (2025-10-10)
 
 
