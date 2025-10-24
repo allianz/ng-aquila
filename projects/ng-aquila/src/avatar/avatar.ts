@@ -4,15 +4,26 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   Directive,
   ElementRef,
   Input,
+  input,
   OnDestroy,
 } from '@angular/core';
-
 /** Size of an avatar. */
 export type NxAvatarSize = 'xsmall' | 'small' | 'small-medium' | 'medium' | 'large' | 'xlarge';
-
+export type NxAvatarAccent =
+  | 'yellow'
+  | 'orange'
+  | 'red'
+  | 'purple'
+  | 'teal'
+  | 'aqua'
+  | 'blue'
+  | 'green'
+  | 'gray'
+  | 'default';
 @Component({
   selector: '[nxAvatar]',
   template: `<div class="nx-avatar__content-wrapper">
@@ -27,6 +38,7 @@ export type NxAvatarSize = 'xsmall' | 'small' | 'small-medium' | 'medium' | 'lar
     '[class.nx-avatar--medium]': 'size === "medium"',
     '[class.nx-avatar--large]': 'size === "large"',
     '[class.nx-avatar--xlarge]': 'size === "xlarge"',
+    '[class]': '_avatarClass()',
   },
   standalone: true,
 })
@@ -41,6 +53,16 @@ export class NxAvatarComponent {
   get size(): NxAvatarSize {
     return this._size;
   }
+  readonly accentColor = input<NxAvatarAccent>('default');
+  readonly attention = input<boolean>(false);
+  private readonly _avatarClass = computed(() => {
+    if (this.accentColor() === 'default') {
+      return '';
+    }
+    const attentionState = this.attention() ? 'attention' : 'subtle';
+    return `nx-avatar--accent-${attentionState}-${this.accentColor()}`;
+  });
+
   private _size: NxAvatarSize = 'medium';
 
   constructor(private readonly _cdr: ChangeDetectorRef) {}

@@ -40,6 +40,28 @@ You can change the color of the avatar by overwriting the default background and
 
 <!-- example(avatar-colors) -->
 
+<div class="docs-hide-ndbx">
+
+### Color variants
+
+The avatar component now supports a range of new color variants for both attention and subtle states. You can choose from the following colors:
+
+- `yellow`
+- `orange`
+- `red`
+- `purple`
+- `teal`
+- `aqua`
+- `blue`
+- `green`
+- `gray`
+
+To use an accent color variant, apply the `[accentColor]` property; to enable an attention variant, apply the `[attention]` property.
+
+<!-- example(avatar-accent-colors) -->
+
+</div>
+
 ### Accessibility
 
 When using `nxAvatar` on a native button, please set a suitable `aria-label` for it.

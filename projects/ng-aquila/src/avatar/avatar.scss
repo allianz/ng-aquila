@@ -11,6 +11,24 @@
   }
 }
 
+@mixin accent-color($color, $attention) {
+  @if ($attention) {
+    background-color: v(color-attention-#{$color});
+    color: v(color-on-attention-resting);
+    &:disabled {
+      background-color: v(avatar-color-attention-disabled);
+      color: v(avatar-color-on-attention-disabled);
+    }
+  } @else {
+    background-color: v(color-subtle-#{$color});
+    color: v(color-on-subtle-#{$color});
+    &:disabled {
+      background-color: v(avatar-color-subtle-disabled);
+      color: v(avatar-color-on-subtle-disabled);
+    }
+  }
+}
+
 :host {
   background: v(avatar-background-color);
   color: v(avatar-color);
@@ -53,6 +71,15 @@
 
 :host.nx-avatar--xlarge {
   @include avatar-size(xlarge);
+}
+
+@each $color in (yellow, blue, red, green, orange, purple, teal, aqua, gray) {
+  :host.nx-avatar--accent-attention-#{$color} {
+    @include accent-color($color, true);
+  }
+  :host.nx-avatar--accent-subtle-#{$color} {
+    @include accent-color($color, false);
+  }
 }
 
 // Additional button styles

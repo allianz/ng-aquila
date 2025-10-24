@@ -2,7 +2,7 @@ import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { NxAvatarComponent, NxAvatarSize } from './avatar';
+import { NxAvatarAccent, NxAvatarComponent, NxAvatarSize } from './avatar';
 import { NxAvatarModule } from './avatar.module';
 
 @Directive({ standalone: true })
@@ -35,6 +35,7 @@ describe('NxAvatarComponent', () => {
         AvatarWithImage,
         AvatarButton,
         ConfigurableAvatar,
+        AvatarWithAccent,
       ],
     }).compileComponents();
   }));
@@ -92,6 +93,31 @@ describe('NxAvatarComponent', () => {
       expect(avatarElement).toHaveClass('nx-avatar--medium');
     });
   });
+
+  describe('accent color', () => {
+    it('should return the correct class when attention is true', () => {
+      createTestComponent(AvatarWithAccent);
+      (testInstance as any).accentColor = 'blue';
+      (testInstance as any).attention = true;
+      fixture.detectChanges();
+      expect(avatarElement).toHaveClass('nx-avatar--accent-attention-blue');
+    });
+
+    it('should return the correct class for a custom accent color', () => {
+      createTestComponent(AvatarWithAccent);
+      (testInstance as any).accentColor = 'blue';
+      fixture.detectChanges();
+      expect(avatarElement).toHaveClass('nx-avatar--accent-subtle-blue');
+    });
+
+    it('should return the correct class for attention and custom accent color', () => {
+      createTestComponent(AvatarWithAccent);
+      (testInstance as any).attention = true;
+      (testInstance as any).accentColor = 'red';
+      fixture.detectChanges();
+      expect(avatarElement).toHaveClass('nx-avatar--accent-attention-red');
+    });
+  });
 });
 
 @Component({
@@ -133,3 +159,12 @@ class AvatarButton extends AvatarTest {}
   imports: [NxAvatarModule, NxIconModule],
 })
 class ConfigurableAvatar extends AvatarTest {}
+
+@Component({
+  template: `<div nxAvatar [accentColor]="accentColor" [attention]="attention">SM</div>`,
+  imports: [NxAvatarModule, NxIconModule],
+})
+class AvatarWithAccent extends AvatarTest {
+  accentColor: NxAvatarAccent = 'default';
+  attention = false;
+}
