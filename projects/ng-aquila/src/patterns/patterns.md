@@ -52,6 +52,20 @@ There are different ways to achieve that like anchor links (e.g. `<a href="#id-o
 
 <!-- example(dropdown-fetch-on-filter, { "privateExample": true, "hideStackblitzButton": true }) -->
 
+## Contained List
+<div class="tag-list"> <div class="tag approved-tag">NDBX approved</div> </div>
+
+Styling option for list like presentations.
+
+__Important:__ Do __not__ nest interactive elements like buttons into clickable List Items. That will result in unexpected UX for Users and [accessibility violations](https://www.accessibilitychecker.org/wcag-guides/ensure-interactive-controls-are-not-nested-as-they-are-not-always-announced-by-screen-readers-or-can-cause-focus-problems-for-assistive-technologies/). 
+
+__Hint:__ There are many use cases for Contained Lists with clickable List Items. Make sure to use the right pattern for your use case like using anchors and encapsulating it into a `<nav>` container if you're using it for navigation. 
+
+
+
+<!-- example(contained-list, { "privateExample": true, "hideStackblitzButton": true }) -->
+
+
 <style>
     body{
         --grid-max-width: 1337px;
