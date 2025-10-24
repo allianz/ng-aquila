@@ -21,6 +21,9 @@
 <div nx-docs-example="table-column-hiding" config="{}">exampleID: table-column-hiding</div>
 <h3 id="column-reorder-with-drag-%26-drop" tabindex="-1" class="docs-markdown--h3">Column reorder with drag &amp; drop</h3>
 <p class="docs-markdown--p">To allow users to reorder columns by drag and drop, you can use <a href="https://material.angular.io/cdk/drag-drop">CDKdrag</a> from the Angular Material CDK library. To get started, you need to import <code>DragDropModule</code> from <code>@angular/cdk/drag-drop</code> and add the cdkDrag directive. Here's a simple example:</p>
+<div class="docs-deprecation-warning">
+  <strong>Note:</strong> This is a technical demo for column reordering and is not a fully supported component. Additional implementation is required to ensure proper accessibility, UX, and design before using it in production.
+</div>
  <div nx-docs-example="table-column-reorder" config="{}">exampleID: table-column-reorder</div>
 <h3 id="column-resize" tabindex="-1" class="docs-markdown--h3">Column resize</h3>
 <p class="docs-markdown--p">To let users adjust the width of a column in your table, you can add a resize handler in column header by using <code>nxHeaderResize</code> directive into <code>nxHeaderCell</code> element.</p>
@@ -68,6 +71,9 @@
 <p class="docs-markdown--p"><strong>Note:</strong> For accessibility, ensure that columns in the Table contain consistent content. Expandable rows should maintain the same content structure as defined by the column headers.</p>
 <p class="docs-markdown--p">However, zebra mode using the attribute <code>zebra</code> is not available for tables with expandable rows for stylistic reasons.</p>
 <div nx-docs-example="table-expandable" config="{}">exampleID: table-expandable</div>
+<h3 id="expert%3A-expandable-table-with-indentation" tabindex="-1" class="docs-markdown--h3">Expert: Expandable table with indentation</h3>
+<p class="docs-markdown--p">You can add indentation to an expandable cell inside an expandable row to make it distinct from first‑level rows by adding the <code>[indented]</code> property alongside the proper <code>[nxExpandableTableCell]</code> directive.</p>
+<div nx-docs-example="table-expandable-indent" config="{}">exampleID: table-expandable-indent</div>
 <h3 id="expert%3A-form-elements" tabindex="-1" class="docs-markdown--h3">Expert: Form elements</h3>
 <p class="docs-markdown--p">Form elements can also be added to the table:</p>
 <div nx-docs-example="table-form-elements" config="{}">exampleID: table-form-elements</div>

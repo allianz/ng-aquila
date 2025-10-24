@@ -87,6 +87,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'table': return import('../examples/table/table-examples.module').then(m => m.TableExamplesModule);
             case 'tabs': return import('../examples/tabs/tabs-examples.module').then(m => m.TabsExamplesModule);
             case 'taglist': return import('../examples/taglist/taglist-examples.module').then(m => m.TaglistExamplesModule);
+            case 'text': return import('../examples/text/text-examples.module').then(m => m.TextExamplesModule);
             case 'tile': return import('../examples/tile/tile-examples.module').then(m => m.TileExamplesModule);
             case 'timefield': return import('../examples/timefield/timefield-examples.module').then(m => m.TimefieldExamplesModule);
             case 'toolbar': return import('../examples/toolbar/toolbar-examples.module').then(m => m.ToolbarExamplesModule);

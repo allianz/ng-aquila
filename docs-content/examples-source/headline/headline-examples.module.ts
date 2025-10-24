@@ -3,6 +3,7 @@ import { NxLinkModule } from '@allianz/ng-aquila/link';
 import { NxTableModule } from '@allianz/ng-aquila/table';
 import { NgModule } from '@angular/core';
 
+import { HeadlineAttentionTextExampleComponent } from './headline-attention-text/headline-attention-text-example';
 import { HeadlineFontWeightsExampleComponent } from './headline-font-weights/headline-font-weights-example';
 import { HeadlineLinksExampleComponent } from './headline-links/headline-links-example';
 import { HeadlineNegativeExampleComponent } from './headline-negative/headline-negative-example';
@@ -18,6 +19,7 @@ const EXAMPLES = [
   HeadlineSizesDeprecatedExampleComponent,
   HeadlineSizesA1ExampleComponent,
   HeadlineSizesMappingExampleComponent,
+  HeadlineAttentionTextExampleComponent,
 ];
 
 @NgModule({
@@ -34,6 +36,7 @@ export class HeadlineExamplesModule {
       'headline-sizes-a1': HeadlineSizesA1ExampleComponent,
       'headline-sizes-mapping': HeadlineSizesMappingExampleComponent,
       'headline-type': HeadlineTypeExampleComponent,
+      'headline-attention-text': HeadlineAttentionTextExampleComponent,
     };
   }
 }

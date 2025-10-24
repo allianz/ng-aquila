@@ -4,14 +4,17 @@
 
 .color-1 {
   background-color: var(--documentation-avatar-color-1, #87d68d);
+  color: var(--avatar-color);
 }
 
 .color-2 {
   background-color: var(--documentation-avatar-color-2, #27abd6);
+  color: var(--avatar-color);
 }
 
 .color-3 {
   background-color: var(--documentation-avatar-color-3, #fac748);
+  color: var(--avatar-color);
 }
 
 .color-4 {
