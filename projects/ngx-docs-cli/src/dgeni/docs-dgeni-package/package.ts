@@ -52,6 +52,7 @@ apiDocsPackage.config(
     readTypeScriptModules.sourceFiles = [
       {
         include: '**/*.ts',
+        exclude: '**/*.spec.ts',
       },
     ];
 
