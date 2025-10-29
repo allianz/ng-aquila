@@ -1,0 +1,139 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="12,8,6">
+      <nx-formfield
+        appearance="outline"
+        label="Enter the Amount"
+        floatLabel="always"
+      >
+        <input
+          nxInput
+          [(ngModel)]="inputValue"
+          value="prefilled"
+          (ngModelChange)="fieldChangedManually()"
+        />
+        <button
+          nxIconButton="tertiary small"
+          aria-label="Open A1 generation menu"
+          type="button"
+          nxFormfieldSuffix
+          class="ai-button"
+          [nxPopoverTriggerFor]="popoverAppearanceExample"
+          nxPopoverTrigger="click"
+          [(nxPopoverShow)]="popoverManualOpenFlag"
+          nxPopoverDirection="bottom"
+        >
+          @if(!aiFilled){
+          <nx-icon name="ai-suggestion-o" size="s" aria-hidden="true"></nx-icon>
+          <!-- <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill=""
+            xmlns="http://www.w3.org/2000/svg"
+            >
+            <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M13 7L11.088 2.53859L10 0L8.91203 2.53859L7 7L2.53859 8.91203L0 10L2.53859 11.088L7 13L8.91203 17.4614L10 20L11.088 17.4614L13 13L17.4614 11.088L20 10L17.4614 8.91203L13 7ZM14.9228 10L12.2122 8.83829L11.4768 8.52315L11.1617 7.78784L10 5.07718L8.83829 7.78784L8.52315 8.52315L7.78784 8.83829L5.07718 10L7.78784 11.1617L8.52315 11.4768L8.83829 12.2122L10 14.9228L11.1617 12.2122L11.4768 11.4768L12.2122 11.1617L14.9228 10ZM3.5 1L4.20711 2.79289L6 3.5L4.20711 4.20711L3.5 6L2.79289 4.20711L1 3.5L2.79289 2.79289L3.5 1ZM17.8485 16.1515L17 14L16.1515 16.1515L14 17L16.1515 17.8485L17 20L17.8485 17.8485L20 17L17.8485 16.1515Z"
+            fill="#5A3982"
+            />
+          </svg> -->
+          }@else {
+          <nx-icon name="ai-suggestion" size="s" aria-hidden="true"></nx-icon>
+
+          <!-- <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M10 0L11.4179 5.67166C11.7762 7.1048 12.8952 8.2238 14.3283 8.58209L20 10L14.3283 11.4179C12.8952 11.7762 11.7762 12.8952 11.4179 14.3283L10 20L8.58209 14.3283C8.2238 12.8952 7.1048 11.7762 5.67166 11.4179L0 10L5.67166 8.58209C7.1048 8.2238 8.2238 7.1048 8.58209 5.67166L10 0ZM3.5 1L4 3L6 3.5L4 4L3.5 6L3 4L1 3.5L3 3L3.5 1ZM17 16L16.5 13L16 16L13 16.5L16 17L16.5 20L17 17L20 16.5L17 16Z"
+              fill="#5A3982"
+            />
+          </svg> -->
+          }
+        </button>
+      </nx-formfield>
+
+      <nx-formfield
+        appearance="outline"
+        label="AI prefilled (readonly)"
+        floatLabel="always"
+      >
+        <input nxInput [(ngModel)]="readonlyValue" value="prefilled" readonly />
+        <button
+          nxIconButton="tertiary small"
+          aria-label="Open A1 generation menu"
+          type="button"
+          nxFormfieldSuffix
+          class="ai-button disabled-input"
+          [nxPopoverTriggerFor]="disabledAiField"
+          nxPopoverTrigger="click"
+          nxPopoverDirection="bottom"
+        >
+          <nx-icon name="ai-suggestion" size="s" aria-hidden="true"></nx-icon>
+        </button>
+      </nx-formfield>
+
+      <nx-popover #popoverAppearanceExample>
+        <div nxPopoverTitle>
+          <h3 nxHeadline="subsection-large" class="nx-margin-bottom-s">
+            AI input suggestion
+          </h3>
+        </div>
+
+        <div nxPopoverMainContent>
+          <p nxCopytext="normal" class="nx-margin-bottom-m">1.386.945 CHF</p>
+          <h3 nxHeadline="subsection-small" class="nx-margin-bottom-s">
+            Reasoning
+          </h3>
+          <p nxCopytext="normal" class="nx-margin-bottom-m">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+
+        @if(!aiFilled){
+
+        <div nxPopoverActions alignment="right">
+          <button
+            nxButton="small secondary"
+            type="button"
+            (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
+          >
+            Dismiss
+          </button>
+          <button nxButton="small" type="button" (click)="fillWithAi()">
+            Accept
+          </button>
+        </div>
+        }
+      </nx-popover>
+
+      <nx-popover #disabledAiField>
+        <div nxPopoverTitle>
+          <h3 nxHeadline="subsection-large" class="nx-margin-bottom-s">
+            AI input suggestion
+          </h3>
+        </div>
+
+        <div nxPopoverMainContent>
+          <p nxCopytext="normal" class="nx-margin-bottom-m">1.386.945 CHF</p>
+          <h3 nxHeadline="subsection-small" class="nx-margin-bottom-s">
+            Reasoning
+          </h3>
+          <p nxCopytext="normal" class="nx-margin-bottom-m">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </nx-popover>
+    </div>
+  </div>
+</div>
+<!-- Copyright 2025 ALLIANZ -->

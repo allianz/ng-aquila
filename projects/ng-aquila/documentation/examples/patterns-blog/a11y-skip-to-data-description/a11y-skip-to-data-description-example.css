@@ -1,0 +1,27 @@
+.highlighted {
+  font-weight: bold;
+  color: var(--info);
+}
+
+.v2 {
+  background: #dfeede;
+}
+
+.skip-button:not(:focus):not(:hover) {
+  transform: translateY(-4em);
+  opacity: 0;
+}
+.skip-button {
+  font-size: larger;
+  margin: 0 auto;
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  top: 0.5em;
+  width: 10em;
+  opacity: 1;
+  transition:
+    transform 0.1875s ease-out,
+    opacity 0.1875s ease-out;
+}

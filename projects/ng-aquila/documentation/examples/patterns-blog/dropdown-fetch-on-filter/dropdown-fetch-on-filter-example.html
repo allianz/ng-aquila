@@ -1,0 +1,26 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <nx-formfield label="Car brand">
+        <nx-dropdown
+          [showFilter]="true"
+          filterPlaceholder="Type to search car"
+          #filterDropdown
+        >
+          @if(fetchingOptions()){
+          <div>
+            <nx-spinner
+              size="large"
+              style="display: block; margin-left: auto; margin-right: auto"
+            />
+          </div>
+          } @else { @for (brand of options(); track $index) {
+          <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+          } }
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+  </div>
+</div>
+
+<!-- Copyright 2025 ALLIANZ -->

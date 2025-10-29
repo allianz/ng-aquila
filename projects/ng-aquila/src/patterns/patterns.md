@@ -16,7 +16,7 @@ Welcome to our dedicated space for showcasing the implementation of Allianz Desi
 
 
 ## Soft Character Limit  
-<div class="tag-list"> <div class="tag approved-tag">NDBX Approved</div> <div class="tag active-tag">a11y checked</div></div>
+<div class="tag-list docs-private"> <div class="tag approved-tag">NDBX Approved</div> <div class="tag active-tag">a11y checked</div></div>
 
 
 Sometimes it might be required to allow users to input or paste more text then a the input or text area allows before they submut a form. [The standard `maxlength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/maxlength) will cut of any text that extends the permitted length. 
@@ -26,18 +26,18 @@ A soft character limit enables a user to paste any text and cleanup the text bef
 - validading input length 
 - showing an error message if expected format is not met after edit
 
-<!-- example(text-area-character-limit, { "privateExample": true, "hideStackblitzButton": true }) -->
+<!-- example(text-area-character-limit, { "hideStackblitzButton": true }) -->
 
 ## AI suggestions for Input fields 
-<div class="tag-list">  <div class="tag approved-tag">NDBX Approved</div> </div>
+<div class="tag-list docs-private">  <div class="tag approved-tag">NDBX Approved</div> </div>
 
+Hint: the sparkle icon is not yet available in the icons library. But you still can <nx-link><a href="documentation/icon/overview#register-icons-service">register a custom icon in your App</a></nx-link>.
 
-
-<!-- example(ai-autofill, { "privateExample": true, "hideStackblitzButton": true }) -->
+<!-- example(ai-autofill, { "hideStackblitzButton": true }) -->
 
 
 ## Bypass Blocks 
-<div class="tag-list"> <div class="tag active-tag">a11y example</div> </div>
+<div class="tag-list docs-private"> <div class="tag active-tag">a11y example</div> </div>
 
 🧪 To test this example properly,  <nx-link><a href="examples/a11y-skip-to-data-description">please test in full screen</a></nx-link> and then TAB from the start of the page 🧪
 
@@ -45,12 +45,12 @@ A soft character limit enables a user to paste any text and cleanup the text bef
 
 There are different ways to achieve that like anchor links (e.g. `<a href="#id-of-html-element">`). This example uses Angulars fragmented routing. 
 
-<!-- example(a11y-skip-to-data-description, { "privateExample": true, "hideStackblitzButton": true }) -->
+<!-- example(a11y-skip-to-data-description, { "hideStackblitzButton": true }) -->
 
 ## Fetch Items on filter input  
-<div class="tag-list"> <div class="tag active-tag">technical example ⚙️</div> </div>
+<div class="tag-list docs-private"> <div class="tag active-tag">technical example ⚙️</div> </div>
 
-<!-- example(dropdown-fetch-on-filter, { "privateExample": true, "hideStackblitzButton": true }) -->
+<!-- example(dropdown-fetch-on-filter, { "hideStackblitzButton": true }) -->
 
 ## Contained List
 <div class="tag-list"> <div class="tag approved-tag">NDBX approved</div> </div>
@@ -63,7 +63,7 @@ __Hint:__ There are many use cases for Contained Lists with clickable List Items
 
 
 
-<!-- example(contained-list, { "privateExample": true, "hideStackblitzButton": true }) -->
+<!-- example(contained-list, { "hideStackblitzButton": true }) -->
 
 
 <style>
@@ -73,7 +73,7 @@ __Hint:__ There are many use cases for Contained Lists with clickable List Items
     .component-overview__header {
         font-size: 3rem;
         font-weight: 600;
-        background: linear-gradient(45deg, #00807D, #003781);
+        background: linear-gradient(45deg, var(--success), var(--header-link-active-color));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text; /* For Firefox */
@@ -86,7 +86,7 @@ __Hint:__ There are many use cases for Contained Lists with clickable List Items
     }
 
     .docs-markdown--h2{
-        background: linear-gradient(45deg, #00807D, #003781);
+        background: linear-gradient(45deg, var(--success), var(--header-link-active-color));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text; /* For Firefox */
@@ -109,8 +109,8 @@ __Hint:__ There are many use cases for Contained Lists with clickable List Items
         white-space: nowrap;
         border-radius: 12px;
         min-width: 24px;
-        -webkit-text-fill-color: var(--text-01);
-        color: var(--text-01);
+        -webkit-text-fill-color: var(--badge-color);
+        color: var(--badge-color);
         position: relative;
         bottom: 7px;
         margin-left: 8px;
