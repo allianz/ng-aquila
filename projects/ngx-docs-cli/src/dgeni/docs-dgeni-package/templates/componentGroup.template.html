@@ -5,14 +5,28 @@ endmacro %} {% macro interface(interface) -%} {% include 'interface.template.htm
 'type-alias.template.html' %} {% endmacro %}
 
 <div class="docs-api">
+
+    {%- if doc.ngModule -%}
     <p class="docs-api-module-import">
         <code>
-            <span class="docs-api-module-import__import-span">import</span>
+            <span class="docs-api-module-import__import-span">import </span>
             { {$ doc.ngModule.name $} }
             <span class="docs-api-module-import__from-span">from</span>
             <span class="docs-api-module-import__path-span">'{$ doc.moduleImportPath $}'</span>;
         </code>
     </p>
+        {%- else -%}
+            {%- if doc.components.length -%}
+            <p class="docs-api-module-import">
+                <code>
+                    <span class="docs-api-module-import__import-span">import </span>
+                    { {$ doc.components[0].name $} }
+                    <span class="docs-api-module-import__from-span">from</span>
+                    <span class="docs-api-module-import__path-span">'{$ doc.moduleImportPath $}'</span>;
+                </code>
+            </p>
+            {%- endif -%}
+        {%- endif -%}
 
     {%- if doc.services.length -%}
     <h3 id="services" class="docs-header-link docs-api-h3">
