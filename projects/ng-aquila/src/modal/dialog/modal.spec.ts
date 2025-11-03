@@ -1072,6 +1072,30 @@ describe('NxDialog', () => {
       .toBeFalse();
   });
 
+  it('should move cdk-live-announcer-element to overlay container', fakeAsync(() => {
+    const liveAnnouncer = document.createElement('div');
+    liveAnnouncer.classList.add('cdk-live-announcer-element');
+    document.body.appendChild(liveAnnouncer);
+
+    expect(document.body.contains(liveAnnouncer)).toBeTrue();
+    expect(overlayContainerElement.contains(liveAnnouncer)).toBeFalse();
+
+    const dialogRef = dialog.open(PizzaMsg, {
+      disableClose: true,
+      viewContainerRef: testViewContainerRef,
+    });
+    viewContainerFixture.detectChanges();
+    flush();
+
+    expect(overlayContainerElement.contains(liveAnnouncer)).toBeTrue();
+    dialogRef.close();
+
+    viewContainerFixture.detectChanges();
+    flush();
+
+    expect(document.body.contains(liveAnnouncer)).toBeTrue();
+  }));
+
   it('should add and remove classes while open', () => {
     const dialogRef = dialog.open(PizzaMsg, {
       disableClose: true,
