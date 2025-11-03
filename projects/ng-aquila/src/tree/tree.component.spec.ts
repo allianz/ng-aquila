@@ -478,10 +478,12 @@ describe(NxTreeComponent.name, () => {
         const nodes = getNodes(treeElement);
         expect(nodes.length).toBe(3);
         nodes.forEach((node: any, index: number) => {
+          expect(node.getAttribute('tabindex')).toBe('-1');
           expect(node.getAttribute('aria-level')).toBe(`1`);
           expect(node.getAttribute('aria-posinset')).toBe(`${index + 1}`);
           expect(node.getAttribute('aria-setsize')).toBe(`3`);
           expect(node.getAttribute('role')).toBe(`treeitem`);
+          expect(node.getAttribute('aria-expanded')).not.toBeNull();
         });
       });
 

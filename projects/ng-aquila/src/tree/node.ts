@@ -1,6 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { CdkTree, CdkTreeNode, CdkTreeNodeDef } from '@angular/cdk/tree';
 import {
+  AfterViewChecked,
   AfterViewInit,
   Component,
   computed,
@@ -24,17 +25,21 @@ import { NxTreeComponent } from './tree.component';
   host: {
     class: 'nx-tree__node',
     '[class.is-expanded]': 'isExpanded',
-    '[attr.tabindex]': '-1',
+    '[attr.tabindex]': 'tabIndex()',
     '[attr.aria-level]': 'ariaLevel()',
     '[attr.aria-posinset]': 'ariaPosInSet()',
     '[attr.aria-setsize]': 'ariaSetSize()',
     '[attr.role]': 'ariaRole()',
+    '[attr.aria-expanded]': 'ariaExpanded()',
   },
   providers: [{ provide: CdkTreeNode, useExisting: NxTreeNodeComponent }],
   templateUrl: './node.html',
   standalone: true,
 })
-export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy, AfterViewInit {
+export class NxTreeNodeComponent<T>
+  extends CdkTreeNode<T>
+  implements OnDestroy, AfterViewInit, AfterViewChecked
+{
   constructor(
     _elementRef: ElementRef<HTMLElement>,
     _tree: CdkTree<T>,
@@ -46,13 +51,26 @@ export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy,
   private readonly actionItem = contentChild(NxTreeNodeActionItem);
 
   /** if NxTreeNodeActionItem is present, returns  */
+  readonly tabIndex = computed(() => (this.actionItem() ? null : -1));
   readonly ariaLevel = computed(() => (this.actionItem() ? null : this.level + 1));
   readonly ariaPosInSet = computed(() => (this.actionItem() ? null : this._getPositionInSet()));
   readonly ariaSetSize = computed(() => (this.actionItem() ? null : this._getSetSize()));
   readonly ariaRole = computed(() => (this.actionItem() ? null : 'treeitem'));
+  readonly ariaExpanded = computed(() => (this.actionItem() ? null : this.isExpanded));
 
   ngAfterViewInit(): void {
     this._focusMonitor.monitor(this._elementRef.nativeElement);
+  }
+
+  /**
+   * CdkTreeNode automatically added aria-expanded and tabIndex to the host element
+   * removes them from parent if NxTreeNodeActionItem child is present
+   */
+  ngAfterViewChecked(): void {
+    if (this.actionItem()) {
+      this._elementRef.nativeElement.removeAttribute('aria-expanded');
+      this._elementRef.nativeElement.removeAttribute('tabIndex');
+    }
   }
 
   ngOnDestroy(): void {
