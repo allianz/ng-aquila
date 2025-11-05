@@ -72,13 +72,15 @@ export class NxTableRowComponent implements OnDestroy {
     this._elementRef.nativeElement.removeEventListener('select', this._stopSelectEvent);
   }
 
-  _onSelect($event: KeyboardEvent) {
+  _onSelect($event: Event) {
     if (!this._selectable || this.isSelectionPrevented($event)) {
       return;
     }
 
-    if ($event.keyCode === SPACE) {
-      $event.preventDefault();
+    if ($event instanceof KeyboardEvent) {
+      if ($event.keyCode === SPACE) {
+        $event.preventDefault();
+      }
     }
 
     this.select.emit();

@@ -64,6 +64,7 @@ describe('NxNaturalLanguageFormComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         NxInputModule,
+        CommonModule,
         NaturalLanguageFormBasicComponent,
         NaturalLanguageFormErrorComponent,
         NaturalLanguageFormSizesComponent,
@@ -157,7 +158,7 @@ describe('NxNaturalLanguageFormComponent', () => {
       expect(() => {
         createTestComponent(NaturalLanguageFormErrorComponent);
       }).toThrowError(
-        'NG0951: Child query result is required but no value is available. Find more at https://angular.dev/errors/NG0951',
+        'NG0951: Child query result is required but no value is available. Find more at https://v21.angular.dev/errors/NG0951',
       );
     }));
   });
@@ -412,13 +413,7 @@ class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
       </nx-word>
     </nx-natural-language-form>
   `,
-  imports: [
-    NxNaturalLanguageFormModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NxInputModule,
-    CommonModule,
-  ],
+  imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormWithErrorId extends NaturalLanguageFormTest {}
 

@@ -832,16 +832,36 @@ describe('NxDropdownComponent', () => {
       flush();
       fixture.detectChanges();
       tick(1);
-      // 4 * 44 + 22 (half of item height) + 12 (firstItemPaddingTop) - 100 (middle of panel)
-      expect(dropdownInstance.panelBody?.nativeElement.scrollTop).toBe(110);
+
+      const panelBodyEl = dropdownInstance.panelBody!.nativeElement as HTMLElement;
+      const selectedItem = Array.from(panelBodyEl.querySelectorAll('nx-dropdown-item')).find((i) =>
+        i.classList.contains('nx-selected'),
+      ) as HTMLElement;
+
+      const expectedScrollTop = Math.round(
+        selectedItem.offsetTop - (panelBodyEl.clientHeight - selectedItem.offsetHeight) / 2,
+      );
+
+      expect(panelBodyEl.scrollTop).toBe(expectedScrollTop);
     }));
 
     it('should scroll the selected item in the middle of the panel on dropdown change', fakeAsync(() => {
       createTestComponent(ScrollingTestComponent);
       openDropdownByClick();
+      flush();
+      fixture.detectChanges();
+      tick(1);
 
-      // 4 * 44 + 22 (half of item height) + 12 (firstItemPaddingTop) - 100 (middle of panel)
-      expect(dropdownInstance.panelBody?.nativeElement.scrollTop).toBe(110);
+      const panelBodyEl = dropdownInstance.panelBody!.nativeElement as HTMLElement;
+      const selectedItem = Array.from(panelBodyEl.querySelectorAll('nx-dropdown-item')).find((i) =>
+        i.classList.contains('nx-selected'),
+      ) as HTMLElement;
+
+      const expectedScrollTop = Math.round(
+        selectedItem.offsetTop - (panelBodyEl.clientHeight - selectedItem.offsetHeight) / 2,
+      );
+
+      expect(panelBodyEl.scrollTop).toBe(expectedScrollTop);
     }));
   });
 

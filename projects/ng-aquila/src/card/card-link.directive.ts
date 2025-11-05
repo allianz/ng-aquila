@@ -13,7 +13,7 @@ import { NxCardComponent } from './card.component';
   standalone: true,
 })
 export class NxCardMainLinkDirective {
-  private readonly card = inject(NxCardComponent);
+  protected readonly card = inject(NxCardComponent);
 }
 
 @Directive({

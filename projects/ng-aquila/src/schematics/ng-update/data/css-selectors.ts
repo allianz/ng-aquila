@@ -20,7 +20,7 @@ export interface AquilaCssSelectorData {
 }
 
 export const cssSelectors: VersionChanges<AquilaCssSelectorData> = {
-  [TargetVersion.V20]: [
+  [TargetVersion.V21]: [
     {
       pr: '',
       changes: [

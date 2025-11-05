@@ -6,7 +6,7 @@ import {
 } from '@allianz/ng-aquila/formfield';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
-import { CommonModule } from '@angular/common';
+
 import { Component, contentChildren, Directive, Signal, viewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -409,7 +409,6 @@ abstract class DateRangeTestBase {
     </nx-formfield>
   `,
   imports: [
-    CommonModule,
     NxFormfieldComponent,
     NxDateRangeComponent,
     NxMomentDateModule,
@@ -434,7 +433,6 @@ class BasicDateRangeField implements DateRangeTestBase {
     </nx-formfield>
   `,
   imports: [
-    CommonModule,
     NxFormfieldComponent,
     NxDateRangeComponent,
     NxMomentDateModule,
@@ -474,7 +472,6 @@ class DateRangeWithNull implements DateRangeTestBase {
     NxInputModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule,
   ],
 })
 class DateRangeReactiveForm implements DateRangeTestBase {
@@ -514,7 +511,6 @@ class DateRangeReactiveForm implements DateRangeTestBase {
     NxMomentDateModule,
     NxInputModule,
     FormsModule,
-    CommonModule,
     ReactiveFormsModule,
     NxDatepickerComponent,
     NxDatepickerToggleComponent,
@@ -554,7 +550,6 @@ class DateRangeDisabledTestComponent implements DateRangeTestBase {
     NxDateRangeComponent,
     NxMomentDateModule,
     NxInputModule,
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     NxDatepickerComponent,

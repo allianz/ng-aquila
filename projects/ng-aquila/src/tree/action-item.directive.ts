@@ -10,7 +10,7 @@ import { Directive, ElementRef } from '@angular/core';
   host: {
     '[attr.tabindex]': '-1',
     '[attr.role]': '"treeitem"',
-    '[attr.aria-level]': '_treeNode?.level + 1',
+    '[attr.aria-level]': 'ariaLevel',
     '[attr.aria-posinset]': '_treeNode?._getPositionInSet()',
     '[attr.aria-setsize]': '_treeNode?._getSetSize()',
   },
@@ -19,8 +19,13 @@ import { Directive, ElementRef } from '@angular/core';
 export class NxTreeNodeActionItem<T> {
   constructor(
     private readonly _elementRef: ElementRef<HTMLElement>,
-    private readonly _treeNode: CdkTreeNode<T>,
+    protected readonly _treeNode: CdkTreeNode<T>,
   ) {}
+
+  get ariaLevel(): number | null {
+    const level = this._treeNode?.level;
+    return level === undefined ? null : level + 1;
+  }
 
   focus() {
     this._elementRef.nativeElement.focus();

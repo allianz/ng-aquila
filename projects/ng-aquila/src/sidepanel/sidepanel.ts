@@ -20,6 +20,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { nxSidepanelAnimations } from './sidepanel-animations';
 import { NxSidepanelHeaderComponent } from './sidepanel-header';
+import { AnimationEvent } from '@angular/animations';
 
 /** Type for the available position values. */
 export type PositionType = 'floating' | 'static';

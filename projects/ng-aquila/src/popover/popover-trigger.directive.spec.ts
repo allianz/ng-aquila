@@ -757,6 +757,15 @@ describe('NxPopoverTriggerDirective', () => {
   describe('fallbacks', () => {
     it('should support fallback position', fakeAsync(() => {
       createTestComponent(PopoverFallBackComponent);
+
+      // Force the trigger to the right edge so "right" placement cannot fit
+      const triggerEl = fixture.debugElement.query(By.css('button')).nativeElement as HTMLElement;
+      triggerEl.style.position = 'fixed';
+      triggerEl.style.right = '0';
+      triggerEl.style.top = '50px';
+      fixture.detectChanges();
+      tick();
+
       triggerInstance.direction = 'right';
       hover();
       expect(getPopoverByDirection('right')).toBeFalsy();

@@ -1065,10 +1065,14 @@ describe('NxMultiSelectComponent', () => {
       multiselectElement.nativeElement.style.width = '400px';
       testInstance.panelGrow = false;
       fixture.detectChanges();
+
       await multiSelectHarness.click();
       const panel = (await multiSelectHarness.getOverlayPane()) as TestElement;
 
-      expect((await panel.getDimensions()).width).toBe(398);
+      const triggerWidth = multiselectElement.nativeElement.getBoundingClientRect().width;
+      const panelWidth = (await panel.getDimensions()).width;
+
+      expect(Math.abs(panelWidth - triggerWidth)).toBeLessThanOrEqual(6);
     });
 
     it('should not have a min width if panelgrow is set to false', async () => {

@@ -41,7 +41,7 @@ export const customMigrations: NullableDevkitMigration[] = [PackageImportMigrati
 
 export default function (): Rule {
   return createMigrationSchematicRule(
-    TargetVersion.V20,
+    TargetVersion.V21,
     customMigrations,
     upgradeData,
     onMigrationComplete,

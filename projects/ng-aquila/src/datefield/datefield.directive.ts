@@ -93,12 +93,12 @@ export class NxDatepickerInputEvent<D> {
   ],
   host: {
     '[attr.aria-haspopup]': '!!_datepicker || hasPopup() || null',
-    '[attr.aria-owns]': '(_datepicker?.opened && _datepicker.id) || null',
+    '[attr.aria-owns]': '(_datepicker?.opened && _datepicker?.id) || null',
     '[attr.min]': 'min ? _dateAdapter.toIso8601(min) : null',
     '[attr.max]': 'max ? _dateAdapter.toIso8601(max) : null',
     '[disabled]': 'disabled',
     '[readonly]': 'readonlyState()',
-    '(input)': '_onInput($event.target.value)',
+    '(input)': '_onInput($event.target)',
     '(change)': '_onChange()',
     '(blur)': '_onBlur()',
     '(keydown)': '_onKeydown($event)',
@@ -389,7 +389,9 @@ export class NxDatefieldDirective<D>
     }
   }
 
-  _onInput(value: string) {
+  _onInput(target: EventTarget | null) {
+    if (!target) return;
+    const value = (target as HTMLInputElement).value;
     let date = this._dateAdapter.parse(
       value,
       this._parseFormat || this._dateFormats.parse.dateInput,

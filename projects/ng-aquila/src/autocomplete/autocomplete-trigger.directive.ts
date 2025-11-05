@@ -474,8 +474,10 @@ export class NxAutocompleteTriggerDirective
     this._element.nativeElement.disabled = isDisabled;
   }
 
-  _handleKeydown(event: KeyboardEvent): void {
-    const keyCode = event.keyCode;
+  _handleKeydown(event: Event): void {
+    // Angular does not automatically narrow $event to KeyboardEvent for us in a host binding string
+    const keyEvent = event as KeyboardEvent;
+    const keyCode = keyEvent.keyCode;
 
     // Prevent the default action on all escape key presses. This is here primarily to bring IE
     // in line with other browsers. By default, pressing escape on IE will cause it to revert
@@ -487,7 +489,7 @@ export class NxAutocompleteTriggerDirective
 
     // Close when pressing ESCAPE or ALT + UP_ARROW, based on the a11y guidelines.
     // See: https://www.w3.org/TR/wai-aria-practices-1.1/#textbox-keyboard-interaction
-    if (this.panelOpen && (keyCode === ESCAPE || (keyCode === UP_ARROW && event.altKey))) {
+    if (this.panelOpen && (keyCode === ESCAPE || (keyCode === UP_ARROW && keyEvent.altKey))) {
       this._resetActiveItem();
       this._closeKeyEventStream.next();
       event.stopPropagation();
@@ -500,7 +502,7 @@ export class NxAutocompleteTriggerDirective
       const isArrowKey = keyCode === UP_ARROW || keyCode === DOWN_ARROW;
 
       if (this.panelOpen || keyCode === TAB) {
-        this.autocomplete._keyManager.onKeydown(event);
+        this.autocomplete._keyManager.onKeydown(keyEvent);
       } else if (isArrowKey && this._isFieldEnabled()) {
         this.openPanel();
       }
@@ -513,7 +515,7 @@ export class NxAutocompleteTriggerDirective
     }
   }
 
-  _handleInput(event: KeyboardEvent): void {
+  _handleInput(event: Event): void {
     const target = event.target as HTMLInputElement;
     let value: number | string | null = target.value;
 

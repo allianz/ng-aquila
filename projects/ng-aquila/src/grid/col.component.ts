@@ -67,8 +67,8 @@ export type ColOrder = 'first' | 'last' | 'unordered';
   styleUrls: ['col.component.scss'],
   host: {
     '[class.nx-grid__column]': 'true',
-    '[class.nx-grid__column--container-query]': 'gridLayoutComponent?.containerQuery ?? false',
-    '[class.nx-grid__column--media-query]': '!gridLayoutComponent?.containerQuery ?? true',
+    '[class.nx-grid__column--container-query]': '!!gridLayoutComponent?.containerQuery',
+    '[class.nx-grid__column--media-query]': '!gridLayoutComponent?.containerQuery',
     '[class]': '_classNames',
   },
   standalone: true,

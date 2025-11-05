@@ -2,7 +2,7 @@
   @if (exampleComponent) {
     <ng-template
       [ngComponentOutlet]="exampleComponent?.componentType"
-      [ngComponentOutletNgModuleFactory]="exampleModuleFactory"
+      [ngComponentOutletEnvironmentInjector]="environmentInjector"
     ></ng-template>
   } @else {
     <div style="display: flex; align-items: center; justify-content: center">

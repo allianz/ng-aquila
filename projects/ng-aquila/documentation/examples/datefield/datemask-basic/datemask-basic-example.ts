@@ -15,7 +15,7 @@ import {
   NxLayoutComponent,
   NxRowComponent,
 } from '@allianz/ng-aquila/grid';
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import moment from 'moment';
@@ -29,7 +29,6 @@ import moment from 'moment';
   styleUrls: ['./datemask-basic-example.css'],
   imports: [
     NxFormfieldComponent,
-    CommonModule,
     FormsModule,
     NxDatemaskComponent,
     NxLayoutComponent,

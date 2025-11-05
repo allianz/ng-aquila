@@ -29,6 +29,7 @@ import { NxDatefieldDirective } from './datefield.directive';
 import { NxDatefieldModule } from './datefield.module';
 import { NxDatepickerComponent } from './datepicker/datepicker.component';
 import { NxDatepickerToggleComponent } from './datepicker/datepicker-toggle';
+import 'moment/locale/ja';
 
 @Directive({ standalone: true })
 abstract class DatefieldTest {

@@ -141,7 +141,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
   private _resizeStartWidth!: number;
 
-  private readonly _defaultMinWidth = MIN_WIDTH;
+  protected readonly _defaultMinWidth = MIN_WIDTH;
 
   private readonly _unsubscribeListeners: (() => void)[] = [];
 

@@ -80,7 +80,6 @@ export type NxCheckboxLabelSize = 'small' | 'large';
     '[attr.required]': 'required',
     '[attr.disabled]': 'disabled || null',
     '[attr.role]': '"group"',
-    '(focus)': '_forwardFocusToInput()',
     '[attr.aria-labelledby]': 'getLabelledby()',
   },
   imports: [],
@@ -630,11 +629,6 @@ export class NxCheckboxComponent
   /** Focuses the checkbox element. */
   focus(focusOrigin?: FocusOrigin) {
     this._focusMonitor.focusVia(this._nativeInput, focusOrigin as FocusOrigin);
-  }
-
-  /** Forward focus from host to hidden input field */
-  _forwardFocusToInput() {
-    this._nativeInput.nativeElement.focus();
   }
 
   /** @docs-private */

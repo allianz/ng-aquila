@@ -89,8 +89,8 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
 
   private readonly _destroyed = new Subject<void>();
 
-  @HostListener('click')
-  private _onClick(event: Event) {
+  @HostListener('click', ['$event'])
+  protected _onClick(event: Event) {
     event.preventDefault();
   }
 

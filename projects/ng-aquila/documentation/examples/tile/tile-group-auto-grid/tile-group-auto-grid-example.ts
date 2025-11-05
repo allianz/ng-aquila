@@ -3,7 +3,7 @@ import { NxLabelComponent, NxLabelModule } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxSliderComponent } from '@allianz/ng-aquila/slider';
 import { NxTileComponent, NxTileGroupComponent } from '@allianz/ng-aquila/tile';
-import { CommonModule } from '@angular/common';
+
 import { Component, signal } from '@angular/core';
 
 /**
@@ -12,7 +12,6 @@ import { Component, signal } from '@angular/core';
 @Component({
   selector: 'tile-group-auto-grid-example',
   imports: [
-    CommonModule,
     NxTileGroupComponent,
     NxTileComponent,
     NxIconModule,

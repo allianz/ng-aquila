@@ -54,8 +54,8 @@ export type RowWrapping = 'wrap' | 'nowrap' | 'reverse';
   styleUrls: ['row.component.scss'],
   host: {
     '[class]': '_classNames',
-    '[class.nx-grid__row--container-query]': 'gridLayoutComponent?.containerQuery ?? false',
-    '[class.nx-grid__row--media-query]': '!gridLayoutComponent?.containerQuery ?? true',
+    '[class.nx-grid__row--container-query]': '!!gridLayoutComponent?.containerQuery',
+    '[class.nx-grid__row--media-query]': '!gridLayoutComponent?.containerQuery',
   },
   standalone: true,
 })
