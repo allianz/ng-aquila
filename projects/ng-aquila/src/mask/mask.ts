@@ -15,6 +15,7 @@ export const DEFAULT_MASK_CONFIG: Omit<NxMaskConfig, 'mask'> = {
  */
 export class NxMask {
   private readonly eventHandlers = new Map<keyof HTMLElementEventMap, (event: any) => void>();
+  private _isComposing = false;
   /**
    * _cursor is a helper for saving a position or a selectionRange (selectionStart + selectionEnd)
    * and then apply it later on (in onInput()).
@@ -47,6 +48,8 @@ export class NxMask {
     this.addListener('keydown', this.onKeydown.bind(this));
     this.addListener('input', this.onInput.bind(this));
     this.addListener('paste', this.onPaste.bind(this));
+    this.addListener('compositionstart', this.onCompositionStart.bind(this));
+    this.addListener('compositionend', this.onCompositionEnd.bind(this));
     this.init();
   }
 
@@ -87,6 +90,9 @@ export class NxMask {
   }
 
   private onInput(event: Event) {
+    if (this._isComposing) {
+      return;
+    }
     // during browser autofill
     this.maskConfig.hooks?.beforeInput?.forEach((callback) => callback(event));
 
@@ -151,6 +157,16 @@ export class NxMask {
     }
 
     this.maskConfig.hooks?.afterInput?.forEach((callback) => callback(event));
+  }
+
+  private onCompositionStart(_event: CompositionEvent) {
+    this._isComposing = true;
+  }
+
+  private onCompositionEnd(event: CompositionEvent) {
+    this._isComposing = false;
+    // After composition ends, re-apply mask logic to the input value
+    this.onInput(event);
   }
 
   private onPaste(event: ClipboardEvent) {
