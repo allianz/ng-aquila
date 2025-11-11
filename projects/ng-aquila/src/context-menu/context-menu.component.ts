@@ -26,10 +26,8 @@ import { startWith, switchMap, takeUntil } from 'rxjs/operators';
 
 import { nxContextMenuAnimations } from './context-menu-animations';
 import { NxContextMenuContentDirective } from './context-menu-content.directive';
-import {
-  NxContextMenuItemComponent,
-  NxContextMenuItemWrapComponent,
-} from './context-menu-item.component';
+import { NxContextMenuItemComponent } from './context-menu-item.component';
+import { NxContextMenuItemBase, NxContextMenuItemWrapBase } from './context-menu-item-base';
 
 @Component({
   selector: 'nx-context-menu',
@@ -41,13 +39,13 @@ import {
   imports: [NgClass],
 })
 export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
-  private _keyManager!: FocusKeyManager<NxContextMenuItemComponent>;
+  private _keyManager!: FocusKeyManager<NxContextMenuItemBase>;
 
-  @ContentChildren(NxContextMenuItemComponent, { descendants: true })
-  private _items!: QueryList<NxContextMenuItemComponent>;
+  @ContentChildren(NxContextMenuItemBase, { descendants: true })
+  private _items!: QueryList<NxContextMenuItemBase>;
 
-  @ContentChild(NxContextMenuItemWrapComponent)
-  private readonly _wrap!: NxContextMenuItemWrapComponent;
+  @ContentChild(NxContextMenuItemWrapBase)
+  private readonly _wrap!: NxContextMenuItemWrapBase;
 
   private readonly _init = new ReplaySubject<void>(1);
 
@@ -98,11 +96,11 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
 
   ngAfterContentInit(): void {
     this._items = this._wrap ? this._wrap?._items : this._items;
-    this._keyManager = new FocusKeyManager<NxContextMenuItemComponent>(this._items)
+    this._keyManager = new FocusKeyManager<NxContextMenuItemBase>(this._items)
       .withWrap()
       .withTypeAhead()
       .setFocusOrigin('keyboard')
-      .skipPredicate((item) => item.parentMenu !== this);
+      .skipPredicate((item) => (item as any).parentMenu !== this);
     this._keyManager.tabOut
       .pipe(takeUntil(this._destroyed))
       .subscribe(() => this.closed.emit('tab'));
