@@ -34,8 +34,7 @@ export class NxFileUploaderButtonDirective implements OnDestroy {
 
   constructor(
     private readonly _cdr: ChangeDetectorRef,
-    // TODO: v21 fix name to elementRef
-    readonly elemetRef: ElementRef,
+    readonly elementRef: ElementRef,
   ) {}
 
   /** @docs-private */

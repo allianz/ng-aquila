@@ -450,8 +450,8 @@ export class NxFileUploaderComponent
       }
       this.nativeInputFile.nativeElement.click();
     });
-    const focusButton$ = fromEvent(this.button.elemetRef.nativeElement, 'focus');
-    const clickButton$ = fromEvent(this.button.elemetRef.nativeElement, 'click');
+    const focusButton$ = fromEvent(this.button.elementRef.nativeElement, 'focus');
+    const clickButton$ = fromEvent(this.button.elementRef.nativeElement, 'click');
     let opened = false;
 
     clickButton$.pipe(takeUntil(this._destroyed)).subscribe(() => {
