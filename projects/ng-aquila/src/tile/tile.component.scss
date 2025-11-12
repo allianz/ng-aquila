@@ -68,6 +68,7 @@ $tile-gray-selected-color: #fff;
     .nx-tile__content-wrapper {
       flex-direction: row;
       padding: var(--tile-horizontal-padding);
+      gap: var(--tile-layout-horizontal-spacing);
       justify-content: space-between;
     }
 
