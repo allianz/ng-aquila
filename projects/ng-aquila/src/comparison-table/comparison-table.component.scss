@@ -100,15 +100,6 @@
     .nx-comparison-table__cell.is-selected .nx-comparison-table__cell-content {
       background-color: v(comparison-table-selected-column-background-color);
     }
-
-    // DESKTOP  +  TABLET disabled styles
-    .nx-comparison-table__cell.is-disabled {
-      color: v(comparison-table-disabled-text-color);
-
-      ::ng-deep nx-icon:not(.nx-comparison-table__select-button) {
-        opacity: 40%;
-      }
-    }
   }
 
   ::ng-deep .nx-comparison-table-toggle-section__header-content {
@@ -150,10 +141,6 @@
 
     .nx-comparison-table__cell:not(.is-selected) .nx-comparison-table__cell-content {
       color: v(comparison-table-header-text-color);
-    }
-
-    .nx-comparison-table__cell.is-disabled .nx-comparison-table__cell-content {
-      color: v(comparison-table-disabled-column-header-text-color);
     }
   }
 
@@ -360,10 +347,6 @@
         background-color: v(comparison-table-header-background-color);
         color: v(comparison-table-header-text-color);
       }
-
-      &.is-disabled {
-        color: v(comparison-table-disabled-column-header-text-color);
-      }
     }
 
     .nx-comparison-table__mobile-popular-cell,
@@ -487,18 +470,6 @@
 
       @include break-out(&, 'rtl') {
         right: 0;
-      }
-    }
-
-    // MOBILE disabled styles
-    tr.is-disabled {
-      ::ng-deep .nx-comparison-table__mobile-header-cell,
-      ::ng-deep .nx-comparison-table__cell {
-        color: v(comparison-table-disabled-text-color);
-
-        ::ng-deep nx-icon:not(.nx-comparison-table__select-button) {
-          opacity: 40%;
-        }
       }
     }
   }
