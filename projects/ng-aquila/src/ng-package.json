@@ -4,7 +4,10 @@
   "keepLifecycleScripts": false,
   "lib": {
     "entryFile": "public-api.ts",
-    "cssUrl": "inline"
+    "cssUrl": "inline",
+    "sass": {
+      "silenceDeprecations": ["import"]
+    }
   },
   "allowedNonPeerDependencies": [
     "dayjs",

@@ -46,7 +46,17 @@
             "include": ["projects/ng-aquila/src/!(schematics)/**/*.spec.ts"],
             "tsConfig": "projects/ng-aquila/tsconfig.spec.json",
             "karmaConfig": "projects/ng-aquila/karma.conf.js",
-            "styles": ["projects/opensource-documentation/src/styles.scss"]
+            "styles": ["projects/opensource-documentation/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "sass": {
+                "silenceDeprecations": [
+                  "mixed-decls",
+                  "color-functions",
+                  "global-builtin",
+                  "import"
+                ]
+              }
+            }
           }
         },
         "lint": {
@@ -83,7 +93,17 @@
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/ngx-docs-ui/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-docs-ui/karma.conf.js"
+            "karmaConfig": "projects/ngx-docs-ui/karma.conf.js",
+            "stylePreprocessorOptions": {
+              "sass": {
+                "silenceDeprecations": [
+                  "mixed-decls",
+                  "color-functions",
+                  "global-builtin",
+                  "import"
+                ]
+              }
+            }
           }
         },
         "lint": {
@@ -114,6 +134,16 @@
             "index": "projects/opensource-documentation/src/index.html",
             "browser": "projects/opensource-documentation/src/main.ts",
             "tsConfig": "projects/opensource-documentation/tsconfig.app.json",
+            "stylePreprocessorOptions": {
+              "sass": {
+                "silenceDeprecations": [
+                  "mixed-decls",
+                  "color-functions",
+                  "global-builtin",
+                  "import"
+                ]
+              }
+            },
             "assets": [
               "projects/opensource-documentation/src/favicon.png",
               "projects/opensource-documentation/src/assets",
