@@ -243,54 +243,55 @@ describe('NxMessageToast', () => {
   });
 
   describe('a11y', () => {
-    it('should have the aria-live `polite` attach to wrapper class', () => {
+    it('should have the aria-live `polite` attach to wrapper class', fakeAsync(() => {
       messageToastService.open('test');
       fixture.detectChanges();
-
+      tick(100);
       const containerElement = overlayContainerElement.querySelector('#nx-toast-message-region')!;
       expect(containerElement.getAttribute('aria-live')).toBe('polite');
-    });
+    }));
 
-    it('should have the role of `alert` with an `assertive` politeness if no announcement message is provided', () => {
+    it('should have the role of `alert` with an `assertive` politeness if no announcement message is provided', fakeAsync(() => {
       messageToastService.open('test', { announcementMessage: '', politeness: 'assertive' });
       fixture.detectChanges();
-
+      tick(100);
       const messageToastElement = overlayContainerElement.querySelector('nx-message-toast')!;
       expect(messageToastElement.getAttribute('role')).toBe('alert');
-    });
+    }));
 
-    it('should have the role of `status` with an `assertive` politeness if an announcement message is provided', () => {
+    it('should have the role of `status` with an `assertive` politeness if an announcement message is provided', fakeAsync(() => {
       messageToastService.open('', {
         announcementMessage: 'Yay Burritos',
         politeness: 'assertive',
       });
       fixture.detectChanges();
-
+      tick(100);
       const containerElement = overlayContainerElement.querySelector('nx-message-toast')!;
       expect(containerElement.getAttribute('role')).toBe('status');
-    });
+    }));
 
-    it('should have the role of `status` with a `polite` politeness', () => {
+    it('should have the role of `status` with a `polite` politeness', fakeAsync(() => {
       messageToastService.open('test', { politeness: 'polite' });
       fixture.detectChanges();
-
+      tick(100);
       const containerElement = overlayContainerElement.querySelector('nx-message-toast')!;
       expect(containerElement.getAttribute('role')).toBe('status');
-    });
+    }));
 
-    it('should remove the role if the politeness is turned off', () => {
+    it('should remove the role if the politeness is turned off', fakeAsync(() => {
       messageToastService.open('test', { politeness: 'off' });
       fixture.detectChanges();
-
+      tick(100);
       const containerElement = overlayContainerElement.querySelector('nx-message-toast')!;
       expect(containerElement.getAttribute('role')).toBeFalsy();
-    });
+    }));
 
-    it('has no accessibility violations', async () => {
+    it('has no accessibility violations', fakeAsync(() => {
       messageToastService.open('test');
       fixture.detectChanges();
-      await expectAsync(fixture.nativeElement).toBeAccessible();
-    });
+      tick(100);
+      expectAsync(fixture.nativeElement).toBeAccessible();
+    }));
   });
 });
 

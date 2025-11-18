@@ -37,7 +37,7 @@ export class NxMessageToastService implements OnDestroy {
    * via `_oldToastMessageRef`.
    */
   private _toastRefAtThisLevel: NxMessageToastRef | null = null;
-
+  private _announcementToggle: boolean = false;
   set _oldToastMessageRef(value: NxMessageToastRef | null) {
     if (this._parentMessageToastService) {
       this._parentMessageToastService._oldToastMessageRef = value;
@@ -177,10 +177,6 @@ export class NxMessageToastService implements OnDestroy {
     if (overlayElement) {
       wrapper?.appendChild(overlayElement);
     }
-    if (config.announcementMessage) {
-      // Hide element when announcement message is there
-      overlayElement?.setAttribute('aria-hidden', 'true');
-    }
     return overlayRef;
   }
 
@@ -213,8 +209,18 @@ export class NxMessageToastService implements OnDestroy {
     if (config.duration && config.duration > 0) {
       toastRef.afterOpened().subscribe(() => toastRef._dismissAfter(config.duration!));
     }
-    if (config.announcementMessage) {
-      this._live.announce(config.announcementMessage, config.politeness);
+    // When used with text only and the text is the same as announcementMessage, the announcementMessage should not be announced via the CDKLiveAnnouncer
+    if (
+      config.announcementMessage &&
+      config.announcementMessage !== toastRef.toastInstance.data?.data
+    ) {
+      const message = config.announcementMessage;
+      // Add zero-width space to ensure consecutive messages are different
+      this._announcementToggle = !this._announcementToggle;
+      const uniqueMessage = message + (this._announcementToggle ? '\u200B' : '');
+      setTimeout(() => {
+        this._live.announce(uniqueMessage, config.politeness);
+      }, 100);
     }
   }
 
