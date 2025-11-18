@@ -161,7 +161,7 @@ export class NxNumberStepperComponent
   @ViewChild('nativeInput') nativeInput!: ElementRef;
 
   /** An event emitted on value change. */
-  @Output('valueChange') readonly valueChange = new EventEmitter<number>();
+  @Output('valueChange') readonly valueChange = new EventEmitter<number | null>();
 
   /** Whether the input should be resized. Default: false */
   @Input() set resize(value: BooleanInput) {
@@ -292,7 +292,7 @@ export class NxNumberStepperComponent
     }
 
     this._value.set(newValue);
-    this.valueChange.emit(newValue!);
+    this.valueChange.emit(newValue);
     this.onChangeCallback(newValue);
   }
 
@@ -395,7 +395,9 @@ export class NxNumberStepperComponent
 
   ngDoCheck(): void {
     const control = this._ngControl()?.control as FormControl | null;
-    if (!control) return;
+    if (!control) {
+      return;
+    }
     this._updateErrorState();
   }
 
@@ -484,7 +486,7 @@ export class NxNumberStepperComponent
     }
 
     this.value = newValue;
-    this.valueChange.emit(newValue!);
+    this.valueChange.emit(newValue);
     this.onChangeCallback(newValue);
   }
 
@@ -518,7 +520,7 @@ export class NxNumberStepperComponent
     }
 
     this.value = newValue;
-    this.valueChange.emit(newValue!);
+    this.valueChange.emit(newValue);
     this.onChangeCallback(newValue);
   }
 
