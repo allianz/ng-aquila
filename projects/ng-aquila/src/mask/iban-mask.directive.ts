@@ -1,6 +1,6 @@
 import { Directive, ElementRef, forwardRef, Inject, OnDestroy, OnInit } from '@angular/core';
 import { NG_VALIDATORS, Validator } from '@angular/forms';
-import * as IBAN from 'iban';
+import { countrySpecs, isValidIBAN } from 'ibantools';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -67,7 +67,9 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
   private _setCountryCode(code: string): void {
     code = code.toUpperCase();
     if (code.length === 2 && this._countryCode !== code) {
-      if (IBAN.countries[code]) {
+      const spec = countrySpecs[code];
+      const isBlank = !spec || (typeof spec === 'object' && Object.keys(spec).length === 0);
+      if (!isBlank) {
         this._countryCode = code;
         // we need to run withUpdate = false here or it will mess with the current mask logic.
         // in the beforeInput hook it would already set the input value too early which will mess
@@ -94,36 +96,34 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
   private _getMask(countryCode: string) {
     // the countrySpecs of a country contain: countryCode ("DE"), length (22), structure ("F08F10")
     // and an example belonging to each country
-    const countrySpecs = IBAN.countries[countryCode];
+    const spec = countrySpecs[countryCode];
 
     // 'SS' for country code + '00' for IBAN checksum
     let mask = 'SS00';
 
-    // split up after every third character
-    const characterDefs = countrySpecs.structure.match(/.{1,3}/g);
+    // split and extract pattern
+    let characterDefs = spec.bban_regexp!;
+    const regexPattern = /\[([^\]]+)\]\{(\d+)\}/;
+    let match = regexPattern.exec(characterDefs);
 
-    characterDefs!.forEach((charDef: any) => {
-      const character = charDef[0];
-      const count = Number(charDef.substring(1, 3));
+    while (match !== null) {
+      const charClass = match[1];
+      const count = Number(match[2]);
 
-      switch (character) {
-        // [0-9]
-        case 'F':
-          mask += '0'.repeat(count);
-          break;
-        // [0-9A-Za-z]
-        case 'A':
-          mask += 'A'.repeat(count);
-          break;
-        // [A-Z]
+      // Map character class to mask character
+      if (charClass === '0-9') {
+        mask += '0'.repeat(count); // numeric only
+      } else if (charClass === 'A-Z0-9' || charClass === '0-9A-Z') {
+        mask += 'A'.repeat(count); // alphanumeric
+      } else if (charClass === 'A-Z') {
+        // letters only
         // 'S' in nxMask does accept also [a-z].
         // There is no option for only accepting capital letters at the moment.
-        case 'U':
-          mask += 'S'.repeat(count);
-          break;
+        mask += 'S'.repeat(count);
       }
-    });
-
+      characterDefs = characterDefs.substring(match.index + match[0].length);
+      match = regexPattern.exec(characterDefs);
+    }
     // insert whitespaces after every 4 characters
     mask = mask.match(/.{1,4}/g)!.join(' ');
 
@@ -134,7 +134,7 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
     if (this._countryCodeInvalid()) {
       return { nxIbanInvalidCountryError: 'no valid country code' };
     }
-    if (!IBAN.isValid(this.maskDirective.getUnmaskedValue())) {
+    if (!isValidIBAN(this.maskDirective.getUnmaskedValue())) {
       return { nxIbanParseError: 'no valid iban' };
     }
     return null;
@@ -149,6 +149,6 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
 
   private _countryCodeInvalid(): boolean {
     const enteredCountryCode = this._elementRef.nativeElement.value.substr(0, 2);
-    return enteredCountryCode.length !== 2 || !IBAN.countries[enteredCountryCode];
+    return enteredCountryCode.length !== 2 || !countrySpecs[enteredCountryCode].bban_regexp;
   }
 }

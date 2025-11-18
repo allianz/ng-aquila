@@ -12,6 +12,12 @@
       "description": "Updates package name to @allianz/ng-aquila",
       "factory": "./ng-update/package-name-migration/package-name-migration",
       "cli": "ng"
+    },
+    "replace-ibanjs-in-package-json": {
+      "version": "21.0.0",
+      "description": "remove iban.js and add ibantools to package.json",
+      "factory": "./ng-update/custom-update-tool-migrations/replace-ibanjs-in-package-json",
+      "cli": "ng"
     }
   }
 }

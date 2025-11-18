@@ -1,6 +1,6 @@
 {
   "name": "@allianz/ng-aquila",
-  "version": "20.5.0",
+  "version": "21.0.0-next",
   "repository": {
     "type": "git",
     "url": "https://www.github.com/allianz/ng-aquila.git"
@@ -16,7 +16,7 @@
     "@angular/common": "^20.0.0",
     "@angular/core": "^20.0.0",
     "i18n-iso-countries": "^6.8.0||^7.5.0",
-    "iban": "^0.0.14",
+    "ibantools": "^4.5.1",
     "moment": "^2.29.1",
     "dayjs": "^1.11.5",
     "decimal.js": "^10.3.1"
