@@ -1,3 +1,4 @@
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import {
@@ -14,6 +15,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  inject,
   Input,
   OnDestroy,
   OnInit,
@@ -144,6 +146,9 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
   private readonly _defaultMinWidth = MIN_WIDTH;
 
   private readonly _unsubscribeListeners: (() => void)[] = [];
+
+  private readonly _idService = inject(IdGenerationService);
+  readonly id = this._idService.nextId('nx-sidebar-control');
 
   constructor(
     private readonly _cdr: ChangeDetectorRef,

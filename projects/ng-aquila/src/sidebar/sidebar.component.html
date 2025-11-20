@@ -1,4 +1,4 @@
-<div class="nx-sidebar__box" role="tabpanel" [attr.aria-expanded]="open">
+<div class="nx-sidebar__box" role="tabpanel" [attr.aria-expanded]="open" [id]="id">
   <div class="nx-sidebar__content">
     <ng-content></ng-content>
   </div>
@@ -16,5 +16,7 @@
     (touchstart)="_onResizeStart($event)"
     (click)="_onResizeHandleClick($event)"
     [attr.aria-label]="resizeHandleAriaLabel"
+    [attr.aria-controls]="id"
+    [attr.aria-expanded]="open"
   ></button>
 }
