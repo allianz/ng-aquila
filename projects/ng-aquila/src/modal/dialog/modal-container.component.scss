@@ -6,10 +6,10 @@ $action-bar-height: nx-spacer(2xl);
 
 ::ng-deep .cdk-overlay-pane {
   &.nx-modal--x-margin {
-    margin: 0 nx-spacer(2m);
+    margin: 0 nx-spacer(2m) !important;
 
     @include media-breakpoint-down('small') {
-      margin: 0 nx-spacer(2xs);
+      margin: 0 nx-spacer(2xs) !important;
     }
   }
   &.is-fullscreen {
