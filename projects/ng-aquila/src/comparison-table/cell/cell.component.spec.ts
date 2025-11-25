@@ -16,7 +16,6 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import axe from 'axe-core';
 
 import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.spec';
@@ -62,7 +61,6 @@ describe('NxComparisonTableCell', () => {
     TestBed.configureTestingModule({
       imports: [
         NxComparisonTableModule,
-        BrowserAnimationsModule,
         BasicCellComponent,
         ConfigurableCellComponent,
         ToggleSectionCellComponent,

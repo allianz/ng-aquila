@@ -1,7 +1,7 @@
 <div class="nx-modal" role="dialog" cdkTrapFocus cdkTrapFocusAutoCapture cdkFocusInitial>
   <div class="nx-modal__backdrop" (click)="clickOutsideModal()">
     <div class="nx-modal__position">
-      <div class="nx-modal__container" (click)="cancelClick($event)" [@scaleUpDown]>
+      <div class="nx-modal__container" (click)="cancelClick($event)">
         <div class="nx-modal__content-wrapper" cdkScrollable>
           @if (body) {
             <ng-container *ngTemplateOutlet="body"></ng-container>

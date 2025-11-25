@@ -37,17 +37,8 @@ export default function (options: Schema): Rule {
       options?.type === 'b2b' ? addExpertModule(options) : noop(),
       options.noTheme ? noop() : addAquilaTheme(options),
       addCdkStyles(options),
-      addAnimationsProvider(options),
     ]);
   };
-}
-
-function addAnimationsProvider(options: Schema): Rule {
-  return addRootProvider(
-    options.project,
-    ({ code, external }) =>
-      code`${external('provideAnimations', '@angular/platform-browser/animations')}()`,
-  );
 }
 
 function addExpertModule(options: Schema): Rule {

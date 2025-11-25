@@ -1,6 +1,5 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule, NxStatusIconType } from '@allianz/ng-aquila/icon';
-import { animateChild, query, transition, trigger, useAnimation } from '@angular/animations';
 import { CdkTrapFocus, FocusMonitor } from '@angular/cdk/a11y';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { NgTemplateOutlet } from '@angular/common';
@@ -16,14 +15,14 @@ import {
   OnDestroy,
   OnInit,
   Output,
+  signal,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 
-import { fadeIn, fadeOut, scaleDown, scaleUp } from './animations';
 import { NxModalService } from './modal.service';
 
 /** Container for the action buttons in a modal. Has a fixed position at the bottom of the modal on scroll. */
@@ -72,19 +71,10 @@ export class NxModalTitleComponent {
   templateUrl: 'modal.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./modal.component.scss'],
-  animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [useAnimation(fadeIn), query('@scaleUpDown', [animateChild()])]),
-      transition(':leave', [query('@scaleUpDown', [animateChild()]), useAnimation(fadeOut)]),
-    ]),
-    trigger('scaleUpDown', [
-      transition(':enter', useAnimation(scaleDown)),
-      transition(':leave', useAnimation(scaleUp)),
-    ]),
-  ],
   host: {
-    '[@fadeInOut]': '',
     '[class.nx-modal--fixed-width]': 'size === "fixed"',
+    '[class.nx-modal--entering]': 'true',
+    '[class.nx-modal--leaving]': '_isLeaving()',
   },
   imports: [CdkTrapFocus, NxIconModule, CdkScrollable, NgTemplateOutlet, NxButtonModule],
 })
@@ -92,6 +82,9 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
   private _closeButtonLabel = 'Close dialog';
 
   @ViewChild('closeButton') _closeButton!: ElementRef;
+
+  /** @docs-private */
+  protected _isLeaving = signal(false);
 
   /**
    * Sets the 'aria-label' of the modal close button needed for accessibility.
@@ -160,7 +153,10 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.modalService.close$
-      .pipe(takeUntil(this._destroyed))
+      .pipe(
+        tap(() => this._isLeaving.set(true)),
+        takeUntil(this._destroyed),
+      )
       .subscribe(() => this.closeEvent.emit());
 
     this.removeEventListener = this.eventManager.addEventListener(

@@ -1,4 +1,3 @@
-import { AnimationEvent } from '@angular/animations';
 import {
   BasePortalOutlet,
   CdkPortalOutlet,
@@ -6,6 +5,7 @@ import {
   TemplatePortal,
 } from '@angular/cdk/portal';
 import {
+  AnimationCallbackEvent,
   ChangeDetectorRef,
   Component,
   ComponentRef,
@@ -17,7 +17,6 @@ import {
 import { Subject } from 'rxjs';
 
 import { NxMessageComponent } from '../message/message.component';
-import { messageToastAnimations } from './message-toast-animations';
 import {
   NxMessageToastConfig,
   NxMessageToastContext,
@@ -34,10 +33,10 @@ import {
   styleUrls: ['./message-toast.component.scss'],
   host: {
     '[attr.role]': '_role',
-    '[@state]': '_animationState',
-    '(@state.done)': 'onAnimationEnd($event)',
+    '[class.nx-message-toast--visible]': '_animationState === "visible"',
+    '[class.nx-message-toast--hidden]': '_animationState === "hidden"',
+    '(animate.enter)': 'onAnimateEnter($event)',
   },
-  animations: [messageToastAnimations.toastState],
   imports: [NxMessageComponent, CdkPortalOutlet],
 })
 export class NxMessageToastComponent extends BasePortalOutlet implements OnDestroy {
@@ -71,7 +70,8 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
   ) {
     super();
 
-    this._context = this.config.context!;
+    // Context is guaranteed to be set by the service that creates this component
+    this._context = this.config.context ?? 'info';
     this._setAriaLabels();
   }
 
@@ -87,24 +87,15 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
     return this._portalOutlet.attachTemplatePortal(portal);
   }
 
-  /** Handle end of animations, updating the state of the notification. */
-  onAnimationEnd(event: AnimationEvent) {
-    const { fromState, toState } = event;
+  protected onAnimateEnter(event: AnimationCallbackEvent) {
+    const onEnter = this._onEnter;
 
-    if ((toState === 'void' && fromState !== 'void') || toState === 'hidden') {
-      this._completeExit();
-    }
-
-    if (toState === 'visible') {
-      // Note: we shouldn't use `this` inside the zone callback,
-      // because it can cause a memory leak.
-      const onEnter = this._onEnter;
-
-      this._ngZone.run(() => {
-        onEnter.next();
-        onEnter.complete();
-      });
-    }
+    // Note: we shouldn't use `this` inside the zone callback,
+    // because it can cause a memory leak.
+    this._ngZone.run(() => {
+      onEnter.next();
+      onEnter.complete();
+    });
   }
 
   /** Begin animation of message toast entrance into view. */
@@ -123,6 +114,10 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
     // `NxMessageToastService.open`).
     this._animationState = 'hidden';
     this._cdr.markForCheck();
+
+    setTimeout(() => {
+      this._completeExit();
+    }, 300); // TODO: use actual animation time
   }
 
   /** Makes sure the exit callbacks have been invoked when the element is destroyed. */

@@ -278,10 +278,6 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
 
     this._initContextMenu(origin);
 
-    if (this.contextMenu instanceof NxContextMenuComponent) {
-      this.contextMenu._startAnimation();
-    }
-
     if (this._triggerButton) {
       this._triggerButton.setTriggerActive();
       this.contextMenu.closed
@@ -320,22 +316,12 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     this._closingActionsSubscription.unsubscribe();
     this._overlayRef.detach();
 
-    contextMenu._resetAnimation();
-
     if (contextMenu.lazyContent) {
-      // Wait for the exit animation to finish before detaching the content.
-      contextMenu._animationDone
-        .pipe(
-          filter((event) => event.toState === 'void'),
-          take(1),
-          // Interrupt if the content got re-attached.
-          takeUntil(contextMenu.lazyContent._attached),
-        )
-        .subscribe({
-          next: () => contextMenu.lazyContent?.detach(),
-          // No matter whether the content got re-attached, reset the menu.
-          complete: () => this._resetContextMenu(),
-        });
+      // Wait for the exit animation duration before detaching the content.
+      setTimeout(() => {
+        contextMenu.lazyContent?.detach();
+        this._resetContextMenu();
+      }, 120); // TODO: use actual animation time
     } else {
       this._resetContextMenu();
     }
@@ -643,27 +629,13 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     }
 
     this._parentMenu!._hovered()
-      // Since we might have multiple competing triggers for the same menu (e.g. a sub-menu
-      // with different data and triggers), we have to delay it by a tick to ensure that
-      // it won't be closed immediately after it is opened.
       .pipe(
         filter((active) => active === this._contextMenuItemInstance && !active.disabled),
         delay(0, asapScheduler),
         takeUntil(this._destroyed), // TODO this may not be sufficient, subscriptions may be piling up
       )
       .subscribe(() => {
-        // If the same menu is used between multiple triggers, it might still be animating
-        // while the new trigger tries to re-open it. Wait for the animation to finish
-        // before doing so. Also interrupt if the user moves to another item.
-        if (this.contextMenu._isAnimating) {
-          // We need the `delay(0)` here in order to avoid
-          // 'changed after checked' errors in some cases.
-          this.contextMenu._animationDone
-            .pipe(take(1), delay(0, asapScheduler), takeUntil(this._parentMenu!._hovered()))
-            .subscribe(() => this.openContextMenu('mouse'));
-        } else {
-          this.openContextMenu('mouse');
-        }
+        this.openContextMenu('mouse');
       });
   }
 

@@ -10,7 +10,6 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxAccordionModule, NxExpansionPanelComponent } from './index';
@@ -36,7 +35,6 @@ describe('NxExpansionPanelComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        NoopAnimationsModule,
         NxAccordionModule,
         PanelWithContent,
         PanelWithContentInNgIf,
@@ -178,7 +176,7 @@ describe('NxExpansionPanelComponent', () => {
     createTestComponent(PanelWithContent);
     fixture.componentInstance.expanded = true;
     fixture.detectChanges();
-    tick(250);
+    tick(500);
 
     const button = fixture.debugElement.query(By.css('#test-button')).nativeElement;
 
@@ -188,11 +186,15 @@ describe('NxExpansionPanelComponent', () => {
       .toBe(button);
 
     button.blur();
+
     fixture.componentInstance.expanded = false;
     fixture.detectChanges();
-    tick(250);
+    tick(600);
+    fixture.detectChanges();
 
     button.focus();
+    fixture.detectChanges();
+
     expect(_getFocusedElementPierceShadowDom())
       .withContext('Expected button to no longer be focusable.')
       .not.toBe(button);
@@ -200,20 +202,20 @@ describe('NxExpansionPanelComponent', () => {
 
   it('should update the indicator rotation when the expanded state is toggled programmatically', fakeAsync(() => {
     createTestComponent(PanelWithContent);
-
+    fixture.detectChanges();
     tick(250);
 
     const arrow = fixture.debugElement.query(By.css('.nx-expansion-panel__chevron')).nativeElement;
 
-    expect(arrow.style.transform).withContext('Expected no rotation.').toBe('rotate(0deg)');
+    expect(arrow).toHaveClass('chevron-rotate-closed');
+    expect(arrow).not.toHaveClass('chevron-rotate-open');
 
     fixture.componentInstance.expanded = true;
     fixture.detectChanges();
     tick(250);
 
-    expect(arrow.style.transform)
-      .withContext('Expected 180 degree rotation.')
-      .toBe('rotate(180deg)');
+    expect(arrow).toHaveClass('chevron-rotate-open');
+    expect(arrow).not.toHaveClass('chevron-rotate-closed');
   }));
 
   it('should make sure accordion item runs ngOnDestroy when expansion panel is destroyed', () => {

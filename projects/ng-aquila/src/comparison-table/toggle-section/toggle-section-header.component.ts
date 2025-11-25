@@ -2,7 +2,7 @@ import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { isPlatformBrowser, NgStyle, NgTemplateOutlet } from '@angular/common';
+import { isPlatformBrowser, NgClass, NgStyle, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -20,15 +20,13 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { NxComparisonTableBase } from '../comparison-table-base';
-import { NxToggleSectionAnimations } from './toggle-section-animations';
 import { NxToggleSectionBase } from './toggle-section-base';
 
 @Component({
   selector: 'nx-comparison-table-toggle-section-header',
   templateUrl: './toggle-section-header.component.html',
   styleUrls: ['./toggle-section-header.component.scss'],
-  animations: [NxToggleSectionAnimations.indicatorRotate],
-  imports: [NgTemplateOutlet, NxIconModule, NgStyle],
+  imports: [NgTemplateOutlet, NxIconModule, NgStyle, NgClass],
 })
 export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy {
   @ViewChild('content', { static: true }) _content!: TemplateRef<any>;
@@ -49,6 +47,10 @@ export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy 
     return this._id;
   }
   private _id = inject(IdGenerationService).nextId('nx-comparison-table-toggle-section-header');
+
+  protected _chevronClass(): string {
+    return this._toggleSection.isExpanded ? 'open' : '';
+  }
 
   private readonly _destroyed = new Subject<void>();
 

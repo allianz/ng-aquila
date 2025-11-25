@@ -21,7 +21,7 @@ The `NxDialogService` can be used to open modals from components or predefined t
 
 The class `nx-modal-margin-bottom` can be used to get the correct vertical spacing for the elements withing the modal.
 
-**Important:** Please note that the module for this component depends on the Angular animations module, so in case you do not already have it, you need to explicitly import the `BrowserModule` and `BrowserAnimationsModule` in your app.module.
+**Important:** Please note that the module for this component depends on the Angular animations module, so in case you do not already have it, you need to explicitly import the `BrowserModule`  in your app.module.
 
 The visual representation of modal overlay depends on Angular CDK styles. Make sure you [enable Angular CDK styles](./documentation/overlay/overview#angular-cdk) in your application.
 

@@ -27,7 +27,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable, of } from 'rxjs';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
@@ -86,7 +85,6 @@ describe('NxAutocompleteComponent:', () => {
         NxInputModule,
         FormsModule,
         ReactiveFormsModule,
-        NoopAnimationsModule,
         NxModalModule.forRoot(),
         BasicAutocompleteComponent,
         LongContentComponent,
@@ -308,12 +306,7 @@ describe('NxAutocompleteComponent:', () => {
   it('should be able to override the scroll strategy in parent injector', () => {
     TestBed.resetTestingModule()
       .configureTestingModule({
-        imports: [
-          ScrollStrategyOverrideComponent,
-          NxAutocompleteModule,
-          NxInputModule,
-          NoopAnimationsModule,
-        ],
+        imports: [ScrollStrategyOverrideComponent, NxAutocompleteModule, NxInputModule],
         providers: [
           {
             provide: NX_AUTOCOMPLETE_SCROLL_STRATEGY,

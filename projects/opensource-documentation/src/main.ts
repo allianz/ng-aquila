@@ -21,7 +21,6 @@ import {
 import { importProvidersFrom, provideZonelessChangeDetection } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, Routes } from '@angular/router';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { LazyLoadingService } from 'projects/ng-aquila/documentation/generated/lazy-loading.service';
@@ -91,7 +90,6 @@ bootstrapApplication(AppComponent, {
     { provide: NX_DOCS_GITHUB_LINK, useValue: GITHUB_REPO_LINK },
     { provide: BaseLazyLoadingService, useExisting: LazyLoadingService },
     provideRouter(ROUTES),
-    provideAnimations(),
     provideZonelessChangeDetection(),
   ],
 }).catch((err) => console.error(err));

@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NxTableModule } from '../table.module';
 import { NxExpandableTableCellComponent } from './expandable-table-cell.component';
@@ -42,7 +41,7 @@ describe(NxExpandableTableCellComponent.name, () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxTableModule, NoopAnimationsModule, BasicExpandableTableCellComponent],
+      imports: [NxTableModule, BasicExpandableTableCellComponent],
     }).compileComponents();
   }));
 
@@ -74,7 +73,7 @@ describe(NxExpandableTableCellComponent.name, () => {
       const content = expandableTableCellElement.query(
         By.css('.nx-expandable-table-cell__content'),
       );
-      expect(content.nativeElement.style.height).toBe('0px');
+      expect(getComputedStyle(content.nativeElement).visibility).toBe('hidden');
     });
 
     describe('when row is expanded', () => {
@@ -88,7 +87,7 @@ describe(NxExpandableTableCellComponent.name, () => {
         const content = expandableTableCellElement.query(
           By.css('.nx-expandable-table-cell__content'),
         );
-        expect(content.nativeElement.style.height).toBe('');
+        expect(getComputedStyle(content.nativeElement).visibility).toBe('visible');
       });
 
       describe('and row is closed', () => {
@@ -102,7 +101,7 @@ describe(NxExpandableTableCellComponent.name, () => {
           const content = expandableTableCellElement.query(
             By.css('.nx-expandable-table-cell__content'),
           );
-          expect(content.nativeElement.style.height).toBe('0px');
+          expect(getComputedStyle(content.nativeElement).visibility).toBe('hidden');
         });
       });
     });

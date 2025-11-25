@@ -1,5 +1,14 @@
 @import '../shared-styles/index';
 
+.chevron-rotate-open {
+  transition: transform $accordion-chevron-duration $accordion-chevron-easing;
+  transform: rotate(180deg);
+}
+.chevron-rotate-closed {
+  transition: transform $accordion-chevron-duration $accordion-chevron-easing;
+  transform: rotate(0deg);
+}
+
 :host:focus {
   outline: none;
 }

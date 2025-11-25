@@ -1,7 +1,6 @@
 import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NxSidepanelComponent } from './sidepanel';
 import { NxSidepanelModule } from './sidepanel.module';
@@ -31,7 +30,7 @@ describe('NxSidepanelCloseButtonComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [BrowserAnimationsModule, NxSidepanelModule, BasicSidepanel],
+      imports: [NxSidepanelModule, BasicSidepanel],
     }).compileComponents();
   }));
 

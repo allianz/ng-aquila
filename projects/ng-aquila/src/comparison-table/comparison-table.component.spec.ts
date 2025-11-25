@@ -17,7 +17,6 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import axe from 'axe-core';
 
 import { dispatchFakeEvent } from '../cdk-test-utils';
@@ -183,7 +182,6 @@ describe('NxComparisonTableComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         NxComparisonTableModule,
-        BrowserAnimationsModule,
         BasicComponent,
         BasicOnPushComponent,
         DisabledColumnsComponent,

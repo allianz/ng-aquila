@@ -96,25 +96,27 @@ Mobile: table is flipped diagonally (with no footer cells!):
             </div>
             <div
               class="nx-comparison-table__toggle-section-body"
-              [@bodyExpansion]="element.getOpenState()"
+              [ngClass]="{ closed: !element.isExpanded }"
               role="rowgroup"
             >
-              @for (elementOfSection of element.rows; track elementOfSection) {
-                @if (_isRow(elementOfSection) && !elementOfSection._isPartOfRowGroup()) {
-                  <nx-comparison-table-flex-row
-                    [row]="elementOfSection"
-                  ></nx-comparison-table-flex-row>
+              <div class="nx-comparison-table__toggle-section-body-wrapper">
+                @for (elementOfSection of element.rows; track elementOfSection) {
+                  @if (_isRow(elementOfSection) && !elementOfSection._isPartOfRowGroup()) {
+                    <nx-comparison-table-flex-row
+                      [row]="elementOfSection"
+                    ></nx-comparison-table-flex-row>
+                  }
+                  @if (_isRowGroup(elementOfSection)) {
+                    <nx-comparison-table-desktop-group
+                      [group]="elementOfSection"
+                      [isExpanded]="elementOfSection.isExpanded"
+                      [useFullRowForExpandableArea]="elementOfSection.useFullRowForExpandableArea"
+                      (isExpandedChange)="elementOfSection._handleIsExpandedChange($event)"
+                    >
+                    </nx-comparison-table-desktop-group>
+                  }
                 }
-                @if (_isRowGroup(elementOfSection)) {
-                  <nx-comparison-table-desktop-group
-                    [group]="elementOfSection"
-                    [isExpanded]="elementOfSection.isExpanded"
-                    [useFullRowForExpandableArea]="elementOfSection.useFullRowForExpandableArea"
-                    (isExpandedChange)="elementOfSection._handleIsExpandedChange($event)"
-                  >
-                  </nx-comparison-table-desktop-group>
-                }
-              }
+              </div>
             </div>
           </div>
         }

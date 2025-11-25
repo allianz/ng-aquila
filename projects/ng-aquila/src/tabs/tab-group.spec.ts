@@ -20,7 +20,6 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Subscription } from 'rxjs';
 
 import { NxTabGroupComponent } from './tab-group';
@@ -81,7 +80,6 @@ describe('NxTabGroupComponent', () => {
       TestBed.configureTestingModule({
         imports: [
           NxTabsModule,
-          BrowserAnimationsModule,
           BasicTabs,
           OnPushTabs,
           ConfigurableTabs,
@@ -568,7 +566,7 @@ describe('NxTabGroupComponent', () => {
     beforeEach(waitForAsync(() => {
       tabsDefaultOptions.appearance = 'expert';
       TestBed.configureTestingModule({
-        imports: [NxTabsModule, BrowserAnimationsModule, BasicTabs, ConfigurableTabs],
+        imports: [NxTabsModule, BasicTabs, ConfigurableTabs],
         providers: [{ provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: tabsDefaultOptions }],
       }).compileComponents();
     }));

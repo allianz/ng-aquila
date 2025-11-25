@@ -122,7 +122,19 @@
   }
 
   .nx-comparison-table__toggle-section-body {
-    overflow-y: hidden;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows $accordion-body-duration $accordion-body-easing;
+
+    &.closed {
+      grid-template-rows: 0fr;
+    }
+  }
+
+  .nx-comparison-table__toggle-section-body-wrapper {
+    min-height: 0;
+    overflow: hidden;
   }
 
   ::ng-deep nx-comparison-table-flex-row.is-header-row,

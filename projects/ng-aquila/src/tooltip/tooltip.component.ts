@@ -1,4 +1,3 @@
-import { AnimationEvent } from '@angular/animations';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { NgClass, NgStyle } from '@angular/common';
 import {
@@ -8,11 +7,11 @@ import {
   ElementRef,
   inject,
   OnDestroy,
+  signal,
 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 import { TooltipPosition } from './tooltip.directive';
-import { nxTooltipAnimations } from './tooltip-animations';
 
 type TooltipVisibility = 'initial' | 'visible' | 'hidden';
 
@@ -25,7 +24,6 @@ type TooltipVisibility = 'initial' | 'visible' | 'hidden';
   templateUrl: 'tooltip.component.html',
   styleUrls: ['tooltip.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [nxTooltipAnimations.tooltipState],
   host: {
     // Forces the element to have a layout in IE and Edge. This fixes issues where the element
     // won't be rendered if the aninxions are disabled or there is no web aninxions polyfill.
@@ -55,7 +53,7 @@ export class NxTooltipComponent implements OnDestroy {
     return this._message;
   }
 
-  private _visibility: TooltipVisibility = 'initial';
+  _visibility: TooltipVisibility = 'initial';
 
   /** Property watched by the animation framework to show or hide the tooltip */
   get visibility(): TooltipVisibility {
@@ -103,7 +101,6 @@ export class NxTooltipComponent implements OnDestroy {
     private readonly _cdr: ChangeDetectorRef,
     readonly elementRef: ElementRef,
   ) {}
-
   /**
    * Shows the tooltip with an aninxion originating from the provided origin
    * @param delay Amount of milliseconds to the delay showing the tooltip.
@@ -133,7 +130,6 @@ export class NxTooltipComponent implements OnDestroy {
     if (this._hideTimeoutId) {
       return;
     }
-
     // Cancel the delayed show if it is scheduled
     if (this._showTimeoutId) {
       clearTimeout(this._showTimeoutId);
@@ -143,7 +139,6 @@ export class NxTooltipComponent implements OnDestroy {
     this._hideTimeoutId = window.setTimeout(() => {
       this._visibility = 'hidden';
       this._hideTimeoutId = null;
-
       // Mark for check so if any parent component has set the
       // ChangeDetectionStrategy to OnPush it will be checked anyways
       this._cdr.markForCheck();
@@ -160,6 +155,11 @@ export class NxTooltipComponent implements OnDestroy {
     return this.visibility === 'visible';
   }
 
+  /** Whether the tooltip should be rendered in DOM (for measurement or display) */
+  protected shouldRender(): boolean {
+    return this.visibility !== 'hidden';
+  }
+
   /** Whether the tooltip started a delay to be shown/hidden */
   isDelayed(): boolean {
     return this._showTimeoutId !== null || this._hideTimeoutId !== null;
@@ -169,22 +169,6 @@ export class NxTooltipComponent implements OnDestroy {
     this._onHide.complete();
   }
 
-  _animationStart() {
-    this._closeOnInteraction = false;
-  }
-
-  _animationDone(event: AnimationEvent): void {
-    const toState = event.toState as TooltipVisibility;
-
-    if (toState === 'hidden' && !this.isVisible()) {
-      this._onHide.next();
-    }
-
-    if (toState === 'visible' || toState === 'hidden') {
-      this._closeOnInteraction = true;
-    }
-  }
-
   /**
    * Interactions on the HTML body should close the tooltip immediately.
    */
@@ -192,5 +176,13 @@ export class NxTooltipComponent implements OnDestroy {
     if (this._closeOnInteraction) {
       this.hide(0);
     }
+  }
+
+  protected onEnter(): void {
+    this._closeOnInteraction = true;
+  }
+
+  protected onLeave(): void {
+    this._onHide.next();
   }
 }

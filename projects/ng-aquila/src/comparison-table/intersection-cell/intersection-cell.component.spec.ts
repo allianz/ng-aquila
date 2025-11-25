@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import axe from 'axe-core';
 
 import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.spec';
@@ -54,12 +53,7 @@ describe('NxComparisonTableIntersectionCell', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
-        NxComparisonTableModule,
-        BrowserAnimationsModule,
-        IntersectionCellComponent,
-        ToggleSectionComponent,
-      ],
+      imports: [NxComparisonTableModule, IntersectionCellComponent, ToggleSectionComponent],
     });
     TestBed.compileComponents();
   }));

@@ -19,7 +19,7 @@
         <ng-container *ngTemplateOutlet="ngContent"></ng-container>
         <nx-icon
           class="nx-expansion-panel__chevron"
-          [@indicatorRotate]="_toggleSection.getOpenState()"
+          [ngClass]="_chevronClass()"
           name="chevron-down"
           aria-hidden="true"
         >

@@ -1,5 +1,4 @@
 import { fakeScrollStrategyFunction } from '@allianz/ng-aquila/utils';
-import { AnimationEvent } from '@angular/animations';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { ESCAPE } from '@angular/cdk/keycodes';
@@ -28,10 +27,6 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import {
-  BrowserAnimationsModule,
-  NoopAnimationsModule,
-} from '@angular/platform-browser/animations';
 
 import { createKeyboardEvent } from '../cdk-test-utils';
 import {
@@ -83,10 +78,10 @@ describe('NxTooltipDirective', () => {
     platform = { IOS: false, isBrowser: true, ANDROID: false };
 
     TestBed.configureTestingModule({
+      animationsEnabled: true,
       imports: [
         NxTooltipModule,
         OverlayModule,
-        NoopAnimationsModule,
         BasicTooltipDemo,
         ScrollableTooltipDemo,
         OnPushTooltipDemo,
@@ -145,13 +140,13 @@ describe('NxTooltipDirective', () => {
 
       fixture.detectChanges();
 
-      // wait till animation has finished
-      tick(500);
+      // wait till animation has finished (70ms CSS animation)
+      tick(100);
 
       // Make sure tooltip is shown to the user and animation has finished
       const tooltipElement = overlayContainerElement.querySelector('.nx-tooltip') as HTMLElement;
       expect(tooltipElement instanceof HTMLElement).toBeTrue();
-      expect(tooltipElement.style.opacity).toBe('1');
+      expect(tooltipElement.classList.contains('fade-in')).toBeTrue();
 
       expect(overlayContainerElement.textContent).toContain(initialTooltipMessage);
 
@@ -166,6 +161,7 @@ describe('NxTooltipDirective', () => {
       expect(tooltipDirective._isTooltipVisible()).toBeFalse();
 
       // On animation complete, should expect that the tooltip has been detached.
+      tick(100); // Wait for CSS animation to complete
       flushMicrotasks();
       assertTooltipInstance(tooltipDirective, false);
     }));
@@ -198,12 +194,12 @@ describe('NxTooltipDirective', () => {
       tooltipDirective.show(tooltipDelay);
       expect(tooltipDirective._isTooltipVisible()).toBeFalse();
 
-      fixture.detectChanges();
-      expect(overlayContainerElement.textContent).toContain('');
-
       tick(tooltipDelay);
-      flush();
+      fixture.detectChanges();
       expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+
+      tick(100); // Wait for animation
+      fixture.detectChanges();
       expect(overlayContainerElement.textContent).toContain(initialTooltipMessage);
     }));
 
@@ -266,7 +262,7 @@ describe('NxTooltipDirective', () => {
       expect(tooltipDirective._isTooltipVisible()).toBeFalse();
     }));
 
-    it('should not show if hide is called before delay finishes', waitForAsync(() => {
+    it('should not show if hide is called before delay finishes', fakeAsync(() => {
       assertTooltipInstance(tooltipDirective, false);
 
       const tooltipDelay = 1000;
@@ -274,13 +270,15 @@ describe('NxTooltipDirective', () => {
       tooltipDirective.show(tooltipDelay);
       expect(tooltipDirective._isTooltipVisible()).toBeFalse();
 
+      tick(tooltipDelay / 2); // Wait for half the delay
       fixture.detectChanges();
-      expect(overlayContainerElement.textContent).toContain('');
+
+      expect(tooltipDirective._isTooltipVisible()).toBeFalse();
       tooltipDirective.hide();
 
-      fixture.whenStable().then(() => {
-        expect(tooltipDirective._isTooltipVisible()).toBeFalse();
-      });
+      tick(tooltipDelay); // Wait for remaining time
+      fixture.detectChanges();
+      expect(tooltipDirective._isTooltipVisible()).toBeFalse();
     }));
 
     it('should not show tooltip if message is not present or empty', () => {
@@ -345,13 +343,6 @@ describe('NxTooltipDirective', () => {
       // At this point the animation should be able to complete itself and trigger the
       // _animationDone function, but for unknown reasons in the test infrastructure,
       // this does not occur. Manually call the hook so the animation subscriptions get invoked.
-      tooltipDirective._tooltipInstance?._animationDone({
-        fromState: 'visible',
-        toState: 'hidden',
-        totalTime: 150,
-        phaseName: 'done',
-      } as AnimationEvent);
-
       expect(() => {
         tooltipDirective.position = 'right';
         fixture.detectChanges();
@@ -416,17 +407,6 @@ describe('NxTooltipDirective', () => {
       const tooltipInstance = tooltipDirective._tooltipInstance;
       fixture.componentInstance.showButton = false;
       fixture.detectChanges();
-
-      // At this point the animation should be able to complete itself and trigger the
-      // _animationDone function, but for unknown reasons in the test infrastructure,
-      // this does not occur. Manually call this and verify that doing so does not
-      // throw an error.
-      tooltipInstance?._animationDone({
-        fromState: 'visible',
-        toState: 'hidden',
-        totalTime: 150,
-        phaseName: 'done',
-      } as AnimationEvent);
     }));
 
     it('should complete the afterHidden stream when tooltip is destroyed', fakeAsync(() => {
@@ -557,7 +537,7 @@ describe('NxTooltipDirective', () => {
       tooltipDirective.show();
       tick(200);
       fixture.detectChanges();
-      tick(500);
+      tick(100); // Wait for CSS animation
 
       expect(tooltipDirective._isTooltipVisible()).toBeTrue();
       expect(overlayContainerElement.textContent).toContain(initialTooltipMessage);
@@ -565,7 +545,7 @@ describe('NxTooltipDirective', () => {
       document.body.click();
       tick(200);
       fixture.detectChanges();
-      tick(500);
+      tick(100); // Wait for CSS animation
       fixture.detectChanges();
 
       expect(tooltipDirective._isTooltipVisible()).toBeFalse();
@@ -654,7 +634,8 @@ describe('NxTooltipDirective', () => {
     it('should be able to override the scroll strategy in parent injector', () => {
       TestBed.resetTestingModule()
         .configureTestingModule({
-          imports: [BasicTooltipDemo, NxTooltipModule, NoopAnimationsModule],
+          animationsEnabled: true,
+          imports: [BasicTooltipDemo, NxTooltipModule],
           providers: [
             {
               provide: NX_TOOLTIP_SCROLL_STRATEGY,
@@ -727,8 +708,8 @@ describe('NxTooltipDirective', () => {
 
       // Show the tooltip and tick for the show delay (default is 200)
       tooltipDirective.show();
+      tick(200); // Wait for show delay
       fixture.detectChanges();
-      tick(200);
 
       // Expect that the tooltip is displayed
       expect(tooltipDirective._isTooltipVisible())
@@ -737,7 +718,7 @@ describe('NxTooltipDirective', () => {
 
       // Scroll the page
       fixture.componentInstance.scrollDown();
-      tick(200);
+      tick(200); // Wait for scroll handling
       fixture.detectChanges();
       expect(tooltipDirective._isTooltipVisible())
         .withContext('Expected tooltip hidden when scrolled out of view, after throttle limit')
@@ -748,8 +729,8 @@ describe('NxTooltipDirective', () => {
       const inZoneSpy = jasmine.createSpy('in zone spy');
 
       tooltipDirective.show();
+      tick(200); // Wait for show delay
       fixture.detectChanges();
-      tick(200);
 
       if (tooltipDirective._tooltipInstance !== null) {
         spyOn(tooltipDirective._tooltipInstance, 'hide').and.callFake(() => {
@@ -788,13 +769,13 @@ describe('NxTooltipDirective', () => {
 
       fixture.detectChanges();
 
-      // wait until animation has finished
-      tick(500);
+      // wait until animation has finished (70ms CSS animation)
+      tick(100);
 
       // Make sure tooltip is shown to the user and animation has finished
       const tooltipElement = overlayContainerElement.querySelector('.nx-tooltip') as HTMLElement;
       expect(tooltipElement instanceof HTMLElement).toBeTrue();
-      expect(tooltipElement.style.opacity).toBe('1');
+      expect(tooltipElement.classList.contains('fade-in')).toBeTrue();
 
       // After hide called, a timeout delay is created that will to hide the tooltip.
       const tooltipDelay = 1000;
@@ -807,16 +788,20 @@ describe('NxTooltipDirective', () => {
       expect(tooltipDirective._isTooltipVisible()).toBeFalse();
 
       // On animation complete, should expect that the tooltip has been detached.
+      tick(100); // Wait for CSS animation
       flushMicrotasks();
+
       assertTooltipInstance(tooltipDirective, false);
     }));
 
     it('should have rendered the tooltip text on init', fakeAsync(() => {
       tooltipDirective.show();
+      tick(200);
       fixture.detectChanges();
       flush();
 
       const tooltipElement = overlayContainerElement.querySelector('.nx-tooltip') as HTMLElement;
+      console.log(tooltipElement);
       expect(tooltipElement.textContent).toContain('initial tooltip message');
     }));
   });
@@ -902,7 +887,8 @@ describe('navigation', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxTooltipModule, BrowserAnimationsModule, OverlayModule, TooltipDispose],
+      animationsEnabled: true,
+      imports: [NxTooltipModule, OverlayModule, TooltipDispose],
       providers: [
         {
           provide: Location,
@@ -949,7 +935,8 @@ describe('NxTooltipComponent', () => {
   it('should be able to override the default show and hide delays', fakeAsync(() => {
     TestBed.resetTestingModule()
       .configureTestingModule({
-        imports: [NxTooltipModule, OverlayModule, NoopAnimationsModule, BasicTooltipDemo],
+        animationsEnabled: true,
+        imports: [NxTooltipModule, OverlayModule, BasicTooltipDemo],
         providers: [
           {
             provide: NX_TOOLTIP_DEFAULT_OPTIONS,
@@ -971,6 +958,7 @@ describe('NxTooltipComponent', () => {
 
     expect(tooltipDirective._isTooltipVisible()).toBeFalse();
     tick(1337);
+    fixture.detectChanges();
     expect(tooltipDirective._isTooltipVisible()).toBeTrue();
 
     tooltipDirective.hide();
@@ -979,13 +967,16 @@ describe('NxTooltipComponent', () => {
 
     expect(tooltipDirective._isTooltipVisible()).toBeTrue();
     tick(7331);
+    fixture.detectChanges();
     expect(tooltipDirective._isTooltipVisible()).toBeFalse();
   }));
 
   it('should be able to override the default position', fakeAsync(() => {
     TestBed.resetTestingModule()
       .configureTestingModule({
-        imports: [NxTooltipModule, OverlayModule, NoopAnimationsModule],
+        animationsEnabled: true,
+
+        imports: [NxTooltipModule, OverlayModule],
         providers: [
           {
             provide: NX_TOOLTIP_DEFAULT_OPTIONS,
@@ -1179,7 +1170,9 @@ describe('manualTrigger input', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, ManualTriggerTooltipTestComponent],
+      animationsEnabled: true,
+
+      imports: [ManualTriggerTooltipTestComponent],
     }).compileComponents();
     fixture = TestBed.createComponent(ManualTriggerTooltipTestComponent);
     component = fixture.componentInstance;

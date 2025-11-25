@@ -1,6 +1,5 @@
 import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NxComparisonTableModule } from '../comparison-table.module';
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
@@ -32,7 +31,7 @@ describe('ToggleSectionHeaderComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxComparisonTableModule, BrowserAnimationsModule, BasicComponent],
+      imports: [NxComparisonTableModule, BasicComponent],
     });
     TestBed.compileComponents();
   }));

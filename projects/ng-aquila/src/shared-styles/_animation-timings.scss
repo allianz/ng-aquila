@@ -1,0 +1,48 @@
+// Animation Timings Configuration
+// This file contains centralized animation timing variables to ensure consistency
+// and maintainability across all components.
+
+// Duration variables (in milliseconds)
+$animation-duration-fast: 100ms;
+$animation-duration-normal: 200ms;
+$animation-duration-medium: 300ms;
+$animation-duration-slow: 500ms;
+
+// Easing functions
+$animation-easing-standard: cubic-bezier(0, 0, 0.2, 1); // Standard material design easing
+$animation-easing-decelerate: cubic-bezier(0.4, 0, 0.2, 1); // Decelerate (exit)
+$animation-easing-accelerate: ease-out; // Accelerate (enter)
+$animation-easing-ease: ease; // Simple ease
+$animation-easing-linear: linear; // Linear
+
+// Component-specific animation durations
+// Accordion
+$accordion-chevron-duration: $animation-duration-medium; // 300ms
+$accordion-chevron-easing: $animation-easing-ease;
+$accordion-body-duration: $animation-duration-slow; // 500ms
+$accordion-body-easing: $animation-easing-standard;
+$accordion-body-visibility-duration: 400ms; // Slightly less than body duration
+
+// Context Menu
+$context-menu-enter-duration: 120ms;
+$context-menu-enter-easing: $animation-easing-standard;
+$context-menu-leave-duration: $animation-duration-fast; // 100ms
+$context-menu-leave-easing: $animation-easing-linear;
+
+// Message Toast
+$message-toast-duration: $animation-duration-medium; // 300ms
+$message-toast-easing: $animation-easing-standard;
+
+// Modal
+$modal-normal-duration: $animation-duration-normal; // 200ms
+$modal-normal-enter-easing: $animation-easing-standard;
+$modal-normal-exit-easing: $animation-easing-decelerate;
+$modal-fullscreen-duration: $animation-duration-medium; // 300ms
+$modal-fullscreen-easing: $animation-easing-accelerate;
+$modal-animation-buffer: 100ms; // Buffer time for animation cleanup
+
+// Helper function to get animation duration value (without unit)
+@function get-duration-value($duration) {
+  // Strip the unit and return the numeric value
+  @return calc($duration / 1ms);
+}

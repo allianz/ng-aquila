@@ -1,6 +1,5 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { AnimationEvent } from '@angular/animations';
 import { FocusMonitor, FocusTrap, FocusTrapFactory, InteractivityChecker } from '@angular/cdk/a11y';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import {
@@ -12,6 +11,7 @@ import {
 } from '@angular/cdk/portal';
 import {
   AfterViewInit,
+  AnimationCallbackEvent,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -28,7 +28,6 @@ import {
   ViewChild,
 } from '@angular/core';
 
-import { NxModalAnimations } from './modal-animations';
 import { NxModalConfig } from './modal-config';
 
 /**
@@ -39,7 +38,8 @@ import { NxModalConfig } from './modal-config';
 export function throwNxDialogContentAlreadyAttachedError() {
   throw Error('Attempting to attach modal content after content is already attached');
 }
-
+/** State of the modal animation. */
+export type AnimationState = 'opening' | 'opened' | 'closing' | 'closed';
 /**
  * Internal component that wraps user-provided modal content.
  * Animation is based on https://material.io/guidelines/motion/choreography.html.
@@ -51,7 +51,6 @@ export function throwNxDialogContentAlreadyAttachedError() {
   styleUrls: ['modal-container.component.scss'],
   // Using OnPush for modals caused some G3 sync issues. Disabled until we can track them down.
   changeDetection: ChangeDetectionStrategy.Default,
-  animations: [NxModalAnimations.modalContainer, NxModalAnimations.modalContainerFullscreen],
   host: {
     class: 'nx-modal__container',
     tabindex: '-1',
@@ -62,12 +61,11 @@ export function throwNxDialogContentAlreadyAttachedError() {
     '[attr.aria-label]': '_config.ariaLabel',
     '[attr.aria-describedby]': '_config.ariaDescribedBy || null',
     '[class.is-expert]': '_isExpert',
-    '[@modalContainer]': '{ value: !_config.fullscreen ? _state : "" }',
-    '(@modalContainer.start)': '_onAnimationStart($event)',
-    '(@modalContainer.done)': '_onAnimationDone($event)',
-    '[@slideInOut]': '{ value: _config.fullscreen ? _state : "" }',
-    '(@slideInOut.start)': '_onAnimationStart($event)',
-    '(@slideInOut.done)': '_onAnimationDone($event)',
+    '[class.nx-modal-container--entering]': '_state === "enter"',
+    '[class.nx-modal-container--exiting]': '_state === "exit"',
+    '[class.nx-modal-container--fullscreen]': '_config.fullscreen',
+    '(transitionstart)': '_onTransitionStart($event)',
+    '(transitionend)': '_onTransitionEnd($event)',
   },
   imports: [NxIconModule, CdkPortalOutlet, NxButtonModule],
 })
@@ -87,7 +85,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
   _state: 'void' | 'enter' | 'exit' = 'enter';
 
   /** Emits when an animation state changes. */
-  readonly _animationStateChanged = new EventEmitter<AnimationEvent>();
+  readonly _animationStateChanged = new EventEmitter<AnimationState>();
 
   /** Emits when the close button (X) is clicked. */
   readonly _closeButtonClicked = new EventEmitter<any>();
@@ -291,19 +289,36 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
   }
 
   /** Callback, invoked whenever an animation on the host completes. */
-  _onAnimationDone(event: AnimationEvent) {
-    if (event.toState === 'enter') {
+  _onTransitionEnd(event: TransitionEvent) {
+    // Only handle transitions on the host element itself, not from children
+    if (event.target !== this._elementRef.nativeElement) {
+      return;
+    }
+    // Check property name to determine which transition finished
+    const propertyName = event.propertyName;
+    const currentState = this._state;
+
+    // For enter transitions (opacity or transform)
+    if (currentState === 'enter' && propertyName === 'transform') {
+      // Only trap focus when all transitions complete (wait for transform which typically finishes last)
       this._trapFocus();
-    } else if (event.toState === 'exit') {
-      this._restoreFocus();
+      this._animationStateChanged.emit('opened');
     }
 
-    this._animationStateChanged.emit(event);
+    // For exit transitions (opacity or transform)
+    if (currentState === 'exit' && propertyName === 'transform') {
+      // Only restore focus when all transitions complete (wait for transform which typically finishes last)
+      this._restoreFocus();
+      this._animationStateChanged.emit('closed');
+    }
   }
 
-  /** Callback, invoked when an animation on the host starts. */
-  _onAnimationStart(event: AnimationEvent) {
-    this._animationStateChanged.emit(event);
+  _onTransitionStart(event: TransitionEvent) {
+    // Only handle transitions on the host element itself, not from children
+    if (event.target !== this._elementRef.nativeElement) {
+      return;
+    }
+    this._animationStateChanged.emit(this._state === 'enter' ? 'opening' : 'closing');
   }
 
   /** Starts the modal exit animation. */

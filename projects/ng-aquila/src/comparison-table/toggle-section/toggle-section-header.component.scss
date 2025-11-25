@@ -40,4 +40,10 @@
   pointer-events: none;
   font-size: v(comparison-table-toggle-section-chevron-size);
   color: v(comparison-table-toggle-section-chevron-color);
+  transform: rotate(0deg);
+  transition: transform $accordion-chevron-duration $accordion-chevron-easing;
+
+  &.open {
+    transform: rotate(180deg);
+  }
 }

@@ -26,7 +26,6 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Subject, Subscription } from 'rxjs';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
@@ -948,7 +947,7 @@ describe('NxPopoverTriggerDirective', () => {
   it('should be able to override the scroll strategy in parent injector', () => {
     TestBed.resetTestingModule()
       .configureTestingModule({
-        imports: [PopoverClickComponent, NxPopoverModule, NxInputModule, NoopAnimationsModule],
+        imports: [PopoverClickComponent, NxPopoverModule, NxInputModule],
         providers: [
           {
             provide: NX_POPOVER_SCROLL_STRATEGY,

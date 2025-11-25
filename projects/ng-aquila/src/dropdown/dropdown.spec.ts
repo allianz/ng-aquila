@@ -50,7 +50,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -590,12 +589,7 @@ describe('NxDropdownComponent', () => {
     it('should be able to override the scroll strategy in parent injector', () => {
       TestBed.resetTestingModule()
         .configureTestingModule({
-          imports: [
-            SimpleDropdownComponent,
-            NxDropdownModule,
-            NoopAnimationsModule,
-            NxFormfieldModule,
-          ],
+          imports: [SimpleDropdownComponent, NxDropdownModule, NxFormfieldModule],
           providers: [
             {
               provide: NX_DROPDOWN_SCROLL_STRATEGY,

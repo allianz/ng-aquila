@@ -1,5 +1,24 @@
 @import '../../shared-styles/index';
 
+:host {
+  display: block;
+  opacity: 0;
+  transform: translateY(100%);
+  transition:
+    opacity $message-toast-duration $message-toast-easing,
+    transform $message-toast-duration $message-toast-easing;
+
+  &.nx-message-toast--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.nx-message-toast--hidden {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+}
+
 nx-message {
   box-shadow: v(message-box-shadow);
   max-width: 352px;

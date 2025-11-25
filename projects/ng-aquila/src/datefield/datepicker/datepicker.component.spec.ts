@@ -8,7 +8,6 @@ import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { Component, EventEmitter, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { JAN } from '../../cdk-test-utils';
 import { NxNativeDateModule } from '../adapter/index';
@@ -30,7 +29,6 @@ describe('NxDatepicker', () => {
         NxDatefieldModule,
         NxFormfieldModule,
         NxInputModule,
-        NoopAnimationsModule,
         ReactiveFormsModule,
         ...imports,
         component,

@@ -9,18 +9,15 @@ import {
   ElementRef,
   EventEmitter,
   forwardRef,
-  Inject,
+  inject,
   Input,
   OnDestroy,
-  Optional,
   Output,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { nxSidepanelAnimations } from './sidepanel-animations';
 import { NxSidepanelHeaderComponent } from './sidepanel-header';
-import { AnimationEvent } from '@angular/animations';
 
 /** Type for the available position values. */
 export type PositionType = 'floating' | 'static';
@@ -32,19 +29,16 @@ export type Appearance = 'light' | 'dark';
   selector: 'nx-sidepanel',
   template: '<ng-content></ng-content>',
   styleUrls: ['./sidepanel.scss'],
-  animations: [nxSidepanelAnimations.sidepanelExpansion],
   host: {
     '[class.is-closed]': '!opened',
+    '[class.is-open]': 'opened',
     '[class.is-static]': 'position === "static"',
     '[class.is-floating]': 'position === "floating"',
     '[class.light]': 'appearance === "light"',
-    role: 'complementary',
-    // if no wrapper is used, the sidepanel currently is not animated when opening closing,
-    // since a controlled environment is needed so that the animation works as expected.
-    '[@sidepanelExpansion]':
-      '{ value: _wrapper ? _getOpenState() : "", params: { transformX: dir === "rtl" ? "-100%" : "100%" } }',
-    '(@sidepanelExpansion.done)': 'onAnimationDone($event)',
     '[class.without-wrapper]': '!this._wrapper',
+    '[attr.data-animation-state]': '_getOpenState()',
+    role: 'complementary',
+    '(transitionend)': 'onTransitionEnd($event)',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -97,14 +91,15 @@ export class NxSidepanelComponent {
    */
   @Output() readonly openedChange = new EventEmitter<boolean>();
 
-  constructor(
-    private readonly _cdr: ChangeDetectorRef,
-    protected readonly _elementRef: ElementRef,
-    @Optional() private readonly _dir: Directionality | null,
-    @Optional()
-    @Inject(forwardRef(() => NxSidepanelOuterContainerComponent))
-    readonly _wrapper: NxSidepanelOuterContainerComponent | null,
-  ) {
+  private readonly _cdr = inject(ChangeDetectorRef);
+  protected readonly _elementRef = inject(ElementRef);
+  private readonly _dir = inject(Directionality, { optional: true });
+  readonly _wrapper = inject(
+    forwardRef(() => NxSidepanelOuterContainerComponent),
+    { optional: true },
+  );
+
+  constructor() {
     if (this._wrapper == null) {
       console.warn(
         `NxSidepanelComponent needs a wrapping NxSidepanelOuterContainerComponent to work as expected.`,
@@ -150,9 +145,16 @@ export class NxSidepanelComponent {
     }
   }
 
-  onAnimationDone(event: AnimationEvent) {
-    this.openedChange.emit(this._opened);
-    this.focusTrigger(this._opened);
+  onTransitionEnd(event: TransitionEvent) {
+    // Only handle transitions on the host element itself, not from children
+    if (event.target !== this._elementRef.nativeElement) {
+      return;
+    }
+    // Only handle transform transitions (the main sidepanel animation)
+    if (event.propertyName === 'transform') {
+      this.openedChange.emit(this._opened);
+      this.focusTrigger(this._opened);
+    }
   }
 
   focusTrigger(opened: boolean) {
@@ -190,11 +192,10 @@ export class NxSidepanelOuterContainerComponent implements OnDestroy {
   @ContentChild(NxSidepanelComponent) _sidepanel!: NxSidepanelComponent;
 
   private readonly _destroyed = new Subject<void>();
+  private readonly _dir = inject(Directionality, { optional: true });
+  private readonly _cdr = inject(ChangeDetectorRef);
 
-  constructor(
-    @Optional() private readonly _dir: Directionality | null,
-    private readonly _cdr: ChangeDetectorRef,
-  ) {
+  constructor() {
     this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
       this._cdr.markForCheck();
     });
