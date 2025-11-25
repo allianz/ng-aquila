@@ -13,7 +13,7 @@ export const NX_IBAN_MASK_VALIDATORS: any = {
 };
 
 /**
- * To use the `NxIbanMaskDirective`, you have to install the **peer dependency** `iban.js`.
+ * To use the `NxIbanMaskDirective`, you have to install the **peer dependency** `ibantools`.
  */
 @Directive({
   selector: 'input[nxIbanMask]',

@@ -27,7 +27,7 @@ Thus, if you write `000-AAA` this specifies a mask that consists of three number
 
 `nxIbanMask` provides a mask for IBANs. The IBAN mask directive does some basic validation (e.g. regarding length and correctly placed characters), but is not able to verify if valid bank codes and account numbers are used. Lowercase letters are automatically converted to uppercase.
 
-**Important:** To use this, the peer dependency [iban.js](https://github.com/arhs/iban.js/) is needed.
+**Important:** To use this, the peer dependency [ibantools](https://github.com/Simplify/ibantools) is needed.
 
 <!-- example(iban-mask) -->
 

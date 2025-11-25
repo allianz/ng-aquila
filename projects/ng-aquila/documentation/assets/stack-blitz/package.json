@@ -29,7 +29,7 @@
     "ag-grid-angular": "^33.1.1",
     "ag-grid-community": "^33.1.1",
     "i18n-iso-countries": "^7.5.0",
-    "iban": "^0.0.14",
+    "ibantools": "^4.5.1",
     "moment": "^2.29.4",
     "dayjs": "^1.11.5",
     "decimal.js": "^10.4.2",

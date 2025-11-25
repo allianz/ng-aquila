@@ -126,7 +126,7 @@
             "allowedCommonJsDependencies": [
               "parse-color",
               "decimal.js",
-              "iban",
+              "ibantools",
               "moment",
               "i18n-iso-countries"
             ],

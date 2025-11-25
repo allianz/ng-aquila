@@ -87,7 +87,6 @@
     "@smarttools/eslint-plugin-rxjs": "^1.0.22",
     "@types/fs-extra": "^11.0.4",
     "@types/glob": "^8.1.0",
-    "@types/iban": "^0.0.32",
     "@types/jasmine": "^5.1.6",
     "@types/node": "^22.17.1",
     "@types/parse-color": "^1.0.3",
