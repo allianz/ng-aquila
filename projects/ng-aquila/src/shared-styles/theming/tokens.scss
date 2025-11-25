@@ -967,7 +967,8 @@ $nx-theme: (
   dropdown-panel-filter-border-color: none,
   dropdown-panel-filter-font-weight: nx-font-weight(semibold),
   dropdown-panel-shadow: shadow-small,
-  dropdown-panel-padding-top: 4px,
+  dropdown-panel-padding-top: 12px,
+  dropdown-panel-with-filter-padding-top: 4px,
   dropdown-panel-padding-bottom: 16px,
   dropdown-group-label-color: ui-05,
   dropdown-group-label-font-size: small-label-font-size,
@@ -1009,6 +1010,7 @@ $nx-theme: (
   dropdown-group-divider: #d9d9d9,
   multi-select-item-padding-horizon: 32px,
   multi-select-item-padding-vertical: 8px,
+  multi-select-item-line-height: large-label-line-height,
   multi-select-action-padding-vertical: 16px,
   multi-select-panel-padding: 12px,
 

@@ -14,10 +14,6 @@ $option-margin-checked: nx-spacer(m);
   display: none;
 }
 
-:host:first-child .nx-dropdown-results__option {
-  padding-top: nx-spacer(s);
-}
-
 nx-checkbox {
   margin-bottom: 0;
 }

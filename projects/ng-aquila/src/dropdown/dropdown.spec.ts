@@ -832,7 +832,7 @@ describe('NxDropdownComponent', () => {
       flush();
       fixture.detectChanges();
       tick(1);
-      // 4 * 44 + 22 (half of item height) + 12 (firstItemPaddingTop) - 100 (middle of panel)
+      // 4 * 44 + 22 (half of item height) + 12 (panel padding top) - 100 (middle of panel)
       expect(dropdownInstance.panelBody?.nativeElement.scrollTop).toBe(110);
     }));
 
@@ -840,7 +840,7 @@ describe('NxDropdownComponent', () => {
       createTestComponent(ScrollingTestComponent);
       openDropdownByClick();
 
-      // 4 * 44 + 22 (half of item height) + 12 (firstItemPaddingTop) - 100 (middle of panel)
+      // 4 * 44 + 22 (half of item height) + 12 (panel padding top) - 100 (middle of panel)
       expect(dropdownInstance.panelBody?.nativeElement.scrollTop).toBe(110);
     }));
   });
