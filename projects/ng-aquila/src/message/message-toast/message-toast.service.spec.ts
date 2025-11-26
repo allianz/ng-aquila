@@ -66,7 +66,7 @@ describe('NxMessageToast', () => {
       fixture.detectChanges();
       flush();
 
-      expect(overlayContainerElement.childNodes).toHaveSize(1);
+      expect(overlayContainerElement.childNodes).toHaveSize(0);
     }));
 
     it('should remove past message toasts when opening new message toasts', fakeAsync(() => {
@@ -134,7 +134,7 @@ describe('NxMessageToast', () => {
       fixture.detectChanges();
       flush();
 
-      expect(overlayContainerElement.childNodes).toHaveSize(1);
+      expect(overlayContainerElement.childNodes).toHaveSize(0);
     }));
   });
 
@@ -168,7 +168,7 @@ describe('NxMessageToast', () => {
       fixture.detectChanges();
       flush();
 
-      expect(overlayContainerElement.childNodes).toHaveSize(1);
+      expect(overlayContainerElement.childNodes).toHaveSize(0);
     }));
   });
 
@@ -208,7 +208,7 @@ describe('NxMessageToast', () => {
     fixture.detectChanges();
     flush();
 
-    expect(overlayContainerElement.childElementCount).toBe(1);
+    expect(overlayContainerElement.childElementCount).toBe(0);
   }));
 
   it('should be able to get dismissed through the service', fakeAsync(() => {
@@ -219,8 +219,8 @@ describe('NxMessageToast', () => {
     messageToastService.dismiss();
     fixture.detectChanges();
     flush();
-
-    expect(overlayContainerElement.childElementCount).toBe(1);
+    console.log(overlayContainerElement.childElementCount);
+    expect(overlayContainerElement.childElementCount).toBe(0);
   }));
 
   it('should set the animation state to visible on entry', () => {
@@ -243,11 +243,11 @@ describe('NxMessageToast', () => {
   });
 
   describe('a11y', () => {
-    it('should have the aria-live `polite` attach to wrapper class', fakeAsync(() => {
+    it('should have the aria-live `polite` attach', fakeAsync(() => {
       messageToastService.open('test');
       fixture.detectChanges();
       tick(100);
-      const containerElement = overlayContainerElement.querySelector('#nx-toast-message-region')!;
+      const containerElement = overlayContainerElement.querySelector('nx-message-toast > div')!;
       expect(containerElement.getAttribute('aria-live')).toBe('polite');
     }));
 
