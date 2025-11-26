@@ -15,7 +15,7 @@
 </button>
 
 <nx-context-menu #nxvVersionSelect="nxContextMenu">
-  @for (channel of versions?.channels; track channel) {
+  @for (channel of versions.channels; track channel) {
     <button nxContextMenuItem type="button" (click)="changeVersion(channel)" [value]="channel.name">
       {{ channel.name }}
     </button>

@@ -6,7 +6,6 @@ import {
 } from '@allianz/ng-aquila/datefield';
 import {
   NxFormfieldComponent,
-  NxFormfieldErrorDirective,
   NxFormfieldHintDirective,
   NxFormfieldSuffixDirective,
 } from '@allianz/ng-aquila/formfield';
@@ -34,12 +33,10 @@ import { FormsModule } from '@angular/forms';
     NxLayoutComponent,
     NxRowComponent,
     NxColComponent,
-    NxErrorComponent,
     NxDatepickerToggleComponent,
     NxDatepickerComponent,
     NxFormfieldHintDirective,
     NxFormfieldSuffixDirective,
-    NxFormfieldErrorDirective,
     NxSwitcherComponent,
   ],
 })

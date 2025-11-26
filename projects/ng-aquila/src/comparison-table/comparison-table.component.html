@@ -174,9 +174,7 @@ Mobile: table is flipped diagonally (with no footer cells!):
           <th class="nx-comparison-table__placeholder-cell needs-clipping" aria-hidden="true"></th>
           @for (row of element.rows; track row) {
             @if (_isRow(row)) {
-              <ng-container
-                *ngTemplateOutlet="row.descriptionCell?._content ?? null"
-              ></ng-container>
+              <ng-container *ngTemplateOutlet="row.descriptionCell._content"></ng-container>
             }
           }
         }
