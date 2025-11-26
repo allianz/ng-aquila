@@ -27,14 +27,15 @@
 
 // Compile theme tokens to css
 /// @access public
-/// @returns injected into the :root scope css variable declarations
+/// @returns injected into the :root scope (or custom selector) css variable declarations
 /// @param {String} $theme-name - the name of theme to build
+/// @param {String} $selector - optional custom CSS selector to scope the theme (defaults to ':root, :host')
 /// @example -  @include nx-build-theme(aquila)
-@mixin nx-build-theme($theme-name: aquila) {
+/// @example -  @include nx-build-theme(aquila, '.theme-aquila')
+@mixin nx-build-theme($theme-name: aquila, $selector: ':root, :host') {
   $theme: map.get($nx-themes, $theme-name);
 
-  :root,
-  :host {
+  #{$selector} {
     @each $name, $value in $theme {
       $parentValue: map.get($theme, $value);
       @if ($parentValue != null) {
