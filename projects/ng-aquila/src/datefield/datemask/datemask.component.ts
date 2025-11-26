@@ -518,9 +518,16 @@ export class NxDatemaskComponent<D>
     this.moveFocus(this._inputs()[0]);
   }
 
+  private _resetInputValue() {
+    this._dayValue.set(null);
+    this._monthValue.set(null);
+    this._yearValue.set(null);
+  }
+
   writeValue(obj: any): void {
-    const isDate = this._dateAdapter.isDateInstance(obj);
-    if (!isDate) {
+    const isValidDate = this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj);
+    if (!isValidDate) {
+      this._resetInputValue();
       return;
     }
 
@@ -626,18 +633,14 @@ export class NxDatemaskComponent<D>
 
     if (event.key === 'Delete' || event.key === 'Backspace') {
       event.preventDefault();
-      this._dayValue.set(null);
-      this._monthValue.set(null);
-      this._yearValue.set(null);
+      this._resetInputValue();
       this.moveFocus(this._inputs()[0], 'start');
     }
 
     if (event.key.length === 1 && event.key.match(/\d/g)) {
       const firstInputValueSignal = this.getValueSignalOfFirstInput();
       event.preventDefault();
-      this._dayValue.set(null);
-      this._monthValue.set(null);
-      this._yearValue.set(null);
+      this._resetInputValue();
       this._inputs()[0].elementRef.nativeElement.value = event.key;
       firstInputValueSignal.set(event.key);
       this.moveFocus(this._inputs()[0], 'none');
