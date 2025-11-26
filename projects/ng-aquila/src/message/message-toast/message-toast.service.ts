@@ -3,11 +3,13 @@ import { Overlay, OverlayConfig, OverlayContainer, OverlayRef } from '@angular/c
 import { ComponentPortal, ComponentType, TemplatePortal } from '@angular/cdk/portal';
 import {
   ComponentRef,
-  inject,
+  Inject,
   Injectable,
   InjectionToken,
   Injector,
   OnDestroy,
+  Optional,
+  SkipSelf,
   TemplateRef,
 } from '@angular/core';
 
@@ -29,16 +31,6 @@ export const NX_MESSAGE_TOAST_COMPONENT_DATA = new InjectionToken<any>(
 /** A service for dispatching and displaying toast messages. */
 @Injectable({ providedIn: NxMessageModule })
 export class NxMessageToastService implements OnDestroy {
-  private readonly _overlay = inject(Overlay);
-  private readonly _overlayContainer = inject(OverlayContainer);
-  private readonly _injector = inject(Injector);
-  private readonly _live = inject(LiveAnnouncer);
-  private readonly _parentMessageToastService = inject(NxMessageToastService, {
-    optional: true,
-    skipSelf: true,
-  });
-  private readonly _defaultConfig = inject(NX_MESSAGE_TOAST_DEFAULT_CONFIG, { optional: true });
-
   /**
    * Reference to the current message toast in the view *at this level* (in the Angular injector tree).
    * If there is a parent message toast service, all operations should delegate to that parent
@@ -57,6 +49,36 @@ export class NxMessageToastService implements OnDestroy {
   get _oldToastMessageRef(): NxMessageToastRef | null {
     const parent = this._parentMessageToastService;
     return parent ? parent._oldToastMessageRef : this._toastRefAtThisLevel;
+  }
+
+  constructor(
+    private readonly _overlay: Overlay,
+    private readonly _overlayContainer: OverlayContainer,
+    private readonly _injector: Injector,
+    private readonly _live: LiveAnnouncer,
+    @Optional()
+    @SkipSelf()
+    private readonly _parentMessageToastService: NxMessageToastService | null,
+    @Optional()
+    @Inject(NX_MESSAGE_TOAST_DEFAULT_CONFIG)
+    private readonly _defaultConfig: NxMessageToastConfig | null,
+  ) {
+    this._initializeWrapper();
+  }
+  /**
+   * Initializes the wrapper element for toast message in the overlay container.
+   * Create a wrapper with ARIA attributes for accessibility
+   */
+  private _initializeWrapper(): void {
+    const overlayContainer = this._overlayContainer.getContainerElement();
+
+    if (!overlayContainer.querySelector('#nx-toast-message-region')) {
+      const wrapperElement = document.createElement('div');
+      wrapperElement.setAttribute('aria-live', 'polite');
+      wrapperElement.setAttribute('aria-atomic', 'true');
+      wrapperElement.id = 'nx-toast-message-region';
+      overlayContainer.appendChild(wrapperElement);
+    }
   }
 
   /**
@@ -146,7 +168,16 @@ export class NxMessageToastService implements OnDestroy {
     positionStrategy.bottom('0');
     positionStrategy.centerHorizontally();
     overlayConfig.positionStrategy = positionStrategy;
-    return this._overlay.create(overlayConfig);
+
+    const overlayRef = this._overlay.create(overlayConfig);
+    const overlayElement = overlayRef.overlayElement.parentElement;
+    const wrapper = this._overlayContainer
+      .getContainerElement()
+      .querySelector('#nx-toast-message-region');
+    if (overlayElement) {
+      wrapper?.appendChild(overlayElement);
+    }
+    return overlayRef;
   }
 
   /** Animates the old message toast out and the new one in. */
