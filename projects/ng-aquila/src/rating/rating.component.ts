@@ -1,4 +1,4 @@
-import { IconSize, NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
@@ -24,6 +24,9 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+/** Types of rating sizes */
+export type RatingSize = 's' | 'm' | 'l';
 
 @Component({
   selector: 'nx-rating',
@@ -58,14 +61,14 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     (index) => `${this.radioGroupName}-${index}`,
   );
 
-  @Input() set size(newSize: IconSize) {
+  @Input() set size(newSize: RatingSize) {
     this._size = newSize;
     this._cdr.markForCheck();
   }
-  get size(): IconSize {
+  get size(): RatingSize {
     return this._size;
   }
-  private _size: IconSize = 'l';
+  private _size: RatingSize = 'l';
 
   /** Sets the selected rating 1 - 5. */
   @Input() set value(newValue: NumberInput) {
