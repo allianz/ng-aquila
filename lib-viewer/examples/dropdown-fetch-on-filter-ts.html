@@ -1,0 +1,93 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDropdownComponent</span>,
+  <span class="hljs-title class_">NxDropdownItemComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSpinnerComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/spinner&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">HttpClient</span>, <span class="hljs-title class_">HttpParams</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">AfterViewInit</span>,
+  <span class="hljs-title class_">ChangeDetectionStrategy</span>,
+  <span class="hljs-title class_">Component</span>,
+  signal,
+  viewChild,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { debounceTime, skip, switchMap } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Dropdown HTTP Fetch on Filter Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;nx-dropdown-fetch-on-filter&#x27;</span>,
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxDropdownComponent</span>,
+    <span class="hljs-title class_">NxDropdownItemComponent</span>,
+    <span class="hljs-title class_">NxSpinnerComponent</span>,
+  ],
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-fetch-on-filter-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrl</span>: <span class="hljs-string">&#x27;./dropdown-fetch-on-filter-example.scss&#x27;</span>,
+  <span class="hljs-attr">changeDetection</span>: <span class="hljs-title class_">ChangeDetectionStrategy</span>.<span class="hljs-property">OnPush</span>,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DropdownFetchOnFilterComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterViewInit</span> {
+  optionsBase = [
+    <span class="hljs-string">&#x27;BMW&#x27;</span>,
+    <span class="hljs-string">&#x27;Audi&#x27;</span>,
+    <span class="hljs-string">&#x27;VW&#x27;</span>,
+    <span class="hljs-string">&#x27;Mercedes&#x27;</span>,
+    <span class="hljs-string">&#x27;Porsche&#x27;</span>,
+    <span class="hljs-string">&#x27;Tesla&#x27;</span>,
+    <span class="hljs-string">&#x27;Lada&#x27;</span>,
+    <span class="hljs-string">&#x27;Opel&#x27;</span>,
+    <span class="hljs-string">&#x27;Fiat&#x27;</span>,
+    <span class="hljs-string">&#x27;Ford&#x27;</span>,
+    <span class="hljs-string">&#x27;Kia&#x27;</span>,
+    <span class="hljs-string">&#x27;Toyota&#x27;</span>,
+    <span class="hljs-string">&#x27;Ferrari&#x27;</span>,
+  ];
+  options = signal&lt;<span class="hljs-built_in">string</span>[]&gt;(<span class="hljs-variable language_">this</span>.<span class="hljs-property">optionsBase</span>);
+  fetchingOptions = signal&lt;<span class="hljs-built_in">boolean</span>&gt;(<span class="hljs-literal">false</span>);
+  dropdown = viewChild.<span class="hljs-property">required</span>&lt;<span class="hljs-title class_">NxDropdownComponent</span>&gt;(<span class="hljs-title class_">NxDropdownComponent</span>);
+
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">http</span>: <span class="hljs-title class_">HttpClient</span></span>) {}
+
+  <span class="hljs-title function_">ngAfterViewInit</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// just to show the spinner immedeataly for better UX</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dropdown</span>()
+      .<span class="hljs-property">filterChanges</span>.<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">skip</span>(<span class="hljs-number">1</span>))
+      .<span class="hljs-title function_">subscribe</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">fetchingOptions</span>.<span class="hljs-title function_">set</span>(<span class="hljs-literal">true</span>);
+      });
+
+    <span class="hljs-comment">// wait for debounce and fetch results from RESTful API</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dropdown</span>()
+      .<span class="hljs-property">filterChanges</span>.<span class="hljs-title function_">pipe</span>(
+        <span class="hljs-title function_">skip</span>(<span class="hljs-number">1</span>),
+        <span class="hljs-title function_">debounceTime</span>(<span class="hljs-number">250</span>),
+        <span class="hljs-title function_">switchMap</span>(<span class="hljs-function">(<span class="hljs-params">filterValue</span>) =&gt;</span>
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">http</span>.<span class="hljs-property">get</span>&lt;<span class="hljs-built_in">string</span>[]&gt;(<span class="hljs-string">&#x27;/dropdown-options&#x27;</span>, {
+            <span class="hljs-attr">params</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">HttpParams</span>().<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;filter&#x27;</span>, filterValue),
+            <span class="hljs-attr">responseType</span>: <span class="hljs-string">&#x27;json&#x27;</span>,
+          }),
+        ),
+      )
+      .<span class="hljs-title function_">subscribe</span>({
+        <span class="hljs-attr">next</span>: <span class="hljs-function">(<span class="hljs-params">options</span>) =&gt;</span> {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>.<span class="hljs-title function_">set</span>(options);
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">fetchingOptions</span>.<span class="hljs-title function_">set</span>(<span class="hljs-literal">false</span>);
+        },
+        <span class="hljs-attr">error</span>: <span class="hljs-function">() =&gt;</span> {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>.<span class="hljs-title function_">set</span>([]);
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">fetchingOptions</span>.<span class="hljs-title function_">set</span>(<span class="hljs-literal">false</span>);
+        },
+      });
+  }
+}

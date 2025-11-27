@@ -4,8 +4,7 @@ body,
   color: var(--text-01);
 }
 
-:root,
-:host {
+:root, :host {
   --font-family: 'Public Sans Latin', sans-serif !important;
   --ui-background: #0f2a3d;
   --ui-01: var(--ui-background);
@@ -733,6 +732,7 @@ body,
   --tile-vertical-padding: 14px 16px;
   --tile-horizontal-padding: 14px 16px;
   --tile-spacing: 16px;
+  --tile-layout-horizontal-spacing: 16px;
   --tile-group-spacing: 16px;
   --tile-indicator-top: 12px;
   --tile-indicator-right: 12px;
@@ -903,7 +903,8 @@ body,
   --dropdown-panel-filter-border-color: none;
   --dropdown-panel-filter-font-weight: nx-font-weight(semibold);
   --dropdown-panel-shadow: var(--shadow-small);
-  --dropdown-panel-padding-top: 4px;
+  --dropdown-panel-padding-top: 12px;
+  --dropdown-panel-with-filter-padding-top: 4px;
   --dropdown-panel-padding-bottom: 16px;
   --dropdown-group-label-color: var(--ui-05);
   --dropdown-group-label-font-size: var(--small-label-font-size);
@@ -945,6 +946,7 @@ body,
   --dropdown-group-divider: #d9d9d9;
   --multi-select-item-padding-horizon: 32px;
   --multi-select-item-padding-vertical: 8px;
+  --multi-select-item-line-height: var(--large-label-line-height);
   --multi-select-action-padding-vertical: 16px;
   --multi-select-panel-padding: 12px;
   --footer-font-size: var(--paragraph-03-font-size);
@@ -1394,7 +1396,13 @@ body,
   --rating-icon-size-s: 24px;
   --rating-icon-size-m: 32px;
   --rating-icon-size-l: 40px;
+  --rating-icon-margin-s: 8px;
+  --rating-icon-margin-m: 12px;
+  --rating-icon-margin-l: 16px;
   --rating-label-color: var(--text-01);
+  --rating-label-margin-top-s: 8px;
+  --rating-label-margin-top-m: 12px;
+  --rating-label-margin-top-l: 16px;
   --rating-disabled-icon-color: var(--disabled-01);
   --rating-disabled-label-color: var(--disabled-01);
   --rating-label-font-size: var(--paragraph-03-font-size);

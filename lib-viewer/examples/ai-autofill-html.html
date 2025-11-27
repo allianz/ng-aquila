@@ -1,0 +1,139 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,8,6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Enter the Amount&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+          <span class="hljs-attr">nxInput</span>
+          [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;inputValue&quot;</span>
+          <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;prefilled&quot;</span>
+          (<span class="hljs-attr">ngModelChange</span>)=<span class="hljs-string">&quot;fieldChangedManually()&quot;</span>
+        /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+          <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">&quot;tertiary small&quot;</span>
+          <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Open A1 generation menu&quot;</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+          <span class="hljs-attr">nxFormfieldSuffix</span>
+          <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ai-button&quot;</span>
+          [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverAppearanceExample&quot;</span>
+          <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+          [(<span class="hljs-attr">nxPopoverShow</span>)]=<span class="hljs-string">&quot;popoverManualOpenFlag&quot;</span>
+          <span class="hljs-attr">nxPopoverDirection</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+        &gt;</span>
+          @if(!aiFilled){
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;ai-suggestion-o&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+          <span class="hljs-comment">&lt;!-- &lt;svg
+            width=&quot;20&quot;
+            height=&quot;20&quot;
+            viewBox=&quot;0 0 20 20&quot;
+            fill=&quot;&quot;
+            xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+            &lt;path
+            fill-rule=&quot;evenodd&quot;
+            clip-rule=&quot;evenodd&quot;
+            d=&quot;M13 7L11.088 2.53859L10 0L8.91203 2.53859L7 7L2.53859 8.91203L0 10L2.53859 11.088L7 13L8.91203 17.4614L10 20L11.088 17.4614L13 13L17.4614 11.088L20 10L17.4614 8.91203L13 7ZM14.9228 10L12.2122 8.83829L11.4768 8.52315L11.1617 7.78784L10 5.07718L8.83829 7.78784L8.52315 8.52315L7.78784 8.83829L5.07718 10L7.78784 11.1617L8.52315 11.4768L8.83829 12.2122L10 14.9228L11.1617 12.2122L11.4768 11.4768L12.2122 11.1617L14.9228 10ZM3.5 1L4.20711 2.79289L6 3.5L4.20711 4.20711L3.5 6L2.79289 4.20711L1 3.5L2.79289 2.79289L3.5 1ZM17.8485 16.1515L17 14L16.1515 16.1515L14 17L16.1515 17.8485L17 20L17.8485 17.8485L20 17L17.8485 16.1515Z&quot;
+            fill=&quot;#5A3982&quot;
+            /&gt;
+          &lt;/svg&gt; --&gt;</span>
+          }@else {
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;ai-suggestion&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+
+          <span class="hljs-comment">&lt;!-- &lt;svg
+            width=&quot;20&quot;
+            height=&quot;20&quot;
+            viewBox=&quot;0 0 20 20&quot;
+            fill=&quot;none&quot;
+            xmlns=&quot;http://www.w3.org/2000/svg&quot;
+          &gt;
+            &lt;path
+              fill-rule=&quot;evenodd&quot;
+              clip-rule=&quot;evenodd&quot;
+              d=&quot;M10 0L11.4179 5.67166C11.7762 7.1048 12.8952 8.2238 14.3283 8.58209L20 10L14.3283 11.4179C12.8952 11.7762 11.7762 12.8952 11.4179 14.3283L10 20L8.58209 14.3283C8.2238 12.8952 7.1048 11.7762 5.67166 11.4179L0 10L5.67166 8.58209C7.1048 8.2238 8.2238 7.1048 8.58209 5.67166L10 0ZM3.5 1L4 3L6 3.5L4 4L3.5 6L3 4L1 3.5L3 3L3.5 1ZM17 16L16.5 13L16 16L13 16.5L16 17L16.5 20L17 17L20 16.5L17 16Z&quot;
+              fill=&quot;#5A3982&quot;
+            /&gt;
+          &lt;/svg&gt; --&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;AI prefilled (readonly)&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;readonlyValue&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;prefilled&quot;</span> <span class="hljs-attr">readonly</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+          <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">&quot;tertiary small&quot;</span>
+          <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Open A1 generation menu&quot;</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+          <span class="hljs-attr">nxFormfieldSuffix</span>
+          <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ai-button disabled-input&quot;</span>
+          [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;disabledAiField&quot;</span>
+          <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+          <span class="hljs-attr">nxPopoverDirection</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+        &gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;ai-suggestion&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverAppearanceExample</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverTitle</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-large&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>&gt;</span>
+            AI input suggestion
+          <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverMainContent</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;normal&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>1.386.945 CHF<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>&gt;</span>
+            Reasoning
+          <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;normal&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+        @if(!aiFilled){
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverActions</span> <span class="hljs-attr">alignment</span>=<span class="hljs-string">&quot;right&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small secondary&quot;</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;popoverManualOpenFlag = !popoverManualOpenFlag&quot;</span>
+          &gt;</span>
+            Dismiss
+          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;fillWithAi()&quot;</span>&gt;</span>
+            Accept
+          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">disabledAiField</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverTitle</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-large&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>&gt;</span>
+            AI input suggestion
+          <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverMainContent</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;normal&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>1.386.945 CHF<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>&gt;</span>
+            Reasoning
+          <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;normal&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- Copyright 2025 ALLIANZ --&gt;</span>

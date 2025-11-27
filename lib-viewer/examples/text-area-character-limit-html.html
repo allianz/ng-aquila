@@ -1,0 +1,27 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;limittingForm&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,8&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Soft maxlength text area&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">textarea</span>
+          <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;overflowTextArea&quot;</span>
+          <span class="hljs-attr">nxInput</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+          (<span class="hljs-attr">input</span>)=<span class="hljs-string">&quot;updateTextArea()&quot;</span>
+          <span class="hljs-attr">aria-live</span>=<span class="hljs-string">&quot;polite&quot;</span>
+          #<span class="hljs-attr">textAreaWithSoftLimit</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span> <span class="hljs-attr">aria-live</span>=<span class="hljs-string">&quot;polite&quot;</span>&gt;</span> {{ hintText() }} <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+
+        @if(limittingForm.controls.overflowTextArea.errors?.maxlength) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span> #<span class="hljs-attr">textAreaTextLimitErrorMessage</span>&gt;</span>
+          Your note is too long.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

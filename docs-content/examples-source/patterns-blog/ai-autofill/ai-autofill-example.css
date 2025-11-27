@@ -1,0 +1,15 @@
+.ai-button {
+  --button-tertiary-background-color: color-mix(in hsl, #e1cfeb, #ffffff 40%);
+  --button-tertiary-hover-background-color: color-mix(
+    in hsl,
+    #e1cfeb,
+    #ffffff 20%
+  );
+  --button-tertiary-active-background-color: #e1cfeb;
+  border: 0;
+  margin-right: -3px;
+}
+
+nx-icon {
+  color: #5a3982;
+}

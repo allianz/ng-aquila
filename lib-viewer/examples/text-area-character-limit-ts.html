@@ -1,0 +1,87 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxExpertModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/config&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxFormfieldComponent</span>,
+  <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+  <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/input&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">AfterViewInit</span>,
+  <span class="hljs-title class_">Component</span>,
+  computed,
+  signal,
+  <span class="hljs-title class_">ViewChild</span>,
+  viewChild,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">FormBuilder</span>,
+  <span class="hljs-title class_">FormsModule</span>,
+  <span class="hljs-title class_">ReactiveFormsModule</span>,
+  <span class="hljs-title class_">Validators</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Text Area with soft Character Limit Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;text-area-character-limit-example&#x27;</span>,
+  <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxInputDirective</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+    <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+    <span class="hljs-title class_">NxExpertModule</span>,
+  ],
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./text-area-character-limit-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrl</span>: <span class="hljs-string">&#x27;./text-area-character-limit-example.scss&#x27;</span>,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TextAreaCharacterLimitExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterViewInit</span> {
+  hintText = computed&lt;<span class="hljs-built_in">string</span>&gt;(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> currentLength = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">textLength</span>();
+    <span class="hljs-keyword">if</span> (currentLength &gt; <span class="hljs-number">10</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${currentLength - <span class="hljs-number">10</span>}</span> characters over the limit`</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-number">10</span> - currentLength}</span> characters remaining`</span>;
+  });
+  textLength = signal&lt;<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">0</span>);
+
+  limittingForm = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormBuilder</span>().<span class="hljs-title function_">group</span>({
+    <span class="hljs-attr">overflowTextArea</span>: [<span class="hljs-string">&#x27;Initial text&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-title function_">maxLength</span>(<span class="hljs-number">10</span>)],
+  });
+
+  textAreaLimitExceededError = <span class="hljs-title function_">viewChild</span>(<span class="hljs-string">&#x27;textAreaTextLimitErrorMessage&#x27;</span>);
+
+  textAreaInputWithSoftLimit = <span class="hljs-title function_">viewChild</span>(<span class="hljs-string">&#x27;textAreaWithSoftLimit&#x27;</span>, {
+    <span class="hljs-attr">read</span>: <span class="hljs-title class_">NxInputDirective</span>,
+  });
+
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;inputToCount&#x27;</span>, { <span class="hljs-attr">read</span>: <span class="hljs-title class_">NxInputDirective</span>, <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> })
+  input!: <span class="hljs-title class_">NxInputDirective</span>;
+
+  count = <span class="hljs-number">0</span>;
+
+  <span class="hljs-title function_">ngAfterViewInit</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateTextArea</span>();
+  }
+
+  <span class="hljs-title function_">onInput</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">count</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">input</span>.<span class="hljs-property">value</span>.<span class="hljs-property">length</span>;
+  }
+
+  <span class="hljs-title function_">updateTextArea</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">textLength</span>.<span class="hljs-title function_">set</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">limittingForm</span>.<span class="hljs-property">value</span>.<span class="hljs-property">overflowTextArea</span>?.<span class="hljs-property">length</span> || <span class="hljs-number">0</span>);
+  }
+}

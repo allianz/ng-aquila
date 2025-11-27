@@ -21,11 +21,10 @@
 }
 
 <span class="hljs-selector-class">.my-sidepanel</span> ::ng-deep nx-tab-header {
-  <span class="hljs-attribute">position</span>: sticky;
-  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">24px</span>;
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">var</span>(--sidepanel-background-color);
-  <span class="hljs-comment">/* use this for the light version:
-  background: var(--sidepanel-light-background-color);
-  */</span>
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
+}
+
+<span class="hljs-selector-class">.my-sidepanel</span> ::ng-deep nx-tab-header,
+.my-sidepanel ::ng-deep nx-tab-scroll-indicator {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--sidepanel-background-color);
 }

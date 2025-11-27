@@ -1,0 +1,22 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ComponentFixture</span>, <span class="hljs-title class_">TestBed</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core/testing&#x27;</span>;
+
+<span class="hljs-keyword">import</span> { A11ySkipToDataDescriptionComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./a11y-skip-to-data-description-example&#x27;</span>;
+
+<span class="hljs-title function_">describe</span>(<span class="hljs-string">&#x27;A11ySkipToDataDescriptionComponent&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">let</span> <span class="hljs-attr">component</span>: A11ySkipToDataDescriptionComponent;
+  <span class="hljs-keyword">let</span> <span class="hljs-attr">fixture</span>: <span class="hljs-title class_">ComponentFixture</span>&lt;A11ySkipToDataDescriptionComponent&gt;;
+
+  <span class="hljs-title function_">beforeEach</span>(<span class="hljs-title function_">async</span> () =&gt; {
+    <span class="hljs-keyword">await</span> <span class="hljs-title class_">TestBed</span>.<span class="hljs-title function_">configureTestingModule</span>({
+      <span class="hljs-attr">imports</span>: [A11ySkipToDataDescriptionComponent],
+    }).<span class="hljs-title function_">compileComponents</span>();
+
+    fixture = <span class="hljs-title class_">TestBed</span>.<span class="hljs-title function_">createComponent</span>(A11ySkipToDataDescriptionComponent);
+    component = fixture.<span class="hljs-property">componentInstance</span>;
+    fixture.<span class="hljs-title function_">detectChanges</span>();
+  });
+
+  <span class="hljs-title function_">it</span>(<span class="hljs-string">&#x27;should create&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">expect</span>(component).<span class="hljs-title function_">toBeTruthy</span>();
+  });
+});
