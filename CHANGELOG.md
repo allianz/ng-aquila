@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.7.0](https://github.com/allianz/ng-aquila/compare/v20.6.0...v20.7.0) (2025-11-27)
+
+### Documentation 📚
+
+* **button:** update documentation for nxButton attribute usage ([49f903d](https://github.com/allianz/ng-aquila/commit/49f903d8928f40d9751fe3ed4ba93b77bb17dd78))
+* **sidepanel:** update tab header styles for example ([d099018](https://github.com/allianz/ng-aquila/commit/d0990183627ee8b085c88867fe6414d47bc0e2bf))
+
+
+### Features ✨
+
+* **rating:** add css variables for icon gaps ([1818da8](https://github.com/allianz/ng-aquila/commit/1818da80ebd780dcacd94c917824a2b1501f7980))
+* show pattern examples ([2aafe1b](https://github.com/allianz/ng-aquila/commit/2aafe1b44d0753a2f8873a9eff9af06ac8fe5956))
+* **sidebar:** combine aria-expanded to the label ([10c299c](https://github.com/allianz/ng-aquila/commit/10c299ca6ff5dc8ecda2f4f666235b21a6067308))
+* **theming:** add possibility to scope themes ([e4821e3](https://github.com/allianz/ng-aquila/commit/e4821e3bfda0b3698cbaa54660779c4f111fafbf))
+
+
+### Bug Fixes 🐛
+
+* **comparison-table:** remove disabled text color ([7f66926](https://github.com/allianz/ng-aquila/commit/7f669268bf704cf701b4508ad239987535cc3a5f))
+* **context-menu:** resolve circular dependency in vitetests ([1a0c141](https://github.com/allianz/ng-aquila/commit/1a0c141d8db01467dd4510077038ee1602509340))
+* **datemask:** invalid values not resetting the input fields ([02fb3cc](https://github.com/allianz/ng-aquila/commit/02fb3cc8fe00e615d7d467b6b7de35bf38a1da0a))
+* **dialog:** move cdk-live-annoucer into modal container ([1bbb509](https://github.com/allianz/ng-aquila/commit/1bbb5098fc506939de1eca028065ad6fc193ec08))
+* **dropdown:** adjust max-height to prevent minimal scrollbar ([564ccad](https://github.com/allianz/ng-aquila/commit/564ccad1214fd240866270c188ee8592d0792922))
+* **mask:** add event composition handler for samsung keyboard ([adc8c3f](https://github.com/allianz/ng-aquila/commit/adc8c3f8ca2154dc50488229edd511f999eff9b2))
+* **message-toast:** add live region and move content ([44674f7](https://github.com/allianz/ng-aquila/commit/44674f703544d9b13c223e264862936b8149bc24))
+* **modal:** update margin for fullscreen modal ([090423c](https://github.com/allianz/ng-aquila/commit/090423c37a76f5982678b3b9d4ed45c3a22d91c2))
+* **number-stepper:** fix zero value being replaced by empty string ([820aa16](https://github.com/allianz/ng-aquila/commit/820aa169d050abc2a93ffbe6d3cb11cd34f5184e))
+* **rating:** add missing gap between icon & label as per design ([21fc64b](https://github.com/allianz/ng-aquila/commit/21fc64b0356502c19a5f821f9f58d84686133ebe))
+* **rating:** remove xl support ([cca4692](https://github.com/allianz/ng-aquila/commit/cca46925589d120615c13fa9bd2457db502ebfed))
+* **tile:** add token for horizontal gap ([28698d5](https://github.com/allianz/ng-aquila/commit/28698d59b12592c7e20cb49f0398847a8c41b7e8))
+* **timefield:** throw error when enableTimeValidation with non-number character input ([98fd419](https://github.com/allianz/ng-aquila/commit/98fd419d8f40c477deeffd1d662adcd147bce429))
+* **toast:** always show toast on top ([256d8e5](https://github.com/allianz/ng-aquila/commit/256d8e5013338bfa094dbb6de6988da08d62015c))
+* **tree:** update attributes for accessibility issue ([6321dc1](https://github.com/allianz/ng-aquila/commit/6321dc1a690405b89088fc227fc184567bc5abfd))
+
 ## [20.6.0](https://github.com/allianz/ng-aquila/compare/v20.5.0...v20.6.0) (2025-10-24)
 
 
