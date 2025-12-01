@@ -31,17 +31,19 @@
 
 .nx-rating__label {
   display: flex;
-  @include type-style(rating-label);
   color: v(rating-label-color);
 
   &.margin-s {
     margin-top: v(rating-label-margin-top-s);
+    @include type-style(rating-label-s);
   }
   &.margin-m {
     margin-top: v(rating-label-margin-top-m);
+    @include type-style(rating-label-m);
   }
   &.margin-l {
     margin-top: v(rating-label-margin-top-l);
+    @include type-style(rating-label-l);
   }
 }
 
