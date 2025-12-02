@@ -689,7 +689,7 @@ class BasicSliderOnPush extends SliderTest {}
         [max]="max"
         [step]="stepSize"
         [value]="value"
-        [thumbLabel]="thumblabel"
+        [thumbLabel]="thumbLabel"
         [hideLabels]="hideLabels"
       >
       </nx-slider>

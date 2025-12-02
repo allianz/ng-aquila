@@ -1,7 +1,7 @@
 import { NxLabelComponent, NxLabelModule } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxTileComponent, NxTileGroupComponent } from '@allianz/ng-aquila/tile';
-import { CommonModule } from '@angular/common';
+
 import { Component, signal } from '@angular/core';
 
 /**
@@ -11,7 +11,6 @@ import { Component, signal } from '@angular/core';
   selector: 'tile-group-custom-grid-example',
   standalone: true,
   imports: [
-    CommonModule,
     NxTileGroupComponent,
     NxTileComponent,
     NxIconModule,

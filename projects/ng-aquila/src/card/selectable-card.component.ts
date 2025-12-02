@@ -62,8 +62,6 @@ export const SELECTABLE_CARD_DEFAULT_OPTIONS = new InjectionToken<SelectableCard
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     role: 'radiogroup',
-    '[attr.id]': 'id',
-    '[attr.aria-labelledby]': 'this._label?.id  || null',
     '[class.has-error]': 'errorState',
   },
   styleUrls: ['./selectable-card-group.scss'],

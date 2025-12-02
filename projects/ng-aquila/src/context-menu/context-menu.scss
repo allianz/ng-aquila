@@ -7,6 +7,26 @@ $divider-vertical-margin: v(context-menu-item-vertical-padding);
   border-radius: nx-border-radius(s);
   background: v(context-menu-background-color);
 
+  // Initial state (before enter animation)
+  opacity: 0;
+  transform: scale(0.8);
+  transition:
+    opacity $context-menu-enter-duration $context-menu-enter-easing,
+    transform $context-menu-enter-duration $context-menu-enter-easing;
+
+  &.context-menu-enter {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &.context-menu-leave {
+    transition:
+      opacity $context-menu-leave-duration $context-menu-leave-easing,
+      transform $context-menu-leave-duration $context-menu-leave-easing;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
   @media screen and (forced-colors: active) {
     border: nx-border-size(xs) solid CanvasText;
   }

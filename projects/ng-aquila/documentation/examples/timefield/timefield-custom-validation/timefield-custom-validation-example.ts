@@ -16,9 +16,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./timefield-custom-validation-example.css'],
   imports: [NxTimefieldModule, NxErrorModule, ReactiveFormsModule, JsonPipe],
 })
-export class TimefieldCustomValidationExampleComponent
-  implements AfterViewInit
-{
+export class TimefieldCustomValidationExampleComponent implements AfterViewInit {
   timefield = viewChild.required(NxTimefieldComponent);
 
   readonly testForm = this.fb.group({

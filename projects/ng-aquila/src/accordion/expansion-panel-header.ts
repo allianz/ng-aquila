@@ -15,7 +15,6 @@ import {
 import { merge, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-import { nxAccordionAnimations } from './accordion-animations';
 import { NxExpansionPanelComponent } from './expansion-panel';
 
 @Component({
@@ -23,7 +22,6 @@ import { NxExpansionPanelComponent } from './expansion-panel';
   templateUrl: 'expansion-panel-header.html',
   styleUrls: ['expansion-panel-header.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [nxAccordionAnimations.indicatorRotate],
   host: {
     '[class.nx-expanded]': 'isExpanded()',
     class: 'nx-expansion-panel__header',

@@ -3,7 +3,6 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { Component, forwardRef, NgModule, TemplateRef, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NxMessageModule } from '../message.module';
 import { NxMessageToastService } from './message-toast.service';
@@ -18,7 +17,8 @@ describe('NxMessageToast', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxMessageToastTestModule, NoopAnimationsModule],
+      animationsEnabled: true,
+      imports: [NxMessageToastTestModule],
     }).compileComponents();
   }));
 
@@ -70,17 +70,34 @@ describe('NxMessageToast', () => {
     }));
 
     it('should remove past message toasts when opening new message toasts', fakeAsync(() => {
+      const animateTime = 300;
+      const transitionEvent = new TransitionEvent('transitionend', { propertyName: 'opacity' });
       messageToastService.open('First message toast', { duration: 0 });
+      const messageElement = overlayContainerElement.querySelector('nx-message-toast')!;
+      messageElement.dispatchEvent(transitionEvent);
+      // wait for close
+      tick(animateTime);
+      fixture.detectChanges();
+      messageToastService.open('Second message toast', { duration: 0 });
+      // wait for open
+      tick(animateTime);
       fixture.detectChanges();
 
-      messageToastService.open('Second message toast', { duration: 0 });
+      const messageElement2 = overlayContainerElement.querySelector('nx-message-toast')!;
+      messageElement2.dispatchEvent(transitionEvent);
+      // wait for close
+      tick(animateTime);
       fixture.detectChanges();
-      flush();
 
       messageToastService.open('Third message toast', { duration: 0 });
+      // wait for open
+      tick(animateTime);
       fixture.detectChanges();
-      flush();
-
+      const messageElement3 = overlayContainerElement.querySelector('nx-message-toast')!;
+      messageElement3.dispatchEvent(transitionEvent);
+      // wait for close
+      tick(animateTime);
+      fixture.detectChanges();
       expect(overlayContainerElement.textContent!.trim()).toBe('Third message toast');
     }));
 
@@ -174,27 +191,37 @@ describe('NxMessageToast', () => {
 
   it('should dismiss automatically after a specified timeout', fakeAsync(() => {
     const toastRef = messageToastService.open('content', { duration: 300 });
+    tick(300); // open
+
     const afterDismissSpy = jasmine.createSpy('after dismiss spy');
     toastRef.afterDismissed().subscribe(afterDismissSpy);
 
-    fixture.detectChanges();
-    tick();
     expect(afterDismissSpy).not.toHaveBeenCalled();
-
-    tick(300);
+    tick(300); // wait
     fixture.detectChanges();
-    tick();
+
+    tick(300); // close
+    fixture.detectChanges();
     expect(afterDismissSpy).toHaveBeenCalled();
   }));
 
   it('should emit afterDismissed after dismiss', fakeAsync(() => {
     const toastRef = messageToastService.open('content');
+    tick(300);
+    fixture.detectChanges();
+
     const afterDismissSpy = jasmine.createSpy('after dismiss spy');
     toastRef.afterDismissed().subscribe(afterDismissSpy);
 
     toastRef.dismiss();
+    tick(300);
     fixture.detectChanges();
-    tick();
+    const oldToast = overlayContainerElement.querySelector('nx-message-toast');
+    if (oldToast) {
+      oldToast.dispatchEvent(new TransitionEvent('transitionend', { propertyName: 'opacity' }));
+    }
+    tick(300);
+    fixture.detectChanges();
 
     expect(afterDismissSpy).toHaveBeenCalled();
   }));
@@ -306,7 +333,7 @@ describe('NxMessageToast with parent and child service', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxMessageToastTestModule, NoopAnimationsModule, ComponentProvidingService],
+      imports: [NxMessageToastTestModule, ComponentProvidingService],
     }).compileComponents();
   }));
 
@@ -340,7 +367,15 @@ describe('NxMessageToast with parent and child service', () => {
 
     parentService.open('Parent message toast', { duration: 0 });
     fixture.detectChanges();
+
+    // Trigger transitionend event for the old toast to complete exit animation
+    const oldToast = overlayContainerElement.querySelector('nx-message-toast');
+    if (oldToast) {
+      oldToast.dispatchEvent(new TransitionEvent('transitionend', { propertyName: 'opacity' }));
+    }
+
     flush();
+    fixture.detectChanges();
 
     expect(overlayContainerElement.textContent!.trim()).toBe('Parent message toast');
   }));
@@ -353,7 +388,15 @@ describe('NxMessageToast with parent and child service', () => {
 
     childService.open('Child message toast', { duration: 0 });
     fixture.detectChanges();
+
+    // Trigger transitionend event for the old toast to complete exit animation
+    const oldToast = overlayContainerElement.querySelector('nx-message-toast');
+    if (oldToast) {
+      oldToast.dispatchEvent(new TransitionEvent('transitionend', { propertyName: 'opacity' }));
+    }
+
     flush();
+    fixture.detectChanges();
 
     expect(overlayContainerElement.textContent!.trim()).toBe('Child message toast');
   }));

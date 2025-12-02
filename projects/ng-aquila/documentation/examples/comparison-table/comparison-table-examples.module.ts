@@ -11,7 +11,6 @@ import { NxListModule } from '@allianz/ng-aquila/list';
 import { NxPopoverModule } from '@allianz/ng-aquila/popover';
 import { NxRadioToggleModule } from '@allianz/ng-aquila/radio-toggle';
 import { NxSpinnerModule } from '@allianz/ng-aquila/spinner';
-import { NxSwipebarModule } from '@allianz/ng-aquila/swipebar';
 import { NgModule } from '@angular/core';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
@@ -66,7 +65,6 @@ const EXAMPLES = [
     NxContextMenuModule,
     NxDataDisplayModule,
     NxSpinnerModule,
-    NxSwipebarModule,
     ExamplesSharedModule,
     EXAMPLES,
   ],

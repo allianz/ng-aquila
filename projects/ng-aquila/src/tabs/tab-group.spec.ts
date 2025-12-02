@@ -20,11 +20,10 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Subscription } from 'rxjs';
 
-import { NxTabGroupComponent } from './tab-group';
-import { TAB_GROUP_DEFAULT_OPTIONS, TabGroupDefaultOptions } from './tabs.models';
+import { NxTabChangeEvent, NxTabGroupComponent } from './tab-group';
+import { NxTabsAppearance, TAB_GROUP_DEFAULT_OPTIONS, TabGroupDefaultOptions } from './tabs.models';
 import { NxTabsModule } from './tabs.module';
 
 declare let viewport: any;
@@ -43,7 +42,7 @@ abstract class TabsTest {
   negative = false;
   customLabel = 'First label';
   showAccordion = true;
-  appearance = 'expert';
+  appearance: NxTabsAppearance = 'expert';
 
   @ViewChild(NxTabGroupComponent) tabGroupInstance!: NxTabGroupComponent;
 }
@@ -81,7 +80,6 @@ describe('NxTabGroupComponent', () => {
       TestBed.configureTestingModule({
         imports: [
           NxTabsModule,
-          BrowserAnimationsModule,
           BasicTabs,
           OnPushTabs,
           ConfigurableTabs,
@@ -568,7 +566,7 @@ describe('NxTabGroupComponent', () => {
     beforeEach(waitForAsync(() => {
       tabsDefaultOptions.appearance = 'expert';
       TestBed.configureTestingModule({
-        imports: [NxTabsModule, BrowserAnimationsModule, BasicTabs, ConfigurableTabs],
+        imports: [NxTabsModule, BasicTabs, ConfigurableTabs],
         providers: [{ provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: tabsDefaultOptions }],
       }).compileComponents();
     }));
@@ -677,7 +675,7 @@ class EventTabsTest extends TabsTest {
   selectedIndex: any;
   tabChangeEvent: any;
 
-  tabChanged(event: Event) {
+  tabChanged(event: NxTabChangeEvent) {
     this.tabChangeEvent = event;
   }
 }

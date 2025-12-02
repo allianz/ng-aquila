@@ -17,7 +17,7 @@ import {
   NxMessageToastConfig,
   NxMessageToastService,
 } from '@allianz/ng-aquila/message';
-import { CommonModule } from '@angular/common';
+
 import { HttpClient, HttpParams } from '@angular/common/http';
 import {
   Component,
@@ -54,7 +54,6 @@ const noFilesToastConfig: NxMessageToastConfig = {
     NxFileUploaderButtonDirective,
     NxIconComponent,
     NxPlainButtonComponent,
-    CommonModule,
     NxErrorComponent,
   ],
 })

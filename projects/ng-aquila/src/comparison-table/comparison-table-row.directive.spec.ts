@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxComparisonTableCell } from './cell/cell.component';
 import { BASIC_COMPARISON_TABLE_TEMPLATE } from './comparison-table.component.spec';
+import { NxComparisonTableRowType } from './comparison-table.models';
 import { NxComparisonTableModule } from './comparison-table.module';
 import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
 
@@ -12,7 +13,7 @@ abstract class RowTest {
   rowInstances!: QueryList<NxComparisonTableRowDirective>;
   @ViewChildren(NxComparisonTableCell) cellInstances!: QueryList<NxComparisonTableCell>;
 
-  typeForFooter = 'footer';
+  typeForFooter: NxComparisonTableRowType = 'footer';
 }
 
 describe('NxComparisonTableRowDirective', () => {

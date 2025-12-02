@@ -1,4 +1,3 @@
-import { AnimationEvent } from '@angular/animations';
 import { FocusKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import { Direction } from '@angular/cdk/bidi';
 import { END, ESCAPE, hasModifierKey, HOME, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
@@ -7,6 +6,7 @@ import {
   AfterContentInit,
   afterNextRender,
   AfterRenderRef,
+  AnimationCallbackEvent,
   ChangeDetectionStrategy,
   Component,
   ContentChild,
@@ -24,7 +24,6 @@ import {
 import { merge, Observable, ReplaySubject, Subject } from 'rxjs';
 import { startWith, switchMap, takeUntil } from 'rxjs/operators';
 
-import { nxContextMenuAnimations } from './context-menu-animations';
 import { NxContextMenuContentDirective } from './context-menu-content.directive';
 import { NxContextMenuItemComponent } from './context-menu-item.component';
 import { NxContextMenuItemBase, NxContextMenuItemWrapBase } from './context-menu-item-base';
@@ -35,7 +34,6 @@ import { NxContextMenuItemBase, NxContextMenuItemWrapBase } from './context-menu
   styleUrls: ['./context-menu.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'nxContextMenu',
-  animations: [nxContextMenuAnimations.transformContextMenu],
   imports: [NgClass],
 })
 export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
@@ -56,10 +54,9 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
   _classList: { [key: string]: boolean } = {};
 
   /** Current state of the panel animation. */
-  _panelAnimationState: 'void' | 'enter' = 'void';
 
   /** Emits whenever an animation on the menu completes. */
-  readonly _animationDone = new Subject<AnimationEvent>();
+  readonly _animationDone = new Subject<AnimationCallbackEvent>();
 
   /** Whether the menu is animating. */
   _isAnimating = false;
@@ -87,8 +84,8 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
 
   private readonly _destroyed = new Subject<void>();
 
-  @HostListener('click')
-  private _onClick(event: Event) {
+  @HostListener('click', ['$event'])
+  protected _onClick(event: Event) {
     event.preventDefault();
   }
 
@@ -184,33 +181,20 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     this._keyManager.setActiveItem(-1);
   }
 
-  /** Starts the enter animation. */
-  _startAnimation() {
-    this._panelAnimationState = 'enter';
-  }
-
-  /** Resets the panel animation to its initial state. */
-  _resetAnimation() {
-    this._panelAnimationState = 'void';
-  }
-
-  /** Callback that is invoked when the panel animation completes. */
-  _onAnimationDone(event: AnimationEvent) {
-    this._animationDone.next(event);
-    this._isAnimating = false;
-  }
-
-  _onAnimationStart(event: AnimationEvent) {
+  onAnimationEnter(event: AnimationCallbackEvent) {
     this._isAnimating = true;
 
-    // Scroll the content element to the top as soon as the animation starts. This is necessary,
-    // because we move focus to the first item while it's still being animated, which can throw
-    // the browser off when it determines the scroll position. Alternatively we can move focus
-    // when the animation is done, however moving focus asynchronously will interrupt screen
-    // readers which are in the process of reading out the menu already. We take the `element`
-    // from the `event` since we can't use a `ViewChild` to access the pane.
-    if (event.toState === 'enter' && this._keyManager.activeItemIndex === 0) {
-      event.element.scrollTop = 0;
+    event.target.classList.add('context-menu-enter');
+    if (this._keyManager.activeItemIndex === 0) {
+      event.target.scrollTop = 0;
     }
+  }
+
+  onAnimationLeave(event: AnimationCallbackEvent) {
+    this._isAnimating = false;
+
+    event.target.classList.add('context-menu-leave');
+
+    this._animationDone.next(event);
   }
 }

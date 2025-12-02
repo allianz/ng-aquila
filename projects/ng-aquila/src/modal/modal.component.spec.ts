@@ -1,3 +1,4 @@
+import { NxButtonBase, NxButtonComponent } from '@allianz/ng-aquila/button';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,11 +7,11 @@ import {
   QueryList,
   Type,
   ViewChild,
+  viewChild,
   ViewChildren,
 } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NxModalComponent } from './modal.component';
 import { NxModalModule } from './modal.module';
@@ -25,14 +26,7 @@ abstract class ModalTest {
 describe('NxModalComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
-        NoopAnimationsModule,
-        NxModalModule.forRoot(),
-        BasicModal,
-        FixedWidthModal,
-        ManualModal,
-        OnPushTest,
-      ],
+      imports: [NxModalModule.forRoot(), BasicModal, FixedWidthModal, ManualModal, OnPushTest],
     }).compileComponents();
   }));
 
@@ -85,19 +79,18 @@ describe('NxModalComponent', () => {
       expect(clicked).toBeTruthy();
     }));
 
-    it('should close the modal on click outside', waitForAsync(() => {
+    it('should close the modal on click outside', fakeAsync(() => {
       createTestComponent(BasicModal);
       openModal();
       // a click on the backdrop should close the modal again
       const modalBackdrop = fixture.nativeElement.querySelector('.nx-modal__backdrop');
-      modalBackdrop.click();
-      fixture.detectChanges();
       const openedModal = fixture.nativeElement.querySelector('#basicModal');
-      // Expect modal to be closing again; however, since the respective DOM node will only be removed
-      // with a delay due to modal closing animation, we cannot simply "expect(openedModal).toBeFalsy()" here.
-      // But if angular added the "ng-animating" class, we know that it did its job and since the animation
-      // is triggered on ":leave" (see NxModalComponent) the element is surely about to be removed.
-      expect(openedModal).toHaveClass('ng-animating');
+      expect(openedModal).toBeTruthy();
+      modalBackdrop.click();
+      tick(300);
+      fixture.detectChanges();
+      const closedModal = fixture.nativeElement.querySelector('#basicModal');
+      expect(closedModal).toBeFalsy();
     }));
 
     it('should not close the modal on click inside content', waitForAsync(() => {
@@ -202,13 +195,15 @@ describe('NxModalComponent', () => {
       #basicModal
       id="basicModal"
       [modalBody]="basicModalBody"
-      *nxOpenModalOnClick="basicModalButton"
+      *nxOpenModalOnClick="button()"
     >
     </nx-modal>
   `,
-  imports: [NxModalModule],
+  imports: [NxModalModule, NxButtonComponent],
 })
-class BasicModal extends ModalTest {}
+class BasicModal extends ModalTest {
+  button = viewChild.required<NxButtonBase>('basicModalButton');
+}
 
 @Component({
   template: `
@@ -255,10 +250,12 @@ class FixedWidthModal extends ModalTest {}
       #basicModal
       id="basicModal"
       [modalBody]="basicModalBody"
-      *nxOpenModalOnClick="basicModalButton"
+      *nxOpenModalOnClick="button()"
     >
     </nx-modal>
   `,
-  imports: [NxModalModule],
+  imports: [NxModalModule, NxButtonComponent],
 })
-class OnPushTest extends ModalTest {}
+class OnPushTest extends ModalTest {
+  button = viewChild.required<NxButtonBase>('basicModalButton');
+}

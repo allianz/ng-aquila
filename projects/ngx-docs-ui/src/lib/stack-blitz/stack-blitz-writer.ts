@@ -48,7 +48,6 @@ const angularVersion = '^20.0.0';
 const aquilaVersion = '^20.0.0';
 
 const dependencies = {
-  '@angular/animations': angularVersion,
   '@angular/cdk': angularVersion,
   '@angular/common': angularVersion,
   '@angular/compiler': angularVersion,
@@ -71,7 +70,6 @@ const dependencies = {
 };
 
 const testDependencies = {
-  '@angular/animations': angularVersion,
   '@angular/cdk': angularVersion,
   '@angular/common': angularVersion,
   '@angular/compiler': angularVersion,

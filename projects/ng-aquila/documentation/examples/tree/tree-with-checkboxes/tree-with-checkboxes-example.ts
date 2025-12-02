@@ -6,7 +6,7 @@ import {
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { ArrayDataSource, SelectionModel } from '@angular/cdk/collections';
 import { CdkTree, CdkTreeModule } from '@angular/cdk/tree';
-import { CommonModule } from '@angular/common';
+
 import {
   AfterViewInit,
   Component,
@@ -112,7 +112,6 @@ export class TreeCheckboxNode<T> implements AfterViewInit {
   standalone: true,
   imports: [
     CdkTreeModule,
-    CommonModule,
     NxCheckboxModule,
     NxButtonModule,
     NxIconComponent,

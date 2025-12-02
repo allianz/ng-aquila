@@ -1,4 +1,4 @@
-<div [@openClose]="_open ? 'open' : 'closed'" class="nx-expandable-table-cell__content">
+<div class="nx-expandable-table-cell__content" [class.is-open]="_open">
   <div class="nx-expandable-table-cell__wrapper">
     <ng-content></ng-content>
   </div>

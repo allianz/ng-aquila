@@ -4,7 +4,7 @@ import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 
-import { NxIconComponent } from './icon.component';
+import { IconSize, NxIconComponent } from './icon.component';
 import { NxIconModule } from './icon.module';
 import { NxIconRegistry } from './icon-registry';
 
@@ -301,7 +301,7 @@ class FillIcon extends IconTest {}
 })
 class DynamicIcon extends IconTest {
   name = 'heart';
-  size = 'm';
+  size: IconSize = 'm';
 }
 
 @Component({

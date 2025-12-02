@@ -4,9 +4,9 @@
       <nx-header-row>
         <nx-error appearance="text">
           {{ announcement.title }}
-          @if (announcement?.link) {
+          @if (announcement.link) {
             <nx-link
-              ><a href="{{ announcement.link?.url }}">{{ announcement.link?.title }}</a></nx-link
+              ><a href="{{ announcement.link.url }}">{{ announcement.link.title }}</a></nx-link
             >
           }
           .

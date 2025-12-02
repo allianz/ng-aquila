@@ -1,4 +1,3 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
   booleanAttribute,
   ChangeDetectionStrategy,
@@ -19,29 +18,11 @@ import { NxExpandableTableRowComponent } from './expandable-table-row.component'
 @Component({
   selector: 'td[nxExpandableTableCell]',
   templateUrl: './expandable-table-cell.component.html',
+  styleUrl: './expandable-table-cell.component.scss',
   host: {
     class: 'nx-expandable-table-cell',
     '[class.nx-expandable-table-cell--indented]': 'indented()',
   },
-  animations: [
-    trigger('openClose', [
-      state(
-        'open',
-        style({
-          height: '*',
-          visibility: 'visible',
-        }),
-      ),
-      state(
-        'closed, void',
-        style({
-          height: '0',
-          visibility: 'hidden', // visibility and height to toggle instead of display: none to prevent cell width jumping
-        }),
-      ),
-      transition('closed <=> open, void => closed', [animate('225ms cubic-bezier(0.4,0.0,0.2,1)')]),
-    ]),
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })

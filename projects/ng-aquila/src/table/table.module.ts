@@ -1,6 +1,5 @@
 import { NxCopytextModule } from '@allianz/ng-aquila/copytext';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NxSwipebarModule } from '@allianz/ng-aquila/swipebar';
 import { CommonModule } from '@angular/common';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
@@ -55,14 +54,8 @@ export const NX_SORT_HEADER_INTL_PROVIDER = {
 };
 
 @NgModule({
-  exports: [...EXPORTED_DECLARED_ELEMENTS, NxSwipebarModule],
-  imports: [
-    CommonModule,
-    NxIconModule,
-    NxCopytextModule,
-    NxSwipebarModule,
-    ...EXPORTED_DECLARED_ELEMENTS,
-  ],
+  exports: [...EXPORTED_DECLARED_ELEMENTS],
+  imports: [CommonModule, NxIconModule, NxCopytextModule, ...EXPORTED_DECLARED_ELEMENTS],
   providers: [],
 })
 export class NxTableModule {}

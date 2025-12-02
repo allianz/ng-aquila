@@ -76,7 +76,7 @@
   "typography": ["copytext", "headline", "typography"],
   "overlay": ["modal", "overlay", "popover"],
   "selection": ["checkbox", "circle-toggle", "dropdown", "radio-button", "radio-toggle", "taglist"],
-  "interaction": ["action", "button", "link", "page-search", "signal-button", "swipebar"],
+  "interaction": ["action", "button", "link", "page-search", "signal-button"],
   "table": ["ag-grid", "comparison-table", "dynamic-table", "table"],
   "picker": ["datefield", "dropdown", "phone-input", "timefield"],
   "panel": ["card", "footer", "header", "modal", "notification-panel", "sidepanel"],

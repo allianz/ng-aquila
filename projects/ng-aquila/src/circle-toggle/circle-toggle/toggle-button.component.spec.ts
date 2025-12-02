@@ -1,3 +1,4 @@
+import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { SPACE } from '@angular/cdk/keycodes';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import {
@@ -19,7 +20,6 @@ import {
 import { By } from '@angular/platform-browser';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent, dispatchTouchEvent } from '../../cdk-test-utils';
-import { NxAbstractControl } from '../../shared';
 import { NxCircleToggleModule } from '../circle-toggle.module';
 import { NxCircleToggleComponent } from './circle-toggle.component';
 
@@ -544,9 +544,8 @@ class ReactiveToggleButtonComponent extends AbstractButtonToggleComponent {
       [appearance]="appearance"
     ></nx-circle-toggle>
   `,
-  standalone: true,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ExpertCircleToggleComponent extends AbstractButtonToggleComponent {
-  appearance = 'default';
+  appearance = 'default' as const;
 }

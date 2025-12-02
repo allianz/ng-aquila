@@ -234,7 +234,7 @@ class DoubleToggleErrorComponent extends DatepickerToggleTest {}
 
 @Component({
   template: `
-    <input nxDatefield nxInput readonly [datepicker]="myDatepicker1" />
+    <input nxDatefield nxInput [readonly]="true" [datepicker]="myDatepicker1" />
     <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
     <nx-datepicker #myDatepicker1></nx-datepicker>
   `,

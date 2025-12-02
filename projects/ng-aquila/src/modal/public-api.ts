@@ -1,5 +1,4 @@
 export * from './dialog/dialog.service';
-export * from './dialog/modal-animations';
 export * from './dialog/modal-close.directive';
 export * from './dialog/modal-config';
 /* new modal implementation */

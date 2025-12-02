@@ -4,9 +4,8 @@
     [ngClass]="_classList"
     (keydown)="_handleKeydown($event)"
     (click)="closed.emit('click')"
-    [@transformContextMenu]="_panelAnimationState"
-    (@transformContextMenu.start)="_onAnimationStart($event)"
-    (@transformContextMenu.done)="_onAnimationDone($event)"
+    (animate.enter)="onAnimationEnter($event)"
+    (animate.leave)="onAnimationLeave($event)"
     tabindex="-1"
     role="menu"
   >

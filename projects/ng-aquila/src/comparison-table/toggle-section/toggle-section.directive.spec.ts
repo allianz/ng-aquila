@@ -1,6 +1,5 @@
 import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NxComparisonTableModule } from '../comparison-table.module';
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
@@ -32,7 +31,7 @@ describe('ToggleSectionHeaderComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxComparisonTableModule, BrowserAnimationsModule, BasicComponent],
+      imports: [NxComparisonTableModule, BasicComponent],
     });
     TestBed.compileComponents();
   }));
@@ -102,7 +101,7 @@ describe('ToggleSectionHeaderComponent', () => {
         </ng-container>
       </ng-container>
       <ng-container nxComparisonTableToggleSection [isExpanded]="expandSecondSection">
-        <nx-comparison-table-toggle-section-header [id]="headerId"
+        <nx-comparison-table-toggle-section-header
           >Second toggle section header</nx-comparison-table-toggle-section-header
         >
         <ng-container nxComparisonTableRow>

@@ -12,7 +12,11 @@ import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/t
 import { By } from '@angular/platform-browser';
 
 import { NxTabLinkDirective, NxTabNavBarComponent } from './tab-nav-bar';
-import { TAB_NAV_BAR_DEFAULT_OPTIONS, TabNavBarDefaultOptions } from './tabs.models';
+import {
+  NxTabsAppearance,
+  TAB_NAV_BAR_DEFAULT_OPTIONS,
+  TabNavBarDefaultOptions,
+} from './tabs.models';
 import { NxTabsModule } from './tabs.module';
 
 const tabsDefaultOptions: TabNavBarDefaultOptions = {
@@ -24,7 +28,7 @@ abstract class TabNavBarTest {
   @ViewChildren(NxTabLinkDirective) tabLinks!: QueryList<NxTabLinkDirective>;
   @ViewChild(NxTabNavBarComponent) tabNavBar!: NxTabNavBarComponent;
 
-  appearance = 'expert';
+  appearance: NxTabsAppearance = 'expert';
 }
 
 describe('NxTabBarNavComponent', () => {

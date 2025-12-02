@@ -17,7 +17,6 @@ import { CommonModule } from '@angular/common';
 import { provideHttpClient, withInterceptorsFromDi, withJsonpSupport } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
@@ -27,7 +26,6 @@ describe('AppComponent', () => {
       declarations: [AppComponent],
       imports: [
         CommonModule,
-        BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
         NxButtonModule,

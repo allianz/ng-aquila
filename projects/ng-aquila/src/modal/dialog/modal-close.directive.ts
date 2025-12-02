@@ -17,7 +17,7 @@ import { NxModalRef } from './modal-ref';
 @Directive({
   selector: '[nxModalClose]',
   host: {
-    '(click)': 'modalRef.close(modalResult)',
+    '(click)': 'modalRef?.close(modalResult)',
     '[attr.aria-label]': 'ariaLabel || null',
     '[attr.type]': 'type',
   },

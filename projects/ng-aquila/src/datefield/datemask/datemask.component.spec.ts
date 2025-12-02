@@ -1,7 +1,6 @@
 import { NxDatepickerComponent, NxDatepickerToggleComponent } from '@allianz/ng-aquila/datefield';
 import { NxFormfieldComponent, NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
-import { CommonModule } from '@angular/common';
 import { Component, Directive, Signal, ViewChild, viewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import {
@@ -360,7 +359,6 @@ abstract class DateRangeTestBase {
     </nx-formfield>
   `,
   imports: [
-    CommonModule,
     NxFormfieldComponent,
     NxMomentDateModule,
     FormsModule,
@@ -386,7 +384,6 @@ export class DatemaskTestBasic extends DateRangeTestBase {
     </form>
   `,
   imports: [
-    CommonModule,
     NxFormfieldComponent,
     NxMomentDateModule,
     FormsModule,
@@ -423,7 +420,6 @@ export class DatemaskTestForm extends DateRangeTestBase {
     </nx-formfield>
   `,
   imports: [
-    CommonModule,
     NxFormfieldComponent,
     NxMomentDateModule,
     FormsModule,
@@ -451,7 +447,6 @@ export class DatemaskTestFormat extends DateRangeTestBase {
     </nx-formfield>
   `,
   imports: [
-    CommonModule,
     NxFormfieldComponent,
     NxMomentDateModule,
     FormsModule,

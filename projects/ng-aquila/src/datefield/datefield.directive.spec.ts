@@ -1,5 +1,10 @@
+import 'moment/locale/ja';
+
+import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxInputDirective, NxInputModule } from '@allianz/ng-aquila/input';
+import { NxIsoDateModule } from '@allianz/ng-aquila/iso-date-adapter';
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
+import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import {
   Component,
   Directive,
@@ -20,9 +25,6 @@ import {
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import moment, { Moment } from 'moment';
 
-import { NxFormfieldModule } from '../formfield';
-import { NxIsoDateModule } from '../iso-date-adapter';
-import { NxAbstractControl } from '../shared';
 import { NxDateAdapter } from './adapter';
 import { NX_DATE_LOCALE } from './adapter/date-token';
 import { NxDatefieldDirective } from './datefield.directive';

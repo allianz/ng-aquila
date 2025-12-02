@@ -8,7 +8,6 @@ import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { Component, EventEmitter, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { JAN } from '../../cdk-test-utils';
 import { NxNativeDateModule } from '../adapter/index';
@@ -30,7 +29,6 @@ describe('NxDatepicker', () => {
         NxDatefieldModule,
         NxFormfieldModule,
         NxInputModule,
-        NoopAnimationsModule,
         ReactiveFormsModule,
         ...imports,
         component,
@@ -177,13 +175,7 @@ class StandardDatepicker {
   ],
   template: `
     <nx-formfield label="Birthday">
-      <input
-        nxDatefield
-        nxInput
-        [readonly]="isReadonly"
-        [datepicker]="myDatepicker"
-        [(ngModel)]="currentDate"
-      />
+      <input nxDatefield nxInput [datepicker]="myDatepicker" />
       <span nxFormfieldHint>MM/DD/YYYY</span>
 
       <nx-datepicker-toggle [for]="myDatepicker" nxFormfieldSuffix></nx-datepicker-toggle>

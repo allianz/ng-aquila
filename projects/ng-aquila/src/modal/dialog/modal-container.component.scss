@@ -43,6 +43,38 @@ $action-bar-height: nx-spacer(2xl);
   // isn't set, we have to inherit the min and max values explicitly.
   min-height: inherit;
   max-height: inherit;
+  transition:
+    opacity $modal-normal-duration $modal-normal-enter-easing,
+    transform $modal-normal-duration $modal-normal-enter-easing;
+  opacity: 0; // Initial state
+
+  // Initial state for non-fullscreen modals (before animation)
+  &:not(.nx-modal-container--fullscreen) {
+    transform: scale(1.3);
+  }
+
+  // Initial state for fullscreen modals (before animation)
+  &.nx-modal-container--fullscreen {
+    transform: translateY(100%);
+  }
+
+  &.nx-modal-container--entering {
+    opacity: 1;
+    transform: scale(1);
+    &.nx-modal-container--fullscreen {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &.nx-modal-container--exiting {
+    opacity: 0;
+    transform: scale(1.3);
+    &.nx-modal-container--fullscreen {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }
 
   .is-fullscreen & {
     border-radius: nx-spacer(2xs) nx-spacer(2xs) 0 0;

@@ -17,7 +17,6 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import axe from 'axe-core';
 
 import { dispatchFakeEvent } from '../cdk-test-utils';
@@ -31,11 +30,12 @@ const THROTTLE_TIME = 400;
 
 export const BASIC_COMPARISON_TABLE_TEMPLATE = `
   <nx-comparison-table>
-          @for (element of data; track $index) {
-            @if (element['type'] === 'toggleSection') {
+          @for (el of data; track $index) {
+            @let element = $any(el);
+            @if ($any(element)['type'] === 'toggleSection') {
               <ng-container nxComparisonTableToggleSection>
                 <nx-comparison-table-toggle-section-header>{{ element['header'] }}</nx-comparison-table-toggle-section-header>
-                @for (row of element['content']; track $index) {
+                @for (row of $any(element)['content']; track $index) {
                   <ng-container nxComparisonTableRow>
                     @if (row['description']) {
                       <nx-comparison-table-description-cell>{{ row['description'] }}</nx-comparison-table-description-cell
@@ -70,7 +70,8 @@ export const BASIC_COMPARISON_TABLE_TEMPLATE = `
 `;
 export const HIDDEN_INDEXES_COMPARISON_TABLE_TEMPLATE = `
   <nx-comparison-table [(selectedIndex)]="selected" [hiddenIndexes]="hiddenIndexes">
-          @for (element of data; track $index) {
+          @for (el of data; track $index) {
+            @let element = $any(el);
             @if (element['type'] === 'header') {
               <ng-container nxComparisonTableRow [type]="element['type']">
                 @if (element['description']) {
@@ -183,7 +184,6 @@ describe('NxComparisonTableComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         NxComparisonTableModule,
-        BrowserAnimationsModule,
         BasicComponent,
         BasicOnPushComponent,
         DisabledColumnsComponent,
@@ -952,7 +952,8 @@ class BasicOnPushComponent extends TableTest {
 @Component({
   template: `
     <nx-comparison-table [(selectedIndex)]="selected">
-      @for (element of data; track $index) {
+      @for (el of data; track $index) {
+        @let element = $any(el);
         @if (element['type'] === 'toggleSection') {
           <ng-container nxComparisonTableToggleSection>
             <nx-comparison-table-toggle-section-header>{{

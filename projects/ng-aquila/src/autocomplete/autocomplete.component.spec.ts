@@ -1,5 +1,7 @@
+import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NxModalModule } from '@allianz/ng-aquila/modal';
 import { fakeScrollStrategyFunction } from '@allianz/ng-aquila/utils';
+import { Direction } from '@angular/cdk/bidi';
 import { DOWN_ARROW } from '@angular/cdk/keycodes';
 import { OverlayContainer, OverlayModule, ScrollStrategy } from '@angular/cdk/overlay';
 import { CommonModule, JsonPipe, LowerCasePipe } from '@angular/common';
@@ -27,17 +29,15 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable, of } from 'rxjs';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
-import { NxInputModule } from '../input';
+import { NxAutocompleteComponent } from './autocomplete.component';
+import { NxAutocompleteModule } from './autocomplete.module';
 import {
   NX_AUTOCOMPLETE_SCROLL_STRATEGY,
-  NxAutocompleteComponent,
   NxAutocompleteTriggerDirective,
-} from '.';
-import { NxAutocompleteModule } from './autocomplete.module';
+} from './autocomplete-trigger.directive';
 
 describe('NxAutocompleteComponent:', () => {
   let fixture: ComponentFixture<AutocompleteComponent>;
@@ -86,7 +86,6 @@ describe('NxAutocompleteComponent:', () => {
         NxInputModule,
         FormsModule,
         ReactiveFormsModule,
-        NoopAnimationsModule,
         NxModalModule.forRoot(),
         BasicAutocompleteComponent,
         LongContentComponent,
@@ -308,12 +307,7 @@ describe('NxAutocompleteComponent:', () => {
   it('should be able to override the scroll strategy in parent injector', () => {
     TestBed.resetTestingModule()
       .configureTestingModule({
-        imports: [
-          ScrollStrategyOverrideComponent,
-          NxAutocompleteModule,
-          NxInputModule,
-          NoopAnimationsModule,
-        ],
+        imports: [ScrollStrategyOverrideComponent, NxAutocompleteModule, NxInputModule],
         providers: [
           {
             provide: NX_AUTOCOMPLETE_SCROLL_STRATEGY,
@@ -474,6 +468,7 @@ class AutocompleteComponent {
 }
 
 @Component({
+  selector: 'test-basic-autocomplete-component',
   template: `
     <input
       type="text"
@@ -490,6 +485,7 @@ class AutocompleteComponent {
 class BasicAutocompleteComponent extends AutocompleteComponent {}
 
 @Component({
+  selector: 'test-long-content-component',
   template: `
     <div style="width: 100px">
       <input
@@ -501,7 +497,7 @@ class BasicAutocompleteComponent extends AutocompleteComponent {}
       />
     </div>
     <nx-autocomplete #auto1>
-      <nx-autocomplete-option [value]="option">
+      <nx-autocomplete-option [value]="'option'">
         A very long autocomplete option that exceeds the input width
       </nx-autocomplete-option>
     </nx-autocomplete>
@@ -511,10 +507,11 @@ class BasicAutocompleteComponent extends AutocompleteComponent {}
 })
 class LongContentComponent extends AutocompleteComponent {
   panelGrow = true;
-  panelMaxWidth: number | null = null;
+  panelMaxWidth: number | string = '';
 }
 
 @Component({
+  selector: 'test-scroll-strategy-override-component',
   template: `
     <input
       type="text"
@@ -537,6 +534,7 @@ class ScrollStrategyOverrideComponent extends AutocompleteComponent {
 }
 
 @Component({
+  selector: 'test-custom-autocomplete-component',
   template: `
     <input type="text" [nxAutocomplete]="auto1" [(ngModel)]="inputVal" />
     <nx-autocomplete #auto1>
@@ -559,6 +557,7 @@ class ScrollStrategyOverrideComponent extends AutocompleteComponent {
 class CustomAutocompleteComponent extends AutocompleteComponent {}
 
 @Component({
+  selector: 'test-complex-data-autocomplete-component',
   template: `
     <input type="text" [nxAutocomplete]="auto1" [(ngModel)]="inputVal" />
     <nx-autocomplete #auto1 [valueFormatter]="valFormatter">
@@ -585,6 +584,7 @@ class ComplexDataAutocompleteComponent extends AutocompleteComponent {
 }
 
 @Component({
+  selector: 'test-ng-model-binding-autocomplete-component',
   template: `
     <nx-formfield>
       <input
@@ -605,6 +605,7 @@ class NgModelBindingAutocompleteComponent extends AutocompleteComponent {
 }
 
 @Component({
+  selector: 'test-reactive-autocomplete-component',
   template: `
     <form [formGroup]="testForm">
       <nx-formfield>
@@ -642,6 +643,7 @@ class ReactiveAutocompleteComponent extends AutocompleteComponent {
 }
 
 @Component({
+  selector: 'test-autocomplete-in-modal-component',
   template: `
     <ng-template #basicModalBody>
       <input
@@ -672,6 +674,7 @@ class AutocompleteInModalComponent extends AutocompleteComponent {
 }
 
 @Component({
+  selector: 'test-autocomplete-component-with-direction',
   template: `
     <div [dir]="direction">
       <input
@@ -688,9 +691,10 @@ class AutocompleteInModalComponent extends AutocompleteComponent {
   imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class AutocompleteComponentWithDirection extends AutocompleteComponent {
-  direction = 'rtl';
+  direction: Direction = 'rtl';
 }
 @Component({
+  selector: 'test-shadow-auto-complete-component',
   template: `
     <input type="text" #animalInput [nxAutocomplete]="auto1" (input)="filter(animalInput.value)" />
     <nx-autocomplete #auto1="nxAutocomplete">

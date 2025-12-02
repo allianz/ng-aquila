@@ -209,36 +209,42 @@ describe('NxRowDirective', () => {
 });
 
 @Component({
+  selector: 'test-basic-row-default',
   template: `<div nxLayout="grid"><div nxRow></div></div>`,
   imports: [NxGridModule],
 })
 class BasicRowDefault extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-row-incorrect',
   template: `<div nxLayout="grid"><div nxRow="test"></div></div>`,
   imports: [NxGridModule],
 })
 class BasicRowIncorrect extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-row',
   template: `<div nxLayout="grid"><div nxRow="row"></div></div>`,
   imports: [NxGridModule],
 })
 class BasicRow extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-row-class-test',
   template: `<div nxLayout="grid"><div nxRow="row" class="test"></div></div>`,
   imports: [NxGridModule],
 })
 class BasicRowClassTest extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-row-reverse',
   template: `<div nxLayout="grid"><div nxRow="row-reverse"></div></div>`,
   imports: [NxGridModule],
 })
 class BasicRowReverse extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-row-wrap',
   template: `<div nxLayout="grid">
     <div nxRow="row" rowWrap="wrap"></div>
   </div>`,
@@ -247,6 +253,7 @@ class BasicRowReverse extends DirectiveTest {}
 class BasicRowWrap extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-row-wrap-reverse',
   template: `<div nxLayout="grid">
     <div nxRow="row" rowWrap="wrap,reverse"></div>
   </div>`,
@@ -255,6 +262,7 @@ class BasicRowWrap extends DirectiveTest {}
 class BasicRowWrapReverse extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-row-no-wrap',
   template: `<div nxLayout="grid">
     <div nxRow="row" rowWrap="nowrap,nowrap,wrap,reverse"></div>
   </div>`,
@@ -263,6 +271,7 @@ class BasicRowWrapReverse extends DirectiveTest {}
 class BasicRowNoWrap extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-row-justify-start',
   template: `<div nxLayout="grid">
     <div nxRow="row" rowJustify="start,start,start,start"></div>
   </div>`,
@@ -271,6 +280,7 @@ class BasicRowNoWrap extends DirectiveTest {}
 class BasicRowJustifyStart extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-row-justify-end',
   template: `<div nxLayout="grid">
     <div nxRow="row" rowJustify="around,end"></div>
   </div>`,
@@ -279,6 +289,7 @@ class BasicRowJustifyStart extends DirectiveTest {}
 class BasicRowJustifyEnd extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-row-content-start',
   template: `<div nxLayout="grid">
     <div nxRow="row" rowAlignContent="start,start,end,around"></div>
   </div>`,
@@ -287,6 +298,7 @@ class BasicRowJustifyEnd extends DirectiveTest {}
 class BasicRowContentStart extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-row-content-end',
   template: `<div nxLayout="grid">
     <div nxRow="row" rowAlignContent="end"></div>
   </div>`,
@@ -295,6 +307,7 @@ class BasicRowContentStart extends DirectiveTest {}
 class BasicRowContentEnd extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-row-items-start',
   template: `<div nxLayout="grid">
     <div nxRow="row" rowAlignItems="start,start,stretch"></div>
   </div>`,
@@ -303,6 +316,7 @@ class BasicRowContentEnd extends DirectiveTest {}
 class BasicRowItemsStart extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-row-items-end',
   template: `<div nxLayout="grid">
     <div nxRow="row" rowAlignItems="end"></div>
   </div>`,
@@ -311,6 +325,7 @@ class BasicRowItemsStart extends DirectiveTest {}
 class BasicRowItemsEnd extends DirectiveTest {}
 
 @Component({
+  selector: 'test-dynamic',
   template: `<div nxLayout="grid">
     <div
       [nxRow]="row"
@@ -331,6 +346,7 @@ class DynamicTest extends DirectiveTest {
 }
 
 @Component({
+  selector: 'test-row-without-layout',
   template: `<div nxRow="row"></div>`,
   imports: [NxGridModule],
 })

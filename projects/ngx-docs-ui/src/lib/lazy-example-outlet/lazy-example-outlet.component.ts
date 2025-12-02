@@ -1,7 +1,14 @@
 import { NxSpinnerModule } from '@allianz/ng-aquila/spinner';
 import { Dir, Direction } from '@angular/cdk/bidi';
 import { NgComponentOutlet } from '@angular/common';
-import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EnvironmentInjector,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -19,9 +26,9 @@ export class LazyExampleOutletComponent implements OnInit, OnDestroy {
   @Input() exampleId!: string;
 
   exampleComponent: any = null;
-  exampleModuleFactory: any = null;
   exampleDescriptor!: ExampleDescriptor;
   directionQuery!: Direction;
+  environmentInjector: EnvironmentInjector | undefined = undefined;
 
   private readonly _destroyed = new Subject<void>();
 
@@ -30,6 +37,7 @@ export class LazyExampleOutletComponent implements OnInit, OnDestroy {
     private readonly _cdr: ChangeDetectorRef,
     private readonly _manifestService: ManifestService,
     private readonly _route: ActivatedRoute,
+    private readonly _envInjector: EnvironmentInjector,
   ) {
     this.subscribeToDirectionQueryParams();
   }
@@ -45,7 +53,10 @@ export class LazyExampleOutletComponent implements OnInit, OnDestroy {
       .getComponent(this.exampleDescriptor.id, this.exampleDescriptor.module)
       .then(({ componentFactory, ngModuleFactory }) => {
         this.exampleComponent = componentFactory;
-        this.exampleModuleFactory = ngModuleFactory;
+        if (ngModuleFactory) {
+          const moduleRef = ngModuleFactory.create(this._envInjector);
+          this.environmentInjector = moduleRef.injector;
+        }
         this._cdr.detectChanges();
       });
   }

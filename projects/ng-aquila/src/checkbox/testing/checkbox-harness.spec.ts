@@ -1,4 +1,5 @@
 import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
+import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
@@ -6,22 +7,29 @@ import { TestBed } from '@angular/core/testing';
 import { NxCheckboxHarness } from './checkbox-harness';
 
 describe('NxCheckboxHarness', () => {
+  let loader: HarnessLoader;
+
+  beforeEach(() => {
+    const fixture = TestBed.createComponent(CheckboxHarnessTest);
+    fixture.detectChanges();
+    loader = TestbedHarnessEnvironment.loader(fixture);
+  });
+
   it('should return the inner text', async () => {
-    const { loader } = createComponent(`<nx-checkbox>Inner Text</nx-checkbox>`);
-    const checkbox = await loader.getHarness(NxCheckboxHarness);
+    const checkbox = await loader.getHarness(NxCheckboxHarness.with({ label: 'Inner Text' }));
     expect(await checkbox.getLabel()).toBe('Inner Text');
   });
 
   it('should update from unchecked to checked', async () => {
-    const { loader } = createComponent(`<nx-checkbox>Foo</nx-checkbox>`);
-    const checkbox = await loader.getHarness(NxCheckboxHarness);
+    const checkboxes = await loader.getAllHarnesses(NxCheckboxHarness);
+    const checkbox = checkboxes[1]; // "Clickable"
     await checkbox.click();
     expect(await checkbox.isChecked()).toBeTrue();
   });
 
   it('should update from checked to unchecked', async () => {
-    const { loader } = createComponent(`<nx-checkbox checked>Foo</nx-checkbox>`);
-    const checkbox = await loader.getHarness(NxCheckboxHarness);
+    const checkboxes = await loader.getAllHarnesses(NxCheckboxHarness);
+    const checkbox = checkboxes[2]; // "ClickableChecked"
 
     expect(await checkbox.isChecked()).toBeTrue();
     await checkbox.click();
@@ -29,55 +37,53 @@ describe('NxCheckboxHarness', () => {
   });
 
   it('should be disabled', async () => {
-    const { loader } = createComponent(`<nx-checkbox disabled>Foo</nx-checkbox>`);
-    const checkbox = await loader.getHarness(NxCheckboxHarness);
+    const checkboxes = await loader.getAllHarnesses(NxCheckboxHarness);
+    const checkbox = checkboxes[3]; // "Disabled"
     expect(await checkbox.isDisabled()).toBeTrue();
   });
 
   it('should find checkbox by enabled state', async () => {
-    const { loader } = createComponent(
-      `<nx-checkbox disabled>Foo</nx-checkbox> <nx-checkbox>Bar</nx-checkbox>`,
-    );
-
     const checkboxFoo = await loader.getHarness(NxCheckboxHarness.with({ enabled: false }));
     const checkboxBar = await loader.getHarness(NxCheckboxHarness.with({ enabled: true }));
 
-    expect(await checkboxFoo.getLabel()).toBe('Foo');
+    expect(await checkboxFoo.getLabel()).toBe('Disabled');
     expect(await checkboxFoo.isDisabled()).toBeTrue();
-    expect(await checkboxBar.getLabel()).toBe('Bar');
+    expect(await checkboxBar.getLabel()).toBe('Inner Text');
     expect(await checkboxBar.isDisabled()).toBeFalse();
   });
 
   describe('filters', () => {
     it('should find by text', async () => {
-      const { loader } = createComponent(`
-                <nx-checkbox>Foo</nx-checkbox>
-                <nx-checkbox>Bar</nx-checkbox>
-            `);
       const checkbox = await loader.getHarness(NxCheckboxHarness.with({ label: 'Foo' }));
 
       expect(await checkbox.getLabel()).toBe('Foo');
     });
 
     it('should find by checked state', async () => {
-      const { loader } = createComponent(`
-                <nx-checkbox>Foo</nx-checkbox>
-                <nx-checkbox checked>Bar</nx-checkbox>
-            `);
-      const unchecked = await loader.getHarness(NxCheckboxHarness.with({ checked: false }));
-      const checked = await loader.getHarness(NxCheckboxHarness.with({ checked: true }));
+      const unchecked = await loader.getHarness(
+        NxCheckboxHarness.with({ checked: false, label: 'StateFoo' }),
+      );
+      const checked = await loader.getHarness(
+        NxCheckboxHarness.with({ checked: true, label: 'StateBar' }),
+      );
 
-      expect(await unchecked.getLabel()).toBe('Foo');
-      expect(await checked.getLabel()).toBe('Bar');
+      expect(await unchecked.getLabel()).toBe('StateFoo');
+      expect(await checked.getLabel()).toBe('StateBar');
     });
   });
 });
 
-function createComponent(template: string) {
-  @Component({ template, standalone: true, imports: [NxCheckboxModule] })
-  class Comp {}
-  const fixture = TestBed.createComponent(Comp);
-  fixture.detectChanges();
-  const loader = TestbedHarnessEnvironment.loader(fixture);
-  return { loader, fixture };
-}
+@Component({
+  template: `
+    <nx-checkbox>Inner Text</nx-checkbox>
+    <nx-checkbox>Clickable</nx-checkbox>
+    <nx-checkbox checked>ClickableChecked</nx-checkbox>
+    <nx-checkbox disabled>Disabled</nx-checkbox>
+    <nx-checkbox disabled>Foo</nx-checkbox>
+    <nx-checkbox>Bar</nx-checkbox>
+    <nx-checkbox>StateFoo</nx-checkbox>
+    <nx-checkbox checked>StateBar</nx-checkbox>
+  `,
+  imports: [NxCheckboxModule],
+})
+class CheckboxHarnessTest {}

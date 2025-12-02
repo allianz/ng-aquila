@@ -1,4 +1,4 @@
-import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { AppearanceType, NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
@@ -10,7 +10,7 @@ import { NxLicencePlateEuroPrefixComponent } from './licence-plate-euro-prefix.c
 abstract class LicencePlateEuroPrefixTest {
   @ViewChild(NxLicencePlateEuroPrefixComponent) instance!: NxLicencePlateEuroPrefixComponent;
 
-  appearance = 'default';
+  appearance: AppearanceType = 'auto';
   disabled = false;
 }
 

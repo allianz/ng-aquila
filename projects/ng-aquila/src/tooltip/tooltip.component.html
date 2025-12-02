@@ -1,9 +1,13 @@
-<div
-  class="nx-tooltip"
-  [@state]="visibility"
-  (@state.start)="_animationStart()"
-  (@state.done)="_animationDone($event)"
->
-  <div [ngClass]="arrowClass" class="nx-tooltip__arrow" [ngStyle]="arrowStyle"></div>
-  {{ message }}
-</div>
+@if (shouldRender()) {
+  <div
+    class="nx-tooltip"
+    [class.fade-in]="visibility === 'visible'"
+    [class.fade-out]="visibility === 'hidden'"
+    [style.opacity]="visibility === 'initial' ? 0 : null"
+    (animate.enter)="onEnter()"
+    (animate.leave)="onLeave()"
+  >
+    <div [ngClass]="arrowClass" class="nx-tooltip__arrow" [ngStyle]="arrowStyle"></div>
+    {{ message }}
+  </div>
+}

@@ -1,7 +1,6 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { dispatchFakeEvent } from '../cdk-test-utils';
 import { NxTabGroupComponent } from './tab-group';
@@ -34,12 +33,7 @@ describe('Scrollable TabHeader', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
-        NxTabsModule,
-        BrowserAnimationsModule,
-        NotScrollableTabGroupTest,
-        ScrollableTabGroupTest,
-      ],
+      imports: [NxTabsModule, NotScrollableTabGroupTest, ScrollableTabGroupTest],
     }).compileComponents();
   }));
 
@@ -179,12 +173,7 @@ describe('Scrollable TabNavBar', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
-        NxTabsModule,
-        BrowserAnimationsModule,
-        NotScrollableTabNavBarTest,
-        ScrollableTabNavBarTest,
-      ],
+      imports: [NxTabsModule, NotScrollableTabNavBarTest, ScrollableTabNavBarTest],
     }).compileComponents();
   }));
 

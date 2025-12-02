@@ -2,30 +2,42 @@
 
 :host {
   display: block;
+
+  // initial closed state
+  .nx-expansion-panel__content {
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows $accordion-body-duration $accordion-body-easing;
+  }
+
+  .nx-expansion-panel__body-wrapper {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .nx-expansion-panel__body {
+    padding: v(accordion-regular-body-padding);
+
+    &.flush-alignment {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    @include type-style(accordion-body);
+
+    @include media-breakpoint-down(small) {
+      padding: v(accordion-regular-mobile-body-padding);
+    }
+  }
+
+  .expansion-panel-open {
+    grid-template-rows: 1fr;
+  }
 }
 
 :host(.nx-expansion-panel--negative) ::ng-deep {
   div.nx-expansion-panel__body * {
     color: v(negative);
-  }
-}
-
-.nx-expansion-panel__content {
-  overflow: hidden;
-  display: block;
-}
-
-.nx-expansion-panel__body {
-  padding: v(accordion-regular-body-padding);
-
-  &.flush-alignment {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  @include type-style(accordion-body);
-
-  @include media-breakpoint-down(small) {
-    padding: v(accordion-regular-mobile-body-padding);
   }
 }
 
@@ -72,8 +84,8 @@
 // Styles of the light version
 :host(.nx-expansion-panel--light) {
   .nx-expansion-panel__body {
-    padding: v(accordion-light-body-padding);
     font-size: v(accordion-light-body-font-size);
+    padding: v(accordion-light-body-padding);
 
     &.flush-alignment {
       padding-left: 0;

@@ -9,7 +9,6 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import {
@@ -57,7 +56,6 @@ describe('NxComparisonTableRowGroupDirective', () => {
     TestBed.configureTestingModule({
       imports: [
         NxComparisonTableModule,
-        BrowserAnimationsModule,
         BasicComponent,
         ConfigurableComponent,
         ToggleSectionComponent,
@@ -277,12 +275,7 @@ describe('NxComparisonTableRowGroupDirective using injection token', () => {
   beforeEach(waitForAsync(() => {
     comparisonTableDefaultOptions.useFullRowForExpandableArea = true;
     TestBed.configureTestingModule({
-      imports: [
-        NxComparisonTableModule,
-        BrowserAnimationsModule,
-        BasicComponent,
-        ConfigurableComponent,
-      ],
+      imports: [NxComparisonTableModule, BasicComponent, ConfigurableComponent],
       providers: [
         { provide: COMPARISON_TABLE_DEFAULT_OPTIONS, useValue: comparisonTableDefaultOptions },
       ],

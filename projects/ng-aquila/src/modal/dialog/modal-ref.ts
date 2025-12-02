@@ -58,10 +58,11 @@ export class NxModalRef<T, R = any> {
     // Emit when opening animation completes
     _containerInstance._animationStateChanged
       .pipe(
-        filter((event) => event.phaseName === 'done' && event.toState === 'enter'),
+        filter((state) => state === 'opened'),
         take(1),
       )
       .subscribe(() => {
+        console.log('Modal opened');
         this._afterOpened.next();
         this._afterOpened.complete();
       });
@@ -69,10 +70,12 @@ export class NxModalRef<T, R = any> {
     // Dispose overlay when closing animation is complete
     _containerInstance._animationStateChanged
       .pipe(
-        filter((event) => event.phaseName === 'done' && event.toState === 'exit'),
+        filter((state) => state === 'closed'),
         take(1),
       )
       .subscribe(() => {
+        console.log('Modal closed');
+
         clearTimeout(this._closeFallbackTimeout);
         this._overlayRef.dispose();
       });
@@ -114,13 +117,13 @@ export class NxModalRef<T, R = any> {
       return;
     }
 
-    // Transition the backdrop in parallel to the modal.
+    // Transition the backdrop in parallel to the modal, happen on start of exit animation
     this._containerInstance._animationStateChanged
       .pipe(
-        filter((event) => event.phaseName === 'start'),
+        filter((state) => state === 'closing'),
         take(1),
       )
-      .subscribe((event) => {
+      .subscribe(() => {
         this._beforeClosed.next(modalResult);
         this._beforeClosed.complete();
         this._state = NxModalState.CLOSED;
@@ -133,9 +136,10 @@ export class NxModalRef<T, R = any> {
         // vast majority of cases the timeout will have been cleared before it has the chance to fire.
         this._closeFallbackTimeout = setTimeout(() => {
           this._overlayRef.dispose();
-        }, event.totalTime + 100);
+        }, 400); // TODO: Replace with actual animation duration
       });
 
+    // Start the exit animation
     this._containerInstance._startExitAnimation();
     this._state = NxModalState.CLOSING;
   }

@@ -10,10 +10,10 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
-import { NxAccordionModule, NxExpansionPanelComponent } from './index';
+import { NxAccordionModule } from './accordion.module';
+import { NxExpansionPanelComponent } from './expansion-panel';
 
 describe('NxExpansionPanelComponent', () => {
   let fixture: ComponentFixture<PanelTest>;
@@ -36,7 +36,6 @@ describe('NxExpansionPanelComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        NoopAnimationsModule,
         NxAccordionModule,
         PanelWithContent,
         PanelWithContentInNgIf,
@@ -178,7 +177,7 @@ describe('NxExpansionPanelComponent', () => {
     createTestComponent(PanelWithContent);
     fixture.componentInstance.expanded = true;
     fixture.detectChanges();
-    tick(250);
+    tick(500);
 
     const button = fixture.debugElement.query(By.css('#test-button')).nativeElement;
 
@@ -188,11 +187,15 @@ describe('NxExpansionPanelComponent', () => {
       .toBe(button);
 
     button.blur();
+
     fixture.componentInstance.expanded = false;
     fixture.detectChanges();
-    tick(250);
+    tick(600);
+    fixture.detectChanges();
 
     button.focus();
+    fixture.detectChanges();
+
     expect(_getFocusedElementPierceShadowDom())
       .withContext('Expected button to no longer be focusable.')
       .not.toBe(button);
@@ -200,20 +203,20 @@ describe('NxExpansionPanelComponent', () => {
 
   it('should update the indicator rotation when the expanded state is toggled programmatically', fakeAsync(() => {
     createTestComponent(PanelWithContent);
-
+    fixture.detectChanges();
     tick(250);
 
     const arrow = fixture.debugElement.query(By.css('.nx-expansion-panel__chevron')).nativeElement;
 
-    expect(arrow.style.transform).withContext('Expected no rotation.').toBe('rotate(0deg)');
+    expect(arrow).toHaveClass('chevron-rotate-closed');
+    expect(arrow).not.toHaveClass('chevron-rotate-open');
 
     fixture.componentInstance.expanded = true;
     fixture.detectChanges();
     tick(250);
 
-    expect(arrow.style.transform)
-      .withContext('Expected 180 degree rotation.')
-      .toBe('rotate(180deg)');
+    expect(arrow).toHaveClass('chevron-rotate-open');
+    expect(arrow).not.toHaveClass('chevron-rotate-closed');
   }));
 
   it('should make sure accordion item runs ngOnDestroy when expansion panel is destroyed', () => {
@@ -399,6 +402,7 @@ abstract class PanelTest {
 }
 
 @Component({
+  selector: 'test-panel-with-content',
   template: `<nx-expansion-panel
     [expanded]="expanded"
     [disabled]="disabled"
@@ -417,6 +421,7 @@ class PanelWithContent extends PanelTest {
 }
 
 @Component({
+  selector: 'test-panel-with-content-in-ng-if',
   template: `@if (expansionShown) {
     <div>
       <nx-expansion-panel>
@@ -431,6 +436,7 @@ class PanelWithContentInNgIf extends PanelTest {
 }
 
 @Component({
+  selector: 'test-panel-with-custom-margin',
   styles: [
     `
       nx-expansion-panel {
@@ -447,6 +453,7 @@ class PanelWithContentInNgIf extends PanelTest {
 class PanelWithCustomMargin extends PanelTest {}
 
 @Component({
+  selector: 'test-lazy-panel-with-content',
   template: `<nx-expansion-panel [expanded]="expanded">
     <nx-expansion-panel-header
       ><nx-expansion-panel-title>Panel Title</nx-expansion-panel-title></nx-expansion-panel-header
@@ -462,6 +469,7 @@ class PanelWithCustomMargin extends PanelTest {}
 class LazyPanelWithContent extends PanelTest {}
 
 @Component({
+  selector: 'test-lazy-panel-open-on-load',
   template: `<nx-expansion-panel [expanded]="true">
     <nx-expansion-panel-header
       ><nx-expansion-panel-title>Panel Title</nx-expansion-panel-title></nx-expansion-panel-header
@@ -476,6 +484,7 @@ class LazyPanelWithContent extends PanelTest {}
 class LazyPanelOpenOnLoad extends PanelTest {}
 
 @Component({
+  selector: 'test-panel-with-two-way-binding',
   template: `<nx-expansion-panel [(expanded)]="expanded">
     <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
   </nx-expansion-panel>`,
@@ -484,6 +493,7 @@ class LazyPanelOpenOnLoad extends PanelTest {}
 class PanelWithTwoWayBinding extends PanelTest {}
 
 @Component({
+  selector: 'test-panel-with-different-appearances',
   template: `<nx-expansion-panel [negative]="negative" [variant]="style">
     <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
   </nx-expansion-panel>`,
@@ -495,6 +505,7 @@ class PanelWithDifferentAppearances extends PanelTest {
 }
 
 @Component({
+  selector: 'test-panel-with-accordion',
   template: `<nx-accordion negative="true" variant="light">
     <nx-expansion-panel>
       <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
@@ -509,6 +520,7 @@ class PanelWithDifferentAppearances extends PanelTest {
 class PanelWithAccordion extends PanelTest {}
 
 @Component({
+  selector: 'test-flush-panel-with-accordion',
   template: ` <nx-accordion flushAlignment="false">
     <nx-expansion-panel flushAlignment="true" #firstPanel>
       <nx-expansion-panel-header

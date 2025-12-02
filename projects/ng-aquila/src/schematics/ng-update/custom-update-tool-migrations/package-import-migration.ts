@@ -14,7 +14,7 @@ export const OLD_APOSIN_MODULE = '@allianz/ng-aquila';
 export const NEW_AQUILA_MODULE = '@allianz/ng-aquila';
 
 export class PackageImportMigration extends Migration<null> {
-  enabled = this.targetVersion === TargetVersion.V20;
+  enabled = this.targetVersion === TargetVersion.V21;
 
   override visitNode(node: Node): void {
     if (isImportDeclaration(node)) {

@@ -11,7 +11,6 @@ import {
   TestBed,
   waitForAsync,
 } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NxVersionSelectComponent } from './version-select.component';
 import { NxvVersionSelectModule } from './version-select.module';
@@ -50,12 +49,7 @@ describe('NxvVersionSelectComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
-        NxvVersionSelectModule,
-        BrowserAnimationsModule,
-        BasicVersionSelect,
-        VersionSelectWithToken,
-      ],
+      imports: [NxvVersionSelectModule, BasicVersionSelect, VersionSelectWithToken],
       providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
     }).compileComponents();
 

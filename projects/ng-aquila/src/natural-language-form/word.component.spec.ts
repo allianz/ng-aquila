@@ -31,11 +31,11 @@ import { By } from '@angular/platform-browser';
 
 import { NxNaturalLanguageFormComponent } from './natural-language-form.component';
 import { NxNaturalLanguageFormModule } from './natural-language-form.module';
-import { NxWordComponent } from './word.component';
+import { NxWordComponent, SIZES } from './word.component';
 
 @Directive({ standalone: true })
 abstract class NaturalLanguageFormTest {
-  size = 'regular';
+  size: SIZES = 'regular';
   value!: string;
 
   @ViewChild(NxNaturalLanguageFormComponent) formInstance!: NxNaturalLanguageFormComponent;
@@ -64,6 +64,7 @@ describe('NxNaturalLanguageFormComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         NxInputModule,
+        CommonModule,
         NaturalLanguageFormBasicComponent,
         NaturalLanguageFormErrorComponent,
         NaturalLanguageFormSizesComponent,
@@ -157,7 +158,7 @@ describe('NxNaturalLanguageFormComponent', () => {
       expect(() => {
         createTestComponent(NaturalLanguageFormErrorComponent);
       }).toThrowError(
-        'NG0951: Child query result is required but no value is available. Find more at https://angular.dev/errors/NG0951',
+        'NG0951: Child query result is required but no value is available. Find more at https://v21.angular.dev/errors/NG0951',
       );
     }));
   });
@@ -387,19 +388,13 @@ class NaturalLanguageFormErrorInNlfComponent extends NaturalLanguageFormTest {}
 
 @Component({
   template: `
-    <nx-natural-language-form [ngStyle]="{ width: '500px' }">
+    <nx-natural-language-form [style]="{ width: '500px' }">
       <nx-word [size]="size">
         <input nxInput [(ngModel)]="value" required />
       </nx-word>
     </nx-natural-language-form>
   `,
-  imports: [
-    CommonModule,
-    NxNaturalLanguageFormModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NxInputModule,
-  ],
+  imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
 
@@ -412,13 +407,7 @@ class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
       </nx-word>
     </nx-natural-language-form>
   `,
-  imports: [
-    NxNaturalLanguageFormModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NxInputModule,
-    CommonModule,
-  ],
+  imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormWithErrorId extends NaturalLanguageFormTest {}
 

@@ -15,7 +15,6 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NxTableComponent } from '../table.component';
 import { NxTableModule } from '../table.module';
@@ -42,7 +41,7 @@ describe(NxTableComponent.name, () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxTableModule, NoopAnimationsModule, ExpandableTableComponent],
+      imports: [NxTableModule, ExpandableTableComponent],
     }).compileComponents();
   }));
 
@@ -59,7 +58,7 @@ describe(NxTableComponent.name, () => {
 
     it('has all expandable rows closed', () => {
       tableElement.queryAll(By.css('.nx-expandable-table-cell__content')).forEach((cell) => {
-        expect(cell.nativeElement.style.height).toBe('0px');
+        expect(cell.nativeElement.classList.contains('is-open')).toBe(false);
       });
     });
 
@@ -83,7 +82,7 @@ describe(NxTableComponent.name, () => {
 
       it('has expanded all rows', () => {
         tableElement.queryAll(By.css('.nx-expandable-table-cell__content')).forEach((cell) => {
-          expect(cell.nativeElement.style.height).toBe('');
+          expect(cell.nativeElement.classList.contains('is-open')).toBe(true);
         });
       });
 
@@ -96,7 +95,7 @@ describe(NxTableComponent.name, () => {
 
         it('has collapsed all rows', () => {
           tableElement.queryAll(By.css('.nx-expandable-table-cell__content')).forEach((cell) => {
-            expect(cell.nativeElement.style.height).toBe('0px');
+            expect(cell.nativeElement.classList.contains('is-open')).toBe(false);
           });
         });
       });
@@ -117,7 +116,7 @@ describe(NxTableComponent.name, () => {
 
       it('has all rows expanded', () => {
         tableElement.queryAll(By.css('.nx-expandable-table-cell__content')).forEach((cell) => {
-          expect(cell.nativeElement.style.height).toBe('');
+          expect(cell.nativeElement.classList.contains('is-open')).toBe(true);
         });
       });
 
@@ -130,7 +129,7 @@ describe(NxTableComponent.name, () => {
 
         it('has no rows expanded', () => {
           tableElement.queryAll(By.css('.nx-expandable-table-cell__content')).forEach((cell) => {
-            expect(cell.nativeElement.style.height).toBe('0px');
+            expect(cell.nativeElement.classList.contains('is-open')).toBe(false);
           });
         });
       });
@@ -144,7 +143,7 @@ describe(NxTableComponent.name, () => {
 
       it('has all rows expanded', () => {
         tableElement.queryAll(By.css('.nx-expandable-table-cell__content')).forEach((cell) => {
-          expect(cell.nativeElement.style.height).toBe('');
+          expect(cell.nativeElement.classList.contains('is-open')).toBe(true);
         });
       });
     });

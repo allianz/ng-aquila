@@ -7,6 +7,7 @@ import {
 import { Rule, SchematicContext } from '@angular-devkit/schematics';
 
 import { PackageImportMigration } from './custom-update-tool-migrations/package-import-migration';
+import replaceIbanjsInPackageJson from './custom-update-tool-migrations/replace-ibanjs-in-package-json';
 import {
   attributeSelectors,
   classNames,
@@ -37,11 +38,14 @@ export const upgradeData: UpgradeData = {
   cssTokens: {},
 };
 
-export const customMigrations: NullableDevkitMigration[] = [PackageImportMigration];
+export const customMigrations: NullableDevkitMigration[] = [
+  PackageImportMigration,
+  replaceIbanjsInPackageJson as any,
+];
 
 export default function (): Rule {
   return createMigrationSchematicRule(
-    TargetVersion.V20,
+    TargetVersion.V21,
     customMigrations,
     upgradeData,
     onMigrationComplete,

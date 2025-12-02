@@ -40,7 +40,6 @@ import {
   tick,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { firstValueFrom, Subject, timer } from 'rxjs';
 
 import { createKeyboardEvent, dispatchKeyboardEvent } from '../../cdk-test-utils';
@@ -52,6 +51,21 @@ import {
 import { NxModalCloseDirective } from './modal-close.directive';
 import { NxModalContainer } from './modal-container.component';
 
+const _triggerAnimationEvents = (overlayContainerElement: HTMLElement) => () => {
+  const dialogContainerElement = overlayContainerElement.querySelector('nx-modal-container');
+  if (dialogContainerElement) {
+    const transitionStartEventTransform = new TransitionEvent('transitionstart', {
+      propertyName: 'transform',
+    });
+    dialogContainerElement.dispatchEvent(transitionStartEventTransform);
+
+    const transitionEndEventTransform = new TransitionEvent('transitionend', {
+      propertyName: 'transform',
+    });
+    dialogContainerElement.dispatchEvent(transitionEndEventTransform);
+  }
+};
+
 describe('NxDialog', () => {
   let dialog: NxDialogService;
   let overlayContainer: OverlayContainer;
@@ -62,8 +76,11 @@ describe('NxDialog', () => {
   let viewContainerFixture: ComponentFixture<ComponentWithChildViewContainer>;
   let mockLocation: SpyLocation;
 
+  let triggerAnimationEvents: () => void;
+
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
+      //   animationsEnabled: true,
       imports: [NxModalModule, DialogTestModule],
       providers: [
         { provide: Location, useClass: SpyLocation },
@@ -90,6 +107,7 @@ describe('NxDialog', () => {
       mockLocation = l as SpyLocation;
       overlayContainer = oc;
       overlayContainerElement = oc.getContainerElement();
+      triggerAnimationEvents = _triggerAnimationEvents(overlayContainerElement);
     },
   ));
 
@@ -152,6 +170,7 @@ describe('NxDialog', () => {
 
     // callback should not be called before animation is complete
     expect(spy).not.toHaveBeenCalled();
+    triggerAnimationEvents();
 
     flushMicrotasks();
     expect(spy).toHaveBeenCalled();
@@ -212,6 +231,8 @@ describe('NxDialog', () => {
 
     dialogRef.afterClosed().subscribe(afterCloseCallback);
     dialogRef.close('test value');
+    triggerAnimationEvents();
+
     viewContainerFixture.detectChanges();
     flush();
 
@@ -269,6 +290,8 @@ describe('NxDialog', () => {
   it('should be able to override the scroll strategy in parent injector', () => {
     TestBed.resetTestingModule()
       .configureTestingModule({
+        animationsEnabled: true,
+
         imports: [NxModalModule, DialogTestModule],
         providers: [
           {
@@ -299,6 +322,8 @@ describe('NxDialog', () => {
 
       dialogRef.beforeClosed().subscribe(beforeCloseHandler);
       dialogRef.close('Bulbasaur');
+      triggerAnimationEvents();
+
       viewContainerFixture.detectChanges();
       flush();
 
@@ -312,6 +337,7 @@ describe('NxDialog', () => {
       });
 
       const event = dispatchKeyboardEvent(document.body, 'keydown', ESCAPE);
+      triggerAnimationEvents();
       viewContainerFixture.detectChanges();
       flush();
 
@@ -351,6 +377,8 @@ describe('NxDialog', () => {
         .toHaveSize(1);
 
       dialogRef.close();
+      triggerAnimationEvents();
+
       flushMicrotasks();
       onPushFixture.detectChanges();
       tick(500);
@@ -372,6 +400,8 @@ describe('NxDialog', () => {
       ) as HTMLElement;
 
       backdrop.click();
+      triggerAnimationEvents();
+
       viewContainerFixture.detectChanges();
       flush();
 
@@ -392,6 +422,8 @@ describe('NxDialog', () => {
       expect(closeIconButton.getAttribute('aria-label')).toBe('Close dialog');
 
       closeIconButton.click();
+      triggerAnimationEvents();
+
       viewContainerFixture.detectChanges();
       flush();
 
@@ -452,6 +484,8 @@ describe('NxDialog', () => {
     const backdrop = overlayContainerElement.querySelector('.cdk-overlay-backdrop') as HTMLElement;
 
     backdrop.click();
+    triggerAnimationEvents();
+
     expect(spy).toHaveBeenCalledTimes(1);
 
     viewContainerFixture.detectChanges();
@@ -459,6 +493,8 @@ describe('NxDialog', () => {
 
     // Additional clicks after the dialog has closed should not be emitted
     backdrop.click();
+    triggerAnimationEvents();
+
     expect(spy).toHaveBeenCalledTimes(1);
   }));
 
@@ -497,12 +533,16 @@ describe('NxDialog', () => {
     dialog.afterAllClosed.subscribe(spy);
 
     ref1.close();
+    triggerAnimationEvents();
+
     viewContainerFixture.detectChanges();
     flush();
 
     expect(spy).not.toHaveBeenCalled();
 
     ref2.close();
+    triggerAnimationEvents();
+
     viewContainerFixture.detectChanges();
     flush();
     expect(spy).toHaveBeenCalled();
@@ -585,6 +625,7 @@ describe('NxDialog', () => {
     dialogRef = dialog.open(PizzaMsg, {
       maxWidth: '100px',
     });
+    triggerAnimationEvents();
 
     viewContainerFixture.detectChanges();
 
@@ -728,6 +769,7 @@ describe('NxDialog', () => {
 
   it('should fall back to injecting the global direction if none is passed by the config', () => {
     const dialogRef = dialog.open(PizzaMsg, {});
+    triggerAnimationEvents();
 
     viewContainerFixture.detectChanges();
 
@@ -743,6 +785,8 @@ describe('NxDialog', () => {
     expect(testViewContainerRef).toHaveSize(2);
 
     dialogRef.close();
+    triggerAnimationEvents();
+
     viewContainerFixture.detectChanges();
     flush();
 
@@ -753,10 +797,17 @@ describe('NxDialog', () => {
     dialog.open(PizzaMsg);
     dialog.open(PizzaMsg);
     dialog.open(PizzaMsg);
+    triggerAnimationEvents();
+    triggerAnimationEvents();
+    triggerAnimationEvents();
 
     expect(overlayContainerElement.querySelectorAll('nx-modal-container')).toHaveSize(3);
 
     dialog.closeAll();
+    triggerAnimationEvents();
+    triggerAnimationEvents();
+    triggerAnimationEvents();
+
     viewContainerFixture.detectChanges();
     flush();
 
@@ -806,10 +857,17 @@ describe('NxDialog', () => {
     dialog.open(PizzaMsg);
     dialog.open(PizzaMsg);
     dialog.open(PizzaMsg);
+    triggerAnimationEvents();
+    triggerAnimationEvents();
+    triggerAnimationEvents();
 
     expect(overlayContainerElement.querySelectorAll('nx-modal-container')).toHaveSize(3);
 
     dialog.ngOnDestroy();
+    triggerAnimationEvents();
+    triggerAnimationEvents();
+    triggerAnimationEvents();
+
     viewContainerFixture.detectChanges();
     flush();
 
@@ -862,6 +920,7 @@ describe('NxDialog', () => {
     });
 
     dialogRef.close();
+    triggerAnimationEvents();
 
     flushMicrotasks();
     viewContainerFixture.detectChanges();
@@ -879,17 +938,22 @@ describe('NxDialog', () => {
     };
 
     dialog.open(PizzaMsg, { scrollStrategy });
+    triggerAnimationEvents();
+
     expect(scrollStrategy.enable).toHaveBeenCalled();
   }));
 
   it('should return the current state of the dialog', fakeAsync(() => {
     const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
+    triggerAnimationEvents();
 
     expect(dialogRef.getState()).toBe(NxModalState.OPEN);
     dialogRef.close();
+    expect(dialogRef.getState()).toBe(NxModalState.CLOSING);
+
+    triggerAnimationEvents();
     viewContainerFixture.detectChanges();
 
-    expect(dialogRef.getState()).toBe(NxModalState.CLOSING);
     flush();
 
     expect(dialogRef.getState()).toBe(NxModalState.CLOSED);
@@ -905,6 +969,7 @@ describe('NxDialog', () => {
       };
 
       const instance = dialog.open(DialogWithInjectedData, config).componentInstance;
+      triggerAnimationEvents();
 
       expect(instance.data.stringParam).toBe(config.data.stringParam);
       expect(instance.data.dateParam).toBe(config.data.dateParam);
@@ -913,6 +978,8 @@ describe('NxDialog', () => {
     it('should default to null if no data is passed', () => {
       expect(() => {
         const dialogRef = dialog.open(DialogWithInjectedData);
+        triggerAnimationEvents();
+
         expect(dialogRef.componentInstance.data).toBeNull();
       }).not.toThrow();
     });
@@ -924,6 +991,8 @@ describe('NxDialog', () => {
     expect(dialogRef.componentInstance).toBeTruthy();
 
     dialogRef.close();
+    triggerAnimationEvents();
+
     viewContainerFixture.detectChanges();
     flush();
 
@@ -961,6 +1030,8 @@ describe('NxDialog', () => {
     overlayContainerElement.parentNode!.appendChild(sibling);
 
     const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
+    triggerAnimationEvents();
+
     viewContainerFixture.detectChanges();
     flush();
 
@@ -973,6 +1044,8 @@ describe('NxDialog', () => {
       .toBeFalse();
 
     dialogRef.close();
+    triggerAnimationEvents();
+
     viewContainerFixture.detectChanges();
     flush();
 
@@ -1047,6 +1120,8 @@ describe('NxDialog', () => {
 
     TestBed.resetTestingModule()
       .configureTestingModule({
+        animationsEnabled: true,
+
         imports: [NxModalModule, DialogTestModule],
         providers: [
           {
@@ -1059,6 +1134,7 @@ describe('NxDialog', () => {
 
     const dialog = TestBed.inject(NxDialogService);
     dialog.open(PizzaMsg);
+
     viewContainerFixture.detectChanges();
 
     expect(sibling.hasAttribute('inert'))
@@ -1182,11 +1258,14 @@ describe('NxDialog', () => {
         '.cdk-overlay-backdrop',
       ) as HTMLElement;
       backdrop.click();
+      triggerAnimationEvents();
 
       expect(overlayContainerElement.querySelector('nx-modal-container')).toBeTruthy();
 
       dialogRef.disableClose = false;
       backdrop.click();
+      triggerAnimationEvents();
+
       viewContainerFixture.detectChanges();
       flush();
 
@@ -1265,9 +1344,10 @@ describe('NxDialog', () => {
       dialog.open(PizzaMsg, {
         viewContainerRef: testViewContainerRef,
       });
-
+      triggerAnimationEvents();
       viewContainerFixture.detectChanges();
       flushMicrotasks();
+      tick(300); // Wait for CSS animation to complete
 
       expect(_getFocusedElementPierceShadowDom()!.tagName)
         .withContext('Expected first tabbable element (input) in the dialog to be focused.')
@@ -1279,8 +1359,9 @@ describe('NxDialog', () => {
         viewContainerRef: testViewContainerRef,
         autoFocus: 'first-tabbable',
       });
-
+      triggerAnimationEvents();
       viewContainerFixture.detectChanges();
+
       flushMicrotasks();
 
       expect(_getFocusedElementPierceShadowDom()!.tagName)
@@ -1293,7 +1374,7 @@ describe('NxDialog', () => {
         viewContainerRef: testViewContainerRef,
         autoFocus: false,
       });
-
+      triggerAnimationEvents();
       viewContainerFixture.detectChanges();
       flushMicrotasks();
 
@@ -1305,10 +1386,12 @@ describe('NxDialog', () => {
         viewContainerRef: testViewContainerRef,
         autoFocus: 'dialog',
       });
+      triggerAnimationEvents();
       const container = overlayContainerElement.querySelector('nx-modal-container')!;
 
       viewContainerFixture.detectChanges();
       flushMicrotasks();
+      tick(200); // Wait for CSS animation to complete
       expect(_getFocusedElementPierceShadowDom())
         .withContext('Expected dialog to be focused.')
         .toBe(container as HTMLElement);
@@ -1319,9 +1402,10 @@ describe('NxDialog', () => {
         viewContainerRef: testViewContainerRef,
         autoFocus: 'first-heading',
       });
-
+      triggerAnimationEvents();
       viewContainerFixture.detectChanges();
       flushMicrotasks();
+      tick(200); // Wait for CSS animation to complete
 
       const firstHeader = overlayContainerElement.querySelector('h1') as HTMLInputElement;
 
@@ -1336,8 +1420,12 @@ describe('NxDialog', () => {
         autoFocus: '.custom',
       });
 
+      triggerAnimationEvents();
+      tick(300); // Wait for CSS animation to complete
+
       viewContainerFixture.detectChanges();
       flushMicrotasks();
+      tick(300); // Wait for CSS animation to complete
 
       const customElement = overlayContainerElement.querySelector('.custom') as HTMLInputElement;
 
@@ -1354,9 +1442,10 @@ describe('NxDialog', () => {
       button.focus();
 
       const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
-
+      triggerAnimationEvents();
       flushMicrotasks();
       viewContainerFixture.detectChanges();
+      tick(200); // Wait for CSS animation to complete
       flushMicrotasks();
 
       expect(_getFocusedElementPierceShadowDom()!.id)
@@ -1364,9 +1453,12 @@ describe('NxDialog', () => {
         .not.toBe('dialog-trigger');
 
       dialogRef.close();
+
       expect(_getFocusedElementPierceShadowDom()!.id)
         .withContext('Expcted the focus not to have changed before the animation finishes.')
         .not.toBe('dialog-trigger');
+
+      triggerAnimationEvents();
 
       flushMicrotasks();
       viewContainerFixture.detectChanges();
@@ -1392,12 +1484,15 @@ describe('NxDialog', () => {
       button.focus();
 
       const dialogRef = dialog.open(PizzaMsg);
+      triggerAnimationEvents();
       flushMicrotasks();
       fixture.detectChanges();
+      tick(200); // Wait for CSS animation to complete
       flushMicrotasks();
 
       const spy = spyOn(button, 'focus').and.callThrough();
       dialogRef.close();
+      triggerAnimationEvents();
       flushMicrotasks();
       fixture.detectChanges();
       tick(500);
@@ -1418,12 +1513,14 @@ describe('NxDialog', () => {
       button.focus();
 
       const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
+      triggerAnimationEvents();
 
       tick(500);
       viewContainerFixture.detectChanges();
 
       dialogRef.afterClosed().subscribe(() => input.focus());
       dialogRef.close();
+      triggerAnimationEvents();
 
       tick(500);
       viewContainerFixture.detectChanges();
@@ -1440,9 +1537,10 @@ describe('NxDialog', () => {
 
     it('should move focus to the container if there are no focusable elements in the dialog', fakeAsync(() => {
       dialog.open(DialogWithoutFocusableElements);
-
+      triggerAnimationEvents();
       viewContainerFixture.detectChanges();
       flushMicrotasks();
+      tick(200); // Wait for CSS animation to complete
 
       expect(_getFocusedElementPierceShadowDom()!.tagName)
         .withContext('Expected dialog container to be focused.')
@@ -1503,6 +1601,7 @@ describe('NxDialog', () => {
         dialogRef = dialog.open(fixture.componentInstance.templateRef, {
           viewContainerRef: testViewContainerRef,
         });
+        triggerAnimationEvents();
 
         viewContainerFixture.detectChanges();
         flush();
@@ -1521,6 +1620,8 @@ describe('NxDialog', () => {
         expect(overlayContainerElement.querySelectorAll('.nx-modal__container')).toHaveSize(1);
 
         (overlayContainerElement.querySelector('button[nxModalClose]') as HTMLElement).click();
+        triggerAnimationEvents();
+
         viewContainerFixture.detectChanges();
         flush();
 
@@ -1557,6 +1658,8 @@ describe('NxDialog', () => {
         dialogRef.afterClosed().subscribe(afterCloseCallback);
 
         (overlayContainerElement.querySelector('button.close-with-true') as HTMLElement).click();
+        triggerAnimationEvents();
+
         viewContainerFixture.detectChanges();
         flush();
 
@@ -1653,6 +1756,7 @@ describe('NxDialog with a parent NxDialog', () => {
   let childDialog: NxDialogService;
   let overlayContainerElement: HTMLElement;
   let fixture: ComponentFixture<ComponentThatProvidesNxDialog>;
+  let triggerAnimationEvents: () => void;
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
@@ -1665,6 +1769,7 @@ describe('NxDialog with a parent NxDialog', () => {
             const child = document.createElement('div');
             parent.append(child);
             overlayContainerElement = child;
+            triggerAnimationEvents = _triggerAnimationEvents(overlayContainerElement);
             return { getContainerElement: () => overlayContainerElement };
           },
         },
@@ -1692,6 +1797,8 @@ describe('NxDialog with a parent NxDialog', () => {
     overlayContainerElement.parentNode!.appendChild(sibling);
 
     parentDialog.open(OpenerBComponent);
+    triggerAnimationEvents();
+
     fixture.detectChanges();
 
     expect(sibling.getAttribute('inert')).withContext('Expected sibling to be hidden').toBe('true');
@@ -1703,6 +1810,9 @@ describe('NxDialog with a parent NxDialog', () => {
     flush();
 
     childDialog.closeAll();
+    triggerAnimationEvents();
+    triggerAnimationEvents();
+
     fixture.detectChanges();
     flush();
 
@@ -1724,6 +1834,7 @@ describe('NxDialog with a parent NxDialog', () => {
       .toContain('Pizza');
 
     childDialog.closeAll();
+    triggerAnimationEvents();
     fixture.detectChanges();
     flush();
 
@@ -1741,6 +1852,8 @@ describe('NxDialog with a parent NxDialog', () => {
       .toContain('Pizza');
 
     parentDialog.closeAll();
+    triggerAnimationEvents();
+
     fixture.detectChanges();
     flush();
 
@@ -1753,6 +1866,8 @@ describe('NxDialog with a parent NxDialog', () => {
     childDialog.open(PizzaMsg);
 
     dispatchKeyboardEvent(document.body, 'keydown', ESCAPE);
+    triggerAnimationEvents();
+
     fixture.detectChanges();
     flush();
 
@@ -1761,14 +1876,13 @@ describe('NxDialog with a parent NxDialog', () => {
 
   it('should not close the parent dialogs when a child is destroyed', fakeAsync(() => {
     parentDialog.open(PizzaMsg);
-    fixture.detectChanges();
-    flush();
-
     expect(overlayContainerElement.textContent)
       .withContext('Expected a dialog to be opened')
       .toContain('Pizza');
-
+    tick(300);
     childDialog.ngOnDestroy();
+    tick(300);
+
     fixture.detectChanges();
     flush();
 
@@ -1782,6 +1896,7 @@ describe('NxDialog with default options', () => {
   let dialog: NxDialogService;
   let overlayContainer: OverlayContainer;
   let overlayContainerElement: HTMLElement;
+  let triggerAnimationEvents: () => void;
 
   let testViewContainerRef: ViewContainerRef;
   let viewContainerFixture: ComponentFixture<ComponentWithChildViewContainer>;
@@ -1800,6 +1915,8 @@ describe('NxDialog with default options', () => {
     };
 
     TestBed.configureTestingModule({
+      animationsEnabled: true,
+
       imports: [NxModalModule, DialogTestModule],
       providers: [{ provide: NX_MODAL_DEFAULT_OPTIONS, useValue: defaultConfig }],
     });
@@ -1813,6 +1930,7 @@ describe('NxDialog with default options', () => {
       dialog = d;
       overlayContainer = oc;
       overlayContainerElement = oc.getContainerElement();
+      triggerAnimationEvents = _triggerAnimationEvents(overlayContainerElement);
     },
   ));
 
@@ -1854,12 +1972,15 @@ describe('NxDialog with default options', () => {
       disableClose: false,
       viewContainerRef: testViewContainerRef,
     });
+    triggerAnimationEvents();
 
     viewContainerFixture.detectChanges();
 
     expect(overlayContainerElement.querySelector('.cdk-overlay-backdrop')).toBeTruthy();
 
     dispatchKeyboardEvent(document.body, 'keydown', ESCAPE);
+    triggerAnimationEvents();
+
     viewContainerFixture.detectChanges();
     flush();
 
@@ -2074,6 +2195,6 @@ const TEST_DIRECTIVES = [
 @NgModule({
   imports: [NxModalModule, ...TEST_DIRECTIVES],
   exports: TEST_DIRECTIVES,
-  providers: [provideNoopAnimations()],
+  providers: [],
 })
 class DialogTestModule {}

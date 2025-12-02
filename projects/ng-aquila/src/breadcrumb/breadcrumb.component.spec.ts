@@ -151,5 +151,5 @@ class DynamicBreadcrumbComponent extends BreadcrumbTest {
   imports: [NxBreadcrumbModule],
 })
 class LinkBreadcrumbComponent extends BreadcrumbTest {
-  appearance = 'link';
+  appearance = 'link' as const;
 }

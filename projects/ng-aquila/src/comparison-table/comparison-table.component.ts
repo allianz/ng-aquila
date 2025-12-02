@@ -2,7 +2,7 @@ import { NxViewportService } from '@allianz/ng-aquila/utils';
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceArray, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
-import { NgStyle, NgTemplateOutlet } from '@angular/common';
+import { NgClass, NgStyle, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -32,15 +32,19 @@ import { NxComparisonTableFlexRow } from './flex-row/flex-row.component';
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
 import { NxTableContentElement } from './table-content-element.directive';
 import { NxToggleSectionDirective } from './toggle-section/toggle-section.directive';
-import { NxToggleSectionAnimations } from './toggle-section/toggle-section-animations';
 
 @Component({
   selector: 'nx-comparison-table',
   templateUrl: './comparison-table.component.html',
   styleUrls: ['./comparison-table.component.scss'],
-  animations: [NxToggleSectionAnimations.bodyExpansion],
   providers: [{ provide: NxComparisonTableBase, useExisting: NxComparisonTableComponent }],
-  imports: [NgTemplateOutlet, NxComparisonTableFlexRow, NgStyle, NxComparisonTableDesktopGroup],
+  imports: [
+    NgTemplateOutlet,
+    NxComparisonTableFlexRow,
+    NgStyle,
+    NxComparisonTableDesktopGroup,
+    NgClass,
+  ],
 })
 export class NxComparisonTableComponent
   extends NxComparisonTableBase

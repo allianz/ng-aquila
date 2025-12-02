@@ -1,5 +1,4 @@
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
-import { AnimationEvent } from '@angular/animations';
 import { CdkAccordionItem } from '@angular/cdk/accordion';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
@@ -13,6 +12,7 @@ import {
   Component,
   computed,
   ContentChild,
+  ElementRef,
   Inject,
   inject,
   InjectionToken,
@@ -25,11 +25,10 @@ import {
   SkipSelf,
   ViewContainerRef,
 } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { filter, startWith, take } from 'rxjs/operators';
 
 import { NxAccordionDirective } from './accordion';
-import { nxAccordionAnimations } from './accordion-animations';
 import { NxExpansionPanelBodyDirective } from './expansion-panel-body';
 
 /** The styling of the accordion. */
@@ -63,7 +62,6 @@ export const EXPANSION_PANEL_DEFAULT_OPTIONS = new InjectionToken<ExpansionPanel
   templateUrl: 'expansion-panel.html',
   styleUrls: ['expansion-panel.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [nxAccordionAnimations.bodyExpansion],
   host: {
     '[class.nx-expanded]': 'expanded',
     '[class.nx-expansion-panel--light]': '_accordionStyle === "light"',
@@ -144,6 +142,8 @@ export class NxExpansionPanelComponent
 
   private readonly _idGenerationService = inject(IdGenerationService);
   _headerId = this._idGenerationService.nextId('nx-expansion-panel-header');
+  private readonly _elementRef = inject(ElementRef);
+  private _scrollSubscription?: Subscription;
 
   /** Stream that emits for changes in `@Input` properties. */
   readonly _inputChanges = new Subject<SimpleChanges>();
@@ -174,6 +174,18 @@ export class NxExpansionPanelComponent
         });
     }
 
+    // Scroll into view when the panel opens
+    if (this.scrollIntoViewActive) {
+      this._scrollSubscription = this.opened.pipe().subscribe(() => {
+        if (this.expanded) {
+          // Use setTimeout to ensure the animation has started
+          setTimeout(() => {
+            this._elementRef.nativeElement.scrollIntoView(this.scrollIntoViewOptions);
+          }, 0);
+        }
+      });
+    }
+
     // Inherit appearance given by the accordion (if any).
     if (this.accordion) {
       if (this.style === null && this.accordion.style !== null) {
@@ -193,6 +205,7 @@ export class NxExpansionPanelComponent
   ngOnDestroy(): void {
     super.ngOnDestroy();
     this._inputChanges.complete();
+    this._scrollSubscription?.unsubscribe();
   }
 
   /** @docs-private */
@@ -201,9 +214,4 @@ export class NxExpansionPanelComponent
   }
 
   /** @docs-private */
-  bodyExpansionDone(event: AnimationEvent) {
-    if (event.fromState === 'closed' && event.toState === 'open') {
-      event.element.scrollIntoView(this.scrollIntoViewOptions);
-    }
-  }
 }

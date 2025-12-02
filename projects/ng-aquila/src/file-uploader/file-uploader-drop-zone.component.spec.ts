@@ -1,5 +1,6 @@
 import { NxErrorModule, NxLabelModule } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { JsonPipe } from '@angular/common';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
@@ -157,6 +158,7 @@ describe('NxFileUploaderComponent', () => {
     ReactiveFormsModule,
     FormsModule,
     NxErrorModule,
+    JsonPipe,
   ],
 })
 class DropZoneFileUpload extends FileUploaderTest {

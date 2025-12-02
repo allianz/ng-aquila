@@ -19,14 +19,14 @@ import {
 } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { NxSwitcherComponent } from './switcher.component';
+import { LABEL_SIZE, NxSwitcherComponent } from './switcher.component';
 import { NxSwitcherModule } from './switcher.module';
 
 @Directive({ standalone: true })
 abstract class SwitcherTest {
   @ViewChild(NxSwitcherComponent) switcherInstance!: NxSwitcherComponent;
   checked = false;
-  labelSize = 'large';
+  labelSize: LABEL_SIZE = 'large';
 }
 
 describe('NxSwitcherComponent', () => {

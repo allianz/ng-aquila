@@ -9,6 +9,12 @@
   height: 100%;
   overflow: hidden;
   background: v(sidepanel-background-color);
+  transition:
+    transform 0.4s cubic-bezier(0, 0, 0.1, 1),
+    box-shadow 0.4s cubic-bezier(0, 0, 0.1, 1),
+    visibility 0.4s;
+  transform: none;
+  visibility: visible;
 
   [dir='rtl'] & {
     right: auto;
@@ -20,8 +26,14 @@
     box-shadow: v(sidepanel-floating-shadow);
   }
 
-  .is-closed {
+  &.is-closed {
     transform: translateX(100%);
+    box-shadow: none;
+    visibility: hidden;
+    transition:
+      transform 0.2s cubic-bezier(0.8, 0, 1, 1),
+      box-shadow 0.2s cubic-bezier(0.8, 0, 1, 1),
+      visibility 0.2s;
 
     [dir='rtl'] & {
       transform: translateX(-100%);

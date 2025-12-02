@@ -74,7 +74,7 @@ export type AppearanceType = 'outline' | 'auto';
     '[class.is-auto-floating]': 'this.floatLabel === "auto"',
     '[class.has-error]': 'this._control.errorState',
     '[class.has-outline]': 'this.appearance === "outline"',
-    '[class.has-hint]': 'this._hintChildren?.length > 0',
+    '[class.has-hint]': 'this._hintChildren?.length && this._hintChildren?.length! > 0',
     '[class.nx-formfield--negative]': 'this._negative',
     '(focusout)': '_onBlur()',
   },

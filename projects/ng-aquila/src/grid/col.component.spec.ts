@@ -292,6 +292,7 @@ describe('NxColDirective', () => {
 });
 
 @Component({
+  selector: 'test-basic-test-nx-col-four-inputs',
   template: `<div nxLayout="grid">
     <div nxRow="row"><div nxCol="8,3,5,7"></div></div>
   </div>`,
@@ -300,6 +301,7 @@ describe('NxColDirective', () => {
 class BasicTestNxColFourInputs extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-test-nx-col-two-inputs',
   template: `<div nxLayout="grid">
     <div nxRow="row"><div nxCol="7,2"></div></div>
   </div>`,

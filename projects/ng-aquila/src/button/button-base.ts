@@ -28,7 +28,6 @@ const DEFAULT_TYPE = 'primary';
 
 /** @docs-private */
 @Directive({
-  standalone: true,
   host: {
     '[class.nx-button--loading]': 'loading()',
     '[attr.disabled]': 'disabled || null',

@@ -25,9 +25,7 @@ import { FormsModule } from '@angular/forms';
     NxFormfieldErrorDirective,
   ],
 })
-export class FormfieldChangedetectionExampleComponent
-  implements AfterContentInit
-{
+export class FormfieldChangedetectionExampleComponent implements AfterContentInit {
   modelValue!: string;
 
   @ViewChild('errorNgModel', { static: true })

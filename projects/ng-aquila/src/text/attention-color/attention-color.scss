@@ -2,7 +2,7 @@
 
 :host {
   @each $color in (yellow, orange, red, purple, teal, aqua, blue, green, gray) {
-    &[nx-attention-color='#{$color}'] {
+    &[nx-attention-color='#{"" + $color}'] {
       color: v(color-attention-#{$color});
       &.nx-attention-color--negative {
         color: v(color-attention-inverse-#{$color});

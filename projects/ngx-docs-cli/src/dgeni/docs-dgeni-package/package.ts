@@ -8,9 +8,9 @@ import { FilterDuplicateExports } from './processors/filter-duplicate-exports';
 import { MergeInheritedProperties } from './processors/merge-inherited-properties';
 
 // Dgeni packages that the Material docs package depends on.
-const jsdocPackage = require('dgeni-packages/jsdoc');
-const nunjucksPackage = require('dgeni-packages/nunjucks');
-const typescriptPackage = require('dgeni-packages/typescript');
+import jsdocPackage = require('dgeni-packages/jsdoc');
+import nunjucksPackage = require('dgeni-packages/nunjucks');
+import typescriptPackage = require('dgeni-packages/typescript');
 
 export const apiDocsPackage = new Package('ng-aquila-api-docs', [
   jsdocPackage,

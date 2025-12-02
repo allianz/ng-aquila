@@ -1,7 +1,6 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 
 import { CONTEXT, NxMessageComponent } from '../message/message.component';
@@ -14,7 +13,7 @@ export type BANNER_CONTEXT = 'info' | 'error' | 'warning';
   styleUrls: ['../message/message.component.scss', './message-banner.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'nxMessageBanner',
-  imports: [NgIf, NxIconModule, NxButtonModule],
+  imports: [NxIconModule, NxButtonModule],
 })
 export class NxMessageBannerComponent extends NxMessageComponent {
   /**

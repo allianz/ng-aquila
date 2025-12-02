@@ -1,7 +1,7 @@
 import { NxButtonBase } from '@allianz/ng-aquila/button';
 import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { delay, takeUntil } from 'rxjs/operators';
 
 import { NxModalService } from './modal.service';
 
@@ -49,9 +49,11 @@ export class NxOpenModalOnClickDirective implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.modalService.close$
-      .pipe(takeUntil(this._destroyed))
-      .subscribe(() => this.viewContainer.clear());
+    // wait animation done before remove from DOM,
+    // TODO: use actual animation time
+    this.modalService.close$.pipe(delay(300), takeUntil(this._destroyed)).subscribe(() => {
+      this.viewContainer.clear();
+    });
   }
 
   ngOnDestroy(): void {

@@ -346,6 +346,11 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
       .afterHidden()
       .pipe(takeUntil(this._destroyed))
       .subscribe(() => this._detach());
+
+    // Set to 'initial' state to render the tooltip in DOM for measurement,
+    // but keep it hidden until show() animation completes
+    this._tooltipInstance._visibility = 'initial';
+
     this._updateTooltipMessage();
     this._tooltipInstance.show(delay);
   }

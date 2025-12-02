@@ -35,9 +35,7 @@ import { FormsModule } from '@angular/forms';
     NxFormfieldErrorDirective,
   ],
 })
-export class FormfieldErrorTwoColumnExampleComponent
-  implements AfterContentInit
-{
+export class FormfieldErrorTwoColumnExampleComponent implements AfterContentInit {
   @ViewChild('exampleErrorNgModel', { static: true })
   exampleErrorNgModel!: NxInputDirective;
   @ViewChild('exampleErrorNgModelHint', { static: true })

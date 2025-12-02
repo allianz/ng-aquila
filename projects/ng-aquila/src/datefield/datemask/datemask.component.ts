@@ -2,7 +2,6 @@ import { NxFormfieldComponent, NxFormfieldControl } from '@allianz/ng-aquila/for
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { CommonModule } from '@angular/common';
 import {
   AfterContentInit,
   AfterViewInit,
@@ -87,7 +86,6 @@ export class NxDatemaskYearInput extends NxDatemaskInput {}
 @Component({
   selector: 'nx-datemask',
   imports: [
-    CommonModule,
     NxDatemaskInput,
     NxDatemaskDayInput,
     NxDateMaskMonthInput,

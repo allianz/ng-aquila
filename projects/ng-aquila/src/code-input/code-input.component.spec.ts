@@ -507,7 +507,6 @@ class CodeInputTest2 extends CodeInputTest {
     >
       <nx-code-input formControlName="keyCode3"></nx-code-input>
       <button nxButton="primary small" id="submit-button">Submit</button>
-      <button nxButton="secondary small" (click)="form.resetForm()">Clear</button>
     </form>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

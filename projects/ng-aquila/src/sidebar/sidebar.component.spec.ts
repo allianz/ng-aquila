@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MAX_WIDTH, MIN_WIDTH, NxSidebarComponent, RESIZE_STEP_SIZE } from './sidebar.component';
 import { NxSidebarModule } from './sidebar.module';
@@ -63,13 +62,7 @@ describe('NxSidebarComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
-        BrowserAnimationsModule,
-        NxSidebarModule,
-        BasicSidebar,
-        ResizeableSidebar,
-        WideSidebar,
-      ],
+      imports: [NxSidebarModule, BasicSidebar, ResizeableSidebar, WideSidebar],
     }).compileComponents();
   }));
 

@@ -1,7 +1,7 @@
+import { NxAutocompleteModule } from '@allianz/ng-aquila/autocomplete';
 import { Component, Directive, provideNgReflectAttributes, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { NxAutocompleteModule } from '../autocomplete/autocomplete.module';
 import { NxPageSearchComponent } from './page-search.component';
 import { NxPageSearchModule } from './page-search.module';
 

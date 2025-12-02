@@ -6,7 +6,7 @@ import { OverlayRef, ScrollStrategy } from '@angular/cdk/overlay';
  * Example usage:
  * TestBed.resetTestingModule()
  * .configureTestingModule({
- * imports: [ScrollStrategyOverrideComponent, NxAutocompleteModule, NxInputModule, NoopAnimationsModule],
+ * imports: [ScrollStrategyOverrideComponent, NxAutocompleteModule, NxInputModule],
  * providers: [
  * {
  *  provide: NX_AUTOCOMPLETE_SCROLL_STRATEGY,

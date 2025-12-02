@@ -730,7 +730,7 @@ class BasicRadioGroup extends RadioTest {}
 
 @Component({
   template: `
-    <nx-radio-group name="groupTest" [(value)]="templateModel" [negative]="groupNegative">
+    <nx-radio-group name="groupTest" [value]="templateModel" [negative]="groupNegative">
       <nx-radio value="0" [negative]="radioNegative">0</nx-radio>
       <nx-radio value="1">1</nx-radio>
     </nx-radio-group>

@@ -55,7 +55,7 @@ export class NxAvatarComponent {
   }
   readonly accentColor = input<NxAvatarAccent>('default');
   readonly attention = input<boolean>(false);
-  private readonly _avatarClass = computed(() => {
+  protected readonly _avatarClass = computed(() => {
     if (this.accentColor() === 'default') {
       return '';
     }

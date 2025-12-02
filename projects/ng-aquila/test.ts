@@ -1,14 +1,17 @@
 /// <reference types="karma-viewport" />
 
 import { getTestBed } from '@angular/core/testing';
-import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting,
-} from '@angular/platform-browser-dynamic/testing';
 import axe from 'axe-core';
+import { NgModule, provideZoneChangeDetection } from '@angular/core';
+import { BrowserTestingModule, platformBrowserTesting } from '@angular/platform-browser/testing';
+
+@NgModule({
+  providers: [provideZoneChangeDetection()],
+})
+export class ZoneTestModule {}
 
 // First, initialize the Angular testing environment.
-getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting(), {
+getTestBed().initTestEnvironment([BrowserTestingModule, ZoneTestModule], platformBrowserTesting(), {
   errorOnUnknownElements: true,
   errorOnUnknownProperties: true,
 });
