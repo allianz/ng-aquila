@@ -48,6 +48,7 @@ describe(NxActionIconDirective.name, () => {
 });
 
 @Component({
+  selector: 'test-basic-action-icon',
   template: `<span nxActionIcon></span>`,
   imports: [NxActionModule],
 })

@@ -1,3 +1,4 @@
+import { NxButtonBase, NxButtonComponent } from '@allianz/ng-aquila/button';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,6 +7,7 @@ import {
   QueryList,
   Type,
   ViewChild,
+  viewChild,
   ViewChildren,
 } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
@@ -193,13 +195,15 @@ describe('NxModalComponent', () => {
       #basicModal
       id="basicModal"
       [modalBody]="basicModalBody"
-      *nxOpenModalOnClick="basicModalButton"
+      *nxOpenModalOnClick="button()"
     >
     </nx-modal>
   `,
-  imports: [NxModalModule],
+  imports: [NxModalModule, NxButtonComponent],
 })
-class BasicModal extends ModalTest {}
+class BasicModal extends ModalTest {
+  button = viewChild.required<NxButtonBase>('basicModalButton');
+}
 
 @Component({
   template: `
@@ -246,10 +250,12 @@ class FixedWidthModal extends ModalTest {}
       #basicModal
       id="basicModal"
       [modalBody]="basicModalBody"
-      *nxOpenModalOnClick="basicModalButton"
+      *nxOpenModalOnClick="button()"
     >
     </nx-modal>
   `,
-  imports: [NxModalModule],
+  imports: [NxModalModule, NxButtonComponent],
 })
-class OnPushTest extends ModalTest {}
+class OnPushTest extends ModalTest {
+  button = viewChild.required<NxButtonBase>('basicModalButton');
+}

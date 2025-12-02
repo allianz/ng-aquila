@@ -1,4 +1,5 @@
 import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NxTriggerButton } from '@allianz/ng-aquila/overlay';
 import { fakeScrollStrategyFunction } from '@allianz/ng-aquila/utils';
@@ -45,7 +46,7 @@ const popoverDefaultOptions: PopoverDefaultOptions = {
 };
 
 @Component({
-  selector: 'nx-test-component',
+  selector: 'nx-popover-test-component',
   template: '<span class="my-test-component">This is a test component</span>',
   imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
@@ -71,33 +72,22 @@ describe('NxPopoverTriggerDirective', () => {
   let overlayContainer: OverlayContainer;
   let focusMonitor: FocusMonitor;
 
-  function createTestComponent<T extends PopoverTest>(component: Type<T>): T {
-    const _fixture = TestBed.createComponent(component);
-    fixture = _fixture;
+  function createTestComponent<T extends PopoverTest>(component: Type<T>) {
+    fixture = TestBed.createComponent(component);
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     popoverInstance = testInstance.popoverInstance;
     triggerInstance = testInstance.triggerInstance;
     buttonNativeElement = fixture.debugElement.query(By.css('button'))
       ?.nativeElement as HTMLButtonElement;
-
-    return _fixture.componentInstance;
   }
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [NxIconModule],
       providers: [{ provide: POPOVER_DEFAULT_OPTIONS, useValue: popoverDefaultOptions }],
     });
 
-    // Simple trick to simulate that the user is using `preserveWhitespaces: true`
-    // as we had a bug with it. (see ngx-ndbx #3215)
-    // This shouldn't be an issue for the tests as they should work regardless,
-    // but it would indicate quickly if something is wrong
-    TestBed.overrideComponent(NxPopoverComponent, {
-      set: {
-        preserveWhitespaces: true,
-      },
-    });
     TestBed.compileComponents();
   }));
 
@@ -218,7 +208,8 @@ describe('NxPopoverTriggerDirective', () => {
     }));
 
     it('should have correct boolean value in popoverShowChange event data', fakeAsync(() => {
-      const manualTrigger = createTestComponent(ManualTrigger);
+      createTestComponent(ManualTrigger);
+      const manualTrigger = fixture.componentInstance as ManualTrigger;
 
       click();
       expect(manualTrigger.lastShowChangeEventData).toBe(true);
@@ -1034,6 +1025,7 @@ class PopoverHoverFormfieldComponent extends PopoverTest {}
     NxFormfieldModule,
     NxInputModule,
     TriggerButtonTestDirective,
+    NxIconModule,
   ],
 })
 class PopoverClickComponent extends PopoverTest {
@@ -1169,7 +1161,7 @@ class ModalPopover extends PopoverTest {
 
     <nx-popover #popoverLazyloadContent>
       <ng-template nxPopoverContent>
-        <nx-test-component></nx-test-component>
+        <nx-popover-test-component></nx-popover-test-component>
       </ng-template>
     </nx-popover>
   `,

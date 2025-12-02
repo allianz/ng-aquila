@@ -7,6 +7,7 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NxTileComponent } from './tile.component';
+import { NxTileSelectionMode } from './tile-group.component';
 
 @Component({
   template: `<nx-tile-group
@@ -18,7 +19,7 @@ import { NxTileComponent } from './tile.component';
     @for (tile of tiles(); track tile.value) {
       <nx-tile
         [label]="tile.label"
-        [hint]="tile.hint"
+        [hint]="tile.hint ?? null"
         [icon]="tile.icon"
         [disabled]="disabled()"
         [readonly]="readonly()"
@@ -32,21 +33,26 @@ class TileTestComponent {
   group = viewChild.required<NxTileGroupComponent>(NxTileGroupComponent);
   tiles = signal([
     { value: 'tile1', label: 'First Tile', hint: 'First hint', icon: 'product-auto' },
-    { value: 'tile2', label: 'Second Tile', hint: 'Second hint' },
+    { value: 'tile2', label: 'Second Tile', hint: 'Second hint', icon: '' },
     { value: 'tile3', label: 'Third Tile', icon: 'product-health' },
   ]);
   disabled = signal(false);
   readonly = signal(false);
   groupDisabled = signal(false);
   groupReadonly = signal(false);
-  groupSelectionMode = signal('single');
+  groupSelectionMode = signal<NxTileSelectionMode>('single');
   groupValue = signal<string[] | string | null>(null);
 }
 
 @Component({
   template: `<nx-tile-group [formControl]="tileControl" [selectionMode]="selectionMode()">
     @for (tile of tiles(); track tile.value) {
-      <nx-tile [label]="tile.label" [hint]="tile.hint" [icon]="tile.icon" [value]="tile.value" />
+      <nx-tile
+        [label]="tile.label"
+        [hint]="tile.hint ?? null"
+        [icon]="tile.icon"
+        [value]="tile.value"
+      />
     }
     <nx-error>This is an error</nx-error>
   </nx-tile-group>`,
@@ -61,10 +67,10 @@ class TileTestComponent {
 class TileReactiveFormsTestComponent {
   group = viewChild.required<NxTileGroupComponent>(NxTileGroupComponent);
   tileControl = new FormControl();
-  selectionMode = signal('single');
+  selectionMode = signal<NxTileSelectionMode>('single');
   tiles = signal([
     { value: 'tile1', label: 'First Tile', hint: 'First hint', icon: 'product-auto' },
-    { value: 'tile2', label: 'Second Tile', hint: 'Second hint' },
+    { value: 'tile2', label: 'Second Tile', hint: 'Second hint', icon: '' },
     { value: 'tile3', label: 'Third Tile', icon: 'product-health' },
   ]);
 }

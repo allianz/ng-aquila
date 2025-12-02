@@ -23,6 +23,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 
 import { createKeyboardEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxMaskDirective } from './mask.directive';
+import { MaskConversionTypes } from './mask.model';
 import { NxMaskModule } from './mask.module';
 
 export function assertInputValue(
@@ -61,7 +62,7 @@ abstract class MaskTest {
   dropSpecialCharacters = false;
   validateMask = true;
   modelVal!: any;
-  convertTo!: string;
+  convertTo?: MaskConversionTypes;
   deactivateMask = false;
 
   testForm: FormGroup = new FormGroup({

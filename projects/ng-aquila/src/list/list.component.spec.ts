@@ -91,6 +91,7 @@ describe('NxListComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-list',
   template: `
     <ul nxList>
       <li>1</li>
@@ -102,6 +103,7 @@ describe('NxListComponent', () => {
 class BasicList extends ListTest {}
 
 @Component({
+  selector: 'test-list-with-modifier',
   template: `
     <ul nxList="small negative ordered-circle">
       <li>1</li>
@@ -113,6 +115,7 @@ class BasicList extends ListTest {}
 class ListWithModifier extends ListTest {}
 
 @Component({
+  selector: 'test-list-with-icons',
   template: `
     <ul>
       <li nxListIcon="check">1</li>
@@ -124,6 +127,7 @@ class ListWithModifier extends ListTest {}
 class ListWithIcons extends ListTest {}
 
 @Component({
+  selector: 'test-configurable-list',
   template: `
     <ul [nxList]="type">
       <li [nxListIcon]="iconName">1</li>

@@ -1726,7 +1726,7 @@ describe('nxContextMenu', () => {
     <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu" #triggerEl>
       Toggle menu
     </button>
-    <nx-context-menu #menu="nxContextMenu" [class]="panelClass" (closed)="closeCallback($event)">
+    <nx-context-menu #menu="nxContextMenu" (closed)="closeCallback($event)">
       <button nxContextMenuItem>Item</button>
       <button nxContextMenuItem disabled>Disabled</button>
       <button nxContextMenuItem>
@@ -1755,7 +1755,7 @@ class SimpleMenu {
     <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu" #triggerEl>
       Toggle menu
     </button>
-    <nx-context-menu #menu="nxContextMenu" [class]="panelClass" (closed)="closeCallback($event)">
+    <nx-context-menu #menu="nxContextMenu" (closed)="closeCallback($event)">
       <button nxContextMenuItem>Item</button>
       <button nxContextMenuItem disabled>Disabled</button>
       <button nxContextMenuItem>
@@ -1773,12 +1773,14 @@ class OverrideScrollStrategyMenu {
   constructor(
     @Inject(NX_CONTEXT_MENU_SCROLL_STRATEGY) public scrollStrategy: () => ScrollStrategy,
   ) {}
+  closeCallback = jasmine.createSpy('menu closed callback');
+  extraItems: string[] = [];
 }
 
 @Component({
   template: `
     <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu">Toggle menu</button>
-    <nx-context-menu #menu="nxContextMenu" [class]="panelClass" (closed)="closeCallback($event)">
+    <nx-context-menu #menu="nxContextMenu" (closed)="closeCallback($event)">
       <button nxContextMenuItem selectable>Item</button>
       <button nxContextMenuItem selectable>Item 2</button>
       <button nxContextMenuItem selectable>

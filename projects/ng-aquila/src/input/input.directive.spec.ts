@@ -1,3 +1,4 @@
+import { AppearanceType, FloatLabelType } from '@allianz/ng-aquila/formfield';
 import { NxInputDirective, NxInputModule } from '@allianz/ng-aquila/input';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
@@ -371,7 +372,7 @@ class RequiredInput extends InputTest {}
 class NgModelInput extends InputTest {}
 
 @Component({
-  template: `<input nxInput [(ngModel)]="currentValue" required [updateOn]="blur" />`,
+  template: `<input nxInput [(ngModel)]="currentValue" required [updateOn]="'blur'" />`,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class NoChangeDetectionInput extends InputTest {}
@@ -425,7 +426,7 @@ class ConfigurableInput extends InputTest {}
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class InputWithLabelAndPlaceholder extends InputTest {
-  floatLabel = 'auto';
-  appearance = 'auto';
+  floatLabel: FloatLabelType = 'auto';
+  appearance: AppearanceType = 'auto';
   placeholderText = '';
 }

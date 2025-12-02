@@ -131,7 +131,6 @@ export function getNxPopoverInvalidDirectionError(direction: string) {
     '[attr.aria-expanded]': 'isOpen',
     '[attr.aria-describedby]': 'isOpen ? id : null',
   },
-  standalone: true,
 })
 export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
   private overlayRef!: OverlayRef | null;

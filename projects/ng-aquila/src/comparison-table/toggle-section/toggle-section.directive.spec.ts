@@ -101,7 +101,7 @@ describe('ToggleSectionHeaderComponent', () => {
         </ng-container>
       </ng-container>
       <ng-container nxComparisonTableToggleSection [isExpanded]="expandSecondSection">
-        <nx-comparison-table-toggle-section-header [id]="headerId"
+        <nx-comparison-table-toggle-section-header
           >Second toggle section header</nx-comparison-table-toggle-section-header
         >
         <ng-container nxComparisonTableRow>

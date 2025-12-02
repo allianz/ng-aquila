@@ -1,3 +1,4 @@
+import { AppearanceType } from '@allianz/ng-aquila/formfield';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { ComponentHarness, HarnessLoader, parallel } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
@@ -232,7 +233,7 @@ abstract class MultiSelectOptionTest {
   label = 'example label';
   value = 'example value';
   onSelect = jasmine.createSpy('onSelect');
-  appearance = 'auto';
+  appearance: AppearanceType = 'auto';
 }
 
 @Component({

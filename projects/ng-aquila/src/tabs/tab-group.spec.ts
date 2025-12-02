@@ -22,8 +22,8 @@ import {
 import { By } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 
-import { NxTabGroupComponent } from './tab-group';
-import { TAB_GROUP_DEFAULT_OPTIONS, TabGroupDefaultOptions } from './tabs.models';
+import { NxTabChangeEvent, NxTabGroupComponent } from './tab-group';
+import { NxTabsAppearance, TAB_GROUP_DEFAULT_OPTIONS, TabGroupDefaultOptions } from './tabs.models';
 import { NxTabsModule } from './tabs.module';
 
 declare let viewport: any;
@@ -42,7 +42,7 @@ abstract class TabsTest {
   negative = false;
   customLabel = 'First label';
   showAccordion = true;
-  appearance = 'expert';
+  appearance: NxTabsAppearance = 'expert';
 
   @ViewChild(NxTabGroupComponent) tabGroupInstance!: NxTabGroupComponent;
 }
@@ -675,7 +675,7 @@ class EventTabsTest extends TabsTest {
   selectedIndex: any;
   tabChangeEvent: any;
 
-  tabChanged(event: Event) {
+  tabChanged(event: NxTabChangeEvent) {
     this.tabChangeEvent = event;
   }
 }

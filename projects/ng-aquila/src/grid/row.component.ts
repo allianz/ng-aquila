@@ -107,7 +107,7 @@ export class NxRowComponent {
   private _alignItemsClasses = '';
 
   /** How the flexible items should be wrapped. */
-  @Input() set rowWrap(value: RowWrapping) {
+  @Input() set rowWrap(value: RowWrapping | string) {
     this._wrapClasses = value ? addStylesFromDimensions(value, MAPPING_WRAP) : '';
   }
 

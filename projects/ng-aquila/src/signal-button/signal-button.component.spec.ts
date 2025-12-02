@@ -15,7 +15,7 @@ import {
 import { By } from '@angular/platform-browser';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
-import { NxSignalButtonComponent } from './signal-button.component';
+import { NxSignalButtonComponent, NxSignalButtonContext } from './signal-button.component';
 import { NxSignalButtonModule } from './signal-button.module';
 
 @Directive({ standalone: true })
@@ -284,5 +284,5 @@ describe('NxSignalButtonComponent', () => {
   imports: [OverlayModule, NxSignalButtonModule, NxFormfieldModule, NxInputModule],
 })
 class SignalButtonComponent extends SignalButtonTestDirective {
-  context = 'success';
+  context: NxSignalButtonContext = 'success';
 }

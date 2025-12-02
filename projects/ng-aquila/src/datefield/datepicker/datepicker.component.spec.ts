@@ -175,13 +175,7 @@ class StandardDatepicker {
   ],
   template: `
     <nx-formfield label="Birthday">
-      <input
-        nxDatefield
-        nxInput
-        [readonly]="isReadonly"
-        [datepicker]="myDatepicker"
-        [(ngModel)]="currentDate"
-      />
+      <input nxDatefield nxInput [datepicker]="myDatepicker" />
       <span nxFormfieldHint>MM/DD/YYYY</span>
 
       <nx-datepicker-toggle [for]="myDatepicker" nxFormfieldSuffix></nx-datepicker-toggle>

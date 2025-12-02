@@ -5,7 +5,6 @@ import { Component, ElementRef, NgModule, TemplateRef, ViewChild } from '@angula
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { NxButtonComponent as NxButtonComponent_1 } from '../button/button.component';
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxOverlayModule } from './overlay.module';
 import { NxOverlayRef } from './overlay-ref';
@@ -175,7 +174,7 @@ describe('NxOverlayService', () => {
     <ng-template let-data let-overlayRef="overlayRef">
       Hello {{ localValue }} {{ data?.value }}{{ setDialogRef(overlayRef) }}</ng-template
     >`,
-  imports: [NxButtonComponent_1],
+  imports: [NxButtonComponent],
 })
 class ComponentWithTemplateRef {
   localValue!: string;

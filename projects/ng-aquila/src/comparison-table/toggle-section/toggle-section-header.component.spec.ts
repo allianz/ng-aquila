@@ -237,7 +237,8 @@ describe('ToggleSectionHeaderComponent', () => {
 @Component({
   template: `
     <nx-comparison-table>
-      @for (element of data; track element) {
+      @for (el of data; track el) {
+        @let element = $any(el);
         @if (element['type'] === 'toggleSection') {
           <ng-container nxComparisonTableToggleSection [isExpanded]="element['expanded']">
             <nx-comparison-table-toggle-section-header>{{
@@ -264,7 +265,7 @@ describe('ToggleSectionHeaderComponent', () => {
           </ng-container>
         }
         @if (element['type'] !== 'toggleSection') {
-          <ng-container nxComparisonTableRow [type]="element['type']">
+          <ng-container nxComparisonTableRow [type]="$any(element)['type']">
             @if (element['description']) {
               <nx-comparison-table-description-cell>{{
                 element['description']
@@ -272,11 +273,11 @@ describe('ToggleSectionHeaderComponent', () => {
             }
             >
             @for (cell of element['cells']; track cell) {
-              <nx-comparison-table-cell [type]="element['type']">{{
+              <nx-comparison-table-cell [type]="$any(element)['type']">{{
                 cell
               }}</nx-comparison-table-cell>
             }
-            @if (element['intersection']) {
+            @if ($any(element)['intersection']) {
               <nx-comparison-table-intersection-cell>{{
                 element['intersection']
               }}</nx-comparison-table-intersection-cell>
@@ -328,7 +329,7 @@ class BasicComponent extends ToggleSectionTest {
           <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
         </ng-container>
       </ng-container>
-      <ng-container nxComparisonTableToggleSection isExpanded="false">
+      <ng-container nxComparisonTableToggleSection [isExpanded]="false">
         <nx-comparison-table-toggle-section-header [id]="headerId"
           >Second toggle section header</nx-comparison-table-toggle-section-header
         >

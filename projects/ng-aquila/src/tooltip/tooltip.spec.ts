@@ -34,6 +34,7 @@ import {
   NX_TOOLTIP_PANEL_CLASS,
   NX_TOOLTIP_SCROLL_STRATEGY,
   NxTooltipDirective,
+  TooltipPosition,
 } from './tooltip.directive';
 import { NxTooltipModule } from './tooltip.module';
 
@@ -467,7 +468,7 @@ describe('NxTooltipDirective', () => {
 
     it('should throw when trying to assign an invalid position', () => {
       expect(() => {
-        fixture.componentInstance.position = 'everywhere';
+        fixture.componentInstance.position = 'everywhere' as any;
         fixture.detectChanges();
         tooltipDirective.show();
       }).toThrowError('Tooltip position "everywhere" is invalid.');
@@ -1010,7 +1011,7 @@ describe('NxTooltipComponent', () => {
   imports: [NxTooltipModule, OverlayModule],
 })
 class BasicTooltipDemo {
-  position = 'bottom';
+  position: TooltipPosition = 'bottom';
   message: any = initialTooltipMessage;
   showButton = true;
   showTooltipClass = false;
@@ -1036,7 +1037,7 @@ class BasicTooltipDemo {
   imports: [NxTooltipModule, OverlayModule],
 })
 class ScrollableTooltipDemo {
-  position = 'bottom';
+  position: TooltipPosition = 'bottom';
   message: string = initialTooltipMessage;
   showButton = true;
 
@@ -1060,7 +1061,7 @@ class ScrollableTooltipDemo {
   imports: [NxTooltipModule, OverlayModule],
 })
 class OnPushTooltipDemo {
-  position = 'bottom';
+  position: TooltipPosition = 'bottom';
   message: string = initialTooltipMessage;
 }
 

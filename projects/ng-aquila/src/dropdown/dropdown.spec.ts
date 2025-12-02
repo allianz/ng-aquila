@@ -54,7 +54,12 @@ import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 import { createFakeEvent, dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
-import { NX_DROPDOWN_SCROLL_STRATEGY, NxDropdownComponent, NxDropdownIntl } from './dropdown';
+import {
+  NX_DROPDOWN_SCROLL_STRATEGY,
+  NxDropdownComponent,
+  NxDropdownIntl,
+  NxDropdownPanelMinWidth,
+} from './dropdown';
 import { NxDropdownModule } from './dropdown.module';
 import { NxDropdownItemComponent } from './item/dropdown-item';
 import { SelectOnFocusDirective } from './select-on-focus.directive';
@@ -1981,7 +1986,7 @@ abstract class DropdownTest {
   selected: any = 'BMW';
   placeholder = 'Choose a car';
   testForm!: UntypedFormGroup;
-  panelMinWidth = 'trigger';
+  panelMinWidth: NxDropdownPanelMinWidth = 'trigger';
   panelGrow = false;
   panelMaxWidth = '';
   ignoreItemTruncation = false;
@@ -2245,7 +2250,7 @@ class DropdownCustomToTextFunctionComponent extends DropdownTest {
 
 @Component({
   template: `<nx-dropdown
-    showFilter="true"
+    [showFilter]="true"
     nxLabel="Car brand"
     [placeholder]="placeholder"
     (filterResult)="filterResultChanged($event)"
@@ -2263,7 +2268,7 @@ class FilterDropdownComponent extends DropdownTest {
 }
 
 @Component({
-  template: `<nx-dropdown showFilter="true" nxLabel="Car brand" [placeholder]="placeholder">
+  template: `<nx-dropdown [showFilter]="true" nxLabel="Car brand" [placeholder]="placeholder">
     <nx-dropdown-item value="DE"></nx-dropdown-item>
     <nx-dropdown-item value="IRL"></nx-dropdown-item>
     <nx-dropdown-item value="SWE"></nx-dropdown-item>
@@ -2275,7 +2280,7 @@ class FilterDropdownNoLabelComponent extends DropdownTest {}
 
 @Component({
   template: `<nx-dropdown
-    showFilter="true"
+    [showFilter]="true"
     nxLabel="Car brand"
     [filterFn]="myFilter"
     [placeholder]="placeholder"
@@ -2288,7 +2293,7 @@ class FilterDropdownNoLabelComponent extends DropdownTest {}
   imports: [NxDropdownModule],
 })
 class CustomFilterDropdownComponent extends DropdownTest {
-  myFilter(search: string, itemValue: { match(arg0: RegExp): null }) {
+  myFilter(search: string, itemValue: string) {
     return itemValue.match(new RegExp('^' + search)) !== null;
   }
 }
@@ -2422,7 +2427,6 @@ class ScrollingTestComponent extends DropdownTest {
 @Component({
   template: `<nx-dropdown
     nxLabel="Car brand"
-    [(value)]="selectedValue"
     [tabIndex]="tabIndex"
     [disabled]="disabled"
     [placeholder]="placeholder"
@@ -2437,12 +2441,7 @@ class TabIndexTestComponent extends DropdownTest {
 }
 
 @Component({
-  template: `<nx-dropdown
-    nxLabel="Car brand"
-    [(value)]="selectedValue"
-    tabindex="5"
-    [placeholder]="placeholder"
-  >
+  template: `<nx-dropdown nxLabel="Car brand" tabindex="5" [placeholder]="placeholder">
     <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
   </nx-dropdown>`,
   imports: [NxDropdownModule],
@@ -2534,7 +2533,7 @@ class DisabledItemDropdown extends DropdownTest {
 
 @Component({
   template: `<nx-formfield>
-    <nx-dropdown isMultiSelect="true">
+    <nx-dropdown [isMultiSelect]="true">
       <nx-dropdown-item [disabled]="disabled" value="test"><span>label</span></nx-dropdown-item>
     </nx-dropdown>
   </nx-formfield>`,
@@ -2583,7 +2582,6 @@ class DropdownLazy extends DropdownTest {
 @Component({
   template: `<nx-dropdown
     nxLabel="Car brand"
-    [(value)]="selectedValue"
     [placeholder]="placeholder"
     [verticalAlignCheckmark]="verticalAlignCheckmark"
   >
@@ -2592,7 +2590,7 @@ class DropdownLazy extends DropdownTest {
   imports: [NxDropdownModule],
 })
 class VerticalAlignCheckmarkComponent extends DropdownTest {
-  verticalAlignCheckmark = 'top';
+  verticalAlignCheckmark = 'top' as const;
 }
 
 @Component({

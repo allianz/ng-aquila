@@ -31,11 +31,11 @@ import { By } from '@angular/platform-browser';
 
 import { NxNaturalLanguageFormComponent } from './natural-language-form.component';
 import { NxNaturalLanguageFormModule } from './natural-language-form.module';
-import { NxWordComponent } from './word.component';
+import { NxWordComponent, SIZES } from './word.component';
 
 @Directive({ standalone: true })
 abstract class NaturalLanguageFormTest {
-  size = 'regular';
+  size: SIZES = 'regular';
   value!: string;
 
   @ViewChild(NxNaturalLanguageFormComponent) formInstance!: NxNaturalLanguageFormComponent;
@@ -388,19 +388,13 @@ class NaturalLanguageFormErrorInNlfComponent extends NaturalLanguageFormTest {}
 
 @Component({
   template: `
-    <nx-natural-language-form [ngStyle]="{ width: '500px' }">
+    <nx-natural-language-form [style]="{ width: '500px' }">
       <nx-word [size]="size">
         <input nxInput [(ngModel)]="value" required />
       </nx-word>
     </nx-natural-language-form>
   `,
-  imports: [
-    CommonModule,
-    NxNaturalLanguageFormModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NxInputModule,
-  ],
+  imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
 

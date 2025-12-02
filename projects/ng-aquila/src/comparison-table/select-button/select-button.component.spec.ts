@@ -291,7 +291,8 @@ class ConfigurableComponent extends ToggleTest {}
 @Component({
   template: `
     <nx-comparison-table [(selectedIndex)]="selectedIndex">
-      @for (element of data; track element) {
+      @for (el of data; track el) {
+        @let element = $any(el);
         @if (element['type'] === 'header') {
           <ng-container nxComparisonTableRow type="header">
             @for (cell of element['cells']; track cell) {

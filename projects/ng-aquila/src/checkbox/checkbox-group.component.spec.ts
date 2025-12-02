@@ -1,4 +1,5 @@
 import { NxErrorModule, NxLabelModule } from '@allianz/ng-aquila/base';
+import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { JsonPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -25,7 +26,6 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { NxAbstractControl } from '../shared';
 import {
   NxCheckboxComponent,
   NxCheckboxGroupChangeEvent,

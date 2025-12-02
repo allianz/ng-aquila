@@ -12,7 +12,8 @@ import {
 import { By } from '@angular/platform-browser';
 
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
-import { NxAccordionModule, NxExpansionPanelComponent } from './index';
+import { NxAccordionModule } from './accordion.module';
+import { NxExpansionPanelComponent } from './expansion-panel';
 
 describe('NxExpansionPanelComponent', () => {
   let fixture: ComponentFixture<PanelTest>;
@@ -401,6 +402,7 @@ abstract class PanelTest {
 }
 
 @Component({
+  selector: 'test-panel-with-content',
   template: `<nx-expansion-panel
     [expanded]="expanded"
     [disabled]="disabled"
@@ -419,6 +421,7 @@ class PanelWithContent extends PanelTest {
 }
 
 @Component({
+  selector: 'test-panel-with-content-in-ng-if',
   template: `@if (expansionShown) {
     <div>
       <nx-expansion-panel>
@@ -433,6 +436,7 @@ class PanelWithContentInNgIf extends PanelTest {
 }
 
 @Component({
+  selector: 'test-panel-with-custom-margin',
   styles: [
     `
       nx-expansion-panel {
@@ -449,6 +453,7 @@ class PanelWithContentInNgIf extends PanelTest {
 class PanelWithCustomMargin extends PanelTest {}
 
 @Component({
+  selector: 'test-lazy-panel-with-content',
   template: `<nx-expansion-panel [expanded]="expanded">
     <nx-expansion-panel-header
       ><nx-expansion-panel-title>Panel Title</nx-expansion-panel-title></nx-expansion-panel-header
@@ -464,6 +469,7 @@ class PanelWithCustomMargin extends PanelTest {}
 class LazyPanelWithContent extends PanelTest {}
 
 @Component({
+  selector: 'test-lazy-panel-open-on-load',
   template: `<nx-expansion-panel [expanded]="true">
     <nx-expansion-panel-header
       ><nx-expansion-panel-title>Panel Title</nx-expansion-panel-title></nx-expansion-panel-header
@@ -478,6 +484,7 @@ class LazyPanelWithContent extends PanelTest {}
 class LazyPanelOpenOnLoad extends PanelTest {}
 
 @Component({
+  selector: 'test-panel-with-two-way-binding',
   template: `<nx-expansion-panel [(expanded)]="expanded">
     <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
   </nx-expansion-panel>`,
@@ -486,6 +493,7 @@ class LazyPanelOpenOnLoad extends PanelTest {}
 class PanelWithTwoWayBinding extends PanelTest {}
 
 @Component({
+  selector: 'test-panel-with-different-appearances',
   template: `<nx-expansion-panel [negative]="negative" [variant]="style">
     <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
   </nx-expansion-panel>`,
@@ -497,6 +505,7 @@ class PanelWithDifferentAppearances extends PanelTest {
 }
 
 @Component({
+  selector: 'test-panel-with-accordion',
   template: `<nx-accordion negative="true" variant="light">
     <nx-expansion-panel>
       <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
@@ -511,6 +520,7 @@ class PanelWithDifferentAppearances extends PanelTest {
 class PanelWithAccordion extends PanelTest {}
 
 @Component({
+  selector: 'test-flush-panel-with-accordion',
   template: ` <nx-accordion flushAlignment="false">
     <nx-expansion-panel flushAlignment="true" #firstPanel>
       <nx-expansion-panel-header

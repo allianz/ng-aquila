@@ -1,13 +1,11 @@
 import { NxDatepickerComponent, NxDatepickerToggleComponent } from '@allianz/ng-aquila/datefield';
-import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
+import { NxFormfieldComponent, NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
-
 import { Component, Directive, Signal, ViewChild, viewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import moment, { Moment } from 'moment';
 
-import { NxFormfieldModule } from '../../formfield';
 import { NxDatefieldModule } from '../datefield.module';
 import { NxDatemaskComponent } from './datemask.component';
 

@@ -933,6 +933,7 @@ describe('NxFileUploaderComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-file-upload',
   template: `
     <form>
       <nx-file-uploader>
@@ -969,6 +970,7 @@ class BasicFileUpload extends FileUploaderTest {
 }
 
 @Component({
+  selector: 'test-intl-override-file-upload',
   template: `
     <form>
       <nx-file-uploader>
@@ -1071,6 +1073,7 @@ class ReactiveFileUpload extends FileUploaderTest {
 }
 
 @Component({
+  selector: 'test-dynamic-file-upload',
   template: `
     <nx-file-uploader [(ngModel)]="queueList">
       <nx-label size="small">Please upload a file</nx-label>
@@ -1094,6 +1097,7 @@ class DynamicFileUpload extends FileUploaderTest {
 }
 
 @Component({
+  selector: 'test-custom-item-template-file-upload',
   template: `
     <nx-file-uploader [(ngModel)]="queueList" [itemTemplate]="myItemTemplate" #documentUpload>
       <nx-label size="small">Please upload a file</nx-label>
@@ -1156,6 +1160,7 @@ class CustomItemTemplateFileUpload extends FileUploaderTest {
   }
 }
 @Component({
+  selector: 'test-upload-fail',
   template: `
     <form [formGroup]="form">
       <nx-file-uploader #documentUpload formControlName="documents" [uploader]="uploader" multiple>

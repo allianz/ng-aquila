@@ -46,15 +46,11 @@
             "include": ["projects/ng-aquila/src/!(schematics)/**/*.spec.ts"],
             "tsConfig": "projects/ng-aquila/tsconfig.spec.json",
             "karmaConfig": "projects/ng-aquila/karma.conf.js",
+            "aot": true,
             "styles": ["projects/opensource-documentation/src/styles.scss"],
             "stylePreprocessorOptions": {
               "sass": {
-                "silenceDeprecations": [
-                  "mixed-decls",
-                  "color-functions",
-                  "global-builtin",
-                  "import"
-                ]
+                "silenceDeprecations": ["color-functions", "global-builtin", "import"]
               }
             }
           }
@@ -96,12 +92,7 @@
             "karmaConfig": "projects/ngx-docs-ui/karma.conf.js",
             "stylePreprocessorOptions": {
               "sass": {
-                "silenceDeprecations": [
-                  "mixed-decls",
-                  "color-functions",
-                  "global-builtin",
-                  "import"
-                ]
+                "silenceDeprecations": ["color-functions", "global-builtin", "import"]
               }
             }
           }
@@ -136,12 +127,7 @@
             "tsConfig": "projects/opensource-documentation/tsconfig.app.json",
             "stylePreprocessorOptions": {
               "sass": {
-                "silenceDeprecations": [
-                  "mixed-decls",
-                  "color-functions",
-                  "global-builtin",
-                  "import"
-                ]
+                "silenceDeprecations": ["color-functions", "global-builtin", "import"]
               }
             },
             "assets": [

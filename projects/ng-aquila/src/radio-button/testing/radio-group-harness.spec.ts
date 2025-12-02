@@ -7,14 +7,9 @@ import { NxRadioGroupHarness } from './radio-group-harness';
 
 describe('NxRadioGroupHarness', () => {
   it('should get all radio buttons inside group', async () => {
-    const { loader } = createComponent(
-      `<nx-radio-group>
-                <nx-radio value="FIRST">First</nx-radio>
-                <nx-radio value="SECOND">Second</nx-radio>
-            </nx-radio-group>
-
-            <nx-radio>Outside</nx-radio>`,
-    );
+    const fixture = TestBed.createComponent(AllRadioButtonsTest);
+    fixture.detectChanges();
+    const loader = TestbedHarnessEnvironment.loader(fixture);
 
     const radioGroup = await loader.getHarness(NxRadioGroupHarness);
     const radioButtons = await radioGroup.getRadioButtons();
@@ -22,12 +17,9 @@ describe('NxRadioGroupHarness', () => {
   });
 
   it('should get selected radio button inside group', async () => {
-    const { loader } = createComponent(
-      `<nx-radio-group value="SECOND">
-                <nx-radio value="FIRST">First</nx-radio>
-                <nx-radio value="SECOND">Second</nx-radio>
-            </nx-radio-group>`,
-    );
+    const fixture = TestBed.createComponent(SelectedRadioTest);
+    fixture.detectChanges();
+    const loader = TestbedHarnessEnvironment.loader(fixture);
 
     const radioGroup = await loader.getHarness(NxRadioGroupHarness);
     const selectedRadio = await radioGroup.getSelectedRadio();
@@ -36,9 +28,9 @@ describe('NxRadioGroupHarness', () => {
   });
 
   it('should not find selected radio if none is selected', async () => {
-    const { loader } = createComponent(`
-            <nx-radio-group> <nx-radio value="FIRST">First</nx-radio> </nx-radio-group>
-        `);
+    const fixture = TestBed.createComponent(NoSelectionTest);
+    fixture.detectChanges();
+    const loader = TestbedHarnessEnvironment.loader(fixture);
 
     const radioGroup = await loader.getHarness(NxRadioGroupHarness);
     const selectedRadio = await radioGroup.getSelectedRadio();
@@ -46,38 +38,36 @@ describe('NxRadioGroupHarness', () => {
   });
 
   it('should get label from nx-label', async () => {
-    const { loader } = createComponent(`
-            <nx-radio-group>
-                <nx-radio>Radio Label</nx-radio>
-                <nx-label>Foo</nx-label>
-            </nx-radio-group>`);
+    const fixture = TestBed.createComponent(NxLabelTest);
+    fixture.detectChanges();
+    const loader = TestbedHarnessEnvironment.loader(fixture);
+
     const radioGroup = await loader.getHarness(NxRadioGroupHarness);
     expect(await radioGroup.getLabel()).toBe('Foo');
   });
 
   it('should get label from aria-label', async () => {
-    const { loader } = createComponent(
-      ` <nx-radio-group aria-label="Some Name"></nx-radio-group> `,
-    );
+    const fixture = TestBed.createComponent(AriaLabelTest);
+    fixture.detectChanges();
+    const loader = TestbedHarnessEnvironment.loader(fixture);
+
     const radioGroup = await loader.getHarness(NxRadioGroupHarness);
     expect(await radioGroup.getLabel()).toBe('Some Name');
   });
 
   it('should get disabled state', async () => {
-    const { loader } = createComponent(
-      ` <nx-radio-group aria-label="Some Name" [disabled]="true"></nx-radio-group> `,
-    );
+    const fixture = TestBed.createComponent(DisabledTest);
+    fixture.detectChanges();
+    const loader = TestbedHarnessEnvironment.loader(fixture);
+
     const radioGroup = await loader.getHarness(NxRadioGroupHarness);
     expect(await radioGroup.isDisabled()).toBe(true);
   });
 
   it('should click item', async () => {
-    const { loader } = createComponent(
-      `<nx-radio-group value="SECOND">
-                <nx-radio value="FIRST">First</nx-radio>
-                <nx-radio value="SECOND">Second</nx-radio>
-            </nx-radio-group>`,
-    );
+    const fixture = TestBed.createComponent(ClickItemTest);
+    fixture.detectChanges();
+    const loader = TestbedHarnessEnvironment.loader(fixture);
 
     const radioGroup = await loader.getHarness(NxRadioGroupHarness);
     await radioGroup.clickOption({ label: 'First' });
@@ -86,10 +76,10 @@ describe('NxRadioGroupHarness', () => {
 
   describe('filters', () => {
     it('should find radio group by label', async () => {
-      const { loader } = createComponent(`
-                <nx-radio-group><nx-label>First</nx-label></nx-radio-group>
-                <nx-radio-group><nx-label>Second</nx-label></nx-radio-group>
-            `);
+      const fixture = TestBed.createComponent(FilterLabelTest);
+      fixture.detectChanges();
+      const loader = TestbedHarnessEnvironment.loader(fixture);
+
       const radioGroupFirst = await loader.getHarness(NxRadioGroupHarness.with({ label: /fir/i }));
       const radioGroupSecond = await loader.getHarness(
         NxRadioGroupHarness.with({ label: 'Second' }),
@@ -99,10 +89,10 @@ describe('NxRadioGroupHarness', () => {
     });
 
     it('should find radio group by disabled state', async () => {
-      const { loader } = createComponent(`
-                <nx-radio-group [disabled]="false"><nx-label>First</nx-label></nx-radio-group>
-                <nx-radio-group [disabled]="true"><nx-label>Second</nx-label></nx-radio-group>
-            `);
+      const fixture = TestBed.createComponent(FilterDisabledTest);
+      fixture.detectChanges();
+      const loader = TestbedHarnessEnvironment.loader(fixture);
+
       const radioGroupFirst = await loader.getHarness(
         NxRadioGroupHarness.with({ disabled: false }),
       );
@@ -115,11 +105,88 @@ describe('NxRadioGroupHarness', () => {
   });
 });
 
-function createComponent(template: string) {
-  @Component({ template, standalone: true, imports: [NxRadioModule] })
-  class Comp {}
-  const fixture = TestBed.createComponent(Comp);
-  fixture.detectChanges();
-  const loader = TestbedHarnessEnvironment.loader(fixture);
-  return { loader, fixture };
-}
+@Component({
+  template: `
+    <nx-radio-group>
+      <nx-radio value="FIRST">First</nx-radio>
+      <nx-radio value="SECOND">Second</nx-radio>
+    </nx-radio-group>
+
+    <nx-radio>Outside</nx-radio>
+  `,
+  imports: [NxRadioModule],
+})
+class AllRadioButtonsTest {}
+
+@Component({
+  template: `
+    <nx-radio-group value="SECOND">
+      <nx-radio value="FIRST">First</nx-radio>
+      <nx-radio value="SECOND">Second</nx-radio>
+    </nx-radio-group>
+  `,
+  imports: [NxRadioModule],
+})
+class SelectedRadioTest {}
+
+@Component({
+  template: `
+    <nx-radio-group>
+      <nx-radio value="FIRST">First</nx-radio>
+    </nx-radio-group>
+  `,
+  imports: [NxRadioModule],
+})
+class NoSelectionTest {}
+
+@Component({
+  template: `
+    <nx-radio-group>
+      <nx-radio>Radio Label</nx-radio>
+      <nx-label>Foo</nx-label>
+    </nx-radio-group>
+  `,
+  imports: [NxRadioModule],
+})
+class NxLabelTest {}
+
+@Component({
+  template: `<nx-radio-group aria-label="Some Name"></nx-radio-group>`,
+  imports: [NxRadioModule],
+})
+class AriaLabelTest {}
+
+@Component({
+  template: `<nx-radio-group aria-label="Some Name" [disabled]="true"></nx-radio-group>`,
+  imports: [NxRadioModule],
+})
+class DisabledTest {}
+
+@Component({
+  template: `
+    <nx-radio-group value="SECOND">
+      <nx-radio value="FIRST">First</nx-radio>
+      <nx-radio value="SECOND">Second</nx-radio>
+    </nx-radio-group>
+  `,
+  imports: [NxRadioModule],
+})
+class ClickItemTest {}
+
+@Component({
+  template: `
+    <nx-radio-group><nx-label>First</nx-label></nx-radio-group>
+    <nx-radio-group><nx-label>Second</nx-label></nx-radio-group>
+  `,
+  imports: [NxRadioModule],
+})
+class FilterLabelTest {}
+
+@Component({
+  template: `
+    <nx-radio-group [disabled]="false"><nx-label>First</nx-label></nx-radio-group>
+    <nx-radio-group [disabled]="true"><nx-label>Second</nx-label></nx-radio-group>
+  `,
+  imports: [NxRadioModule],
+})
+class FilterDisabledTest {}

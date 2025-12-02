@@ -29,7 +29,11 @@ import {
 } from '@angular/forms';
 
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
-import { NxTimefieldComponent, TIMEFIELD_DEFAULT_OPTIONS } from './timefield.component';
+import {
+  InputModeType,
+  NxTimefieldComponent,
+  TIMEFIELD_DEFAULT_OPTIONS,
+} from './timefield.component';
 import { NxTimefieldModule } from './timefield.module';
 import { NxTimefieldIntl } from './timefield-intl';
 
@@ -849,7 +853,7 @@ class ConfigurableTimefield extends TimefieldTest {}
 
 @Component({
   template: `
-    <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="testForm">
       <nx-timefield
         formControlName="today"
         [twelveHourFormat]="twelveHourFormat"
@@ -914,7 +918,7 @@ class DefaultOptionsProvderTimefield extends TimefieldTest {}
 
 @Component({
   template: `
-    <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="testForm">
       <nx-timefield
         formControlName="today"
         [twelveHourFormat]="twelveHourFormat"
@@ -945,5 +949,5 @@ class CustomValidationTimefield extends TimefieldTest {
   imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
 })
 class InputModeTimefield extends TimefieldTest {
-  inputMode: string = 'decimal';
+  inputMode: InputModeType = 'decimal';
 }

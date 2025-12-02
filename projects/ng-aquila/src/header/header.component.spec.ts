@@ -129,6 +129,7 @@ describe(NxHeaderComponent.name, () => {
 });
 
 @Component({
+  selector: 'test-basic-header',
   template: `
     <nx-header>
       <nx-header-brand> Example brand </nx-header-brand>
@@ -147,6 +148,7 @@ describe(NxHeaderComponent.name, () => {
 class BasicHeader extends HeaderTest {}
 
 @Component({
+  selector: 'test-multi-row-header',
   template: `
     <nx-header>
       <nx-header-row> </nx-header-row>
@@ -158,6 +160,7 @@ class BasicHeader extends HeaderTest {}
 class MultiRowHeader extends HeaderTest {}
 
 @Component({
+  selector: 'test-cobranding-header',
   template: `
     <nx-header>
       <nx-header-row>

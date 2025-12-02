@@ -209,7 +209,7 @@ class BasicHeader extends TabHeaderTest {
   tabs = [{ label: 'First' }, { label: 'Second' }, { label: 'Third' }];
   focusEvent: any;
 
-  onFocus(event: Event) {
+  onFocus(event: number) {
     this.focusEvent = event;
   }
 }

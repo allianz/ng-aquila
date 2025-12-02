@@ -1,12 +1,12 @@
 import { Component, Directive, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NxAttentionColorComponent } from './attention-color.component';
+import { NxAttentionColorComponent, NxAttentionColorOption } from './attention-color.component';
 
 @Directive({ standalone: true })
 abstract class AttentionColorTest {
   @ViewChild(NxAttentionColorComponent) attentionColorInstance!: NxAttentionColorComponent;
-  color: string = 'purple';
+  color: NxAttentionColorOption = 'purple';
   neg: boolean = false;
 }
 

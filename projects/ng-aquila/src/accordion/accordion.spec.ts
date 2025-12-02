@@ -2,7 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { NxAccordionDirective, NxAccordionModule, NxExpansionPanelComponent } from './index';
+import { NxAccordionDirective } from './accordion';
+import { NxAccordionModule } from './accordion.module';
+import { NxExpansionPanelComponent } from './expansion-panel';
 
 describe('NxAccordion', () => {
   beforeEach(waitForAsync(() => {
@@ -96,6 +98,7 @@ describe('NxAccordion', () => {
 });
 
 @Component({
+  selector: 'test-set-of-items',
   template: `<nx-accordion [multi]="multi">
     <nx-expansion-panel [expanded]="firstPanelExpanded">
       <nx-expansion-panel-header>Summary</nx-expansion-panel-header>
@@ -118,6 +121,7 @@ class SetOfItems {
 }
 
 @Component({
+  selector: 'test-nested-panel',
   template: `<nx-accordion>
     <nx-expansion-panel #outerPanel="NxExpansionPanelComponent">
       <nx-expansion-panel-header>Outer Panel</nx-expansion-panel-header>
@@ -134,6 +138,7 @@ class NestedPanel {
   @ViewChild('innerPanel', { static: true }) innerPanel!: NxExpansionPanelComponent;
 }
 @Component({
+  selector: 'test-flush-accordion',
   template: `<nx-accordion flushAlignment="true">
     <nx-expansion-panel #panel="NxExpansionPanelComponent">
       <nx-expansion-panel-header>Outer Panel</nx-expansion-panel-header>

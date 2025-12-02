@@ -1,4 +1,4 @@
-import { BidiModule } from '@angular/cdk/bidi';
+import { BidiModule, Direction } from '@angular/cdk/bidi';
 import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -299,5 +299,5 @@ class ConfigurableSidepanel extends SidepanelTest {}
   imports: [NxSidepanelModule, BidiModule],
 })
 class SidepanelWithDirection extends SidepanelTest {
-  direction = 'rtl';
+  direction: Direction = 'rtl';
 }

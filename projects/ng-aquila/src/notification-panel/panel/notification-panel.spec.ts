@@ -96,6 +96,7 @@ describe('NxLinkComponent', () => {
 });
 
 @Component({
+  selector: 'test-component',
   template: `
     <button nxIconButton="small-medium" [nxNotificationPanelTriggerFor]="panel1" aria-label="hi">
       <nx-icon name="chevron-down"></nx-icon>

@@ -12,13 +12,12 @@ module.exports = function (config) {
       require('karma-junit-reporter'),
       require('karma-viewport'),
     ],
-    client: {
-      clearContext: false, // leave Jasmine Spec Runner output visible in browser
-    },
+    // client: {
+    //   clearContext: false, // leave Jasmine Spec Runner output visible in browser
+    // },
     coverageReporter: {
       subdir: '.',
       reporters: ['html', 'lcovonly'],
-      fixWebpackSourcePaths: true,
     },
     angularCli: {
       environment: 'dev',
@@ -33,8 +32,11 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome_Headless'],
-    browserDisconnectTimeout: 25000,
-    browserNoActivityTimeout: 50000,
+    browserDisconnectTimeout: 120000,
+    browserNoActivityTimeout: 120000,
+    captureTimeout: 120000,
+    browserDisconnectTolerance: 3,
+
     singleRun: false,
     customLaunchers: {
       // provide --no-sandbox to let it run on the virtual machine
@@ -46,6 +48,10 @@ module.exports = function (config) {
           '--disable-gpu',
           '--window-size=1184,900',
           '--remote-debugging-port=9222',
+          '--disable-features=CodeCache',
+          '--disable-code-caching',
+          '--js-flags=--jitless',
+          '--disable-features=CalculateNativeWinOcclusion',
         ],
       },
       Chrome_with_debugging: {

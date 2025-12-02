@@ -12,7 +12,7 @@ import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@ang
 import { By } from '@angular/platform-browser';
 
 import { dispatchKeyboardEvent, dispatchMouseEvent } from '../cdk-test-utils';
-import { NxRatingComponent } from './rating.component';
+import { NxRatingComponent, RatingSize } from './rating.component';
 import { NxRatingModule } from './rating.module';
 
 describe('NxRatingComponent', () => {
@@ -376,5 +376,5 @@ class TemplateDrivenOnPushComponent extends RatingTest {
   imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class SizeRatingComponent extends RatingTest {
-  size = 'm';
+  size: RatingSize = 'm';
 }

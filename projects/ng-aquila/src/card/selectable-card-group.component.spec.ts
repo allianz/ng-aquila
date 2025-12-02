@@ -76,7 +76,7 @@ describe('NxSelectableCardGroupComponent', () => {
         @for (card of cards; track card; let i = $index) {
           <div>
             <nx-selectable-card [value]="card">
-              {{ card.title }}
+              {{ card }}
             </nx-selectable-card>
           </div>
         }

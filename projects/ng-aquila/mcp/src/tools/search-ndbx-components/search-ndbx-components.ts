@@ -1,7 +1,7 @@
 import fs from 'fs';
 import Fuse from 'fuse.js';
 import path from 'path';
-import { z } from 'zod';
+import z from 'zod/v3';
 
 import { SectionDoc } from '../models';
 
@@ -17,7 +17,6 @@ const inputSchema = z.object({
       `Optional. A specific usage or feature to search for within the component documentation. Example: 'parsing', 'localization'. Only one usage per query.`,
     ),
 });
-
 export const searchNdbxComponentsToolConfig = {
   name: 'search-ndbx-components',
   title: 'Search NDBX Components',

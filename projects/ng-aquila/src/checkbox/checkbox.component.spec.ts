@@ -1,4 +1,5 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
+import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import {
   ChangeDetectionStrategy,
@@ -26,8 +27,11 @@ import {
 } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { NxAbstractControl } from '../shared';
-import { NxCheckboxChangeEvent, NxCheckboxComponent } from './checkbox.component';
+import {
+  NxCheckboxChangeEvent,
+  NxCheckboxComponent,
+  NxCheckboxLabelSize,
+} from './checkbox.component';
 import { NxCheckboxModule } from './checkbox.module';
 
 @Directive({ standalone: true })
@@ -36,7 +40,7 @@ abstract class CheckboxTest {
   checked = false;
   indeterminate = false;
   testForm!: FormGroup;
-  labelSize!: string;
+  labelSize!: NxCheckboxLabelSize;
   disabled = false;
   negative = false;
   readonly = false;
