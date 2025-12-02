@@ -3,7 +3,13 @@ import { NxFormfieldComponent, NxFormfieldModule } from '@allianz/ng-aquila/form
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
 import { Component, Directive, Signal, ViewChild, viewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import moment, { Moment } from 'moment';
 
 import { NxDatefieldModule } from '../datefield.module';
@@ -197,6 +203,29 @@ describe('DatemaskComponent', () => {
         datemaskFormComponent.datemaskForm.controls.date.errors?.nxDatefieldFilter,
       ).toBeDefined();
     });
+
+    it('should reset input values on empty or invalid model values', async () => {
+      const testDate = moment('2025-12-15', moment.ISO_8601);
+      const testDateExpectedInputs = ['15', '12', '2025'];
+      const emptyExpectedInputs = ['', '', ''];
+      async function setValueAndAssert(value: any, expectedInputs: string[]) {
+        datemaskFormComponent.datemaskForm.controls.date.setValue(value);
+        fixture.detectChanges();
+        await fixture.whenStable();
+        expect(nativeInputs[0].value).toBe(expectedInputs[0]);
+        expect(nativeInputs[1].value).toBe(expectedInputs[1]);
+        expect(nativeInputs[2].value).toBe(expectedInputs[2]);
+      }
+
+      await setValueAndAssert(testDate, testDateExpectedInputs);
+      await setValueAndAssert(null, emptyExpectedInputs);
+      await setValueAndAssert(testDate, testDateExpectedInputs);
+      await setValueAndAssert(undefined, emptyExpectedInputs);
+      await setValueAndAssert(testDate, testDateExpectedInputs);
+      await setValueAndAssert('invalid-date-string', emptyExpectedInputs);
+      await setValueAndAssert(testDate, testDateExpectedInputs);
+      await setValueAndAssert(false, emptyExpectedInputs);
+    });
   });
 
   describe(`keyboard`, () => {
@@ -380,8 +409,8 @@ export class DatemaskTestForm extends DateRangeTestBase {
     return false;
   }
 
-  datemaskForm = new FormBuilder().group({
-    date: [null, Validators.required],
+  datemaskForm = new FormGroup({
+    date: new FormControl<moment.Moment | string | null>(null, Validators.required),
   });
 }
 @Component({

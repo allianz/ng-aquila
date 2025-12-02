@@ -28,3 +28,8 @@ nx-message {
     max-width: calc(100vw - #{nx-spacer(s)});
   }
 }
+
+// Ensure toast overlay appears on top of other overlays
+::ng-deep .cdk-global-overlay-wrapper:has(nx-message-toast) {
+  z-index: 2000 !important;
+}

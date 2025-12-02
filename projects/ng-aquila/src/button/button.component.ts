@@ -5,13 +5,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NxButtonBase } from './button-base';
 
 /**
- * Accepts multiple tokens via the `nxButton` attribute:
- *
- * - type (required):       'primary' | 'secondary' | 'tertiary' | 'cta' | 'emphasis' | 'attention'
- * - size (optional):       'small' | 'small-medium' | 'medium' | 'large'
- * - variant (optional):    'negative' | 'block' | 'danger'
- *
- * Examples: <button nxButton="{type} {size} {variant}"/>
+ * @description
+ * The `nxButton` attribute applies button styles based on the provided type.
+ * @required type: 'primary' | 'secondary' | 'tertiary' | 'cta' | 'emphasis' | 'attention'
+ * @example
+ * ```html
+ * <button nxButton="primary"></button>
+ * <a nxButton="secondary"></a>
+ * ```
  */
 @Component({
   templateUrl: './button.html',

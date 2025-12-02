@@ -1,0 +1,85 @@
+<a
+  nxButton="primary"
+  [routerLink]="[]"
+  fragment="description-content"
+  class="skip-button"
+  >Skip to content</a
+>
+<nx-small-stage>
+  <nav aria-label="Breadcrumb" nxSmallStageHeader>
+    <ol nxBreadcrumb>
+      @for (item of dynamicItems; track item; let i = $index) {
+      <li>
+        <a nxBreadcrumbItem (click)="goToItem(i)" href="javascript:void(0)">
+          {{ item }}
+        </a>
+      </li>
+      }
+    </ol>
+  </nav>
+
+  <h2 nxHeadline="page" class="nx-margin-bottom-s">Headline text</h2>
+  <p nxCopytext="large">Subline text</p>
+  <a href="#">example</a>
+</nx-small-stage>
+
+<div class="nx-margin-top-l">
+  Just
+  <nx-link> <a href="#">a lot of text to fill the space</a> </nx-link>
+  ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+  tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+  vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+  gubergren, no sea takimata sanctus est Lo rem ipsum dolor sit amet. Lorem
+  ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+  tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+  vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+  gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+</div>
+
+<nx-link class="nx-margin-top-l">
+  <a [routerLink]="[]" fragment="description-content"
+    >Skip to data description
+  </a>
+</nx-link>
+<table nxTable class="nx-table--scrollable">
+  <thead>
+    <tr nxTableRow>
+      <th nxHeaderCell>Product</th>
+      <th nxHeaderCell>Contract Number</th>
+      <th nxHeaderCell>Description</th>
+      <th nxHeaderCell>Website</th>
+      <th nxHeaderCell>Ending At</th>
+      <th nxHeaderCell>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of tableElements; track item) {
+    <tr nxTableRow>
+      <td nxTableCell>{{item.product}}</td>
+      <td nxTableCell>{{item.contractNumber}}</td>
+      <td nxTableCell>{{item.desc}}</td>
+      <td nxTableCell>
+        <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
+      </td>
+      <td nxTableCell>{{item.endingAt}}</td>
+      <td nxTableCell>
+        <nx-badge [type]="item.status">{{item.statusText}}</nx-badge>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<div tabindex="-1" id="description-content" class="nx-margin-top-l">
+  Lorem
+  <nx-link> <a href="#">ipsum dolor sit amet</a> </nx-link> ipsum dolor sit
+  amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+  labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+  accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+  takimata sanctus est Lo rem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+  consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+  et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+  justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+  sanctus est Lorem ipsum dolor sit amet.
+</div>
+<!-- Copyright 2025 ALLIANZ -->

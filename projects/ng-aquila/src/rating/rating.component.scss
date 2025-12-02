@@ -31,8 +31,20 @@
 
 .nx-rating__label {
   display: flex;
-  @include type-style(rating-label);
   color: v(rating-label-color);
+
+  &.margin-s {
+    margin-top: v(rating-label-margin-top-s);
+    @include type-style(rating-label-s);
+  }
+  &.margin-m {
+    margin-top: v(rating-label-margin-top-m);
+    @include type-style(rating-label-m);
+  }
+  &.margin-l {
+    margin-top: v(rating-label-margin-top-l);
+    @include type-style(rating-label-l);
+  }
 }
 
 .nx-rating__label--end {
@@ -48,18 +60,18 @@
   line-height: 0;
 
   &.margin-s {
-    margin-right: nx-spacer(2xs);
+    margin-right: v(rating-icon-margin-s);
   }
   &.margin-m {
-    margin-right: nx-spacer(xs);
+    margin-right: v(rating-icon-margin-m);
   }
   &.margin-l {
-    margin-right: nx-spacer(s);
+    margin-right: v(rating-icon-margin-l);
   }
 
   :host-context([dir='rtl']) & {
     margin-right: initial;
-    margin-left: nx-spacer(s);
+    margin-left: v(rating-icon-margin-l);
   }
 }
 

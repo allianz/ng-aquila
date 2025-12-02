@@ -23,6 +23,7 @@ import { TableColumnReorderExampleComponent } from './table-column-reorder/table
 import { TableColumnResizeExampleComponent } from './table-column-resize/table-column-resize-example';
 import { TableCondensedExampleComponent } from './table-condensed/table-condensed-example';
 import { TableExpandableExampleComponent } from './table-expandable/table-expandable-example';
+import { TableExpandableIndentExampleComponent } from './table-expandable-indent/table-expandable-indent-example';
 import { TableFilterSortPaginateExampleComponent } from './table-filter-sort-paginate/table-filter-sort-paginate-example';
 import { TableFormElementsExampleComponent } from './table-form-elements/table-form-elements-example';
 import { TableSelectingExampleComponent } from './table-selecting/table-selecting-example';
@@ -38,6 +39,7 @@ const EXAMPLES = [
   TableExampleComponent,
   TableCondensedExampleComponent,
   TableExpandableExampleComponent,
+  TableExpandableIndentExampleComponent,
   TableFilterSortPaginateExampleComponent,
   TableSelectingExampleComponent,
   TableSingleSelectExampleComponent,
@@ -80,6 +82,7 @@ export class TableExamplesModule {
       table: TableExampleComponent,
       'table-condensed': TableCondensedExampleComponent,
       'table-expandable': TableExpandableExampleComponent,
+      'table-expandable-indent': TableExpandableIndentExampleComponent,
       'table-filter-sort-paginate': TableFilterSortPaginateExampleComponent,
       'table-selecting': TableSelectingExampleComponent,
       'table-single-select': TableSingleSelectExampleComponent,

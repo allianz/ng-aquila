@@ -14,6 +14,7 @@ import {
   Directive,
   DOCUMENT,
   ElementRef,
+  forwardRef,
   Inject,
   Input,
   OnDestroy,
@@ -23,6 +24,7 @@ import {
 import { Subject } from 'rxjs';
 
 import { NxContextMenuComponent } from './context-menu.component';
+import { NxContextMenuItemBase, NxContextMenuItemWrapBase } from './context-menu-item-base';
 
 /**
  * This directive is intended to be used inside an nx-context-menu tag.
@@ -54,8 +56,17 @@ import { NxContextMenuComponent } from './context-menu.component';
   `,
   styleUrls: ['./context-menu-item.component.scss'],
   imports: [NxIconModule],
+  providers: [
+    {
+      provide: NxContextMenuItemBase,
+      useExisting: forwardRef(() => NxContextMenuItemComponent),
+    },
+  ],
 })
-export class NxContextMenuItemComponent implements OnDestroy, AfterViewInit {
+export class NxContextMenuItemComponent
+  extends NxContextMenuItemBase
+  implements OnDestroy, AfterViewInit
+{
   /** Stream that emits when the context menu item is hovered. */
   readonly _hovered = new Subject<NxContextMenuItemComponent>();
 
@@ -101,6 +112,7 @@ export class NxContextMenuItemComponent implements OnDestroy, AfterViewInit {
     private readonly _focusMonitor: FocusMonitor,
     @Optional() private readonly _parentMenu: NxContextMenuComponent | null,
   ) {
+    super();
     // register a click event listener that can block if this element is disabled
     this._elementRef.nativeElement.addEventListener(
       'click',
@@ -225,7 +237,13 @@ export class NxContextMenuItemCheckboxDirective {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<ng-content></ng-content> `,
   standalone: true,
+  providers: [
+    {
+      provide: NxContextMenuItemWrapBase,
+      useExisting: forwardRef(() => NxContextMenuItemWrapComponent),
+    },
+  ],
 })
-export class NxContextMenuItemWrapComponent {
+export class NxContextMenuItemWrapComponent extends NxContextMenuItemWrapBase {
   @ContentChildren(NxContextMenuItemComponent) _items!: QueryList<NxContextMenuItemComponent>;
 }

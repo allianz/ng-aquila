@@ -9,6 +9,7 @@ import {
   ChangeDetectorRef,
   Component,
   ComponentRef,
+  ElementRef,
   EmbeddedViewRef,
   NgZone,
   OnDestroy,
@@ -63,6 +64,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
   constructor(
     private readonly _ngZone: NgZone,
     private readonly _cdr: ChangeDetectorRef,
+    private readonly _elementRef: ElementRef<HTMLElement>,
     /** The message toast configuration. */
     public config: NxMessageToastConfig,
     /** Injected data into the notifciation. */
@@ -100,6 +102,16 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
 
   /** Begin animation of message toast entrance into view. */
   enter(): void {
+    setTimeout(() => {
+      const element = this._elementRef.nativeElement;
+      const inertElement = element.querySelector('[aria-hidden]');
+      const liveElement = element.querySelector('[aria-live]');
+
+      if (inertElement && liveElement) {
+        inertElement.removeAttribute('aria-hidden');
+        liveElement.appendChild(inertElement);
+      }
+    }, 0);
     if (!this._destroyed) {
       this._animationState = 'visible';
       this._cdr.detectChanges();

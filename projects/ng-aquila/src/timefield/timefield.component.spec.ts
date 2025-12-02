@@ -264,6 +264,22 @@ describe('NxTimefieldComponent', () => {
     expect(reactInstance.testForm.status).toBe('INVALID');
   }));
 
+  it('should validate time fields when input non-number character', fakeAsync(() => {
+    createTestComponent(CustomValidationTimefield);
+    const reactInstance = testInstance as CustomValidationTimefield;
+    reactInstance.twelveHourFormat = true;
+    inputElementHours.value = 'hh';
+
+    inputElementHours.dispatchEvent(new Event('input'));
+    inputElementHours.focus();
+    inputElementHours.blur();
+
+    fixture.detectChanges();
+    tick();
+
+    expect(reactInstance.testForm.status).toBe('INVALID');
+  }));
+
   it('should show error when minutes field is not between 0 and 59 in a reactive form', fakeAsync(() => {
     createTestComponent(ReactiveTimefield);
     const reactInstance = testInstance as ReactiveTimefield;

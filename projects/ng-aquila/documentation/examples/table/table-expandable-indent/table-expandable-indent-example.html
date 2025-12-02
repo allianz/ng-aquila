@@ -1,0 +1,48 @@
+<table nxTable nxExpandableTable #expandableTable2="nxExpandableTable">
+  <thead>
+    <tr nxTableRow>
+      <th nxHeaderCell class="nx-table-cell--toggle" aria-label="Expand row">
+        <nx-toggle-button
+          [target]="expandableTable2"
+          ariaLabel="Toggle all rows"
+        ></nx-toggle-button>
+      </th>
+      <th nxHeaderCell>Product</th>
+      <th nxHeaderCell>Contract number</th>
+      <th nxHeaderCell>Ending date</th>
+      <th nxHeaderCell>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of tableElements; track item) {
+    <tr>
+      <td nxTableCell class="nx-table-cell--toggle">
+        @if (item.sub.length > 0) {
+        <nx-toggle-button
+          [target]="multiRows"
+          ariaLabel="Toggle {{item.product}} row"
+        ></nx-toggle-button>
+        }
+      </td>
+      <td nxTableCell>{{item.product}}</td>
+      <td nxTableCell>{{item.contractNumber}}</td>
+      <td nxTableCell>{{item.endingAt}}</td>
+      <td nxTableCell>
+        <nx-badge [type]="item.status">{{item.statusText}}</nx-badge>
+      </td>
+    </tr>
+
+    <ng-container nxExpandableContainer #multiRows="nxExpandableTable">
+      @for (sub of item.sub; track sub) {
+      <tr nxExpandableTableRow>
+        <td nxExpandableTableCell></td>
+        <td nxExpandableTableCell indented>
+          <nx-link><a routerLink="#">{{ sub }}</a></nx-link>
+        </td>
+        <td nxExpandableTableCell colspan="3">{{item.contractNumber}}</td>
+      </tr>
+      }
+    </ng-container>
+    }
+  </tbody>
+</table>

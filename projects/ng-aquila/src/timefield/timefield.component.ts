@@ -485,19 +485,15 @@ export class NxTimefieldComponent
   }
 
   validate(control: AbstractControl<any, any>): ValidationErrors | null {
-    if (!this.enableTimeValidation) {
+    if (!this.enableTimeValidation || (!this.hours && !this.minutes)) {
       return null;
     }
 
-    if (this.enableTimeValidation) {
-      const hours = Number(this.hours);
-      const minutes = Number(this.minutes);
+    const hours = Number(this.hours);
+    const minutes = Number(this.minutes);
 
-      if (!hours && !minutes) {
-        return null;
-      } else if (!this._isValidTime(hours, 'hours') || !this._isValidTime(minutes, 'minutes')) {
-        return { timefieldValueError: true };
-      }
+    if (!this._isValidTime(hours, 'hours') || !this._isValidTime(minutes, 'minutes')) {
+      return { timefieldValueError: true };
     }
 
     return control.value === null ? { timefieldValueError: true } : null;

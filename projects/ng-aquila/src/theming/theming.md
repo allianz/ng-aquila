@@ -8,7 +8,39 @@ noApi: true
 a1: true
 ---
 
-## Custom theming - release candidate
+## Scoping themes
+
+By default the selector for the themes is `:root, :host`. In case you want to scope the theme a different selector you can use the `nx-build-theme` mixin with an additional argument for the selector.
+
+```scss
+@include nx-build-theme(ndbx, '.my-custom-scope');
+```
+
+<div class="docs-deprecation-warning">
+<p><strong>Important about Overlays:</strong> When a theme gets scoped to a class on the Angular application root element, any other element inside the body of the document or you are using web components with ShadowDOM, the theme will not be applied to any Angular CDK Overlay components (like Dialogs, Tooltips, etc.) because these overlays are appended to the end of the body element by default.</p>
+<p>
+Please make sure that your custom selector either targets the overlays as well by adding <code>.cdk-overlay-container</code> to the selector or in case you are using ShadowDOM that you provide a custom <code>OverlayContainer</code> that moves the overlays inside the ShadowDOM.</p>
+</div>
+
+<div class="docs-private">
+
+### Important for A1 themes
+
+Our themes for A1 are a mapping from the A1 tokens to the library specific tokens. In the prebuilt versions we are including the A1 tokens automatically. But if you are extending our A1 themes or built your own and you need the A1 tokens you have to import them manually before building the theme. The A1 tokens package provides a mixin where you can set the dimensions (color scheme, animations, density) and the scope selector. The `@allianz/a1-design-tokens` package is a dependency of the `@allianz/ngx-brand-kit` package.
+
+```scss
+@use '@allianz/a1-design-tokens/dist/allianz/a1/web/tokens-theme-mixins-index' as a1-tokens;
+@import '@allianz/ng-aquila/styles/theming';
+@import "@allianz/ng-aquila/styles/themes/allianz-one";
+
+
+@include a1-tokens.apply-design-tokens('light', 'lively', 'spacious', '.my-custom-scope');
+@include nx-build-theme(allianz-one, '.my-custom-scope');
+```
+
+</div>
+
+## Custom theming
 
 All components in this library are styled by using the style tokens listed [here](./documentation/theming/overview#general-theming-tokens). You can create your own custom theme by overwriting the values of these style tokens.
 

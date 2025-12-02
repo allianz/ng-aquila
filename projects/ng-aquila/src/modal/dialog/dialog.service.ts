@@ -77,6 +77,10 @@ export class NxDialogService implements OnDestroy {
   private readonly _afterAllClosedAtThisLevel = new Subject<void>();
   private readonly _afterOpenedAtThisLevel = new Subject<NxModalRef<any>>();
   private readonly _ariaHiddenElements = new Map<Element, string | null>();
+  private readonly _liveAnnouncerOriginalParents = new Map<
+    OverlayRef,
+    { element: Element; parent: Element }
+  >();
 
   /** Keeps track of the currently-open modals. */
   get openModals(): NxModalRef<any>[] {
@@ -154,6 +158,8 @@ export class NxDialogService implements OnDestroy {
       overlayRef,
       config,
     );
+    // Move LiveAnnouncer into modal container so it's accessible with aria-modal
+    this._moveLiveAnnouncerToModal(overlayRef);
 
     // If this is the first modal that we're opening, hide all the non-overlay content.
     if (!this.openModals.length) {
@@ -162,7 +168,11 @@ export class NxDialogService implements OnDestroy {
 
     this.openModals.push(modalRef);
 
-    modalRef.beforeClosed().subscribe(() => this._removeOpenModal(modalRef));
+    modalRef.beforeClosed().subscribe(() => {
+      // Move LiveAnnouncer back to the root
+      this._restoreLiveAnnouncerToOriginalParent(overlayRef);
+      this._removeOpenModal(modalRef);
+    });
     this.afterOpened.next(modalRef);
 
     return modalRef;
@@ -210,10 +220,18 @@ export class NxDialogService implements OnDestroy {
    * @returns The overlay configuration.
    */
   private _getOverlayConfig(modalConfig: NxModalConfig): OverlayConfig {
+    // Add horizontal margin class to modal panel by default
+    let panelClasses: string[] = ['nx-modal--x-margin'];
+    if (modalConfig.panelClass) {
+      panelClasses = Array.isArray(modalConfig.panelClass)
+        ? [...panelClasses, ...modalConfig.panelClass]
+        : [...panelClasses, modalConfig.panelClass];
+    }
+
     const state = new OverlayConfig({
       positionStrategy: this._overlay.position().global(),
       scrollStrategy: modalConfig.scrollStrategy || this._scrollStrategyFactory(),
-      panelClass: modalConfig.panelClass,
+      panelClass: panelClasses,
       hasBackdrop: modalConfig.hasBackdrop,
       minWidth: modalConfig.minWidth,
       minHeight: modalConfig.minHeight,
@@ -415,6 +433,45 @@ export class NxDialogService implements OnDestroy {
         sibling.setAttribute('inert', 'true');
       }
     });
+  }
+
+  /**
+   * Moves the LiveAnnouncer element into the modal container, so that it will be visible in a11y tree.
+   */
+  private _moveLiveAnnouncerToModal(overlayRef: OverlayRef): void {
+    const liveAnnouncerElement = document.querySelector('.cdk-live-announcer-element');
+
+    const overlayElement = overlayRef.overlayElement;
+    const modalContainerElement = overlayElement.querySelector('.nx-modal__container');
+
+    if (!modalContainerElement || !liveAnnouncerElement || !liveAnnouncerElement.parentElement) {
+      return;
+    }
+
+    this._liveAnnouncerOriginalParents.set(overlayRef, {
+      element: liveAnnouncerElement,
+      parent: liveAnnouncerElement.parentElement,
+    });
+
+    modalContainerElement.appendChild(liveAnnouncerElement);
+  }
+
+  /**
+   * Restores the LiveAnnouncer element back to document root.
+   */
+  private _restoreLiveAnnouncerToOriginalParent(overlayRef: OverlayRef): void {
+    const movedElement = this._liveAnnouncerOriginalParents.get(overlayRef);
+
+    if (!movedElement) {
+      return;
+    }
+
+    const { element, parent } = movedElement;
+    if (parent && element.parentElement !== parent) {
+      parent.appendChild(element);
+    }
+
+    this._liveAnnouncerOriginalParents.delete(overlayRef);
   }
 
   /** Closes all of the modals in an array. */

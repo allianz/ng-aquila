@@ -1,0 +1,175 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="12,12,5">
+      <span
+        style="
+          font-size: 22px;
+          font-weight: 600;
+          line-height: 32px;
+          letter-spacing: 0.3px;
+          margin-bottom: 24px;
+        "
+        class="docs-markdown--h2"
+      >
+        Plain Contained List
+      </span>
+
+      <contained-list containedList label="List Title">
+        <li containedListItem>List Item</li>
+        <li containedListItem>List Item</li>
+        <li containedListItem>List Item</li>
+        <li containedListItem>List Item</li>
+        <li containedListItem>List Item</li>
+        <li containedListItem>List Item</li>
+      </contained-list>
+    </div>
+    <div nxCol="1" style="height: 64px">
+      <!-- just a spacing container -->
+    </div>
+    <div nxCol="12,12,5">
+      <div
+        class="docs-markdown--h2"
+        style="
+          font-size: 22px;
+          font-weight: 600;
+          line-height: 32px;
+          letter-spacing: 0.3px;
+          margin-bottom: 0;
+        "
+      >
+        Contained List
+      </div>
+      <div
+        style="
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          letter-spacing: 0.2px;
+          margin-bottom: 42px;
+        "
+      >
+        with Leading visual, Secondary Text, and Inline Actions
+      </div>
+      <contained-list label="Task Details">
+        <li containedListItem>
+          <nx-icon
+            name="bolt-o"
+            size="s"
+            aria-hidden="true"
+            containedListItemIcon
+          ></nx-icon>
+          <span containedListItemLabel>Priority</span>
+          <span containedListItemSubText>High / Medium</span>
+          <button
+            containedListItemInlineAction
+            nxPlainButton
+            [nxContextMenuTriggerFor]="menu"
+            aria-label="Edit Priority"
+            type="button"
+          >
+            <nx-icon aria-hidden="true" size="s" name="ellipsis-h"></nx-icon>
+          </button>
+        </li>
+        <li containedListItem>
+          <nx-icon
+            name="calendar-reminder-o"
+            size="s"
+            aria-hidden="true"
+            containedListItemIcon
+          ></nx-icon>
+          <div containedListItemLabel>Start Date</div>
+          <span containedListItemSubText>2023-10-31</span>
+          <button
+            containedListItemInlineAction
+            nxPlainButton
+            [nxContextMenuTriggerFor]="startDateMenu"
+            aria-label="Edit start date"
+            type="button"
+          >
+            <nx-icon aria-hidden="true" size="s" name="ellipsis-h"></nx-icon>
+          </button>
+        </li>
+        <li containedListItem>
+          <nx-icon
+            name="bell-o"
+            size="s"
+            aria-hidden="true"
+            containedListItemIcon
+          ></nx-icon>
+          <span containedListItemLabel>Reminder</span>
+          <span containedListItemSubText>2023-10-26</span>
+          <button
+            containedListItemInlineAction
+            nxPlainButton
+            aria-label="Remove reminder"
+            type="button"
+          >
+            <nx-icon aria-hidden="true" size="s" name="trash-o"></nx-icon>
+          </button>
+        </li>
+      </contained-list>
+    </div>
+  </div>
+  <div nxRow style="margin-top: 48px">
+    <div nxCol="12,12,5">
+      <div
+        style="
+          font-size: 22px;
+          font-weight: 600;
+          line-height: 32px;
+          letter-spacing: 0.3px;
+          margin-bottom: 0;
+        "
+        class="docs-markdown--h2"
+      >
+        Contained List
+      </div>
+      <div
+        style="
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          letter-spacing: 0.2px;
+          margin-bottom: 32px;
+        "
+      >
+        with clickable Items
+      </div>
+
+      <contained-list label="Insurance List">
+        <li containedListItem>
+          <button containedListItemAction>BKK SpectrumK (11)</button>
+        </li>
+        <li containedListItem>
+          <button containedListItemAction>AOK Westfalen-Lippe (12)</button>
+        </li>
+        <li containedListItem>
+          <button containedListItemAction>EK Schleswig-Holstein (24)</button>
+        </li>
+        <li containedListItem>
+          <button containedListItemAction>
+            Ersatzkassen Westfalen-Lippe (32)
+          </button>
+        </li>
+        <li containedListItem>
+          <button containedListItemAction>AOK Schleswig-Holstein (11)</button>
+        </li>
+        <li containedListItem>
+          <button containedListItemAction>
+            BKK Mobil Oil AG Blutzuckersel (3)
+          </button>
+        </li>
+      </contained-list>
+    </div>
+  </div>
+</div>
+
+<nx-context-menu #menu="nxContextMenu">
+  <button nxContextMenuItem type="button">Increase Priority</button>
+  <button nxContextMenuItem type="button">Decrease Priority</button>
+</nx-context-menu>
+
+<nx-context-menu #startDateMenu="nxContextMenu">
+  <button nxContextMenuItem type="button">Change Start Date</button>
+  <button nxContextMenuItem type="button">Postpone by one week</button>
+</nx-context-menu>

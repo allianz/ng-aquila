@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   DebugElement,
   Directive,
@@ -19,6 +20,10 @@ abstract class ExpandableTableCellTest {
   expandableTableCellInstance!: NxExpandableTableCellComponent;
   @ViewChild(NxExpandableTableRowComponent)
   expandableTableRowInstance!: NxExpandableTableRowComponent;
+
+  isIndented = false;
+
+  constructor(readonly cdr: ChangeDetectorRef) {}
 }
 
 describe(NxExpandableTableCellComponent.name, () => {
@@ -113,12 +118,32 @@ describe(NxExpandableTableCellComponent.name, () => {
       await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
+
+  describe('indented input', () => {
+    beforeEach(() => {
+      createTestComponent(BasicExpandableTableCellComponent);
+    });
+
+    it('is not indented by default', () => {
+      expect(expandableTableCellElement.nativeElement).not.toHaveClass(
+        'nx-expandable-table-cell--indented',
+      );
+    });
+
+    it('applies indented class when set to true', () => {
+      testInstance.isIndented = true;
+      testInstance.cdr.detectChanges();
+      expect(expandableTableCellElement.nativeElement).toHaveClass(
+        'nx-expandable-table-cell--indented',
+      );
+    });
+  });
 });
 
 @Component({
   template: `
     <tr nxExpandableTableRow>
-      <td nxExpandableTableCell>example content</td>
+      <td nxExpandableTableCell [indented]="isIndented">example content</td>
     </tr>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

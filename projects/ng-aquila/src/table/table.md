@@ -129,6 +129,12 @@ However, zebra mode using the attribute `zebra` is not available for tables with
 
 <!-- example(table-expandable) -->
 
+### Expert: Expandable table with indentation
+
+You can add indentation to an expandable cell inside an expandable row to make it distinct from first‑level rows by adding the `[indented]` property alongside the proper `[nxExpandableTableCell]` directive.
+
+<!-- example(table-expandable-indent) -->
+
 ### Expert: Form elements
 
 Form elements can also be added to the table:

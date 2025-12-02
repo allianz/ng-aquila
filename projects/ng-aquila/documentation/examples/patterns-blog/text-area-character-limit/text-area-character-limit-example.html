@@ -1,0 +1,27 @@
+<div nxLayout="grid" [formGroup]="limittingForm">
+  <div nxRow>
+    <div nxCol="12,12,8">
+      <nx-formfield
+        appearance="outline"
+        floatLabel="always"
+        label="Soft maxlength text area"
+      >
+        <textarea
+          formControlName="overflowTextArea"
+          nxInput
+          type="text"
+          (input)="updateTextArea()"
+          aria-live="polite"
+          #textAreaWithSoftLimit
+        ></textarea>
+        <span nxFormfieldHint aria-live="polite"> {{ hintText() }} </span>
+
+        @if(limittingForm.controls.overflowTextArea.errors?.maxlength) {
+        <nx-error nxFormfieldError #textAreaTextLimitErrorMessage>
+          Your note is too long.
+        </nx-error>
+        }
+      </nx-formfield>
+    </div>
+  </div>
+</div>

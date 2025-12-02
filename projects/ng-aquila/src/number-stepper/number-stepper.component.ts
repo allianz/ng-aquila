@@ -247,7 +247,7 @@ export class NxNumberStepperComponent
     if (this._value() === null && (this.inputValue === '' || this.inputValue === this._value())) {
       return '';
     }
-    let value = this._value() || '';
+    let value = this._value() ?? '';
 
     const isInputChange = this._value() !== this.inputValue;
     if (isInputChange && this.nativeInput?.nativeElement?.value) {

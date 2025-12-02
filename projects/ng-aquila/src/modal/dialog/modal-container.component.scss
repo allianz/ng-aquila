@@ -5,6 +5,13 @@ $horizontal-offset: 48px;
 $action-bar-height: nx-spacer(2xl);
 
 ::ng-deep .cdk-overlay-pane {
+  &.nx-modal--x-margin {
+    margin: 0 nx-spacer(2m) !important;
+
+    @include media-breakpoint-down('small') {
+      margin: 0 nx-spacer(2xs) !important;
+    }
+  }
   &.is-fullscreen {
     padding-top: nx-spacer(2m);
 
@@ -17,7 +24,6 @@ $action-bar-height: nx-spacer(2xl);
 :host {
   background: v(modal-background-color);
   color: v(modal-text-color);
-  margin: 0 nx-spacer(2m); // keep distance to the end of the screen
   padding: nx-spacer(3m) nx-spacer(3m) nx-spacer(3m) nx-spacer(3m);
   border-radius: nx-border-radius(s);
   box-shadow: v(shadow-large);
@@ -75,7 +81,6 @@ $action-bar-height: nx-spacer(2xl);
   }
 
   @include media-breakpoint-down('small') {
-    margin: 0 nx-spacer(2xs); // keep distance to the end of the screen
     padding: nx-spacer(2m) nx-spacer(2m) nx-spacer(2m) nx-spacer(2m);
   }
 

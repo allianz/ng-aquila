@@ -21,11 +21,10 @@
 }
 
 .my-sidepanel ::ng-deep nx-tab-header {
-  position: sticky;
-  top: 0;
-  padding-top: 24px;
-  background: var(--sidepanel-background-color);
-  /* use this for the light version:
-  background: var(--sidepanel-light-background-color);
-  */
+  margin-top: 24px;
+}
+
+.my-sidepanel ::ng-deep nx-tab-header,
+.my-sidepanel ::ng-deep nx-tab-scroll-indicator {
+  background-color: var(--sidepanel-background-color);
 }

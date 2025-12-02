@@ -109,7 +109,10 @@
 
 .items {
   list-style: none;
-  max-height: 272px;
+  max-height: calc(
+    6 * (#{v(multi-select-item-line-height)} + (2 * v(multi-select-item-padding-vertical))) +
+      (2 * v(multi-select-panel-padding))
+  );
   overflow-y: auto;
   position: relative;
   padding: v(multi-select-panel-padding) 0;

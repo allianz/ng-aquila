@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  input,
+  OnDestroy,
+} from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -14,11 +21,13 @@ import { NxExpandableTableRowComponent } from './expandable-table-row.component'
   styleUrl: './expandable-table-cell.component.scss',
   host: {
     class: 'nx-expandable-table-cell',
+    '[class.nx-expandable-table-cell--indented]': 'indented()',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class NxExpandableTableCellComponent implements OnDestroy {
+  readonly indented = input(false, { transform: booleanAttribute });
   _open = false;
 
   private readonly _destroyed = new Subject<void>();

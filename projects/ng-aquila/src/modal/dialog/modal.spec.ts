@@ -580,6 +580,19 @@ describe('NxDialog', () => {
     expect(overlayPane.style.height).toBe('100px');
   });
 
+  it('should have horizontal margin panel class by default', () => {
+    dialog.open(PizzaMsg, {
+      viewContainerRef: testViewContainerRef,
+    });
+
+    viewContainerFixture.detectChanges();
+
+    const overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
+    expect(overlayPane.classList)
+      .withContext('Expected default horizontal margin class')
+      .toContain('nx-modal--x-margin');
+  });
+
   it('should override the min-width of the overlay pane', () => {
     dialog.open(PizzaMsg, {
       minWidth: '500px',
@@ -1134,6 +1147,30 @@ describe('NxDialog', () => {
       .withContext('Expected live element not to be inert.')
       .toBeFalse();
   });
+
+  it('should move cdk-live-announcer-element to overlay container', fakeAsync(() => {
+    const liveAnnouncer = document.createElement('div');
+    liveAnnouncer.classList.add('cdk-live-announcer-element');
+    document.body.appendChild(liveAnnouncer);
+
+    expect(document.body.contains(liveAnnouncer)).toBeTrue();
+    expect(overlayContainerElement.contains(liveAnnouncer)).toBeFalse();
+
+    const dialogRef = dialog.open(PizzaMsg, {
+      disableClose: true,
+      viewContainerRef: testViewContainerRef,
+    });
+    viewContainerFixture.detectChanges();
+    flush();
+
+    expect(overlayContainerElement.contains(liveAnnouncer)).toBeTrue();
+    dialogRef.close();
+
+    viewContainerFixture.detectChanges();
+    flush();
+
+    expect(document.body.contains(liveAnnouncer)).toBeTrue();
+  }));
 
   it('should add and remove classes while open', () => {
     const dialogRef = dialog.open(PizzaMsg, {
