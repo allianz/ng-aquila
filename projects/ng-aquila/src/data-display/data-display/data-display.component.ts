@@ -1,5 +1,5 @@
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, Component, Inject, Input, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input, input, Optional } from '@angular/core';
 
 import {
   DATA_DISPLAY_DEFAULT_OPTIONS,
@@ -34,7 +34,7 @@ export class NxDataDisplayComponent {
   /**
    * Label describing the data.
    */
-  @Input() label?: string | null;
+  readonly label = input<string | null>();
 
   /**
    * Column span of the label text based on a 12 column system, when in `orientation="horizontal-columns"` layout.

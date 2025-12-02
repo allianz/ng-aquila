@@ -15,6 +15,7 @@ import {
   HostListener,
   Inject,
   Input,
+  input,
   OnDestroy,
   Renderer2,
 } from '@angular/core';
@@ -62,7 +63,7 @@ export class NxRadioToggleButtonComponent
   // emits when the button is checked to notify the group
   readonly onChecked = new Subject<NxRadioToggleButtonChange>();
 
-  @Input({ transform: booleanAttribute }) disableMobile = false;
+  readonly disableMobile = input(false, { transform: booleanAttribute });
 
   /** @docs-private */
   @Input() set disabled(value: BooleanInput) {
@@ -178,7 +179,7 @@ export class NxRadioToggleButtonComponent
   }
 
   private _emitCheckedEvent() {
-    this.onChecked.next(new NxRadioToggleButtonChange(this, this.value));
+    this.onChecked.next(new NxRadioToggleButtonChange(this, this.value()));
   }
 
   // Does NOT emit the onChecked event. Useful when you need to set initial

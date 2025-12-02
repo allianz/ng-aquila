@@ -38,6 +38,7 @@ import {
   NxPopoverTriggerDirective,
   POPOVER_DEFAULT_OPTIONS,
   PopoverDefaultOptions,
+  PopoverDirection,
 } from './popover-trigger.directive';
 
 const popoverDefaultOptions: PopoverDefaultOptions = {
@@ -255,21 +256,24 @@ describe('NxPopoverTriggerDirective', () => {
 
     it('should support display to left', fakeAsync(() => {
       createTestComponent(PopoverHoverComponent);
-      triggerInstance.direction = 'left';
+      (testInstance as PopoverHoverComponent).direction = 'left';
+      fixture.detectChanges();
       hover();
       expect(getPopoverByDirection('left')).toBeTruthy();
     }));
 
     it('should support display to top', fakeAsync(() => {
       createTestComponent(PopoverHoverComponent);
-      triggerInstance.direction = 'top';
+      (testInstance as PopoverHoverComponent).direction = 'top';
+      fixture.detectChanges();
       hover();
       expect(getPopoverByDirection('top')).toBeTruthy();
     }));
 
     it('should support display to bottom', fakeAsync(() => {
       createTestComponent(PopoverHoverComponent);
-      triggerInstance.direction = 'bottom';
+      (testInstance as PopoverHoverComponent).direction = 'bottom';
+      fixture.detectChanges();
       hover();
       expect(getPopoverByDirection('bottom')).toBeTruthy();
     }));
@@ -756,7 +760,8 @@ describe('NxPopoverTriggerDirective', () => {
       fixture.detectChanges();
       tick();
 
-      triggerInstance.direction = 'right';
+      (testInstance as PopoverFallBackComponent).direction = 'right';
+      fixture.detectChanges();
       hover();
       expect(getPopoverByDirection('right')).toBeFalsy();
     }));
@@ -975,6 +980,7 @@ class TriggerButtonTestDirective extends NxTriggerButton {
     >
       <button
         [nxPopoverTriggerFor]="popoverHover"
+        [nxPopoverDirection]="direction"
         nxPopoverTrigger="hover"
         [nxPopoverCloseable]="closeable"
       >
@@ -987,7 +993,9 @@ class TriggerButtonTestDirective extends NxTriggerButton {
     </nx-popover>`,
   imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
-class PopoverHoverComponent extends PopoverTest {}
+class PopoverHoverComponent extends PopoverTest {
+  direction: PopoverDirection = 'right';
+}
 @Component({
   template: `<div
       style="width: 400px; height: 400px; display: flex; justify-content: center; align-items: center;"
@@ -1116,7 +1124,7 @@ class PopoverHideCloseForClick extends PopoverTest {}
   template: `<div>
       <button
         [nxPopoverTriggerFor]="popoverHover"
-        nxPopoverDirection="right"
+        [nxPopoverDirection]="direction"
         nxPopoverTrigger="hover"
         [nxPopoverCloseable]="false"
       >
@@ -1130,7 +1138,9 @@ class PopoverHideCloseForClick extends PopoverTest {}
     </nx-popover>`,
   imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
-class PopoverFallBackComponent extends PopoverTest {}
+class PopoverFallBackComponent extends PopoverTest {
+  direction: PopoverDirection = 'right';
+}
 
 @Component({
   template: `<div>

@@ -34,8 +34,8 @@ export type NxPlainButtonVariant = 'primary' | 'secondary';
   host: {
     class: 'nx-plain-button',
     '[class.nx-plain-button--danger]': 'critical',
-    '[class.nx-plain-button--secondary]': 'variant === "secondary"',
-    '[class.nx-plain-button--small]': 'size === "small"',
+    '[class.nx-plain-button--secondary]': 'variant() === "secondary"',
+    '[class.nx-plain-button--small]': 'size() === "small"',
     '[class.nx-button--loading]': 'loading()',
     '[attr.disabled]': 'disabled || null',
     '[attr.aria-disabled]': '_ariaDisabled',
@@ -61,14 +61,14 @@ export class NxPlainButtonComponent implements NxTriggerButton, AfterViewInit {
     if (this._isAnchor && this.disabled) {
       return -1;
     }
-    return this.tabIndex ?? this._tabindexAttribute ?? undefined;
+    return this.tabIndex() ?? this._tabindexAttribute() ?? undefined;
   }
 
   /** The plain button size. Please only use it for the One Allianz Design. */
-  @Input() size: NxPlainButtonSize = 'medium';
+  readonly size = input<NxPlainButtonSize>('medium');
 
   /** The plain button variant. Please only use it for the One Allianz Design. */
-  @Input() variant: NxPlainButtonVariant = 'primary';
+  readonly variant = input<NxPlainButtonVariant>('primary');
 
   /** Whether to show the critical/danger appearance */
   @Input() set critical(value: BooleanInput) {
@@ -88,15 +88,16 @@ export class NxPlainButtonComponent implements NxTriggerButton, AfterViewInit {
   }
   private _disabled = false;
 
-  @Input({ transform: tabIndexAttribute }) tabIndex: number | undefined;
+  readonly tabIndex = input<number, unknown>(undefined, { transform: tabIndexAttribute });
 
   /**
    * Use 'tabindex' to handle existing usages of `[tabindex]` bindings on button elements
    * @docs-private
    */
-  @Input({ alias: 'tabindex', transform: tabIndexAttribute }) _tabindexAttribute:
-    | number
-    | undefined;
+  readonly _tabindexAttribute = input<number, unknown>(undefined, {
+    alias: 'tabindex',
+    transform: tabIndexAttribute,
+  });
 
   /** Whether the button should be in a loading state. */
   loading = input<boolean, BooleanInput>(false, { transform: booleanAttribute });

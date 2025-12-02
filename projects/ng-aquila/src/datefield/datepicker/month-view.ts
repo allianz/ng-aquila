@@ -112,7 +112,7 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
   private _maxDate!: D | null;
 
   /** A function used to filter which dates are selectable. */
-  @Input() dateFilter!: (date: D) => boolean;
+  readonly dateFilter = input<(date: D) => boolean>();
 
   /** Emits when a new date is selected. */
   @Output() readonly selectedChange = new EventEmitter<D | DateRange<D> | null>();
@@ -239,6 +239,7 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
     const oldActiveDate = this._activeDate;
 
     const isRtl = this._isRtl();
+    const dateFilter = this.dateFilter();
     switch (event.keyCode) {
       case LEFT_ARROW:
         this.activeDate = this._dateAdapter.addCalendarDays(this._activeDate, isRtl ? 1 : -1);
@@ -277,7 +278,7 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
         break;
       case ENTER:
       case SPACE:
-        if (!this.dateFilter || this.dateFilter(this._activeDate)) {
+        if (!dateFilter || dateFilter(this._activeDate)) {
           this._dateSelected(this._dateAdapter.getDate(this._activeDate));
 
           // Emit the selected date if the user selected a date. Range will be emitted in _dateSelected method if selection is complete
@@ -366,9 +367,10 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
 
   /** Date filter for the month */
   private _shouldEnableDate(date: D): boolean {
+    const dateFilter = this.dateFilter();
     return (
       !!date &&
-      (!this.dateFilter || this.dateFilter(date)) &&
+      (!dateFilter || dateFilter(date)) &&
       (!this.minDate || this._dateAdapter.compareDate(date, this.minDate) >= 0) &&
       (!this.maxDate || this._dateAdapter.compareDate(date, this.maxDate) <= 0)
     );

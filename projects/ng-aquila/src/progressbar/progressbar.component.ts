@@ -1,5 +1,5 @@
 import { NgStyle } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, numberAttribute } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, numberAttribute } from '@angular/core';
 
 @Component({
   selector: 'nx-progressbar',
@@ -7,33 +7,33 @@ import { ChangeDetectionStrategy, Component, Input, numberAttribute } from '@ang
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./progressbar.component.scss'],
   host: {
-    '[attr.aria-valuenow]': 'value',
+    '[attr.aria-valuenow]': 'value()',
     '[attr.role]': '"progressbar"',
-    '[attr.aria-valuemax]': 'this.max',
-    '[attr.aria-valuemin]': 'this.min',
-    '[attr.aria-label]': 'this.ariaLabel',
-    '[attr.aria-labelledby]': 'this.ariaLabelledBy',
+    '[attr.aria-valuemax]': 'this.max()',
+    '[attr.aria-valuemin]': 'this.min()',
+    '[attr.aria-label]': 'this.ariaLabel()',
+    '[attr.aria-labelledby]': 'this.ariaLabelledBy()',
   },
   imports: [NgStyle],
 })
 export class NxProgressbarComponent {
   /** Overrides the `aria-label` of the nx-progressbar. Defaults to "Progress" */
-  @Input() ariaLabel: string | undefined = 'Progress';
+  readonly ariaLabel = input<string | undefined>('Progress');
 
   /** Sets the `aria-labelledby` of the nx-progressbar */
-  @Input() ariaLabelledBy: string | undefined;
+  readonly ariaLabelledBy = input<string>();
 
   /** Sets the value of the progress bar. Defaults to zero. Mirrored to aria-valuenow. */
-  @Input({ transform: numberAttribute }) value = 0;
+  readonly value = input(0, { transform: numberAttribute });
 
   /** The minimum value of the progress bar. Used for percentage calculation and mirrored to `aria-valuemin`. Defaults to 0 */
-  @Input({ transform: numberAttribute }) min = 0;
+  readonly min = input(0, { transform: numberAttribute });
 
   /** The maximum value of the progress bar. Used for percentage calculation and mirrored to `aria-valuemax`. Defaults to 1 */
-  @Input({ transform: numberAttribute }) max = 1;
+  readonly max = input(1, { transform: numberAttribute });
 
   _primaryTransform() {
-    const scale = (this.value - this.min) / (this.max - this.min);
+    const scale = (this.value() - this.min()) / (this.max() - this.min());
     return { transform: `scaleX(${scale})` };
   }
 }

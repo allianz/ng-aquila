@@ -11,7 +11,7 @@ import {
   ElementRef,
   forwardRef,
   Inject,
-  Input,
+  input,
   OnChanges,
   OnDestroy,
   Optional,
@@ -125,7 +125,7 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
   _stepHeader = new QueryList<CdkStepHeader>();
 
   /** Sets the label on the left side showing the current step label. Used for mobile viewports. */
-  @Input() currentStepLabel!: string;
+  readonly currentStepLabel = input<string>();
 
   constructor(
     private readonly _cdr: ChangeDetectorRef,
@@ -201,8 +201,9 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
 
     const label = step.stepLabel || step.label;
 
-    return this.currentStepLabel && label
-      ? `${this.currentStepLabel} ${this.selectedIndex + 1}/${this.count}: ${label}`
+    const currentStepLabel = this.currentStepLabel();
+    return currentStepLabel && label
+      ? `${currentStepLabel} ${this.selectedIndex + 1}/${this.count}: ${label}`
       : '';
   }
 }

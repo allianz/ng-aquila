@@ -340,7 +340,7 @@ describe('NxFormfieldComponent', () => {
         tick();
         fixture.detectChanges();
 
-        expect(ariaDescribedBy).toContain(testInstance.formfieldHint.id);
+        expect(ariaDescribedBy).toContain(testInstance.formfieldHint.id());
       }));
 
       it('adds aria-hidden=true to formfield hint when formfield is disabled', fakeAsync(() => {
@@ -365,7 +365,7 @@ describe('NxFormfieldComponent', () => {
         tick();
         // before only the not id is set
         ariaDescribedBy = inputElement.attributes.getNamedItem('aria-describedby')!.value;
-        expect(ariaDescribedBy).toBe(testInstance.formfieldNote.id);
+        expect(ariaDescribedBy).toBe(testInstance.formfieldNote.id());
 
         testInstance.inputInstance.ngControl!.control!.markAsTouched();
         fixture.detectChanges();
@@ -375,7 +375,7 @@ describe('NxFormfieldComponent', () => {
 
         // the error id should join the list of describedBy ids.
         ariaDescribedBy = inputElement.attributes.getNamedItem('aria-describedby')!.value;
-        expect(ariaDescribedBy).toBe(testInstance.formfieldError.id);
+        expect(ariaDescribedBy).toBe(testInstance.formfieldError.id());
       }));
     });
 

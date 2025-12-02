@@ -1,5 +1,5 @@
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
-import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 
 @Component({
   selector: 'nx-dropdown-group',
@@ -15,5 +15,5 @@ import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core
 export class NxDropdownGroupComponent {
   id = inject(IdGenerationService).nextId('nx-dropdown-group');
   /** Label displayed in the group. */
-  @Input() label!: string;
+  readonly label = input.required<string>();
 }

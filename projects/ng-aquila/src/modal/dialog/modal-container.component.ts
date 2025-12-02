@@ -11,7 +11,6 @@ import {
 } from '@angular/cdk/portal';
 import {
   AfterViewInit,
-  AnimationCallbackEvent,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,

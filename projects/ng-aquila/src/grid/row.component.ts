@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, isDevMode, Optional } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  input,
+  isDevMode,
+  Optional,
+} from '@angular/core';
 
 import { NxLayoutComponent } from './layout.component';
 import { addStylesFromDimensions } from './utils';
@@ -54,8 +61,8 @@ export type RowWrapping = 'wrap' | 'nowrap' | 'reverse';
   styleUrls: ['row.component.scss'],
   host: {
     '[class]': '_classNames',
-    '[class.nx-grid__row--container-query]': '!!gridLayoutComponent?.containerQuery',
-    '[class.nx-grid__row--media-query]': '!gridLayoutComponent?.containerQuery',
+    '[class.nx-grid__row--container-query]': '!!gridLayoutComponent?.containerQuery()',
+    '[class.nx-grid__row--media-query]': '!gridLayoutComponent?.containerQuery()',
   },
   standalone: true,
 })
@@ -64,7 +71,7 @@ export class NxRowComponent {
    * Overwrite default class property to access user provided class.
    * @docs-private
    */
-  @Input() class = '';
+  readonly class = input('');
 
   /**
    * Values: row | row-reverse.
@@ -120,7 +127,7 @@ export class NxRowComponent {
       this._alignContentClasses,
       this._alignItemsClasses,
       this._wrapClasses,
-      this.class,
+      this.class(),
     ]
       .filter((classes) => classes?.length)
       .join(' ');

@@ -4,7 +4,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  Input,
+  input,
 } from '@angular/core';
 
 /** @docs-private */
@@ -14,23 +14,23 @@ import {
   styleUrls: ['mobile-toggle-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    '[class.is-disabled]': 'disabled',
-    '[class.is-readonly]': 'readonly',
-    '[class.is-negative]': 'negative',
+    '[class.is-disabled]': 'disabled()',
+    '[class.is-readonly]': 'readonly()',
+    '[class.is-negative]': 'negative()',
     '[class.is-first]': 'isFirst',
     '[class.is-last]': 'isLast',
-    '[class.is-flipped]': 'checked',
+    '[class.is-flipped]': 'checked()',
   },
   imports: [NxIconModule],
 })
 export class NxMobileToggleButtonComponent {
-  @Input() checked = false;
-  @Input() negative = false;
-  @Input() disabled = false;
-  @Input({ transform: booleanAttribute }) readonly = false;
-  @Input() hint = '';
-  @Input() label = '';
-  @Input() circleText = '';
+  readonly checked = input(false);
+  readonly negative = input(false);
+  readonly disabled = input(false);
+  readonly readonly = input(false, { transform: booleanAttribute });
+  readonly hint = input('');
+  readonly label = input('');
+  readonly circleText = input('');
 
   /** @docs-private */
   isFirst = false;

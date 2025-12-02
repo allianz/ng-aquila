@@ -20,6 +20,7 @@ import {
   forwardRef,
   inject,
   Input,
+  input,
   NgZone,
   OnDestroy,
   Optional,
@@ -242,13 +243,13 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
   @Output() readonly valueChange = new EventEmitter<number>();
 
   /** Sets the customization function for the value which is displayed above the slider handle (Default:(value) => value). ). */
-  @Input() valueFormatter = (value: any) => value;
+  readonly valueFormatter = input((value: any) => value);
 
   /** Sets the customization function for the label on the min-side of the slider (Default:(value) => value). */
-  @Input() labelMinFormatter = (value: any) => value;
+  readonly labelMinFormatter = input((value: any) => value);
 
   /** Sets the customization function for the label on the max-side of the slider (Default:(value) => value). */
-  @Input() labelMaxFormatter = (value: any) => value;
+  readonly labelMaxFormatter = input((value: any) => value);
 
   private _onChange: (value: any) => void = () => {};
   private _onTouched: () => any = () => {};
@@ -435,7 +436,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
   }
 
   _formatValue(value: number): string {
-    return this.valueFormatter(value);
+    return this.valueFormatter()(value);
   }
 
   _formatLabelLeft(): string {
@@ -447,11 +448,11 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
   }
 
   _formatLabelMin() {
-    return this.labelMinFormatter(this.min);
+    return this.labelMinFormatter()(this.min);
   }
 
   _formatLabelMax() {
-    return this.labelMaxFormatter(this.max);
+    return this.labelMaxFormatter()(this.max);
   }
 
   _focusHandleElement() {

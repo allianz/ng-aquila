@@ -45,16 +45,16 @@
 >
   <div
     class="nx-dropdown__panel"
-    [class.has-filter]="showFilter"
+    [class.has-filter]="showFilter()"
     [class.nx-dropdown__panel--in-outline-field]="_isInOutlineField"
-    [class.centered-checkmark]='verticalAlignCheckmark === "center"'
+    [class.centered-checkmark]='verticalAlignCheckmark() === "center"'
     (keydown)="_handleKeydown($event)"
     [dir]="dir"
     #panel
   >
     @if (label) {
     <div class="nx-dropdown__panel-header">{{ label }}</div>
-    } @if (showFilter) {
+    } @if (showFilter()) {
     <div class="nx-dropdown__filter-wrap">
       <div class="nx-dropdown__filter">
         <input
@@ -69,7 +69,7 @@
           [(ngModel)]="filterValue"
           (ngModelChange)="_onFilter($event)"
           role="combobox"
-          [placeholder]="filterPlaceholder"
+          [placeholder]="filterPlaceholder()"
         />
         @if (!isFilterEmpty) {
         <span class="nx-dropdown__filter-icon" (click)="_clearFilter()">
@@ -88,7 +88,7 @@
       [class.keyboard-focused]="openedByKeyboard"
       #panelBody
       [attr.aria-activedescendant]="activeId()"
-      [attr.aria-multiselectable]="isMultiSelect"
+      [attr.aria-multiselectable]="isMultiSelect()"
     >
       <ng-content></ng-content>
       @for (option of options; track option) {

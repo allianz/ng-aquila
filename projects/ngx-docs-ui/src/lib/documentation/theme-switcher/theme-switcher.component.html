@@ -7,7 +7,7 @@
   aria-label="switch color theme"
 >
   <nx-icon name="fill-drip" nxIconPositionStart></nx-icon>
-  <span class="label-text">{{ selected.displayName }}</span>
+  <span class="label-text">{{ selected().displayName }}</span>
   <nx-icon
     name="chevron-down"
     nxIconPositionEnd
@@ -16,7 +16,7 @@
 </button>
 
 <nx-context-menu #nxvThemeSwitch="nxContextMenu">
-  @for (theme of themes; track theme) {
+  @for (theme of themes(); track theme) {
     <button nxContextMenuItem type="button" (click)="select(theme)" [value]="theme.name">
       {{ theme.displayName }}
     </button>

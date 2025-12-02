@@ -8,7 +8,7 @@ import { NxCardComponent } from './card.component';
   host: {
     '[class.nx-card-main-link]': 'true',
     role: 'link',
-    '[attr.aria-disabled]': 'card.disabled || null',
+    '[attr.aria-disabled]': 'card.disabled() || null',
   },
   standalone: true,
 })

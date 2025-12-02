@@ -1,4 +1,5 @@
 import { NxFormfieldControl } from '@allianz/ng-aquila/formfield';
+import { InputSignal } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 export abstract class NxDropdownControl extends NxFormfieldControl<any> {
@@ -7,7 +8,7 @@ export abstract class NxDropdownControl extends NxFormfieldControl<any> {
    *
    * Note: Please make sure the value you bind is an array. If not an error is thrown!
    */
-  isMultiSelect = false;
+  abstract readonly isMultiSelect: InputSignal<boolean>;
 
   ignoreItemTruncation = false;
 

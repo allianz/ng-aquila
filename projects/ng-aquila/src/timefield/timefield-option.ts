@@ -1,6 +1,6 @@
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { Highlightable } from '@angular/cdk/a11y';
-import { ChangeDetectorRef, Directive, ElementRef, inject, Input } from '@angular/core';
+import { ChangeDetectorRef, Directive, ElementRef, inject, Input, input } from '@angular/core';
 
 @Directive({
   selector: '[nxTimefieldOption]',
@@ -10,15 +10,15 @@ import { ChangeDetectorRef, Directive, ElementRef, inject, Input } from '@angula
     role: 'option',
     class: 'nx-timefield-option',
     '[id]': 'id',
-    '[attr.aria-selected]': 'selected',
+    '[attr.aria-selected]': 'selected()',
     '[class.is-active]': '_active',
   },
 })
 export class NxTimefieldOption implements Highlightable {
   protected _active = false;
 
-  @Input({ alias: 'nxTimefieldOption' }) value: string = '';
-  @Input() selected = false;
+  readonly value = input<string>('', { alias: 'nxTimefieldOption' });
+  readonly selected = input(false);
 
   /** The id of the option's host element. */
   @Input()
@@ -29,7 +29,7 @@ export class NxTimefieldOption implements Highlightable {
     this._id = value;
   }
   private _id = '';
-  private _generatedId = inject(IdGenerationService).nextId('nx-timefield-option');
+  private readonly _generatedId = inject(IdGenerationService).nextId('nx-timefield-option');
   /** The option's host element */
   readonly element: HTMLElement = inject(ElementRef).nativeElement;
 

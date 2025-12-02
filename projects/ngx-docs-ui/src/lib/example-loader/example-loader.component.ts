@@ -7,7 +7,7 @@ import {
   EventEmitter,
   Inject,
   Injector,
-  Input,
+  input,
   Optional,
   Output,
   ViewContainerRef,
@@ -24,8 +24,8 @@ const EXAMPLE_SELECTOR = 'nx-docs-example';
   imports: [DocViewerComponent],
 })
 export class ExampleLoaderComponent {
-  @Input() file!: string;
-  @Input() examples: string[] = [];
+  readonly file = input.required<string>();
+  readonly examples = input<string[]>([]);
 
   @Output() readonly contentLoaded = new EventEmitter<any>();
 

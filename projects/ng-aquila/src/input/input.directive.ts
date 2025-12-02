@@ -5,6 +5,7 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { getSupportedInputTypes, Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import {
+  computed,
   Directive,
   DoCheck,
   ElementRef,
@@ -12,11 +13,13 @@ import {
   inject,
   InjectionToken,
   Input,
+  input,
   OnChanges,
   OnDestroy,
   OnInit,
   Optional,
   Self,
+  signal,
 } from '@angular/core';
 import { FormControl, FormGroupDirective, NgControl, NgForm, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -61,7 +64,7 @@ const NEVER_EMPTY = ['date', 'datetime', 'datetime-local', 'month', 'time', 'wee
     '[attr.disabled]': 'disabled || null',
     '[attr.readonly]': 'readonly || null',
     '[attr.required]': 'required || null',
-    '[attr.aria-label]': '_ariaLabel || null',
+    '[attr.aria-label]': '_ariaLabel() || null',
     '[attr.aria-describedby]': '_ariaDescribedby || null',
     '[attr.aria-invalid]': 'errorState',
     '[attr.aria-required]': 'required.toString()',
@@ -84,7 +87,9 @@ export class NxInputDirective
   private readonly _inputValueAccessor: NxInputValueAccessor;
   _ariaDescribedby!: string;
 
-  @Input('nxAriaLabel') _ariaLabel!: string;
+  private readonly _ariaLabelSignal = signal<string>('');
+  readonly _nxAriaLabel = input<string>('', { alias: 'nxAriaLabel' });
+  readonly _ariaLabel = computed(() => this._ariaLabelSignal() ?? this._nxAriaLabel());
 
   /** @docs-private */
   errorState = false;
@@ -332,7 +337,7 @@ export class NxInputDirective
    * where you don't have a label connected.
    */
   setAriaLabel(value: string) {
-    this._ariaLabel = value;
+    this._ariaLabelSignal.set(value);
   }
 
   protected _isBadInput() {

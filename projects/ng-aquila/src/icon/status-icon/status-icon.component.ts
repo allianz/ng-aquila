@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
 
 import { NxIconComponent } from '../icon.component';
 
@@ -16,7 +16,7 @@ export type NxStatusIconSize = 'auto' | 's' | 'm' | 'l' | 'xl';
 })
 export class NxStatusIconComponent {
   /** Sets status type */
-  @Input() type!: NxStatusIconType;
+  readonly type = input.required<NxStatusIconType>();
 
   /** Specifies the size of the icon. */
   @Input() set size(value: NxStatusIconSize) {
@@ -39,11 +39,11 @@ export class NxStatusIconComponent {
 
   /** @docs-private */
   get icon() {
-    return this.statusList[this.type]?.icon;
+    return this.statusList[this.type()]?.icon;
   }
 
   /** @docs-private */
   get typeClass(): string {
-    return `nx-status-icon--${this.type}`;
+    return `nx-status-icon--${this.type()}`;
   }
 }

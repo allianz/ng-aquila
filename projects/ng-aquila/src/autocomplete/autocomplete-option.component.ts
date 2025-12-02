@@ -9,6 +9,7 @@ import {
   EventEmitter,
   inject,
   Input,
+  input,
   Output,
 } from '@angular/core';
 
@@ -80,7 +81,7 @@ export class NxAutocompleteOptionComponent {
   private _disabled = false;
 
   /** The value of the autocomplete option. */
-  @Input() value: any;
+  readonly value = input<any>();
 
   /** Event emitted when the option is selected or deselected. */
   @Output() readonly onSelectionChange = new EventEmitter<NxAutocompleteOptionSelected>();

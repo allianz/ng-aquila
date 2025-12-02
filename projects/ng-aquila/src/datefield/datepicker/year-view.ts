@@ -96,7 +96,7 @@ export class NxYearViewComponent<D> implements AfterContentInit {
   private _maxDate!: D | null;
 
   /** A function used to filter which dates are selectable. */
-  @Input() dateFilter!: (date: D) => boolean;
+  readonly dateFilter = input<(date: D) => boolean>();
 
   /** Emits when a new month is selected. */
   @Output() readonly selectedChange = new EventEmitter<D>();
@@ -295,7 +295,8 @@ export class NxYearViewComponent<D> implements AfterContentInit {
       return false;
     }
 
-    if (!this.dateFilter) {
+    const dateFilter = this.dateFilter();
+    if (!dateFilter) {
       return true;
     }
 
@@ -307,7 +308,7 @@ export class NxYearViewComponent<D> implements AfterContentInit {
       this._dateAdapter.getMonth(date) === month;
       date = this._dateAdapter.addCalendarDays(date, 1)
     ) {
-      if (this.dateFilter(date)) {
+      if (dateFilter(date)) {
         return true;
       }
     }

@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   Input,
+  input,
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
@@ -78,7 +79,7 @@ export class NxIconComponent implements OnChanges {
   private _size: IconSize = 'auto';
 
   /** Sets the font name that should be used. */
-  @Input() font = '';
+  readonly font = input('');
 
   constructor(
     /** @docs-private */ readonly el: ElementRef,
@@ -160,8 +161,9 @@ export class NxIconComponent implements OnChanges {
   }
 
   private _updateFontIconClasses() {
-    const font = this.font
-      ? this._iconRegistry.getFont(this.font)
+    const fontValue = this.font();
+    const font = fontValue
+      ? this._iconRegistry.getFont(fontValue)
       : this._iconRegistry.getDefaultFont();
     const hostClass = font ? font.hostClass : '';
     const name = font ? font.prefix + this.name : this.name;

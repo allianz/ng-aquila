@@ -10,6 +10,7 @@ import {
   HostListener,
   inject,
   Input,
+  input,
   Output,
 } from '@angular/core';
 
@@ -37,12 +38,12 @@ export class NxMultiSelectAllComponent<T> implements Highlightable, ListKeyManag
   /**
    * Value of this option.
    */
-  @Input() value?: T;
+  readonly value = input<T>();
 
   /**
    * Label of this option.
    */
-  @Input() label = '';
+  readonly label = input('');
 
   /**
    * Indeterminate
@@ -108,7 +109,7 @@ export class NxMultiSelectAllComponent<T> implements Highlightable, ListKeyManag
   _onSelect() {
     if (!this.disabled) {
       this.selectedAllChange.emit(this.selected);
-      this.liveAnnouncer.announce(`${this.label} ${this.selected ? 'selected' : 'unselected'}`);
+      this.liveAnnouncer.announce(`${this.label()} ${this.selected ? 'selected' : 'unselected'}`);
     }
   }
 
@@ -121,6 +122,6 @@ export class NxMultiSelectAllComponent<T> implements Highlightable, ListKeyManag
   }
 
   getLabel() {
-    return this.label;
+    return this.label();
   }
 }

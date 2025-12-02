@@ -256,7 +256,7 @@ export class NxFileUploaderComponent
   private _accept!: string;
 
   /** Whether to validate files that don't have provide a file type. Disabled by default. */
-  @Input() strictAcceptValidation = false;
+  readonly strictAcceptValidation = input(false);
 
   /** The max file size in bytes used for validation */
   @Input() set maxFileSize(value: NumberInput) {
@@ -527,7 +527,7 @@ export class NxFileUploaderComponent
             this.setFileSizeError(file);
             return;
           }
-          if (!isFileTypeValid(file, this.accept, this.strictAcceptValidation)) {
+          if (!isFileTypeValid(file, this.accept, this.strictAcceptValidation())) {
             this.setFileTypeError(file);
             return;
           }
@@ -645,7 +645,7 @@ export class NxFileUploaderComponent
    */
   private _syncDescribedByIds() {
     let ids: string[] = [];
-    ids = this._hintChildren.map((hint) => hint.id);
+    ids = this._hintChildren.map((hint) => hint.id());
     ids = this._label ? [this._label.id, ...ids] : ids;
     ids = [...this._errorList.map((error) => error.id), ...ids];
     ids = this.ariaDescribedBy() ? [...ids, this.ariaDescribedBy()!] : ids;
@@ -733,7 +733,7 @@ export class NxFileUploaderComponent
     });
     if (!this.noBlockingValidators && this.ngControl?.control) {
       this.validatorFnArray.push(
-        NxFileUploaderValidators.fileType(file, this.accept, this.strictAcceptValidation),
+        NxFileUploaderValidators.fileType(file, this.accept, this.strictAcceptValidation()),
       );
     }
   }

@@ -8,6 +8,7 @@ import {
   Component,
   ElementRef,
   Input,
+  input,
   OnDestroy,
 } from '@angular/core';
 
@@ -19,8 +20,8 @@ import {
   host: {
     class: 'nx-card',
     '[class.is-highlight]': 'highlight',
-    '[class.is-clickable]': 'clickable',
-    '[class.is-disabled]': 'disabled',
+    '[class.is-clickable]': 'clickable()',
+    '[class.is-disabled]': 'disabled()',
   },
   imports: [],
 })
@@ -56,7 +57,7 @@ export class NxCardComponent implements OnDestroy, AfterViewInit {
     return this._highlight;
   }
 
-  @Input({ transform: booleanAttribute }) clickable = false;
+  readonly clickable = input(false, { transform: booleanAttribute });
 
-  @Input({ transform: booleanAttribute }) disabled = false;
+  readonly disabled = input(false, { transform: booleanAttribute });
 }

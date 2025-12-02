@@ -1,5 +1,5 @@
 import { IdGenerationService, removeClasses } from '@allianz/ng-aquila/utils';
-import { Directive, ElementRef, inject, Input, Renderer2, ViewChild } from '@angular/core';
+import { Directive, ElementRef, inject, input, Renderer2, ViewChild } from '@angular/core';
 
 /** @docs-private */
 @Directive({ standalone: true })
@@ -8,7 +8,7 @@ export class NxRadioToggleButtonBaseComponent {
   toggleButtonId: string = inject(IdGenerationService).nextId('nx-radio-toggle-button');
 
   /** @docs-private */
-  @Input() value: any;
+  readonly value = input<any>();
 
   /** @docs-private */
   @ViewChild('toggleButtonLabelContainer', { static: true }) labelContainer!: ElementRef;

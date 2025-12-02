@@ -210,10 +210,14 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
   private _selectable = false;
 
   /** The default delay in ms before showing the tooltip after show is called */
-  @Input('nxTooltipShowDelay') showDelay: number = this._defaultOptions!.showDelay;
+  readonly showDelay = input<number>(this._defaultOptions!.showDelay, {
+    alias: 'nxTooltipShowDelay',
+  });
 
   /** The default delay in ms before hiding the tooltip after hide is called */
-  @Input('nxTooltipHideDelay') hideDelay: number = this._defaultOptions!.hideDelay;
+  readonly hideDelay = input<number>(this._defaultOptions!.hideDelay, {
+    alias: 'nxTooltipHideDelay',
+  });
 
   /** The message to be displayed in the tooltip */
   @Input('nxTooltip') set message(value: string) {
@@ -327,7 +331,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
   }
 
   /** Shows the tooltip after the delay in ms, defaults to tooltip-delay-show or 0ms if no input */
-  show(delay: number = this.showDelay): void {
+  show(delay: number = this.showDelay()): void {
     if (
       this.disabled ||
       !this.message ||
@@ -356,7 +360,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
   }
 
   /** Hides the tooltip after the delay in ms, defaults to tooltip-delay-hide or 0ms if no input */
-  hide(delay: number = this.hideDelay): void {
+  hide(delay: number = this.hideDelay()): void {
     if (this._tooltipInstance) {
       this._tooltipInstance.hide(delay);
     }

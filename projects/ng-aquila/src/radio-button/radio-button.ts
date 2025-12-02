@@ -12,6 +12,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ContentChild,
   ContentChildren,
   DoCheck,
@@ -20,12 +21,14 @@ import {
   forwardRef,
   inject,
   Input,
+  input,
   OnDestroy,
   OnInit,
   Optional,
   Output,
   QueryList,
   Self,
+  signal,
   ViewChild,
 } from '@angular/core';
 import {
@@ -37,7 +40,7 @@ import {
   NgForm,
 } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { map, startWith, takeUntil } from 'rxjs/operators';
 
 /** The change event object emitted by the radio group and radio button. */
 export class NxRadioChange {
@@ -82,6 +85,12 @@ export class NxRadioGroupComponent
 
   /** @docs-private */
   errorState = false;
+
+  /**
+   * @docs-private
+   * Signal to broadcast error IDs to child radio buttons
+   */
+  readonly _errorIds = signal<string>('');
 
   /** Sets all radios in the group to readonly. */
   @Input({ transform: booleanAttribute }) set readonly(value) {
@@ -174,6 +183,7 @@ export class NxRadioGroupComponent
 
   private _onChange: (value: any) => void = () => {};
   private _onTouched: () => void = () => {};
+  private readonly _destroyed = new Subject<void>();
 
   constructor(
     private readonly _cdr: ChangeDetectorRef,
@@ -196,9 +206,15 @@ export class NxRadioGroupComponent
     }
     this._checkSelectedRadioButton();
 
-    const errorIds = this.errorChildren.map((errorItem) => errorItem.id).join(' ');
-
-    this._radios.forEach((radioButton) => (radioButton.ariaDescribedBy = errorIds));
+    this.errorChildren.changes
+      .pipe(
+        startWith(this.errorChildren),
+        takeUntil(this._destroyed),
+        map(() => this.errorChildren.map((child) => child.id).join(' ')),
+      )
+      .subscribe((errorIds) => {
+        this._errorIds.set(errorIds);
+      });
   }
 
   ngDoCheck(): void {
@@ -211,6 +227,8 @@ export class NxRadioGroupComponent
   }
 
   ngOnDestroy(): void {
+    this._destroyed.next();
+    this._destroyed.complete();
     this._stateChanges.complete();
   }
 
@@ -319,9 +337,16 @@ export class NxRadioComponent
   @ViewChild('radioLabelWrapper', { static: true }) _radioLabelWrapper!: ElementRef;
   @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
-  @Input() ariaLabel: string | null = null;
-  @Input() ariaLabelledBy: string | null = null;
-  @Input() ariaDescribedBy: string | null = null;
+  readonly ariaLabel = input<string | null>(null);
+  readonly ariaLabelledBy = input<string | null>(null);
+  readonly ariaDescribedBy = input<string | null>(null);
+
+  /** @docs-private */
+  readonly _getAriaDescribedBy = computed(() => {
+    const inputAriaDescribedBy = this.ariaDescribedBy();
+    const groupErrorIds = this.radioGroup?._errorIds();
+    return groupErrorIds || inputAriaDescribedBy;
+  });
 
   /** Sets radio to readonly. */
   @Input({ transform: booleanAttribute }) set readonly(value) {

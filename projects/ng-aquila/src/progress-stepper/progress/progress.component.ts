@@ -9,6 +9,7 @@ import {
   Component,
   ElementRef,
   Input,
+  input,
   numberAttribute,
   Optional,
 } from '@angular/core';
@@ -28,10 +29,10 @@ import { NxProgressStepperDirective } from '../progress-stepper.component';
 })
 export class NxProgressStepperComponent extends NxProgressStepperDirective {
   /** Overrides the `aria-label` of the nx-progressbar. Defaults to "Progress" */
-  @Input() progressbarAriaLabel: string | undefined = 'Progress';
+  readonly progressbarAriaLabel = input<string | undefined>('Progress');
 
   /** Sets the `aria-labelledby` of the nx-progressbar */
-  @Input() progressbarAriaLabeledBy: string | undefined;
+  readonly progressbarAriaLabeledBy = input<string>();
 
   /** Sets the current value/progress of the progress bar. */
   @Input({ transform: numberAttribute }) set progress(value: number) {

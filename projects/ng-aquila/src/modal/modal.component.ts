@@ -12,6 +12,7 @@ import {
   ElementRef,
   EventEmitter,
   Input,
+  input,
   OnDestroy,
   OnInit,
   Output,
@@ -51,8 +52,8 @@ export class NxModalContentDirective {}
   host: {
     '[class.nx-modal__title]': 'true',
   },
-  template: `@if (status) {
-      <nx-status-icon [type]="status" class="nx-modal__status"></nx-status-icon>
+  template: `@if (status()) {
+      <nx-status-icon [type]="status()!" class="nx-modal__status"></nx-status-icon>
     }
     <ng-content></ng-content>`,
   imports: [NxIconModule],
@@ -63,7 +64,7 @@ export class NxModalTitleComponent {
    *
    * Default: `undefined`.
    */
-  @Input() status?: NxStatusIconType;
+  readonly status = input<NxStatusIconType>();
 }
 
 @Component({
@@ -72,7 +73,7 @@ export class NxModalTitleComponent {
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./modal.component.scss'],
   host: {
-    '[class.nx-modal--fixed-width]': 'size === "fixed"',
+    '[class.nx-modal--fixed-width]': 'size() === "fixed"',
     '[class.nx-modal--entering]': 'true',
     '[class.nx-modal--leaving]': '_isLeaving()',
   },
@@ -106,32 +107,32 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
    * A template reference variable pointing to the template
    * which contains the content of the modal view.
    */
-  @Input('modalBody') body!: TemplateRef<any>;
+  readonly body = input<TemplateRef<any>>(undefined, { alias: 'modalBody' });
 
   /**
    * Whether the modal view should close when the user hits the escape key.
    * Default: `true`.
    */
-  @Input() hideOnEsc = true;
+  readonly hideOnEsc = input(true);
 
   /**
    * Whether the modal view should close when the user clicks on the backdrop.
    * Default: `true`.
    */
-  @Input() hideOnClickOutside = true;
+  readonly hideOnClickOutside = input(true);
 
   /**
    * Whether the modal view should have a close icon in the upper right corner.
    * Default: `true`.
    */
-  @Input() showCloseIcon = true;
+  readonly showCloseIcon = input(true);
 
   /**
    * Controls the width of the dialog.
    * On `auto` the width is controlled by the content width,
    * on `fixed` the dialog gets a fixed width of 736px if the viewport is big enough.
    */
-  @Input('windowSize') size: 'fixed' | 'auto' = 'auto';
+  readonly size = input<'fixed' | 'auto'>('auto', { alias: 'windowSize' });
 
   /**
    * An event emitted when the user clicks on the backdrop or uses the built-in close button.
@@ -163,7 +164,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
       document.body,
       'keyup.esc',
       () => {
-        if (this.hideOnEsc) {
+        if (this.hideOnEsc()) {
           this.modalService.close();
         }
       },
@@ -171,7 +172,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    if (this.showCloseIcon) {
+    if (this.showCloseIcon()) {
       this._focusMonitor.monitor(this._closeButton);
     }
   }
@@ -185,7 +186,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
 
   /** @docs-private */
   clickOutsideModal() {
-    if (this.hideOnClickOutside) {
+    if (this.hideOnClickOutside()) {
       this.modalService.close();
     }
   }

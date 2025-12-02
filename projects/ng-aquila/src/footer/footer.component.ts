@@ -6,7 +6,7 @@ import {
   ContentChild,
   Directive,
   ElementRef,
-  Input,
+  input,
   OnDestroy,
 } from '@angular/core';
 
@@ -67,7 +67,7 @@ export class NxFooterLinkDirective implements OnDestroy, AfterViewInit {
   imports: [NxFooterCopyrightDirective],
 })
 export class NxFooterComponent {
-  @Input() copyright?: string | null;
+  readonly copyright = input<string | null>();
 
   readonly currentYear = new Date().getFullYear();
 

@@ -16,6 +16,7 @@ import {
   forwardRef,
   inject,
   Input,
+  input,
   OnDestroy,
   Optional,
   QueryList,
@@ -66,7 +67,7 @@ export class NxRadioToggleComponent
   @ContentChild(NxErrorComponent) errorChild?: NxErrorComponent;
 
   /** Whether the component should switch to vertical buttons on mobile viewports. */
-  @Input({ transform: booleanAttribute }) disableMobile = false;
+  readonly disableMobile = input(false, { transform: booleanAttribute });
 
   private _selection: any;
 
@@ -207,7 +208,7 @@ export class NxRadioToggleComponent
       .subscribe((toggles: QueryList<NxRadioToggleButtonComponent>) => {
         toggles.forEach((toggle) => {
           toggle.resetClasses();
-          if (toggle.value === this.selection) {
+          if (toggle.value() === this.selection) {
             // We need to defer the selection for the edge case that the button with the value of this.selection
             // didn't exist yet but was added afterwards to prevent changed after checked errors
             setTimeout(() => toggle.select());
@@ -247,7 +248,7 @@ export class NxRadioToggleComponent
   @Input('selection') writeValue(value: any): void {
     this._selection = value;
     const correspondingButton = this.toggleButtons.find(
-      (button: NxRadioToggleButtonBaseComponent) => button.value === this._selection,
+      (button: NxRadioToggleButtonBaseComponent) => button.value() === this._selection,
     );
     if (correspondingButton) {
       (correspondingButton as NxRadioToggleButtonComponent).select();

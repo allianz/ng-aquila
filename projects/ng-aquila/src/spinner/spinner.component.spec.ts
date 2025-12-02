@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { NxSpinnerComponent, SpinnerSize } from './spinner.component';
+import { AriaPolite, NxSpinnerComponent, SpinnerSize } from './spinner.component';
 import { NxSpinnerModule } from './spinner.module';
 
 @Directive({ standalone: true })
@@ -105,29 +105,29 @@ describe('nxSpinnerComponent', () => {
     });
 
     it('should set aria-live to polite', () => {
-      componentInstance.ariaPoliteness = 'polite';
+      (testInstance as BasicTestSpinner).ariaPoliteness = 'polite';
       fixture.detectChanges();
       expect(spinnerNativeElement.getAttribute('aria-live')).toBe('polite');
     });
 
     it('should set aria-live to off', () => {
-      componentInstance.ariaPoliteness = 'off';
+      (testInstance as BasicTestSpinner).ariaPoliteness = 'off';
       fixture.detectChanges();
       expect(spinnerNativeElement.getAttribute('aria-live')).toBe('off');
     });
 
     it('should set aria-live to assertive', () => {
-      componentInstance.ariaPoliteness = 'assertive';
+      (testInstance as BasicTestSpinner).ariaPoliteness = 'assertive';
       fixture.detectChanges();
       expect(spinnerNativeElement.getAttribute('aria-live')).toBe('assertive');
     });
 
     it('should update aria-live when ariaLive input changes', () => {
-      componentInstance.ariaPoliteness = 'polite';
+      (testInstance as BasicTestSpinner).ariaPoliteness = 'polite';
       fixture.detectChanges();
       expect(spinnerNativeElement.getAttribute('aria-live')).toBe('polite');
 
-      componentInstance.ariaPoliteness = 'off';
+      (testInstance as BasicTestSpinner).ariaPoliteness = 'off';
       fixture.detectChanges();
       expect(spinnerNativeElement.getAttribute('aria-live')).toBe('off');
     });
@@ -140,10 +140,12 @@ describe('nxSpinnerComponent', () => {
 });
 
 @Component({
-  template: `<nx-spinner></nx-spinner>`,
+  template: `<nx-spinner [ariaPoliteness]="ariaPoliteness"></nx-spinner>`,
   imports: [NxSpinnerModule],
 })
-class BasicTestSpinner extends SpinnerTest {}
+class BasicTestSpinner extends SpinnerTest {
+  ariaPoliteness: AriaPolite = 'assertive';
+}
 
 @Component({
   template: `<nx-spinner [size]="size" [negative]="negative"></nx-spinner>`,

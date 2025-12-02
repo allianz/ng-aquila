@@ -239,7 +239,8 @@ describe('NxTooltipDirective', () => {
 
     it('should hide if disabled while visible', fakeAsync(() => {
       // Display the tooltip with a timeout before hiding.
-      tooltipDirective.hideDelay = 1000;
+      fixture.componentInstance.hideDelay = 1000;
+      fixture.detectChanges();
       tooltipDirective.show();
       fixture.detectChanges();
       tick(200);
@@ -1006,7 +1007,14 @@ describe('NxTooltipComponent', () => {
 @Component({
   selector: 'nx-app',
   template: `@if (showButton) {
-    <button #button [nxTooltip]="message" [nxTooltipPosition]="position">Button</button>
+    <button
+      #button
+      [nxTooltip]="message"
+      [nxTooltipPosition]="position"
+      [nxTooltipHideDelay]="hideDelay"
+    >
+      Button
+    </button>
   }`,
   imports: [NxTooltipModule, OverlayModule],
 })
@@ -1015,6 +1023,7 @@ class BasicTooltipDemo {
   message: any = initialTooltipMessage;
   showButton = true;
   showTooltipClass = false;
+  hideDelay = 200;
   @ViewChild(NxTooltipDirective) tooltip!: NxTooltipDirective;
   @ViewChild('button') button!: ElementRef<HTMLButtonElement>;
 

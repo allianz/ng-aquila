@@ -34,6 +34,7 @@ import {
   inject,
   InjectionToken,
   Input,
+  input,
   NgZone,
   OnDestroy,
   Optional,
@@ -178,7 +179,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
     if (this._show !== value) {
       this._show = value;
       if (this._show) {
-        if (this.popover.templateRef) {
+        if (this.popover().templateRef) {
           this.openPopover();
         } else {
           setTimeout(() => {
@@ -199,8 +200,9 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
   @Input('nxPopoverCloseable') set closeable(value: BooleanInput) {
     this._closeable = coerceBooleanProperty(value);
 
-    if (this.popover) {
-      this.popover.showCloseButton = this.isCloseable();
+    const popover = this.popover();
+    if (popover) {
+      popover.showCloseButton = this.isCloseable();
     }
   }
   get closeable(): boolean {
@@ -221,8 +223,9 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
   @Input() set hidePopoverArrow(value: BooleanInput) {
     this._hidearrow = coerceBooleanProperty(value);
 
-    if (this.popover) {
-      this.popover.hidePopoverArrow = this._hidearrow;
+    const popover = this.popover();
+    if (popover) {
+      popover.hidePopoverArrow = this._hidearrow;
     }
   }
   get hidePopoverArrow(): boolean {
@@ -249,16 +252,16 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
   private _popoverMaxWidth: string | undefined;
 
   /** Links the trigger with the popover to open. */
-  @Input('nxPopoverTriggerFor') popover!: NxPopoverComponent;
+  readonly popover = input.required<NxPopoverComponent>({ alias: 'nxPopoverTriggerFor' });
 
   /** Sets the desired direction to open the popover. E.g., right, left, bottom, top */
-  @Input('nxPopoverDirection') direction: PopoverDirection = 'right';
+  readonly direction = input<PopoverDirection>('right', { alias: 'nxPopoverDirection' });
 
   /** Whether the popover will be opened automatically. */
-  @Input('nxPopoverInitialVisible') popoverInitialVisible = false;
+  readonly popoverInitialVisible = input(false, { alias: 'nxPopoverInitialVisible' });
 
   /** An event is emitted when the visibility of the popopver changes. */
-  @Input('nxPopoverVisibleChange') visibleChange = new EventEmitter<boolean>(); // TODO this should be an output
+  readonly visibleChange = input(new EventEmitter<boolean>(), { alias: 'nxPopoverVisibleChange' }); // TODO this should be an output
 
   /** Whether the popover opens in modal state. */
   @Input('nxPopoverModal') set modal(value: BooleanInput) {
@@ -273,7 +276,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
   // If nxPopoverTrigger equals to 'click' the popover opens on click and closes on a click of the close icon or pressing ESC key.
   // If nxPopoverTrigger equals to 'manual' the popover opens only when programatically requested.
   /** Sets the way to trigger the popover. Options are hover, click, manual */
-  @Input('nxPopoverTrigger') trigger: PopoverTriggerType = 'click';
+  readonly trigger = input<PopoverTriggerType>('click', { alias: 'nxPopoverTrigger' });
 
   /** Sets the scroll strategy. 'close' closes the popover on scroll while 'reposition' scrolls the popover with the origin. */
   @Input('nxPopoverScrollStrategy') set scrollStrategy(
@@ -318,12 +321,12 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
     if (!this._platform.IOS && !this._platform.ANDROID) {
       this._manualListeners
         .set('mouseenter', () => {
-          if (this.trigger === 'hover') {
+          if (this.trigger() === 'hover') {
             this.show = true;
           }
         })
         .set('mouseleave', () => {
-          if (this.trigger === 'hover') {
+          if (this.trigger() === 'hover') {
             this.show = false;
           }
         })
@@ -340,7 +343,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
               this.handleClick();
               break;
             case TAB:
-              if (this.trigger === 'hover') {
+              if (this.trigger() === 'hover') {
                 this.show = !this.isOpen;
               }
               break;
@@ -349,7 +352,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
         });
     } else {
       this._manualListeners.set('touchstart', () => {
-        if (this.trigger === 'hover') {
+        if (this.trigger() === 'hover') {
           this.show = true;
         }
       });
@@ -367,18 +370,20 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
       .monitor(this.elementRef.nativeElement, true)
       .pipe(takeUntil(this._destroyed))
       .subscribe((origin) => {
-        if (origin === 'keyboard' && this.trigger === 'hover') {
+        if (origin === 'keyboard' && this.trigger() === 'hover') {
           this._ngZone.run(() => (this.show = true));
         }
       });
 
-    this.popover.id = this.id;
+    this.popover().id = this.id;
 
-    this.popover.closeButtonClick.pipe(takeUntil(this._destroyed)).subscribe(() => {
-      this.show = false;
-    });
+    this.popover()
+      .closeButtonClick.pipe(takeUntil(this._destroyed))
+      .subscribe(() => {
+        this.show = false;
+      });
 
-    if (this.popoverInitialVisible || this._show) {
+    if (this.popoverInitialVisible() || this._show) {
       this.show = true;
     }
   }
@@ -407,9 +412,10 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
 
   /** @docs-private */
   isCloseable(): boolean {
+    const trigger = this.trigger();
     return (
-      (this.trigger === 'click' && this._closeable === null) ||
-      (!!this._closeable && this.trigger !== 'hover')
+      (trigger === 'click' && this._closeable === null) ||
+      (!!this._closeable && trigger !== 'hover')
     );
   }
 
@@ -422,9 +428,10 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
 
   /** @docs-private */
   handleClick() {
-    if (this.trigger === 'click') {
+    const trigger = this.trigger();
+    if (trigger === 'click') {
       this.show = !this.isOpen;
-    } else if (this.trigger === 'hover') {
+    } else if (trigger === 'hover') {
       this.show = true;
     }
   }
@@ -450,7 +457,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
 
       this._embeddedViewRef = this.createOverlay().attach(this.portal);
 
-      if (this.trigger !== 'hover') {
+      if (this.trigger() !== 'hover') {
         if (this._triggerButton) {
           const triggerButton = this._triggerButton;
           triggerButton.setTriggerActive();
@@ -482,8 +489,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
 
   /** Sets some popover component properties that are needed to render it properly. */
   private setPopoverProperties() {
-    this.popover.triggerType = this.trigger;
-    this.popover.showCloseButton = this.isCloseable();
+    this.popover().triggerType = this.trigger();
+    this.popover().showCloseButton = this.isCloseable();
   }
 
   /**
@@ -505,7 +512,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
   // on the popover component
   private closePopover(): void {
     if (this.overlayRef!.hasAttached()) {
-      if (this.trigger !== 'hover') {
+      if (this.trigger() !== 'hover') {
         const element = this.getPopoverContainer();
         this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__content')!);
         this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__close-icon')!);
@@ -537,7 +544,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
 
   private createOverlay(): OverlayRef {
     if (!this.overlayRef) {
-      this.portal = new TemplatePortal(this.popover.templateRef, this.viewContainerRef);
+      this.portal = new TemplatePortal(this.popover().templateRef, this.viewContainerRef);
       const overlayState = new OverlayConfig();
       overlayState.width = this.popoverWidth;
       overlayState.maxWidth = this.popoverMaxWidth;
@@ -604,7 +611,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
           this.show = false;
         }
         this.changeShow.emit(this._show);
-        this.popover.emitClosedEvent();
+        this.popover().emitClosedEvent();
       });
   }
 
@@ -624,7 +631,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
       )
       .subscribe((event) => {
         if (this.isOpen) {
-          this.popover?._lastFocusOrigin.set('keyboard');
+          this.popover()?._lastFocusOrigin.set('keyboard');
           this.show = false;
         }
       });
@@ -636,7 +643,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
       .pipe(
         map((event) => event.target),
         filter((target) => !this.elementRef.nativeElement.contains(target)),
-        takeUntil(this.popover.closed),
+        takeUntil(this.popover().closed),
       )
       .subscribe(() => {
         this.show = false;
@@ -645,13 +652,13 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
 
   private positionOverlay(pair: ConnectionPositionPair) {
     if (pair.originX === 'end' && pair.overlayX === 'start') {
-      this.popover.direction = this.isRtl ? 'left' : 'right';
+      this.popover().direction = this.isRtl ? 'left' : 'right';
     } else if (pair.originY === 'bottom' && pair.overlayY === 'top') {
-      this.popover.direction = 'bottom';
+      this.popover().direction = 'bottom';
     } else if (pair.originX === 'start' && pair.overlayX === 'end') {
-      this.popover.direction = this.isRtl ? 'right' : 'left';
+      this.popover().direction = this.isRtl ? 'right' : 'left';
     } else if (pair.originY === 'top' && pair.overlayY === 'bottom') {
-      this.popover.direction = 'top';
+      this.popover().direction = 'top';
     }
   }
 
@@ -666,27 +673,28 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
       parentElementPositionX +
       parentElementWidth -
       (parentElementLeftOffset + overlayElementLeftOffset);
+    const popover = this.popover();
     if (pair.originX === pair.overlayX) {
       const direction = 'left';
       const arrowStyle = { left: '0' };
 
       arrowStyle[direction] = targetPosition + 'px';
-      this.popover.arrowStyle = arrowStyle;
+      popover.arrowStyle = arrowStyle;
     }
     if ((pair.originY === 'bottom' || pair.originY === 'top') && pair.overlayX === 'center') {
-      this.popover.arrowStyle = { left: targetPosition + 'px' };
+      popover.arrowStyle = { left: targetPosition + 'px' };
     }
 
     if ((pair.originX === 'end' || pair.originX === 'start') && pair.overlayY === 'center') {
-      this.popover.arrowStyle = { top: '50%' };
+      popover.arrowStyle = { top: '50%' };
     }
   }
 
   private getPosition(): FlexibleConnectedPositionStrategy {
-    const origin = this._getOrigin(this.direction);
-    const overlay = this._getOverlayPosition(this.direction);
-    const offset = this._getOffset(this.direction);
-    const fallbacks = this._getFallbackPositions(this.direction);
+    const origin = this._getOrigin(this.direction());
+    const overlay = this._getOverlayPosition(this.direction());
+    const offset = this._getOffset(this.direction());
+    const fallbacks = this._getFallbackPositions(this.direction());
     return this.overlay
       .position()
       .flexibleConnectedTo(this.elementRef)
@@ -706,7 +714,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
     const toFocus = this._elementFocusedBeforePopoverWasOpened;
     // We need the extra check, because IE can set the `activeElement` to null in some cases.
     if (toFocus && typeof toFocus.focus === 'function') {
-      this._focusMonitor.focusVia(toFocus, this.popover?._lastFocusOrigin() ?? null);
+      this._focusMonitor.focusVia(toFocus, this.popover()?._lastFocusOrigin() ?? null);
     }
   }
 
@@ -870,7 +878,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
   private _getVerticalFallbackPositionPairs(
     direction: PopoverVerticalDirection,
   ): ConnectionPositionPair[] {
-    const isSelectedDirection = direction === this.direction;
+    const isSelectedDirection = direction === this.direction();
     const verticalFallbackPositionPairs: ConnectionPositionPair[] = [];
     const basePositionPair = {
       ...this._getOrigin(direction),

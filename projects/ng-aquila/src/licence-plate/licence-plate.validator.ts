@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, input } from '@angular/core';
 import {
   AbstractControl,
   NG_VALIDATORS,
@@ -60,9 +60,9 @@ export class NxLicencePlateValidatorDirective implements Validator {
    * Supports validation for german standard and special plate numbers.
    * Choose `other` to allow all values.
    */
-  @Input('nxLicensePlate') type: NxLicencePlateType = 'other';
+  readonly type = input<NxLicencePlateType>('other', { alias: 'nxLicensePlate' });
 
   validate(control: AbstractControl): ValidationErrors | null {
-    return nxLicensePlateValidator(this.type)(control);
+    return nxLicensePlateValidator(this.type())(control);
   }
 }

@@ -1,10 +1,10 @@
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
-import { Directive, inject, Input } from '@angular/core';
+import { Directive, inject, input } from '@angular/core';
 
 @Directive({
   selector: '[nxFormfieldError], [nxError]',
   host: {
-    '[attr.id]': 'id',
+    '[attr.id]': 'id()',
     'aria-live': 'assertive',
     'aria-atomic': 'true',
   },
@@ -13,5 +13,5 @@ import { Directive, inject, Input } from '@angular/core';
 export class NxFormfieldErrorDirective {
   // create a unique id to be used by aria-described-by
   /** Sets the id of the formfield error. */
-  @Input() id = inject(IdGenerationService).nextId('nx-formfield-error');
+  readonly id = input(inject(IdGenerationService).nextId('nx-formfield-error'));
 }

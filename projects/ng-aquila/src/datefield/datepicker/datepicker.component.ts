@@ -180,10 +180,10 @@ export class NxDatepickerComponent<D> implements OnDestroy {
   private _startAt!: D | null;
 
   /** The view that the calendar should start in. */
-  @Input() startView: 'month' | 'year' | 'multi-year' = 'month';
+  readonly startView = input<'month' | 'year' | 'multi-year'>('month');
 
   /** Determines whether the today button is displayed in the calendar. */
-  @Input() showTodayButton: boolean = false;
+  readonly showTodayButton = input<boolean>(false);
   /**
    * Whether the datepicker pop-up should be disabled.
    * The datepicker is also disabled if the belonging input is readonly.
@@ -223,7 +223,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
   @Output() readonly monthSelected = new EventEmitter<D | DateRange<D>>();
 
   /** Classes to be passed to the date picker panel. Supports the same syntax as `ngClass`. */
-  @Input() panelClass!: string | string[];
+  readonly panelClass = input<string | string[]>();
 
   /** Emits when the datepicker has been opened. */
   @Output('opened') readonly openedStream = new EventEmitter<void>();

@@ -1,5 +1,5 @@
 import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
-import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, input } from '@angular/core';
 
 /**
  * Suffix for seasonal licence plate inputs.
@@ -7,8 +7,8 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular
 @Component({
   selector: 'nx-licence-plate-season-suffix',
   template: `
-    <span>{{ _format(startMonth) }}</span>
-    <span>{{ _format(endMonth) }}</span>
+    <span>{{ _format(startMonth()) }}</span>
+    <span>{{ _format(endMonth()) }}</span>
   `,
   styleUrls: ['licence-plate-season-suffix.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,12 +18,12 @@ export class NxLicencePlateSeasonSuffixComponent {
   /**
    * Start month of the licence plate.
    */
-  @Input() startMonth = 1;
+  readonly startMonth = input(1);
 
   /**
    * End month of the licence plate.
    */
-  @Input() endMonth = 1;
+  readonly endMonth = input(1);
 
   @HostBinding('class.is-disabled') get _disabled(): boolean {
     return this._formField._control?.disabled;

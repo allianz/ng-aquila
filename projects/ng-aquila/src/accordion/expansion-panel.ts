@@ -17,6 +17,7 @@ import {
   inject,
   InjectionToken,
   Input,
+  input,
   OnChanges,
   OnDestroy,
   Optional,
@@ -125,7 +126,9 @@ export class NxExpansionPanelComponent
   );
 
   /** Whether scrollIntoView should be enabled. */
-  @Input() scrollIntoViewActive? = this._defaultOptions?.scrollIntoViewActive;
+  readonly scrollIntoViewActive = input<boolean | undefined>(
+    this._defaultOptions?.scrollIntoViewActive,
+  );
 
   /** Configuration for the scrollIntoView behaviour after the expand animation is done. */
   @Input() scrollIntoViewOptions? = this._defaultOptions?.scrollIntoViewOptions;
@@ -175,7 +178,7 @@ export class NxExpansionPanelComponent
     }
 
     // Scroll into view when the panel opens
-    if (this.scrollIntoViewActive) {
+    if (this.scrollIntoViewActive()) {
       this._scrollSubscription = this.opened.pipe().subscribe(() => {
         if (this.expanded) {
           // Use setTimeout to ensure the animation has started

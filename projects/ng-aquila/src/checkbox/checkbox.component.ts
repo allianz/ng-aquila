@@ -21,6 +21,7 @@ import {
   inject,
   Injector,
   Input,
+  input,
   OnDestroy,
   OnInit,
   Optional,
@@ -360,8 +361,8 @@ export class NxCheckboxComponent
 
   @ContentChild(NxErrorComponent) error: NxErrorComponent | undefined;
 
-  @Input() ariaLabel: string | null = null;
-  @Input() ariaLabelledBy: string | null = null;
+  readonly ariaLabel = input<string | null>(null);
+  readonly ariaLabelledBy = input<string | null>(null);
   /**
    * Id of the checkbox.
    *

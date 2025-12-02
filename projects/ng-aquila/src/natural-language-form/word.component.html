@@ -3,7 +3,7 @@
     class="cdk-visually-hidden"
     [attr.for]="hasDropdown ? '' : control().id"
     [attr.id]="labelId"
-    >{{ label }}</label
+    >{{ label() }}</label
   >
   <!-- We only allow formfield controls here -->
   @if (!hasDropdown) {

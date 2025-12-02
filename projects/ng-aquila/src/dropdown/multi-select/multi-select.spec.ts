@@ -442,7 +442,7 @@ describe('NxMultiSelectComponent', () => {
         const ariaDescribedBy2 = await input2.getAttribute('aria-describedby');
         const ariaInvalid2 = await input2.getAttribute('aria-invalid');
 
-        expect(ariaDescribedBy2).toBe(error.id);
+        expect(ariaDescribedBy2).toBe(error.id());
         expect(ariaInvalid2).toBe('true');
       });
 
@@ -912,7 +912,7 @@ describe('NxMultiSelectComponent', () => {
       });
 
       it('should displayed value in the label, If the selected value still exists after the options have been changed', async () => {
-        multiSelectInstance.selectValue = 'label';
+        (testInstance as ComplexMultiSelectComponent).selectValue = 'label';
         testInstance.model = ['Potato'];
         testInstance.options = [
           {

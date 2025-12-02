@@ -44,7 +44,7 @@
     [isRange]="isRange()"
     [(activeDate)]="_activeDate"
     [selected]="_selected()"
-    [dateFilter]="dateFilter"
+    [dateFilter]="dateFilter()"
     [maxDate]="maxDate"
     [minDate]="minDate"
     (hoverDateChange)="_hoverDateChange($event)"
@@ -57,7 +57,7 @@
     [isRange]="isRange()"
     [(activeDate)]="_activeDate"
     [selected]="selected"
-    [dateFilter]="dateFilter"
+    [dateFilter]="dateFilter()"
     [maxDate]="maxDate"
     [minDate]="minDate"
     (monthSelected)="_monthSelectedInYearView($event)"
@@ -68,7 +68,7 @@
   <nx-multi-year-view
     [(activeDate)]="_activeDate"
     [selected]="selected"
-    [dateFilter]="dateFilter"
+    [dateFilter]="dateFilter()"
     [maxDate]="maxDate"
     [minDate]="minDate"
     (yearSelected)="_yearSelectedInMultiYearView($event)"
@@ -77,7 +77,7 @@
   </nx-multi-year-view>
   } }
 </div>
-@if (showTodayButton) {
+@if (showTodayButton()) {
 <div class="nx-calendar-footer">
   <button
     #todayButton

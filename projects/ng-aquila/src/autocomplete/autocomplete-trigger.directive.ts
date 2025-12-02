@@ -30,6 +30,7 @@ import {
   InjectionToken,
   Injector,
   Input,
+  input,
   NgZone,
   OnChanges,
   OnDestroy,
@@ -118,7 +119,7 @@ export function getNxAutocompleteMissingPanelError(): Error {
     autocomplete: 'off',
     'aria-autocomplete': 'list',
     '[attr.aria-expanded]': 'panelOpen.toString()',
-    '[attr.aria-owns]': 'this.panelOpen ? autocomplete?.id : null',
+    '[attr.aria-owns]': 'this.panelOpen ? autocomplete()?.id : null',
     // Note: we use `focusin`, as opposed to `focus`, in order to open the panel
     // a little earlier. This avoids issues where IE delays the focusing of the input.
     '(focusin)': '_handleFocus()',
@@ -180,7 +181,7 @@ export class NxAutocompleteTriggerDirective
   private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
   /** The autocomplete panel to be attached to this trigger. */
-  @Input('nxAutocomplete') autocomplete!: NxAutocompleteComponent;
+  readonly autocomplete = input.required<NxAutocompleteComponent>({ alias: 'nxAutocomplete' });
 
   /** The items callback. Called with input value, must return Observable of Array of strings */
   @Input('nxAutocompleteItems') set itemsCb(val: (val: string) => Observable<string[]>) {
@@ -212,13 +213,13 @@ export class NxAutocompleteTriggerDirective
   private _autocompleteDisabled = false;
 
   /* Whether the flyout is allowed to grow longer than the input element. */
-  @Input() panelGrow: boolean = false;
+  readonly panelGrow = input<boolean>(false);
   /* Sets the maximum width of the flyout. Accepts a number for pixel values or a string for any css value */
-  @Input() panelMaxWidth: string | number = '';
+  readonly panelMaxWidth = input<string | number>('');
 
   /** Whether or not the autocomplete panel is open. */
   get panelOpen(): boolean {
-    return this._overlayAttached && this.autocomplete.showPanel;
+    return this._overlayAttached && this.autocomplete().showPanel;
   }
   private _overlayAttached = false;
 
@@ -226,8 +227,9 @@ export class NxAutocompleteTriggerDirective
   readonly optionSelections: Observable<NxAutocompleteOptionSelected> = defer<
     Observable<NxAutocompleteOptionSelected>
   >(() => {
-    if (this.autocomplete?.options) {
-      return merge(...this.autocomplete.options.map((option) => option.onSelectionChange));
+    const autocomplete = this.autocomplete();
+    if (autocomplete?.options) {
+      return merge(...autocomplete.options.map((option) => option.onSelectionChange));
     }
 
     // If there are any subscribers before `ngAfterViewInit`, the `autocomplete` will be undefined.
@@ -237,8 +239,9 @@ export class NxAutocompleteTriggerDirective
 
   /** The currently active option, coerced to NxAutocompleteOptionComponent type. */
   get activeOption(): NxAutocompleteOptionComponent | null {
-    if (this.autocomplete?._keyManager) {
-      return this.autocomplete._keyManager.activeItem;
+    const autocomplete = this.autocomplete();
+    if (autocomplete?._keyManager) {
+      return autocomplete._keyManager.activeItem;
     }
 
     return null;
@@ -370,10 +373,11 @@ export class NxAutocompleteTriggerDirective
       this._controlValueChangesSubscription.unsubscribe();
     }
 
-    if (typeof this._itemsCb === 'function' && this.autocomplete && !this.autocompleteDisabled) {
+    const autocomplete = this.autocomplete();
+    if (typeof this._itemsCb === 'function' && autocomplete && !this.autocompleteDisabled) {
       const itemsSubject = new Subject<string[]>();
 
-      this.autocomplete.items = itemsSubject;
+      autocomplete.items = itemsSubject;
 
       const valueChanges = this._formField?._control?.ngControl?.valueChanges || this._valueChanges;
 
@@ -417,10 +421,10 @@ export class NxAutocompleteTriggerDirective
 
     if (this.panelOpen) {
       // Only emit if the panel was visible.
-      this.autocomplete.closed.emit();
+      this.autocomplete().closed.emit();
     }
 
-    this.autocomplete._isOpen = this._overlayAttached = false;
+    this.autocomplete()._isOpen = this._overlayAttached = false;
 
     if (this._overlayRef?.hasAttached()) {
       this._overlayRef.detach();
@@ -445,7 +449,7 @@ export class NxAutocompleteTriggerDirective
   get panelClosingActions(): Observable<NxAutocompleteOptionSelected> {
     return merge(
       this.optionSelections,
-      this.autocomplete._keyManager.tabOut.pipe(filter(() => this._overlayAttached)),
+      this.autocomplete()._keyManager.tabOut.pipe(filter(() => this._overlayAttached)),
       this._closeKeyEventStream,
       this._outsideClickStream,
       this._overlayRef
@@ -498,16 +502,16 @@ export class NxAutocompleteTriggerDirective
       this._resetActiveItem();
       event.preventDefault();
     } else {
-      const prevActiveItem = this.autocomplete._keyManager.activeItem;
+      const prevActiveItem = this.autocomplete()._keyManager.activeItem;
       const isArrowKey = keyCode === UP_ARROW || keyCode === DOWN_ARROW;
 
       if (this.panelOpen || keyCode === TAB) {
-        this.autocomplete._keyManager.onKeydown(keyEvent);
+        this.autocomplete()._keyManager.onKeydown(keyEvent);
       } else if (isArrowKey && this._isFieldEnabled()) {
         this.openPanel();
       }
 
-      if (isArrowKey || this.autocomplete._keyManager.activeItem !== prevActiveItem) {
+      if (isArrowKey || this.autocomplete()._keyManager.activeItem !== prevActiveItem) {
         this._element.nativeElement.ariaActiveDescendantElement =
           this.activeOption?.elementRef.nativeElement;
         this._scrollToOption();
@@ -589,31 +593,30 @@ export class NxAutocompleteTriggerDirective
    * not adjusted.
    */
   private _scrollToOption(): void {
-    if (this.autocomplete.options.length === 0) {
+    if (this.autocomplete().options.length === 0) {
       return;
     }
     afterNextRender(
       () => {
         let optionOffset = 0;
-        let optionHeight = this.autocomplete.options.first.elementRef.nativeElement.offsetHeight;
+        let optionHeight = this.autocomplete().options.first.elementRef.nativeElement.offsetHeight;
 
-        if (this.autocomplete._keyManager.activeItem) {
-          optionOffset =
-            this.autocomplete._keyManager.activeItem.elementRef.nativeElement.offsetTop;
-          optionHeight =
-            this.autocomplete._keyManager.activeItem.elementRef.nativeElement.offsetHeight;
+        const autocomplete = this.autocomplete();
+        if (autocomplete._keyManager.activeItem) {
+          optionOffset = autocomplete._keyManager.activeItem.elementRef.nativeElement.offsetTop;
+          optionHeight = autocomplete._keyManager.activeItem.elementRef.nativeElement.offsetHeight;
         }
 
-        const panelOffsetTop = this.autocomplete.panel.nativeElement.offsetTop;
+        const panelOffsetTop = autocomplete.panel.nativeElement.offsetTop;
 
         const newScrollPosition = _getOptionScrollPosition(
           optionOffset,
           optionHeight,
-          this.autocomplete._getScrollTop() + panelOffsetTop,
-          this.autocomplete.panel.nativeElement.offsetHeight,
+          autocomplete._getScrollTop() + panelOffsetTop,
+          autocomplete.panel.nativeElement.offsetHeight,
         );
 
-        this.autocomplete._setScrollTop(newScrollPosition - panelOffsetTop);
+        autocomplete._setScrollTop(newScrollPosition - panelOffsetTop);
       },
       { injector: this._injector },
     );
@@ -633,7 +636,7 @@ export class NxAutocompleteTriggerDirective
       );
     });
 
-    const optionChanges = this.autocomplete.options.changes.pipe(
+    const optionChanges = this.autocomplete().options.changes.pipe(
       tap(() => this._positionStrategy.reapplyLastPosition()),
       // Defer emitting to the stream until the next tick, because changing
       // bindings in here will cause "changed after checked" errors.
@@ -648,7 +651,7 @@ export class NxAutocompleteTriggerDirective
           // that were created, and flatten it so our stream only emits closing events...
           switchMap(() => {
             this._resetActiveItem();
-            this.autocomplete._setVisibility();
+            this.autocomplete()._setVisibility();
             return this.panelClosingActions;
           }),
           // when the first closing event occurs...
@@ -669,9 +672,9 @@ export class NxAutocompleteTriggerDirective
   }
 
   private _setTriggerValue(value: any): void {
-    const toDisplay = this.autocomplete?.valueFormatter
-      ? this.autocomplete.valueFormatter(value)
-      : value;
+    const autocomplete = this.autocomplete();
+    const valueFormatter = this.autocomplete()?.valueFormatter();
+    const toDisplay = valueFormatter ? valueFormatter(value) : value;
 
     // Simply falling back to an empty string if the display value is falsy does not work properly.
     // The display value can also be the number zero and shouldn't fall back to an empty string.
@@ -694,10 +697,11 @@ export class NxAutocompleteTriggerDirective
   private _setValueAndClose(event: NxAutocompleteOptionSelected | null): void {
     if (event?.source) {
       this._clearPreviousSelectedOption(event.source);
-      this._setTriggerValue(event.source.value);
-      this._onChange(event.source.value);
+      const value = event.source.value();
+      this._setTriggerValue(value);
+      this._onChange(value);
       this._element.nativeElement.focus();
-      this.autocomplete._emitSelectEvent(event.source);
+      this.autocomplete()._emitSelectEvent(event.source);
     }
 
     this.closePanel();
@@ -707,7 +711,7 @@ export class NxAutocompleteTriggerDirective
    * Clear any previous selected option and emit a selection change event for this option.
    */
   private _clearPreviousSelectedOption(skip: NxAutocompleteOptionComponent) {
-    this.autocomplete.options.forEach((option) => {
+    this.autocomplete().options.forEach((option) => {
       if (option !== skip && option.selected) {
         option.deselect();
       }
@@ -715,18 +719,19 @@ export class NxAutocompleteTriggerDirective
   }
 
   private _attachOverlay(): void {
-    if (!this.autocomplete) {
+    const autocomplete = this.autocomplete();
+    if (!autocomplete) {
       throw getNxAutocompleteMissingPanelError();
     }
     const size: OverlaySizeConfig = {};
     size.minWidth = this._getHostWidth();
-    size.maxWidth = this.panelGrow ? this.panelMaxWidth : size.minWidth;
+    size.maxWidth = this.panelGrow() ? this.panelMaxWidth() : size.minWidth;
 
     if (this._overlayRef) {
       /** Update the panel width, in case the host width has changed */
       this._overlayRef.updateSize(size);
     } else {
-      this._portal = new TemplatePortal(this.autocomplete.template, this._viewContainerRef);
+      this._portal = new TemplatePortal(autocomplete.template, this._viewContainerRef);
       this._overlayRef = this._overlay.create(this._getOverlayConfig(size));
 
       if (this._viewportRuler) {
@@ -745,13 +750,13 @@ export class NxAutocompleteTriggerDirective
 
     const wasOpen = this.panelOpen;
 
-    this.autocomplete._setVisibility();
-    this.autocomplete._isOpen = this._overlayAttached = true;
+    autocomplete._setVisibility();
+    autocomplete._isOpen = this._overlayAttached = true;
 
     // We need to do an extra `panelOpen` check in here, because the
     // autocomplete won't be shown if there are no options.
     if (this.panelOpen && wasOpen !== this.panelOpen) {
-      this.autocomplete.opened.emit();
+      autocomplete.opened.emit();
     }
   }
 
@@ -801,7 +806,7 @@ export class NxAutocompleteTriggerDirective
    * correct options, or to 0 if the consumer opted into it.
    */
   private _resetActiveItem(): void {
-    this.autocomplete._keyManager.setActiveItem(-1);
+    this.autocomplete()._keyManager.setActiveItem(-1);
   }
 
   /** Determines whether the panel can be opened. */

@@ -46,10 +46,8 @@
         @if (showThemingSwitcher) {
           <nxv-theme-switch
             [themes]="_themeSwitcherService.themes()"
-            [selected]="_themeSwitcherService.selectedTheme()"
-            (selectedChange)="selectTheme($event)"
-          >
-          </nxv-theme-switch>
+            [(selected)]="_themeSwitcherService.selectedTheme"
+          ></nxv-theme-switch>
         }
         <nxv-version-select></nxv-version-select>
         <ng-container *ngComponentOutlet="headerSlot"></ng-container>

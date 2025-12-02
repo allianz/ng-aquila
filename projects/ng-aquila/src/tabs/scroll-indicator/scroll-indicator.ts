@@ -7,7 +7,7 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
-  Input,
+  input,
   OnDestroy,
   Optional,
   Output,
@@ -23,12 +23,12 @@ export type NxScrollDirection = 'start' | 'end';
   styleUrls: ['./scroll-indicator.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    '[class.start-button]': 'scrollDirection === "start"',
-    '[class.end-button]': 'scrollDirection === "end"',
+    '[class.start-button]': 'scrollDirection() === "start"',
+    '[class.end-button]': 'scrollDirection() === "end"',
     '[class.is-desktop-button]': '_view === "desktop"',
     '[class.is-mobile]': '_view === "mobile"',
-    '[class.is-scrolled-to-start]': 'isScrolledToStart',
-    '[class.is-scrolled-to-end]': 'isScrolledToEnd',
+    '[class.is-scrolled-to-start]': 'isScrolledToStart()',
+    '[class.is-scrolled-to-end]': 'isScrolledToEnd()',
     '[attr.aria-hidden]': 'true',
   },
   imports: [NxButtonModule, NxIconModule],
@@ -36,11 +36,11 @@ export type NxScrollDirection = 'start' | 'end';
 export class NxTabScrollIndicator implements OnDestroy {
   _view = 'desktop';
 
-  @Input() scrollDirection!: NxScrollDirection;
+  readonly scrollDirection = input.required<NxScrollDirection>();
 
-  @Input() isScrolledToStart!: boolean;
+  readonly isScrolledToStart = input<boolean>();
 
-  @Input() isScrolledToEnd!: boolean;
+  readonly isScrolledToEnd = input<boolean>();
 
   @Output() readonly buttonClicked = new EventEmitter<void>();
 
@@ -75,9 +75,10 @@ export class NxTabScrollIndicator implements OnDestroy {
   }
 
   getChevronName(): string {
+    const scrollDirection = this.scrollDirection();
     if (
-      (this.scrollDirection === 'start' && this.direction === 'ltr') ||
-      (this.scrollDirection === 'end' && this.direction === 'rtl')
+      (scrollDirection === 'start' && this.direction === 'ltr') ||
+      (scrollDirection === 'end' && this.direction === 'rtl')
     ) {
       return 'chevron-left';
     }

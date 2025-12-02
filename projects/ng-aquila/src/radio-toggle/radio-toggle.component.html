@@ -1,6 +1,6 @@
 <div
   class="nx-radio-toggle {{ additionalClasses }}"
-  [ngClass]="{ 'disable-mobile': disableMobile }"
+  [ngClass]="{ 'disable-mobile': disableMobile() }"
   role="radiogroup"
   [attr.aria-label]="ariaLabel"
   [attr.aria-labelledby]="ariaLabelledBy"

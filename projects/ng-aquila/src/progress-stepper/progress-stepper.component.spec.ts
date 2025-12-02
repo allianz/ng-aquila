@@ -43,7 +43,7 @@ describe('NxProgressStepperDirective', () => {
 
   it('should use the custom current step label', () => {
     createTestComponent(ProgressStepperBasicComponent);
-    expect(componentInstance.currentStepLabel).toBe('myLabel');
+    expect(componentInstance.currentStepLabel()).toBe('myLabel');
   });
 });
 

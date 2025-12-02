@@ -25,7 +25,6 @@ import {
   EmbeddedViewRef,
   HostBinding,
   inject,
-  Input,
   input,
   OnDestroy,
   OnInit,
@@ -47,9 +46,9 @@ export type SIZES = 'regular' | 'short' | 'long';
   templateUrl: 'word.component.html',
   styleUrls: ['word.component.scss'],
   host: {
-    '[class.size-short]': 'size == "short"',
-    '[class.size-regular]': 'size == "regular"',
-    '[class.size-long]': 'size == "long"',
+    '[class.size-short]': 'size() == "short"',
+    '[class.size-regular]': 'size() == "regular"',
+    '[class.size-long]': 'size() == "long"',
     '[class.has-error]': '_hasErrors()',
     '[class.is-focused]': 'isFocused',
     '[class.is-filled]': 'isFilled',
@@ -85,19 +84,22 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
    * For some components that automatically render label and connect it to the input, this will cause issues otherwise.
    * This is a workaround for the issue that we cannot set `aria-labelledby` on the input directly and to not introduce breaking changes.
    */
-  private readonly _setAriaLabelledBy = effect(() => {
+  private _setAriaLabelledBy() {
     const control = this.control() as any;
 
-    // if aria-labelledby is set, add the word label to the list
-    if (control.ariaLabelledBy !== null && control.ariaLabelledBy !== undefined) {
-      control.ariaLabelledBy = `${this.labelId} ${control.ariaLabelledBy}`;
-    }
+    // Check if the control has a setter method for ariaLabelledBy
+    if (typeof control._setAriaLabelledBy === 'function') {
+      const currentAriaLabelledBy = control.ariaLabelledBy?.();
 
-    // if no aria-labelledby is set, we set it to the word label
-    if (control.ariaLabelledBy === null) {
-      control.ariaLabelledBy = this.labelId;
+      // if aria-labelledby is set, add the word label to the list
+      if (currentAriaLabelledBy !== null && currentAriaLabelledBy !== undefined) {
+        control._setAriaLabelledBy(`${this.labelId} ${currentAriaLabelledBy}`);
+      } else {
+        // if no aria-labelledby is set, we set it to the word label
+        control._setAriaLabelledBy(this.labelId);
+      }
     }
-  });
+  }
 
   private readonly _errorChildren = contentChildren(NxFormfieldErrorDirective);
   @ViewChild('popover', { static: true }) _popover!: NxPopoverComponent;
@@ -108,14 +110,14 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
 
   // this will apply different min-widths to our component through our styles
   /** Provide a hint for a minimal width. The actual size will be determined for inputs for each change. */
-  @Input() size: SIZES = 'regular';
+  readonly size = input<SIZES>('regular');
 
   /**
    * A word doesn't have a set place to show labels.
    * In order to be accessible, you have to provide a label with this property.
    * It will be attached to the given input through `aria-label`.
    */
-  @Input('label') label = '';
+  readonly label = input('');
 
   /**
    * Sets the `aria-describedby` for the formfield.
@@ -135,7 +137,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
       : undefined;
 
     // fallback to the error children inside nx-word that is shown in the popover (deprecated)
-    const errorChildren = this._errorChildren()?.map((error) => error.id);
+    const errorChildren = this._errorChildren()?.map((error) => error.id());
 
     // ignore any undefined and null values
     return [nlfError, ...errorChildren, this.describedByInput()].filter(
@@ -163,6 +165,8 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
   }
 
   ngAfterContentInit(): void {
+    this._setAriaLabelledBy();
+
     this.control()
       .stateChanges.pipe(startWith(null), takeUntil(this._destroyed))
       .subscribe(() => {
@@ -186,7 +190,6 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
 
   ngOnDestroy(): void {
     this._updatePopoverStateEffect.destroy();
-    this._setAriaLabelledBy.destroy();
 
     this._destroyed.next();
     this._destroyed.complete();

@@ -13,6 +13,7 @@ import {
   inject,
   InjectionToken,
   Input,
+  input,
   OnDestroy,
   Optional,
   QueryList,
@@ -94,18 +95,19 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
    * Sets the label which will act as a floating label.
    * In addition, the component uses input and label to properly support accessibility.
    */
-  @Input() label?: string | null;
+  readonly label = input<string | null>();
 
   /**
    * Set optional text, which will addtional show in label if a field is not mandatory.
    */
-  @Input() optionalLabel? = this._defaultOptions?.nxOptionalLabel;
+  readonly optionalLabel = input<string | undefined>(this._defaultOptions?.nxOptionalLabel);
   get optional() {
-    if (this._isRequired() || !this.optionalLabel) {
+    const optionalLabel = this.optionalLabel();
+    if (this._isRequired() || !optionalLabel) {
       return '';
     }
 
-    return this.optionalLabel;
+    return optionalLabel;
   }
 
   @ContentChild(NxFormfieldLabelDirective) _labelChild!: NxFormfieldLabelDirective;
@@ -274,12 +276,12 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
   private _syncDescribedByIds() {
     if (this._control) {
       let ids: string[] = [];
-      ids = this._hintChildren.map((hint) => hint.id);
+      ids = this._hintChildren.map((hint) => hint.id());
 
       if (this.getDisplayedMessage() === 'note') {
-        ids = [...this._noteChildren.map((hint) => hint.id), ...ids];
+        ids = [...this._noteChildren.map((hint) => hint.id()), ...ids];
       } else if (this._errorChildren) {
-        ids = [...this._errorChildren.map((error) => error.id), ...ids];
+        ids = [...this._errorChildren.map((error) => error.id()), ...ids];
       }
 
       this._control.setDescribedByIds(ids);
@@ -302,7 +304,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
 
   /** @docs-private */
   _hasLabel() {
-    return !!this._labelChild || !!this.label;
+    return !!this._labelChild || !!this.label();
   }
 
   /**
@@ -317,7 +319,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
 
   _getTitle(): string {
     if (!this._labelChild) {
-      return this.label ?? '';
+      return this.label() ?? '';
     }
     return this._labelChild.el.nativeElement?.innerText;
   }

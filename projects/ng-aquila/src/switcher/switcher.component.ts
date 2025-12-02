@@ -19,6 +19,7 @@ import {
   inject,
   Injector,
   Input,
+  input,
   OnDestroy,
   OnInit,
   Optional,
@@ -106,8 +107,8 @@ export class NxSwitcherComponent
 
   @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
-  @Input() ariaLabel: string | null = null;
-  @Input() ariaLabelledBy: string | null = null;
+  readonly ariaLabel = input<string | null>(null);
+  readonly ariaLabelledBy = input<string | null>(null);
   @Input() set ariaDescribedBy(value: string | null) {
     this._ariaDescribedBy = value;
     this._syncDescribedByIds();

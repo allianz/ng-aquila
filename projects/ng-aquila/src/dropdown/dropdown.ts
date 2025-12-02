@@ -36,6 +36,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ContentChild,
   ContentChildren,
   DoCheck,
@@ -46,6 +47,7 @@ import {
   Injectable,
   InjectionToken,
   Input,
+  input,
   isDevMode,
   NgZone,
   OnDestroy,
@@ -249,9 +251,34 @@ export class NxDropdownComponent
     this.readonly = value;
   }
 
-  @Input() ariaLabelledBy: string | null = null;
+  readonly ariaLabelledBy = input<string | null>(null);
 
-  @Input() verticalAlignCheckmark: VerticalAlignCheckmark = 'top';
+  /**
+   * @docs-private
+   * Internal writable signal for programmatic override of aria-labelledby
+   */
+  private readonly _ariaLabelledSignal = signal<string | null>(null);
+
+  /**
+   * @docs-private
+   * Set the aria-labelledby attribute value programmatically from another component
+   */
+  _setAriaLabelledBy(value: string | null): void {
+    this._ariaLabelledSignal.set(value);
+  }
+
+  /** @docs-private */
+  protected readonly _getAriaLabelledBy = computed(() => {
+    // Read all signals first to ensure they are tracked
+    const programmaticLabel = this._ariaLabelledSignal();
+    const inputLabel = this.ariaLabelledBy();
+
+    return (
+      programmaticLabel ?? inputLabel ?? this.formFieldComponent?.labelId ?? this.renderedValueId
+    );
+  });
+
+  readonly verticalAlignCheckmark = input<VerticalAlignCheckmark>('top');
 
   private _selectionModel!: SelectionModel<NxDropdownOption>;
 
@@ -359,7 +386,7 @@ export class NxDropdownComponent
    * @throws Error if true and the bound value is not an array.
    * @deprecated Please use the new `<nx-multi-select>` component instead.
    */
-  @Input() isMultiSelect = false;
+  readonly isMultiSelect = input(false);
 
   /** The id of the input. */
   get id() {
@@ -419,19 +446,19 @@ export class NxDropdownComponent
   private _ignoreItemTruncation = false;
 
   /** Whether the dropdown should be shown with an additional filter input. */
-  @Input() showFilter = false;
+  readonly showFilter = input(false);
 
   /** Text displayed as placeholder for the filter. */
-  @Input() filterPlaceholder = '';
+  readonly filterPlaceholder = input('');
 
   /** Text that is displayed at the top of the overlay. If not set the formfield label is used by default. */
-  @Input() overlayLabel = '';
+  readonly overlayLabel = input('');
 
   /** Can be used as a fallback to the CdkOverlayOrigin */
-  @Input('overlayFallbackOrigin') overlayFallbackOrigin!: NxDropdownComponent;
+  readonly overlayFallbackOrigin = input<NxDropdownComponent>();
 
   /* panelMaxWidth accepts a number for pixel values or a string for any css value */
-  @Input() panelMaxWidth!: string | number;
+  readonly panelMaxWidth = input<string | number>();
 
   /** Event emitted when the select panel has been toggled. */
   @Output() readonly openedChange = new EventEmitter<boolean>();
@@ -550,7 +577,8 @@ export class NxDropdownComponent
       return '';
     }
 
-    return this.overlayLabel ? this.overlayLabel : (this.formFieldComponent?.label ?? '');
+    const overlayLabel = this.overlayLabel();
+    return overlayLabel ? overlayLabel : (this.formFieldComponent?.label() ?? '');
   }
 
   /**
@@ -687,7 +715,7 @@ export class NxDropdownComponent
   }
 
   ngOnInit(): void {
-    this._selectionModel = new SelectionModel(this.isMultiSelect);
+    this._selectionModel = new SelectionModel(this.isMultiSelect());
   }
 
   ngAfterViewInit(): void {
@@ -793,7 +821,7 @@ export class NxDropdownComponent
     this._keyManager.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
       if (this._panelOpen && this.panel) {
         this._scrollActiveOptionIntoView();
-      } else if (!this._panelOpen && !this.isMultiSelect && this._keyManager.activeItem) {
+      } else if (!this._panelOpen && !this.isMultiSelect() && this._keyManager.activeItem) {
         this._keyManager.activeItem._selectViaInteraction();
       }
       this.activeId.set(this._keyManager.activeItem?.id || null);
@@ -803,7 +831,7 @@ export class NxDropdownComponent
   openedByKeyboard = true;
 
   private _initActiveItem() {
-    if (!this.isMultiSelect && this._selectionModel.selected[0]) {
+    if (!this.isMultiSelect() && this._selectionModel.selected[0]) {
       const option = this.dropdownItems.find(
         (o) => o.value === this._selectionModel.selected[0].value,
       );
@@ -847,7 +875,8 @@ export class NxDropdownComponent
     const wasSelected = this._selectionModel.isSelected(option);
     const selectedOption = item || option;
 
-    if (option.value === null && !this.isMultiSelect) {
+    const isMultiSelect = this.isMultiSelect();
+    if (option.value === null && !isMultiSelect) {
       option.deselect();
       this._selectionModel.clear();
       this._propagateChanges(selectedOption.value);
@@ -862,7 +891,7 @@ export class NxDropdownComponent
         this._keyManager?.setActiveItem(option);
       }
 
-      if (this.isMultiSelect) {
+      if (isMultiSelect) {
         this._sortValues();
       }
     }
@@ -878,7 +907,7 @@ export class NxDropdownComponent
 
     this.stateChanges.next();
 
-    if (isUserInput && !this.isMultiSelect && this._panelOpen) {
+    if (isUserInput && !isMultiSelect && this._panelOpen) {
       this.closePanel();
     }
   }
@@ -902,7 +931,7 @@ export class NxDropdownComponent
 
     this._selectionModel.clear();
 
-    if (this.isMultiSelect && value) {
+    if (this.isMultiSelect() && value) {
       if (!Array.isArray(value)) {
         throw getNxDropdownNonArrayValueError();
       }
@@ -946,7 +975,7 @@ export class NxDropdownComponent
   private _propagateChanges(fallbackValue?: any): void {
     let valueToEmit: any = null;
 
-    if (this.isMultiSelect) {
+    if (this.isMultiSelect()) {
       valueToEmit = this._selectionModel.selected.map((option) => option.value);
     } else {
       const selectedOption = this._selectionModel.selected[0];
@@ -962,7 +991,7 @@ export class NxDropdownComponent
 
   /** Sorts the selected values in the selected based on their order in the panel. */
   private _sortValues() {
-    if (this.isMultiSelect) {
+    if (this.isMultiSelect()) {
       const options = this._isLazy ? this.options : this.dropdownItems.toArray();
       this._selectionModel.sort(
         (a, b) =>
@@ -994,8 +1023,9 @@ export class NxDropdownComponent
   }
 
   get overlayOrigin() {
-    if (this.overlayFallbackOrigin) {
-      return this.overlayFallbackOrigin.elementRef;
+    const overlayFallbackOrigin = this.overlayFallbackOrigin();
+    if (overlayFallbackOrigin) {
+      return overlayFallbackOrigin.elementRef;
     }
     return this.formFieldComponent
       ? this.formFieldComponent.getConnectedOverlayOrigin()
@@ -1129,22 +1159,6 @@ export class NxDropdownComponent
     return value;
   }
 
-  /**
-   * Returns html ids of dropdown rendered value and label (if available),
-   * separated by space.
-   * @docs-private
-   */
-  _getAriaLabelledBy(): string {
-    if (this.ariaLabelledBy !== null) {
-      return this.ariaLabelledBy;
-    }
-    const labelId = this.formFieldComponent?.labelId;
-    if (labelId) {
-      return labelId;
-    }
-    return this.renderedValueId;
-  }
-
   get _isInOutlineField(): boolean {
     return this.formFieldComponent !== null && this.formFieldComponent.appearance === 'outline';
   }
@@ -1261,10 +1275,11 @@ export class NxDropdownComponent
     const isOpenKey = keyCode === ENTER || keyCode === SPACE;
 
     // Open the select on ALT + arrow key to match the native <select>
-    if (isOpenKey || ((this.isMultiSelect || event.altKey) && isArrowKey)) {
+    const isMultiSelect = this.isMultiSelect();
+    if (isOpenKey || ((isMultiSelect || event.altKey) && isArrowKey)) {
       event.preventDefault(); // prevents the page from scrolling down when pressing space
       this.openPanel(event);
-    } else if (!this.isMultiSelect) {
+    } else if (!isMultiSelect) {
       switch (keyCode) {
         case DOWN_ARROW:
         case UP_ARROW:
@@ -1293,7 +1308,7 @@ export class NxDropdownComponent
             this.openPanel(event);
 
             setTimeout(() => {
-              if (this.showFilter) {
+              if (this.showFilter()) {
                 this.filterValue = event.key;
                 this._onFilter(event.key);
               } else {
@@ -1309,6 +1324,7 @@ export class NxDropdownComponent
     // TODO use event.code after removing IE11 support
     const keyCode = event.keyCode;
     // if has filter all events other than the listed ones should be ignored or handled in _onFilter()
+    const showFilter = this.showFilter();
     if (
       ![
         DOWN_ARROW,
@@ -1322,7 +1338,7 @@ export class NxDropdownComponent
         SPACE,
         TAB,
       ].includes(keyCode) &&
-      this.showFilter
+      showFilter
     ) {
       return;
     }
@@ -1337,7 +1353,7 @@ export class NxDropdownComponent
       .every((option) => Boolean(option));
 
     // navigate filter input field
-    if ((isLeftRight || isHomeEnd) && this.showFilter) {
+    if ((isLeftRight || isHomeEnd) && showFilter) {
       return;
     }
 
@@ -1356,7 +1372,7 @@ export class NxDropdownComponent
       event.preventDefault();
 
       this.closePanel();
-    } else if (!this.showFilter && keyCode === SPACE && manager.activeItem) {
+    } else if (!showFilter && keyCode === SPACE && manager.activeItem) {
       event.preventDefault();
       manager.activeItem._selectViaInteraction();
     } else if (keyCode === TAB) {
@@ -1366,7 +1382,7 @@ export class NxDropdownComponent
       manager.onKeydown(event);
 
       if (
-        this.isMultiSelect &&
+        this.isMultiSelect() &&
         isUpDown &&
         event.shiftKey &&
         manager.activeItem &&
@@ -1406,7 +1422,7 @@ export class NxDropdownComponent
       return '';
     }
 
-    if (this.isMultiSelect) {
+    if (this.isMultiSelect()) {
       return this._selectionModel.selected.map((option) => this._getLabel(option)).join(', ');
     }
     return this._getLabel(this._selectionModel.selected[0]);
@@ -1425,7 +1441,7 @@ export class NxDropdownComponent
       const positionStrategy = overlayRef.getConfig()
         .positionStrategy as FlexibleConnectedPositionStrategy;
 
-      overlayRef.updateSize({ maxWidth: this.panelMaxWidth });
+      overlayRef.updateSize({ maxWidth: this.panelMaxWidth() });
       this._updatePosition();
       positionStrategy.withPositions(this._positions);
       overlayRef.updatePosition();
@@ -1433,7 +1449,7 @@ export class NxDropdownComponent
       this._cdr.markForCheck();
       this.openedChange.emit(true);
 
-      if (this.showFilter) {
+      if (this.showFilter()) {
         this.filterInput?.nativeElement.focus();
       } else {
         this.panelBody?.nativeElement.focus();
@@ -1455,7 +1471,7 @@ export class NxDropdownComponent
   _onBlur() {
     this._focused = false;
 
-    if (this.filterInput && this.showFilter) {
+    if (this.filterInput && this.showFilter()) {
       this._clearFilter();
     }
 

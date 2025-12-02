@@ -1,5 +1,5 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 
 import { getFileExtension } from '../file-uploader.validations';
 
@@ -16,13 +16,13 @@ import { getFileExtension } from '../file-uploader.validations';
       }
       <nx-icon name="file" class="extension-icon"></nx-icon>
     </span>
-    <span class="file-name nx-margin-left-2xs">{{ name }}</span>
+    <span class="file-name nx-margin-left-2xs">{{ name() }}</span>
   `,
   imports: [NxIconModule],
 })
 export class NxFileUploaderItemName implements OnInit {
   /** The filename.*/
-  @Input() name!: string;
+  readonly name = input.required<string>();
 
   iconColor: { [key: string]: string } = {
     xls: '#1E8927',
@@ -34,6 +34,6 @@ export class NxFileUploaderItemName implements OnInit {
   extension!: string;
 
   ngOnInit() {
-    this.extension = getFileExtension(this.name).substring(1);
+    this.extension = getFileExtension(this.name()).substring(1);
   }
 }

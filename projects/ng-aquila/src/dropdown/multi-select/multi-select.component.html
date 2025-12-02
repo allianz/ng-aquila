@@ -79,7 +79,7 @@
             #filterInput
             [(ngModel)]="_filterValue"
             (ngModelChange)="_onFilterChange($event)"
-            [placeholder]="filterPlaceholder"
+            [placeholder]="filterPlaceholder()"
             autocomplete="off"
             role="combobox"
             [attr.aria-expanded]="_isOpen"

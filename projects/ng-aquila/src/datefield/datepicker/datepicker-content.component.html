@@ -14,15 +14,15 @@
 
   <nx-calendar
     [id]="datepicker.id"
-    [ngClass]="datepicker.panelClass"
+    [ngClass]="datepicker.panelClass()"
     [startAt]="datepicker.startAt"
-    [startView]="datepicker.startView"
+    [startView]="datepicker.startView()"
     [isRange]="isRange()"
     [minDate]="datepicker.minDate"
     [maxDate]="datepicker.maxDate"
     [dateFilter]="datepicker.dateFilter"
     [selected]="datepicker.selectedComputed()"
-    [showTodayButton]="datepicker.showTodayButton"
+    [showTodayButton]="datepicker.showTodayButton()"
     (selectedChange)="datepicker.select($event)"
     (yearSelected)="datepicker.selectYear($event)"
     (monthSelected)="datepicker.selectMonth($event)"

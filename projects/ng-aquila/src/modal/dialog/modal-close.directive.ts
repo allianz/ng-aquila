@@ -1,12 +1,4 @@
-import {
-  Directive,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnInit,
-  Optional,
-  SimpleChanges,
-} from '@angular/core';
+import { Directive, ElementRef, input, OnInit, Optional } from '@angular/core';
 
 import { NxDialogService } from './dialog.service';
 import { NxModalRef } from './modal-ref';
@@ -17,21 +9,21 @@ import { NxModalRef } from './modal-ref';
 @Directive({
   selector: '[nxModalClose]',
   host: {
-    '(click)': 'modalRef?.close(modalResult)',
-    '[attr.aria-label]': 'ariaLabel || null',
-    '[attr.type]': 'type',
+    '(click)': 'modalRef?.close(modalResult())',
+    '[attr.aria-label]': 'ariaLabel() || null',
+    '[attr.type]': 'type()',
   },
   standalone: true,
 })
-export class NxModalCloseDirective implements OnInit, OnChanges {
+export class NxModalCloseDirective implements OnInit {
   /** Screenreader label for the button. */
-  @Input('aria-label') ariaLabel!: string;
+  readonly ariaLabel = input<string>('', { alias: 'aria-label' });
 
   /** Defaults to `'button'` to prevents accidental form submits. */
-  @Input() type: 'submit' | 'button' | 'reset' = 'button';
+  readonly type = input<'submit' | 'button' | 'reset'>('button');
 
   /** Dialog close input. */
-  @Input('nxModalClose') modalResult: any;
+  readonly modalResult = input<any>(undefined, { alias: 'nxModalClose' });
 
   constructor(
     @Optional() public modalRef: NxModalRef<any> | null,
@@ -47,14 +39,6 @@ export class NxModalCloseDirective implements OnInit, OnChanges {
       // ID. This must occur in `onInit`, as the ID binding for the modal container won't
       // be resolved at constructor time.
       this.modalRef = getClosestDialog(this._elementRef, this._dialogService.openModals)!;
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const proxiedChange = changes.modalResult;
-
-    if (proxiedChange) {
-      this.modalResult = proxiedChange.currentValue;
     }
   }
 }

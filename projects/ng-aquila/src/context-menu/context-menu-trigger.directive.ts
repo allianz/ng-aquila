@@ -22,6 +22,7 @@ import {
   inject,
   InjectionToken,
   Input,
+  input,
   OnDestroy,
   Optional,
   Output,
@@ -178,7 +179,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
    * 'button' (default): Opens by clicking the trigger
    * 'cursor': Opens at the cursor position by right clicking anywhere on the trigger.
    */
-  @Input('nxContextMenuTriggerMode') mode: NxContextMenuMode = 'button';
+  readonly mode = input<NxContextMenuMode>('button', { alias: 'nxContextMenuTriggerMode' });
 
   /** Event emitted when the associated context menu is opened. */
   @Output() readonly contextMenuOpened = new EventEmitter<void>();
@@ -546,7 +547,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
   }
 
   _handleRightClick(event: MouseEvent) {
-    if (this.mode !== 'cursor') {
+    if (this.mode() !== 'cursor') {
       return;
     }
     this._rightClicked = true;
@@ -564,7 +565,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
 
   /** Handles key presses on the trigger. */
   _handleKeydown(event: KeyboardEvent): void {
-    if (this.mode !== 'button') {
+    if (this.mode() !== 'button') {
       return;
     }
 
@@ -581,7 +582,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
 
   /** Handles click events on the trigger. */
   _handleClick(event: MouseEvent): void {
-    if (this.mode !== 'button') {
+    if (this.mode() !== 'button') {
       return;
     }
     event.preventDefault();

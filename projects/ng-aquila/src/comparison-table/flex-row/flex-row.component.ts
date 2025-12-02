@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { NgTemplateOutlet } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, input, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -18,16 +18,16 @@ import { NxComparisonTableRowDirective } from '../comparison-table-row.directive
   templateUrl: './flex-row.component.html',
   styleUrls: ['./flex-row.component.scss'],
   host: {
-    '[class.is-header-row]': 'row.type === "header"',
-    '[class.is-sticky-row]': 'row.type === "header" && row.mayStick',
-    '[class.is-footer-row]': 'row.type === "footer"',
-    '[class.is-content-row]': 'row.type === "content"',
-    '[class.has-intersection]': 'row.intersectionCell',
+    '[class.is-header-row]': 'row().type === "header"',
+    '[class.is-sticky-row]': 'row().type === "header" && row().mayStick',
+    '[class.is-footer-row]': 'row().type === "footer"',
+    '[class.is-content-row]': 'row().type === "content"',
+    '[class.has-intersection]': 'row().intersectionCell',
   },
   imports: [NgTemplateOutlet],
 })
 export class NxComparisonTableFlexRow implements OnDestroy, AfterViewInit {
-  @Input() row!: NxComparisonTableRowDirective;
+  readonly row = input.required<NxComparisonTableRowDirective>();
 
   private readonly _destroyed = new Subject<void>();
 
@@ -42,7 +42,7 @@ export class NxComparisonTableFlexRow implements OnDestroy, AfterViewInit {
       .monitor(this._elementRef, true)
       .pipe(takeUntil(this._destroyed))
       .subscribe((origin) => {
-        if (this.row.type !== 'header' && origin === 'keyboard') {
+        if (this.row().type !== 'header' && origin === 'keyboard') {
           this._table._scrollElementIntoView(this._elementRef);
         }
       });

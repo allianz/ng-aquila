@@ -10,6 +10,7 @@ import {
   EventEmitter,
   Inject,
   Input,
+  input,
   OnDestroy,
   Optional,
   Output,
@@ -37,7 +38,7 @@ import { NxComparisonTableFlexRow } from '../flex-row/flex-row.component';
   imports: [NxComparisonTableFlexRow, NxIconModule],
 })
 export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
-  @Input() group!: NxComparisonTableRowGroupDirective;
+  readonly group = input.required<NxComparisonTableRowGroupDirective>();
 
   @ViewChild('expansionCell') _expansionCell!: ElementRef;
 
@@ -83,10 +84,12 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this._updateFocusMonitoring();
-    this.group?.rows.changes.pipe(takeUntil(this._destroyed)).subscribe((rows) =>
-      // timeout is needed here so that the focus monitor is updated after the view was updated
-      setTimeout(() => this._updateFocusMonitoring()),
-    );
+    this.group()
+      ?.rows.changes.pipe(takeUntil(this._destroyed))
+      .subscribe((rows) =>
+        // timeout is needed here so that the focus monitor is updated after the view was updated
+        setTimeout(() => this._updateFocusMonitoring()),
+      );
   }
 
   ngOnDestroy(): void {

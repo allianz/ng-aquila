@@ -5,6 +5,7 @@ import {
   ChangeDetectorRef,
   Component,
   Input,
+  input,
   OnDestroy,
   OnInit,
 } from '@angular/core';
@@ -33,7 +34,7 @@ const ANNOUNCER_DURATION = 1000;
     '[class.nx-spinner--large]': 'size === "large"',
     '[class.nx-spinner--negative]': 'negative',
     '[attr.role]': '"status"',
-    '[attr.aria-live]': 'ariaPoliteness',
+    '[attr.aria-live]': 'ariaPoliteness()',
     '[attr.aria-hidden]': '"true"',
   },
   standalone: true,
@@ -98,7 +99,7 @@ export class NxSpinnerComponent implements OnInit, OnDestroy {
   private _completionAnnouncement: string = '';
 
   /** Sets the aria live regions of the spinner. Default is 'assertive'. */
-  @Input() ariaPoliteness: AriaPolite = ARIA_POLITENESS_ASSERTIVE;
+  readonly ariaPoliteness = input<AriaPolite>(ARIA_POLITENESS_ASSERTIVE);
 
   constructor(
     private readonly _cdr: ChangeDetectorRef,
@@ -115,7 +116,7 @@ export class NxSpinnerComponent implements OnInit, OnDestroy {
 
   private async announce(message: string) {
     if (message.length > 0) {
-      await this.liveAnnouncer.announce(message, this.ariaPoliteness, ANNOUNCER_DURATION);
+      await this.liveAnnouncer.announce(message, this.ariaPoliteness(), ANNOUNCER_DURATION);
     }
   }
 }

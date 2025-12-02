@@ -28,6 +28,7 @@ import {
   HostBinding,
   inject,
   Input,
+  input,
   OnDestroy,
   Optional,
   Output,
@@ -104,7 +105,7 @@ export class NxMultiSelectComponent<S, T>
   }
 
   get _overlayLabel(): string | null | undefined {
-    return this._formFieldComponent?.label;
+    return this._formFieldComponent?.label();
   }
 
   /**
@@ -332,36 +333,36 @@ export class NxMultiSelectComponent<S, T>
   /**
    * Placeholder for the filter input.
    */
-  @Input() filterPlaceholder = 'Type to filter';
+  readonly filterPlaceholder = input('Type to filter');
 
   /**
    * Selector to get the value of an option.
    * Can be either a property name or a selector function.
    * When providing objects as options, it is recommended to set selectValue to specify a unique identifier for each option. If selectValue is empty, the whole object is used for selection, which may cause issues if object references change.
    */
-  @Input() selectValue: string | ((option: S) => T) = '';
+  readonly selectValue = input<string | ((option: S) => T)>('');
 
   /**
    * Selector to get the label of an option.
    * Can be either a property name or a selector function.
    * When empty the whole option is treated as the label.
    */
-  @Input() selectLabel: string | ((option: S) => string) = '';
+  readonly selectLabel = input<string | ((option: S) => string)>('');
 
   /**
    * Selector to get the disabled state of an option.
    * Can be either a property name or a selector function.
    */
-  @Input() selectDisabled?: string | ((option: S) => boolean);
+  readonly selectDisabled = input<string | ((option: S) => boolean)>();
 
   /**
    * panelGrow: true means the overlay can grow larger than the trigger and grows with the longest label
    * panelGrow: false means the overlay is the size of the trigger
    */
-  @Input({ transform: booleanAttribute }) panelGrow = false;
+  readonly panelGrow = input(false, { transform: booleanAttribute });
 
   /* panelMaxWidth accepts a number for pixel values or a string for any css value */
-  @Input() panelMaxWidth!: string | number;
+  readonly panelMaxWidth = input<string | number>();
 
   @HostBinding('class.is-open') _isOpen = false;
 
@@ -414,27 +415,29 @@ export class NxMultiSelectComponent<S, T>
   };
 
   _selectValue(option: S): T {
-    if (!this.selectValue) {
+    const selectValue = this.selectValue();
+    if (!selectValue) {
       return option as unknown as T;
     }
 
-    if (typeof this.selectValue === 'string') {
-      return (option as any)[this.selectValue] as T;
+    if (typeof selectValue === 'string') {
+      return (option as any)[selectValue] as T;
     }
 
-    return this.selectValue(option);
+    return selectValue(option);
   }
 
   _selectLabel(option: S): string {
-    if (!this.selectLabel) {
+    const selectLabel = this.selectLabel();
+    if (!selectLabel) {
       return String(this._selectValue(option));
     }
 
-    if (typeof this.selectLabel === 'string') {
-      return String((option as any)[this.selectLabel]);
+    if (typeof selectLabel === 'string') {
+      return String((option as any)[selectLabel]);
     }
 
-    return this.selectLabel(option);
+    return selectLabel(option);
   }
 
   private _updatePositions() {
@@ -449,12 +452,13 @@ export class NxMultiSelectComponent<S, T>
   }
 
   _isDisabled(option: S): boolean {
-    if (typeof this.selectDisabled === 'string') {
-      return (option as any)[this.selectDisabled];
+    const selectDisabled = this.selectDisabled();
+    if (typeof selectDisabled === 'string') {
+      return (option as any)[selectDisabled];
     }
 
-    if (typeof this.selectDisabled === 'function') {
-      return this.selectDisabled(option);
+    if (typeof selectDisabled === 'function') {
+      return selectDisabled(option);
     }
 
     return false;
@@ -518,11 +522,12 @@ export class NxMultiSelectComponent<S, T>
       this._trigger?.nativeElement.getBoundingClientRect().width,
     );
 
-    if (this.panelGrow) {
+    const panelGrow = this.panelGrow();
+    if (panelGrow) {
       // If panelGrow is set to true, the overlay will receive a
       // min-width the size of the trigger to be able to grow
       this._minWidth = triggerWidth;
-    } else if (!this.panelGrow) {
+    } else if (!panelGrow) {
       // If panelGrow is set to false, the overlay will receive a
       // fixed width the size of the trigger
       this._width = triggerWidth;
@@ -674,7 +679,7 @@ export class NxMultiSelectComponent<S, T>
       const positionStrategy = overlayRef.getConfig()
         .positionStrategy as FlexibleConnectedPositionStrategy;
 
-      overlayRef.updateSize({ maxWidth: this.panelMaxWidth });
+      overlayRef.updateSize({ maxWidth: this.panelMaxWidth() });
       this._updatePositions();
       positionStrategy.withPositions(this._positions);
       overlayRef.updatePosition();

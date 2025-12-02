@@ -7,7 +7,6 @@ import {
   ElementRef,
   inject,
   OnDestroy,
-  signal,
 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 

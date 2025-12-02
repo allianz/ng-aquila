@@ -41,7 +41,7 @@ import { Egg } from './egg';
 import { RabbitHole } from './rabbit-hole.service';
 import { NxvSearchInputComponent } from './search-input/search-input.component';
 import { NxvThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
-import { Theme, ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
+import { ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
 
 export class NxDocFeatures {
   themeSwitcher = false;
@@ -159,10 +159,6 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
         this.showMobileMenuButton = !!this._router.url.match(/^\/documentation|guides\//);
       }
     });
-  }
-
-  selectTheme(theme: Theme) {
-    this._themeSwitcherService.switchTheme(theme);
   }
 
   ngAfterViewInit(): void {

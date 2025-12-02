@@ -1,4 +1,4 @@
-import { booleanAttribute, ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
 
 @Component({
   selector: '[nxLayout]',
@@ -10,8 +10,8 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, Input } from '@an
     '[class.nx-grid--no-gutters]': 'noGutters',
     '[class.nx-grid--max-width]': 'maxWidth',
     '[class.nx-grid--no-padding]': 'noPadding',
-    '[class.nx-grid--container-query]': 'containerQuery',
-    '[class.nx-grid--media-query]': '!containerQuery',
+    '[class.nx-grid--container-query]': 'containerQuery()',
+    '[class.nx-grid--media-query]': '!containerQuery()',
   },
   standalone: true,
 })
@@ -32,7 +32,7 @@ export class NxLayoutComponent {
    * On `true` the Grid will use container queries instead of media queries.
    * See [mdn docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries) for more info
    */
-  @Input({ transform: booleanAttribute }) containerQuery = false;
+  readonly containerQuery = input(false, { transform: booleanAttribute });
 
   /**
    * Type of layout.

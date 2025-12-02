@@ -9,6 +9,7 @@ import {
   Component,
   ElementRef,
   Input,
+  input,
   OnDestroy,
 } from '@angular/core';
 
@@ -31,7 +32,7 @@ import { NxMultiStepperDirection } from '../progress-stepper.models';
     role: 'tab',
     '[attr.aria-controls]': 'ariaControls',
     '[attr.aria-selected]': 'selected',
-    '[attr.aria-label]': 'label',
+    '[attr.aria-label]': 'label()',
   },
   imports: [NxIconModule],
 })
@@ -47,7 +48,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
   private _direction: NxMultiStepperDirection = 'horizontal';
 
   /** The label of the step. */
-  @Input() label!: CdkStepLabel | string;
+  readonly label = input.required<CdkStepLabel | string>();
 
   /** Sets the selected step. */
   @Input() set selected(value: BooleanInput) {

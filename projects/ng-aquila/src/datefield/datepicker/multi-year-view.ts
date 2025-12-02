@@ -17,6 +17,7 @@ import {
   Component,
   EventEmitter,
   Input,
+  input,
   Optional,
   Output,
   ViewChild,
@@ -99,7 +100,7 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
   private _maxDate!: D | null;
 
   /** A function used to filter which dates are selectable. */
-  @Input() dateFilter!: (date: D) => boolean;
+  readonly dateFilter = input<(date: D) => boolean>();
 
   /** Emits when a new year is selected. */
   @Output() readonly selectedChange = new EventEmitter<D>();
@@ -265,7 +266,8 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
     }
 
     // enable if it reaches here and there's no filter defined
-    if (!this.dateFilter) {
+    const dateFilter = this.dateFilter();
+    if (!dateFilter) {
       return true;
     }
 
@@ -277,7 +279,7 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
       this._dateAdapter.getYear(date) === year;
       date = this._dateAdapter.addCalendarDays(date, 1)
     ) {
-      if (this.dateFilter(date)) {
+      if (dateFilter(date)) {
         return true;
       }
     }

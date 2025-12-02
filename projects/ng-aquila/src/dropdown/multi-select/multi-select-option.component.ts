@@ -11,6 +11,7 @@ import {
   HostListener,
   inject,
   Input,
+  input,
   Output,
 } from '@angular/core';
 
@@ -27,7 +28,7 @@ import {
     '[id]': 'id',
     '[attr.aria-selected]': 'selected || null',
     '[attr.aria-disabled]': 'disabled || null',
-    '[class.is-outline]': 'appearance === "outline"',
+    '[class.is-outline]': 'appearance() === "outline"',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxIconModule],
@@ -37,17 +38,17 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable, ListKeyMa
 
   id = inject(IdGenerationService).nextId('nx-multi-select-option');
 
-  @Input() appearance: AppearanceType = 'auto';
+  readonly appearance = input<AppearanceType>('auto');
 
   /**
    * Value of this option.
    */
-  @Input() value?: T;
+  readonly value = input<T>();
 
   /**
    * Label of this option.
    */
-  @Input() label = '';
+  readonly label = input('');
 
   /**
    * Whether this option is selected.
@@ -95,7 +96,7 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable, ListKeyMa
     if (!this.disabled) {
       this.selected = !this.selected;
       this.selectedChange.emit(this.selected);
-      this.liveAnnouncer.announce(`${this.label} ${this.selected ? 'selected' : 'unselected'}`);
+      this.liveAnnouncer.announce(`${this.label()} ${this.selected ? 'selected' : 'unselected'}`);
     }
   }
 
@@ -108,6 +109,6 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable, ListKeyMa
   }
 
   getLabel() {
-    return this.label;
+    return this.label();
   }
 }

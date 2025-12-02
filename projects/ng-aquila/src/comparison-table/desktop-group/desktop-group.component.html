@@ -1,10 +1,10 @@
-@for (row of group.rows; track row; let i = $index) {
-  @if (i < group.visibleRows || _expanded) {
+@for (row of group().rows; track row; let i = $index) {
+  @if (i < group().visibleRows || _expanded) {
     <nx-comparison-table-flex-row [row]="row"> </nx-comparison-table-flex-row>
   }
 }
 
-@if (group.rows.length > group.visibleRows) {
+@if (group().rows.length > group().visibleRows) {
   <div class="nx-comparison-table__row" role="row">
     @if (_table.viewType === 'desktop' && !useFullRowForExpandableArea) {
       <div class="nx-comparison-table__placeholder-cell" role="cell">
@@ -25,7 +25,7 @@
     >
       <div class="nx-comparison-table__cell-content">
         <span class="group-label">{{
-          _expanded ? group.labelExpanded : group.labelCollapsed
+          _expanded ? group().labelExpanded : group().labelCollapsed
         }}</span>
         <nx-icon
           [name]="_expanded ? 'chevron-up' : 'chevron-down'"

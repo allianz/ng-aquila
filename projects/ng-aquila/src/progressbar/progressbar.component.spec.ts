@@ -46,7 +46,7 @@ describe('NxProgressbarComponent', () => {
 
   it('value should default to 0', fakeAsync(() => {
     createTestComponent(ProgressBarBasicComponent);
-    expect(componentInstance.value).toBe(0);
+    expect(componentInstance.value()).toBe(0);
 
     expect(barElement.nativeElement.getAttribute('aria-valuenow')).toBe('0');
     expect(barElement.nativeElement.getAttribute('aria-valuemin')).toBe('0');
@@ -55,7 +55,7 @@ describe('NxProgressbarComponent', () => {
 
   it('value should reflect binding', fakeAsync(() => {
     createTestComponent(ProgressBarValueComponent);
-    expect(componentInstance.value).toBe(0.5);
+    expect(componentInstance.value()).toBe(0.5);
     expect(barElement.nativeElement.getAttribute('aria-valuenow')).toBe('0.5');
     expect(barElement.nativeElement.getAttribute('aria-valuemin')).toBe('0');
     expect(barElement.nativeElement.getAttribute('aria-valuemax')).toBe('1');
@@ -63,7 +63,7 @@ describe('NxProgressbarComponent', () => {
 
   it('value should reflect custom range', fakeAsync(() => {
     createTestComponent(ProgressBarCustomRangeComponent);
-    expect(componentInstance.value).toBe(15);
+    expect(componentInstance.value()).toBe(15);
     expect(barElement.nativeElement.getAttribute('aria-valuenow')).toBe('15');
     expect(barElement.nativeElement.getAttribute('aria-valuemin')).toBe('12');
     expect(barElement.nativeElement.getAttribute('aria-valuemax')).toBe('33');

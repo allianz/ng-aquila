@@ -8,7 +8,7 @@ import {
   Component,
   ElementRef,
   Inject,
-  Input,
+  input,
   OnDestroy,
   OnInit,
   Optional,
@@ -32,7 +32,7 @@ import { NXV_FEEDBACK_LINKS } from './../../core/tokens';
 export class NxvFeedbackComponent implements OnInit, OnDestroy {
   @ViewChild('mobileButton') mobileButton!: ElementRef;
 
-  @Input() page!: string;
+  readonly page = input.required<string>();
 
   showMobileView = false;
 
@@ -61,8 +61,8 @@ export class NxvFeedbackComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.feedbackLinkPositive = this._feedbackLinks[this.page].positivePreset;
-    this.feedbackLinkNegative = this._feedbackLinks[this.page].negativePreset;
+    this.feedbackLinkPositive = this._feedbackLinks[this.page()].positivePreset;
+    this.feedbackLinkNegative = this._feedbackLinks[this.page()].negativePreset;
   }
 
   ngOnDestroy(): void {

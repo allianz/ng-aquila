@@ -12,6 +12,7 @@ import {
   EventEmitter,
   inject,
   Input,
+  input,
   OnDestroy,
   Optional,
   Output,
@@ -147,8 +148,9 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
    *
    * Default: `value => value ? value.toString() : null`.
    */
-  @Input() valueFormatter: (value: any) => string = (value: any) =>
-    value ? value.toString() : null;
+  readonly valueFormatter = input<(value: any) => string>((value: any) =>
+    value ? value.toString() : null,
+  );
 
   constructor(
     private readonly _cdr: ChangeDetectorRef,

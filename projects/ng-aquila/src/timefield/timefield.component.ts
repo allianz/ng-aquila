@@ -34,6 +34,7 @@ import {
   InjectionToken,
   Injector,
   Input,
+  input,
   numberAttribute,
   OnChanges,
   OnDestroy,
@@ -180,13 +181,13 @@ export class NxTimefieldComponent
   ngControl: NgControl | null = null;
 
   /* The appearance of the formfield. Should be mostly handled via dependency injection and not over this input. */
-  @Input() appearance: AppearanceType = this._formfieldDefaultOptions?.appearance ?? 'auto';
+  readonly appearance = input<AppearanceType>(this._formfieldDefaultOptions?.appearance ?? 'auto');
   /* The hint to be shown below the field. */
   @Input() hint = '';
   /* The optional label for the formfield. */
-  @Input() optionalLabel: string = '';
+  readonly optionalLabel = input<string>('');
   /** The inputmode for the formfield. */
-  @Input() inputMode: InputModeType = 'decimal';
+  readonly inputMode = input<InputModeType>('decimal');
 
   private _withTimepicker = false;
   /* Whether to show the timepicker. Not enabled by default. */
@@ -203,7 +204,7 @@ export class NxTimefieldComponent
   }
 
   /* Opt-in for the time validation. */
-  @Input({ transform: booleanAttribute }) enableTimeValidation = false;
+  readonly enableTimeValidation = input(false, { transform: booleanAttribute });
 
   /* Event that emits the time in 24h ISO format. */
   @Output() readonly valueChange = new EventEmitter<string>();
@@ -241,7 +242,7 @@ export class NxTimefieldComponent
         case 'Enter':
         case ' ':
           event.preventDefault();
-          this.selectOption(this._keyManager?.activeItem?.value);
+          this.selectOption(this._keyManager?.activeItem?.value());
           break;
         default:
           this._keyManager?.onKeydown(event);
@@ -418,9 +419,9 @@ export class NxTimefieldComponent
   }
   private _negative = false;
 
-  @Input() pickerStartTime = DEFAULT_START_TIME;
-  @Input() pickerEndTime = DEFAULT_END_TIME;
-  @Input({ transform: numberAttribute }) pickerTimeInterval = DEFAULT_TIME_SPAN;
+  readonly pickerStartTime = input(DEFAULT_START_TIME);
+  readonly pickerEndTime = input(DEFAULT_END_TIME);
+  readonly pickerTimeInterval = input(DEFAULT_TIME_SPAN, { transform: numberAttribute });
 
   /** Whether the timefield is disabled. */
   @Input() set disabled(value: BooleanInput) {
@@ -485,7 +486,7 @@ export class NxTimefieldComponent
   }
 
   validate(control: AbstractControl<any, any>): ValidationErrors | null {
-    if (!this.enableTimeValidation || (!this.hours && !this.minutes)) {
+    if (!this.enableTimeValidation() || (!this.hours && !this.minutes)) {
       return null;
     }
 
@@ -525,9 +526,9 @@ export class NxTimefieldComponent
 
   private _createTimelist() {
     this.timeList = getTimeArray(
-      this.pickerStartTime,
-      this.pickerEndTime,
-      this.pickerTimeInterval,
+      this.pickerStartTime(),
+      this.pickerEndTime(),
+      this.pickerTimeInterval(),
       this.twelveHourFormat,
     );
   }
@@ -750,7 +751,7 @@ export class NxTimefieldComponent
       time || '00:00',
     );
     const option = this.timepickerOptions?.find(
-      (timepickerOption) => timepickerOption.value === closestTime,
+      (timepickerOption) => timepickerOption.value() === closestTime,
     );
     return option;
   }

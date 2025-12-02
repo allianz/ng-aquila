@@ -8,6 +8,7 @@ import {
   Component,
   ElementRef,
   Input,
+  input,
   Optional,
 } from '@angular/core';
 
@@ -35,10 +36,10 @@ export class NxSingleStepperComponent extends NxProgressStepperDirective {
   private _rightLabel = 'Next step:';
 
   /** Overrides the `aria-label` of the nx-progressbar. Defaults to "Progress" */
-  @Input() progressbarAriaLabel: string | undefined = 'Progress';
+  readonly progressbarAriaLabel = input<string | undefined>('Progress');
 
   /** Sets the `aria-labelledby` of the nx-progressbar */
-  @Input('progressbarAriaLabeledBy') progressbarAriaLabeledBy: string | undefined;
+  readonly progressbarAriaLabeledBy = input<string>();
 
   /** @docs-private */
   get progress() {
@@ -51,7 +52,7 @@ export class NxSingleStepperComponent extends NxProgressStepperDirective {
     const label = step!.stepLabel || step!.label;
 
     return `
-    ${this.currentStepLabel} ${this.selectedIndex + 1}/${this.count}: ${label}
+    ${this.currentStepLabel()} ${this.selectedIndex + 1}/${this.count}: ${label}
     `;
   }
 

@@ -37,16 +37,16 @@ const DEFAULT_TYPE = 'section';
     '[class.nx-heading--subsection-medium]': 'legacytype === "subsection-medium"',
     '[class.nx-heading--subsection-small]': 'legacytype === "subsection-small"',
     '[class.nx-heading--subsection-xsmall]': 'legacytype === "subsection-xsmall"',
-    '[class.nx-heading--new-api]': 'size !== undefined',
-    '[class.nx-heading--s]': 'size === "s"',
-    '[class.nx-heading--m]': 'size === "m"',
-    '[class.nx-heading--l]': 'size === "l"',
-    '[class.nx-heading--xl]': 'size === "xl"',
-    '[class.nx-heading--2xl]': 'size === "2xl"',
-    '[class.nx-heading--3xl]': 'size === "3xl"',
-    '[class.nx-heading--4xl]': 'size === "4xl"',
-    '[class.nx-heading--5xl]': 'size === "5xl"',
-    '[class.nx-heading--6xl]': 'size === "6xl"',
+    '[class.nx-heading--new-api]': 'size() !== undefined',
+    '[class.nx-heading--s]': 'size() === "s"',
+    '[class.nx-heading--m]': 'size() === "m"',
+    '[class.nx-heading--l]': 'size() === "l"',
+    '[class.nx-heading--xl]': 'size() === "xl"',
+    '[class.nx-heading--2xl]': 'size() === "2xl"',
+    '[class.nx-heading--3xl]': 'size() === "3xl"',
+    '[class.nx-heading--4xl]': 'size() === "4xl"',
+    '[class.nx-heading--5xl]': 'size() === "5xl"',
+    '[class.nx-heading--6xl]': 'size() === "6xl"',
     '[class.nx-heading--negative]': 'negative',
     '[class.nx-heading--primary]': 'type() === "primary"',
     '[class.nx-heading--secondary]': 'type() === "secondary"',
@@ -78,7 +78,7 @@ export class NxHeadlineComponent {
   }
   private _classNames = '';
 
-  @Input() size: NxHeadlineSize;
+  readonly size = input<NxHeadlineSize>();
   @Input() set negative(value: BooleanInput) {
     this._negative = coerceBooleanProperty(value);
   }

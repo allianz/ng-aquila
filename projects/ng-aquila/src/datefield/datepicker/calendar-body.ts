@@ -17,7 +17,6 @@ import {
   EventEmitter,
   inject,
   Injector,
-  Input,
   input,
   OnDestroy,
   Output,
@@ -59,34 +58,35 @@ export class NxCalendarCell {
 })
 export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy, AfterViewChecked {
   /** The label for the table. (e.g. "Jan 2017"). */
-  @Input() label!: string;
+  // TODO: recheck if this is needed
+  readonly label = input<string>();
 
   /** The cells to display in the table. */
-  @Input() rows!: NxCalendarCell[][];
+  readonly rows = input.required<NxCalendarCell[][]>();
 
   /** The value in the table that corresponds to today. */
-  @Input() todayValue!: number;
+  readonly todayValue = input<number>();
 
   /** The value in the table that is currently selected. */
-  @Input() selectedValue: number | null = null;
+  readonly selectedValue = input<number | null>(null);
 
   selectedEndDate = input<number | null>(null);
   betweenRange = input<number[]>([]);
 
   /** The number of columns in the table. */
-  @Input() numCols = 7;
+  readonly numCols = input(7);
 
   /** Whether to allow selection of disabled cells. */
-  @Input() allowDisabledSelection = false;
+  readonly allowDisabledSelection = input(false);
 
   /** The cell number of the active cell in the table. */
-  @Input() activeCell = 0;
+  readonly activeCell = input(0);
 
   /** The items to display in the first row in the offset space. */
-  @Input() previousItems: number = 0;
+  readonly previousItems = input<number>(0);
 
   /** The items to display in the last row in the offset space. */
-  @Input() followingItems: number = 0;
+  readonly followingItems = input<number>(0);
 
   /** Emits when a new value out of rows is selected. */
   @Output() readonly selectedValueChange = new EventEmitter<number>();
@@ -142,14 +142,14 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy, AfterV
   }
 
   _previousCellClicked(cell: NxCalendarCell): void {
-    if (!this.allowDisabledSelection && !cell.enabled) {
+    if (!this.allowDisabledSelection() && !cell.enabled) {
       return;
     }
     this.selectedValueChangeToPrevious.emit(cell.value);
   }
 
   _cellClicked(cell: NxCalendarCell): void {
-    if (!this.allowDisabledSelection && !cell.enabled) {
+    if (!this.allowDisabledSelection() && !cell.enabled) {
       return;
     }
     this.selectedValueChange.emit(cell.value);
@@ -160,7 +160,7 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy, AfterV
   }
 
   _followingCellClicked(cell: NxCalendarCell): void {
-    if (!this.allowDisabledSelection && !cell.enabled) {
+    if (!this.allowDisabledSelection() && !cell.enabled) {
       return;
     }
     this.selectedValueChangeToFollowing.emit(cell.value);
@@ -168,30 +168,33 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy, AfterV
 
   /** The number of blank cells to put at the beginning for the first row. */
   get _firstRowOffset(): number {
-    return this.rows?.length && this.rows[0].length ? this.numCols - this.rows[0].length : 0;
+    const rows = this.rows();
+    return rows?.length && rows[0].length ? this.numCols() - rows[0].length : 0;
   }
 
   /** The number of blank cells to put at the end of the last filled row. */
   get _lastRowOffset(): number {
-    return this.rows?.length && this.rows[this.rows.length - 1].length
-      ? this.numCols - this.rows[this.rows.length - 1].length
+    const rows = this.rows();
+    return rows?.length && rows[rows.length - 1].length
+      ? this.numCols() - rows[rows.length - 1].length
       : 0;
   }
 
   /** The index of the last row. */
   get _lastRowIndex(): number {
-    return this.rows?.length ? this.rows.length - 1 : 0;
+    const rows = this.rows();
+    return rows?.length ? rows.length - 1 : 0;
   }
 
   _isActiveCell(rowIndex: number, colIndex: number): boolean {
-    let cellNumber = rowIndex * this.numCols + colIndex;
+    let cellNumber = rowIndex * this.numCols() + colIndex;
 
     // Account for the fact that the first row may not have as many cells.
     if (rowIndex) {
       cellNumber -= this._firstRowOffset;
     }
 
-    return cellNumber === this.activeCell;
+    return cellNumber === this.activeCell();
   }
 
   /** Focuses the active cell after the microtask queue is empty. */

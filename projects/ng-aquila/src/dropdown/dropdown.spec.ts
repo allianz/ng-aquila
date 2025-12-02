@@ -59,6 +59,7 @@ import {
   NxDropdownComponent,
   NxDropdownIntl,
   NxDropdownPanelMinWidth,
+  VerticalAlignCheckmark,
 } from './dropdown';
 import { NxDropdownModule } from './dropdown.module';
 import { NxDropdownItemComponent } from './item/dropdown-item';
@@ -1911,7 +1912,7 @@ describe('NxDropdownComponent', () => {
 
     it('dropdown should have class centered-checkmark', fakeAsync(() => {
       createTestComponent(VerticalAlignCheckmarkComponent);
-      dropdownInstance.verticalAlignCheckmark = 'center';
+      (testInstance as VerticalAlignCheckmarkComponent).verticalAlignCheckmark = 'center';
       fixture.detectChanges();
       openDropdownByClick();
 
@@ -2590,7 +2591,7 @@ class DropdownLazy extends DropdownTest {
   imports: [NxDropdownModule],
 })
 class VerticalAlignCheckmarkComponent extends DropdownTest {
-  verticalAlignCheckmark = 'top' as const;
+  verticalAlignCheckmark: VerticalAlignCheckmark = 'top';
 }
 
 @Component({

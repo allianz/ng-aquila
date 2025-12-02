@@ -5,7 +5,7 @@ import {
   Component,
   DOCUMENT,
   Inject,
-  Input,
+  input,
   OnDestroy,
 } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
@@ -40,7 +40,7 @@ export interface Link {
   imports: [RouterLink],
 })
 export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
-  @Input() container!: string;
+  readonly container = input.required<string>();
 
   links: Link[] = [];
 

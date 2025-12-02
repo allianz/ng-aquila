@@ -6,6 +6,7 @@ import {
   Component,
   ElementRef,
   Input,
+  input,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -30,7 +31,7 @@ import { NxTabGroupBase } from './tab-group-base';
 export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   @ViewChild('outlet', { static: true, read: ViewContainerRef }) _outlet!: ViewContainerRef;
 
-  @Input() tab!: NxTabComponent;
+  readonly tab = input.required<NxTabComponent>();
 
   @Input() set active(value: BooleanInput) {
     this._active = coerceBooleanProperty(value);
@@ -76,11 +77,11 @@ export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges, AfterVi
   }
 
   attach() {
-    this._outlet.insert(this.tab.contentViewRef);
+    this._outlet.insert(this.tab().contentViewRef);
   }
 
   detach() {
-    const index = this._outlet.indexOf(this.tab.contentViewRef);
+    const index = this._outlet.indexOf(this.tab().contentViewRef);
     if (index !== -1) {
       this._outlet.detach(index);
     }

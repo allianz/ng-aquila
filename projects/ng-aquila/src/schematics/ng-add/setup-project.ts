@@ -17,12 +17,7 @@ import {
   url,
 } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import {
-  addRootImport,
-  addRootProvider,
-  readWorkspace,
-  updateWorkspace,
-} from '@schematics/angular/utility';
+import { addRootImport, readWorkspace, updateWorkspace } from '@schematics/angular/utility';
 import { buildDefaultPath } from '@schematics/angular/utility/workspace';
 import chalk from 'chalk';
 

@@ -5,7 +5,7 @@ import {
   ChangeDetectorRef,
   Component,
   EnvironmentInjector,
-  Input,
+  input,
   OnDestroy,
   OnInit,
 } from '@angular/core';
@@ -23,7 +23,7 @@ import { ManifestService } from './../service/manifest.service';
   imports: [Dir, NgComponentOutlet, NxSpinnerModule],
 })
 export class LazyExampleOutletComponent implements OnInit, OnDestroy {
-  @Input() exampleId!: string;
+  readonly exampleId = input.required<string>();
 
   exampleComponent: any = null;
   exampleDescriptor!: ExampleDescriptor;
@@ -43,8 +43,9 @@ export class LazyExampleOutletComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if (this._manifestService.hasExample(this.exampleId)) {
-      this.exampleDescriptor = this._manifestService.getExample(this.exampleId);
+    const exampleId = this.exampleId();
+    if (this._manifestService.hasExample(exampleId)) {
+      this.exampleDescriptor = this._manifestService.getExample(exampleId);
     } else {
       console.error('Example does not exist: ', this.exampleDescriptor.id);
     }

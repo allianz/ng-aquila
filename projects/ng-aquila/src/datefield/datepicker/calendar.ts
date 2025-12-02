@@ -84,7 +84,7 @@ export class NxCalendarComponent<D>
   private _startAt!: D | null;
 
   /** Whether the calendar should be started in month or year view. */
-  @Input() startView: 'month' | 'year' | 'multi-year' = 'month';
+  readonly startView = input<'month' | 'year' | 'multi-year'>('month');
 
   /** The currently selected date. */
   @Input() set selected(value: D | DateRange<D> | null) {
@@ -122,10 +122,10 @@ export class NxCalendarComponent<D>
   private _maxDate!: D | null;
 
   /** A function used to filter which dates are selectable. */
-  @Input() dateFilter!: (date: D) => boolean;
+  readonly dateFilter = input<((date: D) => boolean) | undefined>(undefined);
 
   /** Determines whether the today button is displayed in the calendar. */
-  @Input({ transform: booleanAttribute }) showTodayButton: boolean = false;
+  readonly showTodayButton = input<boolean, unknown>(false, { transform: booleanAttribute });
 
   /** Emits when the currently selected date changes. */
   @Output() readonly selectedChange = new EventEmitter<D | DateRange<D>>();
@@ -271,7 +271,7 @@ export class NxCalendarComponent<D>
 
   ngAfterContentInit(): void {
     this._activeDate = this.startAt || this._dateAdapter.today();
-    this._currentView = this.startView;
+    this._currentView = this.startView();
   }
 
   ngAfterViewInit(): void {

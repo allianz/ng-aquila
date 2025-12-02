@@ -6,6 +6,7 @@ import {
   ElementRef,
   inject,
   Input,
+  input,
   isDevMode,
   Optional,
 } from '@angular/core';
@@ -67,8 +68,8 @@ export type ColOrder = 'first' | 'last' | 'unordered';
   styleUrls: ['col.component.scss'],
   host: {
     '[class.nx-grid__column]': 'true',
-    '[class.nx-grid__column--container-query]': '!!gridLayoutComponent?.containerQuery',
-    '[class.nx-grid__column--media-query]': '!gridLayoutComponent?.containerQuery',
+    '[class.nx-grid__column--container-query]': '!!gridLayoutComponent?.containerQuery()',
+    '[class.nx-grid__column--media-query]': '!gridLayoutComponent?.containerQuery()',
     '[class]': '_classNames',
   },
   standalone: true,
@@ -78,7 +79,7 @@ export class NxColComponent {
    * Overwrite default class property to access user provided class.
    * @docs-private
    */
-  @Input() class!: string;
+  readonly class = input<string>();
 
   /**
    * The `nxCol` attribute accepts up to seven comma-separated values for responsive layout
@@ -134,7 +135,7 @@ export class NxColComponent {
       this._offsetClasses,
       this._alignSelfClasses,
       this._orderClasses,
-      this.class,
+      this.class(),
     ]
       .filter((classes) => classes?.length)
       .join(' ');

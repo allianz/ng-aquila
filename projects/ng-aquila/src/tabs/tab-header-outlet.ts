@@ -1,7 +1,7 @@
 import {
   Component,
   EmbeddedViewRef,
-  Input,
+  input,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -21,7 +21,7 @@ import { NxTabGroupBase } from './tab-group-base';
 export class NxTabHeaderOutletComponent implements OnInit, OnDestroy {
   @ViewChild('outlet', { static: true, read: ViewContainerRef }) _outlet!: ViewContainerRef;
 
-  @Input() content!: EmbeddedViewRef<any>;
+  readonly content = input.required<EmbeddedViewRef<any>>();
 
   private readonly _destroyed = new Subject<void>();
 
@@ -35,11 +35,11 @@ export class NxTabHeaderOutletComponent implements OnInit, OnDestroy {
   }
 
   attach() {
-    this._outlet.insert(this.content);
+    this._outlet.insert(this.content());
   }
 
   detach() {
-    const index = this._outlet.indexOf(this.content);
+    const index = this._outlet.indexOf(this.content());
     if (index !== -1) {
       this._outlet.detach(index);
     }

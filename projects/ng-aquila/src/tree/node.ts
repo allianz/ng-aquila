@@ -8,7 +8,7 @@ import {
   contentChild,
   Directive,
   ElementRef,
-  Input,
+  input,
   OnDestroy,
 } from '@angular/core';
 
@@ -102,5 +102,5 @@ export class NxTreeNodeComponent<T>
   standalone: true,
 })
 export class NxTreeNodeDefDirective<T> extends CdkTreeNodeDef<T> {
-  @Input('nxTreeNode') data!: T;
+  readonly data = input({ alias: 'nxTreeNode' });
 }

@@ -51,7 +51,7 @@ export class NxButtonBase implements NxTriggerButton, AfterViewInit {
     if (this._isAnchor && this.disabled) {
       return -1;
     }
-    return this.tabIndex ?? this._tabindexAttributeBinding ?? undefined;
+    return this.tabIndex() ?? this._tabindexAttributeBinding() ?? undefined;
   }
 
   private _classNames = '';
@@ -131,15 +131,16 @@ export class NxButtonBase implements NxTriggerButton, AfterViewInit {
   }
   private _disabled = false;
 
-  @Input({ transform: tabIndexAttribute }) tabIndex: number | undefined;
+  readonly tabIndex = input<number, unknown>(undefined, { transform: tabIndexAttribute });
 
   /**
    * Use 'tabindex' to handle existing usages of `[tabindex]` bindings on button elements
    * @docs-private
    */
-  @Input({ alias: 'tabindex', transform: tabIndexAttribute }) _tabindexAttributeBinding:
-    | number
-    | undefined;
+  readonly _tabindexAttributeBinding = input<number, unknown>(undefined, {
+    alias: 'tabindex',
+    transform: tabIndexAttribute,
+  });
 
   /** Whether the button should be in a loading state. */
   loading = input<boolean, BooleanInput>(false, { transform: booleanAttribute });

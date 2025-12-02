@@ -8,6 +8,7 @@ import {
   Component,
   ElementRef,
   Input,
+  input,
   OnDestroy,
 } from '@angular/core';
 
@@ -33,7 +34,7 @@ const visibilityIcons = {
 })
 export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
   /** Input element using the toggle functionality. */
-  @Input() control!: HTMLInputElement;
+  readonly control = input<HTMLInputElement>();
 
   /** @docs-private */
   _currentIcon: string = visibilityIcons.show;
@@ -66,13 +67,13 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this._focusMonitor.monitor(this._elementRef);
 
-    if (!this.control) {
+    const control = this.control();
+    if (!control) {
       console.warn('You need to pass an input as a control to the password toggle.');
       return;
     }
     // show the right icon according to the initial type of the input
-    this._currentIcon =
-      this.control.type === 'password' ? visibilityIcons.show : visibilityIcons.hide;
+    this._currentIcon = control.type === 'password' ? visibilityIcons.show : visibilityIcons.hide;
   }
 
   ngOnDestroy(): void {
@@ -81,8 +82,9 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
 
   /** Toggles the type of the input. */
   toggleInputType(): void {
-    if (this.control) {
-      this.control.type = this.control.type === 'password' ? 'text' : 'password';
+    const control = this.control();
+    if (control) {
+      control.type = control.type === 'password' ? 'text' : 'password';
       this._pressed = !this._pressed;
       this.toggleIcon();
       this._cdr.markForCheck();
@@ -104,8 +106,9 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
 
   /** @docs-private */
   get tabindex(): number | null {
-    if (this.control) {
-      return this.control.disabled ? -1 : 0;
+    const control = this.control();
+    if (control) {
+      return control.disabled ? -1 : 0;
     }
     return null;
   }

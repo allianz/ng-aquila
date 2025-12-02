@@ -1,5 +1,5 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { booleanAttribute, ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 /** @docs-private */
 @Component({
@@ -9,26 +9,26 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, Input } from '@an
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.nx-circle-button]': 'true',
-    '[class.is-flipped]': 'checked',
-    '[class.has-checkmark]': '!inGroup',
-    '[class.is-disabled]': 'disabled',
-    '[class.is-negative]': 'negative',
-    '[class.is-touched]': 'touched',
-    '[class.is-readonly]': 'readonly',
+    '[class.is-flipped]': 'checked()',
+    '[class.has-checkmark]': '!inGroup()',
+    '[class.is-disabled]': 'disabled()',
+    '[class.is-negative]': 'negative()',
+    '[class.is-touched]': 'touched()',
+    '[class.is-readonly]': 'readonly()',
   },
   imports: [NxIconModule],
 })
 export class NxIconToggleButtonComponent {
-  @Input() inGroup = true;
-  @Input() hint = '';
-  @Input() label = '';
-  @Input() checked = false;
-  @Input() icon = '';
-  @Input() disabled = false;
-  @Input() negative = false;
-  @Input() touched = false;
-  @Input() circleText = '';
-  @Input({ transform: booleanAttribute }) readonly = false;
+  readonly inGroup = input(true);
+  readonly hint = input('');
+  readonly label = input('');
+  readonly checked = input(false);
+  readonly icon = input('');
+  readonly disabled = input(false);
+  readonly negative = input(false);
+  readonly touched = input(false);
+  readonly circleText = input('');
+  readonly readonly = input(false, { transform: booleanAttribute });
 
-  @Input('svg') svgUrl = '';
+  readonly svgUrl = input('', { alias: 'svg' });
 }

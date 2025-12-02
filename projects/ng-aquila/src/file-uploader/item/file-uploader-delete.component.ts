@@ -1,6 +1,6 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 /** Shows a delete button. */
 @Component({
@@ -8,9 +8,9 @@ import { Component, Input } from '@angular/core';
   template: `
     <button
       nxIconButton="tertiary small-medium"
-      [attr.aria-label]="deleteLabel || null"
+      [attr.aria-label]="deleteLabel() || null"
       type="button"
-      [attr.disabled]="disabled || isUploading || null"
+      [attr.disabled]="disabled() || isUploading() || null"
     >
       <nx-icon name="trash-o" [attr.aria-hidden]="true"></nx-icon>
     </button>
@@ -20,11 +20,11 @@ import { Component, Input } from '@angular/core';
 })
 export class NxFileUploaderItemDelete {
   /** Whether the file is uploading at the moment. If true, the button is disabled. Default: false.*/
-  @Input() isUploading = false;
+  readonly isUploading = input(false);
 
   /** Whether this button is disabled. The button is additionally disabled while uploading. Default: false. */
-  @Input() disabled = false;
+  readonly disabled = input(false);
 
   /** The label that is used for the delete button (used by screen readers). */
-  @Input() deleteLabel!: string;
+  readonly deleteLabel = input<string>();
 }
