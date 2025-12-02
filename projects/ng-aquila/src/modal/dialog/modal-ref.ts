@@ -62,7 +62,6 @@ export class NxModalRef<T, R = any> {
         take(1),
       )
       .subscribe(() => {
-        console.log('Modal opened');
         this._afterOpened.next();
         this._afterOpened.complete();
       });
@@ -74,8 +73,6 @@ export class NxModalRef<T, R = any> {
         take(1),
       )
       .subscribe(() => {
-        console.log('Modal closed');
-
         clearTimeout(this._closeFallbackTimeout);
         this._overlayRef.dispose();
       });
@@ -136,7 +133,7 @@ export class NxModalRef<T, R = any> {
         // vast majority of cases the timeout will have been cleared before it has the chance to fire.
         this._closeFallbackTimeout = setTimeout(() => {
           this._overlayRef.dispose();
-        }, 400); // TODO: Replace with actual animation duration
+        }, 400); // TODO: Replace with actual animation duration.
       });
 
     // Start the exit animation
