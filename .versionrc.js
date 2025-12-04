@@ -8,6 +8,7 @@ const TYPES = [
   { type: 'build', section: 'Build & CI 👷‍', hidden: true },
   { type: 'ci', section: 'Build & CI 👷‍', hidden: true },
   { type: 'chore', section: 'Other 🧾', hidden: true },
+  { type: 'refactor', section: 'Code Refactoring 🧾', hidden: true },
   { type: 'docs', section: 'Documentation 📚', hidden: false },
 ];
 

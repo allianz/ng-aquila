@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [21.0.0](https://github.com/allianz/ng-aquila/compare/v20.7.0...v21.0.0) (2025-12-04)
+
+### ⚠ BREAKING CHANGES
+
+* **checkbox:** the id of the internal input element was changed to `<checkbox-id>-input`, so an `-input` suffix was added.
+* **signal-inputs**: we migrated a first batch of component inputs to signal properties. this might break your test or direct usage in code.
+* **swipebar:** the deprecated swipebar component was removed.
+* **various:** the deprecated Angular animations package was removed and replaced with CSS animations. with this change we removed animation exports from components.
+* **number-stepper:** the `valueChange` outputs' typing was changed from `number` to `number | null`
+* **rating:** the `size` input incorrectly allowed the `IconSize` type from the icon component. This was replaced with a new dedicated `RatingSize` type.
+* **iban-mask**: the deprecated `iban` package was exchanged with `ibantools`. Running `ng update @allianz/ng-aquila` will exchange the dependency in your project.
+* **file-uploader:** fixed a typo in the constructor `elemetRef` -> `elementRef`
+
+### Features ✨
+
+* **rating:** add label css vars per size ([b2ed790](https://github.com/allianz/ng-aquila/commit/b2ed790efe614c7f91b3c8148583e6c563610b4a))
+* remove animations package ([4fb2797](https://github.com/allianz/ng-aquila/commit/4fb2797bef05ea9cc47f6e8598d672a24a51725b))
+* update to angular v21 stable ([1ebd602](https://github.com/allianz/ng-aquila/commit/1ebd60280a6e944601a7bbc7d819e1df23fcb5f5))
+
+
+### Code Refactoring 🧾
+
+* migrate to signal input ([a161bb5](https://github.com/allianz/ng-aquila/commit/a161bb5e8cb9d756a59dc74f7063abc16dc07a6a))
+
+
+### Bug Fixes 🐛
+
+* **checkbox:** add postfix to checkbox's input and label id ([b35a69e](https://github.com/allianz/ng-aquila/commit/b35a69e7ad0fb26ac62c19b970802897b7c97a6b))
+* **file-uploader:** Fix typo in element reference ([4d0e398](https://github.com/allianz/ng-aquila/commit/4d0e398d8e77f36c3d094785cd11d58e8196c103))
+* **iban-mask:** update unmaintained dependency ([b6f0688](https://github.com/allianz/ng-aquila/commit/b6f0688c7d864751867bee3ba86f48e373a96e18))
+* **iban:** clean up and update package in stackblitz ([b29d5ad](https://github.com/allianz/ng-aquila/commit/b29d5adaff2e23902c01c777be0fc2ea432d79f5))
+* **number-stepper:** change type for valueChange emitter ([22bdcc4](https://github.com/allianz/ng-aquila/commit/22bdcc4de923b2591e3954ce410b7a880a49bb63))
+* **rating:** replace IconSize with more specific RatingSize type ([444a40e](https://github.com/allianz/ng-aquila/commit/444a40ee6ac63e759a82beb67d95b0d7bb100851))
+
+
+### Documentation 📚
+
+* update releases for v21 ([ef0c93b](https://github.com/allianz/ng-aquila/commit/ef0c93b1a92634f0691c9b417f8d3f0b4de103f3))
+
+
 ## [20.7.0](https://github.com/allianz/ng-aquila/compare/v20.6.0...v20.7.0) (2025-11-27)
 
 ### Documentation 📚
