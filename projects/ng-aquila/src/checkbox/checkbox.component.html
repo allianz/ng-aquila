@@ -1,7 +1,7 @@
 <input
   #input
   type="checkbox"
-  [id]="id"
+  [id]="inputId()"
   [name]="name"
   [checked]="checked"
   [indeterminate]="indeterminate"
@@ -18,8 +18,8 @@
 />
 
 <label
-  [id]="id + '-label'"
-  [attr.for]="id"
+  [id]="labelId()"
+  [attr.for]="inputId()"
   class="nx-checkbox__label"
   [class.has-label]="labelHasContent"
 >

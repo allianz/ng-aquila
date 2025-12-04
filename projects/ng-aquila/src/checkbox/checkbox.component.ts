@@ -12,6 +12,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ContentChild,
   ContentChildren,
   DoCheck,
@@ -77,7 +78,7 @@ export type NxCheckboxLabelSize = 'small' | 'large';
   host: {
     '[class.nx-checkbox-group]': 'true',
     '[class.nx-checkbox-group--negative]': 'negative',
-    '[attr.id]': 'id',
+    '[attr.id]': 'id()',
     '[attr.required]': 'required',
     '[attr.disabled]': 'disabled || null',
     '[attr.role]': '"group"',
@@ -108,17 +109,10 @@ export class NxCheckboxGroupComponent
   @Output() readonly selectionChange = new EventEmitter<NxCheckboxGroupChangeEvent>();
 
   /** Sets the Id of the checkbox group. */
-  @Input() set id(value: string) {
-    if (this._id !== value) {
-      this._id = value;
-      this._cdr.markForCheck();
-    }
-  }
-  get id(): string {
-    return this._id;
-  }
 
-  private _id = inject(IdGenerationService).nextId('nx-checkbox-group');
+  readonly id = input<string>(inject(IdGenerationService).nextId('nx-checkbox-group'), {
+    alias: 'id',
+  });
 
   /** Sets the name of the checkboxes inside the nx-checkbox-group. */
   @Input() set name(value: string) {
@@ -368,17 +362,11 @@ export class NxCheckboxComponent
    *
    * If not set, the checkbox gets an incremented value by default.
    */
-  @Input() set id(value: string) {
-    if (value !== this._id) {
-      this._id = value;
-      this._cdr.markForCheck();
-    }
-  }
-  get id(): string {
-    return this._id;
-  }
 
-  private _id: string = inject(IdGenerationService).nextId('nx-checkbox');
+  readonly id = input<string>(inject(IdGenerationService).nextId('nx-checkbox'), { alias: 'id' });
+
+  readonly inputId = computed(() => `${this.id()}-input`);
+  readonly labelId = computed(() => `${this.id()}-label`);
 
   /** Name of the checkbox. */
   @Input() set name(name: string) {
