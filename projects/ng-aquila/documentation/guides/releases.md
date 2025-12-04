@@ -12,17 +12,27 @@ As the Angular team now provides release dates down to a week, we are able to pr
 
 We trigger minor or bug fix releases if they provide a meaningful delivery (fix or feature). This is usually decided in our weekly refinement meeting.
 
-| Date           | Angular version | ng-aquila version | LTS end      |
-| -------------- | --------------- | ----------------- | ------------ |
-| November 2023  | 17              | 17                | May 2025     |
-| July 2024      | 18              | 18                | Nov 2025     |
-| January 2025   | 19              | 19                | May 2026     |
+| Date          | Angular version | Angular Brand Kit version | LTS end       |
+| ------------- | --------------- | ------------------------- | ------------- |
+| December 2025 | 21              | 21                        | May 2027      |
+| July 2025     | 20              | 20                        | November 2026 |
+| January 2025  | 19              | 19                        | May 2026      |
 
-Aquila versions 16 and older are no longer supported.
+Versions 18 and older are no longer supported.
 
 During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
 
-# Updating to version 20
+## Updating to version 21
+
+For updating Angular to version 21, in most cases the following command should do the update for you:
+
+`ng update @angular/cli @angular/core @angular/cdk --force`
+
+Then update the ng-aquila with the following command:
+
+`ng update @allianz/ng-aquila --force`
+
+## Updating to version 20
 
 With version 20 we are moving ng-aquila from the @aposin organization to the @allianz organization.
 
