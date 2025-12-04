@@ -44,8 +44,8 @@ const TEST_TEMPLATE_FILES = [
 
 const TAGS: string[] = ['allianz', 'aquila', 'example'];
 
-const angularVersion = '^20.0.0';
-const aquilaVersion = '^20.0.0';
+const angularVersion = '^21.0.0';
+const aquilaVersion = '^21.0.0';
 
 const dependencies = {
   '@angular/cdk': angularVersion,
@@ -62,11 +62,11 @@ const dependencies = {
   dayjs: '^1.11.5',
   'decimal.js': '^10.4.2',
   'i18n-iso-countries': '^7.5.0',
-  iban: '^0.0.14',
+  ibantools: '^4.5.1',
   moment: '^2.29.4',
   rxjs: '~6.6.7',
   tslib: '^2.8.1',
-  'zone.js': '^0.15.0',
+  'zone.js': '^0.16.0',
 };
 
 const testDependencies = {

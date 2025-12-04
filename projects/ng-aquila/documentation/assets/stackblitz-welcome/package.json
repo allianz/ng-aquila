@@ -22,26 +22,26 @@
     },
     "private": true,
     "dependencies": {
-        "@allianz/ng-aquila": "^20.5.0",
-        "@angular/cdk": "^20.0.0",
-        "@angular/common": "^20.3.0",
-        "@angular/compiler": "^20.3.0",
-        "@angular/core": "^20.3.0",
-        "@angular/forms": "^20.3.0",
-        "@angular/platform-browser": "^20.3.0",
-        "@angular/router": "^20.3.0",
+        "@allianz/ng-aquila": "^21.0.0",
+        "@angular/cdk": "^21.0.0",
+        "@angular/common": "^21.0.0",
+        "@angular/compiler": "^21.0.0",
+        "@angular/core": "^21.0.0",
+        "@angular/forms": "^21.0.0",
+        "@angular/platform-browser": "^21.0.0",
+        "@angular/router": "^21.0.0",
         "dayjs": "^1.11.5",
         "decimal.js": "^10.3.1",
         "i18n-iso-countries": "^6.8.0||^7.5.0",
         "ibantools": "^4.5.1",
         "moment": "^2.29.1",
         "rxjs": "~7.8.0",
-        "tslib": "^2.3.0"
+        "tslib": "^2.8.1"
     },
     "devDependencies": {
-        "@angular/build": "^20.3.0",
-        "@angular/cli": "^20.3.0",
-        "@angular/compiler-cli": "^20.3.0",
-        "typescript": "~5.9.2"
+        "@angular/build": "^21.0.0",
+        "@angular/cli": "^21.0.0",
+        "@angular/compiler-cli": "^21.0.0",
+        "typescript": "~5.9.3"
     }
 }
