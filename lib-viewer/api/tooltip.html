@@ -58,17 +58,13 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input{ alias:  <strong>nxTooltipHideDelay</strong> }</span><span class="docs-api-input__keyword">
-                        @Input
-                        (<span class="docs-api-input-alias">'nxTooltipHideDelay'</span>) 
-                    </span>
-                </div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>nxTooltipHideDelay</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 hideDelay: 
                 </span>
                  
-                <span class="docs-api-property__type">number</span>
+                <span class="docs-api-property__type">InputSignal&lt;number&gt;</span>
             </code>
         </p>
     </td>
@@ -166,17 +162,13 @@ If true, tooltip will not respond to mouse or focus events.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input{ alias:  <strong>nxTooltipShowDelay</strong> }</span><span class="docs-api-input__keyword">
-                        @Input
-                        (<span class="docs-api-input-alias">'nxTooltipShowDelay'</span>) 
-                    </span>
-                </div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>nxTooltipShowDelay</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 showDelay: 
                 </span>
                  
-                <span class="docs-api-property__type">number</span>
+                <span class="docs-api-property__type">InputSignal&lt;number&gt;</span>
             </code>
         </p>
     </td>
@@ -196,7 +188,7 @@ If true, tooltip will not respond to mouse or focus events.</p>
             <span class="docs-api-method-name">hide(
                             delay:  
                                 <span class="docs-api-property__type">
-                                    number = this.hideDelay
+                                    number = this.hideDelay()
                                 </span>
                         )</span>
         </code>
@@ -208,7 +200,7 @@ If true, tooltip will not respond to mouse or focus events.</p>
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 delay:
-                <span class="docs-api-method-parameter-type">number = this.hideDelay</span>
+                <span class="docs-api-method-parameter-type">number = this.hideDelay()</span>
             </code>
         </div>
         
@@ -221,7 +213,7 @@ If true, tooltip will not respond to mouse or focus events.</p>
             <span class="docs-api-method-name">show(
                             delay:  
                                 <span class="docs-api-property__type">
-                                    number = this.showDelay
+                                    number = this.showDelay()
                                 </span>
                         )</span>
         </code>
@@ -233,7 +225,7 @@ If true, tooltip will not respond to mouse or focus events.</p>
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 delay:
-                <span class="docs-api-method-parameter-type">number = this.showDelay</span>
+                <span class="docs-api-method-parameter-type">number = this.showDelay()</span>
             </code>
         </div>
         

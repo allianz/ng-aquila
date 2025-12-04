@@ -83,7 +83,6 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'slider': return import('../examples/slider/slider-examples.module').then(m => m.SliderExamplesModule);
             case 'small-stage': return import('../examples/small-stage/small-stage-examples.module').then(m => m.SmallExamplesModule);
             case 'spinner': return import('../examples/spinner/spinner-examples.module').then(m => m.SpinnerExamplesModule);
-            case 'swipebar': return import('../examples/swipebar/swipebar-examples.module').then(m => m.SwipebarExamplesModule);
             case 'switcher': return import('../examples/switcher/switcher-examples.module').then(m => m.SwitcherExamplesModule);
             case 'table': return import('../examples/table/table-examples.module').then(m => m.TableExamplesModule);
             case 'tabs': return import('../examples/tabs/tabs-examples.module').then(m => m.TabsExamplesModule);

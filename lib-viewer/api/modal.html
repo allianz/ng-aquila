@@ -139,7 +139,7 @@ Will emit on subscribe if there are no open modals to begin with.</p>
             <span class="docs-api-method-name">open(
                             componentOrTemplateRef:  
                                 <span class="docs-api-property__type">
-                                    ComponentType<T> | TemplateRef<T>
+                                    any
                                 </span>,
                         
                             config?:  
@@ -156,7 +156,7 @@ Will emit on subscribe if there are no open modals to begin with.</p>
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 componentOrTemplateRef:
-                <span class="docs-api-method-parameter-type">ComponentType<T> | TemplateRef<T></span>
+                <span class="docs-api-method-parameter-type">any</span>
             </code>
             <p class="docs-api-method-parameter-description"> Type of the component to load into the dialog, or a TemplateRef to instantiate as the modal content. </p>
         </div>
@@ -201,14 +201,13 @@ Will emit on subscribe if there are no open modals to begin with.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                status?: 
+                status: 
                 </span>
                  
-                <span class="docs-api-property__type">NxStatusIconType</span>
+                <span class="docs-api-property__type">InputSignal&lt;NxStatusIconType&gt;</span>
             </code>
         </p>
     </td>
@@ -242,17 +241,13 @@ Will emit on subscribe if there are no open modals to begin with.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input{ alias:  <strong>modalBody</strong> }</span><span class="docs-api-input__keyword">
-                        @Input
-                        (<span class="docs-api-input-alias">'modalBody'</span>) 
-                    </span>
-                </div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>modalBody</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 body: 
                 </span>
                  
-                <span class="docs-api-property__type">TemplateRef&lt;any&gt;</span>
+                <span class="docs-api-property__type">InputSignal&lt;TemplateRef&lt;any&gt;&gt;</span>
             </code>
         </p>
     </td>
@@ -285,14 +280,13 @@ which contains the content of the modal view.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 hideOnClickOutside: 
                 </span>
                  
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">InputSignal&lt;boolean&gt;</span>
             </code>
         </p>
     </td>
@@ -305,14 +299,13 @@ Default: <code>true</code>.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 hideOnEsc: 
                 </span>
                  
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">InputSignal&lt;boolean&gt;</span>
             </code>
         </p>
     </td>
@@ -325,14 +318,13 @@ Default: <code>true</code>.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 showCloseIcon: 
                 </span>
                  
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">InputSignal&lt;boolean&gt;</span>
             </code>
         </p>
     </td>
@@ -345,17 +337,13 @@ Default: <code>true</code>.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input{ alias:  <strong>windowSize</strong> }</span><span class="docs-api-input__keyword">
-                        @Input
-                        (<span class="docs-api-input-alias">'windowSize'</span>) 
-                    </span>
-                </div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>windowSize</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 size: 
                 </span>
                  
-                <span class="docs-api-property__type">&quot;auto&quot; | &quot;fixed&quot;</span>
+                <span class="docs-api-property__type">InputSignal&lt;&quot;auto&quot; | &quot;fixed&quot;&gt;</span>
             </code>
         </p>
     </td>
@@ -419,17 +407,13 @@ of a modal to close it when requested by the user.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input{ alias:  <strong>aria-label</strong> }</span><span class="docs-api-input__keyword">
-                        @Input
-                        (<span class="docs-api-input-alias">'aria-label'</span>) 
-                    </span>
-                </div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>aria-label</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 ariaLabel: 
                 </span>
                  
-                <span class="docs-api-property__type">string</span>
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
             </code>
         </p>
     </td>
@@ -441,17 +425,13 @@ of a modal to close it when requested by the user.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input{ alias:  <strong>nxModalClose</strong> }</span><span class="docs-api-input__keyword">
-                        @Input
-                        (<span class="docs-api-input-alias">'nxModalClose'</span>) 
-                    </span>
-                </div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>nxModalClose</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 modalResult: 
                 </span>
                  
-                <span class="docs-api-property__type">any</span>
+                <span class="docs-api-property__type">InputSignal&lt;any&gt;</span>
             </code>
         </p>
     </td>
@@ -463,14 +443,13 @@ of a modal to close it when requested by the user.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 type: 
                 </span>
                  
-                <span class="docs-api-property__type">&quot;button&quot; | &quot;submit&quot; | &quot;reset&quot;</span>
+                <span class="docs-api-property__type">InputSignal&lt;&quot;button&quot; | &quot;submit&quot; | &quot;reset&quot;&gt;</span>
             </code>
         </p>
     </td>
@@ -1493,5 +1472,15 @@ content will be rendered.</p>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
     <code class="docs-api-type-alias-value">'dialog' | 'first-tabbable' | 'first-heading'</code>
+</p>
+   
+
+<h4 id="AnimationState" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="AnimationState"></span>
+    <code>AnimationState</code>
+</h4><p class="docs-api-type-alias-description"><p>State of the modal animation.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'opening' | 'opened' | 'closing' | 'closed'</code>
 </p>
   </div>

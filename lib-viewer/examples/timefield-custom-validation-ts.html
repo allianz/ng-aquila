@@ -16,9 +16,7 @@
   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./timefield-custom-validation-example.css&#x27;</span>],
   <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxTimefieldModule</span>, <span class="hljs-title class_">NxErrorModule</span>, <span class="hljs-title class_">ReactiveFormsModule</span>, <span class="hljs-title class_">JsonPipe</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TimefieldCustomValidationExampleComponent</span>
-  <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterViewInit</span>
-{
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TimefieldCustomValidationExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterViewInit</span> {
   timefield = viewChild.<span class="hljs-title function_">required</span>(<span class="hljs-title class_">NxTimefieldComponent</span>);
 
   <span class="hljs-keyword">readonly</span> testForm = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>({

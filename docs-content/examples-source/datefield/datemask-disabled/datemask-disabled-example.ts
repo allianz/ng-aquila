@@ -6,7 +6,6 @@ import {
 } from '@allianz/ng-aquila/datefield';
 import {
   NxFormfieldComponent,
-  NxFormfieldErrorDirective,
   NxFormfieldHintDirective,
   NxFormfieldSuffixDirective,
 } from '@allianz/ng-aquila/formfield';
@@ -16,7 +15,7 @@ import {
   NxRowComponent,
 } from '@allianz/ng-aquila/grid';
 import { NxSwitcherComponent } from '@allianz/ng-aquila/switcher';
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -29,18 +28,15 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./datemask-disabled-example.css'],
   imports: [
     NxFormfieldComponent,
-    CommonModule,
     FormsModule,
     NxDatemaskComponent,
     NxLayoutComponent,
     NxRowComponent,
     NxColComponent,
-    NxErrorComponent,
     NxDatepickerToggleComponent,
     NxDatepickerComponent,
     NxFormfieldHintDirective,
     NxFormfieldSuffixDirective,
-    NxFormfieldErrorDirective,
     NxSwitcherComponent,
   ],
 })
