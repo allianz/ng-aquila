@@ -11,15 +11,15 @@ $dot-border-radius: 50%;
 }
 
 :host(.nx-list--normal) {
-  @include type-style(paragraph-02);
+  @include type-style(list-normal);
 }
 
 :host(.nx-list--small) {
-  @include type-style(paragraph-03);
+  @include type-style(list-small);
 }
 
 :host(.nx-list--xsmall) {
-  @include type-style(paragraph-04);
+  @include type-style(list-xsmall);
   font-weight: 400;
 }
 
@@ -39,7 +39,7 @@ $dot-border-radius: 50%;
     left: 0;
     font-size: v(list-icon-size);
     color: v(list-icon-color);
-    top: calc((#{v(paragraph-02-line-height)} - #{v(list-icon-size)}) / 2);
+    top: calc((#{v(list-normal-line-height)} - #{v(list-icon-size)}) / 2);
     line-height: v(list-icon-size);
     height: v(list-icon-size);
 
@@ -52,51 +52,49 @@ $dot-border-radius: 50%;
 
 :host(ul.nx-list--small) ::ng-deep li {
   .nx-list__icon {
-    top: calc((#{v(paragraph-03-line-height)} - #{v(list-icon-size)}) / 2);
+    top: calc((#{v(list-small-line-height)} - #{v(list-icon-size)}) / 2);
   }
 }
 
 :host(ul.nx-list--xsmall) ::ng-deep li {
   .nx-list__icon {
-    top: calc((#{v(paragraph-04-line-height)} - #{v(list-icon-size)}) / 2);
+    top: calc((#{v(list-xsmall-line-height)} - #{v(list-icon-size)}) / 2);
   }
 }
 
 // our .c-list__item's
 :host ::ng-deep li {
-  padding-left: calc(#{v(list-icon-size)} + #{nx-spacer(xs)});
+  padding-left: calc(#{v(list-icon-size)} + #{v(list-item-padding-horizontal)});
   position: relative;
 
   [dir='rtl'] & {
-    padding-right: calc(#{v(list-icon-size)} + #{nx-spacer(xs)});
+    padding-right: calc(#{v(list-icon-size)} + #{v(list-item-padding-horizontal)});
     padding-left: initial;
   }
 }
 
-// Item spacing
-::ng-deep li:not(:last-child) {
-  :host(.nx-list--xsmall) & {
-    margin-bottom: v(list-xsmall-item-spacing);
-  }
-  :host(.nx-list--small) & {
-    margin-bottom: v(list-small-item-spacing);
-  }
+:host(.nx-list--xsmall) ::ng-deep > li:not(:last-child) {
+  margin-bottom: v(list-xsmall-item-spacing);
+}
 
-  :host(.nx-list--normal) & {
-    margin-bottom: v(list-normal-item-spacing);
-  }
+:host(.nx-list--small) ::ng-deep > li:not(:last-child) {
+  margin-bottom: v(list-small-item-spacing);
+}
 
-  :host(.nx-list--xsmall-condensed) & {
-    margin-bottom: v(list-xsmall-condensed-item-spacing);
-  }
+:host(.nx-list--normal) ::ng-deep > li:not(:last-child) {
+  margin-bottom: v(list-normal-item-spacing);
+}
 
-  :host(.nx-list--small-condensed) & {
-    margin-bottom: v(list-small-condensed-item-spacing);
-  }
+:host(.nx-list--xsmall-condensed) ::ng-deep > li:not(:last-child) {
+  margin-bottom: v(list-xsmall-condensed-item-spacing);
+}
 
-  :host(.nx-list--normal-condensed) & {
-    margin-bottom: v(list-normal-condensed-item-spacing);
-  }
+:host(.nx-list--small-condensed) ::ng-deep > li:not(:last-child) {
+  margin-bottom: v(list-small-condensed-item-spacing);
+}
+
+:host(.nx-list--normal-condensed) ::ng-deep > li:not(:last-child) {
+  margin-bottom: v(list-normal-condensed-item-spacing);
 }
 
 // apply the default dot for unordered (ul) lists, always exclude items with icons
@@ -108,15 +106,13 @@ $dot-border-radius: 50%;
     display: inline-block;
     height: $dot-size;
     width: $dot-size;
-    margin-right: nx-spacer(s);
     position: absolute;
     margin-left: calc(-1 * #{v(list-icon-size)});
-    margin-top: calc((#{v(paragraph-02-line-height)} - #{$dot-size}) / 2);
+    margin-top: calc((#{v(list-normal-line-height)} - #{$dot-size}) / 2);
     transform: translateX(-50%);
 
     [dir='rtl'] & {
       margin-right: calc(-1 * #{v(list-icon-size)});
-      margin-left: nx-spacer(s);
       transform: translateX(50%);
     }
 
@@ -127,11 +123,11 @@ $dot-border-radius: 50%;
 }
 
 :host(ul.nx-list--small) ::ng-deep > li:not(.nx-list__icon-wrapper):before {
-  margin-top: calc((#{v(paragraph-03-line-height)} - #{$dot-size}) / 2);
+  margin-top: calc((#{v(list-small-line-height)} - #{$dot-size}) / 2);
 }
 
 :host(ul.nx-list--xsmall) ::ng-deep > li:not(.nx-list__icon-wrapper):before {
-  margin-top: calc((#{v(paragraph-04-line-height)} - #{$dot-size}) / 2);
+  margin-top: calc((#{v(list-xsmall-line-height)} - #{$dot-size}) / 2);
 }
 
 // ordered lists (ol) have no dot but the counter, always exclude items with icons
@@ -155,20 +151,50 @@ $dot-border-radius: 50%;
 }
 
 :host ::ng-deep li > ::ng-deep ol,
-:host ::ng-deep li > ::ng-deep ul {
-  margin-bottom: nx-spacer(s);
-  margin-top: nx-spacer(s);
+:host ::ng-deep li > ::ng-deep ul.nx-list--xsmall {
+  margin-top: v(list-xsmall-item-spacing);
+  margin-bottom: v(list-xsmall-item-spacing);
+}
+
+:host ::ng-deep li > ::ng-deep ol,
+:host ::ng-deep li > ::ng-deep ul.nx-list--small {
+  margin-top: v(list-small-item-spacing);
+  margin-bottom: v(list-small-item-spacing);
+}
+
+:host ::ng-deep li > ::ng-deep ol,
+:host ::ng-deep li > ::ng-deep ul.nx-list--normal {
+  margin-top: v(list-normal-item-spacing);
+  margin-bottom: v(list-normal-item-spacing);
+}
+
+:host ::ng-deep li > ::ng-deep ol,
+:host ::ng-deep li > ::ng-deep ul.nx-list--xsmall-condensed {
+  margin-top: v(list-xsmall-condensed-item-spacing);
+  margin-bottom: v(list-xsmall-condensed-item-spacing);
+}
+
+:host ::ng-deep li > ::ng-deep ol,
+:host ::ng-deep li > ::ng-deep ul.nx-list--small-condensed {
+  margin-top: v(list-small-condensed-item-spacing);
+  margin-bottom: v(list-small-condensed-item-spacing);
+}
+
+:host ::ng-deep li > ::ng-deep ol,
+:host ::ng-deep li > ::ng-deep ul.nx-list--normal-condensed {
+  margin-top: v(list-normal-condensed-item-spacing);
+  margin-bottom: v(list-normal-condensed-item-spacing);
 }
 
 // ordered lists (ol) with option `ordered-circle` have a counter with a circle around
 :host(ol.nx-list--ordered-circle) ::ng-deep > li:not(.nx-list__icon-wrapper) {
   &:before {
     width: v(list-circle-size);
-    @include type-style(paragraph-03);
-    color: greenyellow;
+    @include type-style(list-small);
+    font-weight: v(list-circle-font-weight);
     color: v(list-circle-text-color);
     left: 0;
-    top: calc((#{v(paragraph-02-line-height)} - #{v(paragraph-03-line-height)}) / 2);
+    top: calc((#{v(list-normal-line-height)} - #{v(list-small-line-height)}) / 2);
     z-index: 2;
 
     :host-context([dir='rtl']) & {
@@ -188,7 +214,7 @@ $dot-border-radius: 50%;
     height: v(list-circle-size);
     background-color: v(list-icon-color);
     left: 0;
-    top: calc((#{v(paragraph-02-line-height)} - #{v(list-circle-size)}) / 2);
+    top: calc((#{v(list-normal-line-height)} - #{v(list-circle-size)}) / 2);
     content: '';
     position: absolute;
 
@@ -205,21 +231,21 @@ $dot-border-radius: 50%;
 
 :host(ol.nx-list--ordered-circle.nx-list--small) ::ng-deep > li:not(.nx-list__icon-wrapper) {
   &:before {
-    top: calc((#{v(paragraph-03-line-height)} - #{v(paragraph-03-line-height)}) / 2);
+    top: calc((#{v(list-small-line-height)} - #{v(list-small-line-height)}) / 2);
   }
 
   &:after {
-    top: calc((#{v(paragraph-03-line-height)} - #{v(list-circle-size)}) / 2);
+    top: calc((#{v(list-small-line-height)} - #{v(list-circle-size)}) / 2);
   }
 }
 
 :host(ol.nx-list--ordered-circle.nx-list--xsmall) ::ng-deep > li:not(.nx-list__icon-wrapper) {
   &:before {
-    top: calc((#{v(paragraph-04-line-height)} - #{v(paragraph-03-line-height)}) / 2);
+    top: calc((#{v(list-xsmall-line-height)} - #{v(list-small-line-height)}) / 2);
   }
 
   &:after {
-    top: calc((#{v(paragraph-04-line-height)} - #{v(list-circle-size)}) / 2);
+    top: calc((#{v(list-xsmall-line-height)} - #{v(list-circle-size)}) / 2);
   }
 }
 
