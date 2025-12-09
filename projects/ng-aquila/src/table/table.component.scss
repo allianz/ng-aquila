@@ -144,8 +144,10 @@ $sticky-shadow-size: nx-spacer(3xs);
       padding-left: nx-spacer(2xs);
     }
   }
+  &.is-expanded {
+    border-top: 1px solid v(table-cell-border-top-color);
+  }
 }
-
 :host(.nx-table--zebra) ::ng-deep tbody {
   .nx-expandable-table-row {
     &:nth-child(4n) {

@@ -22,6 +22,7 @@ import { NxExpandableTableRowComponent } from './expandable-table-row.component'
   host: {
     class: 'nx-expandable-table-cell',
     '[class.nx-expandable-table-cell--indented]': 'indented()',
+    '[class.is-expanded]': '_open',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
