@@ -13,11 +13,13 @@
 }
 
 .nx-breadcrumb-item__chevron {
-  margin-left: nx-spacer(3xs);
+  margin-left: v(breadcrumb-item-gap);
+  font-size: v(breadcrumb-chevron-size);
+  color: v(breadcrumb-chevron-color);
 
   :host-context([dir='rtl']) & {
     margin-left: initial;
-    margin-right: nx-spacer(3xs);
+    margin-right: v(breadcrumb-item-gap);
     transform: rotateZ(180deg);
   }
 }
