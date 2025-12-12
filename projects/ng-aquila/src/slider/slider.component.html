@@ -1,6 +1,6 @@
-<label class="nx-slider__label" [id]="id + '-label'" (click)="_focusHandleElement()">{{
-  label
-}}</label>
+@if (label) {
+  <label class="nx-slider__label" [id]="labelId" (click)="_focusHandleElement()">{{ label }}</label>
+}
 
 <div class="nx-slider__wrapper" [class.nx-slider__has-ticks]="!tickInterval">
   <div class="nx-slider__slide" (click)="_sliderClick($event)">
@@ -10,7 +10,7 @@
           class="nx-slider__handle"
           [id]="id + '-handle'"
           [attr.tabindex]="tabindex"
-          [attr.aria-labelledby]="id + '-label'"
+          [attr.aria-labelledby]="ariaLabelledBy() || (label ? labelId : null)"
           role="slider"
           [attr.aria-valuemin]="min"
           [attr.aria-valuemax]="max"

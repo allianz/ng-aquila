@@ -104,6 +104,9 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     return this._id;
   }
   private _id = inject(IdGenerationService).nextId('nx-slider');
+  protected get labelId() {
+    return this._id + '-label';
+  }
 
   /** Sets the tabindex of the slider. */
   @Input() set tabindex(value: NumberInput) {
@@ -162,6 +165,13 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     return this._label;
   }
   private _label = '';
+
+  /**
+   * Sets the value of the aria-labelledby attribute.
+   *
+   * Use this when you want to reference an external label element instead of using the internal label.
+   */
+  ariaLabelledBy = input<string>();
 
   /** Whether the input to the control of the slider should be disabled. */
   @Input() set disabled(value: BooleanInput) {

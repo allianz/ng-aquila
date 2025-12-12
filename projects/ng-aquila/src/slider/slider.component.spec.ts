@@ -75,6 +75,7 @@ describe('NxSliderComponent', () => {
         ReactiveFormsSlider,
         BasicSliderOnPush,
         AppendixSlider,
+        AriaLabelledBySlider,
       ],
     }).compileComponents();
   }));
@@ -128,6 +129,35 @@ describe('NxSliderComponent', () => {
       expect(anchorElement.id).toBe('testSlider-handle');
     });
 
+    it('should use internal label by default for aria-labelledby', () => {
+      createTestComponent(BasicSlider);
+      const handleElement: HTMLElement = sliderNativeElement.querySelector(
+        '.nx-slider__handle',
+      ) as HTMLElement;
+      expect(handleElement.getAttribute('aria-labelledby')).toBe('testSlider-label');
+    });
+
+    it('should use custom ariaLabelledBy when provided', () => {
+      createTestComponent(AriaLabelledBySlider);
+      const handleElement: HTMLElement = sliderNativeElement.querySelector(
+        '.nx-slider__handle',
+      ) as HTMLElement;
+      expect(handleElement.getAttribute('aria-labelledby')).toBe('custom-external-label');
+    });
+
+    it('should update aria-labelledby when ariaLabelledBy input changes', () => {
+      createTestComponent(AriaLabelledBySlider);
+      const handleElement: HTMLElement = sliderNativeElement.querySelector(
+        '.nx-slider__handle',
+      ) as HTMLElement;
+
+      expect(handleElement.getAttribute('aria-labelledby')).toBe('custom-external-label');
+
+      (testInstance as AriaLabelledBySlider).customLabelId = 'another-label';
+      fixture.detectChanges();
+
+      expect(handleElement.getAttribute('aria-labelledby')).toBe('another-label');
+    });
     it('renders the Slider with a thumb label', () => {
       createTestComponent(BasicSlider);
       const thumbLabel = fixture.nativeElement.querySelector('.nx-slider__value');
@@ -808,3 +838,17 @@ class ReactiveFormsSlider extends SliderTest {
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class AppendixSlider extends SliderTest {}
+
+@Component({
+  template: `
+    <div class="slider-container">
+      <label id="custom-external-label">External Label</label>
+      <nx-slider [min]="0" [max]="100" [ariaLabelledBy]="customLabelId"> </nx-slider>
+    </div>
+  `,
+  styles: [styles],
+  imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
+})
+class AriaLabelledBySlider extends SliderTest {
+  customLabelId = 'custom-external-label';
+}
