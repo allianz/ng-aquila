@@ -2,7 +2,7 @@
 
 :host {
   margin: 0;
-  @include type-style(paragraph-03);
+  @include type-style(copytext);
 }
 
 :host.nx-copy.nx-copy {
@@ -17,13 +17,13 @@
 }
 
 :host(.nx-copy--small) {
-  @include type-style(paragraph-05);
+  @include type-style(copytext-small);
 }
 
 :host(.nx-copy--medium) {
-  @include type-style(paragraph-04);
+  @include type-style(copytext-medium);
 }
 
 :host(.nx-copy--large) {
-  @include type-style(paragraph-02);
+  @include type-style(copytext-large);
 }
