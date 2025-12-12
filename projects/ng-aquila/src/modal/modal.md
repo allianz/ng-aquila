@@ -212,6 +212,10 @@ Pressing the escape key will close the dialog per default. You can disable this 
 
 Non interactive scrollable areas and long content in size restricted containers can be problematic for keyboard users. [Have a look into our general accessibility guide on that.](/documentation/accessibility/overview#scroll-containers-and-keyboard-navigation) TLDR: setting `tabindex="0"` on the scrollable container is a valid workaround until this will be supported natively by browsers.
 
+### Using Modals with Web Components / ShadowDOM
+
+When using modals in components with `ViewEncapsulation.ShadowDom` or building Web Components, you need special configuration. See the [Web Components & ShadowDOM guide](./documentation/web-components/overview) for a complete example and detailed instructions.
+
 ### Deprecated Modal Component
 
 The example below shows the previous implementation of the modal dialog, which is already deprecated and should not be used.

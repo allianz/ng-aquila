@@ -1,0 +1,20 @@
+<p>ViewEncapsulation.shadowDom = true</p>
+<button nxButton="primary" type="button" (click)="openModal()">
+  Show Modal
+</button>
+
+<ng-template #modalTemplate>
+  <h3 nxHeadline="subsection-medium" class="nx-modal-margin-bottom">
+    ShadowDOM Modal Example
+  </h3>
+  <p nxCopytext="medium" class="nx-modal-margin-bottom">
+    This modal is rendered inside a component with
+    <code>ViewEncapsulation.ShadowDom</code>. The overlay container has been
+    configured to render inside the Shadow DOM boundary using a custom
+    <code>OverlayContainer</code> implementation.
+  </p>
+  <p class="inside-modal">
+    This paragraph is styled even though the modal is rendered inside Shadow
+    DOM.
+  </p>
+</ng-template>
