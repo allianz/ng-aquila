@@ -30,6 +30,7 @@
 
 .nx-breadcrumb-item__text {
   cursor: pointer;
+  display: inline-flex;
 }
 
 :host.cdk-keyboard-focused .nx-breadcrumb-item__text {

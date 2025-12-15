@@ -19,27 +19,32 @@
   }
 }
 
-::ng-deep li:not(:last-child) .nx-breadcrumb-item__text {
-  &:hover {
-    color: v(breadcrumb-link-hover-color);
+:host ::ng-deep li {
+  display: flex;
+
+  &:not(:last-child) .nx-breadcrumb-item__text {
+    &:hover {
+      color: v(breadcrumb-link-hover-color);
+    }
   }
-}
 
-::ng-deep li:last-child .nx-breadcrumb-item {
-  font-weight: v(breadcrumb-last-item-font-weight);
-  cursor: auto;
-}
+  &:last-child {
+    .nx-breadcrumb-item {
+      font-weight: v(breadcrumb-last-item-font-weight);
+      cursor: auto;
+    }
+    .nx-breadcrumb-item__chevron {
+      display: none;
+    }
+  }
 
-::ng-deep li:last-child .nx-breadcrumb-item__chevron {
-  display: none;
-}
+  & + li .nx-breadcrumb-item {
+    margin-left: v(breadcrumb-item-gap);
 
-::ng-deep li + li .nx-breadcrumb-item {
-  margin-left: v(breadcrumb-item-gap);
-
-  :host-context([dir='rtl']) & {
-    margin-left: initial;
-    margin-right: v(breadcrumb-item-gap);
+    :host-context([dir='rtl']) & {
+      margin-left: initial;
+      margin-right: v(breadcrumb-item-gap);
+    }
   }
 }
 
