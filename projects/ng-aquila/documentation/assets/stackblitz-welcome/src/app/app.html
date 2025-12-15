@@ -1,81 +1,81 @@
 <nx-small-stage>
-    <h1 nxHeadline="section">Aquila Insurance App</h1>
-    <nx-small-stage-image nxSmallStageImageEnd src="/header.svg"></nx-small-stage-image>
+  <h1 nxHeadline="section">Aquila Insurance App</h1>
+  <nx-small-stage-image nxSmallStageImageEnd src="/header.svg"></nx-small-stage-image>
 </nx-small-stage>
 
 <div nxLayout="grid maxwidth">
-    <div nxRow>
-        <div nxCol="12">
-            <h2 nxHeadline="subsection-small" class="nx-margin-top-2m">Your application details</h2>
-        </div>
+  <div nxRow>
+    <div nxCol="12">
+      <h2 nxHeadline="subsection-small" class="nx-margin-top-2m">Your application details</h2>
     </div>
-    <form
-        nxRow
-        class="form-example"
-        [formGroup]="formGroup"
-        class="nx-margin-top-xs"
-        (submit)="onSubmit()"
-    >
-        <div nxCol="12,12,6">
-            <nx-formfield label="Your Name">
-                <input nxInput formControlName="name" />
-                <nx-error nxFormfieldError>
-                    <strong>Please note:</strong> this field is required!
-                </nx-error>
-            </nx-formfield>
-        </div>
+  </div>
+  <form
+    nxRow
+    class="form-example"
+    [formGroup]="formGroup"
+    class="nx-margin-top-xs"
+    (submit)="onSubmit()"
+  >
+    <div nxCol="12,12,6">
+      <nx-formfield label="Your Name">
+        <input nxInput formControlName="name" />
+        <nx-error nxFormfieldError>
+          <strong>Please note:</strong> this field is required!
+        </nx-error>
+      </nx-formfield>
+    </div>
 
-        <div nxCol="12,12,6">
-            <nx-formfield label="Number of items">
-                <nx-dropdown formControlName="items">
-                    <nx-dropdown-item value="1">1</nx-dropdown-item>
-                    <nx-dropdown-item value="2">2</nx-dropdown-item>
-                    <nx-dropdown-item value="3">3</nx-dropdown-item>
-                </nx-dropdown>
-                <nx-error nxFormfieldError> Please select an option. </nx-error>
-            </nx-formfield>
-        </div>
+    <div nxCol="12,12,6">
+      <nx-formfield label="Number of items">
+        <nx-dropdown formControlName="items">
+          <nx-dropdown-item value="1">1</nx-dropdown-item>
+          <nx-dropdown-item value="2">2</nx-dropdown-item>
+          <nx-dropdown-item value="3">3</nx-dropdown-item>
+        </nx-dropdown>
+        <nx-error nxFormfieldError> Please select an option. </nx-error>
+      </nx-formfield>
+    </div>
 
-        <div nxCol="12,12,6">
-            <nx-formfield label="E-Mail">
-                <input nxInput formControlName="email" />
-                <nx-icon
-                    nxFormfieldAppendix
-                    name="info-circle"
-                    [nxPopoverTriggerFor]="popoverEmail"
-                    nxPopoverTrigger="hover"
-                >
-                </nx-icon>
-                <nx-error nxFormfieldError> Please provide a valid email address. </nx-error>
-            </nx-formfield>
-            <nx-popover #popoverEmail> Please enter your email address. </nx-popover>
-        </div>
+    <div nxCol="12,12,6">
+      <nx-formfield label="E-Mail">
+        <input nxInput formControlName="email" />
+        <nx-icon
+          nxFormfieldAppendix
+          name="info-circle"
+          [nxPopoverTriggerFor]="popoverEmail"
+          nxPopoverTrigger="hover"
+        >
+        </nx-icon>
+        <nx-error nxFormfieldError> Please provide a valid email address. </nx-error>
+      </nx-formfield>
+      <nx-popover #popoverEmail> Please enter your email address. </nx-popover>
+    </div>
 
-        <div nxCol="12">
-            <nx-checkbox class="nx-margin-bottom-s" formControlName="consent"
-                >I have read and understood
-            </nx-checkbox>
+    <div nxCol="12">
+      <nx-checkbox class="nx-margin-bottom-s" formControlName="consent"
+        >I have read and understood
+      </nx-checkbox>
 
-            <button nxButton type="submit" class="nx-margin-top-s">Submit</button>
-        </div>
-    </form>
+      <button nxButton type="submit" class="nx-margin-top-s">Submit</button>
+    </div>
+  </form>
 </div>
 
 <footer nx-footer>
-    <nx-footer-copyright>&copy; Allianz 2025</nx-footer-copyright>
+  <nx-footer-copyright>&copy; Allianz 2025</nx-footer-copyright>
 </footer>
 
 <ng-template #submitTemplate>
-    <div nxModalContent>
-        <h3 nxHeadline="subsection-medium" class="nx-margin-bottom-m">
-            Your data has been submitted to the backend
-        </h3>
+  <div nxModalContent>
+    <h3 nxHeadline="subsection-medium" class="nx-margin-bottom-m">
+      Your data has been submitted to the backend
+    </h3>
 
-        <p nxCopytext class="nx-margin-bottom-m">
-            Congratulations, this ends the Starter App user journey. We hope you will use the
-            Starter App as a foundation to build something awesome!
-        </p>
-    </div>
+    <p nxCopytext class="nx-margin-bottom-m">
+      Congratulations, this ends the Starter App user journey. We hope you will use the Starter App
+      as a foundation to build something awesome!
+    </p>
+  </div>
 </ng-template>
 
 <!-- Copyright ALLIANZ 2025 -->
