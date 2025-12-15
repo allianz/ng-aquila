@@ -1,10 +1,10 @@
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   Input,
+  signal,
   viewChild,
 } from '@angular/core';
 /** Possible badge types. */
@@ -16,11 +16,11 @@ export type NxBadgeType = 'active' | 'positive' | 'critical' | 'negative' | '';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./badge.component.scss'],
   host: {
-    '[class.nx-badge--active]': 'type === "active"',
-    '[class.nx-badge--positive]': 'type === "positive"',
-    '[class.nx-badge--critical]': 'type === "critical"',
-    '[class.nx-badge--negative]': 'type === "negative"',
-    '[class.nx-badge--vibrant]': 'vibrant',
+    '[class.nx-badge--active]': '_type() === "active"',
+    '[class.nx-badge--positive]': '_type() === "positive"',
+    '[class.nx-badge--critical]': '_type() === "critical"',
+    '[class.nx-badge--negative]': '_type() === "negative"',
+    '[class.nx-badge--vibrant]': '_vibrant()',
     '[class.single-letter]': 'this.content()?.nativeElement?.innerText?.length === 1',
   },
   standalone: true,
@@ -28,31 +28,21 @@ export type NxBadgeType = 'active' | 'positive' | 'critical' | 'negative' | '';
 export class NxBadgeComponent {
   /** Sets the class name for the badge element.  */
   @Input() set type(value: NxBadgeType | string | null | undefined) {
-    if (value !== this._type) {
-      this._type = value! as NxBadgeType; // TODO properly coerce input value
-      this._cdr.markForCheck();
-    }
+    this._type.set((value as NxBadgeType) || '');
   }
   get type(): NxBadgeType {
-    return this._type;
+    return this._type();
   }
-  private _type!: NxBadgeType;
+  protected _type = signal<NxBadgeType>('');
 
   /** Change badge style to vibrant. */
-  @Input() set vibrant(value: BooleanInput) {
-    const newValue = coerceBooleanProperty(value);
-
-    if (value !== this._vibrant) {
-      this._vibrant = newValue;
-      this._cdr.markForCheck();
-    }
+  @Input({ transform: booleanAttribute }) set vibrant(value: boolean) {
+    this._vibrant.set(value);
   }
   get vibrant(): boolean {
-    return this._vibrant;
+    return this._vibrant();
   }
-  private _vibrant = false;
-
-  constructor(private readonly _cdr: ChangeDetectorRef) {}
+  protected _vibrant = signal(false);
 
   content = viewChild<ElementRef>('content');
 }
