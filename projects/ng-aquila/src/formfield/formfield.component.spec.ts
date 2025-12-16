@@ -1,13 +1,13 @@
 import { NxInputDirective, NxInputModule } from '@allianz/ng-aquila/input';
-import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import {
-  ComponentFixture,
-  fakeAsync,
-  inject,
-  TestBed,
-  tick,
-  waitForAsync,
-} from '@angular/core/testing';
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  signal,
+  Type,
+  ViewChild,
+} from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { NxFormfieldErrorDirective } from './error.directive';
@@ -20,11 +20,6 @@ import {
 } from './formfield.component';
 import { NxFormfieldHintDirective } from './hint.directive';
 import { NxFormfieldNoteDirective } from './note.directive';
-
-const formfieldDefaultOptions: FormfieldDefaultOptions = {
-  appearance: 'outline',
-  nxFloatLabel: 'always',
-};
 
 // NxInputModule also imports NxFormfieldModule
 @Directive({ standalone: true })
@@ -53,15 +48,17 @@ describe('NxFormfieldComponent', () => {
   let inputElement: HTMLElement;
   let labelElement: HTMLLabelElement;
 
-  function createTestComponent(component: Type<FormfieldTest>) {
-    fixture = TestBed.createComponent(component);
-    fixture.detectChanges();
+  function createTestComponent<T extends FormfieldTest>(component: Type<T>): ComponentFixture<T> {
+    const _fixture = TestBed.createComponent(component);
+    _fixture.detectChanges();
 
-    testInstance = fixture.componentInstance;
-    formfieldElement = fixture.nativeElement.querySelector('nx-formfield');
-    inputElement = fixture.nativeElement.querySelector('.c-input');
-    labelElement = fixture.nativeElement.querySelector('.nx-formfield__label');
+    testInstance = _fixture.componentInstance;
+    formfieldElement = _fixture.nativeElement.querySelector('nx-formfield');
+    inputElement = _fixture.nativeElement.querySelector('.c-input');
+    labelElement = _fixture.nativeElement.querySelector('.nx-formfield__label');
     formfieldInstance = testInstance.textfieldInstance;
+
+    return (fixture = _fixture);
   }
 
   function fillWithContent(value: any) {
@@ -400,70 +397,54 @@ describe('NxFormfieldComponent', () => {
   });
 
   describe('Default options', () => {
-    beforeEach(waitForAsync(() => {
-      formfieldDefaultOptions.appearance = 'outline';
-      formfieldDefaultOptions.nxFloatLabel = 'always';
-      formfieldDefaultOptions.updateOn = 'blur';
+    const configureWithDefaultOptions = (defaultOptions: FormfieldDefaultOptions) => {
       TestBed.configureTestingModule({
-        imports: [
-          ReactiveFormsModule,
-          FormsModule,
-          NxInputModule,
-          BasicFormfield,
-          OutlineFormfield,
-          FloatingFormfield,
-        ],
-        providers: [{ provide: FORMFIELD_DEFAULT_OPTIONS, useValue: formfieldDefaultOptions }],
-      }).compileComponents();
-    }));
+        providers: [{ provide: FORMFIELD_DEFAULT_OPTIONS, useValue: defaultOptions }],
+      });
+    };
 
-    it('should have an "auto" appearance if empty default options are provided', inject(
-      [FORMFIELD_DEFAULT_OPTIONS],
-      (defaultOptions: FormfieldDefaultOptions) => {
-        delete defaultOptions.appearance;
-        createTestComponent(BasicFormfield);
-        expect(testInstance.textfieldInstance.appearance).toBe('auto');
-        expect(formfieldElement).not.toHaveClass('has-outline');
-      },
-    ));
+    it('should have an "auto" appearance if empty default options are provided', () => {
+      configureWithDefaultOptions({});
+      createTestComponent(BasicFormfield);
+      expect(testInstance.textfieldInstance.appearance).toBe('auto');
+      expect(formfieldElement).not.toHaveClass('has-outline');
+    });
 
-    it('should have an "auto" floatingLabel if empty default options are provided', inject(
-      [FORMFIELD_DEFAULT_OPTIONS],
-      (defaultOptions: FormfieldDefaultOptions) => {
-        delete defaultOptions.nxFloatLabel;
-        createTestComponent(BasicFormfield);
-        expect(testInstance.textfieldInstance.floatLabel).toBe('auto');
-        expect(formfieldElement).not.toHaveClass('is-floating');
-      },
-    ));
+    it('should have an "auto" floatingLabel if empty default options are provided', () => {
+      configureWithDefaultOptions({});
+      createTestComponent(BasicFormfield);
+      expect(testInstance.textfieldInstance.floatLabel).toBe('auto');
+      expect(formfieldElement).not.toHaveClass('is-floating');
+    });
 
-    it('should have updateOn set to "change" if empty default options are provided', inject(
-      [FORMFIELD_DEFAULT_OPTIONS],
-      (defaultOptions: FormfieldDefaultOptions) => {
-        delete defaultOptions.updateOn;
-        createTestComponent(BasicFormfield);
-        expect(testInstance.textfieldInstance.updateOn).toBe('change');
-      },
-    ));
+    it('should have updateOn set to "change" if empty default options are provided', () => {
+      configureWithDefaultOptions({});
+      createTestComponent(BasicFormfield);
+      expect(testInstance.textfieldInstance.updateOn).toBe('change');
+    });
 
     it('should have a custom default appearance if default options contain a custom appearance', () => {
+      configureWithDefaultOptions({ appearance: 'outline' });
       createTestComponent(BasicFormfield);
       expect(testInstance.textfieldInstance.appearance).toBe('outline');
       expect(formfieldElement).toHaveClass('has-outline');
     });
 
     it('should have a custom default floatingLabel if default options contain a custom floatLabel', () => {
+      configureWithDefaultOptions({ nxFloatLabel: 'always' });
       createTestComponent(BasicFormfield);
       expect(testInstance.textfieldInstance.floatLabel).toBe('always');
       expect(formfieldElement).toHaveClass('is-floating');
     });
 
     it('should have a custom default updateOn if default options contain a custom updateOn', () => {
+      configureWithDefaultOptions({ updateOn: 'blur' });
       createTestComponent(BasicFormfield);
       expect(testInstance.textfieldInstance.updateOn).toBe('blur');
     });
 
-    it('should override a custom default appearance', () => {
+    it('should override a default appearance with input value', () => {
+      configureWithDefaultOptions({ appearance: 'outline' });
       createTestComponent(OutlineFormfield);
       expect(testInstance.textfieldInstance.appearance).toBe('outline');
 
@@ -473,7 +454,8 @@ describe('NxFormfieldComponent', () => {
       expect(formfieldElement).not.toHaveClass('has-outline');
     });
 
-    it('should override a custom default floatLabel', () => {
+    it('should override a default floatLabel with input value', () => {
+      configureWithDefaultOptions({ nxFloatLabel: 'always' });
       createTestComponent(FloatingFormfield);
       expect(testInstance.textfieldInstance.floatLabel).toBe('always');
 
@@ -483,33 +465,61 @@ describe('NxFormfieldComponent', () => {
       expect(formfieldElement).not.toHaveClass('is-floating');
     });
 
-    it('changes the appearance on injection token change', inject(
-      [FORMFIELD_DEFAULT_OPTIONS],
-      (defaultOptions: FormfieldDefaultOptions) => {
-        createTestComponent(BasicFormfield);
-        expect(testInstance.textfieldInstance.appearance).toBe('outline');
-        expect(formfieldElement).toHaveClass('has-outline');
+    it('changes the appearance on injection token change', () => {
+      const defaultOptions: FormfieldDefaultOptions = { appearance: 'outline' };
+      configureWithDefaultOptions(defaultOptions);
+      createTestComponent(BasicFormfield);
+      expect(testInstance.textfieldInstance.appearance).toBe('outline');
+      expect(formfieldElement).toHaveClass('has-outline');
 
-        defaultOptions.appearance = 'auto';
-        fixture.detectChanges();
-        expect(testInstance.textfieldInstance.appearance).toBe('auto');
-        expect(formfieldElement).not.toHaveClass('has-outline');
-      },
-    ));
+      defaultOptions.appearance = 'auto';
+      fixture.detectChanges();
+      expect(testInstance.textfieldInstance.appearance).toBe('auto');
+      expect(formfieldElement).not.toHaveClass('has-outline');
+    });
 
-    it('changes floatLabel on injection token change', inject(
-      [FORMFIELD_DEFAULT_OPTIONS],
-      (defaultOptions: FormfieldDefaultOptions) => {
-        createTestComponent(BasicFormfield);
-        expect(testInstance.textfieldInstance.floatLabel).toBe('always');
-        expect(formfieldElement).toHaveClass('is-floating');
+    it('changes floatLabel on injection token change', () => {
+      const defaultOptions: FormfieldDefaultOptions = { nxFloatLabel: 'always' };
+      configureWithDefaultOptions(defaultOptions);
+      createTestComponent(BasicFormfield);
+      expect(testInstance.textfieldInstance.floatLabel).toBe('always');
+      expect(formfieldElement).toHaveClass('is-floating');
 
-        defaultOptions.nxFloatLabel = 'auto';
-        fixture.detectChanges();
-        expect(testInstance.textfieldInstance.floatLabel).toBe('auto');
-        expect(formfieldElement).not.toHaveClass('is-floating');
-      },
-    ));
+      defaultOptions.nxFloatLabel = 'auto';
+      fixture.detectChanges();
+      expect(testInstance.textfieldInstance.floatLabel).toBe('auto');
+      expect(formfieldElement).not.toHaveClass('is-floating');
+    });
+
+    it('should have default optionalLabel from string default', async () => {
+      configureWithDefaultOptions({ nxOptionalLabel: '(optional)' });
+      const _fixture = createTestComponent(NgModelFormfield);
+      _fixture.componentInstance.optionalLabel.set('OPTIONAL');
+      _fixture.detectChanges();
+      expect(labelElement.textContent).toContain('OPTIONAL');
+
+      _fixture.componentInstance.optionalLabel.set('');
+      _fixture.detectChanges();
+      expect(labelElement.textContent).toContain('(optional)');
+    });
+
+    it('should have default optionalLabel from signal default', () => {
+      const defaultOptionalLabelSignal = signal('(optional)');
+      configureWithDefaultOptions({ nxOptionalLabel: defaultOptionalLabelSignal });
+
+      const _fixture = createTestComponent(NgModelFormfield);
+      _fixture.componentInstance.optionalLabel.set('OPTIONAL');
+      _fixture.detectChanges();
+      expect(labelElement.textContent).toContain('OPTIONAL');
+
+      _fixture.componentInstance.optionalLabel.set('');
+      _fixture.detectChanges();
+      expect(labelElement.textContent).toContain('(optional)');
+
+      defaultOptionalLabelSignal.set('!!!OPTIONAL!!!');
+      _fixture.detectChanges();
+      expect(labelElement.textContent).toContain('!!!OPTIONAL!!!');
+    });
   });
 });
 
@@ -592,13 +602,16 @@ class NoChangeDetectionFormfield extends FormfieldTest {}
 class NoteFormfield extends FormfieldTest {}
 @Component({
   template: `
-    <nx-formfield label="Given Label" optionalLabel="Optional">
-      <input nxInput [(ngModel)]="currentValue" />
+    <nx-formfield label="Given Label" [optionalLabel]="optionalLabel()">
+      <input nxInput [(ngModel)]="currentValue" [required]="inputRequired()" />
     </nx-formfield>
   `,
   imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
-class NgModelFormfield extends FormfieldTest {}
+class NgModelFormfield extends FormfieldTest {
+  inputRequired = signal(false);
+  optionalLabel = signal('Optional');
+}
 
 @Component({
   template: `

@@ -6,6 +6,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ContentChild,
   ContentChildren,
   ElementRef,
@@ -18,6 +19,7 @@ import {
   Optional,
   QueryList,
   Renderer2,
+  type Signal,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
@@ -48,7 +50,10 @@ export interface FormfieldDefaultOptions {
   /** Sets the default change detection trigger event. (optional) */
   updateOn?: NxFormfieldUpdateEventType;
 
-  nxOptionalLabel?: string;
+  /**
+   * A string representing the default optional label or signal that returns the optional label string.
+   */
+  nxOptionalLabel?: string | Signal<string>;
 }
 
 export const FORMFIELD_DEFAULT_OPTIONS = new InjectionToken<FormfieldDefaultOptions>(
@@ -98,17 +103,17 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
   readonly label = input<string | null>();
 
   /**
-   * Set optional text, which will addtional show in label if a field is not mandatory.
+   * Set optional text, which will additionally show in label if a field is not mandatory.
    */
-  readonly optionalLabel = input<string | undefined>(this._defaultOptions?.nxOptionalLabel);
-  get optional() {
-    const optionalLabel = this.optionalLabel();
-    if (this._isRequired() || !optionalLabel) {
-      return '';
-    }
+  optionalLabelInput = input<string>(undefined, { alias: 'optionalLabel' });
 
-    return optionalLabel;
-  }
+  protected readonly _optionalLabel = computed(
+    (): string =>
+      this.optionalLabelInput() ||
+      (typeof this._defaultOptions?.nxOptionalLabel === 'function'
+        ? this._defaultOptions.nxOptionalLabel()
+        : (this._defaultOptions?.nxOptionalLabel ?? '')),
+  );
 
   @ContentChild(NxFormfieldLabelDirective) _labelChild!: NxFormfieldLabelDirective;
   @ContentChildren(NxFormfieldHintDirective) _hintChildren!: QueryList<NxFormfieldHintDirective>;

@@ -31,9 +31,9 @@ We are building the following structure.
           <span class="nx-formfield__label-holder">
             <label class="nx-formfield__label" [id]="labelId" [attr.for]="_control.id">
               @if (!_labelChild) {
-                @if (optional) {
+                @if (!_isRequired() && _optionalLabel(); as optionalLabel) {
                   <span class="optional">
-                    <span>{{ optional }}</span>
+                    <span>{{ optionalLabel }}</span>
                   </span>
                 }
                 <span>{{ label() }}</span>
