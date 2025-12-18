@@ -1,11 +1,14 @@
 @import '../shared-styles/index';
 :host {
   @include type-style(badge);
-  display: inline-block;
-  padding: 0 nx-spacer(2xs);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: v(badge-padding);
   white-space: nowrap;
-  border-radius: nx-border-radius(s) * 3;
-  min-width: nx-spacer(m);
+  border-radius: v(badge-border-radius);
+  min-width: v(badge-min-width);
+  min-height: v(badge-min-height);
 
   @media screen and (forced-colors: active) {
     border: nx-border-size(xs) solid CanvasText;
@@ -14,7 +17,6 @@
   &.single-letter {
     padding: 0;
     text-align: center;
-    min-width: v(badge-line-height);
   }
 }
 
