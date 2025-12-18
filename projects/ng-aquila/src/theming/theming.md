@@ -31,7 +31,7 @@ Our themes for A1 are a mapping from the A1 tokens to the library specific token
 ```scss
 @use '@allianz/a1-design-tokens/dist/allianz/a1/web/tokens-theme-mixins-index' as a1-tokens;
 @import '@allianz/ng-aquila/styles/theming';
-@import "@allianz/ng-aquila/styles/themes/allianz-one";
+@import "@allianz/ngx-brand-kit/scss/themes/allianz-one";
 
 
 @include a1-tokens.apply-design-tokens('light', 'lively', 'spacious', '.my-custom-scope');
