@@ -36,6 +36,7 @@ $dropdown-border-size: nx-border-size(xs);
   align-items: center;
   height: 100%;
   cursor: pointer;
+  padding: 0px v(input-field-inset);
 }
 
 :host(.nx-dropdown--disabled) .nx-dropdown__container {

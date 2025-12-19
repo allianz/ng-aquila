@@ -1,8 +1,5 @@
 @import '../shared-styles/index';
 
-$formfield-margin-bottom: nx-spacer(m);
-$margin-to-message: nx-spacer(3xs);
-
 .nx-formfield {
   display: block;
   //default theme is white and gets overwritten depending of the focus, error state or given modifiers
@@ -151,7 +148,7 @@ $margin-to-message: nx-spacer(3xs);
 
 .nx-formfield__appendix {
   height: v(formfield-control-height);
-  margin-left: nx-spacer(2xs);
+  margin-left: v(formfield-horizontal-margin);
   display: flex;
   border-bottom-style: solid;
   border-bottom-color: transparent;
@@ -159,25 +156,25 @@ $margin-to-message: nx-spacer(3xs);
   padding: v(formfield-input-padding);
 
   [dir='rtl'] & {
-    margin-right: nx-spacer(2xs);
+    margin-right: v(formfield-horizontal-margin);
     margin-left: initial;
   }
 }
 
 .nx-formfield__prefix {
-  margin-right: nx-spacer(2xs);
+  margin-right: v(formfield-horizontal-margin);
 
   [dir='rtl'] & {
     margin-right: initial;
-    margin-left: nx-spacer(2xs);
+    margin-left: v(formfield-horizontal-margin);
   }
 }
 
 .nx-formfield__suffix {
-  margin-left: nx-spacer(2xs);
+  margin-left: v(formfield-horizontal-margin);
 
   [dir='rtl'] & {
-    margin-right: nx-spacer(2xs);
+    margin-right: v(formfield-horizontal-margin);
     margin-left: initial;
   }
 }
@@ -279,6 +276,13 @@ $margin-to-message: nx-spacer(3xs);
   }
 }
 
+.nx-formfield--negative.is-focused.has-outline {
+  .nx-formfield__input-container {
+    border-color: v(negative);
+    box-shadow: 0 0 0 2px v(negative);
+  }
+}
+
 .nx-formfield.has-outline {
   @include type-style(formfield-outline-control);
 
@@ -347,7 +351,7 @@ $margin-to-message: nx-spacer(3xs);
 
   .nx-formfield__appendix {
     height: v(formfield-outline-control-height);
-    margin-left: nx-spacer(2xs);
+    margin-left: v(formfield-horizontal-margin);
     display: flex;
     border-top: v(formfield-border-width) solid transparent;
     border-bottom: v(formfield-border-width) solid transparent;
@@ -355,7 +359,7 @@ $margin-to-message: nx-spacer(3xs);
 
     [dir='rtl'] & {
       margin-left: initial;
-      margin-right: nx-spacer(2xs);
+      margin-right: v(formfield-horizontal-margin);
     }
   }
 
@@ -419,6 +423,7 @@ $margin-to-message: nx-spacer(3xs);
     border-color: v(formfield-readonly-border-color);
     background-color: v(formfield-readonly-background-color);
   }
+  color: v(formfield-readonly-text-color);
 }
 
 .nx-formfield:not(.has-outline).is-readonly:not(.is-disabled) {
@@ -506,7 +511,7 @@ $margin-to-message: nx-spacer(3xs);
 
   &:not(.is-focused) {
     .nx-formfield__input-container {
-      border-bottom-color: v(danger);
+      border-color: v(danger);
     }
   }
 
@@ -593,6 +598,7 @@ $margin-to-message: nx-spacer(3xs);
 
   &.has-outline .nx-formfield__input-container {
     border-color: v(negative);
+    background-color: v(negative-background);
   }
 
   .nx-formfield__appendix,

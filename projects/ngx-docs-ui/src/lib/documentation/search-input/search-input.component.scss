@@ -8,8 +8,8 @@
   }
   // vertically center the formfield within the header (retail appearence)
   ::ng-deep .nx-formfield__wrapper {
-    padding-top: 4px;
-    padding-bottom: 0;
+    padding-top: 4px !important;
+    padding-bottom: 0 !important;
   }
 }
 .search-input__clear {

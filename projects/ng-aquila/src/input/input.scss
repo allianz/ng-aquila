@@ -51,7 +51,7 @@ textarea.cdk-textarea-autosize-measuring {
   color: inherit;
   border: none;
   outline: 0;
-  padding: 0;
+  padding: v(input-field-inset);
   margin: 0;
   width: 100%;
   max-width: 100%;
