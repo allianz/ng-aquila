@@ -15,7 +15,7 @@ The icons are comprised of two general types: **functional** and **product icons
 
 The general functionality of the icons is provided with the `NxIconModule` of `ng-aquila`. The Allianz Icons are provided with the additional `AllianzIconModule` of `@allianz/ngx-brand-kit` for usage in modules or component imports or with `provideAllianzIcons()` as a global provider for standalone app configs.
 
-Current icon version: **2.29.0** --- from [Global Allianz Icons](https://github.developer.allianz.io/oneMarketing/allianz-icons)
+Current icon version: **2.33.0** --- from [Global Allianz Icons](https://github.developer.allianz.io/oneMarketing/allianz-icons)
 
 #### Standalone projects
 
