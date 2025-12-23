@@ -54,7 +54,6 @@ const dependencies = {
   '@angular/core': angularVersion,
   '@angular/forms': angularVersion,
   '@angular/platform-browser': angularVersion,
-  '@angular/platform-browser-dynamic': angularVersion,
   '@angular/router': angularVersion,
   '@allianz/ng-aquila': aquilaVersion,
   'ag-grid-angular': '^33.1.1',
@@ -67,6 +66,8 @@ const dependencies = {
   rxjs: '~6.6.7',
   tslib: '^2.8.1',
   'zone.js': '^0.16.0',
+  '@angular/animations': '^21.0.0', // need by @angular/platform-browser
+  '@standard-schema/spec': '^1.0.0', // need by angular 21 forms-validation
 };
 
 const testDependencies = {
