@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 $default-box-shadow: 0 -1px 0 0;
 $selected-box-shadow: 0 -2px 0 0;

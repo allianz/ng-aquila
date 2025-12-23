@@ -1,8 +1,8 @@
 @use 'sass:list';
 @use 'sass:map';
-// Breakpoint viewport sizes and media queries.
+@use './grid' as *;
 
-@import './grid';
+// Breakpoint viewport sizes and media queries.
 
 @function breakpoint-next(
   $name,

@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 $padding-vertical: nx-spacer(m);
 $padding-sides: nx-spacer(s);

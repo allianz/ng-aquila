@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 // Keyframes that apply no styles, but allow us to monitor when an text field becomes autofilled
 // by watching for the animation events that are fired when they start. Note: the /*!*/ comment is

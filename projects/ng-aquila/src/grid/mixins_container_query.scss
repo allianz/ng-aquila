@@ -1,6 +1,6 @@
 @use 'sass:math';
 
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 @mixin make-container-by-container-query($gutters: $grid-gutter-widths) {
   position: relative;

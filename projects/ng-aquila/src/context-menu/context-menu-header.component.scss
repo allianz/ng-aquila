@@ -1,4 +1,4 @@
-@import '../shared-styles/index.scss';
+@use '../shared-styles/index' as *;
 
 :host {
   @include type-style(formfield-label);

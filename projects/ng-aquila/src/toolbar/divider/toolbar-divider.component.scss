@@ -1,4 +1,4 @@
-@import '../../shared-styles/index';
+@use '../../shared-styles/index' as *;
 
 :host {
   background-color: var(--header-border-color);

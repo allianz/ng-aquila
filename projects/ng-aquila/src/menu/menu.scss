@@ -1,4 +1,4 @@
-@import '../shared-styles/index.scss';
+@use '../shared-styles/index' as *;
 
 :host(.nx-menu) {
   display: block;

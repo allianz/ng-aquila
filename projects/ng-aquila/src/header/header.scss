@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 $header-height: 64px;
 $header-link-border-width: nx-border-size(xl);

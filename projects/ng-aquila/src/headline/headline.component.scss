@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 @mixin headline-typography($size) {
   @include type-style($size);

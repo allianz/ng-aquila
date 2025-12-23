@@ -1,4 +1,4 @@
-@import '../../shared-styles/index';
+@use '../../shared-styles/index' as *;
 
 $dot-size: nx-spacer(s);
 $dot-border-size: nx-border-size(m);

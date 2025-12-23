@@ -1,4 +1,5 @@
-@import './mixins.scss';
+@use '../shared-styles/index' as *;
+@use './mixins' as *;
 
 :host(.nx-grid__row--container-query) {
   @include make-row-by-container-query();

@@ -1,6 +1,6 @@
 @use 'sass:math';
 
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 :host {
   display: block;
@@ -52,21 +52,21 @@
 }
 
 :host(.nx-image--1dot8by1) {
-  padding-top: percentage(math.div(1, 1.8));
+  padding-top: math.percentage(math.div(1, 1.8));
 }
 
 :host(.nx-image--1dot2by1) {
-  padding-top: percentage(math.div(1, 1.2));
+  padding-top: math.percentage(math.div(1, 1.2));
 }
 
 :host(.nx-image--1by1dot1) {
-  padding-top: percentage(math.div(1.1, 1));
+  padding-top: math.percentage(math.div(1.1, 1));
 }
 
 :host(.nx-image--2dot6by1) {
-  padding-top: percentage(math.div(1, 2.6));
+  padding-top: math.percentage(math.div(1, 2.6));
 }
 
 :host(.nx-image--1by1dot4) {
-  padding-top: percentage(math.div(1.4, 1));
+  padding-top: math.percentage(math.div(1.4, 1));
 }

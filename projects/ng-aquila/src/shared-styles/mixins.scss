@@ -1,5 +1,10 @@
-@import 'grid';
-@import 'breakpoint';
+@use 'sass:map';
+@use './grid' as *;
+@use './breakpoint' as *;
+@use './theming/mixins' as *;
+@use './measurements' as *;
+@use './typography' as *;
+@use './functions' as *;
 
 $dropdown-overlay__focus-line-width: nx-border-size(xl);
 $dropdown-overlay__option-margin: -(nx-spacer(2xs) + $dropdown-overlay__focus-line-width);

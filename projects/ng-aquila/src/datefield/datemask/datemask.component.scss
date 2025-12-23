@@ -1,4 +1,4 @@
-@import '../../shared-styles/index';
+@use '../../shared-styles/index' as *;
 
 :host {
   /* Disable arrow buttons for number inputs for Chrome, Safari, Edge, Opera */

@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 $short-word-min-width: nx-spacer(3xl);
 $regular-word-min-width: 152px;

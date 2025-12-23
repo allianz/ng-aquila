@@ -1,6 +1,7 @@
 @use 'sass:math';
+@use 'sass:map';
 
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 @mixin make-grid-columns-bem-style(
   $columns: $grid-columns,
@@ -15,7 +16,7 @@
     @include make-gutters($gutters);
   }
 
-  @each $breakpoint in map-keys($breakpoints) {
+  @each $breakpoint in map.keys($breakpoints) {
     $infix: breakpoint-infix($breakpoint, $breakpoints);
 
     @include media-breakpoint-up($breakpoint, $breakpoints) {
@@ -62,7 +63,7 @@
     @include make-gutters-by-container-query($gutters);
   }
 
-  @each $breakpoint in map-keys($breakpoints) {
+  @each $breakpoint in map.keys($breakpoints) {
     $infix: breakpoint-infix($breakpoint, $breakpoints);
 
     @include container-breakpoint-up($breakpoint, $breakpoints) {
@@ -113,18 +114,18 @@
 }
 
 @mixin make-gutters($gutters: $grid-gutter-widths) {
-  @each $breakpoint in map-keys($gutters) {
+  @each $breakpoint in map.keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
-      $gutter: map-get($gutters, $breakpoint);
+      $gutter: map.get($gutters, $breakpoint);
       padding-right: ($gutter * 0.5);
       padding-left: ($gutter * 0.5);
     }
   }
 }
 @mixin make-gutters-by-container-query($gutters: $grid-gutter-widths) {
-  @each $breakpoint in map-keys($gutters) {
+  @each $breakpoint in map.keys($gutters) {
     @include container-breakpoint-up($breakpoint) {
-      $gutter: map-get($gutters, $breakpoint);
+      $gutter: map.get($gutters, $breakpoint);
       padding-right: ($gutter * 0.5);
       padding-left: ($gutter * 0.5);
     }
@@ -135,9 +136,9 @@
   display: flex;
   flex-wrap: wrap;
 
-  @each $breakpoint in map-keys($gutters) {
+  @each $breakpoint in map.keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
-      $gutter: map-get($gutters, $breakpoint);
+      $gutter: map.get($gutters, $breakpoint);
       margin-right: math.div($gutter, -2);
       margin-left: math.div($gutter, -2);
       position: relative;
@@ -149,9 +150,9 @@
   display: flex;
   flex-wrap: wrap;
 
-  @each $breakpoint in map-keys($gutters) {
+  @each $breakpoint in map.keys($gutters) {
     @include container-breakpoint-up($breakpoint) {
-      $gutter: map-get($gutters, $breakpoint);
+      $gutter: map.get($gutters, $breakpoint);
       margin-right: math.div($gutter, -2);
       margin-left: math.div($gutter, -2);
       position: relative;
@@ -167,9 +168,9 @@
   width: 100%;
   min-height: 1px; // Prevent collapsing
 
-  @each $breakpoint in map-keys($gutters) {
+  @each $breakpoint in map.keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
-      $gutter: map-get($gutters, $breakpoint);
+      $gutter: map.get($gutters, $breakpoint);
       padding-right: ($gutter * 0.5);
       padding-left: ($gutter * 0.5);
     }
@@ -178,12 +179,12 @@
 
 @mixin make-col($size, $columns: $grid-columns) {
   container-name: size-#{$size}-columns-#{$columns};
-  flex: 0 0 percentage(math.div($size, $columns));
+  flex: 0 0 math.percentage(math.div($size, $columns));
   // width: percentage($size / $columns);
   // Add a `max-width` to ensure content within each column does not blow out
   // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
   // do not appear to require this.
-  max-width: percentage(math.div($size, $columns));
+  max-width: math.percentage(math.div($size, $columns));
 }
 
 @mixin make-col-modifier($type, $size, $columns) {
@@ -198,35 +199,35 @@
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
-  margin-left: percentage(math.div($size, $columns));
+  margin-left: math.percentage(math.div($size, $columns));
 
   [dir='rtl'] & {
     margin-left: initial;
-    margin-right: percentage(math.div($size, $columns));
+    margin-right: math.percentage(math.div($size, $columns));
   }
 }
 
 @mixin make-col-push($size, $columns: $grid-columns) {
-  left: if($size > 0, percentage(math.div($size, $columns)), auto);
+  left: if($size > 0, math.percentage(math.div($size, $columns)), auto);
 
   [dir='rtl'] & {
     left: auto;
-    right: if($size > 0, percentage(math.div($size, $columns)), auto);
+    right: if($size > 0, math.percentage(math.div($size, $columns)), auto);
   }
 }
 
 @mixin make-col-pull($size, $columns: $grid-columns) {
-  right: if($size > 0, percentage(math.div($size, $columns)), auto);
+  right: if($size > 0, math.percentage(math.div($size, $columns)), auto);
 
   [dir='rtl'] & {
     right: auto;
-    left: if($size > 0, percentage(math.div($size, $columns)), auto);
+    left: if($size > 0, math.percentage(math.div($size, $columns)), auto);
   }
 }
 
 /** ROW VARIATIONS from grid-variations.scss **/
 @mixin make-row-variations {
-  @each $breakpoint in map-keys($grid-breakpoints) {
+  @each $breakpoint in map.keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
@@ -308,7 +309,7 @@
 }
 
 @mixin make-row-variations-by-container-query {
-  @each $breakpoint in map-keys($grid-breakpoints) {
+  @each $breakpoint in map.keys($grid-breakpoints) {
     @include container-breakpoint-up($breakpoint) {
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
@@ -390,7 +391,7 @@
 }
 
 @mixin make-col-variations {
-  @each $breakpoint in map-keys($grid-breakpoints) {
+  @each $breakpoint in map.keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
@@ -427,7 +428,7 @@
 }
 
 @mixin make-col-variations-by-container-query {
-  @each $breakpoint in map-keys($grid-breakpoints) {
+  @each $breakpoint in map.keys($grid-breakpoints) {
     @include container-breakpoint-up($breakpoint) {
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 

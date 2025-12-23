@@ -1,5 +1,6 @@
-@import './mixins.scss';
-@import './mixins_container_query';
+@use '../shared-styles/index' as *;
+@use './mixins' as *;
+@use './mixins_container_query' as *;
 
 :host(.nx-grid.nx-grid--media-query) {
   @include make-container-by-media-query($gutters: $grid-gutter-widths);

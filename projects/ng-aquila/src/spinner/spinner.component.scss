@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 $diameter-small: nx-spacer(s);
 $diameter-medium: nx-spacer(m);

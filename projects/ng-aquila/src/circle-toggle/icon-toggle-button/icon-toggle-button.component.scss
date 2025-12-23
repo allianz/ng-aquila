@@ -1,4 +1,4 @@
-@import '../../shared-styles/index';
+@use '../../shared-styles/index' as *;
 
 $check-icon-border-size: nx-border-size(m);
 $check-icon-size: nx-spacer(2m);

@@ -1,4 +1,4 @@
-@import '../../../../../ng-aquila/src/shared-styles/index.scss';
+@use '../../../../../ng-aquila/src/shared-styles/index' as *;
 
 :host {
   font-size: 0.875rem;

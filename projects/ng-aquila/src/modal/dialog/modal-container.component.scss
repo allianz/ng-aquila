@@ -1,4 +1,4 @@
-@import '../../shared-styles/index';
+@use '../../shared-styles/index' as *;
 
 $max-modal-content-height: 65vh !default;
 $horizontal-offset: 48px;

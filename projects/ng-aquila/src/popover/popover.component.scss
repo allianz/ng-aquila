@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 $popover-arrow-size: v(popover-arrow-size);
 

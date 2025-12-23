@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 @mixin avatar-size($size) {
   height: v(avatar-#{$size}-size);
@@ -73,7 +73,7 @@
   @include avatar-size(xlarge);
 }
 
-@each $color in (yellow, blue, red, green, orange, purple, teal, aqua, gray) {
+@each $color in ('yellow', 'blue', 'red', 'green', 'orange', 'purple', 'teal', 'aqua', 'gray') {
   :host.nx-avatar--accent-attention-#{$color} {
     @include accent-color($color, true);
   }

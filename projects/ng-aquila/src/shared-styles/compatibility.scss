@@ -1,6 +1,6 @@
 // Contains the outer margins of components that were removed with v11.
 
-@import './index';
+@use './index' as *;
 
 .nx-expansion-panel--regular {
   margin-top: v(accordion-regular-header-top-margin);

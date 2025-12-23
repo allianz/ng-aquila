@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use 'sass:list';
+@use 'sass:string';
 
 $icon-mapping: (
   filter: '\ea41',
@@ -34,7 +35,11 @@ $icon-mapping: (
 
   $icon-selectors: ();
   @each $icon-name, $character in $icon-mapping {
-    $icon-selectors: map.set($icon-selectors, unquote('&.ag-icon-#{$icon-name}'), $character);
+    $icon-selectors: map.set(
+      $icon-selectors,
+      string.unquote('&.ag-icon-#{$icon-name}'),
+      $character
+    );
   }
   $joined: list.join(map.keys($icon-selectors), (), comma);
   #{$joined} {

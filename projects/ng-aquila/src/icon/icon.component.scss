@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 $icon-outline-size-s: nx-spacer(3m);
 $icon-outline-size-m: nx-spacer(3xl);

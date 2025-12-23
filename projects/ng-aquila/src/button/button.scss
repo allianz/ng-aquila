@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 @function button-padding($padding) {
   @return calc(#{$padding} - #{v(button-border-width)});

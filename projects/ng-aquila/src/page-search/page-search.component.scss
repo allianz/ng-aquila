@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 .nx-pagesearch {
   padding: nx-spacer(2m) 0;

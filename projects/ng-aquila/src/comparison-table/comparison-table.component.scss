@@ -1,4 +1,5 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
+@use 'sass:list';
 
 /* Break out mixin
  *
@@ -15,7 +16,7 @@
 @function prependDir($selectors, $dir) {
   $selectorsWithDir: null;
   @each $selector in $selectors {
-    $selectorsWithDir: append($selectorsWithDir, '[dir="#{$dir}"]#{$selector}', 'comma');
+    $selectorsWithDir: list.append($selectorsWithDir, '[dir="#{$dir}"]#{$selector}', 'comma');
   }
   @return $selectorsWithDir;
 }

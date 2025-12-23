@@ -1,4 +1,4 @@
-@import '../../shared-styles/index';
+@use '../../shared-styles/index' as *;
 
 .nx-comparison-table__mobile-toggle-section-header {
   @include type-style(comparison-table-mobile-section-header);

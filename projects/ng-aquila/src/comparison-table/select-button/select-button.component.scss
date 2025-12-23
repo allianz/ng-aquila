@@ -1,4 +1,4 @@
-@import '../../shared-styles/index';
+@use '../../shared-styles/index' as *;
 
 :host {
   .nx-comparison-table__select-button-icon ::ng-deep {

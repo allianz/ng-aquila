@@ -1,4 +1,4 @@
-@import '../shared-styles/index.scss';
+@use '../shared-styles/index' as *;
 
 .nx-context-menu-group__label {
   font-weight: v(context-menu-group-header-font-weight);

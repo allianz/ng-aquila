@@ -1,5 +1,8 @@
 @use 'sass:list';
 @use 'sass:map';
+@use './measurements' as *;
+@use './typography' as *;
+
 // Helper functions to access the measurement maps
 // in a more semantic and readable way
 @function nx-spacer($key) {

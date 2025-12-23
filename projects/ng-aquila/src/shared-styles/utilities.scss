@@ -1,7 +1,7 @@
-@import 'mixins';
-@import 'measurements';
-@import 'typography';
-@import 'functions';
+@use './mixins' as *;
+@use './measurements' as *;
+@use './typography' as *;
+@use './functions' as *;
 
 @include create-margin-classes();
 @include create-font-weight-classes();

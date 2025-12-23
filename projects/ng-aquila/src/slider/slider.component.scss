@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 $handle-diameter: nx-spacer(m);
 $value-width: nx-spacer(4m);

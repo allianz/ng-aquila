@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 $dropdown-border-radius: nx-border-radius(s);
 $dropdown-border-size: nx-border-size(xs);

@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 .chevron-rotate-open {
   transition: transform $accordion-chevron-duration $accordion-chevron-easing;

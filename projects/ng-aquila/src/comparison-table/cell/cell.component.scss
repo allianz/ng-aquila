@@ -1,4 +1,4 @@
-@import '../../shared-styles/index';
+@use '../../shared-styles/index' as *;
 
 .nx-comparison-table__mobile-header-cell.is-selected,
 .nx-comparison-table__cell.is-selected {

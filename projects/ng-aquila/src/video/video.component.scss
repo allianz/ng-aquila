@@ -1,10 +1,10 @@
 @use 'sass:math';
 
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 .nx-video {
   position: relative;
-  padding-bottom: percentage(math.div(9, 16));
+  padding-bottom: math.percentage(math.div(9, 16));
   overflow: hidden;
   width: 100%;
   height: auto;

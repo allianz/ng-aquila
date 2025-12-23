@@ -1,5 +1,5 @@
 @use 'sass:math';
-@import '../../../ng-aquila/src/shared-styles/index';
+@use '../../../ng-aquila/src/shared-styles/index' as *;
 
 $cell-border-width: nx-border-size(xs);
 $border-bottom-width: nx-border-size(m);

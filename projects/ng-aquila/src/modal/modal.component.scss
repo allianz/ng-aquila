@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 $modal-max-height: 100vh;
 $modal-max-width: 100vw;

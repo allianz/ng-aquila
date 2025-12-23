@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 // Color theme variables
 $tile-blue-bg: #e6f0fa;

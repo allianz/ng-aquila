@@ -1,4 +1,4 @@
-@import '../shared-styles/index';
+@use '../shared-styles/index' as *;
 
 $border-width: nx-border-size(m);
 $border-radius: nx-border-radius(s);
