@@ -1,5 +1,6 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
@@ -10,7 +11,9 @@ import {
   ElementRef,
   EventEmitter,
   HostBinding,
+  inject,
   Input,
+  input,
   OnDestroy,
   Output,
   ViewChild,
@@ -33,8 +36,15 @@ const ICONS: { [k: string]: string } = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'nxMessage',
   imports: [NxIconModule, NxButtonModule],
+  host: {
+    '[attr.id]': 'id()',
+  },
 })
 export class NxMessageComponent implements AfterViewInit, OnDestroy {
+  private readonly _idGenerator = inject(IdGenerationService);
+
+  readonly id = input<string>(this._idGenerator.nextId('nx-message'));
+
   @HostBinding('class.context-info') get _isInfo() {
     return this._context === 'info';
   }

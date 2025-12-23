@@ -1,4 +1,5 @@
 import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
+import { NxMessageComponent } from '@allianz/ng-aquila/message';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
@@ -15,6 +16,7 @@ import {
   computed,
   ContentChild,
   ContentChildren,
+  contentChildren,
   DoCheck,
   ElementRef,
   EventEmitter,
@@ -61,7 +63,6 @@ export type LabelSize = 'small' | 'big';
   host: {
     role: 'radiogroup',
     '[attr.id]': 'id',
-    '[attr.required]': 'required',
     '[class.nx-radio-group--negative]': 'negative',
     '[attr.aria-labelledby]': 'this._label?.id  || null',
     '[attr.data-nx-disabled]': 'disabled || null',
@@ -83,6 +84,9 @@ export class NxRadioGroupComponent
   @ContentChildren(forwardRef(() => NxRadioComponent), { descendants: true })
   _radios!: QueryList<NxRadioComponent>;
 
+  /** All NxMessage Components that are projected into the Radio Group */
+  private readonly messages = contentChildren(NxMessageComponent, { descendants: true });
+
   /** @docs-private */
   errorState = false;
 
@@ -91,6 +95,16 @@ export class NxRadioGroupComponent
    * Signal to broadcast error IDs to child radio buttons
    */
   readonly _errorIds = signal<string>('');
+
+  readonly _ariaDescribedBy = input<string | null>(null, { alias: 'ariaDescribedBy' });
+  readonly ariaDescribedBy = computed(() => {
+    const inputDescribedBy = this._ariaDescribedBy();
+    const messagesDescribedBy = this.messages()
+      .map((message) => message.id())
+      .join(' ');
+    const errorIds = this._errorIds();
+    return [inputDescribedBy, messagesDescribedBy, errorIds].filter((id) => !!id).join(' ');
+  });
 
   /** Sets all radios in the group to readonly. */
   @Input({ transform: booleanAttribute }) set readonly(value) {
@@ -342,10 +356,10 @@ export class NxRadioComponent
   readonly ariaDescribedBy = input<string | null>(null);
 
   /** @docs-private */
-  readonly _getAriaDescribedBy = computed(() => {
+  protected readonly _getAriaDescribedBy = computed(() => {
     const inputAriaDescribedBy = this.ariaDescribedBy();
-    const groupErrorIds = this.radioGroup?._errorIds();
-    return groupErrorIds || inputAriaDescribedBy;
+    const groupErrorIds = this.radioGroup?.ariaDescribedBy();
+    return [inputAriaDescribedBy, groupErrorIds].filter((id) => !!id).join(' ');
   });
 
   /** Sets radio to readonly. */

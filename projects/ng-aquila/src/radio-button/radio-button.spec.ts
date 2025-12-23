@@ -507,18 +507,25 @@ describe('NxRadioComponent', () => {
       });
     });
 
-    it('should update on required change', () => {
+    it('should set required on individual radios and update on change', () => {
       createTestComponent(MultipleRadioOnPush);
       testInstance.radioGroup.required = true;
       fixture.detectChanges();
       expect(fixture.nativeElement.querySelector('nx-radio-group').getAttribute('required')).toBe(
-        'true',
+        null,
       );
+      const radioInputs = fixture.nativeElement.querySelectorAll('input[type="radio"]');
+      expect(radioInputs).toHaveSize(2);
+      radioInputs.forEach((input: any) => {
+        expect(input.getAttribute('required')).toBe('true');
+      });
+
+      // test update to required property on radioGroup
       testInstance.radioGroup.required = false;
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('nx-radio-group').getAttribute('required')).toBe(
-        'false',
-      );
+      radioInputs.forEach((input: any) => {
+        expect(input.getAttribute('required')).toBe('false');
+      });
     });
 
     it('should update on name change', () => {
