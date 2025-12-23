@@ -35,6 +35,16 @@ The size can be one of these values: `xsmall`, `small`, `normal`. The default va
 
 <!-- example(list-copytext) -->
 
+<div class="docs-a1">
+
+### List types
+
+You can use the attribute `type` to apply predefined primary or secondary styles to your lists. The default value is `primary`.
+
+<!-- example(list-type) -->
+
+</div>
+
 <div class="docs-hide-a1">
 
 ### Condensed list

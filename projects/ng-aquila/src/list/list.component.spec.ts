@@ -2,7 +2,7 @@ import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { NxListComponent } from './list.component';
+import { NxListComponent, NxListType } from './list.component';
 import { NxListModule } from './list.module';
 
 @Directive({ standalone: true })
@@ -33,7 +33,7 @@ describe('NxListComponent', () => {
   it('creates the List', waitForAsync(() => {
     createTestComponent(BasicList);
     expect(listInstance).toBeTruthy();
-    expect(listInstance.type).toBe('normal');
+    expect(listInstance.size).toBe('normal');
   }));
 
   it('creates full modifier class from a correct keyword', waitForAsync(() => {
@@ -53,7 +53,7 @@ describe('NxListComponent', () => {
 
   it('should update class names after input changes', fakeAsync(() => {
     createTestComponent(ConfigurableList);
-    (testInstance as ConfigurableList).type = 'small negative';
+    (testInstance as ConfigurableList).property = 'small negative';
     fixture.detectChanges();
     expect(listNativeElement).toHaveClass('nx-list--small');
     expect(listNativeElement).toHaveClass('nx-list--negative');
@@ -69,9 +69,22 @@ describe('NxListComponent', () => {
 
   it('Should change size', waitForAsync(() => {
     createTestComponent(ConfigurableList);
-    (testInstance as ConfigurableList).type = 'xsmall';
+    (testInstance as ConfigurableList).property = 'xsmall';
     fixture.detectChanges();
     expect(listNativeElement).toHaveClass('nx-list--xsmall');
+  }));
+
+  it('Should have primary as default type', waitForAsync(() => {
+    createTestComponent(ConfigurableList);
+    fixture.detectChanges();
+    expect(listNativeElement).toHaveClass('nx-list--primary');
+  }));
+
+  it('Should change type', waitForAsync(() => {
+    createTestComponent(ConfigurableList);
+    (testInstance as ConfigurableList).type = 'secondary';
+    fixture.detectChanges();
+    expect(listNativeElement).toHaveClass('nx-list--secondary');
   }));
 
   describe('a11y', () => {
@@ -129,7 +142,7 @@ class ListWithIcons extends ListTest {}
 @Component({
   selector: 'test-configurable-list',
   template: `
-    <ul [nxList]="type">
+    <ul [nxList]="property" [type]="type">
       <li [nxListIcon]="iconName">1</li>
       <li>2</li>
     </ul>
@@ -137,6 +150,7 @@ class ListWithIcons extends ListTest {}
   imports: [NxListModule],
 })
 class ConfigurableList extends ListTest {
-  type = 'small';
+  property = 'small';
   iconName = 'check';
+  type: NxListType = 'primary';
 }

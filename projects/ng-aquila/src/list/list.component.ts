@@ -1,9 +1,12 @@
-import { booleanAttribute, ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
 
-const DEFAULT_TYPE = 'normal';
+const DEFAULT_SIZE = 'normal';
 
 /** Size of the list */
 export type NxListSize = 'xsmall' | 'small' | 'normal';
+
+/** Color of the list */
+export type NxListType = 'primary' | 'secondary';
 
 @Component({
   selector: 'ul[nxList], ol[nxList]',
@@ -12,14 +15,16 @@ export type NxListSize = 'xsmall' | 'small' | 'normal';
   styleUrls: ['list.component.scss'],
   host: {
     '[class.nx-list]': 'true',
-    '[class.nx-list--xsmall]': 'type === "xsmall"',
-    '[class.nx-list--xsmall-condensed]': 'type === "xsmall" && condensed',
-    '[class.nx-list--small]': 'type === "small"',
-    '[class.nx-list--small-condensed]': 'type === "small" && condensed',
-    '[class.nx-list--normal]': 'type === "normal"',
-    '[class.nx-list--normal-condensed]': 'type === "normal" && condensed',
+    '[class.nx-list--xsmall]': 'size === "xsmall"',
+    '[class.nx-list--xsmall-condensed]': 'size === "xsmall" && condensed',
+    '[class.nx-list--small]': 'size === "small"',
+    '[class.nx-list--small-condensed]': 'size === "small" && condensed',
+    '[class.nx-list--normal]': 'size === "normal"',
+    '[class.nx-list--normal-condensed]': 'size === "normal" && condensed',
     '[class.nx-list--negative]': 'negative',
     '[class.nx-list--ordered-circle]': 'orderedCircle',
+    '[class.nx-list--primary]': 'type() === "primary"',
+    '[class.nx-list--secondary]': 'type() === "secondary"',
   },
   standalone: true,
 })
@@ -41,8 +46,8 @@ export class NxListComponent {
     this._classNames = value;
 
     // TODO kick null safe-guards after setter value or any calling input values are properly coerced as string
-    const [type = null] = this._classNames?.match(/xsmall|small|normal/) || [DEFAULT_TYPE];
-    this.type = type as any;
+    const [size = null] = this._classNames?.match(/xsmall|small|normal/) || [DEFAULT_SIZE];
+    this.size = size as any;
 
     this.negative = !!this._classNames?.match(/negative/);
     this.orderedCircle = !!this._classNames?.match(/ordered-circle/);
@@ -62,8 +67,10 @@ export class NxListComponent {
   }
   _condensed: boolean = false;
 
+  readonly type = input<NxListType>('primary');
+
   /** @docs-private */
-  type?: NxListSize = DEFAULT_TYPE;
+  size?: NxListSize = DEFAULT_SIZE;
 
   /** @docs-private */
   negative = false;

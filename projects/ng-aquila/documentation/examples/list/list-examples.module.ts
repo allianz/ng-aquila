@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { ListCirclesExampleComponent } from './list-circles/list-circles-example';
+import { ListTypeExampleComponent } from './list-type/list-type-example';
 import { ListCondensedExampleComponent } from './list-condensed/list-condensed-example';
 import { ListCopytextExampleComponent } from './list-copytext/list-copytext-example';
 import { ListCustomColorExampleComponent } from './list-custom-color/list-custom-color-example';
@@ -12,6 +13,7 @@ import { ListUnorderedExampleComponent } from './list-unordered/list-unordered-e
 
 const EXAMPLES = [
   ListCirclesExampleComponent,
+  ListTypeExampleComponent,
   ListCopytextExampleComponent,
   ListCustomColorExampleComponent,
   ListIconsExampleComponent,
@@ -30,6 +32,7 @@ export class ListExamplesModule {
   static components() {
     return {
       'list-circles': ListCirclesExampleComponent,
+      'list-type': ListTypeExampleComponent,
       'list-copytext': ListCopytextExampleComponent,
       'list-custom-color': ListCustomColorExampleComponent,
       'list-icons': ListIconsExampleComponent,
