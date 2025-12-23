@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [21.1.0](https://github.com/allianz/ng-aquila/compare/v21.0.0...v21.1.0) (2025-12-23)
+
+
+### Documentation 📚
+
+* add shadowDom guide ([ccf79ef](https://github.com/allianz/ng-aquila/commit/ccf79efdaf71dca3ebf445d740971a78990ffb22))
+* fix wrong import in code snippet ([8ad5886](https://github.com/allianz/ng-aquila/commit/8ad5886802bafaa8a90bc082464c3a574a15445f))
+
+
+### Bug Fixes 🐛
+
+* add missing peerDependencies for stackblitz ([482061f](https://github.com/allianz/ng-aquila/commit/482061fbcf8b825cc5f450839a80f6251b8769a7))
+* **badge:** remove markForChecks in inputs for performance ([c9f3700](https://github.com/allianz/ng-aquila/commit/c9f3700d480531d7f3655ae4239b98258a8def3c))
+* **breadcrumb:** fix icon breadcrumb icon not aligned ([c691ee9](https://github.com/allianz/ng-aquila/commit/c691ee9067a0d3f8d1d2646e0f82c4bb089ba8bd))
+* **date:** prevent date range error with expert module or tabindex < 0 ([2d32f32](https://github.com/allianz/ng-aquila/commit/2d32f328350d8624904c0085326c0b8cba996e19))
+* **expandable row:** add border between rows ([730c190](https://github.com/allianz/ng-aquila/commit/730c19023678e29b23ddb259134ef5eae6b4ff2e))
+* **toggle-buton:** add cdk-visually-hidden to input ([ce87bfe](https://github.com/allianz/ng-aquila/commit/ce87bfe12341c238eccc7dadcea3a9755d087c18))
+
+
+### Features ✨
+
+* **badge:** a1 light mapping ([ebaf900](https://github.com/allianz/ng-aquila/commit/ebaf900829191e4416c0431a0068fa98776ab24c))
+* **breadcrumb:** add css tokens ([2b9716c](https://github.com/allianz/ng-aquila/commit/2b9716ccad24530065c4a76d440c5623393538fa))
+* **copytext:** a1 mapping ([b3ab3f5](https://github.com/allianz/ng-aquila/commit/b3ab3f5b34eca3c9e3116cf1f3ef1466e5bf4f4b))
+* **formfield:** a1 styling ([930bf52](https://github.com/allianz/ng-aquila/commit/930bf52f2e40fb79ce25238a34b6dcf42f7da95f))
+* **formfield:** allow signal based default nxOptionalLabel ([0938894](https://github.com/allianz/ng-aquila/commit/093889449a9eb80518af94581370152d856ddaef))
+* **icons:** update allianz icon ([9848dd5](https://github.com/allianz/ng-aquila/commit/9848dd5102194dc9c96e2af0f9f692736f6cd0a1))
+* **list:** a1 light mapping ([f0d3f25](https://github.com/allianz/ng-aquila/commit/f0d3f25d43a0a6d4e1f873615956d04adc47ad30))
+* **list:** add type property for a1 ([f1e5a18](https://github.com/allianz/ng-aquila/commit/f1e5a181f6933015babf608417714414d0500175))
+* **radio:** allow messages and connect outside messages via describedBy ([f52ccfc](https://github.com/allianz/ng-aquila/commit/f52ccfc826c9f553479ebe5429eadbb55db383d9))
+* **slider:** add ariaLabelledBy input for external label reference ([2ca1bfb](https://github.com/allianz/ng-aquila/commit/2ca1bfb771260c00adb18c103170167fd29bdeaa))
+
 ## [21.0.0](https://github.com/allianz/ng-aquila/compare/v20.7.0...v21.0.0) (2025-12-04)
 
 ### ⚠ BREAKING CHANGES
