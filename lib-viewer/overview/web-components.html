@@ -1,0 +1,10 @@
+<h2 id="overview" tabindex="-1" class="docs-markdown--h2">Overview</h2>
+<p class="docs-markdown--p">When using Angular components with <strong>ViewEncapsulation.ShadowDom</strong> or building <strong>Web Components</strong>, you may encounter issues with overlay-based components (such as popovers, dropdowns, tooltips, modals, and context menus). This guide explains common problems and provides solutions to ensure these components work correctly within Shadow DOM boundaries.</p>
+<h2 id="overlay-components-and-style-encapsulation" tabindex="-1" class="docs-markdown--h2">Overlay Components and Style Encapsulation</h2>
+<p class="docs-markdown--p"><strong>Problem</strong>:</p>
+<p class="docs-markdown--p">Overlay-based components (popovers, dropdowns, tooltips, modals) render outside Shadow DOM boundaries by default, causing missing styles, theme inconsistencies, and positioning issues.</p>
+<p class="docs-markdown--p">The Angular CDK <code>OverlayContainer</code> service creates a single global container (<code>&lt;div class=&quot;cdk-overlay-container&quot;&gt;</code>) appended to <code>document.body</code>. When your component uses Shadow DOM, overlays created inside it are still rendered in this global container, breaking the Shadow DOM encapsulation.</p>
+<p class="docs-markdown--p"><strong>Solution</strong>: Dynamic Shadow Root Reference</p>
+<p class="docs-markdown--p">Create a custom <code>OverlayContainer</code> that renders overlays inside your Shadow DOM root instead of the document body.</p>
+<p class="docs-markdown--p">Here's a working example demonstrating this solution with a modal component:</p>
+<div nx-docs-example="web-components-modal-shadow-dom" config="{}">exampleID: web-components-modal-shadow-dom</div>

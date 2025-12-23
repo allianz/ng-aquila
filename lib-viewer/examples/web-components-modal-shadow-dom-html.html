@@ -1,0 +1,20 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>ViewEncapsulation.shadowDom = true<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;openModal()&quot;</span>&gt;</span>
+  Show Modal
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> #<span class="hljs-attr">modalTemplate</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-medium&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-modal-margin-bottom&quot;</span>&gt;</span>
+    ShadowDOM Modal Example
+  <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;medium&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-modal-margin-bottom&quot;</span>&gt;</span>
+    This modal is rendered inside a component with
+    <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>ViewEncapsulation.ShadowDom<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>. The overlay container has been
+    configured to render inside the Shadow DOM boundary using a custom
+    <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>OverlayContainer<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> implementation.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;inside-modal&quot;</span>&gt;</span>
+    This paragraph is styled even though the modal is rendered inside Shadow
+    DOM.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>

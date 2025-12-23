@@ -1,18 +1,18 @@
 import {
-    Component,
-    ElementRef,
-    inject,
-    signal,
-    TemplateRef,
-    viewChild,
-    ViewChild,
+  Component,
+  ElementRef,
+  inject,
+  signal,
+  TemplateRef,
+  viewChild,
+  ViewChild,
 } from '@angular/core';
 import {
-    FormGroup,
-    FormBuilder,
-    Validators,
-    FormsModule,
-    ReactiveFormsModule,
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormsModule,
+  ReactiveFormsModule,
 } from '@angular/forms';
 import { NxDialogService, NxModalModule, NxModalRef } from '@allianz/ng-aquila/modal';
 import { NxButtonModule } from '@allianz/ng-aquila/button';
@@ -35,58 +35,58 @@ import { NxPopoverModule } from '@allianz/ng-aquila/popover';
 import { NxSmallStageModule } from '@allianz/ng-aquila/small-stage';
 
 @Component({
-    selector: 'app-root',
-    imports: [
-        NxButtonModule,
-        NxCheckboxModule,
-        NxDocumentationIconModule,
-        NxDropdownModule,
-        NxFooterModule,
-        NxFormfieldModule,
-        NxGridModule,
-        NxHeadlineModule,
-        NxIconModule,
-        NxInputModule,
-        NxLinkModule,
-        NxMessageModule,
-        NxModalModule,
-        NxOverlayModule,
-        NxPopoverModule,
-        NxSmallStageModule,
-        NxCopytextModule,
-        NxExpertModule,
-        FormsModule,
-        ReactiveFormsModule,
-    ],
-    templateUrl: './app.html',
-    styleUrl: './app.css',
+  selector: 'app-root',
+  imports: [
+    NxButtonModule,
+    NxCheckboxModule,
+    NxDocumentationIconModule,
+    NxDropdownModule,
+    NxFooterModule,
+    NxFormfieldModule,
+    NxGridModule,
+    NxHeadlineModule,
+    NxIconModule,
+    NxInputModule,
+    NxLinkModule,
+    NxMessageModule,
+    NxModalModule,
+    NxOverlayModule,
+    NxPopoverModule,
+    NxSmallStageModule,
+    NxCopytextModule,
+    NxExpertModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  templateUrl: './app.html',
+  styleUrl: './app.css',
 })
 export class App {
-    protected readonly title = signal('aquila-starter-app');
+  protected readonly title = signal('aquila-starter-app');
 
-    dialogRef?: NxModalRef<any, any>;
+  dialogRef?: NxModalRef<any, any>;
 
-    submitTemplateRef = viewChild.required<TemplateRef<any>>('submitTemplate');
+  submitTemplateRef = viewChild.required<TemplateRef<any>>('submitTemplate');
 
-    formGroup = new FormBuilder().group({
-        name: ['', Validators.required],
-        items: ['', Validators.required],
-        email: ['', [Validators.email, Validators.required]],
-        consent: [false, Validators.requiredTrue],
+  formGroup = new FormBuilder().group({
+    name: ['', Validators.required],
+    items: ['', Validators.required],
+    email: ['', [Validators.email, Validators.required]],
+    consent: [false, Validators.requiredTrue],
+  });
+
+  onSubmit() {
+    if (this.formGroup.valid) {
+      this.openSubmitDialog();
+    }
+  }
+
+  private readonly dialogService = inject<NxDialogService>(NxDialogService);
+
+  openSubmitDialog(): void {
+    this.dialogRef = this.dialogService.open(this.submitTemplateRef(), {
+      ariaLabel: 'The final modal of the Starter App',
+      showCloseIcon: false,
     });
-
-    onSubmit() {
-        if (this.formGroup.valid) {
-            this.openSubmitDialog();
-        }
-    }
-
-    private readonly dialogService = inject<NxDialogService>(NxDialogService);
-
-    openSubmitDialog(): void {
-        this.dialogRef = this.dialogService.open(this.submitTemplateRef(), {
-            ariaLabel: 'The final modal of the Starter App',
-            showCloseIcon: false,
-        });
-    }
+  }
 }

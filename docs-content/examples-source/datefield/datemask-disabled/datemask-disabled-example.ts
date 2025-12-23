@@ -1,4 +1,3 @@
-import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import {
   NxDatemaskComponent,
   NxDatepickerComponent,
@@ -15,7 +14,6 @@ import {
   NxRowComponent,
 } from '@allianz/ng-aquila/grid';
 import { NxSwitcherComponent } from '@allianz/ng-aquila/switcher';
-
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 

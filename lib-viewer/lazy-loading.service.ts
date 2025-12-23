@@ -96,6 +96,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'utils': return import('../examples/utils/utils-examples.module').then(m => m.UtilsExamplesModule);
             case 'video': return import('../examples/video/video-examples.module').then(m => m.VideoExamplesModule);
             case 'viewport': return import('../examples/viewport/viewport-examples.module').then(m => m.ViewportExamplesModule);
+            case 'web-components': return import('../examples/web-components/web-components-examples.module').then(m => m.WebComponentsExamplesModule);
             default: return Promise.resolve().then(() => null);
         }
     }

@@ -1825,6 +1825,10 @@
         {
           "name": "NxListSize",
           "title": "Size of the list"
+        },
+        {
+          "name": "NxListType",
+          "title": "Color of the list"
         }
       ]
     },
@@ -3503,6 +3507,86 @@
   ],
   "components": [
     {
+      "id": "accordion",
+      "title": "Accordion",
+      "examples": [
+        {
+          "name": "accordion-standalone",
+          "config": {}
+        },
+        {
+          "name": "accordion",
+          "config": {}
+        },
+        {
+          "name": "accordion-multi",
+          "config": {}
+        },
+        {
+          "name": "accordion-negative",
+          "config": {}
+        },
+        {
+          "name": "accordion-light",
+          "config": {}
+        },
+        {
+          "name": "accordion-light-negative",
+          "config": {}
+        },
+        {
+          "name": "accordion-extra-light",
+          "config": {}
+        },
+        {
+          "name": "accordion-extra-light-negative",
+          "config": {}
+        },
+        {
+          "name": "accordion-flush",
+          "config": {}
+        },
+        {
+          "name": "accordion-lazy",
+          "config": {}
+        },
+        {
+          "name": "accordion-error",
+          "config": {}
+        },
+        {
+          "name": "accordion-scroll-smooth",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/accordion.html",
+      "overviewFile": "lib-viewer/overview/accordion.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "expansion panel, collapse",
+      "a1": true
+    },
+    {
+      "id": "accessibility",
+      "title": "Accessibility",
+      "examples": [
+        {
+          "name": "accessibility-high-contrast-svg",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/accessibility.html",
+      "overviewFile": "lib-viewer/overview/accessibility.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
+      "a1": true
+    },
+    {
       "id": "autocomplete",
       "title": "Autocomplete",
       "examples": [
@@ -3570,6 +3654,32 @@
       "a1": true
     },
     {
+      "id": "badge",
+      "title": "Badge",
+      "examples": [
+        {
+          "name": "badge",
+          "config": {}
+        },
+        {
+          "name": "badge-character",
+          "config": {}
+        },
+        {
+          "name": "badge-vibrant",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/badge.html",
+      "overviewFile": "lib-viewer/overview/badge.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "chip",
+      "a1": true
+    },
+    {
       "id": "avatar",
       "title": "Avatar",
       "examples": [
@@ -3600,115 +3710,6 @@
       "b2c": false,
       "expert": true,
       "stable": "done",
-      "a1": true
-    },
-    {
-      "id": "ag-grid",
-      "title": "Ag-grid",
-      "examples": [
-        {
-          "name": "ag-grid-opensource-theming-api",
-          "config": {}
-        },
-        {
-          "name": "ag-grid-theming-api",
-          "config": {}
-        }
-      ],
-      "category": "Third-party",
-      "apiFile": "lib-viewer/api/ag-grid.html",
-      "overviewFile": "lib-viewer/overview/ag-grid.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "progress",
-      "noApi": true
-    },
-    {
-      "id": "accordion",
-      "title": "Accordion",
-      "examples": [
-        {
-          "name": "accordion-standalone",
-          "config": {}
-        },
-        {
-          "name": "accordion",
-          "config": {}
-        },
-        {
-          "name": "accordion-multi",
-          "config": {}
-        },
-        {
-          "name": "accordion-negative",
-          "config": {}
-        },
-        {
-          "name": "accordion-light",
-          "config": {}
-        },
-        {
-          "name": "accordion-light-negative",
-          "config": {}
-        },
-        {
-          "name": "accordion-extra-light",
-          "config": {}
-        },
-        {
-          "name": "accordion-extra-light-negative",
-          "config": {}
-        },
-        {
-          "name": "accordion-flush",
-          "config": {}
-        },
-        {
-          "name": "accordion-lazy",
-          "config": {}
-        },
-        {
-          "name": "accordion-error",
-          "config": {}
-        },
-        {
-          "name": "accordion-scroll-smooth",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/accordion.html",
-      "overviewFile": "lib-viewer/overview/accordion.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "expansion panel, collapse",
-      "a1": true
-    },
-    {
-      "id": "badge",
-      "title": "Badge",
-      "examples": [
-        {
-          "name": "badge",
-          "config": {}
-        },
-        {
-          "name": "badge-character",
-          "config": {}
-        },
-        {
-          "name": "badge-vibrant",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/badge.html",
-      "overviewFile": "lib-viewer/overview/badge.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "chip",
       "a1": true
     },
     {
@@ -3764,21 +3765,97 @@
       "a1": true
     },
     {
-      "id": "accessibility",
-      "title": "Accessibility",
+      "id": "ag-grid",
+      "title": "Ag-grid",
       "examples": [
         {
-          "name": "accessibility-high-contrast-svg",
+          "name": "ag-grid-opensource-theming-api",
+          "config": {}
+        },
+        {
+          "name": "ag-grid-theming-api",
           "config": {}
         }
       ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/accessibility.html",
-      "overviewFile": "lib-viewer/overview/accessibility.html",
+      "category": "Third-party",
+      "apiFile": "lib-viewer/api/ag-grid.html",
+      "overviewFile": "lib-viewer/overview/ag-grid.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "progress",
+      "noApi": true
+    },
+    {
+      "id": "checkbox",
+      "title": "Checkbox",
+      "examples": [
+        {
+          "name": "checkbox-states",
+          "config": {}
+        },
+        {
+          "name": "checkbox-simple-binding",
+          "config": {}
+        },
+        {
+          "name": "checkbox-label-size",
+          "config": {}
+        },
+        {
+          "name": "checkbox-negative",
+          "config": {}
+        },
+        {
+          "name": "checkbox-template-driven",
+          "config": {}
+        },
+        {
+          "name": "checkbox-reactive",
+          "config": {}
+        },
+        {
+          "name": "checkbox-outputs",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-basic",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-reactive",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-layout",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-label-size",
+          "config": {}
+        },
+        {
+          "name": "checkbox-readonly",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-validation",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-dynamic",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-inheritance",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/checkbox.html",
+      "overviewFile": "lib-viewer/overview/checkbox.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "noApi": true,
       "a1": true
     },
     {
@@ -3849,145 +3926,6 @@
       "category": "components",
       "apiFile": "lib-viewer/api/button.html",
       "overviewFile": "lib-viewer/overview/button.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true
-    },
-    {
-      "id": "card",
-      "title": "Cards",
-      "examples": [
-        {
-          "name": "card",
-          "config": {}
-        },
-        {
-          "name": "highlight-card",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-basic",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-radio",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-product",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-states",
-          "config": {}
-        },
-        {
-          "name": "highlight-selectable-card",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-reactive",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-dynamic",
-          "config": {}
-        },
-        {
-          "name": "clickable-card",
-          "config": {}
-        },
-        {
-          "name": "clickable-card-disabled",
-          "config": {}
-        },
-        {
-          "name": "clickable-card-raised-content",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-expert",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/card.html",
-      "overviewFile": "lib-viewer/overview/card.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "card, selectable card",
-      "a1": true
-    },
-    {
-      "id": "checkbox",
-      "title": "Checkbox",
-      "examples": [
-        {
-          "name": "checkbox-states",
-          "config": {}
-        },
-        {
-          "name": "checkbox-simple-binding",
-          "config": {}
-        },
-        {
-          "name": "checkbox-label-size",
-          "config": {}
-        },
-        {
-          "name": "checkbox-negative",
-          "config": {}
-        },
-        {
-          "name": "checkbox-template-driven",
-          "config": {}
-        },
-        {
-          "name": "checkbox-reactive",
-          "config": {}
-        },
-        {
-          "name": "checkbox-outputs",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-basic",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-reactive",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-layout",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-label-size",
-          "config": {}
-        },
-        {
-          "name": "checkbox-readonly",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-validation",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-dynamic",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-inheritance",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/checkbox.html",
-      "overviewFile": "lib-viewer/overview/checkbox.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
@@ -4109,6 +4047,72 @@
       "a1": true
     },
     {
+      "id": "card",
+      "title": "Cards",
+      "examples": [
+        {
+          "name": "card",
+          "config": {}
+        },
+        {
+          "name": "highlight-card",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-basic",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-radio",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-product",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-states",
+          "config": {}
+        },
+        {
+          "name": "highlight-selectable-card",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-reactive",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-dynamic",
+          "config": {}
+        },
+        {
+          "name": "clickable-card",
+          "config": {}
+        },
+        {
+          "name": "clickable-card-disabled",
+          "config": {}
+        },
+        {
+          "name": "clickable-card-raised-content",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-expert",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/card.html",
+      "overviewFile": "lib-viewer/overview/card.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "card, selectable card",
+      "a1": true
+    },
+    {
       "id": "config",
       "title": "Expert",
       "examples": [],
@@ -4130,6 +4134,10 @@
           "config": {}
         },
         {
+          "name": "copytext-a1",
+          "config": {}
+        },
+        {
           "name": "copytext-negative",
           "config": {}
         }
@@ -4137,6 +4145,35 @@
       "category": "components",
       "apiFile": "lib-viewer/api/copytext.html",
       "overviewFile": "lib-viewer/overview/copytext.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1": true
+    },
+    {
+      "id": "data-display",
+      "title": "Data Display",
+      "examples": [
+        {
+          "name": "data-display-standard",
+          "config": {}
+        },
+        {
+          "name": "data-display-condensed",
+          "config": {}
+        },
+        {
+          "name": "data-display-horizontal",
+          "config": {}
+        },
+        {
+          "name": "data-display-responsive",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/data-display.html",
+      "overviewFile": "lib-viewer/overview/data-display.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
@@ -4290,86 +4327,6 @@
       "a1": true
     },
     {
-      "id": "divider",
-      "title": "Divider",
-      "examples": [
-        {
-          "name": "divider",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/divider.html",
-      "overviewFile": "lib-viewer/overview/divider.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "separator",
-      "a1": true
-    },
-    {
-      "id": "data-display",
-      "title": "Data Display",
-      "examples": [
-        {
-          "name": "data-display-standard",
-          "config": {}
-        },
-        {
-          "name": "data-display-condensed",
-          "config": {}
-        },
-        {
-          "name": "data-display-horizontal",
-          "config": {}
-        },
-        {
-          "name": "data-display-responsive",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/data-display.html",
-      "overviewFile": "lib-viewer/overview/data-display.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true
-    },
-    {
-      "id": "dynamic-table",
-      "title": "Dynamic Tables",
-      "examples": [
-        {
-          "name": "dynamic-table",
-          "config": {}
-        },
-        {
-          "name": "dynamic-table-data",
-          "config": {}
-        },
-        {
-          "name": "dynamic-table-without-data",
-          "config": {}
-        },
-        {
-          "name": "dynamic-table-event",
-          "config": {}
-        },
-        {
-          "name": "dynamic-table-column-options",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/dynamic-table.html",
-      "overviewFile": "lib-viewer/overview/dynamic-table.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true
-    },
-    {
       "id": "dropdown",
       "title": "Dropdown",
       "examples": [
@@ -4465,6 +4422,83 @@
       "expert": true,
       "stable": "done",
       "alias": "select, multi select",
+      "a1": true
+    },
+    {
+      "id": "divider",
+      "title": "Divider",
+      "examples": [
+        {
+          "name": "divider",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/divider.html",
+      "overviewFile": "lib-viewer/overview/divider.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "separator",
+      "a1": true
+    },
+    {
+      "id": "error-handling",
+      "title": "Error handling",
+      "examples": [
+        {
+          "name": "error",
+          "config": {}
+        },
+        {
+          "name": "error-custom-matcher-formfield",
+          "config": {}
+        },
+        {
+          "name": "error-reset",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/error-handling.html",
+      "overviewFile": "lib-viewer/overview/error-handling.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
+      "a1": true
+    },
+    {
+      "id": "dynamic-table",
+      "title": "Dynamic Tables",
+      "examples": [
+        {
+          "name": "dynamic-table",
+          "config": {}
+        },
+        {
+          "name": "dynamic-table-data",
+          "config": {}
+        },
+        {
+          "name": "dynamic-table-without-data",
+          "config": {}
+        },
+        {
+          "name": "dynamic-table-event",
+          "config": {}
+        },
+        {
+          "name": "dynamic-table-column-options",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/dynamic-table.html",
+      "overviewFile": "lib-viewer/overview/dynamic-table.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
       "a1": true
     },
     {
@@ -4604,29 +4638,51 @@
       "a1": true
     },
     {
-      "id": "error-handling",
-      "title": "Error handling",
+      "id": "headline",
+      "title": "Headline",
       "examples": [
         {
-          "name": "error",
+          "name": "headline-sizes-deprecated",
           "config": {}
         },
         {
-          "name": "error-custom-matcher-formfield",
+          "name": "headline-font-weights",
           "config": {}
         },
         {
-          "name": "error-reset",
+          "name": "headline-links",
           "config": {}
+        },
+        {
+          "name": "headline-attention-text",
+          "config": {}
+        },
+        {
+          "name": "headline-negative",
+          "config": {}
+        },
+        {
+          "name": "headline-sizes-a1",
+          "config": {}
+        },
+        {
+          "name": "headline-type",
+          "config": {}
+        },
+        {
+          "name": "headline-sizes-mapping",
+          "config": {
+            "hideHeader": true
+          }
         }
       ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/error-handling.html",
-      "overviewFile": "lib-viewer/overview/error-handling.html",
+      "category": "components",
+      "apiFile": "lib-viewer/api/headline.html",
+      "overviewFile": "lib-viewer/overview/headline.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "noApi": true,
+      "alias": "heading, title",
       "a1": true
     },
     {
@@ -4705,6 +4761,47 @@
       "category": "components",
       "apiFile": "lib-viewer/api/file-uploader.html",
       "overviewFile": "lib-viewer/overview/file-uploader.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1": true
+    },
+    {
+      "id": "icon",
+      "title": "Icons",
+      "examples": [
+        {
+          "name": "icon-essential-icons",
+          "config": {}
+        },
+        {
+          "name": "icon-essential-override",
+          "config": {}
+        },
+        {
+          "name": "icon-sizes",
+          "config": {}
+        },
+        {
+          "name": "icon-outline",
+          "config": {}
+        },
+        {
+          "name": "icon-filled",
+          "config": {}
+        },
+        {
+          "name": "status-icon",
+          "config": {}
+        },
+        {
+          "name": "icon-registry",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/icon.html",
+      "overviewFile": "lib-viewer/overview/icon.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
@@ -4888,96 +4985,6 @@
       "a1": true
     },
     {
-      "id": "headline",
-      "title": "Headline",
-      "examples": [
-        {
-          "name": "headline-sizes-deprecated",
-          "config": {}
-        },
-        {
-          "name": "headline-font-weights",
-          "config": {}
-        },
-        {
-          "name": "headline-links",
-          "config": {}
-        },
-        {
-          "name": "headline-attention-text",
-          "config": {}
-        },
-        {
-          "name": "headline-negative",
-          "config": {}
-        },
-        {
-          "name": "headline-sizes-a1",
-          "config": {}
-        },
-        {
-          "name": "headline-type",
-          "config": {}
-        },
-        {
-          "name": "headline-sizes-mapping",
-          "config": {
-            "hideHeader": true
-          }
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/headline.html",
-      "overviewFile": "lib-viewer/overview/headline.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "heading, title",
-      "a1": true
-    },
-    {
-      "id": "header",
-      "title": "Header",
-      "examples": [
-        {
-          "name": "header",
-          "config": {}
-        },
-        {
-          "name": "header-two-rows",
-          "config": {}
-        },
-        {
-          "name": "header-icons",
-          "config": {}
-        },
-        {
-          "name": "header-cobranding",
-          "config": {}
-        },
-        {
-          "name": "header-icons-responsive",
-          "config": {}
-        },
-        {
-          "name": "header-two-rows-responsive",
-          "config": {}
-        },
-        {
-          "name": "header-with-side-navigation",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/header.html",
-      "overviewFile": "lib-viewer/overview/header.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
-      "alias": "toolbar, navbar",
-      "a1": true
-    },
-    {
       "id": "image",
       "title": "Images",
       "examples": [
@@ -5045,41 +5052,185 @@
       "a1": true
     },
     {
-      "id": "icon",
-      "title": "Icons",
+      "id": "list",
+      "title": "List",
       "examples": [
         {
-          "name": "icon-essential-icons",
+          "name": "list-unordered",
           "config": {}
         },
         {
-          "name": "icon-essential-override",
+          "name": "list-ordered",
           "config": {}
         },
         {
-          "name": "icon-sizes",
+          "name": "list-circles",
           "config": {}
         },
         {
-          "name": "icon-outline",
+          "name": "list-icons",
           "config": {}
         },
         {
-          "name": "icon-filled",
+          "name": "list-copytext",
           "config": {}
         },
         {
-          "name": "status-icon",
+          "name": "list-type",
           "config": {}
         },
         {
-          "name": "icon-registry",
+          "name": "list-condensed",
+          "config": {}
+        },
+        {
+          "name": "list-negative",
+          "config": {}
+        },
+        {
+          "name": "list-custom-color",
+          "config": {}
+        },
+        {
+          "name": "list-nesting",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/icon.html",
-      "overviewFile": "lib-viewer/overview/icon.html",
+      "apiFile": "lib-viewer/api/list.html",
+      "overviewFile": "lib-viewer/overview/list.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1": true
+    },
+    {
+      "id": "link",
+      "title": "Link",
+      "examples": [
+        {
+          "name": "link-default",
+          "config": {}
+        },
+        {
+          "name": "link-size",
+          "config": {}
+        },
+        {
+          "name": "link-type",
+          "config": {}
+        },
+        {
+          "name": "link-prominence",
+          "config": {}
+        },
+        {
+          "name": "link-icons",
+          "config": {}
+        },
+        {
+          "name": "link-black",
+          "config": {}
+        },
+        {
+          "name": "link-negative",
+          "config": {}
+        },
+        {
+          "name": "link-multiple",
+          "config": {}
+        },
+        {
+          "name": "link-within-text",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/link.html",
+      "overviewFile": "lib-viewer/overview/link.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1": true
+    },
+    {
+      "id": "header",
+      "title": "Header",
+      "examples": [
+        {
+          "name": "header",
+          "config": {}
+        },
+        {
+          "name": "header-two-rows",
+          "config": {}
+        },
+        {
+          "name": "header-icons",
+          "config": {}
+        },
+        {
+          "name": "header-cobranding",
+          "config": {}
+        },
+        {
+          "name": "header-icons-responsive",
+          "config": {}
+        },
+        {
+          "name": "header-two-rows-responsive",
+          "config": {}
+        },
+        {
+          "name": "header-with-side-navigation",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/header.html",
+      "overviewFile": "lib-viewer/overview/header.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "alias": "toolbar, navbar",
+      "a1": true
+    },
+    {
+      "id": "mask",
+      "title": "Input Mask",
+      "examples": [
+        {
+          "name": "mask",
+          "config": {}
+        },
+        {
+          "name": "iban-mask",
+          "config": {}
+        },
+        {
+          "name": "mask-separators",
+          "config": {}
+        },
+        {
+          "name": "mask-drop-characters",
+          "config": {}
+        },
+        {
+          "name": "mask-validation",
+          "config": {}
+        },
+        {
+          "name": "mask-case",
+          "config": {}
+        },
+        {
+          "name": "mask-deactivate",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/mask.html",
+      "overviewFile": "lib-viewer/overview/mask.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
@@ -5132,6 +5283,40 @@
       "b2c": true,
       "expert": true,
       "stable": "done",
+      "a1": true
+    },
+    {
+      "id": "layout",
+      "title": "Layout",
+      "examples": [
+        {
+          "name": "margin-sizes",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "margin-usage",
+          "config": {}
+        },
+        {
+          "name": "hidden-classes",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "viewport-change",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/layout.html",
+      "overviewFile": "lib-viewer/overview/layout.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
       "a1": true
     },
     {
@@ -5188,89 +5373,6 @@
       "a1": true
     },
     {
-      "id": "list",
-      "title": "List",
-      "examples": [
-        {
-          "name": "list-unordered",
-          "config": {}
-        },
-        {
-          "name": "list-ordered",
-          "config": {}
-        },
-        {
-          "name": "list-circles",
-          "config": {}
-        },
-        {
-          "name": "list-icons",
-          "config": {}
-        },
-        {
-          "name": "list-copytext",
-          "config": {}
-        },
-        {
-          "name": "list-condensed",
-          "config": {}
-        },
-        {
-          "name": "list-negative",
-          "config": {}
-        },
-        {
-          "name": "list-custom-color",
-          "config": {}
-        },
-        {
-          "name": "list-nesting",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/list.html",
-      "overviewFile": "lib-viewer/overview/list.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true
-    },
-    {
-      "id": "layout",
-      "title": "Layout",
-      "examples": [
-        {
-          "name": "margin-sizes",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "margin-usage",
-          "config": {}
-        },
-        {
-          "name": "hidden-classes",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "viewport-change",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/layout.html",
-      "overviewFile": "lib-viewer/overview/layout.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true,
-      "a1": true
-    },
-    {
       "id": "message",
       "title": "Notifications",
       "examples": [
@@ -5317,85 +5419,6 @@
       "a1": true
     },
     {
-      "id": "natural-language-form",
-      "title": "Natural Language Form",
-      "examples": [
-        {
-          "name": "natural-language-form-basic",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-extended",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-negative",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-sizes",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/natural-language-form.html",
-      "overviewFile": "lib-viewer/overview/natural-language-form.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "text form, inline field",
-      "a1": true
-    },
-    {
-      "id": "link",
-      "title": "Link",
-      "examples": [
-        {
-          "name": "link-default",
-          "config": {}
-        },
-        {
-          "name": "link-size",
-          "config": {}
-        },
-        {
-          "name": "link-type",
-          "config": {}
-        },
-        {
-          "name": "link-prominence",
-          "config": {}
-        },
-        {
-          "name": "link-icons",
-          "config": {}
-        },
-        {
-          "name": "link-black",
-          "config": {}
-        },
-        {
-          "name": "link-negative",
-          "config": {}
-        },
-        {
-          "name": "link-multiple",
-          "config": {}
-        },
-        {
-          "name": "link-within-text",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/link.html",
-      "overviewFile": "lib-viewer/overview/link.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true
-    },
-    {
       "id": "menu",
       "title": "Menu",
       "examples": [
@@ -5429,6 +5452,69 @@
       "a1": true
     },
     {
+      "id": "modal",
+      "title": "Modal",
+      "examples": [
+        {
+          "name": "modal-opening",
+          "config": {}
+        },
+        {
+          "name": "modal-closing",
+          "config": {}
+        },
+        {
+          "name": "modal-closing-behaviour",
+          "config": {}
+        },
+        {
+          "name": "modal-content-actions",
+          "config": {}
+        },
+        {
+          "name": "modal-fixed-width",
+          "config": {}
+        },
+        {
+          "name": "modal-status",
+          "config": {}
+        },
+        {
+          "name": "modal-fullscreen",
+          "config": {}
+        },
+        {
+          "name": "modal-data-injection",
+          "config": {}
+        },
+        {
+          "name": "modal-with-direction",
+          "config": {}
+        },
+        {
+          "name": "modal-unsaved",
+          "config": {}
+        },
+        {
+          "name": "modal-autofocus",
+          "config": {}
+        },
+        {
+          "name": "modal-basic",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/modal.html",
+      "overviewFile": "lib-viewer/overview/modal.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "dialog",
+      "a1": true,
+      "desc": "this require adding cdk style to angular.json\n\n\"styles\": [\n...,\n\"node_modules/@angular/cdk/overlay-prebuilt.css\"\n]\n"
+    },
+    {
       "id": "notification-panel",
       "title": "Notification panel",
       "examples": [
@@ -5456,6 +5542,87 @@
       "expert": true,
       "stable": "done",
       "alias": "popover"
+    },
+    {
+      "id": "natural-language-form",
+      "title": "Natural Language Form",
+      "examples": [
+        {
+          "name": "natural-language-form-basic",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-extended",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-negative",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-sizes",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/natural-language-form.html",
+      "overviewFile": "lib-viewer/overview/natural-language-form.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "text form, inline field",
+      "a1": true
+    },
+    {
+      "id": "overlay",
+      "title": "Overlay",
+      "examples": [
+        {
+          "name": "overlay-positioning",
+          "config": {}
+        },
+        {
+          "name": "overlay-limiting-fallbacks",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/overlay.html",
+      "overviewFile": "lib-viewer/overview/overlay.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1": true
+    },
+    {
+      "id": "page-search",
+      "title": "Page Search",
+      "examples": [
+        {
+          "name": "page-search-autocomplete",
+          "config": {}
+        },
+        {
+          "name": "page-search-input",
+          "config": {}
+        },
+        {
+          "name": "page-search-click",
+          "config": {}
+        },
+        {
+          "name": "page-search-hidden",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/page-search.html",
+      "overviewFile": "lib-viewer/overview/page-search.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "search field",
+      "a1": true
     },
     {
       "id": "number-stepper",
@@ -5540,333 +5707,28 @@
       "a1": true
     },
     {
-      "id": "modal",
-      "title": "Modal",
+      "id": "progressbar",
+      "title": "Progress Bar",
       "examples": [
         {
-          "name": "modal-opening",
+          "name": "progressbar",
           "config": {}
         },
         {
-          "name": "modal-closing",
+          "name": "progressbar-basic",
           "config": {}
         },
         {
-          "name": "modal-closing-behaviour",
-          "config": {}
-        },
-        {
-          "name": "modal-content-actions",
-          "config": {}
-        },
-        {
-          "name": "modal-fixed-width",
-          "config": {}
-        },
-        {
-          "name": "modal-status",
-          "config": {}
-        },
-        {
-          "name": "modal-fullscreen",
-          "config": {}
-        },
-        {
-          "name": "modal-data-injection",
-          "config": {}
-        },
-        {
-          "name": "modal-with-direction",
-          "config": {}
-        },
-        {
-          "name": "modal-unsaved",
-          "config": {}
-        },
-        {
-          "name": "modal-autofocus",
-          "config": {}
-        },
-        {
-          "name": "modal-basic",
+          "name": "progressbar-custom-range",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/modal.html",
-      "overviewFile": "lib-viewer/overview/modal.html",
+      "apiFile": "lib-viewer/api/progressbar.html",
+      "overviewFile": "lib-viewer/overview/progressbar.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "alias": "dialog",
-      "a1": true,
-      "desc": "this require adding cdk style to angular.json\n\n\"styles\": [\n...,\n\"node_modules/@angular/cdk/overlay-prebuilt.css\"\n]\n"
-    },
-    {
-      "id": "pagination",
-      "title": "Pagination",
-      "examples": [
-        {
-          "name": "pagination-advanced",
-          "config": {}
-        },
-        {
-          "name": "pagination-simple",
-          "config": {}
-        },
-        {
-          "name": "pagination-slider",
-          "config": {}
-        },
-        {
-          "name": "pagination-localize",
-          "config": {}
-        },
-        {
-          "name": "pagination-localize-advanced",
-          "config": {}
-        },
-        {
-          "name": "pagination-a11y",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/pagination.html",
-      "overviewFile": "lib-viewer/overview/pagination.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "pager, paginator",
-      "a1": true
-    },
-    {
-      "id": "overlay",
-      "title": "Overlay",
-      "examples": [
-        {
-          "name": "overlay-positioning",
-          "config": {}
-        },
-        {
-          "name": "overlay-limiting-fallbacks",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/overlay.html",
-      "overviewFile": "lib-viewer/overview/overlay.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true
-    },
-    {
-      "id": "mask",
-      "title": "Input Mask",
-      "examples": [
-        {
-          "name": "mask",
-          "config": {}
-        },
-        {
-          "name": "iban-mask",
-          "config": {}
-        },
-        {
-          "name": "mask-separators",
-          "config": {}
-        },
-        {
-          "name": "mask-drop-characters",
-          "config": {}
-        },
-        {
-          "name": "mask-validation",
-          "config": {}
-        },
-        {
-          "name": "mask-case",
-          "config": {}
-        },
-        {
-          "name": "mask-deactivate",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/mask.html",
-      "overviewFile": "lib-viewer/overview/mask.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true
-    },
-    {
-      "id": "patterns",
-      "title": "Patterns",
-      "examples": [
-        {
-          "name": "text-area-character-limit",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "ai-autofill",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "a11y-skip-to-data-description",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "dropdown-fetch-on-filter",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "contained-list",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/patterns.html",
-      "overviewFile": "lib-viewer/overview/patterns.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "patterns",
-      "a1": true,
-      "private": true,
-      "noApi": true
-    },
-    {
-      "id": "phone-input",
-      "title": "Phone Input",
-      "examples": [
-        {
-          "name": "phone-input-retail",
-          "config": {}
-        },
-        {
-          "name": "phone-input-country-code",
-          "config": {}
-        },
-        {
-          "name": "phone-input-forms",
-          "config": {}
-        },
-        {
-          "name": "phone-input-disabled",
-          "config": {}
-        },
-        {
-          "name": "phone-input-validation",
-          "config": {}
-        },
-        {
-          "name": "phone-input-formatting",
-          "config": {}
-        },
-        {
-          "name": "phone-input-i18n",
-          "config": {}
-        },
-        {
-          "name": "phone-input-focus-out",
-          "config": {}
-        },
-        {
-          "name": "phone-input-expert",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/phone-input.html",
-      "overviewFile": "lib-viewer/overview/phone-input.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true
-    },
-    {
-      "id": "page-search",
-      "title": "Page Search",
-      "examples": [
-        {
-          "name": "page-search-autocomplete",
-          "config": {}
-        },
-        {
-          "name": "page-search-input",
-          "config": {}
-        },
-        {
-          "name": "page-search-click",
-          "config": {}
-        },
-        {
-          "name": "page-search-hidden",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/page-search.html",
-      "overviewFile": "lib-viewer/overview/page-search.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "search field",
-      "a1": true
-    },
-    {
-      "id": "radio-toggle",
-      "title": "Toggle Button",
-      "examples": [
-        {
-          "name": "radio-toggle",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-negative",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-custom",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-form",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-reactive",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-validation",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-readonly",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/radio-toggle.html",
-      "overviewFile": "lib-viewer/overview/radio-toggle.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "radio toggle",
       "a1": true
     },
     {
@@ -5949,45 +5811,49 @@
       "a1": true
     },
     {
-      "id": "rating",
-      "title": "Rating",
+      "id": "phone-input",
+      "title": "Phone Input",
       "examples": [
         {
-          "name": "rating-basic",
+          "name": "phone-input-retail",
           "config": {}
         },
         {
-          "name": "rating-disabled",
+          "name": "phone-input-country-code",
           "config": {}
         },
         {
-          "name": "rating-negative",
+          "name": "phone-input-forms",
           "config": {}
         },
         {
-          "name": "rating-simple",
+          "name": "phone-input-disabled",
           "config": {}
         },
         {
-          "name": "rating-template",
+          "name": "phone-input-validation",
           "config": {}
         },
         {
-          "name": "rating-reactive",
+          "name": "phone-input-formatting",
           "config": {}
         },
         {
-          "name": "rating-sizes",
+          "name": "phone-input-i18n",
           "config": {}
         },
         {
-          "name": "rating-accessibility",
+          "name": "phone-input-focus-out",
+          "config": {}
+        },
+        {
+          "name": "phone-input-expert",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/rating.html",
-      "overviewFile": "lib-viewer/overview/rating.html",
+      "apiFile": "lib-viewer/api/phone-input.html",
+      "overviewFile": "lib-viewer/overview/phone-input.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
@@ -6053,74 +5919,6 @@
       "expert": true,
       "stable": "done",
       "alias": "stepper",
-      "a1": true
-    },
-    {
-      "id": "rtl",
-      "title": "Right-to-left support",
-      "examples": [
-        {
-          "name": "rtl-basic",
-          "config": {}
-        },
-        {
-          "name": "rtl-dynamic",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/rtl.html",
-      "overviewFile": "lib-viewer/overview/rtl.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true,
-      "a1": true
-    },
-    {
-      "id": "progressbar",
-      "title": "Progress Bar",
-      "examples": [
-        {
-          "name": "progressbar",
-          "config": {}
-        },
-        {
-          "name": "progressbar-basic",
-          "config": {}
-        },
-        {
-          "name": "progressbar-custom-range",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/progressbar.html",
-      "overviewFile": "lib-viewer/overview/progressbar.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true
-    },
-    {
-      "id": "selection",
-      "title": "Selection Indicators",
-      "examples": [
-        {
-          "name": "selection-indicator-default",
-          "config": {}
-        },
-        {
-          "name": "selection-indicator-on-selection",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/selection.html",
-      "overviewFile": "lib-viewer/overview/selection.html",
-      "b2c": true,
-      "expert": true,
-      "stable": true,
       "a1": true
     },
     {
@@ -6193,62 +5991,217 @@
       "a1": true
     },
     {
-      "id": "sidepanel",
-      "title": "Sidepanel",
+      "id": "radio-toggle",
+      "title": "Toggle Button",
       "examples": [
         {
-          "name": "sidepanel-dark",
+          "name": "radio-toggle",
           "config": {}
         },
         {
-          "name": "sidepanel-light",
+          "name": "radio-toggle-negative",
           "config": {}
         },
         {
-          "name": "sidepanel-floating",
+          "name": "radio-toggle-custom",
           "config": {}
         },
         {
-          "name": "sidepanel-static",
+          "name": "radio-toggle-form",
           "config": {}
         },
         {
-          "name": "sidepanel-with-tabs",
+          "name": "radio-toggle-reactive",
           "config": {}
         },
         {
-          "name": "sidepanel-focus",
+          "name": "radio-toggle-validation",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-readonly",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/sidepanel.html",
-      "overviewFile": "lib-viewer/overview/sidepanel.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
-      "alias": "sidebar, drawer",
-      "a1": true
-    },
-    {
-      "id": "signal-button",
-      "title": "Signal Button",
-      "examples": [
-        {
-          "name": "signal-button-context",
-          "config": {}
-        },
-        {
-          "name": "signal-button-disabled",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/signal-button.html",
-      "overviewFile": "lib-viewer/overview/signal-button.html",
+      "apiFile": "lib-viewer/api/radio-toggle.html",
+      "overviewFile": "lib-viewer/overview/radio-toggle.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
+      "alias": "radio toggle",
+      "a1": true
+    },
+    {
+      "id": "rating",
+      "title": "Rating",
+      "examples": [
+        {
+          "name": "rating-basic",
+          "config": {}
+        },
+        {
+          "name": "rating-disabled",
+          "config": {}
+        },
+        {
+          "name": "rating-negative",
+          "config": {}
+        },
+        {
+          "name": "rating-simple",
+          "config": {}
+        },
+        {
+          "name": "rating-template",
+          "config": {}
+        },
+        {
+          "name": "rating-reactive",
+          "config": {}
+        },
+        {
+          "name": "rating-sizes",
+          "config": {}
+        },
+        {
+          "name": "rating-accessibility",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/rating.html",
+      "overviewFile": "lib-viewer/overview/rating.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1": true
+    },
+    {
+      "id": "selection",
+      "title": "Selection Indicators",
+      "examples": [
+        {
+          "name": "selection-indicator-default",
+          "config": {}
+        },
+        {
+          "name": "selection-indicator-on-selection",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/selection.html",
+      "overviewFile": "lib-viewer/overview/selection.html",
+      "b2c": true,
+      "expert": true,
+      "stable": true,
+      "a1": true
+    },
+    {
+      "id": "pagination",
+      "title": "Pagination",
+      "examples": [
+        {
+          "name": "pagination-advanced",
+          "config": {}
+        },
+        {
+          "name": "pagination-simple",
+          "config": {}
+        },
+        {
+          "name": "pagination-slider",
+          "config": {}
+        },
+        {
+          "name": "pagination-localize",
+          "config": {}
+        },
+        {
+          "name": "pagination-localize-advanced",
+          "config": {}
+        },
+        {
+          "name": "pagination-a11y",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/pagination.html",
+      "overviewFile": "lib-viewer/overview/pagination.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "pager, paginator",
+      "a1": true
+    },
+    {
+      "id": "patterns",
+      "title": "Patterns",
+      "examples": [
+        {
+          "name": "text-area-character-limit",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "ai-autofill",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "a11y-skip-to-data-description",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "dropdown-fetch-on-filter",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "contained-list",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/patterns.html",
+      "overviewFile": "lib-viewer/overview/patterns.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "patterns",
+      "a1": true,
+      "private": true,
+      "noApi": true
+    },
+    {
+      "id": "rtl",
+      "title": "Right-to-left support",
+      "examples": [
+        {
+          "name": "rtl-basic",
+          "config": {}
+        },
+        {
+          "name": "rtl-dynamic",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/rtl.html",
+      "overviewFile": "lib-viewer/overview/rtl.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
       "a1": true
     },
     {
@@ -6275,6 +6228,61 @@
       "expert": true,
       "stable": "done",
       "alias": "progress spinner",
+      "a1": true
+    },
+    {
+      "id": "signal-button",
+      "title": "Signal Button",
+      "examples": [
+        {
+          "name": "signal-button-context",
+          "config": {}
+        },
+        {
+          "name": "signal-button-disabled",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/signal-button.html",
+      "overviewFile": "lib-viewer/overview/signal-button.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1": true
+    },
+    {
+      "id": "small-stage",
+      "title": "Small stage",
+      "examples": [
+        {
+          "name": "small-stage-default",
+          "config": {}
+        },
+        {
+          "name": "small-stage-content-variation",
+          "config": {}
+        },
+        {
+          "name": "small-stage-w-bg",
+          "config": {}
+        },
+        {
+          "name": "small-stage-expert-default",
+          "config": {}
+        },
+        {
+          "name": "small-stage-expert-content-narrow",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/small-stage.html",
+      "overviewFile": "lib-viewer/overview/small-stage.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "page banner",
       "a1": true
     },
     {
@@ -6348,149 +6356,6 @@
       "a1": true
     },
     {
-      "id": "switcher",
-      "title": "Switcher",
-      "examples": [
-        {
-          "name": "switcher-default",
-          "config": {}
-        },
-        {
-          "name": "switcher-large",
-          "config": {}
-        },
-        {
-          "name": "switcher-label-small",
-          "config": {}
-        },
-        {
-          "name": "switcher-negative",
-          "config": {}
-        },
-        {
-          "name": "switcher-label-left",
-          "config": {}
-        },
-        {
-          "name": "switcher-template-driven",
-          "config": {}
-        },
-        {
-          "name": "switcher-reactive-form",
-          "config": {}
-        },
-        {
-          "name": "switcher-disabled",
-          "config": {}
-        },
-        {
-          "name": "switcher-readonly",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/switcher.html",
-      "overviewFile": "lib-viewer/overview/switcher.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "slide toggle, checkbox",
-      "a1": true
-    },
-    {
-      "id": "small-stage",
-      "title": "Small stage",
-      "examples": [
-        {
-          "name": "small-stage-default",
-          "config": {}
-        },
-        {
-          "name": "small-stage-content-variation",
-          "config": {}
-        },
-        {
-          "name": "small-stage-w-bg",
-          "config": {}
-        },
-        {
-          "name": "small-stage-expert-default",
-          "config": {}
-        },
-        {
-          "name": "small-stage-expert-content-narrow",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/small-stage.html",
-      "overviewFile": "lib-viewer/overview/small-stage.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "page banner",
-      "a1": true
-    },
-    {
-      "id": "text",
-      "title": "Text",
-      "examples": [
-        {
-          "name": "attention-color-basic",
-          "config": {}
-        },
-        {
-          "name": "attention-color-integration",
-          "config": {}
-        },
-        {
-          "name": "attention-color-negative",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/text.html",
-      "overviewFile": "lib-viewer/overview/text.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true
-    },
-    {
-      "id": "sidebar",
-      "title": "Side Navigation",
-      "examples": [
-        {
-          "name": "sidebar",
-          "config": {}
-        },
-        {
-          "name": "sidebar-resizeable",
-          "config": {}
-        },
-        {
-          "name": "sidebar-methods",
-          "config": {}
-        },
-        {
-          "name": "sidebar-footer",
-          "config": {}
-        },
-        {
-          "name": "sidebar-outputs",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/sidebar.html",
-      "overviewFile": "lib-viewer/overview/sidebar.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "sidenav, side navigation",
-      "a1": true
-    },
-    {
       "id": "table",
       "title": "Table",
       "examples": [
@@ -6561,374 +6426,6 @@
       "b2c": true,
       "expert": true,
       "stable": "done"
-    },
-    {
-      "id": "tabs",
-      "title": "Tabs",
-      "examples": [
-        {
-          "name": "tabs-basic",
-          "config": {}
-        },
-        {
-          "name": "tabs-styling",
-          "config": {}
-        },
-        {
-          "name": "tabs-template",
-          "config": {}
-        },
-        {
-          "name": "tabs-lazy",
-          "config": {}
-        },
-        {
-          "name": "tabs-dynamic",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar",
-          "config": {}
-        },
-        {
-          "name": "tabs-negative",
-          "config": {}
-        },
-        {
-          "name": "tabs-disabled",
-          "config": {}
-        },
-        {
-          "name": "tabs-output-events",
-          "config": {}
-        },
-        {
-          "name": "tabs-responsive",
-          "config": {}
-        },
-        {
-          "name": "tabs-appearance",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-appearance",
-          "config": {}
-        },
-        {
-          "name": "tabs-with-indicator",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-with-indicator",
-          "config": {}
-        },
-        {
-          "name": "tabs-auto-manual-select",
-          "config": {}
-        },
-        {
-          "name": "tabs-injection-token",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-injection-token",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/tabs.html",
-      "overviewFile": "lib-viewer/overview/tabs.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "navigation tabs",
-      "a1": true
-    },
-    {
-      "id": "tooltip",
-      "title": "Tooltip",
-      "examples": [
-        {
-          "name": "tooltip-basic",
-          "config": {}
-        },
-        {
-          "name": "tooltip-positions",
-          "config": {}
-        },
-        {
-          "name": "tooltip-fallbacks-table",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "tooltip-delay",
-          "config": {}
-        },
-        {
-          "name": "tooltip-disabled",
-          "config": {}
-        },
-        {
-          "name": "tooltip-programmatic",
-          "config": {}
-        },
-        {
-          "name": "tooltip-settings",
-          "config": {}
-        },
-        {
-          "name": "tooltip-scroll-strategy-provider",
-          "config": {}
-        },
-        {
-          "name": "tooltip-trim-text",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/tooltip.html",
-      "overviewFile": "lib-viewer/overview/tooltip.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true
-    },
-    {
-      "id": "toolbar",
-      "title": "Toolbar",
-      "examples": [
-        {
-          "name": "toolbar",
-          "config": {}
-        },
-        {
-          "name": "toolbar-divider",
-          "config": {}
-        },
-        {
-          "name": "toolbar-positioning-content",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/toolbar.html",
-      "overviewFile": "lib-viewer/overview/toolbar.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
-      "a1": true
-    },
-    {
-      "id": "theming",
-      "title": "Theming",
-      "examples": [],
-      "category": "general",
-      "apiFile": "lib-viewer/api/theming.html",
-      "overviewFile": "lib-viewer/overview/theming.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true,
-      "a1": true
-    },
-    {
-      "id": "timefield",
-      "title": "Timefield",
-      "examples": [
-        {
-          "name": "timefield-default",
-          "config": {}
-        },
-        {
-          "name": "timefield-with-timepicker",
-          "config": {}
-        },
-        {
-          "name": "timefield-options-interval",
-          "config": {}
-        },
-        {
-          "name": "timefield-with-timepicker-global",
-          "config": {}
-        },
-        {
-          "name": "timefield-with-inputmode",
-          "config": {}
-        },
-        {
-          "name": "timefield-custom-validation",
-          "config": {}
-        },
-        {
-          "name": "timefield-reactive",
-          "config": {}
-        },
-        {
-          "name": "timefield-template-driven",
-          "config": {}
-        },
-        {
-          "name": "timefield-format-toggler",
-          "config": {}
-        },
-        {
-          "name": "timefield-disabled",
-          "config": {}
-        },
-        {
-          "name": "timefield-negative",
-          "config": {}
-        },
-        {
-          "name": "timefield-expert",
-          "config": {}
-        },
-        {
-          "name": "timefield-localize",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/timefield.html",
-      "overviewFile": "lib-viewer/overview/timefield.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "timepicker",
-      "a1": true
-    },
-    {
-      "id": "typography",
-      "title": "Typography",
-      "examples": [
-        {
-          "name": "headline-font-weights",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/typography.html",
-      "overviewFile": "lib-viewer/overview/typography.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true,
-      "a1": true
-    },
-    {
-      "id": "tile",
-      "title": "Tile",
-      "examples": [
-        {
-          "name": "tile-group-auto-grid",
-          "config": {}
-        },
-        {
-          "name": "tile-group-custom-grid",
-          "config": {}
-        },
-        {
-          "name": "tile-layouts",
-          "config": {}
-        },
-        {
-          "name": "tile-group-single-select",
-          "config": {}
-        },
-        {
-          "name": "tile-group-multi-select",
-          "config": {}
-        },
-        {
-          "name": "tile-readonly-disabled",
-          "config": {}
-        },
-        {
-          "name": "tile-template-driven",
-          "config": {}
-        },
-        {
-          "name": "tile-reactive-forms",
-          "config": {}
-        },
-        {
-          "name": "tile-validation-error-state",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/tile.html",
-      "overviewFile": "lib-viewer/overview/tile.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true,
-      "components": null
-    },
-    {
-      "id": "tree",
-      "title": "Tree",
-      "examples": [
-        {
-          "name": "tree",
-          "config": {}
-        },
-        {
-          "name": "tree-with-checkboxes",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/tree.html",
-      "overviewFile": "lib-viewer/overview/tree.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
-      "a1": true
-    },
-    {
-      "id": "video",
-      "title": "Video",
-      "examples": [
-        {
-          "name": "video",
-          "config": {}
-        },
-        {
-          "name": "video-custom",
-          "config": {}
-        },
-        {
-          "name": "video-advanced",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/video.html",
-      "overviewFile": "lib-viewer/overview/video.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "utils",
-      "title": "Utilities",
-      "examples": [
-        {
-          "name": "utils-type-guards",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/utils.html",
-      "overviewFile": "lib-viewer/overview/utils.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "progress",
-      "noApi": true,
-      "a1": true
     },
     {
       "id": "taglist",
@@ -7014,6 +6511,539 @@
       "expert": true,
       "stable": "done",
       "alias": "chip"
+    },
+    {
+      "id": "text",
+      "title": "Text",
+      "examples": [
+        {
+          "name": "attention-color-basic",
+          "config": {}
+        },
+        {
+          "name": "attention-color-integration",
+          "config": {}
+        },
+        {
+          "name": "attention-color-negative",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/text.html",
+      "overviewFile": "lib-viewer/overview/text.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1": true
+    },
+    {
+      "id": "tile",
+      "title": "Tile",
+      "examples": [
+        {
+          "name": "tile-group-auto-grid",
+          "config": {}
+        },
+        {
+          "name": "tile-group-custom-grid",
+          "config": {}
+        },
+        {
+          "name": "tile-layouts",
+          "config": {}
+        },
+        {
+          "name": "tile-group-single-select",
+          "config": {}
+        },
+        {
+          "name": "tile-group-multi-select",
+          "config": {}
+        },
+        {
+          "name": "tile-readonly-disabled",
+          "config": {}
+        },
+        {
+          "name": "tile-template-driven",
+          "config": {}
+        },
+        {
+          "name": "tile-reactive-forms",
+          "config": {}
+        },
+        {
+          "name": "tile-validation-error-state",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/tile.html",
+      "overviewFile": "lib-viewer/overview/tile.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1": true,
+      "components": null
+    },
+    {
+      "id": "theming",
+      "title": "Theming",
+      "examples": [],
+      "category": "general",
+      "apiFile": "lib-viewer/api/theming.html",
+      "overviewFile": "lib-viewer/overview/theming.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
+      "a1": true
+    },
+    {
+      "id": "timefield",
+      "title": "Timefield",
+      "examples": [
+        {
+          "name": "timefield-default",
+          "config": {}
+        },
+        {
+          "name": "timefield-with-timepicker",
+          "config": {}
+        },
+        {
+          "name": "timefield-options-interval",
+          "config": {}
+        },
+        {
+          "name": "timefield-with-timepicker-global",
+          "config": {}
+        },
+        {
+          "name": "timefield-with-inputmode",
+          "config": {}
+        },
+        {
+          "name": "timefield-custom-validation",
+          "config": {}
+        },
+        {
+          "name": "timefield-reactive",
+          "config": {}
+        },
+        {
+          "name": "timefield-template-driven",
+          "config": {}
+        },
+        {
+          "name": "timefield-format-toggler",
+          "config": {}
+        },
+        {
+          "name": "timefield-disabled",
+          "config": {}
+        },
+        {
+          "name": "timefield-negative",
+          "config": {}
+        },
+        {
+          "name": "timefield-expert",
+          "config": {}
+        },
+        {
+          "name": "timefield-localize",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/timefield.html",
+      "overviewFile": "lib-viewer/overview/timefield.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "timepicker",
+      "a1": true
+    },
+    {
+      "id": "toolbar",
+      "title": "Toolbar",
+      "examples": [
+        {
+          "name": "toolbar",
+          "config": {}
+        },
+        {
+          "name": "toolbar-divider",
+          "config": {}
+        },
+        {
+          "name": "toolbar-positioning-content",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/toolbar.html",
+      "overviewFile": "lib-viewer/overview/toolbar.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "a1": true
+    },
+    {
+      "id": "tree",
+      "title": "Tree",
+      "examples": [
+        {
+          "name": "tree",
+          "config": {}
+        },
+        {
+          "name": "tree-with-checkboxes",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/tree.html",
+      "overviewFile": "lib-viewer/overview/tree.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "a1": true
+    },
+    {
+      "id": "tabs",
+      "title": "Tabs",
+      "examples": [
+        {
+          "name": "tabs-basic",
+          "config": {}
+        },
+        {
+          "name": "tabs-styling",
+          "config": {}
+        },
+        {
+          "name": "tabs-template",
+          "config": {}
+        },
+        {
+          "name": "tabs-lazy",
+          "config": {}
+        },
+        {
+          "name": "tabs-dynamic",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar",
+          "config": {}
+        },
+        {
+          "name": "tabs-negative",
+          "config": {}
+        },
+        {
+          "name": "tabs-disabled",
+          "config": {}
+        },
+        {
+          "name": "tabs-output-events",
+          "config": {}
+        },
+        {
+          "name": "tabs-responsive",
+          "config": {}
+        },
+        {
+          "name": "tabs-appearance",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-appearance",
+          "config": {}
+        },
+        {
+          "name": "tabs-with-indicator",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-with-indicator",
+          "config": {}
+        },
+        {
+          "name": "tabs-auto-manual-select",
+          "config": {}
+        },
+        {
+          "name": "tabs-injection-token",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-injection-token",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/tabs.html",
+      "overviewFile": "lib-viewer/overview/tabs.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "navigation tabs",
+      "a1": true
+    },
+    {
+      "id": "sidepanel",
+      "title": "Sidepanel",
+      "examples": [
+        {
+          "name": "sidepanel-dark",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-light",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-floating",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-static",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-with-tabs",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-focus",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/sidepanel.html",
+      "overviewFile": "lib-viewer/overview/sidepanel.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "alias": "sidebar, drawer",
+      "a1": true
+    },
+    {
+      "id": "sidebar",
+      "title": "Side Navigation",
+      "examples": [
+        {
+          "name": "sidebar",
+          "config": {}
+        },
+        {
+          "name": "sidebar-resizeable",
+          "config": {}
+        },
+        {
+          "name": "sidebar-methods",
+          "config": {}
+        },
+        {
+          "name": "sidebar-footer",
+          "config": {}
+        },
+        {
+          "name": "sidebar-outputs",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/sidebar.html",
+      "overviewFile": "lib-viewer/overview/sidebar.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "sidenav, side navigation",
+      "a1": true
+    },
+    {
+      "id": "typography",
+      "title": "Typography",
+      "examples": [
+        {
+          "name": "headline-font-weights",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/typography.html",
+      "overviewFile": "lib-viewer/overview/typography.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
+      "a1": true
+    },
+    {
+      "id": "video",
+      "title": "Video",
+      "examples": [
+        {
+          "name": "video",
+          "config": {}
+        },
+        {
+          "name": "video-custom",
+          "config": {}
+        },
+        {
+          "name": "video-advanced",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/video.html",
+      "overviewFile": "lib-viewer/overview/video.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "tooltip",
+      "title": "Tooltip",
+      "examples": [
+        {
+          "name": "tooltip-basic",
+          "config": {}
+        },
+        {
+          "name": "tooltip-positions",
+          "config": {}
+        },
+        {
+          "name": "tooltip-fallbacks-table",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "tooltip-delay",
+          "config": {}
+        },
+        {
+          "name": "tooltip-disabled",
+          "config": {}
+        },
+        {
+          "name": "tooltip-programmatic",
+          "config": {}
+        },
+        {
+          "name": "tooltip-settings",
+          "config": {}
+        },
+        {
+          "name": "tooltip-scroll-strategy-provider",
+          "config": {}
+        },
+        {
+          "name": "tooltip-trim-text",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/tooltip.html",
+      "overviewFile": "lib-viewer/overview/tooltip.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1": true
+    },
+    {
+      "id": "utils",
+      "title": "Utilities",
+      "examples": [
+        {
+          "name": "utils-type-guards",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/utils.html",
+      "overviewFile": "lib-viewer/overview/utils.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "progress",
+      "noApi": true,
+      "a1": true
+    },
+    {
+      "id": "web-components",
+      "title": "Web Components & ShadowDOM",
+      "examples": [
+        {
+          "name": "web-components-modal-shadow-dom",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/web-components.html",
+      "overviewFile": "lib-viewer/overview/web-components.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
+      "a1": true
+    },
+    {
+      "id": "switcher",
+      "title": "Switcher",
+      "examples": [
+        {
+          "name": "switcher-default",
+          "config": {}
+        },
+        {
+          "name": "switcher-large",
+          "config": {}
+        },
+        {
+          "name": "switcher-label-small",
+          "config": {}
+        },
+        {
+          "name": "switcher-negative",
+          "config": {}
+        },
+        {
+          "name": "switcher-label-left",
+          "config": {}
+        },
+        {
+          "name": "switcher-template-driven",
+          "config": {}
+        },
+        {
+          "name": "switcher-reactive-form",
+          "config": {}
+        },
+        {
+          "name": "switcher-disabled",
+          "config": {}
+        },
+        {
+          "name": "switcher-readonly",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/switcher.html",
+      "overviewFile": "lib-viewer/overview/switcher.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "slide toggle, checkbox",
+      "a1": true
     }
   ],
   "examples": [
@@ -7382,7 +7412,7 @@
     },
     {
       "id": "badge-character",
-      "title": "Basic badge example",
+      "title": "Badge character example",
       "module": "badge",
       "types": [
         "ts",
@@ -8490,6 +8520,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/context-menu-selection-###TYPE###.html"
+    },
+    {
+      "id": "copytext-a1",
+      "title": "Negative styling example",
+      "module": "copytext",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/copytext-a1-###TYPE###.html"
     },
     {
       "id": "copytext-negative",
@@ -10503,6 +10544,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/list-ordered-###TYPE###.html"
+    },
+    {
+      "id": "list-type",
+      "title": "List type example",
+      "module": "list",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/list-type-###TYPE###.html"
     },
     {
       "id": "list-unordered",
@@ -13660,6 +13712,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/viewport-change-###TYPE###.html"
+    },
+    {
+      "id": "web-components-modal-shadow-dom",
+      "title": "Modal with ShadowDOM encapsulation",
+      "module": "web-components",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/web-components-modal-shadow-dom-###TYPE###.html"
     }
   ],
   "guides": [

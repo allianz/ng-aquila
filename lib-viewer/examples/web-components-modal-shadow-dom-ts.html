@@ -1,0 +1,78 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCopytextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/copytext&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxDialogService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/modal&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Overlay</span>, <span class="hljs-title class_">OverlayContainer</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/overlay&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">Component</span>,
+  <span class="hljs-title class_">ElementRef</span>,
+  inject,
+  <span class="hljs-title class_">Injectable</span>,
+  <span class="hljs-keyword">type</span> <span class="hljs-title class_">OnInit</span>,
+  <span class="hljs-keyword">type</span> <span class="hljs-title class_">TemplateRef</span>,
+  <span class="hljs-title class_">ViewChild</span>,
+  <span class="hljs-title class_">ViewEncapsulation</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * Custom OverlayContainer that renders overlays inside Shadow DOM
+ */</span>
+<span class="hljs-meta">@Injectable</span>()
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ShadowDomOverlayContainer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">OverlayContainer</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">shadowRoot</span>: <span class="hljs-title class_">ShadowRoot</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+
+  <span class="hljs-title function_">setShadowRoot</span>(<span class="hljs-attr">shadowRoot</span>: <span class="hljs-title class_">ShadowRoot</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">shadowRoot</span> = shadowRoot;
+  }
+
+  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-title function_">_createContainer</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> container = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>);
+    container.<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">&#x27;cdk-overlay-container&#x27;</span>);
+    <span class="hljs-comment">// Use the shadow root if available, otherwise fall back to body</span>
+    <span class="hljs-keyword">const</span> parent = <span class="hljs-variable language_">this</span>.<span class="hljs-property">shadowRoot</span> || <span class="hljs-variable language_">this</span>.<span class="hljs-property">_document</span>.<span class="hljs-property">body</span>;
+    parent.<span class="hljs-title function_">appendChild</span>(container);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_containerElement</span> = container;
+  }
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Modal with ShadowDOM encapsulation
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;web-components-modal-shadow-dom-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./web-components-modal-shadow-dom-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./web-components-modal-shadow-dom-example.css&#x27;</span>],
+  <span class="hljs-attr">encapsulation</span>: <span class="hljs-title class_">ViewEncapsulation</span>.<span class="hljs-property">ShadowDom</span>,
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxButtonComponent</span>, <span class="hljs-title class_">NxHeadlineComponent</span>, <span class="hljs-title class_">NxCopytextComponent</span>],
+  <span class="hljs-attr">providers</span>: [
+    { <span class="hljs-attr">provide</span>: <span class="hljs-title class_">OverlayContainer</span>, <span class="hljs-attr">useClass</span>: <span class="hljs-title class_">ShadowDomOverlayContainer</span> },
+    <span class="hljs-title class_">Overlay</span>, <span class="hljs-comment">// Provide Overlay at component level so it uses the component&#x27;s OverlayContainer</span>
+    <span class="hljs-title class_">NxDialogService</span>, <span class="hljs-comment">// Provide at component level to use the component&#x27;s OverlayContainer and Overlay</span>
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WebComponentsModalShadowDomExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnInit</span> {
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;modalTemplate&#x27;</span>) modalTemplate!: <span class="hljs-title class_">TemplateRef</span>&lt;<span class="hljs-built_in">unknown</span>&gt;;
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> elementRef = <span class="hljs-title function_">inject</span>(<span class="hljs-title class_">ElementRef</span>);
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> overlayContainer = <span class="hljs-title function_">inject</span>(
+    <span class="hljs-title class_">OverlayContainer</span>,
+  ) <span class="hljs-keyword">as</span> <span class="hljs-title class_">ShadowDomOverlayContainer</span>;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> dialogService = <span class="hljs-title function_">inject</span>(<span class="hljs-title class_">NxDialogService</span>);
+
+  <span class="hljs-title function_">ngOnInit</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// Get the shadow root from the host element and set it on the overlay container</span>
+    <span class="hljs-comment">// The host element IS the shadow host, so we access its shadowRoot property</span>
+    <span class="hljs-keyword">const</span> shadowRoot = <span class="hljs-variable language_">this</span>.<span class="hljs-property">elementRef</span>.<span class="hljs-property">nativeElement</span>.<span class="hljs-property">shadowRoot</span>;
+
+    <span class="hljs-keyword">if</span> (shadowRoot <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">ShadowRoot</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">overlayContainer</span>.<span class="hljs-title function_">setShadowRoot</span>(shadowRoot);
+    }
+  }
+
+  <span class="hljs-title function_">openModal</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dialogService</span>.<span class="hljs-title function_">open</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">modalTemplate</span>, {
+      <span class="hljs-attr">ariaLabel</span>: <span class="hljs-string">&#x27;ShadowDOM Modal Example&#x27;</span>,
+      <span class="hljs-attr">showCloseIcon</span>: <span class="hljs-literal">true</span>,
+    });
+  }
+}

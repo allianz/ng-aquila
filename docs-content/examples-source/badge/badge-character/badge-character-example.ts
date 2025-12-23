@@ -1,7 +1,7 @@
 import { NxBadgeComponent } from '@allianz/ng-aquila/badge';
 import { Component } from '@angular/core';
 /**
- * @title Basic badge example
+ * @title Badge character example
  */
 @Component({
   selector: 'badge-character-example',

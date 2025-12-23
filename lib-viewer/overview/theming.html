@@ -12,7 +12,7 @@ Please make sure that your custom selector either targets the overlays as well b
 <p class="docs-markdown--p">Our themes for A1 are a mapping from the A1 tokens to the library specific tokens. In the prebuilt versions we are including the A1 tokens automatically. But if you are extending our A1 themes or built your own and you need the A1 tokens you have to import them manually before building the theme. The A1 tokens package provides a mixin where you can set the dimensions (color scheme, animations, density) and the scope selector. The <code>@allianz/a1-design-tokens</code> package is a dependency of the <code>@allianz/ngx-brand-kit</code> package.</p>
 <pre><code class="language-scss"><span class="hljs-keyword">@use</span> <span class="hljs-string">&#x27;@allianz/a1-design-tokens/dist/allianz/a1/web/tokens-theme-mixins-index&#x27;</span> as a1-tokens;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/styles/theming&#x27;</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@allianz/ng-aquila/styles/themes/allianz-one&quot;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@allianz/ngx-brand-kit/scss/themes/allianz-one&quot;</span>;
 
 
 <span class="hljs-keyword">@include</span> a1-tokens.apply-design-tokens(<span class="hljs-string">&#x27;light&#x27;</span>, <span class="hljs-string">&#x27;lively&#x27;</span>, <span class="hljs-string">&#x27;spacious&#x27;</span>, <span class="hljs-string">&#x27;.my-custom-scope&#x27;</span>);
