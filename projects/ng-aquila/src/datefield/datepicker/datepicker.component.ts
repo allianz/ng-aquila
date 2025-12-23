@@ -519,7 +519,11 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     // if the datepicker toggle button is not focusable, focus the associated input.
     if (this._toggleButton && this._toggleButton.tabindex < 0) {
-      this._datepickerInput._focus();
+      if (this.isRange()) {
+        this._datepickerInputEndDate?._focus();
+      } else {
+        this._datepickerInput?._focus();
+      }
     }
   }
 

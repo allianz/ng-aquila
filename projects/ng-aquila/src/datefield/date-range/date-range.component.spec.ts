@@ -1,3 +1,4 @@
+import { NxExpertModule } from '@allianz/ng-aquila/config';
 import {
   NxFormfieldComponent,
   NxFormfieldErrorDirective,
@@ -6,7 +7,6 @@ import {
 } from '@allianz/ng-aquila/formfield';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
-
 import { Component, contentChildren, Directive, Signal, viewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -390,6 +390,48 @@ describe('DateRangeComponent', () => {
       expect(datepickerToggleButton.disabled).toBeTrue();
     });
   });
+
+  describe('with tabindex -1 on toggle', () => {
+    let component: DateRangeWithExpert;
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        imports: [DateRangeWithExpert],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(DateRangeWithExpert);
+      component = fixture.componentInstance as DateRangeWithExpert;
+
+      nativeInputs = fixture.nativeElement.querySelectorAll('input');
+
+      fixture.detectChanges();
+    });
+
+    it('should focus end date input when datepicker is closed with tabindex -1', async () => {
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      const datepicker = component.dateRangeComponent().datepicker();
+      expect(datepicker).toBeDefined();
+
+      if (datepicker?._datepickerInputEndDate) {
+        // Spy on the _focus method of the end date input
+        spyOn(datepicker._datepickerInputEndDate, '_focus');
+
+        // Open the datepicker
+        datepicker.open();
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        // Close the datepicker
+        datepicker.close();
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        // Verify that _focus was called on the end date input
+        expect(datepicker._datepickerInputEndDate._focus).toHaveBeenCalled();
+      }
+    });
+  });
 });
 
 @Directive({ standalone: true })
@@ -560,6 +602,40 @@ class DateRangeDisabledTestComponent implements DateRangeTestBase {
 class DateRangeReadonlyTestComponent implements DateRangeTestBase {
   dateRangeComponent = viewChild.required(NxDateRangeComponent<Moment>);
   readonlyAttribute = false;
+  datePickerToggle = viewChild.required(NxDatepickerToggleComponent);
+  dateRangeModel = {
+    start: moment([2020, 2, 5]),
+    end: moment([2021, 2, 5]),
+  };
+}
+
+@Component({
+  template: `
+    <nx-formfield>
+      <nx-date-range [(ngModel)]="dateRangeModel" [datepicker]="myDatePicker"></nx-date-range>
+      <nx-datepicker-toggle
+        #datePickerToggle
+        [for]="myDatePicker"
+        nxFormfieldSuffix
+      ></nx-datepicker-toggle>
+      <nx-datepicker #myDatePicker [rangeMode]="true"></nx-datepicker>
+    </nx-formfield>
+  `,
+  imports: [
+    NxFormfieldComponent,
+    NxDateRangeComponent,
+    NxMomentDateModule,
+    NxInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NxDatepickerComponent,
+    NxDatepickerToggleComponent,
+    NxFormfieldSuffixDirective,
+    NxExpertModule,
+  ],
+})
+class DateRangeWithExpert implements DateRangeTestBase {
+  dateRangeComponent = viewChild.required(NxDateRangeComponent<Moment>);
   datePickerToggle = viewChild.required(NxDatepickerToggleComponent);
   dateRangeModel = {
     start: moment([2020, 2, 5]),
