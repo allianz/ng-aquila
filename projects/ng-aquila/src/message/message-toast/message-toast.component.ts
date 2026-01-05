@@ -1,3 +1,4 @@
+import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import {
   BasePortalOutlet,
   CdkPortalOutlet,
@@ -11,6 +12,7 @@ import {
   ComponentRef,
   ElementRef,
   EmbeddedViewRef,
+  inject,
   NgZone,
   OnDestroy,
   ViewChild,
@@ -61,6 +63,10 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
 
   _context: NxMessageToastContext;
 
+  private readonly _idGenerationService = inject(IdGenerationService);
+  _messageToastId = this._idGenerationService.nextId('nx-message-toast');
+  _messageId = this._idGenerationService.nextId('nx-message');
+
   constructor(
     private readonly _ngZone: NgZone,
     private readonly _cdr: ChangeDetectorRef,
@@ -104,9 +110,8 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
   enter(): void {
     setTimeout(() => {
       const element = this._elementRef.nativeElement;
-      const inertElement = element.querySelector('[aria-hidden]');
-      const liveElement = element.querySelector('[aria-live]');
-
+      const inertElement = element.querySelector(`#${this._messageId}`);
+      const liveElement = element.querySelector(`#${this._messageToastId}`);
       if (inertElement && liveElement) {
         inertElement.removeAttribute('aria-hidden');
         liveElement.appendChild(inertElement);

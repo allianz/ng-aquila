@@ -1,4 +1,4 @@
-<nx-message [context]="_context" aria-hidden="true">
+<nx-message [context]="_context" aria-hidden="true" [id]="_messageId">
   <!-- Used when opening from a template -->
   <ng-template cdkPortalOutlet></ng-template>
   <!-- Used when opening only with custom text-->
@@ -6,4 +6,4 @@
     {{ data.data }}
   }
 </nx-message>
-<div [attr.aria-live]="config.politeness"></div>
+<div [attr.aria-live]="config.politeness" [id]="_messageToastId"></div>
