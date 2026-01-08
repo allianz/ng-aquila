@@ -3,4 +3,5 @@
 :host {
   display: block;
   font-weight: v(data-display-label-font-weight);
+  overflow-wrap: break-word;
 }

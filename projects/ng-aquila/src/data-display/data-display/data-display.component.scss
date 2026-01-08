@@ -4,6 +4,10 @@
   display: flex;
   flex-direction: column;
 
+  .nx-data-display__value {
+    overflow-wrap: break-word;
+  }
+
   &.is-horizontal {
     flex-direction: row;
 
