@@ -6,6 +6,7 @@
 
   .start-date-input {
     flex-shrink: 0; // Prevent shrinking
+    min-width: 80px;
   }
 
   .date-range-container {
@@ -23,14 +24,25 @@
     margin: 0;
     height: 100%;
     align-items: center;
+    overflow-x: hidden;
   }
 
   input {
-    min-width: 100px;
+    text-overflow: ellipsis;
   }
 
   .separator-icon-span {
     display: flex;
     align-items: center;
+  }
+}
+
+:host-context(.nx-formfield.has-outline) {
+  input {
+    padding: 0;
+  }
+  .date-range-container {
+    padding-left: var(--formfield-outline-spacing);
+    padding-right: var(--formfield-outline-spacing);
   }
 }

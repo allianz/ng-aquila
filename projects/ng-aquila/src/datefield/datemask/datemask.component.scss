@@ -62,20 +62,18 @@
   }
 }
 
-.separator-as-placeholder {
-  color: v(formfield-input-native-placeholder-color);
-}
-
 // making the spacing between inputs and separators look "natural"
-::ng-deep {
-  .nx-formfield.has-outline {
-    input {
-      padding: 0;
+:host-context(.nx-formfield.has-outline) {
+  input {
+    padding: 0;
 
-      &:first-of-type {
-        // replicate the space between outline formfield border and first input
-        margin-left: var(--formfield-outline-spacing);
-      }
+    &:first-of-type {
+      // replicate the space between outline formfield border and first input
+      margin-left: var(--formfield-outline-spacing);
     }
   }
+}
+
+.separator-as-placeholder {
+  color: v(formfield-input-native-placeholder-color);
 }

@@ -326,8 +326,7 @@ export class NxDateRangeComponent<D>
       const parent: HTMLElement = inputRef.nativeElement.parentElement;
       const parentMeasurement = parent.getBoundingClientRect();
 
-      // Limit to own given minimal width
-      measuredWidth = Math.max(parseInt(styles.minWidth, 10), newWidth);
+      measuredWidth = newWidth;
 
       // Limit to container width
       measuredWidth = Math.min(measuredWidth, parentMeasurement.width);
