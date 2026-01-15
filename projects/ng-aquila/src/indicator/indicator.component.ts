@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, inject, Input } from '@angular/core';
 
 export type NxIndicatorPosition = 'over-text' | 'over-icon' | 'after-text' | 'with-overlap';
 @Component({
@@ -12,10 +12,13 @@ export type NxIndicatorPosition = 'over-text' | 'over-icon' | 'after-text' | 'wi
     '[class.nx-indicator--over-icon]': 'this._hasPosition("over-icon")',
     '[class.nx-indicator--after-text]': 'this._hasPosition("after-text")',
     '[class.nx-indicator--with-overlap]': 'this._hasPosition("with-overlap")',
+    '[class.single-letter]': 'this._getTextLength() === 1',
   },
   standalone: true,
 })
 export class NxIndicatorComponent {
+  private readonly _elementRef = inject(ElementRef);
+
   /**
    * Sets the indicator positioning preset.
    * Should be one or more of 'over-text', 'over-icon', 'after-text', 'with-overlap'.
@@ -30,5 +33,9 @@ export class NxIndicatorComponent {
 
   _hasPosition(position: NxIndicatorPosition) {
     return this._position.includes(position);
+  }
+
+  _getTextLength(): number {
+    return this._elementRef.nativeElement.textContent?.trim().length ?? 0;
   }
 }

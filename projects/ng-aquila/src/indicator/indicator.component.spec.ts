@@ -61,12 +61,30 @@ describe('NxIndicatorComponent', () => {
       expect(indicatorNativeElement).toHaveClass('nx-indicator--with-overlap');
     });
   });
+
+  describe('single letter indicator', () => {
+    beforeEach(() => {
+      createTestComponent(SingleLetterIndicator);
+    });
+
+    it('applies the single-letter class', () => {
+      expect(indicatorNativeElement).toHaveClass('single-letter');
+    });
+  });
 });
 
 @Component({
-  template: `<nx-indicator [position]="position">1</nx-indicator>`,
+  template: `<nx-indicator [position]="position">99</nx-indicator>`,
   imports: [NxIndicatorModule],
 })
 class BasicIndicator extends IndicatorTest {
+  position = '';
+}
+
+@Component({
+  template: `<nx-indicator [position]="position">A</nx-indicator>`,
+  imports: [NxIndicatorModule],
+})
+class SingleLetterIndicator extends IndicatorTest {
   position = '';
 }

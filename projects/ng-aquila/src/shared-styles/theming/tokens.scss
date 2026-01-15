@@ -1170,6 +1170,12 @@ $nx-theme: (
   // smaller than the font-size to fix the aligning in browsers
   indicator-font-weight: paragraph-05-font-weight,
   indicator-letter-spacing: 0,
+  indicator-height: 16px,
+  indicator-width: 16px,
+  indicator-padding: 0 3px,
+  indicator-border-radius: 12px,
+  indicator-single-letter-padding: 0 3px,
+  indicator-empty-size: 10px,
   input-field-inset: 0px,
   link-large-font-size: heading-03-font-size,
   link-large-line-height: heading-03-line-height,

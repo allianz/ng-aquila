@@ -5,22 +5,26 @@
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  border-radius: nx-border-radius(s) * 3;
-  padding-left: 3px;
-  padding-right: 3px;
-  height: 16px;
+  border-radius: v(indicator-border-radius);
+  padding: v(indicator-padding);
+  height: v(indicator-height);
   @include type-style(indicator);
   color: v(indicator-color);
   background-color: v(indicator-background-color);
   border: 1px solid v(indicator-border-color);
 
   &:empty {
-    height: 10px;
-    width: 10px;
+    padding: 0;
+    height: v(indicator-empty-size);
+    width: v(indicator-empty-size);
+  }
+
+  &.single-letter {
+    padding: v(indicator-single-letter-padding);
   }
 
   &:not(:empty) {
-    min-width: 16px;
+    min-width: v(indicator-width);
   }
 
   @media screen and (forced-colors: active) {
