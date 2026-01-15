@@ -25,10 +25,13 @@ $padding-content: nx-spacer(2m) - $popover-border-size;
   &:has(.nx-popover__close-icon) {
     padding: v(popover-content-padding-close);
   }
+  &:has(.nx-popover__close-icon):has(.nx-popover__title) {
+    padding: v(popover-content-padding-close-title);
+  }
 
   &:has(.nx-popover__main-content) {
     ::ng-deep .nx-popover__title {
-      margin-right: nx-spacer(s);
+      margin-right: v(popover-spacing);
       font-size: v(popover-title-font-size);
     }
   }
