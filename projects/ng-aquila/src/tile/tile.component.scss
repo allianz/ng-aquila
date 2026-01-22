@@ -109,6 +109,9 @@ $tile-gray-selected-color: #fff;
     .nx-tile__hint {
       color: var(--tile-selected-hint-color);
     }
+    .nx-tile__label {
+      color: var(--tile-selected-color);
+    }
 
     &:hover:not(.is-disabled):not(.is-readonly) {
       color: var(--tile-selected-color);
@@ -241,6 +244,7 @@ $tile-gray-selected-color: #fff;
 
   .nx-tile__label {
     font-weight: var(--tile-label-font-weight);
+    color: var(--text-01);
   }
 
   .nx-tile__hint {
