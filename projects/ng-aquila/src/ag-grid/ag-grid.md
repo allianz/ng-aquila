@@ -5,6 +5,7 @@ b2c: false
 expert: true
 stable: progress
 noApi: true
+a1Light: true
 ---
 
 <div class="docs-deprecation-warning">

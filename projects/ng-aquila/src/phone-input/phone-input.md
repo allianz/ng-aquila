@@ -4,7 +4,8 @@ category: components
 b2c: true
 expert: true
 stable: done
-a1: true
+a1Light: true
+a1Densities: true
 ---
 
 ## Dependencies

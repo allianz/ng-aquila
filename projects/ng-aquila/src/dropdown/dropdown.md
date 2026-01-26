@@ -5,7 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: select, multi select
-a1: true
+a1Densities: true
 ---
 
 <div class="docs-deprecation-warning">

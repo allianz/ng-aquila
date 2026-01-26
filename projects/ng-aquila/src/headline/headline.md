@@ -5,7 +5,8 @@ b2c: true
 expert: true
 stable: done
 alias: heading, title
-a1: true
+a1Light: true
+a1Densities: true
 ---
 
 Headlines are decoupled from the actual markup. You can pick any tag from h1 - h6 to fulfill the expected semantics and adjust the appearance with the following attributes.

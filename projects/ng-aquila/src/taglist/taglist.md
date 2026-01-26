@@ -4,7 +4,8 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: chip
+alias: chip, Tags
+a1Densities: true
 ---
 
 <div class="docs-deprecation-warning">

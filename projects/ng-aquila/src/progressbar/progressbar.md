@@ -4,7 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-a1: true
+a1Light: true
 ---
 
 The progress bar module provides a simple horizontal bar to show progress.

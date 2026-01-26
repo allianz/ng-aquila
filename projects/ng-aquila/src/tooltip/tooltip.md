@@ -4,7 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-a1: true
+a1Light: true
 ---
 
 The Tooltip component requires additional CSS files from the Angular CDK to work. Please add the following files to your global styles or into the styles option in the angular.json if not already present (learn [how to enable Angular CDK styles](./documentation/overlay/overview#angular-cdk)):

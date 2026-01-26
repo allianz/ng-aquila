@@ -4,7 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-a1: true
+a1Light: true
 ---
 
 ### Notes about the usage of the component

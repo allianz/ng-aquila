@@ -1,27 +1,53 @@
 <h1 class="general-overview__header">Component Overview</h1>
-
-<div nxRow>
-  <div nxCol="12,12,12,9">
-    <div class="nxv-status__container">
-      <div class="nxv-status">
-        <nxv-status-dot class="nxv-status-icon" status="done"></nxv-status-dot>
-        <span class="nxv-status-text">Done</span>
+@if (!themeService.selectedTheme().name.includes('aquila')) {
+  <div nxRow>
+    <div nxCol="12,12,12,9">
+      All components can be used with the A1 themes. The table below shows the compatibility status
+      of each component with the different A1 support levels:
+      <div class="status-explanation">
+        <div>
+          <nx-badge class="nxv-components-table__status-badge" type="default">
+            <div class="badge-content-centered">
+              <nx-icon name="check" size="auto"></nx-icon>
+              A1 Light
+            </div>
+          </nx-badge>
+        </div>
+        Supports basic A1 with colors, typography icons etc.. Ready to be used but deviations from
+        A1 designs possible.
+        <div>
+          <nx-badge class="nxv-components-table__status-badge" type="active">
+            <div class="badge-content-centered">
+              <nx-icon name="check" size="auto"></nx-icon> Densities
+            </div>
+          </nx-badge>
+        </div>
+        Supports A1 densities. Component adapts to different A1 density themes.
+        <div>
+          <nx-badge class="nxv-components-table__status-badge" type="positive">
+            <div class="badge-content-centered">
+              <nx-icon name="check" size="auto"></nx-icon> A1 Full
+            </div>
+          </nx-badge>
+        </div>
+        Full support for A1 including all components features as per A1 design system.
+        <div>
+          <nx-badge class="nxv-components-table__status-badge" type="critical">
+            <div class="badge-content-centered">
+              <nx-icon name="exclamation-circle-warning" size="auto"></nx-icon> NDBX Only
+            </div>
+          </nx-badge>
+        </div>
+        Not part of A1 design system. Usage in A1 projects is not recommended and should be upgraded
+        to A1 Components or patterns.
       </div>
-      <div class="nxv-status">
-        <nxv-status-dot class="nxv-status-icon" status="progress"></nxv-status-dot>
-        <span class="nxv-status-text">In progress</span>
-      </div>
-      <div class="nxv-status">
-        <nxv-status-dot class="nxv-status-icon" status="na"></nxv-status-dot>
-        <span class="nxv-status-text">n/a</span>
-      </div>
-      <div class="nxv-status-deprecated">
-        <div class="nxv-status-deprecated-color"></div>
-        <span class="nxv-status-text">deprecated</span>
-      </div>
+      To see the individual component in the A1 themes, switch the theme using the theme switcher
+      <nx-icon name="fill-drip" class="nx-margin-left-3xs nx-margin-right-3xs"></nx-icon> in the top
+      right corner.
     </div>
   </div>
-</div>
+}
+
 @for (componentCategory of components; track componentCategory) {
   <div nxRow class="nxv-component-category__container">
     <div nxCol="12,12,12,9">
@@ -32,8 +58,11 @@
         <thead>
           <tr nxTableRow>
             <th nxHeaderCell>Item</th>
-            <th nxHeaderCell class="nxv-components-table__status-header" colspan="2">Scope</th>
-            <th nxHeaderCell class="nxv-components-table__status-header">stable</th>
+            <th nxHeaderCell class="nxv-components-table__status-header" colspan="3">
+              @if (!themeService.selectedTheme().name.includes('aquila')) {
+                A1 Compatibility
+              }
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -51,22 +80,43 @@
                   component.label
                 }}</a>
               </td>
-              <td nxCell class="nxv-components-table__support-cell hide-if-empty">
-                @if (component.component.b2c) {
-                  <nx-badge class="nxv-components-table__status-badge" vibrant type="active">
-                    b2c
-                  </nx-badge>
+              <td
+                nxCell
+                class="nxv-components-table__support-cell"
+                colspan="3"
+                style="text-align: start"
+              >
+                @if (!themeService.selectedTheme().name.includes('aquila')) {
+                  @if (component.component.a1Light || component.component.a1Densities) {
+                    <nx-badge class="nxv-components-table__status-badge" type="default">
+                      <div class="badge-content-centered">
+                        <nx-icon name="check" size="auto"></nx-icon>
+                        A1 Light
+                      </div>
+                    </nx-badge>
+                  }
+                  @if (component.component.a1 !== undefined && !component.component.a1) {
+                    <nx-badge class="nxv-components-table__status-badge" type="critical">
+                      <div class="badge-content-centered">
+                        <nx-icon name="exclamation-circle-warning" size="auto"></nx-icon> NDBX Only
+                      </div>
+                    </nx-badge>
+                  }
+                  @if (component.component.a1Densities) {
+                    <nx-badge class="nxv-components-table__status-badge" type="active">
+                      <div class="badge-content-centered">
+                        <nx-icon name="check" size="auto"></nx-icon> Densities
+                      </div>
+                    </nx-badge>
+                  }
+                  @if (component.component.a1Full) {
+                    <nx-badge class="nxv-components-table__status-badge" type="positive">
+                      <div class="badge-content-centered">
+                        <nx-icon name="check" size="auto"></nx-icon> A1 Full
+                      </div>
+                    </nx-badge>
+                  }
                 }
-              </td>
-              <td nxCell class="nxv-components-table__support-cell hide-if-empty">
-                @if (component.component.expert) {
-                  <nx-badge class="nxv-components-table__status-badge" type="positive">
-                    expert
-                  </nx-badge>
-                }
-              </td>
-              <td nxCell class="nxv-components-table__status-cell">
-                <nxv-status-dot [status]="component.component.stable"></nxv-status-dot>
               </td>
             </tr>
           }

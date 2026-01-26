@@ -5,7 +5,8 @@ b2c: true
 expert: true
 stable: done
 alias: text form, inline field
-a1: true
+a1: false
+a1Light: true
 ---
 
 <div class="docs-deprecation-warning">

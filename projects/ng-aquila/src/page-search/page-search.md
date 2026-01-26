@@ -5,7 +5,8 @@ b2c: true
 expert: true
 stable: done
 alias: search field
-a1: true
+a1Light: true
+a1Densities: true
 ---
 
 The page search component implements a simple container with a button on the right side and custom content on the left. It is optimized for the usage of [NxInput](./documentation/input/overview) or [NxAutocomplete](./documentation/autocomplete/overview) as content.

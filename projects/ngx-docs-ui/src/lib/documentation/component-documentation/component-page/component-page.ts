@@ -1,10 +1,11 @@
 import { NxBadgeModule } from '@allianz/ng-aquila/badge';
+import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { NxLinkComponent } from '@allianz/ng-aquila/link';
 import { NxMessageModule } from '@allianz/ng-aquila/message';
 import { NxTabsModule } from '@allianz/ng-aquila/tabs';
 import { ThemeSwitcherService } from '@allianz/ngx-docs-ui';
 import { AsyncPipe } from '@angular/common';
-import { Component, Inject, OnDestroy, Optional } from '@angular/core';
+import { Component, computed, Inject, OnDestroy, Optional } from '@angular/core';
 import {
   ActivatedRoute,
   Router,
@@ -40,10 +41,11 @@ export interface DocItem {
     RouterOutlet,
     AsyncPipe,
     NxLinkComponent,
+    NxIconComponent,
   ],
 })
 export class NxvComponentPage implements OnDestroy {
-  componentDescriptor!: ComponentDescriptor;
+  protected componentDescriptor: ComponentDescriptor | null | undefined;
 
   tabs = [
     {
@@ -64,6 +66,10 @@ export class NxvComponentPage implements OnDestroy {
   ];
 
   private readonly _destroyed = new Subject<void>();
+
+  protected readonly aquilaThemeActive = computed(() =>
+    this.themeSwitcherService.selectedTheme().name.includes('aquila'),
+  );
 
   constructor(
     private readonly _route: ActivatedRoute,
@@ -95,6 +101,7 @@ export class NxvComponentPage implements OnDestroy {
         takeUntil(this._destroyed),
       )
       .subscribe((component) => {
+        this.componentDescriptor = component;
         const apiTab = this.tabs.find((tab) => tab.label === 'api');
         if (apiTab) {
           apiTab.show = !component?.noApi;

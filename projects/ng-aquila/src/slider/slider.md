@@ -5,7 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: number input, range
-a1: true
+a1Light: true
 ---
 
 The slider component allows the user to select a value from a range between a minimum and a maximum value, using a given granularity (e.g. step size). The value can be selected via mouse, touch or keyboard (arrow keys).

@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+a1Light: true
 ---
 
 This component is implemented on top of the native HTML table `<table></table>` and adds the needed styling. In addition, there is an expandable table option for advanced use cases.

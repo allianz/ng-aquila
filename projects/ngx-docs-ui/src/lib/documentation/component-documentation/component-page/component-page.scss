@@ -31,10 +31,28 @@ $toc-width: 200px;
     top: -6px;
     position: relative;
   }
+
+  &.a1-themed {
+    justify-content: unset;
+    gap: 16px;
+  }
 }
 
 .sticky-banner {
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+.icon-badge-baseline-offset {
+  transform: translateY(3px); // required to align with text baseline properly
+}
+
+.badge-content-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-left: 2px;
+  margin-right: 2px;
 }

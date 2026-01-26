@@ -21,6 +21,9 @@ export interface ComponentDescriptor {
   stable: STATUS_TYPE;
   private: boolean;
   a1?: boolean;
+  a1Full?: boolean;
+  a1Light?: boolean;
+  a1Densities?: boolean;
 }
 
 export interface GuideDescriptor {

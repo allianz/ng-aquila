@@ -1,16 +1,16 @@
 import { NxBadgeModule } from '@allianz/ng-aquila/badge';
 import { NxGridModule } from '@allianz/ng-aquila/grid';
 import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
+import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { NxTableModule } from '@allianz/ng-aquila/table';
-import { Component, Inject, OnDestroy } from '@angular/core';
+import { NX_DOCS_GITHUB_LINK, ThemeSwitcherService } from '@allianz/ngx-docs-ui';
+import { Component, Inject, inject, OnDestroy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { NX_DOCS_GITHUB_LINK } from '../../../core/tokens';
 import { GithubLinkConfig } from '../../../core/types';
 import { Category, ManifestService } from '../../../service/manifest.service';
-import { NxvStatusDotComponent } from './status-dot.component';
 
 @Component({
   selector: 'nxv-overview',
@@ -18,16 +18,18 @@ import { NxvStatusDotComponent } from './status-dot.component';
   styleUrls: ['overview.component.scss'],
   imports: [
     NxGridModule,
-    NxvStatusDotComponent,
     NxHeadlineModule,
     NxTableModule,
     RouterLink,
     NxBadgeModule,
+    NxIconComponent,
   ],
 })
 export class NxvOverviewComponent implements OnDestroy {
   components!: Category[];
   issueBoardLink: string;
+
+  protected readonly themeService = inject(ThemeSwitcherService);
 
   private readonly _destroyed = new Subject<void>();
 

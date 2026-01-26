@@ -4,7 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: true
-a1: true
+a1Light: true
 ---
 
 # Selection Indicators

@@ -5,7 +5,8 @@ b2c: true
 expert: true
 stable: done
 alias: datepicker, calendar
-a1: true
+a1Light: true
+a1Densities: true
 desc: |
     This component requires a date adapter module. Choose one:
 

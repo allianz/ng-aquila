@@ -6,7 +6,7 @@ b2c: true
 expert: true
 stable: done
 alias: container, column, layout
-a1: true
+a1Light: true
 ---
 <!--
 //ai

@@ -5,7 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: navigation tabs
-a1: true
+a1Densities: true
 ---
 
 ### Basic Example

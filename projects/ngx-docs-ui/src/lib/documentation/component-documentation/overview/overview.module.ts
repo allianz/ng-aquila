@@ -8,7 +8,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { NxvOverviewComponent } from './overview.component';
-import { NxvStatusDotComponent } from './status-dot.component';
 
 @NgModule({
   imports: [
@@ -20,7 +19,6 @@ import { NxvStatusDotComponent } from './status-dot.component';
     NxGridModule,
     NxBadgeModule,
     NxvOverviewComponent,
-    NxvStatusDotComponent,
   ],
   exports: [],
   providers: [],

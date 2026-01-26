@@ -1,6 +1,15 @@
 @import '../../../../../../ng-aquila/src/shared-styles/theming/theming';
 @import '../../../styles/themes/docs-theme';
 
+.status-explanation {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr; /* Two equal columns */
+  gap: 16px; /* Optional spacing between items */
+  margin-bottom: 24px;
+  margin-top: 24px;
+  margin-left: 0;
+}
+
 .nxv-status__container {
   display: flex;
   margin-bottom: 32px;
@@ -18,28 +27,6 @@
   }
 }
 
-.nxv-status-deprecated {
-  display: flex;
-  margin-top: 16px;
-}
-
-.nxv-status-text {
-  line-height: 1.5rem;
-  font-size: 1.125rem;
-  vertical-align: top;
-}
-
-.nxv-status-icon {
-  margin-right: 8px;
-}
-
-.nxv-status-deprecated-color {
-  background: v(documentation-deprecated-color);
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
-}
-
 .nxv-components-table {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -47,6 +34,7 @@
 
 .nxv-component-category__container {
   margin-bottom: 64px;
+  margin-top: 32px;
 }
 
 .nxv-components-table__status-header,
@@ -75,4 +63,13 @@
 .nxv-components-table__status-badge {
   margin-left: 4px;
   margin-right: 4px;
+}
+
+.badge-content-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-left: 2px;
+  margin-right: 2px;
 }

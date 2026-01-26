@@ -4,8 +4,8 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: radio toggle
-a1: true
+alias: radio toggle, segmented control
+a1Full: true
 ---
 
 ## Examples

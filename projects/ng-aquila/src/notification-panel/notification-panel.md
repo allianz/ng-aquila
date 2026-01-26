@@ -5,6 +5,7 @@ b2c: false
 expert: true
 stable: done
 alias: popover
+a1Light: true
 ---
 
 The notification panel is supposed to be used in the header to give users quick access to recent messages and notifications. It consists of a trigger button that opens the notification flyout.

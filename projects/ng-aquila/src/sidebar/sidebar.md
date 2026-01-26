@@ -5,7 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: sidenav, side navigation
-a1: true
+a1Light: true
 ---
 
 The `<nx-sidebar>` provides a collapsible container for side content (often navigation, though it can be any content) alongside some primary content.

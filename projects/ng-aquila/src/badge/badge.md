@@ -5,7 +5,8 @@ b2c: true
 expert: true
 stable: done
 alias: chip
-a1: true
+a1Light: true
+a1Densities: true
 ---
 
 ### Basic

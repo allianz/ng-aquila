@@ -5,7 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: control
-a1: true
+a1Densities: true
 ---
 
 In most cases it is sufficient to only import the nxInputModule - this **already includes the NxFormfieldModule module**.

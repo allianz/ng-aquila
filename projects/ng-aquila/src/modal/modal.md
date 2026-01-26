@@ -5,7 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: dialog
-a1: true
+a1Light: true
 
 desc: |
     this require adding cdk style to angular.json

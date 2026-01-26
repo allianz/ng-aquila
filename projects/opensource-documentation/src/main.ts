@@ -44,8 +44,8 @@ const DOC_VERSIONS: DocVersions = {
   })),
 };
 const DOCS_THEMES = [
-  { name: 'docs-dark', displayName: 'Default', url: 'assets/aquila.css' },
-  { name: 'expert', displayName: 'Expert', url: 'assets/expert.css' },
+  { name: 'aquila', displayName: 'Default', url: 'assets/aquila.css' },
+  { name: 'aquila-expert', displayName: 'Expert', url: 'assets/expert.css' },
 ];
 const GITHUB_REPO_LINK: GithubLinkConfig = {
   repoLink: 'https://github.com/allianz/ng-aquila',

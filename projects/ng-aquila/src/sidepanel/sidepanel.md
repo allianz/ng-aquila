@@ -5,7 +5,7 @@ b2c: false
 expert: true
 stable: done
 alias: sidebar, drawer
-a1: true
+a1Light: true
 ---
 
 <div class="docs-deprecation-warning">

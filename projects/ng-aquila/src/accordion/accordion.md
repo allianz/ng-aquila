@@ -5,7 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: expansion panel, collapse
-a1: true
+a1Densities: true
 ---
 
 ### Standalone Expansion Panel

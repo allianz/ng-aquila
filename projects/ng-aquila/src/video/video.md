@@ -4,6 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+a1: false
 ---
 
 The video component only supports YouTube videos. We embedded the YouTube player as iframe tag. For detailed information about this technique, please check out the official [documentation](https://developers.google.com/youtube/player_parameters?hl=en). In order to save bandwidth, the iframe will only be loaded after the user has selected the preview image. Please note that the width of the video depends on the enclosing element and that the player has a fixed aspect ratio of 16:9. YouTube recommends that players should be at least 480px wide and 270px tall.

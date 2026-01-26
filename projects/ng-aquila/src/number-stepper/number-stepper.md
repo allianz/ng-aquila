@@ -5,7 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: number input, range
-a1: true
+a1Light: true
 ---
 
 ### Examples
