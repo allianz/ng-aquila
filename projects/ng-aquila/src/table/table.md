@@ -57,15 +57,6 @@ Application developers can implement custom column behavior, such as column hidi
 </div>
  <!-- example(table-column-reorder) -->
 
- ### Column resize
- To let users adjust the width of a column in your table, you can add a resize handler in column header by using `nxHeaderResize` directive into `nxHeaderCell` element.
-
-<div class="docs-deprecation-warning">
-  <strong><code>nxTableCellClip</code></strong> directive was deprecated since it was violating WCAG accessibility criteria. See the <a href="./documentation/table/overview#accessibility">Accessibility</a> section for more info.
-</div>
-
- <!-- example(table-column-resize) -->
-
 ### Localization
 For **localization** please use the provider `NxHeaderSortIntl` which contains some labels for screen reader users. By default the labels are in english.
 
@@ -146,3 +137,9 @@ Form elements can also be added to the table:
 
 ### Accessibility
 Content should not be clipped, find more info on the [WCAG criteria](https://www.w3.org/WAI/WCAG21/Understanding/reflow.html). If clipping/cropping is strictly required it can be done via custom css. In that case it's necessary to make the full content accessible through other means. Align with your accessibility expert if clipping of content is required.
+
+It is essential for users that column labels are fully visible, even when the text is enlarged. Therefore, it is important to ensure meaningful naming and sufficient column width during the design and implementation phases.
+
+<div class="docs-private">
+  To reduce complexity, the option to adjust column widths via the keyboard has been omitted. For very complex and extensive table layouts, the use of a data grid is recommended, as this allows all users to adjust column widths via the keyboard. We recommend using AG Grid. 
+</div> 

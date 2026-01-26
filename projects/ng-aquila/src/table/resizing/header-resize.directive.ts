@@ -12,6 +12,9 @@ import { distinctUntilChanged, map, switchMap, takeUntil, tap } from 'rxjs/opera
 
 import { NxHeaderCellDirective } from '../header-cell.directive';
 
+/**
+ * @deprecated because of accessibility concerns that can only be handled by applications and not a UI Library.
+ */
 @Directive({
   selector: '[nxHeaderResize]',
   host: {
