@@ -20,6 +20,47 @@
   }
 }
 
+:host {
+  &.nx-badge-scheme-brand {
+    background-color: v(color-brand);
+    color: v(color-on-brand);
+  }
+  &.nx-badge-scheme-brand--inverse {
+    background-color: v(color-brand-inverse);
+    color: v(color-on-brand-inverse);
+  }
+  @each $color in (yellow, orange, red, purple, teal, aqua, blue, green, gray) {
+    &.nx-badge-scheme-color-subtle-#{$color} {
+      background-color: v(color-subtle-#{$color});
+      color: v(color-on-subtle-#{$color});
+    }
+    &.nx-badge-scheme-color-attention-#{$color} {
+      background-color: v(color-attention-#{$color});
+      color: v(color-on-attention-resting);
+    }
+    &.nx-badge-scheme-color-subtle-#{$color}--inverse {
+      background-color: v(color-subtle-inverse-#{$color});
+      color: v(color-on-subtle-inverse-#{$color});
+    }
+    &.nx-badge-scheme-color-attention-#{$color}--inverse {
+      background-color: v(color-attention-inverse-#{$color});
+      color: v(color-on-attention-inverse-resting);
+    }
+  }
+
+  &.nx-badge-subtle--disabled {
+    background-color: v(color-subtle-disabled);
+    color: v(color-on-subtle-disabled);
+    cursor: not-allowed;
+  }
+
+  &.nx-badge-attention--disabled {
+    background-color: v(color-attention-disabled);
+    color: v(color-on-attention-disabled);
+    cursor: not-allowed;
+  }
+}
+
 @mixin badge-variant($variation: '') {
   $prefix: 'badge-';
   @if ($variation != '') {
