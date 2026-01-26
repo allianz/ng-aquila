@@ -468,10 +468,8 @@ export class NxMultiSelectComponent<S, T>
    * Returns html ids of multi select rendered value and label (if available),
    * separated by space.
    */
-  _getAriaLabelledBy(): string {
-    const valueId = this.id;
+  _getAriaLabelledBy(valueId = this.id): string {
     const labelId = this._formFieldComponent?.labelId;
-
     if (labelId) {
       return `${valueId} ${labelId}`;
     }

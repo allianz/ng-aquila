@@ -14,7 +14,7 @@
   [attr.aria-controls]="_comboboxId"
   (blur)="_onTriggerBlur(); _inputFocused = false"
   [attr.aria-expanded]="_isOpen"
-  [attr.aria-labelledby]="_getAriaLabelledBy()"
+  [attr.aria-labelledby]="_getAriaLabelledBy('')"
   [attr.aria-describedby]="_ariaDescribedby || null"
   [attr.aria-invalid]="errorState"
   [id]="id"
