@@ -46,6 +46,46 @@ export class NxDateValidators {
     );
   }
 
+  static parseWithPartialFields<D>(
+    dateAdapter: NxDateAdapter<D>,
+    format: string,
+    rawDateString: string,
+    strict: boolean,
+    dayValue: string | null,
+    monthValue: string | null,
+    yearValue: string | null,
+  ): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const hasDay = !!dayValue;
+      const hasMonth = !!monthValue;
+      const hasYear = !!yearValue;
+
+      if (!hasDay && !hasMonth && !hasYear) {
+        return null;
+      }
+
+      const validationParseError = NxDateValidators.parseByStrings(
+        dateAdapter,
+        format,
+        rawDateString,
+        strict,
+      )(control);
+
+      if (validationParseError?.nxDatefieldParse) {
+        if (!hasDay) {
+          validationParseError.nxDatefieldParse.dayMissing = true;
+        }
+        if (!hasMonth) {
+          validationParseError.nxDatefieldParse.monthMissing = true;
+        }
+        if (!hasYear) {
+          validationParseError.nxDatefieldParse.yearMissing = true;
+        }
+      }
+      return validationParseError;
+    };
+  }
+
   static parseByStrings<D>(
     dateAdapter: NxDateAdapter<D>,
     format: string,

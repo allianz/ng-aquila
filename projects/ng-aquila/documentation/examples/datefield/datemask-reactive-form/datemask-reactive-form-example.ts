@@ -17,12 +17,7 @@ import {
 } from '@allianz/ng-aquila/grid';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import moment from 'moment';
 
 /**
@@ -67,6 +62,6 @@ export class DatemaskReactiveFormExampleComponent {
   }
 
   datemaskForm = new FormBuilder().group({
-    date: [this.customDate, Validators.required],
+    date: [this.customDate],
   });
 }

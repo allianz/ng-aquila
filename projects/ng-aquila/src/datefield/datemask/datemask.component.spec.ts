@@ -309,6 +309,95 @@ describe('DatemaskComponent', () => {
     });
   });
 
+  describe('parsing and incomplete dates', () => {
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        imports: [DatemaskIncompleteTestForm],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(DatemaskIncompleteTestForm);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+      nativeInputs = fixture.nativeElement.querySelectorAll('input');
+    });
+
+    it('should not show error for completely empty date mask', () => {
+      const test = fixture.componentRef.instance as DatemaskIncompleteTestForm;
+      expect(test.datemaskForm.controls.date.errors).toBeNull();
+    });
+
+    it('should return error on partially filled mask', () => {
+      const test = fixture.componentRef.instance as DatemaskIncompleteTestForm;
+      expect(test.datemaskForm.controls.date.errors).toBeNull();
+
+      const dayInput = nativeInputs[0];
+      dayInput.value = '30';
+      dayInput.dispatchEvent(new Event('input'));
+
+      fixture.detectChanges();
+
+      expect(test.datemaskForm.controls.date.errors).not.toBeNull();
+      expect(test.datemaskForm.controls.date.errors!.nxDatefieldParse).not.toBeNull();
+      let parseError = test.datemaskForm.controls.date.errors!.nxDatefieldParse;
+
+      expect(parseError.text).toBe('30..');
+      expect(parseError.format).toBe('DD.MM.YYYY');
+      expect(parseError.dayMissing).toBeUndefined();
+      expect(parseError.monthMissing).toBeTruthy();
+      expect(parseError.yearMissing).toBeTruthy();
+
+      const yearInput = nativeInputs[2];
+      yearInput.value = '2020';
+      yearInput.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+
+      expect(test.datemaskForm.controls.date.errors).not.toBeNull();
+      expect(test.datemaskForm.controls.date.errors!.nxDatefieldParse).not.toBeNull();
+      parseError = test.datemaskForm.controls.date.errors!.nxDatefieldParse;
+
+      expect(parseError.text).toBe('30..2020');
+      expect(parseError.format).toBe('DD.MM.YYYY');
+      expect(parseError.dayMissing).toBeUndefined();
+      expect(parseError.monthMissing).toBeTruthy();
+      expect(parseError.yearMissing).toBeUndefined();
+    });
+
+    it('should remove error after clearing all inputs', () => {
+      const test = fixture.componentRef.instance as DatemaskIncompleteTestForm;
+      expect(test.datemaskForm.controls.date.errors).toBeNull();
+
+      const dayInput = nativeInputs[0];
+      dayInput.value = '30';
+      dayInput.dispatchEvent(new Event('input'));
+
+      const yearInput = nativeInputs[2];
+      yearInput.value = '2020';
+      yearInput.dispatchEvent(new Event('input'));
+
+      fixture.detectChanges();
+      let parseError = test.datemaskForm.controls.date.errors!.nxDatefieldParse;
+
+      expect(test.datemaskForm.controls.date.errors).not.toBeNull();
+      expect(test.datemaskForm.controls.date.errors!.nxDatefieldParse).not.toBeNull();
+      parseError = test.datemaskForm.controls.date.errors!.nxDatefieldParse;
+
+      expect(parseError.text).toBe('30..2020');
+      expect(parseError.format).toBe('DD.MM.YYYY');
+      expect(parseError.dayMissing).toBeUndefined();
+      expect(parseError.monthMissing).toBeTruthy();
+      expect(parseError.yearMissing).toBeUndefined();
+
+      dayInput.value = '';
+      dayInput.dispatchEvent(new Event('input'));
+
+      yearInput.value = '';
+      yearInput.dispatchEvent(new Event('input'));
+
+      fixture.detectChanges();
+      expect(test.datemaskForm.controls.date.errors).toBeNull();
+    });
+  });
+
   describe('DatemaskWithDatePicker', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({
@@ -411,6 +500,29 @@ export class DatemaskTestForm extends DateRangeTestBase {
 
   datemaskForm = new FormGroup({
     date: new FormControl<moment.Moment | string | null>(null, Validators.required),
+  });
+}
+@Component({
+  template: `
+    <form [formGroup]="datemaskForm">
+      <nx-formfield>
+        <nx-datemask formControlName="date"></nx-datemask>
+      </nx-formfield>
+    </form>
+  `,
+  imports: [
+    NxFormfieldComponent,
+    NxMomentDateModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NxDatemaskComponent,
+  ],
+})
+export class DatemaskIncompleteTestForm extends DateRangeTestBase {
+  datemaskComponent = viewChild.required(NxDatemaskComponent<Moment>);
+
+  datemaskForm = new FormGroup({
+    date: new FormControl<moment.Moment | string | null>(null),
   });
 }
 @Component({

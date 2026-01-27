@@ -209,16 +209,12 @@ export class NxDatemaskComponent<D>
     return true;
   });
 
-  private readonly _rawDateString: Signal<string> = computed<string>(() => {
-    if (!!this._dayValue() && !!this._monthValue() && !!this._yearValue()) {
-      return this.format()
-        .replace(/d+/i, `${this._dayValue()}`)
-        .replace(/m+/i, `${this._monthValue()}`)
-        .replace(/y+/i, `${this._yearValue()}`);
-    }
-
-    return '';
-  });
+  private readonly _rawDateString: Signal<string> = computed<string>(() =>
+    this.format()
+      .replace(/d+/i, `${this._dayValue() || ''}`)
+      .replace(/m+/i, `${this._monthValue() || ''}`)
+      .replace(/y+/i, `${this._yearValue() || ''}`),
+  );
 
   /**
    * Date Value
@@ -473,11 +469,14 @@ export class NxDatemaskComponent<D>
   /** Returns the validators of the datefield. */
   getValidators(): ValidatorFn[] {
     return [
-      NxDateValidators.parse(
+      NxDateValidators.parseWithPartialFields(
         this._dateAdapter,
         this.format(),
         this._rawDateString(),
         this.strict(),
+        this._dayValue(),
+        this._monthValue(),
+        this._yearValue(),
       ),
       NxDateValidators.min(this._dateAdapter, this.min),
       NxDateValidators.max(this._dateAdapter, this.max),
