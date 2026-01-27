@@ -1,0 +1,23 @@
+<button
+  nxPlainButton
+  type="button"
+  [nxPopoverTriggerFor]="popover()"
+  [nxPopoverDirection]="popoverDirection()"
+  [nxPopoverWidth]="popoverWidth()"
+  [nxPopoverMaxWidth]="popoverMaxWidth()"
+  [nxPopoverModal]="popoverModal()"
+  [attr.aria-label]="buttonAriaLabel()"
+  [disabled]="disabled()"
+  [nxPopoverCloseable]="false"
+  class="nx-info-icon__button"
+>
+  <nx-icon name="info-circle-o" class="nx-info-icon__icon"></nx-icon>
+</button>
+
+<nx-popover>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</nx-popover>
+
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>

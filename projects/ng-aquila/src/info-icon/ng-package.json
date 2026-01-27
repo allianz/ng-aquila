@@ -1,0 +1,8 @@
+{
+  "lib": {
+    "entryFile": "public-api.ts",
+    "sass": {
+      "silenceDeprecations": ["import"]
+    }
+  }
+}

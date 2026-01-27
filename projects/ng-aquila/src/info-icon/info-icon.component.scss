@@ -1,0 +1,29 @@
+@use '../shared-styles/index' as *;
+
+:host {
+  display: inline-block;
+}
+
+.nx-info-icon__button {
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nx-plain-button .nx-info-icon__icon {
+  font-size: v(info-icon-size);
+  color: v(info-icon-color);
+
+  &:hover {
+    color: v(info-icon-hover-color);
+  }
+
+  &:active {
+    color: v(info-icon-active-color);
+  }
+}
+
+.nx-plain-button:disabled .nx-info-icon__icon {
+  color: v(info-icon-disabled-color);
+}
