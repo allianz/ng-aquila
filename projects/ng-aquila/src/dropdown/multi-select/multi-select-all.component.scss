@@ -2,7 +2,9 @@
 
 .nx-checkbox {
   &.is-active {
-    @include focus-style;
     border-radius: 4px;
+    :host-context(.keyboard-focused) & {
+      @include focus-style;
+    }
   }
 }

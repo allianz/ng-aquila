@@ -141,6 +141,7 @@
       tabindex="0"
       class="option-list"
       [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+      [class.keyboard-focused]="_focusOrigin() === 'keyboard'"
       (keydown)="handleKeyDown($event)"
     >
       @for (item of timeList; track item.value; let i = $index) {

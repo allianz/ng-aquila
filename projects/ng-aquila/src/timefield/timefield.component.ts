@@ -13,7 +13,7 @@ import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxRadioModule } from '@allianz/ng-aquila/radio-button';
 import { NxRadioToggleModule } from '@allianz/ng-aquila/radio-toggle';
 import { ErrorStateMatcher, IdGenerationService, pad } from '@allianz/ng-aquila/utils';
-import { ActiveDescendantKeyManager, FocusMonitor } from '@angular/cdk/a11y';
+import { ActiveDescendantKeyManager, FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkConnectedOverlay, CdkOverlayOrigin, OverlayModule } from '@angular/cdk/overlay';
 import { NgClass } from '@angular/common';
@@ -222,8 +222,10 @@ export class NxTimefieldComponent
   timeList: TimepickerOption[] = [];
   pickerValue: any;
   protected _keyManager?: ActiveDescendantKeyManager<NxTimefieldOption>;
+  protected _focusOrigin: WritableSignal<FocusOrigin> = signal(null);
 
   handleKeyDown(event: KeyboardEvent) {
+    this._focusOrigin.set('keyboard');
     if (!this.withTimepicker) {
       return;
     }
@@ -232,9 +234,8 @@ export class NxTimefieldComponent
       event.target instanceof HTMLButtonElement &&
       (event.key === 'Enter' || event.key === ' ')
     ) {
-      // space and enter on the button are handled by the click handler
-      // we return here otherwise the overlay would get closed immediately
-      return;
+      // avoid triggering the button's click
+      event.preventDefault();
     }
 
     if (this.isOpen) {
@@ -248,12 +249,7 @@ export class NxTimefieldComponent
           this._keyManager?.onKeydown(event);
           break;
       }
-    } else if (
-      !this.isOpen &&
-      event.key !== 'Enter' &&
-      event.key !== 'Tab' &&
-      event.key !== 'Shift'
-    ) {
+    } else if (!this.isOpen && event.key !== 'Tab' && event.key !== 'Shift') {
       this.toggleOverlay();
     }
   }
@@ -571,7 +567,9 @@ export class NxTimefieldComponent
     }
     this._overlayWidth = this.overlayOrigin.elementRef.nativeElement.getBoundingClientRect().width;
     this.isOpen = true;
-    setTimeout(() => this.scrollSelectedItemIntoView());
+    setTimeout(() => {
+      this.scrollSelectedItemIntoView();
+    });
   }
 
   closeOverlay() {
@@ -580,6 +578,7 @@ export class NxTimefieldComponent
   }
 
   toggleButtonClick() {
+    this._focusOrigin.set('mouse');
     this.toggleOverlay();
   }
 

@@ -46,6 +46,7 @@
   <div
     class="panel"
     [class.is-outline]="_isOutline"
+    [class.keyboard-focused]="_focusOrigin() === 'keyboard'"
     (keydown)="_onKeydown($event)"
     [attr.aria-owns]="_isOpen ? _comboboxId : null"
     (focusin)="_onFocusWithinOverlay($event)"

@@ -247,7 +247,9 @@ section {
     color: v(timepicker-label-hover-color);
     cursor: pointer;
   }
+}
 
+.option-list.keyboard-focused > li {
   &.is-active {
     .option-label {
       color: v(timefield-active-color);

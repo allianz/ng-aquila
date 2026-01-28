@@ -39,8 +39,11 @@
   align-items: flex-start;
 
   &.is-active {
-    @include focus-style;
     border-radius: 4px;
+
+    :host-context(.keyboard-focused) & {
+      @include focus-style;
+    }
   }
 
   &.is-disabled {

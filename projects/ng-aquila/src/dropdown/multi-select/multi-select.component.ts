@@ -34,8 +34,10 @@ import {
   Output,
   QueryList,
   Self,
+  signal,
   ViewChild,
   ViewChildren,
+  WritableSignal,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -255,7 +257,6 @@ export class NxMultiSelectComponent<S, T>
     filter((o) => !o),
     map(() => {}),
   );
-
   private _openedBy: FocusOrigin = 'mouse';
 
   /** @docs-private */
@@ -314,6 +315,8 @@ export class NxMultiSelectComponent<S, T>
   _keyManager!: ActiveDescendantKeyManager<
     NxMultiSelectOptionComponent<T> | NxMultiSelectAllComponent<T>
   >;
+
+  protected _focusOrigin: WritableSignal<FocusOrigin> = signal<FocusOrigin>(null);
 
   /** The minimal space between the viewport and the overlay */
   _overlayViewportMargin: number = 16;
@@ -490,6 +493,7 @@ export class NxMultiSelectComponent<S, T>
   }
 
   _open($event: Event, origin: FocusOrigin) {
+    this._focusOrigin.set(origin);
     if (this._isOpen || this.disabled || this.readonly) {
       return;
     }
@@ -557,6 +561,7 @@ export class NxMultiSelectComponent<S, T>
     if (this.disabled || this.readonly) {
       return;
     }
+    this._focusOrigin.set('keyboard');
     const altKey = $event.altKey;
     const ctrlKey = $event.ctrlKey;
     const metaKey = $event.metaKey;
@@ -682,12 +687,12 @@ export class NxMultiSelectComponent<S, T>
       positionStrategy.withPositions(this._positions);
       overlayRef.updatePosition();
 
+      // Focus the element using FocusMonitor to apply CDK classes
       if (this.filter) {
         this._filterInput?.nativeElement.focus();
       } else {
         this._panelContent?.nativeElement.focus();
       }
-
       if (this._selectAll && this.selectedItems.size > 0) {
         this._keyManager.setActiveItem(1);
       } else {
@@ -700,6 +705,7 @@ export class NxMultiSelectComponent<S, T>
   }
 
   _onDetach() {
+    // clean up focus monitoring
     this._close();
   }
 
