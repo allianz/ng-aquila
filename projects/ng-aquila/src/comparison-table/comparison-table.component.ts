@@ -18,6 +18,7 @@ import {
   Optional,
   Output,
   QueryList,
+  signal,
   ViewChild,
 } from '@angular/core';
 import { delay, takeUntil } from 'rxjs/operators';
@@ -86,15 +87,16 @@ export class NxComparisonTableComponent
   /** Sets which info column is selected. */
   @Input() set selectedIndex(value: NumberInput) {
     const newValue = coerceNumberProperty(value);
-    if (this._selectedIndex !== newValue) {
-      this._selectedIndex = newValue;
-      this.selectedIndexChange.emit(this._selectedIndex);
+    const oldValue = this._selectedIndexReactive();
+    if (oldValue !== newValue) {
+      this._selectedIndexReactive.set(newValue);
+      this.selectedIndexChange.emit(newValue);
     }
   }
   get selectedIndex(): number {
-    return this._selectedIndex!;
+    return this._selectedIndexReactive();
   }
-  private _selectedIndex?: number;
+  private readonly _selectedIndexReactive = signal<number>(-1);
 
   /** An event that is is dispatched each time selected index of the table has changed. */
   @Output() readonly selectedIndexChange = new EventEmitter<number>();

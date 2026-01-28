@@ -1,14 +1,6 @@
 import { NxButtonBase } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { FocusMonitor } from '@angular/cdk/a11y';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  Host,
-  Optional,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { NxSidebarComponent } from './sidebar.component';
 
@@ -24,13 +16,12 @@ import { NxSidebarComponent } from './sidebar.component';
   imports: [NxIconModule],
 })
 export class NxSidebarToggleComponent extends NxButtonBase {
-  constructor(
-    _cdr: ChangeDetectorRef,
-    _elementRef: ElementRef,
-    _focusMonitor: FocusMonitor,
-    @Optional() @Host() private readonly _sidebar: NxSidebarComponent | null,
-  ) {
-    super(_cdr, _elementRef, _focusMonitor);
+  private readonly _sidebar = inject(NxSidebarComponent, { optional: true, host: true });
+
+  // eslint-disable-next-line @angular-eslint/prefer-inject
+  constructor(...args: unknown[]);
+  constructor() {
+    super();
     this.classNames = 'tertiary small-medium';
   }
 

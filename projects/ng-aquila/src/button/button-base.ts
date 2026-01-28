@@ -1,20 +1,18 @@
-import { NxTriggerButton } from '@allianz/ng-aquila/overlay';
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { BooleanInput, NumberInput } from '@angular/cdk/coercion';
 import {
   AfterViewInit,
   booleanAttribute,
-  ChangeDetectorRef,
+  computed,
   DestroyRef,
   Directive,
   ElementRef,
-  HostBinding,
   inject,
-  Input,
   input,
   NgZone,
   numberAttribute,
   Renderer2,
+  signal,
 } from '@angular/core';
 
 /** Type of a button. */
@@ -23,163 +21,159 @@ export type NxButtonType = 'primary' | 'secondary' | 'tertiary' | 'cta' | 'empha
 /** Size of a button. */
 export type NxButtonSize = 'small' | 'small-medium' | 'medium' | 'large';
 
-const DEFAULT_SIZE = 'medium';
-const DEFAULT_TYPE = 'primary';
+const DEFAULT_SIZE: NxButtonSize = 'medium';
+const DEFAULT_TYPE: NxButtonType = 'primary';
 
 /** @docs-private */
 @Directive({
   host: {
+    '[class.nx-button--primary]': 'appearance === "primary"',
+    '[class.nx-button--secondary]': 'appearance === "secondary"',
+    '[class.nx-button--tertiary]': 'appearance === "tertiary"',
+    '[class.nx-button--cta]': 'appearance === "cta"',
+    '[class.nx-button--emphasis]': 'appearance === "emphasis"',
+    '[class.nx-button--attention]': 'appearance === "attention"',
+
+    '[class.nx-button--small]': 'size === "small"',
+    '[class.nx-button--small-medium]': 'size === "small-medium"',
+    '[class.nx-button--medium]': 'size === "medium"',
+    '[class.nx-button--large]': 'size === "large"',
+
+    '[class.nx-button--danger]': 'danger',
+    '[class.nx-button--negative]': 'negative',
+    '[class.nx-button--block]': 'block',
+
     '[class.nx-button--loading]': 'loading()',
-    '[attr.disabled]': 'disabled || null',
+    '[class.nx-button--active]': '_active()',
+    '[attr.disabled]': 'disabled() || null',
     '[attr.aria-disabled]': '_ariaDisabled',
     '[attr.tabindex]': '_tabIndex',
   },
 })
-export class NxButtonBase implements NxTriggerButton, AfterViewInit {
-  private readonly _cdr = inject(ChangeDetectorRef);
+export class NxButtonBase implements AfterViewInit {
   private readonly _elementRef = inject(ElementRef);
   private readonly _focusMonitor = inject(FocusMonitor);
   private readonly _destroyRef = inject(DestroyRef);
   private readonly _renderer = inject(Renderer2);
   private readonly _ngZone = inject(NgZone);
 
-  protected _isAnchor = this._elementRef.nativeElement.tagName === 'A';
+  private readonly _isAnchor = this._elementRef.nativeElement.tagName === 'A';
   protected get _ariaDisabled() {
-    return (this._isAnchor && this.disabled) || this.loading() ? true : null;
+    return (this._isAnchor && this.disabled()) || this.loading() ? true : null;
   }
   protected get _tabIndex() {
-    if (this._isAnchor && this.disabled) {
+    if (this._isAnchor && this.disabled()) {
       return -1;
     }
-    return this.tabIndex() ?? this._tabindexAttributeBinding() ?? undefined;
+    return this.tabIndex() ?? this._tabindexAttribute() ?? undefined;
   }
 
-  private _classNames = '';
-
-  /** @docs-private */
-  @HostBinding('class.nx-button--primary') get isPrimary(): boolean {
-    return this.type === 'primary';
-  }
-  /** @docs-private */
-  @HostBinding('class.nx-button--secondary') get isSecondary(): boolean {
-    return this.type === 'secondary';
-  }
-  /** @docs-private */
-  @HostBinding('class.nx-button--tertiary') get isTertiary(): boolean {
-    return this.type === 'tertiary';
-  }
-  /** @docs-private */
-  @HostBinding('class.nx-button--cta') get isCta(): boolean {
-    return this.type === 'cta';
-  }
-  /** @docs-private */
-  @HostBinding('class.nx-button--emphasis') get isEmphasis(): boolean {
-    return this.type === 'emphasis';
-  }
-  /** @docs-private */
-  @HostBinding('class.nx-button--attention') get isAttention(): boolean {
-    return this.type === 'attention';
+  protected get appearance() {
+    return this.properties().appearance;
   }
 
-  /** @docs-private */
-  @HostBinding('class.nx-button--large') get isLarge(): boolean {
-    return this.size === 'large';
-  }
-  /** @docs-private */
-  @HostBinding('class.nx-button--medium') get isMedium(): boolean {
-    return this.size === 'medium';
-  }
-  /** @docs-private */
-  @HostBinding('class.nx-button--small-medium') get isSmallMedium(): boolean {
-    return this.size === 'small-medium';
-  }
-  /** @docs-private */
-  @HostBinding('class.nx-button--small') get isSmall(): boolean {
-    return this.size === 'small';
+  get type() {
+    return this.properties().appearance;
   }
 
-  /** @docs-private */
-  @HostBinding('class.nx-button--danger') get isDanger(): boolean {
-    return this.danger;
-  }
-  /** @docs-private */
-  @HostBinding('class.nx-button--block') get isBlock(): boolean {
-    return this.block;
-  }
-  /** @docs-private */
-  @HostBinding('class.nx-button--negative') get isNegative(): boolean {
-    return this.negative;
+  sizeInput = input<NxButtonSize | undefined>(undefined, { alias: 'size' });
+  get size() {
+    return this.sizeInput() ?? this.properties().size;
   }
 
-  /** @docs-private */
-  type: NxButtonType = DEFAULT_TYPE;
-
-  /** @docs-private */
-  size: NxButtonSize = DEFAULT_SIZE;
-
-  danger = false;
-  negative = false;
-  block = false;
-  @HostBinding('class.nx-button--active')
-  active = false;
-
-  @Input() set disabled(value: BooleanInput) {
-    this._disabled = coerceBooleanProperty(value);
+  /**
+   * Whether the button performs a critical action.
+   *
+   * Formerly called 'danger'
+   */
+  criticalInput = input<boolean | undefined, BooleanInput>(undefined, {
+    transform: booleanAttribute,
+    alias: 'critical',
+  });
+  protected get critical() {
+    return this.criticalInput();
   }
-  get disabled(): boolean {
-    return this._disabled;
+
+  get danger() {
+    return this.critical ?? this.properties().danger;
   }
-  private _disabled = false;
 
-  readonly tabIndex = input<number, unknown>(undefined, { transform: tabIndexAttribute });
+  negativeInput = input<boolean, BooleanInput>(undefined, {
+    transform: booleanAttribute,
+    alias: 'negative',
+  });
+  get negative() {
+    return this.negativeInput() ?? this.properties().negative;
+  }
 
+  blockInput = input<boolean, BooleanInput>(undefined, {
+    transform: booleanAttribute,
+    alias: 'block',
+  });
+  get block() {
+    return this.blockInput() ?? this.properties().block;
+  }
+
+  readonly disabled = input<boolean, BooleanInput>(false, {
+    transform: booleanAttribute,
+  });
+
+  readonly tabIndex = input<number | undefined, NumberInput>(undefined, {
+    transform: tabIndexAttribute,
+  });
   /**
    * Use 'tabindex' to handle existing usages of `[tabindex]` bindings on button elements
    * @docs-private
    */
-  readonly _tabindexAttributeBinding = input<number, unknown>(undefined, {
-    alias: 'tabindex',
+  readonly _tabindexAttribute = input<number | undefined, NumberInput>(undefined, {
     transform: tabIndexAttribute,
+    alias: 'tabindex',
   });
 
   /** Whether the button should be in a loading state. */
-  loading = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
+  readonly loading = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
 
-  get spinnerNegative() {
-    if (this.type === 'emphasis' || this.type === 'cta' || this.type === 'attention') {
+  protected get spinnerNegative() {
+    const { appearance, negative } = this.properties();
+    if (appearance === 'emphasis' || appearance === 'cta' || appearance === 'attention') {
       return true;
     }
-    const isFilled = this.type === 'primary';
-    return this.negative ? !isFilled : isFilled;
+    const isFilled = appearance === 'primary';
+    return negative ? !isFilled : isFilled;
   }
 
-  set classNames(value: string) {
-    if (this._classNames === value) {
-      return;
-    }
-    this._classNames = value;
-
-    // TODO kick null safeguards after setter value is properly coerced
-    const [type = null] = this._classNames?.match(
-      /primary|secondary|tertiary|cta|emphasis|attention/,
-    ) ?? [DEFAULT_TYPE];
-    this.type = type as NxButtonType;
-
-    const [size = null] = this._classNames?.match(/small-medium|small|medium|large/) ?? [
-      DEFAULT_SIZE,
-    ];
-    this.size = size as NxButtonSize;
-
-    this.danger = !!this._classNames?.includes('danger');
-    this.negative = !!this._classNames?.includes('negative');
-    this.block = !!this._classNames?.includes('block');
-
-    this._cdr.markForCheck();
+  set classNames(v: NxButtonType | '' | ({} & string) | undefined) {
+    this._classNames.set(v);
+  }
+  get classNames() {
+    return this._classNames();
   }
 
-  get classNames(): string {
-    return this._classNames;
-  }
+  _classNames = signal<NxButtonType | '' | ({} & string) | undefined>('');
+
+  protected readonly properties = computed<{
+    appearance: NxButtonType;
+    size: NxButtonSize;
+    danger: boolean;
+    negative: boolean;
+    block: boolean;
+  }>(() => {
+    const classNames = this.classNames || '';
+
+    const type =
+      classNames.match(/primary|secondary|tertiary|cta|emphasis|attention/)?.[0] ?? DEFAULT_TYPE;
+
+    const size = (classNames.match(/small-medium|small|medium|large/)?.[0] ??
+      DEFAULT_SIZE) as NxButtonSize;
+
+    return {
+      appearance: type as NxButtonType,
+      size: size as NxButtonSize,
+      danger: classNames.includes('danger'),
+      negative: classNames.includes('negative'),
+      block: classNames.includes('block'),
+    };
+  });
 
   /**
    * Getter used for the modal component as a quickfix
@@ -191,8 +185,9 @@ export class NxButtonBase implements NxTriggerButton, AfterViewInit {
   get elementRef() {
     return this._elementRef;
   }
-
-  constructor(...args: unknown[]) {
+  // eslint-disable-next-line @angular-eslint/prefer-inject
+  constructor(...args: unknown[]);
+  constructor() {
     this.setupHaltDisabledEvents();
   }
 
@@ -200,14 +195,19 @@ export class NxButtonBase implements NxTriggerButton, AfterViewInit {
     this.setupFocusMonitor();
   }
 
+  set active(v: boolean) {
+    this._active.set(v);
+  }
+  get active() {
+    return this._active();
+  }
+  protected _active = signal(false);
   setTriggerActive() {
-    this.active = true;
-    this._cdr.markForCheck();
+    this._active.set(true);
   }
 
   setTriggerInactive() {
-    this.active = false;
-    this._cdr.markForCheck();
+    this._active.set(false);
   }
 
   private setupFocusMonitor() {
@@ -218,7 +218,7 @@ export class NxButtonBase implements NxTriggerButton, AfterViewInit {
   private setupHaltDisabledEvents() {
     const cleanUp = this._ngZone.runOutsideAngular(() =>
       this._renderer.listen(this._elementRef.nativeElement, 'click', (event: Event) => {
-        if ((this._isAnchor && this.disabled) || this.loading()) {
+        if ((this._isAnchor && this.disabled()) || this.loading()) {
           event.preventDefault();
           event.stopImmediatePropagation();
         }

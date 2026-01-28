@@ -8,6 +8,7 @@ import {
   Input,
   Optional,
   Output,
+  signal,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
@@ -28,20 +29,21 @@ export class NxComparisonTableCell {
 
   /** @docs-private */
   @Input() set index(newValue: number) {
-    if (this._index !== newValue) {
+    const oldIndex = this.index;
+    if (oldIndex !== newValue) {
       if (this._disabledColumn) {
-        this._table._removeDisabledColumn(this._index);
+        this._table._removeDisabledColumn(oldIndex);
         this._table._addDisabledColumn(newValue);
       }
 
-      this._index = newValue;
-      this.indexChange.emit(this._index);
+      this._indexReactive.set(newValue);
+      this.indexChange.emit(newValue);
     }
   }
   get index(): number {
-    return this._index;
+    return this._indexReactive();
   }
-  private _index!: number;
+  private readonly _indexReactive = signal(-1);
 
   /**
    * Sets all cells below a header cell to be disabled (disabled column).
@@ -53,9 +55,9 @@ export class NxComparisonTableCell {
     if (this._type === 'header' && newValue !== this.disabledColumn) {
       this._disabledColumn = newValue;
       if (this._disabledColumn) {
-        this._table._addDisabledColumn(this._index);
+        this._table._addDisabledColumn(this.index);
       } else {
-        this._table._removeDisabledColumn(this._index);
+        this._table._removeDisabledColumn(this.index);
       }
     }
   }

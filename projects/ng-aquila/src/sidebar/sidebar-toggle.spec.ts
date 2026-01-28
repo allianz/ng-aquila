@@ -13,14 +13,12 @@ abstract class ToggleTest {
 describe('NxSidebarToggleButton', () => {
   let fixture: ComponentFixture<ToggleTest>;
   let testInstance: ToggleTest;
-  let buttonInstance: NxSidebarToggleComponent;
   let buttonNativeElement: HTMLButtonElement;
 
   function createTestComponent(component: Type<ToggleTest>) {
     fixture = TestBed.createComponent(component);
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
-    buttonInstance = testInstance.buttonInstance;
     buttonNativeElement = fixture.nativeElement.querySelector(
       '.nx-sidebar__toggle-button',
     ) as HTMLButtonElement;
@@ -34,8 +32,6 @@ describe('NxSidebarToggleButton', () => {
 
   it('creates the toggle with the correct base class bindings', () => {
     createTestComponent(BasicSidebarToggleComponent);
-    expect(buttonInstance.type).toBe('tertiary');
-    expect(buttonInstance.size).toBe('small-medium');
     expect(buttonNativeElement).toHaveClass('nx-button--tertiary');
     expect(buttonNativeElement).toHaveClass('nx-button--small-medium');
   });

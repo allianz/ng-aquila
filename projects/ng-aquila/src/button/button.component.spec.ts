@@ -3,6 +3,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   Directive,
+  inputBinding,
+  signal,
   Type,
   ViewChild,
   viewChild,
@@ -512,6 +514,98 @@ describe('NxButton Implementations', () => {
         expect(buttonNativeElement.getAttribute('aria-disabled')).toBeNull();
         expect(buttonNativeElement.getAttribute('tabindex')).toBeNull();
       });
+    });
+  });
+
+  describe('Regression / Compatibility for separate inputs', () => {
+    it('classNames input works', () => {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [inputBinding('nxButton', () => 'secondary block danger negative small')],
+      });
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement).toHaveClass('nx-button--secondary');
+      expect(fixture.nativeElement).toHaveClass('nx-button--block');
+      expect(fixture.nativeElement).toHaveClass('nx-button--danger');
+      expect(fixture.nativeElement).toHaveClass('nx-button--negative');
+      expect(fixture.nativeElement).toHaveClass('nx-button--small');
+    });
+
+    it('separate inputs work', () => {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [
+          inputBinding('nxButton', () => 'secondary'),
+          inputBinding('block', () => true),
+          inputBinding('critical', () => true),
+          inputBinding('negative', () => true),
+          inputBinding('size', () => 'small'),
+        ],
+      });
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement).toHaveClass('nx-button--secondary');
+      expect(fixture.nativeElement).toHaveClass('nx-button--block');
+      expect(fixture.nativeElement).toHaveClass('nx-button--danger');
+      expect(fixture.nativeElement).toHaveClass('nx-button--negative');
+      expect(fixture.nativeElement).toHaveClass('nx-button--small');
+    });
+
+    it('classNames and separate inputs can mix', () => {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [
+          inputBinding('nxButton', () => 'secondary small danger'),
+          inputBinding('negative', () => true),
+          inputBinding('size', () => 'small'),
+        ],
+      });
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement).toHaveClass('nx-button--secondary');
+      expect(fixture.nativeElement).not.toHaveClass('nx-button--block');
+      expect(fixture.nativeElement).toHaveClass('nx-button--danger');
+      expect(fixture.nativeElement).toHaveClass('nx-button--negative');
+      expect(fixture.nativeElement).toHaveClass('nx-button--small');
+    });
+
+    it('classNames entries are overridden by separate inputs', () => {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [
+          inputBinding('nxButton', () => 'secondary small danger negative block'),
+          inputBinding('block', () => false),
+          inputBinding('critical', () => false),
+          inputBinding('negative', () => false),
+          inputBinding('size', () => 'large'),
+        ],
+      });
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement).toHaveClass('nx-button--secondary');
+      expect(fixture.nativeElement).not.toHaveClass('nx-button--block');
+      expect(fixture.nativeElement).not.toHaveClass('nx-button--danger');
+      expect(fixture.nativeElement).not.toHaveClass('nx-button--negative');
+      expect(fixture.nativeElement).toHaveClass('nx-button--large');
+    });
+
+    it('classNames are overriden by changing inputs', () => {
+      const critical = signal<boolean>(true);
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [
+          inputBinding('nxButton', () => 'secondary danger'),
+          inputBinding('critical', critical),
+        ],
+      });
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement).toHaveClass('nx-button--danger');
+      critical.set(false);
+
+      fixture.detectChanges();
+      expect(fixture.nativeElement).not.toHaveClass('nx-button--danger');
     });
   });
 });

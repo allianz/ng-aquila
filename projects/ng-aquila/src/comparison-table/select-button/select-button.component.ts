@@ -1,19 +1,16 @@
 import { NxButtonBase } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
-  ElementRef,
+  effect,
+  inject,
   Input,
   OnDestroy,
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 import { NxComparisonTableCell } from '../cell/cell.component';
-import { NxComparisonTableBase } from '../comparison-table-base';
 
 @Component({
   selector: 'button[nxComparisonTableSelectButton]',
@@ -24,11 +21,12 @@ import { NxComparisonTableBase } from '../comparison-table-base';
     '[disabled]': '_cell._isCellDisabled',
     class: 'nx-comparison-table__select-button',
     '(click)': '_selectCell()',
-    '[attr.aria-pressed]': '_ariaPressed',
+    '[attr.aria-pressed]': '_cell._isSelected()',
   },
   imports: [NxIconModule],
 })
 export class NxComparisonTableSelectButton extends NxButtonBase implements OnDestroy {
+  protected readonly _cell = inject(NxComparisonTableCell);
   /** Sets the label that is displayed when the column is selected. Default: 'Selected'. */
   @Input() set selectedLabel(value: string) {
     this._selectedLabel = value;
@@ -75,26 +73,14 @@ export class NxComparisonTableSelectButton extends NxButtonBase implements OnDes
 
   private readonly _destroyed = new Subject<void>();
 
-  constructor(
-    _cdr: ChangeDetectorRef,
-    _elementRef: ElementRef,
-    readonly _cell: NxComparisonTableCell,
-    private readonly _table: NxComparisonTableBase,
-    _focusMonitor: FocusMonitor,
-  ) {
-    super(_cdr, _elementRef, _focusMonitor);
+  // eslint-disable-next-line @angular-eslint/prefer-inject
+  constructor(...args: unknown[]);
+  constructor() {
+    super();
     this._setClassNames();
 
-    this._cell.indexChange.pipe(takeUntil(this._destroyed)).subscribe((index) => {
-      setTimeout(() => {
-        this._setClassNames();
-        this._setAriaPressed();
-      });
-    });
-
-    this._table.selectedIndexChange.pipe(takeUntil(this._destroyed)).subscribe((index) => {
+    effect(() => {
       this._setClassNames();
-      this._setAriaPressed();
     });
   }
 

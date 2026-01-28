@@ -33,9 +33,9 @@ We work with five different types of buttons. The primary's heavy appearance is 
 
 <!-- example(button-large) -->
 
-### Danger
+### Critical
 
-<!-- example(button-danger) -->
+<!-- example(button-critical) -->
 
 ### Block
 
