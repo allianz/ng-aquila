@@ -53,14 +53,17 @@
 
   &.is-small {
     @include type-style(data-display-small);
+    gap: v(data-display-small-gap);
   }
 
   &.is-medium {
     @include type-style(data-display-medium);
+    gap: v(data-display-medium-gap);
   }
 
   &.is-large {
     @include type-style(data-display-large);
+    gap: v(data-display-large-gap);
 
     @include media-breakpoint-response(mobile) {
       @include type-style(data-display-large-mobile);
