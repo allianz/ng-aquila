@@ -17,13 +17,13 @@
 
 ::ng-deep .nx-menu__link {
   display: block;
-  padding: nx-spacer(xs) 0;
-  font-size: nx-font-size(2xs);
-  line-height: nx-line-height(2xs);
+  padding: v(menu-link-padding);
+  font-size: v(menu-link-font-size);
+  line-height: v(menu-link-line-height);
   outline: none;
 
   + .nx-menu__link {
-    margin-top: nx-spacer(2xs);
+    margin-top: v(menu-link-margin-top);
   }
 }
 
@@ -36,8 +36,8 @@
 ::ng-deep .nx-menu__item {
   &.nx-menu__item--small,
   &.nx-menu__item--large {
-    padding: nx-spacer(m);
-    border-bottom: nx-border-size(xs) solid v(menu-item-border-color);
+    padding: v(menu-item-padding);
+    border-bottom: v(menu-item-border-width) solid v(menu-item-border-color);
 
     @media screen and (forced-colors: active) {
       border-bottom-color: CanvasText;
@@ -45,10 +45,10 @@
   }
 
   &.nx-menu__item--large {
-    padding-left: nx-spacer(xl);
+    padding-left: v(menu-item-large-padding-left);
 
     :host-context([dir='rtl']) & {
-      padding-right: nx-spacer(xl);
+      padding-right: v(menu-item-large-padding-left);
       padding-left: initial;
     }
   }

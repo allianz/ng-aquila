@@ -11,18 +11,22 @@
   border: none;
   margin: 0;
   cursor: pointer;
-  line-height: nx-line-height(2xs);
-  font-weight: nx-font-weight(regular);
-  font-size: nx-font-size(2xs);
+  line-height: v(menu-button-line-height);
+  font-weight: v(menu-button-font-weight);
+  font-size: v(menu-button-font-size);
   width: 100%;
   transition:
     all 0.2s ease,
     padding 0 none;
   text-decoration: none;
-  padding: nx-spacer(m);
+  padding: v(menu-button-padding);
 
   &:hover {
     background: v(menu-button-hover-background-color);
+  }
+
+  &:active {
+    background: v(menu-button-active-background-color);
   }
 
   &.is-expanded {
@@ -63,15 +67,15 @@
   justify-content: center;
   transition: all 0.2s ease;
   transform: rotateZ(0);
-  width: nx-spacer(s);
-  height: nx-spacer(m);
-  margin-right: nx-spacer(2xs);
+  width: v(menu-button-expand-icon-width);
+  height: v(menu-button-expand-icon-height);
+  margin-right: v(menu-button-expand-icon-margin-right);
   flex: 0 0 auto;
-  font-size: nx-font-size(s);
+  font-size: v(menu-button-expand-icon-font-size);
 
   :host-context([dir='rtl']) & {
     margin-right: initial;
-    margin-left: nx-spacer(2xs);
+    margin-left: v(menu-button-expand-icon-margin-right);
   }
 }
 
@@ -81,8 +85,8 @@
   text-overflow: ellipsis;
   flex: 1 1 auto;
   text-align: left;
-  line-height: 1;
-  padding: nx-spacer(3xs) 0;
+  line-height: v(menu-button-label-line-height);
+  padding: v(menu-button-label-padding);
 
   :host-context([dir='rtl']) & {
     text-align: right;
@@ -90,14 +94,14 @@
 }
 
 ::ng-deep .nx-menu-button__icon {
-  margin-right: nx-spacer(s);
-  height: nx-spacer(m);
-  font-weight: nx-font-weight(regular);
+  margin-right: v(menu-button-icon-margin-right);
+  height: v(menu-button-icon-height);
+  font-weight: v(menu-button-icon-font-weight);
   flex: 0 0 auto;
 
   :host-context([dir='rtl']) & {
     margin-right: initial;
-    margin-left: nx-spacer(s);
+    margin-left: v(menu-button-icon-margin-right);
   }
 }
 
