@@ -1371,6 +1371,53 @@ $nx-theme: (
   page-search-icon-color: interactive-primary,
   page-search-background-color: ui-02,
   page-search-box-shadow: none,
+  price-value-color: text-01,
+  price-secondary-color: headline-secondary-color,
+  price-secondary-s-font: 600 12px / 7.944px var(--font-family),
+  price-secondary-s-gap-horizontal: 5px,
+  price-secondary-m-font: 600 12.5px / 8.275px var(--font-family),
+  price-secondary-m-gap-horizontal: 5px,
+  price-secondary-l-font: 600 13.5px / 8.937px var(--font-family),
+  price-secondary-l-gap-horizontal: 5px,
+  price-secondary-xl-font: 600 14.5px / 9.599px var(--font-family),
+  price-secondary-xl-gap-horizontal: 5px,
+  price-secondary-2xl-font: 600 15.75px / 10.427px var(--font-family),
+  price-secondary-2xl-gap-horizontal: 6px,
+  price-secondary-3xl-font: 600 17.25px / 11.42px var(--font-family),
+  price-secondary-3xl-gap-horizontal: 7px,
+  price-secondary-4xl-font: 600 19px / 12.578px var(--font-family),
+  price-secondary-4xl-gap-horizontal: 8px,
+  price-secondary-5xl-font: 600 21.25px / 14.068px var(--font-family),
+  price-secondary-5xl-gap-horizontal: 8px,
+  price-secondary-6xl-font: 600 24px / 15.888px var(--font-family),
+  price-secondary-6xl-gap-horizontal: 9px,
+  price-value-s-font: var(--heading-06-mobile-font-weight) var(--heading-06-mobile-font-size) /
+    var(--heading-06-mobile-line-height) var(--font-family),
+  price-value-s-letter-spacing: heading-06-mobile-letter-spacing,
+  price-value-m-font: var(--heading-05-mobile-font-weight) var(--heading-05-mobile-font-size) /
+    var(--heading-05-mobile-line-height) var(--font-family),
+  price-value-m-letter-spacing: heading-05-mobile-letter-spacing,
+  price-value-l-font: var(--heading-05-mobile-font-weight) var(--heading-04-mobile-font-size) /
+    var(--heading-04-mobile-line-height) var(--font-family),
+  price-value-l-letter-spacing: heading-04-mobile-letter-spacing,
+  price-value-xl-font: var(--heading-03-mobile-font-weight) var(--heading-03-mobile-font-size) /
+    var(--heading-03-mobile-line-height) var(--font-family),
+  price-value-xl-letter-spacing: heading-03-mobile-letter-spacing,
+  price-value-2xl-font: var(--heading-02-mobile-font-weight) var(--heading-02-mobile-font-size) /
+    var(--heading-02-mobile-line-height) var(--font-family),
+  price-value-2xl-letter-spacing: heading-02-mobile-letter-spacing,
+  price-value-3xl-font: var(--heading-01-mobile-font-weight) var(--heading-01-mobile-font-size) /
+    var(--heading-01-mobile-line-height) var(--font-family),
+  price-value-3xl-letter-spacing: heading-01-mobile-letter-spacing,
+  price-value-4xl-font: var(--heading-00-mobile-font-weight) var(--heading-00-mobile-font-size) /
+    var(--heading-00-mobile-line-height) var(--font-family),
+  price-value-4xl-letter-spacing: heading-00-mobile-letter-spacing,
+  price-value-5xl-font: var(--heading-5xl-mobile-font-weight) var(--heading-5xl-mobile-font-size) /
+    var(--heading-5xl-mobile-line-height) var(--font-family),
+  price-value-5xl-letter-spacing: heading-5xl-mobile-letter-spacing,
+  price-value-6xl-font: var(--heading-6xl-mobile-font-weight) var(--heading-6xl-mobile-font-size) /
+    var(--heading-6xl-mobile-line-height) var(--font-family),
+  price-value-6xl-letter-spacing: heading-6xl-mobile-letter-spacing,
   popover-content-font-size: paragraph-03-font-size,
   popover-content-line-height: paragraph-03-line-height,
   popover-content-font-weight: paragraph-03-font-weight,

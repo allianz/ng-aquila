@@ -1,0 +1,16 @@
+<div class="example-row">
+  <div class="example-item">
+    <h4>Default</h4>
+    <nx-price [value]="value" [currency]="currency" />
+  </div>
+  <div class="example-item docs-inverse-container">
+    <h4>Inverse</h4>
+    <nx-price
+      [value]="value"
+      [currency]="currency"
+      [inverse]="true"
+      suffix="monthly"
+      prefix="from"
+    />
+  </div>
+</div>

@@ -1,0 +1,47 @@
+@use '../shared-styles/index' as *;
+
+$price-sizes: s, m, l, xl, 2xl, 3xl, 4xl, 5xl, 6xl;
+
+.nx-price__wrapper {
+  display: inline-flex;
+  align-items: baseline;
+
+  @each $size in $price-sizes {
+    :host.nx-price--#{$size} & {
+      gap: var(--price-secondary-#{$size}-gap-horizontal);
+    }
+  }
+}
+
+.nx-price__prefix-secondary,
+.nx-price__suffix-secondary {
+  color: var(--price-secondary-color);
+  white-space: nowrap;
+
+  @each $size in $price-sizes {
+    :host.nx-price--#{$size} & {
+      font: var(--price-secondary-#{$size}-font);
+    }
+  }
+  :host.nx-price--inverse & {
+    color: var(--negative-secondary);
+  }
+}
+
+.nx-price__value {
+  white-space: nowrap;
+
+  @each $size in $price-sizes {
+    :host.nx-price--#{$size} & {
+      font: var(--price-value-#{$size}-font);
+      letter-spacing: var(--price-value-#{$size}-letter-spacing);
+    }
+  }
+
+  :host.nx-price--inverse & {
+    color: var(--negative);
+  }
+  :host:not(.nx-price--inverse) & {
+    color: var(--price-value-color);
+  }
+}

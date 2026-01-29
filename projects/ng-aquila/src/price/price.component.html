@@ -1,0 +1,15 @@
+<div class="nx-price__wrapper">
+  @if (prefix()) {
+    <div class="nx-price__prefix-secondary-container">
+      <span class="nx-price__prefix-secondary">{{ prefix() }}</span>
+    </div>
+  }
+  <div class="nx-price__price-container">
+    <span class="nx-price__value">{{ formattedPrice().formatted }}</span>
+  </div>
+  @if (suffix()) {
+    <div class="nx-price__suffix-secondary-container">
+      <span class="nx-price__suffix-secondary">{{ suffix() }}</span>
+    </div>
+  }
+</div>
