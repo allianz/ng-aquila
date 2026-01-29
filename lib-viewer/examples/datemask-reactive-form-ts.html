@@ -17,12 +17,7 @@
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">CommonModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-  <span class="hljs-title class_">FormBuilder</span>,
-  <span class="hljs-title class_">FormsModule</span>,
-  <span class="hljs-title class_">ReactiveFormsModule</span>,
-  <span class="hljs-title class_">Validators</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormBuilder</span>, <span class="hljs-title class_">FormsModule</span>, <span class="hljs-title class_">ReactiveFormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 <span class="hljs-keyword">import</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
 
 <span class="hljs-comment">/**
@@ -67,6 +62,6 @@
   }
 
   datemaskForm = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormBuilder</span>().<span class="hljs-title function_">group</span>({
-    <span class="hljs-attr">date</span>: [<span class="hljs-variable language_">this</span>.<span class="hljs-property">customDate</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>],
+    <span class="hljs-attr">date</span>: [<span class="hljs-variable language_">this</span>.<span class="hljs-property">customDate</span>],
   });
 }

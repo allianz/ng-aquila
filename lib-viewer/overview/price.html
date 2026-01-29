@@ -1,0 +1,28 @@
+<h3 id="overview" tabindex="-1" class="docs-markdown--h3">Overview</h3>
+<p class="docs-markdown--p">The Price component displays formatted prices with proper localization and currency formatting. It automatically handles different currency symbols, decimal separators, and thousand separators based on the provided locale using the <code>Intl.NumberFormat</code> API.</p>
+<div nx-docs-example="price-basic" config="{}">exampleID: price-basic</div>
+<h3 id="localization" tabindex="-1" class="docs-markdown--h3">Localization</h3>
+<p class="docs-markdown--p">The component automatically formats prices according to the specified locale (defaults to the application's <code>LOCALE_ID</code>) and currency (defaults to <code>USD</code>).</p>
+<p class="docs-markdown--p"><strong>Examples:</strong></p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><code>en-US</code> with <code>USD</code>: $99.99</li>
+<li class="docs-markdown--li"><code>de-DE</code> with <code>EUR</code>: 99,99€</li>
+<li class="docs-markdown--li"><code>en-GB</code> with <code>GBP</code>: £99.99</li>
+</ul>
+<p class="docs-markdown--p"><strong>Currency Codes:</strong> Use standard ISO 4217 currency codes (USD, EUR, GBP, JPY, etc.).</p>
+<p class="docs-markdown--p"><strong>Locale Strings:</strong> Use standard locale identifiers (en-US, de-DE, fr-FR, etc.). The locale affects:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">Decimal separator (<code>.</code> vs <code>,</code>)</li>
+<li class="docs-markdown--li">Thousand separator (<code>,</code> vs <code>.</code>)</li>
+<li class="docs-markdown--li">Currency symbol position (before or after the value)</li>
+</ul>
+<div nx-docs-example="price-locale" config="{}">exampleID: price-locale</div>
+<h3 id="sizes" tabindex="-1" class="docs-markdown--h3">Sizes</h3>
+<p class="docs-markdown--p">The price component supports 9 size variants: default is <code>m</code> (Medium).</p>
+<div nx-docs-example="price-sizes" config="{}">exampleID: price-sizes</div>
+<h3 id="prefix-and-suffix" tabindex="-1" class="docs-markdown--h3">Prefix and Suffix</h3>
+<p class="docs-markdown--p">Add contextual text before or after the price using <code>prefix</code> and <code>suffix</code> inputs.</p>
+<div nx-docs-example="price-prefix-suffix" config="{}">exampleID: price-prefix-suffix</div>
+<h3 id="inverse" tabindex="-1" class="docs-markdown--h3">Inverse</h3>
+<p class="docs-markdown--p">Use the <code>inverse</code> input to apply inverse styling, suitable for dark backgrounds.</p>
+<div nx-docs-example="price-inverse" config="{}">exampleID: price-inverse</div>

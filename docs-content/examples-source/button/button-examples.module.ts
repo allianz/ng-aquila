@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { AnchorButtonExampleComponent } from './anchor-button/anchor-button-example';
 import { ButtonExampleComponent } from './button/button-example';
 import { ButtonBlockExampleComponent } from './button-block/button-block-example';
-import { ButtonDangerExampleComponent } from './button-danger/button-danger-example';
+import { ButtonCriticalExampleComponent } from './button-critical/button-critical-example';
 import { ButtonIconExampleComponent } from './button-icon/button-icon-example';
 import { ButtonIconIndicatorExampleComponent } from './button-icon-indicator/button-icon-indicator-example';
 import { ButtonLargeExampleComponent } from './button-large/button-large-example';
@@ -24,7 +24,7 @@ import { ButtonWithIconExampleComponent } from './button-with-icon/button-with-i
 const EXAMPLES = [
   ButtonExampleComponent,
   ButtonBlockExampleComponent,
-  ButtonDangerExampleComponent,
+  ButtonCriticalExampleComponent,
   ButtonIconExampleComponent,
   ButtonLargeExampleComponent,
   ButtonMediumExampleComponent,
@@ -55,7 +55,7 @@ export class ButtonExamplesModule {
     return {
       button: ButtonExampleComponent,
       'button-block': ButtonBlockExampleComponent,
-      'button-danger': ButtonDangerExampleComponent,
+      'button-critical': ButtonCriticalExampleComponent,
       'button-icon': ButtonIconExampleComponent,
       'button-large': ButtonLargeExampleComponent,
       'button-medium': ButtonMediumExampleComponent,

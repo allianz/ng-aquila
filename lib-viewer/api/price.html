@@ -1,0 +1,191 @@
+       
+
+<div class="docs-api"><p class="docs-api-module-import">
+        <code>
+            <span class="docs-api-module-import__import-span">import </span>
+            { NxPriceModule }
+            <span class="docs-api-module-import__from-span">from</span>
+            <span class="docs-api-module-import__path-span">'@allianz/ng-aquila/price'</span>;
+        </code>
+    </p><h3 id="components" class="docs-header-link docs-api-h3">
+        <span header-link="components"></span>
+        Components
+    </h3>
+     
+
+<h4 id="NxPriceComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxPriceComponent"></span>
+    <code>NxPriceComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-price</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                currency: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The ISO 4217 currency code (e.g., &#39;USD&#39;, &#39;EUR&#39;).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverse: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether to apply inverse styling, suitable for dark backgrounds.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                locale: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The locale to use for formatting (e.g., &#39;en-US&#39;, &#39;de-DE&#39;). If not provided, uses the application&#39;s LOCALE_ID.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                prefix: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Optional prefix text displayed before the price (e.g., &#39;from&#39;).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                size: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxPriceSize&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The size of the price display. Default is &#39;m&#39; (medium).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                suffix: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Optional suffix text displayed after the price (e.g., &#39;monthly&#39;).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                value: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;number&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The numeric price value to display.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                formattedPrice: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;FormattedPrice&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table> 
+
+ 
+  <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+        <span header-link="additional_type_aliases"></span>
+        Additional type aliases
+    </h3>
+     
+
+<h4 id="NxPriceSize" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxPriceSize"></span>
+    <code>NxPriceSize</code>
+</h4><p class="docs-api-type-alias-description"><p>size of the text price</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'s' | 'm' | 'l' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl'</code>
+</p>
+  </div>

@@ -1,9 +1,43 @@
-<h3 id="basic" tabindex="-1" class="docs-markdown--h3">Basic</h3>
-<p class="docs-markdown--p">You can change the color of the badge by setting the <code>type</code> to either <code>active</code>, <code>positive</code>, <code>critical</code> or <code>negative</code>.</p>
-<div nx-docs-example="badge" config="{}">exampleID: badge</div>
+<div class="docs-hide-ndbx">
+<h3 id="color-schemes" tabindex="-1" class="docs-markdown--h3">Color schemes</h3>
+<p class="docs-markdown--p">You can customize the badge appearance using different color schemes. Available color schemes are:</p>
+<p class="docs-markdown--p"><code>yellow | orange | red | purple | aqua | blue | teal | green | gray</code> which will show the default as <code>yellow</code> colorScheme.</p>
+<p class="docs-markdown--p"><strong>Usage:</strong> <code>&lt;nx-badge colorScheme=&quot;blue&quot;&gt;Badge&lt;/nx-badge&gt;</code></p>
+<div nx-docs-example="badge-color-scheme" config="{}">exampleID: badge-color-scheme</div>
+<h3 id="brand-color-scheme" tabindex="-1" class="docs-markdown--h3">Brand color scheme</h3>
+<p class="docs-markdown--p">The <code>brand</code> color scheme is unlike other color schemes, it is not affected by the <code>prominence</code> input.</p>
+<p class="docs-markdown--p"><strong>Usage:</strong> <code>&lt;nx-badge colorScheme=&quot;brand&quot;&gt;Brand&lt;/nx-badge&gt;</code></p>
+<div nx-docs-example="badge-brand" config="{}">exampleID: badge-brand</div>
+<h3 id="prominence" tabindex="-1" class="docs-markdown--h3">Prominence</h3>
+<p class="docs-markdown--p">The <code>prominence</code> input allows you to control the visual emphasis of the badge. Available options are:</p>
+<p class="docs-markdown--p"><code>subtle | attention</code> which default value is <code>subtle</code></p>
+<p class="docs-markdown--p"><strong>Usage:</strong> <code>&lt;nx-badge colorScheme=&quot;blue&quot; prominence=&quot;subtle&quot;&gt;Badge&lt;/nx-badge&gt;</code></p>
+<p class="docs-markdown--p">Note: The <code>prominence</code> input does not apply to the <code>brand</code> color scheme.</p>
+<div nx-docs-example="badge-prominence" config="{}">exampleID: badge-prominence</div>
 <h3 id="character-badge" tabindex="-1" class="docs-markdown--h3">Character badge</h3>
 <p class="docs-markdown--p">If the text contains only one character, the badge will be displayed as a circle.</p>
 <div nx-docs-example="badge-character" config="{}">exampleID: badge-character</div>
-<h3 id="vibrant" tabindex="-1" class="docs-markdown--h3">Vibrant</h3>
+<h3 id="disabled-state" tabindex="-1" class="docs-markdown--h3">Disabled state</h3>
+<p class="docs-markdown--p">Badges can be disabled using the <code>disabled</code> input.</p>
+<p class="docs-markdown--p"><strong>Usage:</strong> <code>&lt;nx-badge disabled&gt;Badge&lt;/nx-badge&gt;</code></p>
+<div nx-docs-example="badge-disabled" config="{}">exampleID: badge-disabled</div>
+<h3 id="inverse" tabindex="-1" class="docs-markdown--h3">Inverse</h3>
+<p class="docs-markdown--p">For use on dark backgrounds, add <code>inverse</code> input to use inverse color schemes.</p>
+<p class="docs-markdown--p"><strong>Usage:</strong> <code>&lt;nx-badge inverse&gt;Badge&lt;/nx-badge&gt;</code></p>
+<div nx-docs-example="badge-inverse" config="{}">exampleID: badge-inverse</div>
+</div>
+<div class="docs-hide-a1">
+<h3 id="ndbx-approach" tabindex="-1" class="docs-markdown--h3">NDBX approach</h3>
+<div class="docs-deprecation-warning">
+  The <code>type</code> and <code>vibrant</code> inputs are the NDBX theme approach and should be used together if needed. They cannot be mixed with the new inputs (<code>colorScheme</code>, <code>prominence</code>, <code>disabled</code>, <code>inverse</code>).
+</div>
+<h4 id="type" tabindex="-1" class="docs-markdown--h4">Type</h4>
+<p class="docs-markdown--p">You can change the color of the badge by setting the <code>type</code> to either <code>active</code>, <code>positive</code>, <code>critical</code> or <code>negative</code>.</p>
+<div nx-docs-example="badge" config="{}">exampleID: badge</div>
+<h4 id="vibrant" tabindex="-1" class="docs-markdown--h4">Vibrant</h4>
 <p class="docs-markdown--p">In order to use the vibrant styling of the badge, you can simply apply the <code>vibrant</code> input to the badge.</p>
 <div nx-docs-example="badge-vibrant" config="{}">exampleID: badge-vibrant</div>
+<h4 id="character-badge-1" tabindex="-1" class="docs-markdown--h4">Character badge</h4>
+<p class="docs-markdown--p">If the text contains only one character, the badge will be displayed as a circle.</p>
+<div nx-docs-example="badge-character-ndbx" config="{}">exampleID: badge-character-ndbx</div>
+</div>

@@ -1,0 +1,16 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPriceComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/price&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Price with prefix and suffix
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;price-prefix-suffix-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./price-prefix-suffix-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./price-prefix-suffix-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxPriceComponent</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PricePrefixSuffixExampleComponent</span> {
+  value = <span class="hljs-number">29.99</span>;
+  currency = <span class="hljs-string">&#x27;USD&#x27;</span>;
+}

@@ -25,12 +25,6 @@
   <strong>Note:</strong> This is a technical demo for column reordering and is not a fully supported component. Additional implementation is required to ensure proper accessibility, UX, and design before using it in production.
 </div>
  <div nx-docs-example="table-column-reorder" config="{}">exampleID: table-column-reorder</div>
-<h3 id="column-resize" tabindex="-1" class="docs-markdown--h3">Column resize</h3>
-<p class="docs-markdown--p">To let users adjust the width of a column in your table, you can add a resize handler in column header by using <code>nxHeaderResize</code> directive into <code>nxHeaderCell</code> element.</p>
-<div class="docs-deprecation-warning">
-  <strong><code>nxTableCellClip</code></strong> directive was deprecated since it was violating WCAG accessibility criteria. See the <a href="./documentation/table/overview#accessibility">Accessibility</a> section for more info.
-</div>
- <div nx-docs-example="table-column-resize" config="{}">exampleID: table-column-resize</div>
 <h3 id="localization" tabindex="-1" class="docs-markdown--h3">Localization</h3>
 <p class="docs-markdown--p">For <strong>localization</strong> please use the provider <code>NxHeaderSortIntl</code> which contains some labels for screen reader users. By default the labels are in english.</p>
 <pre><code class="language-ts"><span class="hljs-meta">@Injectable</span>()
@@ -80,3 +74,7 @@
 </div>
 <h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">Content should not be clipped, find more info on the <a href="https://www.w3.org/WAI/WCAG21/Understanding/reflow.html">WCAG criteria</a>. If clipping/cropping is strictly required it can be done via custom css. In that case it's necessary to make the full content accessible through other means. Align with your accessibility expert if clipping of content is required.</p>
+<p class="docs-markdown--p">It is essential for users that column labels are fully visible, even when the text is enlarged. Therefore, it is important to ensure meaningful naming and sufficient column width during the design and implementation phases.</p>
+<div class="docs-private">
+  To reduce complexity, the option to adjust column widths via the keyboard has been omitted. For very complex and extensive table layouts, the use of a data grid is recommended, as this allows all users to adjust column widths via the keyboard. We recommend using AG Grid. 
+</div> 

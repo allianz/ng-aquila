@@ -51,6 +51,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'icon': return import('../examples/icon/icon-examples.module').then(m => m.IconExamplesModule);
             case 'image': return import('../examples/image/image-examples.module').then(m => m.ImageExamplesModule);
             case 'indicator': return import('../examples/indicator/indicator-examples.module').then(m => m.IndicatorExamplesModule);
+            case 'info-icon': return import('../examples/info-icon/info-icon-examples.module').then(m => m.InfoIconExamplesModule);
             case 'input': return import('../examples/input/input-examples.module').then(m => m.InputExamplesModule);
             case 'label': return import('../examples/label/label-examples.module').then(m => m.LabelExamplesModule);
             case 'layout': return import('../examples/layout/layout-examples.module').then(m => m.LayoutExamplesModule);
@@ -70,6 +71,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'patterns-blog': return import('../examples/patterns-blog/patterns-blog-examples.module').then(m => m.PatternExamplesModule);
             case 'phone-input': return import('../examples/phone-input/phone-input-examples.module').then(m => m.PhoneInputExamplesModule);
             case 'popover': return import('../examples/popover/popover-examples.module').then(m => m.PopoverExamplesModule);
+            case 'price': return import('../examples/price/price-examples.module').then(m => m.PriceExamplesModule);
             case 'progress-stepper': return import('../examples/progress-stepper/progress-stepper-examples.module').then(m => m.ProgressExamplesModule);
             case 'progressbar': return import('../examples/progressbar/progressbar-examples.module').then(m => m.ProgressbarExamplesModule);
             case 'radio-button': return import('../examples/radio-button/radio-button-examples.module').then(m => m.RadioExamplesModule);

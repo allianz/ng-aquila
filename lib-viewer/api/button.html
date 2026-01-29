@@ -40,14 +40,49 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>block</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                blockInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, BooleanInput&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>critical</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                criticalInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, BooleanInput&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the button performs a critical action.</p>
+<p>Formerly called &#39;danger&#39;</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 disabled: 
                 </span>
                  
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, BooleanInput&gt;</span>
             </code>
         </p>
     </td>
@@ -75,6 +110,40 @@
    
 
 <tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>negative</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                negativeInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, BooleanInput&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>size</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                sizeInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxButtonSize&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
@@ -82,6 +151,22 @@
                 </span>
                  
                 <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                appearance: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxButtonType</span>
             </code>
         </p>
     </td>
@@ -113,7 +198,23 @@
                 classNames: 
                 </span>
                  
-                <span class="docs-api-property__type">string</span>
+                <span class="docs-api-property__type">&quot;&quot; | NxButtonType | ({} &amp; string)</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                critical: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
     </td>
@@ -158,10 +259,58 @@
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
+                properties: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;{ appearance: NxButtonType; size: NxButtonSize; danger: boolean; negative: boolean; block: boolean; }&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                size: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxButtonSize</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
                 spinnerNegative: 
                 </span>
                  
                 <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                type: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxButtonType</span>
             </code>
         </p>
     </td>
@@ -219,14 +368,49 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>block</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                blockInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, BooleanInput&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>critical</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                criticalInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, BooleanInput&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the button performs a critical action.</p>
+<p>Formerly called &#39;danger&#39;</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 disabled: 
                 </span>
                  
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, BooleanInput&gt;</span>
             </code>
         </p>
     </td>
@@ -254,6 +438,40 @@
    
 
 <tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>negative</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                negativeInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, BooleanInput&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>size</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                sizeInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxButtonSize&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
@@ -261,6 +479,22 @@
                 </span>
                  
                 <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                appearance: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxButtonType</span>
             </code>
         </p>
     </td>
@@ -292,7 +526,23 @@
                 classNames: 
                 </span>
                  
-                <span class="docs-api-property__type">string</span>
+                <span class="docs-api-property__type">&quot;&quot; | NxButtonType | ({} &amp; string)</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                critical: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
             </code>
         </p>
     </td>
@@ -337,10 +587,58 @@
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
+                properties: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;{ appearance: NxButtonType; size: NxButtonSize; danger: boolean; negative: boolean; block: boolean; }&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                size: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxButtonSize</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
                 spinnerNegative: 
                 </span>
                  
                 <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                type: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxButtonType</span>
             </code>
         </p>
     </td>
@@ -395,14 +693,30 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>nxPlainButton</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                classNames: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 critical: 
                 </span>
                  
-                <span class="docs-api-property__type">BooleanInput</span>
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, BooleanInput&gt;</span>
             </code>
         </p>
     </td>
@@ -414,14 +728,13 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 disabled: 
                 </span>
                  
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, BooleanInput&gt;</span>
             </code>
         </p>
     </td>
@@ -493,22 +806,6 @@
                 </span>
                  
                 <span class="docs-api-property__type">boolean</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        </td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">
-                classNames: 
-                </span>
-                 
-                <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>

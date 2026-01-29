@@ -1,0 +1,19 @@
+<div class="example-row">
+  <div class="example-item">
+    <h4 class="label">With prefix</h4>
+    <nx-price [value]="value" [currency]="currency" prefix="from" />
+  </div>
+  <div class="example-item">
+    <h4 class="label">With suffix</h4>
+    <nx-price [value]="value" [currency]="currency" suffix="monthly" />
+  </div>
+  <div class="example-item">
+    <h4 class="label">With both</h4>
+    <nx-price
+      [value]="value"
+      [currency]="currency"
+      prefix="from"
+      suffix="per month"
+    />
+  </div>
+</div>

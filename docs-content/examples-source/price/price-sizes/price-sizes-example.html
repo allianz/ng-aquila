@@ -1,0 +1,12 @@
+@for (size of sizes; track size) {
+<div class="nx-margin-bottom-m">
+  <span class="nx-margin-right-m">{{ size.toUpperCase() }} </span>
+  <nx-price
+    [value]="value"
+    [currency]="currency"
+    [size]="size"
+    [prefix]="prefix"
+    [suffix]="suffix"
+  />
+</div>
+}
