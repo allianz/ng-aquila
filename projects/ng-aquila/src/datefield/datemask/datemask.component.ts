@@ -2,6 +2,7 @@ import { NxFormfieldComponent, NxFormfieldControl } from '@allianz/ng-aquila/for
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { isPlatformBrowser } from '@angular/common';
 import {
   AfterContentInit,
   AfterViewInit,
@@ -22,6 +23,7 @@ import {
   model,
   ModelSignal,
   OnInit,
+  PLATFORM_ID,
   runInInjectionContext,
   Signal,
   signal,
@@ -189,6 +191,45 @@ export class NxDatemaskComponent<D>
   protected readonly _yearValue: ModelSignal<string | null> = model<string | null>(null);
 
   /**
+   * @docs-private
+   * Computed width for day input
+   */
+  protected readonly _dayInputWidth = computed(() =>
+    this._computeInputWidth(
+      this._dayValue(),
+      this.datemaskIntl?.dayInputPlaceholder() || 'dd',
+      2,
+      this._dayInput()?.elementRef.nativeElement,
+    ),
+  );
+
+  /**
+   * @docs-private
+   * Computed width for month input
+   */
+  protected readonly _monthInputWidth = computed(() =>
+    this._computeInputWidth(
+      this._monthValue(),
+      this.datemaskIntl?.monthInputPlaceholder() || 'mm',
+      2,
+      this._monthInput()?.elementRef.nativeElement,
+    ),
+  );
+
+  /**
+   * @docs-private
+   * Computed width for year input
+   */
+  protected readonly _yearInputWidth = computed(() =>
+    this._computeInputWidth(
+      this._yearValue(),
+      this.datemaskIntl?.yearInputPlaceholder() || 'yyyy',
+      4,
+      this._yearInput()?.elementRef.nativeElement,
+    ),
+  );
+
+  /**
    * Whether the date parsing should be strict
    * @default true
    */
@@ -264,6 +305,8 @@ export class NxDatemaskComponent<D>
   private readonly _yearInput = viewChild.required(NxDatemaskYearInput);
 
   private readonly _datemaskContainer = viewChild<ElementRef>('datemaskContainer');
+
+  private _textMeasureContext?: CanvasRenderingContext2D | null;
 
   /**
    * The separator that will be shown in Browser.
@@ -972,5 +1015,58 @@ export class NxDatemaskComponent<D>
     }
 
     return false;
+  }
+  private readonly _platformId = inject(PLATFORM_ID);
+
+  private _getTextMeasureContext(): CanvasRenderingContext2D | null {
+    if (!isPlatformBrowser(this._platformId)) {
+      return null;
+    }
+
+    if (!this._textMeasureContext) {
+      const canvas = document.createElement('canvas');
+      this._textMeasureContext = canvas.getContext('2d');
+    }
+    return this._textMeasureContext;
+  }
+
+  private _measureTextWidth(text: string | null, inputElement?: HTMLInputElement): number {
+    if (!text) {
+      return 0;
+    }
+
+    const context = this._getTextMeasureContext();
+    if (!context) {
+      return 0;
+    }
+
+    if (inputElement) {
+      const computedStyle = window.getComputedStyle(inputElement);
+      context.font = computedStyle.font;
+    }
+
+    return Math.ceil(context.measureText(text).width);
+  }
+
+  private _computeInputWidth(
+    value: string | null,
+    placeholder: string,
+    maxInputLength: number,
+    inputElement?: HTMLInputElement,
+  ): string {
+    if (!value) {
+      const placeholderWidth = this._measureTextWidth(placeholder, inputElement);
+      return `${placeholderWidth}px`;
+    }
+    if (value.length === maxInputLength) {
+      const valueWidth = this._measureTextWidth(value, inputElement);
+      return `${Math.ceil(valueWidth)}px`;
+    }
+
+    const effectiveText = value && value.length > 0 ? value : placeholder;
+    const textWidth = this._measureTextWidth(effectiveText, inputElement);
+    const digitWidth = this._measureTextWidth('0', inputElement);
+    const inputValueWidth = Math.max(textWidth, digitWidth * maxInputLength);
+    return `${Math.ceil(inputValueWidth)}px`;
   }
 }

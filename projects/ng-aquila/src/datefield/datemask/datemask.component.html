@@ -21,6 +21,7 @@
           nxDatemaskDay
           nxDatemaskInput
           maxlength="2"
+          [style.width]="_dayInputWidth()"
           [readonly]="readonly"
           [disabled]="disabled"
           [attr.aria-label]="datemaskIntl?.dayInputAriaLabel() || 'Day'"
@@ -41,6 +42,7 @@
           nxDatemaskMonth
           nxDatemaskInput
           maxlength="2"
+          [style.width]="_monthInputWidth()"
           [readonly]="readonly"
           [disabled]="disabled"
           [attr.aria-label]="datemaskIntl?.monthInputAriaLabel() || 'Month'"
@@ -61,6 +63,7 @@
           nxDatemaskYear
           nxDatemaskInput
           maxlength="4"
+          [style.width]="_yearInputWidth()"
           [readonly]="readonly"
           [disabled]="disabled"
           [attr.aria-label]="datemaskIntl?.yearInputAriaLabel() || 'Year'"
