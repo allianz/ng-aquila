@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [21.2.0](https://github.com/allianz/ng-aquila/compare/v21.1.0...v21.2.0) (2026-01-29)
+
+### New components: price and info-icon
+We just added two new components. One for showing prices which formats the price based on the locale. Additional layouts coming soon.
+And a component for the info-icon that reduces the API and code needed compared to the popover to show most of the needed info icon overlays.
+
+### Explicit inputs for buttons
+The buttons now have explicit options instead of the string based inputs like `nxButton="primary small block`. Now you can set these individually and type safe `nxButton="primary" size="small" block`.
+
+### Documentation 📚
+
+* a1 component docs ([8e4cb32](https://github.com/allianz/ng-aquila/commit/8e4cb326b5f7eb0b3e48d1262e4152cc7c3043fa))
+
+
+### Bug Fixes 🐛
+
+* **data-display:** prevent long label & value from content overflowing ([6f4634f](https://github.com/allianz/ng-aquila/commit/6f4634f1906acda6e6c0a28248e0186d9d980c86))
+* **date-range:** adjust overflow handling and text overflow for input ([1646481](https://github.com/allianz/ng-aquila/commit/16464819a614c7afec03ddfa156147da9030aec7))
+* **datemask:** calculate width of the input fields dynamically ([41069b0](https://github.com/allianz/ng-aquila/commit/41069b02303418180075e4eab402961e449fbade))
+* **datemask:** return parse error on incomplete dates ([85f83f9](https://github.com/allianz/ng-aquila/commit/85f83f983ed4ff96c0c7e9952ade65b79593b0c2))
+* **modal:** change animation event ([8022109](https://github.com/allianz/ng-aquila/commit/80221090fccbe15aa4b21011b6a130a36d2e30ba))
+* **multi-select:** double value announcement with screen readers ([e92f075](https://github.com/allianz/ng-aquila/commit/e92f07545cb19621ee9ee5e1c7a379a479bcfb1e))
+* **tab-group:** remove debug text ([e6e7936](https://github.com/allianz/ng-aquila/commit/e6e7936ed179dcb5f5906fbd66e0b5737350d3ad))
+* **tile:** make checkbox indicator bg color on tile transparent ([4929516](https://github.com/allianz/ng-aquila/commit/4929516b9184d90d733b6c368ae58404baee09af))
+* **timefield:** fix focus border when click ([f73f872](https://github.com/allianz/ng-aquila/commit/f73f872a4acd96e89cded28a5b8a7fe8aa1f5c16))
+* **toast:** add id to our aria-live ([d1e6d7a](https://github.com/allianz/ng-aquila/commit/d1e6d7a4196da338800517c32959f9fe35037b12))
+
+
+### Features ✨
+
+* **badge:** a1 full implementation ([2ef40e7](https://github.com/allianz/ng-aquila/commit/2ef40e77b305846e128f9036d89c5cb0ed2c5d5e))
+* **button:** add separate inputs for different properties ([d88e475](https://github.com/allianz/ng-aquila/commit/d88e475fa65aa084b818c6f23ce14f5d99a2e6f4))
+* **data-display:** tokenize data-display component ([1a2d13d](https://github.com/allianz/ng-aquila/commit/1a2d13d2ee91b5f89fa4b07614732aebcb7716f6))
+* **indicator:** a1 light mapping ([f306124](https://github.com/allianz/ng-aquila/commit/f306124807a68ff5774449fee4ffdc2ccc6d76ba))
+* **info-icon:** add new Info Icon component with popover functionality ([e9ee405](https://github.com/allianz/ng-aquila/commit/e9ee40557ff63e7e85de84d8255dcce5743b778e))
+* **menu:** tokenize menu component ([3950a40](https://github.com/allianz/ng-aquila/commit/3950a4013bbbcc8636a42395e12b1dbae50043d8))
+* **popover:** layout update ([a0aa6b3](https://github.com/allianz/ng-aquila/commit/a0aa6b3ab1eb1f18c7b48f7259d4b5caa56bd266))
+* **price:** add price component ([09b9fc8](https://github.com/allianz/ng-aquila/commit/09b9fc8cfec5d361951385f31235e3da6606d57f))
+* **tile:** update styling ([31960f7](https://github.com/allianz/ng-aquila/commit/31960f746ef408c1f634166e6d870a8c62cbc734))
+
 ## [21.1.0](https://github.com/allianz/ng-aquila/compare/v21.0.0...v21.1.0) (2025-12-23)
 
 
