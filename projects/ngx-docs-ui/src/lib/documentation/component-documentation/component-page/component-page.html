@@ -16,7 +16,7 @@
   <h1 class="component-overview__header">{{componentDescriptor?.title}}</h1>
   @if(!aquilaThemeActive()) { @if(componentDescriptor?.a1Light || componentDescriptor?.a1Densities)
   {
-  <nx-badge type="default">A1 Light</nx-badge>
+  <nx-badge colorScheme="gray" prominence="subtle">A1 Light</nx-badge>
   } @if(componentDescriptor?.a1Densities) {
   <nx-badge type="active">A1 Densities</nx-badge>
   } @if(componentDescriptor?.a1Full) {

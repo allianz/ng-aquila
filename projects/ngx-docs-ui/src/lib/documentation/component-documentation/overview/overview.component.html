@@ -6,7 +6,11 @@
       of each component with the different A1 support levels:
       <div class="status-explanation">
         <div>
-          <nx-badge class="nxv-components-table__status-badge" type="default">
+          <nx-badge
+            class="nxv-components-table__status-badge"
+            colorScheme="gray"
+            prominence="subtle"
+          >
             <div class="badge-content-centered">
               <nx-icon name="check" size="auto"></nx-icon>
               A1 Light
@@ -88,7 +92,11 @@
               >
                 @if (!themeService.selectedTheme().name.includes('aquila')) {
                   @if (component.component.a1Light || component.component.a1Densities) {
-                    <nx-badge class="nxv-components-table__status-badge" type="default">
+                    <nx-badge
+                      class="nxv-components-table__status-badge"
+                      colorScheme="gray"
+                      prominence="subtle"
+                    >
                       <div class="badge-content-centered">
                         <nx-icon name="check" size="auto"></nx-icon>
                         A1 Light
