@@ -43,9 +43,11 @@ $action-bar-height: nx-spacer(2xl);
   // isn't set, we have to inherit the min and max values explicitly.
   min-height: inherit;
   max-height: inherit;
+
+  --transitionDuration: #{$modal-normal-duration};
   transition:
-    opacity $modal-normal-duration $modal-normal-enter-easing,
-    transform $modal-normal-duration $modal-normal-enter-easing;
+    opacity var(--transitionDuration) $modal-normal-enter-easing,
+    transform var(--transitionDuration) $modal-normal-enter-easing;
   opacity: 0; // Initial state
 
   // Initial state for non-fullscreen modals (before animation)

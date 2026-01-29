@@ -121,24 +121,32 @@ export class NxModalRef<T, R = any> {
         take(1),
       )
       .subscribe(() => {
+        this._state = NxModalState.CLOSING;
         this._beforeClosed.next(modalResult);
         this._beforeClosed.complete();
-        this._state = NxModalState.CLOSED;
         this._overlayRef.detachBackdrop();
-
         // The logic that disposes of the overlay depends on the exit animation completing, however
         // it isn't guaranteed if the parent view is destroyed while it's running. Add a fallback
         // timeout which will clean everything up if the animation hasn't fired within the specified
         // amount of time plus 100ms. We don't need to run this outside the NgZone, because for the
         // vast majority of cases the timeout will have been cleared before it has the chance to fire.
+        const delayBuffer = 200;
         this._closeFallbackTimeout = setTimeout(() => {
           this._overlayRef.dispose();
-        }, 400); // TODO: Replace with actual animation duration.
+        }, this._containerInstance.getAnimationDuration() + delayBuffer);
+      });
+
+    this._containerInstance._animationStateChanged
+      .pipe(
+        filter((state) => state === 'closed'),
+        take(1),
+      )
+      .subscribe(() => {
+        this._state = NxModalState.CLOSED;
       });
 
     // Start the exit animation
     this._containerInstance._startExitAnimation();
-    this._state = NxModalState.CLOSING;
   }
 
   /**

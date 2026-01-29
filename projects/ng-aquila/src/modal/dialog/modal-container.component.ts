@@ -24,6 +24,7 @@ import {
   OnDestroy,
   OnInit,
   Optional,
+  signal,
   ViewChild,
 } from '@angular/core';
 
@@ -60,11 +61,9 @@ export type AnimationState = 'opening' | 'opened' | 'closing' | 'closed';
     '[attr.aria-label]': '_config.ariaLabel',
     '[attr.aria-describedby]': '_config.ariaDescribedBy || null',
     '[class.is-expert]': '_isExpert',
-    '[class.nx-modal-container--entering]': '_state === "enter"',
-    '[class.nx-modal-container--exiting]': '_state === "exit"',
+    '[class.nx-modal-container--entering]': 'animationState() === "enter"',
+    '[class.nx-modal-container--exiting]': 'animationState() === "exit"',
     '[class.nx-modal-container--fullscreen]': '_config.fullscreen',
-    '(transitionstart)': '_onTransitionStart($event)',
-    '(transitionend)': '_onTransitionEnd($event)',
   },
   imports: [NxIconModule, CdkPortalOutlet, NxButtonModule],
 })
@@ -81,7 +80,9 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
   private _elementFocusedBeforeDialogWasOpened: HTMLElement | null = null;
 
   /** State of the modal animation. */
-  _state: 'void' | 'enter' | 'exit' = 'enter';
+  readonly animationState = signal<'void' | 'enter' | 'exit'>('enter');
+
+  private readonly _hostElement: HTMLElement = this._elementRef.nativeElement;
 
   /** Emits when an animation state changes. */
   readonly _animationStateChanged = new EventEmitter<AnimationState>();
@@ -97,6 +98,15 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
 
   /** for appearance of modal */
   _isExpert = false;
+  /** Timeout handles for animation callbacks */
+  private _enterAnimationTimeout?: ReturnType<typeof setTimeout>;
+  private _exitAnimationTimeout?: ReturnType<typeof setTimeout>;
+  /** Duration of the animation in milliseconds. */
+  getAnimationDuration(): number {
+    return (
+      parseFloat(getComputedStyle(this._hostElement).getPropertyValue('--transitionDuration')) || 0
+    );
+  }
 
   constructor(
     private readonly _elementRef: ElementRef,
@@ -126,6 +136,13 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
 
   ngOnDestroy(): void {
     this._focusMonitor.stopMonitoring(this._closeButton);
+    // Clear any pending animation timeouts to prevent accessing destroyed injector
+    if (this._enterAnimationTimeout) {
+      clearTimeout(this._enterAnimationTimeout);
+    }
+    if (this._exitAnimationTimeout) {
+      clearTimeout(this._exitAnimationTimeout);
+    }
   }
 
   /**
@@ -138,6 +155,8 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
     }
 
     this._savePreviouslyFocusedElement();
+    this._startEnterAnimation();
+
     return this._portalOutlet.attachComponentPortal(portal);
   }
 
@@ -151,6 +170,8 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
     }
 
     this._savePreviouslyFocusedElement();
+    this._startEnterAnimation();
+
     return this._portalOutlet.attachTemplatePortal(portal);
   }
 
@@ -165,6 +186,8 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
     }
 
     this._savePreviouslyFocusedElement();
+    this._startEnterAnimation();
+
     return this._portalOutlet.attachDomPortal(portal);
   };
 
@@ -287,46 +310,27 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
     }
   }
 
-  /** Callback, invoked whenever an animation on the host completes. */
-  _onTransitionEnd(event: TransitionEvent) {
-    // Only handle transitions on the host element itself, not from children
-    if (event.target !== this._elementRef.nativeElement) {
-      return;
-    }
-    // Check property name to determine which transition finished
-    const propertyName = event.propertyName;
-    const currentState = this._state;
+  private _startEnterAnimation(): void {
+    this._animationStateChanged.emit('opening');
 
-    // For enter transitions (opacity or transform)
-    if (currentState === 'enter' && propertyName === 'transform') {
-      // Only trap focus when all transitions complete (wait for transform which typically finishes last)
+    this._enterAnimationTimeout = setTimeout(() => {
       this._trapFocus();
       this._animationStateChanged.emit('opened');
-    }
-
-    // For exit transitions (opacity or transform)
-    if (currentState === 'exit' && propertyName === 'transform') {
-      // Only restore focus when all transitions complete (wait for transform which typically finishes last)
-      this._restoreFocus();
-      this._animationStateChanged.emit('closed');
-    }
-  }
-
-  _onTransitionStart(event: TransitionEvent) {
-    // Only handle transitions on the host element itself, not from children
-    if (event.target !== this._elementRef.nativeElement) {
-      return;
-    }
-    this._animationStateChanged.emit(this._state === 'enter' ? 'opening' : 'closing');
+    }, this.getAnimationDuration());
   }
 
   /** Starts the modal exit animation. */
   _startExitAnimation(): void {
-    this._state = 'exit';
+    if (this._enterAnimationTimeout) {
+      clearTimeout(this._enterAnimationTimeout);
+    }
+    this.animationState.set('exit');
+    this._animationStateChanged.emit('closing');
 
-    // Mark the container for check so it can react if the
-    // view container is using OnPush change detection.
-    this._cdr.markForCheck();
+    this._exitAnimationTimeout = setTimeout(() => {
+      this._restoreFocus();
+      this._animationStateChanged.emit('closed');
+    }, this.getAnimationDuration());
   }
 
   _closeButtonClick() {
