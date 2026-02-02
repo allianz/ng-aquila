@@ -15,17 +15,22 @@
   @if ($attention) {
     background-color: v(color-attention-#{$color});
     color: v(color-on-attention-resting);
-    &:disabled {
-      background-color: v(avatar-color-attention-disabled);
-      color: v(avatar-color-on-attention-disabled);
-    }
   } @else {
     background-color: v(color-subtle-#{$color});
     color: v(color-on-subtle-#{$color});
-    &:disabled {
-      background-color: v(avatar-color-subtle-disabled);
-      color: v(avatar-color-on-subtle-disabled);
-    }
+  }
+}
+
+:host.nx-avatar--disabled {
+  cursor: not-allowed;
+  opacity: v(avatar-disabled-opacity);
+
+  color: v(avatar-color-on-subtle-disabled) !important;
+  background-color: v(avatar-color-subtle-disabled) !important;
+
+  &.is-attention {
+    background-color: v(avatar-color-attention-disabled) !important;
+    color: v(avatar-color-on-attention-disabled) !important;
   }
 }
 
@@ -127,6 +132,9 @@
   &:disabled {
     cursor: not-allowed;
     opacity: v(avatar-disabled-opacity);
+    ::ng-deep .nx-image {
+      opacity: v(avatar-image-disabled-opacity);
+    }
   }
 
   &:focus {

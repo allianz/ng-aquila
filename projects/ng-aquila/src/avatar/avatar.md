@@ -22,6 +22,10 @@ Depending on the use case the avatar can be used as a non-clickable element or a
 
 <!-- example(avatar-button) -->
 
+### Disabled
+
+<!-- example(avatar-disabled) -->
+
 ### Size
 
 The size of the avatar can be chosen with the `[size]` property.

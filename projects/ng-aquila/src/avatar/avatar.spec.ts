@@ -36,6 +36,8 @@ describe('NxAvatarComponent', () => {
         AvatarButton,
         ConfigurableAvatar,
         AvatarWithAccent,
+        ConfigurableDisabledAvatar,
+        DisabledAvatarWithAccent,
       ],
     }).compileComponents();
   }));
@@ -118,6 +120,32 @@ describe('NxAvatarComponent', () => {
       expect(avatarElement).toHaveClass('nx-avatar--accent-attention-red');
     });
   });
+
+  describe('disabled', () => {
+    it('should apply disabled class when disabled is true', () => {
+      createTestComponent(ConfigurableDisabledAvatar);
+      expect(avatarElement).toHaveClass('nx-avatar--disabled');
+    });
+
+    it('should update disabled class on input change', () => {
+      createTestComponent(ConfigurableDisabledAvatar);
+      expect(avatarElement).toHaveClass('nx-avatar--disabled');
+
+      (testInstance as any).disabled = false;
+      fixture.detectChanges();
+      expect(avatarElement).not.toHaveClass('nx-avatar--disabled');
+
+      (testInstance as any).disabled = true;
+      fixture.detectChanges();
+      expect(avatarElement).toHaveClass('nx-avatar--disabled');
+    });
+
+    it('should apply disabled class with attention state', () => {
+      createTestComponent(DisabledAvatarWithAccent);
+      expect(avatarElement).toHaveClass('nx-avatar--disabled');
+      expect(avatarElement).toHaveClass('is-attention');
+    });
+  });
 });
 
 @Component({
@@ -168,3 +196,17 @@ class AvatarWithAccent extends AvatarTest {
   accentColor: NxAvatarAccent = 'default';
   attention = false;
 }
+
+@Component({
+  template: `<div nxAvatar [disabled]="disabled">MD</div>`,
+  imports: [NxAvatarModule, NxIconModule],
+})
+class ConfigurableDisabledAvatar extends AvatarTest {
+  disabled = true;
+}
+
+@Component({
+  template: `<div nxAvatar [disabled]="true" [attention]="true" [accentColor]="'blue'">MD</div>`,
+  imports: [NxAvatarModule, NxIconModule],
+})
+class DisabledAvatarWithAccent extends AvatarTest {}

@@ -3,12 +3,12 @@ import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { NxFigureComponent } from '@allianz/ng-aquila/image';
 import { Component } from '@angular/core';
 /**
- * @title Button example
+ * @title Disabled example
  */
 @Component({
-  selector: 'avatar-button-example',
-  templateUrl: './avatar-button-example.html',
-  styleUrls: ['./avatar-button-example.css'],
+  selector: 'avatar-disabled-example',
+  templateUrl: './avatar-disabled-example.html',
+  styleUrls: ['./avatar-disabled-example.css'],
   imports: [NxAvatarComponent, NxIconComponent, NxFigureComponent],
 })
-export class AvatarButtonExampleComponent {}
+export class AvatarDisabledExampleComponent {}
