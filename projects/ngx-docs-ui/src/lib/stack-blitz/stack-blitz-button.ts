@@ -16,13 +16,10 @@ import { StackBlitzWriter } from './stack-blitz-writer';
 })
 export class StackBlitzButton {
   /**
-   * The button becomes disabled if the user hovers over the button before the StackBlitz form
-   * is created. After the form is created, the button becomes enabled again.
-   * The form creation usually happens extremely quickly, but we handle the case of the
-   * StackBlitz not yet being ready for people with poor network connections or slow devices.
+   * The button becomes disabled if the user hovers over the button before the example data
+   * is loaded.
    */
   isDisabled = false;
-  stackBlitzForm!: HTMLFormElement;
   exampleData!: ExampleData;
   exampleDescriptor!: ExampleDescriptor;
 
@@ -47,37 +44,16 @@ export class StackBlitzButton {
   ) {}
 
   openStackBlitz(): void {
-    if (this.stackBlitzForm) {
-      // Second click
-      this.submitStackBlitzForm();
-    } else {
-      // First click
-      this.stackBlitzWriter
-        .constructStackBlitzForm(
-          this.exampleDescriptor.id,
-          this.exampleDescriptor.module,
-          this.exampleData,
-          this.exampleDescriptor.id.includes('harness'),
-        )
-        .then((stackBlitzForm: HTMLFormElement) => {
-          // This delay could trigger the browser's popup blocker if it takes too long
-          // The user can either allow the popup or do a second click, when the form is
-          // already constructed and set below
-          this.stackBlitzForm = stackBlitzForm;
-
-          this.submitStackBlitzForm();
-        });
-    }
-  }
-
-  submitStackBlitzForm(): void {
-    // When the form is submitted, it must be in the document body. The standard of forms is not
-    // to submit if it is detached from the document. See the following chromium commit for
-    // more details:
-    // https://chromium.googlesource.com/chromium/src/+/962c2a22ddc474255c776aefc7abeba00edc7470%5E!
-    document.body.appendChild(this.stackBlitzForm);
-    this.stackBlitzForm.submit();
-    document.body.removeChild(this.stackBlitzForm);
+    this.stackBlitzWriter
+      .openStackBlitzProject(
+        this.exampleDescriptor.id,
+        this.exampleDescriptor.module,
+        this.exampleData,
+        this.exampleDescriptor.id.includes('harness'),
+      )
+      .catch((error) => {
+        console.error('Failed to open StackBlitz:', error);
+      });
   }
 }
 

@@ -37,7 +37,7 @@ ModuleRegistry.registerModules([ClientSideRowModelModule, AllCommunityModule]);
   styleUrls: ['./ag-grid-opensource-theming-api-example.css'],
   imports: [NxButtonComponent, AgGridModule, AsyncPipe],
 })
-export class AgGridOpensourceThemingAPIExampleComponent {
+export class AgGridOpensourceThemingApiExampleComponent {
   theme = themeAquila;
   rowSelection: RowSelectionOptions = {
     mode: 'multiRow',

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import sdk from '@stackblitz/sdk';
 
 import { ExampleData } from './example-data';
 
@@ -48,6 +49,7 @@ const angularVersion = '^21.0.0';
 const aquilaVersion = '^21.0.0';
 
 const dependencies = {
+  '@angular/animations': angularVersion, // need by @angular/platform-browser
   '@angular/cdk': angularVersion,
   '@angular/common': angularVersion,
   '@angular/compiler': angularVersion,
@@ -56,6 +58,7 @@ const dependencies = {
   '@angular/platform-browser': angularVersion,
   '@angular/router': angularVersion,
   '@allianz/ng-aquila': aquilaVersion,
+  '@standard-schema/spec': '^1.0.0', // need by angular 21 forms-validation
   'ag-grid-angular': '^33.1.1',
   'ag-grid-community': '^33.1.1',
   dayjs: '^1.11.5',
@@ -66,8 +69,13 @@ const dependencies = {
   rxjs: '~6.6.7',
   tslib: '^2.8.1',
   'zone.js': '^0.16.0',
-  '@angular/animations': '^21.0.0', // need by @angular/platform-browser
-  '@standard-schema/spec': '^1.0.0', // need by angular 21 forms-validation
+};
+
+const devDependencies = {
+  '@angular-devkit/build-angular': angularVersion,
+  '@angular/cli': angularVersion,
+  '@angular/compiler-cli': angularVersion,
+  typescript: '~5.9.3',
 };
 
 const testDependencies = {
@@ -91,30 +99,98 @@ const testDependencies = {
   'zone.js': '^0.15.0',
 };
 
+const testDevDependencies = {
+  '@angular-devkit/build-angular': angularVersion,
+  '@angular/cli': angularVersion,
+  '@angular/compiler-cli': angularVersion,
+  typescript: '~5.9.3',
+};
+
 /**
- * StackBlitz writer, write example files to StackBlitz.
- *
- * StackBlitz API
- * URL: https://run.stackblitz.com/api/aio/v1/
- * data: {
- *   // File name, directory and content of files
- *   files[file-name1]: file-content1,
- *   files[directory-name/file-name2]: file-content2,
- *   // Can add multiple tags
- *   tags[0]: tag-0,
- *   // Description of StackBlitz
- *   description: description,
- *   // Private or not
- *   private: true
- *  // Dependencies
- *  dependencies: dependencies
- * }
+ * StackBlitz writer, write example files to StackBlitz using the WebContainer SDK.
  */
 @Injectable()
 export class StackBlitzWriter {
   constructor(private readonly _http: HttpClient) {}
 
   /**
+   * Opens a StackBlitz project with the example data using the WebContainer SDK.
+   */
+  async openStackBlitzProject(
+    exampleId: string,
+    module: string,
+    data: ExampleData,
+    isTest: boolean,
+  ): Promise<void> {
+    const baseExamplePath = `${DOCS_CONTENT_PATH}/${module}/${exampleId}/`;
+    const files: { [key: string]: string } = {};
+
+    // Load template files
+    const templateFiles = isTest ? TEST_TEMPLATE_FILES : TEMPLATE_FILES;
+    const templatePath = isTest ? TEST_TEMPLATE_PATH : TEMPLATE_PATH;
+
+    for (const file of templateFiles) {
+      const content = await this._fetchFile(file, templatePath);
+      let processedContent = this._replaceExamplePlaceholderNames(data, file, content, isTest);
+      processedContent = this._appendCopyright(file, processedContent);
+      files[file] = processedContent;
+    }
+
+    try {
+      const packageLockContent = await this._fetchFile('package-lock.json', TEMPLATE_PATH);
+      files['package-lock.json'] = packageLockContent;
+    } catch (error) {}
+
+    // Load example files
+    for (const file of data.exampleFiles) {
+      const content = await this._fetchFile(file, baseExamplePath);
+      let processedContent = content;
+      if (file.indexOf('.html') > 0) {
+        processedContent = this._replaceImagePaths(processedContent);
+      }
+      processedContent = this._appendCopyright(file, processedContent);
+      const filePath = `src/app/${file}`;
+      files[filePath] = processedContent;
+    }
+
+    // Handle special case for icon-registry-example
+    if (data.selectorName === 'icon-registry-example') {
+      const iconContent = await this._fetchFile('assets/icons/settings.svg', '');
+      files['src/assets/icons/settings.svg'] = iconContent;
+    }
+
+    // Open StackBlitz project using SDK
+    await sdk.openProject(
+      {
+        title: data.description,
+        description: data.description,
+        template: 'node',
+        files,
+      },
+      {
+        newWindow: true,
+        openFile: `src/app/${data.indexFilename}`,
+      },
+    );
+  }
+
+  /**
+   * Fetches a file from the given path.
+   */
+  private async _fetchFile(filename: string, path: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this._http.get(path + filename, { responseType: 'text' }).subscribe({
+        next: (response) => resolve(response),
+        error: (error) => {
+          console.error(`Failed to fetch ${path}${filename}:`, error);
+          reject(error);
+        },
+      });
+    });
+  }
+
+  /**
+   * @deprecated Use openStackBlitzProject instead. This method is kept for backward compatibility.
    * Returns an HTMLFormElement that will open a new StackBlitz template with the example data when
    * called with submit().
    */
@@ -129,14 +205,11 @@ export class StackBlitzWriter {
     const form = this._createFormElement(indexFile);
     const baseExamplePath = `${DOCS_CONTENT_PATH}/${module}/${exampleId}/`;
 
-    TAGS.forEach((tag, i) => this._appendFormInput(form, `tags[${i}]`, tag));
+    TAGS.forEach((tag, i) => {
+      this._appendFormInput(form, `tags[${i}]`, tag);
+    });
     this._appendFormInput(form, 'private', 'true');
     this._appendFormInput(form, 'description', data.description);
-    this._appendFormInput(
-      form,
-      'dependencies',
-      JSON.stringify(isTest ? testDependencies : dependencies),
-    );
 
     return new Promise((resolve) => {
       const templateContents = (isTest ? TEST_TEMPLATE_FILES : TEMPLATE_FILES).map(async (file) =>
@@ -258,6 +331,7 @@ export class StackBlitzWriter {
     data: ExampleData,
     fileName: string,
     fileContent: string,
+    isTest = false,
   ): string {
     if (fileName === 'src/index.html') {
       // Replace the component selector in `index,html`.
@@ -293,6 +367,16 @@ export class StackBlitzWriter {
                 ]
                 });
             `;
+    } else if (fileName === 'package.json') {
+      // Merge runtime dependencies from TypeScript constants into package.json
+      try {
+        const packageJson = JSON.parse(fileContent);
+        packageJson.dependencies = isTest ? testDependencies : dependencies;
+        packageJson.devDependencies = isTest ? testDevDependencies : devDependencies;
+        fileContent = JSON.stringify(packageJson, null, 2);
+      } catch (error) {
+        console.error('Failed to parse package.json:', error);
+      }
     }
     return fileContent;
   }
