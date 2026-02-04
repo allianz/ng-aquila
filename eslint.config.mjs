@@ -1,109 +1,165 @@
-import { defineConfig, globalIgnores } from 'eslint/config';
+// @ts-check
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import angular from 'angular-eslint';
 import _import from 'eslint-plugin-import';
 import rxjs from '@smarttools/eslint-plugin-rxjs';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
-import angularEslintTemplate from '@angular-eslint/eslint-plugin-template';
-import { fixupPluginRules } from '@eslint/compat';
 import jasmine from 'eslint-plugin-jasmine';
-import path from 'node:path';
+import jsdoc from 'eslint-plugin-jsdoc';
+import regexp from 'eslint-plugin-regexp';
+import eslintConfigPrettier from 'eslint-config-prettier';
 import { fileURLToPath } from 'node:url';
-import js from '@eslint/js';
-import { FlatCompat } from '@eslint/eslintrc';
+import { dirname } from 'node:path';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
+const __dirname = dirname(__filename);
 
-export default defineConfig([
-  globalIgnores([
-    //'projects/**/*',
-    'dist',
-    'tmp',
-    'out-tsc',
-    'bazel-out',
-    'node_modules',
-    '**/chrome-profiler-events*.json',
-    '**/speed-measure-plugin*.json',
-    '.idea',
-    '**/.project',
-    '**/.classpath',
-    '**/.c9/',
-    '**/*.launch',
-    '**/.settings/',
-    '**/*.sublime-workspace',
-    '.vscode/*',
-    '!.vscode/settings.json',
-    '!.vscode/tasks.json',
-    '!.vscode/launch.json',
-    '!.vscode/extensions.json',
-    '.history/*',
-    '.angular/cache',
-    '.sass-cache',
-    'connect.lock',
-    'coverage',
-    'libpeerconnection.log',
-    '**/npm-debug.log',
-    '**/yarn-error.log',
-    '**/testem.log',
-    'typings',
-    '**/.DS_Store',
-    '**/Thumbs.db',
-    'reports',
-    'projects/ng-aquila/documentation/generated',
-    'projects/ng-aquila/documentation/assets',
-    'projects/ng-aquila/src/phone-input/metadata.json',
-    'projects/ngx-docs-cli/**/*.template.html',
-    'projects/ngx-docs-cli/**/macros.html',
-    'projects/ng-aquila/documentation/assets/stack-blitz/src/index.html',
-    'projects/ng-aquila/documentation/assets/stack-blitz-tests/src/index.html',
-    'projects/opensource-documentation/src/index.html',
-    'projects/opensource-documentation/src/404.html',
-  ]),
+export default tseslint.config(
+  // Global ignores
+  {
+    ignores: [
+      'dist',
+      'tmp',
+      'out-tsc',
+      'bazel-out',
+      'node_modules',
+      '**/chrome-profiler-events*.json',
+      '**/speed-measure-plugin*.json',
+      '.idea',
+      '**/.project',
+      '**/.classpath',
+      '**/.c9/',
+      '**/*.launch',
+      '**/.settings/',
+      '**/*.sublime-workspace',
+      '.vscode/*',
+      '!.vscode/settings.json',
+      '!.vscode/tasks.json',
+      '!.vscode/launch.json',
+      '!.vscode/extensions.json',
+      '.history/*',
+      '.angular/cache',
+      '.sass-cache',
+      'connect.lock',
+      'coverage',
+      'libpeerconnection.log',
+      '**/npm-debug.log',
+      '**/yarn-error.log',
+      '**/testem.log',
+      'typings',
+      '**/.DS_Store',
+      '**/Thumbs.db',
+      'reports',
+      'projects/ng-aquila/documentation/generated',
+      'projects/ng-aquila/documentation/assets',
+      'projects/ng-aquila/src/phone-input/metadata.json',
+      'projects/ngx-docs-cli/**/*.template.html',
+      'projects/ngx-docs-cli/**/macros.html',
+      'projects/ng-aquila/documentation/assets/stack-blitz/src/index.html',
+      'projects/ng-aquila/documentation/assets/stack-blitz-tests/src/index.html',
+      'projects/opensource-documentation/src/index.html',
+      'projects/opensource-documentation/src/404.html',
+    ],
+  },
+
+  // TypeScript files configuration
   {
     files: ['**/*.ts'],
-
-    extends: compat.extends(
-      'eslint:recommended',
-      'plugin:@typescript-eslint/recommended',
-      'plugin:@typescript-eslint/strict',
-      'plugin:@angular-eslint/recommended',
-      'plugin:@angular-eslint/template/process-inline-templates',
-      'plugin:regexp/recommended',
-      'plugin:jsdoc/recommended',
-      'prettier',
-    ),
-
+    extends: [
+      eslint.configs.recommended,
+      ...tseslint.configs.recommended,
+      ...tseslint.configs.strict,
+      ...angular.configs.tsRecommended,
+      jsdoc.configs['flat/recommended'],
+      regexp.configs['flat/recommended'],
+    ],
+    processor: angular.processInlineTemplates,
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: __dirname,
+      },
+    },
     plugins: {
-      import: fixupPluginRules(_import),
+      import: _import,
       rxjs,
       'simple-import-sort': simpleImportSort,
       'unused-imports': unusedImports,
-      '@angular-eslint/template': angularEslintTemplate,
     },
-
-    languageOptions: {
-      ecmaVersion: 5,
-      sourceType: 'script',
-
-      parserOptions: {
-        project: ['tsconfig.json'],
-        createDefaultProgram: true,
-      },
-    },
-
     rules: {
+      // TypeScript specific rules
       '@typescript-eslint/no-deprecated': 'warn',
+      '@typescript-eslint/no-invalid-void-type': 'off',
+      '@typescript-eslint/ban-ts-comment': 'warn',
+      '@typescript-eslint/consistent-indexed-object-style': ['warn', 'index-signature'],
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/explicit-member-accessibility': [
+        'warn',
+        {
+          accessibility: 'no-public',
+        },
+      ],
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/method-signature-style': ['warn', 'method'],
+      '@typescript-eslint/no-empty-interface': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-extraneous-class': 'off',
+      '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-unnecessary-condition': 'off',
+      '@typescript-eslint/no-useless-constructor': 'off',
+      '@typescript-eslint/prefer-nullish-coalescing': 'off',
+      '@typescript-eslint/parameter-properties': [
+        'warn',
+        {
+          prefer: 'parameter-property',
+          allow: ['readonly', 'protected readonly', 'private readonly'],
+        },
+      ],
+      '@typescript-eslint/prefer-readonly': 'warn',
+      '@typescript-eslint/no-require-imports': [
+        'error',
+        {
+          allowAsImport: true,
+        },
+      ],
+
+      // Override base rules with TypeScript versions
+      'no-empty-function': 'off',
+      '@typescript-eslint/no-empty-function': 'off',
+      'no-invalid-this': 'off',
+      '@typescript-eslint/no-invalid-this': 'warn',
+      'no-shadow': 'off',
+      '@typescript-eslint/no-shadow': 'warn',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          args: 'none',
+          varsIgnorePattern: '^_+$',
+        },
+      ],
+      'no-unused-expressions': 'off',
+      '@typescript-eslint/no-unused-expressions': [
+        'error',
+        {
+          allowTernary: true,
+        },
+      ],
+      'no-return-await': 'off',
+      '@typescript-eslint/return-await': 'warn',
+
+      // Import rules
       'import/first': 'warn',
       'import/newline-after-import': 'warn',
       'import/no-duplicates': 'warn',
       'simple-import-sort/imports': 'warn',
       'simple-import-sort/exports': 'warn',
       'unused-imports/no-unused-imports': 'warn',
+
+      // JSDoc rules
       'jsdoc/check-examples': 'off',
       'jsdoc/check-indentation': 'warn',
       'jsdoc/check-line-alignment': 'warn',
@@ -124,8 +180,12 @@ export default defineConfig([
       'jsdoc/require-property-type': 'off',
       'jsdoc/require-returns': 'off',
       'jsdoc/require-returns-type': 'off',
+
+      // RegExp rules
       'regexp/no-unused-capturing-group': 'off',
       'regexp/sort-character-class-elements': 'warn',
+
+      // RxJS rules
       'rxjs/no-async-subscribe': 'warn',
       'rxjs/no-create': 'warn',
       'rxjs/no-ignored-replay-buffer': 'warn',
@@ -134,25 +194,23 @@ export default defineConfig([
       'rxjs/no-internal': 'warn',
       'rxjs/no-nested-subscribe': 'warn',
       'rxjs/no-redundant-notify': 'warn',
-
       'rxjs/no-sharereplay': [
         'warn',
         {
           allowConfig: true,
         },
       ],
-
       'rxjs/no-subject-unsubscribe': 'warn',
       'rxjs/no-unbound-methods': 'warn',
       'rxjs/no-unsafe-takeuntil': 'warn',
-      '@typescript-eslint/no-invalid-void-type': 'off',
+
+      // General ESLint rules
       'no-self-compare': 'warn',
       'no-unreachable-loop': 'warn',
       'no-unused-private-class-members': 'warn',
       'arrow-body-style': 'warn',
       curly: 'warn',
       'default-case-last': 'warn',
-
       eqeqeq: [
         'warn',
         'always',
@@ -160,7 +218,6 @@ export default defineConfig([
           null: 'ignore',
         },
       ],
-
       'func-style': [
         'warn',
         'declaration',
@@ -168,29 +225,24 @@ export default defineConfig([
           allowArrowFunctions: true,
         },
       ],
-
       'grouped-accessor-pairs': ['warn', 'setBeforeGet'],
       'guard-for-in': 'warn',
       'no-alert': 'warn',
       'no-bitwise': 'warn',
       'no-caller': 'warn',
-
       'no-console': [
         'warn',
         {
           allow: ['warn', 'error'],
         },
       ],
-
       'no-else-return': 'warn',
-
       'no-empty': [
         'warn',
         {
           allowEmptyCatch: true,
         },
       ],
-
       'no-eval': 'warn',
       'no-extend-native': 'warn',
       'no-extra-bind': 'warn',
@@ -206,25 +258,21 @@ export default defineConfig([
       'no-script-url': 'warn',
       'no-undef-init': 'warn',
       'no-unneeded-ternary': 'warn',
-
       'no-useless-computed-key': [
         'warn',
         {
           enforceForClassMembers: true,
         },
       ],
-
       'no-useless-concat': 'warn',
       'no-useless-rename': 'warn',
       'no-useless-return': 'warn',
-
       'no-warning-comments': [
         'warn',
         {
           terms: ['todo'],
         },
       ],
-
       'object-shorthand': [
         'warn',
         'always',
@@ -232,29 +280,24 @@ export default defineConfig([
           avoidQuotes: true,
         },
       ],
-
       'operator-assignment': 'warn',
-
       'prefer-arrow-callback': [
         'warn',
         {
           allowUnboundThis: false,
         },
       ],
-
       'prefer-const': [
         'warn',
         {
           destructuring: 'all',
         },
       ],
-
       'prefer-exponentiation-operator': 'warn',
       'prefer-numeric-literals': 'warn',
       'prefer-object-spread': 'warn',
       radix: 'warn',
       'require-unicode-regexp': 'off',
-
       'spaced-comment': [
         'warn',
         'always',
@@ -263,7 +306,6 @@ export default defineConfig([
           exceptions: ['*'],
         },
       ],
-
       yoda: [
         'warn',
         'never',
@@ -272,67 +314,7 @@ export default defineConfig([
         },
       ],
 
-      '@typescript-eslint/ban-ts-comment': 'warn',
-      '@typescript-eslint/consistent-indexed-object-style': ['warn', 'index-signature'],
-      '@typescript-eslint/explicit-function-return-type': 'off',
-
-      '@typescript-eslint/explicit-member-accessibility': [
-        'warn',
-        {
-          accessibility: 'no-public',
-        },
-      ],
-
-      '@typescript-eslint/explicit-module-boundary-types': 'off',
-      '@typescript-eslint/method-signature-style': ['warn', 'method'],
-      '@typescript-eslint/no-empty-interface': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-extraneous-class': 'off',
-      '@typescript-eslint/no-non-null-assertion': 'off',
-      '@typescript-eslint/no-unnecessary-condition': 'off',
-      '@typescript-eslint/no-useless-constructor': 'off',
-      '@typescript-eslint/prefer-nullish-coalescing': 'off',
-
-      '@typescript-eslint/parameter-properties': [
-        'warn',
-        {
-          prefer: 'parameter-property',
-          allow: ['readonly', 'protected readonly', 'private readonly'],
-        },
-      ],
-
-      '@typescript-eslint/prefer-readonly': 'warn',
-      'no-empty-function': 'off',
-      '@typescript-eslint/no-empty-function': 'off',
-      'no-invalid-this': 'off',
-      '@typescript-eslint/no-invalid-this': 'warn',
-      'no-shadow': 'off',
-      '@typescript-eslint/no-shadow': 'warn',
-      'no-unused-vars': 'off',
-
-      '@typescript-eslint/no-unused-vars': [
-        'warn',
-        {
-          args: 'none',
-          varsIgnorePattern: '^_+$',
-        },
-      ],
-      '@typescript-eslint/no-require-imports': [
-        'error',
-        {
-          allowAsImport: true,
-        },
-      ],
-      'no-unused-expressions': 'off',
-      '@typescript-eslint/no-unused-expressions': [
-        'error',
-        {
-          allowTernary: true,
-        },
-      ],
-
-      'no-return-await': 'off',
-      '@typescript-eslint/return-await': 'warn',
+      // Angular rules
       '@angular-eslint/contextual-lifecycle': 'warn',
       '@angular-eslint/no-conflicting-lifecycle': 'warn',
       '@angular-eslint/no-empty-lifecycle-method': 'off',
@@ -349,14 +331,14 @@ export default defineConfig([
       '@angular-eslint/prefer-inject': 'warn',
     },
   },
+
+  // Spec files configuration
   {
     files: ['**/*.spec.ts'],
-    extends: compat.extends('plugin:jasmine/recommended'),
-
     plugins: {
       jasmine,
     },
-
+    extends: [jasmine.configs.recommended],
     rules: {
       'jasmine/new-line-before-expect': 'off',
       'jasmine/no-unsafe-spy': 'off',
@@ -367,20 +349,19 @@ export default defineConfig([
       '@angular-eslint/no-empty-lifecycle-method': 'off',
     },
   },
+
+  // HTML template files configuration
   {
     files: ['**/*.html'],
-    extends: compat.extends('plugin:@angular-eslint/template/recommended'),
-
+    extends: [...angular.configs.templateRecommended],
     rules: {
       '@angular-eslint/template/click-events-have-key-events': 'warn',
-
       '@angular-eslint/template/eqeqeq': [
         'warn',
         {
           allowNullOrUndefined: true,
         },
       ],
-
       '@angular-eslint/template/mouse-events-have-key-events': 'warn',
       '@angular-eslint/template/no-any': 'warn',
       '@angular-eslint/template/no-autofocus': 'warn',
@@ -390,4 +371,7 @@ export default defineConfig([
       '@angular-eslint/template/prefer-control-flow': 'error',
     },
   },
-]);
+
+  // Prettier must be last to override formatting rules
+  eslintConfigPrettier,
+);

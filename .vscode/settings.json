@@ -6,9 +6,6 @@
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
-  "eslint.options": {
-    "extensions": [".ts", ".html"]
-  },
   "extensions.ignoreRecommendations": false,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

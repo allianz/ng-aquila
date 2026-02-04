@@ -95,6 +95,7 @@
     "@types/shelljs": "^0.8.15",
     "@typescript-eslint/eslint-plugin": "^8.39.1",
     "@typescript-eslint/parser": "^8.39.1",
+    "angular-eslint": "^21.1.0",
     "axe-core": "^4.10.2",
     "chokidar": "^4.0.3",
     "commander": "^11.1.0",
@@ -136,6 +137,7 @@
     "ts-morph": "^26.0.0",
     "ts-node": "^10.9.2",
     "typescript": "~5.9.3",
+    "typescript-eslint": "^8.50.1",
     "zod": "^3.25.0"
   },
   "peerDependencies": {
