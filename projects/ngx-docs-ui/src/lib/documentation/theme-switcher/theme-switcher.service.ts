@@ -1,4 +1,5 @@
-import { effect, Inject, Injectable, InjectionToken, signal } from '@angular/core';
+import { effect, inject, Injectable, InjectionToken, signal } from '@angular/core';
+import { Router } from '@angular/router';
 
 export interface Theme {
   name: string;
@@ -8,11 +9,15 @@ export interface Theme {
 
 export const NX_DOCS_SELECTABLE_THEMES = new InjectionToken<Theme[]>('DOCS_SELECTABLE_THEMES');
 
+const LOCAL_STORAGE_KEY = 'nx-docs-selected-theme';
+
 @Injectable({ providedIn: 'root' })
 export class ThemeSwitcherService {
+  private readonly _themes = inject(NX_DOCS_SELECTABLE_THEMES);
+  private readonly _router = inject(Router);
   readonly selectedTheme = signal<Theme>(this._themes[0]);
 
-  constructor(@Inject(NX_DOCS_SELECTABLE_THEMES) private readonly _themes: Theme[]) {
+  constructor() {
     // Watch for theme changes and load the CSS
     effect(() => {
       const theme = this.selectedTheme();
@@ -20,8 +25,25 @@ export class ThemeSwitcherService {
     });
   }
 
+  initializeTheme(themeFromQuery: Theme | undefined): void {
+    // Priority: URL > localStorage > default
+    if (themeFromQuery) {
+      this.selectedTheme.set(themeFromQuery);
+      this._saveToStorage(themeFromQuery);
+    } else {
+      const storedTheme = this._loadFromStorage();
+      if (storedTheme) {
+        this.selectedTheme.set(storedTheme);
+      }
+    }
+
+    this._updateUrlQueryParam(this.selectedTheme());
+  }
+
   switchTheme(newTheme: Theme) {
     this.selectedTheme.set(newTheme);
+    this._saveToStorage(newTheme);
+    this._updateUrlQueryParam(newTheme);
   }
 
   private _loadThemeCSS(newTheme: Theme) {
@@ -62,5 +84,30 @@ export class ThemeSwitcherService {
 
   get(name: string) {
     return this._themes.find((el) => el.name === name);
+  }
+
+  private _saveToStorage(theme: Theme): void {
+    try {
+      localStorage.setItem(LOCAL_STORAGE_KEY, theme.name);
+    } catch {
+      // graceful if localStorage unavailable (private browsing, etc.)
+    }
+  }
+
+  private _loadFromStorage(): Theme | undefined {
+    try {
+      const storedName = localStorage.getItem(LOCAL_STORAGE_KEY);
+      return storedName ? this.get(storedName) : undefined;
+    } catch {
+      return undefined;
+    }
+  }
+
+  private _updateUrlQueryParam(theme: Theme): void {
+    this._router.navigate([], {
+      queryParams: { theme: theme.name },
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
   }
 }

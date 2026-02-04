@@ -110,10 +110,9 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     this.showAnnouncement = this.announcement && this.announcement?.endTime >= new Date();
 
     const themeQuery = this._route.snapshot.queryParamMap.get('theme');
-    const themeFromQuery = this._themeSwitcherService.get(themeQuery!);
-    if (themeFromQuery) {
-      this._themeSwitcherService.switchTheme(themeFromQuery);
-    }
+
+    const themeFromQuery = themeQuery ? this._themeSwitcherService.get(themeQuery) : undefined;
+    this._themeSwitcherService.initializeTheme(themeFromQuery);
 
     this._rabbitHole.showThemeEgg.pipe(takeUntil(this._destroyed)).subscribe((showTheming) => {
       console.log('rabbit hole', showTheming);
