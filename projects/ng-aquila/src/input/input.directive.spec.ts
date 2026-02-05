@@ -50,6 +50,7 @@ describe('NxInputDirective', () => {
         BasicInputWithRequiredFormControl,
         ConfigurableInput,
         InputWithLabelAndPlaceholder,
+        InputWithAriaLabelInput,
         NoChangeDetectionInput,
       ],
     }).compileComponents();
@@ -330,14 +331,17 @@ describe('NxInputDirective', () => {
       expect(ariaInvalid).toBe('true');
     }));
 
-    it('can set aria-label', fakeAsync(() => {
-      createTestComponent(BasicInput);
-      inputInstance.setAriaLabel('custom label');
+    it('uses aria-label input unless manual set', fakeAsync(() => {
+      createTestComponent(InputWithAriaLabelInput);
 
+      let label = nativeElement.attributes.getNamedItem('aria-label')!.value;
+      expect(label).toBe('template label');
+
+      inputInstance.setAriaLabel('custom label');
       fixture.detectChanges();
       tick();
 
-      const label = nativeElement.attributes.getNamedItem('aria-label')!.value;
+      label = nativeElement.attributes.getNamedItem('aria-label')!.value;
       expect(label).toBe('custom label');
     }));
   });
@@ -430,3 +434,9 @@ class InputWithLabelAndPlaceholder extends InputTest {
   appearance: AppearanceType = 'auto';
   placeholderText = '';
 }
+
+@Component({
+  template: `<input nxInput nxAriaLabel="template label" />`,
+  imports: [NxInputModule],
+})
+class InputWithAriaLabelInput extends InputTest {}

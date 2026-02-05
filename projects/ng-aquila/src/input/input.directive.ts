@@ -87,9 +87,10 @@ export class NxInputDirective
   private readonly _inputValueAccessor: NxInputValueAccessor;
   _ariaDescribedby!: string;
 
+  /** Aria label to be used if the input is not connected to an label. */
+  readonly nxAriaLabel = input<string>('');
   private readonly _ariaLabelSignal = signal<string>('');
-  readonly _nxAriaLabel = input<string>('', { alias: 'nxAriaLabel' });
-  readonly _ariaLabel = computed(() => this._ariaLabelSignal() ?? this._nxAriaLabel());
+  protected readonly _ariaLabel = computed(() => this._ariaLabelSignal() || this.nxAriaLabel());
 
   /** @docs-private */
   errorState = false;
