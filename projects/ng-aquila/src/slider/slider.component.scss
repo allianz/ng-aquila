@@ -1,29 +1,24 @@
 @use '../shared-styles/index' as *;
 
-$handle-diameter: nx-spacer(m);
-$value-width: nx-spacer(4m);
-$value-height: nx-spacer(m);
 $arrow-size: 1.5 * nx-spacer(3xs);
-$value-border: nx-border-size(xs) solid;
-$value-top: -($value-height + nx-spacer(s));
-$background-height: nx-spacer(3xs);
-$wrapper-padding-top: (($handle-diameter - $background-height) * 0.5) + $value-height + 2 *
-  nx-spacer(s);
-$wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-spacer(2xs);
 
 :host {
   display: block;
 }
 
 .nx-slider__label {
+  display: inline-block;
   @include type-style(slider-label);
   color: v(slider-label-color);
+  margin-bottom: v(slider-label-margin-bottom);
 }
 
 .nx-slider__wrapper {
   display: flex;
-  padding-top: $wrapper-padding-top;
-  padding-bottom: 36px;
+  padding-top: calc(
+    (v(slider-handle-size) - v(slider-background-height)) * 0.5 + v(slider-value-height) +
+      v(slider-value-margin-bottom) + v(slider-wrapper-padding-top)
+  );
 }
 
 .nx-slider__slide {
@@ -31,6 +26,7 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
   flex: auto;
   min-width: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -38,30 +34,31 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
   position: relative;
   background-color: v(slider-background-color);
   display: block;
-  height: nx-spacer(3xs);
-  border-radius: nx-border-radius(xs);
+  height: v(slider-background-height);
+  border-radius: v(slider-background-border-radius);
   white-space: nowrap;
   cursor: pointer;
   width: 100%;
 }
 
 .nx-slider__tick-container {
-  margin-top: 13px;
+  margin-top: v(slider-tick-margin-top);
   display: flex;
+  width: 100%;
   border-left: 1px solid v(slider-tick-color);
   border-right: 1px solid v(slider-tick-color);
-  height: 9px;
+  height: v(slider-tick-container-height);
   align-items: center;
   overflow: hidden;
 }
 
 .nx-slider__tick {
-  height: 5px;
+  height: v(slider-tick-height);
   display: flex;
   border-right: 1px solid v(slider-tick-color);
 
   &.nx-slider__tick-primary {
-    height: 9px;
+    height: 100%;
   }
   &.nx-slider__tick-hidden {
     border: none;
@@ -70,9 +67,9 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 
 .nx-slider__filler {
   display: inline-block;
-  height: $background-height;
-  border-radius: nx-border-radius(xs);
-  background-color: v(slider-indicator-color);
+  height: v(slider-background-height);
+  border-radius: v(slider-filler-border-radius);
+  background-color: v(slider-filler-color);
   float: left;
   position: relative;
 
@@ -83,18 +80,16 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 
 .nx-slider__handle {
   position: absolute;
-  width: $handle-diameter;
-  height: $handle-diameter;
+  width: v(slider-handle-size);
+  height: v(slider-handle-size);
   right: 0;
   transform: translateX(50%);
   border-radius: 50%;
-  box-shadow: v(shadow-small);
-  border-style: solid;
-  border-width: nx-border-size(xs);
-  border-color: v(slider-handle-border-color);
+  border: v(slider-handle-border);
+  box-shadow: v(slider-handle-box-shadow);
   background: v(slider-handle-background-color);
   box-sizing: border-box;
-  top: -(($handle-diameter - $background-height) * 0.5);
+  top: calc((v(slider-handle-size) - v(slider-background-height)) * 0.5 * -1);
   z-index: 2;
   cursor: grab;
 
@@ -111,9 +106,9 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 
   &:active {
     box-shadow:
-      v(shadow-small),
-      inset 0 0 0 4px v(slider-handle-background-color),
-      inset 0 0 0 $handle-diameter v(slider-handle-active-inset-color);
+      v(slider-handle-box-shadow),
+      inset 0 0 0 v(slider-handle-active-inset-border) v(slider-handle-background-color),
+      inset 0 0 0 v(slider-handle-size) v(slider-handle-active-inset-color);
     cursor: grabbing;
   }
 
@@ -126,21 +121,19 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 .nx-slider__value {
   display: block;
   position: absolute;
-  @include type-style(slider-handle-value);
-  color: v(slider-handle-value-color);
-  border: $value-border;
-  border-color: v(slider-handle-border-color);
-  border-radius: nx-border-radius(s);
-  box-shadow: v(shadow-small);
+  @include type-style(slider-value);
+  color: v(slider-value-color);
+  border: v(slider-value-border);
+  border-radius: v(slider-value-border-radius);
+  box-shadow: v(slider-value-box-shadow);
   cursor: grab;
-  height: $value-height;
-  min-width: $value-width;
+  height: v(slider-value-height);
+  min-width: v(slider-value-width);
   text-align: center;
-  $padding-top-bottom: (nx-spacer(3xs) - nx-border-size(xs));
-  padding: $padding-top-bottom nx-spacer(2xs);
-  top: $value-top;
+  padding: v(slider-value-padding);
+  top: calc((v(slider-handle-size) + v(slider-value-margin-bottom)) * -1);
   background: v(slider-value-background-color);
-  left: calc(#{$handle-diameter} / 2);
+  left: calc(v(slider-handle-size) / 2);
   transform: translateX(-50%);
 
   &:active {
@@ -149,12 +142,16 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 }
 
 .nx-slider__arrow {
+  display: v(slider-arrow-display);
   width: $arrow-size;
   height: $arrow-size;
-  border-right: $value-border;
-  border-bottom: $value-border;
+  border-right: v(slider-value-border);
+  border-bottom: v(slider-value-border);
   left: 50%;
-  top: $value-top + $value-height - $arrow-size;
+  top: calc(
+    (v(slider-handle-size) + v(slider-value-margin-bottom)) * -1 + v(slider-value-height) -
+      #{$arrow-size}
+  );
   transform: translate(-50%, 3px) rotate(45deg);
   position: absolute;
   box-shadow:
@@ -170,14 +167,19 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
   justify-content: space-between;
   @include type-style(slider-value-label);
   color: v(slider-value-label-color);
+  margin-top: v(slider-label-margin-top);
 
   .nx-slider__has-ticks & {
-    margin-top: 16px;
+    margin-top: 0px;
   }
 }
 
 .nx-slider__max-value-label {
   text-align: right;
+}
+
+.nx-slider__empty-bottom-slot {
+  padding-bottom: v(slider-padding-bottom);
 }
 
 :host(.nx-slider--disabled) {
@@ -192,17 +194,21 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
     cursor: not-allowed;
   }
 
-  .nx-slider__value,
-  .nx-slider__handle {
+  .nx-slider__value {
     background-color: v(slider-value-disabled-background-color);
   }
 
+  .nx-slider__handle {
+    background-color: v(slider-handle-disabled-background-color);
+    border-color: v(slider-handle-disabled-border);
+  }
+
   .nx-slider__filler {
-    background-color: v(slider-indicator-disabled-color);
+    background-color: v(slider-filler-disabled-color);
   }
 
   .nx-slider__value {
-    color: v(slider-handle-value-disabled-color);
+    color: v(slider-value-disabled-color);
   }
 
   .nx-slider__label-container {
@@ -218,6 +224,10 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 
   .nx-slider__background {
     background: v(slider-disabled-background-color);
+  }
+
+  .nx-slider__label {
+    color: v(slider-label-disabled-color);
   }
 }
 
