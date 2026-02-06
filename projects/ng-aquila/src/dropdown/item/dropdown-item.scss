@@ -1,7 +1,5 @@
 @use '../../shared-styles/index' as *;
 
-$option-margin-checked: nx-spacer(m);
-
 :host {
   display: block;
 }
@@ -36,6 +34,17 @@ nx-checkbox {
 .nx-dropdown-results__option-label {
   @include dropdown-overlay__option-label;
   white-space: pre-line;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: v(dropdown-item-gap-horizontal);
+
+  .custom-content:empty {
+    display: none;
+  }
+  .value-content {
+    flex: 1;
+  }
 }
 
 :host(.nx-multiselect) {
@@ -64,7 +73,7 @@ nx-checkbox {
 }
 
 .nx-dropdown-results__option-checkicon {
-  display: inline-flex;
+  display: v(dropdown-item-checkicon-display);
   align-items: center;
   opacity: 0;
   margin-right: nx-spacer(2xs);
@@ -82,6 +91,12 @@ nx-checkbox {
       height: v(dropdown-item-line-height);
     }
   }
+}
+
+.nx-dropdown-results__option-radioicon {
+  display: inline-flex;
+  align-items: center;
+  height: v(dropdown-item-line-height);
 
   :host-context([dir='rtl']) & {
     margin-right: initial;
@@ -120,14 +135,14 @@ nx-checkbox {
 /* clean-css ignore:end */
 
 :host(.nx-selected.nx-dropdown-item--active) .nx-dropdown-results__option-label {
-  padding-left: $option-margin-checked;
-  margin-left: -$option-margin-checked;
+  padding-left: var(--dropdown-item-checkmark-size);
+  margin-left: calc(var(--dropdown-item-checkmark-size) * -1);
 
   [dir='rtl'] & {
     padding-left: initial;
     margin-left: initial;
-    padding-right: $option-margin-checked;
-    margin-right: -$option-margin-checked;
+    padding-right: var(--dropdown-item-checkmark-size);
+    margin-right: calc(var(--dropdown-item-checkmark-size) * -1);
   }
 }
 

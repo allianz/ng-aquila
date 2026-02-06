@@ -13,8 +13,8 @@
   aria-haspopup="listbox"
   [attr.aria-controls]="_comboboxId"
   (blur)="_onTriggerBlur(); _inputFocused = false"
-  [attr.aria-expanded]="_isOpen"
-  [attr.aria-labelledby]="_getAriaLabelledBy('')"
+  [attr.aria-expanded]="_isOpen && !isClosing"
+  [attr.aria-labelledby]="_getAriaLabelledBy()"
   [attr.aria-describedby]="_ariaDescribedby || null"
   [attr.aria-invalid]="errorState"
   [id]="id"
@@ -47,8 +47,10 @@
     class="panel"
     [class.is-outline]="_isOutline"
     [class.keyboard-focused]="_focusOrigin() === 'keyboard'"
+    [class.panel--opening]="_isOpen && !isClosing"
+    [class.panel--closing]="isClosing"
     (keydown)="_onKeydown($event)"
-    [attr.aria-owns]="_isOpen ? _comboboxId : null"
+    [attr.aria-owns]="_isOpen && !isClosing ? _comboboxId : null"
     (focusin)="_onFocusWithinOverlay($event)"
     tabindex="-1"
     [attr.aria-labelledby]="_getAriaLabelledBy()"
@@ -74,7 +76,7 @@
 
     @if (filter) {
       <div class="filter-wrapper">
-        <nx-formfield class="filter" appearance="auto">
+        <nx-formfield class="filter">
           <input
             nxInput
             #filterInput

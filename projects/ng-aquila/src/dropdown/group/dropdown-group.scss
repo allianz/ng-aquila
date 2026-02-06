@@ -2,6 +2,7 @@
 
 :host {
   display: block;
+  padding-bottom: calc(v(dropdown-group-divider-gap-vertical) * 2);
 }
 
 :host:not(:last-child) .nx-dropdown-results__group {
@@ -10,17 +11,17 @@
   &::after {
     content: '';
     position: absolute;
-    width: calc(100% - nx-spacer(xl));
+    width: calc(100% - v(dropdown-item-padding-right) * 2);
     height: 1px;
-    margin: 0 nx-spacer(2m);
+    margin: 0 v(dropdown-item-padding-right);
     background-color: v(dropdown-group-divider);
-    bottom: 0;
+    bottom: calc(v(dropdown-group-divider-gap-vertical) * -1);
     left: 0;
   }
 }
 
 .nx-dropdown-results__group-label {
   @include type-style(dropdown-group-label);
-  padding: nx-spacer(m) nx-spacer(2m) nx-spacer(2xs);
+  padding: v(dropdown-group-label-padding);
   color: v(dropdown-group-label-color);
 }

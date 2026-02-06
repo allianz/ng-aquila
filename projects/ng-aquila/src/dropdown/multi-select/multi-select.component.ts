@@ -1,3 +1,4 @@
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one';
 import {
   AppearanceType,
   NxFormfieldComponent,
@@ -25,7 +26,6 @@ import {
   DoCheck,
   ElementRef,
   EventEmitter,
-  HostBinding,
   inject,
   Input,
   input,
@@ -56,6 +56,7 @@ import { NxMultiSelectAllComponent } from './multi-select-all.component';
 import { NxMultiSelectOptionComponent } from './multi-select-option.component';
 
 const OVERLAY_MIN_WIDTH = 260;
+const A1_OVERLAY_OFFSET = 22;
 
 export type NxMultiSelectFilterFn = (query: string, label: string) => boolean;
 
@@ -75,6 +76,7 @@ const _defaultFilterFn: NxMultiSelectFilterFn = (query, label) =>
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.is-readonly]': 'readonly',
+    '[class.is-open]': '_isOpen && !isClosing',
     '[attr.readonly]': 'readonly || null',
   },
   imports: [
@@ -367,7 +369,9 @@ export class NxMultiSelectComponent<S, T>
   /* panelMaxWidth accepts a number for pixel values or a string for any css value */
   readonly panelMaxWidth = input<string | number>();
 
-  @HostBinding('class.is-open') _isOpen = false;
+  _isOpen = false;
+  isClosing = false;
+  private _closeAnimationTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   private readonly _destroyed = new Subject<void>();
 
@@ -392,6 +396,7 @@ export class NxMultiSelectComponent<S, T>
   }
 
   ngOnDestroy(): void {
+    this._clearCloseAnimationTimeout();
     this._destroyed.next();
     this._destroyed.complete();
   }
@@ -443,6 +448,10 @@ export class NxMultiSelectComponent<S, T>
     return selectLabel(option);
   }
 
+  private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
+    optional: true,
+  });
+
   private _updatePositions() {
     if (this._formFieldComponent) {
       const offset = getPositionOffset(
@@ -450,7 +459,14 @@ export class NxMultiSelectComponent<S, T>
         this._formFieldComponent.elementRef.nativeElement,
         this._panelHeader?.nativeElement,
       );
-      this._positions = getPositions(this._appearance, offset);
+      const positions = getPositions(this._appearance, offset);
+
+      if (this._allianzOneOptions?.enabled?.() && positions.length > 1) {
+        // make panel align on A1 theme
+        positions[0].offsetY = A1_OVERLAY_OFFSET;
+        positions[1].offsetY = -A1_OVERLAY_OFFSET;
+      }
+      this._positions = positions;
     }
   }
 
@@ -498,6 +514,8 @@ export class NxMultiSelectComponent<S, T>
       return;
     }
 
+    this._clearCloseAnimationTimeout();
+    this.isClosing = false;
     // If the multi select takes upp 100% of the width of the window, don't add margin
     if (
       this._formFieldComponent?.elementRef.nativeElement.getBoundingClientRect().width ===
@@ -537,14 +555,28 @@ export class NxMultiSelectComponent<S, T>
   }
 
   _close() {
-    if (!this._isOpen) {
+    if (!this._isOpen || this.isClosing) {
       return;
     }
 
-    this._isOpen = false;
+    this.isClosing = true;
+    this._clearCloseAnimationTimeout();
     this.openedChange.emit(false);
-    this._updateTooltipText();
-    this._trigger?.nativeElement.focus();
+
+    const duration = this._getOverlayAnimationDuration();
+    const doClose = () => {
+      this._isOpen = false;
+      this.isClosing = false;
+      this._closeAnimationTimeoutId = null;
+      this._updateTooltipText();
+      this._trigger?.nativeElement.focus();
+      this._cdr.markForCheck();
+    };
+    if (duration > 0) {
+      this._closeAnimationTimeoutId = setTimeout(doClose, duration);
+    } else {
+      doClose();
+    }
   }
 
   _onSelect(option: S, selected: boolean) {
@@ -827,6 +859,24 @@ export class NxMultiSelectComponent<S, T>
       // item half or less visible on bottom
     } else if (itemBottom > listTopScrollPosition + listHeight) {
       list.scrollTop = itemBottom - listHeight;
+    }
+  }
+
+  private _getOverlayAnimationDuration(): number {
+    const duration =
+      parseFloat(
+        getComputedStyle(this._elementRef.nativeElement).getPropertyValue(
+          '--dropdown-anim-duration',
+        ),
+      ) || 0;
+
+    return duration * 1000;
+  }
+
+  private _clearCloseAnimationTimeout() {
+    if (this._closeAnimationTimeoutId) {
+      clearTimeout(this._closeAnimationTimeoutId);
+      this._closeAnimationTimeoutId = null;
     }
   }
 

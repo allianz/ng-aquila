@@ -7,21 +7,26 @@
   <nx-checkbox [checked]="selected" [disabled]="disabled">
     <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
   </nx-checkbox>
-  } @if (!multiselect) {
-  <span class="nx-dropdown-results__option-checkicon">
+  } @else {
+  <span class="nx-dropdown-results__option-checkicon" aria-hidden="true">
     <nx-icon name="check" aria-hidden="true"></nx-icon>
   </span>
-  } @if (!multiselect) {
   <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
   }
 </div>
 
 <ng-template #contentTemplate>
   <div class="nx-dropdown-results__option-label">
-    <div #content (cdkObserveContent)="_onLabelChange()">
+    <div class="custom-content" #content (cdkObserveContent)="_onLabelChange()">
       <ng-content></ng-content>
     </div>
 
-    <div>@if (_isContentEmpty(content)) { {{_formattedValue }} }</div>
+    <div class="value-content">@if (_isContentEmpty(content)) { {{_formattedValue }} }</div>
+
+    @if (showRadioIndicator() && !multiselect) {
+    <span class="nx-dropdown-results__option-radioicon" aria-hidden="true">
+      <nx-radio-indicator [checked]="selected" [disabled]="disabled"></nx-radio-indicator>
+    </span>
+    }
   </div>
 </ng-template>

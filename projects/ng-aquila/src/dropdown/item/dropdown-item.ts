@@ -1,5 +1,8 @@
 import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
+import type { AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one';
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxRadioIndicatorComponent } from '@allianz/ng-aquila/selection';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { Highlightable } from '@angular/cdk/a11y';
@@ -19,6 +22,7 @@ import {
   OnDestroy,
   Optional,
   Output,
+  signal,
   ViewChild,
 } from '@angular/core';
 import { Subject } from 'rxjs';
@@ -61,6 +65,7 @@ export class NxDropdownItemChange {
     NxIconModule,
     NxTooltipModule,
     CdkObserveContent,
+    NxRadioIndicatorComponent,
   ],
 })
 export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterViewChecked {
@@ -101,11 +106,11 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     return this._disabled;
   }
 
-  private _selected = false;
+  private readonly _selected = signal(false);
 
   /** Whether the item is selected. */
   get selected(): boolean {
-    return this._selected;
+    return this._selected();
   }
 
   private _active!: boolean;
@@ -122,6 +127,12 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
   get multiselect(): boolean {
     return this._dropdown?.isMultiSelect();
   }
+
+  private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
+    optional: true,
+  });
+
+  protected readonly showRadioIndicator = this._allianzOneOptions?.enabled ?? signal(false);
 
   /** Emits whenever the component is destroyed. */
   private readonly _destroyed = new Subject<void>();
@@ -163,7 +174,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
   }
 
   private _updateViewValue() {
-    if (this._selected) {
+    if (this._selected()) {
       const viewValue = this.viewValue;
 
       if (viewValue !== this._mostRecentViewValue) {
@@ -192,7 +203,8 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
    */
   _selectViaInteraction(): void {
     if (!this.disabled) {
-      this._selected = this.multiselect ? !this._selected : true;
+      const nextSelected = this.multiselect ? !this._selected() : true;
+      this._selected.set(nextSelected);
       this._updateViewValue();
       this._cdr.markForCheck();
       this._emitSelectionChangeEvent(true);
@@ -242,8 +254,8 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
   }
 
   select() {
-    if (!this._selected && !this.disabled) {
-      this._selected = true;
+    if (!this._selected() && !this.disabled) {
+      this._selected.set(true);
       this._cdr.markForCheck();
       this._emitSelectionChangeEvent();
     }
@@ -251,15 +263,15 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
 
   /** @docs-private */
   deselect() {
-    if (this._selected) {
-      this._selected = false;
+    if (this._selected()) {
+      this._selected.set(false);
       this._cdr.markForCheck();
       this._emitSelectionChangeEvent();
     }
   }
 
   _initSelected(selected: boolean) {
-    this._selected = selected;
+    this._selected.set(selected);
     this._cdr.markForCheck();
   }
 

@@ -6,9 +6,6 @@
 @use './typography' as *;
 @use './functions' as *;
 
-$dropdown-overlay__focus-line-width: nx-border-size(xl);
-$dropdown-overlay__option-margin: -(nx-spacer(2xs) + $dropdown-overlay__focus-line-width);
-
 $border-size: nx-border-size(xs);
 
 @function message-padding($padding) {
@@ -149,8 +146,8 @@ $border-size: nx-border-size(xs);
 }
 
 @mixin dropdown-overlay__option-label {
-  padding: 0 nx-spacer(2xs) + $dropdown-overlay__focus-line-width;
-  margin: 0 $dropdown-overlay__option-margin;
+  padding: 0 v(dropdown-panel-padding-top);
+  margin: 0 calc(-1 * var(--dropdown-panel-padding-top));
   color: v(dropdown-item-text-color);
   word-break: break-word;
 

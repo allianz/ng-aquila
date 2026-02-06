@@ -204,7 +204,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = (value) =>
     '[attr.aria-controls]': 'modalId',
     '[attr.aria-invalid]': 'errorState',
     'aria-haspopup': 'listbox',
-    '[attr.aria-expanded]': 'panelOpen',
+    '[attr.aria-expanded]': 'panelOpen && !isClosing',
     '[attr.readonly]': 'readonly || null',
     '[attr.disabled]': 'disabled || null',
     '[attr.aria-disabled]': 'disabled || readonly',
@@ -290,6 +290,11 @@ export class NxDropdownComponent
 
   /** Whether or not the overlay panel is open. */
   private _panelOpen = false;
+
+  /** Whether the overlay is currently animating out. */
+  protected isClosing = false;
+
+  private _closeAnimationTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   /** @docs-private */
   errorState = false;
@@ -761,6 +766,7 @@ export class NxDropdownComponent
       clearTimeout(this._tooltipUpdateTimeoutId);
       this._tooltipUpdateTimeoutId = null;
     }
+    this._clearCloseAnimationTimeout();
     this._destroyed.next();
     this._destroyed.complete();
   }
@@ -1043,6 +1049,8 @@ export class NxDropdownComponent
       return;
     }
 
+    this._clearCloseAnimationTimeout();
+    this.isClosing = false;
     $event.preventDefault();
     this._panelOpen = true;
 
@@ -1088,8 +1096,18 @@ export class NxDropdownComponent
 
   /** Closes the panel of the dropdown. */
   closePanel() {
-    if (this._panelOpen) {
+    if (!this._panelOpen || this.isClosing) {
+      return;
+    }
+
+    this.isClosing = true;
+    this._clearCloseAnimationTimeout();
+
+    const duration = this._getOverlayAnimationDuration();
+    const doClose = () => {
       this._panelOpen = false;
+      this.isClosing = false;
+      this._closeAnimationTimeoutId = null;
       this._cdr.markForCheck();
       this._onTouched();
       this.openedChange.emit(false);
@@ -1098,7 +1116,29 @@ export class NxDropdownComponent
       this._ngZone.runOutsideAngular(() => {
         setTimeout(() => this.focus());
       });
+    };
+    if (duration > 0) {
+      this._closeAnimationTimeoutId = setTimeout(doClose, duration);
+    } else {
+      doClose();
     }
+  }
+
+  private _clearCloseAnimationTimeout() {
+    if (this._closeAnimationTimeoutId) {
+      clearTimeout(this._closeAnimationTimeoutId);
+      this._closeAnimationTimeoutId = null;
+    }
+  }
+
+  private _getOverlayAnimationDuration(): number {
+    const duration =
+      parseFloat(
+        getComputedStyle(this._elementRef.nativeElement).getPropertyValue(
+          '--dropdown-anim-duration',
+        ),
+      ) || 0;
+    return duration * 1000;
   }
 
   private _scrollActiveOptionIntoCenter() {

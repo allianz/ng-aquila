@@ -5,6 +5,7 @@
   width: 100%;
   line-height: v(multi-select-item-line-height);
   padding: v(multi-select-item-padding-vertical) v(multi-select-item-padding-horizon);
+  gap: v(checkbox-small-label-text-margin-left);
 
   &:hover {
     background-color: v(dropdown-item-hover-background-color);
@@ -37,6 +38,8 @@
   cursor: pointer;
   display: flex;
   align-items: flex-start;
+  flex: 1;
+  gap: v(checkbox-small-label-text-margin-left);
 
   &.is-active {
     border-radius: 4px;
@@ -82,13 +85,14 @@
   justify-content: center;
   align-items: flex-start;
   z-index: 0;
+  order: v(dropdown-item-control-order);
 }
 
 .nx-checkbox__label {
   padding: 0;
-  margin-left: v(checkbox-small-label-text-margin-left);
   word-break: break-word;
   hyphens: auto;
+  flex: 1;
 
   :host-context([dir='rtl']) & {
     margin-left: initial;

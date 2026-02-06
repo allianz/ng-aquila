@@ -46,6 +46,8 @@
   <div
     class="nx-dropdown__panel"
     [class.has-filter]="showFilter()"
+    [class.nx-dropdown__panel--opening]="panelOpen && !isClosing"
+    [class.nx-dropdown__panel--closing]="isClosing"
     [class.nx-dropdown__panel--in-outline-field]="_isInOutlineField"
     [class.centered-checkmark]='verticalAlignCheckmark() === "center"'
     (keydown)="_handleKeydown($event)"

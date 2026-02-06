@@ -10,6 +10,7 @@ $dropdown-border-size: nx-border-size(xs);
 :host {
   display: block;
   width: 100%;
+  --dropdown-anim-duration: var(--dropdown-panel-animation-duration);
 }
 
 :host:focus {
@@ -60,6 +61,8 @@ $dropdown-border-size: nx-border-size(xs);
   border-radius: v(dropdown-panel-border-radius);
   overflow: hidden;
   min-width: 100%;
+  will-change: transform, opacity;
+  transform-origin: top center;
 
   ::ng-deep .nx-checkbox__label {
     @include type-style(dropdown-item);
@@ -77,6 +80,14 @@ $dropdown-border-size: nx-border-size(xs);
         align-items: center;
       }
     }
+  }
+
+  &.nx-dropdown__panel--opening {
+    animation: nx-dropdown-fly-in v(dropdown-panel-animation-in);
+  }
+
+  &.nx-dropdown__panel--closing {
+    animation: nx-dropdown-fly-out v(dropdown-panel-animation-out);
   }
 
   &--in-outline-field {
@@ -127,6 +138,7 @@ $dropdown-border-size: nx-border-size(xs);
 
 .nx-dropdown__chevron {
   vertical-align: middle;
+  transition: v(dropdown-chevron-animation);
 }
 
 .nx-dropdown__panel-header {
