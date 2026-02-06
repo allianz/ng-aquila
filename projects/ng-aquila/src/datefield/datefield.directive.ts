@@ -87,7 +87,6 @@ export class NxDatepickerInputEvent<D> {
   providers: [
     NX_DATEFIELD_VALUE_ACCESSOR,
     NX_DATEFIELD_VALIDATORS,
-    // {provide: NX_INPUT_VALUE_ACCESSOR, useExisting: NxDatefieldDirective},
     { provide: NX_INPUT_VALUE_ACCESSOR, useExisting: NxDatefieldDirective },
     { provide: NxAbstractControl, useExisting: NxDatefieldDirective },
   ],
@@ -152,14 +151,7 @@ export class NxDatefieldDirective<D>
 
   /** Provide or read the current date. It's type <D> depends on the chosen date implementation */
   @Input() set value(value: D | null) {
-    value = this._dateAdapter.deserialize(value);
-    value = this._getValidDateOrNull(value);
-    const oldDate = this.value;
-    this._value = value;
-    this._formatValue(this.value);
-    if (!this._dateAdapter.sameDate(oldDate, value)) {
-      this._valueChange.emit(value);
-    }
+    this._assignValueProgrammatically(value, true);
   }
   get value(): D | null {
     return this._value;
@@ -306,8 +298,7 @@ export class NxDatefieldDirective<D>
 
     // Update the displayed date when the locale changes.
     _dateAdapter.localeChanges.pipe(takeUntil(this._destroyed)).subscribe(() => {
-      const value = this.value;
-      this.value = value; // invoke setter
+      this._assignValueProgrammatically(this.value, true);
     });
 
     this._readonlyStateChangeEffect = effect(() => {
@@ -364,7 +355,10 @@ export class NxDatefieldDirective<D>
 
   // Implemented as part of ControlValueAccessor.
   writeValue(value: D): void {
-    this.value = value;
+    // We produce a different date object on each keystroke which can cause signal forms'
+    // interop logic to keep calling `writeValue` with the same value as the user is typing.
+    // Skip such cases since they can prevent the user from typing.
+    this._assignValueProgrammatically(value, value !== this.value);
   }
 
   // Implemented as part of ControlValueAccessor.
@@ -390,7 +384,9 @@ export class NxDatefieldDirective<D>
   }
 
   _onInput(target: EventTarget | null) {
-    if (!target) return;
+    if (!target) {
+      return;
+    }
     const value = (target as HTMLInputElement).value;
     let date = this._dateAdapter.parse(
       value,
@@ -466,6 +462,22 @@ export class NxDatefieldDirective<D>
     if (value) {
       this._datepicker = value;
       this._datepicker.registerInput(this);
+    }
+  }
+
+  /** Programmatically assigns a value to the input. */
+  private _assignValueProgrammatically(value: D | null, reformat: boolean) {
+    value = this._dateAdapter.deserialize(value);
+    value = this._getValidDateOrNull(value);
+    const oldDate = this.value;
+    this._value = value;
+
+    if (reformat) {
+      this._formatValue(this.value);
+    }
+
+    if (!this._dateAdapter.sameDate(oldDate, value)) {
+      this._valueChange.emit(value);
     }
   }
 }

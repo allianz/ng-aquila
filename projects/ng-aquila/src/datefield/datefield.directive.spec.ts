@@ -249,6 +249,37 @@ describe('NxDatefieldDirective with Moment', () => {
       expect(nativeElement.value).toBe('2018/01/01');
     }));
 
+    it('should keep the typed value when the same date instance is re-assigned', fakeAsync(() => {
+      createTestComponent(ReactiveDatefield);
+      const control = testInstance.form.get('datefield')!;
+      const date = moment([2018, 0, 1]);
+
+      control.setValue(date);
+      fixture.detectChanges();
+      expect(nativeElement.value).toContain('2018');
+
+      nativeElement.value = 'foo';
+      control.setValue(date);
+      fixture.detectChanges();
+
+      expect(nativeElement.value).toBe('foo');
+    }));
+
+    it('should keep the typed value when null is re-assigned', fakeAsync(() => {
+      createTestComponent(ReactiveDatefield);
+      const control = testInstance.form.get('datefield')!;
+
+      control.setValue(null);
+      fixture.detectChanges();
+      expect(nativeElement.value).toBe('');
+
+      nativeElement.value = 'foo';
+      control.setValue(null);
+      fixture.detectChanges();
+
+      expect(nativeElement.value).toBe('foo');
+    }));
+
     it('should have no error if input value is empty', () => {
       createTestComponent(ReactiveDatefield);
       nativeElement.value = '';
