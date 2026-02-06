@@ -1,0 +1,20 @@
+@use '../shared-styles/index' as *;
+
+:host {
+  color: v(eyebrow-font-color);
+  text-transform: uppercase;
+
+  &.nx-eyebrow-size-s {
+    font: v(eyebrow-font-s);
+    letter-spacing: v(eyebrow-font-s-letter-spacing);
+  }
+
+  &.nx-eyebrow-size-m {
+    font: v(eyebrow-font-m);
+    letter-spacing: v(eyebrow-font-m-letter-spacing);
+  }
+
+  &.nx-eyebrow-inverse {
+    color: v(eyebrow-font-color-inverse);
+  }
+}

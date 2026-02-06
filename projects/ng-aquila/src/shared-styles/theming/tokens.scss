@@ -802,7 +802,15 @@ $nx-theme: (
   checkbox-on-selection-readonly-selected-background-color: readonly-surface-color,
   checkbox-on-selection-readonly-selected-border-color: readonly-surface-color,
   checkbox-on-selection-readonly-selected-icon-color: readonly-on-surface-color,
-
+  // Eyebrow
+  eyebrow-font-m: paragraph-01-font-weight paragraph-01-font-size / paragraph-01-line-height
+    'font-family',
+  eyebrow-font-m-letter-spacing: paragraph-01-letter-spacing,
+  eyebrow-font-s: paragraph-02-font-weight paragraph-02-font-size / paragraph-02-line-height
+    'font-family',
+  eyebrow-font-s-letter-spacing: paragraph-02-letter-spacing,
+  eyebrow-font-color: text-01,
+  eyebrow-font-color-inverse: negative,
   // On selection states (radio)
   radio-button-on-selection-border-color: ui-05,
   radio-button-on-selection-readonly-border-color: readonly-on-surface-color,
