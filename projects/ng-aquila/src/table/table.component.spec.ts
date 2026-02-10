@@ -93,9 +93,17 @@ describe(NxTableComponent.name, () => {
         expect(element.nativeElement).toHaveClass('nx-table-row');
       });
     });
+
+    it('does not emit shadow host placeholders in styles caused by nesting :host selectors', () => {
+      createTestComponent(SimpleTableComponent);
+
+      for (const style of document.head.querySelectorAll('style')) {
+        expect(style.textContent).not.toContain('-shadowcsshost');
+      }
+    });
   });
 
-  describe('programatic', () => {
+  describe('programmatic', () => {
     it('zebra change to false should deactivate the zebra mode', () => {
       createTestComponent(ZebraTableComponent);
       tableInstance.zebra = false;
