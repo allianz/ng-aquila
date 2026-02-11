@@ -15,7 +15,7 @@
     visibility 0.4s;
   transform: none;
   visibility: visible;
-
+  border-left: v(sidepanel-border-width) solid v(sidepanel-border-color);
   [dir='rtl'] & {
     right: auto;
     left: 0;
@@ -24,6 +24,7 @@
   &.is-floating {
     z-index: 1;
     box-shadow: v(sidepanel-floating-shadow);
+    border-left: v(sidepanel-border-width) solid v(sidepanel-floating-border-color);
   }
 
   &.is-closed {
@@ -42,20 +43,20 @@
 
   &.light {
     background: v(sidepanel-light-background-color);
-    border-left: 1px solid v(sidepanel-light-border-color);
+    border-left: v(sidepanel-border-width) solid v(sidepanel-light-border-color);
 
     [dir='rtl'] & {
       border-left: unset;
-      border-right: 1px solid v(sidepanel-light-border-color);
+      border-right: v(sidepanel-border-width) solid v(sidepanel-light-border-color);
     }
   }
 
   @media screen and (forced-colors: active) {
-    border-left: 1px solid CanvasText;
+    border-left: v(sidepanel-border-width) solid CanvasText;
 
     [dir='rtl'] & {
       border-left: none;
-      border-right: 1px solid CanvasText;
+      border-right: v(sidepanel-border-width) solid CanvasText;
     }
   }
 }

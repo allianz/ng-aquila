@@ -28,6 +28,7 @@ The `nx-sidepanel` is a container that is fixed to the right edge of the viewpor
 ```
 
 `<nx-sidepanel-header>` provides a place that will stay fixed on top, when the bottom part of `<nx-sidepanel-content>` is scrolled down.
+<div class="docs-hide-a1">
 
 ### Color variations
 
@@ -68,6 +69,8 @@ With `appearance="light"` you get a white version of the sidepanel.
 </div>
 
 <!-- example(sidepanel-light) -->
+
+</div>
 
 ### Positioning
 

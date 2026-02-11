@@ -13,10 +13,12 @@
 .my-sidepanel-header {
   display: flex;
   justify-content: space-between;
+  /* The custom padding will be overridden by A1 theme styles */
   padding: 32px 32px 0 32px;
 }
 
 .my-sidepanel-content {
+  /* The custom padding will be overridden by A1 theme styles */
   padding: 0 32px 32px 32px;
 }
 

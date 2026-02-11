@@ -3,4 +3,5 @@
 :host {
   display: block;
   @include type-style(sidepanel-header);
+  margin-bottom: v(sidepanel-header-gap);
 }
