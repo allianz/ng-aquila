@@ -6,6 +6,7 @@ expert: true
 stable: done
 alias: sidenav, side navigation
 a1Light: true
+a1Densities: true
 ---
 
 The `<nx-sidebar>` provides a collapsible container for side content (often navigation, though it can be any content) alongside some primary content.
@@ -35,6 +36,16 @@ A `<nx-sidebar>` can be expanded or closed using the `expand()`, `close()` and `
 If you have to reinit the default width in an expanded state, you can call `expand(width)` with the new width as parameter or directly set the `width` of the sidebar.
 
 <!-- example(sidebar-methods) -->
+
+<div class="docs-a1">
+
+### Color Schemes
+
+Use the `colorScheme` input to switch between the default neutral background and the emphasis variant. The emphasis scheme highlights the sidebar with the dedicated emphasis tokens while keeping the same content structure.
+
+<!-- example(sidebar-color-scheme) -->
+
+</div>
 
 ### Footer area
 

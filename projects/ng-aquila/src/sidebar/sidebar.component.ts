@@ -17,6 +17,7 @@ import {
   EventEmitter,
   inject,
   Input,
+  input,
   OnDestroy,
   OnInit,
   Optional,
@@ -30,6 +31,8 @@ export const MIN_WIDTH = 56;
 export const AUTO_COLLAPSE_WIDTH = 168;
 export const RESIZE_STEP_SIZE = 20;
 
+export type NxSidebarColorScheme = 'default' | 'emphasis';
+
 @Component({
   templateUrl: './sidebar.component.html',
   styleUrls: ['sidebar.scss'],
@@ -40,6 +43,7 @@ export const RESIZE_STEP_SIZE = 20;
     '[class.is-closed]': '!open',
     '[class.hide-label]': '_sidebarElementWidth === _defaultMinWidth',
     '[style.width.px]': `_sidebarElementWidth`,
+    '[class.nx-sidebar--emphasis]': "colorScheme() === 'emphasis'",
   },
   imports: [],
 })
@@ -92,6 +96,9 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     return this._resizeHandleAriaLabel;
   }
   private _resizeHandleAriaLabel = '';
+
+  /** Controls the visual color scheme of the sidebar. */
+  readonly colorScheme = input<NxSidebarColorScheme>('default');
 
   /**
    * This reflects the current open state of the sidebar.

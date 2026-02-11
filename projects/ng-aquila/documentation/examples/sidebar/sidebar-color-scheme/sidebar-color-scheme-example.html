@@ -1,0 +1,8 @@
+<nx-sidebar class="my-sidebar" [colorScheme]="'emphasis'">
+  @for (action of actions; track action.label) {
+  <a nxAction routerLink="./" [queryParams]="action.query">
+    <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
+    {{ action.label }}
+  </a>
+  }
+</nx-sidebar>

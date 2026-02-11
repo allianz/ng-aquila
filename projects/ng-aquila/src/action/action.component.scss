@@ -9,7 +9,7 @@
   border: none;
   margin: 0;
   cursor: pointer;
-  padding: nx-spacer(2xs) nx-spacer(s) nx-spacer(2xs) 0;
+  padding: v(action-padding);
   width: 100%;
   transition:
     all 0.2s ease,
@@ -91,7 +91,7 @@
 
   &::before {
     content: '';
-    display: block;
+    display: v(action-buffer-display);
     flex: 0 1 nx-spacer(2m);
     min-width: nx-spacer(s);
     height: 1em;
@@ -100,7 +100,7 @@
 
 .nx-action-icon__container {
   font-size: v(action-icon-size);
-  padding-right: nx-spacer(s);
+  padding-right: var(--action-icon-padding-right);
   flex: 0 0 auto;
   position: relative;
   justify-content: center;
