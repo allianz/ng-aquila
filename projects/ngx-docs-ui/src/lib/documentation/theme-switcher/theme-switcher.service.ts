@@ -104,10 +104,12 @@ export class ThemeSwitcherService {
   }
 
   private _updateUrlQueryParam(theme: Theme): void {
+    const currentHash = window.location.hash;
     this._router.navigate([], {
       queryParams: { theme: theme.name },
       queryParamsHandling: 'merge',
       replaceUrl: true,
+      fragment: currentHash ? currentHash.substring(1) : undefined,
     });
   }
 }

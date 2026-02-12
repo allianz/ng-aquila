@@ -1,4 +1,6 @@
 .search-input {
+  --formfield-outline-control-height: var(--input-field-s-height, 38px);
+  --formfield-outline-input-container-padding: 6px 12px;
   display: inline-block;
   position: relative;
   margin-right: 16px;
@@ -15,7 +17,6 @@
 .search-input__clear {
   position: absolute;
   right: 0px;
-  top: 5px;
   cursor: pointer;
   line-height: 1rem;
   font-size: 1.375rem;

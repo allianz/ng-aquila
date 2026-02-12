@@ -1,4 +1,6 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +12,7 @@ import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
   selector: 'nxv-search',
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss'],
-  imports: [NxFormfieldModule, NxInputModule, FormsModule],
+  imports: [NxButtonModule, NxFormfieldModule, NxIconModule, NxInputModule, FormsModule],
 })
 export class NxvSearchInputComponent implements OnInit {
   searchTerm = '';

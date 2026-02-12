@@ -17,7 +17,10 @@
 
 <nx-context-menu #nxvThemeSwitch="nxContextMenu">
   @for (theme of themes(); track theme) {
-    <button nxContextMenuItem type="button" (click)="select(theme)" [value]="theme.name">
+    <button nxContextMenuItem selectable type="button" (click)="select(theme)" [value]="theme.name">
+      @if (selected().name === theme.name) {
+        <nx-icon aria-hidden="true" name="check" nxIconPositionStart></nx-icon>
+      }
       {{ theme.displayName }}
     </button>
   }

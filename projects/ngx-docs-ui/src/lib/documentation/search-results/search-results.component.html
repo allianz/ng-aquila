@@ -28,11 +28,15 @@
                   @for (entry of searchResults.component.entries; track entry) {
                     <div class="search-results__entry">
                       <nx-link>
-                        <a href="my-viewer/documentation/{{ entry.item.id }}">{{
+                        <a [routerLink]="['/my-viewer/documentation', entry.item.id]">{{
                           entry.item.title
                         }}</a>
                       </nx-link>
-                      <nx-badge class="nx-margin-left-s">{{ entry.item.alias }} </nx-badge>
+                      @if (entry.item.alias) {
+                        <nx-badge colorScheme="teal" class="nx-margin-left-s">{{
+                          entry.item.alias
+                        }}</nx-badge>
+                      }
                       <div class="nx-margin-bottom-m">
                         {{ entry.item.id }} {{ entry.item.category }}
                       </div>
@@ -59,9 +63,8 @@
                       <span style="text-transform: capitalize"> {{ entry.item.id }} &#9656; </span>
                       <nx-link>
                         <a
-                          href="my-viewer/documentation/{{ entry.item.id }}/api#{{
-                            entry.item.name
-                          }}"
+                          [routerLink]="['/my-viewer/documentation', entry.item.id, 'api']"
+                          [fragment]="entry.item.name"
                         >
                           {{ entry.item.name }}
                         </a>
@@ -86,7 +89,9 @@
                   @for (entry of searchResults.guide.entries; track entry) {
                     <p class="search-results__entry">
                       <nx-link>
-                        <a href="my-viewer/guides/{{ entry.item.id }}">{{ entry.item.title }}</a>
+                        <a [routerLink]="['/my-viewer/guides', entry.item.id]">{{
+                          entry.item.title
+                        }}</a>
                       </nx-link>
                     </p>
                   }
@@ -109,9 +114,8 @@
                       &#9656;
                       <nx-link>
                         <a
-                          href="my-viewer/documentation/{{ entry.item.module }}/overview#{{
-                            entry.item.id.split('-').pop()
-                          }}"
+                          [routerLink]="['/my-viewer/documentation', entry.item.module, 'overview']"
+                          [fragment]="entry.item.id.split('-').pop()"
                         >
                           {{ entry.item.title }}
                         </a>
