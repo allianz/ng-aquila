@@ -255,7 +255,7 @@ describe('NxInputDirective', () => {
       input.value = 'Value';
       fixture.detectChanges();
 
-      expect(input.getAttribute('placeholder')).toBeFalsy();
+      expect(input.getAttribute('placeholder')).toBe('This is a placeholder');
       expect(container).toHaveClass('is-floating');
     });
 
@@ -280,7 +280,7 @@ describe('NxInputDirective', () => {
       input.value = 'Value';
       fixture.detectChanges();
 
-      expect(input.getAttribute('placeholder')).toBeFalsy();
+      expect(input.getAttribute('placeholder')).toBe('This is a placeholder');
       expect(container).toHaveClass('is-floating');
     });
 

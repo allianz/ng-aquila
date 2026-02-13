@@ -196,12 +196,12 @@ export class NxInputDirective
    * Sets the text for the input placeholder.
    */
   @Input() set placeholder(value: string) {
-    this._placeholder = value;
+    this._placeholder.set(value);
   }
   get placeholder() {
-    return this.empty ? this._placeholder : '';
+    return this._placeholder();
   }
-  private _placeholder!: string;
+  private readonly _placeholder = signal<string>('');
 
   /**
    *
