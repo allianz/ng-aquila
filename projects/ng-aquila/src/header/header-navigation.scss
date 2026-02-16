@@ -1,7 +1,10 @@
+@use '../shared-styles/index' as *;
+
 :host(.nx-header__navigation) {
   flex: 1 1 auto;
 }
 
 .nx-header__navigation-items {
   display: flex;
+  gap: v(header-navigation-gap);
 }

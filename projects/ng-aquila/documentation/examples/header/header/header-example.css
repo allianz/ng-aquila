@@ -2,6 +2,12 @@ nx-header-brand img {
   margin-right: 8px;
 }
 
+nx-header-brand a {
+  display: flex;
+  font-weight: bold;
+  align-items: center !important;
+}
+
 figure {
   display: flex;
   align-items: center;
