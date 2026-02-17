@@ -1102,11 +1102,22 @@ $nx-theme: (
   footer-font-weight: paragraph-03-font-weight,
   footer-letter-spacing: paragraph-03-letter-spacing,
   footer-color: ui-05,
-  footer-copyright-font-weight: 700,
-  footer-padding-top: 32px,
-  footer-padding-bottom: 32px,
-  footer-mobile-padding-top: 48px,
-  footer-mobile-padding-bottom: 48px,
+  footer-copyright-font: 700 inherit / inherit var(--font-family),
+  footer-copyright-color: inherit,
+  footer-copyright-gap: 32px,
+  footer-copyright-gap-mobile: 16px,
+  footer-copyright-letter-spacing: inherit,
+  footer-padding-vertical: 32px,
+  footer-padding-horizontal: 32px,
+  footer-mobile-padding-vertical: 48px,
+  footer-mobile-padding-horizontal: 16px,
+  footer-mobile-align: center,
+
+  footer-link-keyboard-focus-radius: 4px,
+  footer-link-padding: 32px,
+  footer-link-mobile-padding-bottom: 16px,
+  footer-link-mobile-last-padding-bottom: footer-link-mobile-padding-bottom,
+
   // ------------ formfield tokens shared between all appearances ------------- //
   // -------------------------------------------------------------------------- //
   formfield-bottom-padding: 32px,

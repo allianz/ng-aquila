@@ -6,13 +6,13 @@
   display: flex;
   flex-direction: row;
   background: transparent;
-  padding: v(footer-padding-top) $grid-gutter-width-base v(footer-padding-bottom)
-    $grid-gutter-width-base;
+  padding: v(footer-padding-vertical) v(footer-padding-horizontal);
+  gap: v(footer-copyright-gap);
 
   @include media-breakpoint-response(mobile) {
     flex-direction: column-reverse;
-    padding: v(footer-mobile-padding-top) $grid-gutter-width-mobile v(footer-mobile-padding-bottom)
-      $grid-gutter-width-mobile;
+    padding: v(footer-mobile-padding-vertical) v(footer-mobile-padding-horizontal);
+    gap: v(footer-copyright-gap-mobile);
   }
 }
 
@@ -21,33 +21,33 @@
 }
 
 ::ng-deep .nx-footer__copyright {
-  font-weight: v(footer-copyright-font-weight);
   align-self: flex-end;
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
+  font: v(footer-copyright-font);
+  letter-spacing: v(footer-copyright-letter-spacing);
+  color: v(footer-copyright-color);
 
   @include media-breakpoint-response(mobile) {
-    align-self: center;
-    text-align: center;
+    align-self: v(footer-mobile-align);
+    text-align: v(footer-mobile-align);
   }
 }
 
 ::ng-deep .nx-footer__navigation {
   display: flex;
   align-self: flex-end;
+  gap: v(footer-link-padding);
 
   @include media-breakpoint-response(mobile) {
-    text-align: center;
-    align-self: center;
+    text-align: v(footer-mobile-align);
+    align-self: v(footer-mobile-align);
     flex-direction: column;
-    align-items: center;
+    align-items: v(footer-mobile-align);
+    gap: v(footer-link-mobile-padding-bottom);
   }
 
   & .nx-footer__link {
     @include media-breakpoint-response(mobile) {
       padding-left: 0;
-      padding-bottom: nx-spacer(s);
 
       :host-context([dir='rtl']) & {
         padding-right: 0;
@@ -60,10 +60,9 @@
   font-size: inherit;
   color: inherit;
   line-height: inherit;
-  padding-left: nx-spacer(2m);
 
   :host-context([dir='rtl']) & {
-    padding-right: nx-spacer(2m);
+    padding-right: v(footer-link-padding);
     padding-left: initial;
   }
 
@@ -73,7 +72,8 @@
   }
 
   &.cdk-keyboard-focused a {
-    border-radius: nx-border-radius(s);
+    border-radius: v(footer-link-keyboard-focus-radius);
+    outline: 0;
     @include focus-style;
   }
 }
