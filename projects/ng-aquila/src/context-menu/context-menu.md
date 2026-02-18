@@ -6,6 +6,7 @@ expert: true
 stable: done
 alias: menu
 a1Light: true
+a1Densities: true
 ---
 
 <div class="docs-deprecation-warning">

@@ -37,6 +37,12 @@
         color: highlightText;
       }
     }
+    &:hover {
+      background-color: v(context-menu-item-hover-background-color);
+    }
+    &:active {
+      background-color: v(context-menu-item-active-background-color);
+    }
   }
 
   &.is-disabled {
@@ -64,12 +70,12 @@
   }
 
   .nx-context-menu-item__content-wrapper ::ng-deep > nx-icon:not(.nx-context-menu-item__expand) {
-    margin-right: nx-spacer(2xs);
+    margin-right: v(context-menu-icon-margin);
     font-size: v(context-menu-item-icon-size);
 
     [dir='rtl'] & {
       margin-right: initial;
-      margin-left: nx-spacer(2xs);
+      margin-left: v(context-menu-icon-margin);
     }
   }
 
@@ -78,17 +84,25 @@
     ::ng-deep
     > nx-icon:not(.nx-context-menu-item__expand) {
     position: absolute;
-    left: 8px;
+    left: v(context-menu-icon-margin);
 
     [dir='rtl'] & {
       left: initial;
-      right: 8px;
+      right: v(context-menu-icon-margin);
+    }
+  }
+  &.is-selectable {
+    padding-left: v(context-menu-with-icon-padding-left);
+
+    [dir='rtl'] & {
+      padding-left: initial;
+      padding-right: v(context-menu-with-icon-padding-left);
     }
   }
 
   .nx-context-menu-item__expand {
     font-size: v(context-menu-item-expand-icon-size);
-    padding-left: nx-spacer(2xs);
+    padding-left: v(context-menu-arrow-icon-margin);
     margin-left: auto;
     margin-right: 0;
     width: 1em;

@@ -4,7 +4,7 @@ $divider-horizontal-margin: v(context-menu-item-horizontal-padding);
 $divider-vertical-margin: v(context-menu-item-vertical-padding);
 
 .nx-context-menu {
-  border-radius: nx-border-radius(s);
+  border-radius: v(context-menu-border-radius);
   background: v(context-menu-background-color);
 
   // Initial state (before enter animation)
@@ -28,7 +28,7 @@ $divider-vertical-margin: v(context-menu-item-vertical-padding);
   }
 
   @media screen and (forced-colors: active) {
-    border: nx-border-size(xs) solid CanvasText;
+    border: v(context-menu-forced-colors-border-width) solid CanvasText;
   }
 
   // Give the menu a minimum height so that the user can't
@@ -50,8 +50,8 @@ $divider-vertical-margin: v(context-menu-item-vertical-padding);
 
 // `:not(:empty)` allows for the menu to collapse to 0x0 when it doesn't have content.
 .nx-context-menu__content:not(:empty) {
-  padding-top: nx-spacer(2xs);
-  padding-bottom: nx-spacer(2xs);
+  padding-top: v(context-menu-content-padding);
+  padding-bottom: v(context-menu-content-padding);
   display: flex;
   flex-direction: column;
 

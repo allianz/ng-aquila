@@ -1,6 +1,8 @@
 @use '../shared-styles/index' as *;
 
 .nx-context-menu-group__label {
-  font-weight: v(context-menu-group-header-font-weight);
-  padding: nx-spacer(2xs) nx-spacer(2m);
+  color: v(context-menu-group-header-color);
+  font: v(context-menu-group-header-font);
+  letter-spacing: v(context-menu-group-header-letter-spacing);
+  padding: v(context-menu-group-padding-vertical) v(context-menu-group-padding-horizontal);
 }

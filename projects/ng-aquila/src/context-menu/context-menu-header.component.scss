@@ -9,7 +9,7 @@
   border-top-right-radius: nx-border-radius(s);
   z-index: 1;
   position: relative;
-  top: -8px;
+  top: calc(v(context-menu-content-padding) * -1);
   font-weight: v(context-menu-header-font-weight);
   font-size: v(context-menu-header-font-size);
 }

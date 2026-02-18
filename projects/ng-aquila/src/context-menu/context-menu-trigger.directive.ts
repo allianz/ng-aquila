@@ -46,6 +46,11 @@ import { NxContextMenuItemComponent } from './context-menu-item.component';
 
 /** Default top padding of the menu panel. */
 export const MENU_PANEL_TOP_PADDING = 8;
+function getMenuPanelTopPadding(element: HTMLElement): number {
+  const styles = getComputedStyle(element);
+  const value = styles.getPropertyValue('--context-menu-content-padding').trim();
+  return parseFloat(value) || MENU_PANEL_TOP_PADDING;
+}
 
 export const MENU_PANEL_OFFSET_Y = 8;
 
@@ -470,7 +475,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
       overlayFallbackX = originX = 'end';
       originFallbackX = overlayX = 'start';
       offsetX = this.dir === 'rtl' ? -MENU_PANEL_OFFSET_X : MENU_PANEL_OFFSET_X;
-      offsetY = -MENU_PANEL_TOP_PADDING;
+      offsetY = -getMenuPanelTopPadding(this._element.nativeElement);
     } else {
       offsetY = MENU_PANEL_OFFSET_Y;
       originY = 'bottom';
