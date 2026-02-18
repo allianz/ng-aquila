@@ -14,6 +14,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ElementRef,
   EventEmitter,
   Inject,
@@ -132,7 +133,9 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     optional: true,
   });
 
-  protected readonly showRadioIndicator = this._allianzOneOptions?.enabled ?? signal(false);
+  protected readonly showRadioIndicator = computed(
+    () => this._allianzOneOptions?.enabled?.() ?? false,
+  );
 
   /** Emits whenever the component is destroyed. */
   private readonly _destroyed = new Subject<void>();

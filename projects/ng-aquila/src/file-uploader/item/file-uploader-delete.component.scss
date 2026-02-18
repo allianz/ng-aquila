@@ -1,7 +1,7 @@
 @use '../../shared-styles/index' as *;
 
 :host {
-  display: block;
+  display: flex;
 
   > button {
     margin-bottom: 0;

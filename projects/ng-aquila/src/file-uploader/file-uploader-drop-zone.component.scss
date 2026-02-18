@@ -2,19 +2,21 @@
 
 :host {
   ::ng-deep button {
-    margin-bottom: nx-spacer(s);
+    margin-bottom: 16px; // bottom margin for buttons below medium breakpoint
   }
 
   @include media-breakpoint-up(medium) {
-    height: 104px;
-    border: nx-border-size(xs) dashed v(file-uploader-drop-zone-border-color);
+    padding: v(file-uploader-drop-zone-padding);
+    border: v(file-uploader-drop-zone-border-width) v(file-uploader-drop-zone-border-style)
+      v(file-uploader-drop-zone-border-color);
+    border-radius: v(file-uploader-drop-zone-border-radius);
     align-items: center;
     justify-content: center;
     display: flex;
     color: v(file-uploader-drop-zone-text-color);
 
     &.is-active {
-      border-style: solid;
+      border-style: v(file-uploader-drop-zone-active-border-style);
     }
 
     &.is-disabled {

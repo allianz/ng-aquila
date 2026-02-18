@@ -4,14 +4,14 @@
   display: block;
 
   ::ng-deep nx-error.nx-error--message {
-    margin: nx-spacer(xs) 0;
+    margin: v(file-uploader-error-message-margin-block) 0;
 
     ul {
-      margin-left: 28px;
-      margin-top: 6px;
+      margin-left: v(file-uploader-error-list-margin-left);
+      margin-top: v(file-uploader-error-list-margin-top);
     }
     li {
-      line-height: nx-spacer(m);
+      line-height: v(file-uploader-error-list-line-height);
     }
   }
 }
@@ -24,9 +24,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  border-bottom-width: nx-border-size(xs);
+  border-bottom-width: v(file-uploader-file-row-border-width);
   border-bottom-style: solid;
-  padding: nx-spacer(2xs) nx-spacer(xs);
+  padding: v(file-uploader-file-row-padding);
   border-bottom-color: v(file-uploader-file-row-border-bottom-color);
   color: v(file-uploader-file-row-text-color);
 
@@ -44,7 +44,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      min-width: 120px;
+      min-width: v(file-uploader-file-row-actions-min-width);
       flex: none;
 
       :host-context([dir='rtl']) & {
@@ -56,10 +56,12 @@
 
   &.nx-file-uploader--default-template {
     nx-file-upload-name {
-      flex: none;
+      display: flex;
+      gap: v(file-uploader-name-gap);
+      align-items: center;
       max-width: 65%;
       overflow-wrap: break-word;
-      line-height: nx-line-height(xs);
+      line-height: v(file-uploader-file-name-line-height);
 
       @include media-breakpoint-down('small') {
         flex: 100%;
@@ -79,7 +81,8 @@
 
     nx-file-upload-status {
       flex: 0 1 auto;
-      padding: 0 nx-spacer(s);
+      padding-right: v(file-uploader-status-padding-right);
+      padding-left: v(file-uploader-status-padding-left);
     }
 
     nx-file-upload-delete {
@@ -88,7 +91,7 @@
   }
 
   &.nx-file-uploader--file-state-uploading {
-    .file-name {
+    ::ng-deep nx-file-upload-name {
       color: v(file-uploader-file-row-uploading-file-name-color);
     }
   }
@@ -104,6 +107,7 @@
 
 ::ng-deep .nx-file-upload-hint {
   @include type-style(file-uploader-hint);
+  color: v(file-uploader-hint-color);
 
   display: block;
 }

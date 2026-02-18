@@ -16,7 +16,7 @@ import { getFileExtension } from '../file-uploader.validations';
       }
       <nx-icon name="file" class="extension-icon"></nx-icon>
     </span>
-    <span class="file-name nx-margin-left-2xs">{{ name() }}</span>
+    <span class="file-name">{{ name() }}</span>
   `,
   imports: [NxIconModule],
 })

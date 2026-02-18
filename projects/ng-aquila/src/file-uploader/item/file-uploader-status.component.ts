@@ -1,4 +1,4 @@
-import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxStatusIconComponent } from '@allianz/ng-aquila/icon';
 import { NxSpinnerModule } from '@allianz/ng-aquila/spinner';
 import { Component, input } from '@angular/core';
 
@@ -11,16 +11,17 @@ import { Component, input } from '@angular/core';
       <nx-spinner size="medium"></nx-spinner>
     }
     @if (isUploaded()) {
-      <nx-icon name="check-circle" size="s" [attr.aria-label]="uploadedLabel() || null"> </nx-icon>
+      <nx-status-icon type="success" size="s" [attr.aria-label]="uploadedLabel() || null">
+      </nx-status-icon>
     }
   `,
-  imports: [NxSpinnerModule, NxIconModule],
+  imports: [NxSpinnerModule, NxStatusIconComponent],
 })
 export class NxFileUploaderItemStatus {
   /** Whether the file is uploading at the moment. If this is true, a spinner is shown. Default: false.*/
   readonly isUploading = input<boolean>(false);
 
-  /** Whether the file was uploaded. If this is true, a `check-circle` icon is shown. Default: false.*/
+  /** Whether the file was uploaded. If this is true, a success status icon is shown. Default: false.*/
   readonly isUploaded = input<boolean>(false);
 
   /** The label that is used once the file has been uploaded (used by screen readers).*/

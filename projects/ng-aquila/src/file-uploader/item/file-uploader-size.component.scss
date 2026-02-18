@@ -1,3 +1,6 @@
+@use '../../shared-styles/index' as *;
+
 :host {
   white-space: nowrap;
+  color: v(file-uploader-file-size-color);
 }
