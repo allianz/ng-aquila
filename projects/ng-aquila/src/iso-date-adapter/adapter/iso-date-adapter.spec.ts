@@ -1,9 +1,9 @@
-import 'dayjs/locale/de';
+import 'dayjs/locale/de.js';
 
 import { NxDateAdapter } from '@allianz/ng-aquila/datefield';
 import { inject, TestBed, waitForAsync } from '@angular/core/testing';
 import dayjs from 'dayjs';
-import localeData from 'dayjs/plugin/localeData';
+import localeData from 'dayjs/plugin/localeData.js';
 
 import { NxIsoDateAdapter } from './iso-date-adapter';
 import { NxIsoDateModule } from './iso-date-adapter.module';
@@ -51,7 +51,7 @@ describe('NxIsoDateAdapter', () => {
 
   describe('Localization with locale id that is unknown to dayjs', () => {
     it('should automatically fall back to a locale that is known to dayjs', async () => {
-      // 'de-BY' is unknwon to dayjs (and the world). The IsoDateAdapter should fall back to 'de'.
+      // 'de-BY' is unknown to dayjs (and the world). The IsoDateAdapter should fall back to 'de'.
       await adapter.setLocale('de-BY');
       const date = adapter.parse('01.12.2020', 'MM.DD.YYYY', true);
       expect(date).toBe('2020-01-12');

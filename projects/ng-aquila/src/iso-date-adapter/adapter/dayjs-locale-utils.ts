@@ -1,9 +1,9 @@
-import supportedLocales from 'dayjs/locale.json';
+import supportedLocales from 'dayjs/locale.json' with { type: 'json' };
 
 /**
  * This function turns a well-formatted locale into one that is known to dayjs.
  * To figure out what is known to dayjs this function makes use of the file `locale.json`
- * that is part of any dayjs relase (see https://day.js.org/docs/en/i18n/i18n).
+ * that is part of any dayjs release (see https://day.js.org/docs/en/i18n/i18n).
  * To match the locale it follows the "lookup" logic specified in the RFC for
  * "Matching of Language Tags" (see https://www.rfc-editor.org/info/rfc4647).
  * @example en-GB -> en-gb, en-US -> en, de-DE -> de, de-CH -> de-ch

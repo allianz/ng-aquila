@@ -2,10 +2,10 @@ import { NX_DATE_LOCALE, NxDateAdapter } from '@allianz/ng-aquila/datefield';
 import { pad } from '@allianz/ng-aquila/utils';
 import { Inject, Optional } from '@angular/core';
 import dayjs, { Dayjs } from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import localeData from 'dayjs/plugin/localeData';
-import localizedFormat from 'dayjs/plugin/localizedFormat';
-import utc from 'dayjs/plugin/utc';
+import customParseFormat from 'dayjs/plugin/customParseFormat.js';
+import localeData from 'dayjs/plugin/localeData.js';
+import localizedFormat from 'dayjs/plugin/localizedFormat.js';
+import utc from 'dayjs/plugin/utc.js';
 
 import { convertToDayjsLocale } from './dayjs-locale-utils';
 
