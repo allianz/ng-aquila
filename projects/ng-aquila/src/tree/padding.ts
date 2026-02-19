@@ -1,7 +1,16 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { CdkTree, CdkTreeNode } from '@angular/cdk/tree';
-import { Directive, ElementRef, Input, OnDestroy, Optional, Renderer2 } from '@angular/core';
+import {
+  computed,
+  Directive,
+  ElementRef,
+  Input,
+  OnDestroy,
+  Optional,
+  Renderer2,
+  signal,
+} from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -16,35 +25,53 @@ const cssUnitPattern = /([%A-Z]+)$/i;
   selector: '[nxTreeNodePadding]',
   host: {
     '[class.nx-tree-node--with-padding]': 'true',
+    '[style]': 'getIndentStyle()',
   },
   standalone: true,
 })
 export class NxTreeNodePaddingDirective<T> implements OnDestroy {
-  /** Current padding value applied to the element. Used to avoid unnecessarily hitting the DOM. */
-  private _currentPadding!: string | null;
+  protected getIndentStyle = computed(() => {
+    const arrowSize = '(var(--action-expand-icon-size) + var(--action-expand-icon-gap))';
+    const indent = this._indent() ? this._indent() + this.indentUnits : arrowSize;
+    const level = this._level() || this.getIntristicNodeLevel();
+    const offset = this._offset() ? ` + ${this._offset()}${this.indentUnits}` : '';
+    const calc = `calc((var(--action-padding-left) * 2) + ${indent} * ${level}${offset})`;
+    if (!level) {
+      return;
+    }
 
+    if (this.isLTR()) {
+      return {
+        'padding-left': calc,
+        'padding-right': null,
+      };
+    } else {
+      return {
+        'padding-right': calc,
+        'padding-left': null,
+      };
+    }
+  });
   /** CSS units used for the indentation value. */
   indentUnits = 'px';
 
   /** The level of depth of the tree node. The padding will be `level * indent` pixels. */
   @Input('nxTreeNodePadding') set level(value: NumberInput) {
-    this._level = coerceNumberProperty(value);
-    this._setPadding();
+    this._level.set(coerceNumberProperty(value));
   }
   get level(): number {
-    return this._level;
+    return this._level();
   }
-  _level!: number;
+  private _level = signal<number>(0);
 
   /** The offset is added once on top of each indent. Default number is 0. */
   @Input('nxTreeNodePaddingOffset') set offset(value: NumberInput) {
-    this._offset = coerceNumberProperty(value);
-    this._setPadding();
+    this._offset.set(coerceNumberProperty(value));
   }
   get offset(): number {
-    return this._offset;
+    return this._offset();
   }
-  _offset = 0;
+  _offset = signal(0);
 
   /**
    * The indent for each level. Can be a number or a CSS string.
@@ -61,15 +88,16 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
     }
 
     this.indentUnits = units;
-    this._indent = coerceNumberProperty(value);
-    this._setPadding();
+    this._indent.set(coerceNumberProperty(value));
   }
   get indent(): number {
-    return this._indent;
+    return this._indent();
   }
-  _indent = 24;
+  _indent = signal(0);
 
   private readonly _destroyed = new Subject<void>();
+
+  private isLTR = signal(true);
 
   constructor(
     private readonly _treeNode: CdkTreeNode<T>,
@@ -78,15 +106,11 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
     private readonly _element: ElementRef<HTMLElement>,
     @Optional() private readonly _dir: Directionality | null,
   ) {
-    this._setPadding();
     if (this._dir) {
-      this._dir.change.pipe(takeUntil(this._destroyed)).subscribe(() => this._setPadding(true));
+      this._dir.change.pipe(takeUntil(this._destroyed)).subscribe((direction) => {
+        this.isLTR.set(direction === 'ltr');
+      });
     }
-
-    // In Ivy the indentation binding might be set before the tree node's data has been added,
-    // which means that we'll miss the first render. We have to subscribe to changes in the
-    // data to ensure that everything is up to date.
-    _treeNode._dataChanges.pipe(takeUntil(this._destroyed)).subscribe(() => this._setPadding());
   }
 
   ngOnDestroy(): void {
@@ -94,29 +118,9 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
     this._destroyed.complete();
   }
 
-  /** The padding indent value for the tree node. Returns a string with px numbers if not null. */
-  _paddingIndent(): string | null {
-    if (this._tree.treeControl) {
-      const nodeLevel =
-        this._treeNode.data && this._tree.treeControl.getLevel
-          ? this._tree.treeControl.getLevel(this._treeNode.data)
-          : null;
-      const level = this._level || nodeLevel;
-      return level ? `${level * this._indent + this._offset}${this.indentUnits}` : null;
-    }
-    return null;
-  }
-
-  _setPadding(forceChange = false) {
-    const padding = this._paddingIndent();
-
-    if (padding !== this._currentPadding || forceChange) {
-      const element = this._element.nativeElement;
-      const paddingProp = this._dir && this._dir.value === 'rtl' ? 'paddingRight' : 'paddingLeft';
-      const resetProp = paddingProp === 'paddingLeft' ? 'paddingRight' : 'paddingLeft';
-      this._renderer.setStyle(element, paddingProp, padding);
-      this._renderer.setStyle(element, resetProp, null);
-      this._currentPadding = padding;
-    }
+  private getIntristicNodeLevel(): number {
+    return this._treeNode.data && this._tree.treeControl && this._tree.treeControl.getLevel
+      ? this._tree.treeControl.getLevel(this._treeNode.data)
+      : 0;
   }
 }

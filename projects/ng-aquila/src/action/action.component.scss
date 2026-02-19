@@ -17,6 +17,8 @@
   text-decoration: none;
   color: v(action-color);
   background-color: v(action-background-color);
+  border-radius: v(action-button-border-radius);
+  margin-bottom: v(action-button-gap);
 
   &:hover {
     color: v(action-hover-color);
@@ -39,10 +41,21 @@
     }
   }
 
+  &:active {
+    background-color: v(action-button-background-color-active);
+  }
+
   &.is-selected {
     color: v(action-selected-color);
     background-color: v(action-selected-background-color);
-    font-weight: nx-font-weight(bold);
+    font-weight: v(action-button-font-weight-selected);
+    &:hover {
+      background-color: v(action-button-background-color-selected-hover);
+    }
+
+    &:active {
+      background-color: v(action-button-background-color-selected-active);
+    }
   }
 
   &.nx-tree-node--with-padding {
@@ -71,8 +84,8 @@
   justify-content: center;
   transition: all 0.2s ease;
   transform: rotateZ(0);
-  margin-right: nx-spacer(2xs);
-  margin-top: 3px;
+  margin-right: v(action-expand-icon-gap);
+  align-self: center;
   flex: 0 0 auto;
   font-size: v(action-expand-icon-size);
 
@@ -88,7 +101,6 @@
   align-items: flex-start;
   position: relative;
   overflow: hidden;
-
   &::before {
     content: '';
     display: v(action-buffer-display);
@@ -105,7 +117,7 @@
   position: relative;
   justify-content: center;
   display: flex;
-  margin-top: 2px;
+  align-self: center;
 
   :host-context([dir='rtl']) & {
     padding-right: initial;
@@ -115,6 +127,7 @@
 
 ::ng-deep .nx-action__icon {
   font-weight: nx-font-weight(regular);
+  font-size: v(action-icon-size) !important;
 }
 
 // this is to overwrite if icon size s is used for the action icon (previously used in examples)

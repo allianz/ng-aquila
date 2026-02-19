@@ -29,7 +29,17 @@ One possible content for the sidebar is a list of navigation links, in this case
 
 A `<nx-sidebar>` can be resized by dragging the right edge when the option `resizeable` is set.
 
+<div class="docs-hide-a1">
+
 <!-- example(sidebar-resizeable) -->
+
+</div>
+
+<div class="docs-a1">
+
+<!-- example(sidebar-a1-resizeable) -->
+
+</div>
 
 A `<nx-sidebar>` can be expanded or closed using the `expand()`, `close()` and `toggle()` methods.
 
@@ -57,4 +67,14 @@ For placing some view shortcuts on the bottom of the sidebar, a `<nx-sidebar-foo
 
 You can use the `widthChange` output event in order to subscribe to changes of the sidebar width.
 
+<div class="docs-hide-a1">
+
 <!-- example(sidebar-outputs) -->
+
+</div>
+
+<div class="docs-a1">
+
+<!-- example(sidebar-a1-outputs) -->
+
+</div>

@@ -25,32 +25,6 @@ $sidebar-width: 280px;
     }
   }
 
-  ::ng-deep .nx-action {
-    // can move to action if design is exclusive for sidebar
-    --action-color: var(--sidebar-button-text-color);
-    --action-selected-color: var(--sidebar-button-text-color-selected);
-    --action-background-color: var(--sidebar-button-background-color);
-    --action-hover-background-color: var(--sidebar-button-background-color-hover);
-    --action-selected-background-color: var(--sidebar-button-background-color-selected);
-    --action-icon-padding-right: var(--sidebar-button-icon-gap);
-    --action-padding: var(--sidebar-button-padding);
-    --action-buffer-display: var(--sidebar-button-buffer-display);
-    &:active {
-      background-color: v(sidebar-button-background-color-active) !important;
-    }
-    &.is-selected {
-      font-weight: v(sidebar-button-font-weight-selected);
-      &:hover {
-        background-color: v(sidebar-button-background-color-selected-hover);
-      }
-      &:active {
-        background-color: v(sidebar-button-background-color-selected-active) !important;
-      }
-    }
-    border-radius: v(sidebar-button-border-radius);
-    margin-bottom: v(sidebar-button-gap) !important;
-  }
-
   &.is-closed {
     ::ng-deep .nx-sidebar__toggle-button {
       transform: rotateZ(180deg);
@@ -214,8 +188,15 @@ $sidebar-width: 280px;
   }
 }
 
-:host(.nx-sidebar--emphasis) .nx-sidebar__box {
-  background: v(sidebar-background-color-emphasis);
+:host(.nx-sidebar--emphasis) {
+  .nx-sidebar__box {
+    background: v(sidebar-background-color-emphasis);
+  }
+  ::ng-deep .nx-action {
+    --action-selected-background-color: var(
+      --sidebar-emphasis-button-background-color-selected
+    ) !important;
+  }
 }
 
 .nx-sidebar__content {
@@ -231,7 +212,8 @@ $sidebar-width: 280px;
   }
 }
 
-@container (width <= 56px) {
+// A1
+@container (width <= 82px) {
   .nx-sidebar__content {
     padding-left: v(sidebar-content-padding-horizontal-mobile);
     padding-right: v(sidebar-content-padding-horizontal-mobile);

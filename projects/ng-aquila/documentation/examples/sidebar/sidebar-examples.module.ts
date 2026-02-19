@@ -12,7 +12,9 @@ import { SidebarExampleComponent } from './sidebar/sidebar-example';
 import { SidebarFooterExampleComponent } from './sidebar-footer/sidebar-footer-example';
 import { SidebarMethodsExampleComponent } from './sidebar-methods/sidebar-methods-example';
 import { SidebarOutputsExampleComponent } from './sidebar-outputs/sidebar-outputs-example';
+import { SidebarA1OutputsExampleComponent } from './sidebar-a1-outputs/sidebar-a1-outputs-example';
 import { SidebarResizeableExampleComponent } from './sidebar-resizeable/sidebar-resizeable-example';
+import { SidebarA1ResizeableExampleComponent } from './sidebar-a1-resizeable/sidebar-a1-resizeable-example';
 
 const EXAMPLES = [
   SidebarColorSchemeExampleComponent,
@@ -21,6 +23,8 @@ const EXAMPLES = [
   SidebarMethodsExampleComponent,
   SidebarOutputsExampleComponent,
   SidebarResizeableExampleComponent,
+  SidebarA1ResizeableExampleComponent,
+  SidebarA1OutputsExampleComponent,
 ];
 
 @NgModule({
@@ -45,6 +49,8 @@ export class SidebarExamplesModule {
       'sidebar-methods': SidebarMethodsExampleComponent,
       'sidebar-outputs': SidebarOutputsExampleComponent,
       'sidebar-resizeable': SidebarResizeableExampleComponent,
+      'sidebar-a1-resizeable': SidebarA1ResizeableExampleComponent,
+      'sidebar-a1-outputs': SidebarA1OutputsExampleComponent,
     };
   }
 }

@@ -16,7 +16,17 @@ The nx-tree provides a tree that can be used to display hierarchy data. This com
 
 A `<nx-tree>` is a flat tree consisting of `<nx-tree-node>` nodes.
 
+<div class="docs-hide-a1">
+
 <!-- example(tree) -->
+
+</div>
+
+<div class="docs-a1">
+
+<!-- example(tree-a1) -->
+
+</div>
 
 ### Adding expand/collapse
 

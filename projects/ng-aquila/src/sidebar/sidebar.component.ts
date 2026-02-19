@@ -1,3 +1,4 @@
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
@@ -13,6 +14,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ElementRef,
   EventEmitter,
   inject,
@@ -28,6 +30,7 @@ import {
 
 export const MAX_WIDTH = 400;
 export const MIN_WIDTH = 56;
+export const MIN_WIDTH_A1 = 82;
 export const AUTO_COLLAPSE_WIDTH = 168;
 export const RESIZE_STEP_SIZE = 20;
 
@@ -41,7 +44,7 @@ export type NxSidebarColorScheme = 'default' | 'emphasis';
   host: {
     '[class.is-resizing]': '_resizing',
     '[class.is-closed]': '!open',
-    '[class.hide-label]': '_sidebarElementWidth === _defaultMinWidth',
+    '[class.hide-label]': '_sidebarElementWidth === _defaultMinWidth()',
     '[style.width.px]': `_sidebarElementWidth`,
     '[class.nx-sidebar--emphasis]': "colorScheme() === 'emphasis'",
   },
@@ -69,12 +72,12 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
   /** Sets the minimal width (in pixel) of the sidebar. */
   @Input() set minWidth(value: NumberInput) {
-    this._minWidth = coerceNumberProperty(value) || MIN_WIDTH;
+    this._minWidth = coerceNumberProperty(value);
   }
   get minWidth(): number {
-    return this._minWidth;
+    return this._minWidth ?? this._defaultMinWidth();
   }
-  private _minWidth: number = MIN_WIDTH;
+  private _minWidth?: number;
 
   /** Sets the maximal width (in pixel) of the sidebar. */
   @Input() set maxWidth(value: NumberInput) {
@@ -150,7 +153,11 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
   private _resizeStartWidth!: number;
 
-  protected readonly _defaultMinWidth = MIN_WIDTH;
+  private allianzOne = inject(ALLIANZ_ONE, { optional: true }) as AllianzOneOptions | null;
+
+  protected readonly _defaultMinWidth = computed(() =>
+    this.allianzOne?.enabled?.() ? MIN_WIDTH_A1 : MIN_WIDTH,
+  );
 
   private readonly _unsubscribeListeners: (() => void)[] = [];
 

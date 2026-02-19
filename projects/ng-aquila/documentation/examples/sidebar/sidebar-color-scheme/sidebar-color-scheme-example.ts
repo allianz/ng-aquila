@@ -5,7 +5,7 @@ import {
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { NxSidebarComponent } from '@allianz/ng-aquila/sidebar';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 /**
  * @title Sidebar color scheme
@@ -20,6 +20,7 @@ import { RouterLink } from '@angular/router';
     NxIconComponent,
     NxActionIconDirective,
     RouterLink,
+    RouterLinkActive,
   ],
 })
 export class SidebarColorSchemeExampleComponent {

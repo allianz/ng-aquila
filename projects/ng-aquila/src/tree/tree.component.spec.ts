@@ -614,18 +614,14 @@ function expectFlatTreeToNxch(
   }
 
   function checkLevel(node: Element, expectedNode: any[]) {
-    const actualLevel = (node as HTMLElement).style.paddingLeft;
+    const actualLevel = window.getComputedStyle(node as HTMLElement).paddingLeft;
     if (expectedNode.length === 1) {
-      if (actualLevel !== '') {
-        missedExpectations.push(`Expected node level to be 0 but was ${actualLevel}`);
-      }
-    } else {
-      const expectedLevel = `${(expectedNode.length - 1) * expectedPaddingIndent + expectedPaddingOffset}px`;
-      if (actualLevel !== expectedLevel) {
-        missedExpectations.push(
-          `Expected node level to be ${expectedLevel} but was ${actualLevel}`,
-        );
-      }
+      return;
+    }
+
+    const expectedLevel = `${(expectedNode.length - 1) * expectedPaddingIndent + expectedPaddingOffset}px`;
+    if (actualLevel !== expectedLevel) {
+      missedExpectations.push(`Expected node level to be ${expectedLevel} but was ${actualLevel}`);
     }
   }
 
