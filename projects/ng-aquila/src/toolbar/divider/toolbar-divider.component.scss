@@ -1,8 +1,9 @@
 @use '../../shared-styles/index' as *;
 
 :host {
-  background-color: var(--header-border-color);
-  width: 1px;
-  height: 32px;
-  margin: nx-spacer(s);
+  flex-shrink: 0;
+  background-color: v(toolbar-divider-color);
+  width: v(toolbar-divider-width);
+  height: v(toolbar-divider-height);
+  margin: v(toolbar-divider-margin);
 }

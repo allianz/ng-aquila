@@ -1,13 +1,14 @@
 @use '../shared-styles/index' as *;
 
 :host {
-  height: 48px;
-  border-bottom: nx-border-size(xs) solid;
+  @include type-style(toolbar);
+  height: v(toolbar-height);
+  border-bottom: 1px solid;
   border-bottom-color: v(toolbar-border-bottom-color);
   background: v(toolbar-background);
   display: flex;
   box-sizing: border-box;
-  padding: 0 nx-spacer(2m);
+  padding: v(toolbar-padding);
   width: 100%;
   flex-direction: row;
   align-items: center;
@@ -18,6 +19,6 @@
   }
 
   @media screen and (max-width: 703px) {
-    padding: 0 nx-spacer(s);
+    padding: v(toolbar-padding-mobile);
   }
 }

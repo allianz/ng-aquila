@@ -1,6 +1,5 @@
 import {
   NxButtonComponent,
-  NxIconButtonComponent,
   NxPlainButtonComponent,
 } from '@allianz/ng-aquila/button';
 import {
@@ -16,18 +15,17 @@ import { Component } from '@angular/core';
  * @title Toolbar positioning content example
  */
 @Component({
-  selector: 'toolbar-positioning-content-example',
-  templateUrl: './toolbar-positioning-content-example.html',
-  styleUrls: ['./toolbar-positioning-content-example.css'],
+  selector: 'toolbar-positioning-content-a1-example',
+  templateUrl: './toolbar-positioning-content-a1-example.html',
+  styleUrls: ['./toolbar-positioning-content-a1-example.css'],
   imports: [
     NxToolbarComponent,
     NxPlainButtonComponent,
     NxIconComponent,
-    NxIconButtonComponent,
     NxContextMenuTriggerDirective,
     NxButtonComponent,
     NxContextMenuComponent,
     NxContextMenuItemComponent,
   ],
 })
-export class ToolbarPositioningContentExampleComponent {}
+export class ToolbarPositioningContentA1ExampleComponent {}

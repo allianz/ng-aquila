@@ -4,7 +4,7 @@ category: components
 b2c: false
 expert: true
 stable: done
-a1Light: true
+a1Densities: true
 ---
 
 <div class="docs-deprecation-warning">
@@ -16,11 +16,32 @@ The toolbar is a visual container for elements (e.g. icons, buttons, icon toolti
 
 <!-- example(toolbar) -->
 
+<div class="docs-hide-ndbx">
+
+### Toolbar with divider
+
+In combination with a business description and a divider line, an icon only back-link can be used. Use `<nx-toolbar-divider>` for the divider.
+
+<!-- example(toolbar-divider-a1) -->
+
+### Positioning toolbar content
+
+The toolbar component is a container for its content without any positioning. So you have the freedom to position the content depending on the use case.
+
+The toolbar uses a flexbox row layout. This makes positioning the elements easy using flex.
+
+<!-- example(toolbar-positioning-content-a1) -->
+
+</div>
+
+<div class="docs-hide-a1 docs-hide-aquila">
+
 ### Toolbar with divider
 
 In combination with a business description and a divider line, an icon only back-link can be used. Use `<nx-toolbar-divider>` for the divider.
 
 <!-- example(toolbar-divider) -->
+
 
 ### Positioning toolbar content
 
@@ -29,3 +50,5 @@ The toolbar component is a container for its content without any positioning. So
 The toolbar uses a flexbox row layout. This makes positioning the elements easy using flex.
 
 <!-- example(toolbar-positioning-content) -->
+
+</div>

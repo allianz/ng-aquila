@@ -27,9 +27,15 @@ main {
 :host ::ng-deep .theme-a1 .docs-a1 {
   display: block;
 }
+
 :host ::ng-deep .theme-a1 .docs-hide-a1 {
   display: none;
 }
+
 :host ::ng-deep .theme-ndbx .docs-hide-ndbx {
+  display: none;
+}
+
+:host ::ng-deep .theme-aquila .docs-hide-aquila {
   display: none;
 }

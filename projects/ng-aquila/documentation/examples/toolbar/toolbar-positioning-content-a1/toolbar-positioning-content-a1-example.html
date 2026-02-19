@@ -1,0 +1,42 @@
+<nx-toolbar>
+  <button nxPlainButton type="button" aria-label="a useful label" class="back">
+    <nx-icon
+      name="chevron-left"
+      nxIconPositionStart
+      aria-hidden="true"
+    ></nx-icon
+    >Previous Page Title
+  </button>
+
+  <div class="nx-toolbar-actions">
+    <button nxPlainButton aria-label="a useful label" type="button">
+      <nx-icon name="speech-bubble-o" aria-hidden="true"></nx-icon>
+    </button>
+    <button nxPlainButton aria-label="a useful label" type="button">
+      <nx-icon name="close" aria-hidden="true"></nx-icon>
+    </button>
+    <button nxPlainButton aria-label="a useful label" type="button">
+      <nx-icon name="refresh" aria-hidden="true"></nx-icon>
+    </button>
+
+    <button
+      nxPlainButton
+      [nxContextMenuTriggerFor]="menu"
+      aria-label="Open menu"
+      type="button"
+    >
+      <nx-icon name="ellipsis-h" aria-hidden="true"></nx-icon>
+    </button>
+
+    <button nxButton="primary small" type="button">
+      <nx-icon name="save-o" aria-hidden="true" nxIconPositionStart></nx-icon
+      >Save changes
+    </button>
+  </div>
+</nx-toolbar>
+
+<nx-context-menu #menu="nxContextMenu">
+  <button nxContextMenuItem type="button">Settings</button>
+  <button nxContextMenuItem type="button">Download</button>
+  <button nxContextMenuItem type="button">Help</button>
+</nx-context-menu>
