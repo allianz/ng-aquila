@@ -5,7 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: progress spinner
-a1Light: true
+a1Densities: true
 ---
 
 ### Sizes

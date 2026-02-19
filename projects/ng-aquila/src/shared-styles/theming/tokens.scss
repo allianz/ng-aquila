@@ -1766,6 +1766,9 @@ $nx-theme: (
   spinner-indicator-color: interactive-primary,
   spinner-negative-background-color: rgba(150, 150, 150, 0.4),
   spinner-negative-indicator-color: negative,
+  spinner-small-dimension: 16px,
+  spinner-medium-dimension: 24px,
+  spinner-large-dimension: 40px,
   // the control and the first line of text are supposed to be aligned
   // depending on the height of the control and the line-height of the text
   // you can use these variables to push either the control or the text down to fit

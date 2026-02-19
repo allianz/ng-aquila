@@ -1,16 +1,11 @@
 @use '../shared-styles/index' as *;
 
-$diameter-small: nx-spacer(s);
-$diameter-medium: nx-spacer(m);
-$diameter-large: nx-spacer(3m);
-$edge-margin: 4%;
-
 @keyframes spin {
   0% {
-    transform: rotate(45deg);
+    transform: rotate(0deg);
   }
   100% {
-    transform: rotate(405deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -20,83 +15,45 @@ $edge-margin: 4%;
 }
 
 :host(.nx-spinner--small) {
-  width: $diameter-small;
-  height: $diameter-small;
+  width: v(spinner-small-dimension);
+  height: v(spinner-small-dimension);
 }
 
 :host(.nx-spinner--medium) {
-  width: $diameter-medium;
-  height: $diameter-medium;
+  width: v(spinner-medium-dimension);
+  height: v(spinner-medium-dimension);
 }
 
 :host(.nx-spinner--large) {
-  width: $diameter-large;
-  height: $diameter-large;
+  width: v(spinner-large-dimension);
+  height: v(spinner-large-dimension);
 }
 
 .nx-spinner__spin-block {
   width: 100%;
   height: 100%;
-  transform: rotate(45deg);
-  border-style: solid;
-  border-radius: 50%;
-  border-color: v(spinner-indicator-color) v(spinner-background-color) v(spinner-background-color)
-    v(spinner-background-color);
   animation-name: spin;
   animation-duration: 0.8s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 
-:host(.nx-spinner--small) .nx-spinner__spin-block {
-  border-width: calc(#{0.1 * $diameter-small});
+.nx-spinner__background {
+  fill: v(spinner-background-color);
 }
 
-:host(.nx-spinner--medium) .nx-spinner__spin-block {
-  border-width: calc(#{0.1 * $diameter-medium});
-}
-
-:host(.nx-spinner--large) .nx-spinner__spin-block {
-  border-width: calc(#{0.1 * $diameter-large});
-}
-
-.nx-spinner__edge-left,
-.nx-spinner__edge-right {
-  width: 12%;
-  height: 12%;
-  border-radius: 50%;
-  background-color: v(spinner-indicator-color);
-  position: absolute;
-  top: $edge-margin;
-}
-
-// correct the size of the bobbles for small, because otherwise they look off
-:host(.nx-spinner--small) {
-  .nx-spinner__edge-left,
-  .nx-spinner__edge-right {
-    width: 10%;
-    height: 10%;
-  }
-}
-
-.nx-spinner__edge-left {
-  left: $edge-margin;
-}
-
-.nx-spinner__edge-right {
-  right: $edge-margin;
+.nx-spinner__indicator {
+  fill: v(spinner-indicator-color);
 }
 
 // negative styles
 :host(.nx-spinner--negative) {
-  .nx-spinner__spin-block {
-    border-color: v(spinner-negative-indicator-color) v(spinner-negative-background-color)
-      v(spinner-negative-background-color) v(spinner-negative-background-color);
+  .nx-spinner__background {
+    fill: v(spinner-negative-background-color);
   }
 
-  .nx-spinner__edge-left,
-  .nx-spinner__edge-right {
-    background-color: v(spinner-negative-indicator-color);
+  .nx-spinner__indicator {
+    fill: v(spinner-negative-indicator-color);
   }
 }
 

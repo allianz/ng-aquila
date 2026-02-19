@@ -1,6 +1,7 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -32,7 +33,7 @@ const ANNOUNCER_DURATION = 1000;
     '[class.nx-spinner--small]': 'size === "small"',
     '[class.nx-spinner--medium]': 'size === "medium"',
     '[class.nx-spinner--large]': 'size === "large"',
-    '[class.nx-spinner--negative]': 'negative',
+    '[class.nx-spinner--negative]': 'negative || inverse()',
     '[attr.role]': '"status"',
     '[attr.aria-live]': 'ariaPoliteness()',
     '[attr.aria-hidden]': '"true"',
@@ -54,7 +55,7 @@ export class NxSpinnerComponent implements OnInit, OnDestroy {
 
   private _size: SpinnerSize = DEFAULT_SIZE;
 
-  /** Whether the spinner should use a negative styling. */
+  /** Whether the spinner should use a negative styling. This will be deprecated in favor of `inverse`. */
   @Input() set negative(value: BooleanInput) {
     if (value !== this._negative) {
       this._negative = coerceBooleanProperty(value);
@@ -67,6 +68,9 @@ export class NxSpinnerComponent implements OnInit, OnDestroy {
   }
 
   private _negative = false;
+
+  /** Whether the spinner should use a negative styling. */
+  readonly inverse = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
 
   /**
    * Message that will be announced by screen readers at instantiation.

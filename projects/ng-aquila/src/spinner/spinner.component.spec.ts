@@ -10,6 +10,7 @@ abstract class SpinnerTest {
 
   size: SpinnerSize = 'small';
   negative!: boolean;
+  inverse!: boolean;
 }
 
 describe('nxSpinnerComponent', () => {
@@ -67,6 +68,35 @@ describe('nxSpinnerComponent', () => {
     testInstance.negative = true;
     fixture.detectChanges();
     expect(componentInstance.negative).toBeTrue();
+    expect(spinnerNativeElement).toHaveClass('nx-spinner--negative');
+  });
+
+  it('should update on inverse change', () => {
+    createTestComponent(ConfigurableSpinner);
+    expect(componentInstance.inverse()).toBeFalse();
+    expect(spinnerNativeElement).not.toHaveClass('nx-spinner--negative');
+
+    testInstance.inverse = true;
+    fixture.detectChanges();
+    expect(componentInstance.inverse()).toBeTrue();
+    expect(spinnerNativeElement).toHaveClass('nx-spinner--negative');
+  });
+
+  it('should apply negative class when either negative or inverse is true', () => {
+    createTestComponent(ConfigurableSpinner);
+    expect(spinnerNativeElement).not.toHaveClass('nx-spinner--negative');
+
+    testInstance.negative = true;
+    fixture.detectChanges();
+    expect(spinnerNativeElement).toHaveClass('nx-spinner--negative');
+
+    testInstance.negative = false;
+    testInstance.inverse = true;
+    fixture.detectChanges();
+    expect(spinnerNativeElement).toHaveClass('nx-spinner--negative');
+
+    testInstance.negative = true;
+    fixture.detectChanges();
     expect(spinnerNativeElement).toHaveClass('nx-spinner--negative');
   });
 
@@ -148,7 +178,7 @@ class BasicTestSpinner extends SpinnerTest {
 }
 
 @Component({
-  template: `<nx-spinner [size]="size" [negative]="negative"></nx-spinner>`,
+  template: `<nx-spinner [size]="size" [negative]="negative" [inverse]="inverse"></nx-spinner>`,
   imports: [NxSpinnerModule],
 })
 class ConfigurableSpinner extends SpinnerTest {}
