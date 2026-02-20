@@ -1,17 +1,3 @@
-@if (themeSwitcherService.selectedTheme().name.includes('allianz-one') ) {
-<nx-message-banner class="sticky-banner" closable="false" context="info">
-  <span class="nx-font-weight-bold">One Allianz is ready for early adopters</span><br />
-  Allianz one is still in development, so new features of components might not be available yet. The
-  Allianz one themes are ready to be used in production already though. Check out the
-  <nx-link nxStyle="text"
-    ><a href="https://ngx-ndbx.frameworks.allianz.io/guides/a1"
-      >documentation for more information</a
-    ></nx-link
-  >
-  how to migrate.
-</nx-message-banner>
-}
-
 <div class="component-overview__header-container" [class.a1-themed]="!aquilaThemeActive()">
   <h1 class="component-overview__header">{{componentDescriptor?.title}}</h1>
   @if(!aquilaThemeActive()) { @if(componentDescriptor?.a1Light || componentDescriptor?.a1Densities)
