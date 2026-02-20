@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [21.3.0](https://github.com/allianz/ng-aquila/compare/v21.2.0...v21.3.0) (2026-02-20)
+
+
+### Features ✨
+
+* **context-menu:** support A1 density ([042c307](https://github.com/allianz/ng-aquila/commit/042c307829d4d5be85d85cfb04fc01164ed306f6))
+* **eyebrow:** new A1 Eyebrow component  ([fb88389](https://github.com/allianz/ng-aquila/commit/fb883897210e1103aa5d7286fcf2c9e81235c993))
+* **file-uploader:** support A1 density ([9be9155](https://github.com/allianz/ng-aquila/commit/9be91556d131e75a20294ed4507584c14a25c493))
+* **footer:** support A1 density ([edb6ee8](https://github.com/allianz/ng-aquila/commit/edb6ee864d0f16907a4f397c01bc4ee95f398385))
+* **header:** support A1 densities ([1125113](https://github.com/allianz/ng-aquila/commit/112511346be69adb82e398c49c4c626f0b6a3f1a))
+* **side-navigation:** support A1 density ([8bef313](https://github.com/allianz/ng-aquila/commit/8bef31397a1d5c5998dbfec1491c278b366d83cd))
+* **side-navigation:** support A1 density ([7ff1cbd](https://github.com/allianz/ng-aquila/commit/7ff1cbd8ed5aa35b82d25ecd664416e3a400272b))
+* **sidepanel:** support A1 Density ([ec4887f](https://github.com/allianz/ng-aquila/commit/ec4887fe47b9326e1cc1fb33f6a816218bd60e73)), closes [#1755](https://github.com/allianz/ng-aquila/issues/1755)
+* **slider:** A1 tokenization ([1ed9886](https://github.com/allianz/ng-aquila/commit/1ed9886da8e3763cbb2b0ed32c0eee92497cec48))
+* **spinner:** support A1 densities ([9bdb5ab](https://github.com/allianz/ng-aquila/commit/9bdb5ab3d1d5d9231e17fc51bbed5f7b01ef7278))
+* **toolbar:** support A1 densities ([00446dd](https://github.com/allianz/ng-aquila/commit/00446dd24253076f4e8d4f497e62758364769930))
+
+
+### Bug Fixes 🐛
+
+* **avatar:** disabled state ([cdb43f8](https://github.com/allianz/ng-aquila/commit/cdb43f82b1ac19cbab51467b5edc75ff92c4c341))
+* **datefield:** allow typing when used with signal forms ([8b71e49](https://github.com/allianz/ng-aquila/commit/8b71e490b2729818babd3dcca6ec7b8c021831ee))
+* **dropdown:** update overlay style ([de2faa9](https://github.com/allianz/ng-aquila/commit/de2faa9e1f17073df707e4e352a4da60c553686b))
+* **input:** do not ignore nxAriaLabel input ([6ffd66d](https://github.com/allianz/ng-aquila/commit/6ffd66dd607c239798be9a46a40f3e05ce3d7bb1))
+* **input:** remove logic to remove placeholder, if input is non-empty ([8e5ca4f](https://github.com/allianz/ng-aquila/commit/8e5ca4f1a350c0eb9f38e43d9b40175d378ae37c))
+* **iso-date-adapter:** improve compatibility of dayjs imports with vitest ([fd8da91](https://github.com/allianz/ng-aquila/commit/fd8da91cf5d6d18326a0afe52420e4c73b49034d))
+* move example  stackblitz  to stackblitz webcontainer ([de54489](https://github.com/allianz/ng-aquila/commit/de54489184c0d9222e100a3f2eb1a8e55ee2d9e0))
+* **switcher example:** adding opt chain operator & replace with viewChild signal ([ca08d72](https://github.com/allianz/ng-aquila/commit/ca08d7214327014f6cc0d60ec7b2985dd5a426ce))
+* **table:** avoid shadow CSS host placeholders due to nesting ([a8269b5](https://github.com/allianz/ng-aquila/commit/a8269b50a76ac5f235ecf394c15ce4db35477f7e))
+* **timefield:** fix wrong truncation on timefield ([9ac98e4](https://github.com/allianz/ng-aquila/commit/9ac98e4565b759255c35e7b8a9d38bd76e012d4d))
+
 ## [21.2.0](https://github.com/allianz/ng-aquila/compare/v21.1.0...v21.2.0) (2026-01-29)
 
 ### New components: price and info-icon
