@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
-
+import { Component, ElementRef, EventEmitter, Input, Output, inject } from '@angular/core';
+import { NxvVersionHashService } from '../core/version-hash';
 @Component({
   selector: 'nxv-doc-viewer',
   template: 'Loading document...',
@@ -8,6 +8,7 @@ import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/cor
   standalone: true,
 })
 export class DocViewerComponent {
+  private readonly _hashService = inject(NxvVersionHashService);
   @Input() set fileUrl(url: string) {
     this._fetchDocument(url);
   }
@@ -30,7 +31,8 @@ export class DocViewerComponent {
   }
 
   private _fetchDocument(url: string) {
-    this._http.get(url, { responseType: 'text' }).subscribe(
+    const versionedUrl = this._hashService.appendVersion(url);
+    this._http.get(versionedUrl, { responseType: 'text' }).subscribe(
       (document) => this.updateContent(document),
       (error) => this.handleError(url, error),
     );

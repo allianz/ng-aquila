@@ -5,6 +5,7 @@
 export * from './lib/core/manifest';
 export * from './lib/core/tokens';
 export * from './lib/core/types';
+export * from './lib/core/version-hash';
 export * from './lib/documentation/component-documentation/footer/footer.component';
 export * from './lib/documentation/component-documentation/footer/footer.module';
 export * from './lib/documentation/documentation.module';

@@ -1,5 +1,6 @@
 import { effect, inject, Injectable, InjectionToken, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { NxvVersionHashService } from '../../core/version-hash';
 
 export interface Theme {
   name: string;
@@ -15,6 +16,7 @@ const LOCAL_STORAGE_KEY = 'nx-docs-selected-theme';
 export class ThemeSwitcherService {
   private readonly _themes = inject(NX_DOCS_SELECTABLE_THEMES);
   private readonly _router = inject(Router);
+  private readonly _hashService = inject(NxvVersionHashService);
   readonly selectedTheme = signal<Theme>(this._themes[0]);
 
   constructor() {
@@ -57,7 +59,7 @@ export class ThemeSwitcherService {
     // update: css-vars-ponyfill has been removed with angular 13 (ie11 no longer supported)
     const newEl = document.createElement('link');
     newEl.setAttribute('rel', 'stylesheet');
-    newEl.setAttribute('href', newTheme.url);
+    newEl.setAttribute('href', this._hashService.appendVersion(newTheme.url));
     newEl.setAttribute('id', 'docs-theme');
 
     const head = document.getElementsByTagName('head');
