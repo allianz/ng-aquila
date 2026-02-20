@@ -12,7 +12,12 @@ import {
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxRadioModule } from '@allianz/ng-aquila/radio-button';
 import { NxRadioToggleModule } from '@allianz/ng-aquila/radio-toggle';
-import { ErrorStateMatcher, IdGenerationService, pad } from '@allianz/ng-aquila/utils';
+import {
+  ErrorStateMatcher,
+  IdGenerationService,
+  pad,
+  TextMeasurementService,
+} from '@allianz/ng-aquila/utils';
 import { ActiveDescendantKeyManager, FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkConnectedOverlay, CdkOverlayOrigin, OverlayModule } from '@angular/cdk/overlay';
@@ -23,6 +28,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ContentChild,
   DestroyRef,
   DoCheck,
@@ -45,6 +51,7 @@ import {
   signal,
   SimpleChanges,
   ViewChild,
+  viewChild,
   ViewChildren,
   WritableSignal,
 } from '@angular/core';
@@ -178,6 +185,7 @@ export class NxTimefieldComponent
 
   protected readonly intl = inject(NxTimefieldIntl);
   protected readonly focusMonitor = inject(FocusMonitor);
+  private readonly _textMeasurementService = inject(TextMeasurementService);
   ngControl: NgControl | null = null;
 
   /* The appearance of the formfield. Should be mostly handled via dependency injection and not over this input. */
@@ -212,8 +220,8 @@ export class NxTimefieldComponent
   @ViewChild('list') timePickerList?: ElementRef<HTMLUListElement>;
   @ViewChild('toggleButton') toggleButton!: ElementRef<HTMLButtonElement>;
   @ViewChild('overlayOrigin') overlayOrigin!: CdkOverlayOrigin;
-  @ViewChild('inputMinutes') inputMinutes!: ElementRef<HTMLInputElement>;
-  @ViewChild('inputHours') inputHours!: ElementRef<HTMLInputElement>;
+  private readonly inputMinutes = viewChild<ElementRef<HTMLInputElement>>('inputMinutes');
+  private readonly inputHours = viewChild<ElementRef<HTMLInputElement>>('inputHours');
   @ViewChild(CdkConnectedOverlay) overlay?: CdkConnectedOverlay;
   @ViewChildren(NxTimefieldOption) timepickerOptions!: QueryList<NxTimefieldOption>;
 
@@ -370,28 +378,10 @@ export class NxTimefieldComponent
   private _labelPM = 'PM';
 
   /** Sets the placeholder of hours field. Default: 'hh' */
-  @Input() set placeholderHours(value: string) {
-    if (this._placeholderHours !== value) {
-      this._placeholderHours = value;
-      this._cdr.markForCheck();
-    }
-  }
-  get placeholderHours(): string {
-    return this._placeholderHours;
-  }
-  private _placeholderHours = 'hh';
+  readonly placeholderHours = input<string>('hh');
 
   /** Sets the placeholder of minutes field. Default: 'mm' */
-  @Input() set placeholderMinutes(value: string) {
-    if (this._placeholderMinutes !== value) {
-      this._placeholderMinutes = value;
-      this._cdr.markForCheck();
-    }
-  }
-  get placeholderMinutes(): string {
-    return this._placeholderMinutes;
-  }
-  private _placeholderMinutes = 'mm';
+  readonly placeholderMinutes = input<string>('mm');
 
   /** Whether the timefield is required. */
   @Input() set required(value: BooleanInput) {
@@ -432,24 +422,22 @@ export class NxTimefieldComponent
   }
   private _disabled = false;
 
-  private _hours!: string;
+  private readonly _hours: WritableSignal<string> = signal('');
   /** @docs-private */
   set hours(value: string) {
-    this._hours = value;
-    this._cdr.markForCheck();
+    this._hours.set(value);
   }
   get hours(): string {
-    return this._hours;
+    return this._hours();
   }
 
-  private _minutes!: string;
+  private readonly _minutes: WritableSignal<string> = signal('');
   /** @docs-private */
   set minutes(value: string) {
-    this._minutes = value;
-    this._cdr.markForCheck();
+    this._minutes.set(value);
   }
   get minutes(): string {
-    return this._minutes;
+    return this._minutes();
   }
 
   protected hasFocus = false;
@@ -459,6 +447,32 @@ export class NxTimefieldComponent
   }
 
   protected _overlayWidth: string | number = '';
+
+  /**
+   * @docs-private
+   * Computed width for hour input
+   */
+  protected readonly _hourInputWidth = computed(() =>
+    this._textMeasurementService.computeInputWidth(
+      this._hours(),
+      this.placeholderHours(),
+      2,
+      this.inputHours()?.nativeElement,
+    ),
+  );
+
+  /**
+   * @docs-private
+   * Computed width for minute input
+   */
+  protected readonly _minuteInputWidth = computed(() =>
+    this._textMeasurementService.computeInputWidth(
+      this._minutes(),
+      this.placeholderMinutes(),
+      2,
+      this.inputMinutes()?.nativeElement,
+    ),
+  );
 
   constructor(
     private readonly _cdr: ChangeDetectorRef,
@@ -620,7 +634,7 @@ export class NxTimefieldComponent
     if (type === 'hours') {
       this.hours = target.value;
       if (target.value.length === 2 && target.selectionStart === 2) {
-        this.inputMinutes.nativeElement.focus();
+        this.inputMinutes()?.nativeElement.focus();
       }
       // user has entered the first digit again. for quicker typing select the second digit
       if (target.value.length === 2 && target.selectionStart === 1) {
@@ -760,8 +774,8 @@ export class NxTimefieldComponent
   }
 
   writeValue(value: string) {
-    this._hours = '';
-    this._minutes = '';
+    this._hours.set('');
+    this._minutes.set('');
     this._time = null;
     if (value) {
       this.time = this._parseAndSetTime(value)!;
