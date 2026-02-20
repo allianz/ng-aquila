@@ -2,7 +2,7 @@ import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxButtonComponent } from '@allianz/ng-aquila/button';
 import { NxSwitcherComponent } from '@allianz/ng-aquila/switcher';
 import { JsonPipe } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import {
   FormBuilder,
   FormsModule,
@@ -25,7 +25,7 @@ import {
   ],
 })
 export class SwitcherReactiveFormExampleComponent {
-  @ViewChild(NxSwitcherComponent) switcher!: NxSwitcherComponent;
+  readonly switcher = viewChild(NxSwitcherComponent);
   readonly testForm = this.fb.group({
     switcherTestReactive: [false, Validators.requiredTrue],
   });

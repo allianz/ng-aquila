@@ -8,3 +8,8 @@ figure {
     position: static !important;
   }
 }
+
+/* The custom margin inside nx-header-action will be overridden in A1 theme */
+.action-item {
+  margin-left: 16px;
+}

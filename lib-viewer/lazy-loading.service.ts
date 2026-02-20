@@ -42,6 +42,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'dropdown': return import('../examples/dropdown/dropdown-examples.module').then(m => m.DropdownExamplesModule);
             case 'dynamic-table': return import('../examples/dynamic-table/dynamic-table-examples.module').then(m => m.DynamicExamplesModule);
             case 'error': return import('../examples/error/error-examples.module').then(m => m.ErrorExamplesModule);
+            case 'eyebrow': return import('../examples/eyebrow/eyebrow-examples.module').then(m => m.EyebrowExamplesModule);
             case 'file-uploader': return import('../examples/file-uploader/file-uploader-examples.module').then(m => m.FileExamplesModule);
             case 'footer': return import('../examples/footer/footer-examples.module').then(m => m.FooterExamplesModule);
             case 'formfield': return import('../examples/formfield/formfield-examples.module').then(m => m.FormfieldExamplesModule);

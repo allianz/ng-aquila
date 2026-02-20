@@ -7,6 +7,7 @@ import { AvatarExampleComponent } from './avatar/avatar-example';
 import { AvatarAccentColorsExampleComponent } from './avatar-accent-colors/avatar-accent-colors-example';
 import { AvatarButtonExampleComponent } from './avatar-button/avatar-button-example';
 import { AvatarColorsExampleComponent } from './avatar-colors/avatar-colors-example';
+import { AvatarDisabledExampleComponent } from './avatar-disabled/avatar-disabled-example';
 import { AvatarSizeExampleComponent } from './avatar-size/avatar-size-example';
 
 const EXAMPLES = [
@@ -15,6 +16,7 @@ const EXAMPLES = [
   AvatarSizeExampleComponent,
   AvatarColorsExampleComponent,
   AvatarAccentColorsExampleComponent,
+  AvatarDisabledExampleComponent,
 ];
 
 @NgModule({
@@ -29,6 +31,7 @@ export class AvatarExamplesModule {
       'avatar-size': AvatarSizeExampleComponent,
       'avatar-colors': AvatarColorsExampleComponent,
       'avatar-accent-colors': AvatarAccentColorsExampleComponent,
+      'avatar-disabled': AvatarDisabledExampleComponent,
     };
   }
 }

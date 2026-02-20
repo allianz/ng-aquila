@@ -13,7 +13,7 @@ import { NxToolbarComponent } from '@allianz/ng-aquila/toolbar';
 import { Component } from '@angular/core';
 
 /**
- * @title Toolbar positioning content Example
+ * @title Toolbar positioning content example
  */
 @Component({
   selector: 'toolbar-positioning-content-example',

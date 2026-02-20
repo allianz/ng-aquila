@@ -1,0 +1,9 @@
+.back {
+  margin-right: auto;
+}
+
+.nx-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--semantic-gap-all-linear-400, 16px);
+}

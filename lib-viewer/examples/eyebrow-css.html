@@ -1,0 +1,16 @@
+<span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(auto-fit, <span class="hljs-built_in">minmax</span>(<span class="hljs-number">128px</span>, <span class="hljs-number">1</span>fr));
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span>;
+}
+
+<span class="hljs-selector-class">.example</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span>;
+
+  &amp;<span class="hljs-selector-class">.inverse</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--negative);
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--documentation-inverse-container-background);
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;
+  }
+}

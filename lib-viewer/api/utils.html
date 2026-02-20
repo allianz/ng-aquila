@@ -47,6 +47,84 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
    
    
 
+<h4 id="TextMeasurementService" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="TextMeasurementService"></span>
+    <code>TextMeasurementService</code></h4><p class="docs-api-class-description"><p>Service for measuring text width using canvas context.</p>
+</p> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">computeInputWidth(
+                            value:  
+                                <span class="docs-api-property__type">
+                                    string
+                                </span>,
+                        
+                            placeholder:  
+                                <span class="docs-api-property__type">
+                                    string
+                                </span>,
+                        
+                            maxInputLength:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>,
+                        
+                            inputElement?:  
+                                <span class="docs-api-property__type">
+                                    HTMLInputElement
+                                </span>
+                        ): <span class="docs-api-method-returns-type">string</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Compute the optimal width for an input field based on its value and placeholder.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                value:
+                <span class="docs-api-method-parameter-type">string</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> The current value of the input </p>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                placeholder:
+                <span class="docs-api-method-parameter-type">string</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> The placeholder text </p>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                maxInputLength:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> The maximum length of the input </p>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                inputElement<span class="docs-api-method-parameter-optional-marker">?</span>:
+                <span class="docs-api-method-parameter-type">HTMLInputElement</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Optional input element to get font styles from </p>
+        </div>
+        
+    </div><div class="docs-api-method-returns">
+        <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">string</code></p>
+        <p class="docs-api-method-returns-description"> <p>A CSS width string in pixels</p>
+ </p>
+    </div></div>
+   
+   
+
 <h4 id="NxViewportService" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxViewportService"></span>
     <code>NxViewportService</code></h4><p class="docs-api-class-description"><p>Service subscribing to window resize events and providing breakpoint matching functions.</p>
