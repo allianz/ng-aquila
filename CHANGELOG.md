@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [21.3.1](https://github.com/allianz/ng-aquila/compare/v21.3.0...v21.3.1) (2026-02-24)
+
+### Bug Fixes 🐛
+
+* **iso-date-adapter:** fix deprecated import attribute transformation ([ccf449e](https://github.com/allianz/ng-aquila/commit/ccf449e3073c28f88cd47930ef9f9386b7b07b19))
+
 ## [21.3.0](https://github.com/allianz/ng-aquila/compare/v21.2.0...v21.3.0) (2026-02-20)
 
 
