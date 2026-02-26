@@ -149,6 +149,8 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
 
   private _countryCodeInvalid(): boolean {
     const enteredCountryCode = this._elementRef.nativeElement.value.substr(0, 2);
-    return enteredCountryCode.length !== 2 || !countrySpecs[enteredCountryCode].bban_regexp;
+    const countryCodeExists =
+      countrySpecs[enteredCountryCode] && countrySpecs[enteredCountryCode].bban_regexp;
+    return enteredCountryCode.length !== 2 || !countryCodeExists;
   }
 }

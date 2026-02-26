@@ -315,6 +315,7 @@ describe('NxIbanMaskDirective', () => {
       expect(
         testInstance.testForm.controls.maskInput.getError('nxIbanInvalidCountryError'),
       ).toBeTruthy();
+      expect(nativeElement.classList.contains('ng-invalid')).toBeTrue();
       expect(testInstance.testForm.get('maskInput')!.value).toBe('GD');
     });
 
@@ -333,6 +334,7 @@ describe('NxIbanMaskDirective', () => {
 
       dispatchFakeEvent(nativeElement, 'blur');
       fixture.detectChanges();
+      expect(nativeElement.classList.contains('ng-invalid')).toBeTrue();
       expect(maskInput.getError(invalidIbanErrorKey)).toBeTruthy();
     });
 
