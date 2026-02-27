@@ -3,6 +3,7 @@
 :host(.nx-action) {
   display: block;
   @include type-style(action);
+  font-family: v(action-font-family);
   appearance: none;
   outline: none;
   box-shadow: none;
@@ -26,7 +27,7 @@
   }
 
   &.is-expanded {
-    font-weight: nx-font-weight(bold);
+    font-weight: v(action-expand-font-weight);
 
     .nx-action__expand-icon {
       transform: rotateZ(90deg);
@@ -70,13 +71,13 @@
   }
 
   [dir='rtl'] & {
-    padding: nx-spacer(2xs) 0 nx-spacer(2xs) nx-spacer(s);
+    padding: v(action-padding);
   }
 }
 
 :host.cdk-keyboard-focused {
   @include focus-style-inset;
-  border-radius: 2 * nx-border-radius(s);
+  border-radius: v(action-focus-radius);
 }
 
 .nx-action__expand-icon {
@@ -91,7 +92,7 @@
 
   :host-context([dir='rtl']) & {
     margin-right: initial;
-    margin-left: nx-spacer(2xs);
+    margin-left: v(action-expand-icon-gap);
     transform: rotateZ(180deg);
   }
 }
@@ -121,12 +122,12 @@
 
   :host-context([dir='rtl']) & {
     padding-right: initial;
-    padding-left: nx-spacer(s);
+    padding-left: var(--action-icon-padding-right);
   }
 }
 
 ::ng-deep .nx-action__icon {
-  font-weight: nx-font-weight(regular);
+  font-weight: v(action-font-weight);
   font-size: v(action-icon-size) !important;
 }
 
@@ -153,7 +154,7 @@
       background-color: highlight;
       color: highlightText;
       forced-color-adjust: preserve-parent-color;
-      font-weight: nx-font-weight(regular);
+      font-weight: v(action-font-weight);
     }
   }
 }

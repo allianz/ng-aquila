@@ -343,6 +343,7 @@ $nx-theme: (
   accordion-extra-light-font-weight: 600,
   accordion-extra-light-letter-spacing: 0.0625rem,
   accordion-extra-light-header-active-font-weight: 600,
+  action-font-family: font-family,
   action-font-size: paragraph-03-font-size,
   action-line-height: paragraph-03-line-height,
   action-font-weight: paragraph-03-font-weight,
@@ -357,6 +358,7 @@ $nx-theme: (
   action-icon-padding-right: 16px,
   action-expand-icon-size: 16px,
   action-expand-icon-gap: 8px,
+  action-expand-font-weight: 700,
   action-padding-right: 16px,
   action-padding-left: 0px,
 
@@ -368,6 +370,7 @@ $nx-theme: (
   action-button-border-radius: 0,
   action-button-font-weight-selected: normal,
   action-button-gap: 0,
+  action-focus-radius: 8px,
   avatar-background-color: #688fe2,
   avatar-color: text-02,
   avatar-color-attention-disabled: avatar-background-color,
