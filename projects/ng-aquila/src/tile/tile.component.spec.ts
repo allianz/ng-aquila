@@ -7,6 +7,7 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NxTileComponent } from './tile.component';
+import { NxTileHintDirective, NxTileLabelDirective } from './tile-content.directive';
 import { NxTileSelectionMode } from './tile-group.component';
 
 @Component({
@@ -74,6 +75,19 @@ class TileReactiveFormsTestComponent {
     { value: 'tile3', label: 'Third Tile', icon: 'product-health' },
   ]);
 }
+
+@Component({
+  template: `
+    <nx-tile-group>
+      <nx-tile icon="product-car" value="tile1">
+        <nxTileLabel>Tile<br />label</nxTileLabel>
+        <nxTileHint>Tile <b>hint</b></nxTileHint>
+      </nx-tile>
+    </nx-tile-group>
+  `,
+  imports: [NxTileGroupComponent, NxTileComponent, NxTileLabelDirective, NxTileHintDirective],
+})
+class TileContentProjectionTestComponent {}
 
 describe('NxTileComponent', () => {
   let fixture: ComponentFixture<any>;
@@ -391,6 +405,30 @@ describe('NxTileComponent', () => {
       const tile = tileInstances[0];
       // the individual tiles should have the error id AND still the hint id
       expect(tile.ariaDescribedBy()).toContain(error.componentInstance.id);
+      expect(tile.ariaDescribedBy()).toContain(`${tile.id}-hint`);
+    });
+  });
+
+  describe('content projection', () => {
+    it('should project content for tile label and hint', () => {
+      ({ fixture, testInstance, tileInstances } = createComponent(
+        TileContentProjectionTestComponent,
+      ));
+
+      expect(
+        fixture.debugElement.query(By.css('.nx-tile__label')).nativeElement.innerHTML.trim(),
+      ).toContain('Tile<br>label');
+      expect(
+        fixture.debugElement.query(By.css('.nx-tile__hint')).nativeElement.innerHTML.trim(),
+      ).toContain('Tile <b>hint</b>');
+    });
+
+    it('should have aria-describedby with projected hint', () => {
+      ({ fixture, testInstance, tileInstances } = createComponent(
+        TileContentProjectionTestComponent,
+      ));
+
+      const tile = tileInstances[0];
       expect(tile.ariaDescribedBy()).toContain(`${tile.id}-hint`);
     });
   });

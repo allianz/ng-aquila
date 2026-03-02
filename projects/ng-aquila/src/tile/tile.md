@@ -6,7 +6,7 @@ expert: true
 stable: done
 a1Full: true
 alias: Tiles
-components: 
+components:
 #{{component(NxTileGroupComponent)}}
 #{{component(NxTileComponent)}}
 ---
@@ -52,6 +52,17 @@ Tiles can be set to readonly or disabled states.
 
 <!-- example(tile-readonly-disabled) -->
 
+### Content projection
+In case custom content or formatting is desired, the tile label and hint support content projection. If provided, the `label` and `hint` inputs will take priority over projected content.
+
+**Note:** Projected content should be text or screenreader-compatible, as hints are referenced by `aria-describedby` for accessibility.
+
+#### Usage
+To project content,
+- use `<nxTileLabel>` for the label
+- use `<nxTileHint>` for the hint
+
+<!-- example(tile-content-projection) -->
 
 ### Forms
 The tile component supports both the FormsModule and ReactiveFormsModule of Angular.

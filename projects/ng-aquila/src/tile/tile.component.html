@@ -22,12 +22,20 @@
     </div>
   }
   <div class="nx-tile__content">
-    @if (label()) {
-      <div [id]="id + '-label'" class="nx-tile__label">{{ label() }}</div>
-    }
-    @if (hint()) {
-      <div [id]="id + '-hint'" class="nx-tile__hint">{{ hint() }}</div>
-    }
+    <div [id]="`${id}-label`" class="nx-tile__label">
+      @if (label()) {
+        {{ label() }}
+      } @else {
+        <ng-content select="nxTileLabel"></ng-content>
+      }
+    </div>
+    <div [id]="`${id}-hint`" class="nx-tile__hint">
+      @if (hint()) {
+        {{ hint() }}
+      } @else {
+        <ng-content select="nxTileHint"></ng-content>
+      }
+    </div>
   </div>
   @if (selectionMode() === 'multi') {
     <nx-checkbox-indicator

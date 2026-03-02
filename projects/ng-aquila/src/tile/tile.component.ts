@@ -8,6 +8,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   Component,
   computed,
+  contentChild,
   ElementRef,
   inject,
   input,
@@ -18,6 +19,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { NxTileHintDirective, NxTileLabelDirective } from './tile-content.directive';
 import { NxTileGroupComponent, NxTileSelectionMode } from './tile-group.component';
 
 export type NxTileLayout = 'horizontal' | 'vertical';
@@ -60,6 +62,12 @@ export class NxTileComponent implements OnInit, OnDestroy {
   /** Hint text for the tile. */
   readonly hint = input<string | null>(null);
 
+  /** Content child for projected label. */
+  readonly projectedLabel = contentChild(NxTileLabelDirective);
+
+  /** Content child for projected hint. */
+  readonly projectedHint = contentChild(NxTileHintDirective);
+
   /** Disabled input, can be overridden by group. */
   readonly disabledInput = input(false, { alias: 'disabled' });
   /** Readonly input, can be overridden by group. */
@@ -81,7 +89,7 @@ export class NxTileComponent implements OnInit, OnDestroy {
 
   /* The combined hint and error ids as space separated string. */
   readonly ariaDescribedBy = computed(() => {
-    const hintId = this.hint() ? `${this.id}-hint` : null;
+    const hintId = this.hint() || this.projectedHint() ? `${this.id}-hint` : null;
     const errorIds = this.tileGroup._errorState() ? this.tileGroup.errorIds() : null;
     return [hintId, errorIds].filter(Boolean).join(' ') || null;
   });
