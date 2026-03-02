@@ -34,6 +34,7 @@ abstract class PriceTest {
   inverse = false;
   prefix?: string;
   suffix?: string;
+  superscript = false;
 }
 
 describe('NxPriceComponent', () => {
@@ -60,6 +61,7 @@ describe('NxPriceComponent', () => {
         PriceWithInverseComponent,
         PriceWithPrefixSuffixComponent,
         PriceWithDifferentCurrencyComponent,
+        PriceWithSuperscriptComponent,
       ],
     }).compileComponents();
   }));
@@ -269,6 +271,78 @@ describe('NxPriceComponent', () => {
     });
   });
 
+  describe('superscript formatting', () => {
+    it('should raise currency and decimals when superscript is true', () => {
+      createTestComponent(PriceWithSuperscriptComponent);
+      fixture.componentInstance.superscript = true;
+      fixture.componentInstance.size = '2xl';
+      fixture.componentInstance.locale = 'en-US';
+      fixture.detectChanges();
+
+      expect(priceNativeElement).toHaveClass('nx-price--superscript');
+
+      const currencyElement = priceNativeElement.querySelector('.nx-price__currency');
+      const decimalElement = priceNativeElement.querySelector('.nx-price__decimal');
+
+      expect(currencyElement?.textContent).toBe('$');
+      expect(decimalElement?.textContent).toBe('99');
+    });
+
+    it('should keep inline formatting when superscript is false', () => {
+      createTestComponent(PriceWithSuperscriptComponent);
+      fixture.componentInstance.size = '2xl';
+      fixture.componentInstance.locale = 'en-US';
+      fixture.detectChanges();
+
+      expect(priceNativeElement).not.toHaveClass('nx-price--superscript');
+
+      const valueElement = priceNativeElement.querySelector('.nx-price__value');
+      expect(valueElement?.textContent).toContain('99.99');
+    });
+
+    it('keeps trailing currency order for locales placing symbol after value', () => {
+      createTestComponent(PriceWithSuperscriptComponent);
+      fixture.componentInstance.superscript = true;
+      fixture.componentInstance.size = '2xl';
+      fixture.componentInstance.locale = 'de-DE';
+      fixture.componentInstance.currency = 'EUR';
+      fixture.detectChanges();
+
+      const valueElement = priceNativeElement.querySelector('.nx-price__value');
+      const currencyElement = priceNativeElement.querySelector('.nx-price__currency');
+      const decimalElement = priceNativeElement.querySelector('.nx-price__decimal');
+
+      expect(currencyElement?.textContent).toBe('€');
+      // Normalize decimal text to digits only to be locale-agnostic (e.g. ",99" or ".99").
+      expect(decimalElement?.textContent?.replace(/\D/g, '')).toBe('99');
+      expect(valueElement?.textContent?.trim().endsWith('€')).toBeTrue();
+    });
+
+    it('should always show 2 decimal places when superscript is enabled', () => {
+      createTestComponent(PriceWithSuperscriptComponent);
+      fixture.componentInstance.superscript = true;
+      fixture.componentInstance.size = '2xl';
+      fixture.componentInstance.locale = 'en-US';
+      fixture.componentInstance.value = 100;
+      fixture.detectChanges();
+
+      const formatted = priceInstance.formattedPrice();
+      expect(formatted.decimal).toContain('00');
+
+      const decimalElement = priceNativeElement.querySelector('.nx-price__decimal');
+      expect(decimalElement?.textContent).toBe('00');
+    });
+
+    it('does not apply superscript on small sizes even when enabled', () => {
+      createTestComponent(PriceWithSuperscriptComponent);
+      fixture.componentInstance.superscript = true;
+      fixture.componentInstance.size = 'm';
+      fixture.detectChanges();
+
+      expect(priceNativeElement).not.toHaveClass('nx-price--superscript');
+    });
+  });
+
   describe('programmatic changes', () => {
     it('should update when value changes', () => {
       createTestComponent(BasicPriceComponent);
@@ -415,6 +489,19 @@ class PriceWithInverseComponent extends PriceTest {}
   imports: [NxPriceModule],
 })
 class PriceWithPrefixSuffixComponent extends PriceTest {}
+
+@Component({
+  selector: 'test-price-with-superscript',
+  template: `<nx-price
+    [value]="value"
+    [currency]="currency"
+    [locale]="locale"
+    [size]="size"
+    [superscript]="superscript"
+  />`,
+  imports: [NxPriceModule],
+})
+class PriceWithSuperscriptComponent extends PriceTest {}
 
 @Component({
   selector: 'test-price-with-different-currency',

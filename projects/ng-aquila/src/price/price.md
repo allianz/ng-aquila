@@ -42,6 +42,12 @@ Add contextual text before or after the price using `prefix` and `suffix` inputs
 
 <!-- example(price-prefix-suffix) -->
 
+### Superscript formatting
+
+Use `superscript` to elevate and reduce the currency symbol and decimal portion for a compact, emphasized price layout. Supported only for sizes `2xl` and larger.
+
+<!-- example(price-superscript) -->
+
 ### Inverse 
 
 Use the `inverse` input to apply inverse styling, suitable for dark backgrounds.

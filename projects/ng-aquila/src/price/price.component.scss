@@ -5,12 +5,6 @@ $price-sizes: s, m, l, xl, 2xl, 3xl, 4xl, 5xl, 6xl;
 .nx-price__wrapper {
   display: inline-flex;
   align-items: baseline;
-
-  @each $size in $price-sizes {
-    :host.nx-price--#{$size} & {
-      gap: var(--price-secondary-#{$size}-gap-horizontal);
-    }
-  }
 }
 
 .nx-price__prefix-secondary,
@@ -18,11 +12,6 @@ $price-sizes: s, m, l, xl, 2xl, 3xl, 4xl, 5xl, 6xl;
   color: var(--price-secondary-color);
   white-space: nowrap;
 
-  @each $size in $price-sizes {
-    :host.nx-price--#{$size} & {
-      font: var(--price-secondary-#{$size}-font);
-    }
-  }
   :host.nx-price--inverse & {
     color: var(--negative-secondary);
   }
@@ -30,18 +19,55 @@ $price-sizes: s, m, l, xl, 2xl, 3xl, 4xl, 5xl, 6xl;
 
 .nx-price__value {
   white-space: nowrap;
-
-  @each $size in $price-sizes {
-    :host.nx-price--#{$size} & {
-      font: var(--price-value-#{$size}-font);
-      letter-spacing: var(--price-value-#{$size}-letter-spacing);
-    }
-  }
+  display: flex;
+  align-items: baseline;
 
   :host.nx-price--inverse & {
     color: var(--negative);
   }
   :host:not(.nx-price--inverse) & {
     color: var(--price-value-color);
+  }
+}
+
+.nx-price__currency,
+.nx-price__decimal {
+  display: inline-block;
+}
+
+.affix_container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+@each $size in $price-sizes {
+  :host.nx-price--#{$size} {
+    .nx-price__wrapper {
+      gap: var(--price-secondary-#{$size}-gap-horizontal);
+    }
+
+    .nx-price__prefix-secondary,
+    .nx-price__suffix-secondary {
+      font: var(--price-secondary-#{$size}-font);
+    }
+
+    .nx-price__value {
+      font: var(--price-value-#{$size}-font);
+      letter-spacing: var(--price-value-#{$size}-letter-spacing);
+    }
+
+    &.nx-price--superscript {
+      .nx-price__value {
+        gap: var(--price-superscript-#{$size}-gap);
+      }
+
+      .nx-placeholder,
+      .nx-price__currency,
+      .nx-price__decimal {
+        font: var(--price-superscript-#{$size}-font);
+        letter-spacing: var(--price-superscript-letter-spacing);
+      }
+    }
   }
 }

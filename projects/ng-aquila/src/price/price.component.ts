@@ -16,6 +16,7 @@ interface FormattedPrice {
   decimal: string;
   currency: string;
   formatted: string;
+  currencyAfterValue: boolean;
 }
 
 @Component({
@@ -26,11 +27,13 @@ interface FormattedPrice {
   host: {
     '[class]': '"nx-price--" + size()',
     '[class.nx-price--inverse]': 'inverse()',
+    '[class.nx-price--superscript]': '_effectiveSuperscript()',
   },
   standalone: true,
 })
 export class NxPriceComponent {
   private readonly defaultLocale = inject(LOCALE_ID);
+  private readonly superscriptEligibleSizes: NxPriceSize[] = ['2xl', '3xl', '4xl', '5xl', '6xl'];
 
   /** The numeric price value to display. */
   readonly value = input<number>(0);
@@ -47,6 +50,13 @@ export class NxPriceComponent {
   /** Whether to apply inverse styling, suitable for dark backgrounds. */
   readonly inverse = input(false, { transform: booleanAttribute });
 
+  /** Whether to render the currency symbol and decimals as superscript. */
+  readonly superscript = input(false, { transform: booleanAttribute });
+
+  protected readonly _effectiveSuperscript = computed(
+    () => this.superscript() && this.superscriptEligibleSizes.includes(this.size()),
+  );
+
   /** Optional prefix text displayed before the price (e.g., 'from'). */
   readonly prefix = input<string>();
 
@@ -62,7 +72,7 @@ export class NxPriceComponent {
       const formatter = new Intl.NumberFormat(locale, {
         style: 'currency',
         currency,
-        minimumFractionDigits: 2,
+        minimumFractionDigits: this._effectiveSuperscript() ? 2 : 0,
         maximumFractionDigits: 2,
       });
 
@@ -97,6 +107,7 @@ export class NxPriceComponent {
         decimal,
         currency: currencySymbol,
         formatted,
+        currencyAfterValue: this.isCurrencyAfterValue(parts),
       };
     } catch (error) {
       console.error('Error formatting price:', error);
@@ -105,7 +116,17 @@ export class NxPriceComponent {
         decimal: '',
         currency,
         formatted: `${currency} ${value}`,
+        currencyAfterValue: false,
       };
     }
   });
+
+  private isCurrencyAfterValue(parts: Intl.NumberFormatPart[]): boolean {
+    const currencyIndex = parts.findIndex((part) => part.type === 'currency');
+    const firstNumberIndex = parts.findIndex(
+      (part) => part.type === 'integer' || part.type === 'fraction',
+    );
+
+    return currencyIndex > firstNumberIndex && currencyIndex !== -1 && firstNumberIndex !== -1;
+  }
 }

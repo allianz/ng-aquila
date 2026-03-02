@@ -4,8 +4,35 @@
       <span class="nx-price__prefix-secondary">{{ prefix() }}</span>
     </div>
   }
-  <div class="nx-price__price-container">
-    <span class="nx-price__value">{{ formattedPrice().formatted }}</span>
+  <div class="nx-price__value">
+    @if (_effectiveSuperscript()) {
+      @if (!formattedPrice().currencyAfterValue) {
+        <span class="affix_container">
+          <span class="nx-price__currency">{{ formattedPrice().currency }}</span>
+          <span class="nx-placeholder">&nbsp;</span>
+        </span>
+      }
+      <span>{{ formattedPrice().integer }}</span>
+      @if (formattedPrice().decimal || formattedPrice().currencyAfterValue) {
+        <span class="affix_container">
+          <span class="nx-price__decimal">{{ formattedPrice().decimal.slice(1) || '&nbsp;' }}</span>
+          <span class="nx-price__currency">{{
+            formattedPrice().currencyAfterValue ? formattedPrice().currency : '&nbsp;'
+          }}</span>
+        </span>
+      }
+    } @else {
+      @if (!formattedPrice().currencyAfterValue) {
+        <span class="nx-price__currency">{{ formattedPrice().currency }}</span>
+      }
+      <span>{{ formattedPrice().integer }}</span>
+      @if (formattedPrice().decimal) {
+        <span class="nx-price__decimal">{{ formattedPrice().decimal }}</span>
+      }
+      @if (formattedPrice().currencyAfterValue) {
+        <span class="nx-price__currency">{{ formattedPrice().currency }}</span>
+      }
+    }
   </div>
   @if (suffix()) {
     <div class="nx-price__suffix-secondary-container">
