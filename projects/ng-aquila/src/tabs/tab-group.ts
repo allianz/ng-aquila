@@ -302,7 +302,7 @@ export class NxTabGroupComponent
     this._destroyed.next();
     this._destroyed.complete();
     this._tabLabelSubscription.unsubscribe();
-    this._tabButtons.forEach((button) => {
+    this._tabButtons?.forEach((button) => {
       this._focusMonitor.stopMonitoring(button);
     });
   }

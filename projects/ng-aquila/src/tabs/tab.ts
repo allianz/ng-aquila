@@ -131,9 +131,7 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
 
   ngOnDestroy(): void {
     this._stateChanges.complete();
-    this._contentViewRef.destroy();
-    if (this._headerViewRef) {
-      this._headerViewRef.destroy();
-    }
+    this._contentViewRef?.destroy();
+    this._headerViewRef?.destroy();
   }
 }

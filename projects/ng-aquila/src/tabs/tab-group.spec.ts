@@ -90,6 +90,7 @@ describe('NxTabGroupComponent', () => {
           EventTabsTest,
           DisabledTabs,
           TemplateTabs,
+          NestedTabGroups,
         ],
       }).compileComponents();
     }));
@@ -560,6 +561,24 @@ describe('NxTabGroupComponent', () => {
         await expectAsync(fixture.nativeElement).toBeAccessible();
       });
     });
+
+    describe('nested tab groups', () => {
+      it('should handle destruction of unactivated nested tabs', fakeAsync(() => {
+        // see https://github.developer.allianz.io/ilt/ngx-brand-kit/issues/5118
+        createTestComponent(NestedTabGroups);
+        tick(THROTTLE_TIME);
+        fixture.detectChanges();
+
+        // Keep the first tab selected
+        expect(tabGroupInstance.selectedIndex).toBe(0);
+
+        // Destroy without ever activating the second tab
+        expect(() => {
+          fixture.destroy();
+        }).not.toThrow();
+        flush();
+      }));
+    });
   });
 
   describe('default options injection token', () => {
@@ -783,3 +802,31 @@ class TemplateTabs extends TabsTest {
   selectedIndex = 0;
   @ViewChildren(TestComponent) testComponents!: QueryList<TestComponent>;
 }
+
+@Component({
+  template: `
+    <nx-tab-group>
+      <nx-tab label="First tab">
+        <p>First tab content</p>
+      </nx-tab>
+      <nx-tab label="Second tab">
+        <ng-template nxTabContent>
+          <nx-tab-group>
+            <nx-tab label="Nested First">
+              <ng-template nxTabContent>
+                <p>Nested first tab content</p>
+              </ng-template>
+            </nx-tab>
+            <nx-tab label="Nested Second">
+              <ng-template nxTabContent>
+                <p>Nested second tab content</p>
+              </ng-template>
+            </nx-tab>
+          </nx-tab-group>
+        </ng-template>
+      </nx-tab>
+    </nx-tab-group>
+  `,
+  imports: [NxTabsModule],
+})
+class NestedTabGroups extends TabsTest {}
