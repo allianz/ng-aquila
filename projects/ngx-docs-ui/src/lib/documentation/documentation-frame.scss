@@ -12,7 +12,7 @@ $toc-width: 200px;
   line-height: 1.5rem;
   background: v(ui-background);
   color: v(text-01);
-  padding-top: 60px;
+  padding-top: var(--header-height);
 
   @media (max-width: $sidebar-hidden-breakpoint) {
     padding-top: 120px;

@@ -5,11 +5,10 @@ b2c: true
 expert: true
 stable: done
 alias: page banner
-a1Light: true
+a1Densities: true
 ---
 
-
-### Overview
+## Overview
 
 Small stage is designed to be used at the top of your page or section to serve as a heading with illustrations.
 
@@ -19,7 +18,57 @@ Since small stage is designed to take 100% width of a page or a container, it's 
 
 Examples here feature both short and long headlines side by side in order to better outline the small stage behavior.
 
-### Basic Layout
+<div class="docs-hide-ndbx">
+
+## Simple Small Stage
+
+<!-- example(small-stage)-->
+
+## Basic Layout
+
+The layout of the small stage is structured in slots that can be populated using the following marker directives:
+
+-   Main area, contains text or other content
+-   `[nxSmallStageHeader]`: Header section
+-   `[nxSmallStageImageEnd]`: Right image of the small stage, on tablet and smaller replaced by bottom image if present
+-   `[nxSmallStageImageBottom]`: Image below the content area, visible on tablet and smaller
+
+#### Header Section
+
+In some cases you might need to add some data to the small stage that should not be in the content section, for example, breadcrumbs or links. 
+
+<!-- example(small-stage-header)-->
+
+#### Images
+
+Images can be added to the Small Stage with `[nxSmallStageImageEnd]` and `[nxSmallStageImageBottom]`. If both are present, the `[nxSmallStageImageBottom]` will replace `[nxSmallStageImageEnd]` on tablet screens and smaller. 
+
+<!-- example(small-stage-image)-->
+
+
+
+## Functional Grid
+
+On an active functional grid, the Small Stage can adjust it's horizontal padding to match the rest of the content area. 
+
+<!-- example(small-stage-functional-grid)-->
+
+## Styling
+
+Attention colors can be used with the [Attention Color directive](./documentation/text/overview)
+
+<!-- example(small-stage-style)-->
+
+</div>
+
+
+<div class="docs-hide-a1">
+
+
+
+## NDBX approach
+
+#### Basic Layout
 
 The layout of the small stage is structured in five slots that can be populated using the following marker directives:
 
@@ -64,7 +113,7 @@ If you need to add some background images to the small stage, you can do it thro
 
 <div class="docs-expert-container">
 
-### Expert specifics
+#### Expert Layout
 
 The small stage component has some specifics related to expert usage that we will discuss in this section. The small stage can be switched to expert by setting `appearance="expert"`.
 
@@ -72,13 +121,15 @@ Expert small stage is designed to use only one image after the content.
 
 <!-- example(small-stage-expert-default)-->
 
-#### Narrow content
+#### Expert Narrow content 
 
 In some cases you might need to use a narrow content container, e.g. when the headline is short and you want a better positioning of the image.
 
 Setting the `narrow` input switches the ratio between content and image containers to 50/50.
 
 <!-- example(small-stage-expert-content-narrow)-->
+
+</div>
 
 </div>
 

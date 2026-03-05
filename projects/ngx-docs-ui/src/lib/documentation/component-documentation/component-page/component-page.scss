@@ -36,6 +36,11 @@ $toc-width: 200px;
     justify-content: unset;
     gap: 16px;
   }
+
+  .component-overview__header {
+    margin: var(--semantic-inset-all-surface-linear-800, 32px) 0
+      var(--semantic-inset-all-surface-linear-400, 16px);
+  }
 }
 
 .sticky-banner {

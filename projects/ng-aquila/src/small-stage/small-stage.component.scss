@@ -5,6 +5,7 @@
   color: v(small-stage-text-color);
   background-color: v(small-stage-default-background-color);
   justify-content: center;
+  padding-top: v(small-stage-vertical-padding);
 }
 
 .container {
@@ -12,16 +13,37 @@
   display: grid;
   -ms-grid-columns: 2fr 8fr 2fr;
   grid-template-columns: 2fr 8fr 2fr;
-  column-gap: $grid-gutter-width-base;
-  padding: 0 $grid-gutter-width-base;
+  column-gap: v(small-stage-gap);
+  padding: 0 v(small-stage-horizontal-padding);
   flex: 1 1 auto;
   width: 100%;
+
+  &.functionalGrid {
+    padding: 0 v(small-stage-expert-horizontal-padding);
+  }
+}
+
+.header:empty {
+  display: v(small-stage-expert-header-empty-display);
 }
 
 .content {
   -ms-grid-row: 2;
   grid-row: 2;
   flex: 1 1 auto;
+  gap: v(small-stage-content-gap);
+
+  @include media-breakpoint-up(medium) {
+    padding-top: v(small-stage-vertical-additional-padding-large-screen);
+    padding-bottom: v(small-stage-vertical-padding-large-screen);
+  }
+  @include media-breakpoint-down(medium) {
+    padding-bottom: v(small-stage-vertical-padding);
+  }
+}
+
+:is(.image-bottom, .image-start, .image-end):empty {
+  display: none;
 }
 
 .image-start,
@@ -35,6 +57,12 @@
 .image-bottom {
   display: flex;
   align-items: flex-end;
+}
+
+.image-bottom {
+  display: none;
+  -ms-grid-row: 3;
+  grid-row: 3;
 }
 
 ::ng-deep nx-small-stage-image {
@@ -101,12 +129,6 @@
   .image-end {
     -ms-grid-column: 3;
     grid-column: 3;
-  }
-
-  .image-bottom {
-    display: none;
-    -ms-grid-row: 3;
-    grid-row: 3;
   }
 
   @include media-breakpoint-up(medium) {
@@ -200,7 +222,7 @@
   }
 
   .header {
-    min-height: v(small-stage-expert-header-height);
+    min-height: v(small-stage-expert-header-min-height);
     padding: v(small-stage-expert-header-padding);
   }
 
@@ -216,12 +238,25 @@
       grid-template-columns: 8fr 4fr;
     }
     .content {
-      margin-top: 0;
+      margin-top: v(small-stage-expert-content-margin-top-tablet);
       margin-bottom: v(small-stage-expert-tablet-content-margin-bottom);
     }
 
     ::ng-deep [nxSmallStageImageEnd] {
       background-position: bottom center;
+    }
+
+    .container:has([nxSmallStageImageBottom]) .image-end {
+      display: none;
+    }
+
+    .container:has([nxSmallStageImageBottom]) .content {
+      margin-bottom: 0;
+    }
+
+    .image-bottom {
+      display: block;
+      grid-column: 1 / span 2;
     }
   }
 
@@ -239,18 +274,22 @@
       }
     }
 
+    .container:has([nxSmallStageImageEnd]) .content {
+      margin-bottom: 0;
+    }
+
     .image-end {
       -ms-grid-row: 3;
       grid-row: 3;
       -ms-grid-column: 1;
-      grid-column: 1;
+      grid-column: 1 / span 2;
       margin: 0;
       height: v(small-stage-expert-image-min-height);
       min-height: v(small-stage-image-min-height);
     }
 
     ::ng-deep [nxSmallStageImageEnd] {
-      background-position: bottom right;
+      background-position: v(small-stage-expert-image-end-background-position);
     }
   }
 }
@@ -266,7 +305,7 @@
 
 @include media-breakpoint-down(small) {
   .container {
-    padding: 0 $grid-gutter-width-mobile;
+    padding: 0 v(small-stage-horizontal-padding-small-screen);
     column-gap: $grid-gutter-width-mobile;
   }
 }

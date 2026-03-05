@@ -1,11 +1,12 @@
 import { NxBadgeModule } from '@allianz/ng-aquila/badge';
+import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { NxLinkComponent } from '@allianz/ng-aquila/link';
 import { NxMessageModule } from '@allianz/ng-aquila/message';
 import { NxTabsModule } from '@allianz/ng-aquila/tabs';
 import { ThemeSwitcherService } from '@allianz/ngx-docs-ui';
 import { AsyncPipe } from '@angular/common';
-import { Component, computed, Inject, OnDestroy, Optional } from '@angular/core';
+import { Component, computed, Inject, isDevMode, OnDestroy, Optional } from '@angular/core';
 import {
   ActivatedRoute,
   Router,
@@ -42,6 +43,7 @@ export interface DocItem {
     AsyncPipe,
     NxLinkComponent,
     NxIconComponent,
+    NxHeadlineComponent,
   ],
 })
 export class NxvComponentPage implements OnDestroy {
@@ -116,5 +118,9 @@ export class NxvComponentPage implements OnDestroy {
 
   get activeTabs() {
     return this.tabs.filter((tab) => tab.show);
+  }
+
+  protected get isDevMode() {
+    return isDevMode();
   }
 }

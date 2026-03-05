@@ -1,9 +1,12 @@
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   HostBinding,
   Inject,
+  inject,
   InjectionToken,
   Input,
   Optional,
@@ -35,6 +38,9 @@ export const SMALL_STAGE_DEFAULT_OPTIONS = new InjectionToken<SmallStageDefaultO
   styleUrls: ['./small-stage.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
+  host: {
+    '[class.is-expert]': 'expertActive() || a1Enabled()',
+  },
 })
 export class NxSmallStageComponent {
   /**
@@ -53,6 +59,20 @@ export class NxSmallStageComponent {
     return this._appearance || this._defaultOptions?.appearance || 'default';
   }
   private _appearance?: NxSmallStageAppearance;
+  protected readonly expertActive = computed(() => this.appearance === 'expert');
+
+  /**
+   * Workaround to determine which A1 grid should be used.
+   * SmallStage is used by retail and expert apps. We need map retail apps to default grid and expert apps to functional grid.
+   * TODO: remove this workaround when a solution for grid handling in A1 is found.
+   */
+  private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
+    optional: true,
+  });
+
+  protected readonly a1Enabled = computed<boolean>(
+    () => this._allianzOneOptions?.enabled?.() || false,
+  );
 
   /**
    * Reduces the width of the text to 6/12 instead of 8/12.
@@ -66,10 +86,6 @@ export class NxSmallStageComponent {
     return this._narrow;
   }
   private _narrow = false;
-
-  @HostBinding('class.is-expert') get _isExpert(): boolean {
-    return this.appearance === 'expert';
-  }
 
   constructor(
     @Optional()

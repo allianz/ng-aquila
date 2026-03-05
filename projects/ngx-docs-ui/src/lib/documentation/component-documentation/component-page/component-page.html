@@ -1,5 +1,5 @@
 <div class="component-overview__header-container" [class.a1-themed]="!aquilaThemeActive()">
-  <h1 class="component-overview__header">{{componentDescriptor?.title}}</h1>
+  <h1 nxHeadline class="component-overview__header" size="2xl">{{componentDescriptor?.title}}</h1>
   @if(!aquilaThemeActive()) { @if(componentDescriptor?.a1Light || componentDescriptor?.a1Densities)
   {
   <nx-badge colorScheme="gray" prominence="subtle">A1 Light</nx-badge>

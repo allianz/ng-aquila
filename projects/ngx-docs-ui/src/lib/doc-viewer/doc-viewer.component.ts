@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, ElementRef, EventEmitter, inject, Input, Output } from '@angular/core';
+
 import { NxvVersionHashService } from '../core/version-hash';
+
 @Component({
   selector: 'nxv-doc-viewer',
   template: 'Loading document...',

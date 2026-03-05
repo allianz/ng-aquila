@@ -1,5 +1,6 @@
 import { effect, inject, Injectable, InjectionToken, signal } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { NxvVersionHashService } from '../../core/version-hash';
 
 export interface Theme {
