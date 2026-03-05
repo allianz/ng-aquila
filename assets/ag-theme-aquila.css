@@ -1,26 +1,26 @@
 @charset "UTF-8";
 .ag-theme-allianz-icons .ag-icon {
-  --ag-icon-font-code-filter: "";
-  --ag-icon-font-code-asc: "";
-  --ag-icon-font-code-desc: "";
-  --ag-icon-font-code-excel: "";
-  --ag-icon-font-code-last: "";
-  --ag-icon-font-code-none: "";
-  --ag-icon-font-code-right: "";
-  --ag-icon-font-code-small-right: "";
-  --ag-icon-font-code-tree-indeterminate: "";
-  --ag-icon-font-code-arrows: "";
-  --ag-icon-font-code-cross: "";
-  --ag-icon-font-code-first: "";
-  --ag-icon-font-code-left: "";
-  --ag-icon-font-code-menu: "";
-  --ag-icon-font-code-save: "";
-  --ag-icon-font-code-eye-slash: "";
-  --ag-icon-font-code-tick: "";
-  --ag-icon-font-code-copy: "";
-  --ag-icon-font-code-eye: "";
-  --ag-icon-font-code-small-left: "";
-  --ag-icon-font-code-small-down: "";
+  --ag-icon-font-code-filter: '';
+  --ag-icon-font-code-asc: '';
+  --ag-icon-font-code-desc: '';
+  --ag-icon-font-code-excel: '';
+  --ag-icon-font-code-last: '';
+  --ag-icon-font-code-none: '';
+  --ag-icon-font-code-right: '';
+  --ag-icon-font-code-small-right: '';
+  --ag-icon-font-code-tree-indeterminate: '';
+  --ag-icon-font-code-arrows: '';
+  --ag-icon-font-code-cross: '';
+  --ag-icon-font-code-first: '';
+  --ag-icon-font-code-left: '';
+  --ag-icon-font-code-menu: '';
+  --ag-icon-font-code-save: '';
+  --ag-icon-font-code-eye-slash: '';
+  --ag-icon-font-code-tick: '';
+  --ag-icon-font-code-copy: '';
+  --ag-icon-font-code-eye: '';
+  --ag-icon-font-code-small-left: '';
+  --ag-icon-font-code-small-down: '';
 }
 .ag-theme-allianz-icons .ag-icon.ag-icon-filter, .ag-theme-allianz-icons .ag-icon.ag-icon-asc, .ag-theme-allianz-icons .ag-icon.ag-icon-desc, .ag-theme-allianz-icons .ag-icon.ag-icon-excel, .ag-theme-allianz-icons .ag-icon.ag-icon-last, .ag-theme-allianz-icons .ag-icon.ag-icon-none, .ag-theme-allianz-icons .ag-icon.ag-icon-right, .ag-theme-allianz-icons .ag-icon.ag-icon-small-right, .ag-theme-allianz-icons .ag-icon.ag-icon-tree-indeterminate, .ag-theme-allianz-icons .ag-icon.ag-icon-arrows, .ag-theme-allianz-icons .ag-icon.ag-icon-cross, .ag-theme-allianz-icons .ag-icon.ag-icon-first, .ag-theme-allianz-icons .ag-icon.ag-icon-left, .ag-theme-allianz-icons .ag-icon.ag-icon-menu, .ag-theme-allianz-icons .ag-icon.ag-icon-save, .ag-theme-allianz-icons .ag-icon.ag-icon-eye-slash, .ag-theme-allianz-icons .ag-icon.ag-icon-tick, .ag-theme-allianz-icons .ag-icon.ag-icon-copy, .ag-theme-allianz-icons .ag-icon.ag-icon-eye, .ag-theme-allianz-icons .ag-icon.ag-icon-small-left, .ag-theme-allianz-icons .ag-icon.ag-icon-small-down {
   --ag-icon-font-family: Allianz-Icons;

@@ -20,6 +20,16 @@ The Tile component is a versatile UI element that can display an icon, label, an
 <p class="docs-markdown--p">Tiles can be set to readonly or disabled states.
 <strong>Readonly</strong> tiles should only be used in internal applications because of accessibility restrictions.</p>
 <div nx-docs-example="tile-readonly-disabled" config="{}">exampleID: tile-readonly-disabled</div>
+<h3 id="content-projection" tabindex="-1" class="docs-markdown--h3">Content projection</h3>
+<p class="docs-markdown--p">In case custom content or formatting is desired, the tile label and hint support content projection. If provided, the <code>label</code> and <code>hint</code> inputs will take priority over projected content.</p>
+<p class="docs-markdown--p"><strong>Note:</strong> Projected content should be text or screenreader-compatible, as hints are referenced by <code>aria-describedby</code> for accessibility.</p>
+<h4 id="usage" tabindex="-1" class="docs-markdown--h4">Usage</h4>
+<p class="docs-markdown--p">To project content,</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">use <code>&lt;nxTileLabel&gt;</code> for the label</li>
+<li class="docs-markdown--li">use <code>&lt;nxTileHint&gt;</code> for the hint</li>
+</ul>
+<div nx-docs-example="tile-content-projection" config="{}">exampleID: tile-content-projection</div>
 <h3 id="forms" tabindex="-1" class="docs-markdown--h3">Forms</h3>
 <p class="docs-markdown--p">The tile component supports both the FormsModule and ReactiveFormsModule of Angular.</p>
 <h4 id="template-driven-forms" tabindex="-1" class="docs-markdown--h4">Template-driven Forms</h4>

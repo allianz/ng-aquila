@@ -1,0 +1,16 @@
+<nx-small-stage>
+  <nav aria-label="Breadcrumb" nxSmallStageHeader>
+    <ol nxBreadcrumb>
+      @for (item of dynamicItems; track item; let i = $index) {
+      <li>
+        <a nxBreadcrumbItem (click)="goToItem(i)" href="javascript:void(0)">
+          {{ item }}
+        </a>
+      </li>
+      }
+    </ol>
+  </nav>
+
+  <nx-eyebrow>Eyebrow</nx-eyebrow>
+  <h2 nxHeadline="page">Headline text</h2>
+</nx-small-stage>

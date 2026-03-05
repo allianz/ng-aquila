@@ -1,0 +1,50 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxBreadcrumbComponent</span>,
+  <span class="hljs-title class_">NxBreadcrumbItemComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/breadcrumb&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxEyebrowComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/eyebrow&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxSmallStageComponent</span>,
+  <span class="hljs-title class_">NxSmallStageHeaderDirective</span>,
+  <span class="hljs-title class_">NxSmallStageImageBottomDirective</span>,
+  <span class="hljs-title class_">NxSmallStageImageDirective</span>,
+  <span class="hljs-title class_">NxSmallStageImageEndDirective</span>,
+  <span class="hljs-variable constant_">SMALL_STAGE_DEFAULT_OPTIONS</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/small-stage&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Small Stage Functional Grid example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;small-stage-functional-grid-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./small-stage-functional-grid-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./small-stage-functional-grid-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxSmallStageComponent</span>,
+    <span class="hljs-title class_">NxSmallStageHeaderDirective</span>,
+    <span class="hljs-title class_">NxBreadcrumbComponent</span>,
+    <span class="hljs-title class_">NxBreadcrumbItemComponent</span>,
+    <span class="hljs-title class_">NxSmallStageImageDirective</span>,
+    <span class="hljs-title class_">NxSmallStageImageEndDirective</span>,
+    <span class="hljs-title class_">NxSmallStageImageBottomDirective</span>,
+    <span class="hljs-title class_">NxHeadlineComponent</span>,
+    <span class="hljs-title class_">NxEyebrowComponent</span>,
+  ],
+  <span class="hljs-attr">providers</span>: [
+    {
+      <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">SMALL_STAGE_DEFAULT_OPTIONS</span>,
+      <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;expert&#x27;</span> },
+    },
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SmallStageFunctionalGridExampleComponent</span> {
+  items = [<span class="hljs-string">&#x27;Home&#x27;</span>, <span class="hljs-string">&#x27;Insurance&#x27;</span>, <span class="hljs-string">&#x27;Health Insurance&#x27;</span>];
+
+  dynamicItems = <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>;
+
+  <span class="hljs-title function_">goToItem</span>(<span class="hljs-params"><span class="hljs-attr">i</span>: <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dynamicItems</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, i + <span class="hljs-number">1</span>);
+  }
+}

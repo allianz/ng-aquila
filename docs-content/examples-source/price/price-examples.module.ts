@@ -6,6 +6,7 @@ import { PriceLocaleExampleComponent } from './price-locale/price-locale-example
 import { PriceInverseExampleComponent } from './price-inverse/price-inverse-example';
 import { PricePrefixSuffixExampleComponent } from './price-prefix-suffix/price-prefix-suffix-example';
 import { PriceSizesExampleComponent } from './price-sizes/price-sizes-example';
+import { PriceSuperscriptExampleComponent } from './price-superscript/price-superscript-example';
 
 const EXAMPLES = [
   PriceBasicExampleComponent,
@@ -13,6 +14,7 @@ const EXAMPLES = [
   PriceSizesExampleComponent,
   PriceInverseExampleComponent,
   PricePrefixSuffixExampleComponent,
+  PriceSuperscriptExampleComponent,
 ];
 
 @NgModule({
@@ -27,6 +29,7 @@ export class PriceExamplesModule {
       'price-sizes': PriceSizesExampleComponent,
       'price-inverse': PriceInverseExampleComponent,
       'price-prefix-suffix': PricePrefixSuffixExampleComponent,
+      'price-superscript': PriceSuperscriptExampleComponent,
     };
   }
 }
