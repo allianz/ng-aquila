@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [21.4.0](https://github.com/allianz/ng-aquila/compare/v21.3.1...v21.4.0) (2026-03-05)
+
+
+### Bug Fixes 🐛
+
+* **input-mask:** validation error on invalid country codes ([c2a6743](https://github.com/allianz/ng-aquila/commit/c2a6743e4afcd5de9e4d9bd87ec5e8b99051df93))
+* **tabs:** add null checks in ngOnDestroy for lazy-loaded content ([251a72a](https://github.com/allianz/ng-aquila/commit/251a72a054585c5a4ed80b8b157137548630cfe2))
+
+
+### Features ✨
+
+* **action:** support A1 density ([09d01e3](https://github.com/allianz/ng-aquila/commit/09d01e3e7c691f1931836504175b58397b4ca62d))
+* **icon:** add 'popout' icon to default icons ([cc6e353](https://github.com/allianz/ng-aquila/commit/cc6e353838eba578bf21951b5cf24e5fd6861966))
+* **price:** add superscript support  ([b84b10f](https://github.com/allianz/ng-aquila/commit/b84b10f099bd3d0622a0bac97396aa1aa06af03b))
+* **small-stage:** support A1 densities ([04a83e7](https://github.com/allianz/ng-aquila/commit/04a83e72e495113f13554fb7398c99a0351ff0f6))
+* **tile:** content projection for tile label and hint ([87e6867](https://github.com/allianz/ng-aquila/commit/87e6867f4cabc25988d53c77cfff069041b4a443))
+
 ### [21.3.1](https://github.com/allianz/ng-aquila/compare/v21.3.0...v21.3.1) (2026-02-24)
 
 ### Bug Fixes 🐛
