@@ -1,9 +1,11 @@
+import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
 import { NxFormfieldComponent, NxFormfieldControl } from '@allianz/ng-aquila/formfield';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
 import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
-import { ActiveDescendantKeyManager, LiveAnnouncer } from '@angular/cdk/a11y';
+import { NxVirtualFor, NxVirtualViewportComponent } from '@allianz/ng-aquila/virtual-scroll';
+import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { Dir, Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -38,6 +40,7 @@ import {
   Component,
   computed,
   ContentChild,
+  contentChild,
   ContentChildren,
   DoCheck,
   ElementRef,
@@ -59,6 +62,7 @@ import {
   signal,
   TemplateRef,
   ViewChild,
+  viewChild,
   ViewChildren,
 } from '@angular/core';
 import {
@@ -77,7 +81,7 @@ import { NxDropdownControl } from './dropdown.control';
 import { getNxDropdownNonArrayValueError } from './dropdown-errors';
 import { getPositionOffset, getPositions } from './dropdown-position';
 import { NxDropdownGroupComponent } from './group/dropdown-group';
-import { NxDropdownItemComponent } from './item/dropdown-item';
+import { NxDropdownItemChange, NxDropdownItemComponent } from './item/dropdown-item';
 
 /**
  * An option of the dropdown.
@@ -87,6 +91,19 @@ import { NxDropdownItemComponent } from './item/dropdown-item';
 export interface NxDropdownOption {
   value: any;
   label?: string;
+}
+
+/**
+ * Context provided to custom item templates.
+ * Use with `#nxDropdownItemTemplate` template reference.
+ */
+export interface NxDropdownItemTemplateContext<T = unknown> {
+  /** The option value (use `let-item` to access directly) */
+  $implicit: T;
+  /** Index in the filtered options array */
+  index: number;
+  /** Whether the item is currently selected */
+  selected: boolean;
 }
 
 export type NxDropdownPanelMinWidth = 'trigger' | 'none';
@@ -156,6 +173,17 @@ export const NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER = {
   deps: [Overlay],
 };
 
+/** Default options for dropdown that can be overridden globally. */
+export interface NxDropdownDefaultOptions {
+  /** Enable virtual scrolling for all dropdowns (default: false) */
+  virtualScroll?: boolean;
+}
+
+/** Injection token to be used to override the default options for dropdown. */
+export const DROPDOWN_DEFAULT_OPTIONS = new InjectionToken<NxDropdownDefaultOptions>(
+  'DROPDOWN_DEFAULT_OPTIONS',
+);
+
 export type FilterInputType =
   | 'text'
   | 'number'
@@ -223,6 +251,9 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = (value) =>
     Dir,
     NxDropdownItemComponent,
     NxTooltipModule,
+    NxVirtualViewportComponent,
+    NxVirtualFor,
+    NxCheckboxModule,
   ],
 })
 export class NxDropdownComponent
@@ -236,6 +267,8 @@ export class NxDropdownComponent
     OnDestroy,
     DoCheck
 {
+  private readonly _defaultOptions = inject(DROPDOWN_DEFAULT_OPTIONS, { optional: true });
+
   /** Whether the dropdown is readonly. */
   @Input() set readonly(value: BooleanInput) {
     this._readonly = coerceBooleanProperty(value);
@@ -453,6 +486,14 @@ export class NxDropdownComponent
   /** Whether the dropdown should be shown with an additional filter input. */
   readonly showFilter = input(false);
 
+  /**
+   * Enable virtual scrolling.
+   * Requires using the `options` input (data-driven mode).
+   */
+  readonly virtualScroll = input(this._defaultOptions?.virtualScroll ?? false, {
+    transform: booleanAttribute,
+  });
+
   /** Text displayed as placeholder for the filter. */
   readonly filterPlaceholder = input('');
 
@@ -520,7 +561,17 @@ export class NxDropdownComponent
   @ViewChild('filterInput') filterInput?: ElementRef;
 
   /** @docs-private */
-  filterValue = '';
+  readonly _filterValue = signal('');
+
+  /** @docs-private - getter for template binding compatibility */
+  get filterValue(): string {
+    return this._filterValue();
+  }
+
+  /** @docs-private - setter for template binding compatibility */
+  set filterValue(value: string) {
+    this._filterValue.set(value);
+  }
 
   /**
    * Overlay pane containing the options.
@@ -536,6 +587,13 @@ export class NxDropdownComponent
 
   @ContentChild(NxDropdownClosedLabelDirective)
   _customClosedDropdownLabel!: NxDropdownClosedLabelDirective;
+
+  /**
+   * Custom template for rendering items when using the `options` array.
+   * Use `#nxDropdownItemTemplate` as the template reference name.
+   */
+  readonly _itemTemplate =
+    contentChild<TemplateRef<NxDropdownItemTemplateContext>>('nxDropdownItemTemplate');
 
   @ViewChild('defaultClosedDropdownLabel', { static: true })
   private readonly _defaultClosedDropdownLabel!: TemplateRef<any>;
@@ -687,7 +745,68 @@ export class NxDropdownComponent
     return this._dir && this._dir.value === 'rtl' ? 'rtl' : 'ltr';
   }
 
-  activeId = signal<string | null>(null);
+  /** Active value from key manager (traditional mode) */
+  protected readonly _keyManagerActiveValue = signal<unknown>(null);
+
+  /** ViewChild reference to virtual viewport component */
+  readonly virtualViewport = viewChild<NxVirtualViewportComponent>('virtualViewport');
+
+  /** Active index in virtual scroll mode (index in filtered options array) */
+  protected readonly _virtualActiveIndex = signal<number>(-1);
+
+  /** Active value in virtual mode - computed from index */
+  protected readonly _virtualActiveValue = computed(() => {
+    const index = this._virtualActiveIndex();
+    const options = this._filteredOptions();
+    return index >= 0 && index < options.length ? options[index].value : null;
+  });
+
+  /** Unified active value - switches based on mode */
+  protected readonly _activeValue = computed(() =>
+    this.virtualScroll() ? this._virtualActiveValue() : this._keyManagerActiveValue(),
+  );
+
+  /** Computed ID for aria-activedescendant, works for both modes */
+  protected readonly activeDescendantId = computed(() => {
+    const value = this._activeValue();
+    if (value === null) {
+      return null;
+    }
+
+    if (this.virtualScroll()) {
+      const index = this._filteredOptions().findIndex((opt) => this.compareWith(opt.value, value));
+      return index >= 0 ? `${this.modalId}-option-${index}` : null;
+    }
+
+    const item = this.dropdownItems?.find((i) => this.compareWith(i.value, value));
+    return item?.id ?? null;
+  });
+
+  /** Filtered options for virtual mode (respects filter) */
+  protected readonly _filteredOptions = computed(() => {
+    const filterValue = this._filterValue();
+    if (!this.virtualScroll() || !this.options) {
+      return [];
+    }
+    if (!filterValue || !this.showFilter()) {
+      return this.options;
+    }
+    return this.options.filter((opt) => this.filterFn(filterValue, this._getLabel(opt)));
+  });
+
+  /** Typeahead buffer (shared) */
+  private _typeaheadBuffer = '';
+
+  /** Typeahead timeout ID */
+  private _typeaheadTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  private _clearTypeahead(): void {
+    this._typeaheadBuffer = '';
+    if (this._typeaheadTimeout) {
+      clearTimeout(this._typeaheadTimeout);
+      this._typeaheadTimeout = null;
+    }
+  }
 
   constructor(
     private readonly _cdr: ChangeDetectorRef,
@@ -702,7 +821,6 @@ export class NxDropdownComponent
     @Optional() private readonly _dir: Directionality | null,
     @Inject(NX_DROPDOWN_SCROLL_STRATEGY)
     private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
-    private readonly liveAnnouncer: LiveAnnouncer,
   ) {
     if (this.ngControl) {
       // Note: we provide the value accessor through here, instead of
@@ -810,7 +928,7 @@ export class NxDropdownComponent
   /** Sets up a key manager to listen to keyboard events on the overlay panel. */
   private _initKeyManager() {
     this._keyManager = new ActiveDescendantKeyManager<NxDropdownItemComponent>(this.dropdownItems)
-      .withTypeAhead(500)
+      .withTypeAhead(200)
       .withHomeAndEnd()
       .withVerticalOrientation()
       .withHorizontalOrientation('ltr')
@@ -830,7 +948,7 @@ export class NxDropdownComponent
       } else if (!this._panelOpen && !this.isMultiSelect() && this._keyManager.activeItem) {
         this._keyManager.activeItem._selectViaInteraction();
       }
-      this.activeId.set(this._keyManager.activeItem?.id || null);
+      this._keyManagerActiveValue.set(this._keyManager.activeItem?.value ?? null);
     });
   }
 
@@ -1028,6 +1146,51 @@ export class NxDropdownComponent
     this._elementRef.nativeElement.focus();
   }
 
+  /**
+   * Scrolls to the option at the specified index.
+   * Works for both virtual and non-virtual scroll modes.
+   * @param index The zero-based index of the option to scroll to
+   * @param behavior Scroll behavior ('auto' or 'smooth'). Default: 'auto'
+   */
+  scrollToIndex(index: number, behavior: ScrollBehavior = 'auto'): void {
+    if (!this.panelOpen) {
+      return;
+    }
+    if (this.virtualScroll()) {
+      this.virtualViewport()?.scrollToIndex(index, behavior);
+    } else {
+      const items = this.dropdownItems?.toArray() ?? [];
+      if (index >= 0 && index < items.length) {
+        const item = items[index];
+        item.containerElement.nativeElement.scrollIntoView({
+          block: 'nearest',
+          behavior,
+        });
+      }
+    }
+  }
+
+  /**
+   * Scrolls to the option with the specified value.
+   * Uses the compareWith function to match values.
+   * @param value The value of the option to scroll to
+   * @param behavior Scroll behavior ('auto' or 'smooth'). Default: 'auto'
+   */
+  scrollToValue(value: unknown, behavior: ScrollBehavior = 'auto'): void {
+    const index = this._findIndexByValue(value);
+    if (index !== -1) {
+      this.scrollToIndex(index, behavior);
+    }
+  }
+
+  private _findIndexByValue(value: unknown): number {
+    if (this.virtualScroll()) {
+      return this._filteredOptions().findIndex((opt) => this.compareWith(opt.value, value));
+    }
+    const items = this.dropdownItems?.toArray() ?? [];
+    return items.findIndex((item) => this.compareWith(item.value, value));
+  }
+
   get overlayOrigin() {
     const overlayFallbackOrigin = this.overlayFallbackOrigin();
     if (overlayFallbackOrigin) {
@@ -1055,13 +1218,19 @@ export class NxDropdownComponent
     this._panelOpen = true;
 
     setTimeout(() => {
-      this._selectionModel.selected.forEach((selectedOption) => {
-        const option = this.dropdownItems.find((o) => o.value === selectedOption.value);
-        if (option) {
-          option._initSelected(true);
-        }
-      });
-      this._initActiveItem();
+      if (this.virtualScroll()) {
+        // Initialize virtual scroll mode
+        this._initVirtualScrollMode();
+      } else {
+        // Standard mode initialization
+        this._selectionModel.selected.forEach((selectedOption) => {
+          const option = this.dropdownItems.find((o) => o.value === selectedOption.value);
+          if (option) {
+            option._initSelected(true);
+          }
+        });
+        this._initActiveItem();
+      }
       this._cdr.markForCheck();
     });
 
@@ -1261,41 +1430,23 @@ export class NxDropdownComponent
 
   _handleKeydown(event: KeyboardEvent) {
     this.openedByKeyboard = true;
-    this.panelOpen ? this._handleOpenKeydown(event) : this._handleClosedKeydown(event);
+
+    // Common handling for both modes when panel is open
+    if (this.panelOpen && event.keyCode === TAB) {
+      this.closePanel();
+      return;
+    }
+
+    // Mode-specific handling
+    if (this.virtualScroll() && this.panelOpen) {
+      this._handleVirtualKeydown(event);
+    } else {
+      this.panelOpen ? this._handleOpenKeydown(event) : this._handleClosedKeydown(event);
+    }
   }
 
   private get _isLazy(): boolean {
     return Array.isArray(this.options);
-  }
-
-  private setNextItemActive() {
-    const options = this._isLazy ? this.options : this.dropdownItems.toArray();
-    let curIndex = options.indexOf(this._selectionModel.selected[0] as NxDropdownItemComponent);
-    for (curIndex++; curIndex < options.length; curIndex++) {
-      if (this._isSelectable(options[curIndex] as NxDropdownItemComponent, this._isLazy)) {
-        this._selectionModel.select(options[curIndex]);
-        this.liveAnnouncer.announce(options[curIndex].label || '');
-        this._propagateChanges();
-        return;
-      }
-    }
-  }
-
-  private setPreviousItemActive() {
-    const options = this._isLazy ? this.options : this.dropdownItems.toArray();
-    let curIndex = options.indexOf(this._selectionModel.selected[0] as NxDropdownItemComponent);
-    for (curIndex--; curIndex >= 0; curIndex--) {
-      if (this._isSelectable(options[curIndex] as NxDropdownItemComponent, this._isLazy)) {
-        this._selectionModel.select(options[curIndex]);
-        this.liveAnnouncer.announce(options[curIndex].label || '');
-        this._propagateChanges();
-        return;
-      }
-    }
-  }
-
-  private _isSelectable(option: NxDropdownItemComponent, isLazy?: boolean) {
-    return isLazy || (option && !option?.disabled && !option.selected);
   }
 
   private _handleClosedKeydown(event: KeyboardEvent) {
@@ -1415,8 +1566,6 @@ export class NxDropdownComponent
     } else if (!showFilter && keyCode === SPACE && manager.activeItem) {
       event.preventDefault();
       manager.activeItem._selectViaInteraction();
-    } else if (keyCode === TAB) {
-      this.closePanel();
     } else {
       const previouslyFocusedIndex = manager.activeItemIndex;
       manager.onKeydown(event);
@@ -1440,6 +1589,12 @@ export class NxDropdownComponent
 
   /** Called when the user types in the filter input */
   _onFilter(query: string) {
+    // Handle virtual scroll mode separately
+    if (this.virtualScroll()) {
+      this._onVirtualFilter(query);
+      return;
+    }
+
     this.filterChanges.next(query);
     const allHidden = this.dropdownItems.toArray().every((option) => option._hidden);
     if (allHidden) {
@@ -1470,6 +1625,295 @@ export class NxDropdownComponent
 
   _getLabel(option: NxDropdownOption) {
     return option.label || this.formatValue(option.value);
+  }
+
+  /** Creates the context object for custom item templates */
+  _createItemTemplateContext(
+    option: NxDropdownOption,
+    index: number,
+  ): NxDropdownItemTemplateContext {
+    return {
+      $implicit: option.value,
+      index,
+      selected: this._isValueSelected(option.value),
+    };
+  }
+
+  /** Extract value from NxDropdownOption for virtual scroll component */
+  readonly _getOptionValue = (option: NxDropdownOption): unknown => option.value;
+
+  /** Extract label from NxDropdownOption for virtual scroll component */
+  readonly _getOptionLabel = (option: NxDropdownOption): string => this._getLabel(option);
+
+  /** Check if a value is currently selected */
+  _isValueSelected(value: unknown): boolean {
+    return this._selectionModel.selected.some((s) => this.compareWith(s.value, value));
+  }
+
+  /** Handle selection change from nx-dropdown-item in virtual scroll mode */
+  _onVirtualSelect(event: NxDropdownItemChange, item: NxDropdownOption, index: number): void {
+    if (event.isUserInput) {
+      this._selectVirtualItem(item, index);
+    }
+  }
+
+  /** Select/toggle a virtual item */
+  private _selectVirtualItem(option: NxDropdownOption, index: number): void {
+    const isSelected = this._isValueSelected(option.value);
+    const isMultiSelect = this.isMultiSelect();
+
+    if (option.value === null && !isMultiSelect) {
+      this._selectionModel.clear();
+      this._propagateChanges(option.value);
+    } else if (isMultiSelect) {
+      if (isSelected) {
+        this._selectionModel.deselect(option);
+      } else {
+        this._selectionModel.select(option);
+      }
+      this._sortValues();
+      this._propagateChanges();
+    } else {
+      this._selectionModel.clear();
+      this._selectionModel.select(option);
+      this._propagateChanges();
+    }
+
+    // Update active index and sync _activeValue
+    this._virtualActiveIndex.set(index);
+
+    this._tooltipText.set('');
+    this._scheduleTooltipUpdate();
+    this.stateChanges.next();
+
+    if (!isMultiSelect && this._panelOpen) {
+      this.closePanel();
+    }
+  }
+
+  /** Initialize virtual scroll mode when panel opens */
+  private _initVirtualScrollMode(): void {
+    const options = this._filteredOptions();
+    if (options.length === 0) {
+      this._virtualActiveIndex.set(-1);
+      return;
+    }
+
+    // Find the index of the first selected item
+    let activeIndex = 0;
+    if (!this.isMultiSelect() && this._selectionModel.selected[0]) {
+      const selectedValue = this._selectionModel.selected[0].value;
+      const foundIndex = options.findIndex((opt) => this.compareWith(opt.value, selectedValue));
+      if (foundIndex >= 0) {
+        activeIndex = foundIndex;
+      }
+    }
+
+    this._virtualActiveIndex.set(activeIndex);
+
+    // Scroll to the active item after viewport is ready
+    setTimeout(() => {
+      this.virtualViewport()?.scrollIntoView(activeIndex);
+    });
+  }
+
+  /** Handle keyboard events in virtual scroll mode */
+  private _handleVirtualKeydown(event: KeyboardEvent): void {
+    const keyCode = event.keyCode;
+    const options = this._filteredOptions();
+
+    // TAB is handled in _handleKeydown
+    if (options.length === 0) {
+      return;
+    }
+
+    switch (keyCode) {
+      case DOWN_ARROW:
+        this._clearTypeahead();
+        this._virtualArrowDown();
+        event.preventDefault();
+        break;
+      case UP_ARROW:
+        this._clearTypeahead();
+        this._virtualArrowUp();
+        event.preventDefault();
+        break;
+      case HOME:
+        this._clearTypeahead();
+        this._virtualHome();
+        event.preventDefault();
+        break;
+      case END:
+        this._clearTypeahead();
+        this._virtualEnd();
+        event.preventDefault();
+        break;
+      case ENTER:
+        this._virtualSelect();
+        event.preventDefault();
+        break;
+      case SPACE:
+        if (!this.showFilter()) {
+          this._virtualSelect();
+          event.preventDefault();
+        }
+        break;
+      default:
+        // Typeahead for character keys when filter is not shown
+        if (
+          !this.showFilter() &&
+          event.key.length === 1 &&
+          !event.ctrlKey &&
+          !event.metaKey &&
+          !event.altKey
+        ) {
+          this._handleVirtualTypeahead(event.key);
+        }
+        break;
+    }
+  }
+
+  private _virtualArrowDown(): void {
+    const options = this._filteredOptions();
+    const currentIndex = this._virtualActiveIndex();
+    const newIndex = Math.min(currentIndex + 1, options.length - 1);
+
+    if (newIndex !== currentIndex) {
+      this.virtualViewport()?.scrollIntoView(newIndex);
+      this._virtualActiveIndex.set(newIndex);
+    }
+  }
+
+  private _virtualArrowUp(): void {
+    const options = this._filteredOptions();
+    const currentIndex = this._virtualActiveIndex();
+    const newIndex = Math.max(currentIndex - 1, 0);
+
+    if (newIndex !== currentIndex) {
+      this.virtualViewport()?.scrollIntoView(newIndex);
+      this._virtualActiveIndex.set(newIndex);
+    }
+  }
+
+  private _virtualHome(): void {
+    const options = this._filteredOptions();
+    this.virtualViewport()?.scrollToIndex(0);
+    this._virtualActiveIndex.set(0);
+  }
+
+  private _virtualEnd(): void {
+    const options = this._filteredOptions();
+    const lastIndex = options.length - 1;
+    this.virtualViewport()?.scrollToIndex(lastIndex);
+    this._virtualActiveIndex.set(lastIndex);
+  }
+
+  private _virtualSelect(): void {
+    const index = this._virtualActiveIndex();
+    const options = this._filteredOptions();
+
+    if (index >= 0 && index < options.length) {
+      this._selectVirtualItem(options[index], index);
+    }
+  }
+
+  private _handleVirtualTypeahead(char: string): void {
+    this._typeaheadBuffer += char.toLowerCase();
+
+    // Clear any pending search
+    if (this._typeaheadTimeout) {
+      clearTimeout(this._typeaheadTimeout);
+    }
+
+    // Debounce: wait 200ms for typing to pause before searching
+    this._typeaheadTimeout = setTimeout(() => {
+      this._executeTypeaheadSearch();
+    }, 200);
+  }
+
+  private _executeTypeaheadSearch(): void {
+    const searchString = this._typeaheadBuffer.toLocaleUpperCase();
+
+    // Clear state
+    this._typeaheadBuffer = '';
+    this._typeaheadTimeout = null;
+
+    if (!searchString) {
+      return;
+    }
+
+    const options = this._filteredOptions();
+    const startIndex = this._virtualActiveIndex() ?? -1;
+
+    // Search for prefix match first, starting from current position + 1
+    let matchIndex = this._findTypeaheadMatch(options, searchString, startIndex, true);
+
+    // Fallback to substring match if no prefix match found
+    if (matchIndex === -1) {
+      matchIndex = this._findTypeaheadMatch(options, searchString, startIndex, false);
+    }
+
+    if (matchIndex >= 0) {
+      this.virtualViewport()?.scrollIntoView(matchIndex);
+      this._virtualActiveIndex.set(matchIndex);
+    }
+  }
+
+  /**
+   * Find a typeahead match in the options list.
+   * Searches starting from startIndex + 1 and wraps around.
+   */
+  private _findTypeaheadMatch(
+    options: NxDropdownOption[],
+    searchString: string,
+    startIndex: number,
+    prefixOnly: boolean,
+  ): number {
+    const len = options.length;
+
+    // Start from next item after current, wrap around
+    for (let i = 1; i <= len; i++) {
+      const index = (startIndex + i) % len;
+      const option = options[index];
+
+      // Skip disabled items
+      if (this._isOptionDisabled(option)) {
+        continue;
+      }
+
+      const label = this._getLabel(option).toLocaleUpperCase().trim();
+
+      if (prefixOnly) {
+        if (label.indexOf(searchString) === 0) {
+          return index;
+        }
+      } else if (label.includes(searchString)) {
+        return index;
+      }
+    }
+
+    return -1;
+  }
+
+  /** Check if an option is disabled */
+  private _isOptionDisabled(option: NxDropdownOption): boolean {
+    // Options passed via the options input don't have a disabled property
+    // This is a safeguard for future extensibility
+    return (option as any).disabled === true;
+  }
+
+  /** Handle filter changes in virtual scroll mode */
+  _onVirtualFilter(query: string): void {
+    this.filterChanges.next(query);
+
+    // Reset active index when filter changes
+    const options = this._filteredOptions();
+    if (options.length > 0) {
+      this._virtualActiveIndex.set(0);
+      this.virtualViewport()?.scrollToIndex(0);
+    } else {
+      this._virtualActiveIndex.set(-1);
+    }
   }
 
   /**

@@ -1,0 +1,20 @@
+nx-virtual-viewport {
+  height: 300px;
+}
+
+.virtual-item {
+  padding: 8px 12px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+nx-formfield {
+  margin-bottom: 0;
+  width: 150px;
+}

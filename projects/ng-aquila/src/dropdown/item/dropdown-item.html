@@ -21,7 +21,7 @@
       <ng-content></ng-content>
     </div>
 
-    <div class="value-content">@if (_isContentEmpty(content)) { {{_formattedValue }} }</div>
+    <div class="value-content">@if (_contentEmpty()) { {{_formattedValue }} }</div>
 
     @if (showRadioIndicator() && !multiselect) {
     <span class="nx-dropdown-results__option-radioicon" aria-hidden="true">

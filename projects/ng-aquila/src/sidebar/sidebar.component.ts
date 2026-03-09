@@ -153,7 +153,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
   private _resizeStartWidth!: number;
 
-  private allianzOne = inject(ALLIANZ_ONE, { optional: true }) as AllianzOneOptions | null;
+  private readonly allianzOne = inject(ALLIANZ_ONE, { optional: true }) as AllianzOneOptions | null;
 
   protected readonly _defaultMinWidth = computed(() =>
     this.allianzOne?.enabled?.() ? MIN_WIDTH_A1 : MIN_WIDTH,

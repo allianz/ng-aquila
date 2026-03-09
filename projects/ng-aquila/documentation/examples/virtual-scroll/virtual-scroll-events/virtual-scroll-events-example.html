@@ -1,0 +1,22 @@
+<div class="event-info">
+  <p>
+    <strong>Last clicked:</strong>
+    @if (lastClicked(); as clicked) { Index {{ clicked.index }} (value: {{
+    clicked.value }}) } @else { None }
+  </p>
+  <p>
+    <strong>Visible range:</strong>
+    @if (visibleRange(); as range) { {{ range.start }} - {{ range.end }} } @else
+    { Unknown }
+  </p>
+</div>
+
+<nx-virtual-viewport (visibleRangeChange)="visibleRange.set($event)">
+  <div
+    *nxVirtualFor="let item of items; let i = index"
+    class="virtual-item"
+    (click)="onItemClick(item, i)"
+  >
+    {{ item.label }}
+  </div>
+</nx-virtual-viewport>

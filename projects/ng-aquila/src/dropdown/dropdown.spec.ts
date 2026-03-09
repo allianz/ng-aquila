@@ -1,6 +1,7 @@
 import { NxFormfieldComponent, NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { fakeScrollStrategyFunction } from '@allianz/ng-aquila/utils';
 import {
+  A,
   B,
   C,
   D,
@@ -9,6 +10,7 @@ import {
   ENTER,
   HOME,
   LEFT_ARROW,
+  P,
   RIGHT_ARROW,
   SPACE,
   TAB,
@@ -55,6 +57,7 @@ import { delay } from 'rxjs/operators';
 
 import { createFakeEvent, dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import {
+  DROPDOWN_DEFAULT_OPTIONS,
   NX_DROPDOWN_SCROLL_STRATEGY,
   NxDropdownComponent,
   NxDropdownIntl,
@@ -226,11 +229,11 @@ describe('NxDropdownComponent', () => {
   function expectItemsHighlighted(highlightedIndexes: number[]) {
     let check = true;
 
-    testInstance.dropdownItems.forEach((item: { active: any }, itemIndex: number) => {
-      if (highlightedIndexes.includes(itemIndex) && !item.active) {
+    testInstance.dropdownItems.forEach((item: { isActive(): boolean }, itemIndex: number) => {
+      if (highlightedIndexes.includes(itemIndex) && !item.isActive()) {
         check = false;
       }
-      if (!highlightedIndexes.includes(itemIndex) && item.active) {
+      if (!highlightedIndexes.includes(itemIndex) && item.isActive()) {
         check = false;
       }
     });
@@ -239,7 +242,9 @@ describe('NxDropdownComponent', () => {
 
   function expectItemsHighlightedOnFilter(activeItem: Element) {
     let check = true;
-    const activeItems = testInstance.dropdownItems.filter((item: { active: any }) => item.active);
+    const activeItems = testInstance.dropdownItems.filter((item: { isActive(): boolean }) =>
+      item.isActive(),
+    );
 
     // don't allow more than one active item
     if (activeItems.length > 1) {
@@ -263,6 +268,7 @@ describe('NxDropdownComponent', () => {
         ReactiveDropdownUpdateOnBlurComponent,
         IntlOverrideDropdown,
         OverlayFallbackOriginDropdownComponent,
+        DeferredTestComponent,
       ]);
     }));
 
@@ -609,6 +615,22 @@ describe('NxDropdownComponent', () => {
         fakeScrollStrategyFunction,
       );
     });
+
+    it('should enable virtual scroll globally via DROPDOWN_DEFAULT_OPTIONS', fakeAsync(() => {
+      TestBed.resetTestingModule()
+        .configureTestingModule({
+          imports: [SimpleDropdownComponent, NxDropdownModule, NxFormfieldModule],
+          providers: [
+            {
+              provide: DROPDOWN_DEFAULT_OPTIONS,
+              useValue: { virtualScroll: true },
+            },
+          ],
+        })
+        .compileComponents();
+      createTestComponent(SimpleDropdownComponent);
+      expect(dropdownInstance.virtualScroll()).toBeTrue();
+    }));
   });
 
   describe('with placeholder', () => {
@@ -1662,7 +1684,7 @@ describe('NxDropdownComponent', () => {
       flush();
       const last = testInstance.dropdownItems.length - 1;
       expectDropdownOpen();
-      expect(testInstance?.dropdownItems?.get(last)?.active).toBe(true);
+      expect(testInstance?.dropdownItems?.get(last)?.isActive()).toBe(true);
 
       clickOnBackdrop();
 
@@ -1671,7 +1693,7 @@ describe('NxDropdownComponent', () => {
       tick(1000);
       flush();
       expectDropdownOpen();
-      expect(testInstance?.dropdownItems?.get(0)?.active).toBe(true);
+      expect(testInstance?.dropdownItems?.get(0)?.isActive()).toBe(true);
     }));
 
     it('should not open the dropdown via keyboard shortcut', fakeAsync(() => {
@@ -1760,6 +1782,7 @@ describe('NxDropdownComponent', () => {
         PlainTabIndexTestComponent,
         DropdownCustomLabelComponent,
         ReactiveBindingDropdownComponent,
+        MultiSelectDropdownComponent,
       ]);
     }));
 
@@ -1903,6 +1926,56 @@ describe('NxDropdownComponent', () => {
       const options = await dropdownHarness.getOptions();
       expect(await options[2].hasClass('nx-dropdown-item--active')).toBeTrue();
     }));
+
+    it('should set aria-selected="true" on selected item in single-select dropdown', fakeAsync(() => {
+      createTestComponent(SimpleDropdownComponent);
+      openDropdownByClick();
+
+      // Initially no item should have aria-selected="true"
+      let items = overlayContainer.getContainerElement().querySelectorAll('nx-dropdown-item');
+      const initialSelected = Array.from(items).filter(
+        (item) => item.getAttribute('aria-selected') === 'true',
+      );
+      expect(initialSelected.length).toBe(0);
+
+      // Click on first item
+      const firstItem = items[0] as HTMLElement;
+      firstItem.click();
+      fixture.detectChanges();
+      flush();
+
+      // Reopen dropdown
+      openDropdownByClick();
+      items = overlayContainer.getContainerElement().querySelectorAll('nx-dropdown-item');
+
+      // Selected item should have aria-selected="true"
+      expect(items[0].getAttribute('aria-selected')).toBe('true');
+      // Other items should not have aria-selected attribute
+      expect(items[1].getAttribute('aria-selected')).toBeNull();
+    }));
+
+    it('should set aria-selected on all items in multiselect dropdown', fakeAsync(() => {
+      createTestComponent(MultiSelectDropdownComponent);
+      openDropdownByClick();
+
+      // Initially all items should have aria-selected="false"
+      let items = overlayContainer.getContainerElement().querySelectorAll('nx-dropdown-item');
+      Array.from(items).forEach((item) => {
+        expect(item.getAttribute('aria-selected')).toBe('false');
+      });
+
+      // Select first item
+      const firstItem = items[0] as HTMLElement;
+      firstItem.click();
+      fixture.detectChanges();
+      flush();
+
+      items = overlayContainer.getContainerElement().querySelectorAll('nx-dropdown-item');
+      expect(items[0].getAttribute('aria-selected')).toBe('true');
+      expect(items[1].getAttribute('aria-selected')).toBe('false');
+      expect(items[2].getAttribute('aria-selected')).toBe('false');
+      expect(items[3].getAttribute('aria-selected')).toBe('false');
+    }));
   });
 
   describe('vertical align checkmark', () => {
@@ -1956,6 +2029,1001 @@ describe('NxDropdownComponent', () => {
         .withContext('tooltip should clear after reverting to short value')
         .toBe('');
     }));
+  });
+
+  describe('virtual scroll typeahead', () => {
+    beforeEach(fakeAsync(() => {
+      configureNxDropdownTestingModule([VirtualScrollTypeaheadDropdown]);
+    }));
+
+    function getVirtualActiveItem(): HTMLElement | null {
+      return overlayContainer
+        .getContainerElement()
+        .querySelector('nx-dropdown-item.nx-dropdown-item--active') as HTMLElement | null;
+    }
+
+    function getVirtualActiveLabel(): string {
+      const item = getVirtualActiveItem();
+      return item?.textContent?.trim() ?? '';
+    }
+
+    it('should focus item with prefix match when typing', fakeAsync(() => {
+      createTestComponent(VirtualScrollTypeaheadDropdown);
+      openDropdownByClick();
+
+      // Apple is active by default (index 0), so typing 'A' cycles to Apricot (index 1)
+      // This matches CDK's behavior where search starts from activeIndex + 1
+      dispatchKeyboardEvent(dropdownElement, 'keydown', A, 'a');
+      fixture.detectChanges();
+
+      // Wait for typeahead debounce (200ms)
+      tick(250);
+      fixture.detectChanges();
+
+      expect(getVirtualActiveLabel()).toBe('Apricot');
+    }));
+
+    it('should fallback to substring match when no prefix match found', fakeAsync(() => {
+      createTestComponent(VirtualScrollTypeaheadDropdown);
+      openDropdownByClick();
+
+      // Type 'ppl' - no item starts with 'ppl', but 'Apple' and 'Pineapple' contain it
+      // Search starts from active (Apple, index 0) + 1 = index 1
+      // Looking at items: Apricot(1), Avocado(2), Banana(3), Blueberry(4), Cherry(5), Pineapple(6), then wraps to Apple(0)
+      // 'Pineapple' at index 6 contains 'ppl' (substring match)
+      dispatchKeyboardEvent(dropdownElement, 'keydown', P, 'p');
+      fixture.detectChanges();
+      dispatchKeyboardEvent(dropdownElement, 'keydown', P, 'p');
+      fixture.detectChanges();
+      dispatchKeyboardEvent(dropdownElement, 'keydown', undefined, 'l');
+      fixture.detectChanges();
+
+      tick(250);
+      fixture.detectChanges();
+
+      // Pineapple is first found (before wrapping to Apple)
+      expect(getVirtualActiveLabel()).toBe('Pineapple');
+    }));
+
+    it('should cycle through matches with repeated single letter typing', fakeAsync(() => {
+      createTestComponent(VirtualScrollTypeaheadDropdown);
+      openDropdownByClick();
+
+      // Initially Apple (index 0) is active
+      // Type 'A' - cycles to Apricot (index 1, next item starting with 'A')
+      dispatchKeyboardEvent(dropdownElement, 'keydown', A, 'a');
+      fixture.detectChanges();
+      tick(250);
+      fixture.detectChanges();
+      expect(getVirtualActiveLabel()).toBe('Apricot');
+
+      // Type 'A' again - should cycle to 'Avocado' (index 2)
+      dispatchKeyboardEvent(dropdownElement, 'keydown', A, 'a');
+      fixture.detectChanges();
+      tick(250);
+      fixture.detectChanges();
+      expect(getVirtualActiveLabel()).toBe('Avocado');
+
+      // Type 'A' again - should wrap around to 'Apple' (index 0)
+      dispatchKeyboardEvent(dropdownElement, 'keydown', A, 'a');
+      fixture.detectChanges();
+      tick(250);
+      fixture.detectChanges();
+      expect(getVirtualActiveLabel()).toBe('Apple');
+
+      // Type 'A' again - back to Apricot
+      dispatchKeyboardEvent(dropdownElement, 'keydown', A, 'a');
+      fixture.detectChanges();
+      tick(250);
+      fixture.detectChanges();
+      expect(getVirtualActiveLabel()).toBe('Apricot');
+    }));
+
+    it('should be case insensitive when matching', fakeAsync(() => {
+      createTestComponent(VirtualScrollTypeaheadDropdown);
+      openDropdownByClick();
+
+      // Type lowercase 'b' - should match 'Banana' (uppercase B)
+      dispatchKeyboardEvent(dropdownElement, 'keydown', B, 'b');
+      fixture.detectChanges();
+      tick(250);
+      fixture.detectChanges();
+
+      expect(getVirtualActiveLabel()).toBe('Banana');
+    }));
+
+    it('should reset typeahead buffer on arrow key navigation', fakeAsync(() => {
+      createTestComponent(VirtualScrollTypeaheadDropdown);
+      openDropdownByClick();
+
+      // Type 'A' but don't wait for debounce
+      dispatchKeyboardEvent(dropdownElement, 'keydown', A, 'a');
+      fixture.detectChanges();
+
+      // Press arrow down before typeahead executes - should clear buffer
+      dispatchKeyboardEvent(dropdownElement, 'keydown', DOWN_ARROW);
+      fixture.detectChanges();
+
+      // Now type 'B' - should search for 'B' only, not 'AB'
+      dispatchKeyboardEvent(dropdownElement, 'keydown', B, 'b');
+      fixture.detectChanges();
+      tick(250);
+      fixture.detectChanges();
+
+      expect(getVirtualActiveLabel()).toBe('Banana');
+    }));
+
+    it('should reset typeahead buffer on Home key', fakeAsync(() => {
+      createTestComponent(VirtualScrollTypeaheadDropdown);
+      openDropdownByClick();
+
+      // Type 'A' but don't wait
+      dispatchKeyboardEvent(dropdownElement, 'keydown', A, 'a');
+      fixture.detectChanges();
+
+      // Press Home - should clear buffer and go to first item
+      dispatchKeyboardEvent(dropdownElement, 'keydown', HOME);
+      fixture.detectChanges();
+
+      expect(getVirtualActiveLabel()).toBe('Apple');
+
+      // Now type 'B' - should search for 'B' only
+      dispatchKeyboardEvent(dropdownElement, 'keydown', B, 'b');
+      fixture.detectChanges();
+      tick(250);
+      fixture.detectChanges();
+
+      expect(getVirtualActiveLabel()).toBe('Banana');
+    }));
+
+    it('should reset typeahead buffer on End key', fakeAsync(() => {
+      createTestComponent(VirtualScrollTypeaheadDropdown);
+      openDropdownByClick();
+
+      // Type 'A' but don't wait
+      dispatchKeyboardEvent(dropdownElement, 'keydown', A, 'a');
+      fixture.detectChanges();
+
+      // Press End - should clear buffer and go to last item
+      dispatchKeyboardEvent(dropdownElement, 'keydown', END);
+      fixture.detectChanges();
+
+      expect(getVirtualActiveLabel()).toBe('Pineapple');
+
+      // Now type 'A' - should search starting from last item, wrapping to 'Apple'
+      dispatchKeyboardEvent(dropdownElement, 'keydown', A, 'a');
+      fixture.detectChanges();
+      tick(250);
+      fixture.detectChanges();
+
+      expect(getVirtualActiveLabel()).toBe('Apple');
+    }));
+  });
+
+  describe('virtual scroll', () => {
+    beforeEach(() => {
+      configureNxDropdownTestingModule([
+        VirtualScrollDropdown,
+        VirtualScrollFilterDropdown,
+        VirtualScrollMultiSelectDropdown,
+        VirtualScrollLargeDatasetDropdown,
+        VirtualScrollPreselectedDropdown,
+      ]);
+    });
+
+    function getVirtualViewport(): HTMLElement | null {
+      return overlayContainer
+        .getContainerElement()
+        .querySelector('nx-virtual-viewport') as HTMLElement | null;
+    }
+
+    function getVirtualItems(): NodeListOf<Element> {
+      return overlayContainer
+        .getContainerElement()
+        .querySelectorAll('nx-virtual-viewport nx-dropdown-item');
+    }
+
+    function getVirtualItemLabels(): NodeListOf<Element> {
+      return overlayContainer
+        .getContainerElement()
+        .querySelectorAll('nx-virtual-viewport .nx-dropdown-results__option-label');
+    }
+
+    function getVirtualActiveItem(): HTMLElement | null {
+      return overlayContainer
+        .getContainerElement()
+        .querySelector('nx-dropdown-item.nx-dropdown-item--active') as HTMLElement | null;
+    }
+
+    function getVirtualActiveLabel(): string {
+      const item = getVirtualActiveItem();
+      return item?.textContent?.trim() ?? '';
+    }
+
+    function getVirtualSelectedItems(): NodeListOf<Element> {
+      return overlayContainer
+        .getContainerElement()
+        .querySelectorAll('nx-virtual-viewport nx-dropdown-item.nx-selected');
+    }
+
+    /**
+     * Opens the dropdown and waits for virtual viewport initialization.
+     * Must be called within fakeAsync zone.
+     */
+    function openDropdownByClickVirtual(): void {
+      trigger.click();
+      fixture.detectChanges();
+      flush();
+      fixture.detectChanges();
+    }
+
+    /**
+     * Clicks on a virtual item by index.
+     * Must be called within fakeAsync zone.
+     */
+    function clickVirtualItem(index: number): void {
+      const items = getVirtualItemLabels();
+      (items.item(index) as HTMLElement).click();
+      fixture.detectChanges();
+      flush();
+    }
+
+    /**
+     * Sets a filter value.
+     * Must be called within fakeAsync zone.
+     */
+    function setFilterValue(value: string): void {
+      // Set the filter value via the component's property which triggers ngModel binding
+      dropdownInstance.filterValue = value;
+      fixture.detectChanges();
+      flush();
+    }
+
+    /**
+     * Clicks on backdrop to close dropdown.
+     * Must be called within fakeAsync zone.
+     */
+    function clickOnBackdropVirtual(): void {
+      // Blur the dropdown first to trigger filter clear before panel closes
+      dropdownElement.dispatchEvent(new Event('blur'));
+      fixture.detectChanges();
+      getBackdrop().click();
+      fixture.detectChanges();
+      flush();
+    }
+
+    /**
+     * Dispatches keyboard event.
+     * Must be called within fakeAsync zone.
+     */
+    function dispatchKeyVirtual(keyCode: number, key?: string): void {
+      dispatchKeyboardEvent(dropdownElement, 'keydown', keyCode, key);
+      fixture.detectChanges();
+      flush();
+    }
+
+    describe('rendering', () => {
+      it('should render virtual viewport when virtualScroll is true', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        expect(getVirtualViewport()).toBeTruthy();
+      }));
+
+      it('should render dropdown items within virtual viewport', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        const items = getVirtualItems();
+        expect(items.length).toBeGreaterThan(0);
+      }));
+
+      it('should set first item as active by default', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        expect(getVirtualActiveLabel()).toBe('BMW');
+      }));
+    });
+
+    describe('keyboard navigation', () => {
+      it('should navigate down with DOWN_ARROW', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        dispatchKeyVirtual(DOWN_ARROW);
+
+        expect(getVirtualActiveLabel()).toBe('Audi');
+      }));
+
+      it('should navigate up with UP_ARROW', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        // Navigate down first, then back up
+        dispatchKeyVirtual(DOWN_ARROW);
+        dispatchKeyVirtual(UP_ARROW);
+
+        expect(getVirtualActiveLabel()).toBe('BMW');
+      }));
+
+      it('should go to first item with HOME', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        // Navigate down first
+        dispatchKeyVirtual(DOWN_ARROW);
+        dispatchKeyVirtual(DOWN_ARROW);
+
+        // Press HOME
+        dispatchKeyVirtual(HOME);
+
+        expect(getVirtualActiveLabel()).toBe('BMW');
+      }));
+
+      it('should go to last item with END', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        dispatchKeyVirtual(END);
+
+        expect(getVirtualActiveLabel()).toBe('Mini');
+      }));
+
+      it('should not navigate beyond first item', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        // Try to navigate up from first item
+        dispatchKeyVirtual(UP_ARROW);
+
+        expect(getVirtualActiveLabel()).toBe('BMW');
+      }));
+
+      it('should not navigate beyond last item', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        // Navigate to last item
+        dispatchKeyVirtual(END);
+
+        // Try to navigate down from last item
+        dispatchKeyVirtual(DOWN_ARROW);
+
+        expect(getVirtualActiveLabel()).toBe('Mini');
+      }));
+
+      it('should close dropdown on TAB', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        dispatchKeyVirtual(TAB);
+
+        expectDropdownClose();
+      }));
+    });
+
+    describe('selection', () => {
+      it('should select item with ENTER', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        // Navigate to Audi
+        dispatchKeyVirtual(DOWN_ARROW);
+
+        // Select with ENTER
+        dispatchKeyVirtual(ENTER);
+
+        expect((testInstance as VirtualScrollDropdown).model).toBe('audi');
+      }));
+
+      it('should select item with SPACE', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        // Navigate to Volvo
+        dispatchKeyVirtual(DOWN_ARROW);
+        dispatchKeyVirtual(DOWN_ARROW);
+
+        // Select with SPACE
+        dispatchKeyVirtual(SPACE);
+
+        expect((testInstance as VirtualScrollDropdown).model).toBe('volvo');
+      }));
+
+      it('should select item by clicking', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        clickVirtualItem(1); // Click on Audi
+
+        expect((testInstance as VirtualScrollDropdown).model).toBe('audi');
+      }));
+
+      it('should update model value', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        clickVirtualItem(2); // Click on Volvo
+
+        expect((testInstance as VirtualScrollDropdown).model).toBe('volvo');
+      }));
+
+      it('should close dropdown after selection', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        clickVirtualItem(0);
+
+        expectDropdownClose();
+      }));
+
+      it('should display selected value in trigger', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        clickVirtualItem(1); // Click on Audi
+
+        expect(renderedResult.textContent?.trim()).toBe('Audi');
+      }));
+
+      it('should show selected state on preselected item', fakeAsync(() => {
+        createTestComponent(VirtualScrollPreselectedDropdown);
+        openDropdownByClickVirtual();
+
+        const selectedItems = getVirtualSelectedItems();
+        expect(selectedItems.length).toBe(1);
+        expect(selectedItems[0].textContent?.trim()).toBe('Volvo');
+      }));
+
+      it('should show selected state after clicking an item', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        // Initially no item is selected
+        expect(getVirtualSelectedItems().length).toBe(0);
+
+        clickVirtualItem(1); // Click on Audi
+
+        // Re-open dropdown
+        openDropdownByClickVirtual();
+
+        const selectedItems = getVirtualSelectedItems();
+        expect(selectedItems.length).toBe(1);
+        expect(selectedItems[0].textContent?.trim()).toBe('Audi');
+      }));
+
+      it('should show multiple selected items in multiselect mode', fakeAsync(() => {
+        createTestComponent(VirtualScrollMultiSelectDropdown);
+        openDropdownByClickVirtual();
+
+        clickVirtualItem(0); // Select BMW
+        clickVirtualItem(2); // Select Volvo
+
+        const selectedItems = getVirtualSelectedItems();
+        expect(selectedItems.length).toBe(2);
+      }));
+    });
+
+    describe('multi-select', () => {
+      it('should allow multiple selections', fakeAsync(() => {
+        createTestComponent(VirtualScrollMultiSelectDropdown);
+        openDropdownByClickVirtual();
+
+        clickVirtualItem(0); // Select BMW
+        clickVirtualItem(1); // Select Audi
+
+        expect((testInstance as VirtualScrollMultiSelectDropdown).model).toEqual(['bmw', 'audi']);
+      }));
+
+      it('should not close dropdown after selection', fakeAsync(() => {
+        createTestComponent(VirtualScrollMultiSelectDropdown);
+        openDropdownByClickVirtual();
+
+        clickVirtualItem(0);
+
+        expectDropdownOpen();
+      }));
+
+      it('should toggle selection on repeated click', fakeAsync(() => {
+        createTestComponent(VirtualScrollMultiSelectDropdown);
+        openDropdownByClickVirtual();
+
+        clickVirtualItem(0); // Select BMW
+        clickVirtualItem(0); // Deselect BMW
+
+        expect((testInstance as VirtualScrollMultiSelectDropdown).model).toEqual([]);
+      }));
+
+      it('should show checkboxes', fakeAsync(() => {
+        createTestComponent(VirtualScrollMultiSelectDropdown);
+        openDropdownByClickVirtual();
+
+        const checkboxes = overlayContainer
+          .getContainerElement()
+          .querySelectorAll('nx-virtual-viewport .nx-checkbox');
+        expect(checkboxes.length).toBeGreaterThan(0);
+      }));
+    });
+
+    describe('filter', () => {
+      it('should show filter input when showFilter is true', fakeAsync(() => {
+        createTestComponent(VirtualScrollFilterDropdown);
+        openDropdownByClickVirtual();
+
+        expect(getFilterInput()).toBeTruthy();
+      }));
+
+      it('should filter items based on input', fakeAsync(() => {
+        createTestComponent(VirtualScrollFilterDropdown);
+        openDropdownByClickVirtual();
+
+        setFilterValue('ger');
+
+        const items = getVirtualItems();
+        expect(items.length).toBe(1);
+        expect(items.item(0).textContent?.trim()).toContain('Germany');
+      }));
+
+      it('should reset filter on close', fakeAsync(() => {
+        createTestComponent(VirtualScrollFilterDropdown);
+        openDropdownByClickVirtual();
+
+        setFilterValue('ger');
+
+        // Close dropdown
+        clickOnBackdropVirtual();
+
+        // Reopen dropdown
+        openDropdownByClickVirtual();
+
+        expect(getFilterInput().value).toBe('');
+        expect(getVirtualItems().length).toBe(4);
+      }));
+
+      it('should update active index after filtering', fakeAsync(() => {
+        createTestComponent(VirtualScrollFilterDropdown);
+        openDropdownByClickVirtual();
+
+        setFilterValue('swe');
+
+        // First filtered item should be active
+        expect(getVirtualActiveLabel()).toBe('Sweden');
+      }));
+    });
+
+    describe('initial value', () => {
+      it('should activate pre-selected value on open', fakeAsync(() => {
+        createTestComponent(VirtualScrollPreselectedDropdown);
+        tick();
+        fixture.detectChanges();
+
+        openDropdownByClickVirtual();
+
+        expect(getVirtualActiveLabel()).toBe('Volvo');
+      }));
+
+      it('should display pre-selected value in trigger', fakeAsync(() => {
+        createTestComponent(VirtualScrollPreselectedDropdown);
+        tick();
+        fixture.detectChanges();
+
+        expect(renderedResult.textContent?.trim()).toBe('Volvo');
+      }));
+    });
+
+    describe('large dataset', () => {
+      it('should render only visible items (not all 1000)', fakeAsync(() => {
+        createTestComponent(VirtualScrollLargeDatasetDropdown);
+        openDropdownByClickVirtual();
+
+        const items = getVirtualItems();
+        // Virtual scroll should only render a subset of items
+        expect(items.length).toBeLessThan(100);
+      }));
+
+      it('should scroll to last item on END key', async () => {
+        createTestComponent(VirtualScrollLargeDatasetDropdown);
+        trigger.click();
+        fixture.detectChanges();
+        await waitForScrollReady();
+
+        dispatchKeyboardEvent(dropdownElement, 'keydown', END);
+        fixture.detectChanges();
+        await waitForScrollReady();
+
+        expect(getVirtualActiveLabel()).toBe('Item 1000');
+      });
+    });
+
+    /**
+     * Async helper to wait for scroll and RAF callbacks to complete.
+     * Used for tests that need real browser scroll behavior.
+     */
+    async function waitForScrollReady(): Promise<void> {
+      await fixture.whenStable();
+      await new Promise<void>((resolve) => setTimeout(resolve, 0));
+      fixture.detectChanges();
+      await new Promise<void>((resolve) => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => resolve());
+        });
+      });
+      fixture.detectChanges();
+    }
+
+    describe('accessibility virtual', () => {
+      it('should set aria-activedescendant', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        const panelBody = overlayContainer
+          .getContainerElement()
+          .querySelector('.nx-dropdown__panel-body');
+        expect(panelBody?.getAttribute('aria-activedescendant')).toBeTruthy();
+      }));
+
+      it('should update aria-activedescendant on navigation', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        const panelBody = overlayContainer
+          .getContainerElement()
+          .querySelector('.nx-dropdown__panel-body');
+        const initialActiveId = panelBody?.getAttribute('aria-activedescendant');
+
+        dispatchKeyVirtual(DOWN_ARROW);
+
+        const newActiveId = panelBody?.getAttribute('aria-activedescendant');
+        expect(newActiveId).not.toBe(initialActiveId);
+      }));
+
+      it('should set role="listbox" on panel', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        const panelBody = overlayContainer
+          .getContainerElement()
+          .querySelector('.nx-dropdown__panel-body');
+        expect(panelBody?.getAttribute('role')).toBe('listbox');
+      }));
+
+      it('should set aria-setsize and aria-posinset on virtual items', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        const items = getVirtualItems();
+        // VirtualScrollDropdown has 4 options
+        const totalOptions = 4;
+
+        items.forEach((item, index) => {
+          expect(item.getAttribute('aria-setsize')).toBe(totalOptions.toString());
+          expect(item.getAttribute('aria-posinset')).toBe((index + 1).toString());
+        });
+      }));
+
+      it('should update aria-setsize when options are filtered', fakeAsync(() => {
+        createTestComponent(VirtualScrollFilterDropdown);
+        openDropdownByClickVirtual();
+
+        setFilterValue('Ger');
+
+        const items = getVirtualItems();
+        // Should only show filtered items (Germany matches 'Ger')
+        expect(items.length).toBe(1);
+        expect(items[0].getAttribute('aria-setsize')).toBe('1');
+        expect(items[0].getAttribute('aria-posinset')).toBe('1');
+      }));
+
+      it('should set aria-selected on selected items in multiselect virtual scroll', fakeAsync(() => {
+        createTestComponent(VirtualScrollMultiSelectDropdown);
+        openDropdownByClickVirtual();
+
+        // Initially no items should have aria-selected="true"
+        let items = getVirtualItems();
+        const initialSelectedCount = Array.from(items).filter(
+          (item) => item.getAttribute('aria-selected') === 'true',
+        ).length;
+        expect(initialSelectedCount).toBe(0);
+
+        // Select an item
+        clickVirtualItem(0); // Select BMW
+
+        items = getVirtualItems();
+        expect(items[0].getAttribute('aria-selected')).toBe('true');
+        expect(items[1].getAttribute('aria-selected')).toBe('false');
+        expect(items[2].getAttribute('aria-selected')).toBe('false');
+      }));
+
+      it('should set aria-selected="true" on selected item in single-select virtual scroll', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        // Initially no item selected
+        let items = getVirtualItems();
+        const initialSelected = Array.from(items).filter(
+          (item) => item.getAttribute('aria-selected') === 'true',
+        );
+        expect(initialSelected.length).toBe(0);
+
+        // Select an item
+        clickVirtualItem(1); // Select Audi
+
+        // Reopen dropdown
+        openDropdownByClickVirtual();
+
+        items = getVirtualItems();
+        // Find the selected item (Audi)
+        const audiItem = Array.from(items).find((item) => item.textContent?.trim() === 'Audi');
+        expect(audiItem?.getAttribute('aria-selected')).toBe('true');
+
+        // Other items should not have aria-selected="true"
+        const bmwItem = Array.from(items).find((item) => item.textContent?.trim() === 'BMW');
+        expect(bmwItem?.getAttribute('aria-selected')).toBeNull();
+      }));
+    });
+
+    describe('scroll methods', () => {
+      it('should scroll to index via scrollToIndex()', async () => {
+        createTestComponent(VirtualScrollLargeDatasetDropdown);
+        trigger.click();
+        fixture.detectChanges();
+        await waitForScrollReady();
+
+        // Scroll to index 50
+        dropdownInstance.scrollToIndex(50);
+        await waitForScrollReady();
+
+        // Verify scroll happened by checking rendered items
+        const items = getVirtualItems();
+        const itemLabels = Array.from(items).map((item) => item.textContent?.trim());
+        expect(itemLabels).toContain('Item 51');
+      });
+
+      it('should scroll to first index (0) via scrollToIndex()', async () => {
+        createTestComponent(VirtualScrollLargeDatasetDropdown);
+        trigger.click();
+        fixture.detectChanges();
+        await waitForScrollReady();
+
+        // First scroll down
+        dropdownInstance.scrollToIndex(50);
+        await waitForScrollReady();
+
+        // Then scroll back to top
+        dropdownInstance.scrollToIndex(0);
+        await waitForScrollReady();
+
+        expect(getVirtualActiveLabel()).toBe('Item 1');
+      });
+
+      it('should scroll to last index via scrollToIndex()', async () => {
+        createTestComponent(VirtualScrollLargeDatasetDropdown);
+        trigger.click();
+        fixture.detectChanges();
+        await waitForScrollReady();
+
+        // Scroll to last index (999)
+        dropdownInstance.scrollToIndex(999);
+        await waitForScrollReady();
+
+        const items = getVirtualItems();
+        const itemLabels = Array.from(items).map((item) => item.textContent?.trim());
+        expect(itemLabels).toContain('Item 1000');
+      });
+
+      it('should scroll to value via scrollToValue()', async () => {
+        createTestComponent(VirtualScrollDropdown);
+        trigger.click();
+        fixture.detectChanges();
+        await waitForScrollReady();
+
+        // Scroll to 'mini' value
+        dropdownInstance.scrollToValue('mini');
+        await waitForScrollReady();
+
+        // Verify the item is now visible and active
+        const items = getVirtualItems();
+        const miniItem = Array.from(items).find((item) => item.textContent?.trim() === 'Mini');
+        expect(miniItem).toBeTruthy();
+      });
+
+      it('should handle scrollToValue() with non-existent value', async () => {
+        createTestComponent(VirtualScrollDropdown);
+        trigger.click();
+        fixture.detectChanges();
+        await waitForScrollReady();
+
+        // Should not throw when value doesn't exist
+        expect(() => dropdownInstance.scrollToValue('nonexistent')).not.toThrow();
+      });
+
+      it('should handle scrollToIndex() with out-of-bounds index', async () => {
+        createTestComponent(VirtualScrollDropdown);
+        trigger.click();
+        fixture.detectChanges();
+        await waitForScrollReady();
+
+        // Should not throw for out-of-bounds index
+        expect(() => dropdownInstance.scrollToIndex(9999)).not.toThrow();
+        expect(() => dropdownInstance.scrollToIndex(-1)).not.toThrow();
+      });
+    });
+
+    describe('empty filter results', () => {
+      it('should handle filter that returns no results', fakeAsync(() => {
+        createTestComponent(VirtualScrollFilterDropdown);
+        openDropdownByClickVirtual();
+
+        setFilterValue('xyz123nonexistent');
+
+        const items = getVirtualItems();
+        expect(items.length).toBe(0);
+      }));
+
+      it('should handle keyboard navigation with empty filter results', fakeAsync(() => {
+        createTestComponent(VirtualScrollFilterDropdown);
+        openDropdownByClickVirtual();
+
+        setFilterValue('nonexistent');
+
+        // Should not throw on DOWN_ARROW with empty results
+        expect(() => {
+          dispatchKeyboardEvent(dropdownElement, 'keydown', DOWN_ARROW);
+          fixture.detectChanges();
+        }).not.toThrow();
+
+        // Should not throw on UP_ARROW with empty results
+        expect(() => {
+          dispatchKeyboardEvent(dropdownElement, 'keydown', UP_ARROW);
+          fixture.detectChanges();
+        }).not.toThrow();
+      }));
+
+      it('should restore items when filter is cleared', fakeAsync(() => {
+        createTestComponent(VirtualScrollFilterDropdown);
+        openDropdownByClickVirtual();
+
+        // Apply filter that returns no results
+        setFilterValue('nonexistent');
+
+        expect(getVirtualItems().length).toBe(0);
+
+        // Clear filter
+        setFilterValue('');
+
+        // VirtualScrollFilterDropdown has 4 options
+        expect(getVirtualItems().length).toBe(4);
+      }));
+    });
+  });
+
+  describe('custom item template', () => {
+    beforeEach(() => {
+      configureNxDropdownTestingModule([ItemTemplateDropdown, ItemTemplateVirtualScrollDropdown]);
+    });
+
+    function getCustomItems(): HTMLElement[] {
+      return Array.from(
+        overlayContainer.getContainerElement().querySelectorAll('.custom-car-item'),
+      );
+    }
+
+    describe('without virtual scroll', () => {
+      it('should render custom template for options array', fakeAsync(() => {
+        createTestComponent(ItemTemplateDropdown);
+        trigger.click();
+        fixture.detectChanges();
+        flush();
+
+        const items = getCustomItems();
+        expect(items.length).toBe(3);
+        expect(items[0].textContent).toContain('BMW - car-bmw');
+        expect(items[1].textContent).toContain('Audi - car-audi');
+        expect(items[2].textContent).toContain('Volvo - car-volvo');
+      }));
+
+      it('should provide index context to custom template', fakeAsync(() => {
+        createTestComponent(ItemTemplateDropdown);
+        trigger.click();
+        fixture.detectChanges();
+        flush();
+
+        const items = getCustomItems();
+        expect(items[0].getAttribute('data-index')).toBe('0');
+        expect(items[1].getAttribute('data-index')).toBe('1');
+        expect(items[2].getAttribute('data-index')).toBe('2');
+      }));
+
+      it('should provide selected context to custom template', fakeAsync(() => {
+        createTestComponent(ItemTemplateDropdown);
+        trigger.click();
+        fixture.detectChanges();
+        flush();
+
+        // Initially nothing selected
+        const items = getCustomItems();
+        expect(items[0].getAttribute('data-selected')).toBe('false');
+
+        // Click on first item to select it
+        const dropdownItems = overlayContainer
+          .getContainerElement()
+          .querySelectorAll('nx-dropdown-item');
+        (dropdownItems[0] as HTMLElement).click();
+        fixture.detectChanges();
+        flush();
+
+        // Re-open dropdown
+        trigger.click();
+        fixture.detectChanges();
+        flush();
+
+        // First item should now be selected
+        const updatedItems = getCustomItems();
+        expect(updatedItems[0].getAttribute('data-selected')).toBe('true');
+        expect(updatedItems[1].getAttribute('data-selected')).toBe('false');
+      }));
+    });
+
+    describe('with virtual scroll', () => {
+      it('should render custom template for options array with virtual scroll', fakeAsync(() => {
+        createTestComponent(ItemTemplateVirtualScrollDropdown);
+        trigger.click();
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+
+        const items = getCustomItems();
+        expect(items.length).toBe(3);
+        expect(items[0].textContent).toContain('BMW - car-bmw');
+        expect(items[1].textContent).toContain('Audi - car-audi');
+        expect(items[2].textContent).toContain('Volvo - car-volvo');
+      }));
+
+      it('should provide index context to custom template with virtual scroll', fakeAsync(() => {
+        createTestComponent(ItemTemplateVirtualScrollDropdown);
+        trigger.click();
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+
+        const items = getCustomItems();
+        expect(items[0].getAttribute('data-index')).toBe('0');
+        expect(items[1].getAttribute('data-index')).toBe('1');
+        expect(items[2].getAttribute('data-index')).toBe('2');
+      }));
+
+      it('should provide selected context to custom template with virtual scroll', fakeAsync(() => {
+        createTestComponent(ItemTemplateVirtualScrollDropdown);
+        trigger.click();
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+
+        // Initially nothing selected
+        const items = getCustomItems();
+        expect(items[0].getAttribute('data-selected')).toBe('false');
+
+        // Click on first item to select it
+        const dropdownItems = overlayContainer
+          .getContainerElement()
+          .querySelectorAll('nx-dropdown-item');
+        (dropdownItems[0] as HTMLElement).click();
+        fixture.detectChanges();
+        flush();
+
+        // Re-open dropdown
+        trigger.click();
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+
+        // First item should now be selected
+        const updatedItems = getCustomItems();
+        expect(updatedItems[0].getAttribute('data-selected')).toBe('true');
+        expect(updatedItems[1].getAttribute('data-selected')).toBe('false');
+      }));
+    });
   });
 });
 
@@ -2474,6 +3542,7 @@ const mutationCallbacks: (() => void)[] = [];
         // Stub out the factory that creates mutation observers for the underlying directive
         // to allows us to flush out the callbacks asynchronously.
         create: (callback: () => void) => {
+          console.log('registering mutation observer callback');
           mutationCallbacks.push(callback);
           return {
             observe: () => {},
@@ -2486,7 +3555,6 @@ const mutationCallbacks: (() => void)[] = [];
 })
 class DeferredTestComponent extends DropdownTest {
   asyncLabel = of('deferred label').pipe(delay(100));
-  // label: any = '';
   value = 'value';
 }
 
@@ -2617,4 +3685,165 @@ class TestSelectOnFocus extends DropdownTest {}
 })
 class TooltipProgrammaticUpdateComponent extends DropdownTest {
   form = new FormBuilder().group({ car: ['BMW'] });
+}
+
+@Component({
+  template: `<nx-formfield>
+    <nx-dropdown
+      [options]="options"
+      [(ngModel)]="model"
+      name="dropdown"
+      [virtualScroll]="true"
+    ></nx-dropdown>
+  </nx-formfield>`,
+  imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
+})
+class VirtualScrollTypeaheadDropdown extends DropdownTest {
+  model: string | null = null;
+
+  options = [
+    { value: 'apple', label: 'Apple' },
+    { value: 'apricot', label: 'Apricot' },
+    { value: 'avocado', label: 'Avocado' },
+    { value: 'banana', label: 'Banana' },
+    { value: 'blueberry', label: 'Blueberry' },
+    { value: 'cherry', label: 'Cherry' },
+    { value: 'pineapple', label: 'Pineapple' },
+  ];
+}
+
+// Basic virtual scroll
+@Component({
+  template: `<nx-formfield>
+    <nx-dropdown [options]="options" [(ngModel)]="model" [virtualScroll]="true"></nx-dropdown>
+  </nx-formfield>`,
+  imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
+})
+class VirtualScrollDropdown extends DropdownTest {
+  model: string | null = null;
+  options = [
+    { value: 'bmw', label: 'BMW' },
+    { value: 'audi', label: 'Audi' },
+    { value: 'volvo', label: 'Volvo' },
+    { value: 'mini', label: 'Mini' },
+  ];
+}
+
+// With filter
+@Component({
+  template: `<nx-formfield>
+    <nx-dropdown
+      [options]="options"
+      [(ngModel)]="model"
+      [virtualScroll]="true"
+      [showFilter]="true"
+    ></nx-dropdown>
+  </nx-formfield>`,
+  imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
+})
+class VirtualScrollFilterDropdown extends DropdownTest {
+  model: string | null = null;
+  options = [
+    { value: 'de', label: 'Germany' },
+    { value: 'irl', label: 'Ireland' },
+    { value: 'swe', label: 'Sweden' },
+    { value: 'it', label: 'Italy' },
+  ];
+}
+
+// Multi-select
+@Component({
+  template: `<nx-formfield>
+    <nx-dropdown
+      [options]="options"
+      [(ngModel)]="model"
+      [virtualScroll]="true"
+      [isMultiSelect]="true"
+    ></nx-dropdown>
+  </nx-formfield>`,
+  imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
+})
+class VirtualScrollMultiSelectDropdown extends DropdownTest {
+  model: string[] = [];
+  options = [
+    { value: 'bmw', label: 'BMW' },
+    { value: 'audi', label: 'Audi' },
+    { value: 'volvo', label: 'Volvo' },
+  ];
+}
+
+// Large dataset
+@Component({
+  template: `<nx-formfield>
+    <nx-dropdown [options]="options" [(ngModel)]="model" [virtualScroll]="true"></nx-dropdown>
+  </nx-formfield>`,
+  imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
+})
+class VirtualScrollLargeDatasetDropdown extends DropdownTest {
+  model: number | null = null;
+  options = Array.from({ length: 1000 }, (_, i) => ({
+    value: i,
+    label: `Item ${i + 1}`,
+  }));
+}
+
+// Pre-selected value
+@Component({
+  template: `<nx-formfield>
+    <nx-dropdown [options]="options" [(ngModel)]="model" [virtualScroll]="true"></nx-dropdown>
+  </nx-formfield>`,
+  imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
+})
+class VirtualScrollPreselectedDropdown extends DropdownTest {
+  model: string | null = 'volvo';
+  options = [
+    { value: 'bmw', label: 'BMW' },
+    { value: 'audi', label: 'Audi' },
+    { value: 'volvo', label: 'Volvo' },
+    { value: 'mini', label: 'Mini' },
+  ];
+}
+
+// Custom item template - options array without virtual scroll
+@Component({
+  template: `<nx-formfield>
+    <nx-dropdown [options]="options" [(ngModel)]="model">
+      <ng-template #nxDropdownItemTemplate let-car let-idx="index" let-sel="selected">
+        <span class="custom-car-item" [attr.data-index]="idx" [attr.data-selected]="sel"
+          >{{ car.brand }} - {{ car.icon }}</span
+        >
+      </ng-template>
+    </nx-dropdown>
+  </nx-formfield>`,
+  imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
+})
+class ItemTemplateDropdown extends DropdownTest {
+  model: { id: string; brand: string; icon: string } | null = null;
+  options = [
+    { value: { id: '1', brand: 'BMW', icon: 'car-bmw' }, label: 'BMW' },
+    { value: { id: '2', brand: 'Audi', icon: 'car-audi' }, label: 'Audi' },
+    { value: { id: '3', brand: 'Volvo', icon: 'car-volvo' }, label: 'Volvo' },
+  ];
+}
+
+// Custom item template - with virtual scroll
+@Component({
+  template: `<nx-formfield>
+    <nx-dropdown [options]="options" [(ngModel)]="model" [virtualScroll]="true">
+      <ng-template #nxDropdownItemTemplate let-car let-idx="index" let-sel="selected">
+        <span class="custom-car-item" [attr.data-index]="idx" [attr.data-selected]="sel"
+          >{{ car.brand }} - {{ car.icon }}</span
+        >
+      </ng-template>
+    </nx-dropdown>
+  </nx-formfield>`,
+  imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
+})
+class ItemTemplateVirtualScrollDropdown extends DropdownTest {
+  model: { id: string; brand: string; icon: string } | null = null;
+  options = [
+    { value: { id: '1', brand: 'BMW', icon: 'car-bmw' }, label: 'BMW' },
+    { value: { id: '2', brand: 'Audi', icon: 'car-audi' }, label: 'Audi' },
+    { value: { id: '3', brand: 'Volvo', icon: 'car-volvo' }, label: 'Volvo' },
+  ];
 }

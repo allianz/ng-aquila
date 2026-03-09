@@ -6,11 +6,13 @@ import { NgModule } from '@angular/core';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { DropdownCustomLabelExampleComponent } from './dropdown-custom-label/dropdown-custom-label-example';
+import { DropdownDefaultOptionsExampleComponent } from './dropdown-default-options/dropdown-default-options-example';
 import { DropdownDisabledItemsExampleComponent } from './dropdown-disabled-items/dropdown-disabled-items-example';
 import { DropdownFilterExampleComponent } from './dropdown-filter/dropdown-filter-example';
 import { DropdownFilterCustomExampleComponent } from './dropdown-filter-custom/dropdown-filter-custom-example';
 import { DropdownFocusOutExampleComponent } from './dropdown-focus-out/dropdown-focus-out-example';
 import { DropdownGroupExampleComponent } from './dropdown-group/dropdown-group-example';
+import { DropdownItemTemplateExampleComponent } from './dropdown-item-template/dropdown-item-template-example';
 import { DropdownLazyExampleComponent } from './dropdown-lazy/dropdown-lazy-example';
 import { DropdownMultiSelectExampleComponent } from './dropdown-multi-select/dropdown-multi-select-example';
 import { DropdownNegativeExampleComponent } from './dropdown-negative/dropdown-negative-example';
@@ -24,15 +26,18 @@ import { DropdownSelectOnFocusExampleComponent } from './dropdown-select-on-focu
 import { DropdownSimpleBindingExampleComponent } from './dropdown-simple-binding/dropdown-simple-binding-example';
 import { DropdownStandardExampleComponent } from './dropdown-standard/dropdown-standard-example';
 import { DropdownTemplateDrivenExampleComponent } from './dropdown-template-driven/dropdown-template-driven-example';
+import { DropdownVirtualViewportExampleComponent } from './dropdown-virtual-viewport/dropdown-virtual-viewport-example';
 import { MultiSelectExampleComponent } from './multi-select/multi-select-example';
 import { MultiSelectIntlExampleComponent } from './multi-select-intl/multi-select-intl-example';
 
 const EXAMPLES = [
   DropdownCustomLabelExampleComponent,
+  DropdownDefaultOptionsExampleComponent,
   DropdownDisabledItemsExampleComponent,
   DropdownFilterExampleComponent,
   DropdownFilterCustomExampleComponent,
   DropdownGroupExampleComponent,
+  DropdownItemTemplateExampleComponent,
   DropdownMultiSelectExampleComponent,
   DropdownNegativeExampleComponent,
   DropdownOutlineExampleComponent,
@@ -49,6 +54,7 @@ const EXAMPLES = [
   MultiSelectIntlExampleComponent,
   DropdownPanelgrowExampleComponent,
   DropdownSelectOnFocusExampleComponent,
+  DropdownVirtualViewportExampleComponent,
 ];
 
 @NgModule({
@@ -66,10 +72,12 @@ export class DropdownExamplesModule {
   static components() {
     return {
       'dropdown-custom-label': DropdownCustomLabelExampleComponent,
+      'dropdown-default-options': DropdownDefaultOptionsExampleComponent,
       'dropdown-disabled-items': DropdownDisabledItemsExampleComponent,
       'dropdown-filter': DropdownFilterExampleComponent,
       'dropdown-filter-custom': DropdownFilterCustomExampleComponent,
       'dropdown-group': DropdownGroupExampleComponent,
+      'dropdown-item-template': DropdownItemTemplateExampleComponent,
       'dropdown-multi-select': DropdownMultiSelectExampleComponent,
       'dropdown-negative': DropdownNegativeExampleComponent,
       'dropdown-outline': DropdownOutlineExampleComponent,
@@ -87,6 +95,7 @@ export class DropdownExamplesModule {
       'multi-select-intl': MultiSelectIntlExampleComponent,
       'dropdown-panelgrow': DropdownPanelgrowExampleComponent,
       'dropdown-select-on-focus': DropdownSelectOnFocusExampleComponent,
+      'dropdown-virtual-viewport': DropdownVirtualViewportExampleComponent,
     };
   }
 }

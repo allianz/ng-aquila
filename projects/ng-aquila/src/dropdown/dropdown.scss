@@ -268,3 +268,35 @@ $dropdown-border-size: nx-border-size(xs);
     border-bottom-color: buttonText;
   }
 }
+
+// === Virtual Scroll Styles ===
+
+// When using virtual scroll, the panel body should not scroll - the viewport handles scrolling
+.nx-dropdown__panel-body:has(.nx-dropdown__virtual-viewport) {
+  overflow: hidden;
+  padding: 0;
+  // Remove max-height from panel body - viewport will handle it
+  max-height: none;
+}
+
+.nx-dropdown__virtual-viewport {
+  // Use the same max-height calculation as the panel body
+  $dropdown-item-total-height: calc(
+    v(dropdown-item-line-height) + (v(dropdown-item-padding-top) + v(dropdown-item-padding-bottom))
+  );
+  $dropdown-panel-total-padding: calc(
+    v(dropdown-panel-padding-top) + v(dropdown-panel-padding-bottom)
+  );
+  $virtual-viewport-max-height: calc(
+    6 * ($dropdown-item-total-height) + $dropdown-panel-total-padding
+  );
+  max-height: $virtual-viewport-max-height;
+
+  // Override the internal viewport to use max-height instead of height: 100%
+  ::ng-deep .nx-virtual-viewport__viewport {
+    height: auto;
+    max-height: $virtual-viewport-max-height;
+    padding-top: v(dropdown-panel-padding-top);
+    padding-bottom: v(dropdown-panel-padding-bottom);
+  }
+}

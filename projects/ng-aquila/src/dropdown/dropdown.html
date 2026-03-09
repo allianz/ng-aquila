@@ -63,7 +63,7 @@
           class="nx-dropdown__filter-input"
           [attr.aria-controls]="modalId"
           [attr.aria-label]="label"
-          [attr.aria-activedescendant]="activeId()"
+          [attr.aria-activedescendant]="activeDescendantId()"
           [class.is-filled]="!isFilterEmpty"
           #filterInput
           [type]="filterInputType"
@@ -89,16 +89,44 @@
       [id]="modalId"
       [class.keyboard-focused]="openedByKeyboard"
       #panelBody
-      [attr.aria-activedescendant]="activeId()"
+      [attr.aria-activedescendant]="activeDescendantId()"
       [attr.aria-multiselectable]="isMultiSelect()"
     >
+      @if (!virtualScroll()) {
       <ng-content></ng-content>
-      @for (option of options; track option) {
+      @for (option of options; track option; let idx = $index) {
       <nx-dropdown-item
         (onSelectionChange)="_onSelect($event.item, $event.isUserInput, option)"
         [value]="option.value"
-        >{{ _getLabel(option) }}</nx-dropdown-item
       >
+        @if (_itemTemplate()) {
+        <ng-container
+          *ngTemplateOutlet="_itemTemplate(); context: _createItemTemplateContext(option, idx)"
+        />
+        } @else {{{ _getLabel(option) }}}
+      </nx-dropdown-item>
+      } } @else {
+      <nx-virtual-viewport
+        #virtualViewport
+        class="nx-dropdown__virtual-viewport"
+        [itemHeight]="44"
+        [overscan]="20"
+      >
+        <nx-dropdown-item
+          *nxVirtualFor="let item of _filteredOptions(); let index = index; trackBy: 'value'"
+          [id]="modalId + '-option-' + index"
+          [value]="item.value"
+          [attr.aria-setsize]="_filteredOptions().length"
+          [attr.aria-posinset]="index + 1"
+          [active]="_virtualActiveIndex() === index"
+          [selected]="_isValueSelected(item.value)"
+          (onSelectionChange)="_onVirtualSelect($event, item, index)"
+          >@if (_itemTemplate()) {<ng-container
+            *ngTemplateOutlet="_itemTemplate(); context: _createItemTemplateContext(item, index)"
+          />
+          } @else {{{ _getOptionLabel(item) }}}
+        </nx-dropdown-item>
+      </nx-virtual-viewport>
       }
     </div>
   </div>

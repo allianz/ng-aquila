@@ -2,14 +2,14 @@ import { NxBadgeModule } from '@allianz/ng-aquila/badge';
 import { NgModule } from '@angular/core';
 
 import { BadgeExampleComponent } from './badge/badge-example';
-import { BadgeCharacterExampleComponent } from './badge-character/badge-character-example';
-import { BadgeVibrantExampleComponent } from './badge-vibrant/badge-vibrant-example';
-import { BadgeColorSchemeExampleComponent } from './badge-color-scheme/badge-color-scheme-example';
-import { BadgeProminenceExampleComponent } from './badge-prominence/badge-prominence-example';
 import { BadgeBrandExampleComponent } from './badge-brand/badge-brand-example';
+import { BadgeCharacterExampleComponent } from './badge-character/badge-character-example';
+import { BadgeCharacterNdbxExampleComponent } from './badge-character-ndbx/badge-character-ndbx-example';
+import { BadgeColorSchemeExampleComponent } from './badge-color-scheme/badge-color-scheme-example';
 import { BadgeDisabledExampleComponent } from './badge-disabled/badge-disabled-example';
 import { BadgeInverseExampleComponent } from './badge-inverse/badge-inverse-example';
-import { BadgeCharacterNdbxExampleComponent } from './badge-character-ndbx/badge-character-ndbx-example';
+import { BadgeProminenceExampleComponent } from './badge-prominence/badge-prominence-example';
+import { BadgeVibrantExampleComponent } from './badge-vibrant/badge-vibrant-example';
 
 const EXAMPLES = [
   BadgeExampleComponent,

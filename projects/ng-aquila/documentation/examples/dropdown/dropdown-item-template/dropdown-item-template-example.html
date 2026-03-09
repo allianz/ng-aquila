@@ -1,0 +1,16 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="12, 12, 6">
+      <nx-formfield label="Select a car">
+        <nx-dropdown [options]="cars" [(ngModel)]="selectedCar">
+          <ng-template #nxDropdownItemTemplate let-car>
+            <div class="custom-item">
+              <nx-icon [name]="car.icon"></nx-icon>
+              <span>{{ car.brand }}</span>
+            </div>
+          </ng-template>
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+  </div>
+</div>

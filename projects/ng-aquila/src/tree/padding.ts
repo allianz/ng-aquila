@@ -45,12 +45,11 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
         'padding-left': calc,
         'padding-right': null,
       };
-    } else {
-      return {
-        'padding-right': calc,
-        'padding-left': null,
-      };
     }
+    return {
+      'padding-right': calc,
+      'padding-left': null,
+    };
   });
   /** CSS units used for the indentation value. */
   indentUnits = 'px';
@@ -62,7 +61,7 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
   get level(): number {
     return this._level();
   }
-  private _level = signal<number>(0);
+  private readonly _level = signal<number>(0);
 
   /** The offset is added once on top of each indent. Default number is 0. */
   @Input('nxTreeNodePaddingOffset') set offset(value: NumberInput) {
@@ -97,7 +96,7 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
 
   private readonly _destroyed = new Subject<void>();
 
-  private isLTR = signal(true);
+  private readonly isLTR = signal(true);
 
   constructor(
     private readonly _treeNode: CdkTreeNode<T>,

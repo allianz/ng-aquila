@@ -3,9 +3,8 @@ import { NxGridModule } from '@allianz/ng-aquila/grid';
 import { NxLinkModule } from '@allianz/ng-aquila/link';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { AsyncPipe } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { filter, switchMap, takeUntil } from 'rxjs/operators';
 

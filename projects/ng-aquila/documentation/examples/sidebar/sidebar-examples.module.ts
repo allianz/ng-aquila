@@ -7,14 +7,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
-import { SidebarColorSchemeExampleComponent } from './sidebar-color-scheme/sidebar-color-scheme-example';
 import { SidebarExampleComponent } from './sidebar/sidebar-example';
+import { SidebarA1OutputsExampleComponent } from './sidebar-a1-outputs/sidebar-a1-outputs-example';
+import { SidebarA1ResizeableExampleComponent } from './sidebar-a1-resizeable/sidebar-a1-resizeable-example';
+import { SidebarColorSchemeExampleComponent } from './sidebar-color-scheme/sidebar-color-scheme-example';
 import { SidebarFooterExampleComponent } from './sidebar-footer/sidebar-footer-example';
 import { SidebarMethodsExampleComponent } from './sidebar-methods/sidebar-methods-example';
 import { SidebarOutputsExampleComponent } from './sidebar-outputs/sidebar-outputs-example';
-import { SidebarA1OutputsExampleComponent } from './sidebar-a1-outputs/sidebar-a1-outputs-example';
 import { SidebarResizeableExampleComponent } from './sidebar-resizeable/sidebar-resizeable-example';
-import { SidebarA1ResizeableExampleComponent } from './sidebar-a1-resizeable/sidebar-a1-resizeable-example';
 
 const EXAMPLES = [
   SidebarColorSchemeExampleComponent,

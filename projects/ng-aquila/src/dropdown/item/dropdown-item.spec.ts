@@ -23,7 +23,7 @@ describe('NxDropdownItem component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxDropdownModule, BasicItem, EmptyItem, ProjectedItem],
+      imports: [NxDropdownModule, BasicItem, EmptyItem, ProjectedItem, CustomIdItem],
     }).compileComponents();
   }));
 
@@ -91,6 +91,16 @@ describe('NxDropdownItem component', () => {
     createTestComponent(ProjectedItem);
     expect(fixture.componentInstance.item.viewValue).toBe('label');
   }));
+
+  it('should use auto-generated ID when no id input is provided', () => {
+    createTestComponent(BasicItem);
+    expect(itemInstance.id).toMatch(/nx-dropdown-item-\d+$/);
+  });
+
+  it('should use custom ID when id input is provided', () => {
+    createTestComponent(CustomIdItem);
+    expect(itemInstance.id).toBe('custom-id');
+  });
 });
 
 @Component({
@@ -112,3 +122,11 @@ class EmptyItem extends DropdownItemTest {}
   imports: [NxDropdownModule],
 })
 class ProjectedItem extends DropdownItemTest {}
+
+@Component({
+  template: `<nx-dropdown
+    ><nx-dropdown-item id="custom-id" value="option"></nx-dropdown-item
+  ></nx-dropdown>`,
+  imports: [NxDropdownModule],
+})
+class CustomIdItem extends DropdownItemTest {}

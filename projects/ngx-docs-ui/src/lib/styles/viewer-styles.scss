@@ -148,8 +148,11 @@ a {
   color: v(interactive-text);
   font-weight: 600;
 
+  text-decoration: underline;
+
   &:hover {
     color: v(hover-link);
+    text-decoration: none;
   }
 
   &:active {

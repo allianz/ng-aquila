@@ -11,6 +11,8 @@ import { CdkObserveContent } from '@angular/cdk/observers';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewChecked,
+  AfterViewInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -20,6 +22,7 @@ import {
   Inject,
   inject,
   Input,
+  input,
   OnDestroy,
   Optional,
   Output,
@@ -53,7 +56,7 @@ export class NxDropdownItemChange {
     '[attr.aria-disabled]': 'disabled.toString()',
     '[attr.aria-selected]': '_getAriaSelected()',
     '[class.nx-hidden]': '_hidden',
-    '[class.nx-dropdown-item--active]': 'active',
+    '[class.nx-dropdown-item--active]': 'isActive()',
     '[class.nx-dropdown-item--disabled]': 'disabled',
     '[class.nx-selected]': 'selected',
     '[class.nx-multiselect]': 'multiselect',
@@ -69,12 +72,20 @@ export class NxDropdownItemChange {
     NxRadioIndicatorComponent,
   ],
 })
-export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterViewChecked {
+export class NxDropdownItemComponent
+  implements Highlightable, OnDestroy, AfterViewChecked, AfterViewInit
+{
   _hidden = false;
 
   private _mostRecentViewValue = '';
 
-  private readonly _id: string = inject(IdGenerationService).nextId('nx-dropdown-item');
+  /** Signal to track whether the projected content is empty. */
+  protected readonly _contentEmpty = signal(false);
+
+  private readonly _generatedId: string = inject(IdGenerationService).nextId('nx-dropdown-item');
+
+  /** Optional ID input. If not provided, an auto-generated ID is used. */
+  readonly idInput = input<string | undefined>(undefined, { alias: 'id' });
 
   /**
    * The value of the dropdown item.
@@ -87,39 +98,43 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     return this._mostRecentViewValue || this.viewValue;
   }
 
-  /** The unique ID of the option. */
+  /** The unique ID of the option. Returns the input ID if provided, otherwise auto-generated. */
   get id(): string {
-    return this._id;
+    return this.idInput() ?? this._generatedId;
   }
 
-  private _disabled = false;
+  private readonly _disabled = signal(false);
 
   /** Whether the dropdown item is disabled. */
   @Input() set disabled(value: BooleanInput) {
     const newValue = coerceBooleanProperty(value);
-    if (this.disabled !== newValue) {
-      this._disabled = newValue;
-      this._cdr.markForCheck();
+    if (this._disabled() !== newValue) {
+      this._disabled.set(newValue);
     }
   }
 
   get disabled(): boolean {
-    return this._disabled;
+    return this._disabled();
   }
 
   private readonly _selected = signal(false);
 
   /** Whether the item is selected. */
   get selected(): boolean {
-    return this._selected();
+    return this._selected() || this.selectedInput();
   }
 
-  private _active!: boolean;
+  /** Whether the item is selected (reactive input for virtual scroll). */
+  readonly selectedInput = input(false, { alias: 'selected', transform: booleanAttribute });
 
-  /** Whether the item is active. */
-  get active(): boolean {
-    return this._active;
-  }
+  /** Whether the item is active (reactive input for virtual scroll). */
+  readonly activeInput = input(false, { alias: 'active', transform: booleanAttribute });
+
+  /** Internal active state set by setActiveStyles/setInactiveStyles. */
+  private readonly _activeFromStyles = signal(false);
+
+  /** Computed active state combining input and internal styles. */
+  readonly isActive = computed(() => this._activeFromStyles() || this.activeInput());
 
   /**
    * Whether the parent dropdown is in multiselect mode.
@@ -152,6 +167,10 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
    */
   @ViewChild('container', { static: true }) containerElement: any;
 
+  /** Reference to the content element for checking emptiness. */
+  @ViewChild('content', { static: false })
+  private readonly contentElement!: ElementRef<HTMLElement>;
+
   constructor(
     @Inject(NxDropdownControl) private readonly _dropdown: NxDropdownControl,
     /** @docs-private */ @Optional() readonly group: NxDropdownGroupComponent | null,
@@ -167,6 +186,11 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     });
   }
 
+  ngAfterViewInit(): void {
+    // Initialize content empty state after view is ready
+    this._updateContentEmptyState();
+  }
+
   ngAfterViewChecked(): void {
     // Since the parent dropdown component could be using the item's label to display the selected values
     // and it doesn't have a way of knowing if the item's label has changed
@@ -174,6 +198,10 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     // relatively cheap, however we still limit them only to selected options in order to avoid
     // hitting the DOM too often.
     this._updateViewValue();
+
+    // Update content empty state during change detection to handle deferred content
+    // that may arrive after async operations (e.g., async pipe)
+    this._updateContentEmptyState();
   }
 
   private _updateViewValue() {
@@ -183,6 +211,15 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
       if (viewValue !== this._mostRecentViewValue) {
         this._mostRecentViewValue = viewValue;
         this._stateChanges.next();
+      }
+    }
+  }
+
+  private _updateContentEmptyState(): void {
+    if (this.contentElement) {
+      const isEmpty = this._isContentEmpty(this.contentElement.nativeElement);
+      if (isEmpty !== this._contentEmpty()) {
+        this._contentEmpty.set(isEmpty);
       }
     }
   }
@@ -215,13 +252,17 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
   }
 
   /**
-   * Gets the `aria-selected` value for the option. The attribute is omitted from the single-select dropdown
-   * for the unselected options. Including the `aria-selected="false" attributes adds a lot of of noise to
-   * screen-reader users without providing useful information.
+   * Gets the `aria-selected` value for the option.
+   * For multiselect: returns true/false for all items
+   * For single-select: returns true only for selected item, null for others
+   * (Including aria-selected="false" on all unselected items adds noise for screen-reader users)
    * @docs-private
    */
   _getAriaSelected(): boolean | null {
-    return this.multiselect ? this.selected : null;
+    if (this.multiselect) {
+      return this.selected;
+    }
+    return this.selected ? true : null;
   }
 
   /** @docs-private */
@@ -259,7 +300,6 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
   select() {
     if (!this._selected() && !this.disabled) {
       this._selected.set(true);
-      this._cdr.markForCheck();
       this._emitSelectionChangeEvent();
     }
   }
@@ -268,14 +308,12 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
   deselect() {
     if (this._selected()) {
       this._selected.set(false);
-      this._cdr.markForCheck();
       this._emitSelectionChangeEvent();
     }
   }
 
   _initSelected(selected: boolean) {
     this._selected.set(selected);
-    this._cdr.markForCheck();
   }
 
   /** @docs-private */
@@ -289,14 +327,12 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
 
   /** @docs-private */
   setActiveStyles(): void {
-    this._active = true;
-    this._cdr.markForCheck();
+    this._activeFromStyles.set(true);
   }
 
   /** @docs-private */
   setInactiveStyles(): void {
-    this._active = false;
-    this._cdr.markForCheck();
+    this._activeFromStyles.set(false);
   }
 
   /**
@@ -319,6 +355,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     // gets hidden again.
     // Notice(!): the event of (cdkObserveContent) is run outside of the ngZone
     // We run detectChanges directly here as markForCheck wasn't enough to always trigger change detection correctly
+    this._updateContentEmptyState();
     this._cdr.detectChanges();
   }
 

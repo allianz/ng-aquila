@@ -27,6 +27,44 @@ The dropdown wrapped by a formfield in different states is displayed in the foll
 
 <!-- example(dropdown-standard) -->
 
+### Simple binding
+
+<!-- example(dropdown-simple-binding) -->
+
+### Template-driven form with ngModel
+
+<!-- example(dropdown-template-driven) -->
+
+### Reactive form
+
+<!-- example(dropdown-reactive) -->
+
+### Virtual Scrolling
+
+For large lists you can enable virtual-scrolling by using the `options` array instead of content-projection and setting the `virtualScroll` property. Please note: that means the items are only eventually rendered in the DOM, especially for testing you might need to scroll manually to an index or a value, before you can query the DOM for it. The dropdown exposes `scrollToIndex(index)` and `scrollToValue(value)` methods for that purpose.
+
+<!-- example(dropdown-virtual-viewport) -->
+
+#### Custom Item Template
+
+When using the `options` array (with or without virtual scroll), you can customize how each item renders by providing a template with the `#nxDropdownItemTemplate` reference. The template context provides:
+
+- `$implicit` - The option value (use `let-{name}` to access it)
+- `index` - The index in the filtered options array
+- `selected` - Whether the item is currently selected
+
+<!-- example(dropdown-item-template) -->
+
+### Data-driven (lazy rendering)
+
+<div class="docs-deprecation-warning">
+  This approach is not recommend anymore. If you have a large dataset use <a href="./documentation/dropdown/overview#virtual-scrolling">virtual scrolling</a> instead.
+</div>
+
+The options can also be passed to the dropdown using the `options` input. Dropdowns with many options benefit from this approach, as they will only be rendered when the dropdown is open. Grouping of options is currently not supported.
+
+<!-- example(dropdown-lazy) -->
+
 ### Placeholder
 
 It is possible to show a placeholder instead of the floating label. The placeholder will only be shown if no option is selected.
@@ -65,14 +103,6 @@ See below for an example of a dropdown with negative styling wrapped by a formfi
 
 <!-- example(dropdown-negative) -->
 
-### Group Dropdown
-
-It might be necessary for your use case to group the items inside of a dropdown. This is how it's done:
-
-⚠️ Every item should have a unique value, regardless of which group it belongs to.
-
-<!-- example(dropdown-group) -->
-
 ### Filter dropdown
 
 The dropdown can show an additional filter input, as demonstrated in this example:
@@ -85,6 +115,14 @@ The default filter function is comparing the lower case dropdown label with the 
 
 <!-- example(dropdown-filter-custom) -->
 
+### Group Dropdown
+
+It might be necessary for your use case to group the items inside of a dropdown. This is how it's done:
+
+⚠️ Every item should have a unique value, regardless of which group it belongs to.
+
+<!-- example(dropdown-group) -->
+
 ### Multi select dropdown
 
 The multi select is a separate component from the dropdown. It supports selection on multiple items as well as filtering. Instead of a single value the model is an array of options. Options are passed into the component via the `options` input. In the simplest case you can pass in a list of strings. That way the selected values and the displayed labels are the same. If you need labels that are different to the values you can also pass in arbitrary complex objects as options. In that case it is recommended to set `selectValue` to specify a unique identifier for each option and `selectLabel` to select the option's label. If `selectValue` is empty, the whole object is used for selection, which may cause issues if object references change. The optional filter can be enabled via the `filter` input.
@@ -96,24 +134,6 @@ The multi select is a separate component from the dropdown. It supports selectio
 You can disable the whole dropdown as well as single dropdown items by setting their `disabled` property as shown in the example below:
 
 <!-- example(dropdown-disabled-items) -->
-
-### Simple binding
-
-<!-- example(dropdown-simple-binding) -->
-
-### Template-driven form with ngModel
-
-<!-- example(dropdown-template-driven) -->
-
-### Reactive form
-
-<!-- example(dropdown-reactive) -->
-
-### Data-driven (lazy rendering)
-
-The options can also be passed to the dropdown using the `options` input. Dropdowns with many options benefit from this approach, as they will only be rendered when the dropdown is open. Grouping of options is currently not supported.
-
-<!-- example(dropdown-lazy) -->
 
 <div class="docs-expert-container">
 
@@ -145,6 +165,12 @@ If you want to use a custom scroll strategy, you can use the `NX_DROPDOWN_SCROLL
 <!-- example(dropdown-scroll-strategy-provider) -->
 
 Alternatively, the `NX_DROPDOWN_SCROLL_STRATEGY` injection token can be provided by importing `NxScrollStrategyModule.withConfig({ ... })` into your application or feature module, after your other aquila imports.
+
+#### Default Options
+
+You can configure default options for all dropdowns using the `DROPDOWN_DEFAULT_OPTIONS` injection token. This is useful for enabling virtual scrolling globally.
+
+<!-- example(dropdown-default-options) -->
 
 #### Internationalization
 

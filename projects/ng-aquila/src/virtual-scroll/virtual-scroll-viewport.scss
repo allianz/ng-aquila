@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  overflow: hidden;
+}
+
+.nx-virtual-viewport__viewport {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Creates the scrollable height - items don't contribute because they're absolute
+.nx-virtual-viewport__sizer {
+  width: 100%;
+  pointer-events: none;
+  position: relative; // Ensures it takes up space
+}
+
+// Container for directive-rendered items - absolutely positioned to overlay
+// the sizer so translateY offsets position items correctly in the viewport
+.nx-virtual-viewport__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}

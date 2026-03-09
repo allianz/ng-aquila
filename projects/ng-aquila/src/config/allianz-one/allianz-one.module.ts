@@ -1,5 +1,5 @@
 import { FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions } from '@allianz/ng-aquila/formfield';
-import { computed, InjectionToken, NgModule, Signal, signal, WritableSignal } from '@angular/core';
+import { InjectionToken, NgModule, Signal, signal } from '@angular/core';
 
 export interface AllianzOneOptions {
   enabled?: Signal<boolean>;

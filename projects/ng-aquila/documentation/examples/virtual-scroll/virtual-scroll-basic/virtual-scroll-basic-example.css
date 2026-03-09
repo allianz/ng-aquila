@@ -1,0 +1,7 @@
+nx-virtual-viewport {
+  height: 300px;
+}
+
+.virtual-item {
+  padding: 8px 12px;
+}
