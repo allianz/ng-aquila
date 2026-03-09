@@ -361,7 +361,6 @@ $nx-theme: (
   action-expand-font-weight: 700,
   action-padding-right: 16px,
   action-padding-left: 0px,
-
   action-padding: 8px var(--action-padding-right) 8px var(--action-padding-left),
   action-buffer-display: block,
   action-button-background-color-active: action-hover-background-color,
@@ -453,6 +452,7 @@ $nx-theme: (
   base-label-large-font-weight: 300,
   base-label-large-letter-spacing: large-label-letter-spacing,
   base-error-color: danger,
+  base-error-icon-text-gap: 8px,
   base-error-simple-icon-size: 20px,
   base-error-simple-font-size: paragraph-03-font-size,
   base-error-simple-line-height: 1.25rem,
@@ -1051,6 +1051,7 @@ $nx-theme: (
   copytext-large-font-weight: paragraph-02-font-weight,
   copytext-large-letter-spacing: paragraph-02-letter-spacing,
   divider-background-color: #d9d9d9,
+  divider-height: 1px,
   datefield-toggle-icon-size: formfield-icon-size,
   datefield-change-view-font-size: small-label-font-size,
   datefield-change-view-line-height: 1,
@@ -2194,4 +2195,5 @@ $nx-theme: (
   licence-plate-prefix-background: #003399,
   // european union blue
   licence-plate-prefix-color: negative,
+  tree-item-padding-vertical: 8px,
 );

@@ -26,7 +26,7 @@
 
     .nx-error__icon {
       margin-right: initial;
-      margin-left: nx-spacer(2xs);
+      margin-left: v(base-error-icon-text-gap);
     }
   }
 }

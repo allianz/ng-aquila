@@ -104,8 +104,9 @@
       (ngModelChange)="_updateTime()"
       (click)="_updateTime()"
       [disabled]="disabled"
-      [variant]="negative ? 'small negative' : 'small'"
+      [variant]="timeToggleSize()"
       disableMobile
+      [class.ndbx-formfield-toggle-align]="!a1Options?.enabled?.()"
     >
       <nx-radio-toggle-button disableMobile value="AM">{{ labelAM }}</nx-radio-toggle-button>
       <nx-radio-toggle-button disableMobile value="PM">{{ labelPM }}</nx-radio-toggle-button>

@@ -6,7 +6,6 @@ import {
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { ArrayDataSource, SelectionModel } from '@angular/cdk/collections';
 import { CdkTree, CdkTreeModule } from '@angular/cdk/tree';
-
 import {
   AfterViewInit,
   Component,

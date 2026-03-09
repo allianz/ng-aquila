@@ -1,5 +1,6 @@
 /* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one';
 import {
   AppearanceType,
   FORMFIELD_DEFAULT_OPTIONS,
@@ -177,6 +178,15 @@ export class NxTimefieldComponent
 {
   /** @docs-private */
   errorState: WritableSignal<boolean> = signal(false);
+
+  protected readonly a1Options = inject(ALLIANZ_ONE, { optional: true });
+  protected readonly timeToggleSize = computed<string>(() => {
+    if (this.a1Options?.enabled?.()) {
+      return this.negative ? 'negative' : '';
+    }
+
+    return this.negative ? 'small negative' : 'small';
+  });
 
   @ViewChild(NxFormfieldComponent) formfield!: NxFormfieldComponent;
   @ContentChild(NxErrorComponent) error: NxErrorComponent | undefined;

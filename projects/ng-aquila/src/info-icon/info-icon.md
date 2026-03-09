@@ -5,6 +5,7 @@ b2c: true
 expert: true
 stable: done
 a1: true
+a1Densities: true
 ---
 
 The Info Icon component is a simplified wrapper around the [Popover component](./documentation/popover/overview), designed to display contextual information via an icon button. It requires Angular CDK (incl. CSS). Learn [how to enable Angular CDK styles](./documentation/overlay/overview#angular-cdk).

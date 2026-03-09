@@ -72,10 +72,12 @@ nx-radio-toggle {
 
 .has-outline {
   nx-radio-toggle {
-    padding-top: 4px;
     margin-bottom: 4px;
     margin-left: nx-spacer(s);
     margin-top: var(--formfield-outline-label-height);
+  }
+  .ndbx-formfield-toggle-align {
+    padding-top: 4px;
   }
 
   ::ng-deep {

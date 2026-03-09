@@ -3,7 +3,7 @@
 :host {
   display: block;
   box-sizing: border-box;
-  height: 1px;
+  height: v(divider-height);
   width: 100%;
   background-color: v(divider-background-color);
 }
