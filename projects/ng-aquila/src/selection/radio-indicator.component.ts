@@ -14,6 +14,7 @@ import { NxIndicatorAppearance } from './types';
     '[class.critical]': 'critical()',
     '[class.no-animation]': '!animations()',
     '[class.on-selection]': 'appearance() === "on-selection"',
+    '[class.default-appearance]': 'defaultAppearance()',
   },
 })
 export class NxRadioIndicatorComponent {
@@ -23,4 +24,5 @@ export class NxRadioIndicatorComponent {
   readonly critical = input(false);
   readonly appearance = input<NxIndicatorAppearance>('full');
   readonly animations = input(true);
+  readonly defaultAppearance = input(false);
 }

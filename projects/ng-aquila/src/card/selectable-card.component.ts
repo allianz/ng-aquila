@@ -1,5 +1,9 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import {
+  NxCheckboxIndicatorComponent,
+  NxRadioIndicatorComponent,
+} from '@allianz/ng-aquila/selection';
 import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -181,7 +185,12 @@ export class NxSelectableCardGroupComponent
     '[class.has-error]': '_errorState',
     '[class.is-highlight]': 'highlight',
   },
-  imports: [NgTemplateOutlet, NxIconModule],
+  imports: [
+    NgTemplateOutlet,
+    NxIconModule,
+    NxCheckboxIndicatorComponent,
+    NxRadioIndicatorComponent,
+  ],
 })
 export class NxSelectableCardComponent
   implements ControlValueAccessor, DoCheck, AfterContentInit, OnDestroy, AfterViewInit

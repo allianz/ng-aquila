@@ -13,7 +13,7 @@
     box-shadow 0.2s ease;
 
   .nx-card-inner {
-    padding: nx-spacer(m) - nx-border-size(xs);
+    padding: v(card-inner-padding);
   }
 
   &:hover,
@@ -37,6 +37,14 @@
 
     &:focus-within:has(.nx-card-main-link:focus) {
       @include focus-style;
+    }
+  }
+  &:has(.nx-card-highlight) {
+    border-width: v(card-hightlight-border-width);
+    .nx-card-inner {
+      border: v(card-inner-border-width) solid v(card-border-color);
+      border-top: none;
+      border-radius: 0 0 v(card-border-radius) v(card-border-radius);
     }
   }
 
@@ -69,12 +77,13 @@
 }
 
 .nx-card-highlight {
-  padding: 0 nx-spacer(m) - nx-border-size(xs);
+  padding: v(card-highlight-padding);
   border-radius: v(selectable-card-border-radius) v(selectable-card-border-radius) 0 0;
   background: v(card-highlight-background-color);
   color: v(card-highlight-text-color);
-  line-height: nx-line-height(xs);
-  font-size: nx-font-size(4xs);
+  line-height: v(card-highlight-line-height);
+  font-size: v(card-highlight-font-size);
+  font-weight: v(card-highlight-font-weight);
   text-align: center;
 }
 

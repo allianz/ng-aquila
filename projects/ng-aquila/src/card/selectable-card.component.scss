@@ -29,7 +29,7 @@
   justify-content: center;
   align-items: center;
   z-index: 0;
-
+  margin-left: v(selectable-card-indicator-margin-left);
   :host-context([dir='rtl']) & {
     float: right;
   }
@@ -45,7 +45,7 @@
 
 .radio {
   border-style: solid;
-  border-width: nx-border-size(m);
+  border-width: v(radio-button-border-width);
   border-color: v(radio-button-circle-color);
   border-radius: 50%;
 }
@@ -165,9 +165,27 @@ input {
   &:checked + label {
     background: v(selectable-card-background-selected-color);
     border-color: v(selectable-card-border-selected-color);
+    border-width: v(selectable-card-selected-border-width);
 
+    .nx-card-inner {
+      padding: v(card-inner-padding-selected);
+    }
+
+    &:has(.nx-card-highlight) {
+      border-width: v(card-hightlight-border-width);
+      .nx-card-inner {
+        padding-top: v(card-inner-padding);
+        border: v(selectable-card-selected-inner-border-width) solid
+          v(selectable-card-border-selected-color);
+        border-top: none;
+        border-radius: 0 0 v(card-border-radius) v(card-border-radius);
+      }
+    }
     &:hover {
       background: v(selectable-card-background-selected-hover-color);
+    }
+    &:active {
+      background: v(selectable-card-background-selected-active-color);
     }
 
     .checkbox {
@@ -192,23 +210,40 @@ label {
   border-radius: v(selectable-card-border-radius);
   background: v(selectable-card-background-color);
 
+  &:has(.nx-card-highlight) {
+    border-width: v(card-hightlight-border-width);
+    .nx-card-inner {
+      border: v(card-inner-border-width) solid v(card-border-color);
+      border-top: none;
+      border-radius: 0 0 v(card-border-radius) v(card-border-radius);
+    }
+  }
   .nx-card-inner {
-    padding: nx-spacer(s);
+    display: v(card-inner-display);
+    flex-direction: v(card-inner-flex-direction);
+    justify-content: v(card-inner-justify-content);
+    padding: v(selectable-card-inner-padding);
   }
 
   &:hover {
     background: v(selectable-card-background-hover-color);
     border-color: v(selectable-card-border-hover-color);
   }
+  &:active {
+    background: v(selectable-card-background-active-color);
+    border-color: v(selectable-card-border-active-color);
+  }
 }
 
 .nx-card-highlight {
-  padding: 0 nx-spacer(s);
+  padding: v(selectable-card-highlight-padding);
   border-radius: v(selectable-card-border-radius) v(selectable-card-border-radius) 0 0;
   background: v(card-highlight-background-color);
   color: v(card-highlight-text-color);
-  line-height: nx-line-height(xs);
-  font-size: nx-font-size(4xs);
+  line-height: v(selectable-card-highlight-line-height);
+  font-size: v(selectable-card-highlight-font-size);
+  text-align: v(selectable-card-text-align);
+  font-weight: v(card-highlight-font-weight);
 }
 
 // reset hover styles for devices that don't support hover
@@ -226,6 +261,7 @@ label {
 :host(.is-disabled) {
   label {
     border-color: v(selectable-card-border-disabled-color);
+    background-color: v(selectable-card-disabled-color);
     cursor: not-allowed;
   }
 

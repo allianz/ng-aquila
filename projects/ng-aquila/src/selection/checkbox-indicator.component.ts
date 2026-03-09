@@ -19,6 +19,7 @@ import { NxIndicatorAppearance } from './types';
     '[class.readonly]': 'readonly()',
     '[class.critical]': 'critical()',
     '[class.on-selection]': 'appearance() === "on-selection"',
+    '[class.default-appearance]': 'defaultAppearance()',
   },
   styleUrls: ['./checkbox-indicator.component.scss'],
   standalone: true,
@@ -30,4 +31,5 @@ export class NxCheckboxIndicatorComponent {
   readonly critical = input(false);
   readonly indeterminate = input(false);
   readonly appearance = input<NxIndicatorAppearance>('full');
+  readonly defaultAppearance = input(false);
 }

@@ -18,7 +18,7 @@
     z-index: 0;
   }
 
-  &.on-selection {
+  &:not(.default-appearance).on-selection {
     --checkbox-background-color: var(--checkbox-on-selection-background-color);
     --checkbox-border-color: var(--checkbox-on-selection-border-color);
     --checkbox-icon-color: var(--checkbox-on-selection-icon-color);

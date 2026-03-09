@@ -14,9 +14,7 @@ export interface NxSelectableCardHarnessFilters extends NxCardHarnessFilters {
 export class NxSelectableCardHarness extends NxCardHarness {
   static hostSelector = 'nx-selectable-card';
 
-  private readonly _indicatorFilled = this.locatorForOptional(
-    '.indicator-element .check-dot, .indicator-element nx-icon[name="check"]',
-  );
+  private readonly _input = this.locatorFor('input');
   private readonly _label = this.locatorFor('label');
 
   static with(options: NxSelectableCardHarnessFilters = {}) {
@@ -24,14 +22,14 @@ export class NxSelectableCardHarness extends NxCardHarness {
       .addOption('heading', options.heading, headingPredicate)
       .addOption('highlight', options.highlight, highlightPredicate)
       .addOption(
-        'selected',
+        'checked',
         options.checked,
-        async (harness, selected) => (await harness.isChecked()) === selected,
+        async (harness, checked) => (await harness.isChecked()) === checked,
       );
   }
 
   async isChecked() {
-    return !!(await this._indicatorFilled());
+    return (await this._input()).getProperty<boolean>('checked');
   }
 
   async hasError() {

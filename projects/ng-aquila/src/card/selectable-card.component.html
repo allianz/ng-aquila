@@ -38,11 +38,23 @@
 
 <ng-template #indicatorElement>
   <span [class]="['indicator-element', inputType]">
-    @if (checked && inputType === 'checkbox') {
-      <nx-icon name="check" aria-hidden="true"></nx-icon>
-    }
-    @if (checked && inputType === 'radio') {
-      <div class="check-dot"></div>
+    @if (inputType === 'checkbox') {
+      <nx-checkbox-indicator
+        [checked]="checked"
+        [disabled]="disabled"
+        [critical]="_errorState"
+        [defaultAppearance]="true"
+        appearance="on-selection"
+      ></nx-checkbox-indicator>
+    } @else if (inputType === 'radio') {
+      <nx-radio-indicator
+        [animations]="false"
+        [checked]="checked"
+        [disabled]="disabled"
+        [critical]="_errorState"
+        [defaultAppearance]="true"
+        appearance="on-selection"
+      ></nx-radio-indicator>
     }
   </span>
 </ng-template>
