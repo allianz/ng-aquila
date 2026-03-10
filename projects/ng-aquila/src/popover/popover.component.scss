@@ -58,7 +58,7 @@ $padding-content: nx-spacer(2m) - $popover-border-size;
   position: absolute;
   top: v(popover-close-icon-top);
   right: v(popover-close-icon-right);
-  color: v(popover-text-color);
+  color: v(popover-close-icon-color);
   font-size: v(popover-close-icon-size);
 
   [dir='rtl'] & {
