@@ -3,7 +3,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-const skillSourcePath = path.resolve(__dirname, '../generated/skill.md');
+const skillSourcePath = path.resolve(__dirname, '../static/skill.md');
 const skillTargetPath = path.join(process.cwd(), '.aquila.instructions.md');
 
 function main() {
