@@ -7,22 +7,22 @@ import { SectionDoc } from '../models';
 
 const inputSchema = z.object({
   componentName: z.string().describe(
-    `The name of the Angular UI component from ngx-brand-kit, NDBX, Aquila, or an Allianz Component Library to search for.
+    `Name of the Angular UI component from Aquila (ngx-brand-kit, NDBX, Aquila or Allianz Component Library) to search for.
                   Example: 'datefield', 'button', 'dropdown'. Only one component per query.`,
   ),
   usage: z
     .string()
     .optional()
     .describe(
-      `Optional. A specific usage or feature to search for within the component documentation. Example: 'parsing', 'localization'. Only one usage per query.`,
+      `Optional. A specific feature to search in the component documentation. Example: 'parsing', 'localization'. Only one usage per query.`,
     ),
 });
 export const searchNdbxComponentsToolConfig = {
   name: 'search-ndbx-components',
   title: 'Search NDBX Components',
-  description: `Search for documentation and usage examples for a single Angular UI component from ngx-brand-kit, NDBX, Aquila, or an Allianz Component Library.
+  description: `Search usage examples in an Angular UI component from Aquila (ngx-brand-kit, NDBX, Aquila or Allianz Component Library).
                 Provide the component name (e.g., 'datefield', 'button', 'dropdown') and optionally a specific usage (e.g., 'parsing', 'localization').
-                Returns structured information, API, and code examples for the requested component.`,
+                In case of no usage provided, returns structured information, API, and code examples for the requested component.`,
   inputSchema,
   annotations: { idempotentHint: true, readOnlyHint: true },
   cb: async (args: z.infer<typeof inputSchema>) =>
@@ -44,7 +44,6 @@ function handleSearchNdbxComponents(args: { componentName: string; usage?: strin
   }
 
   const tagRecommendText = getTagRecommendTextForTopic(topic);
-  const instruct = getInstructionContext();
   const componentList = sections.filter((item) => item.category === 'components');
   const componentFound = searchDocs(topic, componentList);
 
@@ -73,7 +72,7 @@ function handleSearchNdbxComponents(args: { componentName: string; usage?: strin
       content: [
         {
           type: 'text',
-          text: `NDBX Component documentation for '${topic}' not found. \nDo you mean one of following components? \n${additionComponents}${tagRecommendText}\n`,
+          text: `Component documentation for '${topic}' not found. \nDo you mean one of following components? \n${additionComponents}${tagRecommendText}\n`,
         },
       ],
     };
@@ -95,18 +94,33 @@ function handleSearchNdbxComponents(args: { componentName: string; usage?: strin
     }
   }
 
-  // Get the metadata (overview, api, structure) for the exact component
-  const metaPath = path.resolve(__dirname, '../../../generated/components', exactComponent.name);
-  const meta = fs.readFileSync(metaPath, 'utf-8');
-  let content = instruct + '\n' + meta + '\n\n# Example';
-  content += getComponentExampleSection(exactComponent, action);
-  content += '\n# Additional ' + topic + ' usages\n' + getComponentUsageList(exactComponent);
-  if (componentFound.length > 1) {
-    content += `\n\n# Other Similar name components\n${componentFound
-      .filter((d) => d.name !== topic + '.md')
-      .map((c) => '- ' + c.name.replace('.md', ''))
-      .join('\n')}`;
+  // Build response content
+  let content = '';
+
+  // For discovery calls (no specific action), include full context
+  if (!action) {
+    const instruct = getInstructionContext();
+    const metaPath = path.resolve(__dirname, '../../../generated/components', exactComponent.name);
+    const meta = fs.readFileSync(metaPath, 'utf-8');
+    content = instruct + '\n' + meta + '\n\n';
   }
+
+  // Add example
+  content += '# Example';
+  content += getComponentExampleSection(exactComponent, action);
+
+  // Add usage list only for discovery calls
+  if (!action) {
+    content += '\n# Additional ' + topic + ' usages\n' + getComponentUsageList(exactComponent);
+
+    if (componentFound.length > 1) {
+      content += `\n\n# Other Similar name components\n${componentFound
+        .filter((d) => d.name !== topic + '.md')
+        .map((c) => '- ' + c.name.replace('.md', ''))
+        .join('\n')}`;
+    }
+  }
+
   return { content: [{ type: 'text', text: content }] };
 }
 
@@ -133,30 +147,8 @@ function getAdditionalComponent(components: SectionDoc[]): string {
 }
 
 function getInstructionContext(): string {
-  return `
-## Instruction Context
-- You are working with Angular components. You are given documentation in Markdown format with YAML frontmatter that includes API and metadata.
-- Only use the information provided in the documentation to answer questions or generate code.
-- Always use the components built-in API. Do not invent or guess new APIs.
-- Assume you are in a code editor environment.
-- Use the provided examples as guidelines. Adapt your output to match the user’s intent, but do not go beyond the documented API.
-- Do not use inline CSS styles.
-
-📂 Import Instructions:
-- The user is likely editing a file like "app.component.html".
-- If you need to add an import (for example, for a component like NxButtonComponent), add it to the matching TypeScript file (for example, "app.component.ts") in the same folder.
-- Do not suggest imports from outside the current folder.
-- If the documentation provides an "importPath", use it for the import.
-- If no importPath is given, use a local relative import.
-- Please work reliably with the ng aquila component library, the Allianz library with the latin name for eagle. To generate the import paths, you must follow these steps precisely:
-    1. Start with the literal string for the domain: '@allianz'.
-    2. Append the path separator '/'.
-    3. Append the literal string for the library name: 'ng-aquila'.
-    4. Append the path separator '/'.
-    5. Append the component name, for example, 'button'.
-    6. Combine these to form the final, correct import path.
----
-`;
+  const instructionPath = path.resolve(__dirname, '../../../static/instruction-context.md');
+  return fs.readFileSync(instructionPath, 'utf-8');
 }
 
 function getComponentExampleSection(exactComponent: any, action: string): string {
