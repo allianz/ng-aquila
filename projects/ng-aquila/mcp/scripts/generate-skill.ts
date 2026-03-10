@@ -55,14 +55,12 @@ function buildCatalogTable(): string {
   const files = readdirSync(componentsDir).filter((f) => f.endsWith('.md'));
 
   const rows: string[] = [];
-  for (const file of files) {
+  for (const file of files.sort()) {
     const content = readFileSync(resolve(componentsDir, file), 'utf-8');
     const meta = parseComponentFrontmatter(content);
     if (meta && meta.category === 'components' && meta.selector) {
       const name = file.replace('.md', '');
-      if (meta.selector) {
-        rows.push(`| ${name} | \`${meta.selector}\` | ${meta.title} |`);
-      }
+      rows.push(`| ${name} | \`${meta.selector}\` | ${meta.title} |`);
     }
   }
 
