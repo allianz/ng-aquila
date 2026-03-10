@@ -130,11 +130,6 @@ ng add @allianz/ng-aquila
 \`\`\`
 Requires \`@angular/cdk\` as a peer dependency (installed automatically by \`ng add\`).
 
-## Theming
-Aquila ships two themes:
-- \`aquila.css\` — B2C customer-facing applications
-- \`expert.css\` — B2B internal/expert applications (requires \`NxExpertModule\` from \`@allianz/ng-aquila/config\`)
-
 ## Aquila-Specific Rules
 - Never use \`NxInput\` directive without wrapping it in \`nx-formfield\`
 - Always import \`NxInputModule\` when using \`NxInputDirective\`
