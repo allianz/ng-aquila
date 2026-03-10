@@ -16,6 +16,7 @@ const generatorsScript = [
   '/scripts/generate-examples.ts',
   '/scripts/generate-sections.ts',
   '/scripts/generate-components.ts',
+  '/scripts/generate-skill.ts',
 ];
 
 generatorsScript.forEach((script) => {

@@ -33,6 +33,10 @@ const itemsToCopy = [
     source: path.join(sourceBaseGenerated, 'sections.json'),
     destination: path.join(destBaseGenerated, 'sections.json'),
   },
+  {
+    source: path.join(sourceBaseGenerated, 'skill.md'),
+    destination: path.join(destBaseGenerated, 'skill.md'),
+  },
   { source: sourceBaseStatic, destination: destBase },
 ];
 
