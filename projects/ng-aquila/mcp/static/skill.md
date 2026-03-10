@@ -2,152 +2,154 @@
 # Aquila – Angular Brand Kit Component Library
 
 Aquila (open source) / Angular Brand Kit (formerly NDBX) is the Allianz Design System
-component library for Angular.
-
-## Modern Angular
-We recommend using modern Angular (v19+) patterns:
+component library for Angular. Use modern Angular (v19+) patterns:
 standalone components, signals, new control flow (`@if`, `@for`), `inject()`, etc.
-For Angular-specific coding conventions, see https://angular.dev/ai/develop-with-ai
 
 ## Import Rules
-To import any Aquila component, construct the path as follows:
-1. Domain: `@allianz`
-2. Library: `/ng-aquila`
-3. Component: `/{component-name}`
+Aquila components are standalone. Import the component directly:
 
-Example: `import { NxButtonModule } from '@allianz/ng-aquila/button';`
+```ts
+import { NxButtonComponent } from '@allianz/ng-aquila/button';
+import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
+import { NxInputDirective } from '@allianz/ng-aquila/input';
 
-## Aquila-Specific Rules
-- Never use `NxInput` directive without wrapping it in `nx-formfield`
-- Always import `NxInputModule` when using `NxInputDirective`
-- Use `nx-error` with `nxFormfieldError` for validation messages inside formfields
-- Always set `type="button"` on `<button nxButton>` to prevent accidental form submission
-- Prefer Reactive Forms over Template-driven forms with Aquila form components
-- Import individual component modules to optimize bundle size
-- Do not use inline CSS styles; rely on Aquila's built-in styling and utility classes
-
-## Grid System
-Aquila uses a 12-column responsive grid with `nxLayout`, `nxRow`, and `nxCol`.
-The `nxCol` attribute accepts comma-separated values for responsive breakpoints
-in order: tiny, small, medium, large, xlarge, 2xlarge, 3xlarge.
-If fewer values are provided, the last one repeats for remaining breakpoints.
-
-### Two-column layout (full width on mobile, half on desktop)
-```html
-<div nxLayout="grid">
-  <div nxRow>
-    <div nxCol="12,12,6">Left content</div>
-    <div nxCol="12,12,6">Right content</div>
-  </div>
-</div>
+@Component({
+  imports: [NxButtonComponent, NxFormfieldComponent, NxInputDirective],
+})
 ```
 
-### Three-column form layout
+Import path pattern: `@allianz/ng-aquila/{component-name}`
+
+## Aquila-Specific Rules
+- Never use `NxInputDirective` without wrapping `<input nxInput>` in `<nx-formfield>`
+- Use `<nx-error nxFormfieldError>` for validation messages inside formfields
+- Always set `type="button"` on `<button nxButton>` to prevent accidental form submission
+- Prefer Reactive Forms with Aquila form components
+- Do not use inline CSS styles; rely on Aquila's built-in styling
+
+## Formfield with Validation (Reactive Forms)
+```html
+<form [formGroup]="form">
+  <nx-formfield label="Email">
+    <input nxInput formControlName="email" type="email" />
+    @if (form.controls.email.errors) {
+      <nx-error nxFormfieldError>Please enter a valid email</nx-error>
+    }
+  </nx-formfield>
+</form>
+```
+
+## Dropdown
+```html
+<nx-formfield label="Country">
+  <nx-dropdown formControlName="country">
+    <nx-dropdown-item value="DE">Germany</nx-dropdown-item>
+    <nx-dropdown-item value="CH">Switzerland</nx-dropdown-item>
+    <nx-dropdown-item value="AT">Austria</nx-dropdown-item>
+  </nx-dropdown>
+</nx-formfield>
+```
+
+## Modal Dialog
+```ts
+import { NxModalService } from '@allianz/ng-aquila/modal';
+
+const modalRef = inject(NxModalService).open(MyDialogComponent, { width: '600px' });
+modalRef.afterClosed().subscribe(result => { /* handle result */ });
+```
+
+## Grid System
+12-column responsive grid. `nxCol` accepts comma-separated breakpoint values
+in order: tiny, small, medium, large, xlarge, 2xlarge, 3xlarge.
+
 ```html
 <div nxLayout="grid">
   <div nxRow>
-    <div nxCol="12,4">
-      <nx-formfield label="First name">
-        <input nxInput type="text" />
-      </nx-formfield>
-    </div>
-    <div nxCol="12,4">
-      <nx-formfield label="Last name">
-        <input nxInput type="text" />
-      </nx-formfield>
-    </div>
-    <div nxCol="12,4">
-      <nx-formfield label="Email">
-        <input nxInput type="email" />
-      </nx-formfield>
-    </div>
+    <div nxCol="12,12,6">Left</div>
+    <div nxCol="12,12,6">Right</div>
   </div>
 </div>
 ```
 
 ## Component Catalog
-| Component | Main Selector | Title |
-|-----------|---------------|-------|
-| accordion | `nx-accordion` | Accordion |
-| action | `[nxAction]` | Action |
-| autocomplete | `nx-autocomplete` | Autocomplete |
-| avatar | `[nxAvatar]` | Avatar |
-| badge | `nx-badge` | Badge |
-| breadcrumb | `[nxBreadcrumbItem]` | Breadcrumb |
-| button | `button[nxButton], a[nxButton]` | Button |
-| card | `[nxCardMainLink]` | Cards |
-| checkbox | `nx-checkbox` | Checkbox |
-| circle-toggle | `nx-circle-toggle-group` | Circle Toggle |
-| code-input | `nx-code-input` | Code Input |
-| comparison-table | `nx-comparison-table` | Comparison Table |
-| context-menu | `nx-context-menu` | Context Menu |
-| copytext | `[nxCopytext]` | Copytext |
-| data-display | `nx-data-display` | Data Display |
-| datefield | `input[nxDatefield]` | Date Field |
-| divider | `nx-divider` | Divider |
-| dropdown | `nx-dropdown` | Dropdown |
-| dynamic-table | `nx-dynamic-table` | Dynamic Tables |
-| eyebrow | `nx-eyebrow, [nxEyebrow]` | Eyebrow |
-| file-uploader | `nx-file-uploader` | File uploader |
-| footer | `nx-footer, [nx-footer]` | Footer |
-| formfield | `nx-formfield` | Formfield |
-| grid | `[nxLayout]` | Grid |
-| header | `nx-header, [nx-header]` | Header |
-| headline | `[nxHeadline]` | Headline |
-| icon | `nx-icon` | Icons |
-| image | `figure[nxFigure]` | Images |
-| indicator | `nx-indicator` | Indicator |
-| info-icon | `nx-info-icon` | Info Icon |
-| input | `input[nxInput], textarea[nxInput], select[nxInput]` | Input Field |
-| licence-plate | `[nxLicensePlate]` | Licence Plate |
-| link | `nx-link` | Link |
-| list | `ul[nxList], ol[nxList]` | List |
-| mask | `input[nxMask]` | Input Mask |
-| menu | `nx-menu` | Menu |
-| message | `nx-message` | Notifications |
-| modal | `nx-modal` | Modal |
-| natural-language-form | `nx-natural-language-form` | Natural Language Form |
-| notification-panel | `nx-notification-panel` | Notification panel |
-| number-stepper | `nx-number-stepper` | Number Stepper |
-| overlay | `nx-overlay-container` | Overlay |
-| page-search | `nx-page-search` | Page Search |
-| pagination | `nx-pagination` | Pagination |
-| phone-input | `nx-phone-input` | Phone Input |
-| popover | `[nxPopoverTriggerFor]` | Popover |
-| price | `nx-price` | Price |
-| progress-stepper | `[nxProgressStepper]` | Progress Indicator |
-| progressbar | `nx-progressbar` | Progress Bar |
-| radio-toggle | `nx-radio-toggle` | Toggle Button |
-| rating | `nx-rating` | Rating |
-| sidebar | `nx-sidebar` | Side Navigation |
-| sidepanel | `nx-sidepanel` | Sidepanel |
-| signal-button | `nx-signal-button` | Signal Button |
-| slider | `nx-slider` | Slider |
-| small-stage | `nx-small-stage-image` | Small stage |
-| spinner | `nx-spinner` | Spinner |
-| switcher | `nx-switcher` | Switcher |
-| table | `[nxHeaderCell]` | Table |
-| tabs | `nx-tab` | Tabs |
-| taglist | `nx-taglist` | Tag |
-| text | `[nx-attention-color]` | Text |
-| tile | `nx-tile-group` | Tile |
-| timefield | `[nxTimefieldOption]` | Timefield |
-| toolbar | `nx-toolbar` | Toolbar |
-| tooltip | `[nxTooltip]` | Tooltip |
-| tree | `nx-tree` | Tree |
-| video | `nx-video` | Video |
+| Component | Selector |
+|-----------|----------|
+| accordion | `nx-accordion` |
+| action | `[nxAction]` |
+| autocomplete | `nx-autocomplete` |
+| avatar | `[nxAvatar]` |
+| badge | `nx-badge` |
+| breadcrumb | `[nxBreadcrumbItem]` |
+| button | `button[nxButton]` |
+| card | `[nxCardMainLink]` |
+| checkbox | `nx-checkbox` |
+| circle-toggle | `nx-circle-toggle-group` |
+| code-input | `nx-code-input` |
+| comparison-table | `nx-comparison-table` |
+| context-menu | `nx-context-menu` |
+| copytext | `[nxCopytext]` |
+| data-display | `nx-data-display` |
+| datefield | `input[nxDatefield]` |
+| divider | `nx-divider` |
+| dropdown | `nx-dropdown` |
+| dynamic-table | `nx-dynamic-table` |
+| eyebrow | `nx-eyebrow` |
+| file-uploader | `nx-file-uploader` |
+| footer | `nx-footer` |
+| formfield | `nx-formfield` |
+| grid | `[nxLayout]` |
+| header | `nx-header` |
+| headline | `[nxHeadline]` |
+| icon | `nx-icon` |
+| image | `figure[nxFigure]` |
+| indicator | `nx-indicator` |
+| input | `input[nxInput]` |
+| licence-plate | `[nxLicensePlate]` |
+| link | `nx-link` |
+| list | `ul[nxList]` |
+| mask | `input[nxMask]` |
+| menu | `nx-menu` |
+| message | `nx-message` |
+| modal | `nx-modal` |
+| natural-language-form | `nx-natural-language-form` |
+| notification-panel | `nx-notification-panel` |
+| number-stepper | `nx-number-stepper` |
+| overlay | `nx-overlay-container` |
+| page-search | `nx-page-search` |
+| pagination | `nx-pagination` |
+| phone-input | `nx-phone-input` |
+| popover | `[nxPopoverTriggerFor]` |
+| price | `nx-price` |
+| progress-stepper | `[nxProgressStepper]` |
+| progressbar | `nx-progressbar` |
+| radio-toggle | `nx-radio-toggle` |
+| rating | `nx-rating` |
+| sidebar | `nx-sidebar` |
+| sidepanel | `nx-sidepanel` |
+| signal-button | `nx-signal-button` |
+| slider | `nx-slider` |
+| small-stage | `nx-small-stage-image` |
+| spinner | `nx-spinner` |
+| switcher | `nx-switcher` |
+| table | `[nxHeaderCell]` |
+| tabs | `nx-tab` |
+| taglist | `nx-taglist` |
+| timefield | `[nxTimefieldOption]` |
+| toolbar | `nx-toolbar` |
+| tooltip | `[nxTooltip]` |
+| tree | `nx-tree` |
+| video | `nx-video` |
 
 ## Find Components by Use Case
-- **form**: autocomplete, checkbox, circle-toggle, code-input, datefield, dropdown, file-uploader, formfield, input, natural-language-form, phone-input, radio-button, radio-toggle, rating, slider, switcher, timefield
+- **form**: autocomplete, checkbox, circle-toggle, code-input, datefield, dropdown, file-uploader, formfield, input, natural-language-form, phone-input, radio-toggle, rating, slider, switcher, timefield
 - **navigation**: breadcrumb, header, menu, tabs, pagination
-- **table**: ag-grid, comparison-table, dynamic-table, table
+- **table**: comparison-table, dynamic-table, table
 - **feedback**: badge, indicator, message, modal, notification-panel, progress-stepper, progressbar, spinner, tooltip
 - **layout**: accordion, card, footer, grid, sidepanel, small-stage, toolbar
 - **overlay**: modal, overlay, popover
 - **media**: avatar, icon, image, video
 - **interaction**: action, button, link, page-search, signal-button
-- **selection**: checkbox, circle-toggle, dropdown, radio-button, radio-toggle, taglist
-- **typography**: copytext, headline, typography
+- **selection**: checkbox, circle-toggle, dropdown, radio-toggle, taglist
 
 ## Detailed API
 For full component API (inputs, outputs, methods) and code examples,
