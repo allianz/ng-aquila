@@ -111,8 +111,10 @@ function buildSkill(): string {
 Aquila (open source) / Angular Brand Kit (formerly NDBX) is the Allianz Design System
 component library for Angular.
 
-For Angular-specific coding conventions (standalone components, signals, control flow, etc.),
-refer to the official Angular Skill from the Angular team.
+## Modern Angular
+Aquila requires modern Angular (v19+). Always use the latest Angular patterns:
+standalone components, signals, new control flow (\`@if\`, \`@for\`), \`inject()\`, etc.
+For Angular-specific coding conventions, refer to the official Angular Skill from the Angular team.
 
 ## Import Rules
 To import any Aquila component, construct the path as follows:
@@ -126,12 +128,28 @@ Example: \`import { NxButtonModule } from '@allianz/ng-aquila/button';\`
 \`\`\`bash
 ng add @allianz/ng-aquila
 \`\`\`
+Requires \`@angular/cdk\` as a peer dependency (installed automatically by \`ng add\`).
+
+## Theming
+Aquila ships two themes:
+- \`aquila.css\` — B2C customer-facing applications
+- \`expert.css\` — B2B internal/expert applications (requires \`NxExpertModule\` from \`@allianz/ng-aquila/config\`)
 
 ## Aquila-Specific Rules
 - Never use \`NxInput\` directive without wrapping it in \`nx-formfield\`
 - Always import \`NxInputModule\` when using \`NxInputDirective\`
 - Use \`nx-error\` with \`nxFormfieldError\` for validation messages inside formfields
+- Always set \`type="button"\` on \`<button nxButton>\` to prevent accidental form submission
+- Prefer Reactive Forms over Template-driven forms with Aquila form components
 - Import individual component modules to optimize bundle size
+- Do not use inline CSS styles; rely on Aquila's built-in styling and utility classes
+
+## Accessibility
+Aquila components have built-in accessibility support. When using them:
+- Always provide labels for form fields (use the \`label\` input on \`nx-formfield\`)
+- Use \`aria-label\` or \`aria-labelledby\` where a visible label is not present
+- Ensure meaningful text for buttons and links (avoid "click here")
+- Use \`nx-message\` for user-facing status messages (they announce via ARIA live regions)
 
 ## Grid System
 Aquila uses a 12-column responsive grid with \`nxLayout\`, \`nxRow\`, and \`nxCol\`.
