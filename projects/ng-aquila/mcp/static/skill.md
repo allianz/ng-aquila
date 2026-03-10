@@ -54,7 +54,7 @@ Import path pattern: `@allianz/ng-aquila/{component-name}`
 ```ts
 import { NxModalService } from '@allianz/ng-aquila/modal';
 
-const modalRef = inject(NxModalService).open(MyDialogComponent, { width: '600px' });
+const modalRef = inject(NxModalService).open(MyDialogComponent);
 modalRef.afterClosed().subscribe(result => { /* handle result */ });
 ```
 
@@ -71,74 +71,34 @@ in order: tiny, small, medium, large, xlarge, 2xlarge, 3xlarge.
 </div>
 ```
 
-## Component Catalog
+## Most Used Components
 | Component | Selector |
 |-----------|----------|
-| accordion | `nx-accordion` |
-| action | `[nxAction]` |
-| autocomplete | `nx-autocomplete` |
-| avatar | `[nxAvatar]` |
-| badge | `nx-badge` |
-| breadcrumb | `[nxBreadcrumbItem]` |
-| button | `button[nxButton]` |
-| card | `[nxCardMainLink]` |
-| checkbox | `nx-checkbox` |
-| circle-toggle | `nx-circle-toggle-group` |
-| code-input | `nx-code-input` |
-| comparison-table | `nx-comparison-table` |
-| context-menu | `nx-context-menu` |
-| copytext | `[nxCopytext]` |
-| data-display | `nx-data-display` |
-| datefield | `input[nxDatefield]` |
-| divider | `nx-divider` |
-| dropdown | `nx-dropdown` |
-| dynamic-table | `nx-dynamic-table` |
-| eyebrow | `nx-eyebrow` |
-| file-uploader | `nx-file-uploader` |
-| footer | `nx-footer` |
 | formfield | `nx-formfield` |
-| grid | `[nxLayout]` |
-| header | `nx-header` |
-| headline | `[nxHeadline]` |
-| icon | `nx-icon` |
-| image | `figure[nxFigure]` |
-| indicator | `nx-indicator` |
 | input | `input[nxInput]` |
-| licence-plate | `[nxLicensePlate]` |
+| button | `button[nxButton]` |
+| icon | `nx-icon` |
+| dropdown | `nx-dropdown` |
+| checkbox | `nx-checkbox` |
+| grid | `[nxLayout]` |
+| headline | `[nxHeadline]` |
+| copytext | `[nxCopytext]` |
 | link | `nx-link` |
-| list | `ul[nxList]` |
-| mask | `input[nxMask]` |
-| menu | `nx-menu` |
-| message | `nx-message` |
-| modal | `nx-modal` |
-| natural-language-form | `nx-natural-language-form` |
-| notification-panel | `nx-notification-panel` |
-| number-stepper | `nx-number-stepper` |
-| overlay | `nx-overlay-container` |
-| page-search | `nx-page-search` |
-| pagination | `nx-pagination` |
-| phone-input | `nx-phone-input` |
+| accordion | `nx-accordion` |
 | popover | `[nxPopoverTriggerFor]` |
-| price | `nx-price` |
-| progress-stepper | `[nxProgressStepper]` |
-| progressbar | `nx-progressbar` |
-| radio-toggle | `nx-radio-toggle` |
-| rating | `nx-rating` |
-| sidebar | `nx-sidebar` |
-| sidepanel | `nx-sidepanel` |
-| signal-button | `nx-signal-button` |
-| slider | `nx-slider` |
-| small-stage | `nx-small-stage-image` |
-| spinner | `nx-spinner` |
-| switcher | `nx-switcher` |
+| badge | `nx-badge` |
+| datefield | `input[nxDatefield]` |
+| modal | `nx-modal` |
+| message | `nx-message` |
+| data-display | `nx-data-display` |
 | table | `[nxHeaderCell]` |
 | tabs | `nx-tab` |
-| taglist | `nx-taglist` |
-| timefield | `[nxTimefieldOption]` |
-| toolbar | `nx-toolbar` |
+| list | `ul[nxList]` |
+| radio-toggle | `nx-radio-toggle` |
 | tooltip | `[nxTooltip]` |
-| tree | `nx-tree` |
-| video | `nx-video` |
+| switcher | `nx-switcher` |
+| spinner | `nx-spinner` |
+| pagination | `nx-pagination` |
 
 ## Find Components by Use Case
 - **form**: autocomplete, checkbox, circle-toggle, code-input, datefield, dropdown, file-uploader, formfield, input, natural-language-form, phone-input, radio-toggle, rating, slider, switcher, timefield
