@@ -31,6 +31,7 @@ import { NxTabLabelWrapperDirective } from './tab-label-wrapper';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.at-start]': '_isScrolledToStart',
+    '[class.at-end]': '_isScrolledToEnd',
     '[class.scrollable]': 'scrollable',
   },
   imports: [NxTabScrollIndicator],

@@ -9,6 +9,7 @@
     display: flex;
     align-items: flex-end;
     overflow-x: scroll;
+    overflow-y: hidden;
     position: relative;
     outline: none;
 
@@ -31,6 +32,20 @@
         padding-left: 0;
         margin-right: -8px;
         padding-right: 8px;
+      }
+    }
+  }
+
+  &.at-end {
+    .nx-tab-header {
+      margin-right: -8px;
+      padding-right: 8px;
+
+      [dir='rtl'] & {
+        margin-right: 0;
+        padding-right: 0;
+        margin-left: -8px;
+        padding-left: 8px;
       }
     }
   }

@@ -39,6 +39,7 @@ import {
     '[class.is-expert]': 'appearance === "expert"',
     role: 'navigation',
     '[class.at-start]': '_isScrolledToStart',
+    '[class.at-end]': '_isScrolledToEnd',
     '[class.scrollable]': 'scrollable',
   },
   imports: [NxTabScrollIndicator],
