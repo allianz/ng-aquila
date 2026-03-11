@@ -516,6 +516,10 @@ export class NxCheckboxComponent
 
   protected errorState = signal<boolean>(false);
 
+  private readonly _elementRef = inject(ElementRef);
+  private readonly _isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  private _repaintInProgress = false;
+
   constructor(
     private readonly _cdr: ChangeDetectorRef,
     private readonly _errorStateMatcher: ErrorStateMatcher,
@@ -574,11 +578,33 @@ export class NxCheckboxComponent
     this._indeterminate = value;
     this.indeterminateChange.emit(this._indeterminate);
     this._cdr.markForCheck();
+    this._forceRepaintInSafari();
   }
 
   private _setChecked(value: boolean) {
     this._checked = value;
     this._cdr.markForCheck();
+    this._forceRepaintInSafari();
+  }
+
+  /**
+   * Forces the checkbox to repaint in Safari.
+   * Safari has known issues with :has() CSS selectors causing missed repaints,
+   * especially in Shadow DOM contexts with multiple checkboxes.
+   * See https://github.developer.allianz.io/ilt/ngx-brand-kit/issues/5167
+   */
+  private _forceRepaintInSafari(): void {
+    if (!this._isSafari || this._repaintInProgress) {
+      return;
+    }
+    this._repaintInProgress = true;
+    const el = this._elementRef.nativeElement;
+    const originalVisibility = el.style.visibility;
+    el.style.visibility = 'hidden';
+    requestAnimationFrame(() => {
+      el.style.visibility = originalVisibility;
+      this._repaintInProgress = false;
+    });
   }
 
   /** Toggles the checked state of the checkbox. */
