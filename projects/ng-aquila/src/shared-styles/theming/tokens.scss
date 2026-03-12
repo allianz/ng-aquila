@@ -1245,8 +1245,8 @@ $nx-theme: (
   // -------------------------------------------------------------------------- //
   formfield-outline-control-height: 40px,
   formfield-outline-border-radius: 4px,
-  formfield-outline-input-container-padding: 0,
   formfield-outline-spacing: 7px,
+  formfield-outline-licence-plate-padding-horizontal: var(--formfield-outline-spacing),
   formfield-outline-gap: 0,
   formfield-outline-border-color: ui-05,
   formfield-outline-background-color: ui-03,
@@ -2196,5 +2196,8 @@ $nx-theme: (
   licence-plate-prefix-background: #003399,
   // european union blue
   licence-plate-prefix-color: negative,
+  licence-plate-prefix-spacing: calc(-1 * var(--formfield-outline-spacing)),
+  licence-plate-prefix-border-radius: 3px,
+  licence-plate-prefix-padding-horizontal: 4px,
   tree-item-padding-vertical: 8px,
 );

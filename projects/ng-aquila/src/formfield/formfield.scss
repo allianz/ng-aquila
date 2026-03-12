@@ -307,7 +307,6 @@
   }
 
   .nx-formfield__input-container {
-    padding: v(formfield-outline-input-container-padding);
     border-width: v(formfield-border-width);
     border-color: v(formfield-outline-border-color);
     background-color: v(formfield-outline-background-color);
@@ -315,6 +314,18 @@
     border-radius: v(formfield-outline-border-radius);
     height: v(formfield-outline-control-height);
     gap: v(formfield-outline-gap);
+
+    &:has(nx-licence-plate-euro-prefix) {
+      input {
+        padding-left: v(formfield-outline-licence-plate-padding-horizontal);
+      }
+    }
+
+    &:has(nx-licence-plate-season-suffix) {
+      input {
+        padding-right: v(formfield-outline-licence-plate-padding-horizontal);
+      }
+    }
   }
 
   input,

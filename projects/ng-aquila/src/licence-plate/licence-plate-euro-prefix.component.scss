@@ -11,14 +11,14 @@
   min-width: nx-spacer(m);
   max-width: nx-spacer(3m);
   border-radius: nx-border-radius(s);
-  padding: 0 nx-spacer(3xs);
+  padding: 0 v(licence-plate-prefix-padding-horizontal);
   @include type-style(paragraph-03);
   color: v(licence-plate-prefix-color);
 }
 
 :host(.has-outline) {
-  margin-left: -7px;
-  border-radius: 3px 0 0 3px;
+  margin-left: v(licence-plate-prefix-spacing);
+  border-radius: v(licence-plate-prefix-border-radius) 0 0 v(licence-plate-prefix-border-radius);
 }
 
 :host(.is-disabled) {
