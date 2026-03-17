@@ -65,7 +65,7 @@ export const themeAquila = themeAlpine.withParams({
     color: 'var(--table-cell-border-top-color)',
   },
   rowHoverColor: 'var(--selectable-table-row-hover-background-color)',
-  selectedRowBackgroundColor: 'var(--zebra-table-row-selected-background-color)',
+  selectedRowBackgroundColor: 'var(--selectable-table-row-selected-background-color)',
 
   // Cell
   cellHorizontalPadding: 16,

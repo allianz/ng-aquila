@@ -121,36 +121,39 @@ describe('NxSort', () => {
   });
 
   describe('icons', () => {
-    it('shows both icons for a unsorted column', () => {
+    it('shows popout icon for an unsorted column', () => {
       createTestComponent(BasicSortTableComponent);
       const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
-      const chevrons = nameHeaderElement.querySelectorAll('.nx-sort-header__unsorted');
+      const popoutIcon = nameHeaderElement.querySelector('nx-icon[name="popout"]');
 
-      expect(chevrons.length).toEqual(2);
+      expect(popoutIcon).not.toBeNull();
 
       const countHeaderElement = fixture.nativeElement.querySelector('#countHeader');
       countHeaderElement.click();
       fixture.detectChanges();
-      expect(chevrons.length).toEqual(2);
+      const popoutIconAfter = nameHeaderElement.querySelector('nx-icon[name="popout"]');
+      expect(popoutIconAfter).not.toBeNull();
     });
 
-    it('show ascending icon', () => {
+    it('shows arrow-up icon for an ascending sorted column', () => {
       createTestComponent(BasicSortTableComponent);
       const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
 
       // sort ascending
       nameHeaderElement.click();
       fixture.detectChanges();
-      const arrowUp = nameHeaderElement.querySelector('.nx-sort-header__ascend') as HTMLElement;
-      const arrowDown = nameHeaderElement.querySelector('.nx-sort-header__descend') as HTMLElement;
-      const chevrons = nameHeaderElement.querySelectorAll('.nx-sort-header__unsorted');
+      const arrowUp = nameHeaderElement.querySelector('nx-icon[name="arrow-up"]') as HTMLElement;
+      const arrowDown = nameHeaderElement.querySelector(
+        'nx-icon[name="arrow-down"]',
+      ) as HTMLElement;
+      const popoutIcon = nameHeaderElement.querySelector('nx-icon[name="popout"]');
 
       expect(arrowUp).not.toBeNull();
       expect(arrowDown).toBeNull();
-      expect(chevrons.length).toEqual(0);
+      expect(popoutIcon).toBeNull();
     });
 
-    it('show descending icon', () => {
+    it('shows arrow-down icon for a descending sorted column', () => {
       createTestComponent(BasicSortTableComponent);
       const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
 
@@ -158,13 +161,15 @@ describe('NxSort', () => {
       nameHeaderElement.click();
       nameHeaderElement.click();
       fixture.detectChanges();
-      const arrowUp = nameHeaderElement.querySelector('.nx-sort-header__ascend') as HTMLElement;
-      const arrowDown = nameHeaderElement.querySelector('.nx-sort-header__descend') as HTMLElement;
-      const chevrons = nameHeaderElement.querySelectorAll('.nx-sort-header__unsorted');
+      const arrowUp = nameHeaderElement.querySelector('nx-icon[name="arrow-up"]') as HTMLElement;
+      const arrowDown = nameHeaderElement.querySelector(
+        'nx-icon[name="arrow-down"]',
+      ) as HTMLElement;
+      const popoutIcon = nameHeaderElement.querySelector('nx-icon[name="popout"]');
 
       expect(arrowDown).not.toBeNull();
       expect(arrowUp).toBeNull();
-      expect(chevrons.length).toEqual(0);
+      expect(popoutIcon).toBeNull();
     });
   });
 
@@ -241,6 +246,19 @@ describe('NxSort', () => {
   });
 
   describe('a11y', () => {
+    it('has no accessibility violations', async () => {
+      createTestComponent(BasicSortTableComponent);
+      await expectAsync(fixture.nativeElement).toBeAccessible();
+    });
+
+    it('has no accessibility violations when sorted', async () => {
+      createTestComponent(BasicSortTableComponent);
+      const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
+      nameHeaderElement.click();
+      fixture.detectChanges();
+      await expectAsync(fixture.nativeElement).toBeAccessible();
+    });
+
     it('has the correct aria label for an unsorted column', () => {
       createTestComponent(BasicSortTableComponent);
       const nameHeaderElement = fixture.nativeElement.querySelector(

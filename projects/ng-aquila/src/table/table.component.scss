@@ -1,19 +1,9 @@
 @use 'sass:math';
 @use '../../../ng-aquila/src/shared-styles/index' as *;
 
-$cell-border-width: nx-border-size(xs);
-$border-bottom-width: nx-border-size(m);
-$border-top-width: nx-border-size(s);
-$vertical-padding: nx-spacer(s);
-$condensed-vertical-padding: nx-spacer(2xs);
-$horizontal-padding: nx-spacer(s);
-$horizontal-padding-edges: nx-spacer(2xs);
-$sticky-shadow-offset: nx-spacer(3xs);
-$sticky-shadow-size: nx-spacer(3xs);
-
 :host {
   border-spacing: 0;
-  border-bottom: $border-bottom-width solid v(table-border-bottom-color);
+  border-bottom: v(table-border-bottom-width) solid v(table-border-bottom-color);
   width: 100%;
 
   @media screen and (forced-colors: active) {
@@ -25,36 +15,35 @@ $sticky-shadow-size: nx-spacer(3xs);
   @include type-style(table-header-cell);
   color: v(table-header-cell-color);
   background: v(table-header-cell-background-color);
-  border-bottom: $border-bottom-width solid v(table-header-border-bottom-color);
-  border-top: $border-top-width solid v(table-header-border-top-color);
-  padding-top: $vertical-padding - $cell-border-width;
-  padding-bottom: $vertical-padding - $border-bottom-width;
-  padding-left: $horizontal-padding;
-  padding-right: $horizontal-padding;
+  border-bottom: v(table-border-bottom-width) solid v(table-header-border-bottom-color);
+  border-top: v(table-border-top-width) solid v(table-header-border-top-color);
+  padding: v(table-header-padding-top) v(table-cell-horizontal-padding)
+    v(table-header-padding-bottom);
   text-align: left;
   white-space: nowrap;
   vertical-align: top;
   position: relative;
+  min-height: v(table-cell-min-height);
 
   &:first-child {
-    padding-left: $horizontal-padding-edges;
+    padding-left: v(table-cell-horizontal-padding-edge);
   }
 
   &:last-child {
-    padding-right: $horizontal-padding-edges;
+    padding-right: v(table-cell-horizontal-padding-edge);
   }
 
   :host-context([dir='rtl']) & {
     text-align: right;
 
     &:first-child {
-      padding-right: $horizontal-padding-edges;
-      padding-left: $horizontal-padding;
+      padding-right: v(table-cell-horizontal-padding-edge);
+      padding-left: v(table-cell-horizontal-padding);
     }
 
     &:last-child {
-      padding-right: $horizontal-padding;
-      padding-left: $horizontal-padding-edges;
+      padding-right: v(table-cell-horizontal-padding);
+      padding-left: v(table-cell-horizontal-padding-edge);
     }
   }
 }
@@ -62,42 +51,42 @@ $sticky-shadow-size: nx-spacer(3xs);
 :host ::ng-deep .nx-table-cell {
   @include type-style(table-cell);
   color: v(table-cell-color);
-  padding-top: $vertical-padding;
-  padding-bottom: $vertical-padding - $cell-border-width;
-  padding-left: $horizontal-padding;
-  padding-right: $horizontal-padding;
-  border-top: $cell-border-width solid v(table-cell-border-top-color);
+  padding: v(table-cell-vertical-padding) v(table-cell-horizontal-padding);
+  border-top: v(table-border-width) solid v(table-cell-border-top-color);
+  min-height: v(table-cell-min-height);
 
   &:first-child {
-    padding-left: $horizontal-padding-edges;
+    padding-left: v(table-cell-horizontal-padding-edge);
   }
 
   &:last-child {
-    padding-right: $horizontal-padding-edges;
+    padding-right: v(table-cell-horizontal-padding-edge);
   }
 
   :host-context([dir='rtl']) & {
     &:first-child {
-      padding-right: $horizontal-padding-edges;
-      padding-left: $horizontal-padding;
+      padding-right: v(table-cell-horizontal-padding-edge);
+      padding-left: v(table-cell-horizontal-padding);
     }
 
     &:last-child {
-      padding-right: $horizontal-padding;
-      padding-left: $horizontal-padding-edges;
+      padding-right: v(table-cell-horizontal-padding);
+      padding-left: v(table-cell-horizontal-padding-edge);
     }
   }
 }
 
 :host(.nx-table--condensed) {
   ::ng-deep .nx-header-cell {
-    padding-top: $condensed-vertical-padding;
-    padding-bottom: $condensed-vertical-padding;
+    padding-top: v(table-condense-vertical-padding);
+    padding-bottom: v(table-condense-vertical-padding);
+    min-height: v(table-cell-condense-min-height);
   }
 
   ::ng-deep .nx-table-cell {
-    padding-bottom: $condensed-vertical-padding - $cell-border-width;
-    padding-top: $condensed-vertical-padding;
+    padding-bottom: v(table-condense-vertical-padding);
+    padding-top: v(table-condense-vertical-padding);
+    min-height: v(table-cell-condense-min-height);
   }
 
   ::ng-deep .nx-expandable-table-cell {
@@ -105,8 +94,8 @@ $sticky-shadow-size: nx-spacer(3xs);
     padding-top: 0;
 
     .nx-expandable-table-cell__wrapper {
-      padding-bottom: $condensed-vertical-padding - $cell-border-width;
-      padding-top: $condensed-vertical-padding;
+      padding-bottom: v(table-condense-vertical-padding);
+      padding-top: v(table-condense-vertical-padding);
     }
   }
 }
@@ -120,7 +109,8 @@ $sticky-shadow-size: nx-spacer(3xs);
   }
 
   &__wrapper {
-    padding: nx-spacer(s);
+    padding: v(table-header-padding-top) v(table-cell-horizontal-padding)
+      v(table-header-padding-bottom);
   }
 
   &--indented {
@@ -128,20 +118,20 @@ $sticky-shadow-size: nx-spacer(3xs);
   }
 
   &:first-child .nx-cell__wrapper {
-    padding-left: nx-spacer(2xs);
+    padding-left: v(table-cell-horizontal-padding-edge);
 
     :host-context([dir='rtl']) & {
-      padding-right: nx-spacer(2xs);
+      padding-right: v(table-cell-horizontal-padding-edge);
       padding-left: initial;
     }
   }
 
   &:last-child .nx-cell__wrapper {
-    padding-right: nx-spacer(2xs);
+    padding-right: v(table-cell-horizontal-padding-edge);
 
     :host-context([dir='rtl']) & {
       padding-right: initial;
-      padding-left: nx-spacer(2xs);
+      padding-left: v(table-cell-horizontal-padding-edge);
     }
   }
   &.is-expanded {
@@ -188,7 +178,7 @@ $sticky-shadow-size: nx-spacer(3xs);
   }
 
   .nx-table-cell {
-    border-top: $cell-border-width solid v(zebra-table-cell-border-top-color);
+    border-top: v(table-border-width) solid v(zebra-table-cell-border-top-color);
   }
 }
 
@@ -227,10 +217,10 @@ $sticky-shadow-size: nx-spacer(3xs);
   }
 
   &.is-selected {
-    background: v(zebra-table-row-selected-background-color);
+    background: v(selectable-table-row-selected-background-color);
 
     + .nx-expandable-table-row {
-      background: v(zebra-table-row-selected-background-color);
+      background: v(selectable-table-row-selected-background-color);
     }
 
     > .nx-table-cell,
@@ -317,14 +307,13 @@ $sticky-shadow-size: nx-spacer(3xs);
       background-color: v(table-sticky-column-background-color);
 
       &::before {
-        box-shadow: $sticky-shadow-size 0 $sticky-shadow-offset (-$sticky-shadow-size)
-          v(shadow-small-color) inset;
-        right: -$sticky-shadow-size;
-        width: $sticky-shadow-size;
+        content: ' ';
+        position: absolute;
+        right: calc(v(table-sticky-column-shadow-size) * -1);
+        width: v(table-sticky-column-shadow-size);
         top: -1px;
         bottom: -1px;
-        position: absolute;
-        content: ' ';
+        box-shadow: v(table-sticky-first-column-box-shadow);
       }
     }
 
@@ -332,9 +321,8 @@ $sticky-shadow-size: nx-spacer(3xs);
       right: 0;
 
       &::before {
-        left: -$sticky-shadow-size;
-        box-shadow: -$sticky-shadow-size 0 $sticky-shadow-offset (-$sticky-shadow-size)
-          v(shadow-small-color) inset;
+        left: calc(v(table-sticky-column-shadow-size) * -1);
+        box-shadow: v(table-sticky-last-column-box-shadow);
       }
     }
 
@@ -350,7 +338,7 @@ $sticky-shadow-size: nx-spacer(3xs);
     ::ng-deep .nx-table-row--selectable.is-selected & {
       :host(.nx-table--sticky-first) &:first-child,
       :host(.nx-table--sticky-last) &:last-child {
-        background: v(zebra-table-row-selected-background-color);
+        background: v(selectable-table-row-selected-background-color);
       }
     }
 
@@ -388,6 +376,7 @@ $sticky-shadow-size: nx-spacer(3xs);
   }
 }
 
+// resize table is already deprecated
 :host ::ng-deep .nx-table__resize-handle {
   position: absolute;
   right: 0;

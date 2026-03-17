@@ -5,16 +5,6 @@
 }
 
 .nx-toggle-button {
-  display: block;
-  cursor: pointer;
-  appearance: none;
-  border: none;
-  outline: none;
-  background: none;
-  padding: 0;
-  line-height: nx-line-height(2xs);
-  height: nx-line-height(2xs);
-
   .nx-toggle-button__icon {
     transform: rotate(0);
     transition: transform 200ms ease;

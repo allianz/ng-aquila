@@ -1,3 +1,4 @@
+import { NxPlainButtonComponent } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
@@ -36,7 +37,7 @@ export interface NxExpandable {
   templateUrl: './toggle-button.component.html',
   styleUrls: ['./toggle-button.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NxIconModule],
+  imports: [NxIconModule, NxPlainButtonComponent],
 })
 export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
   _expanded = false;

@@ -7,21 +7,17 @@
   aria-live="polite"
 >
   <ng-content></ng-content>
-  <div class="nx-sort-header__icons-container" [attr.aria-label]="_getAriaLabel()">
-    @if (!_isSorted()) {
-      <nx-icon name="chevron-up-small" class="nx-sort-header__unsorted" aria-hidden="true">
-      </nx-icon>
-    }
-    @if (!_isSorted()) {
-      <nx-icon name="chevron-down-small" class="nx-sort-header__unsorted" aria-hidden="true">
-      </nx-icon>
-    }
 
-    @if (_isSortedAscending()) {
-      <nx-icon name="arrow-left" class="nx-sort-header__ascend" aria-hidden="true"> </nx-icon>
-    }
-    @if (_isSortedDescending()) {
-      <nx-icon name="arrow-right" class="nx-sort-header__descend" aria-hidden="true"> </nx-icon>
+  <div
+    [attr.aria-label]="_getAriaLabel()"
+    class="nx-sort-header__icon-container nx-sort-header__icons-container"
+  >
+    @if (!_isSorted()) {
+      <nx-icon name="popout" class="nx-sort-header__unsorted" aria-hidden="true" />
+    } @else if (_isSortedAscending()) {
+      <nx-icon name="arrow-up" class="nx-sort-header__ascend" aria-hidden="true" />
+    } @else if (_isSortedDescending()) {
+      <nx-icon name="arrow-down" class="nx-sort-header__descend" aria-hidden="true" />
     }
   </div>
 </div>

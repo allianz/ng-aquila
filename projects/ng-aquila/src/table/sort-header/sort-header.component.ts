@@ -18,6 +18,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { NxSortDirective } from './sort.directive';
 import { NxSortHeaderIntl } from './sort-header-intl';
+import { NxPlainButtonComponent } from '@allianz/ng-aquila/button';
 
 @Component({
   selector: 'th[nxSortHeaderCell]',
@@ -27,9 +28,10 @@ import { NxSortHeaderIntl } from './sort-header-intl';
   host: {
     '(click)': '_handleClick()',
     '(keydown)': '_onKeydown($event)',
+    class: 'nx-sort-header',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NxIconModule],
+  imports: [NxIconModule, NxPlainButtonComponent],
 })
 export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   /** Sets the key of this sort header. */

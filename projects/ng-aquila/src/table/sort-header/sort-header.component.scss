@@ -1,45 +1,16 @@
 @use '../../../../ng-aquila/src/shared-styles/index' as *;
 
-$icon-width: 9px; // approximation: chevron icon svg path
-$icon-height: 9px; // approximation: chevron icon svg path
-$icon-shift: -1px; // approximation: shifting icon position
-
 :host {
   cursor: pointer;
-}
 
-.nx-sort-header__icons-container {
-  display: flex;
-  margin-left: nx-spacer(s);
-  vertical-align: bottom;
-  width: $icon-width;
+  .nx-sort-header__icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  position: relative;
-  flex-direction: column;
-  justify-content: center;
-
-  :host-context([dir='rtl']) & {
-    margin-right: initial;
-    margin-left: nx-spacer(s);
-  }
-
-  .nx-sort-header {
-    &__unsorted {
-      font-size: nx-font-size(2xs);
-      position: relative;
-      font-weight: nx-font-weight(semibold);
-      width: $icon-width;
-      height: $icon-height;
-    }
-
-    &__ascend,
-    &__descend {
-      font-weight: nx-font-weight(regular);
-      font-size: var(--table-sort-icon-size);
-      width: $icon-width;
-      top: $icon-shift;
-      position: relative;
-      transform: rotate(90deg);
+    nx-icon {
+      font-size: v(plain-button-icon-size);
+      margin-left: v(table-header-sort-icon-margin-left);
     }
   }
 }

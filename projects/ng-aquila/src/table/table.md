@@ -4,7 +4,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-a1Light: true
+a1Densities: true
 ---
 
 This component is implemented on top of the native HTML table `<table></table>` and adds the needed styling. In addition, there is an expandable table option for advanced use cases.
@@ -83,6 +83,10 @@ export class MyIntl extends NxSortHeaderIntl {
 ### Sorting header
 
 This example shows how you can implement a basic sorting functionality for a table with `nxSort` and `nxSortHeaderCell`. As we don't know how your data looks like, you can implement the actual sorting function by yourself and call the function every time an `(sortChange)` event is outputted.
+
+<div class="docs-deprecation-warning">
+  <strong>Deprecation Warning:</strong> The CSS classes <code>nx-sort-header__icons-container</code>, <code>nx-sort-header__unsorted</code>, <code>nx-sort-header__ascend</code>, and <code>nx-sort-header__descend</code> are deprecated and will be removed in the next major version (v22). If you need to query the sort header element, use the class <code>nx-sort-header</code> instead.
+</div>
 
 <!-- example(table-sorting) -->
 

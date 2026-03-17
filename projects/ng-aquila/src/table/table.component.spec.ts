@@ -146,18 +146,35 @@ describe(NxTableComponent.name, () => {
       expect(tableElement.nativeElement).toHaveClass(STICKY_LAST_CSS_CLASS);
     });
   });
+
+  describe('a11y', () => {
+    it('has no accessibility violations in simple table', async () => {
+      createTestComponent(SimpleTableComponent);
+      await expectAsync(fixture.nativeElement).toBeAccessible();
+    });
+
+    it('has no accessibility violations in zebra table', async () => {
+      createTestComponent(ZebraTableComponent);
+      await expectAsync(fixture.nativeElement).toBeAccessible();
+    });
+
+    it('has no accessibility violations in condensed table', async () => {
+      createTestComponent(CondensedTableComponent);
+      await expectAsync(fixture.nativeElement).toBeAccessible();
+    });
+  });
 });
 
 @Component({
   template: `<table nxTable>
     <thead>
       <tr nxTableRow>
-        <th nxHeaderCell></th>
+        <th nxHeaderCell>Header</th>
       </tr>
     </thead>
     <tbody>
       <tr nxTableRow>
-        <td nxCell></td>
+        <td nxCell>Data</td>
       </tr>
     </tbody>
   </table>`,
@@ -170,12 +187,12 @@ class SimpleTableComponent extends TableTest {}
   template: `<table nxTable zebra>
     <thead>
       <tr nxTableRow>
-        <th nxHeaderCell></th>
+        <th nxHeaderCell>Header</th>
       </tr>
     </thead>
     <tbody>
       <tr nxTableRow>
-        <td nxTableCell></td>
+        <td nxTableCell>Data</td>
       </tr>
     </tbody>
   </table>`,
@@ -206,12 +223,12 @@ class ExpandableNonZebraTableComponent extends TableTest {}
   template: `<table nxTable condensed>
     <thead>
       <tr nxTableRow>
-        <th nxHeaderCell></th>
+        <th nxHeaderCell>Header</th>
       </tr>
     </thead>
     <tbody>
       <tr nxTableRow>
-        <td nxTableCell></td>
+        <td nxTableCell>Data</td>
       </tr>
     </tbody>
   </table>`,
