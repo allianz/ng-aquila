@@ -1206,7 +1206,7 @@ $nx-theme: (
   // -------------------------------------------------------------------------- //
   formfield-control-height: 32px,
   formfield-error-input-font-weight: 700,
-  formfield-input-padding: 0 0 3px 0,
+  formfield-input-container-padding: 0 0 3px 0,
   formfield-border-color: ui-06,
   formfield-active-border-color: hover-link,
   formfield-background-color: transparent,
@@ -1280,6 +1280,7 @@ $nx-theme: (
   formfield-outline-input-native-placeholder-letter-spacing:
     formfield-outline-control-letter-spacing,
   formfield-outline-input-native-placeholder-color: ui-05,
+  formfield-outline-prefix-suffix-padding-horizontal: formfield-outline-spacing,
   formfield-input-native-placeholder-disabled-color: inherit,
   header-font-size: paragraph-03-font-size,
   header-line-height: paragraph-03-line-height,

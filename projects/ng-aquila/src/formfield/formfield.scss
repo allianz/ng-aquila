@@ -63,7 +63,7 @@
   border-bottom: v(formfield-border-width) solid v(formfield-border-color);
   height: v(formfield-control-height);
   flex: auto;
-  padding: v(formfield-input-padding);
+  padding: v(formfield-input-container-padding);
 }
 
 .nx-formfield__input {
@@ -153,7 +153,7 @@
   border-bottom-style: solid;
   border-bottom-color: transparent;
   border-bottom-width: v(formfield-border-width);
-  padding: v(formfield-input-padding);
+  padding: v(formfield-input-container-padding);
 
   [dir='rtl'] & {
     margin-right: v(formfield-horizontal-margin);
@@ -307,6 +307,7 @@
   }
 
   .nx-formfield__input-container {
+    padding: 0;
     border-width: v(formfield-border-width);
     border-color: v(formfield-outline-border-color);
     background-color: v(formfield-outline-background-color);
@@ -326,6 +327,18 @@
         padding-right: v(formfield-outline-licence-plate-padding-horizontal);
       }
     }
+
+    &:has(.nx-formfield__prefix) {
+      input {
+        padding-inline-start: v(formfield-outline-prefix-suffix-padding-horizontal);
+      }
+    }
+
+    &:has(.nx-formfield__suffix) {
+      input {
+        padding-inline-end: v(formfield-outline-prefix-suffix-padding-horizontal);
+      }
+    }
   }
 
   input,
@@ -335,23 +348,13 @@
   }
 
   .nx-formfield__suffix {
-    margin-right: v(formfield-outline-spacing);
-    margin-left: 0;
-
-    [dir='rtl'] & {
-      margin-right: 0;
-      margin-left: v(formfield-outline-spacing);
-    }
+    margin-inline-end: v(formfield-outline-spacing);
+    margin-inline-start: 0;
   }
 
   .nx-formfield__prefix {
-    margin-left: v(formfield-outline-spacing);
-    margin-right: 0;
-
-    [dir='rtl'] & {
-      margin-right: v(formfield-outline-spacing);
-      margin-left: 0;
-    }
+    margin-inline-start: v(formfield-outline-spacing);
+    margin-inline-end: 0;
   }
 
   .nx-formfield__input textarea.nx-input {
@@ -435,6 +438,11 @@
     background-color: v(formfield-readonly-background-color);
   }
   color: v(formfield-readonly-text-color);
+
+  .nx-formfield__prefix,
+  .nx-formfield__suffix {
+    color: v(formfield-readonly-text-color);
+  }
 }
 
 .nx-formfield:not(.has-outline).is-readonly:not(.is-disabled) {
@@ -560,6 +568,11 @@
   &.has-outline .nx-formfield__input-container {
     border-color: v(formfield-disabled-border-color);
     background-color: v(formfield-disabled-background-color);
+  }
+
+  .nx-formfield__prefix,
+  .nx-formfield__suffix {
+    color: v(formfield-disabled-text-color);
   }
 
   input,
