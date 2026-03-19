@@ -27,6 +27,21 @@
   }
 }
 
+::ng-deep {
+  .nx-menu .nx-menu__link,
+  .nx-menu__item .nx-menu__link {
+    padding-inline: v(menu-link-outer-padding);
+    margin-inline: calc(-1 * v(menu-link-outer-padding));
+
+    &:hover {
+      background: v(menu-link-hover-background-color);
+    }
+    &:active {
+      background: v(menu-link-active-background-color);
+    }
+  }
+}
+
 ::ng-deep .nx-menu__link.cdk-keyboard-focused {
   @include focus-style;
   border-radius: nx-border-radius(s);

@@ -24,9 +24,13 @@ The `[nxMenuButton]` component is meant to be ether a top level link or a expand
 
 Every menu has a number of links. Those are usually displayed below an expanded `[nxMenuButton]` button. The `[nxMenuLink]` directive can be applied to a `<a>` tag to get the correct styling.
 
+**Please note that the `[nxMenuLink]` should be used inside an `<nx-menu>` component.**
+
 <!-- example(menu-link) -->
 
 ## Menu Item
+
+**Please note that the`[nxMenuItem]` should be used inside an `<nx-menu>` component.**
 
 The `[nxMenuItem]` is used to structure sections within the menu. It can contain a series of `[nxMenuLink]` aswell as any other content. The item supports two different indentation levels, e.g. menues with icons in the buttons can use the large indentation while others can use the default.
 
