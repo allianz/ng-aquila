@@ -1,8 +1,6 @@
 @use '../shared-styles/index' as *;
 
-$tooltip-max-width: 408px;
-$tooltip-arrow-size: nx-spacer(2xs);
-$tooltip-arrow-offset: -$tooltip-arrow-size * 0.5;
+$tooltip-arrow-offset: calc(#{v(tooltip-arrow-size)} * -0.5);
 
 ::ng-deep .nx-tooltip-panel {
   // The overlay reference updates the pointer-events style property directly on the HTMLElement
@@ -16,8 +14,8 @@ $tooltip-arrow-offset: -$tooltip-arrow-size * 0.5;
   color: v(tooltip-text-color);
   background-color: v(tooltip-background-color);
   border-radius: v(tooltip-border-radius);
-  max-width: $tooltip-max-width;
-  padding: 4px 8px;
+  max-width: v(tooltip-max-width);
+  padding: v(tooltip-padding-vertical) v(tooltip-padding-horizontal);
   word-break: break-word;
 
   &.fade-in {
@@ -33,8 +31,8 @@ $tooltip-arrow-offset: -$tooltip-arrow-size * 0.5;
 
 .nx-tooltip__arrow {
   position: absolute;
-  width: $tooltip-arrow-size;
-  height: $tooltip-arrow-size;
+  width: v(tooltip-arrow-size);
+  height: v(tooltip-arrow-size);
   background-color: inherit;
   z-index: -1;
   opacity: inherit; //IE FIX
