@@ -22,17 +22,17 @@
         >
           {{ showSourceCode ? 'hide' : 'show code' }}
         </button>
-        <nx-link>
-          <a
-            [routerLink]="'/examples/' + example"
-            nxTooltip="View example in fullscreen"
-            nxTooltipPosition="top"
-            queryParamsHandling="preserve"
-            class="nxv-fullscreen-button"
-          >
-            <nx-icon name="expand" aria-hidden="true"></nx-icon>
-          </a>
-        </nx-link>
+        <button
+          [routerLink]="'/examples/' + example"
+          nxTooltip="View example in fullscreen"
+          nxTooltipPosition="top"
+          queryParamsHandling="preserve"
+          class="nxv-fullscreen-button"
+          nxPlainButton
+          type="button"
+        >
+          <nx-icon name="popout" aria-hidden="true"></nx-icon>
+        </button>
         @if (!config?.hideStackblitzButton) {
           <nxv-stack-blitz-button [example]="example"></nxv-stack-blitz-button>
         }
