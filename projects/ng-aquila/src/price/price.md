@@ -1,5 +1,6 @@
 ---
 title: Price
+description: Formatted price display with locale-aware currency formatting
 category: components
 b2c: true
 expert: true

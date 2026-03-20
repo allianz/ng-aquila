@@ -1,5 +1,6 @@
 ---
 title: Indicator
+description: Status indicator dots
 category: components
 b2c: true
 expert: true

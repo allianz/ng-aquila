@@ -1,5 +1,6 @@
 ---
 title: Headline
+description: Heading typography (h1-h6)
 category: components
 b2c: true
 expert: true

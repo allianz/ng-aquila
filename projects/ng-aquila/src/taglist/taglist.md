@@ -1,5 +1,6 @@
 ---
 title: Tag
+description: Tag/chip list with add/remove
 category: components
 b2c: true
 expert: true

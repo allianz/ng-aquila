@@ -1,5 +1,6 @@
 ---
 title: Side Navigation
+description: Collapsible sidebar navigation
 category: components
 b2c: true
 expert: true

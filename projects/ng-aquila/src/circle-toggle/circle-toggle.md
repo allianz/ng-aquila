@@ -1,5 +1,6 @@
 ---
 title: Circle Toggle
+description: Circular toggle buttons for option selection
 category: components
 b2c: true
 expert: true

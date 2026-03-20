@@ -1,5 +1,6 @@
 ---
 title: Natural Language Form
+description: Sentence-style form layout
 category: components
 b2c: true
 expert: true

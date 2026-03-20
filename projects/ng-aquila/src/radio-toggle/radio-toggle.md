@@ -1,5 +1,6 @@
 ---
 title: Toggle Button
+description: Toggle-style radio button group
 category: components
 b2c: true
 expert: true

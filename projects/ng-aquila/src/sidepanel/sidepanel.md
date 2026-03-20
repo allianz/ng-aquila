@@ -1,5 +1,6 @@
 ---
 title: Sidepanel
+description: Slide-in side panel
 category: components
 b2c: false
 expert: true

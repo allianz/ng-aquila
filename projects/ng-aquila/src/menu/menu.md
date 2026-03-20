@@ -1,5 +1,6 @@
 ---
 title: Menu
+description: Navigation menu component
 category: components
 b2c: false
 expert: true

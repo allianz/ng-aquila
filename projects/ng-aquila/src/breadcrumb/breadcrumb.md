@@ -1,5 +1,6 @@
 ---
 title: Breadcrumb
+description: Navigation breadcrumb trail
 category: components
 b2c: true
 expert: true

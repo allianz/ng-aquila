@@ -1,5 +1,6 @@
 ---
 title: Notifications
+description: Inline message banners (info, success, warning, error)
 category: components
 b2c: true
 expert: true

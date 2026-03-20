@@ -1,5 +1,6 @@
 ---
 title: Number Stepper
+description: Numeric input with increment/decrement
 category: components
 b2c: true
 expert: true

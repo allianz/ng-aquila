@@ -1,5 +1,6 @@
 ---
 title: Pagination
+description: Page navigation for paged content
 category: components
 b2c: true
 expert: true

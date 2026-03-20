@@ -1,5 +1,6 @@
 ---
 title: Badge
+description: Status badges and labels
 category: components
 b2c: true
 expert: true

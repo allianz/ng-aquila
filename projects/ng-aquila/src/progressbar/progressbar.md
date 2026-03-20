@@ -1,5 +1,6 @@
 ---
 title: Progress Bar
+description: Progress bar indicator
 category: components
 b2c: true
 expert: true

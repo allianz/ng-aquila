@@ -1,5 +1,6 @@
 ---
 title: Base Components
+description: Base label and error message components
 category: components
 b2c: true
 expert: true

@@ -1,5 +1,6 @@
 ---
 title: Video
+description: Video player component
 category: components
 b2c: true
 expert: true

@@ -1,5 +1,6 @@
 ---
 title: Button
+description: Buttons with variants (primary, secondary, tertiary, danger, cta)
 category: components
 b2c: true
 expert: true

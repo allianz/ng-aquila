@@ -1,5 +1,6 @@
 ---
 title: Tile
+description: Selectable tile with icon, label, and hint
 category: components
 b2c: true
 expert: true

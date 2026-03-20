@@ -1,5 +1,6 @@
 ---
 title: Input Field
+description: Text input directive (used inside formfield)
 category: components
 b2c: true
 expert: true

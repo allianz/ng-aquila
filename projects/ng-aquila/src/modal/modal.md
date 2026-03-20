@@ -1,5 +1,6 @@
 ---
 title: Modal
+description: Dialog/modal overlay
 category: components
 b2c: true
 expert: true

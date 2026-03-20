@@ -1,5 +1,6 @@
 ---
 title: Dynamic Tables
+description: Configurable data tables
 category: components
 b2c: true
 expert: true

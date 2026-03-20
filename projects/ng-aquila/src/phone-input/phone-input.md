@@ -1,5 +1,6 @@
 ---
 title: Phone Input
+description: International phone number input
 category: components
 b2c: true
 expert: true

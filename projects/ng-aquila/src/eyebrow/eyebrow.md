@@ -1,5 +1,6 @@
 ---
 title: Eyebrow
+description: Small text above headlines for additional context
 category: components
 a1Full: true
 ---

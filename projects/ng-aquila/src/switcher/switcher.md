@@ -1,5 +1,6 @@
 ---
 title: Switcher
+description: Toggle switch control
 category: components
 b2c: true
 expert: true

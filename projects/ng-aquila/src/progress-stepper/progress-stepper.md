@@ -1,5 +1,6 @@
 ---
 title: Progress Indicator
+description: Multi-step wizard/progress indicator
 category: components
 b2c: true
 expert: true

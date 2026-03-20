@@ -1,5 +1,6 @@
 ---
 title: Radio Button
+description: Radio button form control
 category: components
 b2c: true
 expert: true

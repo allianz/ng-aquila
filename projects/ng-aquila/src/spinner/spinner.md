@@ -1,5 +1,6 @@
 ---
 title: Spinner
+description: Loading spinner
 category: components
 b2c: true
 expert: true

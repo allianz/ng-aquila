@@ -1,5 +1,6 @@
 ---
 title: Signal Button
+description: Button with integrated status signal
 category: components
 b2c: true
 expert: true

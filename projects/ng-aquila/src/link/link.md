@@ -1,5 +1,6 @@
 ---
 title: Link
+description: Styled link component
 category: components
 b2c: true
 expert: true

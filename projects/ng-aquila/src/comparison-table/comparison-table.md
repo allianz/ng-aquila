@@ -1,5 +1,6 @@
 ---
 title: Comparison Table
+description: Product/feature comparison tables
 category: components
 b2c: true
 expert: true

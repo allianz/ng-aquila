@@ -1,5 +1,6 @@
 ---
 title: Date Field
+description: Date input with datepicker
 category: components
 b2c: true
 expert: true

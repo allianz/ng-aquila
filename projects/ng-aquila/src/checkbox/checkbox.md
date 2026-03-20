@@ -1,5 +1,6 @@
 ---
 title: Checkbox
+description: Checkbox form control
 category: components
 b2c: true
 expert: true

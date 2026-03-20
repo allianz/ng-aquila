@@ -1,5 +1,6 @@
 ---
 title: Images
+description: Responsive image component
 category: components
 b2c: true
 expert: true

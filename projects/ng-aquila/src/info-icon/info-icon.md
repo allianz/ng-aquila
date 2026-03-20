@@ -1,5 +1,6 @@
 ---
 title: Info Icon
+description: Icon button that reveals contextual information via a popover
 category: components
 b2c: true
 expert: true

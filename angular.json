@@ -132,6 +132,7 @@
             },
             "assets": [
               "projects/opensource-documentation/src/favicon.png",
+              "projects/opensource-documentation/src/llms.txt",
               "projects/opensource-documentation/src/assets",
               {
                 "glob": "**/*",

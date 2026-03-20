@@ -1,5 +1,6 @@
 ---
 title: Dropdown
+description: Select dropdown for single or multi-selection
 category: components
 b2c: true
 expert: true

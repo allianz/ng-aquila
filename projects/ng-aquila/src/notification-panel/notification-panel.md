@@ -1,5 +1,6 @@
 ---
 title: Notification panel
+description: Notification dropdown panel
 category: components
 b2c: false
 expert: true

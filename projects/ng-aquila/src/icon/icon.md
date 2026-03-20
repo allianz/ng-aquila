@@ -1,5 +1,6 @@
 ---
 title: Icons
+description: SVG icon system
 category: components
 b2c: true
 expert: true

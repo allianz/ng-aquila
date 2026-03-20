@@ -1,5 +1,6 @@
 ---
 title: Small stage
+description: Hero/stage banner area
 category: components
 b2c: true
 expert: true

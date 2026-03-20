@@ -1,5 +1,6 @@
 ---
 title: Virtual Scroll
+description: Efficient rendering of large lists by virtualizing viewport items
 category: components
 b2c: true
 expert: true

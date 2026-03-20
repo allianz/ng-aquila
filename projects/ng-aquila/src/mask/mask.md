@@ -1,5 +1,6 @@
 ---
 title: Input Mask
+description: Input mask for formatted text entry
 category: components
 b2c: true
 expert: true

@@ -1,5 +1,6 @@
 ---
 title: Divider
+description: Horizontal divider line
 category: components
 b2c: true
 expert: true

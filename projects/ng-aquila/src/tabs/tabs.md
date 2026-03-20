@@ -1,5 +1,6 @@
 ---
 title: Tabs
+description: Tabbed content navigation
 category: components
 b2c: true
 expert: true

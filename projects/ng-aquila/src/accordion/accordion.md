@@ -1,5 +1,6 @@
 ---
 title: Accordion
+description: Expandable panels for collapsible content sections
 category: components
 b2c: true
 expert: true

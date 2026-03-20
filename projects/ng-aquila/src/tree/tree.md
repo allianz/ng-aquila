@@ -1,5 +1,6 @@
 ---
 title: Tree
+description: Hierarchical tree view
 category: components
 b2c: false
 expert: true

@@ -1,5 +1,6 @@
 ---
 title: Cards
+description: Content card containers
 category: components
 b2c: true
 expert: true

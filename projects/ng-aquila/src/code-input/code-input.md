@@ -1,5 +1,6 @@
 ---
 title: Code Input
+description: Multi-digit code entry (e.g., OTP)
 category: components
 b2c: true
 expert: true

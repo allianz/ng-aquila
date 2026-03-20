@@ -1,5 +1,6 @@
 ---
 title: Page Search
+description: In-page search functionality
 category: components
 b2c: true
 expert: true

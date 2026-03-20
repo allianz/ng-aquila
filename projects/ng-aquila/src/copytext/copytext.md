@@ -1,5 +1,6 @@
 ---
 title: Copytext
+description: Body text with consistent typography
 category: components
 b2c: true
 expert: true

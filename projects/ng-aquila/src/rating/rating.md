@@ -1,5 +1,6 @@
 ---
 title: Rating
+description: Star rating input
 category: components
 b2c: true
 expert: true

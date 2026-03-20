@@ -1,5 +1,6 @@
 ---
 title: Popover
+description: Popover tooltip with rich content
 category: components
 b2c: true
 expert: true

@@ -1,5 +1,6 @@
 ---
 title: Tooltip
+description: Simple text tooltip on hover
 category: components
 b2c: true
 expert: true

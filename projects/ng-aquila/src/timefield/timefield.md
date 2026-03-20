@@ -1,5 +1,6 @@
 ---
 title: Timefield
+description: Time input field
 category: components
 b2c: true
 expert: true

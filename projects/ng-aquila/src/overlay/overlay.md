@@ -1,5 +1,6 @@
 ---
 title: Overlay
+description: Programmatic overlay positioning service
 category: components
 b2c: true
 expert: true

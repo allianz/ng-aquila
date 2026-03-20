@@ -1,5 +1,6 @@
 ---
 title: Text
+description: Inline text styling utilities including attention colors
 category: components
 b2c: true
 expert: true

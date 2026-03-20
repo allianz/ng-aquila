@@ -1,5 +1,6 @@
 ---
 title: Toolbar
+description: Action toolbar
 category: components
 b2c: false
 expert: true

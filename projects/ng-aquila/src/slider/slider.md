@@ -1,5 +1,6 @@
 ---
 title: Slider
+description: Range slider input
 category: components
 b2c: true
 expert: true

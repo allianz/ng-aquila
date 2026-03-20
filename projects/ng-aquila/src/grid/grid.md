@@ -1,5 +1,6 @@
 ---
 title: Grid
+description: 12-column responsive grid layout system
 category: components
 desc:  grid is based on 12 columns with tiers spread over the given set of breakpoints. That way, you can maintain different layouts corresponding to each group of devices
 b2c: true

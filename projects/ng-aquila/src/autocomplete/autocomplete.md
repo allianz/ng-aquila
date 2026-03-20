@@ -1,5 +1,6 @@
 ---
 title: Autocomplete
+description: Input with typeahead suggestions
 category: components
 b2c: true
 expert: true

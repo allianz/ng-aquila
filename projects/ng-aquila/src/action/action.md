@@ -1,5 +1,6 @@
 ---
 title: Action
+description: Clickable action items for navigation or menus
 category: components
 b2c: true
 expert: true
