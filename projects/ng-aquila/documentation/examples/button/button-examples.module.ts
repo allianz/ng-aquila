@@ -17,6 +17,7 @@ import { ButtonMediumExampleComponent } from './button-medium/button-medium-exam
 import { ButtonNegativeExampleComponent } from './button-negative/button-negative-example';
 import { ButtonPlainExampleComponent } from './button-plain/button-plain-example';
 import { ButtonPlainA1ExampleComponent } from './button-plain-a1/button-plain-a1-example';
+import { ButtonPlainInverseExampleComponent } from './button-plain-inverse/button-plain-inverse-example';
 import { ButtonSmallExampleComponent } from './button-small/button-small-example';
 import { ButtonSmallMediumExampleComponent } from './button-small-medium/button-small-medium-example';
 import { ButtonWithIconExampleComponent } from './button-with-icon/button-with-icon-example';
@@ -36,6 +37,7 @@ const EXAMPLES = [
   ButtonIconIndicatorExampleComponent,
   AnchorButtonExampleComponent,
   ButtonPlainA1ExampleComponent,
+  ButtonPlainInverseExampleComponent,
   ButtonLoadingExampleComponent,
 ];
 
@@ -67,6 +69,7 @@ export class ButtonExamplesModule {
       'button-icon-indicator': ButtonIconIndicatorExampleComponent,
       'anchor-button': AnchorButtonExampleComponent,
       'button-plain-a1': ButtonPlainA1ExampleComponent,
+      'button-plain-inverse': ButtonPlainInverseExampleComponent,
       'button-loading': ButtonLoadingExampleComponent,
     };
   }

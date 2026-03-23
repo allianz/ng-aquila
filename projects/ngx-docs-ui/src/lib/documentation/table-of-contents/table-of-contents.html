@@ -6,7 +6,7 @@
     <a
       [routerLink]="_rootUrl"
       [fragment]="link.id"
-      class="docs-level-{{link.type}} docs-link"
+      [class]="`docs-level-${link.type} docs-link ${link.visibility ?? ''}`"
       [class.docs-private]="link.private"
       [class.docs-public]="link.public"
       (click)="scrollIntoview(link.id)"

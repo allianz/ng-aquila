@@ -34,6 +34,7 @@ export type NxPlainButtonVariant = 'primary' | 'secondary';
     '[class.nx-plain-button--danger]': 'critical()',
     '[class.nx-plain-button--secondary]': 'variant() === "secondary"',
     '[class.nx-plain-button--small]': 'size() === "small"',
+    '[class.nx-plain-button--inverse]': 'inverse()',
     '[class.nx-button--loading]': 'loading()',
     '[class.nx-button--active]': '_active()',
     '[attr.disabled]': 'disabled() || null',
@@ -75,6 +76,11 @@ export class NxPlainButtonComponent implements NxTriggerButton, AfterViewInit {
 
   /** Whether the button should be disabled. */
   readonly disabled = input<boolean, BooleanInput>(false, {
+    transform: booleanAttribute,
+  });
+
+  /** Whether the button should use the inverse color (for use on dark/colored backgrounds). */
+  readonly inverse = input<boolean, BooleanInput>(false, {
     transform: booleanAttribute,
   });
 

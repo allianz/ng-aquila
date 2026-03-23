@@ -14,6 +14,7 @@ import { takeUntil } from 'rxjs/operators';
 
 const DOCS_PRIVATE_CLASS_SELECTOR = '.docs-private';
 const DOCS_PUBLIC_CLASS_SELECTOR = '.docs-public';
+const DOCS_SECTION_VISIBILITY_CLASSES = ['docs-a1', 'docs-hide-a1', 'docs-hide-ndbx'] as const;
 
 export interface Link {
   /* id of the section*/
@@ -30,6 +31,9 @@ export interface Link {
 
   /* If the anchor should only be shown in the public documentation. */
   public: boolean;
+
+  /* If the anchor should only be shown in the A1 documentation. */
+  visibility: string | null;
 }
 
 @Component({
@@ -114,6 +118,9 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
           id: header.id,
           private: header.matches(`${DOCS_PRIVATE_CLASS_SELECTOR} .${header.classList[0]}`),
           public: header.matches(`${DOCS_PUBLIC_CLASS_SELECTOR} .${header.classList[0]}`),
+          visibility:
+            DOCS_SECTION_VISIBILITY_CLASSES.find((className) => header.closest(`.${className}`)) ??
+            null,
         });
       }
     }

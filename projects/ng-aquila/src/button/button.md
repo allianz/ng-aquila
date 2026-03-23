@@ -76,6 +76,16 @@ For One Allianz the plain button supports new API options `size` and `variant`.
 <!-- example(button-plain-a1) -->
 </div>
 
+<div class="docs-hide-ndbx">
+
+#### Inverse
+
+Use the `inverse` input to display the plain button on dark or colored backgrounds.
+
+<!-- example(button-plain-inverse) -->
+
+</div>
+
 ### Anchor Button
 
 You can use an `<a>` instead of a `<button>` element, in case you want to have an anchor styled like a button.

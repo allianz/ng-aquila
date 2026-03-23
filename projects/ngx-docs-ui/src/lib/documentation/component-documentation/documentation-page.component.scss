@@ -20,22 +20,22 @@ main {
   flex: 1 0 auto;
 }
 
-:host ::ng-deep .docs-a1 {
-  display: none;
-}
+:host ::ng-deep {
+  .docs-a1 {
+    display: none;
+  }
 
-:host ::ng-deep .theme-a1 .docs-a1 {
-  display: block;
-}
+  .theme-a1 {
+    .docs-a1 {
+      display: block;
+    }
 
-:host ::ng-deep .theme-a1 .docs-hide-a1 {
-  display: none;
-}
+    .docs-hide-a1 {
+      display: none;
+    }
+  }
 
-:host ::ng-deep .theme-ndbx .docs-hide-ndbx {
-  display: none;
-}
-
-:host ::ng-deep .theme-aquila .docs-hide-aquila {
-  display: none;
+  .theme-ndbx .docs-hide-ndbx {
+    display: none;
+  }
 }

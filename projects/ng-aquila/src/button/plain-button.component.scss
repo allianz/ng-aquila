@@ -111,18 +111,54 @@
   }
 }
 
-:host.nx-plain-button--danger {
-  color: v(plain-button-danger-color);
+:host.nx-plain-button--inverse {
+  color: v(plain-button-inverse-color);
 
   &:hover {
-    color: v(plain-button-danger-hover-color);
+    color: v(plain-button-inverse-hover-color);
   }
 
   // reset hover styles for devices that don't support hover
   @media (hover: none) {
     &:hover {
-      color: v(plain-button-danger-color);
+      color: v(plain-button-inverse-color);
     }
+  }
+
+  &:active,
+  &.nx-button--active {
+    color: v(plain-button-inverse-active-color);
+  }
+
+  &[disabled] {
+    color: v(plain-button-inverse-disabled-color);
+    cursor: not-allowed;
+  }
+}
+
+:host.nx-plain-button--secondary.nx-plain-button--inverse {
+  color: v(plain-button-secondary-inverse-color);
+
+  &:hover {
+    color: v(plain-button-secondary-inverse-hover-color);
+  }
+
+  &:active,
+  &.nx-button--active {
+    color: v(plain-button-secondary-inverse-active-color);
+  }
+
+  &[disabled] {
+    color: v(plain-button-secondary-inverse-disabled-color);
+    cursor: not-allowed;
+  }
+}
+
+:host.nx-plain-button--danger {
+  color: v(plain-button-danger-color);
+
+  &:hover {
+    color: v(plain-button-danger-hover-color);
   }
 
   &:active,
@@ -132,6 +168,19 @@
 
   &[disabled] {
     color: v(plain-button-danger-disabled-color);
+  }
+}
+
+:host.nx-plain-button--danger.nx-plain-button--inverse {
+  color: v(plain-button-danger-inverse-color);
+
+  &:hover {
+    color: v(plain-button-danger-inverse-hover-color);
+  }
+
+  &:active,
+  &.nx-button--active {
+    color: v(plain-button-danger-inverse-active-color);
   }
 }
 
