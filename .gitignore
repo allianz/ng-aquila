@@ -64,6 +64,3 @@ Thumbs.db
 
 # MCP
 /projects/ng-aquila/mcp/generated
-
-# Skill (generated test artifact)
-SKILL.md
