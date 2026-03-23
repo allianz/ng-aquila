@@ -8,8 +8,7 @@
   "license": "MIT",
   "bin": {
     "ng-aquila-mcp": "mcp/src/index.js",
-    "ng-aquila-add-mcp-server": "mcp/src/add-mcp-server.js",
-    "ng-aquila-add-skill": "mcp/src/add-skill.js"
+    "ng-aquila-add-mcp-server": "mcp/src/add-mcp-server.js"
   },
   "peerDependencies": {
     "@angular/cdk": "^21.0.0",
