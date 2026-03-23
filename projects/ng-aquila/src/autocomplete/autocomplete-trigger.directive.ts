@@ -774,6 +774,7 @@ export class NxAutocompleteTriggerDirective
     const isRtl = this._dir?.value === 'rtl';
     // HINT: somehow setting margin breaks overlay positioning for rtl
     const viewPortMargin = isRtl ? 0 : 16;
+    const offsetY = this._getOverlayOffsetY();
     this._positionStrategy = this._overlay
       .position()
       .flexibleConnectedTo(this._getConnectedElement())
@@ -785,11 +786,31 @@ export class NxAutocompleteTriggerDirective
       // in the overlay only being 16px in height. this change disabled this code path for now
       .withGrowAfterOpen(true)
       .withPositions([
-        { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' },
-        { originX: 'start', originY: 'top', overlayX: 'start', overlayY: 'bottom' },
+        { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top', offsetY },
+        {
+          originX: 'start',
+          originY: 'top',
+          overlayX: 'start',
+          overlayY: 'bottom',
+          offsetY: -offsetY,
+        },
       ]);
 
     return this._positionStrategy;
+  }
+
+  private _getOverlayOffsetY(): number {
+    const el = this._getConnectedElement().nativeElement;
+    // CSS custom properties may contain calc()/var() which can't be parsed directly;
+    // use a temporary element to let the browser resolve the value to pixels.
+    const measure = this._document!.createElement('div');
+    measure.style.height = 'var(--autocomplete-overlay-offset-y, 0px)';
+    measure.style.position = 'absolute';
+    measure.style.visibility = 'hidden';
+    el.appendChild(measure);
+    const offset = measure.offsetHeight;
+    measure.remove();
+    return offset;
   }
 
   private _getConnectedElement(): ElementRef {

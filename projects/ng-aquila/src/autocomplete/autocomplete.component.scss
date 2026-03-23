@@ -12,12 +12,13 @@ $max-height: 280px;
 .nx-autocomplete-panel {
   // the autocomplete should have the same look as the dropdown, so using the dropdown token here
   background-color: v(dropdown-panel-background-color);
-  box-shadow: v(shadow-small);
+  box-shadow: v(dropdown-panel-shadow);
   overflow-y: auto;
   overflow-x: hidden;
   max-height: $max-height;
   width: 100%;
-  border-radius: nx-border-radius(s);
+  border-radius: v(autocomplete-panel-border-radius);
+  padding: v(autocomplete-panel-padding);
 
   &.nx-autocomplete-visible {
     visibility: visible;

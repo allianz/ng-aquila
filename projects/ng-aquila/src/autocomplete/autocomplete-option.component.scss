@@ -4,17 +4,11 @@
   outline: none;
 }
 
-:host:first-child .nx-autocomplete-option {
-  padding-top: nx-spacer(s);
-}
-
-:host:last-child .nx-autocomplete-option {
-  padding-bottom: nx-spacer(s);
-}
-
 :host .nx-autocomplete-option {
   @include dropdown-overlay__option;
-  padding-left: nx-spacer(2m);
+  padding-left: v(
+    autocomplete-dropdown-item-padding-horizontal
+  ); // autocomplete requires different padding left than dropdown item
   text-wrap: auto;
 
   // keyboard focus styling
@@ -26,7 +20,7 @@
   }
 
   :host-context([dir='rtl']) & {
-    padding-right: nx-spacer(2m);
+    padding-right: v(autocomplete-dropdown-item-padding-horizontal);
   }
 }
 
@@ -35,6 +29,13 @@
 }
 
 :host:not(.nx-disabled) .nx-autocomplete-option {
+  &:hover {
+    background-color: v(dropdown-item-hover-background-color);
+  }
+  &:active {
+    background-color: v(dropdown-item-active-background-color);
+  }
+
   &:hover,
   &.nx-active {
     .nx-autocomplete-option__label {
